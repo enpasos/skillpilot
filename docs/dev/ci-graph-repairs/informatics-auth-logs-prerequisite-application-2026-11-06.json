@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "applied-exact-reviewed-single-array-native-post-application-pass-full-cqr-pending",
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/informatics-auth-logs-prerequisite-proposal-2026-11-06.json",
+    "sha256": "07032230bb19a7f309dfe3231af227308829ae97f6e47673d268990f73b67bb2"
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "beforeSha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+    "afterSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+    "oldInode": 36973012,
+    "newInode": 37417468,
+    "privateInodeAtomicReplacement": true,
+    "beforeSourceCommit": "a52e5605ce42b6ee72f7c75d581692c02c6c6953"
+  },
+  "operation": {
+    "op": "replace",
+    "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "path": "/goals/114/requires",
+    "guardGoalId": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+    "guardGoalCanonicalSha256": "a17e0bed62eb9d7822a3ebd0ad038ec4e02ff6983145fe1e2b8760ea08cc90d0",
+    "guardRequiresBefore": [
+      "ace0c141-9e7c-546e-914f-64c24d42d85d"
+    ],
+    "value": [
+      "d848ceb9-cd73-5a13-9407-f3364764c223"
+    ]
+  },
+  "actualReadOnlyPreApplicationReplay": {
+    "command": "python docs/dev/ci-graph-repairs/verify_informatics_auth_logs_prerequisite_proposal.py",
+    "exitCode": 0,
+    "log": "tmp/root-auth-logs-proposal-replay-2026-11-06.log"
+  },
+  "globalRelationProof": {
+    "goalDemandSourcesChanged": 3,
+    "atomicDemandSourcesChanged": 4,
+    "foreignSourcesChanged": 0,
+    "newDemand": 0,
+    "newCycles": 0,
+    "eTerminalGoalAndAtomicDemandUnchanged": true,
+    "directETerminalSmtpRetained": true
+  },
+  "nativePostApplicationChecks": [
+    {
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--ro-bind",
+        "/dev/shm/skillpilot-info-auth-prerequisite-00bc",
+        "/dev/shm/skillpilot-info-auth-prerequisite-00bc",
+        "--bind",
+        "/dev/shm/skillpilot-info-auth-prerequisite-00bc/root-auth-post-apply-9vzbnhdt",
+        "/tmp",
+        "--setenv",
+        "TMPDIR",
+        "/tmp",
+        "--ro-bind",
+        "/dev/shm/skillpilot-info-auth-prerequisite-00bc/cqr-private.ts",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot",
+        "--",
+        "app/node_modules/.bin/tsx",
+        "/dev/shm/skillpilot-info-auth-prerequisite-00bc/native-scope.ts"
+      ],
+      "exitCode": 0,
+      "seconds": 20.364,
+      "actualSourceUsedWithoutCanonicalOverlay": true,
+      "sourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+      "equalToFrozenCandidateNativeResult": true,
+      "scopes": 35,
+      "globalApplicabilityGoalCount": 6524,
+      "nativeResult": {
+        "path": "docs/dev/ci-graph-repairs/informatics-auth-logs-prerequisite-application-2026-11-06.native.json.gz",
+        "sha256": "f49cef699f35a034da27baaf425edbd2c9f8251891c4436ce0cb68c84173db5a"
+      },
+      "inputPinsBeforeAndAfter": {
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+        "app/scripts/generateCurriculumQualityStatus.ts": "694b3f424d693636c3b7b0e670bdca7e912bf247ce66f3496f3a51d80fb23518",
+        "app/scripts/lib/curriculumAssessmentValidation.ts": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7",
+        "app/scripts/lib/skillGraphIntegrity.ts": "0d031384b9b1d5a0741b27adefed48aa8c78166b0b688dcfc5c124083e1e4984",
+        "app/scripts/auditTransitiveMinimality.ts": "dd6d1dad87f269f9aecac5387d1df700483496d9fc8987edd594239b759cd908",
+        "app/scripts/applicabilityCompiler.ts": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+        "app/src/utils/authoring/compositionViewAuthoring.ts": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+        "app/src/utils/authoring/canonicalAuthoring.ts": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+        "app/src/utils/goalFilters.ts": "49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f",
+        "app/scripts/goalBookModel.ts": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f",
+        "app/scripts/positiveGoalEvidenceProfileModel.ts": "33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+        "app/scripts/goalEvidenceProfileModel.ts": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26",
+        "app/scripts/validateGoalDescriptionReviewCampaign.ts": "3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+        "app/scripts/semanticAtomicityReview.ts": "b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9",
+        "app/scripts/memoryCardReview.ts": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5",
+        "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-informatics-full.config.json": "f053c6460005877150d61fc45f98f25a935b8c1a4f11b665745e198a79c9a185",
+        "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-informatics-full.review.jsonl": "5ff4d41dda0970f3a2989a553660c7a1ad87b673996e0982ead02f697cf20d9f",
+        "curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.config.json": "b3910eb926db28044b3a4d6ffbdb69d7ae10f1992f5cb5cc035739b95ef1a95c",
+        "curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.cards.review.jsonl": "d17563e7c5db81dab25c8c8f07a767d19de452682e0268a2ebd01fe4b3044c6f",
+        "curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl": "4389e8abbe5d1f1f3b9f5cd3ca6febbe3d3f3c8765587e860d338ce200b52a2b"
+      }
+    }
+  ],
+  "qaRecordsSourceMappingsViewsExamDataCoverageMasteryAndLearnerStateChanged": false,
+  "fullMilestoneRestorationClaimed": false
+}
