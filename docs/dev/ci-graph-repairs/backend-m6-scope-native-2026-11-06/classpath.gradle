@@ -1,0 +1,8 @@
+gradle.projectsEvaluated {
+    rootProject.tasks.register('scopeAuditRuntimeClasspath') {
+        dependsOn rootProject.tasks.named('compileJava')
+        doLast {
+            println('SCOPE_AUDIT_CLASSPATH=' + rootProject.extensions.getByName('sourceSets').main.runtimeClasspath.asPath)
+        }
+    }
+}

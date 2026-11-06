@@ -1,0 +1,4336 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-source-and-native-set-review-complete",
+  "reviewScope": "Read-only independent reading of actual fixture/helper/production stats path, producer harness and all336 native projection result rows. Java producer runs are by ci_static; this review independently recomputes set differences in Python. No Spring/HTTP test rerun or source/learner mutation is claimed.",
+  "inputContext": {
+    "scopeRows": 56,
+    "requests": 112,
+    "fixturePath": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "fixtureSha256": "572aa740488be701b2384a367a952c03d3ee3e790134fe55c49b6a2b20f1ba03",
+    "requestSha256": "8dffd2b6e4654763a39e61c880afc272b62aec68e1ca748ce9f001f7e7938236",
+    "contexts": {
+      "before39-5921": {
+        "gitCommit": "d9f42e6f0729d7e76a0d740482c1a8444da08e76",
+        "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2",
+        "privateOverlayPath": "tmp/backend-m6-scope-native-2026-11-06/before39-5921.source.json"
+      },
+      "remote93a": {
+        "gitCommit": "0f86df880a24f366d7d357160271dceeb6ce94c0",
+        "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e",
+        "privateOverlayPath": "tmp/backend-m6-scope-native-2026-11-06/remote93a.source.json"
+      },
+      "active-f95": {
+        "gitCommit": null,
+        "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+        "privateOverlayPath": "tmp/backend-m6-scope-native-2026-11-06/active-f95.source.json"
+      }
+    },
+    "otherRuntimeInputs": "All contexts share the actual current read-only runtime catalog and source metadata; only the explicitly bound Informatics source file is overlaid. These are controlled comparisons, not mislabeled complete historical repositories.",
+    "currentCanonicalCatalog": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+      }
+    ]
+  },
+  "actualFixtureScopeRows": 56,
+  "requestsPerContext": 112,
+  "subjects": {
+    "Informatik": 14,
+    "Latein": 15,
+    "Politik und Wirtschaft": 13,
+    "Wirtschaftswissenschaften": 14
+  },
+  "nativeProducerBindings": [
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/BackendM6ScopeNativeInventory.java",
+      "sha256": "dec63e792566a390018a97ce772cae226b1900dc0f93770557d790832645aca7"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/prepare.py",
+      "sha256": "c947238d3bce04cdc3515949f261116593c5f450b353614a424a2e14046b79a2"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/input-context.json",
+      "sha256": "997db8242cb94fb85d6d471680cbffaf07e402f1389395a44b66713f68863e01"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/requests.json",
+      "sha256": "8dffd2b6e4654763a39e61c880afc272b62aec68e1ca748ce9f001f7e7938236"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/scope-rows.json",
+      "sha256": "9119817c8dbdb91260bc95ab569428c908e6b2e6afc8bc4105644d8f721a8e45"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/execution.json",
+      "sha256": "b2534955464b0b196db4fe295716a5c24235058d21e14d908bc24345cafa0832"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/run-native.py",
+      "sha256": "66fd39c578d8a049072677cde7ff77941812d53abac5411add49dc948da06a72"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/raw-set-comparison.json",
+      "sha256": "55a1125c35dc215107fe3f90144865133a4811e22c295d5e8b27083ea96b0b76"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/before39-5921.results.json.gz",
+      "sha256": "193fa1ddedf99a3ad9b93003c2b7be249eddf3ce0cb7cbcc5fb5e3082205b174",
+      "decompressedRawSha256": "9d00a5b8c425a9e2291b6a279803cb8beb0c57ab6979dfec94e0d1bf72fbe165"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/remote93a.results.json.gz",
+      "sha256": "6d9ec110f28eb03968070ab32ab06f0ae50e0a2b6bf33ab1ccf865a947ed5e33",
+      "decompressedRawSha256": "628adb83fd351419f0150bdd763a95f1552ab61d021559f5f2c6e9b454dc011c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/active-f95.results.json.gz",
+      "sha256": "ca1e4a0dcf85fb0368724b713261d62fd6a33771458a6773926f2844465bf9b8",
+      "decompressedRawSha256": "37ca8417a474f3e78d05f218ef66e2371cf992e26d8836b19d2672a23157340e"
+    }
+  ],
+  "productionPath": {
+    "personalizedStats": "LearnerService buildLearnerState -> computeAtomicStats(projection.visibleGoals(), projection.targetGoalIds(), mastery)",
+    "actualNativeCountMethod": "computeAtomicStats(visibleGoals,targetGoalIds,Map.of())",
+    "independentNativeIdPredicate": "isCountedAtomicGoal on the same visible goal objects; equality to GoalStats.total_atomic hard-checked by producer and independently checked from rows",
+    "structuralPlanningCountsKeptSeparate": true,
+    "visibleStructuralSetDifferencesInThese336Rows": [],
+    "stateOrMasteryRead": false,
+    "boundary": "A pure adapter invokes actual private production methods with public fixture configuration and no learner repository. This is targeted diagnostic evidence, not HTTP/session/persistence or complete integration-suite acceptance."
+  },
+  "summary": {
+    "baselineFixtureMatches": 112,
+    "currentCountMismatches": 10,
+    "changedTargetSets": 12,
+    "unchangedTargetSets": 100,
+    "ordinaryTargetLosses": 0,
+    "otherSubjectTargetSetChanges": 0,
+    "prerequisiteOnlySetChanges": 0,
+    "compositionViewSelectionChanges": 0,
+    "93aToF95SetOrCountChanges": 0
+  },
+  "changedRows": [
+    {
+      "key": "Informatik|DE-HH|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 22,
+      "nativeCurrentTotal": 22,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-HH|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 22,
+      "nativeCurrentTotal": 22,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NI|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G8",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NI|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G9",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NW|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 20,
+      "nativeBefore39Total": 20,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NW|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 20,
+      "nativeBefore39Total": 20,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-RP|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G8",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-RP|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G9",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SH|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SH|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SN|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G8",
+      "oldFixtureTotal": 29,
+      "nativeBefore39Total": 29,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SN|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G9",
+      "oldFixtureTotal": 29,
+      "nativeBefore39Total": 29,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    }
+  ],
+  "allRows": [
+    {
+      "key": "Informatik|DE-BB|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 25,
+      "nativeBefore39Total": 25,
+      "native93aTotal": 25,
+      "nativeCurrentTotal": 25,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BB|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 25,
+      "nativeBefore39Total": 25,
+      "native93aTotal": 25,
+      "nativeCurrentTotal": 25,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BE|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G8",
+      "oldFixtureTotal": 25,
+      "nativeBefore39Total": 25,
+      "native93aTotal": 25,
+      "nativeCurrentTotal": 25,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BE|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G9",
+      "oldFixtureTotal": 25,
+      "nativeBefore39Total": 25,
+      "native93aTotal": 25,
+      "nativeCurrentTotal": 25,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BW|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 4,
+      "nativeBefore39Total": 4,
+      "native93aTotal": 4,
+      "nativeCurrentTotal": 4,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BW|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 4,
+      "nativeBefore39Total": 4,
+      "native93aTotal": 4,
+      "nativeCurrentTotal": 4,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BY|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G8",
+      "oldFixtureTotal": 34,
+      "nativeBefore39Total": 34,
+      "native93aTotal": 34,
+      "nativeCurrentTotal": 34,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-BY|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G9",
+      "oldFixtureTotal": 34,
+      "nativeBefore39Total": 34,
+      "native93aTotal": 34,
+      "nativeCurrentTotal": 34,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-HH|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 22,
+      "nativeCurrentTotal": 22,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-HH|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 22,
+      "nativeCurrentTotal": 22,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-MV|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G8",
+      "oldFixtureTotal": 24,
+      "nativeBefore39Total": 24,
+      "native93aTotal": 24,
+      "nativeCurrentTotal": 24,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-MV|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G9",
+      "oldFixtureTotal": 24,
+      "nativeBefore39Total": 24,
+      "native93aTotal": 24,
+      "nativeCurrentTotal": 24,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NI|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G8",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NI|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G9",
+      "oldFixtureTotal": 22,
+      "nativeBefore39Total": 22,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NW|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 20,
+      "nativeBefore39Total": 20,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-NW|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 20,
+      "nativeBefore39Total": 20,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-RP|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G8",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-RP|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G9",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SH|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SH|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [
+        "dbad1333-5783-57b5-8715-92d725f5c303"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SL|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SL|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SN|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G8",
+      "oldFixtureTotal": 29,
+      "nativeBefore39Total": 29,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-SN|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G9",
+      "oldFixtureTotal": 29,
+      "nativeBefore39Total": 29,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [
+        "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+      ],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-ST|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G8",
+      "oldFixtureTotal": 21,
+      "nativeBefore39Total": 21,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-ST|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G9",
+      "oldFixtureTotal": 21,
+      "nativeBefore39Total": 21,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-TH|G8",
+      "subject": "Informatik",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 23,
+      "nativeBefore39Total": 23,
+      "native93aTotal": 23,
+      "nativeCurrentTotal": 23,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Informatik|DE-TH|G9",
+      "subject": "Informatik",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 23,
+      "nativeBefore39Total": 23,
+      "native93aTotal": 23,
+      "nativeCurrentTotal": 23,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BB|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BB|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BE|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BE|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BW|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-BW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BW|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-BW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BY|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-BY|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-HB|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-HB|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-HH|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-HH|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-MV|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-MV|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-NI|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G8",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-NI|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G9",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-NW|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-NW|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-RP|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-RP|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SH|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SH|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SL|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SL|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SN|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-SN|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-ST|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-ST|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-TH|G8",
+      "subject": "Latein",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Latein|DE-TH|G9",
+      "subject": "Latein",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 28,
+      "nativeBefore39Total": 28,
+      "native93aTotal": 28,
+      "nativeCurrentTotal": 28,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-BB|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-BB|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-BE|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G8",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-BE|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G9",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HB|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 14,
+      "nativeBefore39Total": 14,
+      "native93aTotal": 14,
+      "nativeCurrentTotal": 14,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HB|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 14,
+      "nativeBefore39Total": 14,
+      "native93aTotal": 14,
+      "nativeCurrentTotal": 14,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HE|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HE",
+      "durationModel": "G8",
+      "oldFixtureTotal": 30,
+      "nativeBefore39Total": 30,
+      "native93aTotal": 30,
+      "nativeCurrentTotal": 30,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HE|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HE",
+      "durationModel": "G9",
+      "oldFixtureTotal": 30,
+      "nativeBefore39Total": 30,
+      "native93aTotal": 30,
+      "nativeCurrentTotal": 30,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HH|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 21,
+      "nativeBefore39Total": 21,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-HH|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 21,
+      "nativeBefore39Total": 21,
+      "native93aTotal": 21,
+      "nativeCurrentTotal": 21,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-MV|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G8",
+      "oldFixtureTotal": 17,
+      "nativeBefore39Total": 17,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-MV|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G9",
+      "oldFixtureTotal": 17,
+      "nativeBefore39Total": 17,
+      "native93aTotal": 17,
+      "nativeCurrentTotal": 17,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-NW|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-NW|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 27,
+      "nativeBefore39Total": 27,
+      "native93aTotal": 27,
+      "nativeCurrentTotal": 27,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-RP|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G8",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-RP|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G9",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SH|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 34,
+      "nativeBefore39Total": 34,
+      "native93aTotal": 34,
+      "nativeCurrentTotal": 34,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SH|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 34,
+      "nativeBefore39Total": 34,
+      "native93aTotal": 34,
+      "nativeCurrentTotal": 34,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SL|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G8",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SL|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G9",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SN|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G8",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-SN|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G9",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-ST|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G8",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-ST|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G9",
+      "oldFixtureTotal": 19,
+      "nativeBefore39Total": 19,
+      "native93aTotal": 19,
+      "nativeCurrentTotal": 19,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-TH|G8",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Politik und Wirtschaft|DE-TH|G9",
+      "subject": "Politik und Wirtschaft",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 18,
+      "nativeBefore39Total": 18,
+      "native93aTotal": 18,
+      "nativeCurrentTotal": 18,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BB|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 79,
+      "nativeBefore39Total": 79,
+      "native93aTotal": 79,
+      "nativeCurrentTotal": 79,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BB|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 79,
+      "nativeBefore39Total": 79,
+      "native93aTotal": 79,
+      "nativeCurrentTotal": 79,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BE|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G8",
+      "oldFixtureTotal": 59,
+      "nativeBefore39Total": 59,
+      "native93aTotal": 59,
+      "nativeCurrentTotal": 59,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BE|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BE",
+      "durationModel": "G9",
+      "oldFixtureTotal": 59,
+      "nativeBefore39Total": 59,
+      "native93aTotal": 59,
+      "nativeCurrentTotal": 59,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BY|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G8",
+      "oldFixtureTotal": 136,
+      "nativeBefore39Total": 136,
+      "native93aTotal": 136,
+      "nativeCurrentTotal": 136,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-BY|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-BY",
+      "durationModel": "G9",
+      "oldFixtureTotal": 136,
+      "nativeBefore39Total": 136,
+      "native93aTotal": 136,
+      "nativeCurrentTotal": 136,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-HB|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G8",
+      "oldFixtureTotal": 41,
+      "nativeBefore39Total": 41,
+      "native93aTotal": 41,
+      "nativeCurrentTotal": 41,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-HB|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HB",
+      "durationModel": "G9",
+      "oldFixtureTotal": 41,
+      "nativeBefore39Total": 41,
+      "native93aTotal": 41,
+      "nativeCurrentTotal": 41,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-HH|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 38,
+      "nativeBefore39Total": 38,
+      "native93aTotal": 38,
+      "nativeCurrentTotal": 38,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-HH|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-HH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 38,
+      "nativeBefore39Total": 38,
+      "native93aTotal": 38,
+      "nativeCurrentTotal": 38,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-MV|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G8",
+      "oldFixtureTotal": 26,
+      "nativeBefore39Total": 26,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-MV|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-MV",
+      "durationModel": "G9",
+      "oldFixtureTotal": 26,
+      "nativeBefore39Total": 26,
+      "native93aTotal": 26,
+      "nativeCurrentTotal": 26,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-NI|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G8",
+      "oldFixtureTotal": 47,
+      "nativeBefore39Total": 47,
+      "native93aTotal": 47,
+      "nativeCurrentTotal": 47,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-NI|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NI",
+      "durationModel": "G9",
+      "oldFixtureTotal": 47,
+      "nativeBefore39Total": 47,
+      "native93aTotal": 47,
+      "nativeCurrentTotal": 47,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-NW|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G8",
+      "oldFixtureTotal": 47,
+      "nativeBefore39Total": 47,
+      "native93aTotal": 47,
+      "nativeCurrentTotal": 47,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-NW|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-NW",
+      "durationModel": "G9",
+      "oldFixtureTotal": 47,
+      "nativeBefore39Total": 47,
+      "native93aTotal": 47,
+      "nativeCurrentTotal": 47,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-RP|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G8",
+      "oldFixtureTotal": 40,
+      "nativeBefore39Total": 40,
+      "native93aTotal": 40,
+      "nativeCurrentTotal": 40,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-RP|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-RP",
+      "durationModel": "G9",
+      "oldFixtureTotal": 40,
+      "nativeBefore39Total": 40,
+      "native93aTotal": 40,
+      "nativeCurrentTotal": 40,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SH|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 46,
+      "nativeBefore39Total": 46,
+      "native93aTotal": 46,
+      "nativeCurrentTotal": 46,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SH|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 46,
+      "nativeBefore39Total": 46,
+      "native93aTotal": 46,
+      "nativeCurrentTotal": 46,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SL|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G8",
+      "oldFixtureTotal": 40,
+      "nativeBefore39Total": 40,
+      "native93aTotal": 40,
+      "nativeCurrentTotal": 40,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SL|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SL",
+      "durationModel": "G9",
+      "oldFixtureTotal": 40,
+      "nativeBefore39Total": 40,
+      "native93aTotal": 40,
+      "nativeCurrentTotal": 40,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SN|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G8",
+      "oldFixtureTotal": 37,
+      "nativeBefore39Total": 37,
+      "native93aTotal": 37,
+      "nativeCurrentTotal": 37,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-SN|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-SN",
+      "durationModel": "G9",
+      "oldFixtureTotal": 37,
+      "nativeBefore39Total": 37,
+      "native93aTotal": 37,
+      "nativeCurrentTotal": 37,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-ST|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G8",
+      "oldFixtureTotal": 37,
+      "nativeBefore39Total": 37,
+      "native93aTotal": 37,
+      "nativeCurrentTotal": 37,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-ST|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-ST",
+      "durationModel": "G9",
+      "oldFixtureTotal": 37,
+      "nativeBefore39Total": 37,
+      "native93aTotal": 37,
+      "nativeCurrentTotal": 37,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-TH|G8",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G8",
+      "oldFixtureTotal": 78,
+      "nativeBefore39Total": 78,
+      "native93aTotal": 78,
+      "nativeCurrentTotal": 78,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    },
+    {
+      "key": "Wirtschaftswissenschaften|DE-TH|G9",
+      "subject": "Wirtschaftswissenschaften",
+      "jurisdiction": "DE-TH",
+      "durationModel": "G9",
+      "oldFixtureTotal": 78,
+      "nativeBefore39Total": 78,
+      "native93aTotal": 78,
+      "nativeCurrentTotal": 78,
+      "removedTargetGoalIds": [],
+      "addedTargetGoalIds": [],
+      "prerequisiteOnlyIdsUnchanged": true,
+      "compositionViewIdsUnchanged": true,
+      "93aToF95AllSetsUnchanged": true,
+      "ordinaryTargetsLost": []
+    }
+  ],
+  "expectedNarrowFixtureCorrections": {
+    "DE-HH": {
+      "g8": 22,
+      "g9": 22,
+      "before": 22,
+      "lostGoalId": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+      "gainedGoalId": "dbad1333-5783-57b5-8715-92d725f5c303"
+    },
+    "DE-NI": {
+      "g8": 21,
+      "g9": 21,
+      "before": 22,
+      "lostGoalId": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+      "gainedGoalId": null
+    },
+    "DE-NW": {
+      "g8": 19,
+      "g9": 19,
+      "before": 20,
+      "lostGoalId": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+      "gainedGoalId": null
+    },
+    "DE-RP": {
+      "g8": 17,
+      "g9": 17,
+      "before": 18,
+      "lostGoalId": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+      "gainedGoalId": null
+    },
+    "DE-SH": {
+      "g8": 26,
+      "g9": 26,
+      "before": 27,
+      "lostGoalId": "dbad1333-5783-57b5-8715-92d725f5c303",
+      "gainedGoalId": null
+    },
+    "DE-SN": {
+      "g8": 28,
+      "g9": 28,
+      "before": 29,
+      "lostGoalId": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+      "gainedGoalId": null
+    }
+  },
+  "sourceProvenanceReview": {
+    "sourcePins": {
+      "before": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2",
+      "after39": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e",
+      "current": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372"
+    },
+    "proof": {
+      "path": "docs/dev/ci-graph-repairs/informatics-whole-exam-foundation-successor-applicability-impact-2026-11-06.json",
+      "sha256": "720bf32a2a1fbb364d5c7a8b81963e30cba2ee15561a65189030587fdab78a07"
+    },
+    "memoryGoals": [
+      {
+        "before": {
+          "id": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+          "title": "Lernkarten - Datenbanken und Relationen",
+          "titleEn": "Flashcards - Databases and Relations",
+          "description": "Schmaler Memory-Knoten für Kardinalitäten, Optionalitäten und relationale Operatoren. Der Knoten sichert Abrufwissen; Datenmodellierung, Abfragen und Begründungen bleiben normale Verstehens- und Übungsarbeit.",
+          "descriptionEn": "Narrow memorization node for cardinalities, optionalities, and relational operators. The node secures recall knowledge; data modelling, queries, and justifications remain normal understanding and practice work.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "memorization",
+            "srs-deck:de_gymnasium_informatics_databases"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "sourceRef": "Canonical memory-card deck for Gymnasium informatics in Germany",
+          "extendedData": {
+            "vocabularySource": "/data/de_gymnasium_informatics_flashcards_databases.de.json"
+          },
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "I2",
+              "I3",
+              "I5"
+            ],
+            "phase": "GLOBAL",
+            "area": "Informatik",
+            "topicCode": "CANONICAL.INFORMATICS.MEMORY.DATABASES"
+          },
+          "nodeKind": "memory",
+          "type": "atomic"
+        },
+        "current": {
+          "id": "ca2469f3-3712-5d92-ae7c-ee61d8607efa",
+          "title": "Lernkarten - Datenbanken und Relationen",
+          "titleEn": "Flashcards - Databases and Relations",
+          "description": "Schmaler Memory-Knoten für Kardinalitäten, Optionalitäten und relationale Operatoren. Der Knoten sichert Abrufwissen; Datenmodellierung, Abfragen und Begründungen bleiben normale Verstehens- und Übungsarbeit.",
+          "descriptionEn": "Narrow memorization node for cardinalities, optionalities, and relational operators. The node secures recall knowledge; data modelling, queries, and justifications remain normal understanding and practice work.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "memorization",
+            "srs-deck:de_gymnasium_informatics_databases"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-SH",
+              "DE-SL",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "sourceRef": "Canonical memory-card deck for Gymnasium informatics in Germany",
+          "extendedData": {
+            "vocabularySource": "/data/de_gymnasium_informatics_flashcards_databases.de.json"
+          },
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "I2",
+              "I3",
+              "I5"
+            ],
+            "phase": "GLOBAL",
+            "area": "Informatik",
+            "topicCode": "CANONICAL.INFORMATICS.MEMORY.DATABASES"
+          },
+          "nodeKind": "memory",
+          "type": "atomic"
+        },
+        "lostCountries": [
+          "DE-HH",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SN"
+        ],
+        "gainedCountries": [],
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:56e5edb6-b883-50a0-92bb-732d5e44c781 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:fdfa87be-06ca-5c54-9950-d8408dba8e38 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          }
+        ],
+        "historicalNativeEvidenceAfter": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:1eb09d02-9123-50e2-bfee-e2f0b5b23564 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          }
+        ]
+      },
+      {
+        "before": {
+          "id": "dbad1333-5783-57b5-8715-92d725f5c303",
+          "title": "Lernkarten - Formale Sprachen",
+          "titleEn": "Flashcards - Formal Languages",
+          "description": "Schmaler Memory-Knoten für Grundbegriffe formaler Sprachen und BNF-Notation. Der Knoten sichert Abrufwissen; Grammatikentwicklung, Transformation und Automateneinordnung bleiben normale Verstehens- und Übungsarbeit.",
+          "descriptionEn": "Narrow memorization node for core terms of formal languages and BNF notation. The node secures recall knowledge; grammar construction, transformation, and automata classification remain normal understanding and practice work.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "memorization",
+            "srs-deck:de_gymnasium_informatics_formal_languages"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "sourceRef": "Canonical memory-card deck for Gymnasium informatics in Germany",
+          "extendedData": {
+            "vocabularySource": "/data/de_gymnasium_informatics_flashcards_formal_languages.de.json"
+          },
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3"
+            ],
+            "phase": "GLOBAL",
+            "area": "Informatik",
+            "topicCode": "CANONICAL.INFORMATICS.MEMORY.FORMAL_LANGUAGES"
+          },
+          "nodeKind": "memory",
+          "type": "atomic"
+        },
+        "current": {
+          "id": "dbad1333-5783-57b5-8715-92d725f5c303",
+          "title": "Lernkarten - Formale Sprachen",
+          "titleEn": "Flashcards - Formal Languages",
+          "description": "Schmaler Memory-Knoten für Grundbegriffe formaler Sprachen und BNF-Notation. Der Knoten sichert Abrufwissen; Grammatikentwicklung, Transformation und Automateneinordnung bleiben normale Verstehens- und Übungsarbeit.",
+          "descriptionEn": "Narrow memorization node for core terms of formal languages and BNF notation. The node secures recall knowledge; grammar construction, transformation, and automata classification remain normal understanding and practice work.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical",
+            "memorization",
+            "srs-deck:de_gymnasium_informatics_formal_languages"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "sourceRef": "Canonical memory-card deck for Gymnasium informatics in Germany",
+          "extendedData": {
+            "vocabularySource": "/data/de_gymnasium_informatics_flashcards_formal_languages.de.json"
+          },
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3"
+            ],
+            "phase": "GLOBAL",
+            "area": "Informatik",
+            "topicCode": "CANONICAL.INFORMATICS.MEMORY.FORMAL_LANGUAGES"
+          },
+          "nodeKind": "memory",
+          "type": "atomic"
+        },
+        "lostCountries": [
+          "DE-SH"
+        ],
+        "gainedCountries": [
+          "DE-HH"
+        ],
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          }
+        ],
+        "historicalNativeEvidenceAfter": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "memory-review-origin",
+            "source": "canonical-informatics-full:cdb24f8f-3596-5e68-a44f-9d651c7eed62 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl)"
+          }
+        ]
+      }
+    ],
+    "originGoals": [
+      {
+        "before": {
+          "id": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+          "title": "Kardinalitäten und Optionalitäten sichern",
+          "titleEn": "Secure Cardinalities and Optionalities",
+          "description": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+          "descriptionEn": "The learner can justify cardinality rules in complex ER models.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "P2",
+              "P5"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "1efefe8d-538d-4450-8c8b-69a5335936bf"
+            }
+          },
+          "type": "atomic"
+        },
+        "current": {
+          "id": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+          "title": "Kardinalitäten und Optionalitäten sichern",
+          "titleEn": "Secure Cardinalities and Optionalities",
+          "description": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+          "descriptionEn": "The learner can justify cardinality rules in complex ER models.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB3",
+            "processCompetencies": [
+              "P2",
+              "P5"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-MV",
+              "DE-SH",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "1efefe8d-538d-4450-8c8b-69a5335936bf"
+            }
+          },
+          "type": "atomic"
+        },
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          }
+        ],
+        "historicalNativeEvidenceAfter": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+          }
+        ]
+      },
+      {
+        "before": {
+          "id": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "title": "Weitere Operatoren nutzen",
+          "titleEn": "Use Additional Operators",
+          "description": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+          "descriptionEn": "The learner can apply union, intersection, difference, and renaming.",
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "0c29b230-2e96-4a66-a158-379d71a7336b"
+            }
+          },
+          "type": "atomic"
+        },
+        "current": {
+          "id": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "title": "Weitere Operatoren nutzen",
+          "titleEn": "Use Additional Operators",
+          "description": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+          "descriptionEn": "The learner can apply union, intersection, difference, and renaming.",
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-SL",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "0c29b230-2e96-4a66-a158-379d71a7336b"
+            }
+          },
+          "type": "atomic"
+        },
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          }
+        ],
+        "historicalNativeEvidenceAfter": []
+      },
+      {
+        "before": {
+          "id": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "title": "Grundoperatoren anwenden",
+          "titleEn": "Apply Basic Operators",
+          "description": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+          "descriptionEn": "The learner can use Cartesian product, projection, selection, and join.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "65aa807f-f998-5648-a3a6-2e0e96dba714"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P1",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "fe993030-812a-46ad-9901-afdd9772800f"
+            }
+          },
+          "type": "atomic"
+        },
+        "current": {
+          "id": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "title": "Grundoperatoren anwenden",
+          "titleEn": "Apply Basic Operators",
+          "description": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+          "descriptionEn": "The learner can use Cartesian product, projection, selection, and join.",
+          "weight": 1.05,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P1",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-SL",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "fe993030-812a-46ad-9901-afdd9772800f"
+            }
+          },
+          "type": "atomic"
+        },
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          }
+        ],
+        "historicalNativeEvidenceAfter": []
+      },
+      {
+        "before": {
+          "id": "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
+          "title": "Grammatiken schreiben",
+          "titleEn": "Write Grammars",
+          "description": "Die lernende Person kann kontextfreie Grammatiken in BNF formulieren.",
+          "descriptionEn": "The learner can formulate context-free grammars in BNF.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "3bd7961b-f9d5-4762-a720-1fc40bdf5945"
+            }
+          },
+          "type": "atomic"
+        },
+        "current": {
+          "id": "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
+          "title": "Grammatiken schreiben",
+          "titleEn": "Write Grammars",
+          "description": "Die lernende Person kann kontextfreie Grammatiken in BNF formulieren.",
+          "descriptionEn": "The learner can formulate context-free grammars in BNF.",
+          "weight": 1.1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "3e3264d6-8cf8-55f9-b085-1aa4a7865476"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BY",
+              "DE-HE",
+              "DE-NW",
+              "DE-RP",
+              "DE-SN"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "3bd7961b-f9d5-4762-a720-1fc40bdf5945"
+            }
+          },
+          "type": "atomic"
+        },
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 871de3d3-4ff4-52bd-aeb7-b30dfdd72336"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 8835e942-93fd-51ba-bf11-e7cc65502ae6"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 871de3d3-4ff4-52bd-aeb7-b30dfdd72336"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 8835e942-93fd-51ba-bf11-e7cc65502ae6"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 871de3d3-4ff4-52bd-aeb7-b30dfdd72336"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 8835e942-93fd-51ba-bf11-e7cc65502ae6"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 871de3d3-4ff4-52bd-aeb7-b30dfdd72336"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 8835e942-93fd-51ba-bf11-e7cc65502ae6"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 871de3d3-4ff4-52bd-aeb7-b30dfdd72336"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 8835e942-93fd-51ba-bf11-e7cc65502ae6"
+          }
+        ],
+        "historicalNativeEvidenceAfter": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 53c7f69f-1956-518f-8349-4029edee268d"
+          }
+        ]
+      },
+      {
+        "before": {
+          "id": "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+          "title": "Formale Sprache definieren",
+          "titleEn": "Define a formal language",
+          "description": "Die lernende Person kann den Begriff einer formalen Sprache als Menge von Wörtern über einem Alphabet erläutern.",
+          "descriptionEn": "The learner can explain the concept of a formal language as a set of words over an alphabet.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "6b3892ff-049c-5831-a0fe-0bd581981f54",
+              "sourceLandscapeTitle": "Informatik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+              "sourceGoalId": "de-bw-informatik-sekii-bp2016-inf-3-3-5-b02-05ea7448"
+            }
+          },
+          "type": "atomic"
+        },
+        "current": {
+          "id": "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+          "title": "Formale Sprache definieren",
+          "titleEn": "Define a formal language",
+          "description": "Die lernende Person kann den Begriff einer formalen Sprache als Menge von Wörtern über einem Alphabet erläutern.",
+          "descriptionEn": "The learner can explain the concept of a formal language as a set of words over an alphabet.",
+          "weight": 0.9,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "dimensionTags": {
+            "framework": "canonical-gymnasium-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "6b3892ff-049c-5831-a0fe-0bd581981f54",
+              "sourceLandscapeTitle": "Informatik Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction)",
+              "sourceGoalId": "de-bw-informatik-sekii-bp2016-inf-3-3-5-b02-05ea7448"
+            }
+          },
+          "type": "atomic"
+        },
+        "historicalNativeEvidenceBefore": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by 1ce620dc-93cf-579c-a286-e74451d0a4d7"
+          }
+        ],
+        "historicalNativeEvidenceAfter": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "requires-closure",
+            "source": "required by fbd4561a-573e-5f8c-b363-338ee9774b5c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by 36725b54-fd0c-5b24-bf2f-399491562718"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "requires-closure",
+            "source": "required by fbd4561a-573e-5f8c-b363-338ee9774b5c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by 36725b54-fd0c-5b24-bf2f-399491562718"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "requires-closure",
+            "source": "required by fbd4561a-573e-5f8c-b363-338ee9774b5c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by 36725b54-fd0c-5b24-bf2f-399491562718"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "requires-closure",
+            "source": "required by fbd4561a-573e-5f8c-b363-338ee9774b5c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_informatics_lower_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "requires-closure",
+            "source": "required by fbd4561a-573e-5f8c-b363-338ee9774b5c"
+          }
+        ]
+      }
+    ],
+    "memoryReviewSource": {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl",
+      "sha256": "4389e8abbe5d1f1f3b9f5cd3ca6febbe3d3f3c8765587e860d338ce200b52a2b",
+      "originalRows": [
+        {
+          "schemaVersion": 1,
+          "reviewId": "canonical-informatics-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "goalId": "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
+          "fingerprint": "sha256:ffa9ccf48dcc9ecc492e209a49ff3a5a590411948ffb4234ec34ac816e608736",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-informatics-memory-review",
+          "reason": "Alphabet, Wort und formale Sprache sind präzise Definitionsbausteine; Beispiele bilden und Sprachen untersuchen bleibt Verstehensarbeit.",
+          "memoryGoalIds": [
+            "dbad1333-5783-57b5-8715-92d725f5c303"
+          ],
+          "deckIds": [
+            "de_gymnasium_informatics_formal_languages"
+          ]
+        },
+        {
+          "schemaVersion": 1,
+          "reviewId": "canonical-informatics-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "goalId": "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
+          "fingerprint": "sha256:4d1f3903bf1d5d8c5384ab63d5afb7989aee49a032c4421e7ac31443a5949fc7",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-informatics-memory-review",
+          "reason": "BNF-Notation und Grammatikgrundbegriffe müssen korrekt abrufbar sein; Grammatiken zu formulieren bleibt Konstruktions- und Übungsarbeit.",
+          "memoryGoalIds": [
+            "dbad1333-5783-57b5-8715-92d725f5c303"
+          ],
+          "deckIds": [
+            "de_gymnasium_informatics_formal_languages"
+          ]
+        },
+        {
+          "schemaVersion": 1,
+          "reviewId": "canonical-informatics-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "goalId": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "fingerprint": "sha256:f928c5689039381fe392471a5ebf6d74ad6976438e19021af3f402ea684881c9",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-informatics-memory-review",
+          "reason": "Die relationalen Grundoperatoren müssen als Fachnotation und Bedeutung sicher abrufbar sein; ihr Einsatz bleibt Abfrage- und Übungspraxis.",
+          "memoryGoalIds": [
+            "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+          ],
+          "deckIds": [
+            "de_gymnasium_informatics_databases"
+          ]
+        },
+        {
+          "schemaVersion": 1,
+          "reviewId": "canonical-informatics-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "goalId": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+          "fingerprint": "sha256:493f805d562f051acd39bff60dc32fb5cbb94745104455cfd240da808426b99b",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-informatics-memory-review",
+          "reason": "Kardinalitäten und Optionalitäten enthalten knappe Notations- und Bedeutungsbausteine; das Begründen komplexer ER-Modelle bleibt Modellierungsarbeit.",
+          "memoryGoalIds": [
+            "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+          ],
+          "deckIds": [
+            "de_gymnasium_informatics_databases"
+          ]
+        },
+        {
+          "schemaVersion": 1,
+          "reviewId": "canonical-informatics-full",
+          "ruleVersion": "memory-card-review-v1",
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "goalId": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "fingerprint": "sha256:edb9ae03e620eb3cc7d9370fa75b25cf3be59526ead213b736b874fdbacc5930",
+          "status": "memory_required",
+          "memoryUseful": true,
+          "reviewedAt": "2026-05-17",
+          "reviewer": "codex-informatics-memory-review",
+          "reason": "Weitere relationale Operatoren werden nur als knapper Abrufbestand gesichert; das Anwenden in Abfragen bleibt Übungsarbeit.",
+          "memoryGoalIds": [
+            "ca2469f3-3712-5d92-ae7c-ee61d8607efa"
+          ],
+          "deckIds": [
+            "de_gymnasium_informatics_databases"
+          ]
+        }
+      ]
+    },
+    "decks": [
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_informatics_flashcards_databases.de.json",
+        "sha256": "17a8c40f9e67c9281567f080e54b903a454c52ec7ffcb21cd74ec7e0712be384",
+        "definition": {
+          "deckId": "de_gymnasium_informatics_databases",
+          "title": "Informatik - Datenbanken und Relationen",
+          "cards": [
+            {
+              "id": "informatics_databases_001",
+              "front": "Was bedeutet 1:1 in einem ER-Modell?",
+              "back": "Ein Objekt der einen Entitätsmenge ist höchstens einem Objekt der anderen Entitätsmenge zugeordnet und umgekehrt.",
+              "category": "ER-Modell",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_002",
+              "front": "Was bedeutet 1:n in einem ER-Modell?",
+              "back": "Ein Objekt der einen Entitätsmenge kann mehreren Objekten der anderen Entitätsmenge zugeordnet sein; jedes dieser Objekte gehört höchstens zu einem Objekt der ersten Entitätsmenge.",
+              "category": "ER-Modell",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_003",
+              "front": "Was bedeutet n:m in einem ER-Modell?",
+              "back": "Mehrere Objekte der einen Entitätsmenge können mehreren Objekten der anderen Entitätsmenge zugeordnet sein.",
+              "category": "ER-Modell",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_004",
+              "front": "Wofür steht Projektion in der relationalen Algebra?",
+              "back": "Projektion wählt bestimmte Attribute beziehungsweise Spalten einer Relation aus.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_005",
+              "front": "Wofür steht Selektion in der relationalen Algebra?",
+              "back": "Selektion wählt Tupel beziehungsweise Zeilen einer Relation aus, die eine Bedingung erfüllen.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_006",
+              "front": "Was beschreibt ein Join in der relationalen Algebra?",
+              "back": "Ein Join verknüpft Relationen über zusammengehörige Attributwerte.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_007",
+              "front": "Was bedeutet Vereinigung zweier Relationen?",
+              "back": "Die Vereinigung enthält alle Tupel, die in mindestens einer der beiden kompatiblen Relationen vorkommen.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_008",
+              "front": "Was bedeutet Schnitt zweier Relationen?",
+              "back": "Der Schnitt enthält nur die Tupel, die in beiden kompatiblen Relationen vorkommen.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_databases_009",
+              "front": "Was bedeutet Differenz zweier Relationen?",
+              "back": "Die Differenz enthält die Tupel der ersten Relation, die nicht in der zweiten kompatiblen Relation vorkommen.",
+              "category": "Relationale Algebra",
+              "tags": [
+                "LK"
+              ]
+            }
+          ],
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+        },
+        "boundary": "All card meanings/IDs and source bytes retained; this excerpt authorizes no new recall/mapping/scope policy."
+      },
+      {
+        "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_informatics_flashcards_formal_languages.de.json",
+        "sha256": "8703ade0a5ed3b3fa9e69e24d8ef542a4c7877ae1532aea51930adf8972efcef",
+        "definition": {
+          "deckId": "de_gymnasium_informatics_formal_languages",
+          "title": "Informatik - Formale Sprachen",
+          "cards": [
+            {
+              "id": "informatics_formal_languages_001",
+              "front": "Was ist ein Alphabet in der Theorie formaler Sprachen?",
+              "back": "Ein Alphabet ist eine endliche Menge von Zeichen.",
+              "category": "Formale Sprachen",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_formal_languages_002",
+              "front": "Was ist ein Wort über einem Alphabet?",
+              "back": "Ein Wort ist eine endliche Folge von Zeichen aus diesem Alphabet.",
+              "category": "Formale Sprachen",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_formal_languages_003",
+              "front": "Was ist eine formale Sprache?",
+              "back": "Eine formale Sprache ist eine Menge von Wörtern über einem Alphabet.",
+              "category": "Formale Sprachen",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_formal_languages_004",
+              "front": "Was ist ein Terminalsymbol in einer Grammatik?",
+              "back": "Ein Terminalsymbol ist ein Zeichen, das in erzeugten Wörtern der Sprache tatsächlich vorkommt.",
+              "category": "Grammatiken",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_formal_languages_005",
+              "front": "Was ist ein Nichtterminalsymbol in einer Grammatik?",
+              "back": "Ein Nichtterminalsymbol ist ein ersetzbares Hilfssymbol, das durch Produktionsregeln weiter abgeleitet wird.",
+              "category": "Grammatiken",
+              "tags": [
+                "GK",
+                "LK"
+              ]
+            },
+            {
+              "id": "informatics_formal_languages_006",
+              "front": "Welche Form hat eine einfache BNF-Produktionsregel?",
+              "back": "Eine typische Regel hat die Form <Nichtterminal> ::= Ausdruck, zum Beispiel <Ziffer> ::= 0 | 1 | ... | 9.",
+              "category": "Grammatiken",
+              "tags": [
+                "LK"
+              ]
+            }
+          ],
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+        },
+        "boundary": "All card meanings/IDs and source bytes retained; this excerpt authorizes no new recall/mapping/scope policy."
+      }
+    ]
+  },
+  "unchangedDeckAndReviewBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_informatics_flashcards_databases.de.json",
+      "sha256": "17a8c40f9e67c9281567f080e54b903a454c52ec7ffcb21cd74ec7e0712be384",
+      "identicalToBefore39Bytes": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_informatics_flashcards_formal_languages.de.json",
+      "sha256": "8703ade0a5ed3b3fa9e69e24d8ef542a4c7877ae1532aea51930adf8972efcef",
+      "identicalToBefore39Bytes": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-informatics-full.review.jsonl",
+      "sha256": "4389e8abbe5d1f1f3b9f5cd3ca6febbe3d3f3c8765587e860d338ce200b52a2b",
+      "identicalToBefore39Bytes": true
+    }
+  ],
+  "judgment": "The stale totals are a test fixture mismatch caused by the already accepted39+166 applicability correction, not loss of an ordinary authored competency or a new runtime defect. Narrowly repair the five country totals and assert both Memory-ID membership outcomes, including the numerically invisible HH exchange. Do not expand scopes or change production to preserve accidental counts.",
+  "scopeDecisionBoundary": "The root owner already accepted removal of only incidental whole-exam requires-derived visibility. This review verifies that concrete decision and its actual consequences; it makes no new official curriculum mapping or general Memory-scope policy. Memory-origin evidence is applicability only, not proof of official source coverage.",
+  "negativeEvidenceRequiredForFixtureRepair": [
+    "Wrong ca246 membership in HH/NI/NW/RP/SN must fail a real membership assertion.",
+    "Wrong dbad membership in SH, or missing newly justified HH dbad, must fail.",
+    "Do not erase other country totals or remove ordinary goals to make counts fit.",
+    "Keep G8 and G9 checks, active filter assertions and real HTTP/state integration."
+  ],
+  "productionOrSourceWrites": false,
+  "qaOrMaturityApproval": false,
+  "integrationTestRunByThisReviewer": false,
+  "nativeStorageInventory": {
+    "path": "docs/dev/ci-graph-repairs/backend-m6-scope-native-2026-11-06/storage-inventory.json",
+    "sha256": "13b1198872e99fce1df7642e6832b70d87ae2efea51a358af17824a2ae9a1cd6"
+  },
+  "nativeExecution": {
+    "sourceDataChanged": false,
+    "contexts": [
+      {
+        "context": "before39-5921",
+        "exitCode": 0,
+        "elapsedSeconds": 12.819319486618042
+      },
+      {
+        "context": "remote93a",
+        "exitCode": 0,
+        "elapsedSeconds": 11.682832956314087
+      },
+      {
+        "context": "active-f95",
+        "exitCode": 0,
+        "elapsedSeconds": 12.33086895942688
+      }
+    ],
+    "bindingsBeforeAndAfter": {
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+      "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659",
+      "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java": "5cb90e216a0b11b431981de46b012859ab0cc733a49d48e04a1483e901dcf5bf",
+      "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java": "0d4561ad289c47565ab42ae80617d47765dc60377e9fd648bf280a79661fdece",
+      "backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingService.java": "3fa04c0576669d609c3210ffaad5c761064e24f120700ec151d1cc0a57a21432",
+      "backend/build/classes/java/main/com/skillpilot/backend/service/LearnerService.class": "67a99683c093fbe7059d178818631d1d0252dafcab14cbc93bceb0d2aa66b5be",
+      "backend/build/classes/java/main/com/skillpilot/backend/service/CompositionViewService.class": "88cd9ae7e4fe9273f52bdbde6568533d850bb07457d8c23512d02ea7b1e44d07",
+      "backend/build/classes/java/main/com/skillpilot/backend/landscape/LandscapeService.class": "fb14474af2902355bf0baa470a73f8683eefa980d7bee1c75fbf2aa5534eeacd",
+      "backend/build/classes/java/main/com/skillpilot/backend/landscape/GoalMappingService.class": "9cf449328a94c9b3c7d8222a5d54c50d8b454a621941afb8a4740352755edc31",
+      "tmp/backend-m6-scope-native-2026-11-06/BackendM6ScopeNativeInventory.java": "dec63e792566a390018a97ce772cae226b1900dc0f93770557d790832645aca7",
+      "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java": "572aa740488be701b2384a367a952c03d3ee3e790134fe55c49b6a2b20f1ba03"
+    },
+    "javaExecutable": "tmp/amazon-corretto-25.0.2.10.1/bin/java",
+    "javaExecutableSha256": "492ad1e62bb8106f2bb8a2409ae8a01d82d1dfbe7377d1f0e92a90c2c05bab99",
+    "classpathSha256": "7a96da2b49a6100b7cf7c178d226b38df85b1d8f7e984d0e9ddc239e1cb08a79",
+    "runtimeClasspathCaptureCompileJavaExitCode": 0
+  },
+  "readonlyReplay": {
+    "path": "docs/dev/ci-graph-repairs/verify_informatics_seki_backend_scope_review.py",
+    "sha256": "c0a77869294344db801dcfbf67de78fbf282730d71ac1874f5b436c0d10db5e9",
+    "command": "python3 -B docs/dev/ci-graph-repairs/verify_informatics_seki_backend_scope_review.py"
+  }
+}

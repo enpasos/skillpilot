@@ -1784,18 +1784,19 @@ public class LearnerControllerIntegrationTest {
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BE", "25", "25" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BW", "4", "4" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-BY", "34", "34" },
-                // Current reviewed Memory-origin applicability adds the database
-                // node in HH/NI/NW/RP/SN and the formal-language node in SH.
-                // Native before/after target-set evidence is retained in the
-                // 2026-10-07 Memory Sek-I projection count follow-up dossier.
+                // The reviewed 39+166 correction removes unsupported whole-exam-only
+                // Memory visibility: NI/NW/RP/SN lose ca2469f3, SH loses dbad1333.
+                // HH keeps 22 atoms while exchanging ca2469f3 for dbad1333.
+                // All ordinary IDs remain; all 112 native G8/G9 sets are bound in
+                // docs/dev/ci-graph-repairs/backend-m6-duration-scope-fixture-repair-2026-11-06.json.
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-HH", "22", "22" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-MV", "24", "24" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NI", "22", "22" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NW", "20", "20" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-RP", "18", "18" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SH", "27", "27" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NI", "21", "21" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-NW", "19", "19" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-RP", "17", "17" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SH", "26", "26" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SL", "28", "28" },
-                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SN", "29", "29" },
+                { "Informatik", CANONICAL_INFORMATICS_ID, "DE-SN", "28", "28" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-ST", "21", "21" },
                 { "Informatik", CANONICAL_INFORMATICS_ID, "DE-TH", "23", "23" },
                 { "Latein", CANONICAL_LATIN_ID, "DE-BB", "28", "28" },
