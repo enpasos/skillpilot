@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import './testMemoryVisibilityStatusParity'
 import './testDeepUnderstandingSupersessionChains'
 import './testDeepUnderstandingSemanticRetirements'
+import { strictGraphFixtureId, strictGraphFixtureRule } from './testCurriculumGraphMaturity'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -155,17 +156,20 @@ assert.equal(evaluateDeepUnderstandingQa(fixtureLandscape, 'fixture.json', {
   ...noScopeReport, subjects: [{ ...completeReport, denominator: null, strictCompletionReady: false }],
 }).metrics?.expectedGoals, undefined, 'Unknown target scope must not be shown as zero goals.')
 
-const coreRules = ['CQR-000', 'CQR-001', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501']
-  .map((id) => ({ id, status: 'pass' as const, summary: 'Fixture prerequisite passed' }))
+const coreRules = [
+  strictGraphFixtureRule,
+  ...['CQR-000', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501']
+    .map((id) => ({ id, status: 'pass' as const, summary: 'Fixture prerequisite passed' })),
+]
 const routeScopes = [{
   scopeId: 'fixture', label: 'Fixture', maturity: 'M4' as const, selectedAtomicGoals: 2,
   rules: [{ id: 'CQR-101', status: 'pass' as const, summary: 'Fixture route passed' }],
 }]
 const memoryPassed = { id: 'CQR-302', status: 'pass' as const, summary: 'Fixture memory passed' }
-assert.equal(deriveCurriculumMaturity([...coreRules, projected], routeScopes), 'M5', 'M7 requires current M6.')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes), 'M7')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, { ...projected, status: 'warn' }], routeScopes), 'M6')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], []), 'M2', 'M7 cannot bypass lower route gates.')
+assert.equal(deriveCurriculumMaturity([...coreRules, projected], routeScopes, strictGraphFixtureId), 'M5', 'M7 requires current M6.')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes, strictGraphFixtureId), 'M7')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, { ...projected, status: 'warn' }], routeScopes, strictGraphFixtureId), 'M6')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], [], strictGraphFixtureId), 'M2', 'M7 cannot bypass lower route gates.')
 assert.equal(countHumanTrialBlockingFindings(fixtureLandscape, [{ schemaVersion: 1, records: [
   { goalId: 'goal-a', landscapeId: 'fixture-landscape', humanIssueIdentified: 'yes' },
   { goalId: 'goal-a', landscapeId: 'fixture-landscape', humanIssueIdentified: 'yes' },
@@ -332,13 +336,13 @@ if (economics.gates.currentVisualizationQaRecords < economics.denominator!) {
 const economicsLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, economics.landscapePath), 'utf8')) as SkillLandscape
 const economicsQa = evaluateDeepUnderstandingQa(economicsLandscape, economics.landscapePath, report)
 assert.equal(economicsQa.status, economics.strictCompletionReady ? 'pass' : 'fail')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes),
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes, strictGraphFixtureId),
   economics.strictCompletionReady ? 'M7' : 'M6', 'Open Economics findings must never grant M7.')
 
 const chemistryLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, chemistry.landscapePath), 'utf8')) as SkillLandscape
 const chemistryQa = evaluateDeepUnderstandingQa(chemistryLandscape, chemistry.landscapePath, report)
 assert.equal(chemistryQa.status, chemistry.strictCompletionReady ? 'pass' : 'fail')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes),
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes, strictGraphFixtureId),
   chemistry.strictCompletionReady ? 'M7' : 'M6', 'Open Chemistry description reviews must never grant M7.')
 
 console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)

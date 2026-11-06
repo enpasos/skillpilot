@@ -14,18 +14,21 @@ const sorted = (items: Iterable<string>) => [...new Set(items)].sort()
 function ensure(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(message) }
 
 function cycle(adjacency: Map<string, string[]>): string[] | undefined {
-  const done = new Set<string>(), active = new Set<string>(), path: string[] = []
-  const visit = (node: string): string[] | undefined => {
-    if (active.has(node)) return [...path.slice(path.indexOf(node)), node]
-    if (done.has(node)) return
-    active.add(node); path.push(node)
-    for (const child of adjacency.get(node) ?? []) {
-      const found = visit(child)
-      if (found) return found
+  const done = new Set<string>(), active = new Map<string, number>()
+  for (const start of adjacency.keys()) {
+    if (done.has(start)) continue
+    const stack = [{ node: start, next: 0 }]
+    active.set(start, 0)
+    while (stack.length) {
+      const frame = stack[stack.length - 1], children = adjacency.get(frame.node) ?? []
+      if (frame.next === children.length) {
+        active.delete(frame.node); done.add(frame.node); stack.pop(); continue
+      }
+      const child = children[frame.next++], at = active.get(child)
+      if (at !== undefined) return [...stack.slice(at).map(({ node }) => node), child]
+      if (!done.has(child)) { active.set(child, stack.length); stack.push({ node: child, next: 0 }) }
     }
-    path.pop(); active.delete(node); done.add(node)
   }
-  for (const node of adjacency.keys()) { const found = visit(node); if (found) return found }
 }
 
 export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandscapeIds: string[]) {
@@ -73,12 +76,12 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
       selected.set(key, node)
       ensure(node.goal.requires === undefined || Array.isArray(node.goal.requires), `Invalid requires at ${key}`)
       node.requires = sorted((node.goal.requires ?? []).map((ref) => resolveRef(ref, node)))
-      pending.push(...node.requires.map((target) => ({ key: target, includeChildren: true })),
-        ...allParents.get(key)!.map((parent) => ({ key: parent, includeChildren: false })))
+      for (const target of node.requires) pending.push({ key: target, includeChildren: true })
+      for (const parent of allParents.get(key)!) pending.push({ key: parent, includeChildren: false })
     }
     if (includeChildren && !childrenExpanded.has(key)) {
       childrenExpanded.add(key)
-      pending.push(...node.contains.map((child) => ({ key: child, includeChildren: true })))
+      for (const child of node.contains) pending.push({ key: child, includeChildren: true })
     }
   }
   const ordered = [...selected.values()].sort((a, b) => a.key.localeCompare(b.key))
@@ -88,11 +91,21 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
   ensure(!containsCycle, `contains cycle: ${containsCycle?.join(' -> ')}`)
   const parents = new Map(ordered.map((n) => [n.key, [] as string[]]))
   for (const [parent, children] of contains) for (const child of children) parents.get(child)!.push(parent)
-  const ancestors = new Map<string, string[]>()
-  const sources = (key: string): string[] => {
-    if (!ancestors.has(key)) ancestors.set(key, sorted([key, ...parents.get(key)!.flatMap(sources)]))
-    return ancestors.get(key)!
+  // Only ancestors with an authored requirement contribute an origin. Propagate
+  // those origins iteratively: a deep containment chain must not recurse or
+  // materialize quadratic sets of irrelevant requirement-free ancestors.
+  const incoming = new Map(ordered.map((n) => [n.key, parents.get(n.key)!.length]))
+  const ready = ordered.filter((n) => incoming.get(n.key) === 0).map((n) => n.key)
+  const sourceSets = new Map(ordered.map((n) => [n.key, new Set(n.requires.length ? [n.key] : [])]))
+  for (let index = 0; index < ready.length; index++) {
+    const parent = ready[index]
+    for (const child of contains.get(parent)!) {
+      for (const origin of sourceSets.get(parent)!) sourceSets.get(child)!.add(origin)
+      incoming.set(child, incoming.get(child)! - 1)
+      if (incoming.get(child) === 0) ready.push(child)
+    }
   }
+  const sources = (key: string): string[] => sorted(sourceSets.get(key)!)
   const origins = ordered.flatMap((n) => n.requires.map((p) => ({ source: n.key, prerequisite: p })))
   // Fixed C fixes sources(g). Omitting the authored pair in every contribution
   // exactly recomputes effective(C, R\{edge}), including all inherited copies.

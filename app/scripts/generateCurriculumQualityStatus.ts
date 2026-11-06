@@ -25,6 +25,13 @@ import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport }
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
+import {
+  checkSkillGraphIntegrity,
+  hasCompletePassingSkillGraphIntegrity,
+  REQUIRED_SKILL_GRAPH_CHECKS,
+  type IntegrityLandscape,
+  type IntegrityReport,
+} from './lib/skillGraphIntegrity'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -47,6 +54,7 @@ interface RuleResult {
   summary: string
   metrics?: Record<string, number>
   details?: string[]
+  graphIntegrity?: IntegrityReport
 }
 
 interface ScopeStatus {
@@ -1022,10 +1030,10 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
   {
     id: 'CQR-001',
-    label: 'Basic graph integrity',
+    label: 'Strict graph integrity',
     category: 'graph',
     maturityTarget: 'M0',
-    description: 'Goal IDs, local references, self-reference guards, and direct DAG checks are clean.',
+    description: 'All mandatory strict checks pass on the resolved canonical scope: UUID identity, positive weights, unambiguous references, containment/direct/effective/atomic DAGs, and authored local/transitive minimality.',
   },
   {
     id: 'CQR-002',
@@ -1782,36 +1790,6 @@ function createVisibleAtomicPathChecker(
   )
 }
 
-function findCycle(edgeMap: Map<string, string[]>): string[] | null {
-  const visiting = new Set<string>()
-  const visited = new Set<string>()
-  const stack: string[] = []
-
-  const visit = (goalId: string): string[] | null => {
-    if (visiting.has(goalId)) {
-      const cycleStart = stack.indexOf(goalId)
-      return stack.slice(Math.max(0, cycleStart)).concat(goalId)
-    }
-    if (visited.has(goalId)) return null
-
-    visiting.add(goalId)
-    stack.push(goalId)
-    for (const nextId of edgeMap.get(goalId) ?? []) {
-      const cycle = visit(nextId)
-      if (cycle) return cycle
-    }
-    stack.pop()
-    visiting.delete(goalId)
-    visited.add(goalId)
-    return null
-  }
-
-  for (const goalId of edgeMap.keys()) {
-    const cycle = visit(goalId)
-    if (cycle) return cycle
-  }
-  return null
-}
 
 function formatGoal(goal: LearningGoal | undefined, goalId: string): string {
   return goal ? `${goal.title} [${goalId}]` : goalId
@@ -1833,67 +1811,38 @@ function makeRule(
   }
 }
 
-function evaluateGraphIntegrity(landscape: SkillLandscape, globalGoalIds: Set<string>): RuleResult {
-  const errors: string[] = []
-  const goalById = new Map<string, LearningGoal>()
-
-  landscape.goals.forEach((goal) => {
-    if (goalById.has(goal.id)) {
-      errors.push(`Duplicate goal id ${goal.id}`)
-    } else {
-      goalById.set(goal.id, goal)
-    }
-  })
-
-  const requireEdges = new Map<string, string[]>()
-  const containsEdges = new Map<string, string[]>()
-
-  landscape.goals.forEach((goal) => {
-    const localRequires: string[] = []
-    const localContains: string[] = []
-
-    goal.requires?.forEach((rawRef) => {
-      const ref = parseReference(rawRef, landscape.landscapeId)
-      if (ref.goalId === goal.id && ref.landscapeId === landscape.landscapeId) {
-        errors.push(`${formatGoal(goal, goal.id)} requires itself`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && !goalById.has(ref.goalId) && !globalGoalIds.has(ref.goalId)) {
-        errors.push(`${formatGoal(goal, goal.id)} requires missing local goal ${ref.goalId}`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && goalById.has(ref.goalId)) localRequires.push(ref.goalId)
-    })
-
-    goal.contains?.forEach((rawRef) => {
-      const ref = parseReference(rawRef, landscape.landscapeId)
-      if (ref.goalId === goal.id && ref.landscapeId === landscape.landscapeId) {
-        errors.push(`${formatGoal(goal, goal.id)} contains itself`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && !goalById.has(ref.goalId) && !globalGoalIds.has(ref.goalId)) {
-        errors.push(`${formatGoal(goal, goal.id)} contains missing local goal ${ref.goalId}`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && goalById.has(ref.goalId)) localContains.push(ref.goalId)
-    })
-
-    requireEdges.set(goal.id, localRequires)
-    containsEdges.set(goal.id, localContains)
-  })
-
-  const requiresCycle = findCycle(requireEdges)
-  if (requiresCycle) errors.push(`Direct requires cycle: ${requiresCycle.join(' -> ')}`)
-
-  const containsCycle = findCycle(containsEdges)
-  if (containsCycle) errors.push(`Contains cycle: ${containsCycle.join(' -> ')}`)
-
-  return makeRule(
-    'CQR-001',
-    errors.length === 0 ? 'pass' : 'fail',
-    errors.length === 0 ? 'Basic graph integrity checks pass.' : `${errors.length} graph integrity issue(s).`,
-    {
-      goals: landscape.goals.length,
-      localReferenceIssues: errors.length,
-    },
-    errors,
-  )
+export function evaluateGraphIntegrity(
+  landscape: SkillLandscape,
+  catalog: readonly IntegrityLandscape[],
+): RuleResult {
+  // The complete canonical identity universe resolves foreign references. The
+  // checked scope is this whole landscape plus its structural requirements and
+  // containment ancestors, never a learner's current focus or applicability cut.
+  const graphIntegrity = checkSkillGraphIntegrity(catalog, [landscape.landscapeId])
+  const findingCount = graphIntegrity.findings.length
+  const ready = hasCompletePassingSkillGraphIntegrity(graphIntegrity, landscape.landscapeId)
+  const checked = graphIntegrity.checks.filter(({ status }) => status !== 'blocked').length
+  return {
+    ...makeRule(
+      'CQR-001',
+      ready ? 'pass' : 'fail',
+      ready
+        ? `All ${REQUIRED_SKILL_GRAPH_CHECKS.length} strict graph checks pass for ${graphIntegrity.checkedGoalKeys.length} resolved goals.`
+        : `Strict graph integrity is incomplete: ${findingCount} finding(s); ${checked}/${REQUIRED_SKILL_GRAPH_CHECKS.length} checks executed.`,
+      {
+        ...graphIntegrity.metrics,
+        requiredHardChecks: REQUIRED_SKILL_GRAPH_CHECKS.length,
+        executedHardChecks: checked,
+      },
+      graphIntegrity.findings.map((finding) => (
+        `${finding.ruleId} ${finding.code} ${finding.landscapeId}${finding.goalId ? `:${finding.goalId}` : ''}: ${finding.message}`
+        + (finding.witness?.length ? ` Witness: ${finding.witness.join(' -> ')}` : '')
+      )),
+    ),
+    // Persist the actual check manifest, resolved scope and complete findings.
+    // Claimed counts or a legacy CQR-001 pass cannot stand in for this report.
+    graphIntegrity,
+  }
 }
 
 function evaluateTypeConsistency(landscape: SkillLandscape): RuleResult {
@@ -5997,8 +5946,15 @@ function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   return 'M4'
 }
 
-export function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeStatus[]): MaturityLevel {
-  const graphReady = curriculumRules.find((rule) => rule.id === 'CQR-001')?.status === 'pass'
+export function deriveCurriculumMaturity(
+  curriculumRules: RuleResult[],
+  scopes: ScopeStatus[],
+  landscapeId: string,
+): MaturityLevel {
+  const graphRules = curriculumRules.filter((rule) => rule.id === 'CQR-001')
+  const graphReady = graphRules.length === 1
+    && graphRules[0].status === 'pass'
+    && hasCompletePassingSkillGraphIntegrity(graphRules[0].graphIntegrity, landscapeId)
     && curriculumRules.find((rule) => rule.id === 'CQR-002')?.status === 'pass'
   if (!graphReady) return 'M0'
   if (curriculumRules.find((rule) => rule.id === 'CQR-000')?.status !== 'pass') return 'M0'
@@ -6140,7 +6096,9 @@ async function main() {
     file,
     landscape: loadJson<SkillLandscape>(file),
   }))
-  const globalGoalIds = new Set(loadedLandscapes.flatMap(({ landscape }) => landscape.goals.map((goal) => goal.id)))
+  const integrityCatalog: IntegrityLandscape[] = loadedLandscapes.map(({ file, landscape }) => ({
+    landscapeId: landscape.landscapeId, sourceFile: toRepoPath(file), goals: landscape.goals,
+  }))
 
   const curricula = loadedLandscapes
     .map(({ file, landscape }) => {
@@ -6149,7 +6107,7 @@ async function main() {
       const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
       const memoryCardReviewConfigs = memoryCardReviewConfigsByLandscapeId.get(landscape.landscapeId) ?? []
       const curriculumRules: RuleResult[] = [
-        evaluateGraphIntegrity(landscape, globalGoalIds),
+        evaluateGraphIntegrity(landscape, integrityCatalog),
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
@@ -6183,7 +6141,7 @@ async function main() {
         subject: landscape.subject,
         frameworkId: landscape.frameworkId,
         path: toRepoPath(file),
-        maturity: deriveCurriculumMaturity(curriculumRules, scopes),
+        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId),
         humanTrialBlockingFindings: countHumanTrialBlockingFindings(landscape, goalVisualizationQaLedgers),
         goals: landscape.goals.length,
         atomicGoals,

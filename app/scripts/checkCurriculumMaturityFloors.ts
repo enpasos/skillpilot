@@ -1,10 +1,14 @@
 import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { hasCompletePassingSkillGraphIntegrity } from './lib/skillGraphIntegrity'
 
 interface MaturityRule {
   id?: string
   status?: string
   summary?: string
   details?: string[]
+  graphIntegrity?: unknown
 }
 
 interface CurriculumStatus {
@@ -35,18 +39,6 @@ interface FloorPolicy {
   }>
 }
 
-const statusPath = new URL('../../docs/qa-ci/status/curriculum-quality-status.json', import.meta.url)
-const policyPath = new URL('./config/curriculum-maturity-floor-policy.json', import.meta.url)
-const artifact = JSON.parse(readFileSync(statusPath, 'utf8')) as { curricula?: CurriculumStatus[] }
-const policy = JSON.parse(readFileSync(policyPath, 'utf8')) as FloorPolicy
-
-if (policy.schemaVersion !== 1 || !policy.policyId || policy.baselineDate !== '2026-08-20' || !Array.isArray(policy.floors) || policy.floors.length === 0 || !Array.isArray(policy.exceptions) || !Array.isArray(policy.knownPreBaselineRegressions)) {
-  throw new Error('Invalid or empty curriculum maturity-floor policy')
-}
-if (policy.exceptions.length > 0) {
-  throw new Error('Maturity-floor exceptions require the dedicated reviewed exception schema; none is active in policy v1')
-}
-if (!Array.isArray(artifact.curricula)) throw new Error('Curriculum quality status has no curricula array')
 
 const maturityRank = (value: string | undefined, label: string): number => {
   const match = /^M([0-7])$/.exec(value ?? '')
@@ -78,37 +70,72 @@ const diagnosticLines = (curriculum: CurriculumStatus, floorRank: number): strin
   return lines
 }
 
-const seen = new Set<string>()
-const failures: string[] = []
-for (const floor of policy.floors) {
-  if (!floor.landscapeId || !floor.frameworkId || !floor.subject || !floor.minimumMaturity || !floor.reason) {
-    throw new Error(`Malformed maturity floor: ${JSON.stringify(floor)}`)
+export function collectCurriculumMaturityFloorFailures(
+  artifact: { curricula?: CurriculumStatus[] },
+  policy: FloorPolicy,
+): string[] {
+  if (policy.schemaVersion !== 1 || !policy.policyId || policy.baselineDate !== '2026-08-20' || !Array.isArray(policy.floors) || policy.floors.length === 0 || !Array.isArray(policy.exceptions) || !Array.isArray(policy.knownPreBaselineRegressions)) {
+    throw new Error('Invalid or empty curriculum maturity-floor policy')
   }
-  if (seen.has(floor.landscapeId)) throw new Error(`Duplicate maturity floor: ${floor.landscapeId}`)
-  seen.add(floor.landscapeId)
-  const matches = artifact.curricula.filter((entry) => entry.landscapeId === floor.landscapeId)
-  if (matches.length !== 1) {
-    failures.push(`${floor.subject} [${floor.landscapeId}]: expected exactly one status entry, found ${matches.length}`)
-    continue
+  if (policy.exceptions.length > 0) {
+    throw new Error('Maturity-floor exceptions require the dedicated reviewed exception schema; none is active in policy v1')
   }
-  const current = matches[0]
-  if (current.frameworkId !== floor.frameworkId || current.subject !== floor.subject) {
-    failures.push(`${floor.subject} [${floor.landscapeId}]: identity mismatch in generated status`)
-    continue
+  if (!Array.isArray(artifact.curricula)) throw new Error('Curriculum quality status has no curricula array')
+
+  const seen = new Set<string>()
+  const failures: string[] = []
+  for (const floor of policy.floors) {
+    if (!floor.landscapeId || !floor.frameworkId || !floor.subject || !floor.minimumMaturity || !floor.reason) {
+      throw new Error(`Malformed maturity floor: ${JSON.stringify(floor)}`)
+    }
+    if (seen.has(floor.landscapeId)) throw new Error(`Duplicate maturity floor: ${floor.landscapeId}`)
+    seen.add(floor.landscapeId)
+    const matches = artifact.curricula.filter((entry) => entry.landscapeId === floor.landscapeId)
+    if (matches.length !== 1) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: expected exactly one status entry, found ${matches.length}`)
+      continue
+    }
+    const current = matches[0]
+    if (current.frameworkId !== floor.frameworkId || current.subject !== floor.subject) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: identity mismatch in generated status`)
+      continue
+    }
+    const floorRank = maturityRank(floor.minimumMaturity, `${floor.subject} floor`)
+    const graphRules = (current.rules ?? []).filter((rule) => rule.id === 'CQR-001')
+    if (floorRank > 0 && (graphRules.length !== 1 || graphRules[0].status !== 'pass'
+      || !hasCompletePassingSkillGraphIntegrity(graphRules[0].graphIntegrity, floor.landscapeId))) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: protected maturity has no complete passing strict graph-integrity report`)
+    }
+    if (maturityRank(current.maturity, floor.subject) < floorRank) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: current ${current.maturity} is below protected floor ${floor.minimumMaturity}`)
+      failures.push(...diagnosticLines(current, floorRank))
+    }
   }
-  const floorRank = maturityRank(floor.minimumMaturity, `${floor.subject} floor`)
-  if (maturityRank(current.maturity, floor.subject) < floorRank) {
-    failures.push(`${floor.subject} [${floor.landscapeId}]: current ${current.maturity} is below protected floor ${floor.minimumMaturity}`)
-    failures.push(...diagnosticLines(current, floorRank))
+
+  return failures
+}
+
+export function checkCurriculumMaturityFloors(
+  artifact: { curricula?: CurriculumStatus[] },
+  policy: FloorPolicy,
+): void {
+  const failures = collectCurriculumMaturityFloorFailures(artifact, policy)
+  if (failures.length > 0) {
+    throw new Error([
+      `Curriculum maturity regression detected by ${policy.policyId}.`,
+      ...failures,
+      'Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.',
+    ].join('\n'))
   }
 }
 
-if (failures.length > 0) {
-  throw new Error([
-    `Curriculum maturity regression detected by ${policy.policyId}.`,
-    ...failures,
-    'Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.',
-  ].join('\n'))
+function main(): void {
+  const statusPath = new URL('../../docs/qa-ci/status/curriculum-quality-status.json', import.meta.url)
+  const policyPath = new URL('./config/curriculum-maturity-floor-policy.json', import.meta.url)
+  const artifact = JSON.parse(readFileSync(statusPath, 'utf8')) as { curricula?: CurriculumStatus[] }
+  const policy = JSON.parse(readFileSync(policyPath, 'utf8')) as FloorPolicy
+  checkCurriculumMaturityFloors(artifact, policy)
+  console.log(`curriculum maturity floors passed: ${policy.floors!.length} protected curricula`)
 }
 
-console.log(`curriculum maturity floors passed: ${policy.floors.length} protected curricula`)
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main()
