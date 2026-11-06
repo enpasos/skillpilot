@@ -128,6 +128,7 @@ export function checkSkillGraphIntegrity(
   const blocked = new Set<IntegrityRuleId>()
   const definitions = new Map<string, Node[]>()
   const byId = new Map<string, Set<string>>()
+  const byUuidValue = new Map<string, Set<string>>()
   const nodes = new Map<string, Node>()
   const deferred = new Map<string, IntegrityFinding[]>()
   const ownerIssues = new Map<string, IntegrityFinding[]>()
@@ -169,6 +170,10 @@ export function checkSkillGraphIntegrity(
       candidates.push(node)
       definitions.set(key, candidates)
       byId.set(goal.id, new Set([...(byId.get(goal.id) ?? []), key]))
+      if (UUID.test(goal.id)) {
+        const value = goal.id.toLowerCase()
+        byUuidValue.set(value, new Set([...(byUuidValue.get(value) ?? []), key]))
+      }
     }
   }
   // A duplicated logical definition has no arbitrarily selected topology.
@@ -264,6 +269,14 @@ export function checkSkillGraphIntegrity(
     const node = nodes.get(key)
     if (node && (byId.get(node.goalId)?.size ?? 0) > 1) findings.push(add('G01b', 'DUPLICATE_GLOBAL_GOAL_ID', node,
       `Goal id ${node.goalId} has multiple canonical landscape owners.`, { witness: sorted(byId.get(node.goalId)!) }))
+    if (node && UUID.test(node.goalId)) {
+      const aliases = byUuidValue.get(node.goalId.toLowerCase())!
+      if (new Set([...aliases].map((key) => definitions.get(key)![0].goalId)).size > 1) {
+        findings.push(add('G01b', 'DUPLICATE_UUID_VALUE', node,
+          `UUID value ${node.goalId.toLowerCase()} has multiple hexadecimal case representations.`,
+          { witness: sorted(aliases) }))
+      }
+    }
   }
   if (!roots.length || !selected.size) findings.push(add('G05', 'EMPTY_CHECKED_SCOPE', undefined,
     'Integrity requires a nonempty declared root scope and actual checked goals.'))

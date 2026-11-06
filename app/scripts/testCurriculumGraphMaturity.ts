@@ -93,6 +93,7 @@ function rejectsActualGraph(
 
 rejectsActualGraph('Non-UUID IDs cannot retain M7', landscape([goal('legacy-label')]), 'G01a')
 rejectsActualGraph('Duplicate logical definitions cannot retain M7', landscape([goal(A), goal(A)]), 'G01b')
+rejectsActualGraph('UUID case aliases cannot retain M7', landscape([goal(A), goal(A.toUpperCase())]), 'G01b')
 rejectsActualGraph('Non-positive weight cannot retain M7', landscape([{ ...goal(A), weight: 0 }]), 'G02')
 rejectsActualGraph('Missing prerequisite cannot retain M7', landscape([goal(A, [MISSING])]), 'G05')
 rejectsActualGraph('Empty canonical scope cannot retain M7', landscape([]), 'G05')

@@ -106,6 +106,15 @@ const localBeforeForeign = checkSkillGraphIntegrity([
 ], [A])
 assert.equal(status(localBeforeForeign, 'G05'), 'pass', 'Local resolution precedes global fallback.')
 assert.equal(status(localBeforeForeign, 'G01b'), 'fail', 'Qualification does not legalize duplicate canonical IDs.')
+assertCompletePass(one([{ id: C.toUpperCase(), weight: 1 }]))
+for (const report of [
+  one([{ id: C, weight: 1 }, { id: C.toUpperCase(), weight: 1 }]),
+  checkSkillGraphIntegrity([
+    landscape([{ id: C, weight: 1 }]), landscape([{ id: C.toUpperCase(), weight: 1 }], B),
+  ], [A]),
+]) {
+  assert.equal(status(report, 'G01b'), 'fail', 'UUID values remain identical across hexadecimal case variants.')
+}
 const duplicateDefinition = one([goal(1), goal(1, { requires: [id(2)] }), goal(2)])
 assert.ok(codes(duplicateDefinition).includes('DUPLICATE_LOGICAL_GOAL'))
 assert.equal(status(duplicateDefinition, 'G06'), 'blocked', 'No first-file or union topology is silently selected.')
