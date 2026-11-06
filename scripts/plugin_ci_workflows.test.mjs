@@ -10,6 +10,18 @@ const ci = readWorkflow('ci.yml')
 const marketplace = readWorkflow('claude-marketplace.yml')
 const dialogs = readWorkflow('openai-dialog-regression.yml')
 
+test('general graph reference CLI negatives run before the production graph gate', () => {
+  const fixtures = ci.indexOf('      - name: Test general graph reference resolution\n')
+  const actual = ci.indexOf('      - name: Validate Graph\n')
+  assert.ok(fixtures >= 0 && actual > fixtures)
+  const step = ci.slice(fixtures, actual)
+  assert.match(step, /run: npm run test:general-graph-references/u)
+  assert.doesNotMatch(step, /continue-on-error|\|\| true|--warn|--baseline/u)
+  const packageJson = JSON.parse(readFileSync(new URL('../app/package.json', import.meta.url), 'utf8'))
+  assert.equal(packageJson.scripts['test:general-graph-references'],
+    'tsx --test scripts/testGeneralGraphReferenceCli.ts')
+})
+
 test('UUID CLI negative fixtures run before the hard full-curriculum UUID gate', () => {
   const fixtures = ci.indexOf('      - name: Test Curriculum Goal UUID CLI\n')
   const actual = ci.indexOf('      - name: Validate Curriculum Goal IDs (UUIDs)\n')

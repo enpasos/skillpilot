@@ -523,6 +523,8 @@ jobs:
         with:
           name: goal-book-publication-${{ github.sha }}
           path: app/public/lernzielbuch/
+      - name: Test general graph reference resolution
+        run: npm run test:general-graph-references
       - name: Validate Graph
         run: npm run validate:graph
       - name: Test exam Markdown conventions

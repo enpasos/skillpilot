@@ -321,44 +321,23 @@ if (existsSync(compatibilityArchiveRegistryPath)) {
   }
 }
 
-const globalGoalMap = new Map<string, { goal: UiGoal; landscapeId: string; sourceFile: string }>()
-const guidMap = new Map<string, string[]>()
-const goalIdToLandscapeId = new Map<string, string>()
-const ambiguousGoalIds = new Set<string>()
+// Identity existence only: translations share an owner without merging their
+// separately authored graph definitions or selecting a foreign topology.
+const goalOwnersByIdentity = new Map<string, Set<string>>()
 const shortKeyOwnersByLandscape = new Map<string, Map<string, Set<string>>>()
+const UUID_GOAL_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu
+
+function goalIdentity(id: string): string {
+  // Legacy symbolic IDs remain exact diagnostic identities until migration.
+  return typeof id === 'string' && id.length === 36 && UUID_GOAL_ID.test(id) ? id.toLowerCase() : id
+}
 
 for (const landscape of parsedLandscapes) {
   for (const goal of landscape.goals) {
-    const key = `${landscape.landscapeId}:${goal.id}`
-    if (globalGoalMap.has(key)) {
-      const original = globalGoalMap.get(key)!
-      // Allow duplicates if they belong to the same landscape ID (e.g. multi-file translations like .en.json and .de.json)
-      if (original.landscapeId === landscape.landscapeId) {
-        // Just verify consistency? Or just skip. For now, valid.
-      } else {
-        issues.push({
-          level: 'error',
-          message: `Duplicate goal id ${key} across landscapes. Found in ${landscape.file} AND ${original.sourceFile}`,
-        })
-      }
-    } else {
-      globalGoalMap.set(key, { goal, landscapeId: landscape.landscapeId, sourceFile: landscape.file })
-    }
-
-    if (!guidMap.has(goal.id)) {
-      guidMap.set(goal.id, [])
-    }
-    guidMap.get(goal.id)!.push(landscape.landscapeId)
-
-    if (!ambiguousGoalIds.has(goal.id)) {
-      const existing = goalIdToLandscapeId.get(goal.id)
-      if (!existing) {
-        goalIdToLandscapeId.set(goal.id, landscape.landscapeId)
-      } else if (existing !== landscape.landscapeId) {
-        goalIdToLandscapeId.delete(goal.id)
-        ambiguousGoalIds.add(goal.id)
-      }
-    }
+    const identity = goalIdentity(goal.id)
+    const owners = goalOwnersByIdentity.get(identity) ?? new Set<string>()
+    owners.add(landscape.landscapeId)
+    goalOwnersByIdentity.set(identity, owners)
 
     const shortKey = goal.shortKey?.trim()
     if (shortKey) {
@@ -405,12 +384,46 @@ function getLegacyGoalLinkFields(goal: UiGoal): string[] {
   return fields
 }
 
-function parseReference(raw: string, currentLandscape: string) {
-  if (raw.includes(':')) {
-    const [landscape, goalId] = raw.split(':', 2)
-    return { landscapeId: landscape || currentLandscape, goalId }
+interface ReferenceResolution {
+  status: 'resolved' | 'missing' | 'ambiguous' | 'invalid'
+  landscapeId: string
+  goalId: string
+  candidates: string[]
+}
+
+function parseReference(
+  raw: string,
+  currentLandscape: string,
+  localGoalIds?: ReadonlyMap<string, string>,
+): ReferenceResolution {
+  const invalid = (): ReferenceResolution => ({
+    status: 'invalid', landscapeId: currentLandscape, goalId: '', candidates: [],
+  })
+  if (typeof raw !== 'string' || !raw || raw.trim() !== raw) return invalid()
+  const parts = raw.split(':')
+  if (parts.length > 2 || parts.some((part) => !part || part.trim() !== part)) return invalid()
+  const qualified = parts.length === 2
+  const goalId = qualified ? parts[1] : raw
+  const identity = goalIdentity(goalId)
+  const owners = goalOwnersByIdentity.get(identity) ?? new Set<string>()
+  const candidates = [...owners].sort().map((owner) => `${owner}:${identity}`)
+  const requestedOwner = qualified ? parts[0] : currentLandscape
+  // Qualification is an exact namespace assertion, never a suffix fallback.
+  const matches = qualified || owners.has(currentLandscape)
+    ? (owners.has(requestedOwner) ? [requestedOwner] : [])
+    : [...owners]
+  if (matches.length !== 1) return {
+    status: matches.length ? 'ambiguous' : 'missing',
+    landscapeId: requestedOwner, goalId, candidates,
   }
-  return { landscapeId: currentLandscape, goalId: raw }
+  const landscapeId = matches[0]
+  return {
+    status: 'resolved', landscapeId,
+    // Graph checks keep this file's spelling and never import another locale's
+    // goal object, children or requirements from the existence index.
+    goalId: landscapeId === currentLandscape ? localGoalIds?.get(identity) ?? goalId : goalId,
+    candidates,
+  }
 }
 
 function refMatchesGoal(ref: string, goalId: string): boolean {
@@ -584,13 +597,22 @@ function hasPathToTarget(startId: string, targetId: string, edgeMap: Map<string,
 
 function validateLandscape(landscape: ParsedLandscape) {
   const localMap = new Map<string, UiGoal>()
+  const localGoalIds = new Map<string, string>()
+  let hasConflictingLocalDefinitions = false
   landscape.goals.forEach((goal) => {
-    if (localMap.has(goal.id)) {
-      addIssue('error', landscape.landscapeId, `Duplicate goal id ${goal.id}`)
+    const identity = goalIdentity(goal.id)
+    if (localGoalIds.has(identity)) {
+      hasConflictingLocalDefinitions = true
+      addIssue('error', landscape.landscapeId,
+        `[G05] Duplicate logical goal id ${goal.id} in ${landscape.file}; `
+        + `authored definitions ${localGoalIds.get(identity)} and ${goal.id} cannot select one local topology.`)
     } else {
       localMap.set(goal.id, goal)
+      localGoalIds.set(identity, goal.id)
     }
   })
+  if (hasConflictingLocalDefinitions) return
+  const resolveLocalReference = (raw: string) => parseReference(raw, landscape.landscapeId, localGoalIds)
 
   if (landscape.landscapeId === CANONICAL_GYM_MATH_LANDSCAPE_ID) {
     landscape.goals.forEach((goal) => {
@@ -721,31 +743,13 @@ function validateLandscape(landscape: ParsedLandscape) {
     }
 
     const checkReference = (ref: string, relation: 'requires' | 'contains') => {
-      const { landscapeId, goalId } = parseReference(ref, landscape.landscapeId)
-      const key = `${landscapeId}:${goalId}`
-      const exists =
-        landscapeId === landscape.landscapeId
-          ? localMap.has(goalId)
-          : globalGoalMap.has(key)
-
-      if (!exists) {
-        // Fallback: Check if goalId exists globally and is unique
-        let resolved = false
-        if (landscapeId === landscape.landscapeId && !localMap.has(goalId)) {
-          const candidates = guidMap.get(goalId)
-          if (candidates && candidates.length >= 1) {
-            resolved = true
-          }
-        }
-
-        if (!resolved) {
-          addIssue(
-            'error',
-            landscape.landscapeId,
-            `Goal ${goal.id} ${relation} missing id ${ref}`,
-          )
-        }
-      } else if (landscapeId === landscape.landscapeId && goalId === goal.id) {
+      const resolved = resolveLocalReference(ref)
+      if (resolved.status !== 'resolved') {
+        addIssue('error', landscape.landscapeId,
+          `[G05] Goal ${goal.id} ${relation} ${resolved.status} reference ${JSON.stringify(ref)}; `
+          + `logical candidates: ${resolved.candidates.join(', ') || '(none)'}.`)
+      } else if (resolved.landscapeId === landscape.landscapeId
+        && goalIdentity(resolved.goalId) === goalIdentity(goal.id)) {
         addIssue(
           'error',
           landscape.landscapeId,
@@ -766,7 +770,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     const map = new Map<string, string[]>()
     for (const goal of landscape.goals) {
       const targets = selector(goal)
-        .map((ref) => parseReference(ref, landscape.landscapeId))
+        .map(resolveLocalReference)
         .filter((ref) => ref.landscapeId === landscape.landscapeId && localMap.has(ref.goalId))
         .map((ref) => ref.goalId)
       map.set(goal.id, targets)
@@ -845,7 +849,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     const directParents = new Set(parentMap.get(goal.id) ?? [])
     const ancestors = getAncestors(goal.id)
     goal.requires.forEach((rawReq) => {
-      const parsed = parseReference(rawReq, landscape.landscapeId)
+      const parsed = resolveLocalReference(rawReq)
       if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
       const reqId = parsed.goalId
       const reqGoal = localMap.get(reqId)
@@ -877,13 +881,13 @@ function validateLandscape(landscape: ParsedLandscape) {
     landscape.goals.forEach((goal) => {
       const directChildren = new Set(
         (goal.contains ?? [])
-          .map((rawChild) => parseReference(rawChild, landscape.landscapeId))
+          .map(resolveLocalReference)
           .filter((parsed) => parsed.landscapeId === landscape.landscapeId && localMap.has(parsed.goalId))
           .map((parsed) => parsed.goalId),
       )
 
       goal.requires.forEach((rawReq) => {
-        const parsed = parseReference(rawReq, landscape.landscapeId)
+        const parsed = resolveLocalReference(rawReq)
         if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
         if (!directChildren.has(parsed.goalId)) return
 
@@ -930,7 +934,7 @@ function validateLandscape(landscape: ParsedLandscape) {
   const effectiveEdges = new Map<string, string[]>()
   for (const goal of landscape.goals) {
     const edges = computeEffectiveRequires(goal.id)
-      .map((ref) => parseReference(ref, landscape.landscapeId))
+      .map(resolveLocalReference)
       .filter((ref) => ref.landscapeId === landscape.landscapeId && localMap.has(ref.goalId))
       .map((ref) => ref.goalId)
     effectiveEdges.set(goal.id, edges)
@@ -945,7 +949,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     if (goalRank === null) return
 
     computeEffectiveRequires(goal.id).forEach((rawReq) => {
-      const parsed = parseReference(rawReq, landscape.landscapeId)
+      const parsed = resolveLocalReference(rawReq)
       if (parsed.landscapeId !== landscape.landscapeId || !localMap.has(parsed.goalId)) return
       const reqGoal = localMap.get(parsed.goalId)
       if (!reqGoal) return
@@ -958,7 +962,7 @@ function validateLandscape(landscape: ParsedLandscape) {
       reportedPhaseViolations.add(dedupeKey)
 
       const isDirect = goal.requires.some((rawDirectReq) => {
-        const parsedDirect = parseReference(rawDirectReq, landscape.landscapeId)
+        const parsedDirect = resolveLocalReference(rawDirectReq)
         return parsedDirect.landscapeId === landscape.landscapeId && parsedDirect.goalId === reqGoal.id
       })
       const edgeType = isDirect ? 'direct' : 'inherited/effective'
@@ -1069,7 +1073,7 @@ function validateLandscape(landscape: ParsedLandscape) {
     const scopedGoals = landscape.goals.filter(profile.goalSelector)
     scopedGoals.forEach((goal) => {
       goal.requires.forEach((rawReq) => {
-        const parsed = parseReference(rawReq, landscape.landscapeId)
+        const parsed = resolveLocalReference(rawReq)
         if (parsed.landscapeId !== landscape.landscapeId) return
 
         const requiredGoal = localMap.get(parsed.goalId)
@@ -1262,15 +1266,6 @@ const isModuleLandscape = (landscape: ParsedLandscape): boolean => {
   return /\bmodul\b/.test(title) || /\bmodule\b/.test(title)
 }
 
-const resolveLandscapeReference = (ref: string, currentLandscapeId: string) => {
-  if (ref.includes(':')) {
-    const [landscapeId, goalId] = ref.split(':', 2)
-    return { landscapeId: landscapeId || currentLandscapeId, goalId }
-  }
-  const mappedLandscapeId = goalIdToLandscapeId.get(ref)
-  return { landscapeId: mappedLandscapeId ?? currentLandscapeId, goalId: ref }
-}
-
 for (const [landscapeId, landscape] of landscapeById.entries()) {
   const rootGoal = getRootGoal(landscape)
   if (rootGoal?.id) {
@@ -1286,10 +1281,12 @@ for (const [landscapeId, landscape] of landscapeById.entries()) {
   for (const goal of landscape.goals) {
     for (const ref of goal.contains ?? []) {
       if (typeof ref !== 'string') continue
-      const { landscapeId: targetLandscapeId, goalId } = resolveLandscapeReference(ref, landscapeId)
+      const resolved = parseReference(ref, landscapeId)
+      if (resolved.status !== 'resolved') continue
+      const { landscapeId: targetLandscapeId, goalId } = resolved
       if (!targetLandscapeId || targetLandscapeId === landscapeId) continue
       const rootId = rootGoalByLandscape.get(targetLandscapeId)
-      if (rootId && rootId === goalId) {
+      if (rootId && goalIdentity(rootId) === goalIdentity(goalId)) {
         referencedLandscapeIds.add(targetLandscapeId)
       }
     }
