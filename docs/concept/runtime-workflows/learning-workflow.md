@@ -137,12 +137,14 @@ Learning proceeds along the **frontier**: the set of sensible next goals.
   - the goal's direct `requires`
   - inherited `requires` from ancestor clusters via `contains`
 
-**Corrected concept, 4 November 2026; runtime adaptation pending:** `requires`
-alone never writes prerequisite mastery. A valid application-assessment
-contract derives effective mastery M_eff = M ∪ I of ordinary prerequisites.
+**Corrected target concept, 6 November 2026; runtime adaptation pending:**
+`requires` alone never writes prerequisite mastery. Qualified immutable full-goal
+coverage C(q) of explicit passed Q derives effective mastery M_eff = M ∪ I.
+Unreviewed/historically uncertain Q have C(q)=∅. Another open Q cannot withhold
+valid proof; parent/foreign proof is allowed while required own/child Q/K stay explicit.
 Those recognized goals satisfy subsequent requirements and are not reopened by
 focus widening or later assessments. Ordinary B mastered in Q → B → A does
-not by itself recognize A while the relevant local Q remains open. The
+not by itself recognize A or hide the transitive requirement for it. The
 [completion contract](../skill-graph/assessment-gated-completion.md) defines the
 transitive calculation and the normal frontier on M_eff; no graph path alone
 proves task quality.

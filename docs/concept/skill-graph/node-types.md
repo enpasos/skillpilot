@@ -283,10 +283,12 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
   session ownership and the ordinary assessment workflow remain required.
 - **Remediation:** If the user fails, `requires` drives targeted review suggestions.
 
-> **Corrected concept, 4 November 2026; implementation adaptation pending:**
+> **Corrected target concept, 6 November 2026; implementation adaptation pending:**
 > [Assessment-gated completion](assessment-gated-completion.md) recognizes
-> independent application of ordinary competencies through valid local
-> assessment contracts. Effective mastery satisfies subsequent prerequisites
+> each qualified complete ordinary competency immediately through any explicit
+> passed Q, including parent/foreign proof. Another open Q cannot withhold it.
+> Acquisition ownership remains unique; required own/child Q/K stay explicit.
+> Effective mastery satisfies subsequent prerequisites
 > globally. This is not a work waiver. Exams and memory goals themselves stay
 > explicit; there is no extra pass qualification, per-competence learner result
 > or mastery backfill.
@@ -294,7 +296,9 @@ Follow the existing pattern: `field` (local language) and `fieldEn` (English). T
 ### Authoring assessments that support recognition
 
 The normal tasks and rubrics must jointly require independent application of
-every competence recognized by their relevant passed assessment set. A
+every full competence in that Q's qualified immutable C(q). The one maintained
+authoring list is `examData.coveredGoalIds` after qualification; existing release
+status alone is insufficient and uncertain/unreviewed Q have C(q)=∅. A
 `requires` path establishes prerequisite structure, not empirical coverage.
 Naming a competence or supplying the decisive steps is not independent application.
 
@@ -304,11 +308,16 @@ and still pass, correct the task, normal grading rule or learning-unit contract 
 it supports recognition. Different tasks may jointly cover a contract; duplicate
 examination of every competence in every task is not required. These checks
 qualify the authored task and its normal single outcome, not a learner's valid
-pass through a second procedure.
+pass through a second procedure. Also test a valid passing case with secure
+understanding and an incidental calculation error. If core criteria beyond the
+current points rule are needed, revise shared normal grading with adapter tests;
+no hidden coach-only minimum is allowed. Experiment and analysis default to one
+complete multipart Q, not automatic composition of separately passed partial Q.
 
 The stable assessment identity must retain its recognition meaning across
 equivalent task variants. Broader later graph/unit definitions cannot expand
-what an old pass establishes. Legacy tasks need review against this stronger
+what an old pass establishes. Stronger or historically uncertain claims require
+a new Q-ID; old results do not pass it. Legacy tasks need review against this stronger
 requirement; the illustrative points object above supplies no such recognition
 guarantee by itself.
 

@@ -32,26 +32,15 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10,
                      "text.color": INK, "axes.unicode_minus": False})
 
 
-def demand(vertices, targets, protected, edges, mastered, exams=None):
-    """Transitive concept model; mastery never stops path traversal."""
-    assert targets <= vertices and protected <= vertices and mastered <= vertices
-    assert all(a in vertices and b in vertices for a, b in edges)
-    def walk(roots):
-        needed, pending = set(), list(roots)
-        while pending:
-            goal = pending.pop()
-            if goal in needed:
-                continue
-            needed.add(goal)
-            pending.extend(b for a, b in edges if a == goal)
-        return needed
-    if exams is None:
-        exams = protected
-    assert exams <= protected
-    assert targets - protected <= walk(targets & exams), "Target lacks local exam route"
-    needed = walk((targets & protected) - mastered)
-    implicit = targets - mastered - needed - protected
-    return needed, implicit
+def proof(vertices, ordinary, exams, edges, mastered, coverage):
+    """Checked illustrative immutable C(q); prerequisite paths alone prove nothing."""
+    assert mastered <= vertices and ordinary <= vertices and exams <= vertices
+    assert not ordinary & exams and set(coverage) <= exams
+    reach = closure(vertices, edges)
+    for q, covered in coverage.items():
+        assert covered <= ordinary
+        assert all((q, atom) in reach for atom in covered)
+    return set().union(*(coverage.get(q, set()) for q in mastered & exams)) - mastered
 
 
 def closure(vertices, edges):
@@ -129,9 +118,9 @@ def boundary(ax, x, y, width, height, label, *, color=INK, fill="none"):
 def transitive_demand():
     vertices = {"A", "B", "Q"}
     edges = {("Q", "B"), ("B", "A")}
-    assert demand(vertices, vertices, {"Q"}, edges, {"B"}) == (vertices, set())
-    assert demand(vertices, vertices, {"Q"}, edges, {"Q"}) == (set(), {"A", "B"})
-    assert demand(vertices, vertices, {"Q"}, edges | {("Q", "A")}, {"B"}) == (vertices, set())
+    assert proof(vertices, {"A", "B"}, {"Q"}, edges, {"B"}, {"Q": {"A", "B"}}) == set()
+    assert proof(vertices, {"A", "B"}, {"Q"}, edges, {"Q"}, {"Q": {"A", "B"}}) == {"A", "B"}
+    assert proof(vertices, {"A", "B"}, {"Q"}, edges | {("Q", "A")}, {"B"}, {"Q": {"A", "B"}}) == set()
     fig, ax = canvas(4.25)
     for y, title, passed in [(5.65, "Fall A · M = {B}: Prüfung Q noch offen", False),
                               (2.55, "Fall B · M = {Q}: Anwendung durch Q belegt", True)]:
@@ -144,9 +133,9 @@ def transitive_demand():
             "implicit" if passed else "open")
         arrow(ax, (2.95, y), (4.75, y), active=not passed)
         arrow(ax, (7.25, y), (9.05, y), active=not passed)
-        ax.text(6, y-1.0, r"$N_U = \varnothing$;  $I_U = \{A,B\}$" if passed else
-                r"$N_U = \{Q,B,A\}$;  $I_U = \varnothing$", ha="center")
-    ax.text(6, .16, "Unabhängige Ausgangslagen, keine zeitliche Folge. Q → A wäre redundant.",
+        ax.text(6, y-1.0, r"$I(M) = \{A,B\}$;  $\mathcal{C}(Q)=\{A,B\}$" if passed else
+                r"$A$ bleibt Voraussetzung;  $I(M) = \varnothing$", ha="center")
+    ax.text(6, .16, r"Unabhängige Ausgangslagen. $\mathcal{C}(Q)$ ist qualifiziert; Q → A wäre redundant.",
             ha="center", fontsize=8.7)
     return fig
 
@@ -154,7 +143,7 @@ def transitive_demand():
 def local_recognition():
     vertices = {"a", "b", "q1", "q2"}
     edges = {("q1", "b"), ("b", "a"), ("q2", "a")}
-    assert demand(vertices, {"a", "b", "q1"}, {"q1", "q2"}, edges, {"q1"}) == (set(), {"a", "b"})
+    assert proof(vertices, {"a", "b"}, {"q1", "q2"}, edges, {"q1"}, {"q1": {"a", "b"}}) == {"a", "b"}
     fig, ax = canvas(4.6)
     boundary(ax, .3, 1.25, 7.2, 6.0, "Eigener Erwerbsvertrag U1")
     boundary(ax, 8, 1.25, 3.7, 6.0, "Spätere Einheit U2", color=BLUE, fill="#F5FAFD")
@@ -166,16 +155,16 @@ def local_recognition():
     arrow(ax, (4.25, 3.7), (3.65, 3.15))
     arrow(ax, (8.3, 3.4), (3.8, 2.75))
     ax.text(6, 2.0, "A erfüllt Q₂s Voraussetzung", ha="center", fontsize=8.8, color=BLUE)
-    ax.text(6, .78, r"$M = \{q_1\}$;  $I_{U1} = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
-    ax.text(6, .26, "U2, Fokuswechsel oder Planwahl öffnen die belegte Anwendung nicht erneut.",
+    ax.text(6, .78, r"$M = \{q_1\}$;  $I(M) = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
+    ax.text(6, .26, r"$\mathcal{C}(q_1)=\{a,b\}$. U2, Fokuswechsel oder Planwahl nehmen den Nachweis nicht zurück.",
             ha="center", fontsize=9)
     return fig
 
 
 def protected_support():
     vertices = {"q", "a", "k", "h"}
-    assert demand(vertices, {"q", "a", "k"}, {"q", "k", "h"},
-                  {("q", "a"), ("q", "h")}, {"q"}, exams={"q"}) == ({"k"}, {"a"})
+    assert proof(vertices, {"a"}, {"q"}, {("q", "a"), ("q", "h"), ("k", "a")},
+                 {"q"}, {"q": {"a"}}) == {"a"}
     fig, ax = canvas(4.5)
     boundary(ax, .3, 2.0, 7.45, 5.1, "Eigene Erwerbsziele Own(U) = {q, a, k}")
     box(ax, 2.05, 5.6, "q · Prüfung", "Mastery = 1", "explicit")
@@ -184,10 +173,11 @@ def protected_support():
     box(ax, 9.8, 5.6, "h · Gedächtnis", "Mastery = 0", width=2.9, dashed=True)
     arrow(ax, (2.05, 4.95), (2.05, 4.0))
     arrow(ax, (3.3, 5.6), (8.25, 5.6))
+    arrow(ax, (4.7, 3.35), (3.3, 3.35))
     ax.text(9.8, 4.25, "Externe Unterstützung\nkein lokales Target\nkeine Anerkennung",
             ha="center", va="center", fontsize=9, linespacing=1.55)
     ax.text(5.95, 4.65, "k bleibt eine eigene\nAbschlusspflicht", ha="center", fontsize=9)
-    ax.text(6, 1.35, r"$P_U = \{q,k\}$;  $N_U = \{k\}$;  $I_U = \{a\}$", ha="center")
+    ax.text(6, 1.35, r"$\mathcal{C}(q)=\{a\}$;  $I(M)=\{a\}$;  $k,h\notin M_{eff}$", ha="center")
     ax.text(6, .75, "Effektiv beherrscht: 2 von 3 Targets. Explizite Mastery: 1 von 3 Targets.", ha="center", fontsize=10)
     ax.text(6, .22, "h zählt nicht zum Nenner. k braucht seinen eigenen verifizierten Abruf.", ha="center", fontsize=9)
     return fig
@@ -344,13 +334,10 @@ def inherited_redundancy():
 
 def shared_local_assessments():
     vertices = {"Q1", "Q2", "A"}
-    protected = {"Q1", "Q2"}
     edges = {("Q1", "A"), ("Q2", "A")}
-    before = demand(vertices, vertices, protected, edges, {"Q1"})
-    after = demand(vertices, vertices, protected, edges, {"Q1", "Q2"})
-    assert before == ({"Q2", "A"}, set())
-    assert after == (set(), {"A"})
-    assert {"Q1"} | before[1] <= {"Q1", "Q2"} | after[1]
+    coverage = {"Q1": {"A"}, "Q2": {"A"}}
+    assert proof(vertices, {"A"}, {"Q1", "Q2"}, edges, {"Q1"}, coverage) == {"A"}
+    assert proof(vertices, {"A"}, {"Q1", "Q2"}, edges, {"Q1", "Q2"}, coverage) == {"A"}
     fig, ax = canvas(4.6)
     for offset, label, both in [(0, "1 · Nur Q₁ bestanden", False),
                                 (6, "2 · Auch Q₂ bestanden", True)]:
@@ -359,17 +346,16 @@ def shared_local_assessments():
             "explicit", width=2.15)
         box(ax, 4.35+offset, 5.55, "Q₂ · Prüfung", "bestanden (m = 1)" if both else "noch offen",
             "explicit" if both else "open", width=2.15)
-        box(ax, 3+offset, 3.65, "A · Grundlage", "implizit beherrscht" if both else "weiter offen",
-            "implicit" if both else "open", width=2.8)
+        box(ax, 3+offset, 3.65, "A · Grundlage", "implizit beherrscht", "implicit", width=2.8)
         arrow(ax, (1.95+offset, 4.9), (2.6+offset, 4.3), color=BLUE)
         arrow(ax, (4.05+offset, 4.9), (3.4+offset, 4.3), color=BLUE)
         ax.text(3+offset, 2.58, r"$M=\{Q_1,Q_2\}$" if both else r"$M=\{Q_1\}$",
                 ha="center", fontsize=10.5)
-        ax.text(3+offset, 1.98, r"$N_U=\varnothing;\ I_U=\{A\}$" if both else
-                r"$N_U=\{Q_2,A\};\ I_U=\varnothing$", ha="center", fontsize=10.5)
-    ax.text(6, 1.04, r"Derselbe eigene Erwerbsvertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$.",
+        ax.text(3+offset, 1.98, r"$I(M)=\{A\}$; Einheit fertig" if both else
+                r"$I(M)=\{A\}$; $Q_2$ bleibt offen", ha="center", fontsize=10.5)
+    ax.text(6, 1.04, r"Derselbe Vertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $\mathcal{C}(Q_1)=\mathcal{C}(Q_2)=\{A\}$.",
             ha="center", fontsize=10)
-    ax.text(6, .49, "Beide Prüfungen benötigen A. Q₁ bleibt bestanden; erst die offene Nachfrage von Q₂ entfällt.",
+    ax.text(6, .49, "Q₁ beweist A vollständig. Offene Q₂ hält diesen globalen Nachweis nicht zurück.",
             ha="center", fontsize=9.1)
     ax.text(6, .03, "Blau durchgezogen: requires · Grün: ausdrücklich bestanden · Hellblau: implizit global beherrscht",
             ha="center", fontsize=8.6)
@@ -381,18 +367,17 @@ def recursive_learning_unit():
     vertices = {"a", "b", "d", "qK", "kK", "qD", "qS"}
     edges = {("qK", "b"), ("b", "a"), ("qD", "d"),
              ("d", "b"), ("qS", "d")}
-    protected = {"qK", "kK", "qD", "qS"}
     exams = {"qK", "qD", "qS"}
+    coverage = {"qK": {"a", "b"}, "qD": {"d"}, "qS": {"a", "b", "d"}}
     own = [{"a", "b", "qK", "kK"}, {"d", "qD"}, {"qS"}]
     def states(mastered):
-        recognized = [demand(vertices, targets, protected, edges, mastered, exams)[1]
-                      for targets in own]
-        effective = mastered | set().union(*recognized)
+        recognized = proof(vertices, {"a", "b", "d"}, exams, edges, mastered, coverage)
+        effective = mastered | recognized
         children = [targets <= effective for targets in own[:2]]
         return recognized, children, own[2] <= effective and all(children)
-    assert states({"qK", "kK", "qD"}) == ([{"a", "b"}, {"d"}, set()], [True, True], False)
-    assert states({"qS"}) == ([set(), set(), set()], [False, False], False)
-    assert states({"qK"}) == ([{"a", "b"}, set(), set()], [False, False], False)
+    assert states({"qK", "kK", "qD"}) == ({"a", "b", "d"}, [True, True], False)
+    assert states({"qS"}) == ({"a", "b", "d"}, [False, False], False)
+    assert states({"qK"}) == ({"a", "b"}, [False, False], False)
     assert states({"qK", "kK", "qD", "qS"})[2]
     fig, ax = canvas(6.1)
     for offset, title, child_done in [(0, "A · Kinder fertig, Synthese offen", True),
@@ -409,22 +394,21 @@ def recursive_learning_unit():
             ax.text(x+offset, 5.82, name, ha="center", weight="bold", fontsize=9.6, zorder=4)
             ax.text(x+offset, 5.25, detail, ha="center", fontsize=8.55,
                     color=GREEN if child_done else MUTED, zorder=4)
-            ax.text(x+offset, 4.75, earned if child_done else "kein Kind-I erzeugt", ha="center",
-                    fontsize=8.4, color=BLUE if child_done else MUTED, zorder=4)
+            ax.text(x+offset, 4.75, earned, ha="center",
+                    fontsize=8.4, color=BLUE, zorder=4)
             ax.text(x+offset, 4.25, "Abschluss: " + ("ja" if child_done else "nein"),
                     ha="center", fontsize=8.7, zorder=4)
             arrow(ax, (3+offset, 6.8), (x+offset, 6.3))
         ax.text(3+offset, 3.35, r"$M=\{q_K,k_K,q_D\}$" if child_done else r"$M=\{q_S\}$",
                 ha="center", fontsize=10)
-        ax.text(3+offset, 2.77, r"$I_K\cup I_D=\{a,b,d\};\ I_S=\varnothing$" if child_done else
-                r"$I_K=I_D=I_S=\varnothing$", ha="center", fontsize=9.8)
+        ax.text(3+offset, 2.77, r"$I(M)=\{a,b,d\}$", ha="center", fontsize=9.8)
     ax.text(6, 1.68, "Eigene Erwerbsziele: Kinematik {a,b,qₖ,kₖ} · Dynamik {d,qᴅ} · Mechanik {qₛ}",
             ha="center", fontsize=8.8)
     ax.text(6, 1.14, "Fachliches requires: qₛ → d → b → a; qᴅ → d; qₖ → b. kₖ ist unabhängig.",
             ha="center", fontsize=8.8, color=BLUE)
     ax.text(6, .6, "Graue Pfeile: Pflichtkinder · Abschluss wird abgeleitet; gespeichert bleiben nur atomare Ergebnisse.",
             ha="center", fontsize=8.4)
-    ax.text(6, .12, "Kein Eltern-I über Kindziele. Die Einheitshierarchie ist keine zusätzliche Mastery-Ebene.",
+    ax.text(6, .12, r"Qualifiziert: $\mathcal{C}(q_K)=\{a,b\}$, $\mathcal{C}(q_D)=\{d\}$, $\mathcal{C}(q_S)=\{a,b,d\}$. Keine impliziten Q/K.",
             ha="center", fontsize=8.5)
     return fig
 
@@ -471,7 +455,7 @@ def main():
                 if os.path.exists(temporary):
                     os.unlink(temporary)
         print(name, hashlib.sha256(data).hexdigest())
-    print("PASS: ten exact PNG illustrations; normalization, minimality, own-only recognition, recursive completion and counting verified.")
+    print("PASS: ten exact PNG illustrations; normalization, minimality, qualified global proof, recursive completion and counting verified.")
 
 
 if __name__ == "__main__":

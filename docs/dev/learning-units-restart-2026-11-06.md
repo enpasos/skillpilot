@@ -1,5 +1,10 @@
 # Lerneinheiten: gesicherter Neustart vom 6. November 2026
 
+> Historischer Neustart- und Sicherungsstand. Der anschließend beauftragte
+> [Mathematik-/Physikplan](mathematics-physics-learning-units-plan.md) löst die
+> unten beschriebene Wartephase ab. Das neue Goal ist aktiv; die abgebrochene
+> alte Zerlegung bleibt als Archiv erhalten und wird nicht fortgesetzt.
+
 Der bisherige Einheitenzuschnitt wurde abgebrochen. Die nächste Arbeit beginnt
 auf einem frischen `origin/main` mit fachlichen Entwürfen und deren Prüfung.
 Die alte Umsetzung bleibt als Bausteinbestand erhalten. Sie ist keine Vorgabe
@@ -29,9 +34,7 @@ und Prüfsummen der kopierten Dateien. Umfangreiche ursprüngliche temporäre
 Bestände bleiben am Originalort erhalten; es wurde keine Bereinigung ausgeführt.
 Die Zusatzsicherung ist kein vollständiges Datenträger-Backup.
 
-Das zuvor bereitgestellte Metzler-PDF war am ursprünglichen Pfad bereits nicht
-mehr vorhanden. Erhaltene Textextraktion, Seitenabbildung und Auswertung sind
-gesichert; sie ersetzen die Originaldatei nicht.
+ 
 
 ## 2. Erster neuer PR: fachliche Grundlage
 

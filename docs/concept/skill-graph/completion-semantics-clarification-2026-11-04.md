@@ -1,5 +1,17 @@
 # Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung
 
+> **Historischer Beschluss, seit 6. November 2026 teilweise abgelöst.** Der
+> folgende Text dokumentiert die Entscheidung vom 4. November unverändert als
+> damaligen Stand. Seine lokale Restbedarfsregel, das Zurückhalten durch weitere
+> offene eigene Prüfungen und die Beschränkung des Nachweisortes auf den
+> Erwerbsowner sind keine aktuellen Sollregeln mehr. Maßgeblich ist die
+> [aktuelle Abschlusssemantik](assessment-gated-completion.md): Jede explizit
+> bestandene Q erkennt ihre vollständig qualifizierten gewöhnlichen Ziele
+> sofort global an; erforderliche eigene und Kinder-Q/K bleiben explizit offen.
+> Der [neue Mathematik-/Physikplan](../../dev/mathematics-physics-learning-units-plan.md)
+> ersetzt auch die damalige Arbeitsreihenfolge. Runtime und Migration sind
+> weiterhin nicht als angepasst bestätigt.
+
 **4. November 2026.** Dieser Beschluss ersetzt die bisherige Deutung impliziter
 Erledigung als bloßen Entfall von Vorbereitung. Er gilt für die Konzepte;
 die bisherige Implementierung ist noch nicht entsprechend korrigiert.

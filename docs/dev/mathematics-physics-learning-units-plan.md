@@ -6,6 +6,11 @@ mit Sol 6.1 Ultra umsetzen. Die frühere Zerlegung bleibt abgebrochen.
 Der neue Auftrag beendet die im Neustartpapier beschriebene Wartephase für
 die neue Planung; er reaktiviert keinen alten Umsetzungsauftrag.
 
+> **Eingefroren am 6. November 2026.** Der Product Owner hat das Einheiten-Goal
+> pausiert. Zuerst wird der eigenständige
+> [CI-Vertragsaudit](ci-contract-audit-handoff-2026-11-06.md) erledigt.
+> Die folgenden Meilensteine sind nicht freigegeben zur weiteren Ausführung.
+
 **Ziel:** Mathematik und danach Physik in fachlich zusammenhängenden
 Lerneinheiten anbieten. Einheiten erklären ihren Nutzen und sichern durch
 geeignete Prüfungen selbstständige Anwendung. Bereits nachgewiesene gewöhnliche
@@ -308,7 +313,7 @@ Mathematik und Physik bleiben getrennt akzeptierbar und veröffentlichbar.
 
 | Schritt | Konkretes Ergebnis | Abnahme vor dem nächsten Ausbau |
 | --- | --- | --- |
-| **S0 – eindeutiger Vertrag und Bestandsverzeichnis** | Anerkennungsregel aus Abschnitt 2 konsistent in Konzepten, AGENTS, mathematischer Referenz und LaTeX/PDF; reproduzierbares Inventar aller angebotenen Varianten, Karten und bisherigen Prüfungsverträge. | Astra prüft Gegenbeispiele und Historie; alle Widersprüche zur lokalen Restbedarfsregel sind ausdrücklich abgelöst. Noch keine geänderte Runtime. |
+| **S0 – eindeutiger Vertrag und Bestandsverzeichnis** | Anerkennungsregel aus Abschnitt 2 konsistent in Konzepten, AGENTS, mathematischer Referenz und LaTeX/PDF; reproduzierbares Inventar aller angebotenen Varianten, Karten und bisherigen Prüfungsverträge; Regel-zu-CI-Audit aller verbindlichen deterministischen Graphregeln. | Astra prüft Gegenbeispiele und Historie; alle Widersprüche zur lokalen Restbedarfsregel sind ausdrücklich abgelöst. Durchgesetzte Regeln, Teilabdeckung und CI-Lücken sind mit echten Aufrufen belegt. Noch keine geänderte Runtime. |
 | **S1 – erste vollständige Mathematikeinheit** | M01 mit echter Zielzuordnung, Motivation, Kartenentscheidung, Aufgaben/Rubrik, sicherer Ergebnisidentität und minimaler gemeinsamer Compiler-/Runtimeanbindung. | Im bestehenden Cockpit und Coach kann man regulär lernen oder die Prüfung direkt versuchen; vor/nach Bestehen sind Anerkennung, offene Prüfungen/Karten, Fortschritt und Periodenzählung nachvollziehbar. |
 | **S2 – Grenzen und Nachnutzung prüfen** | M02 sowie ein vollständiger P13-Ablauf und anschließend P14; unabhängige und spätere Verbraucher, experimentelle Anforderungen und fachübergreifende Mathematik geprüft. | Zweiter Fachkontext nutzt denselben Kern; keine spezielle Wurf- oder M01-Logik, keine Profilpflege. Erst dann wird die breite Datenmigration skaliert. |
 | **M – Mathematik vollständig** | Alle angebotenen Mathematikziele, Prüfungen, Karten und Varianten fachlich bearbeitet; vollständiger Einheitenkatalog mit begründeten Grenzen und geprüften Nachweisen. | Keine unklassifizierten Erwerbsziele, ungelösten notwendigen Karten oder offenen nachweisrelevanten Befunde. Fachtests, Quellen-/Qualitätsgates, Gesamt-CI und veröffentlichbarer Smoke-Test bestanden. Physikrest blockiert diesen Abschluss nicht. |
@@ -410,6 +415,41 @@ Nachweis, dass die Inhalte bisher nie geprüft wurden.
   Basis vergleichen. Auch Kaltstart, Fokuswechsel und Cache-Invalidierung
   prüfen. Grenzwerte nach gemessener Ausgangslage festlegen, nicht erfinden.
 
+### Transitive Minimalität als frühes maschinelles Gate
+
+Der vorhandene `validate:graph`-Pfad prüft bisher keine vollständige transitive
+Minimalität der Curricula. Auch die bestehende Mx-Berechnung garantiert diese
+Eigenschaft nicht. Der mathematische Referenztest prüft Beispielgraphen, nicht
+die tatsächlichen Curriculumdateien. Das ist eine ausdrücklich zu schließende
+Testlücke, kein bereits erfülltes Kriterium.
+
+Ein deterministischer Audit wird früh ergänzt: Eine verfasste Kante wird
+probeweise entfernt, die effektive Relation mit Vererbung neu bestimmt und
+geprüft, ob ihre Anforderung weiterhin erreichbar ist. Die Prüfung verwendet
+die normative Graphsemantik einschließlich Cluster- und fachübergreifender
+Referenzen; sie betrachtet keine lernendenabhängige Mastery.
+
+Der vollständige Istbericht weist Fehler als Fehler aus. Für jeden neu
+freizugebenden Mathematik-/Physik-Einheitenvertrag wird sein gesamter fachlicher
+Wirkbereich zum harten Release-Gate: eigene und Kinderziele sowie die komplette
+transitive, geerbte, versteckte und fachübergreifende Voraussetzungskette.
+Ein Altfehler darin blockiert die Freigabe, bis er fachlich korrigiert wurde.
+Nur geänderte Zeilen zu prüfen genügt nicht.
+
+Beim vollständigen Fachmeilenstein muss der gesamte betreffende kanonische
+und angebotene Umfang einschließlich seiner Stützanforderungen dieses Gate
+bestehen. Andere Altbestände bleiben als noch nicht freigegeben sichtbar;
+eine Baseline oder Warnungsfreigabe macht sie nicht minimal. Frühere M7-Nachweise
+behalten ihren damaligen Regelstand und werden nicht rückwirkend als geprüfte
+Minimalität bezeichnet. Fachfremde Befunde führen nicht zu automatischen
+fachfremden Kantenkorrekturen.
+
+Der erste [Istbericht und seine Reproduktion](learning-units-inventory/2026-11-06/transitive-minimality.md)
+liegen vor: 923 unerfüllte Bedingungen in Mathematik und 396 in Physik.
+Der Auditor prüft §7.3 nach Kantenentfernung und erneuter Vererbung; seine
+Algorithmustests bestehen, die echte Bestandsvalidierung scheitert korrekt.
+Das ist noch keine Einbindung als hartes Freigabegate in CI.
+
 ## 7. Die notwendigen Gegenbeispiele als Abnahmetests
 
 Gemeinsame kleine Fixtures tragen backendseitige Berechnung und frontendseitige
@@ -470,7 +510,8 @@ sichtbares Ergebnis, Tests und noch offene Punkte. Bei geänderter Main-Basis
 werden betroffene Befunde neu validiert. Keine mehrtägige ungesicherte
 Sammeländerung und keine Neuaufteilung des Gesamtfachs während eines Reviews.
 
-Das neue Goal wurde nach Abschluss des Planreviews angelegt und ist aktiv. Es bleibt bis
+Das neue Goal wurde nach Abschluss des Planreviews angelegt und ist inzwischen
+auf ausdrücklichen Wunsch pausiert. Es ist nicht erfüllt; bei späterer Fortsetzung bleibt es bis
 zur vollständigen Mathematik- und Physikabnahme aktiv; ein fertiger Plan oder
 erster Beispielablauf allein erfüllt es nicht. Sein Status wird über die
 Meilensteine und tatsächlich abgenommenen Themen geführt.

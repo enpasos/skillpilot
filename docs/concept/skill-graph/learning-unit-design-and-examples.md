@@ -1,8 +1,9 @@
 # Lerneinheiten sinnvoll abgrenzen und prüfen
 
 Dieses Dokument konkretisiert den didaktischen Zweck der
-[Lerneinheiten](learning-units.md). Es beschreibt die Gestaltung vor einer
-erneuten Umsetzungsplanung. Die Beispiele sind **Konzeptkandidaten**, keine
+[Lerneinheiten](learning-units.md). Es erläutert die Gestaltungskriterien für
+den [neuen Mathematik-/Physikplan](../../dev/mathematics-physics-learning-units-plan.md).
+Die Beispiele sind **Konzeptkandidaten**, keine
 begutachteten Prüfungsverträge und keine fertige Gliederung offizieller Lehrpläne.
 Sie ändern weder Lernziele noch Graphkanten, Prüfungen oder Zugriffsregeln.
 
@@ -212,7 +213,7 @@ Damit sind drei Zuschnitte zu vergleichen:
 | Kandidat | Begründung und Prüfpunkt |
 | --- | --- |
 | Eigenständige Einheit zur eindimensionalen Bewegung | Trägt das erste neue Modell bereits einen brauchbaren eigenen Abschluss? |
-| Größere Kinematikeinheit mit Lernabschnitten und Zwischenprüfung | Ergibt erst die Übertragung auf Komponenten das gewünschte Gesamtverständnis, ohne frühe Lücken zu verdecken? |
+| Größere Kinematikeinheit mit Lernabschnitten und mehreren Prüfungen | Ergibt erst die Übertragung auf Komponenten das gewünschte Gesamtverständnis, ohne frühe Lücken zu verdecken? |
 | Kinematik mit echten Untereinheiten und eigener Synthese | Haben die Untereinheiten jeweils eigenständige Lernversprechen und Abschlüsse, die diese zusätzliche Hierarchie rechtfertigen? |
 
 Die Lernabschnitte der zweiten Variante sind noch keine Untereinheiten. Bei der
@@ -223,18 +224,17 @@ veränderliche Beschleunigung dazugehören, ist am konkreten Kurs und dessen
 Lernzielen zu entscheiden. Die beiden Dimensionen allein belegen keine
 Vollständigkeit des Kinematikthemas.
 
-**Noch abzugleichende Anerkennungsfrage:** Die größere Einheit verändert
-möglicherweise mehr als ihre Überschrift. Benötigt ihre spätere Prüfung
-dieselben eindimensionalen Ziele transitiv, bleiben diese nach dem bisherigen
-lokalen Anerkennungsvertrag bis zu diesem Nachweis benötigt. Eine bestandene
-Zwischenprüfung erzeugt dann nicht automatisch bereits deren globale implizite
-Anerkennung. Der didaktisch verlangte Übergang, der Zwischenprüfungsnachweis und
-die Anerkennung einzelner Ziele müssen vor der Umsetzung zusammenpassen.
-Insbesondere darf nicht ohne Prüfung behauptet werden, die bisherige atomare
-Frontier gebe damit bereits den nächsten Abschnitt frei. Bereits gültiges
-explizites oder implizites Können bleibt erhalten. Der fachliche Zuschnitt soll
-nicht allein deshalb verkleinert werden, damit eine bisherige Berechnungsregel
-bequemer passt; eine gegebenenfalls nötige Konzeptkorrektur ist offen zu benennen.
+**Anerkennung nach der Konzeptkorrektur vom 6. November:** Eine von mehreren
+Prüfungen einer Einheit kann die von ihr vollständig nachgewiesenen gewöhnlichen
+Kompetenzen sofort global anerkennen. Eine spätere offene Prüfung hält diesen
+gültigen Nachweis nicht zurück. Die größere Einheit ist dennoch erst nach
+allen erforderlichen eigenen Prüfungen, Karten und Kinderabschlüssen fertig.
+Es entsteht kein neuer Prüfungstyp. Erwerbszuständigkeit, Nachweis und
+Einheitsabschluss bleiben unterscheidbar; Aufgaben und normale Bewertung
+müssen die behauptete vollständige Anwendung wirklich tragen. Der fachliche
+Zuschnitt muss nicht verkleinert werden, um eine Restbedarfsregel zu bedienen.
+Das ist der neue [Sollvertrag](assessment-gated-completion.md), keine Aussage
+über die bereits implementierte Runtime oder aktuelle Prüfungsqualität.
 
 ### Was Lehrbuchstrukturen dazu zeigen
 
@@ -264,12 +264,10 @@ einen begründbaren Kandidaten, aber noch keinen Beleg für einen vollständigen
 SkillPilot-Anwendungsnachweis. Die genannten Quellen belegen weder die
 Wirksamkeit unseres Zuschnitts noch einen aktuellen verbindlichen Lehrplan.
 
-#### Metzler: verschiedene Ordnungsprinzipien über das ganze Buch
+####  verschiedene Ordnungsprinzipien  
 
 Zusätzlich liegt der vom Product Owner bereitgestellte Auszug
-`IHVZ_Metzler_Physik_5.Auflage.pdf` vor: **Joachim Krause und Joachim Grehn
-(Hrsg.), Metzler Physik, 5. Auflage, Westermann, 2020,
-ISBN 978-3-14-100100-6**, Vorwort S. 3 und Inhaltsverzeichnis S. 4–9.
+ 
 Die folgenden Beobachtungen beziehen sich auf diesen Auszug, nicht auf den
 vollständigen Lehrtext oder auf die Qualität seiner Aufgaben und Bewertungen.
 Das Vorwort erlaubt ausdrücklich andere Unterrichtsreihenfolgen und eine

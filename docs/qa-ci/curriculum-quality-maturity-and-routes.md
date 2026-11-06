@@ -3,16 +3,27 @@
 Diese Seite beschreibt die Bedeutung der Curriculum-Quality-Anzeige im Workbench-Dashboard `/quality-dashboard`.
 Sie ist die fachliche Lesart der generierten Statusdateien unter `docs/qa-ci/status/`.
 
-**Konzeptkorrektur vom 4. November 2026:** Eine bisherige M7-Freigabe oder
-bestandene Routenprüfung belegt nicht automatisch, dass die Prüfungsaufgaben
-die nun geforderte selbständige Anwendung aller implizit anerkannten
-Kompetenzen absichern. Diese zusätzliche Autorenpflicht verlangt ein
-unabhängiges Aufgaben-/Rubrikreview nach dem
-[korrigierten Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md).
-Transitive Minimalität und gültige lokale Abschlussverträge bleiben
-Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Bestehende
-Statusdateien und historische Reviewnachweise werden hier nicht neu bewertet
-oder umgeschrieben; die konkrete neue Prüfung wird erst geplant.
+**Aktueller Sollvertrag vom 6. November 2026; Umsetzung noch offen:** Jede
+explizit bestandene Q erkennt ihre vollständig qualifizierte unveränderliche
+atomare Abdeckung C(q) sofort global an. Eine weitere offene Q hält diesen
+Nachweis nicht zurück. Erwerbszuständigkeit und Nachweisort sind getrennt;
+erforderliche eigene und Kinder-Q/K behalten ihr explizites Ergebnis. Für jede
+zulässige erforderliche eigene Prüfungsvariante muss die gesamte eigene
+gewöhnliche Kompetenzmenge abgedeckt sein. Ungeprüfte oder historisch unklare Q
+haben C(q)=∅; bisheriger Released-/M7-Status qualifiziert sie nicht automatisch.
+Das [Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md)
+verlangt dafür ein unabhängiges Aufgaben-/Rubrikreview der normalen Bewertung.
+
+**Bekannte CI-Lücke:** Transitive Minimalität ist verbindlich, wird aber weder
+vom heutigen allgemeinen Graphvalidator noch durch die aktuelle CQR-/M0–M7-
+Berechnung als vollständiges Curriculum-Gate abgesichert. Zyklenfreiheit und
+Routenabdeckung sind andere Eigenschaften. Ein grüner bestehender Status belegt
+deshalb weder Minimalität noch den neuen qualifizierten Anwendungsnachweis.
+Der [neue Umsetzungsplan](../dev/mathematics-physics-learning-units-plan.md)
+verlangt ein frühes verpflichtendes automatisches Strukturgate; dessen
+[Prüfvertrag und offene Einführung](graph-validation-rules.md#required-next-structural-gate-transitive-minimality-not-implemented)
+sind getrennt dokumentiert. Diese Dokumentänderung implementiert das Gate
+nicht und bewertet bestehende Statusdateien oder historische Reviews nicht neu.
 
 Normative Implementierung:
 
@@ -271,6 +282,11 @@ Es bedeutet:
 
 `M7` bedeutet darueber hinaus, dass die vertiefte Curriculum-QS fuer jedes aktuelle `curricularAtomic`-Ziel abgeschlossen ist: Beschreibungsreviews (D), positive Verstaendnisnachweise (P), Atomizitaet (A), Memory (M) und Visualisierungen (V) sind gleichzeitig aktuell und gueltig. Der zentrale Fuenf-Gate-Bericht ist die einzige Berechnungsquelle. M7 erteilt keine menschliche Freigabe und bestaetigt keine menschliche Erprobung; diese wird getrennt ausgewiesen. Historische Bild-M7-Nachweise behalten ihre damalige Bedeutung und werden nicht als aktueller M7-Stand uebernommen.
 
+Diese bestehenden Reifegrade enthalten derzeit kein vollständiges Gate für
+transitive Minimalität und keine automatische Freigabe des neuen C(q)-Vertrags.
+Die zusätzliche Sollanforderung ändert keine berechneten Reifegrade, solange
+Validator, Regelzuordnung und Rollout nicht tatsächlich umgesetzt sind.
+
 `M5` ist damit eine interne Runtime- und Modellierungsreife. Es bedeutet nicht automatisch, dass ein veroeffentlichtes Runtime-ZIP alle Source-Extraction-Evidenz so beilegt, dass ein externer Pruefer jede Mapping-Entscheidung ohne weitere Artefakte inhaltlich nachvollziehen kann. Fuer diese externe Provenienzpruefung gibt es ein getrenntes Provenance-Audit-Artefakt, das Source-Goal-IDs auf konkrete Source-Texte, Locator, offizielle URLs und kanonische Ziel-IDs abbildet.
 
 ## CQR-Regeln im Detail
@@ -338,6 +354,13 @@ Geprueft wird:
 - ein Ziel referenziert sich nicht selbst,
 - direkte `requires` bilden keinen Zyklus,
 - direkte `contains` bilden keinen Zyklus.
+
+Die derzeitige `CQR-001` prüft damit noch keine allgemeine transitive
+Minimalität. Dafür muss zusätzlich untersucht werden, ob nach Entfernen einer
+authored Kante die gleiche atomare Voraussetzung über andere, auch geerbte,
+clusterbezogene, versteckte oder fachübergreifende Pfade erhalten bleibt.
+Mastery und Fokus dürfen diese Strukturprüfung nicht abschneiden. Das ist das
+oben beschriebene geplante Strukturgate, keine schon aktive `CQR-001`-Bedingung.
 
 Metriken:
 

@@ -5,7 +5,11 @@
 > bündelt die akzeptierte rekursive Struktur, die schrittweise Cockpit-Integration
 > und die neue Fachfolge Mathematik → Physik → Chemie → Biologie.
 > Dieses Dokument bleibt mit seinen damaligen Befunden und ID-Listen erhalten;
-> es ist keine konkurrierende Freigabe zur Umsetzung.
+> es ist keine konkurrierende Freigabe zur Umsetzung. Seit 6. November ist auch
+> der verlinkte Nachfolgeplan abgebrochen; aktuell gilt der
+> [neue Mathematik-/Physikplan](mathematics-physics-learning-units-plan.md).
+> Seine globale qualifizierte Prüfungsanerkennung ersetzt die hier beschriebene
+> lokale Restbedarfsregel.
 
 **Stand: 4. November 2026. Historischer Neuplanungsstand.**
 Dieses Dokument plant die Korrektur; es behauptet weder eine bereits korrigierte

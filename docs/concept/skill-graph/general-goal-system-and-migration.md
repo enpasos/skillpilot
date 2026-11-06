@@ -271,8 +271,11 @@ Completion is derived from all required child completions and the unit's own
 target results. A parent may add an integrative assessment; an aggregate needs
 no redundant extra exam. Valid recognition in a completed child remains global
 while the parent assessment is open. A parent's pass never passes protected
-child exams or cards. Local recognition applies only to directly owned ordinary
-targets under that unit's reviewed contract, not to its entire descendant union.
+child exams or cards. Under the 6 November target contract, any explicit passed
+Q may prove an ordinary target through its own qualified immutable C(q), including
+parent/foreign proof. Acquisition ownership stays unique. Every permitted
+required-own-Q alternative must prove the complete own ordinary promise; foreign
+proof does not replace required own Q/K. A descendant union is never blanket proof.
 
 An explicitly declared whole-unit prerequisite means the predecessor's complete
 outcome is required by the course. An individual atomic prerequisite does not
@@ -525,13 +528,16 @@ Progress for:
 - competency axes
 
 should be aggregated from effective goal mastery through placements and references.
-The 4 November 2026 [completion contract](assessment-gated-completion.md)
+The 6 November 2026 [completion contract](assessment-gated-completion.md)
 combines explicit binary results with global recognition through independent
 application. This is a derived result over fixed authoring contracts, not stored
 mastery on a programme, unit or cluster. Later use and scope changes do not
-reopen recognized competencies. Authoritative directly owning unit boundaries are
-needed for recognition; they are not arbitrary display cuts or per-exam waiver
-lists. Their concrete schema and migration belong to later implementation planning.
+reopen recognized competencies. Recognition is the union of qualified fixed
+atomic C(q) for explicit passed Q, not a local remaining-demand calculation.
+`examData.coveredGoalIds` is the one maintained list after qualification;
+unreviewed/historically uncertain Q have C(q)=∅. Ownership governs unit duties,
+not exclusive proof rights. Runtime migration follows the
+[new plan](../../dev/mathematics-physics-learning-units-plan.md).
 
 This keeps the state model simple and avoids duplicated mastery semantics.
 

@@ -30,13 +30,16 @@ Vorhandene Planstrukturen, Lernzustände und Aktualisierungsmechanismen werden w
 
 Das Vorhaben schafft kein neues allgemeines Planungssystem. Es vereinheitlicht die Auswertung vorhandener Lernpläne und ersetzt verteilte Berechnungen durch einen gemeinsamen Backend-Baustein.
 
-**Verbindliche Produktkorrektur vom 4. November 2026:** Das Gesamt-IST zählt
+**Aktueller Sollvertrag vom 6. November 2026:** Das Gesamt-IST zählt
 standardmäßig explizite und implizite Beherrschung. Implizit bedeutet den
 Nachweis selbständiger Anwendung durch fachlich geeignete Abschlussprüfungen;
 es bedeutet nicht bloß entfallene Vorbereitung. Ein gültiger Abschluss gilt
 auch für spätere Voraussetzungen und wird durch neue Verbraucher oder einen
-Planwechsel nicht aufgehoben. Die Anerkennung entsteht in der verbindlichen
-Lerneinheit und wirkt global. Tages- und Wochenkontingente zählen weiterhin
+Planwechsel nicht aufgehoben. Jede explizit bestandene Q erkennt nur ihre
+vollständig qualifizierte unveränderliche Abdeckung C(q) sofort global an;
+weitere offene Q halten diesen Nachweis nicht zurück. Erwerbsowner und Nachweisort
+sind getrennt, erforderliche eigene und Kinder-Q/K bleiben explizit. Für
+ungeprüfte oder historisch unklare Q gilt C(q)=∅. Tages- und Wochenkontingente zählen weiterhin
 nur tatsächliche explizite Abschlussereignisse.
 
 Die Option „Nur explizit erreichte Lernziele zählen“ betrifft allein das
@@ -164,24 +167,29 @@ M_{\mathrm{eff}}=M\cup W,\qquad I=|G\cap M_{\mathrm{eff}}|.
 $$
 
 Mit „Nur explizit erreichte Lernziele zählen“ gilt stattdessen $I=|G\cap M|$.
-W wird aus den festen fachlichen Abschlussverträgen und vorhandenen expliziten
-Prüfungs-/Recall-Ergebnissen rekonstruiert, nicht nur aus aktuell angezeigten
-oder im Personal Curriculum gewählten Lerneinheiten. Die für bestehende Ergebnisse
+W entspricht der globalen Anerkennungsmenge I(M) des Abschlusskonzepts:
+der Vereinigung qualifizierter unveränderlicher C(q) explizit bestandener Q,
+abzüglich M. Recall-Ergebnisse belegen die jeweilige Kartenpflicht, erzeugen
+aber keine gewöhnliche Kompetenz. Die Ableitung ist unabhängig von aktuell
+angezeigten oder im Personal Curriculum gewählten Lerneinheiten. Die für bestehende Ergebnisse
 maßgeblichen Autorenverträge bleiben erhalten. Ein später geänderter Graph
 darf alten Prüfungsergebnissen keine zusätzlichen Kompetenzen zuschreiben.
 
-Die Prüfungen einer Lerneinheit müssen die selbständige Anwendung der anerkannten
-Kompetenzen absichern. Ein bloßes `requires` oder das Fehlen weiterer Verbraucher
-reicht nicht. In der direkt zugeordneten Lerneinheit wird transitiv gerechnet, auch durch gemeisterte
-Zwischenziele hindurch. Offene spätere Prüfungen anderer oder übergeordneter Lerneinheiten verhindern
-weder diese Anerkennung noch ihren globalen Nutzen.
+Jede qualifizierte Q muss die vollständige selbständige Anwendung ihrer C(q)
+absichern. Ihre normale Bewertung liefert das einzige binäre Ergebnis. Ein
+bloßes `requires`, ein leerer Restbedarf oder das Fehlen weiterer Verbraucher
+genügt nicht. Der vollständige atomare Bedarf wird unabhängig vom Lernstand
+transitiv aufgelöst, auch durch gemeisterte Zwischenziele. Ein Pfad ist nur
+Konsistenzbedingung für C(q), kein Nachweis. Weitere offene Q derselben,
+übergeordneter oder anderer Einheiten verhindern gültige Anerkennung nicht.
 
-Beispiel: Q berechtigt als einzige relevante Abschlussprüfung zur Anerkennung
+Beispiel: Q besitzt eine qualifizierte vollständige Abdeckung
 von A und B. Alle drei liegen in G. Mit bestandener Q gilt **I = 3**; mit der
 Zähloption **I = 1**. Nur Q erhält einen expliziten Mastery-Eintrag. Eine spätere
 Prüfung Q2, die A benötigt, trifft auf eine bereits beherrschte Voraussetzung.
-Sie setzt I nicht zurück. Eine gewöhnliche B-Mastery allein genügt dagegen
-nicht zur Anerkennung von A, solange Q innerhalb derselben Lerneinheit offen ist.
+Sie setzt I nicht zurück, auch wenn Q und Q2 derselben Einheit gehören.
+Eine gewöhnliche B-Mastery allein belegt dagegen A nicht und schneidet dessen
+transitiven Bedarf nicht ab. Ein gültiger anderer Q-Nachweis von A zählt sofort.
 
 Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler,
 kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst

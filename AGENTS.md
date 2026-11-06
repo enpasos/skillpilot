@@ -348,9 +348,10 @@ Interpretation rules:
   and persists the published option only after learner acceptance. With
   multiple focus roots, widening replaces only the covered branch and the
   option's complete ordered `goalIds` payload retains every independent root
-- `requires` alone never writes prerequisite mastery. Under the 4 November
-  2026 correction, independent application in valid local assessment contracts
-  derives globally effective mastery of ordinary prerequisites. Required-work
+- `requires` alone never writes prerequisite mastery. Under the 6 November
+  2026 target correction, an explicit passed Q immediately recognizes only its
+  fully qualified immutable ordinary coverage, including parent/foreign proof.
+  Required-work
   recommendations and ordinary prerequisite checks use that effective result;
   focus widening must not reopen a recognized goal. Voluntary repetition remains
   available. Transitive minimality is mandatory; a mastered intermediate goal
@@ -398,16 +399,17 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
 - Derive unit completion from all required child completions and its own
   goal-type results. No extra unit mastery is stored. A parent may add an
   integrative assessment; an aggregate needs no redundant extra examination.
-- Local recognition applies only to directly owned ordinary targets under the
-  reviewed assessment contract. Never turn a parent's descendant union into a
-  second shortcut. Valid direct and implicit competence remains globally effective
-  while a later or parent exam is open. Exams and cards always need their own
-  explicit results; a parent pass never passes them implicitly.
+- Acquisition ownership is unique; valid proof may come from any qualified
+  explicit passed Q, including a parent or foreign unit. No descendant union is
+  blanket proof. For every permitted required-own-Q alternative, the union of
+  qualified C(q) must cover all own ordinary targets. Foreign proof does not
+  replace required own Q/K. Valid competence acts globally immediately while
+  other Q/K remain open; a parent never passes child Q/K implicitly.
 - An explicitly authored whole-unit requirement belongs to the course. An atomic
   prerequisite does not automatically impose the entire foreign unit. Planned
   progression that builds on a unit's promise needs its application evidence;
-  technical access enforcement, including direct assessment attempts, remains
-  undecided. No new hard gate is authorized by this concept alone. Independent
+  this work keeps direct assessment attempts available and introduces no new
+  hard gate. A future access mode needs a separate decision. Independent
   branches may proceed in parallel.
 - Preserve effective atomic acyclicity and transitive minimality. When whole-unit
   sequencing is intended, additionally check the projected block graph at every
@@ -488,9 +490,10 @@ Semantics (the “meaning”) of those fields is:
 
 ## 4. Mastery model
 
-The **4 November 2026 Product Owner decision** supersedes the 31 October
-preparation-discharge model. Transitive minimality remains mandatory. Direct
-ordinary mastery establishes understanding; implicit mastery establishes the
+The **6 November 2026 target decision** supersedes the local remaining-demand
+recognition rule of 4 November and the earlier preparation-discharge model.
+The 4 November record remains dated history. Transitive minimality is mandatory.
+Direct ordinary mastery establishes understanding; implicit mastery establishes the
 competence through independent application in its relevant passed assessments.
 Both mean completed globally: effective mastery satisfies later prerequisites
 and counts toward total progress. Later consumers, focus changes and a different
@@ -499,43 +502,63 @@ Personal Curriculum do not withdraw a valid recognition.
 Store only the existing binary result per atomic goal: `mastery[goalId] ∈ {0,1}`.
 Here `0` means no explicit completion; a goal may nevertheless be effectively
 mastered through derived recognition. Let M be explicit mastery and I the
-recognition derived from fixed authoritative learning-unit contracts; use M_eff = M ∪ I
+recognition from qualified immutable assessment coverage. Let A be the atomic
+universe; O (ordinary subject goals), Q (assessments) and K (memory goals) are
+pairwise disjoint subsets of A. Define `C(q) ⊆ O`,
+`I(M) = (union C(q) for q in M ∩ Q) \ M`; use `M_eff = M ∪ I(M)`
 for competence, ordinary prerequisites and total progress. This is not a second
 stored outcome, partial mastery, a higher numeric tier or a separate pass.
 Assessment and memory goals themselves are never implicit: use their normal
 binary grading or verified-recall results.
 
-Recognition considers every transitive consumer within the authoritative
-directly owning learning unit. Traverse full effective prerequisite paths through mastered
-intermediate goals. In Q → B → A, ordinary B alone mastered does not discharge
-A while the local exam Q is open. Once all relevant local assessment/card
-obligations are met, A and B can be recognized and remain completed for later
-units. A child unit can finish while a later or parent exam is open. A temporary
-focus is not a learning unit. Uncovered ordinary endpoints are authoring
-faults, never zero-work recognition; a failed structural calculation gives no
-new implicit credit. Required card targets remain explicit independently.
+Only explicit passed Q generate recognition; implicit outcomes never feed back
+into proof. If Q1 proves A fully, another open Q2 needing A cannot withhold it,
+even inside the same unit. Parent/foreign Q can prove an ordinary goal without
+passing the owner's required Q/K. Acquisition ownership remains unique and
+recursive unit completion retains every required own and child obligation.
+For each permitted required-own-Q alternative,
+`Own(U) ∩ O ⊆ union C(q), q ∈ RequiredOwnQ(U)` is mandatory static content quality.
+Direct ordinary understanding does not replace those application assessments.
+
+Traverse full effective prerequisites through mastered intermediates. In
+Q → B → A, ordinary B alone does not prove A or hide its transitive demand.
+Qualified `C(q) ⊆ Reach_R⁺({q})` is directed graph consistency, not proof from
+`requires`: missing paths need review, not automatic or redundant direct edges.
+An uncovered ordinary endpoint is an authoring fault, never zero-work credit.
 
 The normal tasks and rubrics MUST require independent application of every
-competence recognized by the relevant assessment set. A missing essential
+competence claimed by each qualified Q. A missing essential
 competence must not be compensated by unrelated points while it is recognized.
 Independent review tests whether passing without a claimed competence is
 possible. A requires path supplies structure, not proof of task quality.
-No extra runtime qualifying evidence, manually curated waiver list, second
-per-part result or mastery backfill is permitted. Unreviewed legacy tasks do
-not automatically satisfy this stronger authoring contract.
+Also test secure understanding with an incidental arithmetic error that can
+pass normally. Any necessary published core criteria belong to shared normal
+grading with adapter tests, never a hidden coach-only pass. No extra qualifying
+learner evidence, waiver/profile list, second per-part result or mastery backfill
+is permitted. Experiment and analysis default to one complete multipart Q;
+isolated incomplete Q do not automatically combine into full proof.
+
+`examData.coveredGoalIds` remains the one maintained coverage list after full
+qualification to fixed atomic meanings. Existing `reviewStatus=released` alone
+does not qualify it. Unreviewed/historically uncertain Q have `C(q)=∅`, preserving
+their explicit results without extra credit. Cluster expansion cannot later
+strengthen an old claim. Orientation is excluded from C(q), with existing marker
+behaviour explicitly checked during migration.
 
 Keep recognition semantics stable for each assessment identity and retain the
 authoritative authorship context needed to reconstruct it outside today's
 selected plan. New graph edges or a broader new unit must not grant additional
-competencies to old exam results. Equivalent task forms preserve that contract;
-a different recognition claim requires a distinct assessment identity or an
-explicitly reviewed migration. Do not invent a learner qualification registry.
+competencies to old exam results. A stronger or historically uncertain claim
+requires a new Q-ID; old results
+never pass it. Equivalent variants may retain the ID only with demonstrated
+meaning equivalence. Do not invent a learner qualification registry.
 
 See `docs/concept/skill-graph/assessment-gated-completion.md` and the decision
 record `docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md`.
-This is the corrected concept, not a claim that current main implements it.
-Replan implementation only after concept reconciliation; review old PR work
-for reuse afterwards. Do not continue the old PR's runtime/curriculum rollout.
+This is the target concept; current runtime still contains older remaining-demand
+behaviour. The authorized new plan is
+`docs/dev/mathematics-physics-learning-units-plan.md`. Its S0 reconciles concepts
+without product migration; old PR work is reviewed for reuse, not resumed as-is.
 
 Cluster progress aggregates effective mastery of unique atomic descendants;
 no cluster or unit completion writes mastery to its children.
@@ -1344,13 +1367,14 @@ unevaluable. The binding calculation, data and presentation contract is
 `docs/concept/didactic/unified-learning-plan-status.md`; the former daily-quota
 contract is superseded.
 
-The **4 November 2026** completion correction also governs plan accounting:
+The **6 November 2026** recognition contract also governs plan accounting:
 first reconstruct global effective mastery M_eff from explicit results and
 fixed valid recognition contracts, independent of today's plan/focus selection.
 Then intersect with the fixed, subject-specific plan baseline G:
 `I = |G ∩ M_eff|`. Each goal counts once. A later open exam does not remove an
-already recognized prerequisite. Local learning-unit recognition and global effect are
-separate from the plan's date mask; never calculate recognition just inside G.
+already recognized prerequisite. Qualified global passed-Q proof is separate
+from the plan's date mask; never calculate recognition just inside G or withhold
+it because another local Q remains open.
 
 The Cockpit preference “Nur explizit erreichte Lernziele zählen” defaults to off
 and limits plan IST to `|G ∩ M|` when selected. It changes counting only, not

@@ -4,9 +4,18 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
+- [CI-Vertragsaudit: Übergabe vom 6. November 2026](ci-contract-audit-handoff-2026-11-06.md)
+  Eigenständiger Auftrag vor weiterer Einheitenarbeit; das Einheiten-Goal
+  und sein Zwischenstand sind pausiert und gesichert.
 - [Neuer Umsetzungsplan: Lerneinheiten für Mathematik und Physik](mathematics-physics-learning-units-plan.md)
   Aktueller Auftrag auf Grundlage des zweiten Entwurfs: Nachweisregel klären,
   erste vollständige Einheiten erproben und beide Fächer getrennt abschließen.
+- [S0: natives Mathematik-/Physikinventar](learning-units-inventory/2026-11-06/README.md)
+  Reproduzierbare echte Angebotsauflösung mit getrennten Ziel-/Voraussetzungsmengen,
+  bestehenden Prüfungsdeklarationen und Deckidentitäten.
+- [S0: transitive Minimalität im tatsächlichen Mathematik-/Physikbestand](learning-units-inventory/2026-11-06/transitive-minimality.md)
+  Deterministischer Audit mit Zeugenpfaden und noch unerfüllten Bedingungen;
+  keine bestandene Curriculumfreigabe.
 - [Lerneinheiten: gesicherter Neustart vom 6. November 2026](learning-units-restart-2026-11-06.md)
   Gesicherte Basis und Archiv der abgebrochenen Arbeit; die dortige Wartephase
   wird durch den neuen Plan abgelöst.

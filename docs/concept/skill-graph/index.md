@@ -15,8 +15,10 @@ learning units. This section explains both the graph and the contracts around it
   frontier, and graph-validity conditions.
 - [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md):
   direct assessment access, transitive minimality and globally effective
-  recognition through independent application in valid local learning units.
-  [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
+  recognition through fully qualified immutable assessment proofs. The
+  6 November target contract supersedes local remaining-demand inference;
+  the [4 November decision](completion-semantics-clarification-2026-11-04.md)
+  remains dated history. Runtime migration is pending.
   [Neuer Umsetzungsplan: Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md):
   the new plan explicitly revisits recognition using the second proposal,
   then propagates that decision consistently before runtime changes.
@@ -71,5 +73,6 @@ are in `latex/`; the existing graph illustrations remain under
 `assets/graph-definition/`.
 
 The [mathematical reference check](latex/check-assessment-model.py) exercises
-full transitive prerequisite demand, local recognition and their boundary cases. It does not implement the
+full transitive prerequisite demand, qualified global proof, recursive unit
+completion and their boundary cases. It does not validate the actual curricula or implement the
 runtime feature or establish assessment quality or learner benefit.

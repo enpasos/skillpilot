@@ -320,19 +320,24 @@ zielgerecht geprüftes Verstehen. Orientierung, Memorierung und Prüfungen
 verwenden ihren jeweils eigenen Abschlussvertrag. Keine Teilbewertung
 bildet einen dritten Mastery-Zustand.
 
-Zusätzlich wird die implizite Menge $I_L$ aus jedem für die Person
-gültigen dauerhaft anwendbaren lokalen Abschlussvertrag $L$ abgeleitet. Bei fachlichen Kompetenzzielen belegt sie selbstständige Anwendung,
-nicht bloß erlassene Vorbereitung. Ein abgeleiteter Orientierungsmarker
-behält ausschließlich die Bedeutung eines erledigten Einstiegs; er
-behauptet weder Fachkompetenz noch eine erfolgte Motivationsinteraktion. Die effektive globale Menge lautet
+Zusätzlich werden aus ausdrücklich bestandenen, qualifizierten Prüfungen
+gewöhnliche Kompetenzen abgeleitet. Für die unveränderliche vollständig
+nachgewiesene Menge $\mathcal{C}(q)\subseteq O$ gilt
+(die kürzeren Konzepttexte schreiben dafür $C(q)$). Anders als diese
+Abdeckungsfunktion bezeichnet $C$ weiterhin die Contains-Relation:
 \[
- M_{\mathrm{eff}}=M\cup\bigcup_{L\in\mathcal L_{\mathrm{valid}}}I_L.
+ I(M)=\left(\bigcup_{q\in M\cap Q}\mathcal{C}(q)\right)\setminus M,
+ \qquad M_{\mathrm{eff}}=M\cup I(M).
 \]
-Die beiden Begründungsarten sind in ihrem effektiven Ergebnis gleichwertig:
-Sie erfüllen künftige Voraussetzungen, zählen zum IST und bleiben bei
-Fokus- oder Planwechsel wirksam. $I_L$ erzeugt keinen synthetischen
-Mastery-Datensatz. Abschnitt~\ref{sec:assessment} definiert die Ableitung
-und die fachlichen Voraussetzungen des Vertrags.
+$\mathcal{C}(q)$ interpretiert die fachlich qualifizierten \code{examData.coveredGoalIds}.
+Offene weitere Prüfungen halten gültige Anerkennung nicht zurück.
+Erwerbszuständigkeit und Nachweisort sind verschieden: Auch eine gültige
+Eltern- oder Fremdprüfung kann ein gewöhnliches Ziel vollständig belegen.
+Prüfungen, Karten und Orientierung werden dadurch nicht implizit bestanden.
+Verstehen und belegte Anwendung zählen global gleichwertig; ein Fokus- oder
+Planwechsel löscht sie nicht. Es entstehen keine zusätzlichen gespeicherten
+Lernendenergebnisse. Abschnitt~\ref{sec:assessment} definiert die Qualifikation
+und die historische Bindung. Die frühere lokale Restbedarfsableitung ist abgelöst.
 Für die folgenden allgemeinen Formeln sei $M_A=M_{\mathrm{eff}}$.
 \begin{equation}
  \Sat(g,M_A)\iff
@@ -340,7 +345,7 @@ Für die folgenden allgemeinen Formeln sei $M_A=M_{\mathrm{eff}}$.
  \label{eq:sat}
 \end{equation}
 Ein bloß gemeistertes abhängiges Inhaltsziel beweist seine Voraussetzungen
-nicht. Nur ein gültiger lokaler Prüfungsvertrag trägt die zusätzliche
+nicht. Nur ein qualifizierter Prüfungsnachweis trägt die zusätzliche
 Ableitung. Clusterfortschritt schreibt niemals Ergebnisse seiner Kinder.
 
 \subsection{Globale Frontier}
