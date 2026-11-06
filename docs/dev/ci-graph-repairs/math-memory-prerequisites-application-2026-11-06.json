@@ -1,0 +1,618 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-06T17:52:24.288778+00:00",
+  "status": "applied-reviewed-memory-prerequisites-with-fresh-kind-bindings-full-cqr-pending",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "beforeSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+    "afterSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "semanticKindLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "beforeSha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019",
+    "afterSha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b",
+    "freshClassificationReview": {
+      "path": "docs/dev/ci-graph-repairs/math-memory-semantic-kind-independent-review-2026-11-06.json",
+      "sha256": "d0e611091fe5adc48b5d491d959a192627713e74a7209f52204e295e3f6d229c"
+    },
+    "changedDecisions": 4,
+    "allOtherDecisionFieldsAndCountsUnchanged": true,
+    "existingAuthoritativeReviewHistoryRetained": true
+  },
+  "application": {
+    "actor": "ci_runtime; authorized exact guarded candidate and four freshly reviewed kind decisions",
+    "sourceInodesReplacedAtomically": true,
+    "files": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "mode": "0o644",
+        "links": 1
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "mode": "0o644",
+        "links": 1
+      }
+    ],
+    "requiresArrays": 4,
+    "guardedSequentialOperations": 5,
+    "allNonRequiresGoalFieldsUnchanged": true,
+    "learnerStateWritten": false
+  },
+  "globalReplay": {
+    "verifier": {
+      "path": "docs/dev/ci-graph-repairs/verify_math_memory_application.py",
+      "sha256": "7cf926776d0cee42fecb559fe92158f8b5e115d63b02a655e4bbf4ef69f22b63"
+    },
+    "actualResult": {
+      "status": "PASS-reviewed-Math-Memory-and-fresh-kind-replay",
+      "activeVerified": true,
+      "originalMathSnapshot": "5cb5e567d08bc9f640942529d9099cbce03a4747",
+      "foreignCatalogMode": "current-live-context",
+      "contextBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+          "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+          "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+          "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+          "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+          "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+          "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+          "sha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+          "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+          "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+          "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+          "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+          "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+          "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+          "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+          "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+        }
+      ],
+      "result": {
+        "scenario": "memory",
+        "sourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+        "semanticOperationIds": [
+          "MATH-MEM-SEM-01",
+          "MATH-MEM-SEM-02",
+          "MATH-MEM-SEM-03"
+        ],
+        "normalizationSteps": [
+          {
+            "operationId": "MATH-MEM-NORM-01",
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca708087-71f8-5fae-91c5-b80721a4208f",
+            "removedPrerequisiteKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "survivingWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca708087-71f8-5fae-91c5-b80721a4208f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "globalGoalAndAtomicClosureEqual": true
+          },
+          {
+            "operationId": "MATH-MEM-NORM-02",
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "removedPrerequisiteKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "survivingWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "globalGoalAndAtomicClosureEqual": true
+          }
+        ],
+        "changedGoalIds": [
+          "ca708087-71f8-5fae-91c5-b80721a4208f",
+          "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+          "1eb0b286-2dac-5164-8d39-cd36c5704bc4"
+        ],
+        "globalGoalClosureChanges": [
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:05012547-7263-5bfa-9e7c-df970745a011",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0a6dab2e-1bbb-5587-adb0-456d3991c327",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:191c67db-44a8-4f63-994a-d85e8e301194",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ee48e811-4c9c-5080-9836-8403fc9f0810",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fe07241a-b779-5f35-a82d-7aa51ae74f42"
+            ],
+            "added": []
+          },
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:01acfcc8-7204-5c22-8774-13f6383f4fd4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:05012547-7263-5bfa-9e7c-df970745a011",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0a6dab2e-1bbb-5587-adb0-456d3991c327",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:191c67db-44a8-4f63-994a-d85e8e301194",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:623cd47f-6f9e-58a7-911c-69e4a8609a27",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:845440ce-f63f-5835-903f-739145ca27bd",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b1dcc191-d046-50de-984a-ee5c17157628",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b9bbd2a8-1379-5ffb-817f-41467d48abef",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e9445479-c188-5c09-842d-faa5e8678099",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ee48e811-4c9c-5080-9836-8403fc9f0810",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fe07241a-b779-5f35-a82d-7aa51ae74f42"
+            ],
+            "added": []
+          },
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+            ],
+            "added": []
+          }
+        ],
+        "globalAtomicClosureChanges": [
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:05012547-7263-5bfa-9e7c-df970745a011",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0a6dab2e-1bbb-5587-adb0-456d3991c327",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:191c67db-44a8-4f63-994a-d85e8e301194",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ee48e811-4c9c-5080-9836-8403fc9f0810",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fe07241a-b779-5f35-a82d-7aa51ae74f42"
+            ],
+            "added": []
+          },
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:01acfcc8-7204-5c22-8774-13f6383f4fd4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0404f20e-34cc-5c9b-ae6a-62cc9cf02bae",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:05012547-7263-5bfa-9e7c-df970745a011",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0a6dab2e-1bbb-5587-adb0-456d3991c327",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:191c67db-44a8-4f63-994a-d85e8e301194",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:31be24f0-3ab1-54d2-856d-fa9b7f36552f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:623cd47f-6f9e-58a7-911c-69e4a8609a27",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:845440ce-f63f-5835-903f-739145ca27bd",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:94d63ad9-ae1c-5ff2-b05e-188a0f5ebec6",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b1dcc191-d046-50de-984a-ee5c17157628",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b9bbd2a8-1379-5ffb-817f-41467d48abef",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:e9445479-c188-5c09-842d-faa5e8678099",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ee48e811-4c9c-5080-9836-8403fc9f0810",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fe07241a-b779-5f35-a82d-7aa51ae74f42"
+            ],
+            "added": []
+          },
+          {
+            "sourceKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "removed": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8c42ee9-2898-4247-819f-c235032ac78a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c65ecabf-d00b-4e2d-99ae-b64692325ffb"
+            ],
+            "added": []
+          }
+        ],
+        "crossSubjectChangedGoalClosures": 0,
+        "crossSubjectChangedAtomicClosures": 0,
+        "crossSubjectChangesClaimedReviewed": false,
+        "allNonRequiresFieldsUnchanged": true,
+        "existingUnrelatedGlobalGoalCyclicComponents": 3,
+        "existingUnrelatedGlobalAtomicCyclicComponents": 3,
+        "unrelatedCyclesAcceptedAsValid": false,
+        "currentQaValidityClaimed": false
+      },
+      "requiresArrays": 4,
+      "reviewedOperations": 5,
+      "freshKindDecisions": 4,
+      "reviewSha256": "d0e611091fe5adc48b5d491d959a192627713e74a7209f52204e295e3f6d229c",
+      "newDpOrMasteryApprovalClaimed": false
+    }
+  },
+  "nativeActiveKindParser": {
+    "status": "pass",
+    "decisions": 1252,
+    "implementation": {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f"
+    }
+  },
+  "isolatedActualNativeDeepQa": {
+    "stage": "before-application; exact candidate bytes became active unchanged",
+    "launcher": {
+      "path": "docs/dev/ci-graph-repairs/run_math_memory_candidate_qa.py",
+      "sha256": "0e6e4d073d57a126d26425009f282352e6a8faebb13128bfc962b4877f2e726c"
+    },
+    "actualReceipt": {
+      "purpose": "isolated-current-Math-Memory-candidate-native-deep-QA",
+      "exitCode": 0,
+      "sourceApplied": false,
+      "kindDraftApprovalClaimed": false,
+      "inputs": [
+        [
+          "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+        ],
+        [
+          "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b"
+        ]
+      ],
+      "preflightReadOnly": true,
+      "hostSourcesUnchanged": true,
+      "codeUnchanged": true,
+      "code": [
+        {
+          "path": "app/scripts/goalBookModel.ts",
+          "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f"
+        },
+        {
+          "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+          "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80"
+        },
+        {
+          "path": "app/scripts/goalEvidenceProfileModel.ts",
+          "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+        },
+        {
+          "path": "app/scripts/positiveGoalEvidenceReview.ts",
+          "sha256": "179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6"
+        },
+        {
+          "path": "app/scripts/semanticAtomicityReview.ts",
+          "sha256": "b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+        },
+        {
+          "path": "app/scripts/memoryCardReview.ts",
+          "sha256": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+          "sha256": "70e3b2092ee839b7aac6c9fb32fcf2c2ffc7b74135361c05306c8bc03511601a"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+          "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        }
+      ],
+      "stdoutSha256": "b0debfe077f97a5f5ecfac5c8f2704bd67c679a51ff0206b917d2df0ff4d9852",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "blockingIssueCount": 0,
+      "subjects": [
+        {
+          "subject": "mathematik",
+          "denominator": 807,
+          "strictComplete": 807,
+          "remaining": 0,
+          "strictCompletionReady": true
+        },
+        {
+          "subject": "physik",
+          "denominator": 478,
+          "strictComplete": 478,
+          "remaining": 0,
+          "strictCompletionReady": true
+        },
+        {
+          "subject": "chemie",
+          "denominator": 455,
+          "strictComplete": 455,
+          "remaining": 0,
+          "strictCompletionReady": true
+        },
+        {
+          "subject": "biologie",
+          "denominator": 397,
+          "strictComplete": 397,
+          "remaining": 0,
+          "strictCompletionReady": true
+        },
+        {
+          "subject": "wirtschaftswissenschaften",
+          "denominator": 346,
+          "strictComplete": 346,
+          "remaining": 0,
+          "strictCompletionReady": true
+        }
+      ]
+    },
+    "fullReport": {
+      "path": "tmp/math-memory-candidate-5cb-qa/report.json",
+      "sha256": "b0debfe077f97a5f5ecfac5c8f2704bd67c679a51ff0206b917d2df0ff4d9852"
+    },
+    "readonlyProbe": {
+      "path": "tmp/math-memory-candidate-5cb-qa/preflight.json",
+      "sha256": "57e60f7b0a5411f74a49ff695a0c377b5399f3b8fef50bd0d7557ded9d3c9753"
+    },
+    "invocation": {
+      "path": "tmp/math-memory-candidate-5cb-qa/invocation.json",
+      "sha256": "9a349b0abfd393fcd54c37380903877e8ba5f08174a4c970019f0c3a563f33f8"
+    }
+  },
+  "nativeApplicabilityComparison": {
+    "capture": {
+      "path": "docs/dev/ci-graph-repairs/capture_math_memory_applicability.ts",
+      "sha256": "ba2de8fd8cef4591744aac4b015a469b4a055d7299c17ecaa2cadb47a34ac3f4"
+    },
+    "before": {
+      "path": "tmp/math-memory-candidate-5cb-qa/applicability-before.json",
+      "sha256": "2662d177f095001b86d8f6002f3ae6261df8c3bb3e4aed84b81eea09afbac65f"
+    },
+    "candidate": {
+      "path": "tmp/math-memory-candidate-5cb-qa/applicability-candidate.json",
+      "sha256": "7040f4473c891d482640e191577d2152997ac14aac6d1014cb9a90ae09fba382"
+    },
+    "entireMathReportIdentical": true,
+    "goals": 1252,
+    "errors": 0,
+    "existingWarnings": 11,
+    "changedGoalApplicabilityFields": 0,
+    "changedEvidenceArrays": 0
+  },
+  "activeMemoryCli": {
+    "command": "npm --prefix app run quality:memory-card-review:check",
+    "exitCode": 0,
+    "log": {
+      "path": "tmp/math-memory-active-card-review.log",
+      "sha256": "ec5ac7ebd02c3849a19f0b429a79606f4bc4baa29182cbf44f93ee922d126c76"
+    },
+    "ordinaryGoalRecords": 807,
+    "memoryGoals": 6,
+    "deckFiles": 12,
+    "cardRows": 128,
+    "keptPrimaryCards": 64,
+    "selectedPairedCardsIndependentlyRead": 42
+  },
+  "activeGeneralGraph": {
+    "command": "npm --prefix app run validate:graph",
+    "exitCode": 0,
+    "landscapes": 593,
+    "log": {
+      "path": "tmp/math-memory-active-general-graph.log",
+      "sha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+    }
+  },
+  "activeMathStrictIntegrity": {
+    "verifier": {
+      "path": "docs/dev/ci-graph-repairs/check_math_memory_active_integrity.ts",
+      "sha256": "1538a080b937525d5277cc59f0522dc775e116d9e02e34539cc2ab34cbe01efa"
+    },
+    "fullLocalResult": {
+      "path": "tmp/math-memory-active-integrity.json",
+      "sha256": "851e9a4f5ee58012b668051d9b65b84b24afa9c2fcb6c07595a459439382b386"
+    },
+    "ruleStatus": "fail",
+    "metrics": {
+      "catalogLandscapes": 21,
+      "catalogGoals": 6524,
+      "checkedGoals": 1253,
+      "checkedLandscapes": 2,
+      "containsEdges": 1388,
+      "authoredRequires": 2454,
+      "effectiveRequires": 2485,
+      "atomicGoals": 978,
+      "atomicRequires": 2479,
+      "localRedundancies": 0,
+      "transitiveRedundancies": 917,
+      "findings": 919,
+      "requiredHardChecks": 10,
+      "executedHardChecks": 10
+    },
+    "milestoneRestorationClaimed": false
+  },
+  "frozenResearchInputs": [
+    {
+      "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+      "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-current-global-proof-2026-11-06.json",
+      "sha256": "bcb950873a1301c4db7d563206dac1f90adaf4cdf94e03bacfb4ca702a5cc5f0"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/verify_math_memory_pilot_current.py",
+      "sha256": "070fc43321759f5ede4e129e31395c84142be71806848f912a0f7a127bf01d8e"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/verify_math_memory_kind_candidate.ts",
+      "sha256": "6cc58d010600ef54802ef9caeb608abe8419b6a1bc30620321e4468956f7c237"
+    }
+  ],
+  "open": [
+    "Full current CQR regeneration, scope/global checks and fresh remote CI remain separate requirements.",
+    "917 remaining Math G17 findings and the separate UUID/identity errors remain real blockers.",
+    "No new D/P, card-content, human approval, state migration or M7 completion is claimed.",
+    "Historical Source-A80 proof is not made current by this semantic source change."
+  ]
+}

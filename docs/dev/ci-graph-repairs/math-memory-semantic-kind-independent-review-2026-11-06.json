@@ -1,0 +1,3017 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-06",
+  "status": "four-fresh-memory-kind-reviews-approved-for-exact-hypothetical-candidate-no-application",
+  "reviewer": {
+    "agent": "normative_corpus",
+    "role": "independent conceptual/content reviewer",
+    "humanApproval": false,
+    "independenceBoundary": "Independent of the previous SemanticKind ledger decisions. This agent authored the original requires proposal; this receipt is therefore not an additional independent second review of those edge changes. Their earlier separately authored counter-review remains distinct."
+  },
+  "scope": {
+    "operations": 5,
+    "changedRequiresArrays": 4,
+    "freshKindDecisions": 4,
+    "activeCards": 42,
+    "languagesActuallyRead": [
+      "de",
+      "en"
+    ],
+    "liveWrites": 0
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+  },
+  "originalLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019"
+  },
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+    "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16"
+  },
+  "candidate": {
+    "path": "tmp/math-memory-pilot-5cb-current-candidate.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+    "baseCommit": "5cb5e567d08bc9f640942529d9099cbce03a4747",
+    "exactEqualityWithIndependentlyComposedFourArrayCandidate": true,
+    "durableReconstruction": "Replay the five guarded operations from proposal against the pinned original source. Full exact original/proposed definitions are also retained per review below. The tmp path is observation evidence, not the only reconstruction input."
+  },
+  "operationsCanonicalSha256": "c5afb519c5561cac90962f761403bb343e45d2332a1feeee2d87c242a6f7ea04",
+  "contractSources": [
+    {
+      "path": "docs/concept/skill-graph/node-types.md",
+      "sha256": "4a07a12fa22e1e0e5044c78ef2820c224443e97f77169f3844c703264948cc69",
+      "anchor": "Memorize; Due and mastery semantics, lines 117–184"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "16b52af808ec213a982ee1f88d33637219e3f0586262698d2b76d0c8aa43d043",
+      "anchor": "Memory/SRS quality policy, lines 814–849"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "sha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968",
+      "anchor": "/semanticKindDecisions (lines 40–104); /semanticKinds/memory (lines 136–143)"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "sha256": "70e3b2092ee839b7aac6c9fb32fcf2c2ffc7b74135361c05306c8bc03511601a",
+      "anchor": "/$defs/semanticKindDecision (lines 628–677); /$defs/semanticKindLedger (lines 697–756)"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f",
+      "anchor": "fingerprintSemanticKindSourceGoal lines 627–654; parseSemanticKindLedger lines 808–925"
+    },
+    {
+      "path": "scripts/compile_curriculum_release_model.py",
+      "sha256": "1bc906f22482ab5c012a02c63e81c607ee1f8198e6e09848a821016ddde06ae5",
+      "anchor": "source_fingerprint line 1292; closed-schema/source binding and exact decisions lines 2942–3005"
+    }
+  ],
+  "ledgerContractConclusion": {
+    "freshIndividualReviewRepresentableUnderCurrentForm": true,
+    "decisionBasis": "reviewed-current-pilot-memory",
+    "reviewMethod": "one-time-reviewed-pilot-migration-v1",
+    "reason": "The current authoritative profile requires exactly one CURRENT decision per source goal and rejects stale fingerprints. The closed schema admits reviewed-current-pilot-memory and fixes the existing ledger method identifier. These four current Math pilot memory purposes still satisfy that basis after actual rereading. A new external review receipt can bind their freshly computed current-source decisions without inventing a method/basis value or changing the ledger format.",
+    "interpretationBoundary": "No source states that the method constant permanently freezes each original decision. Treating that constant as the versioned pilot-ledger method identifier, rather than falsely dating this new review to the original migration, is an interpretation supported by the profile currentness requirement and schema explicit follow-up decision bases. This does not authorize a general reclassification policy, automatic hash refresh, new review method, or any broader compatibility rule.",
+    "evidenceLocation": "Fresh date, authorship, complete read material and case reasoning live in this separate receipt. Closed ledger decision objects retain exactly the five permitted fields; no invented reviewer/date fields are added.",
+    "unchangedCounts": {
+      "curricularAtomic": 807,
+      "curricularArea": 241,
+      "practiceAssessment": 178,
+      "programStructure": 7,
+      "memory": 6,
+      "runtimeSupport": 11,
+      "orientation": 2,
+      "total": 1252
+    }
+  },
+  "reviews": [
+    {
+      "reviewId": "MATH-MEM-KIND-01",
+      "decision": "approve-memory-kind-for-exact-candidate",
+      "humanApproval": false,
+      "classificationOnly": true,
+      "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+      "ledgerDecisionPointer": "/decisions/152",
+      "originalGoal": {
+        "id": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "title": "Lernkarten - Komplexe Zahlen und Parameter",
+        "titleEn": "Flashcards - Complex Numbers and Parameters",
+        "description": "Die lernende Person festigt zentrale Darstellungen, Rechenregeln und geometrische Deutungen komplexer Zahlen einschließlich Betrag, Polarform und Einheitswurzeln. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key representations, calculation rules, and geometric interpretations of complex numbers, including modulus, polar form, and roots of unity. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_complex_parameter",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_complex_parameter.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_complex_parameter.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "proposedGoal": {
+        "id": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "title": "Lernkarten - Komplexe Zahlen und Parameter",
+        "titleEn": "Flashcards - Complex Numbers and Parameters",
+        "description": "Die lernende Person festigt zentrale Darstellungen, Rechenregeln und geometrische Deutungen komplexer Zahlen einschließlich Betrag, Polarform und Einheitswurzeln. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key representations, calculation rules, and geometric interpretations of complex numbers, including modulus, polar form, and roots of unity. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_complex_parameter",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_complex_parameter.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_complex_parameter.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "oldDecision": {
+        "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "sourceFingerprint": "sha256:dadead25efdfd7f5ab8c180fa79a8f8e16ed72075602fdc213b92df1336d27b7",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "proposedDecision": {
+        "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+        "sourceFingerprint": "sha256:ea8cd31250b903ddaadb5f75ca907b139b44c40ca9570e30732c2eea69046ed1",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "operations": [
+        "MATH-MEM-SEM-01"
+      ],
+      "kindReason": "Das vollständige Ziel verlangt ausdrücklich Festigung abrufbarer Darstellungen und Regeln zu komplexen Zahlen; Verstehen und Anwenden bleiben in den zugehörigen gewöhnlichen Zielen. Die acht Karten fragen i², algebraische Form, Konjugation, Betrag, Eulerformel, Drehstreckung, Divisionsregel und Einheitswurzelbild ab. Sie verlangen weder eine selbständige Problemlösung noch einen Anwendungsnachweis über diese Kompetenzen. Das ist ein eigenes Kartenlernziel mit anschließendem Recallnachweis.",
+      "prerequisiteReason": "Der gestrichene Nachweis elementaren Differenzierens ist für keine dieser acht Karten notwendig. Der gemischte Elterncluster zu Funktionenscharen und komplexen Zahlen ändert den engeren Zieltext nicht. Der vorhandene Orientierungseinstieg bleibt; Kartenherkunftsziele werden nicht in neue Pflichtvorbereitung umgedeutet.",
+      "cardGroups": [
+        "math_complex_c01–c04: kompakte Definitionen und Darstellungen",
+        "math_complex_c05–c07: abrufbare Formel, geometrische Wirkung und Rechenregel",
+        "math_complex_c10: geometrisches Einheitswurzelbild"
+      ],
+      "directContainmentParents": [
+        {
+          "id": "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28",
+          "title": "Funktionenscharen, Argumentieren und komplexe Zahlen",
+          "titleEn": "Families of Functions, Reasoning and Complex Numbers",
+          "description": "Zusammenfassender Cluster für Funktionenscharen und Parameteruntersuchungen, Problemlösen und Argumentieren sowie komplexe Zahlen.",
+          "descriptionEn": "Summarizing cluster for families of functions and parameter analysis, problem solving and reasoning, and complex numbers.",
+          "weight": 163,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "46a5ce30-a281-457c-b71e-9cfea2bffbc7",
+            "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "57f07e66-800c-5f7e-99ab-11dd6e520eb1"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "K1",
+              "K2",
+              "K3"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L2",
+              "L4"
+            ],
+            "phase": "Q4"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 13
+          },
+          "type": "cluster"
+        }
+      ],
+      "retainedPreparationDefinitions": [
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "semanticKind": "orientation",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation",
+            "canonical"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 1,
+            "orientationOutlook": {
+              "paths": [
+                {
+                  "id": "change-and-models",
+                  "title": "Veränderung, Wachstum und Modelle",
+                  "titleEn": "Change, growth and models",
+                  "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+                  "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+                  "practicalContexts": [
+                    "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                    "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                    "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+                  ],
+                  "practicalContextsEn": [
+                    "Modelling growth, climate, epidemics and economic developments",
+                    "Investigating motion, consumption and optimal decisions",
+                    "Understanding algorithms, data models and predictions in smartphones and AI"
+                  ],
+                  "subtreeRootIds": [
+                    "a668ea17-9226-4074-8f8e-051acbe839eb",
+                    "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                    "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+                  ],
+                  "entryGoalIds": [
+                    "8dd9f210-2683-5902-acab-e3be22725232",
+                    "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                    "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+                  ],
+                  "milestoneGoalIds": [
+                    "8dd9f210-2683-5902-acab-e3be22725232",
+                    "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                    "5fe4218e-4fb0-5339-8764-c989befa244e",
+                    "993a14e8-60f0-5764-9340-b2447a5fa84b"
+                  ]
+                },
+                {
+                  "id": "space-and-linear-algebra",
+                  "title": "Räume, Vektoren und lineare Abbildungen",
+                  "titleEn": "Space, vectors and linear transformations",
+                  "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+                  "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+                  "practicalContexts": [
+                    "Navigation, Robotik und Bewegungen im Raum",
+                    "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                    "Architektur, Vermessung und räumliche Modellierung"
+                  ],
+                  "practicalContextsEn": [
+                    "Navigation, robotics and motion in space",
+                    "3D graphics, image processing and technical construction",
+                    "Architecture, surveying and spatial modelling"
+                  ],
+                  "subtreeRootIds": [
+                    "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+                  ],
+                  "entryGoalIds": [
+                    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+                  ],
+                  "milestoneGoalIds": [
+                    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                    "9460c3ff-e72d-4107-bc73-087d217200aa",
+                    "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+                  ]
+                },
+                {
+                  "id": "data-and-decisions",
+                  "title": "Daten, Zufall und begründete Entscheidungen",
+                  "titleEn": "Data, chance and evidence-based decisions",
+                  "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+                  "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+                  "practicalContexts": [
+                    "Medizinische Tests und Studienergebnisse beurteilen",
+                    "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                    "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+                  ],
+                  "practicalContextsEn": [
+                    "Assessing medical tests and study results",
+                    "Interpreting risks, quality controls and forecasts",
+                    "Critically checking surveys, A/B tests and data-driven decisions"
+                  ],
+                  "subtreeRootIds": [
+                    "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+                  ],
+                  "entryGoalIds": [
+                    "508292f2-671b-4fd3-acbf-53d705e44693"
+                  ],
+                  "milestoneGoalIds": [
+                    "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                    "e495fa38-b198-5280-a405-9e41cafd6d17",
+                    "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                    "5c9ac68c-3928-518c-bbe0-e044667035a6"
+                  ]
+                }
+              ]
+            }
+          },
+          "contains": [],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "K3"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L2",
+              "L3",
+              "L4",
+              "L5"
+            ],
+            "phase": "E"
+          },
+          "shortKey": "canonical_math_why",
+          "type": "atomic",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+              "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        }
+      ],
+      "deckBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_complex_parameter.de.json",
+          "sha256": "3e3a5111568e872554423cd4aae3c7c4035d330f2b9f4ae432f0bbc325ea6b5a"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_complex_parameter.en.json",
+          "sha256": "de934619df758c8621b263cf02140af3d46990891de90c737123a5c90923fea2"
+        }
+      ],
+      "deckDe": {
+        "deckId": "de_gymnasium_math_complex_parameter",
+        "title": "Komplexe Zahlen & Parameter - Kernaussagen",
+        "cards": [
+          {
+            "id": "math_complex_c01",
+            "front": "Imaginäre Einheit $i$: Definition",
+            "back": "$i^2 = -1$",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c02",
+            "front": "Algebraische Form einer komplexen Zahl $z$",
+            "back": "$z = a + b \\cdot i$\n\nRealteil $a$, Imaginärteil $b$.",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c03",
+            "front": "Konjugiert komplexe Zahl $\\bar{z}$ \n\nzu $z = a + bi$",
+            "back": "$\\bar{z} = a - bi$\n\nSpiegelung an der reellen Achse.",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c04",
+            "front": "Betrag einer komplexen Zahl $|z|$ (geometrisch: Länge des Zeigers)",
+            "back": "$|z| = \\sqrt{a^2 + b^2} = \\sqrt{z \\cdot \\bar{z}}$",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c05",
+            "front": "Eulersche Formel (Zusammenhang Polarform/Trigonometrie)",
+            "back": "$e^{i\\varphi} = \\cos(\\varphi) + i \\cdot \\sin(\\varphi)$",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c06",
+            "front": "Geometrische Wirkung der Multiplikation mit \n\n$z = r \\cdot e^{i\\varphi}$",
+            "back": "Drehstreckung.\n\nDer Vektor wird um den Faktor $r$ gestreckt und um den Winkel $\\varphi$ gedreht.",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c07",
+            "front": "Division komplexer Zahlen: Wie beseitigt man $i$ im Nenner?",
+            "back": "Erweitern mit der konjugiert komplexen Zahl des Nenners.",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c10",
+            "front": "Lösungen von $z^n = 1$ (Einheitswurzeln)",
+            "back": "Die Lösungen bilden ein regelmäßiges n-Eck auf dem Einheitskreis in der Gaußschen Zahlenebene.",
+            "category": "Komplexe Zahlen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "deckEn": {
+        "deckId": "de_gymnasium_math_complex_parameter",
+        "title": "Complex Numbers & Parameters - Key Statements",
+        "cards": [
+          {
+            "id": "math_complex_c01",
+            "front": "Imaginary unit $i$: definition",
+            "back": "$i^2 = -1$",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c02",
+            "front": "Algebraic form of a complex number $z$",
+            "back": "$z = a + b \\cdot i$\n\nReal part $a$, imaginary part $b$.",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c03",
+            "front": "Complex conjugate $\\bar{z}$\n\nto $z = a + bi$",
+            "back": "$\\bar{z} = a - bi$\n\nReflection across the real axis.",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c04",
+            "front": "Modulus of a complex number $|z|$ (geometrically: length of the vector)",
+            "back": "$|z| = \\sqrt{a^2 + b^2} = \\sqrt{z \\cdot \\bar{z}}$",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c05",
+            "front": "Euler's formula (relation between polar form and trigonometry)",
+            "back": "$e^{i\\varphi} = \\cos(\\varphi) + i \\cdot \\sin(\\varphi)$",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c06",
+            "front": "Geometric effect of multiplication by\n\n$z = r \\cdot e^{i\\varphi}$",
+            "back": "Rotation and scaling.\n\nThe vector is scaled by factor $r$ and rotated by angle $\\varphi$.",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c07",
+            "front": "Division of complex numbers: how to eliminate $i$ in the denominator?",
+            "back": "Multiply by the complex conjugate of the denominator.",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_complex_c10",
+            "front": "Solutions of $z^n = 1$ (roots of unity)",
+            "back": "The solutions form a regular n-gon on the unit circle in the complex plane.",
+            "category": "Complex Numbers",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "activeCardCount": 8,
+      "typeBoundary": "Memory is the semantic purpose of this same goal. Its own Verified Recall result is still required; it is not ordinary application mastery, another exam goal, or recognition of any origin goal.",
+      "validityLimit": "This is a fresh four-goal SemanticKind judgement, not a new complete card-content, origin-coverage, A/M/D/P/V, book, practice, source or milestone approval."
+    },
+    {
+      "reviewId": "MATH-MEM-KIND-02",
+      "decision": "approve-memory-kind-for-exact-candidate",
+      "humanApproval": false,
+      "classificationOnly": true,
+      "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+      "ledgerDecisionPointer": "/decisions/917",
+      "originalGoal": {
+        "id": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+        "title": "Lernkarten - Lineare Algebra und Analytische Geometrie",
+        "titleEn": "Flashcards - Linear Algebra and Analytic Geometry",
+        "description": "Die lernende Person festigt zentrale Formeln und Begriffe zu Vektoren, Geraden, Ebenen und Matrizen. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key formulas and concepts for vectors, lines, planes, and matrices. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_linalg_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_linalg_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_linalg_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "proposedGoal": {
+        "id": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+        "title": "Lernkarten - Lineare Algebra und Analytische Geometrie",
+        "titleEn": "Flashcards - Linear Algebra and Analytic Geometry",
+        "description": "Die lernende Person festigt zentrale Formeln und Begriffe zu Vektoren, Geraden, Ebenen und Matrizen. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key formulas and concepts for vectors, lines, planes, and matrices. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_linalg_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_linalg_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_linalg_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "oldDecision": {
+        "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+        "sourceFingerprint": "sha256:2169494752e108ae14ce84222bb3918afe3a0a5a8e411ffbfb1cfa5010eaa7d1",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "proposedDecision": {
+        "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+        "sourceFingerprint": "sha256:9c609e259703a6c9492fbdeea22e87a68c2af76216dc616125a20e0b5a2abbfa",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "operations": [
+        "MATH-MEM-SEM-02"
+      ],
+      "kindReason": "Das vollständige Ziel nennt Festigung von Formeln und Begriffen zu Vektoren, Geraden, Ebenen und Matrizen und trennt dies ausdrücklich von Verstehen/Anwenden. Alle acht Karten sind kompakte Abrufe: Vektorlänge, Mittelpunkt, Orthogonalität, Winkelregel, Geradenform, Normalenvektorzuordnung, Dimensionsbedingung der Matrizenmultiplikation und Übergangsmatrixkonvention. Die symbolische Zuordnung beim Normalenvektor ist eine kurze Darstellungsregel, kein ausgearbeiteter geometrischer Problemlösungsauftrag.",
+      "prerequisiteReason": "Weder Ableiten noch Hauptsatz-Anwendung ist für diese Karten erforderlich. Das Bündeln von Analysis und Geometrie im Elterncluster begründet keine universelle Analysis-Vorbereitung für das enger bezeichnete Deck. Der Orientierungseinstieg bleibt; kein neues Anwendungs- oder Prüfungsziel entsteht.",
+      "cardGroups": [
+        "math_linalg_c01–c04: abrufbare Vektorformeln/-bedingungen",
+        "math_linalg_c05–c06: Formen und symbolische Zuordnungen für Geraden/Ebenen",
+        "math_linalg_c10,c12: kompakte Matrixbedingungen"
+      ],
+      "directContainmentParents": [
+        {
+          "id": "98dcf9bd-d119-5eb1-835c-7d719f67b485",
+          "title": "Analytische Geometrie, lineare Algebra und vertiefte Analysis",
+          "titleEn": "Analytic Geometry, Linear Algebra and Advanced Analysis",
+          "description": "Überblicksknoten für vertiefte Analysis, Orientieren und Bewegen im Raum, Geraden und Ebenen im Raum, ebene Figuren in Raumdarstellungen, Spiegelungen an Ebenen sowie Matrizen für Übergangsprozesse und lineare geometrische Abbildungen.",
+          "descriptionEn": "Overview node for advanced analysis, orientation and movement in space, lines and planes in space, and matrices for transition processes and linear geometric mappings.",
+          "weight": 174,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "5ebfc509-0b4c-5c60-befb-2477eb24d4b5",
+            "4720daf4-cefe-43a9-a0e8-9db55286f558",
+            "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "14b19ee4-364e-50bd-b6a3-499471356ef3"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "K1.4",
+              "K2.3",
+              "K3.3",
+              "K5.2"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L2",
+              "L3",
+              "L4"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 11
+          },
+          "type": "cluster"
+        }
+      ],
+      "retainedPreparationDefinitions": [
+        {
+          "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "semanticKind": "orientation",
+          "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+          "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+          "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation",
+            "canonical"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 1,
+            "orientationOutlook": {
+              "paths": [
+                {
+                  "id": "change-and-models",
+                  "title": "Veränderung, Wachstum und Modelle",
+                  "titleEn": "Change, growth and models",
+                  "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+                  "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+                  "practicalContexts": [
+                    "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                    "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                    "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+                  ],
+                  "practicalContextsEn": [
+                    "Modelling growth, climate, epidemics and economic developments",
+                    "Investigating motion, consumption and optimal decisions",
+                    "Understanding algorithms, data models and predictions in smartphones and AI"
+                  ],
+                  "subtreeRootIds": [
+                    "a668ea17-9226-4074-8f8e-051acbe839eb",
+                    "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                    "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+                  ],
+                  "entryGoalIds": [
+                    "8dd9f210-2683-5902-acab-e3be22725232",
+                    "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                    "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+                  ],
+                  "milestoneGoalIds": [
+                    "8dd9f210-2683-5902-acab-e3be22725232",
+                    "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                    "5fe4218e-4fb0-5339-8764-c989befa244e",
+                    "993a14e8-60f0-5764-9340-b2447a5fa84b"
+                  ]
+                },
+                {
+                  "id": "space-and-linear-algebra",
+                  "title": "Räume, Vektoren und lineare Abbildungen",
+                  "titleEn": "Space, vectors and linear transformations",
+                  "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+                  "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+                  "practicalContexts": [
+                    "Navigation, Robotik und Bewegungen im Raum",
+                    "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                    "Architektur, Vermessung und räumliche Modellierung"
+                  ],
+                  "practicalContextsEn": [
+                    "Navigation, robotics and motion in space",
+                    "3D graphics, image processing and technical construction",
+                    "Architecture, surveying and spatial modelling"
+                  ],
+                  "subtreeRootIds": [
+                    "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+                  ],
+                  "entryGoalIds": [
+                    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+                  ],
+                  "milestoneGoalIds": [
+                    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                    "9460c3ff-e72d-4107-bc73-087d217200aa",
+                    "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+                  ]
+                },
+                {
+                  "id": "data-and-decisions",
+                  "title": "Daten, Zufall und begründete Entscheidungen",
+                  "titleEn": "Data, chance and evidence-based decisions",
+                  "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+                  "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+                  "practicalContexts": [
+                    "Medizinische Tests und Studienergebnisse beurteilen",
+                    "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                    "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+                  ],
+                  "practicalContextsEn": [
+                    "Assessing medical tests and study results",
+                    "Interpreting risks, quality controls and forecasts",
+                    "Critically checking surveys, A/B tests and data-driven decisions"
+                  ],
+                  "subtreeRootIds": [
+                    "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+                  ],
+                  "entryGoalIds": [
+                    "508292f2-671b-4fd3-acbf-53d705e44693"
+                  ],
+                  "milestoneGoalIds": [
+                    "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                    "e495fa38-b198-5280-a405-9e41cafd6d17",
+                    "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                    "5c9ac68c-3928-518c-bbe0-e044667035a6"
+                  ]
+                }
+              ]
+            }
+          },
+          "contains": [],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "K3"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L2",
+              "L3",
+              "L4",
+              "L5"
+            ],
+            "phase": "E"
+          },
+          "shortKey": "canonical_math_why",
+          "type": "atomic",
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+              "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        }
+      ],
+      "deckBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_linalg_core.de.json",
+          "sha256": "8c192e97b87ae5a7e468d7db2b4fb6e0a61cabac2a1ddd599361378678449f83"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_linalg_core.en.json",
+          "sha256": "915f17d4f6363a5228c0e071835fb926bcdd8cbf5b15c94cbab0bce5b9734956"
+        }
+      ],
+      "deckDe": {
+        "deckId": "de_gymnasium_math_linalg_core",
+        "title": "Lineare Algebra & Analytische Geometrie - Kernaussagen",
+        "cards": [
+          {
+            "id": "math_linalg_c01",
+            "front": "Betrag (Länge) eines Vektors \n\n$\\vec{v} = (v_1, v_2, v_3)^T$",
+            "back": "$|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}$",
+            "category": "Vektoren",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c02",
+            "front": "Mittelpunkt $M$ einer Strecke $AB$",
+            "back": "$\\vec{m} = \\frac{1}{2} (\\vec{a} + \\vec{b})$",
+            "category": "Vektoren",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c03",
+            "front": "Bedingung für Orthogonalität \n\n(zwei Vektoren stehen senkrecht)",
+            "back": "Das Skalarprodukt ist Null.\n\n$\\vec{a} \\cdot \\vec{b} = 0$",
+            "category": "Vektoren",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c04",
+            "front": "Formel für den Winkel $\\alpha$ zwischen zwei Vektoren",
+            "back": "$\\cos(\\alpha) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}$",
+            "category": "Vektoren",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c05",
+            "front": "Parameterform einer Geradengleichung",
+            "back": "$\\vec{x} = \\vec{p} + r \\cdot \\vec{u}$\n\nStützvektor + Parameter $\\cdot$ Richtungsvektor.",
+            "category": "Geraden & Ebenen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c06",
+            "front": "Normalenvektor aus Koordinatenform \n\n$n_1 x_1 + n_2 x_2 + n_3 x_3 = d$ ablesen",
+            "back": "$\\vec{n} = (n_1, n_2, n_3)^T$",
+            "category": "Geraden & Ebenen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c10",
+            "front": "Matrizenmultiplikation: \n\nWann ist $A \\cdot B$ definiert?",
+            "back": "Wenn die Anzahl der Spalten von $A$ gleich der Anzahl der Zeilen von $B$ ist.",
+            "category": "Matrizen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c12",
+            "front": "Stochastische Matrix (Übergangsmatrix) Eigenschaften",
+            "back": "Quadratisch, \n\nalle Einträge zwischen 0 und 1, \n\nSpaltensummen sind 1.",
+            "category": "Matrizen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "deckEn": {
+        "deckId": "de_gymnasium_math_linalg_core",
+        "title": "Linear Algebra & Analytic Geometry - Key Statements",
+        "cards": [
+          {
+            "id": "math_linalg_c01",
+            "front": "Magnitude (length) of a vector\n\n$\\vec{v} = (v_1, v_2, v_3)^T$",
+            "back": "$|\\vec{v}| = \\sqrt{v_1^2 + v_2^2 + v_3^2}$",
+            "category": "Vectors",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c02",
+            "front": "Midpoint $M$ of a segment $AB$",
+            "back": "$\\vec{m} = \\frac{1}{2} (\\vec{a} + \\vec{b})$",
+            "category": "Vectors",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c03",
+            "front": "Condition for orthogonality\n\n(two vectors are perpendicular)",
+            "back": "The dot product is zero.\n\n$\\vec{a} \\cdot \\vec{b} = 0$",
+            "category": "Vectors",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c04",
+            "front": "Formula for the angle $\\alpha$ between two vectors",
+            "back": "$\\cos(\\alpha) = \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{a}| \\cdot |\\vec{b}|}$",
+            "category": "Vectors",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c05",
+            "front": "Parametric form of a line equation",
+            "back": "$\\vec{x} = \\vec{p} + r \\cdot \\vec{u}$\n\nPosition vector + parameter $\\cdot$ direction vector.",
+            "category": "Lines & Planes",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c06",
+            "front": "Read the normal vector from coordinate form\n\n$n_1 x_1 + n_2 x_2 + n_3 x_3 = d$",
+            "back": "$\\vec{n} = (n_1, n_2, n_3)^T$",
+            "category": "Lines & Planes",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c10",
+            "front": "Matrix multiplication:\n\nWhen is $A \\cdot B$ defined?",
+            "back": "When the number of columns of $A$ equals the number of rows of $B$.",
+            "category": "Matrices",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_linalg_c12",
+            "front": "Stochastic matrix (transition matrix) properties",
+            "back": "Square,\n\nall entries between 0 and 1,\n\ncolumn sums are 1.",
+            "category": "Matrices",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "activeCardCount": 8,
+      "typeBoundary": "Memory is the semantic purpose of this same goal. Its own Verified Recall result is still required; it is not ordinary application mastery, another exam goal, or recognition of any origin goal.",
+      "validityLimit": "This is a fresh four-goal SemanticKind judgement, not a new complete card-content, origin-coverage, A/M/D/P/V, book, practice, source or milestone approval."
+    },
+    {
+      "reviewId": "MATH-MEM-KIND-03",
+      "decision": "approve-memory-kind-for-exact-candidate",
+      "humanApproval": false,
+      "classificationOnly": true,
+      "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+      "ledgerDecisionPointer": "/decisions/1250",
+      "originalGoal": {
+        "id": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+        "title": "Lernkarten - Stochastik-Kernbegriffe",
+        "titleEn": "Flashcards - Core Stochastics Terms",
+        "description": "Die lernende Person festigt zentrale Begriffe und Formeln zu Wahrscheinlichkeiten, Zufallsgrößen, Verteilungen und Hypothesentests. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key concepts and formulas for probabilities, random variables, distributions, and hypothesis tests. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_stochastics_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_stochastics_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_stochastics_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "proposedGoal": {
+        "id": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+        "title": "Lernkarten - Stochastik-Kernbegriffe",
+        "titleEn": "Flashcards - Core Stochastics Terms",
+        "description": "Die lernende Person festigt zentrale Begriffe und Formeln zu Wahrscheinlichkeiten, Zufallsgrößen, Verteilungen und Hypothesentests. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key concepts and formulas for probabilities, random variables, distributions, and hypothesis tests. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_stochastics_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_stochastics_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_stochastics_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "oldDecision": {
+        "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+        "sourceFingerprint": "sha256:87edf2ffc2618aaa3ad1978aaa0f8cdd19f7fadb5219f9414371c9559673958b",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "proposedDecision": {
+        "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+        "sourceFingerprint": "sha256:501b62dbe1611f5e1b645d1afe9d2e0ea3db6a13c328943030d05d0b26d476f4",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "operations": [
+        "MATH-MEM-SEM-03",
+        "MATH-MEM-NORM-02"
+      ],
+      "kindReason": "Zweck ist Festigung zentraler Wahrscheinlichkeits-/Verteilungs-/Testbegriffe. Die zwölf Karten fragen Formeln, Voraussetzungen eines Laplaceexperiments, Kombinationsbedeutung, Sigmaanteile sowie Definitionen der Testfehler und Nullhypothese ab. Sie verlangen keine Durchführung oder begründete Auswertung eines Hypothesentests und keine modellierende Verteilungsaufgabe. Der Abschluss bleibt das eigene geprüfte Erinnern der erforderlichen Karten.",
+      "prerequisiteReason": "Die entfernte Ableitungskompetenz wird bei keinem Abruf benötigt. Die bestehende elementare Funktion-als-Zuordnung-Basis bleibt als begrenzte Vorbereitung der Wert-/Wahrscheinlichkeitsdarstellungen. Die direkte Orientierungskante wird erst nach dem fachlichen Entzug normalisiert; der bestehende Weg über die Funktionsbasis bleibt. Dies ist keine neue Pflicht, erst alle Kartenherkunftsziele abzuschließen.",
+      "cardGroups": [
+        "math_stoch_c01–c04: Grundformeln und Begriffe",
+        "math_stoch_c05–c09: kompakte Kombinations-/Verteilungsregeln",
+        "math_stoch_c10–c12: abrufbare Testbegriffe"
+      ],
+      "directContainmentParents": [
+        {
+          "id": "3e937f39-1187-58b3-96c3-ec39278c0e3c",
+          "title": "Wahrscheinlichkeitsverteilungen, Hypothesentests und Statistik",
+          "titleEn": "Probability Distributions, Hypothesis Tests and Statistics",
+          "description": "Zusammenfassender Cluster für Grundlagen der Stochastik, Wahrscheinlichkeitsverteilungen, Hypothesentests, Prognose- und Konfidenzintervalle sowie Statistik.",
+          "descriptionEn": "Summarizing cluster for basic stochastics, probability distributions, hypothesis tests, prediction and confidence intervals, and statistics.",
+          "weight": 86,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "213c3e11-3e8d-4db7-a04e-3a05c13304a5",
+            "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "f24096c6-6ca0-5c15-a2f5-7bdaec789a8d"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "K2",
+              "K3",
+              "K4",
+              "K6"
+            ],
+            "guidingIdeas": [
+              "L4",
+              "L5"
+            ],
+            "phase": "Q3"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 12
+          },
+          "type": "cluster"
+        }
+      ],
+      "retainedPreparationDefinitions": [
+        {
+          "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "title": "Funktionsbegriff und Darstellungen verstehen",
+          "titleEn": "Understand function concept and representations",
+          "description": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+          "descriptionEn": "The learner can explain a real-valued function as assigning exactly one function value to each permitted input and use the expression, value table, and graph of a given function as corresponding representations.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "canonical"
+          ],
+          "contains": [],
+          "requires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "K1.1",
+              "K4.1"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L4"
+            ],
+            "phase": "E"
+          },
+          "shortKey": "canonical_math_function_concept_and_representations",
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "semanticAtomic": true,
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "title": "Visualisierung: Funktionsbegriff und Darstellungen verstehen",
+              "url": "/assets/goal-visualizations/mathematik/09f47964-2cd0-410e-93ee-9632b582fc91/09f47964-2cd0-410e-93ee-9632b582fc91.jpg",
+              "provider": "Google Gemini / Nano Banana Pro",
+              "description": "Visualisierung zum Lernziel: Funktionsbegriff und Darstellungen verstehen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Funktionsbegriff und Darstellungen verstehen\". Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        }
+      ],
+      "deckBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.de.json",
+          "sha256": "9a8badd5cf880f8fb00e7921766f512078d0cb2f11a586c89a6a1b79e775f580"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.en.json",
+          "sha256": "32eec76558dad768a2a7c217fedb51a472b8a446b130e006e847d2fd654beaa5"
+        }
+      ],
+      "deckDe": {
+        "deckId": "de_gymnasium_math_stochastics_core",
+        "title": "Stochastik-Core - Kernaussagen",
+        "cards": [
+          {
+            "id": "math_stoch_c01",
+            "front": "Formel für bedingte Wahrscheinlichkeit $P(A|B)$",
+            "back": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+            "category": "Grundlagen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c02",
+            "front": "Bedingung für stochastische Unabhängigkeit von $A$ und $B$",
+            "back": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+            "category": "Grundlagen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c03",
+            "front": "Laplace-Experiment: Bedingung und Berechnung",
+            "back": "Alle Ergebnisse sind gleich wahrscheinlich.\n\n$P(E) = \\frac{\\text{Anzahl günstige Ergebnisse}}{\\text{Anzahl mögliche Ergebnisse}}$",
+            "category": "Grundlagen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c04",
+            "front": "Erwartungswert $E(X)$ einer Zufallsgröße",
+            "back": "Summe der Produkte aus Wert und Wahrscheinlichkeit.\n\n$\\mu = \\sum x_i \\cdot P(X=x_i)$",
+            "category": "Kenngrößen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c05",
+            "front": "Binomialkoeffizient $\\binom{n}{k}$: Bedeutung",
+            "back": "Anzahl der Möglichkeiten, $k$ Elemente aus $n$ Elementen auszuwählen.\n\nOhne Reihenfolge, ohne Zurücklegen.",
+            "category": "Kombinatorik",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c06",
+            "front": "Bernoulli-Formel (Binomialverteilung)",
+            "back": "$P(X=k) = \\binom{n}{k} \\cdot p^k \\cdot (1-p)^{n-k}$",
+            "category": "Verteilungen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c07",
+            "front": "Erwartungswert $\\mu$ einer Binomialverteilung",
+            "back": "$\\mu = n \\cdot p$",
+            "category": "Verteilungen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c08",
+            "front": "Standardabweichung $\\sigma$ einer Binomialverteilung",
+            "back": "$\\sigma = \\sqrt{n \\cdot p \\cdot (1-p)}$",
+            "category": "Verteilungen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c09",
+            "front": "1-2-3-Sigma-Regel (Normalverteilung)",
+            "back": "$\\approx 68\\%$ in $[\\mu-\\sigma,\\mu+\\sigma]$\n\n$\\approx 95\\%$ in $[\\mu-2\\sigma,\\mu+2\\sigma]$\n\n$\\approx 99{,}7\\%$ in $[\\mu-3\\sigma,\\mu+3\\sigma]$",
+            "category": "Verteilungen",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c10",
+            "front": "Hypothesentest: \n\nFehler 1. Art ($\\alpha$-Fehler)",
+            "back": "Die Nullhypothese $H_0$ wird abgelehnt, obwohl sie wahr ist.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c11",
+            "front": "Hypothesentest: \n\nFehler 2. Art ($\\beta$-Fehler)",
+            "back": "Die Nullhypothese $H_0$ wird beibehalten, obwohl die Alternativhypothese $H_1$ wahr ist.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c12",
+            "front": "Rechtsseitiger Test: Aufbau der Nullhypothese",
+            "back": "$H_0: p \\le p_0$.\n\nAblehnungsbereich liegt rechts.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "deckEn": {
+        "deckId": "de_gymnasium_math_stochastics_core",
+        "title": "Core Stochastics - Key Statements",
+        "cards": [
+          {
+            "id": "math_stoch_c01",
+            "front": "Formula for conditional probability $P(A|B)$",
+            "back": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+            "category": "Basics",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c02",
+            "front": "Condition for stochastic independence of $A$ and $B$",
+            "back": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+            "category": "Basics",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c03",
+            "front": "Laplace experiment: condition and calculation",
+            "back": "All outcomes are equally likely.\n\n$P(E) = \\frac{\\text{number of favorable outcomes}}{\\text{number of possible outcomes}}$",
+            "category": "Basics",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c04",
+            "front": "Expected value $E(X)$ of a random variable",
+            "back": "Sum of products of value and probability.\n\n$\\mu = \\sum x_i \\cdot P(X=x_i)$",
+            "category": "Measures",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c05",
+            "front": "Binomial coefficient $\\binom{n}{k}$: meaning",
+            "back": "Number of ways to choose $k$ elements from $n$ elements.\n\nWithout order, without replacement.",
+            "category": "Combinatorics",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c06",
+            "front": "Bernoulli formula (binomial distribution)",
+            "back": "$P(X=k) = \\binom{n}{k} \\cdot p^k \\cdot (1-p)^{n-k}$",
+            "category": "Distributions",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c07",
+            "front": "Expected value $\\mu$ of a binomial distribution",
+            "back": "$\\mu = n \\cdot p$",
+            "category": "Distributions",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c08",
+            "front": "Standard deviation $\\sigma$ of a binomial distribution",
+            "back": "$\\sigma = \\sqrt{n \\cdot p \\cdot (1-p)}$",
+            "category": "Distributions",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c09",
+            "front": "1-2-3 sigma rule (normal distribution)",
+            "back": "$\\approx 68\\%$ in $[\\mu-\\sigma,\\mu+\\sigma]$\n\n$\\approx 95\\%$ in $[\\mu-2\\sigma,\\mu+2\\sigma]$\n\n$\\approx 99.7\\%$ in $[\\mu-3\\sigma,\\mu+3\\sigma]$",
+            "category": "Distributions",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c10",
+            "front": "Hypothesis test:\n\nType I error ($\\alpha$ error)",
+            "back": "The null hypothesis $H_0$ is rejected even though it is true.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c11",
+            "front": "Hypothesis test:\n\nType II error ($\\beta$ error)",
+            "back": "The null hypothesis $H_0$ is retained even though the alternative $H_1$ is true.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_stoch_c12",
+            "front": "Right-tailed test: form of the null hypothesis",
+            "back": "$H_0: p \\le p_0$.\n\nRejection region is on the right.",
+            "category": "Tests",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "activeCardCount": 12,
+      "typeBoundary": "Memory is the semantic purpose of this same goal. Its own Verified Recall result is still required; it is not ordinary application mastery, another exam goal, or recognition of any origin goal.",
+      "validityLimit": "This is a fresh four-goal SemanticKind judgement, not a new complete card-content, origin-coverage, A/M/D/P/V, book, practice, source or milestone approval."
+    },
+    {
+      "reviewId": "MATH-MEM-KIND-04",
+      "decision": "approve-memory-kind-for-exact-candidate",
+      "humanApproval": false,
+      "classificationOnly": true,
+      "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+      "ledgerDecisionPointer": "/decisions/992",
+      "originalGoal": {
+        "id": "ca708087-71f8-5fae-91c5-b80721a4208f",
+        "title": "Lernkarten - Analysis-Kernregeln",
+        "titleEn": "Flashcards - Core Analysis Rules",
+        "description": "Die lernende Person festigt zentrale Ableitungs- und Stammfunktionsregeln sowie Bedingungen für Extrem- und Wendestellen und den Hauptsatz der Analysis. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key differentiation and antiderivative rules, criteria for extrema and inflection points, and the fundamental theorem of calculus. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_analysis_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_analysis_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_analysis_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "proposedGoal": {
+        "id": "ca708087-71f8-5fae-91c5-b80721a4208f",
+        "title": "Lernkarten - Analysis-Kernregeln",
+        "titleEn": "Flashcards - Core Analysis Rules",
+        "description": "Die lernende Person festigt zentrale Ableitungs- und Stammfunktionsregeln sowie Bedingungen für Extrem- und Wendestellen und den Hauptsatz der Analysis. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+        "descriptionEn": "The learner consolidates key differentiation and antiderivative rules, criteria for extrema and inflection points, and the fundamental theorem of calculus. Understanding and application are practiced in the related learning goals.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "srs-deck:de_gymnasium_math_analysis_core",
+          "memorization"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "vocabularySource": "/data/de_gymnasium_math_flashcards_analysis_core.de.json",
+          "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_analysis_core.en.json"
+        },
+        "contains": [],
+        "requires": [
+          "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "K5"
+          ],
+          "guidingIdeas": [
+            "L1",
+            "L4"
+          ],
+          "phase": "GLOBAL"
+        },
+        "nodeKind": "memory",
+        "type": "atomic"
+      },
+      "oldDecision": {
+        "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+        "sourceFingerprint": "sha256:5094110049550b5888c45b1624a7f5bc72169ef695f6c25f33e1efef17fc3589",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "proposedDecision": {
+        "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+        "sourceFingerprint": "sha256:4c635d0f6182c2d358c1a332ffedac9175889da641d5ef02d35c5b7338c9d7f4",
+        "semanticKind": "memory",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-memory"
+      },
+      "operations": [
+        "MATH-MEM-NORM-01"
+      ],
+      "kindReason": "Zweck ist Festigung von Ableitungs-/Stammfunktionsregeln und Bedingungen der Kurvenuntersuchung. Alle vierzehn Karten verlangen eine bekannte Formel oder kurze Bedingung, nicht das selbständige Differenzieren einer neuen zusammengesetzten Funktion, eine vollständige Kurvendiskussion oder Integralmodellierung. Der Recallnachweis gehört zum selben Kartenlernziel und macht es nicht zu einer getrennten practiceAssessment-Klassifikation.",
+      "prerequisiteReason": "Die bestehende begrenzte Grundableitungskompetenz (Polynome bis Grad 3, einfache Exponential-/Potenzfunktionen) bleibt für diese ausdrücklich anschließende Festigung angemessen. Sie verlangt nicht bereits sämtliche Produkt-/Kettenregeln, Kurven- und Integralanwendungen des Decks. Nur die zusätzliche direkte Orientierungskante entfällt; keine fachliche Vorbereitung wird hier entzogen.",
+      "cardGroups": [
+        "math_analysis_c01–c07: Ableitungsformeln",
+        "math_analysis_c08–c10: kurze Extrem-/Wendebedingungen",
+        "math_analysis_c13–c16: Stammfunktions-, Hauptsatz- und Mittelwertformeln"
+      ],
+      "directContainmentParents": [
+        {
+          "id": "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+          "title": "Integralrechnung und Differenzialgleichungen",
+          "titleEn": "Integral Calculus and Differential Equations",
+          "description": "Zusammenfassender Cluster für Einführung und Anwendungen der Integralrechnung, Vertiefung von Differenzial- und Integralrechnung, Integrationsmethoden und gewöhnliche Differenzialgleichungen.",
+          "descriptionEn": "Summarizing cluster for introduction and applications of integral calculus, deepening of differential and integral calculus, integration methods, and ordinary differential equations.",
+          "weight": 64,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "c89ba738-4b7f-459f-b060-83fe1c01f91b",
+            "76842ec4-c76b-5c03-9694-8a18acb1da0f",
+            "917aacc2-7110-58eb-a594-0a5c6aec13cc",
+            "ca708087-71f8-5fae-91c5-b80721a4208f",
+            "c25158fc-4860-59b2-8ef0-dca355f3a8b1"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "K1.4",
+              "K2.3",
+              "K3.2",
+              "K5.2"
+            ],
+            "guidingIdeas": [
+              "L1",
+              "L2",
+              "L4"
+            ],
+            "phase": "Q1"
+          },
+          "competencyRefs": [
+            "PROCESS.K1",
+            "PROCESS.K2",
+            "PROCESS.K3",
+            "PROCESS.K5"
+          ],
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "treeOrder": 10
+          },
+          "type": "cluster"
+        }
+      ],
+      "retainedPreparationDefinitions": [
+        {
+          "id": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+          "title": "Ableitungen elementarer Funktionen berechnen",
+          "titleEn": "Calculate derivatives of elementary functions",
+          "description": "Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+          "descriptionEn": "The learner can use the structure of polynomial functions up to degree 3 and simple exponential and power functions to select the appropriate differentiation rule and calculate the derivative step by step.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "b42bdfcc-3db7-5697-8b3e-69e50962ca86"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "K2.1",
+              "K5.2"
+            ],
+            "guidingIdeas": [
+              "L1"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "type": "atomic",
+          "semanticAtomic": true,
+          "resourceLinks": [
+            {
+              "type": "goal-visualization",
+              "resourceType": "image",
+              "role": "primary",
+              "skillpilotId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "title": "Visualisierung: Ableitungen elementarer Funktionen berechnen",
+              "url": "/assets/goal-visualizations/mathematik/858113c5-e53b-57bb-b01f-ba95c3ddcb6f/858113c5-e53b-57bb-b01f-ba95c3ddcb6f.jpg",
+              "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+              "description": "Visualisierung zum Lernziel: Ableitungen elementarer Funktionen berechnen.",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Ableitungen elementarer Funktionen berechnen\". Die lernende Person kann bei ganzrationalen Funktionen bis Grad 3 sowie einfachen Exponential- und Potenzfunktionen aus dem Aufbau des Funktionsterms die passende Ableitungsregel auswählen und damit die Ableitung schrittweise berechnen.",
+              "lang": "de",
+              "license": "AI-generated, SkillPilot-curated",
+              "reviewStatus": "pilot"
+            }
+          ]
+        }
+      ],
+      "deckBindings": [
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.de.json",
+          "sha256": "85be5a28d8a1f947c727bdd37fc216f3d8817f1567d0ca3c3a373931e648d3fa"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.en.json",
+          "sha256": "4b854f3fa5f9d3c57c5e7c3a3f100163d6c28775e5dd1386aca55362a6a8c106"
+        }
+      ],
+      "deckDe": {
+        "deckId": "de_gymnasium_math_analysis_core",
+        "title": "Analysis-Core - Kernaussagen",
+        "cards": [
+          {
+            "id": "math_analysis_c01",
+            "front": "Ableitungsregel für Potenzen: $f(x) = x^n$",
+            "back": "$f'(x) = n \\cdot x^{n-1}$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c02",
+            "front": "Produktregel: \n\n$f(x) = u(x) \\cdot v(x)$",
+            "back": "$f'(x) = u'(x) \\cdot v(x) + u(x) \\cdot v'(x)$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c03",
+            "front": "Kettenregel: $f(x) = u(v(x))$",
+            "back": "$f'(x) = u'(v(x)) \\cdot v'(x)$\n\nÄußere Ableitung $\\cdot$ Innere Ableitung.",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c04",
+            "front": "Ableitung e-Funktion: \n\n$f(x) = e^{kx}$",
+            "back": "$f'(x) = k \\cdot e^{kx}$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c05",
+            "front": "Ableitung Logarithmus: \n\n$f(x) = \\ln(x)$",
+            "back": "$f'(x) = \\frac{1}{x}$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c06",
+            "front": "Ableitung Sinus: \n\n$f(x) = \\sin(x)$",
+            "back": "$f'(x) = \\cos(x)$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c07",
+            "front": "Ableitung Kosinus: \n\n$f(x) = \\cos(x)$",
+            "back": "$f'(x) = -\\sin(x)$",
+            "category": "Ableitung",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c08",
+            "front": "Notwendige Bedingung: \n\nExtremstelle bei $x_0$",
+            "back": "$f'(x_0) = 0$",
+            "category": "Kurvendiskussion",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c09",
+            "front": "Hinreichende Bedingung: \n\nHochpunkt bei $x_0$",
+            "back": "$f'(x_0) = 0$ und $f''(x_0) < 0$.\n\nAlternativ: Vorzeichenwechsel von + nach -.",
+            "category": "Kurvendiskussion",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c10",
+            "front": "Notwendige Bedingung: \n\nWendestelle bei $x_0$",
+            "back": "$f''(x_0) = 0$",
+            "category": "Kurvendiskussion",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c13",
+            "front": "Stammfunktion von $f(x) = x^n$ \n\n(für $n \\neq -1$)",
+            "back": "$F(x) = \\frac{1}{n+1} x^{n+1}$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c14",
+            "front": "Stammfunktion von $f(x) = \\frac{1}{x}$",
+            "back": "$F(x) = \\ln(|x|)$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c15",
+            "front": "Hauptsatz der Analysis (bestimmtes Integral)",
+            "back": "$\\int_a^b f(x) \\, dx = F(b) - F(a)$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c16",
+            "front": "Mittelwert einer Funktion auf $[a; b]$",
+            "back": "$\\bar{m} = \\frac{1}{b-a} \\int_a^b f(x) \\, dx$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "deckEn": {
+        "deckId": "de_gymnasium_math_analysis_core",
+        "title": "Core Analysis - Key Statements",
+        "cards": [
+          {
+            "id": "math_analysis_c01",
+            "front": "Power rule for derivatives: $f(x) = x^n$",
+            "back": "$f'(x) = n \\cdot x^{n-1}$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c02",
+            "front": "Product rule:\n\n$f(x) = u(x) \\cdot v(x)$",
+            "back": "$f'(x) = u'(x) \\cdot v(x) + u(x) \\cdot v'(x)$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c03",
+            "front": "Chain rule: $f(x) = u(v(x))$",
+            "back": "$f'(x) = u'(v(x)) \\cdot v'(x)$\n\nOuter derivative $\\cdot$ inner derivative.",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c04",
+            "front": "Derivative of the exponential function:\n\n$f(x) = e^{kx}$",
+            "back": "$f'(x) = k \\cdot e^{kx}$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c05",
+            "front": "Derivative of logarithm:\n\n$f(x) = \\ln(x)$",
+            "back": "$f'(x) = \\frac{1}{x}$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c06",
+            "front": "Derivative of sine:\n\n$f(x) = \\sin(x)$",
+            "back": "$f'(x) = \\cos(x)$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c07",
+            "front": "Derivative of cosine:\n\n$f(x) = \\cos(x)$",
+            "back": "$f'(x) = -\\sin(x)$",
+            "category": "Derivative",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c08",
+            "front": "Necessary condition:\n\nExtremum at $x_0$",
+            "back": "$f'(x_0) = 0$",
+            "category": "Curve Analysis",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c09",
+            "front": "Sufficient condition:\n\nLocal maximum at $x_0$",
+            "back": "$f'(x_0) = 0$ and $f''(x_0) < 0$.\n\nAlternatively: sign change from + to -.",
+            "category": "Curve Analysis",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c10",
+            "front": "Necessary condition:\n\nInflection point at $x_0$",
+            "back": "$f''(x_0) = 0$",
+            "category": "Curve Analysis",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c13",
+            "front": "Antiderivative of $f(x) = x^n$\n\n(for $n \\neq -1$)",
+            "back": "$F(x) = \\frac{1}{n+1} x^{n+1}$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c14",
+            "front": "Antiderivative of $f(x) = \\frac{1}{x}$",
+            "back": "$F(x) = \\ln(|x|)$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c15",
+            "front": "Fundamental theorem of calculus (definite integral)",
+            "back": "$\\int_a^b f(x) \\ dx = F(b) - F(a)$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          },
+          {
+            "id": "math_analysis_c16",
+            "front": "Average value of a function on $[a; b]$",
+            "back": "$\\bar{m} = \\frac{1}{b-a} \\int_a^b f(x) \\ dx$",
+            "category": "Integral",
+            "tags": [
+              "GK",
+              "LK"
+            ]
+          }
+        ],
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      "activeCardCount": 14,
+      "typeBoundary": "Memory is the semantic purpose of this same goal. Its own Verified Recall result is still required; it is not ordinary application mastery, another exam goal, or recognition of any origin goal.",
+      "validityLimit": "This is a fresh four-goal SemanticKind judgement, not a new complete card-content, origin-coverage, A/M/D/P/V, book, practice, source or milestone approval."
+    }
+  ],
+  "technicalVerification": {
+    "nativeTypeScript": {
+      "status": "hypothetical-kind-input-validation-no-application",
+      "bindings": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "sha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019"
+        },
+        {
+          "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json",
+          "sha256": "19bb5102c3644b3810a097a4e4fa72bd61df096bc61e78d3c7f6861cbdfa5f16"
+        },
+        {
+          "path": "app/scripts/goalBookModel.ts",
+          "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+          "sha256": "70e3b2092ee839b7aac6c9fb32fcf2c2ffc7b74135361c05306c8bc03511601a"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+          "sha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968"
+        },
+        {
+          "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+          "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+        }
+      ],
+      "operationCount": 5,
+      "changedGoalCount": 4,
+      "originalCounts": {
+        "curricularAtomic": 807,
+        "curricularArea": 241,
+        "practiceAssessment": 178,
+        "programStructure": 7,
+        "memory": 6,
+        "runtimeSupport": 11,
+        "orientation": 2,
+        "total": 1252
+      },
+      "successorCounts": {
+        "curricularAtomic": 807,
+        "curricularArea": 241,
+        "practiceAssessment": 178,
+        "programStructure": 7,
+        "memory": 6,
+        "runtimeSupport": 11,
+        "orientation": 2,
+        "total": 1252
+      },
+      "rows": [
+        {
+          "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+          "ledgerDecisionPointer": "/decisions/152",
+          "originalGoal": {
+            "id": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "title": "Lernkarten - Komplexe Zahlen und Parameter",
+            "titleEn": "Flashcards - Complex Numbers and Parameters",
+            "description": "Die lernende Person festigt zentrale Darstellungen, Rechenregeln und geometrische Deutungen komplexer Zahlen einschließlich Betrag, Polarform und Einheitswurzeln. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key representations, calculation rules, and geometric interpretations of complex numbers, including modulus, polar form, and roots of unity. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_complex_parameter",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_complex_parameter.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_complex_parameter.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "proposedGoal": {
+            "id": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "title": "Lernkarten - Komplexe Zahlen und Parameter",
+            "titleEn": "Flashcards - Complex Numbers and Parameters",
+            "description": "Die lernende Person festigt zentrale Darstellungen, Rechenregeln und geometrische Deutungen komplexer Zahlen einschließlich Betrag, Polarform und Einheitswurzeln. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key representations, calculation rules, and geometric interpretations of complex numbers, including modulus, polar form, and roots of unity. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_complex_parameter",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_complex_parameter.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_complex_parameter.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "oldDecision": {
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "sourceFingerprint": "sha256:dadead25efdfd7f5ab8c180fa79a8f8e16ed72075602fdc213b92df1336d27b7",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          },
+          "proposedDecision": {
+            "goalId": "1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+            "sourceFingerprint": "sha256:ea8cd31250b903ddaadb5f75ca907b139b44c40ca9570e30732c2eea69046ed1",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          }
+        },
+        {
+          "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "ledgerDecisionPointer": "/decisions/917",
+          "originalGoal": {
+            "id": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "title": "Lernkarten - Lineare Algebra und Analytische Geometrie",
+            "titleEn": "Flashcards - Linear Algebra and Analytic Geometry",
+            "description": "Die lernende Person festigt zentrale Formeln und Begriffe zu Vektoren, Geraden, Ebenen und Matrizen. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key formulas and concepts for vectors, lines, planes, and matrices. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_linalg_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_linalg_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_linalg_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "b9bbd2a8-1379-5ffb-817f-41467d48abef",
+              "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "proposedGoal": {
+            "id": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "title": "Lernkarten - Lineare Algebra und Analytische Geometrie",
+            "titleEn": "Flashcards - Linear Algebra and Analytic Geometry",
+            "description": "Die lernende Person festigt zentrale Formeln und Begriffe zu Vektoren, Geraden, Ebenen und Matrizen. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key formulas and concepts for vectors, lines, planes, and matrices. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_linalg_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_linalg_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_linalg_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "oldDecision": {
+            "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "sourceFingerprint": "sha256:2169494752e108ae14ce84222bb3918afe3a0a5a8e411ffbfb1cfa5010eaa7d1",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          },
+          "proposedDecision": {
+            "goalId": "bd55594a-3e06-5097-8324-4f2f1349fd2a",
+            "sourceFingerprint": "sha256:9c609e259703a6c9492fbdeea22e87a68c2af76216dc616125a20e0b5a2abbfa",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          }
+        },
+        {
+          "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+          "ledgerDecisionPointer": "/decisions/1250",
+          "originalGoal": {
+            "id": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "title": "Lernkarten - Stochastik-Kernbegriffe",
+            "titleEn": "Flashcards - Core Stochastics Terms",
+            "description": "Die lernende Person festigt zentrale Begriffe und Formeln zu Wahrscheinlichkeiten, Zufallsgrößen, Verteilungen und Hypothesentests. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key concepts and formulas for probabilities, random variables, distributions, and hypothesis tests. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_stochastics_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_stochastics_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_stochastics_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "proposedGoal": {
+            "id": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "title": "Lernkarten - Stochastik-Kernbegriffe",
+            "titleEn": "Flashcards - Core Stochastics Terms",
+            "description": "Die lernende Person festigt zentrale Begriffe und Formeln zu Wahrscheinlichkeiten, Zufallsgrößen, Verteilungen und Hypothesentests. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key concepts and formulas for probabilities, random variables, distributions, and hypothesis tests. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_stochastics_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_stochastics_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_stochastics_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "oldDecision": {
+            "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "sourceFingerprint": "sha256:87edf2ffc2618aaa3ad1978aaa0f8cdd19f7fadb5219f9414371c9559673958b",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          },
+          "proposedDecision": {
+            "goalId": "ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+            "sourceFingerprint": "sha256:501b62dbe1611f5e1b645d1afe9d2e0ea3db6a13c328943030d05d0b26d476f4",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          }
+        },
+        {
+          "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+          "ledgerDecisionPointer": "/decisions/992",
+          "originalGoal": {
+            "id": "ca708087-71f8-5fae-91c5-b80721a4208f",
+            "title": "Lernkarten - Analysis-Kernregeln",
+            "titleEn": "Flashcards - Core Analysis Rules",
+            "description": "Die lernende Person festigt zentrale Ableitungs- und Stammfunktionsregeln sowie Bedingungen für Extrem- und Wendestellen und den Hauptsatz der Analysis. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key differentiation and antiderivative rules, criteria for extrema and inflection points, and the fundamental theorem of calculus. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_analysis_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_analysis_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_analysis_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "proposedGoal": {
+            "id": "ca708087-71f8-5fae-91c5-b80721a4208f",
+            "title": "Lernkarten - Analysis-Kernregeln",
+            "titleEn": "Flashcards - Core Analysis Rules",
+            "description": "Die lernende Person festigt zentrale Ableitungs- und Stammfunktionsregeln sowie Bedingungen für Extrem- und Wendestellen und den Hauptsatz der Analysis. Verstehen und Anwenden werden in den zugehörigen Lernzielen geübt.",
+            "descriptionEn": "The learner consolidates key differentiation and antiderivative rules, criteria for extrema and inflection points, and the fundamental theorem of calculus. Understanding and application are practiced in the related learning goals.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "srs-deck:de_gymnasium_math_analysis_core",
+              "memorization"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "vocabularySource": "/data/de_gymnasium_math_flashcards_analysis_core.de.json",
+              "vocabularySourceEn": "/data/de_gymnasium_math_flashcards_analysis_core.en.json"
+            },
+            "contains": [],
+            "requires": [
+              "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K5"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "GLOBAL"
+            },
+            "nodeKind": "memory",
+            "type": "atomic"
+          },
+          "oldDecision": {
+            "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+            "sourceFingerprint": "sha256:5094110049550b5888c45b1624a7f5bc72169ef695f6c25f33e1efef17fc3589",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          },
+          "proposedDecision": {
+            "goalId": "ca708087-71f8-5fae-91c5-b80721a4208f",
+            "sourceFingerprint": "sha256:4c635d0f6182c2d358c1a332ffedac9175889da641d5ef02d35c5b7338c9d7f4",
+            "semanticKind": "memory",
+            "decisionStatus": "authoritative",
+            "decisionBasis": "reviewed-current-pilot-memory"
+          }
+        }
+      ],
+      "checks": [
+        {
+          "name": "original current1252 ledger and source",
+          "outcome": "accepted",
+          "decisionCount": 1252
+        },
+        {
+          "name": "old decisions cannot carry forward to corrected candidate",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal 1eb0b286-2dac-5164-8d39-cd36c5704bc4; expected sha256:ea8cd31250b903ddaadb5f75ca907b139b44c40ca9570e30732c2eea69046ed1."
+        },
+        {
+          "name": "four independently reconsidered memory decisions in unchanged ledger form",
+          "outcome": "accepted",
+          "decisionCount": 1252
+        },
+        {
+          "name": "old fingerprint individually rejected: 1eb0b286-2dac-5164-8d39-cd36c5704bc4",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal 1eb0b286-2dac-5164-8d39-cd36c5704bc4; expected sha256:ea8cd31250b903ddaadb5f75ca907b139b44c40ca9570e30732c2eea69046ed1."
+        },
+        {
+          "name": "old fingerprint individually rejected: bd55594a-3e06-5097-8324-4f2f1349fd2a",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal bd55594a-3e06-5097-8324-4f2f1349fd2a; expected sha256:9c609e259703a6c9492fbdeea22e87a68c2af76216dc616125a20e0b5a2abbfa."
+        },
+        {
+          "name": "old fingerprint individually rejected: ffbdd7a9-45c6-54f1-988c-58256ca05eeb",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal ffbdd7a9-45c6-54f1-988c-58256ca05eeb; expected sha256:501b62dbe1611f5e1b645d1afe9d2e0ea3db6a13c328943030d05d0b26d476f4."
+        },
+        {
+          "name": "old fingerprint individually rejected: ca708087-71f8-5fae-91c5-b80721a4208f",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal ca708087-71f8-5fae-91c5-b80721a4208f; expected sha256:4c635d0f6182c2d358c1a332ffedac9175889da641d5ef02d35c5b7338c9d7f4."
+        },
+        {
+          "name": "invented reviewMethod forbidden",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/reviewMethod must be equal to constant; data must match exactly one schema in oneOf."
+        },
+        {
+          "name": "invented decisionBasis forbidden",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/152/decisionBasis must be equal to one of the allowed values; data must match exactly one schema in oneOf."
+        },
+        {
+          "name": "review evidence must stay external to closed decision record",
+          "outcome": "rejected",
+          "diagnostic": "Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/152 must NOT have additional properties; data must match exactly one schema in oneOf."
+        }
+      ],
+      "sourceApplied": false,
+      "ledgerApplied": false,
+      "qaValidityClaimed": false
+    },
+    "pythonNativeFingerprintCrossCheck": {
+      "implementation": {
+        "path": "scripts/compile_curriculum_release_model.py",
+        "sha256": "1bc906f22482ab5c012a02c63e81c607ee1f8198e6e09848a821016ddde06ae5"
+      },
+      "originalAndCandidateComparisons": 8,
+      "allEqualToTypeScript": true,
+      "fullCompilerRun": false
+    },
+    "reproducer": {
+      "path": "tmp/math-memory-kind-review.mts",
+      "sha256": "3806526897cfb8d4ec6a5a4e991c8c555423ab97c9f7188a449c661fd4bc2f5e",
+      "source": "import assert from 'node:assert/strict'\nimport { readFileSync, writeFileSync } from 'node:fs'\nimport { createHash } from 'node:crypto'\nimport { fingerprintSemanticKindSourceGoal, parseSemanticKindLedger } from '../app/scripts/goalBookModel.ts'\n\nconst sourcePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'\nconst ledgerPath = 'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json'\nconst proposalPath = 'docs/dev/ci-graph-repairs/math-memory-prerequisites-repair-proposal-2026-11-06.json'\nconst read = (p: string) => JSON.parse(readFileSync(p, 'utf8'))\nconst digest = (b: Buffer | string) => createHash('sha256').update(b).digest('hex')\nconst binding = (path: string) => ({ path, sha256: digest(readFileSync(path)) })\nconst original = read(sourcePath), ledger = read(ledgerPath), proposal = read(proposalPath)\nassert.equal(digest(readFileSync(sourcePath)), proposal.source.sha256)\nfor (const pinned of proposal.sourceVersions.filter((x: any) => x.path.includes('memory-'))) {\n  assert.equal(digest(readFileSync(pinned.path)), pinned.sha256)\n}\nconst after = structuredClone(original)\nconst changes = new Set<string>()\nfor (const op of proposal.operations) {\n  const [, , index, field] = op.path.split('/')\n  const goal = after.goals[Number(index)]\n  assert.equal(op.operation, 'replace')\n  assert.equal(field, 'requires')\n  assert.equal(goal.id, op.guardGoalId)\n  assert.deepEqual(goal.requires, op.guardRequiresBefore)\n  goal.requires = structuredClone(op.value)\n  changes.add(goal.id)\n}\nassert.equal(changes.size, 4)\nassert.equal(proposal.operations.length, 5)\nconst successor = structuredClone(ledger)\nconst rows = [...changes].map(id => {\n  const beforeGoal = original.goals.find((g: any) => g.id === id)\n  const afterGoal = after.goals.find((g: any) => g.id === id)\n  assert.deepEqual({ ...beforeGoal, requires: undefined }, { ...afterGoal, requires: undefined })\n  assert.equal(afterGoal.nodeKind, 'memory')\n  assert.deepEqual(afterGoal.contains, [])\n  assert.equal(Object.hasOwn(afterGoal, 'examData'), false)\n  const index = ledger.decisions.findIndex((d: any) => d.goalId === id)\n  const old = ledger.decisions[index]\n  assert.equal(old.semanticKind, 'memory')\n  assert.equal(old.decisionBasis, 'reviewed-current-pilot-memory')\n  assert.equal(old.sourceFingerprint, fingerprintSemanticKindSourceGoal(beforeGoal))\n  const fresh = { ...old, sourceFingerprint: fingerprintSemanticKindSourceGoal(afterGoal) }\n  assert.notEqual(old.sourceFingerprint, fresh.sourceFingerprint)\n  successor.decisions[index] = fresh\n  return { goalId: id, ledgerDecisionPointer: `/decisions/${index}`, originalGoal: beforeGoal,\n    proposedGoal: afterGoal, oldDecision: old, proposedDecision: fresh }\n})\nconst parse = (l: any, s: any) => parseSemanticKindLedger(l, s, original.landscapeId, sourcePath)\nconst checks: any[] = []\nfunction pass(name: string, l: any, s: any) {\n  const result = parse(l, s)\n  checks.push({ name, outcome: 'accepted', decisionCount: result.semanticKindByGoalId.size })\n}\nfunction reject(name: string, l: any, s: any, diagnostic: RegExp) {\n  let message: string | undefined\n  try { parse(l, s) } catch (e) { message = String(e) }\n  assert.ok(message, name)\n  assert.match(message, diagnostic)\n  checks.push({ name, outcome: 'rejected', diagnostic: message })\n}\npass('original current1252 ledger and source', ledger, original)\nreject('old decisions cannot carry forward to corrected candidate', ledger, after, /stale semantic-kind decision/)\npass('four independently reconsidered memory decisions in unchanged ledger form', successor, after)\nfor (const row of rows) {\n  const onlyOneOld = structuredClone(successor)\n  const i = onlyOneOld.decisions.findIndex((x: any) => x.goalId === row.goalId)\n  onlyOneOld.decisions[i] = row.oldDecision\n  reject(`old fingerprint individually rejected: ${row.goalId}`, onlyOneOld, after, /stale semantic-kind decision/)\n}\nconst badMethod = { ...successor, reviewMethod: 'fresh-memory-recheck-v1' }\nreject('invented reviewMethod forbidden', badMethod, after, /closed JSON Schema/)\nconst badBasis = structuredClone(successor)\nbadBasis.decisions.find((x: any) => x.goalId === rows[0].goalId).decisionBasis = 'reviewed-current-semantic-recheck-memory'\nreject('invented decisionBasis forbidden', badBasis, after, /closed JSON Schema/)\nconst extraMetadata = structuredClone(successor)\nextraMetadata.decisions.find((x: any) => x.goalId === rows[0].goalId).independentReview = 'not a schema field'\nreject('review evidence must stay external to closed decision record', extraMetadata, after, /closed JSON Schema/)\nconst result = {\n  status: 'hypothetical-kind-input-validation-no-application',\n  bindings: [sourcePath, ledgerPath, proposalPath, 'app/scripts/goalBookModel.ts',\n    'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',\n    'contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json',\n    'contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'].map(binding),\n  operationCount: proposal.operations.length, changedGoalCount: rows.length,\n  originalCounts: ledger.counts, successorCounts: successor.counts,\n  rows, checks, sourceApplied: false, ledgerApplied: false, qaValidityClaimed: false,\n}\nfor (const pin of result.bindings) assert.equal(digest(readFileSync(pin.path)), pin.sha256)\nwriteFileSync('tmp/math-memory-kind-native-check.json', JSON.stringify(result, null, 2) + '\\n')\nconsole.log(JSON.stringify({ checks: checks.length, rows: rows.length, decisions: ledger.decisions.length,\n  sourceApplied: false, ledgerApplied: false, checksSummary: checks.map(x => ({ name: x.name, outcome: x.outcome })) }))\n",
+      "command": "app/node_modules/.bin/tsx tmp/math-memory-kind-review.mts"
+    }
+  },
+  "applicationConditions": [
+    "Root must independently accept this bounded fresh classification judgement and replay exactly the five guarded operations against the pinned original source.",
+    "Only the four individually reviewed successor decisions may then replace their matching old records in the active current ledger. Their semanticKind, decisionStatus and decisionBasis stay memory/authoritative/reviewed-current-pilot-memory; reviewMethod and counts stay unchanged.",
+    "Retain the original ledger bytes/history and this new explicit receipt; do not present original fingerprints as matching the corrected source.",
+    "Run all actual integration/source/applicability/card/book/CQR/floor checks required for the applied candidate. This receipt does not claim Math M7 restoration or approve the remaining Math graph defects."
+  ],
+  "excludedClaims": [
+    "No current source, active ledger, card, review history or learner state has been changed by this review.",
+    "No new D/P/A/M/V, source fidelity, practice result, card-content release, whole-book or publication approval.",
+    "No new Units, C(q), implicit mastery, SRS rule, due-driven reopening or additional card exam goal.",
+    "No automatic reuse of original quality evidence from unchanged kind; no identity A/B/C compatibility capability.",
+    "No assertion that the type schema itself proves mathematical validity of every abbreviated formula or educational effectiveness."
+  ]
+}
