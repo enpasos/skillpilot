@@ -197,18 +197,19 @@ export function checkSkillGraphIntegrity(
     const goalId = parts.length === 2 ? parts[1] : raw
     if (!UUID.test(goalId)) defer(source.key, add('G01a', 'INVALID_REFERENCE_UUID', source,
       `${relation} reference ${raw} does not have a UUID goal endpoint.`))
-    let key: string
-    if (parts.length === 2) key = `${parts[0]}:${goalId}`
-    else if (definitions.has(`${source.landscapeId}:${goalId}`)) key = `${source.landscapeId}:${goalId}`
-    else {
-      const candidates = [...(byId.get(goalId) ?? [])]
-      if (candidates.length !== 1) {
-        defer(source.key, add('G05', candidates.length ? 'AMBIGUOUS_REFERENCE' : 'MISSING_REFERENCE', source,
-          `${relation} reference ${raw} has ${candidates.length} global logical owners.`, { witness: sorted(candidates) }))
-        return
-      }
-      key = candidates[0]
+    const matches = [...(UUID.test(goalId) ? byUuidValue.get(goalId.toLowerCase()) : byId.get(goalId)) ?? []]
+    const requestedOwner = parts.length === 2 ? parts[0] : source.landscapeId
+    const local = matches.filter((key) => definitions.get(key)![0].landscapeId === requestedOwner)
+    // Qualification never falls back to another owner. Within the selected
+    // namespace, UUID textual case does not change the referenced value.
+    const candidates = parts.length === 2 || local.length ? local : matches
+    if (candidates.length !== 1) {
+      defer(source.key, add('G05', candidates.length ? 'AMBIGUOUS_REFERENCE' : 'MISSING_REFERENCE', source,
+        `${relation} reference ${raw} has ${candidates.length} matching logical definitions.`,
+        { witness: sorted(candidates) }))
+      return
     }
+    const key = candidates[0]
     if (!definitions.has(key)) {
       defer(source.key, add('G05', 'MISSING_REFERENCE', source, `${relation} reference ${raw} does not resolve exactly.`))
       return

@@ -49,6 +49,13 @@ for (const reference of [id(2), key(B, 2)]) {
   assert.deepEqual(report.checkedGoalKeys, [key(A, 1), key(B, 2)])
 }
 
+// References denote UUID values, while original authored ID text is retained.
+assertCompletePass(one([{ id: A, weight: 1, requires: [C.toUpperCase()] }, { id: C, weight: 1 }]))
+assertCompletePass(checkSkillGraphIntegrity([
+  landscape([{ id: C, weight: 1, requires: [`${B}:${A.toUpperCase()}`] }]),
+  landscape([{ id: A, weight: 1 }], B),
+], [A]))
+
 // A foreign containment ancestor is needed even when there is no outgoing
 // reference to it. Its unrelated, invalid sibling is deliberately not imported.
 const ancestorScope = checkSkillGraphIntegrity([
