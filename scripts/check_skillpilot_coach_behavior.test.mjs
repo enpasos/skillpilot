@@ -27,6 +27,20 @@ test("current package and live instructions separate implicit completion from pr
   assert.doesNotThrow(() => assertCurrentCompletionBehavior(completionSource));
 });
 
+test("mastered-intermediate cuts cannot return alongside complete prerequisite paths", () => {
+  for (const field of Object.keys(completionSource)) {
+    for (const obsolete of [
+      "A mastered goal no longer demands its own prerequisites.",
+      "Within the scope, mastered goals no longer demand their own prerequisites.",
+      "Mastered goals end their own prerequisite demand.",
+    ]) {
+      assert.throws(() => assertCurrentCompletionBehavior({
+        ...completionSource, [field]: `${completionSource[field]}\n${obsolete}`,
+      }), /must not cut prerequisite paths/u);
+    }
+  }
+});
+
 test("obsolete mandatory preparation cannot return alongside the correct completion rules", () => {
   for (const field of Object.keys(completionSource)) {
     for (const obsolete of [
@@ -62,8 +76,8 @@ test("completion guards detect missing mastery barriers, backend authority, scop
       "Check prerequisites separately", /skill must prohibit mastery transfer/u],
     ["skill", /backend alone determines remaining work/u,
       "coach determines remaining work", /defer remaining work/u],
-    ["policy", /A mastered goal no longer demands its own prerequisites/u,
-      "Always require every transitive prerequisite", /Mastered intermediate goals/u],
+    ["policy", /Prerequisite paths remain complete through mastered intermediate goals/u,
+      "A mastered goal ends every prerequisite path", /Prerequisite demand must include/u],
     ["policy", /full committed Personal Curriculum/u,
       "current visible learning focus", /full authoritative demand scope/u],
     ["policy", /Implicit completion needs no passed assessment/u,

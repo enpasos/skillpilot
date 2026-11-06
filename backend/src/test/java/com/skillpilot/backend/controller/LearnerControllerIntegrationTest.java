@@ -745,11 +745,8 @@ public class LearnerControllerIntegrationTest {
                 List.of(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID),
                 Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"),
                 CANONICAL_PHYSICS_HE_CROSS_STAGE_GK_PERSONAL_CONFIG,
-                // Inelastic collisions needs exactly the two mastered mapped
-                // predecessors. Simple collisions still has another direct,
-                // unmastered requirement; earlier ancestors of the mastered
-                // predecessors no longer block either route on their own.
-                Set.of(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID));
+                // The two mapped intermediates retain their earlier preparation.
+                Set.of());
 
         JsonNode root = objectMapper.readTree(responseBody);
         JsonNode planned = root.path("goals").path("planned");
@@ -1919,8 +1916,7 @@ public class LearnerControllerIntegrationTest {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setStrictMode(true);
         learnerRepository.save(learner);
-        // A mastered legacy predecessor ends its own preparation demand without
-        // certifying that preparation. Other direct requirements still block.
+        // A mastered legacy predecessor retains its full earlier preparation.
         // Preserve the exact initial availability before adding missing preparation.
         JsonNode initial = objectMapper.readTree(getLearnerStateBody(
                 plannedIds, originallyStoredIds, personalCurriculum));

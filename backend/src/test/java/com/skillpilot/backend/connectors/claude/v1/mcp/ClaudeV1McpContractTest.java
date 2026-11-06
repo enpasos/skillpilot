@@ -600,7 +600,7 @@ class ClaudeV1McpContractTest {
     void completionInstructionsFollowAutomaticDemandWithoutRequiringAnAssessmentPass() {
         String instructions = contractAdapter.serverInstructions().replaceAll("\\s+", " ");
         assertTrue(instructions.contains("Section completion is scoped work completion, never new mastery"));
-        assertTrue(instructions.contains("mastered goals no longer demand their own prerequisites"));
+        assertTrue(instructions.contains("prerequisite paths remain complete through mastered intermediate goals"));
         assertTrue(instructions.contains("non-assessment goals with no remaining demand are implicitly completed"));
         assertTrue(instructions.contains("does not certify prerequisite competence or change saved goal results"));
         assertTrue(instructions.contains("A section with no required assessments may also be complete"));

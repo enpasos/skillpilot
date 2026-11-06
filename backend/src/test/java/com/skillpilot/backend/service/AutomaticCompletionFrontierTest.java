@@ -110,6 +110,8 @@ class AutomaticCompletionFrontierTest {
         ReflectionTestUtils.setField(service, "completionApplicationService", completion);
         var resolver = mock(CompletionCanonicalGraphResolver.class);
         when(resolver.load("base")).thenReturn(graph);
+        when(resolver.loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap())).thenReturn(graph);
         ReflectionTestUtils.setField(service, "completionCanonicalGraphResolver", resolver);
     }
 
@@ -120,13 +122,13 @@ class AutomaticCompletionFrontierTest {
         verify(masteryRepository, never()).save(any());
     }
 
-    @Test void masteredIntermediateEndsOnlyItsOwnPreparationDemandAndUsesOneMasteryRead() {
+    @Test void masteredIntermediateRetainsTransitivePreparationDemandAndUsesOneMasteryRead() {
         mastery.put("B", 1.0);
         clearInvocations(masteryRepository);
-        assertThat(ids(service.getRichFrontier(LEARNER))).contains("C").doesNotContain("A", "B");
+        assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("B", "C");
         verify(masteryRepository, times(1)).findByLearner_SkillpilotId(LEARNER);
-        assertThat(service.getFrontier(LEARNER)).contains("C").doesNotContain("A", "B");
-        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A", "C");
+        assertThat(service.getFrontier(LEARNER)).contains("A").doesNotContain("B", "C");
+        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A").doesNotContain("C");
         mastery.clear();
         assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("C");
         verify(masteryRepository, never()).save(any());
@@ -138,17 +140,17 @@ class AutomaticCompletionFrontierTest {
         assertThat(service.getFrontier(LEARNER)).containsExactly("A");
         assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
         mastery.put("B", 1.0);
-        assertThat(service.getFrontier(LEARNER)).isEmpty();
-        assertThat(service.getRichFrontier(LEARNER)).isEmpty();
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
         assertThat(ids(service.getUncompactedRichFrontierForFocus(LEARNER, List.of("A"))))
                 .containsExactly("A");
     }
 
-    @Test void disablingDirectAssessmentOffersDoesNotRestoreUnneededWork() {
+    @Test void disablingDirectAssessmentOffersRetainsTransitiveRequiredPreparation() {
         learner.setUseAssessmentShortcuts(false);
         mastery.put("B", 1.0);
-        assertThat(service.getFrontier(LEARNER)).contains("C").doesNotContain("A", "O", "Z");
-        assertThat(ids(service.getRichFrontier(LEARNER))).contains("C").doesNotContain("A", "O", "Z");
+        assertThat(service.getFrontier(LEARNER)).contains("A").doesNotContain("C", "O", "Z");
+        assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("C", "O", "Z");
     }
 
     @Test void releasedExamWithoutPreparationRemainsNormallyAvailableWhenShortcutOffersAreOff() {
@@ -222,7 +224,9 @@ class AutomaticCompletionFrontierTest {
     @Test void implicitFocusCompletionOffersTheNextScopeWithActualRemainingWork() {
         focus.clear();
         focus.add("A");
-        mastery.put("B", 1.0);
+        mastery.put("Q", 1.0);
+        graph.get("O").setSemanticKind(null);
+        graph.get("O").setNodeKind("exam");
         var state = service.getCoachLearnerState(LEARNER);
         assertThat(state.goals().scope_completed()).isTrue();
         assertThat(state.goals().scope().mastered_atomic()).isZero();
@@ -230,6 +234,19 @@ class AutomaticCompletionFrontierTest {
         assertThat(ids(state.stateMachine().goalOptions())).contains("ROOT").doesNotContain("MIDDLE");
         assertThat(focus).containsExactly("A");
         assertThat(learner.getActiveGoalId()).isNull();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test void masteredIntermediateCannotCompleteFocusOrTriggerWideningWhileItsAssessmentIsOpen() {
+        focus.clear();
+        focus.add("A");
+        mastery.put("B", 1.0);
+        var state = service.getCoachLearnerState(LEARNER);
+        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+        assertThat(ids(state.frontier())).containsExactly("A");
+        assertThat(focus).containsExactly("A");
+        assertThat(mastery).containsOnlyKeys("B");
         verify(masteryRepository, never()).save(any());
     }
 
