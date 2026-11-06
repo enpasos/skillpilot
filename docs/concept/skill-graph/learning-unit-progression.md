@@ -4,10 +4,18 @@
 may deliberately declare that one **whole unit** is a prerequisite of another.
 
 **Decision boundary.** Recursive recognition and completion are accepted.
-Whether whole-unit prerequisites express regular learning order or also impose
-technical access locks remains **undecided**, including their interaction with
-deliberate direct assessment access. The gated profile below is a conditional
-example, not an activated rule or a new general requirement.
+The didactic purpose clarified on **6 November 2026** is also binding: the
+planned transition to learning that relies on a unit's application promise
+requires a dependable assessment of that promise first. Whether authored
+whole-unit prerequisites additionally impose technical access locks remains
+**undecided**, including their interaction with deliberate direct assessment
+access. The gated profile below is a conditional example, not an activated rule.
+
+The [design criteria and examples](learning-unit-design-and-examples.md)
+describe the learning boundary. This purpose does not turn every atomic
+`requires` edge into a whole-unit requirement. Independent branches can continue;
+an ordinary goal's explicit mastery does not itself pass a separately required
+unit assessment. Existing valid global mastery and recognition remain intact.
 
 ## 1. A deliberately stronger prerequisite
 

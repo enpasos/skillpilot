@@ -5,6 +5,18 @@ A **learning unit** (German: **Lerneinheit**; conceptual technical name:
 outcome matters, organises learning goals or smaller units, and declares the
 assessment and recall obligations belonging to its own promise.
 
+**Purpose clarified on 6 November 2026.** A unit establishes a dependable
+foundation for subsequent learning. Its assessments must demonstrate solid,
+independent application before the planned course builds on that foundation.
+An exposed conceptual gap calls for focused learning and reassessment; a false
+positive completion must not send learners onward with an unstable foundation.
+This is a didactic requirement, not an activation of technical access locks.
+
+The German [design criteria and worked examples](learning-unit-design-and-examples.md)
+explain this purpose through one-dimensional accelerated motion and an initial
+Class 5 number-understanding candidate. The examples are proposals for review,
+not approved curriculum partitions or assessment contracts.
+
 The structure applies recursively: a course can contain topic units, a topic
 smaller units, and a small unit atomic goals. Completion is derived from actual
 goal outcomes and required children. No unit mastery or additional learner
@@ -16,6 +28,17 @@ binary goal results, [global recognition contract](assessment-gated-completion.m
 and [graph semantics](graph-definition.md) remain the foundation.
 
 ## 1. Learning promise and authoritative placement
+
+A boundary needs a meaningful transition: what coherent understanding and
+application must be secure before something new depends on it? A theme, dense
+prerequisite neighbourhood or existing assessment is an indicator, not a
+sufficient definition. Review prerequisite meaning first. Sparse minimal chains
+can form strong units; shared elementary prerequisites do not force every later
+application into one giant unit. Do not change edges to justify a desired cut.
+No fixed number of targets establishes a good unit, and collecting single-exam
+wrappers under a new parent does not supply the missing didactic boundary.
+A terminal unit or synthesis can also establish a meaningful independent
+application; a later consumer is not required to justify its existence.
 
 A unit identifies an outcome learners can understand, for example interpreting
 and predicting a transition process. Its motivation explains the purpose of
@@ -63,6 +86,21 @@ mastery. Missing support or ambiguous acquisition ownership is an authoring
 finding, not an empty completed unit.
 
 ## 3. Assessments at the appropriate scale
+
+Assessments follow the unit's application promise. They must distinguish
+independent modelling, explanation and suitable transfer from reproducing a
+coached solution. State essential concepts, permitted aids and expected entry
+competence. An essential misconception must not be compensated by points for
+incidental work. At the same time, a single arithmetic slip with sound reasoning
+does not automatically negate the whole competence. Express these distinctions
+in the ordinary, published task/rubric and grading contract; do not add a hidden
+second pass rule or another stored qualification. If current total-score grading
+cannot support the intended claim, redesign the assessment or narrow the claim
+before authorising recognition.
+
+On an unsuccessful attempt, explain the specific gap, offer focused learning
+and use a suitable fresh application for reassessment. This does not revoke
+unrelated valid achievements or require repeating every completed child.
 
 Every ordinary subject target in Own(U) needs
 an own local assessment consumer and independently reviewed tasks and normal

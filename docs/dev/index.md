@@ -4,8 +4,10 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
-- [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
-  Aktueller Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
+- [Lerneinheiten: gesicherter Neustart vom 6. November 2026](learning-units-restart-2026-11-06.md)
+  Aktuelle Arbeitsgrundlage: Archiv, unabhängige fachliche Entwürfe und offene Entscheidungen vor einer neuen Umsetzung.
+- [Historischer Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
+  Abgebrochene Arbeitslinie; Ergebnisse bleiben gezielt nachnutzbar, die alte Zerlegung wird nicht fortgesetzt.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
   Frühere Neuplanung mit konkreten Bestands- und ID-Befunden; durch den Lerneinheitenplan abgelöst, für gezielte Nachnutzung erhalten.
 - [Historischer Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)

@@ -23,6 +23,9 @@ learning units. This section explains both the graph and the contracts around it
 - [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
   educational units, a motivational introduction, required outcomes and
   completion derived from child units and own obligations.
+- [Lerneinheiten: Zweck, Zuschnitt und Beispiele](learning-unit-design-and-examples.md):
+  dependable application before dependent learning, assessment requirements,
+  and concrete Physics and Mathematics candidates for discussion.
 - [Learning Unit Progression](learning-unit-progression.md): explicit course
   dependencies, whole-unit ordering and the separate choice of access policy.
 - [General Goal System and Migration](general-goal-system-and-migration.md):
