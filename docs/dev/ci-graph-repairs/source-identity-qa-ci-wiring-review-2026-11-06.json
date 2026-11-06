@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-06T16:39:59.630126+00:00",
+  "purpose": "hard short CI wiring for the isolated Source-A metadata boundary and HE Math scope",
+  "status": "local-wiring-boundary-preparation-math-and-workflow-checks-pass",
+  "commitOrPushPerformedByThisAgent": false,
+  "remoteCiAcceptanceClaimed": false,
+  "runtimeActivationAllowed": false,
+  "candidateQaApproval": false,
+  "historicalManualProof": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-qa-metadata-bridge-review-2026-11-06.json",
+    "sha256": "daaf9bd6452f9d922c33c38da125ff9dce6409c77f3a2d31f3f87029bd2738d0",
+    "allNineCodeAndTestPinsUnchanged": true
+  },
+  "changedFiles": [
+    {
+      "path": "app/package.json",
+      "sha256": "273ce0f0befabb4e01527fff6df0321172068f836a3c2b169babe096e23c9c11"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "6c43018cb21d6928aa7ea14c9bc909cfa65ac3fdf97f8ba980e495a2e18e3fcf"
+    },
+    {
+      "path": "scripts/plugin_ci_workflows.test.mjs",
+      "sha256": "6a00846befd6025ef3aad3db37c86fdbce8043cd22ef80fa7eadb54e3e5467fc"
+    }
+  ],
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "job": "graph-validation",
+    "jobName": "Curriculum CI",
+    "parsedStepCount": 85,
+    "earlyOrder": [
+      "Install package-consumer isolation tools",
+      "Enable and verify bubblewrap isolation",
+      "Prepare pinned Source-A metadata test fixtures",
+      "Test Source-A Composer metadata boundary",
+      "Test isolated identity QA preparation without skips",
+      "Test general graph reference resolution",
+      "Validate Graph"
+    ],
+    "mathOrder": [
+      "Test HE Q2.4/Q2.5 Mathematics scope",
+      "Test Mathematics Q2 assessment projection and scoring"
+    ],
+    "existingBubblewrapPolicyReusedUnchanged": {
+      "path": "scripts/configure_github_bubblewrap.sh",
+      "sha256": "cf3f1d62164e589adb547ba54288023671e25235e479d8bdf42d8c62211b343b"
+    },
+    "pythonNoSkipContract": {
+      "realFixtureCount": 4,
+      "acceptedSkippedCount": 0,
+      "requiresSuccessfulResult": true,
+      "requiresBwrapExecutable": true
+    },
+    "fullManualCandidateMaterializationAddedToCi": false
+  },
+  "localChecks": [
+    {
+      "command": "npm run test:source-identity-qa-metadata",
+      "cwd": "app",
+      "exitCode": 0,
+      "controls": 12
+    },
+    {
+      "command": "exact Python workflow run block, including command -v bwrap and four-test/no-skip/result guards",
+      "cwd": ".",
+      "exitCode": 0,
+      "tests": 4,
+      "skipped": 0
+    },
+    {
+      "command": "npm run test:hessen-math-q24-q25-scope",
+      "cwd": "app",
+      "exitCode": 0,
+      "summary": "HE Q2.4/Q2.5 regression passed: 88 valid views, 4 HE-GK scopes; six aggregate retirements retain their reviewed competencies (50 real projection loss controls), three HE-GK support roles retain HE-LK/SL targets (30 scope controls), five later whole-atom source decisions (20 role controls), four G9 spatial substitutions (6 whole-performance loss controls); 72 exact rotation/endpoint placements including 34 existing non-HE/national GK views; unrelated content loss, DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked."
+    },
+    {
+      "command": "node --test scripts/plugin_ci_workflows.test.mjs",
+      "cwd": ".",
+      "exitCode": 0,
+      "tests": 13,
+      "skipped": 0,
+      "negativeWorkflowMutations": 18,
+      "negativePackageMutations": 2
+    },
+    {
+      "command": "PyYAML parse of actual complete workflow and git diff --check on the three changed files",
+      "exitCode": 0
+    }
+  ],
+  "actualGitFixturePreparation": {
+    "cases": [
+      {
+        "case": "exact-workflow-fixtures",
+        "exitCode": 0,
+        "expectedPass": true
+      },
+      {
+        "case": "wrong-commit-pin",
+        "exitCode": 128,
+        "expectedPass": false
+      },
+      {
+        "case": "missing-ledger-blob",
+        "exitCode": 1,
+        "expectedPass": false
+      }
+    ],
+    "isolatedShallowRepository": true,
+    "acceptedCommit": "80d70f08e0ce31cbdc214e62b5d3e0e80cd850db",
+    "remoteScope": "local read-only repository upload-pack; no remote CI claim",
+    "sharedPrimaryIndexUsed": false,
+    "blobs": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "bytes": 3715330,
+        "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+        "gitObjectId": "058dfa172dd205842c91d8f112a67647bb73b47d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "bytes": 404272,
+        "sha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019",
+        "gitObjectId": "9a33917df3a478937855c986e7b26289f7a97fa5"
+      }
+    ]
+  },
+  "limits": [
+    "Git fetch was exercised through an isolated local read-only upload-pack remote and private shallow repository; this is not terminal GitHub CI evidence.",
+    "Existing hosted-runner namespace configuration remains unchanged. Actual local bwrap namespace/read-only fixtures all ran; no host sysctl configuration was attempted.",
+    "The nine frozen metadata code/test files and the historical daaf9 Composer receipt are byte-identical.",
+    "No curriculum, QA rule, maturity floor, projection policy or activation capability was changed."
+  ],
+  "durableEvidence": {
+    "directory": "tmp/identity-qa-ci-wiring-2026-11-06",
+    "hashInventory": "tmp/identity-qa-ci-wiring-2026-11-06/artifact-hashes.json",
+    "hashInventorySha256": "bcc12151a034fbe14d3bc4cc196834d31634cdb675966923c35ffa02b34460e6"
+  }
+}

@@ -9,6 +9,119 @@ const readWorkflow = (name) => readFileSync(
 const ci = readWorkflow('ci.yml')
 const marketplace = readWorkflow('claude-marketplace.yml')
 const dialogs = readWorkflow('openai-dialog-regression.yml')
+const packageJson = JSON.parse(readFileSync(new URL('../app/package.json', import.meta.url), 'utf8'))
+
+const identityFixtureCommit = '80d70f08e0ce31cbdc214e62b5d3e0e80cd850db'
+const identityFixturePaths = [
+  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+  'curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json',
+]
+const identityStepNames = [
+  'Install package-consumer isolation tools',
+  'Enable and verify bubblewrap isolation',
+  'Prepare pinned Source-A metadata test fixtures',
+  'Test Source-A Composer metadata boundary',
+  'Test isolated identity QA preparation without skips',
+]
+const mathScopeStepName = 'Test HE Q2.4/Q2.5 Mathematics scope'
+
+function curriculumStep(workflow, name) {
+  const job = workflow.split('\n  graph-validation:\n')[1]?.split(/\n  [\w-]+:/u)[0]
+  assert.ok(job, 'Missing Curriculum CI job')
+  const marker = `      - name: ${name}\n`
+  assert.equal(job.split(marker).length, 2, `Expected exactly one curriculum step: ${name}`)
+  return marker + job.split(marker)[1].split(/\n      - (?:name:|\*)/u)[0] + '\n'
+}
+
+function assertIdentityAndMathCiWiring(workflow, scripts = packageJson.scripts) {
+  const job = workflow.split('\n  graph-validation:\n')[1]?.split(/\n  [\w-]+:/u)[0]
+  assert.ok(job, 'Missing Curriculum CI job')
+  assert.doesNotMatch(job.split('    steps:')[0], /continue-on-error|\bif:/u)
+  assert.doesNotMatch(job, /fetch-depth:\s*0|--unshallow|--source-identity-qa-context=|run-isolated\.py/u)
+  const steps = identityStepNames.map(name => curriculumStep(workflow, name))
+  for (const step of [...steps, curriculumStep(workflow, mathScopeStepName)]) {
+    assert.doesNotMatch(step, /continue-on-error|^\s+if:|\|\||\bset\s+\+e|;\s*(?:true|:)|--(?:warn|baseline|skip)/mu,
+      'Identity and Math scope checks must remain unconditional hard gates')
+  }
+  let previous = -1
+  for (const name of [...identityStepNames, 'Test general graph reference resolution', 'Validate Graph']) {
+    const position = job.indexOf(`      - name: ${name}\n`)
+    assert.ok(position > previous, `Missing or out-of-order prerequisite: ${name}`)
+    previous = position
+  }
+  assert.match(steps[0], /sudo apt-get install -y bubblewrap strace/u)
+  assert.match(steps[1], /run: bash \.\.\/scripts\/configure_github_bubblewrap\.sh\n/u)
+  const fixture = steps[2]
+  assert.match(fixture, /working-directory: \./u)
+  assert.match(fixture, /set -euo pipefail/u)
+  assert.ok(fixture.includes(`identity_fixture_commit=${identityFixtureCommit}\n`))
+  assert.ok(fixture.includes('git fetch --no-tags --depth=1 origin "${identity_fixture_commit}"\n'))
+  assert.ok(fixture.includes('test "$(git rev-parse --verify "${identity_fixture_commit}^{commit}")" = "${identity_fixture_commit}"\n'))
+  assert.deepEqual([...fixture.matchAll(/^\s+(curricula\/[^\s;\\]+)/gmu)].map(match => match[1]), identityFixturePaths)
+  assert.ok(fixture.includes('test "$(git cat-file -t "${identity_fixture_commit}:${identity_fixture_path}")" = blob\n'))
+  assert.doesNotMatch(fixture, /git (?:clone|checkout|switch|reset)|--depth=0/u)
+  assert.equal(scripts['test:source-identity-qa-metadata'], 'tsx scripts/testSourceIdentityQaMetadata.ts')
+  assert.match(steps[3], /run: npm run test:source-identity-qa-metadata\n/u)
+  const isolation = steps[4]
+  assert.match(isolation, /working-directory: \./u)
+  assert.match(isolation, /set -euo pipefail/u)
+  assert.match(isolation, /^\s+command -v bwrap$/mu)
+  assert.match(isolation, /^\s+python3 -B - <<'PY'$/mu)
+  assert.ok(isolation.includes('unittest.defaultTestLoader.discover("scripts", pattern="test_prepare_identity_qa_candidate.py")'))
+  assert.match(isolation, /^\s+if result\.testsRun != 4 or result\.skipped:$/mu)
+  assert.match(isolation, /^\s+raise SystemExit\("All four identity QA preparation controls must execute without skips"\)$/mu)
+  assert.match(isolation, /^\s+raise SystemExit\(0 if result\.wasSuccessful\(\) else 1\)$/mu)
+  assert.doesNotMatch(steps.join(''), /(?:python3?|python)\s+(?:-B\s+)?(?:\.\.\/)?scripts\/prepare_identity_qa_candidate\.py\b/u)
+  assert.equal(scripts['test:hessen-math-q24-q25-scope'], 'tsx scripts/testHessenMathQ24Q25Scope.ts')
+  assert.match(curriculumStep(workflow, mathScopeStepName), /run: npm run test:hessen-math-q24-q25-scope\n/u)
+  assert.ok(job.indexOf(`      - name: ${mathScopeStepName}\n`)
+    < job.indexOf('      - name: Test Mathematics Q2 assessment projection and scoring\n'))
+}
+
+test('Curriculum CI hard-gates Source-A boundaries, isolated preparation and HE Math scope before production checks', () => {
+  assertIdentityAndMathCiWiring(ci)
+  // Reuse the existing functional isolation probe, including its hosted-runner
+  // policy; presence of a binary alone cannot prove namespace isolation.
+  const configure = readFileSync(new URL('./configure_github_bubblewrap.sh', import.meta.url), 'utf8')
+  assert.match(configure, /if ! bwrap[\s\S]+--unshare-user[\s\S]+--unshare-net[\s\S]+-- \/bin\/true; then[\s\S]+exit 1/u)
+})
+
+test('identity and Math CI wiring rejects missing, skipped, reordered, stale and softened prerequisites', () => {
+  const fixture = curriculumStep(ci, identityStepNames[2])
+  const boundary = curriculumStep(ci, identityStepNames[3])
+  const isolation = curriculumStep(ci, identityStepNames[4])
+  const enable = curriculumStep(ci, identityStepNames[1])
+  const mathScope = curriculumStep(ci, mathScopeStepName)
+  const mathProjection = curriculumStep(ci, 'Test Mathematics Q2 assessment projection and scoring')
+  const mutations = [
+    ['missing boundary gate', ci.replace(boundary, '')],
+    ['boundary before fixture fetch', ci.replace(boundary, '').replace(fixture, boundary + fixture)],
+    ['isolation enabled after fixtures', ci.replace(enable, '').replace(isolation, isolation + enable)],
+    ['missing bubblewrap prerequisite', ci.replace('command -v bwrap', 'true')],
+    ['accepted unittest skips', ci.replace('result.testsRun != 4 or result.skipped', 'result.testsRun != 4 or False')],
+    ['missing fixture-count guard', ci.replace('result.testsRun != 4 or result.skipped', 'result.skipped')],
+    ['ignored unittest failure', ci.replace('0 if result.wasSuccessful() else 1', '0 if result.wasSuccessful() else 0')],
+    ['soft boundary failure', ci.replace(boundary, boundary.replace('        run:', '        continue-on-error: true\n        run:'))],
+    ['conditional boundary execution', ci.replace(boundary, boundary.replace('        run:', "        if: github.event_name == 'push'\n        run:"))],
+    ['stale source-fixture pin', ci.replace(`identity_fixture_commit=${identityFixtureCommit}`, `identity_fixture_commit=${'0'.repeat(40)}`)],
+    ['unbounded history fetch', ci.replace('--depth=1 origin', '--depth=0 origin')],
+    ['missing original ledger blob', ci.replace(`            ${identityFixturePaths[1]}; do`, '            ; do')],
+    ['missing exact commit check', ci.replace('test "$(git rev-parse --verify "${identity_fixture_commit}^{commit}")" = "${identity_fixture_commit}"', 'true')],
+    ['missing blob type check', ci.replace('test "$(git cat-file -t "${identity_fixture_commit}:${identity_fixture_path}")" = blob', 'true')],
+    ['accepted failed bubblewrap lookup', ci.replace('command -v bwrap', 'command -v bwrap || true')],
+    ['missing Math scope gate', ci.replace(mathScope, '')],
+    ['late Math scope gate', ci.replace(mathScope, '').replace(mathProjection, mathProjection + mathScope)],
+    ['full manual A-only context per PR', ci.replace(boundary, boundary.replace('test:source-identity-qa-metadata', 'test:source-identity-qa-metadata -- --source-identity-qa-context=/tmp/request.json'))],
+  ]
+  for (const [name, mutated] of mutations) {
+    assert.notEqual(mutated, ci, `Mutation did not exercise the workflow: ${name}`)
+    assert.throws(() => assertIdentityAndMathCiWiring(mutated), undefined, name)
+  }
+  assert.throws(() => assertIdentityAndMathCiWiring(ci, { ...packageJson.scripts,
+    'test:source-identity-qa-metadata': 'true' }))
+  assert.throws(() => assertIdentityAndMathCiWiring(ci, { ...packageJson.scripts,
+    'test:hessen-math-q24-q25-scope': 'true' }))
+})
 
 test('general graph reference CLI negatives run before the production graph gate', () => {
   const fixtures = ci.indexOf('      - name: Test general graph reference resolution\n')

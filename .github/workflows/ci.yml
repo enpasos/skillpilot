@@ -512,6 +512,38 @@ jobs:
         run: npm ci
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
+      - name: Install package-consumer isolation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
+      - name: Enable and verify bubblewrap isolation
+        run: bash ../scripts/configure_github_bubblewrap.sh
+      - name: Prepare pinned Source-A metadata test fixtures
+        working-directory: .
+        run: |
+          set -euo pipefail
+          identity_fixture_commit=80d70f08e0ce31cbdc214e62b5d3e0e80cd850db
+          git fetch --no-tags --depth=1 origin "${identity_fixture_commit}"
+          test "$(git rev-parse --verify "${identity_fixture_commit}^{commit}")" = "${identity_fixture_commit}"
+          for identity_fixture_path in \
+            curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json \
+            curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json; do
+            test "$(git cat-file -t "${identity_fixture_commit}:${identity_fixture_path}")" = blob
+          done
+      - name: Test Source-A Composer metadata boundary
+        run: npm run test:source-identity-qa-metadata
+      - name: Test isolated identity QA preparation without skips
+        working-directory: .
+        run: |
+          set -euo pipefail
+          command -v bwrap
+          python3 -B - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover("scripts", pattern="test_prepare_identity_qa_candidate.py")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if result.testsRun != 4 or result.skipped:
+              raise SystemExit("All four identity QA preparation controls must execute without skips")
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
       - name: Install PDF validation tools
         timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
@@ -533,6 +565,8 @@ jobs:
         run: npm run test:math-checkpoint-exams
       - name: Test HE Q2.5 central-dilation assessment scope
         run: npm run test:math-q25-central-dilation-scope
+      - name: Test HE Q2.4/Q2.5 Mathematics scope
+        run: npm run test:hessen-math-q24-q25-scope
       - name: Test Mathematics Q2 assessment projection and scoring
         run: npm run test:math-q2-m7-assessment-projection
       - name: Test Physics practice and Abitur assessment projection
@@ -665,11 +699,6 @@ jobs:
           echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
-      - name: Install package-consumer isolation tools
-        timeout-minutes: 10
-        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
-      - name: Enable and verify bubblewrap isolation
-        run: bash ../scripts/configure_github_bubblewrap.sh
       - name: Install Python dependencies
         run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
       - name: Verify curriculum JSON conformance scripts
