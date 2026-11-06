@@ -1,0 +1,7 @@
+# Source-A: vollständiger Quellenbeweis auf db9c
+
+Der unveränderte v1-Generator und die unabhängige vollständige Neuverifikation bestehen gegen Git `db9c71155997842ebb7cf48dda413ff6196f1a9f`: 593 Quellen, 8.591 gebundene Dokumente und dieselben 164 Identitätsregeln wie im verifizierten 5c9-Checkpoint. Die sieben neuen historischen Belege werden über die bestehende Archivregel vollständig gehasht; Schema, Registry und Verifier bleiben unverändert.
+
+Der [komprimierte Originalbeweis](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/source-bijection-db9c711559-2026-11-06.proposal.json.gz) ist verlustfrei zurückgelesen und auf Roh-SHA `a145fe393296cd8d6fa703e9661ddc84c1a09fd364e2a6ef199df44c9ff2ea3a` gebunden. Für eine Wiederholung mit dem unveränderten CLI ist er zuerst in eine private temporäre JSON-Datei zu dekomprimieren; der [JSON-Beleg](source-identity-db9c-source-rebase-2026-11-06.json) enthält beide tatsächlich bestandenen Befehle und dauerhafte Logs.
+
+Dieser Quellenbeweis gibt ausschließlich die isolierte Kandidatenprojektion frei. Er ist keine bestandene physische Kandidaten-QA, kein Original-QA-Readycache und keine Aktivierung von A/B. Die drei unabhängig belegten Capture-Holds werden gesondert repariert. Sieben geschützte Fachfloors bleiben weiterhin offen. Der spätere ecfc-Schritt erneuert nur zwei bereits ausdrücklich ausgeschlossene aktuelle Coverage-Ausgaben; er schreibt diesen Quellencheckpoint nicht um.

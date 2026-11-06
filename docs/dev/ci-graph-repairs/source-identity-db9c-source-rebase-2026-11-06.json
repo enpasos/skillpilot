@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "explicit-db9c-source-only-generate-and-independent-full-verify-pass-no-candidate-QA",
+  "sourceCheckpoint": "db9c71155997842ebb7cf48dda413ff6196f1a9f",
+  "sourceProof": {
+    "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-bijection-db9c711559-2026-11-06.proposal.json.gz",
+    "compressedSha256": "f210d5728d5e5445a71a5624074dfb0b2c33d01fd308ade4a1e76a73c296f3d4",
+    "rawSha256": "a145fe393296cd8d6fa703e9661ddc84c1a09fd364e2a6ef199df44c9ff2ea3a",
+    "rawBytes": 10484780,
+    "compressedBytes": 609635,
+    "losslessRoundTripChecked": true,
+    "proofType": "canonical-goal-source-bijection",
+    "sourceProjectionSha256": "d5ce3f62559380d701fb9312198f97138b28a15be0d9dc38f3f3fe8554e61742"
+  },
+  "catalogSources": 593,
+  "boundDocuments": 8591,
+  "identityRules": 164,
+  "rulesExactlyEqualVerified5c9": true,
+  "changedCatalogPathsSince5c9": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json"
+  ],
+  "newBoundHistoricalDocuments": [
+    "qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+    "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/floors.txt",
+    "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/producer.txt",
+    "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+    "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+    "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+    "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md"
+  ],
+  "changedPreviouslyBoundDocuments": [
+    "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+    "docs/qa-ci/skill-graph-ci-static-matrix-2026-11-06.md"
+  ],
+  "actualCommands": [
+    {
+      "command": "python scripts/canonical_goal_source_identity_proof.py generate --base-commit db9c71155997842ebb7cf48dda413ff6196f1a9f --output PRIVATE/source.proposal.json",
+      "exitCode": 0,
+      "log": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-db9c-source-rebase-2026-11-06/generate.txt",
+        "sha256": "df8e441ebabef6ecf445fdab34513718ef7acbdebaa1d34e113e88e29bd39551"
+      }
+    },
+    {
+      "command": "python scripts/canonical_goal_source_identity_proof.py verify --manifest PRIVATE/source.proposal.json --expected-base-commit db9c71155997842ebb7cf48dda413ff6196f1a9f --accepted-manifest-sha256 a145fe393296cd8d6fa703e9661ddc84c1a09fd364e2a6ef199df44c9ff2ea3a",
+      "exitCode": 0,
+      "log": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-db9c-source-rebase-2026-11-06/verify.txt",
+        "sha256": "df8e441ebabef6ecf445fdab34513718ef7acbdebaa1d34e113e88e29bd39551"
+      }
+    }
+  ],
+  "v1CodeOrContractRewritten": false,
+  "runtimeActivationAllowed": false,
+  "qaValidityClaimed": false,
+  "fullPhysicalCandidateMaterialized": false,
+  "allTenProtectedFloorsPassed": false,
+  "laterCurrentOutputUpdate": {
+    "head": "ecfc79ae9eee2134899e44e8ebed170425daa849",
+    "note": "ecfc only regenerates the two exact existing rationale-coverage output exclusions. No db9c source-input update is implied."
+  },
+  "nextRequiredWork": [
+    "Repair the independently demonstrated private-capture holds and retest actual byte/input/output boundaries.",
+    "Use a new explicit dependency pin and actual read-scope inventory for any complete physical candidate.",
+    "Provide the narrow identity-only QA read adapters and actual original/candidate native producer evidence.",
+    "Continue real graph/route/material repairs and preserve seven failing subject floors."
+  ]
+}
