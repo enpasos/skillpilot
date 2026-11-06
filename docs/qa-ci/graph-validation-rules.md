@@ -1,15 +1,27 @@
 This is the single source of truth for algorithmic graph validation in CI.
 
-**Concept correction, 4 November 2026:** transitive minimality remains a
-mandatory [graph requirement](../concept/skill-graph/graph-definition.md#73-transitive-minimality).
-The corrected [recognition model](../concept/skill-graph/assessment-gated-completion.md)
-also requires complete local assessment routes, protected explicit exam/card
-targets and stable level contracts. These are requirements for the forthcoming
-validator adaptation; the existing emitted-rule table below does not establish
-that they are already fully checked. No existing CI result proves that a task
-requires every competence's independent application; that remains a distinct
-content/rubric review obligation. The old preparation-discharge tests do not
-prove the corrected model.
+**Target correction, 6 November 2026; implementation gap remains:** transitive
+minimality is a mandatory
+[graph requirement](../concept/skill-graph/graph-definition.md#73-transitive-minimality),
+but the current `validateGraph.ts` and CQR maturity calculation do not provide
+a general curriculum gate for it. A green graph job, route check or M0–M7
+snapshot therefore does not establish transitive minimality.
+
+A new [S0 auditor and actual Mathematics/Physics report](../dev/learning-units-inventory/2026-11-06/transitive-minimality.md)
+now exist. Its real validation returns failure for 1,319 unresolved findings;
+passing algorithm tests and report generation do not mean those curricula
+passed. Its integration as a hard release gate is still pending.
+
+The current [recognition model](../concept/skill-graph/assessment-gated-completion.md)
+uses qualified immutable atomic coverage C(q) of explicit passed Q, immediately
+and globally. Another open Q cannot withhold valid evidence; acquisition
+ownership remains unique, and required own/child Q/K stay explicit. Unreviewed
+or historically uncertain Q have C(q)=∅; a released marker alone is insufficient.
+Every permitted required-own-Q alternative must prove its unit's full own
+ordinary promise. These requirements await validator/runtime adaptation.
+Neither a `requires` path nor existing CI/M7 proves task coverage or independent
+application. Actual tasks and normal grading require separate content review.
+Old remaining-demand/discharge tests do not establish the new contract.
 
 - Validator implementation: `app/scripts/validateGraph.ts`
 - CI entrypoint: `npm run validate:graph` in `.github/workflows/ci.yml` (`graph-validation` job)
@@ -103,6 +115,29 @@ These checks are already implemented and treated as `error`:
 - The current CI enforcement scope for `validate:view-filters` covers the reviewed canonical DE Gymnasium set (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
 - Reviewed applicability warnings can be recorded in `docs/qa-ci/applicability-accepted-warnings.json`; the validator still prints them, but classifies them as accepted review debt instead of active warnings.
 - Additional structural rules should be added here first, then implemented in `validateGraph.ts`, then rolled out in CI.
+
+## Required next structural gate: transitive minimality (not implemented)
+
+The [new Mathematics/Physics plan](../dev/mathematics-physics-learning-units-plan.md)
+requires an early automatic structural gate before broad curriculum migration.
+It must reject redundant authored prerequisite edges while preserving exactly
+the full effective atomic reachability. For each candidate edge, remove it and
+recompute direct/inherited and cluster-expanded requirements; an alternative
+path can include hidden and cross-subject support. A learner's mastery or focus
+must not cut that path. Report redundant authoring with its alternative path;
+do not change edges automatically to satisfy desired unit boundaries.
+
+The gate also checks qualified C(q) ⊆ Reach_R⁺({q}) as a directed consistency
+condition. A missing path is a content/graph finding, not permission to generate
+an edge. A transitive path is sufficient; adding redundant direct edges would
+contradict minimality. Reachability never creates C(q).
+
+Rollout must include meaningful direct, indirect, inherited, cluster and
+cross-subject counterexamples, real-curriculum diagnostics, documented finding
+semantics and fail-CI enforcement. Rule IDs, implementation, rollout and any
+subsequent CQR integration must be recorded when they actually exist. The
+currently emitted GVR/CQR tables and generated QA status are unchanged by this
+plan; no new gate or maturity result is claimed here.
 
 ## Exam Markdown table integrity (`GVR-016`)
 

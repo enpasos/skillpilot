@@ -25,12 +25,17 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
   Core graph model and formal vocabulary.
 - [Assessment-Gated Completion and Global Mastery](skill-graph/assessment-gated-completion.md)
-  Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
+  The 6 November target contract: qualified immutable assessment proofs,
+  immediate global recognition and explicit unit obligations; implementation pending.
 - [Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
-  Verbindliche Konzeptkorrektur vom 4. November 2026; Umsetzung und Prüfung bestehender Prüfungsverträge folgen.
+  Historische Entscheidung vom 4. November; die lokale Restbedarfsregel wird
+  durch den neuen Sollvertrag abgelöst, die damalige Umsetzung nicht fortgesetzt.
 - [Learning Units (Lerneinheiten)](skill-graph/learning-units.md)
   Recursive units with a learning promise, subunits, application assessments
   and derived completion; acquired competence remains globally valid.
+- [Lerneinheiten: Zweck, Zuschnitt und Beispiele](skill-graph/learning-unit-design-and-examples.md)
+  Dependable application before further learning, with Physics and Mathematics
+  examples for reviewing the didactic boundaries before implementation.
 - [Learning Unit Progression](skill-graph/learning-unit-progression.md)
   Explicit dependencies between whole units, valid block ordering and the
   separate decision about recommended routes versus technical entry gates.

@@ -5,8 +5,9 @@
 > Aussagen über Bedarfsstopp an Mastery, implizite Karten, bloßen Arbeitsentfall
 > und globale Verbraucherblockierung gelten nicht für das korrigierte Konzept.
 > Verbindlich sind [die neue Abschlusssemantik](../concept/skill-graph/assessment-gated-completion.md)
-> und [die Produktentscheidung](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md).
-> Die aktuelle Neuplanung steht im [Umsetzungsplan für Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md).
+> vom 6. November; die [Entscheidung vom 4. November](../concept/skill-graph/completion-semantics-clarification-2026-11-04.md)
+> bleibt teilweise abgelöste Historie. Die aktuelle Neuplanung steht im
+> [Mathematik-/Physikplan](mathematics-physics-learning-units-plan.md).
 > Der nachfolgende historische Stand ist keine Freigabe zur Fortsetzung des alten
 > Rollouts; wiederverwendbare Teile benötigen die dort festgelegte neue Prüfung.
 

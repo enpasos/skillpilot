@@ -15,14 +15,20 @@ learning units. This section explains both the graph and the contracts around it
   frontier, and graph-validity conditions.
 - [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md):
   direct assessment access, transitive minimality and globally effective
-  recognition through independent application in valid local learning units.
-  [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md):
-  staged integration in the complete Cockpit, recursive unit implementation,
-  selective reuse of the former PR and separate subject milestones.
+  recognition through fully qualified immutable assessment proofs. The
+  6 November target contract supersedes local remaining-demand inference;
+  the [4 November decision](completion-semantics-clarification-2026-11-04.md)
+  remains dated history. Runtime migration is pending.
+  [Neuer Umsetzungsplan: Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md):
+  the new plan explicitly revisits recognition using the second proposal,
+  then propagates that decision consistently before runtime changes.
+  The earlier implementation plan is historical.
 - [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
   educational units, a motivational introduction, required outcomes and
   completion derived from child units and own obligations.
+- [Lerneinheiten: Zweck, Zuschnitt und Beispiele](learning-unit-design-and-examples.md):
+  dependable application before dependent learning, assessment requirements,
+  and concrete Physics and Mathematics candidates for discussion.
 - [Learning Unit Progression](learning-unit-progression.md): explicit course
   dependencies, whole-unit ordering and the separate choice of access policy.
 - [General Goal System and Migration](general-goal-system-and-migration.md):
@@ -67,5 +73,6 @@ are in `latex/`; the existing graph illustrations remain under
 `assets/graph-definition/`.
 
 The [mathematical reference check](latex/check-assessment-model.py) exercises
-full transitive prerequisite demand, local recognition and their boundary cases. It does not implement the
+full transitive prerequisite demand, qualified global proof, recursive unit
+completion and their boundary cases. It does not validate the actual curricula or implement the
 runtime feature or establish assessment quality or learner benefit.

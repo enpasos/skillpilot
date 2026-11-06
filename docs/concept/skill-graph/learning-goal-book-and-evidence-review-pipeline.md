@@ -1,10 +1,14 @@
 # Learning-Goal Book and Evidence-Review Pipeline
 
-## Application-based recognition: additional authoring contract, 4 November 2026
+## Application-based recognition: authoring contract, revised 6 November 2026
 
 The [corrected completion concept](assessment-gated-completion.md) recognizes
-ordinary competencies globally through independent application in valid local
-assessment contracts. Before an assessment set supports such recognition,
+ordinary competencies globally through qualified immutable coverage C(q) of
+each explicit passed assessment. Other open Q cannot withhold that evidence;
+unique acquisition ownership and required own/child Q/K remain separate.
+`examData.coveredGoalIds` is the one maintained list after qualification to
+fixed atomic full meanings. Unreviewed/historically uncertain Q have C(q)=∅;
+existing released status alone does not qualify them. Before Q supports recognition,
 independent review MUST check its actual tasks, permitted assistance, solutions
 and normal grading rules against every competence it would recognize.
 
@@ -12,18 +16,26 @@ Reviewers must try to construct a passing response which omits an essential
 recognized competence or only reproduces provided steps. If that response can
 pass through unrelated compensating points, the task, its normal rubric or
 the authoring contract must change. Several tasks may jointly substantiate a
-contract; every individual task need not duplicate all coverage. `requires`
+single complete Q; every individual task need not duplicate all coverage. `requires`
 reachability and an existing description/route review alone do not establish
 independent application. Purely technical structure checks cannot replace this
-content review.
+content review. Every permitted required-own-Q alternative must cover the
+unit's complete own ordinary promise. Experiment and analysis default to one
+multipart Q with one normal result; isolated partial Q do not automatically
+combine into a full proof. Supplied-data analysis does not prove an own experiment.
 
 This is a static authoring obligation. Runtime continues to use the ordinary
 binary exam result and verified card outcomes, without additional qualifying
 learner evidence or a second per-competence pass. Existing review records and
 M7 claims remain historical evidence of their actual criteria, not automatic
 acceptance of this new claim. New recognition claims must not be attached to
-old examination identities with different meanings. Concrete validators and
-review-pipeline integration await the new implementation plan.
+old examination identities with stronger or historically uncertain meanings:
+use a new Q-ID and preserve old explicit results. Meaning-equivalent variants
+may retain their ID. Normal grading must reject a missing core competence while
+allowing secure understanding with an incidental arithmetic slip. Any needed
+core criteria change shared normal grading with adapter tests, never a hidden
+coach-only pass. Validators and runtime migration follow the
+[new implementation plan](../../dev/mathematics-physics-learning-units-plan.md).
 
 ## Existing pipeline status
 

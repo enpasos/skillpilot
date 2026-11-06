@@ -298,7 +298,7 @@ The runtime contract is:
 - only targets may appear in learner navigation or as frontier candidates
 - only targets contribute to scope progress and scope completion
 - a prerequisite-only goal never becomes a frontier candidate in that view
-- the corrected 4 November 2026 concept uses global effective mastery (explicit results plus valid application recognition) for prerequisite satisfaction; strict mode checks complete effective transitive paths through unchanged canonical `requires` edges
+- the corrected 6 November 2026 target concept uses global effective mastery (explicit results plus qualified immutable coverage of explicit passed Q) for prerequisite satisfaction; strict mode checks complete effective transitive paths through unchanged canonical `requires` edges
 - normal mode masks applicable checks to the selected Level 3 focus after effective transitive reachability is determined; it must not erase paths through outside intermediates. An outside prerequisite-only goal does not become selectable or acquire a stored mastery entry. A focus is not a recognition contract; valid effective mastery survives view and plan changes. Runtime adaptation to this corrected concept remains pending
 - targeted repetition of an earlier goal requires an explicit target reference or a separate reviewed repetition plan; it must not become selectable merely because it is an earlier-phase goal
 
@@ -373,17 +373,20 @@ single-occurrence and parent rules. An introductory motivation explains purpose
 and intended outcomes without certifying subject competence or a conversation
 that did not occur. A calendar grouping alone is not an educational unit.
 
-Compute implicit recognition from each directly owning unit's reviewed contract;
-do not turn an ancestor's target union into a second recognition shortcut.
+Compute recognition globally from qualified immutable C(q) of explicit passed
+Q. A parent/foreign Q can prove an ordinary goal in full; acquisition ownership
+remains unique. Never use an ancestor's target union as blanket proof. For each
+permitted required-own-Q alternative, all own ordinary targets need qualified
+coverage; foreign proof cannot replace the required own Q/K.
 Aggregate child completion and own obligations for the parent. A still-open
 parent exam does not reopen a completed child, and its pass cannot pass child
 exams or cards. Preserve canonical attribution and count each target once.
 
 Explicit [whole-unit progression](learning-unit-progression.md) belongs to the
 resolved course. Validate the block ordering separately from atomic acyclicity;
-an atomic link does not automatically become a whole-unit gate. Whether the
-declared order technically blocks starts remains an explicit unresolved policy,
-including its treatment of direct exam attempts. Rendering a unit label or
+an atomic link does not automatically become a whole-unit gate. Technical locks
+for that declared order require a separate policy. This work keeps direct exam
+attempts available and introduces no new lock. Rendering a unit label or
 completion badge cannot activate that policy.
 
 ## Default content tree contract

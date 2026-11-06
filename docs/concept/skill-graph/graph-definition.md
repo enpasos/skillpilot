@@ -10,7 +10,7 @@ Layering, migration strategy, and canonical rollout policy are specified separat
 
 Related composition scope: [Learning Units](learning-units.md) defines recursive learning promises, direct acquisition ownership and derived completion. Section 12 formalizes that contract and separates optional calendar/workload planning from the unit itself.
 
-Related completion contract: [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md) defines the binding decision of 4 November 2026 within the accepted recursive unit structure. Direct ordinary mastery demonstrates understanding; implicit mastery demonstrates independent application under an authoritative unit's own acquisition contract. Both have equivalent global credit. Exams and memory goals require explicit outcomes. Full transitive requirements continue through mastered intermediates; transitive minimality remains mandatory. Binary mastery remains the sole stored goal result, with a derived effective mastered set.
+Related completion contract: [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md) defines the binding correction of 6 November 2026. A qualified explicit assessment pass proves its immutable set of ordinary atomic competencies globally, even while another assessment remains open. Direct ordinary mastery demonstrates understanding; qualified implicit mastery demonstrates independent application. Exams, memory goals and orientation never receive an inferred pass from this rule. Full transitive requirements continue through mastered intermediates; transitive minimality remains mandatory. Binary mastery remains the sole stored goal result. This supersedes the earlier local remaining-demand derivation.
 
 **Implementation boundary.** These revised completion and prerequisite semantics are conceptual. Current `main` still implements the earlier 31 October interpretation. This specification does not claim deployment, completed migration or reviewed coverage of existing assessments.
 
@@ -693,19 +693,18 @@ without claiming subject-matter competence. No partial mastery or additional
 stored qualification is introduced.
 
 The derived **effective mastered set** $M_{\mathrm{eff}}$ includes $M_A$ and
-valid implicit mastery from durably applicable authoritative local recognition
-contracts for directly owned acquisition targets, not a replacement contract
-over all descendants of an arbitrary parent. It is not limited to the current
-Personal Curriculum or focus.
-[Assessment-Gated Completion](assessment-gated-completion.md) defines the
-local derivation and its static task/rubric requirements. An ordinary direct
-subject result demonstrates understanding; implicit subject mastery demonstrates
-independent application. Both satisfy future prerequisites and count equally
-in total progress. A derivatively completed orientation goal remains a didactic
-entry marker, without claiming subject competence or that the motivational
-interaction actually occurred. Exams and memory goals never receive implicit mastery. Earlier valid
-recognition remains available after a scope change; a later contract revision
-cannot reinterpret an old exam pass as proof of newly added competencies.
+ordinary competencies fully proved by explicitly passed, qualified assessments.
+Its proof is global and independent of the current Personal Curriculum, focus
+or acquisition owner. [Assessment-Gated Completion](assessment-gated-completion.md)
+defines the immutable assessment meaning, static coverage and normal grading
+requirements. Ordinary direct mastery demonstrates understanding; qualified
+implicit mastery demonstrates independent application. Both satisfy future
+prerequisites and count equally in total progress. Assessments, memory goals
+and orientation receive no inferred outcome through this rule. The treatment
+of existing derived orientation markers requires explicit migration review;
+no motivational interaction or subject competence is invented. Valid proof
+remains available after a scope change. A later graph or rubric revision cannot
+reinterpret an old exam pass as evidence of newly added competencies.
 
 For a nonempty target set $U\subseteq A$ and positive weights $w_a$, progress is
 
@@ -1139,45 +1138,62 @@ complete without required recall. Keep a fitting larger boundary or review a
 meaning-preserving goal/card split and its explicit evidence migration.
 Support references do not discharge a missing child card obligation.
 
-### 12.2 Own recognition and global effectiveness
+### 12.2 Qualified assessment proof and global effectiveness
 
-Let Q and H denote assessment and memorization atoms here (K remains the graph's
-cluster set). With explicit mastered set $M_A$, define
-
-$$
-P_U=Own(U)\cap(Q\cup H),\qquad
-N_U=Reach_{R_{at}}^*(P_U\setminus M_A),
-$$
-
-$$
-I_U=Own(U)\setminus(M_A\cup P_U\cup N_U).
-$$
-
-R is normalized before evaluation; reachability continues through mastered
-intermediates and outside support. Every ordinary subject target in Own(U)
-MUST have an own local assessment consumer
-and independently reviewed application coverage in its normal tasks/rubric.
-A card alone is not that proof. An uncovered subject endpoint MUST NOT become
-a zero-work recognition. Orientation remains a motivational marker, not an
-assertion of subject competence or an unobserved interaction.
-
-Pure aggregates MAY have no own Q. A parent MAY own a synthesis assessment of
-already acquired child competencies without owning another ordinary target.
-Such an assessment remains explicit; it neither passes child Q/H nor recognizes
-their targets through a new parent-wide contract. The formula MUST use Own(U),
-never replace it with T(U) to bypass descendant obligations.
-
-As in §9,
+Let $O,Q,H\subseteq A$ denote pairwise disjoint ordinary subject, assessment
+and memorization atoms (K remains the structural cluster set). For a qualified
+assessment q, $\mathcal{C}(q)\subseteq O$ is its immutable, fully proved atomic scope.
+This proof function differs from the contains relation C; shorter concept
+texts write C(q) for the same coverage function.
+It is the mathematical interpretation of qualified `examData.coveredGoalIds`,
+not a second authored coverage list. Unqualified or historically unclear
+assessments have $\mathcal{C}(q)=\varnothing$; publication status alone does not qualify them.
 
 $$
-M_{\mathrm{eff}}=M_A\cup\bigcup_{U\in\mathcal D}I_U,
+I(M_A)=\left(\bigcup_{q\in M_A\cap Q}\mathcal{C}(q)\right)\setminus M_A,
+\qquad M_{\mathrm{eff}}=M_A\cup I(M_A).
 $$
 
-where $\mathcal D$ contains durably applicable immutable recognition contracts,
-not merely the current tree, focus or Personal Curriculum. Derivation uses
-explicit outcomes only, without feeding I back into itself. A later parent
-exam, new placement or graph revision MUST NOT enlarge the meaning of an old
-pass or withdraw a valid child recognition.
+Only explicit assessment results generate proof. There is no feedback of I
+as new assessment evidence, no additional learner outcome, and no derivation
+from local remaining demand. Direct understanding of B in Q → B → A does not
+prove A. Full prerequisite traversal continues through B. Transitive minimality
+remains mandatory.
+
+After full atomic normalization the static consistency condition is
+$\mathcal{C}(q)\subseteq Reach_{R_{at}}^+(\{q\})$. A prerequisite path alone never proves
+coverage; a missing path is an authoring finding, not an automatically created
+edge. Redundant direct edges are unnecessary. Coverage contains immutable
+ordinary atom IDs, never a cluster whose later descendants silently expand it.
+This relationship is neither official curriculum source coverage nor evidence
+of a learner's source selection.
+
+For every released acquisition unit and each resolved permitted assessment
+variant, the actually required own assessments MUST cover all own ordinary
+competencies:
+
+$$
+Own(U)\cap O\ \subseteq\ \bigcup_{q\in RequiredOwnQ(U)}\mathcal{C}(q),
+\qquad RequiredOwnQ(U)\subseteq Own(U)\cap Q.
+$$
+
+The resolved Own(U) includes these required outcomes, not every unused
+alternative assessment. This is static content quality: direct understanding
+of all ordinary targets cannot replace the unit's own application assessments.
+Pure aggregates may have no own Q. A parent or foreign assessment MAY prove
+ordinary child competencies when its qualified $\mathcal{C}(q)$ genuinely covers them;
+acquisition ownership is not a proof monopoly. It never passes child Q/H or
+waives any required own assessment or card.
+
+A stable Q-ID binds the same justified scope across all permitted historical
+and current passing variants. Stronger or unknown proof meaning needs a new
+Q-ID; a new hash cannot upgrade old binary results. Equivalent variants may
+retain the ID. Valid historical proof contracts remain resolvable after scope
+changes. A multipart normal assessment with one binary result is the default
+for experiment plus analysis; separate incomplete passes do not imply a whole
+competency. Normal grading alone decides the pass. Tasks, rubric and passing
+threshold must reject essential misconceptions while allowing a justified pass
+with an incidental calculation error; no hidden second qualification is added.
 
 ### 12.3 Derived recursive completion
 
@@ -1188,11 +1204,11 @@ $$
 
 Own assessment and memory targets need explicit positive outcomes; they never
 enter implicit mastery. Every required child must complete its own contract.
-A parent synthesis pass cannot close an unfinished child, and completed children
-cannot pass a parent's own synthesis. An aggregate with no own exam MAY complete
+A parent synthesis may prove ordinary child competencies but cannot pass an
+open child assessment or card; completed children cannot pass the parent's own synthesis. An aggregate with no own exam MAY complete
 through its children. No unit or cluster result is stored.
 
-Individual valid recognition MAY precede whole-unit completion. An unrelated
+Individual valid recognition MAY precede whole-unit completion. An
 open card or another unfinished branch keeps completion open without withdrawing
 an already established competence. Deduplicate targets in T(U) for reporting.
 A filtered view cannot remove a required child from the completion contract.
@@ -1211,9 +1227,16 @@ cannot place a,c in one indivisible block and b in another without a block-order
 conflict. Revise the boundary or explicitly permit interleaving. Preserve the
 internal atomic DAG, effective prerequisites and transitive minimality.
 
-**Unresolved policy.** Whether deliberately authored whole-unit prerequisites
-define regular learning order or additionally enforce technical entry locks
-remains undecided, including their interaction with direct assessment access.
+**Didactic purpose (6 November 2026).** Planned progression that builds on a
+unit's application promise requires dependable assessment of that promise first.
+Unit boundaries must identify meaningful learning transitions; theme, target
+count and prerequisite-edge density alone are insufficient. The
+[design criteria and examples](learning-unit-design-and-examples.md) distinguish
+this requirement from ordinary atomic mastery and from access enforcement.
+
+**Unresolved technical policy.** Whether deliberately authored whole-unit
+prerequisites additionally enforce technical entry locks remains undecided,
+including their interaction with direct assessment access.
 The conditional gated example is not a universal rule. Existing authorization,
 session and grading requirements remain; this concept activates no new lock.
 

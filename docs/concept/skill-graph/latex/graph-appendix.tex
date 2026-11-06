@@ -3,8 +3,8 @@
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
 Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
-4. November 2026. Geprüfte Hauptlinie für den jüngsten Konzeptabgleich:
-\code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
+6. November 2026. Neustartbasis des neuen Umsetzungsplans:
+\code{0ce5a8d791} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
 und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
 ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
 Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
@@ -16,14 +16,15 @@ Gegenstand & Nachprüfbare Grenze\\
 Abschlussrechnung &
 \code{CompletionEvaluator.evaluateAutomaticGraph} stoppt an gemeisterten
 Zwischenzielen. In $Q\to B\to A$ mit nur B gemeistert wird A dort
-entlassen. Die neue Formel lässt A für die offene Prüfung Q benötigt.
+entlassen. Die neue Voraussetzungsauswertung lässt A für die offene Prüfung Q benötigt;
+direktes B erzeugt keinen zusätzlichen Prüfungsbeweis.
 Der historische Profilpfad im selben Service ist ein anderer Algorithmus;
 auch seine Existenz beweist keine Umsetzung des neuen Vertrags.\\
 Geschützte Ziele & Der bisherige automatische Pfad beginnt bei offenen
-Assessments; der neue Vertrag schützt zusätzlich alle ausgewählten
-Memorierziele und verlangt eigene fachliche Assessmentabdeckung für jede
-gewöhnliche eigene Fachkompetenz. Aggregation und Synthese
-werden dadurch nicht zu künstlichen neuen Erwerbsverträgen.\\
+Assessments. Die neue Beweisregel leitet ausschließlich gewöhnliche
+Kompetenzen aus qualifiziertem $\mathcal{C}(q)$ ab. Q/K bleiben ausdrücklich, und jede
+Erwerbseinheit braucht vollständige Abdeckung durch ihre erforderlichen
+eigenen Q. Eltern- oder Fremd-Q dürfen gewöhnliche Kompetenzen belegen.\\
 Globale Wirkung & Kontextbezogene bisherige Freistellung ist nicht schon
 die dauerhaft vertragsgebundene globale Menge $M_{\mathrm{eff}}$.
 Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung
@@ -65,10 +66,10 @@ Lernerdaten und ändert keinen Runtimezustand.
 Prüfbereich & Geprüfte Aussage\\
 \midrule
 Endliche Modellprüfung & Alle DAGs bis vier Knoten in topologischer
-Ordnung mit jeder Mastery-/Schutzmengenbelegung, soweit die lokalen
-gewöhnlichen Ziele vollständig assessmentabgedeckt sind:
-5\,222 gültige Fälle. Traversierung und statische transitive Hülle
-liefern dieselbe implizite Menge.\\
+Ordnung mit jeder gewöhnlichen/Prüfungs-Typisierung, konsistenten
+Abdeckungsrelation und Mastery-Menge: 41\,928 Fälle. Ein unabhängiger
+punktweiser Zeuge vergleicht die globale Mengenformel mit ausdrücklich
+bestandenen qualifizierten Q.\\
 Minimalität & Transitive Reduktion ist minimal und erhält die Hülle.
 Redundante Kanten der normalisierten Relation ändern die Anerkennung
 nicht; ein Gegenbeispiel prüft die nach Kantenentfernung neu berechnete
@@ -77,7 +78,7 @@ Globale Monotonie & Zusätzliche ausdrückliche Mastery öffnet bei festen
 gültigen Verträgen keine effektiv beherrschte Arbeit erneut. Prüfungs-
 und Memorierziele werden nie implizit bestanden.\\
 Rekursive Einheiten & 128 Belegungen des Mechanikbeispiels prüfen
-Abschluss, eigene Anerkennung und explizite Kindpflichten. Ein Aggregat
+Abschluss, globale Anerkennung und explizite Kindpflichten. Ein Aggregat
 braucht keine eigene Prüfung; eine reine Synthese braucht keine neuen
 gewöhnlichen Ziele.\\
 Einheitsgruppierung & 948 Gruppierungsfälle vergleichen den Block-DAG
@@ -85,10 +86,12 @@ mit einer vollständigen Blockreihenfolge. Ein Gegenbeispiel zeigt einen
 atomaren DAG mit zyklischer Zusammenfassung; keine technische Sperrpolitik
 wird daraus abgeleitet.\\
 Konkrete Gegenbeispiele & Kein Stopp an Mastery-Zwischenknoten;
-lokale Anerkennung trotz späterer Prüfung; dauerhafte Vertragsvereinigung,
-künftige Voraussetzungen, Target-Schnitt und externe Unterstützung.\\
-Ungültige Eingaben & Zyklen, unbekannte Referenzen und isolierte
-gewöhnliche Ziele sind Fehler, keine automatische Beherrschung.\\
+Anerkennung trotz offener Q2 und abhängiger K; Elternnachweis ohne
+Kind-Q/K, erforderliche eigene Q-Abdeckung je Variante, unbekannte Historie,
+neue Q-ID, atomar eingefrorene Abdeckung und Quellenabgrenzung.\\
+Ungültige Eingaben & Zyklen, unbekannte Referenzen, Abdeckung von Q/K/Orientierung,
+fehlende Voraussetzungspfade und unvollständige eigene Prüfungsverträge
+sind Fehler, keine automatische Beherrschung.\\
 \bottomrule
 \end{tabularx}\end{center}
 
@@ -116,12 +119,14 @@ $M_{\mathrm{eff}},M_A$ & Globale Vereinigung ausdrücklicher und gültig
 abgeleiteter impliziter Beherrschung; allgemeine Erfüllungsmenge im Kern.\\
 $U,\Own(U),T(U)$ & Lerneinheit, eigene atomare Erwerbsziele und Gesamtumfang einschließlich der Kinder.\\
 $\Complete(U)$ & Rekursiv abgeleiteter Abschluss; keine zusätzlich gespeicherte Unit-Mastery.\\
-$Q_U,K_U,P_U$ & Eigene Prüfungs-, Memorier- und gemeinsame Schutzmenge.
-$K_U$ bezeichnet hier keine strukturellen Cluster.\\
-$N_U$ & Vollständige transitive Nachfrage der offenen eigenen geschützten Ziele,
-ohne Stopp an gemeisterten Zwischenzielen.\\
-$I_U$ & Lokal abgeleitete Anwendung eigener gewöhnlicher Erwerbsziele.
-Keine zusätzliche gespeicherte Ergebnisart.\\
+$O,Q,K$ (Abschluss) & Paarweise disjunkte gewöhnliche Fach-, Prüfungs-
+und Memorieratome; K bezeichnet hier keine strukturellen Cluster.\\
+$\mathcal{C}(q)$ (Abschluss) & Qualifizierte unveränderliche gewöhnliche Atomziele
+einer Q-ID; nicht die Enthaltenseinsrelation C aus dem Kern.\\
+$\operatorname{RequiredOwnQ}(U)$ & Tatsächlich verpflichtende eigene
+Prüfungen einer aufgelösten zulässigen Variante; decken $\Own(U)\cap O$.\\
+$I(M)$ & Globale aus ausdrücklich bestandenen qualifizierten Prüfungen
+abgeleitete gewöhnliche Kompetenzen. Keine gespeicherte Ergebnisart.\\
 Personal Curriculum & Verbindliche persönliche Zielauswahl auf Level 2;
 kein Filter, der vorhandene globale Anerkennung zurücknimmt.\\
 Fokus & Temporärer Arbeitsbereich auf Personalisierungslevel 3.\\

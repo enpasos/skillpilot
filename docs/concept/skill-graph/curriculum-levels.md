@@ -18,4 +18,5 @@ Continue with:
 - [Graph Definition §12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
   for formal unit semantics and optional calendar/workload profiles;
 - [Assessment-Gated Completion](assessment-gated-completion.md) for durable
-  global recognition under immutable own contracts.
+  global recognition from qualified immutable coverage of explicit passed Q,
+  including parent/foreign proof without passing required child Q/K.

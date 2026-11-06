@@ -5,17 +5,42 @@ A **learning unit** (German: **Lerneinheit**; conceptual technical name:
 outcome matters, organises learning goals or smaller units, and declares the
 assessment and recall obligations belonging to its own promise.
 
+**Purpose clarified on 6 November 2026.** A unit establishes a dependable
+foundation for subsequent learning. Its assessments must demonstrate solid,
+independent application before the planned course builds on that foundation.
+An exposed conceptual gap calls for focused learning and reassessment; a false
+positive completion must not send learners onward with an unstable foundation.
+This is a didactic requirement, not an activation of technical access locks.
+
+The German [design criteria and worked examples](learning-unit-design-and-examples.md)
+explain this purpose through one-dimensional accelerated motion and an initial
+Class 5 number-understanding candidate. The examples are proposals for review,
+not approved curriculum partitions or assessment contracts.
+
 The structure applies recursively: a course can contain topic units, a topic
 smaller units, and a small unit atomic goals. Completion is derived from actual
 goal outcomes and required children. No unit mastery or additional learner
 qualification is stored.
 
-**Concept status.** This is the accepted recursive design, not an announcement
-of an implemented schema, compiler, access mode or migration. The existing
-binary goal results, [global recognition contract](assessment-gated-completion.md)
-and [graph semantics](graph-definition.md) remain the foundation.
+**Concept status, 6 November 2026.** This is the accepted recursive target
+design; implementation and migration remain pending. The updated
+[global recognition contract](assessment-gated-completion.md) supersedes local
+remaining-demand recognition: valid passed-Q proof acts globally immediately.
+Binary goal results and [graph semantics](graph-definition.md) remain the
+foundation. No new access lock is introduced.
 
 ## 1. Learning promise and authoritative placement
+
+A boundary needs a meaningful transition: what coherent understanding and
+application must be secure before something new depends on it? A theme, dense
+prerequisite neighbourhood or existing assessment is an indicator, not a
+sufficient definition. Review prerequisite meaning first. Sparse minimal chains
+can form strong units; shared elementary prerequisites do not force every later
+application into one giant unit. Do not change edges to justify a desired cut.
+No fixed number of targets establishes a good unit, and collecting single-exam
+wrappers under a new parent does not supply the missing didactic boundary.
+A terminal unit or synthesis can also establish a meaningful independent
+application; a later consumer is not required to justify its existence.
 
 A unit identifies an outcome learners can understand, for example interpreting
 and predicting a transition process. Its motivation explains the purpose of
@@ -64,10 +89,35 @@ finding, not an empty completed unit.
 
 ## 3. Assessments at the appropriate scale
 
-Every ordinary subject target in Own(U) needs
-an own local assessment consumer and independently reviewed tasks and normal
-rubric proving its application. Own memory goals retain verified recall.
-All own assessment and memory obligations remain explicit.
+Assessments follow the unit's application promise. They must distinguish
+independent modelling, explanation and suitable transfer from reproducing a
+coached solution. State essential concepts, permitted aids and expected entry
+competence. An essential misconception must not be compensated by points for
+incidental work. At the same time, a single arithmetic slip with sound reasoning
+does not automatically negate the whole competence. Express these distinctions
+in the ordinary, published task/rubric and grading contract; do not add a hidden
+second pass rule or another stored qualification. If current total-score grading
+cannot support the intended claim, redesign the assessment or narrow the claim
+before authorising recognition. If published core criteria beyond the current
+total-score rule are needed, change the shared normal grading contract and
+test its adapters; do not introduce a coach-only pass condition.
+
+On an unsuccessful attempt, explain the specific gap, offer focused learning
+and use a suitable fresh application for reassessment. This does not revoke
+unrelated valid achievements or require repeating every completed child.
+
+For every released acquisition unit and each resolved permitted assessment
+alternative, the actually required own Q must prove all own ordinary targets:
+
+$$
+Own(U)\cap O\ \subseteq\ \bigcup_{q\in RequiredOwnQ(U)}C(q).
+$$
+
+Here C(q) is the qualified full-goal coverage defined in the recognition
+contract. Direct ordinary understanding or foreign evidence does not replace
+these mandatory own application assessments. This is static content quality,
+not a second learner result. Own memory goals retain verified recall, and all
+required own Q/K stay explicit. Alternative Q are not all automatically required.
 
 Required recall belongs with the unit that first acquires the corresponding
 knowledge. A broad existing memory goal spanning proposed children must not be
@@ -79,13 +129,14 @@ additional own obligations must not hide obligations belonging to its children.
 
 | Unit role | Own assessment responsibility |
 | --- | --- |
-| Acquisition unit | Cover each own subject competence that the unit may implicitly recognize. |
+| Acquisition unit | Every permitted required-own-Q alternative proves the complete own ordinary promise. |
 | Integrative parent | May require its own synthesis assessment combining child competencies, even without a new ordinary target. |
 | Pure aggregate | May have no own assessment; it aggregates required children and any genuine own targets. |
 
 A synthesis assessment is an explicit atomic goal of the parent. Its pass
-does not pass child exams, verify child cards or recognize child targets under
-a replacement contract over all descendants. A new integrative subject
+does not pass child exams or verify child cards. It may recognize a child's
+ordinary target only through its own complete qualified C(q), never through
+blanket coverage of the descendant union. A new integrative subject
 competence, if authored, belongs to Own(U) and needs its own reviewed coverage.
 An ordinary navigation heading does not itself demand an extra assessment.
 
@@ -93,35 +144,43 @@ Cards alone are not evidence of independent application. Naming a card
 collection a unit does not establish application competence. Displaying a
 separate recall block changes neither its explicit recall duty nor this limit.
 
-## 4. Local recognition, durable global effect
+## 4. Qualified assessment proof, durable global effect
 
-Let M be explicit mastery, Q assessment atoms and K memorization atoms. Resolve
-inherited and cluster-expanded prerequisites into the full atomic relation R.
-For each unit, only its **own** protected obligations seed recognition:
+Let M be explicit mastery, O ordinary subject atoms, Q assessments and K
+memorization atoms. For fully qualified immutable atomic coverage C(q),
 
 $$
-P_U=Own(U)\cap(Q\cup K),\qquad
-N_U=Reach_R^*(P_U\setminus M),\qquad
-I_U=Own(U)\setminus(M\cup P_U\cup N_U).
+C(q)\subseteq O,\qquad
+I(M)=\left(\bigcup_{q\in M\cap Q}C(q)\right)\setminus M,\qquad
+M_{\mathrm{eff}}=M\cup I(M).
 $$
 
-Traversal continues through mastered intermediates and outside support. Every
-ordinary subject target in Own(U) requires a valid immutable own assessment
-contract. An uncovered ordinary endpoint is a missing contract, not a zero-work
-success. This does not prohibit aggregates or synthesis-only parents.
-Orientation retains its motivational-marker meaning; it certifies neither
-subject competence nor an interaction that did not occur.
+Only explicit passed Q produce proof. `examData.coveredGoalIds` is the one
+maintained authoring list after qualification; unreviewed or historically
+uncertain Q have C(q) = ∅. A published/released marker alone does not qualify
+coverage. A qualified set has fixed full atomic meanings, never dynamic
+expansion through later cluster changes. Stronger or uncertain Q meanings need
+new IDs; old results do not pass them. Equivalent variants may retain the ID.
 
-Valid I_U sets contribute to global M_eff through durably applicable contracts,
-including after focus or Personal-Curriculum changes. Implicit results are not
-fed back into this local derivation. A parent must not replace Own(U) by T(U)
-to bypass a child's local obligations or enlarge an old exam's meaning.
+Acquisition location and proof location differ. A parent or foreign Q can
+prove an ordinary goal fully while the owning unit's required Q/K remain open.
+One of several Q in a unit may therefore recognize A while another still needs
+A. That valid recognition acts globally immediately, including after scope
+changes. Unit completion still needs all required own and child obligations.
+There is no new intermediate-assessment goal type or additional learner status.
 
-An individual own target can be recognized before the whole unit completes.
-An unrelated open card or another branch keeps completion open without
-withdrawing valid achievement. An open parent synthesis or later external
-consumer likewise does not reopen a child's recognized competence. Retain
-immutable historical contracts and stable result attribution.
+Full inherited/cluster-expanded R reach continues through mastered and outside
+intermediates before focus restriction. Qualified C(q) must be within the full
+atomic Reach_R⁺({q}); that path is consistency evidence, never proof by itself.
+Missing paths require subject review, not automatic or redundant direct edges.
+Keep transitive minimality. Implicit results never seed new proof. Neither Q,
+K nor motivation is implicitly completed by C(q).
+
+For experiment and analysis, the default is one suitable multipart Q with one
+normal binary result. Supplied-data analysis does not prove a required own
+experiment; separately passed incomplete Q do not automatically prove the full
+goal. No generic proof-combination language is introduced. Retain valid
+historical coverage for global recognition after curriculum/focus changes.
 
 ## 5. Derived recursive completion
 
@@ -161,7 +220,8 @@ block order and valid internal atomic traversal. Atomic acyclicity alone is
 insufficient: acquisition order a → b → c cannot place a,c in one indivisible
 block and b in another without a block-order conflict. Revise the boundary or
 explicitly permit interleaving. Technical locks and direct assessment access
-remain an open policy choice, not a consequence of nesting.
+are not activated by nesting. This work retains direct assessment attempts and
+introduces no new lock; any future gated mode requires a separate decision.
 
 ## 7. Optional calendar and workload profiles
 
@@ -184,9 +244,10 @@ and the [time-axis contract](../didactic/curriculum-time-axis-and-pacing.md).
 
 Review the promise, source scope, stable placement, Own/child membership,
 Q/K and card ownership, normalized prerequisites and own task/rubric meaning.
-Check each distinct protected set releasing an own competence, including
-authorized task variants: can a learner pass while entirely lacking an
-essential recognized competence? Such a counterexample invalidates the contract.
+Check each qualified Q and allowed variant against every full competence in
+C(q): can a learner pass while entirely lacking an essential claimed competence?
+Such a counterexample invalidates the contract. Also check that secure
+understanding with an incidental calculation error can pass normally.
 
 Source fidelity, independent content reviews, applicable strict QA gates,
 reproducibility and truthful acceptance remain required. Existing curricula are

@@ -3,11 +3,21 @@
 [Learning units](learning-units.md) form recursive learning promises. A course
 may deliberately declare that one **whole unit** is a prerequisite of another.
 
-**Decision boundary.** Recursive recognition and completion are accepted.
-Whether whole-unit prerequisites express regular learning order or also impose
-technical access locks remains **undecided**, including their interaction with
-deliberate direct assessment access. The gated profile below is a conditional
-example, not an activated rule or a new general requirement.
+**Decision boundary, 6 November 2026.** Recursive completion and qualified
+global passed-Q recognition are accepted target rules, with runtime migration
+pending. This work retains direct assessment attempts and introduces no new lock.
+The didactic purpose clarified on **6 November 2026** is also binding: the
+planned transition to learning that relies on a unit's application promise
+requires a dependable assessment of that promise first. Whether authored
+whole-unit prerequisites additionally impose technical access locks remains
+**undecided**, including their interaction with deliberate direct assessment
+access. The gated profile below is a conditional example, not an activated rule.
+
+The [design criteria and examples](learning-unit-design-and-examples.md)
+describe the learning boundary. This purpose does not turn every atomic
+`requires` edge into a whole-unit requirement. Independent branches can continue;
+an ordinary goal's explicit mastery does not itself pass a separately required
+unit assessment. Existing valid global mastery and recognition remain intact.
 
 ## 1. A deliberately stronger prerequisite
 
@@ -36,10 +46,12 @@ acquired child competencies without adding a new ordinary goal. That pass
 neither completes an unfinished child nor replaces its recall. A child pass
 does not pass synthesis.
 
-Recognition applies only to own ordinary targets under their valid immutable
-contract. Another child, parent exam or unrelated card can remain open without
-withdrawing an individual's global recognition. Entry policy cannot erase that
-achievement or enlarge a historical exam's meaning.
+Recognition comes from any explicit passed Q whose immutable qualified C(q)
+fully proves an ordinary goal, including a parent or foreign Q. Unique
+acquisition ownership is separate. Every permitted required-own-Q alternative
+must prove the unit's complete own ordinary promise; required Q/K are not
+replaced by foreign proof. Another open Q or card cannot withhold valid global
+recognition. Entry policy cannot erase it or enlarge an old exam's meaning.
 
 ## 3. Feasible projected block order
 

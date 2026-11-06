@@ -115,8 +115,8 @@ only after learner acceptance.
 
 All `target` goals in the Personal Curriculum remain intended learning goals.
 A narrower focus changes only the current corridor. In particular, `requires`
-alone does not write mastery to prerequisites. Under the 4 November 2026
-recognition contract, valid passed application assessments derive effective
+alone does not write mastery to prerequisites. Under the 6 November 2026 target
+contract, qualified immutable coverage of explicit passed Q derives effective
 mastery of ordinary goals. That recognition remains global and satisfies later
 prerequisites; widening a focus must not reopen those goals. Remaining targets
 participate in the applicable transitive prerequisite calculation.
@@ -131,10 +131,13 @@ profile-specific assessment qualification.
 The corrected concept distinguishes the stored explicit set M from derived
 application recognition I. Effective mastery M_eff = M ∪ I is equally valid
 for subsequent prerequisites and total progress. I is reconstructed from fixed
-valid recognition contracts, never from a focus filter or a second learner
-outcome. Exam and memory goals themselves stay explicit. See
+coverage C(q) of explicit passed Q, never from local remaining demand, a focus
+filter or a second learner outcome. Another open Q cannot withhold valid proof.
+Parent/foreign proof is
+permitted; acquisition ownership and required own/child Q/K remain separate.
+Unreviewed or historically uncertain Q have C(q)=∅. Exam and memory goals stay explicit. See
 [assessment-gated completion](skill-graph/assessment-gated-completion.md).
-Current runtime conformance still requires replanning and implementation.
+Current runtime conformance still requires the planned implementation and migration.
 
 Cluster and scope progress is the weighted share of effectively mastered, unique atomic
 goals. A percentage describes that aggregate, not a degree of mastery for an
