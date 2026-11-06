@@ -539,6 +539,20 @@ Docs `42245440547`, OAuth `42245440572` und Gemini `42245440845` melden Erfolg;
 für den neuen Assessment-Lauf ist hier keine erneut ausgezählte XML-Quittung
 behauptet. Der Hauptlauf besitzt noch keinen erfolgreichen Gesamtabschluss.
 
+Die veraltete G8/G9-Angebotsdatei ist anschließend mit dem unveränderten
+Producer regeneriert. Beide Maps enthalten genau die drei aktuellen M6-Owner
+mit identischen Einträgen; ausschließlich die sieben M0-Owner entfallen.
+Der tatsächliche Consumer-Test erwartete zuvor Mathematik-/Biologieangebote
+unabhängig vom CQR-Stand. Er prüft jetzt echte Deutsch-/Latein-Positivfälle,
+alle 18 tatsächlichen kanonischen M0-Einträge und die statusabhängige Rückkehr
+von Mathematik/Biologie nach gültiger Wiederherstellung. Paketfixture und
+sämtliche vorhandenen Mathematikprojektionen bleiben erhalten. Der
+[Abschlussbeleg](ci-graph-repairs/gymnasium-duration-offerings-consumer-review-2026-11-06.json)
+bindet den frischen CQR vom `2026-11-06T17:08:02.394Z`, den grün ausgeführten
+Consumer, einen tatsächlichen roten Altdatei-Gegenfall und den bestandenen
+Angebots-Aktualitätscheck. Floors, Policy und Views sind unverändert.
+Die frische Remote-Abnahme dieses Folgeschritts bleibt gesondert erforderlich.
+
 Der Informatik-39er-Satz ist inzwischen mit geprüften Angebotsfolgen angewandt;
 die obige Anwendung und die frische CQR-Erzeugung benennen den Stand. Der
 [Einzelreview der weiteren 59 Minimalitätswege](ci-graph-repairs/informatics-remaining-minimality-review-2026-11-06.md)

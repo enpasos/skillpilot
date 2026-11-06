@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-06T17:11:10.998450+00:00",
+  "purpose": "final duration-offerings regeneration and readiness-aware consumer verification against the refreshed actual CQR",
+  "status": "PASS-local-existing-offerings-check-and-full-consumer-self-test",
+  "commitOrPushPerformedByThisAgent": false,
+  "freshRemoteCiAcceptanceClaimed": false,
+  "changedFiles": [
+    {
+      "path": "app/src/generated/gymnasiumDurationOfferings.ts",
+      "sha256": "642f3ee5c0241a6c06cb260ac53e2c5b309bda21c89d89c3e8ce8d558ddf9152"
+    },
+    {
+      "path": "app/scripts/testCurriculumOfferingSource.ts",
+      "sha256": "88de4eeac64adbd326a121d15193ae064fbadc5ba77044beb2ffb1cbc70a6eab"
+    }
+  ],
+  "actualStatusBinding": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "2a30f049b759b2ef12ef603637cfe981aa924e42c55c251967986d5cf3c6a5fd",
+    "generatedAt": "2026-11-06T17:08:02.394Z",
+    "canonicalEntries": 21,
+    "currentM0Entries": 18,
+    "readyEntries": [
+      {
+        "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "subject": "Deutsch",
+        "maturity": "M6"
+      },
+      {
+        "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "subject": "Geschichte",
+        "maturity": "M6"
+      },
+      {
+        "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "subject": "Latein",
+        "maturity": "M6"
+      }
+    ]
+  },
+  "historicalFailureAndRegenerationEvidence": {
+    "path": "docs/dev/ci-graph-repairs/gymnasium-duration-offerings-regeneration-2026-11-06.json",
+    "sha256": "de94af63175c6b15dc5596cb25db1622d80557c874a707762df76ada58ac2254",
+    "byteIdentical": true
+  },
+  "outputDerivation": {
+    "unmodifiedProducer": "app/scripts/generateGymnasiumDurationOfferings.ts",
+    "sha256": "86ca96531dd41c5448d945f043eda8281d389ffec079bd2de29482e42baceeee",
+    "sameOutputAsHistoricalCorrectPreview": true,
+    "semanticMaps": {
+      "GYMNASIUM_DURATION_OFFERINGS": {
+        "beforeLandscapeCount": 10,
+        "expectedLandscapeCount": 3,
+        "removed": [
+          {
+            "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+            "subject": "Biologie",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+            "subject": "Politik und Wirtschaft",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+            "subject": "Wirtschaftswissenschaften",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+            "subject": "Mathematik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+            "subject": "Informatik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "subject": "Physik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "subject": "Chemie",
+            "currentMaturity": "M0"
+          }
+        ],
+        "added": [],
+        "sharedEntriesUnchanged": true,
+        "remaining": [
+          {
+            "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+            "subject": "Latein",
+            "currentMaturity": "M6"
+          },
+          {
+            "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+            "subject": "Deutsch",
+            "currentMaturity": "M6"
+          },
+          {
+            "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+            "subject": "Geschichte",
+            "currentMaturity": "M6"
+          }
+        ]
+      },
+      "GYMNASIUM_CONTENT_OFFERINGS": {
+        "beforeLandscapeCount": 10,
+        "expectedLandscapeCount": 3,
+        "removed": [
+          {
+            "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+            "subject": "Biologie",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+            "subject": "Politik und Wirtschaft",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+            "subject": "Wirtschaftswissenschaften",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+            "subject": "Mathematik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+            "subject": "Informatik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+            "subject": "Physik",
+            "currentMaturity": "M0"
+          },
+          {
+            "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+            "subject": "Chemie",
+            "currentMaturity": "M0"
+          }
+        ],
+        "added": [],
+        "sharedEntriesUnchanged": true,
+        "remaining": [
+          {
+            "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+            "subject": "Latein",
+            "currentMaturity": "M6"
+          },
+          {
+            "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+            "subject": "Deutsch",
+            "currentMaturity": "M6"
+          },
+          {
+            "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+            "subject": "Geschichte",
+            "currentMaturity": "M6"
+          }
+        ]
+      }
+    },
+    "sourcePolicyViewsAndMaturityRulesEdited": false
+  },
+  "consumerContract": {
+    "positiveCases": [
+      {
+        "subject": "Deutsch",
+        "jurisdiction": "DE-HE",
+        "models": [
+          "G9"
+        ],
+        "reviewedPolicyAndActualViewChecked": true
+      },
+      {
+        "subject": "Latein",
+        "jurisdiction": "DE-BB",
+        "models": [
+          "G8",
+          "G9"
+        ],
+        "reviewedPolicyAndActualNeutralViewChecked": true
+      }
+    ],
+    "currentM0Cases": {
+      "canonicalEntries": 18,
+      "policyJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "durationAndContentOfferingsEmpty": true,
+      "stageSelectionNotOffered": true
+    },
+    "mathematicsAndBiologyCases": "Actual reviewed policies and real views are checked; expected G8/G9 offerings depend on the real M6/M7 status, so genuine later restoration becomes a positive case automatically.",
+    "fakeM6DataWrittenToProductiveReport": false,
+    "existingPackageAndMathProjectionSections": [
+      {
+        "sectionStart": "const catalog: RuntimeCurriculumCatalog",
+        "sha256": "ada5d774eab09203ca7a23e385646ef205d7cb273b9c6b563487df2796962c75",
+        "byteIdentical": true
+      },
+      {
+        "sectionStart": "const hessenMathLkUpperSecondary =",
+        "sha256": "c3d946be336d4a7e303d6e6ba106a513b1fee9759d7f6d8502019931cff8521d",
+        "byteIdentical": true
+      }
+    ]
+  },
+  "localFinalCommands": [
+    {
+      "case": "consumer-final",
+      "command": [
+        "npm",
+        "run",
+        "test:curriculum-offering-source"
+      ],
+      "exitCode": 0
+    },
+    {
+      "case": "check-final",
+      "command": [
+        "npm",
+        "run",
+        "check:gymnasium-duration-offerings"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "localFinalInputSnapshot": {
+    "files": 356,
+    "sha256": "941dabf2cce2d6c3bdbeec4d8b9d4824c78e4508e9020c16b1a3318e6df2048d",
+    "allStableDuringFinalChecks": true
+  },
+  "additionalActualCounterexample": {
+    "exitCode": 1,
+    "expectedGuardObserved": true,
+    "diagnostic": "Repository duration offerings must respect the actual CQR for Mathematik",
+    "candidateInput": "read-only overlay of the original stale ten-subject generated offering artifact",
+    "actualCqrUnmodified": true,
+    "productionFilesModifiedByNegative": false,
+    "timing": "Ran before the final CQR refresh; original M0 Mathematics status and consumer implementation were unchanged. The earlier failure evidence remains separate."
+  },
+  "limits": [
+    "The original generated-offerings failure was repaired without changing maturity, policy, scope or any protected floor.",
+    "This is not restoration of the seven protected M0 subjects or a full frontend/remote CI pass.",
+    "No full frontend build, runtime identity activation or B receipt was performed."
+  ],
+  "durableEvidence": {
+    "directory": "tmp/duration-offerings-repair-2026-11-06",
+    "finalHashInventory": "tmp/duration-offerings-repair-2026-11-06/consumer-final-artifact-hashes.json",
+    "finalHashInventorySha256": "511f4fd44d8f05dc60ebbabaf3e660e7282b7f909b7801f551fdd75e7fb189d4"
+  }
+}

@@ -35,6 +35,8 @@ import { migrateTrainerClassSession } from '../src/utils/trainerLandscapeContext
 const canonicalGymnasiumRootId = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
 const canonicalBiologyId = '08a43a1b-d97e-522c-9dfa-c950a493364e'
 const canonicalMathId = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+const canonicalGermanId = '67bd301b-e11a-582d-94ba-4f4b1a4cefff'
+const canonicalLatinId = '668cf206-941e-51f8-8704-3e8938631235'
 
 const catalog: RuntimeCurriculumCatalog = {
   catalogApiVersion: '1.2',
@@ -133,14 +135,85 @@ assert.deepEqual(
 )
 
 const repositorySource = resolveCurriculumOfferingSource({ mode: 'repository' })
+const readRepositoryJson = (path: string): unknown => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'))
+const actualQualityStatus = readRepositoryJson('docs/qa-ci/status/curriculum-quality-status.json') as {
+  curricula: Array<{ landscapeId: string; subject: string; frameworkId?: string; maturity: string }>
+}
+const actualDurationPolicy = readRepositoryJson('curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json') as {
+  decisions: Array<{ subject: string; jurisdiction: string; stage: string; status: string; durationModels: string[] }>
+}
+const canonicalStatus = (landscapeId: string, subject: string) => {
+  const matches = actualQualityStatus.curricula.filter((entry) => entry.landscapeId === landscapeId
+    && entry.frameworkId?.startsWith('canonical-gymnasium'))
+  assert.equal(matches.length, 1, `Expected one authoritative canonical CQR entry for ${subject}`)
+  assert.equal(matches[0].subject, subject)
+  assert.match(matches[0].maturity, /^M[0-7]$/u)
+  return matches[0]
+}
+const hasReadyStatus = (landscapeId: string, subject: string) => ['M6', 'M7'].includes(canonicalStatus(landscapeId, subject).maturity)
+const assertReviewedDurationPolicy = (subject: string, jurisdiction: string, durationModels: string[]) => {
+  assert.ok(actualDurationPolicy.decisions.some((decision) => decision.subject === subject
+    && decision.jurisdiction === jurisdiction && decision.stage === 'SekI' && decision.status === 'reviewed'
+    && durationModels.every((duration) => decision.durationModels.includes(duration))),
+  `Missing reviewed duration policy for ${subject}/${jurisdiction}`)
+}
+const assertSekOneView = (path: string, landscapeId: string, scope: Record<string, string>) => {
+  const view = readRepositoryJson(`curricula/DE/Gymnasium/composition-views/${path}`) as {
+    landscapeId: string; scope: Record<string, string>
+  }
+  assert.equal(view.landscapeId, landscapeId)
+  assert.deepEqual(view.scope, { schoolForm: 'Gymnasium', stage: 'SekI', ...scope })
+}
+
+// Repository positives use actual released curricula. The package fixture and
+// Mathematics projection below remain independent of repository readiness.
+assert.equal(hasReadyStatus(canonicalGermanId, 'Deutsch'), true)
+assertReviewedDurationPolicy('Deutsch', 'DE-HE', ['G9'])
+assertSekOneView('deutsch/de-he-gym-seki-german-g9.view.json', canonicalGermanId,
+  { jurisdiction: 'DE-HE', durationModel: 'G9' })
 assert.deepEqual(
-  getOfferedGymnasiumDurationModels(canonicalMathId, 'DE-HE', repositorySource),
+  getOfferedGymnasiumDurationModels(canonicalGermanId, 'DE-HE', repositorySource),
+  ['G9'],
+)
+assert.equal(hasReadyStatus(canonicalLatinId, 'Latein'), true)
+assertReviewedDurationPolicy('Latein', 'DE-BB', ['G8', 'G9'])
+assertSekOneView('latein/de-de-gym-seki-latin.view.json', canonicalLatinId, {})
+assert.deepEqual(
+  getOfferedGymnasiumDurationModels(canonicalLatinId, 'DE-BB', repositorySource),
   ['G8', 'G9'],
 )
-assert.deepEqual(
-  getOfferedGymnasiumDurationModels(canonicalBiologyId, 'DE-BB', repositorySource),
-  ['G8', 'G9'],
-)
+
+// These real policy/view controls explain why an empty offering is a CQR
+// readiness decision. A later genuine M6/M7 restoration must offer them again.
+assertReviewedDurationPolicy('Mathematik', 'DE-HE', ['G8', 'G9'])
+assertSekOneView('mathematik/de-he-seki-g8.view.json', canonicalMathId,
+  { jurisdiction: 'DE-HE', durationModel: 'G8' })
+assertSekOneView('mathematik/de-he-seki-g9.view.json', canonicalMathId,
+  { jurisdiction: 'DE-HE', durationModel: 'G9' })
+assertReviewedDurationPolicy('Biologie', 'DE-BB', ['G8', 'G9'])
+assertSekOneView('biologie/de-de-gym-seki-biology.view.json', canonicalBiologyId, {})
+for (const [landscapeId, subject, jurisdiction] of [
+  [canonicalMathId, 'Mathematik', 'DE-HE'],
+  [canonicalBiologyId, 'Biologie', 'DE-BB'],
+] as const) {
+  assert.deepEqual(getOfferedGymnasiumDurationModels(landscapeId, jurisdiction, repositorySource),
+    hasReadyStatus(landscapeId, subject) ? ['G8', 'G9'] : [],
+    `Repository duration offerings must respect the actual CQR for ${subject}`)
+}
+const currentM0Curricula = actualQualityStatus.curricula.filter((entry) => entry.maturity === 'M0'
+  && entry.frameworkId?.startsWith('canonical-gymnasium'))
+const policyJurisdictions = new Set(actualDurationPolicy.decisions.map((decision) => decision.jurisdiction))
+for (const entry of currentM0Curricula) {
+  for (const jurisdiction of policyJurisdictions) {
+    assert.deepEqual(getOfferedGymnasiumDurationModels(entry.landscapeId, jurisdiction, repositorySource), [],
+      `Existing policy must not publish M0 duration offerings for ${entry.subject}/${jurisdiction}`)
+    assert.deepEqual(getOfferedGymnasiumStages(entry.landscapeId, jurisdiction, repositorySource), [],
+      `Existing views must not publish M0 content offerings for ${entry.subject}/${jurisdiction}`)
+    assert.equal(isGymnasiumSubjectOfferedForStageSelection(entry.landscapeId, jurisdiction,
+      { sek1Selected: true, sek2Selected: true }, repositorySource), false)
+  }
+}
+console.log(`Repository offering readiness checked: two real M6/M7 positives, ${currentM0Curricula.length} current M0 subjects, and status-dependent Mathematics/Biology controls.`)
 
 const hessenMathLkUpperSecondary = {
   [canonicalGymnasiumRootId]: {
