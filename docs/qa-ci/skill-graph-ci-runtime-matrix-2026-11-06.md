@@ -109,7 +109,43 @@ der folgende neue Kopf benötigt wiederum seine eigene Remote-CI.
 U35–U38 werden durch vollständige Voraussetzungspfade nicht erfüllt. Die alten
 Automatic-Waiver-Regeln, fehlende Vertragsownership und zusätzliche PR83-C(q)-
 Qualifikation sind damit nicht implementiert. N11/N12 bleiben der unveränderte
-Kartenvertrag; ihre gesonderten neuen Service-Negativtests wurden zurückgestellt.
+Kartenvertrag; die zunächst zurückgestellten Service-Gegenfälle sind im
+folgenden gesonderten Nachtrag nachgewiesen.
+
+### Kartenabschluss und spätere Fälligkeit: N11/N12
+
+Der [begrenzte Testnachweis](../dev/ci-graph-repairs/srs-completion-retention-regressions-2026-11-06.json)
+ergänzt genau zwei öffentliche Servicefälle in
+`service/AssessmentCompletionSrsIntegrationTest` und ändert keine Produktion:
+
+- `laterDueDatesDoNotReopenACompletedMemoryGoalOrRevokeItsExplicitResult:162`
+  besteht den vollständigen serverseitigen Zweikarten-Batch, liest anschließend
+  die tatsächlich gespeicherten `nextReview`-Werte und prüft deren spätere
+  echte Fälligkeit. `getMastery`, Frontier und die strikte Completion-Projektion
+  erhalten den Abschluss. SRS-Bytes und -Zeitstempel sowie gespeicherter
+  Mastery-Wert und -Zeitstempel bleiben unverändert.
+- `passedCardsCannotBeRetestedBySingleFalseWriteOrForgedBatchWhileOtherCardsRemainOpen:207`
+  hält ein echtes aktives Kartenziel mit einer bereits bestandenen und einer
+  offenen Karte. Die bestandene Karte fehlt im neuen Serverbatch. Ein
+  einzelner `passed=false`-Write erreicht die konkrete Passed-Guard
+  (`LearnerService:1837`); ein injizierter Batch erreicht die exakte
+  Serverauswahlprüfung (`:2024`). Beide werden ohne Ergebnis-, SRS- oder
+  Revisionsänderung abgewiesen. Der richtige Restbatch kann danach abschließen;
+  der frühere Pass bleibt exakt erhalten. Die Eligibility-Auswahl steht unter
+  `selectNextVerifiedRecallCards:2458`, die All-Karten-Mastery unter
+  `isSrsMasteredByVerifiedRecall:1418`.
+
+Der normale lokale Gradle-Lauf mit gepinntem Corretto25.0.2.10.1 und vorhandenem
+Offlinecache führt `processResources` tatsächlich aus, ohne Taskausschlüsse:
+9 Completion-SRS-, 6 Mastery-Batch- und 6 Practice-Guard-Fälle bestehen, ohne
+Fehler oder Skips. Alle 21 kanonischen Eingabedateien sind vor/nach dem Lauf
+bytegleich. Die vorhandene Kette **A** ruft die ganze erweiterte Klasse auf;
+ihre harte XML-Mindestzahl steigt von 7 auf 9. Trigger, PostgreSQL-/Restart-
+und weitere Profil-Gates bleiben erhalten. **B** entdeckt die JUnit-Klasse
+weiter in der Vollsuite. Für diese beiden konkreten N11/N12-Servicegrenzen
+liegt damit vollständiger lokaler Negativnachweis mit harter CI-Verdrahtung
+vor; eine neue Remote-Ausführung und tatsächlicher Coachdialog werden nicht
+behauptet. Die historischen Regelzeilen unten bleiben als Baseline erhalten.
 
 **Maturity bleibt ein gesonderter Nachweis.** Der erste streng
 berechnete Statusbericht vom `2026-11-06T09:39:23.324Z` weist 20 von 21
