@@ -4,8 +4,12 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
+- [Neuer Umsetzungsplan: Lerneinheiten für Mathematik und Physik](mathematics-physics-learning-units-plan.md)
+  Aktueller Auftrag auf Grundlage des zweiten Entwurfs: Nachweisregel klären,
+  erste vollständige Einheiten erproben und beide Fächer getrennt abschließen.
 - [Lerneinheiten: gesicherter Neustart vom 6. November 2026](learning-units-restart-2026-11-06.md)
-  Aktuelle Arbeitsgrundlage: Archiv, unabhängige fachliche Entwürfe und offene Entscheidungen vor einer neuen Umsetzung.
+  Gesicherte Basis und Archiv der abgebrochenen Arbeit; die dortige Wartephase
+  wird durch den neuen Plan abgelöst.
 - [Historischer Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Abgebrochene Arbeitslinie; Ergebnisse bleiben gezielt nachnutzbar, die alte Zerlegung wird nicht fortgesetzt.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)

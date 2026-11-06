@@ -17,9 +17,10 @@ learning units. This section explains both the graph and the contracts around it
   direct assessment access, transitive minimality and globally effective
   recognition through independent application in valid local learning units.
   [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md):
-  staged integration in the complete Cockpit, recursive unit implementation,
-  selective reuse of the former PR and separate subject milestones.
+  [Neuer Umsetzungsplan: Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md):
+  the new plan explicitly revisits recognition using the second proposal,
+  then propagates that decision consistently before runtime changes.
+  The earlier implementation plan is historical.
 - [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
   educational units, a motivational introduction, required outcomes and
   completion derived from child units and own obligations.
