@@ -1,11 +1,14 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller gesicherter Nachlauf: `2026-11-06T18:13:50.840Z`. Der
-[Gesamt-CQR-Beleg](post-memory-orientation-current-cqr-2026-11-06.md)
+Aktueller gesicherter Nachlauf: `2026-11-06T18:45:31.502Z`. Der
+[Gesamt-CQR-Beleg nach den 26 Informatik-Korrekturen](informatics-bounded26-current-cqr-2026-11-06.json)
 bindet alle 21 Quellen und die genau zehn unveränderten Fachfloors:
 Deutsch, Geschichte und Latein sind M6; sieben Floors bleiben offen.
-Mathematik hat 919 CQR-001-/917 G17-Befunde. Die vollständige Tabelle wird
-im Gesamtbeleg geführt.
+Mathematik hat 919 CQR-001-/917 G17-Befunde, Informatik noch 47 G17.
+CQR-101/102 bestehen dort; sechs generische Terminalprüfungen bleiben offen.
+Die vollständige Tabelle wird im Gesamtbeleg geführt. Der
+[vorherige Nachlauf von 18:13 UTC](post-memory-orientation-current-cqr-2026-11-06.md)
+bleibt als historischer Zwischenstand erhalten.
 
 - [Angewandte fünf Sprachkorrekturen](global-orientation-cycles-application-2026-11-06.md):
   drei reale Sprachdateien, exakte Feldrekonstruktion, aktueller direkter
@@ -22,6 +25,18 @@ im Gesamtbeleg geführt.
 - [Mannheimer Topologie- und Identitätskonflikte](mannheim-topology-authority-review-2026-11-06.md):
   19 unabhängig wiederholte Konflikte in zwei parallelen Modellierungen;
   Quellenanalyse und Reparaturgrenzen, keine automatische Zusammenführung.
+- [Pflichtumfang nach aktueller PO-Klarstellung](curriculum-required-goal-scope-decision-2026-11-06.md):
+  amtlich belegte Ziele sowie fachlich begründete Lückenschlüsse. Der
+  [konkrete Zustandsautomatenreview](informatics-875-official-or-gap-followup-2026-11-06.md)
+  findet keinen belegten Pflichtbedarf; die vollständige Scope-/Prüfungskorrektur
+  unter Erhalt alter Ergebnisbedeutungen ist noch nicht angewandt.
+- [Vollständiger E25-Prüfungsentwurf](informatics-e25-terminal-candidate-2026-11-06.md):
+  25 fest gebundene Ziele, konkrete Materialien, ganze Musterlösung und tatsächlich
+  ausgeführte Referenzprogramme; Draft, noch ohne unabhängige Inhaltsfreigabe
+  oder Anwendung. Die GK-Angebotsgrenze bleibt ausdrücklich offen.
+- [Reparatur der Trainer-Angebotsfixture](trainer-gymnasium-offering-fixture-repair-2026-11-06.json):
+  echter roter Ausgangsfall, vollständiger grüner Browserlauf und gezielter
+  Script-Typvergleich ohne neue Diagnosen; Produktfilter und Reifegrade unverändert.
 
 Die [zentrale Übergabe](../ci-contract-audit-handoff-2026-11-06.md) führt
 Auftrag und nächste Schritte. Der feste 518-Regelkorpus und seine Matrizen

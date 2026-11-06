@@ -94,18 +94,20 @@ durch die gesamte Kette bis zur M6-/M7-Floor-Verletzung. Zusätzlich werden
 Bestandsbericht wurde neu erzeugt; sein frischer Check bestätigt zunächst
 die Aktualität des ersten strikten Berichts und scheiterte danach an neun
 unverändert geschützten Floors. Nach der unten belegten Geschichte-Korrektur
-ist die erneute Gesamterzeugung bestanden; acht Fachuntergrenzen bleiben rot.
+ist die erneute Gesamterzeugung bestanden. Weitere unten belegte Reparaturen
+führen im aktuellen Gesamtbericht vom `2026-11-06T18:45:31.502Z` zu drei
+bestandenen M6-Fächern; sieben Fachuntergrenzen bleiben rot.
 
 | Fach | Ziel | Neuer abgeleiteter Stand | CQR-001-Befunde |
 | --- | --- | --- | ---: |
 | Biologie | M7 | M0 | 375 |
 | Chemie | M7 | M0 | 354 |
-| Mathematik | M7 | M0 | 925 |
+| Mathematik | M7 | M0 | 919 |
 | Physik | M7 | M0 | 626 |
 | Wirtschaftswissenschaften | M7 | M0 | 104 |
 | Deutsch | M6 | M6 | 0 |
 | Geschichte | M6 | M6 | 0 |
-| Informatik | M6 | M0 | 59 |
+| Informatik | M6 | M0 | 47 |
 | Latein | M6 | M6 | 0 |
 | Politik und Wirtschaft | M6 | M0 | 603 |
 
@@ -561,14 +563,17 @@ fachliche Holds. Kein Zeugenpfad berechtigt zum pauschalen Löschen einer Kante.
 
 ## Aktuelle Fortsetzung: angewandte Reparaturen und getrennte Kandidaten
 
-Der [vollständige Gesamtnachlauf](ci-graph-repairs/post-memory-orientation-current-cqr-2026-11-06.md)
-vom `2026-11-06T18:13:50.840Z` enthält die tatsächlich angewandte kleine
+Der [vollständige aktuelle Gesamtnachlauf](ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
+vom `2026-11-06T18:45:31.502Z` enthält die tatsächlich angewandte kleine
 [Math-Memory-Reparatur](ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.md)
-und die fünf Sprachoperationen. Deutsch, Geschichte und Latein erreichen M6;
+und die fünf Sprachoperationen sowie die 26 Informatikkorrekturen.
+Deutsch, Geschichte und Latein erreichen M6;
 die sieben übrigen geschützten Floors bleiben rot. Mathematik hat jetzt
-919 CQR-001-Befunde, davon 917 G17; Informatik bleibt bei 59. Die vollständige
+919 CQR-001-Befunde, davon 917 G17; Informatik hat 47. CQR-101/102 bestehen
+dort. Die vollständige
 21er-Tabelle und die tatsächlichen Nachlaufbefehle stehen im Gesamtbeleg.
-Frühere Tabellen und Quellpins oben bleiben historische Zwischenstände.
+Der [vorherige Gesamtnachlauf](ci-graph-repairs/post-memory-orientation-current-cqr-2026-11-06.md)
+von 18:13 UTC und die datierten Einzelbelege bleiben historische Zwischenstände.
 Der kleine Math-Memory-Satz ist bereits angewandt; ältere umfangreichere
 Arithmetik-/Folgenhypothesen sind damit weder angewandt noch neu qualifiziert.
 
@@ -581,22 +586,39 @@ Einstiege erhalten den vorhandenen atomaren Orientierungsbedarf.
 Es wurden keine weitere Quelle, QA-Freigabe oder Länderentscheidung geändert.
 
 Der [engere Informatik-Kandidat](ci-graph-repairs/informatics-bounded26-overview-2026-11-06.md)
-ist weiterhin unapplied: 24 gewöhnliche Fachkorrekturen, ein getrenntes
+ist nach [abschließendem unabhängigen Review](ci-graph-repairs/informatics-bounded26-independent-review-2026-11-06.md)
+[tatsächlich angewandt](ci-graph-repairs/informatics-bounded26-prerequisites-application-2026-11-06.md):
+24 gewöhnliche Fachkorrekturen, ein getrenntes
 Turing-Folgeziel und der konkret geprüfte Dokumentations-Motivationseinstieg.
 Cache und ISA bleiben mit drei breiten Abiturverträgen verpflichtender
-Folgeblock. Im Kandidaten bestehen die echten Routeprüfungen, aber 47 G17
+Folgeblock. Im aktuellen Gesamtnachlauf bestehen die echten Routeprüfungen, aber 47 G17
 bleiben offen. Alle 24 tatsächlichen `examData`-Payloads bleiben unverändert;
 der vorhandene CQR-202-Routenscope erfasst nur 14 davon und lehnt sechs ab.
 Sein Ergebnis qualifiziert die zehn zusätzlichen Abitur-`examData` nicht.
 Eine M6-/M7-Wiederherstellung ist dadurch nicht belegt.
+
+Der Product Owner präzisiert den Pflichtumfang anschließend: amtlich belegte
+Ziele **oder Ziele, die eine Lücke schließen**. Die
+[Entscheidungsnotiz](ci-graph-repairs/curriculum-required-goal-scope-decision-2026-11-06.md)
+hält die tatsächliche Antwort und Ergänzung fest. Der
+[aktuelle fachliche Gegenblick](ci-graph-repairs/informatics-875-official-or-gap-followup-2026-11-06.md)
+findet für die Hierarchie-/Parallelitätsvertiefung bei `875cb53c…` weder eine
+amtliche Pflicht noch eine tatsächlich erforderliche Lücke: Alle sieben
+atomaren Verbraucher sind die bekannte 41er-Prüfung und sechs Datenbankprüfungen.
+Die realen Materialien benötigen diese Vertiefung nicht. Die vollständige
+Scope-/Prüfungskorrektur unter Erhalt der bisherigen Identitäten und Nachweise
+ist getrennt vorzubereiten. Eine bloße Entfernung aus Prüfauswahlen wäre kein
+sauberer Abschluss.
 
 Der [terminale Remote-Beleg für 5cb](ci-graph-repairs/remote-main-5cb-terminal-2026-11-06.json)
 weist fünf bestandene und drei fehlgeschlagene Jobs im Hauptlauf
 `42259521320` aus. Backend hat bei 2754 Tests und 19 Skips genau einen Fehler:
 die Niedersachsen-/Informatik-Projektionsfixture erwartet 22 statt der
 tatsächlich gelieferten 21 Ziele. Frontend scheitert an der Fächerauswahl in
-`TestTrainerGymnasiumScopeUi.ts`; die konkrete Ursache und saubere
-Fixtureisolation sind noch zu prüfen. Curriculum scheitert an den sieben
+`TestTrainerGymnasiumScopeUi.ts`: Die synthetische Math-/Physikclosure erwartet
+Angebote, obwohl die echte generierte Repositorymap diese aktuell wegen M0
+korrekt ausschließt. Die Reparatur isoliert die positive Package-Catalog-Fixture
+und prüft das echte Repositoryangebot separat. Curriculum scheitert an den sieben
 bekannten harten Floors, nicht an Reportfrische. Dieser ältere Remote-Lauf
 enthält die späteren Math-, CQR-202- und Sprachkorrekturen noch nicht.
 Produktfilter, Scope- und Datenschutzverträge bleiben bei der Reparatur

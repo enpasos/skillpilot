@@ -3,8 +3,9 @@
 Dieser Kandidat ist inzwischen nach dem
 [abschließenden unabhängigen Review](informatics-bounded26-independent-review-2026-11-06.md)+[tatsächlich angewandt](informatics-bounded26-prerequisites-application-2026-11-06.md).
 Der nachfolgende Text beschreibt die gebundenen Vorabvergleiche. Der frühere
-Informatik-CQR von 18:13 UTC enthält 59 G17-Befunde und M0; der vollständige
-Nachlauf nach der Anwendung wird gesondert gesichert. Das
+Informatik-CQR von 18:13 UTC enthält 59 G17-Befunde und M0. Der
+[vollständige Nachlauf nach Anwendung](informatics-bounded26-current-cqr-2026-11-06.json)
+vom 18:45 UTC bestätigt 47 G17-Befunde, CQR-101/102 PASS und weiterhin M0. Das
 [geschützte Kombinationsmanifest](informatics-bounded26-prerequisites-proposal-2026-11-06.json)
 umfasst 24 unabhängig begründete gewöhnliche Voraussetzungskorrekturen,
 den getrennten Turing-Folgeschritt mit bestehendem Automatenmodell und einen

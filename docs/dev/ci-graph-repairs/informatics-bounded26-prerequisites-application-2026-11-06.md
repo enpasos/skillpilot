@@ -31,8 +31,12 @@ Kandidaten belegen unveränderte Rollen, Ziel-/Supportmengen, Bäume und
 Compilerbefunde in 22 Views, unveränderte Applicability und frische A/M- sowie
 Kartenbelege. Ihre engen Fingerprints ersetzen keine fachliche Kanten- oder
 Aufgabenfreigabe. Der allgemeine Graphvalidator besteht nach Anwendung für
-593 Landschaften. Der frühere Gesamtbericht von 18:13 UTC ist ein eigener
-historischer Stand; der ganze CQR-Nachlauf für diese Anwendung ist gesondert
-zu sichern. Die 47 verbleibenden G17-Fälle und sechs generischen
+593 Landschaften. Der
+[vollständige aktuelle CQR-Nachlauf](informatics-bounded26-current-cqr-2026-11-06.json)
+ist mit Exit 0 abgeschlossen, Bericht vom `2026-11-06T18:45:31.502Z`.
+Er bestätigt CQR-101/102 PASS und genau 47 G17-Fälle in Informatik. Der
+getrennte Floorcheck scheitert mit Exit 1 an sieben Fachuntergrenzen;
+Deutsch, Geschichte und Latein bleiben M6. Der frühere Gesamtbericht von
+18:13 UTC bleibt ein eigener historischer Stand. Die sechs generischen
 Terminalprüfungen sind weiterhin offene Pflichten. Es wird kein M6 oder M7
 zurückgegeben und keine Anerkennungs- oder Einheitenruntime aktiviert.
