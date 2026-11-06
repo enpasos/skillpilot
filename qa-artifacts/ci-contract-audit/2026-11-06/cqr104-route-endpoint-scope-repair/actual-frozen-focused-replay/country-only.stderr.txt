@@ -1,0 +1,20 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"id":"CQR-104","status":"fail","summary":"Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.","metrics":{"relevantCompositionViews":2,"evaluatedProjectionScopes":4,"requiredMotivationAnchors":1,"minimumRequiredTerminalAutonomyGoals":2,"requiredTerminalAutonomyGoals":3,"projectionScopesMissingMotivationAnchors":0,"projectionScopesMissingTerminalAutonomyGoals":4,"projectionScopesWithUnexpectedTerminalAutonomyGoals":0,"projectionScopesWithoutExpectedTerminalAutonomyGoals":0,"terminalGoalsMissingCompiledApplicability":0,"projectionScopesWithInvalidStageStructure":0,"nationalProjectionScopesUsingJurisdictionStageAuthority":0,"nationalProjectionScopesMissingJurisdictionStageAuthority":0,"nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority":0,"nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority":0,"nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority":0,"nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority":0,"projectionScopesWithIncompleteExplicitTerminalPrerequisites":0,"explicitTerminalPrerequisiteOccurrencesMissingFromProjection":0,"projectionScopesWithIncompleteWholeMaterialCoverageBindings":0,"wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath":0,"projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure":0,"wholeMaterialPrerequisiteOccurrencesMissingFromProjection":0,"uniqueExplicitTerminalPrerequisitesMissingFromProjection":0,"projectionLocalRouteChecksEnabled":0,"visibleSelectedAtomicGoalOccurrences":4,"visibleProfileSelectedAtomicGoalOccurrences":4,"visibleProjectedRouteTargetGoalOccurrences":4,"visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector":0,"uniqueProjectedRouteTargetsExcludedByProfileSelector":0,"visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks":0,"projectionScopesMissingEffectiveMotivationRoutes":0,"projectionScopesMissingDirectMotivationRoutes":0,"projectionScopesMissingEffectiveTerminalRoutes":0,"projectionScopesMissingDirectTerminalRoutes":0,"visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute":0,"visibleSelectedGoalOccurrencesMissingDirectMotivationRoute":0,"visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute":0,"visibleSelectedGoalOccurrencesMissingDirectTerminalRoute":0,"profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute":0,"profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute":0,"profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute":0,"profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute":0,"uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute":0,"uniqueVisibleSelectedGoalsMissingDirectMotivationRoute":0,"uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute":0,"uniqueVisibleSelectedGoalsMissingDirectTerminalRoute":0},"details":["Missing terminal autonomy goal(s): ../../../../tmp/skillpilot-route-scope-MukkVe/national-gk.view.json [DE-BY]: da96fcb4-f601-5f66-9fec-12b5adc7f7f0","Missing terminal autonomy goal(s): ../../../../tmp/skillpilot-route-scope-MukkVe/national-gk.view.json [DE-HE]: da96fcb4-f601-5f66-9fec-12b5adc7f7f0","Missing terminal autonomy goal(s): ../../../../tmp/skillpilot-route-scope-MukkVe/national-lk.view.json [DE-BY]: 63509366-f5b2-58e5-9976-47df6f8c37e1","Missing terminal autonomy goal(s): ../../../../tmp/skillpilot-route-scope-MukkVe/national-lk.view.json [DE-HE]: 63509366-f5b2-58e5-9976-47df6f8c37e1"]}
+
+'fail' !== 'pass'
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testCurriculumRouteEndpointScope.ts:67:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'fail',
+  expected: 'pass',
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

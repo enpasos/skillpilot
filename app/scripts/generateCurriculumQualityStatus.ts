@@ -1163,7 +1163,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
 ]
 
-const routeProfiles: RouteProfile[] = [
+export const routeProfiles: RouteProfile[] = [
   {
     profileId: 'canonical-math-sek1',
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
@@ -1285,6 +1285,7 @@ const routeProfiles: RouteProfile[] = [
   },
   {
     profileId: 'canonical-informatics-crossstage',
+    compositionViewApplicabilityMode: 'compiled-jurisdiction',
     landscapeId: CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID,
     label: 'Sekundarstufe I/II',
     motivationAnchorGoalIds: [CANONICAL_GYM_INFORMATICS_MOTIVATION_GOAL_ID],
@@ -1955,6 +1956,7 @@ function evaluateRouteEndpointCompositionVisibility(
   reverseEffectiveEdges: Map<string, string[]>,
   atomicDirectEdges: Map<string, string[]>,
   reverseAtomicDirectEdges: Map<string, string[]>,
+  compositionViewFiles?: readonly string[],
 ): RuleResult | null {
   if (!profile.compositionViewStage) return null
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
@@ -1983,7 +1985,7 @@ function evaluateRouteEndpointCompositionVisibility(
       .map((decision) => decision.goalId))
     : null
 
-  const viewEntries = readCompositionViewFilesForLandscapeId(profile.landscapeId)
+  const viewEntries = (compositionViewFiles ?? readCompositionViewFilesForLandscapeId(profile.landscapeId))
     .map((file) => ({ file, view: normalizeCompositionView(loadJson<unknown>(file)) }))
     .filter(({ view }) => view.landscapeId === profile.landscapeId
       && (view.scope.stage === profile.compositionViewStage || view.scope.stage === 'CrossStage'))
@@ -2197,9 +2199,10 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
-        // Whole Economics materials must also match the actual authored course
+        // Whole Economics/Informatics materials must also match the authored course
         // and duration. Compiled country applicability alone does not imply this.
-        .filter((goal) => profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+        .filter((goal) => (profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+          && profile.landscapeId !== CANONICAL_GYM_INFORMATICS_LANDSCAPE_ID)
           || scopeFilters.length === 0
           || goalMatchesFilters(
             convertLearningGoal(goal, { landscapeId: landscape.landscapeId }),
@@ -2848,10 +2851,11 @@ function examReleaseCoverageIssues(goal: LearningGoal): string[] {
   return issues
 }
 
-function evaluateRouteProfile(
+export function evaluateRouteProfile(
   landscape: SkillLandscape,
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
+  compositionViewFiles?: readonly string[],
 ): ScopeStatus {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const selectedGoals = landscape.goals.filter(profile.goalSelector)
@@ -2897,6 +2901,7 @@ function evaluateRouteProfile(
     reverseEffectiveEdges,
     atomicDirectEdges,
     reverseAtomicDirectEdges,
+    compositionViewFiles,
   )
 
   const rules: RuleResult[] = [

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-11-06T20:52:17.680Z",
+  "generatedAt": "2026-11-06T22:41:52.172Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -30,9 +30,9 @@
       "M7": 0
     },
     "ruleStatus": {
-      "pass": 260,
+      "pass": 259,
       "warn": 18,
-      "fail": 21,
+      "fail": 22,
       "not_configured": 65
     }
   },
@@ -112440,18 +112440,18 @@
             },
             {
               "id": "CQR-104",
-              "status": "pass",
-              "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+              "status": "fail",
+              "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
               "metrics": {
                 "relevantCompositionViews": 18,
-                "evaluatedProjectionScopes": 18,
+                "evaluatedProjectionScopes": 48,
                 "requiredMotivationAnchors": 1,
-                "minimumRequiredTerminalAutonomyGoals": 14,
+                "minimumRequiredTerminalAutonomyGoals": 0,
                 "requiredTerminalAutonomyGoals": 14,
                 "projectionScopesMissingMotivationAnchors": 0,
                 "projectionScopesMissingTerminalAutonomyGoals": 0,
                 "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
-                "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+                "projectionScopesWithoutExpectedTerminalAutonomyGoals": 42,
                 "terminalGoalsMissingCompiledApplicability": 0,
                 "projectionScopesWithInvalidStageStructure": 0,
                 "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
@@ -112468,9 +112468,9 @@
                 "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
                 "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
                 "projectionLocalRouteChecksEnabled": 0,
-                "visibleSelectedAtomicGoalOccurrences": 2007,
-                "visibleProfileSelectedAtomicGoalOccurrences": 2007,
-                "visibleProjectedRouteTargetGoalOccurrences": 2007,
+                "visibleSelectedAtomicGoalOccurrences": 4479,
+                "visibleProfileSelectedAtomicGoalOccurrences": 4479,
+                "visibleProjectedRouteTargetGoalOccurrences": 4479,
                 "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
                 "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
                 "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
@@ -112490,7 +112490,29 @@
                 "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
                 "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
                 "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
-              }
+              },
+              "details": [
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-bb-gym-informatics-crossstage.view.json [DE-BB]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-be-gym-informatics-crossstage.view.json [DE-BE]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-bw-gym-informatics-crossstage.view.json [DE-BW]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BW]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BB]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BE]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-NI]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-NW]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SH]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-HB]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-HH]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-MV]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-RP]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SL]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SN]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-ST]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-TH]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json [DE-BW]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json [DE-BB]",
+                "No applicable terminal autonomy goal: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json [DE-BE]"
+              ]
             },
             {
               "id": "CQR-201",
