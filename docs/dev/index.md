@@ -4,6 +4,13 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
+- [CI-Vertragsaudit: Übergabe vom 6. November 2026](ci-contract-audit-handoff-2026-11-06.md)
+  Eigenständiger Auftrag vor weiterer Einheitenarbeit; eingefrorener Stand,
+  gesicherte Befunde und Starttext für den neuen Chat.
+- [Natives Mathematik-/Physikinventar](learning-units-inventory/2026-11-06/README.md)
+  Reproduzierbare Angebotsauflösung als Ausgangsbefund für den CI-Audit.
+- [Transitive Minimalität: Istbericht](learning-units-inventory/2026-11-06/transitive-minimality.md)
+  Noch unerfüllte Bedingungen mit Zeugenpfaden; keine bestandene Freigabe.
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Aktueller Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
