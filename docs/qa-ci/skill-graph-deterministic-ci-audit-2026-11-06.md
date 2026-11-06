@@ -17,7 +17,15 @@ Kartenfälligkeit öffnet ein abgeschlossenes Ziel nicht erneut und entzieht
 keine Mastery. Die frühere No-due-/Retest-Widerrufsdarstellung war veraltet;
 Zeile K2 ist entsprechend korrigiert. Die eingefrorenen ZIP-Notizen bleiben
 historische Belege, keine aktuelle Entscheidungsgrundlage für diese Regel.
-Der weitere CI-Audit ist pausiert.
+Der eigenständige CI-Audit wurde anschließend wieder aufgenommen.
+
+**Aktueller Einzelregelabgleich:** Der
+[feste Regelkorpus](skill-graph-ci-rule-corpus-2026-11-06.md) wird mit der
+[statischen Matrix](skill-graph-ci-static-matrix-2026-11-06.md), der
+[Laufzeitmatrix](skill-graph-ci-runtime-matrix-2026-11-06.md) und der
+[Content-/Bildmatrix](skill-graph-ci-content-presentation-matrix-2026-11-06.md)
+abgeglichen. Die folgenden ursprünglichen Beleggruppen bleiben als Vorarbeit
+erhalten; ihre Existenz ist kein vollständiger Einzelregel- oder CI-Pass.
 
 **Arbeitsentwurf vom 6. November 2026.** Die technischen Belege stehen; der
 abschließende Abgleich jeder normativen Rule-ID mit Astras Inventar folgt in

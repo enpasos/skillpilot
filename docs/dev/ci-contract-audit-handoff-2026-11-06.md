@@ -30,6 +30,15 @@ nicht als Nebenwirkung einer Testkorrektur implementiert.
 
 ## Verwendbare Ergebnisse
 
+- **Fortsetzung am 6. November:** Der [feste Regelkorpus](../qa-ci/skill-graph-ci-rule-corpus-2026-11-06.md)
+  enthält 494 unabhängige Regeln mit festem Quellenregister und getrennten
+  Main-/PR-83-Verträgen; die [JSON-Fassung](../qa-ci/skill-graph-ci-rule-corpus-2026-11-06.json)
+  enthält die Quellrevisionen und Hashes. Alle IDs sind genau einmal der
+  [statischen Matrix](../qa-ci/skill-graph-ci-static-matrix-2026-11-06.md)
+  (261), der [Laufzeitmatrix](../qa-ci/skill-graph-ci-runtime-matrix-2026-11-06.md)
+  (219) oder der [Content-/Bildmatrix](../qa-ci/skill-graph-ci-content-presentation-matrix-2026-11-06.md)
+  (14) zugeordnet. Diese Vollständigkeit betrifft den deklarierten Quellenkorpus
+  und seine Zuordnung, nicht bestandene Regeln oder vollständige CI-Durchsetzung.
 - [Auditentwurf](../qa-ci/skill-graph-deterministic-ci-audit-2026-11-06.md):
   45 statische Beleggruppen und 41 Laufzeitprädikate mit Code-/Test-/Workflow-
   Ankern. Der normative Gesamt-Abgleich ist noch offen; kein Vollständigkeitsurteil.
@@ -48,6 +57,34 @@ Die sechs neuen Dateien unter `app/scripts/` sind reine Inventar-/Auditwerkzeuge
 `reportMathPhysicsNativeInventory.ts`, `testMathPhysicsNativeInventory.ts`,
 `MathPhysicsNativeProjectionInventory.java`, `mathPhysicsNativeInventory.init.gradle`.
 Es wurde noch kein neues hartes Curriculum-Gate in die Workflows verdrahtet.
+
+## Zusätzlicher verbindlicher Reparaturauftrag vom 6. November
+
+Der Product Owner verlangt die Wiederherstellung der früheren Meilensteine:
+
+| Fach | Verbindliches Ziel |
+| --- | --- |
+| Biologie, Chemie, Mathematik, Physik, Wirtschaftswissenschaften | M7 |
+| Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft | M6 |
+
+**Harte deterministische Prüfungen gehören dafür in die Meilensteinberechnung
+selbst.** Ein separater Bericht oder ein isolierter Algorithmustest reicht
+nicht. Regelverletzungen müssen den Meilenstein verhindern und durch die
+geschützten Untergrenzen als CI-Fehler wirken. Die Wiederherstellung erfolgt
+durch echte Fehlerbehebung, ohne schwächere Prüfer, abgesenkte Untergrenzen,
+Warnungsabstufung oder akzeptierte Fehlerbaselines. Die bestehende Policy
+enthält genau diese zehn Untergrenzen und keine aktiven Ausnahmen.
+
+Der bisher gespeicherte CQR-Bericht trägt bereits diese alten M6-/M7-Werte;
+seine Existenz ist kein Nachweis der neuen harten Prüfungen. Der frische
+Abgleich des bisherigen Prüferprofils und die anschließende Integration der
+vollständigen Strukturprüfungen sind getrennt zu belegen. Die statische
+Reparatur beginnt beim Graphvertrag in CQR-001, einschließlich eindeutigem
+Referenzraum, UUID-/Gewichtsdomäne, globalen und atomar normalisierten Zyklen
+sowie lokaler und transitiver Minimalität. Tatsächliche Befunde und notwendige
+Identitätsmigrationen werden vor Datenkorrekturen präzise inventarisiert.
+Keine automatische fachliche Kantenkorrektur und keine Einheitenzerlegung
+sind dadurch erlaubt.
 
 ## Bereits belegte Lücken und Grenzen
 
