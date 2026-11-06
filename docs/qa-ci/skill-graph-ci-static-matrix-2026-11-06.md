@@ -660,3 +660,11 @@ sie sind ausdrücklich keine closuregleichen Normalisierungen. Informatik
 behält 62 G17-Befunde und bleibt M0. Die vollständige Compositionprüfung
 besteht mit 352 Views, 21 Katalogen, null Fehlern und 2358 Warnungen; der echte
 Floorcheck scheitert weiterhin an sieben unveränderten Fachuntergrenzen.
+
+Der neue [vollständige Topologie-Zensus](../dev/ci-graph-repairs/locale-topology-conflicts-2026-11-06.md)
+bestätigt die bereits in G01b genannten 19 echten Konflikte mit heutigen
+Quellbytes. Sie betreffen acht Mannheimer Owner und sind nicht durch die
+G05-Referenzreparatur gelöst. 147 Mehrfachserialisierungen werden nach logischer
+Identität verglichen; keine erste Datei und kein Vereinigungsgraph werden als
+autoritative Definition ausgegeben. Dieser lesende Befund ist noch kein neuer
+harter Topologiekonsistenzprüfer und kein Vollständigkeitsurteil.

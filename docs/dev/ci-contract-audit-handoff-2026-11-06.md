@@ -463,6 +463,58 @@ anders geschriebene UUID-Keys. Der Helfer darf deshalb nicht einfach vor
 bestehende Reads/Upserts geschaltet werden. Reale Zustands-/Browser-/Paket-
 Abnahme und aktuelle QA-Ausgaben bleiben eigenständige Pflichten.
 
+## Fortsetzung: Kartenregressionen, Scopeprüfung und frische CI
+
+Die beiden neuen öffentlichen Karten-Servicefälle sind lokal mit normaler
+Ressourcenverarbeitung ausgeführt: 21 Tests, keine Fehler oder Skips. Ein
+tatsächlich bestandener Kartenabschluss bleibt nach Überschreiten gespeicherter
+Wiederholungsdaten gemeistert; bereits verifizierte Karten werden weder neu
+angeboten noch über Einzel- oder Batchaufrufe erneut geprüft. Der
+[unabhängige Gegenblick](ci-graph-repairs/srs-completion-retention-independent-review-2026-11-06.md)
+bindet die echten XML-Ergebnisse. Die Assessment-CI verlangt jetzt neun statt
+sieben Fälle dieser Klasse. Dieser neue Commit benötigt seinen eigenen
+Remote-Lauf; die frühere grüne Assessment-CI ist dafür kein Nachweis.
+
+Der reparierte HE-Q2.4/Q2.5-Scope-Test besteht für 88 Views mit 110 tatsächlichen
+Negativkontrollen. Historische Clusterumbauten, aktuelle Ersatzkompetenzen und
+regionale Supportrollen sind einzeln geprüft; die kanonische Mathematikquelle
+ist unverändert. Der
+[Review](ci-graph-repairs/he-gk-q24-q25-scope-independent-review-2026-11-06.md)
+erläutert die Grenzen dieser Zielersetzungen. Der zuvor nicht verdrahtete Test
+wird zusätzlich als harter Curriculum-Schritt vor der bestehenden
+Q2-M7-Projektionsprüfung ausgeführt.
+
+Der getrennte [Source-A-Metadatenbeleg](ci-graph-repairs/source-identity-qa-metadata-bridge-review-2026-11-06.json)
+beruht auf einem neuen tatsächlich abgeschlossenen isolierten Lauf. Er bindet
+die unveränderten Originalprüfer an den Git-Stand `80d70f08e0…`, sämtliche
+fünf ursprünglichen Deep-QA-Ergebnisse sowie den Composer-Lauf über den
+reinen ID-Kandidaten: 352 Views, null Fehler und 2358 ausgewiesene Warnungen.
+53 lokale Belegdateien und alle neun Codefassungen sind bytegeprüft. Die
+Fähigkeit liefert ausschließlich die zwei bisherigen Semantic-Kind-Ledger
+unter übersetzten IDs; sie erteilt keine aktuelle QA- oder M7-Freigabe und
+aktiviert keine Migration. Kurze Boundary- und echte schreibgeschützte
+Vorbereitungstests werden ohne erlaubte Skips in Curriculum-CI verdrahtet.
+Die vollständige isolierte Mehrgigabyte-Prüfung wird dadurch nicht bei jedem
+PR automatisch wiederholt. Der A80-Kandidat ist vor der späteren Migration
+auf die dann aktuellen fachlichen Quellen neu aufzusetzen.
+
+Am gepushten Kopf `e8ad0caf5e8ad39a7cde8a787da88b91ddb48cf1` besteht der
+Backendjob `128001774652` des Hauptlaufs `42245440726` tatsächlich; ebenso
+Frontend, Buchbau, Action, Claude, OpenAI Apps und Public Edge. Der
+Curriculumjob `128001774609` besteht inzwischen Graph, Wording und die
+Duration-Readiness-Prüfungen, scheitert danach am veralteten generierten
+G8/G9-Angebotsbestand (`check:gymnasium-duration-offerings`). Nachfolgende
+Schritte sind übersprungen, keine bestandenen Gates. Assessment `42245440619`,
+Docs `42245440547`, OAuth `42245440572` und Gemini `42245440845` melden Erfolg;
+für den neuen Assessment-Lauf ist hier keine erneut ausgezählte XML-Quittung
+behauptet. Der Hauptlauf besitzt noch keinen erfolgreichen Gesamtabschluss.
+
+Als nächster fachlicher Schritt bleibt der unangewandte Informatik-39er-Satz
+mit seiner getrennten Prüfung der abgeleiteten Angebotsrollen. Der
+[Einzelreview der weiteren 59 Minimalitätswege](ci-graph-repairs/informatics-remaining-minimality-review-2026-11-06.md)
+unterscheidet 32 später einzeln nachzuweisende Normalisierungen und 27 echte
+fachliche Holds. Kein Zeugenpfad berechtigt zum pauschalen Löschen einer Kante.
+
 ## Nächste Schritte im neuen Chat
 
 1. Main-Basis und Arbeitsstatus verifizieren. Gesicherte Dateien lesen und ein
