@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "kind": "finite-V-context-binding-gap-analysis-and-repair-plan",
+  "date": "2026-11-06",
+  "status": "confirmed-gap-no-code-or-active-QA-change",
+  "contextCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "reproduction": {
+    "path": "docs/dev/ci-graph-repairs/math-diagram-description-b-visualization-independent-review-2026-11-06.json",
+    "sha256": "98bee1832aef1c2d7f141be18ba3741ec4d6b4cb3d7b88a9efbd01b0e128c83d"
+  },
+  "fieldCensus": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/five-ledger-field-census.json",
+    "sha256": "5acf9705355daea6adc56eee9a23e46d9f1ef3d2f99af5561af5edd9f3a1dfed"
+  },
+  "historicalExamples": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/actual-historical-context-examples.json",
+    "sha256": "b1c64b48873f791e8eb070cab9a38733005d8534105c1bbae81a3dcbacf6d7b1"
+  },
+  "counts": {
+    "registeredSubjectLedgers": 5,
+    "aggregateRows": 2562,
+    "currentCurricularAtomicRows": 2483,
+    "typedImmutableReviewedGoalContextRows": 0,
+    "notesWithRepoLocator": 973,
+    "notesContainingLiteralCurrentDescription": 9,
+    "newReviewsRequiredTotal": null
+  },
+  "finding": {
+    "id": "V-CONTEXT-01",
+    "trigger": "Change the actual goal description and regenerate/copy that new description into the V row while preserving aiApproved=yes and the old asset-bound approval.",
+    "actualOutcome": "The native whole-subject freshness subprocess and actual one-goal loadVisualizationReadyGoals both accept it.",
+    "cause": "normalizeExistingRecord retains historical approval solely when assetSha256 is equal; the Deep V guard compares the new goal text with freshly generated display metadata rather than with an immutable reviewed input. aiApprovalStatus only binds the asset.",
+    "requiredResult": "Description-only relabeling cannot qualify as a new or still-valid review of changed goal/image context."
+  },
+  "fieldAuthority": [
+    {
+      "fields": [
+        "goalId",
+        "landscapeId",
+        "subject",
+        "title",
+        "description",
+        "landscapePath"
+      ],
+      "meaning": "Current display/identity metadata. Native source comparison establishes currentness only; generated title/description do not identify what an earlier reviewer actually saw."
+    },
+    {
+      "fields": [
+        "assetSha256",
+        "aiApprovedAssetSha256"
+      ],
+      "meaning": "Can bind exact current/reviewed image bytes when independently hashed. Does not bind goal meaning."
+    },
+    {
+      "fields": [
+        "aiApproved",
+        "aiReviewedAt",
+        "aiReviewer",
+        "aiNotes"
+      ],
+      "meaning": "Records decision, date, actor and reasoning. Original frozen copies and explicit original-input references can be used as review evidence; mutable copies or dates alone cannot identify a reviewed goal context."
+    },
+    {
+      "fields": [
+        "chatGptReviewedAt",
+        "chatGptReviewer",
+        "chatGptNotes",
+        "humanApproved",
+        "humanReviewedAt",
+        "humanReviewer",
+        "humanIssueIdentified"
+      ],
+      "meaning": "Preserve these historical independent authorities. Human fields cannot satisfy or veto the machine V gate; do not promote legacy triage into an AI goal-context review."
+    },
+    {
+      "fields": [
+        "prompt.de.md",
+        "image-reconstruction-prompt.de.md",
+        "generation metadata"
+      ],
+      "meaning": "May contain original intended goal text but generation/reconstruction is not approval. Use only when the actual review explicitly binds and says it reviewed these exact input bytes."
+    }
+  ],
+  "minimalImplementationPlan": [
+    {
+      "step": 1,
+      "name": "Make the original reviewed context an explicit immutable input",
+      "detail": "Add one closed versioned visualization-context review record with goal identity, the exact reviewed canonical display title/description, subject, exact asset hash, verdict/reviewer/time/reason, and original-input/evidence byte references. Minimal required semantic context closes the currently enforced V title/description contract. If a review also claims EN or further context, record that exact supplied context and enforce it; never infer missing EN/source/course approval from a DE receipt. Do not use whole-goal requires/weight/applicability as an automatic substitute for the actual visual-review context."
+    },
+    {
+      "step": 2,
+      "name": "Current row references a verified record, not a newly invented review fingerprint",
+      "detail": "A reviewed-context digest can be cached only alongside the sealed review path/hash and a closed input snapshot. Capture and hash those original bytes before parsing; recompute the digest from the reviewed payload, compare it with current source-derived context using the one declared normalization, and separately verify both actual image byte hashes. Require matching goal/owner/subject; reject missing, duplicate, unknown or contradictory bindings. A current-row digest derived from the new current goal is never authority by itself."
+    },
+    {
+      "step": 3,
+      "name": "Generator refreshes metadata but never manufactures context approval",
+      "detail": "Change normalizeExistingRecord/normalizeGoalVisualizationAiReview to preserve a context approval only when the referenced original context still equals the current source. On drift or absent binding, preserve historical records and mark current context unqualified/stale. Do not copy current text into the reviewed payload, stamp a new reviewed time, or turn an old yes into a fresh yes. A separate explicit qualification or fresh review creates a new record."
+    },
+    {
+      "step": 4,
+      "name": "Use one validator in the current V completion path",
+      "detail": "loadVisualizationReadyGoals must require the validated context record in addition to existing identity/resource/asset and generator freshness checks. UI/status/approval-coverage consumers must expose asset-only historical status separately from current-context readiness. Inspect goalBookModel, reportGoalVisualizationRolloutStatus, package review tooling and V-backed P materializers for any claim of current-context approval; reuse the validator when such a claim is made, without changing independent human publication semantics or rewriting historical one-shot scripts."
+    },
+    {
+      "step": 5,
+      "name": "Qualify genuine existing evidence, not a blanket migration",
+      "detail": "Produce an exact per-goal closed qualification manifest from existing original review artifacts and the inputs they actually bind. Preserve original bytes, review dates, reviewers and verdicts; label qualification as a technical verification performed now, never a new visual review. Scope it to the exact original context and asset. If the original complete context cannot be reconstructed or differs, retain the historical verdict and require a real current visual review. No cutoff-date, baseline, all-existing-yes or prompt-only exception."
+    },
+    {
+      "step": 6,
+      "name": "Prove the known counterexample is closed before any claim of readiness",
+      "detail": "Run the existing four durable native cases against the hardened consumer: original with qualified authentic evidence positive; B+old row negative; B+description-only relabel negative; B+this fresh actual review positive. Follow with the unchanged full registered five-subject V/Deep and milestone consumers. Keep all actual blocked counts visible; 2483 current goals require qualified input binding, not necessarily 2483 new reviews."
+    }
+  ],
+  "boundedHistoricalFindings": {
+    "matrixExample": "The actual 922d89fc review contains goalSnapshot with all four DE/EN title/description strings and demandLevel; they match current source. The integration receipt pins the original review SHA and the reviewed candidate image equals both current actual assets. This is usable original content evidence, not a new image review; final owner/source association and the new closed qualification record remain explicit work.",
+    "economicsExample": "The actual 6f75cdff receipt hash is pinned in aiNotes, explicitly states full goal/metadata inspection, and pins the original native-before metadata. That exact metadata contains matching goal ID, DE title and DE description; its image hash matches both current actual assets. EN input bytes are not supplied by the metadata alone.",
+    "diagram": "The old batch016 entry gives title and visual observations but no exact complete reviewed description or asset hash. The canonical original prompt contains the old description but is generation evidence. These two artifacts alone do not qualify a current B context. The genuinely new independently performed B review is the appropriate successor and is already frozen separately.",
+    "otherTwoMathPilotGoals": "The unchanged title/description and image permit reusing a genuinely bound old review if its original input chain is established. The current aggregate rows for ce198bc9 and d07ef7b1 alone do not prove that chain. This analysis does not invent or demand fresh reviews merely from their unchanged asset bytes."
+  },
+  "negativeControlsNeeded": [
+    "Change description in source and display row but preserve old immutable review: reject.",
+    "Recompute only the mutable row context digest from the new source: reject.",
+    "Change reviewed payload bytes under the old receipt hash: reject.",
+    "Missing original input, wrong owner/goal/subject, duplicated selection or extra undeclared source: reject.",
+    "Different current image bytes under a stable URL: reject.",
+    "Generation prompt without an actual approval explicitly bound to it: reject.",
+    "Timestamp or notes copied to a new context, and human-only approval: no AI V readiness.",
+    "Authentic historical exact input/asset chain: retain original verdict without a new review claim.",
+    "Fresh B review bound to exact B+809033 image: positive.",
+    "Unrelated source/reference/weight changes do not create a spurious image-context pass or force a whole-goal fingerprint policy."
+  ],
+  "completenessBoundary": "This is a complete census of fields for the five actual configured aggregate ledgers and a full actual check of two historical content-input examples plus the changed Diagram case. It is not a completed qualification audit of all 2562 historical rows. The exact total requiring new content review remains unknown until every proposed reuse has its original reviewed-input chain checked. No absence of a locator in aiNotes proves absence of original evidence elsewhere.",
+  "noWrites": {
+    "productionCode": true,
+    "activeSources": true,
+    "activeQa": true,
+    "historicalReviews": true,
+    "humanApprovals": true
+  },
+  "implementationCompleted": false,
+  "gapClosed": false
+}
