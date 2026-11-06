@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import { test } from 'node:test'
 import { fileURLToPath } from 'node:url'
 
@@ -199,5 +199,79 @@ test('every Ubuntu job prepares APT after checkout and before its first package 
   }
   for (const file of ['ci.yml', 'docs_checks.yml', 'owl-ci.yml']) {
     assert.ok(coveredWorkflows.has(file), `${file} must be covered by the dependency-step check`)
+  }
+})
+
+test('assessment authoring sparse checkout retains code, contracts and completion reviews without either raster mirror', () => {
+  const workflow = loadYaml(readFileSync(join(repositoryRoot, '.github/workflows/assessment-completion.yml'), 'utf8'))
+  const job = workflow.jobs['authoring-and-ui']
+  const checkout = job.steps.find(step => /^actions\/checkout@/u.test(step.uses ?? ''))
+  assert.equal(job['timeout-minutes'], 20, 'Bound the checkout by removing unrelated bytes, without raising the job timeout')
+  assert.equal(checkout.with['sparse-checkout-cone-mode'], false)
+  assert.equal(checkout.if, undefined)
+  assert.notEqual(checkout['continue-on-error'], true)
+  const patterns = checkout.with['sparse-checkout']
+  const mirrorExclusion = '!/app/public/assets/goal-visualizations/'
+  const completionReviewInclusion = '/curricula/DE/Gymnasium/quality/assessment-completion/'
+  assert.ok(patterns.split('\n').includes(mirrorExclusion), 'The public raster mirror also needs an explicit exclusion')
+  const requiredPaths = [
+    '.nvmrc',
+    '.github/actions/ubuntu-apt/apt.conf',
+    '.github/workflows/ci.yml',
+    'app/package-lock.json',
+    'app/scripts/checkAssessmentCompletionProfiles.ts',
+    'app/scripts/testFwuOwlCurriculumPackageBuilder.ts',
+    'app/scripts/fixtures/learnerViewStartupUi.html',
+    'app/scripts/testLevelCompletionBrowser.ts',
+    'app/src/views/LearnerView.tsx',
+    'app/public/favicon/site.webmanifest',
+    'app/public/data/de_gymnasium_informatics_flashcards_network_oop.de.json',
+    'contracts/assessment-completion/v1/fixtures/cases.json',
+    'contracts/curriculum-package/v1.1/completion-artifact.schema.json',
+    'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
+    'curricula/DE/Gymnasium/completion-profiles/math-dot-product-projection.json',
+    'curricula/DE/Gymnasium/completion-scopes/math-dot-product-projection.json',
+    'curricula/DE/Gymnasium/quality/assessment-completion/math-dot-product-projection-2026-10-31.md',
+    'scripts/test_assessment_completion_package.py',
+    'scripts/test_assessment_completion_fwu.py',
+    'scripts/curriculum_fwu_owl_validation_requirements.txt',
+    'LICENSES/CC-BY-4.0.txt',
+  ]
+  const omittedPaths = [
+    'app/public/assets/goal-visualizations/fixture/goal.png',
+    'curricula/DE/Gymnasium/visualizations/fixture/goal.png',
+    'curricula/DE/Gymnasium/quality/goal-evidence/fixture.json',
+  ]
+  const root = mkdtempSync(join(tmpdir(), 'skillpilot-assessment-sparse-'))
+  const git = (args, input) => {
+    const result = spawnSync('git', args, {
+      cwd: root, input, encoding: 'utf8', timeout: 15_000,
+      env: { ...process.env, GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null' },
+    })
+    assert.equal(result.error, undefined, `Git must execute: ${result.error}`)
+    assert.equal(result.status, 0, `${args.join(' ')} failed:\n${result.stdout}\n${result.stderr}`)
+  }
+  try {
+    git(['init', '--quiet'])
+    for (const path of [...requiredPaths, ...omittedPaths]) {
+      if (requiredPaths.includes(path)) assert.ok(existsSync(join(repositoryRoot, path)), `Required input no longer exists: ${path}`)
+      mkdirSync(dirname(join(root, path)), { recursive: true })
+      writeFileSync(join(root, path), `Inert sparse-checkout fixture: ${path}\n`)
+    }
+    git(['add', '--all'])
+    git(['-c', 'user.name=Sparse checkout test', '-c', 'user.email=sparse@example.invalid',
+      '-c', 'commit.gpgsign=false', '-c', 'core.hooksPath=/dev/null', 'commit', '--quiet', '-m', 'Inert path-selection fixture'])
+    git(['sparse-checkout', 'set', '--no-cone', '--stdin'], patterns)
+    for (const path of requiredPaths) assert.equal(readFileSync(join(root, path), 'utf8'), `Inert sparse-checkout fixture: ${path}\n`)
+    for (const path of omittedPaths) assert.equal(existsSync(join(root, path)), false, `Unrelated checkout bytes: ${path}`)
+
+    // Genuine counterexamples: broad /app/ alone imports the mirror, while
+    // omitting the late inclusion loses a required review under quality/.
+    git(['sparse-checkout', 'set', '--no-cone', '--stdin'], patterns.replace(`${mirrorExclusion}\n`, ''))
+    assert.equal(existsSync(join(root, omittedPaths[0])), true)
+    git(['sparse-checkout', 'set', '--no-cone', '--stdin'], patterns.replace(`${completionReviewInclusion}\n`, ''))
+    assert.equal(existsSync(join(root, requiredPaths.find(path => path.includes('/quality/')))), false)
+  } finally {
+    rmSync(root, { recursive: true, force: true })
   }
 })

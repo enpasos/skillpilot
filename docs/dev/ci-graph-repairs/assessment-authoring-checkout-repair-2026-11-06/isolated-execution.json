@@ -1,0 +1,79 @@
+{
+  "sourceHead": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "commands": [
+    {
+      "name": "profiles-check",
+      "command": "npm run check:assessment-completion-profiles",
+      "exitCode": 0,
+      "elapsedSeconds": 3.410822953999741,
+      "logRawSha256": "eac8a0be6e043d45b512de4a3cfa744bdae3d945186359e38a642ad0eced5f0f",
+      "traceRawSha256": "7674b794c7a3a0688e0bc756f41aabd30a1f2e36456d2823e61bcff214bf5716"
+    },
+    {
+      "name": "profiles-tests",
+      "command": "npm run test:assessment-completion-profiles",
+      "exitCode": 0,
+      "elapsedSeconds": 2.4521905159999733,
+      "logRawSha256": "991235487ed78b09f3e8feb153e821417b058b3357b26ed87bf759f584201ed9",
+      "traceRawSha256": "0494044b81fb5f27e69e12d618a71544d99af94a0930107d2fed91d51302ad89"
+    },
+    {
+      "name": "package-contracts",
+      "command": "python3 -B ../scripts/test_assessment_completion_package.py",
+      "exitCode": 0,
+      "elapsedSeconds": 1.042408246999912,
+      "logRawSha256": "098f94a6fb0161539c3fbae3aafb949f4f85e1cdc4277de28864f37f1f62ba4b",
+      "traceRawSha256": "7ac365fc5d6475f6eb921fd31064778a8f944852133cc13ef0a9dd7e92b358c4"
+    },
+    {
+      "name": "fwu-builder-and-reconstruction",
+      "command": "npm run test:fwu-owl-package-builder",
+      "exitCode": 0,
+      "elapsedSeconds": 4.834702374000699,
+      "logRawSha256": "d352345d9404dfb41df416e8c71256178f32ad8f73445f36d28776573b93992e",
+      "traceRawSha256": "191ad30d0c5168bddada3aa49cf154acaa6fe9e5681c02d81aa3ba05722db23e"
+    },
+    {
+      "name": "typescript-project",
+      "command": "npx --no-install tsc -b --pretty false",
+      "exitCode": 0,
+      "elapsedSeconds": 20.595775210000284,
+      "logRawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "traceRawSha256": "f985b4c259b4ccb2a843becf40f9ee851e1c6471b30ce3345f6e0c752b3f3020"
+    },
+    {
+      "name": "level-completion",
+      "command": "npm run test:level-completion",
+      "exitCode": 0,
+      "elapsedSeconds": 5.627209050999227,
+      "logRawSha256": "1ad41c9d6be46036eeed09ca448ab1876cf108866c45f6fdb5c208572ad71b21",
+      "traceRawSha256": "717bae0bda3c2c05a44b06dd7622fb4172f86c8864acfdaf454a1c4e999bba86"
+    },
+    {
+      "name": "srs-practice-sync",
+      "command": "npx --no-install tsx src/utils/srsPracticeSync.test.ts",
+      "exitCode": 0,
+      "elapsedSeconds": 2.3133062959987,
+      "logRawSha256": "27adddfaa92c2132efc1715eaf169be06180f5fc9ded6f6cf977c85bbc4ff248",
+      "traceRawSha256": "634cfd502cba29220b3385f81b7149e086c54c31726af351d076b73b465bb862"
+    },
+    {
+      "name": "session-id-entry",
+      "command": "npm run test:session-setup-id-entry",
+      "exitCode": 0,
+      "elapsedSeconds": 2.021951684000669,
+      "logRawSha256": "535e9cfa8a00e108f87788c4a59c5d99e30bd6ee982add977467cad53b077a9c",
+      "traceRawSha256": "cc0da28aff36cb17a1aa32bdd6817543d4b8de852363f41788436d73afd9c4ee"
+    },
+    {
+      "name": "level-completion-browser",
+      "command": "npm run test:level-completion-browser",
+      "exitCode": 0,
+      "elapsedSeconds": 218.9842268939974,
+      "logRawSha256": "b8727ebc010e7ef5e0e7ea1f56a3ebb647259594520ce251009ac0e08556cdcc",
+      "traceRawSha256": "2a2f7b32b4ded412d9894f3435425aab08b415dae06b709c11aff864eb562207"
+    }
+  ],
+  "complete": true,
+  "allPassing": true
+}

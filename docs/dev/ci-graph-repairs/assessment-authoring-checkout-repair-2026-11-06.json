@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "status": "focused-checkout-repair-locally-verified-NOT-fresh-remote-CI",
+  "generatedAt": "2026-11-06T20:06:16.426648+00:00",
+  "remoteFailure": {
+    "runId": 42278464876,
+    "jobId": 128100873495,
+    "mergeHead": "8af8c99733358d7960c04cf19c9824ac9b866f0a",
+    "conclusion": "cancelled",
+    "checkoutCommandAt": "2026-11-06T19:18:37.8173891Z",
+    "cancellationAt": "2026-11-06T19:38:34.4268759Z",
+    "allAuthoringTestStepsSkipped": true,
+    "sameRunBackendJobId": 128100873179,
+    "sameRunBackendConclusion": "success",
+    "selectedEvidencePath": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/remote-selected.json"
+  },
+  "repair": {
+    "workflowChange": "One explicit non-cone exclusion immediately after /app/: !/app/public/assets/goal-visualizations/; identical to the already bounded backend job.",
+    "jobTimeoutMinutesUnchanged": 20,
+    "allExistingCommandsAndHardFailureSemanticsUnchanged": true,
+    "regression": "Existing hard main-CI source-isolation suite now exercises actual Git sparse checkout on required paths and two genuine counterexamples. It retains observed nonmirror public inputs and the late completion-review inclusion.",
+    "implementationFiles": [
+      {
+        "path": ".github/workflows/assessment-completion.yml",
+        "bytes": 20348,
+        "sha256": "6d0c83fbaceb2cfff780769be74b164db59466d79a8ba5cf98bacd2826e1a3c3"
+      },
+      {
+        "path": "scripts/ci_ubuntu_apt.test.mjs",
+        "bytes": 15037,
+        "sha256": "977932555055b8eb0c312568aa6e4d87bc571e35ca53e09c995314f9c113fb8b"
+      }
+    ]
+  },
+  "actualInputSelection": {
+    "sourceCommit": "5c9ff83586c407fd9189207c38238400c74bce51",
+    "baseTreeSelectedFilesAfter": 5406,
+    "baseTreeSelectedBytesAfter": 1422646025,
+    "baseTreeSelectedFilesBefore": 8090,
+    "baseTreeSelectedBytesBefore": 6580511299,
+    "removedMirrorFiles": 2684,
+    "removedMirrorBytes": 5157865274,
+    "previousSizeMethod": "New selection is measured from actual private Git sparse-index flags and tree blob sizes. The prior selection adds the sole removed prefix; old /app/ includes all its 2684 blobs and no later rule rematches that prefix. The multi-GB old tree is not materialized a second time.",
+    "localWarmObjectCheckoutSeconds": 7.805262216999836,
+    "remoteTransferTimingNotInferred": true,
+    "validationOverlay": "Exactly the two changed workflow/regression files copied privately over the fixed 5c9 Git snapshot; tree-byte totals refer to the original commit blobs.",
+    "dependencyRoots": "Profiles use canonical inventory, scopes/profiles and assessment-completion contracts; packaged/FWU tests use existing contracts, Python reconstruction and synthetic source/RDF fixtures. Browser uses authored code/fixtures and retained public data; its actual fixture has no goal raster link. FWU fixture-image URL is synthetic semantic metadata, not an unprovided required raster.",
+    "successfulAbsoluteOpenCensus": {
+      "sourceFiles": 487,
+      "sourceFileBytes": 32480880,
+      "excludedMirrorOpenAttempts": 0,
+      "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/read-census.json.gz",
+      "limit": "Bounded absolute openat read census, not complete syscall/I/O telemetry; relative/resumed opens and dependencies are separately identified. RO execution with the original repo masked prevents fallback to its mirror."
+    },
+    "removedMirrorFileExtensions": {
+      ".png": 1292,
+      ".jpg": 1366,
+      ".svg": 18,
+      ".md": 8
+    }
+  },
+  "isolation": {
+    "actualSparseClone": "/dev/shm/skillpilot-assessment-authoring-sparse-20261106",
+    "privateIndexAndSharedReadOnlyObjectStore": true,
+    "allSourcesReadOnly": true,
+    "originalRepositoryHiddenInsideSandbox": true,
+    "nodeModulesReadOnlyExceptPrivateTsBuildInfo": true,
+    "sourceWriteNegative": "OSError errno30 (EROFS) on app/package.json; private output write passes.",
+    "sourceWriteNegativePath": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/read-only-boundary.json",
+    "privateOutputsOnly": true,
+    "dependencies": "Existing node_modules bound read-only; no claim of a fresh local npm ci. Node 20.20.2 matches .nvmrc. Python tests additionally repeated under 3.11.12 with all four exact workflow package pins.",
+    "inputsSnapshotsNotClaimedCurrentAfterConcurrentCanonicalWrites": true,
+    "primaryGitIndexWrittenByThisPreparation": false
+  },
+  "verification": {
+    "allNineJobCommands": [
+      {
+        "name": "profiles-check",
+        "command": "npm run check:assessment-completion-profiles",
+        "exitCode": 0,
+        "elapsedSeconds": 3.410822953999741,
+        "logRawSha256": "eac8a0be6e043d45b512de4a3cfa744bdae3d945186359e38a642ad0eced5f0f",
+        "traceRawSha256": "7674b794c7a3a0688e0bc756f41aabd30a1f2e36456d2823e61bcff214bf5716"
+      },
+      {
+        "name": "profiles-tests",
+        "command": "npm run test:assessment-completion-profiles",
+        "exitCode": 0,
+        "elapsedSeconds": 2.4521905159999733,
+        "logRawSha256": "991235487ed78b09f3e8feb153e821417b058b3357b26ed87bf759f584201ed9",
+        "traceRawSha256": "0494044b81fb5f27e69e12d618a71544d99af94a0930107d2fed91d51302ad89"
+      },
+      {
+        "name": "package-contracts",
+        "command": "python3 -B ../scripts/test_assessment_completion_package.py",
+        "exitCode": 0,
+        "elapsedSeconds": 1.042408246999912,
+        "logRawSha256": "098f94a6fb0161539c3fbae3aafb949f4f85e1cdc4277de28864f37f1f62ba4b",
+        "traceRawSha256": "7ac365fc5d6475f6eb921fd31064778a8f944852133cc13ef0a9dd7e92b358c4"
+      },
+      {
+        "name": "fwu-builder-and-reconstruction",
+        "command": "npm run test:fwu-owl-package-builder",
+        "exitCode": 0,
+        "elapsedSeconds": 4.834702374000699,
+        "logRawSha256": "d352345d9404dfb41df416e8c71256178f32ad8f73445f36d28776573b93992e",
+        "traceRawSha256": "191ad30d0c5168bddada3aa49cf154acaa6fe9e5681c02d81aa3ba05722db23e"
+      },
+      {
+        "name": "typescript-project",
+        "command": "npx --no-install tsc -b --pretty false",
+        "exitCode": 0,
+        "elapsedSeconds": 20.595775210000284,
+        "logRawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "traceRawSha256": "f985b4c259b4ccb2a843becf40f9ee851e1c6471b30ce3345f6e0c752b3f3020"
+      },
+      {
+        "name": "level-completion",
+        "command": "npm run test:level-completion",
+        "exitCode": 0,
+        "elapsedSeconds": 5.627209050999227,
+        "logRawSha256": "1ad41c9d6be46036eeed09ca448ab1876cf108866c45f6fdb5c208572ad71b21",
+        "traceRawSha256": "717bae0bda3c2c05a44b06dd7622fb4172f86c8864acfdaf454a1c4e999bba86"
+      },
+      {
+        "name": "srs-practice-sync",
+        "command": "npx --no-install tsx src/utils/srsPracticeSync.test.ts",
+        "exitCode": 0,
+        "elapsedSeconds": 2.3133062959987,
+        "logRawSha256": "27adddfaa92c2132efc1715eaf169be06180f5fc9ded6f6cf977c85bbc4ff248",
+        "traceRawSha256": "634cfd502cba29220b3385f81b7149e086c54c31726af351d076b73b465bb862"
+      },
+      {
+        "name": "session-id-entry",
+        "command": "npm run test:session-setup-id-entry",
+        "exitCode": 0,
+        "elapsedSeconds": 2.021951684000669,
+        "logRawSha256": "535e9cfa8a00e108f87788c4a59c5d99e30bd6ee982add977467cad53b077a9c",
+        "traceRawSha256": "cc0da28aff36cb17a1aa32bdd6817543d4b8de852363f41788436d73afd9c4ee"
+      },
+      {
+        "name": "level-completion-browser",
+        "command": "npm run test:level-completion-browser",
+        "exitCode": 0,
+        "elapsedSeconds": 218.9842268939974,
+        "logRawSha256": "b8727ebc010e7ef5e0e7ea1f56a3ebb647259594520ce251009ac0e08556cdcc",
+        "traceRawSha256": "2a2f7b32b4ded412d9894f3435425aab08b415dae06b709c11aff864eb562207"
+      }
+    ],
+    "python311MatchingWorkflowSeries": [
+      {
+        "name": "python311-package-contracts",
+        "command": "python3 -B ../scripts/test_assessment_completion_package.py",
+        "pythonExecutable": "/dev/shm/skillpilot-assessment-authoring-evidence-20261106/python311/bin/python3",
+        "exitCode": 0,
+        "elapsedSeconds": 1.2862841909991403,
+        "logRawSha256": "d20783aa22b854055b24bf61f1a6fdedca7599827d36775f14ab485ba134ccb6",
+        "traceRawSha256": "5f2a6b3f766bd9a306a786b3fa4078c567a6c112acf83ccb22fc27da726fcfaa"
+      },
+      {
+        "name": "python311-fwu-builder-and-reconstruction",
+        "command": "npm run test:fwu-owl-package-builder",
+        "pythonExecutable": "/dev/shm/skillpilot-assessment-authoring-evidence-20261106/python311/bin/python3",
+        "exitCode": 0,
+        "elapsedSeconds": 6.189129520000279,
+        "logRawSha256": "d352345d9404dfb41df416e8c71256178f32ad8f73445f36d28776573b93992e",
+        "traceRawSha256": "7d0c8e33399874f697c7d00be76d7314451d616cfd1035d43eaad6565fcf4a77"
+      }
+    ],
+    "sourceIsolationRegression": {
+      "command": "node --test ../scripts/ci_ubuntu_apt.test.mjs",
+      "insideSparseReadOnlyContext": true,
+      "exitCode": 0,
+      "elapsedSeconds": 0.3562116920002154,
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "additionalPreservedObservedPublicInputs": [
+        "app/public/favicon/site.webmanifest",
+        "app/public/data/de_gymnasium_informatics_flashcards_network_oop.de.json"
+      ],
+      "stdoutSha256": "7650ef20d3fce749c2ece2e5045d0d282687874cb06af98d7d6be16558d59514"
+    },
+    "browserCommandExitCode": 0,
+    "browserCommandSeconds": 218.9842268939974,
+    "syntheticBrowserScreenshots": 11,
+    "readOnlyBoundaryExitCode": 0,
+    "allLosslessGzipRoundtripsVerified": true,
+    "gitDiffCheck": "pass"
+  },
+  "durability": {
+    "versionedSelectedEvidence": [
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/browser-evidence-inventory.json",
+        "bytes": 4320,
+        "sha256": "07c12bf23b25c6786f63ed777fb09ca0dacf1fd2fa85d2cc83ca1ea0932961b1"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/fwu-builder-and-reconstruction.log",
+        "bytes": 479,
+        "sha256": "d352345d9404dfb41df416e8c71256178f32ad8f73445f36d28776573b93992e"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/isolated-execution.json",
+        "bytes": 3339,
+        "sha256": "a29ab6a40a8cadae3c12544276eee02621aa4af36f8ec4050e1550733fdec4ca"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/isolation-command.json",
+        "bytes": 1378,
+        "sha256": "ac9730b72d2b91f17aed0286f6554bec7c30b33cb9c5564dceda0554bd60a925"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/level-completion-browser.log",
+        "bytes": 158,
+        "sha256": "b8727ebc010e7ef5e0e7ea1f56a3ebb647259594520ce251009ac0e08556cdcc"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/level-completion.log",
+        "bytes": 289,
+        "sha256": "1ad41c9d6be46036eeed09ca448ab1876cf108866c45f6fdb5c208572ad71b21"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/package-contracts.log",
+        "bytes": 107,
+        "sha256": "098f94a6fb0161539c3fbae3aafb949f4f85e1cdc4277de28864f37f1f62ba4b"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/profiles-check.log",
+        "bytes": 222,
+        "sha256": "eac8a0be6e043d45b512de4a3cfa744bdae3d945186359e38a642ad0eced5f0f"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/profiles-tests.log",
+        "bytes": 208,
+        "sha256": "991235487ed78b09f3e8feb153e821417b058b3357b26ed87bf759f584201ed9"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/python311-execution.json",
+        "bytes": 1042,
+        "sha256": "593813c42e3b3cdbf33361040e5dbd77ce339ecb320e8ff72ea6d7b95410594e"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/python311-fwu-builder-and-reconstruction.log",
+        "bytes": 479,
+        "sha256": "d352345d9404dfb41df416e8c71256178f32ad8f73445f36d28776573b93992e"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/python311-package-contracts.log",
+        "bytes": 107,
+        "sha256": "d20783aa22b854055b24bf61f1a6fdedca7599827d36775f14ab485ba134ccb6"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/python311-versions.json",
+        "bytes": 161,
+        "sha256": "ad533f5b83d50ffa1fd1759dda668c2e76e320f337b5e96150acbe8a88441fcc"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/raw-trace-storage.json",
+        "bytes": 5750,
+        "sha256": "362dfbc7594bede661367354f33cec75b184c2d0657d0ab04766e61ac478a134"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/read-census.json.gz",
+        "bytes": 67177,
+        "sha256": "4d85f72cb06fe757f7777992e7b1f6cdc0d880564e928e7d354a08f2bf5ef55b"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/read-only-boundary.json",
+        "bytes": 146,
+        "sha256": "7e2b0b4f322bc16e3bfbdca9099933491fbab7a5d59e5768dbe835e31edcd5cc"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/remote-selected.json",
+        "bytes": 3626,
+        "sha256": "743de45e3b80dc2adaed59c4b6c0ab7ed3c56c8675045417ac0ccadcf119913d"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/selected-paths.json.gz",
+        "bytes": 41509,
+        "sha256": "661087724cf3b027e9b9acd0f4fe7dc620ed2a899ae6ef186bfb05ca8b393bae"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/session-id-entry.log",
+        "bytes": 129,
+        "sha256": "535e9cfa8a00e108f87788c4a59c5d99e30bd6ee982add977467cad53b077a9c"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/source-isolation-regression.json",
+        "bytes": 480,
+        "sha256": "77f45f7a7d28e589692c7d09360a9c687243c3bdf99d1d0a90921abdccf2911a"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/source-isolation-regression.log",
+        "bytes": 1108,
+        "sha256": "7650ef20d3fce749c2ece2e5045d0d282687874cb06af98d7d6be16558d59514"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/sparse-footprint.json",
+        "bytes": 28578,
+        "sha256": "04258fae65ae14a747f174156e1965c0e631987fd5669dca79db34e123035810"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/srs-practice-sync.log",
+        "bytes": 40,
+        "sha256": "27adddfaa92c2132efc1715eaf169be06180f5fc9ded6f6cf977c85bbc4ff248"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/tool-versions.json",
+        "bytes": 258,
+        "sha256": "10f928869324e0cfd903f20cf3bb4ec183f78d346c31ee665e4bf0c97e88d485"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/assessment-authoring-checkout-repair-2026-11-06/typescript-project.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "rawTraces": "Losslessly gzipped under tmp, raw/GZ size and SHA256 inventory retained in bundle/raw-trace-storage.json; RAM originals are additional copies, not the only evidence.",
+    "screenshots": "Eleven synthetic fixture screenshots copied to tmp; durable paths/raw hashes retained in browser-evidence-inventory.json."
+  },
+  "boundaries": {
+    "canonicalOrSchemaOrProductionDataChanged": false,
+    "assessmentMeaningOrScopeOrPolicyChanged": false,
+    "requiredTestOrAssetCheckSkipped": false,
+    "timeoutIncreased": false,
+    "freshRemoteRetestPerformed": false,
+    "commitCreated": false,
+    "gk24DraftFilesChanged": false
+  }
+}

@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: Ubuntu APT policy bypasses the Azure mirror list and unrelated repositories while preserving trust settings
+ok 1 - Ubuntu APT policy bypasses the Azure mirror list and unrelated repositories while preserving trust settings
+  ---
+  duration_ms: 85.839723
+  ...
+# Subtest: rendering rewrites direct Azure URIs and keeps other sources untouched
+ok 2 - rendering rewrites direct Azure URIs and keeps other sources untouched
+  ---
+  duration_ms: 18.678659
+  ...
+# Subtest: every Ubuntu job prepares APT after checkout and before its first package dependency command
+ok 3 - every Ubuntu job prepares APT after checkout and before its first package dependency command
+  ---
+  duration_ms: 29.35152
+  ...
+# Subtest: assessment authoring sparse checkout retains code, contracts and completion reviews without either raster mirror
+ok 4 - assessment authoring sparse checkout retains code, contracts and completion reviews without either raster mirror
+  ---
+  duration_ms: 48.575212
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 297.747867
