@@ -3,11 +3,10 @@ import { createHash } from 'node:crypto'
 import { readFileSync, realpathSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { spawnSync } from 'node:child_process'
-import { devNull } from 'node:os'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import { normalizeGoalVisualizationSubject } from '../../scripts/goal_visualization_scope.mjs'
+import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from './lib/authenticatedGitEvidence'
 
 export interface VisualizationReviewArtifact { path: string; gitCommit: string; sha256: string }
 export interface VisualizationReviewedContext {
@@ -21,11 +20,11 @@ export interface VisualizationContextReceiptReference { path: string; sha256: st
 export interface VisualizationContextQualification {
   schemaVersion: 1; kind: 'visualization-reviewed-context-qualification'
   normalization: 'skillpilot-visualization-display-whitespace-v1'
-  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1'
+  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1'
   context: VisualizationReviewedContext
   originalReview: VisualizationReviewArtifact; originalInput: VisualizationReviewArtifact
   ownerSource: VisualizationReviewArtifact; reviewedAsset: VisualizationReviewArtifact
-  originalDecision: 'keep' | 'KEEP'; reviewedAt: string; reviewer: string; originalReason: string
+  originalDecision: 'keep' | 'KEEP' | 'yes'; reviewedAt: string; reviewer: string; originalReason: string
   qualification: { qualifiedAt: string; qualifier: string; reason: string }
 }
 export interface VerifiedVisualizationContext {
@@ -92,13 +91,15 @@ export const parseVisualizationReviewJson = (raw: Buffer): unknown => {
 }
 
 const contextKeys = ['landscapeId', 'goalId', 'subject', 'title', 'description', 'assetSha256', 'titleEn', 'descriptionEn', 'demandLevel'] as const
-// These versioned readers describe two existing canonical review families.
+// These versioned readers describe exact existing canonical review formats.
 // A freely selected later source snapshot cannot grant a different namespace.
 const reviewOwners = {
   'matrix-candidate-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
   'economics-native-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
+  'diagram-current-b-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
+    sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
 } as const
 const sameContext = (left: VisualizationReviewedContext, right: VisualizationReviewedContext): boolean =>
   contextKeys.every(key => !(key in left) || (key === 'landscapeId' || key === 'goalId' || key === 'subject' || key === 'assetSha256'
@@ -111,24 +112,8 @@ export const hasVerifiedVisualizationContext = (capability: unknown, current: Vi
 
 export const createVisualizationContextVerifier = (options: { repositoryRoot?: string; acceptedRepositoryCommit?: string } = {}) => {
   const root = realpathSync(options.repositoryRoot ?? repoRoot)
-  const gitEnvironment = { ...process.env, GIT_NO_REPLACE_OBJECTS: '1', GIT_GRAFT_FILE: devNull }
-  for (const key of ['GIT_DIR', 'GIT_WORK_TREE', 'GIT_COMMON_DIR', 'GIT_INDEX_FILE', 'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES']) {
-    delete gitEnvironment[key as keyof typeof gitEnvironment]
-  }
-  const git = (args: string[]): Buffer => {
-    const result = spawnSync('git', ['--no-replace-objects', '-C', root, '--literal-pathspecs', ...args], { env: gitEnvironment, maxBuffer: 96 * 1024 * 1024 })
-    requireValue(result.status === 0, 'Original Git evidence unavailable: ' + args[0])
-    return Buffer.from(result.stdout)
-  }
-  const anchor = options.acceptedRepositoryCommit ?? git(['rev-parse', 'HEAD']).toString().trim()
-  requireValue(/^[0-9a-f]{40}$/u.test(anchor), 'An exact external accepted repository commit is required')
-  requireValue(git(['cat-file', '-t', anchor]).toString().trim() === 'commit', 'Accepted anchor is not a commit')
-  const ancestry = new Set<string>()
-  const safePath = (path: unknown): string => {
-    requireValue(typeof path === 'string' && path && !isAbsolute(path) && !path.includes('\\') && !path.includes('\0')
-      && path.split('/').every(part => part && part !== '.' && part !== '..'), 'Unsafe visualization evidence path')
-    return String(path)
-  }
+  const originalGit = createAuthenticatedGitEvidenceReader({ repositoryRoot: root, acceptedRepositoryCommit: options.acceptedRepositoryCommit })
+  const safePath = validateGitEvidencePath
   return (reference: unknown, current: VisualizationCurrentContext): VisualizationContextValidation => {
     if (!reference) return { ok: false, status: 'missing', issues: ['Missing immutable reviewed-context receipt'] }
     try {
@@ -151,17 +136,7 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
       const receipt = parsed as VisualizationContextQualification
       const artifact = (binding: VisualizationReviewArtifact, requireCurrentCopy = true): Buffer => {
         const path = safePath(binding.path)
-        if (!ancestry.has(binding.gitCommit)) {
-          const result = spawnSync('git', ['--no-replace-objects', '-C', root, 'merge-base', '--is-ancestor', binding.gitCommit, anchor], { env: gitEnvironment })
-          requireValue(result.status === 0, 'Original evidence commit is not in accepted history')
-          ancestry.add(binding.gitCommit)
-        }
-        const entries = git(['ls-tree', '-z', binding.gitCommit, '--', path]).toString().split('\0').filter(Boolean)
-        requireValue(entries.length === 1, 'Original evidence path is absent or ambiguous')
-        const match = /^(100644|100755) blob ([0-9a-f]{40})\t(.+)$/u.exec(entries[0])
-        requireValue(match && match[3] === path, 'Original evidence is not the exact regular Git file')
-        const raw = git(['cat-file', 'blob', match![2]])
-        requireValue(hash(raw) === binding.sha256, 'Original Git evidence hash differs')
+        const raw = originalGit.readArtifact(binding)
         if (requireCurrentCopy) requireValue(hash(currentBytes(path)) === binding.sha256, 'Original input bytes changed')
         return raw
       }
@@ -194,7 +169,7 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
           ...(snapshot.titleEn ? { titleEn: snapshot.titleEn } : {}), ...(snapshot.descriptionEn ? { descriptionEn: snapshot.descriptionEn } : {}),
           ...(snapshot.demandLevel ? { demandLevel: snapshot.demandLevel } : {}) }
         decision = review.decision; reviewedAt = review.reviewedAt; reviewer = review.reviewer; reason = review.scopeFit.evidenceDe; assetPath = review.candidate.path
-      } else {
+      } else if (receipt.reviewProfile === 'economics-native-v1') {
         requireValue(review.schemaVersion === 1 && review.decision === 'KEEP' && review.reviewer?.status === 'ai_candidate'
           && review.reviewer?.humanApproved === false && review.generationIsApproval === false
           && review.actualWholeDEENGoalRead === true && review.actualNativeBeforeMetadataAndDidacticPromptRead === true
@@ -210,6 +185,43 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
           title: input.title, description: input.description, assetSha256: 'sha256:' + sha(review.actualViewedAsset.sha256) }
         decision = review.decision; reviewedAt = review.actualCompletedAt; reviewer = review.reviewer.agentIdentity
         reason = review.actualGoalSpecificSubjectFormatAccessibilityAndPerspectiveReason; assetPath = review.actualViewedAsset.path
+      } else {
+        requireValue(review.schemaVersion === 1
+          && review.kind === 'independent-fresh-visualization-content-review-for-exact-diagram-description-B'
+          && review.visualInspection?.judgment === 'appropriate instructional visualization for current B goal'
+          && text(review.visualInspection?.method) && Array.isArray(review.visualInspection?.observations)
+          && review.visualInspection.observations.length > 0, 'Original B review is not an actual positive image/context inspection')
+        requireValue(review.landscapeId === source.landscapeId && input.id === review.goalId,
+          'Original B review/input identity differs')
+        requireValue(review.boundGoal?.candidate?.path === receipt.originalInput.path
+          && review.boundGoal.candidate.sha256 === receipt.originalInput.sha256,
+        'Original B review does not bind these exact candidate goal bytes')
+        requireValue(review.boundGoal?.sourceOriginal?.path === receipt.ownerSource.path
+          && review.boundGoal.sourceOriginal.sha256 === receipt.ownerSource.sha256,
+        'Original B review does not bind this original owner source')
+        requireValue(Array.isArray(review.assets) && review.assets.length === 2
+          && review.assets.every((asset: any) => asset?.sha256 === receipt.reviewedAsset.sha256)
+          && review.assets.some((asset: any) => asset.path === receipt.reviewedAsset.path), 'Original B asset pair differs')
+        const originalRowRef = { path: review.candidateRow?.path, sha256: review.candidateRow?.sha256,
+          gitCommit: receipt.originalReview.gitCommit }
+        requireValue(typeof originalRowRef.path === 'string' && /^[0-9a-f]{64}$/u.test(originalRowRef.sha256),
+          'Original B review must bind the actual fresh reviewer row')
+        const originalRow = record(parseVisualizationReviewJson(artifact(originalRowRef)))
+        requireValue(originalRow.goalId === input.id && originalRow.landscapeId === source.landscapeId
+          && originalRow.subject === receipt.context.subject && originalRow.aiApproved === 'yes'
+          && originalRow.aiReviewedAt === review.reviewedAt && text(originalRow.aiReviewer) && text(originalRow.aiNotes),
+        'Original B reviewer attribution/decision differs')
+        requireValue(text(input.description) === text(review.boundGoal.descriptionDe)
+          && text(input.descriptionEn) === text(review.boundGoal.descriptionEn)
+          && text(originalRow.title) === text(input.title) && text(originalRow.description) === text(input.description)
+          && sha(originalRow.aiApprovedAssetSha256) === receipt.reviewedAsset.sha256
+          && sha(originalRow.assetSha256) === receipt.reviewedAsset.sha256, 'Original B row/context/image bindings contradict')
+        native = { landscapeId: source.landscapeId, goalId: input.id, subject: normalizeGoalVisualizationSubject(source.subject),
+          title: input.title, description: input.description, assetSha256: 'sha256:' + receipt.reviewedAsset.sha256,
+          ...(input.titleEn ? { titleEn: input.titleEn } : {}), ...(input.descriptionEn ? { descriptionEn: input.descriptionEn } : {}),
+          ...(input.dimensionTags?.demandLevel ? { demandLevel: input.dimensionTags.demandLevel } : {}) }
+        decision = originalRow.aiApproved; reviewedAt = originalRow.aiReviewedAt; reviewer = originalRow.aiReviewer
+        reason = originalRow.aiNotes; assetPath = receipt.reviewedAsset.path
       }
       requireValue(typeof native.title === 'string' && text(native.title) && typeof native.description === 'string' && text(native.description), 'Original complete reviewed text is missing')
       requireValue(sameContext(receipt.context, native) && Object.keys(receipt.context).sort().join(',') === Object.keys(native).sort().join(','), 'Receipt context is not the actual original reviewed context')

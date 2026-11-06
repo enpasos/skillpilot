@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-06",
+  "executionLocalDate": "2026-11-07",
+  "status": "three-profile-core-with-genuine-B-probe-pass-independent-review-pending",
+  "productionGateGapClosed": false,
+  "existingConsumersChanged": false,
+  "previousCommittedCore": "f26d96b770e5b66f3d14c12d1fcb6604819f2ab3",
+  "originalBAnchor": "d99bd8db5d15e7eab4e49446312208fa1f09ca32",
+  "originalReview": {
+    "path": "docs/dev/ci-graph-repairs/math-diagram-description-b-visualization-independent-review-2026-11-06.json",
+    "sha256": "98bee1832aef1c2d7f141be18ba3741ec4d6b4cb3d7b88a9efbd01b0e128c83d",
+    "bytes": 16188
+  },
+  "qualificationCandidate": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/qualification.candidate.json",
+    "sha256": "9dadc3c1783cb7399f22793d0704070c2dcd65309b43850ec3c60fc32699914e",
+    "bytes": 3843
+  },
+  "code": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b",
+      "bytes": 20675
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "d6480e58bdb77833d14bcf7f0ecdf0b8035de4db01bfeb6be0c1f4cd01008be2",
+      "bytes": 2684
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationFreshBContext.ts",
+      "sha256": "0883fef945dba39be9c2a58a223dd6cb64f691e815b50306ca965c93aab699ba",
+      "bytes": 4354
+    }
+  ],
+  "exactOriginalInputMeaning": "Candidate goal bytes are hashed in the original98bee review; the actual fresh reviewer/time/notes are derived from the separately98bee-hash-bound fresh-row at the same original Gitcommit. Qualification timestamp never becomes review timestamp. The original owner source supplies association only, never interpolated B text.",
+  "positive": "The actual preserved B goal with existing809033 original image and committed fresh original content review qualifies.",
+  "negativeBoundary": "OriginalA and B with only the old asset approval and no immutable new context receipt remain unqualified; no complete original batch016 goal-description review chain is claimed.",
+  "actualTests": {
+    "historicalOriginalPositives": 18,
+    "historicalNegativeControls": 26,
+    "namespaceReplaceGraftControls": 8,
+    "newBPositive": 1,
+    "newBNegatives": 10,
+    "focusedStrictTypecheckExitCode": 0,
+    "finalCommandsTerminalZero": true
+  },
+  "scope": "Pure closed review profiles and audit-only technical qualification. No fresh image, source change, QA-row write, result transfer, B/runtime activation, human approval or M7 claim.",
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/actual-focused-typecheck.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/actual-fresh-b-test.txt",
+      "sha256": "cdfcbf81ee7e2fd0e60b1583535ff01a032ec6a54a2809e086574b8e6b00862d",
+      "bytes": 167
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/actual-preserved-eight.txt",
+      "sha256": "83e112e3c1de2fa426cabd2ebaa774c89e7cfdaa14b68a674b95da862f5d57b4",
+      "bytes": 528
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/actual-preserved-eighteen-twentysix.txt",
+      "sha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b",
+      "bytes": 147
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/qualification.candidate.json",
+      "sha256": "9dadc3c1783cb7399f22793d0704070c2dcd65309b43850ec3c60fc32699914e",
+      "bytes": 3843
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/reviewed-code/goalVisualizationReviewedContext.ts",
+      "sha256": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b",
+      "bytes": 20675
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/reviewed-code/qualification.schema.json",
+      "sha256": "d6480e58bdb77833d14bcf7f0ecdf0b8035de4db01bfeb6be0c1f4cd01008be2",
+      "bytes": 2684
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/reviewed-code/testGoalVisualizationFreshBContext.ts",
+      "sha256": "0883fef945dba39be9c2a58a223dd6cb64f691e815b50306ca965c93aab699ba",
+      "bytes": 4354
+    }
+  ]
+}

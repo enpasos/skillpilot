@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-06",
+  "executionLocalDate": "2026-11-07",
+  "status": "raw-Git-inclusion-reader-locally-verified-peer-pending",
+  "productionGateGapClosed": false,
+  "existingVConsumersChanged": false,
+  "previousBStep": {
+    "path": "docs/dev/ci-graph-repairs/visualization-immutable-context-B-core-probe-2026-11-06.json",
+    "sha256": "7a30365242fa8ac6d3cdf7171803f087d9d97aea451741a3fabe4934306797c4",
+    "bytes": 4723
+  },
+  "beforeReader": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-diagram-b-qualification/reviewed-code/goalVisualizationReviewedContext.ts",
+    "sha256": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b"
+  },
+  "codeBindings": [
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702",
+      "bytes": 6126
+    },
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "0b1387223d949f92e08b12d33b2dfed74e29781b2bf617f18ac2b4557c809dd8",
+      "bytes": 18727
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationContextNamespaces.ts",
+      "sha256": "8e7f83ca0f609ab06776dc7dde9c96c11e379a44bfb48591d0a08659a66fb53f",
+      "bytes": 11147
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+      "bytes": 9090
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationFreshBContext.ts",
+      "sha256": "0883fef945dba39be9c2a58a223dd6cb64f691e815b50306ca965c93aab699ba",
+      "bytes": 4354
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "d6480e58bdb77833d14bcf7f0ecdf0b8035de4db01bfeb6be0c1f4cd01008be2",
+      "bytes": 2684
+    }
+  ],
+  "confirmedBeforeCounterexamples": {
+    "blob": "Changed review JSON under the original loose-blob OID produced a valid capability for the new unreviewed description.",
+    "tree": "Changed path-tree bytes under the original tree OID redirected to another valid blob and produced the same false capability.",
+    "commit": "The measured older reader rejected this extra case at its ancestry check; no old commit-case acceptance is claimed.",
+    "unchangedObjectControl": "The same forged receipt/current context without object mutation was rejected."
+  },
+  "authentication": {
+    "originalAnchor": "Exact externally supplied40hex commit; raw Git framing/OID verified.",
+    "parentInclusion": "Read actual SHA-authenticated commit headers and prove a complete parent path from accepted anchor; local merge-base/grafts are not authority. Missing off-path shallow parents cannot invent an edge.",
+    "pathInclusion": "Read SHA-authenticated raw tree entries; require a unique exact component, directory mode at ancestors, regular-file mode at leaf. No ls-tree output is treated as proof.",
+    "blobIdentity": "Recompute SHA1 over the exact Git type/length/NUL/payload bytes, then independently compare original SHA256. A free receipt SHA256 cannot relabel a forged object.",
+    "memory": "Only already authenticated immutable commit/tree payloads are retained within the verifier; images/blobs are not kept in an unbounded global cache.",
+    "mutableGitViews": "--no-replace-objects, GIT_NO_REPLACE_OBJECTS=1, GIT_GRAFT_FILE=devNull and cleared inherited repository/ODB selectors remain in place."
+  },
+  "tests": {
+    "actualNamespaceOwnerReplaceGraftAndOdbCases": 12,
+    "beforeUnexpectedCapabilities": 2,
+    "afterUnexpectedCapabilities": 0,
+    "afterBlobTreeCommitDenialsUseExactOidCause": true,
+    "actualHistoricalOriginalPositives": 18,
+    "actualHistoricalNegativeControls": 26,
+    "actualFreshBPositives": 1,
+    "actualFreshBNegatives": 10,
+    "focusedStrictTypecheckExitCode": 0,
+    "actualUnchangedCapsuleShallowTransportPositives": 18,
+    "allFinalCommandsTerminalZero": true
+  },
+  "capsuleBoundary": {
+    "previousFrozenReceipt": {
+      "path": "docs/dev/ci-graph-repairs/visualization-original-git-capsule-probe-2026-11-06.json",
+      "sha256": "cc484ef1f5d5ffb64c9d8568b69b185a539999d28e4b4910689fed03ed7f9688",
+      "bytes": 155892
+    },
+    "previousCommittedTransport": "92ae30c68db81e05534dd6c88aaa756539629391",
+    "capsuleBytesChanged": false,
+    "newCurrentReaderResult": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-current-reader-shallow.json",
+      "sha256": "e52cb2612a8ff8a1ea120d5dee7c37f2ccd26ea10ee0f93b12dbe850dc302bdf",
+      "bytes": 3769
+    },
+    "oldF83HistoricalReplayRemainsExplicit": true
+  },
+  "remaining": [
+    "Independent review of the B/ODB successor is pending; earlier peers retain their exact earlier codepins.",
+    "No existing V/Deep/M7/UI/workflow consumer is wired by this small proof. The productive gap therefore remains until explicit integration.",
+    "No source, active QA, state, policy or historical approval write; no mass qualification.",
+    "The fixed6fe18-case capsule remains separate from laterHEAD/B transport and full Source-A physical read scope."
+  ],
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-authenticated-odb-green.txt",
+      "sha256": "f4ad01bd2b933ca87fd7bd5877b8cd94ec22e4d8b844def0b02d33b36f770695",
+      "bytes": 1512
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-current-reader-shallow.json",
+      "sha256": "e52cb2612a8ff8a1ea120d5dee7c37f2ccd26ea10ee0f93b12dbe850dc302bdf",
+      "bytes": 3769
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-current-reader-shallow.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-eighteen-twentysix.txt",
+      "sha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b",
+      "bytes": 147
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-f83-odb-red.txt",
+      "sha256": "30cc98681b94923aed3c2574e26a9b41f5e70b6b81c936fa9d137021035d0e9a",
+      "bytes": 1419
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-focused-typecheck.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/actual-fresh-b.txt",
+      "sha256": "cdfcbf81ee7e2fd0e60b1583535ff01a032ec6a54a2809e086574b8e6b00862d",
+      "bytes": 167
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702",
+      "bytes": 6126
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/goalVisualizationReviewedContext.ts",
+      "sha256": "0b1387223d949f92e08b12d33b2dfed74e29781b2bf617f18ac2b4557c809dd8",
+      "bytes": 18727
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/qualification.schema.json",
+      "sha256": "d6480e58bdb77833d14bcf7f0ecdf0b8035de4db01bfeb6be0c1f4cd01008be2",
+      "bytes": 2684
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/testGoalVisualizationContextNamespaces.ts",
+      "sha256": "8e7f83ca0f609ab06776dc7dde9c96c11e379a44bfb48591d0a08659a66fb53f",
+      "bytes": 11147
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/testGoalVisualizationFreshBContext.ts",
+      "sha256": "0883fef945dba39be9c2a58a223dd6cb64f691e815b50306ca965c93aab699ba",
+      "bytes": 4354
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-authenticated-git-reader/reviewed-code/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+      "bytes": 9090
+    }
+  ]
+}
