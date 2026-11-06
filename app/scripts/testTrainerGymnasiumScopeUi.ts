@@ -5,6 +5,12 @@ import { chromium, type Browser, type Page } from 'playwright'
 
 import { startViteTestServer } from './viteTestServer'
 import { CURRENT_TERMS_VERSION } from '../src/utils/legalTermsVersion'
+import { GYMNASIUM_CONTENT_OFFERINGS } from '../src/generated/gymnasiumDurationOfferings'
+import { parseRuntimeCurriculumCatalog } from '../src/utils/runtimeCurriculumCatalog'
+
+const repositoryContentOfferings: Readonly<Record<string, Readonly<Record<string, {
+  readonly stages: readonly string[]
+}>>>> = GYMNASIUM_CONTENT_OFFERINGS
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -180,12 +186,64 @@ const compositionView = (
   }],
 })
 
+// The synthetic closure has its own catalog offerings. Repository maturity and
+// generated offerings remain authentic and are checked separately below.
+const fixturePackageId = 'trainer-gymnasium-scope-fixture'
+const fixtureOfferings = [mathLandscapeId, physicsLandscapeId].flatMap((landscapeId) =>
+  ['G8', 'G9'].map((durationModel) => ({
+    packageId: fixturePackageId,
+    landscapeId,
+    offeringId: `trainer-fixture-${landscapeId}-${durationModel}`,
+    scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'LK', durationModel },
+    resolution: { mode: 'single', viewIds: [`trainer-fixture-view-${landscapeId}-${durationModel}`] },
+  })),
+)
+const fixtureCatalog = parseRuntimeCurriculumCatalog({
+  catalogApiVersion: '1.2',
+  generationSha256: 'a'.repeat(64),
+  packages: [{
+    packageId: fixturePackageId,
+    packageVersion: '1.0.0',
+    releaseId: `${fixturePackageId}@1.0.0`,
+    contentDigest: `sha256:${'b'.repeat(64)}`,
+    capabilities: ['compositionViews'],
+  }],
+  rootLandscapeIds: [rootLandscapeId],
+  landscapes: [rootLandscape, mathLandscape, physicsLandscape].map((landscape) => ({
+    packageId: fixturePackageId,
+    landscapeId: landscape.landscapeId,
+    role: landscape.landscapeId === rootLandscapeId ? 'root' : 'module',
+    locale: landscape.locale,
+    frameworkId: landscape.frameworkId,
+    subject: landscape.subject,
+    schoolForm: 'Gymnasium',
+    country: 'DE',
+    region: 'DE-HE',
+    ...(landscape.landscapeId === rootLandscapeId ? {} : {
+      parentLandscapeId: rootLandscapeId,
+      defaultOfferingId: `trainer-fixture-${landscape.landscapeId}-G9`,
+    }),
+  })),
+  views: fixtureOfferings.map((offering) => ({
+    packageId: fixturePackageId,
+    landscapeId: offering.landscapeId,
+    viewId: offering.resolution.viewIds[0],
+    scope: offering.scope,
+  })),
+  offerings: fixtureOfferings,
+  decks: [],
+  resources: [],
+  sourceEvidence: [],
+})
+
 const installApi = async (page: Page) => {
   let learnerCreateRequests = 0
   const closureRequests: string[] = []
   const abortedClosureRequests: string[] = []
   const compositionViewRequests: string[] = []
+  const catalogOfferingRequests: string[] = []
   let mathCompositionNoMatch = false
+  let packageCatalogEnabled = false
   page.on('request', (request) => {
     const url = new URL(request.url())
     if (url.pathname.endsWith('/closure')) closureRequests.push(url.pathname)
@@ -199,7 +257,24 @@ const installApi = async (page: Page) => {
     const pathname = new URL(request.url()).pathname
 
     if (pathname === '/api/ui/curriculum-catalog') {
-      await route.fulfill({ status: 404, body: '' })
+      await route.fulfill(packageCatalogEnabled
+        ? { status: 200, contentType: 'application/json', body: JSON.stringify(fixtureCatalog) }
+        : { status: 404, body: '' })
+      return
+    }
+    if (pathname.startsWith('/api/ui/composition-views/offerings/')) {
+      catalogOfferingRequests.push(request.url())
+      const offeringId = decodeURIComponent(pathname.slice('/api/ui/composition-views/offerings/'.length))
+      const offering = fixtureCatalog.offerings.find((candidate) => candidate.offeringId === offeringId)
+      assert(packageCatalogEnabled && offering, `unexpected catalog offering request: ${request.url()}`)
+      const view = offering.landscapeId === mathLandscapeId
+        ? compositionView(mathLandscapeId, mathSek2GoalId, mathSek1DistractorGoalId)
+        : compositionView(physicsLandscapeId, physicsSek2GoalId)
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ ...view, viewId: offering.resolution.viewIds[0], scope: offering.scope }),
+      })
       return
     }
     if (pathname === '/api/ui/landscapes') {
@@ -297,6 +372,8 @@ const installApi = async (page: Page) => {
     getClosureRequests: () => [...closureRequests],
     getAbortedClosureRequests: () => [...abortedClosureRequests],
     getCompositionViewRequests: () => [...compositionViewRequests],
+    getCatalogOfferingRequests: () => [...catalogOfferingRequests],
+    enablePackageCatalog: () => { packageCatalogEnabled = true },
     setMathCompositionNoMatch: (value: boolean) => {
       mathCompositionNoMatch = value
     },
@@ -357,6 +434,8 @@ try {
     getClosureRequests,
     getAbortedClosureRequests,
     getCompositionViewRequests,
+    getCatalogOfferingRequests,
+    enablePackageCatalog,
     setMathCompositionNoMatch,
   } = await installApi(page)
 
@@ -527,10 +606,44 @@ try {
     )
   }
   await page.getByLabel('Sekundarstufe II', { exact: true }).check()
+  const expectedRepositorySubjects = [mathLandscapeId, physicsLandscapeId].filter((landscapeId) =>
+    repositoryContentOfferings[landscapeId]?.['DE-HE']?.stages.some(
+      (stage) => stage === 'SekII' || stage === 'CrossStage',
+    ),
+  )
+  const repositorySubjects = await page.getByLabel('Fach / Landscape').locator('option').evaluateAll(
+    (options) => options.map((option) => (option as HTMLOptionElement).value).filter(Boolean),
+  )
   assert(
-    await page.getByLabel('Fach / Landscape').locator('option').allTextContents()
-      .then((options) => options.includes('Mathematik') && options.includes('Physik')),
-    'direct subject entry offers the complete canonical Gymnasium subject closure',
+    JSON.stringify(repositorySubjects.sort()) === JSON.stringify(expectedRepositorySubjects.sort()),
+    'repository subject selection follows real generated offerings; synthetic closure goals do not release M0 subjects',
+  )
+  await page.getByRole('button', { name: 'Abbrechen' }).click()
+
+  // Load the fixture entry again to create a fresh runtime-catalog context;
+  // its client-side /trainer URL is not a test-server document endpoint.
+  enablePackageCatalog()
+  await page.goto(`${server.baseUrl}/scripts/fixtures/trainerGymnasiumScopeUi.html`)
+  try {
+    await page.getByRole('heading', { name: 'Kursorganisation', exact: true }).waitFor()
+  } catch (error) {
+    const body = (await page.locator('body').textContent() ?? '').replace(/\s+/gu, ' ').trim()
+    throw new Error(`${String(error)}\nCatalog setup body: ${body.slice(0, 2_000)}\nBrowser errors: ${JSON.stringify(browserErrors)}`)
+  }
+  await newClassButton.click()
+  await page.getByRole('heading', { name: 'Neue Klasse / Kurs anlegen' }).waitFor()
+  await page.waitForFunction(
+    ({ selector, expected }) => (document.querySelector(selector) as HTMLSelectElement | null)?.value === expected,
+    { selector: '#trainer-class-root-curriculum', expected: rootLandscapeId },
+  )
+  await page.getByLabel('Sicht / Bundesland').selectOption('DE-HE')
+  await page.getByLabel('Sekundarstufe II', { exact: true }).check()
+  const catalogSubjects = await page.getByLabel('Fach / Landscape').locator('option').evaluateAll(
+    (options) => options.map((option) => (option as HTMLOptionElement).value).filter(Boolean),
+  )
+  assert(
+    JSON.stringify(catalogSubjects.sort()) === JSON.stringify([mathLandscapeId, physicsLandscapeId].sort()),
+    'catalog-backed subject entry offers exactly the explicitly offered synthetic Gymnasium subjects',
   )
   await page.getByLabel('G8').waitFor()
   await page.getByLabel('G9').waitFor()
@@ -594,6 +707,10 @@ try {
   await page.getByLabel('G9').check()
   await page.getByLabel('Filter / Niveau').selectOption('LK')
   const closureRequestCountBeforeCreate = getClosureRequests().length
+  assert(
+    getClosureRequests().some((pathname) => pathname === `/api/ui/landscapes/${rootLandscapeId}/closure`),
+    'catalog-backed setup has loaded its own root closure before creating a subject class',
+  )
   const abortedClosureRequestCountBeforeCreate = getAbortedClosureRequests().length
   await page.getByRole('button', { name: 'Klasse anlegen' }).click()
 
@@ -619,12 +736,8 @@ try {
     `creating and opening a class loads its subject closure exactly once; got ${JSON.stringify(closureRequestsAfterCreate)}`,
   )
   assert(
-    closureRequestsAfterCreate.filter((pathname) => pathname === `/api/ui/landscapes/${rootLandscapeId}/closure`).length === 1
-      && closureRequestsAfterCreate.every((pathname) => (
-        pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`
-        || pathname === `/api/ui/landscapes/${rootLandscapeId}/closure`
-      )),
-    `creating a Physics class loads only its subject plus the class-owned root closure for labels; got ${JSON.stringify(closureRequestsAfterCreate)}`,
+    closureRequestsAfterCreate.every((pathname) => pathname === `/api/ui/landscapes/${physicsLandscapeId}/closure`),
+    `catalog-backed class creation reuses its loaded root and loads no unrelated closure; got ${JSON.stringify(closureRequestsAfterCreate)}`,
   )
   const abortedClosureRequestsAfterCreate = getAbortedClosureRequests()
     .slice(abortedClosureRequestCountBeforeCreate)
@@ -661,6 +774,18 @@ try {
     await page.getByRole('heading', { name: 'Physik', exact: true }).count() === 1
       && await page.getByText('Landscapes laden ...', { exact: true }).count() === 0,
     'the Physics class view remains visible without returning to the landscape loader',
+  )
+  assert(
+    getCatalogOfferingRequests().length > 0
+      && getCatalogOfferingRequests().every((requestUrl) => {
+        const url = new URL(requestUrl)
+        return url.search === ''
+          && fixtureCatalog.offerings.some((offering) => url.pathname.endsWith(`/${offering.offeringId}`))
+          && !requestUrl.includes(classId)
+          && !requestUrl.includes(studentId)
+          && !decodeURIComponent(requestUrl).includes('Taunusgymnasium')
+      }),
+    'catalog composition requests contain only declared offering IDs and no local class or learner data',
   )
   assert(browserErrors.length === 0, `trainer Gymnasium scope browser errors:\n${browserErrors.join('\n')}`)
 
