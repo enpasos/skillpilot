@@ -23,6 +23,19 @@ bleibt historisch erhalten.
   braucht die erhaltenen Audit-Originale zusätzlich im schlanken Checkout;
   der konkrete MkDocs-Fehler ist damit lokal reproduziert und geschlossen.
   Die frische Remote-Abnahme dieser Reparaturen steht noch aus.
+- [Terminale Workflows auf 6fe](remote-6fe-workflows-terminal-2026-11-06.json):
+  sechs Hauptjobs einschließlich Backend, Frontend und Buchbau sowie Assessment,
+  OAuth und Gemini bestehen. Der [Curriculumjob](remote-6fe-curriculum-terminal-2026-11-06.json)
+  besteht den echten 19er-Isolationstest und den vollständigen Deep-Test,
+  scheitert danach an den sieben echten Fachfloors. Apps und Docs scheitern
+  an den oben getrennt lokal reparierten Einbindungen.
+- [Begrenzter V-Kontextbaustein](visualization-context-root-component-check-2026-11-06.json)
+  und [tatsächlicher Shallow-Transport](visualization-git-capsule-root-replay-2026-11-06.json):
+  historische Originalketten werden an den echten Goaltext und die Bildbytes
+  gebunden. Der gesicherte Transport prüft 18 Ketten und neun Gegenfälle;
+  die spätere Readerkorrektur und weitere Formate sind getrennte Stände.
+  Bestehende V-/Deep-/M7-Verbraucher sind noch nicht angeschlossen, die
+  vollständige Bestandsqualifikation läuft.
 - [Aktuelle Source-A-Neuverifikation](source-identity-db9c-source-rebase-2026-11-06.md):
   593 Quellen, 8.591 exakt gebundene Dokumente und 164 unveränderte Regeln;
   sieben historische Belege sind bytegleich archiviert, v1 bleibt unverändert.

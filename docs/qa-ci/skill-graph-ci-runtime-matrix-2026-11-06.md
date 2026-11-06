@@ -147,6 +147,24 @@ liegt damit vollständiger lokaler Negativnachweis mit harter CI-Verdrahtung
 vor; eine neue Remote-Ausführung und tatsächlicher Coachdialog werden nicht
 behauptet. Die historischen Regelzeilen unten bleiben als Baseline erhalten.
 
+**Lesende Nachprüfung am 7. November:** Die beiden Fälle sind seit
+`234372d013` eingecheckt. Der aktuelle Testdateihash
+`b2376826bea785cd14bce0f48b097f34e6dde0eab658df70f5217bf326098462`
+und der aktuelle `LearnerService`-Hash
+`ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659`
+stimmen weiterhin mit dem damaligen Laufbeleg überein. Der
+[unabhängige Review](../dev/ci-graph-repairs/srs-completion-retention-independent-review-2026-11-06.md)
+bindet den tatsächlich gelesenen 21er-XML-Nachweis. Die drei damaligen XMLs
+liegen inzwischen nicht mehr im aktuellen Buildordner; diese Nachprüfung ist
+kein erneuter Lauf. Die aktuelle Assessment-Kette wählt weiterhin die ganze
+Klasse (`assessment-completion.yml:221`) und verlangt mindestens neun
+fehlerfreie, nicht übersprungene Ausführungen (`:271`). Im Hauptworkflow führt
+`run_backend_ci.py` nach dem Prioritätslauf die Vollsuite aus. Somit sind
+Due-only-Rollover, der konkrete bereits-passed-Falsewrite und der Ausschluss
+bestandener Karten aus einer neuen Prüfung keine noch fehlenden N11/N12-
+Gegenfälle. Der eigenständige N28-Fall „Pass in Charge 1, zulässiger Fehlversuch
+einer anderen Karte in Charge 2“ wird dadurch nicht zusätzlich nachgewiesen.
+
 **Maturity bleibt ein gesonderter Nachweis.** Der erste streng
 berechnete Statusbericht vom `2026-11-06T09:39:23.324Z` weist 20 von 21
 Landschaften als M0 und Latein als M6 aus. Von den zehn unveränderten Floors
@@ -539,14 +557,16 @@ Vorrang hat nach der erneuten Product-Owner-Anweisung die tatsächliche
 Wiederherstellung der fünf geschützten M7- und fünf M6-Fächer unter den streng
 integrierten Strukturprüfungen. Es gibt keine Reifegradabsenkung oder Ersatz-
 Freigabe durch manuell geänderte Berichte. Die folgenden Laufzeitlücken bleiben
-sichtbar; zusätzliche SRS-Testarbeit ist während dieser Priorität zurückgestellt.
+sichtbar. Die beiden oben nachgewiesenen N11/N12-Servicefälle werden nicht
+erneut als offene Testarbeit geführt.
 
-1. **Zurückgestellt: M6-SRS-Gegentests ergänzen:** vollständige Requiredcards verifiziert,
-   anschließend fällige Zeitstempel/gewöhnliche Practice; Mastery bleibt1.
-   Bereits bestandene Karte darf weder Single- noch Batch-Failwrite erreichen;
-   abgewiesener Versuch ändert weder Receipt noch Mastery/Revision. Vor Goalabschluss
-   bleibt ein früherer Pass über einen später fehlgeschlagenen anderen Batch
-   erhalten. Das testet vorhandene Schutzpfade, führt keinen Retest/Widerruf ein.
+1. **Verbleibende SRS-Kombinationen:** Für N28 fehlt weiterhin der spezifische
+   Gegenfall, dass vor Goalabschluss ein früherer Pass über einen zulässigen
+   Fehlversuch einer anderen Karte in einer späteren Charge erhalten bleibt.
+   Gewöhnliche Practice nach vollständigem Goalabschluss ist ebenfalls kein
+   Bestandteil der beiden neuen Fälle; die unveränderten Practice-Guards
+   belegen ihre engeren Feld-/Revisionsgrenzen. Das sind getrennte Restgrenzen,
+   keine erneute Forderung nach den bereits vorhandenen N11/N12-Tests.
 2. **SM2-Randfälle:** bestehender Spezifikationsvertrag mit den unabhängigen
    Beispielen Repetition0→1Tag,1→6Tage, Multiplikation mit Rundung, EF-Minimum1.3
    sowie Fehlerreset ohne EFänderung. Die bisherige Practiceprobe testet nur

@@ -764,3 +764,25 @@ sind lokal repariert: tatsächlicher Docs-sparse-Build rot/grün und alle 94
 Tests des Original-Apps-Befehls grün. Die 19 harten Kontrollen, Quellen und
 Fachfloors bleiben unverändert. Der Hauptlauf dieses Kopfes war bei diesem
 Zwischenstand noch nicht terminal; eine neue Remote-Abnahme ist erforderlich.
+
+## Terminaler Remote-Nachlauf auf 6fe und weitere QA-Bausteine
+
+Die [vollständigen Remote-Metadaten](ci-graph-repairs/remote-6fe-workflows-terminal-2026-11-06.json)
+sind nun terminal: sechs erfolgreiche Hauptjobs einschließlich Backend,
+Frontend und Buchbau; Apps scheitert am alten Vierer-Workflowtest. Docs
+scheitert am fehlenden Archiv im schlanken Checkout. Diese zwei Einbindungen
+sind lokal repariert und benötigen einen neuen Kopf. Assessment, OAuth und
+Gemini bestehen. Der [Curriculumjob](ci-graph-repairs/remote-6fe-curriculum-terminal-2026-11-06.json)
+führt alle 19 Isolationstests ohne Skips aus und besteht den vollständigen
+Deep-Einstieg mit den unveränderten fünf Nennern. Anschließend scheitert der
+tatsächliche harte Floorcheck an sieben Fächern. Die abschließende
+Git-Diff-Frischeprüfung und die nachfolgenden Schritte werden deshalb nicht
+erreicht; ein vollständiger Remote-Pass wird nicht behauptet.
+
+Der [gesicherte V-Kontextbaustein](ci-graph-repairs/visualization-context-root-component-check-2026-11-06.json)
+und der [kleine tatsächliche Shallow-Transport](ci-graph-repairs/visualization-git-capsule-root-replay-2026-11-06.json)
+haben eigene enge Code-/Inputpins und echte Gegenfälle. Die normale V-/Deep-/M7-
+Verdrahtung und die vollständige Bestandsqualifikation bleiben offen. Die
+vorhandenen N11/N12-Servicegegenfälle sind in der Laufzeitmatrix nun präzise
+nachgeführt; es wurden dafür keine doppelten Tests oder neue Masterylogik
+geschaffen. Die drei Math-Korrekturen bleiben unangewandt.

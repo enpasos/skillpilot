@@ -1,0 +1,1846 @@
+{
+  "schemaVersion": 1,
+  "status": "terminal-remote-workflows-recorded-no-global-ci-pass",
+  "headCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "workflowRuns": [
+    {
+      "id": 42304852482,
+      "name": "Gemini integration local checks",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 236,
+      "jobs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852482/jobs",
+      "logs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852482/logs",
+      "workflow_id": 375949917
+    },
+    {
+      "id": 42304852305,
+      "name": "Assessment completion",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 93,
+      "jobs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852305/jobs",
+      "logs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852305/logs",
+      "workflow_id": 401956338
+    },
+    {
+      "id": 42304852672,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_number": 2124,
+      "jobs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852672/jobs",
+      "logs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852672/logs",
+      "workflow_id": 220359710
+    },
+    {
+      "id": 42304852269,
+      "name": "OAuth client authentication",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 277,
+      "jobs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852269/jobs",
+      "logs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852269/logs",
+      "workflow_id": 355840487
+    },
+    {
+      "id": 42304852289,
+      "name": "Docs Checks",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_number": 617,
+      "jobs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852289/jobs",
+      "logs_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/42304852289/logs",
+      "workflow_id": 325379950
+    }
+  ],
+  "mainJobs": [
+    {
+      "id": 128191493362,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Verify own-project license declarations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Test Spring-hosted Custom GPT Action control client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Validate current Custom GPT Action Session contract",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Validate production deployment entrypoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Verify Gemini gateway deployment and exact skill download guards",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    },
+    {
+      "id": 128191493683,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Validate public edge script",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Validate OpenAI V1 mTLS edge verifier",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        }
+      ]
+    },
+    {
+      "id": 128191493735,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install Claude MCP App dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Test and rebuild Claude MCP Apps",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Verify committed Claude MCP App resources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Audit Claude MCP App dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Validate Claude plugin package",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Verify Claude direct-install beta publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 128191493820,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Test CI package source isolation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Install PDF and font tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Prepare generated curriculum runtime assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Reject tracked generated goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Build and validate all registered goal-book publications from source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Verify generated publication bindings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Share verified goal-book publications with the application checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Share only the catalog and models required by backend tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        }
+      ]
+    },
+    {
+      "id": 128191493857,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Test DE and EN MCP App contracts and workflows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Test plugin release and CI configuration",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Validate SkillPilot Coach source and current submission contract",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Validate current OpenAI daily-plan contract",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10
+        },
+        {
+          "name": "Test submission generation, export audit and trace validation",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Build current OpenAI submission ZIP",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12
+        },
+        {
+          "name": "Test OpenAI V1 runtime configuration guard",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13
+        },
+        {
+          "name": "Validate exact V1 production boundary configuration",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14
+        },
+        {
+          "name": "Audit MCP App dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15
+        },
+        {
+          "name": "Retain checked OpenAI submission worksheets",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16
+        },
+        {
+          "name": "Retain checked OpenAI submission ZIP",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 33
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        }
+      ]
+    },
+    {
+      "id": 128202031349,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install package-consumer isolation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Enable and verify bubblewrap isolation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Prepare pinned Source-A metadata test fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Test Source-A Composer metadata boundary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Test isolated identity QA preparation without skips",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Install PDF validation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Restore same-run verified goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Test general graph reference resolution",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Validate Graph",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Test exam Markdown conventions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Test reviewed Mathematics checkpoint assessments",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Test HE Q2.5 central-dilation assessment scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Test HE Q2.4/Q2.5 Mathematics scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Test Mathematics Q2 assessment projection and scoring",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Test Physics practice and Abitur assessment projection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Test hard Sek-I/Sek-II learning routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Test reviewed canonical Mathematics Sek-I exam routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Test Q4 Caterer exam coverage and scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Test learner-facing composition labels",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        },
+        {
+          "name": "Validate Competency Wording",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Validate optional content packages and migration evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Validate View Filters",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Check Source Landscape Registry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Check Hessen Math G8/G9 Projection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Check generated Math G8/G9 Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        },
+        {
+          "name": "Check generated German Sek-I Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Check generated History Sek-I Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        },
+        {
+          "name": "Check Canonical Math Scope Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36
+        },
+        {
+          "name": "Check Gymnasium G8/G9 Duration Readiness Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        },
+        {
+          "name": "Check Mathematics G8/G9 Duration Policy Readiness",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38
+        },
+        {
+          "name": "Check M6 G8/G9 Duration Policy Readiness",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Check Gymnasium Duration Offerings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Check Curriculum Source Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        },
+        {
+          "name": "Check Goal Source Rationale Runtime Index",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42
+        },
+        {
+          "name": "Check Goal Source Rationale All-Relevant Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43
+        },
+        {
+          "name": "Check Goal Source Rationale Coverage Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44
+        },
+        {
+          "name": "Check Goal Source Rationale Gap Issues",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45
+        },
+        {
+          "name": "Check Goal Source Rationale Mapping Batch 01",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 46
+        },
+        {
+          "name": "Check Generated Documentation Notices",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47
+        },
+        {
+          "name": "Check Generated Status Registry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48
+        },
+        {
+          "name": "Check Documentation Links",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49
+        },
+        {
+          "name": "Check Documentation Index Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 50
+        },
+        {
+          "name": "Check Terminology",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 51
+        },
+        {
+          "name": "Validate Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 52
+        },
+        {
+          "name": "Test Composition Projection Roles",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 53
+        },
+        {
+          "name": "Test Course-Level Mapping Consistency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 54
+        },
+        {
+          "name": "Test Physics Source Method Routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 55
+        },
+        {
+          "name": "Check Memory-Card Reviews",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 56
+        },
+        {
+          "name": "Test strict deep curriculum QA and M7 transitions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 57
+        },
+        {
+          "name": "Test repository source availability",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58
+        },
+        {
+          "name": "Test source extraction inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59
+        },
+        {
+          "name": "Verify committed curriculum quality status",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 60
+        },
+        {
+          "name": "Prepare generated curriculum runtime assets",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 61
+        },
+        {
+          "name": "Check goal visualization runtime assets",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 62
+        },
+        {
+          "name": "Check goal visualization QA freshness",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 63
+        },
+        {
+          "name": "Check goal visualization approval coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 64
+        },
+        {
+          "name": "Check goal visualization rollout coverage",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 65
+        },
+        {
+          "name": "Test full standalone curriculum package builder",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 66
+        },
+        {
+          "name": "Build integrated application artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 67
+        },
+        {
+          "name": "Build package-only consumer frontend",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 68
+        },
+        {
+          "name": "Check Goal Source Rationale Build Artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 69
+        },
+        {
+          "name": "Set up Python",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 70
+        },
+        {
+          "name": "Set up Java for package-consumer smoke",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 71
+        },
+        {
+          "name": "Use exact production Corretto build",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 72
+        },
+        {
+          "name": "Install Python dependencies",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 73
+        },
+        {
+          "name": "Verify curriculum JSON conformance scripts",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 74
+        },
+        {
+          "name": "Validate Curriculum Package Contracts",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 75
+        },
+        {
+          "name": "Test portable curriculum symlinks",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 76
+        },
+        {
+          "name": "Validate Schemas",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 77
+        },
+        {
+          "name": "Test Curriculum Goal UUID CLI",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 78
+        },
+        {
+          "name": "Validate Curriculum Goal IDs (UUIDs)",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 79
+        },
+        {
+          "name": "Validate Hessen Upper-Secondary Archive Paths",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 80
+        },
+        {
+          "name": "Validate Hessen Upper-Secondary Legacy References",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 81
+        },
+        {
+          "name": "Validate Hessen Chemistry Exam Pipeline",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 82
+        },
+        {
+          "name": "Validate Hessen Lower-Secondary Archive Paths",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 83
+        },
+        {
+          "name": "Validate Hessen Lower-Secondary Legacy References",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 84
+        },
+        {
+          "name": "Validate Bavaria Gymnasium Archive Paths",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 85
+        },
+        {
+          "name": "Validate Bavaria Gymnasium Legacy References",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 86
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 171
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 172
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 173
+        }
+      ]
+    },
+    {
+      "id": 128202031423,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Install FFmpeg and PDF validation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Restore same-run verified goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Test deterministic ZIP32 writer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Test package landscape model parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Test runtime curriculum catalog consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Test root route policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Test Claude v1 first-party start flow",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Test Claude plugin publication consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Test service-worker navigation policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Test learning-goal book contracts and publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Test curriculum offering sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Test package goal source evidence consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Test goal source-rationale deployment smoke modes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Test goal visualization QA approval model",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Test learner goal selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Check GPT system instruction lengths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Test coach variant selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Test optional learner content materials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Test contextual AI transparency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        },
+        {
+          "name": "Test Terms of Use and versioned acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Test remote AI transparency artifact crawler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Test frontend shell asset verifier",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Test SkillPilot ID encryption",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Test session setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Test public FAQ copy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        },
+        {
+          "name": "Test public landing page and overview",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Test existing learner linking",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        },
+        {
+          "name": "Test trainer course planning",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36
+        },
+        {
+          "name": "Test learner-owned subject plans and Cockpit status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37
+        },
+        {
+          "name": "Test quiet and bounded learner cockpit startup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38
+        },
+        {
+          "name": "Test native learner map and focused cockpit regression",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39
+        },
+        {
+          "name": "Test read-only learning-goal book UI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40
+        },
+        {
+          "name": "Test compact completed session setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41
+        },
+        {
+          "name": "Test trainer navigation history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42
+        },
+        {
+          "name": "Test trainer Gymnasium scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43
+        },
+        {
+          "name": "Test learner data and SkillPilot ID management",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44
+        },
+        {
+          "name": "Test curriculum quality traffic-light interactions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45
+        },
+        {
+          "name": "Test personal curriculum editor",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 46
+        },
+        {
+          "name": "Lint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47
+        },
+        {
+          "name": "Build application without regenerating curriculum assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48
+        },
+        {
+          "name": "Check optional learner map stays outside startup precache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49
+        },
+        {
+          "name": "Test service-worker update lifecycle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 50
+        },
+        {
+          "name": "Check AI transparency inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 51
+        },
+        {
+          "name": "Check frontend shell assets in the built application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 52
+        },
+        {
+          "name": "Check AI transparency in the built application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 53
+        },
+        {
+          "name": "Install browser demo-video tool dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 54
+        },
+        {
+          "name": "Validate reproducible browser demo-video tool",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 55
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 109
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 110
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 111
+        }
+      ]
+    },
+    {
+      "id": 128202031436,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852672,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Reserve disk space for the complete repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify disk reserve after the complete checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Restore same-run verified goal-book catalog and models",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Use Java",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Use production Corretto build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Ensure Gradle wrapper is executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Verify OpenAI V1 release or draft snapshot",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Test backend CI failure prioritization",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Restore previous backend failure selectors",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Run backend tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Save current backend failure selectors",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Verify Claude direct-install beta publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Post Use Java",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        }
+      ]
+    }
+  ],
+  "assessmentJobs": [
+    {
+      "id": 128191491772,
+      "name": "Completion profiles, shared fixtures and Cockpit",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852305,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install pinned package and RDF validation dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Validate profile/scope authoring and the shared semantic fixture corpus",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Validate package completion contracts and independent FWU reconstruction",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Check TypeScript, state parsing, binary goals and public practice synchronization",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Install pinned Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Test real browser navigation, revision conflicts and keyboard interaction",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Retain browser evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        }
+      ]
+    },
+    {
+      "id": 128191492224,
+      "name": "Completion core, HTTP browser, sessions and PostgreSQL snapshots",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 42304852305,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Install browser-test dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Install pinned Chromium for real backend browser integration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run actions/setup-java@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Use exact production Corretto build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Start digest-pinned disposable PostgreSQL 15",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Create the restricted synthetic completion-test database login",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Test compiler, real workflow, recall integrity and PostgreSQL transactions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Require executed integration evidence, including every PostgreSQL contract",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Stop disposable PostgreSQL",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Retain Java and PostgreSQL evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Post Run actions/setup-python@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Post Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Post Run actions/setup-java@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        }
+      ]
+    },
+    {
+      "id": 128191493592,
+      "name": "Optional completion performance measurements",
+      "status": "completed",
+      "conclusion": "skipped",
+      "run_id": 42304852305,
+      "logs_url": null,
+      "steps": null
+    }
+  ],
+  "knownLocalRepairs": "docs/dev/ci-graph-repairs/remote-6fe-ci-integration-repairs-2026-11-06.json",
+  "terminalCurriculumEvidence": "docs/dev/ci-graph-repairs/remote-6fe-curriculum-terminal-2026-11-06.json",
+  "limits": [
+    "Main has six successful jobs and two failed jobs; Docs also fails at its bounded checkout omission.",
+    "Apps and Docs repairs are locally validated changes after this head, requiring a fresh remote run.",
+    "The genuine seven protected subject floor violations remain; no completed M7/M6 restoration is claimed.",
+    "No production deployment, merge or host acceptance."
+  ]
+}
