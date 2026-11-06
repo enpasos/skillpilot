@@ -1,0 +1,15 @@
+# Informatik E9: tatsächliche Anwendung und ehrlicher historischer E25-Replay
+
+Genau die neun freigegebenen Ursprungsreferenzen am E-Terminal `49ba66cf-accd-5938-a63e-f031bc786767` sind jetzt angewandt. Die aktive Quelldatei hat SHA `00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422`; vorher war es `f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372`. Der [Anwendungsbeleg](informatics-ephase-terminal-normalization-application-2026-11-06.json) bindet den unveränderten genehmigten Vorschlag, alle21 Original-/Livepins, sämtliche WholeGoal-/Arrayguards und den tatsächlichen privaten Inodewechsel mit fsync/0644/os.replace. Die Änderung umfasst genau ein Requires-Array und neun gelöschte Zeilen. E08 (`ace0c141…`) bleibt direkt erhalten.
+
+Vor der Anwendung wurde nach jedem einzelnen Entzug die gesamte Vererbung neu aufgebaut und die vollständige globale Goal-Closure sowie getrennt die atomar normalisierte Closure berechnet. Nach der Anwendung wurde der echte Livekatalog erneut gegen Git `5c9ff83586c407fd9189207c38238400c74bce51` verglichen:6524 Goalnodes,5495 Atome,keine geänderte Goal-/Atomic-Nachfragequelle und keine Zyklen. Alle neun finalen Zeugen und ihre noch verfassten Ursprünge bleiben gemeinsam gültig. Goalidentitäten, andere Felder, Task, Lösung, normale Rubrik, feste25er-Coverage, Views, Applicability und20 fremde Quellen sind unverändert. Das ist keine automatische fachliche Freigabe weiterer redundanter Kanten.
+
+Der E25-Draft bleibt exakt eingefroren. Sein alter Konsistenzverifier ist an f95 gebunden und lehnt die neue Livequelle erwartungsgemäß mit Exit1 ab. Diese rote Bindungsprobe wird erhalten, nicht weggehasht. Der [separate aktuelle Kontextbeleg](informatics-e25-terminal-current-context-after-e9-2026-11-06.json) dokumentiert den Unterschied.
+
+Der kleine [lesende Reproducer](verify_informatics_ephase_terminal_application.py) führt den **unveränderten** alten E25-Verifier mit einer ausdrücklich benannten read-only-f95-Überlagerung aus dem exakten Git5c9-Objekt aus. Dieser historische Replay besteht mit Exit0. Unter derselben historischen Überlagerung läuft außerdem der unveränderte ursprüngliche Neunerschritt-Verifier erfolgreich. Separat berechnet das Skript die tatsächliche Live00bc-Closure und prüft die ganze Ein-Array-Anwendung. Das sind unterschiedliche Aussagen; der historische Replay behauptet keine neue aktuelle f95-Bindung.
+
+```bash
+python3 -B docs/dev/ci-graph-repairs/verify_informatics_ephase_terminal_application.py
+```
+
+Der Reproducer schrieb keine Livequelle. Alle32 ursprünglichen E25-Artefakte bleiben bytegleich. Der freigegebene vollständige25er-Inhaltsreview gilt weiterhin seinem unveränderten Draft; der GK24/25-Angebotshold, die eigentliche Inhaltsanwendung und bisherige Lernerergebnisse bleiben getrennt. Die echte aktuelle ganze CQR-Erzeugung übernimmt Root nach dem separat autorisierten Code-/Testsafepoint. Dieser Beleg erteilt keine neue P-/QA-/Release-/M6-Freigabe und wandelt Git5c9 nicht in einen aktuellen Live00bc-Identitätsbeweis um.

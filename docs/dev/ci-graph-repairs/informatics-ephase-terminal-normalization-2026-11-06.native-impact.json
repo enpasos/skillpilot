@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "status": "hypothetical-nine-edge-native-and-global-proof-no-application",
+  "dataApplied": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/informatics-ephase-terminal-normalization-proposal-2026-11-06.json",
+    "sha256": "a0ee0ba440680c60f72630be411305b57109499358a354b0c89d1c6fe8d33741"
+  },
+  "nativeRawOutputs": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-ephase-terminal-normalization-2026-11-06.native-before.json.gz",
+      "sha256": "38752945ea585c578bd1c517d9cd9657844d02dd778e2427f8eccd231655e975",
+      "uncompressedSha256": "5dbdd700309de485935991d65918c9cc6d8cdcf1d92e7f88ceb287385344258a",
+      "uncompressedBytes": 28387403
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-ephase-terminal-normalization-2026-11-06.native-after.json.gz",
+      "sha256": "179b8e0778222770a7466c8a0606e139ed58ecc9ad39944802a9c30aa65c6868",
+      "uncompressedSha256": "0f486c2d56d3662bf8acc1011f6fe74bbf9b9d82f64c6a45ca64b18067c88048",
+      "uncompressedBytes": 28370501
+    }
+  ],
+  "helperPins": [
+    {
+      "path": "app/scripts/lib/skillGraphIntegrity.ts",
+      "sha256": "0d031384b9b1d5a0741b27adefed48aa8c78166b0b688dcfc5c124083e1e4984"
+    },
+    {
+      "path": "app/scripts/auditTransitiveMinimality.ts",
+      "sha256": "dd6d1dad87f269f9aecac5387d1df700483496d9fc8987edd594239b759cd908"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "f1eac647b9f87302f102252aa5b005056ff2d00279f68a7d0541806d2c756357"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/utils/goalFilters.ts",
+      "sha256": "49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/inspect_informatics_ephase_normalization.ts",
+      "sha256": "017d0b2c83960801f1b4aceee4f2957658390517d1da97eb8c22b10e53d738ea"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/verify_informatics_ephase_terminal_normalization.py",
+      "sha256": "1b2f68ce4cf2b2e9864f6f187cdd95b0f983c7d5a23355f5d52cc808c7980554"
+    }
+  ],
+  "nativeRuns": [
+    {
+      "mode": "before",
+      "command": "app/node_modules/.bin/tsx docs/dev/ci-graph-repairs/inspect_informatics_ephase_normalization.ts",
+      "exitCode": 0
+    },
+    {
+      "mode": "after",
+      "command": "bwrap --die-with-parent --unshare-net --ro-bind / / --tmpfs /tmp --proc /proc --dev /dev --ro-bind /home/enpasos/projects/skillpilot/tmp/informatics-ephase9-candidate.json /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json app/node_modules/.bin/tsx docs/dev/ci-graph-repairs/inspect_informatics_ephase_normalization.ts",
+      "exitCode": 0,
+      "candidateSha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+      "isolation": "One read-only file substitution in a network-isolated namespace; actual source bytes never changed."
+    }
+  ],
+  "fullClosureReplay": {
+    "status": "PASS-read-only-nine-sequential-and-joint-normalizations-one-hold",
+    "dataApplied": false,
+    "qaOrContentApprovalByScript": false,
+    "goalNodes": 6524,
+    "atomicNodes": 5495,
+    "cycleComponents": [
+      0,
+      0
+    ],
+    "steps": [
+      {
+        "caseId": "INFO-E-NORM-01",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-02",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-03",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-04",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-05",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-06",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-07",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-09",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      },
+      {
+        "caseId": "INFO-E-NORM-10",
+        "globalGoalEqualsPreviousAndOriginal": true,
+        "globalAtomicEqualsPreviousAndOriginal": true,
+        "witnessValid": true
+      }
+    ],
+    "finalWitnessesAllValid": true,
+    "globalGoalChangedSources": 0,
+    "globalAtomicChangedSources": 0,
+    "wholeTerminalPayloadChangedOnlyInRequires": true,
+    "taskSolutionCoverageScopeMetadataUnchanged": true
+  },
+  "strictBefore": [
+    {
+      "id": "G01a",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G01b",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G02",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G05",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G06",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G07",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G15",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G42",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G16",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G17",
+      "findingCount": 47,
+      "status": "fail"
+    }
+  ],
+  "strictAfter": [
+    {
+      "id": "G01a",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G01b",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G02",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G05",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G06",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G07",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G15",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G42",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G16",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G17",
+      "findingCount": 38,
+      "status": "fail"
+    }
+  ],
+  "remainingETerminalFinding": [
+    {
+      "ruleId": "G17",
+      "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "goalId": "49ba66cf-accd-5938-a63e-f031bc786767",
+      "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "message": "Requirement 7d51b38c-a149-5407-bddc-d2ce7878b020:ace0c141-9e7c-546e-914f-64c24d42d85d remains reachable after removing its authored origin.",
+      "witness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:49ba66cf-accd-5938-a63e-f031bc786767",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ace0c141-9e7c-546e-914f-64c24d42d85d"
+      ]
+    }
+  ],
+  "scopes": {
+    "contextCount": 35,
+    "authoredViewCount": 19,
+    "exactRawAndCompiledRolesTargetsSupportTreesFindingsEqual": true,
+    "allContextPayloadSha256": "f872e9abb5dba92135fe9a10cdb5803f53e4e3d757104df1ce05df558d9ea1e3",
+    "changedContextCount": 0
+  },
+  "applicability": {
+    "globalCompiledValuesEqual": true,
+    "globalGoalCount": 6524,
+    "globalCompiledValuesSha256": "1eb8c6b928518ae0fd36ec6ca0b5b039e113aabd5c713a2c91655578f63561cd",
+    "globalFindingsExactlyEqual": true,
+    "globalFindingsSha256": "70448667536afdaecc4baa7ba7b0ef76abfdaa6ff6c5836390fe29594bb5a298",
+    "directEvidenceRowsRemoved": 18,
+    "directEvidenceRowsAdded": 0,
+    "goalsWithEvidenceChanges": 9,
+    "exactEvidenceDelta": [
+      {
+        "goalId": "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "757256e2-eb59-572f-a403-e1b1d53e37d4",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "1a03f790-a88f-57af-a618-80249960b63b",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      },
+      {
+        "goalId": "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
+        "removed": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 49ba66cf-accd-5938-a63e-f031bc786767"
+          }
+        ],
+        "added": []
+      }
+    ],
+    "interpretation": "Compiler no longer attributes these direct prerequisite edges to the E terminal. Compiled jurisdictions and all scope membership stay identical. These removed requires-closure entries are applicability support diagnostics, not official source coverage or content review records."
+  },
+  "actualMaterialReadinessBeforeAfter": {
+    "id": "CQR-202",
+    "status": "fail",
+    "summary": "1 terminal autonomy examData item(s) are placeholders or incomplete.",
+    "metrics": {
+      "terminalAutonomyGoals": 1,
+      "concreteExamData": 0,
+      "weakExamData": 1
+    },
+    "details": [
+      "Weak examData: E-Phase vernetzt anwenden [49ba66cf-accd-5938-a63e-f031bc786767] (placeholder examData)"
+    ]
+  },
+  "preservedBoundaries": {
+    "taskSolutionScoringCoveredGoalIds": true,
+    "allOrdinaryGoalPayloads": true,
+    "containsViewsPhaseTagsApplicabilityFields": true,
+    "sourceMappingsAndProvenanceFields": true,
+    "allStableIdentities": true,
+    "learnerMasteryStateNotReadOrWritten": true
+  },
+  "reviewAndQaImpact": {
+    "wholeSourceHashChanges": true,
+    "wholeTerminalDefinitionHashChanges": true,
+    "ordinaryGoalFingerprintsUnchanged": true,
+    "examDataBytesUnchanged": true,
+    "historicalReviewRehashed": false,
+    "e25CandidateSourceGuardWouldNeedExplicitSuccessor": true,
+    "reason": "The existing E25 candidate verifier pins f95 and the whole old terminal definition; a real nine-edge application would invalidate that source-context guard. The frozen complete content review remains an honest historical review of its fixed task bytes, not automatic approval of a new source snapshot. This proposal neither relabels it nor grants D/P/Practice or milestone status."
+  },
+  "peerHoldCountercheck": {
+    "agent": "ci_static",
+    "scope": "Local didactic check of the supplied full6c4/ace descriptions and shared parent only; not a second global replay",
+    "result": "Agrees to hold INFO-E-NORM-08. Given login/service logs suffice for6c4 without a prior full POP3/SMTP analysis; shared E25 material does not authorize a generic prerequisite."
+  },
+  "executionCaveats": [
+    "An initial scratch analysis redundantly recomputed the whole atomic adjacency inside a per-node comparison; it was explicitly interrupted before writing any proposal. The completed calculation precomputes each adjacency once; all nine complete closure comparisons passed.",
+    "No broad CQR producer, learner state, source write, new runtime feature or new quality baseline was used."
+  ]
+}
