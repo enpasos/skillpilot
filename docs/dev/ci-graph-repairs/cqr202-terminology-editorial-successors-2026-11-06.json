@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "editorial-successors-verified-full-terminology-check-pass",
+  "scope": "Two narrative terminology corrections and the single necessary incoming authorReceipt digest update. No source/QA/code/test/norm/floor/status/result changes.",
+  "reportedRemoteFailure": {
+    "source": "Parent/root provided terminal Docs-CI diagnosis; no independent remote rerun claimed",
+    "runId": 42272221202,
+    "jobId": 128079393249,
+    "ruleId": "TRM-005"
+  },
+  "originalGitCommit": "b2195c1fec19655f2fc3e8e87ae48b85b6d05728",
+  "incomingExactHashSearch": {
+    "method": "rg -l -F with both exact original SHA256 values over current authored docs, scripts, app/scripts, contracts, workflows, AGENTS and licensing; changed tracked consumers since the original Git commit also checked. Broad frozen QA-input scan intentionally not treated as an activation-consumer inventory.",
+    "onlyCurrentIncomingBinding": {
+      "path": "docs/dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-independent-review-2026-11-06.json",
+      "jsonPointer": "/authorReceipt/sha256",
+      "before": "b5afb6b31991796e54bc9a1aebd29d1dbaa968b4b46c49023a4c28f908d694af",
+      "after": "cbedd0bcd2768097efa13ad296c5cbed94194c70fe091d0c5208b285a1899a3f"
+    }
+  },
+  "files": [
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-repair-2026-11-06.json",
+      "beforeRawSha256": "b5afb6b31991796e54bc9a1aebd29d1dbaa968b4b46c49023a4c28f908d694af",
+      "afterRawSha256": "cbedd0bcd2768097efa13ad296c5cbed94194c70fe091d0c5208b285a1899a3f",
+      "originalBytesPreservedAt": "b2195c1fec19655f2fc3e8e87ae48b85b6d05728:docs/dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-repair-2026-11-06.json",
+      "narrativeJsonPointer": "/actualMaturityAndFloorChain/graph",
+      "beforeNarrativeUtf8Sha256": "261ee70ce3c4fa395730c142136bbed742b0fbf48936fbad06011c9fb9116142",
+      "afterNarrativeUtf8Sha256": "17fcd1574a8e3d7d58c66c65a5857f3494c210001ba090aa4e5f5c2e95260cac",
+      "afterNarrative": "strictGraphFixtureRule is produced by actual evaluateGraphIntegrity on a valid skill graph with two goals; complete required checkmanifest and ok===true verified. No earlier realInfoM0 is used as proof.",
+      "allChangedJsonPointers": [
+        "/actualMaturityAndFloorChain/graph"
+      ]
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-independent-review-2026-11-06.json",
+      "beforeRawSha256": "3b41072058db5a34736f3081ccde9392671626a7df2689b6abc49d2778c1789d",
+      "afterRawSha256": "94a4e741a80b2964ca78e5e508f084baa3dc11cf6cdd615db4019eb266396995",
+      "originalBytesPreservedAt": "b2195c1fec19655f2fc3e8e87ae48b85b6d05728:docs/dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-independent-review-2026-11-06.json",
+      "narrativeJsonPointer": "/findings/3/reason",
+      "beforeNarrativeUtf8Sha256": "00fdc5e5e6928aafc0eace3add1a599093aa22379dbf6ae41740be4bc1b32f25",
+      "afterNarrativeUtf8Sha256": "3528603135679bb3c49bb50a79aa313876013a06ab1a3a9ccc8bba25b9974f35",
+      "afterNarrative": "The fixture gets a real complete ten-check passing integrity report from evaluateGraphIntegrity over an actual valid skill graph with two goals. The actual CQR202 aggregation and unchanged scope/curriculum/floor functions then show concrete-positive M4/M7 versus generic-negative M2/M3 and both M6/M7 floor failures with CQR202 diagnostics. Other rules are explicit passing fixture conditions; no real Informatics M0 masks the readiness failure and no current subject maturity approval is claimed.",
+      "allChangedJsonPointers": [
+        "/authorReceipt/sha256",
+        "/findings/3/reason"
+      ]
+    }
+  ],
+  "preservedClaims": {
+    "allLeafValuesExceptThreeDeclaredChangesIdentical": true,
+    "codeAndFixturePinsUnchanged": true,
+    "allMeasuredCountersAndExitsUnchanged": true,
+    "statusesAndReviewVerdictsUnchanged": true,
+    "noNewReviewerExecutionOrAcceptanceClaim": true,
+    "originalIndependentReviewRemainsBoundToOriginalBytesInGit": true,
+    "sourceAndQualityArtifactsRehashed": false
+  },
+  "terminologyCheck": {
+    "command": "cd app && npm run check:terminology",
+    "exitCode": 0,
+    "scannedFiles": 178189,
+    "exactReviewedLegacyOccurrences": 57,
+    "newRetiredTermViolations": 0,
+    "newCheckerExceptions": 0,
+    "logPath": "tmp/cqr202-terminology-editorial-check.log",
+    "logRawSha256": "2c29b3795172b3e90ac16e8730521cb7383682f7316a87e5581bc029547485cb",
+    "logContents": "\n> skillpilot@0.0.0 check:terminology\n> tsx scripts/checkTerminology.ts\n\nTerminology check passed for 178189 files with 57 exact reviewed legacy occurrence(s).\n",
+    "checkerPath": "app/scripts/checkTerminology.ts",
+    "checkerRawSha256": "0bf3ba7eda1229744c014c9805926ae2e39994d0700999c27a100813dba9f43c",
+    "checkerWorkingTreeDiffEmpty": true
+  }
+}
