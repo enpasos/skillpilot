@@ -1,0 +1,1710 @@
+{
+  "schemaVersion": 1,
+  "status": "test-only-repair-passed-native-suites-and-independent-review-fresh-remote-ci-open",
+  "scope": "Test-only repair of the already existing Main HE Q2.4/Q2.5 regression; no curriculum, QA, service, mastery, alias, or source-policy change.",
+  "headBeforeRepair": "e8ad0caf5e8ad39a7cde8a787da88b91ddb48cf1",
+  "changedTest": {
+    "path": "app/scripts/testHessenMathQ24Q25Scope.ts",
+    "rawSha256": "45cd0fa4b38110214d4be1766c3b44dc6f8bf82d9282984d21b8ef516fe2e548"
+  },
+  "historicalMain": {
+    "commit": "0ce5a8d791eeb9783a919195fd8590bfb79f3595",
+    "mathSource": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "rawSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    "reproducedWithExactMainTsImportClosure": true,
+    "pinnedImportClosureFileCount": 10,
+    "pinnedImportClosureBytes": 203942,
+    "additionalExactMainFiles": [
+      "app/package.json",
+      "app/scripts/validateGraph.ts",
+      "app/scripts/generateCurriculumQualityStatus.ts"
+    ],
+    "inputCount": 122,
+    "inputsStillByteEqualMain": true,
+    "inputs": [
+      {
+        "path": "contracts/curriculum-package/v1/profiles/canonical-definition-record-v1.profile.json",
+        "rawSha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+        "rawSha256": "a243f9022d5f53fe6444dd6487d30dcdc174d01c5e6bae15b06cf0de4284a1cc"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json",
+        "rawSha256": "4857fd95cc36920203e9543eaaa200e54230a7acef39ac6978ef22c2437abf1b"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+        "rawSha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json",
+        "rawSha256": "c60d23d57d319153f10d5567a2fb826fbe8d55e7b1e858e613fa1f57165ff721"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json",
+        "rawSha256": "8f7eb2a77e85be8a38017eca49facb7a689ec37b543ce43ad374cdef9de81b20"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/fwu-owl-v1.profile.json",
+        "rawSha256": "49dfe4d1090c8f1bf3db53e4131bd068ef92b2e815f78d3d4970a796d5672b75"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+        "rawSha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+        "rawSha256": "d19497f0b18b0c7733dcaf6f5dc63590352814c2d764c858b333751b5af25e9d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/coordinate-axis-rotation-lk-v1/task.de.md",
+        "rawSha256": "e58168ad036ee1b0c4c87c666bc663ba254129bd3bfd3f9028515e63d0d158a4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/assessments/mathematik/sekii/q2/coordinate-axis-rotation-lk-v1/task.en.md",
+        "rawSha256": "f80806b829bcbbefcf77671ea77496a554112751be6f2557971e83bbbd2733dc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+        "rawSha256": "ca40124093b769cb494a971ac0384d281e9f31bb258c9a5b5882c9cee29b51fa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+        "rawSha256": "87f2d4fc89050f8cdff2c7bb34befa7c8f3a09089649ccdde43e1c25bc039298"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+        "rawSha256": "0f420a487ae4911801c86ab34465e9bc2c1f9e40115ee810734af818f4cf5940"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+        "rawSha256": "19ab12cc93887735b059e69d74124e5b5ad3b91cfc249aa63160c9addcc0e575"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+        "rawSha256": "f3a44e01ab011df39e51bcf31bda096380f7f45609953a011972ee1a73cddd2c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+        "rawSha256": "a9a684bb65ba1b6bff2d4d13fa3ba599c53db60a7df4054ebf06eee90bf47482"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+        "rawSha256": "975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+        "rawSha256": "b5657d07db1d8f7bfec34869790f9b7f3fb916e98ef613b17a9ca2c795f83afd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+        "rawSha256": "b6fe01c25fc8ca62852c75d3883b514f62fa682f74965e69a137ce7e753517b1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+        "rawSha256": "5740c9d28a8b26f831a7d5bd35d8a7d0e6e2270b1046db4e4c83f9b70ac22a9b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+        "rawSha256": "b02fad31081e1b1c52a17e5ec45252022b2b551b80f3c60626b6fe93a744dc6a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+        "rawSha256": "8fc2adf9f0d856f9032795d46d834375b6d0ed087e2027da38086f801ae99a63"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+        "rawSha256": "561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+        "rawSha256": "3524f11295b343f829a6c77fcc0b468c730747710f08de15e38aaf23a832469e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+        "rawSha256": "d1cfa2a71c844d95fc9ec5795ead574b77e3d68ae4bf927e0b70ec1ed07708e8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+        "rawSha256": "0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+        "rawSha256": "29b3e85a02f572d24121f8be21cd48ab7560b7b228fe2b909b59e140afe26b03"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+        "rawSha256": "89f13bef448c5c57d2c1609ed66532845f33995cddfb71a17137a3e81f9bc8af"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-lk.view.json",
+        "rawSha256": "1ccbfa6edf07c88d2c3b91dbb8991572056b1e056cc3c4d6681ad3197b90757a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-seki.view.json",
+        "rawSha256": "9c7418ea63a4b8e684c6af12653178f7870ed19eb7441895322c57659525f30f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-gk.view.json",
+        "rawSha256": "f7d0967233c90968fb115705232d2a70ef72ad22e0f62ae52dc0f6f8a228baac"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-sekii-lk.view.json",
+        "rawSha256": "f2d1e6d3a7282f47ccfe407facd1fd4e49dd977e1faa900061c2081995e29b2a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+        "rawSha256": "51436e4602500fc237228b353f53952c2f3cccf09bd186dd9a4b304775c2c379"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+        "rawSha256": "31da8ec4f44f6086aaa5a6d8c943d2090e23bdbc7dbdfade46e12d33ec75d3d7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+        "rawSha256": "f15d857b0e399aefb71eaa9f3fed7300bcf7d80a352c8bc49e30ff04d787165f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+        "rawSha256": "53d7ec3cf1df2181b423b96cd4ec8ed09ae71ca8692f45e1761077edc720b436"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+        "rawSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+        "rawSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+        "rawSha256": "378e1d63c3d82165ce45c9233b0a532426f0556d20a49f2bd8c60ac4dc25400e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+        "rawSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+        "rawSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+        "rawSha256": "1793bf991061f2f7c3cce9758fbafd89b2ba61788f5669416afc0898259b6ca5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+        "rawSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+        "rawSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+        "rawSha256": "3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+        "rawSha256": "c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+        "rawSha256": "4634610e4b9b3a21884bcf9cc3a8395f6385e8382f7c973f8ba32a867f0498ae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+        "rawSha256": "811461128d5c1d55029174d3cb2b267c3e476355ebe49a8e9c914139abe9c398"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+        "rawSha256": "a71c10b4f8e82f30b83a097c9f1857b8a8bb52149374b23ab25c89a51df3206a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+        "rawSha256": "5a201376f57be9bab522e9cc3f2b63a2fa5f1e5d37f7bf7ac5832d133e6df362"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+        "rawSha256": "55c3d17704a0d767e36a999cb7b08ed5a5cdef8f900c6a170045b425d9982163"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+        "rawSha256": "ae30563c0918541887ae98e1b7aed97f9e5f886620ec1f4f97dbb4c971a15cb8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+        "rawSha256": "2a7d49026aa636b8b3c0ea62b8fff3cb6651ca891959e8ad8e6de638c5cf7c59"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+        "rawSha256": "7e0b559342453dc5bacd6b32f896154349a00e42b017f1438b33977dec746627"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+        "rawSha256": "d7ee5587244799265c5a2aa0f98cf1c330328462d5b556cb50d5576a9b14c82b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+        "rawSha256": "3ad7a25c2b8e277f1b6a80eba7cb726b3954a3e061b02fcba142e5aea33e9834"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+        "rawSha256": "b19567c57d9df6a485921da5c433d52ff7094b981e079a25954bf94161c17dbc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+        "rawSha256": "899ffe5e9581b63c606560619b6bc26d98680438075f39356449e095fe6792e3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+        "rawSha256": "919de6972f08e15d2407c58e205d200a5fbe4abe22b0f123255953cc28738b06"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+        "rawSha256": "478e95fdc1b35755c0e6bc9796af84739167e74c3191621bf6dab2aec6ef2dee"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+        "rawSha256": "264fcbe3931030496eab2f37d2341891fbef0368d64b2167f262e1f2415c3642"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+        "rawSha256": "eca30104f1d57165ca75c18a44a1ff4c4e074c224b21acb071dd8ae2c49f98ea"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+        "rawSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+        "rawSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+        "rawSha256": "4a4f3caa7b0b52d3195092c83f67fe420d92745bab83cb2dbd9fcbfc43209a3a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+        "rawSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+        "rawSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+        "rawSha256": "16e53d24276b5ae97e99e76c862a963261a104a0c6f1362192fc3a791dc8fb1f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+        "rawSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+        "rawSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+        "rawSha256": "e6f7f7f9fd7169e0fbc82d2761ae4a1b2bf5179d010ccefb7053d3f9e782dd46"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+        "rawSha256": "6bcf8ffe06dab7f3c538cde1e335067f3c8ac4984826191cef95cde59f140242"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+        "rawSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+        "rawSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+        "rawSha256": "de03556c27836cc4452796ae65187b1dd6f7777b46b74dfdb60f78f224f51645"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+        "rawSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+        "rawSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+        "rawSha256": "c292708beb59a94b440f8e8b74cbe9b08b4562b3815301403697751b82663464"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+        "rawSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+        "rawSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+        "rawSha256": "ce10e69d60d0f4ebd5a8bd22d24a8d4498091ba76e165624f991d87e3a8d950b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+        "rawSha256": "549eb1a5363b7014d67d27dff6fd08ca2e0a1e94b9badc1318eb61d5d0c5b452"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+        "rawSha256": "a46ddfe408eb5cc368cb0b3b50249f69515c16be4e792d522dfdea5b9f72ca1c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+        "rawSha256": "52465935344c5024de64b566f19c108e234523f57edd0425ad149f31d3046c21"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+        "rawSha256": "27de96d373250803f4a148bf876a1cac8b6a5e877ec7112fe838812754165631"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+        "rawSha256": "4adbb8790ae4d6ff694f5da2dd15ac40b0adf96871c40046263b4ec9bf49c119"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+        "rawSha256": "5caddb9f0defa0f50f2cdfb3c7ddf210b42c3c3a26eca9409fa9eff8fc241476"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+        "rawSha256": "489ad2f871419f517298fe69a57fecef09a3ba524940c3febcc7d56c4b9b3bb7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+        "rawSha256": "9ea510e0d73cceb33c9b1fd2718ead433e9699e46d12ab244b224cec65140d6e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+        "rawSha256": "57a613473b5ea90b75eb107ca42cb49fb3349dbaa1c6c998890ef3be1876f35f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+        "rawSha256": "553134728863f1d3c1611fffa2926a12b73c6a4e1fc9080ec0c703dbd337784b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+        "rawSha256": "5085941530481dbbe5a2ca563ce79c440efdf6ee244a5682e58f0731a188180d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+        "rawSha256": "e52a645dba2c18ebb433e9ff1721d857c40b5d429d4a5ccece1ef29483261562"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+        "rawSha256": "cf21a24e8eac5a93b9fdcc65bb04cb871c2faec76176854277acb1ff4f162483"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+        "rawSha256": "4d27647e5677fc8229ab575b47d2a7299185fa123a5fd712bac1c1dbe3f6b8a2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+        "rawSha256": "e536b81a99594bcc4790af3c9f78165bbeedd9c5161a64b18837b2da9ba7eed7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+        "rawSha256": "708ecd95f4fef966ddbe61fca9be7d37d0b5de932d41f32b5ffa06acd906fac0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+        "rawSha256": "ead0e3dbc7d6fc6aab8a974b79ceff5947618a231e15e44e81387dc5430ffd7d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/Q25-ALTERNATIVE.md",
+        "rawSha256": "c9ad19dbc656cd37a0f1321b806e9887dbb26beb97b9fb83333901541e2f22d0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/README.md",
+        "rawSha256": "50f6929af1d8541bd34a97b0133763d07c3726cf8ada62993ac261b167196e01"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/author-self-check.json",
+        "rawSha256": "b2c973616ec54091acf8ea7af397cd151607cbbf555526ecb71168a189eb349f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/before-scope-canonical.json",
+        "rawSha256": "9c3fcfd9b8d0f1572e99b1f14871475d9e38288bf699ec34b6010bd599ec43be"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/before-scope-semantic-kinds.json",
+        "rawSha256": "2148718e365a9ba359eeb7f95afcbd4d12cbc195c9cfad6979332d56d7728896"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/candidate.json",
+        "rawSha256": "c7836d2f7a41e278630510c54edcbde586e162f02d9fef6ab1ff168d6eb77ba8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/check-candidate.mjs",
+        "rawSha256": "f8454cadea2ca18560aaaa105f416914a79ec7355980ea3868bbc5f6d56fce45"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/check-q25-alternative.mjs",
+        "rawSha256": "52c2077fa04605a03a584a5658b56d3df99649602c1ae196ec8e53a07d064401"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/de-he-gk-g8.view.json.before.json",
+        "rawSha256": "6a7f75a92471dfb2ba8e6000b5cf9a297f36853b76b59ef59e69f321cdcbc53d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/de-he-gk-g9.view.json.before.json",
+        "rawSha256": "dcbd5e95214e2232274f9c041b57bc205ac81ff80f31d1fc3d6a37539eb78bf6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/de-he-gk.view.json.before.json",
+        "rawSha256": "93ddeef647ff584dd61d67aee61d453c72b9edee22aa28efb4ebdebc60ca08be"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/de-he-sekii-gk.view.json.before.json",
+        "rawSha256": "b125a7c372d5a690c3f4bd33ffc445e898dfaa1199c5f5174a38f18daf9a865c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/existing-other-view-route-impact.json",
+        "rawSha256": "0fec5559dcf211faeabb3c4c71f9734908cc9262f8a40de673b3086359205227"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/independent-root-substantive-review.md",
+        "rawSha256": "79094627a8ad0fc4ef4b3db57bc7cbd72bf57807b0cb5348b7568bae082a6b6e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/integration-plan.json",
+        "rawSha256": "857b02e792eae080aa2ed84355226da651a30ea66f4fd3e4b399824837661597"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/integration-plan.q25-alternative.json",
+        "rawSha256": "6ef192ec86e6ab3988bc9af1a774867238384eb4d49ed59211cc53a87b80c0d5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/integration.receipt.json",
+        "rawSha256": "a55b104b379a9996fa839d045e691f9d7b66102b188d671f3cf65a22b931d109"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/q25-alternative-self-check.json",
+        "rawSha256": "579c5c6ab69dd86b6f767c2c33e402c49269ea2cf8836a13f81271a6deaefd80"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/task.de.md",
+        "rawSha256": "ec7c1d22a991ee73d4da7d09113b9206226c4e68dc76e4a1de3a3215b0fef28c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-22/m7-coordinate-rotation-lk-endpoint-v1/task.en.md",
+        "rawSha256": "19def2f5975761251d7525a9b350822f121c77662d690b18172745a830148859"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+        "rawSha256": "70e3b2092ee839b7aac6c9fb32fcf2c2ffc7b74135361c05306c8bc03511601a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "rawSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "rawSha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019"
+      }
+    ],
+    "originalFailure": "de-he-gk-g8.view.json: unrelated old content removed; actual20 versus expected13. Main itself fails before this test repair.",
+    "exitCode": 1,
+    "log": {
+      "path": "tmp/ci-contract-he-gk-main-baseline-red.log",
+      "rawSha256": "dea83365c5941e617afab2a53b8f31a3ce5ec3a001d3d12f78a2f1e66f1c0a14"
+    }
+  },
+  "stableSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "rawSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "rawSha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    }
+  ],
+  "authoritativeChangesAlreadyOnMain": [
+    {
+      "commit": "7534d5e844ce1c0e6149c2cdc98cb881e36ad30c",
+      "meaning": "September28 aggregate splits and view placement updates postdate the test baseline."
+    },
+    {
+      "commit": "116720104913252fcf2a0a7d39c0f8b3b5149055",
+      "meaning": "September29 source/stage decisions and removal of duplicate J9 placements; explicitly narrowed regional targets."
+    },
+    {
+      "commit": "34d3600e55b099e00547da556021ab463ae670a3",
+      "meaning": "September30 exact additional HE-GK support roles and Q2 focused assessments."
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-sphere-split-source-audit-20260928-v1/README.md",
+      "rawSha256": "f88a2ff63d99a7baed748f252390dcf8bc90641588b6ab057cd7163736c2be0f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-pythagoras-structure-20260928-v1/README.md",
+      "rawSha256": "dc34d5403e154803b7112e878bb2935b8f992f9550ec69f8c019839129b91b78"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-integral-mean-split-20260928-v1/README.md",
+      "rawSha256": "6412d9a98634f368e46a89469bf233723350d1918fecd7ed3ec0cbb60e7773d3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/README.md",
+      "rawSha256": "ee06c0a60c81b3008ac0c09875fe937319d3a3582a9ee7445f2ae27a92ce3e20"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-derivative-split-20260928-v1/README.md",
+      "rawSha256": "0fb950bac0a42aae7f026355cbd75fb3dd97589c81f1189c4eb402e309717397"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-midpoint-identity-audit-20260928-v1/canonical-identity.json",
+      "rawSha256": "1c8027eee6331fb7938f3a95595d4b09fec4d9a6fb725fb9f7563837d1baf74f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/mathematik-j10-analysis-source-stage-decisions-20260929.md",
+      "rawSha256": "cd2a7bd122f4e3560eb7a90238461e99aabe94124223d9150e6130d8b975e8fa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/j10-vector-mean/decision.md",
+      "rawSha256": "1fc2175cc87b65fa1a90210f8cf90b9fc8dcc0ff2b717f14db8ff9ba53456a06"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/spatproduct-bf17-current-scope-audit/README.md",
+      "rawSha256": "813bdf7c9315a16f7f3b9973ec47ee8149ea3b36abb931c4df39dac130d7fefd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/spatproduct-bf17-current-scope-audit/runtime-targets.receipt.json",
+      "rawSha256": "579149a74305f2dbd0847edc2e48792d6d37c8403d34a69a19310dfeb91abede"
+    }
+  ],
+  "officialHeSource": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf",
+    "rawSha256": "d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953",
+    "pagesRead": [
+      41,
+      42,
+      43
+    ],
+    "interpretation": "Q2.2 points/spatial drawings/vectors/collinearity and Q2.3 lines AND finite segments are GK+LK. Vector product on p43 is under LK. Regional SL-GK scalar-triple-product targets are separately retained; no global LK tag is invented."
+  },
+  "aggregateChanges": [
+    {
+      "oldGoal": {
+        "id": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+        "title": "Oberflächeninhalte und Volumina von Kugeln deuten und anwenden",
+        "titleEn": "Interpret and apply sphere area and volume formulas",
+        "description": "Die lernende Person kann die Struktur der Formeln für Oberflächeninhalt und Volumen von Kugeln plausibilisieren, ihre Größen geometrisch deuten und sie in einfachen Anwendungen sicher verwenden.",
+        "descriptionEn": "The learner can justify the structure of sphere surface-area and volume formulas, interpret them geometrically, and use them reliably in simple applications.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+        "title": "Oberflächeninhalte und Volumina von Kugeln deuten und anwenden",
+        "titleEn": "Interpret and apply sphere area and volume formulas",
+        "description": "Kanonischer Themencluster mit getrennten Lernzielen zur Oberfläche und zum Volumen von Kugeln.",
+        "descriptionEn": "Canonical topic cluster with separate learning goals for the surface area and volume of spheres.",
+        "type": "cluster",
+        "contains": [
+          "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+          "baea3966-5d10-53bf-8193-3fcda7b1e73f",
+          "bb227e31-0b0b-544a-b5e0-548256a70dec"
+        ]
+      },
+      "requiredHeStage": "CrossStage",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "7b01d3d8-1fff-5924-b133-5a4825dc742e",
+          "title": "Oberfläche von Kugeln deuten und bestimmen",
+          "titleEn": "Interpret and determine the surface area of spheres",
+          "description": "Die lernende Person kann die Struktur der Kugeloberflächenformel $O=4\\pi r^2$ geometrisch plausibilisieren, die Formel für einfache Hüll- und Beschichtungsfragen mit Radius oder Durchmesser anwenden und Flächeneinheit sowie quadratische Skalierung begründen.",
+          "descriptionEn": "The learner can give a geometric plausibility argument for the sphere surface-area formula $O=4\\pi r^2$, apply it to simple covering and coating questions from a radius or diameter, and explain the area unit and quadratic scaling.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "bb227e31-0b0b-544a-b5e0-548256a70dec",
+          "title": "Volumen von Kugeln deuten und bestimmen",
+          "titleEn": "Interpret and determine the volume of spheres",
+          "description": "Die lernende Person kann die Struktur der Kugelvolumenformel $V=\\frac43\\pi r^3$ geometrisch plausibilisieren, die Formel für einfache Füll- und Rauminhaltsfragen mit Radius oder Durchmesser anwenden und Volumeneinheit sowie kubische Skalierung begründen.",
+          "descriptionEn": "The learner can give a geometric plausibility argument for the sphere-volume formula $V=\\frac43\\pi r^3$, apply it to simple capacity and spatial-volume questions from a radius or diameter, and explain the volume unit and cubic scaling.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    },
+    {
+      "oldGoal": {
+        "id": "80956a2c-5811-4021-863e-95675bec31f5",
+        "title": "Satz des Pythagoras in Konstruktionen und geometrischen Begründungen nutzen",
+        "titleEn": "Use the Pythagorean theorem in constructions and geometric justifications",
+        "description": "Die lernende Person kann den Satz des Pythagoras beim Konstruieren geometrischer Figuren nutzen, Strecken in rechtwinkligen Dreiecken berechnen und Eigenschaften von Figuren nachvollziehbar begründen.",
+        "descriptionEn": "The learner can use the Pythagorean theorem when constructing geometric figures, calculate lengths in right triangles, and justify properties of figures in a comprehensible way.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "80956a2c-5811-4021-863e-95675bec31f5",
+        "title": "Satz des Pythagoras: Beweise und Anwendungen",
+        "titleEn": "Pythagorean theorem: proofs and applications",
+        "description": "Dieser Cluster bündelt getrennt prüfbare Kompetenzen zur Satzgruppe: Streckenberechnung, Wurzelstreckenkonstruktion, geometrischer Beweis des Satzes, Beweis des Kehrsatzes und dessen Anwendung als Rechtwinkligkeitskriterium. Die regionale Geltung wird für jedes Kind anhand seiner Quellen gesondert festgelegt.",
+        "descriptionEn": "This cluster groups separately assessable competencies: length calculation, square-root segment construction, geometric proof of the theorem, proof of the converse, and its use as a right-angle criterion. Regional scope is defined separately for each child from its sources.",
+        "type": "cluster",
+        "contains": [
+          "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+          "3a69dab2-3fe8-5076-a980-5b7ac1bd1127",
+          "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "081c9802-6da7-5ae8-b78e-f99c2b2dbb14"
+        ]
+      },
+      "requiredHeStage": "CrossStage",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "4d78bbcc-89b8-47f0-aa45-516199e4da5d",
+          "title": "Satz des Pythagoras anwenden",
+          "titleEn": "Apply the Pythagorean theorem",
+          "description": "Die lernende Person kann den Satz des Pythagoras in rechtwinkligen Dreiecken anwenden, Strecken berechnen und Ergebnisse geometrisch begründen.",
+          "descriptionEn": "The learner can apply the Pythagorean theorem in right triangles, calculate lengths, and justify results geometrically.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "487ec508-f421-5a5a-a84c-98f88a8fb3e5",
+          "title": "Den Satz des Pythagoras geometrisch beweisen",
+          "titleEn": "Prove the Pythagorean theorem geometrically",
+          "description": "Die lernende Person kann den Satz des Pythagoras für ein beliebiges rechtwinkliges Dreieck an einer geeigneten Zerlegungs- oder Ergänzungsfigur geometrisch beweisen und dabei die verwendeten Flächenbeziehungen und die Allgemeingültigkeit der Schlussfolgerung nachvollziehbar begründen.",
+          "descriptionEn": "The learner can prove the Pythagorean theorem for an arbitrary right triangle using a suitable dissection or completion diagram and justify the area relations and the generality of the conclusion.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "6a3502ee-b616-5db7-88fc-8951f33c9f63",
+          "title": "Den Kehrsatz des Pythagoras beweisen",
+          "titleEn": "Prove the converse of the Pythagorean theorem",
+          "description": "Die lernende Person kann für ein Dreieck mit Seiten $a,b,c$ aus $a^2+b^2=c^2$ den Kehrsatz des Pythagoras beweisen: Sie konstruiert ein rechtwinkliges Hilfsdreieck mit Katheten $a,b$, zeigt mit dem Satz des Pythagoras die Gleichheit der dritten Seiten und schließt mittels Kongruenz auf den rechten Winkel gegenüber $c$ im ursprünglichen Dreieck.",
+          "descriptionEn": "For a triangle with sides $a,b,c$, the learner can prove the converse of the Pythagorean theorem from $a^2+b^2=c^2$: they construct a right auxiliary triangle with legs $a,b$, use the Pythagorean theorem to establish equality of the third sides, and infer by congruence that the angle opposite $c$ in the original triangle is right.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "081c9802-6da7-5ae8-b78e-f99c2b2dbb14",
+          "title": "Rechtwinkligkeit mit dem Kehrsatz des Pythagoras prüfen",
+          "titleEn": "Test right angles using the converse of the Pythagorean theorem",
+          "description": "Die lernende Person kann bei einem Dreieck mit gegebenen Seitenlängen die längste Seite bestimmen und anhand der Quadratsummenbeziehung entscheiden, ob das Dreieck rechtwinklig ist, sowie gegebenenfalls die Lage des rechten Winkels angeben und ihre Entscheidung mit Satz und Kehrsatz begründen.",
+          "descriptionEn": "The learner can identify the longest side of a triangle with given side lengths, decide from the sum-of-squares relation whether it is right-angled, and locate the right angle where present, justifying the decision using the theorem and its converse.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    },
+    {
+      "oldGoal": {
+        "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+        "title": "Bestände und Mittelwerte modellieren",
+        "titleEn": "Model quantities and means",
+        "description": "Die lernende Person kann in Sachsituationen Bestände, rekonstruierte Bestände, mittlere Bestände und mittlere Änderungsraten mit bestimmten Integralen modellieren, berechnen und die Ergebnisse interpretieren.",
+        "descriptionEn": "The learner can model, calculate, and interpret stocks, reconstructed stocks, average stocks, and average rates of change with definite integrals in real-world situations.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+        "title": "Bestände und Mittelwerte (Bestands-ID)",
+        "titleEn": "Stocks and means (legacy ID)",
+        "description": "Ausgeschlossener Kompatibilitätsknoten des früheren Sammelziels. Gesamtwirkungen, Bestandsrekonstruktion und Funktionsmittelwerte werden in getrennten kanonischen Zielen gelernt; historische Mastery wird nicht auf neue Ziele übertragen.",
+        "descriptionEn": "Excluded compatibility node for the former aggregate goal. Total effects, stock reconstruction and function means are learned through separate canonical goals; historical mastery is not transferred to new goals.",
+        "type": "cluster",
+        "contains": [
+          "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "ece68088-71a8-466b-874c-09e6baac19fc",
+          "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+        ]
+      },
+      "requiredHeStage": "CrossStage+SekII",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "23c8b5f9-ab35-4071-a3d4-b76a669a0995",
+          "title": "Gesamtbestände und Gesamteffekte aus Änderungsraten oder Randfunktionen ermitteln",
+          "titleEn": "Determine total stocks and total effects from rates or boundary functions",
+          "description": "Die lernende Person kann in Sachsituationen Gesamteffekte aus Änderungsraten oder Randfunktionen mit bestimmten Integralen bestimmen, bei der Rekonstruktion eines absoluten Gesamtbestands einen gegebenen Anfangsbestand berücksichtigen und die Bedeutung der Ergebnisse fachlich erläutern.",
+          "descriptionEn": "The learner can determine total effects in real-world situations from rates of change or boundary functions using definite integrals, include a given initial quantity when reconstructing an absolute total quantity, and explain the meaning of the results mathematically.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "ece68088-71a8-466b-874c-09e6baac19fc",
+          "title": "Bestände aus Änderungsraten und Anfangsbestand rekonstruieren und deuten",
+          "titleEn": "Reconstruct and interpret quantities from rates of change and an initial value",
+          "description": "Die lernende Person kann Bestände aus Änderungsraten und einem Anfangsbestand berechnen sowie die Rekonstruktion in inner- und außermathematischen Kontexten deuten.",
+          "descriptionEn": "The learner can calculate quantities from rates of change and an initial value and interpret the reconstruction in mathematical and real-world contexts.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "c1c80b80-733f-599d-a2fc-f4dc50eabde2",
+          "title": "Mittelwerte von Funktionen mit Integralen bestimmen und deuten",
+          "titleEn": "Determine and interpret mean values of functions using integrals",
+          "description": "Die lernende Person kann den Mittelwert einer gegebenen Funktion auf einem Intervall als Integralwert geteilt durch die Intervalllänge bestimmen, seine Bedeutung als konstanter Funktionswert mit demselben Integralwert begründen und ihn mit passender Einheit im Kontext deuten, auch bei Bestands- und Änderungsratenfunktionen.",
+          "descriptionEn": "The learner can determine the mean value of a given function on an interval by dividing its definite integral by the interval length, justify its meaning as a constant function value with the same integral, and interpret it with the appropriate unit in context, including stock and rate-of-change functions.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    },
+    {
+      "oldGoal": {
+        "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "title": "Vektoren im Raum addieren und vervielfachen",
+        "titleEn": "Add and scale vectors in space",
+        "description": "Die lernende Person kann Vektoren im Raum komponentenweise addieren und mit Skalaren vervielfachen sowie die Rechenoperationen als Verkettung und Streckung von Verschiebungen geometrisch deuten.",
+        "descriptionEn": "The learner can add vectors in space component-wise, multiply them by scalars, and interpret the operations geometrically as chained and scaled displacements.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+        "title": "Vektoroperationen im Raum (Bestands-ID)",
+        "titleEn": "Vector operations in space (legacy ID)",
+        "description": "Kompatibilitätsknoten der früheren Q2-Sammel-ID. Addition/Subtraktion und Skalarmultiplikation werden mit den gemeinsamen kanonischen Kindzielen gelernt und geprüft; alte Mastery-Werte werden nicht auf die Kinder übertragen.",
+        "descriptionEn": "Compatibility node for the former Q2 aggregate ID. Addition/subtraction and scalar multiplication are learned and assessed through shared canonical child goals; previous mastery values are not transferred to the children.",
+        "type": "cluster",
+        "contains": [
+          "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+        ]
+      },
+      "requiredHeStage": "CrossStage+SekII",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "title": "Vektoren komponentenweise addieren und subtrahieren",
+          "titleEn": "Add and subtract vectors component-wise",
+          "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise addieren und subtrahieren und geometrisch erklären, dass Addition Verschiebungen verknüpft und Subtraktion die Addition des Gegenvektors ist.",
+          "descriptionEn": "The learner can add and subtract vectors in the plane and in space component-wise and explain geometrically that addition combines displacements and subtraction adds the opposite vector.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "571793bd-34f1-539e-969c-dfcc2dfa96b3",
+          "title": "Vektoren mit Skalaren multiplizieren und geometrisch deuten",
+          "titleEn": "Multiply vectors by scalars and interpret geometrically",
+          "description": "Die lernende Person kann Vektoren in Ebene und Raum komponentenweise mit Skalaren multiplizieren und geometrisch erklären, dass der Betrag mit dem Betrag des Faktors skaliert, ein negativer Faktor die Richtung eines von null verschiedenen Vektors umkehrt und der Faktor null den Nullvektor ergibt.",
+          "descriptionEn": "The learner can multiply vectors in the plane and in space component-wise by scalars and explain geometrically that magnitude scales by the absolute value of the factor, a negative factor reverses the direction of a nonzero vector, and a zero factor yields the zero vector.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    },
+    {
+      "oldGoal": {
+        "id": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+        "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+        "titleEn": "Investigate monotonicity, extrema, and function-derivative relationships",
+        "description": "Die lernende Person kann den Zusammenhang zwischen Funktion und Ableitungsfunktion in einfachen Fällen graphisch erklären und Funktionen mit der ersten Ableitung auf Monotonie sowie lokale und globale Extremstellen untersuchen.",
+        "descriptionEn": "The learner can explain the relationship between a function and its derivative graphically in simple cases and use the first derivative to investigate monotonicity as well as local and global extrema.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+        "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+        "titleEn": "Investigate monotonicity, extrema, and function-derivative relationships",
+        "description": "Dieser Bereich verbindet zwei getrennt nachweisbare Kompetenzen: den qualitativen Zusammenhang von Funktions- und Ableitungsgraphen und die Untersuchung von Monotonie sowie lokalen und globalen Extremwerten mit der ersten Ableitung.",
+        "descriptionEn": "This area links two separately assessable skills: relating function and derivative graphs qualitatively, and investigating monotonicity and local and global extrema using the first derivative.",
+        "type": "cluster",
+        "contains": [
+          "5518ceb3-f668-5b52-a9b1-57653b16ca98",
+          "2850e8f6-2330-50d3-a577-d519540d9924"
+        ]
+      },
+      "requiredHeStage": "CrossStage+SekII",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "2850e8f6-2330-50d3-a577-d519540d9924",
+          "title": "Monotonie und Extrema mit der ersten Ableitung untersuchen",
+          "titleEn": "Investigate monotonicity and extrema using the first derivative",
+          "description": "Die lernende Person kann bei einer einfachen differenzierbaren Funktion auf einem angegebenen Bereich mit dem Vorzeichen der ersten Ableitung Monotonieintervalle und lokale Extremstellen begründen und durch Vergleich relevanter Funktionswerte entscheiden, ob und wo globale Extremwerte vorliegen.",
+          "descriptionEn": "The learner can use the sign of the first derivative to justify intervals of monotonicity and local extrema of a simple differentiable function on a specified domain, and compare the relevant function values to decide whether and where global extrema occur.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    },
+    {
+      "oldGoal": {
+        "id": "a8ff2666-8df3-4253-8021-3efe42114e40",
+        "title": "Abstände, Beträge und Mittelpunkte im Raum berechnen",
+        "titleEn": "Calculate distances, magnitudes, and midpoints in space",
+        "description": "Die lernende Person kann den Betrag eines Vektors, den Abstand zweier Punkte und den Mittelpunkt einer Strecke im Raum koordinatenbasiert berechnen und geometrisch deuten.",
+        "descriptionEn": "The learner can calculate the magnitude of a vector, the distance between two points, and the midpoint of a segment in space using coordinates and interpret the results geometrically.",
+        "type": "atomic",
+        "contains": []
+      },
+      "currentStructuralGoal": {
+        "id": "a8ff2666-8df3-4253-8021-3efe42114e40",
+        "title": "Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID)",
+        "titleEn": "Spatial distances, magnitudes and midpoints (legacy ID)",
+        "description": "Ausgeschlossener Kompatibilitätsknoten: Vektorbetrag, Punktabstand und räumlicher Streckenmittelpunkt werden getrennt beurteilt.",
+        "descriptionEn": "Excluded compatibility node: vector magnitude, point distance and spatial segment midpoint are assessed separately.",
+        "type": "cluster",
+        "contains": [
+          "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "bea0e5a0-4833-5337-b6f1-7251b8cf8089"
+        ]
+      },
+      "requiredHeStage": "CrossStage+SekII",
+      "requiredHeReplacementGoals": [
+        {
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "title": "Betrag eines Vektors im Raum bestimmen",
+          "titleEn": "Determine the magnitude of a vector in space",
+          "description": "Die lernende Person kann den Betrag eines Vektors im Raum aus seinen Komponenten berechnen und als Länge der zugehörigen Verschiebung deuten.",
+          "descriptionEn": "The learner can calculate the magnitude of a vector in space from its components and interpret it as the length of the corresponding displacement.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "68d4faef-1a56-5898-9c31-80b7d5d2e430",
+          "title": "Abstand zweier Punkte im Raum berechnen",
+          "titleEn": "Calculate the distance between two points in space",
+          "description": "Die lernende Person kann aus den Koordinaten zweier Punkte im Raum den Verbindungsvektor bilden, dessen Betrag berechnen und den Abstand geometrisch deuten.",
+          "descriptionEn": "The learner can form the connecting vector from the coordinates of two points in space, calculate its magnitude, and interpret the distance geometrically.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "scopeBoundary": "Only the exact reviewed HE replacement children are targets. Square-root construction and Cavalieri are SL-only; spatial midpoint belongs BB/BW/SL; qualitative derivative-graph targets exclude HE. These source boundaries are checked separately from structural retirement."
+    }
+  ],
+  "structuralAddition": {
+    "id": "1bc118c3-1f05-5f2a-b125-418017180d75",
+    "title": "Vektoren addieren, subtrahieren und skalieren",
+    "titleEn": "Add, subtract, and scale vectors",
+    "description": "Dieser Bereich bündelt die getrennt nachweisbaren Kompetenzen Addition und Subtraktion von Vektoren sowie Multiplikation mit Skalaren. Dieselben kanonischen Kinder werden in passenden Sek-I- und Sek-II-Kontexten verwendet.",
+    "descriptionEn": "This area groups separately assessable vector addition and subtraction, and multiplication by scalars. The same canonical children are used in appropriate lower- and upper-secondary contexts.",
+    "type": "cluster",
+    "contains": [
+      "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+      "571793bd-34f1-539e-969c-dfcc2dfa96b3"
+    ]
+  },
+  "heGkQ2SupportGoalIds": [
+    "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+    "a594dec0-3977-5c43-9432-d4254a7f6130",
+    "e9181209-1506-59df-9053-17f36b91bb06"
+  ],
+  "otherJurisdictionSourceRoles": {
+    "goalIds": [
+      "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+      "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+      "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+      "b025df0c-994c-4807-9c5f-2d548905b73f",
+      "ba343971-10e5-4b05-b005-405b9c1ce447"
+    ],
+    "heCrossStage": "prerequisiteOnly, never target",
+    "heSekII": "absent from target and support, matching exact authored scope"
+  },
+  "g9OnlyWholePerformanceBindings": [
+    {
+      "oldGoal": {
+        "id": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+        "title": "Geraden und Strecken im Raum parametrisch beschreiben",
+        "titleEn": "Describe lines and segments in space parametrically",
+        "description": "Die lernende Person kann Geraden im Raum in einfachen Fällen mit Stütz- und Richtungsvektor parametrisch angeben, begrenzte Strecken zusätzlich durch einen passenden beschränkten Parameterbereich beschreiben und beide Darstellungen aus Punktangaben aufstellen.",
+        "descriptionEn": "The learner can represent lines in space parametrically in simple cases using a support vector and a direction vector, describe finite segments by additionally specifying an appropriate bounded parameter interval, and construct both representations from point descriptions.",
+        "type": "atomic",
+        "contains": []
+      },
+      "existingSekIIRequiredGoals": [
+        {
+          "id": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+          "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
+          "titleEn": "Represent lines and segments in space parametrically and interpret parameters",
+          "description": "Die lernende Person kann Geraden und Strecken im Raum aus zwei verschiedenen Punkten parametrisch darstellen, dabei für Geraden den gesamten reellen Parameterbereich und für Strecken einen passenden begrenzten Parameterbereich festlegen sowie Parameterwerte im Kontext deuten.",
+          "descriptionEn": "The learner can parametrically represent lines and segments in space from two distinct points, use the full real parameter range for lines and an appropriate bounded parameter interval for segments, and interpret parameter values in context.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "officialHePage": 42,
+      "reason": "Both line and bounded-segment parameter representations from two points remain explicit; this is not a line-only replacement.",
+      "masteryAlias": false,
+      "evidenceTransfer": false
+    },
+    {
+      "oldGoal": {
+        "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "titleEn": "Express and interpret points in the spatial coordinate system as tuples",
+        "description": "Die lernende Person kann Punkte im räumlichen Koordinatensystem als Tupel darstellen, Koordinateneinträge fachsprachlich deuten und die Bedeutung einfacher Ortsangaben im Kontext erklären.",
+        "descriptionEn": "The learner can represent points in the spatial coordinate system as tuples, interpret coordinate entries using correct terminology, and explain the meaning of simple location data in context.",
+        "type": "atomic",
+        "contains": []
+      },
+      "existingSekIIRequiredGoals": [
+        {
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "title": "Punkte und Vektoren im Raum koordinatisieren",
+          "titleEn": "Coordinate points and vectors in space",
+          "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+          "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "officialHePage": 41,
+      "reason": "Reading/plotting spatial points and interpreting coordinates remain explicit in the existing point/vector competence.",
+      "masteryAlias": false,
+      "evidenceTransfer": false
+    },
+    {
+      "oldGoal": {
+        "id": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+        "title": "Kollinearität von Vektoren prüfen",
+        "titleEn": "Check collinearity of vectors",
+        "description": "Die lernende Person kann in einfachen Fällen prüfen und begründen, ob zwei Vektoren kollinear sind: rechnerisch anhand eines einheitlichen Skalarfaktors für alle Komponenten oder bei Nichtnullvektoren geometrisch anhand gleicher oder entgegengesetzter Richtung.",
+        "descriptionEn": "The learner can check and justify in simple cases whether two vectors are collinear: algebraically using one common scalar factor for all components or, for nonzero vectors, geometrically using the same or opposite direction.",
+        "type": "atomic",
+        "contains": []
+      },
+      "existingSekIIRequiredGoals": [
+        {
+          "id": "54cfe5ce-693e-5d4a-ac1b-009570fbbc11",
+          "title": "Kollinearität von Vektoren im Raum prüfen",
+          "titleEn": "Check collinearity of vectors in space",
+          "description": "Die lernende Person kann bei zwei Vektoren im Raum prüfen, ob einer ein skalares Vielfaches des anderen ist, den Nullvektor dabei als kollinear zu jedem Vektor, aber ohne Richtung behandeln und die Entscheidung für zwei Nichtnullvektoren geometrisch deuten.",
+          "descriptionEn": "The learner can check whether either of two vectors in space is a scalar multiple of the other, treat the zero vector as collinear with every vector but without a direction, and interpret the result geometrically when both vectors are nonzero.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "officialHePage": 41,
+      "reason": "Scalar-multiple testing and the geometric meaning for nonzero vectors remain explicit; the existing SekII goal additionally handles the zero vector correctly.",
+      "masteryAlias": false,
+      "evidenceTransfer": false
+    },
+    {
+      "oldGoal": {
+        "id": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+        "title": "Punkte und Geraden im räumlichen Koordinatensystem darstellen",
+        "titleEn": "Represent points and lines in the spatial coordinate system",
+        "description": "Die lernende Person kann Punkte und einfache Geraden in einem räumlichen kartesischen Koordinatensystem oder in passenden Schrägbildern darstellen und die Darstellung fachsprachlich erklären.",
+        "descriptionEn": "The learner can represent points and simple lines in a spatial Cartesian coordinate system or in suitable oblique drawings and explain the representation using correct terminology.",
+        "type": "atomic",
+        "contains": []
+      },
+      "existingSekIIRequiredGoals": [
+        {
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "title": "Punkte und Vektoren im Raum koordinatisieren",
+          "titleEn": "Coordinate points and vectors in space",
+          "description": "Die lernende Person kann Punkte und Vektoren im dreidimensionalen Koordinatensystem eintragen, ablesen und als Orts- bzw. Richtungsvektoren deuten.",
+          "descriptionEn": "The learner can plot and read points and vectors in a three-dimensional coordinate system and interpret them as position or direction vectors.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "525b1da9-7fdd-4a70-9f30-ff01d7511b04",
+          "title": "Geraden und Strecken im Raum in Parameterform darstellen und Parameter deuten",
+          "titleEn": "Represent lines and segments in space parametrically and interpret parameters",
+          "description": "Die lernende Person kann Geraden und Strecken im Raum aus zwei verschiedenen Punkten parametrisch darstellen, dabei für Geraden den gesamten reellen Parameterbereich und für Strecken einen passenden begrenzten Parameterbereich festlegen sowie Parameterwerte im Kontext deuten.",
+          "descriptionEn": "The learner can parametrically represent lines and segments in space from two distinct points, use the full real parameter range for lines and an appropriate bounded parameter interval for segments, and interpret parameter values in context.",
+          "type": "atomic",
+          "contains": []
+        },
+        {
+          "id": "7680701b-35e3-519e-beaa-09753e733756",
+          "title": "Schrägbilder räumlicher Objekte zeichnen",
+          "titleEn": "Draw oblique sketches of spatial objects",
+          "description": "Die lernende Person kann geeignete Schrägbilder räumlicher Objekte zeichnen und die Darstellung fachsprachlich erläutern.",
+          "descriptionEn": "The learner can draw suitable oblique sketches of spatial objects and explain the representation.",
+          "type": "atomic",
+          "contains": []
+        }
+      ],
+      "officialHePage": 41,
+      "reason": "Coordinates, spatial lines/segments, and oblique drawings are all separately retained; no one component stands for the whole old performance.",
+      "masteryAlias": false,
+      "evidenceTransfer": false
+    }
+  ],
+  "actualNativeScopeDeltas": [
+    {
+      "view": "de-he-gk-g8",
+      "removed": [
+        {
+          "id": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "163dd583-8308-53f0-b60d-34588787988d",
+          "title": "Modelle nach Kriterien vergleichen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+          "title": "Oberflächeninhalte und Volumina von Kugeln deuten und anwenden",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "519660d0-85e5-57a6-a219-d0a253336649",
+          "title": "Modellentscheidung begründen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "title": "Alternative Modelle entwickeln (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+          "title": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "80956a2c-5811-4021-863e-95675bec31f5",
+          "title": "Satz des Pythagoras: Beweise und Anwendungen",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+          "title": "Bestände und Mittelwerte (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "title": "Spatprodukt korrekt definieren und deuten",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "9b339361-7719-573d-a913-432246c502ee",
+          "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+          "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "dc12f281-f161-572b-a973-8405ae9b2498",
+          "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "e9181209-1506-59df-9053-17f36b91bb06",
+          "title": "Volumenformeln räumlicher Körper herleiten (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoroperationen im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        }
+      ],
+      "added": []
+    },
+    {
+      "view": "de-he-gk-g9",
+      "removed": [
+        {
+          "id": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "title": "Tangenten als lineare Approximationen nutzen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "163dd583-8308-53f0-b60d-34588787988d",
+          "title": "Modelle nach Kriterien vergleichen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+          "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "1ea06c0c-5c60-45cd-8f31-638de98820b4",
+          "title": "Oberflächeninhalte und Volumina von Kugeln deuten und anwenden",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "235ae698-369f-4dbe-b46f-87e8b65bb03d",
+          "title": "Geraden und Strecken im Raum parametrisch beschreiben",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "519660d0-85e5-57a6-a219-d0a253336649",
+          "title": "Modellentscheidung begründen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "57f6d5e4-7c24-4e70-9cf6-737f01d79914",
+          "title": "Punkte und Geraden im räumlichen Koordinatensystem darstellen",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "title": "Alternative Modelle entwickeln (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+          "title": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "80956a2c-5811-4021-863e-95675bec31f5",
+          "title": "Satz des Pythagoras: Beweise und Anwendungen",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+          "title": "Bestände und Mittelwerte (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "title": "Spatprodukt korrekt definieren und deuten",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "9b339361-7719-573d-a913-432246c502ee",
+          "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a8ff2666-8df3-4253-8021-3efe42114e40",
+          "title": "Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "title": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "title": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "title": "Geradlinige Bewegungen mit Vektoren modellieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "d1352ce0-9502-5039-9af6-318fe385b6fd",
+          "title": "Kollinearität von Vektoren prüfen",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+          "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "dc12f281-f161-572b-a973-8405ae9b2498",
+          "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "e9181209-1506-59df-9053-17f36b91bb06",
+          "title": "Volumenformeln räumlicher Körper herleiten (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoroperationen im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        }
+      ],
+      "added": []
+    },
+    {
+      "view": "de-he-gk",
+      "removed": [
+        {
+          "id": "06bdbecb-53e0-5ac3-992f-d6fd20555b59",
+          "title": "Tangenten als lineare Approximationen nutzen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "163dd583-8308-53f0-b60d-34588787988d",
+          "title": "Modelle nach Kriterien vergleichen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "1a18dbb3-f350-4766-9c8b-20ca018ccef1",
+          "title": "Monotonie, Extremstellen und Funktion-Ableitungs-Beziehungen untersuchen",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "519660d0-85e5-57a6-a219-d0a253336649",
+          "title": "Modellentscheidung begründen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "title": "Alternative Modelle entwickeln (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+          "title": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+          "title": "Bestände und Mittelwerte (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "title": "Spatprodukt korrekt definieren und deuten",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "9b339361-7719-573d-a913-432246c502ee",
+          "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a8ff2666-8df3-4253-8021-3efe42114e40",
+          "title": "Abstände, Beträge und Mittelpunkte im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "ad66009f-55fb-563f-ace0-dbfeae7c76c3",
+          "title": "Wendestellen und Krümmungsverhalten mit Ableitungen beschreiben",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "b025df0c-994c-4807-9c5f-2d548905b73f",
+          "title": "Lagebeziehungen und Schnittpunkte von Geraden im Raum untersuchen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "b43a1e45-f05c-4d78-8453-f6fa677dc24c",
+          "title": "Tangenten- und Normalengleichungen in einfachen Fällen aufstellen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "ba343971-10e5-4b05-b005-405b9c1ce447",
+          "title": "Geradlinige Bewegungen mit Vektoren modellieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+          "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "dc12f281-f161-572b-a973-8405ae9b2498",
+          "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "e9181209-1506-59df-9053-17f36b91bb06",
+          "title": "Volumenformeln räumlicher Körper herleiten (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoroperationen im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        }
+      ],
+      "added": []
+    },
+    {
+      "view": "de-he-sekii-gk",
+      "removed": [
+        {
+          "id": "0b162cb0-8507-5ac2-b9d6-57f40f4d3f35",
+          "title": "Integralrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "0de1e45c-aea9-5e53-932a-027dcf509efa",
+          "title": "Matrixpotenzen für langfristige Übergangsprozesse nutzen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "163dd583-8308-53f0-b60d-34588787988d",
+          "title": "Modelle nach Kriterien vergleichen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "4bc6cc77-3d20-5d27-a74a-8efb0a038d17",
+          "title": "Langfristige Entwicklung von Übergangsprozessen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "519660d0-85e5-57a6-a219-d0a253336649",
+          "title": "Modellentscheidung begründen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "71fe4a39-38e8-5c6a-8eef-ff4783fe70c2",
+          "title": "Analysis-Modelle in Sachzusammenhängen validieren",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "74f28ce7-e568-5d6e-b946-17445b344fcc",
+          "title": "Alternative Modelle entwickeln (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "7bd8f022-5002-5610-994c-a9cec1890558",
+          "title": "Drehungen um Koordinatenachsen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "803d910d-96d1-5118-b9ca-29e93d0da76d",
+          "title": "Parallelprojektionen auf Ursprungsebenen mit Matrizen darstellen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "809ef78a-f282-5593-89be-0f2cb95570ac",
+          "title": "Bestände und Mittelwerte (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        },
+        {
+          "id": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "944dd479-9f30-5acb-ab32-3ea0b6dc8e06",
+          "title": "Spatprodukt korrekt definieren und deuten",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "9b339361-7719-573d-a913-432246c502ee",
+          "title": "Mandelbrot-Folgen komplexer Zahlen softwaregestützt untersuchen (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "a594dec0-3977-5c43-9432-d4254a7f6130",
+          "title": "Volumen von Spaten und Tetraedern mit Spatprodukt berechnen",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "d3c42193-f1b7-5c6d-a991-bf034d99359f",
+          "title": "Fixpunkte linearer Abbildungen bestimmen (LK)",
+          "kind": "atomic",
+          "support": false
+        },
+        {
+          "id": "dc12f281-f161-572b-a973-8405ae9b2498",
+          "title": "Differentialrechnung in Sachzusammenhängen auswählen und anwenden",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "e9181209-1506-59df-9053-17f36b91bb06",
+          "title": "Volumenformeln räumlicher Körper herleiten (LK)",
+          "kind": "atomic",
+          "support": true
+        },
+        {
+          "id": "f37b0a72-9e23-51c7-aad5-438c17a56899",
+          "title": "Vektoroperationen im Raum (Bestands-ID)",
+          "kind": "cluster",
+          "support": false
+        }
+      ],
+      "added": [
+        {
+          "id": "1bc118c3-1f05-5f2a-b125-418017180d75",
+          "title": "Vektoren addieren, subtrahieren und skalieren"
+        }
+      ]
+    }
+  ],
+  "mutationCounterexamples": {
+    "aggregateRequiredReplacementTargetLoss": 50,
+    "heGkVsHeLkAndSlTargetSupportReversal": 30,
+    "nonHeSourceAtomAsHeTarget": 20,
+    "g9WholePerformanceReplacementComponentLost": 6,
+    "unrelatedOldAtomicTargetLost": 4,
+    "total": 110,
+    "mechanism": "Mutate cloned authored composition roles and execute the actual production collectCompositionProjectionRoleGoalIds; do not construct a fake RuleResult. All mutations must fail the relevant positive assertion."
+  },
+  "checks": {
+    "q24q25": {
+      "command": "npm --prefix app run test:hessen-math-q24-q25-scope",
+      "exitCode": 0,
+      "status": "passed-final-exact-file",
+      "expectedSummary": "88 valid views;4 HE-GK scopes;50 aggregate,30 regional,20 source,6 spatial loss controls;72 endpoints including34 other/national GK placements; native K7, DAG, coverage and bilingual exam checks.",
+      "log": {
+        "path": "tmp/ci-contract-he-gk-q24-q25-final.log",
+        "rawSha256": "cf5d3638e0834884219e33ad8e3194812a301913d75cf4be13a407c0029f4de3"
+      },
+      "actualOutput": "HE Q2.4/Q2.5 regression passed: 88 valid views, 4 HE-GK scopes; six aggregate retirements retain their reviewed competencies (50 real projection loss controls), three HE-GK support roles retain HE-LK/SL targets (30 scope controls), five later whole-atom source decisions (20 role controls), four G9 spatial substitutions (6 whole-performance loss controls); 72 exact rotation/endpoint placements including 34 existing non-HE/national GK views; unrelated content loss, DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked."
+    },
+    "q2AssessmentProjection": {
+      "command": "npm --prefix app run test:math-q2-m7-assessment-projection",
+      "exitCode": 0,
+      "views": 80,
+      "authoredTargetPairs": 637,
+      "log": {
+        "path": "tmp/ci-contract-he-gk-math-q2-projection.log",
+        "rawSha256": "f4ce7fbea8e5c31943cc1d03ce87d6c7aee52b0e178be35c9faa176ea59ba9ac"
+      }
+    },
+    "auxiliaryStrictTsc": {
+      "command": "cd app && ./node_modules/.bin/tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution bundler --esModuleInterop --skipLibCheck scripts/testHessenMathQ24Q25Scope.ts",
+      "exitCode": 2,
+      "comparison": {
+        "sameErrorSetAfterOwnFilenameAndLineNormalization": true,
+        "beforeErrorCount": 20,
+        "afterErrorCount": 20,
+        "newErrors": [],
+        "removedErrors": [],
+        "status": "auxiliary-strict-check-remains-red-with-identical-baseline-errors"
+      },
+      "scope": "Not a passing typecheck:19 existing imported BookModel diagnostics plus the unchanged old scope-narrowing diagnostic. Exact same20 errors in unmodified HEAD test with the same current dependencies, compared after own filename/line normalization. No new errors.",
+      "beforeLog": {
+        "path": "tmp/ci-contract-he-gk-q24-q25-typecheck-before.log",
+        "rawSha256": "f533d9346c3df5832072b29e5ad014b55bfb3f4c82c8be8dc0a7597c15a3a942"
+      },
+      "afterLog": {
+        "path": "tmp/ci-contract-he-gk-q24-q25-typecheck.log",
+        "rawSha256": "32a5a9ff2fcecfba39fb1046694fab916f30048fd53c83a9b4274ce81067e15c"
+      }
+    }
+  },
+  "limits": [
+    "Local deterministic regression evidence only; no current remote CI pass claimed.",
+    "No stored mastery, historical outcomes, learner scope, source data, QA approvals or alias rules changed.",
+    "Historical source/AI review records are input evidence; no human approval or effectiveness claim.",
+    "Existing M7 status is not inferred from these two suites."
+  ],
+  "independentReview": {
+    "status": "no-holds-for-bounded-test-only-repair",
+    "reviewer": "Astra independent agent review",
+    "humanApproval": false,
+    "path": "docs/dev/ci-graph-repairs/he-gk-q24-q25-scope-independent-review-2026-11-06.md",
+    "sha256": "77e0b0c182aacc59b425a61360eaa66c5182496f5f166983aafea455a6880b97",
+    "freshRunClaimedByReviewer": false
+  },
+  "sourcesUnchangedAfterBothSuites": true
+}
