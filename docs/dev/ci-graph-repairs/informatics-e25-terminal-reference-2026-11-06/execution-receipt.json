@@ -1,0 +1,59 @@
+[
+  {
+    "run": "node",
+    "command": [
+      "node",
+      "tmp/e25-draft/reference.test.mjs"
+    ],
+    "exitCode": 0,
+    "expectedExitCode": 0
+  },
+  {
+    "run": "python",
+    "command": [
+      "python3",
+      "-B",
+      "tmp/e25-draft/verify_independently.py"
+    ],
+    "exitCode": 0,
+    "expectedExitCode": 0
+  },
+  {
+    "run": "versions",
+    "command": [
+      "node",
+      "tmp/e25-draft/version_check.mjs"
+    ],
+    "exitCode": 0,
+    "expectedExitCode": 0
+  },
+  {
+    "run": "negative-old-program",
+    "command": [
+      "node",
+      "tmp/e25-draft/bug-negative.test.mjs"
+    ],
+    "exitCode": 1,
+    "expectedExitCode": 1
+  },
+  {
+    "run": "browser",
+    "command": [
+      "node",
+      "tmp/e25-draft/browser.test.mjs"
+    ],
+    "exitCode": 0,
+    "expectedExitCode": 0
+  },
+  {
+    "run": "native-draft-readiness",
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "tmp/e25-draft/native-readiness.mts",
+      "tmp/e25-draft/exam-data.json"
+    ],
+    "exitCode": 0,
+    "expectedCqr202Status": "fail",
+    "expectedReason": "reviewStatus=draft"
+  }
+]

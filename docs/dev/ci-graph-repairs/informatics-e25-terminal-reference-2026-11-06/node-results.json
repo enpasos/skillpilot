@@ -1,0 +1,71 @@
+{
+  "status": "PASS-owned-reference-models-no-browser-or-host-acceptance",
+  "checks": [
+    "Tarifgrenzen 1,3,4,6",
+    "Tarif lehnt0,7,gebrochen,NaN ab",
+    "Schleife/Verzweigung listet freieKur­se",
+    "Zustandsfolge2-erfolgreich/2-abgelehnt/1-erfolgreich",
+    "Alle ungültigen Reservierungen verändern Objekt nicht",
+    "Leere/fehlerhafte Formdaten und unbekannter Kurs bleiben ohne Mutation",
+    "Echte submit-Bindung mit DOM-Testdouble, ohne Netzwerk",
+    "Caesar anwenden und alle26 Schlüssel prüfen",
+    "Polyalphabetisch anwenden und Prefixangriff mitPeriode3",
+    "TCP-Modell Bytefolgen und kumulativeACKs"
+  ],
+  "materialValues": {
+    "caesarToEncrypt": "TREFFENAMTOR",
+    "caesarGivenKey": 5,
+    "caesarExpectedCipher": "YWJKKJSFRYTW",
+    "caesarToBreak": "CANOONWDVINQW",
+    "vigenereToEncrypt": "SCHULTAG",
+    "vigenereGivenKey": "UNI",
+    "vigenereExpectedCipher": "MPPOYBUT",
+    "vigenereToBreak": "ATJERAUTDRUYOZFK",
+    "knownPrefix": "ANMELDUNG",
+    "period": 3,
+    "smtpToken": "AGFndXNlcgBkZW1vLXBhc3M="
+  },
+  "tcp": {
+    "segments": [
+      {
+        "sequence": 1001,
+        "payload": "TERMI"
+      },
+      {
+        "sequence": 1006,
+        "payload": "NE202"
+      },
+      {
+        "sequence": 1011,
+        "payload": "6OK!"
+      }
+    ],
+    "arrivals": [
+      {
+        "segment": 3,
+        "sequence": 1011,
+        "length": 4,
+        "cumulativeAck": 1001
+      },
+      {
+        "segment": 1,
+        "sequence": 1001,
+        "length": 5,
+        "cumulativeAck": 1006
+      },
+      {
+        "segment": 2,
+        "sequence": 1006,
+        "length": 5,
+        "cumulativeAck": 1015
+      }
+    ],
+    "endSequence": 1015
+  },
+  "sampleBooking": {
+    "ok": true,
+    "priceCents": 600,
+    "free": 1,
+    "message": "Jana Jung: 2 Platz/Plätze in Robotik; 6,00 EUR; noch 1 frei."
+  }
+}

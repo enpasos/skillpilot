@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { readFileSync,writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { priceCents as priceV2 } from './version2.mjs';
+import { priceCents as priceV3 } from './reference.mjs';
+const v1=readFileSync(new URL('./version1.html',import.meta.url),'utf8');
+assert(!v1.includes('<script>'));assert(v1.includes('type="submit" disabled'));
+assert.equal((v1.match(/<article class="card">/g)||[]).length,3);
+for (const field of ['name','email','course','places','testdata']) assert(v1.includes(`name="${field}"`));
+assert.equal(priceV2(4),1200);assert.equal(priceV3(4),1000);
+const files=['version1.html','version2.mjs','solution.html'].map(path=>({path,sha256:createHash('sha256').update(readFileSync(new URL(path,import.meta.url))).digest('hex')}));
+const result={status:'PASS-actual-reference-version-artifacts',files,observations:{v1:'Static page, disabled reservation, no script',v2FourPlacesCents:1200,v3FourPlacesCents:1000},boundary:'These are the authors actual model artifacts, not an invented learner development history or trial.'};
+writeFileSync(new URL('./version-results.json',import.meta.url),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
