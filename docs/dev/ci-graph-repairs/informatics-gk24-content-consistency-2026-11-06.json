@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded-draft-consistency-checks-completed-NOT-content-review-or-release",
+  "assertionDomain": {
+    "uniqueCoverage": 24,
+    "criteria": 24,
+    "maxPoints": 24,
+    "passingPoints": 24,
+    "missingOneMaximum": 23,
+    "newGkReferenceExecutionPerformed": false,
+    "oldLkResultsReinterpreted": false
+  },
+  "nativeReadiness": {
+    "id": "CQR-202",
+    "status": "fail",
+    "summary": "1 terminal autonomy examData item(s) are placeholders or incomplete.",
+    "metrics": {
+      "terminalAutonomyGoals": 1,
+      "concreteExamData": 0,
+      "weakExamData": 1
+    },
+    "details": [
+      "Weak examData: E-Phase im Grundkurs vernetzt anwenden – DRAFT [604c84fc-7fa3-5aa0-a6c6-33136a71a4a7] (reviewStatus=draft)"
+    ]
+  },
+  "nativeReadinessBoundary": "Only the actual exported material checker was invoked against id/title/examData; no graph/preparation stub, new endpoint configuration or general CQR producer was used. This is syntactic readiness, not independent content review.",
+  "graphOrPreparationValidated": false,
+  "sourceBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "artifacts": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.exam-data.json",
+      "sha256": "6a99cf279e353aeba72ac841b2104d35c4086b37fb53e412477bf806e98b8899"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.review-input.json",
+      "sha256": "3ca457e68be743c3457ca0781ac0fdb7aa6aa56bd0a5c4134abc0868d5c5cdfc"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.task.md",
+      "sha256": "aac9fe49b71430fbb40abdeb85b5ede0c920bcc18001ec8cf3478a39810c5fa7"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.solution.md",
+      "sha256": "731212704993a78aaf1f76e7cc931c58670f720e543893a303fa39ca09d00b91"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-integration-plan-2026-11-06.json",
+      "sha256": "947ab004fcdeb9db9745bd0e82e8979a7cf5d99b99a588f4a7e63109f487bad2"
+    }
+  ],
+  "implementation": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "f1eac647b9f87302f102252aa5b005056ff2d00279f68a7d0541806d2c756357"
+  },
+  "sourceOrRuntimeFilesWritten": false
+}
