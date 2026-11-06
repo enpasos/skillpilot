@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "analysis-only-NOT-new-policy-NOT-implemented-NOT-gate-satisfaction",
+  "scope": "Current D/P fingerprint contracts versus a proposed separate pure requires-normalization compatibility proof. No Source-A reinterpretation and no learner-state migration.",
+  "sources": [
+    {
+      "path": "docs/concept/skill-graph/graph-definition.md",
+      "sha256": "51c5bfe9d2adbbe28adee2a83bdb9cbaf228f47b177129a6c0aa5293d353b874",
+      "anchor": "§§7.2–7.3, §§11.3–11.5",
+      "kind": "binding-graph-norm"
+    },
+    {
+      "path": "docs/concept/curriculum-quality-and-human-trial.md",
+      "sha256": "e8de9ed36f0f09098259d114ca4da46538b8e6570355279694e095b53463a2bf",
+      "anchor": "§3.1; §5.2",
+      "kind": "binding-M7-and-human-trial-norm"
+    },
+    {
+      "path": "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md",
+      "sha256": "1ba9b3db0be5e4a1c702816ec766bb9a0484575ee3250b203ec4511b82d7937a",
+      "anchor": "§2; §4.2; §§5.4–5.5; §6; §13",
+      "kind": "binding-evidence-and-book-norm"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "16b52af808ec213a982ee1f88d33637219e3f0586262698d2b76d0c8aa43d043",
+      "anchor": "semantic atomicity / memory review; learner-readable book conventions",
+      "kind": "repo-instructions"
+    },
+    {
+      "path": "contracts/goal-description-review/v1/goal-description-scope-narrowing-compatibility.schema.json",
+      "sha256": "b728aad01dece8fbd42d588b859d3c3545f5043f20d60933a1d8254b39f4b51c",
+      "anchor": "closed schema / diagnostic D scope",
+      "kind": "existing-narrow-contract"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionScopeNarrowingCompatibility.ts",
+      "sha256": "3b02b73ad6a12025a0a9e0f0df9503df94fd595e0bb9e9cdd67939914fa8d176",
+      "anchor": "build and validate complete original D, scope-only proof",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/mathAtlasReviewSubsetCompatibility.ts",
+      "sha256": "7cbc4992e6bd9c71c171c6a82a5765687188cd54627b6806c3e84ba3c103ddec",
+      "anchor": "proveMathAtlasReviewSubsetNarrowing",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26",
+      "anchor": "goalEvidenceSemanticPayload, goalEvidenceReviewInputPayload",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+      "anchor": "fingerprintPositiveGoalEvidenceReviewInput, validatePositiveGoalEvidenceRecordSemantics",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+      "anchor": "buildGoalDescriptionCanonicalContext, fingerprintGoalDescriptionReviewInput",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "sha256": "58471403dc8fbf6ca4e45e8f4e29af8f15a61f9e54ea529d2e3073fa4fc74c64",
+      "anchor": "current V3 validation and explicitly historical-only entrypoint",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+      "anchor": "fresh strict D resolution validation and historical exclusion",
+      "kind": "implementation-observation"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f",
+      "anchor": "directRequires, topologicallyOrderTargets, page relation construction",
+      "kind": "implementation-observation-current-worktree"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/ChampionPracticeFingerprint.java",
+      "sha256": "ad785a59bec77b0f096105ddf4110df057e2867a05112527d1d049a0750b77c9",
+      "anchor": "forGoal",
+      "kind": "distinct-human-practice-contract-implementation"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v2/2026-09-29/m7-remaining-eight-current-20260929-v2/round-a/criteria.md",
+      "sha256": "d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+      "anchor": "Exact curricular scope; conservative revision; no automatic authority",
+      "kind": "actual-pinned-review-criteria-example"
+    },
+    {
+      "path": "app/scripts/testGoalDescriptionScopeNarrowingCompatibility.ts",
+      "sha256": "fd27a7edd934ec4ab0faed72ba42aed67cf8bb3168a449f059f32879032f2aed",
+      "anchor": "real scope-only positive and eight negatives",
+      "kind": "existing-tests-read-NOT-rerun"
+    },
+    {
+      "path": "app/scripts/testPositiveGoalEvidenceProfileModel.ts",
+      "sha256": "3b192e2417d209d22cc8b8a5c09a6b122434eb6f5fe61ea7babb8a14139d6d9e",
+      "anchor": "stale goal, criteria and resource negatives",
+      "kind": "existing-tests-read-NOT-rerun"
+    }
+  ],
+  "normativeConclusion": "Existing clauses require exact current review inputs and contain no G16/G17 compatibility exception. A new explicitly bounded rule/validator would be required.",
+  "recommendation": "Start with a proof-preserving G16 pilot only after the new contract is defined and independently reviewed; do not count any current D/P restoration from this analysis.",
+  "formalLimits": [
+    "Goal/Atomic closure equality proves only extensional prerequisite demand under the matching complete-closure evaluator.",
+    "It does not alone preserve book projection, direct-link contexts, free-form evidence assertions, applicability, all consumers or human trial.",
+    "Known didactic errors and original invalid reviews cannot be legitimized by an equality proof."
+  ],
+  "noChangesClaim": [
+    "No production code or contract schema edited.",
+    "No canonical graph, review fingerprint, evidence receipt or learner state changed.",
+    "No new test execution or actual compatibility-transport success claimed."
+  ]
+}
