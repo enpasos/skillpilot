@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "actual-remote-staleness-local-native-regeneration-and-original-check-pass",
+  "remote": {
+    "head": "8a56a9788ff82902c52c62a42a15a8cd43ed073a",
+    "runId": 42292698134,
+    "jobId": 128161034122,
+    "conclusion": "failure",
+    "failedStep": "Check Goal Source Rationale Coverage Report",
+    "mathDurationCompositionViewStep": "success",
+    "strictDeepAndFloorSteps": "skipped-after-earlier-failure",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42292698134/job/128161034122"
+  },
+  "unchangedGenerator": {
+    "path": "app/scripts/reportGoalSourceRationaleCoverage.ts",
+    "sha256": "1e73e1c3ef3e2202c8d897e5dcb38668edcac7f28bccd539acc732470b63ee58"
+  },
+  "generatedReport": {
+    "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+    "beforeSha256": "facf4f186b4821c549d830119eda09409bf4f038ee208bb181a3ffab7929838b",
+    "afterSha256": "bf06f89ffb8139778e4cce75d64394b10323a3db129a008b6ead1c866de657cf",
+    "changedJsonPointers": [
+      "/generatedAt",
+      "/summary/requiresRelations",
+      "/workQueue/relationRationales/requiresRelationsPending"
+    ],
+    "requiresBefore": 2460,
+    "requiresAfter": 2454,
+    "otherDataUnchanged": true
+  },
+  "markdownReport": {
+    "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+    "sha256": "a5523ea693eafb5cbd906daf9a5d04a391403f8844d3fa9467256ef03ad80d35"
+  },
+  "actualLocalCommands": [
+    {
+      "command": "cd app && npm run quality:goal-source-rationale-coverage",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/root-goal-source-rationale-coverage-regeneration-2026-11-06.log",
+        "sha256": "26821d63eb1c3b6a828f69b976ab178d61544cf27508454b1cbce9ff744df659"
+      }
+    },
+    {
+      "command": "cd app && npm run check:goal-source-rationale-coverage",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/root-goal-source-rationale-coverage-check-2026-11-06.log",
+        "sha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+      }
+    }
+  ],
+  "canonicalQaSourceMappingFloorPolicyCodeAndExistingReviewChanges": false,
+  "unresolvedSourceRationaleGapsAndPendingRelationsCleared": false,
+  "newRemotePassOrRestoredMilestonesClaimed": false,
+  "sourceAIndependentOutputBoundary": "Both generated outputs are already exact derivedOutputExclusions in the unchanged v1 source profile. This local report update does not amend the accepted db9c source inputs."
+}
