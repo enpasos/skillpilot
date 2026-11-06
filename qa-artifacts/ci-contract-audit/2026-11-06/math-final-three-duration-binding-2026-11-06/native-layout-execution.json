@@ -1,0 +1,26 @@
+{
+  "exitCode": 0,
+  "seconds": 7.432633060001535,
+  "command": [
+    "bwrap",
+    "--die-with-parent",
+    "--unshare-net",
+    "--ro-bind",
+    "/",
+    "/",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--ro-bind",
+    "/dev/shm/skillpilot-math-final967a-duration-20261106",
+    "/dev/shm/skillpilot-math-final967a-duration-20261106",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "qa-artifacts/ci-contract-audit/2026-11-06/math-final-three-duration-binding-2026-11-06/compare-native-layout.mts"
+  ]
+}
