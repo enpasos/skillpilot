@@ -53,8 +53,12 @@ Der [unabhängige Gegenreview der neun Zusatzfälle](informatics-secondary-found
 billigt sieben Fälle und hält die beiden im Nachfolger korrigierten
 Stack-/SQL-Vorschläge ausdrücklich an. Die Binärbaumgrundlage für den gewöhnlichen
 binären Heap ist an dieses konkrete Erwerbsmodell gebunden, keine behauptete
-Pflicht für jede denkbare Heapvariante. Die zehnte Web-Performance-Korrektur und
-der gesamte finale Änderungssatz brauchen den getrennten Integrationsgegenblick.
+Pflicht für jede denkbare Heapvariante. Der getrennte
+[39er-Integrationsgegenblick](informatics-whole-exam-foundation-successor-independent-review-2026-11-06.md)
+liest auch die zehnte Web-Performance-Korrektur und den gesamten finalen
+Änderungssatz. Er benennt keinen weiteren fachlichen Hold; die tatsächlichen
+QA-Folgen der zusätzlichen 166 Applicabilityfelder bleiben in diesem
+Zwischenstand noch offen. Er erlaubt keine Anwendung.
 
 Für den Nachfolger wurden die vollständigen verfügbaren DE/EN-Beschreibungen
 aller 154 Verbraucher mit veränderter atomarer Nachfrage, ihre tatsächlichen
