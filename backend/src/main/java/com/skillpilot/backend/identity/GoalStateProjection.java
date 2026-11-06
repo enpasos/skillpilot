@@ -170,7 +170,7 @@ final class GoalStateProjection {
         if (original != null) for (var plan : original) {
             require(plan != null && GoalIdentityService.isUuid(plan.landscapeId()), "Invalid original portable plan");
             Pair<List<LearnerLearningPlanApi.Block>> projected = blocks(plan.blocks());
-            String key = GoalIdentityMap.uuidValueKey(plan.landscapeId());
+            String key = plan.landscapeId();
             put(canonical, key, new LearnerLearningPlanApi.PortablePlan(plan.landscapeId(), plan.planLabel(), projected.canonical()),
                     GoalStateProjection::samePortablePlan);
             put(durable, key, new LearnerLearningPlanApi.PortablePlan(plan.landscapeId(), plan.planLabel(), projected.durable()),
@@ -180,7 +180,7 @@ final class GoalStateProjection {
     }
 
     private static boolean samePortablePlan(LearnerLearningPlanApi.PortablePlan left, LearnerLearningPlanApi.PortablePlan right) {
-        return GoalIdentityMap.uuidValueKey(left.landscapeId()).equals(GoalIdentityMap.uuidValueKey(right.landscapeId()))
+        return left.landscapeId().equals(right.landscapeId())
                 && Objects.equals(left.planLabel(), right.planLabel()) && left.blocks().equals(right.blocks());
     }
 

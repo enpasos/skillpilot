@@ -1,0 +1,3144 @@
+{
+  "reviewType": "read-only-independent-owner-namespace-contract-review",
+  "date": "2026-11-06",
+  "headAtReview": "4246ddbff5947392990f484a56f05a312ed80c11",
+  "decision": "owner-exact-string-goal-uuid-value",
+  "sourceAChanged": false,
+  "runtimeActivationAllowed": false,
+  "productionDataRead": false,
+  "findingStatus": "reproduced-unfixed",
+  "earlierReviewCorrection": "IDREV-03 owner UUID folding unsupported; goal UUID value comparison remains required",
+  "sources": [
+    {
+      "path": "docs/concept/skill-graph/graph-definition.md",
+      "sha256": "51c5bfe9d2adbbe28adee2a83bdb9cbaf228f47b177129a6c0aa5293d353b874"
+    },
+    {
+      "path": "docs/concept/skill-graph/general-goal-system-and-migration.md",
+      "sha256": "e9a11fa507d78dee261bd04f430313c46dd0cb79610958aeb8f60248ec0d6d88"
+    },
+    {
+      "path": "docs/concept/skill-graph/view-projection-and-goal-placement.md",
+      "sha256": "81a80ef292892b18a995b0d5615b8c5c09ef282f5f710980bd53e0a831b211a3"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/compiled-landscape.schema.json",
+      "sha256": "8762e07edd85d5086255cccf1944ee4550e56773cef2aa152def66c25d43f133"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/runtime-catalog.schema.json",
+      "sha256": "b25dd33eaa1e0a64153e143863925af36965de09c2002869c6426046da381142"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/README.md",
+      "sha256": "e079d49261501bfa158c0791caaf9a62948029196b49add91fc4e75fbd3b26b8"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "path": "app/scripts/validateGraph.ts",
+      "sha256": "5851a5bba467e55ae699fd32ea341ef0c5477e0322850f3ffbd1797703709170"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java",
+      "sha256": "60f5c311aec3305a630b8aab734f84ebf24955367bfc4890be068b40e3c1e2b7"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java",
+      "sha256": "0d325aacf39f4e1762c0999e427581de62605f32cd6e2bb7401d9e062812c1e3"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityService.java",
+      "sha256": "8ba7767194246e76a4a2c9a8f094529218ecf27f796c9790cd6908d5a9392b92"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityProofLoader.java",
+      "sha256": "054dc6a93948e54d9594d680c414cbffdcf215aaaa7dbcf38a146306664809bd"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java",
+      "sha256": "81b2bb5f6b3fa162a9f6f14079b59c1c35a8b9bd02e61f556e1cc964fa165dfa"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java",
+      "sha256": "e1b7f1a118f542484ea4330e6e269fc44b878deaae8bbefe264399654d3701ba"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java",
+      "sha256": "b98ec7e33fc32132430796b9b0971be5c75725eda88e4896fa9c87ac4e6713cb"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "0d4561ad289c47565ab42ae80617d47765dc60377e9fd648bf280a79661fdece"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/domain/MasteryId.java",
+      "sha256": "9a6561b44586e1da3911abe6062b8b8d81114901bfa36401c51412de4466d717"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/domain/Mastery.java",
+      "sha256": "18578c25d140b73b0cfcf7cbdf270e33e1d1824c07ef7a487284a3c4931d242a"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/domain/LearnerClientStateId.java",
+      "sha256": "8505d1fd5204a0133c50184898d2433771a62d45f34a4d0485cfd95fdabfe41b"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/api/PortableSrsData.java",
+      "sha256": "ee87bf3561ff71deeb94703907c8614ddbf0258feb27a46ab4c4a9b48a13cc3e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/canonical-identity-proof-independent-review-2026-11-06.md",
+      "sha256": "2f1fd0637d7a57db835d3476ac140346565beb6cf3433b6ec106307f95bbfa08"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/goal-identity-state-projection-plan-2026-11-06.md",
+      "sha256": "1a8472bdb74da105ffd1ea9d874e4ed30f1ddd372878db1ef2115a1d54780e21"
+    }
+  ],
+  "acceptedSourceA": {
+    "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-2026-11-06.proposal.json",
+    "rawSha256": "c75e263450b35183db0a32ac6ce2dd767e41fe7895882b68b4b63fd4d481f300",
+    "baseCommit": "80d70f08e0ce31cbdc214e62b5d3e0e80cd850db",
+    "currentFullSourceReplayClaimed": false
+  },
+  "ownerCensus": {
+    "scope": "Current owner fields at exactly the 593 accepted A catalog paths; not full current-source equivalence",
+    "fileCount": 593,
+    "distinctOwnerCount": 469,
+    "uuidShapedOwnerCount": 469,
+    "nonLowercaseUuidOwners": [],
+    "caseCollisionGroups": [],
+    "ownerChangesFromAcceptedCatalog": [],
+    "projection": [
+      {
+        "path": "curricula/DE/BW/Uni_Heidelberg/Bachelor_Biowissenschaften/json/DE_BAW_U_HEIDELBERG_BA_BIOWISS.de.json",
+        "landscapeId": "e7c62181-de5d-4432-bbe0-65ee6f049860",
+        "acceptedCatalogOwner": "e7c62181-de5d-4432-bbe0-65ee6f049860"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Heidelberg/Master_Molecular_BioSciences/json/DE_BAW_U_HEIDELBERG_MA_MOLBIOSCI.de.json",
+        "landscapeId": "5012fbc3-1b63-4184-ac33-e0ea33ff98a3",
+        "acceptedCatalogOwner": "5012fbc3-1b63-4184-ac33-e0ea33ff98a3"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Heidelberg/Physikum_Medizin/json/DE_BAW_U_HEIDELBERG_PHYSIKUM_MED.de.json",
+        "landscapeId": "2bfab077-6519-521d-ab38-883327d524c8",
+        "acceptedCatalogOwner": "2bfab077-6519-521d-ab38-883327d524c8"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_ACC.de.json",
+        "landscapeId": "7a33a191-d033-48f8-93a3-6fa97f175c39",
+        "acceptedCatalogOwner": "7a33a191-d033-48f8-93a3-6fa97f175c39"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_CC.de.json",
+        "landscapeId": "2010d57e-3580-4feb-a816-c9176cbc26ca",
+        "acceptedCatalogOwner": "2010d57e-3580-4feb-a816-c9176cbc26ca"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_ECO_LAW.de.json",
+        "landscapeId": "1a4a9847-d207-4560-b53e-47b2a5a4ea93",
+        "acceptedCatalogOwner": "1a4a9847-d207-4560-b53e-47b2a5a4ea93"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_FIN.de.json",
+        "landscapeId": "bdc20389-7a96-4af0-9443-f2533e8e9983",
+        "acceptedCatalogOwner": "bdc20389-7a96-4af0-9443-f2533e8e9983"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_MAN.de.json",
+        "landscapeId": "177332c9-8851-410d-ad7d-36bad0b5bc68",
+        "acceptedCatalogOwner": "177332c9-8851-410d-ad7d-36bad0b5bc68"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_MKT.de.json",
+        "landscapeId": "4e3e0bc5-c096-48b4-b8b3-809064c042b0",
+        "acceptedCatalogOwner": "4e3e0bc5-c096-48b4-b8b3-809064c042b0"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_OPM_IS.de.json",
+        "landscapeId": "d1512dad-d497-4b2c-915b-11eb205a476c",
+        "acceptedCatalogOwner": "d1512dad-d497-4b2c-915b-11eb205a476c"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_BWL/json/DE_BAW_U_MANNHEIM_BWL_OVERVIEW.de.json",
+        "landscapeId": "e6b5815e-40a9-4842-b225-64d5ab9a9e58",
+        "acceptedCatalogOwner": "e6b5815e-40a9-4842-b225-64d5ab9a9e58"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_OER.de.json",
+        "landscapeId": "0dc168bb-1d26-4e78-9973-3997bfc14dc3",
+        "acceptedCatalogOwner": "0dc168bb-1d26-4e78-9973-3997bfc14dc3"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_OVERVIEW.de.json",
+        "landscapeId": "f77d0297-c603-41ae-8e3c-0fe65068d267",
+        "acceptedCatalogOwner": "f77d0297-c603-41ae-8e3c-0fe65068d267"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_SK.de.json",
+        "landscapeId": "7ff4a4dc-44ca-4284-8ec6-fe756c1bdbf5",
+        "acceptedCatalogOwner": "7ff4a4dc-44ca-4284-8ec6-fe756c1bdbf5"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_WISO.de.json",
+        "landscapeId": "01afcbc9-1427-46e0-83f9-6670bfb5d20e",
+        "acceptedCatalogOwner": "01afcbc9-1427-46e0-83f9-6670bfb5d20e"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_WR.de.json",
+        "landscapeId": "c8a1c9d4-105c-41bc-870c-d8b4ffa7dcb9",
+        "acceptedCatalogOwner": "c8a1c9d4-105c-41bc-870c-d8b4ffa7dcb9"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_ZR1.de.json",
+        "landscapeId": "3d65fce8-98a2-4198-98f4-27269b6e503e",
+        "acceptedCatalogOwner": "3d65fce8-98a2-4198-98f4-27269b6e503e"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_ZR2.de.json",
+        "landscapeId": "af903556-739e-458a-bcf4-dc80d3556722",
+        "acceptedCatalogOwner": "af903556-739e-458a-bcf4-dc80d3556722"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_ZR3.de.json",
+        "landscapeId": "c4dc1196-cb9a-49d5-a101-5e31a3bbb886",
+        "acceptedCatalogOwner": "c4dc1196-cb9a-49d5-a101-5e31a3bbb886"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Bachelor_Jura/json/DE_BAW_U_MANNHEIM_LLB_ZR_ADV.de.json",
+        "landscapeId": "98f24f6c-02ab-438f-996b-1070f3735690",
+        "acceptedCatalogOwner": "98f24f6c-02ab-438f-996b-1070f3735690"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_INT.de.json",
+        "landscapeId": "210092d7-35ce-444a-8b50-bcbafc145059",
+        "acceptedCatalogOwner": "210092d7-35ce-444a-8b50-bcbafc145059"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_OVERVIEW.de.json",
+        "landscapeId": "6817a7f4-c537-46fb-90de-45306c380d84",
+        "acceptedCatalogOwner": "6817a7f4-c537-46fb-90de-45306c380d84"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_PFLICHT.de.json",
+        "landscapeId": "ff470054-f7be-4bdf-bd83-d4263165eed4",
+        "acceptedCatalogOwner": "ff470054-f7be-4bdf-bd83-d4263165eed4"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_THESIS.de.json",
+        "landscapeId": "b3c21863-18d8-4a6d-b735-8f9a25da8125",
+        "acceptedCatalogOwner": "b3c21863-18d8-4a6d-b735-8f9a25da8125"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_WAHL_JURA.de.json",
+        "landscapeId": "17d167b6-6977-4fb9-a521-fdeefa15e9fd",
+        "acceptedCatalogOwner": "17d167b6-6977-4fb9-a521-fdeefa15e9fd"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Master_Jura/json/DE_BAW_U_MANNHEIM_LLM_WISO.de.json",
+        "landscapeId": "22cbe661-ca51-4d6b-83c9-09b3dc71a43e",
+        "acceptedCatalogOwner": "22cbe661-ca51-4d6b-83c9-09b3dc71a43e"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_OER.de.json",
+        "landscapeId": "0dc168bb-1d26-4e78-9973-3997bfc14dc3",
+        "acceptedCatalogOwner": "0dc168bb-1d26-4e78-9973-3997bfc14dc3"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_SK.de.json",
+        "landscapeId": "7ff4a4dc-44ca-4284-8ec6-fe756c1bdbf5",
+        "acceptedCatalogOwner": "7ff4a4dc-44ca-4284-8ec6-fe756c1bdbf5"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_WISO.de.json",
+        "landscapeId": "01afcbc9-1427-46e0-83f9-6670bfb5d20e",
+        "acceptedCatalogOwner": "01afcbc9-1427-46e0-83f9-6670bfb5d20e"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_WR.de.json",
+        "landscapeId": "c8a1c9d4-105c-41bc-870c-d8b4ffa7dcb9",
+        "acceptedCatalogOwner": "c8a1c9d4-105c-41bc-870c-d8b4ffa7dcb9"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_ZR1.de.json",
+        "landscapeId": "3d65fce8-98a2-4198-98f4-27269b6e503e",
+        "acceptedCatalogOwner": "3d65fce8-98a2-4198-98f4-27269b6e503e"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_ZR2.de.json",
+        "landscapeId": "af903556-739e-458a-bcf4-dc80d3556722",
+        "acceptedCatalogOwner": "af903556-739e-458a-bcf4-dc80d3556722"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_ZR3.de.json",
+        "landscapeId": "c4dc1196-cb9a-49d5-a101-5e31a3bbb886",
+        "acceptedCatalogOwner": "c4dc1196-cb9a-49d5-a101-5e31a3bbb886"
+      },
+      {
+        "path": "curricula/DE/BW/Uni_Mannheim/Rechtswissenschaft/json/DE_BAW_U_MANNHEIM_LLB_ZR_ADV.de.json",
+        "landscapeId": "98f24f6c-02ab-438f-996b-1070f3735690",
+        "acceptedCatalogOwner": "98f24f6c-02ab-438f-996b-1070f3735690"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Betriebswirtschaftslehre___Rechnungswesen.json",
+        "landscapeId": "763353ee-41c3-557f-982c-d5a350d05d34",
+        "acceptedCatalogOwner": "763353ee-41c3-557f-982c-d5a350d05d34"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Biologie.json",
+        "landscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "acceptedCatalogOwner": "357a7003-b636-570e-a0bd-6bb63518d2f6"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Biotechnologie.json",
+        "landscapeId": "ded54786-5864-5807-9c17-459e9821fa14",
+        "acceptedCatalogOwner": "ded54786-5864-5807-9c17-459e9821fa14"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Chemie.json",
+        "landscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "acceptedCatalogOwner": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/English_Book_Club.json",
+        "landscapeId": "216cbfaf-f2ad-5d15-8f77-90e9b36b6954",
+        "acceptedCatalogOwner": "216cbfaf-f2ad-5d15-8f77-90e9b36b6954"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Französisch.json",
+        "landscapeId": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c",
+        "acceptedCatalogOwner": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Geschichte_Politik_und_Gesellschaft_(FOS_BOS).json",
+        "landscapeId": "10fbdbac-9c1e-5f03-a4fa-c16011cded40",
+        "acceptedCatalogOwner": "10fbdbac-9c1e-5f03-a4fa-c16011cded40"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Gesundheitswirtschaft_und_Recht.json",
+        "landscapeId": "30e20d45-e5c5-5a98-9029-d692f1d2ee1c",
+        "acceptedCatalogOwner": "30e20d45-e5c5-5a98-9029-d692f1d2ee1c"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Gesundheitswissenschaften.json",
+        "landscapeId": "084729fd-67dd-5647-bbee-667b1a14ac70",
+        "acceptedCatalogOwner": "084729fd-67dd-5647-bbee-667b1a14ac70"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Informatik.json",
+        "landscapeId": "1af3eba8-749f-5359-8f12-18f87b13616c",
+        "acceptedCatalogOwner": "1af3eba8-749f-5359-8f12-18f87b13616c"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/International_Business_Studies.json",
+        "landscapeId": "06f66c96-8009-5323-b12d-5a26df313c3d",
+        "acceptedCatalogOwner": "06f66c96-8009-5323-b12d-5a26df313c3d"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Internationale_Betriebswirtschaftslehre_und_Volkswirtschaftslehre.json",
+        "landscapeId": "0c120a33-bf69-58d9-965b-d03b9aac3925",
+        "acceptedCatalogOwner": "0c120a33-bf69-58d9-965b-d03b9aac3925"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Internationale_Politik.json",
+        "landscapeId": "9ad36b95-849b-5c9d-bfd4-b53af29c1805",
+        "acceptedCatalogOwner": "9ad36b95-849b-5c9d-bfd4-b53af29c1805"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Italienisch.json",
+        "landscapeId": "c7643536-1163-50d8-86a6-9645c8fd3e25",
+        "acceptedCatalogOwner": "c7643536-1163-50d8-86a6-9645c8fd3e25"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Kommunikation_und_Interaktion.json",
+        "landscapeId": "130473c1-0fab-58c7-a445-f349c89409ec",
+        "acceptedCatalogOwner": "130473c1-0fab-58c7-a445-f349c89409ec"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Latein.json",
+        "landscapeId": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b",
+        "acceptedCatalogOwner": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Naturwissenschaften.json",
+        "landscapeId": "4883e6fa-92cb-5315-a680-991a570366f0",
+        "acceptedCatalogOwner": "4883e6fa-92cb-5315-a680-991a570366f0"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Physik.json",
+        "landscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+        "acceptedCatalogOwner": "42c2f7e3-91b4-5de8-bef0-d563440e9d52"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Pädagogik_Psychologie.json",
+        "landscapeId": "3637555f-e4df-5612-ae65-c40de43f4ba5",
+        "acceptedCatalogOwner": "3637555f-e4df-5612-ae65-c40de43f4ba5"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Russisch.json",
+        "landscapeId": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7",
+        "acceptedCatalogOwner": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Sozialpsychologie.json",
+        "landscapeId": "a567690f-aed6-517b-a2e9-4b3686b17543",
+        "acceptedCatalogOwner": "a567690f-aed6-517b-a2e9-4b3686b17543"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Sozialwirtschaft_und_Recht.json",
+        "landscapeId": "f3084fef-7257-5980-8f00-764069d36438",
+        "acceptedCatalogOwner": "f3084fef-7257-5980-8f00-764069d36438"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Soziologie.json",
+        "landscapeId": "625b46b2-9324-5c46-abd6-d3c5d08848a6",
+        "acceptedCatalogOwner": "625b46b2-9324-5c46-abd6-d3c5d08848a6"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Spanisch.json",
+        "landscapeId": "8dba4715-f75e-5339-9e99-02236e4b80dd",
+        "acceptedCatalogOwner": "8dba4715-f75e-5339-9e99-02236e4b80dd"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Spektrum_der_Gesundheit.json",
+        "landscapeId": "7ca133af-48d3-5d89-abbb-497fb1dda570",
+        "acceptedCatalogOwner": "7ca133af-48d3-5d89-abbb-497fb1dda570"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Studier-_und_Arbeitstechniken.json",
+        "landscapeId": "3dcafcab-3793-5e95-899e-b4c81ddace55",
+        "acceptedCatalogOwner": "3dcafcab-3793-5e95-899e-b4c81ddace55"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Technologie.json",
+        "landscapeId": "11f69044-510e-515c-a224-d74e06858145",
+        "acceptedCatalogOwner": "11f69044-510e-515c-a224-d74e06858145"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Volkswirtschaftslehre.json",
+        "landscapeId": "73a601d9-f633-5eff-8f6c-cbb319df5309",
+        "acceptedCatalogOwner": "73a601d9-f633-5eff-8f6c-cbb319df5309"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Wirtschaft_Aktuell.json",
+        "landscapeId": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb",
+        "acceptedCatalogOwner": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb"
+      },
+      {
+        "path": "curricula/DE/BY/Berufsoberschule/Wirtschaft_und_Recht.json",
+        "landscapeId": "4959d7df-e430-5c1d-bb7b-873d6252a27f",
+        "acceptedCatalogOwner": "4959d7df-e430-5c1d-bb7b-873d6252a27f"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Berufsoberschule_Overview.json",
+        "landscapeId": "4a1e367e-3c03-5ad3-a2ff-be60bb5e499b",
+        "acceptedCatalogOwner": "4a1e367e-3c03-5ad3-a2ff-be60bb5e499b"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Fachoberschule_Overview.json",
+        "landscapeId": "b0f776f2-7288-51cb-9416-3383e2ccf268",
+        "acceptedCatalogOwner": "b0f776f2-7288-51cb-9416-3383e2ccf268"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Grundschule_Overview.json",
+        "landscapeId": "d7568c33-6295-5ee2-a53d-40776ce9e1aa",
+        "acceptedCatalogOwner": "d7568c33-6295-5ee2-a53d-40776ce9e1aa"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Gymnasium_Overview.json",
+        "landscapeId": "12322e3f-f351-5d40-b4ea-4a13d7e15854",
+        "acceptedCatalogOwner": "12322e3f-f351-5d40-b4ea-4a13d7e15854"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Mittelschule_Overview.json",
+        "landscapeId": "17ef8d73-852d-5ff2-84bb-637824434eaa",
+        "acceptedCatalogOwner": "17ef8d73-852d-5ff2-84bb-637824434eaa"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Realschule_Overview.json",
+        "landscapeId": "1632e8b1-b988-504d-aa40-da53928a4c3b",
+        "acceptedCatalogOwner": "1632e8b1-b988-504d-aa40-da53928a4c3b"
+      },
+      {
+        "path": "curricula/DE/BY/DE_BY_Wirtschaftsschule_Overview.json",
+        "landscapeId": "7f64b024-444d-5688-a55b-9457e17e3eaa",
+        "acceptedCatalogOwner": "7f64b024-444d-5688-a55b-9457e17e3eaa"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Betriebswirtschaftslehre___Rechnungswesen.json",
+        "landscapeId": "763353ee-41c3-557f-982c-d5a350d05d34",
+        "acceptedCatalogOwner": "763353ee-41c3-557f-982c-d5a350d05d34"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Biologie.json",
+        "landscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "acceptedCatalogOwner": "357a7003-b636-570e-a0bd-6bb63518d2f6"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Biotechnologie.json",
+        "landscapeId": "ded54786-5864-5807-9c17-459e9821fa14",
+        "acceptedCatalogOwner": "ded54786-5864-5807-9c17-459e9821fa14"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Chemie.json",
+        "landscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "acceptedCatalogOwner": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/English_Book_Club.json",
+        "landscapeId": "216cbfaf-f2ad-5d15-8f77-90e9b36b6954",
+        "acceptedCatalogOwner": "216cbfaf-f2ad-5d15-8f77-90e9b36b6954"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Experimentelles_Gestalten.json",
+        "landscapeId": "a065bb6d-25fb-5ddf-bff5-024e4b85eb3e",
+        "acceptedCatalogOwner": "a065bb6d-25fb-5ddf-bff5-024e4b85eb3e"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Fachpraktische_Ausbildung.json",
+        "landscapeId": "ccdf7b81-791e-5636-98ad-1bb4d8cd9361",
+        "acceptedCatalogOwner": "ccdf7b81-791e-5636-98ad-1bb4d8cd9361"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Französisch.json",
+        "landscapeId": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c",
+        "acceptedCatalogOwner": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Geschichte.json",
+        "landscapeId": "01c2ba7a-ebd4-5840-bc09-123d7b31c914",
+        "acceptedCatalogOwner": "01c2ba7a-ebd4-5840-bc09-123d7b31c914"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Geschichte_Politik_und_Gesellschaft_(FOS_BOS).json",
+        "landscapeId": "10fbdbac-9c1e-5f03-a4fa-c16011cded40",
+        "acceptedCatalogOwner": "10fbdbac-9c1e-5f03-a4fa-c16011cded40"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Gestaltung.json",
+        "landscapeId": "f36e0e1c-0cbd-5d15-ba4f-f6060e1bee01",
+        "acceptedCatalogOwner": "f36e0e1c-0cbd-5d15-ba4f-f6060e1bee01"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Gesundheitswirtschaft_und_Recht.json",
+        "landscapeId": "30e20d45-e5c5-5a98-9029-d692f1d2ee1c",
+        "acceptedCatalogOwner": "30e20d45-e5c5-5a98-9029-d692f1d2ee1c"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Gesundheitswissenschaften.json",
+        "landscapeId": "084729fd-67dd-5647-bbee-667b1a14ac70",
+        "acceptedCatalogOwner": "084729fd-67dd-5647-bbee-667b1a14ac70"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Informatik.json",
+        "landscapeId": "1af3eba8-749f-5359-8f12-18f87b13616c",
+        "acceptedCatalogOwner": "1af3eba8-749f-5359-8f12-18f87b13616c"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/International_Business_Studies.json",
+        "landscapeId": "06f66c96-8009-5323-b12d-5a26df313c3d",
+        "acceptedCatalogOwner": "06f66c96-8009-5323-b12d-5a26df313c3d"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Internationale_Betriebswirtschaftslehre_und_Volkswirtschaftslehre.json",
+        "landscapeId": "0c120a33-bf69-58d9-965b-d03b9aac3925",
+        "acceptedCatalogOwner": "0c120a33-bf69-58d9-965b-d03b9aac3925"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Internationale_Politik.json",
+        "landscapeId": "9ad36b95-849b-5c9d-bfd4-b53af29c1805",
+        "acceptedCatalogOwner": "9ad36b95-849b-5c9d-bfd4-b53af29c1805"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Italienisch.json",
+        "landscapeId": "c7643536-1163-50d8-86a6-9645c8fd3e25",
+        "acceptedCatalogOwner": "c7643536-1163-50d8-86a6-9645c8fd3e25"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Kommunikation_und_Interaktion.json",
+        "landscapeId": "130473c1-0fab-58c7-a445-f349c89409ec",
+        "acceptedCatalogOwner": "130473c1-0fab-58c7-a445-f349c89409ec"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Latein.json",
+        "landscapeId": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b",
+        "acceptedCatalogOwner": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Medien.json",
+        "landscapeId": "1ad72fd8-c7e6-520a-be65-e30baee32b6c",
+        "acceptedCatalogOwner": "1ad72fd8-c7e6-520a-be65-e30baee32b6c"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Naturwissenschaften.json",
+        "landscapeId": "4883e6fa-92cb-5315-a680-991a570366f0",
+        "acceptedCatalogOwner": "4883e6fa-92cb-5315-a680-991a570366f0"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Physik.json",
+        "landscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+        "acceptedCatalogOwner": "42c2f7e3-91b4-5de8-bef0-d563440e9d52"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Politik_und_Gesellschaft.json",
+        "landscapeId": "486a8278-39b2-5450-96f8-1076a47b655b",
+        "acceptedCatalogOwner": "486a8278-39b2-5450-96f8-1076a47b655b"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Pädagogik_Psychologie.json",
+        "landscapeId": "3637555f-e4df-5612-ae65-c40de43f4ba5",
+        "acceptedCatalogOwner": "3637555f-e4df-5612-ae65-c40de43f4ba5"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Rechtslehre.json",
+        "landscapeId": "ee6e50e8-7cad-5934-95ca-2c8a3707d6ff",
+        "acceptedCatalogOwner": "ee6e50e8-7cad-5934-95ca-2c8a3707d6ff"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Russisch.json",
+        "landscapeId": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7",
+        "acceptedCatalogOwner": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Sozialpsychologie.json",
+        "landscapeId": "a567690f-aed6-517b-a2e9-4b3686b17543",
+        "acceptedCatalogOwner": "a567690f-aed6-517b-a2e9-4b3686b17543"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Sozialwirtschaft_und_Recht.json",
+        "landscapeId": "f3084fef-7257-5980-8f00-764069d36438",
+        "acceptedCatalogOwner": "f3084fef-7257-5980-8f00-764069d36438"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Soziologie.json",
+        "landscapeId": "625b46b2-9324-5c46-abd6-d3c5d08848a6",
+        "acceptedCatalogOwner": "625b46b2-9324-5c46-abd6-d3c5d08848a6"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Spanisch.json",
+        "landscapeId": "8dba4715-f75e-5339-9e99-02236e4b80dd",
+        "acceptedCatalogOwner": "8dba4715-f75e-5339-9e99-02236e4b80dd"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Spektrum_der_Gesundheit.json",
+        "landscapeId": "7ca133af-48d3-5d89-abbb-497fb1dda570",
+        "acceptedCatalogOwner": "7ca133af-48d3-5d89-abbb-497fb1dda570"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Studier-_und_Arbeitstechniken.json",
+        "landscapeId": "3dcafcab-3793-5e95-899e-b4c81ddace55",
+        "acceptedCatalogOwner": "3dcafcab-3793-5e95-899e-b4c81ddace55"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Technologie.json",
+        "landscapeId": "11f69044-510e-515c-a224-d74e06858145",
+        "acceptedCatalogOwner": "11f69044-510e-515c-a224-d74e06858145"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Volkswirtschaftslehre.json",
+        "landscapeId": "73a601d9-f633-5eff-8f6c-cbb319df5309",
+        "acceptedCatalogOwner": "73a601d9-f633-5eff-8f6c-cbb319df5309"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Wirtschaft_Aktuell.json",
+        "landscapeId": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb",
+        "acceptedCatalogOwner": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb"
+      },
+      {
+        "path": "curricula/DE/BY/Fachoberschule/Wirtschaft_und_Recht.json",
+        "landscapeId": "4959d7df-e430-5c1d-bb7b-873d6252a27f",
+        "acceptedCatalogOwner": "4959d7df-e430-5c1d-bb7b-873d6252a27f"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Deutsch_als_Zweitsprache.json",
+        "landscapeId": "4199f791-fbef-5165-9957-83da2f715a83",
+        "acceptedCatalogOwner": "4199f791-fbef-5165-9957-83da2f715a83"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Heimat-_und_Sachunterricht.json",
+        "landscapeId": "20757532-1457-5247-b220-c8e7e5b37653",
+        "acceptedCatalogOwner": "20757532-1457-5247-b220-c8e7e5b37653"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Islamischer_Unterricht.json",
+        "landscapeId": "5eaa8bbc-c07a-58d3-9411-e79949c5af27",
+        "acceptedCatalogOwner": "5eaa8bbc-c07a-58d3-9411-e79949c5af27"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Orthodoxe_Religionslehre.json",
+        "landscapeId": "22b5ef38-ad0e-5393-8e0f-93c94fa71597",
+        "acceptedCatalogOwner": "22b5ef38-ad0e-5393-8e0f-93c94fa71597"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Grundschule/Werken_und_Gestalten.json",
+        "landscapeId": "9e1a1d5c-b387-5601-86fe-4279da826c44",
+        "acceptedCatalogOwner": "9e1a1d5c-b387-5601-86fe-4279da826c44"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Buchführung.json",
+        "landscapeId": "d4d3f99b-f790-5c17-8dde-a40675d69927",
+        "acceptedCatalogOwner": "d4d3f99b-f790-5c17-8dde-a40675d69927"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Deutsch_als_Zweitsprache.json",
+        "landscapeId": "4199f791-fbef-5165-9957-83da2f715a83",
+        "acceptedCatalogOwner": "4199f791-fbef-5165-9957-83da2f715a83"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Ernährung_und_Soziales.json",
+        "landscapeId": "8280ce82-2976-5fab-807d-1629bb540f72",
+        "acceptedCatalogOwner": "8280ce82-2976-5fab-807d-1629bb540f72"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Geschichte_Politik_Geographie.json",
+        "landscapeId": "fbe7cfbb-9139-5bf5-9281-7d63405900de",
+        "acceptedCatalogOwner": "fbe7cfbb-9139-5bf5-9281-7d63405900de"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Informatik.json",
+        "landscapeId": "1af3eba8-749f-5359-8f12-18f87b13616c",
+        "acceptedCatalogOwner": "1af3eba8-749f-5359-8f12-18f87b13616c"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Informatik_und_digitales_Gestalten.json",
+        "landscapeId": "edd55dc5-43a5-583d-81c6-dbf1371c0b2f",
+        "acceptedCatalogOwner": "edd55dc5-43a5-583d-81c6-dbf1371c0b2f"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Islamischer_Unterricht.json",
+        "landscapeId": "5eaa8bbc-c07a-58d3-9411-e79949c5af27",
+        "acceptedCatalogOwner": "5eaa8bbc-c07a-58d3-9411-e79949c5af27"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Natur_und_Technik.json",
+        "landscapeId": "345d5386-d465-5847-b1b6-181e3dae4b68",
+        "acceptedCatalogOwner": "345d5386-d465-5847-b1b6-181e3dae4b68"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Orthodoxe_Religionslehre.json",
+        "landscapeId": "22b5ef38-ad0e-5393-8e0f-93c94fa71597",
+        "acceptedCatalogOwner": "22b5ef38-ad0e-5393-8e0f-93c94fa71597"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Tastschreiben_(Lehrgang).json",
+        "landscapeId": "bcec3f9b-1c5d-5343-91be-d0439e89d28e",
+        "acceptedCatalogOwner": "bcec3f9b-1c5d-5343-91be-d0439e89d28e"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Technik.json",
+        "landscapeId": "4ab9d528-7b34-59d8-858d-ff8f2023476e",
+        "acceptedCatalogOwner": "4ab9d528-7b34-59d8-858d-ff8f2023476e"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Werken_und_Gestalten.json",
+        "landscapeId": "9e1a1d5c-b387-5601-86fe-4279da826c44",
+        "acceptedCatalogOwner": "9e1a1d5c-b387-5601-86fe-4279da826c44"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Wirtschaft_und_Beruf.json",
+        "landscapeId": "6421155b-7084-5781-9206-f5187ddd7394",
+        "acceptedCatalogOwner": "6421155b-7084-5781-9206-f5187ddd7394"
+      },
+      {
+        "path": "curricula/DE/BY/Mittelschule/Wirtschaft_und_Kommunikation.json",
+        "landscapeId": "dafed27f-904b-5714-8b5f-68f762a1302a",
+        "acceptedCatalogOwner": "dafed27f-904b-5714-8b5f-68f762a1302a"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Betriebswirtschaftslehre___Rechnungswesen.json",
+        "landscapeId": "763353ee-41c3-557f-982c-d5a350d05d34",
+        "acceptedCatalogOwner": "763353ee-41c3-557f-982c-d5a350d05d34"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Biologie.json",
+        "landscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "acceptedCatalogOwner": "357a7003-b636-570e-a0bd-6bb63518d2f6"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Chemie.json",
+        "landscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "acceptedCatalogOwner": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Ernährung_und_Gesundheit.json",
+        "landscapeId": "17b0cd35-353f-55c2-8205-dd8b237cbd18",
+        "acceptedCatalogOwner": "17b0cd35-353f-55c2-8205-dd8b237cbd18"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Französisch.json",
+        "landscapeId": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c",
+        "acceptedCatalogOwner": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Geographie.json",
+        "landscapeId": "20c7d57c-42e2-5e7c-95af-7ccfa729c805",
+        "acceptedCatalogOwner": "20c7d57c-42e2-5e7c-95af-7ccfa729c805"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Geschichte.json",
+        "landscapeId": "01c2ba7a-ebd4-5840-bc09-123d7b31c914",
+        "acceptedCatalogOwner": "01c2ba7a-ebd4-5840-bc09-123d7b31c914"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Informationstechnologie.json",
+        "landscapeId": "34521b08-98d2-5aa0-b302-7c495c0d43e9",
+        "acceptedCatalogOwner": "34521b08-98d2-5aa0-b302-7c495c0d43e9"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Islamischer_Unterricht.json",
+        "landscapeId": "5eaa8bbc-c07a-58d3-9411-e79949c5af27",
+        "acceptedCatalogOwner": "5eaa8bbc-c07a-58d3-9411-e79949c5af27"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Israelitische_Religionslehre.json",
+        "landscapeId": "4134ceec-41d9-5f60-b429-816e4dbe08f6",
+        "acceptedCatalogOwner": "4134ceec-41d9-5f60-b429-816e4dbe08f6"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Orthodoxe_Religionslehre.json",
+        "landscapeId": "22b5ef38-ad0e-5393-8e0f-93c94fa71597",
+        "acceptedCatalogOwner": "22b5ef38-ad0e-5393-8e0f-93c94fa71597"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Physik.json",
+        "landscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+        "acceptedCatalogOwner": "42c2f7e3-91b4-5de8-bef0-d563440e9d52"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Politik_und_Gesellschaft.json",
+        "landscapeId": "486a8278-39b2-5450-96f8-1076a47b655b",
+        "acceptedCatalogOwner": "486a8278-39b2-5450-96f8-1076a47b655b"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Soziallehre.json",
+        "landscapeId": "1fd41da4-bd08-5449-aa1d-805693442413",
+        "acceptedCatalogOwner": "1fd41da4-bd08-5449-aa1d-805693442413"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Sozialwesen.json",
+        "landscapeId": "95c6edc1-8f3b-54ae-9f41-92095530ea2c",
+        "acceptedCatalogOwner": "95c6edc1-8f3b-54ae-9f41-92095530ea2c"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Spanisch.json",
+        "landscapeId": "8dba4715-f75e-5339-9e99-02236e4b80dd",
+        "acceptedCatalogOwner": "8dba4715-f75e-5339-9e99-02236e4b80dd"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Textiles_Gestalten.json",
+        "landscapeId": "d7616a4f-17db-5134-9c19-265025d11ddf",
+        "acceptedCatalogOwner": "d7616a4f-17db-5134-9c19-265025d11ddf"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Werken.json",
+        "landscapeId": "a42efcd4-6ef3-50c7-9d20-bc03e86c509e",
+        "acceptedCatalogOwner": "a42efcd4-6ef3-50c7-9d20-bc03e86c509e"
+      },
+      {
+        "path": "curricula/DE/BY/Realschule/Wirtschaft_und_Recht.json",
+        "landscapeId": "4959d7df-e430-5c1d-bb7b-873d6252a27f",
+        "acceptedCatalogOwner": "4959d7df-e430-5c1d-bb7b-873d6252a27f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_BSC_INFORMATIK.de.json",
+        "landscapeId": "d30a3203-cd9a-57b5-9cb9-ef2fb86d49a9",
+        "acceptedCatalogOwner": "d30a3203-cd9a-57b5-9cb9-ef2fb86d49a9"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0001.de.json",
+        "landscapeId": "ec7f7f30-e894-537b-9b15-473a5da6e5be",
+        "acceptedCatalogOwner": "ec7f7f30-e894-537b-9b15-473a5da6e5be"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0002.de.json",
+        "landscapeId": "101570e5-1758-5c07-8ed9-2d23e639c35b",
+        "acceptedCatalogOwner": "101570e5-1758-5c07-8ed9-2d23e639c35b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0003.de.json",
+        "landscapeId": "52b6c839-6e00-51e9-ac0d-1f39cdd4df97",
+        "acceptedCatalogOwner": "52b6c839-6e00-51e9-ac0d-1f39cdd4df97"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0004.de.json",
+        "landscapeId": "ad5f3d97-de86-53fd-a041-4507136e95b9",
+        "acceptedCatalogOwner": "ad5f3d97-de86-53fd-a041-4507136e95b9"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0005.de.json",
+        "landscapeId": "be7d301e-43e2-5e1a-bbfa-8f6cb25b0576",
+        "acceptedCatalogOwner": "be7d301e-43e2-5e1a-bbfa-8f6cb25b0576"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0006.de.json",
+        "landscapeId": "ccd54f86-df8d-5fae-bdbb-e9437f51dffc",
+        "acceptedCatalogOwner": "ccd54f86-df8d-5fae-bdbb-e9437f51dffc"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0007.de.json",
+        "landscapeId": "e610bf12-c8fc-5d64-b48c-3fec90a58634",
+        "acceptedCatalogOwner": "e610bf12-c8fc-5d64-b48c-3fec90a58634"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0008.de.json",
+        "landscapeId": "88a38646-20b8-5d6e-975f-d69198a5b0df",
+        "acceptedCatalogOwner": "88a38646-20b8-5d6e-975f-d69198a5b0df"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0009.de.json",
+        "landscapeId": "53101276-6415-56e6-99bf-5d7b5b95a97f",
+        "acceptedCatalogOwner": "53101276-6415-56e6-99bf-5d7b5b95a97f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0010.de.json",
+        "landscapeId": "c67700e8-3101-5dbb-9340-7ca30ad553d5",
+        "acceptedCatalogOwner": "c67700e8-3101-5dbb-9340-7ca30ad553d5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0011.de.json",
+        "landscapeId": "3697deca-d3ab-5638-9cf4-4135785c9349",
+        "acceptedCatalogOwner": "3697deca-d3ab-5638-9cf4-4135785c9349"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0012.de.json",
+        "landscapeId": "992dfd83-57f5-5202-afa7-edb5aae551d4",
+        "acceptedCatalogOwner": "992dfd83-57f5-5202-afa7-edb5aae551d4"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0014.de.json",
+        "landscapeId": "20795c7f-7be3-58ca-8fe9-736dfdbd817d",
+        "acceptedCatalogOwner": "20795c7f-7be3-58ca-8fe9-736dfdbd817d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0015.de.json",
+        "landscapeId": "86c55767-9ffc-5254-9f16-8e0e868a1a68",
+        "acceptedCatalogOwner": "86c55767-9ffc-5254-9f16-8e0e868a1a68"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0018.de.json",
+        "landscapeId": "b6f19d31-d6e7-589a-89a6-db72f8c3a949",
+        "acceptedCatalogOwner": "b6f19d31-d6e7-589a-89a6-db72f8c3a949"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0019.de.json",
+        "landscapeId": "73b77159-6c32-5c89-b179-d9117bc78e6b",
+        "acceptedCatalogOwner": "73b77159-6c32-5c89-b179-d9117bc78e6b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_IN0042.de.json",
+        "landscapeId": "ef0528a3-c2d2-514e-8c4e-413513864f9f",
+        "acceptedCatalogOwner": "ef0528a3-c2d2-514e-8c4e-413513864f9f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_MA0901.de.json",
+        "landscapeId": "da000354-52df-57b8-a679-d73c3522773d",
+        "acceptedCatalogOwner": "da000354-52df-57b8-a679-d73c3522773d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Informatics/BSc_Informatics/json/DE_BAY_U_TUM_MA0902.de.json",
+        "landscapeId": "0b244bba-353e-57af-96bd-e95a9aecfa5f",
+        "acceptedCatalogOwner": "0b244bba-353e-57af-96bd-e95a9aecfa5f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_MBA.de.json",
+        "landscapeId": "32da927a-0e25-5a75-8fde-acc96c404cc8",
+        "acceptedCatalogOwner": "32da927a-0e25-5a75-8fde-acc96c404cc8"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_MGT201092.de.json",
+        "landscapeId": "6671f9e1-deca-5341-8de7-1fc933f12ebd",
+        "acceptedCatalogOwner": "6671f9e1-deca-5341-8de7-1fc933f12ebd"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_MGT201098.de.json",
+        "landscapeId": "0a898185-70c2-5a56-ab4a-4144dc20d478",
+        "acceptedCatalogOwner": "0a898185-70c2-5a56-ab4a-4144dc20d478"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201052.de.json",
+        "landscapeId": "8bd92311-7d32-5cb1-b513-3cc0f36e21ef",
+        "acceptedCatalogOwner": "8bd92311-7d32-5cb1-b513-3cc0f36e21ef"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201053.de.json",
+        "landscapeId": "dc7acfab-3b36-595b-bda1-8a959b093bb5",
+        "acceptedCatalogOwner": "dc7acfab-3b36-595b-bda1-8a959b093bb5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201054.de.json",
+        "landscapeId": "5e7c5b7a-a2e1-5453-86ac-556a6004390c",
+        "acceptedCatalogOwner": "5e7c5b7a-a2e1-5453-86ac-556a6004390c"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201055.de.json",
+        "landscapeId": "edd9d816-f19e-50b4-8b99-d500b112e356",
+        "acceptedCatalogOwner": "edd9d816-f19e-50b4-8b99-d500b112e356"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201056.de.json",
+        "landscapeId": "e7f86e19-ede8-5bb6-9485-d7c6b2dd8980",
+        "acceptedCatalogOwner": "e7f86e19-ede8-5bb6-9485-d7c6b2dd8980"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201057.de.json",
+        "landscapeId": "2d2881d2-9274-5929-98d9-55f5340670ab",
+        "acceptedCatalogOwner": "2d2881d2-9274-5929-98d9-55f5340670ab"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201058.de.json",
+        "landscapeId": "2b91a97c-c323-5cc0-afe0-812c9abcf1ce",
+        "acceptedCatalogOwner": "2b91a97c-c323-5cc0-afe0-812c9abcf1ce"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201059.de.json",
+        "landscapeId": "b51fb838-e915-5337-ba0f-bf8f7a17db23",
+        "acceptedCatalogOwner": "b51fb838-e915-5337-ba0f-bf8f7a17db23"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201060.de.json",
+        "landscapeId": "532a570c-f458-597f-bf73-607881ecb3b7",
+        "acceptedCatalogOwner": "532a570c-f458-597f-bf73-607881ecb3b7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201061.de.json",
+        "landscapeId": "c042a35c-be25-567e-afd3-415754ad57a5",
+        "acceptedCatalogOwner": "c042a35c-be25-567e-afd3-415754ad57a5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201062.de.json",
+        "landscapeId": "cbfb0384-d561-5122-a452-d4b409c4668f",
+        "acceptedCatalogOwner": "cbfb0384-d561-5122-a452-d4b409c4668f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201063.de.json",
+        "landscapeId": "27199db4-b33f-596f-9c7e-af10ba93e247",
+        "acceptedCatalogOwner": "27199db4-b33f-596f-9c7e-af10ba93e247"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201064.de.json",
+        "landscapeId": "81f5e46f-05e6-526c-8a8a-fad1711393c1",
+        "acceptedCatalogOwner": "81f5e46f-05e6-526c-8a8a-fad1711393c1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201074.de.json",
+        "landscapeId": "e94fbb34-c1c5-5cf5-b746-7fc491a93c45",
+        "acceptedCatalogOwner": "e94fbb34-c1c5-5cf5-b746-7fc491a93c45"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201095.de.json",
+        "landscapeId": "ea3bdef6-eaec-574b-89c5-ce80d485dd29",
+        "acceptedCatalogOwner": "ea3bdef6-eaec-574b-89c5-ce80d485dd29"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI201096.de.json",
+        "landscapeId": "33dacd69-a1a0-51e2-9941-0d6690bb6bb7",
+        "acceptedCatalogOwner": "33dacd69-a1a0-51e2-9941-0d6690bb6bb7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/MBA/json/DE_BAY_U_TUM_WI900259.de.json",
+        "landscapeId": "b091f34e-21e7-5535-994d-82437960cd61",
+        "acceptedCatalogOwner": "b091f34e-21e7-5535-994d-82437960cd61"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_BSC_MATHEMATIK.de.json",
+        "landscapeId": "6bb3bda5-ac65-466b-8595-c14d8d0223dc",
+        "acceptedCatalogOwner": "6bb3bda5-ac65-466b-8595-c14d8d0223dc"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_CIT1130005.de.json",
+        "landscapeId": "8ca1506a-0915-4623-aad7-45647f80f840",
+        "acceptedCatalogOwner": "8ca1506a-0915-4623-aad7-45647f80f840"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_CIT1130011.de.json",
+        "landscapeId": "cb868e8f-70bf-4f8a-a68a-96a16f4344c9",
+        "acceptedCatalogOwner": "cb868e8f-70bf-4f8a-a68a-96a16f4344c9"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_CIT123000.de.json",
+        "landscapeId": "df2b5839-6676-4b97-a97e-d65ae3ec0260",
+        "acceptedCatalogOwner": "df2b5839-6676-4b97-a97e-d65ae3ec0260"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_CIT413041.de.json",
+        "landscapeId": "a9550da1-62c5-4ae0-b1e0-9ee0f8490385",
+        "acceptedCatalogOwner": "a9550da1-62c5-4ae0-b1e0-9ee0f8490385"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_IN0001.de.json",
+        "landscapeId": "59d872f3-bd39-4130-b49f-cc6aca4a0317",
+        "acceptedCatalogOwner": "59d872f3-bd39-4130-b49f-cc6aca4a0317"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_IN0002.de.json",
+        "landscapeId": "4e6fa825-9703-4cec-a6a9-0d91b1608a04",
+        "acceptedCatalogOwner": "4e6fa825-9703-4cec-a6a9-0d91b1608a04"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0001.de.json",
+        "landscapeId": "0c17135b-3e35-4426-beec-53548b2c0420",
+        "acceptedCatalogOwner": "0c17135b-3e35-4426-beec-53548b2c0420"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0002.de.json",
+        "landscapeId": "3321e6bb-d63f-44cf-b36b-79469dfe97d5",
+        "acceptedCatalogOwner": "3321e6bb-d63f-44cf-b36b-79469dfe97d5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0003.de.json",
+        "landscapeId": "acf682c4-299d-49a0-bc46-041ccf46e08c",
+        "acceptedCatalogOwner": "acf682c4-299d-49a0-bc46-041ccf46e08c"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0004.de.json",
+        "landscapeId": "a469bdf4-5f5b-42d7-9250-4e7140bd0144",
+        "acceptedCatalogOwner": "a469bdf4-5f5b-42d7-9250-4e7140bd0144"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0006.de.json",
+        "landscapeId": "dd403b93-f3c0-48ef-921c-f98941177dd0",
+        "acceptedCatalogOwner": "dd403b93-f3c0-48ef-921c-f98941177dd0"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0007.de.json",
+        "landscapeId": "55a6f7e9-91aa-41f1-a228-37edfd270f66",
+        "acceptedCatalogOwner": "55a6f7e9-91aa-41f1-a228-37edfd270f66"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0008.de.json",
+        "landscapeId": "15c54ccb-193e-4a29-8a6e-f27b5b675775",
+        "acceptedCatalogOwner": "15c54ccb-193e-4a29-8a6e-f27b5b675775"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0009.de.json",
+        "landscapeId": "22570e6d-3e98-462c-bd43-02e6cbc46d98",
+        "acceptedCatalogOwner": "22570e6d-3e98-462c-bd43-02e6cbc46d98"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA0010.de.json",
+        "landscapeId": "60508a25-df28-44dd-91f7-a442dc928597",
+        "acceptedCatalogOwner": "60508a25-df28-44dd-91f7-a442dc928597"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2006.de.json",
+        "landscapeId": "d3d07107-c5d1-4b8b-a155-b3d309aed57c",
+        "acceptedCatalogOwner": "d3d07107-c5d1-4b8b-a155-b3d309aed57c"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2010.de.json",
+        "landscapeId": "9f7de749-7835-4928-a0f3-542f6ef8c34e",
+        "acceptedCatalogOwner": "9f7de749-7835-4928-a0f3-542f6ef8c34e"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2011.de.json",
+        "landscapeId": "b4207a0e-e5be-4fee-bad1-6b5923eb4514",
+        "acceptedCatalogOwner": "b4207a0e-e5be-4fee-bad1-6b5923eb4514"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2012.de.json",
+        "landscapeId": "2fa68528-2816-4a53-a25d-db4ffcce43da",
+        "acceptedCatalogOwner": "2fa68528-2816-4a53-a25d-db4ffcce43da"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2404.de.json",
+        "landscapeId": "9d7c64d8-abab-4b44-b81a-c1aac9af2700",
+        "acceptedCatalogOwner": "9d7c64d8-abab-4b44-b81a-c1aac9af2700"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2409.de.json",
+        "landscapeId": "93ad8305-207d-4c52-9841-9ab9d0e1be60",
+        "acceptedCatalogOwner": "93ad8305-207d-4c52-9841-9ab9d0e1be60"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA2902.de.json",
+        "landscapeId": "657a84fe-f8c4-47d5-bfa8-0b7aebdaaf18",
+        "acceptedCatalogOwner": "657a84fe-f8c4-47d5-bfa8-0b7aebdaaf18"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3001.de.json",
+        "landscapeId": "547711d6-8b1b-4e35-964e-d0a67d127345",
+        "acceptedCatalogOwner": "547711d6-8b1b-4e35-964e-d0a67d127345"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3005.de.json",
+        "landscapeId": "27b1ab0a-76c0-488e-a725-1fc37382d94d",
+        "acceptedCatalogOwner": "27b1ab0a-76c0-488e-a725-1fc37382d94d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3080.de.json",
+        "landscapeId": "b58b6158-fcf6-463c-b833-5d6f04be4a42",
+        "acceptedCatalogOwner": "b58b6158-fcf6-463c-b833-5d6f04be4a42"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3081.de.json",
+        "landscapeId": "904174e1-a5e0-4146-a2b4-cd8e6eabea09",
+        "acceptedCatalogOwner": "904174e1-a5e0-4146-a2b4-cd8e6eabea09"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3203.de.json",
+        "landscapeId": "ccb951a3-9945-40ae-9f51-00fb1dc3095c",
+        "acceptedCatalogOwner": "ccb951a3-9945-40ae-9f51-00fb1dc3095c"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3204.de.json",
+        "landscapeId": "e0225518-93a2-4bf2-8ac0-05a25154fa0a",
+        "acceptedCatalogOwner": "e0225518-93a2-4bf2-8ac0-05a25154fa0a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3301.de.json",
+        "landscapeId": "0eae1b1a-6178-42cc-8233-43d79f2c89e7",
+        "acceptedCatalogOwner": "0eae1b1a-6178-42cc-8233-43d79f2c89e7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3303.de.json",
+        "landscapeId": "b72859c4-ebc2-4524-b23d-12dd04320a03",
+        "acceptedCatalogOwner": "b72859c4-ebc2-4524-b23d-12dd04320a03"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3404.de.json",
+        "landscapeId": "3ad4a1d7-576b-44db-a202-0bb5f56883ea",
+        "acceptedCatalogOwner": "3ad4a1d7-576b-44db-a202-0bb5f56883ea"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3405.de.json",
+        "landscapeId": "c20ffb06-12da-42eb-bb44-eefabcddc3aa",
+        "acceptedCatalogOwner": "c20ffb06-12da-42eb-bb44-eefabcddc3aa"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3406.de.json",
+        "landscapeId": "62b1591f-0554-4132-975c-ea0c37e80596",
+        "acceptedCatalogOwner": "62b1591f-0554-4132-975c-ea0c37e80596"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3407.de.json",
+        "landscapeId": "08ae6127-29bb-4405-91e8-969ac3fb437b",
+        "acceptedCatalogOwner": "08ae6127-29bb-4405-91e8-969ac3fb437b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3409.de.json",
+        "landscapeId": "2fc0a282-5459-49de-bbb8-71665e26a45b",
+        "acceptedCatalogOwner": "2fc0a282-5459-49de-bbb8-71665e26a45b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3503.de.json",
+        "landscapeId": "2dfc2940-92f5-4f23-b171-826ea498e025",
+        "acceptedCatalogOwner": "2dfc2940-92f5-4f23-b171-826ea498e025"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3601.de.json",
+        "landscapeId": "0eaf00a2-a36a-40e0-8ace-3758183bc94f",
+        "acceptedCatalogOwner": "0eaf00a2-a36a-40e0-8ace-3758183bc94f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA3602.de.json",
+        "landscapeId": "787289b3-ee31-414a-b101-9b5adee312ef",
+        "acceptedCatalogOwner": "787289b3-ee31-414a-b101-9b5adee312ef"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA5039.de.json",
+        "landscapeId": "3dfa555b-bce7-4048-8f14-830287caa202",
+        "acceptedCatalogOwner": "3dfa555b-bce7-4048-8f14-830287caa202"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Mathematics/BSc_Mathematics/json/DE_BAY_U_TUM_MA5120.de.json",
+        "landscapeId": "f07b9c17-8286-4198-bbce-d54e752cd8ec",
+        "acceptedCatalogOwner": "f07b9c17-8286-4198-bbce-d54e752cd8ec"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_BSC_PHYSIK.de.json",
+        "landscapeId": "4a7e9ee2-c24e-55a2-9fdc-5e3350947052",
+        "acceptedCatalogOwner": "4a7e9ee2-c24e-55a2-9fdc-5e3350947052"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_CH1104.de.json",
+        "landscapeId": "8e77b5c6-f331-5fd0-9291-ae85498b7af1",
+        "acceptedCatalogOwner": "8e77b5c6-f331-5fd0-9291-ae85498b7af1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_CIT513016.de.json",
+        "landscapeId": "3b025e50-7d68-580b-9985-ede7db536f19",
+        "acceptedCatalogOwner": "3b025e50-7d68-580b-9985-ede7db536f19"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_CIT513017.de.json",
+        "landscapeId": "db8dd7f1-5a5c-5e47-bbb6-45f7c20bf8e0",
+        "acceptedCatalogOwner": "db8dd7f1-5a5c-5e47-bbb6-45f7c20bf8e0"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_CIT513018.de.json",
+        "landscapeId": "909e3479-1fd7-57a8-90cb-5fd0aea594f5",
+        "acceptedCatalogOwner": "909e3479-1fd7-57a8-90cb-5fd0aea594f5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_CIT513019.de.json",
+        "landscapeId": "d45e05c1-b5f8-585e-82cd-3db53bcd3a39",
+        "acceptedCatalogOwner": "d45e05c1-b5f8-585e-82cd-3db53bcd3a39"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0001.de.json",
+        "landscapeId": "009e4149-185c-55b5-a523-5864527c111c",
+        "acceptedCatalogOwner": "009e4149-185c-55b5-a523-5864527c111c"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0002.de.json",
+        "landscapeId": "42c9bc02-2c46-5eef-b51d-9ee73a23de88",
+        "acceptedCatalogOwner": "42c9bc02-2c46-5eef-b51d-9ee73a23de88"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0003.de.json",
+        "landscapeId": "1752a7a0-abf3-5fdc-994d-bad6f3ea9604",
+        "acceptedCatalogOwner": "1752a7a0-abf3-5fdc-994d-bad6f3ea9604"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0004.de.json",
+        "landscapeId": "188a1e65-e592-55c5-b407-f8454f93eecb",
+        "acceptedCatalogOwner": "188a1e65-e592-55c5-b407-f8454f93eecb"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0005.de.json",
+        "landscapeId": "eed68721-7a3d-50c3-8f11-f520f044f94f",
+        "acceptedCatalogOwner": "eed68721-7a3d-50c3-8f11-f520f044f94f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0006.de.json",
+        "landscapeId": "ba42081d-7649-5bbb-b553-db8041d0be56",
+        "acceptedCatalogOwner": "ba42081d-7649-5bbb-b553-db8041d0be56"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0007.de.json",
+        "landscapeId": "da9c42d8-fffd-5be7-bd39-488f429d949f",
+        "acceptedCatalogOwner": "da9c42d8-fffd-5be7-bd39-488f429d949f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0008.de.json",
+        "landscapeId": "1aa7b165-ebcc-5a04-9927-be22b77396c5",
+        "acceptedCatalogOwner": "1aa7b165-ebcc-5a04-9927-be22b77396c5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0009.de.json",
+        "landscapeId": "5aff04bb-c269-5313-802b-c52f18220353",
+        "acceptedCatalogOwner": "5aff04bb-c269-5313-802b-c52f18220353"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0010.de.json",
+        "landscapeId": "25509923-25f0-52a3-bdda-a6822cf2325a",
+        "acceptedCatalogOwner": "25509923-25f0-52a3-bdda-a6822cf2325a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0011.de.json",
+        "landscapeId": "691ec04c-9714-5a45-85a2-81d67bdddc9f",
+        "acceptedCatalogOwner": "691ec04c-9714-5a45-85a2-81d67bdddc9f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0014.de.json",
+        "landscapeId": "d42f3633-ba29-574c-aa6d-5bc491d7f29f",
+        "acceptedCatalogOwner": "d42f3633-ba29-574c-aa6d-5bc491d7f29f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0015.de.json",
+        "landscapeId": "ff7c8664-1e90-5af4-833e-6f9bf3c4eba3",
+        "acceptedCatalogOwner": "ff7c8664-1e90-5af4-833e-6f9bf3c4eba3"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0016.de.json",
+        "landscapeId": "3d2d5451-279e-5106-8f1d-a3d239cc5496",
+        "acceptedCatalogOwner": "3d2d5451-279e-5106-8f1d-a3d239cc5496"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0017.de.json",
+        "landscapeId": "324c4b14-5818-5c44-b21f-cf8631ebdc7a",
+        "acceptedCatalogOwner": "324c4b14-5818-5c44-b21f-cf8631ebdc7a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0018.de.json",
+        "landscapeId": "5791739a-5887-5a99-b81f-3b63fd76c620",
+        "acceptedCatalogOwner": "5791739a-5887-5a99-b81f-3b63fd76c620"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0019.de.json",
+        "landscapeId": "06ffb6dc-ed97-571e-8571-51648688b4e8",
+        "acceptedCatalogOwner": "06ffb6dc-ed97-571e-8571-51648688b4e8"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0020.de.json",
+        "landscapeId": "65344459-50ef-555f-90b8-fc2640d717bb",
+        "acceptedCatalogOwner": "65344459-50ef-555f-90b8-fc2640d717bb"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0021.de.json",
+        "landscapeId": "6d252c4a-1c90-53b4-a214-f363b4797f59",
+        "acceptedCatalogOwner": "6d252c4a-1c90-53b4-a214-f363b4797f59"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0022.de.json",
+        "landscapeId": "8f0ae260-d527-5823-b903-83f607a42ee7",
+        "acceptedCatalogOwner": "8f0ae260-d527-5823-b903-83f607a42ee7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0023.de.json",
+        "landscapeId": "10073ca6-9878-561b-b8e0-57fbfe7f9e78",
+        "acceptedCatalogOwner": "10073ca6-9878-561b-b8e0-57fbfe7f9e78"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0024.de.json",
+        "landscapeId": "991e3299-24ba-5003-b5c9-5235d5aa1623",
+        "acceptedCatalogOwner": "991e3299-24ba-5003-b5c9-5235d5aa1623"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH0031.de.json",
+        "landscapeId": "e2e43724-2963-5263-9c41-a813846b9d7a",
+        "acceptedCatalogOwner": "e2e43724-2963-5263-9c41-a813846b9d7a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH8016.de.json",
+        "landscapeId": "d817f101-7ccc-5f9e-8a54-3ca905c7019e",
+        "acceptedCatalogOwner": "d817f101-7ccc-5f9e-8a54-3ca905c7019e"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/BSc_Physics/json/DE_BAY_U_TUM_PH8019.de.json",
+        "landscapeId": "b4f1cae7-622c-5b5d-a8b6-8a60424c00ba",
+        "acceptedCatalogOwner": "b4f1cae7-622c-5b5d-a8b6-8a60424c00ba"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_CIT4100004.de.json",
+        "landscapeId": "05cc66f5-c41c-5360-a637-5613a6b0001d",
+        "acceptedCatalogOwner": "05cc66f5-c41c-5360-a637-5613a6b0001d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_ED110065.de.json",
+        "landscapeId": "544bee75-0f38-57a0-a2a1-d1a7ab7f8d79",
+        "acceptedCatalogOwner": "544bee75-0f38-57a0-a2a1-d1a7ab7f8d79"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_ED110088.de.json",
+        "landscapeId": "ba7516ba-b9e6-5e81-8dd5-c5966f8b500f",
+        "acceptedCatalogOwner": "ba7516ba-b9e6-5e81-8dd5-c5966f8b500f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_ED110153.de.json",
+        "landscapeId": "e2f7f08f-37b6-51e6-b21c-ae1798fbb383",
+        "acceptedCatalogOwner": "e2f7f08f-37b6-51e6-b21c-ae1798fbb383"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_MA2409.de.json",
+        "landscapeId": "ff6ecc49-b0ad-52d0-b601-a9145e8a0a3d",
+        "acceptedCatalogOwner": "ff6ecc49-b0ad-52d0-b601-a9145e8a0a3d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_MA2902.de.json",
+        "landscapeId": "b19247b2-3f3b-57e0-992e-f8bf6f53e079",
+        "acceptedCatalogOwner": "b19247b2-3f3b-57e0-992e-f8bf6f53e079"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_MA5417.de.json",
+        "landscapeId": "7167d54c-3029-5e40-bf54-43b0ede5bcb7",
+        "acceptedCatalogOwner": "7167d54c-3029-5e40-bf54-43b0ede5bcb7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_NAT3001.de.json",
+        "landscapeId": "53c45b1d-5f52-51ca-a4a6-9ec00cdc1b74",
+        "acceptedCatalogOwner": "53c45b1d-5f52-51ca-a4a6-9ec00cdc1b74"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_NAT3002.de.json",
+        "landscapeId": "83d7c5a1-e23d-5a41-b636-13c4dca65660",
+        "acceptedCatalogOwner": "83d7c5a1-e23d-5a41-b636-13c4dca65660"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_NAT3031.de.json",
+        "landscapeId": "fa45129a-e82d-58a7-a6de-61fe6883420a",
+        "acceptedCatalogOwner": "fa45129a-e82d-58a7-a6de-61fe6883420a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH1001.de.json",
+        "landscapeId": "ee52cde6-4142-575d-b8a6-02b862bd95ab",
+        "acceptedCatalogOwner": "ee52cde6-4142-575d-b8a6-02b862bd95ab"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH1007.de.json",
+        "landscapeId": "29150430-dd25-5640-8189-42afda36b6f4",
+        "acceptedCatalogOwner": "29150430-dd25-5640-8189-42afda36b6f4"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH1008.de.json",
+        "landscapeId": "a891b647-459d-567f-888f-db565f94c259",
+        "acceptedCatalogOwner": "a891b647-459d-567f-888f-db565f94c259"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2027.de.json",
+        "landscapeId": "bd45786e-2f10-56bc-816e-cdeb43dcc74f",
+        "acceptedCatalogOwner": "bd45786e-2f10-56bc-816e-cdeb43dcc74f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2041.de.json",
+        "landscapeId": "c34e128d-0f4b-5b6f-b851-7542cfb54de7",
+        "acceptedCatalogOwner": "c34e128d-0f4b-5b6f-b851-7542cfb54de7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2043.de.json",
+        "landscapeId": "4b1c6caf-f50b-5ae4-aa89-a76b1a95f71a",
+        "acceptedCatalogOwner": "4b1c6caf-f50b-5ae4-aa89-a76b1a95f71a"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2057.de.json",
+        "landscapeId": "8e646a58-d273-571b-91d7-b5e289898929",
+        "acceptedCatalogOwner": "8e646a58-d273-571b-91d7-b5e289898929"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2116.de.json",
+        "landscapeId": "04e308dc-6cb5-53f9-ba2a-6e372e6bc5f0",
+        "acceptedCatalogOwner": "04e308dc-6cb5-53f9-ba2a-6e372e6bc5f0"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2122.de.json",
+        "landscapeId": "a4d94285-a628-51c8-b561-a128cc6fe2df",
+        "acceptedCatalogOwner": "a4d94285-a628-51c8-b561-a128cc6fe2df"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2242.de.json",
+        "landscapeId": "1c8baeef-4bfc-5450-a5f7-033406ce173f",
+        "acceptedCatalogOwner": "1c8baeef-4bfc-5450-a5f7-033406ce173f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2248.de.json",
+        "landscapeId": "2220e9e9-0f09-50f5-88fa-89d0a78e1d17",
+        "acceptedCatalogOwner": "2220e9e9-0f09-50f5-88fa-89d0a78e1d17"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_PH2256.de.json",
+        "landscapeId": "2770efa8-6b92-5039-944d-919ddae6d21f",
+        "acceptedCatalogOwner": "2770efa8-6b92-5039-944d-919ddae6d21f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Physics/MSc_TMP/json/DE_BAY_U_TUM_TMP_MASTER.de.json",
+        "landscapeId": "9382e4f4-c148-51eb-b7da-b26582466fc5",
+        "acceptedCatalogOwner": "9382e4f4-c148-51eb-b7da-b26582466fc5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_CH3034.de.json",
+        "landscapeId": "9c9f820e-bcc2-555d-8bc2-ac7be9f0402e",
+        "acceptedCatalogOwner": "9c9f820e-bcc2-555d-8bc2-ac7be9f0402e"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_CH3337.de.json",
+        "landscapeId": "7eefce5d-926f-5667-9255-61335a30b04e",
+        "acceptedCatalogOwner": "7eefce5d-926f-5667-9255-61335a30b04e"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_CIT4330012.de.json",
+        "landscapeId": "61a7b6f3-944f-5ba8-844e-09fa06fbbbe7",
+        "acceptedCatalogOwner": "61a7b6f3-944f-5ba8-844e-09fa06fbbbe7"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_CIT4330013.de.json",
+        "landscapeId": "79573beb-65f8-5adc-9eb4-9c13402a6560",
+        "acceptedCatalogOwner": "79573beb-65f8-5adc-9eb4-9c13402a6560"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_CIT4430005.de.json",
+        "landscapeId": "93e5e6f0-57b1-5d7d-a061-93c7f2b813e4",
+        "acceptedCatalogOwner": "93e5e6f0-57b1-5d7d-a061-93c7f2b813e4"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_EI70760.de.json",
+        "landscapeId": "2747a090-bdeb-5e99-9ce2-f778f3fa90a3",
+        "acceptedCatalogOwner": "2747a090-bdeb-5e99-9ce2-f778f3fa90a3"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_EI76471.de.json",
+        "landscapeId": "01618ba4-8263-5f25-ae37-05645301ed3f",
+        "acceptedCatalogOwner": "01618ba4-8263-5f25-ae37-05645301ed3f"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_EI77006.de.json",
+        "landscapeId": "c22ca2f7-d2cd-53e5-bdf7-83c25934d111",
+        "acceptedCatalogOwner": "c22ca2f7-d2cd-53e5-bdf7-83c25934d111"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_IN2381.de.json",
+        "landscapeId": "87941097-1259-5ac3-a115-a22e44d6dde1",
+        "acceptedCatalogOwner": "87941097-1259-5ac3-a115-a22e44d6dde1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_IN2388.de.json",
+        "landscapeId": "8978db40-080f-5442-b3b0-c172b2dfd66d",
+        "acceptedCatalogOwner": "8978db40-080f-5442-b3b0-c172b2dfd66d"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_IN2400.de.json",
+        "landscapeId": "4b2c70b5-7d6a-5075-a457-5bd424a8af94",
+        "acceptedCatalogOwner": "4b2c70b5-7d6a-5075-a457-5bd424a8af94"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_MA3001.de.json",
+        "landscapeId": "d9f6a19f-7b5a-50b9-b833-3f7e3f355b25",
+        "acceptedCatalogOwner": "d9f6a19f-7b5a-50b9-b833-3f7e3f355b25"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_MSC_QST.de.json",
+        "landscapeId": "153a5498-9bda-539b-8105-a6a6874286f1",
+        "acceptedCatalogOwner": "153a5498-9bda-539b-8105-a6a6874286f1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT3011.de.json",
+        "landscapeId": "5fa99951-0133-5f02-a72a-b5cf7b72ed65",
+        "acceptedCatalogOwner": "5fa99951-0133-5f02-a72a-b5cf7b72ed65"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT3013.de.json",
+        "landscapeId": "08c1a95c-ca30-5a26-8b3f-1adef997e1d1",
+        "acceptedCatalogOwner": "08c1a95c-ca30-5a26-8b3f-1adef997e1d1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT3034.de.json",
+        "landscapeId": "08ce2cfb-c279-57d1-ba2d-8b83991e65f9",
+        "acceptedCatalogOwner": "08ce2cfb-c279-57d1-ba2d-8b83991e65f9"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT3035.de.json",
+        "landscapeId": "c48d0201-d24c-5379-bbb6-711639f35776",
+        "acceptedCatalogOwner": "c48d0201-d24c-5379-bbb6-711639f35776"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT3036.de.json",
+        "landscapeId": "87564783-be4c-5421-ab82-2c3b1bca9780",
+        "acceptedCatalogOwner": "87564783-be4c-5421-ab82-2c3b1bca9780"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT5008m.de.json",
+        "landscapeId": "a71bfe45-126b-50cb-b5b4-43e37167f53b",
+        "acceptedCatalogOwner": "a71bfe45-126b-50cb-b5b4-43e37167f53b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT5018m.de.json",
+        "landscapeId": "9d16393c-5d90-5668-a4eb-751344c94633",
+        "acceptedCatalogOwner": "9d16393c-5d90-5668-a4eb-751344c94633"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT5020m.de.json",
+        "landscapeId": "c273ab01-0b13-5184-8723-69d5f63a9bf9",
+        "acceptedCatalogOwner": "c273ab01-0b13-5184-8723-69d5f63a9bf9"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT5030m.de.json",
+        "landscapeId": "a07aae22-8ab4-508e-b9ee-3c569ee018fd",
+        "acceptedCatalogOwner": "a07aae22-8ab4-508e-b9ee-3c569ee018fd"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT5040m.de.json",
+        "landscapeId": "83ab3227-9098-52e4-a1bf-f25c62196e8e",
+        "acceptedCatalogOwner": "83ab3227-9098-52e4-a1bf-f25c62196e8e"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT7001.de.json",
+        "landscapeId": "581031aa-8820-59ed-a462-7b5ba5d307af",
+        "acceptedCatalogOwner": "581031aa-8820-59ed-a462-7b5ba5d307af"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT7003.de.json",
+        "landscapeId": "d46ce2e7-77aa-5a5a-8c79-38355bb3b2e5",
+        "acceptedCatalogOwner": "d46ce2e7-77aa-5a5a-8c79-38355bb3b2e5"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT7011.de.json",
+        "landscapeId": "1f72c73e-3839-5cc3-a7fc-4442ed5d4e2b",
+        "acceptedCatalogOwner": "1f72c73e-3839-5cc3-a7fc-4442ed5d4e2b"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT7026.de.json",
+        "landscapeId": "3e92940e-6425-5a2e-b5c4-866b0ada62c1",
+        "acceptedCatalogOwner": "3e92940e-6425-5a2e-b5c4-866b0ada62c1"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_NAT7030.de.json",
+        "landscapeId": "2b642320-a24f-5084-be56-9785d8f927fc",
+        "acceptedCatalogOwner": "2b642320-a24f-5084-be56-9785d8f927fc"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_PH2127.de.json",
+        "landscapeId": "257585e5-e1c3-5e96-bb40-f4c970f8adb0",
+        "acceptedCatalogOwner": "257585e5-e1c3-5e96-bb40-f4c970f8adb0"
+      },
+      {
+        "path": "curricula/DE/BY/TUM/Quantum_Science_and_Technology/MSc_QST/json/DE_BAY_U_TUM_PH2141.de.json",
+        "landscapeId": "f4845ddd-0214-5ee3-a152-a03a2d506684",
+        "acceptedCatalogOwner": "f4845ddd-0214-5ee3-a152-a03a2d506684"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Betriebswirtschaftliche_Steuerung_und_Kontrolle.json",
+        "landscapeId": "5b82d893-ecbd-5b77-af62-0fb14d3a9933",
+        "acceptedCatalogOwner": "5b82d893-ecbd-5b77-af62-0fb14d3a9933"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Digitale_Bildung.json",
+        "landscapeId": "a5885922-3e0d-5269-86a0-8abda9045288",
+        "acceptedCatalogOwner": "a5885922-3e0d-5269-86a0-8abda9045288"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/E-Commerce.json",
+        "landscapeId": "a7dad4dc-8186-5846-8a3e-fead44517418",
+        "acceptedCatalogOwner": "a7dad4dc-8186-5846-8a3e-fead44517418"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Fit_for_Finance.json",
+        "landscapeId": "a40413c9-8e14-5074-9522-9a8a6bdcf3fc",
+        "acceptedCatalogOwner": "a40413c9-8e14-5074-9522-9a8a6bdcf3fc"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Gamification.json",
+        "landscapeId": "87a6f636-a75e-5946-a7fb-baba5f4aa66b",
+        "acceptedCatalogOwner": "87a6f636-a75e-5946-a7fb-baba5f4aa66b"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Geschichte_Politik_und_Gesellschaft_(WS).json",
+        "landscapeId": "891f1914-d09e-53f6-8ff8-b26ae17ec5c0",
+        "acceptedCatalogOwner": "891f1914-d09e-53f6-8ff8-b26ae17ec5c0"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Gesundheit.json",
+        "landscapeId": "9c1d5b2c-a066-593e-a2d8-70f1311c3f55",
+        "acceptedCatalogOwner": "9c1d5b2c-a066-593e-a2d8-70f1311c3f55"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Informationsverarbeitung.json",
+        "landscapeId": "c1e028a5-0e89-5ceb-a71e-145c69874088",
+        "acceptedCatalogOwner": "c1e028a5-0e89-5ceb-a71e-145c69874088"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Life_Skills.json",
+        "landscapeId": "adf3a3c0-8f6b-58c7-8021-d677ea89d816",
+        "acceptedCatalogOwner": "adf3a3c0-8f6b-58c7-8021-d677ea89d816"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Mensch,_Umwelt,_Technik.json",
+        "landscapeId": "7088a08c-d920-572f-91fb-bd374127efb1",
+        "acceptedCatalogOwner": "7088a08c-d920-572f-91fb-bd374127efb1"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Mensch_und_Umwelt.json",
+        "landscapeId": "0b187683-a453-5992-ab14-88722d80392a",
+        "acceptedCatalogOwner": "0b187683-a453-5992-ab14-88722d80392a"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Musisch-ästhetische_Bildung.json",
+        "landscapeId": "a3c8d8aa-4101-55ea-a095-a5fa6fdae9af",
+        "acceptedCatalogOwner": "a3c8d8aa-4101-55ea-a095-a5fa6fdae9af"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Politik_und_Gesellschaft.json",
+        "landscapeId": "486a8278-39b2-5450-96f8-1076a47b655b",
+        "acceptedCatalogOwner": "486a8278-39b2-5450-96f8-1076a47b655b"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Robotik.json",
+        "landscapeId": "d7432ba0-76fc-51da-96e6-c2c1425498db",
+        "acceptedCatalogOwner": "d7432ba0-76fc-51da-96e6-c2c1425498db"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Tourismus.json",
+        "landscapeId": "c6a4fd5c-0158-565f-ad89-514152b3c20a",
+        "acceptedCatalogOwner": "c6a4fd5c-0158-565f-ad89-514152b3c20a"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Umwelttechnik.json",
+        "landscapeId": "4cdb8edc-b64d-5b64-8f10-60c860ba3134",
+        "acceptedCatalogOwner": "4cdb8edc-b64d-5b64-8f10-60c860ba3134"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Umweltökonomie.json",
+        "landscapeId": "5f9995ce-ea3f-5380-8035-4d018f5cf7fc",
+        "acceptedCatalogOwner": "5f9995ce-ea3f-5380-8035-4d018f5cf7fc"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Wirtschaft_Aktuell.json",
+        "landscapeId": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb",
+        "acceptedCatalogOwner": "b75d3028-e41c-53c6-b9b8-6fd45f651ebb"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Wirtschaftsgeographie.json",
+        "landscapeId": "79ca8cc7-ce98-5f73-ad8f-2ab954beda6a",
+        "acceptedCatalogOwner": "79ca8cc7-ce98-5f73-ad8f-2ab954beda6a"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Ökonomische_Bildung.json",
+        "landscapeId": "0dad1ac8-271f-5d7f-bb35-c62d016967b9",
+        "acceptedCatalogOwner": "0dad1ac8-271f-5d7f-bb35-c62d016967b9"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Ökonomische_Bildung_und_Digitale_Bildung.json",
+        "landscapeId": "df5ff075-ba4d-5759-b69d-677f76d6b213",
+        "acceptedCatalogOwner": "df5ff075-ba4d-5759-b69d-677f76d6b213"
+      },
+      {
+        "path": "curricula/DE/BY/Wirtschaftsschule/Übungsunternehmen.json",
+        "landscapeId": "3d0bc968-cc4c-5a55-80b3-68b57d09a26e",
+        "acceptedCatalogOwner": "3d0bc968-cc4c-5a55-80b3-68b57d09a26e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "acceptedCatalogOwner": "08a43a1b-d97e-522c-9dfa-c950a493364e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "acceptedCatalogOwner": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+        "acceptedCatalogOwner": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "acceptedCatalogOwner": "67bd301b-e11a-582d-94ba-4f4b1a4cefff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+        "acceptedCatalogOwner": "c8c84073-46ae-57ec-898a-882d08d7a72f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+        "acceptedCatalogOwner": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "acceptedCatalogOwner": "92406d94-e3c1-58ec-b7c6-12122278d25a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+        "acceptedCatalogOwner": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "acceptedCatalogOwner": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+        "acceptedCatalogOwner": "25c6b527-10d6-5d92-9d76-fab23585f29b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "acceptedCatalogOwner": "668cf206-941e-51f8-8704-3e8938631235"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "acceptedCatalogOwner": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+        "acceptedCatalogOwner": "f620c251-c1e1-41c1-b4e1-b10950b43608"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+        "acceptedCatalogOwner": "a0e13c56-c25f-4742-9272-3a1a603ee52e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "acceptedCatalogOwner": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "acceptedCatalogOwner": "51b60137-46e8-5498-973e-ea38bb32f327"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+        "acceptedCatalogOwner": "f145785b-0c44-5246-af66-8a153d202cb9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+        "acceptedCatalogOwner": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+        "acceptedCatalogOwner": "90eedebf-9ea8-5247-85dd-31c147f907c3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+        "acceptedCatalogOwner": "0900df4c-beeb-5542-86f9-bd479c94746a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "acceptedCatalogOwner": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Archäologie.json",
+        "landscapeId": "9f01e236-829e-5603-bc8d-b9ca55c273e0",
+        "acceptedCatalogOwner": "9f01e236-829e-5603-bc8d-b9ca55c273e0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Berufliche_Orientierung.json",
+        "landscapeId": "39c8fa53-a1b9-5398-ab74-fe96d7c361d1",
+        "acceptedCatalogOwner": "39c8fa53-a1b9-5398-ab74-fe96d7c361d1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "landscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "acceptedCatalogOwner": "357a7003-b636-570e-a0bd-6bb63518d2f6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologisch-chemisches_Praktikum.json",
+        "landscapeId": "55e02c7e-ddca-4b30-a895-dc27c5f107ca",
+        "acceptedCatalogOwner": "55e02c7e-ddca-4b30-a895-dc27c5f107ca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Chemie.json",
+        "landscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "acceptedCatalogOwner": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Chinesisch.json",
+        "landscapeId": "40744ec5-7de1-5e41-9fc2-a1e774721644",
+        "acceptedCatalogOwner": "40744ec5-7de1-5e41-9fc2-a1e774721644"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Deutsch.json",
+        "landscapeId": "05f1cd27-5a58-5415-8fda-d4807067f70a",
+        "acceptedCatalogOwner": "05f1cd27-5a58-5415-8fda-d4807067f70a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Englisch.json",
+        "landscapeId": "9da8e86b-92dc-5ba0-827e-339400af2b38",
+        "acceptedCatalogOwner": "9da8e86b-92dc-5ba0-827e-339400af2b38"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Ethik.json",
+        "landscapeId": "4f5ae12a-6f64-5430-8c5a-35e5d895864a",
+        "acceptedCatalogOwner": "4f5ae12a-6f64-5430-8c5a-35e5d895864a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Evangelische_Religionslehre.json",
+        "landscapeId": "5aef1568-f6c9-5d82-bfdb-678d86800b93",
+        "acceptedCatalogOwner": "5aef1568-f6c9-5d82-bfdb-678d86800b93"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Französisch.json",
+        "landscapeId": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c",
+        "acceptedCatalogOwner": "49aefe0c-f365-5f30-b84f-b9a7699e4f2c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Geographie.json",
+        "landscapeId": "20c7d57c-42e2-5e7c-95af-7ccfa729c805",
+        "acceptedCatalogOwner": "20c7d57c-42e2-5e7c-95af-7ccfa729c805"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Geologie.json",
+        "landscapeId": "d33e9cb5-a4a0-5725-a243-e00723870b19",
+        "acceptedCatalogOwner": "d33e9cb5-a4a0-5725-a243-e00723870b19"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Geschichte.json",
+        "landscapeId": "01c2ba7a-ebd4-5840-bc09-123d7b31c914",
+        "acceptedCatalogOwner": "01c2ba7a-ebd4-5840-bc09-123d7b31c914"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Griechisch.json",
+        "landscapeId": "22703293-7307-5ad2-b158-efe6ae28c7c3",
+        "acceptedCatalogOwner": "22703293-7307-5ad2-b158-efe6ae28c7c3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+        "landscapeId": "1af3eba8-749f-5359-8f12-18f87b13616c",
+        "acceptedCatalogOwner": "1af3eba8-749f-5359-8f12-18f87b13616c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Instrumentalensemble.json",
+        "landscapeId": "44eab2b9-794c-5dbc-8e2f-b56122a92872",
+        "acceptedCatalogOwner": "44eab2b9-794c-5dbc-8e2f-b56122a92872"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Islamischer_Unterricht.json",
+        "landscapeId": "5eaa8bbc-c07a-58d3-9411-e79949c5af27",
+        "acceptedCatalogOwner": "5eaa8bbc-c07a-58d3-9411-e79949c5af27"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Israelitische_Religionslehre.json",
+        "landscapeId": "4134ceec-41d9-5f60-b429-816e4dbe08f6",
+        "acceptedCatalogOwner": "4134ceec-41d9-5f60-b429-816e4dbe08f6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Italienisch.json",
+        "landscapeId": "c7643536-1163-50d8-86a6-9645c8fd3e25",
+        "acceptedCatalogOwner": "c7643536-1163-50d8-86a6-9645c8fd3e25"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Katholische_Religionslehre.json",
+        "landscapeId": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5",
+        "acceptedCatalogOwner": "6bd5f5d6-0990-5cf7-909b-2798ecc215e5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Kunst.json",
+        "landscapeId": "be6d8cea-99e3-580c-a393-8a20f0e925e2",
+        "acceptedCatalogOwner": "be6d8cea-99e3-580c-a393-8a20f0e925e2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Latein.json",
+        "landscapeId": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b",
+        "acceptedCatalogOwner": "c7eeaaa4-7c23-5ab7-8643-b7a03760cd6b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Mathematik.json",
+        "landscapeId": "c1600692-e543-5cf2-a399-6bd96e6b817f",
+        "acceptedCatalogOwner": "c1600692-e543-5cf2-a399-6bd96e6b817f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Musik.json",
+        "landscapeId": "a00d70bf-3d3c-58fc-af4f-881b29635c2e",
+        "acceptedCatalogOwner": "a00d70bf-3d3c-58fc-af4f-881b29635c2e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Natur_und_Technik_(Gym).json",
+        "landscapeId": "11c63b84-8191-5472-8f87-61acea516b66",
+        "acceptedCatalogOwner": "11c63b84-8191-5472-8f87-61acea516b66"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Orthodoxe_Religionslehre.json",
+        "landscapeId": "22b5ef38-ad0e-5393-8e0f-93c94fa71597",
+        "acceptedCatalogOwner": "22b5ef38-ad0e-5393-8e0f-93c94fa71597"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+        "landscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+        "acceptedCatalogOwner": "42c2f7e3-91b4-5de8-bef0-d563440e9d52"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Politik_und_Gesellschaft.json",
+        "landscapeId": "486a8278-39b2-5450-96f8-1076a47b655b",
+        "acceptedCatalogOwner": "486a8278-39b2-5450-96f8-1076a47b655b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Polnisch.json",
+        "landscapeId": "21148204-794c-515d-ae20-c4d5cd4e56d8",
+        "acceptedCatalogOwner": "21148204-794c-515d-ae20-c4d5cd4e56d8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Psychologie.json",
+        "landscapeId": "53fa4017-2273-56f4-a021-5e60c64a58a5",
+        "acceptedCatalogOwner": "53fa4017-2273-56f4-a021-5e60c64a58a5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Russisch.json",
+        "landscapeId": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7",
+        "acceptedCatalogOwner": "2b6e79f6-5130-56cb-9a2f-d08e6dc4b4d7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Sozialpraktische_Grundbildung.json",
+        "landscapeId": "aa3afd2b-7e93-5497-9e41-e1dfc7281744",
+        "acceptedCatalogOwner": "aa3afd2b-7e93-5497-9e41-e1dfc7281744"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Sozialwissenschaftliche_Arbeitsfelder.json",
+        "landscapeId": "a4f9730d-267b-59b1-8ff8-17d13a659e01",
+        "acceptedCatalogOwner": "a4f9730d-267b-59b1-8ff8-17d13a659e01"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Spanisch.json",
+        "landscapeId": "8dba4715-f75e-5339-9e99-02236e4b80dd",
+        "acceptedCatalogOwner": "8dba4715-f75e-5339-9e99-02236e4b80dd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Sport.json",
+        "landscapeId": "55410599-3d6d-5948-b6b1-da39e3b7c7dd",
+        "acceptedCatalogOwner": "55410599-3d6d-5948-b6b1-da39e3b7c7dd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Sport_und_Gesellschaft.json",
+        "landscapeId": "c95446f9-6e41-52fc-b8de-bb4011e9c2e8",
+        "acceptedCatalogOwner": "c95446f9-6e41-52fc-b8de-bb4011e9c2e8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Tanz-_und_Bewegungskünstetheater.json",
+        "landscapeId": "dc82050d-121b-5442-8cd3-9743a1092c4e",
+        "acceptedCatalogOwner": "dc82050d-121b-5442-8cd3-9743a1092c4e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Theater_und_Film.json",
+        "landscapeId": "496187e7-1ea9-50da-873f-542552c65697",
+        "acceptedCatalogOwner": "496187e7-1ea9-50da-873f-542552c65697"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Tschechisch.json",
+        "landscapeId": "097f3667-2488-57b2-a3e0-2cb334e422a2",
+        "acceptedCatalogOwner": "097f3667-2488-57b2-a3e0-2cb334e422a2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Türkisch.json",
+        "landscapeId": "66de9753-0735-583e-bad4-e00e605bd6c8",
+        "acceptedCatalogOwner": "66de9753-0735-583e-bad4-e00e605bd6c8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Vokalensemble.json",
+        "landscapeId": "28f6c01c-32d7-5fe2-aa55-c9dd8b32ae4b",
+        "acceptedCatalogOwner": "28f6c01c-32d7-5fe2-aa55-c9dd8b32ae4b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Wirtschaft_und_Recht.json",
+        "landscapeId": "4959d7df-e430-5c1d-bb7b-873d6252a27f",
+        "acceptedCatalogOwner": "4959d7df-e430-5c1d-bb7b-873d6252a27f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Wirtschaftsinformatik.json",
+        "landscapeId": "0d25de6c-95f0-52c7-988b-0c47abe2b1fb",
+        "acceptedCatalogOwner": "0d25de6c-95f0-52c7-988b-0c47abe2b1fb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Wissenschaftspropädeutisches_Seminar.json",
+        "landscapeId": "44c6e83e-4684-595d-a3de-45110ec0742a",
+        "acceptedCatalogOwner": "44c6e83e-4684-595d-a3de-45110ec0742a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_04100118DE.de.json",
+        "landscapeId": "be372365-e8a7-5159-9e47-53454af4fbf7",
+        "acceptedCatalogOwner": "be372365-e8a7-5159-9e47-53454af4fbf7"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_04100119DE.de.json",
+        "landscapeId": "2c7ef822-49cb-5909-8a59-719a6dff7af6",
+        "acceptedCatalogOwner": "2c7ef822-49cb-5909-8a59-719a6dff7af6"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_04100120DE.de.json",
+        "landscapeId": "a78f5d13-84b4-5e5a-b13b-1c8fa8d96e26",
+        "acceptedCatalogOwner": "a78f5d13-84b4-5e5a-b13b-1c8fa8d96e26"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_04100121DE.de.json",
+        "landscapeId": "035b6b44-a293-5fde-94c0-a8ae9d6f1537",
+        "acceptedCatalogOwner": "035b6b44-a293-5fde-94c0-a8ae9d6f1537"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_10300036.de.json",
+        "landscapeId": "f1537365-8a8c-5ab4-96b5-d2b0f932001b",
+        "acceptedCatalogOwner": "f1537365-8a8c-5ab4-96b5-d2b0f932001b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_18SM1010.de.json",
+        "landscapeId": "b6212ff1-328e-5d2b-8e00-6f410e71ab2a",
+        "acceptedCatalogOwner": "b6212ff1-328e-5d2b-8e00-6f410e71ab2a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_18SM2280.de.json",
+        "landscapeId": "58fd69db-c8ef-5b3e-8b15-1a83ef07cb9f",
+        "acceptedCatalogOwner": "58fd69db-c8ef-5b3e-8b15-1a83ef07cb9f"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_18SU2010.de.json",
+        "landscapeId": "488d19b1-d76e-5824-b639-75fb41a321e3",
+        "acceptedCatalogOwner": "488d19b1-d76e-5824-b639-75fb41a321e3"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_18SU2020.de.json",
+        "landscapeId": "7a81ea61-d29d-5f63-8667-26af729bd018",
+        "acceptedCatalogOwner": "7a81ea61-d29d-5f63-8667-26af729bd018"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000004.de.json",
+        "landscapeId": "72f45d29-75f0-52c2-a6b1-bc0e0331daf6",
+        "acceptedCatalogOwner": "72f45d29-75f0-52c2-a6b1-bc0e0331daf6"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000005.de.json",
+        "landscapeId": "c9e46728-a6d9-5344-a58e-ee7495584168",
+        "acceptedCatalogOwner": "c9e46728-a6d9-5344-a58e-ee7495584168"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000013.de.json",
+        "landscapeId": "d33f296a-aac5-5291-825d-7ec9a9230e60",
+        "acceptedCatalogOwner": "d33f296a-aac5-5291-825d-7ec9a9230e60"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000014.de.json",
+        "landscapeId": "44cadec5-75aa-5102-b0b8-bf83e52d8946",
+        "acceptedCatalogOwner": "44cadec5-75aa-5102-b0b8-bf83e52d8946"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000015.de.json",
+        "landscapeId": "b89cee7d-7ed1-57cb-8914-b6439b0a1152",
+        "acceptedCatalogOwner": "b89cee7d-7ed1-57cb-8914-b6439b0a1152"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000017.de.json",
+        "landscapeId": "6fdf588b-58cd-5307-bd4b-00b109b77894",
+        "acceptedCatalogOwner": "6fdf588b-58cd-5307-bd4b-00b109b77894"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000018.de.json",
+        "landscapeId": "dc7283a8-7bf8-5783-9542-7ef6e6adb101",
+        "acceptedCatalogOwner": "dc7283a8-7bf8-5783-9542-7ef6e6adb101"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000040.de.json",
+        "landscapeId": "4cf40be6-827a-5229-a6cd-982a22fe062d",
+        "acceptedCatalogOwner": "4cf40be6-827a-5229-a6cd-982a22fe062d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000041.de.json",
+        "landscapeId": "fd027b24-b141-5fd8-a16e-ea7dd30ca50d",
+        "acceptedCatalogOwner": "fd027b24-b141-5fd8-a16e-ea7dd30ca50d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000052.de.json",
+        "landscapeId": "799ee894-1725-569b-a105-2ae1bd09b850",
+        "acceptedCatalogOwner": "799ee894-1725-569b-a105-2ae1bd09b850"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000063.de.json",
+        "landscapeId": "c3993da4-035b-5d33-b8d8-9c98f743337a",
+        "acceptedCatalogOwner": "c3993da4-035b-5d33-b8d8-9c98f743337a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000065.de.json",
+        "landscapeId": "83b477e6-57e5-5ecf-ab82-36df62f7e3ed",
+        "acceptedCatalogOwner": "83b477e6-57e5-5ecf-ab82-36df62f7e3ed"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000085.de.json",
+        "landscapeId": "ea435f90-4e08-5dfc-874d-79935555c5c9",
+        "acceptedCatalogOwner": "ea435f90-4e08-5dfc-874d-79935555c5c9"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000093.de.json",
+        "landscapeId": "c0303648-4030-583c-b73a-e7372980b85e",
+        "acceptedCatalogOwner": "c0303648-4030-583c-b73a-e7372980b85e"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000110.de.json",
+        "landscapeId": "98987b64-4421-5083-a27a-4c9ae3717e80",
+        "acceptedCatalogOwner": "98987b64-4421-5083-a27a-4c9ae3717e80"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000114.de.json",
+        "landscapeId": "9440c15e-f70b-527b-abee-e520137258ba",
+        "acceptedCatalogOwner": "9440c15e-f70b-527b-abee-e520137258ba"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000120.de.json",
+        "landscapeId": "c30068b7-271d-5edc-8385-03c1122122d8",
+        "acceptedCatalogOwner": "c30068b7-271d-5edc-8385-03c1122122d8"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000121.de.json",
+        "landscapeId": "fed359ed-ef4c-57b5-8fbf-4e80664c7534",
+        "acceptedCatalogOwner": "fed359ed-ef4c-57b5-8fbf-4e80664c7534"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000130.de.json",
+        "landscapeId": "b4f3c028-7ca9-5ee7-935e-d10136ae0eba",
+        "acceptedCatalogOwner": "b4f3c028-7ca9-5ee7-935e-d10136ae0eba"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000131.de.json",
+        "landscapeId": "17a0d3f1-f72a-55f9-8159-25ce96e51495",
+        "acceptedCatalogOwner": "17a0d3f1-f72a-55f9-8159-25ce96e51495"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000140.de.json",
+        "landscapeId": "e8d61f46-c8f8-5d05-9317-f96e25131094",
+        "acceptedCatalogOwner": "e8d61f46-c8f8-5d05-9317-f96e25131094"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000148.de.json",
+        "landscapeId": "b71574a2-4ea9-510f-811d-e50a48907f64",
+        "acceptedCatalogOwner": "b71574a2-4ea9-510f-811d-e50a48907f64"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000155.de.json",
+        "landscapeId": "98b29196-b25b-5081-a078-3edbd9b03b17",
+        "acceptedCatalogOwner": "98b29196-b25b-5081-a078-3edbd9b03b17"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000157.de.json",
+        "landscapeId": "88085f0d-08ec-527e-a372-c18c5171b11d",
+        "acceptedCatalogOwner": "88085f0d-08ec-527e-a372-c18c5171b11d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000160.de.json",
+        "landscapeId": "d9461181-434c-566c-8f65-82b94a49920a",
+        "acceptedCatalogOwner": "d9461181-434c-566c-8f65-82b94a49920a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000183.de.json",
+        "landscapeId": "ec62b5f6-cfea-5ed5-bf18-1f36651c1147",
+        "acceptedCatalogOwner": "ec62b5f6-cfea-5ed5-bf18-1f36651c1147"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000189.de.json",
+        "landscapeId": "ce4ea98d-97e7-531d-ba74-2d76f8305609",
+        "acceptedCatalogOwner": "ce4ea98d-97e7-531d-ba74-2d76f8305609"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000204.de.json",
+        "landscapeId": "1cb16a93-ca28-561a-90f7-a3eec858dbb4",
+        "acceptedCatalogOwner": "1cb16a93-ca28-561a-90f7-a3eec858dbb4"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000216.de.json",
+        "landscapeId": "f98e8409-1412-529c-9bc1-1d82406cf0a0",
+        "acceptedCatalogOwner": "f98e8409-1412-529c-9bc1-1d82406cf0a0"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000219.de.json",
+        "landscapeId": "296f3cb5-864d-5678-9924-f579f1b04fef",
+        "acceptedCatalogOwner": "296f3cb5-864d-5678-9924-f579f1b04fef"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000236.de.json",
+        "landscapeId": "49d26e3e-0754-589f-a970-ceb62e9f4e6b",
+        "acceptedCatalogOwner": "49d26e3e-0754-589f-a970-ceb62e9f4e6b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000248.de.json",
+        "landscapeId": "4f7ab5f4-662f-5af7-882a-f9427c801b40",
+        "acceptedCatalogOwner": "4f7ab5f4-662f-5af7-882a-f9427c801b40"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000289.de.json",
+        "landscapeId": "14fdfbc1-7500-5af6-a61f-ccc741e1f740",
+        "acceptedCatalogOwner": "14fdfbc1-7500-5af6-a61f-ccc741e1f740"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000292.de.json",
+        "landscapeId": "fb39dc9f-5ca2-571f-aefb-c7eeb7635440",
+        "acceptedCatalogOwner": "fb39dc9f-5ca2-571f-aefb-c7eeb7635440"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000293.de.json",
+        "landscapeId": "4f4c6bf7-d121-5281-8dd5-2be9607fe2ac",
+        "acceptedCatalogOwner": "4f4c6bf7-d121-5281-8dd5-2be9607fe2ac"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000294.de.json",
+        "landscapeId": "ca81d5e7-760e-5b28-9bf9-a32dccf0e76e",
+        "acceptedCatalogOwner": "ca81d5e7-760e-5b28-9bf9-a32dccf0e76e"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000328.de.json",
+        "landscapeId": "ce39d684-f933-5bb5-aa6b-d21884a749bf",
+        "acceptedCatalogOwner": "ce39d684-f933-5bb5-aa6b-d21884a749bf"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000333.de.json",
+        "landscapeId": "4d46c77b-7e47-5167-89e2-bb935b56cf54",
+        "acceptedCatalogOwner": "4d46c77b-7e47-5167-89e2-bb935b56cf54"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000358.de.json",
+        "landscapeId": "89d2aa97-717f-5934-944a-2f5e723f4fab",
+        "acceptedCatalogOwner": "89d2aa97-717f-5934-944a-2f5e723f4fab"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000362.de.json",
+        "landscapeId": "2a5e8e2f-e966-55d9-817d-3080eedbca2d",
+        "acceptedCatalogOwner": "2a5e8e2f-e966-55d9-817d-3080eedbca2d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000379.de.json",
+        "landscapeId": "cb64aa5b-6345-5167-a1c4-3b2e718f3655",
+        "acceptedCatalogOwner": "cb64aa5b-6345-5167-a1c4-3b2e718f3655"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000390.de.json",
+        "landscapeId": "bbf35fff-49dc-5a1d-b382-e98cc688c050",
+        "acceptedCatalogOwner": "bbf35fff-49dc-5a1d-b382-e98cc688c050"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000401.de.json",
+        "landscapeId": "625fc178-e2c3-5eda-9d08-57186895444e",
+        "acceptedCatalogOwner": "625fc178-e2c3-5eda-9d08-57186895444e"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000419.de.json",
+        "landscapeId": "3de00aa2-7af2-5bbe-a436-0f6816e6750f",
+        "acceptedCatalogOwner": "3de00aa2-7af2-5bbe-a436-0f6816e6750f"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000433.de.json",
+        "landscapeId": "add90dbc-2383-5598-a06f-9a210126e32c",
+        "acceptedCatalogOwner": "add90dbc-2383-5598-a06f-9a210126e32c"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000449.de.json",
+        "landscapeId": "521c7b35-2936-5fe8-803b-79bff0a00606",
+        "acceptedCatalogOwner": "521c7b35-2936-5fe8-803b-79bff0a00606"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000489.de.json",
+        "landscapeId": "e0cf5c71-66e5-5d58-9394-87b394c15a8c",
+        "acceptedCatalogOwner": "e0cf5c71-66e5-5d58-9394-87b394c15a8c"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000512.de.json",
+        "landscapeId": "fc0b3d90-4fb8-5a51-8a1c-b6bf2355839c",
+        "acceptedCatalogOwner": "fc0b3d90-4fb8-5a51-8a1c-b6bf2355839c"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000535.de.json",
+        "landscapeId": "9d4a7bc1-01b5-5818-855b-16e548b93223",
+        "acceptedCatalogOwner": "9d4a7bc1-01b5-5818-855b-16e548b93223"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000546.de.json",
+        "landscapeId": "fd28b1a5-2ceb-5b63-a96f-2489ad51221e",
+        "acceptedCatalogOwner": "fd28b1a5-2ceb-5b63-a96f-2489ad51221e"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000580.de.json",
+        "landscapeId": "8ab23d36-f798-5d65-b434-49bb30a4a643",
+        "acceptedCatalogOwner": "8ab23d36-f798-5d65-b434-49bb30a4a643"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000581.de.json",
+        "landscapeId": "ab5b4bd2-def2-51ee-bd16-e1c8e51c3430",
+        "acceptedCatalogOwner": "ab5b4bd2-def2-51ee-bd16-e1c8e51c3430"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000583.de.json",
+        "landscapeId": "73cf3229-7010-5c8b-92be-3267d22338fe",
+        "acceptedCatalogOwner": "73cf3229-7010-5c8b-92be-3267d22338fe"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000585.de.json",
+        "landscapeId": "243f2a25-e36e-5d71-b4f6-952406e01eb2",
+        "acceptedCatalogOwner": "243f2a25-e36e-5d71-b4f6-952406e01eb2"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000629.de.json",
+        "landscapeId": "2d08b8ba-b26a-5533-937b-6064cd63f82b",
+        "acceptedCatalogOwner": "2d08b8ba-b26a-5533-937b-6064cd63f82b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000660.de.json",
+        "landscapeId": "fe7cab48-465d-56c1-bbe7-677091cf7b22",
+        "acceptedCatalogOwner": "fe7cab48-465d-56c1-bbe7-677091cf7b22"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000667.de.json",
+        "landscapeId": "a21fa540-3361-54a6-889e-cb8a84b16220",
+        "acceptedCatalogOwner": "a21fa540-3361-54a6-889e-cb8a84b16220"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000680.de.json",
+        "landscapeId": "8c2edbdb-04bf-5050-a466-73a8feea13c0",
+        "acceptedCatalogOwner": "8c2edbdb-04bf-5050-a466-73a8feea13c0"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000682.de.json",
+        "landscapeId": "72a0d773-ea43-5eea-9f16-0cd1c6d68a45",
+        "acceptedCatalogOwner": "72a0d773-ea43-5eea-9f16-0cd1c6d68a45"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000701.de.json",
+        "landscapeId": "aa60b5ec-aa21-5710-b93a-31501660cbad",
+        "acceptedCatalogOwner": "aa60b5ec-aa21-5710-b93a-31501660cbad"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000735.de.json",
+        "landscapeId": "ae0ce4c6-c43a-5378-b542-a1c9988de892",
+        "acceptedCatalogOwner": "ae0ce4c6-c43a-5378-b542-a1c9988de892"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000745.de.json",
+        "landscapeId": "3cb936b3-46c8-59ee-a5d3-91cddc22da4a",
+        "acceptedCatalogOwner": "3cb936b3-46c8-59ee-a5d3-91cddc22da4a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000748.de.json",
+        "landscapeId": "05427dfd-c1ab-5a88-9987-5bcc1bc9440d",
+        "acceptedCatalogOwner": "05427dfd-c1ab-5a88-9987-5bcc1bc9440d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000793.de.json",
+        "landscapeId": "9874247d-7418-5f9a-86e6-827a66765dce",
+        "acceptedCatalogOwner": "9874247d-7418-5f9a-86e6-827a66765dce"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000794.de.json",
+        "landscapeId": "90097f69-e9df-5bbd-8273-20e2320f8af5",
+        "acceptedCatalogOwner": "90097f69-e9df-5bbd-8273-20e2320f8af5"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000900.de.json",
+        "landscapeId": "6a2341f6-97d7-556a-b20f-5ceb80acb162",
+        "acceptedCatalogOwner": "6a2341f6-97d7-556a-b20f-5ceb80acb162"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000901.de.json",
+        "landscapeId": "26d05d73-111f-5e15-8448-f406d6a99789",
+        "acceptedCatalogOwner": "26d05d73-111f-5e15-8448-f406d6a99789"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000902.de.json",
+        "landscapeId": "9015334b-ac7e-5f07-bbe0-d1972f3d7c00",
+        "acceptedCatalogOwner": "9015334b-ac7e-5f07-bbe0-d1972f3d7c00"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000903.de.json",
+        "landscapeId": "cc715930-d95d-56a4-9beb-9837bba08442",
+        "acceptedCatalogOwner": "cc715930-d95d-56a4-9beb-9837bba08442"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000904.de.json",
+        "landscapeId": "834b8971-ef03-5a3c-aa35-9d5940ab1995",
+        "acceptedCatalogOwner": "834b8971-ef03-5a3c-aa35-9d5940ab1995"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000947.de.json",
+        "landscapeId": "bdcdf62d-95e2-5a9d-ae35-e55cc9d6517f",
+        "acceptedCatalogOwner": "bdcdf62d-95e2-5a9d-ae35-e55cc9d6517f"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000949.de.json",
+        "landscapeId": "94ac7d8d-cdae-57d4-afff-5aba20536af9",
+        "acceptedCatalogOwner": "94ac7d8d-cdae-57d4-afff-5aba20536af9"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000953.de.json",
+        "landscapeId": "9e7ca475-0ffc-5aca-9a31-a9cf08f5294b",
+        "acceptedCatalogOwner": "9e7ca475-0ffc-5aca-9a31-a9cf08f5294b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000974.de.json",
+        "landscapeId": "0264dc3f-7be8-5418-bf0a-fb7bde58fc13",
+        "acceptedCatalogOwner": "0264dc3f-7be8-5418-bf0a-fb7bde58fc13"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000977.de.json",
+        "landscapeId": "f6c67bc5-e41a-5b1a-82fd-95f7a0d1e383",
+        "acceptedCatalogOwner": "f6c67bc5-e41a-5b1a-82fd-95f7a0d1e383"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000982.de.json",
+        "landscapeId": "cb922407-630f-51de-9762-9e93c312d93f",
+        "acceptedCatalogOwner": "cb922407-630f-51de-9762-9e93c312d93f"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20000993.de.json",
+        "landscapeId": "e899edb6-9080-507d-ba38-263b02731adf",
+        "acceptedCatalogOwner": "e899edb6-9080-507d-ba38-263b02731adf"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001010.de.json",
+        "landscapeId": "7fb1da9d-c057-5f1c-a9de-15896609d07e",
+        "acceptedCatalogOwner": "7fb1da9d-c057-5f1c-a9de-15896609d07e"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001014.de.json",
+        "landscapeId": "338f5161-a9a5-53aa-b080-837612a89207",
+        "acceptedCatalogOwner": "338f5161-a9a5-53aa-b080-837612a89207"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001017.de.json",
+        "landscapeId": "68255789-984d-54d9-bd8f-7320f230b753",
+        "acceptedCatalogOwner": "68255789-984d-54d9-bd8f-7320f230b753"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001025.de.json",
+        "landscapeId": "84590966-cc00-521a-9f84-c44081458662",
+        "acceptedCatalogOwner": "84590966-cc00-521a-9f84-c44081458662"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001026.de.json",
+        "landscapeId": "92aa4e3a-f37e-5b24-b9e6-b812b4938b8b",
+        "acceptedCatalogOwner": "92aa4e3a-f37e-5b24-b9e6-b812b4938b8b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001032.de.json",
+        "landscapeId": "8021e2ba-1be6-5dd3-b74a-6302b4681e11",
+        "acceptedCatalogOwner": "8021e2ba-1be6-5dd3-b74a-6302b4681e11"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001034.de.json",
+        "landscapeId": "f72cf679-1f9c-5a72-be4d-a4148ec172a3",
+        "acceptedCatalogOwner": "f72cf679-1f9c-5a72-be4d-a4148ec172a3"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001035.de.json",
+        "landscapeId": "4a790f57-ca6b-54c6-a0c8-eae54158af1b",
+        "acceptedCatalogOwner": "4a790f57-ca6b-54c6-a0c8-eae54158af1b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001039.de.json",
+        "landscapeId": "29ba1972-c29a-52f5-82c4-a2a39a0292e3",
+        "acceptedCatalogOwner": "29ba1972-c29a-52f5-82c4-a2a39a0292e3"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001047.de.json",
+        "landscapeId": "1b34cfa2-478a-5133-a851-3ec91abd5c05",
+        "acceptedCatalogOwner": "1b34cfa2-478a-5133-a851-3ec91abd5c05"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001051.de.json",
+        "landscapeId": "e802633c-a8b1-5258-96d2-f924d7865287",
+        "acceptedCatalogOwner": "e802633c-a8b1-5258-96d2-f924d7865287"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001058.de.json",
+        "landscapeId": "cf06b59f-4dfd-59cf-b9c1-4b31beee9a29",
+        "acceptedCatalogOwner": "cf06b59f-4dfd-59cf-b9c1-4b31beee9a29"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001061.de.json",
+        "landscapeId": "ff3f8891-4fd2-5325-a3c3-44a3f22bed3c",
+        "acceptedCatalogOwner": "ff3f8891-4fd2-5325-a3c3-44a3f22bed3c"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001069.de.json",
+        "landscapeId": "e39c131c-3dc6-55ad-9268-b418bb4585f8",
+        "acceptedCatalogOwner": "e39c131c-3dc6-55ad-9268-b418bb4585f8"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001075.de.json",
+        "landscapeId": "3eb3f330-3bba-5c73-9a0c-bf8a07ec64a8",
+        "acceptedCatalogOwner": "3eb3f330-3bba-5c73-9a0c-bf8a07ec64a8"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001079.de.json",
+        "landscapeId": "5ad489a2-0eba-5564-ac9f-89a8dec8a9eb",
+        "acceptedCatalogOwner": "5ad489a2-0eba-5564-ac9f-89a8dec8a9eb"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001084.de.json",
+        "landscapeId": "db6cbe6f-fd4b-574b-a237-50346607eafd",
+        "acceptedCatalogOwner": "db6cbe6f-fd4b-574b-a237-50346607eafd"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001115.de.json",
+        "landscapeId": "57f001b7-a42a-5bf4-bae4-cfb5143edd18",
+        "acceptedCatalogOwner": "57f001b7-a42a-5bf4-bae4-cfb5143edd18"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001116.de.json",
+        "landscapeId": "83bff50d-e64c-5d9a-85bc-ad6a8952e39a",
+        "acceptedCatalogOwner": "83bff50d-e64c-5d9a-85bc-ad6a8952e39a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001117.de.json",
+        "landscapeId": "dbd7f043-454f-5378-91ff-e2b6d072c45d",
+        "acceptedCatalogOwner": "dbd7f043-454f-5378-91ff-e2b6d072c45d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001120.de.json",
+        "landscapeId": "16def7ee-a3b4-59f6-8efe-4ad6df77088a",
+        "acceptedCatalogOwner": "16def7ee-a3b4-59f6-8efe-4ad6df77088a"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001122.de.json",
+        "landscapeId": "da7fe731-a9b5-5bd3-997e-f8bef407ab97",
+        "acceptedCatalogOwner": "da7fe731-a9b5-5bd3-997e-f8bef407ab97"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001123.de.json",
+        "landscapeId": "029dea34-fb66-527b-bd6a-10fad2905202",
+        "acceptedCatalogOwner": "029dea34-fb66-527b-bd6a-10fad2905202"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001136.de.json",
+        "landscapeId": "88469b0b-f3c8-5a62-aecf-59e19c34de9d",
+        "acceptedCatalogOwner": "88469b0b-f3c8-5a62-aecf-59e19c34de9d"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001141.de.json",
+        "landscapeId": "df0fb62e-fa08-5d93-bb8d-8a58067e59ff",
+        "acceptedCatalogOwner": "df0fb62e-fa08-5d93-bb8d-8a58067e59ff"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001150.de.json",
+        "landscapeId": "65440a39-30b6-546e-8186-f58032f63a4c",
+        "acceptedCatalogOwner": "65440a39-30b6-546e-8186-f58032f63a4c"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001151.de.json",
+        "landscapeId": "230cfc91-55ce-517e-88f9-d71f4e3f9625",
+        "acceptedCatalogOwner": "230cfc91-55ce-517e-88f9-d71f4e3f9625"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001152.de.json",
+        "landscapeId": "f057151a-aa4a-5c3c-b56e-092603444db1",
+        "acceptedCatalogOwner": "f057151a-aa4a-5c3c-b56e-092603444db1"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001153.de.json",
+        "landscapeId": "cfe21355-5dc5-571d-9736-9ce2497b570b",
+        "acceptedCatalogOwner": "cfe21355-5dc5-571d-9736-9ce2497b570b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001154.de.json",
+        "landscapeId": "632ef870-eab9-5785-9ba8-358c1962d29b",
+        "acceptedCatalogOwner": "632ef870-eab9-5785-9ba8-358c1962d29b"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001155.de.json",
+        "landscapeId": "ac52645d-0438-5e5c-a6fa-ca870b531503",
+        "acceptedCatalogOwner": "ac52645d-0438-5e5c-a6fa-ca870b531503"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20001156.de.json",
+        "landscapeId": "19f7f0ef-dba0-52df-8f57-8035f9d13ba8",
+        "acceptedCatalogOwner": "19f7f0ef-dba0-52df-8f57-8035f9d13ba8"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_20AM4000.de.json",
+        "landscapeId": "c5b8edfc-6cec-59d6-9301-be34a8c56031",
+        "acceptedCatalogOwner": "c5b8edfc-6cec-59d6-9301-be34a8c56031"
+      },
+      {
+        "path": "curricula/DE/HE/TU_Darmstadt/Informatik/json/DE_HES_U_TUD_BSC_INFORMATIK.de.json",
+        "landscapeId": "b1bc8349-1740-5ae5-acdd-3a65e16dc13b",
+        "acceptedCatalogOwner": "b1bc8349-1740-5ae5-acdd-3a65e16dc13b"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH.de.json",
+        "landscapeId": "d79c5e83-34d0-4fc7-8ee5-5da57083f7b8",
+        "acceptedCatalogOwner": "d79c5e83-34d0-4fc7-8ee5-5da57083f7b8"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_A1.de.json",
+        "landscapeId": "22fd8e59-103c-41c6-99e5-017d2ec6299f",
+        "acceptedCatalogOwner": "22fd8e59-103c-41c6-99e5-017d2ec6299f"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_A2.de.json",
+        "landscapeId": "18f3a380-4927-4483-9118-243890251703",
+        "acceptedCatalogOwner": "18f3a380-4927-4483-9118-243890251703"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_B1.de.json",
+        "landscapeId": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007",
+        "acceptedCatalogOwner": "606b8710-a6fe-4ae8-996c-8b9a2ea5b007"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_B2.de.json",
+        "landscapeId": "481d7658-d58a-4abb-9d99-935ad62d9fec",
+        "acceptedCatalogOwner": "481d7658-d58a-4abb-9d99-935ad62d9fec"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_C1.de.json",
+        "landscapeId": "6c4cece4-466c-48c3-96b4-a31689736c49",
+        "acceptedCatalogOwner": "6c4cece4-466c-48c3-96b4-a31689736c49"
+      },
+      {
+        "path": "curricula/EU/CEFR/English_From_German/json/EU_EUR_L_CEFR_ENGLISH_C2.de.json",
+        "landscapeId": "55954002-72b1-4c19-84af-86f2aa56f6aa",
+        "acceptedCatalogOwner": "55954002-72b1-4c19-84af-86f2aa56f6aa"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH.de.json",
+        "landscapeId": "e20c7bfc-48c2-48d4-a866-3b417f0601c5",
+        "acceptedCatalogOwner": "e20c7bfc-48c2-48d4-a866-3b417f0601c5"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_A1.de.json",
+        "landscapeId": "c0a86413-a9a2-4d73-be17-acd485752ca7",
+        "acceptedCatalogOwner": "c0a86413-a9a2-4d73-be17-acd485752ca7"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_A2.de.json",
+        "landscapeId": "5732bb6f-804c-4f80-b370-60b80d6d5e4b",
+        "acceptedCatalogOwner": "5732bb6f-804c-4f80-b370-60b80d6d5e4b"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_B1.de.json",
+        "landscapeId": "a707b6e7-a8c0-4d6b-8eaf-4bfc9bf77bf4",
+        "acceptedCatalogOwner": "a707b6e7-a8c0-4d6b-8eaf-4bfc9bf77bf4"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_B2.de.json",
+        "landscapeId": "4cba6dbc-a355-4848-8d18-7ef1577193f8",
+        "acceptedCatalogOwner": "4cba6dbc-a355-4848-8d18-7ef1577193f8"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_C1.de.json",
+        "landscapeId": "a5186697-0ff9-421a-b2b7-7c6391c549b1",
+        "acceptedCatalogOwner": "a5186697-0ff9-421a-b2b7-7c6391c549b1"
+      },
+      {
+        "path": "curricula/EU/CEFR/French_From_German/json/EU_EUR_L_CEFR_FRENCH_C2.de.json",
+        "landscapeId": "243587ea-97db-4dcd-8f92-9680005d296c",
+        "acceptedCatalogOwner": "243587ea-97db-4dcd-8f92-9680005d296c"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_18_01SC.en.json",
+        "landscapeId": "d9b5522f-50af-5f3d-8996-49fa5e818d62",
+        "acceptedCatalogOwner": "d9b5522f-50af-5f3d-8996-49fa5e818d62"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_18_02SC.en.json",
+        "landscapeId": "d97e6cd9-34cf-5ac5-86c7-4fbe1f686b02",
+        "acceptedCatalogOwner": "d97e6cd9-34cf-5ac5-86c7-4fbe1f686b02"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_18_05.en.json",
+        "landscapeId": "76615ce1-8d87-5504-bc55-a6e6818f4ed4",
+        "acceptedCatalogOwner": "76615ce1-8d87-5504-bc55-a6e6818f4ed4"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_18_06.en.json",
+        "landscapeId": "2735b190-d8f0-5122-98a3-2e876447b4f2",
+        "acceptedCatalogOwner": "2735b190-d8f0-5122-98a3-2e876447b4f2"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_6_0002.en.json",
+        "landscapeId": "d4058b55-9c38-5581-aaa1-63fe8a6724c0",
+        "acceptedCatalogOwner": "d4058b55-9c38-5581-aaa1-63fe8a6724c0"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_6_006.en.json",
+        "landscapeId": "ff523afe-b5da-54cf-a339-a2dcc744f87a",
+        "acceptedCatalogOwner": "ff523afe-b5da-54cf-a339-a2dcc744f87a"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_6_100L.en.json",
+        "landscapeId": "157803a5-e13c-5ab9-9d9d-fd6a060e6023",
+        "acceptedCatalogOwner": "157803a5-e13c-5ab9-9d9d-fd6a060e6023"
+      },
+      {
+        "path": "curricula/US/MIT_OCW/json/US_MAS_U_MIT_OCW_FOUNDATIONS.en.json",
+        "landscapeId": "25df82ae-f6ab-518b-98f2-dc72bcdf2fcf",
+        "acceptedCatalogOwner": "25df82ae-f6ab-518b-98f2-dc72bcdf2fcf"
+      }
+    ]
+  },
+  "javaProbe": {
+    "compilation": "Fresh current identity/*.java plus current GoalIdentityServiceTest and CompletionCanonicalGraphResolver; separate temporary output, JDK25, no Gradle",
+    "fixture": "Synthetic actual 593-source/164-rule fixture with real six contract artifacts; not a real current-catalog A replay",
+    "compilationExitCode": 0,
+    "runtimeExitCode": 0,
+    "observationChecks": 10,
+    "contractTestsPassedClaimed": false,
+    "warnings": [
+      "Unknown annotation enum Status.STABLE because org.apiguardian API.Status unavailable in existing classpath",
+      "Existing deprecated API use note"
+    ],
+    "harnessSource": "package com.skillpilot.backend.identity;\nimport java.util.*;\nimport java.lang.reflect.*;\nimport com.skillpilot.backend.completion.CompletionCanonicalGraphResolver;\nimport com.skillpilot.backend.landscape.LearningGoal;\npublic class OwnerNamespaceReview {\n static String OWNER=\"ab000000-0000-4000-8000-000000000001\", UPPER=OWNER.toUpperCase(Locale.ROOT);\n static String G=\"bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb\", H=\"cccccccc-cccc-4ccc-8ccc-cccccccccccc\";\n static void check(String name,boolean result){ if(!result)throw new AssertionError(name);System.out.println(name+\"=true\"); }\n static Object field(Object x,String n)throws Exception {Field f=x.getClass().getDeclaredField(n);f.setAccessible(true);return f.get(x);}\n static Object call(Object x,String n)throws Exception {Method m=x.getClass().getDeclaredMethod(n);m.setAccessible(true);return m.invoke(x);}\n public static void main(String[] args)throws Exception {\n  var map=new GoalIdentityMap(List.of(),Map.of(G,Set.of(OWNER),H,Set.of(UPPER)),Set.of(G,H));\n  check(\"JAVA_ACCEPTS_WRONG_CASE_DISTINCT_OWNER\",G.equals(map.canonicalGoalId(UPPER+\":\"+G)));\n  check(\"JAVA_ACCEPTS_REVERSE_WRONG_OWNER\",H.equals(map.canonicalGoalId(OWNER+\":\"+H)));\n  check(\"JAVA_EXACT_OWNER_UPPER_GOAL_CONTROL\",G.equals(map.canonicalGoalId(OWNER+\":\"+G.toUpperCase(Locale.ROOT))));\n  var opaque=new GoalIdentityMap(List.of(),Map.of(G,Set.of(\"canonical-math-de\")),Set.of(G));\n  boolean rejects=false;try {opaque.canonicalGoalId(\"CANONICAL-MATH-DE:\"+G);}catch(GoalIdentityException e){rejects=true;}\n  check(\"JAVA_OPAQUE_OWNER_CASE_REJECTED_CONTROL\",rejects);\n  var resolver=new CompletionCanonicalGraphResolver(null,null);\n  Method resolve=CompletionCanonicalGraphResolver.class.getDeclaredMethod(\"resolve\",String.class,Map.class,Map.class);resolve.setAccessible(true);\n  var goals=Map.of(G,new LearningGoal(),H,new LearningGoal());var owners=Map.of(G,Set.of(OWNER),H,Set.of(UPPER));\n  check(\"PRODUCTIVE_RESOLVER_WRONG_OWNER_UNRESOLVED\",(UPPER+\":\"+G).equals(resolve.invoke(resolver,UPPER+\":\"+G,goals,owners)));\n  check(\"PRODUCTIVE_RESOLVER_EXACT_OWNER_RESOLVED\",G.equals(resolve.invoke(resolver,OWNER+\":\"+G,goals,owners)));\n  check(\"PRODUCTIVE_RESOLVER_UPPER_GOAL_SEPARATELY_UNRESOLVED\",(OWNER+\":\"+G.toUpperCase(Locale.ROOT)).equals(resolve.invoke(resolver,OWNER+\":\"+G.toUpperCase(Locale.ROOT),goals,owners)));\n  var constructor=Class.forName(\"com.skillpilot.backend.identity.GoalIdentityServiceTest$Fixture\").getDeclaredConstructor();constructor.setAccessible(true);Object f=constructor.newInstance();\n  var proof=new SourceIdentityProofVerifier().verify((byte[])call(f,\"manifestBytes\"),(SourceIdentityProofVerifier.AcceptedBinding)call(f,\"binding\"),(SourceIdentityProofVerifier.SnapshotInputs)f);\n  String unchanged=(String)((List<?>)field(f,\"unchangedIds\")).getFirst();\n  check(\"VERIFIED_A_ACCEPTS_UNREGISTERED_UPPER_OWNER\",OWNER.equals(proof.originalReviewDefinition(UPPER,unchanged).landscapeId()));\n  String old=(String)((List<?>)field(f,\"oldIds\")).getFirst(), target=(String)((List<?>)field(f,\"targets\")).getFirst();\n  check(\"VERIFIED_A_RENAMED_ID_WRONG_OWNER_ACCEPTED\",target.equals(proof.canonicalGoalIdForCandidateQa(UPPER+\":\"+old)));\n  check(\"VERIFIED_A_GOAL_UUID_CASE_CONTROL\",unchanged.equals(proof.originalReviewDefinition(OWNER,unchanged.toUpperCase(Locale.ROOT)).originalGoalId()));\n }\n}\n",
+    "stdout": "JAVA_ACCEPTS_WRONG_CASE_DISTINCT_OWNER=true\nJAVA_ACCEPTS_REVERSE_WRONG_OWNER=true\nJAVA_EXACT_OWNER_UPPER_GOAL_CONTROL=true\nJAVA_OPAQUE_OWNER_CASE_REJECTED_CONTROL=true\nPRODUCTIVE_RESOLVER_WRONG_OWNER_UNRESOLVED=true\nPRODUCTIVE_RESOLVER_EXACT_OWNER_RESOLVED=true\nPRODUCTIVE_RESOLVER_UPPER_GOAL_SEPARATELY_UNRESOLVED=true\nVERIFIED_A_ACCEPTS_UNREGISTERED_UPPER_OWNER=true\nVERIFIED_A_RENAMED_ID_WRONG_OWNER_ACCEPTED=true\nVERIFIED_A_GOAL_UUID_CASE_CONTROL=true\n"
+  },
+  "pythonProbe": {
+    "actualPythonKernelResolverCases": [
+      {
+        "case": "wrong_case_distinct_owner",
+        "reference": "AB000000-0000-4000-8000-000000000001:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+        "accepted": false,
+        "error": "Dangling exact endpoint: AB000000-0000-4000-8000-000000000001:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"
+      },
+      {
+        "case": "reverse_wrong_owner",
+        "reference": "ab000000-0000-4000-8000-000000000001:cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+        "accepted": false,
+        "error": "Dangling exact endpoint: ab000000-0000-4000-8000-000000000001:cccccccc-cccc-4ccc-8ccc-cccccccccccc"
+      },
+      {
+        "case": "exact_owner",
+        "reference": "ab000000-0000-4000-8000-000000000001:bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+        "accepted": true,
+        "result": [
+          "ab000000-0000-4000-8000-000000000001",
+          "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"
+        ]
+      }
+    ],
+    "exactOwnerUuidV5Derivation": {
+      "exactOwnerTarget": "f4e96636-a83f-5b28-94c5-96f8ac17b33c",
+      "caseChangedOwnerTarget": "431eac4f-8b34-54e9-9a56-87f0d360ac3a"
+    }
+  },
+  "productionGoalCaseObservation": "Separate Completion resolve method leaves exactOwner:uppercaseGoal unresolved; owner repair must not claim this closes that goal-UUID conformance gap",
+  "stateBoundary": "Code/DTO review only: real DB keys must be captured and preserved before B; no private state census, fallback authorization, automatic renaming or migration"
+}

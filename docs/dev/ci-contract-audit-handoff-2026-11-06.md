@@ -480,6 +480,19 @@ anders geschriebene UUID-Keys. Der Helfer darf deshalb nicht einfach vor
 bestehende Reads/Upserts geschaltet werden. Reale Zustands-/Browser-/Paket-
 Abnahme und aktuelle QA-Ausgaben bleiben eigenständige Pflichten.
 
+Der spätere [Owner-Gegenblick](ci-graph-repairs/canonical-identity-owner-namespace-independent-review-2026-11-06.md)
+weist die frühere Annahme gleichwertiger Owner-Großschreibungen zurück:
+`landscapeId` ist ein exakter Namensraum; ausschließlich Goal-UUID-Werte
+werden wertbezogen verglichen. Drei Stellen im weiterhin unverdrahteten
+Identitäts-/Statekern sind entsprechend korrigiert. Sechs echte rote Fälle
+belegen fremde Goal-/Reviewzugriffe und fälschlich vereinigte oder kollidierende
+PortablePlans. Danach bestehen 43 JUnit-Tests, einschließlich aller bisherigen
+23 A- und 15 Statekontrollen. Der
+[unabhängige erneute Lauf](ci-graph-repairs/canonical-identity-owner-namespace-repair-independent-review-2026-11-06.md)
+reproduziert 43/43 ohne Skips oder Abbrüche. A-Vertrag, Proofbytes und Kernel
+bleiben unverändert; B und die tatsächliche State-/Repositoryintegration
+bleiben geschlossen. Die aktuelle Quellmigration ist dadurch nicht umgesetzt.
+
 ## Fortsetzung: Kartenregressionen, Scopeprüfung und frische CI
 
 Die beiden neuen öffentlichen Karten-Servicefälle sind lokal mit normaler

@@ -1,0 +1,13 @@
+# Exakte Owner-Namensräume im unverdrahteten Identitätskern
+
+Der [reproduzierte Owner-Befund](canonical-identity-owner-namespace-independent-review-2026-11-06.md) ist eng korrigiert. `landscapeId` bleibt ein exakter Namensraum. Nur Goal-UUID-Endpunkte werden wertgleich auf ihre gebundene Originalschreibung aufgelöst. Ein nicht registrierter großgeschriebener UUID-Owner erhält weder fremde Goalreferenzen noch fremde Originalreviewdefinitionen.
+
+`GoalIdentityMap` und der Originalreviewindex des Sourceverifiers verwenden exakte Ownerkeys. Die Hilfsfunktion heißt ausdrücklich `goalUuidValueKey`. Die ebenfalls betroffenen PortablePlan-Gruppierungs- und Gleichheitsvergleiche verwenden exakte Owner: zwei unabhängige Pläne dürfen weder verschwinden noch einen falschen Alias-Konflikt erzeugen. Widersprüche innerhalb desselben Owners werden weiterhin abgewiesen. Goal-UUID-Wertgleichheit, exakte symbolische Alt-IDs, Original-HMAC und unveränderte Capturebytes bleiben erhalten.
+
+Der [Testbeleg](canonical-identity-owner-namespace-repair-2026-11-06.json) dokumentiert einen echten roten und grünen JUnit-Lauf. Beide verwenden dieselben Testquellen: zuerst 43 gestartet / 37 bestanden / sechs passende Fehler, danach 43 von 43 bestanden, keine Skips oder Abbrüche. Es sind 26 Identitäts- und 17 State-Tests; alle bisherigen 23 + 15 sind enthalten. Drei neue Identitätskontrollen, zwei neue Statekontrollen und der korrigierte alte Owner-Positivtest decken die tatsächlichen Fehler ab.
+
+Alle acht aktuellen Identity-Produktionsquellen und beide Testklassen wurden mit dem gepinnten Corretto 25 frisch in getrennte temporäre Verzeichnisse kompiliert. Der echte JUnit-Jupiter-Engine-Lauf verwendet die vorhandenen lokalen Abhängigkeiten und maximal 384 MB Heap. Es wurde kein Gradle-, Spring-, Ressourcen-, Datenbank- oder Package-Lauf gestartet. Der bestehende Classpath erzeugt 89 fehlende Annotation-/Deprecation-Warnungen, aber keinen Kompilierfehler.
+
+Die fünf Java-Dateien sind für den unabhängigen Zweitblick eingefroren; dessen Abschluss ist noch offen. Historische Reviewtexte, A-Schemata, Pythonkernel und beide Proofdateien bleiben bytegleich. Die sechs A-Vertragsbindungen wurden erneut geprüft. Die aktive Informatikquelle bleibt `93a653…`; die historische A-Hülle `c75e…` wird dadurch nicht wieder aktuell.
+
+B und Runtime bleiben geschlossen. Dies ist keine State-Migration, kein Persistkey-Rename und keine neue Berechtigung. Die zehn B-Verträge, reale Adapter-/Snapshot-/Persistkey-Nachweise und der getrennte produktive Completion-Goalcasebefund bleiben offen. Kein Commit oder Push wurde durchgeführt.

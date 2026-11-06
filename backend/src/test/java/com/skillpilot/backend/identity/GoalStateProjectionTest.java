@@ -187,6 +187,42 @@ class GoalStateProjectionTest {
                 .hasMessageContaining("Conflicting alias state");
     }
 
+    @Test void portablePlansKeepDistinctUuidShapedOwnersWhenNormalizedBlocksAreEqual() throws Exception {
+        String upperOwner = OWNER.toUpperCase(java.util.Locale.ROOT);
+        var lower = plan(OLD);
+        var upper = new LearnerLearningPlanApi.PortablePlan(upperOwner, lower.planLabel(), plan(CURRENT).blocks());
+        var archive = data(Map.of(), List.of(), List.of(lower, upper), null);
+        byte[] original = mapper.writeValueAsBytes(archive);
+        var result = projection.prepareSignedImport(sign(archive), SECRET);
+        assertThat(result.plans().canonical()).extracting(LearnerLearningPlanApi.PortablePlan::landscapeId)
+                .containsExactly(OWNER, upperOwner);
+        assertThat(result.plans().durable()).extracting(LearnerLearningPlanApi.PortablePlan::landscapeId)
+                .containsExactly(OWNER, upperOwner);
+        assertThat(result.plans().canonical().get(0).blocks()).isEqualTo(result.plans().canonical().get(1).blocks());
+        assertThat(result.originalDtoJson()).containsExactly(original);
+        assertThat(mapper.writeValueAsBytes(archive)).containsExactly(original);
+    }
+
+    @Test void distinctOwnerPlansDoNotConflictButConflictingPlansWithinOneOwnerStillReject() throws Exception {
+        String upperOwner = OWNER.toUpperCase(java.util.Locale.ROOT);
+        var lower = plan(OLD);
+        var upper = new LearnerLearningPlanApi.PortablePlan(upperOwner, "separate-owner-plan", plan(UNCHANGED).blocks());
+        var archive = data(Map.of(), List.of(), List.of(lower, upper), null);
+        byte[] original = mapper.writeValueAsBytes(archive);
+        var result = projection.prepareSignedImport(sign(archive), SECRET);
+        assertThat(result.plans().canonical()).extracting(LearnerLearningPlanApi.PortablePlan::planLabel)
+                .containsExactly(lower.planLabel(), upper.planLabel());
+        assertThat(result.plans().durable()).hasSize(2);
+        assertThat(result.originalDtoJson()).containsExactly(original);
+        var conflictingUpper = new LearnerLearningPlanApi.PortablePlan(upperOwner, "conflicting-label", upper.blocks());
+        var conflict = data(Map.of(), List.of(), List.of(lower, upper, conflictingUpper), null);
+        byte[] conflictBytes = mapper.writeValueAsBytes(conflict);
+        assertThatThrownBy(() -> projection.prepareSignedImport(sign(conflict), SECRET))
+                .isInstanceOf(GoalIdentityException.class).hasMessageContaining("Conflicting alias state");
+        assertThat(mapper.writeValueAsBytes(conflict)).containsExactly(conflictBytes);
+        assertThat(mapper.writeValueAsBytes(archive)).containsExactly(original);
+    }
+
     @Test void legacyOmissionsRemainDifferentFromExplicitEmptyRestoreGroups() throws Exception {
         var omitted = projection.prepareSignedImport(sign(data(null, null, null, null)), SECRET);
         assertThat(omitted.masteryPresent()).isFalse(); assertThat(omitted.focusPresent()).isFalse();

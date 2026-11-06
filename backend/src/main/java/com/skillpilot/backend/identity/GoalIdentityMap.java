@@ -36,15 +36,15 @@ final class GoalIdentityMap {
             require(!originalGoalIdsCaseFolded.contains(rule.targetGoalId().toLowerCase(Locale.ROOT)),
                     "Target collides with an original snapshot identity");
             index.put(rule.sourceGoalId(), rule);
-            require(index.putIfAbsent(uuidValueKey(rule.targetGoalId()), rule) == null, "Identity alias collision");
+            require(index.putIfAbsent(goalUuidValueKey(rule.targetGoalId()), rule) == null, "Identity alias collision");
         }
         aliases = Map.copyOf(index);
         Map<String, Set<String>> ownerCopy = new LinkedHashMap<>();
         Map<String, Set<String>> spellings = new LinkedHashMap<>(), allSpellings = new LinkedHashMap<>();
         sourceOwners.forEach((id, values) -> values.forEach(owner -> {
-            ownerCopy.computeIfAbsent(uuidValueKey(id), ignored -> new LinkedHashSet<>()).add(uuidValueKey(owner));
-            spellings.computeIfAbsent(uuidValueKey(owner) + ":" + uuidValueKey(id), ignored -> new LinkedHashSet<>()).add(id);
-            allSpellings.computeIfAbsent(uuidValueKey(id), ignored -> new LinkedHashSet<>()).add(id);
+            ownerCopy.computeIfAbsent(goalUuidValueKey(id), ignored -> new LinkedHashSet<>()).add(owner);
+            spellings.computeIfAbsent(owner + ":" + goalUuidValueKey(id), ignored -> new LinkedHashSet<>()).add(id);
+            allSpellings.computeIfAbsent(goalUuidValueKey(id), ignored -> new LinkedHashSet<>()).add(id);
         }));
         Map<String, Set<String>> immutableOwners = new LinkedHashMap<>(), immutableSpellings = new LinkedHashMap<>(), immutableAll = new LinkedHashMap<>();
         ownerCopy.forEach((id, values) -> immutableOwners.put(id, Set.copyOf(values)));
@@ -81,16 +81,16 @@ final class GoalIdentityMap {
             String owner = reference.substring(0, separator);
             id = reference.substring(separator + 1);
             Rename rule = alias(id);
-            require(rule == null ? owners.getOrDefault(uuidValueKey(id), Set.of()).contains(uuidValueKey(owner))
-                    : uuidValueKey(rule.landscapeId()).equals(uuidValueKey(owner)),
+            require(rule == null ? owners.getOrDefault(goalUuidValueKey(id), Set.of()).contains(owner)
+                    : rule.landscapeId().equals(owner),
                     "Unknown or wrong qualified goal owner");
             if (rule == null) {
-                Set<String> spellings = qualifiedOriginalSpellings.get(uuidValueKey(owner) + ":" + uuidValueKey(id));
+                Set<String> spellings = qualifiedOriginalSpellings.get(owner + ":" + goalUuidValueKey(id));
                 require(spellings != null && spellings.size() == 1, "Ambiguous original UUID spelling for qualified goal");
                 id = spellings.iterator().next();
             }
         } else if (alias(id) == null && isUuid(id)) {
-            Set<String> spellings = originalSpellings.get(uuidValueKey(id));
+            Set<String> spellings = originalSpellings.get(goalUuidValueKey(id));
             if (spellings != null) {
                 require(spellings.size() == 1, "Ambiguous original UUID spelling for unqualified goal");
                 id = spellings.iterator().next();
@@ -100,7 +100,7 @@ final class GoalIdentityMap {
         return id;
     }
 
-    static String uuidValueKey(String id) {
+    static String goalUuidValueKey(String id) {
         return isUuid(id) ? id.toLowerCase(Locale.ROOT) : id;
     }
 

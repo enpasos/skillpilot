@@ -137,7 +137,7 @@ public final class SourceIdentityProofVerifier {
         public OriginalReviewDefinition originalReviewDefinition(String owner, String currentOrOriginalId) {
             String current = canonicalGoalIdForCandidateQa(owner + ":" + currentOrOriginalId);
             List<OriginalReviewDefinition> definitions = reviewDefinitions.getOrDefault(
-                    GoalIdentityMap.uuidValueKey(owner) + ":" + GoalIdentityMap.uuidValueKey(current), List.of());
+                    owner + ":" + GoalIdentityMap.goalUuidValueKey(current), List.of());
             require(!definitions.isEmpty(), "No proof-bound review definition");
             OriginalReviewDefinition first = definitions.getFirst();
             require(definitions.stream().allMatch(row -> row.originalGoalSha256().equals(first.originalGoalSha256())
@@ -272,7 +272,7 @@ public final class SourceIdentityProofVerifier {
                 var definition = new OriginalReviewDefinition(owner, currentId, text(beforeGoal, "id"), sourcePath,
                         CanonicalIdentityJson.sha256(originalBytes), CanonicalIdentityJson.digest(beforeGoal),
                         CanonicalIdentityJson.digest(afterGoal), CanonicalIdentityJson.encode(beforeGoal), CanonicalIdentityJson.encode(afterGoal));
-                reviewDefinitions.computeIfAbsent(GoalIdentityMap.uuidValueKey(owner) + ":" + GoalIdentityMap.uuidValueKey(currentId),
+                reviewDefinitions.computeIfAbsent(owner + ":" + GoalIdentityMap.goalUuidValueKey(currentId),
                         ignored -> new ArrayList<>()).add(definition);
             }
         }

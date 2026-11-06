@@ -1,0 +1,115 @@
+{
+  "status": "independent-reviewed-pure-owner-repair-pass",
+  "date": "2026-11-06",
+  "runtimeActivationAllowed": false,
+  "realMigrationClaimed": false,
+  "independentExecution": true,
+  "redReexecutedIndependently": false,
+  "sourcePins": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityException.java",
+      "sha256": "511c982e47a67b003794efdb64bc0dd03956ab86b7bf31d6d428d1cefca8065e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java",
+      "sha256": "94f1816096c0b513c133a1ef4b4246a277ae7a351e6c08c7085aac0f3393e3ae"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityService.java",
+      "sha256": "8ba7767194246e76a4a2c9a8f094529218ecf27f796c9790cd6908d5a9392b92"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java",
+      "sha256": "ca5d55d77bf0b562fca2537560067da075615bce5764f48cfc4a5885ccd86e4b"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityProofLoader.java",
+      "sha256": "054dc6a93948e54d9594d680c414cbffdcf215aaaa7dbcf38a146306664809bd"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/CanonicalIdentityJson.java",
+      "sha256": "940fac30d454e88a7cbef92e4c10ff19229244da2664bc2016389e12dba1fa22"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/IdentityProofSchemaValidator.java",
+      "sha256": "fb3c0dc1c2e2ea0adc8518f759ba2e240a85b89d92d1ae6b3901b65cee5bfd83"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java",
+      "sha256": "befad1111847eeed67f90577daf2f6d413c2234d7bb76d579cadddaa320bf2cb"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java",
+      "sha256": "5bf20500e6ba49282b70dc3fd86b58f64fd5e9a066f4d422be67e94d676bf19b"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalStateProjectionTest.java",
+      "sha256": "3d3fb7edb57c1ffe1a0d438e04119d74c589bb95d61facdb363be82c81b649fb"
+    },
+    {
+      "path": "tmp/IdentityOwnerContractJUnit.java",
+      "sha256": "deed7d5abccff5e84ac92d6fd36e439ee9f7507f1017f8b0df21a1ba23f60553"
+    }
+  ],
+  "acceptedA": {
+    "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-2026-11-06.proposal.json",
+    "sha256": "c75e263450b35183db0a32ac6ce2dd767e41fe7895882b68b4b63fd4d481f300"
+  },
+  "unchangedAArtifacts": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "actualJUnit": {
+    "found": 43,
+    "started": 43,
+    "succeeded": 43,
+    "failed": 0,
+    "skipped": 0,
+    "aborted": 0
+  },
+  "aTests": 26,
+  "stateTests": 17,
+  "stdout": "SUCCESSFUL completeProjectionRejectsAnOmittedLiveRequiresEvenWithRepinnedHashesAndInverse()\nSUCCESSFUL proofAndSnapshotAreMandatoryAndCannotBeSelfAcceptedByTheirOwnFlags()\nSUCCESSFUL onlyRegistryDeclaredPreservedHitsSurviveAndTheirInventoryMustBeComplete()\nSUCCESSFUL qualifiedReferencesRejectWrongUnknownEmptyAndMultipleOwners()\nSUCCESSFUL actualOriginalCurrentAndContractBytesAreCheckedIncludingUntouchedCatalogFiles()\nSUCCESSFUL acceptedProofRejectsStaleBaseSnapshotGenerationAndPackageRepositoryMismatch()\nSUCCESSFUL repinnedGoalHashCannotHideCardRubricTimestampOrDescriptionChanges()\nSUCCESSFUL validatedProjectionReadsEachAdapterPathOnceAndRetainsOnlyCapturedBytes()\nSUCCESSFUL activeInputsCannotBeRelabeledImmutableAndUnknownInputsCannotClaimPreservation()\nSUCCESSFUL canonicalProfileMatchesSharedVectorsWithoutIeeeRoundingAndRejectsInvalidJson()\nSUCCESSFUL uuidShapedOwnerNamespacesRemainDistinctForQualifiedGoals()\nSUCCESSFUL candidateQaIncludesUnchangedIdsWhosePrerequisiteReferencesWereRenamed()\nSUCCESSFUL oneCapturedCurrentByteSequenceMustBackEveryProjectionAndReviewDefinition()\nSUCCESSFUL goalUuidValueNormalizationRetainsSeparateOwnerBoundOriginalSpellings()\nSUCCESSFUL all164RenamesUseCurrentApiIdentityAndOriginalDurableStorageKey()\nSUCCESSFUL packageSnapshotUsesOnlyItsBoundInputsAndCannotFallBackToRepositoryFiles()\nSUCCESSFUL identityOwnerMustMatchTheActualSourceDocumentNotOnlyManifestAgreement()\nSUCCESSFUL qualifiedUntouchedUuidsUseUuidValuesWhileRetainingTheirOriginalStorageSpelling()\nSUCCESSFUL independentlyRepinnedManifestStillMustSatisfyTheWholeClosedSchema()\nSUCCESSFUL referenceKeyInversePreservesNestedSourceIdentityAndTimestamp()\nSUCCESSFUL identityReadsLeaveDurableMasteryAndSuccessfulCardStateByteExactAndRetainNoMutableInputs()\nSUCCESSFUL deterministicTargetNoninjectiveCollisionAliasChainAndCycleAreRejected()\nSUCCESSFUL registryIsSchemaValidatedAndAcceptedSchemasCannotLoadExternalReferences()\nSUCCESSFUL verifiedSourceProofRejectsUnregisteredUppercaseOwnerForEveryGoalIdentity()\nSUCCESSFUL sourceProofHasOnlyCandidateQaCapabilityAndCannotActivateRuntime()\nSUCCESSFUL sourceProofDoesNotHashItsOwnDerivedOutputsAndRejectsUnclassifiedInputsOrBroaderExclusions()\nSUCCESSFUL portablePlansKeepDistinctUuidShapedOwnersWhenNormalizedBlocksAreEqual()\nSUCCESSFUL focusPreservesCaptureTimesAndConflictsInsteadOfDeletingOrDefaulting()\nSUCCESSFUL legacyOmissionsRemainDifferentFromExplicitEmptyRestoreGroups()\nSUCCESSFUL distinctOwnerPlansDoNotConflictButConflictingPlansWithinOneOwnerStillReject()\nSUCCESSFUL signedOriginalDtoIsAuthenticatedBeforeProjectionAndRetainedUnmodified()\nSUCCESSFUL invalidSignatureWinsBeforeAnyAliasOrStateValidation()\nSUCCESSFUL portableVerifiedCardPayloadStaysExactAndMalformedRecallCannotPrepare()\nSUCCESSFUL masteryAliasesDeduplicateOnlyEqualOriginalValuesAndTimesWithoutWrites()\nSUCCESSFUL latePlanConflictRejectsTheWholeSignedIdentityPreparationWithoutPartialChanges()\nSUCCESSFUL navigationTranslatesOnlyGoalFieldsAndDoesNotRenewAuthorization()\nSUCCESSFUL completionProjectionKeepsOriginalEventsAndNeverCreatesAnotherDailyCredit()\nSUCCESSFUL planProjectionKeepsOriginalCaptureAndAllOrderedArrayAndInactiveSemantics()\nSUCCESSFUL srsTimestampOrCardOutcomeConflictsAreRejected()\nSUCCESSFUL srsComparisonNormalizesJsonValuesWithoutChangingCardsOrTheirPayloadBytes()\nSUCCESSFUL masteryValueAndTimestampConflictsCannotChooseMaxOrLatest()\nSUCCESSFUL snapshotMismatchAndWrongQualifiedOwnerFailClosed()\nSUCCESSFUL portablePlansDeduplicateOnlyAfterTheirTypedGoalFieldsAreNormalized()\n\nTest run finished after 7758 ms\n[         3 containers found      ]\n[         0 containers skipped    ]\n[         3 containers started    ]\n[         0 containers aborted    ]\n[         3 containers successful ]\n[         0 containers failed     ]\n[        43 tests found           ]\n[         0 tests skipped         ]\n[        43 tests started         ]\n[         0 tests aborted         ]\n[        43 tests successful      ]\n[         0 tests failed          ]\n\n",
+  "compilerLog": "warning: unknown enum constant Status.STABLE\n  reason: class file for org.apiguardian.api.API$Status not found\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.INTERNAL\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.DEPRECATED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.DEPRECATED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.EXPERIMENTAL\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.DEPRECATED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.INTERNAL\nwarning: unknown enum constant Status.INTERNAL\nwarning: unknown enum constant Status.INTERNAL\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.DEPRECATED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.DEPRECATED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.MAINTAINED\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.STABLE\nwarning: unknown enum constant Status.MAINTAINED\nNote: /home/enpasos/projects/skillpilot/backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java uses or overrides a deprecated API.\nNote: Recompile with -Xlint:deprecation for details.\n89 warnings\n",
+  "launcherSource": "package com.skillpilot.backend.identity;\n\nimport java.io.PrintWriter;\nimport java.nio.file.Files;\nimport java.nio.file.Path;\nimport org.junit.platform.engine.TestExecutionResult;\nimport org.junit.platform.launcher.TestExecutionListener;\nimport org.junit.platform.launcher.TestIdentifier;\nimport org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;\nimport org.junit.platform.launcher.core.LauncherFactory;\nimport org.junit.platform.launcher.listeners.SummaryGeneratingListener;\nimport static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;\n\npublic class IdentityOwnerContractJUnit {\n    public static void main(String[] args) throws Exception {\n        var request = LauncherDiscoveryRequestBuilder.request().selectors(\n                selectClass(GoalIdentityServiceTest.class), selectClass(GoalStateProjectionTest.class)).build();\n        var summary = new SummaryGeneratingListener();\n        var launcher = LauncherFactory.create();\n        launcher.registerTestExecutionListeners(summary, new TestExecutionListener() {\n            @Override public void executionFinished(TestIdentifier id, TestExecutionResult result) {\n                if (id.isTest()) System.out.println(result.getStatus() + \" \" + id.getDisplayName());\n            }\n        });\n        launcher.execute(request);\n        var out = new PrintWriter(System.out, true);\n        summary.getSummary().printTo(out);\n        summary.getSummary().printFailuresTo(out);\n        var result = summary.getSummary();\n        if (args.length == 1) Files.writeString(Path.of(args[0]), \"{\\\"found\\\":\" + result.getTestsFoundCount()\n                + \",\\\"started\\\":\" + result.getTestsStartedCount() + \",\\\"succeeded\\\":\" + result.getTestsSucceededCount()\n                + \",\\\"failed\\\":\" + result.getTestsFailedCount() + \",\\\"skipped\\\":\" + result.getTestsSkippedCount()\n                + \",\\\"aborted\\\":\" + result.getTestsAbortedCount() + \"}\\n\");\n        if (result.getTestsFoundCount() != 43 || result.getTestsSkippedCount() != 0 || result.getTestsAbortedCount() != 0\n                || result.getTestsFailedCount() != 0) System.exit(1);\n    }\n}\n",
+  "wrapperSource": "from pathlib import Path\nimport hashlib,json,subprocess,sys\nroot=Path.cwd();label=sys.argv[1];out=root/'tmp'/('identity-owner-'+label+'-classes');out.mkdir(exist_ok=True)\nclasspath=(root/'tmp/completion-integrity-runtime-classpath.txt').read_text().strip()\njdk=root/'tmp/amazon-corretto-25.0.2.10.1/bin'\nsources=list((root/'backend/src/main/java/com/skillpilot/backend/identity').glob('*.java'))+[root/'backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java',root/'backend/src/test/java/com/skillpilot/backend/identity/GoalStateProjectionTest.java',root/'tmp/IdentityOwnerContractJUnit.java']\nbindings=[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sources]\n(root/'tmp'/('identity-owner-'+label+'-input-pins.json')).write_text(json.dumps(bindings,indent=2)+'\\n')\nwith (root/'tmp'/('identity-owner-'+label+'-compile.log')).open('w') as log:\n compiled=subprocess.run([str(jdk/'javac'),'-cp',classpath,'-d',str(out),*[str(p) for p in sources]],cwd=root/'backend',stdout=log,stderr=subprocess.STDOUT)\nassert compiled.returncode==0,'Compilation failed'\nwith (root/'tmp'/('identity-owner-'+label+'-junit.log')).open('w') as log:\n result=subprocess.run([str(jdk/'java'),'-Xmx384m','-cp',str(out)+':'+classpath,'com.skillpilot.backend.identity.IdentityOwnerContractJUnit',str(root/'tmp'/('identity-owner-'+label+'-results.json'))],cwd=root/'backend',stdout=log,stderr=subprocess.STDOUT)\nassert bindings==[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sources]\nprint(json.dumps({'compileExit':compiled.returncode,'junitExit':result.returncode,'result':json.loads((root/'tmp'/('identity-owner-'+label+'-results.json')).read_text()),'classpathSha256':hashlib.sha256(classpath.encode()).hexdigest(),'sourceHashesUnchangedDuringRun':True}))\nsys.exit(result.returncode)\n",
+  "invocation": "python tmp/run_identity_owner_contract_checks.py independent",
+  "sourceHashesUnchangedDuringRun": true,
+  "originalFinding": {
+    "path": "docs/dev/ci-graph-repairs/canonical-identity-owner-namespace-independent-review-2026-11-06.json",
+    "sha256": "79fb2d54207ca11a2c06a53b48408bf974eb5a73eb51ff943cba7ef3759e9495"
+  },
+  "repairAuthorEvidence": {
+    "path": "docs/dev/ci-graph-repairs/canonical-identity-owner-namespace-repair-2026-11-06.json",
+    "sha256": "9bb852c99e2ec6c92310a13713a85e0545ded07be3db25c972a8e6772f734581"
+  },
+  "remainingBoundaries": [
+    "Completion goal-UUID case resolution unchanged",
+    "Actual persisted historical keys and unresolved rows not integrated",
+    "No real repository/package/state adapter activation",
+    "No new A-to-runtime or A-to-state public bridge",
+    "B verifier still unavailable"
+  ]
+}

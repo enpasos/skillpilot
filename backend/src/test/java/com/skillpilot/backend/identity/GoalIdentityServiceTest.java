@@ -379,13 +379,59 @@ class GoalIdentityServiceTest {
                 .isEqualTo(unchanged);
         assertThat(identities.canonicalGoalId(unchanged.toUpperCase(java.util.Locale.ROOT))).isEqualTo(unchanged);
         assertThat(identities.storageGoalId(unchanged.toUpperCase(java.util.Locale.ROOT))).isEqualTo(unchanged);
-        assertThat(identities.storageGoalId(OWNER.toUpperCase(java.util.Locale.ROOT) + ":" + unchanged))
-                .isEqualTo(unchanged);
+        assertThatThrownBy(() -> identities.storageGoalId(OWNER.toUpperCase(java.util.Locale.ROOT) + ":" + unchanged))
+                .isInstanceOf(GoalIdentityException.class).hasMessageContaining("owner");
         var source = new SourceIdentityProofVerifier().verify(fixture.manifestBytes(), fixture.binding(), fixture);
-        assertThat(source.originalReviewDefinition(OWNER.toUpperCase(java.util.Locale.ROOT),
+        assertThat(source.originalReviewDefinition(OWNER,
                 unchanged.toUpperCase(java.util.Locale.ROOT)).originalGoalId()).isEqualTo(unchanged);
         assertThatThrownBy(() -> identities.canonicalGoalId(OWNER + ":" + fixture.oldIds.getFirst().toUpperCase(java.util.Locale.ROOT)))
                 .isInstanceOf(GoalIdentityException.class);
+    }
+
+    @Test
+    void uuidShapedOwnerNamespacesRemainDistinctForQualifiedGoals() {
+        String upperOwner = OWNER.toUpperCase(java.util.Locale.ROOT);
+        String first = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+        String second = "cccccccc-cccc-4ccc-8ccc-cccccccccccc";
+        var identities = new GoalIdentityMap(List.of(),
+                Map.of(first, Set.of(OWNER), second, Set.of(upperOwner)), Set.of(first, second));
+        assertThat(identities.canonicalGoalId(OWNER + ":" + first.toUpperCase(java.util.Locale.ROOT))).isEqualTo(first);
+        assertThat(identities.storageGoalId(upperOwner + ":" + second.toUpperCase(java.util.Locale.ROOT))).isEqualTo(second);
+        for (String wrong : List.of(upperOwner + ":" + first, OWNER + ":" + second)) {
+            assertThatThrownBy(() -> identities.canonicalGoalId(wrong))
+                    .isInstanceOf(GoalIdentityException.class).hasMessageContaining("owner");
+            assertThatThrownBy(() -> identities.storageGoalId(wrong))
+                    .isInstanceOf(GoalIdentityException.class).hasMessageContaining("owner");
+        }
+    }
+
+    @Test
+    void goalUuidValueNormalizationRetainsSeparateOwnerBoundOriginalSpellings() {
+        String upperOwner = OWNER.toUpperCase(java.util.Locale.ROOT);
+        String lowerGoal = "abcdefab-cdef-4abc-8def-abcdefabcdef";
+        String upperGoal = lowerGoal.toUpperCase(java.util.Locale.ROOT);
+        var identities = new GoalIdentityMap(List.of(),
+                Map.of(lowerGoal, Set.of(OWNER), upperGoal, Set.of(upperOwner)), Set.of(lowerGoal));
+        assertThat(identities.canonicalGoalId(OWNER + ":" + upperGoal)).isEqualTo(lowerGoal);
+        assertThat(identities.storageGoalId(OWNER + ":" + upperGoal)).isEqualTo(lowerGoal);
+        assertThat(identities.canonicalGoalId(upperOwner + ":" + lowerGoal)).isEqualTo(upperGoal);
+        assertThat(identities.storageGoalId(upperOwner + ":" + lowerGoal)).isEqualTo(upperGoal);
+        assertThatThrownBy(() -> identities.canonicalGoalId(lowerGoal))
+                .isInstanceOf(GoalIdentityException.class).hasMessageContaining("Ambiguous original UUID spelling");
+    }
+
+    @Test
+    void verifiedSourceProofRejectsUnregisteredUppercaseOwnerForEveryGoalIdentity() throws Exception {
+        var fixture = new Fixture();
+        var proof = new SourceIdentityProofVerifier().verify(fixture.manifestBytes(), fixture.binding(), fixture);
+        String unknownOwner = OWNER.toUpperCase(java.util.Locale.ROOT);
+        for (String id : List.of(fixture.oldIds.getFirst(), fixture.targets.getFirst(), fixture.unchangedIds.getFirst())) {
+            assertThat(proof.originalReviewDefinition(OWNER, id).landscapeId()).isEqualTo(OWNER);
+            assertThatThrownBy(() -> proof.canonicalGoalIdForCandidateQa(unknownOwner + ":" + id))
+                    .isInstanceOf(GoalIdentityException.class).hasMessageContaining("owner");
+            assertThatThrownBy(() -> proof.originalReviewDefinition(unknownOwner, id))
+                    .isInstanceOf(GoalIdentityException.class).hasMessageContaining("owner");
+        }
     }
 
     @Test
