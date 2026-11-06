@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded-independent-code-review-PASS-final-seven-pins",
+  "generatedAt": "2026-11-06T20:29:43.519616+00:00",
+  "reviewer": "ci_static / Sol",
+  "reviewClassification": "AI code and counterexample review; no human content approval",
+  "activeInfoBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422"
+  },
+  "implementationPins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "694b3f424d693636c3b7b0e670bdca7e912bf247ce66f3496f3a51d80fb23518"
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "c43382f6d6e94192718a7854e48116b0f6713b08f861bfe5fdd7d10d2051f94c"
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "sha256": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "sha256": "8a29bc20970673051e4ec2f3ed4867279480807e3c14ee0e6f39b8ad116adda7"
+    },
+    {
+      "path": "app/scripts/testCurriculumGraphMaturity.ts",
+      "sha256": "1f4b5d900e768113c47c0c84d191d6ba97f0277758f7a673b1657d041ac15c86"
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "42a4423ee3ee7fa14f6ab58bd765b725ceaa1a754952e2784453125c1b6a531c"
+    },
+    {
+      "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+      "sha256": "9bebd640355115aae57f578133d67edc2c7975a762acb4ee5211c7fbe3d4ac13"
+    }
+  ],
+  "reviewedContract": {
+    "universalStructure": "All retained examData, explicit nodeKind=exam and explicit atomic Exam/Assessment tags; non-offered/uncontained definitions remain covered. Existing material/scoring inspector reused, not a new general schema/content-approval claim.",
+    "readinessUnion": "Current configured route endpoints including duration alternatives, actual released-offer contains descendants, rendered exam targets of the subject's authored views under native filters; direct support-only entries do not become targets.",
+    "draftBoundary": "Complete unoffered draft may satisfy structure; draft in a required readiness set blocks. Generic/missing solution is never excused by prose notes or retirement claims.",
+    "sourceExpectations": "One native discovery function provides a frozen source expectation. Reports receive independent array copies. Actual derive and direct CLI/Floor consumer reuse one pure validator against this expectation, five native metrics and exact owner:goal graph keys.",
+    "projection": "Same native role collector, compiler, UI projection and filters; optimization only limits compiler definitions to native referenced Target/Support membership. Existing default helper callers retain the single-landscape projection path."
+  },
+  "initialFindingsNowResolved": [
+    {
+      "id": "R1",
+      "finding": "Direct floor collector accepted stored M7 with missing or failed global CQR202/204 while actual derive returned M3.",
+      "initialMeasurement": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-consumer-probe-before-2026-11-06.json",
+      "finalCases": [
+        "missing_CQR-202",
+        "failed_CQR-202",
+        "missing_CQR-204",
+        "failed_CQR-204"
+      ],
+      "resolution": "Native source expectation and same shared validator now required in direct M6/M7 consumer as well as derive."
+    },
+    {
+      "id": "R2",
+      "finding": "Jointly truncated manifest required/checked sets could still grant M7; original count metrics were ignored.",
+      "initialMeasurement": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-consumer-probe-before-2026-11-06.json",
+      "finalCases": [
+        "joint_required_truncation_original_metrics",
+        "joint_required_truncation_consistent_adjusted_metrics",
+        "all_sets_jointly_empty_with_consistent_zero_metrics"
+      ],
+      "resolution": "Independent source expectation fixes expected sets; all five metrics must match."
+    },
+    {
+      "id": "R3",
+      "finding": "A genuinely checked foreign:B could replace root:A in both manifests while retaining the root owner and consistent counts.",
+      "initialSelectedObservation": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/owner-before.selected-observation.json",
+      "finalCases": [
+        "checked_foreign_B_cannot_replace_root_exam_A",
+        "exact_owner_key_guard_even_with_spoofed_expected_set"
+      ],
+      "resolution": "Exact rootOwner:goal checked-key binding and native expected IDs; no suffix/global-set fallback."
+    },
+    {
+      "id": "R4",
+      "finding": "Intermediate refactor shared mutable expected-scope arrays with report manifests (static review finding).",
+      "initialEvidence": "Direct array assignments in intermediate evaluateCurriculumExamReadiness, reported before a new run; no historical exploit run is claimed.",
+      "finalCases": [
+        "in_place_report_mutation_leaves_native_expectation_unchanged"
+      ],
+      "resolution": "Native scope and its arrays frozen; every report receives separate copies of all four arrays. Actual in-place mutation is rejected while source expectation remains unchanged."
+    }
+  ],
+  "independentFinalCounterexampleCases": 15,
+  "independentFinalCounterexampleResult": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-counterprobes-2026-11-06.json",
+  "nativeTreeMembershipAndAllFindingEqualityCases": 14,
+  "nativeComparisonResult": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-native-probes-2026-11-06.json",
+  "existingFocusedSuite": {
+    "command": "./node_modules/.bin/tsx scripts/testCurriculumExamReadiness.ts",
+    "workingDirectory": "app",
+    "sessionHandle": 48342,
+    "exitCode": 0,
+    "finalSevenCodePinsMatchBeforeAndAfter": true,
+    "actualOriginalGraphNegativeCases": 14,
+    "actualIncompleteGraphReportCases": 35,
+    "actualKnownGenericExamPayloads": 6,
+    "misleadingTaskVariants": 12,
+    "actualHiddenOfferAndSubjectViewPayloadNegatives": 56,
+    "sourceOrCanonicalWrites": false,
+    "fullDeepOrCqrProducerInvokedByReviewer": false,
+    "log": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-focused-exam-2026-11-06.log"
+  },
+  "runtimeNativeComparison": {
+    "provider": "ci_runtime supplied original full-universe and optimized native 21-curriculum producer results; reviewer compared entire parsed values without running another 21-curriculum producer.",
+    "files": [
+      {
+        "path": "tmp/cqr202-complete-scope-native-current.json",
+        "sha256": "cbf265c79974fe3381014d44026248ef2d46799b67b50d3692bc757628646111"
+      },
+      {
+        "path": "tmp/cqr202-complete-scope-native-final.json",
+        "sha256": "cbf265c79974fe3381014d44026248ef2d46799b67b50d3692bc757628646111"
+      }
+    ],
+    "curricula": 21,
+    "parsedResultsExactlyEqual": true
+  },
+  "openCodeFindings": [],
+  "artifacts": [
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-consumer-probe-2026-11-06.mts",
+      "originalReplayLocation": "tmp/cqr202-204-independent-consumer-probe-2026-11-06.mts",
+      "bytes": 3886,
+      "sha256": "848e675326ed7869fa37c3cc26424863516bfeb56cfd55680b18f23dd5ab1d45"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-consumer-probe-before-2026-11-06.json",
+      "originalReplayLocation": "tmp/cqr202-204-independent-consumer-probe-before-2026-11-06.json",
+      "bytes": 2724,
+      "sha256": "c4b9f627a243173b5f75d3d6ec51a763bdd091b2ebfbd3d96fc98a846c10ba7e"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-consumer-probe-before-2026-11-06.log",
+      "originalReplayLocation": "tmp/cqr202-204-independent-consumer-probe-before-2026-11-06.log",
+      "bytes": 2724,
+      "sha256": "c4b9f627a243173b5f75d3d6ec51a763bdd091b2ebfbd3d96fc98a846c10ba7e"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-counterprobes-2026-11-06.json",
+      "originalReplayLocation": "tmp/cqr202-204-independent-final-counterprobes-2026-11-06.json",
+      "bytes": 9896,
+      "sha256": "01e5152e4a48b863fd8cf425bb97631b3ffd054c7a25807807432e92bfa530fc"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-counterprobes-2026-11-06.log",
+      "originalReplayLocation": "tmp/cqr202-204-independent-final-counterprobes-2026-11-06.log",
+      "bytes": 559,
+      "sha256": "8f1e48dfb2f74d06e324afc13e416fc8f50f19543f0468927e619bb90c2ce499"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-counterprobes-2026-11-06.mts",
+      "originalReplayLocation": "tmp/cqr202-204-independent-final-counterprobes-2026-11-06.mts",
+      "bytes": 8380,
+      "sha256": "1f14081e60d4913eb32a01e8de5bee15db40defdeceffc5bd501b6381a4c5052"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-final-focused-exam-2026-11-06.log",
+      "originalReplayLocation": "tmp/cqr202-204-independent-final-focused-exam-2026-11-06.log",
+      "bytes": 885,
+      "sha256": "2d8ff590858fc483ac6551e63d2e4f08ac639f432ce846c8e25d10143c41a216"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-native-probes-2026-11-06.json",
+      "originalReplayLocation": "tmp/cqr202-204-independent-native-probes-2026-11-06.json",
+      "bytes": 10667,
+      "sha256": "974b5e94ee5fe867ac9ea93512e240cc150a1042dd775bfa6428631e88860c40"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-native-probes-2026-11-06.log",
+      "originalReplayLocation": "tmp/cqr202-204-independent-native-probes-2026-11-06.log",
+      "bytes": 457,
+      "sha256": "0d5ed42f47f404efbb586662969f2074101a2619eb8250f59e579cd42f046b6a"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/cqr202-204-independent-native-probes-2026-11-06.mts",
+      "originalReplayLocation": "tmp/cqr202-204-independent-native-probes-2026-11-06.mts",
+      "bytes": 6227,
+      "sha256": "0f12a5c4308c4f0f5ab4bc49f87ad1c4de40497e731569ae241c175cf29a2201"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/focused-exam-execution.json",
+      "originalReplayLocation": null,
+      "bytes": 643,
+      "sha256": "0d3c17cec4517e7a5e28dfa1e8dd6e301a08f0e50a9057371bce5dfcb4a460c9"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/owner-before.selected-observation.json",
+      "originalReplayLocation": null,
+      "bytes": 769,
+      "sha256": "5ffbc5d90913472c68fb8238c95d386e3f60d4426fb831535388336d771ba33b"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06/runtime-native-21-result-independent-comparison.json",
+      "originalReplayLocation": null,
+      "bytes": 592,
+      "sha256": "b7d08a89cb99ecbd4ea740df9349a191ca4f1091e8c9672d9a98a56a38150ec4"
+    }
+  ],
+  "boundaries": {
+    "noFilesOwnedByRuntimeEdited": true,
+    "noCanonicalSourceOrSchemaOrPolicyOrStateWrites": true,
+    "noReviewerFullDeepOrCqrProducer": true,
+    "fullDeepRun47027OwnedByRuntimeStillSeparate": true,
+    "noMaturityRestorationOrHumanContentApprovalClaim": true,
+    "currentDataSnapshotNotRenamed": true
+  }
+}

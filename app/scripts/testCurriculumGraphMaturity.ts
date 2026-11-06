@@ -3,6 +3,8 @@ import assert from 'node:assert/strict'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   deriveCurriculumMaturity,
+  discoverCurriculumAssessmentScope,
+  evaluateCurriculumExamReadiness,
   evaluateGraphIntegrity,
 } from './generateCurriculumQualityStatus'
 import {
@@ -35,6 +37,13 @@ const evaluate = (root: IntegrityLandscape, catalog: IntegrityLandscape[] = [roo
 // A real valid graph result, rather than a hand-written CQR-001 pass, isolates
 // the downstream maturity tests from unrelated authored curriculum debt.
 export const strictGraphFixtureRule = evaluate(landscape([goal(A, [B]), goal(B)]))
+export const strictGraphFixtureAssessmentRules = evaluateCurriculumExamReadiness(
+  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
+)
+export const strictGraphFixtureAssessmentScope = discoverCurriculumAssessmentScope(
+  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
+)
+const expectedScopes = new Map([[strictGraphFixtureId, strictGraphFixtureAssessmentScope]])
 assert.equal(strictGraphFixtureRule.status, 'pass')
 assert.deepEqual(strictGraphFixtureRule.graphIntegrity?.checkedRules, REQUIRED_SKILL_GRAPH_CHECKS)
 
@@ -46,9 +55,9 @@ const routeScopes = [{
   rules: [{ id: 'CQR-101', status: 'pass' as const, summary: 'Fixture route passed' }],
 }]
 type GraphRule = ReturnType<typeof evaluateGraphIntegrity>
-const rulesWith = (graphRules: GraphRule[]) => [...otherRules, ...graphRules, deepPassed]
+const rulesWith = (graphRules: GraphRule[]) => [...otherRules, ...graphRules, ...strictGraphFixtureAssessmentRules, deepPassed]
 const maturity = (graphRules: GraphRule[]) => (
-  deriveCurriculumMaturity(rulesWith(graphRules), routeScopes, strictGraphFixtureId)
+  deriveCurriculumMaturity(rulesWith(graphRules), routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope)
 )
 
 const floorPolicy = (minimumMaturity: 'M6' | 'M7') => ({
@@ -68,8 +77,8 @@ const artifact = (graphRules: GraphRule[], claimedMaturity = maturity(graphRules
 
 assert.equal(maturity([strictGraphFixtureRule]), 'M7')
 for (const floor of ['M6', 'M7'] as const) {
-  assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor)), [])
-  assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor)))
+  assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes), [])
+  assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes))
 }
 
 let malformedGraphs = 0
@@ -84,9 +93,9 @@ function rejectsActualGraph(
   assert.ok(rule.graphIntegrity?.findings.some(({ ruleId }) => ruleId === expectedRule), label)
   assert.equal(maturity([rule]), 'M0', `${label}: the actual structural result must precede M6/M7`)
   for (const floor of ['M6', 'M7'] as const) {
-    const failures = collectCurriculumMaturityFloorFailures(artifact([rule]), floorPolicy(floor))
+    const failures = collectCurriculumMaturityFloorFailures(artifact([rule]), floorPolicy(floor), expectedScopes)
     assert.ok(failures.some((line) => line.includes(`current M0 is below protected floor ${floor}`)), label)
-    assert.throws(() => checkCurriculumMaturityFloors(artifact([rule]), floorPolicy(floor)), /maturity regression/)
+    assert.throws(() => checkCurriculumMaturityFloors(artifact([rule]), floorPolicy(floor), expectedScopes), /maturity regression/)
   }
   malformedGraphs++
 }
@@ -139,7 +148,7 @@ for (const [label, report] of rejectedReports) {
   assert.equal(maturity([forgedPass]), 'M0', label)
   // The standalone floor check also rejects a claimed M7 with an incomplete
   // graph artifact; its default CLI does not trust the maturity string alone.
-  assert.throws(() => checkCurriculumMaturityFloors(artifact([forgedPass], 'M7'), floorPolicy('M7')),
+  assert.throws(() => checkCurriculumMaturityFloors(artifact([forgedPass], 'M7'), floorPolicy('M7'), expectedScopes),
     /no complete passing strict graph-integrity report/, label)
 }
 assert.equal(maturity([]), 'M0', 'A missing CQR-001 must not grant a maturity')

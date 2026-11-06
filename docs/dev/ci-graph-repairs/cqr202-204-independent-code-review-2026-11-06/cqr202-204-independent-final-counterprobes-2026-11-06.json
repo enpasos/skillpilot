@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "method": "Native source discovery, actual graph/assessment producer, actual derive and direct persisted-M7 floor consumer. No second scope engine or report-derived expected sets.",
+  "implementationPins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "694b3f424d693636c3b7b0e670bdca7e912bf247ce66f3496f3a51d80fb23518"
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "c43382f6d6e94192718a7854e48116b0f6713b08f861bfe5fdd7d10d2051f94c"
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "sha256": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "sha256": "8a29bc20970673051e4ec2f3ed4867279480807e3c14ee0e6f39b8ad116adda7"
+    },
+    {
+      "path": "app/scripts/testCurriculumGraphMaturity.ts",
+      "sha256": "1f4b5d900e768113c47c0c84d191d6ba97f0277758f7a673b1657d041ac15c86"
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "42a4423ee3ee7fa14f6ab58bd765b725ceaa1a754952e2784453125c1b6a531c"
+    },
+    {
+      "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+      "sha256": "9bebd640355115aae57f578133d67edc2c7975a762acb4ee5211c7fbe3d4ac13"
+    }
+  ],
+  "mathPositiveBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "goalId": "311ab2f2-3364-5166-ac22-3ef01419fee4",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "activeInfoBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422"
+  },
+  "results": [
+    {
+      "case": "valid_source_bound_control",
+      "derived": "M7",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "missing_CQR-202",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "failed_CQR-202",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "duplicate_CQR-202",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "missing_CQR-204",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "failed_CQR-204",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "duplicate_CQR-204",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "joint_required_truncation_original_metrics",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "joint_required_truncation_consistent_adjusted_metrics",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "all_sets_jointly_empty_with_consistent_zero_metrics",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "in_place_report_mutation_leaves_native_expectation_unchanged",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "valid_foreign_prerequisite_control",
+      "derived": "M7",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "checked_foreign_B_cannot_replace_root_exam_A",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    },
+    {
+      "case": "exact_owner_key_guard_even_with_spoofed_expected_set",
+      "sharedValidator": false,
+      "graphCheckedGoalKeys": [
+        "foreign:00000000-0000-4000-8000-000000000002",
+        "independent-assessment-final-review:00000000-0000-4000-8000-000000000001"
+      ]
+    },
+    {
+      "case": "missing_native_expected_context_fails_closed",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        },
+        {
+          "floor": "M7",
+          "failures": [
+            "Fixture [independent-assessment-final-review]: protected maturity has no complete passing assessment reports bound to current source discovery"
+          ]
+        }
+      ]
+    }
+  ],
+  "fullCqrProducerInvoked": false,
+  "sourceFilesWritten": false
+}

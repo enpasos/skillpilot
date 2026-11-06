@@ -6,11 +6,13 @@ import { convertLearningGoal } from '../src/goalTypes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
+  compileCompositionView,
   getCompositionProjectionRole,
   normalizeCompositionView,
   type CompositionView,
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
+import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { JURISDICTION_LABELS } from '../src/utils/jurisdictionMetadata'
@@ -32,6 +34,9 @@ import {
   type IntegrityLandscape,
   type IntegrityReport,
 } from './lib/skillGraphIntegrity'
+
+import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope,
+  type CurriculumAssessmentValidation } from './lib/curriculumAssessmentValidation'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -55,7 +60,9 @@ interface RuleResult {
   metrics?: Record<string, number>
   details?: string[]
   graphIntegrity?: IntegrityReport
+  assessmentValidation?: CurriculumAssessmentValidation
 }
+
 
 interface ScopeStatus {
   scopeId: string
@@ -1103,7 +1110,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
     label: 'Concrete exam task readiness',
     category: 'assessment',
     maturityTarget: 'M4',
-    description: 'Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose.',
+    description: 'Route endpoints, released-offer exams and rendered subject-view exam targets are ready for hard exam mode and are not placeholders.',
   },
   {
     id: 'CQR-203',
@@ -1111,6 +1118,13 @@ const ruleCatalog: QualityRuleDefinition[] = [
     category: 'assessment',
     maturityTarget: 'M4',
     description: 'Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata.',
+  },
+  {
+    id: 'CQR-204',
+    label: 'Complete exam definition structure',
+    category: 'assessment',
+    maturityTarget: 'M4',
+    description: 'Every retained exam definition has task, solution and scoring structure, including non-offered drafts.',
   },
   {
     id: 'CQR-301',
@@ -2579,7 +2593,7 @@ function hasScoringStructure(goal: LearningGoal): boolean {
     && Array.isArray(scoring.steps)
     && scoring.steps.length > 0
     && scoring.steps.every((step) =>
-      typeof step.id === 'string'
+      !!step && typeof step.id === 'string'
       && step.id.trim().length > 0
       && Number(step.points) > 0
       && typeof step.description === 'string'
@@ -2608,10 +2622,10 @@ function isPlaceholderExamData(goal: LearningGoal): boolean {
     && !/\b\d+[,.]?\d*\b/u.test(task)
 }
 
-function concreteExamReadinessIssues(goal: LearningGoal): string[] {
+function concreteExamReadinessIssues(goal: LearningGoal, requireReadyStatus = true): string[] {
   if (!goal.examData) return ['missing examData']
   const issues: string[] = []
-  if (hasBlockingExamReviewStatus(goal)) {
+  if (requireReadyStatus && hasBlockingExamReviewStatus(goal)) {
     issues.push(`reviewStatus=${String(goal.examData.reviewStatus)}`)
   }
   if (typeof goal.examData.taskContent !== 'string' || goal.examData.taskContent.trim().length === 0) {
@@ -2647,6 +2661,167 @@ export function evaluateExamTaskReadiness(terminalAutonomyGoals: LearningGoal[])
     terminalAutonomyGoalsWithWeakExamData.map(({ goal, issues }) =>
       `Weak examData: ${formatGoal(goal, goal.id)} (${issues.join(', ')})`),
   )
+}
+
+function isExamDefinition(goal: LearningGoal): boolean {
+  return goal.examData !== undefined || goal.nodeKind === 'exam'
+    || (isAtomicGoal(goal) && (goal.tags ?? []).some((tag) => tag === 'Exam' || tag === 'Assessment'))
+}
+
+// Local CQR-201/202/203 keep their route semantics. These two curriculum-level
+// results additionally close the definition/offer discovery gap; they use the
+// same material inspection as the local CQR-202 check.
+export function discoverCurriculumAssessmentScope(
+  landscape: SkillLandscape,
+  viewFiles: string[] | undefined = undefined,
+  catalog: readonly SkillLandscape[] = [landscape],
+): CurriculumAssessmentScope {
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const definitions = new Set(landscape.goals.filter(isExamDefinition).map((goal) => goal.id))
+  const required = new Set<string>()
+  const discoveryIssues: string[] = []
+  const files = viewFiles ?? readCompositionViewFilesForLandscapeId(landscape.landscapeId)
+  if (viewFiles === undefined && compositionViewDirectoryByLandscapeId.has(landscape.landscapeId) && files.length === 0) {
+    discoveryIssues.push('No authored subject views discovered for the configured subject directory.')
+  }
+  if (goalById.size !== landscape.goals.length) discoveryIssues.push('Duplicate source goal definitions.')
+  // Reuse the current parser only after validating its exact namespace input;
+  // it intentionally serves older callers with a permissive compatibility API.
+  const identity = (id: string) => id.length === 36
+    && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu.test(id) ? id.toLowerCase() : id
+  const localByIdentity = new Map(landscape.goals.map((goal) => [identity(goal.id), goal]))
+  if (localByIdentity.size !== landscape.goals.length) discoveryIssues.push('Ambiguous local UUID definitions.')
+  const resolveLocal = (raw: string): LearningGoal | undefined => {
+    const parts = typeof raw === 'string' ? raw.split(':') : []
+    if (parts.length < 1 || parts.length > 2 || parts.some((part) => !part || part.trim() !== part)) {
+      discoveryIssues.push(`Malformed assessment reference: ${String(raw)}`)
+      return
+    }
+    const parsed = parseReference(raw, landscape.landscapeId)
+    // An explicit owner is never discarded in favour of a matching suffix.
+    const goal = parsed.landscapeId === landscape.landscapeId ? localByIdentity.get(identity(parsed.goalId)) : undefined
+    if (!goal) discoveryIssues.push(`Unresolved owner-bound assessment reference: ${raw}`)
+    return goal
+  }
+  const requireExam = (goal: LearningGoal) => {
+    definitions.add(goal.id)
+    required.add(goal.id)
+  }
+  const profiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
+  for (const profile of profiles) {
+    // Include duration-specific alternatives as well as the existing defaults.
+    const clusterIds = new Set([...profile.terminalAutonomyClusterIds,
+      ...Object.values(profile.terminalAutonomyClusterIdsByDurationModel ?? {}).flat()])
+    for (const clusterId of clusterIds) {
+      const cluster = resolveLocal(clusterId)
+      if (!cluster) {
+        discoveryIssues.push(`Missing configured terminal cluster: ${clusterId}`)
+        continue
+      }
+      for (const goalId of cluster.contains ?? []) {
+        const goal = resolveLocal(goalId)
+        if (!goal) discoveryIssues.push(`Missing terminal child: ${goalId}`)
+        else if (isAtomicGoal(goal) && !isMemoryGoal(goal)) requireExam(goal)
+      }
+    }
+  }
+  const offered = new Set<string>()
+  const stack = landscape.goals
+    .filter((goal) => goal.release?.kind === 'offer' && goal.release.status === 'released')
+    .map((goal) => goal.id)
+  while (stack.length > 0) {
+    const goalId = stack.pop()!
+    if (offered.has(goalId)) continue
+    offered.add(goalId)
+    const goal = resolveLocal(goalId)
+    if (!goal) {
+      discoveryIssues.push(`Missing released-offer descendant: ${goalId}`)
+      continue
+    }
+    if (isExamDefinition(goal)) requireExam(goal)
+    stack.push(...(goal.contains ?? []))
+  }
+  const canonical = normalizeCanonicalLandscape(landscape)
+  const canonicalByOwner = new Map(catalog.map((entry) => [entry.landscapeId, normalizeCanonicalLandscape(entry)]))
+  if (canonicalByOwner.size !== catalog.length) discoveryIssues.push('Duplicate canonical catalog owners.')
+  canonicalByOwner.set(landscape.landscapeId, canonical)
+  const universeGoals = [...canonicalByOwner.values()].flatMap((entry) => entry.goals)
+  if (new Set(universeGoals.map((goal) => goal.id)).size !== universeGoals.length) {
+    discoveryIssues.push('Ambiguous canonical goal definitions in view catalog.')
+  }
+  const universe = { landscapeId: 'canonical-assessment-view-universe', title: 'Canonical view inputs', goals: universeGoals }
+  const universeById = new Map(universeGoals.map((goal) => [goal.id, goal]))
+  const rootByOwner = new Map([...canonicalByOwner].flatMap(([owner, entry]) => {
+    const root = entry.goals.find((goal) => goal.tags?.includes('root'))
+    return root ? [[owner, root.id] as const] : []
+  }))
+  for (const viewFile of files) {
+    const view = normalizeCompositionView(loadJson<unknown>(viewFile))
+    const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, universeById, rootByOwner)
+    const referenced = new Set([...roles.targetGoalIds, ...roles.prerequisiteOnlyGoalIds])
+    const viewUniverse = { ...universe, goals: universeGoals.filter((goal) => referenced.has(goal.id)) }
+    const errors = compileCompositionView(view, canonical, viewUniverse, canonicalByOwner).findings
+      .filter((finding) => finding.severity === 'error')
+    discoveryIssues.push(...errors.map((finding) => `${toRepoPath(viewFile)}: ${finding.code} ${finding.message}`))
+    // Only this subject's authored views are authoritative here. Overview
+    // landscape-entry unions are not a substitute for a resolved subject view.
+    if (view.landscapeId !== landscape.landscapeId) {
+      discoveryIssues.push(`Wrong subject view: ${toRepoPath(viewFile)}`)
+      continue
+    }
+    const filters = [view.scope.jurisdiction, view.scope.durationModel, view.scope.courseProfile]
+      .filter((value): value is string => typeof value === 'string' && value.trim().length > 0)
+    const renderedTargets = collectRenderedAtomicGoalIdsFromCompositionView(landscape, viewFile, filters, false, undefined, [], catalog)
+    for (const goalId of renderedTargets) {
+      const goal = goalById.get(goalId)
+      if (goal && isExamDefinition(goal)) requireExam(goal)
+      else if (!goal && catalog.some((entry) => entry.goals.some((candidate) => candidate.id === goalId && isExamDefinition(candidate)))) {
+        discoveryIssues.push(`Foreign exam target needs an owner-bound readiness result: ${goalId}`)
+      }
+    }
+  }
+  const definitionGoalIds = [...definitions].sort()
+  const requiredGoalIds = [...required].sort()
+  const issues = [...new Set(discoveryIssues)].sort()
+  return Object.freeze({ landscapeId: landscape.landscapeId,
+    definitionGoalIds: Object.freeze(definitionGoalIds), requiredGoalIds: Object.freeze(requiredGoalIds),
+    discoveryIssues: Object.freeze(issues) })
+}
+
+export function evaluateCurriculumExamReadiness(
+  landscape: SkillLandscape,
+  viewFiles?: string[],
+  catalog: readonly SkillLandscape[] = [landscape],
+  expectedScope = discoverCurriculumAssessmentScope(landscape, viewFiles, catalog),
+): RuleResult[] {
+  const { definitionGoalIds, requiredGoalIds, discoveryIssues: issues } = expectedScope
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  return (['structure', 'readiness'] as const).map((kind) => {
+    const checkedGoalIds = kind === 'structure' ? definitionGoalIds : requiredGoalIds
+    const failures = checkedGoalIds.map((id) => ({
+      id, issues: concreteExamReadinessIssues(goalById.get(id)!, kind === 'readiness'),
+    })).filter((entry) => entry.issues.length > 0)
+    const result = makeRule(kind === 'structure' ? 'CQR-204' : 'CQR-202',
+      failures.length === 0 && issues.length === 0 ? 'pass' : 'fail',
+      kind === 'structure'
+        ? 'Complete retained exam-definition structure check (N19).'
+        : 'Complete route, released-offer and subject-view target exam readiness check.',
+      { examDefinitions: definitionGoalIds.length, requiredExams: requiredGoalIds.length,
+        checkedExams: checkedGoalIds.length, weakExamData: failures.length, discoveryIssues: issues.length },
+      [...issues, ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
+    result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
+      definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
+      failingGoalIds: failures.map(({ id }) => id), discoveryIssues: [...issues] }
+    return result
+  })
+}
+
+
+export function readCurrentCurriculumAssessmentScopes(landscapeIds: readonly string[]): Map<string, CurriculumAssessmentScope> {
+  const catalog = collectFiles(canonicalRoot, (name) => /\.json$/i.test(name) && !/_deck/i.test(name))
+    .map((file) => loadJson<SkillLandscape>(file))
+  return new Map(catalog.filter((landscape) => landscapeIds.includes(landscape.landscapeId))
+    .map((landscape) => [landscape.landscapeId, discoverCurriculumAssessmentScope(landscape, undefined, catalog)]))
 }
 
 function stringArray(value: unknown): string[] {
@@ -4131,6 +4306,7 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
   includePrerequisiteOnly = false,
   compositionStage?: CompositionRouteStage,
   additionalVisibleGoalIds: string[] = [],
+  catalog: readonly SkillLandscape[] = [landscape],
 ): Set<string> {
   const entry = {
     meta: landscape,
@@ -4138,10 +4314,14 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
   }
   const rawView = loadJson<unknown>(viewFile)
   const normalizedView = normalizeCompositionView(rawView)
-  const projectedEntry = applyCompositionViewProjection([entry], normalizedView)[0]
+  const projectedEntries = applyCompositionViewProjection([entry, ...catalog
+    .filter((candidate) => candidate.landscapeId !== landscape.landscapeId)
+    .map((candidate) => ({ meta: candidate, goals: candidate.goals.map((goal) =>
+      convertLearningGoal(goal, { landscapeId: candidate.landscapeId })) }))], normalizedView)
+  const projectedEntry = projectedEntries[0]
   if (!projectedEntry) return new Set<string>()
 
-  const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
+  const goalById = new Map(projectedEntries.flatMap((candidate) => candidate.goals.map((goal) => [goal.id, goal] as const)))
   const directChildrenByParent = buildDirectChildrenMap(goalById)
   if (scopeFilters.length > 0) {
     directChildrenByParent.forEach((childIds, parentId) => {
@@ -5959,6 +6139,7 @@ export function deriveCurriculumMaturity(
   curriculumRules: RuleResult[],
   scopes: ScopeStatus[],
   landscapeId: string,
+  expectedAssessmentScope?: CurriculumAssessmentScope,
 ): MaturityLevel {
   const graphRules = curriculumRules.filter((rule) => rule.id === 'CQR-001')
   const graphReady = graphRules.length === 1
@@ -5976,6 +6157,7 @@ export function deriveCurriculumMaturity(
   if (!routeScopes.every((scope) => scope.rules.find((rule) => rule.id === 'CQR-101')?.status === 'pass')) return 'M2'
   if (!routeScopes.every((scope) => scope.maturity === 'M2' || scope.maturity === 'M3' || scope.maturity === 'M4')) return 'M2'
   if (!routeScopes.every((scope) => scope.maturity === 'M3' || scope.maturity === 'M4')) return 'M3'
+  if (!hasCompletePassingCurriculumExamReadiness(curriculumRules, landscapeId, expectedAssessmentScope)) return 'M3'
   if (!routeScopes.every((scope) => scope.maturity === 'M4')) return 'M4'
 
   const m5Ready = curriculumRules.find((rule) => rule.id === 'CQR-301')?.status === 'pass'
@@ -6115,9 +6297,12 @@ async function main() {
       const jurisdictionCoverage = jurisdictionCoverageByLandscapeId.get(landscape.landscapeId)
       const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
       const memoryCardReviewConfigs = memoryCardReviewConfigsByLandscapeId.get(landscape.landscapeId) ?? []
+      const assessmentCatalog = loadedLandscapes.map((entry) => entry.landscape)
+      const assessmentScope = discoverCurriculumAssessmentScope(landscape, undefined, assessmentCatalog)
       const curriculumRules: RuleResult[] = [
         evaluateGraphIntegrity(landscape, integrityCatalog),
         evaluateTypeConsistency(landscape),
+        ...evaluateCurriculumExamReadiness(landscape, undefined, assessmentCatalog, assessmentScope),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
         evaluateCourseLevelMappingConsistency(landscape),
@@ -6150,7 +6335,7 @@ async function main() {
         subject: landscape.subject,
         frameworkId: landscape.frameworkId,
         path: toRepoPath(file),
-        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId),
+        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId, assessmentScope),
         humanTrialBlockingFindings: countHumanTrialBlockingFindings(landscape, goalVisualizationQaLedgers),
         goals: landscape.goals.length,
         atomicGoals,

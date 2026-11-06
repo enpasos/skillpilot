@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "method": "Actual graph checker and actual curriculum assessment producer on a concrete original Math exam payload, unchanged other fixture requirements, actual derive and direct floor collector; correct identity fields, no learner or mastery state.",
+  "sourceBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+    "goalId": "311ab2f2-3364-5166-ac22-3ef01419fee4"
+  },
+  "implementationPins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "022351cda6ee39d269cb72d4ddb439b95d89a94d6683c949a9060703dc24b515"
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "e5f7db1668309eb36f5f14f03790c3b3c2d1e92df66d2eb68008a1a4465d374b"
+    }
+  ],
+  "results": [
+    {
+      "case": "valid_control",
+      "derived": "M7",
+      "floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "missing_CQR-202",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "failed_CQR-202",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "missing_CQR-204",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "failed_CQR-204",
+      "derived": "M3",
+      "claimedM7Floor": [
+        {
+          "floor": "M6",
+          "failures": []
+        },
+        {
+          "floor": "M7",
+          "failures": []
+        }
+      ]
+    },
+    {
+      "case": "joint_readiness_truncation_with_original_metrics",
+      "actualRequired": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "derived": "M7",
+      "metrics": [
+        {
+          "examDefinitions": 1,
+          "requiredExams": 1,
+          "checkedExams": 1,
+          "weakExamData": 0,
+          "discoveryIssues": 0
+        },
+        {
+          "examDefinitions": 1,
+          "requiredExams": 1,
+          "checkedExams": 1,
+          "weakExamData": 0,
+          "discoveryIssues": 0
+        }
+      ]
+    }
+  ],
+  "fullCqrProducerInvoked": false,
+  "sourceFilesWritten": false
+}

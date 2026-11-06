@@ -1,0 +1,327 @@
+{
+  "status": "PASS",
+  "method": "Both paths invoke the same native role collector and native compiler; compare entire compiled trees, all findings and target/support membership. No projected tree or scope engine was reimplemented.",
+  "cases": [
+    {
+      "case": "target-subtree",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 3,
+      "targetGoals": 3,
+      "supportGoals": 0,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 2.5898679999999104,
+      "reducedMs": 0.35842399999989993,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "support-subtree-direct-target-override",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 3,
+      "targetGoals": 1,
+      "supportGoals": 2,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 0.5428349999999682,
+      "reducedMs": 0.22581500000001142,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "target-subtree-direct-support-override",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 3,
+      "targetGoals": 2,
+      "supportGoals": 1,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 0.46213000000000193,
+      "reducedMs": 0.4650299999999561,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "duplicate-subtree-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 3,
+      "targetGoals": 3,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-004",
+        "CPV-004",
+        "CPV-005",
+        "CPV-005",
+        "CPV-005"
+      ],
+      "warnings": [],
+      "fullMs": 15.144885000000045,
+      "reducedMs": 0.7025459999999839,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "overlap-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 3,
+      "targetGoals": 3,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-004",
+        "CPV-005"
+      ],
+      "warnings": [],
+      "fullMs": 0.48923200000001543,
+      "reducedMs": 0.29761900000005426,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "opaque-cluster-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 1,
+      "targetGoals": 1,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-009"
+      ],
+      "warnings": [],
+      "fullMs": 0.249416999999994,
+      "reducedMs": 0.34822200000007797,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "missing-goal-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 0,
+      "targetGoals": 1,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-002"
+      ],
+      "warnings": [],
+      "fullMs": 0.29711999999994987,
+      "reducedMs": 0.12240799999995033,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "foreign-landscape-entry",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 2,
+      "targetGoals": 2,
+      "supportGoals": 0,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 0.20221300000002884,
+      "reducedMs": 0.11470700000006673,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "foreign-target-atom",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 1,
+      "targetGoals": 1,
+      "supportGoals": 0,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 0.22361499999999523,
+      "reducedMs": 0.10430700000006254,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "foreign-support-atom",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 1,
+      "targetGoals": 0,
+      "supportGoals": 1,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 0.2166140000000496,
+      "reducedMs": 0.10300700000004781,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "missing-landscape-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 0,
+      "targetGoals": 0,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-002"
+      ],
+      "warnings": [],
+      "fullMs": 0.19651199999998425,
+      "reducedMs": 0.08640500000001339,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "empty-structure-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 0,
+      "targetGoals": 0,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-007"
+      ],
+      "warnings": [],
+      "fullMs": 0.4642310000000407,
+      "reducedMs": 0.21361400000000685,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "invalid-role-error",
+      "fullGoalDefinitions": 6,
+      "reducedGoalDefinitions": 1,
+      "targetGoals": 1,
+      "supportGoals": 0,
+      "errors": [
+        "CPV-008"
+      ],
+      "warnings": [],
+      "fullMs": 0.19341299999996409,
+      "reducedMs": 0.21341399999994337,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    },
+    {
+      "case": "actual-current-informatics-he-crossstage",
+      "fullGoalDefinitions": 6524,
+      "reducedGoalDefinitions": 233,
+      "targetGoals": 233,
+      "supportGoals": 0,
+      "errors": [],
+      "warnings": [],
+      "fullMs": 211.33664499999998,
+      "reducedMs": 4.667904000000021,
+      "treeExact": true,
+      "allFindingsExact": true,
+      "targetMembershipExact": true,
+      "supportMembershipExact": true
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+    }
+  ],
+  "actualView": {
+    "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+    "sha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df"
+  },
+  "fullCqrProducerInvoked": false,
+  "sourceFilesWritten": false
+}

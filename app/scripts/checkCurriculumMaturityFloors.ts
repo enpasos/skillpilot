@@ -2,6 +2,8 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { hasCompletePassingSkillGraphIntegrity } from './lib/skillGraphIntegrity'
+import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope } from './lib/curriculumAssessmentValidation'
+import { readCurrentCurriculumAssessmentScopes } from './generateCurriculumQualityStatus'
 
 interface MaturityRule {
   id?: string
@@ -9,6 +11,8 @@ interface MaturityRule {
   summary?: string
   details?: string[]
   graphIntegrity?: unknown
+  assessmentValidation?: unknown
+  metrics?: Record<string, number>
 }
 
 interface CurriculumStatus {
@@ -73,6 +77,7 @@ const diagnosticLines = (curriculum: CurriculumStatus, floorRank: number): strin
 export function collectCurriculumMaturityFloorFailures(
   artifact: { curricula?: CurriculumStatus[] },
   policy: FloorPolicy,
+  expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
 ): string[] {
   if (policy.schemaVersion !== 1 || !policy.policyId || policy.baselineDate !== '2026-08-20' || !Array.isArray(policy.floors) || policy.floors.length === 0 || !Array.isArray(policy.exceptions) || !Array.isArray(policy.knownPreBaselineRegressions)) {
     throw new Error('Invalid or empty curriculum maturity-floor policy')
@@ -106,6 +111,10 @@ export function collectCurriculumMaturityFloorFailures(
       || !hasCompletePassingSkillGraphIntegrity(graphRules[0].graphIntegrity, floor.landscapeId))) {
       failures.push(`${floor.subject} [${floor.landscapeId}]: protected maturity has no complete passing strict graph-integrity report`)
     }
+    if (floorRank >= 4 && !hasCompletePassingCurriculumExamReadiness(current.rules, floor.landscapeId,
+      expectedAssessmentScopes?.get(floor.landscapeId))) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: protected maturity has no complete passing assessment reports bound to current source discovery`)
+    }
     if (maturityRank(current.maturity, floor.subject) < floorRank) {
       failures.push(`${floor.subject} [${floor.landscapeId}]: current ${current.maturity} is below protected floor ${floor.minimumMaturity}`)
       failures.push(...diagnosticLines(current, floorRank))
@@ -118,8 +127,9 @@ export function collectCurriculumMaturityFloorFailures(
 export function checkCurriculumMaturityFloors(
   artifact: { curricula?: CurriculumStatus[] },
   policy: FloorPolicy,
+  expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
 ): void {
-  const failures = collectCurriculumMaturityFloorFailures(artifact, policy)
+  const failures = collectCurriculumMaturityFloorFailures(artifact, policy, expectedAssessmentScopes)
   if (failures.length > 0) {
     throw new Error([
       `Curriculum maturity regression detected by ${policy.policyId}.`,
@@ -134,7 +144,9 @@ function main(): void {
   const policyPath = new URL('./config/curriculum-maturity-floor-policy.json', import.meta.url)
   const artifact = JSON.parse(readFileSync(statusPath, 'utf8')) as { curricula?: CurriculumStatus[] }
   const policy = JSON.parse(readFileSync(policyPath, 'utf8')) as FloorPolicy
-  checkCurriculumMaturityFloors(artifact, policy)
+  const expectedScopes = readCurrentCurriculumAssessmentScopes((policy.floors ?? [])
+    .flatMap((floor) => floor.landscapeId ? [floor.landscapeId] : []))
+  checkCurriculumMaturityFloors(artifact, policy, expectedScopes)
   console.log(`curriculum maturity floors passed: ${policy.floors!.length} protected curricula`)
 }
 

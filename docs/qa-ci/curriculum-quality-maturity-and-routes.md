@@ -264,7 +264,7 @@ Ein Curriculum kann `M0` bis `M7` erreichen.
 | `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder die Source-Snapshot-Erfassung inklusive amtlicher HTTP(S)-Originalquellenlinks (`CQR-000`) ist noch nicht sauber. |
 | `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
-| `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
+| `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig, oder die vollstaendige globale Assessment-Struktur-/Bereitschaftspruefung ist nicht bestanden. |
 | `M4` | Alle Routen-Scopes erreichen mindestens Scope-`M3`; mindestens ein Scope erreicht noch nicht Scope-`M4`, oder eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch offen. |
 | `M5` | Alle Routen-Scopes sind Scope-`M4` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
 | `M6` | `M5` ist erreicht und zusaetzlich ist `CQR-302` `pass`; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen und blockiert nur `M6`. |
@@ -656,6 +656,55 @@ Interpretation:
 
 - Die Route endet nicht nur in einem inhaltlichen Ziel, sondern in einer pruefungsnahen Anwendungssituation.
 - Das ist die Dashboard-Abbildung des Motivationsknoten -> atomare Lernzielknoten -> selbststaendige Anwendung in Pruefungssituation.
+
+### `CQR-202` und `CQR-204` - Vollstaendiger Assessment-Pruefumfang
+
+Die lokale `CQR-202` prueft weiterhin die konkreten Aufgaben, Loesungen und
+Rubriken der vorhandenen Routenendpunkte. Die globale `CQR-202` verwendet
+denselben Pruefkern fuer die deduplizierte Vereinigung aus:
+
+- den konfigurierten terminalen Routenendpunkten einschliesslich vorhandener Dauermodellvarianten,
+- Pruefungen in rekursiven Contains-Zweigen mit `release.kind = offer` und `release.status = released`,
+- tatsaechlich gerenderten atomaren Pruefungs-Targets der eigenen authored Fachviews unter deren vorhandenen Jurisdiction-, Dauer- und Kursfiltern.
+
+Dafuer werden die vorhandenen Composition-, Projektions-, Render- und
+Filterfunktionen benutzt. Fremde Grundlagen werden im kanonischen Viewkatalog
+aufgeloest. Reine Overview-Rohunionen und `prerequisiteOnly`-Referenzen erzeugen
+keine zusaetzlichen Pruefungs-Targets. Fehlerhafte Discovery ist kein Pass.
+
+Die globale `CQR-204` bildet die vorhandene N19-Strukturpflicht ab: Jede
+erhaltene `examData`-Definition und jedes explizite oder durch Exam-/Assessment-
+Tags bezeichnete atomare Pruefungsgoal braucht Aufgabe, Loesung und Scoring.
+Auch eine nicht angebotene oder elternlose Definition wird geprueft. Derselbe
+Pruefkern erkennt die bereits bekannten Platzhalter; dies ist kein maschineller
+Nachweis allgemeiner fachlicher Inhaltstauglichkeit.
+
+Ein vollstaendiger, nicht angebotener Autorendraft kann die Strukturpruefung
+bestehen. Sein explizit blockierter `reviewStatus` bleibt eine Readinesssperre,
+sobald er in der verbindlichen Bereitschaftsmenge erscheint. Fehlendes
+`reviewStatus` bei Legacydaten behaelt seine bisherige Bedeutung. Eine freie
+Reviewnotiz oder Nichtangebot begruendet keine Retirement-Ausnahme.
+
+Beide globalen Resultate tragen Definitions-/Pflichtmengen und tatsaechlich
+gepruefte Identitaeten. Der eine gemeinsame reine Manifestvalidator vergleicht
+sie mit einer unabhaengig aus aktuellen Quellen und Views ermittelten
+Sollmenge. Er prueft alle fuenf nativen Zaehler und exakte
+`landscapeId:goalId`-Mitgliedschaft im Graphbericht; Owner werden nicht
+casegefaltet. Auch gemeinsam auf null gekuerzte Berichtsmengen und Zaehler
+ersetzen diesen externen Kontext nicht.
+
+`deriveCurriculumMaturity` verlangt je genau ein vollstaendiges, passendes und
+bestandenes Resultat. Der direkte geschuetzte Floorcollector verwendet
+denselben Validator und verlangt denselben unabhaengigen Kontext; sein CLI
+ermittelt ihn aus den aktuellen kanonischen Quellen und Fachviews erneut.
+Fehlende, duplizierte oder unvollstaendige Artefakte begrenzen die abgeleitete
+Curriculumreife auf hoechstens `M3` und koennen auch durch ein gespeichertes
+behauptetes `M6`/`M7` nicht am Floorchecker vorbeigelangen. Die bestehende
+vollstaendige Producer-Freshnesspruefung bleibt zusaetzlich erforderlich.
+Lokale `CQR-201` und `CQR-203` bleiben unveraendert. Insbesondere
+wird die lokale Release-/Coveragemetadatenpflicht nicht pauschal auf alte
+Legacydefinitionen erweitert. Fehlende Routenprofile bleiben unkonfiguriert;
+ein leerer globaler Bereitschaftsumfang erteilt ihnen keine `M6`-Freigabe.
 
 ### `CQR-301` - Semantic atomicity review freshness
 
