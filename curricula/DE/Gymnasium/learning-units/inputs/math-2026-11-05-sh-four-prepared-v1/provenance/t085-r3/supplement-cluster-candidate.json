@@ -1,0 +1,77 @@
+{
+  "status": "PRIVATE_ROOT_DIRECTED_PROPOSAL_NOT_APPLIED",
+  "cluster": {
+    "id": "b4bab1e5-35b2-5a8c-b74e-f674dd222a96",
+    "shortKey": "canonical_math_sh_sek1_supplement",
+    "title": "Schleswig-Holstein: Ergänzende Kompetenzen der Sekundarstufe I",
+    "titleEn": "Schleswig-Holstein: additional lower-secondary competencies",
+    "description": "Kanonischer Ergänzungszweig für quellenspezifische Kompetenzen der schleswig-holsteinischen Sekundarstufe I, ohne amtliche Jahrgangszuteilung.",
+    "descriptionEn": "Canonical supplement for source-specific competencies of lower secondary in Schleswig-Holstein, without assigning an official year.",
+    "type": "cluster",
+    "core": true,
+    "weight": 2,
+    "tags": [
+      "canonical",
+      "phase:SekI",
+      "area:Algebra"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-SH"
+      ],
+      "stage": [
+        "SekI"
+      ]
+    },
+    "contains": [
+      "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+      "d79c446e-21ce-55ab-b0bc-c654d8476139"
+    ],
+    "requires": [],
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K4"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "SekI",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SH.SEK1.SUPPLEMENT"
+    }
+  },
+  "canonicalMathRootId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+  "proposedEdges": [
+    {
+      "from": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "relation": "contains",
+      "to": "b4bab1e5-35b2-5a8c-b74e-f674dd222a96"
+    },
+    {
+      "from": "b4bab1e5-35b2-5a8c-b74e-f674dd222a96",
+      "relation": "contains",
+      "to": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+    },
+    {
+      "from": "b4bab1e5-35b2-5a8c-b74e-f674dd222a96",
+      "relation": "contains",
+      "to": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+    }
+  ],
+  "oldLgsClusterChanged": false,
+  "rootReachabilityRequired": true,
+  "ordinaryGoalCountDelta": 1,
+  "assessmentCountDelta": 1,
+  "clusterCountDelta": 1,
+  "broadAncestorSourceMappingMustNotCrossBoundary": true,
+  "actualNativeAndAllDefaultScopeDeltaProven": false,
+  "activationRequires": "Source-specific mappings, SH stage-wide view/placement proposal, complete old980 direct/fullR comparison and actual native ALL/default delta; no orphan shortcut."
+}

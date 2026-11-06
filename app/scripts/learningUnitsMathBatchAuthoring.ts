@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { canonicalJson, digest, mathCanonicalPath } from './learningUnitsMathAuthoring'
 import { prepareBatch, type Batch } from './learningUnits/batchAuthoring'
 import type { SemanticLedger } from './learningUnits/adapterTypes'
+import { writeAtomicAuthoringFile } from './atomicAuthoringFile'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const argv = process.argv.slice(2)
@@ -47,16 +48,18 @@ if (batch.semanticRebindProofPath) {
     baselineRef: batch.baselineRef, generation: batch.generation, proofPath: batch.qualityProofPath,
     proofSha256: digest(canonicalJson(result.proof)), exactOriginalFullReachabilityPreserved: true,
     existingSemanticDecisionsUnchanged: true, newQualityApproval: false, decisions: records,
-    newAssessmentGoalIds: result.proof.newAssessmentGoalIds }, null, 2)}\n`)
+    newAssessmentGoalIds: result.proof.newAssessmentGoalIds,
+    ...(result.proof.newOrdinaryGoalIds ? { newOrdinaryGoalIds: result.proof.newOrdinaryGoalIds,
+      newClusterGoalIds: result.proof.newClusterGoalIds } : {}) }, null, 2)}\n`)
 }
 artifacts.set(mathCanonicalPath.substring('curricula/'.length), `${JSON.stringify(result.source, null, 2)}\n`)
 artifacts.set(ledgerPath.substring('curricula/'.length), `${JSON.stringify(result.ledger, null, 2)}\n`)
 if (!argv.includes('--stage-source')) artifacts.set(catalogPath.substring('curricula/'.length), `${JSON.stringify(result.catalog, null, 2)}\n`)
 const output = resolve(root, value('--output') ?? `tmp/math-learning-units/batches/${batch.generation}`)
 if (argv.includes('--plan')) {
-  for (const [path, bytes] of artifacts) { const destination = resolve(output, 'candidate-curricula', path); mkdirSync(dirname(destination), { recursive: true }); writeFileSync(destination, bytes) }
-  mkdirSync(output, { recursive: true }); writeFileSync(resolve(output, 'content-review-inputs.json'), `${JSON.stringify(result.reviews, null, 2)}\n`)
-  writeFileSync(resolve(output, 'structural-proof.json'), `${JSON.stringify(result.proof, null, 2)}\n`)
+  for (const [path, bytes] of artifacts) { const destination = resolve(output, 'candidate-curricula', path); mkdirSync(dirname(destination), { recursive: true }); writeAtomicAuthoringFile(destination, bytes) }
+  mkdirSync(output, { recursive: true }); writeAtomicAuthoringFile(resolve(output, 'content-review-inputs.json'), `${JSON.stringify(result.reviews, null, 2)}\n`)
+  writeAtomicAuthoringFile(resolve(output, 'structural-proof.json'), `${JSON.stringify(result.proof, null, 2)}\n`)
 } else {
   const immutablePrefixes = ['DE/Gymnasium/learning-units/contracts/', 'DE/Gymnasium/learning-units/sources/', 'DE/Gymnasium/learning-units/inputs/']
   for (const [path, bytes] of artifacts) {
@@ -66,7 +69,7 @@ if (argv.includes('--plan')) {
   }
   if (argv.includes('--apply') || argv.includes('--stage-source')) {
     // Refuse an intervening source generation; a plan must be refreshed before applying.
-    for (const path of [mathCanonicalPath, ledgerPath, catalogPath]) {
+    for (const path of [mathCanonicalPath, ledgerPath, catalogPath, ...[...patchedViewPaths].map(path => `curricula/${path}`)]) {
       const actual = digest(readFileSync(resolve(root, path)))
       const generated = artifacts.get(path.substring('curricula/'.length))
       assert.ok(actual === digest(fromGit(path)) || generated && actual === digest(generated), `Live generation changed since batch baseline: ${path}`)
@@ -74,7 +77,7 @@ if (argv.includes('--plan')) {
     for (const [path, bytes] of artifacts) {
       const destination = resolve(root, 'curricula', path)
       if (existsSync(destination) && readFileSync(destination, 'utf8') === bytes) continue
-      mkdirSync(dirname(destination), { recursive: true }); writeFileSync(destination, bytes)
+      mkdirSync(dirname(destination), { recursive: true }); writeAtomicAuthoringFile(destination, bytes)
     }
   }
 }

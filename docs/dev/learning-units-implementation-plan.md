@@ -1,6 +1,14 @@
 # Umsetzungsplan: Lerneinheiten und integrierte Lernkarte
 
-**Stand: 5. November 2026. Arbeitsgrundlage für die Umsetzung.** Dieser Plan ersetzt den
+**Arbeitsunterbrechung, 6. November 2026:** Der bisherige Ausbau des
+Einheitenzuschnitts wurde vom Product Owner abgebrochen. Die Umsetzung bleibt
+pausiert. Zuerst werden [Zweck, Kriterien und konkrete Beispiele](../concept/skill-graph/learning-unit-design-and-examples.md)
+gemeinsam geprüft; danach ist dieser Plan neu abzugleichen. Die vorhandenen
+kleinen Verträge belegen keinen freigegebenen curricularen Zuschnitt. Dieser
+Hinweis hebt die nachstehenden historischen Fortsetzungsaufträge auf; vorhandene
+Arbeit bleibt zur späteren Einzelprüfung erhalten.
+
+**Historischer Planstand: 5. November 2026.** Dieser Plan ersetzte den
 [vorherigen Neustartplan](curriculum-recognition-restart-plan.md) als Arbeitsgrundlage.
 Der alte Plan und [PR #79](https://github.com/enpasos/skillpilot/pull/79) bleiben als
 Historie und Bausteinbestand erhalten. Ein geprüftes Konzept, lokale Browserprüfung,

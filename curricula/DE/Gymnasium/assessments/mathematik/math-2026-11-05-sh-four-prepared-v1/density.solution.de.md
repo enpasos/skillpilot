@@ -1,0 +1,7 @@
+Ein möglicher gemeinsamer Bezug ist Gramm pro Kubikzentimeter. Es gilt 0,180 L = 180 cm³. Dichte ist Masse geteilt durch das zugehörige Volumen: ρ = m/V. Damit ergeben sich für A 450 g / 180 cm³ = 2,5 g/cm³ und für B 520 g / 260 cm³ = 2,0 g/cm³.
+
+Das bedeutet: 1 cm³ von Material A hat eine Masse von 2,5 g, 1 cm³ von Material B eine Masse von 2,0 g. Gleichwertig kann für A 1 L mit 2,5 kg und für B 1 L mit 2,0 kg gedeutet werden. Eine reine Wiederholung des Quotienten oder der Einheit ist noch keine explizite Bedeutungserklärung. Wird die homogene Probe A halbiert, halbieren sich Masse und Volumen: 225 g und 90 cm³. Die Dichte bleibt 225 g / 90 cm³ = 2,5 g/cm³, weil beide Größen mit demselben Faktor verändert werden.
+
+Material A ist dichter: Bei gleichem Volumen enthält es mehr Masse. Die größere Gesamtmasse der ganzen Probe B beweist keine größere Dichte, weil B zugleich ein größeres Volumen hat. Für 80 cm³ werden bei A 2,5 g/cm³ · 80 cm³ = 200 g und bei B 2,0 g/cm³ · 80 cm³ = 160 g benötigt. Bei gleichem benötigtem Volumen ist B deshalb um 40 g leichter.
+
+Gültig sind auch andere konsistente Einheiten, beispielsweise 2,5 und 2,0 kg/L oder 2500 und 2000 kg/m³, sowie Dreisatz, eine Verhältnis-/Zuordnungstabelle oder eine eindeutige beschriftete Darstellung. Jeder Weg muss die Bedeutung Masse pro Volumen, die verwendeten Einheiten und die konkrete Anwendung erkennen lassen. Die angegebenen Volumina sind Daten; Prismaformeln und Oberflächenberechnungen sind nicht Teil dieser Prüfung.

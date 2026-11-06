@@ -383,6 +383,14 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
 - A unit states what learners will be able to do and why it matters. A motivational
   introduction leads into goals and optional subunits. Calendar years, semesters
   and navigation headings are not automatically assessed learning units.
+- On **6 November 2026**, the Product Owner clarified the primary purpose:
+  establish solid independent application before planned learning builds on that
+  foundation. Boundaries follow meaningful conceptual transitions, not existing
+  exams, target quotas or raw edge density. Assessments must expose essential
+  misconceptions and support focused relearning without requiring perfection
+  on incidental calculations. Use the ordinary grading contract, never hidden
+  pass rules or a second stored learner outcome. See
+  `docs/concept/skill-graph/learning-unit-design-and-examples.md`.
 - Assign unit roles through authoritative placements or reviewed composition
   structure for a resolved scope/revision. Every acquisition target has one
   direct owner in that hierarchy. Ancestors aggregate child targets; general
@@ -396,10 +404,11 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   while a later or parent exam is open. Exams and cards always need their own
   explicit results; a parent pass never passes them implicitly.
 - An explicitly authored whole-unit requirement belongs to the course. An atomic
-  prerequisite does not automatically impose the entire foreign unit. Whether
-  unit requirements guide recommendations or technically block starts, including
-  direct assessment attempts, remains undecided; no new hard gate is authorized
-  by this concept alone. Independent branches may proceed in parallel.
+  prerequisite does not automatically impose the entire foreign unit. Planned
+  progression that builds on a unit's promise needs its application evidence;
+  technical access enforcement, including direct assessment attempts, remains
+  undecided. No new hard gate is authorized by this concept alone. Independent
+  branches may proceed in parallel.
 - Preserve effective atomic acyclicity and transitive minimality. When whole-unit
   sequencing is intended, additionally check the projected block graph at every
   relevant boundary: atomic acyclicity alone does not guarantee a unit order.

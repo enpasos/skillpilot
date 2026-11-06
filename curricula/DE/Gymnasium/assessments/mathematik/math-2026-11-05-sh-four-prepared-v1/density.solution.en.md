@@ -1,0 +1,7 @@
+One possible common reference is grams per cubic centimetre. Here 0.180 L = 180 cm³. Density is mass divided by its corresponding volume: ρ = m/V. Thus A has 450 g / 180 cm³ = 2.5 g/cm³ and B has 520 g / 260 cm³ = 2.0 g/cm³.
+
+This means that 1 cm³ of material A has a mass of 2.5 g, while 1 cm³ of material B has a mass of 2.0 g. Equivalently, 1 L may be interpreted as having mass 2.5 kg for A and 2.0 kg for B. Merely repeating the quotient or the unit is not yet an explicit explanation of its meaning. Halving the homogeneous sample A halves both its mass and volume: 225 g and 90 cm³. Density remains 225 g / 90 cm³ = 2.5 g/cm³ because both quantities change by the same factor.
+
+Material A is denser: it has more mass at the same volume. The greater total mass of the entire sample B does not prove greater density because B also has a greater volume. At 80 cm³, A requires 2.5 g/cm³ · 80 cm³ = 200 g, while B requires 2.0 g/cm³ · 80 cm³ = 160 g. B therefore has 40 g less mass at the same required volume.
+
+Other consistent units, for example 2.5 and 2.0 kg/L or 2500 and 2000 kg/m³, are also valid, as are unitary reasoning, a ratio/correspondence table or an unambiguous labelled representation. Every approach must show the mass-per-volume meaning, the units used and the concrete application. The stated volumes are data; prism formulas and surface-area calculations are not part of this assessment.

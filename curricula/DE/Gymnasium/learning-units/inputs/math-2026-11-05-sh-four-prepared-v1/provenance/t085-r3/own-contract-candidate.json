@@ -1,0 +1,85 @@
+{
+  "status": "PRIVATE_UNBOUND_CONTRACT_PROPOSAL_NOT_RUNTIME_CONTRACT",
+  "proposedContractId": "math-sh-two-variable-over-underdetermined-systems",
+  "revision": "2026-11-05-private-r2",
+  "proposedProgramUnitId": "de-gym-math-sh-two-variable-over-underdetermined-systems",
+  "privateUnitId": "8729890f-b472-5bc7-8ce6-00c90d6789e8",
+  "title": {
+    "de": "Reicht die Information und passt sie zusammen?",
+    "en": "Is the information sufficient and mutually consistent?"
+  },
+  "introduction": {
+    "de": "Mehr Angaben können helfen, sich wiederholen oder einander widersprechen. Du prüfst, welche Zahlenpaare wirklich zu allen Angaben passen.",
+    "en": "Additional information can help, repeat what is already known, or conflict. You check which ordered pairs actually fit every condition."
+  },
+  "ordinaryOwnGoalIds": [
+    "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+  ],
+  "explicitOwnAssessmentGoalIds": [
+    "d79c446e-21ce-55ab-b0bc-c654d8476139"
+  ],
+  "futureBackendOwnGoalIds": [
+    "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+    "d79c446e-21ce-55ab-b0bc-c654d8476139"
+  ],
+  "futureBackendOwnResolvedKinds": {
+    "679a0aeb-9f1d-53dc-be90-a40d1aaad947": "ordinary",
+    "d79c446e-21ce-55ab-b0bc-c654d8476139": "assessment"
+  },
+  "ownedOrdinaryCount": 1,
+  "noteOnOwnFields": "The runtime contract owns its explicit Q as an assessment node; ordinary implicit recognition is restricted to newA alone. e42 is not owned.",
+  "requiredChildContractRefs": [],
+  "ownRecallGoalIds": [],
+  "ownOrientationGoalIds": [],
+  "atomicPreparationGoalIds": [
+    "e42c208d-9555-43cc-92f5-5bb4c0688726"
+  ],
+  "wholeForeignUnitRequirement": null,
+  "assessmentClaims": {
+    "d79c446e-21ce-55ab-b0bc-c654d8476139": {
+      "coveredGoalIds": [
+        "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      ],
+      "taskPath": "tasks.md",
+      "rubricPath": "rubric.json",
+      "independentApplicationRequired": true,
+      "passingPoints": 26,
+      "maxPoints": 30,
+      "scoringRule": "sum of correctly assigned0/4/5 scores>=26"
+    }
+  },
+  "recognitionProposal": {
+    "explicitExamResultRequired": "d79c446e-21ce-55ab-b0bc-c654d8476139",
+    "recognizableOrdinaryOwnGoalIds": [
+      "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+    ],
+    "neverRecognizeFromThisContract": [
+      "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "27cfa1b3-be6f-5f81-b9a2-ae3bad9c14b6"
+    ],
+    "oldMasteryOrOldExamPassSuffices": false,
+    "assessmentPassedImplicitly": false
+  },
+  "placementProposal": {
+    "jurisdiction": "DE-SH",
+    "stage": "SekI",
+    "officialYear": null,
+    "correspondingCrossStage": true,
+    "canonicalTopicalParentCandidate": null,
+    "visibleOwner": "A new stage-wide SH lower-secondary learning-unit placement; one direct owner, one visible parent. SolBatch owns the separate view proposal.",
+    "noOldE42ParentExpansion": "Do not place under every existing canonical parent of e42 or infer a whole J8 unit requirement.",
+    "canonicalSupplementParentCandidate": "b4bab1e5-35b2-5a8c-b74e-f674dd222a96",
+    "canonicalMathRootId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+    "applicabilityMappingInheritance": "boundary",
+    "noOldLgsClusterAppend": true
+  },
+  "runtimeSourceBinding": null,
+  "activationBlockers": [
+    "Independent content review of actual new goal, tasks, rubric and new PNG",
+    "Fresh actual D/P/A/M/V evidence as applicable; the M classification is only proposed",
+    "Reviewed concrete SH stage-wide placement and exact new view/owner/source bindings",
+    "Actual new native projection generation after source changes; V7 remains only a predecessor",
+    "Fresh bound contract compilation; no fake future hashes or receipts",
+    "Root authorization of activation separately from this private draft"
+  ]
+}

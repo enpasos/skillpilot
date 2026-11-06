@@ -1,6 +1,13 @@
 # Mathematik: Arbeitsstand der Lerneinheiten-Umsetzung
 
-Stand: 5. November 2026. Dieser Nachweis ergänzt den
+**6. November 2026: Ausbau abgebrochen, Umsetzung pausiert.** Der folgende
+Bestand beschreibt den technischen Zwischenstand vor der Unterbrechung.
+Er belegt keine akzeptierte Aufteilung des Mathematikcurriculums in Einheiten.
+Zunächst werden [Zweck, Zuschnitt und Beispiele](../concept/skill-graph/learning-unit-design-and-examples.md)
+konzeptionell geprüft. Frühere Inhalts- und Laufzeittests ersetzen diese Prüfung
+nicht; aus den Zahlen unten folgt kein Fertigstellungsgrad des neuen Zuschnitts.
+
+Historischer Stand: 5. November 2026. Dieser Nachweis ergänzt den
 [Umsetzungsplan](learning-units-implementation-plan.md); er ersetzt dessen
 Abnahmen nicht. Aktiver Auftrag ist **S2 bis einschließlich S4**, also die
 vollständige Mathematik-Umsetzung. Ein erster Vertrag ist ein Zwischenergebnis.

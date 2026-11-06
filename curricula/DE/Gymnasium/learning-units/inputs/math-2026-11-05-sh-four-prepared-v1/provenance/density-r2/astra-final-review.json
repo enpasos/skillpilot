@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "status": "GO_EXACT_DENSITY_R2_CONTENT_F1_CLOSED",
+  "reviewedAtUtc": "2026-11-05 22:19:38 UTC",
+  "decision": "GO",
+  "reviewKind": "Independent targeted follow-up of the single R1 rubric follow-through finding F1, with byte-equality-based retention of previously reviewed unchanged content.",
+  "reviewer": {
+    "agent": "/root/astra_sh_tools_review",
+    "requestedModel": "gpt-6-astra",
+    "requestedReasoningEffort": "ultra",
+    "requestedForkTurns": "none",
+    "configurationEvidence": "Root confirmed the requested execution configuration for this reviewer instance.",
+    "observedSystemIdentity": "Codex based on GPT-6; hidden deployment/patch identity is not exposed.",
+    "independentFromAuthor": true,
+    "authorAgent": "/root/sol_density_rubric_followthrough",
+    "priorOwnReviewUsedForUnchangedContentOnly": true,
+    "humanApproval": false
+  },
+  "input": {
+    "manifestPath": "tmp/math-learning-units/sh-density-authoring-r2/author-freeze-manifest.json",
+    "manifestSha256": "570f885bfe435c84f61016a97aa4eb65b4094f74321c296e78970e16f4a40f0a",
+    "authorInputFingerprint": "sha256:56bc7ee36ff4048612d2a62b285b2fdf48e23398f351f7611f35ff4c47c2a0e7",
+    "artifactCount": 36,
+    "allArtifactHashesAndLengthsVerified": true,
+    "dossierSha256": "ffdb306e625cd853ee4bd02f1e2511bfd606485cd2a12384a8f43bf8e73dcafb",
+    "candidateGoalSha256": "881a82fa8c63fc2a9d57f2a1f4880b91ddb7cd09dd43c2bff8459c65fd3f1629",
+    "bilingualRubricSha256": "ca45f0a0b726b716bb1138dabf59f7f46f1c37d4f00a058bd4bf87880e48dddd",
+    "englishDeliveredVariantSha256": "4b4ba9e9842c704d2da1259b383837aa24dea3b805b44ce2ccbcacb4a799e3d5",
+    "priorR1ReviewSha256": "ea3e352203e2b0650c5304f2df02020938b8d56176a4447a55e4e0ce783e58c2"
+  },
+  "unitCandidateId": "math-sh-material-density",
+  "unitCandidateRevision": "2026-11-05-draft-v3-r2",
+  "assessmentGoalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d",
+  "ordinaryGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+  "closedFindings": [
+    {
+      "id": "F1",
+      "previousStatus": "HOLD",
+      "status": "CLOSED_GO",
+      "reason": "The actual delivered DE/EN 3-mark descriptions expressly award full marks to otherwise complete and correct follow-through using the learner's own prior values after an already-penalized minor error. The 2-mark descriptions require a new independent error in the present step; reference values assume error-free inputs."
+    }
+  ],
+  "claimDecisions": {
+    "unambiguousFollowThroughPointAllocation": "GO",
+    "fullOrdinaryDensityCoverage": "GO_RETAINED_FROM_EXACT_UNCHANGED_R1_CONTENT",
+    "meaningRemainsAnIndispensableCore": "GO",
+    "appropriateUnitsAndContextApplication": "GO",
+    "newIndependentErrorsStillPenalized": "GO",
+    "missingFacetsCannotBeCompensated": "GO",
+    "deEnActualDeliveredRuleParity": "GO",
+    "methodUnitAndRepresentationFreedom": "GO_UNCHANGED",
+    "ownIdentityAndHistoricalResultBoundaries": "GO_UNCHANGED_BOUND_INPUT",
+    "activeScopeContractM7HumanRuntimeHostAcceptance": "NOT_GRANTED"
+  },
+  "actualDeliveredRules": {
+    "germanPath": "candidate-goal.json:goal.examData.scoring.steps[].description",
+    "englishPath": "task-variant.en.json:scoring.steps[].description",
+    "bothLanguagesReadAndSemanticallyReviewed": true,
+    "eachDescriptionExactlyContainsNormalPolicyCoreAndScore0Score2Score3": true,
+    "zeroRulesStillHavePriorityForOmissionsAndMisconceptions": true,
+    "repeatedNumericalDeductionForSingleEarlierMinorErrorExplicitlyForbidden": true,
+    "fullCreditForCompleteCorrectFollowThroughExplicit": true,
+    "newErrorRequiredForLocalTwoMarkDeduction": true,
+    "noPrivateEvidenceFileOrFacetVectorRequired": true,
+    "normalApiTotalOnlyBoundaryRetained": true,
+    "newPersistentQualificationOrHistoricalPassFilter": false
+  },
+  "independentlyGradedCases": [
+    {
+      "id": "F1-complete-follow-through",
+      "originalError": "450/180 incorrectly evaluated as 2.4 with correct ratio and units.",
+      "followThrough": "Both density interpretations and halving relation complete; 2.4*80=192 g and B 160 g; comparisons and choices correct.",
+      "points": [
+        2,
+        3,
+        3
+      ],
+      "total": 8,
+      "pass": true,
+      "repeatedDeductionVectorNowForbidden": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "F1-plus-new-final-slip",
+      "originalError": "Same 2.4 quotient error.",
+      "additionalNewError": "2.4*80 incorrectly evaluated as 191 g; quantity model, units and choice remain correct.",
+      "points": [
+        2,
+        3,
+        2
+      ],
+      "total": 7,
+      "pass": true
+    },
+    {
+      "id": "correct-input-new-final-slip",
+      "additionalNewError": "2.5*80 incorrectly evaluated as 199 g; everything else complete and correct.",
+      "points": [
+        3,
+        3,
+        2
+      ],
+      "total": 8,
+      "pass": true
+    },
+    {
+      "id": "F1-omit-B-interpretation",
+      "omission": "No B mass-per-unit-volume interpretation.",
+      "maximumPoints": [
+        2,
+        0,
+        3
+      ],
+      "maximumTotal": 5,
+      "pass": false
+    },
+    {
+      "id": "F1-wrong-halving-model",
+      "misconception": "Density claimed to halve with mass and volume.",
+      "maximumPoints": [
+        2,
+        0,
+        3
+      ],
+      "maximumTotal": 5,
+      "pass": false
+    },
+    {
+      "id": "F1-total-mass-decision",
+      "misconception": "B called denser solely because its whole sample has mass 520 g.",
+      "maximumPoints": [
+        2,
+        3,
+        0
+      ],
+      "maximumTotal": 5,
+      "pass": false
+    },
+    {
+      "id": "F1-omit-one-application",
+      "omission": "Only one 80-cm³ sample mass determined.",
+      "maximumPoints": [
+        2,
+        3,
+        0
+      ],
+      "maximumTotal": 5,
+      "pass": false
+    },
+    {
+      "id": "structural-unit-error-not-minor",
+      "misconception": "0.180 L treated as 0.180 cm³.",
+      "maximumPoints": [
+        0,
+        3,
+        3
+      ],
+      "maximumTotal": 6,
+      "pass": false
+    },
+    {
+      "id": "bare-formula-after-earlier-error",
+      "omission": "Only formula and density unit supplied instead of explicit interpretations.",
+      "maximumPoints": [
+        2,
+        0,
+        3
+      ],
+      "maximumTotal": 5,
+      "pass": false
+    },
+    {
+      "id": "inverse-density-model",
+      "misconception": "V/m used as density; later follow-through does not turn this into an isolated arithmetic slip.",
+      "maximumPoints": [
+        0,
+        3,
+        3
+      ],
+      "maximumTotal": 6,
+      "pass": false
+    },
+    {
+      "id": "three-independent-small-errors",
+      "condition": "All three cores complete, one genuinely new minor error in every step.",
+      "points": [
+        2,
+        2,
+        2
+      ],
+      "total": 6,
+      "pass": false
+    }
+  ],
+  "boundedDiffVerification": {
+    "exactlyEightSubstantiveRubricFieldsChanged": true,
+    "changedRubricPointers": [
+      "/steps/1/score2De",
+      "/steps/1/score2En",
+      "/steps/1/score3De",
+      "/steps/1/score3En",
+      "/steps/2/score2De",
+      "/steps/2/score2En",
+      "/steps/2/score3De",
+      "/steps/2/score3En"
+    ],
+    "unchangedNormalPolicyCoreZeroRulesAndWholeStep1": true,
+    "candidateChangesOnly": [
+      "/goal/examData/scoring/steps/1/description",
+      "/goal/examData/scoring/steps/2/description",
+      "/goal/examData/sourceArtifactPath",
+      "/goal/sourceRef"
+    ],
+    "englishVariantChangesOnly": [
+      "/scoring/steps/1/description",
+      "/scoring/steps/2/description"
+    ],
+    "unitChangesOnly": [
+      "/assessmentClaimBinding/rubricRevision",
+      "/previousCandidateLocationPreserved",
+      "/previousUnpublishedRevision",
+      "/revision"
+    ],
+    "taskIdentityOwnAndTaskDigestUnchanged": true,
+    "byteEqualToR1Files": [
+      "density.task.de.md",
+      "density.task.en.md",
+      "density.solution.de.md",
+      "density.solution.en.md",
+      "density.task-pair.de.json",
+      "density.task-pair.en.json",
+      "identities-and-boundaries.json",
+      "scope-proposal.json",
+      "inputs/current-canonical.snapshot.json",
+      "inputs/current-contract-own-inventory.json",
+      "inputs/current-ordinary-density-and-old-q.json",
+      "inputs/sh-source-page-32.png",
+      "inputs/sh-source-page-32.txt",
+      "evidence/full-inherited-demand-and-prospective-normalization.json",
+      "evidence/method-neutral-alternatives.json",
+      "evidence/numeric-recalculation.json"
+    ]
+  },
+  "independentEnumeration": {
+    "authorScriptExecuted": false,
+    "implementedIndependently": true,
+    "normalStepScores": [
+      0,
+      2,
+      3
+    ],
+    "stepMaxima": [
+      3,
+      3,
+      3
+    ],
+    "maxPoints": 9,
+    "passingPoints": 7,
+    "normalVectorsChecked": 27,
+    "normalPassingVectors": [
+      [
+        2,
+        2,
+        3
+      ],
+      [
+        2,
+        3,
+        2
+      ],
+      [
+        2,
+        3,
+        3
+      ],
+      [
+        3,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        3
+      ],
+      [
+        3,
+        3,
+        2
+      ],
+      [
+        3,
+        3,
+        3
+      ]
+    ],
+    "integerCubeVectorsChecked": 64,
+    "corePresenceCombinations": 8,
+    "essentialFacetPresenceAssignmentsChecked": 8192,
+    "unchangedFacetGroupSizes": [
+      4,
+      5,
+      4
+    ],
+    "possiblePassesWithMissingEssentialFacet": 0,
+    "maximumWithAnyMissingCore": 6,
+    "conditionalOnFaithfulCoachGrading": true,
+    "proofDoesNotReplaceConcreteSemanticScoringReview": true
+  },
+  "preservation": {
+    "originalDensityManifestSha256": "f2ba7055257e400ed024a58ac33a4281b2f6e6ad4fb2c1ae42124c3455de78ce",
+    "originalDensityArtifactsChecked": 28,
+    "originalDensityChangedArtifacts": [],
+    "originalToolsManifestSha256": "884f6641ffaa9814c858bb1e4e01d97ee02600db650ea7c57920876c69fd06d7",
+    "originalToolsArtifactsChecked": 43,
+    "originalToolsChangedArtifacts": [],
+    "priorReviewCopiesByteEqual": true,
+    "exactOwn": [
+      "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+    ],
+    "oldPrismQOrOldMReinterpreted": false,
+    "implicitExamOrCardPassAuthorized": false,
+    "priorBoundSourceMathMethodAndGraphFindingsRetainedByEquality": true,
+    "completeSourceAndGraphReviewRepeated": false,
+    "currentNativeScopeOrDPBindingRevalidated": false
+  },
+  "requiredFurtherContentRepairs": [],
+  "remainingSeparateWork": [
+    "Final source/program/acquisition placement and exact scope admission.",
+    "Actual normalized R and changed D/P binding where applicable.",
+    "English variant registration and native offer/package/runtime/Coach/host evidence."
+  ],
+  "reviewerActions": {
+    "authorInputsModified": false,
+    "originalFreezesModified": false,
+    "normativeFilesModified": false,
+    "gitModified": false,
+    "buildsRun": false,
+    "learnerStateModified": false,
+    "productionModified": false,
+    "outputs": [
+      "astra-final-review.md",
+      "astra-final-review.json"
+    ]
+  },
+  "notClaimed": [
+    "Normative activation",
+    "Human approval",
+    "Formal M7 approval",
+    "Current source/scope/Own contract admission",
+    "Native offer equality",
+    "Runtime/Coach/host acceptance",
+    "New technical semantic auditing of arbitrary earnedPoints totals"
+  ]
+}

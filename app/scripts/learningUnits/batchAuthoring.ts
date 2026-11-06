@@ -19,6 +19,9 @@ export interface Packet {
 export interface Batch {
   schemaVersion: 1; generation: string; baselineRef: string; packets: Packet[]
   newGoalPaths: string[]; canonicalClusterAdditions: Array<{ clusterId: string; goalIds: string[] }>
+  /** Explicitly new ordinary/cluster identities; never replacements for existing goals. */
+  newOrdinaryGoalPaths?: string[]
+  newClusterGoalPaths?: string[]
   removeRedundantRequires: Array<[string, string]>
   compositionViews: Record<string, string>
   qualityProofPath?: string
@@ -66,16 +69,38 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   const source = structuredClone(baseline)
   const oldById = new Map(baseline.goals.map(goal => [goal.id, goal]))
   const byId = new Map(source.goals.map(goal => [goal.id, goal]))
+  assert.equal(oldById.size, baseline.goals.length, 'Duplicate baseline goal identity')
+  const extendedGoals = batch.newOrdinaryGoalPaths !== undefined || batch.newClusterGoalPaths !== undefined
+  const newOrdinaryIds: string[] = []; const newClusterIds: string[] = []; const newAssessmentIds: string[] = []
+  const add = (goal: MathGoal) => {
+    assert.ok(!byId.has(goal.id), `A new goal must not retype an existing identity: ${goal.id}`)
+    source.goals.push(goal); byId.set(goal.id, goal)
+  }
+  for (const path of batch.newOrdinaryGoalPaths ?? []) {
+    const goal = JSON.parse(read(path)) as MathGoal
+    assert.equal(resolvedKind(goal), 'ordinary', 'A new ordinary goal cannot be an exam, card or orientation')
+    assert.equal(goal.type, 'atomic'); assert.ok(!goal.contains?.length, 'New ordinary goals must be atomic')
+    assert.ok(!goal.semanticKind || goal.semanticKind === 'curricularAtomic', 'Wrong ordinary semantic kind')
+    add(goal); newOrdinaryIds.push(goal.id)
+  }
+  for (const path of batch.newClusterGoalPaths ?? []) {
+    const goal = JSON.parse(read(path)) as MathGoal
+    assert.equal(resolvedKind(goal), 'ordinary', 'A new cluster cannot be an exam, card or orientation')
+    assert.equal(goal.type, 'cluster'); assert.ok(goal.contains?.length, 'New clusters need explicit children')
+    assert.ok(!goal.semanticKind || goal.semanticKind === 'curricularArea', 'Wrong cluster semantic kind')
+    add(goal); newClusterIds.push(goal.id)
+  }
   for (const path of batch.newGoalPaths) {
     const goal = JSON.parse(read(path)) as MathGoal
     assert.ok(!byId.has(goal.id), `A new assessment must not retype an existing identity: ${goal.id}`)
     assert.equal(resolvedKind(goal), 'assessment', 'Only independently reviewed new Q identities may be added by this emitter')
     assert.ok(goal.examData?.taskContent && goal.examData.solutionContent && goal.examData.scoring, 'Incomplete new normal assessment')
-    source.goals.push(goal); byId.set(goal.id, goal)
+    assert.ok(!goal.contains?.length, 'New assessments must be atomic')
+    add(goal); newAssessmentIds.push(goal.id)
   }
   for (const addition of batch.canonicalClusterAdditions) {
     const cluster = byId.get(addition.clusterId); assert.ok(cluster?.contains?.length, `Not an existing cluster ${addition.clusterId}`)
-    for (const id of addition.goalIds) { assert.ok(byId.has(id) && !oldById.has(id), 'Only new Q navigation additions are supported'); assert.ok(!cluster.contains.includes(id)); cluster.contains.push(id) }
+    for (const id of addition.goalIds) { assert.ok(byId.has(id) && !oldById.has(id), 'Only declared new goal navigation additions are supported'); assert.ok(!cluster.contains.includes(id)); cluster.contains.push(id) }
   }
   const expected = fullClosure(atomicRelation(source.goals))
   const previous = fullClosure(atomicRelation(baseline.goals))
@@ -86,6 +111,9 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
     assert.deepEqual(fullClosure(atomicRelation(source.goals)), expected, `Repair changed full transitive demand ${id}->${prerequisite}`)
   }
   const relation = atomicRelation(source.goals)
+  for (const [id, demand] of Object.entries(fullClosure(relation))) assert.ok(!demand.includes(id), `Cyclic full atomic demand ${id}`)
+  const directRequires = Object.fromEntries(source.goals.map(goal => [goal.id, goal.requires ?? []]))
+  for (const goal of source.goals) assert.ok(!reachable(goal.requires ?? [], directRequires).has(goal.id), `Requires cycle ${goal.id}`)
   for (const goal of baseline.goals) assert.deepEqual(goalMeaning(byId.get(goal.id)!), goalMeaning(goal), `Original fixed meaning changed ${goal.id}`)
   // Calendar ancestors retain unique-descendant weights after explicit Q additions.
   const descendants = (id: string, path = new Set<string>()): Set<string> => {
@@ -93,6 +121,13 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
     return goal.contains?.length ? new Set(goal.contains.flatMap(child => [...descendants(child, new Set([...path, id]))])) : new Set([id])
   }
   const added = new Set(source.goals.filter(goal => !oldById.has(goal.id)).map(goal => goal.id))
+  if (extendedGoals) {
+    const baselineChildren = new Set(baseline.goals.flatMap(goal => goal.contains ?? []))
+    const roots = baseline.goals.filter(goal => goal.contains?.length && !baselineChildren.has(goal.id)).map(goal => goal.id)
+    assert.ok(roots.length, 'New ordinary/cluster goals require an existing canonical root')
+    const rootReachable = reachable(roots, Object.fromEntries(source.goals.map(goal => [goal.id, goal.contains ?? []])))
+    for (const id of added) assert.ok(rootReachable.has(id), `New goal is not reachable from an existing canonical root: ${id}`)
+  }
   for (const goal of source.goals.filter(goal => goal.contains?.length)) {
     const atoms = descendants(goal.id); if ([...added].some(id => atoms.has(id))) goal.weight = atoms.size
   }
@@ -111,7 +146,7 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
     for (const segment of edit.arrayPointer.split('/').slice(1)) array = (array as JsonObject)[segment.replace(/~1/g, '/').replace(/~0/g, '~')]
     assert.ok(Array.isArray(array), 'View edit must address an exact existing array')
     assert.equal((array[edit.afterIndex] as JsonObject)?.kind, 'goalEntry'); assert.equal((array[edit.afterIndex] as JsonObject)?.goalId, edit.expectedAnchorGoalId, 'View anchor drift')
-    assert.equal(edit.node.kind, 'goalEntry'); assert.ok(added.has(edit.node.goalId), 'View additions are limited to the declared new Q')
+    assert.equal(edit.node.kind, 'goalEntry'); assert.ok(added.has(edit.node.goalId), 'View additions are limited to declared new goals')
     assert.equal(edit.node.projectionRole ?? 'target', (array[edit.afterIndex] as JsonObject).projectionRole ?? 'target', 'Q role must preserve its reviewed anchor role')
     array.splice(edit.afterIndex + 1, 0, edit.node)
   }
@@ -121,11 +156,19 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   const ledger = structuredClone(baselineLedger)
   for (const goal of source.goals) {
     const decision = ledger.decisions.find((entry) => entry.goalId === goal.id)
-    if (decision) decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+    if (decision) {
+      const previousGoal = oldById.get(goal.id); assert.ok(previousGoal, 'A new goal must have a new semantic decision')
+      if (extendedGoals || decision.sourceFingerprint) assert.equal(decision.sourceFingerprint, fingerprintSemanticKindSourceGoal(previousGoal), `Stale baseline semantic decision ${goal.id}`)
+      decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+    }
     else {
-      assert.ok(added.has(goal.id)); ledger.decisions.push({ goalId: goal.id, sourceFingerprint: fingerprintSemanticKindSourceGoal(goal),
-        semanticKind: 'practiceAssessment', decisionStatus: 'authoritative', decisionBasis: 'reviewed-current-pilot-practice-assessment' })
-      ledger.counts.practiceAssessment++; ledger.counts.total++
+      assert.ok(added.has(goal.id))
+      const semanticKind = newOrdinaryIds.includes(goal.id) ? 'curricularAtomic' : newClusterIds.includes(goal.id) ? 'curricularArea' : 'practiceAssessment'
+      const decisionBasis = semanticKind === 'curricularAtomic' ? 'reviewed-current-pilot-curricular-atomic'
+        : semanticKind === 'curricularArea' ? 'reviewed-current-pilot-curricular-area' : 'reviewed-current-pilot-practice-assessment'
+      ledger.decisions.push({ goalId: goal.id, sourceFingerprint: fingerprintSemanticKindSourceGoal(goal),
+        semanticKind, decisionStatus: 'authoritative', decisionBasis })
+      ledger.counts[semanticKind] = (ledger.counts[semanticKind] ?? 0) + 1; ledger.counts.total++
     }
   }
   ledger.decisions.sort((a, b) => a.goalId.localeCompare(b.goalId))
@@ -240,7 +283,9 @@ export function prepareBatch(batch: Batch, baseline: Landscape, baselineLedger: 
   return { source, ledger, catalog, artifacts, reviews,
     proof: { schemaVersion: 1, generation: batch.generation, baselineRef: batch.baselineRef,
       originalGoalMeaningsPreserved: baseline.goals.length, originalAtomDemandClosuresPreserved: Object.keys(previous).length,
-      newAssessmentGoalIds: [...added].sort(), removedRedundantRequires: batch.removeRedundantRequires,
+      newAssessmentGoalIds: [...newAssessmentIds].sort(),
+      ...(extendedGoals ? { newOrdinaryGoalIds: [...newOrdinaryIds].sort(), newClusterGoalIds: [...newClusterIds].sort(), newGoalsCanonicalRootReachable: true } : {}),
+      removedRedundantRequires: batch.removeRedundantRequires,
       beforeReductionClosureSha256: hash(expected), afterReductionClosureSha256: hash(fullClosure(relation)),
       independentReviewPending: reviews.filter(value => value.status !== 'receipt-verified').map(value => value.contractId) } }
   function receiptAvailable(path: string) { if (artifacts.has(path)) return true; try { read(path); return true } catch { return false } }

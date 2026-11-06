@@ -31,6 +31,9 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Learning Units (Lerneinheiten)](skill-graph/learning-units.md)
   Recursive units with a learning promise, subunits, application assessments
   and derived completion; acquired competence remains globally valid.
+- [Lerneinheiten: Zweck, Zuschnitt und Beispiele](skill-graph/learning-unit-design-and-examples.md)
+  Dependable application before further learning, with Physics and Mathematics
+  examples for reviewing the didactic boundaries before implementation.
 - [Learning Unit Progression](skill-graph/learning-unit-progression.md)
   Explicit dependencies between whole units, valid block ordering and the
   separate decision about recommended routes versus technical entry gates.

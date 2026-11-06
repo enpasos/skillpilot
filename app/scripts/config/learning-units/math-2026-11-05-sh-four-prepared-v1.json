@@ -1,0 +1,878 @@
+{
+  "schemaVersion": 1,
+  "generation": "math-2026-11-05-sh-four-prepared-v1",
+  "baselineRef": "0b83cda188",
+  "packets": [
+    {
+      "contractId": "math-sh-digital-length-measurement",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sh-digital-length-measurement",
+      "parentUnitId": "de-gym-math-sek1",
+      "placementRevision": "2026-11-05-sh-stagewide-v1",
+      "title": {
+        "de": "Eine Leiste digital vermessen",
+        "en": "Measure a strip digitally"
+      },
+      "promise": {
+        "de": "Du kannst eine geeignete Messskala wählen, zwei Endpositionen selbst ablesen und eine Länge mit ehrlicher Genauigkeit angeben.",
+        "en": "You can choose a suitable measuring scale, independently read two endpoints, and report a length with honest precision."
+      },
+      "introduction": {
+        "de": "Beim Zuschneiden muss die Länge stimmen. Du misst in einer maßstäblichen digitalen Werkstattansicht und erklärst, was die Teilung und die Endmarken über die Genauigkeit aussagen.",
+        "en": "Length matters when cutting a part. You measure in a scaled digital workshop view and explain what the divisions and endpoint marks tell you about precision."
+      },
+      "ownGoalIds": [
+        "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+        "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-digital-length-measurement.md",
+      "reviewReceiptPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-digital-length-measurement.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/current-data-stage-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/root-independent-reduction-check.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/additional-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/unit-candidates.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/candidate-goals.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/task-variants.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/evidence/prospective-transitive-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/candidate-goal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/unit-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/task-variant.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/density.rubric.bilingual.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/own-contract-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/supplement-cluster-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/r2-freeze-and-content-equality.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/scope-integration-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/review-input-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/tasks.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric-and-solutions.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/input-bindings.json"
+      ],
+      "assessmentClaims": {
+        "af8f64f1-b5bd-5201-9999-5224e3d06972": {
+          "coveredGoalIds": [
+            "ad26e4d9-b025-57ec-8f25-df4a2415cc62"
+          ]
+        }
+      },
+      "scopeReview": {
+        "status": "private-prospective-source-frozen-integration-not-admitted",
+        "sourceBaselineRef": "0b83cda188",
+        "prospectiveTargetScopeCount": 8,
+        "sourceStage": "SekI; corresponding CrossStage only",
+        "oldThreeQAdditionalTargets": 0,
+        "noOldQAliasOrObligationReplacement": true,
+        "newOrdinaryFreshM7Required": false
+      }
+    },
+    {
+      "contractId": "math-sh-source-calculator-speed",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sh-source-calculator-speed",
+      "parentUnitId": "de-gym-math-sek1",
+      "placementRevision": "2026-11-05-sh-stagewide-v1",
+      "title": {
+        "de": "Messprotokolle und Geschwindigkeiten prüfen",
+        "en": "Check measurement records and speeds"
+      },
+      "promise": {
+        "de": "Du kannst Weg- und Zeitangaben sinnvoll auswerten, Geschwindigkeiten mit dem Taschenrechner berechnen und die Ergebnisse samt Genauigkeitsgrenzen prüfen.",
+        "en": "You can interpret distance and time records, calculate speeds using a calculator, and check the results and their precision limits."
+      },
+      "introduction": {
+        "de": "Eine kürzere Stoppuhrzeit allein sagt noch nicht, wer schneller war. Du verbindest Quelle, zurückgelegte Strecke, Zeitdauer und Werkzeugkontrolle und prüfst, ob ein knapper Unterschied belastbar ist.",
+        "en": "A smaller stopwatch reading alone does not tell you who was faster. You connect the source, distance travelled, elapsed time and tool checks, then test whether a close difference is dependable."
+      },
+      "ownGoalIds": [
+        "314854a0-4e97-462e-9486-9fd83652e91d",
+        "25a3cc39-976e-58a5-b882-73baee5c037c",
+        "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+        "b789edda-f735-52b0-9ccd-115706f28978"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-source-calculator-speed.md",
+      "reviewReceiptPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-source-calculator-speed.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/current-data-stage-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/root-independent-reduction-check.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/additional-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/unit-candidates.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/candidate-goals.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/task-variants.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/evidence/prospective-transitive-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/candidate-goal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/unit-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/task-variant.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/density.rubric.bilingual.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/own-contract-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/supplement-cluster-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/r2-freeze-and-content-equality.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/scope-integration-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/review-input-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/tasks.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric-and-solutions.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/input-bindings.json"
+      ],
+      "assessmentClaims": {
+        "b789edda-f735-52b0-9ccd-115706f28978": {
+          "coveredGoalIds": [
+            "314854a0-4e97-462e-9486-9fd83652e91d",
+            "25a3cc39-976e-58a5-b882-73baee5c037c",
+            "37bf2eb6-75a0-44c1-a988-ca0e203cb072"
+          ]
+        }
+      },
+      "scopeReview": {
+        "status": "private-prospective-source-frozen-integration-not-admitted",
+        "sourceBaselineRef": "0b83cda188",
+        "prospectiveTargetScopeCount": 8,
+        "sourceStage": "SekI; corresponding CrossStage only",
+        "oldThreeQAdditionalTargets": 0,
+        "noOldQAliasOrObligationReplacement": true,
+        "newOrdinaryFreshM7Required": false
+      }
+    },
+    {
+      "contractId": "math-sh-material-density",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sh-material-density",
+      "parentUnitId": "de-gym-math-sek1",
+      "placementRevision": "2026-11-05-sh-stagewide-v1",
+      "title": {
+        "de": "Materialdichte verstehen und anwenden",
+        "en": "Understand and apply material density"
+      },
+      "promise": {
+        "de": "Du kannst Dichte als Masse pro Volumen erklären und bei unterschiedlichen Materialproben sinnvoll zum Vergleichen und Rechnen nutzen.",
+        "en": "You can explain density as mass per volume and use it meaningfully to compare and calculate with different material samples."
+      },
+      "introduction": {
+        "de": "Die schwerere Probe ist nicht automatisch aus dem dichteren Material. Du vergleichst gleiche Volumenmengen, deutest den Quotienten aus Masse und Volumen und berechnest, wie viel Masse für ein gegebenes Volumen benötigt wird.",
+        "en": "The heavier sample is not automatically made of the denser material. You compare equal volumes, interpret the ratio of mass and volume, and calculate the mass needed for a given volume."
+      },
+      "ownGoalIds": [
+        "2345ae25-5805-4c72-b830-32e63cc6262a",
+        "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-material-density.md",
+      "reviewReceiptPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-material-density.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/current-data-stage-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/root-independent-reduction-check.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/additional-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/unit-candidates.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/candidate-goals.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/task-variants.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/evidence/prospective-transitive-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/candidate-goal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/unit-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/task-variant.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/density.rubric.bilingual.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/own-contract-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/supplement-cluster-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/r2-freeze-and-content-equality.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/scope-integration-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/review-input-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/tasks.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric-and-solutions.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/input-bindings.json"
+      ],
+      "assessmentClaims": {
+        "21d2273f-ccb7-5452-9a87-b26bcea4f68d": {
+          "coveredGoalIds": [
+            "2345ae25-5805-4c72-b830-32e63cc6262a"
+          ]
+        }
+      },
+      "scopeReview": {
+        "status": "private-prospective-source-frozen-integration-not-admitted",
+        "sourceBaselineRef": "0b83cda188",
+        "prospectiveTargetScopeCount": 8,
+        "sourceStage": "SekI; corresponding CrossStage only",
+        "oldThreeQAdditionalTargets": 0,
+        "noOldQAliasOrObligationReplacement": true,
+        "newOrdinaryFreshM7Required": false
+      }
+    },
+    {
+      "contractId": "math-sh-two-variable-over-underdetermined-systems",
+      "revision": "2026-11-05-v1",
+      "programUnitId": "de-gym-math-sh-two-variable-over-underdetermined-systems",
+      "parentUnitId": "de-gym-math-sek1",
+      "placementRevision": "2026-11-05-sh-stagewide-v1",
+      "title": {
+        "de": "Reicht die Information und passt sie zusammen?",
+        "en": "Is the information sufficient and mutually consistent?"
+      },
+      "promise": {
+        "de": "Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen und einer oder drei Gleichungen nach der Gleichungsanzahl als unter- beziehungsweise überbestimmt einordnen, ihre Lösungsmenge grafisch und algebraisch bestimmen und an konsistenten sowie widersprüchlichen Beispielen begründen, dass die Anzahl allein weder Lösbarkeit noch Eindeutigkeit entscheidet; dabei deutet sie auch Nullgleichungen als Identität oder Widerspruch.",
+        "en": "The learner can classify linear systems in two variables with one or three equations as underdetermined or overdetermined by equation count, determine their solution sets graphically and algebraically, and use consistent and inconsistent examples to justify that equation count alone decides neither solvability nor uniqueness; this includes interpreting zero-coefficient equations as identities or contradictions."
+      },
+      "introduction": {
+        "de": "Mehr Angaben können helfen, sich wiederholen oder einander widersprechen. Du prüfst, welche Zahlenpaare wirklich zu allen Angaben passen.",
+        "en": "Additional information can help, repeat what is already known, or conflict. You check which ordered pairs actually fit every condition."
+      },
+      "ownGoalIds": [
+        "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      ],
+      "requiredChildContractRefs": [],
+      "reviewRef": "learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-two-variable-over-underdetermined-systems.md",
+      "reviewReceiptPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/reviews/math-sh-two-variable-over-underdetermined-systems.review.json",
+      "additionalInputPaths": [
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/current-data-stage-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/root-independent-reduction-check.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/source/additional-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/unit-candidates.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/candidate-goals.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/task-variants.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/evidence/prospective-transitive-reduction-proposal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/author-freeze-manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/candidate-goal.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/unit-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/task-variant.en.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/density.rubric.bilingual.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/manifest.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/own-contract-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/supplement-cluster-candidate.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.md",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/r2-freeze-and-content-equality.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/scope-integration-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/review-input-dossier.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/measurement.delivery.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/calculator-source-speed.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.de.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.de.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.solution.en.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.task-pair.en.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/density.rubric.bilingual.json",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/tasks.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric-and-solutions.md",
+        "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/t085/rubric.json",
+        "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/input-bindings.json"
+      ],
+      "assessmentClaims": {
+        "d79c446e-21ce-55ab-b0bc-c654d8476139": {
+          "coveredGoalIds": [
+            "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+          ]
+        }
+      },
+      "scopeReview": {
+        "status": "private-prospective-source-frozen-integration-not-admitted",
+        "sourceBaselineRef": "0b83cda188",
+        "prospectiveTargetScopeCount": 8,
+        "sourceStage": "SekI; corresponding CrossStage only",
+        "oldThreeQAdditionalTargets": 0,
+        "noOldQAliasOrObligationReplacement": true,
+        "newOrdinaryFreshM7Required": true
+      }
+    }
+  ],
+  "newGoalPaths": [
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/af8f64f1-b5bd-5201-9999-5224e3d06972.goal.json",
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/b789edda-f735-52b0-9ccd-115706f28978.goal.json",
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/21d2273f-ccb7-5452-9a87-b26bcea4f68d.goal.json",
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/d79c446e-21ce-55ab-b0bc-c654d8476139.goal.json"
+  ],
+  "newOrdinaryGoalPaths": [
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/679a0aeb-9f1d-53dc-be90-a40d1aaad947.goal.json"
+  ],
+  "newClusterGoalPaths": [
+    "DE/Gymnasium/assessments/mathematik/math-2026-11-05-sh-four-prepared-v1/b4bab1e5-35b2-5a8c-b74e-f674dd222a96.goal.json"
+  ],
+  "canonicalClusterAdditions": [
+    {
+      "clusterId": "c3cce9a1-9adc-4470-b2d8-aea81d6d7b65",
+      "goalIds": [
+        "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      ]
+    },
+    {
+      "clusterId": "320bc921-06df-4500-96fd-93f9f6fee9b4",
+      "goalIds": [
+        "b789edda-f735-52b0-9ccd-115706f28978",
+        "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      ]
+    },
+    {
+      "clusterId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+      "goalIds": [
+        "b4bab1e5-35b2-5a8c-b74e-f674dd222a96"
+      ]
+    }
+  ],
+  "removeRedundantRequires": [
+    [
+      "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "ca623958-c204-5d1b-bdd0-3f76765674cb"
+    ],
+    [
+      "25a3cc39-976e-58a5-b882-73baee5c037c",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "314854a0-4e97-462e-9486-9fd83652e91d",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+    ],
+    [
+      "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "2f598bc7-c117-47d7-bb81-0f08ad679b91",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "44cb7404-114e-5b14-b33a-ddee41952d46"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "26f668a0-6425-5466-9cf7-6295dd189005"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+    ],
+    [
+      "325771e1-602d-4bca-a199-a8f39a2d3dee",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "4acca6ef-5344-4dd1-b53d-506907573cf7",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+    ],
+    [
+      "ae772695-d55e-4cc5-81bc-6605272759b4",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "e09072f9-67d9-412c-b872-24ecbf329232",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    [
+      "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ]
+  ],
+  "compositionViews": {
+    "de-sh-seki-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+    "de-sh-seki-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+    "de-sh-gk-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+    "de-sh-gk-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+    "de-sh-lk-g8": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+    "de-sh-lk-g9": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json"
+  },
+  "compositionViewEdits": [
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedSha256": "d23f3b431d14a033aad678354c1a5f308bae5001cae64054ed8dbce1801268dc",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedSha256": "d23f3b431d14a033aad678354c1a5f308bae5001cae64054ed8dbce1801268dc",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedSha256": "d23f3b431d14a033aad678354c1a5f308bae5001cae64054ed8dbce1801268dc",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedSha256": "d23f3b431d14a033aad678354c1a5f308bae5001cae64054ed8dbce1801268dc",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "expectedSha256": "d23f3b431d14a033aad678354c1a5f308bae5001cae64054ed8dbce1801268dc",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedSha256": "d64c97614d0bdba2e608478288ac0d39b27b2b0cfecf715f8a4b7b47aa2e1c32",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedSha256": "d64c97614d0bdba2e608478288ac0d39b27b2b0cfecf715f8a4b7b47aa2e1c32",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedSha256": "d64c97614d0bdba2e608478288ac0d39b27b2b0cfecf715f8a4b7b47aa2e1c32",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedSha256": "d64c97614d0bdba2e608478288ac0d39b27b2b0cfecf715f8a4b7b47aa2e1c32",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "expectedSha256": "d64c97614d0bdba2e608478288ac0d39b27b2b0cfecf715f8a4b7b47aa2e1c32",
+      "arrayPointer": "/rootNodes/4/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "ad2283becc47094c4e28e4f1acf6951b197e079af4a6fc287e426ec67f1fc5e0",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "ad2283becc47094c4e28e4f1acf6951b197e079af4a6fc287e426ec67f1fc5e0",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "ad2283becc47094c4e28e4f1acf6951b197e079af4a6fc287e426ec67f1fc5e0",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "ad2283becc47094c4e28e4f1acf6951b197e079af4a6fc287e426ec67f1fc5e0",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "expectedSha256": "ad2283becc47094c4e28e4f1acf6951b197e079af4a6fc287e426ec67f1fc5e0",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "81d3571a4b607bba77fb40ab9cdf4a067a44b4d25ffbdbd599bd500cc369f816",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "81d3571a4b607bba77fb40ab9cdf4a067a44b4d25ffbdbd599bd500cc369f816",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "81d3571a4b607bba77fb40ab9cdf4a067a44b4d25ffbdbd599bd500cc369f816",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "81d3571a4b607bba77fb40ab9cdf4a067a44b4d25ffbdbd599bd500cc369f816",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "expectedSha256": "81d3571a4b607bba77fb40ab9cdf4a067a44b4d25ffbdbd599bd500cc369f816",
+      "arrayPointer": "/rootNodes/24/children/0/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "350e4c84baf4cb542612a165ca8ced4d63df008b8d64c60cf64409b2910936f6",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "350e4c84baf4cb542612a165ca8ced4d63df008b8d64c60cf64409b2910936f6",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "350e4c84baf4cb542612a165ca8ced4d63df008b8d64c60cf64409b2910936f6",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "350e4c84baf4cb542612a165ca8ced4d63df008b8d64c60cf64409b2910936f6",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "expectedSha256": "350e4c84baf4cb542612a165ca8ced4d63df008b8d64c60cf64409b2910936f6",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "5fbadf643a47918c0ab7a3290717a82ee3b845aaa704e588f5d0b071cfecf3fb",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "d79c446e-21ce-55ab-b0bc-c654d8476139"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "5fbadf643a47918c0ab7a3290717a82ee3b845aaa704e588f5d0b071cfecf3fb",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 5,
+      "expectedAnchorGoalId": "e42c208d-9555-43cc-92f5-5bb4c0688726",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "5fbadf643a47918c0ab7a3290717a82ee3b845aaa704e588f5d0b071cfecf3fb",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 4,
+      "expectedAnchorGoalId": "2345ae25-5805-4c72-b830-32e63cc6262a",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "21d2273f-ccb7-5452-9a87-b26bcea4f68d"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "5fbadf643a47918c0ab7a3290717a82ee3b845aaa704e588f5d0b071cfecf3fb",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 3,
+      "expectedAnchorGoalId": "37bf2eb6-75a0-44c1-a988-ca0e203cb072",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "b789edda-f735-52b0-9ccd-115706f28978"
+      }
+    },
+    {
+      "path": "DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "expectedSha256": "5fbadf643a47918c0ab7a3290717a82ee3b845aaa704e588f5d0b071cfecf3fb",
+      "arrayPointer": "/rootNodes/22/children/0/children/6/children",
+      "afterIndex": 1,
+      "expectedAnchorGoalId": "ad26e4d9-b025-57ec-8f25-df4a2415cc62",
+      "node": {
+        "kind": "goalEntry",
+        "goalId": "af8f64f1-b5bd-5201-9999-5224e3d06972"
+      }
+    }
+  ],
+  "qualityProofPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/structural-proof.json",
+  "semanticRebindProofPath": "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/semantic-source-rebind.json",
+  "reviewEvidencePaths": [
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.json",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/measurement-speed/astra-review.md",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.json",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/density-r2/astra-final-review.md",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.json",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r3/astra-final-review.md",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.json",
+    "DE/Gymnasium/learning-units/inputs/math-2026-11-05-sh-four-prepared-v1/provenance/t085-r2/astra-final-review.md"
+  ]
+}

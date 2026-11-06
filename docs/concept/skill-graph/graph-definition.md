@@ -1211,9 +1211,16 @@ cannot place a,c in one indivisible block and b in another without a block-order
 conflict. Revise the boundary or explicitly permit interleaving. Preserve the
 internal atomic DAG, effective prerequisites and transitive minimality.
 
-**Unresolved policy.** Whether deliberately authored whole-unit prerequisites
-define regular learning order or additionally enforce technical entry locks
-remains undecided, including their interaction with direct assessment access.
+**Didactic purpose (6 November 2026).** Planned progression that builds on a
+unit's application promise requires dependable assessment of that promise first.
+Unit boundaries must identify meaningful learning transitions; theme, target
+count and prerequisite-edge density alone are insufficient. The
+[design criteria and examples](learning-unit-design-and-examples.md) distinguish
+this requirement from ordinary atomic mastery and from access enforcement.
+
+**Unresolved technical policy.** Whether deliberately authored whole-unit
+prerequisites additionally enforce technical entry locks remains undecided,
+including their interaction with direct assessment access.
 The conditional gated example is not a universal rule. Existing authorization,
 session and grading requirements remain; this concept activates no new lock.
 

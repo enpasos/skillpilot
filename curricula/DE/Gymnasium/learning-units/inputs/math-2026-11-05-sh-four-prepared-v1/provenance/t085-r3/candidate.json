@@ -1,0 +1,447 @@
+{
+  "status": "PRIVATE_AUTHORING_R2_PENDING_FRESH_INDEPENDENT_REVIEW",
+  "newOrdinaryGoal": {
+    "id": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+    "shortKey": "canonical_math_sek1_linear_systems_over_underdetermined_two_variables",
+    "title": "Über- und unterbestimmte lineare Gleichungssysteme mit zwei Variablen untersuchen",
+    "titleEn": "Investigate overdetermined and underdetermined linear systems in two variables",
+    "description": "Die lernende Person kann lineare Gleichungssysteme mit zwei Variablen und einer oder drei Gleichungen nach der Gleichungsanzahl als unter- beziehungsweise überbestimmt einordnen, ihre Lösungsmenge grafisch und algebraisch bestimmen und an konsistenten sowie widersprüchlichen Beispielen begründen, dass die Anzahl allein weder Lösbarkeit noch Eindeutigkeit entscheidet; dabei deutet sie auch Nullgleichungen als Identität oder Widerspruch.",
+    "descriptionEn": "The learner can classify linear systems in two variables with one or three equations as underdetermined or overdetermined by equation count, determine their solution sets graphically and algebraically, and use consistent and inconsistent examples to justify that equation count alone decides neither solvability nor uniqueness; this includes interpreting zero-coefficient equations as identities or contradictions.",
+    "type": "atomic",
+    "semanticKind": "curricularAtomic",
+    "semanticAtomic": true,
+    "core": true,
+    "weight": 1,
+    "tags": [
+      "canonical",
+      "phase:SekI",
+      "area:Algebra"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-math",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "K1",
+        "K2",
+        "K4"
+      ],
+      "guidingIdeas": [
+        "L1",
+        "L4"
+      ],
+      "phase": "SekI",
+      "area": "Algebra",
+      "topicCode": "CANONICAL.MATH.SEK1.LINEAR_SYSTEMS.OVER_UNDERDETERMINED_TWO_VARIABLES"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-SH"
+      ]
+    },
+    "contains": [],
+    "requires": [
+      "e42c208d-9555-43cc-92f5-5bb4c0688726"
+    ],
+    "sourceRef": "Fachanforderungen Mathematik Sekundarstufe, Schleswig-Holstein 2024, S. 38: über- und unterbestimmte Systeme; operationalisiert im Kontext zweier Variablen."
+  },
+  "newExplicitAssessment": {
+    "id": "d79c446e-21ce-55ab-b0bc-c654d8476139",
+    "shortKey": "canonical_math_sek1_linear_systems_over_underdetermined_two_variables_exam_20261105_v1",
+    "title": "Prüfung: Reicht die Information und passt sie zusammen?",
+    "titleEn": "Assessment: Is the information sufficient and mutually consistent?",
+    "description": "Die lernende Person zeigt an neuen linearen Systemen mit zwei Variablen selbstständig, wie Gleichungsanzahl, gemeinsame Lösungsmenge, grafische Lage und Redundanz oder Widerspruch zusammenhängen.",
+    "descriptionEn": "The learner independently demonstrates on fresh two-variable linear systems how equation count, the common solution set, graphical relationships, and redundancy or contradiction are related.",
+    "type": "atomic",
+    "nodeKind": "exam",
+    "semanticKind": "practiceAssessment",
+    "weight": 1,
+    "contains": [],
+    "requires": [
+      "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-SH"
+      ]
+    },
+    "examData": {
+      "coveredGoalIds": [
+        "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+      ],
+      "maxPoints": 30,
+      "passingPoints": 26,
+      "rubricPath": "rubric.json",
+      "grading": "Assign exactly0/4/5 per semantic criterion; pass follows only from total>=26. No new runtime criterion gate or stored result field.",
+      "revision": "2026-11-05-private-r2",
+      "taskContent": "# Prüfung: Reicht die Information und passt sie zusammen?\n\nNeue, noch unveröffentlichte Prüfungsidentität: `d79c446e-21ce-55ab-b0bc-c654d8476139`. Revision: 2026-11-05-private-r2. Sechs Aufgaben zu je 5 BE, zusammen 30 BE.\n\nAlle Unbekannten sind reell; außer in T6 werden nichtdegenerierte lineare Gleichungen verwendet. „Unterbestimmt“ und „überbestimmt“ beziehen sich hier auf die Anzahl der Gleichungen gegenüber zwei Unbekannten. Die Anzahl unabhängiger Einschränkungen ist gesondert zu untersuchen. Eine Systemlösung muss jede Gleichung zugleich erfüllen.\n\nZeichnungen und Rechnungen sind selbst anzufertigen. Die Lernskizze und Musterlösungen sind keine bereitgestellten Prüfungsantworten. Ein Taschenrechner darf Rechenarbeit unterstützen, ersetzt aber weder eine eigenständige Begründung noch die eigene grafische Darstellung. Mathematisch äquivalente vollständige Nachweise sind zulässig; redundante Zahlenproben oder eine zusätzliche Einsetzliste werden nicht verlangt.\n\nJedes Kriterium erhält genau 0, 4 oder 5 BE: 5 bei fehlerfreier selbstständiger Demonstration aller wesentlichen Facetten; 4 bei vollständiger zentraler Demonstration mit höchstens einem begrenzten lokalen Rechen-, Übertragungs- oder Zeichenfehler; 0 bei einer fehlenden, sachlich falschen oder nur mit Hinweis gelösten wesentlichen Facette. Teilverständnis wird auch bei 0 BE differenziert besprochen.\n\n**Bestanden ab 26 von 30 BE.** Es gibt keine weitere Bestehensbedingung. Ein fehlendes Kriterium lässt höchstens 25 BE zu.\n\n## T1 — Eine Gleichung — welche Paare passen? (5 BE)\n\nUntersuche über den reellen Zahlen das System S1: 2x+y=6. Ordne es nach der Anzahl der Gleichungen und Unbekannten ein. Bestimme die vollständige Lösungsmenge algebraisch und zeichne sie selbst in ein Koordinatensystem. Begründe die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie.\n\nEnglish: Over the real numbers, investigate S1: 2x+y=6. Classify it by the numbers of equations and unknowns. Determine its complete solution set algebraically and draw it in a coordinate system yourself. Justify nonuniqueness using either two different solution pairs with checks or a correctly justified complete family of solutions.\n\n## T2 — Drei Angaben passen zusammen (5 BE)\n\nUntersuche S2: x+y=5; 2x−y=1; 3x=6. Bestimme die Lösungsmenge algebraisch. Sichere die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis. Zeichne alle drei Geraden selbst, auch die dritte. Ordne das System nach der Anzahl ein und begründe grafisch und algebraisch seine Lösbarkeit und Eindeutigkeit.\n\nEnglish: Investigate S2: x+y=5; 2x−y=1; 3x=6. Determine the solution set algebraically. Establish that the result satisfies the entire system using substitutions or an equivalent algebraic proof. Draw all three lines yourself, including the third. Classify the system by equation count and justify solvability and uniqueness graphically and algebraically.\n\n## T3 — Drei paarweise Schnittpunkte — eine gemeinsame Lösung? (5 BE)\n\nUntersuche S3: x+y=5; 2x−y=1; 3x=9. Berechne die Lösungsmenge aller drei Gleichungen algebraisch. Zeichne alle drei Geraden selbst und bestimme ihre paarweisen Schnittpunkte. Entscheide begründet, ob paarweise Schnittpunkte bereits eine Lösung des ganzen Systems ergeben. Ordne auch dieses System nach der Anzahl ein.\n\nEnglish: Investigate S3: x+y=5; 2x−y=1; 3x=9. Determine the solution set of all three equations algebraically. Draw all three lines yourself and determine their pairwise intersections. Justify whether pairwise intersections already provide a solution of the entire system. Also classify this system by equation count.\n\n## T4 — Drei Gleichungen, aber wie viel neue Information? (5 BE)\n\nUntersuche S4: 2x+y=6; 4x+2y=12; −2x−y=−6. Bestimme die Lösungsmenge algebraisch und zeichne alle drei Gleichungen als Geraden. Erkläre an den Koeffizienten und am Bild, wie viel zusätzliche Einschränkung die zweite und dritte Gleichung erzeugen. Widerlege mit S2, S3 und S4 die Aussagen: „Überbestimmt heißt unlösbar“ und „Drei Gleichungen bestimmen zwei Unbekannte immer eindeutig“.\n\nEnglish: Investigate S4: 2x+y=6; 4x+2y=12; −2x−y=−6. Determine the solution set algebraically and draw all three equations as lines. Explain from the coefficients and the drawing how much additional restriction the second and third equations create. Using S2, S3 and S4, refute the claims “overdetermined means unsolvable” and “three equations always determine two unknowns uniquely”.\n\n## T5 — Frischer Transfer: Zwei Sensorsignale und ein Kontrollmesswert (5 BE)\n\nZwei unbekannte reelle Sensorsignale x und y werden in derselben Einheit erfasst. Ein erstes Gerät liefert x+2y=7, ein zweites 2x+y=8. Ein Kontrollgerät meldet 3x+3y=c. Untersuche zuerst nur die erste Messgleichung und dann die beiden ersten zusammen. Für welche reellen Werte c passen alle drei Angaben zusammen? Prüfe c=15 und c=16. Begründe deine Antwort rechnerisch und mit einer selbst gezeichneten Skizze der drei Geraden für diese beiden Kontrollwerte. Erkläre, wann die dritte Messung redundant ist und wann sie einen Widerspruch erzeugt.\n\nEnglish: Two unknown real sensor signals x and y are measured in the same unit. A first device reports x+2y=7 and a second reports 2x+y=8. A checking device reports 3x+3y=c. Investigate the first equation alone and then the first two together. For which real c are all three reports compatible? Check c=15 and c=16. Justify your answer algebraically and with your own sketches of the three lines for these two checking values. Explain when the third measurement is redundant and when it creates a contradiction.\n\n## T6 — Die erlaubte Nullgleichung ist keine Gerade (5 BE)\n\nIn diesem begrenzten Modell sind auch lineare Gleichungen 0x+0y=d zugelassen. Untersuche getrennt S6a: 0x+0y=0 und S6b: 0x+0y=4 über R². Beide bestehen aus einer Gleichung für zwei Unbekannte. Gib die jeweilige Lösungsmenge an und beschreibe ihre grafische Darstellung in der Ebene. Erläutere, warum hier keine gewöhnliche Gerade entsteht und warum eine einzelne lineare Gleichung ax+by=c mit (a,b)≠(0,0) dagegen immer unendlich viele reelle Lösungen besitzt.\n\nEnglish: This bounded model also permits linear equations 0x+0y=d. Investigate S6a: 0x+0y=0 and S6b: 0x+0y=4 separately over R². Each contains one equation for two unknowns. State its solution set and describe its graphical representation in the plane. Explain why neither produces an ordinary line and why a single linear equation ax+by=c with (a,b)≠(0,0), in contrast, always has infinitely many real solutions.\n",
+      "solutionContent": "# Rubrik und Lösungen — privater R2-Reviewentwurf\n\nPro Kriterium sind nur 0, 4 oder 5 BE zulässig. Fehlt eine wesentliche Facette, ist sie sachlich falsch oder benötigt sie einen Hinweis, erhält das Kriterium 0 BE. Sind alle wesentlichen Facetten selbstständig nachgewiesen, gibt es bei einem begrenzten lokalen Fehler 4 BE und fehlerfrei 5 BE. Teilverständnis wird unabhängig vom Punktwert zutreffend rückgemeldet. Normales Bestehen folgt allein aus der Summe: mindestens 26/30 BE. Eine zusätzliche Kriterien-AND-Bedingung gibt es nicht.\n\n## C1 zu T1\n\nUnterbestimmt nach Anzahl (1<2). Umstellen ergibt y=6−2x, also vollständig L={(t,6−2t):t∈R}. Für jedes reelle t gilt 2t+(6−2t)=6; umgekehrt muss jedes Lösungspaar diese Form haben. Die selbst gezeichnete Gerade durch (0,6) und (3,0) besteht genau aus allen Lösungen. Der freie reelle Parameter beweist unendlich viele Lösungen und fehlende Eindeutigkeit. Alternativ können zur Nicht-Eindeutigkeit etwa (1,4) und (2,2) mit ihren Proben gezeigt werden; eine zusätzliche Zahlenprobenliste ist neben dem allgemeinen Familienbeweis nicht erforderlich.\n\nEnglish: Underdetermined by equation count (1<2). Rearranging gives y=6−2x, hence the complete set L={(t,6−2t):t∈R}. For every real t, 2t+(6−2t)=6; conversely, every solution pair must have this form. The independently drawn line through (0,6) and (3,0) contains exactly all solutions. The free real parameter proves infinitely many solutions and nonuniqueness. Alternatively, pairs such as (1,4) and (2,2) with their checks can demonstrate nonuniqueness; a separate numerical-check list is not required in addition to the general family proof.\n\nWesentliche Facetten:\n\n- Die eine Gleichung als unterbestimmt nach Anzahl einordnen und die vollständige reelle Lösungsfamilie algebraisch angeben.\n- Die Lösungsgerade mit geeigneten Punkten selbst zeichnen und mit der algebraischen Familie abgleichen.\n- Die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie nachweisen.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## C2 zu T2\n\nÜberbestimmt nach Anzahl (3>2). Äquivalente Zeilenumformungen am gesamten System führen von {x+y=5; 2x−y=1; 3x=6} zu {x+y=5; 3x=6; 0=0}; also x=2, y=3 und L={(2,3)}. Da die Umformungen äquivalent sind und alle drei Gleichungen berücksichtigt wurden, ist keine zusätzliche Einsetzliste erforderlich. Ebenfalls zulässig ist eine Lösung mit anschließenden Proben 2+3=5, 4−3=1, 3·2=6. Die selbst gezeichneten Geraden y=5−x, y=2x−1 und x=2 besitzen genau den gemeinsamen Punkt (2,3).\n\nEnglish: Overdetermined by equation count (3>2). Equivalent row operations on the entire system transform {x+y=5; 2x−y=1; 3x=6} into {x+y=5; 3x=6; 0=0}; hence x=2, y=3 and L={(2,3)}. Because the transformations are equivalent and include all three equations, no additional substitution list is required. Solving and then checking 2+3=5, 4−3=1, 3·2=6 is equally acceptable. The independently drawn lines y=5−x, y=2x−1 and x=2 share exactly the point (2,3).\n\nWesentliche Facetten:\n\n- Drei Gleichungen bei zwei Unbekannten als überbestimmt nach Anzahl einordnen und ein Wertepaar eigenständig berechnen.\n- Alle drei Bedingungen gemeinsam berücksichtigen und die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis sichern.\n- Alle drei Geraden, einschließlich der vertikalen Geraden, selbst zeichnen und den einen gemeinsamen Schnittpunkt begründen.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## C3 zu T3\n\nÜberbestimmt, inkonsistent, L=∅. Die ersten beiden Gleichungen erzwingen (2,3), doch 3·2≠9. Paarweise Schnittpunkte: g1∩g2=(2,3), g1∩g3=(3,2), g2∩g3=(3,5). Kein Paar erfüllt alle drei Gleichungen. Alle Geraden schneiden sich paarweise, aber nicht an einem gemeinsamen Punkt.\n\nEnglish: Overdetermined, inconsistent, L=∅. The first two equations force (2,3), but 3·2≠9. Pairwise intersections: g1∩g2=(2,3), g1∩g3=(3,2), g2∩g3=(3,5). No pair satisfies all three equations. The lines intersect pairwise but not at one common point.\n\nWesentliche Facetten:\n\n- Das überbestimmte System algebraisch als widersprüchlich nachweisen, ohne die dritte Gleichung wegzulassen.\n- Alle drei Geraden zeichnen und das Fehlen eines gemeinsamen Dreifachschnittpunkts bestimmen.\n- Die vorhandenen drei paarweisen Schnittpunkte vom gemeinsamen Lösungspaar aller Gleichungen unterscheiden.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## C4 zu T4\n\nAlle Gleichungen sind äquivalent zu 2x+y=6; die drei Geraden fallen zusammen. L={(t,6−2t):t∈R}. Die zusätzlichen Gleichungen sind redundant und schränken die Lösungsgerade nicht weiter ein. S2 hat eine, S3 keine, S4 unendlich viele Lösungen bei jeweils drei Gleichungen und zwei Unbekannten. Daher entscheidet die Anzahl allein weder Lösbarkeit noch Eindeutigkeit.\n\nEnglish: All equations are equivalent to 2x+y=6; the three lines coincide. L={(t,6−2t):t∈R}. The extra equations are redundant and do not further restrict the solution line. S2 has one solution, S3 none, and S4 infinitely many, each with three equations and two unknowns. Equation count alone therefore determines neither solvability nor uniqueness.\n\nWesentliche Facetten:\n\n- Die drei Gleichungen algebraisch auf denselben Zusammenhang zurückführen und die vollständige Lösungsfamilie angeben.\n- Grafisch drei zusammenfallende Geraden darstellen und ihr gemeinsames unendliches Punktset erklären.\n- Begründen, warum drei Gleichungen hier weder Unlösbarkeit noch Eindeutigkeit erzwingen.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## C5 zu T5\n\nErste Gleichung: L1={(7−2t,t):t∈R}, unterbestimmt. Aus beiden ersten folgt y=2, x=3. Ihre Summe ist 3x+3y=15, daher sind alle drei Angaben genau für c=15 konsistent mit L={(3,2)}. Für c=16 ist L=∅. Bei c=15 verläuft die Kontrollgerade x+y=5 durch (3,2); bei c=16 ist sie parallel dazu verschoben auf x+y=16/3 und enthält diesen Punkt nicht. Ein zusätzliches Messgerät garantiert weder zusätzliche unabhängige Information noch Widerspruchsfreiheit.\n\nEnglish: First equation: L1={(7−2t,t):t∈R}, underdetermined. The first two give y=2 and x=3. Their sum is 3x+3y=15, so all three reports are consistent exactly when c=15, with L={(3,2)}. For c=16, L=∅. When c=15 the checking line x+y=5 passes through (3,2); when c=16 it is shifted parallel to x+y=16/3 and does not contain that point. An extra device guarantees neither additional independent information nor freedom from contradiction.\n\nWesentliche Facetten:\n\n- Die unabhängige Sensorkonstellation aus einer und anschließend zwei Messgleichungen selbst lösen.\n- Für die dritte Messgleichung die genaue Parameterbedingung c=15 herleiten und c=15/c=16 korrekt prüfen.\n- Die algebraischen Bedingungen grafisch deuten und Redundanz von Widerspruch unterscheiden, obwohl die Anzahl drei gleich bleibt.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## C6 zu T6\n\nBeide nach Anzahl unterbestimmt (1<2). S6a ist die Identität 0=0: L=R², grafisch die ganze Ebene. S6b ist der Widerspruch 0=4: L=∅, grafisch kein Punkt. Eine Nullgleichung wird nicht als Gerade gezeichnet. Bei b≠0 kann y=(c−ax)/b für jedes reelle x gewählt werden; bei b=0 muss a≠0 gelten, dann x=c/a und y ist frei. Damit ist eine nichtdegenerierte einzelne Gleichung immer konsistent.\n\nEnglish: Both are underdetermined by equation count (1<2). S6a is the identity 0=0: L=R², graphically the entire plane. S6b is the contradiction 0=4: L=∅, graphically no points. A zero-coefficient equation must not be drawn as a line. If b≠0, y=(c−ax)/b is available for every real x; if b=0, then a≠0, so x=c/a and y is free. Thus a single nondegenerate equation is always consistent.\n\nWesentliche Facetten:\n\n- Die ausdrücklich erlaubten Nullgleichungen 0x+0y=0 und 0x+0y=4 algebraisch als Identität beziehungsweise Widerspruch unterscheiden.\n- Die Lösungsmengen als ganze reelle Ebene beziehungsweise leere Menge grafisch beschreiben; keine fiktive Gerade zeichnen.\n- Begründen, warum eine nichtdegenerierte einzelne lineare Gleichung stets eine Lösungsgerade hat und Unlösbarkeit hier nur aus der Nullzeile kommt.\n\nFehlt eine wesentliche Facette oder ist sie sachlich falsch bzw. nur mit Hinweis gelöst: 0/5 BE. Ein begrenzter lokaler Fehler bei vollständig gezeigter Kompetenz: 4/5 BE. Fehlerfrei: 5/5 BE.\n\n## Konkreter erlaubter Rechenfehler\n\nCorrect y=6−2x and complete family; correct points (1,4),(2,2), correct line, correct non-uniqueness. In the first checking arithmetic alone the learner writes 2·1+4=7; second check 2·2+2=6 and symbolic family check are correct. C1 erhält4/5 und alle übrigen Kriterien5/5:29/30 BE, bestanden. Der korrekte Familienbeweis kann alternativ ohne redundante Einzelproben5/5 erhalten.\n",
+      "reviewStatus": "draft",
+      "sourceArtifactPath": "tasks.md",
+      "scoring": {
+        "maxPoints": 30,
+        "passingPoints": 26,
+        "steps": [
+          {
+            "id": "C1",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Die eine Gleichung als unterbestimmt nach Anzahl einordnen und die vollständige reelle Lösungsfamilie algebraisch angeben. Die Lösungsgerade mit geeigneten Punkten selbst zeichnen und mit der algebraischen Familie abgleichen. Die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie nachweisen."
+          },
+          {
+            "id": "C2",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Drei Gleichungen bei zwei Unbekannten als überbestimmt nach Anzahl einordnen und ein Wertepaar eigenständig berechnen. Alle drei Bedingungen gemeinsam berücksichtigen und die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis sichern. Alle drei Geraden, einschließlich der vertikalen Geraden, selbst zeichnen und den einen gemeinsamen Schnittpunkt begründen."
+          },
+          {
+            "id": "C3",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Das überbestimmte System algebraisch als widersprüchlich nachweisen, ohne die dritte Gleichung wegzulassen. Alle drei Geraden zeichnen und das Fehlen eines gemeinsamen Dreifachschnittpunkts bestimmen. Die vorhandenen drei paarweisen Schnittpunkte vom gemeinsamen Lösungspaar aller Gleichungen unterscheiden."
+          },
+          {
+            "id": "C4",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Die drei Gleichungen algebraisch auf denselben Zusammenhang zurückführen und die vollständige Lösungsfamilie angeben. Grafisch drei zusammenfallende Geraden darstellen und ihr gemeinsames unendliches Punktset erklären. Begründen, warum drei Gleichungen hier weder Unlösbarkeit noch Eindeutigkeit erzwingen."
+          },
+          {
+            "id": "C5",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Die unabhängige Sensorkonstellation aus einer und anschließend zwei Messgleichungen selbst lösen. Für die dritte Messgleichung die genaue Parameterbedingung c=15 herleiten und c=15/c=16 korrekt prüfen. Die algebraischen Bedingungen grafisch deuten und Redundanz von Widerspruch unterscheiden, obwohl die Anzahl drei gleich bleibt."
+          },
+          {
+            "id": "C6",
+            "points": 5,
+            "description": "Nur0/4/5 BE. Eine wesentliche Facette fehlt, ist sachlich falsch oder nur mit Hinweis gelöst:0. Alle wesentlichen Facetten selbstständig gezeigt, mit höchstens einem begrenzten lokalen Fehler:4. Fehlerfrei:5. Mathematisch äquivalente Nachweise sind zulässig. Die ausdrücklich erlaubten Nullgleichungen 0x+0y=0 und 0x+0y=4 algebraisch als Identität beziehungsweise Widerspruch unterscheiden. Die Lösungsmengen als ganze reelle Ebene beziehungsweise leere Menge grafisch beschreiben; keine fiktive Gerade zeichnen. Begründen, warum eine nichtdegenerierte einzelne lineare Gleichung stets eine Lösungsgerade hat und Unlösbarkeit hier nur aus der Nullzeile kommt."
+          }
+        ]
+      }
+    }
+  },
+  "ordinaryOwnGoalIds": [
+    "679a0aeb-9f1d-53dc-be90-a40d1aaad947"
+  ],
+  "explicitOwnAssessmentGoalIds": [
+    "d79c446e-21ce-55ab-b0bc-c654d8476139"
+  ],
+  "oldGoalOnlyPrerequisite": [
+    "e42c208d-9555-43cc-92f5-5bb4c0688726"
+  ],
+  "normalPass": {
+    "status": "PRIVATE_AUTHORING_R2_NOT_OFFICIAL_REVIEW",
+    "revision": "2026-11-05-private-r2",
+    "criterionCount": 6,
+    "allowedCriterionScores": [
+      0,
+      4,
+      5
+    ],
+    "maxPoints": 30,
+    "passingPoints": 26,
+    "rule": "Pass iff sum of the six correctly assigned criterion scores >=26. No separate criterion minimum or additional runtime AND gate.",
+    "scale": {
+      "5": "All essential facets independently demonstrated and correct.",
+      "4": "Every essential facet independently demonstrated. At most one bounded local arithmetic, transcription or plotting slip; a coherent correct method and the central qualitative conclusion remain observable. Do not deduct again for the same propagated slip.",
+      "0": "At least one essential facet omitted, substantively false or dependent on a hint. Give accurate qualitative feedback on demonstrated partial understanding;0 BE does not mean no knowledge."
+    },
+    "criteria": [
+      {
+        "id": "C1",
+        "taskIds": [
+          "T1"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Die eine Gleichung als unterbestimmt nach Anzahl einordnen und die vollständige reelle Lösungsfamilie algebraisch angeben.",
+          "Die Lösungsgerade mit geeigneten Punkten selbst zeichnen und mit der algebraischen Familie abgleichen.",
+          "Die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie nachweisen."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      },
+      {
+        "id": "C2",
+        "taskIds": [
+          "T2"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Drei Gleichungen bei zwei Unbekannten als überbestimmt nach Anzahl einordnen und ein Wertepaar eigenständig berechnen.",
+          "Alle drei Bedingungen gemeinsam berücksichtigen und die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis sichern.",
+          "Alle drei Geraden, einschließlich der vertikalen Geraden, selbst zeichnen und den einen gemeinsamen Schnittpunkt begründen."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      },
+      {
+        "id": "C3",
+        "taskIds": [
+          "T3"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Das überbestimmte System algebraisch als widersprüchlich nachweisen, ohne die dritte Gleichung wegzulassen.",
+          "Alle drei Geraden zeichnen und das Fehlen eines gemeinsamen Dreifachschnittpunkts bestimmen.",
+          "Die vorhandenen drei paarweisen Schnittpunkte vom gemeinsamen Lösungspaar aller Gleichungen unterscheiden."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      },
+      {
+        "id": "C4",
+        "taskIds": [
+          "T4"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Die drei Gleichungen algebraisch auf denselben Zusammenhang zurückführen und die vollständige Lösungsfamilie angeben.",
+          "Grafisch drei zusammenfallende Geraden darstellen und ihr gemeinsames unendliches Punktset erklären.",
+          "Begründen, warum drei Gleichungen hier weder Unlösbarkeit noch Eindeutigkeit erzwingen."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      },
+      {
+        "id": "C5",
+        "taskIds": [
+          "T5"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Die unabhängige Sensorkonstellation aus einer und anschließend zwei Messgleichungen selbst lösen.",
+          "Für die dritte Messgleichung die genaue Parameterbedingung c=15 herleiten und c=15/c=16 korrekt prüfen.",
+          "Die algebraischen Bedingungen grafisch deuten und Redundanz von Widerspruch unterscheiden, obwohl die Anzahl drei gleich bleibt."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      },
+      {
+        "id": "C6",
+        "taskIds": [
+          "T6"
+        ],
+        "claimGoalId": "679a0aeb-9f1d-53dc-be90-a40d1aaad947",
+        "maxPoints": 5,
+        "allowedScores": [
+          0,
+          4,
+          5
+        ],
+        "essentialFacets": [
+          "Die ausdrücklich erlaubten Nullgleichungen 0x+0y=0 und 0x+0y=4 algebraisch als Identität beziehungsweise Widerspruch unterscheiden.",
+          "Die Lösungsmengen als ganze reelle Ebene beziehungsweise leere Menge grafisch beschreiben; keine fiktive Gerade zeichnen.",
+          "Begründen, warum eine nichtdegenerierte einzelne lineare Gleichung stets eine Lösungsgerade hat und Unlösbarkeit hier nur aus der Nullzeile kommt."
+        ],
+        "essentialOmissionScore": 0,
+        "essentialSubstantiveErrorScore": 0,
+        "essentialHintRequiredScore": 0
+      }
+    ],
+    "qualitativeErrorsNotMinor": [
+      "Ignoring an equation",
+      "Calling a system inconsistent solely because 3>2",
+      "Claiming all pairwise intersections solve all three equations",
+      "Equating the number of equations with the number of independent restrictions",
+      "Drawing 0=4 or 0=0 as a line",
+      "Replacing a required own sketch with a memorized conclusion",
+      "Checking only one selected control parameter instead of deriving the full condition"
+    ],
+    "pureTotalProof": {
+      "maximumWithOneCriterionZero": 25,
+      "passingPoints": 26,
+      "withoutZeroTotal": "24+k, where k is the number of5-BE criteria",
+      "minimumFivePointCriteria": 2,
+      "maximumSmallSlipCriteriaInPass": 4
+    },
+    "nonPerfectPassExample": {
+      "scores": [
+        5,
+        5,
+        4,
+        4,
+        4,
+        4
+      ],
+      "total": 26,
+      "passes": true
+    },
+    "genuineArithmeticSlipPassExample": {
+      "criterion": "C1",
+      "work": "Correct y=6−2x and complete family; correct points (1,4),(2,2), correct line, correct non-uniqueness. In the first checking arithmetic alone the learner writes 2·1+4=7; second check 2·2+2=6 and symbolic family check are correct.",
+      "score": 4,
+      "otherScores": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "total": 29,
+      "passes": true,
+      "reason": "One bounded local addition slip; complete family, general validity, own graph and correct nonuniqueness remain independently visible."
+    },
+    "serverBoundary": "The normal scalar threshold rejects every correctly scored omission because a zero leaves at most25 BE. It does not independently audit semantic grading from an arbitrary submitted total. No earnedPointsByStep, evidence field, API or database extension is proposed."
+  },
+  "definitionBoundary": {
+    "unknownDomain": "R²",
+    "systemSizes": [
+      {
+        "equations": 1,
+        "unknowns": 2
+      },
+      {
+        "equations": 3,
+        "unknowns": 2
+      }
+    ],
+    "classification": "Under/overdetermined refers to equation count here, not rank. Number of independent restrictions is separately reasoned about without teaching rank formalism.",
+    "nullRows": "Explicitly allowed to assess underdetermined inconsistent cases honestly. 0=0 is the whole plane; 0=4 is empty. If every single equation must be nondegenerate, an inconsistent1-equation case is impossible.",
+    "excluded": "No arbitrary-dimensional Gaussian elimination, analytic-geometry planes, new whole-unit start gate or automatic old-mastery upgrade."
+  },
+  "sourceEvidencePath": "source-evidence.json",
+  "memoryReviewProposal": {
+    "proposalOnly": true,
+    "status": "no_memory_needed",
+    "memoryUseful": false,
+    "recallGoalIds": [],
+    "rationaleDe": "Der Kompetenzzuwachs liegt im selbstständigen Verknüpfen und Prüfen von Bedingungen und Darstellungen. Die Begriffe unter-/überbestimmt und Lösungsmenge sind keine zusätzliche isolierte Faktenliste, deren bloßes Aufsagen die Anwendung nachweist. Ein gesondertes Pflicht-Recall-Ergebnis wird nicht vorgeschlagen; die fachliche M-Entscheidung bleibt unabhängig offen.",
+    "rationaleEn": "The added competence is independently relating and checking constraints and representations. Reciting the terms underdetermined, overdetermined or solution set would not demonstrate this application. No additional mandatory recall result is proposed; the actual M decision remains independently open."
+  },
+  "atomicityReviewProposal": "One coherent competency: determine and justify the common solution set despite a mismatch between equation and unknown counts. Graphical/algebraic views and consistent/inconsistent cases operationalize the same competency, not a new omnibus algebra unit.",
+  "D_P_A_M_V_Status": "NOT_REVIEWED; no official review records or approvals are generated.",
+  "authoringTasks": [
+    {
+      "id": "T1",
+      "criterionId": "C1",
+      "title": "Eine Gleichung — welche Paare passen?",
+      "promptDe": "Untersuche über den reellen Zahlen das System S1: 2x+y=6. Ordne es nach der Anzahl der Gleichungen und Unbekannten ein. Bestimme die vollständige Lösungsmenge algebraisch und zeichne sie selbst in ein Koordinatensystem. Begründe die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie.",
+      "promptEn": "Over the real numbers, investigate S1: 2x+y=6. Classify it by the numbers of equations and unknowns. Determine its complete solution set algebraically and draw it in a coordinate system yourself. Justify nonuniqueness using either two different solution pairs with checks or a correctly justified complete family of solutions.",
+      "modelAnswerDe": "Unterbestimmt nach Anzahl (1<2). Umstellen ergibt y=6−2x, also vollständig L={(t,6−2t):t∈R}. Für jedes reelle t gilt 2t+(6−2t)=6; umgekehrt muss jedes Lösungspaar diese Form haben. Die selbst gezeichnete Gerade durch (0,6) und (3,0) besteht genau aus allen Lösungen. Der freie reelle Parameter beweist unendlich viele Lösungen und fehlende Eindeutigkeit. Alternativ können zur Nicht-Eindeutigkeit etwa (1,4) und (2,2) mit ihren Proben gezeigt werden; eine zusätzliche Zahlenprobenliste ist neben dem allgemeinen Familienbeweis nicht erforderlich.",
+      "modelAnswerEn": "Underdetermined by equation count (1<2). Rearranging gives y=6−2x, hence the complete set L={(t,6−2t):t∈R}. For every real t, 2t+(6−2t)=6; conversely, every solution pair must have this form. The independently drawn line through (0,6) and (3,0) contains exactly all solutions. The free real parameter proves infinitely many solutions and nonuniqueness. Alternatively, pairs such as (1,4) and (2,2) with their checks can demonstrate nonuniqueness; a separate numerical-check list is not required in addition to the general family proof.",
+      "essentialFacets": [
+        "Die eine Gleichung als unterbestimmt nach Anzahl einordnen und die vollständige reelle Lösungsfamilie algebraisch angeben.",
+        "Die Lösungsgerade mit geeigneten Punkten selbst zeichnen und mit der algebraischen Familie abgleichen.",
+        "Die fehlende Eindeutigkeit durch zwei verschiedene Lösungspaare mit Proben oder durch eine korrekt begründete vollständige Lösungsfamilie nachweisen."
+      ],
+      "maxPoints": 5
+    },
+    {
+      "id": "T2",
+      "criterionId": "C2",
+      "title": "Drei Angaben passen zusammen",
+      "promptDe": "Untersuche S2: x+y=5; 2x−y=1; 3x=6. Bestimme die Lösungsmenge algebraisch. Sichere die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis. Zeichne alle drei Geraden selbst, auch die dritte. Ordne das System nach der Anzahl ein und begründe grafisch und algebraisch seine Lösbarkeit und Eindeutigkeit.",
+      "promptEn": "Investigate S2: x+y=5; 2x−y=1; 3x=6. Determine the solution set algebraically. Establish that the result satisfies the entire system using substitutions or an equivalent algebraic proof. Draw all three lines yourself, including the third. Classify the system by equation count and justify solvability and uniqueness graphically and algebraically.",
+      "modelAnswerDe": "Überbestimmt nach Anzahl (3>2). Äquivalente Zeilenumformungen am gesamten System führen von {x+y=5; 2x−y=1; 3x=6} zu {x+y=5; 3x=6; 0=0}; also x=2, y=3 und L={(2,3)}. Da die Umformungen äquivalent sind und alle drei Gleichungen berücksichtigt wurden, ist keine zusätzliche Einsetzliste erforderlich. Ebenfalls zulässig ist eine Lösung mit anschließenden Proben 2+3=5, 4−3=1, 3·2=6. Die selbst gezeichneten Geraden y=5−x, y=2x−1 und x=2 besitzen genau den gemeinsamen Punkt (2,3).",
+      "modelAnswerEn": "Overdetermined by equation count (3>2). Equivalent row operations on the entire system transform {x+y=5; 2x−y=1; 3x=6} into {x+y=5; 3x=6; 0=0}; hence x=2, y=3 and L={(2,3)}. Because the transformations are equivalent and include all three equations, no additional substitution list is required. Solving and then checking 2+3=5, 4−3=1, 3·2=6 is equally acceptable. The independently drawn lines y=5−x, y=2x−1 and x=2 share exactly the point (2,3).",
+      "essentialFacets": [
+        "Drei Gleichungen bei zwei Unbekannten als überbestimmt nach Anzahl einordnen und ein Wertepaar eigenständig berechnen.",
+        "Alle drei Bedingungen gemeinsam berücksichtigen und die Gültigkeit der ermittelten Lösung für das Gesamtsystem durch Einsetzungen oder einen äquivalenten algebraischen Nachweis sichern.",
+        "Alle drei Geraden, einschließlich der vertikalen Geraden, selbst zeichnen und den einen gemeinsamen Schnittpunkt begründen."
+      ],
+      "maxPoints": 5
+    },
+    {
+      "id": "T3",
+      "criterionId": "C3",
+      "title": "Drei paarweise Schnittpunkte — eine gemeinsame Lösung?",
+      "promptDe": "Untersuche S3: x+y=5; 2x−y=1; 3x=9. Berechne die Lösungsmenge aller drei Gleichungen algebraisch. Zeichne alle drei Geraden selbst und bestimme ihre paarweisen Schnittpunkte. Entscheide begründet, ob paarweise Schnittpunkte bereits eine Lösung des ganzen Systems ergeben. Ordne auch dieses System nach der Anzahl ein.",
+      "promptEn": "Investigate S3: x+y=5; 2x−y=1; 3x=9. Determine the solution set of all three equations algebraically. Draw all three lines yourself and determine their pairwise intersections. Justify whether pairwise intersections already provide a solution of the entire system. Also classify this system by equation count.",
+      "modelAnswerDe": "Überbestimmt, inkonsistent, L=∅. Die ersten beiden Gleichungen erzwingen (2,3), doch 3·2≠9. Paarweise Schnittpunkte: g1∩g2=(2,3), g1∩g3=(3,2), g2∩g3=(3,5). Kein Paar erfüllt alle drei Gleichungen. Alle Geraden schneiden sich paarweise, aber nicht an einem gemeinsamen Punkt.",
+      "modelAnswerEn": "Overdetermined, inconsistent, L=∅. The first two equations force (2,3), but 3·2≠9. Pairwise intersections: g1∩g2=(2,3), g1∩g3=(3,2), g2∩g3=(3,5). No pair satisfies all three equations. The lines intersect pairwise but not at one common point.",
+      "essentialFacets": [
+        "Das überbestimmte System algebraisch als widersprüchlich nachweisen, ohne die dritte Gleichung wegzulassen.",
+        "Alle drei Geraden zeichnen und das Fehlen eines gemeinsamen Dreifachschnittpunkts bestimmen.",
+        "Die vorhandenen drei paarweisen Schnittpunkte vom gemeinsamen Lösungspaar aller Gleichungen unterscheiden."
+      ],
+      "maxPoints": 5
+    },
+    {
+      "id": "T4",
+      "criterionId": "C4",
+      "title": "Drei Gleichungen, aber wie viel neue Information?",
+      "promptDe": "Untersuche S4: 2x+y=6; 4x+2y=12; −2x−y=−6. Bestimme die Lösungsmenge algebraisch und zeichne alle drei Gleichungen als Geraden. Erkläre an den Koeffizienten und am Bild, wie viel zusätzliche Einschränkung die zweite und dritte Gleichung erzeugen. Widerlege mit S2, S3 und S4 die Aussagen: „Überbestimmt heißt unlösbar“ und „Drei Gleichungen bestimmen zwei Unbekannte immer eindeutig“.",
+      "promptEn": "Investigate S4: 2x+y=6; 4x+2y=12; −2x−y=−6. Determine the solution set algebraically and draw all three equations as lines. Explain from the coefficients and the drawing how much additional restriction the second and third equations create. Using S2, S3 and S4, refute the claims “overdetermined means unsolvable” and “three equations always determine two unknowns uniquely”.",
+      "modelAnswerDe": "Alle Gleichungen sind äquivalent zu 2x+y=6; die drei Geraden fallen zusammen. L={(t,6−2t):t∈R}. Die zusätzlichen Gleichungen sind redundant und schränken die Lösungsgerade nicht weiter ein. S2 hat eine, S3 keine, S4 unendlich viele Lösungen bei jeweils drei Gleichungen und zwei Unbekannten. Daher entscheidet die Anzahl allein weder Lösbarkeit noch Eindeutigkeit.",
+      "modelAnswerEn": "All equations are equivalent to 2x+y=6; the three lines coincide. L={(t,6−2t):t∈R}. The extra equations are redundant and do not further restrict the solution line. S2 has one solution, S3 none, and S4 infinitely many, each with three equations and two unknowns. Equation count alone therefore determines neither solvability nor uniqueness.",
+      "essentialFacets": [
+        "Die drei Gleichungen algebraisch auf denselben Zusammenhang zurückführen und die vollständige Lösungsfamilie angeben.",
+        "Grafisch drei zusammenfallende Geraden darstellen und ihr gemeinsames unendliches Punktset erklären.",
+        "Begründen, warum drei Gleichungen hier weder Unlösbarkeit noch Eindeutigkeit erzwingen."
+      ],
+      "maxPoints": 5
+    },
+    {
+      "id": "T5",
+      "criterionId": "C5",
+      "title": "Frischer Transfer: Zwei Sensorsignale und ein Kontrollmesswert",
+      "promptDe": "Zwei unbekannte reelle Sensorsignale x und y werden in derselben Einheit erfasst. Ein erstes Gerät liefert x+2y=7, ein zweites 2x+y=8. Ein Kontrollgerät meldet 3x+3y=c. Untersuche zuerst nur die erste Messgleichung und dann die beiden ersten zusammen. Für welche reellen Werte c passen alle drei Angaben zusammen? Prüfe c=15 und c=16. Begründe deine Antwort rechnerisch und mit einer selbst gezeichneten Skizze der drei Geraden für diese beiden Kontrollwerte. Erkläre, wann die dritte Messung redundant ist und wann sie einen Widerspruch erzeugt.",
+      "promptEn": "Two unknown real sensor signals x and y are measured in the same unit. A first device reports x+2y=7 and a second reports 2x+y=8. A checking device reports 3x+3y=c. Investigate the first equation alone and then the first two together. For which real c are all three reports compatible? Check c=15 and c=16. Justify your answer algebraically and with your own sketches of the three lines for these two checking values. Explain when the third measurement is redundant and when it creates a contradiction.",
+      "modelAnswerDe": "Erste Gleichung: L1={(7−2t,t):t∈R}, unterbestimmt. Aus beiden ersten folgt y=2, x=3. Ihre Summe ist 3x+3y=15, daher sind alle drei Angaben genau für c=15 konsistent mit L={(3,2)}. Für c=16 ist L=∅. Bei c=15 verläuft die Kontrollgerade x+y=5 durch (3,2); bei c=16 ist sie parallel dazu verschoben auf x+y=16/3 und enthält diesen Punkt nicht. Ein zusätzliches Messgerät garantiert weder zusätzliche unabhängige Information noch Widerspruchsfreiheit.",
+      "modelAnswerEn": "First equation: L1={(7−2t,t):t∈R}, underdetermined. The first two give y=2 and x=3. Their sum is 3x+3y=15, so all three reports are consistent exactly when c=15, with L={(3,2)}. For c=16, L=∅. When c=15 the checking line x+y=5 passes through (3,2); when c=16 it is shifted parallel to x+y=16/3 and does not contain that point. An extra device guarantees neither additional independent information nor freedom from contradiction.",
+      "essentialFacets": [
+        "Die unabhängige Sensorkonstellation aus einer und anschließend zwei Messgleichungen selbst lösen.",
+        "Für die dritte Messgleichung die genaue Parameterbedingung c=15 herleiten und c=15/c=16 korrekt prüfen.",
+        "Die algebraischen Bedingungen grafisch deuten und Redundanz von Widerspruch unterscheiden, obwohl die Anzahl drei gleich bleibt."
+      ],
+      "maxPoints": 5
+    },
+    {
+      "id": "T6",
+      "criterionId": "C6",
+      "title": "Die erlaubte Nullgleichung ist keine Gerade",
+      "promptDe": "In diesem begrenzten Modell sind auch lineare Gleichungen 0x+0y=d zugelassen. Untersuche getrennt S6a: 0x+0y=0 und S6b: 0x+0y=4 über R². Beide bestehen aus einer Gleichung für zwei Unbekannte. Gib die jeweilige Lösungsmenge an und beschreibe ihre grafische Darstellung in der Ebene. Erläutere, warum hier keine gewöhnliche Gerade entsteht und warum eine einzelne lineare Gleichung ax+by=c mit (a,b)≠(0,0) dagegen immer unendlich viele reelle Lösungen besitzt.",
+      "promptEn": "This bounded model also permits linear equations 0x+0y=d. Investigate S6a: 0x+0y=0 and S6b: 0x+0y=4 separately over R². Each contains one equation for two unknowns. State its solution set and describe its graphical representation in the plane. Explain why neither produces an ordinary line and why a single linear equation ax+by=c with (a,b)≠(0,0), in contrast, always has infinitely many real solutions.",
+      "modelAnswerDe": "Beide nach Anzahl unterbestimmt (1<2). S6a ist die Identität 0=0: L=R², grafisch die ganze Ebene. S6b ist der Widerspruch 0=4: L=∅, grafisch kein Punkt. Eine Nullgleichung wird nicht als Gerade gezeichnet. Bei b≠0 kann y=(c−ax)/b für jedes reelle x gewählt werden; bei b=0 muss a≠0 gelten, dann x=c/a und y ist frei. Damit ist eine nichtdegenerierte einzelne Gleichung immer konsistent.",
+      "modelAnswerEn": "Both are underdetermined by equation count (1<2). S6a is the identity 0=0: L=R², graphically the entire plane. S6b is the contradiction 0=4: L=∅, graphically no points. A zero-coefficient equation must not be drawn as a line. If b≠0, y=(c−ax)/b is available for every real x; if b=0, then a≠0, so x=c/a and y is free. Thus a single nondegenerate equation is always consistent.",
+      "essentialFacets": [
+        "Die ausdrücklich erlaubten Nullgleichungen 0x+0y=0 und 0x+0y=4 algebraisch als Identität beziehungsweise Widerspruch unterscheiden.",
+        "Die Lösungsmengen als ganze reelle Ebene beziehungsweise leere Menge grafisch beschreiben; keine fiktive Gerade zeichnen.",
+        "Begründen, warum eine nichtdegenerierte einzelne lineare Gleichung stets eine Lösungsgerade hat und Unlösbarkeit hier nur aus der Nullzeile kommt."
+      ],
+      "maxPoints": 5
+    }
+  ],
+  "deliveryProposal": {
+    "surfaces": [
+      "existing Markdown taskContent/solutionContent",
+      "new PNG learning resource",
+      "existing Coach"
+    ],
+    "newInteractionSurface": false,
+    "structuredTasksArePrivateAuthoringData": true,
+    "futurePublicSourceLocator": "PENDING_REVIEW_AND_ROOT_MATERIALIZATION; current sourceArtifactPath is relative to this private folder."
+  },
+  "revision": "2026-11-05-private-r2"
+}
