@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "recordedAt": "2026-11-06T17:02:05.816575+00:00",
-  "status": "applied-and-bounded-native-verification-pass-full-cqr-and-composition-pending",
+  "status": "applied-native-global-composition-and-full-cqr-verified-seven-floors-remain-failing",
   "source": {
     "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
     "beforeSha256": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2",
@@ -6198,12 +6198,182 @@
       "contexts": 35,
       "amRecords": 414,
       "cardRecords": 28
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "views": 352,
+      "canonicalLandscapes": 21,
+      "errors": 0,
+      "warnings": 2358,
+      "log": {
+        "path": "tmp/ci-contract-informatics-whole-foundations-composition.log",
+        "sha256": "70d06b45c8d07918ae8cbab698ac2221b8fece8e6dd7337ebf3dbff7712c2841"
+      }
+    },
+    {
+      "command": "npm --prefix app run quality:curriculum-status",
+      "includesNormalPrehook": true,
+      "exitCode": 0,
+      "generatedAt": "2026-11-06T17:08:02.394Z",
+      "log": {
+        "path": "tmp/ci-contract-informatics-whole-foundations-cqr.log",
+        "sha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c"
+      },
+      "outputs": [
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.json",
+          "sha256": "2a30f049b759b2ef12ef603637cfe981aa924e42c55c251967986d5cf3c6a5fd"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.md",
+          "sha256": "18a47d78bdf06c3716ff2c9d5cbdf33bc84484475c6e4bb8d6bddccc314b201f"
+        }
+      ],
+      "curricula": [
+        {
+          "subject": "Biologie",
+          "maturity": "M0",
+          "graphFindings": 375,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Chemie",
+          "maturity": "M0",
+          "graphFindings": 354,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Chinesisch",
+          "maturity": "M0",
+          "graphFindings": 176,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Deutsch",
+          "maturity": "M6",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Englisch",
+          "maturity": "M0",
+          "graphFindings": 132,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Französisch",
+          "maturity": "M0",
+          "graphFindings": 139,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Geschichte",
+          "maturity": "M6",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Griechisch",
+          "maturity": "M0",
+          "graphFindings": 165,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Gymnasium (Deutschland)",
+          "maturity": "M0",
+          "graphFindings": 1104,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Informatik",
+          "maturity": "M0",
+          "graphFindings": 59,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Italienisch",
+          "maturity": "M0",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Latein",
+          "maturity": "M6",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Mathematik",
+          "maturity": "M0",
+          "graphFindings": 925,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Musik",
+          "maturity": "M0",
+          "graphFindings": 12,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Physik",
+          "maturity": "M0",
+          "graphFindings": 626,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Politik und Wirtschaft",
+          "maturity": "M0",
+          "graphFindings": 603,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Polnisch",
+          "maturity": "M0",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Russisch",
+          "maturity": "M0",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Spanisch",
+          "maturity": "M0",
+          "graphFindings": 58,
+          "graphStatus": "fail"
+        },
+        {
+          "subject": "Tschechisch",
+          "maturity": "M0",
+          "graphFindings": 0,
+          "graphStatus": "pass"
+        },
+        {
+          "subject": "Wirtschaftswissenschaften",
+          "maturity": "M0",
+          "graphFindings": 104,
+          "graphStatus": "fail"
+        }
+      ]
+    },
+    {
+      "command": "npm --prefix app run check:curriculum-maturity-floors",
+      "exitCode": 1,
+      "remainingProtectedViolations": 7,
+      "log": {
+        "path": "tmp/ci-contract-informatics-whole-foundations-floor.log",
+        "sha256": "7e9fde80989d47551b840f88e3a02646864a45c4ada1773b06667806b832aca7"
+      },
+      "floorPolicyUnchanged": true
     }
   ],
   "open": [
-    "Full whole-repository Composition352 and CQR producer are still running at recording time. Their results are not claimed here.",
     "59 remaining G17 findings and six generic exam materials/rubrics remain open.",
     "No new D/P, practice, human approval, recognition runtime, identity activation or learner state writes.",
     "Fresh remote CI and all seven remaining protected subject floors remain required."
-  ]
+  ],
+  "completedLocalAt": "2026-11-06T17:09:17.985770+00:00"
 }

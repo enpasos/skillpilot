@@ -1,5 +1,11 @@
 # Informatik: fachliche Vorbereitung ohne fremde Ganzprüfungen
 
+**Nachtrag:** Der finale 39er-Satz und seine 166 abgeleiteten Angebotsfelder
+sind inzwischen [angewandt und nachgeprüft](informatics-whole-exam-foundation-application-2026-11-06.md).
+Der folgende Text dokumentiert die vorherige Hypothese und ihre damaligen
+Freigabegrenzen. Die eingefrorenen JSON-Vorschläge und unabhängigen Reviews
+bleiben unverändert als historische Belege erhalten.
+
 Stand 6. November 2026. **Unangewandte fachliche Hypothese; die Scopeintegration
 ist offen.** Die Quelle bleibt auf SHA-256
 `5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2`.

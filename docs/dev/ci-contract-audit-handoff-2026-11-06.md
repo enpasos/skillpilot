@@ -105,7 +105,7 @@ ist die erneute Gesamterzeugung bestanden; acht Fachuntergrenzen bleiben rot.
 | Wirtschaftswissenschaften | M7 | M0 | 104 |
 | Deutsch | M6 | M6 | 0 |
 | Geschichte | M6 | M6 | 0 |
-| Informatik | M6 | M0 | 62 |
+| Informatik | M6 | M0 | 59 |
 | Latein | M6 | M6 | 0 |
 | Politik und Wirtschaft | M6 | M0 | 603 |
 
@@ -189,6 +189,23 @@ Der echte CQR-Bericht vom `2026-11-06T14:51:11.291Z` bestätigt weiterhin Deutsc
 Geschichte und Latein als M6 sowie Informatik als M0 mit 62 G17-Befunden.
 Die [Anwendung mit Replay](ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
 bindet diese eigenen Ergebnisse. Sieben geschützte Fachfloors bleiben rot.
+
+**Angewandter Informatik-39er-Nachfolger:** Die unabhängig geprüften 39
+Voraussetzungsarrays und 166 abgeleiteten Jurisdiction-Felder sind inzwischen
+angewandt, Quelle `5921c402…` → `93a653b1…`. Die Angebotskorrektur ist ausdrücklich
+entschieden: keine erfundenen Quellenmappings oder pauschalen Overrides; keine
+gewöhnlichen Targetverluste und kein verkleinerter kanonischer Nenner. 28 von
+35 tatsächlichen Scopes ändern sich, HE/BY/nationale Kontexte bleiben gleich.
+Die native Nachprüfung bestätigt alle 19 Views, 35 Scopes, 414 A/M- und 28
+Kartenrecords. Der Root-Replay bestätigt sämtliche globalen 142/154
+Nachfragedeltas über 21 Quellen. General593 und Composition352 bestehen mit
+null Fehlern; die 2358 Compositionwarnungen bleiben ausgewiesen. Der echte
+vollständige CQR-Bericht vom `2026-11-06T17:08:02.394Z` bestätigt Informatik
+mit 59 G17-Befunden weiterhin als M0; Deutsch, Geschichte und Latein bleiben M6.
+Der Floorcheck scheitert weiterhin an genau sieben Fachuntergrenzen.
+Die [Anwendung samt Nachweisen](ci-graph-repairs/informatics-whole-exam-foundation-application-2026-11-06.md)
+trennt dies von den offenen gewöhnlichen Holds, sechs generischen Prüfungen
+und dem unangewandten Q4-Entwurf.
 
 Ein zusätzlicher echter G01b-Gegenfall zeigte, dass verschiedene Hex-Schreibweisen
 desselben UUID-Werts bislang als getrennte Strings durchgingen. Die neue
@@ -509,8 +526,8 @@ Docs `42245440547`, OAuth `42245440572` und Gemini `42245440845` melden Erfolg;
 für den neuen Assessment-Lauf ist hier keine erneut ausgezählte XML-Quittung
 behauptet. Der Hauptlauf besitzt noch keinen erfolgreichen Gesamtabschluss.
 
-Als nächster fachlicher Schritt bleibt der unangewandte Informatik-39er-Satz
-mit seiner getrennten Prüfung der abgeleiteten Angebotsrollen. Der
+Der Informatik-39er-Satz ist inzwischen mit geprüften Angebotsfolgen angewandt;
+die obige Anwendung und die frische CQR-Erzeugung benennen den Stand. Der
 [Einzelreview der weiteren 59 Minimalitätswege](ci-graph-repairs/informatics-remaining-minimality-review-2026-11-06.md)
 unterscheidet 32 später einzeln nachzuweisende Normalisierungen und 27 echte
 fachliche Holds. Kein Zeugenpfad berechtigt zum pauschalen Löschen einer Kante.

@@ -668,3 +668,12 @@ G05-Referenzreparatur gelöst. 147 Mehrfachserialisierungen werden nach logische
 Identität verglichen; keine erste Datei und kein Vereinigungsgraph werden als
 autoritative Definition ausgegeben. Dieser lesende Befund ist noch kein neuer
 harter Topologiekonsistenzprüfer und kein Vollständigkeitsurteil.
+
+Die weitere [Informatik-Anwendung](../dev/ci-graph-repairs/informatics-whole-exam-foundation-application-2026-11-06.md)
+ändert 39 einzeln geprüfte gewöhnliche Voraussetzungen und 166 exakt abgeleitete
+Jurisdiction-Felder. Alle 35 Scopefolgen sind ausdrücklich geprüft; der kanonische
+Nenner bleibt unverändert. General593 und Composition352 bestehen; der neue
+vollständige CQR-Bericht vom `2026-11-06T17:08:02.394Z` weist weiterhin drei M6-Fächer
+und sieben verletzte geschützte Floors aus. Informatik fällt mit 59 offenen
+G17-Befunden korrekt auf M0. Die Einzelerfolge ersetzen weder die verbleibenden
+fachlichen Korrekturen noch fehlende Aufgaben-/Praxis-/D/P-Nachweise.

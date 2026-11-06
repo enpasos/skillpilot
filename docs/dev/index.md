@@ -33,6 +33,8 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   13 geschützte Feldänderungen mit vollständigen Nachfragedeltas und frischer tatsächlicher QA.
 - [Backend-Fixtures: unabhängiger Zweitblick](ci-graph-repairs/main-transitivity-fixture-independent-review-2026-11-06.json)
   Fünf echte Remote-Fehler eingegrenzt; 231 Tests ohne Produktionsänderung bestanden.
+- [Informatik: angewandte Grundlagen und Angebotsfolgen](ci-graph-repairs/informatics-whole-exam-foundation-application-2026-11-06.md)
+  39 geprüfte Voraussetzungskorrekturen mit 166 abgeleiteten Feldern und tatsächlicher unabhängiger Nachprüfung.
 - [Mathematik: unabhängiger HE-Scope-Gegenblick](ci-graph-repairs/he-gk-q24-q25-scope-independent-review-2026-11-06.md)
   Historische Ziel-IDs, aktuelle Ersatzkompetenzen und regionale Supportrollen mit 110 echten Verlustkontrollen.
 - [Kartenabschluss: unabhängiger Zweitblick](ci-graph-repairs/srs-completion-retention-independent-review-2026-11-06.md)

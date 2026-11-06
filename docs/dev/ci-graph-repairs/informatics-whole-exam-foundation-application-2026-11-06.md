@@ -71,3 +71,14 @@ sechs unveränderten generischen Prüfungen brauchen weiterhin geeignete
 Materialien und Rubriken; der Q4-Entwurf ist gesondert und nicht angewandt.
 Die 59 weiteren Minimalitätsbefunde bleiben offen. Globale Anerkennung,
 Einheitenruntime und Lernerzustände werden durch diese Reparatur nicht geändert.
+
+Die vollständigen Root-Nachläufe sind inzwischen abgeschlossen: 593 Landschaften
+bestehen den allgemeinen Graphvalidator; 352 Views / 21 Kataloge bestehen die
+Compositionprüfung mit null Fehlern und 2358 ausgewiesenen Warnungen. Der normale
+vollständige CQR-Producer einschließlich Memory-Prehook beendet sich erfolgreich.
+Sein Bericht vom `2026-11-06T17:08:02.394Z` bestätigt Informatik mit 59 G17-Befunden
+weiterhin als M0. Deutsch, Geschichte und Latein bleiben M6. Der eigenständige
+Floorcheck scheitert mit Exit 1 an genau sieben unveränderten Fachuntergrenzen.
+Die [Anwendungsquittung](informatics-whole-exam-foundation-application-2026-11-06.json)
+bindet sämtliche tatsächlichen Resultate und die neuen Statusbytes. Dies ist
+lokale Prüfung; die frische Remote-CI bleibt gesondert erforderlich.
