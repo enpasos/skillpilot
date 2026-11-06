@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "math-d-diagram-a-20261106T223240Z",
+  "campaignId": "mathematik-single-target-20261106-v1-a",
+  "roundId": "mathematik-single-target-20261106-v1-first-pass-a",
+  "batchId": "mathematik-single-target-20261106-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:afbd0686981dce7558a110e70337e4fcf1146b7ffbbfb0e864452ced568f86e9",
+  "bundleFingerprint": "sha256:96ba336c19ceaa59cd9f4b1e82c9b4c79a2cd2a5e4edd63534c195259e4b2cd4",
+  "bookDigest": "sha256:b9005485d5a5fc1f22a87d7e28812e14df0218cf6bf1b0046b2129da7121d3d3",
+  "provider": "OpenAI API assistant environment; actual serving backend unknown",
+  "model": "gpt-6-astra (orchestrator configuration; actual deployment unknown)",
+  "modelVersion": "unknown; not exposed in this run",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:c54fd61eed1a4f7604379b66dbcf616480866605d61002ac838b61f1942d61dd",
+  "independenceGroupId": "mathematik-single-target-20261106-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:417721f53c480ed3cd840fade5cc27076b0e0eb5586b203e49f43923329eb0ee"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bc3e293dfba3fb26d544e9daf5cf6b4b74e0ae7b3ec1479ac058f1d753337d68"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:70270150a2273a55cc9ac0a9f175364c7c744ad47326bb2fe9e5d58b9975362a"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:635638c0f6c20da2e60d9f89b14b7f3eae7a9037566d84473627567bbae96adf"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:afbd0686981dce7558a110e70337e4fcf1146b7ffbbfb0e864452ced568f86e9"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    }
+  ],
+  "startedAt": "2026-11-06T22:32:40Z",
+  "completedAt": "2026-11-06T22:36:20Z",
+  "status": "completed",
+  "outputDigest": "sha256:e3c662645bc4ea2151e9c9caff7f5b81752ce7a6db79b2b238da6aae518e3291",
+  "toolchainVersion": "tsx-4.21.0_node-20.20.2_python-3.12.9"
+}

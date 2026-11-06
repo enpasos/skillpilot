@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+  "campaignId": "mathematik-three-targets-20261106-v1-a",
+  "roundId": "mathematik-three-targets-20261106-v1-first-pass-a",
+  "batchId": "mathematik-three-targets-20261106-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:3679da05ca6a2a20b856c3b84bc6fedeacc810f53f37604eb96a0c85dd2c7d48",
+  "bundleFingerprint": "sha256:63b489ca9d03834238477035b1f0992552687973ec72ddb00af450a0d0fb2477",
+  "bookDigest": "sha256:fbeda3ca5d5cd2bef3a1483f4134b572535c86038346564f1236353eba91f408",
+  "provider": "OpenAI",
+  "model": "gpt-6-astra",
+  "modelVersion": "Deployment/snapshot not exposed. Orchestrator parameters (null=not exposed): {\"fork_turns\":\"none\",\"reasoning_effort\":\"ultra\",\"seed\":null,\"temperature\":null,\"top_p\":null}. startedAt is first observed UTC during review, after input preflight.",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919",
+  "generationParametersFingerprint": "sha256:019dc0ecef83cd552a712b61bd33d0e1016167d069a0002aba9aacbfc38e53be",
+  "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:dc5a47b3631162949ac6bcb37f7f9426eb369e8c7f751b698b42751ea6649060"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:391edf71671381c7927bc50d63004ff1942c07e24dc0f75d6b60748bdc352de9"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:2b82d9c59867b4423a14073a08104ea4d5b31ff47df8c64fd560c8ed2b8b8421"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:58af51afdad8ab46aece718d7d7c38190833cb0e55803d0eacf105f8e671ce10"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:d5fc404ad4f4b23b5edcbb73ae133211081745786ac29ae9c7e46c51ae24f919"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:3679da05ca6a2a20b856c3b84bc6fedeacc810f53f37604eb96a0c85dd2c7d48"
+    }
+  ],
+  "startedAt": "2026-11-06T22:01:03Z",
+  "completedAt": "2026-11-06T22:05:07.716154Z",
+  "status": "completed",
+  "outputDigest": "sha256:de9520b16f05596f0332586c470fe6fc8fd4f8a3822f08b96826a6237e8bc800",
+  "toolchainVersion": "codex-mcp-python3.12.9-node20.20.2-pymupdf1.27.1"
+}

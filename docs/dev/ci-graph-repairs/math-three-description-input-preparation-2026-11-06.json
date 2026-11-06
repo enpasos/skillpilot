@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "status": "native-three-goal-inputs-prepared-and-checked-no-review-or-qa-readiness-claim",
+  "sourceCandidateSha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd",
+  "activeSourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+  "activeSemanticKindLedgerSha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b",
+  "nativeBatchConfigPath": "docs/dev/ci-graph-repairs/math-three-description-input-batch-2026-11-06.config.json",
+  "nativeBatchConfigSha256": "24b447fd199378e6105b4b0c0e5c742bd5942b5b4ab2a509988d7c7ab6889f31",
+  "packetRoot": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06",
+  "inputInventory": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/input-inventory.json",
+    "sha256": "5bfe4b66b2fc8f6b3ea4478312ed8f3756744ecd6d64f01d3c8eee83aff94b4d"
+  },
+  "nativeManifest": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/batch-manifest.json",
+    "sha256": "b4943ce879caf5d98a00e6802f28eabb9c60ad3142305bbdf01903cdcb21c2a8"
+  },
+  "nativeBundleFingerprint": "sha256:63b489ca9d03834238477035b1f0992552687973ec72ddb00af450a0d0fb2477",
+  "goalIds": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+  ],
+  "denominator": 807,
+  "nativePrepareAndCheckCommands": [
+    {
+      "mode": "prepare",
+      "exitCode": 0,
+      "seconds": 25.398306227998546,
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106/candidate.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106/kind-ledger.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot",
+        "--",
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "docs/dev/ci-graph-repairs/math-three-description-input-batch-2026-11-06.config.json"
+      ]
+    },
+    {
+      "mode": "check",
+      "exitCode": 0,
+      "seconds": 0.9479561160005687,
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106/candidate.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-three-description-preparer-20261106/kind-ledger.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot",
+        "--",
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "docs/dev/ci-graph-repairs/math-three-description-input-batch-2026-11-06.config.json"
+      ]
+    }
+  ],
+  "nativeEmptyResultNegatives": [
+    {
+      "round": "a",
+      "exitCode": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/batches",
+        "--results-dir",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results"
+      ],
+      "reviewResultFiles": 0,
+      "missingResultsRejected": true
+    },
+    {
+      "round": "b",
+      "exitCode": 1,
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/description-review-campaign.json",
+        "--batches-dir",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/batches",
+        "--results-dir",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results"
+      ],
+      "reviewResultFiles": 0,
+      "missingResultsRejected": true
+    }
+  ],
+  "sourceContext": {
+    "completeRelatedCanonicalGoalPayloads": 64,
+    "actualDirectSourceBindings": 13,
+    "literalSourceGoalRows": 11,
+    "retainedLegacySourceGoals": 2,
+    "officialDocumentsBoundWithoutCopy": 7,
+    "allActualFilesExistAndHashesMatch": true,
+    "noIndirectSourceCoverageApprovalClaimed": true
+  },
+  "reviewerDispatch": [
+    {
+      "coldStartRequired": "fork_turns=none",
+      "suggestedReviewer": "Astra Ultra",
+      "taskPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/cold-review-a.md",
+      "taskSha256": "85bdfd7be17fe3db24b50f62c56c581f67184bdf96282ef48c26340085cba4f6",
+      "nativeRound": {
+        "directory": "round-a",
+        "campaignId": "mathematik-three-targets-20261106-v1-a",
+        "campaignDigest": "sha256:316988c56fb463b9ab1bb65ee3ee2263c8aa5daba90658d9262b55da4ecce1f3",
+        "roundId": "mathematik-three-targets-20261106-v1-first-pass-a",
+        "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-a",
+        "batchId": "mathematik-three-targets-20261106-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:3679da05ca6a2a20b856c3b84bc6fedeacc810f53f37604eb96a0c85dd2c7d48"
+      }
+    },
+    {
+      "coldStartRequired": "fork_turns=none",
+      "suggestedReviewer": "Sol6.1 Ultra",
+      "taskPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/cold-review-b.md",
+      "taskSha256": "ab085f4135438859cbc2a48a8166b80a60a1c49d32fe318bcde6c9de71d0d51a",
+      "nativeRound": {
+        "directory": "round-b",
+        "campaignId": "mathematik-three-targets-20261106-v1-b",
+        "campaignDigest": "sha256:9a331a7e566f71ae851027300eee25d4d7d359ad7940a443ec7bb4fa7fb81fbd",
+        "roundId": "mathematik-three-targets-20261106-v1-first-pass-b",
+        "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-b",
+        "batchId": "mathematik-three-targets-20261106-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:92f02c5a42d110fcda55c14dca857f379e044a127b168505e2066ae7da073e1a"
+      }
+    }
+  ],
+  "blindness": {
+    "priorOrCurrentDescriptionOrPositiveReviewResultsProvided": false,
+    "baseEvidenceReviewPaths": [],
+    "allNativeEvidenceReviewAndEvidenceProfileValuesNull": true,
+    "sourceCanonicalDiffProvided": false,
+    "assetQaMetadataPreservedAsMaterialProvenanceOnly": true,
+    "noNewVisualizationAcceptance": true,
+    "reviewRecordsAuthoredByPreparer": 0,
+    "coordinatorMustNotPassConversationOrPeerOrNormalizationPlanToColdReviewers": true
+  },
+  "nativePositiveReplacementPlan": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/positive-replacement-plan.json",
+    "sha256": "fdeed1bda1b6a0759ada68983d8807c235a0018a21bcead9511a512db7a074b8",
+    "retainedRowsNativeValid": 28,
+    "futureFreshRowsRequired": 3,
+    "newRowsAuthored": 0,
+    "fullReplacementCurrentlyReady": false
+  },
+  "activeSourceKindPolicyViewQaWrites": false,
+  "fullDeepOrCqrProducerInvoked": false,
+  "restoredFloorClaimed": false
+}

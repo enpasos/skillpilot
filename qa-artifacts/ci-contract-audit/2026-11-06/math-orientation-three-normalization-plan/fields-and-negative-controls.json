@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "fieldsOnlyScenarios": [
+    {
+      "scenario": "MATH-MIN-0027",
+      "exactChangedJsonPointers": [
+        "/goals/129/requires"
+      ],
+      "allOtherGoalPayloadAndMetadataEqual": true
+    },
+    {
+      "scenario": "MATH-MIN-0745",
+      "exactChangedJsonPointers": [
+        "/goals/931/requires"
+      ],
+      "allOtherGoalPayloadAndMetadataEqual": true
+    },
+    {
+      "scenario": "MATH-MIN-0751",
+      "exactChangedJsonPointers": [
+        "/goals/4/requires"
+      ],
+      "allOtherGoalPayloadAndMetadataEqual": true
+    },
+    {
+      "scenario": "cumulative-three",
+      "exactChangedJsonPointers": [
+        "/goals/4/requires",
+        "/goals/129/requires",
+        "/goals/931/requires"
+      ],
+      "allOtherGoalPayloadAndMetadataEqual": true
+    }
+  ],
+  "negativeControls": {
+    "unreviewedTitleMutationDetected": true,
+    "survivingWitnessWithMissingActualHopRejected": true,
+    "removalOfAllSourcePreparationChangesGoalClosureSources": 2,
+    "removalOfAllSourcePreparationChangesAtomicClosureSources": 2
+  },
+  "noLiveWrites": true
+}

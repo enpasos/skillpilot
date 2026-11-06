@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "status": "two-native-D-resolutions-one-deferred-new-neutral-single-input-and-three-native-P-candidates-unapplied",
+  "createdAtActualCoordinatorClosure": "2026-11-06T22:43:00.801366Z",
+  "sealedOriginalRounds": [
+    {
+      "round": "a",
+      "runPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results/mathematik-three-targets-20261106-v1-first-pass-a.batch-001.run.json",
+      "runRawSha256": "e060c7fe9314188718758b38a10152633906ea5b26b23f45b2da8fa1d97a44dd",
+      "recordsPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results/mathematik-three-targets-20261106-v1-first-pass-a.batch-001.records.jsonl",
+      "recordsRawSha256": "de9520b16f05596f0332586c470fe6fc8fd4f8a3822f08b96826a6237e8bc800",
+      "runId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+      "model": "gpt-6-astra",
+      "unalteredDeclaredModelVersion": "Deployment/snapshot not exposed. Orchestrator parameters (null=not exposed): {\"fork_turns\":\"none\",\"reasoning_effort\":\"ultra\",\"seed\":null,\"temperature\":null,\"top_p\":null}. startedAt is first observed UTC during review, after input preflight.",
+      "declaredStartedAt": "2026-11-06T22:01:03Z",
+      "declaredCompletedAt": "2026-11-06T22:05:07.716154Z",
+      "decisions": [
+        {
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "decision": "revise"
+        },
+        {
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "decision": "keep"
+        },
+        {
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "decision": "keep"
+        }
+      ]
+    },
+    {
+      "round": "b",
+      "runPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.run.json",
+      "runRawSha256": "61ea3525cc2835736f0172ca28407a4decc50a73f7a9adaab72cb7514f7f0f9b",
+      "recordsPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.records.jsonl",
+      "recordsRawSha256": "fb50ceb9962f42cf21b7bc10706b2d37ff12699bba33a69f5f78277d09951ce2",
+      "runId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z",
+      "model": "gpt-6.1-sol",
+      "unalteredDeclaredModelVersion": "Deployment version undisclosed; timing covers final assessment/record generation; preparatory input reading preceded startedAt; params UTF-8 descriptor: model=gpt-6.1-sol;reasoning_effort=ultra;fork_turns=none;temperature=unknown;top_p=unknown;seed=unknown",
+      "declaredStartedAt": "2026-11-06T22:02:44Z",
+      "declaredCompletedAt": "2026-11-06T22:06:14Z",
+      "decisions": [
+        {
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "decision": "revise"
+        },
+        {
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "decision": "keep"
+        },
+        {
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "decision": "keep"
+        }
+      ]
+    }
+  ],
+  "originalRunAndRecordBytesRewritten": false,
+  "runTimingBoundary": "The unchanged declared intervals cover the observed final assessment/record section, not all preparatory reading. Exact deployment and sampling values remain unknown as originally stated.",
+  "nativePartialResolution": {
+    "indexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json",
+    "indexSha256": "3d04b4d38e5ab33d653a921caedb930136d0d28e9c1f5ba565c5888d28f64611",
+    "synthesisManifestPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/synthesis-decisions.json",
+    "synthesisManifestSha256": "f2d384867ea3c5f8690d49eff443a146ad705065070a9ceb7513b6a6f1555ab1",
+    "resolvedGoalIds": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+    ],
+    "deferredGoalIds": [
+      "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+    ],
+    "allFourNativeStepsExit0": true,
+    "canonicalSourceDigestBound": "sha256:967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "nativeSynthesizedAt": "2026-11-06T22:06:15.000Z",
+    "nativeTimestampMeaning": "Deterministic contract binding max(declared run completedAt)+1second; not a claim about actual coordinator processing time."
+  },
+  "selectedDescriptionCandidate": {
+    "beforeSourceSha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd",
+    "candidateSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "sourceRecordPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.records.jsonl",
+    "sourceRecordFileSha256": "fb50ceb9962f42cf21b7bc10706b2d37ff12699bba33a69f5f78277d09951ce2",
+    "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "descriptionBeforeDe": "Die lernende Person kann aus einfachen Diagrammen Auffälligkeiten, Vergleiche und erste Trends beschreiben und in Worte fassen.",
+    "descriptionBeforeEn": "The learner can describe noticeable features, comparisons, and first trends from simple diagrams and express them in words.",
+    "descriptionAfterDe": "Die lernende Person kann einfache Diagramme deuten, indem sie Auffälligkeiten anhand der dargestellten Daten beschreibt, Werte vergleicht und erste Trends in Worte fasst.",
+    "descriptionAfterEn": "The learner can interpret simple diagrams by describing noticeable features using the displayed data, comparing values, and expressing initial trends in words.",
+    "onlyChangedFieldsFromPriorCandidate": [
+      "description",
+      "descriptionEn"
+    ],
+    "privateKindDraftPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/fresh-kind-atomicity-memory-drafts.json",
+    "privateKindDraftSha256": "152bb5403140fe18adb8de1af8520cd1001b40c7f6d37aaa7657d6846fb95e9d",
+    "activeWrites": false
+  },
+  "newIndependentSingleGoalInput": {
+    "root": "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06",
+    "inventorySha256": "afa02aaf218a193ddf557332f9b5407fc385288f28a2c490398be3c818e64491",
+    "wholeCurrentBaseDenominator": 807,
+    "goals": 1,
+    "relatedCanonicalGoalContexts": 49,
+    "directSourceBindings": 9,
+    "nativePrepareAndCheckExit0": true,
+    "preparerReviewRecordsAuthored": 0,
+    "oldResultsOrCanonicalDiffIncluded": false,
+    "coldTaskPaths": [
+      "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/cold-review-a.md",
+      "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/cold-review-b.md"
+    ],
+    "followupReviewOutcomeNotAssumed": true
+  },
+  "freshP": {
+    "receiptPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-current-positive-candidates-2026-11-06/candidate-receipt.json",
+    "receiptSha256": "a01cb41baf1d55a4a9c5323592bd2e6b18d9c68e0267d10499b13337b1d33295",
+    "actualNewContentRows": 3,
+    "retainedByteIdenticalRows": 28,
+    "exactChangedGroupUnion": 31,
+    "unchangedGlobalScope": 807,
+    "allSevenNativeChecksExit0": true,
+    "status": "needs_human_review",
+    "authority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "fakeDedicatedRunIds": false,
+    "activeRegistryChanged": false
+  },
+  "freshKindAM": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/fresh-kind-atomicity-memory-drafts.json",
+    "sha256": "152bb5403140fe18adb8de1af8520cd1001b40c7f6d37aaa7657d6846fb95e9d",
+    "actualIndependentlyAuthoredKindRows": 3,
+    "actualNewDiagramAtomicityRow": 1,
+    "actualNewDiagramMemoryRow": 1,
+    "requiresOnlyDoesNotChangeAMFingerprint": true,
+    "diagramBTextChangesAMAndPGoalFingerprint": true,
+    "activeRowsUnchanged": true
+  },
+  "freshVisualizationReview": {
+    "path": "docs/dev/ci-graph-repairs/math-diagram-description-b-visualization-independent-review-2026-11-06.json",
+    "sha256": "98bee1832aef1c2d7f141be18ba3741ec4d6b4cb3d7b88a9efbd01b0e128c83d",
+    "actualFreshCandidateRow": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/fresh-record-candidate.json",
+    "rowSha256": "55e07adfbcb949abe46a08309a24df13d6762b0efa06b3195413b3def59f29cc",
+    "currentAssetHash": "sha256:8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f",
+    "noOldApprovalRelabelledByThisAgent": true,
+    "contextBindingGateRepairIsSeparateRootWork": true,
+    "noWholeDeepOrNewHumanApprovalClaim": true
+  },
+  "preservationReceipt": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-synthesis-2026-11-06/ram-preservation-receipt.json",
+    "sha256": "53f42c725379a47d2c5459779322abe9d9cf5e8eee2c1644a9ed116a35bd9ead",
+    "actualNewRootBytesFreed": 91353088,
+    "allOriginalLocatorsRetained": true,
+    "additional150MBGainNotClaimed": true
+  },
+  "integrationBoundaries": [
+    "No live source, active QA, policy, view, learner state or mastery changed.",
+    "Original requires-only b215 proof stays historical; the exact B candidate967a adds two descriptionfields and needs its fresh context-bound evidence.",
+    "No fresh single-goal D outcome is assumed before both actual cold followup checks complete.",
+    "Fresh A/M/V rows remain unapplied; whole-subject/native integration checks and protected floors are not passed by this package.",
+    "The WholeSource split-policy guard and914G17+2G01a graph findings remain separate obligations."
+  ],
+  "noFullCqrOrDeepProducerInvoked": true,
+  "noM6M7RestorationClaimed": true
+}

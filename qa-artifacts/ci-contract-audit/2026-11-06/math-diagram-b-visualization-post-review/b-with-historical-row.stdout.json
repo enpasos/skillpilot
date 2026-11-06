@@ -1,0 +1,46 @@
+{
+  "scenario": "b-with-historical-row",
+  "sourceSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+  "ledgerSha256": "1c2d1b73ad268357de76e29b4da679d7a05913150cd43323279f8ed7363652c1",
+  "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+  "descriptionMatches": false,
+  "nativeAssetApproval": true,
+  "ready": [],
+  "issues": [
+    "mathematik: visualization-QA freshness check failed: Goal visualization QA ledger(s) are stale: | - curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json"
+  ],
+  "deferred": [],
+  "subprocesses": [
+    {
+      "command": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+      "args": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=mathematik"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Goal visualization QA ledger(s) are stale:\n- curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json\n"
+    }
+  ],
+  "nativeSource": {
+    "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+    "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+    "extractedDeclarationsSha256": "7dde4325e5bb8d389f106f3d9e3bbc8eed12471455f0ff6b08d1f8cae2ddc9db",
+    "names": [
+      "sha256",
+      "normalizeText",
+      "parseJson",
+      "loadJson",
+      "resolveRepoPath",
+      "duplicateValues",
+      "hasCompletedDeepUnderstandingVisualizationReview",
+      "addIssue",
+      "runTsxCheck",
+      "digestFile",
+      "loadVisualizationReadyGoals"
+    ]
+  },
+  "scope": "one-goal V consumer; actual whole-subject visualization-ledger freshness subprocess; no full Deep lane"
+}

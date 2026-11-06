@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-post-review-of-two-completed-description-rounds",
+  "date": "2026-11-06",
+  "status": "content-continuity-reviewed-diagram-final-D-still-open",
+  "contextCommit": "99f6a9ce49ea54cf99f3a7d87a7b4c31c6005262",
+  "scope": {
+    "readBothCompletedRoundsTogetherOnlyNow": true,
+    "newBlindRoundClaimed": false,
+    "coldRunIndependenceReperformed": false,
+    "activeSourceQaOrPolicyWrites": false,
+    "fullQaRunClaimed": false,
+    "learnerStateWrites": false,
+    "sourceOrCoverageApprovalExpanded": false
+  },
+  "inputs": {
+    "source": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    "rounds": [
+      {
+        "round": "a",
+        "records": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results/mathematik-three-targets-20261106-v1-first-pass-a.batch-001.records.jsonl",
+          "sha256": "de9520b16f05596f0332586c470fe6fc8fd4f8a3822f08b96826a6237e8bc800",
+          "bytes": 19490
+        },
+        "run": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results/mathematik-three-targets-20261106-v1-first-pass-a.batch-001.run.json",
+          "sha256": "e060c7fe9314188718758b38a10152633906ea5b26b23f45b2da8fa1d97a44dd",
+          "bytes": 3111
+        }
+      },
+      {
+        "round": "b",
+        "records": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.records.jsonl",
+          "sha256": "fb50ceb9962f42cf21b7bc10706b2d37ff12699bba33a69f5f78277d09951ce2",
+          "bytes": 20522
+        },
+        "run": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.run.json",
+          "sha256": "61ea3525cc2835736f0172ca28407a4decc50a73f7a9adaab72cb7514f7f0f9b",
+          "bytes": 3061
+        }
+      }
+    ],
+    "historicalThreeProposal": {
+      "path": "docs/dev/ci-graph-repairs/math-orientation-three-normalization-plan-2026-11-06.json",
+      "sha256": "d21b8a4b60ddbc418e58c9f6de11abc7679d157cdac57c00bee84a85eba29f12",
+      "bytes": 73041
+    },
+    "historicalIndependentContentReview": {
+      "path": "docs/dev/ci-graph-repairs/math-orientation-three-independent-review-2026-11-06.json",
+      "sha256": "34b9a418e4afa57e40434797c753b7804c1e728df6f1288c322d5f8b29bd4c72",
+      "bytes": 49431
+    },
+    "actualSourceContext": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/material-context/current-source-context.json",
+      "sha256": "47f325c10a2cb4bed4478acc511d411ae50ed5af869a1f6b040e01ac2804e986",
+      "bytes": 52500
+    }
+  },
+  "cases": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "title": "Diagramme deuten",
+      "currentDe": "Die lernende Person kann aus einfachen Diagrammen Auffälligkeiten, Vergleiche und erste Trends beschreiben und in Worte fassen.",
+      "currentEn": "The learner can describe noticeable features, comparisons, and first trends from simple diagrams and express them in words.",
+      "roundA": {
+        "recordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-1",
+        "decision": "revise",
+        "proposedDe": "Die lernende Person kann in einfachen Diagrammen Werte vergleichen sowie Auffälligkeiten und einfache Trends im dargestellten Zusammenhang in eigenen Worten beschreiben.",
+        "proposedEn": "The learner can compare values in simple diagrams and describe noticeable features and simple trends in the represented context in their own words."
+      },
+      "roundB": {
+        "recordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-001",
+        "decision": "revise",
+        "proposedDe": "Die lernende Person kann einfache Diagramme deuten, indem sie Auffälligkeiten anhand der dargestellten Daten beschreibt, Werte vergleicht und erste Trends in Worte fasst.",
+        "proposedEn": "The learner can interpret simple diagrams by describing noticeable features using the displayed data, comparing values, and expressing initial trends in words."
+      },
+      "postReviewDecision": "prefer-exact-round-B-wording-subject-to-fresh-current-D-rechecks",
+      "stableCompetencyIdentity": "same existing competence, same ID and same meaning of valid prior result; no learner state writes or new implied results",
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Wertevergleich, Auffälligkeit und einfache Verlaufsaussage koordinieren denselben gegebenen Diagramminhalt mit seiner sprachlichen Deutung. Die Präzisierung erzeugt weder eine unabhängige Diagrammkonstruktion noch Regressions-, Kennwert-, Kausal- oder Prognosekompetenz. Es bleibt eine einzige curricularAtomic-Kompetenz.",
+      "freshAandMRequiredForThisExactCandidate": true,
+      "historicalPrimaryCardReferences": 0,
+      "continuityReason": "Der bisherige Titel fordert Deutung; die alte Beschreibung verlangt Auffälligkeiten, Vergleiche und erste Trends aus einfachen Diagrammen. Beide Vorschläge explizieren die eigene Vergleichshandlung und Datenbindung, die schon zur korrekten Deutung gehören. Das bloße Abschreiben einer vorgegebenen Aussage war auch vorher kein selbständiger gültiger Kompetenznachweis. B hält zudem den bestehenden Wortlaut erste Trends exakt und bindet Auffälligkeiten ausdrücklich an dargestellte Daten. Kein neuer Zahlenbereich, Diagrammtyp, Rechenalgorithmus, Kennwert, statistischer Schluss oder Begründungsniveau wird eingeführt.",
+      "candidateSpecificBoundaries": [
+        "Trends werden nur bei sinnvoll geordneter Folge gefordert; ein nominaler Kategorienvergleich muss keine künstliche zeitliche Entwicklung zeigen.",
+        "Werte vergleichen verlangt keine neue Pflicht zu Prozentrechnung oder exakten Differenzberechnungen.",
+        "Datenbindung ist kein Kausalbeweis und keine Prognose; eine lokal fallende Strecke kann mit insgesamt zunehmenden Werten vereinbar sein.",
+        "Der ganze Deutungsumfang bleibt erhalten; keine Source-/Target-/Coverageverkleinerung und keine neuen Masteryfolgerungen."
+      ]
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "title": "Einfache inverse Matrizen bestimmen",
+      "currentDe": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+      "currentEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+      "roundA": {
+        "recordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-2",
+        "decision": "keep",
+        "proposedDe": null,
+        "proposedEn": null
+      },
+      "roundB": {
+        "recordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-002",
+        "decision": "keep",
+        "proposedDe": null,
+        "proposedEn": null
+      },
+      "postReviewDecision": "keep-exact-current-description",
+      "stableCompetencyIdentity": "same existing competence, same ID and same meaning of valid prior result; no learner state writes or new implied results",
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Bestimmung und vollständige Multiplikationsprobe prüfen denselben inversen Zusammenhang an einfachen invertierbaren 2x2- oder Diagonalmatrizen. Der Orientierungsentzug lässt diesen Gegenstand und die fachliche Matrixmultiplikationsvorbereitung unverändert; kein Assessment- oder Memorytyp.",
+      "freshAandMRequiredForThisExactCandidate": false,
+      "historicalPrimaryCardReferences": 0,
+      "continuityReason": "Beide keep-Urteile sind sachlich tragfähig: Invertierbarkeit, einfache Matrixformen und Prüfung des gesamten Produkts auf Identität sind schon explizit. Die Evidenzvarianten dürfen eine 3x3-Diagonalmatrix als vorhandenen Strukturtransfer verwenden; keine allgemeine Inversion höherdimensionaler nichtdiagonaler Matrizen, kein bestimmtes Rechenverfahren und kein allgemeiner Existenzbeweis werden Pflicht."
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+      "currentDe": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+      "currentEn": "The learner can represent integers, including zero, on the number line, compare them, and order them with justification in everyday contexts.",
+      "roundA": {
+        "recordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-3",
+        "decision": "keep",
+        "proposedDe": null,
+        "proposedEn": null
+      },
+      "roundB": {
+        "recordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-003",
+        "decision": "keep",
+        "proposedDe": null,
+        "proposedEn": null
+      },
+      "postReviewDecision": "keep-exact-current-description",
+      "stableCompetencyIdentity": "same existing competence, same ID and same meaning of valid prior result; no learner state writes or new implied results",
+      "semanticKind": "curricularAtomic",
+      "semanticKindReason": "Darstellung, Vergleich und begründete Alltagsordnung koordinieren dieselbe ganzzahlige Ordnung einschließlich null; Rechenoperationen und nichtganze rationale Zahlen bleiben getrennt. Der Orientierungsentzug ändert den gewöhnlichen Kompetenztyp nicht.",
+      "freshAandMRequiredForThisExactCandidate": false,
+      "historicalPrimaryCardReferences": 0,
+      "continuityReason": "Beide keep-Urteile erhalten Darstellung, Vergleich und begründete Ordnung einschließlich null. Ein Wechsel von waagerechter Zahlengerade zu geeigneter senkrechter Temperaturskala und veränderter Schrittweite ist vorhandener Repräsentationstransfer. Keine Addition/Subtraktion, kein nichtganzer Zahlenbereich und kein formaler Ordnungsaxiombeweis kommen hinzu."
+    }
+  ],
+  "nativeImpact": {
+    "harness": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/native-variant-impact.mts",
+      "sha256": "29ad4757872760bd421c71d5d82065ff15e1ea8390ebb0a0f83bfd2bfe0d67b9",
+      "bytes": 7434
+    },
+    "results": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/native-variant-impact.json",
+      "sha256": "5e74d762d7f08c87aa5a15070901c49af7bc2a8705ec930f21fecab0aab7f0eb",
+      "bytes": 21549
+    },
+    "stdout": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/native-variant-impact.txt",
+      "sha256": "e6bc0ba08d6ddb08147398b497c47859c8db551e482bb53c90be3e240996a05a",
+      "bytes": 1234
+    },
+    "method": "Public native Kind/P functions plus exact AST-selected private A/M fingerprint declarations from their current source files, transpiled unchanged and executed. All1252 goals compared. This is a fingerprint/format probe, not the full A/M/CQR producer.",
+    "counts": {
+      "requiresOnly": {
+        "Kind": 3,
+        "A": 0,
+        "M": 0,
+        "PGoal": 0,
+        "PReviewInput": 3
+      },
+      "requiresPlusEitherDiagramRevision": {
+        "Kind": 3,
+        "A": 1,
+        "M": 1,
+        "PGoal": 1,
+        "PReviewInput": 3
+      }
+    },
+    "otherGoalBindings": "No other goal-specific Kind/A/M/PGoal fingerprint changes in the1252-goal native comparison. Every selected goal has0 current primary-card review origins. Whole-source and bundle hashes remain separate changed bindings."
+  },
+  "freshSubstantiveDrafts": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-post-review/fresh-kind-atomicity-memory-drafts.json",
+    "sha256": "152bb5403140fe18adb8de1af8520cd1001b40c7f6d37aaa7657d6846fb95e9d",
+    "bytes": 4961
+  },
+  "qaTreatment": {
+    "Kind": "Three fresh curricularAtomic decisions remain required for the three requires changes; the diagram decision must bind the selected final DE/EN text. Native parse succeeds with these exact new draft rows and rejects the unchanged live ledger. Existing reviewMethod header is retained, with the existing reviewed-current-semantic-recheck-curricular-atomic decisionBasis; no new policy or generic normalization exemption.",
+    "A": "Exactly one fresh diagram atomicity judgment is needed if either description revision is chosen; the post-review independently confirms one coherent diagram interpretation competence. Inverse/integer A records remain byte-current because their native semantic inputs do not change. Preserve original record bytes in history; do not write only a replacement hash.",
+    "M": "Exactly one fresh diagram memory-usefulness judgment is needed if either revision is chosen. The independent current judgment remains no_memory_needed with explicit substantive reason. No cards/decks/SRS/mastery result changes arise;0 current cardreview origins reference any of the three goals. The other two M records remain byte-current.",
+    "P": "All three require fresh current-input content reviews. The two kept descriptions still have changed reviewInput fingerprints due requires; the diagram additionally changes its goal fingerprint. Preserve image policies, existing asset bytes and all28 unaffected retained rows. Choose and author actual current understanding/observable/transfer profiles before recording their new hashes; existing source records stay unchanged. The cold D recommendation create describes the deliberately P-blind packet, not a finding that the live repository lacked P records.",
+    "D": "Inverse and integer have two substantive keep records and may receive explicit native synthesis selecting one evidence variant and resolving their wording differences, provided the exact current per-goal contexts still match. The diagram has two revise records and remains open. Freeze the final description and produce a fresh current contextual input, then obtain two actual independent post-revision checks; preserve the present two revise records as history. A current_after_revision label does not make old records current.",
+    "V": "No asset/resourceLink/QA bytes change in either exact description variant; the existing native current-asset hash criterion is unchanged. The old diagram altText still describes the same competence. This is not a new V judgment or a claim that a technical asset predicate proves all didactic suitability.",
+    "wholeSourceAndBooks": "The existing b215 requires-only source and book bundle are historical if a new diagram text is chosen. Rebuild current book/page/context outputs and separately rebind any whole-source split-policy pin through its real output comparison. No historical source/bundle hash may be relabelled."
+  },
+  "nativeDescriptionBoundary": {
+    "sources": [
+      {
+        "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+        "sha256": "58471403dc8fbf6ca4e45e8f4e29af8f15a61f9e54ea529d2e3073fa4fc74c64",
+        "bytes": 49288
+      },
+      {
+        "path": "app/scripts/goalDescriptionRolloutResolutionSynthesis.ts",
+        "sha256": "1aea58a9bb8281c6de2de7b1e4e43a480e2e5eb98bbbebedfb9628a24e832ede",
+        "bytes": 6625
+      },
+      {
+        "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "sha256": "3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+        "bytes": 36070
+      }
+    ],
+    "anchors": [
+      "app/scripts/validateGoalDescriptionDualRoundResolution.ts:710",
+      "app/scripts/validateGoalDescriptionDualRoundResolution.ts:769",
+      "app/scripts/validateGoalDescriptionDualRoundResolution.ts:887",
+      "app/scripts/validateGoalDescriptionDualRoundResolution.ts:923",
+      "app/scripts/goalDescriptionRolloutResolutionSynthesis.ts:137"
+    ],
+    "conclusion": "A resolved record requires both current keep decisions, or the special exact one-keep/one-revise keep_current rejection contract. Two revise decisions do not qualify. Both round per-goal V3 context fingerprints must equal the current one. No native D validation of a future final diagram input is claimed in this post-review."
+  },
+  "normativeAnchors": [
+    {
+      "path": "docs/qa-ci/semantic-atomicity-review.md",
+      "section": "Fingerprints",
+      "rule": "Changed semantic fields require an actual re-review before fingerprint bookkeeping."
+    },
+    {
+      "path": "app/scripts/memoryCardReview.ts",
+      "lines": "182–199",
+      "rule": "Goal fingerprint includes both descriptions but not requires; card fingerprints separately bind actual card content."
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "lines": "74–116",
+      "rule": "Goal identity/meaning and full current reviewInput have separate bound fingerprints."
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "section": "fingerprintSemanticKindSourceGoal / parseSemanticKindLedger",
+      "rule": "Current Kind source fields must match the actual raw goal; proposed three exact rows are native-format-checked."
+    }
+  ],
+  "openBoundaries": [
+    "No complete current Diagram D resolution yet; fresh final-text checks remain necessary.",
+    "No fresh P candidate or native P producer result is approved by this post-review; ci_static authors the actual replacement profiles separately.",
+    "Existing broad exact source-mapping labels are not reapproved: literal source clauses and retained landscape texts remain distinguished, and no all-jurisdiction source equivalence is claimed.",
+    "The three graph normalizations do not fix the remaining914G17 and2G01a in the historical scoped proof. No M7 restoration or new general compatibility lane is claimed."
+  ]
+}

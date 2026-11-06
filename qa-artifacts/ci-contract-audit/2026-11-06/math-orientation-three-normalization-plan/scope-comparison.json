@@ -1,0 +1,963 @@
+{
+  "schemaVersion": 1,
+  "status": "private-five-context-native-comparison-complete",
+  "baselineSource": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "baselineViewCount": 160,
+  "baselineRouteCount": 2,
+  "comparisons": [
+    {
+      "scenario": "MATH-MIN-0027",
+      "nativeViewsCompared": 160,
+      "nativeRoutesCompared": 2,
+      "allReportDifferenceFields": [
+        "actualApplicability"
+      ],
+      "unexpectedBehaviorDifferenceFields": [],
+      "viewDifferences": [],
+      "applicabilityGoalDifferences": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "changedFields": [
+            "evidence"
+          ],
+          "compiledApplicabilityEqual": true,
+          "removedDirectOriginEvidence": [
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            }
+          ],
+          "addedEvidence": []
+        }
+      ],
+      "compiledApplicabilityAndNonEvidenceMetadataEqual": true,
+      "onlyReviewedDirectOriginApplicabilityEvidenceRemoved": true,
+      "nativeRouteResultsEqual": true,
+      "foreignApplicabilityReportsEqual": true,
+      "strictFindingsBefore": {
+        "G17": 917,
+        "G01a": 2
+      },
+      "strictFindingsAfter": {
+        "G17": 916,
+        "G01a": 2
+      },
+      "removedOnlyReviewedG17Findings": [
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        }
+      ],
+      "newStrictFindings": [],
+      "retainedFindingWitnessChanges": [],
+      "strictMetricsBefore": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2454,
+        "effectiveRequires": 2485,
+        "atomicGoals": 978,
+        "atomicRequires": 2479,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 917,
+        "findings": 919
+      },
+      "strictMetricsAfter": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2453,
+        "effectiveRequires": 2484,
+        "atomicGoals": 978,
+        "atomicRequires": 2478,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 916,
+        "findings": 918
+      },
+      "caseStatus": "no-measured-functional-delta-direct-origin-evidence-change-is-explicit-independent-review-and-real-evidence-renewal-still-required"
+    },
+    {
+      "scenario": "MATH-MIN-0745",
+      "nativeViewsCompared": 160,
+      "nativeRoutesCompared": 2,
+      "allReportDifferenceFields": [
+        "actualApplicability"
+      ],
+      "unexpectedBehaviorDifferenceFields": [],
+      "viewDifferences": [],
+      "applicabilityGoalDifferences": [
+        {
+          "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "changedFields": [
+            "evidence"
+          ],
+          "compiledApplicabilityEqual": true,
+          "removedDirectOriginEvidence": [
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BY",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            }
+          ],
+          "addedEvidence": []
+        }
+      ],
+      "compiledApplicabilityAndNonEvidenceMetadataEqual": true,
+      "onlyReviewedDirectOriginApplicabilityEvidenceRemoved": true,
+      "nativeRouteResultsEqual": true,
+      "foreignApplicabilityReportsEqual": true,
+      "strictFindingsBefore": {
+        "G17": 917,
+        "G01a": 2
+      },
+      "strictFindingsAfter": {
+        "G17": 916,
+        "G01a": 2
+      },
+      "removedOnlyReviewedG17Findings": [
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ]
+        }
+      ],
+      "newStrictFindings": [],
+      "retainedFindingWitnessChanges": [],
+      "strictMetricsBefore": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2454,
+        "effectiveRequires": 2485,
+        "atomicGoals": 978,
+        "atomicRequires": 2479,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 917,
+        "findings": 919
+      },
+      "strictMetricsAfter": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2453,
+        "effectiveRequires": 2484,
+        "atomicGoals": 978,
+        "atomicRequires": 2478,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 916,
+        "findings": 918
+      },
+      "caseStatus": "no-measured-functional-delta-direct-origin-evidence-change-is-explicit-independent-review-and-real-evidence-renewal-still-required"
+    },
+    {
+      "scenario": "MATH-MIN-0751",
+      "nativeViewsCompared": 160,
+      "nativeRoutesCompared": 2,
+      "allReportDifferenceFields": [
+        "actualApplicability"
+      ],
+      "unexpectedBehaviorDifferenceFields": [],
+      "viewDifferences": [],
+      "applicabilityGoalDifferences": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "changedFields": [
+            "evidence"
+          ],
+          "compiledApplicabilityEqual": true,
+          "removedDirectOriginEvidence": [
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BY",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            }
+          ],
+          "addedEvidence": []
+        }
+      ],
+      "compiledApplicabilityAndNonEvidenceMetadataEqual": true,
+      "onlyReviewedDirectOriginApplicabilityEvidenceRemoved": true,
+      "nativeRouteResultsEqual": true,
+      "foreignApplicabilityReportsEqual": true,
+      "strictFindingsBefore": {
+        "G17": 917,
+        "G01a": 2
+      },
+      "strictFindingsAfter": {
+        "G17": 916,
+        "G01a": 2
+      },
+      "removedOnlyReviewedG17Findings": [
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        }
+      ],
+      "newStrictFindings": [],
+      "retainedFindingWitnessChanges": [
+        {
+          "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+          "old": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "new": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        }
+      ],
+      "strictMetricsBefore": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2454,
+        "effectiveRequires": 2485,
+        "atomicGoals": 978,
+        "atomicRequires": 2479,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 917,
+        "findings": 919
+      },
+      "strictMetricsAfter": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2453,
+        "effectiveRequires": 2484,
+        "atomicGoals": 978,
+        "atomicRequires": 2478,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 916,
+        "findings": 918
+      },
+      "caseStatus": "no-measured-functional-delta-direct-origin-evidence-change-is-explicit-independent-review-and-real-evidence-renewal-still-required"
+    },
+    {
+      "scenario": "cumulative-three",
+      "nativeViewsCompared": 160,
+      "nativeRoutesCompared": 2,
+      "allReportDifferenceFields": [
+        "actualApplicability"
+      ],
+      "unexpectedBehaviorDifferenceFields": [],
+      "viewDifferences": [],
+      "applicabilityGoalDifferences": [
+        {
+          "goalId": "65365dce-f33f-49d8-9516-42f75883aa86",
+          "changedFields": [
+            "evidence"
+          ],
+          "compiledApplicabilityEqual": true,
+          "removedDirectOriginEvidence": [
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by 0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BY",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            }
+          ],
+          "addedEvidence": []
+        },
+        {
+          "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "changedFields": [
+            "evidence"
+          ],
+          "compiledApplicabilityEqual": true,
+          "removedDirectOriginEvidence": [
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BB",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BE",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BW",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-BY",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HB",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HE",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-HH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-MV",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NI",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-NW",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-RP",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SL",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-SN",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-ST",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            },
+            {
+              "dimension": "jurisdiction",
+              "value": "DE-TH",
+              "kind": "requires-closure",
+              "source": "required by ce198bc9-b014-52ba-814f-25cc3e020668"
+            }
+          ],
+          "addedEvidence": []
+        }
+      ],
+      "compiledApplicabilityAndNonEvidenceMetadataEqual": true,
+      "onlyReviewedDirectOriginApplicabilityEvidenceRemoved": true,
+      "nativeRouteResultsEqual": true,
+      "foreignApplicabilityReportsEqual": true,
+      "strictFindingsBefore": {
+        "G17": 917,
+        "G01a": 2
+      },
+      "strictFindingsAfter": {
+        "G17": 914,
+        "G01a": 2
+      },
+      "removedOnlyReviewedG17Findings": [
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        },
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ]
+        },
+        {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "message": "Requirement 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86 remains reachable after removing its authored origin.",
+          "witness": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        }
+      ],
+      "newStrictFindings": [],
+      "retainedFindingWitnessChanges": [
+        {
+          "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+          "old": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ],
+          "new": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4b67bed9-06da-40b2-a306-24e9e7dfd390",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+          ]
+        }
+      ],
+      "strictMetricsBefore": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2454,
+        "effectiveRequires": 2485,
+        "atomicGoals": 978,
+        "atomicRequires": 2479,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 917,
+        "findings": 919
+      },
+      "strictMetricsAfter": {
+        "catalogLandscapes": 21,
+        "catalogGoals": 6524,
+        "checkedGoals": 1253,
+        "checkedLandscapes": 2,
+        "containsEdges": 1388,
+        "authoredRequires": 2451,
+        "effectiveRequires": 2482,
+        "atomicGoals": 978,
+        "atomicRequires": 2476,
+        "localRedundancies": 0,
+        "transitiveRedundancies": 914,
+        "findings": 916
+      },
+      "caseStatus": "no-measured-functional-delta-direct-origin-evidence-change-is-explicit-independent-review-and-real-evidence-renewal-still-required"
+    }
+  ],
+  "allMeasuredScopeApplicabilityValuesRouteViewBehaviorEqual": true,
+  "sourceOrQaWrites": false,
+  "readinessClaimed": false
+}

@@ -1,0 +1,46 @@
+{
+  "scenario": "original",
+  "sourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+  "ledgerSha256": "1c2d1b73ad268357de76e29b4da679d7a05913150cd43323279f8ed7363652c1",
+  "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+  "descriptionMatches": true,
+  "nativeAssetApproval": true,
+  "ready": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+  ],
+  "issues": [],
+  "deferred": [],
+  "subprocesses": [
+    {
+      "command": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+      "args": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "/home/enpasos/projects/skillpilot/app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--check",
+        "--subject=mathematik"
+      ],
+      "status": 0,
+      "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+      "stderr": ""
+    }
+  ],
+  "nativeSource": {
+    "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+    "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+    "extractedDeclarationsSha256": "7dde4325e5bb8d389f106f3d9e3bbc8eed12471455f0ff6b08d1f8cae2ddc9db",
+    "names": [
+      "sha256",
+      "normalizeText",
+      "parseJson",
+      "loadJson",
+      "resolveRepoPath",
+      "duplicateValues",
+      "hasCompletedDeepUnderstandingVisualizationReview",
+      "addIssue",
+      "runTsxCheck",
+      "digestFile",
+      "loadVisualizationReadyGoals"
+    ]
+  },
+  "scope": "one-goal V consumer; actual whole-subject visualization-ledger freshness subprocess; no full Deep lane"
+}

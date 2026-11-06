@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-fresh-visualization-content-review-for-exact-diagram-description-B",
+  "reviewedAt": "2026-11-06T22:26:51Z",
+  "status": "fresh-ai-content-review-positive-native-single-goal-V-candidate-positive-unapplied",
+  "contextCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "boundGoal": {
+    "descriptionDe": "Die lernende Person kann einfache Diagramme deuten, indem sie Auffälligkeiten anhand der dargestellten Daten beschreibt, Werte vergleicht und erste Trends in Worte fasst.",
+    "descriptionEn": "The learner can interpret simple diagrams by describing noticeable features using the displayed data, comparing values, and expressing initial trends in words.",
+    "candidate": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/candidate-goal.json",
+      "sha256": "bdb62228bf6e1517eb7eb5f3ebdfcf7a7644e7408fbb769d36fe319954ae5c4e",
+      "bytes": 2178
+    },
+    "original": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/original-goal.json",
+      "sha256": "b5d5b4794ac6e32261c07a4bd8e8dacb7b1d78e6e8b455de004c8656dca0a9d4",
+      "bytes": 2143
+    },
+    "sourceOriginal": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+      "bytes": 3715042
+    },
+    "candidateSourceSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "candidateSourceOperations": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/candidate-source-operations.json",
+      "sha256": "f46f9a7ecadd76420e67febccb51b9862ac70f144de0ad483e2c81f8a5abdbf1",
+      "bytes": 2020
+    },
+    "requires": [
+      "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd"
+    ],
+    "resourceLinksUnchanged": true
+  },
+  "assets": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg",
+      "sha256": "8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f",
+      "bytes": 1888007
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg",
+      "sha256": "8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f",
+      "bytes": 1888007
+    }
+  ],
+  "visualInspection": {
+    "method": "Actual original-resolution local JPG opened with view_image and its full visible content independently inspected against exact B DE/EN meaning. No image generation or transformation. Both file byte hashes independently calculated.",
+    "originalPixels": [
+      2752,
+      1536
+    ],
+    "judgment": "appropriate instructional visualization for current B goal",
+    "observations": [
+      {
+        "criterion": "Data and axes",
+        "finding": "The visitor axis starts at zero with 20/40/60/80 marks; the day axis is ordered Mo/Di/Mi/Do/Fr. The plotted values are 40/55/50/70/65 and the displayed subtraction explicitly identifies the first two values."
+      },
+      {
+        "criterion": "Data-based feature",
+        "finding": "The speech bubble correctly identifies Thursday as the highest point. It points to the actual maximum, not an ungrounded visual guess."
+      },
+      {
+        "criterion": "Value comparison",
+        "finding": "Tuesday exceeds Monday by 15; 55−40=15 is numerically correct and the two arrows identify the intended observations."
+      },
+      {
+        "criterion": "Initial trend",
+        "finding": "Insgesamt eher steigend accurately summarizes the overall ordered-week pattern without claiming monotonic increase: Tuesday→Wednesday and Thursday→Friday decrease. No continuation, cause, regression or generalization is claimed."
+      },
+      {
+        "criterion": "Language/readability",
+        "finding": "Diagramme deuten, Besucher im Schwimmbad, day labels and German annotations are readable and correctly spelled, including Höchster. The points, axes and essential annotations remain distinguishable; no visible mathematical or textual artifact identified."
+      },
+      {
+        "criterion": "Fit and limits",
+        "finding": "The existing black-and-white didactic line chart gives a bounded worked example of all three B actions. It is answer-bearing teaching material, not an unanswered assessment or evidence of mastery. It does not claim coverage of every diagram form; the numerical difference is an example, not a new universal computation requirement."
+      }
+    ],
+    "conditions": [
+      "Fresh P tasks must require independent interpretation of a new unanswered diagram rather than copying these supplied interpretations.",
+      "Use trends only where an ordered variable justifies them; no general trend or causal obligation is added to all diagrams.",
+      "This AI review supplies no new human approval, release decision, license claim or empirical learning-effectiveness finding."
+    ]
+  },
+  "correctionOfPriorReview": {
+    "json": {
+      "path": "docs/dev/ci-graph-repairs/math-three-description-post-review-2026-11-06.json",
+      "sha256": "ca2453a5e8908939be4c2bda79c0f52cdbc0822eebf272529774d7c5880f659a",
+      "bytes": 18301
+    },
+    "markdown": {
+      "path": "docs/dev/ci-graph-repairs/math-three-description-post-review-2026-11-06.md",
+      "sha256": "7cf6b6bb4f5bee7d258cccb7b678b50dd8fa2901b5cd68ef3f444990424c0a54",
+      "bytes": 4134
+    },
+    "supersededClaim": "The prior V paragraph considered unchanged asset/current-asset approval and incorrectly said that the V bindings did not change.",
+    "correctedClaim": "The actual Deep V consumer also requires current title and description plus the native whole-subject ledger freshness check. B makes the old record description stale even though the image hash and asset approval remain unchanged. The old review remains byte-exact; its continuity, Kind/A/M/P and D-boundary findings are not replaced.",
+    "oldBytesUnchanged": true
+  },
+  "nativeContract": {
+    "sources": [
+      {
+        "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+        "sha256": "a13dff507b0df8e3d78aea16002300ed283ba943a5da184380cc53c818af8e80",
+        "bytes": 83166
+      },
+      {
+        "path": "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "sha256": "7dac3f8c013c05042cb01d922429e6c7db203f3a511b57bc06f154d0922afa48",
+        "bytes": 16538
+      },
+      {
+        "path": "app/scripts/goalVisualizationQaModel.ts",
+        "sha256": "5abba6281d499c321167414d8f222fab4ca0d9115ed2b4c653e7e72920cc714d",
+        "bytes": 2286
+      },
+      {
+        "path": "app/src/utils/goalVisualizationQaStatus.ts",
+        "sha256": "35ddf582c806a08a4ea46b0b6fbdfbbeb52b62db1268dbabce3ce66e081557ef",
+        "bytes": 966
+      },
+      {
+        "path": "app/scripts/goalBookModel.ts",
+        "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f",
+        "bytes": 115170
+      },
+      {
+        "path": "app/scripts/goalVisualizationQualityDeferral.ts",
+        "sha256": "10173223bbb8a0cb65907791f7ab2729c8e2269521fb9fcbc8cb42bf32466c25",
+        "bytes": 1735
+      },
+      {
+        "path": "scripts/goal_visualization_scope.mjs",
+        "sha256": "219db5db6361c50e9d84f4431c3e826616487210d878e179dd2c2bc257ca793d",
+        "bytes": 2798
+      }
+    ],
+    "anchors": [
+      {
+        "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+        "lines": [
+          1092,
+          1170
+        ],
+        "meaning": "Actual loadVisualizationReadyGoals: whole-subject generator --check, exact normalized title/description, primary resource, current AI asset approval and both actual asset hashes."
+      },
+      {
+        "path": "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "lines": [
+          234,
+          265,
+          268,
+          355,
+          357,
+          418
+        ],
+        "meaning": "Regenerates current metadata; normalizeExistingRecord preserves prior approval fields when only the exact image hash remains equal. Generator success alone is not a newly performed content review."
+      },
+      {
+        "path": "app/scripts/goalBookModel.ts",
+        "lines": [
+          911,
+          969
+        ],
+        "meaning": "Goal-book image metadata parser checks identity and current image/approval fields but not the goal description. Preparing a D input using that image does not prove Deep-V readiness."
+      },
+      {
+        "path": "AGENTS.md",
+        "lines": [
+          1004,
+          1009,
+          1018
+        ],
+        "meaning": "Keep suitable existing images; inspect actual image against current goal, preserve human/AI distinction; V is current-asset machine evidence, not human approval."
+      }
+    ]
+  },
+  "candidateRow": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/fresh-record-candidate.json",
+    "sha256": "55e07adfbcb949abe46a08309a24df13d6762b0efa06b3195413b3def59f29cc",
+    "originalLedger": {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "sha256": "1c2d1b73ad268357de76e29b4da679d7a05913150cd43323279f8ed7363652c1",
+      "bytes": 1985790
+    },
+    "originalRow": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/historical-record.json",
+      "sha256": "1924cb3e7ab8804d494792acf011337ce5b831fb57e0457cfc1b32740f32845f",
+      "bytes": 2275
+    },
+    "changedFields": [
+      "description",
+      "aiReviewedAt",
+      "aiReviewer",
+      "aiNotes"
+    ],
+    "aiApprovalBasis": "Actual fresh image/content inspection above, with exact B DE/EN wording and both exact asset hashes in new aiNotes. The yes/asset hash values happen to remain equal; timestamp/reviewer/notes document this new act.",
+    "historicalFields": "All existing human and legacy ChatGPT fields are retained unchanged as historical evidence only. This does not attribute review of B to those earlier reviewers.",
+    "wholeCandidateLedgerSha256": "58caf41458c7a1341ffa3d7a2638967b50e75da75a66829807b198dddaba6b23",
+    "activeApplication": false
+  },
+  "nativeMeasurements": {
+    "runner": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/run-native-v-probes.py",
+      "sha256": "e2fb7a4cf864572882cb8c120fb636f5adf31dcac023de9585dcc28c7a64b4d9",
+      "bytes": 3588
+    },
+    "probe": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/native-v-probe.mts",
+      "sha256": "b01653fcc1750ec24b5868a3157e1f70150993cc844ec24cf97e97d09f91a6d2",
+      "bytes": 4167
+    },
+    "method": "Read-only bwrap source/ledger overlays. Exact original TypeScript AST variable declarations are transpiled unmodified except removal of export keywords. The exact loadVisualizationReadyGoals function executes its real native whole-subject freshness subprocess and checks this one actual goal and the two original JPG files. No readiness result or child-process status is stubbed.",
+    "counterexampleMeaning": "The metadata-only variant preserves the historical AI date/reviewer/notes and only changes description. Its technical acceptance is deliberately measured, not accepted as a fresh content review or proposed for application. The separate fresh candidate is based on new actual inspection.",
+    "notClaimed": [
+      "A full Deep D/P/A/M/V lane run",
+      "A new independent or blind D round",
+      "Fresh P evidence",
+      "Current human approval of B",
+      "M7 or CI completion"
+    ],
+    "scenarios": [
+      {
+        "scenario": "original",
+        "nativeFreshnessExit": 0,
+        "descriptionMatches": true,
+        "nativeCurrentAssetApproval": true,
+        "ready": [
+          "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+        ],
+        "issues": [],
+        "evidence": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/original.stdout.json",
+          "sha256": "481bb7074f9a71afb49145030517c6803b2d3b1e47eb70d7a7931494307f0c58",
+          "bytes": 1579
+        }
+      },
+      {
+        "scenario": "b-with-historical-row",
+        "nativeFreshnessExit": 1,
+        "descriptionMatches": false,
+        "nativeCurrentAssetApproval": true,
+        "ready": [],
+        "issues": [
+          "mathematik: visualization-QA freshness check failed: Goal visualization QA ledger(s) are stale: | - curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json"
+        ],
+        "evidence": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/b-with-historical-row.stdout.json",
+          "sha256": "afccfb2e2f5786a7f87d601aaed39dfee066a7d8f7858c886fb496cca5737a2e",
+          "bytes": 1780
+        }
+      },
+      {
+        "scenario": "b-metadata-only-counterexample",
+        "nativeFreshnessExit": 0,
+        "descriptionMatches": true,
+        "nativeCurrentAssetApproval": true,
+        "ready": [
+          "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+        ],
+        "issues": [],
+        "evidence": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/b-metadata-only-counterexample.stdout.json",
+          "sha256": "f9ae0ab8d088e590870cad84f3e83c385ba058e89476fd595d5c1d92b77d4f38",
+          "bytes": 1601
+        }
+      },
+      {
+        "scenario": "b-fresh-ai-review-candidate",
+        "nativeFreshnessExit": 0,
+        "descriptionMatches": true,
+        "nativeCurrentAssetApproval": true,
+        "ready": [
+          "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+        ],
+        "issues": [],
+        "evidence": {
+          "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/b-fresh-ai-review-candidate.stdout.json",
+          "sha256": "49eb072a473d5866cadf1374c8adda157327d98dca93a0233600975af3839196",
+          "bytes": 1598
+        }
+      }
+    ],
+    "execution": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/execution.json",
+      "sha256": "5dd91fdf132853c8812c20c94b17fff668cc75bb3dc86e1145937e1ebbb68d86",
+      "bytes": 4337
+    },
+    "twoExecutionsExplained": "Initial direct overlays and a second replay using only durable guarded operations reconstructed byte-identical RAM candidates. Four scenarios each; no additional independent content reviews are implied.",
+    "gateGap": "Confirmed context-binding gap: metadata-only relabeling of the current description can retain the historical asset-only AI approval and make the current V consumer green. Root requested a separate repair plan; this review does not close that code gap."
+  },
+  "scope": {
+    "newGoalSemantics": false,
+    "newImage": false,
+    "sourceWrites": false,
+    "activeQaWrites": false,
+    "oldEvidenceWrites": false,
+    "learnerWrites": false,
+    "requiresReviewExpanded": false
+  },
+  "reproduction": {
+    "command": "python3 -B qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/run-native-v-probes.py",
+    "preconditions": "The exact original Math source and V ledger hashes must still be available at the native paths; the runner asserts them before IO. It reconstructs B and both candidate ledgers in private RAM from this packet, proving the expected whole-file hashes, then invokes four read-only native cases. This is not a full isolated repository/CI capture."
+  },
+  "packetInventory": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-b-visualization-post-review/inventory.json",
+    "sha256": "c15f939fa1acf54df18771bb5dee1ba2d4fd6093aa520a4c0847feba43c4b636",
+    "bytes": 6632
+  },
+  "finalGuardChecks": {
+    "nativeCodePinsUnchanged": true,
+    "liveSourceAndLedgerUnchanged": true,
+    "canonicalAndPublicImageBytesIdentical": true,
+    "originalPostReviewJsonAndMarkdownUnchanged": true
+  }
+}

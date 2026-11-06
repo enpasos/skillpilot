@@ -1,0 +1,113 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-three-current-two-keeps-diagram-deferred-20261106-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex post-review synthesis after the two sealed independent rounds; not a blind first pass",
+  "synthesizedAt": "2026-11-06T22:06:15.000Z",
+  "batch": {
+    "batchId": "mathematik-three-targets-20261106-v1",
+    "batchManifestDigest": "sha256:b4943ce879caf5d98a00e6802f28eabb9c60ad3142305bbdf01903cdcb21c2a8",
+    "configDigest": "sha256:24b447fd199378e6105b4b0c0e5c742bd5942b5b4ab2a509988d7c7ab6889f31",
+    "bundleFingerprint": "sha256:63b489ca9d03834238477035b1f0992552687973ec72ddb00af450a0d0fb2477",
+    "bookDigest": "sha256:fbeda3ca5d5cd2bef3a1483f4134b572535c86038346564f1236353eba91f408",
+    "reviewInputFingerprint": "sha256:dc22e5d626c531459851c87ffc7974eed9e92e2f670ec1e598ef6bb01984f44b",
+    "dualSummaryDigest": "sha256:c21f32cbd2ef561371870d771c82f6f1a5fe380dc6eacc41e249d507cb8ad6e2",
+    "canonicalLandscapeDigest": "sha256:967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-three-targets-20261106-v1-a",
+      "campaignDigest": "sha256:316988c56fb463b9ab1bb65ee3ee2263c8aa5daba90658d9262b55da4ecce1f3",
+      "roundId": "mathematik-three-targets-20261106-v1-first-pass-a",
+      "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-a",
+      "reviewInputFingerprint": "sha256:dc22e5d626c531459851c87ffc7974eed9e92e2f670ec1e598ef6bb01984f44b",
+      "batchId": "mathematik-three-targets-20261106-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3679da05ca6a2a20b856c3b84bc6fedeacc810f53f37604eb96a0c85dd2c7d48",
+      "runId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+      "runManifestDigest": "sha256:d23198ebc7e3be3c7aee8a247ba439cb2bc2a3351db095b335c0f798aac25c42",
+      "resultsDigest": "sha256:de9520b16f05596f0332586c470fe6fc8fd4f8a3822f08b96826a6237e8bc800"
+    },
+    "second": {
+      "campaignId": "mathematik-three-targets-20261106-v1-b",
+      "campaignDigest": "sha256:9a331a7e566f71ae851027300eee25d4d7d359ad7940a443ec7bb4fa7fb81fbd",
+      "roundId": "mathematik-three-targets-20261106-v1-first-pass-b",
+      "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-b",
+      "reviewInputFingerprint": "sha256:dc22e5d626c531459851c87ffc7974eed9e92e2f670ec1e598ef6bb01984f44b",
+      "batchId": "mathematik-three-targets-20261106-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:92f02c5a42d110fcda55c14dca857f379e044a127b168505e2066ae7da073e1a",
+      "runId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z",
+      "runManifestDigest": "sha256:e4aa4535fa8a06154e63ee9ac6018b4ac4baf50d07923ca1aa7c01e7d56bbc63",
+      "resultsDigest": "sha256:fb50ceb9962f42cf21b7bc10706b2d37ff12699bba33a69f5f78277d09951ce2"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-three-current-two-keeps-diagram-deferred-20261106-v1-decision-001",
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+      "pageFingerprint": "sha256:eda0dc820c83a254bd59fe1c6bfb309d394f62cdabc71459a72e546a26469b1e",
+      "goalReviewContextFingerprint": "sha256:621aa9b9a89799465861e614d5264e20efee3fae7e61b1d4a15df1f47b91756d",
+      "finalText": {
+        "titleDe": "Einfache inverse Matrizen bestimmen",
+        "titleEn": "Determine simple inverse matrices",
+        "descriptionDe": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+        "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-2",
+          "recordDigest": "sha256:5fbadf84d9648f3e87c904f330d36311cd99975a44ae7325a4d6c6f96019c44e"
+        },
+        "second": {
+          "recordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-002",
+          "recordDigest": "sha256:6c6b6d78cfd35b07530b89965189d3f104c600e665a6c5d52cae8d098c0a6d61"
+        }
+      },
+      "rationaleDe": "Beide unabhängig abgeschlossenen aktuellen Erstpässe behalten den vorhandenen bilingualen Wortlaut bei. Ich wähle die Evidenzfassung der zweiten Runde, weil sie die vollständige Zeilen-Spalten-Produktprüfung und die Bedeutung der Einheitsmatrix ausdrücklich verbindet. Das ist keine zusätzliche Vorgabe eines Inversionsverfahrens, kein allgemeiner Existenzbeweis und kein Vorziehen weiterer Übergangsprozess- oder Modellierungsziele. Die alternative Evidenzfassung der ersten Runde bleibt als gebundene abweichende Formulierung erhalten.",
+      "rationaleEn": "Both completed independent current first passes retain the existing bilingual wording. I select the second round evidence formulation because it explicitly connects the full row-column product check with the meaning of the identity matrix. This prescribes no additional inversion method, general existence proof, or later transition-process or modelling goal. The first round alternative evidence wording remains bound as a differing formulation."
+    },
+    {
+      "decisionId": "math-three-current-two-keeps-diagram-deferred-20261106-v1-decision-002",
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a38b1c51edc464914d329a44c15c4c43fdfe78fd6465db7105b21aa5ecbbafdb",
+      "pageFingerprint": "sha256:4a3cd10725c5d392b26375593342ab32fbf44a53b4d77c5a29be6925b3a63648",
+      "goalReviewContextFingerprint": "sha256:774886abef930a6c7aa33c62a5bb7f713b08baa1506bfeaed197eb3701e84bc5",
+      "finalText": {
+        "titleDe": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+        "titleEn": "Order integers and represent them on the number line",
+        "descriptionDe": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+        "descriptionEn": "The learner can represent integers, including zero, on the number line, compare them, and order them with justification in everyday contexts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-3",
+          "recordDigest": "sha256:fbac3227b7f5e441e399a81f5647687e3e0d2f309bbf2f55dd01d15bc6bb8dd3"
+        },
+        "second": {
+          "recordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-003",
+          "recordDigest": "sha256:56d72337d03e65bb439956390f78ba37f9c5ecf9e9d4674e84069f5e4af49d62"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Erstpässe behalten den klaren aktuellen Wortlaut. Ich wähle die Evidenzfassung der ersten Runde mit der eigenständigen Eintragung, Positionsbegründung und einer senkrechten Zweierskala als verändertem Transfer. Sie konkretisiert dieselbe ganzzahlige Ordnung einschließlich null; Rechenoperationen, nichtganze rationale Zahlen und allgemeine Ordnungsbeweise werden nicht ergänzt. Die zweite, ebenfalls passende Evidenzformulierung bleibt gebunden, ohne dass ein zusätzlicher Wechsel mehrerer Darstellungen zur neuen allgemeinen Pflicht wird.",
+      "rationaleEn": "Both independent first passes retain the clear current wording. I select the first round evidence formulation with independent plotting, positional justification, and a vertical scale with steps of two as changed transfer. This specifies the same integer order including zero, without adding arithmetic operations, noninteger rationals, or general order proofs. The second suitable formulation remains bound without making an additional switch between multiple representations a new universal obligation."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "rationaleDe": "Beide tatsächlichen Erstpässe verlangen eine lokale Revision und schlagen unterschiedliche Ersatztexte vor. Die zweite Variante ist fachlich als Präzisierung desselben datenbezogenen Diagrammdeutens ausgewählt, aber die vorhandenen revise-Records werden nicht zu keep oder zu einer aktuellen finalen Textfreigabe umetikettiert. Für den exakten neuen Wortlaut ist ein eigenständiger neutraler Input mit zwei neuen unabhängigen Prüfungen vorbereitet; bis zu deren tatsächlichem Abschluss bleibt dieser Fall ausdrücklich offen.",
+      "rationaleEn": "Both actual first passes request a local revision and propose different replacement texts. The second variant is selected as a clarification of the same data-grounded diagram interpretation, but the existing revise records are not relabelled as keep or as approval of the final current text. A separate neutral input with two new independent checks has been prepared for the exact new wording; this case remains explicitly open until those checks actually complete."
+    }
+  ],
+  "manifestFingerprint": "sha256:f93c0be366c8e9afafecf98a039dbf007fec0b3f5d3a29d6164c578209a01ec1"
+}
