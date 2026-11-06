@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "controls": [
+    {
+      "case": "unreviewed-canonical-text",
+      "exitCode": 1,
+      "expectedError": "Invalid reviewed split-layout plan",
+      "seconds": 0.3930773770007363,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/unreviewed-canonical-text.log",
+      "logSha256": "e0c0e24b8233ee5d34bc5c24b155114ee7c6a4461a83c6182f75ca29ae4f76d6"
+    },
+    {
+      "case": "changed-adjudication-byte",
+      "exitCode": 1,
+      "expectedError": "Invalid additive split-layout adjudication",
+      "seconds": 0.3997717879974516,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/changed-adjudication-byte.log",
+      "logSha256": "aadbee3425df31ded165f446f404b80427b1cc6ee38847e8589cb62cdf25c344"
+    },
+    {
+      "case": "changed-source-scope-byte",
+      "exitCode": 1,
+      "expectedError": "Stale source-scope decision",
+      "seconds": 0.3976751289992535,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/changed-source-scope-byte.log",
+      "logSha256": "7c89702a257601c99607890db4a5c3a77022082e202b458e133ac5866d9ffdbe"
+    },
+    {
+      "case": "stale-generated-output",
+      "exitCode": 1,
+      "expectedError": "1 generated Mathematik G8/G9 composition view file(s) are not up to date",
+      "seconds": 4.857190998998703,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/stale-generated-output.log",
+      "logSha256": "017ac83aa54c0cf2569683a1b24f137324365a86ca72bcb30b65914cd6893d2d"
+    },
+    {
+      "case": "additional-template-policy-edit-rejected-by-single-field-application-guard",
+      "guardAccepts": false
+    }
+  ],
+  "unmodifiedGeneratorSha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+  "liveSourcePolicyViewsUnchanged": true
+}

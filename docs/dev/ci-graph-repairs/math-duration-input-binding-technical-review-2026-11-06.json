@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "status": "technical-meaning-and-reproducibility-PASS-live-binding-unapplied",
+  "generatedAt": "2026-11-06T20:44:34.742968+00:00",
+  "classification": "AI technical review; existing scientific/didactic adjudications are retained, not reissued",
+  "oldCommit": "5cb5e567d08bc9f640942529d9099cbce03a4747",
+  "oldCanonicalSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+  "oldKindSha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019",
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "currentKind": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b"
+  },
+  "unchangedGenerator": {
+    "path": "app/scripts/generateMathDurationCompositionViews.ts",
+    "sha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d"
+  },
+  "initialActualReadonlyCli": {
+    "command": "npm run check:math-duration-composition-views",
+    "workingDirectory": "app",
+    "exitCode": 1,
+    "guardLine": 393,
+    "message": "Invalid reviewed split-layout plan"
+  },
+  "scientificBoundary": {
+    "canonicalChangesOnlyFourAlreadyApprovedMemoryRequiresArrays": true,
+    "kindChangesOnlyFourAlreadyReviewedSourceFingerprints": true,
+    "allAuthoritativeKindLabelsAndStatusesUnchanged": true,
+    "allOtherCanonicalDataIdsContainsPlacementsAndOrderUnchanged": true,
+    "existingScientificEvidence": [
+      {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.json",
+        "sha256": "fa673f9ccb733e182e853ea5bed28e8c8891e20120650643bbc80dee3e6170c2"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/math-memory-semantic-kind-independent-review-2026-11-06.json",
+        "sha256": "d0e611091fe5adc48b5d491d959a192627713e74a7209f52204e295e3f6d229c"
+      }
+    ]
+  },
+  "technicalConclusions": {
+    "generatorAndPolicyEqualOld5cbBytes": true,
+    "sek1Templates": 6,
+    "crossStageTemplates": 12,
+    "splitPlacements": 83,
+    "all24GeneratedAndBaseViewInputsEqualOld5cbBytes": true,
+    "all18OldNewAndLiveOutputBytesEqual": true,
+    "all18CompiledTreesFindingsRoleSetsAndFilteredTargetsEqual": true,
+    "nativeUiPayloadRequiresAndEffectiveRequiresRetainAuthorizedFourCardChanges": true,
+    "allOtherNativeUiLayoutAndPayloadFieldsEqual": true,
+    "all7AdditiveRawAndContentDigestsPass": true,
+    "all5SourceScopeDigestsPass": true,
+    "parentReceiptRawAndDeclaredDigestPass": true,
+    "noTemplatePlacementRoleScopeDecisionChanged": true,
+    "historicalTemplateDigestMismatchesAlreadyPresentBeforeRepair": 18,
+    "allObservedNonOverlayDataInputsEqualOld5cbBytes": true,
+    "observedLayoutDataPaths": 44
+  },
+  "positiveNativeCommands": [
+    {
+      "case": "old-generate",
+      "exitCode": 0,
+      "seconds": 6.552794040002482,
+      "sourceSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+      "kindLedgerSha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019",
+      "policySha256": "ebc87e844ed7354b7a72d8d4419a62b516d05fa28819dd823e04d13eb273000b",
+      "generatorSha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/old-generate.log",
+      "logSha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125",
+      "argv": [
+        "bwrap",
+        "--die-with-parent",
+        "--ro-bind",
+        "/",
+        "/",
+        "--tmpfs",
+        "/tmp",
+        "--tmpfs",
+        "/mnt",
+        "--proc",
+        "/proc",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-mathematik.semantic-kinds.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-math-duration-split-spanning-tree-policy.json",
+        "/home/enpasos/projects/skillpilot/app/scripts/config/math-duration-split-spanning-tree-policy.json",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-views",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/composition-views/mathematik",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/logs",
+        "/mnt/evidence",
+        "--setenv",
+        "npm_config_cache",
+        "/tmp/npm-cache",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot/app",
+        "--",
+        "strace",
+        "-f",
+        "-qq",
+        "-s",
+        "4096",
+        "-e",
+        "trace=openat",
+        "-o",
+        "/mnt/evidence/old-generate.openat.trace",
+        "./node_modules/.bin/tsx",
+        "scripts/generateMathDurationCompositionViews.ts",
+        "--write"
+      ]
+    },
+    {
+      "case": "old-check",
+      "exitCode": 0,
+      "seconds": 7.349066873000993,
+      "sourceSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+      "kindLedgerSha256": "ee7f3ea95bdea5ef1bb051b50c97aeba9d30020c9d8ed3e9b67b3d300ef8a019",
+      "policySha256": "ebc87e844ed7354b7a72d8d4419a62b516d05fa28819dd823e04d13eb273000b",
+      "generatorSha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/old-check.log",
+      "logSha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125",
+      "argv": [
+        "bwrap",
+        "--die-with-parent",
+        "--ro-bind",
+        "/",
+        "/",
+        "--tmpfs",
+        "/tmp",
+        "--tmpfs",
+        "/mnt",
+        "--proc",
+        "/proc",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-mathematik.semantic-kinds.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-math-duration-split-spanning-tree-policy.json",
+        "/home/enpasos/projects/skillpilot/app/scripts/config/math-duration-split-spanning-tree-policy.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/old-views",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/composition-views/mathematik",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/logs",
+        "/mnt/evidence",
+        "--setenv",
+        "npm_config_cache",
+        "/tmp/npm-cache",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot/app",
+        "--",
+        "strace",
+        "-f",
+        "-qq",
+        "-s",
+        "4096",
+        "-e",
+        "trace=openat",
+        "-o",
+        "/mnt/evidence/old-check.openat.trace",
+        "./node_modules/.bin/tsx",
+        "scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ]
+    },
+    {
+      "case": "candidate-generate",
+      "exitCode": 0,
+      "seconds": 7.703588292002678,
+      "sourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+      "kindLedgerSha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b",
+      "policySha256": "4415411350eabee64077f9c4769603814a428b9d3f3421cfaa7ceda1339f3227",
+      "generatorSha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/candidate-generate.log",
+      "logSha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125",
+      "argv": [
+        "bwrap",
+        "--die-with-parent",
+        "--ro-bind",
+        "/",
+        "/",
+        "--tmpfs",
+        "/tmp",
+        "--tmpfs",
+        "/mnt",
+        "--proc",
+        "/proc",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/candidate-policy.json",
+        "/home/enpasos/projects/skillpilot/app/scripts/config/math-duration-split-spanning-tree-policy.json",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/candidate-views",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/composition-views/mathematik",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/logs",
+        "/mnt/evidence",
+        "--setenv",
+        "npm_config_cache",
+        "/tmp/npm-cache",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot/app",
+        "--",
+        "strace",
+        "-f",
+        "-qq",
+        "-s",
+        "4096",
+        "-e",
+        "trace=openat",
+        "-o",
+        "/mnt/evidence/candidate-generate.openat.trace",
+        "./node_modules/.bin/tsx",
+        "scripts/generateMathDurationCompositionViews.ts",
+        "--write"
+      ]
+    },
+    {
+      "case": "candidate-check",
+      "exitCode": 0,
+      "seconds": 8.792218343998684,
+      "sourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+      "kindLedgerSha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b",
+      "policySha256": "4415411350eabee64077f9c4769603814a428b9d3f3421cfaa7ceda1339f3227",
+      "generatorSha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/candidate-check.log",
+      "logSha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125",
+      "argv": [
+        "bwrap",
+        "--die-with-parent",
+        "--ro-bind",
+        "/",
+        "/",
+        "--tmpfs",
+        "/tmp",
+        "--tmpfs",
+        "/mnt",
+        "--proc",
+        "/proc",
+        "--dev-bind",
+        "/dev",
+        "/dev",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/candidate-policy.json",
+        "/home/enpasos/projects/skillpilot/app/scripts/config/math-duration-split-spanning-tree-policy.json",
+        "--ro-bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/candidate-views",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/composition-views/mathematik",
+        "--bind",
+        "/home/enpasos/projects/skillpilot/tmp/math-duration-split-binding-review-2026-11-06/logs",
+        "/mnt/evidence",
+        "--setenv",
+        "npm_config_cache",
+        "/tmp/npm-cache",
+        "--chdir",
+        "/home/enpasos/projects/skillpilot/app",
+        "--",
+        "strace",
+        "-f",
+        "-qq",
+        "-s",
+        "4096",
+        "-e",
+        "trace=openat",
+        "-o",
+        "/mnt/evidence/candidate-check.openat.trace",
+        "./node_modules/.bin/tsx",
+        "scripts/generateMathDurationCompositionViews.ts",
+        "--check"
+      ]
+    }
+  ],
+  "negativeControls": [
+    {
+      "case": "unreviewed-canonical-text",
+      "exitCode": 1,
+      "expectedError": "Invalid reviewed split-layout plan",
+      "seconds": 0.3930773770007363,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/unreviewed-canonical-text.log",
+      "logSha256": "e0c0e24b8233ee5d34bc5c24b155114ee7c6a4461a83c6182f75ca29ae4f76d6"
+    },
+    {
+      "case": "changed-adjudication-byte",
+      "exitCode": 1,
+      "expectedError": "Invalid additive split-layout adjudication",
+      "seconds": 0.3997717879974516,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/changed-adjudication-byte.log",
+      "logSha256": "aadbee3425df31ded165f446f404b80427b1cc6ee38847e8589cb62cdf25c344"
+    },
+    {
+      "case": "changed-source-scope-byte",
+      "exitCode": 1,
+      "expectedError": "Stale source-scope decision",
+      "seconds": 0.3976751289992535,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/changed-source-scope-byte.log",
+      "logSha256": "7c89702a257601c99607890db4a5c3a77022082e202b458e133ac5866d9ffdbe"
+    },
+    {
+      "case": "stale-generated-output",
+      "exitCode": 1,
+      "expectedError": "1 generated Mathematik G8/G9 composition view file(s) are not up to date",
+      "seconds": 4.857190998998703,
+      "log": "tmp/math-duration-split-binding-review-2026-11-06/logs/stale-generated-output.log",
+      "logSha256": "017ac83aa54c0cf2569683a1b24f137324365a86ca72bcb30b65914cd6893d2d"
+    },
+    {
+      "case": "additional-template-policy-edit-rejected-by-single-field-application-guard",
+      "guardAccepts": false
+    }
+  ],
+  "guardedPlan": {
+    "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-guarded-plan-2026-11-06.json",
+    "sha256": "72431234ec76d7559d146adc1867eb14d583e9698c2fdf1584ae1248345fcda0"
+  },
+  "artifacts": [
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/compare_native_layout.mts",
+      "bytes": 4940,
+      "sha256": "32cfd52b89dc634f8f09158ae3cc1a27d51abafa1f666d578855c37af5ff9233"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/execution.json",
+      "bytes": 10314,
+      "sha256": "5cf566800cc184b3cfb37b9a8ab6adb922ea4f7f286eb8abd145147e790b8b86"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/generator-replay.log",
+      "bytes": 7092,
+      "sha256": "8dfb6212cda165a89dcf8d222fd450265c4a3572dad640b93384088160d34388"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/initial-live-readonly-guard-red.log",
+      "bytes": 1008,
+      "sha256": "ca82ed49b2e8d560ca983a2009b8e5d6352f4c9896309ec9863db82919c1c8d5"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/candidate-check.log",
+      "bytes": 1701,
+      "sha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/candidate-generate.log",
+      "bytes": 1701,
+      "sha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/changed-adjudication-byte.log",
+      "bytes": 717,
+      "sha256": "aadbee3425df31ded165f446f404b80427b1cc6ee38847e8589cb62cdf25c344"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/changed-source-scope-byte.log",
+      "bytes": 706,
+      "sha256": "7c89702a257601c99607890db4a5c3a77022082e202b458e133ac5866d9ffdbe"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/old-check.log",
+      "bytes": 1701,
+      "sha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/old-generate.log",
+      "bytes": 1701,
+      "sha256": "657ead6de9b900c701ba85b7eabea520ad9d0246a1576f086322a9ff4495c125"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/stale-generated-output.log",
+      "bytes": 1834,
+      "sha256": "017ac83aa54c0cf2569683a1b24f137324365a86ca72bcb30b65914cd6893d2d"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/logs/unreviewed-canonical-text.log",
+      "bytes": 679,
+      "sha256": "e0c0e24b8233ee5d34bc5c24b155114ee7c6a4461a83c6182f75ca29ae4f76d6"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/native-layout-comparison.json",
+      "bytes": 582218,
+      "sha256": "26ae22a137b303c13577df93ebafdc266d7769259ab6485f0609f90242f9405e"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/native-layout-comparison.log",
+      "bytes": 498,
+      "sha256": "7173b04aa12c383e67325e381b4a579b46b8029da6916924824380a1de27324f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/negative-controls.json",
+      "bytes": 1797,
+      "sha256": "ba53012480fb0eb0f1a24ca0de691e4b6d4c7c9ba318471ead2dc1079078e90f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/negative-controls.log",
+      "bytes": 157,
+      "sha256": "95af50fc838eb78cde3d88fe24d0721d8723731380e1c1732a442ba75a7ecbb5"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/output-comparison.json",
+      "bytes": 8016,
+      "sha256": "f12a0530a9fc3e372ae01f10a22c6abaef726d710b7da6f5e3ed17f2ab584869"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/review_static_inputs.py",
+      "bytes": 5571,
+      "sha256": "582195f23400a590e5fb88c54dfb17236e829ea0a5f113de926d16714eb8dab2"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/run_isolated_generator.py",
+      "bytes": 4734,
+      "sha256": "dfa126055dbadd98c1bd40d2ed08a39fcd49fc927f80bffb9f8c40074462d05f"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/run_negative_controls.py",
+      "bytes": 3342,
+      "sha256": "3d6a116fb48b812f8ad577e6434f49963616109795eb9dc9def8a5cd8d900d5c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/static-input-meaning-review.json",
+      "bytes": 20747,
+      "sha256": "d18f7adb5d8eec2ffcbbae17e343c0eb5cda3c90e081509bca53518da70c3957"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/math-duration-input-binding-technical-review-2026-11-06/observed-generator-data-inputs.json",
+      "bytes": 17292,
+      "sha256": "61ddae84ab8a68284a95afd6ac8c6e9581d1c56671bd53fa906bfdce4c24e9db"
+    }
+  ],
+  "liveWritesPerformed": false,
+  "normalCqrProducerRun": false,
+  "sourceAReadinessOrActivationClaim": false
+}

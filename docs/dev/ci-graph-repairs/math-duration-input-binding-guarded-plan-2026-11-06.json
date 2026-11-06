@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "status": "guarded-technical-input-binding-proposal-NOT-applied",
+  "target": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+  "beforeFileSha256": "ebc87e844ed7354b7a72d8d4419a62b516d05fa28819dd823e04d13eb273000b",
+  "afterFileSha256": "4415411350eabee64077f9c4769603814a428b9d3f3421cfaa7ceda1339f3227",
+  "allowedJsonOperations": [
+    {
+      "op": "test",
+      "path": "/inputs/canonical/sha256",
+      "value": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    {
+      "op": "replace",
+      "path": "/inputs/canonical/sha256",
+      "value": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    }
+  ],
+  "requiredGuards": {
+    "canonical": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    "semanticKindLedger": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b"
+    },
+    "generator": {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d"
+    },
+    "scientificApplicationAndReviewUnchanged": [
+      {
+        "path": "docs/dev/ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.json",
+        "sha256": "fa673f9ccb733e182e853ea5bed28e8c8891e20120650643bbc80dee3e6170c2"
+      },
+      {
+        "path": "docs/dev/ci-graph-repairs/math-memory-semantic-kind-independent-review-2026-11-06.json",
+        "sha256": "d0e611091fe5adc48b5d491d959a192627713e74a7209f52204e295e3f6d229c"
+      }
+    ],
+    "allOtherPolicyFieldsExactlyUnchanged": true,
+    "all18OutputRawHashesEqualRecordedValues": true,
+    "rootSafepointRequiredBeforeLiveWrite": true
+  },
+  "requiredGeneratedFileWrites": [],
+  "unchanged18Outputs": [
+    {
+      "fileName": "de-he-seki-g8.view.json",
+      "oldGeneratedSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "candidateGeneratedSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "liveSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 46326
+    },
+    {
+      "fileName": "de-he-seki-g9.view.json",
+      "oldGeneratedSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "candidateGeneratedSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "liveSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 51740
+    },
+    {
+      "fileName": "de-he-gk-g8.view.json",
+      "oldGeneratedSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "candidateGeneratedSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "liveSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 70745
+    },
+    {
+      "fileName": "de-he-gk-g9.view.json",
+      "oldGeneratedSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "candidateGeneratedSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "liveSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 74096
+    },
+    {
+      "fileName": "de-he-lk-g8.view.json",
+      "oldGeneratedSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "candidateGeneratedSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "liveSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 66234
+    },
+    {
+      "fileName": "de-he-lk-g9.view.json",
+      "oldGeneratedSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "candidateGeneratedSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "liveSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 69585
+    },
+    {
+      "fileName": "de-rp-seki-g8.view.json",
+      "oldGeneratedSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "candidateGeneratedSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "liveSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 40366
+    },
+    {
+      "fileName": "de-rp-seki-g9.view.json",
+      "oldGeneratedSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "candidateGeneratedSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "liveSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 42823
+    },
+    {
+      "fileName": "de-rp-gk-g8.view.json",
+      "oldGeneratedSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "candidateGeneratedSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "liveSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 64201
+    },
+    {
+      "fileName": "de-rp-gk-g9.view.json",
+      "oldGeneratedSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "candidateGeneratedSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "liveSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 66787
+    },
+    {
+      "fileName": "de-rp-lk-g8.view.json",
+      "oldGeneratedSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "candidateGeneratedSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "liveSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 63728
+    },
+    {
+      "fileName": "de-rp-lk-g9.view.json",
+      "oldGeneratedSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "candidateGeneratedSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "liveSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 66314
+    },
+    {
+      "fileName": "de-sh-seki-g8.view.json",
+      "oldGeneratedSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "candidateGeneratedSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "liveSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 41262
+    },
+    {
+      "fileName": "de-sh-seki-g9.view.json",
+      "oldGeneratedSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "candidateGeneratedSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "liveSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 42244
+    },
+    {
+      "fileName": "de-sh-gk-g8.view.json",
+      "oldGeneratedSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "candidateGeneratedSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "liveSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 70335
+    },
+    {
+      "fileName": "de-sh-gk-g9.view.json",
+      "oldGeneratedSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "candidateGeneratedSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "liveSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 71258
+    },
+    {
+      "fileName": "de-sh-lk-g8.view.json",
+      "oldGeneratedSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "candidateGeneratedSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "liveSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 72041
+    },
+    {
+      "fileName": "de-sh-lk-g9.view.json",
+      "oldGeneratedSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "candidateGeneratedSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "liveSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "generatedByteEquality": true,
+      "candidateEqualsLive": true,
+      "bytes": 72646
+    }
+  ],
+  "applicationMethod": "Only after Root releases the write phase: verify all guards, parse actual before bytes, change the one JSON field, serialize with the existing two-space/newline format, require exact afterFileSha256; private inode/fsync/0644/os.replace; run unchanged actual --check, no source/kind/view/scientific-review writes.",
+  "existingHistoricalTemplateDigestMetadata": "All18 historical per-template digest fields already differ from live generated output bytes on old5cb. Their values and encoded descriptors remain unchanged; no historical field is reinterpreted, rebound or refreshed. Seven additive and five source-scope active bindings plus the parent receipt are independently verified.",
+  "sourceA5c9Boundary": "Its old policy binding remains historical and failing under current Math. This technical proposal does not grant Source-A readiness or activation."
+}
