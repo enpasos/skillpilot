@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "fixture-only-repair-locally-verified-fresh-remote-ci-pending",
+  "remote": {
+    "runUrl": "https://github.com/enpasos/skillpilot/actions/runs/42205723370",
+    "runId": 42205723370,
+    "workflow": "Assessment completion",
+    "branchHead": "be07d93e9357a8405a892b354c1eefaa3442568e",
+    "actualMergeCheckout": "f12533a3ef916d99abcb31236cbeac51a271cd47",
+    "failedJob": {
+      "id": 127851729626,
+      "name": "Completion core, HTTP browser, sessions and PostgreSQL snapshots",
+      "failedSteps": [
+        13,
+        14
+      ]
+    },
+    "otherJobs": {
+      "Completion profiles, shared fixtures and Cockpit": "success",
+      "Optional completion performance measurements": "skipped"
+    },
+    "artifact": {
+      "id": 13496469084,
+      "bytes": 1225451,
+      "sha256": "36d2fd67f4df898cd2df933050cb47dff026f51012f5642059502f8bbdc96b3d"
+    },
+    "allXmlSuites": 37,
+    "allXmlTotals": {
+      "tests": 347,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "affectedClass": "com.skillpilot.backend.service.AssessmentCompletionIntegrationTest",
+    "affectedClassXmlTotals": {
+      "tests": 55,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0
+    },
+    "actualXmlSha256": "46d7414f3411e6f86c80d673935c0eac5d0be134ca336a26bc0584a3d97fea58",
+    "failedMethods": [
+      "aRequiredAssessmentDoesNotNeedDirectRequiresToBeOfferedAndStarted",
+      "emptyAllowlistDoesNotReadTheCanonicalGraphOrPublishAnEmptyPicker"
+    ],
+    "exception": "IllegalArgumentException: Canonical graph is empty or exceeds the supported generation budget",
+    "path": [
+      "LearnerService.getLearnerState",
+      "LearnerService.getRichFrontier",
+      "LearnerService.frontierPrerequisites",
+      "LearnerService.prerequisiteGraph",
+      "CompletionApplicationService.automaticCanonicalGraph"
+    ],
+    "cause": "Both tests installed resolver mocks that stubbed only historical load(ROOT). The ordinary frontier now correctly invokes loadForTargets(ROOT, full Level-2 atomic targets, structural support); an unstubbed Mockito method returned an empty map and the production guard rejected it.",
+    "previousLocal181Boundary": "The two methods and their 55-test class were outside the earlier explicitly bounded 181-test selection. That earlier result did not claim this class or all backend tests."
+  },
+  "repair": {
+    "path": "backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java",
+    "sha256": "cc4431812fb27988cb10fd28197306471e398069ec90b65c963e9be0cdd3430a",
+    "productionExistingRuntimeFilesChanged": false,
+    "changes": [
+      "Empty historical completion allowlist uses a spy over the real resolver. It forbids historical completion load calls while requiring loadForTargets with the full real Level-2 set despite the single-goal focus.",
+      "The empty-allowlist read asserts unchanged coach revision, Personal Curriculum, active goal, workflow, focus and explicit mastery.",
+      "The synthetic required assessment without direct requires stubs both actual graph reader paths with the same modified canonical definitions, checks the exact complete Level-2 seeds and retains the existing direct-start, focus and no-mastery assertions."
+    ],
+    "renamedMethod": {
+      "from": "emptyAllowlistDoesNotReadTheCanonicalGraphOrPublishAnEmptyPicker",
+      "to": "emptyAllowlistSkipsHistoricalCompletionGraphAndKeepsNormalFrontierReadOnly"
+    }
+  },
+  "localVerification": {
+    "observedHeadAfterRun": "80d70f08e0ce31cbdc214e62b5d3e0e80cd850db",
+    "targeted": {
+      "totals": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": "tmp/ci-contract-assessment-42205723370-local-two.xml",
+      "xmlSha256": "fb5eaa362b070688436ac046c98b39aff763e2c0ff568a684fceea853a3c3f4d",
+      "log": "tmp/ci-contract-assessment-two-fixtures.log",
+      "logSha256": "d243bdd6ed66fa0b44086ecc87853c50a2ac14476e8ceff4a8717a7ef69e5026",
+      "buildResult": "BUILD SUCCESSFUL in 59s"
+    },
+    "wholeClass": {
+      "totals": {
+        "tests": 55,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": "tmp/ci-contract-assessment-42205723370-local-full-class.xml",
+      "xmlSha256": "9e7575b7fe0c2deefdd9961139e99ce396d5609bb8526310896910047dc7f4f9",
+      "log": "tmp/ci-contract-assessment-full-class.log",
+      "logSha256": "99945953c88752da145c5aa59c5838e56424ac793fb69f3a6881164d424c699f",
+      "buildResult": "BUILD SUCCESSFUL in 3m 37s"
+    },
+    "distinctVerifiedTests": 55,
+    "command": "./gradlew test --offline --console=plain --tests com.skillpilot.backend.service.AssessmentCompletionIntegrationTest -x processResources -x generateClaudePluginPublication",
+    "workingDirectory": "backend",
+    "javaHome": "tmp/amazon-corretto-25.0.2.10.1",
+    "gradleUserHome": "/tmp/skillpilot-plan-gradle-20261022",
+    "resourceBoundary": "Existing cached backend/build/resources/main reused; processResources and generateClaudePluginPublication excluded. The Spring tests read the actual current repository curriculum/profile/scope inputs. Root confirmed the completed German source/view writes and a stable curriculum before the two-method and full-class runs.",
+    "scopeBoundary": "No local PostgreSQL/browser/workflow-wide rerun; no claim of a fresh successful remote run. The full remote workflow remains the final independent check after the focused fixture fix is pushed.",
+    "diffCheck": "git diff --check -- backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java: exit 0"
+  },
+  "deferredIdentityCore": {
+    "receipt": "docs/dev/ci-graph-repairs/goal-identity-ab-core-review-2026-11-06.json",
+    "runtimeActivationAllowed": false,
+    "includedInThisRepair": false
+  }
+}
