@@ -1,0 +1,987 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "independent-local-content-review-seven-accepted-two-held",
+  "reviewAuthority": "independent AI subject review; no human approval",
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/informatics-whole-exam-foundation-refinement-2026-11-06.json",
+    "rawSha256": "8b7c126a4cca97d1eab0dc72bab2fb983d6a1e4d4d947720bdb522f6d2d09396",
+    "allOperationsCanonicalSha256": "c6545e182821079957b115aaa4dd4a4efb62293502de63eafa36ccc9a7f076cf",
+    "reviewedNineOperationsCanonicalSha256": "ee6ae454a54031034a4fb6e8098f0cb4aedd6d86e7d1e84c4dd223c3452baa22"
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "reviewedOperationCount": 9,
+  "acceptedCount": 7,
+  "heldCount": 2,
+  "heldOperationIds": [
+    "INFO-FOUNDATION-FOLLOWUP-02",
+    "INFO-FOUNDATION-FOLLOWUP-08"
+  ],
+  "cases": [
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-01",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/152/requires",
+        "guardGoalId": "038ca1a8-9d0d-5201-9148-d3984209c5bb",
+        "guardGoalCanonicalSha256": "26414bca144b2b9b6a8824ece0841525d7617de2cebb33b04c14a1aba1cc3a09",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "d848ceb9-cd73-5a13-9407-f3364764c223"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "A benefit/cost explanation of persistent structures is achievable using supplied versions and shared-substructure diagrams. It need not first implement an OO list.",
+      "completeAdmissibleAcquisitionExample": "Compare immutable [1,2] with a new [1,2,3] version: copying all elements versus sharing unchanged parts explains old-version retention and storage/copy costs. The goal supplies the new representation.",
+      "scopeLimit": "No imperative implementation or OO class is asserted by the whole DE/EN goal; the broader ancestor name is not itself a compulsory implementation gate.",
+      "actualSourceGoal": {
+        "id": "038ca1a8-9d0d-5201-9148-d3984209c5bb",
+        "title": "Persistente Strukturen",
+        "titleEn": "Persistent Structures",
+        "description": "Die lernende Person kann persistenten Datenstrukturen Nutzen und Kosten erläutern.",
+        "descriptionEn": "The learner can explain the benefits and costs of persistent data structures.",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "d848ceb9-cd73-5a13-9407-f3364764c223",
+          "title": "Warum Informatik? - Relevanz und Orientierung",
+          "titleEn": "Why Informatik? - Relevance and Orientation",
+          "description": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Informatik im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+          "requires": [],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-02",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/54/requires",
+        "guardGoalId": "8179e63e-764c-4348-a5f1-f738fb2cc04e",
+        "guardGoalCanonicalSha256": "0e283a095238d5f91678b7bb3b493e7830b5585f579566a4bf6ab4ac65ef54aa",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "c62c529f-3732-4c66-a8e4-6d91ed2285d0"
+        ]
+      },
+      "decision": "hold-overbroad-new-prerequisite",
+      "reason": "Mapping stack/queue operations onto a supplied list is the full target performance. c62 additionally requires developing AND implementing general algorithms, which is not necessary for this mapping performance.",
+      "completeAdmissibleAcquisitionExample": "Given [Anna,Ben], push(Cara),pop yields Cara then [Anna,Ben]; enqueue(Cara),dequeue yields Anna then [Ben,Cara]. A table of operations and resulting lists fulfills the target without writing a list-processing program.",
+      "scopeLimit": "Replace with orientation only. LIFO/FIFO and their representation on a given list belong to acquisition of this goal; no new code or target text is needed.",
+      "actualSourceGoal": {
+        "id": "8179e63e-764c-4348-a5f1-f738fb2cc04e",
+        "title": "Stapeln und Warteschlangen nutzen",
+        "titleEn": "Use Stacks and Queues",
+        "description": "Die lernende Person kann Stack- und Queue-Operationen auf Listen abbilden.",
+        "descriptionEn": "The learner can map stack and queue operations to lists.",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "GK",
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        },
+        {
+          "id": "898684c0-027c-5fc8-8448-6f33fc26d5b4",
+          "title": "Listenoperationen und lineare Datenstrukturen entwickeln",
+          "titleEn": "Develop List Operations and Linear Data Structures",
+          "description": "Cluster zum Entwickeln von Listenoperationen und zur Nutzung linearer Datenstrukturen auf Listenbasis.",
+          "descriptionEn": "Cluster for developing list operations and for using linear data structures based on lists.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
+          "title": "Algorithmen auf Listen und Feldern entwickeln und implementieren",
+          "titleEn": "Develop and Implement Algorithms on Lists and Arrays",
+          "description": "Die lernende Person kann eine vorhandene lineare Datenstruktur (Liste oder Feld) nutzen, um Algorithmen zur Lösung angemessener Problemstellungen, z. B. zur Suche des Maximums, zu entwickeln und zu implementieren.",
+          "descriptionEn": "The learner can use an existing linear data structure (list or array) to develop and implement algorithms for appropriate problem settings, for example to find a maximum.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "recommendedRequires": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-03",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/55/requires",
+        "guardGoalId": "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
+        "guardGoalCanonicalSha256": "30090c16b34f1b874b3a78cba64e5c235603f34aa8e64239778c96cabe3a0794",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "25be929d-624d-5654-bbb8-32fa1fba50c2"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "The target explicitly develops recursive insertion/deletion/traversal for a GIVEN singly linked list MODEL. Structuring recursion with termination and parameters is a precise method prerequisite. The existing full OO design goal is broader.",
+      "completeAdmissibleAcquisitionExample": "Use empty or Node(value,rest) and a supplied head/rest interface. Recursive traversal has a base case and recursive rest call; insertion/deletion can be developed on this given model without first designing an OO class.",
+      "scopeLimit": "This does not waive the learner's own recursive algorithm development; only the unnecessary representation-specific preparation is removed.",
+      "actualSourceGoal": {
+        "id": "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
+        "title": "Operationen auf einfach verketteten Listen entwickeln",
+        "titleEn": "Develop Operations on Singly Linked Lists",
+        "description": "Die lernende Person kann basierend auf einem Modell der einfach verketteten Liste rekursive Algorithmen zum Einfuegen, Loeschen und Durchlaufen entwickeln.",
+        "descriptionEn": "The learner can develop recursive algorithms for insertion, deletion, and traversal based on a singly linked list model.",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "GK",
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        },
+        {
+          "id": "898684c0-027c-5fc8-8448-6f33fc26d5b4",
+          "title": "Listenoperationen und lineare Datenstrukturen entwickeln",
+          "titleEn": "Develop List Operations and Linear Data Structures",
+          "description": "Cluster zum Entwickeln von Listenoperationen und zur Nutzung linearer Datenstrukturen auf Listenbasis.",
+          "descriptionEn": "Cluster for developing list operations and for using linear data structures based on lists.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "25be929d-624d-5654-bbb8-32fa1fba50c2",
+          "title": "Rekursion strukturieren",
+          "titleEn": "Structure Recursion",
+          "description": "Die lernende Person kann rekursive Funktionen mit Terminierung und Parameterübergabe entwickeln.",
+          "descriptionEn": "The learner can develop recursive functions with termination and parameter passing.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-04",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/56/requires",
+        "guardGoalId": "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+        "guardGoalCanonicalSha256": "ad484a27d59c878758cea910d55c5406b761b70bc24bffa96e4dd04de59d4f6c",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "5ca1960e-6b02-5679-b271-043a5c29b189"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "Binary-tree modeling/node operations can use supplied arrays of values and child indices. Branches/loops, with variables and I/O beneath them, provide programming preparation without forcing an OO linked-list implementation.",
+      "completeAdmissibleAcquisitionExample": "A node index i follows left[i] or right[i] according to a comparison, with -1 as absent child; an iterative lookup/insertion is expressed with branches and loops. The new tree model is acquired here.",
+      "scopeLimit": "No prerequisite to recursion or OO representation is invented; parent context has no authored universal OO requirement.",
+      "actualSourceGoal": {
+        "id": "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+        "title": "Binäre Bäume bearbeiten",
+        "titleEn": "Process Binary Trees",
+        "description": "Die lernende Person kann binäre Bäume modellieren und Knotenoperationen umsetzen.",
+        "descriptionEn": "The learner can model binary trees and implement node operations.",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "5ca1960e-6b02-5679-b271-043a5c29b189",
+          "title": "Kontrollstrukturen anwenden",
+          "titleEn": "Apply control structures",
+          "description": "Die lernende Person kann Verzweigungen und Schleifen einsetzen, um Problemstellungen strukturiert zu lösen.",
+          "descriptionEn": "The learner can use branches and loops to solve problems in a structured way.",
+          "requires": [
+            "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-05",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/149/requires",
+        "guardGoalId": "5944b04b-cf9f-5a71-babe-f50014a7f478",
+        "guardGoalCanonicalSha256": "7772407785d921bfb370991d5a9a34591f9cc29df665222ea5baf2108e2fd177",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91"
+        ]
+      },
+      "decision": "pass-local-foundation-with-explicit-model-boundary",
+      "reason": "For the conventional binary heap as the stated first acquisition model, binary-tree structure and node operations are directly relevant: complete shape, parent/child relations and sift operations build on them. An OO linked list is not required.",
+      "completeAdmissibleAcquisitionExample": "Represent a complete binary heap by an array, parent floor((i-1)/2), children2i+1 and2i+2; insertion/extraction move values along this tree. This demonstrates the new foundation without OO-list implementation.",
+      "scopeLimit": "The original goal does not require every heap variant. This review accepts the explicit conventional binary-heap first model already documented by the proposal; it does not introduce a claim that arbitrary nonbinary heap families require binary-tree mastery.",
+      "actualSourceGoal": {
+        "id": "5944b04b-cf9f-5a71-babe-f50014a7f478",
+        "title": "Heaps in Anwendungen",
+        "titleEn": "Heaps in Applications",
+        "description": "Die lernende Person kann Heaps und Prioritätswarteschlangen entwerfen.",
+        "descriptionEn": "The learner can design heaps and priority queues.",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
+          "title": "Binäre Bäume bearbeiten",
+          "titleEn": "Process Binary Trees",
+          "description": "Die lernende Person kann binäre Bäume modellieren und Knotenoperationen umsetzen.",
+          "descriptionEn": "The learner can model binary trees and implement node operations.",
+          "requires": [
+            "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "LK"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-06",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/153/requires",
+        "guardGoalId": "ce0966fa-ce95-5b26-81a1-85df48beeff4",
+        "guardGoalCanonicalSha256": "ebba9d88583aafc9a714c40aa9c4e594ad1217b20687a6aec6e37a6c213241c3",
+        "guardRequiresBefore": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "value": [
+          "c62c529f-3732-4c66-a8e4-6d91ed2285d0"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "LRU/LFU implementation/evaluation needs algorithms over stored entries, which an existing array/list algorithm competence supplies. The target does not require O(1) operations or an OO-list class.",
+      "completeAdmissibleAcquisitionExample": "Given a finite array of(key,value,time,count), scan for the least-recently-used time or least-frequently-used count when replacing an entry. Complexity and policy behavior can be evaluated in this valid representation.",
+      "scopeLimit": "This retains actual algorithm development/implementation preparation; only one unnecessary concrete data-structure design is removed.",
+      "actualSourceGoal": {
+        "id": "ce0966fa-ce95-5b26-81a1-85df48beeff4",
+        "title": "Caching-Strategien",
+        "titleEn": "Caching Strategies",
+        "description": "Die lernende Person kann Cache-Strategien (LRU, LFU) implementieren und bewerten.",
+        "descriptionEn": "The learner can implement and evaluate cache strategies (LRU, LFU).",
+        "requires": [
+          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "423e088a-1b38-544f-8cac-b4f8f4979850",
+          "title": "Algorithmik & objektorientierte Modellierung",
+          "titleEn": "Algorithms & Object-Oriented Modeling",
+          "description": "Klassenmodelle, Such- und Sortieralgorithmen sowie Rekursion vertiefen.",
+          "descriptionEn": "Deepen class models, search and sort algorithms, and recursion.",
+          "requires": []
+        },
+        {
+          "id": "6bbf9fa6-d6c0-520c-9b49-4dd3609bb86b",
+          "title": "Höhere Datenstrukturen",
+          "titleEn": "Higher Data Structures",
+          "description": "Lineare Listen und darüber hinaus modellieren.",
+          "descriptionEn": "Model linear lists and beyond.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
+          "title": "Lineare Listen modellieren",
+          "titleEn": "Model Linear Lists",
+          "description": "Die lernende Person kann Listen objektorientiert modellieren und typische Operationen implementieren.",
+          "descriptionEn": "The learner can model lists in an object-oriented way and implement typical operations.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
+          "title": "Algorithmen auf Listen und Feldern entwickeln und implementieren",
+          "titleEn": "Develop and Implement Algorithms on Lists and Arrays",
+          "description": "Die lernende Person kann eine vorhandene lineare Datenstruktur (Liste oder Feld) nutzen, um Algorithmen zur Lösung angemessener Problemstellungen, z. B. zur Suche des Maximums, zu entwickeln und zu implementieren.",
+          "descriptionEn": "The learner can use an existing linear data structure (list or array) to develop and implement algorithms for appropriate problem settings, for example to find a maximum.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-07",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/200/requires",
+        "guardGoalId": "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+        "guardGoalCanonicalSha256": "8a11a56d7631c0e23842f17d4eb9a48c36d48b7116182a79bd1c8a665760f577",
+        "guardRequiresBefore": [
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8"
+        ],
+        "value": [
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "f0910b55-48a9-4f81-aed6-d15ac0446c70"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "Simple declarative graph algorithms need graph nodes/edges/paths plus the retained Prolog-list operations. Adding graph vocabulary is a precise direct foundation after removal of whole-exam routes.",
+      "completeAdmissibleAcquisitionExample": "Given edge facts and a visited list, a reachability predicate follows edges while avoiding visited nodes. No prior imperative BFS/DFS or whole Q1/Q3 examination is required.",
+      "scopeLimit": "Candidate base operations separately replace f091's old Q1-exam edge with orientation. This local review does not recalculate that global closure.",
+      "actualSourceGoal": {
+        "id": "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+        "title": "Graphalgorithmen in Prolog",
+        "titleEn": "Graph Algorithms in Prolog",
+        "description": "Die lernende Person kann einfache Graphalgorithmen deklarativ ausdrücken.",
+        "descriptionEn": "The learner can express simple graph algorithms declaratively.",
+        "requires": [
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103",
+          "title": "Vertiefendes Themenfeld",
+          "titleEn": "In-depth Topic",
+          "description": "Technische Informatik oder logische Programmierung vertiefen.",
+          "descriptionEn": "Deepen technical computer science or logical programming.",
+          "requires": []
+        },
+        {
+          "id": "f5e6a2d7-6793-5023-8296-dea1de828a68",
+          "title": "Prolog als logische Programmiersprache",
+          "titleEn": "Prolog as a Logic Programming Language",
+          "description": "Wissensbasen und logische Anfragen formulieren.",
+          "descriptionEn": "Formulate knowledge bases and logical queries.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "title": "Listenverarbeitung in Prolog",
+          "titleEn": "List Processing in Prolog",
+          "description": "Die lernende Person kann Listenoperationen implementieren.",
+          "descriptionEn": "The learner can implement list operations.",
+          "requires": [
+            "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "title": "Listenverarbeitung in Prolog",
+          "titleEn": "List Processing in Prolog",
+          "description": "Die lernende Person kann Listenoperationen implementieren.",
+          "descriptionEn": "The learner can implement list operations.",
+          "requires": [
+            "82911b58-bd79-5e96-8fcc-2adb029e2f70"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "LK"
+          ]
+        },
+        {
+          "id": "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+          "title": "Graphbegriffe kennen",
+          "titleEn": "Know Graph Terms",
+          "description": "Die lernende Person kann Knoten, Kanten, Pfade sowie gerichtete und gewichtete Graphen erläutern.",
+          "descriptionEn": "The learner can explain nodes, edges, paths, as well as directed and weighted graphs.",
+          "requires": [
+            "49ba66cf-accd-5938-a63e-f031bc786767"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "LK"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-08",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/74/requires",
+        "guardGoalId": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "guardGoalCanonicalSha256": "f58c5fe950533c025e36cd89a8b87e5367bf7ba95527bc781e456756a68b64d4",
+        "guardRequiresBefore": [
+          "e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+        ],
+        "value": [
+          "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+        ]
+      },
+      "decision": "hold-overbroad-new-prerequisite",
+      "reason": "The complete target is DB connection, preparing SQL and outputting a result set. The added fd1 prerequisite also demands independently formulating JOIN and sorting. No bound source/task context was found requiring those extra performances beforehand.",
+      "completeAdmissibleAcquisitionExample": "A supplied parameterized SELECT name FROM person WHERE id=? can be prepared and run via a given DB API, and its fetched result set printed. Variables/I-O are used; neither JOIN nor ORDER BY is formulated. This is a complete admissible integration acquisition example.",
+      "scopeLimit": "Replace value with only18317. SQL integration/placeholder use is acquired in0cfb; this does not assert general SELECT mastery or implicit completion of fd1.",
+      "actualSourceGoal": {
+        "id": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "title": "SQL aus Programmen ausführen",
+        "titleEn": "Execute SQL from Programs",
+        "description": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+        "descriptionEn": "The learner can establish a database connection, prepare SQL, and output result sets.",
+        "requires": [
+          "e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "GK",
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "8928f08e-6d5a-5dca-95c8-05519951ff04",
+          "title": "Q2.3 Webdatenbankprojekt",
+          "titleEn": "Q2.3 Web Database Project",
+          "description": "Dynamische Webanwendungen mit Datenbankanbindung entwickeln.",
+          "descriptionEn": "Develop dynamic web applications with database connection.",
+          "requires": []
+        },
+        {
+          "id": "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+          "title": "Datenbanken",
+          "titleEn": "Databases",
+          "description": "Relationale Datenbanken modellieren und einsetzen.",
+          "descriptionEn": "Model and use relational databases.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+          "title": "Formulare mit Backend verknüpfen",
+          "titleEn": "Connect Forms to Backend",
+          "description": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+          "descriptionEn": "The learner can design HTML forms with parameters and pass them to the server.",
+          "requires": [
+            "65aa807f-f998-5648-a3a6-2e0e96dba714"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "title": "Grundlegende Selects schreiben",
+          "titleEn": "Write Basic Selects",
+          "description": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+          "descriptionEn": "The learner can formulate projection, selection, join, and sorting with SQL.",
+          "requires": [
+            "65aa807f-f998-5648-a3a6-2e0e96dba714"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+          "title": "Grundlegende Datentypen und Variablen nutzen",
+          "titleEn": "Use basic data types and variables",
+          "description": "Die lernende Person kann einfache Datentypen und Variablen deklarieren sowie Ein-/Ausgabe implementieren.",
+          "descriptionEn": "The learner can declare simple data types and variables and implement input/output.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "recommendedRequires": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d"
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "INFO-FOUNDATION-FOLLOWUP-09",
+        "stage": "semantic-secondary-consumer-correction",
+        "op": "replace",
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "path": "/goals/125/requires",
+        "guardGoalId": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "guardGoalCanonicalSha256": "83997cfc22d56f8a74277c1e0f206f3fb4303c6ab28bc27354a634f171d54e68",
+        "guardRequiresBefore": [
+          "0cfb39a2-985f-55ba-b2b3-e667d07f48d3"
+        ],
+        "value": [
+          "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+          "757256e2-eb59-572f-a403-e1b1d53e37d4"
+        ]
+      },
+      "decision": "pass-local-foundation",
+      "reason": "Formatting SQL results IN HTML explicitly requires HTML semantic elements/nesting. When reusable SQL execution no longer requires a form, preserving the HTML foundation directly prevents losing legitimate preparation.",
+      "completeAdmissibleAcquisitionExample": "Render a provided result set as a table/list using semantic HTML and add pagination/filter handling as the new target performance. Keep SQL-execution prerequisite as well.",
+      "scopeLimit": "The new HTML edge restores a real domain foundation without reintroducing a complete form workflow or a whole earlier exam.",
+      "actualSourceGoal": {
+        "id": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "title": "Ergebnismengen formatieren",
+        "titleEn": "Format Result Sets",
+        "description": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+        "descriptionEn": "The learner can output SQL results in HTML and implement pagination or filters.",
+        "requires": [
+          "0cfb39a2-985f-55ba-b2b3-e667d07f48d3"
+        ],
+        "contains": [],
+        "type": "atomic",
+        "tags": [
+          "GK",
+          "LK"
+        ]
+      },
+      "actualSourceAncestors": [
+        {
+          "id": "29ec47db-7dfe-553d-b850-40e06f164545",
+          "title": "Informatik",
+          "titleEn": "Computer Science",
+          "description": "Gemeinsame Wurzel für Informatik am Gymnasium in Deutschland. Die aktuelle Baseline übernimmt die hessische Oberstufe vollständig und schafft damit einen belastbaren Startpunkt für die spätere bundesländerübergreifende Konvergenz.",
+          "descriptionEn": "Shared root for computer science at Gymnasium in Germany. The current baseline fully adopts the Hessian upper-secondary curriculum and establishes a reliable starting point for later cross-state convergence.",
+          "requires": []
+        },
+        {
+          "id": "8928f08e-6d5a-5dca-95c8-05519951ff04",
+          "title": "Q2.3 Webdatenbankprojekt",
+          "titleEn": "Q2.3 Web Database Project",
+          "description": "Dynamische Webanwendungen mit Datenbankanbindung entwickeln.",
+          "descriptionEn": "Develop dynamic web applications with database connection.",
+          "requires": []
+        },
+        {
+          "id": "b7acdaa9-4d14-5ec4-9048-8c969f8252cc",
+          "title": "Datenbanken",
+          "titleEn": "Databases",
+          "description": "Relationale Datenbanken modellieren und einsetzen.",
+          "descriptionEn": "Model and use relational databases.",
+          "requires": []
+        }
+      ],
+      "actualOldPrerequisites": [
+        {
+          "id": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+          "title": "SQL aus Programmen ausführen",
+          "titleEn": "Execute SQL from Programs",
+          "description": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+          "descriptionEn": "The learner can establish a database connection, prepare SQL, and output result sets.",
+          "requires": [
+            "e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ],
+      "actualProposedPrerequisites": [
+        {
+          "id": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+          "title": "SQL aus Programmen ausführen",
+          "titleEn": "Execute SQL from Programs",
+          "description": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+          "descriptionEn": "The learner can establish a database connection, prepare SQL, and output result sets.",
+          "requires": [
+            "e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        },
+        {
+          "id": "757256e2-eb59-572f-a403-e1b1d53e37d4",
+          "title": "HTML-Grundgerüst anwenden",
+          "titleEn": "Apply basic HTML structure",
+          "description": "Die lernende Person kann strukturierte HTML-Dokumente mit semantischen Elementen und verschachtelten Tags erstellen.",
+          "descriptionEn": "The learner can create structured HTML documents with semantic elements and nested tags.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ],
+          "contains": [],
+          "type": "atomic",
+          "tags": [
+            "GK",
+            "LK"
+          ]
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    "This review covers only the last nine secondary refinements of the pinned38-operation hypothesis. The prior29 are not newly approved here.",
+    "No curriculum/QA/source/learner-state bytes were changed.",
+    "No whole-exam closure equivalence, foreign-demand absence, strict graph pass, release, assessment coverage or mastery transfer is inferred from this local content review.",
+    "Root/Astra must produce a new guarded candidate and recompute its actual whole-catalog goal/atomic demands after changing02and08; the old38-proposal remains unchanged."
+  ]
+}

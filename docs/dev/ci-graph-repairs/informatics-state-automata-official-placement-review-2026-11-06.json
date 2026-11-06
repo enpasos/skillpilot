@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "read-only-official-source-comparison-NOT-patch-NOT-source-mapping-approval",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2"
+  },
+  "localOfficialPdf": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+    "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+    "printedEdition": "Ausgabe2024, Stand01.08.2025",
+    "pageCount": 44
+  },
+  "fetchedOfficialPdf": {
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
+    "retrievedOn": "2026-11-06",
+    "byteLength": 615541,
+    "sha256": "041053cdecd7dbb3fb936d92f1268c85802f0de0128b9429cfa59aa89fc2780a",
+    "printedEdition": "Ausgabe2024",
+    "pageCount": 44,
+    "temporaryDownloadIsNotAnAuthoredSourceReplacement": true
+  },
+  "sectionComparisons": [
+    {
+      "version": "repository-Stand-2025-08-01",
+      "printedPage": 37,
+      "section": "Q2.1",
+      "normalizedExtractSha256": "ad16140f359a20c86f61c96e83d16c4274ee305f3d56fae139a4ff8364592aed",
+      "noHierarchicalOrParallelStatechartRequirementFound": true
+    },
+    {
+      "version": "repository-Stand-2025-08-01",
+      "printedPage": 40,
+      "section": "Q3.2",
+      "normalizedExtractSha256": "b089de7a4835a2f949ee7f3a7247605871b6de563b7345040a14901347b41c05",
+      "noHierarchicalOrParallelStatechartRequirementFound": true
+    },
+    {
+      "version": "official-url-fetched-2026-11-06",
+      "printedPage": 37,
+      "section": "Q2.1",
+      "normalizedExtractSha256": "ad16140f359a20c86f61c96e83d16c4274ee305f3d56fae139a4ff8364592aed",
+      "noHierarchicalOrParallelStatechartRequirementFound": true
+    },
+    {
+      "version": "official-url-fetched-2026-11-06",
+      "printedPage": 40,
+      "section": "Q3.2",
+      "normalizedExtractSha256": "b089de7a4835a2f949ee7f3a7247605871b6de563b7345040a14901347b41c05",
+      "noHierarchicalOrParallelStatechartRequirementFound": true
+    }
+  ],
+  "pdfVersionsByteIdentical": false,
+  "relevantNormalizedSectionsIdentical": true,
+  "sourceExtraction": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_INFORMATIK_SEKII_KC2024.source-extraction.json",
+    "sha256": "879a22b9334f184dd0130e5551886760b8b53e5e0f0c98fa5d30644bd8def666"
+  },
+  "sourceMappingReview": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+    "sha256": "fc62d9453433da4120cf10d9ef07a68f398c98b778b34a4778a09f09d7628d6d"
+  },
+  "authoredView": {
+    "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+    "sha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df"
+  },
+  "goals": [
+    {
+      "id": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+      "title": "Zustandsdiagramme vertiefen",
+      "titleEn": "Deepen State Diagrams",
+      "description": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "descriptionEn": "The learner can model complex state automata (hierarchy/parallelism).",
+      "weight": 1.1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P2",
+          "P3",
+          "P4"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I3",
+          "I4",
+          "I5"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "a4473795-2ca6-4ca0-8518-e5fd3414f5ae"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+      "title": "Zustandsautomaten modellieren",
+      "titleEn": "Model State Automata",
+      "description": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+      "descriptionEn": "The learner can model and simulate automata from real contexts.",
+      "weight": 1.1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-informatics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "P3"
+        ],
+        "guidingIdeas": [
+          "I1",
+          "I2",
+          "I5"
+        ],
+        "phase": "Q3"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+          "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "eafbc1a5-eb2a-4710-a399-fcf42d5a17fd"
+        }
+      },
+      "type": "atomic"
+    }
+  ],
+  "snapshotSourceGoals": [
+    {
+      "id": "eafbc1a5-eb2a-4710-a399-fcf42d5a17fd",
+      "passageId": "he-inf-sekii:074cec9d-b501-405c-a131-be6db239ddad",
+      "topicCode": "Q3.2",
+      "bulletIndex": 52,
+      "aspectIndex": 1,
+      "title": "Zustandsautomaten modellieren",
+      "description": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+      "sourceText": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+      "sourceSpan": "Q3.2.52",
+      "parentBulletText": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024, Q3.2",
+      "courseLevel": "GK_LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q3.2"
+      ],
+      "rawSourceText": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.",
+      "rawSourceSpan": "Q3.2.52",
+      "rawParentBulletText": "Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren."
+    },
+    {
+      "id": "a4473795-2ca6-4ca0-8518-e5fd3414f5ae",
+      "passageId": "he-inf-sekii:18f714d2-62ea-440f-be5c-f4c203fe9d90",
+      "topicCode": "Q2.1",
+      "bulletIndex": 117,
+      "aspectIndex": 1,
+      "title": "Zustandsdiagramme vertiefen",
+      "description": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "sourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "sourceSpan": "Q2.1.117",
+      "parentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024, Q2.1",
+      "courseLevel": "LK",
+      "granularity": "sourceSnapshotGoal",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:LK",
+        "topic:Q2.1"
+      ],
+      "rawSourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "rawSourceSpan": "Q2.1.117",
+      "rawParentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität)."
+    }
+  ],
+  "snapshotPassages": [
+    {
+      "id": "he-inf-sekii:18f714d2-62ea-440f-be5c-f4c203fe9d90",
+      "topicCode": "Q2.1",
+      "title": "Q2.1 ER- und Relationenmodell",
+      "text": "1) Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.\n2) Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.\n3) Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.\n4) Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.\n5) Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.\n6) Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.\n7) Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).\n8) Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "rawText": "Datenstrukturen modellieren und normalisieren.",
+      "sourceGoalIds": [
+        "08d48b39-df35-4db9-800c-a3f338cfbb9f",
+        "c14ae290-39f4-41d3-aa57-e86afa1a07cd",
+        "076b8d0a-c1ce-449f-859e-ca639f30064c",
+        "1efefe8d-538d-4450-8c8b-69a5335936bf",
+        "04d49110-6a60-425d-afd3-aa1737e65c6e",
+        "0aaa972a-2e0c-4860-9435-ca032be7b2dd",
+        "a4473795-2ca6-4ca0-8518-e5fd3414f5ae",
+        "f3711a2a-c99c-45ea-a522-1c98fbb08708"
+      ]
+    },
+    {
+      "id": "he-inf-sekii:074cec9d-b501-405c-a131-be6db239ddad",
+      "topicCode": "Q3.2",
+      "title": "Q3.2 Endliche Automaten",
+      "text": "1) Die lernende Person kann Automaten aus realen Kontexten modellieren und simulieren.\n2) Die lernende Person kann reguläre Ausdrücke und deterministische Automaten gegenseitig überführen.\n3) Die lernende Person kann die Grenzen regulärer Sprachen anhand eines Beispiels argumentieren.\n4) Die lernende Person kann DFA und NFA ineinander überführen.\n5) Die lernende Person kann DFA minimieren.\n6) Die lernende Person kann das Pumping-Lemma für reguläre Sprachen anwenden.\n7) Die lernende Person kann reguläre Ausdrücke in NEA/DFA überführen.",
+      "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot",
+      "sourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "rawText": "Endliche Automaten als Akzeptoren und Transduktoren modellieren.",
+      "sourceGoalIds": [
+        "eafbc1a5-eb2a-4710-a399-fcf42d5a17fd",
+        "82456875-58b1-4a21-9490-520da25d3ff3",
+        "fd993f0c-65cb-47c5-8eee-e0da06ccb36f",
+        "334d0423-73c3-4ffe-b0a6-3bd7be721329",
+        "bddb6a37-fe76-444d-89ef-f38264dc8eda",
+        "48e358d9-ed39-4b8a-864b-ffd835968f90",
+        "5b8f497c-6705-4e22-9d80-884e99c7edbe"
+      ]
+    }
+  ],
+  "mappingDecisions": [
+    {
+      "sourceGoalId": "eafbc1a5-eb2a-4710-a399-fcf42d5a17fd",
+      "topicCode": "Q3.2",
+      "sourceSpan": "Q3.2.52",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+      ],
+      "matchType": "exact",
+      "rationale": "Bestehendes Informatik-Seed-Mapping uebernommen.",
+      "reviewedAt": "2026-05-13",
+      "reviewer": "Codex"
+    },
+    {
+      "sourceGoalId": "a4473795-2ca6-4ca0-8518-e5fd3414f5ae",
+      "topicCode": "Q2.1",
+      "sourceSpan": "Q2.1.117",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+      ],
+      "matchType": "exact",
+      "rationale": "Bestehendes Informatik-Seed-Mapping uebernommen.",
+      "reviewedAt": "2026-05-13",
+      "reviewer": "Codex"
+    }
+  ],
+  "sourceExtractionMethod": "Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.",
+  "viewEntries": [
+    {
+      "pointer": "/rootNodes/0/children/2/children/3/children/40",
+      "entry": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "ancestors": [
+        {
+          "kind": "structure",
+          "id": "informatics-root",
+          "label": "Informatik DE-HE"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-de-he-source-backed-goals",
+          "label": "Lehrplanbelegte Ziele"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-de-he-q2-source-goals",
+          "label": "Q2"
+        }
+      ]
+    },
+    {
+      "pointer": "/rootNodes/0/children/2/children/4/children/34",
+      "entry": {
+        "kind": "goalEntry",
+        "goalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
+        "displayLabel": "Zustandsautomaten modellieren"
+      },
+      "ancestors": [
+        {
+          "kind": "structure",
+          "id": "informatics-root",
+          "label": "Informatik DE-HE"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-de-he-source-backed-goals",
+          "label": "Lehrplanbelegte Ziele"
+        },
+        {
+          "kind": "structure",
+          "id": "informatics-de-he-q3-source-goals",
+          "label": "Q3"
+        }
+      ]
+    }
+  ],
+  "liveCanonicalReferences": [
+    {
+      "goalId": "900065ef-d3ae-5145-b92c-50821795107a",
+      "title": "Q2.1 ER- und Relationenmodell",
+      "pointer": "/goals/64/contains/6",
+      "value": "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+    },
+    {
+      "goalId": "31026f4a-629b-571f-b45d-a87f47a09d9e",
+      "title": "Q3.2 Endliche Automaten",
+      "pointer": "/goals/88/contains/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
+      "title": "Reguläre Ausdrücke verknüpfen",
+      "pointer": "/goals/90/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
+      "title": "Grenzen endlicher Automaten erkennen",
+      "pointer": "/goals/92/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "e7fb0601-4207-4bd8-8c40-1f544590b855",
+      "title": "Nichtreguläre Sprachen als Grenze endlicher Automaten erläutern",
+      "pointer": "/goals/93/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944",
+      "title": "Berechenbarkeitsgrenzen diskutieren",
+      "pointer": "/goals/99/requires/1",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "deea09c2-474e-5c3d-bd6b-ced143df8070",
+      "title": "Deterministische und nichtdeterministische Automaten vergleichen",
+      "pointer": "/goals/129/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
+      "title": "Automaten minimieren",
+      "pointer": "/goals/182/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "0515f5f1-22bb-5164-9af0-e84d8137085a",
+      "title": "Pumping Lemma anwenden",
+      "pointer": "/goals/183/requires/0",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "title": "Q2 vernetzt anwenden",
+      "pointer": "/goals/279/requires/22",
+      "value": "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+    },
+    {
+      "goalId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "title": "Q2 vernetzt anwenden",
+      "pointer": "/goals/279/examData/coveredGoalIds/22",
+      "value": "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
+    },
+    {
+      "goalId": "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+      "title": "Q3 vernetzt anwenden",
+      "pointer": "/goals/280/requires/3",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    },
+    {
+      "goalId": "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+      "title": "Q3 vernetzt anwenden",
+      "pointer": "/goals/280/examData/coveredGoalIds/3",
+      "value": "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    }
+  ],
+  "findings": [
+    {
+      "id": "INFO-STATE-SRC-01",
+      "finding": "Q2.1 specifies ER/relational models, recursive/ternary relationships and first-through-third normal forms. Neither reviewed official PDF section names hierarchical/parallel state automata. The present exact Q2.1 source claim for875 is unsupported by these official passages."
+    },
+    {
+      "id": "INFO-STATE-SRC-02",
+      "finding": "Q3 introduction/p39 andQ3.2/p40 directly support modeling/simulating simple real-context finite automata. They do not explicitly specify the whole hierarchy/parallelism extension. The7ad basic model has actual official topic support;875 must not be silently relabeled an exact official Q3 requirement."
+    },
+    {
+      "id": "INFO-STATE-SRC-03",
+      "finding": "The extraction is explicitly converted from an authored JSON snapshot. SourceSpan Q2.1.117 and sourceSnapshotGoal are internal authoring coordinates, not official PDF bullet numbers. The May13 exact-review rationale only says the seed mapping was adopted."
+    },
+    {
+      "id": "INFO-STATE-SRC-04",
+      "finding": "The HE composition contains an explicit875 goalEntry in itsQ2 source-goals structure. Canonical Q2.1 contains875; Q2 terminal0df explicitly requires and covers875 among41 goals. A phase-only change would leave false placement and later-phase assessment demand."
+    }
+  ],
+  "boundedRepairDirection": [
+    "Keep875 identity, full hierarchy/parallelism competence and durable learner results. Treat as authored deeper state-machine content unless an actually matching official source is reviewed.",
+    "A thematicQ3 placement after7ad is didactically justified, but is not itself an official-membership claim. Reconcile canonical contains, phase, authored views and source provenance deliberately.",
+    "Before a patch, enumerate every old/new target and focus tree plus assessment contract. Do not delete875 from the existing41-goal Q2 coverage merely to pass phase lint; original exam competence and explicit results need a truthful separate contract solution.",
+    "Review current whole-goal/semantic/source bindings and retain historical source/review bytes. Never relabel an old exact mapping as a newly checked PDF mapping.",
+    "Do not weaken GVR-002 or set GLOBAL as an escape. No operation is part of the frozen39 candidate."
+  ],
+  "unresolved": "A complete application-ready placement/assessment repair is not claimed. Other regional mappings for875 need their own source comparison; this report does not revoke their evidence or narrow targets."
+}
