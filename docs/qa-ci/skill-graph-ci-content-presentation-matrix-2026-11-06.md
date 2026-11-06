@@ -71,3 +71,19 @@ autorisieren weder neue Content-/Rechteplattformen noch Hostbehauptungen oder
 eine Änderung der veröffentlichten Plugin-/Widgetbytes. Insbesondere werden
 der fehlende OpenAI-Materialkanal und offene Gesprächs-/Hostgegenfälle nicht
 durch enge Resolver- oder DOM-Tests zu einem vollständigen Pass erklärt.
+
+Der spätere [harte CQR-202-Gegenfall](../dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-repair-2026-11-06.json)
+verbessert die Erkennung tatsächlich leerer Prüfungsnachweise im vorhandenen
+Meilensteinpfad. Er beweist keine allgemeine fachliche Richtigkeit beliebiger
+Aufgaben und Lösungen. Der [vollständige E25-Entwurf](../dev/ci-graph-repairs/informatics-e25-terminal-candidate-2026-11-06.md)
+bleibt ein nicht angewandter Draft. Sein
+[unabhängiger Inhaltsreview](../dev/ci-graph-repairs/informatics-e25-terminal-independent-review-2026-11-06.md)
+bestätigt alle 25 Leistungen und eigene isolierte Referenzläufe; die GK-/LK-
+Angebotsgrenze und Integration bleiben offen. Die aktuelle
+[PO-Klarstellung zum Pflichtumfang](../dev/ci-graph-repairs/curriculum-required-goal-scope-decision-2026-11-06.md)
+erlaubt amtlich belegte Ziele und fachlich begründete Lückenschlüsse; maschinelle
+Quellpins allein beweisen eine solche Lückenbegründung nicht. Die
+[konkrete Prüfung zu Zustandsautomaten](../dev/ci-graph-repairs/informatics-875-official-or-gap-followup-2026-11-06.md)
+und ihre [Bestands-/Prüfgrenze](../dev/ci-graph-repairs/informatics-875-retained-definition-contract-review-2026-11-06.md)
+halten die nachgewiesenen Befunde und die noch offene vollständige Reparatur
+getrennt. Die 14 Regelzuordnungen dieser Matrix bleiben unverändert.

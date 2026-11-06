@@ -677,3 +677,39 @@ vollständige CQR-Bericht vom `2026-11-06T17:08:02.394Z` weist weiterhin drei M6
 und sieben verletzte geschützte Floors aus. Informatik fällt mit 59 offenen
 G17-Befunden korrekt auf M0. Die Einzelerfolge ersetzen weder die verbleibenden
 fachlichen Korrekturen noch fehlende Aufgaben-/Praxis-/D/P-Nachweise.
+
+## Weitere Reparaturbelege: Prüfungsinhalt und aktueller Bestand
+
+Der [reparierte CQR-202-Gegenprüfer](../dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-repair-2026-11-06.json)
+verwirft die tatsächlich vorhandene generische Musterlösung auch mit
+zusätzlichen Nummern, Aufgabenlabels oder einer echten Aufgabenstellung.
+`evaluateExamTaskReadiness` und `deriveScopeMaturity` werden über den vorhandenen
+Routenpfad bis zum geschützten Floor geprüft. Sechs eingefrorene reale
+Negativpayloads, zwölf Varianten und echte Mathematik-/Physikpositive ergänzen
+die vorhandenen Strukturkontrollen. Die Negativfälle scheitern auch in einem
+sonst gültigen Graph-/Meilensteinfixture und werden dadurch nicht von einem
+vorherigen M0-Fehler verdeckt. Der bestehende harte CI-Aufruf
+`test:deep-understanding-rollout` führt diese Fälle aus. Die Fail-Policy war
+bereits vorher aktiv; korrigiert wurde die Erkennung der leeren Lösung.
+Der Zensus über 925 vorhandene `examData` ändert genau sechs Einstufungen;
+unveränderte Einstufung bedeutet keine neue fachliche Inhaltsfreigabe.
+
+Die [Math-Memory-Anwendung](../dev/ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.md)
+enthält vier echte neue Typbindungen nach fachlicher Prüfung statt eines
+automatischen QA-Rehashs. Die
+[fünf Sprachoperationen](../dev/ci-graph-repairs/global-orientation-cycles-application-2026-11-06.md)
+beseitigen drei geerbte Selbstzyklen; alle anderen atomaren Nachfragen bleiben
+erhalten. Die [weiteren 26 Informatikkorrekturen](../dev/ci-graph-repairs/informatics-bounded26-prerequisites-application-2026-11-06.md)
+sind inzwischen unabhängig geprüft und angewandt. Ihr aktiver globaler Replay
+bestätigt genau 52 Goal-/52 Atomquellen mit ausgewiesener fachlicher Wirkung,
+keine fremde Quelle und null Zykluskomponenten.
+
+Der [vollständige aktuelle CQR-Nachlauf](../dev/ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
+vom `2026-11-06T18:45:31.502Z` bestätigt Informatik mit CQR-101/102 PASS und
+47 verbleibenden G17-Befunden; CQR-202 lehnt weiter sechs schwache Terminals ab.
+Dieser Routenscope umfasst 14 von 24 Informatik-`examData`, nicht alle 24.
+Alle 21 Kataloge bestehen G15/G42. Mathematik hat 919 CQR-001-/917 G17-Befunde.
+Deutsch, Geschichte und Latein bleiben M6, sieben geschützte Floors scheitern
+weiterhin hart. Frühere datierte Zähler bleiben historische Zwischenstände.
+Der feste Regelkorpus und seine 261/243/14-Zuordnung werden hierdurch nicht
+umgeschrieben; diese Nachträge beschreiben die tatsächlichen späteren Reparaturen.

@@ -30,13 +30,26 @@ bleibt als historischer Zwischenstand erhalten.
   [konkrete Zustandsautomatenreview](informatics-875-official-or-gap-followup-2026-11-06.md)
   findet keinen belegten Pflichtbedarf; die vollständige Scope-/Prüfungskorrektur
   unter Erhalt alter Ergebnisbedeutungen ist noch nicht angewandt.
+  Der [geprüfte Bestandsvertrag](informatics-875-retained-definition-contract-review-2026-11-06.md)
+  zeigt anhand echter Negativvarianten, warum das bloße Verbergen der alten
+  Prüfung keine Lösung ist; die vorgeschlagene geschlossene QA-Grenze ist neu
+  und noch nicht implementiert.
 - [Vollständiger E25-Prüfungsentwurf](informatics-e25-terminal-candidate-2026-11-06.md):
   25 fest gebundene Ziele, konkrete Materialien, ganze Musterlösung und tatsächlich
-  ausgeführte Referenzprogramme; Draft, noch ohne unabhängige Inhaltsfreigabe
-  oder Anwendung. Die GK-Angebotsgrenze bleibt ausdrücklich offen.
+  ausgeführte Referenzprogramme. Der
+  [unabhängige 25-Fall-Inhaltsreview](informatics-e25-terminal-independent-review-2026-11-06.md)
+  bestätigt die Leistungen und eigene isolierte Referenzläufe. Der Entwurf bleibt
+  Draft ohne Anwendung; die GK-Angebotsgrenze und die tatsächliche Integration
+  bleiben ausdrücklich offen.
 - [Reparatur der Trainer-Angebotsfixture](trainer-gymnasium-offering-fixture-repair-2026-11-06.json):
   echter roter Ausgangsfall, vollständiger grüner Browserlauf und gezielter
   Script-Typvergleich ohne neue Diagnosen; Produktfilter und Reifegrade unverändert.
+- [Reparatur der Backend-Dauerprojektionsfixture](backend-m6-duration-scope-fixture-repair-2026-11-06.md):
+  fünf belegte Zählerkorrekturen, 336 native Vergleichsergebnisse und ein grüner
+  echter HTTP-/JUnit-Methodenlauf mit sämtlichen 112 G8/G9-Anfragen.
+- [Redaktioneller Terminologiefolgeschritt](cqr202-terminology-editorial-successors-2026-11-06.md):
+  zwei alte Begriffe korrigiert, drei JSON-Blätter einschließlich eines
+  eingehenden Hashverweises geändert; Messungen und Urteile bleiben gleich.
 
 Die [zentrale Übergabe](../ci-contract-audit-handoff-2026-11-06.md) führt
 Auftrag und nächste Schritte. Der feste 518-Regelkorpus und seine Matrizen
