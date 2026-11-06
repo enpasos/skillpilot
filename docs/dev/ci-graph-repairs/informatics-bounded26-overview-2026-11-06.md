@@ -1,7 +1,10 @@
 # Enger Informatik-Kandidat: 24 Fachkorrekturen und zwei getrennte Ergänzungen
 
-Dieser Kandidat ist **nicht angewandt**. Der aktive Informatik-CQR enthält
-weiterhin 59 G17-Befunde und M0. Das
+Dieser Kandidat ist inzwischen nach dem
+[abschließenden unabhängigen Review](informatics-bounded26-independent-review-2026-11-06.md)+[tatsächlich angewandt](informatics-bounded26-prerequisites-application-2026-11-06.md).
+Der nachfolgende Text beschreibt die gebundenen Vorabvergleiche. Der frühere
+Informatik-CQR von 18:13 UTC enthält 59 G17-Befunde und M0; der vollständige
+Nachlauf nach der Anwendung wird gesondert gesichert. Das
 [geschützte Kombinationsmanifest](informatics-bounded26-prerequisites-proposal-2026-11-06.json)
 umfasst 24 unabhängig begründete gewöhnliche Voraussetzungskorrekturen,
 den getrennten Turing-Folgeschritt mit bestehendem Automatenmodell und einen

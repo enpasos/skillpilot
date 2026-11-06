@@ -12,7 +12,8 @@ im Gesamtbeleg geführt.
   G15-/G42-Nachweis für alle 21 Landschaften und
   [maschinenlesbare Anwendungsquittung](global-orientation-cycles-application-2026-11-06.json).
 - [Enger Informatik-Kandidat](informatics-bounded26-overview-2026-11-06.md):
-  unapplied 24 Fachkorrekturen plus getrennte Turing-/Dokumentationsschritte;
+  inzwischen [angewandte](informatics-bounded26-prerequisites-application-2026-11-06.md)
+  24 Fachkorrekturen plus getrennte Turing-/Dokumentationsschritte;
   Cache, ISA, drei Abiturverträge, 47 G17 und Assessment-Inhalte bleiben offen.
 - [Terminaler Remote-Lauf auf 5cb](remote-main-5cb-terminal-2026-11-06.json):
   fünf Jobs bestehen; Backend, Frontend und Curriculum scheitern. Die beiden
