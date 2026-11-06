@@ -1,0 +1,171 @@
+--- 17test/scripts/identity_qa_private_capture.py
++++ 19test/scripts/identity_qa_private_capture.py
+@@ -70,6 +70,51 @@
+     return {"sha256": sha, "bytes": Path(path).stat().st_size}
+ 
+ 
++def verify_directory_aliases(receipt, roots):
++    """Bind the declared Git aliases to both actual private directory trees."""
++    aliases = {}
++    declared = receipt.get("directorySymlinks", [])
++    require(isinstance(declared, list), "Directory alias inventory must be a list")
++    for item in declared:
++        path, target = relative_path(item["path"]), item["target"]
++        require(path not in aliases, "Directory alias is duplicated: " + path)
++        require(isinstance(target, str) and target and "\0" not in target and not target.startswith("/"),
++                "Directory alias target is not internal: " + path)
++        require(git_blob_oid(target.encode("utf-8")) == item["gitObjectId"],
++                "Directory alias Git link text differs: " + path)
++        aliases[path] = target
++
++    def final_path(path):
++        seen = set()
++        while True:
++            require(path not in seen, "Directory alias resolution is cyclic")
++            seen.add(path)
++            parts = path.split("/")
++            for length in range(1, len(parts) + 1):
++                prefix = "/".join(parts[:length])
++                if prefix in aliases:
++                    path = posixpath.normpath(posixpath.join(posixpath.dirname(prefix), aliases[prefix], *parts[length:]))
++                    require(path != ".." and not path.startswith("../") and not path.startswith("/"),
++                            "Directory alias resolution leaves its source root")
++                    relative_path(path)
++                    break
++            else:
++                return path
++
++    ends = {path: final_path(path) for path in aliases}
++    for role, root in roots.items():
++        for path, target in aliases.items():
++            physical = root / path
++            require(physical.is_symlink(), "Directory alias is not a symlink: " + role + ":" + path)
++            require(os.readlink(physical) == target, "Directory alias target changed: " + role + ":" + path)
++            try:
++                actual = physical.resolve(strict=True)
++            except (OSError, RuntimeError) as error:
++                raise ValueError("Directory alias does not resolve: " + role + ":" + path) from error
++            require(actual.is_relative_to(root) and actual == root / ends[path] and actual.is_dir(),
++                    "Directory alias final directory changed: " + role + ":" + path)
++
++
+ def verify_prepared_inputs(receipt, base):
+     """Authenticate direct inputs AND the actual sources of every overlay."""
+     base = Path(base).resolve(strict=True)
+@@ -78,6 +123,7 @@
+     roots = {role: Path(receipt[field]).resolve(strict=True) for role, field in
+              (("original", "originalRoot"), ("candidate", "candidateRoot"))}
+     require(all(root.is_relative_to(base) for root in roots.values()), "Source root leaves private pair")
++    verify_directory_aliases(receipt, roots)
+     outputs = validate_output_paths(receipt["detachedOutputPaths"])
+     for name in ("run/tmp", "run/home", "run/npm-cache"):
+         private_directory(base, name)
+--- 17test/scripts/test_prepare_identity_qa_candidate.py
++++ 19test/scripts/test_prepare_identity_qa_candidate.py
+@@ -48,7 +48,7 @@
+                              '1 openat(AT_FDCWD, "/repo/app/node_modules/pkg/a.js", O_RDONLY) = 4\n')
+             self.assertEqual(prepare.read_inventory(trace, Path("/repo")), {"curricula/good.json"})
+ 
+-    def materialized_pair(self, directory, output_paths=None):
++    def materialized_pair(self, directory, output_paths=None, directory_aliases=False):
+         top = Path(directory)
+         repo, base = top / "host", top / "pair"
+         subprocess.run(["git", "init", "-q", str(repo)], check=True)
+@@ -62,13 +62,20 @@
+         graph_path = "curricula/DE/Gymnasium/canonical/fixture.json"
+         graph = {"landscapeId": "fixture-owner", "goals": [{"id": "old-id", "title": "Original", "requires": [], "contains": []}]}
+         files[graph_path] = json.dumps(graph).encode()
++        if directory_aliases:
++            files.update({"cases/real/review-input.json": b'{"review":"authentic"}\n',
++                          "cases/other/review-input.json": b'{"review":"different"}\n'})
+         for path, raw in files.items():
+             target = repo / path
+             target.parent.mkdir(parents=True, exist_ok=True)
+             target.write_bytes(raw)
++        if directory_aliases:
++            (repo / "cases/alias").symlink_to("real", target_is_directory=True)
++            (repo / "cases/chain").symlink_to("alias", target_is_directory=True)
+         (repo / "app/node_modules/pkg").mkdir(parents=True)
+         (repo / "app/node_modules/pkg/tool.js").write_text("installed fixture")
+-        subprocess.run(["git", "-C", str(repo), "add", *files], check=True)
++        subprocess.run(["git", "-C", str(repo), "add", *files,
++                        *(["cases/alias", "cases/chain"] if directory_aliases else [])], check=True)
+         subprocess.run(["git", "-C", str(repo), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "Fixture"], check=True)
+         commit = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
+         kernel = prepare.load_kernel(Path(__file__).resolve().parents[1])
+@@ -85,6 +92,11 @@
+                                max_private_bytes=10000, max_binary_bytes=10000, max_dependency_bytes=10000, reserve_bytes=0,
+                                accepted_dependency_tree_sha256=prepare.inventory_digest(prepare.dependency_inventory(repo / "app/node_modules")),
+                                output_paths=output_paths, read_trace=[])
++        if directory_aliases:
++            trace = top / "read-trace.txt"
++            trace.write_text("".join('1 openat(AT_FDCWD, ' + json.dumps(str(repo / path)) + ', O_RDONLY) = 3\n'
++                                    for path in ("cases/chain/review-input.json", "cases/other/review-input.json")))
++            args.read_trace = [trace]
+         base.mkdir()
+         snapshot = kernel.GitSnapshot(repo, commit)
+         try:
+@@ -94,6 +106,63 @@
+             snapshot.close()
+         receipt = json.loads((base / "preparation.json").read_text())
+         return repo, base, receipt, graph_path, asset_path, graph, after
++
++    @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
++    def test_directory_alias_type_target_and_internal_resolution_rechecked_before_command(self):
++        for role in ("original", "candidate"):
++            for mutation in ("other", "directory", "outside", "cycle", "missing", "target-alias", "target-outside"):
++                with self.subTest(role=role, mutation=mutation), tempfile.TemporaryDirectory(
++                        prefix="capture-alias-boundary-", dir="/dev/shm") as directory:
++                    _, base, receipt, _, _, _, _ = self.materialized_pair(directory, directory_aliases=True)
++                    root = Path(receipt["originalRoot" if role == "original" else "candidateRoot"])
++                    alias = root / "cases/alias"
++                    pin = hashlib.sha256((base / "preparation.json").read_bytes()).hexdigest()
++                    argv = ["python3", str(base / "run-isolated.py"), "--accepted-preparation-sha256", pin, role, "--"]
++                    code = 'from pathlib import Path;assert "authentic" in (Path.cwd().parent/"cases/chain/review-input.json").read_text()'
++                    accepted = subprocess.run(argv + ["python3", "-c", code], capture_output=True, text=True)
++                    self.assertEqual(accepted.returncode, 0, accepted.stderr)
++                    if mutation in ("missing", "target-alias", "target-outside"):
++                        (root / "cases/real/review-input.json").unlink()
++                        (root / "cases/real").rmdir()
++                        if mutation != "missing":
++                            (root / "cases/real").symlink_to("other" if mutation == "target-alias" else str(Path(directory)),
++                                                           target_is_directory=True)
++                    else:
++                        alias.unlink()
++                        if mutation == "directory":
++                            alias.mkdir()
++                            (alias / "review-input.json").write_bytes((root / "cases/real/review-input.json").read_bytes())
++                        else:
++                            alias.symlink_to({"other": "other", "outside": str(Path(directory)), "cycle": "chain"}[mutation],
++                                             target_is_directory=True)
++                    rejected = subprocess.run(argv + ["python3", "-c", "print('UNREACHABLE')"], capture_output=True, text=True)
++                    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
++                    self.assertIn("Directory alias", rejected.stderr)
++                    self.assertNotIn("UNREACHABLE", rejected.stdout)
++
++    @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
++    def test_directory_alias_is_rechecked_after_command_for_both_roots(self):
++        for role in ("original", "candidate"):
++            with self.subTest(role=role), tempfile.TemporaryDirectory(prefix="capture-alias-post-", dir="/dev/shm") as directory:
++                _, base, receipt, _, _, _, _ = self.materialized_pair(directory, directory_aliases=True)
++                root = Path(receipt["originalRoot" if role == "original" else "candidateRoot"])
++                pin = hashlib.sha256((base / "preparation.json").read_bytes()).hexdigest()
++                # The command is read-only; the test mutates its own private input from outside bwrap.
++                code = "import time;print('READY',flush=True);time.sleep(0.3)"
++                run = subprocess.Popen(["python3", str(base / "run-isolated.py"), "--accepted-preparation-sha256", pin,
++                    "original", "--", "python3", "-c", code], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
++                try:
++                    self.assertEqual(run.stdout.readline().strip(), "READY")
++                    alias = root / "cases/alias"
++                    alias.unlink()
++                    alias.symlink_to("other", target_is_directory=True)
++                    stdout, stderr = run.communicate(timeout=10)
++                    self.assertNotEqual(run.returncode, 0, stdout)
++                    self.assertIn("Directory alias", stderr)
++                finally:
++                    if run.poll() is None:
++                        run.kill()
++                        run.communicate()
+ 
+     @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
+     def test_small_actual_git_materializer_has_private_assets_dependencies_projection_and_full_index(self):

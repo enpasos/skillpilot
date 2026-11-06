@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-private-capture-component-review",
+  "date": "2026-11-06",
+  "status": "three-reproduced-holds-before-large-capture-or-qa",
+  "reviewedAuthorReceipt": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-step-2026-11-06.json",
+    "sha256": "369904414dd9971f8ee3da8ce10b0b38d0e4518cbb33b63d731371c73396693d",
+    "immutableCopy": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/author-receipt.json",
+      "sha256": "369904414dd9971f8ee3da8ce10b0b38d0e4518cbb33b63d731371c73396693d",
+      "bytes": 6681
+    }
+  },
+  "reviewedCodeAndTestPins": [
+    {
+      "originalPath": "scripts/identity_qa_private_capture.py",
+      "archivedPath": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/scripts/identity_qa_private_capture.py",
+      "sha256": "6ed59ab707105c4b53f42327071d6aa4016cfe3c0f4fa37498fc2fa351ec0609",
+      "bytes": 12219
+    },
+    {
+      "originalPath": "scripts/prepare_identity_qa_candidate.py",
+      "archivedPath": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/scripts/prepare_identity_qa_candidate.py",
+      "sha256": "7979a6690c856ca4299840c0453f4fe544628561b33d38b4335517874cffca08",
+      "bytes": 28690
+    },
+    {
+      "originalPath": "scripts/test_identity_qa_private_capture.py",
+      "archivedPath": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+      "bytes": 7937
+    },
+    {
+      "originalPath": "scripts/test_prepare_identity_qa_candidate.py",
+      "archivedPath": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "e2081a1bd41c286e11521078888b80ab255205417691179818d251f87ca748b9",
+      "bytes": 15782
+    }
+  ],
+  "sixUnchangedSourceAPins": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "scope": {
+    "noProductionSourceOrCaptureCodeModifiedByReviewer": true,
+    "noCanonicalDataOrQaRecordsChanged": true,
+    "noLargeCopies": true,
+    "fullSourceAAuthorityFixtureClaimed": false,
+    "fullCandidateQaExecuted": false,
+    "fullOriginalQaExecuted": false,
+    "ciPassClaimed": false,
+    "runtimeActivationAllowed": false,
+    "qaValidityClaimed": false
+  },
+  "actualExistingTests": {
+    "command": "python3 -B -m unittest discover -s scripts -p test_*identity_qa*py -v",
+    "testCount": 14,
+    "failures": 0,
+    "skips": 0,
+    "bwrapMethods": 4,
+    "log": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/existing-14-tests.txt",
+      "sha256": "772bfdf41f0845a88f0d60b4fe9085aa7a6bf984196cc36978a04a5a4413ecc2",
+      "bytes": 3005
+    },
+    "interpretation": "Independent re-execution of all14 existing tests on the exact four frozen files; this is component evidence only."
+  },
+  "actualPeerCounterprobes": {
+    "harness": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py",
+      "sha256": "df0ce7da920d83bd22fd5725318e060fb291fc7ed5bfa72faaa346ba5167da3c",
+      "bytes": 7861
+    },
+    "results": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.json",
+      "sha256": "23027bfc451136dbd0666b96c794b37bd753b8414b0f17e0016de1413423e7fc",
+      "bytes": 3830
+    },
+    "stdout": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.txt",
+      "sha256": "a3969009f009e762486e73726cbf86d08545be9a04b420707f9847cc7f6bdb90",
+      "bytes": 5294
+    },
+    "probeCount": 6,
+    "observedBoundaryViolations": 4,
+    "independentHoldGroups": 3,
+    "correctRejections": 2,
+    "allCases": [
+      {
+        "case": "TEXT_SELECTED_INPUT_TAMPER",
+        "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+        "mutation": {
+          "path": "app/scripts/fixture.js",
+          "declaredOriginalHash": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+          "oldSha256": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+          "newSha256": "bf9f101e7a7ef39e52a2adb0e899079e67f7ae0afd9a14d9ef19b21c4651aa4e",
+          "preparationReceiptChanged": false
+        },
+        "exitCode": 0,
+        "stdout": "tampered bound producer text accepted\n",
+        "stderr": ""
+      },
+      {
+        "case": "PROJECTED_GRAPH_TEXT_TAMPER",
+        "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+        "mutation": {
+          "path": "curricula/DE/Gymnasium/canonical/capture-fixture.json",
+          "projectedDocumentListed": true,
+          "oldSha256": "f6eeda895a1975861fb039e56cf068e15401ccad99c180bd3eff12eddc85d973",
+          "newSha256": "729eb2418343be5d6ec08a5aee13de7ca66063e4c27b4030cd6c54e82fd998ec",
+          "preparationReceiptChanged": false
+        },
+        "exitCode": 0,
+        "stdout": "tampered projected graph accepted\n",
+        "stderr": ""
+      },
+      {
+        "case": "GROUPED_ASSET_ENTRY_REPLACEMENT",
+        "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+        "mutation": {
+          "logicalAsset": "app/public/assets/goal-visualizations/a.bin",
+          "storeBlobStillMatchesReceipt": true,
+          "mountedAssetSha256": "1a5360262908a36cb53764901d2f675d3b58e8442392e2a4cdf8301b0f50e177",
+          "expectedSha256": "9ad0a72abe0e03602cbb9b12edb72cf0c72d66cea70602a59d206863093a31da",
+          "preparationReceiptChanged": false
+        },
+        "exitCode": 0,
+        "stdout": "unbound grouped asset bytes accepted\n",
+        "stderr": ""
+      },
+      {
+        "case": "CONTROL_STORE_BLOB_TAMPER_REJECTED",
+        "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+        "mutation": {
+          "logicalAsset": "app/public/assets/goal-visualizations/a.bin"
+        },
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Private asset changed: app/public/assets/goal-visualizations/a.bin\n"
+      },
+      {
+        "case": "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE",
+        "boundary": "actual tiny Git materializer, arbitrary outside-capture sentinel owned by this probe only",
+        "before": "DO NOT CHANGE",
+        "after": "",
+        "outsideSentinelChanged": true,
+        "returnedPreparation": true,
+        "outputPathIncluded": true
+      },
+      {
+        "case": "HOST_WORKTREE_VIA_PARENT_PROCESS_ROOT",
+        "boundary": "actual bwrap launcher and probe-owned host sentinel only; no real private file accessed",
+        "directHostPathMaskedExpected": true,
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/202238/root/dev/shm/capture-proc-peer-8xq3f66m/host/private-probe-sentinel.txt'\n"
+      }
+    ],
+    "reproduceCommand": "SKILLPILOT_CAPTURE_REVIEW_REPO=/path/to/repo-with-reviewed-four-scripts SKILLPILOT_CAPTURE_REVIEW_OUTPUT=/private/probes.json python -B qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py",
+    "syntheticBoundary": "Each case uses a tiny actual Git commit and the production materialize function and actual bwrap launcher. The tiny proof describes one projection only; it is not asserted to satisfy the full593-source/164-rule Source-A authority. The absolute-path case uses only a temporary probe-owned sentinel outside its private pair."
+  },
+  "findings": [
+    {
+      "id": "CAP-PEER-01",
+      "status": "hold-reproduced",
+      "severity": "high",
+      "summary": "Launcher accepts mutated bound producer text and projected goal bytes with unchanged externally pinned preparation receipt.",
+      "codeAnchors": [
+        "scripts/prepare_identity_qa_candidate.py:323",
+        "scripts/prepare_identity_qa_candidate.py:337",
+        "scripts/prepare_identity_qa_candidate.py:427"
+      ],
+      "cases": [
+        "TEXT_SELECTED_INPUT_TAMPER",
+        "PROJECTED_GRAPH_TEXT_TAMPER"
+      ],
+      "mechanism": "The materializer initially verifies text and projection bytes, but verify_inputs later checks only hardlink ownership, captured binary store hashes and dependency inventory. It never checks selectedFiles text hashes or role-specific expected candidate hashes. Both actual tiny materializer/bwrap cases returned0 and consumed changed bytes.",
+      "minimalRepair": "Persist role-specific expected hashes derived from authenticated Git/source proof and its checked projection, not hashes freshly accepted from mutable files at launch. Verify every selected physical text input and projected definition before and after execution and before extending a capture. Preserve separate original/candidate expected bytes, including text reached through grouped asset aliases.",
+      "requiredNegativeControls": [
+        "Changed authentic producer JS/TS text rejects before command executes.",
+        "Changed original source or projected goal non-ID text rejects with unchanged receipt.",
+        "Correct role-specific projection passes; legitimate declared report output remains writable without qualifying it as source."
+      ]
+    },
+    {
+      "id": "CAP-PEER-02",
+      "status": "hold-reproduced",
+      "severity": "high",
+      "summary": "Grouped asset directory can serve substituted bytes while the checked store blob remains authentic.",
+      "codeAnchors": [
+        "scripts/prepare_identity_qa_candidate.py:107",
+        "scripts/prepare_identity_qa_candidate.py:429",
+        "scripts/prepare_identity_qa_candidate.py:448"
+      ],
+      "cases": [
+        "GROUPED_ASSET_ENTRY_REPLACEMENT"
+      ],
+      "mechanism": "The receipt checks the content-addressed capture blob, but bwrap mounts the asset-forest directory. Replacing one forest hardlink by a separate private file leaves blob SHA and complete private hardlink counts valid. The actual producer reads the replacement and returns0.",
+      "minimalRepair": "Bind and verify the actual per-role mounted forest entries, their expected logical paths and bytes, aliases and private inode targets. Verify exact expected directory membership for these explicitly captured mount forests; a correct unused blob is insufficient. Reject switched, escaping or extra entries rather than trusting only the top-level mount root.",
+      "requiredNegativeControls": [
+        "Private replacement inode in grouped binary entry rejects although canonical store blob is unchanged.",
+        "Changed grouped text or redirected internal alias rejects.",
+        "Unexpected forest entry rejects if it is visible through the supposedly closed captured mount.",
+        "Unchanged grouped original/candidate text and deduplicated private binary inputs remain usable."
+      ]
+    },
+    {
+      "id": "CAP-PEER-03",
+      "status": "hold-reproduced",
+      "severity": "high",
+      "summary": "Unvalidated absolute reportPaths entry escapes the private output roots and truncates an outside file.",
+      "codeAnchors": [
+        "scripts/prepare_identity_qa_candidate.py:218",
+        "scripts/prepare_identity_qa_candidate.py:365",
+        "scripts/prepare_identity_qa_candidate.py:445"
+      ],
+      "cases": [
+        "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE"
+      ],
+      "mechanism": "Path composition with an absolute report path discards run/role/outputs and root. The materializer unlinks/touches the probe-owned outside sentinel and returns a preparation containing the absolute output. The existing intersection with A-bound source paths does not validate path syntax or containment. Only a private sentinel created by this review was affected.",
+      "minimalRepair": "Validate the entire output-path set before any output preparation: canonical nonempty relative paths, no absolute/parent traversal or unsafe aliases, no crossing of run/output or source-root boundaries after resolving parents. Fail closed on collision with actual source/tool inputs and keep output authorization explicit. The launcher must also reject escaped receipt paths, not simply compose them.",
+      "requiredNegativeControls": [
+        "Absolute and parent-traversal output paths reject and leave an outside sentinel byte-identical.",
+        "An internal output-parent alias that escapes the private run tree rejects before writes.",
+        "Attempt to turn a captured source/tool input into a writable output rejects.",
+        "Valid explicitly authorized report path writes only its detached private slot."
+      ]
+    }
+  ],
+  "confirmedComponentStrengths": [
+    {
+      "area": "Git and alias authentication",
+      "evidence": "Frozen tests independently pass native Git blob framing/OID and expectedSHA guards; file/directory aliases resolve from pinned Git entries, and external/cyclic aliases reject. Current host asset mutation does not change captured bytes."
+    },
+    {
+      "area": "Private inodes and hardlink ownership",
+      "evidence": "Initial copies own their inodes, duplicate captured blobs are shared only privately, and host-linked reused blobs reject. The peer forest counterexample demonstrates that correct ownership alone does not imply correct logical mount content."
+    },
+    {
+      "area": "Installed dependencies",
+      "evidence": "Separate accepted physical tree digest plus pinned Git package-lock is explicit; no installed bytes are falsely labelled Git content. Native nofollow file/parent traversal, executable preservation, internal alias handling, mutation-during-copy and before/after dependency checks are present; frozen negative tests pass."
+    },
+    {
+      "area": "Locks and budgets",
+      "evidence": "The same exclusive preparation lock rejects concurrent cooperating extension/run; invalid binary size budget rejects in the small tests. The real code bounds text/projection, binary and dependency allocations and checks free-space reserve before writes. No full planned9.79GB capture or production reserve measurement was performed by this review."
+    },
+    {
+      "area": "Small isolation",
+      "evidence": "Actual bwrap tests mask the host worktree, make captured source/assets/dependencies readonly, allow only the declared private report slot and reject binary-store tampering. An additional attempt to read the review-owned masked host sentinel through /proc/<parent>/root failed with PermissionError. These observations do not claim a general confidential-host sandbox or a complete producer read closure."
+    }
+  ],
+  "remainingIndependentOfThreeFixes": [
+    "Full selected file and directory-discovery closure for actual producers, including relative and FD-relative reads, remains explicitly unproven.",
+    "All runtime/tool inputs actually used by genuine producer commands must be bound; the broadly readonly host OS is not thereby a fully pinned toolchain.",
+    "The launcher/materializer component does not replace independent Source-A generate/verify or original/candidate definition and QA-reader checks.",
+    "Identity-only Kind/A/M/V adapter work, real original/candidate native producer execution and truthful failed floors remain separate; no D/P or quality approval is transported by this component.",
+    "A large capture still needs a fresh resource check and coordinated source/code snapshot. Do not extrapolate small fixtures or inherited counts to complete QA."
+  ],
+  "minimalNextStep": "Preserve this exact before packet. Author writes real failing regressions for the three hold groups, repairs only the private capture/preparer boundaries, reruns small tests and requests an independent review of new code pins. Source-A v1/schema/kernel, production producers, source definitions and learner state remain untouched."
+}

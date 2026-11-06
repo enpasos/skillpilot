@@ -1,0 +1,464 @@
+--- before/scripts/identity_qa_private_capture.py
++++ after/scripts/identity_qa_private_capture.py
+@@ -26,8 +26,121 @@
+ 
+ def relative_path(path):
+     require(isinstance(path, str) and path and not path.startswith("/")
+-            and all(part not in ("", ".", "..") for part in path.split("/")), "Unsafe capture path")
++            and "\0" not in path and all(part not in ("", ".", "..") for part in path.split("/")), "Unsafe capture path")
+     return path
++
++
++def validate_output_paths(paths, bound_inputs=()):
++    require(isinstance(paths, list), "Output paths must be an explicit list")
++    result = []
++    for path in paths:
++        relative_path(path)
++        require("\\" not in path and path.strip() == path
++                and not (len(path) >= 2 and path[0].isalpha() and path[1] == ":"), "Unsafe output path")
++        require(path != ".git" and not path.startswith((".git/", "app/node_modules/")), "Reserved output path")
++        require(not any(path == source or path.startswith(source + "/") or source.startswith(path + "/")
++                        for source in bound_inputs), "A source input cannot become a writable output")
++        result.append(path)
++    require(not any(a != b and a.startswith(b + "/") for a in result for b in result), "Overlapping output paths")
++    return sorted(set(result))
++
++
++def private_path(base, relative):
++    root = Path(base).resolve(strict=True)
++    result = root / relative_path(relative)
++    require(result.resolve(strict=False).is_relative_to(root), "Capture path escapes its declared root")
++    return result
++
++
++def private_directory(base, relative, create=False):
++    path = Path(base).resolve(strict=True)
++    for part in relative_path(relative).split("/"):
++        path = path / part
++        require(not path.is_symlink(), "Private directory cannot be redirected through a symlink")
++        if create:
++            path.mkdir(exist_ok=True)
++        require(path.is_dir(), "Required private directory is missing")
++    return path
++
++
++def file_binding(path):
++    require(Path(path).is_file(), "Captured input is not a file: " + str(path))
++    with Path(path).open("rb") as stream:
++        sha = hashlib.file_digest(stream, "sha256").hexdigest()
++    return {"sha256": sha, "bytes": Path(path).stat().st_size}
++
++
++def verify_prepared_inputs(receipt, base):
++    """Authenticate direct inputs AND the actual sources of every overlay."""
++    base = Path(base).resolve(strict=True)
++    require(receipt.get("captureFormat") == 3, "Complete private input bindings are required")
++    verify_private_hardlinks(base)
++    roots = {role: Path(receipt[field]).resolve(strict=True) for role, field in
++             (("original", "originalRoot"), ("candidate", "candidateRoot"))}
++    require(all(root.is_relative_to(base) for root in roots.values()), "Source root leaves private pair")
++    outputs = validate_output_paths(receipt["detachedOutputPaths"])
++    for name in ("run/tmp", "run/home", "run/npm-cache"):
++        private_directory(base, name)
++    selected = receipt["selectedFiles"]
++    require(isinstance(selected, list) and selected, "Selected input scope is empty")
++    by_path = {}
++    for item in selected:
++        path = relative_path(item["path"])
++        require(path not in by_path and path not in outputs, "Duplicate or writable selected input")
++        by_path[path] = item
++    projected = {}
++    for item in receipt["projectedDocumentBindings"]:
++        path = relative_path(item["path"])
++        require(path in by_path and path not in projected, "Unknown/duplicate projected document")
++        projected[path] = item
++    require(set(projected) == set(receipt["projectedDocuments"]), "Projected input binding scope differs")
++    binaries = {}
++    for item in receipt["binaryReadOnlyMounts"]:
++        path = relative_path(item["path"])
++        require(path in by_path and path not in binaries and item.get("source") == "private-git-blob-capture", "Invalid binary capture scope")
++        captured = Path(item["hostPath"]).resolve(strict=True)
++        require(captured.is_relative_to(base), "Binary capture leaves private pair")
++        require(file_binding(captured) == {key: item[key] for key in ("sha256", "bytes")}, "Private asset changed: " + path)
++        require({key: by_path[path][key] for key in ("sha256", "bytes")} == {key: item[key] for key in ("sha256", "bytes")},
++                "Binary selected-input binding differs")
++        binaries[path] = item
++    mounts = {role: [] for role in roots}
++    for item in receipt.get("directoryReadOnlyMounts", []):
++        role, prefix = item["rootRole"], relative_path(item["path"])
++        require(role in mounts and not any(prefix == mount[0] for mount in mounts[role]), "Ambiguous asset overlay")
++        source = Path(item["hostPath"]).resolve(strict=True)
++        require(source.is_relative_to(base) and source.is_dir(), "Asset forest leaves private pair")
++        expected = {path[len(prefix) + 1:] for path in by_path if path.startswith(prefix + "/")}
++        actual = set()
++        for directory, directories, files in os.walk(source, followlinks=False):
++            require(not any((Path(directory) / name).is_symlink() for name in directories), "Asset forest contains an undeclared directory alias")
++            actual.update((Path(directory) / name).relative_to(source).as_posix() for name in files)
++        require(actual == expected and item["selectedFiles"] == len(expected), "Asset forest file scope differs")
++        mounts[role].append((prefix, source))
++    for role, root in roots.items():
++        output_root = private_directory(base, "run/" + role + "/outputs")
++        for path in outputs:
++            destination, slot = private_path(root, path), private_path(output_root, path)
++            require(not destination.is_symlink() and destination.is_file(), "Output mount destination is not a private regular file")
++            require(not slot.is_symlink() and slot.is_file() and slot.stat().st_nlink == 1,
++                    "Generated output slot is not an independent private file")
++        for path, item in by_path.items():
++            binding = projected[path] if role == "candidate" and path in projected else item
++            expected = {key: binding[key] for key in ("sha256", "bytes")}
++            if path in binaries:
++                require(path not in projected, "Binary projection is not supported")
++            else:
++                require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)
++            covering = [(prefix, source) for prefix, source in mounts[role] if path.startswith(prefix + "/")]
++            require(len(covering) <= 1, "Overlapping asset overlays are not supported")
++            if covering:
++                prefix, source = covering[0]
++                mounted = source / path[len(prefix) + 1:]
++                require(mounted.resolve(strict=True).is_relative_to(base), "Mounted asset leaves private pair")
++                require(file_binding(mounted) == expected, "Mounted asset input changed: " + role + ":" + path)
++    dependency_root = Path(receipt["nodeModules"]).resolve(strict=True)
++    require(dependency_root.is_relative_to(base), "Dependencies leave private pair")
++    require(inventory_digest(dependency_inventory(dependency_root)) == receipt["dependencyCapture"]["treeSha256"], "Private dependency tree changed")
+ 
+ 
+ def snapshot_blob(snapshot, logical):
+--- before/scripts/prepare_identity_qa_candidate.py
++++ after/scripts/prepare_identity_qa_candidate.py
+@@ -22,6 +22,7 @@
+     PrivateBlobCapture, capture_dependencies, dependency_inventory, inventory_digest,
+     private_write,
+     verify_private_hardlinks,
++    validate_output_paths, private_path, private_directory, file_binding, verify_prepared_inputs,
+ )
+ 
+ 
+@@ -188,9 +189,29 @@
+     if existed:
+         k.require(args.extend, "Output must be a new private directory, or use --extend before running QA")
+         previous = json.loads((base / "preparation.json").read_text())
+-        k.require(previous.get("captureFormat") == 2, "Historical host-mounted roots cannot be silently upgraded")
++        k.require(previous.get("captureFormat") == 3, "Historical incomplete roots cannot be silently upgraded")
+         k.require(previous["sourceBase"] == args.expected_base_commit and previous["sourceProofRawSha256"] == args.accepted_manifest_sha256,
+                   "Existing isolated root belongs to another source proof")
++    bound = {item["path"]: item["sha256"] for item in proof["catalog"]["sourceFiles"]}
++    for item in proof["documents"]:
++        path, expected = item["path"], item["sourceSha256"]
++        k.require(path not in bound or bound[path] == expected, "Inconsistent source binding")
++        bound[path] = expected
++    output_config = json.loads(args.output_paths.read_text()) if args.output_paths else {"reportPaths": [], "configs": []}
++    k.require(isinstance(output_config, dict) and isinstance(output_config.get("reportPaths"), list)
++              and isinstance(output_config.get("configs"), list), "Invalid output/config declarations")
++    default_outputs = [
++        "docs/qa-ci/status/curriculum-quality-status.json", "docs/qa-ci/status/curriculum-quality-status.md",
++        "docs/qa-ci/status/goal-source-rationale-coverage.json", "docs/qa-ci/status/goal-source-rationale-coverage.md"]
++    output_paths = validate_output_paths(output_config["reportPaths"] + default_outputs, bound)
++    declared_outputs = set(default_outputs)
++    for entry in output_config["configs"]:
++        config_path = entry["configPath"]
++        k.require(config_path in snapshot.entries, "Output declaration config is absent from pinned Git")
++        config = k.parse_json(snapshot.read(config_path))
++        if config.get("reportPath"):
++            declared_outputs.update(validate_output_paths([config["reportPath"]], bound))
++    k.require(set(output_paths).issubset(declared_outputs), "Output is not declared by a pinned native config")
+     original, candidate, run = (base / name for name in ("original80", "projectedA80", "run"))
+     for root in (original, candidate, run):
+         root.mkdir(exist_ok=bool(previous))
+@@ -210,14 +231,6 @@
+                   "Live dependency lock differs from pinned Git base")
+         dependencies = capture_dependencies(snapshot, repo / "app/node_modules", base / "capture/node_modules",
+                                             args.accepted_dependency_tree_sha256, args.max_dependency_bytes, args.reserve_bytes)
+-    bound = {item["path"]: item["sha256"] for item in proof["catalog"]["sourceFiles"]}
+-    for item in proof["documents"]:
+-        path, expected = item["path"], item["sourceSha256"]
+-        k.require(path not in bound or bound[path] == expected, "Inconsistent source binding")
+-        bound[path] = expected
+-    output_paths = json.loads(args.output_paths.read_text())["reportPaths"] if args.output_paths else []
+-    output_paths += ["docs/qa-ci/status/curriculum-quality-status.json", "docs/qa-ci/status/curriculum-quality-status.md", "docs/qa-ci/status/goal-source-rationale-coverage.json", "docs/qa-ci/status/goal-source-rationale-coverage.md"]
+-    k.require(not set(output_paths).intersection(bound), "A source cannot become a writable output")
+     selected = set(bound)
+     # Small explicit tooling/data closure; historical quality evidence comes
+     # only from the bound inventory and successful runtime read inventory.
+@@ -238,7 +251,7 @@
+             selected.add(path)
+     selected.update(path for path in ("app/package.json", "app/package-lock.json", "app/tsconfig.json", "app/tsconfig.node.json", "docs/qa-ci/applicability-accepted-warnings.json") if path in snapshot.entries)
+     if args.output_paths:
+-        for entry in json.loads(args.output_paths.read_text())["configs"]:
++        for entry in output_config["configs"]:
+             path = entry["configPath"]
+             k.require(path in snapshot.entries, "Active review config is absent at pinned base: " + path)
+             selected.add(path)
+@@ -324,6 +337,7 @@
+                        "binaryReadOnlyMount": not text})
+     materialize_directory_links((original, candidate), directory_links.values())
+     changed = []
++    projected_bindings = []
+     projected_bytes = 0
+     for document in proof["documents"]:
+         if document["handling"] == "preserve-exact-bytes":
+@@ -348,6 +362,7 @@
+             k.require(k.digest(target.read_bytes()) == document["hypotheticalCanonicalSha256"], "Projected copy differs")
+             k.require(target.stat().st_ino != (original / path).stat().st_ino, "Projection shares original inode")
+             changed.append(path)
++            projected_bindings.append({"path": path, "sha256": k.digest(data), "bytes": len(data)})
+     # No shared index, hooks, config or worktree administration.
+     object_dir = subprocess.check_output(["git", "rev-parse", "--git-path", "objects"], cwd=repo, text=True).strip()
+     object_dir = str((repo / object_dir).resolve())
+@@ -363,11 +378,15 @@
+     k.require(k.digest((base / "source-a.json").read_bytes()) == args.accepted_manifest_sha256, "Copied A differs")
+     for name, root in (("original", original), ("candidate", candidate)):
+         for path in output_paths:
+-            slot = run / name / "outputs" / path
++            output_root = private_directory(base, "run/" + name + "/outputs", create=True)
++            slot = private_path(output_root, path)
++            target = private_path(root, path)
++            resolved_inputs = {private_path(root, source).resolve(strict=False) for source in bound}
++            k.require(target.resolve(strict=False) not in resolved_inputs, "Output alias points to a bound source")
+             slot.parent.mkdir(parents=True, exist_ok=True)
++            k.require(not slot.is_symlink(), "Output slot cannot redirect to another file")
+             if not slot.exists():
+-                slot.write_bytes((root / path).read_bytes() if (root / path).is_file() else b"")
+-            target = root / path
++                slot.write_bytes(target.read_bytes() if target.is_file() else b"")
+             target.parent.mkdir(parents=True, exist_ok=True)
+             if target.exists():
+                 target.unlink()
+@@ -383,7 +402,7 @@
+     else:
+         capture_tool.write_bytes(tool_bytes)
+         capture_tool.chmod(0o444)
+-    receipt = {"schemaVersion": 1, "captureFormat": 2, "purpose": "isolated-development-qa-only", "runtimeActivationAllowed": False, "qaValidityClaimed": False,
++    receipt = {"schemaVersion": 1, "captureFormat": 3, "purpose": "isolated-development-qa-only", "runtimeActivationAllowed": False, "qaValidityClaimed": False,
+                "sourceBase": args.expected_base_commit, "sourceProofRawSha256": args.accepted_manifest_sha256,
+                "hostRepo": str(repo), "gitObjects": object_dir, "originalRoot": str(original), "candidateRoot": str(candidate),
+                "nodeModules": dependencies["root"], "dependencyCapture": dependencies,
+@@ -391,12 +410,13 @@
+                "privateProjectionBytes": projected_bytes,
+                "captureTool": {"path": str(capture_tool), "sha256": k.digest(tool_bytes)},
+                "privateBytes": total, "selectedFiles": copied, "projectedDocuments": changed, "gitBlobFallbackPaths": git_fallbacks,
++               "projectedDocumentBindings": projected_bindings,
+                "supplementalKernelHeaderInputs": SUPPLEMENTAL_KERNEL_INPUTS,
+                "binaryReadOnlyMounts": binaries, "assetForestRoot": forest_root, "directoryReadOnlyMounts": directory_mounts,
+                "directorySymlinks": sorted(directory_links.values(), key=lambda item: item["path"]),
+                "detachedOutputPaths": sorted(set(output_paths))}
+     receipt_bytes = (json.dumps(receipt, indent=2) + "\n").encode()
+-    verify_private_hardlinks(base)
++    verify_prepared_inputs(receipt, base)
+     k.require(shutil.disk_usage(base).free - len(receipt_bytes) >= args.reserve_bytes,
+               "Final private capture reserve would be exhausted")
+     (base / "preparation.json").write_bytes(receipt_bytes)
+@@ -415,7 +435,7 @@
+ raw=(b/"preparation.json").read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=a.accepted_preparation_sha256:raise SystemExit("External preparation pin differs")
+ r=json.loads(raw);run=b/"run";root=pathlib.Path(r["originalRoot" if a.root=="original" else "candidateRoot"])
+-if r.get("captureFormat")!=2:raise SystemExit("Private immutable input capture is required")
++if r.get("captureFormat")!=3:raise SystemExit("Private immutable input capture is required")
+ def private(path):
+  value=pathlib.Path(path).resolve(strict=True)
+  if not value.is_relative_to(b):raise SystemExit("Input is outside the private capture: "+str(value))
+@@ -425,12 +445,8 @@
+ if hashlib.sha256(tool.read_bytes()).hexdigest()!=r["captureTool"]["sha256"]:raise SystemExit("Private capture verifier changed")
+ spec=importlib.util.spec_from_file_location("private_capture_verifier",tool);capture=importlib.util.module_from_spec(spec);spec.loader.exec_module(capture)
+ def verify_inputs():
+- capture.verify_private_hardlinks(b)
+- for item in r["binaryReadOnlyMounts"]:
+-  if item.get("source")!="private-git-blob-capture":raise SystemExit("Host-linked assets are not immutable captures")
+-  asset=private(item["hostPath"])
+-  if hashlib.sha256(asset.read_bytes()).hexdigest()!=item["sha256"]:raise SystemExit("Private asset changed: "+item["path"])
+- if capture.inventory_digest(capture.dependency_inventory(private(r["nodeModules"])))!=r["dependencyCapture"]["treeSha256"]:raise SystemExit("Private dependency tree changed")
++ capture.verify_prepared_inputs(r,b)
++
+ verify_inputs()
+ command=a.command[1:] if a.command[:1]==["--"] else a.command
+ if not command:raise SystemExit("A command is required after --")
+--- before/scripts/test_prepare_identity_qa_candidate.py
++++ after/scripts/test_prepare_identity_qa_candidate.py
+@@ -48,53 +48,58 @@
+                              '1 openat(AT_FDCWD, "/repo/app/node_modules/pkg/a.js", O_RDONLY) = 4\n')
+             self.assertEqual(prepare.read_inventory(trace, Path("/repo")), {"curricula/good.json"})
+ 
++    def materialized_pair(self, directory, output_paths=None):
++        top = Path(directory)
++        repo, base = top / "host", top / "pair"
++        subprocess.run(["git", "init", "-q", str(repo)], check=True)
++        files = {
++            "app/package-lock.json": b'{"lockfileVersion":3}\n',
++            "app/package.json": b'{"name":"capture-fixture"}\n',
++            "app/public/assets/goal-visualizations/a.bin": b"binary\x00asset",
++            "not-selected/original.bin": b"index-only\x00",
++            "app/scripts/fixture.js": b"authentic-tool\n",
++        }
++        graph_path = "curricula/DE/Gymnasium/canonical/fixture.json"
++        graph = {"landscapeId": "fixture-owner", "goals": [{"id": "old-id", "title": "Original", "requires": [], "contains": []}]}
++        files[graph_path] = json.dumps(graph).encode()
++        for path, raw in files.items():
++            target = repo / path
++            target.parent.mkdir(parents=True, exist_ok=True)
++            target.write_bytes(raw)
++        (repo / "app/node_modules/pkg").mkdir(parents=True)
++        (repo / "app/node_modules/pkg/tool.js").write_text("installed fixture")
++        subprocess.run(["git", "-C", str(repo), "add", *files], check=True)
++        subprocess.run(["git", "-C", str(repo), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "Fixture"], check=True)
++        commit = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
++        kernel = prepare.load_kernel(Path(__file__).resolve().parents[1])
++        after = copy.deepcopy(graph)
++        after["goals"][0]["id"] = "00000000-0000-4000-8000-000000000001"
++        asset_path = "app/public/assets/goal-visualizations/a.bin"
++        proof = {"catalog": {"sourceFiles": [{"path": graph_path, "sha256": kernel.digest(files[graph_path])}]}, "documents": [
++            {"path": graph_path, "handling": "project-typed-fields", "sourceSha256": kernel.digest(files[graph_path]),
++             "hypotheticalCanonicalSha256": kernel.digest(kernel.stable(after)), "fields": [{"pointer": "/goals/0/id", "kind": "value", "before": "old-id", "after": after["goals"][0]["id"]}]},
++            {"path": asset_path, "handling": "preserve-exact-bytes", "sourceSha256": kernel.digest(files[asset_path])},
++        ]}
++        raw = json.dumps(proof).encode()
++        args = SimpleNamespace(expected_base_commit=commit, accepted_manifest_sha256=kernel.digest(raw), extend=False,
++                               max_private_bytes=10000, max_binary_bytes=10000, max_dependency_bytes=10000, reserve_bytes=0,
++                               accepted_dependency_tree_sha256=prepare.inventory_digest(prepare.dependency_inventory(repo / "app/node_modules")),
++                               output_paths=output_paths, read_trace=[])
++        base.mkdir()
++        snapshot = kernel.GitSnapshot(repo, commit)
++        try:
++            # Test only the materializer boundary, not a synthetic A authority.
++            prepare.materialize(args, repo, kernel, proof, {}, snapshot, base, False, raw)
++        finally:
++            snapshot.close()
++        receipt = json.loads((base / "preparation.json").read_text())
++        return repo, base, receipt, graph_path, asset_path, graph, after
++
+     @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
+     def test_small_actual_git_materializer_has_private_assets_dependencies_projection_and_full_index(self):
+         with tempfile.TemporaryDirectory(prefix="skillpilot-materializer-test-", dir="/dev/shm") as directory:
+-            top = Path(directory)
+-            repo, base = top / "host", top / "pair"
+-            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+-            files = {
+-                "app/package-lock.json": b'{"lockfileVersion":3}\n',
+-                "app/package.json": b'{"name":"capture-fixture"}\n',
+-                "app/public/assets/goal-visualizations/a.bin": b"binary\x00asset",
+-                "not-selected/original.bin": b"index-only\x00",
+-            }
+-            graph_path = "curricula/DE/Gymnasium/canonical/fixture.json"
+-            graph = {"landscapeId": "fixture-owner", "goals": [{"id": "old-id", "title": "Original", "requires": [], "contains": []}]}
+-            files[graph_path] = json.dumps(graph).encode()
+-            for path, raw in files.items():
+-                target = repo / path
+-                target.parent.mkdir(parents=True, exist_ok=True)
+-                target.write_bytes(raw)
+-            (repo / "app/node_modules/pkg").mkdir(parents=True)
+-            (repo / "app/node_modules/pkg/tool.js").write_text("installed fixture")
+-            subprocess.run(["git", "-C", str(repo), "add", *files], check=True)
+-            subprocess.run(["git", "-C", str(repo), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "Fixture"], check=True)
+-            commit = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"], text=True).strip()
+-            kernel = prepare.load_kernel(Path(__file__).resolve().parents[1])
+-            after = copy.deepcopy(graph)
+-            after["goals"][0]["id"] = "00000000-0000-4000-8000-000000000001"
+-            asset_path = "app/public/assets/goal-visualizations/a.bin"
+-            proof = {"catalog": {"sourceFiles": [{"path": graph_path, "sha256": kernel.digest(files[graph_path])}]}, "documents": [
+-                {"path": graph_path, "handling": "project-typed-fields", "sourceSha256": kernel.digest(files[graph_path]),
+-                 "hypotheticalCanonicalSha256": kernel.digest(kernel.stable(after)), "fields": [{"pointer": "/goals/0/id", "kind": "value", "before": "old-id", "after": after["goals"][0]["id"]}]},
+-                {"path": asset_path, "handling": "preserve-exact-bytes", "sourceSha256": kernel.digest(files[asset_path])},
+-            ]}
+-            raw = json.dumps(proof).encode()
+-            args = SimpleNamespace(expected_base_commit=commit, accepted_manifest_sha256=kernel.digest(raw), extend=False,
+-                                   max_private_bytes=10000, max_binary_bytes=10000, max_dependency_bytes=10000, reserve_bytes=0,
+-                                   accepted_dependency_tree_sha256=prepare.inventory_digest(prepare.dependency_inventory(repo / "app/node_modules")),
+-                                   output_paths=None, read_trace=[])
+-            base.mkdir()
+-            snapshot = kernel.GitSnapshot(repo, commit)
+-            try:
+-                # Test only the materializer boundary, not a synthetic A authority.
+-                prepare.materialize(args, repo, kernel, proof, {}, snapshot, base, False, raw)
+-            finally:
+-                snapshot.close()
+-            receipt = json.loads((base / "preparation.json").read_text())
+-            self.assertEqual(receipt["captureFormat"], 2)
++            repo, base, receipt, graph_path, asset_path, graph, after = self.materialized_pair(directory)
++            self.assertEqual(receipt["captureFormat"], 3)
+             self.assertEqual(json.loads((base / "original80" / graph_path).read_text()), graph)
+             self.assertEqual(json.loads((base / "projectedA80" / graph_path).read_text()), after)
+             self.assertNotEqual((base / "original80" / graph_path).stat().st_ino, (base / "projectedA80" / graph_path).stat().st_ino)
+@@ -151,7 +156,7 @@
+             (run / role / "outputs/report.txt").write_text("old-report")
+         tool = base / "capture-verifier.py"
+         tool.write_bytes(Path(prepare.__file__).with_name("identity_qa_private_capture.py").read_bytes())
+-        receipt = {"captureFormat": 2, "hostRepo": str(repo), "gitObjects": str(repo / ".git/objects"),
++        receipt = {"captureFormat": 3, "hostRepo": str(repo), "gitObjects": str(repo / ".git/objects"),
+                    "originalRoot": str(original), "candidateRoot": str(candidate), "nodeModules": dependencies["root"],
+                    "dependencyCapture": dependencies, "binaryReadOnlyMounts": binaries, "detachedOutputPaths": ["report.txt"],
+                    "captureTool": {"path": str(tool), "sha256": hashlib.sha256(tool.read_bytes()).hexdigest()}}
+@@ -162,6 +167,14 @@
+             copied = [{"path": path} for path in paths] + [{"path": prefix + "metadata.json"}]
+             _, mounts = prepare.asset_forests(repo, base, original, candidate, copied, binaries, None)
+             receipt["directoryReadOnlyMounts"] = mounts
++        selected = [{"path": "source.txt", **prepare.file_binding(original / "source.txt"), "binaryReadOnlyMount": False}]
++        selected += [{"path": item["path"], "sha256": item["sha256"], "bytes": item["bytes"], "binaryReadOnlyMount": True} for item in binaries]
++        projected = []
++        if grouped:
++            metadata_path = prefix + "metadata.json"
++            selected.append({"path": metadata_path, **prepare.file_binding(original / metadata_path), "binaryReadOnlyMount": False})
++            projected.append({"path": metadata_path, **prepare.file_binding(candidate / metadata_path)})
++        receipt.update({"selectedFiles": selected, "projectedDocuments": [item["path"] for item in projected], "projectedDocumentBindings": projected})
+         (base / "preparation.json").write_text(json.dumps(receipt))
+         launcher = base / "run-isolated.py"
+         launcher.write_text(prepare.LAUNCHER)
+@@ -226,6 +239,61 @@
+             self.assertNotEqual(rejected.returncode, 0)
+             self.assertIn("Private dependency tree changed", rejected.stderr)
+ 
++    @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
++    def test_selected_tool_and_projected_goal_text_tamper_reject_before_command(self):
++        for role in ("original", "candidate"):
++            with self.subTest(role=role), tempfile.TemporaryDirectory(prefix="capture-text-repair-", dir="/dev/shm") as directory:
++                _, base, _, graph, _, _, _ = self.materialized_pair(directory)
++                path = base / ("original80/app/scripts/fixture.js" if role == "original" else "projectedA80/" + graph)
++                path.chmod(0o600)
++                if role == "original":
++                    path.write_text("tampered-tool")
++                else:
++                    data = json.loads(path.read_text())
++                    data["goals"][0]["title"] = "Not Original"
++                    path.write_text(json.dumps(data))
++                pin = hashlib.sha256((base / "preparation.json").read_bytes()).hexdigest()
++                rejected = subprocess.run(["python3", str(base / "run-isolated.py"), "--accepted-preparation-sha256", pin,
++                    role, "--", "python3", "-c", "print('UNREACHABLE')"], capture_output=True, text=True)
++                self.assertNotEqual(rejected.returncode, 0)
++                self.assertIn("Private text input changed: " + role, rejected.stderr)
++                self.assertNotIn("UNREACHABLE", rejected.stdout)
++
++    @unittest.skipUnless(shutil.which("bwrap"), "bwrap is required")
++    def test_replaced_mounted_asset_rejects_even_when_private_store_is_authentic(self):
++        with tempfile.TemporaryDirectory(prefix="capture-forest-repair-", dir="/dev/shm") as directory:
++            _, base, receipt, _, asset, _, _ = self.materialized_pair(directory)
++            mount = next(item for item in receipt["directoryReadOnlyMounts"]
++                         if item["rootRole"] == "original" and item["path"] == "app/public/assets/goal-visualizations")
++            mounted = Path(mount["hostPath"]) / "a.bin"
++            mounted.unlink()
++            mounted.write_bytes(b"wrong\x00overlay")
++            store = next(item for item in receipt["binaryReadOnlyMounts"] if item["path"] == asset)
++            self.assertEqual(hashlib.sha256(Path(store["hostPath"]).read_bytes()).hexdigest(), store["sha256"])
++            pin = hashlib.sha256((base / "preparation.json").read_bytes()).hexdigest()
++            rejected = subprocess.run(["python3", str(base / "run-isolated.py"), "--accepted-preparation-sha256", pin,
++                "original", "--", "python3", "-c", "print('UNREACHABLE')"], capture_output=True, text=True)
++            self.assertNotEqual(rejected.returncode, 0)
++            self.assertIn("Mounted asset input changed", rejected.stderr)
++            self.assertNotIn("UNREACHABLE", rejected.stdout)
++
++    def test_unsafe_outputs_reject_before_any_outside_or_source_write(self):
++        cases = ["absolute", "../../outside-capture-sentinel.txt", "C:\\outside.txt", "docs/../outside.txt", ".git/config",
++                 "curricula/DE/Gymnasium/canonical/fixture.json", "app/scripts/fixture.js"]
++        for case in cases:
++            with self.subTest(case=case), tempfile.TemporaryDirectory(prefix="capture-output-repair-", dir="/dev/shm") as directory:
++                sentinel = Path(directory) / "outside-capture-sentinel.txt"
++                sentinel.write_text("DO NOT CHANGE")
++                path = str(sentinel) if case == "absolute" else case
++                config = Path(directory) / "outputs.json"
++                config.write_text(json.dumps({"reportPaths": [path], "configs": []}))
++                with self.assertRaisesRegex(ValueError, "Unsafe|Reserved|source input|not declared"):
++                    self.materialized_pair(directory, output_paths=config)
++                self.assertEqual(sentinel.read_text(), "DO NOT CHANGE")
++                source = Path(directory) / "host/curricula/DE/Gymnasium/canonical/fixture.json"
++                self.assertEqual(json.loads(source.read_text())["goals"][0]["title"], "Original")
++                self.assertFalse((Path(directory) / "pair/preparation.json").exists())
++
+ 
+ if __name__ == "__main__":
+     unittest.main()

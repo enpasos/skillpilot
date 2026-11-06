@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "small-private-capture-component-implemented-and-tested-production-pair-not-prepared",
+  "scope": {
+    "sourceBase": "5c9ff83586c407fd9189207c38238400c74bce51",
+    "manifest": {
+      "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "sha256": "7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209"
+    },
+    "sourceProjectionSha256": "5d479a67b5ea3ddd60963942bb5aabd333a887416475c20fb2f10fee5733cec7",
+    "laterE9AndCqrGateAndOtherSourceChangesIncluded": false,
+    "adapterCodeIsPostBaseTooling": true,
+    "normalProducerChanged": false,
+    "sourceWrites": false,
+    "existingQaRecordsChanged": false,
+    "runtimeActivationAllowed": false,
+    "qaValidityClaimed": false,
+    "fullCopiesOrPhysicalProductionPairCreated": false,
+    "identityOnlyQaAdaptersImplementedByThisStep": false
+  },
+  "codeAndTestPins": [
+    {
+      "path": "scripts/identity_qa_private_capture.py",
+      "sha256": "6ed59ab707105c4b53f42327071d6aa4016cfe3c0f4fa37498fc2fa351ec0609"
+    },
+    {
+      "path": "scripts/prepare_identity_qa_candidate.py",
+      "sha256": "7979a6690c856ca4299840c0453f4fe544628561b33d38b4335517874cffca08"
+    },
+    {
+      "path": "scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1"
+    },
+    {
+      "path": "scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "e2081a1bd41c286e11521078888b80ab255205417691179818d251f87ca748b9"
+    }
+  ],
+  "sixSourceAArtifactsUnchanged": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "captureBoundaries": [
+    "Binary bytes must match pinned Git blob object ID, length-derived object framing and any bound SHA256; Git file/directory aliases are resolved and authenticated without consulting host topology.",
+    "Captured binary blobs have private own inodes and SHA256 deduplication. The complete private hardlink set is checked so host-linked cache entries cannot be accepted as private.",
+    "Installed node_modules bytes are copied once with a separately accepted physical-tree digest. A Git-authenticated package-lock is bound; installed bytes are not falsely called Git source contents.",
+    "Captured dependencies preserve internal symlinks and executable flags; external/dangling/cyclic links and special files reject. openat traversal does not follow source-parent symlinks.",
+    "Both roots and asset forests use private inputs. Host worktree is hidden; readonly Git object storage is explicitly restored. Only declared per-run outputs and temporary directories are writable.",
+    "External preparation SHA256 is required by launcher; a shared exclusive lock prevents concurrent materialization/extension and producer runs. Private asset/dependency/hardlink checks run before and after the command.",
+    "The original materializer keeps a full pinned private Git index while only selected input bytes are physical. Candidate projections retain separate inodes and exact kernel inverse/hash checks.",
+    "Historical host-mounted roots cannot be silently upgraded through --extend. Existing A80 roots and all frozen A/schema/verifier bytes remain untouched."
+  ],
+  "tests": {
+    "command": "python3 -B -m unittest discover -s scripts -p 'test_*identity_qa*py' -v",
+    "exitCode": 0,
+    "initialControls": 12,
+    "additionalHardlinkAndConcurrentDependencyMutationControls": 2,
+    "finalControls": 14,
+    "skips": 0,
+    "bwrapTestMethods": 4,
+    "nativeBwrapAndGitMaterializerExecuted": true,
+    "log": {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-step-2026-11-06/focused-tests.txt",
+      "sha256": "a349f0f0c651cedb179d0595ff7341bb8ec2cc99ac30444f1cb3e69359f93ebe"
+    },
+    "syntheticMaterializerBoundary": "A tiny actual Git commit with one identity projection, binary assets, private dependencies and a selected subset/full index is exercised. This calls the materializer boundary, not a synthetic full Source-A authority."
+  },
+  "resourceMeasurement": {
+    "installedDependencySnapshot": {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-step-2026-11-06/measured-dependencies.json",
+      "sha256": "1e2b9d4479b11c9d1ee3cb10c2ffbf6745139f39c464440329a967b76de6c1d4"
+    },
+    "tmpfsAvailableBytesAfterSmallTests": 11754213376,
+    "plannedTextUniqueAssetsProjectionsAndOneDependencySnapshotBytes": 9792811778,
+    "requiredReserveBytesForLaterMaterialization": 1000000000,
+    "fullTreeCopyPermitted": false,
+    "largePairPrepared": false,
+    "nextLargeRunNeedsFreshResourceMeasurementAndRootSafepoint": true
+  },
+  "profileBoundary": "Current Source-A remains the frozen v1 proof on5c9. Root/Astra are preparing exact relocation of seven audit artifacts into existing qa-artifacts classification; this step does not change any profile or apply that relocation.",
+  "remainingBeforeFullQa": [
+    "Mechanical seven-artifact archival and new exact current Source-A proof per Root order.",
+    "Identity-only Kind/A/M/V joins with actual original validation and original fingerprints; no D/P adapter as native inputs are unchanged.",
+    "Math-Duration-policy original repair and any independently justified technical binding transport; no generic hash rewrite.",
+    "Freeze actual complete selected input/read closure, explicitly bind all remaining runtime/tool inputs, audit candidate reads including relative/FD-relative paths and closed directory discovery.",
+    "Run genuine original/candidate producers and capture all actual results; this component test is not full physical candidate-QA or a floor/M6/M7 pass."
+  ]
+}

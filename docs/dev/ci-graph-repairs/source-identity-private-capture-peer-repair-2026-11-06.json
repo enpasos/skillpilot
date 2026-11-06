@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "bounded-capture-peer-repair-verified",
+  "purpose": "Small isolated-development capture component; no Source-A acceptance, full QA or learner runtime activation.",
+  "authorContextCommit": "3bc27a9b0d110bd085d6cf3f131a1bc5848fdbbe",
+  "implementationFiles": [
+    {
+      "livePath": "scripts/identity_qa_private_capture.py",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/identity_qa_private_capture.py",
+      "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+      "bytes": 21528
+    },
+    {
+      "livePath": "scripts/prepare_identity_qa_candidate.py",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/prepare_identity_qa_candidate.py",
+      "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+      "bytes": 29635
+    },
+    {
+      "livePath": "scripts/test_identity_qa_private_capture.py",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+      "bytes": 7937
+    },
+    {
+      "livePath": "scripts/test_prepare_identity_qa_candidate.py",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+      "bytes": 25904
+    }
+  ],
+  "historicalBeforeBytes": {
+    "initial14": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/source-pins.json",
+      "sha256": "0e4dc900026d6ad6ec661943b7e505b40326074e7c488413eb97f52ea8b34271",
+      "bytes": 2548
+    },
+    "intermediate17": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/source-pins.json",
+      "sha256": "8d5b7fbe84eb0b3bc88d15fb4a2db5050281f53742d671fca20de2b63609933c",
+      "bytes": 3212
+    },
+    "initialAuthorReceiptPreserved": {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-step-2026-11-06.json",
+      "sha256": "369904414dd9971f8ee3da8ce10b0b38d0e4518cbb33b63d731371c73396693d",
+      "bytes": 6681
+    },
+    "intermediateAuthorEvidencePreserved": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-before-after-observations.json",
+      "sha256": "b36f3869c1167327f408fff89410e282a997f8cdebe8a9194b98226ab6220521",
+      "bytes": 11359
+    }
+  },
+  "closedCounterexamples": [
+    {
+      "id": "CAP-PEER-01",
+      "before": "Selected producer text and projected goal title changed without changing preparation receipt; launcher returned zero.",
+      "repair": "Authenticate all original selected text and candidate projected text hash/lengths before and after command; projected bindings must exactly match projected documents.",
+      "actualReproduction": "original-holds-before14.json -> original-holds-final19.json"
+    },
+    {
+      "id": "CAP-PEER-02",
+      "before": "Mounted forest entry replaced by an independent wrong inode while private content-addressed store remained authentic; launcher returned zero.",
+      "repair": "Validate complete actual mount file inventory and each mounted role-specific file hash/length, in addition to authentic storeblob.",
+      "actualReproduction": "original-holds-before14.json -> original-holds-final19.json"
+    },
+    {
+      "id": "CAP-PEER-03",
+      "before": "Absolute output path emptied the probe-owned outside-capture sentinel.",
+      "repair": "Validate output configuration before any capture/output I/O; safe normalized paths, declared pinned-config output authority, no source or reserved path overlap, independent private regular output slots.",
+      "actualReproduction": "original-holds-before14.json -> original-holds-final19.json",
+      "afterSentinel": "DO NOT CHANGE"
+    },
+    {
+      "id": "CAP-PEER-04",
+      "before": "Declared cases/alias link changed from real to other, receipt and every selected physical input unchanged; launcher read other bytes and returned zero.",
+      "repair": "Authenticate every declared directory alias in both roots: exact Git link blob/text, actual symlink type, declared noncyclic internal resolution, exact real internal directory. Common verification runs before and after command.",
+      "actualReproduction": "alias-hold-before17.json -> alias-hold-final19.json"
+    }
+  ],
+  "tests": {
+    "command": "python3 -B -m unittest discover -s scripts -p 'test_*identity_qa*py' -v",
+    "exitCode": 0,
+    "methods": 19,
+    "skips": 0,
+    "initialThreePeerHoldsRealRedThenGreen": true,
+    "newAliasTestsBeforeFix": {
+      "methods": 2,
+      "exitCode": 1,
+      "firstExecutedSubtestFailures": 12,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/alias-first-red.txt",
+        "sha256": "f21b1b0f0e2160d335b40ff8cd0f02482b68033508a984a0e2d3d0aade0d51b5",
+        "bytes": 17836
+      }
+    },
+    "frozenAliasTestsAgainstRetrievable17Implementation": {
+      "methods": 2,
+      "exitCode": 1,
+      "subtestFailures": 16,
+      "correctCause": "Old implementation accepts tampered aliases with exit zero; other subcases demonstrate the former generic missing-text rejection did not validate alias provenance."
+    },
+    "aliasBeforeCasesPerRoot": [
+      "different internal target",
+      "same-byte regular-directory replacement",
+      "outside absolute target",
+      "cyclic alias target",
+      "missing final directory",
+      "undeclared internal final-directory symlink",
+      "outside final-directory symlink"
+    ],
+    "aliasAfterCommandMutations": [
+      "original role link target",
+      "candidate role link target while original command executes"
+    ],
+    "positiveControls": "Genuine tiny Git snapshot, chained authentic aliases in both roots, exact candidate projection, private captured assets/dependencies, full pinned Git index and isolated declared outputs.",
+    "existingNegativeControlsPreserved": [
+      "storeblob mutation",
+      "dependency mutation",
+      "external preparation pin",
+      "run lock",
+      "host-linked inodes",
+      "outside host sentinel via parent process root"
+    ],
+    "historicalCountClarification": "The unchanged initial14 receipt marks four bwrap-decorated methods. Only three of those methods actually invoke bwrap, with four successful invocations; the fourth stops at preflight. This successor reports actual test methods and zero skips without treating decorators as executed bwrap calls.",
+    "finalLog": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/all-final19-tests.stderr.txt",
+      "sha256": "f2d9656a8d229b22a80c221ecefeee9ff87e1db22c5f3d86beda18299a11bf48",
+      "bytes": 3700
+    }
+  },
+  "reproducer": {
+    "script": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/replay_capture_peer_repairs.py",
+      "sha256": "136e266d0debdc0349b07abc3d30160a2d6dfc08c1612259cc76a3a552da862b",
+      "bytes": 6933
+    },
+    "inputs": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/replay-inputs.json",
+      "sha256": "ebb83b5363cf298435fdc177c0e3c54b0e9ad4c914452560a604039534a7e956",
+      "bytes": 7151
+    },
+    "command": "python3 -B qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/replay_capture_peer_repairs.py --output /dev/shm/skillpilot-capture-peer-replay-UNUSED",
+    "outputMustNotExist": true,
+    "actualRunExitCode": 0,
+    "summary": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/summary.json",
+      "sha256": "cc2609ecf51b591dda470f07d575e826d7b2ba45adcde72e0b3874a40cc084d8",
+      "bytes": 369
+    },
+    "boundary": "Exact archived14,17,19 implementation bytes overlaid read-only at the real module paths; same unchanged peer harnesses; only small disposable actual Git/materializer/bwrap fixtures."
+  },
+  "independentReview": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-alias-closure-review-2026-11-06.json",
+    "sha256": "5530f43798ad8385f68467c153f4f3b05bb731d899e97fb241c6d3fc679c7df2",
+    "bytes": 15135
+  },
+  "historicalFindingReviews": [
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-independent-review-2026-11-06.json",
+      "sha256": "e6be95356850b7fdb96d90f12c3484c9ddab40e276396dfee5f975ff21906c24",
+      "bytes": 17588
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-followup-review-2026-11-06.json",
+      "sha256": "de56509a814b8abde585fa5a11184a35b32950f99f70f3dddfaf10f14cec4431",
+      "bytes": 14868
+    }
+  ],
+  "sixSourceAPinsUnchanged": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e",
+      "bytes": 7282
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388",
+      "bytes": 3802
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4",
+      "bytes": 15679
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e",
+      "bytes": 1715
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b",
+      "bytes": 9673
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+      "bytes": 35183
+    }
+  ],
+  "remainingBoundaries": [
+    "No full physical original/candidate pair was prepared and no full Source-A or QA producer was run by this repair.",
+    "The small materializer fixtures deliberately do not manufacture a full593/164 Source-A authority or acceptance capability.",
+    "Kind/A/M/V identity-only native read joins remain a separate implementation step; D/P inputs remain unchanged.",
+    "Complete actual selected/read closure, relative and FD-relative read inventory, all runtime/toolchain input bindings and real resource plan remain prerequisites to a later large run.",
+    "Pre/post checks detect persistent mutations; they are not a promise against an arbitrary concurrent same-user host mutation restored between the checks.",
+    "Installed dependency bytes are separately physically pinned, with independently Git-bound lock; they are not represented as Git-authored installed files.",
+    "No B/state/runtime activation, existing review/QA-record rewrite, canonical-source change, publication or deployment."
+  ],
+  "productionSourcesWritten": false,
+  "existingQaRecordsWritten": false,
+  "runtimeActivationAllowed": false,
+  "largePairPrepared": false,
+  "boundRepairArtifacts": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-before-after-observations.json",
+      "sha256": "b36f3869c1167327f408fff89410e282a997f8cdebe8a9194b98226ab6220521",
+      "bytes": 11359
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-before17.json",
+      "sha256": "87fc1103eb540e168e858bce01fb923398b66abe9895ff1fa68485399562f626",
+      "bytes": 841
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-before17.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-before17.stdout.txt",
+      "sha256": "e026955910da405f6bc7ebd5364fe090dd81417d528772fda67bf39cf524f872",
+      "bytes": 1053
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-final19.json",
+      "sha256": "c6102c851f9c72644201552e1bc71fe050c907b1c42f74e044089be0ae0d98b7",
+      "bytes": 1728
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-final19.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/alias-hold-final19.stdout.txt",
+      "sha256": "49c8544798df391ccb70977063a52f4e5bbea4a64a0550def79facb4c3ba3bf8",
+      "bytes": 1940
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/all-final19-tests.json",
+      "sha256": "ff8ae5796bcef71911ff9c5c3eaea341819c471f669549e252b830106edd4305",
+      "bytes": 20
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/all-final19-tests.stderr.txt",
+      "sha256": "f2d9656a8d229b22a80c221ecefeee9ff87e1db22c5f3d86beda18299a11bf48",
+      "bytes": 3700
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/all-final19-tests.stdout.txt",
+      "sha256": "89b02d46d8e3f39efea3c1966ac7f9d7e7d2e286d21dce8ba61ea8609802e317",
+      "bytes": 5951
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/new-alias-regressions-before17.json",
+      "sha256": "01614b0e7bf86220a2287c6fd76f9b3a5c06913c2e0762c9eb3958c397f0bbee",
+      "bytes": 20
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/new-alias-regressions-before17.stderr.txt",
+      "sha256": "e3cecd6da77e9995d728b032ab009cac870477610fe3e33ce7ce7353b9c22640",
+      "bytes": 21905
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/new-alias-regressions-before17.stdout.txt",
+      "sha256": "2f87d2f9b70a12e875f49eda947035c482c14d267f00cd8aee738d8292421d0a",
+      "bytes": 4760
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-before14.json",
+      "sha256": "09d9dd57eaad7f5cd43fdc53bf3b80ca3b50dc3addea117d703ca53eacd73150",
+      "bytes": 4012
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-before14.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-before14.stdout.txt",
+      "sha256": "ebe7303026ac36cfb4219a067b78c68170e7009b9637bf12d3742daa21edebac",
+      "bytes": 5294
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-final19.json",
+      "sha256": "b0ef0da066a441b4b9f595903b6f95e536ebf34ecb3daa7c06a1d13fc7d00b36",
+      "bytes": 6876
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-final19.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/original-holds-final19.stdout.txt",
+      "sha256": "c49c8e09c145556de1f95376b490d6ab3905b7bd9406c910c26f9a9121ea14da",
+      "bytes": 7863
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/summary.json",
+      "sha256": "cc2609ecf51b591dda470f07d575e826d7b2ba45adcde72e0b3874a40cc084d8",
+      "bytes": 369
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after/scripts/identity_qa_private_capture.py",
+      "sha256": "5eb29c2fdb25d0ecd73d2cc3457ce94d6234212e10ec1fee0791d696211f6b89",
+      "bytes": 19119
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after/scripts/prepare_identity_qa_candidate.py",
+      "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+      "bytes": 29635
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after/scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+      "bytes": 7937
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after/scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "71deeb0af960da490e52ddb732b988463e90dfa7068d987a9659e10cd7a4375e",
+      "bytes": 20780
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after/source-pins.json",
+      "sha256": "ae6087c5b015dd00361b9e84deb70f1e8ff4d011b99fe20ff35d634d18d6c751",
+      "bytes": 1344
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/after-peer-result.json",
+      "sha256": "a2e74dc99db53629072d4fe7c0c0357f691aec41f67d3ee2f01b18ce0d2cf8a7",
+      "bytes": 6694
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/alias-first-red.txt",
+      "sha256": "f21b1b0f0e2160d335b40ff8cd0f02482b68033508a984a0e2d3d0aade0d51b5",
+      "bytes": 17836
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/before-peer-result.json",
+      "sha256": "db02b853ff41563374f6d6bd05bc06de0c4e3f7ff1337cbd8e99f7cee0e0d92b",
+      "bytes": 3830
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final-17-tests.txt",
+      "sha256": "2d031c5b5b8a8d79849fe9acf840284d0fa28b05970a3f2b6e6a9292fde77c6d",
+      "bytes": 4483
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/identity_qa_private_capture.py",
+      "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+      "bytes": 21528
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/prepare_identity_qa_candidate.py",
+      "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+      "bytes": 29635
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+      "bytes": 7937
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+      "bytes": 25904
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19/source-pins.json",
+      "sha256": "54c8926f3d4af4ba1c173ce50423cf7608b279fa4857e0ae9a87ad4527a59485",
+      "bytes": 1308
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/final19-tests.txt",
+      "sha256": "722fdc40b3bc6c6d0b13fec905dc01338d578db16c30bdd17ea1ee21d7595b87",
+      "bytes": 9651
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/replay-inputs.json",
+      "sha256": "ebb83b5363cf298435fdc177c0e3c54b0e9ad4c914452560a604039534a7e956",
+      "bytes": 7151
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/replay_capture_peer_repairs.py",
+      "sha256": "136e266d0debdc0349b07abc3d30160a2d6dfc08c1612259cc76a3a552da862b",
+      "bytes": 6933
+    }
+  ]
+}

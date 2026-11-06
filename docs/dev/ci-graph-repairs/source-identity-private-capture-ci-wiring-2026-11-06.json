@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "hard-CI-caller-wired-local-exact-19-pass-no-remote-claim",
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "2920020ba64bad08ecfee400ee41ef13ac94c09884cfb86dc490e5517349b975",
+    "step": "Test isolated identity QA preparation without skips",
+    "modules": [
+      "scripts/test_identity_qa_private_capture.py",
+      "scripts/test_prepare_identity_qa_candidate.py"
+    ],
+    "oldRequiredMethodCount": 4,
+    "requiredExecutedMethods": 19,
+    "anySkipFails": true,
+    "anyErrorOrFailureFails": true,
+    "existingBubblewrapAndStraceSetupKept": true
+  },
+  "actualLocalIdenticalCaller": {
+    "exitCode": 0,
+    "testMethods": 19,
+    "skips": 0,
+    "log": {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-peer-repair-2026-11-06/ci-caller-local.txt",
+      "sha256": "b42c4f702c2fd56382c78b69bb1222672bbe85875c932b89144874374ee73b64"
+    }
+  },
+  "implementationReceipt": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-peer-repair-2026-11-06.json",
+    "sha256": "4be4df973471ae6f4c7d4cd15f8acb2af8adc16ef4646bcaf6423fcece3a15d2"
+  },
+  "independentComponentReview": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-alias-closure-review-2026-11-06.json",
+    "sha256": "5530f43798ad8385f68467c153f4f3b05bb731d899e97fb241c6d3fc679c7df2"
+  },
+  "limits": [
+    "The new caller has not yet run remotely on a containing head.",
+    "The historical14/17 checkpoints remain unchanged, with their exact code and real red-to-green counterexamples.",
+    "No full physical Source-A QA, authenticated actual complete read scope, runtime activation or restored floor is claimed."
+  ],
+  "rawEvidenceBytePreservation": {
+    "handling": "The existing repository convention -text -whitespace applies to four exact immutable captured streams. Their bytes and bound hashes are unchanged; authored code/docs and curriculum gates keep their existing checks.",
+    "files": [
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/reviewed.diff",
+        "sha256": "67fb6f769ae5aca0e1d4f0526bd4aaa0d4eedaba3d5987889afc3f9553a0d1bd"
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/reviewed.diff",
+        "sha256": "620ec0326b27d080892ad31f4f29e41fc24cf94b0c774a8a93a22d738af20e00"
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/new-alias-regressions-before17.stderr.txt",
+        "sha256": "e3cecd6da77e9995d728b032ab009cac870477610fe3e33ce7ce7353b9c22640"
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/alias-first-red.txt",
+        "sha256": "f21b1b0f0e2160d335b40ff8cd0f02482b68033508a984a0e2d3d0aade0d51b5"
+      }
+    ]
+  }
+}

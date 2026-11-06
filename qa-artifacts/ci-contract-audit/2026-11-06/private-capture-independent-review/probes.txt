@@ -1,0 +1,83 @@
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-yzkxd62_/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "f89ccfa5efa23ada51744f884092cd11b389a417c2f060ec999953d3c3adb620"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-xbvfj3d1/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "adad0272c495f3cc8fdd4cb9b9cd8c463c0df9176a2b0bab5a5c14185af4a4bd"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-y1efx9nv/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "dcbb4f6fa647ce822dca7fef531fd5aaf66157a3658f27414ab6ed0d21e63531"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-zilyd3pk/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "95ab98e749ff0a7890c3c0690e16f8d28c4c44edc0d11d0d7cc32379df6fd49e"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-output-peer-5nm0u0bi/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "d7a054bda1b670fcfd7cedc21f4c3b9045edc725fa5222230192bbb09b0c0c3a"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-proc-peer-8xq3f66m/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "39a990efc55883c15a90dbb5de5b110fb7e7e5f4036a25e1440db1dba913ef3a"}
+[
+  {
+    "case": "TEXT_SELECTED_INPUT_TAMPER",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "path": "app/scripts/fixture.js",
+      "declaredOriginalHash": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+      "oldSha256": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+      "newSha256": "bf9f101e7a7ef39e52a2adb0e899079e67f7ae0afd9a14d9ef19b21c4651aa4e",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 0,
+    "stdout": "tampered bound producer text accepted\n",
+    "stderr": ""
+  },
+  {
+    "case": "PROJECTED_GRAPH_TEXT_TAMPER",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "path": "curricula/DE/Gymnasium/canonical/capture-fixture.json",
+      "projectedDocumentListed": true,
+      "oldSha256": "f6eeda895a1975861fb039e56cf068e15401ccad99c180bd3eff12eddc85d973",
+      "newSha256": "729eb2418343be5d6ec08a5aee13de7ca66063e4c27b4030cd6c54e82fd998ec",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 0,
+    "stdout": "tampered projected graph accepted\n",
+    "stderr": ""
+  },
+  {
+    "case": "GROUPED_ASSET_ENTRY_REPLACEMENT",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "logicalAsset": "app/public/assets/goal-visualizations/a.bin",
+      "storeBlobStillMatchesReceipt": true,
+      "mountedAssetSha256": "1a5360262908a36cb53764901d2f675d3b58e8442392e2a4cdf8301b0f50e177",
+      "expectedSha256": "9ad0a72abe0e03602cbb9b12edb72cf0c72d66cea70602a59d206863093a31da",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 0,
+    "stdout": "unbound grouped asset bytes accepted\n",
+    "stderr": ""
+  },
+  {
+    "case": "CONTROL_STORE_BLOB_TAMPER_REJECTED",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "logicalAsset": "app/public/assets/goal-visualizations/a.bin"
+    },
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Private asset changed: app/public/assets/goal-visualizations/a.bin\n"
+  },
+  {
+    "case": "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE",
+    "boundary": "actual tiny Git materializer, arbitrary outside-capture sentinel owned by this probe only",
+    "before": "DO NOT CHANGE",
+    "after": "",
+    "outsideSentinelChanged": true,
+    "returnedPreparation": true,
+    "outputPathIncluded": true
+  },
+  {
+    "case": "HOST_WORKTREE_VIA_PARENT_PROCESS_ROOT",
+    "boundary": "actual bwrap launcher and probe-owned host sentinel only; no real private file accessed",
+    "directHostPathMaskedExpected": true,
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/202238/root/dev/shm/capture-proc-peer-8xq3f66m/host/private-probe-sentinel.txt'\n"
+  }
+]

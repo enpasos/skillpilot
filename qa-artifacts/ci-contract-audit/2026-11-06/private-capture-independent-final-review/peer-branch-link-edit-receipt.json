@@ -1,0 +1,34 @@
+{
+  "kind": "editorial-current-branch-locator-correction",
+  "reason": "These new audit artifacts belong to the current PR branch, not main before merge. Branch URLs are mutable locators; exact local target bytes are separately bound below.",
+  "before": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/peer-before-branch-link-edit.md",
+    "sha256": "94903d8328c976c4f084a22f7d1b99e1c78e1c9126c6cd806ee26d2e43753785"
+  },
+  "after": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-followup-review-2026-11-06.md",
+    "sha256": "d13e0eb52ab13cb6091eb2f02964e0966f81aaba01056e733876739bc66a965f"
+  },
+  "exactReplacements": [
+    {
+      "before": "https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py",
+      "after": "https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py",
+      "localTarget": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py",
+      "localSha256": "b7f5cd1677387ea4cfeefbba344d62a14ac6144d6a1eed58f6e82bddfe41baf1",
+      "localBytes": 5015
+    },
+    {
+      "before": "https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-result.json",
+      "after": "https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-result.json",
+      "localTarget": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-result.json",
+      "localSha256": "d4c778e8287b3fe242b074bad6a2d8838be0d01fa76ba9a83d6340335b4327c9",
+      "localBytes": 759
+    }
+  ],
+  "unchangedReviewJson": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-followup-review-2026-11-06.json",
+    "sha256": "de56509a814b8abde585fa5a11184a35b32950f99f70f3dddfaf10f14cec4431"
+  },
+  "codeOrJudgmentChanged": false,
+  "remoteBranchAvailabilityClaimed": false
+}

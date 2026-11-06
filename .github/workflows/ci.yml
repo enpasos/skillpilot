@@ -538,10 +538,10 @@ jobs:
           command -v bwrap
           python3 -B - <<'PY'
           import unittest
-          suite = unittest.defaultTestLoader.discover("scripts", pattern="test_prepare_identity_qa_candidate.py")
+          suite = unittest.defaultTestLoader.discover("scripts", pattern="test_*identity_qa*py")
           result = unittest.TextTestRunner(verbosity=2).run(suite)
-          if result.testsRun != 4 or result.skipped:
-              raise SystemExit("All four identity QA preparation controls must execute without skips")
+          if result.testsRun != 19 or result.skipped:
+              raise SystemExit("All nineteen identity QA preparation and capture controls must execute without skips")
           raise SystemExit(0 if result.wasSuccessful() else 1)
           PY
       - name: Install PDF validation tools

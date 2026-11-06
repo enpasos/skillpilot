@@ -1,0 +1,81 @@
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-r136juy6/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "730ab76990a9b72702a94c46a84d2d89b9ad43286022f60837a54d06b3814dbe"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-1mzn1d5b/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "3cac09b828aab60e9c1ff626454c58a33e3da53a58442eab2de7b5f45007db84"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-urggzi1g/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "ade5b9bf3f987ec76278ef28393307a1825d58e9fc51ad5da7f41ac7801d6e19"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-peer-jo7bokb8/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "9f7473dac9276d08e7a22fcb1746841a016679a302b16b18c1be2ec3bb30cfed"}
+{"copyProgress": 0, "selected": 5}
+{"preparedRoot": "/dev/shm/capture-proc-peer-apqre3hk/pair", "files": 5, "privateBytes": 196, "projectedDocuments": 1, "binaryMounts": 1, "gitBlobFallbacks": 0, "acceptedPreparationSha256": "61d4056054e3e556d75a40eb50d8a1afcdb2304225208858e61a5f10d60d353d"}
+[
+  {
+    "case": "TEXT_SELECTED_INPUT_TAMPER",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "path": "app/scripts/fixture.js",
+      "declaredOriginalHash": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+      "oldSha256": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+      "newSha256": "bf9f101e7a7ef39e52a2adb0e899079e67f7ae0afd9a14d9ef19b21c4651aa4e",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-peer-r136juy6/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-peer-r136juy6/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-peer-r136juy6/pair/prepare-tool/identity_qa_private_capture.py\", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, \"Private text input changed: \" + role + \":\" + path)\n  File \"/dev/shm/capture-peer-r136juy6/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Private text input changed: original:app/scripts/fixture.js\n"
+  },
+  {
+    "case": "PROJECTED_GRAPH_TEXT_TAMPER",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "path": "curricula/DE/Gymnasium/canonical/capture-fixture.json",
+      "projectedDocumentListed": true,
+      "oldSha256": "f6eeda895a1975861fb039e56cf068e15401ccad99c180bd3eff12eddc85d973",
+      "newSha256": "729eb2418343be5d6ec08a5aee13de7ca66063e4c27b4030cd6c54e82fd998ec",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-peer-1mzn1d5b/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-peer-1mzn1d5b/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-peer-1mzn1d5b/pair/prepare-tool/identity_qa_private_capture.py\", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, \"Private text input changed: \" + role + \":\" + path)\n  File \"/dev/shm/capture-peer-1mzn1d5b/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Private text input changed: candidate:curricula/DE/Gymnasium/canonical/capture-fixture.json\n"
+  },
+  {
+    "case": "GROUPED_ASSET_ENTRY_REPLACEMENT",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "logicalAsset": "app/public/assets/goal-visualizations/a.bin",
+      "storeBlobStillMatchesReceipt": true,
+      "mountedAssetSha256": "1a5360262908a36cb53764901d2f675d3b58e8442392e2a4cdf8301b0f50e177",
+      "expectedSha256": "9ad0a72abe0e03602cbb9b12edb72cf0c72d66cea70602a59d206863093a31da",
+      "preparationReceiptChanged": false
+    },
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-peer-urggzi1g/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-peer-urggzi1g/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-peer-urggzi1g/pair/prepare-tool/identity_qa_private_capture.py\", line 140, in verify_prepared_inputs\n    require(file_binding(mounted) == expected, \"Mounted asset input changed: \" + role + \":\" + path)\n  File \"/dev/shm/capture-peer-urggzi1g/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Mounted asset input changed: original:app/public/assets/goal-visualizations/a.bin\n"
+  },
+  {
+    "case": "CONTROL_STORE_BLOB_TAMPER_REJECTED",
+    "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+    "mutation": {
+      "logicalAsset": "app/public/assets/goal-visualizations/a.bin"
+    },
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-peer-jo7bokb8/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-peer-jo7bokb8/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-peer-jo7bokb8/pair/prepare-tool/identity_qa_private_capture.py\", line 103, in verify_prepared_inputs\n    require(file_binding(captured) == {key: item[key] for key in (\"sha256\", \"bytes\")}, \"Private asset changed: \" + path)\n  File \"/dev/shm/capture-peer-jo7bokb8/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Private asset changed: app/public/assets/goal-visualizations/a.bin\n"
+  },
+  {
+    "case": "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE",
+    "boundary": "actual tiny Git materializer, arbitrary outside-capture sentinel owned by this probe only",
+    "before": "DO NOT CHANGE",
+    "after": "DO NOT CHANGE",
+    "outsideSentinelChanged": false,
+    "exceptionType": "ValueError",
+    "exception": "Unsafe capture path"
+  },
+  {
+    "case": "HOST_WORKTREE_VIA_PARENT_PROCESS_ROOT",
+    "boundary": "actual bwrap launcher and probe-owned host sentinel only; no real private file accessed",
+    "directHostPathMaskedExpected": true,
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/213759/root/dev/shm/capture-proc-peer-apqre3hk/host/private-probe-sentinel.txt'\n"
+  }
+]
