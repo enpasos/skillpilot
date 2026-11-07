@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "kind": "isolated-source-a-am-review-slice-mechanics",
+  "executionLocalDate": "2026-11-07",
+  "status": "35-real-controls-pass-unwired-independent-review-pending",
+  "headAtReceipt": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+  "code": [
+    {
+      "path": "app/scripts/lib/sourceIdentityQaReviewContext.ts",
+      "sha256": "f298388a8c22b51dd8387bd5a97ad6dcbcb01293ec25f7008a507cb9cec46dea",
+      "bytes": 8960
+    },
+    {
+      "path": "scripts/verify_identity_qa_review_slice.py",
+      "sha256": "bb757640d0f7f5eeb4043532284573e33ec2ca800d33b8f39809791d9c5540bc",
+      "bytes": 6593
+    },
+    {
+      "path": "app/scripts/testSourceIdentityQaReviewContext.ts",
+      "sha256": "468b6908c986f84d2241020b7e384baf882f2635324ab374bf73a4ce79592d89",
+      "bytes": 16308
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "1b682cb08fb04ee37bf5ffafe2c4e95aaf0bb65e75fbf5e6d60ced9536bb1a27",
+      "bytes": 285933
+    }
+  ],
+  "sourceProof": {
+    "baseCommit": "db9c71155997842ebb7cf48dda413ff6196f1a9f",
+    "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-bijection-db9c711559-2026-11-06.proposal.json.gz",
+    "acceptedRawSha256": "a145fe393296cd8d6fa703e9661ddc84c1a09fd364e2a6ef199df44c9ff2ea3a",
+    "sourceProjectionSha256": "d5ce3f62559380d701fb9312198f97138b28a15be0d9dc38f3f3fe8554e61742",
+    "catalogSources": 593,
+    "boundSourceDocuments": 8591,
+    "rules": 164,
+    "fullProofRecomputationInThisStep": false,
+    "earlierFullVerifyReceipt": "docs/dev/ci-graph-repairs/source-identity-db9c-source-rebase-2026-11-06.json"
+  },
+  "boundedAuthority": {
+    "completeSourceInventoryRecomputed": false,
+    "producerReadScopeAuthenticated": false,
+    "metadataComposerFactoryCalled": false,
+    "candidateQaApproved": false,
+    "runtimeActivationAllowed": false,
+    "normalProducerAdapterWired": false,
+    "readySetImported": false,
+    "originalLedgerOrFingerprintWritten": false
+  },
+  "sourceDefinitions": [
+    {
+      "family": "politics-economics",
+      "owner": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "originalSourceSha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+      "candidateSourceSha256": "c3528902524190118238a80823c87a26abfac3ee8abd52dae6f93d82aa2f8f33",
+      "originalNativeMemoryStatus": "pass",
+      "unadaptedCandidateMemoryStatus": "warn",
+      "transportedGoalRows": 413,
+      "originalGoalCount": 512,
+      "candidateGoalCount": 512,
+      "candidateViewCount": 15,
+      "storedEvidenceBytesChanged": false
+    },
+    {
+      "family": "economics",
+      "owner": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "originalSourceSha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+      "candidateSourceSha256": "f559d9bc4e6c1e235a24a774da0ec3c231b7005dd8274f246304172022bc854f",
+      "originalNativeMemoryStatus": "pass",
+      "unadaptedCandidateMemoryStatus": "warn",
+      "transportedGoalRows": 346,
+      "originalGoalCount": 702,
+      "candidateGoalCount": 702,
+      "candidateViewCount": 48,
+      "storedEvidenceBytesChanged": false
+    }
+  ],
+  "typedReadDeltas": [
+    {
+      "owner": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "goalRows": 413,
+      "goalIdChanges": 134,
+      "memoryGoalRowsWithChanges": 107,
+      "individualMemoryGoalReferenceChanges": 108
+    },
+    {
+      "owner": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "goalRows": 346,
+      "goalIdChanges": 0,
+      "memoryGoalRowsWithChanges": 55,
+      "individualMemoryGoalReferenceChanges": 56
+    }
+  ],
+  "viewScopes": {
+    "scopeEntries": 63,
+    "uniqueOriginalViewPaths": 63,
+    "countsByOwner": [
+      {
+        "configPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-politics-economics-full.config.json",
+        "configRawSha256": "54b7ac47db40cb4b6cfbda720939d0b9faf6d3fab6b29a91f111672a0a5bd65c",
+        "owner": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "scopeEntries": 15,
+        "uniqueViewPaths": 15,
+        "views": [
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bb-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "63a3b54b5c085298c0c91f651b21e247255eba3af8f78032dc0d063717ab5247"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-be-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "2c218de88fd8e97e20918bbf3e4b948c46a13901f73b862ef0e502c0a4cb953f"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bw-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "dc86e342b9546f949093ca758a29436f3f113847c8a5b2744dce4f6ccd92fd69"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hb-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "79b62c9a0fc025fd2b0a1c732faaabfdd2597d7cd070f9fbbe9e570bcbb94104"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-he-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "0dffda5994bc7d3a9a3ba6ce293e8ad5c6a9d42340a58be80163c20e44b08ada"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hh-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "228b640cc5d63a243715df54bdbf9cd57d9498a33c3052648fbb242e135b7d80"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-mv-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "a03bb71f47100a69dd171e5e1c7cac4aaa41cd194220dba8c675702badc14bc5"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-ni-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "7cf8e641f2f944fa74339f36f76102223ba7ec91363a4981450cfcee67c91833"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-nw-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "41c237bf3d7804bd448c47c2d28b223f0f6026d32bfcd442bb19586f49c8775d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-rp-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "2a82aa4634cf4c5e24b95f92ee73d060bdb8f74bc2c4bdf6b6e688dfe1f77d5a"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sh-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "5dc96b9d97beb5e667bf45ab65d150c594bbca2bb3069b466693f3bf5c762c95"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sl-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "19aa2d17456cb609d69105871c0cf64e85c28a28dbaf4d9e3cf27a223e73fbf6"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sn-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "389771ad39999f38c69812436e02aa1d79ce10a8e00635e400f223ddac31c7d2"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-st-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "9b5dadeba34e17ca37cdf94122335d96e5921ab60afcd1d5aeada08dcb0d2b93"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-th-gym-politics-economics-crossstage.view.json",
+            "originalRawSha256": "0d28f1432eec72a9333184b709e6b6f1009d1054e57f46fa54f2f0f19e5fabb0"
+          }
+        ],
+        "reviewPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-politics-economics-full.review.jsonl",
+        "reviewRawSha256": "fe3dc74690fa16aafbbef4e2e6eccb1b0634d68c18b824415563f7306f9703a4"
+      },
+      {
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-26/ci-economics-current-report-routing-technical-v1/active-memory.config.json",
+        "configRawSha256": "38c4763c9b37eb084b35ada854b99f0ffec84e9aebf7a9265d181e844d4f9270",
+        "owner": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "scopeEntries": 48,
+        "uniqueViewPaths": 48,
+        "views": [
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+            "originalRawSha256": "225351a7d39ada5e556cca64b6b68d56bab3487d713eb6f6df7948ae87453fae"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+            "originalRawSha256": "2f3b90bb9a0f0b1682b7337ee0241459f1b79a32c5bdd71efb53020cb98d5225"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+            "originalRawSha256": "27d1518847b0abf99610fc645907e59fad2b146870ca84879f2b0775bb662c4e"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+            "originalRawSha256": "22cd6e6ef2bc6a69afbcd8198315060db1d492c9419c41e83d63e237c02b6398"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+            "originalRawSha256": "1f1c9afcf6d6b80a36ea102988cf546a66206c261b00103c98d909b66814a6f1"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+            "originalRawSha256": "e98b710238d86e8ef4ea8b50a4e094670806d552d3ccf24e2535cc15d7224d3e"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+            "originalRawSha256": "1206c89da8a1903cced8d9dac9a98a9b2da41131bc8fe0ffcdd229eef983137e"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json",
+            "originalRawSha256": "29d27b315c7bf959f1c2998e4423d2367bab770bb789686938c2855e3f3d5ddd"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+            "originalRawSha256": "530e0fc4d60448bc8e48a460c0a1170502630ad9721bac94ddefc6f2c58cc337"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+            "originalRawSha256": "2fdfd22aa858690f90cb7dd9272c5715478a2cd77ed0d3270fe5c8faa78f820d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+            "originalRawSha256": "a8b873f91a6fc2af886e84cdba0f4b08b567718655bd0239a70631a0c9d8fa5c"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+            "originalRawSha256": "69ae8a4f24d317d8117c8362a5a9b058956f60db69246df45feb1f5729992115"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+            "originalRawSha256": "d0ec201e82fc8c90a9c715c61c0b0836b33e15aa7aaba192854f21212776678d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+            "originalRawSha256": "182441d669d3c78dda72f7385b0e40b4c589abfdb832837f21eb84705149663d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+            "originalRawSha256": "d39d47afe18c09c8b5dc11b915284557116d7688ddb1377b885ada9290dd6b0c"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-lk.view.json",
+            "originalRawSha256": "cd719e0d6e40c5240edd7ac613d91a775b2edfb69d3a3878ad8977c3c8bfeb7e"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+            "originalRawSha256": "1029204df4ba083f1c35745693cc9d437935ae7bd9311fd2f4b7ea22b036e320"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+            "originalRawSha256": "66e28b4733165166de76a44e7bfc0c3def60a1d687dc96dc30e37a985808916a"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+            "originalRawSha256": "4be9802db326c650bcfd45c3b5971d5b81658cea1f41b2948e02a63670bf8c9a"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+            "originalRawSha256": "7652ed0046eb485dab2d1273acc06871bc35582e3546d3d09f089f8a006e9681"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+            "originalRawSha256": "64b7129ea2329df81c691d677b33d789d0eac1110f9b6f71f0a9eb55671c9587"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-lk.view.json",
+            "originalRawSha256": "16cc0b388305bbcfa381cdb1a9b7dc919cf9347dcc1b0b00ec336f6e6329a876"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+            "originalRawSha256": "8a31c663c48c016b503ecbc3ba0d953a3869428d5e27504c6a11083a052b765d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-lk.view.json",
+            "originalRawSha256": "37aec9da340982ae079c740c09649cb0d20ac493cbde8140255d1dc5e7127f01"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+            "originalRawSha256": "a48ce7052500d91ed9424ff94c3a8e1425d7081ce44d5a15faf4db3b0b4ab19f"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+            "originalRawSha256": "89fa8b59a462607a1155c73ee6e45723fb2232b3bb488de6b078eb61a59a92d0"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+            "originalRawSha256": "8d9eb711b2de3a8bf8bed6ea76d88c2dea21eaffd5af9ceef0fbec4c16776401"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-lk.view.json",
+            "originalRawSha256": "9ce6dd0e82f18ebe7876e5cd20113804b8a41614b4268d05db1cee3ea054ad1b"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+            "originalRawSha256": "4f8e8d3bd8ccaf5643200c418b7877961cef0622b21c372085ca958522346fe8"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-lk.view.json",
+            "originalRawSha256": "88d481a2120b140d686a6f40985fb9dd17bb2fa61d7b6455f0e78373a37a0527"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+            "originalRawSha256": "a432fe739cd3ca88298c8cc9d1f7d9aa49d263085e244a2c5241bbe9cf1b953b"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-lk.view.json",
+            "originalRawSha256": "a87318aeeddbfbb6acc4d521de3695fbc51a33535790fa2eb16718ab09e36433"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+            "originalRawSha256": "b531df4b33bd358b3470eccd9004d53802d4dceafe30de01f6a10b6065edede8"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+            "originalRawSha256": "4315995bb1dd66d79d34f50638b110fa8563cdc3d85ffe67a1b6b7fc38f50659"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+            "originalRawSha256": "b3987fd6276ab76cb1e5f47689644e8a32ea505dec50f6b0efaea57e15e209db"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-seki-economics.view.json",
+            "originalRawSha256": "91b0cfb72dfb33c39243f9a6615be08a6be6aef85b5e074e17e37f1aabd117a5"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-seki-economics.view.json",
+            "originalRawSha256": "5ee888da2dc3d271556cb8050ae053ea61482c7ff2e74c5205aa7713104cee11"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-seki-economics.view.json",
+            "originalRawSha256": "7194fc4c35d504f7adcaef6d44e7b495cf915d3cade1f65c2a9c4ae9f1bae62c"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-seki-economics.view.json",
+            "originalRawSha256": "8b6a9255bb821ea1fab48208a797460af5b0df5aa3867d9440a241e07dac05ad"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-seki-economics.view.json",
+            "originalRawSha256": "dfd06f67d2fa1312fa29bf03d0005bf1e5b8663be19f562366528a4e415e0201"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-seki-economics.view.json",
+            "originalRawSha256": "6674be4ed4f25f7a24707735072dc0f5e80c407d7af578f5829a7448cac3583d"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-seki-economics.view.json",
+            "originalRawSha256": "7a291cd48623809c98cda9fca2d7783f7b49833a31a88f206caaf547e51c8e7c"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-seki-economics.view.json",
+            "originalRawSha256": "c483bcabd870b4f843d397b89fd7130cf8818742b03963a90486bab3034ff794"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-seki-economics.view.json",
+            "originalRawSha256": "e07c7048f8796ca9027ad5611eba367253f89cb6411ff79da07d2d219bde4272"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-seki-economics.view.json",
+            "originalRawSha256": "946476de6bc8ebc91fc2a1bc7f2d8345eb8231d2fa296e34ac0d8b93a7dc9dcd"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-seki-economics.view.json",
+            "originalRawSha256": "3d5df2947541b2e8961c1d9fda2dcf178eece3a660a53105cc4c6d79d320cfd1"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-seki-economics.view.json",
+            "originalRawSha256": "b4f73593b94bbf4888e063d92163a42af6969339c20dd2f48273d63f21197197"
+          },
+          {
+            "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-seki-economics.view.json",
+            "originalRawSha256": "28572ef5ee7b9abf3a64e0f0cf6a523e025ab32bcef75271fc535072f7efb6a7"
+          }
+        ],
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/memory/memory346.343-raw-exact-three-qualified-native.review.jsonl",
+        "reviewRawSha256": "f6b0bf7d7526fae525564552227981c3411d9f807150a4724b212a2f3cbdcf5b"
+      }
+    ],
+    "sourceIdentityProjection": "Actual unchanged Python kernel set_field + full document hypothetical SHA + inverse proof; native membership/filter functions consume candidate IDs.",
+    "pathTransportOnly": "Only private test config viewPath locators are relocated. Original config/evidence bytes remain unchanged.",
+    "editorialCorrection": "The author message mis-added 15+48 as65; actual63 unique paths/scopes are bound here, with no extra control views."
+  },
+  "nativeChecks": {
+    "tests": 35,
+    "failures": 0,
+    "terminalExitCode": 0,
+    "command": "app/node_modules/.bin/tsx app/scripts/testSourceIdentityQaReviewContext.ts",
+    "resultPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/final35-result.json",
+    "originalCqr301PoWi": "pass",
+    "originalCqr302PoWiAndActiveEconomics": "pass",
+    "unadaptedCandidateCqr301AndCqr302": "warn retained; there is no normal producer integration/pass claim",
+    "staleHistoricalEconomicsPredecessor": {
+      "configPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.config.json",
+      "nativeStatus": "warn",
+      "stale": 300,
+      "missing": 46,
+      "role": "Actual invalid original is preserved as a negative; first author fixture incorrectly selected this predecessor and genuinely failed."
+    },
+    "counterexamples": [
+      "exact foreign and uppercase owner rejected",
+      "actual candidate semantic mutation rejected",
+      "original source/raw evidence mutation rejected",
+      "forged context and unbound evidence path rejected",
+      "unknown original key rejected",
+      "immutable returned rows and captured caller buffers",
+      "native invalid decision/reason rejected",
+      "all134 PoWi A joins retain native original fingerprints",
+      "native card-origin/record/deck criteria preserved",
+      "actual primary deck bytes match db9c Git inputs"
+    ]
+  },
+  "sixExportsOnly": {
+    "file": "app/scripts/generateCurriculumQualityStatus.ts",
+    "baseHead": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+    "beforeSha256": "70e5f9af01d452b508bc069e990b7c1915a0031c307d9428e7b9ceca876db7e6",
+    "afterSha256": "1b682cb08fb04ee37bf5ffafe2c4e95aaf0bb65e75fbf5e6d60ced9536bb1a27",
+    "functionNames": [
+      "fingerprintGoal",
+      "collectMemoryDeckEvidence",
+      "validateMemoryCardRecordShape",
+      "validateMemoryCardReviewCardRecordShape",
+      "evaluateSemanticAtomicity",
+      "evaluateMemoryCardReview"
+    ],
+    "restoringOnlySixExportKeywordsExactlyReproducesHead": true,
+    "patchPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/six-export-only.patch",
+    "functionBodiesChanged": false
+  },
+  "typecheck": {
+    "helperStrictExitCode": 0,
+    "testImportStrictExitCode": 2,
+    "nativeCqrBaselineStrictExitCode": 2,
+    "nativeBaselineDiagnostics": 40,
+    "testImportDiagnostics": 40,
+    "entireDiagnosticBytesEqual": true,
+    "newFileDiagnostics": 0
+  },
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/initial-invalid-predecessor.stderr.txt",
+      "sha256": "d8c08c6ae9017b5e0bb67eadc52f140b7b6b9d23ded6a0e82f75e7fe5da1d447",
+      "bytes": 3735
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/first31-result.json",
+      "sha256": "081da293e40f46c7d33262ce8c1a49e5068f3b312ded48cbe8fb3e4444266da8",
+      "bytes": 3891
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/final35-result.json",
+      "sha256": "6ea85f3f6f684b46578883268cdd17298cf08c6fca29fc12e222eb281a75e5af",
+      "bytes": 4223
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/final35.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/helper-strict-tsc.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/native-baseline-strict-tsc.txt",
+      "sha256": "3bb6f4e319f0546b93a9795a24d0e186a81d68acbbb028728872d5b094048161",
+      "bytes": 9606
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/test-strict-tsc.txt",
+      "sha256": "3bb6f4e319f0546b93a9795a24d0e186a81d68acbbb028728872d5b094048161",
+      "bytes": 9606
+    }
+  ],
+  "resourceBoundary": {
+    "largePhysicalPairMaterialized": false,
+    "temporaryRoot": "/dev/shm",
+    "temporarySourcePairScope": "Two owner source documents only, each processed separately;63 small projected test view files total.",
+    "temporaryPrivateRootsRemovedAtTerminal": true,
+    "wholeRuntimeGraphInvertedForChecks": false,
+    "nodeDependenciesOrAssetsCopied": false,
+    "javaGradleOrCqrProducerExecuted": false
+  },
+  "openIntegration": [
+    "Production factory must still execute/reuse actual Source-A verification and authenticate all original/candidate producer and child-process reads.",
+    "Native A/M evaluators are unchanged and receive no context from their normal callers; missing adapter joins remain warn.",
+    "Separate contextual integration must restrict original-definition access to ID/fingerprint comparisons while graph/source/scope/deck/floor checks see actual candidate definitions.",
+    "No D/P/V/Kind/policy transport, B activation, learner/state/mastery or whole repository candidate pass is supplied.",
+    "Independent code/evidence review is pending."
+  ],
+  "sourceWrites": false,
+  "qaWrites": false,
+  "historicalEvidenceRewritten": false
+}

@@ -3026,7 +3026,7 @@ function reusableGeneratedAt(nextStatus: StatusDocument): string | null {
   }
 }
 
-function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
+export function fingerprintGoal(goal: LearningGoal, ruleVersion: string): string {
   const payload = stableJson({
     ruleVersion,
     goalId: goal.id,
@@ -3187,7 +3187,7 @@ interface MemoryVisibilityReport {
   errors: string[]
 }
 
-function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidence {
+export function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidence {
   const evidence: MemoryDeckEvidence = {
     memoryGoalIds: new Set(),
     deckIdsByMemoryGoalId: new Map(),
@@ -3435,7 +3435,7 @@ const memoryCardReviewCardStatuses: MemoryCardReviewCardStatus[] = [
   'needs_developer_review',
 ]
 
-function validateMemoryCardRecordShape(
+export function validateMemoryCardRecordShape(
   record: MemoryCardReviewRecord,
   config: MemoryCardReviewConfig,
   goalById: Map<string, LearningGoal>,
@@ -3490,7 +3490,7 @@ function validateMemoryCardRecordShape(
   return errors
 }
 
-function validateMemoryCardReviewCardRecordShape(
+export function validateMemoryCardReviewCardRecordShape(
   record: MemoryCardReviewCardRecord,
   config: MemoryCardReviewConfig,
   goalById: Map<string, LearningGoal>,
@@ -3536,7 +3536,7 @@ function validateMemoryCardReviewCardRecordShape(
   return errors
 }
 
-function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
+export function evaluateSemanticAtomicity(landscape: SkillLandscape, configs: ReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-301', 'not_configured', 'No semantic atomicity review config is registered for this curriculum.')
   }
@@ -3670,7 +3670,7 @@ function readSemanticConfigs(): Map<string, ReviewConfig[]> {
   return configsByLandscapeId
 }
 
-function evaluateMemoryCardReview(landscape: SkillLandscape, configs: MemoryCardReviewConfig[]): RuleResult {
+export function evaluateMemoryCardReview(landscape: SkillLandscape, configs: MemoryCardReviewConfig[]): RuleResult {
   if (configs.length === 0) {
     return makeRule('CQR-302', 'not_configured', 'No memory-card review config is registered for this curriculum.')
   }

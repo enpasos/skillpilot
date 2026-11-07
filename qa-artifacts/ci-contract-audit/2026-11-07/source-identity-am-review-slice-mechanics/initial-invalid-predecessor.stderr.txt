@@ -1,0 +1,22 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"id":"CQR-302","status":"warn","summary":"Memory-card review still has missing, stale, invalid, or untraced entries.","metrics":{"configs":1,"reviewedGoals":346,"noMemoryNeeded":0,"memoryRequired":0,"needsDeveloperReview":0,"missing":46,"stale":300,"obsolete":3,"duplicateRecords":0,"invalidRecords":0,"primaryCards":67,"keptCards":48,"cardsMarkedRemove":0,"cardNeedsDeveloperReview":0,"missingCardReviews":16,"staleCardReviews":3,"obsoleteCardReviews":0,"duplicateCardReviewRecords":0,"invalidCardReviewRecords":104,"untracedMemoryRequiredGoals":0,"visibilityScopes":2,"visibilityCheckedMemoryRequiredGoals":0,"visibilityMissingVisibleMemoryGoals":0,"visibilityErrors":0,"memoryGoals":10,"tracedMemoryGoals":0,"untracedMemoryGoals":10,"deckIds":10,"deckFiles":10,"cardRows":67},"details":["canonical-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-economics-full.md","canonical-economics-full: stale Leben und Arbeiten analysieren [8768186a-a52c-50b3-a1d7-a56084aa31e0]","canonical-economics-full: stale Sozialer Wandel und Politik [77edbcf9-d14d-547e-8a5f-43863a3e300b]","canonical-economics-full: stale Politische Sozialisation [d7332142-0deb-518c-ab51-0e16cb6f0d1f]","canonical-economics-full: stale Unternehmen im Wandel [43a90b29-abf8-5430-99fa-b92f3768516b]","canonical-economics-full: stale Gesellschaftsdiagnosen [7aef0e2f-ca08-5276-a432-906cdb3313b4]","canonical-economics-full: stale Migration als Veränderungsfaktor [7a3f0ae8-370e-5fc3-afce-09e1f7f35508]","canonical-economics-full: stale Unternehmen in dynamischen Märkten [5ccb466f-25c7-5802-bb0a-763ca51cdf62]","canonical-economics-full: stale Familien- und Bildungsstrukturen analysieren [c4c5bae8-575a-5a70-ba30-bada55f93abb]","canonical-economics-full: stale Sozialstaatliche Reaktionen bewerten [af772e72-57c9-5aab-a500-7fe3ec692abc]","canonical-economics-full: stale Kulturelle Dimension des Wandels verstehen [3bf3a322-c8f6-58ad-a1dc-774b05b15a5a]","canonical-economics-full: stale Ungleichheit und Differenzierung analysieren [ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b]","canonical-economics-full: stale Veränderungen auf dem Arbeitsmarkt [643cb9b3-5b7c-59f6-8383-1af413426c88]","canonical-economics-full: stale Lebenswelten vergleichen [f79decb1-4d32-5d99-b998-e87e34d16527]","canonical-economics-full: stale Digitalisierung der Arbeitswelt bewerten [21dd1fce-730a-5470-bcc3-76195941ee83]","canonical-economics-full: stale Familien- und Bildungspolitik vergleichen [0eaf70cd-b7b9-582b-8e77-7002b414d494]","canonical-economics-full: stale Geschlechterrollen und Gleichstellung [3ac589b5-f8a5-5192-b81d-ed94cde4177a]","canonical-economics-full: stale Netzwerke und Sozialkapital [bf851227-f345-5a6e-9c6a-392d2edd1e91]","canonical-economics-full: stale Wachstum und Lebensqualität messen [1d38aa8d-c667-5edf-85c1-4111999f03d4]","canonical-economics-full: stale Konzentration bewerten [cb21bcbe-755d-5b0d-b02a-be22c9d26e43]"]}
+
+'warn' !== 'pass'
+
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testSourceIdentityQaReviewContext.ts:72:73)
+    at check (/home/enpasos/projects/skillpilot/app/scripts/testSourceIdentityQaReviewContext.ts:28:52)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testSourceIdentityQaReviewContext.ts:72:5)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'warn',
+  expected: 'pass',
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2
