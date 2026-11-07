@@ -24,7 +24,7 @@ class ReadLaunchEvidence:
     __slots__ = ('_token', 'root', 'role', 'cwd', 'argv', 'command', 'trace', 'returncode', 'stdout', 'stderr',
                  'stdio', 'tool_context', 'trace_sha256', 'recorder_trace', 'recorder_trace_sha256',
                  'producer_boundary', 'namespace_process_ids', 'evidence_directory', 'readonly_dependency_mounts',
-                 'aborted_identity_observations')
+                 'aborted_identity_observations','readonly_namespace_parents')
 
     def __init__(self, token, **values):
         if token is not _TOKEN:
@@ -44,6 +44,7 @@ class ReadLaunchEvidence:
                 'recorderTraceSha256': self.recorder_trace_sha256, 'producerBoundary': dict(self.producer_boundary),
                 'namespaceProcessIds': dict(self.namespace_process_ids),
                 'readonlyDependencyMounts': [dict(item) for item in self.readonly_dependency_mounts],
+                'readonlyNamespaceParents': [dict(item) for item in self.readonly_namespace_parents],
                 'abortedNonInputIdentityObservations': [json.loads(item) for item in self.aborted_identity_observations],
                 'recorderProtection': {'recorderOutsideProducerPidNamespace': True,
                     'evidenceDirectory': str(self.evidence_directory), 'producerView': 'empty-readonly-tmpfs',
@@ -136,7 +137,7 @@ def _producer_trace(recorder_trace, sandbox_command, argv):
         'fullPreludePreserved': True}), tuple(json.dumps(item,sort_keys=True) for item in aborted)
 
 
-def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=(), dependency_views=(), prepared_lease=None):
+def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=(), dependency_views=(), prepared_lease=None,namespace_parent=None):
     """Run a small real command. Source-A validation remains an upstream duty.
 
     The host tree is RO, not a confidential-host sandbox. Every unclassified
@@ -163,6 +164,11 @@ def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=
         require_prepared_lease(prepared_lease,dependency_views)
         if cwd != root/'app':
             raise ValueError('Actual prepared namespace cwd must be roleRoot/app')
+    if namespace_parent is not None:
+        from identity_qa_namespace_parent import require_prepared_parent
+        namespace_parent=require_prepared_parent(namespace_parent,root,role,dependency_views)
+        require_prepared_lease(prepared_lease,dependency_views)
+    parent_mounts=() if namespace_parent is None else (namespace_parent.mount_binding(),)
     dependency_mounts = (tuple(require_capture(item).mount_binding() for item in dependency_captures)
                          + tuple(view.mount_binding() for view in dependency_views))
     for index, binding in enumerate(dependency_mounts):
@@ -227,6 +233,8 @@ def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=
         require_capture(capture)
     for view in dependency_views:
         require_namespace_view(view,root,role)
+    if namespace_parent is not None:
+        require_prepared_parent(namespace_parent,root,role,dependency_views)
     if dependency_views:
         require_prepared_lease(prepared_lease,dependency_views)
     recorder_trace = trace_file.read_text()
@@ -242,4 +250,5 @@ def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=
                               trace_sha256=hashlib.sha256(trace.encode()).hexdigest(), recorder_trace=recorder_trace,
                               recorder_trace_sha256=hashlib.sha256(recorder_trace.encode()).hexdigest(),
                               producer_boundary=boundary, namespace_process_ids=namespace_ids, evidence_directory=directory,
-                              readonly_dependency_mounts=dependency_mounts, aborted_identity_observations=aborted)
+                              readonly_dependency_mounts=dependency_mounts, aborted_identity_observations=aborted,
+                              readonly_namespace_parents=parent_mounts)

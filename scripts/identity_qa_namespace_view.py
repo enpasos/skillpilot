@@ -156,7 +156,7 @@ def require_prepared_lease(value,views):
     return value.verify(views)
 
 
-def run_prepared_namespace(role,views,argv,evidence_directory):
+def run_prepared_namespace(role,views,argv,evidence_directory,namespace_parent=None):
     """Existing actual receipt/capture layout under the existing pair lock.
 
     Sources/dependencies stay RO. This small adapter does not enable generated
@@ -175,6 +175,6 @@ def run_prepared_namespace(role,views,argv,evidence_directory):
         for view in selected:view.verify()
         from identity_qa_read_launcher import run_readonly
         return run_readonly(role,root,root/'app',argv,evidence_directory,
-                            dependency_views=selected,prepared_lease=lease)
+                            dependency_views=selected,prepared_lease=lease,namespace_parent=namespace_parent)
     finally:
         os.close(fd)

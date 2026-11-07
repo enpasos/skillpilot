@@ -341,7 +341,7 @@ class Process:
     executable: Path | None = None
 
 
-def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, dependency_trees=()):
+def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, dependency_trees=(),namespace_parents=()):
     """Return read facts or raise. Never returns a QA-readiness boolean."""
     contract.verify_bytes_and_aliases()
     if launch is not None:
@@ -352,6 +352,8 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
         runtime.verify_launch(launch)
     from identity_qa_tool_tree import require_bound_tree
     bound_trees = tuple(require_bound_tree(tree, launch, contract) for tree in dependency_trees)
+    from identity_qa_namespace_parent import require_bound_parent
+    bound_parents=tuple(require_bound_parent(parent,launch,contract) for parent in namespace_parents)
     require(all(any(tree._view is view for tree in bound_trees) for view in contract.mount_views),
             'Namespace views lack genuine launch-bound tree evidence')
     events = calls(trace)
@@ -425,6 +427,11 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
             require(len(matching) <= 1, 'Negative dependency lookup has ambiguous bound roots')
             if matching:
                 failures.append(matching[0].prove_negative_lookup((start, end, pid, name, args, result), path, proc.cwd[0]))
+                return None
+            matching_parents=[parent for parent in bound_parents if parent.contains(path)]
+            require(len(matching_parents)<=1,'Ambiguous actual prepared namespace parent')
+            if matching_parents:
+                failures.append(matching_parents[0].prove_negative_lookup((start,end,pid,name,args,result),path,proc.cwd[0]))
                 return None
             errno = failed.split()[1] if len(failed.split()) > 1 else ''
             permitted = (syscall, str(path), errno) in contract.expected_tool_failures

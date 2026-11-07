@@ -25,6 +25,46 @@ def _event_key(event):
     return start, end, pid, operation, tuple(arguments), result
 
 
+def negative_metadata_locator(event, path, cwd):
+    """Shared understood readonly metadata flags/errno and actual locator."""
+    start, end, pid, operation, args, result = event
+    require(result.startswith('-1 ENOENT '), 'Dependency absence needs actual ENOENT')
+    at = operation in ('openat', 'statx', 'newfstatat')
+    require(operation in ('open', 'openat', 'stat', 'lstat', 'statx', 'newfstatat', 'access'),
+            'Unsupported negative dependency metadata operation')
+    pathname = c_string(args[1] if at else args[0])
+    require(pathname, 'Empty-path metadata is not a locator absence')
+    path, cwd = Path(path), Path(cwd)
+    if Path(pathname).is_absolute():
+        expected = Path(pathname)
+    elif not at or args[0].startswith('AT_FDCWD'):
+        expected = cwd / pathname
+    else:
+        directory = annotation(args[0])
+        require(directory is not None, 'Relative lookup lacks actual dirfd identity')
+        expected = Path(directory) / pathname
+    require(expected == path, 'Negative lookup disagrees with PID/cwd/dirfd resolution')
+    flags = None
+    if operation in ('open', 'openat'):
+        flags = args[2] if at else args[1]
+        parsed = set(flags.split('|'))
+        require('O_RDONLY' in parsed and parsed <= {'O_RDONLY','O_CLOEXEC','O_DIRECTORY','O_NOFOLLOW','O_NONBLOCK','O_LARGEFILE'},
+                'Negative dependency open is not supported readonly metadata')
+    elif operation == 'statx':
+        flags = args[2]
+        require(set(flags.split('|')) <= {'0','AT_SYMLINK_NOFOLLOW','AT_STATX_SYNC_AS_STAT','AT_NO_AUTOMOUNT'},
+                'Unsupported statx metadata flags')
+    elif operation == 'newfstatat':
+        flags = args[-1]
+        require(set(flags.split('|')) <= {'0','AT_SYMLINK_NOFOLLOW','AT_NO_AUTOMOUNT'},
+                'Unsupported fstatat metadata flags')
+    elif operation == 'access':
+        flags = args[1]
+        require(flags in ('F_OK','R_OK'), 'Unsupported access metadata flags')
+    return flags, at, pathname
+
+
+
 class CapturedDependencyTree:
     """Minted only by an actual call to the existing capture implementation."""
     __slots__ = ('_token', '_root', '_private_root', '_rows_bytes', '_receipt_bytes', '_tree_sha256', '_prepared_binding')
@@ -202,39 +242,9 @@ class BoundDependencyTree:
         self.verify(self._launch)
         require(_event_key(event) in self._events, 'Negative lookup is absent from the actual launch trace')
         start, end, pid, operation, args, result = event
-        require(result.startswith('-1 ENOENT '), 'Dependency absence needs actual ENOENT')
-        at = operation in ('openat', 'statx', 'newfstatat')
-        require(operation in ('open', 'openat', 'stat', 'lstat', 'statx', 'newfstatat', 'access'),
-                'Unsupported negative dependency metadata operation')
-        pathname = c_string(args[1] if at else args[0])
-        require(pathname, 'Empty-path metadata is not a locator absence')
+        require(self.contains(path), 'Negative lookup does not belong to the bound dependency root')
+        flags, at, pathname = negative_metadata_locator(event, path, cwd)
         path, cwd = Path(path), Path(cwd)
-        if Path(pathname).is_absolute():
-            expected = Path(pathname)
-        elif not at or args[0].startswith('AT_FDCWD'):
-            expected = cwd / pathname
-        else:
-            directory = annotation(args[0])
-            require(directory is not None, 'Relative lookup lacks actual dirfd identity')
-            expected = Path(directory) / pathname
-        require(expected == path and self.contains(path), 'Negative lookup does not belong to the bound dependency root')
-        flags = None
-        if operation in ('open', 'openat'):
-            flags = args[2] if at else args[1]
-            parsed = set(flags.split('|'))
-            require('O_RDONLY' in parsed and parsed <= {'O_RDONLY','O_CLOEXEC','O_DIRECTORY','O_NOFOLLOW','O_NONBLOCK','O_LARGEFILE'},
-                    'Negative dependency open is not supported readonly metadata')
-        elif operation == 'statx':
-            flags = args[2]
-            require(set(flags.split('|')) <= {'0','AT_SYMLINK_NOFOLLOW','AT_STATX_SYNC_AS_STAT','AT_NO_AUTOMOUNT'},
-                    'Unsupported statx metadata flags')
-        elif operation == 'newfstatat':
-            flags = args[-1]
-            require(set(flags.split('|')) <= {'0','AT_SYMLINK_NOFOLLOW','AT_NO_AUTOMOUNT'},
-                    'Unsupported fstatat metadata flags')
-        elif operation == 'access':
-            flags = args[1]
-            require(flags in ('F_OK','R_OK'), 'Unsupported access metadata flags')
         pending = list(path.relative_to(self._visible_root).parts)
         resolved, aliases, seen = [], [], set()
         while pending:
