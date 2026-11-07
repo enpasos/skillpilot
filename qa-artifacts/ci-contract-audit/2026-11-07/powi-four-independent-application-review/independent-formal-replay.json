@@ -1,0 +1,65 @@
+{
+  "startedAtActual": "2026-11-07T04:50:49.335246+00:00",
+  "finishedAtActual": "2026-11-07T04:50:52.312153+00:00",
+  "command": [
+    "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+    "-B",
+    "qa-artifacts/ci-contract-audit/2026-11-07/powi-first-bounded-minimality-review/verify_proposal.py",
+    "--repo",
+    "/home/enpasos/projects/skillpilot",
+    "--proposal",
+    "qa-artifacts/ci-contract-audit/2026-11-07/powi-four-current-context-application-candidate/technical-proposal.json"
+  ],
+  "exitCode": 0,
+  "stdout": {
+    "status": "bounded-readonly-replay-pass",
+    "dataApplied": false,
+    "nativeScopeOrRuntimeExecutionClaimed": false,
+    "goalKeys": 6524,
+    "atomicKeys": 5495,
+    "baselineCycles": [
+      0,
+      0
+    ],
+    "steps": [
+      {
+        "caseId": "POWI-J8-INTRO-01",
+        "goalEqual": true,
+        "atomicEqual": true
+      },
+      {
+        "caseId": "POWI-J8-INTRO-02",
+        "goalEqual": true,
+        "atomicEqual": true
+      },
+      {
+        "caseId": "POWI-J8-INTRO-03",
+        "goalEqual": true,
+        "atomicEqual": true
+      },
+      {
+        "caseId": "POWI-J8-INTRO-04",
+        "goalEqual": true,
+        "atomicEqual": true
+      }
+    ],
+    "negativeControls": [
+      {
+        "id": "remove-final-motivational-anchor",
+        "goalEqualityRejects": true,
+        "atomicEqualityRejects": true
+      },
+      {
+        "id": "remove-substantive-retained-foundation",
+        "goalEqualityRejects": true,
+        "atomicEqualityRejects": true
+      },
+      {
+        "id": "wrong-exact-field-precondition",
+        "guardRejects": true
+      }
+    ],
+    "all21SourcePinsUnchanged": true
+  },
+  "stderr": ""
+}

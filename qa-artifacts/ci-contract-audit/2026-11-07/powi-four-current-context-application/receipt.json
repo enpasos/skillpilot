@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "four-individually-reviewed-powi-redundant-intro-requirements-applied",
+  "startedAtActual": "2026-11-07T04:58:51.620811+00:00",
+  "completedAtActual": "2026-11-07T04:58:51.693619+00:00",
+  "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+  "beforeSha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+  "afterSha256": "29d02016b7e31b5683b1d51196e21c68ab4a310b8a88aa1a09bd5f30d1ee2eef",
+  "independentReview": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/powi-four-independent-application-review/review.json",
+    "sha256": "783abc4c36c4ceb66cc5bbaf4ff0f2a92d21bcecda689f494754a9ca257a9ac2",
+    "decision": "support-exact-four-on-pinned-current-full-transitive-branch"
+  },
+  "currentContextProof": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/powi-four-current-context-application-candidate/native-comparison.json",
+    "sha256": "3602cb80044ef12d72da3e85abbe7e90b777913a9ef384d3b5283ef1720981b8"
+  },
+  "exactOperations": [
+    {
+      "caseId": "POWI-J8-INTRO-01",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "path": "/goals/233/requires",
+      "guardGoalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+      "guardGoalCanonicalSha256": "89feb4690f2891f40f064a43273aed61d63110abae1b31684e16f799965c4af5",
+      "guardRequiresBefore": [
+        "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+        "a2bd27fa-8e31-59ff-ab34-66fac86c0bb5"
+      ],
+      "value": [
+        "a2bd27fa-8e31-59ff-ab34-66fac86c0bb5"
+      ],
+      "didacticDecision": "conditionally-support-normalization",
+      "reasonDe": "041b begründet gemeinsame Regeln und bürgerschaftliche Mitwirkung. Die weiterhin vorausgesetzte sachgerechte Verwendung politischer Grundbegriffe a2bd ist eine eng passende sprachlich-fachliche Basis für diese Erklärung; sie verlangt weder einen späteren Politikbereich noch eine Ganzprüfung. a2bd behält den motivationalen Introabschluss direkt. Das Entfernen des zusätzlichen identischen Introverweises entzieht daher keinen eigenen fachlichen Inhalt. PuG8.4.1–2 belegen die beiden Kompetenzen, nicht eine amtlich vorgeschriebene Reihenfolge.",
+      "activationCondition": "Independent peer and the explicitly pending native backend projection/focus checks; exact source/field guards; no waiver of remaining graph/QA findings."
+    },
+    {
+      "caseId": "POWI-J8-INTRO-02",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "path": "/goals/234/requires",
+      "guardGoalId": "bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+      "guardGoalCanonicalSha256": "31f67204a17efba857aa502d629c267933182c6a4dda9fd15b6d149a7a1eba4f",
+      "guardRequiresBefore": [
+        "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+        "a2bd27fa-8e31-59ff-ab34-66fac86c0bb5"
+      ],
+      "value": [
+        "a2bd27fa-8e31-59ff-ab34-66fac86c0bb5"
+      ],
+      "didacticDecision": "conditionally-support-normalization",
+      "reasonDe": "bf0f recherchiert, strukturiert und präsentiert politische Probleme und Lösungsvorschläge. Die sachgerechte Verwendung grundlegender politischer Begriffe a2bd trägt die Benennung und Einordnung dieser Recherche, ohne bereits die eigene Problem-/Lösungsrecherche oder ihre Präsentation vorauszusetzen. Der unverändert direkte Introverweis von a2bd erhält die Motivation. PuG8.4.1 und .3 belegen diesen begrenzten Erwerbskontext; die Normalisierung behauptet keinen amtlichen Sequenznachweis.",
+      "activationCondition": "Independent peer and the explicitly pending native backend projection/focus checks; exact source/field guards; no waiver of remaining graph/QA findings."
+    },
+    {
+      "caseId": "POWI-J8-INTRO-03",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "path": "/goals/235/requires",
+      "guardGoalId": "022c620f-fdb3-5814-a9b7-f18614130793",
+      "guardGoalCanonicalSha256": "bf4fdef0e8012d5a80536b650f264d524ede243122b83b37bf9e5b93c6dde19e",
+      "guardRequiresBefore": [
+        "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+        "041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      ],
+      "value": [
+        "041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      ],
+      "didacticDecision": "conditionally-support-normalization",
+      "reasonDe": "022c bewertet Chancen und Grenzen lokaler Jugendbeteiligung. Die verbleibende Grundlage041b erklärt, warum gemeinsame Regeln und bürgerschaftliche Mitwirkung demokratisches Zusammenleben tragen. Diese begrenzte Grundlage passt zum anschließenden Wirksamkeitsurteil; Recherche und Bewertung der konkreten Beteiligungsmöglichkeiten bleiben eigener Erwerb von022c. Nach der ersten Normalisierung führt der überlebende Weg über041b unda2bd zum Intro. PuG8.4.4/.6 und8.6.6 binden den lokalen Beteiligungskontext; bestehende partial-Mappings werden nicht zu exact umgedeutet.",
+      "activationCondition": "Independent peer and the explicitly pending native backend projection/focus checks; exact source/field guards; no waiver of remaining graph/QA findings."
+    },
+    {
+      "caseId": "POWI-J8-INTRO-04",
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "path": "/goals/236/requires",
+      "guardGoalId": "b2d76b0d-cdb3-5f35-893f-896903d673db",
+      "guardGoalCanonicalSha256": "d8cf11a75ad1100917d8d8693e8c9b23832831937b82074df55f7c53f5ec879c",
+      "guardRequiresBefore": [
+        "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+        "041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      ],
+      "value": [
+        "041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      ],
+      "didacticDecision": "conditionally-support-normalization",
+      "reasonDe": "b2d beurteilt Kompromisse als friedliche demokratische Konfliktaustragung. Die Bedeutung gemeinsamer Regeln und Mitwirkung aus041b trägt dieses Urteil, ohne die konkrete Aushandlung oder Kompromissbewertung bereits vorwegzunehmen. Nach gemeinsamer Änderung bleibt b2d→041b→a2bd→Intro bestehen. Die Introkompetenz enthält keine zusätzliche Konfliktanalyse, die durch das Entfernen ihres doppelten Verweises verlorenginge. PuG8.4.2/.5 sind der konkrete Fachkontext.",
+      "activationCondition": "Independent peer and the explicitly pending native backend projection/focus checks; exact source/field guards; no waiver of remaining graph/QA findings."
+    }
+  ],
+  "onlyFourRequiresArraysChanged": true,
+  "allOther508GoalObjectsAndAllNonRequiresFieldsUnchanged": true,
+  "heldFifthWholeGoalUnchanged": true,
+  "other20CanonicalSourcesAndRelevantCodeInputsUnchanged": true,
+  "method": "full raw/WholeGoal/field/catalog checks, own private inode, fsync, atomic replace; old bytes archived",
+  "neighborProducerSnapshotAndSourcewriteBarrierHonored": true,
+  "sourceQAReviewDatesAliasesMasteryCardsPolicyOrRuntimeChanges": false,
+  "floorPolicySha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+  "normalProducerAndFloorStillRequired": true,
+  "notAnM6M7OrRemoteAcceptanceClaim": true
+}
