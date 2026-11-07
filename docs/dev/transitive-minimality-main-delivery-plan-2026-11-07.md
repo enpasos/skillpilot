@@ -98,6 +98,39 @@ Rollenprüfung und Lernzielinhalte ändern sich dadurch nicht. Der echte Bio-Fal
 und eine ungültige atomare Anforderung außerhalb des Fokus gehören zur Regression.
 Ein Vorher-/Nachher-Fehlergleichstand ersetzt diesen erfolgreichen Nachweis nicht.
 
+Der reguläre Backendlauf deckte im Anschluss einen echten HTTP-500-Fehler
+bei Wirtschaftswissenschaften `DE-BB/G8` und `DE-BB/G9` auf: Die Rich-Frontier
+fragte einen sichtbaren Navigationscluster ab, der nicht zum validierten
+Voraussetzungskontext gehört. Die gemeinsame Prüfung lehnt einen Kandidaten
+außerhalb dieses Lookups geschlossen ab. Sie erweitert den Graphen nicht;
+unbekannte atomare Anforderungen bleiben Fehler der vollständigen
+Wurzelvalidierung. Die bestehende M6-Integration prüft deshalb zusätzlich den
+HTTP-Status vor Filtern und unveränderten Zielzahlen.
+
+Die erste Kantenentfernung machte außerdem den aktiven kanonischen Input-Pin
+des Mathematik-Dauerlayoutplans veraltet. Der tatsächliche CI-Schritt
+`check:math-duration-composition-views` wies diesen Stand hart zurück.
+Die [bestehende Pflegeanweisung](../qa-ci/math-m7-concept-and-handoff-2026-09-28.md)
+erlaubt dessen Fortschreibung nach Prüfung des Inhaltsdeltas. Dieses Delta
+besteht ausschließlich aus der belegten `requires`-Entfernung am gewöhnlichen
+Q2-Atom; es betrifft keine Entscheidung des Sek-I-Splitplans.
+In `app/scripts/config/math-duration-split-spanning-tree-policy.json` wird deshalb
+nur `inputs.canonical.sha256` ausdrücklich von
+`e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1` auf
+`07749daefff5535416b17d133a84cdcfad40eb5b3137de4958898b8386d79838`
+fortgeschrieben. Der reguläre Generatorcheck besteht; alle 18 vorhandenen
+Views sind bytegleich. Alle übrigen Planfelder, 83 Platzierungen, sieben
+additiven Adjudikationen und fünf Quellen-Scope-Bindungen bleiben unverändert.
+Historische Reviews werden nicht neu gebunden; die vier Vergleichsfamilien
+der Reduktionsbescheinigung werden dafür nicht erweitert.
+
+Der abgeleitete Mathematik-Rationale-Coverage-Bericht folgt derselben
+Kantenentfernung: direkte `requires`-Relationen und noch offene
+Relationsbegründungen sinken jeweils von 2.460 auf 2.459. Die reguläre
+Regeneration ändert ausschließlich diese Zähler und den Zeitstempel; der
+zugehörige Check besteht. Zielmengen, Quellenbegründungen und alle übrigen
+offenen Lücken bleiben gleich.
+
 Der zuvor belegte technische Fehler auf main war der Abbruch von
 Voraussetzungspfaden an gemeisterten oder außerhalb liegenden Zwischenknoten.
 Die notwendige Transitivitätskorrektur aus `b8eef5b967` wurde mit PR #87 im

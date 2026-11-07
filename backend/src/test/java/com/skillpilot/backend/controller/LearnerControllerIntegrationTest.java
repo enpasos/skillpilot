@@ -1859,16 +1859,22 @@ public class LearnerControllerIntegrationTest {
                     subjectLandscapeId, jurisdiction, "G8", "GK", true, false));
             learnerRepository.save(learner);
 
-            JsonNode g8State = objectMapper.readTree(getRequest(
-                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            HttpResponse<String> g8Response = getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state");
+            assertThat(g8Response.statusCode()).as("%s %s G8 state: %s", subject, jurisdiction, g8Response.body())
+                    .isEqualTo(HttpStatus.OK.value());
+            JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
             learnerRepository.save(learner);
 
-            JsonNode g9State = objectMapper.readTree(getRequest(
-                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
+            HttpResponse<String> g9Response = getRequest(
+                    "/api/ui/learners/" + learner.getSkillpilotId() + "/state");
+            assertThat(g9Response.statusCode()).as("%s %s G9 state: %s", subject, jurisdiction, g9Response.body())
+                    .isEqualTo(HttpStatus.OK.value());
+            JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
