@@ -1,0 +1,7 @@
+Die getrennt beauftragte kurze Grundlagenprüfung bestätigte die UNKNOWN-Grenze und die begrenzte Reparatursemantik. Die Delegation verwendete ausdrücklich die angeforderte Konfiguration `gpt-6-astra` / `ultra`; dies ist eine KI-Gegenprüfung, keine menschliche Inhaltsfreigabe.
+
+ABSENT bleibt UNKNOWN, nicht `[]`. Unveränderte eigene Examresultate dürfen eng erhalten bleiben; jede neue externe Coveragebehauptung benötigt damalige Aufgaben-/Rubrikbelege einschließlich betroffener Varianten. Ein neuer Aufgabenreview genügt dafür nicht.
+
+`same-declared-contract-repair` bestätigt ausschließlich, dass das reparierte Material dieselbe bereits historisch erklärte Prüfungsbedeutung erfüllt. Es bestätigt weder alte Materialeignung noch Äquivalenz alter/neuer Aufgaben. Der konkrete Beleg muss alte/neue Materialbytes, dieselbe explizite atomare Coverage, vollständige Zielbedeutungen und unabhängigen Review binden. Alte explizite Ergebnisse bleiben erhalten; spätere Anerkennung darf sie nicht allein wegen der aktuellen Reparaturfreigabe aufwerten. Für UNKNOWN darf dieser Weg keine erstmals behauptete Fremdzielabdeckung erzeugen.
+
+Die Gegenprüfung verlangte außerdem den unabhängig aus tatsächlichen Quellen berechneten erwarteten Befund. Passflags und identische Hashstrings allein reichen gegen einen erfundenen positiven Report nicht. Die 21 vorgesehenen Integrationstestgruppen sind eine noch auszuführende Implementierungsanforderung.

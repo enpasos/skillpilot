@@ -1,0 +1,347 @@
+{
+  "status": "Private implemented and natively checked successor; not source/material/CI approval",
+  "sourceBeforeSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+  "sourceCandidateSha256": "c824e0b360470ef67ae4deb560146c7e677ad9601446b26cd5a46097c426e53b",
+  "sourceGoalsBefore": 282,
+  "sourceGoalsCandidate": 288,
+  "proposedChangedOrNewFiles": 39,
+  "graphBefore": {
+    "G17": 37
+  },
+  "graphCandidate": {
+    "G17": 27
+  },
+  "authoredViewsActuallyChecked": 19,
+  "no875OrHistoricalThreeInAnyAuthoredViewTargets": true,
+  "all24HistoricalCoverageExpansionPreserved": true,
+  "coverage14Declared10Absent": true,
+  "projectionScopesActuallyObserved": 50,
+  "globalDiscovery": {
+    "definitions": 926,
+    "required": 873
+  },
+  "finalDiscoveryIssues": [],
+  "finalRetainedFailingGoalIds": [
+    "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+    "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+    "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+    "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+  ],
+  "finalAssessmentRules": [
+    {
+      "id": "CQR-204",
+      "status": "fail",
+      "metrics": {
+        "examDefinitions": 25,
+        "requiredExams": 25,
+        "checkedExams": 25,
+        "weakExamData": 9,
+        "discoveryIssues": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "fail",
+      "metrics": {
+        "examDefinitions": 25,
+        "requiredExams": 25,
+        "checkedExams": 25,
+        "weakExamData": 9,
+        "discoveryIssues": 0
+      }
+    }
+  ],
+  "routeRules": [
+    {
+      "id": "CQR-101",
+      "status": "pass",
+      "summary": "Effective route coverage is complete for the configured scope.",
+      "metrics": {
+        "selectedAtomicGoals": 211,
+        "missingMotivationPath": 0,
+        "missingTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-102",
+      "status": "pass",
+      "summary": "Direct atomic route coverage is complete for the configured scope.",
+      "metrics": {
+        "selectedAtomicGoals": 211,
+        "missingDirectMotivationPath": 0,
+        "missingDirectTerminalPath": 0
+      }
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "summary": "No scoped cluster-level requires remain.",
+      "metrics": {
+        "scopedClusterRequires": 0
+      }
+    },
+    {
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 18,
+        "evaluatedProjectionScopes": 50,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 0,
+        "requiredTerminalAutonomyGoals": 12,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 42,
+        "terminalGoalsMissingCompiledApplicability": 4,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 32,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 3,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 177,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 8,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 320,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 3,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 387,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 59,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 4775,
+        "visibleProfileSelectedAtomicGoalOccurrences": 4775,
+        "visibleProjectedRouteTargetGoalOccurrences": 4775,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 5,
+        "projectionScopesMissingDirectMotivationRoutes": 5,
+        "projectionScopesMissingEffectiveTerminalRoutes": 49,
+        "projectionScopesMissingDirectTerminalRoutes": 49,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 11,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 11,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 3619,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 3619,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 8,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 8,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 185,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 185
+      },
+      "details": [
+        "Missing compiled applicability: 269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "Missing compiled applicability: ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "Missing compiled applicability: 0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "Missing compiled applicability: 6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BW]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-HE]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BY]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BB]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-BE]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-NI]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-NW]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SH]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-HB]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-HH]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-MV]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-RP]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SL]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-SN]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-ST]",
+        "Missing jurisdiction-specific stage-placement authority for national projection: curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json [DE-TH]"
+      ]
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "summary": "All configured terminal autonomy goals have examData.",
+      "metrics": {
+        "terminalAutonomyGoals": 15,
+        "terminalAutonomyGoalsWithExamData": 15,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "fail",
+      "summary": "9 terminal autonomy examData item(s) are placeholders or incomplete.",
+      "metrics": {
+        "terminalAutonomyGoals": 15,
+        "concreteExamData": 6,
+        "weakExamData": 9
+      },
+      "details": [
+        "Weak examData: Grundlagen und Querschnitt vernetzt anwenden [342511c3-45fb-5783-b601-906149e78c2d] (placeholder examData)",
+        "Weak examData: E-Phase vernetzt anwenden [49ba66cf-accd-5938-a63e-f031bc786767] (placeholder examData)",
+        "Weak examData: Q1 vernetzt anwenden [65aa807f-f998-5648-a3a6-2e0e96dba714] (placeholder examData)",
+        "Weak examData: Bibliotheksdatenbank zwischen ER-Modell und SQL [269a561b-f12e-57b2-9b05-e20f58c9dcf6] (reviewStatus=draft)",
+        "Weak examData: Festivaldatenbank zwischen Schema und Anfrage [ca2ff162-c71f-500f-8ce7-321ab2cf3f1f] (reviewStatus=draft)",
+        "Weak examData: Q2 vernetzt anwenden [0df1bedd-5fda-5b3b-a959-c9610237bb3e] (reviewStatus=draft)",
+        "Weak examData: Q3 vernetzt anwenden [1ce620dc-93cf-579c-a286-e74451d0a4d7] (placeholder examData)",
+        "Weak examData: Q4 vernetzt anwenden [a5e33d4d-f312-51d2-816b-e0b10dd1e701] (placeholder examData)",
+        "Weak examData: Datenbanken und Datennutzung anwenden – SkillPilot Grundangebot [6ebc2a67-ea20-5c4e-8a63-635f40438d6a] (reviewStatus=draft)"
+      ]
+    },
+    {
+      "id": "CQR-203",
+      "status": "warn",
+      "summary": "4 terminal autonomy examData item(s) lack release or coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 15,
+        "releasedCoverageCompleteExamData": 11,
+        "releaseCoverageIncompleteExamData": 4
+      },
+      "details": [
+        "Incomplete exam release/coverage: Bibliotheksdatenbank zwischen ER-Modell und SQL [269a561b-f12e-57b2-9b05-e20f58c9dcf6] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: Festivaldatenbank zwischen Schema und Anfrage [ca2ff162-c71f-500f-8ce7-321ab2cf3f1f] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: Q2 vernetzt anwenden [0df1bedd-5fda-5b3b-a959-c9610237bb3e] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: Datenbanken und Datennutzung anwenden – SkillPilot Grundangebot [6ebc2a67-ea20-5c4e-8a63-635f40438d6a] (reviewStatus is not released)"
+      ]
+    }
+  ],
+  "actualGlobalAuthoredFlow": {
+    "requested": 51,
+    "completeNonempty": 39,
+    "notOfferedSelection": 12,
+    "actualRepositoryPackageStateNullAll51": true,
+    "allCompleteHaveNoFourLegacyTargets": true,
+    "all25HistoricalMasteryValuesUnchanged": true,
+    "notOffered": [
+      {
+        "jurisdiction": "DE-HB",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-HE",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-HH",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-MV",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-NI",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-NW",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-RP",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-SH",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-SL",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-SN",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-ST",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      },
+      {
+        "jurisdiction": "DE-TH",
+        "profile": "GK+LK",
+        "planStage": "SELECTION"
+      }
+    ]
+  },
+  "directOwnerProfileFixture": {
+    "contexts": 51,
+    "complete": 51,
+    "interpretation": "Explicit direct-owner profiles only; not valid global-flow proof"
+  },
+  "directEmptyOwnerCounterexample": {
+    "strictMode": false,
+    "planComplete": true,
+    "identityTargets": 288,
+    "unsupportedLegacyStillTargets": true,
+    "owner": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "separateRuntimeAnalysis": "/dev/shm/informatics-owner-direct-entry-analysis-7vb6e1mj/summary.json"
+  },
+  "held": {
+    "HE2027_28": "material exists but cohort cannot be a timeless universal route; unregistered",
+    "BYregularLate": "model hold retained",
+    "materialPlaceholders": 5,
+    "fourAdditionalDbAbiturNamedAssets": "task prose names material1-4 without complete assets; hold remains even if generic rule misses it",
+    "sourceAuthority": "SH basic DB4 fragment introduced, no whole-match canonical target; needsCanonicalGoal",
+    "retainedBindings": 4,
+    "scopesWithoutExpectedTerminal": 42,
+    "scopesWithoutJurisdictionStageAuthority": 32,
+    "scopesWithoutDirectOrEffectiveTerminalRoute": 49
+  },
+  "CI": "21 test groups pass; production concrete evidence bindings remain empty; actual source still fails four expected retained rows",
+  "noActiveWrites": true,
+  "noSourceA84Mutation": true,
+  "noDatabaseWrites": true,
+  "frame": "All21 source inputs and1708 frozen files internally byte-exact. At original native close live drift0; after P2 root legitimately changed UI and LearnerService. Six live successor pins recorded in postguards; native results retain frozen frame, no readiness-successor claim.",
+  "liveFrameDrift": [
+    {
+      "path": "app/scripts/testLearnerViewStartupUi.ts",
+      "expectedSha256": "f5581e9b6fc5516ddc2138154dbc18579c3c36bef9b6dc64669a1aa2af9580fa",
+      "actualSha256": "51d96a922a49d0de746bf950379513d2603d7c2175b172bb467ee9bb5df5a294"
+    },
+    {
+      "path": "app/scripts/testPersonalCurriculumEditorLabels.tsx",
+      "expectedSha256": "d25fac0ab7927c28d3747bd71007cc61d9b26ef5b2699aad3fa6f28c525399da",
+      "actualSha256": "180eeab0bbee0a4e45a9959643f9f0fd44a8f0368a8baa8e2efa903075a8ed2a"
+    },
+    {
+      "path": "app/scripts/testSessionSetupCompletionUi.ts",
+      "expectedSha256": "8469518b7b37bdb272498fd57f8345b36f219c5cab8ed322e8443058ea8c1bd7",
+      "actualSha256": "a1872fdaf121855b4bf4a3c93c49043d50c076c54f8db1fefadd2245bec93392"
+    },
+    {
+      "path": "app/src/components/PersonalCurriculumEditor.tsx",
+      "expectedSha256": "101a125d299f1b9628b1a338b5d973a39f92b55418ed4155d220e70c92b6774f",
+      "actualSha256": "8c1af8ad5372e04927bc5cf4415b9b37bb173d9c75cc65de2f9039367454516d"
+    },
+    {
+      "path": "app/src/views/LearnerView.tsx",
+      "expectedSha256": "3a7caba3e7a4987971e1fda9df0b688f06e54154954cd9e6a7117536c508d440",
+      "actualSha256": "197a037233ab523fe92a94381ec5a590ce5dd2d623e0f623013f4355a9947ac1"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "expectedSha256": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659",
+      "actualSha256": "450b861aad5a8a4cad953f7116bcb53c65caf645d72d0b6bcc23726060e9991c"
+    }
+  ],
+  "originalCiP2KnownHold": "Raw view byte matching incorrectly treats historical mentions as held introduction. Original13 CI files and all prior runs preserved.",
+  "separateCiP2Successor": {
+    "path": "ci-p2-successor/receipt.json",
+    "status": "Implemented,targeted native tests pass, independent review pending",
+    "productionHelperSha256": "b53af12bf36abf5da5fcf46e6147e267fa50c4c5c786fa9db687c2841d4aa391",
+    "originalSourceC824Unchanged": true,
+    "allFourRetainedHoldsUnchanged": true,
+    "ordinary875BindingStillHold": true
+  }
+}

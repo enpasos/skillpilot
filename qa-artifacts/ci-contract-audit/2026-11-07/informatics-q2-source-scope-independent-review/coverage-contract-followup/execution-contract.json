@@ -1,0 +1,226 @@
+{
+  "status": "private finite implementation contract; not installed, not QA acceptance",
+  "contractId": "informatics-retained-assessment-coverage-v1",
+  "owner": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+  "scope": {
+    "historicalDefinitions": 24,
+    "declared": 14,
+    "undeclared": 10,
+    "otherCurriculaHistoricalCoverage": "not implemented and not proven",
+    "noRuntimeOrMasteryChanges": true
+  },
+  "history": {
+    "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sourceRawSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+    "sourceArchive": "historical-informatics-source.json.gz",
+    "sourceArchiveSha256": "7d65e10b4df75b49147f3963136f3800a979cc5e9ce9cc8164ab98920938f657",
+    "inventoryPath": "history-inventory.json",
+    "inventorySha256": "3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891",
+    "interpretation": "history reference only, never accepted-error baseline"
+  },
+  "positiveDecisions": [
+    "declared-preserved",
+    "undeclared-preserved",
+    "first-definition-bound"
+  ],
+  "negativeDecision": "fail",
+  "issueCodes": [
+    "coverage-added",
+    "coverage-removed",
+    "meaning-change-unproved",
+    "undeclared-transition",
+    "unresolved-reference",
+    "owner-mismatch",
+    "duplicate-definition",
+    "missing-historical-definition",
+    "non-atomic-exam",
+    "history-binding-invalid",
+    "current-frame-invalid",
+    "incomplete-inventory",
+    "unregistered-introduction",
+    "first-binding-pending",
+    "held-introduction",
+    "unbound-equivalence",
+    "manifest-mismatch",
+    "expected-context-missing"
+  ],
+  "rowShape": {
+    "goalId": "owner-qualified by enclosing owner; no suffix-only resolution",
+    "historyKind": "declared | undeclared | first-definition",
+    "decision": "one positiveDecisions entry or fail",
+    "coverage": "declared/first-declared ONLY: history/current owner-bound atoms, or initial atoms; ABSENT case omits field entirely",
+    "meaningEvidence": "exact | exact-equivalence-binding | same-declared-contract-repair; latter repairs current material without certifying old defective passes",
+    "issues": "complete sorted unique issue codes with relevant IDs and evidence anchors"
+  },
+  "manifestRequiredFields": [
+    "contractVersion",
+    "owner",
+    "historySourceSha256",
+    "historyInventorySha256",
+    "frameDigest",
+    "historicalGoalIds",
+    "currentDefinitionGoalIds",
+    "introductionGoalIds",
+    "rows",
+    "failingGoalIds",
+    "status"
+  ],
+  "manifestRule": "Unique complete rows; expected result recomputed from captured actual sources and bound history/evidence. pass iff every required row positive and no frame/inventory/discovery issue. A self-asserted status or matching hash alone is insufficient.",
+  "qualityConjunction": "CQR204 = existing structure/placeholder success AND preservation success. Existing CQR202 and CQR201/203 remain. No baseline error exceptions. A bounded same-declared-contract repair may fix old41 material; it does not certify old material or retroactively recognize its passes.",
+  "consumerRequirements": {
+    "producer": "Add existing CQR204 manifest and exact source-bound expected coverage context. Do not mint passing expected results from report.",
+    "currentExpectedContext": "Captured-once actual source bytes, parsed immutable source, fixed history/registry and exact evidence inputs; recompute entire expected protection outcome.",
+    "maturity": "hasCompletePassingCurriculumExamReadiness requires exactly one matching CQR204 and independently positive expected protection result for configured Info owner. Missing context hard false. deriveCurriculumMaturity at most M3 on otherwise good fixture.",
+    "floor": "Existing floor CLI regenerates expected source context independently of artifact; forged M7 string does not bypass assessment failure.",
+    "firstRollout": "Required for Info owner and its new definitions only; other owners retain current gates without historical-coverage certification."
+  },
+  "newIdentities": [
+    {
+      "goalId": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+      "currently": "private candidate only",
+      "initialCoverageCount": 20,
+      "rule": "Bind exact first intended active definition and existing independent evidence. No prior result transfer; no automatic official duty/release. Pending binding blocks protection success, draft independently blocks required readiness."
+    },
+    {
+      "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+      "currently": "private held unregistered HE2027/2028",
+      "rule": "Absent from active source and view; not current introduced definition. Any appearance under this first contract fails. No new cohort runtime."
+    }
+  ],
+  "testGroups": [
+    {
+      "id": "T01",
+      "trigger": "Unveränderte vollständige alte24",
+      "expected": "Erhaltung14declared+10undeclared positiv; sechs echte Strukturfehler bleiben. Keine Fehlerfreigabe.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T02",
+      "trigger": "Native Q3.2.contains-Erweiterung isoliert bei8877a2e6",
+      "expected": "Historische21→22 ergibt coverage-added mit875; echte CQR204/Maturity/Floor-Kette muss blockieren.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T03",
+      "trigger": "Native Q3.2.contains-Erweiterung isoliert bei0c346dc1",
+      "expected": "Historische18→19 ergibt coverage-added mit875; gleiche harte Wirkung.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T04",
+      "trigger": "Tatsächlicher V2-Graph mit unveränderten beiden Q3examData",
+      "expected": "Beide Vertragsfehler gemeinsam finden; keine Auswahl über Sichtbarkeit.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T05",
+      "trigger": "Explizite historische21/18Pins",
+      "expected": "Native alte14deklarierte Mengen gleich; UNKNOWN bleibt UNKNOWN. Auf isoliertem Altgraph positive Erhaltung. Auf V2 gelten drei Materialäquivalenzbindungen und neue6ebcErstbindung zusätzlich; kein pauschalerV2pass.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T06",
+      "trigger": "Atomtausch bei gleicher Anzahl; Entfernung eines Atoms",
+      "expected": "Jeweils harter Mengenfehler; Zählergleichheit reicht nicht.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T07",
+      "trigger": "Gleiche IDs mit verbreiterter eigener oder abgedeckter Zielbeschreibung",
+      "expected": "meaning-change-unproved; unveränderte CoverageUUIDs reichen nicht.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T08",
+      "trigger": "Task/Lösung/Rubrik/Bestehensgrenze geändert",
+      "expected": "Ohne genau passenden Äquivalenzbeleg hart fail. Unveränderte Placeholder bleiben immer Strukturfehler.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T09",
+      "trigger": "Exakter begrenzter Äquivalenzbeleg; danach falsche/neue/stalePins",
+      "expected": "Pass nur für exakt gebundenen bedeutungsgleichen Fall; veränderte Bytes, fremder Owner, neue Mehrleistung, bloßesapprovedFlag scheitern.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T10",
+      "trigger": "Alle10alten ABSENT-Felder samt eigener Bedeutung unverändert",
+      "expected": "undeclared-preserved; keine leere Coverage und keine Anerkennungs-/Inhaltsfreigabe.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T11",
+      "trigger": "ABSENT→[]/null/list; neuer Anerkennungsanspruch",
+      "expected": "Im ersten Patch harter undeclared-transition; neueAufgabenfreigabe ist kein historischerCoveragebeleg.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T12",
+      "trigger": "Nur requires/geerbte/transitive Vorbereitung geändert",
+      "expected": "Keine Ableitung von Coverage. Erhaltungsrelation separat unverändert; vorhandene Graph-/Fachprüfungen bleiben zuständig und dürfen echte neuePflichten nicht grünfärben.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T13",
+      "trigger": "Historienzeile fehlt/doppelt/falscherOwner; history source oderinventorygeändert",
+      "expected": "Unvollständige/fremdeBindung fail-closed; keineNeubaseline auscurrent.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T14",
+      "trigger": "AltesExam verborgen/ausViewgenommen/draft/ausSourcegelöscht/nonatomicgemacht",
+      "expected": "Erste3 bleiben unverändert im vollständigen24erVergleich; Löschen/Umtypisieren hartfail.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T15",
+      "trigger": "Fehlende/zyklische/mehrdeutige/foreign/malformed Coverage-Referenz",
+      "expected": "NativeAuflösungfehler hart; Suffixfallback, leereMenge oder silentlyskippednodes verboten.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T16",
+      "trigger": "AktuelleQuelle nachCapture geändert; fremdeSourceSHA; mutableparsedinput; staleReport",
+      "expected": "Genau erfassteBytes+Objects binden. EigenständigerConsumer erfasstaktuelleBytesneu; Replay oder Frame-Mismatch fail.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T17",
+      "trigger": "CQR204/Manifest/Zeile fehlt oder doppelt; erfundenerpass mit korrektenHashes",
+      "expected": "Exakte vollständige erwarteteZeilen/Findingmenge vergleichen. Bei echterQuellabweichung muss passend gefälschterpass bisFloor scheitern.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T18",
+      "trigger": "ExpectedContext fehlt/fabriziert/ausReportimportiert; policyIDgewechselt",
+      "expected": "InfoPflichtkonfiguration fail-closed. Kein Opt-out durch optionalesFeld/not_configured.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T19",
+      "trigger": "6ebc korrekteerste20erBindung; danacherweitert/unregistriert/alsAltpassalias",
+      "expected": "Erstbindung schützt neueIdentität und erzeugtkeinenAltpasseffekt; DraftReadiness separatrot. FehlendeBindung/Expansion/Alias hartfail. Neuer eigenerStandaloneExam darf eine konkreteErstbindungohneFremdcoverage erhalten.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T20",
+      "trigger": "HEheldf37f fehltaktuell; erscheintinSource oderaktiverView",
+      "expected": "Fehlen ist korrekt außerhalb24/25. Einführung unter diesemVertrag hartfail; keinKohortenfallback.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    },
+    {
+      "id": "T21",
+      "trigger": "Echtes gültigesM6Fixture dann einzelnerCoveragefehler, gefälschteM7Statuszahl",
+      "expected": "PositivebestehendeKetteM6; einzelnerFehler höchstensM3, protectedM6/M7Floorfail. M7Positivkontrolle nur mit ohnehin gültigerV-Evidenz. InfoM0 keinIntegrationsbeweis.",
+      "executionStatus": "required for implementation; not claimed executed by this specification"
+    }
+  ],
+  "alreadyExecutedEvidence": {
+    "parentNativeFile": "../coverage-gate-counterchecks.json",
+    "sha256": "396b54271c45959a9724469967e3acdf662c7872f2c3c745e793206c5208b1a4",
+    "twoNativeNegatives": 2,
+    "nativePinPositive": true,
+    "scope": "Existing native expansion and old CQRblindspot only; not future gate implementation"
+  },
+  "semanticReview": "Separate independent critique confirmed undeclared standalone preservation, unknown-not-empty, exact historical material requirement, no fabricated-report trust."
+}

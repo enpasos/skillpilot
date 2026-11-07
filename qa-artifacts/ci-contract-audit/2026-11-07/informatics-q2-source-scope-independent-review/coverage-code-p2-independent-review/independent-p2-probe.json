@@ -1,0 +1,317 @@
+{
+  "status": "independent focused P2 review evidence; no subject QA pass",
+  "helperSha256": "b53af12bf36abf5da5fcf46e6147e267fa50c4c5c786fa9db687c2841d4aa391",
+  "cases": [
+    {
+      "name": "CCR01 original structure-label reproducer",
+      "expectedHeld": false,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        }
+      ]
+    },
+    {
+      "name": "goal-shaped historical audit metadata",
+      "expectedHeld": false,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        }
+      ]
+    },
+    {
+      "name": "display label literal",
+      "expectedHeld": false,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        }
+      ]
+    },
+    {
+      "name": "uppercase bare own target",
+      "expectedHeld": true,
+      "original": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "successor": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlende kanonische Ziel-Referenz: F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ]
+    },
+    {
+      "name": "uppercase bare own prerequisite",
+      "expectedHeld": true,
+      "original": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "successor": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlende kanonische Ziel-Referenz: F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ]
+    },
+    {
+      "name": "JSON escaped literal owned reference",
+      "expectedHeld": true,
+      "original": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "successor": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ]
+    },
+    {
+      "name": "JSON escaped historical label",
+      "expectedHeld": false,
+      "original": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "successor": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        }
+      ]
+    },
+    {
+      "name": "role overlap still a real reference",
+      "expectedHeld": true,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.1",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ]
+    },
+    {
+      "name": "foreign UUID is not Info introduction",
+      "expectedHeld": false,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ]
+    },
+    {
+      "name": "malformed JSON fail closed",
+      "expectedHeld": false,
+      "original": {
+        "held": false,
+        "status": "pass",
+        "issues": []
+      },
+      "successor": {
+        "held": false,
+        "status": "fail",
+        "issues": [
+          "current-frame-invalid: independent.view.json"
+        ]
+      },
+      "nativeCompileErrors": []
+    },
+    {
+      "name": "historical mention cannot hide real nested reference",
+      "expectedHeld": true,
+      "original": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "successor": {
+        "held": true,
+        "status": "fail",
+        "issues": [
+          "held-introduction: active view"
+        ]
+      },
+      "nativeCompileErrors": [
+        {
+          "code": "CPV-001",
+          "severity": "error",
+          "message": "scope.schoolForm fehlt."
+        },
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.1.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlender kanonischer Root: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ]
+    }
+  ],
+  "metadataCasesWithZeroCompileErrors": false,
+  "actualV3FailingGoalIds": [
+    "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+    "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+    "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+    "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+  ],
+  "productiveBindingsStillEmpty": true,
+  "limitations": [
+    "A foreign/malformed reference is not an Info held introduction; native view/schema discovery remains independently authoritative for its own errors.",
+    "Unchanged history manifest pass is only retained identity/coverage preservation. Existing material readiness remains separate and red.",
+    "No current runtime or all-curriculum acceptance."
+  ]
+}

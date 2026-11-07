@@ -1,0 +1,20 @@
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/dev/shm/informatics-coverage-independent-ci-review-20261107/app/src/utils/goalVisualizationQaStatus' imported from /dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/lib/curriculumVisualizationValidation.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:283:11)
+    at moduleResolve (node:internal/modules/esm/resolve:952:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+    at nextResolve (node:internal/modules/esm/hooks:864:28)
+    at resolveBase (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1794036384397:2:3744)
+    at async resolveDirectory (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1794036384397:2:4237)
+    at async resolve (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/esm/index.mjs?1794036384397:2:5355)
+    at async nextResolve (node:internal/modules/esm/hooks:864:22)
+    at async Hooks.resolve (node:internal/modules/esm/hooks:306:24)
+    at async handleMessage (node:internal/modules/esm/worker:196:18) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/src/utils/goalVisualizationQaStatus'
+}
+
+Node.js v20.20.2

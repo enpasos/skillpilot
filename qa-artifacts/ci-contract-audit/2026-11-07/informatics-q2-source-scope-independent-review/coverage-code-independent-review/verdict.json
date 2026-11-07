@@ -1,0 +1,40 @@
+{
+  "status": "hold exact13-file patch for CCR01; core supported and remaining source integration holds explicit",
+  "findings": [
+    {
+      "id": "CCR-01",
+      "priority": "P2",
+      "kind": "incorrect rejection",
+      "anchor": "app/scripts/lib/retainedAssessmentCoverage.ts:314",
+      "summary": "Held HE UUID in benign structure.label incorrectly treated as active introduction despite zero native view errors and no held goal target.",
+      "minimumRepair": "Reuse parsed authored view references; exclude labels and descriptions. Add actual benign-label positive and realheld-reference negatives."
+    },
+    {
+      "id": "CCR-02",
+      "priority": "integration_hold",
+      "kind": "fail-closed limitation, no false pass",
+      "anchor": "app/scripts/lib/retainedAssessmentCoverage.ts:267",
+      "summary": "Old referenced-goal meaning comparisons cannot consume exact bindings; four prospective exam bindings alone cannot close875holds.",
+      "minimumRepair": "After concrete review, narrowly consume exact old/new referenced-goal meaning binding via existing helper, or make a separately reviewed honest source correction; no blanketmetadataignore."
+    }
+  ],
+  "evidence": {
+    "originalSuiteRerunExit": 0,
+    "originalSuiteStdoutMatchesAuthor": true,
+    "ownOrdinaryDataCases": 18,
+    "ownFreshFloorCalls": 3,
+    "positiveSyntheticFloorExit": 0,
+    "sameFrameFabricatedPassFloorExit": 1,
+    "newMeaningOldPassReportFloorExit": 1,
+    "actualHistoryDeclared": 14,
+    "actualHistoryUndeclared": 10,
+    "actualOldPlaceholderFailures": 6,
+    "actualV3UnboundIdentities": 4,
+    "actualV3CoverageAddedRemoved": 0
+  },
+  "noActiveChanges": true,
+  "productionBindingsRemainEmpty": true,
+  "otherCurriculaHistoricalProtectionProven": false,
+  "realM6M7OrFloorAcceptance": false,
+  "noSourceAOrNamespaceOrNativeToolScopeExpansion": true
+}

@@ -13,6 +13,17 @@ Gesamtumfang von 2.483. Die
 fachliche Kantenkorrekturen, historische Bildbelege und die Transportkorrektur.
 Die früheren Nachläufe bleiben mit ihren damaligen Eingaben erhalten.
 
+Seit diesem Nachlauf sind die [Einrichtungskorrektur für direkte Fachzugänge](canonical-subject-entry-readiness-repair-2026-11-07.md)
+und die Typkorrektur des Wirtschaft-Q2-Bildkontexthelfers lokal geprüft und
+gesichert. Sechs weitere unabhängig fachlich geprüfte PoWi-Voraussetzungskanten
+sind ebenfalls übernommen: Quelle `dc148f0b`, native Strukturbefunde593 statt599,
+davon116 statt122 G17;477 G01a bleiben offen. Der nächste gemeinsame reguläre
+Reportnachlauf steht noch aus. Diese Schritte erteilen keinen Fachmeilenstein.
+Die [historische Informatik-Ergebnisgrenze](informatics-retained-contract-result-gap-2026-11-07.md)
+erklärt, warum die vorbereiteten strengeren Prüfungsmaterialien nicht pauschal
+unter alten Prüfungs-IDs aktiviert werden. Der entsprechende CI-Folgeschritt
+wird davon getrennt gegen die unveränderte aktive Informatikquelle geprüft.
+
 - [Terminaler Remote-Lauf auf 9b798](remote9b-terminal-2026-11-07.json):
   sieben von acht Hauptjobs einschließlich Frontend/Lint, Backend, Apps und
   Buchbau sowie Docs, Assessment, OAuth und Gemini bestehen. Curriculum
