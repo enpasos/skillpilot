@@ -704,10 +704,10 @@ sind inzwischen unabhängig geprüft und angewandt. Ihr aktiver globaler Replay
 bestätigt genau 52 Goal-/52 Atomquellen mit ausgewiesener fachlicher Wirkung,
 keine fremde Quelle und null Zykluskomponenten.
 
-Der [vollständige aktuelle CQR-Nachlauf](../dev/ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
+Der [historische CQR-Zwischenstand](../dev/ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
 vom `2026-11-06T18:45:31.502Z` bestätigt Informatik mit CQR-101/102 PASS und
 47 verbleibenden G17-Befunden; CQR-202 lehnt weiter sechs schwache Terminals ab.
-Dieser Routenscope umfasst 14 von 24 Informatik-`examData`, nicht alle 24.
+Der damalige Routenscope umfasst 14 von 24 Informatik-`examData`, nicht alle 24.
 Alle 21 Kataloge bestehen G15/G42. Mathematik hat 919 CQR-001-/917 G17-Befunde.
 Deutsch, Geschichte und Latein bleiben M6, sieben geschützte Floors scheitern
 weiterhin hart. Frühere datierte Zähler bleiben historische Zwischenstände.
@@ -732,3 +732,29 @@ lokale Deep-Einstieg besteht. Die Fachfloors bleiben unverändert; fachliche
 Aufgabeneignung und neue Anerkennungsregeln werden durch diese technische
 Umfangskorrektur nicht als erfüllt erklärt. Der feste Regelkorpus und seine
 Baselinezeilen bleiben nachvollziehbar.
+
+## Aktueller technischer Prüfumfang nach den Folgeschritten
+
+Der [tatsächliche Gesamtnachlauf vom 6. November, 22:41 UTC](../dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json)
+enthält die vollständigen 925 Definitions- und 872 Bereitschaftsprüfungen;
+alle 24 Informatikdefinitionen sind erfasst. Die historischen 14er-Aussagen
+beschreiben den früheren Teilprüfer. Sechs Informatikprüfungen bleiben
+unzureichend. Informatik hat nach den separat geprüften E9-/Logkorrekturen
+noch 37 G17; Mathematik bleibt bei 919 Struktur- und 917 G17-Befunden.
+
+Die [CQR-104-Routenkorrektur](../dev/ci-graph-repairs/cqr104-informatics-route-scope-repair-2026-11-06.md)
+prüft zusätzlich alle 48 realen Informatik-Länder-/Kurs-/Dauerprojektionen
+gegen die vorhandenen erwarteten Abschlussmengen. 42 leere erwartete Mengen
+sind harte Fehler. Die elf anderen Routenprofile sind im nativen Vorher-/
+Nachhervergleich exakt gleich. Eigene Gegenfälle über den normalen Evaluator
+laufen durch `test:deep-understanding-rollout`; es wurde keine zweite
+Scopeauflösung oder neue Prüfung als Ersatz für fehlende Angebote erfunden.
+
+Der [terminale Remote-Curriculumjob auf 6fe](../dev/ci-graph-repairs/remote-6fe-curriculum-terminal-2026-11-06.json)
+bestätigt die früher implementierte vollständige Assessmentkette und den
+Deep-Einstieg; danach scheitert der echte Floorcheck an sieben Fächern.
+Die CQR-104-Erweiterung gehört zu einem späteren Codecheckpoint und erhält
+ihren eigenen Remote-Lauf. Deutsch, Geschichte und Latein bleiben im lokalen
+Gesamtnachlauf M6; ein wiederhergestelltes M7 der anderen Fächer wird nicht
+behauptet. Die Source-A-, V-Kontext- und A/M-Bausteine sind getrennt belegte,
+noch unvollständig integrierte Arbeit und kein Ersatz für diese Fachbefunde.
