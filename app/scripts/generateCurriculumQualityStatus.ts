@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource } from './lib/retainedAssessmentCoverage'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -1125,10 +1126,10 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
   {
     id: 'CQR-204',
-    label: 'Complete exam definition structure',
+    label: 'Complete exam definition structure and retained contracts',
     category: 'assessment',
     maturityTarget: 'M4',
-    description: 'Every retained exam definition has task, solution and scoring structure, including non-offered drafts.',
+    description: 'Every exam definition has task, solution and scoring structure, including non-offered drafts. The configured Informatics history additionally preserves exact owner-bound declared coverage and protected meaning; unknown coverage stays absent.',
   },
   {
     id: 'CQR-301',
@@ -1380,8 +1381,11 @@ function toRepoPath(path: string): string {
   return relative(repoRoot, path).split(/[\\/]/).join('/')
 }
 
+let assessmentInputFrame: Map<string, Buffer> | undefined
 function loadJson<T>(path: string): T {
-  return JSON.parse(readFileSync(path, 'utf8')) as T
+  let raw = assessmentInputFrame?.get(path)
+  if (!raw) { raw = readFileSync(path); assessmentInputFrame?.set(path, raw) }
+  return captureCurriculumSource<T>(toRepoPath(path), raw)
 }
 
 const isRepoAvailableSourcePath = createRepositorySourceAvailability(repoRoot)
@@ -2683,6 +2687,17 @@ export function discoverCurriculumAssessmentScope(
   viewFiles: string[] | undefined = undefined,
   catalog: readonly SkillLandscape[] = [landscape],
 ): CurriculumAssessmentScope {
+  const previous = assessmentInputFrame
+  assessmentInputFrame = new Map()
+  try { return discoverCapturedCurriculumAssessmentScope(landscape, viewFiles, catalog) }
+  finally { assessmentInputFrame = previous }
+}
+
+function discoverCapturedCurriculumAssessmentScope(
+  landscape: SkillLandscape,
+  viewFiles: string[] | undefined,
+  catalog: readonly SkillLandscape[],
+): CurriculumAssessmentScope {
   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
   const definitions = new Set(landscape.goals.filter(isExamDefinition).map((goal) => goal.id))
   const required = new Set<string>()
@@ -2790,7 +2805,8 @@ export function discoverCurriculumAssessmentScope(
   const definitionGoalIds = [...definitions].sort()
   const requiredGoalIds = [...required].sort()
   const issues = [...new Set(discoveryIssues)].sort()
-  return Object.freeze({ landscapeId: landscape.landscapeId,
+  const retainedCoverage = createRetainedCoverageContext(repoRoot, landscape, definitionGoalIds, requiredGoalIds, files, assessmentInputFrame)
+  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}),
     definitionGoalIds: Object.freeze(definitionGoalIds), requiredGoalIds: Object.freeze(requiredGoalIds),
     discoveryIssues: Object.freeze(issues) })
 }
@@ -2806,19 +2822,29 @@ export function evaluateCurriculumExamReadiness(
   return (['structure', 'readiness'] as const).map((kind) => {
     const checkedGoalIds = kind === 'structure' ? definitionGoalIds : requiredGoalIds
     const failures = checkedGoalIds.map((id) => ({
-      id, issues: concreteExamReadinessIssues(goalById.get(id)!, kind === 'readiness'),
+      id, issues: goalById.get(id) ? concreteExamReadinessIssues(goalById.get(id)!, kind === 'readiness') : ['missing exam definition'],
     })).filter((entry) => entry.issues.length > 0)
+    const retained = expectedScope.retainedCoverage
+    const retainedIssues = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
+      ? isTrustedRetainedCoverageContext(retained) ? [...retained.manifest.discoveryIssues,
+        ...(retainedContextMatchesSource(retained, landscape) ? [] : ['current-frame-invalid: producer source differs from captured context'])] : ['expected-context-missing'] : []
+    const retainedFailures = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
+      && isTrustedRetainedCoverageContext(retained) ? retained.manifest.failingGoalIds : []
+    const failingGoalIds = [...new Set([...failures.map(({ id }) => id), ...retainedFailures])].sort()
+    const allIssues = [...issues, ...retainedIssues]
+    const retainedPass = kind !== 'structure' || landscape.landscapeId !== RETAINED_INFO_OWNER
+      || (isTrustedRetainedCoverageContext(retained) && retained.manifest.status === 'pass')
     const result = makeRule(kind === 'structure' ? 'CQR-204' : 'CQR-202',
-      failures.length === 0 && issues.length === 0 ? 'pass' : 'fail',
+      failingGoalIds.length === 0 && allIssues.length === 0 && retainedPass ? 'pass' : 'fail',
       kind === 'structure'
-        ? 'Complete retained exam-definition structure check (N19).'
+        ? 'Complete retained exam-definition structure check (N19) and configured source-bound historical contracts.'
         : 'Complete route, released-offer and subject-view target exam readiness check.',
       { examDefinitions: definitionGoalIds.length, requiredExams: requiredGoalIds.length,
-        checkedExams: checkedGoalIds.length, weakExamData: failures.length, discoveryIssues: issues.length },
-      [...issues, ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
+        checkedExams: checkedGoalIds.length, weakExamData: failingGoalIds.length, discoveryIssues: allIssues.length },
+      [...allIssues, ...retainedFailures.map(id => `${id}: retained coverage contract failed`), ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
     result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
       definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
-      failingGoalIds: failures.map(({ id }) => id), discoveryIssues: [...issues] }
+      failingGoalIds, discoveryIssues: [...allIssues], ...(kind === 'structure' && retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
     return result
   })
 }

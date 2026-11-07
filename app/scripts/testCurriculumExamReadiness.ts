@@ -345,3 +345,7 @@ try {
   assertStopsFloors(fullCore(fixture, [viewFile]))
 } finally { rmSync(directory, { recursive: true, force: true }) }
 console.log(`Complete assessment gate passed: 10 actual Info offers, 16 actual DE/History view targets, ${hiddenPayloadNegatives} payload negatives; retained/draft/legacy/discovery/manifest guards and real graph → M7/M6-floor chain.`)
+
+// Finite source-bound retained assessment contract and independent consumer chain.
+await import('./testRetainedAssessmentCoverage')
+await import('./testRetainedAssessmentCoverageChain')

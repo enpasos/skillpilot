@@ -1,5 +1,29 @@
 # Prüfungsdefinition und historischer Pass müssen zusammenpassen
 
+## Verbindliche Umfangskorrektur des Product Owners
+
+Am 7. November wurde die bisher angenommene Pflicht zur Informatik-
+Ergebniskompatibilität ausdrücklich aufgehoben: **„weder noch .... wir müssen
+keine Informatikergebnisse erhalten!“** Es wird deshalb keine Historienruntime
+oder Ergebnisübernahme für diese Bereinigung gebaut. Alte Source- und
+Reviewstände bleiben als Audit- und Gitgeschichte nachvollziehbar. Ein
+produktiver Datenreset ist damit nicht beauftragt.
+
+Der aktuelle fachliche Umfang wird anhand amtlicher Ziele oder konkret
+begründeter Lückenschlussziele bereinigt. Unberechtigte alte Zusatzäste müssen
+nicht allein zur Ergebniskompatibilität weitergeführt oder nachgebaut werden.
+Benötigte vollständige Prüfungen erhalten eine passende aktuelle Definition;
+materiell neue Prüfungsbedeutungen werden nicht auf alte Ergebnis-IDs oder
+Aliases übertragen. Alle danach aktuellen Definitionen, auch nicht angebotene
+und als Draft markierte, bleiben unter den harten Vollständigkeitsprüfungen.
+
+Die folgenden Befunde erklären den verworfenen Erhaltungsvorschlag und die
+weiterhin erforderliche fachliche Prüfung der aktuellen Definitionen. Der
+enge CI-Folgeschritt auf Quelle854 ist bereits übernommen; die eigentliche
+Sourcebereinigung ist ein getrennt zu prüfendes Changeset.
+
+## Befund der früheren Ergebnisverträge
+
 Die privaten Informatik-V3-Sourcekorrekturen und der neue CI-Prüfungsschutz
 sind getrennt zu behandeln. Der unabhängige Source-Review unterstützt die
 endlichen Quellen-, Placement-, View- und Kantenkorrekturen. Er belegt zudem

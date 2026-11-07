@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
+import { isTrustedRetainedCoverageContext, retainedContextMatchesScope, RETAINED_INFO_OWNER, stableCoverageJson,
+  type RetainedCoverageContext, type RetainedCoverageManifest } from './retainedAssessmentCoverage'
 export interface CurriculumAssessmentScope {
+  readonly retainedCoverage?: RetainedCoverageContext
   readonly landscapeId: string
   readonly definitionGoalIds: readonly string[]
   readonly requiredGoalIds: readonly string[]
@@ -10,6 +13,7 @@ export interface CurriculumAssessmentValidation extends CurriculumAssessmentScop
   definitionGoalIds: string[]
   requiredGoalIds: string[]
   discoveryIssues: string[]
+  retainedCoverageManifest?: RetainedCoverageManifest
   kind: 'structure' | 'readiness'
   checkedGoalIds: string[]
   failingGoalIds: string[]
@@ -31,6 +35,10 @@ export function hasCompletePassingCurriculumExamReadiness(
   if (!Array.isArray(rules) || !expected || expected.landscapeId !== landscapeId
     || !uniqueStrings(expected.definitionGoalIds) || !uniqueStrings(expected.requiredGoalIds)
     || !Array.isArray(expected.discoveryIssues) || expected.discoveryIssues.length !== 0) return false
+  const retained = expected.retainedCoverage
+  if (landscapeId === RETAINED_INFO_OWNER && (!isTrustedRetainedCoverageContext(retained)
+    || !retainedContextMatchesScope(retained, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds)
+    || retained.manifest.status !== 'pass')) return false
   const definitions = expected.definitionGoalIds
   const required = expected.requiredGoalIds
   if (!required.every((id) => definitions.includes(id))) return false
@@ -44,6 +52,9 @@ export function hasCompletePassingCurriculumExamReadiness(
     const rule = record(matches[0])!
     const manifest = record(rule.assessmentValidation)
     const metrics = record(rule.metrics)
+    if (id === 'CQR-204' && landscapeId === RETAINED_INFO_OWNER
+      && (!isTrustedRetainedCoverageContext(retained)
+        || stableCoverageJson(manifest?.retainedCoverageManifest) !== stableCoverageJson(retained.manifest))) return false
     const checked = kind === 'structure' ? definitions : required
     if (rule.status !== 'pass' || !manifest || !metrics
       || manifest.landscapeId !== landscapeId || manifest.kind !== kind

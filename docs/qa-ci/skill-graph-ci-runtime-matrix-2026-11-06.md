@@ -609,3 +609,27 @@ Scope-/View-Resolver; sie filtert keine einzelnen fachlichen Ziele heraus.
 | R04 / M | `LearnerService.buildPersonalizationPlan` erkennt ungeklärte kanonische Fachscopes; `getLearnerState` verhindert deren Abschluss und Unterrichtsausgabe. Der tatsächliche Informatik-Servicevergleich hat vorher zweimal `scope_completed=true`, danach zweimal false mit `setPersonalization`; passende explizite und globale Scopes bleiben nutzbar. | `CI / backend-ci`, `Run backend tests`, `scripts/run_backend_ci.py`; PR gegen main, Push auf main oder manueller Lauf. Die sechs neuen `CanonicalSubjectScopeReadinessTest`-Fälle laufen in der bestehenden Suite. Jeder Testfehler lässt den Backendjob scheitern. | P für R04 insgesamt; dieser neue technische Einstiegsguard ist belegt. Keine Behauptung über sämtliche anderen Abschluss- oder Anerkennungsfälle. Der lokale Servicevergleich ist kein zusätzlicher automatisch aufgerufener CI-Test. |
 | R14 / M | `hasUnresolvedCanonicalSubjectScope` verlangt explizite Stage und tatsächlich passende bestehende View. `courseProfileNeverInfersTheMissingStage`, fehlende View und positiver expliziter Scope sind Gegenfälle; No-flow-Domänen und klassifizierte Kompatibilität sind Kontrollen. | Derselbe harte Backendaufruf. Lokale Neuübersetzung und exakt 22 erfolgreiche JUnit-Fälle sind im Anwendungsnachweis gebunden; neue Remoteabnahme ausstehend. | H für die neu geprüften Fachzugangsgrenzen. Ein expliziter autoritativer Paketdefault bleibt eigener bestehender Vertrag; diese Reparatur führt keinen Default ein. Kein Vollständigkeitsbeweis landesspezifischer Pflichtziele. |
 | R16 / M | `LearnerUiController.updateCurriculum` nutzt `setCurriculumFromPublicCatalog`; zwei Controllerfälle prüfen Delegation und Ablehnung. `PersonalCurriculumEditor` bietet die bestehende Basiswahl; `LearnerView` unterbindet während offener Einrichtung den automatischen Planabgleich. | `CI / Application frontend CI`: `test:learner-cockpit-startup`, `test:session-setup-ui`, `test:personal-curriculum-editor`; dieselben Code-PR-/Main-/Manualtrigger. Neue Fälle sind in den tatsächlich aufgerufenen vorhandenen Skripten enthalten; Assertionfehler sind hart. | H für die konkreten API-/Einrichtungsgrenzen und Browserkontrollen. Kein neuer Coachmutator, keine Masteryschreibung und kein Host- oder Deploymentbeleg. |
+
+## Reparaturnachtrag vom 7. November: Prüfungsidentität bis zum Floor
+
+Für die technischen Facetten von **U09 und U11** sowie **K49** gilt zusätzlich
+der [übernommene aktuelle Identitätsguard](../dev/ci-graph-repairs/informatics-current-assessment-identity-gate-2026-11-07.md).
+Er bindet die24 derzeitigen Informatikdefinitionen und ihre14 deklarierten
+beziehungsweise10 unbekannten Abdeckungen an echte Source-/Viewbytes.
+Geschützte Bedeutungen und native Atomsets müssen passen. Ein Draft oder
+fehlendes Defaultangebot entfernt eine aktuelle Definition nicht aus der
+Prüfung. Fehlender/fabrizierter Kontext, Sourcewechsel und ein gefälschter
+Passbericht werden im Meilensteinverbraucher und im eigenständig ausgeführten
+Floor abgewehrt. CQR104 bleibt unverändert.
+
+Die20 Gegenfallgruppen,25 strukturierten Viewfälle und der synthetische
+M6→M3-/Standalone-Floorfall sind über den bestehenden Deep-QA-Entry in
+`CI / Curriculum CI` tatsächlich verdrahtet; Code-PR/Main-/Manualtrigger und
+harte Fehlerwirkung sind im Nachweis benannt. Der aktive Entry sowie der
+reguläre Gesamtproducer bestehen lokal. Der echte Floor bleibt an sieben
+Fächern rot. **P für die Gesamtregeln:** fachliche Gleichwertigkeit beliebiger
+historischer Varianten, sämtliche früheren Fassungen oder andere Fächer sind
+damit nicht vollständig bewiesen. Neue PR83-Ownership-/Anerkennungsruntime
+wird nicht implementiert. Die spätere explizite Ownerentscheidung verlangt
+keine Informatik-Ergebniskompatibilität; die fachliche aktuelle Scopebereinigung
+bleibt ein getrenntes geprüftes Changeset und keine stillschweigende Gateausnahme.

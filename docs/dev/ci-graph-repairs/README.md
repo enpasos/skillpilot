@@ -1,24 +1,26 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller regulärer Nachlauf: `2026-11-07T05:46:48.445Z`. Der
-[normale Gesamt-CQR mit vier PoWi-Korrekturen und 74 Bildkontexten](powi-four-fixed74-normal-cqr-producer-2026-11-07.json)
-bindet alle 21 Quellen und die zehn unveränderten Fachfloors. Deutsch, Geschichte
+Aktueller regulärer Nachlauf: `2026-11-07T08:37:10.274Z`. Der
+[normale Gesamt-CQR mit dem Prüfungsidentitätsgate und sechs weiteren PoWi-Korrekturen](informatics-current-assessment-identity-gate-2026-11-07.md)
+bindet alle21 Quellen und die zehn unveränderten Fachfloors. Deutsch, Geschichte
 und Latein bleiben M6; der tatsächliche harte Floorcheck scheitert an sieben
-übrigen Fachständen. Mathematik hat 916 Strukturbefunde, davon 914 G17; PoWi
-hat 599, davon 122 G17 und 477 G01a. Informatik bleibt bei 37 G17 und sechs
-unzureichenden Prüfungen. Alle Zielmengen und Meilensteine bleiben unverändert.
+übrigen Fachständen. Mathematik hat916 Strukturbefunde, davon914 G17; PoWi
+hat593, davon116 G17 und477 G01a. Informatik bleibt bei37 G17 und sechs
+unzureichenden Prüfungen; alle24 aktuellen Definitionen haben nun zusätzlich
+einen vollständigen technisch geprüften Identitätsnachweis. Alle bisherigen
+Zielmengen und Meilensteine bleiben unverändert.
 CQR-303 bestätigt 74 qualifizierte und 2.409 offene V-Kontexte bei unverändertem
 Gesamtumfang von 2.483. Die
 [Anwendungsnotiz](powi-four-fixed74-repairs-application-2026-11-07.md) trennt
 fachliche Kantenkorrekturen, historische Bildbelege und die Transportkorrektur.
 Die früheren Nachläufe bleiben mit ihren damaligen Eingaben erhalten.
 
-Seit diesem Nachlauf sind die [Einrichtungskorrektur für direkte Fachzugänge](canonical-subject-entry-readiness-repair-2026-11-07.md)
+Zusätzlich sind die [Einrichtungskorrektur für direkte Fachzugänge](canonical-subject-entry-readiness-repair-2026-11-07.md)
 und die Typkorrektur des Wirtschaft-Q2-Bildkontexthelfers lokal geprüft und
 gesichert. Sechs weitere unabhängig fachlich geprüfte PoWi-Voraussetzungskanten
 sind ebenfalls übernommen: Quelle `dc148f0b`, native Strukturbefunde593 statt599,
-davon116 statt122 G17;477 G01a bleiben offen. Der nächste gemeinsame reguläre
-Reportnachlauf steht noch aus. Diese Schritte erteilen keinen Fachmeilenstein.
+davon116 statt122 G17;477 G01a bleiben offen. Der gemeinsame reguläre
+Reportnachlauf ist oben gebunden. Diese Schritte erteilen keinen Fachmeilenstein.
 Die [historische Informatik-Ergebnisgrenze](informatics-retained-contract-result-gap-2026-11-07.md)
 erklärt, warum die vorbereiteten strengeren Prüfungsmaterialien nicht pauschal
 unter alten Prüfungs-IDs aktiviert werden. Der entsprechende CI-Folgeschritt

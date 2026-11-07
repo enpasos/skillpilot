@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/boxplot-v2-independent-z233i431",
+    "/dev/shm/boxplot-v2-independent-z233i431",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/boxplot-v2-independent-z233i431",
+    "--ro-bind",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+    "/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "node",
+    "/dev/shm/boxplot-v2-independent-z233i431/render-candidate.mjs"
+  ],
+  "startedAtActualUTC": "2026-11-07T08:41:29.860447+00:00",
+  "completedAtActualUTC": "2026-11-07T08:41:31.222332+00:00",
+  "exitCode": 0,
+  "stdoutSha256": "a3620013cdb7b056916c9372d3a9b4815ef9bc94436e51786dc5b3dbad3535ae",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privateOverlayOnly": true
+}
