@@ -1,0 +1,175 @@
+{
+  "purpose": "tiny-actual-materializer-prepared-namespace-tests-not-SourceA-QA",
+  "testsRun": 3,
+  "failures": 0,
+  "errors": 1,
+  "skips": 0,
+  "actualNativeRuns": [
+    {
+      "case": "test_actual_both_role_namespace_exec_fd_alias_types_and_closed_directory.original",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app",
+        "argv": [
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules/pkg/helper"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/evidence-original/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/projectedA80/app/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/evidence-original",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/evidence-original",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app",
+          "--",
+          "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules/pkg/helper"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "ba131ea500c9d3f5d272a9bce9c5e5fccad4e59a12194ef3bf1336049989d65d",
+        "stdoutSha256": "5126a53a2f9c262085f2f7eec419f09e541588d02ab105cadcfa686834b64bbb",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3339070
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3339071
+          }
+        },
+        "recorderTraceSha256": "1f31ba31d62d6261abaf10a6e58b7ada43ce5971c07bed138575637975ccfe06",
+        "producerBoundary": {
+          "recorderLine": 476,
+          "hostPid": 420185,
+          "executable": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules/pkg/helper",
+          "argv": [
+            "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules/pkg/helper"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "85ef528c352de4241b45adce847b89269d3ffb261e81a299309253fbe5284aa8",
+            "viewRole": "original",
+            "preparationRawSha256": "028dfa47292dfbcc3468ef1ad8273e4441882683891d198cda8ed1842a3111df"
+          },
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/projectedA80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "85ef528c352de4241b45adce847b89269d3ffb261e81a299309253fbe5284aa8",
+            "viewRole": "candidate",
+            "preparationRawSha256": "028dfa47292dfbcc3468ef1ad8273e4441882683891d198cda8ed1842a3111df"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/evidence-original",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app/node_modules/pkg/helper",
+          "producerExecutableSource": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/capture/node_modules/pkg/helper",
+          "producerSha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false,
+          "preparedNamespace": {
+            "preparationRawSha256": "028dfa47292dfbcc3468ef1ad8273e4441882683891d198cda8ed1842a3111df",
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-yrbo84ex/case-snul8lax/pair/original80/app",
+            "lockLeaseHeld": true,
+            "filesystemOnlyNotSourceAOrQaApproval": true
+          }
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "stdout": {
+        "landscapeId": "fixture-owner",
+        "goals": [
+          {
+            "id": "old-id",
+            "title": "Controlled fixture",
+            "contains": [],
+            "requires": []
+          }
+        ]
+      },
+      "authentication": "not-completed",
+      "actualMaterializerUsed": true,
+      "fullSourceAProofClaimed": false
+    }
+  ],
+  "capture19Changed": false
+}

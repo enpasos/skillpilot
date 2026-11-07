@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Bound private dependency-tree facts. No Source-A or QA acceptance API.
 
-This first mount adapter uses the SAME absolute physical/namespace root.
-The Preparer's per-role app/node_modules mount translation is not implemented.
+Direct captures retain identical physical/visible roots. Prepared namespace
+views additionally bind the actual per-role app/node_modules mount targets.
 """
 import json
+import hashlib
 from pathlib import Path
 from types import MappingProxyType
 
 from identity_qa_private_capture import (
     capture_dependencies, dependency_inventory, inventory_digest,
     private_directory, require, verify_private_hardlinks,
+    verify_prepared_inputs, snapshot_blob, git_blob_oid,
 )
 from identity_qa_read_trace import FileBinding, annotation, calls, c_string
 
@@ -25,9 +27,9 @@ def _event_key(event):
 
 class CapturedDependencyTree:
     """Minted only by an actual call to the existing capture implementation."""
-    __slots__ = ('_token', '_root', '_private_root', '_rows_bytes', '_receipt_bytes', '_tree_sha256')
+    __slots__ = ('_token', '_root', '_private_root', '_rows_bytes', '_receipt_bytes', '_tree_sha256', '_prepared_binding')
 
-    def __init__(self, token, root, private_root, rows, receipt):
+    def __init__(self, token, root, private_root, rows, receipt, prepared_binding=None):
         require(token is _CAPTURE, 'An actual dependency capture is required')
         object.__setattr__(self, '_token', token)
         object.__setattr__(self, '_root', root)
@@ -35,6 +37,7 @@ class CapturedDependencyTree:
         object.__setattr__(self, '_rows_bytes', json.dumps(rows, sort_keys=True, separators=(',', ':')).encode())
         object.__setattr__(self, '_receipt_bytes', json.dumps(receipt, sort_keys=True, separators=(',', ':')).encode())
         object.__setattr__(self, '_tree_sha256', receipt['treeSha256'])
+        object.__setattr__(self, '_prepared_binding', prepared_binding)
 
     def __setattr__(self, name, value):
         raise TypeError('Captured dependency tree is immutable')
@@ -44,6 +47,18 @@ class CapturedDependencyTree:
         return self._root
 
     def verify(self):
+        if self._prepared_binding is not None:
+            path, accepted_sha = self._prepared_binding
+            raw = path.read_bytes()
+            require(hashlib.sha256(raw).hexdigest() == accepted_sha, 'Prepared filesystem receipt changed')
+            preparation = json.loads(raw)
+            tool = Path(preparation['captureTool']['path'])
+            require(tool.resolve(strict=True).is_relative_to(self._private_root)
+                    and hashlib.sha256(tool.read_bytes()).hexdigest() == preparation['captureTool']['sha256'],
+                    'Private preparation verifier bytes changed')
+            require(hashlib.sha256((self._private_root/'source-a.json').read_bytes()).hexdigest() == preparation['sourceProofRawSha256'],
+                    'Prepared proof bytes changed')
+            verify_prepared_inputs(preparation, self._private_root)
         require(self._root.resolve(strict=True) == self._root and not self._root.is_symlink(), 'Captured dependency root changed')
         verify_private_hardlinks(self._private_root)
         rows = dependency_inventory(self._root)
@@ -77,6 +92,49 @@ class CapturedDependencyTree:
     def receipt(self):
         return json.loads(self._receipt_bytes)
 
+    def prepared_receipt(self):
+        require(self._prepared_binding is not None, 'Dependency capture has no actual preparation binding')
+        self.verify()
+        return json.loads(self._prepared_binding[0].read_bytes())
+
+
+def bind_prepared_dependency_capture(preparation_path, accepted_preparation_sha256, accepted_tree_sha256, snapshot):
+    """Filesystem capability only: recheck an actual existing private capture.
+
+    This does not verify/mint Source-A or QA readiness. The full proof verifier
+    remains an upstream duty. Existing capture/preparer code stays unchanged.
+    """
+    path = Path(preparation_path).absolute()
+    require(path.resolve(strict=True) == path and path.name == 'preparation.json', 'Preparation receipt path is not canonical')
+    raw = path.read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == accepted_preparation_sha256, 'External preparation byte pin differs')
+    receipt, base = json.loads(raw), path.parent
+    require(receipt.get('captureFormat') == 3 and receipt.get('sourceBase') == snapshot.commit,
+            'Prepared filesystem source-base binding differs')
+    require(Path(receipt['hostRepo']).resolve(strict=True) == Path(snapshot.root).resolve(strict=True),
+            'Prepared filesystem Git source differs')
+    tool = Path(receipt['captureTool']['path'])
+    expected_tool = Path(__file__).with_name('identity_qa_private_capture.py').read_bytes()
+    require(tool.resolve(strict=True).is_relative_to(base)
+            and tool.read_bytes() == expected_tool
+            and hashlib.sha256(expected_tool).hexdigest() == receipt['captureTool']['sha256'],
+            'Actual private capture verifier binding differs')
+    require(hashlib.sha256((base / 'source-a.json').read_bytes()).hexdigest() == receipt['sourceProofRawSha256'],
+            'Prepared proof bytes changed; filesystem binding is not Source-A approval')
+    dependency = receipt['dependencyCapture']
+    require(dependency['treeSha256'] == accepted_tree_sha256 and dependency['root'] == receipt['nodeModules'],
+            'External prepared dependency-tree binding differs')
+    actual, _, oid, _ = snapshot_blob(snapshot, 'app/package-lock.json')
+    lock = snapshot.read(actual)
+    require(git_blob_oid(lock) == oid and dependency['gitLockBinding'] == {
+        'path':'app/package-lock.json', 'resolvedGitPath':actual, 'gitObjectId':oid,
+        'sha256':hashlib.sha256(lock).hexdigest(), 'bytes':len(lock)}, 'Prepared dependency Git-lock binding differs')
+    verify_prepared_inputs(receipt, base)
+    root = Path(dependency['root'])
+    require(root.resolve(strict=True) == root and root.is_relative_to(base), 'Prepared dependency source leaves its private scope')
+    return CapturedDependencyTree(_CAPTURE, root, base, dependency['entries'], dependency,
+                                  prepared_binding=(path, accepted_preparation_sha256)).verify()
+
 
 def capture_dependency_tree(snapshot, source, destination, accepted_tree_sha256, max_bytes, private_root, reserve_bytes=1_000_000_000):
     """Real copy and real Git-lock check; a verified flag/receipt cannot mint it."""
@@ -99,13 +157,15 @@ def require_capture(value):
 
 class BoundDependencyTree:
     """Actual capture + exact RO mount + genuine launch; no readiness result."""
-    __slots__ = ('_token', '_capture', '_launch', '_entries', '_events')
+    __slots__ = ('_token', '_capture', '_launch', '_entries', '_events', '_view', '_visible_root')
 
-    def __init__(self, token, capture, launch):
+    def __init__(self, token, capture, launch, view=None):
         require(token is _BOUND, 'A genuine readonly dependency launch is required')
         object.__setattr__(self, '_token', token)
         object.__setattr__(self, '_capture', capture)
         object.__setattr__(self, '_launch', launch)
+        object.__setattr__(self, '_view', view)
+        object.__setattr__(self, '_visible_root', view.visible_root if view is not None else capture.root)
         object.__setattr__(self, '_entries', MappingProxyType({row['path']:MappingProxyType(row) for row in json.loads(capture._rows_bytes)}))
         object.__setattr__(self, '_events', frozenset(_event_key(event) for event in calls(launch.trace)))
 
@@ -117,21 +177,25 @@ class BoundDependencyTree:
         self._capture.verify()
         from identity_qa_read_launcher import require_actual_launch
         require_actual_launch(launch, launch.trace, launch.cwd, launch.root, launch.role)
-        binding = dict(self._capture.mount_binding())
+        binding = dict(self._view.mount_binding() if self._view is not None else self._capture.mount_binding())
         require(sum(dict(item) == binding for item in launch.readonly_dependency_mounts) == 1,
                 'Exact readonly dependency mount is absent or ambiguous')
         require(not self._capture.root.is_relative_to(launch.root) and not launch.root.is_relative_to(self._capture.root),
                 'Curriculum/source root cannot be classified as dependency metadata')
         if contract is not None:
             require(contract.root == launch.root and contract.role == launch.role, 'Dependency role/root binding differs')
-            for path, binding in self._capture.file_bindings().items():
-                actual = contract.external_files.get(path)
-                require(actual is not None and actual.category == 'dependency' and actual.sha256 == binding.sha256,
-                        'Dependency file binding is missing or differs')
+            if self._view is not None:
+                self._view.verify_for_launch(launch.root,launch.role)
+                require(self._view in contract.mount_views,'Namespace view is missing from the read contract')
+            else:
+                for path, binding in self._capture.file_bindings().items():
+                    actual = contract.external_files.get(path)
+                    require(actual is not None and actual.category == 'dependency' and actual.sha256 == binding.sha256,
+                            'Dependency file binding is missing or differs')
         return self
 
     def contains(self, path):
-        return Path(path).is_relative_to(self._capture.root)
+        return Path(path).is_relative_to(self._visible_root)
 
     def prove_negative_lookup(self, event, path, cwd):
         """Caller is the existing PID/cwd/dirfd trace interpreter, not a scope engine."""
@@ -171,7 +235,7 @@ class BoundDependencyTree:
         elif operation == 'access':
             flags = args[1]
             require(flags in ('F_OK','R_OK'), 'Unsupported access metadata flags')
-        pending = list(path.relative_to(self._capture.root).parts)
+        pending = list(path.relative_to(self._visible_root).parts)
         resolved, aliases, seen = [], [], set()
         while pending:
             state = (tuple(resolved), tuple(pending))
@@ -188,7 +252,8 @@ class BoundDependencyTree:
             entry = self._entries.get(relative)
             if entry is None:
                 return {'category':'dependency-metadata-absence', 'role':self._launch.role,
-                        'launchTraceSha256':self._launch.trace_sha256, 'root':str(self._capture.root),
+                        'launchTraceSha256':self._launch.trace_sha256, 'root':str(self._visible_root),
+                        'physicalCaptureRoot':str(self._capture.root),
                         'treeSha256':self._capture._tree_sha256, 'pid':pid, 'traceEntry':start,
                         'cwd':str(cwd), 'dirfd':args[0] if at else None, 'requestedPath':pathname,
                         'resolvedAttempt':str(path), 'operation':operation, 'flags':flags, 'errno':'ENOENT',
@@ -208,11 +273,16 @@ class BoundDependencyTree:
 
 
 def bind_dependency_tree(capture, launch):
+    view = None
+    if type(capture) is not CapturedDependencyTree:
+        from identity_qa_namespace_view import require_namespace_view
+        view = require_namespace_view(capture,launch.root,launch.role)
+        capture = view._capture
     require_capture(capture)
     from identity_qa_read_launcher import ReadLaunchEvidence, require_actual_launch
     require(type(launch) is ReadLaunchEvidence, 'A genuine actual readonly launch is required')
     require_actual_launch(launch, launch.trace, launch.cwd, launch.root, launch.role)
-    result = BoundDependencyTree(_BOUND, capture, launch)
+    result = BoundDependencyTree(_BOUND, capture, launch, view)
     return result.verify(launch)
 
 

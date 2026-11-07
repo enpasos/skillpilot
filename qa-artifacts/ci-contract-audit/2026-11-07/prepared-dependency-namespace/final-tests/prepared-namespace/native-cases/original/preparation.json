@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "captureFormat": 3,
+  "purpose": "isolated-development-qa-only",
+  "runtimeActivationAllowed": false,
+  "qaValidityClaimed": false,
+  "sourceBase": "81b2eb0347650c4cde345f4ba1b1cb682bbcdd12",
+  "sourceProofRawSha256": "5c7e80b0ed7839f5b786820d9918e750c4ceb1ea34da4c7124ace72baf9c2c09",
+  "hostRepo": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/host",
+  "gitObjects": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/host/.git/objects",
+  "originalRoot": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80",
+  "candidateRoot": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80",
+  "nodeModules": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+  "dependencyCapture": {
+    "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+    "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+    "bytes": 16602,
+    "entries": [
+      {
+        "path": "alias",
+        "kind": "symlink",
+        "target": "pkg"
+      },
+      {
+        "path": "pkg",
+        "kind": "directory"
+      },
+      {
+        "path": "pkg/helper",
+        "kind": "file",
+        "sha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+        "bytes": 16560,
+        "executable": true
+      },
+      {
+        "path": "pkg/value.txt",
+        "kind": "file",
+        "sha256": "ec8a5ec0aff3fb009797689a0d4433d842a1c66b5aa80c631cc3ad4a6bff770c",
+        "bytes": 42,
+        "executable": false
+      }
+    ],
+    "gitLockBinding": {
+      "path": "app/package-lock.json",
+      "resolvedGitPath": "app/package-lock.json",
+      "gitObjectId": "ed8d121c06494f8c27e13c99b69823ec0517bf74",
+      "sha256": "f25e7d293543b03d1a2cab20f9827739fd644af8400382bc4f6a5124e46aead0",
+      "bytes": 22
+    },
+    "installedBytesClaimedAsGitContents": false
+  },
+  "privateUniqueBinaryBytes": 0,
+  "privateProjectionBytes": 144,
+  "captureTool": {
+    "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/prepare-tool/identity_qa_private_capture.py",
+    "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46"
+  },
+  "privateBytes": 195,
+  "selectedFiles": [
+    {
+      "path": "app/package-lock.json",
+      "sha256": "f25e7d293543b03d1a2cab20f9827739fd644af8400382bc4f6a5124e46aead0",
+      "bytes": 22,
+      "source": "git-snapshot",
+      "binaryReadOnlyMount": false
+    },
+    {
+      "path": "app/package.json",
+      "sha256": "05938e5b7addcf48f812f20d0d84f983cf0a8a4d91d8c7ea21ac8023519fe3e5",
+      "bytes": 49,
+      "source": "git-snapshot",
+      "binaryReadOnlyMount": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/fixture.json",
+      "sha256": "16e253d7c1e679e3098f9f326cc5681817d1f6ae9b719c138ca37eae6ec72b14",
+      "bytes": 124,
+      "source": "git-snapshot",
+      "binaryReadOnlyMount": false
+    }
+  ],
+  "projectedDocuments": [
+    "curricula/DE/Gymnasium/canonical/fixture.json"
+  ],
+  "gitBlobFallbackPaths": [],
+  "projectedDocumentBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/fixture.json",
+      "sha256": "9d88a50a07fe1d0be378e067be0e1d2a59be00f92f13e5bf8693ca947912c8c1",
+      "bytes": 144
+    }
+  ],
+  "supplementalKernelHeaderInputs": {
+    "contracts/canonical-goal-identity/v1/migration.schema.json": "e8b048980af263329378128d3e2e38a8245b00e43a36c18061c8407da648e15a"
+  },
+  "binaryReadOnlyMounts": [],
+  "assetForestRoot": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/asset-forest",
+  "directoryReadOnlyMounts": [
+    {
+      "rootRole": "original",
+      "path": "app/public/assets/goal-visualizations",
+      "hostPath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/asset-forest/original/app/public/assets/goal-visualizations",
+      "selectedFiles": 0
+    },
+    {
+      "rootRole": "original",
+      "path": "curricula/DE/Gymnasium/visualizations",
+      "hostPath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/asset-forest/original/curricula/DE/Gymnasium/visualizations",
+      "selectedFiles": 0
+    },
+    {
+      "rootRole": "candidate",
+      "path": "app/public/assets/goal-visualizations",
+      "hostPath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/asset-forest/candidate/app/public/assets/goal-visualizations",
+      "selectedFiles": 0
+    },
+    {
+      "rootRole": "candidate",
+      "path": "curricula/DE/Gymnasium/visualizations",
+      "hostPath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/asset-forest/candidate/curricula/DE/Gymnasium/visualizations",
+      "selectedFiles": 0
+    }
+  ],
+  "directorySymlinks": [],
+  "detachedOutputPaths": [
+    "docs/qa-ci/status/curriculum-quality-status.json",
+    "docs/qa-ci/status/curriculum-quality-status.md",
+    "docs/qa-ci/status/goal-source-rationale-coverage.json",
+    "docs/qa-ci/status/goal-source-rationale-coverage.md"
+  ]
+}

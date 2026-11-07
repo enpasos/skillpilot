@@ -1,0 +1,373 @@
+{
+  "purpose": "actual-small-preparer-layout-native-tsx-not-production-qa",
+  "runs": [
+    {
+      "role": "original",
+      "producerExitCode": 0,
+      "output": {
+        "producer": "actual-prepared-layout-tsx",
+        "owner": "fixture-owner",
+        "goalIds": [
+          "old-id"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "firstFinding": "Failed/unexplained input attempt: /dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/node_modules"
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/tsconfig.json",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/scripts/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/original/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/original/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/original/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/tsconfig.json",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/scripts/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "0ffd38b7a14de798be4860d8abb4fefe53db0bb9951bbe3b482987860f6255d1",
+        "stdoutSha256": "4f2355bb209cdd51ac37132e2d5af73e5fc2d91f0b385b0fa4820137078ebfd6",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3570353
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3570354
+          }
+        },
+        "recorderTraceSha256": "4d83d27b787a7c712cdf34a7b457255235586a7275d4b252b189c935d2b8144b",
+        "producerBoundary": {
+          "recorderLine": 478,
+          "hostPid": 442110,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/tsconfig.json",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/scripts/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "442110": 2,
+          "442144": 13,
+          "442186": 25
+        },
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "f321e0cf70de716667ccdb56066c68b20b1599ab808acaa0249454ea09cddf00",
+            "viewRole": "original",
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07"
+          },
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "f321e0cf70de716667ccdb56066c68b20b1599ab808acaa0249454ea09cddf00",
+            "viewRole": "candidate",
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/original/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerExecutableSource": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false,
+          "preparedNamespace": {
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07",
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app",
+            "lockLeaseHeld": true,
+            "filesystemOnlyNotSourceAOrQaApproval": true
+          }
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceAQaValidityClaimed": false
+    },
+    {
+      "role": "candidate",
+      "producerExitCode": 0,
+      "output": {
+        "producer": "actual-prepared-layout-tsx",
+        "owner": "fixture-owner",
+        "goalIds": [
+          "00000000-0000-4000-8000-000000000001"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "firstFinding": "Failed/unexplained input attempt: /dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/node_modules"
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/tsconfig.json",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/scripts/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/candidate/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/candidate/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/candidate/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/tsconfig.json",
+          "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/scripts/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "58068b48c79e703e45a25219ff9874471c9d78e17701a7cf3b1b904033a81ba2",
+        "stdoutSha256": "0f14835c808901731193f7fe05f4594808150fb5a970b44f547fa500a3fbda7d",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3550898
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3550899
+          }
+        },
+        "recorderTraceSha256": "d6bf0b1f879fb69871a3e31dabbf3fa4bfacfd136a37e1e68f3edcc3abcdabf2",
+        "producerBoundary": {
+          "recorderLine": 479,
+          "hostPid": 442351,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/tsconfig.json",
+            "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/scripts/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "442351": 2,
+          "442362": 13,
+          "442377": 25
+        },
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/original80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "f321e0cf70de716667ccdb56066c68b20b1599ab808acaa0249454ea09cddf00",
+            "viewRole": "original",
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07"
+          },
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "f321e0cf70de716667ccdb56066c68b20b1599ab808acaa0249454ea09cddf00",
+            "viewRole": "candidate",
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-layout-ts-overlap-corrected-20261107/candidate/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerExecutableSource": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false,
+          "preparedNamespace": {
+            "preparationRawSha256": "db8477003c9e904680cef06a74b7212229cd25d5c8b21d6d7ccd0bcabf0d4f07",
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-xvrialz4/case-dq4hjvca/pair/projectedA80/app",
+            "lockLeaseHeld": true,
+            "filesystemOnlyNotSourceAOrQaApproval": true
+          }
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceAQaValidityClaimed": false
+    }
+  ],
+  "capture19Changed": false,
+  "largeSourceAProducerRun": false
+}

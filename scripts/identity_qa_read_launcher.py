@@ -136,7 +136,7 @@ def _producer_trace(recorder_trace, sandbox_command, argv):
         'fullPreludePreserved': True}), tuple(json.dumps(item,sort_keys=True) for item in aborted)
 
 
-def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=()):
+def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=(), dependency_views=(), prepared_lease=None):
     """Run a small real command. Source-A validation remains an upstream duty.
 
     The host tree is RO, not a confidential-host sandbox. Every unclassified
@@ -155,31 +155,52 @@ def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=
     if directory.is_relative_to(root) or root.is_relative_to(directory):
         raise ValueError('Writable trace evidence must be outside the source role')
     from identity_qa_tool_tree import require_capture
+    from identity_qa_namespace_view import require_namespace_view
     dependency_captures = tuple(dependency_captures)
-    dependency_mounts = tuple(require_capture(item).mount_binding() for item in dependency_captures)
+    dependency_views = tuple(require_namespace_view(view,root,role) for view in dependency_views)
+    if dependency_views:
+        from identity_qa_namespace_view import require_prepared_lease
+        require_prepared_lease(prepared_lease,dependency_views)
+        if cwd != root/'app':
+            raise ValueError('Actual prepared namespace cwd must be roleRoot/app')
+    dependency_mounts = (tuple(require_capture(item).mount_binding() for item in dependency_captures)
+                         + tuple(view.mount_binding() for view in dependency_views))
     for index, binding in enumerate(dependency_mounts):
         source = Path(binding['source'])
         if any(source.is_relative_to(other) or other.is_relative_to(source) for other in (root, directory)):
             raise ValueError('Dependency mount overlaps source/evidence scope')
-        if any(source.is_relative_to(Path(item['source'])) or Path(item['source']).is_relative_to(source)
+        target = Path(binding['target'])
+        if any(target.is_relative_to(Path(item['target'])) or Path(item['target']).is_relative_to(target)
                for item in dependency_mounts[:index]):
             raise ValueError('Dependency mount scopes overlap')
     directory.mkdir(parents=True, mode=0o700, exist_ok=False)
     trace_file = directory / 'recorder.strace'
     descriptor = os.open(trace_file, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_CLOEXEC, 0o600)
     os.close(descriptor)
-    tools = {'producer': Path(argv[0]).resolve(strict=True), 'strace': Path('/usr/bin/strace'), 'bwrap': Path('/usr/bin/bwrap')}
+    executable_views = [view for view in dependency_views if view.contains(argv[0])]
+    if len(executable_views)>1:
+        raise ValueError('Producer executable has ambiguous namespace views')
+    declared_executable = executable_views[0].declared_executable(argv[0]) if executable_views else None
+    physical_producer = declared_executable.physical_path if declared_executable is not None else Path(argv[0]).resolve(strict=True)
+    visible_producer = declared_executable.namespace_path if declared_executable is not None else physical_producer
+    tools = {'producer': physical_producer, 'strace': Path('/usr/bin/strace'), 'bwrap': Path('/usr/bin/bwrap')}
     before = {name: _sha(path) for name, path in tools.items()}
     context = {'kernelRelease': platform.release(), 'kernelMachine': platform.machine(),
                'kernelBootId': Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
-               'producerExecutable': str(tools['producer']), 'producerSha256': before['producer'],
+               'producerExecutable': str(visible_producer), 'producerExecutableSource':str(physical_producer), 'producerSha256': before['producer'],
                'straceSha256': before['strace'], 'bwrapSha256': before['bwrap'],
                'environment': 'cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1',
                'osObservationBytesImmutable': False}
+    if dependency_views:
+        context['preparedNamespace']={'preparationRawSha256':dependency_views[0]._preparation_sha256,
+                                     'cwd':str(root/'app'),'lockLeaseHeld':True,
+                                     'filesystemOnlyNotSourceAOrQaApproval':True}
     mounts = tuple(value for item in dependency_mounts for value in ('--ro-bind', item['source'], item['target']))
+    prepared_roots = sorted({str(view._capture._private_root) for view in dependency_views})
+    prepared_mounts = tuple(value for source in prepared_roots for value in ('--ro-bind',source,source))
     sandbox_command = ('/usr/bin/bwrap', '--die-with-parent', '--unshare-net', '--unshare-pid', '--clearenv', '--setenv', 'PATH', '/usr/bin:/bin',
                '--setenv', 'LC_ALL', 'C', '--setenv', 'PYTHONDONTWRITEBYTECODE', '1', '--ro-bind', '/', '/',
-               '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', '--ro-bind', str(root), str(root),
+               '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', *prepared_mounts, '--ro-bind', str(root), str(root),
                *mounts,
                '--tmpfs', str(directory), '--remount-ro', str(directory), '--chdir', str(cwd), '--', *argv)
     # Recorder and its FD stay outside the producer PID/mount namespaces. No
@@ -204,6 +225,10 @@ def run_readonly(role, root, cwd, argv, evidence_directory, dependency_captures=
         raise ValueError('Actual launcher/tool bytes changed during the run')
     for capture in dependency_captures:
         require_capture(capture)
+    for view in dependency_views:
+        require_namespace_view(view,root,role)
+    if dependency_views:
+        require_prepared_lease(prepared_lease,dependency_views)
     recorder_trace = trace_file.read_text()
     # Preserve the exact interpreted snapshot independently of the recorder's
     # file, including a failing parse; no producer can see/write this directory.

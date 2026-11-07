@@ -1,0 +1,2276 @@
+{
+  "purpose": "tiny-real-private-capture-tool-metadata-tests-not-QA-pass",
+  "testsRun": 7,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actualNativeRuns": [
+    {
+      "case": "test_actual_source_and_unknown_roots_stay_closed.original.source-missing",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+          "source-missing",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+          "source-missing",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "74441bebda1a4943cd17478c66938bc4602f40fcdb7b7ab95587da446c1e801a",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3578884
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3578885
+          }
+        },
+        "recorderTraceSha256": "7a20c1f86cadec0dc257fb7e3f1997fd6e432db320074e1b2215dd0ed99dc0ab",
+        "producerBoundary": {
+          "recorderLine": 397,
+          "hostPid": 442429,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+            "source-missing",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "4852e429967443c96e697b2775c2cc21536c5be9f8287c86c325c3a7c3357212"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-vygc2mb_/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_source_and_unknown_roots_stay_closed.original.unknown-root",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+          "unknown-root",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+          "unknown-root",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "ed5763ba2148fa7472603933da6f70d7d845ad89bda08831d327709c64d748e2",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3578887
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3578888
+          }
+        },
+        "recorderTraceSha256": "0e5aeceeaa017a708b6454b210df3743b2712c3fd16ecc637d41157dd0b092f1",
+        "producerBoundary": {
+          "recorderLine": 399,
+          "hostPid": 442435,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+            "unknown-root",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "023ad3b7e9e139abfd103a0aa8771b7d2b1e23235c6369d49137fd10e6fe8f50"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-mv_6xjmq/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_two_role_leaf_intermediate_and_internal_alias_absence.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "4c8efc3a82839eb9ad11fe74e14f68bd38cb77f2e7f84529661d03ccc8b24098",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3577085
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3577086
+          }
+        },
+        "recorderTraceSha256": "c56d40d2aa0e6ffed8fb9b8cba075322b2a203e426e80d7dda4e8e6394ce815e",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442441,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "53802d4d3df336c15a5412c65ac6182e99f2ad8670c7314966f0511c6866ae3f"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "boundedFacts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "original",
+        "processCount": 1,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1",
+            "provenance": "actual private complete dependency capture fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "exact native fixture tool bytes",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/goal.json",
+            "sha256": "442d7601fd41fdafbe467cef68c4fb11b0567ec2625dd7aeba37867e18e4451b",
+            "provenance": "controlled ordinary input",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "exact native fixture tool bytes",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "tool/producer",
+            "sha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+            "provenance": "exact copied native fixture tool",
+            "observedOperations": [
+              "execve"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "data/goal.json"
+        ],
+        "closedDirectoryDiscoveries": {},
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "original",
+            "launchTraceSha256": "4c8efc3a82839eb9ad11fe74e14f68bd38cb77f2e7f84529661d03ccc8b24098",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442441,
+            "traceEntry": 31,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/pkg/absent.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/pkg/absent.json",
+            "operation": "openat",
+            "flags": "O_RDONLY|O_CLOEXEC",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/absent.json",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "original",
+            "launchTraceSha256": "4c8efc3a82839eb9ad11fe74e14f68bd38cb77f2e7f84529661d03ccc8b24098",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442441,
+            "traceEntry": 32,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/pkg/missing-dir/deep.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/pkg/missing-dir/deep.json",
+            "operation": "newfstatat",
+            "flags": "0",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/missing-dir",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "original",
+            "launchTraceSha256": "4c8efc3a82839eb9ad11fe74e14f68bd38cb77f2e7f84529661d03ccc8b24098",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442441,
+            "traceEntry": 33,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/original>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/alias/absent.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-0te30xt1/node_modules/alias/absent.json",
+            "operation": "openat",
+            "flags": "O_RDONLY|O_CLOEXEC",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/absent.json",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [
+              {
+                "path": "alias",
+                "target": "pkg"
+              }
+            ],
+            "sourceInput": false
+          }
+        ],
+        "ownedLauncherTransportMetadata": [],
+        "volatileRuntimeObservations": [],
+        "explicitToolDirectoryMetadata": [],
+        "abortedNonInputIdentityObservations": []
+      }
+    },
+    {
+      "case": "test_actual_two_role_leaf_intermediate_and_internal_alias_absence.candidate.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "2245b7cd5d90674c1706d65c5d73d8fc7a1edcb2313ba0a346d6d837f06955f6",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3573831
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3573832
+          }
+        },
+        "recorderTraceSha256": "264b7612bcb4d895c9b42a43d5e9acb7fe031891b663c69c118a42a04004c846",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442453,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "761ca6c424b1c6d5f9fac0b79aa0fa2860658ac832cb33732c6982ee9966fb05"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "boundedFacts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "candidate",
+        "processCount": 1,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1",
+            "provenance": "actual private complete dependency capture fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "exact native fixture tool bytes",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/goal.json",
+            "sha256": "273e30a524717f8b632a7264424a0662dcb3ebdee14c25c1255b1dd73b603d07",
+            "provenance": "controlled ordinary input",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "exact native fixture tool bytes",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "tool/producer",
+            "sha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+            "provenance": "exact copied native fixture tool",
+            "observedOperations": [
+              "execve"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "data/goal.json"
+        ],
+        "closedDirectoryDiscoveries": {},
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "candidate",
+            "launchTraceSha256": "2245b7cd5d90674c1706d65c5d73d8fc7a1edcb2313ba0a346d6d837f06955f6",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442453,
+            "traceEntry": 30,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/pkg/absent.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/pkg/absent.json",
+            "operation": "openat",
+            "flags": "O_RDONLY|O_CLOEXEC",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/absent.json",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "candidate",
+            "launchTraceSha256": "2245b7cd5d90674c1706d65c5d73d8fc7a1edcb2313ba0a346d6d837f06955f6",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442453,
+            "traceEntry": 31,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/pkg/missing-dir/deep.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/pkg/missing-dir/deep.json",
+            "operation": "newfstatat",
+            "flags": "0",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/missing-dir",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "candidate",
+            "launchTraceSha256": "2245b7cd5d90674c1706d65c5d73d8fc7a1edcb2313ba0a346d6d837f06955f6",
+            "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules",
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "pid": 442453,
+            "traceEntry": 32,
+            "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/candidate>",
+            "requestedPath": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/alias/absent.json",
+            "resolvedAttempt": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-35l_b6ei/node_modules/alias/absent.json",
+            "operation": "openat",
+            "flags": "O_RDONLY|O_CLOEXEC",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/absent.json",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [
+              {
+                "path": "alias",
+                "target": "pkg"
+              }
+            ],
+            "sourceInput": false
+          }
+        ],
+        "ownedLauncherTransportMetadata": [],
+        "volatileRuntimeObservations": [],
+        "explicitToolDirectoryMetadata": [],
+        "abortedNonInputIdentityObservations": []
+      }
+    },
+    {
+      "case": "test_actual_write_flags_errno_and_non_directory_stay_closed.original.write-flags",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+          "write-flags",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+          "write-flags",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "45c18ed694430f7d999b988501816aa9bd38d1b22f750b8153ffaeedce94a175",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3573872
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3573873
+          }
+        },
+        "recorderTraceSha256": "7ce3e668aa3162461a91b7de0122812d1f6cd1435f71d70b9e3620d3ddf98c40",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442459,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+            "write-flags",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "316a6dab7064ef258c51cfccc94d244fc7e2c760e5ad3a2a8fbedff9d725c92a"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-o7rq1vni/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_write_flags_errno_and_non_directory_stay_closed.original.wrong-errno",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+          "wrong-errno",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+          "wrong-errno",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "f0953b63a7e3b846a6d209c5969e0b544dcf287af3c7cfeaba26c890ebc165a0",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3573884
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3573885
+          }
+        },
+        "recorderTraceSha256": "674925d177e03032e4a338cf286bb81fdebc31f2b5fdfd04ccb50edcdfed4dc6",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442467,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+            "wrong-errno",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "491f383588b5360507319af5f9bd56690b34b4f4543a854c8a11207c30e5ce62"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-rycdighh/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_write_flags_errno_and_non_directory_stay_closed.original.non-directory",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+          "non-directory",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+          "non-directory",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "7bd8b07db703bd0709cd2282620576ba01eca9fec1b81864bad72ceb6fdaff5e",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3573887
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3573888
+          }
+        },
+        "recorderTraceSha256": "3cc07f7eb2515273363aba9a56961c37f07d20bb29887208eeb219740308c338",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442473,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+            "non-directory",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "c7441f09188ea086854ce1c8e3f7b0acb71ba8cfb311b580555dbd7fdbc9a9dd"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-x0r5n92o/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedAsExpected": true
+    },
+    {
+      "case": "test_existing_files_and_unobserved_events_do_not_prove_absence.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "3c399cee46f1cdba7e13a552498b26aa0f2d97f822c5e12fdb8da8e06ec1a80a",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3577124
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3577125
+          }
+        },
+        "recorderTraceSha256": "8ec0fbb0be03dd8a8e383335da8bee3a972ab98794a11c65cff578c2107700cd",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442479,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "b7e0682be2ea7058c49a3c91dcaf96ca77767ccefe6c3187bcb8173fb57fb84b"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-sv8sqss2/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedExistingFileAndUnobservedEvent": true
+    },
+    {
+      "case": "test_missing_actual_mount_and_forged_capabilities_reject.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "bcabdfa3003c1ac570c67641702c8b5da4706ba7946226ebcd842d2105718fd9",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3577127
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3577128
+          }
+        },
+        "recorderTraceSha256": "fb94e8ecfecb499ee8eaee0507533b9181b75731a29fb59ccdd33b46e24ea060",
+        "producerBoundary": {
+          "recorderLine": 366,
+          "hostPid": 442485,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-i5hswae9/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedMissingMountAndForgedCapabilities": true
+    },
+    {
+      "case": "test_missing_file_binding_and_other_actual_launch_reject.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "d275a18714bf51269d71b595b9c4d8b8184abce6ddeb143a5d61e22f6b5e597b",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3577130
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3577131
+          }
+        },
+        "recorderTraceSha256": "084a86c8ccd6f43f42a14a0b27fa4e0810fbfdc0330a55cb0b8435983ee7d7b4",
+        "producerBoundary": {
+          "recorderLine": 397,
+          "hostPid": 442491,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "4c102bbe9484408f39d55132fc7f119193a91549599f1824ff7f2a7035dcfc03"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/original/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-olde6rre/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedMissingDependencyFileBinding": true
+    },
+    {
+      "case": "test_missing_file_binding_and_other_actual_launch_reject.candidate.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate",
+        "cwd": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate",
+        "argv": [
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/unbound-node_modules/pkg/absent.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate",
+          "--ro-bind",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate",
+          "--",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+          "normal",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/data/goal.json",
+          "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/unbound-node_modules/pkg/absent.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "b0680a36757b83efcb4944b3d5497022b725fa1500c986726be5682f229231a2",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3577175
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3577176
+          }
+        },
+        "recorderTraceSha256": "65f68b8f2c316e165335ccf7068206313aad202b4c97297e913658518ea85ad9",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 442497,
+          "executable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+          "argv": [
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+            "normal",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/data/goal.json",
+            "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/unbound-node_modules/pkg/absent.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+            "target": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+            "readonly": true,
+            "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538",
+            "captureReceiptSha256": "e92b39a0cc869f2223195752dd1f6cb38d100f5a4cf6c442a436edb860c27ffb"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+          "producerExecutableSource": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/candidate/tool/producer",
+          "producerSha256": "e93a6fe79766a57a807018251dfed16beccfa76dcc4243911b53cdcd5c46d44f",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "producerExitCode": 0,
+      "capture": {
+        "bytes": 65,
+        "entries": [
+          {
+            "kind": "symlink",
+            "path": "alias",
+            "target": "pkg"
+          },
+          {
+            "kind": "directory",
+            "path": "pkg"
+          },
+          {
+            "bytes": 32,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/helper.txt",
+            "sha256": "db064ec6fc0cb66aaa46b50fd8a53205ac2a26e10218bffc1f6461876ee72fc7"
+          },
+          {
+            "bytes": 33,
+            "executable": false,
+            "kind": "file",
+            "path": "pkg/package.json",
+            "sha256": "f292dfbaa06bd3aea92c0284c740c6809348f463d6f95efa351aa36af7d5b6d1"
+          }
+        ],
+        "gitLockBinding": {
+          "bytes": 68,
+          "gitObjectId": "2d9a3675ec6bd081852b52505f4c488f9707417c",
+          "path": "app/package-lock.json",
+          "resolvedGitPath": "app/package-lock.json",
+          "sha256": "f59ff83a5da18a2153d7cba6c80025ace2e011f01dcf644e3e6500f686597cf2"
+        },
+        "installedBytesClaimedAsGitContents": false,
+        "root": "/dev/shm/skillpilot-tool-tree-7kb63vul/case-1b4j8h9k/node_modules",
+        "treeSha256": "fb30db33218fcbde4b339dff708032426f0104ed11198f4347068b6715970538"
+      },
+      "sourceAQaClaimed": false,
+      "rejectedCapabilityFromOtherActualLaunch": true
+    }
+  ],
+  "capture19Changed": false
+}

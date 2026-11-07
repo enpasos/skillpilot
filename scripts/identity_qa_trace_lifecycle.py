@@ -4,7 +4,7 @@ from identity_qa_read_trace import number,require,traced_pid
 
 
 def prove_aborted_identity_probe(events,event,groups,observed_namespace_ids):
-    """Only the actual getpid entry/resume enclosed by same-group exit0.
+    """Only the actual getpid entry/resume overlapping same-group exit0.
 
     Callers supply their existing clone-lineage and *already observed* numeric
     group identities. Both the concrete earlier getpid and exit witness must
@@ -33,7 +33,7 @@ def prove_aborted_identity_probe(events,event,groups,observed_namespace_ids):
     witnesses=[candidate for candidate in events
                if candidate[3]=='exit_group' and candidate[4]==['0'] and candidate[5]=='?'
                and groups.get(candidate[2])==group
-               and candidate[0]<=start<end<=candidate[1]]
+               and max(candidate[0],start)<min(candidate[1],end)]
     require(witnesses,'No simultaneous successful exit_group(0) of this same thread group')
     witness=min(witnesses,key=lambda item:item[0])
     prior=max(identity,key=lambda item:item[1])

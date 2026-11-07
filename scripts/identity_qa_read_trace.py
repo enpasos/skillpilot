@@ -20,7 +20,7 @@ from types import MappingProxyType
 
 TRACE_OPTIONS = (
     '-f', '-qq', '-yy', '--decode-pids=pidns', '-v', '-s', '65535',
-    '-e', 'trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace',
+    '-e', 'trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace',
     '-e', 'raw=read,pread64,readv,preadv,preadv2',
 )
 
@@ -48,11 +48,13 @@ class FileBinding:
 
 class ReadContract:
     """An explicit lower-level binding, never a substitute for verified A."""
-    def __init__(self, root, role, files, directories, aliases=None, external_files=None, expected_tool_failures=(), required_discovery=(), external_directory_metadata=None):
+    def __init__(self, root, role, files, directories, aliases=None, external_files=None, expected_tool_failures=(), required_discovery=(), external_directory_metadata=None, mount_views=()):
         root = Path(root).absolute()
         require(root.resolve(strict=True) == root and root.is_dir(), 'Physical role root cannot be an alias')
         require(role in ('original', 'candidate'), 'Unknown physical role')
         self.root, self.role = root, role
+        from identity_qa_namespace_view import require_namespace_view
+        self.mount_views = tuple(require_namespace_view(view,root,role) for view in mount_views)
         for name in [*files, *(aliases or {})]:
             require(not name.startswith('/') and all(p not in ('.', '..', '') for p in name.split('/')),
                     'Unsafe logical binding path: ' + name)
@@ -75,6 +77,10 @@ class ReadContract:
         require(self.required_discovery <= self.directories.keys(), 'Required discovery lacks an independent directory binding')
 
     def verify_bytes_and_aliases(self):
+        for view in self.mount_views:
+            view.verify_for_launch(self.root,self.role)
+            require(not any(view.contains(self.root/name) for name in [*self.files,*self.aliases]),
+                    'Namespace dependency mount overlaps a source/tool binding')
         for name, target in self.aliases.items():
             path = self.root / name
             require(path.is_symlink() and os.readlink(path) == target, 'Declared alias changed: ' + name)
@@ -346,6 +352,8 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
         runtime.verify_launch(launch)
     from identity_qa_tool_tree import require_bound_tree
     bound_trees = tuple(require_bound_tree(tree, launch, contract) for tree in dependency_trees)
+    require(all(any(tree._view is view for tree in bound_trees) for view in contract.mount_views),
+            'Namespace views lack genuine launch-bound tree evidence')
     events = calls(trace)
     require(events, 'Empty producer trace')
     root_pid = events[0][2]
@@ -355,6 +363,7 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
     exited, handles, facts, failures, source_reads = set(), [], {}, [], set()
     runtime_facts, transport_facts, metadata_facts, node_vm_handles = [], [], [], []
     observed_identity_values, aborted_identity_facts = {}, []
+    namespace_directory_scopes = {}
 
     def fd(proc, token):
         if token.startswith('AT_FDCWD'):
@@ -422,6 +431,22 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
             require(permitted and not path.is_relative_to(contract.root), 'Failed/unexplained input attempt: ' + str(path))
             failures.append({'syscall': syscall, 'path': str(path), 'errno': errno, 'category': 'tool-probe'})
             return None
+        matching_views = [view for view in contract.mount_views if view.contains(path)]
+        require(len(matching_views) <= 1,'Ambiguous namespace dependency views')
+        if matching_views:
+            mapped = matching_views[0].lookup(path,(start,end,pid,syscall,args,result),actual)
+            if mapped.binding is not None:
+                require(digest(mapped.physical_path) == mapped.binding.sha256,'Actual namespace capture bytes differ')
+                fact = facts.setdefault((mapped.binding.category,mapped.logical),{
+                    'category':mapped.binding.category,'path':mapped.logical,'namespacePath':str(mapped.namespace_path),
+                    'physicalSource':str(mapped.physical_path),'sha256':mapped.binding.sha256,
+                    'provenance':mapped.binding.provenance,'observedOperations':[]})
+                if syscall not in fact['observedOperations']:fact['observedOperations'].append(syscall)
+            else:
+                if mapped.children is not None:namespace_directory_scopes[mapped.logical] = mapped.children
+                metadata_facts.append({'pid':pid,'path':str(mapped.namespace_path),'physicalSource':str(mapped.physical_path),
+                    'kind':mapped.kind,'operation':syscall,'category':'bound-dependency-namespace-metadata'})
+            return mapped.namespace_path,mapped.binding,mapped.logical
         resolved, binding, logical = contract.resolve(path, actual, syscall)
         if binding:
             require(digest(resolved) == binding.sha256, 'Actual accessed bytes differ: ' + logical)
@@ -457,7 +482,8 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
             if not failed:
                 destination = path_at(proc, 'AT_FDCWD', args[0]) if name == 'chdir' else fd(proc, args[0])
                 resolved = check(destination, name, None)[0]
-                require(resolved.is_dir(), 'cwd is not a bound directory')
+                require(resolved.is_dir() or any(view.contains(resolved) and view.walk(resolved)[1]['kind']=='directory'
+                                                for view in contract.mount_views), 'cwd is not a bound directory')
                 proc.cwd[0] = resolved
             else:
                 raise ValueError('Failed cwd mutation')
@@ -474,7 +500,8 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
             require(observed_identity_values.get(proc.group,number(result)) == number(result),'Conflicting observed group identities')
             observed_identity_values[proc.group] = number(result)
         elif name == 'getcwd':
-            require(not failed and Path(c_string(args[0])) == proc.cwd[0], 'Actual cwd differs from process binding')
+            require(not failed and Path(c_string(args[0])) == proc.cwd[0],
+                    'Actual cwd differs from process binding: '+args[0]+' != '+str(proc.cwd[0]))
         elif name in ('open', 'openat', 'openat2'):
             path = path_at(proc, 'AT_FDCWD' if name == 'open' else args[0], args[0] if name == 'open' else args[1])
             flags = ','.join(args[1:] if name == 'open' else args[2:])
@@ -582,10 +609,10 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
                 handle.discovered[entry] = {'DT_REG': 'file', 'DT_DIR': 'directory', 'DT_LNK': 'symlink'}[kind]
         elif name in ('execve', 'execveat'):
             path = path_at(proc, 'AT_FDCWD' if name == 'execve' else args[0], args[0] if name == 'execve' else args[1])
-            check(path, name, failed)
+            checked = check(path, name, failed)
             if not failed:
                 proc.fds = {descriptor: value for descriptor, value in proc.fds.items() if not value[1]}
-                proc.executable = path.resolve(strict=True)
+                proc.executable = checked[0] if any(view.contains(path) for view in contract.mount_views) else path.resolve(strict=True)
         elif name in ('newfstatat', 'statx', 'faccessat', 'faccessat2', 'readlinkat', 'stat', 'lstat', 'access', 'readlink'):
             at = name in ('newfstatat', 'statx', 'faccessat', 'faccessat2', 'readlinkat')
             path = path_at(proc, args[0] if at else 'AT_FDCWD', args[1] if at else args[0])
@@ -613,7 +640,7 @@ def authenticate_trace(trace, initial_cwd, contract, launch=None, runtime=None, 
     for handle in handles:
         if handle.discovered or handle.discovery_eof:
             require(handle.discovery_eof, 'Directory discovery lacks EOF')
-            expected = contract.directories[handle.logical]
+            expected = namespace_directory_scopes[handle.logical] if handle.logical in namespace_directory_scopes else contract.directories[handle.logical]
             require(tuple(sorted(handle.discovered.items())) == expected, 'Directory discovery missing/extra/type-changed: ' + handle.logical)
             discoveries[handle.logical] = list(expected)
     require(contract.required_discovery <= discoveries.keys(), 'Required directory discovery was not executed')

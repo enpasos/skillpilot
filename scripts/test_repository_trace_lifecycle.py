@@ -14,6 +14,7 @@ from identity_qa_trace_lifecycle import prove_aborted_identity_probe
 
 EVIDENCE=None
 RAW_SHA='1226d4c2b13dbe0429f0a8522c0b4f40ce91638d2d38e8907166bf08c67008da'
+OVERLAP_SHA='dd760b136c629cd6165c2b0b82c27825ebb382222a0e00818571e7efd01146a3'
 FACTS=[]
 
 
@@ -50,6 +51,24 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256(gzip.decompress(self.path.read_bytes())).hexdigest(),RAW_SHA)
         FACTS.append(fact)
 
+    def test_real_recorded_getpid_resume_after_exit_resume_is_still_overlapping(self):
+        path=Path(__file__).resolve().parents[1]/'qa-artifacts/ci-contract-audit/2026-11-07/prepared-dependency-namespace/lifecycle-overlapping-resume-recorder.strace.gz'
+        raw=gzip.decompress(path.read_bytes())
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),OVERLAP_SHA)
+        events=calls(raw.decode());event=next(e for e in events if e[3]=='getpid' and e[5]=='?')
+        groups={events[0][2]:events[0][2]};identities={}
+        for prior in events:
+            if prior[0]>=event[0]:break
+            _,_,pid,op,args,result=prior
+            if op in ('clone','clone3','fork','vfork') and not result.startswith('-1 '):
+                child=traced_pid(result);groups[child]=groups[pid] if 'CLONE_THREAD' in ','.join(args) else child
+            if op=='getpid' and result!='?':identities[groups[pid]]=number(result)
+        fact=prove_aborted_identity_probe(events,event,groups,identities)
+        self.assertLess(fact['exitWitness']['resume'],fact['resume'])
+        self.assertLess(fact['entry'],fact['exitWitness']['resume'])
+        self.assertIsNone(fact['returnedPidValue']);self.assertFalse(fact['identityEvidence']);self.assertFalse(fact['namespaceValueDerived'])
+        FACTS.append(fact)
+
     def test_missing_group_or_prior_identity_stays_closed(self):
         groups=dict(self.groups);del groups[self.event[2]]
         with self.assertRaisesRegex(ValueError,'clone/group lineage'):
@@ -65,6 +84,10 @@ class LifecycleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'simultaneous successful exit_group'):
             prove_aborted_identity_probe(self.events,self.event,groups,self.identities)
         events=[e for e in self.events if e!=self.exit]
+        with self.assertRaisesRegex(ValueError,'simultaneous successful exit_group'):
+            prove_aborted_identity_probe(events,self.event,self.groups,self.identities)
+        adjacent=(self.event[1],self.event[1]+5,*self.exit[2:])
+        events=[adjacent if e==self.exit else e for e in self.events]
         with self.assertRaisesRegex(ValueError,'simultaneous successful exit_group'):
             prove_aborted_identity_probe(events,self.event,self.groups,self.identities)
         replacement=(*self.exit[:4],['1'],self.exit[5])
@@ -98,6 +121,6 @@ if __name__=='__main__':
     if EVIDENCE:
         (EVIDENCE/'results.json').write_text(json.dumps({'purpose':'real-recorded-lifecycle-positive-and-abstract-argument-negatives',
             'testsRun':program.result.testsRun,'failures':len(program.result.failures),'errors':len(program.result.errors),'skips':len(program.result.skipped),
-            'originalRecorderRawSha256':RAW_SHA,'positiveFacts':FACTS,'newActiveProducers':0,
+            'originalRecorderRawSha256':RAW_SHA,'overlappingResumeRecorderRawSha256':OVERLAP_SHA,'positiveFacts':FACTS,'newActiveProducers':0,
             'rawRecorderBytesModified':False,'traceCapabilityMintedFromFixture':False},indent=2)+'\n')
     raise SystemExit(0 if program.result.wasSuccessful() else 1)
