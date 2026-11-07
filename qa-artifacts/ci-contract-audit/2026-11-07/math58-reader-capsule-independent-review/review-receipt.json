@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-finite-math58-reader-and-132-capsule-review",
+  "reviewer": "Codex /root/powi_six_independent_review",
+  "recordedAtActualUTC": "2026-11-07T09:45:02.671399+00:00",
+  "decision": "supports exact private candidate; no blocking implementation defect found in reviewed scope",
+  "blockingFindings": [],
+  "candidatePatchFilesSha256": "68f18d1e45afdab825fcc8495970223cfb601227ad6e0e20a44241b53e3bd701",
+  "checks": {
+    "candidateFilesExact": 68,
+    "wholeCurrentGoalsAndOriginalAvailabilityChecked": 58,
+    "currentRefsRehashed": 408,
+    "actualBoundCurrentViewportRecords": 116,
+    "ownNativeReaderCasesPerFrame": 18,
+    "ownNativeReaderFrames": [
+      "active-old-boxplot",
+      "private-v2-boxplot"
+    ],
+    "ownNativeReaderExitCodes": [
+      0,
+      0
+    ],
+    "capabilityOriginControls": [
+      "actual accepted",
+      "spread rejected",
+      "clone rejected",
+      "prototype rejected",
+      "foreign goal rejected",
+      "capability/context frozen"
+    ],
+    "independentBudgetCliCases": 90,
+    "capsuleBudgetFieldsIndependentlyRecomputed": true,
+    "old74RowsAndOriginalRefsPreserved": true,
+    "activeAndOld74CapsulePostguardPins": 942,
+    "postguardMismatches": 0
+  },
+  "nonblockingNotes": [
+    {
+      "topic": "reserve-bytes",
+      "finding": "885937499 minimum free bytes describes recorded invocation with256MiB reserve; reserve remains pre-existing caller parameter, not a newly fixed universal lower bound",
+      "suggestion": "optional clearer field name minimumFreeBytesForRecordedInvocation"
+    }
+  ],
+  "scopeLimits": {
+    "activeAuthorityStill74": true,
+    "candidate132AuthorityActivated": false,
+    "M7Grant": false,
+    "humanApprovalClaimed": false,
+    "newFull58SightReviewClaimed": false,
+    "actualPhoneOrHostAcceptance": false,
+    "fullAppAcceptance": false,
+    "curricularSourceOrDpaApproval": false,
+    "sourceAProbeExecuted": false,
+    "sourceAAuthKernelCreated": false,
+    "capsuleBuildOrMaterializationRepeated": false,
+    "activeSourceQaAssetsChanged": false,
+    "rootGitWrites": false
+  },
+  "reviewedDisplayScope": "actual isolated public GoalCard-image CSS360/680, native Chromium, max28rem, DPR1; current review attribution distinct from historical original reviews",
+  "actualSamplePixelView": {
+    "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+    "widthCSS": 360,
+    "screenshotSha256": "709d22cea4245259d82ad0b3aee58547e92e5bd82f256cce0f4d6973f09d365f",
+    "observation": "Median11label is separately visible; this single sample is not a58-goal re-review"
+  },
+  "attributedAuthorEvidence": "Pinned native74/57/58/132 runs and six actual lower-budget failures read rather than rerun; errors in older negative-log wording are not treated as final-code execution evidence; own final-code cases separately recorded",
+  "budgetReview": {
+    "reviewer": "Codex /root/powi_six_independent_review/math132_budget_review",
+    "path": "budget-review.json",
+    "sha256": "62eff4df837f2401d21196445df1a6cdff536647a2959d1c875ebb8c2a9b1a18"
+  },
+  "inputPins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/PATCH-FILES.json",
+      "sha256": "68f18d1e45afdab825fcc8495970223cfb601227ad6e0e20a44241b53e3bd701",
+      "bytes": 22046
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/INVENTORY.json",
+      "sha256": "d40a0484d4b13e2f0fe956c118c66b300839307c0d39859ba293aa74b38a6cb4",
+      "bytes": 23585
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/receipt.json",
+      "sha256": "2500e30f03a5fccb6c953e81a7f60e825a1293cee4f5a1a510ac7badceadf87c",
+      "bytes": 3538
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/README.md",
+      "sha256": "01579da4cc2eab1582e5da9f1d810d5022fbb17fe24a855612eba4a1de73a0ae",
+      "bytes": 3058
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/budget.json",
+      "sha256": "8cad5f3008936f99955ab342392902922fcbc37eec24d527b054b6afbccfab6a",
+      "bytes": 767
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/durable-inventory-reference.json",
+      "sha256": "a30aad0fa0c768f3362a598ebbf747ce076658c9044b89d7804b9bbde4bcea14",
+      "bytes": 234
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "16b52af808ec213a982ee1f88d33637219e3f0586262698d2b76d0c8aa43d043",
+      "bytes": 146732
+    },
+    {
+      "path": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "sha256": "3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e",
+      "bytes": 30177
+    },
+    {
+      "path": "app/scripts/lib/qualifiedVisualizationContextAuthority.ts",
+      "sha256": "67f30d2994c697adafe7a59c6aeace0cae3e72eccae68472b4d6ca81a914580e",
+      "bytes": 4045
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualified-context-index-economics17-2026-11-07.json",
+      "sha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "bytes": 181011
+    },
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702",
+      "bytes": 6126
+    },
+    {
+      "path": "scripts/visualization_review_git_capsule.py",
+      "sha256": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34",
+      "bytes": 16852
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "3e1442aaf97aa0d17512c84d628836ad14fb9018990e48db0c714c46931b511f",
+      "bytes": 23859
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/app/scripts/lib/goalVisualizationMath58Contexts.ts",
+      "sha256": "f3e9f24f761c009cbe0f674c8c741943644b879d908b07b0d9c2f27fe7466c19",
+      "bytes": 17166
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/scripts/visualization_qualified_context_capsule.py",
+      "sha256": "72ec644a8635caf2c0624657ab45f42c30b062a5258b67a2ea960f4a9a823964",
+      "bytes": 17696
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "4a21bd26896135f65d495f2fcc2aad027a496c2db34212691b61a95f26656033",
+      "bytes": 4693
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json",
+      "sha256": "b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76",
+      "bytes": 333421
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "sha256": "441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803",
+      "bytes": 345086
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/native-reader-active.json.gz",
+      "sha256": "74bc24f6049801fd6066d237e1b2fe9e704aace18fcdb277cdb028d0cd877eb6",
+      "bytes": 21635
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/native-reader-v2.json.gz",
+      "sha256": "a98bc30df8115449cedac1ce3d5fb5ecf4cfa28f3f5181b61bacd2f4629c9e7f",
+      "bytes": 25264
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/native-reader-old74.json.gz",
+      "sha256": "6551052f2c76fe05dbc2f644bdb5d6a1a6e169113b07a373d48c469271079e9d",
+      "bytes": 21651
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/native-reader-all132.json.gz",
+      "sha256": "6f6cec9d5289eb89953be941da236983540901d0fa289380c6cd47ece1553c6a",
+      "bytes": 47354
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/reader-negative-results.json.gz",
+      "sha256": "16fec2ace48a3c6e94da25d156453bbcbb7390d5b8933a54a2871c7df807fac8",
+      "bytes": 475
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/reader-fault-results.json.gz",
+      "sha256": "ee272f8f1360d39ee6d4a01aba0dc5ce14eff4de2db26ab292e0069cd9bfb5f0",
+      "bytes": 615
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/capsule-build-final.log.gz",
+      "sha256": "2573e1ad709312d64fa8331edc8fb323172d45e8eea396e854ee5e7515f8c038",
+      "bytes": 295
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/capsule-materialize.log.gz",
+      "sha256": "7f8511f12ab25ee6f7a735e526315753c6aff3c2c0357d5fa269bd5360ca3a44",
+      "bytes": 255
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/lower-budget-results.json.gz",
+      "sha256": "5e5dc1aeb3b88a333c2bcb88c84b9e293ddd44aa2f805454fb8fcf2ef964b4fe",
+      "bytes": 814
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/eslint-final.log.gz",
+      "sha256": "e04e113e5912f962b7d279e342301647c1f0ae8dfeb537a678861c16e86ff9c6",
+      "bytes": 97
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/results/typecheck-final.log.gz",
+      "sha256": "9af5ae49252abaf7787cd07bc06f156cea08ac42308321a9a914f9d451e0b1bd",
+      "bytes": 99
+    }
+  ]
+}

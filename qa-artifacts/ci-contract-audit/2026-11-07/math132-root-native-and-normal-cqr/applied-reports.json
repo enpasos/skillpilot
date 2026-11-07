@@ -1,0 +1,31 @@
+{
+  "recordedAtAfterRecovery": "2026-11-07T10:31:52.504057+00:00",
+  "generatedAt": "2026-11-07T10:30:27.069Z",
+  "changedFiles": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "beforeCommittedSha256": "9c303f86397ffbb526503fb6a2f5ab060871fe90c30b4b29859194e552b2a43f",
+      "afterSha256": "54c01ecd114d7872e718fb99f7c8db6835a01d415d5f8781b151322c6ab304d7",
+      "bytes": 11599000,
+      "alreadyTransferredBeforeRecovery": true,
+      "ownInodeAtomicFsync": true
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "beforeCommittedSha256": "254bf47ba0c4435becd361e4517984bc72266de63bcea9cfc6f8f4b2e4a30da2",
+      "afterSha256": "b87a4f8e443367f8c5b1e0ae2dee69a2f802d7e6a4d5a8613c9362d8308998f2",
+      "bytes": 66653,
+      "alreadyTransferredBeforeRecovery": false,
+      "ownInodeAtomicFsync": true
+    }
+  ],
+  "normalProducerExit": 0,
+  "initialTransferFailure": {
+    "exitCode": 1,
+    "error": "IsADirectoryError wrapping an already opened directory FD with os.fdopen for directory fsync",
+    "jsonHadAlreadyBeenAtomicallyReplaced": true,
+    "markdownNotYetReplaced": true,
+    "directoryFsyncRecoveredUsingOsFsyncOnRawFD": true
+  },
+  "floorOrderingNote": "Floor started after first transfer command failed; it reads only the fully replaced new JSON. Markdown transfer completed during its execution. Neither report is among protected source inputs. This is explicitly not claimed as an entirely sequential successful initial transfer."
+}

@@ -1,0 +1,91 @@
+{
+  "recordedAt": "2026-11-07T09:37:26.633232+00:00",
+  "reviewer": "Codex /root/powi_six_independent_review/math132_budget_review",
+  "decision": "supports finite132 payload and effective CLI budget contract; no blocking defect found in this bounded scope",
+  "pins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/PATCH-FILES.json",
+      "sha256": "68f18d1e45afdab825fcc8495970223cfb601227ad6e0e20a44241b53e3bd701"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/budget.json",
+      "sha256": "8cad5f3008936f99955ab342392902922fcbc37eec24d527b054b6afbccfab6a"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/receipt.json",
+      "sha256": "2500e30f03a5fccb6c953e81a7f60e825a1293cee4f5a1a510ac7badceadf87c"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/scripts/visualization_qualified_context_capsule.py",
+      "sha256": "72ec644a8635caf2c0624657ab45f42c30b062a5258b67a2ea960f4a9a823964"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/scripts/test_visualization_qualified_context_capsule_math132_limits.py",
+      "sha256": "0b60b7bf35341d79a0cadbc631a826ee06374e1a4d1c23945debafaad3e1dff8"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math58-reader-capsule-integration-candidate/candidate/contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "sha256": "441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803"
+    },
+    {
+      "path": "scripts/visualization_review_git_capsule.py",
+      "sha256": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34"
+    }
+  ],
+  "independentChecks": {
+    "legacy3AcceptedIndexAnchorsAndCountsAstEqual": true,
+    "entireLegacy74LimitBranchAstEqual": true,
+    "candidateLegacy74CliCasesPassed": 24,
+    "candidateNew132CliCasesPassed": 24,
+    "candidateExtraNumericInvalidCliCasesPassed": 42,
+    "extraNumericValues": [
+      "True",
+      "False",
+      "1.5",
+      "NaN",
+      "Infinity",
+      "-Infinity",
+      "-1"
+    ],
+    "allInvalidCasesNoOutput": true,
+    "pinnedManifestCountsAndSumsRecomputed": {
+      "workingPaths": 921,
+      "uniqueWorkingBytes": 322146234,
+      "objectCount": 1236,
+      "uniqueObjectOids": 1236,
+      "commitObjects": 476,
+      "objectPayloadBytes": 295355809,
+      "embeddedUncompressedBytes": 14589626
+    },
+    "old74ReceiptPrefixEqual": true,
+    "old74OriginalReferencesAllRetained": true,
+    "newIndexRows": 132,
+    "newIndexOriginalReferences": 433,
+    "newIndexCurrentReferences": 408,
+    "allCurrentByteCountsExactInts": true,
+    "allThreeBoundsAreNextWholeMiB": true
+  },
+  "authorEvidenceReferenced": [
+    "results/capsule-build-final.log.gz",
+    "results/capsule-materialize.log.gz",
+    "results/lower-budget-results.json.gz"
+  ],
+  "scopeLimits": {
+    "capsuleBuildsOrMaterializationsRepeated": false,
+    "activeWrites": false,
+    "sourceAProbes": false,
+    "readerSemanticApproval": false,
+    "authorityActivationApproval": false
+  },
+  "reserveNote": {
+    "severity": "nonblocking wording precision only",
+    "existingBehavior": "unchanged kernel --reserve-bytes is caller-controlled and accepts negative ints; no new132 change",
+    "actualBudgetDocument": "reserveBytes268435456 and minimumRequiredFreeBytesEnforcedByKernel885937499 refer to recorded invocation",
+    "optionalClearerFieldName": "minimumFreeBytesForRecordedInvocation",
+    "code": "scripts/visualization_review_git_capsule.py:211,288"
+  },
+  "numericEvidence": {
+    "path": "cli-numeric-results.json",
+    "sha256": "7b93df7343c4e5e3487d7c20dbce2db8f859ec3c7944a1c9f6acac8e30d40e08"
+  }
+}

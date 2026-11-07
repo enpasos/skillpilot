@@ -36,7 +36,9 @@
         "diagram-current-b-v1",
         "economics-q3-embedded-v1",
         "economics-q3-trade-finance-v1",
-        "economics-q2-monetary-social-embedded-v1"
+        "economics-q2-monetary-social-embedded-v1",
+        "math-current62-with-current-viewports-v1",
+        "math-independent-ten-with-current-viewports-v1"
       ]
     },
     "context": {
@@ -98,7 +100,9 @@
       "enum": [
         "keep",
         "KEEP",
-        "yes"
+        "yes",
+        "accept_current_asset",
+        "accepted_pilot"
       ]
     },
     "reviewedAt": {
@@ -131,6 +135,24 @@
           "$ref": "#/$defs/text"
         }
       }
+    },
+    "currentSupplement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
     }
   },
   "$defs": {
@@ -161,5 +183,37 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reviewProfile": {
+            "enum": [
+              "math-current62-with-current-viewports-v1",
+              "math-independent-ten-with-current-viewports-v1"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "currentSupplement"
+        ],
+        "properties": {
+          "currentSupplement": {}
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "currentSupplement"
+          ],
+          "properties": {
+            "currentSupplement": {}
+          }
+        }
+      }
+    }
+  ]
 }

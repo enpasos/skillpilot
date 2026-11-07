@@ -85,6 +85,7 @@ export function evaluateCurrentVisualizationGate(input: {
         } else {
           const result = verify({ landscapeId: input.landscapeId, goalId, subject: input.subject,
             title: goal.title, description: goal.description, titleEn: goal.titleEn, descriptionEn: goal.descriptionEn,
+            ...('level' in goal ? { level: goal.level } : {}),
             demandLevel: goal.dimensionTags?.demandLevel, imageUrl: row.imageUrl, publicAssetPath: row.publicAssetPath,
             canonicalAssetPath: row.canonicalAssetPath, assetSha256: publicHash })
           if (!result.ok) reason = result.issues.join('; ')

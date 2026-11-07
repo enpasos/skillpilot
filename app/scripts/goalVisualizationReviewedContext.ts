@@ -8,6 +8,7 @@ import addFormats from 'ajv-formats'
 import { normalizeGoalVisualizationSubject } from '../../scripts/goal_visualization_scope.mjs'
 import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from './lib/authenticatedGitEvidence'
 import { readEconomicsQ2MonetarySocialContext } from './lib/goalVisualizationEconomicsQ2MonetarySocialContexts'
+import { isMath58Profile, readMath58Context } from './lib/goalVisualizationMath58Contexts'
 import { readEconomicsQ3Context } from './lib/goalVisualizationEconomicsQ3Contexts'
 
 export interface VisualizationReviewArtifact { path: string; gitCommit: string; sha256: string }
@@ -22,17 +23,19 @@ export interface VisualizationContextReceiptReference { path: string; sha256: st
 export interface VisualizationContextQualification {
   schemaVersion: 1; kind: 'visualization-reviewed-context-qualification'
   normalization: 'skillpilot-visualization-display-whitespace-v1'
-  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1' | 'economics-q2-monetary-social-embedded-v1'
+  currentSupplement?: VisualizationContextReceiptReference
+  reviewProfile: 'math-current62-with-current-viewports-v1' | 'math-independent-ten-with-current-viewports-v1' | 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1' | 'economics-q2-monetary-social-embedded-v1'
   context: VisualizationReviewedContext
   originalReview: VisualizationReviewArtifact; originalInput: VisualizationReviewArtifact
   ownerSource: VisualizationReviewArtifact; reviewedAsset: VisualizationReviewArtifact
-  originalDecision: 'keep' | 'KEEP' | 'yes'; reviewedAt: string; reviewer: string; originalReason: string
+  originalDecision: 'keep' | 'KEEP' | 'yes' | 'accept_current_asset' | 'accepted_pilot'; reviewedAt: string; reviewer: string; originalReason: string
   qualification: { qualifiedAt: string; qualifier: string; reason: string }
 }
 export interface VerifiedVisualizationContext {
   readonly context: Readonly<VisualizationReviewedContext>
   readonly receiptSha256: string
   readonly originalReviewSha256: string
+  readonly currentSupplementSha256?: string
 }
 export type VisualizationContextValidation =
   | { ok: true; capability: VerifiedVisualizationContext }
@@ -98,6 +101,8 @@ const contextKeys = ['landscapeId', 'goalId', 'subject', 'title', 'description',
 // These versioned readers describe exact existing canonical review formats.
 // A freely selected later source snapshot cannot grant a different namespace.
 const reviewOwners = {
+  'math-current62-with-current-viewports-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik', sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
+  'math-independent-ten-with-current-viewports-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik', sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
   'economics-q2-monetary-social-embedded-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
   'matrix-candidate-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
@@ -124,6 +129,7 @@ export const createVisualizationContextVerifier = (options: {
   repositoryRoot?: string
   originalEvidenceRepositoryRoot?: string
   acceptedRepositoryCommit?: string
+  onBoundCurrentEvidenceRead?: (binding: Readonly<{ path: string; sha256: string; bytes?: number }>, fromRepository: boolean) => void
   onAuthenticatedOriginalRead?: (binding: Readonly<VisualizationReviewArtifact>, currentCopyRequired: boolean) => void
 } = {}) => {
   const root = realpathSync(options.repositoryRoot ?? repoRoot)
@@ -172,10 +178,17 @@ export const createVisualizationContextVerifier = (options: {
       const originals = Array.isArray(source.goals) ? source.goals.filter((goal: unknown) => isRecord(goal) && goal.id === receipt.context.goalId) : []
       requireValue(originals.length === 1 && source.landscapeId === receipt.context.landscapeId
         && normalizeGoalVisualizationSubject(source.subject) === receipt.context.subject, 'Original owner/goal/subject association differs')
-      requireValue(review.goalId === receipt.context.goalId, 'Original review goal differs')
+      requireValue(isMath58Profile(receipt.reviewProfile) || review.goalId === receipt.context.goalId, 'Original review goal differs')
       let native: VisualizationReviewedContext
       let decision: unknown, reviewedAt: unknown, reviewer: unknown, reason: unknown, assetPath: unknown
-      if (receipt.reviewProfile === 'matrix-candidate-v1') {
+      if (isMath58Profile(receipt.reviewProfile)) {
+        ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readMath58Context(receipt, review, input, current, (binding, fromRepository = false) => {
+          const raw = capturedBytes(fromRepository ? root : originalsRoot, binding.path)
+          requireValue(hash(raw) === binding.sha256 && (binding.bytes === undefined || raw.length === binding.bytes), 'Bound current evidence bytes differ: ' + binding.path)
+          options.onBoundCurrentEvidenceRead?.(Object.freeze({ ...binding }), fromRepository)
+          return raw
+        }, artifact, parseVisualizationReviewJson))
+      } else if (receipt.reviewProfile === 'matrix-candidate-v1') {
         const candidate = record(review.candidate), scopeFit = record(review.scopeFit)
         requireValue(review.schemaVersion === 1 && review.kind === 'independent-goal-visualization-candidate-review'
           && review.reviewAuthority === 'ai_candidate' && review.decision === 'keep'
@@ -255,20 +268,25 @@ export const createVisualizationContextVerifier = (options: {
         reason = originalRow.aiNotes; assetPath = receipt.reviewedAsset.path
       }
       requireValue(typeof native.title === 'string' && text(native.title) && typeof native.description === 'string' && text(native.description), 'Original complete reviewed text is missing')
-      requireValue(sameContext(receipt.context, native) && Object.keys(receipt.context).sort().join(',') === Object.keys(native).sort().join(','), 'Receipt context is not the actual original reviewed context')
+      requireValue(sameContext(receipt.context, native) && Object.keys(receipt.context).sort().join(',') === Object.keys(native).sort().join(','), isMath58Profile(receipt.reviewProfile) ? 'Receipt context differs from the separately bound current review' : 'Receipt context is not the actual original reviewed context')
       requireValue(receipt.originalDecision === decision && receipt.reviewedAt === reviewedAt && receipt.reviewer === reviewer
         && receipt.originalReason === reason, 'Original decision/reviewer/time/reason differs')
       const historicalPrefix = '/home/enpasos/projects/skillpilot/'
       if (typeof assetPath === 'string' && assetPath.startsWith(historicalPrefix)) assetPath = assetPath.slice(historicalPrefix.length)
-      requireValue(safePath(assetPath) === receipt.reviewedAsset.path && hash(assetRaw) === sha(native.assetSha256), 'Original viewed asset path/bytes differ')
-      if (!sameContext(native, current)) return { ok: false, status: 'stale', issues: ['Current goal/image context differs from the original actually reviewed context'] }
+      requireValue(safePath(assetPath) === receipt.reviewedAsset.path && hash(assetRaw) === (isMath58Profile(receipt.reviewProfile) ? receipt.reviewedAsset.sha256 : sha(native.assetSha256)), 'Original viewed asset path/bytes differ')
+      if (!sameContext(native, current)) return { ok: false, status: 'stale', issues: [isMath58Profile(receipt.reviewProfile) ? 'Current goal/image context differs from the separately bound current review' : 'Current goal/image context differs from the original actually reviewed context'] }
       requireValue(current.imageUrl.startsWith('/assets/goal-visualizations/')
         && current.publicAssetPath === 'app/public' + current.imageUrl
         && current.canonicalAssetPath === 'curricula/DE/Gymnasium/visualizations/' + current.imageUrl.slice('/assets/goal-visualizations/'.length),
       'Current primary asset paths differ')
       requireValue(hash(currentBytes(current.publicAssetPath)) === sha(native.assetSha256)
         && hash(currentBytes(current.canonicalAssetPath)) === sha(native.assetSha256), 'Current actual image bytes differ')
-      const capability = Object.freeze({ context: Object.freeze({ ...native }), receiptSha256: ref.sha256, originalReviewSha256: receipt.originalReview.sha256 })
+      if (isMath58Profile(receipt.reviewProfile)) for (const path of [current.publicAssetPath, current.canonicalAssetPath]) {
+        const raw = currentBytes(path)
+        options.onBoundCurrentEvidenceRead?.(Object.freeze({ path, sha256: hash(raw), bytes: raw.length }), true)
+      }
+      const capability = Object.freeze({ context: Object.freeze({ ...native }), receiptSha256: ref.sha256, originalReviewSha256: receipt.originalReview.sha256,
+        ...(receipt.currentSupplement ? { currentSupplementSha256: receipt.currentSupplement.sha256 } : {}) })
       capabilities.add(capability)
       return { ok: true, capability }
     } catch (error) { return { ok: false, status: 'invalid', issues: [error instanceof Error ? error.message : String(error)] } }

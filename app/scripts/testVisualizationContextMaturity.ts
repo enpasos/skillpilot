@@ -14,7 +14,7 @@ import { collectCurriculumMaturityFloorFailures } from './checkCurriculumMaturit
 import { deepUnderstandingCompletionCheckIds, hasStrictDeepUnderstandingCompletion, intersectStrictGoalGates,
   type DeepUnderstandingSubjectReport } from './reportDeepUnderstandingRollout'
 
-type LocalGoal = LearningGoal & { titleEn?: string; descriptionEn?: string }
+type LocalGoal = LearningGoal & { titleEn?: string; descriptionEn?: string; level?: number }
 const root = resolve(import.meta.dirname, '../..')
 const economicsProbe = process.argv.includes('--economics-probe')
 const subject = economicsProbe ? 'wirtschaftswissenschaften' : 'mathematik'
@@ -49,7 +49,7 @@ if (!rejectMutation) {
     assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
     actualQualified += ids.length
   }
-  assert.equal(actualQualified, 74, 'All fixed candidates must really pass through the authenticated shallow capsule.')
+  assert.equal(actualQualified, 132, 'All fixed candidates must really pass through the authenticated shallow capsule.')
 
 }
 
@@ -155,7 +155,12 @@ const previous: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.
   'contracts/goal-visualization-context/v1/qualified-context-index-math3-2026-11-07.json'), 'utf8'))
 const previousIds = new Set(previous.rows.map(row => row.landscapeId + ':' + row.goalId))
 assert.deepEqual(fixedIndex.rows.filter(row => previousIds.has(row.landscapeId + ':' + row.goalId)), previous.rows)
-assert.equal(fixedIndex.rows.filter(row => !previousIds.has(row.landscapeId + ':' + row.goalId)).length, 17)
+assert.equal(fixedIndex.rows.filter(row => !previousIds.has(row.landscapeId + ':' + row.goalId)).length, 75)
+const legacy74: typeof fixedIndex = JSON.parse(readFileSync(resolve(root,
+  'contracts/goal-visualization-context/v1/qualified-context-index-economics17-2026-11-07.json'), 'utf8'))
+const legacy74Ids = new Set(legacy74.rows.map(row => row.landscapeId + ':' + row.goalId))
+assert.deepEqual(fixedIndex.rows.filter(row => legacy74Ids.has(row.landscapeId + ':' + row.goalId)), legacy74.rows)
+assert.equal(fixedIndex.rows.filter(row => !legacy74Ids.has(row.landscapeId + ':' + row.goalId)).length, 58)
 const goodRules = rules(current)
 for (const mutated of [
   goodRules.filter(rule => rule.id !== 'CQR-303'),
@@ -193,6 +198,29 @@ assert.throws(() => (current.readyGoalIds as string[]).splice(0), TypeError)
 assert.equal(hasCompletePassingVisualizationContext(goodRules, source.landscapeId, current), true)
 assert.equal(current.indexSha256, qualifiedVisualizationAuthority.indexSha256)
 console.log(`Current original-context V → five-gate intersection → CQR-303 → M7 → direct floor passed; ${actualQualified} genuine shallow-capsule qualifications, ${negatives} genuine/context/manifest/expectation negatives; real valid strict graph.`)
+
+// The new profile must receive actual caller metadata through the shared gate,
+// including a supplied scalar level rather than silently dropping that field.
+const mathPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+const mathSource: SkillLandscape = economicsProbe ? JSON.parse(readFileSync(resolve(root, mathPath), 'utf8')) : source
+const mathQa: { records: VisualizationGateRecord[] } = economicsProbe
+  ? JSON.parse(readFileSync(resolve(root, 'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'), 'utf8')) : ledger
+const math58Goal = mathSource.goals.find(goal => goal.id === 'b41cb496-dad5-596e-9c23-cdcbdab3ec2e')! as LocalGoal
+const math58Row = mathQa.records.find(row => row.goalId === math58Goal.id)!
+const math58Native = (definition: LocalGoal) => evaluateCurrentVisualizationGate({ repositoryRoot: root,
+  landscapeId: mathSource.landscapeId, landscapePath: mathPath, subject: 'mathematik',
+  goalById: new Map([[definition.id, definition]]), currentGoalIds: new Set([definition.id]), records: [math58Row] })
+assert.deepEqual(math58Native(math58Goal).readyGoalIds, [math58Goal.id])
+const math58Mutations: LocalGoal[] = [
+  { ...math58Goal, titleEn: math58Goal.titleEn + ' Changed competence.' },
+  { ...math58Goal, dimensionTags: { ...math58Goal.dimensionTags, demandLevel: math58Goal.dimensionTags?.demandLevel === 'AB1' ? 'AB2' : 'AB1' } },
+  { ...math58Goal, level: math58Goal.level === 2 ? 3 : 2 },
+]
+for (const definition of math58Mutations) {
+  const checked = math58Native(definition)
+  assert.deepEqual(checked.readyGoalIds, [])
+  assert.match(checked.issues.join(' '), /Current goal\/image context differs|Math58 current DE\/EN\/demand\/level\/phase differs/u)
+}
 
 // Additional real Q2 current-input checks at the ordinary native V boundary.
 const econPath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'

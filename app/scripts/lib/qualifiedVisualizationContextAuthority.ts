@@ -10,10 +10,10 @@ import { createVisualizationContextVerifier, parseVisualizationReviewJson,
 // These are external acceptance pins for this finite historical input set.
 // Neither a receipt nor a caller can nominate its own acceptance authority.
 export const qualifiedVisualizationAuthority = Object.freeze({
-  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index-economics17-2026-11-07.json',
-  indexSha256: '234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785',
-  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/economics-fixed74-authority-integration-candidate/capsule',
-  capsuleSha256: '60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77',
+  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json',
+  indexSha256: '441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803',
+  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/math58-active-integration/capsule-132',
+  capsuleSha256: 'bf797d97d48d3ebb436037cfcf487189e06455e9cf2120a4d385f7921b20b0bf',
   acceptedRepositoryCommit: '25a6f2164a81a7e6ae50db3557d20521fecf5124',
 })
 interface Index { rows: Array<{ landscapeId: string; goalId: string; receipt: VisualizationContextReceiptReference }> }
@@ -25,7 +25,7 @@ function initialize(root: string) {
   if (sha(raw) !== pins.indexSha256) throw new Error('External visualization context index differs')
   const index = parseVisualizationReviewJson(raw) as Index
   const rows = new Map(index.rows.map(row => [row.landscapeId + ':' + row.goalId, Object.freeze({ ...row.receipt })]))
-  if (index.rows.length !== 74 || rows.size !== 74) throw new Error('External visualization index is incomplete or ambiguous')
+  if (index.rows.length !== 132 || rows.size !== 132) throw new Error('External visualization index is incomplete or ambiguous')
   // A small separate original-evidence repository works in an actual shallow
   // checkout. The same raw OID/parent/path verifier runs before any V decision.
   const temporary = mkdtempSync(resolve(tmpdir(), 'skillpilot-qualified-v-'))
@@ -34,7 +34,8 @@ function initialize(root: string) {
     '--repository-root', root, '--accepted-commit', pins.acceptedRepositoryCommit,
     '--accepted-census-sha256', pins.indexSha256, '--census-path', pins.indexPath,
     '--capsule', resolve(root, pins.capsulePath), '--accepted-capsule-sha256', pins.capsuleSha256,
-    '--output', originalsRoot, '--maximum-working-bytes', '201326592', '--maximum-object-bytes', '268435456'],
+    '--output', originalsRoot, '--maximum-working-bytes', '322961408', '--maximum-object-bytes', '295698432',
+    '--maximum-embedded-bytes', '14680064'],
   { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 })
   if (run.status !== 0) {
     rmSync(temporary, { recursive: true, force: true })

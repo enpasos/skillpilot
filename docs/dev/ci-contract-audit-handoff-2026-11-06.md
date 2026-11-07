@@ -33,33 +33,43 @@ einer Testkorrektur implementiert.
 
 ## Aktueller Zwischenstand vom 7. November
 
-Der reguläre Gesamtbericht vom `2026-11-07T05:46:48.445Z` enthält die
-[drei Mathematikreparaturen](ci-graph-repairs/math-three-reviewed-repairs-application-2026-11-07.md)
-und [vier fachlich geprüfte PoWi-Korrekturen samt korrigierter Bildprüfung](ci-graph-repairs/powi-four-fixed74-repairs-application-2026-11-07.md).
-Mathematik bleibt bei 916 Strukturbefunden; PoWi sinkt von 603 auf 599.
-Die strenge Bildkontextprüfung bestätigt 74 von insgesamt 2.483 Kontexten der
-fünf M7-Fächer. 2.409 Nachweise bleiben offen. Die vollständigen Zielmengen
-und alle 21 abgeleiteten Meilensteine sind unverändert.
+Der reguläre Gesamtbericht vom `2026-11-07T10:30:27.069Z` enthält die
+[aktive Math58-/Boxplot-Korrektur](ci-graph-repairs/visualization-math58-active-integration-2026-11-07.md)
+und die zuvor angewandten zehn fachlich geprüften PoWi-Kantenkürzungen.
+Die strenge Bildkontextprüfung bestätigt **132 von 2.483 Kontexten**:
+Mathematik 63/807, Wirtschaft 69/346, Physik/Chemie/Biologie weiterhin 0.
+**2.351 bleiben offen.** Alle 807 Mathematik-D/P/A/M-Belege sind aktuell.
+Mathematik hat weiterhin 916 Strukturbefunde, PoWi 593. Sämtliche 21
+Meilensteine und alle Scopeberichte bleiben unverändert.
 
 Deutsch, Geschichte und Latein sind M6. Die übrigen sieben geschützten Fächer
-sind weiterhin M0. Der neue [direkte Floorcheck](ci-graph-repairs/powi-four-fixed74-normal-cqr-producer-2026-11-07.json)
-weist die sieben Verletzungen nach; Untergrenzen und Ausnahmen sind unverändert.
-Der tatsächliche Remote-Lauf auf `6451880` ist abgeschlossen: sechs Hauptjobs
-bestehen, Frontend und Curriculum scheitern vor der Meilensteinprüfung. Die vier
-Nebenworkflows bestehen. Die anschließenden PoWi-/74-Kontext-Änderungen sind
-in diesem Remote-Lauf noch nicht enthalten. Die beiden Ursachen sind
-inzwischen [lokal repariert und geprüft](ci-graph-repairs/remote645-scope-refresh-and-rationales-repair-2026-11-07.md);
-ein frischer Remote-Nachlauf steht noch aus.
+sind weiterhin M0. Der tatsächliche vollständige Deep-Selbsttest und der
+reguläre Gesamtproducer mit allen zehn Memory-Vorprüfungen bestehen.
+Der separate direkte Floorcheck scheitert weiterhin an den sieben offenen
+Fachuntergrenzen. Die Untergrenzen und die leere Ausnahmenliste bleiben
+unverändert. Die [vollständigen lokalen Ausführungsbelege](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-07/math132-root-native-and-normal-cqr/summary.json)
+trennen den erfolgreichen Producer vom echten Floorfehler und dokumentieren
+auch den korrigierten Fehler bei der Berichtsübertragung.
 
-Der [kalte Informatik-Q2-Review](ci-graph-repairs/informatics-q2-independent-scope-material-review-2026-11-07.md)
-bleibt mit seinem begrenzten damaligen Quellenstand erhalten. Die anschließende
-vollständige Scopeanalyse trennt das eigene kanonische Angebot vom amtlichen
-Pflichtumfang und benannten Abiturjahrgängen. Neue vollständige Materialien und
-ihre private native Einbindung bleiben Entwurf. Die vier konkreten Materialfehler sind in einem getrennten Nachfolger
-behoben und unabhängig nachgeprüft. Der Source-/Scope-Kandidat bleibt wegen
-weiterhin unbegründeter staatlicher Ziele, fehlender grundlegender Quellenanteile
-und veränderter alter Prüfungsverträge ausdrücklich unangewandt.
-Das Einheiten-Goal und PR #83 bleiben eingefroren.
+Der bisherige Remote-Kopf `6e8bb160` hat zwei ältere Backend-Testfixtures ohne
+vollständigen kanonischen Lernscope aufgedeckt. Beide sind inzwischen lokal
+repariert: ein tatsächlicher Zweistarttest mit isoliertem PostgreSQL sowie
+58 Projektions- und sechs unveränderte Readinessfälle bestehen. Der
+Produktionsguard bleibt unverändert. Ein frischer Remote-Lauf dieses neuen
+Gesamtstandes ist weiterhin erforderlich; es gab kein Deployment.
+
+**Informatik benötigt keine Erhaltung oder Übernahme alter Ergebnisse.**
+Die [verbindliche Klarstellung](ci-graph-repairs/informatics-retained-contract-result-gap-2026-11-07.md)
+erlaubt die Bereinigung der überholten Prüfungsbündel ohne Historienruntime.
+Der aktuelle aktive Informatiksource ist davon noch unverändert. Drei konkrete
+lokale E-Aufgaben ersetzen im privaten Nachfolger zwei unbrauchbare Bündel;
+sie prüfen 15 vorhandene Kompetenzen, während zehn weitere Ziele ausdrücklich
+nicht mitanerkannt werden. Der Materialreview hat eine echte TCP/IP-Lücke
+und eine Rubrikabweichung korrigieren lassen. Der enge Source-/Scope-Review
+dieses Nachfolgers ist ebenfalls abgeschlossen. Die aktuelle Definitionsbindung,
+Integration und die übrigen offenen Prüfungen bleiben getrennte Folgearbeit. Ein alter begutachteter Sammelentwurf
+legt keinen neuen Pflichtumfang fest. Das Einheiten-Goal und PR #83 bleiben
+eingefroren.
 
 ## Verwendbare Ergebnisse
 

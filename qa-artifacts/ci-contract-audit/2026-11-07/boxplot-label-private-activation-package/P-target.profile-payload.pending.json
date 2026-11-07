@@ -1,0 +1,117 @@
+{
+  "notAnAdmissibleReviewRecord": true,
+  "noReviewPerformedByPreparer": true,
+  "mechanicalPayloadOnly": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+    "goalFingerprint": "sha256:a439b7646cd75dbd7aaace4da710c25206ffb51dfa95fd755112200fd3000762",
+    "reviewInputFingerprint": "sha256:8a939c12677327682549ff175115be2f21b837b17932baa9aa19d60b37a63f56",
+    "profileFingerprint": "sha256:4e8ae302b4d3f2c1d58b51d12d4ed34fed024492372f7b9cc87e378685c3d1fb",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "profile": {
+      "archetype": "data",
+      "expectations": [
+        {
+          "id": "location-and-spread-are-distinct-comparison-dimensions",
+          "essentialUnderstandingDe": "Median und Quartile beschreiben Lage und zentrale Bereiche einer Verteilung; Quartilsabstand und Spannweite beschreiben unterschiedliche Aspekte der Streuung. Zwei Verteilungen können in einer Dimension übereinstimmen und sich in einer anderen deutlich unterscheiden.",
+          "essentialUnderstandingEn": "The median and quartiles describe location and central regions of a distribution; the interquartile range and range describe different aspects of spread. Two distributions can agree in one dimension and differ substantially in another.",
+          "observablePerformanceDe": "Die lernende Person liest oder verwendet bei zwei unbekannten Verteilungen die relevanten Kennwerte korrekt, vergleicht Lage, Streuung der mittleren Hälfte und Gesamtstreuung getrennt und belegt jede Aussage mit konkreten Zahlen oder Positionen aus den Boxplots.",
+          "observablePerformanceEn": "For two unfamiliar distributions, the learner reads or uses the relevant statistics correctly, compares location, spread of the middle half, and total spread separately, and supports every statement with concrete values or positions from the box plots."
+        },
+        {
+          "id": "comparison-judgement-depends-on-purpose-and-context",
+          "essentialUnderstandingDe": "Ob eine Verteilung im Kontext als günstiger, typischer oder verlässlicher beurteilt wird, hängt von der Fragestellung ab. Ein höherer Median, kleinerer Quartilsabstand oder kleinere Spannweite beantwortet jeweils eine andere Frage und darf nicht pauschal als „besser“ gelten.",
+          "essentialUnderstandingEn": "Whether a distribution is judged more favorable, typical, or reliable depends on the contextual question. A higher median, smaller interquartile range, or smaller range answers a different question in each case and must not be treated as automatically “better.”",
+          "observablePerformanceDe": "Die lernende Person formuliert zu einem vorgegebenen Sachziel eine differenzierte Vergleichsaussage, nennt die dafür entscheidenden Kennwerte, berücksichtigt gegenläufige Befunde und grenzt ihr Urteil auf den belegten Kontext ein.",
+          "observablePerformanceEn": "For a stated contextual purpose, the learner formulates a nuanced comparative statement, identifies the decisive statistics, accounts for conflicting evidence, and limits the judgement to the supported context."
+        },
+        {
+          "id": "summary-representations-limit-inference",
+          "essentialUnderstandingDe": "Ein Boxplot legt Minimum, Quartile, Median und Maximum fest, aber nicht alle Einzelwerte, Häufigkeiten, den arithmetischen Mittelwert oder die genaue Verteilungsform. Gleiche Boxplots beweisen daher nicht, dass zwei Rohdatensätze identisch sind.",
+          "essentialUnderstandingEn": "A box plot fixes the minimum, quartiles, median, and maximum but not every individual value, frequency, arithmetic mean, or exact distributional shape. Identical box plots therefore do not prove that two raw data sets are identical.",
+          "observablePerformanceDe": "Die lernende Person unterscheidet bei vorgelegten Vergleichsbehauptungen diejenigen, die aus den gegebenen Kenngrößen oder Boxplots folgen, von nicht ableitbaren Aussagen und begründet eine Zurückweisung durch die fehlende Information oder ein passendes Gegenbeispiel.",
+          "observablePerformanceEn": "For proposed comparative claims, the learner distinguishes those that follow from the supplied statistics or box plots from those that cannot be inferred and justifies rejection using the missing information or an appropriate counterexample."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "location-and-spread-are-distinct-comparison-dimensions",
+          "comparison-judgement-depends-on-purpose-and-context",
+          "summary-representations-limit-inference"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 3,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "comparison-pattern",
+          "textDe": "Gleiche Mediane mit verschiedener Streuung, verschiedene Mediane mit ähnlicher Streuung oder gegenläufige Quartilsabstände und Spannweiten",
+          "textEn": "Equal medians with different spread, different medians with similar spread, or conflicting interquartile ranges and ranges"
+        },
+        {
+          "id": "representation-source",
+          "textDe": "Zwei Boxplots, tabellarische Fünf-Punkte-Zusammenfassungen oder zusätzliche bekannte Kenngrößen",
+          "textEn": "Two box plots, tabulated five-number summaries, or additional known statistics"
+        },
+        {
+          "id": "contextual-purpose",
+          "textDe": "Typische Lage, Beständigkeit der mittleren Hälfte, gesamte Schwankungsbreite oder Risiko extremer Werte",
+          "textEn": "Typical level, consistency of the middle half, total variability, or risk of extreme values"
+        },
+        {
+          "id": "claim-status",
+          "textDe": "Direkt gestützte Aussage, nur eingeschränkt gestützte Bewertung oder aus der Zusammenfassung nicht ableitbare Behauptung",
+          "textEn": "Directly supported statement, qualified judgement, or claim not inferable from the summary"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "same-median-conflicting-spread",
+          "taskDemandDe": "Zwei Klassen haben folgende Fünf-Punkte-Zusammenfassungen ihrer Testergebnisse: A = (42, 58, 70, 82, 95), B = (40, 65, 70, 75, 98). Vergleiche typische Lage, mittlere und gesamte Streuung und formuliere ein begründetes Gesamturteil.",
+          "taskDemandEn": "Two classes have the following five-number summaries of their test scores: A = (42, 58, 70, 82, 95), B = (40, 65, 70, 75, 98). Compare typical location, central spread, and total spread and formulate a justified overall judgement.",
+          "expectedPerformanceDe": "Die lernende Person erkennt den gleichen Median 70, berechnet IQR(A) = 24 und IQR(B) = 10 sowie Spannweite(A) = 53 und Spannweite(B) = 58. Sie urteilt differenziert, dass Bs mittlere Hälfte enger liegt, während Bs gesamte Spannweite sogar etwas größer ist, und behauptet keine höhere Durchschnittsleistung.",
+          "expectedPerformanceEn": "The learner identifies the equal median of 70, calculates IQR(A) = 24 and IQR(B) = 10 and range(A) = 53 and range(B) = 58. The learner gives the nuanced judgement that B’s middle half is more concentrated while B’s total range is slightly larger and makes no claim of a higher mean score.",
+          "understandingFocusDe": "Gleiche Lage bei gegenläufigen Streuungsmaßen verhindert ein eindimensionales Vergleichsurteil.",
+          "understandingFocusEn": "Equal location with conflicting measures of spread prevents a one-dimensional comparative judgement."
+        },
+        {
+          "id": "delivery-time-purpose-sensitive-judgement",
+          "taskDemandDe": "Lieferdienst A hat (Minimum, Q1, Median, Q3, Maximum) = (2, 3, 4, 5, 9) Tage, Dienst B = (1, 4, 5, 6, 7) Tage. Beurteile getrennt typische Schnelligkeit, Streuung der mittleren Hälfte und gesamte Schwankung.",
+          "taskDemandEn": "Delivery service A has (minimum, Q1, median, Q3, maximum) = (2, 3, 4, 5, 9) days, while service B has (1, 4, 5, 6, 7) days. Judge typical speed, spread of the middle half, and total variability separately.",
+          "expectedPerformanceDe": "Die lernende Person nennt A wegen des niedrigeren Medians als typischerweise schneller, erkennt bei beiden IQR = 2 und berechnet Spannweite(A) = 7 gegenüber Spannweite(B) = 6. Sie erklärt, dass je nach Ziel typische Schnelligkeit für A, die etwas kleinere Gesamtspanne aber für B spricht.",
+          "expectedPerformanceEn": "The learner identifies A as typically faster because of its lower median, recognizes IQR = 2 for both, and calculates range(A) = 7 versus range(B) = 6. The learner explains that, depending on the purpose, typical speed favors A while the slightly smaller total range favors B.",
+          "understandingFocusDe": "Der Sachkontext zwingt dazu, „günstiger“ an ein benanntes Kriterium zu binden und gegenläufige Befunde offenzulegen.",
+          "understandingFocusEn": "The context requires “more favorable” to be tied to a named criterion and conflicting evidence to be made explicit."
+        },
+        {
+          "id": "identical-boxplots-different-raw-data",
+          "taskDemandDe": "Unter der Konvention, den Median bei ungerader Anzahl aus den Hälften auszuschließen, haben C = (0, 2, 4, 6, 8, 10, 12, 14, 16) und D = (0, 1, 5, 5, 8, 9, 11, 15, 16) denselben Boxplot. Prüfe die Behauptungen „Die Datensätze sind gleich“ und „Ihre Mittelwerte müssen gleich sein“.",
+          "taskDemandEn": "Under the convention of excluding the median from the two halves for an odd sample, C = (0, 2, 4, 6, 8, 10, 12, 14, 16) and D = (0, 1, 5, 5, 8, 9, 11, 15, 16) have the same box plot. Check the claims “The data sets are identical” and “Their means must be equal.”",
+          "expectedPerformanceDe": "Die lernende Person bestätigt für beide Minimum 0, Q1 = 3, Median 8, Q3 = 13 und Maximum 16, weist aber auf verschiedene Einzelwerte hin. Sie berechnet beispielhaft Mittelwert(C) = 8 und Mittelwert(D) = 70/9 und verwirft damit beide Behauptungen als nicht aus dem identischen Boxplot folgend.",
+          "expectedPerformanceEn": "The learner confirms minimum 0, Q1 = 3, median 8, Q3 = 13, and maximum 16 for both but points out different individual values. The learner calculates, for example, mean(C) = 8 and mean(D) = 70/9 and thus rejects both claims as not following from the identical box plots.",
+          "understandingFocusDe": "Das konkrete Gegenbeispiel zeigt positiv, welche Informationen die Fünf-Punkte-Zusammenfassung festlegt und welche sie offenlässt.",
+          "understandingFocusEn": "The concrete counterexample positively shows which information the five-number summary fixes and which information it leaves open."
+        }
+      ]
+    },
+    "reviewId": "canonical-math-boxplot-label-context-refresh-20261107-v1"
+  },
+  "requiredIndependentlyAuthoredFields": [
+    "reviewedAt",
+    "reviewer",
+    "reason",
+    "reviewRunIds",
+    "dissent"
+  ],
+  "requiredReasonScope": "Re-evaluate all three expectations and all three bilingual application cases against the unchanged current AB2/J7 goal, exact v2 image hash, unchanged source/requirements and fresh independent performance. Record actual checks and limitations. Keep AI candidate/E1/G1 and do not claim human approval."
+}

@@ -289,13 +289,18 @@ assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) =>
 for (const subject of [physics, biology]) assert.deepEqual(nonVisualizationIssues(subject), [],
   `${subject.subject}: the new V gate must not change existing non-V outcomes.`)
 const contextIndexBytes = readFileSync(resolve(repositoryRoot,
-  'contracts/goal-visualization-context/v1/qualified-context-index-economics17-2026-11-07.json'))
+  'contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json'))
 assert.equal(createHash('sha256').update(contextIndexBytes).digest('hex'),
-  '234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785',
+  '441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803',
   'The expected finite set is bound to its independently reviewed original-context index.')
 const contextIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(contextIndexBytes.toString('utf8'))
-assert.equal(contextIndex.rows.length, 74)
-assert.equal(new Set(contextIndex.rows.map(row => row.landscapeId + ':' + row.goalId)).size, 74)
+assert.equal(contextIndex.rows.length, 132)
+assert.equal(new Set(contextIndex.rows.map(row => row.landscapeId + ':' + row.goalId)).size, 132)
+assert.deepEqual(nonVisualizationIssues(mathematics), [], 'The real Boxplot V2/P1 integration must retain every current D/P/A/M result.')
+for (const count of [mathematics.gates.currentDescriptionResolutions, mathematics.gates.currentPositiveEvidenceProfiles,
+  mathematics.gates.currentSemanticAtomicityDecisions, mathematics.gates.currentMemoryReviewDecisions]) {
+  assert.equal(count, 807, 'The combined active Mathematics frame must retain all 807 current D/P/A/M results.')
+}
 for (const subject of report.subjects) {
   const expected = contextIndex.rows.filter(row => row.landscapeId === subject.landscapeId && subject.currentGoalIds.includes(row.goalId))
     .map(row => row.goalId).sort()
@@ -306,7 +311,7 @@ for (const subject of report.subjects) {
   assert.equal(subject.strictCompletionReady, false, 'Missing original-context evidence cannot grant M7.')
   assert.deepEqual(subject.visualizationValidation!.currentGoalIds, subject.currentGoalIds)
 }
-assert.equal(report.subjects.reduce((sum, subject) => sum + subject.gates.currentVisualizationQaRecords, 0), 74)
+assert.equal(report.subjects.reduce((sum, subject) => sum + subject.gates.currentVisualizationQaRecords, 0), 132)
 assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
 assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
 for (const subject of [mathematics, physics, biology, chemistry, economics]) {

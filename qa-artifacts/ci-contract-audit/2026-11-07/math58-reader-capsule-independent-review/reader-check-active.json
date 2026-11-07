@@ -1,0 +1,147 @@
+{
+  "mode": "active",
+  "cases": [
+    {
+      "name": "current62 original plus current supplement",
+      "ok": true,
+      "usable": true,
+      "supplementSha256": "768df673b2026a772eec18d605b43dd875f6b4638d046acca3cc557448d56139"
+    },
+    {
+      "name": "independent-ten original plus current supplement",
+      "ok": true,
+      "usable": true,
+      "supplementSha256": "768df673b2026a772eec18d605b43dd875f6b4638d046acca3cc557448d56139"
+    },
+    {
+      "name": "boxplot exact current bytes",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Current actual image bytes differ"
+      ]
+    },
+    {
+      "name": "missing-supplement",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must have required property 'currentSupplement', data must match \"then\" schema"
+      ]
+    },
+    {
+      "name": "foreign-owner",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "foreign-subject",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "wrong-math-format",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Math58 receipt leaves its finite original binding"
+      ]
+    },
+    {
+      "name": "original-time-relabelled-current",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Original decision/reviewer/time/reason differs"
+      ]
+    },
+    {
+      "name": "wrong-supplement-reference",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Math58 current supplement reference differs"
+      ]
+    },
+    {
+      "name": "duplicate-reviewProfile-property",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Duplicate JSON property: reviewProfile"
+      ]
+    },
+    {
+      "name": "wrong-current-goal-id",
+      "ok": false,
+      "status": "stale",
+      "issues": [
+        "Current goal/image context differs from the separately bound current review"
+      ]
+    },
+    {
+      "name": "wrong-current-EN-title",
+      "ok": false,
+      "status": "stale",
+      "issues": [
+        "Current goal/image context differs from the separately bound current review"
+      ]
+    },
+    {
+      "name": "wrong-current-demand",
+      "ok": false,
+      "status": "stale",
+      "issues": [
+        "Current goal/image context differs from the separately bound current review"
+      ]
+    },
+    {
+      "name": "wrong-new-PNG-hash",
+      "ok": false,
+      "status": "stale",
+      "issues": [
+        "Current goal/image context differs from the separately bound current review"
+      ]
+    },
+    {
+      "name": "old74 unchanged mathematik",
+      "ok": true,
+      "usable": true
+    },
+    {
+      "name": "old74 refuses new supplement mathematik",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must NOT be valid, data must match \"else\" schema"
+      ]
+    },
+    {
+      "name": "old74 unchanged wirtschaftswissenschaften",
+      "ok": true,
+      "usable": true
+    },
+    {
+      "name": "old74 refuses new supplement wirtschaftswissenschaften",
+      "ok": false,
+      "status": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must NOT be valid, data must match \"else\" schema"
+      ]
+    }
+  ],
+  "capabilityOrigins": {
+    "actual": true,
+    "spread": false,
+    "clone": false,
+    "prototype": false,
+    "foreignGoal": false,
+    "frozen": true
+  }
+}

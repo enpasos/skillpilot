@@ -76,7 +76,7 @@
     "test:positive-goal-evidence-candidates": "tsx scripts/testPositiveGoalEvidenceCandidateMaterializer.ts",
     "test:skill-graph-integrity": "tsx scripts/testSkillGraphIntegrity.ts",
     "test:source-identity-qa-metadata": "tsx scripts/testSourceIdentityQaMetadata.ts",
-    "test:deep-understanding-rollout": "python3 -B ../scripts/test_visualization_qualified_context_capsule_limits.py && npm run test:skill-graph-integrity && tsx scripts/testVisualizationContextMaturity.ts && tsx scripts/testPoliticsEconomicsMemoryEntries.ts && tsx scripts/testDeepUnderstandingRollout.ts",
+    "test:deep-understanding-rollout": "python3 -B ../scripts/test_visualization_qualified_context_capsule_limits.py && python3 -B ../scripts/test_visualization_qualified_context_capsule_math132_limits.py && npm run test:skill-graph-integrity && tsx scripts/testMath58ReviewedContexts.ts && tsx scripts/testVisualizationContextMaturity.ts && tsx scripts/testPoliticsEconomicsMemoryEntries.ts && tsx scripts/testDeepUnderstandingRollout.ts",
     "test:repository-source-availability": "tsx scripts/testRepositorySourceAvailability.ts",
     "test:source-extraction-inventory": "tsx scripts/testSourceExtractionInventory.ts",
     "test:goal-description-rollout-batch": "tsx scripts/testGoalDescriptionRolloutBatch.ts",

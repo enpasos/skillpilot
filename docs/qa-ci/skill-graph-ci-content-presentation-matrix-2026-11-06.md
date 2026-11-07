@@ -97,3 +97,18 @@ bleiben rot. Die vollständig begutachteten E25- und
 bleiben bis zur gesondert geprüften Angebots-/Vorbereitungsintegration Drafts.
 Diese technische Erweiterung belegt weiterhin keine allgemeine fachliche
 Richtigkeit oder Lernwirksamkeit.
+
+Die [Ownerpräzisierung vom 7. November](../dev/ci-graph-repairs/informatics-retained-contract-result-gap-2026-11-07.md)
+verlangt keine Erhaltung oder Übernahme bisheriger Informatikergebnisse.
+Die aktuelle technische Definitionsprüfung begründet daher keine Pflicht,
+überholte Informatikprüfungen oder deren alten Umfang beizubehalten. E25 und
+GK24 bleiben historische Materialentwürfe; ihr begutachteter Inhalt legt den
+aktuellen fachlichen Pflichtumfang nicht fest. Legitime Quellenbereinigung,
+passender aktueller Angebotsumfang und vollständige echte Prüfmaterialien
+werden gemeinsam an den bestehenden harten Gates geprüft.
+
+Die [aktive Math58-Integration](../dev/ci-graph-repairs/visualization-math58-active-integration-2026-11-07.md)
+erweitert den endlichen V-Nachweis auf 132 Kontexte und korrigiert einen echten
+Boxplotfehler mit neuen unabhängigen Bild- und P-Belegen. Die Aussagegrenzen
+dieser Matrix, die fachlichen Untergrenzen und offene Bestandsbefunde bleiben
+bestehen.
