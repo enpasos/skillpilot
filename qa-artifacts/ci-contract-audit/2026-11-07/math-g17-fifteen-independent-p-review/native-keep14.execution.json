@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--ro-bind",
+    "/dev/shm/math-g17-fifteen-jm976p3s/after.json",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/positiveGoalEvidenceReview.ts",
+    "--config=qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-independent-p-review/current-keep14.config.json",
+    "--mode=check"
+  ],
+  "exitCode": 1,
+  "elapsedSeconds": 0.5260238647460938,
+  "activeRootReadOnly": true,
+  "source15Sha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+  "scope": "14 current successor records only; no stale historical record altered; HOLD excluded; no full QA or V transport"
+}

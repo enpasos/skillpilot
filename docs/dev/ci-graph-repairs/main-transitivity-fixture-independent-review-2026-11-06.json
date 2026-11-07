@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "independent-read-review-no-holds-on-bounded-fixture-diff",
+  "reviewerAgent": "/root/normative_corpus",
+  "humanApproval": false,
+  "testFiles": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java",
+      "sha256": "5738e34a5e2ce9db608f2f0bf0e8be510841ad7341fca624ec325bad4194df25",
+      "testResult": {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest.xml",
+        "sha256": "75c540485304aa1d2b79697e4e1a3e707f1f708875f75a0d345b7b50dde8648d",
+        "suite": {
+          "name": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+          "tests": "95",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-11-06T14:34:08.179Z",
+          "hostname": "DESKTOP-T1D4NQE",
+          "time": "32.97"
+        }
+      }
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceReproTest.java",
+      "sha256": "ed12ebfd2e80ac1ea3b15a9a2d21020f4f18905cc430632eade7e48455863b17",
+      "testResult": {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceReproTest.xml",
+        "sha256": "9f65a2322465f6f40a7246d98b0aaa90bd9fd70d100b6321e267c6b6d871c6b4",
+        "suite": {
+          "name": "com.skillpilot.backend.service.LearnerServiceReproTest",
+          "tests": "11",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-11-06T14:34:41.153Z",
+          "hostname": "DESKTOP-T1D4NQE",
+          "time": "0.514"
+        }
+      }
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+      "sha256": "7395a5cd050bf4dd7bc08355a2307f68868a8ded795326ef65cb2149796a871e",
+      "testResult": {
+        "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "sha256": "ad4f697381d6a26c5e98d5278ca222f154defe0f5a67e7325b855e03e86c9f19",
+        "suite": {
+          "name": "com.skillpilot.backend.service.LearnerServiceTest",
+          "tests": "125",
+          "skipped": "0",
+          "failures": "0",
+          "errors": "0",
+          "timestamp": "2026-11-06T14:34:41.678Z",
+          "hostname": "DESKTOP-T1D4NQE",
+          "time": "136.262"
+        }
+      }
+    }
+  ],
+  "productionAndDefinitionsRead": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java",
+      "sha256": "b98ec7e33fc32132430796b9b0971be5c75725eda88e4896fa9c87ac4e6713cb"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/CanonicalPrerequisiteTestContext.java",
+      "sha256": "4a229bb0264d0e24cecbf6bb20bf0bcc5431bd9a382d39c5fe2a52b63d9305d7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    }
+  ],
+  "findings": [],
+  "reviewedClaims": [
+    {
+      "area": "qualified references and unknown support",
+      "decision": "pass",
+      "reason": "Positive fixture now actually defines EXTERNAL_REQ outside YEAR_11 and qualifies GoalA/GoalB with the owning CURR_1. Negative fixtures independently use wrong owner Subject or omit support. Both assert resolver MISSING_REFERENCE and empty simple/rich frontier, plus no mastery save/saveAll. The correction cannot silently turn unknown or wrongly owned references into permitted out-of-focus prerequisites."
+    },
+    {
+      "area": "full transitivity through mastered intermediate",
+      "decision": "pass",
+      "reason": "Repro uses Target→Prereq→DeepPrereq with all three explicitly inside E.2/GK focus. Stored Prereq leaves Target blocked and DeepPrereq available; only an additional explicit stored DeepPrereq opens Target. Both paths forbid repository mastery writes. This tests demand continuation, not implicit mastery."
+    },
+    {
+      "area": "cross-subject legacy projection",
+      "decision": "pass",
+      "reason": "The two physics fixtures no longer bypass deeper preparation with targetInitiallyAvailable=true. The shared helper first asserts blocked target while preserving projected predecessor mastery, then provides explicitly stored prerequisites, excludes the target and projected IDs from added stored prerequisites, and leaves migration positive assertions intact. This removes an outdated mastery-cut assumption, without granting target mastery."
+    },
+    {
+      "area": "real CREATE/READ prerequisite demand",
+      "decision": "pass",
+      "reason": "Current Math definitions are READcf4→CREATE3f4→CHOOSE8dd, and open assessment7337049a directly requiresREAD. The new READ-only case correctly does not waiveCREATE orCHOOSE, records no completion event, and exposesCHOOSE rather than blockedCREATE. No local-recognition or Unit contract is added."
+    },
+    {
+      "area": "daily quota with remaining learnable work",
+      "decision": "pass",
+      "reason": "The real fourth target0272c501 requiresorientation andCHOOSE. Its orientation is stored by setup. Four fixed plan targets over two days yieldquota2; explicitCREATE+READ give quota credit without fabricated events. After voluntaryCHOOSE completion, 0272 remains unmastered and present in the same public focus frontier, while activeGoal is null. Thus the stopping assertion is not vacuously explained by exhausted focus. Blocks/revision remain fixed and onlyCHOOSE has a new completion event."
+    }
+  ],
+  "localTestEvidence": {
+    "readExistingXmlOnly": true,
+    "newRunByReviewer": false,
+    "tests": 231,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "executionOwner": "/root/ci_runtime",
+    "remoteAcceptanceClaimed": false
+  },
+  "limits": [
+    "Bounded fixture diff review, not new production implementation or full application acceptance.",
+    "No new test run, no Gradle contention, no test or curriculum edits by this reviewer.",
+    "Fresh exact-head remote CI remains required separately."
+  ]
+}

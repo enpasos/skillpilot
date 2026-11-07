@@ -1,0 +1,1 @@
+import {readFileSync,readdirSync} from 'node:fs'; const names=readdirSync('data',{withFileTypes:true}).filter(e=>e.isFile()).map(e=>e.name).sort(); const inputs=names.map(name=>({name,bytes:readFileSync('data/'+name).length})); console.log(JSON.stringify({inputs}));

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "status": "actual-readonly-launcher-and-two-role-native-Node-read-authentication-PASS-unwired-no-AQA02-03-claim",
+  "completedAtActual": "2026-11-06T23:46:44.026912+00:00",
+  "frozenFirst13_29Boundary": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-read-authentication-first-boundary-2026-11-07.json",
+    "sha256": "07bc8b8455c085d4e3b5538ceb032a03cb5ac49555ddc1309741f57e4e05b5fd",
+    "bytes": 6864
+  },
+  "code": [
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "sha256": "cd22028516c342fe8492fd38aa4044fdb417948c2c3d53ac40234c73ea2c9a76",
+      "bytes": 30730
+    },
+    {
+      "path": "scripts/identity_qa_read_launcher.py",
+      "sha256": "c61b1784836d66b7b2b1d52ccc8d4a087aae04a6e4391f5edc1d945773c6d3b8",
+      "bytes": 6314
+    },
+    {
+      "path": "scripts/test_repository_read_trace.py",
+      "sha256": "fd98d06123832d3382a38809e50faf065ac91c514dc6f7d07c2f79ff60c9c8a0",
+      "bytes": 17597
+    },
+    {
+      "path": "scripts/test_repository_read_launcher.py",
+      "sha256": "603c38db31be2d9b482c7876274a3e93908f1b6794b5b28d77c606cc98d0e859",
+      "bytes": 11899
+    }
+  ],
+  "currentCRegression": {
+    "testsRun": 13,
+    "actualNativeRuns": 29,
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "execution": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-launcher-runtime-boundary/c-accepted/execution.json",
+      "sha256": "9e427ee09f7bf27a94f51d31b0afecfc83895bdba94a3099bd381b3eaf5099db",
+      "bytes": 643
+    },
+    "results": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-launcher-runtime-boundary/c-accepted/native-cases/native-runs.json",
+      "sha256": "a519008b7366885713ec0a7c5879abf08c157cbe8cf1d725b934eca709e7cba6",
+      "bytes": 72397
+    }
+  },
+  "currentNodeLauncherSuite": {
+    "testsRun": 4,
+    "actualNativeRuns": 11,
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "execution": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-launcher-runtime-boundary/node-accepted/execution.json",
+      "sha256": "567bbd380651369c61427a7ad346c79ce0191ff1c9bc28f8ab8bb31a0b632fd5",
+      "bytes": 651
+    },
+    "results": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-launcher-runtime-boundary/node-accepted/native-cases/native-runs.json",
+      "sha256": "c3d651545a9e494fa06e7704eb7d7badcea9892f7db15455b9ad0453224e7daa",
+      "bytes": 98181
+    },
+    "realHostEscapeNegativeRuns": 8
+  },
+  "launcherGuarantees": [
+    "A genuine actual-run object is minted only after real bwrap/strace execution; JSON verified=true is not accepted.",
+    "stdin is the self-opened actual /dev/null char1:3; stdout/stderr pipe-inodes are owned and captured by Popen.",
+    "The role/root/cwd, exact trace SHA, actual producer executable SHA, strace/bwrap SHAs and actual kernel/boot context remain bound.",
+    "Source slots are RO. Only the outside trace-evidence directory is writable; no hidden inverse graph or source overlay is introduced."
+  ],
+  "runtimeProvenance": {
+    "inventory": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-launcher-runtime-boundary/runtime-observation-inventory.json",
+      "sha256": "09770fc3ce9376fe7ce01715a6e3be8ac90e13e9ad5fce75acd8778e56a1d13b",
+      "bytes": 61014
+    },
+    "exactSixPaths": [
+      "/proc/self/cgroup",
+      "/proc/self/maps",
+      "/proc/self/exe",
+      "/proc/meminfo",
+      "/sys/fs/cgroup/non-systemd/memory.max",
+      "/sys/fs/cgroup/non-systemd/memory.high"
+    ],
+    "profileBinding": "Actual trace SHA, actual tool/kernel match, declared path occurrence and EBADF-probe occurrence are checked against the same factory-minted run.",
+    "selfPathBinding": "Actual /proc/<traced-thread-group>/cgroup/maps FD identity; exe readlink must equal the actual traced executable. No arbitrary PID or prefix accepted.",
+    "operations": "Only explicitly declared observed operations; missing path or operation fails. The two cgroup absence probes require actual ENOENT.",
+    "fdControl": "Precisely observed F_SETFD FD_CLOEXEC EBADF probes on unbound3..16 descriptors and traced own pipe/eventfd origins, not unclassified external byte inputs.",
+    "metadataOnlyAncestors": "Exact listed statx metadata operations; directory contents are not allowed and the actual /dev/shm enumeration counterexample fails.",
+    "immutableCurriculumBytesClaimed": false,
+    "osObservationPayloadShaClaimed": false
+  },
+  "additionalCounterexamples": [
+    "Actual hostfile, /proc/self/root hostfile, external alias and host-directory reads are performed by Node then rejected for both physical roles.",
+    "Wrong role, forged launch JSON, changed actual trace, runtime-without-launch, wrong producer SHA, wrong kernel, wrong runtime trace SHA, missing runtime path/operation are rejected as separate provenance mutations.",
+    "Unmeasured prefix, /proc/self/root, other PID maps and fake launcher construction reject."
+  ],
+  "capture19AndExistingPreparerUnchanged": {
+    "protectedFiles": [
+      {
+        "path": "scripts/identity_qa_private_capture.py",
+        "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+        "bytes": 21528
+      },
+      {
+        "path": "scripts/test_identity_qa_private_capture.py",
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+        "bytes": 7937
+      },
+      {
+        "path": "scripts/prepare_identity_qa_candidate.py",
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+        "bytes": 29635
+      },
+      {
+        "path": "scripts/test_prepare_identity_qa_candidate.py",
+        "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+        "bytes": 25904
+      },
+      {
+        "path": "scripts/verify_identity_qa_producer_reads.py",
+        "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729",
+        "bytes": 2190
+      }
+    ],
+    "exactExistingCiGlob": [
+      "scripts/test_identity_qa_private_capture.py",
+      "scripts/test_prepare_identity_qa_candidate.py"
+    ],
+    "protected19CountNotAltered": true
+  },
+  "stillRequiredBeforeProduction": [
+    "The genuine externally pinned SourceA verifier must execute in the upstream factory; lower-level FileBinding/ReadContract values do not certify the actual164/593/8584 production proof.",
+    "Verify actual prepared private-capture mount sources and dependency/tool bindings; these direct-file fixtures do not prove that physical integration.",
+    "Run genuine native TS/Deep/CQR producers and their real selected/discovered closure; tiny .mjs discovery is not those producers.",
+    "Provide reviewed environment-specific measured runtime and exact metadata profiles; no global exception for another Node/kernel/environment.",
+    "No claim of arbitrary-Linux-syscall security, general external-writer ABA protection, complete immutable OS state or confidential-host sandbox."
+  ],
+  "largeCaptureStarted": false,
+  "AQA02_03Complete": false,
+  "newReadySetCreated": false,
+  "runtimeOrLearnerActivationAllowed": false,
+  "canonicalQaPolicyStateOrVCodeChanged": false
+}

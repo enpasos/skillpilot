@@ -1,0 +1,628 @@
+{
+  "format": "source-a-complete-reader-namespace-analysis/v1",
+  "status": "implementation_contract_proposed_not_implemented_or_accepted",
+  "analysisStartedAtActualUtc": "2026-11-07 05:10:15 UTC",
+  "contractWrittenAtActualUtc": "2026-11-07T05:29:10.171373+00:00",
+  "scope": {
+    "task": "Enable authentic full native producer QA for the existing 164-rule identity projection without relaxing source/read boundaries",
+    "currentWork": "readonly inspection and small diagnostics; artifacts only",
+    "providerRejectedReaderPeerRerun": false,
+    "independentReaderPeerPass": false,
+    "unknownRuntimeOrSeedParametersAttested": false,
+    "sourceMigrationOrActiveQaWrites": false
+  },
+  "historicalEvidence": {
+    "sourceManifest": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07.json",
+    "basis": "feca58176fc2c1d86360c7d00d4bb0506c497335",
+    "catalogCount": 593,
+    "documentCount": 8601,
+    "mappingRules": 164,
+    "meaning": "historical verified source projection; not current AQA02, AQA03, native reader coupling or producer pass",
+    "recensusRequired": true
+  },
+  "currentSourcePins": {
+    "mathematics": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "politicsEconomics": "29d02016b7e31b5683b1d51196e21c68ab4a310b8a88aa1a09bd5f30d1ee2eef",
+    "informatics": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e"
+  },
+  "authorityOrder": [
+    {
+      "capability": "VerifiedSourcePair",
+      "requires": [
+        "external manifest digest and exact base",
+        "independent existing full Source-A verifier actually succeeds against six contract pins",
+        "complete original and projected payload bindings",
+        "exact existing 164-rule mapping and field restrictions independently replayed"
+      ],
+      "doesNotGrant": [
+        "original QA pass",
+        "candidate QA pass",
+        "read permission for unbound files",
+        "namespace fidelity"
+      ]
+    },
+    {
+      "capability": "CapturedExecutionInputs",
+      "requires": [
+        "VerifiedSourcePair",
+        "independent fixed-snapshot inventory and actual native selectors",
+        "captured full runtime/dependency trees and source/tool roles preserved",
+        "private inode and alias closure",
+        "current producer/config/output census"
+      ],
+      "doesNotGrant": [
+        "run success",
+        "source as tool recategorization",
+        "absence permission from arbitrary missing strings"
+      ]
+    },
+    {
+      "capability": "VerifiedEffectiveNamespace",
+      "requires": [
+        "CapturedExecutionInputs",
+        "complete synthetic skeleton and effective mount tree",
+        "actual child root and mount identities checked at tested pre-exec barrier",
+        "all source/dependency mounts RO except exact independent run outputs",
+        "private capture lease retained across run"
+      ],
+      "doesNotGrant": [
+        "untraced reads",
+        "run-generated output authenticity",
+        "uncontrolled host-writer tolerance"
+      ]
+    },
+    {
+      "capability": "AuthenticatedRun",
+      "requires": [
+        "VerifiedEffectiveNamespace",
+        "actual pinned executable, argv, cwd, env and fd start",
+        "all process/thread/FD/cwd transitions and syscalls accounted for",
+        "all read, discovery, optional lookup, write, runtime and IPC observations justified",
+        "all children terminated and all postconditions satisfied"
+      ],
+      "doesNotGrant": [
+        "semantic QA pass",
+        "old outputs as current",
+        "arbitrary subprocess capability inheritance"
+      ]
+    },
+    {
+      "capability": "OriginalQaEvidence",
+      "requires": [
+        "AuthenticatedRun for actual original native checks",
+        "existing strict original Deep/completeness gates unchanged",
+        "owner/evidence/schema bindings and actual results pass"
+      ],
+      "doesNotGrant": [
+        "whole candidate graph inverse substitution",
+        "pass for unrelated owner or QA kind"
+      ]
+    },
+    {
+      "capability": "CandidateQaReaderContext",
+      "requires": [
+        "VerifiedSourcePair",
+        "OriginalQaEvidence where native reader requires legacy evidence",
+        "actual original and candidate bytes tied to same role-specific run",
+        "only permitted legacy fingerprint/reference translation",
+        "all children receive independently checked context"
+      ],
+      "doesNotGrant": [
+        "semantic pass before native candidate checks",
+        "cross-role context",
+        "JSON receipt self-authorization"
+      ]
+    },
+    {
+      "capability": "CandidateQaResult",
+      "requires": [
+        "AuthenticatedRun of actual native candidate producers/readers",
+        "unchanged native scope and QA engines",
+        "current candidate graph and full payloads",
+        "actual output and semantic checks"
+      ],
+      "doesNotGrant": [
+        "activation",
+        "deployment",
+        "M6 or M7 or human acceptance beyond separately specified gates"
+      ]
+    }
+  ],
+  "proposedNamespace": {
+    "layout": "compact synthetic readonly root with explicit submounts; no host-root bind",
+    "physicalToVisibleMapping": "NamespaceInput separates captured physical identity, source logical identity and visible kernel path; no host Path.resolve as namespace authority",
+    "regions": [
+      {
+        "visible": [
+          "/",
+          "/qa",
+          "/qa/pair"
+        ],
+        "kind": "synthetic directory skeleton",
+        "mode": "RO",
+        "proof": "exact child names/types/mountpoints and kernel-visible membership through root"
+      },
+      {
+        "visible": [
+          "/qa/pair/original80",
+          "/qa/pair/projectedA80"
+        ],
+        "kind": "original and verified projected inputs",
+        "mode": "RO",
+        "proof": "complete selected real source/code/config/review/card/asset payloads and authored aliases"
+      },
+      {
+        "visible": [
+          "<role>/app/node_modules"
+        ],
+        "kind": "captured dependency tool tree",
+        "mode": "RO",
+        "proof": "full actual private dependency inventory, internal aliases, executable modes, hashes"
+      },
+      {
+        "visible": [
+          "/qa/toolchain",
+          "exact interpreter/library/config paths required by captured ELF/scripts"
+        ],
+        "kind": "runtime tool closure",
+        "mode": "RO",
+        "proof": "independent selected executable/loader/package closure; every read bound; no generic host prefix"
+      },
+      {
+        "visible": [
+          "/qa/home/<role>/<run>"
+        ],
+        "kind": "fresh home",
+        "mode": "RO initially; explicit run writer model if required",
+        "proof": "complete initial membership and exact HOME in launch environment"
+      },
+      {
+        "visible": [
+          "/run/qa/<role>/<producer>/<run>",
+          "/tmp",
+          "/dev/shm if natively required"
+        ],
+        "kind": "fresh run scratch",
+        "mode": "RW only under declared per-run capability",
+        "proof": "no initial foreign payloads, no source/tool inode sharing, complete writer and subsequent reader lineage"
+      },
+      {
+        "visible": [
+          "exact independently derived report paths"
+        ],
+        "kind": "run output slots",
+        "mode": "RW individual independent files; surrounding input parent RO",
+        "proof": "fresh unique inode, no source overlap or stale output, tracked operations and final quiescent seal"
+      },
+      {
+        "visible": [
+          "/proc",
+          "/dev",
+          "/sys only if actual captured profile requires it"
+        ],
+        "kind": "runtime observations",
+        "mode": "explicit kernel/device profile",
+        "proof": "known pseudo-files and process identity; no broad source/FD escape"
+      },
+      {
+        "visible": [],
+        "kind": "recorder/controller evidence",
+        "mode": "outside child namespace and producer RW paths",
+        "proof": "external complete trace, controller-owned channels, no producer rewrite"
+      }
+    ],
+    "wholePairAlternative": "A complete physical pair RO mount is permitted if every visible parent through root, overlay, alias and effective submount is independently described; current launcher already RO-binds pair but does not prove full root view",
+    "realAssetStrategy": "derive a complete view from private captured file inodes; hardlinks only inside audited pair and never to RW/run/host inodes; no empty asset or binary substitute",
+    "transportLinks": "generated absolute asset-text links need explicit visible target mapping or materialized real inode view; preserve Git-authored alias text and source resolution",
+    "gitView": "pin index, relevant config and exact needed object closure against fixed snapshot; capture objects privately and verify OID plus payload; bind any transport-only alternates config separately; never let old absolute host alternates authorize host repository or hooks",
+    "barrier": "test actual bwrap barrier ordering first; inspect actual child mountinfo/root identities after mount setup and before producer exec; held FDs and lock prevent namespace substitution within controlled private capture",
+    "mutableOutputCases": "direct write Filemount supported by current example CQR and duration generators; before full suite inspect every output operation; atomic rename needs native output-location option or specifically verified directory model, never pretend mounted file rename works"
+  },
+  "lookupFamilies": {
+    "node": {
+      "inputs": [
+        "captured Node executable hash and visible path",
+        "exact HOME, PATH, NODE_PATH and Node flags",
+        "verified entry/import/loader anchors and bound loaded modules",
+        "actual process and last successful exec"
+      ],
+      "algorithm": "derive ordinary node_modules candidates for every ancestor through / and exact global paths from the pinned Node algorithm; include nested module/package resolution inside captured dependency tree",
+      "authorization": [
+        "actual ENOENT and understood read-only metadata flags",
+        "correct process/cwd/dirfd locator",
+        "candidate from derived family before event classification",
+        "complete unchanged effective RO parent membership proving absent child",
+        "no overlap with required source/tool/output/discovery path"
+      ],
+      "nonClaim": "syscall trace does not prove JavaScript caller stack; capability is derived process-specific family, not invented callsite",
+      "optionalProfile": "--no-global-search-paths exists and diagnostic run succeeded, but is not silently selected; if chosen must be explicit identical tested launch profile for both roles"
+    },
+    "elf": {
+      "inputs": [
+        "PT_INTERP",
+        "transitive DT_NEEDED",
+        "RPATH and RUNPATH",
+        "loader cache/config/default paths",
+        "ABI and HWCAP variants",
+        "exact loader environment",
+        "native addon and dlopen requirements of captured toolchain"
+      ],
+      "algorithm": "derive loader candidate locators independently and bind every successful library byte to captured tools; all parents through root closed",
+      "failedOpen": "separate explicit read-only tool-loader rule; ordinary namespace-parent metadata rule does not authorize open payload misses",
+      "reject": [
+        "required library missing",
+        "source payload treated as optional library",
+        "EACCES or write operation accepted as absence",
+        "unknown host config or guessed miss-string allowlist"
+      ]
+    },
+    "discovery": {
+      "inputs": [
+        "fixed current snapshot inventory",
+        "native selectors and scope definitions",
+        "actual full getdents including completion"
+      ],
+      "proof": "returned membership equals independent selected view at actual visible mount; omitted subtree or truncated listing cannot pass",
+      "distinctFromAbsence": true
+    }
+  },
+  "runProtocol": [
+    "Select fixed source proof and pinned native command manifest; validate role and actual native selectors before mutable runtime exists.",
+    "Hold preparation lease; verify physical capture, private hardlink closure, source/projected hashes, aliases, directory inventories, tools and outputs do not overlap.",
+    "Build effective namespace and exact cleared environment; create fresh role/run HOME, scratch, output inodes and controlled recorder channels.",
+    "At empirically verified pre-exec barrier inspect actual mount namespace, child root and inode identities; no unproved mount plan receipts.",
+    "Start exact pinned executable/argv/cwd with no inherited readable source FDs except explicitly bound controller transport; trace full descendants.",
+    "Authenticate every event against source/tool bindings, finite lookup family, explicit runtime observations or run output/scratch provenance; record complete read/discovery/write/process coverage.",
+    "Wait for actual complete process tree and all writers to exit; reject unexpected exec, namespace change, socket/IPC ingress, source writes or unsupported operations.",
+    "Recheck input bytes, inodes, aliases, membership and lock; seal fresh outputs after quiescence; run readers in separate fully authenticated context when possible.",
+    "Only then evaluate unchanged native semantic checks and publish role/producer-specific result; source proof, namespace pass, read pass and semantic pass remain separate."
+  ],
+  "writeAndTransportContract": {
+    "currentGap": "read_trace rejects write-enabled opens; trace options do not capture full general write provenance; category output by itself proves nothing",
+    "requiredOperations": [
+      "open/openat/openat2 as used with mode and flags",
+      "write/writev/pwrite families as used",
+      "ftruncate/truncate",
+      "rename/link/unlink/mkdir/rmdir as allowed by explicit scratch/output grammar",
+      "mmap/mprotect/msync or equivalent handling for writable file-backed mappings",
+      "descriptor duplication/inheritance/close",
+      "all process/thread and controlled IPC lineage"
+    ],
+    "scope": "exact configured output files and fresh bounded scratch/home; never source files even if their location is temp",
+    "sealedReaderPreferred": true,
+    "sourceTransport": "temporary Source-A/review copies retain original source binding and actual copy bytes; close and seal before separate reader; no temporary-path tool classification",
+    "freshness": "no pre-existing report or shared cross-role cache can satisfy current-output obligation",
+    "completion": "process tree quiescent, all open writer handles accounted for, exact final output set and hash, independent QA checker actually reads sealed bytes"
+  },
+  "requiredTests": [
+    {
+      "id": "N01",
+      "kind": "native positive",
+      "case": "original and candidate real tiny TS producer with complete ordinary Node ancestor/global search through root",
+      "accept": "exit 0 plus complete launcher/namespace/read authentication both roles"
+    },
+    {
+      "id": "N02",
+      "kind": "native positive",
+      "case": "real nonempty UTF16 CSV plus nonempty asset forest and representative binary payload in both roles",
+      "accept": "exact actual bytes read through visible view; source hashes match independent bindings"
+    },
+    {
+      "id": "N03",
+      "kind": "native negative",
+      "case": "replace real source with empty stub, wrong bytes or missing expected directory member",
+      "accept": "prelaunch reject or actual run fails closed; never optional absence"
+    },
+    {
+      "id": "N04",
+      "kind": "native negative",
+      "case": "symlink swap, external alias, RO-to-RW inode alias, changed mount source or child overlay",
+      "accept": "namespace capability denied; controlled mutation probe catches actual discrepancy"
+    },
+    {
+      "id": "N05",
+      "kind": "native negative",
+      "case": "foreign node executable/argv/import anchor, old role trace, wrong cwd/dirfd",
+      "accept": "lookup capability denied"
+    },
+    {
+      "id": "N06",
+      "kind": "native negative",
+      "case": "EACCES, wrong flags, W_OK, readonly-open of missing required source or unexpected basename-only parent",
+      "accept": "never treated as dependency absence"
+    },
+    {
+      "id": "N07",
+      "kind": "native positive and negative",
+      "case": "captured ELF transitive libraries and known absent optional search candidates; then wrong library/hash or foreign loader config",
+      "accept": "first actual launch fully authenticated; changed required bytes/config rejected"
+    },
+    {
+      "id": "N08",
+      "kind": "native positive",
+      "case": "actual small report producer writes declared file; separate native checker reads newly sealed bytes",
+      "accept": "complete writer/reader lineage and output freshness proven"
+    },
+    {
+      "id": "N09",
+      "kind": "native negative",
+      "case": "old report presented as new, cross-role cache, output/source overlap, untracked write, surviving child or FD writer",
+      "accept": "output/run capability denied"
+    },
+    {
+      "id": "N10",
+      "kind": "native positive and negative",
+      "case": "actual required HOME/temp/child transport; unknown prefilled home, temp source mislabel, external socket input or executable scratch",
+      "accept": "only explicit current-run/source-linked transport accepted"
+    },
+    {
+      "id": "N11",
+      "kind": "native negative",
+      "case": "forged JSON receipt, mismatched Base/owner/role/manifest, modified review, missing child factory context",
+      "accept": "genuine factory denies without JSON self-authorization"
+    },
+    {
+      "id": "N12",
+      "kind": "native positive and negative",
+      "case": "actual Original Deep and candidate factory coupling; real original result error",
+      "accept": "valid evidence enables exact intended reader; real original semantic failure remains failed while diagnostic run still possible"
+    },
+    {
+      "id": "N13",
+      "kind": "native discovery negative",
+      "case": "truncate getdents, omit source subtree/selector, stale config list or missing projected goal",
+      "accept": "independent current snapshot/selector census fails"
+    },
+    {
+      "id": "N14",
+      "kind": "native full suite",
+      "case": "current fixed source pair; all actual D/P/A/M/V, projection, duration, CQR generate/check, floors and children",
+      "accept": "complete current selected source/namespace/read/output accounting plus real unchanged native results; no inherited historical pass"
+    }
+  ],
+  "implementationPackages": [
+    {
+      "id": 1,
+      "change": "general immutable NamespaceInput and complete source/asset/projection effective view",
+      "keep": "preparer, Capture19 and six dockets unchanged",
+      "tests": [
+        "N02",
+        "N03",
+        "N04"
+      ]
+    },
+    {
+      "id": 2,
+      "change": "closed synthetic launcher root, verified barrier, actual mount evidence and full Node/ELF search families",
+      "tests": [
+        "N01",
+        "N04",
+        "N05",
+        "N06",
+        "N07"
+      ]
+    },
+    {
+      "id": 3,
+      "change": "fresh output/HOME/scratch capabilities, write provenance and quiescent sealed-reader flow",
+      "tests": [
+        "N08",
+        "N09",
+        "N10"
+      ],
+      "combinedFirstAcceptance": "packages 1-3 together authenticate actual small producer and reader through full root; not another next-parent hold"
+    },
+    {
+      "id": 4,
+      "change": "Source-A transport capability independent of original QA; genuine OriginalQa and candidate legacy-reader factories; all child contexts explicit",
+      "tests": [
+        "N11",
+        "N12"
+      ]
+    },
+    {
+      "id": 5,
+      "change": "after code changes pin current commit, regenerate and independently verify Source-A using existing mapping and all six contracts; recensus actual sources/configs/outputs",
+      "tests": [
+        "N13"
+      ],
+      "noNewBijection": true
+    },
+    {
+      "id": 6,
+      "change": "run all real native producers and unchanged scope engine on current original/projected pair with full trace/output contracts",
+      "tests": [
+        "N14"
+      ],
+      "claimsSeparated": [
+        "source proof",
+        "discovery AQA02",
+        "read/tool ownership AQA03",
+        "native reader original/candidate coupling",
+        "namespace and runtime pass",
+        "output provenance",
+        "actual semantic producer results"
+      ]
+    }
+  ],
+  "codeAnchors": [
+    {
+      "path": "scripts/identity_qa_namespace_view.py",
+      "line": 41,
+      "sha256": "1d578894c20754d4199e2ab30adaf230fbedd947f5dc88c8f73abee3c8a1e349",
+      "existingPredicate": "NamespaceInput and dependency-only physical/visible separation",
+      "requiredChange": "generalize to full source and projection views; preserve independently verified logical bindings"
+    },
+    {
+      "path": "scripts/identity_qa_namespace_view.py",
+      "line": 111,
+      "sha256": "1d578894c20754d4199e2ab30adaf230fbedd947f5dc88c8f73abee3c8a1e349",
+      "existingPredicate": "dependency lookup checks actual visible FD path/type against captured source",
+      "requiredChange": "extend complete file/dir/alias overlay views and executable context"
+    },
+    {
+      "path": "scripts/identity_qa_namespace_parent.py",
+      "line": 42,
+      "sha256": "182ec47da9bc6429fecc1fee6ece0e67d03f36d2a4b15308ac411e82971e91f5",
+      "existingPredicate": "binary or nonempty source forests rejected",
+      "requiredChange": "replace refusal only when real complete independently verified source view exists; never empty stub"
+    },
+    {
+      "path": "scripts/identity_qa_namespace_parent.py",
+      "line": 133,
+      "sha256": "182ec47da9bc6429fecc1fee6ece0e67d03f36d2a4b15308ac411e82971e91f5",
+      "existingPredicate": "search family computed from bound entry",
+      "requiredChange": "derive all exact entry/import/module anchors, globals and ancestors through root"
+    },
+    {
+      "path": "scripts/identity_qa_namespace_parent.py",
+      "line": 166,
+      "sha256": "182ec47da9bc6429fecc1fee6ece0e67d03f36d2a4b15308ac411e82971e91f5",
+      "existingPredicate": "parent containment only roleRoot",
+      "requiredChange": "replace roleRoot-only scope with actual complete verified effective namespace parent graph"
+    },
+    {
+      "path": "scripts/identity_qa_read_launcher.py",
+      "line": 140,
+      "sha256": "06509775e263a5ab49b1d136dfc574dbcb2229e0d000b67a3eed7f59090bf132",
+      "existingPredicate": "external strace, bwrap, producer factory token",
+      "requiredChange": "retain true launch factory and expand closed synthetic layout/barrier/actual mount validation"
+    },
+    {
+      "path": "scripts/identity_qa_read_launcher.py",
+      "line": 205,
+      "sha256": "06509775e263a5ab49b1d136dfc574dbcb2229e0d000b67a3eed7f59090bf132",
+      "existingPredicate": "whole private pair already RO-bound",
+      "requiredChange": "RO pair is necessary but not sufficient; full visible view and ancestor root closure"
+    },
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "line": 22,
+      "sha256": "57a476f890f37292fb4ca4af39102900c0695916de22c7108570d68fa3a9a895",
+      "existingPredicate": "trace options capture reads/process/fs observations but not all writes",
+      "requiredChange": "add needed actual output/scratch writer provenance or reject unsupported patterns"
+    },
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "line": 80,
+      "sha256": "57a476f890f37292fb4ca4af39102900c0695916de22c7108570d68fa3a9a895",
+      "existingPredicate": "physical host Path.resolve and input hashes",
+      "requiredChange": "resolve visible namespace through authenticated effective view, not host resolution"
+    },
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "line": 344,
+      "sha256": "57a476f890f37292fb4ca4af39102900c0695916de22c7108570d68fa3a9a895",
+      "existingPredicate": "actual launch-bound authenticator and process/FD state",
+      "requiredChange": "add complete namespace and explicit source/output runtime classes without receipt-only trust"
+    },
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "line": 515,
+      "sha256": "57a476f890f37292fb4ca4af39102900c0695916de22c7108570d68fa3a9a895",
+      "existingPredicate": "all write-enabled opens rejected",
+      "requiredChange": "separate exact run-output/scratch write capability from immutable input reads"
+    },
+    {
+      "path": "scripts/identity_qa_tool_tree.py",
+      "line": 28,
+      "sha256": "fac7e9ca17f094491fc7e3f51872112ea267ee8bcab7337f8ceed83cacd37ccf",
+      "existingPredicate": "negative locator parser supports actual errno/flags/locator",
+      "requiredChange": "keep strict event interpretation; no generic unbound expected failures"
+    },
+    {
+      "path": "scripts/identity_qa_private_capture.py",
+      "line": 114,
+      "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+      "existingPredicate": "actual prepared source/alias/output/dependency checks",
+      "requiredChange": "reuse independent actual verification; do not let adapter claim larger source set"
+    },
+    {
+      "path": "scripts/identity_qa_private_capture.py",
+      "line": 374,
+      "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+      "existingPredicate": "actual private inode link counts",
+      "requiredChange": "include derived full view and forbid any links to RW/run/host inodes"
+    },
+    {
+      "path": "scripts/prepare_identity_qa_candidate.py",
+      "line": 107,
+      "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+      "existingPredicate": "generated absolute asset-text links",
+      "requiredChange": "preserve protected preparer; explicit derived namespace mapping/materialization closes links"
+    },
+    {
+      "path": "scripts/verify_identity_qa_source_context.py",
+      "line": 1,
+      "sha256": "9add02bb7f045477d4de3adaf668f5af4008da679f97a4683561db55afdeb082",
+      "existingPredicate": "actual six-pin source verifier and current kind ledger checks",
+      "requiredChange": "retain source proof role independent of semantic QA result; run verifier within explicitly controlled profile"
+    },
+    {
+      "path": "scripts/verify_identity_qa_producer_reads.py",
+      "line": 27,
+      "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729",
+      "existingPredicate": "legacy successful-open string inventory only",
+      "requiredChange": "replace as acceptance authority with complete actual launch/read/discovery authentication"
+    },
+    {
+      "path": "app/scripts/lib/sourceIdentityQaMetadata.ts",
+      "line": 151,
+      "sha256": "f9d7a8459343999fa58ae239cd860b3de236830f8dc59c8ad9776198cb9bfba9",
+      "existingPredicate": "own openat-only actual original Deep invocation",
+      "requiredChange": "use full controller/launch contract; preserve strict original Deep result gate"
+    },
+    {
+      "path": "app/scripts/lib/sourceIdentityQaReviewContext.ts",
+      "line": 48,
+      "sha256": "f298388a8c22b51dd8387bd5a97ad6dcbcb01293ec25f7008a507cb9cec46dea",
+      "existingPredicate": "real temporary source/review files under /dev/shm",
+      "requiredChange": "bound source-transport capability under fresh scratch; no false tool classification"
+    },
+    {
+      "path": "app/scripts/lib/sourceIdentityQaReviewContext.ts",
+      "line": 110,
+      "sha256": "f298388a8c22b51dd8387bd5a97ad6dcbcb01293ec25f7008a507cb9cec46dea",
+      "existingPredicate": "limited historical original fingerprint / typed reference boundary",
+      "requiredChange": "retain narrow mapping only; candidate graph and native scope/QA engine remain actual"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "line": 6433,
+      "sha256": "4342979a74b85e3aa2bce2e95a95e14f7c5a05fe83698076bd82b8c0182b5da6",
+      "existingPredicate": "native direct writeFileSync JSON/Markdown outputs",
+      "requiredChange": "independent file slots fit observed writes; full producer census still required"
+    },
+    {
+      "path": "app/scripts/generateGymnasiumDurationOfferings.ts",
+      "line": 332,
+      "sha256": "86ca96531dd41c5448d945f043eda8281d389ffec079bd2de29482e42baceeee",
+      "existingPredicate": "native direct writeFileSync generated source output",
+      "requiredChange": "independent output file slot with freshness; native checker must read actual sealed bytes"
+    }
+  ],
+  "performedEvidence": {
+    "files": [
+      "input-and-history-pins.json",
+      "historical-document-drift.json",
+      "readonly-probes.json",
+      "metadata-counterchecks.json",
+      "node-readelf.txt",
+      "bwrap-help.txt"
+    ],
+    "nodeDiagnosticRuns": 3,
+    "nodeDiagnosticExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "archiveVerifierExitCode": 0,
+    "syntheticNegativeLocatorMutations": 6,
+    "fullNamespaceAcceptance": false,
+    "fullProducerRun": false,
+    "currentSourceAVerifierPass": false,
+    "AQA02_03Pass": false,
+    "genuineReaderPeerPass": false
+  },
+  "handoff": "Implement packages 1-3 as the next concrete combined Sol task, then genuine reader coupling, current source proof and full native suite; no further owner permission is required by this authorized repair analysis."
+}

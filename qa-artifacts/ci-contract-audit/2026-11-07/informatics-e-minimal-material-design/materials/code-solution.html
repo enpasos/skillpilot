@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><title>AG-Buchung lokal</title></head>
+<body>
+  <label for="gruppen">Gruppengrößen</label>
+  <input id="gruppen" type="text" value="2,1">
+  <button id="buchen" type="button">Buchen</button>
+  <output id="antwort" aria-live="polite"></output>
+  <script type="module">
+    import { plan } from './code-solution.mjs';
+    document.querySelector("#buchen").addEventListener("click", () => {
+      const eingabe = document.querySelector("#gruppen").value;
+      document.querySelector("#antwort").textContent = plan.buche(eingabe);
+    });
+  </script>
+</body>
+</html>

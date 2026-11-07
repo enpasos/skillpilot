@@ -16,11 +16,13 @@
 ## Prompt
 
 ```text
-Use case: precise-object-edit, scientific-educational.
-Asset type: existing German mathematics learning-goal illustration, landscape PNG.
-Input image 1: edit target and exact style/layout reference.
-Primary request: correct only the specified mathematical defect. Keep the existing friendly, abstract comic illustration, pale calm opaque background, colors, readable German lettering, characters and composition. Do not redesign or add decorative content. No technical IDs, no watermark, no logos, no photorealism. Preserve every correct formula, number and label except where explicitly corrected below.
-Correct ONLY two comparison callout pointers; both boxplots and all numeric positions are already correct. The callout "B hat höheren Median" must point to the RED lower class-B median line at value 11, not to the BLUE upper class-A median at 10. Redirect its arrow accordingly. The callout "A ist kompakter" must identify the BLUE class-A box spanning Q1=7 to Q3=13: place a short double-headed measurement arrow above that BLUE box with endpoints aligned to 7 and 13, and move/connect the "A ist kompakter" callout to that measurement. Remove the current incorrect short measurement above the RED B right whisker from 17 to 20. Preserve the existing correct B-streut-stärker measurement from Q1=6 to Q3=17. Preserve the shared 0…20 axis and every box/whisker/median/value label: A=(4,7,10,13,16), B=(2,6,11,17,20). Do not alter their scales or redraw the boxplots.
+Use case: precise-object-edit
+Asset type: private raster educational annotation correction, second local edit.
+Input image 1 is the exact edit target.
+
+Change ONLY the bottom yellow speech callout with the exact text “B hat höheren Median” and its small pointer. In this version its top border touches the bottom of the red Q3 value “(17)”. Move this callout left into the empty bottom margin below the median, make its bubble a little shorter in height if necessary, and place its top strictly BELOW ALL red numeric labels. Leave a clear visible gap of at least 12 original-image pixels below the complete red “(11)”, “(6)” and “(17)”, with no border or pointer touching those characters. A useful approximate callout area is x=820..1220, y=892..932 on this 1678×937 canvas. Keep the exact wording and friendly yellow bubble styling. The pointer should be short and stop in empty space below/right of “(11)”, visibly associating the callout with that median, without touching the number. The text can become slightly smaller to fit, but remain fully readable at 360 pixels displayed width.
+
+Keep every other pixel region and all other contents unchanged: no graph or axis movement, no crop or canvas extension, no boxplot/data/geometry modification, no red/blue value or label movement, no new elements. Both distributions remain exactly A: min4,Q1=7,median10,Q3=13,max16 and B:min2,Q1=6,median11,Q3=17,max20. Keep the whole shared 0-to-20 axis with its integer ticks, cream background, existing blue/red palette, all other callouts, interval arrows, title, all other wording and approachable rounded comic-like typography. Make only this last annotation collision repair.
 ```
 
 ## Review-Notiz

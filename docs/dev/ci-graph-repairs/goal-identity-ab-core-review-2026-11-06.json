@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "status": "unwired-source-A-core-independent-review-pass-runtime-B-unavailable",
+  "runtimeActivationAllowed": false,
+  "productionExistingRuntimeFilesChangedByThisStage": false,
+  "files": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/CanonicalIdentityJson.java",
+      "sha256": "940fac30d454e88a7cbef92e4c10ff19229244da2664bc2016389e12dba1fa22"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityException.java",
+      "sha256": "511c982e47a67b003794efdb64bc0dd03956ab86b7bf31d6d428d1cefca8065e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java",
+      "sha256": "60f5c311aec3305a630b8aab734f84ebf24955367bfc4890be068b40e3c1e2b7"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityProofLoader.java",
+      "sha256": "054dc6a93948e54d9594d680c414cbffdcf215aaaa7dbcf38a146306664809bd"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityService.java",
+      "sha256": "8ba7767194246e76a4a2c9a8f094529218ecf27f796c9790cd6908d5a9392b92"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/IdentityProofSchemaValidator.java",
+      "sha256": "fb3c0dc1c2e2ea0adc8518f759ba2e240a85b89d92d1ae6b3901b65cee5bfd83"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java",
+      "sha256": "0d325aacf39f4e1762c0999e427581de62605f32cd6e2bb7401d9e062812c1e3"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java",
+      "sha256": "e1b7f1a118f542484ea4330e6e269fc44b878deaae8bbefe264399654d3701ba"
+    }
+  ],
+  "boundaries": [
+    "Exactly one shared source byte/inverse verification kernel.",
+    "Source A exposes only isolated candidate-QA canonical projection, verified source bytes and bound original/current review definitions.",
+    "No public Source A to RuntimeService transition; B loader rejects every receipt until real output/state/snapshot checks exist.",
+    "Source proof cannot certify old QA validity or resolve any existing stale review.",
+    "Trusted actual repository/package snapshot adapters and actual accepted A generation remain unimplemented/unaccepted here."
+  ],
+  "historical212Proposal": {
+    "path": "docs/dev/ci-graph-repairs/canonical-goal-id-format-2026-11-06.proposal.json",
+    "sha256": "7bd5d79e082284b8e676b59699b41844458f823181f96d1a3997c379785784c9",
+    "activation": "blocked and unchanged"
+  },
+  "initialPreparationTests": {
+    "command": "./gradlew test --offline --console=plain --tests com.skillpilot.backend.identity.GoalIdentityServiceTest -x processResources -x generateClaudePluginPublication",
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "tmp/ci-contract-goal-identity-ab.log",
+    "jdk": "tmp/amazon-corretto-25.0.2.10.1",
+    "gradleUserHome": "/tmp/skillpilot-plan-gradle-20261022",
+    "scope": "synthetic actual-byte/inverse fixtures with exact164/593 counts and real pinned six contract artifacts; no actual repo/package adapter, DI, learner-state or activation"
+  },
+  "tests": {
+    "command": "./gradlew test --offline --console=plain --tests com.skillpilot.backend.identity.GoalIdentityServiceTest -x processResources -x generateClaudePluginPublication",
+    "tests": 23,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "tmp/ci-contract-goal-identity-review-green.log",
+    "logSha256": "31df22c21b9e0f9cd5821ff7d06e02ca8d948d5db8c473f4900a9861e2ed5aa0",
+    "xml": "tmp/ci-contract-goal-identity-review-green.xml",
+    "xmlSha256": "f58f6b6b2220f4a86dbc52e847cdb60f8abb60dbabcc9aa9e58bdc9edf951fb5",
+    "jdk": "tmp/amazon-corretto-25.0.2.10.1",
+    "gradleUserHome": "/tmp/skillpilot-plan-gradle-20261022",
+    "scope": "Pure tests with exact164/593 synthetic original/current byte fixtures and real pinned six contract artifacts. No Spring startup, resource regeneration, actual repo/package adapter, DI, learner-state integration or activation."
+  },
+  "reviewRegressionEvidence": {
+    "red": {
+      "tests": 4,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "log": "tmp/ci-contract-goal-identity-review-red.log",
+      "logSha256": "5e59d23a537019c85f79f3e134d79fd051e67a94ca6fa5d1f25f376df446197c",
+      "xml": "tmp/ci-contract-goal-identity-review-red.xml",
+      "xmlSha256": "c61ff6e715751b6b4f62a6aeced04dc97788c01284c2cc38eb3c72db47ddc6d3"
+    },
+    "closedFindings": {
+      "IDREV-01": "The actual pinned manifest and registry schemas are fully enforced using the existing NetworkNT3 Draft2020-12 validator. Unknown root/nested fields, wrong types, registry shape and constants are checked. Nonlocal schema references, remote fetching and resource loaders are disabled.",
+      "IDREV-02": "Every adapter byte sequence is captured once per original/current/contract path, cloned immediately and reused for all validation and review/source projections. Tests reject an unverified first read and independently forbid all repeated path reads.",
+      "IDREV-03": "Owner and goal UUIDs use UUID-value equality while preserving the proof-bound original spelling; symbolic durable IDs stay exact. Includes alpha-hex owner cases and originalReviewDefinition access.",
+      "IDREV-04": "The verifier reconstructs the complete active and explicitly preserved string/key hits, actual owner endpoints and permitted document path/classification/handling. Omitted live requires, missing preserved inventories, omitted active catalog documents and false immutable classifications fail closed."
+    }
+  },
+  "independentReview": {
+    "reviewer": "OpenAI Codex Astra; independent technical AI review only",
+    "result": "pass-for-the-bounded-unwired-source-A-core",
+    "review": "docs/dev/ci-graph-repairs/canonical-identity-proof-independent-review-2026-11-06.md",
+    "reviewSha256": "2f1fd0637d7a57db835d3476ac140346565beb6cf3433b6ec106307f95bbfa08",
+    "method": "Independently compiled the frozen source and test files with javac in separate temporary classes, executed all23 test methods on fresh instances; no Gradle or existing compiled implementation reuse.",
+    "tests": 23,
+    "failures": 0,
+    "exitCode": 0,
+    "log": "tmp/canonical-identity-independent-green-replay.log",
+    "logSha256": "cba06d9128da884ee4a2d9eb2db8a62a97709a63edf3e6958c74a84eaf460b8b",
+    "runtimeActivationAllowed": false
+  },
+  "verificationLimits": [
+    "The23 passing tests include the4 former failures; counts are not additive.",
+    "The independently replayed real source A envelope is not an actual Java repository/package adapter acceptance. No real A capability was minted from current physical repository/package snapshots here.",
+    "The Python producer/kernel, both schemas, registry and canonical profile bytes were unchanged by these Java corrections; six source-A pins were independently rechecked by the reviewer.",
+    "No public Source A to RuntimeService transition exists. Runtime B still rejects every receipt because real operational-output, state and snapshot checks remain unimplemented.",
+    "No existing runtime service, persisted learner mastery/SRS/card state, curriculum ID or published/retained artifact is changed or activated by this stage."
+  ]
+}

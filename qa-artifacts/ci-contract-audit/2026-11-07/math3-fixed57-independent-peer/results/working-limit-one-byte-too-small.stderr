@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/visualization_qualified_context_capsule.py", line 83, in <module>
+    kernel.main()
+  File "/home/enpasos/projects/skillpilot/scripts/visualization_review_git_capsule.py", line 292, in main
+    build(args) if args.action == 'build' else materialize(args)
+                                               ^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/projects/skillpilot/scripts/visualization_review_git_capsule.py", line 207, in materialize
+    require(unique_working <= args.maximum_working_bytes and object_bytes <= args.maximum_object_bytes, 'Private component budget exceeded')
+  File "/home/enpasos/projects/skillpilot/scripts/visualization_review_git_capsule.py", line 19, in require
+    raise ValueError(message)
+ValueError: Private component budget exceeded

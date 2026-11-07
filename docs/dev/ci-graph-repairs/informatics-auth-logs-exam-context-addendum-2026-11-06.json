@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "INFO-AUTH-CONTEXT-01",
+  "status": "fresh-narrow-context-review-of-unapplied-prerequisite-hypothesis",
+  "reviewer": "independent Astra analysis; not human learner evidence",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "goals": 282
+  },
+  "candidateSourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+  "operation": {
+    "op": "replace",
+    "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "path": "/goals/114/requires",
+    "guardGoalId": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+    "guardGoalCanonicalSha256": "a17e0bed62eb9d7822a3ebd0ad038ec4e02ff6983145fe1e2b8760ea08cc90d0",
+    "guardRequiresBefore": [
+      "ace0c141-9e7c-546e-914f-64c24d42d85d"
+    ],
+    "value": [
+      "d848ceb9-cd73-5a13-9407-f3364764c223"
+    ]
+  },
+  "candidateWholeGoalSha256": "8c78297bd79e24358a2c8a1995721a6108f6eca2bbee982982be832401ab10e9",
+  "reviewedGoalBefore": {
+    "id": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+    "title": "Sicherheitsaspekte in Netzen reflektieren",
+    "titleEn": "Reflect on Security Aspects in Networks",
+    "description": "Die lernende Person kann Authentifizierung, Logfiles und Risiken bei Client-Server-Diensten erläutern.",
+    "descriptionEn": "The learner can explain authentication, log files, and risks in client-server services.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "ace0c141-9e7c-546e-914f-64c24d42d85d"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-informatics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "P2",
+        "P5"
+      ],
+      "guidingIdeas": [
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+        "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "1ad65ec2-69eb-493e-b7fd-fbe4c812c07a"
+      }
+    },
+    "type": "atomic"
+  },
+  "reviewedGoalAfter": {
+    "id": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+    "title": "Sicherheitsaspekte in Netzen reflektieren",
+    "titleEn": "Reflect on Security Aspects in Networks",
+    "description": "Die lernende Person kann Authentifizierung, Logfiles und Risiken bei Client-Server-Diensten erläutern.",
+    "descriptionEn": "The learner can explain authentication, log files, and risks in client-server services.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "d848ceb9-cd73-5a13-9407-f3364764c223"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-informatics",
+      "demandLevel": "AB3",
+      "processCompetencies": [
+        "P2",
+        "P5"
+      ],
+      "guidingIdeas": [
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+        "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "1ad65ec2-69eb-493e-b7fd-fbe4c812c07a"
+      }
+    },
+    "type": "atomic"
+  },
+  "originalReviewsUnchanged": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-e25-terminal-independent-review-2026-11-06.json",
+      "sha256": "c96302bb9a7934a9f84d0738f24f5d14e745f3ec757c4d29aa64cc5c055afdd7"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-independent-review-2026-11-06.json",
+      "sha256": "a99573c1d4f7a6f55381758cfb500d0623fd0ba70b2c1ce57f80609d3e09eba0"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-independent-content-review-2026-11-06.json",
+      "sha256": "5698e5acb3a7815aea1326d529ce5cce18fd0e3a5658774319c1c6fd8af70364"
+    }
+  ],
+  "materialsRead": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-e25-terminal-candidate-2026-11-06.exam-data.json",
+      "sha256": "23e4e9c34f051771de12aa32a8e459a983aabe27944ba4476237f103bf59c61e"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-e25-terminal-reference-2026-11-06/task.md",
+      "sha256": "8e6a37145eeebd600346af510f4145397fee40268269c14e700aaecb4785043c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-e25-terminal-reference-2026-11-06/solution.md",
+      "sha256": "a48dbef700f89f83e0b258b90347880e9f9815557126604cbea76dca5c9eaf04"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.exam-data.json",
+      "sha256": "6a99cf279e353aeba72ac841b2104d35c4086b37fb53e412477bf806e98b8899"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.task.md",
+      "sha256": "aac9fe49b71430fbb40abdeb85b5ede0c920bcc18001ec8cf3478a39810c5fa7"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.solution.md",
+      "sha256": "731212704993a78aaf1f76e7cc931c58670f720e543893a303fa39ca09d00b91"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.examData.json",
+      "sha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.task.md",
+      "sha256": "49a74c33ed2611e75a144884c5c199c3ffbad9733a67fabb65fa1ec5d1c56024"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.solution.md",
+      "sha256": "bf2830329eaadc588b5e96f2a8f98e21ef34af6224e5357026a0a121a31470ed"
+    }
+  ],
+  "cases": [
+    {
+      "assessment": "E25",
+      "decision": "compatible-with-the-narrower-preparation-in-this-unapplied-hypothesis",
+      "criterion": {
+        "id": "K18",
+        "points": 1,
+        "description": "K18 (A18/S18) – Dialog und Logs über Session/Queue korrekt korrelieren, Authentisierung von Absenderberechtigung unterscheiden, begründete Reaktion mit weiterer Klärung sowie Risiken des Klartextdiensts und der Logdaten erläutern. Ein Punkt nur bei insgesamt fachlich tragfähiger vollständiger zugeordneter Kompetenzleistung; bei fehlender oder wesentlich unvollständiger Leistung null Punkte."
+      },
+      "sourceContextDelta": "Only 6c4.requires changes from SMTP/POP3 mastery to the existing motivational introduction. Its identity, DE/EN competence, parents, scope and assessment coverage remain unchanged. Historical f95 draft source pins and the original independent review pins remain history; no hash is replaced.",
+      "materialRead": "Entire M2 SMTP dialogue, explicit AUTH PLAIN format explanation and five log lines; A03 protocol analysis; A18 authentication/log correlation; complete S18 and the separate one-point criterion.",
+      "judgment": "M2 makes the service events and logs observable. A18/S18 independently demand session/queue correlation, authentication versus sender permission, a justified response requiring further verification, cleartext and log-data risks, and limits of attack/identity/delivery inferences. This still covers the full unchanged 6c4 goal. SMTP analysis remains a separate A03 criterion in both exams. Sharing this material is no evidence for a universal SMTP prerequisite to learning authentication/log reflection.",
+      "bounds": "No new complete exam review or reference execution. E25 remains its own 25-result contract; GK24 remains its own unapplied draft. The changed whole-goal context needs this separate addendum and later integration guards, not rewriting either original review."
+    },
+    {
+      "assessment": "GK24",
+      "decision": "compatible-with-the-narrower-preparation-in-this-unapplied-hypothesis",
+      "criterion": {
+        "id": "G18",
+        "points": 1,
+        "description": "G18 (A18/S18) – Dialog und Logs über Session/Queue korrekt korrelieren, Authentisierung von Absenderberechtigung unterscheiden, begründete Reaktion mit weiterer Klärung sowie Risiken des Klartextdiensts und der Logdaten erläutern. Ein Punkt nur bei insgesamt fachlich tragfähiger vollständiger zugeordneter Kompetenzleistung; bei fehlender oder wesentlich unvollständiger Leistung null Punkte."
+      },
+      "sourceContextDelta": "Only 6c4.requires changes from SMTP/POP3 mastery to the existing motivational introduction. Its identity, DE/EN competence, parents, scope and assessment coverage remain unchanged. Historical f95 draft source pins and the original independent review pins remain history; no hash is replaced.",
+      "materialRead": "Entire M2 SMTP dialogue, explicit AUTH PLAIN format explanation and five log lines; A03 protocol analysis; A18 authentication/log correlation; complete S18 and the separate one-point criterion.",
+      "judgment": "M2 makes the service events and logs observable. A18/S18 independently demand session/queue correlation, authentication versus sender permission, a justified response requiring further verification, cleartext and log-data risks, and limits of attack/identity/delivery inferences. This still covers the full unchanged 6c4 goal. SMTP analysis remains a separate A03 criterion in both exams. Sharing this material is no evidence for a universal SMTP prerequisite to learning authentication/log reflection.",
+      "bounds": "No new complete exam review or reference execution. E25 remains its own 25-result contract; GK24 remains its own unapplied draft. The changed whole-goal context needs this separate addendum and later integration guards, not rewriting either original review."
+    },
+    {
+      "assessment": "Q4-19 candidate, C1/K09, consumer a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "decision": "no-new-content-hold-from-this-specific-preparation-change",
+      "materialRead": "Complete C1 browser/gateway/service/database topology, role check and firewall rules; all three V1/V2/V3 events; C1 task and complete K09 solution/rubric.",
+      "judgment": "The given component/connection boundary supports differentiating TLS, authentication/authorization and firewall protection with explicit limits. Prior completion of the entire SMTP/POP3 or IP/DNS/four-layer goal is not universally necessary. a933 still requires the full authentication/log-risk goal 6c4; its own definition and all 19 covered goal definitions remain byte/value unchanged.",
+      "bounds": "This is a narrow demand-context countercheck, not a second 19-goal content review or release. It does not approve the live generic Q4 exam or the Ampel task whose announced materials are still missing."
+    }
+  ],
+  "noApplication": true,
+  "noNewExecutionClaim": true,
+  "preservedOpenHolds": [
+    "Live generic E/Q4 materials remain incomplete and fail native CQR202. This preparation change does not repair tasks or coverage.",
+    "GK24 identity reservation, offered scope and minimum prerequisite integration remain separate; no new global mastery or scoped pass is authorized.",
+    "Existing ISA/Cache/875 and other G17 findings remain separate; this proposal does not use them as preparation witnesses."
+  ]
+}

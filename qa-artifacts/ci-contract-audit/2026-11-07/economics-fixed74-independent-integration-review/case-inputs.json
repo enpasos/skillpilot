@@ -1,0 +1,130 @@
+[
+  {
+    "id": "single74-over-working-rejected",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ]
+  },
+  {
+    "id": "duplicate-working-last-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-working-bytes",
+      "201326593"
+    ]
+  },
+  {
+    "id": "equals-working-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes=201326593"
+    ]
+  },
+  {
+    "id": "abbreviated-working-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-w",
+      "201326593"
+    ]
+  },
+  {
+    "id": "duplicate-selector-last-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ]
+  },
+  {
+    "id": "equals-selector-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256=234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ]
+  },
+  {
+    "id": "abbreviated-selector-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-s",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ]
+  }
+]

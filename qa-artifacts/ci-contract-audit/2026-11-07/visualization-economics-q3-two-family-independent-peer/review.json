@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-technical-component-peer-review",
+  "completedAt": "2026-11-07T01:15:56Z",
+  "reviewer": "OpenAI Codex /root/normative_corpus",
+  "decision": "no-hold-for-these-two-fixed-historical-reader-components",
+  "scope": "Full current core, full new Economics helper, full new test, closed schema, authenticated Git reader; one original KEEP and one corrected KEEP plus its preserved REJECT per family, all full texts and Trade original native inputs. No new image review.",
+  "codePins": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "45fce11f7708b61bdb4b0f80a08fea0a9d1a018d98b4d24b79ae10fe578c8393"
+    },
+    {
+      "path": "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts",
+      "sha256": "57494ea57cf8218d56fba7473e98291e9aea621c4e2b7172986829d01ace4ed4"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts",
+      "sha256": "6cf756ea10cbf2cce123aa61ce05036688765370fc3ebff3c5027fba5937939e"
+    },
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "f85271c0ef10543ecfbff5e50e7cfc30af7b847e3e91def4452a811d1f2941d1"
+    }
+  ],
+  "authorReceipt": {
+    "path": "docs/dev/ci-graph-repairs/visualization-economics-q3-two-family-reader-2026-11-07.json",
+    "sha256": "1213b2d72fe391fc5065a327cffb12ab6c947755b7f2287c8fb08f7656151766"
+  },
+  "rootReplayReceipt": {
+    "path": "docs/dev/ci-graph-repairs/visualization-economics-q3-root-followup-2026-11-07.json",
+    "sha256": "d3a5fa34fa0eceb6bdddd7f0cd5bee33eb6c01d313c755e78caff1d7e2da5d20"
+  },
+  "peerByteComparison": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-independent-peer/selected-chain-byte-comparison.json",
+    "sha256": "ccde4ea788737fa513ebc1da9a62ecd3bfd70af73cde2ac122e2d3d9efe21fa2",
+    "selectedPositiveChains": 4,
+    "preservedRejectChains": 2,
+    "distinctHistoricalArtifacts": 29
+  },
+  "findings": [
+    {
+      "id": "ECON-V-PEER-01",
+      "status": "pass",
+      "scope": "Owner and original authority",
+      "reason": "Both helpers fix the exact Economics namespace, canonical source path, original family directory and historical review commit. Core additionally binds ownerSource.commit to originalReview.commit, finds exactly one matching goal in the historical source and compares the normalized subject. Source text is never substituted for review text. The authenticated Git reader verifies raw commit/tree/blob OIDs and actual parent/path inclusion; the caller-supplied accepted commit remains an external trust decision.",
+      "anchors": [
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:4",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:33",
+        "app/scripts/goalVisualizationReviewedContext.ts:156",
+        "app/scripts/lib/authenticatedGitEvidence.ts:16"
+      ]
+    },
+    {
+      "id": "ECON-V-PEER-02",
+      "status": "pass",
+      "scope": "Actual original context and DE/EN boundary",
+      "reason": "Both receipt.originalInput references must equal the original review path/commit/hash. Embedded uses only the actually supplied full German title/description. Trade additionally loads the exact hash-bound original native metadata and whole-goal array at fixed paths, requires a unique goal, and compares all four DE/EN fields. No current ledger text or arbitrary JSON pointer supplies history. The asymmetric current comparison correctly checks only fields actually qualified: embedded does not assert an English review; Trade rejects changed English. Other fields of a whole goal are not thereby promised current or qualified.",
+      "anchors": [
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:37",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:87",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:110",
+        "app/scripts/goalVisualizationReviewedContext.ts:243"
+      ]
+    },
+    {
+      "id": "ECON-V-PEER-03",
+      "status": "pass",
+      "scope": "Reviewed image, actual inspection derivatives and current copies",
+      "reason": "Original PNG and derivative paths are fixed by family/goal/correction branch. The core hashes authenticated original image bytes against the original review context and captures local originals before interpretation. Both derivative files are Git/hash-authenticated; their PNG widths are checked. Trade additionally binds complete declared width/height for all three inspections. Current canonical and public image bytes must both equal the qualified original hash. The peer independently compared the four selected approved chains and both preserved REJECT image/derivative chains: 29 distinct historical artifacts match their bound commits; all eight current image copies match. No pixel/content review was repeated in this technical pass.",
+      "anchors": [
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:43",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:64",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:121",
+        "app/scripts/goalVisualizationReviewedContext.ts:252"
+      ]
+    },
+    {
+      "id": "ECON-V-PEER-04",
+      "status": "pass",
+      "scope": "Independent actor, original time and reason",
+      "reason": "The adapters require the concrete original positive decision, independent AI status, no human/generation approval claim, empty blocking/open findings and recorded actual inspections. Receipt decision, reviewer, full timestamp and reason must equal the original byte-bound fields exactly; qualification time never replaces review time. Selected embedded original timestamps are 2026-10-08T09:05:14.167475+00:00 and 09:11:01.654880+00:00; Trade originals are 10:31:41+00:00 and 10:36:28.055113+00:00. No date-only or missing-actor record is covered by this new reader.",
+      "anchors": [
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:39",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:51",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:96",
+        "app/scripts/goalVisualizationReviewedContext.ts:245"
+      ]
+    },
+    {
+      "id": "ECON-V-PEER-05",
+      "status": "pass",
+      "scope": "Genuine corrections preserve old REJECT decisions",
+      "reason": "For embedded fcf756f1, the actual old reject identifies the unwarranted universal cost/time ranking; the later positive review explicitly inspects the replacement of ranked piles by identical open questions, with unchanged full DE context and bound old/new asset hashes. For Trade 606c4050, the old reject concerns the actor-facing clipboard; the correction records the actual removal of legible personal words and closed original finding, with identical full DE/EN context and exact corrected asset. Helpers authenticate the prior REJECT receipt; Trade matches every old finding exactly once to its named corrected inspection. The native test also attempts all eight authentic rejected originals as positive counterclaims and expects denial. These are new later positive reviews, never an overwrite or reinterpretation of the old negative.",
+      "anchors": [
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:74",
+        "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts:132",
+        "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts:100"
+      ]
+    },
+    {
+      "id": "ECON-V-PEER-06",
+      "status": "pass-with-integration-boundary",
+      "scope": "Tests and technical capability",
+      "reason": "The entire test was read: its positives obtain actual current source fields and primary assets, not just receipt context; it separately covers DE/EN drift, wrong owner, invented time/reviewer, later commits, free pointers, eight preserved REJECTs, actual stale original text and five private read-only byte substitutions. The core returns a frozen opaque WeakSet-backed capability after all checks. Root has independently rerun 36 positives/35 controls, retained 18/26, namespace12 and B1/10; this peer did not rerun those commands. The bounded code/data reading and 29-artifact byte comparison are the peer evidence. External accepted index/commit selection, complete auxiliary-artifact capsule closure and actual Deep/floor consumer wiring remain separate requirements.",
+      "anchors": [
+        "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts:25",
+        "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts:50",
+        "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts:119",
+        "app/scripts/goalVisualizationReviewedContext.ts:258"
+      ]
+    }
+  ],
+  "boundaries": {
+    "consumerWiringReviewed": false,
+    "capsuleClosureReviewed": false,
+    "fullVisualizationOrM7Accepted": false,
+    "sourceAAccepted": false,
+    "newImageReviews": 0,
+    "sourceOrQaOrCodeWrites": 0,
+    "attackOrTraceScriptsCreated": 0,
+    "nativeTestCommandsRerunByThisPeer": 0,
+    "otherFamilyMembersAutomaticallyQualified": false
+  }
+}

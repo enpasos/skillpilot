@@ -165,7 +165,7 @@ final class ClaudeV1CompletionChoices {
         }
         result.put("choices", published(completion, language).stream().map(Choice::label).toList());
         result.put("instruction", "Use this backend completion statement without recalculating or turning implicit completion into mastery. "
-                + "A mastered goal no longer demands its own prerequisites; the backend marks non-assessment goals with no remaining demand as implicitly completed. "
+                + "Prerequisite paths remain complete through mastered intermediate goals; the backend marks non-assessment goals with no remaining demand as implicitly completed. "
                 + "A passed assessment is not required for implicit completion, and it does not certify prerequisite competence. "
                 + "Do not restore implicitly completed work as mandatory. "
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "

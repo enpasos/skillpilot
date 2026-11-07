@@ -1362,7 +1362,7 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("never infer an ancestor or construct an ID")
                 .contains("Mastery never propagates to prerequisites")
                 .contains("remaining work from the full committed Personal Curriculum")
-                .contains("a mastered goal no longer demands its own prerequisites")
+                .contains("prerequisite paths remain complete through mastered intermediate goals")
                 .contains("non-assessment goals with no remaining demand are implicitly completed")
                 .contains("Implicit completion changes no saved goal result")
                 .contains("not proof of prerequisite competence")

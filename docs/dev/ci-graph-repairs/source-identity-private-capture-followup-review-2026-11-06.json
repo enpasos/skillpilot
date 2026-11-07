@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-private-capture-followup-review",
+  "date": "2026-11-06",
+  "status": "original-three-holds-closed-one-declared-directory-alias-hold-reproduced",
+  "reviewer": "independent Astra subagent; actual code diff and separate local execution",
+  "contextCommit": "1745733804825b798e50b42e0349c84ec164b59a",
+  "historicalPeer": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-independent-review-2026-11-06.json",
+    "sha256": "e6be95356850b7fdb96d90f12c3484c9ddab40e276396dfee5f975ff21906c24",
+    "bytes": 17588
+  },
+  "historicalPeerMarkdown": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-independent-review-2026-11-06.md",
+    "sha256": "883c3b897bae47ac22392ba7c4f589d7b4e94c5e0a8cf3618eb673314f217957",
+    "bytes": 3231
+  },
+  "historicalBeforePacket": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/source-pins.json",
+    "sha256": "0e4dc900026d6ad6ec661943b7e505b40326074e7c488413eb97f52ea8b34271",
+    "bytes": 2548
+  },
+  "historicalAuthorReceipt": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/before/author-receipt.json",
+    "sha256": "369904414dd9971f8ee3da8ce10b0b38d0e4518cbb33b63d731371c73396693d",
+    "bytes": 6681
+  },
+  "reviewedCodeAndTestPins": [
+    {
+      "live": {
+        "path": "scripts/identity_qa_private_capture.py",
+        "sha256": "5eb29c2fdb25d0ecd73d2cc3457ce94d6234212e10ec1fee0791d696211f6b89",
+        "bytes": 19119
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/scripts/identity_qa_private_capture.py",
+        "sha256": "5eb29c2fdb25d0ecd73d2cc3457ce94d6234212e10ec1fee0791d696211f6b89",
+        "bytes": 19119
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/prepare_identity_qa_candidate.py",
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+        "bytes": 29635
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/scripts/prepare_identity_qa_candidate.py",
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+        "bytes": 29635
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/test_identity_qa_private_capture.py",
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+        "bytes": 7937
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/scripts/test_identity_qa_private_capture.py",
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+        "bytes": 7937
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/test_prepare_identity_qa_candidate.py",
+        "sha256": "71deeb0af960da490e52ddb732b988463e90dfa7068d987a9659e10cd7a4375e",
+        "bytes": 20780
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/scripts/test_prepare_identity_qa_candidate.py",
+        "sha256": "71deeb0af960da490e52ddb732b988463e90dfa7068d987a9659e10cd7a4375e",
+        "bytes": 20780
+      }
+    }
+  ],
+  "reviewedDiff": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/reviewed.diff",
+    "sha256": "620ec0326b27d080892ad31f4f29e41fc24cf94b0c774a8a93a22d738af20e00",
+    "bytes": 32034
+  },
+  "sixSourceAPinsUnchanged": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e",
+      "bytes": 7282
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388",
+      "bytes": 3802
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4",
+      "bytes": 15679
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e",
+      "bytes": 1715
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b",
+      "bytes": 9673
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+      "bytes": 35183
+    }
+  ],
+  "scope": {
+    "productionSourcesWritten": false,
+    "captureCodeWrittenByReviewer": false,
+    "canonicalOrQaRecordsWritten": false,
+    "largeCapturePerformed": false,
+    "fullSourceAAuthorityClaimed": false,
+    "fullOriginalQaExecuted": false,
+    "fullCandidateQaExecuted": false,
+    "ciPassClaimed": false,
+    "maturityClaimed": false,
+    "runtimeActivationAllowed": false,
+    "qaValidityClaimed": false
+  },
+  "actualIndependentExecution": {
+    "commands": [
+      {
+        "argv": [
+          "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+          "-B",
+          "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py"
+        ],
+        "exitCode": 0,
+        "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/original-probes-after.txt"
+      },
+      {
+        "argv": [
+          "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "scripts",
+          "-p",
+          "test_*identity_qa*.py",
+          "-v"
+        ],
+        "exitCode": 0,
+        "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/independent-17-tests.txt"
+      }
+    ],
+    "testCount": 17,
+    "failures": 0,
+    "skips": 0,
+    "testLog": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/independent-17-tests.txt",
+      "sha256": "8bf0aa427086a1e06e0b17634b121684ba16402f95ff8d274363698565a206b3",
+      "bytes": 4483
+    },
+    "originalFrozenCounterprobeHarness": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py",
+      "sha256": "df0ce7da920d83bd22fd5725318e060fb291fc7ed5bfa72faaa346ba5167da3c",
+      "bytes": 7861
+    },
+    "originalBeforeResults": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.json",
+      "sha256": "23027bfc451136dbd0666b96c794b37bd753b8414b0f17e0016de1413423e7fc",
+      "bytes": 3830
+    },
+    "newOwnAfterResults": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/original-probes-after.json",
+      "sha256": "e43e4fbe1e9d4427440db10c8f0dc5fab738bbabe63137166626f35db45afffa",
+      "bytes": 6694
+    },
+    "newOwnAfterLog": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/original-probes-after.txt",
+      "sha256": "6b1f5abba832a92c05958a417423c88084e972d463733d5e83e967111bb14d9c",
+      "bytes": 7863
+    },
+    "interpretation": "The original six-case peer harness was executed unchanged, using fresh probe-owned temporary Git trees and a fresh own outside-capture sentinel. No author replay is substituted for these observations. Tiny fixtures exercise the production materializer/launcher but are not full Source-A authority proofs."
+  },
+  "findings": [
+    {
+      "id": "CAP-PEER-01",
+      "status": "closed-for-original-reproductions",
+      "reason": "Format3 selectedFiles and projectedDocumentBindings bind distinct original and candidate expected bytes derived at preparation from authenticated inputs and the checked projection. verify_prepared_inputs runs before command dispatch and after subprocess completion. Both original peer mutations now exit1 before their command and retain the unchanged externally accepted receipt.",
+      "cases": [
+        "TEXT_SELECTED_INPUT_TAMPER",
+        "PROJECTED_GRAPH_TEXT_TAMPER"
+      ],
+      "anchors": [
+        "scripts/identity_qa_private_capture.py:77",
+        "scripts/identity_qa_private_capture.py:127",
+        "scripts/prepare_identity_qa_candidate.py:362",
+        "scripts/prepare_identity_qa_candidate.py:448",
+        "scripts/prepare_identity_qa_candidate.py:483"
+      ],
+      "limit": "Does not close the separate declared-directory-alias case CAP-PEER-04."
+    },
+    {
+      "id": "CAP-PEER-02",
+      "status": "closed-for-original-reproduction",
+      "reason": "The verifier now checks actual forest membership and the role-specific bytes reached by each mounted forest file, in addition to the private blob store. The original hardlink-replacement probe exits1 even while its blob store remains authentic.",
+      "cases": [
+        "GROUPED_ASSET_ENTRY_REPLACEMENT"
+      ],
+      "anchors": [
+        "scripts/identity_qa_private_capture.py:109",
+        "scripts/identity_qa_private_capture.py:134"
+      ]
+    },
+    {
+      "id": "CAP-PEER-03",
+      "status": "closed-for-original-reproduction",
+      "reason": "Output paths are checked before output/config-dependent materialization, reject absolute/parent/reserved/source collisions, and additional reports must be declared by a config read from pinned Git. The unchanged original absolute-path harness now raises ValueError Unsafe capture path; its own sentinel remains exactly DO NOT CHANGE. Declared output slots and destinations are checked within the private roots.",
+      "cases": [
+        "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE"
+      ],
+      "anchors": [
+        "scripts/identity_qa_private_capture.py:34",
+        "scripts/prepare_identity_qa_candidate.py:199",
+        "scripts/prepare_identity_qa_candidate.py:379"
+      ],
+      "limit": "This confirms the concrete repaired path boundary. It does not establish a general arbitrary command security sandbox or full producer read closure."
+    },
+    {
+      "id": "CAP-PEER-04",
+      "status": "hold-reproduced",
+      "severity": "high",
+      "summary": "A declared Git directory alias can be redirected after preparation; the launcher consumes the wrong input with every selected-file hash and the receipt unchanged.",
+      "anchors": [
+        "scripts/prepare_identity_qa_candidate.py:268",
+        "scripts/prepare_identity_qa_candidate.py:339",
+        "scripts/prepare_identity_qa_candidate.py:416",
+        "scripts/identity_qa_private_capture.py:77"
+      ],
+      "mechanism": "read_inventory plus resolve_snapshot_read records the logical alias and selects its canonical target file. materialize_directory_links creates the pinned alias in both roots. verify_prepared_inputs checks selected canonical file bytes, but never compares receipt.directorySymlinks with the physical aliases. Repointing cases/alias from real to other changes the producer read without changing either selected canonical file.",
+      "actualObservation": {
+        "kind": "actual-independent-declared-directory-alias-probe",
+        "boundary": "Tiny genuine Git snapshot, native materialize and bwrap launcher; not a full Source-A authority fixture.",
+        "sourceWritesPerformed": false,
+        "declaredAliases": [
+          {
+            "path": "cases/alias",
+            "target": "real",
+            "gitObjectId": "ac558a3e1bf44424bf2af97380ee201860ba8a58"
+          }
+        ],
+        "baseline": {
+          "exitCode": 0,
+          "stdout": "{\"review\":\"authentic-for-alias\"}\n",
+          "stderr": ""
+        },
+        "afterAliasReplacement": {
+          "exitCode": 0,
+          "stdout": "{\"review\":\"different-valid-input\"}\n",
+          "stderr": ""
+        },
+        "originalTarget": "real",
+        "replacementTarget": "other",
+        "receiptByteIdentical": true,
+        "allSelectedPhysicalInputsStillMatch": true
+      },
+      "harness": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py",
+        "sha256": "b7f5cd1677387ea4cfeefbba344d62a14ac6144d6a1eed58f6e82bddfe41baf1",
+        "bytes": 5015
+      },
+      "results": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-result.json",
+        "sha256": "d4c778e8287b3fe242b074bad6a2d8838be0d01fa76ba9a83d6340335b4327c9",
+        "bytes": 759
+      },
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-run.txt",
+        "sha256": "9ef01966287c162a878c6ea8f0af4fcff85432ed6f6d00ee61aefbd4a096e226",
+        "bytes": 1053
+      },
+      "minimalRepair": "Verify every declared directory alias in both root roles before and after command execution: safe unique logical path, actual symlink rather than an ordinary directory, exact bound link text and an internally resolved target consistent with the declared Git alias. Authenticate alias parent traversal as well. Preserve separately intentional forest text aliases. A fresh actual bwrap regression must show baseline success and reject both target replacement and symlink-to-directory replacement before command dispatch.",
+      "requiredLimits": "No Source-A schema/registry/kernel change; no broad prohibition on existing valid internal aliases; no new full-QA or activation capability."
+    }
+  ],
+  "retainedControls": {
+    "blobStoreMutation": "still rejected before command",
+    "hostWorktreeViaParentProc": "still denied with the probe-owned host sentinel; no actual private learner file used"
+  },
+  "remainingIntegrationBoundaries": [
+    "Capture integrity is distinct from full original/candidate native QA and its lane-specific read/identity adapters.",
+    "Successful absolute-path strace reads do not alone prove complete directory discovery, relative or file-descriptor read closure.",
+    "The launcher starts from a read-only host filesystem, masks the chosen worktree and uses private writable run state; it is not a general confidential-host sandbox.",
+    "Installed dependency bytes have an externally accepted content-tree pin plus the Git lock binding; this does not prove all host executables, libraries or environment inputs pinned.",
+    "Large private capture needs a separately measured current resource budget and exact snapshot/toolchain/input pins. No large capture was created in this review.",
+    "Historical 14-test and original peer records remain byte-identical. Their findings are superseded only for the specific independently rerun cases stated here."
+  ]
+}

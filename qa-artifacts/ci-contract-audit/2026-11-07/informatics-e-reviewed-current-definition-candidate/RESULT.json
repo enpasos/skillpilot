@@ -1,0 +1,114 @@
+{
+  "status": "PRIVATE_REVIEWABLE_CURRENT_DEFINITION_IMPLEMENTATION; WHOLE_INFORMATICS_REMAINS_RED; NO_ACTIVE_APPLICATION",
+  "source50Sha256": "50a26163a1934216727ee178f8b0d2740c2476f62482ce32911fecbf890654e8",
+  "activeSourceUnchangedSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+  "changedRepositoryFiles": 46,
+  "sourceMetadataOnlyVsSource85": 7,
+  "sourceStages": {
+    "source85": "85ed339482b57f9ea19661df76acce4403ca5b7b9b9727261c1fffb1796dd48b",
+    "releasedEOnly": "f4a4575998460d819f34eec5bf906291b339a731740c64e35fa9a19ed5ae3e23",
+    "draftDb4OnF4": "50a26163a1934216727ee178f8b0d2740c2476f62482ce32911fecbf890654e8"
+  },
+  "currentContract": {
+    "status": "pass",
+    "currentRows": 23,
+    "separateRetirements": 9,
+    "survivingDeclared": 5,
+    "survivingUnknown": 10,
+    "firstDefinitions": 8,
+    "callerRegistryOrSourceHashWhitelist": false,
+    "oldHistoryPinsUnchanged": true,
+    "all23DefinitionsRequiredAndChecked": true
+  },
+  "actualReadiness": [
+    {
+      "id": "CQR-204",
+      "status": "fail",
+      "metrics": {
+        "examDefinitions": 23,
+        "requiredExams": 23,
+        "checkedExams": 23,
+        "weakExamData": 8,
+        "discoveryIssues": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "fail",
+      "metrics": {
+        "examDefinitions": 23,
+        "requiredExams": 23,
+        "checkedExams": 23,
+        "weakExamData": 9,
+        "discoveryIssues": 0
+      }
+    }
+  ],
+  "dbKnownBadBodyRepair": {
+    "firstActualStatusOnlyFalsePassFound": true,
+    "fourBodyFingerprintsBound": true,
+    "draftReleaseReviewNoteVariantsEachIndividuallyBlocked": 4,
+    "actualCases": [
+      {
+        "mode": "draft",
+        "sourceSha256": "50a26163a1934216727ee178f8b0d2740c2476f62482ce32911fecbf890654e8",
+        "manifestStatus": "pass",
+        "consumerAccepted": false
+      },
+      {
+        "mode": "released",
+        "sourceSha256": "b22f9a715d213bc47405f34a888b6473b558da83a49f7b1dfc15ea9208bf8205",
+        "manifestStatus": "pass",
+        "consumerAccepted": false
+      },
+      {
+        "mode": "note-only",
+        "sourceSha256": "ecc48ad95cee342d7ecf83c8ff326a80f745979f39606a911347072482db82c3",
+        "manifestStatus": "pass",
+        "consumerAccepted": false
+      },
+      {
+        "mode": "released-and-note",
+        "sourceSha256": "d301d68f4254375616b26d74159364c49076e8f46528d4b7f3ab0796d915ab20",
+        "manifestStatus": "pass",
+        "consumerAccepted": false
+      }
+    ],
+    "threeActualEPositiveControlsReady": true,
+    "differentCompleteDbMaterialNotIdBanned": true,
+    "newMaterialStillNeedsExistingMeaningEvidence": true
+  },
+  "focusedChecks": {
+    "fullAssessmentSuiteExitCode": 0,
+    "historicalGroups": 20,
+    "heldViewCases": 25,
+    "currentRevisionGroups": 14,
+    "unknownTransitionNegatives": 30,
+    "staleInitialInventoryReviewPinNegatives": 5,
+    "duplicateOrOneSidedInitialPartitionNegatives": 2,
+    "nativeM6ControlM3SingleCoverageNegative": true,
+    "independentFloorCliForgeryRejected": true,
+    "currentActualConsumerAccepts": false
+  },
+  "unchangedConsumers": [
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "sha256": "32a07b6567acb8e0d4cf5bfba68e71c28735ccc594f4eb7b4870c50e803e4809"
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "733ceb636e01ccc19b6cd6bde122fb631b978b4009028b73b24f315aa876a2e2"
+    }
+  ],
+  "activeCodeAndCatalogDrift": [],
+  "gitDbProductionWrites": false,
+  "fullCqrOrSourceAProbes": false,
+  "independentImplementationReviewPending": true,
+  "remainingHolds": [
+    "8 actual CQR204 material errors:4 generic placeholders plus4 known missing ER/schema/SQL/algebra inputs.",
+    "9 actual CQR202 unready definitions:the same8 plus Own20draft.",
+    "Own20 compiled applicability/source/scope holds;10 ordinary E residual routes and other-state scope qualification.",
+    "Earlier source/cohort/DB/model questions and graph G17 remain; bounded native rule derivation is no full-CQR outcome.",
+    "Independent review of this exact code/source package before Root applies; no overall M6/M7 or host/human/production acceptance."
+  ]
+}

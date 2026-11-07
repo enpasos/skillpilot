@@ -1,0 +1,155 @@
+{
+  "isolatedInRam": true,
+  "sourceFilesMutated": false,
+  "cases": 19,
+  "results": [
+    {
+      "name": "RAM positive control",
+      "expected": "ok",
+      "actual": "ok",
+      "issues": []
+    },
+    {
+      "name": "current German description changed",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "current supplied English description changed",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "current originally supplied demand level changed",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "receipt byte digest changed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Context receipt byte hash differs"
+      ]
+    },
+    {
+      "name": "receipt self-nominates different original context",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "receipt self-nominates altered original hash",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original Git evidence hash differs"
+      ]
+    },
+    {
+      "name": "receipt uses a different original commit",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "receipt drops actually supplied bilingual context",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "receipt drops originally supplied demand level",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "receipt changes actual reviewer decision",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original decision/reviewer/time/reason differs"
+      ]
+    },
+    {
+      "name": "physical canonical asset bytes changed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current actual image bytes differ"
+      ]
+    },
+    {
+      "name": "physical public asset bytes changed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current actual image bytes differ"
+      ]
+    },
+    {
+      "name": "public role is not the declared primary URL",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current primary asset paths differ"
+      ]
+    },
+    {
+      "name": "duplicate JSON property",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Duplicate JSON property: schemaVersion"
+      ]
+    },
+    {
+      "name": "corrected DE-only original positive control",
+      "expected": "ok",
+      "actual": "ok",
+      "issues": []
+    },
+    {
+      "name": "receipt invents English review for DE-only correction",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "receipt invents demand review for DE-only correction",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "corrected receipt substitutes prior rejected image",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original Git evidence hash differs"
+      ]
+    }
+  ]
+}

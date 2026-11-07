@@ -1,0 +1,779 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "separate-one-array-semantic-proposal-no-application-second-review-pending",
+  "dataChangesApplied": false,
+  "humanApproval": false,
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "operation": {
+    "operationId": "INFO-DFS-FOUNDATION-01",
+    "stage": "semantic-preparation-correction",
+    "op": "replace",
+    "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "path": "/goals/161/requires",
+    "guardGoalId": "6d10ced5-0213-558c-9b65-db70ccb824b4",
+    "guardGoalCanonicalSha256": "e7b1469dda5320a333ccb253f28780345e369f7cbbc27aea4c0228eb51388cc7",
+    "guardRequiresBefore": [
+      "881edb2d-b0c9-5775-b2ba-3062f2e91f83"
+    ],
+    "value": [
+      "f0910b55-48a9-4f81-aed6-d15ac0446c70"
+    ]
+  },
+  "readContexts": [
+    {
+      "goal": {
+        "id": "6d10ced5-0213-558c-9b65-db70ccb824b4",
+        "title": "Kreis- und Brückenerkennung",
+        "titleEn": "Cycle and Bridge Detection",
+        "description": "Die lernende Person kann Kreise/Brücken in Graphen erkennen (DFS-Anwendungen).",
+        "descriptionEn": "The learner can detect cycles/bridges in graphs (DFS applications).",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "881edb2d-b0c9-5775-b2ba-3062f2e91f83"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "912269fd-78ab-4fc4-b26e-29e6c7fc1627"
+          }
+        },
+        "type": "atomic"
+      },
+      "parents": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "weight": 1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [
+            "7d4fe994-2325-5fa9-8718-491957da4eed",
+            "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+            "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+            "a8a53f33-ccce-5158-a810-c162113316b1",
+            "5ac3f762-2b2d-5414-9765-335962a3d2c1",
+            "c85e5d19-31e3-58d9-88f3-eae00a7af205",
+            "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
+            "6d10ced5-0213-558c-9b65-db70ccb824b4",
+            "35849012-1b9d-58dc-b5c9-e56912acbe96"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "a03634cc-3b19-4903-9241-d2a42aff88cd"
+            }
+          },
+          "type": "cluster"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+        "title": "Graphenalgorithmen anwenden",
+        "titleEn": "Apply Graph Algorithms",
+        "description": "Die lernende Person kann Tiefen-/Breitensuche sowie kürzeste Wege mit BFS beschreiben.",
+        "descriptionEn": "The learner can describe depth-first/breadth-first search as well as shortest paths with BFS.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "bb0173dc-5cda-50f6-ac10-6c439bbb2578"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "48dd78d1-2371-4868-a9bc-ecaab57ef4aa"
+          }
+        },
+        "type": "atomic"
+      },
+      "parents": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "weight": 1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [
+            "7d4fe994-2325-5fa9-8718-491957da4eed",
+            "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+            "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+            "a8a53f33-ccce-5158-a810-c162113316b1",
+            "5ac3f762-2b2d-5414-9765-335962a3d2c1",
+            "c85e5d19-31e3-58d9-88f3-eae00a7af205",
+            "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
+            "6d10ced5-0213-558c-9b65-db70ccb824b4",
+            "35849012-1b9d-58dc-b5c9-e56912acbe96"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "a03634cc-3b19-4903-9241-d2a42aff88cd"
+            }
+          },
+          "type": "cluster"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+        "title": "Graphbegriffe kennen",
+        "titleEn": "Know Graph Terms",
+        "description": "Die lernende Person kann Knoten, Kanten, Pfade sowie gerichtete und gewichtete Graphen erläutern.",
+        "descriptionEn": "The learner can explain nodes, edges, paths, as well as directed and weighted graphs.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "49ba66cf-accd-5938-a63e-f031bc786767"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "P2"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "62bec828-2f85-4672-8946-94f81607ab20"
+          }
+        },
+        "type": "atomic"
+      },
+      "parents": [
+        {
+          "id": "7d4fe994-2325-5fa9-8718-491957da4eed",
+          "title": "Graphbegriffe und vernetzte Strukturen",
+          "titleEn": "Graph Concepts and Networked Structures",
+          "description": "Cluster zu Graphbegriffen sowie zur Modellierung und Klassifikation vernetzter Strukturen.",
+          "descriptionEn": "Cluster for graph concepts and for modeling and classifying networked structures.",
+          "weight": 1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [
+            "f0910b55-48a9-4f81-aed6-d15ac0446c70",
+            "c9d20743-dfda-4425-ae40-8f51d9f0c72a"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "62bec828-2f85-4672-8946-94f81607ab20"
+            }
+          },
+          "type": "cluster"
+        }
+      ]
+    },
+    {
+      "goal": {
+        "id": "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+        "title": "Graphen modellieren",
+        "titleEn": "Model Graphs",
+        "description": "Die lernende Person kann Graphen mit Adjazenzlisten oder objektorientierten Strukturen darstellen.",
+        "descriptionEn": "The learner can represent graphs with adjacency lists or object-oriented structures.",
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "7d4fe994-2325-5fa9-8718-491957da4eed",
+          "49ba66cf-accd-5938-a63e-f031bc786767"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-informatics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "P2",
+            "P3",
+            "P4"
+          ],
+          "guidingIdeas": [
+            "I1",
+            "I3",
+            "I4"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+            "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "2363d9fd-eae3-4481-adcd-c9d66a14b47d"
+          }
+        },
+        "type": "atomic"
+      },
+      "parents": [
+        {
+          "id": "1d1d7b01-91e5-5436-8c40-a17361ec5d81",
+          "title": "Q1.5 Graphen (LK)",
+          "titleEn": "Q1.5 Graphs (Advanced Course)",
+          "description": "Graphen modellieren und Algorithmen anwenden.",
+          "descriptionEn": "Model graphs and apply algorithms.",
+          "weight": 1,
+          "tags": [
+            "LK"
+          ],
+          "contains": [
+            "7d4fe994-2325-5fa9-8718-491957da4eed",
+            "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+            "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+            "a8a53f33-ccce-5158-a810-c162113316b1",
+            "5ac3f762-2b2d-5414-9765-335962a3d2c1",
+            "c85e5d19-31e3-58d9-88f3-eae00a7af205",
+            "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
+            "6d10ced5-0213-558c-9b65-db70ccb824b4",
+            "35849012-1b9d-58dc-b5c9-e56912acbe96"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB2",
+            "processCompetencies": [
+              "P3",
+              "P4"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "a03634cc-3b19-4903-9241-d2a42aff88cd"
+            }
+          },
+          "type": "cluster"
+        }
+      ]
+    }
+  ],
+  "reason": "Die vorhandene AB2-Kompetenz verlangt Erkennen von Kreisen/Brücken als DFS-Anwendung. Die DFS-Verfahrensidee kann gerade innerhalb dieses Erwerbs anhand eines vorgegebenen Graphen aufgebaut werden. Knoten, Kanten und Pfade bilden die konkrete vorhandene Vorbereitung. Weder Breiten-/kürzeste-Wege-Suche noch Programmierung, Rekursion oder Adjazenzlisten-/OO-Implementierung werden vom unveränderten Zieltext als vorab beherrschte Leistungen gefordert.",
+  "learningVersusEvidence": "Die Voraussetzungskorrektur entfernt keine Anforderung aus dem Ergebnis des Ziels: Für dessen tatsächlichen Nachweis müssen Kreise und Brücken mit nachvollziehbarer DFS-Anwendung erkannt werden. Ein bloßes Benennen von Graphbegriffen besteht dieses Ziel nicht. Die BFS/DFS-Kompetenz881e behält ihre gesamte bisherige Bedeutung und ihren eigenen expliziten Nachweis.",
+  "manualAcquisitionExample": {
+    "status": "finite-review-illustration-not-authored-exam-release",
+    "vertices": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "edges": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "D"
+      ]
+    ],
+    "dfsVisitOrder": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "dfsTreeEdges": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "D"
+      ]
+    ],
+    "backEdgesToActiveAncestors": [
+      [
+        "C",
+        "A"
+      ]
+    ],
+    "cycle": [
+      "A",
+      "B",
+      "C",
+      "A"
+    ],
+    "bridgesVerifiedByEdgeRemoval": [
+      [
+        "C",
+        "D"
+      ]
+    ],
+    "explanation": "Die Lernperson verfolgt den jeweils noch unbesuchten Nachbarn mit einer gezeichneten Wegspur, kehrt bei ausgeschöpften Nachbarn zurück und erkennt C→A als Rückverbindung. A-B-C-A ist ein Kreis; C-D hat keine alternative Verbindung und ist eine Brücke. Diese DFS-Idee wird hier erarbeitet, nicht als vorhandener bestandener Kurs behauptet.",
+    "bfsRequired": false,
+    "programmingRequired": false,
+    "recursiveImplementationRequired": false,
+    "executedReferenceChecks": "One explicit iterative trace and all four edge-removal connectivity checks match these results; no general task-quality or learner-trial claim."
+  },
+  "catalogSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "1c7df87b8edae1874cc84ac8f200d90214d81bbdb6c8db4105393a755a3aec4e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+    }
+  ],
+  "graphHelper": {
+    "path": "/home/enpasos/projects/skillpilot/docs/dev/ci-graph-repairs/verify_german_minimality_review.py",
+    "sha256": "18a3fa5de10a12c4dee59477c4857cb7aee7d32088460850e62fb506e5578303"
+  },
+  "scenarios": [
+    {
+      "label": "standalone",
+      "inputCandidate": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+        "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+      },
+      "candidate": {
+        "path": "tmp/informatics-dfs-standalone-hypothesis.de.json",
+        "sha256": "18b16444a790df50b0350f430d3acc1909ba475023f2cdfb3cb60454df466624"
+      },
+      "globalGoalDeltas": [
+        {
+          "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:6d10ced5-0213-558c-9b65-db70ccb824b4",
+          "removed": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:7d4fe994-2325-5fa9-8718-491957da4eed",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:bb0173dc-5cda-50f6-ac10-6c439bbb2578"
+          ],
+          "added": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:f0910b55-48a9-4f81-aed6-d15ac0446c70"
+          ]
+        }
+      ],
+      "globalAtomicDeltas": [
+        {
+          "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:6d10ced5-0213-558c-9b65-db70ccb824b4",
+          "removed": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:c9d20743-dfda-4425-ae40-8f51d9f0c72a"
+          ],
+          "added": []
+        }
+      ],
+      "globalCyclicComponentsUnchanged": true,
+      "noOtherGoalPayloadChanged": true,
+      "q1DirectWholeSearchRequirementAndCoverageUnchanged": true
+    },
+    {
+      "label": "after-reviewed-twelve",
+      "inputCandidate": {
+        "path": "tmp/informatics-q4-foundation-combined/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "09872f757e032b94231cca5b02c251d2687943c49b482999a6a8d79ec37ff536"
+      },
+      "candidate": {
+        "path": "tmp/informatics-dfs-after-reviewed-twelve-hypothesis.de.json",
+        "sha256": "488ea66243b6f5e34a4c30b0ca4f78146e28ef05a7b9a4157b13679895e90592"
+      },
+      "globalGoalDeltas": [
+        {
+          "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:6d10ced5-0213-558c-9b65-db70ccb824b4",
+          "removed": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:7d4fe994-2325-5fa9-8718-491957da4eed",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:bb0173dc-5cda-50f6-ac10-6c439bbb2578"
+          ],
+          "added": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:f0910b55-48a9-4f81-aed6-d15ac0446c70"
+          ]
+        }
+      ],
+      "globalAtomicDeltas": [
+        {
+          "sourceKey": "7d51b38c-a149-5407-bddc-d2ce7878b020:6d10ced5-0213-558c-9b65-db70ccb824b4",
+          "removed": [
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:881edb2d-b0c9-5775-b2ba-3062f2e91f83",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+            "7d51b38c-a149-5407-bddc-d2ce7878b020:c9d20743-dfda-4425-ae40-8f51d9f0c72a"
+          ],
+          "added": []
+        }
+      ],
+      "globalCyclicComponentsUnchanged": true,
+      "noOtherGoalPayloadChanged": true,
+      "q1DirectWholeSearchRequirementAndCoverageUnchanged": true
+    }
+  ],
+  "boundaries": [
+    "Not mixed into the frozen12-operation candidate.",
+    "No new goal/unit, no shortened existing graph-search meaning, no Q1 direct search-edge removal and no coverage/mastery transfer.",
+    "The existing Graphbegriffe→E-Phase examination path remains a separate open legacy dependency.",
+    "After independent review, actual schema/graph/applicability/QA checks and Root composition/application remain required."
+  ]
+}

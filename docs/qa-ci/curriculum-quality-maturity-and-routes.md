@@ -10,9 +10,16 @@ Kompetenzen absichern. Diese zusätzliche Autorenpflicht verlangt ein
 unabhängiges Aufgaben-/Rubrikreview nach dem
 [korrigierten Abschlusskonzept](../concept/skill-graph/assessment-gated-completion.md).
 Transitive Minimalität und gültige lokale Abschlussverträge bleiben
-Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Bestehende
-Statusdateien und historische Reviewnachweise werden hier nicht neu bewertet
-oder umgeschrieben; die konkrete neue Prüfung wird erst geplant.
+Strukturbedingungen, keine Ersatzbelege für Aufgabenqualität. Historische
+Reviewnachweise werden dadurch nicht nachtraeglich umgedeutet.
+Die separate neue Pruefung der Anerkennungsvertraege bleibt offen.
+
+**Harte Strukturpruefung vom 6. November 2026:** `CQR-001` fuehrt die unten
+beschriebenen zehn deterministischen Graphpruefungen tatsaechlich aus.
+Fehlende, blockierte oder fehlgeschlagene Pruefungen verhindern einen hoeheren
+Meilenstein. Alte M6-/M7-Werte ersetzen diesen Nachweis nicht. Die zehn
+geschuetzten Fach-Untergrenzen bleiben bestehen; echte Bestandsfehler sind
+unter dem strengeren Vertrag zu beheben.
 
 Normative Implementierung:
 
@@ -235,7 +242,10 @@ Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle
 
 ### Scope-Reife
 
-Ein einzelner QA-Scope kann maximal `M3` erreichen.
+Ein einzelner QA-Scope kann maximal `M4` erreichen. Dies entspricht der
+folgenden Tabelle, der bisherigen Berechnung und der bereits geltenden
+Voraussetzung fuer Curriculum-`M5`; die fruehere Angabe `M3` war ein
+widerspruechlicher Dokumentationssatz.
 
 | Scope-Reife | Exakte Bedingung |
 | --- | --- |
@@ -254,7 +264,7 @@ Ein Curriculum kann `M0` bis `M7` erreichen.
 | `M0` | Mindestens eine Grundbedingung fehlt: `CQR-001` oder `CQR-002` ist nicht `pass`, oder die Source-Snapshot-Erfassung inklusive amtlicher HTTP(S)-Originalquellenlinks (`CQR-000`) ist noch nicht sauber. |
 | `M1` | Source-Snapshots sind lesbar, mit amtlichen HTTP(S)-Originalquellenlinks belegt, und ihre extrahierten Original-/Source-Ziele sind in Membership/Closure registriert; die Bundesland-View-Abdeckung (`CQR-003`) oder die GK/LK-Mapping-Konsistenz (`CQR-004`) ist aber noch nicht sauber. |
 | `M2` | Source-Ingestion, quellenbelegte Bundeslandabdeckung und GK/LK-Mapping-Konsistenz sind sauber. Routen-Scopes fehlen noch, oder mindestens ein QA-Scope besteht `CQR-101` noch nicht. |
-| `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig. |
+| `M3` | Bundeslandabdeckung ist sauber und alle QA-Scopes sind route-seitig sauber: `CQR-101`, `CQR-102` und `CQR-103` sind je Scope `pass`; mindestens ein Scope ist aber noch nicht exam-mode-faehig, oder die vollstaendige globale Assessment-Struktur-/Bereitschaftspruefung ist nicht bestanden. |
 | `M4` | Alle Routen-Scopes erreichen mindestens Scope-`M3`; mindestens ein Scope erreicht noch nicht Scope-`M4`, oder eine Kern-Review-Regel (`CQR-301`, `CQR-401`, `CQR-501`) ist noch offen. |
 | `M5` | Alle Routen-Scopes sind Scope-`M4` und zusaetzlich `CQR-301`, `CQR-401` und `CQR-501` sind `pass`. `M5` ist der schulgeeignete Kern-QS-Stand und wird nicht durch Memory-Card-Konfiguration verwässert. |
 | `M6` | `M5` ist erreicht und zusaetzlich ist `CQR-302` `pass`; fehlende oder offene Memory-Card-Review-Konfiguration zaehlt fuer `CQR-302` als offen und blockiert nur `M6`. |
@@ -324,30 +334,57 @@ Reifeziel:
 
 - Erster fachlicher Meilenstein `M1`.
 
-### `CQR-001` - Basic graph integrity
+### `CQR-001` - Strict graph integrity
 
 Ziel:
 
 > Die Landschaft ist als Graph technisch konsistent.
 
-Geprueft wird:
+Geprueft wird der vollstaendige kanonische Katalog. Fuer ein Curriculum gehoeren
+alle seine Ziele sowie die erforderliche Referenz- und Contains-Vorfahrenhuelle
+zum Pruefumfang. Eine nur zur Vererbung benoetigte fremde Vorfahrengruppe zieht
+keine unbeteiligten Geschwister in den Umfang. Lernendenfokus und
+Applicability-Filter verkuerzen diese Strukturpruefung nicht.
 
-- jede Ziel-ID ist eindeutig,
-- lokale `requires`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- lokale `contains`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- ein Ziel referenziert sich nicht selbst,
-- direkte `requires` bilden keinen Zyklus,
-- direkte `contains` bilden keinen Zyklus.
+Die zehn Pflichtpruefungen sind:
 
-Metriken:
+| Regel | Tatsaechliche Bedingung |
+| --- | --- |
+| `G01a` | Kanonische Goal-IDs und Referenzendpunkte haben UUID-Format. |
+| `G01b` | Die aufgeloesten kanonischen Identitaeten sind eindeutig; widerspruechliche Definitionen werden nicht willkuerlich ausgewaehlt. |
+| `G02` | Gewichte sind endlich und strikt positiv. |
+| `G05` | Referenzen existieren und sind eindeutig; qualifizierte Referenzen werden exakt aufgeloest. |
+| `G06` | Der Contains-Graph ist azyklisch. |
+| `G07` | Der direkte Requires-Graph ist azyklisch. |
+| `G15` | Auch geerbte Anforderungen sind azyklisch und erzeugen keine Selbstanforderung. |
+| `G42` | Die atomar normalisierte Voraussetzungsrelation ist azyklisch. |
+| `G16` | Eine direkte Anforderung wird nicht bereits von einem Contains-Vorfahren geerbt. |
+| `G17` | Nach Entfernen einer verfassten Kante und erneuter Berechnung der Vererbung bleibt kein alternativer effektiver Pfad zu derselben Voraussetzung. |
 
-- `goals`: Anzahl der Ziele in der Landschaft.
-- `localReferenceIssues`: Anzahl gefundener Integritaetsprobleme.
+`G17` verwendet die Goal-Knotenrelation aus Graph Definition §7.3;
+die atomare Normalisierung fuer `G42` ist eine getrennte Pruefung.
+Fehlende optionale `contains`-/`requires`-Felder bedeuten leere Mengen;
+ungueltige Feldtypen sind Fehler.
 
-Status:
+Der Status enthaelt den vollstaendigen `graphIntegrity`-Bericht mit
+Pruefmanifest, genauem Wurzelumfang, geprueften Goalkeys, Einzelbefunden und
+Zeugenpfaden. Zu den Metriken gehoeren `checkedGoals`, `checkedLandscapes`,
+`effectiveRequires`, `atomicRequires`, `localRedundancies` und
+`transitiveRedundancies`.
 
-- `pass`, wenn `localReferenceIssues = 0`.
-- `fail`, wenn mindestens ein Integritaetsproblem existiert.
+`pass` setzt einen nichtleeren richtigen Umfang, alle zehn tatsaechlich
+ausgefuehrten bestandenen Pruefungen und null Befunde voraus. Fehlende oder
+blockierte Pruefungen ergeben `fail`; ein alter nackter `CQR-001: pass`-Wert
+ist unzureichend. Die Reifegradberechnung prueft diesen Bericht vor allen
+hoeheren Stufen und ergibt andernfalls `M0`. Der Untergrenzenpruefer lehnt
+auch eine behauptete M6-/M7-Angabe ohne diesen Nachweis ab.
+
+Die Pruefer und ihre echten Negativfaelle laufen ueber
+`npm run test:deep-understanding-rollout` im bestehenden Curriculum-CI-Job.
+Der anschliessende Statuslauf und `check:curriculum-maturity-floors` verbinden
+den realen Bestand mit der unveraenderten Fehlerwirkung im CI-Job. Die
+[Einzelregelmatrix](skill-graph-ci-static-matrix-2026-11-06.md) trennt den
+alten Pruefstand vom Reparaturnachtrag.
 
 Reifeziel:
 
@@ -619,6 +656,122 @@ Interpretation:
 
 - Die Route endet nicht nur in einem inhaltlichen Ziel, sondern in einer pruefungsnahen Anwendungssituation.
 - Das ist die Dashboard-Abbildung des Motivationsknoten -> atomare Lernzielknoten -> selbststaendige Anwendung in Pruefungssituation.
+
+### `CQR-202` und `CQR-204` - Vollstaendiger Assessment-Pruefumfang
+
+Die lokale `CQR-202` prueft weiterhin die konkreten Aufgaben, Loesungen und
+Rubriken der vorhandenen Routenendpunkte. Die globale `CQR-202` verwendet
+denselben Pruefkern fuer die deduplizierte Vereinigung aus:
+
+- den konfigurierten terminalen Routenendpunkten einschliesslich vorhandener Dauermodellvarianten,
+- Pruefungen in rekursiven Contains-Zweigen mit `release.kind = offer` und `release.status = released`,
+- tatsaechlich gerenderten atomaren Pruefungs-Targets der eigenen authored Fachviews unter deren vorhandenen Jurisdiction-, Dauer- und Kursfiltern.
+
+Dafuer werden die vorhandenen Composition-, Projektions-, Render- und
+Filterfunktionen benutzt. Fremde Grundlagen werden im kanonischen Viewkatalog
+aufgeloest. Reine Overview-Rohunionen und `prerequisiteOnly`-Referenzen erzeugen
+keine zusaetzlichen Pruefungs-Targets. Fehlerhafte Discovery ist kein Pass.
+
+Die globale `CQR-204` bildet die vorhandene N19-Strukturpflicht ab: Jede
+erhaltene `examData`-Definition und jedes explizite oder durch Exam-/Assessment-
+Tags bezeichnete atomare Pruefungsgoal braucht Aufgabe, Loesung und Scoring.
+Auch eine nicht angebotene oder elternlose Definition wird geprueft. Derselbe
+Pruefkern erkennt die bereits bekannten Platzhalter; dies ist kein maschineller
+Nachweis allgemeiner fachlicher Inhaltstauglichkeit.
+
+Ein vollstaendiger, nicht angebotener Autorendraft kann die Strukturpruefung
+bestehen. Sein explizit blockierter `reviewStatus` bleibt eine Readinesssperre,
+sobald er in der verbindlichen Bereitschaftsmenge erscheint. Fehlendes
+`reviewStatus` bei Legacydaten behaelt seine bisherige Bedeutung. Eine freie
+Reviewnotiz oder Nichtangebot begruendet keine Retirement-Ausnahme.
+
+Beide globalen Resultate tragen Definitions-/Pflichtmengen und tatsaechlich
+gepruefte Identitaeten. Der eine gemeinsame reine Manifestvalidator vergleicht
+sie mit einer unabhaengig aus aktuellen Quellen und Views ermittelten
+Sollmenge. Er prueft alle fuenf nativen Zaehler und exakte
+`landscapeId:goalId`-Mitgliedschaft im Graphbericht; Owner werden nicht
+casegefaltet. Auch gemeinsam auf null gekuerzte Berichtsmengen und Zaehler
+ersetzen diesen externen Kontext nicht.
+
+`deriveCurriculumMaturity` verlangt je genau ein vollstaendiges, passendes und
+bestandenes Resultat. Der direkte geschuetzte Floorcollector verwendet
+denselben Validator und verlangt denselben unabhaengigen Kontext; sein CLI
+ermittelt ihn aus den aktuellen kanonischen Quellen und Fachviews erneut.
+Fehlende, duplizierte oder unvollstaendige Artefakte begrenzen die abgeleitete
+Curriculumreife auf hoechstens `M3` und koennen auch durch ein gespeichertes
+behauptetes `M6`/`M7` nicht am Floorchecker vorbeigelangen. Die bestehende
+vollstaendige Producer-Freshnesspruefung bleibt zusaetzlich erforderlich.
+Lokale `CQR-201` und `CQR-203` bleiben unveraendert. Insbesondere
+wird die lokale Release-/Coveragemetadatenpflicht nicht pauschal auf alte
+Legacydefinitionen erweitert. Fehlende Routenprofile bleiben unkonfiguriert;
+ein leerer globaler Bereitschaftsumfang erteilt ihnen keine `M6`-Freigabe.
+
+Alle normalen Curricula brauchen einen authentischen sourcegebundenen
+Materialkontext. Der bestehende native Discoveryweg ermittelt Definitions- und
+Requiredmengen; die gemeinsame konkrete Readinessfunktion berechnet daraus die
+echten Fehlermengen der unveraenderlich erfassten Quelle. `sourceMaterialContext`
+bindet fuer die anderen Faecher Sourcepfad/-hash/-owner, Scope-IDs,
+Discoveryfehler und aktuelle Viewbytes im bestehenden WeakMap-/Freeze-Kontext.
+Beide CQR-Berichte tragen das vollstaendige `sourceMaterialManifest`; der
+Verbraucher verlangt dessen exakte Uebereinstimmung mit dem frisch gelesenen
+Kontext und lehnt echte Material- oder Statusfehler auch bei einem veralteten
+positiven M6-Bericht ab. Fehlende Teile erhalten keine leeren Ersatzwerte.
+Ungecapturte veraenderbare Quellen begruenden keinen bestandenen Kontext.
+Gemeinsame Testfixtures verwenden deshalb dieselbe echte Capturefactory.
+
+Informatik behaelt seinen separat verifizierten Retained-Kontext einschliesslich
+Materialbindung; andere Faecher erhalten keine Informatik-Historienpruefung.
+Bestehende Legacy-Statussemantik, Requiredentdeckung und die Readinessfunktion
+bleiben unveraendert. Ein vollstaendiger unangebotener Draft begruendet weiterhin
+keine neue Releasepflicht. Der normale Gesamtproducer erzeugt die verpflichtenden
+Manifeste frisch; alte Berichte ohne diese Bindung gelten nicht als aktuelle
+unabhaengige Floor-Evidenz. Das ist keine Behauptung eines gesamten CI-Bypasses:
+Main-CI regeneriert ihre Berichte. Der unabhaengige Meilenstein-/Floorverbraucher
+muss dennoch eine inzwischen verletzte echte Quellanforderung selbst erkennen.
+
+Die konkrete Informatik-Autorenrevision `2026-11-07-current23` bindet im
+bestehenden Helper 23 aktuelle Pruefungsvertraege und prueft neun ausdruecklich
+retirierte historische Identitaeten getrennt auf Abwesenheit. Die alten
+24er-Quellbytes und ihr Inventory bleiben Audit; die 15 ueberlebenden eigenen
+Pruefungsbedeutungen und fuenf deklarierten Coverages bleiben unveraendert.
+Acht prospektive Definitionen erhalten feste Erstbindungen an archivierte
+Initialbytes, native Coverage und unabhaengige Belegpins. Die zehn abwesenden
+Coveragefelder bleiben UNKNOWN, auch bei den vier bekannten DB-Materialdrafts.
+
+Die neue Revision ist eine codeeigene endliche Bindung am kanonischen
+CapturedSourcepfad, kein JSON-Register und keine Allowlist heutiger Sourcehashes.
+Das Initialarchiv wird nicht aus spaeteren Kandidaten neu erzeugt. Die aktuelle
+Quelle wird weiterhin frisch erfasst und gegen ihre festen Pruefungsbedeutungen
+verglichen; Frame und vollstaendiger Manifestverbrauch binden aktuelle Viewbytes,
+Definitions-/Requiredmengen sowie Initial-/Reviewpins. Reintroduktion, zusaetzliche
+oder fehlende Pruefungsdefinition, breitere Coverage und geaenderte Aufgaben- oder
+Bestehensbedeutung bleiben Fehler. Historische Audit- und synthetische
+Testcaptures sind eigene vorhandene Frames, keine Umschaltung des produktiven
+Readers. Die drei E-Freigaben beseitigen keine anderen Material-, Scope-, Graph-
+oder Reifefehler. Vollstaendige Definitionenpruefung und Readinesspruefung laufen
+weiterhin getrennt und umfassen auch alle Drafts.
+
+Vier individuell belegte unvollstaendige DB-Materialkoerper werden zusaetzlich
+an ihrem stabilen Task-/Loesungs-/Scoringfingerprint erkannt. Ein Wechsel von
+`draft` zu `released` oder eine neue Reviewnotiz liefert keine fehlenden
+ER-/Schema-/SQL-/Algebra-Eingaben und hebt diesen konkreten Inhaltsfehler nicht
+auf. Diese endliche Gegenpruefung ist kein allgemeiner maschineller
+Textqualitaetsnachweis und kein pauschaler ID-Bann. Tatsaechlich repariertes
+Material braucht weiterhin die vorhandene explizite Bedeutungs-/Evidenzpruefung.
+
+Die bestehende konkrete Readinessfunktion liegt gemeinsam mit ihren unveraenderten
+Text-, Scoring-, Reviewstatus- und DB-Fingerprintpruefungen im Retained-Helper;
+der Producer importiert dieselbe Funktion. Der vertrauenswuerdige Kontext leitet
+`sourceMaterialFailures` selbst aus der eingefrorenen Capture ab: Strukturfehler
+ueber alle aktuellen Definitionen ohne Statuspflicht, Readinessfehler ueber die
+vollstaendige Requiredmenge mit Statuspflicht. Fehlende Definitionen sind Fehler.
+Diese beiden obligatorischen Mengen sind im WeakMap-/Freeze-Kontext, im Framehash
+und im vollstaendigen Manifest gebunden, das beide serialisierten Pruefberichte
+tragen. Der gemeinsame Verbraucher weist nichtleere echte Fehlermengen auch bei
+gefaelschten Nullfehlerberichten ab. Fehlende, erfundene oder stale Manifestteile
+erhalten keine leeren Ersatzlisten. Ein technischer Definitionsvertragspass bleibt
+von einem Materialpass getrennt; Maturityfunktion und Floor-CLI verwenden weiterhin
+denselben bestehenden Verbraucher und unveraenderte Reifegrenzen.
 
 ### `CQR-301` - Semantic atomicity review freshness
 

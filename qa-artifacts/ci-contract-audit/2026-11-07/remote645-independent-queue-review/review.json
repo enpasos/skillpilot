@@ -1,0 +1,23 @@
+{
+  "recordedAtActual": "2026-11-07T06:00:48.766209+00:00",
+  "kind": "root-independent-unapplied-candidate-review",
+  "command": [
+    "node",
+    "/dev/shm/root-remote645-scope-review/countercase.cjs"
+  ],
+  "observedTerminalExit": 0,
+  "candidateSourceSha256": "10556043ccca63e4849fa4445da34cac16d34a4d326889c86e03252ef33cda39",
+  "productionCallbackSha256": "7b7d55bb8777e11303b59fab530db8254f43c5010efe7020eeb03eaf399a99ee",
+  "actualBRefreshRequests": 0,
+  "requiredBRefreshRequests": 1,
+  "queuedBEventConsumed": true,
+  "scopeSequence": [
+    "A full refresh awaits actual deferred Promise",
+    "actual scope cleanup A to B",
+    "B full refresh event is queued",
+    "A resolves and consumes B queue before rejecting its own obsolete scope"
+  ],
+  "decision": "do-not-apply-initial-UI-candidate-until-current-scope-event-is-retained",
+  "countercaseScriptSha256": "1b45c1de96e52e3acdc740a2acd9619610fc7bbf4e722d28f6398945d94a9a47",
+  "limits": "Native extracted production callback and deferred native promises; lifecycle cleanup explicitly applied. This is not browser acceptance. Exact raw stdout was observed in tool output, not separately retained as a raw log."
+}

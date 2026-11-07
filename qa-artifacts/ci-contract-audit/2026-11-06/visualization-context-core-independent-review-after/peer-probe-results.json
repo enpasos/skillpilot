@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "scope": "Small private Git fixtures only; exact real review/asset bytes are reused for the positive control, and deliberate mutants do not create new reviews.",
+  "coreSha256": "94d728fa9deda18560c4a807111d92754004dd7b5f7bf32ede563336c8ec9d42",
+  "codePins": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "94d728fa9deda18560c4a807111d92754004dd7b5f7bf32ede563336c8ec9d42"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "20bec1526b71566c933577a7d3a045cbaeda68d4da32a397a74bbd6e32002c12"
+    }
+  ],
+  "originalExampleReceipt": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.json",
+    "sha256": "0e71bf78268fc442338c3e298b1df20e14783fcffb4b4d3e400c4195bcb336f1"
+  },
+  "results": [
+    {
+      "id": "VCTX-PEER-CONTROL",
+      "label": "Genuine original review and image bytes in an isolated committed fixture",
+      "expectedOk": true,
+      "actualOk": true,
+      "result": {
+        "ok": true,
+        "context": {
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+          "subject": "mathematik",
+          "title": "Grenzprozesse und Grenzmatrizen interpretieren (LK)",
+          "description": "Die lernende Person kann Grenzprozesse bei Potenzen von Übergangsmatrizen untersuchen, Grenzmatrizen interpretieren und ihre Bedeutung für stabile Langzeitentwicklungen erläutern.",
+          "assetSha256": "sha256:a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15",
+          "titleEn": "Interpret limiting processes and limiting matrices (advanced course)",
+          "descriptionEn": "The learner can analyze limiting processes of powers of transition matrices, interpret limiting matrices, and explain their meaning for stable long-term developments.",
+          "demandLevel": "AB3"
+        }
+      }
+    },
+    {
+      "id": "VCTX-PEER-01A",
+      "label": "An unrelated archived source copy must not supply the original review owner",
+      "expectedOk": false,
+      "actualOk": false,
+      "result": {
+        "ok": false,
+        "status": "invalid",
+        "issues": [
+          "Original owner/goal/subject association differs from the closed review profile"
+        ]
+      }
+    },
+    {
+      "id": "VCTX-PEER-01B",
+      "label": "A later canonical owner must not rewrite an earlier review association",
+      "expectedOk": false,
+      "actualOk": false,
+      "result": {
+        "ok": false,
+        "status": "invalid",
+        "issues": [
+          "Original owner/goal/subject association differs from the closed review profile"
+        ]
+      }
+    },
+    {
+      "id": "VCTX-PEER-02-CONTROL",
+      "label": "Changed original review is rejected without a replacement ref",
+      "expectedOk": false,
+      "actualOk": false,
+      "result": {
+        "ok": false,
+        "status": "invalid",
+        "issues": [
+          "Original Git evidence hash differs"
+        ]
+      }
+    },
+    {
+      "id": "VCTX-PEER-02",
+      "label": "A local replacement must not change the externally pinned accepted commit content",
+      "expectedOk": false,
+      "actualOk": false,
+      "result": {
+        "ok": false,
+        "status": "invalid",
+        "issues": [
+          "Original Git evidence hash differs"
+        ]
+      }
+    }
+  ],
+  "unexpectedAccepts": 0,
+  "activeSourceOrQaWrites": false,
+  "newReviewOrFullQaClaimed": false
+}

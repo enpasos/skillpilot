@@ -1,0 +1,1037 @@
+--- a/backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java
++++ b/backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java
+@@ -66,6 +66,12 @@
+         return rule == null ? id : rule.sourceGoalId();
+     }
+ 
++    boolean hasAlias(String reference) {
++        if (reference == null) return false;
++        int separator = reference.indexOf(':');
++        return alias(separator < 0 ? reference : reference.substring(separator + 1)) != null;
++    }
++
+     private Rename alias(String id) {
+         Rename found = aliases.get(id);
+         return found != null || !isUuid(id) ? found : aliases.get(id.toLowerCase(Locale.ROOT));
+--- a/backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityService.java
++++ b/backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityService.java
+@@ -27,8 +27,100 @@
+ 
+     public String canonicalGoalId(String reference) { return identities.canonicalGoalId(reference); }
+     public String storageGoalId(String reference) { return identities.storageGoalId(reference); }
++    public boolean isAliasReference(String reference) { return identities.hasAlias(reference); }
+     public SnapshotIdentity snapshot() { return snapshot; }
+     public String sourceProofSha256() { return sourceProofSha256; }
++
++    /** Only the finite alias set is translated; historical and unrelated keys remain byte-exact. */
++    public String canonicalReference(String reference) {
++        return identities.hasAlias(reference) ? canonicalGoalId(reference) : reference;
++    }
++
++    private GoalStateProjection stateProjection() {
++        return new GoalStateProjection(identities, snapshot, new com.fasterxml.jackson.databind.ObjectMapper());
++    }
++
++    public java.util.Map<String, com.skillpilot.backend.api.MasteryEntryDTO> projectMastery(
++            java.util.Map<String, com.skillpilot.backend.api.MasteryEntryDTO> original) {
++        var result = new java.util.LinkedHashMap<String, com.skillpilot.backend.api.MasteryEntryDTO>();
++        var aliases = new java.util.LinkedHashMap<String, com.skillpilot.backend.api.MasteryEntryDTO>();
++        original.forEach((key, value) -> {
++            if (identities.hasAlias(key)) aliases.put(key, value); else result.put(key, value);
++        });
++        result.putAll(stateProjection().mastery(aliases).canonical());
++        return java.util.Collections.unmodifiableMap(result);
++    }
++
++    /** Validate every alias group before choosing an actual observed storage key. Never rekey a row. */
++    public String masteryStorageKey(String reference, java.util.List<com.skillpilot.backend.domain.Mastery> rows) {
++        if (!identities.hasAlias(reference)) return reference;
++        var original = new java.util.LinkedHashMap<String, com.skillpilot.backend.api.MasteryEntryDTO>();
++        rows.forEach(row -> original.put(row.getGoalKey(),
++                new com.skillpilot.backend.api.MasteryEntryDTO(row.getValue(), row.getUpdatedAt())));
++        projectMastery(original);
++        String canonical = canonicalReference(reference);
++        var matches = rows.stream().filter(row -> canonical.equals(canonicalReference(row.getGoalKey()))).toList();
++        require(matches.size() <= 1, "Multiple alias persistkeys block writes pending explicit policy");
++        return matches.isEmpty() ? storageGoalId(reference) : matches.getFirst().getGoalKey();
++    }
++
++    public java.util.List<String> projectFocus(java.util.List<com.skillpilot.backend.domain.PlannedGoal> rows) {
++        var aliases = rows.stream().filter(row -> identities.hasAlias(row.getGoalId()))
++                .map(row -> new GoalStateProjection.Focus(row.getGoalId(), row.getCreatedAt())).toList();
++        stateProjection().focus(aliases); // Includes original capture times in duplicate/conflict validation.
++        return rows.stream().map(row -> canonicalReference(row.getGoalId())).distinct().toList();
++    }
++
++    public java.util.List<com.skillpilot.backend.api.LearnerLearningPlanApi.Block> projectBlocks(
++            java.util.List<com.skillpilot.backend.api.LearnerLearningPlanApi.Block> original) {
++        return original == null ? null : GoalStateProjection.typedBlocks(original, this::canonicalReference);
++    }
++
++    public com.skillpilot.backend.completion.CompletionWorkflowState projectWorkflow(
++            com.skillpilot.backend.completion.CompletionWorkflowState original) {
++        return original == null ? null : GoalStateProjection.navigation(
++                new GoalStateProjection.Navigation(null, null, 0, original), this::canonicalReference).workflow();
++    }
++
++    public record CompletionView(com.skillpilot.backend.domain.LearnerGoalCompletion original, String goalId) { }
++
++    public java.util.List<CompletionView> projectCompletions(
++            java.util.List<com.skillpilot.backend.domain.LearnerGoalCompletion> original) {
++        var aliases = original.stream().filter(row -> identities.hasAlias(row.getGoalId())).map(row ->
++                new GoalStateProjection.Completion(row.getId().toString(), row.getGoalId(), row.getCompletionDate(),
++                        row.getOccurredAt(), row.getMasteryValue(), row.isObservedTransition(), row.getPracticeEvidence())).toList();
++        var accepted = stateProjection().history(aliases).events().canonical().stream()
++                .map(GoalStateProjection.Completion::eventId).collect(java.util.stream.Collectors.toSet());
++        return original.stream().filter(row -> !identities.hasAlias(row.getGoalId()) || accepted.contains(row.getId().toString()))
++                .map(row -> new CompletionView(row, canonicalReference(row.getGoalId()))).toList();
++    }
++
++    public String completionStorageKey(String reference,
++            java.util.List<com.skillpilot.backend.domain.LearnerGoalCompletion> sameDayRows) {
++        if (!identities.hasAlias(reference)) return reference;
++        projectCompletions(sameDayRows);
++        String canonical = canonicalReference(reference);
++        var matches = sameDayRows.stream().filter(row -> canonical.equals(canonicalReference(row.getGoalId()))).toList();
++        require(matches.size() <= 1, "Multiple alias completion rows block writes pending explicit policy");
++        return matches.isEmpty() ? storageGoalId(reference) : matches.getFirst().getGoalId();
++    }
++
++    /** Invoked only after the caller has authenticated the original DTO. No SRS keys are renamed in PoWi-52. */
++    public com.skillpilot.backend.api.LearnerDataDTO projectAuthenticatedImport(
++            com.skillpilot.backend.api.LearnerDataDTO data, java.util.List<com.skillpilot.backend.domain.Mastery> existing) {
++        java.util.Map<String, com.skillpilot.backend.api.MasteryEntryDTO> mastery = null;
++        if (data.mastery() != null) {
++            mastery = new java.util.LinkedHashMap<>();
++            for (var entry : projectMastery(data.mastery()).entrySet())
++                mastery.put(masteryStorageKey(entry.getKey(), existing), entry.getValue());
++        }
++        var plans = data.learningPlans() == null ? null : data.learningPlans().stream().map(plan ->
++                new com.skillpilot.backend.api.LearnerLearningPlanApi.PortablePlan(
++                        plan.landscapeId(), plan.planLabel(), projectBlocks(plan.blocks()))).toList();
++        var focus = data.plannedGoals() == null ? null : data.plannedGoals().stream().map(this::canonicalReference).toList();
++        return new com.skillpilot.backend.api.LearnerDataDTO(data.learner(), mastery, focus,
++                data.copySources(), plans, data.srsData());
++    }
+ 
+     static boolean isUuid(String value) {
+         return value != null && value.matches("(?i)[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}");
+--- a/backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java
++++ b/backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java
+@@ -117,7 +117,7 @@
+ 
+     Pair<List<LearnerLearningPlanApi.Block>> blocks(List<LearnerLearningPlanApi.Block> original) {
+         require(original != null, "Missing plan blocks");
+-        return new Pair<>(blocks(original, identities::canonicalGoalId), blocks(original, identities::storageGoalId), snapshot);
++        return new Pair<>(typedBlocks(original, identities::canonicalGoalId), typedBlocks(original, identities::storageGoalId), snapshot);
+     }
+ 
+     ProjectedHistory history(List<Completion> original) {
+@@ -189,7 +189,7 @@
+         return new Pair<>(original.stream().map(identities::canonicalGoalId).toList(),
+                 original.stream().map(identities::storageGoalId).toList(), snapshot);
+     }
+-    private List<LearnerLearningPlanApi.Block> blocks(List<LearnerLearningPlanApi.Block> original, Function<String, String> translate) {
++    static List<LearnerLearningPlanApi.Block> typedBlocks(List<LearnerLearningPlanApi.Block> original, Function<String, String> translate) {
+         List<LearnerLearningPlanApi.Block> result = new ArrayList<>();
+         for (var block : original) {
+             require(block != null, "Invalid original plan block");
+@@ -199,7 +199,7 @@
+         }
+         return List.copyOf(result);
+     }
+-    private static Navigation navigation(Navigation original, Function<String, String> translate) {
++    static Navigation navigation(Navigation original, Function<String, String> translate) {
+         CompletionWorkflowState workflow = original.workflow();
+         if (workflow != null) {
+             var direct = workflow.directAssessment();
+--- a/backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java
++++ b/backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java
+@@ -100,6 +100,19 @@
+     private final ObjectMapper objectMapper;
+     private final GoalMappingService goalMappingService;
+     private final boolean packageBacked;
++    @org.springframework.beans.factory.annotation.Autowired(required = false)
++    private com.skillpilot.backend.identity.GoalIdentityService goalIdentityService;
++
++    public com.skillpilot.backend.identity.GoalIdentityService identityProjection() { return goalIdentityService; }
++
++    public String canonicalGoalReference(String reference) {
++        if (goalIdentityService == null) return reference;
++        String canonical = goalIdentityService.canonicalReference(reference);
++        if (goalIdentityService.isAliasReference(reference)
++                && !goalIdToLandscapeId.containsKey(canonical))
++            throw new com.skillpilot.backend.identity.GoalIdentityException("Alias target is absent from active graph");
++        return canonical;
++    }
+ 
+     private static final java.util.regex.Pattern FILENAME_PATTERN = java.util.regex.Pattern.compile(
+             "^([A-Z]{2})_([A-Z]{3})_([A-Z])_([A-Z0-9]+)_([A-Z0-9]+)(?:_([A-Z0-9]+))?\\.([a-z]{2})\\.json$");
+@@ -201,7 +214,7 @@
+ 
+     public String getLandscapeIdForGoal(String goalId) {
+         ensureFresh();
+-        return goalIdToLandscapeId.get(goalId);
++        return goalIdToLandscapeId.get(canonicalGoalReference(goalId));
+     }
+ 
+     public String resolveLandscapeIdForGoalIncludingArchived(String goalId) {
+@@ -234,14 +247,15 @@
+ 
+     public com.skillpilot.backend.landscape.LearningGoal getGoalDefinition(String goalId) {
+         ensureFresh();
+-        String landscapeId = goalIdToLandscapeId.get(goalId);
++        String canonicalGoalId = canonicalGoalReference(goalId);
++        String landscapeId = goalIdToLandscapeId.get(canonicalGoalId);
+         if (landscapeId == null)
+             return null;
+         SkillLandscape landscape = cachedById.get(landscapeId);
+         if (landscape == null || landscape.getGoals() == null)
+             return null;
+         return landscape.getGoals().stream()
+-                .filter(g -> g.getId().equals(goalId))
++                .filter(g -> g.getId().equals(canonicalGoalId))
+                 .findFirst()
+                 .orElse(null);
+     }
+--- a/backend/src/main/java/com/skillpilot/backend/service/LearnerGoalCompletionService.java
++++ b/backend/src/main/java/com/skillpilot/backend/service/LearnerGoalCompletionService.java
+@@ -17,6 +17,8 @@
+     private static final double COMPLETION_THRESHOLD = 0.9;
+     private static final ZoneId DAY_ZONE = ZoneId.of("Europe/Berlin");
+     private final LearnerGoalCompletionRepository repository;
++    @org.springframework.beans.factory.annotation.Autowired(required = false)
++    private com.skillpilot.backend.landscape.LandscapeService landscapeService;
+ 
+     public LearnerGoalCompletionService(LearnerGoalCompletionRepository repository) {
+         this.repository = repository;
+@@ -44,6 +46,10 @@
+                 && ("coach_learning".equals(practiceSource) || "verified_recall".equals(practiceSource));
+         if (!crossing && !practice) return;
+         LocalDate date = occurredAt.atZone(DAY_ZONE).toLocalDate();
++        var identity = landscapeService == null ? null : landscapeService.identityProjection();
++        if (identity != null) goalId = identity.completionStorageKey(goalId,
++                repository.findByLearner_SkillpilotIdAndCompletionDateOrderByOccurredAtAsc(
++                        lockedLearner.getSkillpilotId(), date));
+         LearnerGoalCompletion completion = repository.findByLearner_SkillpilotIdAndGoalIdAndCompletionDate(
+                 lockedLearner.getSkillpilotId(), goalId, date).orElse(null);
+         if (completion == null) {
+--- a/backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java
++++ b/backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java
+@@ -1261,8 +1261,9 @@
+         List<LearnerLearningPlanApi.Block> existingBlocks = existing
+                 .map(this::readBlocks)
+                 .orElseGet(List::of);
++        var identity = landscapeService.identityProjection();
+         List<LearnerLearningPlanApi.Block> normalizedBlocks = normalizeBlocks(
+-                requestedBlocks,
++                identity == null ? requestedBlocks : identity.projectBlocks(requestedBlocks),
+                 scope,
+                 capturedAtomicIds(existingBlocks),
+                 false);
+@@ -2433,7 +2434,8 @@
+             List<LearnerLearningPlanApi.Block> blocks = objectMapper.readValue(
+                     plan.getBlocksJson(),
+                     BLOCK_LIST_TYPE);
+-            return blocks == null ? List.of() : List.copyOf(blocks);
++            var identity = landscapeService.identityProjection();
++            return blocks == null ? List.of() : identity == null ? List.copyOf(blocks) : identity.projectBlocks(blocks);
+         } catch (JsonProcessingException | NullPointerException exception) {
+             throw conflict("Stored learning-plan blocks are invalid");
+         }
+--- a/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
++++ b/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
+@@ -153,6 +153,36 @@
+     private final ObjectMapper objectMapper;
+     private final ApplicationEventPublisher eventPublisher;
+     private final TransactionTemplate transactionTemplate;
++    private String canonicalGoalReference(String reference) {
++        var identity = landscapeService.identityProjection();
++        return identity == null ? reference : landscapeService.canonicalGoalReference(reference);
++    }
++
++    private Map<String, MasteryEntryDTO> identityMasteryRows(List<Mastery> rows) {
++        Map<String, MasteryEntryDTO> original = new LinkedHashMap<>();
++        rows.forEach(row -> original.put(row.getGoalKey(), new MasteryEntryDTO(row.getValue(), row.getUpdatedAt())));
++        var identity = landscapeService.identityProjection();
++        return identity == null ? original : identity.projectMastery(original);
++    }
++
++    private String masteryStorageKey(String reference, String learnerId) {
++        var identity = landscapeService.identityProjection();
++        return identity == null ? reference : identity.masteryStorageKey(reference,
++                masteryRepository.findByLearner_SkillpilotId(learnerId));
++    }
++
++    private List<String> identityFocusRows(List<PlannedGoal> rows) {
++        var identity = landscapeService.identityProjection();
++        return identity == null ? rows.stream().map(PlannedGoal::getGoalId).toList() : identity.projectFocus(rows);
++    }
++
++    private List<com.skillpilot.backend.identity.GoalIdentityService.CompletionView> identityCompletions(
++            List<com.skillpilot.backend.domain.LearnerGoalCompletion> rows) {
++        var identity = landscapeService.identityProjection();
++        return identity == null ? rows.stream().map(row -> new com.skillpilot.backend.identity.GoalIdentityService.CompletionView(
++                row, row.getGoalId())).toList() : identity.projectCompletions(rows);
++    }
++
+     private Clock verifiedRecallClock = Clock.systemUTC();
+     private Clock learningPlanClock = Clock.system(LEARNING_PLAN_ZONE);
+ 
+@@ -177,7 +207,11 @@
+     private CompletionWorkflowState completionWorkflow(Learner learner) {
+         if (!completionRouteOwnsNavigation(learner)) return null;
+         try {
+-            return objectMapper.readValue(learner.getCompletionWorkflow(), CompletionWorkflowState.class);
++            var original = objectMapper.readValue(learner.getCompletionWorkflow(), CompletionWorkflowState.class);
++            var identity = landscapeService.identityProjection();
++            return identity == null ? original : identity.projectWorkflow(original);
++        } catch (com.skillpilot.backend.identity.GoalIdentityException invalid) {
++            throw invalid;
+         } catch (Exception e) {
+             return null; // The route remains paused; malformed private state never opens a bypass.
+         }
+@@ -376,7 +410,7 @@
+         List<String> focusRoots = resolveEffectiveProjectedFocusIds(learner, projection);
+         Set<String> focused = projectedAtomicTargetIds(focusRoots, projection);
+         Set<String> anchors = new LinkedHashSet<>();
+-        if (learner.getActiveGoalId() != null) anchors.add(learner.getActiveGoalId());
++        if (canonicalGoalReference(learner.getActiveGoalId()) != null) anchors.add(canonicalGoalReference(learner.getActiveGoalId()));
+         else focusRoots.stream().filter(id -> isAtomicGoal(graph.get(id))).forEach(anchors::add);
+         Set<String> directlyRelated = graph.values().stream()
+                 .filter(CompletionProfileCompiler::isAssessment)
+@@ -430,8 +464,8 @@
+         profiles.forEach(profile -> (includePreparation ? profile.contextGoalIds() : profile.assessmentGoalIds())
+                 .forEach(id -> contextGoals.put(id, graph.get(id))));
+         Map<String, Double> storedMastery = new LinkedHashMap<>();
+-        masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())
+-                .forEach(entry -> storedMastery.put(entry.getGoalKey(), entry.getValue()));
++        identityMasteryRows(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
++                .forEach((key, entry) -> storedMastery.put(key, entry.value()));
+         Map<String, Double> mastery = new LinkedHashMap<>(applyCanonicalMasteryProjection(
+                 contextGoals, storedMastery, resolveProjectionStateFilterId(learner)));
+         // The ordinary discovery surface needs only assessment results; its exams are
+@@ -846,7 +880,7 @@
+             }
+             var compiled = compileCompletionScope(learner, request.profileId(), projection, completionGraph(learner, projection));
+             assertCompletionApplicability(learner, compiled);
+-            String currentGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
++            String currentGoalId = resolveGoalIdInVisibleGoals(canonicalGoalReference(learner.getActiveGoalId()), projection.visibleGoals(), false);
+             if (currentGoalId == null || !compiled.contextGoalIds().contains(currentGoalId)) {
+                 // Selecting the profile deliberately leaves unrelated work. Existing
+                 // work inside its context, including newly waived work, is retained.
+@@ -898,14 +932,14 @@
+                     || !currentProjection.targetGoalIds().contains(request.goalId())) {
+                 throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "Refresh the completion choices.");
+             }
+-            Set<String> roots = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+-                    .map(PlannedGoal::getGoalId).collect(Collectors.toCollection(LinkedHashSet::new));
++            Set<String> roots = new LinkedHashSet<>(identityFocusRows(
++                    plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId)));
+             if (roots.add(request.goalId())) plannedGoalRepository.save(new PlannedGoal(learner, request.goalId()));
+             if (existingWorkflow.directAssessment() != null) {
+                 learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);
+             }
+             saveCompletionWorkflow(learner, existingWorkflow.withNavigation(support ? "support" : "required",
+-                    support ? request.goalId() : learner.getActiveGoalId()));
++                    support ? request.goalId() : canonicalGoalReference(learner.getActiveGoalId())));
+             if (support) setActiveGoal(skillpilotId, request.goalId());
+         } else throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Unknown completion action.");
+         if (learner.getCoachStateRevision() == revisionBefore) advanceCoachStateRevision(learner);
+@@ -2130,16 +2164,17 @@
+         }
+         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+-        MasteryId id = new MasteryId(skillpilotId, goal.getId());
++        String durableGoalKey = masteryStorageKey(goal.getId(), skillpilotId);
++        MasteryId id = new MasteryId(skillpilotId, durableGoalKey);
+         Mastery mastery = masteryRepository.findById(id)
+-                .orElseGet(() -> new Mastery(learner, goal.getId(), 0.0));
++                .orElseGet(() -> new Mastery(learner, durableGoalKey, 0.0));
+         double previousValue = mastery.getValue();
+         boolean masteryChanged = mastery.getValue() < 1.0;
+         mastery.setValue(1.0);
+         masteryRepository.save(mastery);
+         recordGoalCompletion(learner, goal.getId(), goal, previousValue, 1.0, verifiedRecallNow(), "verified_recall");
+ 
+-        boolean activeGoalCleared = goal.getId().equals(learner.getActiveGoalId());
++        boolean activeGoalCleared = goal.getId().equals(canonicalGoalReference(learner.getActiveGoalId()));
+         if (activeGoalCleared) {
+             learner.setActiveGoalId(null);
+             learner.setLearningState(LearningState.FRONTIER);
+@@ -2186,7 +2221,7 @@
+                 learner.getSelectedCurriculum(),
+                 learner.getPersonalCurriculum());
+         String activeGoalId = resolveGoalIdInVisibleGoals(
+-                learner.getActiveGoalId(),
++                canonicalGoalReference(learner.getActiveGoalId()),
+                 projection.visibleGoals(),
+                 false);
+         String requestedProjectedGoalId =
+@@ -2690,10 +2725,8 @@
+     public Map<String, Double> getMastery(String skillpilotId) {
+         Learner learner = getLearner(skillpilotId);
+         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
+-        Map<String, Double> result = new HashMap<>();
+-        for (Mastery m : mastered) {
+-            result.put(m.getGoalKey(), m.getValue());
+-        }
++        Map<String, Double> result = new LinkedHashMap<>();
++        identityMasteryRows(mastered).forEach((key, row) -> result.put(key, row.value()));
+         String curriculumId = learner.getSelectedCurriculum();
+         Map<String, LearningGoal> goals = Collections.emptyMap();
+         if (curriculumId != null) {
+@@ -2708,10 +2741,7 @@
+     public Map<String, MasteryEntryDTO> getMasteryWithTimestamps(String skillpilotId) {
+         Learner learner = getLearner(skillpilotId);
+         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
+-        Map<String, MasteryEntryDTO> result = new HashMap<>();
+-        for (Mastery m : mastered) {
+-            result.put(m.getGoalKey(), new MasteryEntryDTO(m.getValue(), m.getUpdatedAt()));
+-        }
++        Map<String, MasteryEntryDTO> result = new LinkedHashMap<>(identityMasteryRows(mastered));
+         String curriculumId = learner.getSelectedCurriculum();
+         Map<String, LearningGoal> goals = Collections.emptyMap();
+         if (curriculumId != null) {
+@@ -2733,10 +2763,7 @@
+ 
+         Learner learner = getLearner(skillpilotId);
+         List<Mastery> mastered = masteryRepository.findByLearner_SkillpilotId(skillpilotId);
+-        Map<String, MasteryEntryDTO> result = new HashMap<>();
+-        for (Mastery m : mastered) {
+-            result.put(m.getGoalKey(), new MasteryEntryDTO(m.getValue(), m.getUpdatedAt()));
+-        }
++        Map<String, MasteryEntryDTO> result = new LinkedHashMap<>(identityMasteryRows(mastered));
+ 
+         Map<String, LearningGoal> goals = new HashMap<>();
+         for (String goalId : goalIds) {
+@@ -2945,6 +2972,7 @@
+     }
+ 
+     private String mapGoalIdForVisibleGoals(String goalId, Map<String, LearningGoal> visibleGoals, boolean allowPartial) {
++        goalId = canonicalGoalReference(goalId);
+         if (goalId == null || goalId.isBlank()) {
+             return null;
+         }
+@@ -3053,7 +3081,8 @@
+         }
+ 
+         LinkedHashSet<String> projectedGoalIds = new LinkedHashSet<>();
+-        for (String storedGoalId : storedGoalIds) {
++        for (String originalStoredGoalId : storedGoalIds) {
++            String storedGoalId = canonicalGoalReference(originalStoredGoalId);
+             if (storedGoalId == null || storedGoalId.isBlank()) {
+                 continue;
+             }
+@@ -3117,6 +3146,7 @@
+     private List<String> resolveProjectedFocusTargetIds(
+             String focusGoalId,
+             GoalProjection projection) {
++        focusGoalId = canonicalGoalReference(focusGoalId);
+         if (focusGoalId == null
+                 || focusGoalId.isBlank()
+                 || projection == null
+@@ -3271,7 +3301,7 @@
+             visibleGoals = getFilteredGoals(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+         }
+ 
+-        String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
++        String activeGoalId = resolveGoalIdInVisibleGoals(canonicalGoalReference(learner.getActiveGoalId()), visibleGoals, false);
+         String requestedGoalId = request.goalId();
+         requestedGoalId = mapGoalIdForVisibleGoals(requestedGoalId, visibleGoals, false);
+         Map.Entry<String, Double> masteryEntry = requestedMastery.entrySet().iterator().next();
+@@ -3352,6 +3382,8 @@
+         if (def == null) {
+             def = landscapeService.getGoalDefinition(effectiveGoalId);
+         }
++        if (landscapeService.identityProjection() != null && def == null)
++            throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "Unknown active goal definition");
+         if (def != null && def.getContains() != null && !def.getContains().isEmpty()) {
+             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
+                     "Cannot set mastery on cluster goals. Select an atomic goal first.");
+@@ -3361,9 +3393,10 @@
+                     "Orientation goals use completion marker 1.0 only; they do not carry graded mastery.");
+         }
+ 
+-        MasteryId id = new MasteryId(skillpilotId, effectiveGoalId);
++        String durableGoalKey = masteryStorageKey(effectiveGoalId, skillpilotId);
++        MasteryId id = new MasteryId(skillpilotId, durableGoalKey);
+         Mastery mastery = masteryRepository.findById(id)
+-                .orElseGet(() -> new Mastery(learner, effectiveGoalId, 0.0));
++                .orElseGet(() -> new Mastery(learner, durableGoalKey, 0.0));
+         double previousValue = mastery.getValue();
+         mastery.setValue(masteryValue);
+         masteryRepository.save(mastery);
+@@ -3427,13 +3460,16 @@
+     public LearnerPlanningScopeResponse getPlanningScope(
+             String skillpilotId,
+             String landscapeId) {
++        return planningScope(getLearner(skillpilotId), landscapeId);
++    }
++
++    private LearnerPlanningScopeResponse planningScope(Learner learner, String landscapeId) {
+         if (landscapeId == null || landscapeId.isBlank()) {
+             throw new ResponseStatusException(
+                     org.springframework.http.HttpStatus.BAD_REQUEST,
+                     "landscapeId is required.");
+         }
+ 
+-        Learner learner = getLearner(skillpilotId);
+         String curriculumId = learner.getSelectedCurriculum();
+         if (curriculumId == null || curriculumId.isBlank()) {
+             throw new ResponseStatusException(
+@@ -3470,7 +3506,7 @@
+                     "landscapeId has no atomic targets in the learner's personal curriculum.");
+         }
+ 
+-        Map<String, Double> mastery = getMastery(skillpilotId);
++        Map<String, Double> mastery = getMastery(learner.getSkillpilotId());
+         List<String> openAtomicGoalIds = scopeAtomicGoalIds.stream()
+                 .filter(goalId -> mastery.getOrDefault(goalId, 0.0)
+                         < PLANNING_SCOPE_MASTERY_THRESHOLD)
+@@ -3565,6 +3601,8 @@
+             String capturedCurriculumId,
+             String landscapeId,
+             List<LearnerLearningPlanApi.Block> storedBlocks) {
++        var identity = landscapeService.identityProjection();
++        if (identity != null) storedBlocks = identity.projectBlocks(storedBlocks);
+         try {
+             LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
+             if (!Objects.equals(capturedCurriculumId, scope.curriculumId())
+@@ -3715,20 +3753,24 @@
+             String skillpilotId,
+             String landscapeId,
+             List<LearnerLearningPlanApi.Block> blocks) {
++        return learningPlanFingerprint(getLearner(skillpilotId), landscapeId, blocks);
++    }
++
++    private String learningPlanFingerprint(
++            Learner learner, String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
+         List<LearnerLearningPlanApi.Block> effectiveBlocks = blocks == null
+                 ? Collections.emptyList()
+                 : List.copyOf(blocks);
+         try {
+-            validateLearningPlanBlockFoci(skillpilotId, landscapeId, effectiveBlocks);
++            validateLearningPlanBlockFoci(learner, landscapeId, effectiveBlocks);
+             List<LearnerLearningPlanApi.Block> currentOrder =
+-                    orderLearningPlanBlocksByPrerequisites(skillpilotId, effectiveBlocks);
++                    orderLearningPlanBlocksByPrerequisites(learner, effectiveBlocks);
+             if (!currentOrder.equals(effectiveBlocks)) {
+                 throw new IllegalStateException(
+                         "The current prerequisite graph changes the stored plan order");
+             }
+ 
+-            Learner learner = getLearner(skillpilotId);
+-            LearnerPlanningScopeResponse scope = getPlanningScope(skillpilotId, landscapeId);
++                LearnerPlanningScopeResponse scope = planningScope(learner, landscapeId);
+             GoalProjection projection = getGoalProjection(
+                     learner.getSelectedCurriculum(),
+                     learner.getPersonalCurriculum());
+@@ -4004,10 +4046,14 @@
+             String skillpilotId,
+             String landscapeId,
+             List<LearnerLearningPlanApi.Block> blocks) {
++        validateLearningPlanBlockFoci(getLearner(skillpilotId), landscapeId, blocks);
++    }
++
++    private void validateLearningPlanBlockFoci(
++            Learner learner, String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
+         if (blocks == null || blocks.isEmpty()) {
+             return;
+         }
+-        Learner learner = getLearner(skillpilotId);
+         String curriculumId = learner.getSelectedCurriculum();
+         if (curriculumId == null || curriculumId.isBlank()) {
+             throw new ResponseStatusException(
+@@ -4186,10 +4232,14 @@
+     public List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksByPrerequisites(
+             String skillpilotId,
+             List<LearnerLearningPlanApi.Block> blocks) {
++        return orderLearningPlanBlocksByPrerequisites(getLearner(skillpilotId), blocks);
++    }
++
++    private List<LearnerLearningPlanApi.Block> orderLearningPlanBlocksByPrerequisites(
++            Learner learner, List<LearnerLearningPlanApi.Block> blocks) {
+         if (blocks == null || blocks.isEmpty()) {
+             return blocks == null ? List.of() : List.copyOf(blocks);
+         }
+-        Learner learner = getLearner(skillpilotId);
+         String curriculumId = learner.getSelectedCurriculum();
+         if (curriculumId == null || curriculumId.isBlank()) {
+             throw new ResponseStatusException(
+@@ -4864,7 +4914,7 @@
+         List<PlannedGoal> storedGoals = plannedGoalRepository
+                 .findByLearner_SkillpilotId(learner.getSkillpilotId());
+         List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
+-                storedGoals.stream().map(PlannedGoal::getGoalId).toList(),
++                identityFocusRows(storedGoals),
+                 projection);
+         List<PlannedGoal> invalidGoals = storedGoals.stream()
+                 .filter(Objects::nonNull)
+@@ -4898,10 +4948,7 @@
+ 
+     private List<String> getStoredPlannedGoals(String skillpilotId) {
+         ensureLearnerExists(skillpilotId);
+-        return plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId)
+-                .stream()
+-                .map(PlannedGoal::getGoalId)
+-                .toList();
++        return identityFocusRows(plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId));
+     }
+ 
+     @Transactional
+@@ -4924,7 +4971,7 @@
+         }
+ 
+         List<PlannedGoal> existing = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
+-        Set<String> existingIds = existing.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet());
++        Set<String> existingIds = new LinkedHashSet<>(identityFocusRows(existing));
+ 
+         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
+             Map<String, LearningGoal> structuralGoals = getStructuralGoals(learner.getSelectedCurriculum());
+@@ -4957,7 +5004,7 @@
+         final Set<String> normalizedTargetIds = saneTargetIds;
+ 
+         List<PlannedGoal> toDelete = existing.stream()
+-                .filter(pg -> !normalizedTargetIds.contains(pg.getGoalId()))
++                .filter(pg -> !normalizedTargetIds.contains(canonicalGoalReference(pg.getGoalId())))
+                 .toList();
+         plannedGoalRepository.deleteAll(toDelete);
+ 
+@@ -5510,7 +5557,7 @@
+         }
+ 
+         revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+-        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
++        if (canonicalGoalReference(learner.getActiveGoalId()) == null || canonicalGoalReference(learner.getActiveGoalId()).isBlank()) {
+             learner.setLearningState(LearningState.FRONTIER);
+         }
+         persistPersonalCurriculum(learner, personalCurriculum);
+@@ -6279,7 +6326,7 @@
+         List<String> projectedFocusIds = resolveProjectedTargetFocusIds(
+                 plannedGoals == null
+                         ? Collections.emptyList()
+-                        : plannedGoals.stream().map(PlannedGoal::getGoalId).toList(),
++                        : identityFocusRows(plannedGoals),
+                 projection);
+         List<PlannedGoal> invalidGoals = plannedGoals == null
+                 ? Collections.emptyList()
+@@ -6325,7 +6372,7 @@
+         if (learner == null || projection == null) {
+             return null;
+         }
+-        String storedActiveGoalId = learner.getActiveGoalId();
++        String storedActiveGoalId = canonicalGoalReference(learner.getActiveGoalId());
+         if (storedActiveGoalId == null || storedActiveGoalId.isBlank()) {
+             return null;
+         }
+@@ -6388,7 +6435,7 @@
+         }
+         learner.setPersonalCurriculum(writePersonalCurriculumConfig(personalCurriculum));
+         revalidatePlannedGoalsForProjectedScope(learner, personalCurriculum);
+-        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
++        if (canonicalGoalReference(learner.getActiveGoalId()) == null || canonicalGoalReference(learner.getActiveGoalId()).isBlank()) {
+             learner.setLearningState(LearningState.FRONTIER);
+         }
+         Learner saved = advanceCoachStateRevision(learner);
+@@ -7281,7 +7328,7 @@
+                                     mastery,
+                                     projectionStateFilterId)
+                             && !resolvesToCurricularTargetInScope(
+-                                    learner.getActiveGoalId(),
++                                    canonicalGoalReference(learner.getActiveGoalId()),
+                                     relevantScope,
+                                     visibleGoals,
+                                     projection.targetGoalIds(),
+@@ -7748,7 +7795,7 @@
+ 
+         GoalProjection projection = getGoalProjection(curriculumId, learner.getPersonalCurriculum());
+         Map<String, LearningGoal> visibleGoals = projection.visibleGoals();
+-        String activeGoalId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), visibleGoals, false);
++        String activeGoalId = resolveGoalIdInVisibleGoals(canonicalGoalReference(learner.getActiveGoalId()), visibleGoals, false);
+         LearningGoal orientationGoal = activeGoalId == null ? null : visibleGoals.get(activeGoalId);
+         if (orientationGoal == null
+                 || !projection.targetGoalIds().contains(activeGoalId)
+@@ -8010,7 +8057,7 @@
+         if (allowSideEffects && navigationAtRead != null && navigationAtRead.directAssessment() != null
+                 && !currentDirectAssessmentBinding(learner, navigationAtRead)) {
+             long beforeCleanup = learner.getCoachStateRevision();
+-            if (learner.getActiveGoalId() != null) {
++            if (canonicalGoalReference(learner.getActiveGoalId()) != null) {
+                 clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_ASSESSMENT_BINDING", publishTransitionEvents);
+             }
+             saveCompletionWorkflow(learner, navigationAtRead.withNavigation("paused", null));
+@@ -8140,7 +8187,7 @@
+         if (curriculumId != null && !plannedScopeIds.isEmpty()) {
+             scope = computeScope(plannedScopeIds, structuralGoals, Collections.emptyMap());
+         }
+-        String storedActiveGoalId = learner.getActiveGoalId();
++        String storedActiveGoalId = canonicalGoalReference(learner.getActiveGoalId());
+         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, allGoals, false);
+         boolean activeGoalMastered = activeGoalId != null && !activeGoalId.isBlank()
+                 && mastery.getOrDefault(activeGoalId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD;
+@@ -8451,7 +8498,7 @@
+             String completedAnchorGoalId,
+             Map<String, Double> mastery,
+             boolean publishEvent) {
+-        String currentActiveGoalId = learner.getActiveGoalId();
++        String currentActiveGoalId = canonicalGoalReference(learner.getActiveGoalId());
+         if (currentActiveGoalId != null
+                 && !currentActiveGoalId.isBlank()
+                 && mastery.getOrDefault(currentActiveGoalId, 0.0)
+@@ -8614,7 +8661,7 @@
+                 .findByLearner_SkillpilotId(learner.getSkillpilotId());
+         List<String> selectedFocus = candidate.scopeGoalIds() == null
+                 ? List.of(candidate.focusGoalId()) : candidate.scopeGoalIds();
+-        boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
++        boolean focusAlreadySelected = new LinkedHashSet<>(identityFocusRows(currentFocus))
+                 .equals(Set.copyOf(selectedFocus));
+         if (!focusAlreadySelected) {
+             plannedGoalRepository.deleteAll(currentFocus);
+@@ -9451,7 +9498,7 @@
+                     "goalId must be an atomic goal from the current frontier.");
+         }
+ 
+-        String currentActiveGoalId = learner.getActiveGoalId();
++        String currentActiveGoalId = canonicalGoalReference(learner.getActiveGoalId());
+         if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)) {
+             return;
+         }
+@@ -9530,7 +9577,7 @@
+             if (normalizedFocusGoalIds != null) {
+                 List<PlannedGoal> currentFocus = plannedGoalRepository
+                         .findByLearner_SkillpilotId(skillpilotId);
+-                boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
++                boolean focusAlreadySelected = new LinkedHashSet<>(identityFocusRows(currentFocus))
+                         .equals(Set.copyOf(normalizedFocusGoalIds));
+                 if (!focusAlreadySelected) {
+                     plannedGoalRepository.deleteAll(currentFocus);
+@@ -9540,7 +9587,7 @@
+                     changed = true;
+                 }
+             }
+-            if (!Objects.equals(learner.getActiveGoalId(), normalizedActiveGoalId)) {
++            if (!Objects.equals(canonicalGoalReference(learner.getActiveGoalId()), normalizedActiveGoalId)) {
+                 learner.setActiveGoalId(normalizedActiveGoalId);
+                 changed = true;
+             }
+@@ -9587,7 +9634,7 @@
+                     org.springframework.http.HttpStatus.BAD_REQUEST,
+                     "proposedGoalId must not be empty.");
+         }
+-        String activeGoalId = learner.getActiveGoalId();
++        String activeGoalId = canonicalGoalReference(learner.getActiveGoalId());
+         if (activeGoalId == null
+                 || activeGoalId.isBlank()
+                 || activeGoalId.equals(proposedGoalId)) {
+@@ -10040,15 +10087,23 @@
+         return migrated;
+     }
+ 
++    private boolean migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(Learner learner) {
++        String migrated = projectedCanonicalGymnasiumPreFlowPersonalization(learner);
++        if (migrated == null) return false;
++        learner.setPersonalCurriculum(migrated);
++        advanceCoachStateRevision(learner);
++        return true;
++    }
++
++    /** The existing historical-stage migration, prepared without managed writes or revisions. */
+     @SuppressWarnings("unchecked")
+-    private boolean migrateCanonicalGymnasiumPreFlowPersonalizationIfNeeded(
+-            Learner learner) {
++    private String projectedCanonicalGymnasiumPreFlowPersonalization(Learner learner) {
+         if (learner == null
+                 || !CANONICAL_GYMNASIUM_ROOT_ID.equals(
+                         learner.getSelectedCurriculum())
+                 || learner.getPersonalCurriculum() == null
+                 || learner.getPersonalCurriculum().isBlank()) {
+-            return false;
++            return null;
+         }
+ 
+         MutablePersonalCurriculumDocument storedDocument =
+@@ -10061,7 +10116,7 @@
+                 || parsedConfig.isEmpty()
+                 || storedPayload.containsKey(
+                         CurriculumPersonalizationPlanner.FLOW_STATE_CONFIG_KEY)) {
+-            return false;
++            return null;
+         }
+         Map<String, Object> parsedRootSettings =
+                 parsedConfig.get(CANONICAL_GYMNASIUM_ROOT_ID);
+@@ -10069,7 +10124,7 @@
+                 || parsedRootSettings.containsKey("stage")) {
+             // A stored canonical value, including a malformed explicit value,
+             // is never overwritten by the compatibility migration.
+-            return false;
++            return null;
+         }
+ 
+         Boolean sek1Selected =
+@@ -10079,7 +10134,7 @@
+         if (sek1Selected == null || sek2Selected == null) {
+             // Both historical fields must be present and well-typed. A
+             // missing or malformed half is not enough evidence for migration.
+-            return false;
++            return null;
+         }
+         String canonicalStage = null;
+         if (Boolean.TRUE.equals(sek1Selected)
+@@ -10093,7 +10148,7 @@
+         if (canonicalStage == null) {
+             // false/false is intentionally unresolved and must remain a real
+             // learner decision.
+-            return false;
++            return null;
+         }
+ 
+         SkillLandscape rootLandscape =
+@@ -10120,14 +10175,14 @@
+         if (!hasAuthoredSubjectSelection) {
+             // Do not turn a partial or foreign JSON payload into a completed
+             // personalization merely because it contains legacy marker names.
+-            return false;
++            return null;
+         }
+ 
+         Map<String, Object> migratedConfig = storedPayload;
+         Object rawRootSettings =
+                 migratedConfig.get(CANONICAL_GYMNASIUM_ROOT_ID);
+         if (!(rawRootSettings instanceof Map<?, ?> existingRootSettings)) {
+-            return false;
++            return null;
+         }
+         Map<String, Object> rootSettings =
+                 new LinkedHashMap<>(
+@@ -10146,10 +10201,7 @@
+                 migratedConfig,
+                 CANONICAL_GYMNASIUM_ROOT_ID);
+ 
+-        learner.setPersonalCurriculum(
+-                writePersonalCurriculumConfig(storedDocument.document()));
+-        advanceCoachStateRevision(learner);
+-        return true;
++        return writePersonalCurriculumConfig(storedDocument.document());
+     }
+ 
+     @Transactional
+@@ -12090,6 +12142,7 @@
+     }
+ 
+     private String resolveGoalRef(String ref, Map<String, LearningGoal> allGoals) {
++        ref = canonicalGoalReference(ref);
+         if (ref == null || ref.isBlank() || allGoals == null || allGoals.isEmpty()) {
+             return null;
+         }
+@@ -12425,27 +12478,24 @@
+         List<com.skillpilot.backend.api.MasteryHistoryEntry> history = new ArrayList<>();
+         Set<String> observedGoals = new HashSet<>();
+         if (goalCompletionService != null) {
+-            for (var completion : goalCompletionService.getHistory(skillpilotId)) {
+-                observedGoals.add(completion.getGoalId());
+-                if (isKnownHistoryGoal(completion.getGoalId(), goalIds)) {
++            for (var event : identityCompletions(goalCompletionService.getHistory(skillpilotId))) {
++                var completion = event.original();
++                observedGoals.add(event.goalId());
++                if (isKnownHistoryGoal(event.goalId(), goalIds)) {
+                     history.add(new com.skillpilot.backend.api.MasteryHistoryEntry(
+-                            completion.getGoalId(), completion.getOccurredAt(),
++                            event.goalId(), completion.getOccurredAt(),
+                             completion.getMasteryValue(), "completion_event"));
+                 }
+             }
+         }
+         // Keep pre-ledger history, but label the weaker timestamp evidence.
+         // Neither these rows nor imports ever create daily completion credit.
+-        masteryRepository.findByLearner_SkillpilotId(skillpilotId)
+-                .stream()
+-                .filter(m -> m.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+-                .filter(m -> !observedGoals.contains(m.getGoalKey()))
+-                .filter(m -> isKnownHistoryGoal(m.getGoalKey(), goalIds))
+-                .map(m -> new com.skillpilot.backend.api.MasteryHistoryEntry(
+-                        m.getGoalKey(),
+-                        m.getUpdatedAt(),
+-                        m.getValue()))
+-                .forEach(history::add);
++        identityMasteryRows(masteryRepository.findByLearner_SkillpilotId(skillpilotId))
++                .forEach((goal, row) -> {
++                    if (row.value() >= PLANNING_SCOPE_MASTERY_THRESHOLD && !observedGoals.contains(goal)
++                            && isKnownHistoryGoal(goal, goalIds))
++                        history.add(new com.skillpilot.backend.api.MasteryHistoryEntry(goal, row.updatedAt(), row.value()));
++                });
+         return history.stream()
+                 .sorted(Comparator.comparing(
+                         com.skillpilot.backend.api.MasteryHistoryEntry::timestamp,
+@@ -12461,14 +12511,13 @@
+         if (goalCompletionService == null) {
+             return Map.of();
+         }
+-        Set<String> masteredGoals = masteryRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+-                .filter(mastery -> mastery.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+-                .map(Mastery::getGoalKey)
+-                .collect(Collectors.toSet());
++        Set<String> masteredGoals = identityMasteryRows(masteryRepository.findByLearner_SkillpilotId(skillpilotId))
++                .entrySet().stream().filter(entry -> entry.getValue().value() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
++                .map(Map.Entry::getKey).collect(Collectors.toSet());
+         Map<String, Instant> completions = new LinkedHashMap<>();
+-        for (var completion : goalCompletionService.getCompletionsOnDate(skillpilotId, date)) {
+-            if (masteredGoals.contains(completion.getGoalId())) {
+-                completions.putIfAbsent(completion.getGoalId(), completion.getOccurredAt());
++        for (var event : identityCompletions(goalCompletionService.getCompletionsOnDate(skillpilotId, date))) {
++            if (masteredGoals.contains(event.goalId())) {
++                completions.putIfAbsent(event.goalId(), event.original().getOccurredAt());
+             }
+         }
+         return Collections.unmodifiableMap(completions);
+@@ -12483,14 +12532,13 @@
+         if (goalCompletionService == null) {
+             return Map.of();
+         }
+-        Set<String> masteredGoals = masteryRepository.findByLearner_SkillpilotId(skillpilotId).stream()
+-                .filter(mastery -> mastery.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
+-                .map(Mastery::getGoalKey)
+-                .collect(Collectors.toSet());
++        Set<String> masteredGoals = identityMasteryRows(masteryRepository.findByLearner_SkillpilotId(skillpilotId))
++                .entrySet().stream().filter(entry -> entry.getValue().value() >= PLANNING_SCOPE_MASTERY_THRESHOLD)
++                .map(Map.Entry::getKey).collect(Collectors.toSet());
+         Map<String, Instant> completions = new LinkedHashMap<>();
+-        for (var completion : goalCompletionService.getCompletionsBetween(skillpilotId, startDate, endDate)) {
+-            if (masteredGoals.contains(completion.getGoalId())) {
+-                completions.putIfAbsent(completion.getGoalId(), completion.getOccurredAt());
++        for (var event : identityCompletions(goalCompletionService.getCompletionsBetween(skillpilotId, startDate, endDate))) {
++            if (masteredGoals.contains(event.goalId())) {
++                completions.putIfAbsent(event.goalId(), event.original().getOccurredAt());
+             }
+         }
+         return Collections.unmodifiableMap(completions);
+@@ -12636,7 +12684,8 @@
+             if (blocks == null) {
+                 throw new IllegalStateException("Learning-plan blocks are missing");
+             }
+-            return List.copyOf(blocks);
++            var identity = landscapeService.identityProjection();
++            return identity == null ? List.copyOf(blocks) : identity.projectBlocks(blocks);
+         } catch (Exception exception) {
+             throw new IllegalStateException("Could not export personal learning-plan blocks", exception);
+         }
+@@ -12657,13 +12706,24 @@
+                     "Invalid data signature. Data may have been tampered with.");
+         }
+ 
++        Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
++                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+         LearnerDataDTO data = signedData.data();
++        var identity = landscapeService.identityProjection();
++        if (identity != null) data = identity.projectAuthenticatedImport(data,
++                masteryRepository.findByLearner_SkillpilotId(skillpilotId));
+         // Validate the entire card restoration contract before the first mutation.
+         Map<String, Map<String, Object>> importedSrs = validatePortableSrsImport(data);
+-        Learner existing = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+-                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+         Map<String, Map<String, Object>> restoredSrs = preparePortableSrsRestore(existing, importedSrs);
+-        // ... rest of logic
++        Learner prospective = new Learner();
++        prospective.setSkillpilotId(existing.getSkillpilotId());
++        prospective.setSelectedCurriculum(data.learner() == null ? existing.getSelectedCurriculum() : data.learner().getSelectedCurriculum());
++        prospective.setPersonalCurriculum(data.learner() == null ? existing.getPersonalCurriculum() : data.learner().getPersonalCurriculum());
++        String prospectiveMigration = data.learner() == null ? null : projectedCanonicalGymnasiumPreFlowPersonalization(prospective);
++        if (prospectiveMigration != null) prospective.setPersonalCurriculum(prospectiveMigration);
++        if (identity != null) identityFocusRows(plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId));
++        List<LearnerLearningPlan> preparedPlans = prepareImportedPersonalLearningPlans(prospective, data.learningPlans());
++        // All identity, SRS and plan groups are prepared before managed state changes.
+ 
+         // Provenance / Chain of Custody
+         Map<String, CopySource> candidateCopySources = new LinkedHashMap<>();
+@@ -12732,16 +12792,16 @@
+         // All signature, format and restorable-state checks have already completed.
+         existing.setCompletionWorkflow(null);
+         restoreImportedPlannedGoals(existing, data.plannedGoals());
+-        restoreImportedPersonalLearningPlans(existing, data.learningPlans());
+-    }
+-
+-    private void restoreImportedPersonalLearningPlans(
++        persistImportedPersonalLearningPlans(existing, preparedPlans);
++    }
++
++    private List<LearnerLearningPlan> prepareImportedPersonalLearningPlans(
+             Learner learner,
+             List<LearnerLearningPlanApi.PortablePlan> importedPlans) {
+         // An omitted field is a signed pre-plan archive and leaves current
+         // personal plans untouched. A present empty list explicitly clears them.
+         if (importedPlans == null || learnerLearningPlanRepository == null) {
+-            return;
++            return null;
+         }
+ 
+         LinkedHashSet<String> landscapeIds = new LinkedHashSet<>();
+@@ -12758,9 +12818,7 @@
+                         org.springframework.http.HttpStatus.BAD_REQUEST,
+                         "learningPlans must contain at most one plan per landscape");
+             }
+-            LearnerPlanningScopeResponse scope = getPlanningScope(
+-                    learner.getSkillpilotId(),
+-                    landscapeId);
++            LearnerPlanningScopeResponse scope = planningScope(learner, landscapeId);
+             List<LearnerLearningPlanApi.Block> normalizedBlocks =
+                     LearnerLearningPlanService.normalizeBlocks(
+                             portable.blocks(),
+@@ -12768,18 +12826,18 @@
+                             Set.of(),
+                             true);
+             validateLearningPlanBlockFoci(
+-                    learner.getSkillpilotId(),
++                    learner,
+                     landscapeId,
+                     normalizedBlocks);
+             normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
+-                    learner.getSkillpilotId(),
++                    learner,
+                     normalizedBlocks);
+             LearnerLearningPlan plan = new LearnerLearningPlan();
+             plan.setLearner(learner);
+             plan.setLandscapeId(landscapeId);
+             plan.setCurriculumId(scope.curriculumId());
+             plan.setScopeFingerprint(learningPlanFingerprint(
+-                    learner.getSkillpilotId(),
++                    learner,
+                     landscapeId,
+                     normalizedBlocks));
+             plan.setRevision(1);
+@@ -12796,6 +12854,12 @@
+             restored.add(plan);
+         }
+ 
++        return List.copyOf(restored);
++    }
++
++    private void persistImportedPersonalLearningPlans(Learner learner, List<LearnerLearningPlan> restored) {
++        if (restored == null || learnerLearningPlanRepository == null) return;
++        restored.forEach(plan -> plan.setLearner(learner));
+         learnerLearningPlanRepository.deleteByLearner_SkillpilotId(learner.getSkillpilotId());
+         learnerLearningPlanRepository.flush();
+         if (!restored.isEmpty()) {
+@@ -12852,12 +12916,10 @@
+                     .filter(Objects::nonNull)
+                     .filter(goalId -> !goalId.isBlank())
+                     .collect(Collectors.toCollection(LinkedHashSet::new));
+-            Set<String> existingGoalIds = existingGoals.stream()
+-                    .map(PlannedGoal::getGoalId)
+-                    .collect(Collectors.toSet());
++            Set<String> existingGoalIds = new LinkedHashSet<>(identityFocusRows(existingGoals));
+ 
+             List<PlannedGoal> removedGoals = existingGoals.stream()
+-                    .filter(plannedGoal -> !importedGoalIds.contains(plannedGoal.getGoalId()))
++                    .filter(plannedGoal -> !importedGoalIds.contains(canonicalGoalReference(plannedGoal.getGoalId())))
+                     .toList();
+             if (!removedGoals.isEmpty()) {
+                 plannedGoalRepository.deleteAll(removedGoals);
+@@ -12875,7 +12937,7 @@
+         revalidatePlannedGoalsForProjectedScope(
+                 learner,
+                 mutablePersonalCurriculumPayload(learner.getPersonalCurriculum()));
+-        if (learner.getActiveGoalId() == null || learner.getActiveGoalId().isBlank()) {
++        if (canonicalGoalReference(learner.getActiveGoalId()) == null || canonicalGoalReference(learner.getActiveGoalId()).isBlank()) {
+             learner.setLearningState(LearningState.FRONTIER);
+         }
+         advanceCoachStateRevision(learner);

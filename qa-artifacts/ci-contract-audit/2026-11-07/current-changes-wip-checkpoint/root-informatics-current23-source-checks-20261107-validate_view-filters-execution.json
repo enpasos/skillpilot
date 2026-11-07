@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_view-filters",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_view-filters",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_view-filters/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot/app",
+    "--",
+    "npm",
+    "run",
+    "validate:view-filters"
+  ],
+  "exitCode": 1,
+  "startedAt": "2026-11-07T12:44:07.650051+00:00",
+  "finishedAt": "2026-11-07T12:44:31.413569+00:00",
+  "stdoutSha256": "8c9bbcb1d3c7f9cc65bd784da3c930b0f229c45a5c3974fc2a7d69da9643f82f",
+  "stderrSha256": "5731bb82ce64a5373db72a1be7a5a61e1b82685fc24c175dae84abe267ae4e14"
+}

@@ -1,0 +1,223 @@
+{
+  "terminal": true,
+  "results": [
+    {
+      "case": "N03-empty-source-stub",
+      "kind": "actual-private-file-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured file/inode changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/pair/original80/curricula/native-namespace-fixture/values.csv"
+    },
+    {
+      "case": "N03-wrong-source-bytes",
+      "kind": "actual-private-file-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured file/inode changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/pair/original80/curricula/native-namespace-fixture/values.csv"
+    },
+    {
+      "case": "N03-extra-directory-member",
+      "kind": "actual-private-directory-membership-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured directory inode/metadata changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/pair/original80/curricula/native-namespace-fixture"
+    },
+    {
+      "case": "N04-authored-alias-swap-external",
+      "kind": "actual-private-alias-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured directory inode/metadata changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/pair/original80/curricula"
+    },
+    {
+      "case": "N04-private-source-inode-external-hardlink",
+      "kind": "actual-inode-alias-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured file/inode changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/pair/original80/curricula/native-namespace-fixture/values.csv"
+    },
+    {
+      "case": "N07-wrong-required-library-hash",
+      "kind": "actual-private-file-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured file/inode changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/captured-tools/blobs/c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3"
+    },
+    {
+      "case": "N07-foreign-loader-config",
+      "kind": "actual-private-file-mutation-prelaunch",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Captured file/inode changed /dev/shm/source-a-closed-namespace-native-candidate-20261107/captured-tools/blobs/d4b198c463418b493208485def26a6f4c57279467b9dfa491b70433cedb602e8"
+    },
+    {
+      "case": "N04-actual-source-RO-to-RW-overlay",
+      "kind": "actual-native-namespace-barrier-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Effective readonly mount differs /qa/pair/original80"
+    },
+    {
+      "case": "N04-actual-root-extra-member",
+      "kind": "actual-native-namespace-barrier-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Actual root membership differs"
+    },
+    {
+      "case": "N10-actual-prefilled-HOME",
+      "kind": "actual-native-namespace-barrier-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Run HOME was prefilled"
+    },
+    {
+      "case": "N05-unlisted-entry-import-anchor",
+      "kind": "actual-factory-prelaunch-command-manifest",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Entry/import anchor is not in the pinned command manifest"
+    },
+    {
+      "case": "N09-forged-stale-output-JSON",
+      "kind": "actual-output-factory-token-rejection",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Actual quiescent writer output needed"
+    },
+    {
+      "case": "N05-old-role-trace",
+      "kind": "genuine-launch-context-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Wrong namespace role/cwd/root"
+    },
+    {
+      "case": "N05-wrong-cwd",
+      "kind": "genuine-launch-context-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Wrong namespace role/cwd/root"
+    },
+    {
+      "case": "N05-modified-trace-surviving-child",
+      "kind": "actual-launch-byte-binding-countercase-not-native-rerun",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Producer failed or actual trace bytes differ from its launch"
+    },
+    {
+      "case": "N06-EACCES",
+      "kind": "synthetic-mutation-of-actual-native-negative-event",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Dependency absence needs actual ENOENT"
+    },
+    {
+      "case": "N06-W_OK",
+      "kind": "synthetic-mutation-of-actual-native-negative-event",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Unsupported access metadata flags"
+    },
+    {
+      "case": "N06-required-source-cannot-be-optional",
+      "kind": "synthetic-mutation-with-genuinely-bound-required-source",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Required source/tool payload is missing, never optional"
+    },
+    {
+      "case": "N06-write-flags-as-absence",
+      "kind": "synthetic-negative-open-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Negative dependency open is not supported readonly metadata"
+    },
+    {
+      "case": "N05-wrong-dirfd-locator",
+      "kind": "synthetic-negative-dirfd-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Negative lookup disagrees with PID/cwd/dirfd resolution"
+    },
+    {
+      "case": "N06-unexpected-basename-parent",
+      "kind": "synthetic-negative-family-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Outside derived Node/ELF family /not-derived-parent/absent"
+    },
+    {
+      "case": "N09-surviving-writer-state",
+      "kind": "process-quiescence-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Surviving writer process"
+    },
+    {
+      "case": "N09-cross-role-sealed-cache",
+      "kind": "actual-minted-output-role-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Output belongs to another role/run"
+    },
+    {
+      "case": "N09-old-report-bytes-presented-current",
+      "kind": "actual-sealed-output-byte-mutation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Sealed output bytes/inode/alias changed"
+    },
+    {
+      "case": "N09-untracked-write-outside-slots",
+      "kind": "actual-writer-handler-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Write outside exact current output/scratch contract /qa/untracked.json"
+    },
+    {
+      "case": "N10-external-socket-input",
+      "kind": "synthetic-mutation-of-actual-native-socket-observation",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Only proved absent current-run TSX notification endpoint allowed"
+    },
+    {
+      "case": "N10-temp-source-cannot-be-relabelled-tool",
+      "kind": "source-linked-current-run-transport-byte-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Temporary source bytes changed/reclassified"
+    },
+    {
+      "case": "N10-executable-scratch",
+      "kind": "namespace-exec-capability-countercase",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Executable scratch is outside the pinned command manifest"
+    },
+    {
+      "case": "N05-actual-native-foreign-argv",
+      "kind": "actual-native-successful-foreign-argv-then-authentication-denied",
+      "denied": true,
+      "errorType": "ValueError",
+      "error": "Foreign executable argv/import anchor"
+    }
+  ],
+  "allDenied": true,
+  "actualForeignArgvRun": {
+    "runId": "694eeaf61ef54939b798fa45f7ec71fe",
+    "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/694eeaf61ef54939b798fa45f7ec71fe/evidence",
+    "exitCode": 0,
+    "traceSha256": "ef7bcb42f0dcecdf6c2a366e9ee09ffdb3c1b58402faa66ee4ca3aa2daf84858"
+  },
+  "genuineCountercaseBase": {
+    "runId": "ddf188d89bc949f6905649dc1bf89f47",
+    "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/ddf188d89bc949f6905649dc1bf89f47/evidence",
+    "traceSha256": "512ae31dc79179fc34fea9fdc1a0c66317fed11ff38f5c245ce02bf8dac0289a",
+    "actualReceiptSha256": "c833d43870135422e4012a785379207a09c270d9ee5c61820cf145d8b71e3145"
+  },
+  "countercaseMetadataRestoredFromActualRecordedReceipt": true,
+  "note": "Twelve real capture/barrier guards ran before final sealed-output strengthening. Remaining countercases use their actual recorded genuine writer and foreign-argv runs. Final four positive runs and six extra writer countercases independently test the final pinned implementation. Kinds distinguish synthetic event mutations from native executions."
+}

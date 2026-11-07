@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-single-target-20261106-v1-resolution-0c2ddfcd-1399-41ad-aaed-4f061812602a",
+  "goal": {
+    "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:03eeda9a88ae70ccdddb282e9f89d743039897a967cb6755f6f165ea035897e0",
+    "pageFingerprint": "sha256:f2ead5df31aa03346c92989c6535da4cf781ad107b35fa71c6675442c7d14139",
+    "goalReviewContextFingerprint": "sha256:820160bd393deeff2cf34c1d8ef2a1fb897cff11a5a36babb4a75304b22e98af",
+    "finalText": {
+      "titleDe": "Diagramme deuten",
+      "titleEn": "Interpret Diagrams (Lower Secondary)",
+      "descriptionDe": "Die lernende Person kann einfache Diagramme deuten, indem sie Auffälligkeiten anhand der dargestellten Daten beschreibt, Werte vergleicht und erste Trends in Worte fasst.",
+      "descriptionEn": "The learner can interpret simple diagrams by describing noticeable features using the displayed data, comparing values, and expressing initial trends in words."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-single-target-20261106-v1-a",
+      "campaignDigest": "sha256:da64a35030d68b9649d9969f97860d1d701277906fedee2e49f0401fadeb4412",
+      "roundId": "mathematik-single-target-20261106-v1-first-pass-a",
+      "independenceGroupId": "mathematik-single-target-20261106-v1-independent-a",
+      "reviewInputFingerprint": "sha256:f8d5bf8c372c9c3c604585996d4b719f49427e16343748677fceeef9692d4fca",
+      "goalReviewContextFingerprint": "sha256:820160bd393deeff2cf34c1d8ef2a1fb897cff11a5a36babb4a75304b22e98af",
+      "batchId": "mathematik-single-target-20261106-v1-first-pass-a.batch-001",
+      "runId": "math-d-diagram-a-20261106T223240Z",
+      "runManifestDigest": "sha256:5cfbc83b0520689d21ee3e9fd7c9919457fb3683951218e6d8ea126cc07e19a7",
+      "resultsDigest": "sha256:e3c662645bc4ea2151e9c9caff7f5b81752ce7a6db79b2b238da6aae518e3291",
+      "recordId": "math-d-diagram-a-20261106T223240Z.0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "recordDigest": "sha256:4d6924c4e6ab67e05036475327e912498df0721529a9be5d93db329210e5f4e6"
+    },
+    "second": {
+      "campaignId": "mathematik-single-target-20261106-v1-b",
+      "campaignDigest": "sha256:b2c554ea3ffd3e7f87d50b59433ef9bf65c5370c5462cfa023815fccca315589",
+      "roundId": "mathematik-single-target-20261106-v1-first-pass-b",
+      "independenceGroupId": "mathematik-single-target-20261106-v1-independent-b",
+      "reviewInputFingerprint": "sha256:f8d5bf8c372c9c3c604585996d4b719f49427e16343748677fceeef9692d4fca",
+      "goalReviewContextFingerprint": "sha256:820160bd393deeff2cf34c1d8ef2a1fb897cff11a5a36babb4a75304b22e98af",
+      "batchId": "mathematik-single-target-20261106-v1-first-pass-b.batch-001",
+      "runId": "math-diagrams-d-b-20261106t223653z",
+      "runManifestDigest": "sha256:f7bb1a2563d63e9fffceada4c13b3611b471c88c3a4f8881ea792ce43d228790",
+      "resultsDigest": "sha256:e09316f115e7dbb5e1076dd4b662c18d803ef605d2dccc90846eb7c004572070",
+      "recordId": "math-diagrams-d-b-20261106t223653z-0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "recordDigest": "sha256:4b38dd539d260583d111468544a75e3bda188d7c061b0aa3d7a907225aa63f49"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:9ab3b1bbf82570c1e7250e3de049ac0d741192fdcd5846120bd1cfb4a39c8b0a"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-diagram-fixed-b-two-new-keeps-20261106-v1",
+    "manifestDigest": "sha256:5a3bfd2756a859eafc06d1c3aaa6f00a6382582f20789b783c09e25f02208755",
+    "manifestFingerprint": "sha256:a4e4c3a81948acc60d8bc99d58e836e97d8f161258f65e70cd7c4ca533d97729",
+    "decisionId": "math-diagram-fixed-b-two-new-keeps-20261106-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "math-diagram-fixed-b-two-new-keeps-20261106-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex post-review synthesis after reading both sealed new independent rounds; not a blind first pass",
+    "synthesizedAt": "2026-11-06T22:40:56.000Z",
+    "rationaleDe": "Beide tatsächlich neu und unabhängig abgeschlossenen kalten Prüfungen behalten exakt den festen bilingualen B-Text. Ich wähle die erste Evidenzfassung, weil sie sinnvoll geordnete Reihen allgemein behandelt und ausdrücklich auch das Fehlen einer eindeutigen Gesamtrichtung zulässt. Datenbezogene Auffälligkeiten und Wertevergleiche bleiben für ungeordnete Kategorien möglich; ein zeitlicher Trend wird dort nicht erfunden. Die zweite passende Evidenzfassung mit anderer Diagrammform und Anstieg-Plateau-Transfer bleibt vollständig gebunden. Es kommen weder Diagrammkonstruktion noch Kennwert-, Regressions-, Kausal- oder Prognoseleistungen hinzu. Die ursprünglichen zwei revise-Records werden weder überschrieben noch rückwirkend zu keep erklärt.",
+    "rationaleEn": "Both genuinely new, independently completed cold checks retain the exact fixed bilingual B text. I select the first evidence formulation because it covers meaningfully ordered series generally and explicitly allows the absence of a clear overall direction. Data-grounded features and value comparisons remain possible for unordered categories, without inventing a temporal trend. The second suitable formulation, with a different chart type and rise-plateau transfer, remains fully bound. No diagram construction, summary-statistic, regression, causal, or forecasting performance is added. The original two revise records are neither overwritten nor retrospectively labelled keep.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein Diagramm zeigt Beziehungen zwischen Werten und den benannten Größen oder Kategorien. Auffälligkeiten und Vergleiche müssen zu diesen Daten passen. Bei einem sachlich geordneten Verlauf ist eine einzelne Spitze oder ein einzelner Rückgang von der Tendenz über den betrachteten Bereich zu unterscheiden; die Tendenz beschreibt die gezeigten Daten.",
+      "essentialUnderstandingEn": "A diagram shows relationships between values and the named quantities or categories. Noticeable features and comparisons must fit those data. In a meaningfully ordered series, a single peak or decrease must be distinguished from the tendency across the interval considered; that tendency describes the data shown.",
+      "observablePerformanceDe": "Die lernende Person beschreibt in einer eigenständig bearbeiteten Aufgabe auffällige Werte eines einfachen Diagramms im Sachzusammenhang, vergleicht ausgewählte Werte unter Beachtung von Beschriftung, Skala und gegebenenfalls Einheit und stützt die Aussagen auf die dargestellten Daten. Bei einem geordneten Verlauf fasst sie dessen Tendenz in eigenen Worten zusammen und unterscheidet sie von einzelnen gegenläufigen Abschnitten.",
+      "observablePerformanceEn": "In an independently completed task, the learner describes noticeable values in a simple diagram in context, compares selected values while attending to labels, scale and units where applicable, and supports the statements with the displayed data. For an ordered series, the learner summarizes its tendency in their own words and distinguishes it from individual sections moving in the opposite direction.",
+      "transferExpectationDe": "In einer unabhängig vorgelegten neuen Aufgabe deutet die lernende Person ein einfaches Diagramm mit wesentlich veränderter Verlaufsstruktur, etwa einem Anstieg mit anschließendem Rückgang statt einer überwiegenden Zunahme. Sie passt Vergleiche und Verlaufsaussage an die neuen Beziehungen an und erläutert anhand der Daten, ob sich über den betrachteten Bereich eine eindeutige Richtung erkennen lässt.",
+      "transferExpectationEn": "In a new task presented independently, the learner interprets a simple diagram with a meaningfully changed pattern, such as a rise followed by a fall instead of a predominantly upward movement. The learner adapts comparisons and the description of the series to the new relationships and explains from the data whether a clear direction is evident across the interval considered."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-8c882c6fccda0f3c10946425f4c5971c0247b6101df7b004247b197e93f82c74",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:000b11f6689b6cd7ecd0305a11700cd19418063b703706939d57a40fa43f2fd2"
+}

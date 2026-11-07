@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-private-capture-alias-closure-review",
+  "date": "2026-11-06",
+  "status": "bounded-component-review-pass-all-four-reproduced-holds-closed",
+  "contextCommit": "1745733804825b798e50b42e0349c84ec164b59a",
+  "historicalReviewsUnchanged": [
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-independent-review-2026-11-06.json",
+      "sha256": "e6be95356850b7fdb96d90f12c3484c9ddab40e276396dfee5f975ff21906c24",
+      "bytes": 17588
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-followup-review-2026-11-06.json",
+      "sha256": "de56509a814b8abde585fa5a11184a35b32950f99f70f3dddfaf10f14cec4431",
+      "bytes": 14868
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-private-capture-followup-review-2026-11-06.md",
+      "sha256": "d13e0eb52ab13cb6091eb2f02964e0966f81aaba01056e733876739bc66a965f",
+      "bytes": 2602
+    }
+  ],
+  "reviewedCodeAndTestPins": [
+    {
+      "live": {
+        "path": "scripts/identity_qa_private_capture.py",
+        "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+        "bytes": 21528
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/scripts/identity_qa_private_capture.py",
+        "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+        "bytes": 21528
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/prepare_identity_qa_candidate.py",
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+        "bytes": 29635
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/scripts/prepare_identity_qa_candidate.py",
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+        "bytes": 29635
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/test_identity_qa_private_capture.py",
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+        "bytes": 7937
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/scripts/test_identity_qa_private_capture.py",
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+        "bytes": 7937
+      }
+    },
+    {
+      "live": {
+        "path": "scripts/test_prepare_identity_qa_candidate.py",
+        "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+        "bytes": 25904
+      },
+      "immutableCopy": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/scripts/test_prepare_identity_qa_candidate.py",
+        "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+        "bytes": 25904
+      }
+    }
+  ],
+  "sixSourceAPinsUnchanged": [
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e",
+      "bytes": 7282
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388",
+      "bytes": 3802
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4",
+      "bytes": 15679
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e",
+      "bytes": 1715
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b",
+      "bytes": 9673
+    },
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+      "bytes": 35183
+    }
+  ],
+  "reviewedDiffFrom17TestStage": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/reviewed.diff",
+    "sha256": "67fb6f769ae5aca0e1d4f0526bd4aaa0d4eedaba3d5987889afc3f9553a0d1bd",
+    "bytes": 10993
+  },
+  "scope": {
+    "componentOnly": true,
+    "productionOrCaptureCodeWrittenByReviewer": false,
+    "canonicalOrQaRecordsWritten": false,
+    "largeCapturePerformed": false,
+    "fullSourceAAuthorityClaimed": false,
+    "fullOriginalQaExecuted": false,
+    "fullCandidateQaExecuted": false,
+    "maturityApprovalClaimed": false,
+    "ciPassClaimed": false,
+    "runtimeActivationAllowed": false,
+    "qaValidityClaimed": false
+  },
+  "actualIndependentExecutions": {
+    "commands": [
+      {
+        "argv": [
+          "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+          "-B",
+          "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py"
+        ],
+        "exitCode": 0,
+        "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/original-probes-after.txt"
+      },
+      {
+        "argv": [
+          "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+          "-B",
+          "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py"
+        ],
+        "exitCode": 0,
+        "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/directory-alias-after.txt"
+      },
+      {
+        "argv": [
+          "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "scripts",
+          "-p",
+          "test_*identity_qa*.py",
+          "-v"
+        ],
+        "exitCode": 0,
+        "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/independent-19-tests.txt"
+      }
+    ],
+    "suite": {
+      "tests": 19,
+      "failures": 0,
+      "skips": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/independent-19-tests.txt",
+        "sha256": "7591b27137809fa38187c9495e914cb855ca12c83708cf5c8ac19d328d7fb2a2",
+        "bytes": 9651
+      }
+    },
+    "originalCounterprobes": {
+      "unchangedHarness": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py",
+        "sha256": "df0ce7da920d83bd22fd5725318e060fb291fc7ed5bfa72faaa346ba5167da3c",
+        "bytes": 7861
+      },
+      "actualAfter": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/original-probes-after.json",
+        "sha256": "608beb2f4437a5f6f327d14f02cf1d6a315268ed6f05bc729202a74305fa3f78",
+        "bytes": 6694
+      },
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/original-probes-after.txt",
+        "sha256": "c81633341e6767a4b87c02970cad3ab11843880c1e882688b99c802f12bac388",
+        "bytes": 7863
+      },
+      "outcomes": [
+        {
+          "case": "TEXT_SELECTED_INPUT_TAMPER",
+          "exitCode": 1,
+          "outsideSentinelChanged": null,
+          "exception": null
+        },
+        {
+          "case": "PROJECTED_GRAPH_TEXT_TAMPER",
+          "exitCode": 1,
+          "outsideSentinelChanged": null,
+          "exception": null
+        },
+        {
+          "case": "GROUPED_ASSET_ENTRY_REPLACEMENT",
+          "exitCode": 1,
+          "outsideSentinelChanged": null,
+          "exception": null
+        },
+        {
+          "case": "CONTROL_STORE_BLOB_TAMPER_REJECTED",
+          "exitCode": 1,
+          "outsideSentinelChanged": null,
+          "exception": null
+        },
+        {
+          "case": "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE",
+          "exitCode": null,
+          "outsideSentinelChanged": false,
+          "exception": "Unsafe capture path"
+        },
+        {
+          "case": "HOST_WORKTREE_VIA_PARENT_PROCESS_ROOT",
+          "exitCode": 1,
+          "outsideSentinelChanged": null,
+          "exception": null
+        }
+      ]
+    },
+    "aliasCounterprobe": {
+      "unchangedHarness": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-probe.py",
+        "sha256": "b7f5cd1677387ea4cfeefbba344d62a14ac6144d6a1eed58f6e82bddfe41baf1",
+        "bytes": 5015
+      },
+      "historicalBefore": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/directory-alias-result.json",
+        "sha256": "d4c778e8287b3fe242b074bad6a2d8838be0d01fa76ba9a83d6340335b4327c9",
+        "bytes": 759
+      },
+      "actualAfter": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/directory-alias-after.json",
+        "sha256": "e076148e3761d92346de0ab701730e9bfb5c1fe3fe09156521ef9b5ba8549106",
+        "bytes": 1646
+      },
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/directory-alias-after.txt",
+        "sha256": "d3a3335aee9ad2990bda62f0c7b9b60b1b9b1a0bd204acd7c6afd77a8b654e2e",
+        "bytes": 1940
+      },
+      "observation": {
+        "kind": "actual-independent-declared-directory-alias-probe",
+        "boundary": "Tiny genuine Git snapshot, native materialize and bwrap launcher; not a full Source-A authority fixture.",
+        "sourceWritesPerformed": false,
+        "declaredAliases": [
+          {
+            "path": "cases/alias",
+            "target": "real",
+            "gitObjectId": "ac558a3e1bf44424bf2af97380ee201860ba8a58"
+          }
+        ],
+        "baseline": {
+          "exitCode": 0,
+          "stdout": "{\"review\":\"authentic-for-alias\"}\n",
+          "stderr": ""
+        },
+        "afterAliasReplacement": {
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-alias-peer-dzdz35um/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-alias-peer-dzdz35um/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-alias-peer-dzdz35um/pair/prepare-tool/identity_qa_private_capture.py\", line 126, in verify_prepared_inputs\n    verify_directory_aliases(receipt, roots)\n  File \"/dev/shm/capture-alias-peer-dzdz35um/pair/prepare-tool/identity_qa_private_capture.py\", line 109, in verify_directory_aliases\n    require(os.readlink(physical) == target, \"Directory alias target changed: \" + role + \":\" + path)\n  File \"/dev/shm/capture-alias-peer-dzdz35um/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Directory alias target changed: original:cases/alias\n"
+        },
+        "originalTarget": "real",
+        "replacementTarget": "other",
+        "receiptByteIdentical": true,
+        "allSelectedPhysicalInputsStillMatch": true
+      }
+    }
+  },
+  "judgments": [
+    {
+      "id": "CAP-PEER-01",
+      "status": "closed-for-reviewed-boundary",
+      "reason": "Both original selected-producer-text and projected-goal-text mutations still fail before command execution with unchanged accepted receipt. Role-specific byte bindings remain intact."
+    },
+    {
+      "id": "CAP-PEER-02",
+      "status": "closed-for-reviewed-boundary",
+      "reason": "The actual grouped forest entry is authenticated independently of its still-valid private blob store; the unchanged entry-replacement probe fails before command execution."
+    },
+    {
+      "id": "CAP-PEER-03",
+      "status": "closed-for-reviewed-boundary",
+      "reason": "The unchanged own absolute-output sentinel probe rejects before output materialization and retains DO NOT CHANGE exactly. The small suite also retains unsafe/reserved/source/output-declaration negatives and positive declared writable output behavior."
+    },
+    {
+      "id": "CAP-PEER-04",
+      "status": "closed-for-reviewed-boundary",
+      "reason": "The identical actual Git/materializer/bwrap harness now accepts the bound original alias and rejects replacement to another private selected directory. The immutable receipt and all selected physical file hashes remain unchanged in both stages, so the changed result is attributable to actual alias authentication.",
+      "codeAnchors": [
+        "scripts/identity_qa_private_capture.py:73",
+        "scripts/identity_qa_private_capture.py:83",
+        "scripts/identity_qa_private_capture.py:87",
+        "scripts/identity_qa_private_capture.py:105",
+        "scripts/identity_qa_private_capture.py:126",
+        "scripts/prepare_identity_qa_candidate.py:448",
+        "scripts/prepare_identity_qa_candidate.py:483"
+      ],
+      "reviewedMechanism": "For each declared alias, compare exact relative path and Git-bound link text, reject duplicates/cycles/external lexical resolution, require a physical symlink, and compare its strict actual final directory against the statically resolved declared internal endpoint in both roots. The existing verifier invocation runs before and after commands. Existing forest text aliases use a separate byte-authenticated path and are not blanket-rejected.",
+      "actualAdditionalSuiteCoverage": "Two actual test methods cover seven mutations per root role (wrong internal target, ordinary-directory replacement, external target, cycle, missing endpoint, undeclared internal endpoint symlink, external endpoint symlink), accepted chained aliases, and two asynchronous post-command alias mutations. The complete 19-test run had no skips."
+    }
+  ],
+  "authorityAndIsolationLimits": [
+    "The synthetic fixtures are real small Git/materializer/launcher executions, not a full593-source/164-rule Source-A authority proof.",
+    "The trusted source of expected alias/byte bindings is the reviewed preparer operating on pinned inputs plus the externally accepted preparation receipt; the receipt is not a free-standing authority created by an arbitrary caller.",
+    "This establishes the reviewed capture boundaries under the prep/run locking and controlled-workspace discipline. It is not a general guarantee against a hostile same-user host process changing and restoring files transiently.",
+    "Full producer file/directory read discovery, including relative and file-descriptor reads, still requires the separate native QA read-scope and adapter proofs.",
+    "Read-only host mounts and masking of the chosen worktree are not a general confidential-host sandbox. Host executables/libraries/environment beyond the explicit captured dependency inputs need honest separate pinning.",
+    "No actual full original/candidate QA or floor result follows from these19 component tests; no D/P/A/M/V review is requalified or revived.",
+    "Historical14 and17 test-stage artifacts remain immutable; this separate successor closes only the concrete captured holds."
+  ]
+}

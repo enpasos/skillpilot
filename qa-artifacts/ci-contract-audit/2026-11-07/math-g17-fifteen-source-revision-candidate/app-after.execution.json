@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/math-g17-fifteen-jm976p3s",
+    "/dev/shm/math-g17-fifteen-jm976p3s",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/math-g17-fifteen-jm976p3s/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--ro-bind",
+    "/dev/shm/math-g17-fifteen-jm976p3s/after.json",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-source-revision-candidate/validate.mts",
+    "app-after"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 14.013354778289795,
+  "stdoutSha256": "5e4aeee466257040561064bf4590ee4b187cb51d84d6d8776bea8142fdbe4ecf",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "activeRootReadOnly": true
+}

@@ -1,0 +1,2943 @@
+--- a/app/scripts/goalVisualizationReviewedContext.ts
++++ b/app/scripts/goalVisualizationReviewedContext.ts
+@@ -117,23 +117,31 @@
+   !!capability && typeof capability === 'object' && capabilities.has(capability)
+   && sameContext((capability as VerifiedVisualizationContext).context, current)
+ 
+-export const createVisualizationContextVerifier = (options: { repositoryRoot?: string; acceptedRepositoryCommit?: string } = {}) => {
++export const createVisualizationContextVerifier = (options: {
++  repositoryRoot?: string
++  originalEvidenceRepositoryRoot?: string
++  acceptedRepositoryCommit?: string
++  onAuthenticatedOriginalRead?: (binding: Readonly<VisualizationReviewArtifact>, currentCopyRequired: boolean) => void
++} = {}) => {
+   const root = realpathSync(options.repositoryRoot ?? repoRoot)
+-  const originalGit = createAuthenticatedGitEvidenceReader({ repositoryRoot: root, acceptedRepositoryCommit: options.acceptedRepositoryCommit })
++  const originalsRoot = realpathSync(options.originalEvidenceRepositoryRoot ?? root)
++  const originalGit = createAuthenticatedGitEvidenceReader({ repositoryRoot: originalsRoot, acceptedRepositoryCommit: options.acceptedRepositoryCommit })
+   const safePath = validateGitEvidencePath
+   return (reference: unknown, current: VisualizationCurrentContext): VisualizationContextValidation => {
+     if (!reference) return { ok: false, status: 'missing', issues: ['Missing immutable reviewed-context receipt'] }
+     try {
+       const captures = new Map<string, Buffer>()
+-      const currentBytes = (path: string): Buffer => {
++      const capturedBytes = (base: string, path: string): Buffer => {
+         path = safePath(path)
+-        if (!captures.has(path)) {
+-          const absolute = realpathSync(resolve(root, path)), local = relative(root, absolute)
++        const key = base + '\0' + path
++        if (!captures.has(key)) {
++          const absolute = realpathSync(resolve(base, path)), local = relative(base, absolute)
+           requireValue(local && !local.startsWith('../') && !isAbsolute(local), 'Evidence file escapes repository')
+-          captures.set(path, Buffer.from(readFileSync(absolute)))
++          captures.set(key, Buffer.from(readFileSync(absolute)))
+         }
+-        return captures.get(path)!
+-      }
++        return captures.get(key)!
++      }
++      const currentBytes = (path: string): Buffer => capturedBytes(root, path)
+       const ref = record(reference)
+       requireValue(Object.keys(ref).sort().join(',') === 'path,sha256' && typeof ref.path === 'string'
+         && typeof ref.sha256 === 'string' && /^[0-9a-f]{64}$/u.test(ref.sha256), 'Invalid context receipt reference')
+@@ -145,7 +153,8 @@
+       const artifact = (binding: VisualizationReviewArtifact, requireCurrentCopy = true): Buffer => {
+         const path = safePath(binding.path)
+         const raw = originalGit.readArtifact(binding)
+-        if (requireCurrentCopy) requireValue(hash(currentBytes(path)) === binding.sha256, 'Original input bytes changed')
++        if (requireCurrentCopy) requireValue(hash(capturedBytes(originalsRoot, path)) === binding.sha256, 'Original input bytes changed')
++        options.onAuthenticatedOriginalRead?.(Object.freeze({ ...binding }), requireCurrentCopy)
+         return raw
+       }
+       // Capture all supplied originals before interpreting any claims from them.
+--- /dev/null
++++ b/app/scripts/lib/qualifiedVisualizationContextAuthority.ts
+@@ -0,0 +1,62 @@
++// SPDX-License-Identifier: Apache-2.0
++import { createHash } from 'node:crypto'
++import { mkdtempSync, readFileSync, realpathSync, rmSync } from 'node:fs'
++import { tmpdir } from 'node:os'
++import { resolve } from 'node:path'
++import { spawnSync } from 'node:child_process'
++import { createVisualizationContextVerifier, parseVisualizationReviewJson,
++  type VisualizationContextReceiptReference, type VisualizationCurrentContext } from '../goalVisualizationReviewedContext'
++
++// These are external acceptance pins for this finite historical input set.
++// Neither a receipt nor a caller can nominate its own acceptance authority.
++export const qualifiedVisualizationAuthority = Object.freeze({
++  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index.json',
++  indexSha256: '3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e',
++  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index/capsule',
++  capsuleSha256: 'e78eb4c6338340eead74d3de696da955b50cdca3f4f377160c3d9d87e3454c6b',
++  acceptedRepositoryCommit: '6fe35a6b0fa807e5a97475b34f3715dc16a89c00',
++})
++interface Index { rows: Array<{ landscapeId: string; goalId: string; receipt: VisualizationContextReceiptReference }> }
++const sha = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
++const factories = new Map<string, ReturnType<typeof initialize>>()
++function initialize(root: string) {
++  const pins = qualifiedVisualizationAuthority
++  const raw = readFileSync(resolve(root, pins.indexPath))
++  if (sha(raw) !== pins.indexSha256) throw new Error('External visualization context index differs')
++  const index = parseVisualizationReviewJson(raw) as Index
++  const rows = new Map(index.rows.map(row => [row.landscapeId + ':' + row.goalId, Object.freeze({ ...row.receipt })]))
++  if (index.rows.length !== 54 || rows.size !== 54) throw new Error('External visualization index is incomplete or ambiguous')
++  // A small separate original-evidence repository works in an actual shallow
++  // checkout. The same raw OID/parent/path verifier runs before any V decision.
++  const temporary = mkdtempSync(resolve(tmpdir(), 'skillpilot-qualified-v-'))
++  const originalsRoot = resolve(temporary, 'originals')
++  const run = spawnSync('python3', ['-B', resolve(root, 'scripts/visualization_qualified_context_capsule.py'), 'materialize',
++    '--repository-root', root, '--accepted-commit', pins.acceptedRepositoryCommit,
++    '--accepted-census-sha256', pins.indexSha256, '--census-path', pins.indexPath,
++    '--capsule', resolve(root, pins.capsulePath), '--accepted-capsule-sha256', pins.capsuleSha256,
++    '--output', originalsRoot, '--maximum-working-bytes', '134217728', '--maximum-object-bytes', '268435456'],
++  { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 })
++  if (run.status !== 0) {
++    rmSync(temporary, { recursive: true, force: true })
++    throw new Error('Authenticated original-context capsule failed: ' + (run.stderr || run.error?.message || run.stdout))
++  }
++  process.once('exit', () => rmSync(temporary, { recursive: true, force: true }))
++  const verify = createVisualizationContextVerifier({ repositoryRoot: root, originalEvidenceRepositoryRoot: originalsRoot,
++    acceptedRepositoryCommit: pins.acceptedRepositoryCommit })
++  return (current: VisualizationCurrentContext) => {
++    // Do not let the private history cache hide changed acceptance-index bytes.
++    if (sha(readFileSync(resolve(root, pins.indexPath))) !== pins.indexSha256) {
++      throw new Error('External visualization context index changed')
++    }
++    return verify(rows.get(current.landscapeId + ':' + current.goalId), current)
++  }
++}
++
++/** Real original-byte authentication, never an imported set of ready goals. */
++export function createQualifiedVisualizationContextAuthority(repositoryRoot: string) {
++  const root = realpathSync(repositoryRoot)
++  return (current: VisualizationCurrentContext) => {
++    if (!factories.has(root)) factories.set(root, initialize(root))
++    return factories.get(root)!(current)
++  }
++}
+--- /dev/null
++++ b/app/scripts/lib/curriculumVisualizationValidation.ts
+@@ -0,0 +1,141 @@
++// SPDX-License-Identifier: Apache-2.0
++import { createHash } from 'node:crypto'
++import { readFileSync, realpathSync } from 'node:fs'
++import { isAbsolute, relative, resolve } from 'node:path'
++import type { LearningGoal } from '../../src/landscapeTypes'
++import { isAiApprovedForCurrentAsset } from '../../src/utils/goalVisualizationQaStatus'
++import { qualifiedVisualizationAuthority, createQualifiedVisualizationContextAuthority } from './qualifiedVisualizationContextAuthority'
++
++export interface CurriculumVisualizationValidation {
++  readonly landscapeId: string
++  readonly landscapePath: string
++  readonly subject: string
++  readonly currentGoalIds: readonly string[]
++  readonly readyGoalIds: readonly string[]
++  readonly deferredGoalIds: readonly string[]
++  readonly contextsSha256: string
++  readonly indexSha256: string
++  readonly capsuleSha256: string
++  readonly issues: readonly string[]
++}
++const nativeScopes = new WeakSet<object>()
++const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b)
++const unique = (ids: readonly string[]) => ids.length > 0 && ids.every(id => typeof id === 'string' && id.length > 0)
++  && new Set(ids).size === ids.length
++
++function captureCurrentVisualizationScope(input: CurriculumVisualizationValidation): CurriculumVisualizationValidation {
++  const scope = Object.freeze({ ...input, currentGoalIds: Object.freeze([...input.currentGoalIds].sort()),
++    readyGoalIds: Object.freeze([...input.readyGoalIds].sort()), deferredGoalIds: Object.freeze([...input.deferredGoalIds].sort()),
++    issues: Object.freeze([...input.issues].sort()) })
++  nativeScopes.add(scope)
++  return scope
++}
++
++export interface VisualizationGateRecord {
++  goalId: string; title: string; description: string; subject: string; landscapeId: string; landscapePath: string
++  visualizationState: string; missingReason: string; imageUrl: string; publicAssetPath: string; canonicalAssetPath: string
++  assetSha256: string; aiApproved?: unknown; aiApprovedAssetSha256?: unknown; aiReviewedAt?: unknown
++}
++
++/** Shared native V boundary. It evaluates current inputs, never ready-ID claims. */
++export function evaluateCurrentVisualizationGate(input: {
++  repositoryRoot: string; landscapeId: string; landscapePath: string; subject: string
++  goalById: ReadonlyMap<string, LearningGoal & { titleEn?: string; descriptionEn?: string }>
++  currentGoalIds: ReadonlySet<string>
++  records: readonly VisualizationGateRecord[]
++  discoveryIssues?: readonly string[]
++}): CurriculumVisualizationValidation {
++  const root = realpathSync(input.repositoryRoot), issues = [...(input.discoveryIssues ?? [])]
++  const goals = [...input.currentGoalIds].sort(), ready: string[] = [], deferred: string[] = [], contexts: unknown[] = []
++  const records = new Map<string, VisualizationGateRecord>(), duplicates = new Set<string>()
++  for (const row of input.records) { if (records.has(row.goalId)) duplicates.add(row.goalId); records.set(row.goalId, row) }
++  for (const id of duplicates) issues.push(`duplicate visualization-QA record for ${id}`)
++  const normalized = (value: unknown) => String(value ?? '').replace(/\s+/gu, ' ').trim()
++  const verify = createQualifiedVisualizationContextAuthority(root)
++  const actualBytes = (path: string) => {
++    const absolute = realpathSync(resolve(root, path)), local = relative(root, absolute)
++    if (!local || local.startsWith('../') || isAbsolute(local)) throw new Error('Current visualization asset leaves repository')
++    return readFileSync(absolute)
++  }
++  for (const goalId of goals) {
++    const goal = input.goalById.get(goalId), row = records.get(goalId)
++    // Bind all current definitions/rows, including failures, for stored-report replay.
++    contexts.push({ goalId, goal: goal ?? null, record: row ?? null })
++    let reason = ''
++    if (!goal || !row || duplicates.has(goalId)) reason = 'missing or duplicate current goal/QA record'
++    else if (row.subject !== input.subject || row.landscapeId !== input.landscapeId
++      || row.landscapePath !== input.landscapePath || normalized(row.title) !== normalized(goal.title)
++      || normalized(row.description) !== normalized(goal.description)) reason = 'current goal/QA identity or text differs'
++    else {
++      const primary = (goal.resourceLinks ?? []).filter(link => link.type === 'goal-visualization' && link.role === 'primary')
++      if (row.visualizationState === 'missing') {
++        if ((row.missingReason === 'deferred_provider_limitation' || row.missingReason === 'deferred_quality_review')
++          && primary.length === 0 && !row.imageUrl && !row.assetSha256) deferred.push(goalId)
++        reason = 'necessary visualization is missing or deferred'
++      } else if (row.visualizationState !== 'available' || row.missingReason !== '' || primary.length !== 1
++        || primary[0].url !== row.imageUrl || !/^sha256:[0-9a-f]{64}$/u.test(row.assetSha256)
++        || !isAiApprovedForCurrentAsset(row)) reason = 'current image/AI approval preconditions are incomplete'
++      else try {
++        const publicBytes = actualBytes(row.publicAssetPath), canonicalBytes = actualBytes(row.canonicalAssetPath)
++        const publicHash = 'sha256:' + createHash('sha256').update(publicBytes).digest('hex')
++        const canonicalHash = 'sha256:' + createHash('sha256').update(canonicalBytes).digest('hex')
++        contexts.push({ goalId, publicHash, canonicalHash })
++        if (row.publicAssetPath !== `app/public${row.imageUrl}` || publicHash !== row.assetSha256 || canonicalHash !== row.assetSha256) {
++          reason = 'current actual image bytes differ'
++        } else {
++          const result = verify({ landscapeId: input.landscapeId, goalId, subject: input.subject,
++            title: goal.title, description: goal.description, titleEn: goal.titleEn, descriptionEn: goal.descriptionEn,
++            demandLevel: goal.dimensionTags?.demandLevel, imageUrl: row.imageUrl, publicAssetPath: row.publicAssetPath,
++            canonicalAssetPath: row.canonicalAssetPath, assetSha256: publicHash })
++          if (!result.ok) reason = result.issues.join('; ')
++        }
++      } catch (error) { reason = error instanceof Error ? error.message : String(error) }
++    }
++    if (reason) issues.push(`${input.subject}: ${goalId}: ${reason}`)
++    else ready.push(goalId)
++  }
++  if (goals.length === 0) issues.push('Current curricularAtomic visualization scope is empty')
++  return captureCurrentVisualizationScope({ landscapeId: input.landscapeId, landscapePath: input.landscapePath,
++    subject: input.subject, currentGoalIds: goals, readyGoalIds: ready, deferredGoalIds: deferred,
++    contextsSha256: visualizationContextDigest(contexts), indexSha256: qualifiedVisualizationAuthority.indexSha256,
++    capsuleSha256: qualifiedVisualizationAuthority.capsuleSha256, issues: [...new Set(issues)] })
++}
++
++export const visualizationContextDigest = (contexts: readonly unknown[]) => createHash('sha256')
++  .update(JSON.stringify(contexts)).digest('hex')
++
++export function hasCompleteCurrentVisualizationScope(expected: CurriculumVisualizationValidation | undefined): boolean {
++  return !!expected && nativeScopes.has(expected) && unique(expected.currentGoalIds)
++    && same(expected.readyGoalIds, expected.currentGoalIds) && expected.deferredGoalIds.length === 0
++    && expected.issues.length === 0 && expected.indexSha256 === qualifiedVisualizationAuthority.indexSha256
++    && expected.capsuleSha256 === qualifiedVisualizationAuthority.capsuleSha256
++}
++
++export const hasMatchingVisualizationContextManifest = (manifest: unknown, expected: CurriculumVisualizationValidation | undefined) => (
++  !!expected && nativeScopes.has(expected) && same(manifest, expected)
++)
++
++/** A serialized pass is insufficient without the independently read current scope. */
++export function hasCompletePassingVisualizationContext(
++  rules: unknown,
++  landscapeId: string,
++  expected: CurriculumVisualizationValidation | undefined,
++): boolean {
++  if (!expected || !hasCompleteCurrentVisualizationScope(expected) || expected.landscapeId !== landscapeId || !Array.isArray(rules)) return false
++  const matches = rules.filter(rule => rule?.id === 'CQR-303')
++  const graphs = rules.filter(rule => rule?.id === 'CQR-001')
++  const checked = graphs[0]?.graphIntegrity?.checkedGoalKeys
++  if (matches.length !== 1 || graphs.length !== 1 || !Array.isArray(checked)
++    || !expected.currentGoalIds.every(id => checked.includes(`${landscapeId}:${id}`))) return false
++  const rule = matches[0]
++  return rule.status === 'pass' && same(rule.visualizationValidation, expected)
++    && rule.metrics?.expectedGoals === expected.currentGoalIds.length
++    && rule.metrics?.currentVisualizationQaRecords === expected.currentGoalIds.length
++    && rule.metrics?.currentDescriptionResolutions === expected.currentGoalIds.length
++    && rule.metrics?.currentPositiveEvidenceProfiles === expected.currentGoalIds.length
++    && rule.metrics?.currentSemanticAtomicityDecisions === expected.currentGoalIds.length
++    && rule.metrics?.currentMemoryReviewDecisions === expected.currentGoalIds.length
++    && rule.metrics?.requiredChecksPassed === 6 && rule.metrics?.requiredChecksTotal === 6
++    && rule.metrics?.strictComplete === expected.currentGoalIds.length
++    && rule.metrics?.remaining === 0 && rule.metrics?.blockingIssues === 0
++}
+--- a/app/scripts/reportDeepUnderstandingRollout.ts
++++ b/app/scripts/reportDeepUnderstandingRollout.ts
+@@ -7,6 +7,7 @@
+ import addFormats from 'ajv-formats'
+ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+ import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
++import { evaluateCurrentVisualizationGate, type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
+ import {
+   fingerprintSemanticKindSourceGoal,
+   stableGoalBookJson,
+@@ -125,6 +126,7 @@
+   deferredVisualizationGoalIds: string[]
+   requiredChecks: DeepUnderstandingCompletionCheck[]
+   strictCompletionReady: boolean
++  visualizationValidation?: CurriculumVisualizationValidation
+   issues: string[]
+ }
+ 
+@@ -1087,85 +1089,47 @@
+   return parsed.errors.length === 0 ? ready : new Set()
+ }
+ 
+-const digestFile = (absolutePath: string): string => sha256(readFileSync(absolutePath))
++const visualizationScopes = new WeakMap<DeepUnderstandingSubjectReport, CurriculumVisualizationValidation>()
++export const getCurrentVisualizationScope = (subject: DeepUnderstandingSubjectReport | undefined) => (
++  subject ? visualizationScopes.get(subject) : undefined
++)
+ 
+ const loadVisualizationReadyGoals = (
+   config: DeepUnderstandingSubjectConfig,
+   scope: AuthoritativeScope,
+   issues: string[],
+   deferredGoalIds: Set<string>,
+-): Set<string> => {
+-  const currentCheck = runTsxCheck('app/scripts/generateGoalVisualizationQaLedgers.ts', [
+-    '--check',
+-    `--subject=${config.subject}`,
+-  ])
+-  if (!currentCheck.valid) {
+-    addIssue(issues, config.subject, `visualization-QA freshness check failed: ${currentCheck.detail}`)
+-  }
+-  if (!currentCheck.valid) return new Set()
+-  let ledger: VisualizationQaLedger
++): { ready: Set<string>; validation: CurriculumVisualizationValidation } => {
++  const currentCheck = runTsxCheck('app/scripts/generateGoalVisualizationQaLedgers.ts', ['--check', `--subject=${config.subject}`])
++  const discoveryIssues = [...scope.issues]
++  if (!currentCheck.valid) discoveryIssues.push(`visualization-QA freshness check failed: ${currentCheck.detail}`)
++  let records: VisualizationQaRecord[] = []
+   try {
+-    ledger = loadJson<VisualizationQaLedger>(config.visualizationQaPath)
+-  } catch (error) {
+-    addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
+-    return new Set()
+-  }
+-  if (ledger.schemaVersion !== 1 || ledger.subject !== config.subject || !Array.isArray(ledger.records)) {
+-    addIssue(issues, config.subject, 'visualization-QA ledger identity or schema is invalid')
+-    return new Set()
+-  }
+-  const duplicates = duplicateValues(ledger.records.map(({ goalId }) => goalId))
+-  duplicates.forEach((goalId) => addIssue(issues, config.subject, `duplicate visualization-QA record for ${goalId}`))
+-  const duplicateSet = new Set(duplicates)
+-  const recordsByGoalId = new Map(ledger.records.map((record) => [record.goalId, record]))
+-  const ready = new Set<string>()
+-  scope.atomicGoalIds.forEach((goalId) => {
+-    const goal = scope.goalById.get(goalId)
+-    const record = recordsByGoalId.get(goalId)
+-    if (!goal || !record || duplicateSet.has(goalId)) return
+-    if (
+-      record.subject !== config.subject
+-      || record.landscapeId !== scope.landscape.landscapeId
+-      || record.landscapePath !== config.landscapePath
+-      || normalizeText(record.title) !== normalizeText(goal.title)
+-      || normalizeText(record.description) !== normalizeText(goal.description)
+-    ) return
+-    const primaryLinks = (goal.resourceLinks ?? []).filter((link) => (
+-      link.type === 'goal-visualization' && link.role === 'primary'
+-    ))
+-    if (record.visualizationState === 'missing') {
+-      if (
+-        (record.missingReason === 'deferred_provider_limitation' || record.missingReason === 'deferred_quality_review')
+-        && primaryLinks.length === 0
+-        && !record.imageUrl
+-        && !record.assetSha256
+-      ) deferredGoalIds.add(goalId)
+-      return
+-    }
+-    if (
+-      record.visualizationState !== 'available'
+-      || record.missingReason !== ''
+-      || primaryLinks.length !== 1
+-      || primaryLinks[0].url !== record.imageUrl
+-      || !/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
+-      || !hasCompletedDeepUnderstandingVisualizationReview(record)
+-    ) return
+-    try {
+-      const publicAssetPath = resolveRepoPath(record.publicAssetPath)
+-      const canonicalAssetPath = resolveRepoPath(record.canonicalAssetPath)
+-      if (
+-        record.publicAssetPath !== `app/public${record.imageUrl}`
+-        || !existsSync(publicAssetPath)
+-        || !existsSync(canonicalAssetPath)
+-        || digestFile(publicAssetPath) !== record.assetSha256
+-        || digestFile(canonicalAssetPath) !== record.assetSha256
+-      ) return
+-    } catch {
+-      return
+-    }
+-    ready.add(goalId)
+-  })
+-  return ready
++    const ledger = loadJson<VisualizationQaLedger>(config.visualizationQaPath)
++    if (ledger.schemaVersion !== 1 || ledger.subject !== config.subject || !Array.isArray(ledger.records)) {
++      discoveryIssues.push('visualization-QA ledger identity or schema is invalid')
++    } else records = ledger.records
++  } catch (error) { discoveryIssues.push(error instanceof Error ? error.message : String(error)) }
++  const validation = evaluateCurrentVisualizationGate({ repositoryRoot: repoRoot,
++    landscapeId: scope.landscape.landscapeId, landscapePath: config.landscapePath, subject: config.subject,
++    goalById: scope.goalById, currentGoalIds: scope.atomicGoalIds, records, discoveryIssues })
++  issues.push(...validation.issues)
++  validation.deferredGoalIds.forEach(id => deferredGoalIds.add(id))
++  // Freshness/discovery failures never retain readiness from otherwise valid rows.
++  return { ready: discoveryIssues.length ? new Set() : new Set(validation.readyGoalIds), validation }
++}
++
++/** The standalone floor reader repeats the same current source discovery/V boundary. */
++export function readCurrentCurriculumVisualizationScopes(landscapeIds: readonly string[]) {
++  const requested = new Set(landscapeIds), result = new Map<string, CurriculumVisualizationValidation>()
++  for (const config of loadDeepUnderstandingRolloutConfig().subjects) {
++    const scope = loadAuthoritativeScope(config)
++    if (!requested.has(scope.landscape.landscapeId)) continue
++    const validation = loadVisualizationReadyGoals(config, scope, [], new Set()).validation
++    if (result.has(scope.landscape.landscapeId)) throw new Error('Duplicate current visualization scope owner')
++    result.set(scope.landscape.landscapeId, validation)
++  }
++  return result
+ }
+ 
+ const loadRound = async (groupDirectory: string, roundDirectory: string): Promise<LoadedRound> => {
+@@ -1888,12 +1852,13 @@
+     const memoryIssues: string[] = []
+     const visualizationIssues: string[] = []
+     const deferredVisualizationGoalIds = new Set<string>()
+-    const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
++    const [descriptionReady, atomicityReady, memoryReady, visualizationResult] = await Promise.all([
+       loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
+       Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
+       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
+       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
+     ])
++    const visualizationReady = visualizationResult.ready
+     const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
+     const strictCompleteGoalIds = scope.denominator === null
+       ? []
+@@ -1935,8 +1900,10 @@
+       deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
+       requiredChecks,
+       strictCompletionReady: false,
++      visualizationValidation: structuredClone(visualizationResult.validation),
+       issues: uniqueIssues,
+     }
++    visualizationScopes.set(subjectReport, visualizationResult.validation)
+     subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
+     subjects.push(subjectReport)
+   }
+--- a/app/scripts/generateCurriculumQualityStatus.ts
++++ b/app/scripts/generateCurriculumQualityStatus.ts
+@@ -23,7 +23,8 @@
+   defaultMemoryCardReviewConfigDir,
+   discoverMemoryCardReviewConfigs,
+ } from './memoryCardReviewConfigDiscovery'
+-import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
++import { generateDeepUnderstandingRollout, getCurrentVisualizationScope, hasStrictDeepUnderstandingCompletion,
++  type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
+ import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
+ import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
+ import { createRepositorySourceAvailability } from './repositorySourceAvailability'
+@@ -37,6 +38,8 @@
+ 
+ import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope,
+   type CurriculumAssessmentValidation } from './lib/curriculumAssessmentValidation'
++import { hasCompleteCurrentVisualizationScope, hasCompletePassingVisualizationContext, hasMatchingVisualizationContextManifest,
++  type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
+ 
+ type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
+ type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
+@@ -61,6 +64,7 @@
+   details?: string[]
+   graphIntegrity?: IntegrityReport
+   assessmentValidation?: CurriculumAssessmentValidation
++  visualizationValidation?: CurriculumVisualizationValidation
+ }
+ 
+ 
+@@ -3985,6 +3989,7 @@
+   landscape: SkillLandscape,
+   landscapePath: string,
+   report: DeepUnderstandingRolloutReport,
++  expectedVisualizationScope?: CurriculumVisualizationValidation,
+ ): RuleResult {
+   const matches = report.subjects.filter((subject) => subject.landscapeId === landscape.landscapeId
+     || subject.landscapePath === landscapePath)
+@@ -3996,12 +4001,15 @@
+     return makeRule('CQR-303', 'fail', 'The central deep-understanding report does not unambiguously identify this curriculum.')
+   }
+   const checksPassed = subject.requiredChecks.filter(({ status }) => status === 'pass').length
++  const currentVisualizationScope = expectedVisualizationScope ?? getCurrentVisualizationScope(subject)
+   const status: RuleStatus = subject.issues.length > 0 || subject.denominator === null || subject.denominator <= 0
++    || !hasCompleteCurrentVisualizationScope(currentVisualizationScope)
++    || !hasMatchingVisualizationContextManifest(subject.visualizationValidation, currentVisualizationScope)
+     ? 'fail'
+-    : subject.strictCompletionReady ? 'pass' : 'warn'
+-  return makeRule(
++    : subject.strictCompletionReady && hasStrictDeepUnderstandingCompletion(subject) ? 'pass' : 'warn'
++  const rule = makeRule(
+     'CQR-303', status,
+-    subject.strictCompletionReady
++    status === 'pass'
+       ? `Deep curriculum QA is complete for all ${subject.denominator} current curricularAtomic goals.`
+       : `Deep curriculum QA is incomplete: ${subject.strictComplete}/${subject.denominator ?? 'unknown'} current curricularAtomic goals strictly complete.`,
+     {
+@@ -4015,11 +4023,16 @@
+     },
+     [
+       ...subject.issues,
++      ...(!hasCompleteCurrentVisualizationScope(currentVisualizationScope)
++        || !hasMatchingVisualizationContextManifest(subject.visualizationValidation, currentVisualizationScope)
++        ? ['The immutable original-context V manifest is absent, incomplete, stale or not bound to the current native source scope.'] : []),
+       ...(subject.deferredVisualizationGoalIds.length > 0
+         ? [`${subject.deferredVisualizationGoalIds.length} current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V.`]
+         : []),
+     ],
+   )
++  rule.visualizationValidation = subject.visualizationValidation ? structuredClone(subject.visualizationValidation) : undefined
++  return rule
+ }
+ 
+ function readCompositionViewCountsByLandscapeId(): Map<string, number> {
+@@ -6145,6 +6158,7 @@
+   scopes: ScopeStatus[],
+   landscapeId: string,
+   expectedAssessmentScope?: CurriculumAssessmentScope,
++  expectedVisualizationScope?: CurriculumVisualizationValidation,
+ ): MaturityLevel {
+   const graphRules = curriculumRules.filter((rule) => rule.id === 'CQR-001')
+   const graphReady = graphRules.length === 1
+@@ -6171,7 +6185,7 @@
+   if (!m5Ready) return 'M4'
+ 
+   if (curriculumRules.find((rule) => rule.id === 'CQR-302')?.status !== 'pass') return 'M5'
+-  return curriculumRules.find((rule) => rule.id === 'CQR-303')?.status === 'pass' ? 'M7' : 'M6'
++  return hasCompletePassingVisualizationContext(curriculumRules, landscapeId, expectedVisualizationScope) ? 'M7' : 'M6'
+ }
+ 
+ function pushGeneratedMarkdownNotice(lines: string[]): void {
+@@ -6340,7 +6354,8 @@
+         subject: landscape.subject,
+         frameworkId: landscape.frameworkId,
+         path: toRepoPath(file),
+-        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId, assessmentScope),
++        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId, assessmentScope,
++          getCurrentVisualizationScope(deepUnderstandingReport.subjects.find(subject => subject.landscapeId === landscape.landscapeId))),
+         humanTrialBlockingFindings: countHumanTrialBlockingFindings(landscape, goalVisualizationQaLedgers),
+         goals: landscape.goals.length,
+         atomicGoals,
+--- a/app/scripts/checkCurriculumMaturityFloors.ts
++++ b/app/scripts/checkCurriculumMaturityFloors.ts
+@@ -4,6 +4,8 @@
+ import { hasCompletePassingSkillGraphIntegrity } from './lib/skillGraphIntegrity'
+ import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope } from './lib/curriculumAssessmentValidation'
+ import { readCurrentCurriculumAssessmentScopes } from './generateCurriculumQualityStatus'
++import { readCurrentCurriculumVisualizationScopes } from './reportDeepUnderstandingRollout'
++import { hasCompletePassingVisualizationContext, type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
+ 
+ interface MaturityRule {
+   id?: string
+@@ -12,6 +14,7 @@
+   details?: string[]
+   graphIntegrity?: unknown
+   assessmentValidation?: unknown
++  visualizationValidation?: unknown
+   metrics?: Record<string, number>
+ }
+ 
+@@ -78,6 +81,7 @@
+   artifact: { curricula?: CurriculumStatus[] },
+   policy: FloorPolicy,
+   expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
++  expectedVisualizationScopes?: ReadonlyMap<string, CurriculumVisualizationValidation>,
+ ): string[] {
+   if (policy.schemaVersion !== 1 || !policy.policyId || policy.baselineDate !== '2026-08-20' || !Array.isArray(policy.floors) || policy.floors.length === 0 || !Array.isArray(policy.exceptions) || !Array.isArray(policy.knownPreBaselineRegressions)) {
+     throw new Error('Invalid or empty curriculum maturity-floor policy')
+@@ -115,6 +119,10 @@
+       expectedAssessmentScopes?.get(floor.landscapeId))) {
+       failures.push(`${floor.subject} [${floor.landscapeId}]: protected maturity has no complete passing assessment reports bound to current source discovery`)
+     }
++    if (floorRank >= 7 && !hasCompletePassingVisualizationContext(current.rules, floor.landscapeId,
++      expectedVisualizationScopes?.get(floor.landscapeId))) {
++      failures.push(`${floor.subject} [${floor.landscapeId}]: protected M7 has no complete passing visualization context report bound to current source/asset/review inputs`)
++    }
+     if (maturityRank(current.maturity, floor.subject) < floorRank) {
+       failures.push(`${floor.subject} [${floor.landscapeId}]: current ${current.maturity} is below protected floor ${floor.minimumMaturity}`)
+       failures.push(...diagnosticLines(current, floorRank))
+@@ -128,8 +136,9 @@
+   artifact: { curricula?: CurriculumStatus[] },
+   policy: FloorPolicy,
+   expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
++  expectedVisualizationScopes?: ReadonlyMap<string, CurriculumVisualizationValidation>,
+ ): void {
+-  const failures = collectCurriculumMaturityFloorFailures(artifact, policy, expectedAssessmentScopes)
++  const failures = collectCurriculumMaturityFloorFailures(artifact, policy, expectedAssessmentScopes, expectedVisualizationScopes)
+   if (failures.length > 0) {
+     throw new Error([
+       `Curriculum maturity regression detected by ${policy.policyId}.`,
+@@ -146,7 +155,9 @@
+   const policy = JSON.parse(readFileSync(policyPath, 'utf8')) as FloorPolicy
+   const expectedScopes = readCurrentCurriculumAssessmentScopes((policy.floors ?? [])
+     .flatMap((floor) => floor.landscapeId ? [floor.landscapeId] : []))
+-  checkCurriculumMaturityFloors(artifact, policy, expectedScopes)
++  const expectedVisualizationScopes = readCurrentCurriculumVisualizationScopes((policy.floors ?? [])
++    .flatMap(floor => floor.landscapeId && floor.minimumMaturity === 'M7' ? [floor.landscapeId] : []))
++  checkCurriculumMaturityFloors(artifact, policy, expectedScopes, expectedVisualizationScopes)
+   console.log(`curriculum maturity floors passed: ${policy.floors!.length} protected curricula`)
+ }
+ 
+--- a/app/scripts/generateGoalVisualizationQaLedgers.ts
++++ b/app/scripts/generateGoalVisualizationQaLedgers.ts
+@@ -19,7 +19,7 @@
+ 
+ type YesNo = GoalVisualizationQaYesNo
+ 
+-interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields, GoalVisualizationAssetStateFields {
++export interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields, GoalVisualizationAssetStateFields {
+   goalId: string
+   title: string
+   description: string
+@@ -231,7 +231,7 @@
+   ...emptyGoalVisualizationAiReview(),
+ } as GoalVisualizationQaRecord)
+ 
+-const normalizeExistingRecord = (
++export const normalizeExistingRecord = (
+   current: GoalVisualizationQaRecord,
+   existing: (Partial<GoalVisualizationQaRecord> & Record<string, unknown>) | undefined,
+ ): GoalVisualizationQaRecord => {
+@@ -416,4 +416,4 @@
+   }
+ }
+ 
+-main()
++if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main()
+--- /dev/null
++++ b/app/scripts/testVisualizationContextMaturity.ts
+@@ -0,0 +1,172 @@
++// SPDX-License-Identifier: Apache-2.0
++import assert from 'node:assert/strict'
++import { readFileSync } from 'node:fs'
++import { resolve } from 'node:path'
++import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
++import { evaluateCurrentVisualizationGate, hasCompletePassingVisualizationContext,
++  type CurriculumVisualizationValidation, type VisualizationGateRecord } from './lib/curriculumVisualizationValidation'
++import { qualifiedVisualizationAuthority } from './lib/qualifiedVisualizationContextAuthority'
++import { normalizeExistingRecord, type GoalVisualizationQaRecord } from './generateGoalVisualizationQaLedgers'
++import { deriveCurriculumMaturity, discoverCurriculumAssessmentScope, evaluateCurriculumExamReadiness,
++  evaluateDeepUnderstandingQa, evaluateGraphIntegrity } from './generateCurriculumQualityStatus'
++import { evaluateExamTaskReadiness, routeProfiles } from './generateCurriculumQualityStatus'
++import { collectCurriculumMaturityFloorFailures } from './checkCurriculumMaturityFloors'
++import { deepUnderstandingCompletionCheckIds, hasStrictDeepUnderstandingCompletion, intersectStrictGoalGates,
++  type DeepUnderstandingSubjectReport } from './reportDeepUnderstandingRollout'
++
++type LocalGoal = LearningGoal & { titleEn?: string; descriptionEn?: string }
++const root = resolve(import.meta.dirname, '../..')
++const sourcePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
++const source: SkillLandscape = JSON.parse(readFileSync(resolve(root, sourcePath), 'utf8'))
++const goal = source.goals.find(goal => goal.id === '922d89fc-1cbd-56e9-ac5d-5cb59085de6c')! as LocalGoal
++assert.ok(goal)
++const ledger: { records: GoalVisualizationQaRecord[] } = JSON.parse(readFileSync(resolve(root,
++  'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'), 'utf8'))
++const row = ledger.records.find(row => row.goalId === goal.id)!
++assert.ok(row)
++const native = (definition: LocalGoal = goal, record: VisualizationGateRecord = row, landscapeId = source.landscapeId) =>
++  evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId, landscapePath: sourcePath, subject: 'mathematik',
++    goalById: new Map([[definition.id, definition]]), currentGoalIds: new Set([definition.id]), records: [record] })
++const current = native()
++if (process.argv.includes('--reject-external-authority-mutation')) {
++  assert.deepEqual(current.readyGoalIds, [])
++  assert.match(current.issues.join(' '), /External visualization context index differs|Authenticated original-context capsule failed/u)
++  console.log('Mutated external index/capsule/input rejected by the actual native V boundary.')
++  process.exit(0)
++}
++assert.deepEqual(current.readyGoalIds, [goal.id], JSON.stringify(current.issues))
++assert.ok(Object.isFrozen(current) && Object.isFrozen(current.currentGoalIds) && Object.isFrozen(current.readyGoalIds))
++const fixedIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(root,
++  qualifiedVisualizationAuthority.indexPath), 'utf8'))
++let actualQualified = 0
++for (const [subject, name] of [['mathematik', 'MATHEMATIK'], ['wirtschaftswissenschaften', 'WIRTSCHAFT']]) {
++  const path = `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`
++  const landscape: SkillLandscape = JSON.parse(readFileSync(resolve(root, path), 'utf8'))
++  const qa: { records: VisualizationGateRecord[] } = JSON.parse(readFileSync(resolve(root,
++    `curricula/DE/Gymnasium/quality/goal-visualization-qa/${subject}.qa.json`), 'utf8'))
++  const ids = fixedIndex.rows.filter(row => row.landscapeId === landscape.landscapeId).map(row => row.goalId).sort()
++  const validation = evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId: landscape.landscapeId,
++    landscapePath: path, subject, goalById: new Map(landscape.goals.map(goal => [goal.id, goal])),
++    currentGoalIds: new Set(ids), records: qa.records })
++  assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
++  actualQualified += ids.length
++}
++assert.equal(actualQualified, 54, 'All fixed candidates must really pass through the authenticated shallow capsule.')
++
++// Real original goal/image/review bytes, plus an actually checked minimal graph,
++// isolate this V integration from unrelated prerequisites in the full landscape.
++const exam = source.goals.find(candidate => candidate.examData && evaluateExamTaskReadiness([candidate]).status === 'pass')!
++assert.ok(exam)
++const routeClusterIds = [...new Set(routeProfiles.filter(profile => profile.landscapeId === source.landscapeId)
++  .flatMap(profile => [...profile.terminalAutonomyClusterIds, ...Object.values(profile.terminalAutonomyClusterIdsByDurationModel ?? {}).flat()]))]
++const routeClusters = routeClusterIds.map(id => {
++  const original = source.goals.find(candidate => candidate.id === id)
++  assert.ok(original)
++  return { ...original, weight: 1, requires: [], contains: [exam.id] }
++})
++const fixture: SkillLandscape = { ...source, goals: [{ ...goal, weight: 1, contains: [], requires: [] },
++  { ...exam, weight: 1, contains: [], requires: [] }, ...routeClusters] }
++const graph = evaluateGraphIntegrity(fixture, [fixture])
++assert.equal(graph.status, 'pass')
++assert.equal(graph.graphIntegrity?.ok, true)
++const assessment = discoverCurriculumAssessmentScope(fixture, [])
++const assessmentRules = evaluateCurriculumExamReadiness(fixture, [], [fixture], assessment)
++assert.ok(assessmentRules.every(rule => rule.status === 'pass'), JSON.stringify(assessmentRules))
++const baseline: ReturnType<typeof evaluateGraphIntegrity>[] = [graph, ...assessmentRules, ...['CQR-000', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501', 'CQR-302']
++  .map(id => ({ id, status: 'pass' as const, summary: 'Other isolated fixture requirement passed' }))]
++const routes = [{ scopeId: 'fixture', label: 'Fixture', maturity: 'M4' as const, selectedAtomicGoals: 1,
++  rules: [{ id: 'CQR-101', status: 'pass' as const, summary: 'Fixture route passed' }] }]
++const report = (validation: CurriculumVisualizationValidation): DeepUnderstandingSubjectReport => {
++  const ids = new Set([goal.id]), other = new Set([goal.id])
++  const complete = intersectStrictGoalGates(ids, [other, other, other, other, new Set(validation.readyGoalIds)])
++  const result: DeepUnderstandingSubjectReport = { subject: 'mathematik', label: 'Fixture', landscapeId: source.landscapeId,
++    landscapePath: sourcePath, currentGoalIds: [...ids], denominator: 1, strictComplete: complete.length,
++    remaining: 1 - complete.length, percentage: complete.length ? '100.0%' : '0.0%', strictCompleteGoalIds: complete,
++    deferredVisualizationGoalIds: [...validation.deferredGoalIds], gates: { currentDescriptionResolutions: 1,
++      currentPositiveEvidenceProfiles: 1, currentSemanticAtomicityDecisions: 1, currentMemoryReviewDecisions: 1,
++      currentVisualizationQaRecords: validation.readyGoalIds.length },
++    requiredChecks: deepUnderstandingCompletionCheckIds.map(id => ({ id,
++      status: id === 'visualization-freshness-and-approval-check' && validation.issues.length ? 'fail' : 'pass' })),
++    issues: [...validation.issues], visualizationValidation: structuredClone(validation), strictCompletionReady: false }
++  result.strictCompletionReady = hasStrictDeepUnderstandingCompletion(result)
++  return result
++}
++const deepRule = (validation: CurriculumVisualizationValidation) => evaluateDeepUnderstandingQa(fixture, sourcePath,
++  { schemaVersion: 1, reportId: 'real-original-V-fixture', subjects: [report(validation)], blockingIssueCount: validation.issues.length }, validation)
++const rules = (validation: CurriculumVisualizationValidation) => [...baseline, deepRule(validation)]
++const maturity = (validation: CurriculumVisualizationValidation) => deriveCurriculumMaturity(rules(validation), routes,
++  source.landscapeId, assessment, validation)
++const floors = (claimed: string, ruleSet = rules(current), expected: CurriculumVisualizationValidation | null = current) =>
++  collectCurriculumMaturityFloorFailures({ curricula: [{ landscapeId: source.landscapeId, frameworkId: source.frameworkId,
++    subject: source.subject, maturity: claimed, rules: ruleSet, scopes: routes }] }, {
++    schemaVersion: 1, policyId: 'real-V-context-fixture', baselineDate: '2026-08-20', exceptions: [], knownPreBaselineRegressions: [],
++    floors: [{ landscapeId: source.landscapeId, frameworkId: source.frameworkId, subject: source.subject,
++      minimumMaturity: 'M7', reason: 'Current original-context V evidence must protect the existing M7 floor.' }],
++  }, new Map([[source.landscapeId, assessment]]), expected ? new Map([[source.landscapeId, expected]]) : new Map())
++assert.equal(deepRule(current).status, 'pass')
++assert.equal(maturity(current), 'M7')
++assert.deepEqual(floors('M7'), [])
++let negatives = 0
++const denies = (name: string, validation: CurriculumVisualizationValidation, pattern: RegExp) => {
++  assert.deepEqual(validation.readyGoalIds, [], name)
++  assert.match(validation.issues.join(' '), pattern, name)
++  assert.equal(deepRule(validation).status, 'fail', name)
++  assert.equal(maturity(validation), 'M6', name)
++  const failed = floors('M7', rules(validation), validation)
++  assert.ok(failed.some(line => line.includes('no complete passing visualization context report')), name)
++  assert.ok(!failed.some(line => line.includes('strict graph-integrity') || line.includes('assessment reports')), name)
++  negatives++
++}
++// This is the original reproduced hole: freshly normalized display metadata,
++// the same image and retained asset-only approval cannot review new competence.
++const changedGoal = { ...goal, description: goal.description + ' Zusätzlich eine neue selbständige Leistung.' }
++const relabelled = normalizeExistingRecord({ ...row, description: changedGoal.description }, { ...row })
++assert.equal(relabelled.aiApproved, 'yes')
++denies('Autogenerated current description cannot carry historical approval', native(changedGoal, relabelled), /Current goal\/image context differs/u)
++assert.equal(maturity(native()), 'M7', 'No context result is cached across independent current reads.')
++denies('Missing indexed receipt stays open', native({ ...goal, id: '00000000-0000-4000-8000-000000000099' },
++  { ...row, goalId: '00000000-0000-4000-8000-000000000099' }), /Missing immutable reviewed-context receipt/u)
++denies('Another namespace cannot borrow the original', native(goal, { ...row, landscapeId: 'foreign-owner' }, 'foreign-owner'), /Missing immutable reviewed-context receipt/u)
++denies('Asset-only self-claim cannot change actual bytes', native(goal, { ...row, assetSha256: 'sha256:' + '1'.repeat(64),
++  aiApprovedAssetSha256: 'sha256:' + '1'.repeat(64) }), /actual image bytes differ/u)
++denies('Current negative AI decision remains binding', native(goal, { ...row, aiApproved: 'no' }), /approval preconditions/u)
++denies('Technical deferral remains unfinished', native({ ...goal, resourceLinks: [] }, { ...row, visualizationState: 'missing',
++  missingReason: 'deferred_provider_limitation', imageUrl: '', assetSha256: '' }), /missing or deferred/u)
++
++const goodRules = rules(current)
++for (const mutated of [
++  goodRules.filter(rule => rule.id !== 'CQR-303'),
++  [...goodRules, deepRule(current)],
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, status: 'fail' as const } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: undefined } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: { ...current, readyGoalIds: [] } } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: { ...current, contextsSha256: '1'.repeat(64) } } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: { ...current, landscapeId: 'foreign-owner' } } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: { ...current, currentGoalIds: [exam.id], readyGoalIds: [exam.id] } } : rule),
++  goodRules.map(rule => rule.id === 'CQR-303' ? { ...rule, visualizationValidation: { ...current, currentGoalIds: [], readyGoalIds: [] },
++    metrics: { ...rule.metrics, expectedGoals: 0, strictComplete: 0, currentVisualizationQaRecords: 0 } } : rule),
++]) {
++  assert.equal(deriveCurriculumMaturity(mutated, routes, source.landscapeId, assessment, current), 'M6')
++  assert.ok(floors('M7', mutated).some(line => line.includes('no complete passing visualization context report')))
++  negatives++
++}
++for (const metric of ['currentDescriptionResolutions', 'currentPositiveEvidenceProfiles', 'currentSemanticAtomicityDecisions',
++  'currentMemoryReviewDecisions', 'currentVisualizationQaRecords', 'requiredChecksPassed', 'requiredChecksTotal', 'strictComplete',
++  'expectedGoals', 'remaining', 'blockingIssues']) {
++  const mutated = goodRules.map(rule => rule.id === 'CQR-303'
++    ? { ...rule, metrics: { ...rule.metrics, [metric]: (rule.metrics?.[metric] ?? 0) + 1 } } : rule)
++  assert.equal(deriveCurriculumMaturity(mutated, routes, source.landscapeId, assessment, current), 'M6')
++  assert.ok(floors('M7', mutated).some(line => line.includes('no complete passing visualization context report')))
++  negatives++
++}
++for (const absentOrFabricated of [undefined, structuredClone(current)]) {
++  assert.equal(deriveCurriculumMaturity(goodRules, routes, source.landscapeId, assessment, absentOrFabricated), 'M6')
++  assert.ok(floors('M7', goodRules, absentOrFabricated ?? null).some(line => line.includes('no complete passing visualization context report')))
++  negatives++
++}
++const alias = deepRule(current)
++assert.notEqual(alias.visualizationValidation?.readyGoalIds, current.readyGoalIds)
++assert.throws(() => (current.readyGoalIds as string[]).splice(0), TypeError)
++assert.equal(hasCompletePassingVisualizationContext(goodRules, source.landscapeId, current), true)
++assert.equal(current.indexSha256, qualifiedVisualizationAuthority.indexSha256)
++console.log(`Current original-context V → five-gate intersection → CQR-303 → M7 → direct floor passed; ${actualQualified} genuine shallow-capsule qualifications, ${negatives} genuine/context/manifest/expectation negatives; real valid strict graph.`)
+--- /dev/null
++++ b/scripts/visualization_qualified_context_capsule.py
+@@ -0,0 +1,71 @@
++#!/usr/bin/env python3
++"""Transport the externally fixed, finite V-context index through the existing raw Git kernel.
++
++This selector supplies the actual reader's closed auxiliary input list. It does
++not qualify reviews, select ready goals, or change the historical 18-case capsule.
++"""
++import json
++import re
++
++import visualization_review_git_capsule as kernel
++
++
++def index_originals(root, index_path, accepted_index):
++    def unique_object(pairs):
++        value = {}
++        for key, item in pairs:
++            kernel.require(key not in value, 'Duplicate index JSON property')
++            value[key] = item
++        return value
++    index = json.loads(kernel.read_bound(root, index_path, accepted_index), object_pairs_hook=unique_object)
++    kernel.require(set(index) == {'schemaVersion', 'kind', 'acceptedRepositoryCommit', 'rows',
++                                  'originalReferences', 'newReviewClaimed', 'runtimeActivationAllowed'},
++                   'Unknown or missing reviewed-context index field')
++    kernel.require(index['schemaVersion'] == 1 and index['kind'] == 'externally-pinned-reviewed-visualization-context-index'
++                   and index['newReviewClaimed'] is False and index['runtimeActivationAllowed'] is False,
++                   'Wrong reviewed-context index contract')
++    kernel.require(re.fullmatch('[0-9a-f]{40}', index['acceptedRepositoryCommit']) is not None,
++                   'Invalid original-history anchor')
++    refs, receipts, working, goals = {}, [], {}, set()
++    def digest(value):
++        kernel.require(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) is not None, 'Invalid input SHA256')
++    def add_working(path, value):
++        digest(value)
++        raw = kernel.read_bound(root, path, value)
++        row = {'path': path, 'sha256': value, 'bytes': len(raw)}
++        kernel.require(path not in working or working[path] == row, 'Conflicting original working input')
++        working[path] = row
++    add_working(index_path, accepted_index)
++    kernel.require(isinstance(index['rows'], list) and len(index['rows']) == 54, 'The accepted index has exactly 54 cases')
++    for row in index['rows']:
++        kernel.require(set(row) == {'landscapeId', 'goalId', 'receipt'}
++                       and isinstance(row['landscapeId'], str) and isinstance(row['goalId'], str), 'Invalid owner/goal row')
++        key = (row['landscapeId'], row['goalId'])
++        kernel.require(key not in goals, 'Duplicate owner/goal qualification')
++        goals.add(key)
++        receipt = row['receipt']
++        kernel.require(set(receipt) == {'path', 'sha256'}, 'Invalid qualification reference')
++        add_working(receipt['path'], receipt['sha256'])
++        receipts.append(receipt)
++    kernel.require(len({row['path'] for row in receipts}) == len(receipts), 'Duplicate qualification locator')
++    kernel.require(isinstance(index['originalReferences'], list) and index['originalReferences'], 'Empty original closure')
++    for row in index['originalReferences']:
++        kernel.require(set(row) == {'path', 'gitCommit', 'sha256', 'currentCopyRequired'}
++                       and type(row['currentCopyRequired']) is bool, 'Invalid original auxiliary binding')
++        kernel.relative(row['path']); digest(row['sha256'])
++        kernel.require(isinstance(row['gitCommit'], str) and re.fullmatch('[0-9a-f]{40}', row['gitCommit']) is not None,
++                       'Invalid original artifact commit')
++        ref = {field: row[field] for field in ('path', 'gitCommit', 'sha256')}
++        key = (ref['gitCommit'], ref['path'])
++        kernel.require(key not in refs, 'Duplicate original auxiliary binding')
++        refs[key] = ref
++        if row['currentCopyRequired']:
++            add_working(ref['path'], ref['sha256'])
++    return index, [refs[key] for key in sorted(refs)], receipts, [working[path] for path in sorted(working)]
++
++
++if __name__ == '__main__':
++    # Only the closed input selector changes. Raw OID, ancestry, path inclusion,
++    # exact object inventory, own-inode and resource checks remain the same code.
++    kernel.originals = index_originals
++    kernel.main()
+--- /dev/null
++++ b/contracts/goal-visualization-context/v1/qualified-context-index.json
+@@ -0,0 +1,1787 @@
++{
++  "schemaVersion": 1,
++  "kind": "externally-pinned-reviewed-visualization-context-index",
++  "acceptedRepositoryCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++  "rows": [
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "0509ae79-abb4-5e6b-8db2-521c1bccacf4",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/0509ae79-abb4-5e6b-8db2-521c1bccacf4.json",
++        "sha256": "351970b7c0afb9cbeec806ca684f5207446d600f98acb8161db5217e02524544"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "099086bb-5100-5ce0-8334-0aab8850a48e",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/099086bb-5100-5ce0-8334-0aab8850a48e.json",
++        "sha256": "cfcb893442e29c3b0353a35a976991e166c863055ab7d5260cb1ed7f67521593"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "09e58ea8-1920-5600-bd2b-cc1f199d051f",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/09e58ea8-1920-5600-bd2b-cc1f199d051f.json",
++        "sha256": "944211a3892f043f04d4e37314dd00e8ed7d9976d135947f1ec39fdbb685534a"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "0b6db337-3fc6-5c30-860d-c8fbd535cb5c",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/0b6db337-3fc6-5c30-860d-c8fbd535cb5c.json",
++        "sha256": "78950d8f906ceda81ee973db7f537b75e94dfd379f162de950c3207de4ceef14"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "11c57203-1619-5bba-8905-9c10d7f77d57",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/11c57203-1619-5bba-8905-9c10d7f77d57.json",
++        "sha256": "017f4356ccd110fb4f1526d4b0a15fcc8d5423a60396af5330b287c3f3d41384"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "13b20cee-8977-5b3f-938b-2064e96f2a5b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/13b20cee-8977-5b3f-938b-2064e96f2a5b.json",
++        "sha256": "87b89c565841783b272fabdf7b84074feb08c8633d38b6492211d09c974c357d"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "1582ec45-1655-5f7c-a2bd-a3fc00e583fa",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/1582ec45-1655-5f7c-a2bd-a3fc00e583fa.json",
++        "sha256": "ab29057c29f03acf247cf01deb7db1d54b8dbade913de2783c399aaec658bc9e"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "167bfd78-9202-5599-9325-66d7a1579185",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/167bfd78-9202-5599-9325-66d7a1579185.json",
++        "sha256": "e07565ea4f45d3ab5c42b95068f349fd232e4f3379e08c10cd220e8761e5ef04"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "1bddc795-8aeb-5408-90b3-12e4be51e912",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/1bddc795-8aeb-5408-90b3-12e4be51e912.json",
++        "sha256": "c615f5f507083fd97eb6b4cd5e374eda83d42c46287d94fb704acb05cbfad8dc"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "26ebbe6e-6512-520d-80a4-2e7e80f29f72",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/26ebbe6e-6512-520d-80a4-2e7e80f29f72.json",
++        "sha256": "92c1ce41ab763929629501ada2dc551b2ba7ee2953c501b230f04890d2648908"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60.json",
++        "sha256": "d12787c9e5b7c597d18fc06285350fa425b1681a3b93db21f301d7b86ab78ba6"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "3bcb976d-3e45-5c62-81ac-5ed909df202b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/3bcb976d-3e45-5c62-81ac-5ed909df202b.json",
++        "sha256": "ef29e3efab19af25af235bfc89196fce5db056c94848e887276812383ab2ca7b"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "43acb850-7685-5e53-acf6-6675120120d1",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/43acb850-7685-5e53-acf6-6675120120d1.json",
++        "sha256": "322af635713191ae15a4d6e2309225abbfad99260f6cf0dbe21630c560abc524"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "45bd0edd-3d4e-55f1-88bf-407c4706e860",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/45bd0edd-3d4e-55f1-88bf-407c4706e860.json",
++        "sha256": "55be06dadbecb1c1cfd3a6871e75f4fdeb3e63bf59823fea082c23229ee7e75e"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/4cd0c6d8-6485-51d0-883d-5d49ac46be70.json",
++        "sha256": "9ac728491c063f5a921b621e2ecccec752fe565ae84520e893e8fedf78bfccdc"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "54049ed4-9364-5564-a55a-3959193d9018",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/54049ed4-9364-5564-a55a-3959193d9018.json",
++        "sha256": "5547444c45f9ee1b0121f10dd75cdc6fc953c044dbd8d8a670ab3ecbdb2be6a5"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "596c02e3-6263-5084-8593-c5f51808326b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/596c02e3-6263-5084-8593-c5f51808326b.json",
++        "sha256": "d83dee0a20bdff816cc3401b1d8645ca86e8cbf6410d65da7b919c86290d54e7"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "5ae551bf-942c-5896-b8e0-93aad36fe9b0",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/5ae551bf-942c-5896-b8e0-93aad36fe9b0.json",
++        "sha256": "fa5008bc153d6bdcb1962317db960daaa1c5af84d78b92ff0f480b59570b8637"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.json",
++        "sha256": "3c953eb820be75007c555abc60d654cb7cd036a51b26a0674220c76c53628882"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "604cde3e-4095-50c3-b712-e6bd7cea4717",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/604cde3e-4095-50c3-b712-e6bd7cea4717.json",
++        "sha256": "acb1f69a32375968e609095b17ca7732e57ecf8193203c09df3a3135e89308e6"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "606c4050-d196-509e-9a95-53733d6b06bb",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/606c4050-d196-509e-9a95-53733d6b06bb.json",
++        "sha256": "b13675a3d2149a7cccaedbd7f71844fde313dd52abd64d9bd2f470f45855e12e"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "641dee8e-9658-5db1-89eb-2353f8322a8a",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/641dee8e-9658-5db1-89eb-2353f8322a8a.json",
++        "sha256": "e0dc0838fdbddd8d13ef4fbe5a71c1684176097ff89af35b02f901aef9c4d8f9"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "667b75ad-2d20-5f22-ad57-46be5b7c53c7",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/667b75ad-2d20-5f22-ad57-46be5b7c53c7.json",
++        "sha256": "ce8d4d953103ccbe98e94881c32c2f589dbaf9df3eca1e68b2e70af51033eda2"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "682facbf-3c9d-5485-88a3-20f2394ed77f",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/682facbf-3c9d-5485-88a3-20f2394ed77f.json",
++        "sha256": "7aee7309b067814311d40b729748062a3fad2fbb472275dbf909bc548fc9d630"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "6f75cdff-7d32-533b-8fe9-3d003b7af241",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/6f75cdff-7d32-533b-8fe9-3d003b7af241.json",
++        "sha256": "e7a0eaf60e92b0a07d13a322ae4f8cad0aa8363e4e202021397ecf3529b0e4b8"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7727b988-e62c-5ebf-8e2f-0c719b13881c",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/7727b988-e62c-5ebf-8e2f-0c719b13881c.json",
++        "sha256": "d615efd5b2d0c195cf73d7d112b131bf150609a3c0169c2d697f0f1e55302e0f"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7cbcca15-e93b-57ce-8f14-ffd1a557e288",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/7cbcca15-e93b-57ce-8f14-ffd1a557e288.json",
++        "sha256": "269bfc6e504775a57552869cdf0283fcaa8dd50b51f5124e997cb64f3ee4c829"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7d0c69c6-0c67-5221-9ccc-d55e3eb2c303",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303.json",
++        "sha256": "353fde1435bf7284232e8fdd2f3d0f8ff5493ca68f3b8329dbb008f47da96cb3"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7d399b4d-d057-5284-8e2c-6778e023307d",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/7d399b4d-d057-5284-8e2c-6778e023307d.json",
++        "sha256": "6039fbcf05923aac1d9c23e88f43abc51c57f78929c3f0434dce319155137346"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7d4d7a90-a1d0-5818-8d55-a0c3e995957b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/7d4d7a90-a1d0-5818-8d55-a0c3e995957b.json",
++        "sha256": "771e04523700510e073dbd82bc5dcf68b0f651d8f47fb8bfd539d2e0c0ee17ab"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7d632b0b-60b8-5c33-8094-ef1569b313dc",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/7d632b0b-60b8-5c33-8094-ef1569b313dc.json",
++        "sha256": "380a36ea67cf071e1337365eb59c0eba99ec71fdab686da61df6f7ba4568732a"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/7f1d5e9f-65ef-5d1d-83e5-5e2534772720.json",
++        "sha256": "f7bb83a2e0def8695b5cf75f130279cb8bb41871a62120faecc6b11b085722ba"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "84f7321d-7fb7-5e3a-ab8f-8690b26929f3",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/84f7321d-7fb7-5e3a-ab8f-8690b26929f3.json",
++        "sha256": "01387fe3048cbd4bbeacee164c364fd954f9ea6ea9be6a2629a46b89a9d258cf"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "87ee2b5a-8d10-51e4-a288-539e5ac251ea",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/87ee2b5a-8d10-51e4-a288-539e5ac251ea.json",
++        "sha256": "3be28a9826f8dcac052529006c7a1713a37763efadae05f8873689dca0c1614a"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "8adaa076-10ad-5fbf-8a22-247b52046da4",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/8adaa076-10ad-5fbf-8a22-247b52046da4.json",
++        "sha256": "a6087e950cb39d6ae0095146720b9d4faf6a9d66a31869400bd3b1b7d4fc9953"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "8dee6c0a-0f76-5717-87b6-04ec89229371",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/8dee6c0a-0f76-5717-87b6-04ec89229371.json",
++        "sha256": "e4a0b6f9e3925e61bec1e676b3c7d041c89baab333a430b011ec175633264391"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "9267ad99-f474-5fd7-8b6a-bd03fbc70394",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/9267ad99-f474-5fd7-8b6a-bd03fbc70394.json",
++        "sha256": "92d86570242848bcf1c82c206e1f16182c34aea30692ef5eb4153d7cf026ca05"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/99541aa7-c590-5f5d-8e89-fe2e39da7a9c.json",
++        "sha256": "54d5053095d12c73e768dc51ad9c5060df1b4a21c54dd79c456062796988665d"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/9ea7d847-7425-5157-a827-ee5f8c2e8c0a.json",
++        "sha256": "ab562c0b07bd9effa6711ab6aa4283ad091fcf5c753617e31271486fba1f8b14"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/9ebddb42-c799-5cf3-bfbc-f611ac66207b.json",
++        "sha256": "0a8e2d73ebe601679c0090d07f44f81ab395769d51f2b2d93ae65bc215d6872c"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "b456e539-24bb-5ec5-a996-14c9c77b64d0",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/b456e539-24bb-5ec5-a996-14c9c77b64d0.json",
++        "sha256": "37ff11ddd7a084ec2b44206ea7945799aad7c5dc0c598c09105c7b6d719beba1"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "b4a82d8d-6311-5575-b222-cbaf6ea90d32",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/b4a82d8d-6311-5575-b222-cbaf6ea90d32.json",
++        "sha256": "c3369eb33b03b46dd17ebb7f2ee0441eb55b69d31657dabbb7d4a973bab0f9c9"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4.json",
++        "sha256": "a8045b5781a384bd88c3db8c875954b7e1fa95f89de7a33d135c2f36e9d72f25"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "becf0989-ee9f-5c8e-8173-5b8246e7944a",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/becf0989-ee9f-5c8e-8173-5b8246e7944a.json",
++        "sha256": "7bbe7100d1b3690b574a46e37551d88712777a9d254c2827c4fc09376599523b"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "cc57df5b-69fd-5774-90d7-aa5ebd3d1632",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/cc57df5b-69fd-5774-90d7-aa5ebd3d1632.json",
++        "sha256": "a785e39a902327cfb3544f64a5f7970b87f54ef1c78c21db0578001549d7c0d0"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "d22433a8-fa0a-5db5-b65f-9d47b801f2d9",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/d22433a8-fa0a-5db5-b65f-9d47b801f2d9.json",
++        "sha256": "4ed96ccb09365dd4f8e351ed701dfaa1c0c4e519b8c6c8f98e5ccc42eee06ecf"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "ebbce1c2-51b3-5215-8bcb-fbb74affdd62",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/ebbce1c2-51b3-5215-8bcb-fbb74affdd62.json",
++        "sha256": "a5d122135e57f80f0ebbe0a94139a09d7f4c15d4e8593e33b93082811728d384"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91.json",
++        "sha256": "4be8ef124c7a3f6a35933b41c1f6c8e4ad78ca45e59de43afea2b26a172d00a2"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "f7034be8-64e9-5f63-9556-d7b8dc59eda7",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/f7034be8-64e9-5f63-9556-d7b8dc59eda7.json",
++        "sha256": "a88baa05e95e74fa70dd19f31241e0763d8de0296253270fa91c93227e015f93"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "fb249488-944c-5123-a21e-5cb9a0431e8b",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-trade-finance-v1/fb249488-944c-5123-a21e-5cb9a0431e8b.json",
++        "sha256": "481a6ad5f2bfa5556690ac9f1d326614355394f528449428e1c2aa0ee8807ff2"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "fcf756f1-7252-54cb-9257-de8259090021",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/qualification-candidates/economics-q3-embedded-v1/fcf756f1-7252-54cb-9257-de8259090021.json",
++        "sha256": "065c47ca0bcacba30c1f8ccd009d31a5e95b7466b322638e414bd2e45a63ac53"
++      }
++    },
++    {
++      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
++      "goalId": "fd913fec-e64a-5a1a-88f6-724d788ed951",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/fd913fec-e64a-5a1a-88f6-724d788ed951.json",
++        "sha256": "40c3c9128c0cf165c8e6c9d66662bab0cbcb83c844355029c4c3c455e2ed58f0"
++      }
++    },
++    {
++      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
++      "goalId": "35558905-753d-5fcb-b25e-7f85ffdbff56",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/35558905-753d-5fcb-b25e-7f85ffdbff56.json",
++        "sha256": "8fe45196ce1aedbf2674d84d3c4908c11640e219283a53d221297c86b41b7fca"
++      }
++    },
++    {
++      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
++      "goalId": "922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
++      "receipt": {
++        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/qualification-candidates/922d89fc-1cbd-56e9-ac5d-5cb59085de6c.json",
++        "sha256": "0e71bf78268fc442338c3e298b1df20e14783fcffb4b4d3e400c4195bcb336f1"
++      }
++    }
++  ],
++  "originalReferences": [
++    {
++      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "b1343b8ba8312b0b60fc787fd9390b0de561a02260f5843af9915e977044a860",
++      "currentCopyRequired": false
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/099086bb-5100-5ce0-8334-0aab8850a48e/099086bb-5100-5ce0-8334-0aab8850a48e.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "8543eee496bab33634f68fc3d0b2e23d1545deb5c89baaf50df68c1225030517",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/099086bb-5100-5ce0-8334-0aab8850a48e/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "e851a979189419da5becf6e0920f61198af9e33b147ef12d263539815c9420ff",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/26ebbe6e-6512-520d-80a4-2e7e80f29f72/26ebbe6e-6512-520d-80a4-2e7e80f29f72.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "e0fc14ff510b410d9423e8446bb838009ac25080dac4d5891f41b12b9ec8331e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/26ebbe6e-6512-520d-80a4-2e7e80f29f72/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "4b9fd0ee6dd210e3c6909a1a11d8762d8f6aef796041e37da953939d55b26055",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/3bcb976d-3e45-5c62-81ac-5ed909df202b/3bcb976d-3e45-5c62-81ac-5ed909df202b.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "11cbbf39aff0c67edb6c04685ae2db927e7898ba0938219b893f50bd5e51d548",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/3bcb976d-3e45-5c62-81ac-5ed909df202b/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "5b225dd835c519f80bf6bb2a8f0604824b2df1af3386eed73d558624bbff87f4",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/596c02e3-6263-5084-8593-c5f51808326b/596c02e3-6263-5084-8593-c5f51808326b.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "639cd1a26c86036fc919bec9fd5bfc4a401e1c7073272048dfb87d955887d0f1",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/596c02e3-6263-5084-8593-c5f51808326b/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "fa0ecdb13b2dff33388fae0af77b78a37d881f6dd969584172825253216c370a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/641dee8e-9658-5db1-89eb-2353f8322a8a/641dee8e-9658-5db1-89eb-2353f8322a8a.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "ca31f5142540328e87cf936cbde46b6acbddcbfb4c3c9e0ba9c08dc346d2ec91",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/641dee8e-9658-5db1-89eb-2353f8322a8a/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "f036cc73d2635fe613397865a0cb103cafe5d2210bd626bf99839ec27649bf3f",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/682facbf-3c9d-5485-88a3-20f2394ed77f/682facbf-3c9d-5485-88a3-20f2394ed77f.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "858178173d59a65393ccc699178b974c5e0e1a2b57073dbe304b5e0a46a97a5b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/682facbf-3c9d-5485-88a3-20f2394ed77f/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "8efdff0b572e2919dad0eb127e54237b9e42fc0cbcf0d9488703d281737c9e2f",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/6f75cdff-7d32-533b-8fe9-3d003b7af241/6f75cdff-7d32-533b-8fe9-3d003b7af241.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "1c7bb718d6daf28952b774591765a4286db3e628f7cb0c99ccd67a0b9a12a59a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/6f75cdff-7d32-533b-8fe9-3d003b7af241/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "18d7cda32eb34ef32ade1733d6dc8ce6306e673cc7be5d22b535c50943e57230",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7727b988-e62c-5ebf-8e2f-0c719b13881c/7727b988-e62c-5ebf-8e2f-0c719b13881c.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9db09fe1339640dd3a80a9383c2a2342e19fa49282069e716240fc120f014279",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7727b988-e62c-5ebf-8e2f-0c719b13881c/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "edf5d55dfa0abd964406f46a94e82f6b4c4abebc53f5776161ee48ae551c1156",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7cbcca15-e93b-57ce-8f14-ffd1a557e288/7cbcca15-e93b-57ce-8f14-ffd1a557e288.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "192a7ff7da53329b79b70f790c0533489f48ce1a045fd441d3adce9a9164892b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7cbcca15-e93b-57ce-8f14-ffd1a557e288/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "cfe662950fe67008cc017dcd1c015f6ea61a4e3dc529c2dab6336954dd92c386",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7d399b4d-d057-5284-8e2c-6778e023307d/7d399b4d-d057-5284-8e2c-6778e023307d.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "43acd23162d82517eb68cbe9b4185516f9792419789dbad736f4995d1199f601",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7d399b4d-d057-5284-8e2c-6778e023307d/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "e1b8e3815fedd4f83b3753a5f517dc6af9501425132e6f64640fb090fb4cf17e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7d4d7a90-a1d0-5818-8d55-a0c3e995957b/7d4d7a90-a1d0-5818-8d55-a0c3e995957b.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "3d09d7e04b18205ff5cf993844229f84e0540859b93b377a7e47a54374a2952d",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7d4d7a90-a1d0-5818-8d55-a0c3e995957b/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "990845f130d0f08301c6ad3b2bdffabd0ef051b940553f6cec0599dc3a85b3d8",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7f1d5e9f-65ef-5d1d-83e5-5e2534772720/7f1d5e9f-65ef-5d1d-83e5-5e2534772720.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "342d8715d2060a58bb95f8c7ee7fa643e2b55f4a9e23d38134a584860a32a19a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/7f1d5e9f-65ef-5d1d-83e5-5e2534772720/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "b737cf86c491cc7fba0a12529bfa3ec80d77b78e6dc1e6400ff26f60acd71057",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/8dee6c0a-0f76-5717-87b6-04ec89229371/8dee6c0a-0f76-5717-87b6-04ec89229371.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "acf1344da05e44d0bf905c2cab5ee7653f7abdc38305c32da965e50803f74bac",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/8dee6c0a-0f76-5717-87b6-04ec89229371/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "04b01ec26eded7b2b9ec6f781b655aa3607837c34b00bffbbfb09e69519b686b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/99541aa7-c590-5f5d-8e89-fe2e39da7a9c/99541aa7-c590-5f5d-8e89-fe2e39da7a9c.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "bb4a558a82aa7d41b1b8134d3ba722dd05940c3a68c66e97318d86b9c4ad283e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/99541aa7-c590-5f5d-8e89-fe2e39da7a9c/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "f569a5b28db5c702afbfea7344886dd464cdd0176638c79dcf391eeb3fe102b1",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/becf0989-ee9f-5c8e-8173-5b8246e7944a/becf0989-ee9f-5c8e-8173-5b8246e7944a.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "b5dad9c198d688ef65657a3b454e474e882e4b35ed46c210d54f5bc047395825",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/becf0989-ee9f-5c8e-8173-5b8246e7944a/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "0c9d1a46664f8aa2de6e34a5085b52d8a6c9fa74f38d9d006efe0e8320f16b18",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/fd913fec-e64a-5a1a-88f6-724d788ed951/fd913fec-e64a-5a1a-88f6-724d788ed951.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9f92fec8442d44cedb954ac4467020e50c00dee47aa46a6d43a53923adc88c5b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-image-author-20261008-v1/fd913fec-e64a-5a1a-88f6-724d788ed951/native-before-generation/metadata.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "cd5a35a97d08fdd87e8eba78853dacfa591e891be734f57080428350aae5c215",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/099086bb-5100-5ce0-8334-0aab8850a48e/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9e98c2951f6f579d0832f86725e7a6776e38a464031b307776b6b71c7e68d9bd",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/26ebbe6e-6512-520d-80a4-2e7e80f29f72/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "a4f359b5cfd3394bfe48a88394c826413034201144fa9a32660128a1cd2c6235",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/3bcb976d-3e45-5c62-81ac-5ed909df202b/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "059ecd59c5ee535342ebb69cc7beb87b85e87216819bc4dcd52e83055cbda30a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/596c02e3-6263-5084-8593-c5f51808326b/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "641bad0c05172ce62df06bc142064a7261e5ca8d43806fc291116569abfa4903",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/641dee8e-9658-5db1-89eb-2353f8322a8a/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9ec3eb4bffb85099393d94f7e59a50ccae6c67768879599efba3cd1bd5611b6c",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/682facbf-3c9d-5485-88a3-20f2394ed77f/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "c0333df0264547e6ab5187ce248ecd523f96165ccbd4a3c2cedd76e5a4d67a60",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/6f75cdff-7d32-533b-8fe9-3d003b7af241/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "5fefd0b0d9babb856563c7413a587c7a056b02469d587d4a7683476d0013023c",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/7727b988-e62c-5ebf-8e2f-0c719b13881c/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "b4e561e5233e4a66a4d682bfbde5795f655fc83f8d24884ee4083ac165ba06b1",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/7cbcca15-e93b-57ce-8f14-ffd1a557e288/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "082b0d18d08ed2c40c3596e1a771249feac822a6f6a08f0296b305c56648324a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/7d399b4d-d057-5284-8e2c-6778e023307d/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "daedf9f431b2e518028f18264a815d4e638c7cdc0252ffb71eac90df9397b0ab",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/7d4d7a90-a1d0-5818-8d55-a0c3e995957b/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "6542e153c505519587f4428aaf66905829f45de3ebbfb7c1bffc43e312c21a60",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/7f1d5e9f-65ef-5d1d-83e5-5e2534772720/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "dc618392d61193c248e1e4c961f878fc344a6e1612118fee070f250a7c3587c5",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/8dee6c0a-0f76-5717-87b6-04ec89229371/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "841034875457e54e5522116163fe703739df10aadc9c5880d4a67f2c8f689247",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/99541aa7-c590-5f5d-8e89-fe2e39da7a9c/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "619daf0ddc729799345c6372cf46355cf708331298567b28a603831faa3f5325",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/becf0989-ee9f-5c8e-8173-5b8246e7944a/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "74cea41869b9d1eebcd8d72f128de986da64b457af00eff71190869cfebf5394",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-project-markets-international-methods-twenty-independent-image-review-20261008-v1/fd913fec-e64a-5a1a-88f6-724d788ed951/actual-original-native360680-independent-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "fb64c880ca1083038b8f85fa24577de0f29dc59064a957cc44d6d9a3e74eaa6a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/09e58ea8-1920-5600-bd2b-cc1f199d051f/09e58ea8-1920-5600-bd2b-cc1f199d051f.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "b4873b9feb9c73d13a63da4cfebbd57bde6afe5bb46209245accd1b57c608792",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/11c57203-1619-5bba-8905-9c10d7f77d57/11c57203-1619-5bba-8905-9c10d7f77d57.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "1b739146fcdeae6c128d566f6963cb74b589e2792636e780357a0bf959fe4fd1",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/13b20cee-8977-5b3f-938b-2064e96f2a5b/13b20cee-8977-5b3f-938b-2064e96f2a5b.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "286f1befea8159dbdf262c1e6813259165a36a71d6bfd0e6c1c876743605be4c",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/1582ec45-1655-5f7c-a2bd-a3fc00e583fa/1582ec45-1655-5f7c-a2bd-a3fc00e583fa.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "fc489f7434cf841dfa5c779c63524ef613189b96ef28a63f6fbf9b2d39396927",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/167bfd78-9202-5599-9325-66d7a1579185/167bfd78-9202-5599-9325-66d7a1579185.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "69052862544b91103a4d85e65eba78d7f84551ef5e4792b089d1d10b8d8015b7",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/1bddc795-8aeb-5408-90b3-12e4be51e912/1bddc795-8aeb-5408-90b3-12e4be51e912.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "d22d3cb149dd93533d768edb41183f07ee2d8dd97f920dc5b84bf8e8c975e9e7",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "443a15dec4d155bfbbaac803f602987373a7676d5b744a4c43c412785ddcdf8a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/45bd0edd-3d4e-55f1-88bf-407c4706e860/45bd0edd-3d4e-55f1-88bf-407c4706e860.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "457e074b1b65ac0942890154c5d014de005dd0ce6714b50030009132232a23f7",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "6a7235a726144ba1a3688cc1c0d48b4ac061059f69361cefd19d9ccbb8befcba",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/7d632b0b-60b8-5c33-8094-ef1569b313dc/7d632b0b-60b8-5c33-8094-ef1569b313dc.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "1806a493d06998ea99a590fc8f21ba02d5f0915310bffe876de1eb59d2fd2bd1",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/84f7321d-7fb7-5e3a-ab8f-8690b26929f3.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "449a5af96b46963f090ae3567989e69016bcfca74b0fea5972df3a9c813dd774",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/8adaa076-10ad-5fbf-8a22-247b52046da4.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "ccdc8afc61aab3eeb3dc8069329aea73679881264db55f9380d3b5a655f16afc",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/9267ad99-f474-5fd7-8b6a-bd03fbc70394/9267ad99-f474-5fd7-8b6a-bd03fbc70394.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "41ec73570e192beb5ba250d158146fa64ef931ef5b119726634bbb8bdab3d649",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/9ea7d847-7425-5157-a827-ee5f8c2e8c0a/9ea7d847-7425-5157-a827-ee5f8c2e8c0a.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "f881c72d31f65e315b2c9f65265b85d68ac3e5cd756351730953951bc72338ab",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/9ebddb42-c799-5cf3-bfbc-f611ac66207b.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "02cf6a379f400a61ff89e18ab99a0b870035460e99361203b197b6396e44361b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/b456e539-24bb-5ec5-a996-14c9c77b64d0/b456e539-24bb-5ec5-a996-14c9c77b64d0.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "415abe34a06556da8d20472d12e3fd00b30b6e66aa84538406fa27e27c01287c",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/b4a82d8d-6311-5575-b222-cbaf6ea90d32/b4a82d8d-6311-5575-b222-cbaf6ea90d32.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "a0a4fb57fdd7a5b5151cb5bedb5d2054501dadb246bfdefe84863a32974a166b",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/cc57df5b-69fd-5774-90d7-aa5ebd3d1632/correction-v2/cc57df5b-69fd-5774-90d7-aa5ebd3d1632.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "d2672cecc676ea0523e4b21d47874d37335ce8e36c239c6ae8dcc048cb1ec887",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/f7034be8-64e9-5f63-9556-d7b8dc59eda7/f7034be8-64e9-5f63-9556-d7b8dc59eda7.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "cc5e658c3d54cbb193bc3c0cdf71a0ced69f0e45f9b87b3f452c1c20a0ab2483",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/fcf756f1-7252-54cb-9257-de8259090021/correction-v2/fcf756f1-7252-54cb-9257-de8259090021.png",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "79a45fa757969416c7e555cc768248a63ade7fc785b43cd041d2bf2c755707f7",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/09e58ea8-1920-5600-bd2b-cc1f199d051f/09e58ea8-1920-5600-bd2b-cc1f199d051f.width-360.png",
++      "sha256": "01589bfe02d84663cd26b2288684b3721db3b6d1dbc9b538a0bc1ec0e2ff0417",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/09e58ea8-1920-5600-bd2b-cc1f199d051f/09e58ea8-1920-5600-bd2b-cc1f199d051f.width-680.png",
++      "sha256": "93fa8ea0fc390aaa7c488702e3430763a829fa5eeec37a381ddc674bb61c3f91",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/09e58ea8-1920-5600-bd2b-cc1f199d051f/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "ed10840dd10fa537b5be6e8dd7fe2fcf1ad12299f1050f1d09921199530192eb",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/11c57203-1619-5bba-8905-9c10d7f77d57/11c57203-1619-5bba-8905-9c10d7f77d57.width-360.png",
++      "sha256": "8f9b634b1214f4b6bef0cd7cc7ab80bcb33ee796a308ed533fce27178fe20d07",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/11c57203-1619-5bba-8905-9c10d7f77d57/11c57203-1619-5bba-8905-9c10d7f77d57.width-680.png",
++      "sha256": "755a61569ea8853fb725e89d356f4274dd4464bdfbb32527e2fbe1d41d145379",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/11c57203-1619-5bba-8905-9c10d7f77d57/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9542dde6ae6ae9cd9de724d502764cc4753141ba6bceaac07e97cca3b165ccac",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/13b20cee-8977-5b3f-938b-2064e96f2a5b/13b20cee-8977-5b3f-938b-2064e96f2a5b.width-360.png",
++      "sha256": "7975d3651dfd3ec06dfd1b739f01909755b06973c03aeb75af7f5cb1ef79aabf",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/13b20cee-8977-5b3f-938b-2064e96f2a5b/13b20cee-8977-5b3f-938b-2064e96f2a5b.width-680.png",
++      "sha256": "16f0c6a89c81cd9c46d2772820330397110f687b346598584cbdf559b0fd9bb1",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/13b20cee-8977-5b3f-938b-2064e96f2a5b/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "0bb41e70edc722d3b96022a223e34115b7918154aa2b566c76abebf5446e87d3",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1582ec45-1655-5f7c-a2bd-a3fc00e583fa/1582ec45-1655-5f7c-a2bd-a3fc00e583fa.width-360.png",
++      "sha256": "cebb3699d701306d9452b605b98d7d60a7fe5920dadb9f20d113348f62aafade",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1582ec45-1655-5f7c-a2bd-a3fc00e583fa/1582ec45-1655-5f7c-a2bd-a3fc00e583fa.width-680.png",
++      "sha256": "79d2130d3d1d381473afb5a75eba81b3f97b2a83133b10eb347719cf750ff0b6",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1582ec45-1655-5f7c-a2bd-a3fc00e583fa/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "86a3d14c11307c65fd18ad27a99d2d8dbfe52d0054be1b9f63643954a2b0aa83",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/167bfd78-9202-5599-9325-66d7a1579185/167bfd78-9202-5599-9325-66d7a1579185.width-360.png",
++      "sha256": "9900da82ac8b6e03ea5a57028dccf96a6e3f3ddf79c9e646718eb98e74cd0e4e",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/167bfd78-9202-5599-9325-66d7a1579185/167bfd78-9202-5599-9325-66d7a1579185.width-680.png",
++      "sha256": "bdd20fa18e0df8c7482aae384127652bda8e18151f8d382a1dd0147eb7915d5b",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/167bfd78-9202-5599-9325-66d7a1579185/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "e82745d5b848307639d2d4d3431a45cb2dd36a4229e50d9986a44f4dffa8f63e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1bddc795-8aeb-5408-90b3-12e4be51e912/1bddc795-8aeb-5408-90b3-12e4be51e912.width-360.png",
++      "sha256": "faa80f23ff0b381389cd2b58d4133daa27ce3d57ed753802ab4350f8a948a55c",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1bddc795-8aeb-5408-90b3-12e4be51e912/1bddc795-8aeb-5408-90b3-12e4be51e912.width-680.png",
++      "sha256": "64910ac8f8cea128cc0278a464306ac789e3f672f7b054d5b2f5d0500536ac50",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/1bddc795-8aeb-5408-90b3-12e4be51e912/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "9390cf8d560dd88cc403bbf3933c4f4df5ac4f15f97e956e14f0a54d3dfcb309",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60.width-360.png",
++      "sha256": "4976badc6d02edc211ecab87109a3d248078e34efc7a09a742e79fb8aa4a89d0",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60.width-680.png",
++      "sha256": "ec96b6e9f234339b49f1ab52600bc4246710c6cfaaec86795a5bca00c4b697f7",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "87ab1f0a9af299466e20d3f30ac86f131689c3789b18cdc9337ccbf8fa867c55",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/45bd0edd-3d4e-55f1-88bf-407c4706e860/45bd0edd-3d4e-55f1-88bf-407c4706e860.width-360.png",
++      "sha256": "159e94baef52ee72ac37c2e4573a7c79194149a628806ed28b505228881677d6",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/45bd0edd-3d4e-55f1-88bf-407c4706e860/45bd0edd-3d4e-55f1-88bf-407c4706e860.width-680.png",
++      "sha256": "d9331bb291345a4180467bb269f30b1df02c165c313f9497b438a601bab277b8",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/45bd0edd-3d4e-55f1-88bf-407c4706e860/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "e311b3faf53f5dce76cc53b9719234c143b4387ce7e054080545373b020382f9",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.width-360.png",
++      "sha256": "021366f4de9a8eca49a413e2c9b818e055648724b160d8fdb66df8a3772357b8",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.width-680.png",
++      "sha256": "709badf7ad158063057d6f3b73d8dc2163f3d63acaeb80108380876c732ca219",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "3c2ec95c8b8285fa6e02edcdefa47f4db4add167909c84b370fcdfe5ba3902df",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/7d632b0b-60b8-5c33-8094-ef1569b313dc/7d632b0b-60b8-5c33-8094-ef1569b313dc.width-360.png",
++      "sha256": "eb7eece23bc36b96e09d499f173e2aa37d51d60e301074eaa4fcfac04b1b25dd",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/7d632b0b-60b8-5c33-8094-ef1569b313dc/7d632b0b-60b8-5c33-8094-ef1569b313dc.width-680.png",
++      "sha256": "ac7c4cb24c6b16bad17627337a684f807f5ce4008956d22a13411200c0247773",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/7d632b0b-60b8-5c33-8094-ef1569b313dc/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "c361646f42b9e94918ebb2c6e6f78e6588460691e5a9b637d867e2298697dc7e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/84f7321d-7fb7-5e3a-ab8f-8690b26929f3.width-360.png",
++      "sha256": "6d759e83cbb501555ecc49df43ac283304e273701e4ce8018db3e3cc45c7d5a3",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/84f7321d-7fb7-5e3a-ab8f-8690b26929f3.width-680.png",
++      "sha256": "79321ffb3645a042ffff485323cd0ebba57c77dbf9c37c14a24a4e0af232cb78",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "83ca5e966f0adbb291d18522a1fc1a1751960516f70686ea72f323eac2f32639",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/independent-image-review.receipt.json",
++      "sha256": "b9f219cda99a166228b123879c11316bedcfdc6f33c5e523cabaa347eccf2e77",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/8adaa076-10ad-5fbf-8a22-247b52046da4.width-360.png",
++      "sha256": "0d723913fc63ee3a5641a7b53d3f5dd810e69c06053cf4603f8675a2102b7033",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/8adaa076-10ad-5fbf-8a22-247b52046da4.width-680.png",
++      "sha256": "9e3cef7691374351202f41df371948cd91bb9705a055ed0e62794a7180093a49",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "f570ef8b0116c3868b25ca202738c581834386cc834df0c225141dbc2359ec1a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/8adaa076-10ad-5fbf-8a22-247b52046da4/independent-image-review.receipt.json",
++      "sha256": "0911ec7d9af931fd8274b4c49f760636b7cd8e2df88e2fc9a59f4402a7e2360d",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9267ad99-f474-5fd7-8b6a-bd03fbc70394/9267ad99-f474-5fd7-8b6a-bd03fbc70394.width-360.png",
++      "sha256": "0e7a46c47dacbee8c673254c32ce5eb161d37870d8a35b55a7b4dd1ae3b5b986",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9267ad99-f474-5fd7-8b6a-bd03fbc70394/9267ad99-f474-5fd7-8b6a-bd03fbc70394.width-680.png",
++      "sha256": "3f6b1c345cb18df30d57ef1c0132d3450891eddcae4abbbcd6627ec9af17475d",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9267ad99-f474-5fd7-8b6a-bd03fbc70394/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "63465f54c29c46e0a51ac5a371e867c9b705e6ed3c6870c221e8a21373409e7d",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ea7d847-7425-5157-a827-ee5f8c2e8c0a/9ea7d847-7425-5157-a827-ee5f8c2e8c0a.width-360.png",
++      "sha256": "8200768072c7c8f8f7470d94ac112d3d7b43c8e6a9abd4ffb5eeaa78d5cfeeff",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ea7d847-7425-5157-a827-ee5f8c2e8c0a/9ea7d847-7425-5157-a827-ee5f8c2e8c0a.width-680.png",
++      "sha256": "9003ae5d473abb36ee91d5389ce62ae424057cabe0b14eee95af983ce6d308bd",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ea7d847-7425-5157-a827-ee5f8c2e8c0a/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "8762947929bc52fbef6437bb026954267b49acc4f0d13feb428ef2e0c3991c9e",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/9ebddb42-c799-5cf3-bfbc-f611ac66207b.width-360.png",
++      "sha256": "2b0b4c4998b5b75fcd9d6048ee5163eb48ab52855d8076ebf66bcdbfea50614e",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/9ebddb42-c799-5cf3-bfbc-f611ac66207b.width-680.png",
++      "sha256": "a92b4973e9b2a2a1c94581a367f4c8968492b1e1d3e5866e5c498cba958e0620",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "78a5ce4d479fdc21e73b3595c4180de52ce6788a5b59d888d7320508ef0eada5",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/9ebddb42-c799-5cf3-bfbc-f611ac66207b/independent-image-review.receipt.json",
++      "sha256": "9a45a76f3a40815ea9afdc9d398b1e600f4a942803b248a78ada614efbe16e0b",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b456e539-24bb-5ec5-a996-14c9c77b64d0/b456e539-24bb-5ec5-a996-14c9c77b64d0.width-360.png",
++      "sha256": "b6f204e34d5e7b0448e227be58f527af162e796c892f391a5b9c278b15233768",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b456e539-24bb-5ec5-a996-14c9c77b64d0/b456e539-24bb-5ec5-a996-14c9c77b64d0.width-680.png",
++      "sha256": "bdd7529bea8091299e11983fba94eda5b37d1541579d92491bd3b40ca4b716ba",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b456e539-24bb-5ec5-a996-14c9c77b64d0/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "26151398653ebfa387b096bad1bd3b5b91892c22db2f43e9d6370df3bce5ee57",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b4a82d8d-6311-5575-b222-cbaf6ea90d32/b4a82d8d-6311-5575-b222-cbaf6ea90d32.width-360.png",
++      "sha256": "c96573be07079288c2feea6002287b427cd41c59fd18893c6afd261a5425d375",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b4a82d8d-6311-5575-b222-cbaf6ea90d32/b4a82d8d-6311-5575-b222-cbaf6ea90d32.width-680.png",
++      "sha256": "d7c7674224424342d580a425457062708932b66216258ba262d190f34c442f29",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/b4a82d8d-6311-5575-b222-cbaf6ea90d32/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "17cd1f8890641c321c893c249a579a5b4714240d5f4067def9bd46c907a1aba8",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/cc57df5b-69fd-5774-90d7-aa5ebd3d1632/correction-v2/cc57df5b-69fd-5774-90d7-aa5ebd3d1632.width-360.png",
++      "sha256": "1a2fe2b20115a37c6a80c704b44873991376c7f14c69b55569898a0213d8f81a",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/cc57df5b-69fd-5774-90d7-aa5ebd3d1632/correction-v2/cc57df5b-69fd-5774-90d7-aa5ebd3d1632.width-680.png",
++      "sha256": "381bb9b1de8d903b6ed1acfd8412c13feaa19a469fe1bb9d306db2302b5b0320",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/cc57df5b-69fd-5774-90d7-aa5ebd3d1632/correction-v2/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "d42c95cbd2eb8899a0f3dfd4d6cc8a32350589abf6a3d74892f8487bcd37f65a",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/cc57df5b-69fd-5774-90d7-aa5ebd3d1632/independent-image-review.receipt.json",
++      "sha256": "4708a7378ffff7c15ce7cd056a6c572f1bf76631a17dfcb2359388c6e7d63900",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/f7034be8-64e9-5f63-9556-d7b8dc59eda7/f7034be8-64e9-5f63-9556-d7b8dc59eda7.width-360.png",
++      "sha256": "e8038c1bf61b2a88c5b23c344538f227b5d7e24e58f42cbceb9d3decd87416e4",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/f7034be8-64e9-5f63-9556-d7b8dc59eda7/f7034be8-64e9-5f63-9556-d7b8dc59eda7.width-680.png",
++      "sha256": "b7f5bb4e93eaf53ca0b032a6bc5d9f98be92d1409ea2adccfb9c97591e81b20a",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/f7034be8-64e9-5f63-9556-d7b8dc59eda7/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "ef3134a49f91ba6bc35750931a4f9128d83374ff96e59a1f4436e680c3f29e43",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/fcf756f1-7252-54cb-9257-de8259090021/correction-v2/fcf756f1-7252-54cb-9257-de8259090021.width-360.png",
++      "sha256": "b133f91b4f83404f3e9eb78b6d82346cef7ba17ed3956e9336916c596c739851",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/fcf756f1-7252-54cb-9257-de8259090021/correction-v2/fcf756f1-7252-54cb-9257-de8259090021.width-680.png",
++      "sha256": "91231050359c9fde354f9bb6b059065343dbfdd1b8c2fbd703daad3eeb966691",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/fcf756f1-7252-54cb-9257-de8259090021/correction-v2/independent-image-review.receipt.json",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "sha256": "d8a22401c03bd426483f570700739c72eed9f9b219d8b1472288006428f8ed2d",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/independent-review/fcf756f1-7252-54cb-9257-de8259090021/independent-image-review.receipt.json",
++      "sha256": "44ddca3e9c63a97c0506a11bb472fe431a603a9268ab602e8ac6791f02a77ba6",
++      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
++      "currentCopyRequired": false
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/0509ae79-abb4-5e6b-8db2-521c1bccacf4/metadata.json",
++      "sha256": "e49c1a26392551d28a70a525636500e95e44a8d602bc508de4eb416ad65b047e",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/0b6db337-3fc6-5c30-860d-c8fbd535cb5c/metadata.json",
++      "sha256": "62597c6a5f386299ec5fcbef610681a283cb086ada46b35b9f51d211f3c372dc",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/43acb850-7685-5e53-acf6-6675120120d1/metadata.json",
++      "sha256": "df909aca3362d875a11786dcfa54f030c33ecbffa094fd52bc3e5b57a9566bd4",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/4cd0c6d8-6485-51d0-883d-5d49ac46be70/metadata.json",
++      "sha256": "b42921da1632483f92817e9b20577fb394a51271e1272996925d2cfaa99ae093",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/54049ed4-9364-5564-a55a-3959193d9018/metadata.json",
++      "sha256": "d0ab8de3cb17e229bc4b37b31327fdd747574804218ed05de7cd606b5a30860f",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/5ae551bf-942c-5896-b8e0-93aad36fe9b0/metadata.json",
++      "sha256": "9fbe675c22f6f282ce67a9a50c81a8ee3a72c58ade94bf581efeadafb1513f3a",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/604cde3e-4095-50c3-b712-e6bd7cea4717/metadata.json",
++      "sha256": "150f1906435b14186aadf5ca710af46c72254e301d6d460b35ee900a16b11ff8",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/667b75ad-2d20-5f22-ad57-46be5b7c53c7/metadata.json",
++      "sha256": "ae992f7703072932ff8fda7c1f015f7086f9a6aa6fc94f5079affa70cf8110cd",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/87ee2b5a-8d10-51e4-a288-539e5ac251ea/metadata.json",
++      "sha256": "71b9474dcbba15f0553d65c454a613279a5388469a3cc56a98c24784584530d2",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/d22433a8-fa0a-5db5-b65f-9d47b801f2d9/metadata.json",
++      "sha256": "edf9bba3c0c83b4612ba461813df8408f1ae5bdf196c5001a2cb831d38b5dd19",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/ebbce1c2-51b3-5215-8bcb-fbb74affdd62/metadata.json",
++      "sha256": "b35b2fdbe0fb702e92de4db568083c2bd715ed09efd477e7adb837d170ec30a3",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91/metadata.json",
++      "sha256": "234287d5187fed92bd7ad0aeb1558c04b19d9aa8c8e6976fc63f3ea2ddae6391",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/native-image-preparation/fb249488-944c-5123-a21e-5cb9a0431e8b/metadata.json",
++      "sha256": "e574b6e6e1ee1ad18a4261157267f551752a26e6365e0efe424d43093d3357e0",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-bilingual-positive-author-v1/whole-goals.candidate.json",
++      "sha256": "dec23666b28673d748b6fff30780b20fa9d053999bd50f98daf61d8fc6e72816",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/0509ae79-abb4-5e6b-8db2-521c1bccacf4/0509ae79-abb4-5e6b-8db2-521c1bccacf4.png",
++      "sha256": "436df30d8af7d7ce7d0eeb1b83fa370269922945901ca9e37ee36baddbebad8e",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/0b6db337-3fc6-5c30-860d-c8fbd535cb5c/0b6db337-3fc6-5c30-860d-c8fbd535cb5c.png",
++      "sha256": "a11cc6310414e47c9acdf944ba53085078bfeeeae497397685386707282c9161",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/43acb850-7685-5e53-acf6-6675120120d1/43acb850-7685-5e53-acf6-6675120120d1.png",
++      "sha256": "511e21f3440915ffd40db09df0ea3ba57f63cd73f0def8e6b722093c965f745f",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/4cd0c6d8-6485-51d0-883d-5d49ac46be70/4cd0c6d8-6485-51d0-883d-5d49ac46be70.png",
++      "sha256": "a4fd17ddb17620482ed5a09c5b46daafd4e7d880546cc878e67dbf36496e1135",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/54049ed4-9364-5564-a55a-3959193d9018/54049ed4-9364-5564-a55a-3959193d9018.png",
++      "sha256": "be2ac8ee089551cb75ecc3b7bc8dd5459f2e82e0e784f65c827f3a3be822df6d",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/5ae551bf-942c-5896-b8e0-93aad36fe9b0/5ae551bf-942c-5896-b8e0-93aad36fe9b0.png",
++      "sha256": "7f589349443847a61e494ec6a42389118fdd09d3da1c90bba0fec7ea7faf095d",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/604cde3e-4095-50c3-b712-e6bd7cea4717/604cde3e-4095-50c3-b712-e6bd7cea4717.png",
++      "sha256": "68faaaa69de05ca3e6d735889d7e42637bac0f3b4b337f951c7eb9b3f9c09815",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/correction-v2/606c4050-d196-509e-9a95-53733d6b06bb.png",
++      "sha256": "08dfc6aacc5173e20efd8252a7037636ccbfebe6e8fe2ed135a3c4f605296806",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/correction-v2/fresh-native-preparation/metadata.json",
++      "sha256": "178213e9c5f6d2dc59a4218397c99b51df1776b40cfcf86f8433a49d3bb949bc",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/667b75ad-2d20-5f22-ad57-46be5b7c53c7/667b75ad-2d20-5f22-ad57-46be5b7c53c7.png",
++      "sha256": "505f4520ec552ebbbd872d011ac88d476242549d8b80ac8ef2d538b864a376d6",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/correction-v2/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303.png",
++      "sha256": "66656afe70e4e555c7cfbee01497e18d4e2af793deafeaa87f6be078a5b75ab2",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/correction-v2/fresh-native-preparation/metadata.json",
++      "sha256": "4297985f95896a9850bac821e3857d12355e81b69bb57f4d0ca80755ad918ad3",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/87ee2b5a-8d10-51e4-a288-539e5ac251ea/87ee2b5a-8d10-51e4-a288-539e5ac251ea.png",
++      "sha256": "c11c78457b1443493a5dd17cbff0be11fff119c8354b3155db84fb19832e8ae5",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/correction-v2/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4.png",
++      "sha256": "ed38c7b66832812f9a01c90896db97945656eebe88bba1bb21e52dbc7bc0fc2d",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/correction-v2/fresh-native-preparation/metadata.json",
++      "sha256": "2d4cd42852c9c2866b35291bcbf6c48414f16693eca300804281038655865423",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/d22433a8-fa0a-5db5-b65f-9d47b801f2d9/d22433a8-fa0a-5db5-b65f-9d47b801f2d9.png",
++      "sha256": "19f465aa2213695aaab1ca3a541f3fc020af0219a9f7f700441a45ed26730f55",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/ebbce1c2-51b3-5215-8bcb-fbb74affdd62/ebbce1c2-51b3-5215-8bcb-fbb74affdd62.png",
++      "sha256": "2933b0c756bb46249dd0d37dbef78ac37bd6cd3ba76a9b2ee8d413be870b5e8a",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91.png",
++      "sha256": "9f0591ff86174c0209093233b7933fbd06a2988fc8692d9e352880f672c772c4",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-image-author-20261008-v1/fb249488-944c-5123-a21e-5cb9a0431e8b/fb249488-944c-5123-a21e-5cb9a0431e8b.png",
++      "sha256": "f5ce90c25372e7d771c8c38259a2098988cb518c5daa38b7113f59c10f3eef18",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0509ae79-abb4-5e6b-8db2-521c1bccacf4/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "c62eb3aa261e404ea50b73ac49fb96c96b4860e4d7a8daf7d1638b24d3371cbd",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0509ae79-abb4-5e6b-8db2-521c1bccacf4/inspection-360.png",
++      "sha256": "2faabf41fb9048c3f7f65dc2290d4f5ce68306fd4679ff6a693a47050e2ad7d9",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0509ae79-abb4-5e6b-8db2-521c1bccacf4/inspection-680.png",
++      "sha256": "27cdaf0748844fbad5a498b1df25d6f2c1ff05ce6afb5bee0c91ebd62bd91929",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0b6db337-3fc6-5c30-860d-c8fbd535cb5c/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "9a3852d0b6670042e5c23898bd7f82082364b8b61dade7037dace1064abbb338",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0b6db337-3fc6-5c30-860d-c8fbd535cb5c/inspection-360.png",
++      "sha256": "821b90f4883d7050be8bc48f39dfc17247b28e399de4d805edd5db374f606242",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/0b6db337-3fc6-5c30-860d-c8fbd535cb5c/inspection-680.png",
++      "sha256": "08aa6895b22cf707ce66f1b9301e9c1c5cb50320e5605a5990446cfa2d97f798",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/43acb850-7685-5e53-acf6-6675120120d1/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "aea8a4f99a85a27b094d67f04c3bd677945a325efc8df311cd670c32b29e30aa",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/43acb850-7685-5e53-acf6-6675120120d1/inspection-360.png",
++      "sha256": "69ef785a8c742bf76eaf9c8dcacb77e2363b10e4bcb07e80a3bf9f152ef66d1b",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/43acb850-7685-5e53-acf6-6675120120d1/inspection-680.png",
++      "sha256": "ac54f01a8a28c89aba353d73ba98b13c83a9f4982b5ce8b01d69e5ac12d8f518",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/4cd0c6d8-6485-51d0-883d-5d49ac46be70/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "6304f6dfbd33b2d03c9096ecbb0f7dd62ec12189c0ac4b380bb22f8671798aa2",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/4cd0c6d8-6485-51d0-883d-5d49ac46be70/inspection-360.png",
++      "sha256": "f825296ffdca361d17ba320a5076da27aadd43ac83660940b4ded90919c3bf3e",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/4cd0c6d8-6485-51d0-883d-5d49ac46be70/inspection-680.png",
++      "sha256": "3d9073737bfe3bc64788bc5f594af9df47022b6da081c92fe4ffaaa77ba95013",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/54049ed4-9364-5564-a55a-3959193d9018/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "d8e895a18454dce93c05971d01fe542793f2dc69f97ad9f28f7688b91e69b3e3",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/54049ed4-9364-5564-a55a-3959193d9018/inspection-360.png",
++      "sha256": "ad3f4a5ad9b444ce71ffb551cca7c5e86944d5fa021770b653c28d0ca9e9c6cc",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/54049ed4-9364-5564-a55a-3959193d9018/inspection-680.png",
++      "sha256": "d7c527a73cff7f114cb0b0b3993a1311ca1d76269dc8af620ed9da6188d1981a",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/5ae551bf-942c-5896-b8e0-93aad36fe9b0/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "449a11cd7e89e99a746ef3f625ea8c780e34f976045f36e5f8825b02c771eec0",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/5ae551bf-942c-5896-b8e0-93aad36fe9b0/inspection-360.png",
++      "sha256": "e6921fadbe8e63dcfbf91dd52a0d377c3afe2e0d6a59633f2dd6eadad4f56193",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/5ae551bf-942c-5896-b8e0-93aad36fe9b0/inspection-680.png",
++      "sha256": "86def896dc60b151bfead9680553d4f2f2cba8871717554da18502a19dbb5a31",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/604cde3e-4095-50c3-b712-e6bd7cea4717/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "411c53185acba9117a22056a8945bb5d697f5e634559a572e1b9ad94360e2e69",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/604cde3e-4095-50c3-b712-e6bd7cea4717/inspection-360.png",
++      "sha256": "ffd357b722f75b98e60a5739690a301eab0c857464e76b78115d08254cec1379",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/604cde3e-4095-50c3-b712-e6bd7cea4717/inspection-680.png",
++      "sha256": "144c323f3d74ca4a705d7a3ddfa5cd2f5644325e97246d4810cbdeaf7aa1c708",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/correction-v2/independent-corrected-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "9d8cf9866816ee94004ceb9546ef6c15021c02559e00f8041512b20345f9c998",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/correction-v2/inspection-360.png",
++      "sha256": "e4b4dd42ebb277967f8b08d83d07b04b5f7f0732dbf5e359dcf62e9d3e0be7c2",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/correction-v2/inspection-680.png",
++      "sha256": "4a8a52a43154ec2ae1b7ce819ca0e53f3f38b4efb0c40f33bf0baf64ca739531",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/606c4050-d196-509e-9a95-53733d6b06bb/independent-original-image-review.receipt.json",
++      "sha256": "2a9172acc62e6584423737224d19b5eb6ab610d25270f48d5f72671714774089",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/667b75ad-2d20-5f22-ad57-46be5b7c53c7/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "2ef82cd4695bcebf1779498ce8f15a7fdfa6ac652aa388fe476d949e8658c1d4",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/667b75ad-2d20-5f22-ad57-46be5b7c53c7/inspection-360.png",
++      "sha256": "8fb80ae2a2085c6a8220eb2944ce78c40503ccc4f34b81eaca5ab407953dc74b",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/667b75ad-2d20-5f22-ad57-46be5b7c53c7/inspection-680.png",
++      "sha256": "991aceb903aee833521aa5be3bc750d52977d9066cb18451ba3db77c8d5581be",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/correction-v2/independent-corrected-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "4a01315b370631b61846b764a552005c4b74c3d0d78efdbdeeddf68ab85f3bea",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/correction-v2/inspection-360.png",
++      "sha256": "35c45f0bc763630cd6d80c78962dacaa511a599953d54e89827bed3ffdb7cf03",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/correction-v2/inspection-680.png",
++      "sha256": "c41cf23039b6b57c49c4953c3149c7789be82b1eeccf29ebf1d63fcd2a6d91e6",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/7d0c69c6-0c67-5221-9ccc-d55e3eb2c303/independent-original-image-review.receipt.json",
++      "sha256": "4e66bab1060d54769fabfea8b4028ae30cd4720920e79d2181f0db2ee72dbf69",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/87ee2b5a-8d10-51e4-a288-539e5ac251ea/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "d96349097488be616e8910ff5ecd310f8e8265a4841b249209dc14b8907cd8ea",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/87ee2b5a-8d10-51e4-a288-539e5ac251ea/inspection-360.png",
++      "sha256": "fd0c20914ddf5179463049a836b105a822fdecbae7e1c6e99089ee4705dd6002",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/87ee2b5a-8d10-51e4-a288-539e5ac251ea/inspection-680.png",
++      "sha256": "dc1950d899b30901481050308aa5d900f738eac7d03ab71add9d41cb1644b5e4",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/correction-v2/independent-corrected-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "b01b90ccda805884f4b3acb9bcf05ca8725577f5439472513498607c6a900710",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/correction-v2/inspection-360.png",
++      "sha256": "fce59b56ac713abc26c33b16dce3194561e72ee26862b1df0207bdbed0176e45",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/correction-v2/inspection-680.png",
++      "sha256": "260095da4840fd7b728edd8509e2e55a113bd0c1b44cb0a2f5d704528949ec88",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4/independent-original-image-review.receipt.json",
++      "sha256": "801030d6c58ea7016c1a9e1fbc36bd58acf050b9f581290cf13e29e85d3c71af",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/d22433a8-fa0a-5db5-b65f-9d47b801f2d9/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "8870a8a8ba476aee0baf8b7f9d1075f91581bf7f9cf1abc516f1b4f5bc903815",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/d22433a8-fa0a-5db5-b65f-9d47b801f2d9/inspection-360.png",
++      "sha256": "71f09dd1c0f6c48c1c17539d57412a71ab5673721b0ca21e0d224011fc674963",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/d22433a8-fa0a-5db5-b65f-9d47b801f2d9/inspection-680.png",
++      "sha256": "804c1970edf465fd4343bffa2fa96dfa8f50086d1adc83d0bcca8d3928acfd74",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/ebbce1c2-51b3-5215-8bcb-fbb74affdd62/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "37986e344c49d2503619d05247c3516e7fd7db8da90eae674aa48b196c4ba27c",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/ebbce1c2-51b3-5215-8bcb-fbb74affdd62/inspection-360.png",
++      "sha256": "c661485c164230aeaa0d808761236da6014f29cae89cd952aae19f182c1ed59a",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/ebbce1c2-51b3-5215-8bcb-fbb74affdd62/inspection-680.png",
++      "sha256": "dc10858d380d4bab3b936a516e350fe17a049df6247963175d8cb224183060a9",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "ed4275b8bacd2cb3c114039c446077124863683abfa9855ffa3752bbd792a26d",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91/inspection-360.png",
++      "sha256": "7922fd17267ec3697984739359032e6641759baa6b26555878d7b544b56bbbe9",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91/inspection-680.png",
++      "sha256": "1bbb2a28706d043c39ee3598b507e7e843b71ed5451bbb4c2844e80e3410ef27",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/fb249488-944c-5123-a21e-5cb9a0431e8b/independent-original-image-review.receipt.json",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "sha256": "af9de4029dc82b60f2c3f40a859daf23897b1daf3c141b665a5f646f388cef46",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/fb249488-944c-5123-a21e-5cb9a0431e8b/inspection-360.png",
++      "sha256": "03369d4d8b74455735c965efccb2772f889d8750c85b89f54e186768e7889359",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-trade-finance-sixteen-independent-image-review-20261008-v1/fb249488-944c-5123-a21e-5cb9a0431e8b/inspection-680.png",
++      "sha256": "3e0ec463f4b1d9325a8b1c48c096a6fabb946e6de3cb4a9a4fc0fb9e8fe7109e",
++      "gitCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
++      "gitCommit": "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
++      "sha256": "7265fca443019c03fc63dd16d9ff113c45815dd07b6ac8d02db48bf0636c4227",
++      "currentCopyRequired": false
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/35558905-753d-5fcb-b25e-7f85ffdbff56/ai_candidate-review.json",
++      "gitCommit": "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
++      "sha256": "7ac9a12873acaae1a0545a6e47998cd3c0d88a1ec176f2889090847cfbb681dd",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/35558905-753d-5fcb-b25e-7f85ffdbff56/candidate.png",
++      "gitCommit": "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
++      "sha256": "67810c41b3c974fb1fdc0cdd6c2b67101c0ff7ac9c1b26aa50b8e9cbf1d9b405",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/ai_candidate-review.json",
++      "gitCommit": "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
++      "sha256": "930667b90c78916c024a07d2eecd85f6b11905bca6a4cdff4972daeef0e30e51",
++      "currentCopyRequired": true
++    },
++    {
++      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/math-m7-matrix-notation-20260921-v1/922d89fc-1cbd-56e9-ac5d-5cb59085de6c/candidate.png",
++      "gitCommit": "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
++      "sha256": "a5c6d718dd1500f140c19708f43feee528e6a74306b52eb8352ef3b907d8db15",
++      "currentCopyRequired": true
++    }
++  ],
++  "newReviewClaimed": false,
++  "runtimeActivationAllowed": false
++}
+--- a/app/scripts/testDeepUnderstandingRollout.ts
++++ b/app/scripts/testDeepUnderstandingRollout.ts
+@@ -146,7 +146,7 @@
+     strictCompletionReady: false, issues: ['Another subject has a validation failure'],
+   }], blockingIssueCount: 1,
+ })
+-assert.equal(projected.status, 'pass', 'One subject must not wait for another subject.')
++assert.equal(projected.status, 'fail', 'A claimed complete report without native original-context V evidence must remain open.')
+ assert.equal(projected.metrics?.expectedGoals, 2)
+ assert.equal(projected.metrics?.strictComplete, 2)
+ const noScopeReport = { schemaVersion: 1 as const, reportId: 'fixture', subjects: [], blockingIssueCount: 0 }
+@@ -170,7 +170,7 @@
+ }]
+ const memoryPassed = { id: 'CQR-302', status: 'pass' as const, summary: 'Fixture memory passed' }
+ assert.equal(deriveCurriculumMaturity([...coreRules, projected], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M5', 'M7 requires current M6.')
+-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M7')
++assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6', 'No current original-context V expectation is supplied by this dashboard fixture.')
+ assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, { ...projected, status: 'warn' }], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6')
+ assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], [], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M2', 'M7 cannot bypass lower route gates.')
+ assert.equal(countHumanTrialBlockingFindings(fixtureLandscape, [{ schemaVersion: 1, records: [
+@@ -272,24 +272,32 @@
+ const qualityHoldGoalIds = new Set(mathQa.records
+   .filter((record) => record.visualizationState === 'missing' && record.missingReason === 'deferred_quality_review')
+   .map((record) => record.goalId))
+-const staleEvidenceGoalIds = mathematics.issues.map((issue) => {
++const nonVisualizationIssues = (subject: DeepUnderstandingSubjectReport) => {
++  assert.ok(subject.visualizationValidation, 'The real producer must emit its complete V input manifest.')
++  const visual = new Set(subject.visualizationValidation.issues)
++  return subject.issues.filter(issue => !visual.has(issue))
++}
++const staleEvidenceGoalIds = nonVisualizationIssues(mathematics).map((issue) => {
+   const match = issue.match(/: ([0-9a-f-]{36}): stale reviewInputFingerprint; expected sha256:[0-9a-f]{64}$/u)
+-  assert.ok(match, `Unexpected Mathematics rollout blocker: ${issue}`)
++  assert.ok(match, `Unexpected non-V Mathematics blocker: ${issue}`)
+   return match[1]
+ })
+-assert.ok(staleEvidenceGoalIds.every((goalId) => qualityHoldGoalIds.has(goalId)))
++assert.ok(staleEvidenceGoalIds.every(goalId => qualityHoldGoalIds.has(goalId)))
+ assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
+-assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
+-  'The aggregate must include every actual subject blocker.')
+-assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length + economics.issues.length + chemistry.issues.length,
+-  'Only the explicitly tracked Chemistry and Economics rollouts may add blockers to the protected subjects.')
+-for (const subject of report.subjects.filter(({ subject }) => !['mathematik', 'wirtschaftswissenschaften', 'chemie'].includes(subject))) {
+-  assert.deepEqual(subject.issues, [], `${subject.subject} must retain its existing blocker-free baseline.`)
+-}
+-assert.equal(physics.issues.length, 0)
+-for (const subject of [mathematics, physics, biology]) {
+-  assert.equal(hasStrictDeepUnderstandingCompletion(subject), true,
+-    `${subject.subject} must retain M7 for every current curricularAtomic goal.`)
++assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0))
++for (const subject of [physics, biology]) assert.deepEqual(nonVisualizationIssues(subject), [],
++  `${subject.subject}: the new V gate must not change existing non-V outcomes.`)
++const contextIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(repositoryRoot,
++  'contracts/goal-visualization-context/v1/qualified-context-index.json'), 'utf8'))
++for (const subject of report.subjects) {
++  const expected = contextIndex.rows.filter(row => row.landscapeId === subject.landscapeId && subject.currentGoalIds.includes(row.goalId))
++    .map(row => row.goalId).sort()
++  assert.deepEqual(subject.visualizationValidation!.readyGoalIds, expected,
++    `${subject.subject}: only the finite actual original-context candidates can complete V.`)
++  assert.equal(subject.gates.currentVisualizationQaRecords, expected.length)
++  assert.equal(subject.requiredChecks.find(check => check.id === 'visualization-freshness-and-approval-check')?.status, 'fail')
++  assert.equal(subject.strictCompletionReady, false, 'Missing original-context evidence cannot grant M7.')
++  assert.deepEqual(subject.visualizationValidation!.currentGoalIds, subject.currentGoalIds)
+ }
+ assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
+ assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
+@@ -309,11 +317,15 @@
+     assert.ok(failedChecks.every((id) => ['description-review-validation', 'visualization-freshness-and-approval-check'].includes(id)),
+       'The Economics checkpoint requires current scope/P/A/M; pending D/V must remain M7 failures.')
+   } else if (subject.subject === 'chemie') {
+-    assert.deepEqual(failedChecks, subject.strictCompletionReady ? [] : ['description-review-validation'],
+-      'The Chemistry M6 checkpoint retains current P/A/M/V; open description reviews must remain M7 failures.')
++    assert.deepEqual(failedChecks, [
++      ...(subject.gates.currentDescriptionResolutions < subject.denominator! ? ['description-review-validation'] : []),
++      'visualization-freshness-and-approval-check',
++    ],
++      'Chemistry retains P/A/M; description and unbound visual contexts remain M7 failures.')
+   } else {
+     assert.deepEqual(failedChecks,
+-      subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
++      subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0
++        ? ['positive-evidence-validation', 'visualization-freshness-and-approval-check'] : ['visualization-freshness-and-approval-check'],
+       'Protected subjects must retain their strict completion checks.')
+   }
+   assert.equal(subject.currentGoalIds.length, subject.denominator)
+@@ -348,4 +360,4 @@
+ assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope),
+   chemistry.strictCompletionReady ? 'M7' : 'M6', 'Open Chemistry description reviews must never grant M7.')
+ 
+-console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)
++console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, immutable-context V failures and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)
+--- a/app/scripts/testCurriculumGraphMaturity.ts
++++ b/app/scripts/testCurriculumGraphMaturity.ts
+@@ -75,10 +75,13 @@
+   }],
+ })
+ 
+-assert.equal(maturity([strictGraphFixtureRule]), 'M7')
++assert.equal(maturity([strictGraphFixtureRule]), 'M6', 'A graph fixture has no native original-context V evidence.')
+ for (const floor of ['M6', 'M7'] as const) {
+-  assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes), [])
+-  assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes))
++  if (floor === 'M6') {
++    assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes), [])
++    assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes))
++  } else assert.throws(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes),
++    /no complete passing visualization context report/)
+ }
+ 
+ let malformedGraphs = 0
+--- a/app/scripts/testCurriculumExamReadiness.ts
++++ b/app/scripts/testCurriculumExamReadiness.ts
+@@ -78,7 +78,7 @@
+ }
+ const goodScope = scopeFor(positives)
+ assert.equal(goodScope.maturity, 'M4')
+-assert.equal(deriveCurriculumMaturity(coreRules, [goodScope], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M7')
++assert.equal(deriveCurriculumMaturity(coreRules, [goodScope], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6', 'The assessment fixture has no native original-context V evidence.')
+ const badScope = scopeFor(generic)
+ const actual202 = badScope.rules.find(rule => rule.id === 'CQR-202')!
+ assert.equal(actual202.status, 'fail')
+@@ -93,7 +93,8 @@
+   const status = (scope: typeof badScope) => ({ curricula: [{ landscapeId: strictGraphFixtureId,
+     frameworkId: 'fixture-framework', subject: 'Fixture', rules: coreRules, scopes: [scope],
+     maturity: deriveCurriculumMaturity(coreRules, [scope], strictGraphFixtureId, strictGraphFixtureAssessmentScope) }] })
+-  assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes))
++  if (minimumMaturity === 'M6') assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes))
++  else assert.throws(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes), /no complete passing visualization context report/)
+   const failures = collectCurriculumMaturityFloorFailures(status(badScope), policy, baseExpectedScopes)
+   assert.ok(failures.some(line => line.includes(`current M3 is below protected floor ${minimumMaturity}`)))
+   assert.ok(failures.some(line => line.includes('CQR-202 fail')))
+@@ -213,8 +214,10 @@
+       landscapeId: strictGraphFixtureId, frameworkId: 'fixture-framework', subject: 'Fixture',
+       maturity, rules: current.rules, scopes: [goodScope],
+     }] })
+-    assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(passed), policy,
++    if (minimumMaturity === 'M6') assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(passed), policy,
+       new Map([[strictGraphFixtureId, passed.expectedScope]])))
++    else assert.throws(() => checkCurriculumMaturityFloors(status(passed), policy,
++      new Map([[strictGraphFixtureId, passed.expectedScope]])), /no complete passing visualization context report/)
+     assert.throws(() => checkCurriculumMaturityFloors(status(passed), policy), /assessment reports bound to current source discovery/)
+     const failures = collectCurriculumMaturityFloorFailures(status(bundle), policy, expected)
+     assert.ok(failures.some(line => line.includes(`current M3 is below protected floor ${minimumMaturity}`)))
+@@ -228,14 +231,14 @@
+   }
+ }
+ const passed = fullCore(offer(fixture))
+-assert.equal(maturityFor(passed), 'M7')
++assert.equal(maturityFor(passed), 'M6')
+ // The existing parser may normalize a goal endpoint, but owner qualification is
+ // an exact namespace assertion. No suffix fallback can certify another owner.
+ for (const ref of [`${strictGraphFixtureId}:${A}`, A]) {
+   const withOfferRoot = { ...fixture, goals: fixture.goals.map(goal => goal.tags?.includes('root')
+     ? { ...goal, contains: [ref, B], release: { examYear: 2026, kind: 'offer' as const,
+       status: 'released' as const, courseLevel: 'GK' as const } } : goal) }
+-  assert.equal(maturityFor(fullCore(withOfferRoot)), 'M7')
++  assert.equal(maturityFor(fullCore(withOfferRoot)), 'M6')
+ }
+ for (const ref of [`${strictGraphFixtureId.toUpperCase()}:${A}`, `wrong-owner:${A}`, `:${A}`, `${strictGraphFixtureId}:${A}:extra`]) {
+   const invalid = { ...fixture, goals: fixture.goals.map(goal => goal.tags?.includes('root')
+@@ -302,7 +305,7 @@
+   ? { ...goal, requires: [`foreign-owner:${B}`] }
+   : { ...goal, contains: [A], weight: 1 }) }
+ const withForeign = fullCore(offer(own), [], [own, foreign])
+-assert.equal(maturityFor(withForeign), 'M7')
++assert.equal(maturityFor(withForeign), 'M6')
+ assert.ok(withForeign.rules.find(rule => rule.id === 'CQR-001')?.graphIntegrity?.checkedGoalKeys.includes(`foreign-owner:${B}`))
+ assertStopsFloors({ ...withForeign, rules: withForeign.rules.map(rule => !rule.assessmentValidation ? rule : ({
+   ...rule, assessmentValidation: { ...rule.assessmentValidation, definitionGoalIds: [B], requiredGoalIds: [B], checkedGoalIds: [B] },
+@@ -316,11 +319,11 @@
+ assertStopsFloors(fullCore({ ...fixture, goals: fixture.goals.map(goal => goal.id === A
+   ? { ...goal, examData: undefined } : goal) }))
+ const draft = mutate(fixture, A, { reviewStatus: 'draft' })
+-assert.equal(maturityFor(fullCore(draft)), 'M7', 'Complete unoffered drafts do not invent a release obligation.')
++assert.equal(maturityFor(fullCore(draft)), 'M6', 'Complete unoffered drafts do not invent a release obligation.')
+ assert.equal(evaluateExamTaskReadiness([draft.goals[0]]).status, 'fail')
+ assertStopsFloors(fullCore(offer(draft)))
+ const legacy = mutate(offer(fixture), A, { reviewStatus: undefined })
+-assert.equal(maturityFor(fullCore(legacy)), 'M7', 'Legacy missing reviewStatus retains the existing readiness semantics.')
++assert.equal(maturityFor(fullCore(legacy)), 'M6', 'Legacy missing reviewStatus retains the existing readiness semantics.')
+ const noRoutes = fullCore(fixture)
+ assert.equal(deriveCurriculumMaturity(noRoutes.rules, [], strictGraphFixtureId, noRoutes.expectedScope), 'M2', 'Assessment checks do not configure absent routes.')
+ 
+@@ -335,7 +338,7 @@
+   writeView('target')
+   assertStopsFloors(fullCore(draft, [viewFile]))
+   writeView('prerequisiteOnly')
+-  assert.equal(maturityFor(fullCore(draft, [viewFile])), 'M7', 'Support-only references are not exam targets.')
++  assert.equal(maturityFor(fullCore(draft, [viewFile])), 'M6', 'Support-only references are not exam targets.')
+   writeView('target', '00000000-0000-4000-8000-000000000099')
+   assertStopsFloors(fullCore(fixture, [viewFile]))
+   writeView('target', `wrong-owner:${A}`)
+--- a/app/package.json
++++ b/app/package.json
+@@ -76,7 +76,7 @@
+     "test:positive-goal-evidence-candidates": "tsx scripts/testPositiveGoalEvidenceCandidateMaterializer.ts",
+     "test:skill-graph-integrity": "tsx scripts/testSkillGraphIntegrity.ts",
+     "test:source-identity-qa-metadata": "tsx scripts/testSourceIdentityQaMetadata.ts",
+-    "test:deep-understanding-rollout": "npm run test:skill-graph-integrity && tsx scripts/testPoliticsEconomicsMemoryEntries.ts && tsx scripts/testDeepUnderstandingRollout.ts",
++    "test:deep-understanding-rollout": "npm run test:skill-graph-integrity && tsx scripts/testVisualizationContextMaturity.ts && tsx scripts/testPoliticsEconomicsMemoryEntries.ts && tsx scripts/testDeepUnderstandingRollout.ts",
+     "test:repository-source-availability": "tsx scripts/testRepositorySourceAvailability.ts",
+     "test:source-extraction-inventory": "tsx scripts/testSourceExtractionInventory.ts",
+     "test:goal-description-rollout-batch": "tsx scripts/testGoalDescriptionRolloutBatch.ts",
+--- a/docs/concept/curriculum-quality-and-human-trial.md
++++ b/docs/concept/curriculum-quality-and-human-trial.md
+@@ -73,6 +73,17 @@
+ 
+ Die Berechnung erfolgt ausschließlich aus dem zentralen Fünf-Gate-Bericht und den zugehörigen Prüfungen. Es gibt keine zweite, unabhängig nachgebildete M7-Rechnung.
+ 
++Die technische V-Prüfung bindet qualifizierte Originalreviews an die tatsächlich
++begutachteten Zieltexte, den exakten Eigentümer und die Bildbytes. Ein fester
++externer Receiptindex und authentisierte historische Gitobjekte begrenzen die
++unterstützten Nachweisketten. Ein heutiger Ledgertext oder eine unveränderte
++Bilddatei allein erneuert keine frühere Inhaltsfreigabe. Nicht belegte oder
++abweichende Kontexte bleiben offen; vorhandene Scope-, AI-/Human- und
++Deferralregeln gelten weiterhin. Der direkte M7-Floorleser prüft denselben
++V-Nachweis gegen neu gelesene aktuelle Quellen und Assets, auch bei einem als
++M7 gespeicherten Bericht. Diese technische Qualifikation ist kein neues
++fachliches Bildreview.
++
+ ### 3.2 Bedeutung von 100 %
+ 
+ **100 % bedeutet vollständige Abdeckung des festgelegten QS-Verfahrens.** Es bedeutet weder garantierte Fehlerfreiheit noch vollständig nachgewiesene Unterrichtswirksamkeit.
+--- /dev/null
++++ b/app/scripts/collectVisualizationContextOriginals.ts
+@@ -0,0 +1,56 @@
++// SPDX-License-Identifier: Apache-2.0
++import { createHash } from 'node:crypto'
++import { readFileSync } from 'node:fs'
++import { resolve } from 'node:path'
++import { createVisualizationContextVerifier, type VisualizationContextQualification, type VisualizationReviewArtifact } from './goalVisualizationReviewedContext'
++import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
++
++type LocalizedLandscape = Omit<SkillLandscape, 'goals'> & { goals: Array<LearningGoal & { titleEn?: string; descriptionEn?: string }> }
++const root = resolve(import.meta.dirname, '../..')
++const hash = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
++const inputs = [
++  { path: 'qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/family-census.json', sha256: '3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90' },
++  { path: 'qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-two-family-reader/family-census.json', sha256: 'fd6dcf9e343f0b122a0ba55426ccc57b3a5b3783714c7ebeb8a1ea7d9f6ded73' },
++]
++const references = new Map<string, VisualizationReviewArtifact & { currentCopyRequired: boolean }>()
++const expectedAnchor = '6fe35a6b0fa807e5a97475b34f3715dc16a89c00'
++const verify = createVisualizationContextVerifier({ repositoryRoot: root, acceptedRepositoryCommit: expectedAnchor,
++  onAuthenticatedOriginalRead(binding, currentCopyRequired) {
++    const key = binding.gitCommit + ':' + binding.path, previous = references.get(key)
++    if (previous && previous.sha256 !== binding.sha256) throw new Error('Contradictory authenticated original binding')
++    references.set(key, { ...binding, currentCopyRequired: currentCopyRequired || previous?.currentCopyRequired || false })
++  } })
++const rows: Array<{ landscapeId: string; goalId: string; receipt: { path: string; sha256: string } }> = []
++for (const input of inputs) {
++  const raw = readFileSync(resolve(root, input.path))
++  if (hash(raw) !== input.sha256) throw new Error('Externally fixed candidate census differs')
++  const census: { acceptedRepositoryCommit: string; candidateReceipts: Array<{ path: string; sha256: string }> } = JSON.parse(raw.toString('utf8'))
++  if (census.acceptedRepositoryCommit !== expectedAnchor) throw new Error('Candidate original anchor differs')
++  for (const entry of census.candidateReceipts) {
++    const reference = { path: entry.path, sha256: entry.sha256 }
++    const raw = readFileSync(resolve(root, reference.path))
++    if (hash(raw) !== reference.sha256) throw new Error('Fixed qualification receipt differs')
++    const receipt: VisualizationContextQualification = JSON.parse(raw.toString('utf8'))
++    const sourcePath = receipt.context.subject === 'mathematik'
++      ? 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
++      : 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'
++    const source: LocalizedLandscape = JSON.parse(readFileSync(resolve(root, sourcePath), 'utf8'))
++    const goals = source.goals.filter(goal => goal.id === receipt.context.goalId)
++    if (goals.length !== 1) throw new Error('Current qualification owner/goal is ambiguous')
++    const goal = goals[0], primary = (goal.resourceLinks ?? []).filter(link => link.type === 'goal-visualization' && (!link.role || link.role === 'primary'))
++    if (primary.length !== 1) throw new Error('Current qualification primary asset is ambiguous')
++    const imageUrl = primary[0].url, publicAssetPath = 'app/public' + imageUrl
++    const checked = verify(reference, { landscapeId: source.landscapeId, goalId: goal.id, subject: receipt.context.subject,
++      title: goal.title, description: goal.description, titleEn: goal.titleEn, descriptionEn: goal.descriptionEn,
++      demandLevel: goal.dimensionTags?.demandLevel, imageUrl, publicAssetPath,
++      canonicalAssetPath: 'curricula/DE/Gymnasium/visualizations/' + imageUrl.slice('/assets/goal-visualizations/'.length),
++      assetSha256: 'sha256:' + hash(readFileSync(resolve(root, publicAssetPath))) })
++    if (!checked.ok) throw new Error(JSON.stringify({ goalId: goal.id, checked }))
++    rows.push({ landscapeId: source.landscapeId, goalId: goal.id, receipt: reference })
++  }
++}
++if (rows.length !== 54 || new Set(rows.map(row => row.landscapeId + ':' + row.goalId)).size !== 54) throw new Error('Fixed54 original selection is incomplete or duplicated')
++console.log(JSON.stringify({ schemaVersion: 1, kind: 'externally-pinned-reviewed-visualization-context-index',
++  acceptedRepositoryCommit: expectedAnchor, rows: rows.sort((a, b) => (a.landscapeId + ':' + a.goalId).localeCompare(b.landscapeId + ':' + b.goalId)),
++  originalReferences: [...references.values()].sort((a, b) => (a.gitCommit + ':' + a.path).localeCompare(b.gitCommit + ':' + b.path)),
++  newReviewClaimed: false, runtimeActivationAllowed: false }, null, 2))
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -280,6 +280,7 @@
+ qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/bundle/book.html -text -whitespace
+ # These zlib-framed Git objects are opaque byte-bound binary evidence.
+ qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/** binary -whitespace
++qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index/capsule/objects/** binary -whitespace
+ # Preserve the exact generated six-export diff, including empty context lines.
+ qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/six-export-only.patch -text -whitespace
+ # Exact native Git diagnostic output includes blank hint context lines.

@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "status": "normal-producer-complete-floor-fails-seven-subjects",
+  "recordedAtActual": "2026-11-07T04:22:40.102119+00:00",
+  "producer": {
+    "status": "terminal",
+    "startedAtActual": "2026-11-07T04:02:50.924795+00:00",
+    "command": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--dev-bind",
+      "/dev",
+      "/dev",
+      "--proc",
+      "/proc",
+      "--bind",
+      "/dev/shm",
+      "/dev/shm",
+      "--bind",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925/status",
+      "/home/enpasos/projects/skillpilot/docs/qa-ci/status",
+      "--bind",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925/chemistry-report.md",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-19/chemie-current455-eight-P-three-text-AMV-binding-technical-20261019-v1/M/M455.report.md",
+      "--chdir",
+      "/home/enpasos/projects/skillpilot/app",
+      "--setenv",
+      "TMPDIR",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925",
+      "--setenv",
+      "npm_config_cache",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925/npm-cache",
+      "--",
+      "npm",
+      "run",
+      "quality:curriculum-status"
+    ],
+    "pythonPid": 536039,
+    "childPid": 536093,
+    "exitCode": 0,
+    "completedAtActual": "2026-11-07T04:18:37.723809+00:00",
+    "elapsedSeconds": 946.902127307003,
+    "stdoutSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+    "stderrSha256": "6361422743e5135c6cf96002f15ea9c64f88df25ac195e4ec519eae8e632df7a"
+  },
+  "ordinaryMemoryPrehookReports": 10,
+  "normalCommandUnchanged": true,
+  "generatorRuns": 1,
+  "standaloneDeepReruns": 0,
+  "fullDenominator": 2483,
+  "actualVisualizationQualified": 57,
+  "actualVisualizationOpen": 2426,
+  "deepMetrics": [
+    {
+      "subject": "Biologie",
+      "metrics": {
+        "expectedGoals": 397,
+        "remaining": 397,
+        "strictComplete": 0,
+        "currentDescriptionResolutions": 397,
+        "currentPositiveEvidenceProfiles": 397,
+        "currentSemanticAtomicityDecisions": 397,
+        "currentMemoryReviewDecisions": 397,
+        "currentVisualizationQaRecords": 0,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 397
+      }
+    },
+    {
+      "subject": "Chemie",
+      "metrics": {
+        "expectedGoals": 455,
+        "remaining": 455,
+        "strictComplete": 0,
+        "currentDescriptionResolutions": 455,
+        "currentPositiveEvidenceProfiles": 455,
+        "currentSemanticAtomicityDecisions": 455,
+        "currentMemoryReviewDecisions": 455,
+        "currentVisualizationQaRecords": 0,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 455
+      }
+    },
+    {
+      "subject": "Mathematik",
+      "metrics": {
+        "expectedGoals": 807,
+        "remaining": 802,
+        "strictComplete": 5,
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 5,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 802
+      }
+    },
+    {
+      "subject": "Physik",
+      "metrics": {
+        "expectedGoals": 478,
+        "remaining": 478,
+        "strictComplete": 0,
+        "currentDescriptionResolutions": 478,
+        "currentPositiveEvidenceProfiles": 478,
+        "currentSemanticAtomicityDecisions": 478,
+        "currentMemoryReviewDecisions": 478,
+        "currentVisualizationQaRecords": 0,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 478
+      }
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "metrics": {
+        "expectedGoals": 346,
+        "remaining": 294,
+        "strictComplete": 52,
+        "currentDescriptionResolutions": 346,
+        "currentPositiveEvidenceProfiles": 346,
+        "currentSemanticAtomicityDecisions": 346,
+        "currentMemoryReviewDecisions": 346,
+        "currentVisualizationQaRecords": 52,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 5,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 294
+      }
+    }
+  ],
+  "mathGraph": {
+    "findings": 916,
+    "G17": 914,
+    "G01a": 2,
+    "newFindingsFromThreeReviewedRepairs": 0
+  },
+  "transfer": [
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "beforeSha256": "65d9827f9627dfec65ab1aa8af7887445b91c4a723cb3a0cd25d2498f35c057e",
+      "beforeBytes": 11534383,
+      "afterSha256": "40ee4fac6df2c276e9bf18384603de355514ff0d35f9f15ef0886b91c727fce6",
+      "afterBytes": 11528111
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "beforeSha256": "caefc60e5c0f73b26ea17a60c204f0844c72ffd8a2bf8c4fb6e1aa3ab8820e37",
+      "beforeBytes": 66514,
+      "afterSha256": "16c9084803809aecbdb5dd29cb659884abd43a093283338914fbceb5be7f1e60",
+      "afterBytes": 66514
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-math-full.md",
+      "beforeSha256": "a424e64e863447d3dc92bdffb1e1d4df6fa18ab0866f59671f7621b550832874",
+      "beforeBytes": 44278,
+      "afterSha256": "67ac6c3077c1a9b574ab90af2506b1b643c4e9e6ce66ef5482fcc30aaa8cd2df",
+      "afterBytes": 44340
+    }
+  ],
+  "all21MaturitiesAndGoalCountsUnchanged": true,
+  "floor": {
+    "status": "terminal",
+    "startedAtActual": "2026-11-07T04:20:15.757837+00:00",
+    "command": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--dev-bind",
+      "/dev",
+      "/dev",
+      "--proc",
+      "/proc",
+      "--bind",
+      "/dev/shm",
+      "/dev/shm",
+      "--chdir",
+      "/home/enpasos/projects/skillpilot/app",
+      "--setenv",
+      "TMPDIR",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925",
+      "--setenv",
+      "npm_config_cache",
+      "/dev/shm/skillpilot-v57-normal-cqr-r32re925/npm-cache",
+      "--",
+      "npm",
+      "run",
+      "check:curriculum-maturity-floors"
+    ],
+    "childPid": 561264,
+    "exitCode": 1,
+    "completedAtActual": "2026-11-07T04:22:39.971968+00:00",
+    "elapsedSeconds": 144.23133823299577
+  },
+  "failedProtectedSubjects": [
+    {
+      "subject": "Mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "current": "M0",
+      "floor": "M7"
+    },
+    {
+      "subject": "Physik",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "current": "M0",
+      "floor": "M7"
+    },
+    {
+      "subject": "Biologie",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "current": "M0",
+      "floor": "M7"
+    },
+    {
+      "subject": "Chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "current": "M0",
+      "floor": "M7"
+    },
+    {
+      "subject": "Informatik",
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "current": "M0",
+      "floor": "M6"
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "current": "M0",
+      "floor": "M6"
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "current": "M0",
+      "floor": "M7"
+    }
+  ],
+  "floorPolicySha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+  "policyExceptionsOrThresholdsChanged": false,
+  "protectedInputs": 260,
+  "allProtectedInputsUnchangedDuringProducerAndFloor": true,
+  "chemistryGeneratedOutputUnchanged": true,
+  "logCarriers": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math3-fixed57-normal-cqr-producer/normal-producer.stdout.log.gz",
+      "bytes": 57670,
+      "sha256": "e24f443ba4faaa026efa97be154b9cdaf3a1b9ba0a8c06c9b70e6dc59c038394",
+      "rawBytes": 262861,
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math3-fixed57-normal-cqr-producer/normal-producer.stderr.log.gz",
+      "bytes": 156,
+      "sha256": "fc4c4d56d8851954b540f9f380e526fac65c3bdd3ad54fd4c8a560a327ffcaa7",
+      "rawBytes": 208,
+      "rawSha256": "6361422743e5135c6cf96002f15ea9c64f88df25ac195e4ec519eae8e632df7a"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math3-fixed57-normal-cqr-producer/floor.stdout.log.gz",
+      "bytes": 101,
+      "sha256": "5d0e187a99baa64ec1629dc653746386752e039dec0115a533fde3176170ad27",
+      "rawBytes": 101,
+      "rawSha256": "1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math3-fixed57-normal-cqr-producer/floor.stderr.log.gz",
+      "bytes": 11112,
+      "sha256": "69250f79e23fc37b333efa894b136ee21db98a7144011846d9fb980759406d52",
+      "rawBytes": 84505,
+      "rawSha256": "b0534b8b50d50738371cc308a98d599bc5b0fe1cd9c69b919147cf5a570d2e76"
+    }
+  ],
+  "independentComponentPassAndWholeM7StillDifferent": true,
+  "remoteAcceptanceClaim": false,
+  "normalRunStorageObservation": "Already running producer continued after a byte-identical durable Git index was restored from mounted E to native .git/index. No generator restart or semantic-input change."
+}

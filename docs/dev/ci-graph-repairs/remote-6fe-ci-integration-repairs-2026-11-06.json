@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06T22:59:08.276144+00:00",
+  "status": "actual-remote-failures-reproduced-and-locally-repaired-remote-recovery-pending",
+  "remote": {
+    "prHead": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+    "ciRun": 42304852672,
+    "appsJob": 128191493857,
+    "docsRun": 42304852289,
+    "mkdocsJob": 128191493922,
+    "failures": [
+      "Workflow wiring tests still required only four preparation tests after CI had correctly expanded to nineteen preparation/capture controls.",
+      "Docs-only sparse checkout omitted immutable audit originals referenced by retained Markdown aliases."
+    ]
+  },
+  "implementationPins": [
+    {
+      "path": "scripts/plugin_ci_workflows.test.mjs",
+      "sha256": "73295e9f8eab343d939594ba6fff004fd462341804191f5f8096cdbdd062886a",
+      "bytes": 21760
+    },
+    {
+      "path": ".github/workflows/docs_checks.yml",
+      "sha256": "86a8d9441107d1c6fe57db4e1eaa4e33203409350151612834e75a34407e1691",
+      "bytes": 6996
+    },
+    {
+      "path": ".github/workflows/docs_deploy.yml",
+      "sha256": "760a36ff8ab3e2904c61f0214035552d6d112a358568d3e6005ba2c9d3cf2e73",
+      "bytes": 961
+    }
+  ],
+  "verification": {
+    "workflowBefore": {
+      "tests": 13,
+      "passed": 11,
+      "failed": 2,
+      "exitCode": 1
+    },
+    "workflowAfter": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "exactRemoteAppsTestCommandAfter": {
+      "tests": 94,
+      "passed": 94,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    "docs": {
+      "sourceCommit": "1a49bc24e790c74f4b2482d15db3a7c4fa070d74",
+      "actualCommand": "mkdocs build --site-dir <private RAM output>",
+      "beforeConeDirectories": [
+        "docs"
+      ],
+      "beforeExitCode": 1,
+      "beforeFailure": "Missing source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md alias target",
+      "afterConeDirectories": [
+        "docs",
+        "qa-artifacts/ci-contract-audit"
+      ],
+      "afterExitCode": 0,
+      "initialSetupAttempts": "Preserved separately and excluded from red/green evidence: local Git2.34 required sparse-checkout init --cone before set; initial noncone setup failed on missing mkdocs.yml."
+    }
+  },
+  "logs": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/ci-wiring19-before.log.gz",
+      "sha256": "19b5a17f50ece179d6df4813a5913931dab2d90db89790b8174a599753f0f297",
+      "bytes": 17626,
+      "uncompressedSha256": "e6012aaaccb50c7359ef739b393c00b689071186ee2dbbf010de94dd7483998c",
+      "uncompressedBytes": 88803
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/ci-wiring19-after.log.gz",
+      "sha256": "ea1bae7ec3df1d6538e1f7d29e3214d8e7139453004cf49b30e2b725748b51b4",
+      "bytes": 890,
+      "uncompressedSha256": "c0f1af2e53d3bb1e17849e9994168b24ecdbd2ca610174771f4ddcc73cb7a546",
+      "uncompressedBytes": 2899
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/openai-ci-configuration-after.log.gz",
+      "sha256": "4bbadbc7d96ebf12bd3f6e2dbd687daed0d73dbccbbf4dc5bec9bf8ac5f8d4f8",
+      "bytes": 4155,
+      "uncompressedSha256": "afa1d045d2e2e9871d8cf0dba9ef8a7f2b89bf72900af0cb6fe72e0907f005f1",
+      "uncompressedBytes": 18429
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/docs-sparse-before.log.gz",
+      "sha256": "5fa7d98a4c478457994d75f191c1ade1f9043acf7c748b5f5aeff35d6292eb82",
+      "bytes": 5350,
+      "uncompressedSha256": "ce578dbf24e2a15488e41c90fec1a37381ca5f2887a79037a5677a3b846c2da0",
+      "uncompressedBytes": 29762
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/docs-sparse-after.log.gz",
+      "sha256": "13fe52ae852bb26e5c666bb0e24dcf0fe7d2e67defe725863334aeaff08f038a",
+      "bytes": 5721,
+      "uncompressedSha256": "da2afda0230fc6849a8578bab747b8b10b7867377eb85420817ed230bfc9a869",
+      "uncompressedBytes": 37749
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/docs-sparse-before-2026-11-06-initial-noncone-setup.log.gz",
+      "sha256": "83ccafd936f645f0f734e07ac0f48c3d371f68badf650d1f7083793cc7f8fd3d",
+      "bytes": 68,
+      "uncompressedSha256": "68874c37a6255ed193ca7e97d6fa0740c18250cac4d87c3d76d6f48f5c07abdf",
+      "uncompressedBytes": 48
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-ci-integration-repairs/docs-sparse-after-2026-11-06-initial-noncone-setup.log.gz",
+      "sha256": "83ccafd936f645f0f734e07ac0f48c3d371f68badf650d1f7083793cc7f8fd3d",
+      "bytes": 68,
+      "uncompressedSha256": "68874c37a6255ed193ca7e97d6fa0740c18250cac4d87c3d76d6f48f5c07abdf",
+      "uncompressedBytes": 48
+    }
+  ],
+  "boundaries": [
+    "Nineteen actual controls and no skips remain mandatory; no workflow gate was weakened.",
+    "Missing capture module, stale seventeen-count, accepted skips and omitted count guard are actual rejected mutations.",
+    "Docs build and deploy share the bounded audit archive dependency; curricula assets are excluded.",
+    "Published archive bytes, canonical sources, QA decisions and protected subject floors are unchanged.",
+    "No docs deployment or production operation was performed; fresh remote recovery remains unverified."
+  ]
+}

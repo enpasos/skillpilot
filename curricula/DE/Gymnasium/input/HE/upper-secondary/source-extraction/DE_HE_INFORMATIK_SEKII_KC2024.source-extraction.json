@@ -7,11 +7,20 @@
   "subject": "Informatik",
   "stage": "SekII",
   "sourceDocument": {
-    "title": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024",
-    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot",
-    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf"
+    "title": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+    "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+    "official": true
   },
   "sourceDocuments": [
+    {
+      "title": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+      "official": true
+    },
     {
       "title": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024",
       "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot",
@@ -52,7 +61,7 @@
   ],
   "pipelineStatus": {
     "version": 1,
-    "currentStep": "",
+    "currentStep": "MAPPING-3",
     "steps": [
       {
         "id": "MAPPING-1",
@@ -111,7 +120,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-1",
           "MAPPING-2"
@@ -146,6 +155,12 @@
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
             "passed": true,
             "details": "Abgedeckt: 155/155; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+          },
+          {
+            "id": "20261107-author-repair-independent-source-review",
+            "label": "Primary source/level/mapping repair is an author draft pending independent review",
+            "passed": false,
+            "details": "No old complete seed or new goal count is accepted as independent approval of changed source evidence."
           }
         ]
       }
@@ -678,6 +693,18 @@
       "sourceUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
       "rawText": "Vorbereitender Release-Anker für die schriftliche Abiturpruefung Informatik 2026 im LK.",
       "sourceGoalIds": []
+    },
+    {
+      "id": "he-primary-2024-stand2025-Q2.1",
+      "topicCode": "Q2.1",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025,p37–38 Q2.1 grundlegend",
+      "sourceDocumentPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf"
+    },
+    {
+      "id": "he-primary-2024-stand2025-Q2.3",
+      "topicCode": "Q2.3",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025,p37–38 Q2.3 grundlegend",
+      "sourceDocumentPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf"
     }
   ],
   "sourceGoals": [
@@ -2618,18 +2645,23 @@
       "sourceSpan": "Q2.2.78",
       "parentBulletText": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
       "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024, Q2.2",
-      "courseLevel": "GK_LK",
+      "courseLevel": "LK",
       "granularity": "sourceSnapshotGoal",
       "stage": "SekII",
       "tags": [
         "jurisdiction:DE-HE",
         "stage:SekII",
-        "courseLevel:GK_LK",
+        "courseLevel:LK",
         "topic:Q2.2"
       ],
       "rawSourceText": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
       "rawSourceSpan": "Q2.2.78",
-      "rawParentBulletText": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten."
+      "rawParentBulletText": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "extractionProvenance": {
+        "rawTextRole": "derived sourceSnapshotGoal; not a primary quotation",
+        "primaryLocator": "p37 Q2.2 erhöhtes Niveau: DML,DDL,DCL",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "909cd5a3-47eb-4cd7-88f9-b2cd08409268",
@@ -3582,31 +3614,6 @@
       "rawParentBulletText": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern."
     },
     {
-      "id": "a4473795-2ca6-4ca0-8518-e5fd3414f5ae",
-      "passageId": "he-inf-sekii:18f714d2-62ea-440f-be5c-f4c203fe9d90",
-      "topicCode": "Q2.1",
-      "bulletIndex": 117,
-      "aspectIndex": 1,
-      "title": "Zustandsdiagramme vertiefen",
-      "description": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
-      "sourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
-      "sourceSpan": "Q2.1.117",
-      "parentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
-      "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024, Q2.1",
-      "courseLevel": "LK",
-      "granularity": "sourceSnapshotGoal",
-      "stage": "SekII",
-      "tags": [
-        "jurisdiction:DE-HE",
-        "stage:SekII",
-        "courseLevel:LK",
-        "topic:Q2.1"
-      ],
-      "rawSourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
-      "rawSourceSpan": "Q2.1.117",
-      "rawParentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität)."
-    },
-    {
       "id": "f3711a2a-c99c-45ea-a522-1c98fbb08708",
       "passageId": "he-inf-sekii:18f714d2-62ea-440f-be5c-f4c203fe9d90",
       "topicCode": "Q2.1",
@@ -4555,14 +4562,279 @@
       "rawSourceText": "Die lernende Person kann Cut/Nichtdeterminismus in Prolog steuern.",
       "rawSourceSpan": "Q4.2.155",
       "rawParentBulletText": "Die lernende Person kann Cut/Nichtdeterminismus in Prolog steuern."
+    },
+    {
+      "id": "44cf45ea-a9fe-5a48-9954-b5452631b5e4",
+      "passageId": "he-primary-2024-stand2025-Q2.1",
+      "topicCode": "Q2.1",
+      "bulletIndex": 156,
+      "aspectIndex": 1,
+      "title": "Schwache Entitätstypen modellieren",
+      "description": "Die lernende Person kann einen schwachen Entitätstyp mit identifizierender Beziehung und partiellem Schlüssel modellieren und seine Identifikation in einem Relationenschema darstellen.",
+      "sourceText": "Die lernende Person kann einen schwachen Entitätstyp mit identifizierender Beziehung und partiellem Schlüssel modellieren und seine Identifikation in einem Relationenschema darstellen.",
+      "sourceSpan": "p37–38 Q2.1 grundlegend",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+      "courseLevel": "GK_LK",
+      "granularity": "derivedPrimaryPerformance",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2.1"
+      ],
+      "rawSourceText": "Entitätstyp (auch schwacher Entitätstyp)",
+      "canonicalTargetIds": [
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639"
+      ],
+      "reviewStatus": "author-draft"
+    },
+    {
+      "id": "5dbb9e8f-9fa3-58b9-b705-ce9cb69575cf",
+      "passageId": "he-primary-2024-stand2025-Q2.1",
+      "topicCode": "Q2.1",
+      "bulletIndex": 157,
+      "aspectIndex": 1,
+      "title": "Mehrwertige Attribute relational abbilden",
+      "description": "Die lernende Person kann mehrwertige Attribute in einem Datenmodell erkennen und sie mit ihren zugehörigen Schlüsseln in ein Relationenschema überführen.",
+      "sourceText": "Die lernende Person kann mehrwertige Attribute in einem Datenmodell erkennen und sie mit ihren zugehörigen Schlüsseln in ein Relationenschema überführen.",
+      "sourceSpan": "p37–38 Q2.1 grundlegend",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+      "courseLevel": "GK_LK",
+      "granularity": "derivedPrimaryPerformance",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2.1"
+      ],
+      "rawSourceText": "Attribut (auch mehrwertiges Attribut)",
+      "canonicalTargetIds": [
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3"
+      ],
+      "reviewStatus": "author-draft"
+    },
+    {
+      "id": "5e83fd5c-bde7-54af-8ddf-68dea422a6c5",
+      "passageId": "he-primary-2024-stand2025-Q2.1",
+      "topicCode": "Q2.1",
+      "bulletIndex": 158,
+      "aspectIndex": 1,
+      "title": "is-a-Beziehungen modellieren",
+      "description": "Die lernende Person kann eine is-a-Beziehung zwischen Entitätstypen modellieren und ihre Schlüsselbeziehung in einem konsistenten Relationenschema darstellen.",
+      "sourceText": "Die lernende Person kann eine is-a-Beziehung zwischen Entitätstypen modellieren und ihre Schlüsselbeziehung in einem konsistenten Relationenschema darstellen.",
+      "sourceSpan": "p37–38 Q2.1 grundlegend",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+      "courseLevel": "GK_LK",
+      "granularity": "derivedPrimaryPerformance",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2.1"
+      ],
+      "rawSourceText": "is-a-Beziehungstyp",
+      "canonicalTargetIds": [
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "reviewStatus": "author-draft"
+    },
+    {
+      "id": "f42f6913-6e0c-5a52-9ae6-3d5425e4e62c",
+      "passageId": "he-primary-2024-stand2025-Q2.3",
+      "topicCode": "Q2.3",
+      "bulletIndex": 159,
+      "aspectIndex": 1,
+      "title": "SQL-Anweisungen ohne Ergebnismenge ausführen",
+      "description": "Die lernende Person kann aus einem Programm eine vorgegebene SQL-Anweisung mit gebundenen Parametern ohne Ergebnismenge ausführen und die Änderung am Datenbestand prüfen.",
+      "sourceText": "Die lernende Person kann aus einem Programm eine vorgegebene SQL-Anweisung mit gebundenen Parametern ohne Ergebnismenge ausführen und die Änderung am Datenbestand prüfen.",
+      "sourceSpan": "p37–38 Q2.3 grundlegend",
+      "sourceRef": "Kerncurriculum gymnasiale Oberstufe Informatik, Ausgabe2024, Stand01.08.2025",
+      "courseLevel": "GK_LK",
+      "granularity": "derivedPrimaryPerformance",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-HE",
+        "stage:SekII",
+        "courseLevel:GK_LK",
+        "topic:Q2.3"
+      ],
+      "rawSourceText": "Ausführen von SQL-Anweisungen mit und ohne Rückgabemenge",
+      "canonicalTargetIds": [
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "reviewStatus": "author-draft"
     }
   ],
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
-      "status": "accepted",
-      "expectedSourceGoals": 155,
-      "actualSourceGoals": 155,
-      "rationale": "Converted from the existing committed source landscape snapshot; source-goal count matches the registered source-goal membership inventory."
+      "accepted": false,
+      "details": "Primary-performance extraction changed in a private author draft; old peer baseline remains historical, not approval of the repair."
     }
-  }
+  },
+  "previousSourceDocument": {
+    "title": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024",
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot",
+    "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf"
+  },
+  "repairDraft": {
+    "status": "author-draft",
+    "newPerformanceIds": [
+      "44cf45ea-a9fe-5a48-9954-b5452631b5e4",
+      "5dbb9e8f-9fa3-58b9-b705-ce9cb69575cf",
+      "5e83fd5c-bde7-54af-8ddf-68dea422a6c5",
+      "f42f6913-6e0c-5a52-9ae6-3d5425e4e62c"
+    ],
+    "cohortBinding": [
+      "LA2027",
+      "LA2028"
+    ],
+    "notTimelessOffering": true,
+    "historicalPipelineStatus": {
+      "version": 1,
+      "currentStep": "",
+      "steps": [
+        {
+          "id": "MAPPING-1",
+          "label": "Original-Lehrplanpassagen extrahiert",
+          "status": "complete",
+          "dependsOn": [],
+          "checks": [
+            {
+              "id": "source-document-present",
+              "label": "Strukturierte Informatik-Quelle liegt lokal vor",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot"
+            },
+            {
+              "id": "topic-passages-extracted",
+              "label": "Informatik-Quellpassagen sind aus dem vorhandenen Snapshot extrahiert",
+              "passed": true,
+              "details": "Erfasst: 35/35 Passagen."
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-2",
+          "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1"
+          ],
+          "checks": [
+            {
+              "id": "source-goals-created",
+              "label": "Aus den Informatik-Passagen wurden Source-Ziele erzeugt",
+              "passed": true,
+              "details": "155 Source-Ziele."
+            },
+            {
+              "id": "passage-to-source-goal-coverage",
+              "label": "Jede Passage hat mindestens ein Source-Ziel",
+              "passed": true,
+              "details": "Passagen ohne Source-Ziele: -."
+            },
+            {
+              "id": "source-goal-ids-unique",
+              "label": "Source-Ziel-IDs sind eindeutig",
+              "passed": true,
+              "details": "Doppelte IDs: -."
+            },
+            {
+              "id": "source-goal-trace-complete",
+              "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+              "passed": true,
+              "details": "Unvollstaendige Source-Ziele: -"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1",
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "m3-review-file-present",
+              "label": "M3-Review-Datei ist vorhanden",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json"
+            },
+            {
+              "id": "m3-review-decisions-reference-source-goals",
+              "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+              "passed": true,
+              "details": "Reviewed Source-Ziele: 155/155."
+            },
+            {
+              "id": "m3-review-targets-exist",
+              "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+              "passed": true,
+              "details": "Unbekannte Canonical-Ziele: -"
+            },
+            {
+              "id": "m3-all-source-goals-reviewed",
+              "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+              "passed": true,
+              "details": "155/155 Source-Ziele reviewed; offen: 0."
+            },
+            {
+              "id": "m3-all-source-goals-covered-by-canonical",
+              "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+              "passed": true,
+              "details": "Abgedeckt: 155/155; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            }
+          ]
+        }
+      ]
+    },
+    "historicalQualityReview": {
+      "sourceGoalCountPeerBaseline": {
+        "status": "accepted",
+        "expectedSourceGoals": 155,
+        "actualSourceGoals": 155,
+        "rationale": "Converted from the existing committed source landscape snapshot; source-goal count matches the registered source-goal membership inventory."
+      }
+    },
+    "withdrawnOfficialSourceGoalIds": [
+      "a4473795-2ca6-4ca0-8518-e5fd3414f5ae"
+    ],
+    "currentSourceGoalCount": 158
+  },
+  "historicalAuthoredRecords": [
+    {
+      "record": {
+        "id": "a4473795-2ca6-4ca0-8518-e5fd3414f5ae",
+        "passageId": "he-inf-sekii:18f714d2-62ea-440f-be5c-f4c203fe9d90",
+        "topicCode": "Q2.1",
+        "bulletIndex": 117,
+        "aspectIndex": 1,
+        "title": "Zustandsdiagramme vertiefen",
+        "description": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+        "sourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+        "sourceSpan": "Q2.1.117",
+        "parentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+        "sourceRef": "Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024, Q2.1",
+        "courseLevel": "LK",
+        "granularity": "sourceSnapshotGoal",
+        "stage": "SekII",
+        "tags": [
+          "jurisdiction:DE-HE",
+          "stage:SekII",
+          "courseLevel:LK",
+          "topic:Q2.1"
+        ],
+        "rawSourceText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+        "rawSourceSpan": "Q2.1.117",
+        "rawParentBulletText": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität)."
+      },
+      "sourceDocumentRole": "original authored snapshot, not current primary denominator",
+      "withdrawalReason": "Q2.1.117 is an authored enumeration, not a primary passage proving hierarchy/parallelism."
+    }
+  ]
 }

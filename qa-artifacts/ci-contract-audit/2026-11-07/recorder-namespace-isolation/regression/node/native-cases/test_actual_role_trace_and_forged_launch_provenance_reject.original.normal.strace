@@ -1,0 +1,289 @@
+332751 execve("/home/enpasos/.nvm/versions/node/v20.20.2/bin/node", ["/home/enpasos/.nvm/versions/node/v20.20.2/bin/node", "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", "normal", "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-5mcscd7h/goal.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PYTHONDONTWRITEBYTECODE=1", "PWD=/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original"] <unfinished ...>
+332751 <... execve resumed>)            = 0
+332751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+332751 <... mmap resumed>)              = 0x705803196000
+332751 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+332751 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x705803186000
+332751 close(3</etc/ld.so.cache>)       = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libdl.so.2>
+332751 read(0x3, 0x7fffe32cbee8, 0x340) = 0x340
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libdl.so.2>, "", {st_dev=makedev(0x8, 0x30), st_ino=82685, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=32, st_size=14432, st_atime=1793945579 /* 2026-11-06T07:12:59.141330890+0100 */, st_atime_nsec=141330890, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.605901596+0100 */, st_ctime_nsec=605901596}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 16424, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libdl.so.2>, 0) = 0x705803181000
+332751 mmap(0x705803182000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libdl.so.2>, 0x1000) = 0x705803182000
+332751 mmap(0x705803183000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libdl.so.2>, 0x2000) = 0x705803183000
+332751 mmap(0x705803184000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libdl.so.2>, 0x2000) = 0x705803184000
+332751 close(3</usr/lib/x86_64-linux-gnu/libdl.so.2>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>
+332751 read(0x3, 0x7fffe32cbec8, 0x340) = 0x340
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>, "", {st_dev=makedev(0x8, 0x30), st_ino=53681, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4416, st_size=2260296, st_atime=1793946431 /* 2026-11-06T07:27:11.864433598+0100 */, st_atime_nsec=864433598, st_mtime=1766181126 /* 2025-12-19T22:52:06+0100 */, st_mtime_nsec=0, st_ctime=1785080969 /* 2026-07-26T17:49:29.485655072+0200 */, st_ctime_nsec=485655072}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 2275520, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>, 0) = 0x705802e00000
+332751 mmap(0x705802e9a000, 1118208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>, 0x9a000) = 0x705802e9a000
+332751 mmap(0x705802fab000, 454656, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>, 0x1ab000) = 0x705802fab000
+332751 mmap(0x70580301b000, 57344, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>, 0x21a000) = 0x70580301b000
+332751 mmap(0x705803029000, 10432, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x705803029000
+332751 close(3</usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libm.so.6>
+332751 read(0x3, 0x7fffe32cbea8, 0x340) = 0x340
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libm.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82686, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=1840, st_size=940560, st_atime=1793943078 /* 2026-11-06T06:31:18.282976664+0100 */, st_atime_nsec=282976664, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.605901596+0100 */, st_ctime_nsec=605901596}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 942344, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libm.so.6>, 0) = 0x70580309a000
+332751 mmap(0x7058030a8000, 507904, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libm.so.6>, 0xe000) = 0x7058030a8000
+332751 mmap(0x705803124000, 372736, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libm.so.6>, 0x8a000) = 0x705803124000
+332751 mmap(0x70580317f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libm.so.6>, 0xe4000) = 0x70580317f000
+332751 close(3</usr/lib/x86_64-linux-gnu/libm.so.6>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>
+332751 read(0x3, 0x7fffe32cbe88, 0x340) = 0x340
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>, "", {st_dev=makedev(0x8, 0x30), st_ino=2268316, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=248, st_size=125488, st_atime=1793943078 /* 2026-11-06T06:31:18.282976664+0100 */, st_atime_nsec=282976664, st_mtime=1766181126 /* 2025-12-19T22:52:06+0100 */, st_mtime_nsec=0, st_ctime=1785080970 /* 2026-07-26T17:49:30.354828480+0200 */, st_ctime_nsec=354828480}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 127720, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>, 0) = 0x70580307a000
+332751 mmap(0x70580307d000, 94208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>, 0x3000) = 0x70580307d000
+332751 mmap(0x705803094000, 16384, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>, 0x1a000) = 0x705803094000
+332751 mmap(0x705803098000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>, 0x1d000) = 0x705803098000
+332751 close(3</usr/lib/x86_64-linux-gnu/libgcc_s.so.1>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libpthread.so.0>
+332751 read(0x3, 0x7fffe32cbe68, 0x340) = 0x340
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libpthread.so.0>, "", {st_dev=makedev(0x8, 0x30), st_ino=82695, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=48, st_size=21448, st_atime=1793945579 /* 2026-11-06T07:12:59.137330648+0100 */, st_atime_nsec=137330648, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.605901596+0100 */, st_ctime_nsec=605901596}, AT_EMPTY_PATH) = 0
+332751 mmap(NULL, 16424, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpthread.so.0>, 0) = 0x705803075000
+332751 mmap(0x705803076000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpthread.so.0>, 0x1000) = 0x705803076000
+332751 mmap(0x705803077000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpthread.so.0>, 0x2000) = 0x705803077000
+332751 mmap(0x705803078000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpthread.so.0>, 0x2000) = 0x705803078000
+332751 close(3</usr/lib/x86_64-linux-gnu/libpthread.so.0>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+332751 read(0x3, 0x7fffe32cbe48, 0x340) = 0x340
+332751 pread64(0x3, 0x7fffe32cba50, 0x310, 0x40) = 0x310
+332751 pread64(0x3, 0x7fffe32cba10, 0x30, 0x350) = 0x30
+332751 pread64(0x3, 0x7fffe32cb9c0, 0x44, 0x380) = 0x44
+332751 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+332751 pread64(0x3, 0x7fffe32cb920, 0x310, 0x40) = 0x310
+332751 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x705802a00000
+332751 mmap(0x705802a28000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x705802a28000
+332751 mmap(0x705802bbd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x705802bbd000
+332751 mmap(0x705802c16000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x705802c16000
+332751 mmap(0x705802c1c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x705802c1c000
+332751 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+332751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x705803073000
+332751 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x705803070000
+332751 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x70580306e000
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 fcntl(0</dev/null<char 1:3>>, F_GETFL) = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+332751 fcntl(1<pipe:[2596044]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 fcntl(2<pipe:[2596045]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 fcntl(0</dev/null<char 1:3>>, F_SETFD, FD_CLOEXEC) = 0
+332751 fcntl(1<pipe:[2596044]>, F_SETFD, FD_CLOEXEC) = 0
+332751 fcntl(2<pipe:[2596045]>, F_SETFD, FD_CLOEXEC) = 0
+332751 fcntl(3, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(4, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(5, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(6, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(7, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(8, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(9, F_SETFD, FD_CLOEXEC)    = -1 EBADF (Bad file descriptor)
+332751 fcntl(10, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(11, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(12, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(13, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(14, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(15, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 fcntl(16, F_SETFD, FD_CLOEXEC)   = -1 EBADF (Bad file descriptor)
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/etc/ssl/openssl.cnf", O_RDONLY) = 3</etc/ssl/openssl.cnf>
+332751 newfstatat(3</etc/ssl/openssl.cnf>, "", {st_dev=makedev(0x8, 0x30), st_ino=995, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=32, st_size=12419, st_atime=1793996133 /* 2026-11-06T21:15:33.224706129+0100 */, st_atime_nsec=224706129, st_mtime=1666890416 /* 2022-10-27T19:06:56+0200 */, st_mtime_nsec=0, st_ctime=1679661749 /* 2023-03-24T13:42:29.733009800+0100 */, st_ctime_nsec=733009800}, AT_EMPTY_PATH) = 0
+332751 read(0x3, 0x1b716730, 0x1000)    = 0x1000
+332751 read(0x3, 0x1b716730, 0x1000)    = 0x1000
+332751 read(0x3, 0x1b716730, 0x1000)    = 0x1000
+332751 read(0x3, 0x1b716730, 0x1000)    = 0x83
+332751 read(0x3, 0x1b716730, 0x1000)    = 0
+332751 close(3</etc/ssl/openssl.cnf>)   = 0
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 pipe2([4<pipe:[2578898]>, 5<pipe:[2578898]>], O_CLOEXEC) = 0
+332751 pipe2([6<pipe:[2578899]>, 7<pipe:[2578899]>], O_NONBLOCK|O_CLOEXEC) = 0
+332751 eventfd2(0, EFD_CLOEXEC|EFD_NONBLOCK) = 8<anon_inode:[eventfd]>
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7058021ff000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7058029ff910, parent_tid=0x7058029ff910, exit_signal=0, stack=0x7058021ff000, stack_size=0x7ffe00, tls=0x7058029ff640} => {parent_tid=[3 /* 332752 in strace's PID NS */]}, 88) = 3 /* 332752 in strace's PID NS */
+332752 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x7057fa000000
+332752 pipe2([10<pipe:[2590297]>, 11<pipe:[2590297]>], O_NONBLOCK|O_CLOEXEC) = 0
+332752 eventfd2(0, EFD_CLOEXEC|EFD_NONBLOCK) = 12<anon_inode:[eventfd]>
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7058019fe000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7058021fe910, parent_tid=0x7058021fe910, exit_signal=0, stack=0x7058019fe000, stack_size=0x7ffe00, tls=0x7058021fe640} => {parent_tid=[4 /* 332753 in strace's PID NS */]}, 88) = 4 /* 332753 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7058011fd000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7058019fd910, parent_tid=0x7058019fd910, exit_signal=0, stack=0x7058011fd000, stack_size=0x7ffe00, tls=0x7058019fd640} => {parent_tid=[5 /* 332754 in strace's PID NS */]}, 88) = 5 /* 332754 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7058009fc000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7058011fc910, parent_tid=0x7058011fc910, exit_signal=0, stack=0x7058009fc000, stack_size=0x7ffe00, tls=0x7058011fc640} => {parent_tid=[6 /* 332755 in strace's PID NS */]}, 88) = 6 /* 332755 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7058001fb000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7058009fb910, parent_tid=0x7058009fb910, exit_signal=0, stack=0x7058001fb000, stack_size=0x7ffe00, tls=0x7058009fb640} => {parent_tid=[7 /* 332756 in strace's PID NS */]}, 88) = 7 /* 332756 in strace's PID NS */
+332751 mmap(NULL, 524288, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x705802d80000
+332751 pipe2([14<pipe:[2578900]>, 15<pipe:[2578900]>], O_NONBLOCK|O_CLOEXEC) = 0
+332751 eventfd2(0, EFD_CLOEXEC|EFD_NONBLOCK) = 16<anon_inode:[eventfd]>
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/proc/self/cgroup", O_RDONLY|O_CLOEXEC) = 17</proc/2/cgroup>
+332751 read(0x11, 0x7fffe32cb600, 0x3ff) = 0x10
+332751 close(17</proc/2/cgroup>)        = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/sys/fs/cgroup/non-systemd/memory.max", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/sys/fs/cgroup/non-systemd/memory.high", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/proc/meminfo", O_RDONLY|O_CLOEXEC) = 17</proc/meminfo>
+332751 read(0x11, 0x7fffe32cb970, 0xfff) = 0x5c3
+332751 close(17</proc/meminfo>)         = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/proc/self/maps", O_RDONLY|O_CLOEXEC) = 17</proc/2/maps>
+332751 newfstatat(17</proc/2/maps>, "", {st_dev=makedev(0, 0x80), st_ino=2578903, st_mode=S_IFREG|0444, st_nlink=1, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_atime_nsec=70396667, st_mtime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_mtime_nsec=70396667, st_ctime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_ctime_nsec=70396667}, AT_EMPTY_PATH) = 0
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x102
+332751 close(17</proc/2/maps>)          = 0
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/proc/self/maps", O_RDONLY) = 17</proc/2/maps>
+332751 newfstatat(17</proc/2/maps>, "", {st_dev=makedev(0, 0x80), st_ino=2578903, st_mode=S_IFREG|0444, st_nlink=1, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_atime_nsec=70396667, st_mtime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_mtime_nsec=70396667, st_ctime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_ctime_nsec=70396667}, AT_EMPTY_PATH) = 0
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 close(17</proc/2/maps>)          = 0
+332751 mmap(0x1b780000, 537128960, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x7057dbfc1000
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/proc/self/maps", O_RDONLY) = 17</proc/2/maps>
+332751 newfstatat(17</proc/2/maps>, "", {st_dev=makedev(0, 0x80), st_ino=2578903, st_mode=S_IFREG|0444, st_nlink=1, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_atime_nsec=70396667, st_mtime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_mtime_nsec=70396667, st_ctime=1794010001 /* 2026-11-07T01:06:41.070396667+0100 */, st_ctime_nsec=70396667}, AT_EMPTY_PATH) = 0
+332751 read(0x11, 0x1b71f310, 0x400)    = 0x400
+332751 close(17</proc/2/maps>)          = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node", O_RDONLY) = 17</home/enpasos/.nvm/versions/node/v20.20.2/bin/node>
+332751 mmap(0x7057fbe40000, 1646592, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED, 17</home/enpasos/.nvm/versions/node/v20.20.2/bin/node>, 0x14c4000) = 0x7057fbe40000
+332751 close(17</home/enpasos/.nvm/versions/node/v20.20.2/bin/node>) = 0
+332751 mmap(0x3addf6840000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x3addf6840000
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 mmap(0x1446af400000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x1446af400000
+332751 mmap(0x149525bc0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x149525bc0000
+332751 mmap(0x3b3fc2b80000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x3b3fc2b80000
+332751 mmap(0x24969dfc0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x24969dfc0000
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 mmap(0x30e5f9d80000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x30e5f9d80000
+332751 mmap(NULL, 135168, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x70580304d000
+332751 mmap(0x34c90440000, 528384, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x34c90440000
+332751 mmap(0x236ad94c0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x236ad94c0000
+332751 mmap(0x16b8fc440000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x16b8fc440000
+332751 mmap(0xce71280000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0xce71280000
+332751 readlink("/proc/self/exe", "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node", 8191) = 50
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 mmap(0x6b075d80000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x6b075d80000
+332751 mmap(0x2a6ce8440000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x2a6ce8440000
+332751 mmap(0x1827e3480000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x1827e3480000
+332751 mmap(0x186db9f00000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x186db9f00000
+332751 mmap(0x20ea078c0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x20ea078c0000
+332751 mmap(0x257a36c0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x257a36c0000
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 mmap(NULL, 36864, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x70580318d000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x705803195910, parent_tid=0x705803195910, exit_signal=0, stack=0x70580318d000, stack_size=0x7e00, tls=0x705803195640} => {parent_tid=[8 /* 332757 in strace's PID NS */]}, 88) = 8 /* 332757 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 getpid()                         = 2 /* 332751 in strace's PID NS */
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", AT_STATX_SYNC_AS_STAT, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181435, stx_size=545, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=4, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=1, stx_size=320, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=966391579} /* 2026-11-07T01:06:40.966391579+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=966391579} /* 2026-11-07T01:06:40.966391579+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=3, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=13, stx_size=60, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=978392166} /* 2026-11-07T01:06:40.978392166+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=978392166} /* 2026-11-07T01:06:40.978392166+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=4, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=16, stx_size=80, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=986392557} /* 2026-11-07T01:06:40.986392557+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=986392557} /* 2026-11-07T01:06:40.986392557+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=3, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=17, stx_size=60, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=8, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=181399, stx_size=200, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=187131253} /* 2026-11-07T01:06:40.187131253+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=187131253} /* 2026-11-07T01:06:40.187131253+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=2, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=181402, stx_size=80, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181435, stx_size=545, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 getcwd("/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original", 4096) = 69
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", AT_STATX_SYNC_AS_STAT, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181435, stx_size=545, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=4, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=1, stx_size=320, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=966391579} /* 2026-11-07T01:06:40.966391579+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=966391579} /* 2026-11-07T01:06:40.966391579+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=3, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=13, stx_size=60, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=978392166} /* 2026-11-07T01:06:40.978392166+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=978392166} /* 2026-11-07T01:06:40.978392166+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=4, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=16, stx_size=80, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=986392557} /* 2026-11-07T01:06:40.986392557+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=986392557} /* 2026-11-07T01:06:40.986392557+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=3, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=17, stx_size=60, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=982392362} /* 2026-11-07T01:06:40.982392362+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=129}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=8, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=181399, stx_size=200, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=187131253} /* 2026-11-07T01:06:40.187131253+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=187131253} /* 2026-11-07T01:06:40.187131253+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=2, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0755, stx_ino=181402, stx_size=80, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 statx(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", AT_STATX_SYNC_AS_STAT|AT_SYMLINK_NOFOLLOW, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181435, stx_size=545, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 mmap(0x1bd6ae9c0000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x1bd6ae9c0000
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7057db7ff000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7057dbfff910, parent_tid=0x7057dbfff910, exit_signal=0, stack=0x7057db7ff000, stack_size=0x7ffe00, tls=0x7057dbfff640} => {parent_tid=[9 /* 332758 in strace's PID NS */]}, 88) = 9 /* 332758 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7057daffe000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7057db7fe910, parent_tid=0x7057db7fe910, exit_signal=0, stack=0x7057daffe000, stack_size=0x7ffe00, tls=0x7057db7fe640} => {parent_tid=[10 /* 332759 in strace's PID NS */]}, 88) = 10 /* 332759 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7057da7fd000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7057daffd910, parent_tid=0x7057daffd910, exit_signal=0, stack=0x7057da7fd000, stack_size=0x7ffe00, tls=0x7057daffd640} => {parent_tid=[11 /* 332760 in strace's PID NS */]}, 88) = 11 /* 332760 in strace's PID NS */
+332751 mmap(NULL, 8392704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7057d9ffc000
+332751 clone3({flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, child_tid=0x7057da7fc910, parent_tid=0x7057da7fc910, exit_signal=0, stack=0x7057d9ffc000, stack_size=0x7ffe00, tls=0x7057da7fc640} => {parent_tid=[12 /* 332761 in strace's PID NS */]}, 88) = 12 /* 332761 in strace's PID NS */
+332758 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs", O_RDONLY|O_CLOEXEC) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs>
+332751 read(0x10, 0x7fffe32c87e0, 0x400) = 0x8
+332759 statx(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs>, "", AT_STATX_SYNC_AS_STAT|AT_EMPTY_PATH, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181435, stx_size=545, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=188167303} /* 2026-11-07T01:06:40.188167303+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=188713830} /* 2026-11-07T01:06:40.188713830+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 read(0x10, 0x7fffe32c87e0, 0x400) = 0x8
+332760 read(0x11, 0x1b7e9cf0, 0x221)    = 0x221
+332751 read(0x10, 0x7fffe32c87e0, 0x400) = 0x8
+332761 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/tool/discovery.mjs>) = 0
+332751 read(0x10, 0x7fffe32c87e0, 0x400) = 0x8
+332751 mmap(0x2b24ce00000, 520192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x2b24ce00000
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "data", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data>
+332751 newfstatat(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data>, "", {st_dev=makedev(0, 0x41), st_ino=181400, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=4096, st_blocks=0, st_size=120, st_atime=1794010000 /* 2026-11-07T01:06:40.182353219+0100 */, st_atime_nsec=182353219, st_mtime=1794010000 /* 2026-11-07T01:06:40.186906642+0100 */, st_mtime_nsec=186906642, st_ctime=1794010000 /* 2026-11-07T01:06:40.186906642+0100 */, st_ctime_nsec=186906642}, AT_EMPTY_PATH) = 0
+332751 getdents64(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data>, [{d_ino=181400, d_off=1, d_reclen=24, d_type=DT_DIR, d_name="."}, {d_ino=181399, d_off=6, d_reclen=24, d_type=DT_DIR, d_name=".."}, {d_ino=181409, d_off=5, d_reclen=40, d_type=DT_REG, d_name="required.config.json"}, {d_ino=181408, d_off=4, d_reclen=32, d_type=DT_REG, d_name="\303\244.json"}, {d_ino=181407, d_off=3, d_reclen=40, d_type=DT_REG, d_name="space name.json"}, {d_ino=181406, d_off=2147483647, d_reclen=32, d_type=DT_REG, d_name="goal.json"}], 32768) = 192
+332751 getdents64(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data>, [], 32768) = 0
+332751 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "data/goal.json", O_RDONLY|O_CLOEXEC) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/goal.json>
+332751 statx(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/goal.json>, "", AT_STATX_SYNC_AS_STAT|AT_EMPTY_PATH, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181406, stx_size=85, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=182353219} /* 2026-11-07T01:06:40.182353219+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=186823738} /* 2026-11-07T01:06:40.186823738+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=186823738} /* 2026-11-07T01:06:40.186823738+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 read(0x11, 0x1b7e2058, 0x55)     = 0x55
+332751 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/goal.json>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "data/required.config.json", O_RDONLY|O_CLOEXEC) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/required.config.json>
+332751 statx(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/required.config.json>, "", AT_STATX_SYNC_AS_STAT|AT_EMPTY_PATH, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181409, stx_size=28, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=186906642} /* 2026-11-07T01:06:40.186906642+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=186906642} /* 2026-11-07T01:06:40.186906642+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=186943944} /* 2026-11-07T01:06:40.186943944+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=186943944} /* 2026-11-07T01:06:40.186943944+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 read(0x11, 0x1b7e20b0, 0x1c)     = 0x1c
+332751 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/required.config.json>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "data/space name.json", O_RDONLY|O_CLOEXEC) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/space name.json>
+332751 statx(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/space name.json>, "", AT_STATX_SYNC_AS_STAT|AT_EMPTY_PATH, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181407, stx_size=6, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=186823738} /* 2026-11-07T01:06:40.186823738+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=186823738} /* 2026-11-07T01:06:40.186823738+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=186867340} /* 2026-11-07T01:06:40.186867340+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=186867340} /* 2026-11-07T01:06:40.186867340+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 read(0x11, 0x1b7e20d0, 0x6)      = 0x6
+332751 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/space name.json>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "data/\303\244.json", O_RDONLY|O_CLOEXEC) = 17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/\303\244.json>
+332751 statx(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/\303\244.json>, "", AT_STATX_SYNC_AS_STAT|AT_EMPTY_PATH, STATX_ALL, {stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=0, stx_nlink=1, stx_uid=1000, stx_gid=1000, stx_mode=S_IFREG|0644, stx_ino=181408, stx_size=5, stx_blocks=8, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794010000, tv_nsec=186867340} /* 2026-11-07T01:06:40.186867340+0100 */, stx_btime={tv_sec=1794010000, tv_nsec=186867340} /* 2026-11-07T01:06:40.186867340+0100 */, stx_ctime={tv_sec=1794010000, tv_nsec=186906642} /* 2026-11-07T01:06:40.186906642+0100 */, stx_mtime={tv_sec=1794010000, tv_nsec=186906642} /* 2026-11-07T01:06:40.186906642+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}) = 0
+332751 read(0x11, 0x1b7e20d8, 0x5)      = 0x5
+332751 close(17</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original/data/\303\244.json>) = 0
+332751 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-i_exa_sa/case-w7_jb3ku/original>, "/dev/null", O_RDONLY|O_CLOEXEC) = 17</dev/null<char 1:3>>
+332751 fcntl(1<pipe:[2596044]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 fcntl(2<pipe:[2596045]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 fcntl(0</dev/null<char 1:3>>, F_GETFL) = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+332751 fcntl(1<pipe:[2596044]>, F_GETFL) = 0x801 (flags O_WRONLY|O_NONBLOCK)
+332751 fcntl(1<pipe:[2596044]>, F_SETFL, O_WRONLY) = 0
+332751 fcntl(2<pipe:[2596045]>, F_GETFL) = 0x801 (flags O_WRONLY|O_NONBLOCK)
+332751 fcntl(2<pipe:[2596045]>, F_SETFL, O_WRONLY) = 0
+332756 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0 <unfinished ...>
+332753 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0 <unfinished ...>
+332756 <... mmap resumed>)              = 0x7057f4000000
+332755 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0 <unfinished ...>
+332754 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0 <unfinished ...>
+332753 <... mmap resumed>)              = 0x7057ec000000
+332755 <... mmap resumed>)              = 0x7057e4000000
+332754 <... mmap resumed>)              = 0x7057d1e00000
+332752 read(0xc, 0x7058029fab10, 0x400) = 0x8
+332752 close(10<pipe:[2590297]>)        = 0
+332752 close(11<pipe:[2590297]> <unfinished ...>
+332756 exit(0)                          = ?
+332752 <... close resumed>)             = 0
+332755 exit(0)                          = ?
+332752 close(12<anon_inode:[eventfd]> <unfinished ...>
+332754 exit(0)                          = ?
+332752 <... close resumed>)             = 0
+332753 exit(0 <unfinished ...>
+332752 close(9<anon_inode:[eventpoll]> <unfinished ...>
+332753 <... exit resumed>)              = ?
+332752 <... close resumed>)             = 0
+332752 exit(0)                          = ?
+332751 close(6<pipe:[2578899]>)         = 0
+332751 close(7<pipe:[2578899]>)         = 0
+332751 close(8<anon_inode:[eventfd]>)   = 0
+332751 close(3<anon_inode:[eventpoll]>) = 0
+332751 fcntl(0</dev/null<char 1:3>>, F_GETFL) = 0x8000 (flags O_RDONLY|O_LARGEFILE)
+332751 fcntl(1<pipe:[2596044]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 fcntl(2<pipe:[2596045]>, F_GETFL) = 0x1 (flags O_WRONLY)
+332751 close(4<pipe:[2578898]>)         = 0
+332751 close(5<pipe:[2578898]>)         = 0
+332758 exit(0)                          = ?
+332759 exit(0 <unfinished ...>
+332761 exit(0 <unfinished ...>
+332760 exit(0 <unfinished ...>
+332759 <... exit resumed>)              = ?
+332761 <... exit resumed>)              = ?
+332760 <... exit resumed>)              = ?
+332751 exit_group(0)                    = ?

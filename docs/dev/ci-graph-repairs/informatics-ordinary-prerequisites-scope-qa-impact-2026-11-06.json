@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 1,
+  "status": "captured-production-compiler-and-native-QA-comparison-NOT-application-approval",
+  "snapshot": {
+    "label": "5cb/e0ff historical snapshot BEFORE the separate Math-memory application",
+    "primaryInformaticsSourceBaseCommit": "7d6b34783c9707f270e07e432d8031381bacc774",
+    "primaryInformaticsSourceSha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e",
+    "completeCanonicalCatalogCommit": "7d6b34783c9707f270e07e432d8031381bacc774",
+    "canonicalCatalogFiles": 21,
+    "mathSourceSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+    "currentMathPatchIncluded": false,
+    "freshIntegratedReplayAfterMathPatchClaimed": false
+  },
+  "testedHypothesisOperations": 27,
+  "dataApplied": false,
+  "qaApprovalClaimed": false,
+  "actualCompilerCodeBindings": [
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43"
+    },
+    {
+      "path": "app/src/utils/goalFilters.ts",
+      "sha256": "49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f"
+    },
+    {
+      "path": "app/scripts/lib/skillGraphIntegrity.ts",
+      "sha256": "0d031384b9b1d5a0741b27adefed48aa8c78166b0b688dcfc5c124083e1e4984"
+    },
+    {
+      "path": "app/scripts/auditTransitiveMinimality.ts",
+      "sha256": "dd6d1dad87f269f9aecac5387d1df700483496d9fc8987edd594239b759cd908"
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f"
+    }
+  ],
+  "applicability": {
+    "before": {
+      "goals": 282,
+      "errors": 0,
+      "warnings": 0,
+      "diagnostics": 1132
+    },
+    "after": {
+      "goals": 282,
+      "errors": 0,
+      "warnings": 1,
+      "diagnostics": 1132
+    },
+    "changedGoals": [
+      {
+        "goalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+        "title": "Turingmaschine programmieren",
+        "before": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-TH"
+          ]
+        },
+        "after": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-MV",
+            "DE-RP",
+            "DE-SL",
+            "DE-SN",
+            "DE-TH"
+          ]
+        }
+      }
+    ],
+    "foreignReportsUnchanged": true,
+    "materializationDriftsBefore": 0,
+    "materializationDriftsAfter": 1,
+    "metadataMaterialized": false
+  },
+  "authoredScopes": {
+    "affectedViews": 22,
+    "allAuthoredTargetAndSupportSetsUnchanged": true,
+    "allRawAndInferredFilteredTargetSetsUnchanged": true,
+    "allCompiledTreesAndFindingsUnchanged": true,
+    "directPrerequisiteOutsideVisibleProjectionBefore": 143,
+    "directPrerequisiteOutsideVisibleProjectionAfter": 144,
+    "diagnosticMeaning": "This raw authored-scope diagnostic is not a new learner-scope rule or a claim that every pre-existing out-of-scope dependency is a configuration error. Its new HB edge is separately held.",
+    "newDeltas": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hb-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage"
+        },
+        "changes": {
+          "rawMissingDirectPrerequisites": {
+            "removed": [],
+            "added": [
+              {
+                "prerequisiteGoalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+                "sourceGoalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944"
+              }
+            ]
+          },
+          "inferredMissingDirectPrerequisites": {
+            "removed": [],
+            "added": [
+              {
+                "prerequisiteGoalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+                "sourceGoalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "rows": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-bb-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 90,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 69,
+        "compiledTreeSha256": "d57cf05d31ccd1e3909b4712a3796c3272de030f1ad6e8c3de4c4443d3b6da39"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-be-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 90,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 69,
+        "compiledTreeSha256": "92d8b6f51d7863b8311c160af500cf32e575848138917ed1585dd372f3236efd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-bw-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 97,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 76,
+        "compiledTreeSha256": "dfaa2ed374326564f53a20a122ac3fe192cc4a8728d83d0b4595580c33340d86"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 233,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 233,
+        "compiledTreeSha256": "1fd9c1c051138a519b2a8b541ec373bf21304ea4273a0ffeacb9bb168c5c20fe"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "authoredTargets": 251,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 182,
+        "compiledTreeSha256": "af552f7bca8e5e09d15eedda6f89b6928bb7ddf73c3dc6e4a7aac5e4a42a4828"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "authoredTargets": 270,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 270,
+        "compiledTreeSha256": "bb908df48d654af65cf26fd908242503fcea64ad091570e2c9c6df02d05d6c61"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-seki-informatics.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "authoredTargets": 38,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 38,
+        "compiledTreeSha256": "64a8ee6c59cbf89a70511d2f23a77d954083184264de9c2c407e179e60902b0b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hb-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 114,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 94,
+        "compiledTreeSha256": "3b3ce654cb89783b14a1a92602ff0a1ed3e7e09c26a2eeda50cc2ca2d139f81a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 233,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 233,
+        "compiledTreeSha256": "2286799e934a33a0bcc6cd57f8e1fb3d667b822e2a73e94906a1efaf83c01b51"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hh-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 96,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 74,
+        "compiledTreeSha256": "5b080685da798be7fae83257299f494b8cbe7e0913ea15cf9f563203f2b1a1ba"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-mv-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 158,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 137,
+        "compiledTreeSha256": "469e14c68d54c04b6d3c84f62e5661031641fe31703ed3d7f219a30d37353a68"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-ni-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 96,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 73,
+        "compiledTreeSha256": "d96985c2e151274c595ee941daeb4cb93be718dd91521fcf4d0da8b0cec59abe"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-nw-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 105,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 82,
+        "compiledTreeSha256": "21b6f6f0e17aa91689b6ae91c6f90ea3845d67d9790c35b63ecdffcc6f843281"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-rp-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-RP",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 116,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 94,
+        "compiledTreeSha256": "5104b447e209e1189e34fb68909995221d73a36193819925437dd790f9680ad9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sh-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 135,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 113,
+        "compiledTreeSha256": "fa2bf599f9cd4266687525208ed74fcd7d5ad14ae645f0adfec6fba9fbffa035"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sl-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 118,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 98,
+        "compiledTreeSha256": "ba902fcd86c805e20ed99a7c21b80f1f8f7c43b70d3df0f081b9f725b8f0d570"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sn-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 141,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 120,
+        "compiledTreeSha256": "aa4c23ab86fa83d1c1a083a0b1eee3c823d46974b9b14478f4fcd80b10ba43c1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-st-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 94,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 72,
+        "compiledTreeSha256": "ecaf2ba03768a0fcb9e59dfdb72c8a99f8dd25f6d5aa44d70a6625122f51d554"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-th-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 108,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 87,
+        "compiledTreeSha256": "40a39cb9fa24f2232768a43521b1d89a9de62216790792ec7266c900f79d5229"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/overview/de-de-gym-overview-seki.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI"
+        },
+        "authoredTargets": 6514,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 6514,
+        "compiledTreeSha256": "9e75219b276d44de5d1c0ddd2b003e1efa0261420942888c0ad353365b6435b7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/overview/de-de-gym-overview-sekii.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII"
+        },
+        "authoredTargets": 6514,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 6514,
+        "compiledTreeSha256": "9e75219b276d44de5d1c0ddd2b003e1efa0261420942888c0ad353365b6435b7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/overview/de-de-gym-overview.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage"
+        },
+        "authoredTargets": 6514,
+        "authoredSupport": 0,
+        "rawVisibleTargets": 6514,
+        "compiledTreeSha256": "9e75219b276d44de5d1c0ddd2b003e1efa0261420942888c0ad353365b6435b7"
+      }
+    ]
+  },
+  "strictGraphInfo": {
+    "before": [
+      {
+        "id": "G01a",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G01b",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G02",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G05",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G06",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G07",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G15",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G42",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G16",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G17",
+        "findingCount": 59,
+        "status": "fail"
+      }
+    ],
+    "after": [
+      {
+        "id": "G01a",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G01b",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G02",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G05",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G06",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G07",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G15",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G42",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G16",
+        "findingCount": 0,
+        "status": "pass"
+      },
+      {
+        "id": "G17",
+        "findingCount": 47,
+        "status": "fail"
+      }
+    ],
+    "checkedGoalsBefore": 283,
+    "checkedGoalsAfter": 283,
+    "candidateOk": false
+  },
+  "nativeQA": {
+    "actualCommands": [
+      {
+        "mode": "before",
+        "check": "scope",
+        "exitCode": 0
+      },
+      {
+        "mode": "before",
+        "check": "atomicity",
+        "exitCode": 0
+      },
+      {
+        "mode": "before",
+        "check": "memory",
+        "exitCode": 0
+      },
+      {
+        "mode": "hypothesis",
+        "check": "scope",
+        "exitCode": 0
+      },
+      {
+        "mode": "hypothesis",
+        "check": "atomicity",
+        "exitCode": 0
+      },
+      {
+        "mode": "hypothesis",
+        "check": "memory",
+        "exitCode": 0
+      }
+    ],
+    "atomicityCurrentRecordsBeforeAndAfter": 207,
+    "memoryCurrentGoalRecordsBeforeAndAfter": 207,
+    "keptCardRecordsBeforeAndAfter": 28,
+    "memoryVisibilityScopes": 18,
+    "requiresBoundByNativeAtomicityOrMemoryFingerprint": false,
+    "semanticKindSourceFingerprintChanges": 27,
+    "scopeOfPass": "Existing native A/M validation only. It does not approve the new didactic requires; the active five-subject D/P registry has no Informatics subject.",
+    "reviewBytesRewritten": false,
+    "positiveSemanticsOrChampionCacheApprovalClaimed": false
+  },
+  "rawSnapshotBindings": [
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/before-scope.stdout.json",
+      "sha256": "0b6e700fe237d7ccee36c3a90e259aef69af32be7a2f2543683abd9b457fddc6"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/hypothesis-scope.stdout.json",
+      "sha256": "be1069d5b719594c79d2e195f23247e9518c832f565dcae234490979d46c8a0b"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/before-atomicity.stdout.log",
+      "sha256": "ab0837f2fae25e7062ef100639eafd41f34a8456bfb8c078b6610e872a4cb0f5"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/hypothesis-atomicity.stdout.log",
+      "sha256": "ab0837f2fae25e7062ef100639eafd41f34a8456bfb8c078b6610e872a4cb0f5"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/before-memory.stdout.log",
+      "sha256": "c89dc3a7193fd20e138b7645cb96be873eb1f00781f80feebf80a361644d7223"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/hypothesis-memory.stdout.log",
+      "sha256": "c89dc3a7193fd20e138b7645cb96be873eb1f00781f80feebf80a361644d7223"
+    },
+    {
+      "path": "tmp/informatics-ordinary-27-review-93a653-2026-11-06/native-results.json",
+      "sha256": "b3bf47270016df3e11bf496e5fb7c512dbc5849450ecd6ae3e665c8deb1345e8"
+    }
+  ]
+}

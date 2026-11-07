@@ -1,0 +1,107 @@
+{
+  "kind": "AUTHORED_MINIMAL_PROFILE_SUCCESSOR_AWAITING_INDEPENDENT_P_REVIEW",
+  "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+  "caseId": "clockwise-motion-transfer",
+  "source15Sha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+  "exactChangedProfileFields": [
+    "applicationCaseBriefs[clockwise-motion-transfer].taskDemandDe",
+    "applicationCaseBriefs[clockwise-motion-transfer].taskDemandEn"
+  ],
+  "oldFullOriginalRecord": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-independent-p-review/bbef7cf2-90fa-59fa-a115-8b651aab9231.original.jsonl",
+    "sha256": "b3434f1cb2d025bff0879e29dc4204152711ae92cd150477c938705b2fe7dca0"
+  },
+  "oldCounterexample": {
+    "definition": "theta(t)=-2t for t>=0; x(t)=cos(2t), y(t)=-sin(2t)",
+    "satisfiesUnchangedTask": "Starts at (1,0), stays on unit circle, moves clockwise as t increases, even at constant angular speed.",
+    "at_t_pi_over_2": "(-1,0), whereas the expected theta=-t gives (0,-1)"
+  },
+  "correctedDefinition": {
+    "theta": "theta=-t, because t is explicitly the clockwise swept angle in radians",
+    "coordinates": "x(t)=cos(-t)=cos(t), y(t)=sin(-t)=-sin(t)",
+    "at_t_pi_over_2": "(0,-1)",
+    "whyThetaMinus2tNoLongerAdmissible": "Its clockwise swept angle would be 2t rather than the explicitly defined t. No time or angular-speed claim is requested."
+  },
+  "unchangedExpectedPerformanceDe": "Die lernende Person nutzt den Winkel −t: x(t) = cos(−t) = cos t, y(t) = sin(−t) = −sin t; sie begründet gerade beziehungsweise ungerade Symmetrie über die Kreispositionen.",
+  "unchangedExpectedPerformanceEn": "The learner uses angle −t: x(t) = cos(−t) = cos t and y(t) = sin(−t) = −sin t, justifying even and odd symmetry through circle positions.",
+  "correctedProfile": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/bbef7-corrected-profile.json",
+    "sha256": "61b9bda5dfca7661e3a5d92f7976d0ef42bcc4f60ec1c2a82433463b8e82c4db"
+  },
+  "correctedCase": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/bbef7-corrected-case.json",
+    "sha256": "e1957a927c8352b78a9193450f6a46056edb7ed6e760dc594a473517d7ab871f"
+  },
+  "wholeGoalUnchanged": {
+    "id": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+    "title": "Sinus- und Kosinusfunktionen verstehen",
+    "titleEn": "Understand sine and cosine functions",
+    "description": "Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
+    "descriptionEn": "The learner can explain how sine and cosine functions arise as coordinate traces of circular motion, sketch their graphs, and identify amplitude and zeros as characteristic features.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "cdf49335-cebf-54b4-9f52-50d5badabe2f"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K2.2",
+        "K3.2"
+      ],
+      "guidingIdeas": [
+        "L2",
+        "L4"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "title": "Visualisierung: Sinus- und Kosinusfunktionen verstehen",
+        "url": "/assets/goal-visualizations/mathematik/bbef7cf2-90fa-59fa-a115-8b651aab9231/bbef7cf2-90fa-59fa-a115-8b651aab9231.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Sinus- und Kosinusfunktionen verstehen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Sinus- und Kosinusfunktionen verstehen\". Die lernende Person kann erklären, wie Sinus- und Kosinusfunktionen als Koordinatenverläufe einer Kreisbewegung entstehen, ihre Graphen skizzieren sowie Amplitude und Nullstellen als charakteristische Merkmale benennen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "nativeOriginalContextAvailableAt": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-independent-p-review/native-contexts.json",
+  "independentReviewerRequested": "Codex AI independent P reviewer /root/math_p15_independent_review",
+  "newPPassClaimed": false,
+  "oldReviewOverwritten": false,
+  "newImageReviewOrHumanApprovalClaimed": false
+}

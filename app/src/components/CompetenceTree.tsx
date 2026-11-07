@@ -143,7 +143,6 @@ interface TreeNodeProps {
   expandedGoalIds?: Set<string>
   onToggleExpanded?: (goalId: string) => void
   forcedExpandedIds?: Set<string>
-  frontierIds?: Set<string>
   parentGoalId?: string
   audience?: TreeAudience
   useRawGoalTitles?: boolean
@@ -192,7 +191,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   expandedGoalIds,
   onToggleExpanded,
   forcedExpandedIds,
-  frontierIds,
   parentGoalId,
   audience = 'trainer',
   useRawGoalTitles = false,
@@ -521,7 +519,6 @@ const TreeNode: React.FC<TreeNodeProps> = ({
                 expandedGoalIds={expandedGoalIds}
                 onToggleExpanded={onToggleExpanded}
                 forcedExpandedIds={forcedExpandedIds}
-                frontierIds={frontierIds}
                 completionWaivers={completionWaivers}
                 parentGoalId={goal.id}
                 audience={audience}
@@ -563,7 +560,6 @@ interface CompetenceTreeProps {
   expandedGoalIds?: Set<string>
   onToggleExpanded?: (goalId: string) => void
   forcedExpandedIds?: Set<string>
-  frontierIds?: Set<string>
   audience?: TreeAudience
   visibleChildrenByParentOverride?: Map<string, string[]>
   useRawGoalTitles?: boolean

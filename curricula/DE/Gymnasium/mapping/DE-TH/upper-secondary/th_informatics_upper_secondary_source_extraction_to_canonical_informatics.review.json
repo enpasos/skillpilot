@@ -10,12 +10,12 @@
   "summary": {
     "scope": "Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction) / amtliche Source-Extraction",
     "reviewedSourceGoals": 92,
-    "acceptedSourceGoals": 92,
+    "acceptedSourceGoals": 90,
     "exactMappings": 23,
-    "partialMappings": 69,
-    "needsCanonicalGoal": 0,
+    "partialMappings": 67,
+    "needsCanonicalGoal": 2,
     "unreviewed": 0,
-    "notes": "Informatik Sekundarstufe II (Thueringen, Lehrplan Gymnasium 2012 Source-Extraction): alle 92 amtlichen Source-Ziele sind reviewed und inhaltlich abgedeckt. Exact/partial zaehlt nur die Mappingform."
+    "notes": "Aktueller Autorenstand: 90 zugeordnete Source-Ziele, 2 konkrete offene Canonical-Zuordnungslücken. Frühere Gesamtvollständigkeit ist keine Freigabe des geänderten Stands."
   },
   "mappings": [
     {
@@ -187,18 +187,6 @@
       "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-006-endlichen-automaten-erlaeutern-91f6342c"
     },
     {
-      "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de",
-      "canonicalGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-      "matchType": "partial",
-      "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de"
-    },
-    {
-      "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de"
-    },
-    {
       "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-008-turingmaschine-beschreiben-d1881e2d",
       "canonicalGoalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
       "matchType": "exact",
@@ -275,18 +263,6 @@
       "canonicalGoalId": "37e57f89-22d8-5565-b9a4-cce151b209a1",
       "matchType": "partial",
       "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-015-ebnf-grammatiken-darstellen-4bc11588"
-    },
-    {
-      "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e",
-      "canonicalGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-      "matchType": "partial",
-      "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e"
-    },
-    {
-      "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e"
     },
     {
       "legacyGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-017-interpreter-entwerfen-0e4e2110",
@@ -1256,17 +1232,13 @@
     },
     {
       "sourceGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-007-deterministische-automaten-erlaeutern-b183b8de",
-      "canonicalGoalIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ],
-      "decision": "mapped",
-      "mappingStrength": "partial",
-      "coverage": "content-covered",
-      "rationale": "Das Source-Ziel wird vollstaendig durch mehrere kanonische SkillPilot-Ziele abgedeckt; partial beschreibt die Zuordnungsform, nicht eine offene Luecke.",
-      "reviewedBy": "Codex",
-      "reviewedAt": "2026-05-14",
-      "sourceSpan": "TH-INF-SEKII-Q-THEORY.7"
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.7",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Die Arbeitsweise deterministischer Automaten erläutern (hier LK). Das allgemeine Modellieren/Simulieren von Automaten belegt die spezifische Erläuterung deterministischer Arbeitsweise nicht vollständig; der LK-Kontext bleibt erhalten.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "sourceGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-008-turingmaschine-beschreiben-d1881e2d",
@@ -1379,17 +1351,13 @@
     },
     {
       "sourceGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-016-automaten-entwerfen-und-implementieren-e721c18e",
-      "canonicalGoalIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ],
-      "decision": "mapped",
-      "mappingStrength": "partial",
-      "coverage": "content-covered",
-      "rationale": "Das Source-Ziel wird vollstaendig durch mehrere kanonische SkillPilot-Ziele abgedeckt; partial beschreibt die Zuordnungsform, nicht eine offene Luecke.",
-      "reviewedBy": "Codex",
-      "reviewedAt": "2026-05-14",
-      "sourceSpan": "TH-INF-SEKII-Q-THEORY.16"
+      "sourceSpan": "TH-INF-SEKII-Q-THEORY.16",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Deterministische Automaten entwerfen und implementieren (hier LK). Simulation ist kein Nachweis einer eigenständigen Implementierung. Das Grundziel verspricht die konkrete Implementierungsleistung nicht; der LK-Kontext bleibt erhalten.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "sourceGoalId": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-017-interpreter-entwerfen-0e4e2110",
@@ -2363,5 +2331,6 @@
       "reviewedAt": "2026-05-14",
       "sourceSpan": "TH-INF-SEKII-Q-APPLIED.18"
     }
-  ]
+  ],
+  "status": "author-draft-with-explicit-source-gaps"
 }

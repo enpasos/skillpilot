@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-visualization-context-core-repair-followup",
+  "reviewedAt": "2026-11-06T23:02:56+00:00",
+  "reviewer": "Codex Astra independent code and exact-counterexample replay",
+  "status": "two-profile-core-holds-closed-consumer-integration-not-claimed",
+  "predecessor": {
+    "path": "docs/dev/ci-graph-repairs/visualization-context-core-independent-review-2026-11-06.json",
+    "sha256": "e39872b409148c0523238c095cb64e90bc083ec559d1e56bb40429ed176de360"
+  },
+  "codePins": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "94d728fa9deda18560c4a807111d92754004dd7b5f7bf32ede563336c8ec9d42",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/code/goalVisualizationReviewedContext.ts"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/code/testGoalVisualizationReviewedContext.ts"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationContextNamespaces.ts",
+      "sha256": "aeadbc29bbeb5f327778bc2453d18b33953613c416591769e04f7da86b2eff4d",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/code/testGoalVisualizationContextNamespaces.ts"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "20bec1526b71566c933577a7d3a045cbaeda68d4da32a397a74bbd6e32002c12",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/code/qualification.schema.json"
+    }
+  ],
+  "findings": [
+    {
+      "id": "VCTX-PEER-01",
+      "status": "closed-in-this-core",
+      "controls": [
+        "VCTX-PEER-01A",
+        "VCTX-PEER-01B",
+        "VCTX-PEER-01C"
+      ],
+      "basis": "The two versioned profile readers bind exact canonical landscape IDs and source paths. The historical source still contains the exact goal once and has the expected normalized subject; its commit matches the review commit. Repointing to an archive, later canonical owner, or all co-located later refs now fails."
+    },
+    {
+      "id": "VCTX-PEER-02",
+      "status": "closed-in-this-core",
+      "controls": [
+        "VCTX-PEER-02-CONTROL",
+        "VCTX-PEER-02"
+      ],
+      "basis": "Both actual Git subprocess paths now include --no-replace-objects, covering anchor type, tree/object reads and ancestry. The same private replacement of the accepted base now fails; the valid original control still passes."
+    }
+  ],
+  "independentRuns": [
+    {
+      "command": "./node_modules/.bin/tsx ../qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-probes.mts",
+      "cwd": "app",
+      "exitCode": 0,
+      "harness": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-probes.mts",
+        "sha256": "5a23c2133d507b13faf45d0646b2275c967bccc2bdf68a1e8ec11840fea5d7c1"
+      },
+      "byteIdenticalTo": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-probes.mts",
+        "sha256": "5a23c2133d507b13faf45d0646b2275c967bccc2bdf68a1e8ec11840fea5d7c1"
+      },
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-probe-results.json",
+        "sha256": "589d9af5a0d5dbf146f8edefb4c24d256ef0675e3f237a3de7a4d22c8bb7b662"
+      },
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-probe-run.log",
+        "sha256": "85db6cf8e5a7c82c0be46fd8dd2a08a791a913488f641d52dddf59d7dc1db3ad"
+      },
+      "controls": 5,
+      "unexpectedAccepts": 0
+    },
+    {
+      "command": "./node_modules/.bin/tsx ../qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-owner-shift-probe.mts",
+      "cwd": "app",
+      "exitCode": 0,
+      "harness": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-owner-shift-probe.mts",
+        "sha256": "b94b0ba50b1539de81676558804e9baaa34e73fe5b0688ab85e1e275cb1b12fd"
+      },
+      "byteIdenticalTo": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-owner-shift-probe.mts",
+        "sha256": "b94b0ba50b1539de81676558804e9baaa34e73fe5b0688ab85e1e275cb1b12fd"
+      },
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-owner-shift-results.json",
+        "sha256": "76cadf7b70630368d17a1a06089d238331b41dcb0119bce05df864fea4beb3f5"
+      },
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/peer-owner-shift-run.log",
+        "sha256": "24820ad0be49c83555e313568b5e2ff8f927bc813dc16909daa82cfa3fcf0346"
+      },
+      "controls": 6,
+      "unexpectedAccepts": 0,
+      "overlap": "Repeats five previous controls and adds same-commit owner substitution; not eleven disjoint tests."
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationReviewedContext.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review-after/native-core-run.log",
+        "sha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b"
+      },
+      "actualHistoricalPositives": 18,
+      "existingNegativeControls": 26
+    }
+  ],
+  "codeRead": [
+    "Complete two-profile implementation and closed schema before and after the change",
+    "Exact corrective diff plus complete durable namespace/replacement regression test",
+    "Original authentic matrix/economics review examples and fixed profile field mappings"
+  ],
+  "boundaries": [
+    "Only matrix-candidate-v1 and economics-native-v1 are covered.",
+    "No fresh Diagram-B adapter or future historical-format adapter is approved by this peer.",
+    "No producer, Deep/book/package consumer or CLI is wired by this change.",
+    "Receipt metadata does not create new visual inspection, human approval or a full V/M7/CI pass.",
+    "The caller must provide the actual current goal/image context and an externally accepted repository anchor; copied aggregate row descriptions are not original reviewer inputs.",
+    "Before evidence and original historical decisions remain unchanged."
+  ],
+  "activeSourceQaStateWrites": false,
+  "fullLaneOrCiPassClaimed": false
+}

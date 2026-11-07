@@ -1,0 +1,94 @@
+{
+  "status": "fresh-kind-decisions-format-checked-historical-P-correctly-stale-not-D-P-qualification",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "candidateSha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd",
+  "newKindJudgments": "The peer review supplies the substantive three independent curricularAtomic judgments; this script checks only their native format/binding.",
+  "kindControls": {
+    "originalWithOriginalLedger": "pass",
+    "candidateWithOriginalLedger": "reject",
+    "candidateWithThreeFreshDecisions": "pass"
+  },
+  "decisions": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "before": {
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "sourceFingerprint": "sha256:edf990dca4dbc9ebbf0890f554826bc06eaf0610808ea7bfea34d2a7de024184",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      },
+      "proposedFreshDecision": {
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "sourceFingerprint": "sha256:46ae1b84f6a57df44a8c6db538be9c47bfae4aafefb082f102ea15db797dfd4f",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      }
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "before": {
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "sourceFingerprint": "sha256:868b4524069153661472d1d85dab011c714a990c78fbcdee335d1b75623d2648",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      },
+      "proposedFreshDecision": {
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "sourceFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      }
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "before": {
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "sourceFingerprint": "sha256:632f95ccb714e255b49556d3e4d547bcfe566b31d130f3f8054534e8cb82a1cf",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-curricular-atomic"
+      },
+      "proposedFreshDecision": {
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "sourceFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+        "semanticKind": "curricularAtomic",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+      }
+    }
+  ],
+  "pChecks": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "before": [],
+      "candidateWithHistoricalRecord": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale reviewInputFingerprint; expected sha256:75775b0c290418c722eeb55db6fda50d12d6d51d60c57bd80219e459ec9da4d9"
+      ],
+      "recordChanged": false
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "before": [],
+      "candidateWithHistoricalRecord": [
+        "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+      ],
+      "recordChanged": false
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "before": [],
+      "candidateWithHistoricalRecord": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe: stale reviewInputFingerprint; expected sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345"
+      ],
+      "recordChanged": false
+    }
+  ],
+  "activeSourceOrQaWrites": false
+}

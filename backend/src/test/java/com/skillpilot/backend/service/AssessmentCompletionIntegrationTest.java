@@ -917,15 +917,34 @@ class AssessmentCompletionIntegrationTest {
                 .extracting(Mastery::getGoalKey).containsExactly(EXAM);
     }
 
-    @Test void emptyAllowlistDoesNotReadTheCanonicalGraphOrPublishAnEmptyPicker() {
+    @Test void emptyAllowlistSkipsHistoricalCompletionGraphAndKeepsNormalFrontierReadOnly() {
         ReflectionTestUtils.setField(learners, "completionApplicationService", new CompletionApplicationService(
                 new CompletionProfileCatalog(Map.of(), Map.of(), "empty-generation")));
-        Object originalResolver = ReflectionTestUtils.getField(learners, "completionCanonicalGraphResolver");
-        var resolver = org.mockito.Mockito.mock(CompletionCanonicalGraphResolver.class);
+        var originalResolver = (CompletionCanonicalGraphResolver) ReflectionTestUtils.getField(learners, "completionCanonicalGraphResolver");
+        var resolver = org.mockito.Mockito.spy(originalResolver);
+        Set<String> allLevelTwoTargets = learners.getFilteredAtomicGoalIds(
+                ROOT, learner.getPersonalCurriculum(), null, false);
+        assertThat(allLevelTwoTargets).contains(PREPARATION, EXAM).hasSizeGreaterThan(2);
+        long revision = learner.getCoachStateRevision();
+        String personalCurriculum = learner.getPersonalCurriculum();
+        String activeGoalId = learner.getActiveGoalId();
         ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", resolver);
         try {
             assertThat(learners.getLearnerState(learner.getSkillpilotId()).levelCompletion()).isNull();
-            org.mockito.Mockito.verifyNoInteractions(resolver);
+            // No completion-profile lookup is needed. Ordinary availability still
+            // needs the complete Level-2 graph, independent of the current focus.
+            org.mockito.Mockito.verify(resolver, org.mockito.Mockito.never()).load(ROOT);
+            org.mockito.Mockito.verify(resolver, org.mockito.Mockito.never()).load(
+                    org.mockito.ArgumentMatchers.eq(ROOT), org.mockito.ArgumentMatchers.anyMap());
+            org.mockito.Mockito.verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq(ROOT),
+                    org.mockito.ArgumentMatchers.eq(allLevelTwoTargets), org.mockito.ArgumentMatchers.anyMap());
+            assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+            assertThat(learner.getPersonalCurriculum()).isEqualTo(personalCurriculum);
+            assertThat(learner.getActiveGoalId()).isEqualTo(activeGoalId);
+            assertThat(learner.getCompletionWorkflow()).isNull();
+            assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
+                    .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
+            assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
         } finally { ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", originalResolver); }
     }
 
@@ -1109,6 +1128,14 @@ class AssessmentCompletionIntegrationTest {
                 new CompletionProfileCatalog(Map.of(PROFILE, synthetic), Map.of(scope.id(), scope), "q-only-generation")));
         var resolver = org.mockito.Mockito.mock(CompletionCanonicalGraphResolver.class);
         org.mockito.Mockito.when(resolver.load(ROOT)).thenReturn(definitions);
+        Set<String> allLevelTwoTargets = learners.getFilteredAtomicGoalIds(
+                ROOT, learner.getPersonalCurriculum(), null, false);
+        assertThat(allLevelTwoTargets).contains(PREPARATION, EXAM).hasSizeGreaterThan(2);
+        org.mockito.Mockito.when(resolver.loadForTargets(org.mockito.ArgumentMatchers.eq(ROOT),
+                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap())).thenAnswer(invocation -> {
+                    assertThat((Set<String>) invocation.getArgument(1)).containsExactlyInAnyOrderElementsOf(allLevelTwoTargets);
+                    return definitions;
+                });
         ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", resolver);
         try {
             learner.setStrictMode(true);
@@ -1123,6 +1150,9 @@ class AssessmentCompletionIntegrationTest {
             assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
                     .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
             assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+            org.mockito.Mockito.verify(resolver, org.mockito.Mockito.atLeastOnce()).loadForTargets(
+                    org.mockito.ArgumentMatchers.eq(ROOT), org.mockito.ArgumentMatchers.eq(allLevelTwoTargets),
+                    org.mockito.ArgumentMatchers.anyMap());
         } finally { ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", originalResolver); }
     }
 

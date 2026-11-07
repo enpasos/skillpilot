@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "observedAtActual": "2026-11-07T04:13:20.485036+00:00",
+  "headSha": "0b0f4637f31bec3d865dc18eb34efdcf4fa9c340",
+  "pr": 84,
+  "mainRun": 42332627269,
+  "mainConclusion": "failure",
+  "jobsPassed": [
+    "Learning-goal book build",
+    "Claude Connector V1 CI",
+    "OpenAI MCP Apps CI",
+    "action-regression-ci",
+    "OpenAI MCP V1 public edge CI",
+    "Application frontend CI",
+    "backend-ci"
+  ],
+  "failedJob": {
+    "id": 128287814360,
+    "name": "Curriculum CI",
+    "failedStep": "Verify committed curriculum quality status",
+    "floorCommandObserved": true,
+    "exitCode": 1
+  },
+  "allOtherFourWorkflowsPassed": true,
+  "actualVisibleFloorHeaders": [
+    {
+      "line": 5549,
+      "text": "2026-11-07T04:06:24.5103687Z Mathematik [68a8ac50-f5f5-4e24-8aa9-5e408ca01ced]: current M0 is below protected floor M7"
+    },
+    {
+      "line": 5594,
+      "text": "2026-11-07T04:06:24.5187126Z Physik [7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a]: current M0 is below protected floor M7"
+    },
+    {
+      "line": 5639,
+      "text": "2026-11-07T04:06:24.5261515Z Biologie [08a43a1b-d97e-522c-9dfa-c950a493364e]: current M0 is below protected floor M7"
+    },
+    {
+      "line": 5684,
+      "text": "2026-11-07T04:06:24.5336803Z Chemie [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0]: current M0 is below protected floor M7"
+    },
+    {
+      "line": 5729,
+      "text": "2026-11-07T04:06:24.5424228Z Informatik [7d51b38c-a149-5407-bddc-d2ce7878b020]: current M0 is below protected floor M6"
+    },
+    {
+      "line": 5794,
+      "text": "2026-11-07T04:06:24.5510196Z Politik und Wirtschaft [51b60137-46e8-5498-973e-ea38bb32f327]: current M0 is below protected floor M6"
+    }
+  ],
+  "diagnosticBoundary": {
+    "visibleHeaders": 6,
+    "lastDiagnosticLine": [
+      {
+        "line": 5796,
+        "text": "2026-11-07T04:06:24.5678312Z     - G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:0108e6fc-c68c-5d4c-b746-c71c402093a9: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:0108e6fc-c68c-5d4c-b7"
+      }
+    ],
+    "entireSevenSubjectRemoteDiagnosticsProved": false,
+    "note": "Fetched job log ends the floor diagnostic mid-witness before normal cleanup. Wirtschaftswissenschaften diagnostics are not visible. Do not infer remote passage or a seventh named failure from absent text; the separate local normal-floor receipt proves seven failures on its exact state."
+  },
+  "log": {
+    "tool": "GitHub fetch_workflow_job_logs",
+    "jobId": 128287814360,
+    "representation": "Exact decoded structuredContent.content UTF-8, including initial BOM and original final newline; no added log newline. Not claimed as the original download ZIP/wire bytes.",
+    "rawSha256": "40f63216679cce3aed9c94131331a4d25422dab3e8e93bdd6f71482fdf432387",
+    "rawBytes": 1360603,
+    "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/remote0b-terminal/curriculum-job.decoded.log.gz",
+    "carrierSha256": "99c8cae8869765251c126a2a43328740b82bce800c8a611f7da92ff3dcdad0a3",
+    "carrierBytes": 211911,
+    "losslessRoundtripVerified": true
+  },
+  "localMath3ApplicationAfterHeadIsSeparate": true,
+  "notAllRemoteChecksPassed": true
+}

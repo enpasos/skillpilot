@@ -10,12 +10,12 @@
   "summary": {
     "scope": "Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) / amtliche Source-Extraction",
     "reviewedSourceGoals": 82,
-    "acceptedSourceGoals": 82,
+    "acceptedSourceGoals": 81,
     "exactMappings": 14,
-    "partialMappings": 68,
-    "needsCanonicalGoal": 0,
+    "partialMappings": 67,
+    "needsCanonicalGoal": 1,
     "unreviewed": 0,
-    "notes": "Informatik Sekundarstufe II (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction): alle 82 amtlichen Source-Ziele sind reviewed und inhaltlich abgedeckt. Exact/partial zaehlt nur die Mappingform."
+    "notes": "Aktueller Autorenstand: 81 zugeordnete Source-Ziele, 1 konkrete offene Canonical-Zuordnungslücken. Frühere Gesamtvollständigkeit ist keine Freigabe des geänderten Stands."
   },
   "mappings": [
     {
@@ -41,18 +41,6 @@
       "canonicalGoalId": "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
       "matchType": "partial",
       "reviewDecisionId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-002-objektorientierte-analyse-durchfuehren-7407bbdb"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93",
-      "canonicalGoalId": "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93"
     },
     {
       "legacyGoalId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-004-klassen-implementieren-e0513b1a",
@@ -968,17 +956,13 @@
     },
     {
       "sourceGoalId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-003-prozesse-mit-aktivitaets-oder-zustandsdiagrammen-modellieren-8b382b93",
-      "canonicalGoalIds": [
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
-      ],
-      "decision": "mapped",
-      "mappingStrength": "partial",
-      "coverage": "content-covered",
-      "rationale": "Das Source-Ziel wird vollstaendig durch mehrere kanonische SkillPilot-Ziele abgedeckt; partial beschreibt die Zuordnungsform, nicht eine offene Luecke.",
-      "reviewedBy": "Codex",
-      "reviewedAt": "2026-05-14",
-      "sourceSpan": "ST-INF-SEKII-Q-OOP.3"
+      "sourceSpan": "ST-INF-SEKII-Q-OOP.3",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Prozesse mit Aktivitäts- oder Zustandsdiagrammen modellieren; die amtliche Alternative erhalten. Klassendiagramme modellieren keine Prozessabläufe. Das vorhandene Automatenziel bildet die zugelassene Aktivitätsdiagramm-Alternative nicht vollständig ab und ist keine nachgewiesene niveaugleiche Ersatzzuordnung.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "sourceGoalId": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-004-klassen-implementieren-e0513b1a",
@@ -2075,5 +2059,6 @@
       "reviewedAt": "2026-05-14",
       "sourceSpan": "ST-INF-SEKII-Q-CURRENT.15"
     }
-  ]
+  ],
+  "status": "author-draft-with-explicit-source-gaps"
 }

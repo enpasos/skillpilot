@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "pure-unwired-core-independent-review-complete-all-ten-integration-contracts-open",
+  "runtimeActivationAllowed": false,
+  "runtimeBReceiptEmitted": false,
+  "existingRuntimeFilesChangedByThisStage": false,
+  "files": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java",
+      "sha256": "81b2bb5f6b3fa162a9f6f14079b59c1c35a8b9bd02e61f556e1cc964fa165dfa"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalStateProjectionTest.java",
+      "sha256": "2e52ce2f916306b46db74ea7da7190b9dc2c3e8233540aa3dcaef110395633cb"
+    }
+  ],
+  "plan": {
+    "path": "docs/dev/ci-graph-repairs/goal-identity-state-projection-plan-2026-11-06.md",
+    "sha256": "1a8472bdb74da105ffd1ea9d874e4ed30f1ddd372878db1ef2115a1d54780e21"
+  },
+  "tests": {
+    "command": "./gradlew test --offline --console=plain --tests com.skillpilot.backend.identity.GoalStateProjectionTest --tests com.skillpilot.backend.identity.GoalIdentityServiceTest -x processResources -x generateClaudePluginPublication",
+    "newStateTests": 15,
+    "previousIdentityTests": 23,
+    "distinctTotal": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "log": "tmp/ci-contract-goal-state-projection.log",
+    "logSha256": "726a261644c51f8d761272f1f1e9922c7236e704643b5f10f95ecf6b96d1004f",
+    "jdk": "tmp/amazon-corretto-25.0.2.10.1",
+    "gradleUserHome": "/tmp/skillpilot-plan-gradle-20261022",
+    "scope": "Pure synthetic typed state/DTO fixtures only; no Spring, actual database, current repository/package adapter, live import or browser integration."
+  },
+  "independentReview": {
+    "status": "pass-for-bounded-unwired-helper-only",
+    "reviewer": "Astra; independent technical AI review, no human/production approval",
+    "review": "docs/dev/ci-graph-repairs/canonical-identity-state-projection-independent-review-2026-11-06.md",
+    "reviewSha256": "a8f5cae1fa3a1a8060918c162b4f1483983248806776b284798ae51f895573ce",
+    "method": "Separately recompiled frozen production sources and both test classes with javac; invoked all test methods on fresh instances. No Gradle, Spring, DB or browser run.",
+    "stateTests": 15,
+    "previousIdentityTests": 23,
+    "failures": 0,
+    "skips": 0,
+    "log": "tmp/identity-state-independent-replay.log",
+    "logSha256": "16fd7119801b923ace846854cfb010e8a31a46374909da3f881c8044bac96540"
+  },
+  "requiredStateContracts": [
+    {
+      "contractId": "mastery-and-timestamps",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "srs-verified-recall-and-card-state",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "planned-goals-and-active-navigation",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "learning-plan-original-capture",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "completion-history-and-statistics",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "signed-import-before-projection",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "conflicting-alias-state-rejection",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "repository-snapshot-isolation",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "package-snapshot-isolation",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    },
+    {
+      "contractId": "browser-plan-and-deep-links",
+      "integrationStatus": "open-not-proven-by-pure-java-tests"
+    }
+  ],
+  "guaranteesUnderTest": [
+    "Snapshot-bound immutable canonical/durable working pairs; no entity writes or DI.",
+    "Mastery and timestamps retained exactly, including read-compatible legacy numerical values.",
+    "SRS/card IDs and payload bytes preserved; comparison uses canonical parsed JSON values and exact row timestamps.",
+    "Equivalent alias duplicates collapse only after typed value normalization; conflicting values/times/payloads reject.",
+    "Focus timestamps, navigation session/expiry/revision and completion metadata retained without reauthorization.",
+    "Original plan capture bytes/fingerprint/revision/times retained; only typed goal references in working blocks change; ordered arrays, empty/null distinctions and inactive flags preserved.",
+    "Historical source events retained separately; current goal/day projections do not create new completion events.",
+    "Existing HMAC over the unchanged original LearnerDataDTO serialization verified before any identity projection.",
+    "All signed identity groups prepared before a result is returned; malformed later plan/SRS/alias input cannot yield a partial preparation.",
+    "Original signed DTO serialization/signature retained; omitted legacy groups remain distinct from explicit empty groups."
+  ],
+  "integrationLimits": [
+    "This is a package-private pure helper, with no public Source A factory, live service reference, runtime bean or activation authority.",
+    "IdentityImportProjection is not restore authorization. Actual goal existence, goal type, retained successful card restoration, plan dates/scopes, transaction locks and permissions still need complete pre-mutation validation in a separately reviewed integration.",
+    "No automatic mastery transfer, durable key rename, due-based reopening, persisted history rewrite or curriculum ID application occurs.",
+    "Frontend local teacher plans, baselines/revisions/coverage, publication/activation, learner/Cockpit routes/deep links and SRS local keys remain explicitly open browser obligations.",
+    "Repository/package snapshot adapters, actual QA output verification and all ten genuine B state evidence types remain unimplemented/unaccepted here.",
+    "GoalIdentityProofLoader continues to reject every runtime activation receipt."
+  ],
+  "integrationBoundaryReproductions": {
+    "harness": "tmp/IdentityStateBoundaryReview.java",
+    "harnessSha256": "b2499a3434a0fa20f9b7c44479f901bc22cae6de4e5db2775c8c265f4bef0e85",
+    "log": "tmp/identity-state-independent-boundaries.log",
+    "logSha256": "18306ba1caed88b8acbda427a0eda7726bf8842466265b3e5a68ebb5af50e6c2",
+    "cases": 4,
+    "findings": [
+      "Unknown retired symbolic original keys currently fail the whole pure keyed projection; unresolved historical rows need a separately preserved original-state channel before runtime integration.",
+      "Unknown syntactically valid UUID passthrough is identity compatibility, not existence/scope authorization.",
+      "Qualified persisted strings currently normalize to authored storage spelling; an actual DB-key inventory must prevent lost reads or duplicate inserted rows.",
+      "Case-equivalent persisted UUID strings may differ from the authored UUID spelling; actual original physical keys and alias conflicts must be tested through real reads/writes/imports/exports."
+    ],
+    "integrationApproval": false
+  }
+}

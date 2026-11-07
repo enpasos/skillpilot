@@ -1,0 +1,72 @@
+{
+  "kind": "Independent replay of exact synthetic test fixture only; no real Informatics floor acceptance",
+  "fixtureHistorySha256": "b942a2a0630a668fadfc342c5787ecdc964349da909078a0cb024eeeb87c5e42",
+  "fixtureInventorySha256": "f58ab88a6ba8b20cc00e5b28a57a65fb82eb7d9d381e54bcd4a4e2564ac46ff5",
+  "productionConcreteBindingsRemainEmpty": true,
+  "testLoaderUnchangedSha256": "83f9f421a3406f202cf2669aa89b031545cd64d854ecd7e0f4d0a917dc81d808",
+  "results": [
+    {
+      "case": "native-positive",
+      "sourceSha256": "b942a2a0630a668fadfc342c5787ecdc964349da909078a0cb024eeeb87c5e42",
+      "frameProbe": {
+        "expectedStatus": "pass",
+        "artifactStatus": "pass",
+        "expectedFrame": "0fe5b93360b48df4abd99a6e685d3a39acb606986ec5d595b828952af69959c9",
+        "artifactFrame": "0fe5b93360b48df4abd99a6e685d3a39acb606986ec5d595b828952af69959c9",
+        "framesEqual": true,
+        "failingIds": []
+      },
+      "actualCliExitCode": 0,
+      "actualCliStdout": "curriculum maturity floors passed: 1 protected curricula\n",
+      "actualCliStderr": ""
+    },
+    {
+      "case": "same-frame-fabricated-positive",
+      "sourceSha256": "9788af1cd469594cab792dc9ed4597e084c1509f2ab2df19ee7ee76dbaeedfe3",
+      "frameProbe": {
+        "expectedStatus": "fail",
+        "artifactStatus": "pass",
+        "expectedFrame": "ae4b0ecb816470df436c9a8014bd7412b5b3b256ab90d5c3f67ae0c817218c9d",
+        "artifactFrame": "ae4b0ecb816470df436c9a8014bd7412b5b3b256ab90d5c3f67ae0c817218c9d",
+        "framesEqual": true,
+        "failingIds": [
+          "0a16d19b-a826-5beb-b169-7a17fc7742f0"
+        ]
+      },
+      "actualCliExitCode": 1,
+      "actualCliStdout": "",
+      "actualCliStderr": "file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:92\n        throw new Error([\n              ^\n\nError: Curriculum maturity regression detected by fixed-synthetic-info-M6-floor.\nSynthetic native Info gate fixture [7d51b38c-a149-5407-bddc-d2ce7878b020]: protected maturity has no complete passing assessment reports bound to current source discovery\nRestore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.\n    at checkCurriculumMaturityFloors (file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:92:15)\n    at main (file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:108:5)\n    at file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:112:5\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n\nNode.js v20.20.2\n"
+    },
+    {
+      "case": "own-new-meaning-stale-positive",
+      "sourceSha256": "30c9858a562b3b61bfcbe2b82ccc93edd12ffa23b706feb5b2543907057260b6",
+      "frameProbe": {
+        "expectedStatus": "fail",
+        "artifactStatus": "pass",
+        "expectedFrame": "f3ecf7ad2ff8d9ebc335b01d62b5128fb3cda54074e2e8bb47024da8b1a9b320",
+        "artifactFrame": "0fe5b93360b48df4abd99a6e685d3a39acb606986ec5d595b828952af69959c9",
+        "framesEqual": false,
+        "failingIds": [
+          "0a16d19b-a826-5beb-b169-7a17fc7742f0",
+          "0c346dc1-fdcc-5563-9154-28623d354574",
+          "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "157e99a4-8517-5e16-92f8-8241827b7682",
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+          "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "342511c3-45fb-5783-b601-906149e78c2d",
+          "49ba66cf-accd-5938-a63e-f031bc786767",
+          "4e0668e3-edca-57f4-b258-df87f23d2b4e",
+          "63509366-f5b2-58e5-9976-47df6f8c37e1",
+          "65aa807f-f998-5648-a3a6-2e0e96dba714",
+          "661ec7d3-7371-5e7c-9137-4f643e6f9bf2",
+          "755d3459-44ff-5608-8c62-3a69900b9940",
+          "8877a2e6-ebf8-5b73-a88b-56d5145a20ba"
+        ]
+      },
+      "actualCliExitCode": 1,
+      "actualCliStdout": "",
+      "actualCliStderr": "file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:92\n        throw new Error([\n              ^\n\nError: Curriculum maturity regression detected by fixed-synthetic-info-M6-floor.\nSynthetic native Info gate fixture [7d51b38c-a149-5407-bddc-d2ce7878b020]: protected maturity has no complete passing assessment reports bound to current source discovery\nRestore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.\n    at checkCurriculumMaturityFloors (file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:92:15)\n    at main (file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:108:5)\n    at file:///dev/shm/informatics-coverage-independent-ci-review-20261107/app/scripts/checkCurriculumMaturityFloors.ts:112:5\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)\n\nNode.js v20.20.2\n"
+    }
+  ],
+  "limit": "Existing isolated test loader replaces only fixed fixture pins/root/paths; no active source, production hook or native tool modification."
+}

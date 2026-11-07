@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "transparent-current-context-receipt-not-an-E25-rebind",
+  "sourceBaseCommit": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "historicalInfoSha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+  "actualCurrentInfoSha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+  "actualChange": {
+    "before": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+    "after": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+    "changedField": "/goals/277/requires",
+    "removedOrigins": 9,
+    "goalNodes": 6524,
+    "atomicNodes": 5495,
+    "globalGoalChangedSources": 0,
+    "globalAtomicChangedSources": 0,
+    "cycleComponents": [
+      0,
+      0
+    ],
+    "heldAceDirectlyRetained": true,
+    "allFinalWitnessesValid": true,
+    "nonRequiresFieldsTaskSolutionScoringCoverageAndMetadataIdentical": true
+  },
+  "unchangedFrozenE25": {
+    "payloadSha256": "23e4e9c34f051771de12aa32a8e459a983aabe27944ba4476237f103bf59c61e",
+    "reviewInputSha256": "03e3b200d435d0644835c8b160fc7fd79c0cf6f206bb93501f19d7ccf86cb6e4",
+    "frozenArtifactCount": 32,
+    "allOriginalArtifactBytesUnchanged": true,
+    "unchangedVerifierLiveExitCode": 1,
+    "liveFailureReason": "Active source changed since bounded draft review input; expected historical pin mismatch",
+    "historicalReplays": [
+      {
+        "label": "unchanged-frozen-E25-verifier",
+        "script": "docs/dev/ci-graph-repairs/informatics-e25-terminal-reference-2026-11-06/verify_candidate.py",
+        "scriptSha256": "31635ff3a3df107f1bdd186406de821086d4006929ac74ff882ffa9faac87822",
+        "exitCode": 0,
+        "overlaySourceSha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+        "overlayGitCommit": "5c9ff83586c407fd9189207c38238400c74bce51",
+        "readOnlyOverlay": true,
+        "networkNamespaceUnshared": true,
+        "stdout": {
+          "artifactConsistency": "PASS",
+          "fixedCoverageGoals": 25,
+          "criteria": 25,
+          "singleMissingCriterionTotals": [
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24,
+            24
+          ],
+          "nativeDraftCqr202Status": "fail",
+          "sourceUnchangedDuringReplay": true,
+          "boundary": "Read-only bindings, arithmetic and existing native readiness only; no human content/release/maturity/learner acceptance."
+        }
+      },
+      {
+        "label": "unchanged-nine-sequential-proposal-verifier",
+        "script": "docs/dev/ci-graph-repairs/verify_informatics_ephase_terminal_normalization.py",
+        "scriptSha256": "1b2f68ce4cf2b2e9864f6f187cdd95b0f983c7d5a23355f5d52cc808c7980554",
+        "exitCode": 0,
+        "overlaySourceSha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+        "overlayGitCommit": "5c9ff83586c407fd9189207c38238400c74bce51",
+        "readOnlyOverlay": true,
+        "networkNamespaceUnshared": true,
+        "stdout": {
+          "status": "PASS-read-only-nine-sequential-and-joint-normalizations-one-hold",
+          "dataApplied": false,
+          "qaOrContentApprovalByScript": false,
+          "goalNodes": 6524,
+          "atomicNodes": 5495,
+          "cycleComponents": [
+            0,
+            0
+          ],
+          "steps": [
+            {
+              "caseId": "INFO-E-NORM-01",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-02",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-03",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-04",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-05",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-06",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-07",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-09",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            },
+            {
+              "caseId": "INFO-E-NORM-10",
+              "globalGoalEqualsPreviousAndOriginal": true,
+              "globalAtomicEqualsPreviousAndOriginal": true,
+              "witnessValid": true
+            }
+          ],
+          "finalWitnessesAllValid": true,
+          "globalGoalChangedSources": 0,
+          "globalAtomicChangedSources": 0,
+          "wholeTerminalPayloadChangedOnlyInRequires": true,
+          "taskSolutionCoverageScopeMetadataUnchanged": true
+        }
+      }
+    ]
+  },
+  "independentContentReview": {
+    "path": "docs/dev/ci-graph-repairs/informatics-e25-terminal-independent-review-2026-11-06.json",
+    "sha256": "c96302bb9a7934a9f84d0738f24f5d14e745f3ec757c4d29aa64cc5c055afdd7",
+    "meaning": "Fresh complete25 content review is separate; its candidate remains unapplied and GK24/25 hold remains."
+  },
+  "readOnlyReproducer": {
+    "path": "docs/dev/ci-graph-repairs/verify_informatics_ephase_terminal_application.py",
+    "sha256": "df2a802bbb1103415bd946b11b7a8de604f3524c38a0117fae2c03454046c86b"
+  },
+  "applicationReceipt": {
+    "path": "docs/dev/ci-graph-repairs/informatics-ephase-terminal-normalization-application-2026-11-06.json",
+    "sha256": "91f2a89dcae80633a18a913cfa26c50631f49577f75cfb6ed5f775617336e55a"
+  },
+  "currentMeaningBoundary": "The complete25 E25 candidate, all25 goal meanings/order and all32 artifact bytes are unchanged. Only nine direct preparation references of the existing terminal were normalized, with every global Goal/atomic closure identical. The historical verifier intentionally rejects live00bc and is replayed only under explicit read-only historical f95 from Git5c9. This does not claim that its original current-context pin now denotes live00bc.",
+  "sourceAppliedExamData": false,
+  "reviewStatus": "draft remains unchanged",
+  "gk24Of25OfferingHoldResolved": false,
+  "historicalLearnerResultsRegradedMigratedRevokedOrReinterpreted": false,
+  "pQaReleaseMaturityOrHumanTrialApproval": false
+}

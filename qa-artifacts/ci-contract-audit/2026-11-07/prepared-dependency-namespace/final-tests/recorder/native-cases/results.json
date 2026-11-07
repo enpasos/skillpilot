@@ -1,0 +1,436 @@
+{
+  "purpose": "ordinary-recorder-namespace-visibility-not-QA-acceptance",
+  "testsRun": 1,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actualNativeRuns": [
+    {
+      "role": "original",
+      "ordinaryVisibilityAndPermissionChecks": "pass",
+      "producerView": {
+        "evidenceEntries": [],
+        "recorderFileExists": false,
+        "evidenceWritable": false,
+        "accessError": "EROFS",
+        "namespacePids": [
+          "1",
+          "2"
+        ],
+        "pid": 2,
+        "ppid": 1,
+        "fdTargets": [
+          {
+            "fd": "0",
+            "target": "/dev/null"
+          },
+          {
+            "fd": "1",
+            "target": "pipe:[3579293]"
+          },
+          {
+            "fd": "10",
+            "target": "pipe:[3578238]"
+          },
+          {
+            "fd": "11",
+            "target": "pipe:[3578238]"
+          },
+          {
+            "fd": "12",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "13",
+            "target": "anon_inode:[eventpoll]"
+          },
+          {
+            "fd": "14",
+            "target": "pipe:[3565315]"
+          },
+          {
+            "fd": "15",
+            "target": "pipe:[3565315]"
+          },
+          {
+            "fd": "16",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "17",
+            "closedDuringObservation": "ENOENT"
+          },
+          {
+            "fd": "2",
+            "target": "pipe:[3579294]"
+          },
+          {
+            "fd": "3",
+            "target": "anon_inode:[eventpoll]"
+          },
+          {
+            "fd": "4",
+            "target": "pipe:[3565313]"
+          },
+          {
+            "fd": "5",
+            "target": "pipe:[3565313]"
+          },
+          {
+            "fd": "6",
+            "target": "pipe:[3565314]"
+          },
+          {
+            "fd": "7",
+            "target": "pipe:[3565314]"
+          },
+          {
+            "fd": "8",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "9",
+            "target": "anon_inode:[eventpoll]"
+          }
+        ]
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original/tool/recorder-visibility.mjs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original/tool/recorder-visibility.mjs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "f10dc43b6c2a2a2de9c80a409b55e58e3ffd243e462a84161d6f78618f91f272",
+        "stdoutSha256": "5f0061c295d5b289a23a80b0445defcd545adf42ac89b3717f5e46d6b2b668e7",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3579293
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3579294
+          }
+        },
+        "recorderTraceSha256": "58042d5811bf9c215d67d7c1581cc56fde15264adad3ca07f3f1c6df1411e2bd",
+        "producerBoundary": {
+          "recorderLine": 362,
+          "hostPid": 443083,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/original/tool/recorder-visibility.mjs",
+            "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "443083": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-ffcmq9so",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerExecutableSource": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceReadAuthenticationClaimed": false
+    },
+    {
+      "role": "candidate",
+      "ordinaryVisibilityAndPermissionChecks": "pass",
+      "producerView": {
+        "evidenceEntries": [],
+        "recorderFileExists": false,
+        "evidenceWritable": false,
+        "accessError": "EROFS",
+        "namespacePids": [
+          "1",
+          "2"
+        ],
+        "pid": 2,
+        "ppid": 1,
+        "fdTargets": [
+          {
+            "fd": "0",
+            "target": "/dev/null"
+          },
+          {
+            "fd": "1",
+            "target": "pipe:[3557212]"
+          },
+          {
+            "fd": "10",
+            "target": "pipe:[3576270]"
+          },
+          {
+            "fd": "11",
+            "target": "pipe:[3576270]"
+          },
+          {
+            "fd": "12",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "13",
+            "target": "anon_inode:[eventpoll]"
+          },
+          {
+            "fd": "14",
+            "target": "pipe:[3573704]"
+          },
+          {
+            "fd": "15",
+            "target": "pipe:[3573704]"
+          },
+          {
+            "fd": "16",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "17",
+            "closedDuringObservation": "ENOENT"
+          },
+          {
+            "fd": "2",
+            "target": "pipe:[3557213]"
+          },
+          {
+            "fd": "3",
+            "target": "anon_inode:[eventpoll]"
+          },
+          {
+            "fd": "4",
+            "target": "pipe:[3573702]"
+          },
+          {
+            "fd": "5",
+            "target": "pipe:[3573702]"
+          },
+          {
+            "fd": "6",
+            "target": "pipe:[3573703]"
+          },
+          {
+            "fd": "7",
+            "target": "pipe:[3573703]"
+          },
+          {
+            "fd": "8",
+            "target": "anon_inode:[eventfd]"
+          },
+          {
+            "fd": "9",
+            "target": "anon_inode:[eventpoll]"
+          }
+        ]
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate/tool/recorder-visibility.mjs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate/tool/recorder-visibility.mjs",
+          "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "7796fc0945bc2962e3e99cc4ef0a00a91a6d1acb1f231a579085ff8033185a88",
+        "stdoutSha256": "905980b657f410a553d7a0f599ab976724fae844d2f416183e9e1fdfbd054b3c",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3557212
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3557213
+          }
+        },
+        "recorderTraceSha256": "a52ee0cac91568136259f01ebc326725780f9d7d97d10b5c935a738878376867",
+        "producerBoundary": {
+          "recorderLine": 362,
+          "hostPid": 443099,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-_chs81px/case-y8r30q35/candidate/tool/recorder-visibility.mjs",
+            "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "443099": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-_chs81px/recorder-owned-dh08a623",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerExecutableSource": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceReadAuthenticationClaimed": false
+    }
+  ],
+  "moduleSha256": "e83897e8ae75ecf073fc79ee098914315d526c6764c007c3ec19d81c87ea2b0f"
+}

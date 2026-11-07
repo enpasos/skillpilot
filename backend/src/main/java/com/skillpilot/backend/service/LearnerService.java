@@ -251,21 +251,38 @@ public class LearnerService {
     private CompletionCanonicalGraphResolver completionCanonicalGraphResolver;
 
     private Map<String, LearningGoal> completionCanonicalGraph(String curriculumId) {
-        if (completionApplicationService.catalog().automatic()) {
-            return completionApplicationService.automaticCanonicalGraph(curriculumId,
-                    () -> completionCanonicalGraphResolver.load(curriculumId));
-        }
         return completionApplicationService.canonicalGraph(curriculumId,
                 () -> completionCanonicalGraphResolver.load(curriculumId));
     }
 
     private static final String AUTOMATIC_COMPLETION_PREFIX = "automatic:";
     private static final String AUTOMATIC_COMPLETION_DEFAULT = AUTOMATIC_COMPLETION_PREFIX + "personal-curriculum";
-    private static final String AUTOMATIC_COMPLETION_REVISION = "direct-demand-v1";
+    private static final String AUTOMATIC_COMPLETION_REVISION = "full-transitive-demand-v2";
 
     private Map<String, LearningGoal> completionGraph(Learner learner, GoalProjection projection) {
-        Map<String, LearningGoal> canonical = completionCanonicalGraph(learner.getSelectedCurriculum());
-        if (!completionApplicationService.catalog().automatic()) return canonical;
+        if (!completionApplicationService.catalog().automatic())
+            return completionCanonicalGraph(learner.getSelectedCurriculum());
+        return prerequisiteGraph(learner, projection);
+    }
+
+    private Map<String, LearningGoal> prerequisiteGraph(Learner learner, GoalProjection projection) {
+        CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
+                ? completionCanonicalGraphResolver
+                : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
+        Set<String> targets = automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection);
+        java.util.function.Supplier<Map<String, LearningGoal>> loader = () -> resolver.loadForTargets(
+                learner.getSelectedCurriculum(), targets, projection.structuralGoals());
+        Map<String, LearningGoal> canonical = completionApplicationService != null
+                && completionApplicationService.catalog().available()
+                ? completionApplicationService.automaticCanonicalGraph(
+                        learner.getSelectedCurriculum() + ":" + completionScopeDigest(learner)
+                                + ":" + AUTOMATIC_COMPLETION_REVISION, loader)
+                : loader.get();
+        return applyAuthoredAtomicEntries(canonical, projection);
+    }
+
+    private Map<String, LearningGoal> applyAuthoredAtomicEntries(
+            Map<String, LearningGoal> canonical, GoalProjection projection) {
         Map<String, LearningGoal> resolved = new LinkedHashMap<>(canonical);
         // A reviewed direct goalEntry can intentionally make a canonical cluster
         // an atomic target. Apply that authoritative structure, never UI collapse.
@@ -4048,17 +4065,17 @@ public class LearnerService {
         Learner learner = getLearner(skillpilotId);
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         Map<String, Double> mastery = getMastery(skillpilotId);
-        Map<String, Double> prerequisiteMastery = computeEffectivePrereqMastery(projection.structuralGoals(), mastery);
-        Map<String, List<String>> requirements = computeEffectiveRequires(projection.structuralGoals());
+        FrontierPrerequisites prerequisites = frontierPrerequisites(learner, projection, mastery,
+                new LinkedHashSet<>(selectedIds));
         LinkedHashSet<String> names = new LinkedHashSet<>();
         boolean english = locale != null && locale.startsWith("en");
         for (String id : selectedIds) {
             if (mastery.getOrDefault(id, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) continue;
-            for (String reference : requirements.getOrDefault(id, List.of())) {
-                String prerequisite = resolveGoalRef(reference, projection.structuralGoals());
-                if (prerequisite == null || selectedIds.contains(prerequisite)
-                        || prerequisiteMastery.getOrDefault(prerequisite, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) continue;
-                LearningGoal goal = projection.structuralGoals().get(prerequisite);
+            if (prerequisites.topology() == null) break;
+            for (String prerequisite : prerequisites.topology().transitivePrerequisites(id)) {
+                if (selectedIds.contains(prerequisite)
+                        || mastery.getOrDefault(prerequisite, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD) continue;
+                LearningGoal goal = prerequisites.lookup().get(prerequisite);
                 if (goal != null) names.add(english && goal.getTitleEn() != null && !goal.getTitleEn().isBlank()
                         ? goal.getTitleEn() : goal.getTitle());
                 if (names.size() >= 3) break;
@@ -7186,71 +7203,41 @@ public class LearnerService {
     private FrontierPrerequisites frontierPrerequisites(
             Learner learner, GoalProjection projection, Map<String, Double> mastery, Set<String> scope) {
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
-        Map<String, LearningGoal> lookup = projection.structuralGoals();
         Set<String> prerequisiteScope = strictMode ? null : projection.targetGoalIds().stream()
                 .filter(id -> scope == null || scope.contains(id))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
-        // Inherit on the structural graph first. Only the ensuing traversal is
-        // restricted to F, so an ancestor outside F may still author an internal edge.
-        return new FrontierPrerequisites(lookup, computeEffectiveRequires(lookup),
-                computeEffectivePrereqMastery(lookup, mastery, prerequisiteScope), strictMode, prerequisiteScope);
+        try {
+            Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
+            var topology = new CompletionProfileCompiler().normalizePrerequisites(lookup);
+            topology.validateContext(projection.targetGoalIds());
+            return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
+        } catch (CompletionCompilationException invalid) {
+            // Broken authored definitions never become an empty, successful demand.
+            return new FrontierPrerequisites(Map.of(), null, mastery, prerequisiteScope);
+        }
     }
 
     private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
-            Map<String, List<String>> effectiveRequires, Map<String, Double> mastery,
-            boolean strictMode, Set<String> scope) { }
+            CompletionProfileCompiler.PrerequisiteTopology topology, Map<String, Double> mastery,
+            Set<String> scope) { }
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
-        Map<String, LearningGoal> prerequisiteLookupGoals = prerequisites.lookup();
-        List<String> requires = prerequisites.effectiveRequires().getOrDefault(goal.getId(), goal.getRequires());
-        if (requires != null) {
-            for (String reqId : requires) {
-                String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                boolean direct = isDirectRequirement(
-                        goal, resolvedReqId == null ? reqId : resolvedReqId, prerequisiteLookupGoals);
-                if (resolvedReqId == null) {
-                    if (prerequisites.strictMode() || (projection.compositionViewApplied() && direct)) {
-                        return false;
-                    }
-                    // Preserve optimistic unknown legacy compatibility requirements.
-                    continue;
-                }
-                if (projection.compositionViewApplied()
-                        && !projection.targetGoalIds().contains(resolvedReqId)
-                        && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                    if (direct) {
-                        return false;
-                    }
-                    // Broad inherited compatibility requirements outside an authored
-                    // projection must not become hidden blockers.
-                    continue;
-                }
-                // Validate authored Level-2 references before applying the Level-3
-                // boundary. A valid edge leaving F is absent, including its whole chain.
-                if (prerequisites.scope() != null && !prerequisites.scope().contains(resolvedReqId)) {
-                    continue;
-                }
-                if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) {
-                    return false;
-                }
-                // An achieved prerequisite ends its own preparation demand.
-                // This does not certify or write mastery of earlier prerequisites.
+        if (prerequisites.topology() == null) return false;
+        // Preserve the explicit Level-2 composition validity boundary. Canonical
+        // traversal supplies lookup, never an inferred target/support role.
+        if (projection.compositionViewApplied() && goal.getRequires() != null) {
+            for (String ref : goal.getRequires()) {
+                String id = resolveGoalRef(ref, prerequisites.lookup());
+                if (id == null || !projection.targetGoalIds().contains(id)
+                        && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
             }
         }
-        return true;
-    }
-
-    private boolean isDirectRequirement(
-            LearningGoal goal,
-            String resolvedRequirementId,
-            Map<String, LearningGoal> requirementLookupGoals) {
-        if (goal == null || goal.getRequires() == null || resolvedRequirementId == null) {
-            return false;
+        for (String id : prerequisites.topology().transitivePrerequisites(goal.getId())) {
+            if (prerequisites.scope() != null && !prerequisites.scope().contains(id)) continue;
+            if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) return false;
         }
-        return goal.getRequires().stream()
-                .anyMatch(requirement -> resolvedRequirementId.equals(requirement)
-                        || resolvedRequirementId.equals(resolveGoalRef(requirement, requirementLookupGoals)));
+        return true;
     }
 
     private List<FrontierGoal> getRequiredOrientationGoals(
@@ -7723,120 +7710,6 @@ public class LearnerService {
         visiting.remove(goalId);
         cache.put(goalId, effective);
         return effective;
-    }
-
-    private Map<String, Double> computeEffectivePrereqMastery(Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap) {
-        Map<String, Double> cache = new HashMap<>();
-        Set<String> visiting = new HashSet<>();
-        for (String goalId : allGoals.keySet()) {
-            computeEffectivePrereqMastery(goalId, allGoals, masteryMap, cache, visiting);
-        }
-        return cache;
-    }
-
-    private Map<String, Double> computeEffectivePrereqMastery(Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap, Set<String> prerequisiteScope) {
-        if (prerequisiteScope == null) return computeEffectivePrereqMastery(allGoals, masteryMap);
-        Map<String, Double> cache = new HashMap<>();
-        Set<String> visiting = new HashSet<>();
-        for (String goalId : prerequisiteScope) {
-            computeScopedPrerequisiteMastery(goalId, allGoals, masteryMap, prerequisiteScope, cache, visiting);
-        }
-        cache.keySet().retainAll(prerequisiteScope);
-        return cache;
-    }
-
-    /** Atoms_F(C) = global contains descendants of C intersected with F. */
-    private double computeScopedPrerequisiteMastery(String goalId, Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap, Set<String> scope, Map<String, Double> cache, Set<String> visiting) {
-        Double cached = cache.get(goalId);
-        if (cached != null) return cached;
-        if (!visiting.add(goalId)) return 0.0;
-        LearningGoal goal = allGoals.get(goalId);
-        double effective = 1.0;
-        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
-            // Traverse global contains paths even through a non-target cluster;
-            // an explicitly targeted descendant can still belong to F.
-            List<String> children = goal.getContains().stream().map(ref -> resolveGoalRef(ref, allGoals))
-                    .filter(Objects::nonNull).toList();
-            // Preserve the existing global core/extension basis before intersecting
-            // with F, so optimistic evaluation never adds a stricter obligation.
-            boolean hasCoreChild = children.stream().anyMatch(id -> isCoreForPrereqs(allGoals.get(id)));
-            for (String childId : children) {
-                if (hasCoreChild && !isCoreForPrereqs(allGoals.get(childId))) continue;
-                effective = Math.min(effective, computeScopedPrerequisiteMastery(
-                        childId, allGoals, masteryMap, scope, cache, visiting));
-            }
-        } else if (scope.contains(goalId)) {
-            effective = masteryMap.getOrDefault(goalId, 0.0);
-        }
-        // No atomic descendant in F means no local obligation. No result is persisted.
-        visiting.remove(goalId);
-        cache.put(goalId, effective);
-        return effective;
-    }
-
-    private double computeEffectivePrereqMastery(String goalId, Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap, Map<String, Double> cache, Set<String> visiting) {
-        Double cached = cache.get(goalId);
-        if (cached != null) {
-            return cached;
-        }
-        if (visiting.contains(goalId)) {
-            return masteryMap.getOrDefault(goalId, 0.0);
-        }
-        visiting.add(goalId);
-
-        LearningGoal goal = allGoals.get(goalId);
-        double mastery = masteryMap.getOrDefault(goalId, 0.0);
-        double effective = mastery;
-
-        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
-            List<String> childIds = new ArrayList<>();
-            boolean hasCoreChild = false;
-            for (String childRef : goal.getContains()) {
-                String childId = resolveGoalRef(childRef, allGoals);
-                if (childId == null) {
-                    continue;
-                }
-                childIds.add(childId);
-                LearningGoal child = allGoals.get(childId);
-                if (child != null && isCoreForPrereqs(child)) {
-                    hasCoreChild = true;
-                }
-            }
-
-            List<Double> childValues = new ArrayList<>();
-            for (String childId : childIds) {
-                LearningGoal child = allGoals.get(childId);
-                if (child == null) {
-                    continue;
-                }
-                if (hasCoreChild && !isCoreForPrereqs(child)) {
-                    continue;
-                }
-                childValues.add(computeEffectivePrereqMastery(childId, allGoals, masteryMap, cache, visiting));
-            }
-            if (!childValues.isEmpty()) {
-                effective = childValues.stream().min(Double::compareTo).orElse(mastery);
-            }
-        }
-
-        visiting.remove(goalId);
-        cache.put(goalId, effective);
-        return effective;
-    }
-
-    private boolean isCoreForPrereqs(LearningGoal goal) {
-        if (goal == null) {
-            return false;
-        }
-        List<String> tags = goal.getTags();
-        if (tags == null || tags.isEmpty()) {
-            return true;
-        }
-        return tags.contains("GK");
     }
 
     @Transactional
@@ -8421,6 +8294,8 @@ public class LearnerService {
         }
         boolean personalizationRequired =
                 personalizationPlan.required() || !personalizationPlan.valid();
+        // An unresolved setup is not an empty or completed learning scope.
+        scopeCompleted = scopeCompleted && !personalizationRequired;
 
         if (allowSideEffects && !followingLearningPlans) {
             activeGoalId = maybeAutoActivateFrontierGoal(
@@ -8491,7 +8366,8 @@ public class LearnerService {
                 && (!call.supported() || completion == null || completion.evaluation() == null
                     || (projectedNavigation != null && projectedNavigation.directAssessment() != null
                         && !ownsDirectAssessment(call, projectedNavigation)));
-        if (invalidDirect || blockedCoach) {
+        if (invalidDirect || blockedCoach
+                || "canonical-subject-scope-unresolved".equals(personalizationPlan.problemCode())) {
             // Hide protected teaching state without clearing another session's persisted work.
             activeGoal = null;
             activeGoalMastered = false;
@@ -10301,6 +10177,9 @@ public class LearnerService {
             return PersonalizationPlan.complete(List.of());
         }
 
+        if (hasUnresolvedCanonicalSubjectScope(learner)) {
+            return PersonalizationPlan.invalid("canonical-subject-scope-unresolved");
+        }
         Map<String, Object> personalCurriculum =
                 mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
         PersonalizationPlan plan = rawPersonalizationPlan(
@@ -10312,6 +10191,32 @@ public class LearnerService {
                 plan,
                 curriculumId,
                 personalCurriculum);
+    }
+
+    /** A no-flow subject still needs its existing authored scope to be resolved. */
+    private boolean hasUnresolvedCanonicalSubjectScope(Learner learner) {
+        String curriculumId = learner.getSelectedCurriculum();
+        SkillLandscape root = landscapeService.getById(curriculumId);
+        if (!isCanonicalGymnasiumLandscape(root)
+                || CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId)
+                || root.getPersonalizationFlow() != null
+                || landscapeService.isCompatibilityOnlyLandscape(curriculumId)) {
+            return false;
+        }
+        Map<String, Map<String, Object>> config =
+                parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        // Preserve the existing explicit published-default contract in package mode.
+        if (config.isEmpty() && compositionViewService != null
+                && compositionViewService.isAuthoritativeForLandscape(curriculumId)
+                && compositionViewService.findDefaultView(curriculumId) != null) {
+            return false;
+        }
+        Map<String, String> scope = deriveCompositionScope(curriculumId, config);
+        if (!scope.containsKey("stage") || compositionViewService == null) {
+            return true;
+        }
+        Map<String, Object> matchedView = compositionViewService.findLearnerScopeView(curriculumId, scope);
+        return matchedView == null || matchedView.isEmpty();
     }
 
     private PersonalizationPlan decoratePersonalizationPlan(

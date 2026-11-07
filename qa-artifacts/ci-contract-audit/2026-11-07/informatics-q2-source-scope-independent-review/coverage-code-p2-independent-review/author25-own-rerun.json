@@ -1,0 +1,506 @@
+{
+  "label": "retained-held-view-successor",
+  "status": "All finite native expectations passed",
+  "productionSourceWrites": false,
+  "cases": [
+    {
+      "name": "no-held-control",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-title",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-structure-label",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-display-label",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-description",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-metadata-goal-shaped-json",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "historical-view-id",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": true,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-target-bare",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": true,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-target-qualified",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-target-qualified-uppercase",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-prerequisiteOnly-bare",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": true
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-prerequisiteOnly-qualified",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "goalEntry-prerequisiteOnly-qualified-uppercase",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-target-bare",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlender kanonischer Root: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": true,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-target-qualified",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlender kanonischer Root: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-target-qualified-uppercase",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlender kanonischer Root: 7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-prerequisiteOnly-bare",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlender kanonischer Root: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": true
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-prerequisiteOnly-qualified",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlender kanonischer Root: 7d51b38c-a149-5407-bddc-d2ce7878b020:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "canonicalSubtree-prerequisiteOnly-qualified-uppercase",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254",
+          "message": "Fehlender kanonischer Root: 7D51B38C-A149-5407-BDDC-D2CE7878B020:F37F2D37-7686-5ED7-9C20-6F83D4FD2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "foreign-owner-target",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "foreign-owner-prerequisiteOnly",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "pass",
+      "issues": [],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0",
+          "goalId": "11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: 11111111-1111-4111-8111-111111111111:f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "nested-prerequisite-reference",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [
+        {
+          "code": "CPV-002",
+          "severity": "error",
+          "nodePath": "0.0.0",
+          "goalId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+          "message": "Fehlende kanonische Ziel-Referenz: f37f2d37-7686-5ed7-9c20-6f83d4fd2254"
+        }
+      ],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": true
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "native-subtree-inherited-held",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": true
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "native-landscape-entry-held",
+      "expectedHeld": true,
+      "actualHeld": true,
+      "contextStatus": "fail",
+      "issues": [
+        "held-introduction: active view"
+      ],
+      "compileErrors": [],
+      "roles": {
+        "heldTarget": false,
+        "heldPrerequisite": false
+      },
+      "compilePositive": false,
+      "expectedInvalid": false
+    },
+    {
+      "name": "malformed-json",
+      "expectedHeld": false,
+      "actualHeld": false,
+      "contextStatus": "fail",
+      "issues": [
+        "current-frame-invalid: private-p2/malformed-json.json"
+      ],
+      "compileErrors": [],
+      "compilePositive": false,
+      "expectedInvalid": true
+    }
+  ],
+  "heldSourceRejected": true
+}

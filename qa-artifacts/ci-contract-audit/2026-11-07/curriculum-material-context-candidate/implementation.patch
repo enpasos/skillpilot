@@ -1,0 +1,340 @@
+--- active-reviewed-H1/app/scripts/generateCurriculumQualityStatus.ts
++++ candidate/app/scripts/generateCurriculumQualityStatus.ts
+@@ -1,5 +1,5 @@
+ import { createHash } from 'node:crypto'
+-import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource, concreteExamReadinessIssues } from './lib/retainedAssessmentCoverage'
++import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource, concreteExamReadinessIssues, createCurriculumSourceMaterialContext, isTrustedCurriculumSourceMaterialContext, sourceMaterialContextMatchesSource } from './lib/retainedAssessmentCoverage'
+ import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
+ import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+@@ -2732,7 +2732,8 @@
+   const requiredGoalIds = [...required].sort()
+   const issues = [...new Set(discoveryIssues)].sort()
+   const retainedCoverage = createRetainedCoverageContext(repoRoot, landscape, definitionGoalIds, requiredGoalIds, files, assessmentInputFrame)
+-  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}),
++  const sourceMaterialContext = createCurriculumSourceMaterialContext(landscape, definitionGoalIds, requiredGoalIds, issues, files, assessmentInputFrame)
++  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}), ...(sourceMaterialContext ? { sourceMaterialContext } : {}),
+     definitionGoalIds: Object.freeze(definitionGoalIds), requiredGoalIds: Object.freeze(requiredGoalIds),
+     discoveryIssues: Object.freeze(issues) })
+ }
+@@ -2757,7 +2758,12 @@
+     const retainedFailures = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
+       && isTrustedRetainedCoverageContext(retained) ? retained.manifest.failingGoalIds : []
+     const failingGoalIds = [...new Set([...failures.map(({ id }) => id), ...retainedFailures])].sort()
+-    const allIssues = [...issues, ...retainedIssues]
++    const material = expectedScope.sourceMaterialContext
++    const materialIssues = landscape.landscapeId === RETAINED_INFO_OWNER ? []
++      : isTrustedCurriculumSourceMaterialContext(material) ? [...material.manifest.discoveryIssues,
++        ...(sourceMaterialContextMatchesSource(material, landscape) ? [] : ['current-frame-invalid: producer source differs from captured material context'])]
++        : ['expected-context-missing: source material context']
++    const allIssues = [...new Set([...issues, ...retainedIssues, ...materialIssues])]
+     const retainedPass = kind !== 'structure' || landscape.landscapeId !== RETAINED_INFO_OWNER
+       || (isTrustedRetainedCoverageContext(retained) && retained.manifest.status === 'pass')
+     const result = makeRule(kind === 'structure' ? 'CQR-204' : 'CQR-202',
+@@ -2770,7 +2776,8 @@
+       [...allIssues, ...retainedFailures.map(id => `${id}: retained coverage contract failed`), ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
+     result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
+       definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
+-      failingGoalIds, discoveryIssues: [...allIssues], ...(retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
++      failingGoalIds, discoveryIssues: [...allIssues], ...(retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}),
++      ...(material ? { sourceMaterialManifest: structuredClone(material.manifest) } : {}) }
+     return result
+   })
+ }
+--- active-reviewed-H1/app/scripts/lib/curriculumAssessmentValidation.ts
++++ candidate/app/scripts/lib/curriculumAssessmentValidation.ts
+@@ -1,7 +1,9 @@
+ // SPDX-License-Identifier: Apache-2.0
+ import { isTrustedRetainedCoverageContext, retainedContextMatchesScope, RETAINED_INFO_OWNER, stableCoverageJson,
++  isTrustedCurriculumSourceMaterialContext, sourceMaterialContextMatchesScope, type CurriculumSourceMaterialContext, type CurriculumSourceMaterialManifest,
+   type RetainedCoverageContext, type RetainedCoverageManifest } from './retainedAssessmentCoverage'
+ export interface CurriculumAssessmentScope {
++  readonly sourceMaterialContext?: CurriculumSourceMaterialContext
+   readonly retainedCoverage?: RetainedCoverageContext
+   readonly landscapeId: string
+   readonly definitionGoalIds: readonly string[]
+@@ -13,6 +15,7 @@
+   definitionGoalIds: string[]
+   requiredGoalIds: string[]
+   discoveryIssues: string[]
++  sourceMaterialManifest?: CurriculumSourceMaterialManifest
+   retainedCoverageManifest?: RetainedCoverageManifest
+   kind: 'structure' | 'readiness'
+   checkedGoalIds: string[]
+@@ -41,6 +44,12 @@
+     || retained.manifest.status !== 'pass'
+     || retained.manifest.sourceMaterialFailures.structureGoalIds.length !== 0
+     || retained.manifest.sourceMaterialFailures.readinessGoalIds.length !== 0)) return false
++  const material = expected.sourceMaterialContext
++  if (landscapeId !== RETAINED_INFO_OWNER && (!isTrustedCurriculumSourceMaterialContext(material)
++    || !sourceMaterialContextMatchesScope(material, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds, expected.discoveryIssues)
++    || material.manifest.discoveryIssues.length !== 0
++    || material.manifest.sourceMaterialFailures.structureGoalIds.length !== 0
++    || material.manifest.sourceMaterialFailures.readinessGoalIds.length !== 0)) return false
+   const definitions = expected.definitionGoalIds
+   const required = expected.requiredGoalIds
+   if (!required.every((id) => definitions.includes(id))) return false
+@@ -57,6 +66,9 @@
+     if (landscapeId === RETAINED_INFO_OWNER
+       && (!isTrustedRetainedCoverageContext(retained)
+         || stableCoverageJson(manifest?.retainedCoverageManifest) !== stableCoverageJson(retained.manifest))) return false
++    if (landscapeId !== RETAINED_INFO_OWNER
++      && (!isTrustedCurriculumSourceMaterialContext(material)
++        || stableCoverageJson(manifest?.sourceMaterialManifest) !== stableCoverageJson(material.manifest))) return false
+     const checked = kind === 'structure' ? definitions : required
+     if (rule.status !== 'pass' || !manifest || !metrics
+       || manifest.landscapeId !== landscapeId || manifest.kind !== kind
+--- active-reviewed-H1/app/scripts/lib/retainedAssessmentCoverage.ts
++++ candidate/app/scripts/lib/retainedAssessmentCoverage.ts
+@@ -41,8 +41,20 @@
+ }
+ export interface CapturedSource { readonly path: string; readonly sha256: string; readonly owner: string }
+ export interface RetainedCoverageContext { readonly manifest: RetainedCoverageManifest }
++export interface CurriculumSourceMaterialManifest {
++  contractVersion: 'curriculum-source-assessment-material-v1'
++  owner: string
++  source?: CapturedSource
++  frameDigest: string
++  definitionGoalIds: string[]
++  requiredGoalIds: string[]
++  discoveryIssues: string[]
++  sourceMaterialFailures: RetainedCoverageManifest['sourceMaterialFailures']
++  views: Array<{ path: string; sha256: string }>
++}
++export interface CurriculumSourceMaterialContext { readonly manifest: CurriculumSourceMaterialManifest }
+ const captures = new WeakMap<object, CapturedSource>()
+-const contexts = new WeakMap<object, { owner: string; source?: CapturedSource; definitions: readonly string[]; required: readonly string[]; materialFailures: RetainedCoverageManifest['sourceMaterialFailures'] }>()
++const contexts = new WeakMap<object, { kind: 'retained' | 'material'; discoveryIssues?: readonly string[]; owner: string; source?: CapturedSource; definitions: readonly string[]; required: readonly string[]; materialFailures: RetainedCoverageManifest['sourceMaterialFailures'] }>()
+ export const coverageSha256 = (bytes: string | Buffer): string => createHash('sha256').update(bytes).digest('hex')
+ export function stableCoverageJson(value: unknown): string {
+   if (Array.isArray(value)) return `[${value.map(stableCoverageJson).join(',')}]`
+@@ -61,12 +73,12 @@
+   const parsed = JSON.parse(bytes.toString('utf8'))
+   if (parsed && typeof parsed === 'object') {
+     captures.set(parsed, Object.freeze({ path, sha256: coverageSha256(bytes), owner: String(parsed.landscapeId ?? '') }))
+-    if (parsed.landscapeId === RETAINED_INFO_OWNER) freeze(parsed)
++    if (typeof parsed.landscapeId === 'string' && Array.isArray(parsed.goals)) freeze(parsed)
+   }
+   return parsed as T
+ }
+ export const isTrustedRetainedCoverageContext = (value: unknown): value is RetainedCoverageContext =>
+-  value !== null && typeof value === 'object' && contexts.has(value)
++  value !== null && typeof value === 'object' && contexts.get(value)?.kind === 'retained'
+ export function retainedContextMatchesSource(context: unknown, source: SkillLandscape): boolean {
+   if (!isTrustedRetainedCoverageContext(context)) return false
+   const expected = contexts.get(context)!.source, actual = captures.get(source)
+@@ -167,6 +179,50 @@
+     issues.push('placeholder examData')
+   }
+   return issues
++}
++
++/** Ordinary curriculum material authority uses the same capture, immutable
++ * context store and readiness engine, without any Informatics history policy.
++ * Its scope inputs are the results of native discovery; failures are never an
++ * input. A noncaptured mutable object cannot establish a passing authority. */
++export function createCurriculumSourceMaterialContext(landscape: SkillLandscape,
++  definitionGoalIds: readonly string[], requiredGoalIds: readonly string[], discoveryIssues: readonly string[],
++  viewFiles: readonly string[], viewFrame?: ReadonlyMap<string, Buffer>): CurriculumSourceMaterialContext | undefined {
++  if (landscape.landscapeId === RETAINED_INFO_OWNER) return
++  const source = captures.get(landscape)
++  const issues = [...discoveryIssues]
++  if (!source || source.owner !== landscape.landscapeId || !Object.isFrozen(landscape)) issues.push('expected-context-missing: current source was not immutably captured')
++  const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
++  const failures = (ids: readonly string[], ready: boolean) => sorted(ids.filter(id => {
++    const goal = byId.get(id)
++    return !goal || concreteExamReadinessIssues(goal, ready).length > 0
++  }))
++  const sourceMaterialFailures = { structureGoalIds: failures(definitionGoalIds, false), readinessGoalIds: failures(requiredGoalIds, true) }
++  const views = viewFiles.map(path => {
++    try { return { path, sha256: coverageSha256(viewFrame?.get(path) ?? readFileSync(path)) } }
++    catch { issues.push(`current-frame-invalid: ${path}`); return { path, sha256: '' } }
++  })
++  const manifest: CurriculumSourceMaterialManifest = { contractVersion: 'curriculum-source-assessment-material-v1', owner: landscape.landscapeId,
++    ...(source ? { source } : {}), frameDigest: coverageSha256(stableCoverageJson({ source: source ?? null, views, definitionGoalIds, requiredGoalIds,
++      discoveryIssues: sorted(issues), sourceMaterialFailures })), definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds],
++    discoveryIssues: sorted(issues), sourceMaterialFailures, views }
++  const context = freeze({ manifest })
++  contexts.set(context, { kind: 'material', owner: landscape.landscapeId, source, definitions: [...definitionGoalIds], required: [...requiredGoalIds],
++    discoveryIssues: [...discoveryIssues], materialFailures: sourceMaterialFailures })
++  return context
++}
++export const isTrustedCurriculumSourceMaterialContext = (value: unknown): value is CurriculumSourceMaterialContext =>
++  value !== null && typeof value === 'object' && contexts.get(value)?.kind === 'material'
++export function sourceMaterialContextMatchesSource(context: unknown, source: SkillLandscape): boolean {
++  if (!isTrustedCurriculumSourceMaterialContext(context)) return false
++  const expected = contexts.get(context)!.source, actual = captures.get(source)
++  return !!expected && !!actual && same(expected, actual)
++}
++export function sourceMaterialContextMatchesScope(context: unknown, owner: string, definitions: readonly string[], required: readonly string[], issues: readonly string[]): boolean {
++  if (!isTrustedCurriculumSourceMaterialContext(context)) return false
++  const frame = contexts.get(context)!
++  return !!frame.source && frame.owner === owner && same(frame.definitions, definitions) && same(frame.required, required)
++    && same(frame.discoveryIssues, issues) && same(frame.materialFailures, context.manifest.sourceMaterialFailures)
+ }
+ 
+ /** Only these exact fields are nonsemantic in the finite retained contract. */
+@@ -1743,5 +1799,5 @@
+     rows, failingGoalIds: sorted([...rows.filter(row => row.decision === 'fail').map(row => row.goalId), ...(retirementChecks?.filter(row => row.decision === 'fail').map(row => row.goalId) ?? [])]),
+     discoveryIssues: sorted(discoveryIssues), status: rows.every(row => row.decision !== 'fail') && !retirementChecks?.some(row => row.decision === 'fail')
+       && !discoveryIssues.length && historicalGoalIds.length === 24 && (!revisionRequested || (currentRevision && rows.length === 23 && retirementChecks?.length === 9)) ? 'pass' : 'fail' }
+-  const context = freeze({ manifest }); contexts.set(context, { owner: landscape.landscapeId, source: capture, definitions: [...definitionGoalIds], required: [...requiredGoalIds], materialFailures: sourceMaterialFailures }); return context
+-}
++  const context = freeze({ manifest }); contexts.set(context, { kind: 'retained', owner: landscape.landscapeId, source: capture, definitions: [...definitionGoalIds], required: [...requiredGoalIds], materialFailures: sourceMaterialFailures }); return context
++}
+--- active-reviewed-H1/app/scripts/testCurriculumExamReadiness.ts
++++ candidate/app/scripts/testCurriculumExamReadiness.ts
+@@ -3,6 +3,7 @@
+ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+ import { tmpdir } from 'node:os'
+ import { resolve } from 'node:path'
++import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
+ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+ import {
+   deriveCurriculumMaturity,
+@@ -16,7 +17,8 @@
+ import { strictGraphFixtureAssessmentRules, strictGraphFixtureAssessmentScope, strictGraphFixtureId, strictGraphFixtureRule } from './testCurriculumGraphMaturity'
+ 
+ const canonical = resolve(import.meta.dirname, '../../curricula/DE/Gymnasium/canonical')
+-const load = (file: string): SkillLandscape => JSON.parse(readFileSync(resolve(canonical, file), 'utf8'))
++const load = (file: string): SkillLandscape => captureCurriculumSource('curricula/DE/Gymnasium/canonical/'+file, readFileSync(resolve(canonical, file)))
++const capturedFixture = (source: SkillLandscape) => captureCurriculumSource<SkillLandscape>('fixtures/assessment/'+source.landscapeId+'.json', JSON.stringify(source))
+ const fixtures = JSON.parse(readFileSync(resolve(import.meta.dirname, 'fixtures/informatics-generic-terminal-exams.json'), 'utf8'))
+ const generic = fixtures.goals as LearningGoal[]
+ assert.equal(generic.length, 6, 'The actual six known negative payloads must be discovered.')
+@@ -133,7 +135,7 @@
+   assert.ok(rule?.assessmentValidation)
+   return rule.assessmentValidation
+ }
+-const mutate = (landscape: SkillLandscape, id: string, patch: Partial<NonNullable<LearningGoal['examData']>>) => ({
++const mutate = (landscape: SkillLandscape, id: string, patch: Partial<NonNullable<LearningGoal['examData']>>) => capturedFixture({
+   ...landscape, goals: landscape.goals.map(goal => goal.id === id
+     ? { ...goal, examData: { ...goal.examData!, ...patch } } : goal),
+ })
+@@ -199,6 +201,7 @@
+   ? { ...goal, release: { examYear: 2026, kind: 'offer' as const, status: 'released' as const, courseLevel: 'GK' as const } }
+   : goal) })
+ const fullCore = (landscape: SkillLandscape, viewFiles: string[] = [], catalog = [landscape]) => {
++  landscape = capturedFixture(landscape)
+   const actualCatalog = [landscape, ...catalog.filter((entry) => entry.landscapeId !== landscape.landscapeId)]
+   const expectedScope = discoverCurriculumAssessmentScope(landscape, viewFiles, actualCatalog)
+   const rules = [
+@@ -262,7 +265,7 @@
+   ? { ...goal, id: caseGoal } : goal.tags?.includes('root')
+     ? { ...goal, contains: [`${uuidOwner}:${caseGoal.toUpperCase()}`, B], release: {
+       examYear: 2026, kind: 'offer' as const, status: 'released' as const, courseLevel: 'GK' as const } } : goal) }
+-assert.equal(evaluateCurriculumExamReadiness(ownedCaseFixture, []).find(rule => rule.id === 'CQR-202')?.status, 'pass')
++assert.equal(evaluateCurriculumExamReadiness(capturedFixture(ownedCaseFixture), []).find(rule => rule.id === 'CQR-202')?.status, 'pass')
+ const wrongCaseOwner = { ...ownedCaseFixture, goals: ownedCaseFixture.goals.map(goal => goal.tags?.includes('root')
+   ? { ...goal, contains: [`${uuidOwner.toUpperCase()}:${caseGoal}`, B] } : goal) }
+ assert.equal(evaluateCurriculumExamReadiness(wrongCaseOwner, []).find(rule => rule.id === 'CQR-202')?.status, 'fail')
+@@ -360,3 +363,5 @@
+ 
+ // Concrete current authoring revision and known DB material countercases.
+ await import('./testInformaticsCurrentDefinitionRevision')
++
++await import('./testCurriculumSourceMaterialContext')
+--- active-reviewed-H1/app/scripts/testCurriculumGraphMaturity.ts
++++ candidate/app/scripts/testCurriculumGraphMaturity.ts
+@@ -1,5 +1,6 @@
+ // SPDX-License-Identifier: Apache-2.0
+ import assert from 'node:assert/strict'
++import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
+ import type { SkillLandscape } from '../src/landscapeTypes'
+ import {
+   deriveCurriculumMaturity,
+@@ -37,11 +38,11 @@
+ // A real valid graph result, rather than a hand-written CQR-001 pass, isolates
+ // the downstream maturity tests from unrelated authored curriculum debt.
+ export const strictGraphFixtureRule = evaluate(landscape([goal(A, [B]), goal(B)]))
++const strictAssessmentSource = captureCurriculumSource<SkillLandscape>('fixtures/strict-maturity-fixture.json',
++  JSON.stringify(landscape([goal(A, [B]), goal(B)])))
++export const strictGraphFixtureAssessmentScope = discoverCurriculumAssessmentScope(strictAssessmentSource, [])
+ export const strictGraphFixtureAssessmentRules = evaluateCurriculumExamReadiness(
+-  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
+-)
+-export const strictGraphFixtureAssessmentScope = discoverCurriculumAssessmentScope(
+-  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
++  strictAssessmentSource, [], [strictAssessmentSource], strictGraphFixtureAssessmentScope,
+ )
+ const expectedScopes = new Map([[strictGraphFixtureId, strictGraphFixtureAssessmentScope]])
+ assert.equal(strictGraphFixtureRule.status, 'pass')
+--- active-reviewed-H1/app/scripts/testCurriculumSourceMaterialContext.ts
++++ candidate/app/scripts/testCurriculumSourceMaterialContext.ts
+@@ -0,0 +1,23 @@
++// SPDX-License-Identifier: Apache-2.0
++import assert from 'node:assert/strict'
++import { readFileSync, readdirSync } from 'node:fs'
++import { resolve } from 'node:path'
++import type { SkillLandscape } from '../src/landscapeTypes'
++import { captureCurriculumSource, coverageSha256, RETAINED_INFO_OWNER } from './lib/retainedAssessmentCoverage'
++import { discoverCurriculumAssessmentScope, evaluateCurriculumExamReadiness, evaluateGraphIntegrity } from './generateCurriculumQualityStatus'
++import { hasCompletePassingCurriculumExamReadiness } from './lib/curriculumAssessmentValidation'
++const R=resolve(import.meta.dirname,'../..'),path='curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json',id='2fb368b0-7b9d-5df0-99b6-6d719fd47f95'
++const raw=readFileSync(resolve(R,path)),original=JSON.parse(raw.toString()) as SkillLandscape
++const catalog=readdirSync(resolve(R,'curricula/DE/Gymnasium/canonical')).filter(f=>f.endsWith('.json')&&!f.includes('_deck')).map(f=>captureCurriculumSource<SkillLandscape>('curricula/DE/Gymnasium/canonical/'+f,readFileSync(resolve(R,'curricula/DE/Gymnasium/canonical',f))))
++const bind=(bytes:Buffer|string)=>{const source=captureCurriculumSource<SkillLandscape>(path,bytes),all=[source,...catalog.filter(s=>s.landscapeId!==source.landscapeId)],scope=discoverCurriculumAssessmentScope(source,undefined,all),rules=[evaluateGraphIntegrity(source,all),...evaluateCurriculumExamReadiness(source,undefined,all,scope)];return{source,scope,rules,manifest:scope.sourceMaterialContext!.manifest}}
++const good=bind(raw),owner=original.landscapeId,results:Array<{case:string;pass:true}>=[]
++function check(name:string,fn:()=>void){fn();results.push({case:name,pass:true})}
++check('real German17 positive material authority',()=>{assert.notEqual(owner,RETAINED_INFO_OWNER);assert.equal(good.scope.retainedCoverage,undefined);assert.equal(good.scope.definitionGoalIds.length,17);assert.equal(good.scope.requiredGoalIds.length,17);assert.deepEqual(good.manifest.sourceMaterialFailures,{structureGoalIds:[],readinessGoalIds:[]});assert(good.rules.every(r=>r.status==='pass'));assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,owner,good.scope),true)})
++check('source factory freezes actual source without mutable caller alias',()=>{const bytes=Buffer.from(raw),capture=captureCurriculumSource<SkillLandscape>(path,bytes);bytes.fill(0);assert(Object.isFrozen(capture)&&Object.isFrozen(capture.goals)&&Object.isFrozen(capture.goals.find(g=>g.id===id)!.examData));assert.throws(()=>{capture.goals.find(g=>g.id===id)!.examData!.reviewStatus='draft'},TypeError);assert.equal(capture.goals.find(g=>g.id===id)!.examData!.reviewStatus,undefined)})
++check('actual status task solution scoring source faults cannot be report-smoothed',()=>{for(const mode of ['draft','task','solution','scoring']){const s=structuredClone(original),e=s.goals.find(g=>g.id===id)!.examData!;if(mode==='draft')e.reviewStatus='draft';if(mode==='task')e.taskContent='';if(mode==='solution')e.solutionContent='';if(mode==='scoring')e.scoring.steps=[];const b=bind(JSON.stringify(s));assert.deepEqual(b.scope.definitionGoalIds,good.scope.definitionGoalIds);assert.deepEqual(b.scope.requiredGoalIds,good.scope.requiredGoalIds);assert.deepEqual(b.manifest.sourceMaterialFailures.structureGoalIds,mode==='draft'?[]:[id]);assert.deepEqual(b.manifest.sourceMaterialFailures.readinessGoalIds,[id]);const forged=structuredClone(b.rules);for(const r of forged){if(!r.assessmentValidation)continue;r.status='pass';r.metrics!.weakExamData=0;r.metrics!.discoveryIssues=0;r.assessmentValidation.failingGoalIds=[];r.assessmentValidation.discoveryIssues=[]}assert.equal(hasCompletePassingCurriculumExamReadiness(forged,owner,b.scope),false);assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,owner,b.scope),false)}})
++let manifestNegatives=0
++check('both mandatory serialized material manifests reject absence and fabrication',()=>{for(const id of ['CQR-204','CQR-202'])for(const mode of ['manifest','source','failures','structure','readiness','digest','invent-structure','invent-readiness']){const rules=structuredClone(good.rules),validation=rules.find(r=>r.id===id)!.assessmentValidation!,m=validation.sourceMaterialManifest! as unknown as Record<string,unknown>;if(mode==='manifest')delete validation.sourceMaterialManifest;if(mode==='source')delete m.source;if(mode==='failures')delete m.sourceMaterialFailures;if(mode==='structure')delete(m.sourceMaterialFailures as Record<string,unknown>).structureGoalIds;if(mode==='readiness')delete(m.sourceMaterialFailures as Record<string,unknown>).readinessGoalIds;if(mode==='digest')m.frameDigest='0'.repeat(64);if(mode==='invent-structure')(m.sourceMaterialFailures as Record<string,unknown>).structureGoalIds=[id];if(mode==='invent-readiness')(m.sourceMaterialFailures as Record<string,unknown>).readinessGoalIds=[id];assert.equal(hasCompletePassingCurriculumExamReadiness(rules,owner,good.scope),false);manifestNegatives++}})
++check('missing fabricated copied or mismatched expected authority rejected',()=>{for(const scope of [undefined,JSON.parse(JSON.stringify(good.scope)),{...good.scope,sourceMaterialContext:undefined},{...good.scope,sourceMaterialContext:{manifest:good.manifest}},{...good.scope,definitionGoalIds:[]},{...good.scope,requiredGoalIds:[]},{...good.scope,discoveryIssues:['invented issue']}])assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,owner,scope),false);assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,owner,{...good.scope}),true)})
++check('fresh editorial source allowed; stale report frame rejected',()=>{const s=structuredClone(original);s.title+=' editorial context check';const b=bind(JSON.stringify(s));assert.deepEqual(b.manifest.sourceMaterialFailures,good.manifest.sourceMaterialFailures);assert.notEqual(b.manifest.frameDigest,good.manifest.frameDigest);assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,owner,b.scope),false);assert.equal(hasCompletePassingCurriculumExamReadiness(b.rules,owner,b.scope),true)})
++check('uncaptured mutable source cannot establish current passing authority',()=>{const source=structuredClone(original),scope=discoverCurriculumAssessmentScope(source,undefined,[source,...catalog.filter(s=>s.landscapeId!==owner)]),rules=evaluateCurriculumExamReadiness(source,undefined,catalog,scope);assert(scope.sourceMaterialContext!.manifest.discoveryIssues.some(i=>i.includes('not immutably captured')));assert(rules.every(r=>r.status==='fail'));assert.equal(hasCompletePassingCurriculumExamReadiness([good.rules[0],...rules],owner,scope),false)})
++console.log(JSON.stringify({curriculumSourceMaterialGroups:results.length,results,realGermanDefinitions:17,realGermanRequired:17,sourceFaults:4,serializedManifestNegatives:manifestNegatives,sourceSha256:coverageSha256(raw),activeWrites:false,fullCqr:false}))
+--- active-reviewed-H1/app/scripts/testVisualizationContextMaturity.ts
++++ candidate/app/scripts/testVisualizationContextMaturity.ts
+@@ -2,6 +2,7 @@
+ import assert from 'node:assert/strict'
+ import { readFileSync, writeFileSync } from 'node:fs'
+ import { resolve } from 'node:path'
++import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
+ import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+ import { evaluateCurrentVisualizationGate, hasCompletePassingVisualizationContext,
+   type CurriculumVisualizationValidation, type VisualizationGateRecord } from './lib/curriculumVisualizationValidation'
+@@ -64,8 +65,8 @@
+   assert.ok(original)
+   return { ...original, weight: 1, requires: [], contains: [exam.id] }
+ })
+-const fixture: SkillLandscape = { ...source, goals: [{ ...goal, weight: 1, contains: [], requires: [] },
+-  { ...exam, weight: 1, contains: [], requires: [] }, ...routeClusters] }
++const fixture: SkillLandscape = captureCurriculumSource('fixtures/visualization-material.json', JSON.stringify({ ...source, goals: [{ ...goal, weight: 1, contains: [], requires: [] },
++  { ...exam, weight: 1, contains: [], requires: [] }, ...routeClusters] }))
+ const graph = evaluateGraphIntegrity(fixture, [fixture])
+ assert.equal(graph.status, 'pass')
+ assert.equal(graph.graphIntegrity?.ok, true)
+--- active-reviewed-H1/docs/qa-ci/curriculum-quality-maturity-and-routes.md
++++ candidate/docs/qa-ci/curriculum-quality-maturity-and-routes.md
+@@ -706,6 +706,29 @@
+ Legacydefinitionen erweitert. Fehlende Routenprofile bleiben unkonfiguriert;
+ ein leerer globaler Bereitschaftsumfang erteilt ihnen keine `M6`-Freigabe.
+ 
++Alle normalen Curricula brauchen einen authentischen sourcegebundenen
++Materialkontext. Der bestehende native Discoveryweg ermittelt Definitions- und
++Requiredmengen; die gemeinsame konkrete Readinessfunktion berechnet daraus die
++echten Fehlermengen der unveraenderlich erfassten Quelle. `sourceMaterialContext`
++bindet fuer die anderen Faecher Sourcepfad/-hash/-owner, Scope-IDs,
++Discoveryfehler und aktuelle Viewbytes im bestehenden WeakMap-/Freeze-Kontext.
++Beide CQR-Berichte tragen das vollstaendige `sourceMaterialManifest`; der
++Verbraucher verlangt dessen exakte Uebereinstimmung mit dem frisch gelesenen
++Kontext und lehnt echte Material- oder Statusfehler auch bei einem veralteten
++positiven M6-Bericht ab. Fehlende Teile erhalten keine leeren Ersatzwerte.
++Ungecapturte veraenderbare Quellen begruenden keinen bestandenen Kontext.
++Gemeinsame Testfixtures verwenden deshalb dieselbe echte Capturefactory.
++
++Informatik behaelt seinen separat verifizierten Retained-Kontext einschliesslich
++Materialbindung; andere Faecher erhalten keine Informatik-Historienpruefung.
++Bestehende Legacy-Statussemantik, Requiredentdeckung und die Readinessfunktion
++bleiben unveraendert. Ein vollstaendiger unangebotener Draft begruendet weiterhin
++keine neue Releasepflicht. Der normale Gesamtproducer erzeugt die verpflichtenden
++Manifeste frisch; alte Berichte ohne diese Bindung gelten nicht als aktuelle
++unabhaengige Floor-Evidenz. Das ist keine Behauptung eines gesamten CI-Bypasses:
++Main-CI regeneriert ihre Berichte. Der unabhaengige Meilenstein-/Floorverbraucher
++muss dennoch eine inzwischen verletzte echte Quellanforderung selbst erkennen.
++
+ Die konkrete Informatik-Autorenrevision `2026-11-07-current23` bindet im
+ bestehenden Helper 23 aktuelle Pruefungsvertraege und prueft neun ausdruecklich
+ retirierte historische Identitaeten getrennt auf Abwesenheit. Die alten

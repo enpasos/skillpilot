@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "name": "old54-native-transport",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "seconds": 6.894864082336426,
+      "stdoutSha256": "ab357b4d8979baa3cc557903b0cd1736431bb18b859798db2b0d3792a7cb773b",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "crossed-new-index-old-anchor",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "seconds": 0.0697176456451416,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "9e47da5c545b9510cde91dae470bb4ef0954744a8a244f140e8ebfda854d690d"
+    },
+    {
+      "name": "working-limit-one-byte-too-small",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "seconds": 0.365431547164917,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "2bb660573f1d7192c896f445c706c80098661e4d149755e77c0faddf7c95fe14"
+    },
+    {
+      "name": "unknown-caller-selected-index",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "seconds": 0.06140637397766113,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "44015c6f5e3952a941896dd43c681ec999bc36d702f0782e8e8d4de5c7a2f76c"
+    },
+    {
+      "name": "actual-capsule-pin-change-native-floor",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "seconds": 0.5689685344696045,
+      "stdoutSha256": "be6e0948f93c08e6216e17c7a833010e7bad4a1e94b2ae6d56f6f78172254cef",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "old54PrivateShallowAndIndependentInodeChecked": true,
+  "old54PrivateMaterializationRemovedAfterRead": true,
+  "hostGitWritten": false,
+  "productionResourceLimitsUnchanged": true
+}

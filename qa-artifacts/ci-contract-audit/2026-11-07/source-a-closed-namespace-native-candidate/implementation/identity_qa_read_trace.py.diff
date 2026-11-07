@@ -1,0 +1,157 @@
+--- active-readonly/scripts/identity_qa_read_trace.py
++++ private-candidate/scripts/identity_qa_read_trace.py
+@@ -19,8 +19,8 @@
+ 
+ 
+ TRACE_OPTIONS = (
+-    '-f', '-qq', '-yy', '--decode-pids=pidns', '-v', '-s', '65535',
+-    '-e', 'trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace',
++    '-f', '-qq', '-yy', '--decode-pids=pidns', '-v', '-s', '1048576',
++    '-e', 'trace=%file,%network,%ipc,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace,lseek,ioctl,memfd_create,splice,tee,vmsplice,fallocate,write,writev,pwrite64,pwritev,pwritev2,ftruncate,truncate,mprotect,msync,copy_file_range,sendfile',
+     '-e', 'raw=read,pread64,readv,preadv,preadv2',
+ )
+ 
+@@ -190,8 +190,8 @@
+         require_actual_launch(evidence, evidence.trace, evidence.cwd, evidence.root, evidence.role)
+         self.verify_launch(evidence)
+         expected = Path(evidence.tool_context['producerExecutable'])
+-        require(executable is not None and Path(executable).resolve(strict=True) == expected
+-                and digest(executable) == self.NODE_VM_EXECUTABLE_SHA256
++        require(executable is not None and (Path(executable) == expected if evidence.namespace is not None else Path(executable).resolve(strict=True) == expected)
++                and (evidence.namespace.view.entries[str(executable)].sha256 if evidence.namespace is not None else digest(executable)) == self.NODE_VM_EXECUTABLE_SHA256
+                 and evidence.tool_context['producerSha256'] == self.NODE_VM_EXECUTABLE_SHA256,
+                 'Node VM observation is not from the exact bound Node executable')
+         require(group in evidence.namespace_process_ids, 'Node VM observation lacks actual PID-group provenance')
+@@ -287,7 +287,7 @@
+             start_order = order
+         match = re.match(r'^(\w+)\((.*)\)\s+=\s+(.*)$', text)
+         require(match is not None, 'Unknown or truncated syscall line')
+-        require('...' not in match[2], 'Abbreviated input/discovery trace')
++        require('...' not in re.sub(r'"(?:[^"\\]|\\.)*"','""',match[2]), 'Abbreviated input/discovery trace')
+         completed.append((start_order, order, pid, match[1], arguments(match[2]), match[3]))
+     require(not pending, 'Trace ends with unfinished syscalls')
+     return sorted(completed)
+@@ -359,7 +359,7 @@
+     events = calls(trace)
+     require(events, 'Empty producer trace')
+     root_pid = events[0][2]
+-    initial_cwd = Path(initial_cwd).resolve(strict=True)
++    initial_cwd = Path(initial_cwd) if hasattr(contract,'namespace') else Path(initial_cwd).resolve(strict=True)
+     require(initial_cwd.is_relative_to(contract.root), 'Initial cwd is outside its physical role')
+     processes = {root_pid: Process([initial_cwd], {}, root_pid)}
+     exited, handles, facts, failures, source_reads = set(), [], {}, [], set()
+@@ -392,6 +392,7 @@
+ 
+     def observe_runtime(path, operation, failed=None, actual=None, byte_count=None, open_flags=None, requested_bytes=None):
+         rule = runtime.paths[path]
++        if hasattr(runtime,'check_event'):runtime.check_event(launch,proc,path,operation,failed,actual,open_flags)
+         require(operation in rule['operations'], 'Unmeasured runtime operation: ' + path + ':' + operation)
+         if failed:
+             require(rule['resultClass'] == 'ENOENT-probe' and failed.split()[1] == 'ENOENT', 'Unmeasured runtime failure')
+@@ -422,6 +423,9 @@
+         return fd(proc, directory) / path
+ 
+     def check(path, syscall, failed, actual=None):
++        if failed and hasattr(contract,'prove_negative_lookup'):
++            failures.append(contract.prove_negative_lookup((start,end,pid,name,args,result),path,proc))
++            return None
+         if failed:
+             matching = [tree for tree in bound_trees if tree.contains(path)]
+             require(len(matching) <= 1, 'Negative dependency lookup has ambiguous bound roots')
+@@ -456,7 +460,7 @@
+             return mapped.namespace_path,mapped.binding,mapped.logical
+         resolved, binding, logical = contract.resolve(path, actual, syscall)
+         if binding:
+-            require(digest(resolved) == binding.sha256, 'Actual accessed bytes differ: ' + logical)
++            require((contract.file_digest(resolved) if hasattr(contract,'file_digest') else digest(resolved)) == binding.sha256, 'Actual accessed bytes differ: ' + logical)
+             fact = facts.setdefault((binding.category, logical), {'category': binding.category, 'path': logical,
+                                     'sha256': binding.sha256, 'provenance': binding.provenance, 'observedOperations': []})
+             if syscall not in fact['observedOperations']:
+@@ -489,7 +493,7 @@
+             if not failed:
+                 destination = path_at(proc, 'AT_FDCWD', args[0]) if name == 'chdir' else fd(proc, args[0])
+                 resolved = check(destination, name, None)[0]
+-                require(resolved.is_dir() or any(view.contains(resolved) and view.walk(resolved)[1]['kind']=='directory'
++                require((contract.is_directory(resolved) if hasattr(contract,'is_directory') else resolved.is_dir()) or any(view.contains(resolved) and view.walk(resolved)[1]['kind']=='directory'
+                                                 for view in contract.mount_views), 'cwd is not a bound directory')
+                 proc.cwd[0] = resolved
+             else:
+@@ -512,6 +516,9 @@
+         elif name in ('open', 'openat', 'openat2'):
+             path = path_at(proc, 'AT_FDCWD' if name == 'open' else args[0], args[0] if name == 'open' else args[1])
+             flags = ','.join(args[1:] if name == 'open' else args[2:])
++            if any(flag in flags for flag in ['O_WRONLY','O_RDWR','O_CREAT','O_TRUNC','O_TMPFILE']) and hasattr(contract,'open_write'):
++                contract.open_write(path,flags,failed,args,result,proc,Handle,handles,(start,end,pid,name,args,result))
++                continue
+             require(not any(flag in flags for flag in ['O_WRONLY', 'O_RDWR', 'O_CREAT', 'O_TRUNC', 'O_TMPFILE']), 'Producer attempted a write-capable input open')
+             if runtime is not None and str(path) in runtime.paths:
+                 target = observe_runtime(str(path), name, failed, annotation(result), open_flags=flags)
+@@ -523,11 +530,14 @@
+                 continue
+             checked = check(path, name, failed, annotation(result))
+             if checked:
++                if hasattr(contract,'before_read_open'):contract.before_read_open(path,proc,checked,(start,end,pid,name,args,result))
+                 require(annotation(result) is not None, 'Successful open lacks actual kernel FD path (-yy required)')
+                 resolved, binding, logical = checked
+                 handle = Handle(resolved, binding, logical, binding is None)
+                 handles.append(handle)
+                 proc.fds[number(result)] = (handle, 'O_CLOEXEC' in flags)
++        elif hasattr(contract,'handle_operation') and contract.handle_operation((start,end,pid,name,args,result),proc,fd):
++            continue
+         elif name == 'close':
+             descriptor = number(args[0])
+             if not failed:
+@@ -574,14 +584,18 @@
+                 proc.fds[number(result)] = (proc.fds[descriptor][0], 'CLOEXEC' in ','.join(args[1:]))
+         elif name in ('read', 'pread64', 'readv', 'preadv', 'preadv2', 'mmap'):
+             if name == 'mmap':
++                require('MAP_SHARED' not in args[3] or 'MAP_ANONYMOUS' in args[3], 'File-backed shared mappings are outside run writer grammar')
+                 if 'MAP_ANONYMOUS' in args[3]:
+                     continue
+                 token = args[4]
+             else:
+                 token = args[0]
+-            require(not failed, 'Failed FD read/map')
+             fd(proc, token)
+             handle = proc.fds[number(token)][0]
++            if failed:
++                require(name in ('read','readv') and handle.transport == 'internal-control' and failed.split()[1] in ('EAGAIN','EINTR','ERESTARTSYS'), 'Failed source/runtime FD read/map or unrecognized internal read interruption')
++                transport_facts.append({'pid':pid,'operation':name,'resultClass':failed.split()[1],'origin':handle.logical,'payloadBytes':0,'noInputPermissionGranted':True})
++                continue
+             if handle.runtime_path:
+                 observe_runtime(handle.runtime_path, name, byte_count=number(result),
+                                 requested_bytes=number(args[2]) if name == 'read' else None)
+@@ -595,7 +609,7 @@
+                 continue
+             require(not handle.directory, 'Directory read without getdents discovery')
+             check(handle.path, name, None)
+-            if handle.binding.category == 'source' and (name == 'mmap' or number(result) > 0 or handle.path.stat().st_size == 0):
++            if handle.binding.category == 'source' and (name == 'mmap' or number(result) > 0 or (contract.file_size(handle.path) if hasattr(contract,'file_size') else handle.path.stat().st_size) == 0):
+                 source_reads.add(handle.logical)
+         elif name == 'getdents64':
+             require(not failed, 'Failed directory discovery')
+@@ -618,8 +632,9 @@
+             path = path_at(proc, 'AT_FDCWD' if name == 'execve' else args[0], args[0] if name == 'execve' else args[1])
+             checked = check(path, name, failed)
+             if not failed:
++                if hasattr(contract,'check_exec'):contract.check_exec(path,args,proc,(start,end,pid,name,args,result))
+                 proc.fds = {descriptor: value for descriptor, value in proc.fds.items() if not value[1]}
+-                proc.executable = checked[0] if any(view.contains(path) for view in contract.mount_views) else path.resolve(strict=True)
++                proc.executable = checked[0] if any(view.contains(path) for view in contract.mount_views) else (path if hasattr(contract,'namespace') else path.resolve(strict=True))
+         elif name in ('newfstatat', 'statx', 'faccessat', 'faccessat2', 'readlinkat', 'stat', 'lstat', 'access', 'readlink'):
+             at = name in ('newfstatat', 'statx', 'faccessat', 'faccessat2', 'readlinkat')
+             path = path_at(proc, args[0] if at else 'AT_FDCWD', args[1] if at else args[0])
+@@ -652,10 +667,12 @@
+             discoveries[handle.logical] = list(expected)
+     require(contract.required_discovery <= discoveries.keys(), 'Required directory discovery was not executed')
+     require(source_reads, 'Authenticated source-read scope is empty')
++    if hasattr(contract,'finish_authentication'):contract.finish_authentication(source_reads,discoveries,facts)
+     contract.verify_bytes_and_aliases()
++    if hasattr(contract,'finish_writes'):contract.finish_writes(processes,exited,events)
+     for tree in bound_trees:
+         require_bound_tree(tree, launch, contract)
+-    return {'purpose': 'bounded-role-read-authentication-facts-not-qa-readiness', 'role': contract.role,
++    return {'runWriteFacts':getattr(contract,'write_facts',[]),'purpose': 'bounded-role-read-authentication-facts-not-qa-readiness', 'role': contract.role,
+             'processCount': len(processes), 'files': sorted(facts.values(), key=lambda row: (row['category'], row['path'])),
+             'actualSourceReadOrMapPaths': sorted(source_reads),
+             'closedDirectoryDiscoveries': discoveries, 'explicitToolProbeFailures': failures,

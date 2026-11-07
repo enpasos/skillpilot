@@ -1,0 +1,41 @@
+{
+  "status": "INTEGRATION_HOLD_NO_SOURCE_APPLICATION",
+  "nativeExecution": "focus-methods.json",
+  "provenance": "focus-method-execution.json.gz",
+  "actualImplementation": {
+    "LearnerService.java:7203": "frontierPrerequisites obtains the canonical prerequisite graph and normalizes it before focus filtering; topology is mastery independent",
+    "LearnerService.java:7236": "areFrontierPrerequisitesMastered traverses complete transitivePrerequisites, then restricts which endpoints must be mastered",
+    "LearnerService.java:7229": "separate authored Level-2 direct-reference validity guard requires each direct ref to be target or prerequisiteOnly",
+    "CompletionProfileCompiler.java:55": "transitivePrerequisites computes full reachability without focus/mastery cutoffs"
+  },
+  "nativeMethodCases": {
+    "A": "304111dd-426b-520b-a275-3fa37da1b0e0",
+    "carrierB": "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+    "intro": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+    "AandIntroFocusWithCarrierOutside": "before false / after false",
+    "AandIntroFocusWithCarrierMastered": "before false / after false",
+    "singleANormal": "before true / after true",
+    "singleAStrictOnlyCarrierMastered": "before false / after false",
+    "allDemandMastered": "before true / after true"
+  },
+  "concreteRemainingHold": {
+    "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+    "title": "Zusammenhang zwischen Graph und Umkehrgraph erläutern",
+    "actualNativeTSView": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+    "existingMissingDirectReference": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+    "methodFixture": "Actual full Math source objects; target set contains U and its preparation but excludes Intro, no support for Intro, focus only U. Fixture is explicit, not a claim that backend PC loader emitted this projection.",
+    "nativeServicePredicateBefore": false,
+    "nativeServicePredicateAfter": true,
+    "requiredFollowup": "Replay this real HE/Sek-I/G8 scope through unchanged current backend PC/GoalProjection loader and public simple/rich/prospective frontiers. Establish the actual direct-ref validity outcome before accepting this removal. Do not waive the guard, infer support or widen targets. If delta remains, hold that edge (and analogous missing-Intro cases) or repair the separately reviewed explicit source/scope contract."
+  },
+  "otherAffectedAuthorsWithExistingAbsentIntro": [
+    "14af09c2-999f-52fa-8d42-1f2f6b23629b",
+    "879f9c84-d6fb-58c3-b219-696e0070d67f",
+    "dabff49b-d40a-4c81-a584-21408b2d4219",
+    "da95ab35-bac2-54f2-b38f-8b612cde8b54"
+  ],
+  "enumeratedVariantsWithAbsentIntro": 81,
+  "coverageLimit": "Twelve actual current native service-predicate calls (six scenarios on each source), no DB/repository/event access. Full current Math source graph normalized anew; source and compiler freshly compiled. Explicit target/focus fixtures, no complete backend PC loader or public frontier invocation. No general all-focus or all-mastery service equivalence claimed.",
+  "norm": "The full transitive preparation requirement is the existing 4-November norm. No PR83-only exception or new runtime policy is introduced.",
+  "decision": "Twenty-edge graph/fachliche proposal remains reviewable, but application is held until the explicit Level-2 case is closed. Native transitive focus mechanics themselves pass these finite cases."
+}

@@ -1,0 +1,501 @@
+{
+  "method": "PyYAML actual candidate first-step run extraction followed by actual bash --noprofile --norc -c; no rewritten guard",
+  "guardSha256": "daf2884d08626107b2dc838f4aeea3a012d6e10cdd22ef75c25fec5ef343e13c",
+  "cases": [
+    {
+      "core": "success",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 0,
+      "actualExitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "success",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=success, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "failure",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=failure, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "cancelled",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=cancelled, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "skipped",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=skipped, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "success",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "failure",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "cancelled",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "skipped",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": null,
+      "coreMissing": true,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": null,
+      "book": "neutral",
+      "coreMissing": true,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=missing, book=neutral.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "success",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=success.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "failure",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=failure.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "cancelled",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=cancelled.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "skipped",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=skipped.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": null,
+      "coreMissing": false,
+      "bookMissing": true,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=missing.\n",
+      "stderr": ""
+    },
+    {
+      "core": "neutral",
+      "book": "neutral",
+      "coreMissing": false,
+      "bookMissing": false,
+      "expectedExitCode": 1,
+      "actualExitCode": 1,
+      "stdout": "::error::Curriculum CI requires successful core and book jobs; core=neutral, book=neutral.\n",
+      "stderr": ""
+    }
+  ],
+  "caseCount": 49,
+  "successCases": 1,
+  "rejectedCases": 48,
+  "workflowSourceCommandsExecuted": false,
+  "githubRunnerLifecycleTested": false
+}

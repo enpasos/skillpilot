@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "two-service-regressions-and-independent-review-pass-fresh-remote-ci-open",
+  "contractRules": [
+    "N11",
+    "N12"
+  ],
+  "contract": "Passed required cards retain their verified outcome and completed memory-goal mastery when scheduling becomes due; already passed cards are excluded from verified recall and reject result overwrites. Practice and failed attempts before completion keep their current semantics.",
+  "headAtRunStart": "e8ad0caf5e8ad39a7cde8a787da88b91ddb48cf1",
+  "filesChanged": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionSrsIntegrationTest.java",
+      "rawSha256": "b2376826bea785cd14bce0f48b097f34e6dde0eab658df70f5217bf326098462"
+    },
+    {
+      "path": ".github/workflows/assessment-completion.yml",
+      "rawSha256": "ed2e6236810dcb4576e33b02dec09dad9456eb33f8d72ccc2fe6bc035b7a4c8a"
+    }
+  ],
+  "productionSourceRead": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "rawSha256": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsPracticeStateGuard.java",
+      "rawSha256": "2e4f35851298a0d626182e956c78bb92222f80b89d52b32699d29c27e2967177"
+    }
+  ],
+  "existingEvidenceBoundary": {
+    "AssessmentCompletionSrsIntegrationTestBefore": "7 executions: missing/unreadable/empty decks, two missing-front/back variants, corrupt stored state, and no prior learner state. These did not cover a completed goal becoming due again.",
+    "SrsMasteryBatchQueryTest": "6 existing SQL/deck/query controls; passed-card overlays and eligibility are exercised, but no later due rollover of a completed real service result.",
+    "SrsPracticeStateGuardTest": "6 existing field/revision/portable controls; practice cannot forge or erase authoritative verified outcomes. These are retained unchanged."
+  },
+  "newCases": [
+    {
+      "name": "laterDueDatesDoNotReopenACompletedMemoryGoalOrRevokeItsExplicitResult",
+      "line": 162,
+      "given": "Actual canonical memory target and completed Level2 HE CrossStage G9 scope. Explicit stored orientation foundation; a complete valid two-card deck fixture uses real required GK/LK tags. Memory mastery is not seeded.",
+      "when": "Public server-owned batch start/result calls at a past injected recall clock pass every card and persist explicit memory mastery. The test READS each actual persisted nextReview and asserts assessedAt < nextReview < current real read time. The age alone is not taken as due evidence.",
+      "then": "The final recall response is complete with no pending cards; active goal clears. At the later time public getMastery retains1, actual frontier does not reopen the goal, and strict chooseLevelCompletion returns valid targetCount3/mastered1/pending2. Stored card JSON/timestamp and stored memory result/timestamp remain unchanged by these reads."
+    },
+    {
+      "name": "passedCardsCannotBeRetestedBySingleFalseWriteOrForgedBatchWhileOtherCardsRemainOpen",
+      "line": 207,
+      "given": "Same actual active visible memory context, two required cards. A real public batch passes one card three days earlier while the second card remains open; memory mastery is not yet written.",
+      "when": "Current public batch issuance excludes the already passed card. A single passed=false result for that known passed card and a structurally valid forged batch containing it are submitted through the actual public service.",
+      "then": "The single call reaches the specific already-verified guard; the batch reaches the exact current-server-batch guard. Both reject with no card bytes/timestamp, learner revision or memory-mastery mutation. The genuine outstanding issued batch then succeeds, completes2/2, and preserves the earlier card map exactly.",
+      "importantGuardBoundary": "The memory goal remains the current active, visible, planned target during both denials; an unrelated stale-active-goal guard cannot provide a false positive."
+    }
+  ],
+  "localExecution": {
+    "cwd": "backend",
+    "command": "JAVA_HOME=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1 PATH=/home/enpasos/projects/skillpilot/tmp/amazon-corretto-25.0.2.10.1/bin:$PATH GRADLE_USER_HOME=/tmp/skillpilot-plan-gradle-20261022 ./gradlew test --offline --console=plain --tests 'com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest' --tests 'com.skillpilot.backend.service.SrsMasteryBatchQueryTest' --tests 'com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest'",
+    "javaHome": "tmp/amazon-corretto-25.0.2.10.1",
+    "javaVersion": "25.0.2+10-LTS",
+    "gradleHome": "/tmp/skillpilot-plan-gradle-20261022",
+    "taskExclusions": [],
+    "resources": "Normal processResources actually executed; generateClaudePluginPublication stayed in the normal graph and was UP-TO-DATE. Existing offline dependency cache reused, no clean build claimed.",
+    "exitCode": 0,
+    "duration": "2m58s",
+    "executedTests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "class": "com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "15021a418716c0778bbe620c9f9683caf7f45ed3b5ba1228b46b85b1a93a7ee2",
+        "cases": [
+          "unreadableStoredRecallProducesUnavailableWithoutMutatingItsSavedOutcome()",
+          "laterDueDatesDoNotReopenACompletedMemoryGoalOrRevokeItsExplicitResult()",
+          "emptyRequiredDeckIsUnavailableAndDoesNotRevokeStoredMastery()",
+          "validRequiredDeckWithoutPreviousLearnerStateMeansUnmasteredRatherThanUnavailable()",
+          "missingRequiredDeckIsUnavailableAndDoesNotRevokeStoredMastery()",
+          "passedCardsCannotBeRetestedBySingleFalseWriteOrForgedBatchWhileOtherCardsRemainOpen()",
+          "unreadableRequiredDeckIsUnavailableAndDoesNotRevokeStoredMastery()",
+          "[1] json = \"{\\\"cards\\\":[{\\\"id\\\":\\\"card-1\\\",\\\"front\\\":\\\"Question\\\"}]}\"",
+          "[2] json = \"{\\\"cards\\\":[{\\\"id\\\":\\\"card-1\\\",\\\"back\\\":\\\"Answer\\\"}]}\""
+        ]
+      },
+      {
+        "class": "com.skillpilot.backend.service.SrsMasteryBatchQueryTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "2ac0fd79fa8dd25769cc58b143501a9a214e5060bba6fe9d746c4ce3a858ed67",
+        "cases": [
+          "strictSnapshotUsesOneSqlAndOneDeckParseForOneOrFortyGoals()",
+          "frontierAvailabilityAndChampionCountsStayBatched()",
+          "ordinaryCompetenceGoalsNeedNoSrsSqlOrDeckReads()",
+          "corruptSingleStateIsUnavailableStrictlyAndPreservedOnlyForThatNormalGoal()",
+          "sameDescriptionCannotConflateDifferentDeckPayloads()",
+          "bothNormalOverlaysUseOneSqlForOneOrFortyGoals()"
+        ]
+      },
+      {
+        "class": "com.skillpilot.backend.service.srs.SrsPracticeStateGuardTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "da848ceff7f7fd9954690eb41c4bc8266a8676d2a7bd074cdd5b5d0ebb41692c",
+        "cases": [
+          "omissionOrReplacementCannotEraseAuthoritativeRecall()",
+          "aFreshClientClockDoesNotReplaceTheExpectedServerRevision()",
+          "existingMinimalAuthoritativePassNeedsNoNewAttemptMetadata()",
+          "malformedRecallStructureIsATechnicalInputError()",
+          "malformedStoredStateIsNotAnUnmasteredResult()",
+          "onlyPracticeFieldsCanComeFromTheClient()"
+        ]
+      }
+    ],
+    "log": {
+      "path": "tmp/srs-retained-pass-normal-gradle-final.log",
+      "rawSha256": "b0b39b011ac82ae083930af48650f5af6a85de67773012764f120fb6f2bebd7e"
+    },
+    "inputPins": {
+      "head": "e8ad0caf5e8ad39a7cde8a787da88b91ddb48cf1",
+      "canonicalSources": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+          "rawSha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "rawSha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+          "rawSha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+          "rawSha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+          "rawSha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "rawSha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+          "rawSha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+          "rawSha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+          "rawSha256": "5921c402af6c7380b39cdb80dcb306001c1e44912b3190f691551279b673a6e2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+          "rawSha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+          "rawSha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "rawSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+          "rawSha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+          "rawSha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "rawSha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "rawSha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+          "rawSha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+          "rawSha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+          "rawSha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+          "rawSha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "rawSha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+        }
+      ]
+    },
+    "sourceBytesUnchangedAtTerminal": true,
+    "initialFixtureCorrection": "Initial normal21-test run had only the two new fixtures fail before recall because synthetic card tags were absent. The actual production tag filter correctly rejected all cards. Added GK/LK/SekI card tags as on the valid real deck, then reran all21; no result/assertion or production change hid that fixture error."
+  },
+  "ciChain": {
+    "workflow": ".github/workflows/assessment-completion.yml",
+    "job": "backend-and-postgres",
+    "testSelector": "com.skillpilot.backend.service.AssessmentCompletionSrsIntegrationTest",
+    "minimumExecutedCountBefore": 7,
+    "minimumExecutedCountAfter": 9,
+    "onlyWorkflowChangeIsMinimum7To9": true,
+    "triggers": "workflow_dispatch; pull_request and push-main path filters include backend/** and this workflow.",
+    "checkedScope": "The whole nine-case service class and the existing explicit SRS, completion, PostgreSQL and restart classes remain listed.",
+    "failureEffect": "Gradle nonzero fails the job; the XML guard also hard-fails missing/misidentified/too-small/skipped/failed reports.",
+    "mainChain": "The unchanged main backend CI uses the full Gradle check suite after its failure-priority preflight; these JUnit tests are automatically discovered there."
+  },
+  "limits": [
+    "No production/service/domain/serialization or scheduling implementation changed.",
+    "No card, learner, curriculum, historical archive or published artifact bytes changed; the two-card resource is only a test fixture.",
+    "This local H2 service run does not replace real PostgreSQL/restart/browser/provider-host checks; their existing CI gates remain intact.",
+    "No fresh remote CI for this uncommitted test diff is claimed.",
+    "No global recognition, LearningUnit or PR83 C(q) feature was implemented."
+  ],
+  "independentReview": {
+    "status": "no-holds-on-bounded-two-service-regressions",
+    "reviewer": "Astra independent agent review",
+    "humanApproval": false,
+    "path": "docs/dev/ci-graph-repairs/srs-completion-retention-independent-review-2026-11-06.md",
+    "sha256": "5ca6182c2dc3bc8b3d3d89f429c356024bb3e9a8a124241d24042b15a9ecb23c",
+    "existingActualXmlTestsChecked": 21,
+    "freshTestRunClaimedByReviewer": false
+  }
+}

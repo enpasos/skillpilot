@@ -1,0 +1,212 @@
+{
+  "kind": "concrete-authoring-specification-not-new-material-pass",
+  "examIds": [
+    "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+    "6ebc2a67-ea20-5c4e-8a63-635f40438d6a"
+  ],
+  "reuseBoundary": "Retain the cold22 package exactly as an original. Copy only selected relevant material into a new revision with new pins; no claim that existing positive mechanical tests are independent subject acceptance.",
+  "existingSelectedGoalTasks": [
+    {
+      "goalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "oldMaterialAnchor": "A01",
+      "implementationTask": "Use a new small model case without its solved schema in any released handout. Assess entities/relations/cardinality/optional participation and a correct verbal justification.",
+      "criticalPassRule": "Accept equivalent unambiguous ER notation; do not demand ternary/recursive relationships.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "oldMaterialAnchor": "A02",
+      "implementationTask": "Derive relations, primary/foreign keys and optionality from the same unseen model. Keep this case disjoint from the supplied query database, so no runtime handout barrier is required.",
+      "criticalPassRule": "A copy of the separate query schema cannot solve this task.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+      "oldMaterialAnchor": "A03",
+      "implementationTask": "Provide exact functional dependencies and a non-normalized relation; identify a real anomaly, reach1NF/2NF/3NF and justify the resulting dependencies/keys.",
+      "criticalPassRule": "Only canonical basic, HE increased if separately included; no BCNF demand.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "oldMaterialAnchor": "A04",
+      "implementationTask": "Require an independently composed SELECT that projects, filters, joins and orders. Use fixed rows with a genuine false-join counterexample.",
+      "criticalPassRule": "Equivalent JOIN syntax accepted; ties explicitly resolved in case data.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "oldMaterialAnchor": "A05",
+      "implementationTask": "Require an aggregate per group and a correct result on grouped fixture rows, including a group with multiple rows.",
+      "criticalPassRule": "Do not force LEFT JOIN/HAVING/empty-group behavior unless separately given and actually part of the assessed problem.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+      "oldMaterialAnchor": "A07",
+      "implementationTask": "Implement the form controls/parameter names/action and demonstrate a matching GET or POST request; explain the method difference using supplied endpoint contracts.",
+      "criticalPassRule": "No CSRF/session implementation obligation hidden in the basic form target.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+      "oldMaterialAnchor": "A08",
+      "implementationTask": "Connect to the supplied local database/API, bind parameters to a SELECT and retrieve/iterate the returned records.",
+      "criticalPassRule": "Provide connection/API/error conventions; do not count a memorized prepared solution as independent execution.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "71fe327a-9677-5348-a405-fba0dbd302d7",
+      "oldMaterialAnchor": "A09",
+      "implementationTask": "Give short up-to-date statutory extracts for contract handling and separate voluntary advertising; require correct assignment of basis/principle/affected right and consequences.",
+      "criticalPassRule": "The source is a didactic law card with dated official citations, not an invented legal opinion. State consent conditions explicitly in solution.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "58173dab-0cb2-52ae-a052-63d3a0f33644",
+      "oldMaterialAnchor": "A10",
+      "implementationTask": "For a concrete incident identify the affected protection goal and justify a proportionate organizational and technical/physical countermeasure.",
+      "criticalPassRule": "Include authenticity for a BY12 full security task; the old goal alone is not its whole curriculum.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "oldMaterialAnchor": "A11",
+      "implementationTask": "Compute product, selection, projection and join on completely listed small relations. Give full tuple results, schemas and set semantics.",
+      "criticalPassRule": "IDs alone are not a selection result unless a keyed-row shorthand is explicitly allowed.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "oldMaterialAnchor": "A12",
+      "implementationTask": "Translate a new question into a relational algebra term and then SQL; verify both on the fixed relation instance.",
+      "criticalPassRule": "The problem formulation must differ from the given-term task19.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+      "oldMaterialAnchor": "A14",
+      "implementationTask": "Inspect a separate flawed schema with keys, a redundant dependency and a contradictory update; explain defects and a locally sufficient repair.",
+      "criticalPassRule": "No demand to execute full normalization again; a justified consistency assessment is the distinct competence.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+      "oldMaterialAnchor": "A17",
+      "implementationTask": "Render returned rows as escaped structured HTML and choose exactly one of filter or pagination. Provide either an unsolved filter endpoint or an unsolved page boundary fixture.",
+      "criticalPassRule": "A correct filter-only solution must pass. If pagination chosen, specify stable ordering, empty/final page and invalid page input; not both alternatives mandatory.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+      "oldMaterialAnchor": "A18",
+      "implementationTask": "Judge a stated everyday data-sharing risk and actually modify a supplied settings object while preserving unrelated entries.",
+      "criticalPassRule": "Explain the choice; do not require changes to a real private account.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+      "oldMaterialAnchor": "A19",
+      "implementationTask": "Work from a given nested algebra term over basic operators; state intermediate relation schemas/full tuples and derive equivalent SQL.",
+      "criticalPassRule": "Use supplied independent base data to prevent inherited mistakes being mistaken for missing translation competence.",
+      "appliesTo": [
+        "HE2027/28",
+        "canonicalBasic"
+      ]
+    },
+    {
+      "goalId": "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+      "oldMaterialAnchor": "A22",
+      "implementationTask": "Give two explicitly specified rankings over all five courses, including zero counts/tie rule, and fixed advertising costs/revenues. Explain economic incentive and a reasoned perception/opinion effect.",
+      "criticalPassRule": "Do not require Map-Reduce or NoSQL to produce the ranking. Counts may be supplied; no implicit new target21.",
+      "appliesTo": [
+        "canonicalBasic"
+      ]
+    }
+  ],
+  "newRequiredCases": [
+    {
+      "goalId": "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+      "case": "Ein Kurs besitzt Termine; die TerminNr ist nur innerhalb ihres Kurses eindeutig. Jeder Termin gehört genau zu einem Kurs. Zwei Kurse dürfen TerminNr1 besitzen.",
+      "expected": "Kurs(KursID PK,...); Termin(KursID FK,TerminNr,Datum), PK(KursID,TerminNr); identifizierende1:n-Beziehung, totale Teilnahme des Termins.",
+      "essential": "Schwäche/Abhängigkeit und zusammengesetzte Identifikation korrekt; globale eindeutige TerminNr wäre falsch."
+    },
+    {
+      "goalId": "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+      "case": "Eine Person kann null oder mehrere Telefonnummern haben; dieselbe Nummer darf mehreren Personen zugeordnet sein. Doppelte Person-Nummer-Paare sind nicht erlaubt.",
+      "expected": "Person(PersonID PK,...); Telefon(PersonID FK,Nummer), PK(PersonID,Nummer). Keine kommaseparierte Liste und keine Ein-Nummer-Grenze.",
+      "essential": "Mehrwertigkeit erhalten und referentielle Zuordnung/eindeutiges Paar korrekt; leere Attributmenge durch keineZeile."
+    },
+    {
+      "goalId": "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+      "case": "Lehrkraft ist eine Spezialisierung von Person und übernimmt deren Identität. Jede Lehrkraft ist Person; nicht jede Person ist Lehrkraft. Nutze das vorgegebene Muster separate Untertyp-Tabelle.",
+      "expected": "Person(PersonID PK,...); Lehrkraft(PersonID PK und FK->Person,Lehrgebiet). is-a im Modell, kein unabhängiger zweiter Identifikator.",
+      "essential": "Richtung/Teilmenge und Schlüsselidentität korrekt; keine unnötige Pflicht zusätzlicher Abbildungsstrategien."
+    },
+    {
+      "goalId": "b855c123-cd28-5d6c-9485-4852d01bc5eb",
+      "case": "Ein bereitgestelltes UPDATE Kurs SET titel=? WHERE kurs_id=? soll im lokalen Testdatensatz Kurs10 in Grundlagenkurs umbenennen. Dokumentiert sind bind,execute,commit,close sowie betroffeneZeilen.",
+      "expected": "Verbindung herstellen, Titel undID als getrennte Parameter binden,execute ohnefetchall,commit nach Vertrag; anschließend Kurs10 geändert, andereKurse unverändert.",
+      "essential": "Änderung ohne Ergebnismenge tatsächlich korrekt ausgeführt und geprüft; keineDCL,DDL,Isolation oder selbstgeschriebene Sicherheitsbibliothek."
+    }
+  ],
+  "generalCaseRules": [
+    "Make the model-derivation case distinct from the already supplied SQL fixture. This removes answer leakage without a new staged-upload/runtime workflow.",
+    "Provide all relations, keys, nullability, collation/order, duplicate/set semantics, date/currency units and allowed API behavior. Specify at most one booking per person/course, not exactly one for every possible pair.",
+    "Separate essential competence from incidental display/arithmetic details. Define follow-on error treatment: give an independent standard intermediate for the later task and judge the later transformation on it; do not double-penalize or infer mastery without evidence.",
+    "Reference execution is local evidence for exact fixtures. Include the5000digit invalid numeric input as a regression; the supplied safe helper returns a controlled validation error before integer conversion. No runtime security approval follows."
+  ],
+  "nativeCompatibleNonCompensatoryRubric": {
+    "encoding": "One integer0/1 scoring step per explicitly defined essential competence criterion; maxPoints=number of essential criteria, passingPoints=maxPoints. Incidental formatting/context preferences carry0 compulsory points. This is justified only after substantive criteria, equivalent solution paths and harmless errors are spelled out and reviewed. Do not copy110/110 or lower it arbitrarily.",
+    "goalCoverage": "Every allowed choice branch must produce all coveredGoalIds. Goal17 has two valid branches for the same goal; optional extension work cannot compensate for a missing required goal.",
+    "consequenceError": "Later competence may receive its criterion only from a correct independent completion using the supplied standard intermediate or a clearly valid carried result; the failed earlier criterion stays failed.",
+    "nativeLimit": "This uses the existing point contract and content rubric; no new mastery type, outcome runtime, unit recognition or branch selector is introduced. If native scorer cannot enforce binary essential criteria, the exam stays draft until the explicit existing contract supports the intended threshold."
+  },
+  "oldMaterialFindingsToClose": [
+    "MAT-01 independent modeling case",
+    "MAT-02 true filter OR pagination",
+    "MAT-03 critical criteria and concrete consequence error rules",
+    "MAT-04 explicit ranking universe and ties",
+    "MAT-05 relational limitations for retained/increased goal20 only",
+    "MAT-06 named legal basis and aligned norm card",
+    "MAT-07 bounded numeric conversion",
+    "MAT-08 at-most-one business rule",
+    "MAT-09 full tuples"
+  ],
+  "retainedOld41": "Must receive its own full41-goal dossier, including875. The same reusable task can serve multiple separately identified exams, but a new10/20 contract never repairs the old41 by reducing coverage.",
+  "HEExamLimit": "This is a complete SkillPilot competence check for a named Q2 selection, not a replica of one official Abitur paper or its grading. LA2027/2028 no-PC condition matters only if a paper is advertised as an official-format simulation; the canonical practical web task is explicitly a different own offering."
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "recordedAtActual": "2026-11-07T02:49:47.939037+00:00",
+  "headCommit": "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+  "workflowRunId": 42329658527,
+  "jobId": 128273018814,
+  "failedStep": "Check Documentation Links",
+  "actualFailure": "docs/dev/ci-graph-repairs/source-identity-prepared-dependency-namespace-boundary-2026-11-07.md: missing source-identity-prepared-namespace-parent-absence-contract-2026-11-07.md",
+  "cause": "Link target existed in the local tree but was not included in the pushed checkpoint.",
+  "remedy": "Include the unchanged original static followup contract and validate native link resolution against exact staged Markdown bytes, staged docs path membership and exact staged symlinks.",
+  "gateOrCheckerWeakened": false,
+  "rawLog": {
+    "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/remote25a-docs-link-failure/documentation-checks.log.gz",
+    "sha256": "f660312e9fa48b6cb2173768246bfe6e213805167f1d22320debe61626e0c7f1",
+    "rawSha256": "439e3ca00f46b744d381d8306e80356049eda776762ecb5f009fe090ff8100e6",
+    "rawBytes": 72723,
+    "roundtrip": true
+  },
+  "otherDocsJobs": [
+    {
+      "name": "MkDocs Build",
+      "conclusion": "success"
+    },
+    {
+      "name": "Claude Revocation PostgreSQL 15",
+      "conclusion": "success"
+    }
+  ],
+  "overall25aCiPassed": false,
+  "firstTransportPreserved": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/remote25a-docs-link-failure/documentation-checks.transport-first.log.gz",
+    "sha256": "045aa13cc31f4f76a9b417fe3ccf68ccea08d8d931d03e2d4efb34967851bfbc",
+    "reason": "The plain-text patch carrier added a final newline. Exact connector-decoded string was then transported as a JSON string and used for the final original log."
+  },
+  "localRemedyCommit": "46d69682ebdad536128ee6ca9043f22409ea8c96",
+  "localNativeStagedDocsCheck": {
+    "receiptPath": "qa-artifacts/ci-contract-audit/2026-11-07/remote25a-docs-link-failure/staged-doc-link-inputs.json",
+    "sha256": "5dc5035a83d89076eb624546e2b70a68e1298442d664a9da7ec5eef0ad0af2d6",
+    "exitCode": 0,
+    "exactMarkdownFileCount": 519,
+    "exactStagedSymlinkCount": 9,
+    "stagedDocsPathCount": 1120,
+    "nonMarkdownTargetBoundary": "Staged index path membership only, not file content claims; native link checker only tests their existence/type",
+    "pushedAtTimeOfCheck": false
+  }
+}

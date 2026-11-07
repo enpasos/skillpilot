@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import './testMemoryVisibilityStatusParity'
 import './testDeepUnderstandingSupersessionChains'
 import './testDeepUnderstandingSemanticRetirements'
+import './testCurriculumExamReadiness'
+import './testCurriculumRouteEndpointScope'
+import { strictGraphFixtureAssessmentRules, strictGraphFixtureAssessmentScope, strictGraphFixtureId, strictGraphFixtureRule } from './testCurriculumGraphMaturity'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -143,7 +147,7 @@ const projected = evaluateDeepUnderstandingQa(fixtureLandscape, 'fixture.json', 
     strictCompletionReady: false, issues: ['Another subject has a validation failure'],
   }], blockingIssueCount: 1,
 })
-assert.equal(projected.status, 'pass', 'One subject must not wait for another subject.')
+assert.equal(projected.status, 'fail', 'A claimed complete report without native original-context V evidence must remain open.')
 assert.equal(projected.metrics?.expectedGoals, 2)
 assert.equal(projected.metrics?.strictComplete, 2)
 const noScopeReport = { schemaVersion: 1 as const, reportId: 'fixture', subjects: [], blockingIssueCount: 0 }
@@ -155,17 +159,21 @@ assert.equal(evaluateDeepUnderstandingQa(fixtureLandscape, 'fixture.json', {
   ...noScopeReport, subjects: [{ ...completeReport, denominator: null, strictCompletionReady: false }],
 }).metrics?.expectedGoals, undefined, 'Unknown target scope must not be shown as zero goals.')
 
-const coreRules = ['CQR-000', 'CQR-001', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501']
-  .map((id) => ({ id, status: 'pass' as const, summary: 'Fixture prerequisite passed' }))
+const coreRules = [
+  strictGraphFixtureRule,
+  ...strictGraphFixtureAssessmentRules,
+  ...['CQR-000', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501']
+    .map((id) => ({ id, status: 'pass' as const, summary: 'Fixture prerequisite passed' })),
+]
 const routeScopes = [{
   scopeId: 'fixture', label: 'Fixture', maturity: 'M4' as const, selectedAtomicGoals: 2,
   rules: [{ id: 'CQR-101', status: 'pass' as const, summary: 'Fixture route passed' }],
 }]
 const memoryPassed = { id: 'CQR-302', status: 'pass' as const, summary: 'Fixture memory passed' }
-assert.equal(deriveCurriculumMaturity([...coreRules, projected], routeScopes), 'M5', 'M7 requires current M6.')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes), 'M7')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, { ...projected, status: 'warn' }], routeScopes), 'M6')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], []), 'M2', 'M7 cannot bypass lower route gates.')
+assert.equal(deriveCurriculumMaturity([...coreRules, projected], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M5', 'M7 requires current M6.')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6', 'No current original-context V expectation is supplied by this dashboard fixture.')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, { ...projected, status: 'warn' }], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6')
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, projected], [], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M2', 'M7 cannot bypass lower route gates.')
 assert.equal(countHumanTrialBlockingFindings(fixtureLandscape, [{ schemaVersion: 1, records: [
   { goalId: 'goal-a', landscapeId: 'fixture-landscape', humanIssueIdentified: 'yes' },
   { goalId: 'goal-a', landscapeId: 'fixture-landscape', humanIssueIdentified: 'yes' },
@@ -265,25 +273,45 @@ const mathQa = JSON.parse(readFileSync(resolve(
 const qualityHoldGoalIds = new Set(mathQa.records
   .filter((record) => record.visualizationState === 'missing' && record.missingReason === 'deferred_quality_review')
   .map((record) => record.goalId))
-const staleEvidenceGoalIds = mathematics.issues.map((issue) => {
+const nonVisualizationIssues = (subject: DeepUnderstandingSubjectReport) => {
+  assert.ok(subject.visualizationValidation, 'The real producer must emit its complete V input manifest.')
+  const visual = new Set(subject.visualizationValidation.issues)
+  return subject.issues.filter(issue => !visual.has(issue))
+}
+const staleEvidenceGoalIds = nonVisualizationIssues(mathematics).map((issue) => {
   const match = issue.match(/: ([0-9a-f-]{36}): stale reviewInputFingerprint; expected sha256:[0-9a-f]{64}$/u)
-  assert.ok(match, `Unexpected Mathematics rollout blocker: ${issue}`)
+  assert.ok(match, `Unexpected non-V Mathematics blocker: ${issue}`)
   return match[1]
 })
-assert.ok(staleEvidenceGoalIds.every((goalId) => qualityHoldGoalIds.has(goalId)))
+assert.ok(staleEvidenceGoalIds.every(goalId => qualityHoldGoalIds.has(goalId)))
 assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
-assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
-  'The aggregate must include every actual subject blocker.')
-assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length + economics.issues.length + chemistry.issues.length,
-  'Only the explicitly tracked Chemistry and Economics rollouts may add blockers to the protected subjects.')
-for (const subject of report.subjects.filter(({ subject }) => !['mathematik', 'wirtschaftswissenschaften', 'chemie'].includes(subject))) {
-  assert.deepEqual(subject.issues, [], `${subject.subject} must retain its existing blocker-free baseline.`)
+assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0))
+for (const subject of [physics, biology]) assert.deepEqual(nonVisualizationIssues(subject), [],
+  `${subject.subject}: the new V gate must not change existing non-V outcomes.`)
+const contextIndexBytes = readFileSync(resolve(repositoryRoot,
+  'contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json'))
+assert.equal(createHash('sha256').update(contextIndexBytes).digest('hex'),
+  '441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803',
+  'The expected finite set is bound to its independently reviewed original-context index.')
+const contextIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(contextIndexBytes.toString('utf8'))
+assert.equal(contextIndex.rows.length, 132)
+assert.equal(new Set(contextIndex.rows.map(row => row.landscapeId + ':' + row.goalId)).size, 132)
+assert.deepEqual(nonVisualizationIssues(mathematics), [], 'The real Boxplot V2/P1 integration must retain every current D/P/A/M result.')
+for (const count of [mathematics.gates.currentDescriptionResolutions, mathematics.gates.currentPositiveEvidenceProfiles,
+  mathematics.gates.currentSemanticAtomicityDecisions, mathematics.gates.currentMemoryReviewDecisions]) {
+  assert.equal(count, 807, 'The combined active Mathematics frame must retain all 807 current D/P/A/M results.')
 }
-assert.equal(physics.issues.length, 0)
-for (const subject of [mathematics, physics, biology]) {
-  assert.equal(hasStrictDeepUnderstandingCompletion(subject), true,
-    `${subject.subject} must retain M7 for every current curricularAtomic goal.`)
+for (const subject of report.subjects) {
+  const expected = contextIndex.rows.filter(row => row.landscapeId === subject.landscapeId && subject.currentGoalIds.includes(row.goalId))
+    .map(row => row.goalId).sort()
+  assert.deepEqual(subject.visualizationValidation!.readyGoalIds, expected,
+    `${subject.subject}: only the finite actual original-context candidates can complete V.`)
+  assert.equal(subject.gates.currentVisualizationQaRecords, expected.length)
+  assert.equal(subject.requiredChecks.find(check => check.id === 'visualization-freshness-and-approval-check')?.status, 'fail')
+  assert.equal(subject.strictCompletionReady, false, 'Missing original-context evidence cannot grant M7.')
+  assert.deepEqual(subject.visualizationValidation!.currentGoalIds, subject.currentGoalIds)
 }
+assert.equal(report.subjects.reduce((sum, subject) => sum + subject.gates.currentVisualizationQaRecords, 0), 132)
 assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
 assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
 for (const subject of [mathematics, physics, biology, chemistry, economics]) {
@@ -302,11 +330,15 @@ for (const subject of [mathematics, physics, biology, chemistry, economics]) {
     assert.ok(failedChecks.every((id) => ['description-review-validation', 'visualization-freshness-and-approval-check'].includes(id)),
       'The Economics checkpoint requires current scope/P/A/M; pending D/V must remain M7 failures.')
   } else if (subject.subject === 'chemie') {
-    assert.deepEqual(failedChecks, subject.strictCompletionReady ? [] : ['description-review-validation'],
-      'The Chemistry M6 checkpoint retains current P/A/M/V; open description reviews must remain M7 failures.')
+    assert.deepEqual(failedChecks, [
+      ...(subject.gates.currentDescriptionResolutions < subject.denominator! ? ['description-review-validation'] : []),
+      'visualization-freshness-and-approval-check',
+    ],
+      'Chemistry retains P/A/M; description and unbound visual contexts remain M7 failures.')
   } else {
     assert.deepEqual(failedChecks,
-      subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
+      subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0
+        ? ['positive-evidence-validation', 'visualization-freshness-and-approval-check'] : ['visualization-freshness-and-approval-check'],
       'Protected subjects must retain their strict completion checks.')
   }
   assert.equal(subject.currentGoalIds.length, subject.denominator)
@@ -332,13 +364,13 @@ if (economics.gates.currentVisualizationQaRecords < economics.denominator!) {
 const economicsLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, economics.landscapePath), 'utf8')) as SkillLandscape
 const economicsQa = evaluateDeepUnderstandingQa(economicsLandscape, economics.landscapePath, report)
 assert.equal(economicsQa.status, economics.strictCompletionReady ? 'pass' : 'fail')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes),
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope),
   economics.strictCompletionReady ? 'M7' : 'M6', 'Open Economics findings must never grant M7.')
 
 const chemistryLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, chemistry.landscapePath), 'utf8')) as SkillLandscape
 const chemistryQa = evaluateDeepUnderstandingQa(chemistryLandscape, chemistry.landscapePath, report)
 assert.equal(chemistryQa.status, chemistry.strictCompletionReady ? 'pass' : 'fail')
-assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes),
+assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, chemistryQa], routeScopes, strictGraphFixtureId, strictGraphFixtureAssessmentScope),
   chemistry.strictCompletionReady ? 'M7' : 'M6', 'Open Chemistry description reviews must never grant M7.')
 
-console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)
+console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, immutable-context V failures and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Biology=${biology.denominator}/Chemistry=${chemistry.denominator}/Economics=${economics.denominator}.`)

@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "bwrap",
+    "--die-with-parent",
+    "--unshare-net",
+    "--ro-bind",
+    "/",
+    "/",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--bind",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107/material-draft/verify-native.mts",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107/candidate-scope-open-final",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107/native-scope-open-final-validation.json"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 1.2717834540017066
+}

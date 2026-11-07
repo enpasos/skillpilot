@@ -1,0 +1,1879 @@
+{
+  "purpose": "exact-observed-native-Node-runtime-provenance-not-immutable-curriculum",
+  "roles": [
+    {
+      "case": "test_actual_two_role_node_discovery_with_bound_stdio_and_exact_runtime.original.normal",
+      "actualLaunch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-kipcnzte/goal.json"
+        ],
+        "command": [
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original",
+          "--bind",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-2e36iiw4",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-2e36iiw4",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original",
+          "--",
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-2e36iiw4/reads.strace",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-kipcnzte/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "c528830c3fbd7345e4f2741512eb5c70b5e2fd82bddb2d0109a0773ed210d785",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2440696
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2440697
+          }
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "actualSourceReadOrMapPaths": [
+        "data/goal.json",
+        "data/required.config.json",
+        "data/space name.json",
+        "data/ä.json"
+      ],
+      "closedDirectoryDiscoveries": {
+        "data": [
+          [
+            "goal.json",
+            "file"
+          ],
+          [
+            "required.config.json",
+            "file"
+          ],
+          [
+            "space name.json",
+            "file"
+          ],
+          [
+            "ä.json",
+            "file"
+          ]
+        ]
+      },
+      "runtimeObservationCounts": [
+        {
+          "path": "/proc/meminfo",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/meminfo",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/meminfo",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/exe",
+          "operation": "readlink",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 10
+        },
+        {
+          "path": "/sys/fs/cgroup/non-systemd/memory.high",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "count": 1
+        },
+        {
+          "path": "/sys/fs/cgroup/non-systemd/memory.max",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "count": 1
+        },
+        {
+          "path": "[FD-probe]",
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "count": 14
+        }
+      ],
+      "fullRuntimeObservations": [
+        {
+          "pid": 302058,
+          "descriptor": 3,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 4,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 5,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 6,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 7,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 8,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 9,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 10,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 11,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 12,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 13,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 14,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 15,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "descriptor": 16,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302058/cgroup",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302058/cgroup",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 16,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302058/cgroup",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/sys/fs/cgroup/non-systemd/memory.max",
+          "kernelPath": "/sys/fs/cgroup/non-systemd/memory.max",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/sys/fs/cgroup/non-systemd/memory.high",
+          "kernelPath": "/sys/fs/cgroup/non-systemd/memory.high",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1475,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 258,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302058/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302058,
+          "threadGroup": 302058,
+          "declaredPath": "/proc/self/exe",
+          "kernelPath": "/proc/302058/exe",
+          "operation": "readlink",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        }
+      ],
+      "ownedTransportOrigins": [
+        {
+          "pid": 302058,
+          "descriptor": 0,
+          "origin": "launcher:stdin",
+          "kernelFdIdentity": "/dev/null"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 1,
+          "origin": "launcher:output:1",
+          "kernelFdIdentity": "pipe:[2440696]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 2,
+          "origin": "launcher:output:2",
+          "kernelFdIdentity": "pipe:[2440697]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 4,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459972]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 5,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459972]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 6,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459973]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 7,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459973]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 8,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        },
+        {
+          "pid": 302059,
+          "descriptor": 10,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2425960]"
+        },
+        {
+          "pid": 302059,
+          "descriptor": 11,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2425960]"
+        },
+        {
+          "pid": 302059,
+          "descriptor": 12,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 14,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459974]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 15,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2459974]"
+        },
+        {
+          "pid": 302058,
+          "descriptor": 16,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        }
+      ],
+      "exactToolDirectoryMetadata": [
+        {
+          "pid": 302058,
+          "path": "/dev",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302058,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-sp8t7f9m",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        }
+      ],
+      "sourceToolDependencyOutputFiles": [
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "pread64",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+          "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+          "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/goal.json",
+          "sha256": "18580554d40be225589e70b746a2deeae4375c1e6f77e71bf726532b92e13046",
+          "provenance": "exact Git blob 462fbe24270004e16ba08d452ebf042ce18366d6",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/required.config.json",
+          "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+          "provenance": "exact Git blob 462fbe24270004e16ba08d452ebf042ce18366d6",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/space name.json",
+          "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+          "provenance": "exact Git blob 462fbe24270004e16ba08d452ebf042ce18366d6",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/ä.json",
+          "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+          "provenance": "exact Git blob 462fbe24270004e16ba08d452ebf042ce18366d6",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/dev/null",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/etc/ld.so.cache",
+          "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/etc/ssl/openssl.cnf",
+          "sha256": "47fdeeac79328ffb03c9d855237a500b4ad5216dc971a8b2f40a420b4b3c11ef",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "newfstatat",
+            "read"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "execve",
+            "openat",
+            "mmap",
+            "runtime-executable-identity"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "tool/discovery.mjs",
+          "sha256": "7141c9155dec3618a8500ebc64beb61a9e0f8565ebf54d4afc70582243e542bf",
+          "provenance": "exact actual Node discovery fixture code",
+          "observedOperations": [
+            "statx",
+            "openat",
+            "read"
+          ]
+        }
+      ],
+      "runtimeObservationBytesClaimedImmutable": false
+    },
+    {
+      "case": "test_actual_two_role_node_discovery_with_bound_stdio_and_exact_runtime.candidate.normal",
+      "actualLaunch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-kipcnzte/goal.json"
+        ],
+        "command": [
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate",
+          "--bind",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-obaqrqkk",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-obaqrqkk",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate",
+          "--",
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/launcher-evidence-obaqrqkk/reads.strace",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0/candidate/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-kipcnzte/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "746f4c196aeeacf46508636fe0d967ca9b66592ff0f04e16f1c529467823048e",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2443682
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2443683
+          }
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "actualSourceReadOrMapPaths": [
+        "data/goal.json",
+        "data/required.config.json",
+        "data/space name.json",
+        "data/ä.json"
+      ],
+      "closedDirectoryDiscoveries": {
+        "data": [
+          [
+            "goal.json",
+            "file"
+          ],
+          [
+            "required.config.json",
+            "file"
+          ],
+          [
+            "space name.json",
+            "file"
+          ],
+          [
+            "ä.json",
+            "file"
+          ]
+        ]
+      },
+      "runtimeObservationCounts": [
+        {
+          "path": "/proc/meminfo",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/meminfo",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/meminfo",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/cgroup",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/exe",
+          "operation": "readlink",
+          "resultClass": "volatile-kernel-observation",
+          "count": 1
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "count": 3
+        },
+        {
+          "path": "/proc/self/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "count": 10
+        },
+        {
+          "path": "/sys/fs/cgroup/non-systemd/memory.high",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "count": 1
+        },
+        {
+          "path": "/sys/fs/cgroup/non-systemd/memory.max",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "count": 1
+        },
+        {
+          "path": "[FD-probe]",
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "count": 14
+        }
+      ],
+      "fullRuntimeObservations": [
+        {
+          "pid": 302079,
+          "descriptor": 3,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 4,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 5,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 6,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 7,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 8,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 9,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 10,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 11,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 12,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 13,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 14,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 15,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "descriptor": 16,
+          "operation": "fcntl F_SETFD FD_CLOEXEC",
+          "resultClass": "EBADF-probe",
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302079/cgroup",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302079/cgroup",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 16,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/cgroup",
+          "kernelPath": "/proc/302079/cgroup",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/sys/fs/cgroup/non-systemd/memory.max",
+          "kernelPath": "/sys/fs/cgroup/non-systemd/memory.max",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/sys/fs/cgroup/non-systemd/memory.high",
+          "kernelPath": "/sys/fs/cgroup/non-systemd/memory.high",
+          "operation": "openat",
+          "resultClass": "ENOENT-probe",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1475,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/meminfo",
+          "kernelPath": "/proc/meminfo",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 258,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "openat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "newfstatat",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "read",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": 1024,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/maps",
+          "kernelPath": "/proc/302079/maps",
+          "operation": "close",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        },
+        {
+          "pid": 302079,
+          "threadGroup": 302079,
+          "declaredPath": "/proc/self/exe",
+          "kernelPath": "/proc/302079/exe",
+          "operation": "readlink",
+          "resultClass": "volatile-kernel-observation",
+          "bytesReported": null,
+          "contentSha256": null,
+          "immutableCurriculumInput": false
+        }
+      ],
+      "ownedTransportOrigins": [
+        {
+          "pid": 302079,
+          "descriptor": 0,
+          "origin": "launcher:stdin",
+          "kernelFdIdentity": "/dev/null"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 1,
+          "origin": "launcher:output:1",
+          "kernelFdIdentity": "pipe:[2443682]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 2,
+          "origin": "launcher:output:2",
+          "kernelFdIdentity": "pipe:[2443683]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 4,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2460823]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 5,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2460823]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 6,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2460824]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 7,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2460824]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 8,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        },
+        {
+          "pid": 302080,
+          "descriptor": 10,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2458328]"
+        },
+        {
+          "pid": 302080,
+          "descriptor": 11,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2458328]"
+        },
+        {
+          "pid": 302080,
+          "descriptor": 12,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 14,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2451380]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 15,
+          "origin": "pipe2",
+          "kernelFdIdentity": "pipe:[2451380]"
+        },
+        {
+          "pid": 302079,
+          "descriptor": 16,
+          "origin": "eventfd2",
+          "kernelFdIdentity": "anon_inode:[eventfd]"
+        }
+      ],
+      "exactToolDirectoryMetadata": [
+        {
+          "pid": 302079,
+          "path": "/dev",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        },
+        {
+          "pid": 302079,
+          "path": "/dev/shm/skillpilot-read-auth-native-j6kwukph/case-x0aj1ok0",
+          "operation": "statx",
+          "category": "tool-directory-metadata-only",
+          "directoryContentsRead": false
+        }
+      ],
+      "sourceToolDependencyOutputFiles": [
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+          "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "pread64",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+          "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+          "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+          "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+          "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "dependency",
+          "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+          "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "read",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/goal.json",
+          "sha256": "476ace4d519782fa3c1d5e4232c923121e280db092afa2259f08bc31829d1471",
+          "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/required.config.json",
+          "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+          "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/space name.json",
+          "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+          "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "source",
+          "path": "data/ä.json",
+          "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+          "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+          "observedOperations": [
+            "openat",
+            "statx",
+            "read"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/dev/null",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/etc/ld.so.cache",
+          "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "newfstatat",
+            "mmap"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/etc/ssl/openssl.cnf",
+          "sha256": "47fdeeac79328ffb03c9d855237a500b4ad5216dc971a8b2f40a420b4b3c11ef",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "openat",
+            "newfstatat",
+            "read"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "provenance": "explicit Node runtime/tool bytes bound before launch",
+          "observedOperations": [
+            "execve",
+            "openat",
+            "mmap",
+            "runtime-executable-identity"
+          ]
+        },
+        {
+          "category": "tool",
+          "path": "tool/discovery.mjs",
+          "sha256": "7141c9155dec3618a8500ebc64beb61a9e0f8565ebf54d4afc70582243e542bf",
+          "provenance": "exact actual Node discovery fixture code",
+          "observedOperations": [
+            "statx",
+            "openat",
+            "read"
+          ]
+        }
+      ],
+      "runtimeObservationBytesClaimedImmutable": false
+    }
+  ],
+  "arbitraryPrefixExemptions": false,
+  "anyOtherPidProcRootOrHostInputAllowed": false
+}

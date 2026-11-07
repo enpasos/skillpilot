@@ -313,50 +313,38 @@ Umfang sind offene Orientierungsziele die einzigen auswählbaren Frontier-Ziele.
 Lernende mit bereits bestehendem Fachfortschritt werden nicht auf diese
 Einstiegsregel zurückgesetzt.
 
-\subsection{Memorierung: Übung und verifizierter Abruf}
+\subsection{Kartenziele: Lernen und Abschlussprüfung}
 
-Ein Memorierziel bündelt die erforderlichen Karten eines Decks.
+Ein Kartenziel (Memorierziel) bündelt die erforderlichen Karten eines Decks.
 Die Karten besitzen zwei getrennte Prozesszustände. Die SRS-Übung steuert
 Wiederholungsintervalle. Der verifizierte Abruf hält fest, ob eine
-Karte in einer kontrollierten Abfrage korrekt beantwortet wurde.
+Karte in der kontrollierten Abschlussprüfung korrekt beantwortet wurde.
 Das Umdrehen einer Karte oder eine Selbsteinschätzung in der Übung
 ist kein solcher Nachweis. Aus den Kartendaten folgt genau ein binäres
 Mastery-Ergebnis des Lernziels; Übungs- und Abrufprozess sind keine
 zusätzlichen gespeicherten Zielergebnisse.
 
-Sei $K_g$ die aufgelöste Menge erforderlicher Karten eines Ziels $g$.
-Für einen Zeitpunkt $t$ bezeichnet $\Due(k,t)$ die Fälligkeit und
-$\Verified(k)$ einen aktuell gültigen bestandenen Abruf. Der
-\emph{dokumentierte Zieltypvertrag} verlangt beide Bedingungen:
+\textbf{Klarstellung des Product Owners vom 6. November 2026.}
+Die Karten werden nach dem Karteikartenprinzip mit Wiederholungen gelernt.
+Die bestandene Abschlussprüfung liefert den Masterednachweis des Kartenziels.
+Sie ist der Prüfablauf dieses Ziels, kein zusätzliches Prüfungsziel im Graphen.
+Sei $K_g$ die nichtleere, vollständig aufgelöste Menge erforderlicher Karten
+und $\Verified(k)$ deren bestandener verifizierter Abruf. Dann gilt:
 \[
-  \Complete_{\mathrm{memory,doc}}(g,t)
-  \iff
-  \bigl(\forall k\in K_g:\neg \Due(k,t)\bigr)
-  \land
-  \bigl(\forall k\in K_g:\Verified(k)\bigr).
-\]
-Diese Formel setzt ein vollständig aufgelöstes, gültiges Deck voraus.
-Fehlende Kartendaten werden dadurch nicht als leeres, automatisch
-abgeschlossenes Deck interpretiert.
-
-\textbf{Abweichung des geprüften Codes.} Der zum Dokumentstand
-gelesene \code{LearnerService} und der Frontend-Hook
-\code{useSrsMastery} leiten Memorier-Mastery dagegen allein aus dem
-verifizierten Abruf aller erforderlichen Karten ab. Für ein nichtleeres,
-vollständig aufgelöstes Deck lautet diese Implementierungsregel:
-\[
-  \Complete_{\mathrm{memory,code}}(g)
+  \Complete_{\mathrm{memory}}(g)
   \iff \forall k\in K_g:\Verified(k).
 \]
-Neue SRS-Fälligkeit entzieht danach nicht automatisch die Mastery.
-Ein fehlgeschlagener erneuter Abruf kann sie hingegen zurücknehmen.
-Dokumentierte Sollsemantik und aktueller Code sind damit nicht
-deckungsgleich; dieses Kompendium trifft keine stillschweigende
-Migrationsentscheidung. Die Abweichung ist einmal im Zieltypvertrag
-aufzulösen. Die allgemeine Abschlussberechnung verwendet dasselbe binäre
-Zielergebnis wie die übrigen Oberflächen; es führt keine eigene
-Anerkennung von Memorier-Mastery ein. Fällige Übung bleibt eine
-Prozessaussage über die Karten.
+Fehlende Kartendaten sind kein leeres, automatisch abgeschlossenes Deck.
+Kartenfälligkeit gehört zur Übungsplanung und ist keine zusätzliche
+Bestehensbedingung. Ein abgeschlossenes Ziel wird dadurch nicht wieder
+fällig; sein Masteredstatus wird nicht entzogen. Bereits verifizierte Karten
+werden im Abschlussprüfungsablauf nicht erneut geprüft.
+Die frühere Darstellung einer Fälligkeitsbedingung und eines Widerrufs
+durch erneuten Abruf ist überholt. Die gelesenen Pfade in
+\code{LearnerService} und \code{useSrsMastery} verwenden den
+verifizierten Abruf aller erforderlichen Karten. Die allgemeine
+Abschlussberechnung verwendet dasselbe binäre Zielergebnis und
+erzeugt keine zusätzliche Anerkennung von Memorier-Mastery.
 
 Der gegenwärtig dokumentierte SRS-Vertrag verwendet SM-2-Zustand mit
 Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem
@@ -365,14 +353,17 @@ Erfolgreiche Übung verlängert nach den festgelegten Regeln das
 Intervall; unzureichende Übung setzt die Wiederholungsfolge zurück.
 Diese Zeitplanung ersetzt den verifizierten Abruf nicht.
 
-Eine harte Abfrage kann die lernende Person beim aktiven Memorierziel
-auch beginnen, wenn die SRS-Warteschlange noch nicht leer ist. Zuerst
-wird nur die Frage abgerufen, dann antwortet die Person ohne
-Kartenhilfe. Erst anschließend wird die erwartete Antwort geladen
-und der Abruf als bestanden oder fehlgeschlagen gespeichert.
+Die Abschlussprüfung kann die lernende Person beim aktiven, noch offenen Kartenziel
+auch beginnen, wenn die SRS-Warteschlange noch nicht leer ist. Das Backend
+bestimmt die vollständige Charge noch nicht bestandener Karten und deren
+Reihenfolge. Zuerst werden nur die Fragen gezeigt; die Person beantwortet
+die vollständige Charge ohne Kartenhilfe. Danach werden die erwarteten
+Antworten geladen und Rückmeldungen gegeben. Erst nach Zustimmung werden
+die Ergebnisse der Charge gemeinsam und atomar gespeichert.
 Ein bestandener Abruf aktualisiert auch die SRS-Spur als starke
-erfolgreiche Wiederholung. Ein Fehlschlag hebt den verifizierten
-Status dieser Karte auf und führt sie in die Übung zurück.
+erfolgreiche Wiederholung. Eine noch nicht bestandene Karte bleibt bei
+einem Fehlschlag offen und kann weiter gelernt und später erneut geprüft
+werden. Bereits bestandene Karten behalten ihren Nachweis.
 
 \subsection{Prüfungsziele im geltenden Ablauf}
 

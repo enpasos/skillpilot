@@ -1,0 +1,376 @@
+{
+  "queryResults": {
+    "A04": [
+      [
+        "ada",
+        "Videoschnitt",
+        40
+      ],
+      [
+        "ben",
+        "Audiolabor",
+        30
+      ],
+      [
+        "ada",
+        "Fotobasis",
+        20
+      ],
+      [
+        "ben",
+        "Fotobasis",
+        20
+      ]
+    ],
+    "A05": [
+      [
+        10,
+        2,
+        40
+      ],
+      [
+        20,
+        2,
+        60
+      ],
+      [
+        30,
+        2,
+        80
+      ],
+      [
+        40,
+        1,
+        10
+      ],
+      [
+        50,
+        0,
+        0
+      ]
+    ],
+    "A05_HAVING": [
+      [
+        10
+      ],
+      [
+        20
+      ],
+      [
+        30
+      ]
+    ],
+    "A06": [
+      [
+        20
+      ],
+      [
+        30
+      ]
+    ],
+    "A11_PRODUCT": [
+      [
+        1,
+        10
+      ],
+      [
+        1,
+        40
+      ],
+      [
+        1,
+        50
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        40
+      ],
+      [
+        2,
+        50
+      ]
+    ],
+    "A11_JOIN": [
+      [
+        "ada",
+        "Fotobasis"
+      ],
+      [
+        "ada",
+        "Videoschnitt"
+      ],
+      [
+        "ben",
+        "Fotobasis"
+      ],
+      [
+        "ben",
+        "Audiolabor"
+      ]
+    ],
+    "A12": [
+      [
+        "ada"
+      ],
+      [
+        "ben"
+      ]
+    ],
+    "A19_A": [
+      [
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "A19_B": [
+      [
+        1,
+        10
+      ],
+      [
+        1,
+        30
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        20
+      ],
+      [
+        3,
+        20
+      ],
+      [
+        4,
+        30
+      ],
+      [
+        5,
+        40
+      ]
+    ],
+    "A19_C": [
+      [
+        10,
+        "Werkstatt"
+      ],
+      [
+        20,
+        "Offene Medien"
+      ],
+      [
+        40,
+        "Offene Medien"
+      ],
+      [
+        50,
+        "Archiv"
+      ]
+    ],
+    "A19_D": [
+      [
+        "ada",
+        "Fotobasis",
+        "Werkstatt"
+      ],
+      [
+        "ben",
+        "Fotobasis",
+        "Werkstatt"
+      ],
+      [
+        "ben",
+        "Audiolabor",
+        "Offene Medien"
+      ]
+    ]
+  },
+  "coursePriceAverage": 23.0,
+  "updatePrice": 35,
+  "ddlDefaults": [
+    [
+      1
+    ],
+    [
+      1
+    ],
+    [
+      1
+    ],
+    [
+      1
+    ],
+    [
+      1
+    ]
+  ],
+  "hintUpdate": [
+    [
+      10,
+      "Geladene Kamera mitbringen"
+    ]
+  ],
+  "hintEndRows": [],
+  "pages": {
+    "1": {
+      "rows": [
+        [
+          10,
+          "Fotobasis",
+          20
+        ],
+        [
+          20,
+          "Audiolabor",
+          30
+        ]
+      ],
+      "total": 4,
+      "escapedArchive": false,
+      "rawArchiveTag": false,
+      "emptyMessage": false,
+      "nextPage": true,
+      "previousPage": false
+    },
+    "2": {
+      "rows": [
+        [
+          40,
+          "Datenschutz-Werkstatt",
+          10
+        ],
+        [
+          50,
+          "Archiv <offen>",
+          15
+        ]
+      ],
+      "total": 4,
+      "escapedArchive": true,
+      "rawArchiveTag": false,
+      "emptyMessage": false,
+      "nextPage": false,
+      "previousPage": true
+    },
+    "3": {
+      "rows": [],
+      "total": 4,
+      "escapedArchive": false,
+      "rawArchiveTag": false,
+      "emptyMessage": true,
+      "nextPage": false,
+      "previousPage": true
+    },
+    "100": {
+      "rows": [],
+      "total": 4,
+      "escapedArchive": false,
+      "rawArchiveTag": false,
+      "emptyMessage": true,
+      "nextPage": false,
+      "previousPage": true
+    }
+  },
+  "parameterValidation": {
+    "maxPreis=0%20OR%201%3D1&page=1": {
+      "exception": "BadInput",
+      "caughtByHandler": true
+    },
+    "maxPreis=30&page=-1": {
+      "exception": "BadInput",
+      "caughtByHandler": true
+    },
+    "maxPreis=30&page=1&page=2": {
+      "exception": "BadInput",
+      "caughtByHandler": true
+    },
+    "maxPreis=30&page=1": {
+      "result": [
+        30,
+        1
+      ]
+    },
+    "maxPreis=5000_digits": {
+      "exception": "ValueError",
+      "caughtByHandler": false
+    }
+  },
+  "wrongCsrf": [
+    403,
+    "CSRF"
+  ],
+  "booking": [
+    201,
+    "Gebucht"
+  ],
+  "mapReduce": [
+    {
+      "P1": [
+        [
+          10,
+          1
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          10,
+          1
+        ]
+      ],
+      "P2": [
+        [
+          30,
+          1
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          10,
+          1
+        ]
+      ]
+    },
+    {
+      "10": [
+        1,
+        1,
+        1
+      ],
+      "20": [
+        1,
+        1
+      ],
+      "30": [
+        1
+      ]
+    },
+    {
+      "10": 3,
+      "20": 2,
+      "30": 1
+    }
+  ],
+  "settingsResult": {
+    "personalizedRecommendations": false,
+    "preciseLocation": false,
+    "profilePublic": false,
+    "analyticsRetentionDays": 7
+  },
+  "settingsOriginalPreserved": true,
+  "embeddedTaskContainsExactMaterials": true,
+  "embeddedTaskContainsExactTasks": true,
+  "embeddedTaskExtraBetween": "'\\n\\n'"
+}

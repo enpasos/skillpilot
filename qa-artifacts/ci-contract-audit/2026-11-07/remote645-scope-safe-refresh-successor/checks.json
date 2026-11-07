@@ -1,0 +1,51 @@
+[
+  {
+    "name": "root native first-candidate countercase",
+    "exitCode": 0,
+    "result": "known defect reproduced: BRequests=0, expected1",
+    "log": "root-first-candidate-countercase.log"
+  },
+  {
+    "name": "successor actual callback and cleanup countercases",
+    "exitCode": 0,
+    "result": "A-to-B: BRequests1, no A UI dispatch; obsolete timer: two B refreshes; queues empty",
+    "log": "native-scope-countercases.log"
+  },
+  {
+    "name": "first-candidate browser negative control",
+    "exitCode": 1,
+    "result": "expected missing B state response, timeout5000ms",
+    "log": "browser-scope-first-candidate-negative.log"
+  },
+  {
+    "name": "successor browser positive control",
+    "exitCode": 0,
+    "result": "exactly one additional B state/plan read, one profile read, no transient A goal/counters/setup",
+    "log": "browser-scope-successor.log"
+  },
+  {
+    "name": "full existing startup/dedup/quiet/scope UI suite plus new browser regression",
+    "exitCode": 0,
+    "log": "startup-and-scope-ui.log"
+  },
+  {
+    "name": "existing within-scope burst/full Cockpit browser regression",
+    "exitCode": 0,
+    "log": "within-scope-burst-ui.log"
+  },
+  {
+    "name": "targeted ESLint",
+    "exitCode": 0,
+    "log": "eslint.log"
+  },
+  {
+    "name": "app TypeScript with RAM build-info",
+    "exitCode": 0,
+    "log": "tsc.log"
+  },
+  {
+    "name": "git apply --check --whitespace=error-all",
+    "exitCode": 0,
+    "log": "patch-apply-check.log"
+  }
+]

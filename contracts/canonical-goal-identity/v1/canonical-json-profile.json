@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "skillpilot-canonical-json-decimal-v1",
+  "encoding": "UTF-8 without BOM",
+  "objectKeys": "Sort by Unicode scalar code point; reject duplicate object properties.",
+  "arrays": "Preserve element order exactly.",
+  "strings": "Standard JSON quotation and control escapes; lowercase hex in Unicode control escapes; no slash or non-ASCII escaping; reject unpaired surrogates.",
+  "numbers": "Parse exact decimal values. Emit plain decimal without exponent; strip trailing fractional zeros; normalize all zero including -0 to 0. No IEEE754 rounding, nonfinite values or leading plus sign.",
+  "scope": "Canonical semantic hashes only; bound original evidence and asset bytes retain independent raw SHA256.",
+  "vectors": [
+    {
+      "inputJson": " {\"z\":1.00,\"a\":-0.0,\"small\":1e-7,\"big\":123456789012345678901234567890.1200} ",
+      "canonicalJson": "{\"a\":0,\"big\":123456789012345678901234567890.12,\"small\":0.0000001,\"z\":1}",
+      "sha256": "b46998be6b8357f2e7e525d677126751c41b454ea0a5f60151232ec158c7d3da"
+    },
+    {
+      "inputJson": "{\"💡\":\"é/\",\"￿\":\"\\u000b\\n\",\"a\":[true,null,1.2300]}",
+      "canonicalJson": "{\"a\":[true,null,1.23],\"￿\":\"\\u000b\\n\",\"💡\":\"é/\"}",
+      "sha256": "e8d599b11c605911fbfe661445c52c51140c76e5a621440f2ff7093536fa47c0"
+    },
+    {
+      "inputJson": "[\"canonical-goal-id-format-2026-11-06\",\"10000000-0000-4000-8000-000000000001\",\"stable_symbolic_memory_goal\"]",
+      "canonicalJson": "[\"canonical-goal-id-format-2026-11-06\",\"10000000-0000-4000-8000-000000000001\",\"stable_symbolic_memory_goal\"]",
+      "sha256": "fe5b9cba01e0ebe825dc2acfb120b3aed3d9078d0ac25e837823fc65695d10c5"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "implemented-local-junit43-pass-independent-second-review-pending",
+  "contract": "Owner landscapeId is an exact namespace; only Goal UUID endpoint values are normalized. No Owner alias/case normalization is authorized.",
+  "triggeringIndependentFinding": {
+    "markdown": {
+      "path": "docs/dev/ci-graph-repairs/canonical-identity-owner-namespace-independent-review-2026-11-06.md",
+      "rawSha256": "610df0a773ead246834e24c56bb706a73d3f555bd09ced382b5a89bb33588b5a"
+    },
+    "json": {
+      "path": "docs/dev/ci-graph-repairs/canonical-identity-owner-namespace-independent-review-2026-11-06.json",
+      "rawSha256": "79fb2d54207ca11a2c06a53b48408bf974eb5a73eb51ff943cba7ef3759e9495"
+    }
+  },
+  "files": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java",
+      "rawSha256": "94f1816096c0b513c133a1ef4b4246a277ae7a351e6c08c7085aac0f3393e3ae"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java",
+      "rawSha256": "befad1111847eeed67f90577daf2f6d413c2234d7bb76d579cadddaa320bf2cb"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java",
+      "rawSha256": "ca5d55d77bf0b562fca2537560067da075615bce5764f48cfc4a5885ccd86e4b"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java",
+      "rawSha256": "5bf20500e6ba49282b70dc3fd86b58f64fd5e9a066f4d422be67e94d676bf19b"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/identity/GoalStateProjectionTest.java",
+      "rawSha256": "3d3fb7edb57c1ffe1a0d438e04119d74c589bb95d61facdb363be82c81b649fb"
+    }
+  ],
+  "changes": {
+    "GoalIdentityMap": "Retain exact source owners in owner sets and qualified spelling indexes; compare qualified inputs exactly to recorded owner/rule.landscapeId. Rename the value helper to goalUuidValueKey and preserve its Goal UUID behavior.",
+    "SourceIdentityProofVerifier": "Index and retrieve proof-bound OriginalReviewDefinition using exact Owner plus normalized Goal UUID endpoint; no source verifier policy or schema changed.",
+    "GoalStateProjection": "Use exact PortablePlan.landscapeId for plan grouping and equality; preserve independent plans, existing same-owner dedup/conflict checks, array order and original HMAC/DTO bytes.",
+    "testScope": "Three new Identity tests, corrected old unsupported uppercase-Owner positive, and two new State tests. The cross-owner spelling fixture checks only internal owner-bound identity indexing, not graph validity or approval of duplicate definitions."
+  },
+  "regressions": {
+    "existingIdentityTests": 23,
+    "additionalIdentityTests": 3,
+    "currentIdentityTests": 26,
+    "existingStateTests": 15,
+    "additionalStateTests": 2,
+    "currentStateTests": 17,
+    "redFailureMethods": [
+      "uuidShapedOwnerNamespacesRemainDistinctForQualifiedGoals",
+      "goalUuidValueNormalizationRetainsSeparateOwnerBoundOriginalSpellings",
+      "qualifiedUntouchedUuidsUseUuidValuesWhileRetainingTheirOriginalStorageSpelling",
+      "verifiedSourceProofRejectsUnregisteredUppercaseOwnerForEveryGoalIdentity",
+      "portablePlansKeepDistinctUuidShapedOwnersWhenNormalizedBlocksAreEqual",
+      "distinctOwnerPlansDoNotConflictButConflictingPlansWithinOneOwnerStillReject"
+    ],
+    "redAndGreenTestSourcesIdentical": true,
+    "onlyThreeProductionFilesChangeBetweenRedAndGreen": [
+      "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityMap.java",
+      "backend/src/main/java/com/skillpilot/backend/identity/GoalStateProjection.java",
+      "backend/src/main/java/com/skillpilot/backend/identity/SourceIdentityProofVerifier.java"
+    ]
+  },
+  "localRuns": [
+    {
+      "phase": "red",
+      "command": "python3 -B tmp/run_identity_owner_contract_checks.py red",
+      "compileExitCode": 0,
+      "junitExitCode": 1,
+      "result": {
+        "found": 43,
+        "started": 43,
+        "succeeded": 37,
+        "failed": 6,
+        "skipped": 0,
+        "aborted": 0
+      },
+      "compilerLog": {
+        "path": "tmp/identity-owner-red-compile.log",
+        "rawSha256": "3f0a3c0012c83cf3b524a4cf30de12d8c11abb9b01301ef4e940e330c1981f7d"
+      },
+      "junitLog": {
+        "path": "tmp/identity-owner-red-junit.log",
+        "rawSha256": "1a11b8b1070fe09161c4d087c521fa1da59552c90ac06ff1464aca9f99c3f7ce"
+      },
+      "inputPins": {
+        "path": "tmp/identity-owner-red-input-pins.json",
+        "rawSha256": "8d204ce83a4845659e65eb91189bb40e324b761bfcf29df9215a71c087fb2803"
+      }
+    },
+    {
+      "phase": "green",
+      "command": "python3 -B tmp/run_identity_owner_contract_checks.py green",
+      "compileExitCode": 0,
+      "junitExitCode": 0,
+      "result": {
+        "found": 43,
+        "started": 43,
+        "succeeded": 43,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0
+      },
+      "compilerLog": {
+        "path": "tmp/identity-owner-green-compile.log",
+        "rawSha256": "3f0a3c0012c83cf3b524a4cf30de12d8c11abb9b01301ef4e940e330c1981f7d"
+      },
+      "junitLog": {
+        "path": "tmp/identity-owner-green-junit.log",
+        "rawSha256": "ae3aae22c68b81dedbdb056ff787d6902dece6947ebfadd0a81cdb83b0c0164a"
+      },
+      "inputPins": {
+        "path": "tmp/identity-owner-green-input-pins.json",
+        "rawSha256": "bc96d50946c563d1927a236226c820d9182bf895ad587afbf1fea1abbf14eb80"
+      }
+    }
+  ],
+  "sourceAndContractBoundary": {
+    "sourceA": {
+      "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-2026-11-06.proposal.json",
+      "rawSha256": "c75e263450b35183db0a32ac6ce2dd767e41fe7895882b68b4b63fd4d481f300"
+    },
+    "historicalBlockedV1": {
+      "path": "docs/dev/ci-graph-repairs/canonical-goal-id-format-2026-11-06.proposal.json",
+      "rawSha256": "7bd5d79e082284b8e676b59699b41844458f823181f96d1a3997c379785784c9"
+    },
+    "sixSourceAContractBindingsUnchanged": [
+      {
+        "binding": "schemaBinding",
+        "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+        "rawSha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+      },
+      {
+        "binding": "registrySchemaBinding",
+        "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+        "rawSha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+      },
+      {
+        "binding": "registry",
+        "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+        "rawSha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+      },
+      {
+        "binding": "canonicalJsonProfile",
+        "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+        "rawSha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+      },
+      {
+        "binding": "verifier",
+        "path": "scripts/canonical_goal_source_identity_proof.py",
+        "rawSha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+      },
+      {
+        "binding": "identityKernelBinding",
+        "path": "scripts/canonical_goal_identity_migration.py",
+        "rawSha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+      }
+    ],
+    "activeInfoSourceUnchanged": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "rawSha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e"
+    },
+    "activationLoaderUnchanged": {
+      "path": "backend/src/main/java/com/skillpilot/backend/identity/GoalIdentityProofLoader.java",
+      "rawSha256": "054dc6a93948e54d9594d680c414cbffdcf215aaaa7dbcf38a146306664809bd"
+    },
+    "historicalReviewBytesUnchanged": true,
+    "actualHistoricalAWholeCatalogJavaReplayClaimed": false
+  },
+  "independentReview": {
+    "status": "requested-code-frozen",
+    "reviewer": "/root/normative_corpus"
+  },
+  "limits": [
+    "No Gradle, Spring, processResources, database, package or runtime activation run.",
+    "All8 current identity production sources and both testclasses were freshly compiled into separate red/green directories, ahead of cached backend dependencies; actual JUnit Jupiter6.0.3 engine ran43 tests each time.",
+    "The existing dependency classpath lacks org.apiguardian annotations; javac completed with89 annotation/deprecation warnings. No warning was bypassed or treated as a test failure.",
+    "No A/schema/proof or learner-state bytes were rewritten; current active Info remains93a653. Existing A c75e is historical/stale for the changed current whole catalog; unchanged six pins do not make it current.",
+    "The B loader still rejects every activation. Unknown historical durable rows, exact stored qualified/casevariant keys, all10 State/Snapshot integration contracts, real footprint and repository/package adapters remain open.",
+    "The separately observed productive Completion resolver Goal-UUID case mismatch is outside this narrow unwired Owner repair and remains open.",
+    "Local43 passing tests are not remote CI or learner-state integration acceptance."
+  ],
+  "reproduction": {
+    "runner": {
+      "path": "tmp/IdentityOwnerContractJUnit.java",
+      "rawSha256": "deed7d5abccff5e84ac92d6fd36e439ee9f7507f1017f8b0df21a1ba23f60553"
+    },
+    "runnerSource": "package com.skillpilot.backend.identity;\n\nimport java.io.PrintWriter;\nimport java.nio.file.Files;\nimport java.nio.file.Path;\nimport org.junit.platform.engine.TestExecutionResult;\nimport org.junit.platform.launcher.TestExecutionListener;\nimport org.junit.platform.launcher.TestIdentifier;\nimport org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;\nimport org.junit.platform.launcher.core.LauncherFactory;\nimport org.junit.platform.launcher.listeners.SummaryGeneratingListener;\nimport static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;\n\npublic class IdentityOwnerContractJUnit {\n    public static void main(String[] args) throws Exception {\n        var request = LauncherDiscoveryRequestBuilder.request().selectors(\n                selectClass(GoalIdentityServiceTest.class), selectClass(GoalStateProjectionTest.class)).build();\n        var summary = new SummaryGeneratingListener();\n        var launcher = LauncherFactory.create();\n        launcher.registerTestExecutionListeners(summary, new TestExecutionListener() {\n            @Override public void executionFinished(TestIdentifier id, TestExecutionResult result) {\n                if (id.isTest()) System.out.println(result.getStatus() + \" \" + id.getDisplayName());\n            }\n        });\n        launcher.execute(request);\n        var out = new PrintWriter(System.out, true);\n        summary.getSummary().printTo(out);\n        summary.getSummary().printFailuresTo(out);\n        var result = summary.getSummary();\n        if (args.length == 1) Files.writeString(Path.of(args[0]), \"{\\\"found\\\":\" + result.getTestsFoundCount()\n                + \",\\\"started\\\":\" + result.getTestsStartedCount() + \",\\\"succeeded\\\":\" + result.getTestsSucceededCount()\n                + \",\\\"failed\\\":\" + result.getTestsFailedCount() + \",\\\"skipped\\\":\" + result.getTestsSkippedCount()\n                + \",\\\"aborted\\\":\" + result.getTestsAbortedCount() + \"}\\n\");\n        if (result.getTestsFoundCount() != 43 || result.getTestsSkippedCount() != 0 || result.getTestsAbortedCount() != 0\n                || result.getTestsFailedCount() != 0) System.exit(1);\n    }\n}\n",
+    "wrapper": {
+      "path": "tmp/run_identity_owner_contract_checks.py",
+      "rawSha256": "bb6634a224f5acac6d5656b5026706802bfd249b375a53014a9e089f4f49295a"
+    },
+    "wrapperSource": "from pathlib import Path\nimport hashlib,json,subprocess,sys\nroot=Path.cwd();label=sys.argv[1];out=root/'tmp'/('identity-owner-'+label+'-classes');out.mkdir(exist_ok=True)\nclasspath=(root/'tmp/completion-integrity-runtime-classpath.txt').read_text().strip()\njdk=root/'tmp/amazon-corretto-25.0.2.10.1/bin'\nsources=list((root/'backend/src/main/java/com/skillpilot/backend/identity').glob('*.java'))+[root/'backend/src/test/java/com/skillpilot/backend/identity/GoalIdentityServiceTest.java',root/'backend/src/test/java/com/skillpilot/backend/identity/GoalStateProjectionTest.java',root/'tmp/IdentityOwnerContractJUnit.java']\nbindings=[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sources]\n(root/'tmp'/('identity-owner-'+label+'-input-pins.json')).write_text(json.dumps(bindings,indent=2)+'\\n')\nwith (root/'tmp'/('identity-owner-'+label+'-compile.log')).open('w') as log:\n compiled=subprocess.run([str(jdk/'javac'),'-cp',classpath,'-d',str(out),*[str(p) for p in sources]],cwd=root/'backend',stdout=log,stderr=subprocess.STDOUT)\nassert compiled.returncode==0,'Compilation failed'\nwith (root/'tmp'/('identity-owner-'+label+'-junit.log')).open('w') as log:\n result=subprocess.run([str(jdk/'java'),'-Xmx384m','-cp',str(out)+':'+classpath,'com.skillpilot.backend.identity.IdentityOwnerContractJUnit',str(root/'tmp'/('identity-owner-'+label+'-results.json'))],cwd=root/'backend',stdout=log,stderr=subprocess.STDOUT)\nassert bindings==[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sources]\nprint(json.dumps({'compileExit':compiled.returncode,'junitExit':result.returncode,'result':json.loads((root/'tmp'/('identity-owner-'+label+'-results.json')).read_text()),'classpathSha256':hashlib.sha256(classpath.encode()).hexdigest(),'sourceHashesUnchangedDuringRun':True}))\nsys.exit(result.returncode)\n",
+    "classpath": {
+      "path": "tmp/completion-integrity-runtime-classpath.txt",
+      "rawSha256": "1d6fc6bbe0f824f8275b7cdf7a439de036288e07339403b1420341c5d823cd85"
+    },
+    "jdk": "tmp/amazon-corretto-25.0.2.10.1",
+    "jvmHeap": "384m",
+    "workingDirectory": "backend",
+    "resourceGeneration": false
+  }
+}

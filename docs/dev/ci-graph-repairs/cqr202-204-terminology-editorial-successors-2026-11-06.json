@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "explicit-editorial-successors-full-terminology-check-pass",
+  "originalCommit": "d43fb3d17d43379f1741442cf690741e1f131108",
+  "changes": [
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06.json",
+      "beforeSha256": "da0148bb9d4472e0625d73c8c3cc2d68cb44ba5f102845cb7f2e30768ea7bc90",
+      "afterSha256": "077b925aa5f18d9e1b1e4296a913cfdffcd0f1d36d02205dbf5cd64a2011b5ac",
+      "changedJsonPointers": [
+        "/reviewedContract/sourceExpectations"
+      ]
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.json",
+      "beforeSha256": "00ec90888bc25a0a4958588d597191ba722a1886358f65a1909d6bfd174e4efa",
+      "afterSha256": "6fbf918c651aab3b9b53a8cb6ba288336d50c891bdedad8621a55b3b71c53038",
+      "changedJsonPointers": [
+        "/independentReview/sha256"
+      ]
+    }
+  ],
+  "codeSourceFixturesCountersRunsStatusesAndReviewFindingsUnchanged": true,
+  "originalIndependentReviewPreservedInGit": true,
+  "newIndependentReviewOrTestExecutionClaimed": false,
+  "actualFullTerminologyCheck": {
+    "command": "cd app && npm run check:terminology",
+    "exitCode": 0,
+    "scannedFiles": 178282,
+    "exactReviewedLegacyOccurrences": 57,
+    "log": {
+      "path": "tmp/root-terminology-current-successor-2026-11-06.log",
+      "sha256": "0de828e018e0fdb241755e0fc1e15f0a4255164c6317bb24adbc4b3930ba1c49"
+    }
+  }
+}

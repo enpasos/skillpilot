@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "status": "verified-already-applied-five-language-operations-with-current-CQR",
+  "sourceApplicationPerformedByThisReceipt": false,
+  "humanReviewOrMaturityApprovalClaimed": false,
+  "observationHead": "39b7f6e68cdebcfd6eefb3f59faf7fcbcd5d673d",
+  "originalLanguageSnapshot": "91a30521d6ba198cc214e15ab2bfb5dfdad2a0a4",
+  "independentPreapplicationReview": {
+    "path": "docs/dev/ci-graph-repairs/global-orientation-cycles-current-integration-review-2026-11-06.json",
+    "sha256": "5f3b8b9b2e2250247dcad3205e7cb87552f54ae709ee193affa2fc66641b5d11",
+    "bytes": 738593
+  },
+  "exactAppliedOperations": [
+    {
+      "operation": {
+        "operationId": "GLOBAL-ORI-CYCLE-02",
+        "operation": "replace",
+        "source": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+          "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+          "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+          "goalCount": 192
+        },
+        "path": "/goals/2/requires",
+        "guardGoalId": "78e54102-c215-50a5-b0c2-4f1deaa7a200",
+        "guardRequiresBefore": [
+          "d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+        ],
+        "guardGoalCanonicalJsonSha256": "8939e761780b1f7311c671811accbd9ad974b576d54817b4ca18b29c15d079a2",
+        "value": []
+      },
+      "goalTitle": "E-Phase Chinesisch",
+      "independentAiReason": "Der E-Cluster enthält die Orientierung und fordert sie gleichzeitig; seine Vererbung fordert dadurch den voraussetzungsfreien Interessen-/Weiterlerneinstieg durch sich selbst. Entfernt wird der falsche universelle Ursprung. Alle anderen gewöhnlichen atomaren Nachfragen bleiben mit dem vollständigen5er-Paket erhalten.",
+      "actualAfterRequires": []
+    },
+    {
+      "operation": {
+        "operationId": "GLOBAL-ORI-CYCLE-03",
+        "operation": "replace",
+        "source": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+          "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+          "goalCount": 331
+        },
+        "path": "/goals/2/requires",
+        "guardGoalId": "fb4e7e31-be77-57ff-addb-d329633c049f",
+        "guardRequiresBefore": [
+          "81f0501c-890a-5ebd-be54-4ae7698d4d52"
+        ],
+        "guardGoalCanonicalJsonSha256": "78288883baf1a9fb202dfb748404ca202fe55b550d552aa3870a4f070ccd9320",
+        "value": []
+      },
+      "goalTitle": "E-Phase Französisch",
+      "independentAiReason": "Der E-Cluster enthält die Orientierung und fordert sie gleichzeitig; seine Vererbung fordert dadurch den voraussetzungsfreien Interessen-/Weiterlerneinstieg durch sich selbst. Entfernt wird der falsche universelle Ursprung. Alle anderen gewöhnlichen atomaren Nachfragen bleiben mit dem vollständigen5er-Paket erhalten.",
+      "actualAfterRequires": []
+    },
+    {
+      "operation": {
+        "operationId": "GLOBAL-ORI-CYCLE-04",
+        "operation": "replace",
+        "source": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+          "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+          "goalCount": 331
+        },
+        "path": "/goals/7/requires",
+        "guardGoalId": "5f0b8adf-e7af-5cdd-a50c-0a721662b54c",
+        "guardRequiresBefore": [],
+        "guardGoalCanonicalJsonSha256": "030b5de28c6ff309d629a607234db9c8e6b95a29ef20dfef0434ed33da533d51",
+        "value": [
+          "81f0501c-890a-5ebd-be54-4ae7698d4d52"
+        ],
+        "purpose": "Preserve existing orientation demand at this independent ordinary entry after removal of the self-cycling E-cluster origin."
+      },
+      "goalTitle": "Compréhension écrite Le cercle familial et amical",
+      "independentAiReason": "Unabhängiger französischer Lesen-/Höreinstieg im Familien-/Freundeskreis: die Orientierung war schon effektiv erforderlich. Der direkte Eintrag erhält genau diesen Bedarf nach Entzug des zyklischen Elternursprungs. Keine neue fachliche Vorleistung; die anderen fünf verlorenen Einstiegspfade bleiben über den vorhandenen Hörpfad erhalten. Dessen sonstige pädagogische Kanten werden nicht neu freigegeben.",
+      "actualAfterRequires": [
+        "81f0501c-890a-5ebd-be54-4ae7698d4d52"
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "GLOBAL-ORI-CYCLE-05",
+        "operation": "replace",
+        "source": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+          "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+          "goalCount": 331
+        },
+        "path": "/goals/8/requires",
+        "guardGoalId": "b57e7524-210c-5426-b67c-cc81a9e32edb",
+        "guardRequiresBefore": [],
+        "guardGoalCanonicalJsonSha256": "22931c54c0d72624de6f79d57d054dbd0f08ddd114808f98f1c1ff44ff68af21",
+        "value": [
+          "81f0501c-890a-5ebd-be54-4ae7698d4d52"
+        ],
+        "purpose": "Preserve existing orientation demand at this independent ordinary entry after removal of the self-cycling E-cluster origin."
+      },
+      "goalTitle": "Compréhension orale Le cercle familial et amical",
+      "independentAiReason": "Unabhängiger französischer Lesen-/Höreinstieg im Familien-/Freundeskreis: die Orientierung war schon effektiv erforderlich. Der direkte Eintrag erhält genau diesen Bedarf nach Entzug des zyklischen Elternursprungs. Keine neue fachliche Vorleistung; die anderen fünf verlorenen Einstiegspfade bleiben über den vorhandenen Hörpfad erhalten. Dessen sonstige pädagogische Kanten werden nicht neu freigegeben.",
+      "actualAfterRequires": [
+        "81f0501c-890a-5ebd-be54-4ae7698d4d52"
+      ]
+    },
+    {
+      "operation": {
+        "operationId": "GLOBAL-ORI-CYCLE-01",
+        "operation": "replace",
+        "source": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+          "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+          "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+          "goalCount": 198
+        },
+        "path": "/goals/2/requires",
+        "guardGoalId": "fa373166-b85a-5cbb-ac34-1f9a97e39e49",
+        "guardRequiresBefore": [
+          "c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+        ],
+        "guardGoalCanonicalJsonSha256": "849941cb3e9543551287c9915f1de740095300ec024a6c6cd6cda6c87700ca84",
+        "value": []
+      },
+      "goalTitle": "E-Phase Griechisch",
+      "independentAiReason": "Der E-Cluster enthält die Orientierung und fordert sie gleichzeitig; seine Vererbung fordert dadurch den voraussetzungsfreien Interessen-/Weiterlerneinstieg durch sich selbst. Entfernt wird der falsche universelle Ursprung. Alle anderen gewöhnlichen atomaren Nachfragen bleiben mit dem vollständigen5er-Paket erhalten.",
+      "actualAfterRequires": []
+    }
+  ],
+  "changedSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+      "beforeSha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+      "afterSha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237",
+      "changedRequiresArrays": 1,
+      "exactGuardedReconstruction": true,
+      "allOtherJsonFieldsIdentical": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+      "beforeSha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+      "afterSha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498",
+      "changedRequiresArrays": 3,
+      "exactGuardedReconstruction": true,
+      "allOtherJsonFieldsIdentical": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+      "beforeSha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+      "afterSha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162",
+      "changedRequiresArrays": 1,
+      "exactGuardedReconstruction": true,
+      "allOtherJsonFieldsIdentical": true
+    }
+  ],
+  "completeActualCanonicalSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79",
+      "goals": 484
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+      "goals": 742
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+      "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237",
+      "goals": 192
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9",
+      "goals": 354
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+      "goals": 130
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+      "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498",
+      "goals": 331
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e",
+      "goals": 217
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+      "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162",
+      "goals": 198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "sha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e",
+      "goals": 282
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+      "goals": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+      "goals": 176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+      "goals": 1252
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+      "goals": 76
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+      "goals": 1
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+      "goals": 766
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+      "goals": 512
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+      "goals": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+      "goals": 8
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+      "goals": 83
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+      "goals": 5
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+      "goals": 702
+    }
+  ],
+  "guardedReplay": {
+    "all21ActualSourceHashesMatchRootReplay": true,
+    "all21SourcesReconstructedFromGitBaseAndExactlyFiveOperations": true,
+    "all18OtherCanonicalFilesByteIdenticalToBase": true,
+    "exactlyThreeSerializedOutputsReproduced": true
+  },
+  "rootApplicationReplay": {
+    "originalArtifact": {
+      "path": "tmp/global-orientation-cycle-active-application.json",
+      "sha256": "e058902ecf7fffade93bf87d505532036e23ecef10a8173e03106c0da9308602",
+      "bytes": 6592
+    },
+    "content": {
+      "status": "PASS-active-five-array-orientation-cycle-repair",
+      "activeVerified": true,
+      "originalLanguageSnapshot": "91a30521d6ba198cc214e15ab2bfb5dfdad2a0a4",
+      "activeContextSources": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+          "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+          "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+          "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+          "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+          "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+          "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+          "sha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+          "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+          "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+          "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+          "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+          "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+          "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+          "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+          "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+        }
+      ],
+      "operations": 5,
+      "changedSources": 3,
+      "goalPairsRemoved": 6,
+      "atomicSelfPairsRemoved": 3,
+      "beforeCycleComponents": [
+        3,
+        3
+      ],
+      "afterCycleComponents": [
+        0,
+        0
+      ],
+      "allOtherAtomicClosuresEqual": true,
+      "goalDeltas": [
+        {
+          "sourceKey": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6",
+          "removed": [
+            "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:fa373166-b85a-5cbb-ac34-1f9a97e39e49",
+          "removed": [
+            "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:78e54102-c215-50a5-b0c2-4f1deaa7a200",
+          "removed": [
+            "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2",
+          "removed": [
+            "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52",
+          "removed": [
+            "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:fb4e7e31-be77-57ff-addb-d329633c049f",
+          "removed": [
+            "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
+          ],
+          "added": []
+        }
+      ],
+      "atomicDeltas": [
+        {
+          "sourceKey": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6",
+          "removed": [
+            "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2",
+          "removed": [
+            "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+          ],
+          "added": []
+        },
+        {
+          "sourceKey": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52",
+          "removed": [
+            "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
+          ],
+          "added": []
+        }
+      ],
+      "qaOrMaturityApprovalClaimed": false
+    },
+    "qualification": "Root application replay, independently bound here to actual source bytes and exact guarded reconstruction; its bool is not the sole proof."
+  },
+  "actualDirectDagCheck": {
+    "executionHandle": 73296,
+    "terminalExitCode": 0,
+    "actualChecker": "checkSkillGraphIntegrity(actual21catalog,[eachactualLandscapeId])",
+    "result": {
+      "summary": {
+        "landscapes": 21,
+        "G15Pass": 21,
+        "G42Pass": 21,
+        "G15Findings": 0,
+        "G42Findings": 0
+      },
+      "rows": [
+        {
+          "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+          "checkedGoalKeys": 485,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "checkedGoalKeys": 743,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+          "checkedGoalKeys": 193,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+          "checkedGoalKeys": 355,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+          "checkedGoalKeys": 131,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+          "checkedGoalKeys": 332,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+          "checkedGoalKeys": 218,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+          "checkedGoalKeys": 199,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "checkedGoalKeys": 283,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+          "checkedGoalKeys": 9,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+          "checkedGoalKeys": 177,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "checkedGoalKeys": 1253,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+          "checkedGoalKeys": 77,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+          "checkedGoalKeys": 6523,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "checkedGoalKeys": 1041,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+          "checkedGoalKeys": 513,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+          "checkedGoalKeys": 6,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+          "checkedGoalKeys": 9,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+          "checkedGoalKeys": 84,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+          "checkedGoalKeys": 6,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        },
+        {
+          "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "checkedGoalKeys": 703,
+          "G15": "pass",
+          "G15FindingCount": 0,
+          "G42": "pass",
+          "G42FindingCount": 0
+        }
+      ],
+      "sourceDataChanged": false,
+      "completeStrictIntegrityPassClaimed": false,
+      "implementations": [
+        {
+          "path": "app/scripts/lib/skillGraphIntegrity.ts",
+          "sha256": "0d031384b9b1d5a0741b27adefed48aa8c78166b0b688dcfc5c124083e1e4984"
+        },
+        {
+          "path": "app/scripts/auditTransitiveMinimality.ts",
+          "sha256": "dd6d1dad87f269f9aecac5387d1df700483496d9fc8987edd594239b759cd908"
+        }
+      ]
+    },
+    "script": {
+      "binding": {
+        "path": "tmp/check-global-orientation-active-dags.ts",
+        "sha256": "40a55caff4b476f59a2207aa3ca62efa2ab797691e1edc12eacf2c7d22ad1021",
+        "bytes": 2049
+      },
+      "source": "import { readFileSync, writeFileSync } from 'node:fs'\nimport { createHash } from 'node:crypto'\nimport assert from 'node:assert/strict'\nimport { checkSkillGraphIntegrity } from '../app/scripts/lib/skillGraphIntegrity'\nconst application=JSON.parse(readFileSync('tmp/global-orientation-cycle-active-application.json','utf8'))\nconst hash=(value:Uint8Array|string)=>createHash('sha256').update(value).digest('hex')\nconst inputs=application.activeContextSources.map((row:{path:string;sha256:string})=>{\n const raw=readFileSync(row.path);assert.equal(hash(raw),row.sha256,row.path)\n return {...JSON.parse(raw.toString('utf8')),sourceFile:row.path}\n})\nassert.equal(inputs.length,21);assert.equal(new Set(inputs.map((r:any)=>r.landscapeId)).size,21)\nconst rows=inputs.map((document:any)=>{\n const report=checkSkillGraphIntegrity(inputs,[document.landscapeId]);const g15=report.checks.find(row=>row.id==='G15')!;const g42=report.checks.find(row=>row.id==='G42')!\n assert.ok(report.checkedGoalKeys.length>0);assert.equal(g15.status,'pass');assert.equal(g42.status,'pass');assert.equal(g15.findingCount,0);assert.equal(g42.findingCount,0)\n return {landscapeId:document.landscapeId,checkedGoalKeys:report.checkedGoalKeys.length,G15:g15.status,G15FindingCount:g15.findingCount,G42:g42.status,G42FindingCount:g42.findingCount}\n})\nfor(const row of application.activeContextSources)assert.equal(hash(readFileSync(row.path)),row.sha256)\nconst summary={landscapes:21,G15Pass:rows.filter(row=>row.G15==='pass').length,G42Pass:rows.filter(row=>row.G42==='pass').length,G15Findings:rows.reduce((n,row)=>n+row.G15FindingCount,0),G42Findings:rows.reduce((n,row)=>n+row.G42FindingCount,0)}\nconst result={summary,rows,sourceDataChanged:false,completeStrictIntegrityPassClaimed:false,implementations:['app/scripts/lib/skillGraphIntegrity.ts','app/scripts/auditTransitiveMinimality.ts'].map(path=>({path,sha256:hash(readFileSync(path))}))}\nwriteFileSync('tmp/global-orientation-active-dags-scalars.json',JSON.stringify(result,null,2)+'\\n')\nconsole.log(JSON.stringify(summary))\n"
+    },
+    "stdout": {
+      "binding": {
+        "path": "tmp/global-orientation-active-dags-scalars.stdout.log",
+        "sha256": "badf031b6f09c1153c281a57a87f1e13e9fa7870bcdea024523df7cabddd8168",
+        "bytes": 76
+      },
+      "content": "{\"landscapes\":21,\"G15Pass\":21,\"G42Pass\":21,\"G15Findings\":0,\"G42Findings\":0}\n"
+    },
+    "stderr": {
+      "binding": {
+        "path": "tmp/global-orientation-active-dags-scalars.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "content": ""
+    },
+    "limit": "Only G15/G42 status and finite scalar counts are retained. Other mandatory integrity findings remain real; no complete strict-graph pass is claimed."
+  },
+  "currentTotalCqr": {
+    "binding": {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "60d286aef84c5b02db14d172cdbca056d1f95876f44b7ba1fd5db41e3148a7c5",
+      "bytes": 10827700
+    },
+    "generatedAt": "2026-11-06T18:13:50.840Z",
+    "summary": {
+      "curricula": 21,
+      "maturity": {
+        "M0": 18,
+        "M1": 0,
+        "M2": 0,
+        "M3": 0,
+        "M4": 0,
+        "M5": 0,
+        "M6": 3,
+        "M7": 0
+      },
+      "ruleStatus": {
+        "pass": 218,
+        "warn": 19,
+        "fail": 20,
+        "not_configured": 65
+      }
+    },
+    "producer": "app/scripts/generateCurriculumQualityStatus.ts",
+    "producerCode": {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "f1eac647b9f87302f102252aa5b005056ff2d00279f68a7d0541806d2c756357",
+      "bytes": 274666
+    },
+    "producerRunHandleReportedByRoot": 77781,
+    "producerRunTerminalExitCodeReportedByRoot": 0,
+    "producerNotRerunByThisReceipt": true,
+    "floorPolicy": {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+      "bytes": 4616
+    },
+    "protectedFloorCount": 10,
+    "satisfiedProtectedFloors": 3,
+    "violatedProtectedFloors": 7,
+    "satisfiedProtectedSubjects": [
+      "Deutsch",
+      "Geschichte",
+      "Latein"
+    ],
+    "unrestoredProtectedSubjects": [
+      "Mathematik",
+      "Physik",
+      "Biologie",
+      "Chemie",
+      "Informatik",
+      "Politik und Wirtschaft",
+      "Wirtschaftswissenschaften"
+    ],
+    "mathActualCqr001Findings": 919,
+    "mathActualG17Findings": 917,
+    "completeCurrentCqrReceipt": {
+      "path": "docs/dev/ci-graph-repairs/post-memory-orientation-current-cqr-2026-11-06.json",
+      "sha256": "1a1ae6707479f97e7a1d11b85fb13f4faec31b7ac9407a90c19159f6d7effd5e",
+      "bytes": 30884
+    }
+  },
+  "qaAndScopeBoundary": {
+    "evidenceIsPriorIndependentReview": {
+      "path": "docs/dev/ci-graph-repairs/global-orientation-cycles-current-integration-review-2026-11-06.json",
+      "sha256": "5f3b8b9b2e2250247dcad3205e7cb87552f54ae709ee193affa2fc66641b5d11",
+      "bytes": 738593
+    },
+    "authoredCompositionViewsForThreeOwners": 0,
+    "nativeLegacyFilterComparisons": 18,
+    "activeAorMConfigurationsForThreeOwners": 0,
+    "activeDPorVApprovalClaimed": false,
+    "authenticReviewRecordsChecked": 0,
+    "newSourceOrJurisdictionClaims": false,
+    "qaRehashPerformed": false,
+    "fact": "Unconfigured QA remains missing QA, not a passing review. Existing requires-bound semantic-kind/P/practice/source snapshot inputs change; no release receipt is refreshed."
+  },
+  "remainingBoundaries": [
+    "No new source/data application was performed here; the five reviewed arrays in three source files were already applied by root.",
+    "Only false inherited orientation self-demand is removed; two French entry links preserve existing atomic orientation preparation. Existing English orientation text discrepancy remains open.",
+    "The three protected M6subjects are Deutsch/Geschichte/Latein; seven protected floors remain genuine errors. Math919/917 and Info59 are actual active CQR values, not historical925 or hypothetical47.",
+    "The safe bounded26 Informatics manifest remains unapplied; ISA/Cache/three Abitur architecture contracts,875 and weak examData remain separate required work.",
+    "This local application/CQR record is not a fresh remote-CI pass or host/runtime acceptance."
+  ]
+}

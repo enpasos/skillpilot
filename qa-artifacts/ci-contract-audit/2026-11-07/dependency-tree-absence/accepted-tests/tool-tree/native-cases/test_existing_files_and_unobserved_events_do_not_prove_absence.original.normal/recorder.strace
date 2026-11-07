@@ -1,0 +1,442 @@
+361241 execve("/usr/bin/bwrap", ["/usr/bin/bwrap", "--die-with-parent", "--unshare-net", "--unshare-pid", "--clearenv", "--setenv", "PATH", "/usr/bin:/bin", "--setenv", "LC_ALL", "C", "--setenv", "PYTHONDONTWRITEBYTECODE", "1", "--ro-bind", "/", "/", "--proc", "/proc", "--dev", "/dev", "--tmpfs", "/tmp", "--ro-bind", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", "--ro-bind", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", "--tmpfs", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", "--remount-ro", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", "--chdir", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", "--", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/tool/producer", "normal", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/data/goal.json", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/unbound-node_modules/pkg/absent.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PYTHONDONTWRITEBYTECODE=1"]) = 0
+361241 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x762dcb1e7000
+361241 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+361241 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+361241 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x762dcb1d7000
+361241 close(3</etc/ld.so.cache>)       = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libselinux.so.1>
+361241 read(0x3, 0x7fff18af4668, 0x340) = 0x340
+361241 newfstatat(3</usr/lib/x86_64-linux-gnu/libselinux.so.1>, "", {st_dev=makedev(0x8, 0x30), st_ino=6775, st_mode=S_IFREG|0644, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=328, st_size=166280, st_atime=1793984284 /* 2026-11-06T17:58:04.689446030+0100 */, st_atime_nsec=689446030, st_mtime=1647545252 /* 2022-03-17T20:27:32+0100 */, st_mtime_nsec=0, st_ctime=1679661757 /* 2023-03-24T13:42:37.403009800+0100 */, st_ctime_nsec=403009800}, AT_EMPTY_PATH) = 0
+361241 mmap(NULL, 177672, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libselinux.so.1>, 0) = 0x762dcb1ab000
+361241 mmap(0x762dcb1b1000, 106496, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libselinux.so.1>, 0x6000) = 0x762dcb1b1000
+361241 mmap(0x762dcb1cb000, 28672, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libselinux.so.1>, 0x20000) = 0x762dcb1cb000
+361241 mmap(0x762dcb1d3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libselinux.so.1>, 0x27000) = 0x762dcb1d3000
+361241 mmap(0x762dcb1d5000, 5640, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x762dcb1d5000
+361241 close(3</usr/lib/x86_64-linux-gnu/libselinux.so.1>) = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/lib/x86_64-linux-gnu/libcap.so.2", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>
+361241 read(0x3, 0x7fff18af4648, 0x340) = 0x340
+361241 newfstatat(3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>, "", {st_dev=makedev(0x8, 0x30), st_ino=2629, st_mode=S_IFREG|0644, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=80, st_size=39024, st_atime=1793985355 /* 2026-11-06T18:15:55.481720706+0100 */, st_atime_nsec=481720706, st_mtime=1740066662 /* 2025-02-20T16:51:02+0100 */, st_mtime_nsec=0, st_ctime=1742195200 /* 2025-03-17T08:06:40.905901822+0100 */, st_ctime_nsec=905901822}, AT_EMPTY_PATH) = 0
+361241 mmap(NULL, 41016, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>, 0) = 0x762dcb1a0000
+361241 mmap(0x762dcb1a3000, 16384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>, 0x3000) = 0x762dcb1a3000
+361241 mmap(0x762dcb1a7000, 8192, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>, 0x7000) = 0x762dcb1a7000
+361241 mmap(0x762dcb1a9000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>, 0x8000) = 0x762dcb1a9000
+361241 close(3</usr/lib/x86_64-linux-gnu/libcap.so.2.44>) = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+361241 read(0x3, 0x7fff18af4628, 0x340) = 0x340
+361241 pread64(0x3, 0x7fff18af4230, 0x310, 0x40) = 0x310
+361241 pread64(0x3, 0x7fff18af41f0, 0x30, 0x350) = 0x30
+361241 pread64(0x3, 0x7fff18af41a0, 0x44, 0x380) = 0x44
+361241 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+361241 pread64(0x3, 0x7fff18af4100, 0x310, 0x40) = 0x310
+361241 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x762dcae00000
+361241 mmap(0x762dcae28000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x762dcae28000
+361241 mmap(0x762dcafbd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x762dcafbd000
+361241 mmap(0x762dcb016000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x762dcb016000
+361241 mmap(0x762dcb01c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x762dcb01c000
+361241 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/lib/x86_64-linux-gnu/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>
+361241 read(0x3, 0x7fff18af4608, 0x340) = 0x340
+361241 newfstatat(3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>, "", {st_dev=makedev(0x8, 0x30), st_ino=6736, st_mode=S_IFREG|0644, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=1200, st_size=613064, st_atime=1793984284 /* 2026-11-06T17:58:04.689446030+0100 */, st_atime_nsec=689446030, st_mtime=1663670777 /* 2022-09-20T12:46:17+0200 */, st_mtime_nsec=0, st_ctime=1679661757 /* 2023-03-24T13:42:37.353009800+0100 */, st_ctime_nsec=353009800}, AT_EMPTY_PATH) = 0
+361241 mmap(NULL, 615184, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>, 0) = 0x762dcb109000
+361241 mmap(0x762dcb10b000, 438272, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>, 0x2000) = 0x762dcb10b000
+361241 mmap(0x762dcb176000, 163840, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>, 0x6d000) = 0x762dcb176000
+361241 mmap(0x762dcb19e000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>, 0x94000) = 0x762dcb19e000
+361241 close(3</usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.10.4>) = 0
+361241 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x762dcb107000
+361241 statfs("/sys/fs/selinux", {f_type=SYSFS_MAGIC, f_bsize=4096, f_blocks=0, f_bfree=0, f_bavail=0, f_files=0, f_ffree=0, f_fsid={val=[0x67f5b059, 0x9b2d495b]}, f_namelen=255, f_frsize=4096, f_flags=ST_VALID|ST_NOSUID|ST_NODEV|ST_NOEXEC|ST_NOATIME}) = 0
+361241 statfs("/selinux", 0x7fff18af5320) = -1 ENOENT (No such file or directory)
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3</proc/filesystems>
+361241 newfstatat(3</proc/filesystems>, "", {st_dev=makedev(0, 0x3d), st_ino=4026532073, st_mode=S_IFREG|0444, st_nlink=1, st_uid=0, st_gid=0, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1794009531 /* 2026-11-07T00:58:51.633098124+0100 */, st_atime_nsec=633098124, st_mtime=1794009531 /* 2026-11-07T00:58:51.633098124+0100 */, st_mtime_nsec=633098124, st_ctime=1794009531 /* 2026-11-07T00:58:51.633098124+0100 */, st_ctime_nsec=633098124}, AT_EMPTY_PATH) = 0
+361241 read(0x3, 0x597664d58500, 0x400) = 0x1bc
+361241 close(3</proc/filesystems>)      = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/proc/mounts", O_RDONLY|O_CLOEXEC) = 3</proc/361241/mounts>
+361241 newfstatat(3</proc/361241/mounts>, "", {st_dev=makedev(0, 0x3d), st_ino=2745330, st_mode=S_IFREG|0444, st_nlink=1, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1794011574 /* 2026-11-07T01:32:54.554638892+0100 */, st_atime_nsec=554638892, st_mtime=1794011574 /* 2026-11-07T01:32:54.554638892+0100 */, st_mtime_nsec=554638892, st_ctime=1794011574 /* 2026-11-07T01:32:54.554638892+0100 */, st_ctime_nsec=554638892}, AT_EMPTY_PATH) = 0
+361241 read(0x3, 0x597664d58500, 0x400) = 0x400
+361241 read(0x3, 0x597664d58500, 0x400) = 0x400
+361241 read(0x3, 0x597664d58500, 0x400) = 0x269
+361241 read(0x3, 0x597664d58500, 0x400) = 0
+361241 close(3</proc/361241/mounts>)    = 0
+361241 access("/etc/selinux/config", F_OK) = -1 ENOENT (No such file or directory)
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/proc/sys/kernel/overflowuid", O_RDONLY|O_CLOEXEC) = 3</proc/sys/kernel/overflowuid>
+361241 read(0x3, 0x597664d58a40, 0xfef) = 0x6
+361241 read(0x3, 0x597664d58a46, 0xfe9) = 0
+361241 close(3</proc/sys/kernel/overflowuid>) = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/proc/sys/kernel/overflowgid", O_RDONLY|O_CLOEXEC) = 3</proc/sys/kernel/overflowgid>
+361241 read(0x3, 0x597664d59a40, 0xfef) = 0x6
+361241 read(0x3, 0x597664d59a46, 0xfe9) = 0
+361241 close(3</proc/sys/kernel/overflowgid>) = 0
+361241 openat(AT_FDCWD</home/enpasos/projects/skillpilot>, "/proc", O_RDONLY|O_PATH) = 3</proc>
+361241 eventfd2(0, EFD_CLOEXEC|EFD_NONBLOCK) = 4<anon_inode:[eventfd]>
+361241 eventfd2(0, EFD_CLOEXEC)         = 5<anon_inode:[eventfd]>
+361241 clone(child_stack=NULL, flags=CLONE_NEWNS|CLONE_NEWUSER|CLONE_NEWPID|CLONE_NEWNET|SIGCHLD) = 361242
+361242 read(0x5, 0x7fff18af31c0, 0x8 <unfinished ...>
+361241 openat(3</proc>, "361242/ns", O_RDONLY|O_PATH) = 6</proc/361242/ns>
+361241 newfstatat(6</proc/361242/ns>, "mnt", {st_dev=makedev(0, 0x4), st_ino=4026532699, st_mode=S_IFREG|0444, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1794011574 /* 2026-11-07T01:32:54.558639103+0100 */, st_atime_nsec=558639103, st_mtime=1794011574 /* 2026-11-07T01:32:54.558639103+0100 */, st_mtime_nsec=558639103, st_ctime=1794011574 /* 2026-11-07T01:32:54.558639103+0100 */, st_ctime_nsec=558639103}, 0) = 0
+361241 newfstatat(6</proc/361242/ns>, "net", {st_dev=makedev(0, 0x4), st_ino=4026532701, st_mode=S_IFREG|0444, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_atime_nsec=562639314, st_mtime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_mtime_nsec=562639314, st_ctime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_ctime_nsec=562639314}, 0) = 0
+361241 newfstatat(6</proc/361242/ns>, "pid", {st_dev=makedev(0, 0x4), st_ino=4026532700, st_mode=S_IFREG|0444, st_nlink=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=0, st_atime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_atime_nsec=562639314, st_mtime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_mtime_nsec=562639314, st_ctime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_ctime_nsec=562639314}, 0) = 0
+361241 close(6</proc/361242/ns>)        = 0
+361242 <... read resumed>)              = 0x8
+361241 close(5<anon_inode:[eventfd]> <unfinished ...>
+361242 close(5<anon_inode:[eventfd]> <unfinished ...>
+361241 <... close resumed>)             = 0
+361242 <... close resumed>)             = 0
+361241 openat(3</proc>, "self/fd", O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 5</proc/361241/fd>
+361241 newfstatat(5</proc/361241/fd>, "", {st_dev=makedev(0, 0x3d), st_ino=2749885, st_mode=S_IFDIR|0500, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=6, st_atime=1794011574 /* 2026-11-07T01:32:54.549956645+0100 */, st_atime_nsec=549956645, st_mtime=1794011574 /* 2026-11-07T01:32:54.549956645+0100 */, st_mtime_nsec=549956645, st_ctime=1794011574 /* 2026-11-07T01:32:54.549956645+0100 */, st_ctime_nsec=549956645}, AT_EMPTY_PATH) = 0
+361241 fcntl(5</proc/361241/fd>, F_GETFL) = 0x18800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY)
+361241 fcntl(5</proc/361241/fd>, F_SETFD, FD_CLOEXEC) = 0
+361241 getdents64(5</proc/361241/fd>, [{d_ino=2749885, d_off=1, d_reclen=24, d_type=DT_DIR, d_name="."}, {d_ino=2749883, d_off=2, d_reclen=24, d_type=DT_DIR, d_name=".."}, {d_ino=2754565, d_off=3, d_reclen=24, d_type=DT_LNK, d_name="0"}, {d_ino=2754566, d_off=4, d_reclen=24, d_type=DT_LNK, d_name="1"}, {d_ino=2754567, d_off=5, d_reclen=24, d_type=DT_LNK, d_name="2"}, {d_ino=2749886, d_off=6, d_reclen=24, d_type=DT_LNK, d_name="3"}, {d_ino=2749887, d_off=7, d_reclen=24, d_type=DT_LNK, d_name="4"}, {d_ino=2749888, d_off=66, d_reclen=24, d_type=DT_LNK, d_name="5"}], 32768) = 192
+361241 close(3</proc>)                  = 0
+361241 getdents64(5</proc/361241/fd>, [], 32768) = 0
+361241 close(5</proc/361241/fd>)        = 0
+361242 getpid()                         = 1 /* 361242 in strace's PID NS */
+361242 socket(AF_UNIX, SOCK_DGRAM|SOCK_CLOEXEC, 0) = 5<UNIX:[2747387]>
+361242 close(5<UNIX:[2747387]>)         = 0
+361242 socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC, NETLINK_ROUTE) = 5<NETLINK:[2747388]>
+361242 bind(5<NETLINK:[2747388]>, {sa_family=AF_NETLINK, nl_pid=1 /* 361242 in strace's PID NS */, nl_groups=00000000}, 12) = 0
+361242 getpid()                         = 1 /* 361242 in strace's PID NS */
+361242 sendto(5<NETLINK:[2747388]>, [{nlmsg_len=40, nlmsg_type=0x14 /* NLMSG_??? */, nlmsg_flags=NLM_F_REQUEST|NLM_F_ACK|0x600, nlmsg_seq=0, nlmsg_pid=1 /* 361242 in strace's PID NS */}, "\x02\x08\x80\xfe\x01\x00\x00\x00\x08\x00\x02\x00\x7f\x00\x00\x01\x08\x00\x01\x00\x7f\x00\x00\x01"], 40, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 40
+361242 recvfrom(5<NETLINK:[2747388]>, [{nlmsg_len=36, nlmsg_type=NLMSG_ERROR, nlmsg_flags=NLM_F_CAPPED, nlmsg_seq=0, nlmsg_pid=1 /* 361242 in strace's PID NS */}, {error=0, msg={nlmsg_len=40, nlmsg_type=0x14 /* NLMSG_??? */, nlmsg_flags=NLM_F_REQUEST|NLM_F_ACK|0x600, nlmsg_seq=0, nlmsg_pid=1 /* 361242 in strace's PID NS */}}], 1024, 0, NULL, NULL) = 36
+361242 getpid()                         = 1 /* 361242 in strace's PID NS */
+361242 getpid()                         = 1 /* 361242 in strace's PID NS */
+361242 sendto(5<NETLINK:[2747388]>, [{nlmsg_len=32, nlmsg_type=0x10 /* NLMSG_??? */, nlmsg_flags=NLM_F_REQUEST|NLM_F_ACK, nlmsg_seq=1, nlmsg_pid=1 /* 361242 in strace's PID NS */}, "\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00"], 32, 0, {sa_family=AF_NETLINK, nl_pid=0, nl_groups=00000000}, 12) = 32
+361242 recvfrom(5<NETLINK:[2747388]>, [{nlmsg_len=36, nlmsg_type=NLMSG_ERROR, nlmsg_flags=NLM_F_CAPPED, nlmsg_seq=1, nlmsg_pid=1 /* 361242 in strace's PID NS */}, {error=0, msg={nlmsg_len=32, nlmsg_type=0x10 /* NLMSG_??? */, nlmsg_flags=NLM_F_REQUEST|NLM_F_ACK, nlmsg_seq=1, nlmsg_pid=1 /* 361242 in strace's PID NS */}}], 1024, 0, NULL, NULL) = 36
+361242 getpid()                         = 1 /* 361242 in strace's PID NS */
+361242 close(5<NETLINK:[2747388]>)      = 0
+361242 openat(3</proc>, "self", O_RDONLY|O_PATH) = 5</proc/361242>
+361242 openat(5</proc/361242>, "uid_map", O_RDWR|O_CLOEXEC) = 6</proc/361242/uid_map>
+361242 close(6</proc/361242/uid_map>)   = 0
+361242 openat(5</proc/361242>, "setgroups", O_RDWR|O_CLOEXEC) = 6</proc/361242/setgroups>
+361242 close(6</proc/361242/setgroups>) = 0
+361242 openat(5</proc/361242>, "gid_map", O_RDWR|O_CLOEXEC) = 6</proc/361242/gid_map>
+361242 close(6</proc/361242/gid_map>)   = 0
+361242 close(5</proc/361242>)           = 0
+361242 readlink("/dev", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", 0x7fff18af28f0, 1023) = -1 EINVAL (Invalid argument)
+361242 mount(NULL, "/", NULL, MS_REC|MS_SILENT|MS_SLAVE, NULL) = 0
+361242 mount("tmpfs", "/tmp", "tmpfs", MS_NOSUID|MS_NODEV, NULL) = 0
+361242 getcwd("/home/enpasos/projects/skillpilot", 4096) = 34
+361242 chdir("/tmp")                    = 0
+361242 mkdir("newroot", 0755)           = 0
+361242 mount("newroot", "newroot", NULL, MS_MGC_VAL|MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 mkdir("oldroot", 0755)           = 0
+361242 pivot_root("/tmp", "oldroot")    = 0
+361242 chdir("/")                       = 0
+361242 newfstatat(AT_FDCWD</>, "/oldroot/", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0, 0x7f), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=40, st_atime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_atime_nsec=578640159, st_mtime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_mtime_nsec=578640159, st_ctime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_ctime_nsec=578640159}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/", {st_dev=makedev(0, 0x7f), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=40, st_atime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_atime_nsec=578640159, st_mtime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_mtime_nsec=578640159, st_ctime=1794011574 /* 2026-11-07T01:32:54.578640159+0100 */, st_ctime_nsec=578640159}, 0) = 0
+361242 mount("/oldroot/", "/newroot/", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 faccessat2(AT_FDCWD</>, "/newroot/", F_OK, AT_EACCESS) = 0
+361242 openat(AT_FDCWD</>, "/newroot", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot", 99) = 8
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfda
+361242 read(0x6, 0x597664d59f1a, 0x15)  = 0x15
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xdb1
+361242 read(0x6, 0x597664d5ace0, 0x23f) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 mount("none", "/newroot", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/init", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/dev", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/dev/pts", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/dev/shm", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/sys", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/sys/fs/cgroup", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/proc", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/proc/sys/fs/binfmt_misc", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/run", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/run/lock", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/run/shm", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/run/user", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_NOEXEC|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/usr/lib/wsl/lib", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/mnt/wsl", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/wsl/docker-desktop/shared-sockets/guest-services", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/mnt/wsl/docker-desktop/shared-sockets/host-services", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/mnt/wsl/docker-desktop/cli-tools", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/wslg", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/wslg/distro", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/wslg/versions.txt", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/wslg/doc", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/tmp/.X11-unix", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/usr/lib/modules/6.18.54.1-microsoft-standard-WSL2", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/usr/src/linux-headers-6.18.54.1-microsoft-standard-WSL2", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/usr/lib/linux-tools/6.18.54.1-microsoft-standard-WSL2", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 mount("none", "/newroot/mnt/c", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 mount("none", "/newroot/mnt/e", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 close(5</newroot>)               = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/proc", {st_dev=makedev(0, 0x3d), st_ino=1, st_mode=S_IFDIR|0555, st_nlink=301, st_uid=65534, st_gid=65534, st_blksize=1024, st_blocks=0, st_size=0, st_atime=1793978830 /* 2026-11-06T16:27:10.761055400+0100 */, st_atime_nsec=761055400, st_mtime=1793978830 /* 2026-11-06T16:27:10.761055400+0100 */, st_mtime_nsec=761055400, st_ctime=1793978830 /* 2026-11-06T16:27:10.761055400+0100 */, st_ctime_nsec=761055400}, 0) = 0
+361242 mount("proc", "/newroot/proc", "proc", MS_NOSUID|MS_NODEV|MS_NOEXEC, NULL) = 0
+361242 access("/newroot/proc/sys", W_OK) = -1 EACCES (Permission denied)
+361242 access("/newroot/proc/sysrq-trigger", W_OK) = -1 EACCES (Permission denied)
+361242 access("/newroot/proc/irq", W_OK) = -1 EACCES (Permission denied)
+361242 access("/newroot/proc/bus", W_OK) = -1 EACCES (Permission denied)
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev", {st_dev=makedev(0, 0x6), st_ino=1, st_mode=S_IFDIR|0755, st_nlink=9, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=0, st_size=3220, st_atime=1793979124 /* 2026-11-06T16:32:04.155240661+0100 */, st_atime_nsec=155240661, st_mtime=1793979120 /* 2026-11-06T16:32:00.227211032+0100 */, st_mtime_nsec=227211032, st_ctime=1793979120 /* 2026-11-06T16:32:00.227211032+0100 */, st_ctime_nsec=227211032}, 0) = 0
+361242 mount("tmpfs", "/newroot/dev", "tmpfs", MS_NOSUID|MS_NODEV, "mode=0755") = 0
+361242 creat("/newroot/dev/null", 0444) = 5</newroot/dev/null>
+361242 close(5</newroot/dev/null>)      = 0
+361242 mount("/oldroot/dev/null", "/newroot/dev/null", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/null", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/null", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/null>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/null", 99) = 17
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/null>)      = 0
+361242 creat("/newroot/dev/zero", 0444) = 5</newroot/dev/zero>
+361242 close(5</newroot/dev/zero>)      = 0
+361242 mount("/oldroot/dev/zero", "/newroot/dev/zero", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/zero", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/zero", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/zero>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/zero", 99) = 17
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x2e
+361242 read(0x6, 0x597664d5f55d, 0x1fb2) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/zero>)      = 0
+361242 creat("/newroot/dev/full", 0444) = 5</newroot/dev/full>
+361242 close(5</newroot/dev/full>)      = 0
+361242 mount("/oldroot/dev/full", "/newroot/dev/full", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/full", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/full", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/full>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/full", 99) = 17
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0xac
+361242 read(0x6, 0x597664d5f5db, 0x1f34) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/full>)      = 0
+361242 creat("/newroot/dev/random", 0444) = 5</newroot/dev/random>
+361242 close(5</newroot/dev/random>)    = 0
+361242 mount("/oldroot/dev/random", "/newroot/dev/random", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/random", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/random", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/random>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/random", 99) = 19
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x12e
+361242 read(0x6, 0x597664d5f65d, 0x1eb2) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/random>)    = 0
+361242 creat("/newroot/dev/urandom", 0444) = 5</newroot/dev/urandom>
+361242 close(5</newroot/dev/urandom>)   = 0
+361242 mount("/oldroot/dev/urandom", "/newroot/dev/urandom", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/urandom", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/urandom", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/urandom>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/urandom", 99) = 20
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x1b2
+361242 read(0x6, 0x597664d5f6e1, 0x1e2e) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/urandom>)   = 0
+361242 creat("/newroot/dev/tty", 0444)  = 5</newroot/dev/tty>
+361242 close(5</newroot/dev/tty>)       = 0
+361242 mount("/oldroot/dev/tty", "/newroot/dev/tty", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/tty", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/tty", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/tty>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/tty", 99) = 16
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x22e
+361242 read(0x6, 0x597664d5f75d, 0x1db2) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 close(5</newroot/dev/tty>)       = 0
+361242 symlink("/proc/self/fd/0", "/newroot/dev/stdin") = 0
+361242 symlink("/proc/self/fd/1", "/newroot/dev/stdout") = 0
+361242 symlink("/proc/self/fd/2", "/newroot/dev/stderr") = 0
+361242 symlink("/proc/self/fd", "/newroot/dev/fd") = 0
+361242 symlink("/proc/kcore", "/newroot/dev/core") = 0
+361242 mkdir("/newroot/dev/shm", 0755)  = 0
+361242 mkdir("/newroot/dev/pts", 0755)  = 0
+361242 mount("devpts", "/newroot/dev/pts", "devpts", MS_NOSUID|MS_NOEXEC, "newinstance,ptmxmode=0666,mode=620") = 0
+361242 symlink("pts/ptmx", "/newroot/dev/ptmx") = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/tmp", {st_dev=makedev(0x8, 0x30), st_ino=57346, st_mode=S_IFDIR|S_ISVTX|0777, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=13320, st_size=6811648, st_atime=1793994916 /* 2026-11-06T20:55:16.597097494+0100 */, st_atime_nsec=597097494, st_mtime=1794011573 /* 2026-11-07T01:32:53.117126211+0100 */, st_mtime_nsec=117126211, st_ctime=1794011573 /* 2026-11-07T01:32:53.117126211+0100 */, st_ctime_nsec=117126211}, 0) = 0
+361242 mount("tmpfs", "/newroot/tmp", "tmpfs", MS_NOSUID|MS_NODEV, "mode=0755") = 0
+361242 newfstatat(AT_FDCWD</>, "/oldroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", {st_dev=makedev(0, 0x41), st_ino=184944, st_mode=S_IFDIR|0755, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=80, st_atime=1794011574 /* 2026-11-07T01:32:54.536698545+0100 */, st_atime_nsec=536698545, st_mtime=1794011574 /* 2026-11-07T01:32:54.538449838+0100 */, st_mtime_nsec=538449838, st_ctime=1794011574 /* 2026-11-07T01:32:54.538449838+0100 */, st_ctime_nsec=538449838}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev", {st_dev=makedev(0, 0x81), st_ino=1, st_mode=S_IFDIR|0755, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=320, st_atime=1794011574 /* 2026-11-07T01:32:54.586640581+0100 */, st_atime_nsec=586640581, st_mtime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_mtime_nsec=598641215, st_ctime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_ctime_nsec=598641215}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm", {st_dev=makedev(0, 0x81), st_ino=13, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=40, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_mtime_nsec=598641215, st_ctime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_ctime_nsec=598641215}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af2fb0, 0) = -1 ENOENT (No such file or directory)
+361242 mkdir("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0700) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af2fb0, 0) = -1 ENOENT (No such file or directory)
+361242 mkdir("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0700) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", 0x7fff18af2fb0, 0) = -1 ENOENT (No such file or directory)
+361242 mkdir("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", 0755) = 0
+361242 mount("/oldroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", 99) = 69
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d58f40, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d59f2f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5aecf, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x3af
+361242 read(0x6, 0x597664d5f8de, 0x1c31) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 mount("none", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 close(5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>) = 0
+361242 newfstatat(AT_FDCWD</>, "/oldroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", {st_dev=makedev(0, 0x41), st_ino=184939, st_mode=S_IFDIR|0700, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=80, st_atime=1794011574 /* 2026-11-07T01:32:54.534761843+0100 */, st_atime_nsec=534761843, st_mtime=1794011574 /* 2026-11-07T01:32:54.536339526+0100 */, st_mtime_nsec=536339526, st_ctime=1794011574 /* 2026-11-07T01:32:54.536339526+0100 */, st_ctime_nsec=536339526}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev", {st_dev=makedev(0, 0x81), st_ino=1, st_mode=S_IFDIR|0755, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=320, st_atime=1794011574 /* 2026-11-07T01:32:54.586640581+0100 */, st_atime_nsec=586640581, st_mtime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_mtime_nsec=598641215, st_ctime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_ctime_nsec=598641215}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm", {st_dev=makedev(0, 0x81), st_ino=13, st_mode=S_IFDIR|0755, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", {st_dev=makedev(0, 0x81), st_ino=16, st_mode=S_IFDIR|0700, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", {st_dev=makedev(0, 0x81), st_ino=17, st_mode=S_IFDIR|0700, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_atime_nsec=602839237, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", 0x7fff18af2fb0, 0) = -1 ENOENT (No such file or directory)
+361242 mkdir("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", 0755) = 0
+361242 mount("/oldroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", NULL, MS_BIND|MS_REC|MS_SILENT, NULL) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", 99) = 73
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d59060, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d5a04f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5afef, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x472
+361242 read(0x6, 0x597664d5f9a1, 0x1b6e) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 mount("none", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_NOATIME|MS_BIND|MS_SILENT, NULL) = 0
+361242 close(5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules>) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev", {st_dev=makedev(0, 0x81), st_ino=1, st_mode=S_IFDIR|0755, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=320, st_atime=1794011574 /* 2026-11-07T01:32:54.586640581+0100 */, st_atime_nsec=586640581, st_mtime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_mtime_nsec=598641215, st_ctime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_ctime_nsec=598641215}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm", {st_dev=makedev(0, 0x81), st_ino=13, st_mode=S_IFDIR|0755, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", {st_dev=makedev(0, 0x81), st_ino=16, st_mode=S_IFDIR|0700, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", {st_dev=makedev(0, 0x81), st_ino=17, st_mode=S_IFDIR|0700, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=80, st_atime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_atime_nsec=602839237, st_mtime=1794011574 /* 2026-11-07T01:32:54.607187166+0100 */, st_mtime_nsec=607187166, st_ctime=1794011574 /* 2026-11-07T01:32:54.607187166+0100 */, st_ctime_nsec=607187166}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", 0x7fff18af2fb0, 0) = -1 ENOENT (No such file or directory)
+361242 mkdir("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", 0755) = 0
+361242 mount("tmpfs", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", "tmpfs", MS_NOSUID|MS_NODEV, "mode=0755") = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot", {st_dev=makedev(0x8, 0x30), st_ino=2, st_mode=S_IFDIR|0755, st_nlink=28, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=1793990142 /* 2026-11-06T19:35:42.863566777+0100 */, st_atime_nsec=863566777, st_mtime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_mtime_nsec=317055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.317055400+0100 */, st_ctime_nsec=317055400}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev", {st_dev=makedev(0, 0x81), st_ino=1, st_mode=S_IFDIR|0755, st_nlink=4, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=320, st_atime=1794011574 /* 2026-11-07T01:32:54.586640581+0100 */, st_atime_nsec=586640581, st_mtime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_mtime_nsec=598641215, st_ctime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_ctime_nsec=598641215}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm", {st_dev=makedev(0, 0x81), st_ino=13, st_mode=S_IFDIR|0755, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", {st_dev=makedev(0, 0x81), st_ino=16, st_mode=S_IFDIR|0700, st_nlink=3, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=60, st_atime=1794011574 /* 2026-11-07T01:32:54.598641215+0100 */, st_atime_nsec=598641215, st_mtime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_mtime_nsec=602839237, st_ctime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_ctime_nsec=602839237}, 0) = 0
+361242 newfstatat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", {st_dev=makedev(0, 0x81), st_ino=17, st_mode=S_IFDIR|0700, st_nlink=5, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=0, st_size=100, st_atime=1794011574 /* 2026-11-07T01:32:54.602839237+0100 */, st_atime_nsec=602839237, st_mtime=1794011574 /* 2026-11-07T01:32:54.610184524+0100 */, st_mtime_nsec=610184524, st_ctime=1794011574 /* 2026-11-07T01:32:54.610184524+0100 */, st_ctime_nsec=610184524}, 0) = 0
+361242 readlink("/newroot", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 readlink("/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", 0x7fff18af06c0, 1023) = -1 EINVAL (Invalid argument)
+361242 openat(AT_FDCWD</>, "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", O_RDONLY|O_CLOEXEC|O_PATH) = 5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller>
+361242 readlink("/oldroot/proc/self/fd/5", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", 99) = 71
+361242 openat(3</proc>, "self/mountinfo", O_RDONLY|O_CLOEXEC) = 6</proc/361242/mountinfo>
+361242 read(0x6, 0x597664d5b2d0, 0xfef) = 0xfef
+361242 read(0x6, 0x597664d5a04f, 0xff0) = 0xfa0
+361242 read(0x6, 0x597664d5afef, 0x50)  = 0x50
+361242 read(0x6, 0x597664d5f52f, 0x1fe0) = 0x50f
+361242 read(0x6, 0x597664d5fa3e, 0x1ad1) = 0
+361242 close(6</proc/361242/mountinfo>) = 0
+361242 mount("none", "/newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller", NULL, MS_RDONLY|MS_NOSUID|MS_NODEV|MS_REMOUNT|MS_BIND|MS_SILENT|MS_RELATIME, NULL) = 0
+361242 close(5</newroot/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/controller>) = 0
+361242 mount("oldroot", "oldroot", NULL, MS_REC|MS_SILENT|MS_PRIVATE, NULL) = 0
+361242 umount2("oldroot", MNT_DETACH)   = 0
+361242 openat(AT_FDCWD</>, "/", O_RDONLY|O_DIRECTORY) = 5</>
+361242 chdir("/newroot")                = 0
+361242 pivot_root(".", ".")             = 0
+361242 umount2(".", MNT_DETACH)         = 0
+361242 chdir("/")                       = 0
+361242 close(5</>)                      = 0
+361242 unshare(CLONE_NEWUSER)           = 0
+361242 openat(3</proc>, "self", O_RDONLY|O_PATH) = 5</proc/361242>
+361242 openat(5</proc/361242>, "uid_map", O_RDWR|O_CLOEXEC) = 6</proc/361242/uid_map>
+361242 close(6</proc/361242/uid_map>)   = 0
+361242 openat(5</proc/361242>, "gid_map", O_RDWR|O_CLOEXEC) = 6</proc/361242/gid_map>
+361242 close(6</proc/361242/gid_map>)   = 0
+361242 close(5</proc/361242>)           = 0
+361242 chdir("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original") = 0
+361242 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x762dcb107fd0) = 2 /* 361243 in strace's PID NS */
+361243 close(3</proc>)                  = 0
+361242 openat(3</proc>, "self/fd", O_RDONLY|O_NOCTTY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 5</proc/361242/fd>
+361242 newfstatat(5</proc/361242/fd>, "", {st_dev=makedev(0, 0x3d), st_ino=2749894, st_mode=S_IFDIR|0500, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=1024, st_blocks=0, st_size=6, st_atime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_atime_nsec=562639314, st_mtime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_mtime_nsec=562639314, st_ctime=1794011574 /* 2026-11-07T01:32:54.562639314+0100 */, st_ctime_nsec=562639314}, AT_EMPTY_PATH) = 0
+361243 execve("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/tool/producer", ["/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/tool/producer", "normal", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/data/goal.json", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/unbound-node_modules/pkg/absent.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PYTHONDONTWRITEBYTECODE=1", "PWD=/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original"] <unfinished ...>
+361242 fcntl(5</proc/361242/fd>, F_GETFL) = 0x18800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY)
+361242 fcntl(5</proc/361242/fd>, F_SETFD, FD_CLOEXEC) = 0
+361243 <... execve resumed>)            = 0
+361242 getdents64(5</proc/361242/fd>, [{d_ino=2749894, d_off=1, d_reclen=24, d_type=DT_DIR, d_name="."}, {d_ino=2745344, d_off=2, d_reclen=24, d_type=DT_DIR, d_name=".."}, {d_ino=2755585, d_off=3, d_reclen=24, d_type=DT_LNK, d_name="0"}, {d_ino=2755586, d_off=4, d_reclen=24, d_type=DT_LNK, d_name="1"}, {d_ino=2755587, d_off=5, d_reclen=24, d_type=DT_LNK, d_name="2"}, {d_ino=2749917, d_off=6, d_reclen=24, d_type=DT_LNK, d_name="3"}, {d_ino=2755588, d_off=7, d_reclen=24, d_type=DT_LNK, d_name="4"}, {d_ino=2749895, d_off=66, d_reclen=24, d_type=DT_LNK, d_name="5"}], 32768) = 192
+361242 close(3</proc>)                  = 0
+361243 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+361242 getdents64(5</proc/361242/fd>,  <unfinished ...>
+361243 <... mmap resumed>)              = 0x79774ff23000
+361242 <... getdents64 resumed>[], 32768) = 0
+361243 access("/etc/ld.so.preload", R_OK <unfinished ...>
+361242 close(5</proc/361242/fd> <unfinished ...>
+361243 <... access resumed>)            = -1 ENOENT (No such file or directory)
+361242 <... close resumed>)             = 0
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+361243 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+361243 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x79774ff13000
+361243 close(3</etc/ld.so.cache>)       = 0
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+361243 read(0x3, 0x7ffd01ac9098, 0x340) = 0x340
+361243 pread64(0x3, 0x7ffd01ac8ca0, 0x310, 0x40) = 0x310
+361243 pread64(0x3, 0x7ffd01ac8c60, 0x30, 0x350) = 0x30
+361243 pread64(0x3, 0x7ffd01ac8c10, 0x44, 0x380) = 0x44
+361243 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+361243 pread64(0x3, 0x7ffd01ac8b70, 0x310, 0x40) = 0x310
+361243 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x79774fc00000
+361243 mmap(0x79774fc28000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x79774fc28000
+361243 mmap(0x79774fdbd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x79774fdbd000
+361243 mmap(0x79774fe16000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x79774fe16000
+361243 mmap(0x79774fe1c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x79774fe1c000
+361243 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+361243 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x79774ff10000
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/data/goal.json", O_RDONLY|O_CLOEXEC) = 3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/data/goal.json>
+361243 read(0x3, 0x7ffd01ac8c70, 0x64)  = 0x1d
+361243 close(3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original/data/goal.json>) = 0
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/pkg/package.json", O_RDONLY|O_CLOEXEC) = 3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/pkg/package.json>
+361243 read(0x3, 0x7ffd01ac8c70, 0x64)  = 0x21
+361243 close(3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/pkg/package.json>) = 0
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/pkg/absent.json", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+361243 newfstatat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/pkg/missing-dir/deep.json", 0x7ffd01ac8d20, 0) = -1 ENOENT (No such file or directory)
+361243 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-ja7a6cpz/node_modules/alias/absent.json", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+361243 exit_group(0)                    = ?
+361241 read(0x4, 0x7fff18af31d0, 0x8)   = 0x8
+361241 exit_group(0 <unfinished ...>
+361242 exit_group(0 <unfinished ...>
+361241 <... exit_group resumed>)        = ?
+361242 <... exit_group resumed>)        = ?

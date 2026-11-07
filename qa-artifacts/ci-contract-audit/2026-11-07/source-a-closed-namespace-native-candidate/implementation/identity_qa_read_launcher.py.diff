@@ -1,0 +1,38 @@
+--- active-readonly/scripts/identity_qa_read_launcher.py
++++ private-candidate/scripts/identity_qa_read_launcher.py
+@@ -24,7 +24,7 @@
+     __slots__ = ('_token', 'root', 'role', 'cwd', 'argv', 'command', 'trace', 'returncode', 'stdout', 'stderr',
+                  'stdio', 'tool_context', 'trace_sha256', 'recorder_trace', 'recorder_trace_sha256',
+                  'producer_boundary', 'namespace_process_ids', 'evidence_directory', 'readonly_dependency_mounts',
+-                 'aborted_identity_observations','readonly_namespace_parents')
++                 'aborted_identity_observations','readonly_namespace_parents','namespace')
+ 
+     def __init__(self, token, **values):
+         if token is not _TOKEN:
+@@ -59,12 +59,15 @@
+         raise ValueError('Producer failed or actual trace bytes differ from its launch')
+     if hashlib.sha256(evidence.recorder_trace.encode()).hexdigest() != evidence.recorder_trace_sha256:
+         raise ValueError('Controller recorder bytes differ from their launch binding')
++    if getattr(evidence,'namespace',None) is not None:
++        evidence.namespace.require_bound_launch(evidence,trace,cwd,root,role)
++        return evidence
+     if evidence.cwd != Path(cwd).resolve(strict=True) or evidence.root != Path(root).resolve(strict=True) or evidence.role != role:
+         raise ValueError('Actual launch role/root/cwd differs')
+     return evidence
+ 
+ 
+-def _producer_trace(recorder_trace, sandbox_command, argv):
++def _producer_trace(recorder_trace, sandbox_command, argv, bootstrap_argv=None):
+     """Retain the full pinned-bwrap prelude; select all producer descendants.
+ 
+     Only the controller calls this after its own real launch. The boundary is
+@@ -91,6 +94,9 @@
+         if operation in ('clone', 'clone3', 'fork', 'vfork') and not result.startswith('-1 '):
+             known.add(traced_pid(result))
+         if operation == 'execve':
++            if bootstrap_argv is not None and number(result)==0 and exec_argv(event)==(bootstrap_argv[0],bootstrap_argv):
++                bootstrap_argv=None
++                continue
+             if number(result) != 0 or exec_argv(event) != (argv[0], argv):
+                 raise ValueError('Unexpected secondary executable before the producer boundary')
+             boundary = event

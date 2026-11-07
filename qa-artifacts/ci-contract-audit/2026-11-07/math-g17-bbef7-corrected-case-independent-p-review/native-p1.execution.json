@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--ro-bind",
+    "/dev/shm/math-g17-p15-cold-x61wb80n/source15.json",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/positiveGoalEvidenceReview.ts",
+    "--config=qa-artifacts/ci-contract-audit/2026-11-07/math-g17-bbef7-corrected-case-independent-p-review/current-p1.config.json",
+    "--mode=check"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 0.4660348892211914,
+  "source15Sha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+  "activeRootReadOnly": true,
+  "scopeGoals": 1,
+  "excluded": "No807 run, V transport, unit recognition, DB or production"
+}

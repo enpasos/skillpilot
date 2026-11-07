@@ -1,0 +1,1082 @@
+{
+  "reviewKind": "independent-adversarial-input-edge-review",
+  "startedBeforeFirstInputReadUtc": "2026-11-07T04:21:07Z",
+  "completedUtc": "2026-11-07T04:24:10.175555+00:00",
+  "requestedModel": "gpt-6-astra",
+  "requestedReasoningEffort": "ultra",
+  "runtimeModelIndependentlyVerified": false,
+  "seed": null,
+  "backendParameters": null,
+  "claim": "No tested original/input/scope forgery bypass observed within fixed current profile; integration obligations remain separate.",
+  "cases": [
+    {
+      "name": "normal: authentic complete inputs",
+      "expected": "ok",
+      "actual": "ok",
+      "issues": []
+    },
+    {
+      "name": "normal: plain copied capability cannot grant authority",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "normal: missing receipt",
+      "expected": "missing",
+      "actual": "missing",
+      "issues": [
+        "Missing immutable reviewed-context receipt"
+      ]
+    },
+    {
+      "name": "normal: changed complete German description",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "normal: wrong owner in current scope",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "normal: wrong subject in current scope",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "normal: receipt nominates other owner",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "normal: source edge removed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must have required property 'ownerSource'"
+      ]
+    },
+    {
+      "name": "normal: author input edge replaced by source",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original input bytes changed"
+      ]
+    },
+    {
+      "name": "normal: original review newer accepted commit",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "normal: original review path traversal",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Unsafe visualization evidence path"
+      ]
+    },
+    {
+      "name": "normal: reviewed asset edge removed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must have required property 'reviewedAsset'"
+      ]
+    },
+    {
+      "name": "normal: current primary URL missing",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current primary asset paths differ"
+      ]
+    },
+    {
+      "name": "normal: current canonical asset missing",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current primary asset paths differ"
+      ]
+    },
+    {
+      "name": "normal: unchanged matrix-candidate-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "normal: unchanged economics-native-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Expected object"
+      ]
+    },
+    {
+      "name": "normal: unchanged diagram-current-b-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "normal: unchanged economics-q3-embedded-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Q3 embedded fixed review/asset path differs"
+      ]
+    },
+    {
+      "name": "normal: unchanged economics-q3-trade-finance-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Q3 original family/commit/owner differs"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/independent-image-review.receipt.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/independent-image-review.receipt.json'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-360.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-360.png'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-680.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-680.png'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/generation.actual.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/generation.actual.json'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/whole-goals.candidate.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/whole-goals.candidate.json'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/native-seventeen-preparation.actual.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/native-seventeen-preparation.actual.json'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/metadata.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/metadata.json'"
+      ]
+    },
+    {
+      "name": "normal: missing actual original dependency curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/nano-banana-prompt.de.md",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/nano-banana-prompt.de.md'"
+      ]
+    },
+    {
+      "name": "normal: today forged local KEEP cannot replace historical original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original input bytes changed"
+      ]
+    },
+    {
+      "name": "normal: rehashed today forged original cannot self-authorize",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original Git evidence hash differs"
+      ]
+    },
+    {
+      "name": "normal: missing actual supplied English title",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "normal: altered actual supplied demand",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "normal: omit receipt demand field",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "correction: authentic complete inputs",
+      "expected": "ok",
+      "actual": "ok",
+      "issues": []
+    },
+    {
+      "name": "correction: plain copied capability cannot grant authority",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "correction: missing receipt",
+      "expected": "missing",
+      "actual": "missing",
+      "issues": [
+        "Missing immutable reviewed-context receipt"
+      ]
+    },
+    {
+      "name": "correction: changed complete German description",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "correction: wrong owner in current scope",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "correction: wrong subject in current scope",
+      "expected": "stale",
+      "actual": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "name": "correction: receipt nominates other owner",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "correction: source edge removed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must have required property 'ownerSource'"
+      ]
+    },
+    {
+      "name": "correction: author input edge replaced by source",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original input bytes changed"
+      ]
+    },
+    {
+      "name": "correction: original review newer accepted commit",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "correction: original review path traversal",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Unsafe visualization evidence path"
+      ]
+    },
+    {
+      "name": "correction: reviewed asset edge removed",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Closed context receipt schema failed: data must have required property 'reviewedAsset'"
+      ]
+    },
+    {
+      "name": "correction: current primary URL missing",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current primary asset paths differ"
+      ]
+    },
+    {
+      "name": "correction: current canonical asset missing",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Current primary asset paths differ"
+      ]
+    },
+    {
+      "name": "correction: unchanged matrix-candidate-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "correction: unchanged economics-native-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Expected object"
+      ]
+    },
+    {
+      "name": "correction: unchanged diagram-current-b-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original owner/goal/subject association differs from the closed review profile"
+      ]
+    },
+    {
+      "name": "correction: unchanged economics-q3-embedded-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Q3 embedded fixed review/asset path differs"
+      ]
+    },
+    {
+      "name": "correction: unchanged economics-q3-trade-finance-v1 does not accept new original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Q3 original family/commit/owner differs"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/independent-image-review.receipt.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/independent-image-review.receipt.json'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.png'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-360.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-360.png'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-680.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-680.png'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/generation.actual.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/generation.actual.json'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/independent-image-review.receipt.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/independent-image-review.receipt.json'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/prompt.actual.txt",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/prompt.actual.txt'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-before-edit-preparation.actual.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-before-edit-preparation.actual.json'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/metadata.json",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/metadata.json'"
+      ]
+    },
+    {
+      "name": "correction: missing actual original dependency curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/nano-banana-prompt.de.md",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "ENOENT: no such file or directory, lstat '/dev/shm/econ-own-input-edge-bImSIZ/originals/curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/nano-banana-prompt.de.md'"
+      ]
+    },
+    {
+      "name": "correction: today forged local KEEP cannot replace historical original",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original input bytes changed"
+      ]
+    },
+    {
+      "name": "correction: rehashed today forged original cannot self-authorize",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Original Git evidence hash differs"
+      ]
+    },
+    {
+      "name": "correction: current unreviewed English may differ but is not certified",
+      "expected": "ok",
+      "actual": "ok",
+      "issues": []
+    },
+    {
+      "name": "correction: receipt cannot invent English scope",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "correction: receipt cannot invent demand scope",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Receipt context is not the actual original reviewed context"
+      ]
+    },
+    {
+      "name": "correction: preserved REJECT cannot stand in for corrected KEEP",
+      "expected": "invalid",
+      "actual": "invalid",
+      "issues": [
+        "Q2 fixed original receipt/input/asset association differs"
+      ]
+    }
+  ],
+  "caseCount": 69,
+  "allExpectationsMet": true,
+  "originalsRead": 23,
+  "originalPinsSeen": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/independent-image-review.receipt.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "64619dfe3f65fc170d51d9a330d591773e8917401ad84973b9356ee96cc53776",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "b1343b8ba8312b0b60fc787fd9390b0de561a02260f5843af9915e977044a860",
+      "currentCopyRequired": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-360.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "ede983d25e50e8208cc4d24698e54f9b4a9dfdac944a6cc11719cb7c1635254d",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.width-680.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "afc61c75e13c81840a7a9dc3167d64d81cd850fba6bc29ebca0c3946717f0d46",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/generation.actual.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "3cb309dfee8406119728980085c720c6a6a4c34ab2ec76e6a3a72f1da503ed97",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/whole-goals.candidate.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "34cba76182ed25582dae2b3d8e641d58719db6099b2ef6adff6c215b699e1476",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/native-seventeen-preparation.actual.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "5c0730e63c54d2add045e34399c0a9817cda4cb0d1d3b52d2668f2e949c8dd8d",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/metadata.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "ddcc6741b0967aa937ee859d36d958232113b899513d94688b20fdeeb215c9f0",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/nano-banana-prompt.de.md",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "8400cc3d7810816a2d8cb21a66d0781d2d10cc46743da04ad56511d7ba81e46c",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/independent-image-review.receipt.json",
+      "gitCommit": "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "sha256": "64619dfe3f65fc170d51d9a330d591773e8917401ad84973b9356ee96cc53776",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/independent-image-review.receipt.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "d1fb8e677b9ab136682d96cf7d300fe9a5b720ae1d061d2414b9f62d2dda4703",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-360.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "1d106d6fce3552b2cebec17749a6726fdf05381c7f52dc08de3d01d1b649a09c",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-680.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "c89a4dea74fe2baa26605106066cd893f2a3293fb975e6708851a03f982e4474",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/generation.actual.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "3914b94621402faa2a7a1da93c8b42af69e99024b548b1868626566131a33738",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/independent-image-review.receipt.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "6f9a19cbc3340c7f93f3c91217436c3341dd1fc57e3c423923f5f79b1ed69d2b",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "c86f2b3d197bfbf180387b6cb4bca13edea538f69d74c0af79f6414b64766803",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/prompt.actual.txt",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "7a8f65e408f5ca859d24fe7565084a6d4266047ab51ec3121f07d3f918ac8484",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-before-edit-preparation.actual.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "0aea768a3f3d71026637e4d07bea52f351e61c948f61f194ca662646e5df2e58",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/metadata.json",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "0d5955273fadeda5276b5eaddccbe38c1b511618aec4dc929d8598cb1f0918ae",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/nano-banana-prompt.de.md",
+      "gitCommit": "42095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "c7072ef20c2a51dc20ed7a1e2733ffd0afb0ab4b243ca66471147a61c387b562",
+      "currentCopyRequired": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/independent-image-review.receipt.json",
+      "gitCommit": "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "sha256": "d1fb8e677b9ab136682d96cf7d300fe9a5b720ae1d061d2414b9f62d2dda4703",
+      "currentCopyRequired": true
+    }
+  ],
+  "codeAndInputPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+      "sha256After": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "1ba2c722f485773d945fb84e08c187bc5843343d04c1ce2c39c1edc789b4af75",
+      "sha256After": "1ba2c722f485773d945fb84e08c187bc5843343d04c1ce2c39c1edc789b4af75"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-first-M7-D9-and14-qualified-integration-root-v1/qa346.current-reviewed14-preserved332.ROOT-QUALIFIED.json",
+      "sha256": "1ba2c722f485773d945fb84e08c187bc5843343d04c1ce2c39c1edc789b4af75",
+      "sha256After": "1ba2c722f485773d945fb84e08c187bc5843343d04c1ce2c39c1edc789b4af75"
+    },
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "5d60666f3cc47849144bb6262bd2c77634ff4ebe216bbda072e3a2e5127e90e6",
+      "sha256After": "5d60666f3cc47849144bb6262bd2c77634ff4ebe216bbda072e3a2e5127e90e6"
+    },
+    {
+      "path": "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts",
+      "sha256": "57494ea57cf8218d56fba7473e98291e9aea621c4e2b7172986829d01ace4ed4",
+      "sha256After": "57494ea57cf8218d56fba7473e98291e9aea621c4e2b7172986829d01ace4ed4"
+    },
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702",
+      "sha256After": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702"
+    },
+    {
+      "path": "app/scripts/lib/qualifiedVisualizationContextAuthority.ts",
+      "sha256": "de246d067159eb8b48dc346e3cb6ba791c0c2316116ae45a55cf4950e8ceea61",
+      "sha256After": "de246d067159eb8b48dc346e3cb6ba791c0c2316116ae45a55cf4950e8ceea61"
+    },
+    {
+      "path": "scripts/visualization_review_git_capsule.py",
+      "sha256": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34",
+      "sha256After": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "f85271c0ef10543ecfbff5e50e7cfc30af7b847e3e91def4452a811d1f2941d1",
+      "sha256After": "f85271c0ef10543ecfbff5e50e7cfc30af7b847e3e91def4452a811d1f2941d1"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualified-context-index-math3-2026-11-07.json",
+      "sha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "sha256After": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png",
+      "sha256": "19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28",
+      "sha256After": "19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png",
+      "sha256": "19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28",
+      "sha256After": "19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c.png",
+      "sha256": "9214b2bebef8792b17937b0fa1412ed36acec58ddf531aa9d0d8a94e1cf3e021",
+      "sha256After": "9214b2bebef8792b17937b0fa1412ed36acec58ddf531aa9d0d8a94e1cf3e021"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c.png",
+      "sha256": "9214b2bebef8792b17937b0fa1412ed36acec58ddf531aa9d0d8a94e1cf3e021",
+      "sha256After": "9214b2bebef8792b17937b0fa1412ed36acec58ddf531aa9d0d8a94e1cf3e021"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/f9132615-8166-5e42-ad04-d8b2b75d719d/f9132615-8166-5e42-ad04-d8b2b75d719d.png",
+      "sha256": "d361faeabb4a31945960c111363bc98a9d9f1038b47acaeb6109db86d0120756",
+      "sha256After": "d361faeabb4a31945960c111363bc98a9d9f1038b47acaeb6109db86d0120756"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/f9132615-8166-5e42-ad04-d8b2b75d719d/f9132615-8166-5e42-ad04-d8b2b75d719d.png",
+      "sha256": "d361faeabb4a31945960c111363bc98a9d9f1038b47acaeb6109db86d0120756",
+      "sha256After": "d361faeabb4a31945960c111363bc98a9d9f1038b47acaeb6109db86d0120756"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3.png",
+      "sha256": "522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2",
+      "sha256After": "522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3.png",
+      "sha256": "522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2",
+      "sha256After": "522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "sha256": "bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca",
+      "sha256After": "bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+      "sha256": "bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca",
+      "sha256After": "bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/577f0e2d-643a-5a0c-833b-301622a6cb00/577f0e2d-643a-5a0c-833b-301622a6cb00.png",
+      "sha256": "0d5e3079e75188b933470d079200becbeea55a82f5aa6e2d2eb7eb2072772d3a",
+      "sha256After": "0d5e3079e75188b933470d079200becbeea55a82f5aa6e2d2eb7eb2072772d3a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/577f0e2d-643a-5a0c-833b-301622a6cb00/577f0e2d-643a-5a0c-833b-301622a6cb00.png",
+      "sha256": "0d5e3079e75188b933470d079200becbeea55a82f5aa6e2d2eb7eb2072772d3a",
+      "sha256After": "0d5e3079e75188b933470d079200becbeea55a82f5aa6e2d2eb7eb2072772d3a"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png",
+      "sha256": "650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b",
+      "sha256After": "650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png",
+      "sha256": "650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b",
+      "sha256After": "650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/25278ecf-2e77-556e-9fe6-8f0b954cc680/25278ecf-2e77-556e-9fe6-8f0b954cc680.png",
+      "sha256": "7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535",
+      "sha256After": "7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/25278ecf-2e77-556e-9fe6-8f0b954cc680/25278ecf-2e77-556e-9fe6-8f0b954cc680.png",
+      "sha256": "7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535",
+      "sha256After": "7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/29076abc-83ab-5e01-af81-18b7b3f7cf5a/29076abc-83ab-5e01-af81-18b7b3f7cf5a.png",
+      "sha256": "99b22be81f2aa053008088b8581d76fd5cc7d7a543dfa5ec2ddd0284276f3570",
+      "sha256After": "99b22be81f2aa053008088b8581d76fd5cc7d7a543dfa5ec2ddd0284276f3570"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/29076abc-83ab-5e01-af81-18b7b3f7cf5a/29076abc-83ab-5e01-af81-18b7b3f7cf5a.png",
+      "sha256": "99b22be81f2aa053008088b8581d76fd5cc7d7a543dfa5ec2ddd0284276f3570",
+      "sha256After": "99b22be81f2aa053008088b8581d76fd5cc7d7a543dfa5ec2ddd0284276f3570"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/8ebbbe19-43dd-53ff-a6d0-9d94a5973616/8ebbbe19-43dd-53ff-a6d0-9d94a5973616.png",
+      "sha256": "9f38dff4fc0f968991b27603ecc8800574676b731e4143596ab6bb5b4b28ca34",
+      "sha256After": "9f38dff4fc0f968991b27603ecc8800574676b731e4143596ab6bb5b4b28ca34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/8ebbbe19-43dd-53ff-a6d0-9d94a5973616/8ebbbe19-43dd-53ff-a6d0-9d94a5973616.png",
+      "sha256": "9f38dff4fc0f968991b27603ecc8800574676b731e4143596ab6bb5b4b28ca34",
+      "sha256After": "9f38dff4fc0f968991b27603ecc8800574676b731e4143596ab6bb5b4b28ca34"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/9832485e-8431-58cb-b251-9473da415a5e/9832485e-8431-58cb-b251-9473da415a5e.png",
+      "sha256": "b017eb70846019b5ad26e81c34887c58c0ff171e6948025b363cc4c22865fb58",
+      "sha256After": "b017eb70846019b5ad26e81c34887c58c0ff171e6948025b363cc4c22865fb58"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9832485e-8431-58cb-b251-9473da415a5e/9832485e-8431-58cb-b251-9473da415a5e.png",
+      "sha256": "b017eb70846019b5ad26e81c34887c58c0ff171e6948025b363cc4c22865fb58",
+      "sha256After": "b017eb70846019b5ad26e81c34887c58c0ff171e6948025b363cc4c22865fb58"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/c7341b02-3da3-50f8-a750-5d10ed7c9958/c7341b02-3da3-50f8-a750-5d10ed7c9958.png",
+      "sha256": "50228b81b64e12b1cee9f86452dd782b91f96bfbb8833cf18f6bb5546cacc93d",
+      "sha256After": "50228b81b64e12b1cee9f86452dd782b91f96bfbb8833cf18f6bb5546cacc93d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c7341b02-3da3-50f8-a750-5d10ed7c9958/c7341b02-3da3-50f8-a750-5d10ed7c9958.png",
+      "sha256": "50228b81b64e12b1cee9f86452dd782b91f96bfbb8833cf18f6bb5546cacc93d",
+      "sha256After": "50228b81b64e12b1cee9f86452dd782b91f96bfbb8833cf18f6bb5546cacc93d"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/c5272ab8-baa0-570b-9f31-426d1f4460f2/c5272ab8-baa0-570b-9f31-426d1f4460f2.png",
+      "sha256": "a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3",
+      "sha256After": "a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c5272ab8-baa0-570b-9f31-426d1f4460f2/c5272ab8-baa0-570b-9f31-426d1f4460f2.png",
+      "sha256": "a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3",
+      "sha256After": "a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/a72ddc94-6b38-5c14-8d8b-661472e4dfba/a72ddc94-6b38-5c14-8d8b-661472e4dfba.png",
+      "sha256": "a8eb40847c10b9dd99f3219586c4f652cd31f271774f755e2558e3f186970344",
+      "sha256After": "a8eb40847c10b9dd99f3219586c4f652cd31f271774f755e2558e3f186970344"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/a72ddc94-6b38-5c14-8d8b-661472e4dfba/a72ddc94-6b38-5c14-8d8b-661472e4dfba.png",
+      "sha256": "a8eb40847c10b9dd99f3219586c4f652cd31f271774f755e2558e3f186970344",
+      "sha256After": "a8eb40847c10b9dd99f3219586c4f652cd31f271774f755e2558e3f186970344"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/424bae9f-8f2e-5093-a17d-ee5eadb6edde/424bae9f-8f2e-5093-a17d-ee5eadb6edde.png",
+      "sha256": "c50edb2271c4fbac059d133e61ee767031783fa4d23c3b47fa5bc99f0e54e796",
+      "sha256After": "c50edb2271c4fbac059d133e61ee767031783fa4d23c3b47fa5bc99f0e54e796"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/424bae9f-8f2e-5093-a17d-ee5eadb6edde/424bae9f-8f2e-5093-a17d-ee5eadb6edde.png",
+      "sha256": "c50edb2271c4fbac059d133e61ee767031783fa4d23c3b47fa5bc99f0e54e796",
+      "sha256After": "c50edb2271c4fbac059d133e61ee767031783fa4d23c3b47fa5bc99f0e54e796"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/7c9efc27-e74f-5a82-bf56-95a9aa21cb94/7c9efc27-e74f-5a82-bf56-95a9aa21cb94.png",
+      "sha256": "17e7fec907163161c0552e8bf090dcd5d78b578b42c7d628549707ca45f1fe5d",
+      "sha256After": "17e7fec907163161c0552e8bf090dcd5d78b578b42c7d628549707ca45f1fe5d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7c9efc27-e74f-5a82-bf56-95a9aa21cb94/7c9efc27-e74f-5a82-bf56-95a9aa21cb94.png",
+      "sha256": "17e7fec907163161c0552e8bf090dcd5d78b578b42c7d628549707ca45f1fe5d",
+      "sha256After": "17e7fec907163161c0552e8bf090dcd5d78b578b42c7d628549707ca45f1fe5d"
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/d17ff931-085d-56be-932d-3839b5b88ba8/d17ff931-085d-56be-932d-3839b5b88ba8.png",
+      "sha256": "de8932399775ffa4e64887249baef68b8defd94a674ade035b1489c0b800ded2",
+      "sha256After": "de8932399775ffa4e64887249baef68b8defd94a674ade035b1489c0b800ded2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/d17ff931-085d-56be-932d-3839b5b88ba8/d17ff931-085d-56be-932d-3839b5b88ba8.png",
+      "sha256": "de8932399775ffa4e64887249baef68b8defd94a674ade035b1489c0b800ded2",
+      "sha256After": "de8932399775ffa4e64887249baef68b8defd94a674ade035b1489c0b800ded2"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.json",
+      "sha256": "b6aab5ca11677c378e08b84233dc4d3ff7577a66e26cc77ae8d914e60cdd88f9",
+      "sha256After": "b6aab5ca11677c378e08b84233dc4d3ff7577a66e26cc77ae8d914e60cdd88f9"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c.json",
+      "sha256": "1fbd504c799997dc52ee0877cf2071d01d765f09a30e5daff8543be345814cf8",
+      "sha256After": "1fbd504c799997dc52ee0877cf2071d01d765f09a30e5daff8543be345814cf8"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/f9132615-8166-5e42-ad04-d8b2b75d719d.json",
+      "sha256": "ffcd696cee1da5c20062fbd0d4079326ca35f5f69cef1b91ea43817f5b87f064",
+      "sha256After": "ffcd696cee1da5c20062fbd0d4079326ca35f5f69cef1b91ea43817f5b87f064"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3.json",
+      "sha256": "0f84af818c7a8dd6b5973b2ffb7d81699598a47088dcdae5c56ba845630d8f69",
+      "sha256After": "0f84af818c7a8dd6b5973b2ffb7d81699598a47088dcdae5c56ba845630d8f69"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/676684da-5ba2-5c2a-ba7e-a8413915c29c.json",
+      "sha256": "a794635e34ad97c73b0b044bd7ec8a2dcef64070773e4caed5ed53f499e981a4",
+      "sha256After": "a794635e34ad97c73b0b044bd7ec8a2dcef64070773e4caed5ed53f499e981a4"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/577f0e2d-643a-5a0c-833b-301622a6cb00.json",
+      "sha256": "a9c21765352e597be936694e89f43280592b87c8969d23f050dceb02d7a4d4c2",
+      "sha256After": "a9c21765352e597be936694e89f43280592b87c8969d23f050dceb02d7a4d4c2"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/79d244e0-049e-59e9-a2fb-b8f8670b315a.json",
+      "sha256": "f353cbeae7e070792aacf52634d1f093e418b2566ec0d50dde5674b50ce9913b",
+      "sha256After": "f353cbeae7e070792aacf52634d1f093e418b2566ec0d50dde5674b50ce9913b"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/25278ecf-2e77-556e-9fe6-8f0b954cc680.json",
+      "sha256": "c9bd986c8de22edf1bb3fdfbb0f28b4ec6099dcca5616675634847d754a641a3",
+      "sha256After": "c9bd986c8de22edf1bb3fdfbb0f28b4ec6099dcca5616675634847d754a641a3"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/29076abc-83ab-5e01-af81-18b7b3f7cf5a.json",
+      "sha256": "b355f3555606eae1fd77c15bcb9368a76c795529a7d7611e2856afd1fae820fa",
+      "sha256After": "b355f3555606eae1fd77c15bcb9368a76c795529a7d7611e2856afd1fae820fa"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/8ebbbe19-43dd-53ff-a6d0-9d94a5973616.json",
+      "sha256": "2236d650017714913bdf1efca53cb1117d6b523700675b93386d5020533024da",
+      "sha256After": "2236d650017714913bdf1efca53cb1117d6b523700675b93386d5020533024da"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/9832485e-8431-58cb-b251-9473da415a5e.json",
+      "sha256": "9b2408269479955c150d029096d36b3d2f939d1d0ce3b38d92cbaa83c93db525",
+      "sha256After": "9b2408269479955c150d029096d36b3d2f939d1d0ce3b38d92cbaa83c93db525"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/c7341b02-3da3-50f8-a750-5d10ed7c9958.json",
+      "sha256": "e358735148676932bc52a224a0a5420042f0632545201536d1d7394bf2966c9b",
+      "sha256After": "e358735148676932bc52a224a0a5420042f0632545201536d1d7394bf2966c9b"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/c5272ab8-baa0-570b-9f31-426d1f4460f2.json",
+      "sha256": "90c513923353d89483b7b4accbaf78658b230d3d5d3a8b00ea64272fbb1ebb19",
+      "sha256After": "90c513923353d89483b7b4accbaf78658b230d3d5d3a8b00ea64272fbb1ebb19"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/a72ddc94-6b38-5c14-8d8b-661472e4dfba.json",
+      "sha256": "25c9678ad31021985f2a87813a6716928533a246492ec6d4cbfd24af0372f52f",
+      "sha256After": "25c9678ad31021985f2a87813a6716928533a246492ec6d4cbfd24af0372f52f"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/424bae9f-8f2e-5093-a17d-ee5eadb6edde.json",
+      "sha256": "33a91b8556ed3d2cd71ac0b194e1ca0271f07f1fbf51c102e1814621efcb6929",
+      "sha256After": "33a91b8556ed3d2cd71ac0b194e1ca0271f07f1fbf51c102e1814621efcb6929"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/7c9efc27-e74f-5a82-bf56-95a9aa21cb94.json",
+      "sha256": "5cf9acc4e47c79ec06c0f81e11014e0e554d00cec2493513ebf1130b1366fd00",
+      "sha256After": "5cf9acc4e47c79ec06c0f81e11014e0e554d00cec2493513ebf1130b1366fd00"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-receipts/d17ff931-085d-56be-932d-3839b5b88ba8.json",
+      "sha256": "b2cd46d4ac6ac8b0a184c04781a1602ca7fbd6d1c55d8d30ef0181eb61501f2f",
+      "sha256After": "b2cd46d4ac6ac8b0a184c04781a1602ca7fbd6d1c55d8d30ef0181eb61501f2f"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/economicsQ2MonetarySocialContext.private.ts",
+      "sha256": "05e4462eaddd456cb59213cb53d58b8cc54124cdbd8c7394075e90e19fc59fa7",
+      "sha256After": "05e4462eaddd456cb59213cb53d58b8cc54124cdbd8c7394075e90e19fc59fa7"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/goalVisualizationReviewedContext.private.ts",
+      "sha256": "18c3043423075cdfdacd76a23b338c1bc20ba54a27ae19f6e167b2397e943fed",
+      "sha256After": "18c3043423075cdfdacd76a23b338c1bc20ba54a27ae19f6e167b2397e943fed"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-family-pins.json",
+      "sha256": "a2a0930765426e53765863296102164d7e6bd1f5c73cd7f849085ac6cc46475b",
+      "sha256After": "a2a0930765426e53765863296102164d7e6bd1f5c73cd7f849085ac6cc46475b"
+    }
+  ],
+  "protectedInputsUnchanged": true,
+  "limits": [
+    "Current canonical-source and primary-resourceLink resolution are the caller/driver responsibility. Generic verifier authenticates the supplied current context plus actual image bytes, not a caller-supplied canonical source file.",
+    "Correction676684da intentionally attests only German title/description and image. A successful correction capability does not cover English or demand fields.",
+    "The exact pinned original family is closed, not a generic acceptance rule for all similar-looking later reviews.",
+    "No new AI subject-matter image judgment or human approval, no authority/capsule integration or M6/M7 claim.",
+    "No active source, QA, Git/index or candidate bytes were written; temporary originals and cases existed only under /dev/shm."
+  ],
+  "findings": [
+    {
+      "id": "EDGE-01",
+      "severity": "integration-boundary",
+      "status": "no-new-profile-bypass-observed",
+      "anchors": [
+        "goalVisualizationReviewedContext.private.ts:98",
+        "goalVisualizationReviewedContext.private.ts:173",
+        "goalVisualizationReviewedContext.private.ts:265",
+        "run-private-probe.ts:17",
+        "run-private-probe.ts:26",
+        "run-private-probe.ts:31"
+      ],
+      "finding": "Actual current canonical source/primary resource link derivation is outside the generic verifier. It compares the supplied bounded context and actual public/canonical bytes. OwnerSource authenticates the historical source owner/ID, not the full present-day goal/placement schema.",
+      "requiredHandling": "Preserve exact independent source extraction, unique primary-link derivation, active-input pins and separate scope/authority gates during integration. A private capability alone cannot certify the entire current goal or offer."
+    },
+    {
+      "id": "EDGE-02",
+      "severity": "scope-boundary",
+      "status": "expected-closed-behavior-demonstrated",
+      "anchors": [
+        "economicsQ2MonetarySocialContext.private.ts:87",
+        "economicsQ2MonetarySocialContext.private.ts:110",
+        "goalVisualizationReviewedContext.private.ts:116"
+      ],
+      "finding": "Correction676684da supplies only DE title/description plus image in its native context. Current EN and demand edits still yield a valid DE-only capability; inventing those fields in the receipt fails.",
+      "requiredHandling": "Do not consume a DE-only successful capability as English, demand, D/P, general scope or human approval. This restriction is faithful to the bound corrected original."
+    }
+  ],
+  "ownTestHarness": {
+    "pathDuringExecution": "/dev/shm/econ-edge-review.ts",
+    "sha256": "b1e8abd3bf8bf8a8d1b05ae665da3e0310d691a35c8f00e835fdfd6989c4089d",
+    "source": "import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, rmSync, renameSync } from 'node:fs'\nimport { createHash } from 'node:crypto'\nimport { resolve, dirname } from 'node:path'\nimport { spawnSync } from 'node:child_process'\nimport { createVisualizationContextVerifier as createPrivate, hasVerifiedVisualizationContext } from '/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/goalVisualizationReviewedContext.private.ts'\nimport { createVisualizationContextVerifier as createActive } from '/home/enpasos/projects/skillpilot/app/scripts/goalVisualizationReviewedContext.ts'\nconst root='/home/enpasos/projects/skillpilot'\nconst candidate=root+'/qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate'\nconst out=root+'/qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-independent-peer/input-edge-review.json'\nconst index=JSON.parse(readFileSync(candidate+'/candidate-index.json','utf8'))\nconst pin=JSON.parse(readFileSync(candidate+'/private-family-pins.json','utf8'))\nconst sha=(b:Buffer)=>createHash('sha256').update(b).digest('hex')\nconst json=(v:any)=>Buffer.from(JSON.stringify(v,null,2)+'\\n')\nconst inputPaths=[...new Set([...index.activeInputPins.map((x:any)=>x.path),...index.candidateReceipts.map((x:any)=>x.path),'qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/economicsQ2MonetarySocialContext.private.ts','qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/goalVisualizationReviewedContext.private.ts','qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-family-pins.json','app/scripts/lib/authenticatedGitEvidence.ts'])] as string[]\nconst before=inputPaths.map(path=>({path,sha256:sha(readFileSync(resolve(root,path)))}))\nconst scratch=mkdtempSync('/dev/shm/econ-own-input-edge-')\nconst current=resolve(scratch,'current'),originals=resolve(scratch,'originals')\nmkdirSync(current);mkdirSync(originals)\nconst gitdir=spawnSync('git',['-C',root,'rev-parse','--absolute-git-dir'],{encoding:'utf8'});if(gitdir.status!==0)throw Error('gitdir')\nwriteFileSync(resolve(originals,'.git'),'gitdir: '+gitdir.stdout.trim()+'\\n')\nconst copy=(base:string,path:string)=>{const dest=resolve(base,path);mkdirSync(dirname(dest),{recursive:true});copyFileSync(resolve(root,path),dest)}\nconst results:any[]=[];const seen=new Map<string,any>()\nconst privateVerifier=createPrivate({repositoryRoot:current,originalEvidenceRepositoryRoot:originals,acceptedRepositoryCommit:index.acceptedRepositoryCommit,onAuthenticatedOriginalRead(ref,required){seen.set(ref.gitCommit+':'+ref.path,{...ref,currentCopyRequired:required})}})\nconst activeVerifier=createActive({repositoryRoot:current,originalEvidenceRepositoryRoot:originals,acceptedRepositoryCommit:index.acceptedRepositoryCommit})\nconst emit=(v:any)=>{const raw=json(v);writeFileSync(resolve(current,'receipt.json'),raw);return{path:'receipt.json',sha256:sha(raw)}}\nconst check=(name:string,expected:string,ref:any,ctx:any,verify=privateVerifier)=>{const r=verify(ref,ctx);const actual=r.ok?'ok':r.status;results.push({name,expected,actual,issues:r.ok?[]:r.issues});if(actual!==expected)throw Error('Unexpected outcome: '+name+' '+actual);return r}\ntry{\n for(const [position,label] of [[0,'normal'],[index.rows.findIndex((x:any)=>x.corrected),'correction']] as [number,string][]){\n  const row=index.rows[position],reference=index.candidateReceipts[position];for(const dep of row.originalDependencies)copy(originals,dep.path);for(const p of [row.current.publicAssetPath,row.current.canonicalAssetPath])copy(current,p)\n  const receipt=JSON.parse(readFileSync(resolve(root,reference.path),'utf8'));const ctx=row.current\n  const baseline=emit(receipt);const cap=check(label+': authentic complete inputs','ok',baseline,ctx)\n  results.push({name:label+': plain copied capability cannot grant authority',expected:false,actual:cap.ok?hasVerifiedVisualizationContext({...cap.capability},ctx):null})\n  check(label+': missing receipt','missing',undefined,ctx)\n  check(label+': changed complete German description','stale',baseline,{...ctx,description:ctx.description+' neue Fachbehauptung'})\n  check(label+': wrong owner in current scope','stale',baseline,{...ctx,landscapeId:'00000000-0000-0000-0000-000000000000'})\n  check(label+': wrong subject in current scope','stale',baseline,{...ctx,subject:'mathematik'})\n  check(label+': receipt nominates other owner','invalid',emit({...receipt,context:{...receipt.context,landscapeId:'00000000-0000-0000-0000-000000000000'}}),ctx)\n  check(label+': source edge removed','invalid',emit({...receipt,ownerSource:undefined}),ctx)\n  check(label+': author input edge replaced by source','invalid',emit({...receipt,originalInput:receipt.ownerSource}),ctx)\n  check(label+': original review newer accepted commit','invalid',emit({...receipt,originalReview:{...receipt.originalReview,gitCommit:index.acceptedRepositoryCommit}}),ctx)\n  check(label+': original review path traversal','invalid',emit({...receipt,originalReview:{...receipt.originalReview,path:'../'+receipt.originalReview.path}}),ctx)\n  check(label+': reviewed asset edge removed','invalid',emit({...receipt,reviewedAsset:undefined}),ctx)\n  check(label+': current primary URL missing','invalid',emit(receipt),{...ctx,imageUrl:''})\n  check(label+': current canonical asset missing','invalid',emit(receipt),{...ctx,canonicalAssetPath:'missing.png'})\n  for(const profile of ['matrix-candidate-v1','economics-native-v1','diagram-current-b-v1','economics-q3-embedded-v1','economics-q3-trade-finance-v1'])check(label+': unchanged '+profile+' does not accept new original','invalid',emit({...receipt,reviewProfile:profile}),ctx,activeVerifier)\n  for(const dep of row.originalDependencies.filter((x:any)=>!x.path.includes('/canonical/'))){\n   const p=resolve(originals,dep.path),bak=p+'.missing';renameSync(p,bak);check(label+': missing actual original dependency '+dep.path,'invalid',emit(receipt),ctx);renameSync(bak,p)\n  }\n  const target=resolve(originals,receipt.originalReview.path),original=readFileSync(target),forged=JSON.parse(original.toString());forged.reviewedAt='2026-11-07T04:21:07Z';forged.reviewDate='2026-11-07';forged.actualInspection.fachlichePruefung='KEEP. Source keywords match.';const forgedRaw=json(forged);writeFileSync(target,forgedRaw)\n  check(label+': today forged local KEEP cannot replace historical original','invalid',emit(receipt),ctx)\n  check(label+': rehashed today forged original cannot self-authorize','invalid',emit({...receipt,originalReview:{...receipt.originalReview,sha256:sha(forgedRaw)},originalInput:{...receipt.originalInput,sha256:sha(forgedRaw)},reviewedAt:forged.reviewedAt,originalReason:forged.actualInspection.fachlichePruefung}),ctx)\n  writeFileSync(target,original)\n  if(label==='normal'){\n   check('normal: missing actual supplied English title','stale',emit(receipt),{...ctx,titleEn:undefined})\n   check('normal: altered actual supplied demand','stale',emit(receipt),{...ctx,demandLevel:'AB1'})\n   check('normal: omit receipt demand field','invalid',emit({...receipt,context:{...receipt.context,demandLevel:undefined}}),ctx)\n  }else{\n   check('correction: current unreviewed English may differ but is not certified','ok',emit(receipt),{...ctx,titleEn:'unreviewed changed English title',descriptionEn:'unreviewed changed English description',demandLevel:'AB1'})\n   check('correction: receipt cannot invent English scope','invalid',emit({...receipt,context:{...receipt.context,titleEn:ctx.titleEn}}),ctx)\n   check('correction: receipt cannot invent demand scope','invalid',emit({...receipt,context:{...receipt.context,demandLevel:ctx.demandLevel}}),ctx)\n   const prior=row.originalDependencies.find((x:any)=>x.path.endsWith('/independent-image-review.receipt.json')&&!x.path.includes('/correction-v2/'))\n   check('correction: preserved REJECT cannot stand in for corrected KEEP','invalid',emit({...receipt,originalReview:prior,originalInput:prior}),ctx)\n  }\n }\n const after=before.map(x=>({...x,sha256After:sha(readFileSync(resolve(root,x.path)))}))\n const result={reviewKind:'independent-adversarial-input-edge-review',startedBeforeFirstInputReadUtc:'2026-11-07T04:21:07Z',completedUtc:new Date().toISOString(),requestedModel:'gpt-6-astra',requestedReasoningEffort:'ultra',runtimeModelIndependentlyVerified:false,seed:null,backendParameters:null,claim:'No tested original/input/scope forgery bypass observed within fixed current profile; integration obligations remain separate.',cases:results,caseCount:results.length,allExpectationsMet:results.every(x=>x.expected===x.actual),originalsRead:seen.size,originalPinsSeen:[...seen.values()],codeAndInputPins:after,protectedInputsUnchanged:after.every(x=>x.sha256===x.sha256After),limits:['Current canonical-source and primary-resourceLink resolution are the caller/driver responsibility. Generic verifier authenticates the supplied current context plus actual image bytes, not a caller-supplied canonical source file.','Correction676684da intentionally attests only German title/description and image. A successful correction capability does not cover English or demand fields.','The exact pinned original family is closed, not a generic acceptance rule for all similar-looking later reviews.','No new AI subject-matter image judgment or human approval, no authority/capsule integration or M6/M7 claim.','No active source, QA, Git/index or candidate bytes were written; temporary originals and cases existed only under /dev/shm.']}\n mkdirSync(dirname(out),{recursive:true});writeFileSync(out,JSON.stringify(result,null,2)+'\\n');console.log(JSON.stringify({cases:results.length,allExpectationsMet:result.allExpectationsMet,originalsRead:seen.size,inputsUnchanged:result.protectedInputsUnchanged,output:out}))\n}finally{rmSync(scratch,{recursive:true,force:true})}\n"
+  },
+  "additionalObservedCodePins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/candidate-index.json",
+      "sha256": "7c3017af3209149593b24bad5276aa901f9fd9ad66e57ea5262c5edd52a6d530"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/run-private-probe.ts",
+      "sha256": "9c404189ca70bd1a9c40eb75b94edd9757635c260e27d3f0b637815aeb4b6dd3"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/qualification.private.schema.json",
+      "sha256": "383ee8e3270f0b1473eaa877df5efc826c1708fbd8248ec5c70456dd1798f7cd"
+    },
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "5d60666f3cc47849144bb6262bd2c77634ff4ebe216bbda072e3a2e5127e90e6"
+    },
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702"
+    }
+  ]
+}

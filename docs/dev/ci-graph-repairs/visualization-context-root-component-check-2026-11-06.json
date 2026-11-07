@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "independently-countertested-two-profile-component-pass-unwired",
+  "codePins": {
+    "app/scripts/goalVisualizationReviewedContext.ts": "a375d017ed8faa34661eb963fd2cac42244119cbd87fda6b72f1a3f6459817c7",
+    "app/scripts/testGoalVisualizationReviewedContext.ts": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+    "app/scripts/testGoalVisualizationContextNamespaces.ts": "8d0d270ef1d4fb6195492360438384c00f6c075d77c9fa60b509fbc016a29684",
+    "contracts/goal-visualization-context/v1/qualification.schema.json": "20bec1526b71566c933577a7d3a045cbaeda68d4da32a397a74bbd6e32002c12"
+  },
+  "actualRootCommands": [
+    {
+      "command": "cd app && ./node_modules/.bin/tsx scripts/testGoalVisualizationReviewedContext.ts",
+      "exitCode": 0,
+      "historicalPositiveCases": 18,
+      "negativeControls": 26
+    },
+    {
+      "command": "cd app && ./node_modules/.bin/tsx scripts/testGoalVisualizationContextNamespaces.ts",
+      "exitCode": 0,
+      "regressionControls": 8,
+      "unexpectedAccepts": 0
+    }
+  ],
+  "logs": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-root-component-check/core.log.gz",
+      "sha256": "bdf77b1e4f4e1f85d48c5bc1934f9b7d6e381e7dfcd88ddbe352bdd12406323c",
+      "rawSha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-root-component-check/namespaces.log.gz",
+      "sha256": "81214aa72fa3d8adb40fabe96c594800d959ea9271c2b85f98089e18406e0a3f",
+      "rawSha256": "83e112e3c1de2fa426cabd2ebaa774c89e7cfdaa14b68a674b95da862f5d57b4"
+    }
+  ],
+  "independentFinalPeer": "docs/dev/ci-graph-repairs/visualization-context-graft-independent-followup-2026-11-06.json",
+  "limits": [
+    "Only two existing closed review formats, eighteen genuine candidate qualifications; no active V-row write.",
+    "No existing V/Deep/M7 consumer or workflow invokes this new component yet.",
+    "Shallow Git evidence transport and fresh B adapter are separate unfinished work.",
+    "No all-ledger coverage, M7 restoration or production rollout."
+  ]
+}

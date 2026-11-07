@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-fifteen-current-20261107-v1-resolution-121ef4c5-c1c2-5294-9582-86bab2355907",
+  "goal": {
+    "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:683b889ef72d2ece213fc3069f9c7f5a1b2ffb8fde121b8a65fea3b10d5dfca4",
+    "pageFingerprint": "sha256:98f6fe22173559b95b093c9fc207f06157ec01b8a882c77fd2ea5679475de448",
+    "goalReviewContextFingerprint": "sha256:80d29c1bd1473e514cf32785c52f95d7b9a9caa1ba58c2f81b0b35d9ff98f0de",
+    "finalText": {
+      "titleDe": "Lösung nachvollziehbar erklären",
+      "titleEn": "Explain a solution clearly",
+      "descriptionDe": "Die lernende Person kann einen Lösungsweg nachvollziehbar erklären, Begründungen angeben und zentrale Schritte hervorheben.",
+      "descriptionEn": "The learner can explain a solution path clearly, provide justifications and highlight key steps."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-a",
+      "campaignDigest": "sha256:6984bd4c5c68ba73ddc8b443babddf3fa18b3f8907efe2e793a2e42fbf21d3cb",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-a",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-a",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:80d29c1bd1473e514cf32785c52f95d7b9a9caa1ba58c2f81b0b35d9ff98f0de",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-a.batch-001",
+      "runId": "math15-description-a-a2bda914-665d-4c43-a161-3880e1169865",
+      "runManifestDigest": "sha256:03aeb8d2d59b486e9cf0fccfc9d3b8ffdfbba05762db3f726c42193f23084c56",
+      "resultsDigest": "sha256:733b772d94da8b8f5a0e73b16f0f6d517566498e0d62c09b74b67464607b2e76",
+      "recordId": "math15-description-a-3b9d0c2c-0b56-429f-bf0b-ca47eb47b68d",
+      "recordDigest": "sha256:977fca478664af08007b3c4b97e9d6bd54612042389f5c8a7f6b3c4db5b9ad1f"
+    },
+    "second": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-b",
+      "campaignDigest": "sha256:c1257044e892402263daeb5bcd5fc09916c5816c5c44c36842b83167cb0bcba9",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-b",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-b",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:80d29c1bd1473e514cf32785c52f95d7b9a9caa1ba58c2f81b0b35d9ff98f0de",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-b.batch-001",
+      "runId": "math15-blind-b-edd6f6ee-cfdd-4579-b518-90b67850b9cb",
+      "runManifestDigest": "sha256:96849dca162f0450eeed9a0b2f1b70ac1484fd52bad272d77b1a163a8498ef98",
+      "resultsDigest": "sha256:f1104394c9bdd95969ec256772dfa9702c992b5738e11aaf94e9882fb8c66cfc",
+      "recordId": "math15-b-ed04afde-820a-492a-a763-6c293d4740e9",
+      "recordDigest": "sha256:f2d9153a7dae833ddf74ed4274159c5819cd9a4daf562077669b4d2a5ea9c9e3"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:be8589bafc90b85431da20b1739b62d14a30a86a382a76ebbf125066941c7168"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-g17-fifteen-description-independent-synthesis-20261107-v1",
+    "manifestDigest": "sha256:c6be0cd92839abe1cd9dc9749a10a4bc8f60e457b1bf817e8c527d8c1f0aae44",
+    "manifestFingerprint": "sha256:1dca75d04465042f9a6a18f9201b8724ff420b21216156dc6e3859b18afcae35",
+    "decisionId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "/root/math15_description_synthesis; independent AI post-review synthesis; actual time in review-receipt.json",
+    "synthesizedAt": "2026-11-07T12:38:27.000Z",
+    "rationaleDe": "Erklären, Begründen und Hervorheben zentraler Schritte sind bereits ausdrücklich beansprucht. Beide Runden bestätigen eine Kommunikationsleistung. B wird gewählt, weil der Transfer eine andere vertraute Strategie nutzt, ohne eine neue Fallunterscheidung vorauszusetzen. Die Einsetzprobe kontrolliert ein Ergebnis und ersetzt keine Schrittbegründung; zusätzliche Darstellungswahl bleibt beim Nachfolger.",
+    "rationaleEn": "Explaining, justifying and highlighting key steps are already explicit. Both rounds identify one communication competence. B is selected because transfer uses another familiar strategy without requiring a new case distinction. A substitution check checks the result rather than replacing reasons for the steps; choosing additional representations remains a successor competence.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Ein nachvollziehbarer Lösungsweg verbindet Ausgangsbedingungen, zulässige mathematische Schritte und Schlussfolgerung. Die Begründung eines Schritts erklärt seine Gültigkeit; eine abschließende Einsetzprobe ersetzt diese Begründungen nicht.",
+      "essentialUnderstandingEn": "A comprehensible solution connects initial conditions, valid mathematical steps, and the conclusion. Justifying a step explains its validity; a final substitution check does not replace those justifications.",
+      "observablePerformanceDe": "Die lernende Person erläutert eigenständig einen fachlich vertrauten Lösungsweg, benennt die entscheidenden Übergänge und erklärt jeweils, welche Regel oder Bedingung den Schluss trägt und wie daraus das Ergebnis folgt.",
+      "observablePerformanceEn": "The learner independently explains a mathematically familiar solution, identifies its decisive transitions, and explains which rule or condition supports each inference and how the result follows.",
+      "transferExpectationDe": "Bei einem unabhängig vorgelegten Lösungsweg mit einer anderen vertrauten Strategie erkennt und erklärt die lernende Person die nun entscheidenden Schritte, statt die Reihenfolge oder Formulierungen des ersten Beispiels zu übernehmen.",
+      "transferExpectationEn": "For an independently presented solution using a different familiar strategy, the learner identifies and explains the steps that are now decisive rather than reusing the order or wording of the first example."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-1eb7c52423f85aa4822133c4ec66f61f477b38e048f68cb1ef7aaa6d272bdeba",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der zweiten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the second round.",
+        "disposition": "accepted_second"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:dceb14401eff10d8713900b3ed56a912299cc95655b03191c61dbae9f8d09d05"
+}

@@ -7,6 +7,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
+import { evaluateCurrentVisualizationGate, type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
 import {
   fingerprintSemanticKindSourceGoal,
   stableGoalBookJson,
@@ -125,6 +126,7 @@ export interface DeepUnderstandingSubjectReport {
   deferredVisualizationGoalIds: string[]
   requiredChecks: DeepUnderstandingCompletionCheck[]
   strictCompletionReady: boolean
+  visualizationValidation?: CurriculumVisualizationValidation
   issues: string[]
 }
 
@@ -1087,85 +1089,47 @@ const loadMemoryReadyGoals = (
   return parsed.errors.length === 0 ? ready : new Set()
 }
 
-const digestFile = (absolutePath: string): string => sha256(readFileSync(absolutePath))
+const visualizationScopes = new WeakMap<DeepUnderstandingSubjectReport, CurriculumVisualizationValidation>()
+export const getCurrentVisualizationScope = (subject: DeepUnderstandingSubjectReport | undefined) => (
+  subject ? visualizationScopes.get(subject) : undefined
+)
 
 const loadVisualizationReadyGoals = (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
   deferredGoalIds: Set<string>,
-): Set<string> => {
-  const currentCheck = runTsxCheck('app/scripts/generateGoalVisualizationQaLedgers.ts', [
-    '--check',
-    `--subject=${config.subject}`,
-  ])
-  if (!currentCheck.valid) {
-    addIssue(issues, config.subject, `visualization-QA freshness check failed: ${currentCheck.detail}`)
-  }
-  if (!currentCheck.valid) return new Set()
-  let ledger: VisualizationQaLedger
+): { ready: Set<string>; validation: CurriculumVisualizationValidation } => {
+  const currentCheck = runTsxCheck('app/scripts/generateGoalVisualizationQaLedgers.ts', ['--check', `--subject=${config.subject}`])
+  const discoveryIssues = [...scope.issues]
+  if (!currentCheck.valid) discoveryIssues.push(`visualization-QA freshness check failed: ${currentCheck.detail}`)
+  let records: VisualizationQaRecord[] = []
   try {
-    ledger = loadJson<VisualizationQaLedger>(config.visualizationQaPath)
-  } catch (error) {
-    addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
-    return new Set()
+    const ledger = loadJson<VisualizationQaLedger>(config.visualizationQaPath)
+    if (ledger.schemaVersion !== 1 || ledger.subject !== config.subject || !Array.isArray(ledger.records)) {
+      discoveryIssues.push('visualization-QA ledger identity or schema is invalid')
+    } else records = ledger.records
+  } catch (error) { discoveryIssues.push(error instanceof Error ? error.message : String(error)) }
+  const validation = evaluateCurrentVisualizationGate({ repositoryRoot: repoRoot,
+    landscapeId: scope.landscape.landscapeId, landscapePath: config.landscapePath, subject: config.subject,
+    goalById: scope.goalById, currentGoalIds: scope.atomicGoalIds, records, discoveryIssues })
+  issues.push(...validation.issues)
+  validation.deferredGoalIds.forEach(id => deferredGoalIds.add(id))
+  // Freshness/discovery failures never retain readiness from otherwise valid rows.
+  return { ready: discoveryIssues.length ? new Set() : new Set(validation.readyGoalIds), validation }
+}
+
+/** The standalone floor reader repeats the same current source discovery/V boundary. */
+export function readCurrentCurriculumVisualizationScopes(landscapeIds: readonly string[]) {
+  const requested = new Set(landscapeIds), result = new Map<string, CurriculumVisualizationValidation>()
+  for (const config of loadDeepUnderstandingRolloutConfig().subjects) {
+    const scope = loadAuthoritativeScope(config)
+    if (!requested.has(scope.landscape.landscapeId)) continue
+    const validation = loadVisualizationReadyGoals(config, scope, [], new Set()).validation
+    if (result.has(scope.landscape.landscapeId)) throw new Error('Duplicate current visualization scope owner')
+    result.set(scope.landscape.landscapeId, validation)
   }
-  if (ledger.schemaVersion !== 1 || ledger.subject !== config.subject || !Array.isArray(ledger.records)) {
-    addIssue(issues, config.subject, 'visualization-QA ledger identity or schema is invalid')
-    return new Set()
-  }
-  const duplicates = duplicateValues(ledger.records.map(({ goalId }) => goalId))
-  duplicates.forEach((goalId) => addIssue(issues, config.subject, `duplicate visualization-QA record for ${goalId}`))
-  const duplicateSet = new Set(duplicates)
-  const recordsByGoalId = new Map(ledger.records.map((record) => [record.goalId, record]))
-  const ready = new Set<string>()
-  scope.atomicGoalIds.forEach((goalId) => {
-    const goal = scope.goalById.get(goalId)
-    const record = recordsByGoalId.get(goalId)
-    if (!goal || !record || duplicateSet.has(goalId)) return
-    if (
-      record.subject !== config.subject
-      || record.landscapeId !== scope.landscape.landscapeId
-      || record.landscapePath !== config.landscapePath
-      || normalizeText(record.title) !== normalizeText(goal.title)
-      || normalizeText(record.description) !== normalizeText(goal.description)
-    ) return
-    const primaryLinks = (goal.resourceLinks ?? []).filter((link) => (
-      link.type === 'goal-visualization' && link.role === 'primary'
-    ))
-    if (record.visualizationState === 'missing') {
-      if (
-        (record.missingReason === 'deferred_provider_limitation' || record.missingReason === 'deferred_quality_review')
-        && primaryLinks.length === 0
-        && !record.imageUrl
-        && !record.assetSha256
-      ) deferredGoalIds.add(goalId)
-      return
-    }
-    if (
-      record.visualizationState !== 'available'
-      || record.missingReason !== ''
-      || primaryLinks.length !== 1
-      || primaryLinks[0].url !== record.imageUrl
-      || !/^sha256:[0-9a-f]{64}$/u.test(record.assetSha256)
-      || !hasCompletedDeepUnderstandingVisualizationReview(record)
-    ) return
-    try {
-      const publicAssetPath = resolveRepoPath(record.publicAssetPath)
-      const canonicalAssetPath = resolveRepoPath(record.canonicalAssetPath)
-      if (
-        record.publicAssetPath !== `app/public${record.imageUrl}`
-        || !existsSync(publicAssetPath)
-        || !existsSync(canonicalAssetPath)
-        || digestFile(publicAssetPath) !== record.assetSha256
-        || digestFile(canonicalAssetPath) !== record.assetSha256
-      ) return
-    } catch {
-      return
-    }
-    ready.add(goalId)
-  })
-  return ready
+  return result
 }
 
 const loadRound = async (groupDirectory: string, roundDirectory: string): Promise<LoadedRound> => {
@@ -1888,12 +1852,13 @@ export const generateDeepUnderstandingRollout = async (
     const memoryIssues: string[] = []
     const visualizationIssues: string[] = []
     const deferredVisualizationGoalIds = new Set<string>()
-    const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
+    const [descriptionReady, atomicityReady, memoryReady, visualizationResult] = await Promise.all([
       loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
       Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
+    const visualizationReady = visualizationResult.ready
     const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
     const strictCompleteGoalIds = scope.denominator === null
       ? []
@@ -1935,8 +1900,10 @@ export const generateDeepUnderstandingRollout = async (
       deferredVisualizationGoalIds: [...deferredVisualizationGoalIds].sort(),
       requiredChecks,
       strictCompletionReady: false,
+      visualizationValidation: structuredClone(visualizationResult.validation),
       issues: uniqueIssues,
     }
+    visualizationScopes.set(subjectReport, visualizationResult.validation)
     subjectReport.strictCompletionReady = hasStrictDeepUnderstandingCompletion(subjectReport)
     subjects.push(subjectReport)
   }

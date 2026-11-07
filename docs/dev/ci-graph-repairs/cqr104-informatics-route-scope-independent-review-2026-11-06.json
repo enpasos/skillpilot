@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-read-only-CQR104-informatics-code-and-evidence-review",
+  "date": "2026-11-06",
+  "status": "no-hold-for-bounded-two-behavior-corrections",
+  "contextCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "authorReceipt": {
+    "path": "docs/dev/ci-graph-repairs/cqr104-informatics-route-scope-repair-2026-11-06.json",
+    "sha256": "fbc0c808849567751a9991c0eff924691a36852fd102bc01c90fdbfefc03b74c"
+  },
+  "code": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "70e5f9af01d452b508bc069e990b7c1915a0031c307d9428e7b9ceca876db7e6"
+    },
+    {
+      "path": "app/scripts/testCurriculumRouteEndpointScope.ts",
+      "sha256": "026807f191431eef9de874d7d21269f20233ae8178ca656490ca951a09d1d426"
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "a902f2fd6f403c2ff9eab10b31c46204eb64f267cfb30a740a6fa27bbfffdd9a"
+    }
+  ],
+  "scope": {
+    "productionCodeEditedByReviewer": false,
+    "dataWrites": false,
+    "nativeScopeProducerRerunByReviewer": false,
+    "fullRegressionSuiteRerunByReviewer": false,
+    "newAssessmentContentApproval": false,
+    "newCurriculumScopeDecision": false
+  },
+  "findings": [
+    {
+      "id": "CQR104-PEER-01",
+      "decision": "approve",
+      "reason": "The Informatics route profile now uses the existing compiled-jurisdiction mode. The existing actual source compiler supplies each country, national views are evaluated separately in each supported country, and fixed-country views remain fixed. A national union no longer masks countries with no actual terminal offer. No authored view, role or membership is invented."
+    },
+    {
+      "id": "CQR104-PEER-02",
+      "decision": "approve",
+      "reason": "Expected Informatics terminals now use the same existing goalMatchesFilters predicate for authored course/duration that already filters the visible scope. GK no longer demands an LK-only whole exam and vice versa. Empty applicable endpoint sets still fail; this is not a goal-coverage subset pass."
+    },
+    {
+      "id": "CQR104-PEER-03",
+      "decision": "approve",
+      "reason": "Optional readonly compositionViewFiles permits the direct native evaluator to read six small temporary fixtures. Omission follows exactly the old production discovery expression. Exporting the existing profile/evaluator and importing the test adds no alternate projection or scope derivation."
+    },
+    {
+      "id": "CQR104-PEER-04",
+      "decision": "approve",
+      "reason": "The complete new test was read. It uses current-source goal identities but explicitly labels the modified skill graph with six goals as a fixture. National country splitting, exact course endpoints, missing country/course endpoints, empty expected sets and missing compiled binding are checked through native evaluation. CQR203 remains warn and exact endpoint matching does not promote beyond M3; empty/missing endpoint scopes stay M2. The before/country-only/final exits 1/1/0 are real author executions, not new executions by this reviewer."
+    },
+    {
+      "id": "CQR104-PEER-05",
+      "decision": "approve",
+      "reason": "Independently decoded and compared the full original twelve-profile before/after result objects: eleven complete profiles are exactly equal, and every non-CQR104 Informatics rule is exactly equal. Recounted all48 unique view/country pairs:42 empty failures and6 passes, no missing or unexpected terminal sets. Source/view/code hashes in the bound original evidence match the current files."
+    }
+  ],
+  "actualReviewerChecks": {
+    "command": "python3 -B docs/dev/ci-graph-repairs/verify_cqr104_route_endpoint_scope_repair.py --check-current-inputs",
+    "exitCode": 0,
+    "result": "PASS-bound-historical-evidence",
+    "independentFullObjectComparisonAlsoPerformed": true,
+    "sameCompleteProfiles": [
+      "canonical-math-sek1",
+      "canonical-math-sek2",
+      "canonical-physics-sek1",
+      "canonical-physics-sek2",
+      "canonical-chemistry-sek2",
+      "canonical-biology-sek2",
+      "canonical-economics-crossstage",
+      "canonical-politics-economics-crossstage",
+      "canonical-history-crossstage",
+      "canonical-german-crossstage",
+      "canonical-latin-crossstage"
+    ],
+    "changedProfiles": [
+      "canonical-informatics-crossstage"
+    ],
+    "non104InfoRulesExactlyEqual": true,
+    "sourcePinsExactlyEqual": true,
+    "uniqueActualViewJurisdictionPairs": 48,
+    "emptyFailedScopes": 42,
+    "matchingPassedScopes": 6
+  },
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/before-native.json.gz",
+      "sha256": "ad42381faef41c01bff3e2d0364e8b3dc5426d10bc46db38368708a6922dc460"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/after-native.json.gz",
+      "sha256": "65c2fda975e2281c2f78eeefc942ce5f9f15406af50f6cf81d1635562dfab933"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual48-projections.json.gz",
+      "sha256": "c3614fcef3f68b08a28b31cfaf921c90dbdf282b324b2133ac764a21163b7909"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/native-comparison.json",
+      "sha256": "f638af5fe77a9da14c8333ac75d7ebefe47b24ff38ddb9811cb8fc6a2758264b"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/summary.json",
+      "sha256": "7c2127192b7d129bd6672cfa72ef94cff0c20b92e519ae7bd3ffe7ff8b19374c"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/typecheck-comparison.json",
+      "sha256": "e17c1878f54363024c64cd3a1665d08e5c17ad938670a56557b81cd58d965aa2"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/deep-regression.txt",
+      "sha256": "c3586fecf21683a8d13931f87b2cd67c7fdcf915f7fc19e1caa6c3989404904b"
+    }
+  ],
+  "limitations": [
+    "The retained42 empty contexts are real unresolved data/offer failures; this code review does not certify Informatics M6.",
+    "The evidence comparison validates saved actual runs and current input hashes, not a new producer run.",
+    "No new exam task, coverage, country assignment, course identity, GK24/E25 candidate, master-result meaning or learning unit is approved.",
+    "Current authored Informatics course cases are covered; a novel duration profile would need its own concrete source fixture. The existing duration predicate is reused unchanged."
+  ]
+}

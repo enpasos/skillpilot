@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-visualization-context-core-review",
+  "reviewedAt": "2026-11-06T23:00:37+00:00",
+  "reviewer": "Codex Astra independent core review",
+  "status": "hold-before-consumer-integration",
+  "scope": "The frozen initial two-profile core/schema/test only. No consumer wiring, new visual approval, source/QA mutation or full QA pass.",
+  "codePins": [
+    {
+      "sourcePath": "app/scripts/goalVisualizationReviewedContext.ts",
+      "preservedPath": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/before/goalVisualizationReviewedContext.ts",
+      "sha256": "2757cccb6f74d3762e60a87ae167e1b77e8ea223dbec34b2fe3708472a5e5916"
+    },
+    {
+      "sourcePath": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "preservedPath": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/before/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666"
+    },
+    {
+      "sourcePath": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "preservedPath": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/before/qualification.schema.json",
+      "sha256": "20bec1526b71566c933577a7d3a045cbaeda68d4da32a397a74bbd6e32002c12"
+    }
+  ],
+  "originalFiveCaseProbe": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-probes.mts",
+    "sha256": "5a23c2133d507b13faf45d0646b2275c967bccc2bdf68a1e8ec11840fea5d7c1",
+    "result": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-probe-results.json",
+      "sha256": "d572554e3870ba16d7a8c0907472bafe24606b3e9444f1c599d0d7ec5a35a373"
+    },
+    "log": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-probe-run.log",
+      "sha256": "d66fa62a5750c88ac61790cfe34f7a8368b71399f3c9c6db2d1bedeac87ab6a2"
+    },
+    "exitCode": 1,
+    "expectedNegativeUnexpectedAccepts": 3
+  },
+  "separateOwnerSameCommitProbe": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-owner-shift-probe.mts",
+    "sha256": "b94b0ba50b1539de81676558804e9baaa34e73fe5b0688ab85e1e275cb1b12fd",
+    "result": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-owner-shift-results.json",
+      "sha256": "26e24976e85f9bbcdcbc681c95cd3b9d39dc16d5bf102d8988762d28ffcf4bdb"
+    },
+    "log": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-core-independent-review/peer-owner-shift-run.log",
+      "sha256": "33d015e36426d0b9c3db6cc62789e181ebc2b1a1548642d10fe0c92053427030"
+    },
+    "exitCode": 1,
+    "expectedNegativeUnexpectedAccepts": 4,
+    "note": "Contains the unchanged five controls plus an explicit co-located later-commit owner substitution; not four additional disjoint failures."
+  },
+  "independentlyRepeatedAuthorTest": {
+    "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationReviewedContext.ts",
+    "cwd": "app",
+    "exitCode": 0,
+    "observedStdout": "Immutable visualization-context core passed: 18 actual historical positives, 26 negative controls, private-byte overlays and explicit DE/EN scope.",
+    "testCodeSha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+    "scope": "Actual independent test invocation; no separate new typecheck or full QA producer."
+  },
+  "findings": [
+    {
+      "id": "VCTX-PEER-01",
+      "status": "hold",
+      "title": "Original review owner can be supplied from a different historical source association",
+      "controls": [
+        "VCTX-PEER-01A",
+        "VCTX-PEER-01B",
+        "VCTX-PEER-01C"
+      ],
+      "actual": "All three private mutants return a genuine verified capability for a changed owner while preserving the original reviewed goal UUID, text and image bytes. The original review supplies no owner assertion; any chosen source file/commit containing the goal currently satisfies the association check.",
+      "requiredBoundary": "Bind the two closed profiles to their actual authoritative canonical owner identities and source paths, or to an externally accepted specific original owner association. Source/review commit equality alone is insufficient: 01C moves unchanged review/input/asset refs to the later owner source commit.",
+      "prohibitedShortcut": "Do not replace original review text with current source text or treat arbitrary historical drafts as authoritative owner sources."
+    },
+    {
+      "id": "VCTX-PEER-02",
+      "status": "hold",
+      "title": "Local Git replace refs can change the content behind an externally accepted commit",
+      "controls": [
+        "VCTX-PEER-02-CONTROL",
+        "VCTX-PEER-02"
+      ],
+      "actual": "A manipulated original review description is rejected without a replacement ref, then accepted with a private git replace of the externally fixed base commit. The receipt and current context can claim a newly added never-reviewed competency under that external commit value.",
+      "requiredBoundary": "Disable Git replacement objects consistently for every original object read, tree lookup, commit check and ancestry check. Repeat the same private counterexample after the change.",
+      "scope": "This is a normal local Git replacement feature, reproduced only in a private RAM repository; no host Git refs or original files were edited."
+    }
+  ],
+  "confirmedBoundaries": [
+    "Closed AJV2020 receipt schema rejects unknown receipt properties and duplicate JSON keys.",
+    "Review/input/image byte hashes are checked against original Git content and current archived copies; current public/canonical images are actually hashed.",
+    "Current DE title/description and actually present optional original EN/demand fields are compared; Economics DE-only evidence does not claim historical EN qualification.",
+    "Original decision, reviewer, timestamp and reason are derived and compared; later aggregate QA timestamps do not become original review times.",
+    "A frozen WeakSet capability is not forgeable by supplying a copied boolean/digest object.",
+    "The 18 prequalified actual historical examples and the existing 26 author negative controls passed independently."
+  ],
+  "followup": "Keep these original bytes and evidence immutable. A corrected implementation requires a separate successor peer with the exact same mutant inputs and code pins; no broad consumer activation follows from this report."
+}

@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-source-a-historical-evidence-locator-boundary-review",
+  "status": "reviewed-archive-proposal-not-applied-not-full-source-A-verification",
+  "date": "2026-11-06",
+  "sourceBase": "8a56a9788ff82902c52c62a42a15a8cd43ed073a",
+  "comparisonBase": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "decision": {
+    "recommended": "seven-exact-archives-with-seven-old-locator-aliases-and-two-supporting-link-aliases",
+    "version2RequiredForTheseSeven": false,
+    "reason": "All seven are historical evidence under the already accepted semantic qa-artifacts/ rule. Preserve bytes and bind their new locations in the unchanged complete v1 source inventory; no schema, registry, verifier, kernel, output-exclusion or consumer-profile change is needed.",
+    "noRuntimeOrStateCapability": true
+  },
+  "sourceWritesPerformed": false,
+  "archivesApplied": false,
+  "v1Modified": false,
+  "sourceProofRegenerated": false,
+  "candidateQaExecuted": false,
+  "codeAndContractPins": [
+    {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+      "equals8a56": true,
+      "role": "unchanged-proof-contract"
+    },
+    {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b",
+      "equals8a56": true,
+      "role": "unchanged-proof-contract"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e",
+      "equals8a56": true,
+      "role": "unchanged-proof-contract"
+    },
+    {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4",
+      "equals8a56": true,
+      "role": "unchanged-proof-contract"
+    },
+    {
+      "path": "scripts/prepare_identity_qa_candidate.py",
+      "sha256": "7979a6690c856ca4299840c0453f4fe544628561b33d38b4335517874cffca08",
+      "equals8a56": false,
+      "role": "observed-current-consumer-not-a-new-proof-pin"
+    },
+    {
+      "path": "scripts/verify_identity_qa_producer_reads.py",
+      "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729",
+      "equals8a56": true,
+      "role": "observed-current-consumer-not-a-new-proof-pin"
+    },
+    {
+      "path": "scripts/identity_qa_private_capture.py",
+      "sha256": "6ed59ab707105c4b53f42327071d6aa4016cfe3c0f4fa37498fc2fa351ec0609",
+      "equals8a56": false,
+      "role": "observed-current-consumer-not-a-new-proof-pin"
+    },
+    {
+      "path": "app/scripts/checkMarkdownLinks.ts",
+      "sha256": "364a51d5fa00e833b4f8e5663a0c4414de35c277acb3e3af3a0b98ad201f91fd",
+      "equals8a56": true,
+      "role": "observed-current-consumer-not-a-new-proof-pin"
+    }
+  ],
+  "archiveOperations": [
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "aliasTarget": "../../../qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "sha256": "7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209",
+      "bytes": 10481850,
+      "aliasGitObjectId": "c911e4e79327fc33c9c6296cd4a8456b2f7f6d5a",
+      "archiveGitObjectId": "cfede06bb23663907b0ea32fc7703c7945b90dc3",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Frozen source-bijection proof for exact Git5c9, capability isolated-qa-candidate-projection, runtimeActivationAllowed=false, qaValidityClaimed=false; it is evidence, not current graph data.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/complete-assessment-current-cqr-2026-11-06/floors.txt",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/floors.txt",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/floors.txt",
+      "sha256": "30982d779c2eea988983eccdce6d805ee9deedc61af7987abb71348465b8da73",
+      "bytes": 70228,
+      "aliasGitObjectId": "cf6da06cdfeeeb0a71f3d15ee9e098caffbb1de4",
+      "archiveGitObjectId": "a9a22822dbf2d320b66fcdb94f4b4e2fd2c8d935",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Captured unsuccessful protected-floor run, including original findings and command output; it must continue to report the historical failure without changing identifiers.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "30982d779c2eea988983eccdce6d805ee9deedc61af7987abb71348465b8da73",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/complete-assessment-current-cqr-2026-11-06/producer.txt",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/producer.txt",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/producer.txt",
+      "sha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "bytes": 262861,
+      "aliasGitObjectId": "daa03f236c58c1793e6f18cc9e2b8865f3f93562",
+      "archiveGitObjectId": "1470c140d34723c0a72d9306e3b039b974385ca8",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Captured native CQR/Memory producer stdout for one historical execution; current readiness is computed by the real producer, not read from this log.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+      "aliasTarget": "../../../qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+      "sha256": "e24112cf60a28c6fa6f1c61ee3cd619694602cd8b47a14b90e907387d4fed70d",
+      "bytes": 230254,
+      "aliasGitObjectId": "a1abd318c931df76a79fdac6201adb20e84778ad",
+      "archiveGitObjectId": "20452288393e87f09b579c96578b0334f8943673",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Read-only plan pinned to Git5c9 and proof7228; historical instructions and missing-adapter findings, not active pointer input.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "e24112cf60a28c6fa6f1c61ee3cd619694602cd8b47a14b90e907387d4fed70d",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+      "aliasTarget": "../../../qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+      "sha256": "d581f6f2ceb7cecc9378d5ec0fcb0e4b13c2b697670188b5086445da01cb615b",
+      "bytes": 15333,
+      "aliasGitObjectId": "1734ef1807f2122243cf8d753eca2e429cb5d2b5",
+      "archiveGitObjectId": "ab644cd23ba6591a25b9436eff860f1fdc913c58",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Human-readable companion of the same fixed Git5c9 plan; its historical shell example remains an example at that time.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "d581f6f2ceb7cecc9378d5ec0fcb0e4b13c2b697670188b5086445da01cb615b",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+      "aliasTarget": "../../../qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+      "sha256": "b100b6b9dc725d2a8fc07c9e3e68cb02efd65b25b6a491c97fd2f4996560efaa",
+      "bytes": 98517,
+      "aliasGitObjectId": "e72cf54600c10064c44e1a87e0d8b1096ed4cf82",
+      "archiveGitObjectId": "f04b3a452307e5505ab84bc807dbc21857044ad9",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Measured native input-impact report pinned to Git5c9, not completed physical candidate QA; current editorial successor at8a56 is explicitly bound here.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "b100b6b9dc725d2a8fc07c9e3e68cb02efd65b25b6a491c97fd2f4996560efaa",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+      "aliasTarget": "../../../qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+      "sha256": "e947e83fb0e311279a2b49100d8c6030efce71a0b6fe5e4dc6cb478846d8f06b",
+      "bytes": 7598,
+      "aliasGitObjectId": "f77d0019addab5011e2fe139db2cfacfe3fb2342",
+      "archiveGitObjectId": "815226d47d5fd21b1d4b45f66322c7d576526100",
+      "matchedImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "archiveDiscoveredByNativeMatchingPaths": true,
+      "aliasDiscoveredAsIdentityDocument": false,
+      "semanticClassificationReason": "Human-readable impact report, including the explicit 1292-card editorial correction; preserve these exact8a56 bytes, not silently replace by an earlier text.",
+      "workingBytesEqual8a56AtReview": true,
+      "exactBasenameLiteralConsumersInScriptsAppBackendContractsAt8a56": [],
+      "applicationGuards": {
+        "oldPathMustBeRegularGitFileAtBase": true,
+        "expectedOriginalSha256": "e947e83fb0e311279a2b49100d8c6030efce71a0b6fe5e4dc6cb478846d8f06b",
+        "archiveDestinationMustBeAbsent": true,
+        "oldPathReplacementOnlyRelativeInternalFileSymlink": true,
+        "archiveBytesAndMode": "exact original bytes; ordinary tracked data file, no transformation"
+      }
+    }
+  ],
+  "supportingLocatorAliases": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+      "target": "../../../docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+      "unchangedTargetPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+      "sha256": "c81642664f9c8507540648f0e3668664f5d03c8313b1065c045616306f1d06dc",
+      "bytes": 26208,
+      "operation": "add-relative-file-symlink-only-no-original-change",
+      "aliasGitObjectId": "39527b096ce60e23df5b8405e0d38ca28db03dc8"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+      "target": "../../../docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+      "unchangedTargetPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+      "sha256": "19e6cdc3296f5a1cb7a05da55acea93c133056fdf99c2262ef1f6e735be283a1",
+      "bytes": 1001545,
+      "operation": "add-relative-file-symlink-only-no-original-change",
+      "aliasGitObjectId": "cf0116c1b38a880674d0b36b0813ab449eb868e3"
+    }
+  ],
+  "totalArchivedOriginalBytes": 11166641,
+  "actualExperiment": {
+    "status": "actual-seven-file-mini-git-pass-not-complete-source-A-replay",
+    "sourceBase": "8a56a9788ff82902c52c62a42a15a8cd43ed073a",
+    "privateRoot": "/dev/shm/sourcea-locator-review-5nvwg2lc",
+    "privateCommit": "e0a9f047b96b13afd0c5bc249b1bed30da12f7a7",
+    "migrationIdentityPatternCount": 164,
+    "matchingPaths": [
+      "qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/floors.txt",
+      "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/producer.txt",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md"
+    ],
+    "catalogChecked": false,
+    "fullSourceProofGenerated": false,
+    "sourceWritesPerformed": false,
+    "v1FilesModified": false,
+    "negativeBoundaries": {
+      "copyOnlyWouldRetainAllSevenUnclassifiedOriginals": true,
+      "oldAliasGitBlobContainsLocatorNotOriginalDocumentBytes": true,
+      "aliasesNotMisreportedAsAdditionalIdentityDocuments": true
+    },
+    "privateCommitWithSupportingAliases": "bb62ac29a06649d9f8ab7acd995652dd4fb6442b",
+    "markdownLinkChecks": [
+      {
+        "sourceMarkdownOldPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "sourceMarkdownArchivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "literalLink": "source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+        "oldResolvedPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+        "archiveResolvedPath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+        "expectedSha256": "e24112cf60a28c6fa6f1c61ee3cd619694602cd8b47a14b90e907387d4fed70d",
+        "bothLocationsReachSameBytes": true
+      },
+      {
+        "sourceMarkdownOldPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "sourceMarkdownArchivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "literalLink": "source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+        "oldResolvedPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+        "archiveResolvedPath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.preparation-input.json",
+        "expectedSha256": "c81642664f9c8507540648f0e3668664f5d03c8313b1065c045616306f1d06dc",
+        "bothLocationsReachSameBytes": true
+      },
+      {
+        "sourceMarkdownOldPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "sourceMarkdownArchivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "literalLink": "source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "oldResolvedPath": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "archiveResolvedPath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "expectedSha256": "d581f6f2ceb7cecc9378d5ec0fcb0e4b13c2b697670188b5086445da01cb615b",
+        "bothLocationsReachSameBytes": true
+      },
+      {
+        "sourceMarkdownOldPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "sourceMarkdownArchivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "literalLink": "source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+        "oldResolvedPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+        "archiveResolvedPath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+        "expectedSha256": "b100b6b9dc725d2a8fc07c9e3e68cb02efd65b25b6a491c97fd2f4996560efaa",
+        "bothLocationsReachSameBytes": true
+      },
+      {
+        "sourceMarkdownOldPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "sourceMarkdownArchivePath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "literalLink": "source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+        "oldResolvedPath": "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+        "archiveResolvedPath": "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.native-evidence.json.gz",
+        "expectedSha256": "19e6cdc3296f5a1cb7a05da55acea93c133056fdf99c2262ef1f6e735be283a1",
+        "bothLocationsReachSameBytes": true
+      }
+    ],
+    "markdownLinkCount": 5,
+    "allMarkdownLinksPreservedFromBothLocations": true,
+    "finalMatchingPaths": [
+      "qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/floors.txt",
+      "qa-artifacts/ci-contract-audit/2026-11-06/complete-assessment-current-cqr-2026-11-06/producer.txt",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.json",
+      "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md"
+    ],
+    "nativeMarkdownCheck": {
+      "toolPath": "app/scripts/checkMarkdownLinks.ts",
+      "toolSha256": "364a51d5fa00e833b4f8e5663a0c4414de35c277acb3e3af3a0b98ad201f91fd",
+      "arguments": [
+        "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.md",
+        "docs/dev/ci-graph-repairs/source-identity-5c9-native-qa-input-impact-2026-11-06.md",
+        "qa-artifacts/ci-contract-audit/2026-11-06/source-identity-5c9-native-qa-input-impact-2026-11-06.md"
+      ],
+      "exitCode": 0,
+      "stdout": "Markdown link check passed for 4 files.\n",
+      "stderr": "",
+      "execution": "actual-current-tool-copy-in-private-root",
+      "recursiveDiscoveryCaveat": "collectMarkdownFiles uses Dirent.isFile and skips symlink files; this check explicitly supplies both original aliases and both archived Markdown paths."
+    }
+  },
+  "inventoryBoundary": {
+    "nativeMatchingPaths": "git grep searches the stored regular archive blobs; old symlink blobs contain only locators, not old goal identifiers. The seven historical originals remain seven discovered immutable inputs. Alias Git objects remain authenticated by the exact source commit and should be repeated in the application locator receipt.",
+    "nativeGitSnapshotRead": "resolves relative in-repository file aliases recursively; rejects missing, cyclic and escaping paths. Both current filesystem and GitSnapshot bytes were checked for all seven actual files.",
+    "notAnOutputExclusion": "Do not add any of the seven archives to derivedOutputExclusions, remove them from the source census, or skip their hashes.",
+    "privatePreparation": "Every archive appears among proof.documents and is selected/bound by the existing preparer. Old aliases are not automatically an extra identity-hit document. If a real producer reads an old alias, retain its actual read trace and use the existing read-scope extension; native GitSnapshot.read and original-producer authentication resolve and verify the original bytes. Do not claim every old alias is automatically physically materialized.",
+    "historicalAReplays": "v1 schema, registry, kernel and source verifier remain byte-identical. Historical proof base commits retain original regular files and can be replayed at their own base. Moving the outer proof file changes its locator, not its rawSHA, embedded base or evidence claim."
+  },
+  "locatorBoundary": {
+    "markdown": "Five actual relative links were checked from both old and new locations; two supporting aliases are necessary and sufficient for these two Markdown files. Native checkMarkdownLinks passed explicitly on all four paths.",
+    "gitRaw": "git show NEW_COMMIT:OLD_ALIAS and raw Git hosting return link text, not document bytes. For archival byte retrieval use NEW_COMMIT:ARCHIVE_PATH or ORIGINAL_COMMIT:ORIGINAL_PATH; filesystem reads and GitSnapshot.read intentionally dereference internal aliases.",
+    "publishedSite": "The existing docs link checker recursively skips file symlinks. Do not represent a generic recursive docs scan as checking these two aliases; use the explicit four-path invocation recorded in the experiment. This review does not assert GitHub or MkDocs rendering acceptance.",
+    "reproducer": "Historical command is repository-root-relative, not archive-directory-relative. Its scripts/... and docs/.../preparation-input.json locators remain unchanged and present. Its temporary /dev/shm dependency-seed.strace is currently absent; the old command also predates the current required external dependency-tree pin. This is an existing historical reproducibility boundary, not caused by archival relocation. Do not edit the original command or assert it is a current turnkey reproduction. A current run must record a new real read trace and dependency pin in a new execution receipt.",
+    "durableHistoricalProofVerifyCommand": [
+      "python",
+      "-B",
+      "scripts/canonical_goal_source_identity_proof.py",
+      "verify",
+      "--manifest",
+      "qa-artifacts/ci-contract-audit/2026-11-06/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+      "--expected-base-commit",
+      "5c9ff83586c407fd9189207c38238400c74bce51",
+      "--accepted-manifest-sha256",
+      "7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209"
+    ],
+    "historicalProofVerifyCommandExecutedInThisReview": false
+  },
+  "requiredApplicationVerification": [
+    "Guard all seven source hashes against exact8a56 bytes; archive files must not already exist; check two unchanged supporting target hashes.",
+    "Move only the seven historical files, leave exact relative symlinks at old paths, add exactly two supporting archive link aliases, and record old/new paths, SHA256, bytes, alias Git object IDs and source commit in a separate locator receipt.",
+    "Verify all seven archived bytes and both supporting target hashes, plus all nine symlink targets and no cycles/escapes; rerun the recorded explicit four-Markdown-path native check.",
+    "After a concrete checkpoint, generate a NEW proof with unchanged v1 against that exact new commit. Independently verify external commit/raw proof pins and full593-source/164-rule byte/inverse kernel. Verify the seven archive rows are immutable-original/preserve-exact-bytes with the expected hashes and no unclassified inputs.",
+    "Perform the separately authorized full isolated candidate QA; archival bookkeeping does not qualify any D/P/A/M/V evidence or make floors pass."
+  ],
+  "rejectedAlternatives": [
+    {
+      "approach": "copy seven archives but leave old regular files",
+      "reason": "All seven old identity-bearing documents remain unclassified."
+    },
+    {
+      "approach": "replace old files by JSON or Markdown redirect stubs",
+      "reason": "Normal read_bytes/json readers would no longer receive the historically bound document bytes."
+    },
+    {
+      "approach": "broad docs/ immutable rule or output exclusions",
+      "reason": "Could conceal active unknown pointers and would modify the frozen v1 acceptance boundary."
+    },
+    {
+      "approach": "edit existing v1 source verifier/schema",
+      "reason": "Historical c75 pins the verifier and schema raw bytes; direct edits break independent historical recomputation."
+    }
+  ],
+  "version2Alternative": {
+    "technicallyPossible": true,
+    "requiredIf": "An actual new active semantic input class or unsupported schema/projection contract is needed, or old-locator/archival requirements cannot be satisfied by existing internal aliases. None was found among these seven documents.",
+    "minimalSafeBoundary": "Separate schema/profile AND separate versioned producer/verifier, with explicit consumer profile selection. Preserve all v1 files and c75 bytes; keep the same164-rule593-source/inverse kernel and A-only capability. No v2 activation/B bridge is implied.",
+    "costHere": "Adds a new closed protocol and consumer dispatch for a classification already expressible by the existing historical evidence rule; unnecessary for this bounded archive case."
+  },
+  "reviewLimit": "Only the exact seven historical files and their five Markdown links were validated in the private Git experiment. This is not a new full catalog proof, acceptance of all newly changed8a56 paths, physical candidate QA or live migration."
+}

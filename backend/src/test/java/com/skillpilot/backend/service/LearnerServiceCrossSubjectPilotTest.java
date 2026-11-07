@@ -1092,25 +1092,16 @@ class LearnerServiceCrossSubjectPilotTest {
             String targetId,
             List<String> originallyStoredIds,
             Set<String> suppliedByLegacyProjection) {
-        prepareLegacyFrontierContext(service, targetId, originallyStoredIds, suppliedByLegacyProjection, false);
-    }
-
-    private void prepareLegacyFrontierContext(
-            LearnerService service,
-            String targetId,
-            List<String> originallyStoredIds,
-            Set<String> suppliedByLegacyProjection,
-            boolean targetInitiallyAvailable) {
         // These migration checks deliberately exercise all global prerequisite
         // gates. Ordinary focus follows only dependencies inside its selected graph.
         learner.setStrictMode(true);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
                 originallyStoredIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-        // Mapped mastery of a direct predecessor ends its earlier preparation
-        // demand. Targets with another open direct requirement remain blocked.
+        // Mapped direct mastery does not erase earlier transitive preparation.
+        // Each migration fixture remains blocked until that preparation is stored.
         assertThat(service.getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id)
                 .filter(targetId::equals).toList())
-                .containsExactlyElementsOf(targetInitiallyAvailable ? List.of(targetId) : List.of());
+                .isEmpty();
         Map<String, Double> projectedMastery = service.getMastery(LEARNER_ID);
         assertThat(projectedMastery).containsAllEntriesOf(
                 suppliedByLegacyProjection.stream().collect(java.util.stream.Collectors.toMap(
@@ -1125,6 +1116,24 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(preparedIds).doesNotContain(targetId).doesNotContainAnyElementsOf(suppliedByLegacyProjection);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(
                 preparedIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+    }
+
+    /** Guarded learning actions use the existing CrossStage/GK view; raw projections keep their fixture. */
+    private void prepareCanonicalPhysicsLearningScope() {
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true, "filterId": "DE-HE", "stage": "CrossStage"
+                  },
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {
+                    "selected": true, "filterId": "GK", "stage": "CrossStage"
+                  }
+                }
+                """);
+        assertThat(compositionViewService.findLearnerScopeView(CANONICAL_PHYSICS_ID, Map.of(
+                "schoolForm", "Gymnasium", "jurisdiction", "DE-HE", "stage", "CrossStage", "courseProfile", "GK")))
+                .containsEntry("viewId", "de-he-gym-physics-gk");
+        learnerService = compositionAwareLearnerService();
     }
 
     private LearnerService compositionAwareLearnerService() {
@@ -1297,7 +1306,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_SEK1_HEAT_TRANSFER_ID,
                 List.of(LEGACY_SEK1_PHYSICS_PARTICLE_MODEL_ID),
-                Set.of(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID), true);
+                Set.of(CANONICAL_PHYSICS_SEK1_PARTICLE_MODEL_ID));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -1494,7 +1503,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
         prepareLegacyFrontierContext(learnerService, CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID,
                 List.of(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID, LEGACY_PHYSICS_MOMENTUM_CONSERVATION_ID),
-                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"), true);
+                Set.of("91c49019-ea51-4ce5-a919-c91c45b25e83", "839ecc8f-3a60-418b-bc92-64bfeef33824"));
 
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
@@ -1537,6 +1546,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_DIAGRAMS_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
 
@@ -1552,6 +1562,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateProjectsLegacyE3ActiveGoalToCanonicalGoal() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_HORIZONTAL_THROW_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
 
@@ -1567,6 +1578,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateCollapsesMixedHessenAndBavariaMotionScopesIntoCanonicalMotionCluster() {
+        prepareCanonicalPhysicsLearningScope();
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new PlannedGoal(learner, LEGACY_PHYSICS_CLUSTER_ID),
@@ -1583,6 +1595,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateCollapsesMixedHessenAndBavariaE3ScopesIntoCanonicalE3Cluster() {
+        prepareCanonicalPhysicsLearningScope();
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new PlannedGoal(learner, LEGACY_PHYSICS_E3_CLUSTER_ID),
@@ -1599,6 +1612,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateCollapsesMixedHessenAndBavariaE2ScopesIntoCanonicalE2Cluster() {
+        prepareCanonicalPhysicsLearningScope();
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new PlannedGoal(learner, LEGACY_PHYSICS_E2_CLUSTER_ID),
@@ -1615,6 +1629,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateCollapsesMixedConservationScopesIntoCanonicalConservationCluster() {
+        prepareCanonicalPhysicsLearningScope();
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new PlannedGoal(learner, LEGACY_PHYSICS_CONSERVATION_CLUSTER_ID),
@@ -1631,6 +1646,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotLearnerStateProjectsLegacyE2ActiveGoalToCanonicalGoal() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
 
@@ -1646,6 +1662,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void setMasteryUsesCanonicalPhysicsGoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_DIAGRAMS_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
         when(masteryRepository.findById(new MasteryId(LEARNER_ID, CANONICAL_PHYSICS_DIAGRAMS_ID)))
@@ -1661,6 +1678,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void setMasteryUsesCanonicalPhysicsE3GoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_HORIZONTAL_THROW_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
         when(masteryRepository.findById(new MasteryId(LEARNER_ID, CANONICAL_PHYSICS_HORIZONTAL_THROW_ID)))
@@ -1678,6 +1696,7 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void setMasteryUsesCanonicalPhysicsE2GoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView() {
+        prepareCanonicalPhysicsLearningScope();
         learner.setActiveGoalId(LEGACY_PHYSICS_ENERGY_CONSERVATION_ID);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
         when(masteryRepository.findById(new MasteryId(LEARNER_ID, CANONICAL_PHYSICS_ENERGY_CONSERVATION_ID)))

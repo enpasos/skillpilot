@@ -7,6 +7,17 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Start Here
 
+- [Audit: deterministische Skill-Graph-Regeln und ihre CI-Durchsetzung](skill-graph-deterministic-ci-audit-2026-11-06.md)
+  Unvollständiger, gesicherter Arbeitsentwurf; Hauptvertrag und eingefrorener
+  Einheiten-Sollstand werden vor einer Gate-Änderung getrennt abgeglichen.
+- [Statische Arbeitsmatrix zum CI-Vertragsaudit](skill-graph-ci-static-matrix-2026-11-06.md)
+  Einzelregeln mit tatsächlichen Prüfern, Gegenfällen, Workflow-Aufrufen und Grenzen.
+- [Fester Regelkorpus für den Skill-Graph-CI-Audit](skill-graph-ci-rule-corpus-2026-11-06.md)
+  Normquellen, unabhängige Regel-IDs und Trennung von Main-Vertrag und PR-83-Ziel.
+- [Laufzeitregeln: tatsächliche CI-Durchsetzung](skill-graph-ci-runtime-matrix-2026-11-06.md)
+  Frontier, Fokus, Anerkennung, Prüfungsabläufe, Karten und Plan-/Periodenregeln.
+- [Content- und Bildabläufe: Regel-zu-CI-Matrix](skill-graph-ci-content-presentation-matrix-2026-11-06.md)
+  Optionale Materialien, Bildfreigabe und Unterschied zwischen Toolbeleg und Hostanzeige.
 - [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
   Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
 - [CI Overview](ci.md)

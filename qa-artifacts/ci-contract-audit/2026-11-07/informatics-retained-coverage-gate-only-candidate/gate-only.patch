@@ -1,0 +1,1854 @@
+--- /dev/null
++++ b/app/scripts/fixtures/retained-assessment-coverage/informatics-v2.pin.json
+@@ -0,0 +1,5 @@
++{
++  "role": "private historical V2 native mutation regression fixture; not an accepted baseline",
++  "rawSha256": "7586e38b7c96688bc8c5f02b2e2b1327284d271c73404693c9f872d29422d661",
++  "gzipSha256": "44f9efca845f7e84a590edd18906128951ad4af5eaefcff2c844118a5004237a"
++}
+--- a/app/scripts/generateCurriculumQualityStatus.ts
++++ b/app/scripts/generateCurriculumQualityStatus.ts
+@@ -1,4 +1,5 @@
+ import { createHash } from 'node:crypto'
++import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource } from './lib/retainedAssessmentCoverage'
+ import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
+ import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+@@ -1125,10 +1126,10 @@
+   },
+   {
+     id: 'CQR-204',
+-    label: 'Complete exam definition structure',
++    label: 'Complete exam definition structure and retained contracts',
+     category: 'assessment',
+     maturityTarget: 'M4',
+-    description: 'Every retained exam definition has task, solution and scoring structure, including non-offered drafts.',
++    description: 'Every exam definition has task, solution and scoring structure, including non-offered drafts. The configured Informatics history additionally preserves exact owner-bound declared coverage and protected meaning; unknown coverage stays absent.',
+   },
+   {
+     id: 'CQR-301',
+@@ -1380,8 +1381,11 @@
+   return relative(repoRoot, path).split(/[\\/]/).join('/')
+ }
+ 
++let assessmentInputFrame: Map<string, Buffer> | undefined
+ function loadJson<T>(path: string): T {
+-  return JSON.parse(readFileSync(path, 'utf8')) as T
++  let raw = assessmentInputFrame?.get(path)
++  if (!raw) { raw = readFileSync(path); assessmentInputFrame?.set(path, raw) }
++  return captureCurriculumSource<T>(toRepoPath(path), raw)
+ }
+ 
+ const isRepoAvailableSourcePath = createRepositorySourceAvailability(repoRoot)
+@@ -2683,6 +2687,17 @@
+   viewFiles: string[] | undefined = undefined,
+   catalog: readonly SkillLandscape[] = [landscape],
+ ): CurriculumAssessmentScope {
++  const previous = assessmentInputFrame
++  assessmentInputFrame = new Map()
++  try { return discoverCapturedCurriculumAssessmentScope(landscape, viewFiles, catalog) }
++  finally { assessmentInputFrame = previous }
++}
++
++function discoverCapturedCurriculumAssessmentScope(
++  landscape: SkillLandscape,
++  viewFiles: string[] | undefined,
++  catalog: readonly SkillLandscape[],
++): CurriculumAssessmentScope {
+   const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+   const definitions = new Set(landscape.goals.filter(isExamDefinition).map((goal) => goal.id))
+   const required = new Set<string>()
+@@ -2790,7 +2805,8 @@
+   const definitionGoalIds = [...definitions].sort()
+   const requiredGoalIds = [...required].sort()
+   const issues = [...new Set(discoveryIssues)].sort()
+-  return Object.freeze({ landscapeId: landscape.landscapeId,
++  const retainedCoverage = createRetainedCoverageContext(repoRoot, landscape, definitionGoalIds, requiredGoalIds, files, assessmentInputFrame)
++  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}),
+     definitionGoalIds: Object.freeze(definitionGoalIds), requiredGoalIds: Object.freeze(requiredGoalIds),
+     discoveryIssues: Object.freeze(issues) })
+ }
+@@ -2806,19 +2822,29 @@
+   return (['structure', 'readiness'] as const).map((kind) => {
+     const checkedGoalIds = kind === 'structure' ? definitionGoalIds : requiredGoalIds
+     const failures = checkedGoalIds.map((id) => ({
+-      id, issues: concreteExamReadinessIssues(goalById.get(id)!, kind === 'readiness'),
++      id, issues: goalById.get(id) ? concreteExamReadinessIssues(goalById.get(id)!, kind === 'readiness') : ['missing exam definition'],
+     })).filter((entry) => entry.issues.length > 0)
++    const retained = expectedScope.retainedCoverage
++    const retainedIssues = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
++      ? isTrustedRetainedCoverageContext(retained) ? [...retained.manifest.discoveryIssues,
++        ...(retainedContextMatchesSource(retained, landscape) ? [] : ['current-frame-invalid: producer source differs from captured context'])] : ['expected-context-missing'] : []
++    const retainedFailures = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
++      && isTrustedRetainedCoverageContext(retained) ? retained.manifest.failingGoalIds : []
++    const failingGoalIds = [...new Set([...failures.map(({ id }) => id), ...retainedFailures])].sort()
++    const allIssues = [...issues, ...retainedIssues]
++    const retainedPass = kind !== 'structure' || landscape.landscapeId !== RETAINED_INFO_OWNER
++      || (isTrustedRetainedCoverageContext(retained) && retained.manifest.status === 'pass')
+     const result = makeRule(kind === 'structure' ? 'CQR-204' : 'CQR-202',
+-      failures.length === 0 && issues.length === 0 ? 'pass' : 'fail',
++      failingGoalIds.length === 0 && allIssues.length === 0 && retainedPass ? 'pass' : 'fail',
+       kind === 'structure'
+-        ? 'Complete retained exam-definition structure check (N19).'
++        ? 'Complete retained exam-definition structure check (N19) and configured source-bound historical contracts.'
+         : 'Complete route, released-offer and subject-view target exam readiness check.',
+       { examDefinitions: definitionGoalIds.length, requiredExams: requiredGoalIds.length,
+-        checkedExams: checkedGoalIds.length, weakExamData: failures.length, discoveryIssues: issues.length },
+-      [...issues, ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
++        checkedExams: checkedGoalIds.length, weakExamData: failingGoalIds.length, discoveryIssues: allIssues.length },
++      [...allIssues, ...retainedFailures.map(id => `${id}: retained coverage contract failed`), ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
+     result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
+       definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
+-      failingGoalIds: failures.map(({ id }) => id), discoveryIssues: [...issues] }
++      failingGoalIds, discoveryIssues: [...allIssues], ...(kind === 'structure' && retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
+     return result
+   })
+ }
+--- a/app/scripts/lib/curriculumAssessmentValidation.ts
++++ b/app/scripts/lib/curriculumAssessmentValidation.ts
+@@ -1,5 +1,8 @@
+ // SPDX-License-Identifier: Apache-2.0
++import { isTrustedRetainedCoverageContext, retainedContextMatchesScope, RETAINED_INFO_OWNER, stableCoverageJson,
++  type RetainedCoverageContext, type RetainedCoverageManifest } from './retainedAssessmentCoverage'
+ export interface CurriculumAssessmentScope {
++  readonly retainedCoverage?: RetainedCoverageContext
+   readonly landscapeId: string
+   readonly definitionGoalIds: readonly string[]
+   readonly requiredGoalIds: readonly string[]
+@@ -10,6 +13,7 @@
+   definitionGoalIds: string[]
+   requiredGoalIds: string[]
+   discoveryIssues: string[]
++  retainedCoverageManifest?: RetainedCoverageManifest
+   kind: 'structure' | 'readiness'
+   checkedGoalIds: string[]
+   failingGoalIds: string[]
+@@ -31,6 +35,10 @@
+   if (!Array.isArray(rules) || !expected || expected.landscapeId !== landscapeId
+     || !uniqueStrings(expected.definitionGoalIds) || !uniqueStrings(expected.requiredGoalIds)
+     || !Array.isArray(expected.discoveryIssues) || expected.discoveryIssues.length !== 0) return false
++  const retained = expected.retainedCoverage
++  if (landscapeId === RETAINED_INFO_OWNER && (!isTrustedRetainedCoverageContext(retained)
++    || !retainedContextMatchesScope(retained, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds)
++    || retained.manifest.status !== 'pass')) return false
+   const definitions = expected.definitionGoalIds
+   const required = expected.requiredGoalIds
+   if (!required.every((id) => definitions.includes(id))) return false
+@@ -44,6 +52,9 @@
+     const rule = record(matches[0])!
+     const manifest = record(rule.assessmentValidation)
+     const metrics = record(rule.metrics)
++    if (id === 'CQR-204' && landscapeId === RETAINED_INFO_OWNER
++      && (!isTrustedRetainedCoverageContext(retained)
++        || stableCoverageJson(manifest?.retainedCoverageManifest) !== stableCoverageJson(retained.manifest))) return false
+     const checked = kind === 'structure' ? definitions : required
+     if (rule.status !== 'pass' || !manifest || !metrics
+       || manifest.landscapeId !== landscapeId || manifest.kind !== kind
+--- /dev/null
++++ b/app/scripts/lib/retainedAssessmentCoverage.ts
+@@ -0,0 +1,344 @@
++// SPDX-License-Identifier: Apache-2.0
++import { createHash } from 'node:crypto'
++import { readFileSync } from 'node:fs'
++import { resolve } from 'node:path'
++import { gunzipSync } from 'node:zlib'
++import type { LearningGoal, SkillLandscape } from '../../src/landscapeTypes'
++import { collectCompositionProjectionRoleGoalIds, normalizeCompositionView } from '../../src/utils/authoring/compositionViewAuthoring'
++import { checkSkillGraphIntegrity } from './skillGraphIntegrity'
++
++export const RETAINED_INFO_OWNER = '7d51b38c-a149-5407-bddc-d2ce7878b020'
++export const RETAINED_INFO_SOURCE_SHA = '85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e'
++export const RETAINED_INFO_INVENTORY_SHA = '3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891'
++const HISTORY = 'contracts/curriculum-assessment-coverage/v1/informatics'
++export const INFO_FIRST = '6ebc2a67-ea20-5c4e-8a63-635f40438d6a'
++export const INFO_HELD = 'f37f2d37-7686-5ed7-9c20-6f83d4fd2254'
++export interface RetainedCoverageRow {
++  goalId: string
++  historyKind: 'declared' | 'undeclared' | 'first-definition'
++  decision: 'declared-preserved' | 'undeclared-preserved' | 'first-definition-bound' | 'fail'
++  coverage?: { historyAtomicGoalKeys?: string[]; initialAtomicGoalKeys?: string[]; currentAtomicGoalKeys: string[] }
++  meaningEvidence: string
++  issues: string[]
++}
++export interface RetainedCoverageManifest {
++  contractVersion: 'informatics-retained-assessment-coverage-v1'
++  owner: string
++  historySourceSha256: string
++  historyInventorySha256: string
++  frameDigest: string
++  historicalGoalIds: string[]
++  currentDefinitionGoalIds: string[]
++  introductionGoalIds: string[]
++  rows: RetainedCoverageRow[]
++  failingGoalIds: string[]
++  discoveryIssues: string[]
++  status: 'pass' | 'fail'
++}
++export interface CapturedSource { readonly path: string; readonly sha256: string; readonly owner: string }
++export interface RetainedCoverageContext { readonly manifest: RetainedCoverageManifest }
++const captures = new WeakMap<object, CapturedSource>()
++const contexts = new WeakMap<object, { owner: string; source?: CapturedSource; definitions: readonly string[]; required: readonly string[] }>()
++export const coverageSha256 = (bytes: string | Buffer): string => createHash('sha256').update(bytes).digest('hex')
++export function stableCoverageJson(value: unknown): string {
++  if (Array.isArray(value)) return `[${value.map(stableCoverageJson).join(',')}]`
++  if (value !== null && typeof value === 'object') return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${stableCoverageJson((value as Record<string, unknown>)[key])}`).join(',')}}`
++  return JSON.stringify(value)
++}
++const same = (a: unknown, b: unknown) => stableCoverageJson(a) === stableCoverageJson(b)
++const sorted = (values: Iterable<string>): string[] => [...new Set(values)].sort()
++function freeze<T>(value: T): T {
++  if (value !== null && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value) }
++  return value
++}
++/** Capture exactly once, parse these bytes, retain no mutable caller alias. */
++export function captureCurriculumSource<T = SkillLandscape>(path: string, raw: string | Buffer): T {
++  const bytes = Buffer.from(raw)
++  const parsed = JSON.parse(bytes.toString('utf8'))
++  if (parsed && typeof parsed === 'object') {
++    captures.set(parsed, Object.freeze({ path, sha256: coverageSha256(bytes), owner: String(parsed.landscapeId ?? '') }))
++    if (parsed.landscapeId === RETAINED_INFO_OWNER) freeze(parsed)
++  }
++  return parsed as T
++}
++export const isTrustedRetainedCoverageContext = (value: unknown): value is RetainedCoverageContext =>
++  value !== null && typeof value === 'object' && contexts.has(value)
++export function retainedContextMatchesSource(context: unknown, source: SkillLandscape): boolean {
++  if (!isTrustedRetainedCoverageContext(context)) return false
++  const expected = contexts.get(context)!.source, actual = captures.get(source)
++  return !!expected && !!actual && same(expected, actual)
++}
++export function retainedContextMatchesScope(context: unknown, owner: string, definitions: readonly string[], required: readonly string[]): boolean {
++  if (!isTrustedRetainedCoverageContext(context)) return false
++  const frame = contexts.get(context)!
++  return frame.owner === owner && same(frame.definitions, definitions) && same(frame.required, required)
++}
++
++/** Only these exact fields are nonsemantic in the finite retained contract. */
++export function protectedAssessmentMeaning(goal: LearningGoal, exam = false): unknown {
++  const result = structuredClone(goal) as unknown as Record<string, unknown>
++  for (const key of ['requires', 'contains', 'phase']) delete result[key]
++  for (const [parent, keys] of [ ['dimensionTags', ['phase']], ['extendedData', ['placementRevision']],
++    ...(exam ? [['examData', ['coveredGoalIds', 'reviewStatus', 'reviewNote']]] : []) ] as Array<[string, string[]]>) {
++    const nested = result[parent]
++    if (!nested || typeof nested !== 'object' || Array.isArray(nested)) continue
++    const fields = nested as Record<string, unknown>
++    const hadOnlyRemoved = Object.keys(fields).every(key => keys.includes(key))
++    for (const key of keys) delete fields[key]
++    if (hadOnlyRemoved && Object.keys(fields).length === 0) delete result[parent]
++  }
++  return result
++}
++
++/** No new expansion engine: native projection computes the closure; the native
++ * integrity checker validates the required containment slice, never requires. */
++export function resolveRetainedCoverage(landscape: SkillLandscape, references: unknown): { atoms: string[]; definitions: string[]; issues: string[] } {
++  const issues: string[] = []
++  if (!Array.isArray(references) || !references.length) return { atoms: [], definitions: [], issues: ['unresolved-reference: nonempty reference array required'] }
++  const byId = new Map(landscape.goals.map(goal => [goal.id.toLowerCase(), goal]))
++  if (byId.size !== landscape.goals.length) issues.push('duplicate-definition')
++  const local = (raw: unknown): string => {
++    if (typeof raw !== 'string' || raw.trim() !== raw || !raw) { issues.push(`unresolved-reference: ${String(raw)}`); return String(raw) }
++    const parts = raw.split(':')
++    if (parts.length > 2 || parts.some(part => !part)) { issues.push(`unresolved-reference: ${raw}`); return raw }
++    if (parts.length === 2 && parts[0] !== landscape.landscapeId) { issues.push(`owner-mismatch: ${raw}`); return raw }
++    const id = parts.at(-1)!
++    const goal = byId.get(id.toLowerCase())
++    if (!goal) issues.push(`unresolved-reference: ${raw}`)
++    return goal?.id ?? raw
++  }
++  const roots = references.map(local)
++  // Normalize namespace syntax only after exact owner validation, retaining
++  // errors. The native function follows every contains edge without filters.
++  const normalized = new Map(landscape.goals.map(goal => [goal.id, { ...goal,
++    contains: Array.isArray(goal.contains) ? goal.contains.map(raw => {
++      const parts = typeof raw === 'string' ? raw.split(':') : []
++      return parts.length === 2 && parts[0] === landscape.landscapeId
++        ? byId.get(parts[1].toLowerCase())?.id ?? raw : typeof raw === 'string' ? byId.get(raw.toLowerCase())?.id ?? raw : String(raw)
++    }) : [] }]))
++  const roles = collectCompositionProjectionRoleGoalIds(roots.map(goalId => ({ kind: 'canonicalSubtree', goalId })), normalized)
++  const definitions = sorted(roles.targetGoalIds)
++  for (const id of definitions) {
++    const goal = normalized.get(id)
++    if (!goal) { issues.push(`unresolved-reference: ${id}`); continue }
++    const originalGoal = byId.get(id.toLowerCase())
++    if (originalGoal?.contains !== undefined && !Array.isArray(originalGoal.contains)) issues.push(`unresolved-reference: malformed contains ${id}`)
++    for (const raw of Array.isArray(originalGoal?.contains) ? originalGoal.contains : []) local(raw)
++  }
++  const needed = landscape.goals.filter(goal => definitions.includes(goal.id)).map(goal => ({
++    ...goal, contains: normalized.get(goal.id)?.contains, requires: [],
++  }))
++  if (needed.length) {
++    const native = checkSkillGraphIntegrity([{ landscapeId: landscape.landscapeId, goals: needed }], [landscape.landscapeId])
++    for (const finding of native.findings.filter(finding => ['G01a', 'G01b', 'G05', 'G06'].includes(finding.ruleId))) {
++      issues.push(`unresolved-reference: ${finding.code} ${finding.goalId ?? ''}`)
++    }
++  }
++  const atoms = definitions.filter(id => { const goal = normalized.get(id); return goal && (!goal.contains || goal.contains.length === 0) })
++  if (!atoms.length) issues.push('unresolved-reference: empty atomic expansion')
++  return { atoms: atoms.map(id => `${landscape.landscapeId}:${id}`), definitions, issues: sorted(issues) }
++}
++
++interface HistoryInventory { owner: string; historicalRawSourceSha256: string; declaredCount: number; undeclaredCount: number; definitions: unknown[] }
++export function verifyRetainedHistory(raw: Buffer, inventoryRaw: Buffer): { landscape: SkillLandscape; inventory: HistoryInventory; issues: string[] } {
++  const landscape = JSON.parse(raw.toString('utf8')) as SkillLandscape
++  const inventory = JSON.parse(inventoryRaw.toString('utf8')) as HistoryInventory
++  const issues: string[] = []
++  if (coverageSha256(raw) !== RETAINED_INFO_SOURCE_SHA || coverageSha256(inventoryRaw) !== RETAINED_INFO_INVENTORY_SHA
++    || landscape.landscapeId !== RETAINED_INFO_OWNER || inventory.owner !== RETAINED_INFO_OWNER
++    || inventory.historicalRawSourceSha256 !== RETAINED_INFO_SOURCE_SHA) issues.push('history-binding-invalid')
++  const exams = landscape.goals.filter(goal => goal.examData)
++  const rows = exams.map(goal => {
++    const base = { goalId: goal.id, title: goal.title, historicalGoalObjectSha256: coverageSha256(JSON.stringify(goal)),
++      historicalExamDataSha256: coverageSha256(JSON.stringify(goal.examData)) }
++    if (!Object.hasOwn(goal.examData!, 'coveredGoalIds')) return { ...base, coverage: { state: 'undeclared', reason: 'Field absent in exact historical source; historical competence coverage unknown.' } }
++    const resolved = resolveRetainedCoverage(landscape, goal.examData!.coveredGoalIds)
++    issues.push(...resolved.issues)
++    return { ...base, coverage: { state: 'declared', references: goal.examData!.coveredGoalIds,
++      resolvedAtomicGoalIds: resolved.atoms.map(key => key.slice(RETAINED_INFO_OWNER.length + 1)) } }
++  }).sort((a, b) => a.goalId.localeCompare(b.goalId))
++  if (exams.length !== 24 || inventory.declaredCount !== 14 || inventory.undeclaredCount !== 10
++    || rows.filter(row => row.coverage.state === 'declared').length !== 14 || !same(rows, inventory.definitions)) issues.push('incomplete-inventory')
++  return { landscape, inventory, issues: sorted(issues) }
++}
++
++/** Bind exact source, content and independently reviewed evidence. No arbitrary
++ * approved boolean, candidate-derived report, aliases or UUID counts suffice. */
++export interface ExactMeaningEvidence {
++  kind: 'exact-equivalence-binding' | 'same-declared-contract-repair' | 'first-definition-binding'
++  owner: string; goalId: string; sourceSha256: string; oldMeaningSha256?: string; newMeaningSha256: string
++  sourcePath?: string; sourceReference?: { path: string; sha256: string; gzip?: boolean }; coverageState?: 'declared' | 'undeclared'
++  protectedGoalMeanings?: Array<{ key: string; sha256: string }>
++  atomicGoalKeys?: string[]; evidencePins: Array<{ path: string; sha256: string }>; rationale: string
++}
++export function exactMeaningEvidenceMatches(evidence: ExactMeaningEvidence, owner: string, goalId: string,
++  sourceSha: string, oldMeaning: unknown, newMeaning: unknown, atoms: string[], read: (path: string) => Buffer): boolean {
++  if (!evidence || newMeaning === undefined || evidence.owner !== owner || evidence.goalId !== goalId || evidence.sourceSha256 !== sourceSha
++    || evidence.newMeaningSha256 !== coverageSha256(stableCoverageJson(newMeaning))
++    || (oldMeaning !== undefined && evidence.oldMeaningSha256 !== coverageSha256(stableCoverageJson(oldMeaning)))
++    || (evidence.atomicGoalKeys !== undefined && !same(evidence.atomicGoalKeys, atoms))
++    || !evidence.rationale?.trim() || !Array.isArray(evidence.evidencePins) || evidence.evidencePins.length < 2) return false
++  try { return evidence.evidencePins.every(pin => coverageSha256(read(pin.path)) === pin.sha256) } catch { return false }
++}
++/** First bindings are immutable input definitions, not a hash of each future
++ * candidate. Verify their actual archived bytes, then compare the current
++ * meaning and coverage against that fixed first contract. */
++function verifiedInitialSource(binding: ExactMeaningEvidence, repoRoot: string): boolean {
++  if (!binding.sourceReference) return false
++  try {
++    const archived = readFileSync(resolve(repoRoot, binding.sourceReference.path))
++    if (coverageSha256(archived) !== binding.sourceReference.sha256) return false
++    const raw = binding.sourceReference.gzip ? gunzipSync(archived) : archived
++    if (coverageSha256(raw) !== binding.sourceSha256) return false
++    const source = JSON.parse(raw.toString('utf8')) as SkillLandscape
++    if (source.landscapeId !== binding.owner) return false
++    const matches = source.goals.filter(goal => goal.id === binding.goalId)
++    if (matches.length !== 1 || !matches[0].examData || (matches[0].contains?.length ?? 0) > 0
++      || matches[0].type === 'cluster') return false
++    const goal = matches[0]
++    if (coverageSha256(stableCoverageJson(protectedAssessmentMeaning(goal, true))) !== binding.newMeaningSha256) return false
++    if (!Object.hasOwn(goal.examData!, 'coveredGoalIds')) return binding.coverageState === 'undeclared'
++      && binding.atomicGoalKeys === undefined && same(binding.protectedGoalMeanings, [])
++    const resolved = resolveRetainedCoverage(source, goal.examData!.coveredGoalIds)
++    return binding.coverageState === 'declared' && resolved.issues.length === 0
++      && same(binding.atomicGoalKeys, resolved.atoms)
++      && same(binding.protectedGoalMeanings, resolved.definitions.map(id => ({ key: `${source.landscapeId}:${id}`,
++        sha256: coverageSha256(stableCoverageJson(protectedAssessmentMeaning(source.goals.find(goal => goal.id === id)!))),
++      })))
++  } catch { return false }
++}
++
++// Append-only concrete bindings are added only after exact source integration.
++// Pending private candidates are deliberately not a passing baseline.
++const CONCRETE_BINDINGS: readonly ExactMeaningEvidence[] = []
++
++export function createRetainedCoverageContext(repoRoot: string, landscape: SkillLandscape,
++  definitionGoalIds: readonly string[], requiredGoalIds: readonly string[], viewFiles: readonly string[], viewFrame?: ReadonlyMap<string, Buffer>): RetainedCoverageContext | undefined {
++  if (landscape.landscapeId !== RETAINED_INFO_OWNER) return
++  const discoveryIssues: string[] = []
++  let historical: SkillLandscape = { landscapeId: RETAINED_INFO_OWNER, goals: [] } as unknown as SkillLandscape
++  try {
++    const checked = verifyRetainedHistory(gunzipSync(readFileSync(resolve(repoRoot, HISTORY, 'historical-informatics-source.json.gz'))),
++      readFileSync(resolve(repoRoot, HISTORY, 'history-inventory.json')))
++    historical = checked.landscape; discoveryIssues.push(...checked.issues)
++  } catch (error) { discoveryIssues.push(`history-binding-invalid: ${String(error)}`) }
++  const capture = captures.get(landscape)
++  if (!capture || capture.owner !== RETAINED_INFO_OWNER) discoveryIssues.push('expected-context-missing: current source was not captured')
++  const oldById = new Map(historical.goals.map(goal => [goal.id, goal]))
++  const byId = new Map(landscape.goals.map(goal => [goal.id, goal]))
++  const duplicateIds = sorted(landscape.goals.filter(goal => landscape.goals.filter(other => other.id.toLowerCase() === goal.id.toLowerCase()).length !== 1).map(goal => goal.id))
++  const historicalGoalIds = sorted(historical.goals.filter(goal => goal.examData).map(goal => goal.id))
++  const registeredFirstGoalIds = CONCRETE_BINDINGS.filter(binding => binding.kind === 'first-definition-binding').map(binding => binding.goalId)
++  if (new Set(registeredFirstGoalIds).size !== registeredFirstGoalIds.length) discoveryIssues.push('incomplete-inventory: duplicate first-definition binding')
++  if (CONCRETE_BINDINGS.some(binding => binding.kind === 'first-definition-binding'
++    && (binding.owner !== RETAINED_INFO_OWNER || historicalGoalIds.includes(binding.goalId) || binding.goalId === INFO_HELD))) discoveryIssues.push('unbound-equivalence: invalid first-definition registry')
++  const introductions = sorted([...definitionGoalIds.filter(id => !historicalGoalIds.includes(id)), ...registeredFirstGoalIds.filter(id => !historicalGoalIds.includes(id))])
++  if (byId.has(INFO_HELD)) discoveryIssues.push('held-introduction: active source')
++  const rows: RetainedCoverageRow[] = []
++  const consumedPins: ExactMeaningEvidence[] = []
++  for (const goalId of [...historicalGoalIds, ...introductions]) {
++    const old = historicalGoalIds.includes(goalId) ? oldById.get(goalId) : undefined, current = byId.get(goalId)
++    const declared = !!old?.examData && Object.hasOwn(old.examData, 'coveredGoalIds')
++    const row: RetainedCoverageRow = { goalId, historyKind: old ? declared ? 'declared' : 'undeclared' : 'first-definition', decision: 'fail', meaningEvidence: 'exact', issues: [] }
++    if (!current?.examData) row.issues.push(old || registeredFirstGoalIds.includes(goalId) ? 'missing-historical-definition' : 'current-frame-invalid')
++    if (duplicateIds.includes(goalId)) row.issues.push('duplicate-definition')
++    if (current && ((current.contains?.length ?? 0) > 0 || current.type === 'cluster')) row.issues.push('non-atomic-exam')
++    let atoms: string[] = [], oldAtoms: string[] = [], referenced: string[] = []
++    if (current?.examData && (declared || !old)) {
++      if (Object.hasOwn(current.examData, 'coveredGoalIds')) {
++        const resolved = resolveRetainedCoverage(landscape, current.examData.coveredGoalIds)
++        atoms = resolved.atoms; row.issues.push(...resolved.issues)
++      } else if (declared) row.issues.push('coverage-removed')
++      if (declared) {
++        const resolved = resolveRetainedCoverage(historical, old!.examData!.coveredGoalIds)
++        oldAtoms = resolved.atoms; referenced = resolved.definitions; row.issues.push(...resolved.issues)
++        if (atoms.some(id => !oldAtoms.includes(id))) row.issues.push('coverage-added')
++        if (oldAtoms.some(id => !atoms.includes(id))) row.issues.push('coverage-removed')
++        row.coverage = { historyAtomicGoalKeys: oldAtoms, currentAtomicGoalKeys: atoms }
++      } else if (Object.hasOwn(current.examData, 'coveredGoalIds')) row.coverage = { currentAtomicGoalKeys: atoms }
++    } else if (old && current?.examData && Object.hasOwn(current.examData, 'coveredGoalIds')) row.issues.push('undeclared-transition')
++    if (old && current) {
++      const oldMeaning = protectedAssessmentMeaning(old, true), newMeaning = protectedAssessmentMeaning(current, true)
++      if (!same(oldMeaning, newMeaning)) {
++        const binding = CONCRETE_BINDINGS.find(binding => (binding.kind === 'exact-equivalence-binding' || (declared && binding.kind === 'same-declared-contract-repair'))
++          && exactMeaningEvidenceMatches(binding, RETAINED_INFO_OWNER, goalId, capture?.sha256 ?? '', oldMeaning, newMeaning, atoms,
++            path => readFileSync(resolve(repoRoot, path))))
++        if (binding && (!row.issues.length)) { row.meaningEvidence = `${binding.kind}:${coverageSha256(stableCoverageJson(binding))}`; consumedPins.push(binding) }
++        else row.issues.push('meaning-change-unproved')
++      }
++      for (const id of referenced) {
++        const oldGoal = oldById.get(id), newGoal = byId.get(id)
++        if (!oldGoal || !newGoal || !same(protectedAssessmentMeaning(oldGoal), protectedAssessmentMeaning(newGoal))) row.issues.push(`meaning-change-unproved: ${id}`)
++      }
++      if (!row.issues.length) row.decision = declared ? 'declared-preserved' : 'undeclared-preserved'
++    } else if (!old) {
++      if (goalId === INFO_HELD) row.issues.push('held-introduction')
++      else {
++        const initial = CONCRETE_BINDINGS.find(binding => binding.kind === 'first-definition-binding'
++          && binding.owner === RETAINED_INFO_OWNER && binding.goalId === goalId && verifiedInitialSource(binding, repoRoot))
++        if (initial && current?.examData) {
++          const hasCoverage = Object.hasOwn(current.examData, 'coveredGoalIds')
++          if (initial.coverageState === 'undeclared' && hasCoverage) row.issues.push('undeclared-transition')
++          if (initial.coverageState === 'declared') {
++            const initialAtoms = initial.atomicGoalKeys!
++            row.coverage = { initialAtomicGoalKeys: [...initialAtoms], currentAtomicGoalKeys: atoms }
++            if (atoms.some(key => !initialAtoms.includes(key))) row.issues.push('coverage-added')
++            if (initialAtoms.some(key => !atoms.includes(key))) row.issues.push('coverage-removed')
++          }
++          if (coverageSha256(stableCoverageJson(protectedAssessmentMeaning(current, true))) !== initial.newMeaningSha256) row.issues.push('meaning-change-unproved')
++          for (const protectedGoal of initial.protectedGoalMeanings ?? []) {
++            const parts = protectedGoal.key.split(':')
++            const target = parts.length === 2 && parts[0] === RETAINED_INFO_OWNER ? byId.get(parts[1]) : undefined
++            if (!target || coverageSha256(stableCoverageJson(protectedAssessmentMeaning(target))) !== protectedGoal.sha256) row.issues.push(`meaning-change-unproved: ${protectedGoal.key}`)
++          }
++        }
++        const first = CONCRETE_BINDINGS.find(binding => binding.kind === 'first-definition-binding'
++          && !oldById.has(goalId) && binding.sourcePath === capture?.path && verifiedInitialSource(binding, repoRoot)
++          && binding.coverageState === (Object.hasOwn(current?.examData ?? {}, 'coveredGoalIds') ? 'declared' : 'undeclared')
++          && (binding.coverageState !== 'declared' || (Array.isArray(binding.atomicGoalKeys) && binding.atomicGoalKeys.length > 0))
++          && exactMeaningEvidenceMatches(binding, RETAINED_INFO_OWNER, goalId, binding.sourceSha256, undefined,
++            current ? protectedAssessmentMeaning(current, true) : undefined, atoms, path => readFileSync(resolve(repoRoot, path)))
++          && same(binding.protectedGoalMeanings, (binding.protectedGoalMeanings ?? []).map(protectedGoal => {
++            const parts = protectedGoal.key.split(':')
++            const target = parts.length === 2 && parts[0] === RETAINED_INFO_OWNER ? byId.get(parts[1]) : undefined
++            return { key: protectedGoal.key, sha256: target ? coverageSha256(stableCoverageJson(protectedAssessmentMeaning(target))) : '' }
++          })))
++        if (first && row.issues.length === 0) {
++          row.decision = 'first-definition-bound'; row.meaningEvidence = `first-definition-binding:${coverageSha256(stableCoverageJson(first))}`; consumedPins.push(first)
++        } else if (initial) { if (!row.issues.length) row.issues.push('unbound-equivalence') }
++        else row.issues.push(goalId === INFO_FIRST ? 'first-binding-pending' : 'unregistered-introduction')
++      }
++    }
++    row.issues = sorted(row.issues); rows.push(row)
++  }
++  // A held reference in a view cannot be hidden by excluding it from definitions.
++  const views = viewFiles.map(path => {
++    try {
++      const raw = viewFrame?.get(path) ?? readFileSync(path)
++      const view = normalizeCompositionView(JSON.parse(raw.toString('utf8')))
++      // Only authored goal references carry introduction semantics. Titles,
++      // labels and metadata may discuss a held historical ID without offering it.
++      // Native traversal includes both target and prerequisiteOnly assignments.
++      const root = landscape.goals.find(goal => goal.tags?.includes('root'))
++      const roles = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId,
++        root ? new Map([[landscape.landscapeId, root.id]]) : new Map())
++      const references = [...roles.targetGoalIds, ...roles.prerequisiteOnlyGoalIds]
++      const held = references.some(reference => {
++        const parts = reference.split(':')
++        if (parts.length < 1 || parts.length > 2 || parts.some(part => !part || part.trim() !== part)) return false
++        const owner = parts.length === 2 ? parts[0] : view.landscapeId
++        return owner.toLowerCase() === RETAINED_INFO_OWNER && parts.at(-1)!.toLowerCase() === INFO_HELD
++      })
++      if (held) discoveryIssues.push('held-introduction: active view')
++      return { path, sha256: coverageSha256(raw) }
++    }
++    catch { discoveryIssues.push(`current-frame-invalid: ${path}`); return { path, sha256: '' } }
++  })
++  const manifest: RetainedCoverageManifest = { contractVersion: 'informatics-retained-assessment-coverage-v1', owner: RETAINED_INFO_OWNER,
++    historySourceSha256: RETAINED_INFO_SOURCE_SHA, historyInventorySha256: RETAINED_INFO_INVENTORY_SHA,
++    frameDigest: coverageSha256(stableCoverageJson({ source: capture ?? null, views, consumedPins, definitionGoalIds, requiredGoalIds })),
++    historicalGoalIds, currentDefinitionGoalIds: [...definitionGoalIds], introductionGoalIds: introductions,
++    rows, failingGoalIds: sorted(rows.filter(row => row.decision === 'fail').map(row => row.goalId)),
++    discoveryIssues: sorted(discoveryIssues), status: rows.every(row => row.decision !== 'fail') && !discoveryIssues.length && historicalGoalIds.length === 24 ? 'pass' : 'fail' }
++  const context = freeze({ manifest }); contexts.set(context, { owner: landscape.landscapeId, source: capture, definitions: [...definitionGoalIds], required: [...requiredGoalIds] }); return context
++}
+--- a/app/scripts/testCurriculumExamReadiness.ts
++++ b/app/scripts/testCurriculumExamReadiness.ts
+@@ -345,3 +345,7 @@
+   assertStopsFloors(fullCore(fixture, [viewFile]))
+ } finally { rmSync(directory, { recursive: true, force: true }) }
+ console.log(`Complete assessment gate passed: 10 actual Info offers, 16 actual DE/History view targets, ${hiddenPayloadNegatives} payload negatives; retained/draft/legacy/discovery/manifest guards and real graph → M7/M6-floor chain.`)
++
++// Finite source-bound retained assessment contract and independent consumer chain.
++await import('./testRetainedAssessmentCoverage')
++await import('./testRetainedAssessmentCoverageChain')
+--- /dev/null
++++ b/app/scripts/testRetainedAssessmentCoverage.ts
+@@ -0,0 +1,146 @@
++// SPDX-License-Identifier: Apache-2.0
++import assert from 'node:assert/strict'
++import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
++import { gunzipSync } from 'node:zlib'
++import { tmpdir } from 'node:os'
++import { resolve } from 'node:path'
++import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
++import { captureCurriculumSource, createRetainedCoverageContext, coverageSha256, exactMeaningEvidenceMatches,
++  INFO_FIRST, INFO_HELD, protectedAssessmentMeaning, RETAINED_INFO_OWNER as OWNER,
++  stableCoverageJson, verifyRetainedHistory, type ExactMeaningEvidence } from './lib/retainedAssessmentCoverage'
++import { hasCompletePassingCurriculumExamReadiness } from './lib/curriculumAssessmentValidation'
++import { discoverCurriculumAssessmentScope, evaluateCurriculumExamReadiness } from './generateCurriculumQualityStatus'
++import { collectCurriculumMaturityFloorFailures } from './checkCurriculumMaturityFloors'
++const root = resolve(import.meta.dirname, '../..')
++const reference = resolve(root, 'contracts/curriculum-assessment-coverage/v1/informatics')
++const historyRaw = gunzipSync(readFileSync(resolve(reference, 'historical-informatics-source.json.gz')))
++const inventoryRaw = readFileSync(resolve(reference, 'history-inventory.json'))
++const original: SkillLandscape = JSON.parse(historyRaw.toString())
++interface TestInventory { owner: string; definitions: Array<{ goalId: string; historicalGoalObjectSha256: string; coverage: { state: string; resolvedAtomicGoalIds?: string[] } }> }
++const inventory = JSON.parse(inventoryRaw.toString()) as TestInventory
++const fields = (value: unknown): Record<string, unknown> => value as Record<string, unknown>
++const clone = () => structuredClone(original)
++const goal = (s: SkillLandscape, id: string): LearningGoal => s.goals.find(g => g.id === id)!
++const Q3 = ['8877a2e6-ebf8-5b73-a88b-56d5145a20ba','0c346dc1-fdcc-5563-9154-28623d354574']
++const CLUSTER = '31026f4a-629b-571f-b45d-a87f47a09d9e', ADDITION = '875cb53c-b48d-5b2b-8cb0-e20f27534f16'
++const undeclared = inventory.definitions.filter((r) => r.coverage.state === 'undeclared').map((r) => r.goalId) as string[]
++const oldAtoms = (id: string): string[] => { const row = inventory.definitions.find(r => r.goalId === id); assert.ok(row?.coverage.resolvedAtomicGoalIds); return row.coverage.resolvedAtomicGoalIds }
++const bind = (source: SkillLandscape, views: string[] = []) => {
++  const captured = captureCurriculumSource('fixtures/captured-informatics-source.json', JSON.stringify(source)) as SkillLandscape
++  const definitions = captured.goals.filter(g => g.examData || g.nodeKind === 'exam').map(g => g.id).sort()
++  const retainedCoverage = createRetainedCoverageContext(root, captured, definitions, [], views)!
++  // Native current scope discovery is separately exercised; isolate the finite
++  // retained/structure contract from unrelated published route configuration.
++  const expectedScope = Object.freeze({ landscapeId: OWNER, definitionGoalIds: Object.freeze(definitions), requiredGoalIds: Object.freeze([] as string[]), discoveryIssues: Object.freeze([] as string[]), retainedCoverage })
++  const rules = evaluateCurriculumExamReadiness(captured, [], [captured], expectedScope)
++  return { source: captured, scope: expectedScope, manifest: retainedCoverage.manifest, rules,
++    structure: rules.find(r => r.id === 'CQR-204')! }
++}
++const row = (bundle: ReturnType<typeof bind>, id: string) => bundle.manifest.rows.find(r => r.goalId === id)!
++const fails = (s: SkillLandscape, id: string, code: string) => assert.ok(row(bind(s), id).issues.some(i => i.startsWith(code)), `${id}: ${code}`)
++const results: Array<{ id: string; checks: string; status: string }> = []
++const group = (id: string, checks: string, execute: () => void) => { execute(); results.push({ id, checks, status: 'pass' }); console.log(`retained coverage ${id}: pass (${checks})`) }
++group('T01', 'bound actual 24; native CQR204 keeps six real placeholder errors', () => {
++  const b = bind(clone()); assert.equal(b.manifest.status,'pass'); assert.equal(b.manifest.rows.length,24)
++  assert.equal(b.manifest.rows.filter(r => r.decision === 'declared-preserved').length,14)
++  assert.equal(b.manifest.rows.filter(r => r.decision === 'undeclared-preserved').length,10)
++  assert.equal(b.structure.status,'fail'); assert.equal(b.structure.assessmentValidation!.failingGoalIds.length,6)
++})
++for (const [index, id] of Q3.entries()) group(`T0${index+2}`, `native isolated Q3 ${[21,18][index]}→${[22,19][index]}`, () => {
++  const s = clone(); goal(s,CLUSTER).contains!.push(ADDITION)
++  goal(s,Q3[1-index]).examData!.coveredGoalIds = oldAtoms(Q3[1-index])
++  const b = bind(s); assert.deepEqual(b.manifest.failingGoalIds,[id])
++  const r = row(b,id); assert.ok(r.issues.includes('coverage-added')); assert.equal(r.coverage!.historyAtomicGoalKeys!.length,[21,18][index])
++  assert.equal(r.coverage!.currentAtomicGoalKeys.length,[22,19][index]); assert.equal(b.structure.status,'fail')
++})
++group('T04', 'actual frozen V2 source both Q3 drifts independently found', () => {
++  const path = resolve(import.meta.dirname,'fixtures/retained-assessment-coverage/informatics-v2.json.gz')
++  const raw = gunzipSync(readFileSync(path)); const pin=JSON.parse(readFileSync(resolve(import.meta.dirname,'fixtures/retained-assessment-coverage/informatics-v2.pin.json'),'utf8'))
++  assert.equal(pin.rawSha256,'7586e38b7c96688bc8c5f02b2e2b1327284d271c73404693c9f872d29422d661');assert.equal(coverageSha256(raw),pin.rawSha256); const s=JSON.parse(raw.toString()); const b=bind(s)
++  for (const id of Q3) assert.ok(row(b,id).issues.includes('coverage-added'))
++})
++group('T05', 'all14 explicit native pins; UNKNOWN not replaced; no V2 blanket pass', () => {
++  const s=clone();goal(s,CLUSTER).contains!.push(ADDITION)
++  for (const id of Q3) goal(s,id).examData!.coveredGoalIds=oldAtoms(id)
++  const b=bind(s); assert.equal(b.manifest.status,'pass'); assert.equal(b.manifest.rows.filter(r=>r.historyKind==='declared').length,14)
++  for(const id of undeclared) assert.equal(Object.hasOwn(row(b,id),'coverage'),false)
++})
++group('T06', 'same-cardinality atom swap and removal fail', () => {
++  for(const swap of [true,false]) { const s=clone(), ids=oldAtoms(Q3[0]);goal(s,Q3[0]).examData!.coveredGoalIds=swap?[...ids.slice(1),ADDITION]:ids.slice(1)
++    fails(s,Q3[0],'coverage-removed'); if(swap) fails(s,Q3[0],'coverage-added') }
++})
++group('T07', 'own and covered protected meaning; unknown fields not ignored', () => {
++  for(const id of [Q3[0],oldAtoms(Q3[0])[0]]) {const s=clone();goal(s,id).description+=' Eine weitere Kompetenz.';fails(s,Q3[0],'meaning-change-unproved')}
++  const s=clone();fields(goal(s,Q3[0])).newRecognitionClaim=true;fails(s,Q3[0],'meaning-change-unproved')
++})
++group('T08', 'task solution rubric and threshold changes blocked', () => {
++  for(const key of ['taskContent','solutionContent','rubric','threshold']) {const s=clone(),e=goal(s,Q3[0]).examData!
++    if(key==='rubric')e.scoring.steps[0].description+=' weiter';else if(key==='threshold')e.scoring.passingPoints++;else e[key]+=' weiter'
++    fails(s,Q3[0],'meaning-change-unproved') }
++})
++group('T09', 'exact evidence pins positive; stale pins owner source meaning and atoms negative', () => {
++  const old=protectedAssessmentMeaning(goal(original,Q3[0]),true),updated=fields(structuredClone(old));updated.title=String(updated.title)+' redaktionell'
++  const pins=[{path:'original',sha256:coverageSha256('independent original review')},{path:'recheck',sha256:coverageSha256('independent bounded recheck')}]
++  const evidence:ExactMeaningEvidence={kind:'exact-equivalence-binding',owner:OWNER,goalId:Q3[0],sourceSha256:'exact-source',oldMeaningSha256:coverageSha256(stableCoverageJson(old)),newMeaningSha256:coverageSha256(stableCoverageJson(updated)),atomicGoalKeys:oldAtoms(Q3[0]).map(id=>`${OWNER}:${id}`),evidencePins:pins,rationale:'Exact bounded editorial repair independently reviewed.'}
++  const read=(p:string)=>Buffer.from(p==='original'?'independent original review':'independent bounded recheck')
++  const matches=(e:unknown)=>exactMeaningEvidenceMatches(e as ExactMeaningEvidence,OWNER,Q3[0],'exact-source',old,updated,evidence.atomicGoalKeys!,read)
++  assert.equal(matches(evidence),true)
++  for(const patch of [{owner:'foreign'},{sourceSha256:'stale'},{newMeaningSha256:'stale'},{atomicGoalKeys:[]},{evidencePins:[...pins.slice(0,1),{path:'recheck',sha256:'new'}]},{approved:true}])assert.equal(matches(patch.approved?patch:{...evidence,...patch}),false)
++  const s=clone();goal(s,Q3[0]).title+=' redaktionell';fails(s,Q3[0],'meaning-change-unproved')
++})
++group('T10', 'all ten unchanged ABSENT own contracts preserved without coverage member', () => {
++  const b=bind(clone());assert.equal(undeclared.length,10)
++  for(const id of undeclared){assert.equal(row(b,id).decision,'undeclared-preserved');assert.equal(Object.hasOwn(row(b,id),'coverage'),false)}
++})
++group('T11', 'every ABSENT→empty/null/list and new claim fails', () => {
++  for(const id of undeclared)for(const refs of [[],null,[oldAtoms(Q3[0])[0]]]){const s=clone();fields(goal(s,id).examData).coveredGoalIds=refs;fails(s,id,'undeclared-transition')}
++  const s=clone();fields(goal(s,undeclared[0]).examData).recognizesOtherGoals=true;fails(s,undeclared[0],'meaning-change-unproved')
++})
++group('T12', 'direct inherited transitive requires never become coverage', () => {
++  const s=clone();goal(s,Q3[0]).requires=[ADDITION];goal(s,CLUSTER).requires=[ADDITION];goal(s,ADDITION).requires=[oldAtoms(Q3[0])[0]]
++  assert.equal(bind(s).manifest.status,'pass')
++})
++group('T13', 'history exact source/inventory pins, internal row owner and contents', () => {
++  assert.deepEqual(verifyRetainedHistory(historyRaw,inventoryRaw).issues,[])
++  for(const mutate of [(x:TestInventory)=>x.definitions.pop(),(x:TestInventory)=>x.definitions.push(x.definitions[0]),(x:TestInventory)=>x.owner='foreign',(x:TestInventory)=>x.definitions[0].historicalGoalObjectSha256='new']){const x=JSON.parse(inventoryRaw.toString());mutate(x);assert.ok(verifyRetainedHistory(historyRaw,Buffer.from(JSON.stringify(x))).issues.length)}
++  const changed=clone();goal(changed,Q3[0]).title+=' new';assert.ok(verifyRetainedHistory(Buffer.from(JSON.stringify(changed)),inventoryRaw).issues.includes('history-binding-invalid'))
++})
++group('T14', 'view absence review draft preserve24; source deletion/type change fail', () => {
++  const s=clone();goal(s,Q3[0]).examData!.reviewStatus='draft';goal(s,Q3[0]).phase='private';assert.equal(bind(s).manifest.status,'pass')
++  const missing=clone();missing.goals=missing.goals.filter(g=>g.id!==Q3[0]);fails(missing,Q3[0],'missing-historical-definition')
++  const cluster=clone();goal(cluster,Q3[0]).contains=[ADDITION];fails(cluster,Q3[0],'non-atomic-exam')
++})
++group('T15', 'native missing cycle duplicate foreign malformed refs fail closed', () => {
++  for(const refs of [['missing'],[`foreign:${oldAtoms(Q3[0])[0]}`],[`:${oldAtoms(Q3[0])[0]}`],[`${OWNER}:${oldAtoms(Q3[0])[0]}:extra`],null,[],[null]]){const s=clone();fields(goal(s,Q3[0]).examData).coveredGoalIds=refs;assert.equal(row(bind(s),Q3[0]).decision,'fail')}
++  for(const contains of [null, {}, 'malformed', [null], [`foreign:${oldAtoms(Q3[0])[0]}`]]) {const s=clone();fields(goal(s,CLUSTER)).contains=contains;fails(s,Q3[0],'unresolved-reference')}
++  const cyc=clone();goal(cyc,CLUSTER).contains!.push(CLUSTER);fails(cyc,Q3[0],'unresolved-reference')
++  const dup=clone();dup.goals.push(structuredClone(goal(dup,oldAtoms(Q3[0])[0])));fails(dup,Q3[0],'duplicate-definition')
++  const qualified=clone();goal(qualified,Q3[0]).examData!.coveredGoalIds=oldAtoms(Q3[0]).map(id=>`${OWNER}:${id}`);assert.equal(row(bind(qualified),Q3[0]).decision,'declared-preserved')
++})
++group('T16', 'captured immutable source vs later fresh bytes and stale frame', () => {
++  const s=clone(),b=bind(s);goal(s,Q3[0]).description+=' caller mutation';assert.equal(row(b,Q3[0]).decision,'declared-preserved')
++  assert.ok(Object.isFrozen(b.source.goals[0]));assert.throws(()=>{b.source.goals[0].title='mutated'})
++  const fresh=bind(s);assert.notEqual(fresh.manifest.frameDigest,b.manifest.frameDigest);assert.equal(fresh.manifest.status,'fail')
++  const mismatched=evaluateCurriculumExamReadiness(fresh.source,[],[fresh.source],b.scope).find(r=>r.id==='CQR-204')!;assert.equal(mismatched.status,'fail');assert.ok(mismatched.assessmentValidation!.discoveryIssues.some(i=>i.startsWith('current-frame-invalid')))
++})
++group('T17', 'missing duplicate fabricated CQR204 manifests are rejected by native consumer', () => {
++  const b=bind(clone()); const nativeScope=discoverCurriculumAssessmentScope(b.source,[],[b.source]);assert.equal(nativeScope.retainedCoverage!.manifest.status,'pass')
++  for(const rules of [[],[b.structure,b.structure],b.rules.map(r=>({...r,status:'pass',assessmentValidation:{...r.assessmentValidation!,retainedCoverageManifest:{...b.manifest,rows:[],status:'pass'}}}))])assert.equal(hasCompletePassingCurriculumExamReadiness(rules,OWNER,b.scope),false)
++})
++group('T18', 'missing fabricated replayed expected context and policy IDs never opt out', () => {
++  const b=bind(clone());for(const scope of [undefined,{...b.scope,retainedCoverage:undefined},JSON.parse(JSON.stringify(b.scope)),{...b.scope,retainedCoverage:{manifest:b.manifest}}])assert.equal(hasCompletePassingCurriculumExamReadiness(b.rules,OWNER,scope),false)
++  for(const policyId of ['default','changed-policy'])assert.ok(collectCurriculumMaturityFloorFailures({curricula:[{landscapeId:OWNER,frameworkId:'fixture',subject:'Fixture',maturity:'M7',rules:b.rules}]},{schemaVersion:1,policyId,baselineDate:'2026-08-20',exceptions:[],knownPreBaselineRegressions:[],floors:[{landscapeId:OWNER,frameworkId:'fixture',subject:'Fixture',minimumMaturity:'M6',reason:'required retained contract'}]},new Map([[OWNER,b.scope]])).some(f=>f.includes('assessment reports')))
++})
++group('T19', 'new20 first binding pending; unknown standalone and alias remain unregistered', () => {
++  const s=clone(),e=structuredClone(goal(s,Q3[0]));e.id=INFO_FIRST;e.examData!.coveredGoalIds=oldAtoms(Q3[0]).slice(0,20);s.goals.push(e);fails(s,INFO_FIRST,'first-binding-pending')
++  const standalone=clone(),n=structuredClone(goal(standalone,undeclared[0]));n.id='11111111-1111-4111-8111-111111111111';standalone.goals.push(n);fails(standalone,n.id,'unregistered-introduction')
++})
++group('T20', 'held HE absent positive; active source/view appearance hard fail', () => {
++  assert.ok(!bind(clone()).manifest.introductionGoalIds.includes(INFO_HELD))
++  const s=clone(),e=structuredClone(goal(s,Q3[0]));e.id=INFO_HELD;s.goals.push(e);fails(s,INFO_HELD,'held-introduction')
++  const dir=mkdtempSync(resolve(tmpdir(),'retained-views-'));try{const p=resolve(dir,'held.view.json');writeFileSync(p,JSON.stringify({viewId:'held-negative',landscapeId:OWNER,scope:{stage:'CrossStage'},rootNodes:[{kind:'goalEntry',goalId:INFO_HELD}]}));assert.ok(bind(clone(),[p]).manifest.discoveryIssues.some(i=>i.startsWith('held-introduction')))}finally{rmSync(dir,{recursive:true,force:true})}
++})
++export const retainedCoverageTestResults = results
++console.log(JSON.stringify({retainedCoverageGroups:results.length,groups:results}))
++
++await import('./testRetainedAssessmentHeldView')
+--- /dev/null
++++ b/app/scripts/testRetainedAssessmentCoverageChain.ts
+@@ -0,0 +1,123 @@
++// SPDX-License-Identifier: Apache-2.0
++// Process-isolated test overlay. Production history constants and public APIs
++// remain fixed; only the two fixed fixture history pins and repository input root
++// are substituted in a isolated child. No report can select this reference.
++import assert from 'node:assert/strict'
++import { readFileSync, writeFileSync, mkdirSync, rmSync, symlinkSync } from 'node:fs'
++import { resolve } from 'node:path'
++import { pathToFileURL } from 'node:url'
++import { gzipSync } from 'node:zlib'
++import { spawnSync } from 'node:child_process'
++import type { SkillLandscape, LearningGoal, ExamData } from '../src/landscapeTypes'
++import type { ExactMeaningEvidence } from './lib/retainedAssessmentCoverage'
++import { coverageSha256, resolveRetainedCoverage, protectedAssessmentMeaning, stableCoverageJson, RETAINED_INFO_OWNER as OWNER } from './lib/retainedAssessmentCoverage'
++const repo=resolve(import.meta.dirname,'../..')
++const scratch=resolve(repo,'tmp/retained-assessment-chain-fixture')
++rmSync(scratch,{recursive:true,force:true});mkdirSync(scratch,{recursive:true});symlinkSync(resolve(repo,'app/node_modules'),resolve(scratch,'node_modules'),'dir')
++const sourcePath='curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json'
++const contractPath='contracts/curriculum-assessment-coverage/v1/informatics'
++const fixtures=JSON.parse(readFileSync(resolve(repo,contractPath,'history-inventory.json'),'utf8')) as {definitions: Array<{goalId:string}>}
++const math=JSON.parse(readFileSync(resolve(repo,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'),'utf8')) as SkillLandscape
++const material=math.goals.find(g=>g.id==='311ab2f2-3364-5166-ac22-3ef01419fee4')!.examData as ExamData
++const A='11111111-1111-4111-8111-111111111111',B='22222222-2222-4222-8222-222222222222',C='33333333-3333-4333-8333-333333333333'
++const practice=['f05a9276-f27c-5d74-af65-588f12ab4de3','91c5be09-cc6b-5f57-bfe1-9f0038faf26a','6982b63a-c6c8-5a6f-b5cb-51568301ac1c','010651ba-ddd0-510b-8ed1-e3610031f6e1','70ef7a45-540a-5d8c-b970-19b9f740c40a','4d22b75a-c395-5785-9131-68a8a5e203c1','66630624-08b1-5d02-8544-877d0ffb12c9']
++const atoms=[A,B].map(id=>({id,title:'Explicit synthetic competency '+id,description:'A fixed synthetic competency for the native gate fixture.',weight:1,contains:[],requires:[],type:'atomic'}))
++const exams=fixtures.definitions.map((row,index:number)=>({id:row.goalId,title:'Synthetic retained exam '+index,description:'Synthetic test contract; no curricular material approval.',weight:1,contains:[],requires:[],type:'atomic',nodeKind:'exam',examData:{...structuredClone(material),reviewStatus:'released',...(index<14?{coveredGoalIds:[index===0?C:A]}:{})}}))
++for(let index=14;index<24;index++)delete exams[index].examData.coveredGoalIds
++const source={landscapeId:OWNER,title:'Synthetic source-bound native Info gate fixture',goals:[...atoms,{id:C,title:'Synthetic coverage cluster',weight:1,type:'cluster',contains:[A],requires:[]},...exams,...practice.map((id,index)=>({id,title:'Configured native fixture practice '+index,weight:1,contains:index===0?exams.map((e)=>e.id):[],requires:[]}))]}
++const typedSource = source as unknown as SkillLandscape
++const raw=Buffer.from(JSON.stringify(source,null,2)+'\n')
++const inventory={kind:'Synthetic process-isolated test contract only',owner:OWNER,sourcePath,historicalRawSourceSha256:coverageSha256(raw),declaredCount:14,undeclaredCount:10,definitions:exams.map((g)=>({goalId:g.id,title:g.title,historicalGoalObjectSha256:coverageSha256(JSON.stringify(g)),historicalExamDataSha256:coverageSha256(JSON.stringify(g.examData)),coverage:Object.hasOwn(g.examData,'coveredGoalIds')?{state:'declared',references:g.examData.coveredGoalIds,resolvedAtomicGoalIds:resolveRetainedCoverage(typedSource,g.examData.coveredGoalIds).atoms.map(k=>k.slice(OWNER.length+1))}:{state:'undeclared',reason:'Field absent in exact historical source; historical competence coverage unknown.'}})).sort((a,b)=>a.goalId.localeCompare(b.goalId))}
++const inventoryRaw=Buffer.from(JSON.stringify(inventory,null,2)+'\n')
++const put=(path:string,bytes:string|Buffer)=>{const absolute=resolve(scratch,path);mkdirSync(resolve(absolute,'..'),{recursive:true});writeFileSync(absolute,bytes)}
++put(sourcePath,raw);put(contractPath+'/historical-informatics-source.json.gz',gzipSync(raw));put(contractPath+'/history-inventory.json',inventoryRaw)
++put('curricula/DE/Gymnasium/composition-views/informatik/fixture.view.json',JSON.stringify({viewId:'synthetic-retained-info-fixture',landscapeId:OWNER,scope:{schoolForm:'Gymnasium',stage:'CrossStage'},rootNodes:[{kind:'structure',id:'fixed-fixture',label:'Explicit native test targets',children:exams.map((e)=>({kind:'goalEntry',goalId:e.id}))}]}))
++const sourceSha=coverageSha256(raw),inventorySha=coverageSha256(inventoryRaw)
++assert.equal(sourceSha,'b942a2a0630a668fadfc342c5787ecdc964349da909078a0cb024eeeb87c5e42','Synthetic history is fixed, never regenerated as a new acceptance baseline.')
++assert.equal(inventorySha,'f58ab88a6ba8b20cc00e5b28a57a65fb82eb7d9d381e54bcd4a4e2564ac46ff5')
++let testBindings: readonly ExactMeaningEvidence[]=[]
++const mutationLog: unknown[]=[]
++const loader=resolve(scratch,'fixture-loader.mjs'),register=resolve(scratch,'register-fixture-loader.mjs')
++writeFileSync(register,`import{register}from'node:module';register(${JSON.stringify(pathToFileURL(loader).href)},import.meta.url)`)
++writeFileSync(loader,`import ts from ${JSON.stringify(pathToFileURL(resolve(repo,'app/node_modules/typescript/lib/typescript.js')).href)};
++import{readFileSync,existsSync,appendFileSync}from'node:fs';import{createHash}from'node:crypto';import{fileURLToPath,pathToFileURL}from'node:url';import{createRequire}from'node:module';
++const config=JSON.parse(readFileSync(${JSON.stringify(resolve(scratch,'overlay-current.json'))},'utf8')),require=createRequire(${JSON.stringify(resolve(repo,'app/package.json'))}),sha=x=>createHash('sha256').update(x).digest('hex');
++export async function resolve(specifier,context,next){try{return await next(specifier,context)}catch(error){
++ if(specifier.startsWith('.')||specifier.startsWith('/')||specifier.startsWith('file:')){const path=fileURLToPath(new URL(specifier,context.parentURL));for(const candidate of [path+'.ts',path+'.tsx',path+'.mjs',path+'/index.ts',path.replace(/\\.js$/u,'.ts')])if(candidate!==path&&existsSync(candidate))return{url:pathToFileURL(candidate).href,shortCircuit:true}}
++ else if(!specifier.startsWith('node:')){try{return{url:pathToFileURL(require.resolve(specifier)).href,shortCircuit:true}}catch{}}
++ throw error}}
++export async function load(url,context,next){if(!url.startsWith('file:'))return next(url,context);const path=fileURLToPath(url);if(!/\\.tsx?$/u.test(path))return next(url,context);let source=readFileSync(path,'utf8'),before=source;
++ if(path.endsWith('/retainedAssessmentCoverage.ts'))source=source.replaceAll('85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e',config.sourceSha).replaceAll('3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891',config.inventorySha).replace('const CONCRETE_BINDINGS: readonly ExactMeaningEvidence[] = []','const CONCRETE_BINDINGS: readonly ExactMeaningEvidence[] = '+JSON.stringify(config.bindings));
++ if(path.endsWith('/generateCurriculumQualityStatus.ts'))source=source.replace("const repoRoot = resolve(scriptDir, '../..')",'const repoRoot = '+JSON.stringify(config.root));
++ if(path.endsWith('/checkCurriculumMaturityFloors.ts'))source=source.replace("new URL('../../docs/qa-ci/status/curriculum-quality-status.json', import.meta.url)",JSON.stringify(config.root+'/docs/qa-ci/status/curriculum-quality-status.json')).replace("new URL('./config/curriculum-maturity-floor-policy.json', import.meta.url)",JSON.stringify(config.root+'/policy.json'));
++ if(source!==before)appendFileSync(config.log,JSON.stringify({path,beforeSha256:sha(before),afterSha256:sha(source),fixtureOnly:true})+'\\n');
++ return{format:'module',shortCircuit:true,source:ts.transpileModule(source,{fileName:path,compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText}}`)
++function runFixture(entry:string,name:string){
++ const log=resolve(scratch,name+'.overlay.jsonl');writeFileSync(log,'');put('overlay-current.json',JSON.stringify({fixtureOnly:true,root:scratch,sourceSha,inventorySha,bindings:testBindings,log}))
++ const result=spawnSync(process.execPath,['--import',register,entry],{cwd:repo,encoding:'utf8',maxBuffer:16*1024*1024})
++ mutationLog.push(...readFileSync(log,'utf8').trim().split('\n').filter(Boolean).map(line=>JSON.parse(line)))
++ return result
++}
++const imports=pathToFileURL(resolve(repo,'app/scripts/generateCurriculumQualityStatus.ts')).href
++const captureHelper=pathToFileURL(resolve(repo,'app/scripts/lib/retainedAssessmentCoverage.ts')).href
++const helper=pathToFileURL(resolve(repo,'app/scripts/lib/curriculumAssessmentValidation.ts')).href
++const floor=pathToFileURL(resolve(repo,'app/scripts/checkCurriculumMaturityFloors.ts')).href
++const runner=`import{captureCurriculumSource}from${JSON.stringify(captureHelper)};import assert from 'node:assert/strict';import{readFileSync,writeFileSync}from'node:fs';import{readCurrentCurriculumAssessmentScopes,evaluateCurriculumExamReadiness,evaluateGraphIntegrity,deriveCurriculumMaturity}from${JSON.stringify(imports)};import{hasCompletePassingCurriculumExamReadiness}from${JSON.stringify(helper)};import{checkCurriculumMaturityFloors}from${JSON.stringify(floor)};
++const O=${JSON.stringify(OWNER)},path=${JSON.stringify(resolve(scratch,sourcePath))},base=JSON.parse(readFileSync(path,'utf8'));
++const routes=[{scopeId:'valid-native-fixture',label:'Other already-valid route requirements',maturity:'M4',selectedAtomicGoals:2,rules:[{id:'CQR-101',status:'pass',summary:'fixture route requirements satisfied'}]}];
++const other=['CQR-000','CQR-002','CQR-003','CQR-301','CQR-401','CQR-501','CQR-302','CQR-303'].map(id=>({id,status:'pass',summary:'Other fixture prerequisite satisfied'}));
++function current(){const scopes=readCurrentCurriculumAssessmentScopes([O]);const expected=scopes.get(O);const source=captureCurriculumSource(${JSON.stringify(sourcePath)},readFileSync(path));const rules=[...other,evaluateGraphIntegrity(source,[source]),...evaluateCurriculumExamReadiness(source,[],[source],expected)];return{scopes,expected,rules,maturity:deriveCurriculumMaturity(rules,routes,O,expected)}}
++const policy={schemaVersion:1,policyId:'fixed-synthetic-info-M6-floor',baselineDate:'2026-08-20',exceptions:[],knownPreBaselineRegressions:[],floors:[{landscapeId:O,frameworkId:'synthetic',subject:'Synthetic native Info gate fixture',minimumMaturity:'M6',reason:'Isolate exact retained-coverage failure'}]};
++const artifact=(c,m=c.maturity)=>({curricula:[{landscapeId:O,frameworkId:'synthetic',subject:'Synthetic native Info gate fixture',maturity:m,scopes:routes,rules:c.rules}]});
++const good=current();assert.equal(good.expected.retainedCoverage.manifest.status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-204').status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-202').status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-001').status,'pass');assert.equal(good.maturity,'M6');assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,good.expected),true);checkCurriculumMaturityFloors(artifact(good),policy,good.scopes);
++writeFileSync(${JSON.stringify(resolve(scratch,'positive-status.json'))},JSON.stringify(artifact(good)));writeFileSync(${JSON.stringify(resolve(scratch,'policy.json'))},JSON.stringify(policy));
++for(const scope of [undefined,{...good.expected,retainedCoverage:undefined},JSON.parse(JSON.stringify(good.expected)),{...good.expected,definitionGoalIds:[]}])assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,scope),false);
++for(const alter of [r=>r.filter(x=>x.id!=='CQR-204'),r=>[...r,r.find(x=>x.id==='CQR-204')],r=>r.map(x=>x.id==='CQR-204'?{...x,status:'not_configured'}:x),r=>r.map(x=>x.id==='CQR-204'?{...x,assessmentValidation:{...x.assessmentValidation,retainedCoverageManifest:{...x.assessmentValidation.retainedCoverageManifest,rows:[]}}}:x)])assert.equal(hasCompletePassingCurriculumExamReadiness(alter(structuredClone(good.rules)),O,good.expected),false);
++base.goals.find(g=>g.id===${JSON.stringify(C)}).contains.push(${JSON.stringify(B)});writeFileSync(path,JSON.stringify(base));const bad=current();assert.equal(bad.rules.find(r=>r.id==='CQR-001').status,'pass');assert.equal(bad.rules.find(r=>r.id==='CQR-202').status,'pass');assert.deepEqual(bad.expected.retainedCoverage.manifest.failingGoalIds,[${JSON.stringify(exams[0].id)}]);assert.equal(bad.maturity,'M3');assert.throws(()=>checkCurriculumMaturityFloors(artifact(bad),policy,bad.scopes),/maturity regression/);
++const forged=structuredClone(bad);for(const r of forged.rules){if(r.id!=='CQR-204')continue;r.status='pass';r.metrics.weakExamData=0;r.metrics.discoveryIssues=0;r.assessmentValidation.failingGoalIds=[];const m=r.assessmentValidation.retainedCoverageManifest;m.status='pass';m.failingGoalIds=[];m.discoveryIssues=[];for(const row of m.rows){row.issues=[];row.decision=row.historyKind==='declared'?'declared-preserved':'undeclared-preserved'}}
++assert.equal(hasCompletePassingCurriculumExamReadiness(forged.rules,O,bad.expected),false);assert.equal(deriveCurriculumMaturity(forged.rules,routes,O,bad.expected),'M3');for(const min of ['M6','M7'])assert.throws(()=>checkCurriculumMaturityFloors(artifact(forged,'M7'),{...policy,floors:[{...policy.floors[0],minimumMaturity:min}]},bad.scopes),/assessment reports bound to current source discovery/);
++writeFileSync(${JSON.stringify(resolve(scratch,'forged-status.json'))},JSON.stringify(artifact(forged,'M7')));console.log(JSON.stringify({group:'T21',owner:O,positiveMaturity:good.maturity,negativeMaturity:bad.maturity,singleCoverageFailingGoalIds:bad.expected.retainedCoverage.manifest.failingGoalIds,realNativeGraphAndReadinessPass:true,perfectHashForgedM7Rejected:true,noProductionTestFactory:true}));`
++const entry=resolve(scratch,'chain.mjs');writeFileSync(entry,runner)
++const child=runFixture(entry,'chain');writeFileSync(resolve(scratch,'chain.stdout'),child.stdout);writeFileSync(resolve(scratch,'chain.stderr'),child.stderr)
++assert.equal(child.status,0,child.stderr);process.stdout.write(child.stdout)
++// Invoke the actual existing CLI and unchanged entry guard in a fresh process.
++const cliEntry=resolve(repo,'app/scripts/checkCurriculumMaturityFloors.ts')
++// Source is currently mutated; an artifact forged with its exact frame hashes
++// is rejected on a fresh independent standalone read.
++put('docs/qa-ci/status/curriculum-quality-status.json',readFileSync(resolve(scratch,'forged-status.json')))
++const cliBad=runFixture(cliEntry,'floor-negative');assert.notEqual(cliBad.status,0);assert.match(cliBad.stderr,/assessment reports bound to current source discovery/)
++put(sourcePath,raw);put('docs/qa-ci/status/curriculum-quality-status.json',readFileSync(resolve(scratch,'positive-status.json')))
++const cliGood=runFixture(cliEntry,'floor-positive');assert.equal(cliGood.status,0,cliGood.stderr)
++writeFileSync(resolve(scratch,'overlay-evidence.json'),JSON.stringify({fixtureOnly:true,productionSourceChanged:false,sourceSha256:sourceSha,inventorySha256:inventorySha,transformations:mutationLog,positiveCli:{exit:cliGood.status,stdout:cliGood.stdout,stderr:cliGood.stderr},perfectHashForgedNegativeCli:{exit:cliBad.status,stdout:cliBad.stdout,stderr:cliBad.stderr}},null,2)+'\n')
++console.log('retained coverage T21: native Info owner M6 control, sole coverage error M3, M6/M7 floor and standalone fresh-source CLI forgery rejection passed')
++
++// Exact positive equivalence and first-introduction codepaths use only pinned,
++// explicitly synthetic evidence in this isolated process; no production registry.
++const pins=[{path:'fixture-independent-material-review.txt',sha256:coverageSha256('Independent synthetic task/rubric witness')},{path:'fixture-independent-source-review.txt',sha256:coverageSha256('Independent synthetic source integration witness')}]
++put(pins[0].path,'Independent synthetic task/rubric witness');put(pins[1].path,'Independent synthetic source integration witness')
++async function runBoundProof(name:string, candidate:SkillLandscape, bindings:ExactMeaningEvidence[], assertions:string) {
++  testBindings=bindings;put(sourcePath,JSON.stringify(candidate))
++  const code=`import{captureCurriculumSource}from${JSON.stringify(captureHelper)};import assert from 'node:assert/strict';import{readFileSync,writeFileSync}from'node:fs';import{readCurrentCurriculumAssessmentScopes,evaluateCurriculumExamReadiness}from${JSON.stringify(imports)};const O=${JSON.stringify(OWNER)},path=${JSON.stringify(resolve(scratch,sourcePath))};const get=()=>{const scope=readCurrentCurriculumAssessmentScopes([O]).get(O);const source=captureCurriculumSource(${JSON.stringify(sourcePath)},readFileSync(path));return{scope,source,rules:evaluateCurriculumExamReadiness(source,[],[source],scope),manifest:scope.retainedCoverage.manifest}};${assertions};console.log(${JSON.stringify(name+': native concrete binding positive and stale negatives passed')})`.replaceAll(/from"file:\/\/([^"\n]+)"/g,(_all,path)=>'from'+JSON.stringify(path))
++  const entry=resolve(scratch,name+'.mjs');writeFileSync(entry,code)
++  const result=runFixture(entry,name);assert.equal(result.status,0,result.stderr);process.stdout.write(result.stdout)
++}
++const repair=structuredClone(typedSource),repaired=repair.goals.find(g=>g.id===exams[0].id)!;repaired.title+=' (editorial)'
++const repairBinding:ExactMeaningEvidence={kind:'exact-equivalence-binding',owner:OWNER,goalId:repaired.id,sourcePath,sourceSha256:coverageSha256(JSON.stringify(repair)),oldMeaningSha256:coverageSha256(stableCoverageJson(protectedAssessmentMeaning(exams[0],true))),newMeaningSha256:coverageSha256(stableCoverageJson(protectedAssessmentMeaning(repaired,true))),atomicGoalKeys:[`${OWNER}:${A}`],evidencePins:pins,rationale:'Isolated synthetic fixed editorial equivalence witness; no real material acceptance.'}
++await runBoundProof('T09-exact-evidence',repair,[repairBinding],`const good=get();assert.equal(good.manifest.status,'pass');assert.match(good.manifest.rows.find(r=>r.goalId===${JSON.stringify(repaired.id)}).meaningEvidence,/exact-equivalence-binding/);const s=structuredClone(good.source);s.goals.find(g=>g.id===${JSON.stringify(repaired.id)}).title+=' stale';writeFileSync(path,JSON.stringify(s));assert.equal(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(repaired.id)}).decision,'fail')`)
++const first=structuredClone(typedSource),FIRST='6ebc2a67-ea20-5c4e-8a63-635f40438d6a'
++const targets=Array.from({length:20},(_,index)=>({id:`44444444-4444-4444-8444-${String(index+1).padStart(12,'0')}`,title:'Synthetic first-binding target '+index,description:'Fixed synthetic protected competence '+index,weight:1,contains:[],requires:[],type:'atomic'}))
++const firstCluster={id:'66666666-6666-4666-8666-666666666666',title:'Synthetic first coverage cluster',weight:20,contains:targets.map(g=>g.id),requires:[],type:'cluster'}
++const firstExam={...structuredClone(exams[0]),id:FIRST,title:'Synthetic exact first twenty',examData:{...structuredClone(exams[0].examData),reviewStatus:'draft',coveredGoalIds:[firstCluster.id]}}
++first.goals.push(...targets as unknown as LearningGoal[],firstCluster as unknown as LearningGoal,firstExam as unknown as LearningGoal);first.goals.find(g=>g.id===practice[0])!.contains.push(FIRST)
++put('fixture-first-twenty-source.json',JSON.stringify(first))
++const firstBinding:ExactMeaningEvidence={sourceReference:{path:'fixture-first-twenty-source.json',sha256:coverageSha256(JSON.stringify(first))},kind:'first-definition-binding',owner:OWNER,goalId:FIRST,sourcePath,sourceSha256:coverageSha256(JSON.stringify(first)),newMeaningSha256:coverageSha256(stableCoverageJson(protectedAssessmentMeaning(firstExam,true))),coverageState:'declared',atomicGoalKeys:targets.map(g=>`${OWNER}:${g.id}`).sort(),protectedGoalMeanings:resolveRetainedCoverage(first,firstExam.examData.coveredGoalIds).definitions.map(id=>({key:`${OWNER}:${id}`,sha256:coverageSha256(stableCoverageJson(protectedAssessmentMeaning(first.goals.find(g=>g.id===id)!)))})),evidencePins:pins,rationale:'Synthetic exact first-definition task and source witnesses; no production introduction or result transfer.'}
++await runBoundProof('T19-first-twenty',first,[firstBinding],`const good=get(),r=good.manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)});assert.equal(good.manifest.status,'pass');assert.equal(r.decision,'first-definition-bound');assert.equal(r.coverage.currentAtomicGoalKeys.length,20);assert.equal(good.rules.find(r=>r.id==='CQR-202').status,'fail');assert.equal(good.rules.find(r=>r.id==='CQR-204').status,'pass');const s=structuredClone(good.source);s.goals.find(g=>g.id===${JSON.stringify(FIRST)}).examData.coveredGoalIds=${JSON.stringify(targets.map(g=>g.id))};writeFileSync(path,JSON.stringify(s));assert.equal(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)}).decision,'first-definition-bound');s.goals.find(g=>g.id===${JSON.stringify(B)}).title+=' unrelated';writeFileSync(path,JSON.stringify(s));assert.equal(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)}).decision,'first-definition-bound');s.goals.find(g=>g.id===${JSON.stringify(FIRST)}).extendedData={aliasOf:${JSON.stringify(exams[0].id)}};writeFileSync(path,JSON.stringify(s));assert.ok(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)}).issues.includes('meaning-change-unproved'));delete s.goals.find(g=>g.id===${JSON.stringify(FIRST)}).extendedData;s.goals.find(g=>g.id===${JSON.stringify(FIRST)}).examData.coveredGoalIds.push(${JSON.stringify(B)});writeFileSync(path,JSON.stringify(s));assert.ok(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)}).issues.includes('coverage-added'));s.goals=s.goals.filter(g=>g.id!==${JSON.stringify(FIRST)});writeFileSync(path,JSON.stringify(s));assert.ok(get().manifest.rows.find(r=>r.goalId===${JSON.stringify(FIRST)}).issues.includes('missing-historical-definition'))`)
++const standalone=structuredClone(typedSource),STANDALONE='55555555-5555-4555-8555-555555555555',own={...structuredClone(exams[23]),id:STANDALONE,title:'Synthetic independent own exam'};standalone.goals.push(own)
++put('fixture-first-standalone-source.json',JSON.stringify(standalone))
++const ownBinding:ExactMeaningEvidence={sourceReference:{path:'fixture-first-standalone-source.json',sha256:coverageSha256(JSON.stringify(standalone))},kind:'first-definition-binding',owner:OWNER,goalId:STANDALONE,sourcePath,sourceSha256:coverageSha256(JSON.stringify(standalone)),newMeaningSha256:coverageSha256(stableCoverageJson(protectedAssessmentMeaning(own,true))),coverageState:'undeclared',protectedGoalMeanings:[],evidencePins:pins,rationale:'Synthetic independent own task/scoring first contract with explicitly undeclared external recognition.'}
++await runBoundProof('T19-first-standalone',standalone,[ownBinding],`const good=get(),r=good.manifest.rows.find(r=>r.goalId===${JSON.stringify(STANDALONE)});assert.equal(good.manifest.status,'pass');assert.equal(r.decision,'first-definition-bound');assert.equal(Object.hasOwn(r,'coverage'),false)`)
++writeFileSync(resolve(scratch,'synthetic-binding-evidence.json'),JSON.stringify({fixtureOnly:true,productionBindingsRemainEmpty:true,equivalence:repairBinding,firstTwenty:firstBinding,firstStandalone:ownBinding},null,2)+'\n')
++
++await runBoundProof('T13-duplicate-first-registry',first,[firstBinding,firstBinding],`assert.ok(get().manifest.discoveryIssues.includes('incomplete-inventory: duplicate first-definition binding'));assert.equal(get().manifest.status,'fail')`)
++
++await runBoundProof('T09-same-declared-repair',repair,[{...repairBinding,kind:'same-declared-contract-repair'}],`const good=get();assert.equal(good.manifest.status,'pass');assert.match(good.manifest.rows.find(r=>r.goalId===${JSON.stringify(repaired.id)}).meaningEvidence,/same-declared-contract-repair/)`)
+--- /dev/null
++++ b/app/scripts/testRetainedAssessmentHeldView.ts
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: Apache-2.0
++import assert from 'node:assert/strict'
++import { readFileSync, writeFileSync } from 'node:fs'
++import { gunzipSync } from 'node:zlib'
++import { resolve } from 'node:path'
++import { tmpdir } from 'node:os'
++import type { SkillLandscape } from '../src/landscapeTypes'
++import { captureCurriculumSource, createRetainedCoverageContext, INFO_HELD as HE, RETAINED_INFO_OWNER as OWNER } from './lib/retainedAssessmentCoverage'
++import { normalizeCompositionView, compileCompositionView, collectCompositionProjectionRoleGoalIds,
++  type CompositionView, type CompositionStructureNode, type CompositionGoalEntryNode, type CompositionViewFinding } from '../src/utils/authoring/compositionViewAuthoring'
++import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
++
++type FixtureView = CompositionView & { rootNodes: CompositionStructureNode[] }
++interface CaseResult { name: string; expectedHeld: boolean; actualHeld: boolean; contextStatus: string;
++  issues: string[]; compileErrors: CompositionViewFinding[]; roles?: { heldTarget: boolean; heldPrerequisite: boolean };
++  compilePositive: boolean; expectedInvalid: boolean }
++const W=tmpdir(),R=resolve(import.meta.dirname,'../..'),label='retained-held-view-successor'
++const hist=JSON.parse(gunzipSync(readFileSync(R+'/contracts/curriculum-assessment-coverage/v1/informatics/historical-informatics-source.json.gz')).toString()) as SkillLandscape
++const normal=hist.goals.find(g=>!g.examData&&!(g.contains?.length))!.id,foreign='11111111-1111-4111-8111-111111111111'
++const base=():FixtureView=>({viewId:'private-p2-native-test',landscapeId:OWNER,scope:{schoolForm:'Gymnasium',stage:'CrossStage'},rootNodes:[{kind:'structure',id:'private',label:'An explicit learning route',children:[{kind:'goalEntry',goalId:normal}]}]})
++const rows:CaseResult[]=[]
++function test(name:string,view:FixtureView|string,shouldHeld:boolean,s=hist,compilePositive=false,expectedInvalid=false){
++ const raw=typeof view==='string'?Buffer.from(view):Buffer.from(JSON.stringify(view)),source=captureCurriculumSource<SkillLandscape>('private-p2-current.json',JSON.stringify(s)),defs=source.goals.filter(g=>g.examData||g.nodeKind==='exam').map(g=>g.id).sort(),path='private-p2/'+name+'.json',ctx=createRetainedCoverageContext(R,source,defs,[],[path],new Map([[path,raw]]))!
++ const issues=ctx.manifest.discoveryIssues,held=issues.includes('held-introduction: active view'),invalid=issues.some(i=>i.startsWith('current-frame-invalid:'))
++ let compileErrors:CompositionViewFinding[]=[],roles:CaseResult['roles']
++ if(typeof view!=='string'){const v=normalizeCompositionView(view),canonical=normalizeCanonicalLandscape(source);compileErrors=compileCompositionView(v,canonical).findings.filter(f=>f.severity==='error');const r=collectCompositionProjectionRoleGoalIds(v.rootNodes,new Map(source.goals.map(g=>[g.id,g])));roles={heldTarget:r.targetGoalIds.has(HE),heldPrerequisite:r.prerequisiteOnlyGoalIds.has(HE)}}
++ assert.equal(held,shouldHeld,name)
++ if(compilePositive){assert.equal(compileErrors.length,0,name);assert.ok(roles);assert.equal(roles.heldTarget,false);assert.equal(roles.heldPrerequisite,false)}
++ if(expectedInvalid)assert.equal(invalid,true)
++ rows.push({name,expectedHeld:shouldHeld,actualHeld:held,contextStatus:ctx.manifest.status,issues,compileErrors,roles,compilePositive,expectedInvalid})
++}
++let v=base();test('no-held-control',v,false,hist,true)
++v=base();v.title='Historical '+HE;test('historical-title',v,false,hist,true)
++v=base();v.rootNodes[0].label='Historical '+HE;test('historical-structure-label',v,false,hist,true)
++v=base();(v.rootNodes[0].children[0] as CompositionGoalEntryNode).displayLabel='Do not register '+HE;test('historical-display-label',v,false,hist,true)
++v=base();v.description='Unregistered historical contract '+HE;test('historical-description',v,false,hist,true)
++v=base();v.audit={goalId:HE,rootNodes:[{kind:'goalEntry',goalId:HE}]};test('historical-metadata-goal-shaped-json',v,false,hist,true)
++v=base();v.viewId='mention-'+HE;test('historical-view-id',v,false,hist,true)
++for(const kind of ['goalEntry','canonicalSubtree'] as const)for(const role of ['target','prerequisiteOnly'] as const)for(const form of ['bare','qualified','qualified-uppercase']){v=base();v.rootNodes[0].children=[{kind,goalId:form==='bare'?HE:form==='qualified'?OWNER+':'+HE:(OWNER+':'+HE).toUpperCase(),projectionRole:role}];test(kind+'-'+role+'-'+form,v,true)}
++for(const role of ['target','prerequisiteOnly'] as const){v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:foreign+':'+HE,projectionRole:role}];test('foreign-owner-'+role,v,false)}
++v=base();v.rootNodes[0].children=[{kind:'structure',id:'deep',label:'Deep',children:[{kind:'goalEntry',goalId:HE,projectionRole:'prerequisiteOnly'}]}];test('nested-prerequisite-reference',v,true)
++const ancestry=structuredClone(hist),root=ancestry.goals.find(g=>g.tags?.includes('root'))!;root.contains.push(HE);v=base();v.rootNodes[0].children=[{kind:'canonicalSubtree',goalId:root.id,projectionRole:'prerequisiteOnly'}];test('native-subtree-inherited-held',v,true,ancestry)
++v=base();v.rootNodes[0].children=[{kind:'landscapeEntry',landscapeId:OWNER}];test('native-landscape-entry-held',v,true,ancestry)
++test('malformed-json','{',false,hist,false,true)
++// A real source definition remains rejected independently of all view labels.
++const introduced=structuredClone(hist),exam=structuredClone(introduced.goals.find(g=>g.examData)!);exam.id=HE;introduced.goals.push(exam)
++const src=captureCurriculumSource<SkillLandscape>('private-p2-held-source.json',JSON.stringify(introduced)),ids=src.goals.filter(g=>g.examData||g.nodeKind==='exam').map(g=>g.id).sort(),context=createRetainedCoverageContext(R,src,ids,[],[])!
++assert.ok(context.manifest.discoveryIssues.includes('held-introduction: active source'));assert.equal(context.manifest.rows.find(r=>r.goalId===HE)!.decision,'fail')
++writeFileSync(W+'/'+label+'.json',JSON.stringify({label,status:'All finite native expectations passed',productionSourceWrites:false,cases:rows,heldSourceRejected:true},null,2)+'\n')
++console.log(JSON.stringify({label,cases:rows.length,zeroCompileErrorMetadataControls:rows.filter(r=>r.compilePositive).length,historicalMentionFalsePositives:rows.filter(r=>!r.expectedHeld&&r.actualHeld).length,heldSourceRejected:true,status:'pass'}))
+--- /dev/null
++++ b/contracts/curriculum-assessment-coverage/v1/informatics/README.md
+@@ -0,0 +1,32 @@
++# Informatik: unveränderliche historische Prüfungsverträge
++
++Diese kleine Referenz erhält die 24 vorhandenen Prüfungsidentitäten des Owners
++`7d51b38c-a149-5407-bddc-d2ce7878b020`. Sie ist keine akzeptierte Fehlerbaseline,
++Materialfreigabe, Anerkennung alter Ergebnisse oder neue Lernerruntime.
++
++- Vollständige historische Quellbytes: entpackt SHA256 `85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e`.
++- Exaktes Inventory: SHA256 `3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891`.
++- 14 nichtleere deklarierte Coverageverträge; zehn tatsächlich fehlende Felder.
++  Fehlend bleibt UNKNOWN und wird niemals durch `[]` ersetzt.
++
++`retainedAssessmentCoverage.ts` verifiziert jede Inventoryzeile aus den gebundenen
++Quellbytes erneut. Die native Composition-Expansion und der native
++Integrity-Checker prüfen ausschließlich erforderliche `contains`-Auflösung;
++Vorbereitung, Views und Filter gehen nicht in deklarierte Coverage ein.
++Geschützte Inhalte werden konservativ tief verglichen. Nur die im endlichen
++Ausführungsvertrag benannten Felder werden ausgenommen; insbesondere neue
++Source-/Applicability-Metadaten sind keine automatische Ausnahme.
++
++Konkrete unabhängig geprüfte Bedeutungs- oder Erstbelegungsbindungen werden
++append-only als exakte Codebindungen ergänzt. Es gibt derzeit keine konsumierte
++solche Bindung. `6ebc2a67-ea20-5c4e-8a63-635f40438d6a` bleibt bis zur konkreten
++geprüften Quellintegration `first-binding-pending`; das gehaltene HE-Angebot
++`f37f2d37-7686-5ed7-9c20-6f83d4fd2254` darf in aktiver Quelle/View nicht auftauchen.
++Eine `same-declared-contract-repair` darf ausschließlich neues, vollständig
++geprüftes Material innerhalb derselben deklarierten Leistung bestätigen. Sie
++bescheinigt weder das alte defekte Material noch alte Pässe rückwirkend.
++
++Coveragegleichheit allein trägt keine Material-/Ergebnisäquivalenz. Notwendige Leistungen, Bestehensgrenze und Ergebnisbedeutung brauchen den exakten unabhängigen Beleg; eine stärkere neue Ergebniszusage braucht eine neue prospektive Ergebnisidentität. Keine solche Bindung ist hier gesetzt.
++
++Der historische Nachfolger braucht eine neue Datei/Revision. Ein Generator darf
++diese Referenz nicht aus der aktuellen Quelle überschreiben.
+--- /dev/null
++++ b/contracts/curriculum-assessment-coverage/v1/informatics/history-inventory.json
+@@ -0,0 +1,922 @@
++{
++  "kind": "History reference only, NOT accepted-error baseline or coverage/content approval",
++  "owner": "7d51b38c-a149-5407-bddc-d2ce7878b020",
++  "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
++  "historicalRawSourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
++  "declaredCount": 14,
++  "undeclaredCount": 10,
++  "definitions": [
++    {
++      "goalId": "0a16d19b-a826-5beb-b169-7a17fc7742f0",
++      "title": "Paketstation objektorientiert modellieren",
++      "historicalGoalObjectSha256": "89e918a52432c7ea6176beb5f05305e7f29d1ef3b35830904d3fcc52144b5918",
++      "historicalExamDataSha256": "04711e9011a6f74ec2f9ce3c944a8ab3e08fa52280e8cdd650ed84956d068152",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "2421e381-59a9-5f51-a746-fbc2c8e56633",
++          "ce4502f6-2759-5ba4-b287-15ab80a48b2f",
++          "8288d8e7-e577-566c-ba95-ca1c3dc018ca"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
++          "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
++          "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "25be929d-624d-5654-bbb8-32fa1fba50c2",
++          "2a87fb3c-394b-47b4-bda2-58c5f1403475",
++          "3035b447-8287-5d23-85a1-e92cc76248b3",
++          "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
++          "485ce283-3bb5-54a6-be3f-d6bda1e90f8a",
++          "54d88684-d4e5-50d3-9453-d141af7316d2",
++          "59fe2996-e18b-5ee1-af74-de99176a694b",
++          "61b14635-f827-5a5a-8416-fe6eddefc981",
++          "64b54f92-5895-5853-aab8-26942527d3f9",
++          "69f09bee-69a8-5155-9c81-9044e4bff5ac",
++          "6a946a09-ddac-5caa-aec7-0de66f33a05c",
++          "6c284640-1f28-4837-aabd-445656ad7f54",
++          "779ae14c-8bde-543e-b898-009bd9fe0b0a",
++          "814c7112-f2e7-5719-8896-765d7063e5ff",
++          "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
++          "83e24696-f094-5752-b0a6-40400312a8c5",
++          "84af2e26-45c9-5075-80f7-7c6f37847e9d",
++          "8522727c-8793-57ed-b314-eeff6d17f652",
++          "91230113-91b0-5a8b-94e4-4419014cfb58",
++          "937f1429-1024-5710-b734-3ceb34d245c3",
++          "9952c581-7646-5205-8c07-f1fd32e2e547",
++          "9bb399e1-fd49-5220-9c81-82efbeae47eb",
++          "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
++          "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
++          "bc46922d-d874-528b-a183-5a3eaef12e4d",
++          "c54693ae-448b-5a06-8972-785022f35cd7",
++          "c5c1620d-60a7-521c-9fad-2a180c0a3169",
++          "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
++          "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
++          "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
++          "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
++          "de388e30-1623-5c21-9daf-1a985219da10",
++          "fb84fcc4-7a5c-533c-88ca-34b064c7f263"
++        ]
++      }
++    },
++    {
++      "goalId": "0c346dc1-fdcc-5563-9154-28623d354574",
++      "title": "Pruefprotokolle zwischen Sprache, Automat und Aufwand",
++      "historicalGoalObjectSha256": "afc557f7207dfecc63b78946f9f88b782a71ee158bceb2115e92d80994509b80",
++      "historicalExamDataSha256": "35996dc1d98bcda631971d0558fe3983fff7bdb93a7d8798f49744657e4055ff",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "6d68a544-80b7-525e-a9ee-8fcd78ce4c47",
++          "31026f4a-629b-571f-b45d-a87f47a09d9e",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "21ce0c27-45fc-53c9-a8f2-161cc052f944"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0515f5f1-22bb-5164-9af0-e84d8137085a",
++          "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
++          "18691bbb-b996-57a6-9f91-8ff54acabbce",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "21ce0c27-45fc-53c9-a8f2-161cc052f944",
++          "37e57f89-22d8-5565-b9a4-cce151b209a1",
++          "3e3264d6-8cf8-55f9-b085-1aa4a7865476",
++          "53c7f69f-1956-518f-8349-4029edee268d",
++          "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
++          "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
++          "871de3d3-4ff4-52bd-aeb7-b30dfdd72336",
++          "baa4be56-45d0-539a-a810-113392bdaa23",
++          "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
++          "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
++          "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
++          "deea09c2-474e-5c3d-bd6b-ced143df8070",
++          "e7fb0601-4207-4bd8-8c40-1f544590b855",
++          "fbd4561a-573e-5f8c-b363-338ee9774b5c"
++        ]
++      }
++    },
++    {
++      "goalId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
++      "title": "Q2 vernetzt anwenden",
++      "historicalGoalObjectSha256": "e17d4f046c6126fd7ae131e6210a6ab5195dc9cd4857ebb9d985e383cbca65b6",
++      "historicalExamDataSha256": "abc1fd862e30368b2a3ae1100c13034357af2b256b1265eb744ddf2fe76cfef8",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "2cf7589d-5451-5239-badf-1ebb981a2f20",
++          "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
++          "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
++          "fd1f5c79-20e6-5829-98c1-0909e047cad4",
++          "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
++          "2e2e1230-3009-5652-b3a8-68c834e53bd5",
++          "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
++          "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
++          "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
++          "71fe327a-9677-5348-a405-fba0dbd302d7",
++          "58173dab-0cb2-52ae-a052-63d3a0f33644",
++          "fdfa87be-06ca-5c54-9950-d8408dba8e38",
++          "b5926cbc-4bd6-589d-987e-ba468ccebc69",
++          "56e5edb6-b883-50a0-92bb-732d5e44c781",
++          "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
++          "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
++          "16ce7d7a-fc31-58d0-83f8-427318331e73",
++          "70523f2e-b331-51c0-95d0-919c8a189cad",
++          "0421e39b-1b35-5897-bbf8-38a75e4d221e",
++          "de3af5ce-344c-5e04-a081-4c2904eb9fad",
++          "e67e06e6-cfd6-5251-b060-5aa81092d14c",
++          "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
++          "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
++          "5054427c-9b93-547d-8c17-b30064f180c5",
++          "5d07f77d-d955-54ff-90d8-2dddf01566be",
++          "98fcf9d1-71b8-5e5b-928b-166917330da4",
++          "5b969704-05c0-5c15-a5cc-d671e15be036",
++          "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
++          "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
++          "303cb242-31c2-579d-b50f-16b03a0e412c",
++          "955c771a-6c00-5cfc-872a-3f1b1accf730",
++          "0e09df97-e0e4-592b-b204-f0754a3296d7",
++          "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
++          "7299e142-0c10-55b2-a72a-c62057e22943",
++          "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
++          "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
++          "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
++          "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
++          "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
++          "e94beeaa-784d-5490-932b-38b81bf669fc",
++          "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0421e39b-1b35-5897-bbf8-38a75e4d221e",
++          "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
++          "0e09df97-e0e4-592b-b204-f0754a3296d7",
++          "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
++          "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
++          "16ce7d7a-fc31-58d0-83f8-427318331e73",
++          "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
++          "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
++          "2cf7589d-5451-5239-badf-1ebb981a2f20",
++          "2e2e1230-3009-5652-b3a8-68c834e53bd5",
++          "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
++          "303cb242-31c2-579d-b50f-16b03a0e412c",
++          "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
++          "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
++          "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
++          "5054427c-9b93-547d-8c17-b30064f180c5",
++          "56e5edb6-b883-50a0-92bb-732d5e44c781",
++          "58173dab-0cb2-52ae-a052-63d3a0f33644",
++          "5b969704-05c0-5c15-a5cc-d671e15be036",
++          "5d07f77d-d955-54ff-90d8-2dddf01566be",
++          "70523f2e-b331-51c0-95d0-919c8a189cad",
++          "71fe327a-9677-5348-a405-fba0dbd302d7",
++          "7299e142-0c10-55b2-a72a-c62057e22943",
++          "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
++          "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
++          "955c771a-6c00-5cfc-872a-3f1b1accf730",
++          "98fcf9d1-71b8-5e5b-928b-166917330da4",
++          "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
++          "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
++          "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
++          "b5926cbc-4bd6-589d-987e-ba468ccebc69",
++          "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
++          "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
++          "de3af5ce-344c-5e04-a081-4c2904eb9fad",
++          "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
++          "e67e06e6-cfd6-5251-b060-5aa81092d14c",
++          "e94beeaa-784d-5490-932b-38b81bf669fc",
++          "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
++          "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
++          "fd1f5c79-20e6-5829-98c1-0909e047cad4",
++          "fdfa87be-06ca-5c54-9950-d8408dba8e38"
++        ]
++      }
++    },
++    {
++      "goalId": "157e99a4-8517-5e16-92f8-8241827b7682",
++      "title": "Ampelsteuerung zwischen Logikschaltung und Prolog-Regeln",
++      "historicalGoalObjectSha256": "f3330fd109395d9d4bca7500b30576e46223a3bbae42619421c9a9febc7d33c8",
++      "historicalExamDataSha256": "ebcbb20c531409d2f9be79d8667966662b45b000d36eb35d598690fce7ec2540",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f",
++          "f5e6a2d7-6793-5023-8296-dea1de828a68"
++        ],
++        "resolvedAtomicGoalIds": [
++          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
++          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
++          "17a72609-a619-52e7-a154-67b714826e74",
++          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
++          "42467606-f969-5bd7-bfc8-114c4853ecad",
++          "5f48f0bb-a1a6-588e-a498-fab20245efcd",
++          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
++          "70b8919e-8707-580f-9e13-0536c9e81476",
++          "82911b58-bd79-5e96-8fcc-2adb029e2f70",
++          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
++          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
++          "ca39fae0-1b12-5982-a453-54d12602dde8",
++          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
++          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
++          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
++          "e9f348d8-300e-5101-b7f1-3ba00ff969a1"
++        ]
++      }
++    },
++    {
++      "goalId": "1ce620dc-93cf-579c-a286-e74451d0a4d7",
++      "title": "Q3 vernetzt anwenden",
++      "historicalGoalObjectSha256": "049ec417bd9b5c6e0914d4ce39aca593ff9dcb54b9366762c09e842d13beffcc",
++      "historicalExamDataSha256": "2bd1988a136325d3d26e36056f2cbca7a5075f2bc866b2738da21a664a5e5658",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "fbd4561a-573e-5f8c-b363-338ee9774b5c",
++          "3e3264d6-8cf8-55f9-b085-1aa4a7865476",
++          "18691bbb-b996-57a6-9f91-8ff54acabbce",
++          "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
++          "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
++          "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
++          "e7fb0601-4207-4bd8-8c40-1f544590b855",
++          "36725b54-fd0c-5b24-bf2f-399491562718",
++          "cc1ffac9-5d27-5011-a159-4a72227ece5f",
++          "e7f0dec3-3d78-551b-8770-c182670eee6d",
++          "21ce0c27-45fc-53c9-a8f2-161cc052f944",
++          "67db0729-63ff-569c-84a6-cc0a559c5ada",
++          "88a8e785-dba3-5d69-9692-4cd32bdc3197",
++          "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
++          "e14dc7c6-002b-5da0-af1c-507b6355ccb0",
++          "37e57f89-22d8-5565-b9a4-cce151b209a1",
++          "deea09c2-474e-5c3d-bd6b-ced143df8070",
++          "200ff84a-3158-5d2f-b065-36b77ea99ef1",
++          "081a6bf9-5bb1-5b90-b264-9d8d55637674",
++          "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
++          "53c7f69f-1956-518f-8349-4029edee268d",
++          "871de3d3-4ff4-52bd-aeb7-b30dfdd72336",
++          "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
++          "0515f5f1-22bb-5164-9af0-e84d8137085a",
++          "baa4be56-45d0-539a-a810-113392bdaa23",
++          "5dbd950e-f7dc-5556-ba6d-b365b82dac01",
++          "8835e942-93fd-51ba-bf11-e7cc65502ae6",
++          "97f80e26-bc3b-5808-8c62-f114ae9ee143",
++          "37c8a3b4-0f48-5836-b852-b4b4a3c91709",
++          "8f89ef67-f521-5eab-919b-e74f59f3178b",
++          "eb4b3d2b-6756-5d88-97de-c404793003d4",
++          "06999c9f-1c52-5284-adb4-bcd459ba14bf",
++          "3f619eed-1049-53e2-af7e-7fc5ad6c0cfc",
++          "004cf04d-f0d2-5673-a8a9-5973e51a039f",
++          "cdb24f8f-3596-5e68-a44f-9d651c7eed62"
++        ],
++        "resolvedAtomicGoalIds": [
++          "004cf04d-f0d2-5673-a8a9-5973e51a039f",
++          "0515f5f1-22bb-5164-9af0-e84d8137085a",
++          "06999c9f-1c52-5284-adb4-bcd459ba14bf",
++          "081a6bf9-5bb1-5b90-b264-9d8d55637674",
++          "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
++          "18691bbb-b996-57a6-9f91-8ff54acabbce",
++          "200ff84a-3158-5d2f-b065-36b77ea99ef1",
++          "21ce0c27-45fc-53c9-a8f2-161cc052f944",
++          "36725b54-fd0c-5b24-bf2f-399491562718",
++          "37c8a3b4-0f48-5836-b852-b4b4a3c91709",
++          "37e57f89-22d8-5565-b9a4-cce151b209a1",
++          "3e3264d6-8cf8-55f9-b085-1aa4a7865476",
++          "3f619eed-1049-53e2-af7e-7fc5ad6c0cfc",
++          "53c7f69f-1956-518f-8349-4029edee268d",
++          "5dbd950e-f7dc-5556-ba6d-b365b82dac01",
++          "67db0729-63ff-569c-84a6-cc0a559c5ada",
++          "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
++          "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
++          "7f41d0a1-19cb-5e08-be07-185a2c9d6bb5",
++          "871de3d3-4ff4-52bd-aeb7-b30dfdd72336",
++          "8835e942-93fd-51ba-bf11-e7cc65502ae6",
++          "88a8e785-dba3-5d69-9692-4cd32bdc3197",
++          "8f89ef67-f521-5eab-919b-e74f59f3178b",
++          "97f80e26-bc3b-5808-8c62-f114ae9ee143",
++          "baa4be56-45d0-539a-a810-113392bdaa23",
++          "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
++          "cc1ffac9-5d27-5011-a159-4a72227ece5f",
++          "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
++          "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
++          "deea09c2-474e-5c3d-bd6b-ced143df8070",
++          "e14dc7c6-002b-5da0-af1c-507b6355ccb0",
++          "e7f0dec3-3d78-551b-8770-c182670eee6d",
++          "e7fb0601-4207-4bd8-8c40-1f544590b855",
++          "eb4b3d2b-6756-5d88-97de-c404793003d4",
++          "fbd4561a-573e-5f8c-b363-338ee9774b5c"
++        ]
++      }
++    },
++    {
++      "goalId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
++      "title": "Bibliotheksdatenbank zwischen ER-Modell und SQL",
++      "historicalGoalObjectSha256": "7c5114755dec023b007cab96f41e14a4172c8c8f1ec51a0f6844b864e970386c",
++      "historicalExamDataSha256": "013530cca06c517804e1c780e7f77882e622ad10aa7617d730db2c4b110fb8fd",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "900065ef-d3ae-5145-b92c-50821795107a",
++          "52aea365-b7b5-5018-8756-d7dbfc96c6ba",
++          "cd954d92-8343-5129-9af2-0bd3b3dae2e5"
++        ],
++        "resolvedAtomicGoalIds": [
++          "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
++          "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
++          "16ce7d7a-fc31-58d0-83f8-427318331e73",
++          "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
++          "2cf7589d-5451-5239-badf-1ebb981a2f20",
++          "2e2e1230-3009-5652-b3a8-68c834e53bd5",
++          "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
++          "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
++          "5054427c-9b93-547d-8c17-b30064f180c5",
++          "56e5edb6-b883-50a0-92bb-732d5e44c781",
++          "5b969704-05c0-5c15-a5cc-d671e15be036",
++          "5d07f77d-d955-54ff-90d8-2dddf01566be",
++          "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
++          "98fcf9d1-71b8-5e5b-928b-166917330da4",
++          "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
++          "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
++          "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
++          "b5926cbc-4bd6-589d-987e-ba468ccebc69",
++          "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
++          "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
++          "e67e06e6-cfd6-5251-b060-5aa81092d14c",
++          "fd1f5c79-20e6-5829-98c1-0909e047cad4",
++          "fdfa87be-06ca-5c54-9950-d8408dba8e38"
++        ]
++      }
++    },
++    {
++      "goalId": "342511c3-45fb-5783-b601-906149e78c2d",
++      "title": "Grundlagen und Querschnitt vernetzt anwenden",
++      "historicalGoalObjectSha256": "485ae512024edcd1acbfc63541cc83e8d0fd208515481ae0f198af4dd2e73eb7",
++      "historicalExamDataSha256": "dd0e0f7801b320b065262cddc1a815cfc551753c9049ded8726c8de20181037c",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "a8206bfb-aaed-5502-9df1-55609f3d79b5",
++          "df0210bf-735b-54f8-8a1b-8dfca5598ff1",
++          "e7e4995a-9900-5d60-ba6a-c794c70411bb",
++          "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
++          "ae5ae291-aa50-5260-abf4-348a463e9974",
++          "27c7bc09-aa14-5296-aaf6-e59d278492da",
++          "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
++          "1d83ff25-9b5f-5bc5-9bd6-ba6218dc0aaa",
++          "7c909ddb-ac87-5b60-8f1c-dcc69831f401",
++          "a2431bb5-6491-53fe-8dd3-309546a2cb97",
++          "04b1796d-6086-59b0-9499-e463a7f44bc4",
++          "92f5ecc8-6d7f-50ce-99b9-080e21c894cc",
++          "ff6b67e8-dc27-5755-8dab-23ed658194fd",
++          "50d82e9f-737c-5693-90fe-3d534dc8683d",
++          "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
++          "c10e647b-2f51-5002-b352-830933a67214",
++          "bf23fafe-423d-561a-b832-cb25a327a508",
++          "4acfccb7-f38c-5fd4-b24d-b7b002373fde",
++          "d5056ca3-2a3d-5145-a28d-29038038a77f",
++          "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
++          "859e875f-6730-5201-b8ed-60fb9374d27b",
++          "4525b77a-02de-5ef2-8e93-dc28cc5f6644",
++          "9a6a75e7-e586-532f-91d5-92ca6159d47a",
++          "ef2af45a-1228-5747-ad7b-d9ba9b732786",
++          "89dd309e-8d21-5259-a37b-d99ca572dffe",
++          "e05d4e40-6267-598c-8c11-8ab6420afea8",
++          "de388e30-1623-5c21-9daf-1a985219da10",
++          "08bf5477-c346-525e-ac3c-e65f9fc64061",
++          "42b52c57-426a-5868-91d1-33d0cb9d9801"
++        ],
++        "resolvedAtomicGoalIds": [
++          "00f23ea9-4b45-52ea-aef2-7e1314ea3b45",
++          "04b1796d-6086-59b0-9499-e463a7f44bc4",
++          "08bf5477-c346-525e-ac3c-e65f9fc64061",
++          "19204609-90fd-57c1-aca4-9e1a6a1fea6c",
++          "1d83ff25-9b5f-5bc5-9bd6-ba6218dc0aaa",
++          "27c7bc09-aa14-5296-aaf6-e59d278492da",
++          "42b52c57-426a-5868-91d1-33d0cb9d9801",
++          "4525b77a-02de-5ef2-8e93-dc28cc5f6644",
++          "4acfccb7-f38c-5fd4-b24d-b7b002373fde",
++          "50d82e9f-737c-5693-90fe-3d534dc8683d",
++          "7c909ddb-ac87-5b60-8f1c-dcc69831f401",
++          "859e875f-6730-5201-b8ed-60fb9374d27b",
++          "89dd309e-8d21-5259-a37b-d99ca572dffe",
++          "92f5ecc8-6d7f-50ce-99b9-080e21c894cc",
++          "9a6a75e7-e586-532f-91d5-92ca6159d47a",
++          "a2431bb5-6491-53fe-8dd3-309546a2cb97",
++          "a8206bfb-aaed-5502-9df1-55609f3d79b5",
++          "ae5ae291-aa50-5260-abf4-348a463e9974",
++          "bdce4bcd-f0fe-58ce-9781-39de2ade848c",
++          "bf23fafe-423d-561a-b832-cb25a327a508",
++          "c10e647b-2f51-5002-b352-830933a67214",
++          "d5056ca3-2a3d-5145-a28d-29038038a77f",
++          "de388e30-1623-5c21-9daf-1a985219da10",
++          "df0210bf-735b-54f8-8a1b-8dfca5598ff1",
++          "e05d4e40-6267-598c-8c11-8ab6420afea8",
++          "e382fc41-6f59-5bc5-9514-f2201a3a4c5a",
++          "e7e4995a-9900-5d60-ba6a-c794c70411bb",
++          "ef2af45a-1228-5747-ad7b-d9ba9b732786",
++          "ff6b67e8-dc27-5755-8dab-23ed658194fd"
++        ]
++      }
++    },
++    {
++      "goalId": "49ba66cf-accd-5938-a63e-f031bc786767",
++      "title": "E-Phase vernetzt anwenden",
++      "historicalGoalObjectSha256": "4cc96cd0c1f18686fc803d3c1d2c17b370d20d6fd5f8539ee5421bcb05d41e89",
++      "historicalExamDataSha256": "87f7d22794171c3390d9527fb2af860acd0484fd3b94f3e2ab50c0b91d0ba3ac",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
++          "6539320a-aa0e-59e5-a34a-55f1a8b78337",
++          "ace0c141-9e7c-546e-914f-64c24d42d85d",
++          "757256e2-eb59-572f-a403-e1b1d53e37d4",
++          "1a03f790-a88f-57af-a618-80249960b63b",
++          "2897717b-e143-540d-9c7a-6d2120807675",
++          "18317e31-71f7-4e4a-b18c-f61e2b25769d",
++          "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
++          "5ca1960e-6b02-5679-b271-043a5c29b189",
++          "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
++          "d5914986-fba8-56cc-99be-d9560ac7666d",
++          "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
++          "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614",
++          "f81be4d3-2445-54aa-b17e-2a27466e7e0d",
++          "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
++          "e3e17e48-d772-52ca-b7ac-b0da98134a6a",
++          "7ef3293a-a614-50c4-b27b-fb49f3f04cf7",
++          "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
++          "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03",
++          "f15d09fd-2320-5fe0-90e6-4832be1c443c",
++          "8f1a342c-5976-5473-b0ee-c0180afd5861",
++          "a45e73d2-db0d-50b0-a984-44a5315474ce",
++          "e3e5c851-39d8-569f-9f0a-d516c729ed36",
++          "0ef581d1-c033-5a98-a65a-48ea7b80136f",
++          "df1a7c0c-68c4-5262-846d-67f983d79697"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0ef581d1-c033-5a98-a65a-48ea7b80136f",
++          "18317e31-71f7-4e4a-b18c-f61e2b25769d",
++          "1a03f790-a88f-57af-a618-80249960b63b",
++          "2897717b-e143-540d-9c7a-6d2120807675",
++          "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
++          "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03",
++          "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
++          "5ca1960e-6b02-5679-b271-043a5c29b189",
++          "6539320a-aa0e-59e5-a34a-55f1a8b78337",
++          "6bba1eda-23b1-5b52-ad00-1d6e04db5317",
++          "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
++          "757256e2-eb59-572f-a403-e1b1d53e37d4",
++          "7ef3293a-a614-50c4-b27b-fb49f3f04cf7",
++          "8d21085b-9780-599e-ba0e-ccc0c31a5f01",
++          "8f1a342c-5976-5473-b0ee-c0180afd5861",
++          "a45e73d2-db0d-50b0-a984-44a5315474ce",
++          "ace0c141-9e7c-546e-914f-64c24d42d85d",
++          "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
++          "d5914986-fba8-56cc-99be-d9560ac7666d",
++          "df1a7c0c-68c4-5262-846d-67f983d79697",
++          "e3e17e48-d772-52ca-b7ac-b0da98134a6a",
++          "e3e5c851-39d8-569f-9f0a-d516c729ed36",
++          "f15d09fd-2320-5fe0-90e6-4832be1c443c",
++          "f81be4d3-2445-54aa-b17e-2a27466e7e0d",
++          "fcdf8e5f-8b1f-55f7-874d-1fbd9fac0614"
++        ]
++      }
++    },
++    {
++      "goalId": "4e0668e3-edca-57f4-b258-df87f23d2b4e",
++      "title": "LK Vorschlag C2 (Datenbanken): Lieferkettenanalyse mit SQL und Relationenalgebra",
++      "historicalGoalObjectSha256": "19a3feb90032aa462ebf141a08722c5f614c2bbb752a01a2dcab682387465c55",
++      "historicalExamDataSha256": "6e8a852eaef8d8d6732455a1f56806892f79cc06030a3df6312749017ca5baf3",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "63509366-f5b2-58e5-9976-47df6f8c37e1",
++      "title": "GK Pflichtaufgabe A: Paketlogistik zwischen Klasse, Rekursion und Sortierung",
++      "historicalGoalObjectSha256": "15b3f79b2cbbab9e4ddffebad0cef0ceb64deef6ea329336b9d98780fea65022",
++      "historicalExamDataSha256": "d3ec23bfa4f9c78c8ee77fa108c2bfadb41afe1c56c970228c05e1fa76e06e41",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "65aa807f-f998-5648-a3a6-2e0e96dba714",
++      "title": "Q1 vernetzt anwenden",
++      "historicalGoalObjectSha256": "cf039be2493a7737a1a412f173ad4718b508fe1025e7544d8a211032e3aded38",
++      "historicalExamDataSha256": "ddb7178ccb36d81a56f289077f4cf647ffb044c39ca764f71f12b076e1b0358d",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
++          "6c284640-1f28-4837-aabd-445656ad7f54",
++          "8522727c-8793-57ed-b314-eeff6d17f652",
++          "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
++          "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
++          "814c7112-f2e7-5719-8896-765d7063e5ff",
++          "2a87fb3c-394b-47b4-bda2-58c5f1403475",
++          "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
++          "9bb399e1-fd49-5220-9c81-82efbeae47eb",
++          "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
++          "c5c1620d-60a7-521c-9fad-2a180c0a3169",
++          "25be929d-624d-5654-bbb8-32fa1fba50c2",
++          "61b14635-f827-5a5a-8416-fe6eddefc981",
++          "3035b447-8287-5d23-85a1-e92cc76248b3",
++          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
++          "8179e63e-764c-4348-a5f1-f738fb2cc04e",
++          "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
++          "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
++          "f0910b55-48a9-4f81-aed6-d15ac0446c70",
++          "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
++          "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
++          "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
++          "84af2e26-45c9-5075-80f7-7c6f37847e9d",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "6a946a09-ddac-5caa-aec7-0de66f33a05c",
++          "54d88684-d4e5-50d3-9453-d141af7316d2",
++          "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
++          "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
++          "bc46922d-d874-528b-a183-5a3eaef12e4d",
++          "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
++          "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
++          "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
++          "59fe2996-e18b-5ee1-af74-de99176a694b",
++          "64b54f92-5895-5853-aab8-26942527d3f9",
++          "485ce283-3bb5-54a6-be3f-d6bda1e90f8a",
++          "83e24696-f094-5752-b0a6-40400312a8c5",
++          "937f1429-1024-5710-b734-3ceb34d245c3",
++          "9952c581-7646-5205-8c07-f1fd32e2e547",
++          "779ae14c-8bde-543e-b898-009bd9fe0b0a",
++          "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
++          "5944b04b-cf9f-5a71-babe-f50014a7f478",
++          "d81e3ba4-bab6-5237-9315-fcdcf7775f52",
++          "2b4e68c5-5105-5d04-a207-4edabfac4097",
++          "038ca1a8-9d0d-5201-9148-d3984209c5bb",
++          "ce0966fa-ce95-5b26-81a1-85df48beeff4",
++          "4196aaa8-7e87-54f0-a624-d71ec3d823e1",
++          "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
++          "1f20ccda-2a88-5684-a03a-fd1a989588e6",
++          "a8a53f33-ccce-5158-a810-c162113316b1",
++          "5ac3f762-2b2d-5414-9765-335962a3d2c1",
++          "c85e5d19-31e3-58d9-88f3-eae00a7af205",
++          "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
++          "6d10ced5-0213-558c-9b65-db70ccb824b4",
++          "91230113-91b0-5a8b-94e4-4419014cfb58",
++          "fb84fcc4-7a5c-533c-88ca-34b064c7f263",
++          "69f09bee-69a8-5155-9c81-9044e4bff5ac",
++          "c54693ae-448b-5a06-8972-785022f35cd7",
++          "35849012-1b9d-58dc-b5c9-e56912acbe96"
++        ],
++        "resolvedAtomicGoalIds": [
++          "038ca1a8-9d0d-5201-9148-d3984209c5bb",
++          "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
++          "0bfd9371-8a7b-407c-9244-fe6ecbe2b56d",
++          "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
++          "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "1f20ccda-2a88-5684-a03a-fd1a989588e6",
++          "25be929d-624d-5654-bbb8-32fa1fba50c2",
++          "2a87fb3c-394b-47b4-bda2-58c5f1403475",
++          "2b4e68c5-5105-5d04-a207-4edabfac4097",
++          "3035b447-8287-5d23-85a1-e92cc76248b3",
++          "35849012-1b9d-58dc-b5c9-e56912acbe96",
++          "4196aaa8-7e87-54f0-a624-d71ec3d823e1",
++          "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
++          "485ce283-3bb5-54a6-be3f-d6bda1e90f8a",
++          "4c12d4f5-ce17-561d-ae96-71bcc10d76c0",
++          "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
++          "54d88684-d4e5-50d3-9453-d141af7316d2",
++          "56a88f2f-cc47-5e1d-b7d9-1822a66e3b91",
++          "5944b04b-cf9f-5a71-babe-f50014a7f478",
++          "59fe2996-e18b-5ee1-af74-de99176a694b",
++          "5ac3f762-2b2d-5414-9765-335962a3d2c1",
++          "61b14635-f827-5a5a-8416-fe6eddefc981",
++          "64b54f92-5895-5853-aab8-26942527d3f9",
++          "69f09bee-69a8-5155-9c81-9044e4bff5ac",
++          "6a946a09-ddac-5caa-aec7-0de66f33a05c",
++          "6c284640-1f28-4837-aabd-445656ad7f54",
++          "6d10ced5-0213-558c-9b65-db70ccb824b4",
++          "779ae14c-8bde-543e-b898-009bd9fe0b0a",
++          "814c7112-f2e7-5719-8896-765d7063e5ff",
++          "8179e63e-764c-4348-a5f1-f738fb2cc04e",
++          "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
++          "83e24696-f094-5752-b0a6-40400312a8c5",
++          "84af2e26-45c9-5075-80f7-7c6f37847e9d",
++          "8522727c-8793-57ed-b314-eeff6d17f652",
++          "881edb2d-b0c9-5775-b2ba-3062f2e91f83",
++          "8d7aacfd-3e57-5c18-b97e-941ad402c5ab",
++          "91230113-91b0-5a8b-94e4-4419014cfb58",
++          "937f1429-1024-5710-b734-3ceb34d245c3",
++          "9952c581-7646-5205-8c07-f1fd32e2e547",
++          "9bb399e1-fd49-5220-9c81-82efbeae47eb",
++          "a8a53f33-ccce-5158-a810-c162113316b1",
++          "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
++          "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
++          "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
++          "bc46922d-d874-528b-a183-5a3eaef12e4d",
++          "c54693ae-448b-5a06-8972-785022f35cd7",
++          "c5c1620d-60a7-521c-9fad-2a180c0a3169",
++          "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
++          "c85e5d19-31e3-58d9-88f3-eae00a7af205",
++          "c9d20743-dfda-4425-ae40-8f51d9f0c72a",
++          "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
++          "ce0966fa-ce95-5b26-81a1-85df48beeff4",
++          "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
++          "d81e3ba4-bab6-5237-9315-fcdcf7775f52",
++          "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
++          "f0910b55-48a9-4f81-aed6-d15ac0446c70",
++          "fb84fcc4-7a5c-533c-88ca-34b064c7f263"
++        ]
++      }
++    },
++    {
++      "goalId": "661ec7d3-7371-5e7c-9137-4f643e6f9bf2",
++      "title": "LK Vorschlag C1 (Theoretische Informatik): Protokollsprache zwischen Automat, Grammatik und Registermaschine",
++      "historicalGoalObjectSha256": "dd59aa3482c79f0be06502fcf059f6aa7acdc11cc9c5ac86e874f41c4648914a",
++      "historicalExamDataSha256": "47d999cd1d90f15b5cea39b7054b9cad777e362f038bb5182d8797120621b27f",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "755d3459-44ff-5608-8c62-3a69900b9940",
++      "title": "Drohnenauftraege zwischen Klassenmodell und Rekursion",
++      "historicalGoalObjectSha256": "fb0e1ca1ba172715036cd865e4b9135ca16ac9646b5d9c1321cc24d1051573ae",
++      "historicalExamDataSha256": "550f007b1d6b0ac11a414934eb8936f3cfa609994626bf3f0073455e74b5a0f3",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "2421e381-59a9-5f51-a746-fbc2c8e56633",
++          "ce4502f6-2759-5ba4-b287-15ab80a48b2f",
++          "8288d8e7-e577-566c-ba95-ca1c3dc018ca"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0b39206b-725d-5fca-bdd1-8d24c8d424f3",
++          "1891f6f8-5a1e-552a-adc4-1e25751d9a17",
++          "1c1c2576-3e02-5928-8c28-f3aaf528ae55",
++          "1dc5260a-f3c5-5f32-8ea5-6388126eb6fa",
++          "25be929d-624d-5654-bbb8-32fa1fba50c2",
++          "2a87fb3c-394b-47b4-bda2-58c5f1403475",
++          "3035b447-8287-5d23-85a1-e92cc76248b3",
++          "45a27914-ccbd-5d0b-ad12-6a6ada4362c6",
++          "485ce283-3bb5-54a6-be3f-d6bda1e90f8a",
++          "54d88684-d4e5-50d3-9453-d141af7316d2",
++          "59fe2996-e18b-5ee1-af74-de99176a694b",
++          "61b14635-f827-5a5a-8416-fe6eddefc981",
++          "64b54f92-5895-5853-aab8-26942527d3f9",
++          "69f09bee-69a8-5155-9c81-9044e4bff5ac",
++          "6a946a09-ddac-5caa-aec7-0de66f33a05c",
++          "6c284640-1f28-4837-aabd-445656ad7f54",
++          "779ae14c-8bde-543e-b898-009bd9fe0b0a",
++          "814c7112-f2e7-5719-8896-765d7063e5ff",
++          "82fe54dd-d29f-540c-9ef1-f4feb17845c6",
++          "83e24696-f094-5752-b0a6-40400312a8c5",
++          "84af2e26-45c9-5075-80f7-7c6f37847e9d",
++          "8522727c-8793-57ed-b314-eeff6d17f652",
++          "91230113-91b0-5a8b-94e4-4419014cfb58",
++          "937f1429-1024-5710-b734-3ceb34d245c3",
++          "9952c581-7646-5205-8c07-f1fd32e2e547",
++          "9bb399e1-fd49-5220-9c81-82efbeae47eb",
++          "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
++          "b899d7ee-5c05-54de-8be2-0b5ff00b134f",
++          "bc46922d-d874-528b-a183-5a3eaef12e4d",
++          "c54693ae-448b-5a06-8972-785022f35cd7",
++          "c5c1620d-60a7-521c-9fad-2a180c0a3169",
++          "c62c529f-3732-4c66-a8e4-6d91ed2285d0",
++          "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
++          "d5d33c5f-83ac-5338-a922-5c99d4a2c351",
++          "d8f83bf0-5ab0-5bd8-b64d-87451653a296",
++          "de388e30-1623-5c21-9daf-1a985219da10",
++          "fb84fcc4-7a5c-533c-88ca-34b064c7f263"
++        ]
++      }
++    },
++    {
++      "goalId": "8877a2e6-ebf8-5b73-a88b-56d5145a20ba",
++      "title": "Zutrittskontrolle mit Automat und Berechenbarkeitsgrenzen",
++      "historicalGoalObjectSha256": "eb0fb1be4f5c7d720cd945e8311c153d786b834f7f3bfdb0b979093798970578",
++      "historicalExamDataSha256": "c9f973751ba9044e3786d7fda415f06340ac2d90e2dc859987f3191f9678059f",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "6d68a544-80b7-525e-a9ee-8fcd78ce4c47",
++          "31026f4a-629b-571f-b45d-a87f47a09d9e",
++          "49e18e35-3a6d-53f7-842f-4dc9e39c745a"
++        ],
++        "resolvedAtomicGoalIds": [
++          "0515f5f1-22bb-5164-9af0-e84d8137085a",
++          "10a3b2a3-8c1c-4dfb-9d48-8f67f2c0004d",
++          "18691bbb-b996-57a6-9f91-8ff54acabbce",
++          "21ce0c27-45fc-53c9-a8f2-161cc052f944",
++          "37c8a3b4-0f48-5836-b852-b4b4a3c91709",
++          "37e57f89-22d8-5565-b9a4-cce151b209a1",
++          "3e3264d6-8cf8-55f9-b085-1aa4a7865476",
++          "53c7f69f-1956-518f-8349-4029edee268d",
++          "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
++          "7b491c6e-a03a-57bf-947d-a4a4f60785b4",
++          "871de3d3-4ff4-52bd-aeb7-b30dfdd72336",
++          "8f89ef67-f521-5eab-919b-e74f59f3178b",
++          "97f80e26-bc3b-5808-8c62-f114ae9ee143",
++          "baa4be56-45d0-539a-a810-113392bdaa23",
++          "c6fcb2d9-27ae-54d9-a3e1-bbbeb18f3565",
++          "cdb24f8f-3596-5e68-a44f-9d651c7eed62",
++          "d6eb4c08-4994-5853-b2ba-f07a01ea823c",
++          "deea09c2-474e-5c3d-bd6b-ced143df8070",
++          "e7f0dec3-3d78-551b-8770-c182670eee6d",
++          "e7fb0601-4207-4bd8-8c40-1f544590b855",
++          "fbd4561a-573e-5f8c-b363-338ee9774b5c"
++        ]
++      }
++    },
++    {
++      "goalId": "893b6a69-1a1b-539b-981e-3982c52e590c",
++      "title": "LK Pflichtaufgabe B (Theoretische Informatik): Parser und Registermaschine für Logdateien",
++      "historicalGoalObjectSha256": "004e54b8a7f86f030ade33211fc45ffb3c57c2891278c2835e2209083f02aad7",
++      "historicalExamDataSha256": "44a6a77c874b70cdf45465d6daa81c44963fc6dcaa05b52e9ae2424d43b77487",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
++      "title": "Q4 vernetzt anwenden",
++      "historicalGoalObjectSha256": "06f3acb9e3f7da36bfbc0004e41f279e4b98a6f97950ea87c9848549944cd460",
++      "historicalExamDataSha256": "610ec21bdbebaa78ab8f18b472f2826835c2aa102dfe02870c07e6a04953895b",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "70b8919e-8707-580f-9e13-0536c9e81476",
++          "ca39fae0-1b12-5982-a453-54d12602dde8",
++          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
++          "5f48f0bb-a1a6-588e-a498-fab20245efcd",
++          "82911b58-bd79-5e96-8fcc-2adb029e2f70",
++          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
++          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
++          "17a72609-a619-52e7-a154-67b714826e74",
++          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
++          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
++          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
++          "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
++          "42467606-f969-5bd7-bfc8-114c4853ecad",
++          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
++          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
++          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
++          "325661fb-1df9-54d1-8fca-e651c94483f1",
++          "feb50fce-1dad-5a48-8ff3-c9737d507843",
++          "d6577123-0842-520e-b039-8ac72ab507b6"
++        ],
++        "resolvedAtomicGoalIds": [
++          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
++          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
++          "17a72609-a619-52e7-a154-67b714826e74",
++          "325661fb-1df9-54d1-8fca-e651c94483f1",
++          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
++          "42467606-f969-5bd7-bfc8-114c4853ecad",
++          "5f48f0bb-a1a6-588e-a498-fab20245efcd",
++          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
++          "70b8919e-8707-580f-9e13-0536c9e81476",
++          "82911b58-bd79-5e96-8fcc-2adb029e2f70",
++          "9ab554ad-c308-50ed-a5d2-499dd06120ff",
++          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
++          "ca39fae0-1b12-5982-a453-54d12602dde8",
++          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
++          "d6577123-0842-520e-b039-8ac72ab507b6",
++          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
++          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
++          "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
++          "feb50fce-1dad-5a48-8ff3-c9737d507843"
++        ]
++      }
++    },
++    {
++      "goalId": "a98dce49-cf4c-559b-a812-c10bff63d649",
++      "title": "GK Vorschlag B2: Zugangssystem zwischen Automat und Berechenbarkeit",
++      "historicalGoalObjectSha256": "6e5b22adcc8eb58f2ffc83b029cdce74160cf87f6261dc60050cb636ccc8c671",
++      "historicalExamDataSha256": "fecae4aab188fca47800b6bdb181d62599aec6078dd0809caf94062ba741ae47",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "b86e8ab3-2c12-5b6b-b515-1e7d457c99c2",
++      "title": "GK Vorschlag B1: Fahrradverleih als Datenbankmodell",
++      "historicalGoalObjectSha256": "5c9d9710fe79d933759bcbeaa112d9f72746c8adc0cc414f6148a6fc29391e6c",
++      "historicalExamDataSha256": "82a16c29a05aacf4df64d9de4e519b8dedb91627c6e4e691d2ada9c7e6543925",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "bb651ed7-2674-580c-8916-ac5aa88d93f8",
++      "title": "Web-Fehlersuche für den Schultag",
++      "historicalGoalObjectSha256": "79648f5872be60f2f3ec5b6ebe7a8880ed517272c33c1d35ca6b342472968b0a",
++      "historicalExamDataSha256": "803d79a7e609668a196d54bdd215c8ef84db52a5a36b45c626230ce753ed2b19",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "c70a6558-79a4-5775-92ac-76af116141b9",
++          "0fac05b7-106f-52e5-b6cb-1928c11b2c1b",
++          "d0a3b319-4051-58c8-abb6-0d1d7badfb6b"
++        ],
++        "resolvedAtomicGoalIds": [
++          "18317e31-71f7-4e4a-b18c-f61e2b25769d",
++          "1a03f790-a88f-57af-a618-80249960b63b",
++          "2897717b-e143-540d-9c7a-6d2120807675",
++          "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
++          "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03",
++          "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
++          "5ca1960e-6b02-5679-b271-043a5c29b189",
++          "6539320a-aa0e-59e5-a34a-55f1a8b78337",
++          "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
++          "757256e2-eb59-572f-a403-e1b1d53e37d4",
++          "8f1a342c-5976-5473-b0ee-c0180afd5861",
++          "a45e73d2-db0d-50b0-a984-44a5315474ce",
++          "ace0c141-9e7c-546e-914f-64c24d42d85d",
++          "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
++          "d5914986-fba8-56cc-99be-d9560ac7666d",
++          "e3e5c851-39d8-569f-9f0a-d516c729ed36",
++          "f15d09fd-2320-5fe0-90e6-4832be1c443c"
++        ]
++      }
++    },
++    {
++      "goalId": "c44643dc-39b1-5a21-8765-ab346751a184",
++      "title": "LK Vorschlag C2 (Theoretische Informatik): Zugriffskontrolle mit Sprache, Komplexität und Berechenbarkeit",
++      "historicalGoalObjectSha256": "6d5f1dc35cfd6064e0122ee56b9958ff005b9a65ac27bfac337520cdae4ce35d",
++      "historicalExamDataSha256": "2bc700d64a53cd953f4a078fe36790f6387d2cad06f51ad56be883cbbc8dab5b",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
++      "title": "Festivaldatenbank zwischen Schema und Anfrage",
++      "historicalGoalObjectSha256": "c8ba68d190a369d19cdc845c6220d6dea14cce2f8ffdf7b7774c0841d7698501",
++      "historicalExamDataSha256": "d00b3765dd3292db08fd743fa56d9d63feb9d066bf6d4e478cf65b38f25e48da",
++      "coverage": {
++        "state": "declared",
++        "references": [
++          "900065ef-d3ae-5145-b92c-50821795107a",
++          "52aea365-b7b5-5018-8756-d7dbfc96c6ba",
++          "cd954d92-8343-5129-9af2-0bd3b3dae2e5"
++        ],
++        "resolvedAtomicGoalIds": [
++          "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
++          "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
++          "16ce7d7a-fc31-58d0-83f8-427318331e73",
++          "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
++          "2cf7589d-5451-5239-badf-1ebb981a2f20",
++          "2e2e1230-3009-5652-b3a8-68c834e53bd5",
++          "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
++          "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
++          "5054427c-9b93-547d-8c17-b30064f180c5",
++          "56e5edb6-b883-50a0-92bb-732d5e44c781",
++          "5b969704-05c0-5c15-a5cc-d671e15be036",
++          "5d07f77d-d955-54ff-90d8-2dddf01566be",
++          "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
++          "98fcf9d1-71b8-5e5b-928b-166917330da4",
++          "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
++          "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
++          "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
++          "b5926cbc-4bd6-589d-987e-ba468ccebc69",
++          "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
++          "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
++          "e67e06e6-cfd6-5251-b060-5aa81092d14c",
++          "fd1f5c79-20e6-5829-98c1-0909e047cad4",
++          "fdfa87be-06ca-5c54-9950-d8408dba8e38"
++        ]
++      }
++    },
++    {
++      "goalId": "d13e297f-505d-576a-9a86-11ab4d7896c9",
++      "title": "LK Pflichtaufgabe B (Datenbanken): Klinische Studiendaten zwischen ER-Modell, SQL und Relationenalgebra",
++      "historicalGoalObjectSha256": "4d1985254154218373deff2bf18fcdf43f1d53b8c26654eac9ce8405543e4cd1",
++      "historicalExamDataSha256": "ceb02358895ca1ac8ac4d0025cfbfff69809dbf86ea319e53fa69c865f958ffe",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "d9892508-97b5-529e-9b9e-c4889fba2166",
++      "title": "LK Vorschlag C1 (Datenbanken): Konzertticketing mit Normalisierung und Anfrageoptimierung",
++      "historicalGoalObjectSha256": "a6450eacf3babf2346d47212ba3c1a4758a0fb80edf25b97419141861412c9be",
++      "historicalExamDataSha256": "6003182520910954aaeeabfc0a32f3eb1cfddd1e49eb645833ba89e4d2d7e83e",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    },
++    {
++      "goalId": "da96fcb4-f601-5f66-9fec-12b5adc7f7f0",
++      "title": "LK Pflichtaufgabe A: Lagerroboter mit Baumstruktur und Rekursion",
++      "historicalGoalObjectSha256": "a40fcf62652ff4fdbfcfbedcf16d0ebcd4551116a16bf178acd9d0c761824565",
++      "historicalExamDataSha256": "a1aea4049a8f9eac35ed9daf8c4eb8a7de6c6c7b992306d89be572737db8b88e",
++      "coverage": {
++        "state": "undeclared",
++        "reason": "Field absent in exact historical source; historical competence coverage unknown."
++      }
++    }
++  ]
++}
+--- /dev/null
++++ b/contracts/curriculum-assessment-coverage/v1/informatics/implementation-contract.pin.json
+@@ -0,0 +1,17 @@
++{
++  "kind": "Inert implementation-authority reference; not a mutable policy input or QA approval",
++  "references": [
++    {
++      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-independent-review/coverage-contract-followup/IMPLEMENTATION-CONTRACT.md",
++      "sha256": "f2696ea115a8a5bbdee1cf602cf14912ede340d8fc57a3adae1d3e848daae5b3"
++    },
++    {
++      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-independent-review/coverage-contract-followup/execution-contract.json",
++      "sha256": "87ab20e0ac12fc6eb1131a08486a65a3410973b15504d9a2112e97c4195ccd70"
++    }
++  ],
++  "historicalSourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
++  "historicalInventorySha256": "3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891",
++  "concreteMeaningAndFirstDefinitionBindings": [],
++  "cqr104AndRouteProfilesChanged": false
++}
+--- /dev/null
++++ b/qm/curriculum-assessment-retained-coverage.md
+@@ -0,0 +1,40 @@
++# CQR-204: Erhalt der Informatik-Prüfungsverträge
++
++Privater Implementierungsnachfolger zum endlichen Vertrag
++`informatics-retained-assessment-coverage-v1`; noch keine aktive Anwendung oder
++QA-Freigabe. Der Einbau ergänzt die bestehenden Struktur- und Placeholderchecks.
++Ein CQR-204-Pass benötigt beides: gültige aktuelle Struktur und einen positiven,
++exakt aus echten Quellbytes neu berechneten historischen Erhaltungsbefund.
++
++Die feste Referenz enthält 24 Prüfungen: 14 deklarierte atomare Coverageverträge
++und zehn Prüfungen mit tatsächlich fehlendem Coveragefeld. Bei letzteren lautet
++der positive Befund ausschließlich „historische Prüfungsidentität erhalten;
++Abdeckung weiterhin undeklariert“. Kein leeres Array, kein Vollständigkeits-
++oder Anerkennungsbeleg wird daraus erzeugt. Alle Definitionen werden geprüft,
++auch außerhalb normaler Views, bei Draftstatus und geänderter Platzierung.
++
++Der Source-Reader erfasst die Bytes vor dem Parsen. Informatik-Objekte und der
++ExpectedContext sind tief eingefroren. Eine private WeakMap bindet den Kontext
++an Owner und die tatsächlich entdeckten Definitions-/Requiredmengen. Die
++Discovery bindet auch genau die im selben Durchlauf konsumierten Viewbytes.
++Reports können diesen Context nicht importieren. Der Consumer verlangt genau
++je einen passenden CQR-204/CQR-202, das vollständige erwartete Manifest und
++positiven erwarteten Schutzstatus. Die bestehende Maturity bleibt bei einem
++isolierten Coveragefehler höchstens M3; die eigenständige Floor-CLI liest die
++aktuellen Quellen unabhängig neu und verwirft auch einen mit richtigen Hashes
++gefälschten M7-Report. Andere Owner behalten ihre bestehenden Gates ohne eine
++neue historische Coveragezusage.
++
++Die 21 endlichen Testgruppen laufen über `testCurriculumExamReadiness.ts`.
++Echte historische Quellbytes liefern 14+10 positive Erhaltungszeilen, während
++sechs echte Placeholder Strukturfehler bleiben. Zwei native Q3.2-Mutationen
++belegen 21→22 und 18→19, die expliziten historischen Pins den Gegenfall.
++Ein separat fest gepinnter synthetischer 24er-Testvertrag läuft in einem
++isolierten Prozess unter demselben verpflichtenden Informatik-Owner durch
++SourceCapture, WeakMap, Producer, Maturity und Floor. Nur seine festen
++Historienpins, Test-Dateipfade und konkrete synthetische Reviewbindungen werden
++im isolierten Testloader ersetzt. Es existiert keine produktive Testfactory oder
++reportgesteuerte Policy-Ausnahme. Positiv ergibt dieses Fixture M6; genau ein
++Coveragefehler ergibt M3. M7 benötigt weiterhin echte gültige V-Evidenz.
++
++Die aktive Informatikquelle854 hat weiterhin24 Definitionen,14 deklarierte und10 unbekannte Coveragezustände. Ihr Retentionbefund besteht; sechs reale Platzhalter bleiben Strukturfehler und die echten Graphfehler bestehen. Es gibt keine konkrete Bedeutungs-/Erstbelegungsbindung, keine SourceV3-Materialintegration und keine CQR104-/Routenänderung.

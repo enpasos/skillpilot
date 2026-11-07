@@ -1,0 +1,4 @@
+{
+  "C-T07": "import sqlite3\nfrom contextlib import closing\nwith closing(sqlite3.connect(db_path)) as con:\n    rows=con.execute('SELECT kid,titel,preis FROM Kurs WHERE preis<=? ORDER BY kid',(max_preis,)).fetchall()\nfor kid,titel,preis in rows:\n    print(kid,titel,preis)\n",
+  "C-T20": "con=sqlite3.connect(db_path)\ntry:\n    cur=con.execute('UPDATE Kurs SET titel=? WHERE kid=?',('Grundlagenkurs',10))\n    affected=cur.rowcount\n    con.commit()\nexcept sqlite3.Error:\n    con.rollback()\n    raise\nfinally:\n    con.close()\nwith closing(sqlite3.connect(db_path)) as check:\n    after=check.execute('SELECT kid,titel FROM Kurs ORDER BY kid').fetchall()\nassert affected==1\n# after=[(10,'Grundlagenkurs'),(20,'Audiolabor'),(30,'Videoschnitt'),(40,'Datenschutz-Werkstatt'),(50,'Archiv <offen>')]\n"
+}

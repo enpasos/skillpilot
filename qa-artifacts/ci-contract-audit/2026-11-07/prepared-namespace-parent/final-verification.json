@@ -1,0 +1,36 @@
+{
+  "purpose": "bounded-mechanics-docket-final-verification-not-QA-acceptance",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/prepared-namespace-parent/verify-selected-evidence.py",
+        "--check-current-code"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.25390138600050705,
+      "stdout": "{\n  \"purpose\": \"selected-historical-mechanics-evidence-verification-not-QA-acceptance\",\n  \"logicalFiles\": 374,\n  \"uniqueBlobs\": 261,\n  \"tests\": 49,\n  \"actualNativeRuns\": 67,\n  \"tsProducerExits\": [\n    0,\n    0\n  ],\n  \"fullReadAuthenticationPassed\": false,\n  \"currentCodeChecked\": true,\n  \"sourceAQaValidityClaimed\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/checkMarkdownLinks.ts",
+        "docs/dev/ci-graph-repairs/source-identity-prepared-namespace-parent-boundary-2026-11-07.md",
+        "docs/dev/ci-graph-repairs/source-identity-prepared-dependency-namespace-boundary-2026-11-07.md",
+        "docs/dev/ci-graph-repairs/source-identity-prepared-namespace-parent-absence-contract-2026-11-07.md"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.28076248100114753,
+      "stdout": "Markdown link check passed for 3 files.\n",
+      "stderr": ""
+    }
+  ],
+  "codePinsAstAndFrozenHashesVerified": 14,
+  "previousSixDocketsCapture19PreparerUnchanged": true,
+  "nativeDocsChecked": 3,
+  "branchUrlTargetsSeparatelyCheckedAsLocalFiles": true,
+  "gitDiffCheckExitCode": 0,
+  "sourceAQaValidityClaimed": false
+}

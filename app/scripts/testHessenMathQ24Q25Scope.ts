@@ -15,6 +15,7 @@ import {
   collectCompositionProjectionRoleGoalIds,
   compileCompositionView,
   normalizeCompositionView,
+  type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 
@@ -93,6 +94,89 @@ const laterLkOnlyContent = new Set([
   'd3c42193-f1b7-5c6d-a991-bf034d99359f',
 ])
 const knownLaterScopeRemovals = new Set([...laterByOnlyContent, ...laterLkOnlyContent])
+// September 28-30 decisions postdate the archived September 22 graph. These
+// are explicit HE-GK support roles, not global LK reclassifications: SL-GK
+// continues to target the scalar triple product and its volume application.
+const laterHeGkSupport = new Set([
+  '944dd479-9f30-5acb-ab32-3ea0b6dc8e06',
+  'a594dec0-3977-5c43-9432-d4254a7f6130',
+  'e9181209-1506-59df-9053-17f36b91bb06',
+])
+// These later source decisions concern whole atoms that are not HE targets.
+// Their support role is kept separately from the HE-only Q2 course decision.
+const laterOtherJurisdictionSupport = new Map([
+  ['06bdbecb-53e0-5ac3-992f-d6fd20555b59', ['DE-BB', 'DE-BE', 'DE-BW', 'DE-SH']],
+  ['b43a1e45-f05c-4d78-8453-f6fa677dc24c', ['DE-BW', 'DE-SH']],
+  ['ad66009f-55fb-563f-ace0-dbfeae7c76c3', ['DE-BW', 'DE-HH', 'DE-SH']],
+  ['b025df0c-994c-4807-9c5f-2d548905b73f', ['DE-BW']],
+  ['ba343971-10e5-4b05-b005-405b9c1ce447', ['DE-BW']],
+])
+// Exact reviewed aggregate retirements. Do not ignore arbitrary goals merely
+// because their current type changed: every listed replacement stays required.
+const retiredAggregates = [
+  {
+    id: '1ea06c0c-5c60-45cd-8f31-638de98820b4', kind: 'curricularArea', crossStageOnly: true,
+    children: ['7b01d3d8-1fff-5924-b133-5a4825dc742e', 'baea3966-5d10-53bf-8193-3fcda7b1e73f', 'bb227e31-0b0b-544a-b5e0-548256a70dec'],
+    heTargets: ['7b01d3d8-1fff-5924-b133-5a4825dc742e', 'bb227e31-0b0b-544a-b5e0-548256a70dec'],
+  },
+  {
+    id: '80956a2c-5811-4021-863e-95675bec31f5', kind: 'curricularArea', crossStageOnly: true,
+    children: ['4d78bbcc-89b8-47f0-aa45-516199e4da5d', '3a69dab2-3fe8-5076-a980-5b7ac1bd1127', '487ec508-f421-5a5a-a84c-98f88a8fb3e5', '6a3502ee-b616-5db7-88fc-8951f33c9f63', '081c9802-6da7-5ae8-b78e-f99c2b2dbb14'],
+    heTargets: ['4d78bbcc-89b8-47f0-aa45-516199e4da5d', '487ec508-f421-5a5a-a84c-98f88a8fb3e5', '6a3502ee-b616-5db7-88fc-8951f33c9f63', '081c9802-6da7-5ae8-b78e-f99c2b2dbb14'],
+  },
+  {
+    id: '809ef78a-f282-5593-89be-0f2cb95570ac', kind: 'runtimeSupport', crossStageOnly: false,
+    children: ['23c8b5f9-ab35-4071-a3d4-b76a669a0995', 'ece68088-71a8-466b-874c-09e6baac19fc', 'c1c80b80-733f-599d-a2fc-f4dc50eabde2'],
+    heTargets: ['23c8b5f9-ab35-4071-a3d4-b76a669a0995', 'ece68088-71a8-466b-874c-09e6baac19fc', 'c1c80b80-733f-599d-a2fc-f4dc50eabde2'],
+  },
+  {
+    id: 'f37b0a72-9e23-51c7-aad5-438c17a56899', kind: 'runtimeSupport', crossStageOnly: false,
+    children: ['c63bbffd-8d1c-5fe2-a428-db194e6fe592', '571793bd-34f1-539e-969c-dfcc2dfa96b3'],
+    heTargets: ['c63bbffd-8d1c-5fe2-a428-db194e6fe592', '571793bd-34f1-539e-969c-dfcc2dfa96b3'],
+  },
+  {
+    id: '1a18dbb3-f350-4766-9c8b-20ca018ccef1', kind: 'curricularArea', crossStageOnly: false,
+    children: ['5518ceb3-f668-5b52-a9b1-57653b16ca98', '2850e8f6-2330-50d3-a577-d519540d9924'],
+    heTargets: ['2850e8f6-2330-50d3-a577-d519540d9924'],
+  },
+  {
+    id: 'a8ff2666-8df3-4253-8021-3efe42114e40', kind: 'runtimeSupport', crossStageOnly: false,
+    children: ['fb7a4fa0-03b5-53b4-bd86-608480b748a1', '68d4faef-1a56-5898-9c31-80b7d5d2e430', 'bea0e5a0-4833-5337-b6f1-7251b8cf8089'],
+    heTargets: ['fb7a4fa0-03b5-53b4-bd86-608480b748a1', '68d4faef-1a56-5898-9c31-80b7d5d2e430'],
+  },
+] as const
+const retiredAggregateIds = new Set<string>(retiredAggregates.map(item => item.id))
+const sharedOperationArea = '1bc118c3-1f05-5f2a-b125-418017180d75'
+// The G9 view dropped duplicate J9 placements in September 29's source/stage
+// repair. These bindings retain their entire content in the existing SekII
+// targets; they are neither mastery aliases nor evidence transfers.
+const g9SpatialReplacements = new Map([
+  ['235ae698-369f-4dbe-b46f-87e8b65bb03d', ['525b1da9-7fdd-4a70-9f30-ff01d7511b04']],
+  ['f242a3e8-55a3-492e-8354-b81b24cdbb78', ['075f1ef2-6860-4b20-9df2-878157eb395e']],
+  ['d1352ce0-9502-5039-9af6-318fe385b6fd', ['54cfe5ce-693e-5d4a-ac1b-009570fbbc11']],
+  ['57f6d5e4-7c24-4e70-9cf6-737f01d79914', ['075f1ef2-6860-4b20-9df2-878157eb395e', '525b1da9-7fdd-4a70-9f30-ff01d7511b04', '7680701b-35e3-519e-beaa-09753e733756']],
+])
+const spatialDefinitionSha256 = new Map([
+  ['075f1ef2-6860-4b20-9df2-878157eb395e', '5b35c15b4ed20d918b4e98f3ba70af3a56d1eb2a3154141093bbb7b9dba2d719'],
+  ['525b1da9-7fdd-4a70-9f30-ff01d7511b04', 'f66389bf054ca80ca6df826d0b30931a77817109151375ad19b3242a57954cb7'],
+  ['54cfe5ce-693e-5d4a-ac1b-009570fbbc11', '0389649189101cb7405df1b304fded16bbe6665c674fbe78e54209765350cb59'],
+  ['7680701b-35e3-519e-beaa-09753e733756', '63e3e84373305ec6580220988fb16d3c0c4cbe84317afea9012316cff5cd5d78'],
+])
+assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot,
+  'curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-mathematik.pdf'))).digest('hex'),
+'d53bd18522ee045c9b3142a9576eb3fef0a212b6a1e712d50fc084856dae5953', 'Recheck HE original pp.41-43 before changing the scope/whole-performance bindings')
+for (const [id, expected] of spatialDefinitionSha256) {
+  const goal = rawById.get(id)! as SkillLandscape['goals'][number] & { titleEn?: string, descriptionEn?: string }
+  const definition = { id: goal.id, title: goal.title, titleEn: goal.titleEn, description: goal.description, descriptionEn: goal.descriptionEn }
+  assert.equal(createHash('sha256').update(JSON.stringify(definition)).digest('hex'), expected,
+    `${id}: recheck the whole bilingual replacement performance against HE pp.41/42`)
+}
+for (const [id, jurisdictions] of laterOtherJurisdictionSupport) {
+  assert.deepEqual(rawById.get(id)?.applicability?.jurisdiction, jurisdictions, `${id}: changed reviewed whole-atom source scope`)
+}
+assert.equal(rawById.get(sharedOperationArea)?.type, 'cluster')
+assert.equal(kinds.decisions.find(entry => entry.goalId === sharedOperationArea)?.semanticKind, 'curricularArea')
+assert.deepEqual(new Set(rawById.get(sharedOperationArea)?.contains), new Set(retiredAggregates[3].children))
 const excludedGk = new Set([...excludedContent, markovAssessment, assessment, cluster])
 const fixedStates = '8d893e63-d7de-52d9-8bcb-f48f47d1ccbf'
 const heGkFiles = new Set(['de-he-sekii-gk.view.json', 'de-he-gk.view.json', 'de-he-gk-g8.view.json', 'de-he-gk-g9.view.json'])
@@ -102,6 +186,86 @@ const oldContent = new Set(beforeKinds.decisions
 for (const id of excludedContent) assert(oldContent.has(id), `${id}: excluded item must be an ordinary content goal`)
 for (const id of q4LkPrerequisites) assert(oldContent.has(id), `${id}: Q4 LK-only prerequisite must be an ordinary content goal`)
 for (const id of knownLaterScopeRemovals) assert(oldContent.has(id), `${id}: later source-scope change must concern an old content goal`)
+for (const retired of retiredAggregates) {
+  assert(oldContent.has(retired.id), `${retired.id}: historical fixture must contain the old atom`)
+  const goal = rawById.get(retired.id)!
+  assert.equal(goal.type, 'cluster', `${retired.id}: reviewed retirement must remain structural`)
+  assert.deepEqual(new Set(goal.contains), new Set(retired.children), `${retired.id}: changed replacement content`)
+  const decisions = kinds.decisions.filter(entry => entry.goalId === retired.id)
+  assert.equal(decisions.length, 1)
+  assert.equal(decisions[0].decisionStatus, 'authoritative')
+  assert.equal(decisions[0].semanticKind, retired.kind)
+  assert.equal(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(goal as unknown as Record<string, unknown>))
+  if (retired.kind === 'runtimeSupport') {
+    assert.equal(goal.extendedData?.compatibilityOnly, true)
+    assert.equal(goal.extendedData?.applicabilityProjection, 'excluded')
+  }
+  for (const id of retired.heTargets) {
+    assert.equal(rawById.get(id)?.type, 'atomic', `${id}: replacement competence must remain assessable`)
+    assert.equal(kinds.decisions.find(entry => entry.goalId === id)?.semanticKind, 'curricularAtomic')
+  }
+}
+
+const projectionRoles = (view: CompositionView) => collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById)
+const withRole = (view: CompositionView, goalId: string, projectionRole: 'target' | 'prerequisiteOnly') => {
+  const copy = structuredClone(view)
+  const visit = (nodes: CompositionView['rootNodes']) => {
+    for (const node of nodes) {
+      if (node.kind === 'structure') visit(node.children)
+      else if ('goalId' in node && node.goalId === goalId) node.projectionRole = projectionRole
+    }
+  }
+  visit(copy.rootNodes)
+  copy.rootNodes.unshift({ kind: 'goalEntry', goalId, projectionRole })
+  return copy
+}
+const assertReplacementContent = (name: string, view: CompositionView) => {
+  const { targetGoalIds } = projectionRoles(view)
+  for (const retired of retiredAggregates) {
+    if (retired.kind === 'runtimeSupport') {
+      assert(!targetGoalIds.has(retired.id), `${name}: excluded compatibility aggregate returned as target ${retired.id}`)
+    }
+    const expected = retired.crossStageOnly && view.scope.stage === 'SekII' ? [] : retired.heTargets
+    for (const id of expected) assert(targetGoalIds.has(id), `${name}: missing reviewed replacement target ${id}`)
+    for (const id of retired.children) {
+      if (!(expected as readonly string[]).includes(id)) assert(!targetGoalIds.has(id), `${name}: out-of-scope replacement target ${id}`)
+    }
+  }
+}
+const assertQ2RegionalRoles = (name: string, view: CompositionView) => {
+  const { targetGoalIds, prerequisiteOnlyGoalIds } = projectionRoles(view)
+  if (view.scope.jurisdiction === 'DE-HE') {
+    for (const id of laterHeGkSupport) {
+      if (view.scope.courseProfile === 'GK') {
+        assert(prerequisiteOnlyGoalIds.has(id) && !targetGoalIds.has(id), `${name}: HE-GK support role lost ${id}`)
+        assert(view.rootNodes.some(node => node.kind === 'goalEntry' && node.goalId === id && node.projectionRole === 'prerequisiteOnly'), `${name}: missing authored direct HE-GK support role ${id}`)
+      } else assert(targetGoalIds.has(id) && !prerequisiteOnlyGoalIds.has(id), `${name}: HE-LK target lost ${id}`)
+    }
+  } else if (view.scope.jurisdiction === 'DE-SL' && view.scope.courseProfile === 'GK') {
+    for (const id of [...laterHeGkSupport].slice(0, 2)) assert(targetGoalIds.has(id), `${name}: SL-GK target lost ${id}`)
+    assert(!targetGoalIds.has('e9181209-1506-59df-9053-17f36b91bb06'), `${name}: LK volume derivation leaked into SL-GK`)
+  }
+}
+const assertLaterSourceRoles = (name: string, view: CompositionView) => {
+  const { targetGoalIds, prerequisiteOnlyGoalIds } = projectionRoles(view)
+  for (const id of laterOtherJurisdictionSupport.keys()) {
+    assert(!targetGoalIds.has(id), `${name}: non-HE whole atom returned as target ${id}`)
+    assert.equal(prerequisiteOnlyGoalIds.has(id), view.scope.stage === 'CrossStage', `${name}: changed authored source-support placement ${id}`)
+  }
+}
+const assertG9SpatialContent = (name: string, view: CompositionView) => {
+  const { targetGoalIds } = projectionRoles(view)
+  for (const [oldId, replacements] of g9SpatialReplacements) {
+    assert(!targetGoalIds.has(oldId), `${name}: duplicate J9 placement returned ${oldId}`)
+    for (const id of replacements) assert(targetGoalIds.has(id), `${name}: missing full spatial replacement ${oldId} -> ${id}`)
+  }
+}
+const assertOnlyReviewedOldContentRemoved = (name: string, oldTargets: Set<string>, targets: Set<string>) => {
+  const removed = [...oldTargets].filter(id => oldContent.has(id) && !targets.has(id) && !retiredAggregateIds.has(id))
+  const sourceRemovals = [...laterOtherJurisdictionSupport.keys()].filter(id => oldTargets.has(id))
+  const g9Removals = name === 'de-he-gk-g9.view.json' ? [...g9SpatialReplacements.keys()] : []
+  assert.deepEqual(removed.sort(), [...excludedContent, ...q4LkPrerequisites, ...knownLaterScopeRemovals, ...laterHeGkSupport, ...sourceRemovals, ...g9Removals].sort(), `${name}: unrelated old content removed`)
+}
 for (const id of laterByOnlyContent) {
   assert.deepEqual(rawById.get(id)?.applicability?.jurisdiction, ['DE-BY'], `${id}: later HE exclusion must remain BY-only`)
 }
@@ -231,10 +395,32 @@ let heGkCount = 0
 let heLkCount = 0
 let endpointCount = 0
 let otherGkEndpointCount = 0
+let replacementLossControls = 0
+let regionalRoleControls = 0
+let sourceRoleControls = 0
+let g9SpatialLossControls = 0
 for (const name of files) {
   const view = normalizeCompositionView(readJson(`${viewDir}/${name}`))
   assert.deepEqual(compileCompositionView(view, landscape).findings, [], `${name}: invalid current composition`)
   const { targetGoalIds: targets, prerequisiteOnlyGoalIds: prerequisites } = collectCompositionProjectionRoleGoalIds(view.rootNodes, goalById, roots)
+  if ((view.scope.jurisdiction === 'DE-HE' || view.scope.jurisdiction === 'DE-SL')
+    && ['GK', 'LK'].includes(view.scope.courseProfile ?? '') && view.scope.stage !== 'SekI') {
+    assertQ2RegionalRoles(name, view)
+    const expectedTargets = view.scope.jurisdiction === 'DE-HE' && view.scope.courseProfile === 'LK'
+      ? [...laterHeGkSupport]
+      : view.scope.jurisdiction === 'DE-SL' && view.scope.courseProfile === 'GK' ? [...laterHeGkSupport].slice(0, 2) : []
+    for (const id of expectedTargets) {
+      assert.throws(() => assertQ2RegionalRoles(name, withRole(view, id, 'prerequisiteOnly')), /target lost/u)
+      regionalRoleControls++
+    }
+    if (view.scope.courseProfile === 'GK') {
+      const forbidden = view.scope.jurisdiction === 'DE-HE' ? [...laterHeGkSupport] : ['e9181209-1506-59df-9053-17f36b91bb06']
+      for (const id of forbidden) {
+        assert.throws(() => assertQ2RegionalRoles(name, withRole(view, id, 'target')), /support role lost|leaked into SL-GK/u)
+        regionalRoleControls++
+      }
+    }
+  }
   const hasRotation = targets.has(rotation)
   assert.equal(targets.has(assessment), hasRotation, `${name}: real endpoint must follow the rotation target exactly`)
   assert.equal(targets.has(cluster), hasRotation, `${name}: assessment folder must follow the rotation target exactly`)
@@ -268,9 +454,34 @@ for (const name of files) {
   const oldTargets = collectCompositionProjectionRoleGoalIds(oldView.rootNodes, beforeById, roots).targetGoalIds
   for (const id of excludedContent) assert(oldTargets.has(id), `${name}: fixture must reproduce the original scope fault`)
   for (const id of q4LkPrerequisites) assert(oldTargets.has(id), `${name}: fixture must reproduce the previous Q4 target projection`)
-  const oldContentTargets = [...oldTargets].filter((id) => oldContent.has(id))
-  assert.deepEqual(oldContentTargets.filter((id) => !targets.has(id)).sort(), [...excludedContent, ...q4LkPrerequisites, ...knownLaterScopeRemovals].sort(), `${name}: unrelated old content removed`)
-  assert.deepEqual([...targets].filter((id) => oldContent.has(id) && !oldTargets.has(id)), [], `${name}: unrelated old content added`)
+  assertReplacementContent(name, view)
+  assertLaterSourceRoles(name, view)
+  for (const id of laterOtherJurisdictionSupport.keys()) {
+    assert.throws(() => assertLaterSourceRoles(name, withRole(view, id, 'target')), /non-HE whole atom returned as target/u)
+    sourceRoleControls++
+  }
+  if (name === 'de-he-gk-g9.view.json') {
+    assertG9SpatialContent(name, view)
+    for (const replacements of g9SpatialReplacements.values()) {
+      for (const id of replacements) {
+        assert.throws(() => assertG9SpatialContent(name, withRole(view, id, 'prerequisiteOnly')), /missing full spatial replacement/u)
+        g9SpatialLossControls++
+      }
+    }
+  }
+  for (const retired of retiredAggregates) {
+    if (retired.crossStageOnly && view.scope.stage === 'SekII') continue
+    for (const id of retired.heTargets) {
+      assert.throws(() => assertReplacementContent(name, withRole(view, id, 'prerequisiteOnly')), /missing reviewed replacement target/u)
+      replacementLossControls++
+    }
+  }
+  assertOnlyReviewedOldContentRemoved(name, oldTargets, targets)
+  assert(oldContent.has(fixedStates), 'Unrelated-loss counterexample must use an old content atom')
+  assert.throws(() => assertOnlyReviewedOldContentRemoved(name, oldTargets,
+    projectionRoles(withRole(view, fixedStates, 'prerequisiteOnly')).targetGoalIds), /unrelated old content removed/u)
+  const oldContentAdded = [...targets].filter((id) => oldContent.has(id) && !oldTargets.has(id))
+  assert.deepEqual(oldContentAdded, view.scope.stage === 'SekII' ? [sharedOperationArea] : [], `${name}: unrelated old content added`)
   assert(targets.has(fixedStates), `${name}: GK fixed-state competence must stay available`)
   for (const id of q4LkPrerequisites) {
     assert(!targets.has(id), `${name}: Q4 LK-only atom returned as GK target: ${id}`)
@@ -288,4 +499,4 @@ assert.equal(endpointCount, 72)
 // These pre-existing GK choices outside HE are intentionally not reclassified.
 // This endpoint is HE-LK-only, not globally LK-only across the canonical views.
 assert.equal(otherGkEndpointCount, 34)
-console.log(`HE Q2.4/Q2.5 regression passed: ${files.length} valid views, ${heGkCount} corrected HE-GK scopes with explicitly enumerated later source-scope removals; ${endpointCount} exact rotation/endpoint placements including ${otherGkEndpointCount} existing non-HE/national GK views; DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked.`)
+console.log(`HE Q2.4/Q2.5 regression passed: ${files.length} valid views, ${heGkCount} HE-GK scopes; six aggregate retirements retain their reviewed competencies (${replacementLossControls} real projection loss controls), three HE-GK support roles retain HE-LK/SL targets (${regionalRoleControls} scope controls), five later whole-atom source decisions (${sourceRoleControls} role controls), four G9 spatial substitutions (${g9SpatialLossControls} whole-performance loss controls); ${endpointCount} exact rotation/endpoint placements including ${otherGkEndpointCount} existing non-HE/national GK views; unrelated content loss, DAGs, coverage, native binders and bilingual 20-point/13-rubric exam checked.`)

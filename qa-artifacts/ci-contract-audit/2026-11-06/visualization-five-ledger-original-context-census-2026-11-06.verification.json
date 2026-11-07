@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "finite-original-context-census-actual-packet-verification",
+  "recordedAt": "2026-11-07T00:47:04.902014+00:00",
+  "packetManifest": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-context-census-2026-11-06/packet-manifest.json",
+    "sha256": "8b3a5e06d2a8518eddd20c606bf828506b57b3137004a0732c6ebddf956e5443"
+  },
+  "actualCommands": [
+    {
+      "command": "python qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-context-census-2026-11-06/verify-census.py --check-current-inputs",
+      "exitCode": 0,
+      "observedJsonOutput": {
+        "activeWrites": 0,
+        "counts": {
+          "existing-profile-candidate": 18,
+          "matching-original-context-adapter-pending": 945,
+          "original-context-unclosed-in-bounded-corpus": 1550,
+          "original-text-differs": 44,
+          "reviewed-asset-differs": 5
+        },
+        "currentInputPinsChecked": 16,
+        "curricularAtomic": 2483,
+        "imagesReviewed": 0,
+        "nativeQualificationsIssued": 0,
+        "packetValid": true,
+        "rows": 2562
+      }
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "observedOutput": ""
+    }
+  ],
+  "boundary": "This records the completed small packet verification. It does not add a review, authenticate every original blob through the new native reader, rerun image inspection, or declare V/M7/CI success."
+}

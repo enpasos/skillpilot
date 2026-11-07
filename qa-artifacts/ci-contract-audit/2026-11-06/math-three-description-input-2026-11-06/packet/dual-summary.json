@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:63b489ca9d03834238477035b1f0992552687973ec72ddb00af450a0d0fb2477",
+  "reviewInputFingerprint": "sha256:dc22e5d626c531459851c87ffc7974eed9e92e2f670ec1e598ef6bb01984f44b",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-three-targets-20261106-v1-a",
+      "roundId": "mathematik-three-targets-20261106-v1-first-pass-a",
+      "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-a",
+      "runIds": [
+        "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::Deployment/snapshot not exposed. Orchestrator parameters (null=not exposed): {\"fork_turns\":\"none\",\"reasoning_effort\":\"ultra\",\"seed\":null,\"temperature\":null,\"top_p\":null}. startedAt is first observed UTC during review, after input preflight."
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-three-targets-20261106-v1-b",
+      "roundId": "mathematik-three-targets-20261106-v1-first-pass-b",
+      "independenceGroupId": "mathematik-three-targets-20261106-v1-independent-b",
+      "runIds": [
+        "mathematik-three-targets-20261106-b-cold-20261106T220244Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::Deployment version undisclosed; timing covers final assessment/record generation; preparatory input reading preceded startedAt; params UTF-8 descriptor: model=gpt-6.1-sol;reasoning_effort=ultra;fork_turns=none;temperature=unknown;top_p=unknown;seed=unknown"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "firstRecordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-1",
+      "secondRecordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-001",
+      "firstRunId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+      "secondRunId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "firstRecordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-2",
+      "secondRecordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-002",
+      "firstRunId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+      "secondRunId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "firstRecordId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z.goal-3",
+      "secondRecordId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z.record-003",
+      "firstRunId": "mathematik-three-targets-20261106-v1-first-pass-a.20261106T220103Z",
+      "secondRunId": "mathematik-three-targets-20261106-b-cold-20261106T220244Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

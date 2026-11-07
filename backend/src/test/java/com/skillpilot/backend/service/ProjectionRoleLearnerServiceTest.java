@@ -75,11 +75,14 @@ class ProjectionRoleLearnerServiceTest {
     private static final String GLOBAL_ASSESSMENT_EXAM_ID = "global-assessment-exam";
     private static final String SYNTHETIC_STRUCTURE_ID =
             "composition:projection-role-test:structure:sek2";
+    private static final Map<String, String> PROJECTION_SCOPE = Map.of(
+            "schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "LK");
     private static final String PERSONAL_CURRICULUM = """
             {
               "projection-roles": {
                 "selected": true,
-                "filterId": "LK"
+                "filterId": "LK",
+                "stage": "SekII"
               }
             }
             """;
@@ -231,13 +234,15 @@ class ProjectionRoleLearnerServiceTest {
                     .extracting(FrontierGoal::id)
                     .containsExactlyElementsOf(strictMode ? List.of() : List.of(TARGET_ID));
 
-            // Once that supporting goal is mastered, its own preparation no
-            // longer blocks TARGET_ID. Neither foundation nor unused leaf is mastered.
+            // Mastering the intermediate leaves its foundation required in strict
+            // mode. Unrelated support leaves never become target obligations.
             when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
                     .thenReturn(List.of(requiredMastery));
-            assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
+            assertThat(fixture.service().getFrontier(LEARNER_ID))
+                    .containsExactlyElementsOf(strictMode ? List.of() : List.of(TARGET_ID));
             assertThat(fixture.service().getRichFrontier(LEARNER_ID))
-                    .extracting(FrontierGoal::id).containsExactly(TARGET_ID);
+                    .extracting(FrontierGoal::id)
+                    .containsExactlyElementsOf(strictMode ? List.of() : List.of(TARGET_ID));
             assertThat(fixture.service().getMastery(LEARNER_ID))
                     .doesNotContainKeys(EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId);
 
@@ -390,6 +395,9 @@ class ProjectionRoleLearnerServiceTest {
                 .findFirst()
                 .orElseThrow()
                 .setRequires(List.of(PREREQUISITE_ID));
+        inheritedRequirement.landscape().getGoals().stream()
+                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId())).findFirst().orElseThrow()
+                .setContains(List.of(OUTSIDE_TARGET_ID));
         when(inheritedRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(inheritedRequirement.learner(), OUTSIDE_TARGET_ID)));
 
@@ -469,16 +477,91 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void normalFocusCutsAnOutsideIntermediateBeforeFollowingItsReentryIntoTheFocus() {
+    void normalFocusRetainsDemandThroughAnOutsideIntermediateThatReentersTheFocus() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID), goalEntry(TRANSITIVE_PREREQUISITE_ID)));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID),
                         new PlannedGoal(fixture.learner(), TRANSITIVE_PREREQUISITE_ID)));
 
-        assertBothFrontiers(fixture, TARGET_ID, TRANSITIVE_PREREQUISITE_ID);
+        assertBothFrontiers(fixture, TRANSITIVE_PREREQUISITE_ID);
         fixture.learner().setStrictMode(true);
         assertBothFrontiers(fixture, TRANSITIVE_PREREQUISITE_ID);
+    }
+
+    @Test
+    void redundantShortcutPreservesAllFourFrontierPathsAcrossMasteryModesAndFocusBoundaries() {
+        for (boolean strict : List.of(false, true)) {
+            for (List<String> focus : List.of(List.of(TARGET_ID),
+                    List.of(TARGET_ID, TRANSITIVE_PREREQUISITE_ID),
+                    List.of(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID))) {
+                for (int mask = 0; mask < 8; mask++) {
+                    Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID),
+                            goalEntry(TRANSITIVE_PREREQUISITE_ID)));
+                    fixture.learner().setStrictMode(strict);
+                    when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                            .thenReturn(focus.stream().map(id -> new PlannedGoal(fixture.learner(), id)).toList());
+                    List<Mastery> stored = new java.util.ArrayList<>();
+                    List<String> ids = List.of(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                    for (int bit = 0; bit < ids.size(); bit++) if ((mask & 1 << bit) != 0)
+                        stored.add(new Mastery(fixture.learner(), ids.get(bit), 1.0));
+                    when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(stored);
+                    boolean expected = (mask & 1) == 0
+                            && (!(strict || focus.contains(PREREQUISITE_ID)) || (mask & 2) != 0)
+                            && (!(strict || focus.contains(TRANSITIVE_PREREQUISITE_ID)) || (mask & 4) != 0);
+                    assertFourFrontierPaths(fixture, focus, expected);
+                    fixture.landscape().getGoals().stream().filter(goal -> TARGET_ID.equals(goal.getId()))
+                            .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID));
+                    assertFourFrontierPaths(fixture, focus, expected);
+                    verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+                    verify(fixture.masteryRepository(), never()).saveAll(any());
+                }
+            }
+        }
+    }
+
+    @Test
+    void unknownReferenceBehindMasteredOutsideIntermediateFailsClosedInAllFourPaths() {
+        for (boolean strict : List.of(false, true)) {
+          for (String unknown : List.of("unknown-behind-mastered-intermediate",
+                  "wrong-owner:" + TRANSITIVE_PREREQUISITE_ID, LANDSCAPE_ID + ":unknown-qualified-goal")) {
+            Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID),
+                    goalEntry(TRANSITIVE_PREREQUISITE_ID)));
+            fixture.learner().setStrictMode(strict);
+            List<String> focus = List.of(TARGET_ID, TRANSITIVE_PREREQUISITE_ID);
+            when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(focus.stream().map(id -> new PlannedGoal(fixture.learner(), id)).toList());
+            when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                    .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+            fixture.landscape().getGoals().stream().filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                    .findFirst().orElseThrow().setRequires(List.of(unknown));
+            assertFourFrontierPaths(fixture, focus, false);
+            verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+            verify(fixture.masteryRepository(), never()).saveAll(any());
+          }
+        }
+    }
+
+    @Test
+    void planBlockageNamesTransitiveAtomicGapBehindMasteredIntermediate() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID),
+                goalEntry(TRANSITIVE_PREREQUISITE_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        assertThat(fixture.service().describeLearningPlanBlockage(LEARNER_ID, List.of(TARGET_ID), "de"))
+                .isEqualTo("Offene Voraussetzungen: " + TRANSITIVE_PREREQUISITE_ID);
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
+    }
+
+    private void assertFourFrontierPaths(Fixture fixture, List<String> focus, boolean targetAvailable) {
+        assertThat(fixture.service().getFrontier(LEARNER_ID).contains(TARGET_ID)).isEqualTo(targetAvailable);
+        assertThat(fixture.service().getRichFrontier(LEARNER_ID).stream()
+                .anyMatch(goal -> TARGET_ID.equals(goal.id()))).isEqualTo(targetAvailable);
+        assertThat(fixture.service().getUncompactedRichFrontier(LEARNER_ID).stream()
+                .anyMatch(goal -> TARGET_ID.equals(goal.id()))).isEqualTo(targetAvailable);
+        assertThat(fixture.service().getUncompactedRichFrontierForFocus(LEARNER_ID, focus).stream()
+                .anyMatch(goal -> TARGET_ID.equals(goal.id()))).isEqualTo(targetAvailable);
     }
 
     @Test
@@ -487,6 +570,8 @@ class ProjectionRoleLearnerServiceTest {
                 goalEntry(TRANSITIVE_PREREQUISITE_ID)));
         fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
                 .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID));
+        fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setContains(List.of(OUTSIDE_TARGET_ID));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID),
                         new PlannedGoal(fixture.learner(), PREREQUISITE_ID)));
@@ -523,19 +608,21 @@ class ProjectionRoleLearnerServiceTest {
 
     @Test
     void aClusterWithAnEmptyAtomicFocusBasisCreatesNoStoredMasteryObligation() {
-        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
-        Map<String, LearningGoal> graph = Map.of(
-                NESTED_CLUSTER_ID, clusterGoal(NESTED_CLUSTER_ID, List.of(TRANSITIVE_PREREQUISITE_ID)),
-                TRANSITIVE_PREREQUISITE_ID, atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of()));
-        Map<String, Double> stored = Map.of();
-        Map<String, Double> focused = ReflectionTestUtils.invokeMethod(fixture.service(),
-                "computeEffectivePrereqMastery", graph, stored, Set.of(NESTED_CLUSTER_ID));
-        Map<String, Double> global = ReflectionTestUtils.invokeMethod(fixture.service(),
-                "computeEffectivePrereqMastery", graph, stored);
-        assertThat(focused).containsEntry(NESTED_CLUSTER_ID, 1.0).doesNotContainKey(TRANSITIVE_PREREQUISITE_ID);
-        assertThat(global).containsEntry(NESTED_CLUSTER_ID, 0.0);
-        assertThat(stored).isEmpty();
+        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID),
+                canonicalSubtree(NESTED_CLUSTER_ID, "prerequisiteOnly")));
+        fixture.landscape().setGoals(List.of(
+                clusterGoal(ROOT_CLUSTER_ID, List.of(OUTSIDE_TARGET_ID, NESTED_CLUSTER_ID)),
+                clusterGoal(NESTED_CLUSTER_ID, List.of(TRANSITIVE_PREREQUISITE_ID)),
+                atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of()),
+                atomicGoal(OUTSIDE_TARGET_ID, List.of(NESTED_CLUSTER_ID))));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+        assertBothFrontiers(fixture, OUTSIDE_TARGET_ID);
+        fixture.learner().setStrictMode(true);
+        assertBothFrontiers(fixture);
+        assertThat(fixture.service().getMastery(LEARNER_ID)).isEmpty();
         verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
     }
 
     @Test
@@ -567,24 +654,32 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void normalClusterBasisDoesNotPromoteAnExtensionWhenItsGlobalCoreSiblingIsOutsideFocus() {
-        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
+    void normalClusterBasisRetainsAnExtensionWhenItsGlobalCoreSiblingIsOutsideFocus() {
+        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID),
+                canonicalSubtree(NESTED_CLUSTER_ID, "prerequisiteOnly"),
+                goalEntry(TRANSITIVE_PREREQUISITE_ID)));
         LearningGoal core = atomicGoal(PREREQUISITE_ID, List.of());
         core.setTags(List.of("GK"));
         LearningGoal extension = atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of());
         extension.setTags(List.of("LK"));
-        Map<String, LearningGoal> graph = Map.of(NESTED_CLUSTER_ID,
+        fixture.landscape().setGoals(List.of(
+                clusterGoal(ROOT_CLUSTER_ID, List.of(OUTSIDE_TARGET_ID, NESTED_CLUSTER_ID)),
                 clusterGoal(NESTED_CLUSTER_ID, List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID)),
-                PREREQUISITE_ID, core, TRANSITIVE_PREREQUISITE_ID, extension);
-        Map<String, Double> stored = Map.of(PREREQUISITE_ID, 1.0);
-        Map<String, Double> focused = ReflectionTestUtils.invokeMethod(fixture.service(),
-                "computeEffectivePrereqMastery", graph, stored,
-                Set.of(NESTED_CLUSTER_ID, TRANSITIVE_PREREQUISITE_ID));
-        Map<String, Double> global = ReflectionTestUtils.invokeMethod(fixture.service(),
-                "computeEffectivePrereqMastery", graph, stored);
-        assertThat(global).containsEntry(NESTED_CLUSTER_ID, 1.0);
-        assertThat(focused).containsEntry(NESTED_CLUSTER_ID, 1.0)
-                .containsEntry(TRANSITIVE_PREREQUISITE_ID, 0.0);
+                core, extension, atomicGoal(OUTSIDE_TARGET_ID, List.of(NESTED_CLUSTER_ID))));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID),
+                        new PlannedGoal(fixture.learner(), TRANSITIVE_PREREQUISITE_ID)));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
+        assertBothFrontiers(fixture, TRANSITIVE_PREREQUISITE_ID);
+        fixture.learner().setStrictMode(true);
+        assertBothFrontiers(fixture, TRANSITIVE_PREREQUISITE_ID);
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0),
+                        new Mastery(fixture.learner(), TRANSITIVE_PREREQUISITE_ID, 1.0)));
+        assertBothFrontiers(fixture, OUTSIDE_TARGET_ID);
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
     }
 
     private void assertBothFrontiers(Fixture fixture, String... expected) {
@@ -594,16 +689,16 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void simpleFrontierStopsAtMasteredIntermediateButKeepsIndependentDirectRequirements() {
-        assertMasteredIntermediateStopsItsOwnDemand(false);
+    void simpleFrontierRetainsTransitiveDemandAcrossMasteredIntermediate() {
+        assertMasteredIntermediateRetainsDemand(false);
     }
 
     @Test
-    void richFrontierStopsAtMasteredIntermediateButKeepsIndependentDirectRequirements() {
-        assertMasteredIntermediateStopsItsOwnDemand(true);
+    void richFrontierRetainsTransitiveDemandAcrossMasteredIntermediate() {
+        assertMasteredIntermediateRetainsDemand(true);
     }
 
-    private void assertMasteredIntermediateStopsItsOwnDemand(boolean richFrontier) {
+    private void assertMasteredIntermediateRetainsDemand(boolean richFrontier) {
         for (boolean strictMode : List.of(false, true)) {
             for (String mathematicsRole : List.of("target", "prerequisiteOnly")) {
                 Fixture fixture = fixture(view(
@@ -624,7 +719,7 @@ class ProjectionRoleLearnerServiceTest {
                                 "landscapeId", mathematicsLandscapeId,
                                 "rootNodes", List.of(goalEntry(EXTERNAL_PREREQUISITE_ID, mathematicsRole))));
                 fixture.learner().setPersonalCurriculum("""
-                        {"projection-roles":{"selected":true,"filterId":"LK"},
+                        {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                          "transitive-mathematics":{"selected":true,"filterId":"LK"}}
                         """);
                 fixture.learner().setStrictMode(strictMode);
@@ -653,20 +748,24 @@ class ProjectionRoleLearnerServiceTest {
                 List<String> intermediateFrontier = richFrontier
                         ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
                         : fixture.service().getFrontier(LEARNER_ID);
-                assertThat(intermediateFrontier)
-                        .as("strict=%s, mathematicsRole=%s", strictMode, mathematicsRole)
-                        .contains(TARGET_ID);
+                if (strictMode || "target".equals(mathematicsRole)) {
+                    assertThat(intermediateFrontier)
+                            .as("strict=%s, mathematicsRole=%s", strictMode, mathematicsRole)
+                            .doesNotContain(TARGET_ID);
+                } else {
+                    assertThat(intermediateFrontier).containsExactly(TARGET_ID);
+                }
                 assertThat(fixture.service().getMastery(LEARNER_ID))
                         .doesNotContainKey(EXTERNAL_PREREQUISITE_ID);
 
-                // A separate direct edge still demands the earlier goal. It is not
-                // redundant merely because another path reaches the same prerequisite.
+                // A redundant authored shortcut must not change availability.
                 fixture.landscape().getGoals().stream()
                         .filter(goal -> TARGET_ID.equals(goal.getId())).findFirst().orElseThrow()
                         .setRequires(List.of(PREREQUISITE_ID, EXTERNAL_PREREQUISITE_ID));
                 List<String> blockedFrontier = richFrontier
                         ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
                         : fixture.service().getFrontier(LEARNER_ID);
+                assertThat(blockedFrontier).containsExactlyInAnyOrderElementsOf(intermediateFrontier);
                 if (strictMode || "target".equals(mathematicsRole)) {
                     assertThat(blockedFrontier)
                             .as("strict=%s, mathematicsRole=%s", strictMode, mathematicsRole)
@@ -712,7 +811,7 @@ class ProjectionRoleLearnerServiceTest {
                         "landscapeId", mathematicsLandscapeId,
                         "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID))));
         String personalCurriculum = """
-                {"projection-roles":{"selected":true,"filterId":"LK"},
+                {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                  "independent-mathematics":{"selected":true,"filterId":"LK"}}
                 """;
         fixture.learner().setPersonalCurriculum(personalCurriculum);
@@ -751,7 +850,7 @@ class ProjectionRoleLearnerServiceTest {
                         "landscapeId", mathematicsLandscapeId,
                         "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_CHILD_ID))));
         String personalCurriculum = """
-                {"projection-roles":{"selected":true,"filterId":"LK"},
+                {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                  "independent-mathematics":{"selected":true,"filterId":"LK"}}
                 """;
         fixture.learner().setPersonalCurriculum(personalCurriculum);
@@ -1355,7 +1454,7 @@ class ProjectionRoleLearnerServiceTest {
         when(compositionViewService.isAuthoritativeForLandscape(LANDSCAPE_ID))
                 .thenReturn(true);
         if (matchedView != null) {
-            when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap()))
+            when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), eq(PROJECTION_SCOPE)))
                     .thenReturn(matchedView);
             when(compositionViewService.findDefaultView(LANDSCAPE_ID))
                     .thenReturn(matchedView);
@@ -1497,6 +1596,7 @@ class ProjectionRoleLearnerServiceTest {
         return Map.of(
                 "viewId", "projection-role-test",
                 "landscapeId", LANDSCAPE_ID,
+                "scope", PROJECTION_SCOPE,
                 "rootNodes", List.of(entries));
     }
 

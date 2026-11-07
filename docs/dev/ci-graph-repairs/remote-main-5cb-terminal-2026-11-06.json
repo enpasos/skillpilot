@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06 18:31:14 UTC",
+  "headCommit": "5cb5e567d08bc9f640942529d9099cbce03a4747",
+  "testedMergeCommit": "fc769c930a4a43c466c09756d7f3439dd48fbac7",
+  "runId": 42259521320,
+  "runUrl": "https://github.com/enpasos/skillpilot/actions/runs/42259521320",
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "id": 128035506576,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128035507103,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128035507138,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128035507272,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128035507276,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128048248122,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        {
+          "number": 13,
+          "name": "Run backend tests"
+        }
+      ]
+    },
+    {
+      "id": 128048248152,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        {
+          "number": 43,
+          "name": "Test trainer Gymnasium scope"
+        }
+      ]
+    },
+    {
+      "id": 128048248275,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        {
+          "number": 60,
+          "name": "Verify committed curriculum quality status"
+        }
+      ]
+    }
+  ],
+  "observedFailures": {
+    "backend": {
+      "jobId": 128048248122,
+      "tests": 2754,
+      "failures": 1,
+      "skipped": 19,
+      "class": "LearnerControllerIntegrationTest",
+      "test": "learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals()",
+      "assertion": "Informatik DE-NI G8 total",
+      "expected": 22,
+      "actual": 21,
+      "repairNotYetVerified": true
+    },
+    "frontend": {
+      "jobId": 128048248152,
+      "script": "app/scripts/testTrainerGymnasiumScopeUi.ts",
+      "line": 530,
+      "assertion": "direct subject entry offers the complete canonical Gymnasium subject closure",
+      "causeNotYetEstablished": true
+    },
+    "curriculum": {
+      "jobId": 128048248275,
+      "step": "Verify committed curriculum quality status",
+      "cause": "Nested hard maturity-floor check returns exit 1 for seven protected subjects; not a report freshness mismatch.",
+      "protectedFailures": 7,
+      "mathStrictFindingsAtThisRemoteHead": 925
+    }
+  },
+  "separateAssessmentEvidence": "docs/dev/ci-graph-repairs/assessment-completion-remote-5cb-2026-11-06.json",
+  "qualification": "Exact older pushed head; subsequent CQR202, Math memory and language repairs were not present in this run. No fresh-head or full CI acceptance claim."
+}

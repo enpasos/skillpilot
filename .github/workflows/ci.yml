@@ -491,8 +491,7 @@ jobs:
             npm run demo -- verify-recording --scenario scenarios/example.yaml
 
   graph-validation:
-    name: Curriculum CI
-    needs: goal-book-publication
+    name: Curriculum source contracts
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -512,17 +511,40 @@ jobs:
         run: npm ci
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
-      - name: Install PDF validation tools
+      - name: Install package-consumer isolation tools
         timeout-minutes: 10
-        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
-      - name: Install pinned Playwright Chromium
-        timeout-minutes: 10
-        run: npx --no-install playwright install --with-deps chromium
-      - name: Restore same-run verified goal-book publications
-        uses: actions/download-artifact@v7
-        with:
-          name: goal-book-publication-${{ github.sha }}
-          path: app/public/lernzielbuch/
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
+      - name: Enable and verify bubblewrap isolation
+        run: bash ../scripts/configure_github_bubblewrap.sh
+      - name: Prepare pinned Source-A metadata test fixtures
+        working-directory: .
+        run: |
+          set -euo pipefail
+          identity_fixture_commit=80d70f08e0ce31cbdc214e62b5d3e0e80cd850db
+          git fetch --no-tags --depth=1 origin "${identity_fixture_commit}"
+          test "$(git rev-parse --verify "${identity_fixture_commit}^{commit}")" = "${identity_fixture_commit}"
+          for identity_fixture_path in \
+            curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json \
+            curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json; do
+            test "$(git cat-file -t "${identity_fixture_commit}:${identity_fixture_path}")" = blob
+          done
+      - name: Test Source-A Composer metadata boundary
+        run: npm run test:source-identity-qa-metadata
+      - name: Test isolated identity QA preparation without skips
+        working-directory: .
+        run: |
+          set -euo pipefail
+          command -v bwrap
+          python3 -B - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover("scripts", pattern="test_*identity_qa*py")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if result.testsRun != 19 or result.skipped:
+              raise SystemExit("All nineteen identity QA preparation and capture controls must execute without skips")
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
+      - name: Test general graph reference resolution
+        run: npm run test:general-graph-references
       - name: Validate Graph
         run: npm run validate:graph
       - name: Test exam Markdown conventions
@@ -531,6 +553,8 @@ jobs:
         run: npm run test:math-checkpoint-exams
       - name: Test HE Q2.5 central-dilation assessment scope
         run: npm run test:math-q25-central-dilation-scope
+      - name: Test HE Q2.4/Q2.5 Mathematics scope
+        run: npm run test:hessen-math-q24-q25-scope
       - name: Test Mathematics Q2 assessment projection and scoring
         run: npm run test:math-q2-m7-assessment-projection
       - name: Test Physics practice and Abitur assessment projection
@@ -619,6 +643,84 @@ jobs:
           npm run check:curriculum-maturity-floors
           git diff --exit-code -- ../docs/qa-ci/status
           test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Install Python dependencies
+        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Test portable curriculum symlinks
+        working-directory: .
+        run: python -B scripts/test_validate_schemas_symlinks.py -v
+      - name: Validate Schemas
+        run: cd .. && python scripts/validate_schemas.py
+      - name: Test Curriculum Goal UUID CLI
+        working-directory: .
+        run: python -B scripts/test_validate_goal_ids_uuid.py -v
+      - name: Validate Curriculum Goal IDs (UUIDs)
+        run: cd .. && python scripts/validate_goal_ids_uuid.py
+      - name: Validate Hessen Upper-Secondary Archive Paths
+        run: cd .. && python scripts/validate_hessen_upper_secondary_archive_paths.py
+      - name: Validate Hessen Upper-Secondary Legacy References
+        run: cd .. && python scripts/validate_hessen_upper_secondary_legacy_refs.py
+      - name: Validate Hessen Chemistry Exam Pipeline
+        run: cd .. && python scripts/validate_chemistry_exam_pipeline.py
+      - name: Validate Hessen Lower-Secondary Archive Paths
+        run: cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py
+      - name: Validate Hessen Lower-Secondary Legacy References
+        run: cd .. && python scripts/validate_hessen_lower_secondary_legacy_refs.py
+      - name: Validate Bavaria Gymnasium Archive Paths
+        run: cd .. && python scripts/validate_bavaria_gymnasium_archive_paths.py
+      - name: Validate Bavaria Gymnasium Legacy References
+        run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
+
+  curriculum-ci:
+    name: Curriculum CI
+    needs: [graph-validation, goal-book-publication]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Require successful curriculum core and verified book build
+        if: ${{ always() }}
+        working-directory: ${{ runner.temp }}
+        shell: bash
+        env:
+          CURRICULUM_CORE_RESULT: ${{ needs.graph-validation.result }}
+          CURRICULUM_BOOK_RESULT: ${{ needs.goal-book-publication.result }}
+        run: |
+          set -euo pipefail
+          if [[ "${CURRICULUM_CORE_RESULT:-}" != success || "${CURRICULUM_BOOK_RESULT:-}" != success ]]; then
+            echo "::error::Curriculum CI requires successful core and book jobs; core=${CURRICULUM_CORE_RESULT:-missing}, book=${CURRICULUM_BOOK_RESULT:-missing}."
+            exit 1
+          fi
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install package-consumer isolation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
+      - name: Enable and verify bubblewrap isolation
+        run: bash ../scripts/configure_github_bubblewrap.sh
+      - name: Install PDF validation tools
+        timeout-minutes: 10
+        run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
+      - name: Install pinned Playwright Chromium
+        timeout-minutes: 10
+        run: npx --no-install playwright install --with-deps chromium
       - name: Prepare generated curriculum runtime assets
         run: npm run prepare:runtime-assets
       - name: Check goal visualization runtime assets
@@ -635,6 +737,11 @@ jobs:
           npm run check:goal-visualization-qa-coverage-parity
       - name: Test full standalone curriculum package builder
         run: npm run test:full-standalone-package-builder
+      - name: Restore same-run verified goal-book publications
+        uses: actions/download-artifact@v7
+        with:
+          name: goal-book-publication-${{ github.sha }}
+          path: app/public/lernzielbuch/
       - name: Build integrated application artifact
         run: npm run build:application
       - name: Build package-only consumer frontend
@@ -663,11 +770,6 @@ jobs:
           echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
           "${install_dir}/bin/java" -version
-      - name: Install package-consumer isolation tools
-        timeout-minutes: 10
-        run: sudo apt-get update && sudo apt-get install -y bubblewrap strace
-      - name: Enable and verify bubblewrap isolation
-        run: bash ../scripts/configure_github_bubblewrap.sh
       - name: Install Python dependencies
         run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
       - name: Verify curriculum JSON conformance scripts
@@ -690,27 +792,6 @@ jobs:
           python -B scripts/run_package_consumer_smoke.py --self-test
           SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
             bash scripts/run_curriculum_release_model_conformance.sh
-      - name: Test portable curriculum symlinks
-        working-directory: .
-        run: python -B scripts/test_validate_schemas_symlinks.py -v
-      - name: Validate Schemas
-        run: cd .. && python scripts/validate_schemas.py
-      - name: Validate Curriculum Goal IDs (UUIDs)
-        run: cd .. && python scripts/validate_goal_ids_uuid.py
-      - name: Validate Hessen Upper-Secondary Archive Paths
-        run: cd .. && python scripts/validate_hessen_upper_secondary_archive_paths.py
-      - name: Validate Hessen Upper-Secondary Legacy References
-        run: cd .. && python scripts/validate_hessen_upper_secondary_legacy_refs.py
-      - name: Validate Hessen Chemistry Exam Pipeline
-        run: cd .. && python scripts/validate_chemistry_exam_pipeline.py
-      - name: Validate Hessen Lower-Secondary Archive Paths
-        run: cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py
-      - name: Validate Hessen Lower-Secondary Legacy References
-        run: cd .. && python scripts/validate_hessen_lower_secondary_legacy_refs.py
-      - name: Validate Bavaria Gymnasium Archive Paths
-        run: cd .. && python scripts/validate_bavaria_gymnasium_archive_paths.py
-      - name: Validate Bavaria Gymnasium Legacy References
-        run: cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py
 
   backend-ci:
     needs: goal-book-publication

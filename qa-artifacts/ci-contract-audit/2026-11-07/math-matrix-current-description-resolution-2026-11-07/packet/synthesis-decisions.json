@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "math-matrix-current-page-two-independent-keeps-20261107-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex post-review synthesis after reading both sealed independent Astra rounds; not a blind first pass",
+  "synthesizedAt": "2026-11-07T02:45:19.000Z",
+  "batch": {
+    "batchId": "mathematik-matrix-current-page-20261107-v1",
+    "batchManifestDigest": "sha256:64a7d652448995d3921b275d7267210b54bf8bac232ae9246979140acaee1d68",
+    "configDigest": "sha256:fafe5605829915589dc9aef058a34cb056e80776452ba09656a5b70469375279",
+    "bundleFingerprint": "sha256:e1f39d3f6f1149d4ac4876ee36e2a4c576394b7b1fd5522003ae9536f4642656",
+    "bookDigest": "sha256:60d762e6278057a782eb48ee23534bd8c5bca45fb44e032da0eb5336e17248b8",
+    "reviewInputFingerprint": "sha256:4756a7a7527eef9ba91b20a4c591dbc1a33c5693716a50a4444cf8f6ff7e63c5",
+    "dualSummaryDigest": "sha256:30413abb97dfaaa27a83010ce664aa2eb89b83e29d8bc5a4c819b3aed6e48fad",
+    "canonicalLandscapeDigest": "sha256:e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-matrix-current-page-20261107-v1-a",
+      "campaignDigest": "sha256:622230deb572c29254eca663973b49b0559fee02fc31554cc5bb05bba13be21b",
+      "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-a",
+      "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-a",
+      "reviewInputFingerprint": "sha256:4756a7a7527eef9ba91b20a4c591dbc1a33c5693716a50a4444cf8f6ff7e63c5",
+      "batchId": "mathematik-matrix-current-page-20261107-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:a5fb07262a7ccb8e3caf7823cd1eff6c50cbbb0e71386d848d90aa3000b47739",
+      "runId": "math-matrix-current-d-a-20261107T024029Z",
+      "runManifestDigest": "sha256:ecdf1b86756bd9664b9078464528b9b45edadfc383d54910fd4b12949cf92cf5",
+      "resultsDigest": "sha256:ffc5333c71ee47e07c058b9c7ebd86d6aec91423236daec52412b6f602951043"
+    },
+    "second": {
+      "campaignId": "mathematik-matrix-current-page-20261107-v1-b",
+      "campaignDigest": "sha256:ea5aa76307691f405c70132094051c7a1c50371877a4542827f58f688078bede",
+      "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-b",
+      "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-b",
+      "reviewInputFingerprint": "sha256:4756a7a7527eef9ba91b20a4c591dbc1a33c5693716a50a4444cf8f6ff7e63c5",
+      "batchId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:316b7c54c8c952eadc16dac93e4d0514616dfb9eef9d6d53a5019fe6ddca5610",
+      "runId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.20261107T024219Z",
+      "runManifestDigest": "sha256:2aac5d2459fd6123bc890e233eb8b73379d84f7726aea255304141814c3e24b6",
+      "resultsDigest": "sha256:fb3b8e3b46aad7cad2013bacbe833797c864a8aa1599e77d0c9abffeaed9ec19"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "math-matrix-current-page-two-independent-keeps-20261107-v1-decision-001",
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+      "pageFingerprint": "sha256:b889dbe3a76abe081ddf921ecf01e3d8f0f5602fb054eeb342514853c057642d",
+      "goalReviewContextFingerprint": "sha256:d96e7ff65f3771706c835613744edbaebae0dfd3f83115be6c4491acfd455a00",
+      "finalText": {
+        "titleDe": "Einfache inverse Matrizen bestimmen",
+        "titleEn": "Determine simple inverse matrices",
+        "descriptionDe": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+        "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "math-matrix-current-d-a-20261107T024029Z-ce198bc9",
+          "recordDigest": "sha256:1aca7f72fff82aef7085a06463c65e46d628d17ed2a44cecab466b6c66d67684"
+        },
+        "second": {
+          "recordId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.20261107T024219Z.ce198bc9-b014-52ba-814f-25cc3e020668",
+          "recordDigest": "sha256:2c08a4d3189d12404f44883aa942ce947867da8a99ceed89dfc8a0425a9c1ef3"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich unabhängig abgeschlossenen Erstpässe behalten denselben vollständigen deutschen und englischen Text zur einfachen Inversion und Multiplikationsprobe. Die zweite Evidenzfassung wird unverändert gewählt, weil sie den Vergleich sämtlicher Produkteinträge mit der Einheitsmatrix passender Größe ausdrücklich benennt. Die erste übereinstimmende Fassung bleibt vollständig gebunden. Selbstständiges Bestimmen und erläutertes Prüfen gehören zusammen; der Transfer von einer nichtdiagonalen 2x2-Matrix zur einfachen invertierbaren 3x3-Diagonalmatrix verändert Struktur und Dimension innerhalb der vorhandenen Kompetenz. Weder ein bestimmtes Rechenverfahren noch ein allgemeiner Existenzbeweis, geometrische Modellierung oder eine neue Pflichtleistung werden hinzugefügt. Das neue Bild und die tatsächliche aktuelle Buchseite liefern Unterrichtskontext, keinen selbstständigen Lernnachweis und keine neue V-Abnahme. Die Create-Empfehlungen beziehen sich auf den kalten Eingang ohne mitgeliefertes P-Profil; die getrennte aktuelle P-Qualifikation wird damit nicht vorweggenommen. Der von Runde A ausdrücklich eingegrenzte amtliche Beleg zu Q2.4/Q2.5 wird nicht als allgemeine Q2-Pflicht oder Freigabe aller angezeigten Länder ausgelegt. Alle alten Auflösungen, Ersturteile, Zeiten und Reviewerangaben bleiben unverändert.",
+      "rationaleEn": "Both genuinely independent completed first passes retain the same complete German and English text for simple inversion and verification by multiplication. The second evidence formulation is selected unchanged because it explicitly compares every product entry with the identity matrix of the appropriate size. The first agreeing formulation remains fully bound. Independent determination and explained verification form one competence; transfer from a nondiagonal 2x2 matrix to a simple invertible 3x3 diagonal matrix changes structure and dimension within its existing scope. No specific computational method, general existence proof, geometric modelling, or new compulsory performance is added. The new image and actual current book page provide teaching context, not independent learner evidence or a new visualization approval. The create recommendations refer to the cold input without a supplied P profile and do not anticipate the separate current P qualification. The official Q2.4/Q2.5 source boundary explicitly identified by round A is not interpreted as universal Q2 compulsion or approval of every displayed jurisdiction. All historical resolutions, first-pass judgments, times, and reviewer attributions remain unchanged."
+    }
+  ],
+  "manifestFingerprint": "sha256:bdd84038aef0a76933572f8c216e39f73022c113ed7a393250d824ced3ef96d2"
+}

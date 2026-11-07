@@ -110,7 +110,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -124,8 +124,14 @@
           {
             "id": "m3-content-covered-st-informatik-seki",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 91/91; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "Explizite fachliche Zuordnungslücken bleiben nach aktueller Quellenbereinigung offen; keine vollständige Inhaltsabdeckung."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -436,10 +442,14 @@
       "rawSourceText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
       "rawSourceSpan": "ST-INF-SEKI-9-ALG.6",
       "rawParentBulletText": "zu realen Automaten zugehoerige Automatenmodelle entwerfen",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Zu realen Automaten zugehörige Automatenmodelle entwerfen.",
+        "reason": "Das vorhandene Grundziel trifft reales Automatenmodellieren, verlangt zusätzlich Simulation. Eine vollständige quellen- und leistungsidentische Zuordnung dieser zusätzlichen Leistung wurde hier nicht bewiesen; keine automatische Vollabdeckung.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-007-algorithmen-testen-und-weiterentwickeln-58d0b9c6",
@@ -841,10 +851,14 @@
       "rawSourceText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
       "rawSourceSpan": "ST-INF-SEKI-9-ALG.20",
       "rawParentBulletText": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und wechselseitig uebertragen",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und in beide Richtungen übertragen.",
+        "reason": "Das allgemeine Modellieren/Simulieren von Automaten nennt weder die Automatentafel noch die wechselseitige Darstellungsübertragung; diese konkrete Leistung bleibt offen.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-021-algorithmuseigenschaften-nutzen-4a92755a",

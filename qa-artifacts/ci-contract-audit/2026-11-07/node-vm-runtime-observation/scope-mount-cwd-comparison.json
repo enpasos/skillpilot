@@ -1,0 +1,517 @@
+{
+  "purpose": "observed-smoke-versus-code-derived-preparer-layout-no-new-runtime-permission",
+  "smoke": [
+    {
+      "role": "original",
+      "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+      "argv": [
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+        "--no-cache",
+        "--tsconfig",
+        "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+        "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+      ],
+      "actualReadonlyDependencyMounts": [
+        {
+          "source": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "target": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "readonly": true,
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "captureReceiptSha256": "9023a300cbd12211f8927d0deae7fa3104d3ef3e458a41401fc97da0938da389"
+        }
+      ],
+      "producerTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+      "failedEvent": [
+        333,
+        333,
+        371920,
+        "statx",
+        [
+          "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "\"/dev/shm/node_modules\"",
+          "AT_STATX_SYNC_AS_STAT",
+          "STATX_ALL",
+          "0x7ffd94117330"
+        ],
+        "-1 ENOENT (No such file or directory)"
+      ],
+      "precedingSamePidEvents": [
+        [
+          323,
+          323,
+          371920,
+          "openat",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/null\"",
+            "O_RDONLY|O_CLOEXEC"
+          ],
+          "17</dev/null<char 1:3>>"
+        ],
+        [
+          324,
+          324,
+          371920,
+          "fcntl",
+          [
+            "1<pipe:[2847102]>",
+            "F_GETFL"
+          ],
+          "0x1 (flags O_WRONLY)"
+        ],
+        [
+          325,
+          325,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          326,
+          326,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          327,
+          327,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "{stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=7, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=187143, stx_size=140, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794012908, tv_nsec=206248568} /* 2026-11-07T01:55:08.206248568+0100 */, stx_btime={tv_sec=1794012908, tv_nsec=206248568} /* 2026-11-07T01:55:08.206248568+0100 */, stx_ctime={tv_sec=1794012908, tv_nsec=266147038} /* 2026-11-07T01:55:08.266147038+0100 */, stx_mtime={tv_sec=1794012908, tv_nsec=266147038} /* 2026-11-07T01:55:08.266147038+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}"
+          ],
+          "0"
+        ],
+        [
+          328,
+          328,
+          371920,
+          "openat",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents/package.json\"",
+            "O_RDONLY|O_CLOEXEC"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          329,
+          329,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          330,
+          330,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.js\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117250"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          331,
+          331,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.json\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117250"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          332,
+          332,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.node\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117250"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          333,
+          333,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/shm/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          335,
+          337,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/dev/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          338,
+          338,
+          371920,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+            "\"/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7ffd94117330"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ]
+      ],
+      "abortedNonInputIdentityObservations": []
+    },
+    {
+      "role": "candidate",
+      "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+      "argv": [
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+        "--no-cache",
+        "--tsconfig",
+        "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tsconfig.json",
+        "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tool/discovery.mts"
+      ],
+      "actualReadonlyDependencyMounts": [
+        {
+          "source": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "target": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "readonly": true,
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "captureReceiptSha256": "9023a300cbd12211f8927d0deae7fa3104d3ef3e458a41401fc97da0938da389"
+        }
+      ],
+      "producerTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+      "failedEvent": [
+        336,
+        336,
+        372048,
+        "statx",
+        [
+          "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "\"/dev/shm/node_modules\"",
+          "AT_STATX_SYNC_AS_STAT",
+          "STATX_ALL",
+          "0x7fff58eef300"
+        ],
+        "-1 ENOENT (No such file or directory)"
+      ],
+      "precedingSamePidEvents": [
+        [
+          326,
+          326,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          327,
+          327,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          328,
+          328,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "{stx_mask=STATX_ALL|STATX_MNT_ID, stx_blksize=4096, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_nlink=7, stx_uid=1000, stx_gid=1000, stx_mode=S_IFDIR|0700, stx_ino=187143, stx_size=140, stx_blocks=0, stx_attributes_mask=STATX_ATTR_IMMUTABLE|STATX_ATTR_APPEND|STATX_ATTR_NODUMP|STATX_ATTR_AUTOMOUNT|STATX_ATTR_MOUNT_ROOT|STATX_ATTR_DAX, stx_atime={tv_sec=1794012908, tv_nsec=206248568} /* 2026-11-07T01:55:08.206248568+0100 */, stx_btime={tv_sec=1794012908, tv_nsec=206248568} /* 2026-11-07T01:55:08.206248568+0100 */, stx_ctime={tv_sec=1794012908, tv_nsec=266147038} /* 2026-11-07T01:55:08.266147038+0100 */, stx_mtime={tv_sec=1794012908, tv_nsec=266147038} /* 2026-11-07T01:55:08.266147038+0100 */, stx_rdev_major=0, stx_rdev_minor=0, stx_dev_major=0, stx_dev_minor=65}"
+          ],
+          "0"
+        ],
+        [
+          329,
+          329,
+          372048,
+          "openat",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents/package.json\"",
+            "O_RDONLY|O_CLOEXEC"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          330,
+          330,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          331,
+          331,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.js\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef220"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          332,
+          334,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.json\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef220"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          335,
+          335,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/fsevents.node\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef220"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          336,
+          336,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/shm/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          337,
+          337,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/dev/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          338,
+          338,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/node_modules\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          339,
+          339,
+          372048,
+          "statx",
+          [
+            "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+            "\"/home/enpasos/.nvm/versions/node/v20.20.2/lib/node\"",
+            "AT_STATX_SYNC_AS_STAT",
+            "STATX_ALL",
+            "0x7fff58eef300"
+          ],
+          "-1 ENOENT (No such file or directory)"
+        ],
+        [
+          341,
+          341,
+          372048,
+          "read",
+          [
+            "0x10",
+            "0x7fff58ef1a10",
+            "0x400"
+          ],
+          "0x8"
+        ]
+      ],
+      "abortedNonInputIdentityObservations": [
+        {
+          "category": "aborted-non-input-identity-observation",
+          "entry": 1964,
+          "exitEvidenceSkipped": false,
+          "exitWitness": {
+            "entry": 1963,
+            "exitStatus": 0,
+            "hostPid": 372071,
+            "resume": 1968
+          },
+          "hostPid": 372072,
+          "identityEvidence": false,
+          "inputReadSkipped": false,
+          "namespaceValueDerived": false,
+          "operation": "getpid",
+          "priorNumericGroupIdentityEntry": 1903,
+          "resume": 1967,
+          "returnedPidValue": null,
+          "threadGroupHostPid": 372071
+        }
+      ]
+    }
+  ],
+  "preparerSource": {
+    "path": "scripts/prepare_identity_qa_candidate.py",
+    "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+    "bytes": 29635
+  },
+  "preparerCodeDerived": {
+    "cwd": "<receipt.originalRoot|candidateRoot>/app",
+    "dependencySource": "<receipt.nodeModules>",
+    "dependencyTargets": [
+      "<receipt.originalRoot>/app/node_modules",
+      "<receipt.candidateRoot>/app/node_modules"
+    ],
+    "pairRoot": "whole private pair RO; run directories selectively RW",
+    "hostRepo": "hidden by tmpfs; declared Git object storage RO",
+    "assets": "directory forests and uncovered binary files mounted from actual private captured sources",
+    "environment": "HOME/TMPDIR/npm_config_cache/PYTHONDONTWRITEBYTECODE explicitly set; current generated wrapper has no clearenv",
+    "pidNamespace": "current generated wrapper has no --unshare-pid",
+    "virtualRepoAppMappingPresent": false,
+    "productionPairActuallyLaunchedByThisComparison": false
+  },
+  "optionalImportPrimarySources": {
+    "cli": {
+      "path": "app/node_modules/tsx/dist/cli.mjs",
+      "sha256": "8729ecfb90d9d568939e4190e6f1d3317c946583b7d37a776e0c23a21c021cf8",
+      "bytes": 120402
+    },
+    "cliByteOffset": 98268,
+    "cliExcerpt": ";let Fe;try{Fe=Ie(\"fsevents\")}catch(t){process.env.CHOKIDAR_PRINT_FSEVENTS",
+    "requireHelper": {
+      "path": "app/node_modules/tsx/dist/get-pipe-path-BHW2eJdv.mjs",
+      "sha256": "307483caa22c2406677b4bd513bf602b4de3986f3e23eac7724e99c0d7ddc8d6",
+      "bytes": 368
+    },
+    "requireHelperText": "var p=Object.defineProperty;var e=(t,r)=>p(t,\"name\",{value:r,configurable:!0});import{createRequire as o}from\"module\";import a from\"node:path\";import{t as s}from\"./temporary-directory-CwHp0_NW.mjs\";var m=o(import.meta.url);const i=process.platform===\"win32\",n=e(t=>{const r=a.join(s,`${t}.pipe`);return i?`\\\\\\\\?\\\\pipe\\\\${r}`:r},\"getPipePath\");export{n as g,i,m as r};\n",
+    "tsxPackage": {
+      "path": "app/node_modules/tsx/package.json",
+      "sha256": "6e764b21991c21595441f82387c1451ccd10a3e7a3f0973cc5e3649a12dea7d2",
+      "bytes": 1624
+    },
+    "tsxOptionalDependencies": {
+      "fsevents": "~2.3.3"
+    },
+    "currentInstalledFseventsDirectoryExists": false,
+    "currentLock": {
+      "path": "app/package-lock.json",
+      "sha256": "c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175",
+      "bytes": 710198
+    },
+    "fseventsLockFields": {
+      "version": "2.3.3",
+      "optional": true,
+      "os": [
+        "darwin"
+      ]
+    }
+  },
+  "conclusion": "Not proved to be only cwd. The observed optional fsevents fallback is consistent with CLI createRequire(import.meta.url); mounting its distribution elsewhere changes ancestor search paths. Actual Preparer uses physical role/app, not /repo/app. An authentic layout replay is still needed; no assumption that all outer lookups vanish.",
+  "noNewPathRule": true,
+  "noNewSymlink": true,
+  "noSourceAQaValidityClaimed": true
+}

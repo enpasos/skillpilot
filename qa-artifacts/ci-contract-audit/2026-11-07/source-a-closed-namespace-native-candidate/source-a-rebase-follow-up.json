@@ -1,0 +1,82 @@
+{
+  "format": "source-a-current-byte-rebase-preparation/v1",
+  "status": "prepared-follow-up-not-source-proof-or-git-snapshot",
+  "historical": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07.json",
+    "receiptSha256": "6bc1ec5df70852ac485d966eee102d3f3d773a205bbd2b9e8b3adfca5601843a",
+    "rawManifestSha256": "21cb578e9bb8b2f320c8748b9c7de0acc3f56f4d0d389036995d155bb43c733c",
+    "base": "feca58176fc2c1d86360c7d00d4bb0506c497335",
+    "catalogCount": 593,
+    "documentCount": 8601,
+    "mappingRules": 164
+  },
+  "frozenCurrentCatalog": {
+    "count": 593,
+    "sameHistoricalBytes": 591,
+    "changed": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "historicalSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+        "frozenCurrentSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "historicalSha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+        "frozenCurrentSha256": "29d02016b7e31b5683b1d51196e21c68ab4a310b8a88aa1a09bd5f30d1ee2eef"
+      }
+    ],
+    "currentMath": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "currentPowi": "29d02016b7e31b5683b1d51196e21c68ab4a310b8a88aa1a09bd5f30d1ee2eef"
+  },
+  "mappingRuleTriplesExactlyEqual": true,
+  "projection": {
+    "kind": "existing-kernel field transformation and inverse proof on frozen593catalog bytes",
+    "documents": 593,
+    "changedDocuments": 3,
+    "sourceIdentityModel": "unchanged existing164rules",
+    "fullSourceAIndependentVerifierExecuted": false
+  },
+  "sixContracts": [
+    {
+      "role": "registry",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "role": "registrySchemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "role": "schemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "role": "canonicalJsonProfile",
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "role": "verifier",
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "role": "identityKernelBinding",
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "nextActualWork": [
+    "After implementation review choose an actual current fixed commit externally; this readonly noGit task does not invent one.",
+    "Run existing generator and independent six-pin source verifier on actual complete current snapshot.",
+    "Recensus complete source/code/config/review/card/assets/selectors/outputs, including genuinely new paths.",
+    "Bind genuine OriginalQa and candidate native reader factories separately.",
+    "Run actual unchanged full native producer suite with full trace and sealed outputs."
+  ],
+  "noGitExecuted": true,
+  "noCurrentSourceAPass": true,
+  "noOriginalQaOrCandidateQaPass": true,
+  "noM7Acceptance": true
+}

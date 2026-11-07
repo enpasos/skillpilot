@@ -119,7 +119,8 @@ subject progress are not reset to the orientation gate. See
 
 ## Memorize
 
-**Purpose:** Spaced-repetition style knowledge items (facts, vocabulary, formulas).
+**Purpose:** A learning goal whose assigned cards teach facts, vocabulary or
+formulas through practice, repetition and a concluding recall assessment.
 
 **Goal:** Maximize retention while minimizing time-on-task, while still requiring a hard recall check before the graph treats the memorization goal as complete.
 
@@ -128,7 +129,7 @@ subject progress are not reset to the orientation gate. See
 2. **Stateful per card:** Each card stores its current interval, repetition count, easiness factor, and next review date.
 3. **Quality-driven:** User ratings map to quality scores and directly update the SM-2 state.
 4. **Verified recall gate:** SRS practice is not by itself a mastery proof. A memorization node is complete only after every required card has been answered correctly in a learning-coach/GPT-led hard recall test.
-5. **Learner-triggered testing:** The learner can start this hard recall test at any time from the active memorization goal, not only when the SRS queue is empty.
+5. **Learner-triggered testing:** The learner can start this hard recall test for not-yet-verified cards from the active memorization goal, not only when the SRS queue is empty.
 
 ### State model
 
@@ -159,27 +160,29 @@ Rules applied on each review:
 
 ### Due and mastery semantics
 
+**Binding Product Owner clarification, 6 November 2026.** Cards belong to their
+memorization goal. Learning that goal includes repetitions; completing its
+Verified Recall assessment establishes mastery of that same goal. There is no
+separate exam goal for the cards. This clarifies the existing card workflow;
+it does not introduce another outcome or a new assessment protocol.
+
 - A card is **due** if `nextReview <= now` or if it has no stored state yet.
 - SRS progress and verified recall progress are shown separately.
-- A memorization goal is treated as **mastered** only when:
-  - no required cards are currently due in the SRS lane, and
-  - every required card has `verifiedRecall.status = passed`.
+- A memorization goal is **mastered** when every required card has
+  `verifiedRecall.status = passed`. Successful card verifications remain valid
+  while the remaining cards are learned and assessed; the complete deck does
+  not need to pass again in one attempt.
+- Due dates and ordinary practice do not revoke a successful card verification
+  or reopen a mastered goal. Already passed cards are not offered for another
+  Verified Recall test.
 - Passing a hard recall test also updates the card's SRS lane as a strong successful retrieval.
-- Failing a hard recall test removes verified status for that card, schedules it back into practice, and keeps the memorization node incomplete until the card is passed in a later hard test.
+- A failed attempt on a not-yet-verified card leaves that card unverified,
+  schedules it back into practice and leaves the goal incomplete. The card
+  can be assessed again when the existing recall workflow makes it eligible;
+  successful verifications of other cards remain intact.
 
-This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
-
-**Implementation discrepancy (checked 29 October 2026).** The conditions above
-describe the documented contract. The current
-[backend](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java)
-(`isSrsMasteredByVerifiedRecall`) and
-[frontend](https://github.com/enpasos/skillpilot/blob/main/app/src/hooks/useSrsMastery.ts)
-derive mastery from verified recall of all required cards alone; renewed SRS
-due status does not itself remove mastery. A failed recall retest can remove
-it. These are distinct semantics requiring an explicit reconciliation decision;
-the completion proposal must not assume that the current code implements both
-conditions above. This documentation review does not change learner state or
-the implementation.
+The former no-due mastery condition and optional passed-card retest statements,
+including the 29 October discrepancy note, are superseded by this clarification.
 
 ### Flashcard practice and learning-coach/GPT-led hard recall
 
@@ -192,19 +195,27 @@ When a memorization goal is active, the runtime should expose two learner action
 The interactive chat component receives only a bounded due-card batch in private tool-result metadata. Turning a card or moving backward and forward never writes state. The learner records exactly **not known yet** or **known** for a displayed card; that binary choice is translated to the internal spaced-repetition quality and updates only that card's schedule. Reviewing a batch is normal practice and never counts as the hard mastery check.
 
 Runtime behavior:
-- Prefer cards that are not yet verified.
-- If all cards are already verified, allow a retest over the deck; a failed retest reopens that card.
-- The learning-coach/GPT first retrieves only the card prompt.
-- The learner answers without help, preferably in writing when the check is meant to be strict.
-- Only after the learner has submitted an answer does the learning-coach/GPT retrieve the expected answer.
-- The learning-coach/GPT evaluates the answer and records `passed` or `failed`.
-- Passed cards count as verified immediately and are scheduled as a strong successful retrieval in SRS.
-- Failed cards remain unverified and re-enter SRS practice as due.
+- The backend selects only eligible cards that are not yet verified and owns
+  the exact batch size, card IDs and order. If all required cards are verified,
+  the assessment is complete; it does not issue a retest.
+- The learning-coach/GPT presents every prompt in the returned batch. The
+  learner answers the complete batch without help.
+- Only after that submission does the learning-coach/GPT retrieve the complete
+  expected answer set and evaluate each answer.
+- After feedback and the learner's consent, it records exactly one ordered
+  `passed`/`failed` result per returned card in one atomic batch write.
+- Passed cards count as verified after successful persistence and are scheduled
+  as a strong successful retrieval in SRS. Failed cards remain unverified and
+  re-enter practice; they do not erase earlier successful card verifications.
+- The backend owns state/version checks, idempotency and continuation. Feedback
+  alone is not a saved result, and the next batch waits for consent to continue.
 
 ### Queue order
 
 Due cards are **shuffled per session** before taking up to 20 cards for a drill.
-Hard-test cards should prefer unverified cards. Retests are optional and learner-triggered.
+Verified Recall uses the backend-issued complete batch of eligible unverified
+cards. Repetition in ordinary card practice remains distinct from the concluding
+assessment and does not withdraw mastery.
 
 ## Exam
 

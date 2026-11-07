@@ -1,0 +1,736 @@
+{
+  "reviewKind": "independent-material-subreview-not-scope-approval",
+  "reviewerTask": "/root/info22_cold_scope_review/material_review",
+  "startedBeforeFirstInputReadUtc": "2026-11-07T03:58:24Z",
+  "completedUtc": "2026-11-07T04:02:40.136134+00:00",
+  "modelConfigurationFromAssignment": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "runtimeConfigurationIndependentlyVerified": false,
+    "seed": null,
+    "backendParameters": null
+  },
+  "inventorySha256": "3eec5c301075272b520dcfa90e4f29204ef1990bf9bb8739ba0d1169482e2e99",
+  "allowedInputsOnly": true,
+  "noMemoryOrAuthorHistoryRead": true,
+  "scopeJudgmentDelegatedToParent": true,
+  "conclusion": "Die Materialien enthalten für alle 22 beobachteten Ziele konkrete fachliche Aufgaben; die geprüften Kernrechnungen und Programme sind weitgehend korrekt. Ein pauschaler selbständiger Vollumfangsnachweis mit110/110 ist in der vorliegenden Ausgabe-/Bewertungsform nicht belegt. Konkrete Reparaturen unten. Weder GK-Pflichtumfang noch M6, M7, menschliche Freigabe oder Angebot werden bestätigt.",
+  "findings": [
+    {
+      "id": "MAT-01",
+      "severity": "high",
+      "kind": "independent-performance-not-secured",
+      "anchors": [
+        "tasks.md:3",
+        "tasks.md:16",
+        "materials.md:27-48",
+        "solutions.md:26-34",
+        "rubric.json:R02"
+      ],
+      "goals": [
+        2
+      ],
+      "finding": "A02 verlangt die eigenständige Ableitung von Tabellen und Schlüsseln, während M2 im selben vollständig ausgegebenen Material bereits genau das erwartete Relationenschema einschließlich PK, FK und Optionalitäten enthält. S02 bezeichnet M2 selbst als passende Ableitung. Der Satz „Ab A04 gilt“ bindet die Verwendung, dokumentiert aber weder spätere Ausgabe noch wirksame Trennung; tasks.md eröffnet alle Aufgaben mit M1–M8. Reines Abschreiben plus kurze Begründung kann deshalb den zentralen Ableitungsanteil umgehen.",
+      "repair": "A01/A02 als eigenständigen Abgabeteil vor Ausgabe von M2 durchführen und diese Ausgabegrenze verbindlich dokumentieren oder für A02 einen separaten bisher nicht gelösten Modellfall verwenden. A01 ebenfalls auf Lösungshinweise aus dem gemeinsamen Arbeitsschema prüfen. Es wird hier keine solche Durchführung als bestehend unterstellt."
+    },
+    {
+      "id": "MAT-02",
+      "severity": "high",
+      "kind": "unjustified-extra-demand",
+      "anchors": [
+        "current-goal-definitions.json:/goals/16/description",
+        "tasks.md:135-141",
+        "rubric.json:R17",
+        "solutions.md:8-11"
+      ],
+      "goals": [
+        17
+      ],
+      "finding": "Das vollständige Ziel17 lautet HTML-Ausgabe plus „Pagination oder Filter“. A17 verlangt Preisfilter und funktionierende Pagination; R17 und 110/110 machen beide Wege zur notwendigen Bestehensleistung. Eine richtige HTML-Ausgabe mit funktionierendem Filter, aber ohne Pagination, erfüllt die ausdrückliche Zielalternative und scheitert dennoch. Die strengere Übungsaufgabe kann privat sinnvoll sein; sie ist als notwendiger Anerkennungsnachweis des unveränderten Zieles nicht begründet.",
+      "repair": "Im Anerkennungsvertrag beide Zielalternativen zulassen und die andere als zusätzliche Übung ausweisen, oder den konkret strengeren Angebotsanspruch gesondert legitimieren. Keine stillschweigende Änderung der bestehenden Zieldefinition."
+    },
+    {
+      "id": "MAT-03",
+      "severity": "high",
+      "kind": "unjustified-perfect-score-contract",
+      "anchors": [
+        "rubric.json:maxPoints/passingPoints",
+        "solutions.md:8-11",
+        "materials.md:29-32"
+      ],
+      "goals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "finding": "110/110 verhindert Kompensation, beweist aber keine fachlich passende Mindestleistung pro Ziel. Jeder Punkt enthält teils mehrere Komponenten (z.B. drei Anomalien in R03/1; HAVING, IDs und NULL-Begründung in R05/5). Vollständige Zahlenfolgen, Kontextzusätze und Zielalternative R17 werden zugleich zu zwingenden Anerkennungshürden. Die allgemeine Folgefehlerregel erklärt nicht, wie ein früherer Fehler bei A08/A17 oder A21/A22 bewertet und ein späterer selbständiger Kompetenznachweis festgestellt wird. Keine Quelle oder Begründung kalibriert diese Perfektionsgrenze.",
+      "repair": "Pro Ziel unverzichtbare beobachtbare Kompetenzleistungen von Kontext-/Darstellungsdetails trennen, Alternativen und Folgefehlerbehandlung an konkreten Fällen definieren, wesentliche Fehler und Nachprüfung regeln; erst daraus einen nicht kompensatorischen Vollumfangsvertrag ableiten. Nicht einfach eine willkürliche niedrigere Gesamtpunktzahl setzen."
+    },
+    {
+      "id": "MAT-04",
+      "severity": "medium",
+      "kind": "ambiguous-case-data",
+      "anchors": [
+        "materials.md:238-252",
+        "solutions.md:360-374",
+        "rubric.json:R22"
+      ],
+      "goals": [
+        22
+      ],
+      "finding": "M2 hat fünf Kurse, M7 Ereignisse für 10/20/30, M8 aber keine ausdrückliche Begrenzung des Rankinguniversums auf Kurse mit mindestens einem Ereignis. S22 gibt nur 10/20/30 bzw. 20/10/30 aus. Bei Sortierung aller angebotenen Kurse folgen auch 40 und 50 mit je null Punkten; deren Gleichstand ist ungeregelt. Die Musterlösung ist für das nur implizite Drei-Kurse-Universum korrekt, nicht eindeutig die einzige aus dem Material ableitbare vollständige Kursreihenfolge.",
+      "repair": "Rankinguniversum ausdrücklich nennen; bei allen Kursen Nullzählungen und Gleichstandsregel festlegen. Bis dahin beide sachgerecht erläuterten Lesarten anerkennen. Erlös10 EUR und abgegrenzter direkter Überschuss4 EUR sind korrekt."
+    },
+    {
+      "id": "MAT-05",
+      "severity": "medium",
+      "kind": "incomplete-model-answer",
+      "anchors": [
+        "tasks.md:167-172",
+        "solutions.md:330-344",
+        "rubric.json:R20",
+        "current-goal-definitions.json:/goals/19/description"
+      ],
+      "goals": [
+        20
+      ],
+      "finding": "A20 verlangt Grenzen der getroffenen Wahl; das Ziel ausdrücklich Grenzen relationaler Datenbanken. S20 nennt deren Stärken und allgemeine Systemanforderungen, aber keine ausgeführte fallbezogene Grenze der relationalen Wahl. „Relationale Systeme können ebenfalls groß sein“ ist eine zutreffende Einschränkung pauschaler NoSQL-Werbung, ersetzt die geforderte Grenzerklärung aber nicht. Die Aussagen über flexible Dokumente und Wide-Column-Ablagen bleiben eher Einordnung als vollständiger Vergleich beider Arbeitslasten.",
+      "repair": "Musterlösung um einen konkreten, bedingten relationalen Nachteil im Ereignisfall und um Grenzen der gewählten Alternative ergänzen, z.B. Aufwand bei wechselnd strukturierten Ereignissen oder verteilten Zeit/Kurs-Auswertungen unter benannten Annahmen. SQL-JSON und groß skalierende relationale Systeme nicht pauschal ausschließen; gleichwertig begründete Architekturentscheidungen anerkennen."
+    },
+    {
+      "id": "MAT-06",
+      "severity": "medium",
+      "kind": "incomplete-model-answer",
+      "anchors": [
+        "materials.md:184-193",
+        "tasks.md:70-77",
+        "solutions.md:141-155",
+        "rubric.json:R09"
+      ],
+      "goals": [
+        9
+      ],
+      "finding": "A09 verlangt eine geeignete Rechtsgrundlage auch für die im Fall freiwillige Werbung. S09 antwortet dazu nur mit „getrennte passende Grundlage und informierte Wahl“, nennt die naheliegende Einwilligung aber nicht ausdrücklich. Die Normenkarte nennt Art.6 allgemein, ohne die beiden zur Zuordnung erwarteten Alternativen auszuführen. Die gesetzliche Grundlage darf dadurch nicht bloß durch Wiederholung der Aufgabenformel als erfüllt gelten.",
+      "repair": "Normenkarte und Musterlösung aufeinander abstimmen und die im Fall geprüfte Vertragsgrundlage beziehungsweise freiwillige, informierte Einwilligung ausdrücklich mit passenden Normen/Anforderungen nennen; klarstellen, welche Detailkenntnis vorausgesetzt oder gegeben ist. Dies ist ein interner Vollständigkeitsbefund, keine eigenständige aktuelle Rechtsberatung oder Prüfung aller realen Verarbeitungen."
+    },
+    {
+      "id": "MAT-07",
+      "severity": "low",
+      "kind": "reproduced-reference-error",
+      "anchors": [
+        "reference.py:48-59",
+        "reference.py:128-132",
+        "materials.md:119-123",
+        "rubric.json:R16"
+      ],
+      "goals": [
+        16
+      ],
+      "finding": "Ein maxPreis aus 5000 Ziffern besteht den ASCII-Ziffernregex. int(values[0]) löst in der vorhandenen Python-Laufzeit ValueError aus; der GET-Handler fängt nur BadInput. Damit verletzt die Referenz für diesen ungültigen Eingabefall den gegebenen Vertrag HTTP400. Die vier ausdrücklich abgefragten A16-Fälle funktionieren.",
+      "repair": "Vor der Konvertierung eine zum zulässigen Wertebereich passende Längengrenze festlegen oder Konvertierungsfehler in BadInput umsetzen. Referenz als lokale Fixture behandeln; es wurde keine produktive Sicherheitsabnahme behauptet."
+    },
+    {
+      "id": "MAT-08",
+      "severity": "low",
+      "kind": "ambiguous-business-rule",
+      "anchors": [
+        "materials.md:12-16",
+        "materials.md:43-46",
+        "solutions.md:13-24"
+      ],
+      "goals": [
+        1,
+        2,
+        13
+      ],
+      "finding": "„Pro Person und Kurs gibt es genau einen aktuellen Buchungssatz“ kann wörtlich als Existenzpflicht für jedes Person-Kurs-Paar gelesen werden. Das kollidiert mit ausdrücklich erlaubten Personen/Kursen ohne Buchung und den M2-Daten. Die beabsichtigte Eindeutigkeit ist aus dem Kontext erkennbar, die Formulierung bleibt unnötig widersprüchlich.",
+      "repair": "„Pro Person-Kurs-Paar gibt es höchstens einen aktuellen Buchungssatz; jede vorhandene Buchung …“ schreiben und weiterhin aktive/stornierte Alternativen sowie fehlende Buchung unterscheiden."
+    },
+    {
+      "id": "MAT-09",
+      "severity": "low",
+      "kind": "abbreviated-relational-intermediates",
+      "anchors": [
+        "tasks.md:86-93",
+        "tasks.md:151-165",
+        "solutions.md:173-183",
+        "solutions.md:305-328",
+        "reference.py:25-28"
+      ],
+      "goals": [
+        11,
+        19
+      ],
+      "finding": "A11 fordert das konkrete Ergebnis der Personenselektion, S11 nennt nur IDs1/2 statt der vollständigen Personentupel. Ebenso ist A in A19 eine Selektion über Person, während S19 und die Referenz A auf IDs verkürzen; der Task legt nur für B/C ausdrückliche verkürzte Ausgaben fest. Die IDs identifizieren die richtigen Zeilen, sind aber formal eine weitere Projektion.",
+      "repair": "Vollständige A-Tupel (1,ada,Kassel),(2,ben,Kassel) angeben oder eine ausdrücklich zulässige Kurzschreibweise definieren. Die ausgeführten Produkt-/Join-/D-Ergebnisse sind ansonsten korrekt."
+    }
+  ],
+  "goalMaterialReviews": [
+    {
+      "number": 1,
+      "goalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "title": "ER-Modell anwenden",
+      "completeDescription": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "task": "A01",
+      "solution": "S01",
+      "rubric": "R01",
+      "materialClassification": "partial",
+      "reason": "M1 verlangt echte ER-Modellierung mit Entitäten, Beziehungstypen, min/max und Optionalitäten; S01 ist fachlich passend. Das offenliegende M2 ist eine starke Lösungshilfe; MAT-01/MAT-08 vor eigenständigem Nachweis klären.",
+      "findings": [
+        "MAT-03",
+        "MAT-08"
+      ]
+    },
+    {
+      "number": 2,
+      "goalId": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "title": "Tabellen ableiten",
+      "completeDescription": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "task": "A02",
+      "solution": "S02",
+      "rubric": "R02",
+      "materialClassification": "partial",
+      "reason": "Tabellen, PK/FK, M:N-Auflösung und optionale Kontaktzeile werden sachlich richtig verlangt und erklärt. M2 liefert genau diese Lösung vorab; eigenständige Ableitung ist ohne dokumentierte Ausgabestufe nicht gesichert (MAT-01).",
+      "findings": [
+        "MAT-01",
+        "MAT-03",
+        "MAT-08"
+      ]
+    },
+    {
+      "number": 3,
+      "goalId": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+      "title": "Normalisierung durchführen",
+      "completeDescription": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "task": "A03",
+      "solution": "S03",
+      "rubric": "R03",
+      "materialClassification": "sufficient",
+      "reason": "M3 hat atomare Werte, zusammengesetzten Schlüssel, partielle und transitive FDs. Drei Anomalien, 2NF-Zerlegung und Team-Abspaltung zur3NF sind korrekt; schlüsselgestützte verlustfreie Rekonstruktion ist beobachtbar. Löschbeispiel auf die drei dargestellten Exporttupel beziehen, nicht auf die andere M2-Tabelle.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 4,
+      "goalId": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "title": "Grundlegende Selects schreiben",
+      "completeDescription": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "task": "A04",
+      "solution": "S04",
+      "rubric": "R04",
+      "materialClassification": "sufficient",
+      "reason": "A04 prüft Projektion, zwei Joins, drei Bedingungen und zwei Sortierkriterien am vollständigen Datensatz; alle vier ausgeführten Ergebniszeilen stimmen.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 5,
+      "goalId": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "title": "Gruppierung und Aggregatfunktionen",
+      "completeDescription": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "task": "A05",
+      "solution": "S05",
+      "rubric": "R05",
+      "materialClassification": "sufficient",
+      "reason": "A05 benötigt COUNT, SUM, Gruppierung/HAVING und LEFT JOIN einschließlich Kurs50; ausgeführte fünf Zeilen und IDs10/20/30 stimmen. COUNT(*)-Fall ist sinnvoll und korrekt erklärt.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 6,
+      "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+      "title": "Erweiterte SQL-Bereiche nutzen",
+      "completeDescription": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "task": "A06",
+      "solution": "S06",
+      "rubric": "R06",
+      "materialClassification": "sufficient",
+      "reason": "A06 verlangt Beschreibung einer Unterabfrage, UPDATE, ALTER/Default und GRANT. Mittelwert23, IDs20/30 und neuer Preis35 stimmen; Beschreiben und Anwenden in A15 sind getrennt. DCL wird ausdrücklich nicht als SQLite-Funktion ausgegeben.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 7,
+      "goalId": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+      "title": "Formulare mit Backend verknüpfen",
+      "completeDescription": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+      "task": "A07",
+      "solution": "S07",
+      "rubric": "R07",
+      "materialClassification": "sufficient",
+      "reason": "HTML-Felder, echte URL, GET/POST, Kursparameter und servergegebenes Token liefern beobachtbare Formularleistung; Personen-ID kommt korrekt aus Session. Session-/CSRF-Kontext wird gegeben und soll nicht als eigener Authentifizierungsbau bewertet werden.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 8,
+      "goalId": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+      "title": "SQL aus Programmen ausführen",
+      "completeDescription": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+      "task": "A08",
+      "solution": "S08",
+      "rubric": "R08",
+      "materialClassification": "sufficient",
+      "reason": "A08 verlangt echten Verbindungsaufbau, getrennte SQL-Wertparameter, execute/fetchall/Iteration und Ergebnisse. Beispielcode schließt die Verbindung mittels closing;30/page1 liefert10/20. Implementationsform ist konkret, nicht nur SQL-Text.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 9,
+      "goalId": "71fe327a-9677-5348-a405-fba0dbd302d7",
+      "title": "Recht auf informationelle Selbstbestimmung",
+      "completeDescription": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+      "task": "A09",
+      "solution": "S09",
+      "rubric": "R09",
+      "materialClassification": "partial",
+      "reason": "Risiken, Zweckunterschiede, Prinzipien und Information werden konkret abgefragt; M6 gestattet die Anwendung. Die verlangte Rechtsgrundlage für Werbung bleibt in S09 zu unbestimmt (MAT-06). Keine Aussage, dass die dargestellte Falllösung jede reale rechtliche Frage abdecke.",
+      "findings": [
+        "MAT-03",
+        "MAT-06"
+      ]
+    },
+    {
+      "number": 10,
+      "goalId": "58173dab-0cb2-52ae-a052-63d3a0f33644",
+      "title": "Datensicherheit umsetzen",
+      "completeDescription": "Die lernende Person kann Sicherheitsziele und organisatorische Maßnahmen begründen.",
+      "task": "A10",
+      "solution": "S10",
+      "rubric": "R10",
+      "materialClassification": "sufficient",
+      "reason": "A10 fordert drei konkret mangelhafte Sicherheitsorganisationen, Ziele, Maßnahmen, Verantwortliche, prüfbare Kontrollen und Restrisiko. S10 deckt CIA und organisatorische Maßnahmen fachlich angemessen ab; bloße Schlagworte genügen der Rubrik nicht.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 11,
+      "goalId": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "title": "Grundoperatoren anwenden",
+      "completeDescription": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "task": "A11",
+      "solution": "S11",
+      "rubric": "R11",
+      "materialClassification": "partial",
+      "reason": "Alle vier ausdrücklich genannten Algebraoperatoren werden tatsächlich angewendet. Sechs Produktpaare und vier Joinpaare stimmen. Vollständiges Selektionsresultat in S11 ergänzen (MAT-09); kein grundlegender Operatorfehler.",
+      "findings": [
+        "MAT-03",
+        "MAT-09"
+      ]
+    },
+    {
+      "number": 12,
+      "goalId": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "title": "Abfrageterme formulieren",
+      "completeDescription": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "task": "A12",
+      "solution": "S12",
+      "rubric": "R12",
+      "materialClassification": "sufficient",
+      "reason": "Eigener Algebra-Term und SQL-Überführung mit drei Bedingungen, zwei Joins und mengenwertiger Projektion werden verlangt. DISTINCT und Ergebnis{ada,ben} sind korrekt. Kein Fehler wird aus der bloßen Ähnlichkeit zu A11 abgeleitet.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 13,
+      "goalId": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+      "title": "Kardinalitäten und Optionalitäten sichern",
+      "completeDescription": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "task": "A13",
+      "solution": "S13",
+      "rubric": "R13",
+      "materialClassification": "sufficient",
+      "reason": "Termin-/Teilnahme-/Leitungsrollen mit min/max und Buchungskonsistenz verlangen komplexere Modellprüfung. Gegenbeispiel(1,T20) ist für M2 ungültig, (2,T20) zulässig. Die zusätzliche dreistellige Konsistenzbedingung ist korrekt von binären Kardinalitäten unterschieden.",
+      "findings": [
+        "MAT-03",
+        "MAT-08"
+      ]
+    },
+    {
+      "number": 14,
+      "goalId": "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+      "title": "Schemas auf Konsistenz prüfen",
+      "completeDescription": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "task": "A14",
+      "solution": "S14",
+      "rubric": "R14",
+      "materialClassification": "sufficient",
+      "reason": "A14 lässt vorhandene falsche Buchungsduplikate und Teamnamen eigenständig bewerten; S14 nennt zutreffend UNIQUE/PK, FKs, Status-CHECK, Teamzerlegung und notwendige Datenklärung. Eine Ersatz-ID wird korrekt nicht mit fachlicher Eindeutigkeit verwechselt.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 15,
+      "goalId": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+      "title": "SQL-Berechtigungen verwalten",
+      "completeDescription": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "task": "A15",
+      "solution": "S15",
+      "rubric": "R15",
+      "materialClassification": "sufficient",
+      "reason": "DDL,DML und DCL sind als echte zu formulierende Befehle enthalten. Hinweis-PK/FK, Insert/Update/Delete und öffentliche Sicht sind korrekt; lokale DDL/DML wurden ausgeführt. DCL wurde am gegebenen Rollenmodell fachlich gelesen, nicht auf einem Rollen-DBMS ausgeführt.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 16,
+      "goalId": "70523f2e-b331-51c0-95d0-919c8a189cad",
+      "title": "Parameterübergabe absichern",
+      "completeDescription": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+      "task": "A16",
+      "solution": "S16",
+      "rubric": "R16",
+      "materialClassification": "partial",
+      "reason": "Die ausdrücklich verlangten Injektions-, Bereichs-, Mehrfachparameter- und CSRF-Fälle werden korrekt behandelt; Sessionbindung und POST-Grenzen stimmen. Der allgemeine HTTP400-Vertrag der Referenz ist bei überlanger Ziffernfolge verletzt (MAT-07).",
+      "findings": [
+        "MAT-03",
+        "MAT-07"
+      ]
+    },
+    {
+      "number": 17,
+      "goalId": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+      "title": "Ergebnismengen formatieren",
+      "completeDescription": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+      "task": "A17",
+      "solution": "S17",
+      "rubric": "R17",
+      "materialClassification": "unjustified_extra_demand",
+      "reason": "HTML-Kodierung, tabellarische Iteration, Filter und zwei Seiten sind tatsächlich implementiert und korrekt. Die Aufgabe verlangt jedoch beide Alternativen des unveränderten Oder-Ziels, und der Vollpunktvertrag macht die Mehrforderung zwingend (MAT-02).",
+      "findings": [
+        "MAT-02",
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 18,
+      "goalId": "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+      "title": "Eigenen Umgang mit Daten reflektieren",
+      "completeDescription": "Die lernende Person kann Datenschutzrisiken im Alltag beurteilen und Einstellungen anpassen.",
+      "task": "A18",
+      "solution": "S18",
+      "rubric": "R18",
+      "materialClassification": "sufficient",
+      "reason": "Das fiktive Einstellungsobjekt wird mit vier konkreten Nachherwerten geändert und mindestens drei Risiken samt Komfortfolgen werden begründet. Deklarative neue Konfiguration/protokollierter Zustand genügt diesem simulierten Fall; ein echtes Konto ist weder nötig noch belegt. Referenz ändert nur eine Kopie.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 19,
+      "goalId": "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+      "title": "Relationale Terme in SQL übersetzen",
+      "completeDescription": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "task": "A19",
+      "solution": "S19",
+      "rubric": "R19",
+      "materialClassification": "partial",
+      "reason": "Vier Relationen, geschachtelte Verknüpfung, drei Selektionen und Zwischenergebnisse werden überprüfbar verbunden; SQL-D-Ausgabe stimmt. A-Zwischenresultat ist formal verkürzt (MAT-09). Komplexität wird nur für diesen konkreten Term bestätigt, keine Behauptung aller möglichen Algebraoperatoren.",
+      "findings": [
+        "MAT-03",
+        "MAT-09"
+      ]
+    },
+    {
+      "number": 20,
+      "goalId": "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+      "title": "Nichtrelationale Datenbanken einordnen",
+      "completeDescription": "Die lernende Person kann Grenzen relationaler Datenbanken erklaeren und alternative Organisationsformen grosser Datenmengen wie NoSQL- oder Wide-Column-Datenbanken einordnen.",
+      "task": "A20",
+      "solution": "S20",
+      "rubric": "R20",
+      "materialClassification": "partial",
+      "reason": "A20 fordert passende Arbeitslastentscheidungen und Grenzen für relationale, Dokument- und Wide-Column-Modelle; genügend Falldaten für begründete qualitative Abwägung sind vorhanden. Die vollständige erwartete Erklärung einer relationalen Grenze fehlt in S20 (MAT-05).",
+      "findings": [
+        "MAT-03",
+        "MAT-05"
+      ]
+    },
+    {
+      "number": 21,
+      "goalId": "e94beeaa-784d-5490-932b-38b81bf669fc",
+      "title": "Map-Reduce-Prinzip erlaeutern",
+      "completeDescription": "Die lernende Person kann das Map-Reduce-Paradigma als parallele Verarbeitung grosser Datenmengen beschreiben und an einfachen Verarbeitungsschritten erlaeutern.",
+      "task": "A21",
+      "solution": "S21",
+      "rubric": "R21",
+      "materialClassification": "sufficient",
+      "reason": "Vollständige sechs Mapausgaben, Shufflegruppen und Reducewerte3/2/1 sind korrekt und ausführbar. Unabhängige Maparbeit und Invarianz der Summe bei anderer Partitionierung prüfen das einfache Parallelverarbeitungsprinzip; Statecharts oder Clusterbetrieb werden nicht unzulässig hineingelesen.",
+      "findings": [
+        "MAT-03"
+      ]
+    },
+    {
+      "number": 22,
+      "goalId": "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+      "title": "Daten als Wirtschaftsfaktor bewerten",
+      "completeDescription": "Die lernende Person kann die oekonomische Verwertbarkeit von Daten, Datenfilterung und Auswirkungen auf Wahrnehmung oder Meinungsbildung bewerten.",
+      "task": "A22",
+      "solution": "S22",
+      "rubric": "R22",
+      "materialClassification": "partial",
+      "reason": "Ökonomische Rechnung10/4, Sponsoringverschiebung und konkrete Filter-/Datenschutzbewertung prüfen die genannten Aspekte; begrenzte Evidenz wird korrekt markiert. Rankinguniversum und Nullzählungen bleiben mehrdeutig (MAT-04), daher kein uneingeschränkt eindeutiges R22-Vollpunkturteil.",
+      "findings": [
+        "MAT-03",
+        "MAT-04"
+      ]
+    }
+  ],
+  "executionEvidenceFile": "material-execution-evidence.json",
+  "verificationLimits": [
+    "Kein realer Lernendenversuch, keine empirische Schwellenkalibrierung.",
+    "DCL nur fachlich im vorgegebenen Rollenmodell geprüft, nicht in SQLite ausführbar und nicht an eigenem Rollenserver ausgeführt.",
+    "Keine aktuelle vollständige Datenschutzrechtsprüfung; MAT-06 betrifft fehlende Explizitheit des vorgegebenen Fallvertrags.",
+    "Kein kompletter produktiver HTTP-/Authentifizierungs-/Lasttest; Fixture-Funktionen auf privater SQLite-Kopie unter/dev/shm ausgeführt.",
+    "Gesamtumfang22 ist beobachteter Kandidatenpool, keine Freigabe- oder Sollzahl."
+  ],
+  "inputHashesAtEnd": [
+    {
+      "path": "assessment-criteria-binding.json",
+      "expectedSha256": "ce46ea2909ea72d91a927280ed875def1486cfc33f69f8a88d04b2bf3676c061",
+      "actualSha256": "ce46ea2909ea72d91a927280ed875def1486cfc33f69f8a88d04b2bf3676c061",
+      "expectedBytes": 495,
+      "actualBytes": 495,
+      "match": true
+    },
+    {
+      "path": "criteria.md",
+      "expectedSha256": "aec3348fabffa1fa42f47c29172e9a10fa330a13e423573379952dad65255168",
+      "actualSha256": "aec3348fabffa1fa42f47c29172e9a10fa330a13e423573379952dad65255168",
+      "expectedBytes": 3425,
+      "actualBytes": 3425,
+      "match": true
+    },
+    {
+      "path": "current-goal-definitions.json",
+      "expectedSha256": "672dba695c493be2b69bc7a54400b3ff84ced2be573b2431a2ff1374ac7f55b7",
+      "actualSha256": "672dba695c493be2b69bc7a54400b3ff84ced2be573b2431a2ff1374ac7f55b7",
+      "expectedBytes": 39419,
+      "actualBytes": 39419,
+      "match": true
+    },
+    {
+      "path": "data.sql",
+      "expectedSha256": "42da87abe1a76585783998253e3247df29bad2569adda54b96aaea31a304e90d",
+      "actualSha256": "42da87abe1a76585783998253e3247df29bad2569adda54b96aaea31a304e90d",
+      "expectedBytes": 1388,
+      "actualBytes": 1388,
+      "match": true
+    },
+    {
+      "path": "materials.md",
+      "expectedSha256": "ae0b6048f5d9162840d422eac2ae605207a4551a464f87be9dddfc3ba007df09",
+      "actualSha256": "ae0b6048f5d9162840d422eac2ae605207a4551a464f87be9dddfc3ba007df09",
+      "expectedBytes": 11946,
+      "actualBytes": 11946,
+      "match": true
+    },
+    {
+      "path": "native-assessment-contract.txt",
+      "expectedSha256": "5ab9afbe3d925e0df813b13cb45c1f5c600b457d9e034c175a9e4523704e2ba9",
+      "actualSha256": "5ab9afbe3d925e0df813b13cb45c1f5c600b457d9e034c175a9e4523704e2ba9",
+      "expectedBytes": 3830,
+      "actualBytes": 3830,
+      "match": true
+    },
+    {
+      "path": "native-scope-binding.json",
+      "expectedSha256": "409cb3e64f0c315847bdfba358b2a93e6fda0756d69a6530bddbebcc17a6b55e",
+      "actualSha256": "409cb3e64f0c315847bdfba358b2a93e6fda0756d69a6530bddbebcc17a6b55e",
+      "expectedBytes": 12921,
+      "actualBytes": 12921,
+      "match": true
+    },
+    {
+      "path": "new-goal-definition.json",
+      "expectedSha256": "db8f2125cc464ad8377024bf90f6e7b7fbf421ac899320c524f9ef12b2f8b876",
+      "actualSha256": "db8f2125cc464ad8377024bf90f6e7b7fbf421ac899320c524f9ef12b2f8b876",
+      "expectedBytes": 48478,
+      "actualBytes": 48478,
+      "match": true
+    },
+    {
+      "path": "primary-source-manifest.json",
+      "expectedSha256": "516c51e50f988f90dbe24a838f6b2252af14b00692128c010f0f28381059ee10",
+      "actualSha256": "516c51e50f988f90dbe24a838f6b2252af14b00692128c010f0f28381059ee10",
+      "expectedBytes": 7047,
+      "actualBytes": 7047,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics10.html.gz",
+      "expectedSha256": "5ca562252d9e1023a448b0a8e90bbae793363f999369b713fe068069ffd4f261",
+      "actualSha256": "5ca562252d9e1023a448b0a8e90bbae793363f999369b713fe068069ffd4f261",
+      "expectedBytes": 8417,
+      "actualBytes": 8417,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics10.txt",
+      "expectedSha256": "2eb5d17c72b87863cc72bdedaa392fa6d54520c5aee6292ad99927db3d663e9f",
+      "actualSha256": "2eb5d17c72b87863cc72bdedaa392fa6d54520c5aee6292ad99927db3d663e9f",
+      "expectedBytes": 6762,
+      "actualBytes": 6762,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics11-late.html.gz",
+      "expectedSha256": "ed813b3eb2be805515748e2beb2d908c2e35ff656121e200449b355c8257d5c3",
+      "actualSha256": "ed813b3eb2be805515748e2beb2d908c2e35ff656121e200449b355c8257d5c3",
+      "expectedBytes": 9266,
+      "actualBytes": 9266,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics11-late.txt",
+      "expectedSha256": "e641e87bbabdf47cbebdea0703873f7c89254420fd1f6463c1edebe820e39f91",
+      "actualSha256": "e641e87bbabdf47cbebdea0703873f7c89254420fd1f6463c1edebe820e39f91",
+      "expectedBytes": 8353,
+      "actualBytes": 8353,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics11-ntg.html.gz",
+      "expectedSha256": "ae84e5e6324b6af6c24eaa9bbe9cfa69a670565775af219fc3b0634a5e48d348",
+      "actualSha256": "ae84e5e6324b6af6c24eaa9bbe9cfa69a670565775af219fc3b0634a5e48d348",
+      "expectedBytes": 9402,
+      "actualBytes": 9402,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics11-ntg.txt",
+      "expectedSha256": "af38e5198fe9363535c41d7947f5172c33a90c4219827065f60124f556da9e70",
+      "actualSha256": "af38e5198fe9363535c41d7947f5172c33a90c4219827065f60124f556da9e70",
+      "expectedBytes": 8931,
+      "actualBytes": 8931,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics12-basic.html.gz",
+      "expectedSha256": "e94b2c167719a5cd4e18ce403667437c1c9aaa00744faca3f11afbf2293900d5",
+      "actualSha256": "e94b2c167719a5cd4e18ce403667437c1c9aaa00744faca3f11afbf2293900d5",
+      "expectedBytes": 10770,
+      "actualBytes": 10770,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics12-basic.txt",
+      "expectedSha256": "3af3000aaecf73e17bd83bae620a4554646f4b3a666c7af4daa71c982d3b5964",
+      "actualSha256": "3af3000aaecf73e17bd83bae620a4554646f4b3a666c7af4daa71c982d3b5964",
+      "expectedBytes": 13297,
+      "actualBytes": 13297,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics13-basic.html.gz",
+      "expectedSha256": "6c7a2ca4a233251689552f0fadfd8076036d2307c338276ebac18cef7e10cecc",
+      "actualSha256": "6c7a2ca4a233251689552f0fadfd8076036d2307c338276ebac18cef7e10cecc",
+      "expectedBytes": 9076,
+      "actualBytes": 9076,
+      "match": true
+    },
+    {
+      "path": "primary-sources/by-informatics13-basic.txt",
+      "expectedSha256": "d286c963db998a524a6b8c4f59e8bb277748b032d1c5030cd720d9589cdfca2d",
+      "actualSha256": "d286c963db998a524a6b8c4f59e8bb277748b032d1c5030cd720d9589cdfca2d",
+      "expectedBytes": 8109,
+      "actualBytes": 8109,
+      "match": true
+    },
+    {
+      "path": "primary-sources/he-kc2024-page36.txt",
+      "expectedSha256": "9125f71f8be161144554b0bf7cb373b7d06afb8ea2205fb5953781961cde354c",
+      "actualSha256": "9125f71f8be161144554b0bf7cb373b7d06afb8ea2205fb5953781961cde354c",
+      "expectedBytes": 3838,
+      "actualBytes": 3838,
+      "match": true
+    },
+    {
+      "path": "primary-sources/he-kc2024-page37.txt",
+      "expectedSha256": "ff4ec79c6b24a379cd749d9dd8bb361d3d4db8acb225676c780727b009422d01",
+      "actualSha256": "ff4ec79c6b24a379cd749d9dd8bb361d3d4db8acb225676c780727b009422d01",
+      "expectedBytes": 2187,
+      "actualBytes": 2187,
+      "match": true
+    },
+    {
+      "path": "primary-sources/he-kc2024-page38.txt",
+      "expectedSha256": "f6cb5fc17019bb200370cc271cba595afbbda7aef7a404015109a7e853ef964a",
+      "actualSha256": "f6cb5fc17019bb200370cc271cba595afbbda7aef7a404015109a7e853ef964a",
+      "expectedBytes": 1572,
+      "actualBytes": 1572,
+      "match": true
+    },
+    {
+      "path": "reference.py",
+      "expectedSha256": "c2aa8ab48b6b1894a4c9d073e0b41e9ee8cf37dc0fe33ab6af4cb641bbc028e9",
+      "actualSha256": "c2aa8ab48b6b1894a4c9d073e0b41e9ee8cf37dc0fe33ab6af4cb641bbc028e9",
+      "expectedBytes": 8196,
+      "actualBytes": 8196,
+      "match": true
+    },
+    {
+      "path": "review-sheet.json",
+      "expectedSha256": "ba161b9b235630c1107791bd24d236307649ed299f21a4b864b10e1298e51ac8",
+      "actualSha256": "ba161b9b235630c1107791bd24d236307649ed299f21a4b864b10e1298e51ac8",
+      "expectedBytes": 79755,
+      "actualBytes": 79755,
+      "match": true
+    },
+    {
+      "path": "rubric.json",
+      "expectedSha256": "131f5b15228ca4bff2e3c2cf7f56c35fab80b89fc35f8e1539239a7370b8c424",
+      "actualSha256": "131f5b15228ca4bff2e3c2cf7f56c35fab80b89fc35f8e1539239a7370b8c424",
+      "expectedBytes": 5676,
+      "actualBytes": 5676,
+      "match": true
+    },
+    {
+      "path": "solutions.md",
+      "expectedSha256": "2d6fbf76416b532cd59ee0a42896505aca9baef7e484c194c72d9f5c407a19e4",
+      "actualSha256": "2d6fbf76416b532cd59ee0a42896505aca9baef7e484c194c72d9f5c407a19e4",
+      "expectedBytes": 17116,
+      "actualBytes": 17116,
+      "match": true
+    },
+    {
+      "path": "tasks.md",
+      "expectedSha256": "4fa3e80a5774c5189b278b7696c890511d9fad828cd72db39857ab452bba5e46",
+      "actualSha256": "4fa3e80a5774c5189b278b7696c890511d9fad828cd72db39857ab452bba5e46",
+      "expectedBytes": 9882,
+      "actualBytes": 9882,
+      "match": true
+    }
+  ],
+  "all27InputHashesUnchanged": true,
+  "mutationScope": "Nur neue Reviewartefakte im erlaubten Outputordner; temporäre Datenbank unter/dev/shm wieder entfernt. Keine Quell-/QA-/Scope-/Angebotsänderung; kein Git-Schreibvorgang."
+}

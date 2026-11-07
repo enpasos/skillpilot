@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-matrix-current-page-20261107-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-input-2026-11-07/batch.config.json",
+  "configDigest": "sha256:fafe5605829915589dc9aef058a34cb056e80776452ba09656a5b70469375279",
+  "goalIds": [
+    "ce198bc9-b014-52ba-814f-25cc3e020668"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:152e41ade393636152cf7b2bd450b4adba9ce8726e185126d209d861d0b3089e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:60d762e6278057a782eb48ee23534bd8c5bca45fb44e032da0eb5336e17248b8",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e1f39d3f6f1149d4ac4876ee36e2a4c576394b7b1fd5522003ae9536f4642656",
+    "reviewInputFingerprint": "sha256:4756a7a7527eef9ba91b20a4c591dbc1a33c5693716a50a4444cf8f6ff7e63c5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-matrix-current-page-20261107-v1-a",
+        "campaignDigest": "sha256:622230deb572c29254eca663973b49b0559fee02fc31554cc5bb05bba13be21b",
+        "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-a",
+        "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-a",
+        "batchId": "mathematik-matrix-current-page-20261107-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:a5fb07262a7ccb8e3caf7823cd1eff6c50cbbb0e71386d848d90aa3000b47739"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-matrix-current-page-20261107-v1-b",
+        "campaignDigest": "sha256:ea5aa76307691f405c70132094051c7a1c50371877a4542827f58f688078bede",
+        "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-b",
+        "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-b",
+        "batchId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:316b7c54c8c952eadc16dac93e4d0514616dfb9eef9d6d53a5019fe6ddca5610"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

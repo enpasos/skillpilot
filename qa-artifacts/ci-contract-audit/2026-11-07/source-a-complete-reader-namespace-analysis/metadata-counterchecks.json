@@ -1,0 +1,75 @@
+{
+  "actualEvent": [
+    42,
+    42,
+    613191,
+    "statx",
+    [
+      "AT_FDCWD</dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg>",
+      "\"/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/node_modules\"",
+      "AT_STATX_SYNC_AS_STAT",
+      "STATX_ALL",
+      "0x7ffc74d043e0"
+    ],
+    "-1 ENOENT (No such file or directory)"
+  ],
+  "actualTracePath": "current-cleared-environment.strace.gz",
+  "actualTraceRawSha256": "1e58c8e69e9ba4b253de1070d59ef2af2498f7ba332bd46ad3dc682cd67645f5",
+  "parsedPositive": [
+    "AT_STATX_SYNC_AS_STAT",
+    true,
+    "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/node_modules"
+  ],
+  "negativeControls": [
+    {
+      "control": "wrong-errno",
+      "rejected": true,
+      "reason": "Dependency absence needs actual ENOENT",
+      "syntheticMutationOfActualEvent": true
+    },
+    {
+      "control": "write-access",
+      "rejected": true,
+      "reason": "Unsupported access metadata flags",
+      "syntheticMutationOfActualEvent": true
+    },
+    {
+      "control": "write-open",
+      "rejected": true,
+      "reason": "Negative dependency open is not supported readonly metadata",
+      "syntheticMutationOfActualEvent": true
+    },
+    {
+      "control": "wrong-locator",
+      "rejected": true,
+      "reason": "Negative lookup disagrees with PID/cwd/dirfd resolution",
+      "syntheticMutationOfActualEvent": true
+    },
+    {
+      "control": "unsupported-operation",
+      "rejected": true,
+      "reason": "Unsupported negative dependency metadata operation",
+      "syntheticMutationOfActualEvent": true
+    },
+    {
+      "control": "unknown-stat-flags",
+      "rejected": true,
+      "reason": "Unsupported statx metadata flags",
+      "syntheticMutationOfActualEvent": true
+    }
+  ],
+  "fullAbsenceAuthorityGranted": false,
+  "note": "Only existing low-level metadata-locator validation. These mutations are not native executions or namespace acceptance.",
+  "bwrapHelp": {
+    "exitCode": 0,
+    "sha256": "ea34153e8c450472668997677f571603e955212b806e2b2bc724848ecc3321af",
+    "availableControllerPrimitives": [
+      "--ro-bind-fd",
+      "--block-fd",
+      "--info-fd",
+      "--json-status-fd",
+      "--sync-fd",
+      "--args"
+    ]
+  }
+}

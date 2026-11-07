@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
+import * as original from '/dev/shm/informatics-q2-source-scope-v3-20261107/ci/app/scripts/lib/retainedAssessmentCoverage.ts';
+import * as patched from '/dev/shm/informatics-retained-p2-independent-20261107/app/scripts/lib/retainedAssessmentCoverage.ts';
+import {normalizeCompositionView,compileCompositionView} from '/dev/shm/informatics-retained-p2-independent-20261107/app/src/utils/authoring/compositionViewAuthoring.ts';
+const R='/home/enpasos/projects/skillpilot',root='/dev/shm/informatics-retained-p2-independent-20261107',O=R+'/qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-independent-review/coverage-code-p2-independent-review';
+const sha=(b:any)=>createHash('sha256').update(b).digest('hex');
+const code=readFileSync(root+'/app/scripts/lib/retainedAssessmentCoverage.ts');assert.equal(sha(code),'b53af12bf36abf5da5fcf46e6147e267fa50c4c5c786fa9db687c2841d4aa391');
+const raw=gunzipSync(readFileSync(root+'/contracts/curriculum-assessment-coverage/v1/informatics/historical-informatics-source.json.gz')),source=JSON.parse(raw.toString()),owner=patched.RETAINED_INFO_OWNER,HE=patched.INFO_HELD;
+const normal=source.goals.find((g:any)=>!g.examData&&!g.contains?.length).id;
+const base=():any=>({viewId:'independent-source-view',landscapeId:owner,scope:{stage:'CrossStage'},rootNodes:[{kind:'structure',id:'route',label:'Independent route',children:[{kind:'goalEntry',goalId:normal}]}]});
+const cases:any[]=[];
+function run(name:string,view:any,expected:boolean,invalid=false){
+ const bytes=Buffer.from(typeof view==='string'?view:JSON.stringify(view));
+ const test=(mod:typeof patched)=>{const s:any=mod.captureCurriculumSource('independent-854.json',raw),ids=s.goals.filter((g:any)=>g.examData).map((g:any)=>g.id).sort();const c=mod.createRetainedCoverageContext(root,s,ids,[],['independent.view.json'],new Map([['independent.view.json',bytes]]))!;return {held:c.manifest.discoveryIssues.includes('held-introduction: active view'),status:c.manifest.status,issues:c.manifest.discoveryIssues};};
+ const before=test(original),after=test(patched);assert.equal(after.held,expected,name);if(invalid)assert(after.issues.some(i=>i.startsWith('current-frame-invalid:')));else assert.equal(after.status,expected?'fail':'pass',name);
+ const errors=typeof view==='string'&&invalid?[]:compileCompositionView(normalizeCompositionView(JSON.parse(bytes.toString())),source).findings.filter((f:any)=>f.severity==='error');
+ cases.push({name,expectedHeld:expected,original:before,successor:after,nativeCompileErrors:errors});
+}
+let v=base();v.rootNodes[0].label='Historical '+HE;run('CCR01 original structure-label reproducer',v,false);
+v=base();v.audit={rootNodes:[{kind:'canonicalSubtree',goalId:HE}]};run('goal-shaped historical audit metadata',v,false);
+v=base();v.rootNodes[0].children[0].displayLabel=HE;run('display label literal',v,false);
+v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:HE.toUpperCase()}];run('uppercase bare own target',v,true);
+v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:HE.toUpperCase(),projectionRole:'prerequisiteOnly'}];run('uppercase bare own prerequisite',v,true);
+v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:HE}];run('JSON escaped literal owned reference',JSON.stringify(v).replace(HE,'\\u0066'+HE.slice(1)),true);
+v=base();v.rootNodes[0].label=HE;run('JSON escaped historical label',JSON.stringify(v).replace(HE,'\\u0066'+HE.slice(1)),false);
+v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:owner+':'+HE,projectionRole:'prerequisiteOnly'},{kind:'goalEntry',goalId:owner+':'+HE,projectionRole:'target'}];run('role overlap still a real reference',v,true);
+v=base();v.rootNodes[0].children=[{kind:'goalEntry',goalId:'11111111-1111-4111-8111-111111111111:'+HE}];run('foreign UUID is not Info introduction',v,false);
+run('malformed JSON fail closed','{',false,true);
+v=base();v.rootNodes[0].label=HE;v.rootNodes[0].children.push({kind:'structure',id:'inner',label:'Inner',children:[{kind:'canonicalSubtree',goalId:HE,projectionRole:'prerequisiteOnly'}]});run('historical mention cannot hide real nested reference',v,true);
+const rawV3=readFileSync('/dev/shm/informatics-q2-source-scope-v3-20261107/candidate/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json');assert.equal(sha(rawV3),'c824e0b360470ef67ae4deb560146c7e677ad9601446b26cd5a46097c426e53b');
+const v3:any=patched.captureCurriculumSource('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json',rawV3),ids=v3.goals.filter((g:any)=>g.examData).map((g:any)=>g.id).sort();
+const c=patched.createRetainedCoverageContext(root,v3,ids,[],[])!;assert.equal(c.manifest.status,'fail');assert.equal(c.manifest.failingGoalIds.length,4);assert.deepEqual(c.manifest.discoveryIssues,[]);
+assert(code.toString().includes('const CONCRETE_BINDINGS: readonly ExactMeaningEvidence[] = []'));
+writeFileSync(O+'/independent-p2-probe.json',JSON.stringify({status:'independent focused P2 review evidence; no subject QA pass',helperSha256:sha(code),cases,metadataCasesWithZeroCompileErrors:cases.filter(c=>!c.expectedHeld&&!c.name.startsWith('malformed')&&!c.name.startsWith('foreign')).every(c=>c.nativeCompileErrors.length===0),actualV3FailingGoalIds:c.manifest.failingGoalIds,productiveBindingsStillEmpty:true,limitations:['A foreign/malformed reference is not an Info held introduction; native view/schema discovery remains independently authoritative for its own errors.','Unchanged history manifest pass is only retained identity/coverage preservation. Existing material readiness remains separate and red.','No current runtime or all-curriculum acceptance.']},null,2)+'\n');
+console.log(JSON.stringify({ownCases:cases.length,ownCCR01ReproducedBeforeAndFixedAfter:cases[0].original.held&&!cases[0].successor.held,actualV3Holds:c.manifest.failingGoalIds.length,bindingsStillEmpty:true}));

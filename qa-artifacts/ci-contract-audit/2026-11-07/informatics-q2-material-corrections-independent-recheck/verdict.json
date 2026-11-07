@@ -1,0 +1,48 @@
+{
+  "status": "targeted independent recheck complete; all four required findings resolved on exact successor",
+  "nativeExamDataSha256": "cb82c27a5cf0a53d7d946475dfd4f2ceae8e1065348580f97b7f0f9202871c92",
+  "successorSealSha256": "5fbb13737cdc31e04a2eb165115c5017bcd84db176e2a1876369a3a30703dec9",
+  "originalReviewSealSha256": "f9e5238b6ffad43c5113857d11749f41d646a8fe351b55381fb4fca0ee7df64a",
+  "findings": [
+    {
+      "id": "FMR-01",
+      "verdict": "resolved",
+      "evidence": "independent-dcl-execution.json; actual PostgreSQL queries"
+    },
+    {
+      "id": "FMR-02",
+      "verdict": "resolved",
+      "evidence": "rubric-witnesses.json; finite reviewer scoring and actual SQL"
+    },
+    {
+      "id": "FMR-03",
+      "verdict": "resolved",
+      "evidence": "render-observations.json; executed-rendered-python.json"
+    },
+    {
+      "id": "FMR-04",
+      "verdict": "resolved",
+      "evidence": "complete-material-diff.json; native scoring-to-case binding checks"
+    },
+    {
+      "id": "FMR-05",
+      "verdict": "specific editorial repairs supported; minor nonblocking grammar remains",
+      "evidence": "B-T03 Ein neuer Medium; no meaning/constraint ambiguity"
+    }
+  ],
+  "coverageCounts": [
+    10,
+    20,
+    41,
+    23,
+    23
+  ],
+  "fullGoalMeaningCount": 45,
+  "caseCount": 91,
+  "additionalCompetenceDeletionFound": false,
+  "draftsRemain": true,
+  "activeQALedgerWritten": false,
+  "sourceOrRuntimeChanges": false,
+  "noGeneralCountryCohortOrHostAcceptance": true,
+  "reviewedAtUTC": "2026-11-07T06:07:43.939601+00:00"
+}

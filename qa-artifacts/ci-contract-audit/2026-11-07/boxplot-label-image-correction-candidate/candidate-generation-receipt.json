@@ -1,0 +1,163 @@
+{
+  "recordType": "private_goal_visualization_correction_candidate",
+  "createdAtUTC": "2026-11-07T08:39:32.126Z",
+  "editor": "Codex /root/boxplot_label_image_fix",
+  "goalId": "b819973b-4cad-48a4-9f7e-f74b5e75ea6c",
+  "subject": "mathematik",
+  "provider": "OpenAI / ChatGPT-Codex image generation",
+  "scope": "Non-active candidate only; annotation-placement correction for documented median-label occlusion.",
+  "context": {
+    "fullCurrentDE": {
+      "title": "Datenverteilungen mithilfe von Kenngrößen und Boxplots vergleichen und deuten",
+      "description": "Die lernende Person kann aus bekannten Kenngrößen und aus Boxplots Informationen über zugrunde liegende Datensätze gewinnen, vergleichende Aussagen formulieren und diese fachlich begründet beurteilen."
+    },
+    "fullCurrentEN": {
+      "title": "Compare and interpret data distributions using indicators and box plots",
+      "description": "The learner can infer information about underlying data sets from known indicators and box plots, formulate comparative statements and evaluate them with mathematical justification."
+    },
+    "currentDemandLevel": "AB2",
+    "currentPhase": "J7",
+    "wholeCurrentGoalCanonicalSha256": "fe12ae10846948c417729af83d7609af9631471f9f65f6619e6f4e71ec01a673"
+  },
+  "problem": {
+    "code": "OCCLUDED_MEDIAN_B_VALUE",
+    "existingReviewPath": "/dev/shm/math58-first20-viewport-eqje6qeo/review-packet/current-review.json",
+    "observation": "The yellow B hat höheren Median callout covers the numeric median B=11 in the native original and at 360/680 CSS pixels.",
+    "actualOriginalNativeSight": true,
+    "originalSightMethod": "functions.view_image(detail=original)",
+    "independentReviewer": "Codex /root/remote645_two_failures current viewport reviewer"
+  },
+  "policyFilesRead": [
+    "AGENTS.md section 7.3",
+    "docs/concept/skill-graph/atomic-goal-visualizations.md provider policy and manual workflow",
+    "/home/enpasos/.codex/skills/.system/imagegen/SKILL.md"
+  ],
+  "preparation": {
+    "command": "npm --prefix app run visualization:prepare -- b819973b-4cad-48a4-9f7e-f74b5e75ea6c --provider=\"OpenAI / ChatGPT-Codex image generation\"",
+    "exitCode": 0,
+    "metadata": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/prepared-metadata.json",
+      "sha256": "5c1e043e9ebe87267bdc5caf2dae16bee46aa104c7755900d037af74b986fc08",
+      "bytes": 958
+    },
+    "preparedPrompt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/prepared-nano-banana-prompt.de.md",
+      "sha256": "57c7eff0ce1bcbea278dbb83f50cb7ee02725b581265ffd70bc6ad945e5653ad",
+      "bytes": 2034
+    },
+    "providerPromptNote": "Historical helper filename does not identify generator. The actual provider prompts are prompt-v1.txt and prompt-v2.txt, without technical goal identifiers."
+  },
+  "originals": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "sha256": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "bytes": 1178746
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "sha256": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "bytes": 1178746
+    }
+  ],
+  "originalAssetSha256Before": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+  "originalsStillEqualExpectedAfter": true,
+  "attempts": [
+    {
+      "version": 1,
+      "generatedName": "exec-65a28608-c74f-4cb9-bfb5-ddf9b028cdd2.png",
+      "input": "curricula/DE/Gymnasium/visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "editorDecision": "not_selected",
+      "editorObservation": "The previously hidden red (11) is visible. However, the top edge of the relocated yellow callout touches the lower part of Q3 value (17). A targeted second edit was therefore made.",
+      "tool": "image_gen.imagegen (built-in)",
+      "mode": "edit",
+      "model": "not disclosed by tool; no model version inferred",
+      "transparentBackground": false,
+      "referenceImagePaths": [
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png"
+      ],
+      "prompt": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/prompt-v1.txt",
+        "sha256": "e47cfb38294e1ccd5588238f5b96f96e360538b60cd6f3d247fb584f4e6ff797",
+        "bytes": 2160
+      },
+      "generated": {
+        "path": "/home/enpasos/.codex/generated_images/01a1b525-b658-7890-ac0c-7d570509d6a1/exec-65a28608-c74f-4cb9-bfb5-ddf9b028cdd2.png",
+        "sha256": "52c38a282ab94d4691a2a8b1c813a68fcfde771552df280c77ae6fa3757d1101",
+        "bytes": 1625994
+      },
+      "savedCandidate": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v1.png",
+        "sha256": "52c38a282ab94d4691a2a8b1c813a68fcfde771552df280c77ae6fa3757d1101",
+        "bytes": 1625994
+      },
+      "generatedImageDisplayed": true
+    },
+    {
+      "version": 2,
+      "generatedName": "exec-5b354624-b3f8-43bc-bbc2-fe377173f35e.png",
+      "input": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v1.png",
+      "editorDecision": "candidate_awaiting_independent_review",
+      "editorObservation": "The lower callout is now smaller and sits below the numeric labels. Red (11) and (17) are fully visible in the displayed native output. The values, boxplot locations, shared axis and friendly visual style appear unchanged on editor sight. The small callout lettering at 360 CSS pixels and the pointer tip close to the right parenthesis of (11) require independent review.",
+      "tool": "image_gen.imagegen (built-in)",
+      "mode": "edit",
+      "model": "not disclosed by tool; no model version inferred",
+      "transparentBackground": false,
+      "referenceImagePaths": [
+        "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v1.png"
+      ],
+      "prompt": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/prompt-v2.txt",
+        "sha256": "a5c07a88b997ee2d89ea1fabc7e4fbc14a76c784777f8540ab3d2ab4c3237fc4",
+        "bytes": 1700
+      },
+      "generated": {
+        "path": "/home/enpasos/.codex/generated_images/01a1b525-b658-7890-ac0c-7d570509d6a1/exec-5b354624-b3f8-43bc-bbc2-fe377173f35e.png",
+        "sha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07",
+        "bytes": 1682322
+      },
+      "savedCandidate": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+        "sha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07",
+        "bytes": 1682322
+      },
+      "generatedImageDisplayed": true
+    }
+  ],
+  "selectedForIndependentReview": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+    "sha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07",
+    "bytes": 1682322
+  },
+  "editorChecks": {
+    "nativeGeneratedOutputActuallySighted": true,
+    "canvas": "1678 x 937 PNG, same as original",
+    "dataObserved": {
+      "A": {
+        "min": 4,
+        "q1": 7,
+        "median": 10,
+        "q3": 13,
+        "max": 16
+      },
+      "B": {
+        "min": 2,
+        "q1": 6,
+        "median": 11,
+        "q3": 17,
+        "max": 20
+      }
+    },
+    "sharedAxis": "0 to 20, same integer tick positions",
+    "style": "Original friendly abstract shaded red/blue boxes and cream backdrop retained on visual sight"
+  },
+  "reviewLimitations": [
+    "Editor self-inspection is not independent image/fachlicher review and does not grant any image or curriculum QA approval.",
+    "Independent current 360/680 CSS-pixel viewport qualification is pending.",
+    "Pixel-exact identity of all supposedly unchanged graphic regions is not claimed; the generator may change raster details. Independent review must confirm graph geometry and labels.",
+    "At 360 CSS pixels the smaller bottom callout text and the pointer near the closing median parenthesis need explicit sight.",
+    "Candidate is inactive. No canonical image, public asset, goal/resource link, QA ledger, source evidence, review gate or Git state has been updated by this candidate preparation."
+  ],
+  "importNotRun": {
+    "reason": "The existing visualization:import helper replaces canonical/public assets and JSON links. Activation was explicitly outside this private-candidate assignment; import remains a separate step after independent review."
+  }
+}

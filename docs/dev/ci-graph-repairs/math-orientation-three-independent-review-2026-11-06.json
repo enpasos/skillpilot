@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-three-math-orientation-normalization-and-current-qa-boundary-review",
+  "date": "2026-11-06",
+  "status": "three-exact-edges-substantively-positive-fresh-kind-judgments-D-P-requalification-required-no-application",
+  "scope": {
+    "caseIds": [
+      "MATH-MIN-0027",
+      "MATH-MIN-0745",
+      "MATH-MIN-0751"
+    ],
+    "source": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    "candidateSha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd",
+    "activeCanonicalWrites": false,
+    "activeQaWrites": false,
+    "newPolicyOrFingerprintCompatibilityException": false,
+    "learnerStateOrRuntimeChange": false,
+    "humanApprovalClaimed": false,
+    "blindDescriptionReviewRoundClaimed": false
+  },
+  "originalProposal": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/original-proposal-and-global-proof.json",
+    "sha256": "48c260c9cc45baac98ee46352482d5f167fe1381e7943b19e1cd28a23741156d",
+    "bytes": 217953
+  },
+  "readContexts": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/read-contexts.json",
+    "sha256": "491a2d11ac629c91e093e187572dd3212acc52c813e10bbd8bbc681bc712fc6f",
+    "bytes": 179539
+  },
+  "nativePeerProbe": {
+    "script": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/kind-and-staleness.mts",
+      "sha256": "679259dad6916718a8ddb433a5cb52b3abb3d3d41ee3887b0a0089197aa5032a",
+      "bytes": 3403
+    },
+    "result": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/kind-and-staleness.json",
+      "sha256": "8ba9c7aa0018ee81cfdb9c3c21c75fee9fbe188a3b1d269616d3be677d6387db",
+      "bytes": 4110
+    },
+    "log": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/kind-and-staleness.txt",
+      "sha256": "bdf8e720090a19da99117db8c0a1fc0cf193eaf74079449e6837d6b7bf151920",
+      "bytes": 211
+    },
+    "kindControls": {
+      "originalWithOriginalLedger": "pass",
+      "candidateWithOriginalLedger": "reject",
+      "candidateWithThreeFreshDecisions": "pass"
+    },
+    "positiveControls": "All three historical P rows valid on source, each rejected as stale reviewInputFingerprint on candidate; no P row changed."
+  },
+  "cases": [
+    {
+      "caseId": "MATH-MIN-0027",
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "title": "Diagramme deuten",
+      "decision": "substantively-positive-for-exact-single-orientation-edge-removal-subject-to-current-native-integration-and-fresh-QA",
+      "operation": {
+        "operationId": "MATH-MIN-0027-ORIENTATION-NORM",
+        "stage": "closure-preserving-normalization",
+        "operation": "replace",
+        "path": "/goals/129/requires",
+        "guardGoalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "guardRequiresBefore": [
+          "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "guardGoalCanonicalJsonSha256": "31ef7b817b843faf388a94b8390d7b6ed5e69b2f7a610c8ed10c3d08288999cd",
+        "value": [
+          "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd"
+        ]
+      },
+      "survivingWitness": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "didacticReasonDe": "Diagrammdeutung ist in diesem frühen Sek-I-Korridor die sprachliche Auswertung derselben dargestellten Kategorien, Achsen, Einheiten und Werte. Dafür bleibt Diagrammlesen als konkrete Vorbereitung angemessen. Dieses Ziel verlangt die Orientierung schon direkt. Nur deren zusätzlicher direkter Verweis am Deutungsziel entfällt; weder das Deuten noch das Lesen wird verkleinert.",
+      "freshIndependentKindJudgment": {
+        "semanticKind": "curricularAtomic",
+        "reasonDe": "Eine einzelne selbständig beobachtbare mathematische Deutungsleistung: Auffälligkeiten, datengestützte Vergleiche und vorsichtige erste Trends beschreiben. Das Ziel motiviert nicht nur, ist kein Kartendeck und kein eigener examData-Endpunkt; curricularAtomic bleibt fachlich passend.",
+        "proposedSchemaValidDecision": {
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "sourceFingerprint": "sha256:46ae1b84f6a57df44a8c6db538be9c47bfae4aafefb082f102ea15db797dfd4f",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "positiveContentReadDe": "Die beiden vorhandenen P-Fälle sind fachlich weiter geeignet: Kategorienbalken A6/B9/C4/D7 verlangen begründeten Vergleich (B-C=5); die Zeitreihe40/50/45/60/55 verlangt Gesamtentwicklung, Maximum und lokale Gegenläufe. Kategorischer Vergleich zu geordnetem Zeitverlauf ist eine sinnvolle Darstellungsvariation. Das gelesene Lehrbild40/55/50/70/65 enthält bereits Deutungsantworten und darf daher nicht als unabhängige Schülerleistung verwendet werden.",
+      "existingEvidenceImpact": {
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "title": "Diagramme deuten",
+        "semanticKind": {
+          "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "decisionStatus": "authoritative",
+          "semanticKind": "curricularAtomic",
+          "storedFingerprint": "sha256:edf990dca4dbc9ebbf0890f554826bc06eaf0610808ea7bfea34d2a7de024184",
+          "currentFingerprint": "sha256:edf990dca4dbc9ebbf0890f554826bc06eaf0610808ea7bfea34d2a7de024184",
+          "candidateFingerprint": "sha256:46ae1b84f6a57df44a8c6db538be9c47bfae4aafefb082f102ea15db797dfd4f"
+        },
+        "descriptionBindings": [
+          {
+            "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolution-index.retained-before-image-binding-three-20260928-v1.json",
+            "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-current-20260923-v1/round-a/description-review-input.json",
+            "resolutionPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolutions/0c2ddfcd-1399-41ad-aaed-4f061812602a.resolution.json",
+            "storedResolutionDigest": "sha256:219932bc6b3a72885a4fbe7977ca2ac3f64cc61afa3ea23f5ffd90e9272d9781",
+            "currentContextEqualsAuthenticBoundInput": true,
+            "candidateContextEqualsAuthenticBoundInput": false,
+            "originalContextFingerprint": "sha256:d7a2432c4db22f17b9bbb40cd616fc1373dad0955077d2ceeb71c622ba55ecee",
+            "candidateContextFingerprint": "sha256:17b18b5f8f562ae6061b4d43089100bc0ed7bc53c6f94a8d700a2db668471b60",
+            "changedCanonicalContextFields": [
+              "requires"
+            ],
+            "nativeEnforcement": "validateGoalDescriptionDualRoundResolution checks actual current canonicalContext equality; no new review approval is produced"
+          }
+        ],
+        "positiveBindings": [
+          {
+            "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.config.json",
+            "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.review.jsonl",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "storedReviewInputFingerprint": "sha256:aef17c3f485d4b322aa111ef937f7cc7e3d399d14e0833a43c230c495ce3570d",
+            "currentReviewInputFingerprint": "sha256:aef17c3f485d4b322aa111ef937f7cc7e3d399d14e0833a43c230c495ce3570d",
+            "candidateReviewInputFingerprint": "sha256:75775b0c290418c722eeb55db6fda50d12d6d51d60c57bd80219e459ec9da4d9",
+            "goalFingerprintUnchanged": true,
+            "profileFingerprintUnchanged": true,
+            "currentNativeSemanticErrors": [],
+            "candidateNativeSemanticErrors": [
+              "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale reviewInputFingerprint; expected sha256:75775b0c290418c722eeb55db6fda50d12d6d51d60c57bd80219e459ec9da4d9"
+            ],
+            "resourceDigests": {
+              "/assets/goal-visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg": "sha256:8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f"
+            }
+          }
+        ]
+      },
+      "notApproved": "No other existing carrier or prerequisite, global subject readiness, new mastery inference, old-fingerprint continuation or independent blind D round is approved by this review."
+    },
+    {
+      "caseId": "MATH-MIN-0745",
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "title": "Einfache inverse Matrizen bestimmen",
+      "decision": "substantively-positive-for-exact-single-orientation-edge-removal-subject-to-current-native-integration-and-fresh-QA",
+      "operation": {
+        "operationId": "MATH-MIN-0745-ORIENTATION-NORM",
+        "stage": "closure-preserving-normalization",
+        "operation": "replace",
+        "path": "/goals/931/requires",
+        "guardGoalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "guardRequiresBefore": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "304111dd-426b-520b-a275-3fa37da1b0e0"
+        ],
+        "guardGoalCanonicalJsonSha256": "371241ff02a4863442f3dabaf01d03c00cafccfe3fad172c3470a6e8b24f5220",
+        "value": [
+          "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+          "304111dd-426b-520b-a275-3fa37da1b0e0"
+        ]
+      },
+      "survivingWitness": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "didacticReasonDe": "Der Zieltext verlangt ausdrücklich, die bestimmte Inverse durch Multiplikation mit der Ausgangsmatrix gegen die Einheitsmatrix zu prüfen. Die erhaltene Matrizenmultiplikation ist genau dieses Verfahren einschließlich Dimension und Reihenfolge; sie trägt die Oberstufenorientierung schon direkt. Die Entnahme dieses einen zusätzlichen Orientierungsverweises ist daher fachlich begründet. Weitere erhaltene Vorpfade, insbesondere Tabellenkalkulation, sind damit nicht als notwendig freigegeben.",
+      "freshIndependentKindJudgment": {
+        "semanticKind": "curricularAtomic",
+        "reasonDe": "Bestimmen und anschließende Produktprobe sind hier eine zusammenhängende begrenzte Leistung an invertierbaren einfachen2x2- oder Diagonalmatrizen. Kein Abschluss einer separaten Prüfung und kein bloßer Faktenabruf; curricularAtomic bleibt passend. Kein bestimmter Inversionsalgorithmus oder allgemeiner Invertierbarkeitskurs wird neu verlangt.",
+        "proposedSchemaValidDecision": {
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "sourceFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "positiveContentReadDe": "Der vorhandene P-Fall A=[[3,1],[1,1]], B=1/2[[1,-1],[-1,3]] ist rechnerisch korrekt; beide Produkte sindI. Der Wechsel zu diag(2,-4,1/2) mit inverser Diagonale(1/2,-1/4,2) ist echter Struktur-/Dimensionswechsel. Die Nullzeilenbegründung bei geändertem Eintrag0 bleibt an der behaupteten Invertierbarkeitsbedingung. Das Lehrbild verwendet det(A)=1 und beschränkt die dortige verkürzte Inversionsregel ausdrücklich darauf; es belegt keine allgemeine Formel ohne Determinantenfaktor.",
+      "existingEvidenceImpact": {
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "title": "Einfache inverse Matrizen bestimmen",
+        "semanticKind": {
+          "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "decisionStatus": "authoritative",
+          "semanticKind": "curricularAtomic",
+          "storedFingerprint": "sha256:868b4524069153661472d1d85dab011c714a990c78fbcdee335d1b75623d2648",
+          "currentFingerprint": "sha256:868b4524069153661472d1d85dab011c714a990c78fbcdee335d1b75623d2648",
+          "candidateFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e"
+        },
+        "descriptionBindings": [
+          {
+            "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolution-index.current-subset-v1.json",
+            "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/round-a/description-review-input.json",
+            "resolutionPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolutions-current-subset/ce198bc9-b014-52ba-814f-25cc3e020668.resolution.json",
+            "storedResolutionDigest": "sha256:f82cb0bdb270b52f84ae050218de46519f1dd755e9f35b90a06310617015cabe",
+            "currentContextEqualsAuthenticBoundInput": true,
+            "candidateContextEqualsAuthenticBoundInput": false,
+            "originalContextFingerprint": "sha256:e01e9a83dd4f6102cec30dd392118ebf253168215504e566f5598f3e999d42a1",
+            "candidateContextFingerprint": "sha256:d228a6e9852ab91ca8544c4dbe6454cba9905150e806c6502feb09deda201ef2",
+            "changedCanonicalContextFields": [
+              "requires"
+            ],
+            "nativeEnforcement": "validateGoalDescriptionDualRoundResolution checks actual current canonicalContext equality; no new review approval is produced"
+          }
+        ],
+        "positiveBindings": [
+          {
+            "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-post-change-7-v1.config.json",
+            "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-post-change-7-v1.review.jsonl",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "storedReviewInputFingerprint": "sha256:e8ffd0a05d2fc99904ce2801beb7cad17687ef5dbbaac875d0d9c232c63fea3b",
+            "currentReviewInputFingerprint": "sha256:e8ffd0a05d2fc99904ce2801beb7cad17687ef5dbbaac875d0d9c232c63fea3b",
+            "candidateReviewInputFingerprint": "sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83",
+            "goalFingerprintUnchanged": true,
+            "profileFingerprintUnchanged": true,
+            "currentNativeSemanticErrors": [],
+            "candidateNativeSemanticErrors": [
+              "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+            ],
+            "resourceDigests": {
+              "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg": "sha256:30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75"
+            }
+          }
+        ]
+      },
+      "notApproved": "No other existing carrier or prerequisite, global subject readiness, new mastery inference, old-fingerprint continuation or independent blind D round is approved by this review."
+    },
+    {
+      "caseId": "MATH-MIN-0751",
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+      "decision": "substantively-positive-for-exact-single-orientation-edge-removal-subject-to-current-native-integration-and-fresh-QA",
+      "operation": {
+        "operationId": "MATH-MIN-0751-ORIENTATION-NORM",
+        "stage": "closure-preserving-normalization",
+        "operation": "replace",
+        "path": "/goals/4/requires",
+        "guardGoalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "guardRequiresBefore": [
+          "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "65365dce-f33f-49d8-9516-42f75883aa86"
+        ],
+        "guardGoalCanonicalJsonSha256": "cbaacd123ab3a2be660b0ae12854c628c164016b45afecca50729dc21624c58d",
+        "value": [
+          "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+        ]
+      },
+      "survivingWitness": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "didacticReasonDe": "Die Ganze-Zahlen-Ordnung erweitert das begründete Vergleichen und Ordnen natürlicher Zahlen. Der erhaltene Träger verlangt nur diese schon passende positive Zahlenordnung und Relationszeichen; die negative Seite, null und die Kontextdeutung bleiben Inhalt des neuen Erwerbs. Der Träger verlangt die Sek-I-Orientierung direkt. Der zusätzliche direkte Orientierungsverweis kann deshalb entfallen, ohne einen mathematischen Erwerbsschritt wegzunehmen.",
+      "freshIndependentKindJudgment": {
+        "semanticKind": "curricularAtomic",
+        "reasonDe": "Darstellen, Vergleichen und kontextgebundenes Begründen bilden eine einheitliche Kompetenz zur Ordnung ganzer Zahlen. Die gelesene Definition verlangt eigene Zahlengeraden-/Ordnungsleistungen statt bloßer Navigation, Recallkarten oder separatem Assessmentabschluss; curricularAtomic bleibt fachlich passend.",
+        "proposedSchemaValidDecision": {
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "sourceFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+          "semanticKind": "curricularAtomic",
+          "decisionStatus": "authoritative",
+          "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+        }
+      },
+      "positiveContentReadDe": "Die vorhandenen P-Fälle verbinden selbst gewählte gleichmäßige Skala mit -12<-3<0<7 und einen anders skalierten Höhenbezug -120<-35<0<18. Die Begründung muss Bezugsnull, Richtung und Zahlwert gegenüber Betrag erläutern; der Kontext-/Skalenwechsel darf nicht auf das Abschreiben der Reihenfolge reduziert werden. Das sichtgeprüfte Lehrbild zeigt korrekt -4<-2<+1 und ist Hilfsmittel, kein eigenständiger Nachweis. Seine derzeitige P-Config bindet ausdrücklich keine Ressourcen; diese Scopeentscheidung wird hier nicht still geändert.",
+      "existingEvidenceImpact": {
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+        "semanticKind": {
+          "ledgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+          "decisionStatus": "authoritative",
+          "semanticKind": "curricularAtomic",
+          "storedFingerprint": "sha256:632f95ccb714e255b49556d3e4d547bcfe566b31d130f3f8054534e8cb82a1cf",
+          "currentFingerprint": "sha256:632f95ccb714e255b49556d3e4d547bcfe566b31d130f3f8054534e8cb82a1cf",
+          "candidateFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812"
+        },
+        "descriptionBindings": [
+          {
+            "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.retained-before-parallel-png-20260927-v1.json",
+            "inputPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/round-a/description-review-input.json",
+            "resolutionPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolutions/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.resolution.json",
+            "storedResolutionDigest": "sha256:a0177a74c02fb1b56a80261d2c8248bc77396e02821758c824ab86d60651cc4e",
+            "currentContextEqualsAuthenticBoundInput": true,
+            "candidateContextEqualsAuthenticBoundInput": false,
+            "originalContextFingerprint": "sha256:fe7e8921b7aea8306f703ae3ffdef788f1f7021d3ca2d50f2da284392dca261d",
+            "candidateContextFingerprint": "sha256:ecde722a0ee75ec0434e0d34b1d2080a1bab9a530cb76d3cfb95ad86f5de35ca",
+            "changedCanonicalContextFields": [
+              "requires"
+            ],
+            "nativeEnforcement": "validateGoalDescriptionDualRoundResolution checks actual current canonicalContext equality; no new review approval is produced"
+          }
+        ],
+        "positiveBindings": [
+          {
+            "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-checkpoint-20260928-v1/retained-3/positive-evidence.config.json",
+            "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-checkpoint-20260928-v1/retained-3/positive-evidence.review.jsonl",
+            "status": "needs_human_review",
+            "reviewAuthority": "ai_candidate",
+            "storedReviewInputFingerprint": "sha256:83ccecf814204d2df06372c5b4cfc0b78e44aaeedb64c871df7cbaf27ceeeb6e",
+            "currentReviewInputFingerprint": "sha256:83ccecf814204d2df06372c5b4cfc0b78e44aaeedb64c871df7cbaf27ceeeb6e",
+            "candidateReviewInputFingerprint": "sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345",
+            "goalFingerprintUnchanged": true,
+            "profileFingerprintUnchanged": true,
+            "currentNativeSemanticErrors": [],
+            "candidateNativeSemanticErrors": [
+              "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe: stale reviewInputFingerprint; expected sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345"
+            ],
+            "resourceDigests": {}
+          }
+        ]
+      },
+      "notApproved": "No other existing carrier or prerequisite, global subject readiness, new mastery inference, old-fingerprint continuation or independent blind D round is approved by this review."
+    }
+  ],
+  "normativeAndNativeAnchors": [
+    {
+      "path": "docs/concept/curriculum-quality-and-human-trial.md",
+      "anchor": "§3.1, D/P/A/M/V table",
+      "rule": "D needs two independent current content/context-bound reviews; P needs a current fully reviewed v2 profile with truthful status.",
+      "sha256": "e8de9ed36f0f09098259d114ca4da46538b8e6570355279694e095b53463a2bf"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+      "anchor": "semanticKindDecisions and sourceFingerprint hashInput, /requires",
+      "rule": "Exactly one current fingerprinted kind decision per source goal; stale bindings reject; no title/ID inference.",
+      "sha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "anchor": "$defs semanticKindDecision decisionBasis; semanticKindLedger.reviewMethod",
+      "rule": "reviewed-current-semantic-recheck-curricular-atomic is an existing allowed basis; one-time-reviewed-pilot-migration-v1 stays unchanged.",
+      "sha256": "70e3b2092ee839b7aac6c9fb32fcf2c2ffc7b74135361c05306c8bc03511601a"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "anchor": "validateCurrentReviewInput lines696–724",
+      "rule": "Actual canonical context equality is mandatory, not merely matching title/description.",
+      "sha256": "58471403dc8fbf6ca4e45e8f4e29af8f15a61f9e54ea529d2e3073fa4fc74c64"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-current-20260923-v1/round-a/prompt.md",
+      "anchor": "opening blind first-pass paragraph and numbered instructions",
+      "rule": "Reviewer must not inspect earlier reviewer output, earlier round, adjudication or canonical diff; this peer review cannot be counted as a blind D run.",
+      "sha256": "b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/mathematik-positive-understanding-evidence-profile-criteria-v2.md",
+      "anchor": "Exact mathematical scope; Coverage and fresh transfer; Language authority and review discipline",
+      "rule": "Review full current scope and meaningful cases; AI-authored record remains needs_human_review/ai_candidate/E1/G1, no false human/run claim.",
+      "sha256": "12063457ee847a35af2b29f203ff7dbc9a383f91cf4fafc3a5162015d73a4816"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "anchor": "configured scope and record check around401",
+      "rule": "Records outside configured scope reject; retained subset must use matching subset rows, not merely a narrower config over the unchanged full JSONL.",
+      "sha256": "179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6"
+    }
+  ],
+  "existingFormalEvidence": {
+    "author": "ci_static",
+    "independentlyRerunByThisPeer": false,
+    "reviewedMeaning": "Author removes each actual origin and reinherits; full6524Goal and5495Atomic closures equal individually and in the cumulative three-step sequence. This proves demand equality, not content review equivalence.",
+    "catalogBindings": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+      }
+    ],
+    "reportedSteps": [
+      {
+        "scenario": "MATH-MIN-0027",
+        "steps": [
+          {
+            "caseId": "MATH-MIN-0027",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          }
+        ],
+        "candidateRawSha256": "616592fb94ebe000f915e25569e1af92b4043c31aaaede2d395cdf765a984b93"
+      },
+      {
+        "scenario": "MATH-MIN-0745",
+        "steps": [
+          {
+            "caseId": "MATH-MIN-0745",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          }
+        ],
+        "candidateRawSha256": "604f7455d5d203fe69a01ab0890dcd383044d8dac7e06cf383ac46f0bc179d74"
+      },
+      {
+        "scenario": "MATH-MIN-0751",
+        "steps": [
+          {
+            "caseId": "MATH-MIN-0751",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          }
+        ],
+        "candidateRawSha256": "5b60c2ee5e5e22d9b381458879dad92081ff627761ba6998a346ee40e96725d7"
+      },
+      {
+        "scenario": "cumulative-three",
+        "steps": [
+          {
+            "caseId": "MATH-MIN-0027",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          },
+          {
+            "caseId": "MATH-MIN-0745",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          },
+          {
+            "caseId": "MATH-MIN-0751",
+            "authoredOriginRemovedGlobally": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "orientationEndpoint": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+            "survivingReviewedWitness": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "survivingAuthoredOrigins": [
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "mode": "direct"
+              },
+              {
+                "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+                "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "mode": "direct"
+              }
+            ],
+            "completeGoalClosureEqual": true,
+            "completeAtomicNormalizedClosureEqual": true,
+            "changedGlobalGoalClosureSources": 0,
+            "changedGlobalAtomicClosureSources": 0,
+            "cyclesGoalAtomic": [
+              0,
+              0
+            ],
+            "immediateEffectiveAdjacencyChangedSources": [
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+            ],
+            "globalGoalClosureDigest": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+            "globalAtomicClosureDigest": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907"
+          }
+        ],
+        "candidateRawSha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd"
+      }
+    ]
+  },
+  "nativeIntegrationBoundary": {
+    "javaComparison": {
+      "path": "tmp/math-orientation-normalization-review-2026-11-06/consumer-comparison.json",
+      "sha256": "9841aac87cdc4e7fab51dab0d62af24aead46390be5dd9397b9b6dcb5b418d7e",
+      "bytes": 29295
+    },
+    "peerExecutedJava": false,
+    "typescriptAllFiveTerminalResults": "Still pending at peer-note freeze; do not infer final scope/applicability or CQR success from the formal proof. ci_static owns exact final results.",
+    "orientationOutlook": {
+      "authoredPathCount": 7,
+      "affectedAuthoredEntryCount": 0,
+      "affectedOutlookEntries": []
+    },
+    "applicabilityEvidence": "Unchanged compiled values would not mean unchanged requires-closure provenance rows. Preserve actual before/after evidence distinctions in the final native report."
+  },
+  "smallestLegitimateRequalification": [
+    {
+      "step": 1,
+      "name": "Freeze exact3-goal source and independent kind decisions",
+      "action": "Use the guarded cumulative candidate without changing any other source fields. This peer supplies three fresh curricularAtomic judgments; the native parser accepted their exact candidate fingerprints and existing semantic-recheck basis. Persist only after Root coordination; keep ledger method/counts unchanged and preserve historical original rows in the separate receipt.",
+      "count": 3
+    },
+    {
+      "step": 2,
+      "name": "Fresh P content qualification, then mechanical materialization",
+      "action": "Use the fully read existing mathematical profiles as actual reviewed content, with a new dated author/reviewer reason for the new current preparation context. Preserve both image-bound profiles and the integer profile resource scope. The smallest policy-preserving grouping is two new narrow configs: two image-bound goals and one image-free goal. Produce three newly authored candidate-set entries and materialize with the existing positive candidate tool; status stays needs_human_review, authority ai_candidate, E1/G1. Do not invent dedicated reviewRunIds or human approval.",
+      "tool": "app/scripts/materializePositiveGoalEvidenceCandidates.ts --config <new-narrow-config> --candidates <actually-reviewed-candidate-set> [--write]",
+      "notAllowed": "Do not edit the three old rows or update their fingerprints in place; the native stale rejection is correct. A newly authored record can retain identical substantive profile text only because it has actually been reviewed against this candidate."
+    },
+    {
+      "step": 3,
+      "name": "One fresh3-goal D bundle and two independent blind rounds",
+      "action": "Prepare a new max20-compatible batch with exactly these three goals from the actual candidate, fresh kind ledger and current P profiles. Bind new pages, canonicalContext.requires, visual resources and native fingerprints. Run two real blind first passes on that bundle, yielding six new goal records and distinct independence groups; then a real synthesis and three current resolutions. Old keep results/round IDs/input hashes are historical only. This peer and the normalizer have already seen the diff and old syntheses, so their present work cannot be relabelled as either blind round.",
+      "tools": [
+        "materializeGoalDescriptionRolloutBatch.ts prepare --config <new-three-goal-batch> --write",
+        "validateGoalDescriptionReviewCampaignResults.ts",
+        "validateGoalDescriptionReviewDualRound.ts",
+        "materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "materializeGoalDescriptionRolloutResolutions.ts --config <batch> --synthesis-manifest <actual-synthesis> [--write]"
+      ],
+      "contentExpectation": "All three existing descriptions presently appear appropriate; fresh reviewers still independently decide and record dissent. Do not force keep because the old result or graph equality was positive."
+    },
+    {
+      "step": 4,
+      "name": "Exact active registry replacement without losing other goals",
+      "action": "Preserve all old D/P files. Replace the three active old D resolution contributions with the new ones using exact retained-subset indexes for unaffected entries and a new3-goal index. The three current P scopes contain6,7,18 records; retain their other5,6,17 raw JSONL rows byte-for-byte in matching fresh subset carriers/configs, and activate the new3 records separately. Do not append duplicates or narrow a config over a full JSONL: native P rejects out-of-scope rows. The whole current807-ordinary-goal denominator is not reduced.",
+      "retainedPRecordCount": 28,
+      "freshPRecordCount": 3
+    },
+    {
+      "step": 5,
+      "name": "Actual post-application integration",
+      "action": "After coordinated actual source/QA changes, run the ordinary native validators and entire current five-gate Math lane plus scope/routes/applicability and strict graph/CQR/floor gates. A/M/V still need their own current contracts and results; this review grants none. Remaining Math graph/UUID findings do not disappear because these three local records are fresh."
+    }
+  ],
+  "boundary": "This is a concrete three-edge didactic and current-QA plan with fresh independent kind judgments. It is not a general G16/G17 compatibility profile, Source-A transport, M7 completion, human efficacy result, or authorization to alter the other284 historical orientation cases."
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "bounded-general-reference-repair-tested-full-catalog-blocked-by-existing-phase-errors",
+  "dataChangesApplied": false,
+  "publishedOrRuntimeArtifactsChanged": false,
+  "files": [
+    {
+      "path": "app/scripts/validateGraph.ts",
+      "rawSha256": "5851a5bba467e55ae699fd32ea341ef0c5477e0322850f3ffbd1797703709170"
+    },
+    {
+      "path": "app/scripts/testGeneralGraphReferenceCli.ts",
+      "rawSha256": "ffe89c710144c56bf1cf378d20eff9ee8f1a0ef90131f59cb14921b04b72f96a"
+    },
+    {
+      "path": "app/package.json",
+      "rawSha256": "b3efb1e2f80954c8a66237802bd6a6b2490e09003b10748e185c0605f0a3e8d2"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "rawSha256": "53eb4fc256c032a58102d7826c378db9c3217ab8564330146c32dc9ec8ad37e7"
+    },
+    {
+      "path": "scripts/plugin_ci_workflows.test.mjs",
+      "rawSha256": "11e35e9aef4eb34a1db3c7a78cfc42be8fdffb3af3e9c355a86a858df53f588b"
+    }
+  ],
+  "contract": {
+    "identityIndex": "UUID endpoint values map to sets of exact logical owner strings. Symbolic legacy endpoints remain exact; no ID is rewritten.",
+    "resolution": [
+      "A locally owned endpoint precedes foreign owners.",
+      "Qualified references assert exactly one nonempty explicit owner and endpoint; no owner or endpoint fallback.",
+      "Otherwise an unqualified reference requires exactly one logical owner, regardless of DE/EN serialization count.",
+      "Ambiguous, missing and malformed references fail hard with G05 diagnostics and the available logical candidate keys."
+    ],
+    "topologyBoundary": "The shared existence index contains only identity/owner strings. Existing graph checks use each source file and its own authored UUID spelling; same-file duplicated logical identities fail before a topology is selected. No global cycle or global topology-consistency guarantee is added."
+  },
+  "discovery": {
+    "behavior": "Unchanged recursive curricula JSON discovery, quality directories pruned, existing landscape/id and goals-array selection. No fixed future file-count boundary.",
+    "observedRuntimeShapedFiles": 593,
+    "observedSerializedGoals": 56171,
+    "sortedPathAndRawSha256ListSha256": "4b0c3fbd54efbe7a5cfa770df04c3d0de0e739a5a89efd6a13470510535f3409"
+  },
+  "red": {
+    "command": "cd app && node --import tsx --test --test-name-pattern='rejects ambiguous foreign requires' scripts/testGeneralGraphReferenceCli.ts",
+    "log": "tmp/ci-contract-general-reference-cli-red.log",
+    "testExitCode": 1,
+    "actualOldCliExitCode": 0,
+    "actualOldCliOutput": "3 landscape(s) passed validation.",
+    "meaning": "The real old production CLI incorrectly accepted the same unqualified endpoint under two foreign logical owners."
+  },
+  "green": [
+    {
+      "command": "cd app && npm run test:general-graph-references",
+      "log": "tmp/ci-contract-general-reference-npm-tests.log",
+      "exitCode": 0,
+      "tests": 23,
+      "passed": 23,
+      "skipped": 0,
+      "scope": "Actual CLI: ambiguity for contains/requires, local precedence, explicit/unique foreign owner, DE/EN owner identity, UUID value spelling, exact legacy strings and qualified owners, malformed/missing/wrong-owner references, duplicate local definitions and existing local cycle checks."
+    },
+    {
+      "command": "node --test scripts/plugin_ci_workflows.test.mjs",
+      "log": "tmp/ci-contract-general-reference-workflow-tests.log",
+      "exitCode": 0,
+      "tests": 11,
+      "passed": 11,
+      "skipped": 0
+    },
+    {
+      "command": "cd app && ./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target ES2023 --module ESNext --moduleResolution bundler --types node scripts/testGeneralGraphReferenceCli.ts",
+      "log": "tmp/ci-contract-general-reference-test-tsc.log",
+      "exitCode": 0
+    },
+    {
+      "command": "cd app && ./node_modules/.bin/tsx scripts/testHessenMathQ21Scope.ts",
+      "log": "tmp/ci-contract-general-reference-he-q21-scope.log",
+      "exitCode": 0
+    }
+  ],
+  "existingFailures": [
+    {
+      "command": "cd app && npm run validate:graph",
+      "log": "tmp/ci-contract-general-reference-real-catalog.log",
+      "exitCode": 1,
+      "errors": [
+        "❌ [67bd301b-e11a-582d-94ba-4f4b1a4cefff] [GVR-002] Goal 8e07e95a-a5ba-514b-aeed-c3fefaee8c33 (Geschlechterrollen kritisch prüfen, phase Q1) has direct prerequisite c8912a37-3c16-5d56-8473-e7f3d0ab35a5 (Rollenbilder im Epochenvergleich, phase Q2), which points to a later phase.",
+        "❌ [67bd301b-e11a-582d-94ba-4f4b1a4cefff] [GVR-002] Goal 81483c49-a343-5641-822d-50fa7bcc722a (Mediale Aufarbeitung, phase Q3) has direct prerequisite d4124fd5-e0fb-5044-b18d-699ce7203ebf (Filmsprache analysieren, phase Q4), which points to a later phase."
+      ],
+      "baselineLog": "tmp/ci-contract-general-reference-baseline-catalog.log",
+      "baselineExitCode": 1,
+      "baselineComparison": "The actual pre-repair HEAD validator was run from an isolated temporary source copy against the same repository discovery. Both error lines are exactly equal before/after; there are no additional G05 findings."
+    },
+    {
+      "command": "cd app && ./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --target ES2023 --module ESNext --moduleResolution bundler --types node scripts/validateGraph.ts scripts/testGeneralGraphReferenceCli.ts",
+      "log": "tmp/ci-contract-general-reference-tsc.log",
+      "exitCode": 2,
+      "baselineLog": "tmp/ci-contract-general-reference-baseline-tsc.log",
+      "baselineExitCode": 2,
+      "baselineComparison": "Exactly the same three diagnostics after removing path/line coordinates: UiGoal.shortKey absent and two existing ResourceLink/Record type-predicate diagnostics. New test alone passes strict tsc."
+    },
+    {
+      "command": "cd app && npm run test:hessen-math-q24-q25-scope",
+      "log": "tmp/ci-contract-general-reference-he-q24-q25-scope.log",
+      "exitCode": 1,
+      "finding": "Existing current-Mathematics projection disagrees with historical removed-goal expectation at testHessenMathQ24Q25Scope.ts:272 (de-he-gk-g8.view.json, actual20 vs expected13). The test does not import validateGraph; the source-text selector assertion earlier in this test passed. No assertion or data was changed."
+    }
+  ],
+  "ci": {
+    "workflow": ".github/workflows/ci.yml",
+    "fixtureStep": "Test general graph reference resolution",
+    "fixtureCommand": "npm run test:general-graph-references",
+    "order": "Hard fixture step precedes unchanged npm run validate:graph; no warn/baseline/continue-on-error bypass."
+  },
+  "limits": [
+    "This receipt is local bounded evidence, not terminal fresh remote CI acceptance.",
+    "The complete catalog and unrelated Mathematics regression remain red as described; no data or expectation changes were made to hide them.",
+    "Separate UUID-format and strict canonical CQR graph gates retain their own contracts. No curriculum renaming, global graph cycle engine, A/B identity proof, learner state, SRS, Q4 content or deployed artifact was changed."
+  ]
+}

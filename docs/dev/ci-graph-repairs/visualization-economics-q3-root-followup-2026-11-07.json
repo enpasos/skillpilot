@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-root-technical-reread-and-native-replays-pass-with-explicit-lint-scope",
+  "observedAt": "2026-11-07T01:05:40Z",
+  "readScope": [
+    "Entire current reviewed-context core",
+    "Entire new two-family Economics reader",
+    "Entire new two-family native control test"
+  ],
+  "codePins": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "45fce11f7708b61bdb4b0f80a08fea0a9d1a018d98b4d24b79ae10fe578c8393"
+    },
+    {
+      "path": "app/scripts/lib/goalVisualizationEconomicsQ3Contexts.ts",
+      "sha256": "57494ea57cf8218d56fba7473e98291e9aea621c4e2b7172986829d01ace4ed4"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationEconomicsQ3Contexts.ts",
+      "sha256": "6cf756ea10cbf2cce123aa61ce05036688765370fc3ebff3c5027fba5937939e"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationContextNamespaces.ts",
+      "sha256": "def60cdb897b3f7e90d3b9df33d428d27492cd8d763dcf61f4f794a926a0ee53"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "sha256": "b31391ac434df5ba2437185ab97715d1940e3debac56a5be6fed46b27864f349"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationFreshBContext.ts",
+      "sha256": "5df47be8f84ee32b0883b38c63130b305c4450aaa8a88b3df369dd5775c2226e"
+    },
+    {
+      "path": "app/scripts/lib/authenticatedGitEvidence.ts",
+      "sha256": "bb06b1ec079812699a8f6bdbc7368dbefb7e617618cf3b0b888296dc9653d702"
+    },
+    {
+      "path": "app/scripts/testSourceIdentityQaReviewContext.ts",
+      "sha256": "38f06bf6870642473c46c83e72385f1251fd69fd4506931eff23070fc163d458"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "f85271c0ef10543ecfbff5e50e7cfc30af7b847e3e91def4452a811d1f2941d1"
+    }
+  ],
+  "actualRootCommands": [
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationEconomicsQ3Contexts.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "originalPositives": 36,
+      "controls": 35,
+      "negativeControls": 34,
+      "deOnlyBoundaryPositiveControls": 1,
+      "genuineCorrectionChains": 8
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationReviewedContext.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "originalPositives": 18,
+      "negativeControls": 26
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationContextNamespaces.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "controls": 12,
+      "unexpectedAcceptances": 0
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationFreshBContext.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "originalPositives": 1,
+      "negativeControls": 10
+    },
+    {
+      "command": "./node_modules/.bin/eslint [the eight source/test TS files in codePins]",
+      "cwd": "app",
+      "exitCode": 0
+    }
+  ],
+  "fullLocalLintBoundary": {
+    "command": "npm run lint",
+    "exitCode": 1,
+    "errorsAtThatRun": 3,
+    "newUnusedTypeImport": "app/scripts/testSourceIdentityQaReviewContext.ts:9; subsequently removed without emitted-JS change and included in actual focused eight-file pass",
+    "unrelatedUntrackedOctoberFile": "app/tmp/biologie-open18-current397-v4/capture_actual.ts",
+    "unrelatedUntrackedErrors": [
+      "unused pathToFileURL at line4",
+      "explicit any at line60"
+    ],
+    "unrelatedFileChanged": false,
+    "noGlobalLocalLintPassClaimed": true,
+    "freshRemoteLintPassRequired": true
+  },
+  "preservedLogs": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/q3.log.gz",
+      "exitCode": 0,
+      "rawBytes": 2737,
+      "rawSha256": "c981f4d48c0e245167e512c614bfc87473b0894d3e5e8f045f24cb2bfbb1680a",
+      "gzipSha256": "371a137be28da736a2f1d53df31e500719d2beef2b1991b6a6131e2d2d75b3b2"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/historical.log.gz",
+      "exitCode": 0,
+      "rawBytes": 147,
+      "rawSha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b",
+      "gzipSha256": "bdf77b1e4f4e1f85d48c5bc1934f9b7d6e381e7dfcd88ddbe352bdd12406323c"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/namespaces.log.gz",
+      "exitCode": 0,
+      "rawBytes": 1512,
+      "rawSha256": "f4ad01bd2b933ca87fd7bd5877b8cd94ec22e4d8b844def0b02d33b36f770695",
+      "gzipSha256": "cf4c7b0150f5c9473c706d388d1ed8195dbe2a2160e1751c6edc2f3fdfb83a25"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/fresh-b.log.gz",
+      "exitCode": 0,
+      "rawBytes": 167,
+      "rawSha256": "cdfcbf81ee7e2fd0e60b1583535ff01a032ec6a54a2809e086574b8e6b00862d",
+      "gzipSha256": "e6bb7359c3a3957f019a358ae8e8d1027b8af57741b2d8fed2dc3a0f7f5c2edd"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/focused-eslint-eight.log.gz",
+      "exitCode": 0,
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gzipSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-economics-q3-root-followup/full-local-eslint-before-am-unused-import-fix.log.gz",
+      "exitCode": 1,
+      "rawBytes": 530,
+      "rawSha256": "fb5b93f1847842eb6298351bf135a86a2db038fcb0d88149e12bfcda8a2da258",
+      "gzipSha256": "9bb89cf2478ce1ec08fd5b36efc64ead767a49ff61cf5ee9bde7bb42f975175e"
+    }
+  ],
+  "activeSourceQaApprovalOrPolicyWrites": 0,
+  "newImageContentReviewsClaimed": 0,
+  "consumerDeepM7OrWorkflowIntegration": false,
+  "fullSourceAOrPhysicalCandidateQaPassClaimed": false
+}

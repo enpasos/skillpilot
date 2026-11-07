@@ -1,0 +1,8 @@
+{
+  "case": "negative-ai-not-human-approved",
+  "nativeExitCode": 1,
+  "nativeDenialWasAlreadyCorrect": true,
+  "initialHarnessExpectedLaterSemanticText": "approved profiles require human reviewAuthority",
+  "actualEarlierDenial": "AJV conditional schema rejects the AI/approved combination before semantic-record validation.",
+  "correction": "Assert the actual schema reviewAuthority/status denial. No production or profile predicate changed; reuse the original actual native output."
+}

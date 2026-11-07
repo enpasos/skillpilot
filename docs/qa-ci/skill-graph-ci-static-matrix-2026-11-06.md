@@ -1,0 +1,790 @@
+# Statische Regel-zu-CI-Matrix vom 6. November 2026
+
+**Auditbasis:** `0ce5a8d791eeb9783a919195fd8590bfb79f3595` (main),
+Arbeitsbranch `feat/skill-graph-ci-contracts`, zum Lesebeginn
+`1678bb28e8720ee07249d512d10666011dcab2bc`. Die Einzelzeilen dokumentieren diesen unveränderten Audit-Ausgangsstand.
+Die unten getrennten Reparaturnachträge E61–E63 beschreiben den danach implementierten
+lokalen Prüfer samt CQR-Anbindung und die reparierten UUID-/Referenz-CLIs; sie sind keine rückwirkende grüne Bewertung
+der damaligen Daten und keine Remote-CI-Abnahme. Der eingefrorene
+Einheitenstand `52619b960e7b261e1cc18d070063c8e7aca74e21` aus PR #83 ist
+**zusätzliches Zielmaterial**, kein bereits implementierter Main-Vertrag.
+
+Diese Datei ordnet **261 einzelne Regeln** aus dem festen Normkorpus zu:
+statische G-/V-Regeln sowie Q ohne Championblock40–48, S ohne Runtime19–24,
+I01–17 und sämtliche B-/K-Regeln. Gemeinsame statische R-/U-/N-Facetten stehen
+in der [Laufzeitmatrix](skill-graph-ci-runtime-matrix-2026-11-06.md),
+Content-/Bildruntime in der [Content-/Präsentationsmatrix](skill-graph-ci-content-presentation-matrix-2026-11-06.md).
+Die Zuordnung wurde gegen 518 Korpusregeln auf fehlende/fremde/doppelte IDs geprüft.
+E01–E63
+sind wiederverwendbare **Belegketten**, keine normativen Regel-IDs. Die früheren
+S01–S45 werden damit ausdrücklich nicht zum Ersatz für die einzelnen G/V/Q/S/I/B/K-
+Regeln. Jede Matrixzeile nennt ihre eigene Grenze und verweist auf die unten
+voll ausgeschriebene Implementierungs-, Gegentest- und CI-Kette.
+
+H = hart für den vollständigen deklarierten Regelscope; P = Teilaspekt/Profil/
+Teilmenge; W = Warnung/Bericht ohne eigenen harten Fehler; L = nur lokal;
+N = kein entsprechender Durchsetzungsnachweis; K = Norm-/Implementierungskonflikt.
+ND = fachliches Urteil außerhalb vollständig deterministischer Entscheidung;
+die ausdrücklich verlangte Evidenzhülle ist separat zugeordnet.
+Ein nicht gefundener Gegentest ist als Lücke genannt, selbst wenn der Prüfer
+reale Daten hart prüft. H bezeichnet Maschinenvertrag, weder fachliche Wahrheit
+noch Menschenfreigabe oder Wirksamkeit. Keine Branch-Protection-Einstellung
+wurde hier geprüft; Jobfehler und zwingende Merge-Sperre bleiben verschiedene
+Behauptungen. Keine Remote- oder lokale Vollsuite wird durch dieses Lesedokument
+als bestanden erklärt.
+
+## Gemeinsame Aufrufverträge
+
+**Aktueller Branchanschluss vom 7. November:** Die folgenden Main-Zeilenanker
+bleiben historische Auditanker. Im aktuellen Workflow führt `graph-validation`
+die Quellprüfungen als `Curriculum source contracts` parallel zum Buchbau aus.
+Der abschließende Job `curriculum-ci` heißt weiterhin `Curriculum CI` und
+verlangt beide erfolgreichen Vorläufer vor der bestehenden Integration.
+Alle bisherigen Befehle bleiben hart; lokale Status- und Negativkontrollen
+sowie die noch offene Remoteprüfung sind im
+[Änderungsnachweis](../dev/ci-graph-repairs/curriculum-source-checks-parallel-2026-11-07.md)
+getrennt dokumentiert. Regel-IDs und Prüfumfänge ändern sich dadurch nicht.
+
+- **C**: `.github/workflows/ci.yml:493`, Job `graph-validation`, Anzeigename
+  `Curriculum CI`, Arbeitsverzeichnis `app`. Jeder unten genannte C-Aufruf ist
+  ein eigener Step ohne `continue-on-error`; nichtnull beendet den Step/Job.
+  `needs: goal-book-publication` bei `:495` bindet die tatsächlich in demselben
+  Lauf gebauten Buchartefakte. Trigger `:3–27`: Dispatch, Push und PR gegen main;
+  reine Änderungen an README/AGENTS/docs/sandbox/tmp sind ausgenommen,
+  `docs/qa-ci/status/**` und Legal-Inventar ausdrücklich wieder eingeschlossen.
+- **F**: `CI / frontend-ci`, insbesondere `ci.yml:395` Buch-/Evidenzpipeline,
+  `:403–408` Bildmodelltests. Gleiche Hauptworkflow-Trigger; Behauptungen über
+  reale Curriculumsdaten brauchen daneben einen echten Eingabeprüfer.
+- **B**: `CI / goal-book-publication`, `ci.yml:284` ff.; `:325` baut alle
+  registrierten Publikationen mit `npm run build:goal-books -- --force`, `:327`
+  prüft sie mit `npm run check:goal-book-publication`. Schon `:317–322` verbietet
+  eingecheckte generierte Bücher. Gleiche Hauptworkflow-Trigger.
+- **O**: `.github/workflows/owl-ci.yml:3–17`, `Optional Package CI`, nur Dispatch
+  und wöchentlich montags `03:17 UTC`, kein Push-/PR-Trigger. Job `package-ci`
+  läuft realen Vollpaketpfad bei `:77–89`; `fwu-owl-ci` und
+  `subject-export-release-gate` haben eigene unten genannte Kommandos.
+- **A**: `.github/workflows/assessment-completion.yml:3–44`, Dispatch sowie
+  PR/Push main mit expliziten app/backend/curricula/contracts/scripts-Pfadfiltern;
+  `authoring-and-ui:88–100` prüft echte vorhandene Completion-Profile und Tests.
+  Das ist weiterhin der dort implementierte Main-Vertrag, kein Beleg der
+  zusätzlichen globalen Q-Anerkennung vom 6. November.
+- **EW**: `canonical_physics_evidence_watch.yml` und
+  `canonical_chemistry_evidence_watch.yml`: Dispatch, täglicher Schedule,
+  eingeschränkte Push-/PR-Pfadlisten. Ihre Manifest-/Baseline-Differenzprüfungen
+  sind reale Fehler, aber keine allumfassende Quellen- oder Graphvalidierung.
+
+`SKILLPILOT_SOURCE_PDF_MODE=committed-bindings` ist in C `:680–681` und O
+`:30–31` gesetzt. Das prüft die gespeicherten Bindungen; es ist kein aktueller
+HTTP-Abruf aller offiziellen Quellen. Kein unten genanntes npm-Skript gilt allein
+wegen seines Vorhandenseins als CI-verdrahtet.
+
+## Normative Zuordnung
+
+Einzel-IDs und Normstand folgen dem [festen Normkorpus](skill-graph-ci-rule-corpus-2026-11-06.md). M = Main-Norm; T = zusätzlicher eingefrorener PR83-Zielstand; C = spätere ausdrücklich dokumentierte Ownerklärung. Diese Zeichen bezeichnen den Normstand, nicht den Durchsetzungsstatus. Die folgenden G-/V-Zeilen sind die statische Zuständigkeit;
+Laufzeitfacetten und gemeinsame R/U/N/P-Regeln stehen in der gesonderten
+Laufzeitmatrix. Eine dortige Teilprüfung wird hier nicht als fehlender Gesamtbeleg
+oder doppelter vollständiger Regelpass gezählt.
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| G01a | M / Basis | P | E03 | UUID-Format: kanonische Dateien außerhalb des CLI-Globs. Kein negativer CLI-Test für kanonisches Fehlformat belegt. Keine erlaubte Legacy-Ausnahme gefunden; symbolische Produktions-IDs bleiben reale Befunde. |
+| G01b | M / Basis | P | E04/E05 | Eindeutigkeit lokal bzw. kanonischer DE-Pool hart; kein voller Identitätsvergleich aller aufgelösten Landschaften/Sprachvarianten. Root-Vollerhebung:56024 qualifizierte Keys,147 Mehrfachserialisierungen,19 echte contains/requires-Topologiekonflikte (u.a.Mannheim LLB Bachelor_Jura vs Rechtswissenschaft). Stilles erstes Exemplar ist kein Nachweis; kein isolierter negativer CLI-Fremdduplikatfall belegt. |
+| G02 | M / Basis | P | E01/E11 | Runtime-Schema sichert Zahlen, aber nicht Gewicht > 0; compiled-landscape.schema.json894–896 erlaubt explizit minimum:0. Root-Bestandsscan derselben 593 Dateien: 39704 Nullgewichte bei 56171 Goal-Serialisierungen. Das ist ein breiter Daten-/Vertragskonflikt, kein sicherer Einzeilerfix mit exclusiveMinimum. Keine Ganzzahligkeitsnorm hinzuerfinden. |
+| G03 | M / ShortKey | H | E04 | shortKey-Owner werden pro logischer landscapeId über Dateien/Sprachen vereinigt; verschiedene Goal-IDs scheitern. Ein dedizierter mutierter CLI-Gegenfall fehlt weiterhin. |
+| G04 | M / Basis | P | E10 | Expliziter type wird gegen contains geprüft; Standard-CI ist streng, temporärer VALIDATE_GRAPH_STRICT_RULES=0 kann GVR009 zur Warnung machen. Kein isolierter vollständiger CLI-Gegentest belegt. |
+| G05 | M / Basis | P | E06 | Fehlender Endpunkt wird Fehler, qualifizierter Fremdverweis exakt geprüft. Unqualifizierter Fremdverweis akzeptiert jedoch mehrere Eigentümer; vollständige eindeutige Auflösung nicht bewiesen. |
+| G06 | M / Basis | P | E07 | contains-Zyklen nur innerhalb jeder geladenen Landschaft; fremde Kanten vor DFS entfernt. Mehrere Eltern im allgemeinen Graph werden dadurch nicht verboten. |
+| G07 | M / Basis | P | E07 | requires-Zyklen nur lokal; qualifizierte und unqualifiziert global auflösbare Fremdkanten fehlen im Zyklusgraphen. |
+| G09 | M / entsprechende Darstellung | N | E49 | Kein statischer Test identifiziert, der alle inversen Lernflussdarstellungen eindeutig kennzeichnet und gegen separat verfasste Relation absichert. Die Quellrelation wird nicht als zweites notwendiges Feld verlangt. |
+| G15 | M / Basis | P | E08 | Lokale effektive Zyklen geprüft; fremde Vererbung fehlt. Roh-Selbstforderung wird vor dem eigenen includes-Guard entfernt. Kein vollständiger globaler Gegenfall im CLI belegt. |
+| G16 | M / Basis | L | E12 | Kein eigener harter CI-Aufruf für lokale Minimalität. Der lokale §7.3-Auditor findet auch nach Entfernen noch unmittelbar geerbte Autorenforderungen; explizite §7.2-Diagnose bleibt zuzuordnen. |
+| G17 | M / Gesamter aufgelöster Graph; konkretes verpflichtendes CI-Eingabeuniversum gesondert festzulegen | L | E12 | Vorhandener Auditor entfernt Autorenkante und berechnet Goal-Knoten-R_effective neu, ohne Atomausweitung/Mastery-Cut. Gegenfälle vorhanden, echter Math/Physik-Bestand 1319 Befunde. Kein Workflow-Aufruf, keine genehmigte Baseline. |
+| G18 | M / Bedingt Baumprofil | P | E18/E22 | Deklarierter learner-facing Baum: CPV/TPV prüft einmalige Vorkommen/Eltern. Kein allgemeiner Checker für jedes anders deklarierte Baumprofil gefunden; kanonische Polyhierarchie bleibt zulässig. |
+| G19 | M / GV-Profil | H | E09 | Im entsprechenden aktuellen GVR-Profil GVR001/003 hart; Umschaltung auf legacy-warn ist ausdrücklich eigener Laufmodus. Keine Behauptung eines allumfassenden globalen Guards. |
+| G20 | M / GV-Profil | P | E09 | GVR006 prüft direkte Kinder in Landschaftsallowlist, nicht sämtliche Nachfahren/globalen Fremdkanten. Allgemeine Empfehlungsprosa allein ist kein zusätzlicher harter Standard. |
+| G21 | M / ausgewiesene Reife-/Mathprofile | P | E14/E28 | Echte kanonische Math-SekI/SekII-Routen hart; CQR101/102 andere konfigurierte Scopes über Bericht/Floors. Kein Gate für beliebige neue Fach-/Reifescopes. |
+| G22 | M / Math-SekI/SekII | H | E14/E16 | Direktrouten und Outlook-Gegenfälle prüfen verbotene Knotenarten sowie falsche Stage im expliziten Mathprofil. Nicht auf alle Fächer ausgedehnt. |
+| G23 | M / Math-SekI/SekII | H | E10/E14 | Vollständige eindeutige Math-Semantic-Kind-Ledgerbelegung und Stageprofile sind reale graph-CI-Eingabe. Keine gleichartige Vollständigkeit für andere Fächer behauptet. |
+| G24 | M / Math-SekI/SekII | H | E14 | Direkter Abschlussweg ohne normales curriculares Atom scheitert im zugelassenen Math-SekI/SekII-Profil; route unit tests enthalten genau diesen Gegenfall. |
+| G25 | M / Math-SekI/SekII | H | E13/E14 | Routeprüfer erfordert normalen Erwerb vor Memory; Orientation-Validator verhindert Prüfung/Karten/Übungen am Einstieg. Profil und Tests stehen in E13/E14. |
+| G26 | M / aufgelöste Kompositionssicht | P | E18/E20 | CPV/APV prüft referenzierte und sichtbare Anforderungen im konfigurierten Projektionsumfang. Vollständiges Kreuzprodukt aller tatsächlichen persönlichen Angebote nicht durch diese Prüfer inventarisiert. |
+| G28 | M / Konfigurierte CQR-103-Reiferouten | P | E28 | CQR103: scoped Cluster als Quelle mit requires verboten; generateCurriculumQualityStatus.ts2735,2790. Bericht/Floor-Wirkung, kein selbständiges hartes Gate für jeden denkbaren Cluster-Scope. |
+| G29 | M / abgeleitete Darstellung | N | E49 | Keine vollständige statische Prüfung gefunden, die jede Clusterabhängigkeitsdarstellung nur aus atomaren Routen ableitet und zusätzliche Autorenkanten verwirft. |
+| G30 | M / Konfigurierte GVR-013-Atomrouten | H | E15 | GVR013 eigener Vertrag: im ausgewiesenen kanonischen Mathprofil dürfen atomare direkte Anforderungen nicht auf Cluster zeigen. Getrennt von CQR103; legacy-warn kann diesen Profilmodus abschwächen. |
+| V01 | M / Basis | P | E03/E05/E18 | Kanonische IDs werden referenziert, aber langfristige Bedeutungsstabilität nach Jahr-/Semesterverschiebung wird nicht über die ganze Historie verglichen. UUID-Form schützt Identität allein nicht. |
+| V02 | M / Basis | P | E18/E22 | Autorisierte Kompositionsstruktur wird kompiliert; keine generische statische Absicherung aller Programm-/Titelheuristiken. Compiler normalisiert unbekannte Knotenarten zu structure statt sie strikt abzulehnen. |
+| V03 | M / Basis | P | E18/E22 | Bäume aus Komposition bzw. Placements werden gegen Vorkommen/Eltern geprüft. Kein vollständiger Herkunftsbeleg jeder sichtbaren Kante sämtlicher Strukturfamilien. |
+| V05 | M / Basis | P | E18/E22 | CPV005 bzw. TPV101 erzwingen einmaliges Auftreten in den jeweils definierten Standardsichten. TPV-Scope schließt Composition-Landschaften aus, wo CPV zuständig ist. |
+| V06 | M / Basis | P | E18/E22 | CPV006 bzw. TPV102 erzwingen höchstens einen sichtbaren Elternknoten in diesem Scope; kanonischer contains-Graph darf mehrere Eltern haben. |
+| V07 | M / Placements | P | E22 | Fallbackbaum prüft Ergebnisstruktur, jedoch keine isolierte Negativprüfung identifiziert, die jede secondary/assessed-Platzierung als reines Overlay erzwingt. |
+| V08 | M / Komposition | P | E18 | Compiler nutzt kanonische Referenzen statt eingebettete Atomdefinitionen. Normalisierung erhält unbekannte Felder per spread; kein strikter negativer Rohdatenfall für inline goals gefunden. Ignorieren ist kein ausdrückliches Autorenverbot. |
+| V09 | M / Komposition | P | E18 | Kompositionscompiler verwendet kanonische requires. Ein zusätzlich verfasstes requires-Feld wird nicht mit ausgewiesenem Fehler zurückgewiesen; kein Gegenfall dafür im CI-Nachweis. |
+| V10 | M / Komposition | H | E18 | CPV002/004 prüfen bestehende Wurzeln und überlappende expandierte Teilbäume; expliziter Rollenpräzedenzvertrag bleibt gesondert V12. |
+| V11 | M / Komposition | H | E18/E19 | CPV008 prüft deklarierte Rollen; Default target in getCompositionProjectionRole74. Gegenfälle für ungültige Rolle in testCompositionProjectionRoles385ff. |
+| V13 | M / Komposition | P | E18/E19 | Aktuelle Rolle stammt aus verfasstem projectionRole; kein erschöpfender Test gegen automatische Rollenherleitung in allen Konsumenten. Unterschied zur Applicabilityableitung beachten. |
+| V17 | M / Komposition | H | E18 | CPV009 lehnt curricularArea als opakes goalEntry ab; echter Gegenfall testCompositionProjectionRoles385–412. |
+| V20 | M / Programmsicht | P | E01/E22 | Schema prüft programUnit Pflichtfelder, nicht sämtliche parentUnitId-Endpunkte/Programmayzklizität/1:1-Syntheseknoten. Fallbackbaum-Duplikatprüfung allein beweist diesen ganzen Vertrag nicht. |
+| V21 | M / Programmsicht | P | E22 | Mehrere sichtbare Eltern werden entdeckt; fehlendes/mehrdeutiges primary-Placement nicht als eigener vollständiger CLI-Gegenfall belegt. Keine erfundene Zuordnung als Pass zählen. |
+| V22 | M / Achsensicht | P | E01/E22 | Separater competencyCatalog/competencyRefs Datentyp vorhanden. Keine vollständige fachliche Achsen-vs-Content-Elternprüfung identifiziert. |
+| V25 | M / Basis | N | E01/E20 | Kein allgemeines Verbot des verfassten ALL im runtime schema/Graphvalidator. Compiler normalisiert nicht unterstützte Jurisdiktionen weg; das ist keine harte Zurückweisung eines Autoren-Sentinels. |
+| V26 | M / Overrides | P | E20/E21/E26 | Override-Schema/Endpunkte und Begründung zum Teil hart; APV201/202 nur Warnung/Diagnostik. Quelle bleibt eigener Evidence-Vertrag; freies Override allein beweist keine Quellenabdeckung. |
+| V30 | M / kompiliertes Profil | W | E21 | APV203 ist ausdrücklich warning und CLI verlässt mit 0, falls keine errors. Nur aktive Memory-Origin-Bindings besitzen zusätzliche harte konkrete Assertions. |
+| V31a | M / entsprechende CPV-Regeln | H | E18 | CPV001 prüft erforderliche Kompositionsmetadaten und passend geladenen kanonischen Graph. Normalisierung kann fehlende optionale Texte ergänzen; kein universelles Stilurteil. |
+| V31b | M / entsprechende CPV-Regeln | H | E18 | CPV007 lehnt leere structure-Knoten ab. Ein ausgeblendeter reiner prerequisiteOnly-Zweig ist separat vom unzulässig leer verfassten Strukturknoten. |
+| V31c | M / entsprechende CPV-Regeln | H | E18/E16 | CPV216 in lib/learnerFacingCompositionLabels.ts47–67, tatsächlicher Aufruf validateCompositionViews.ts974; Gegenfälle testLearnerFacingCompositionLabels27–43 (CI545). Interne Prozessnamen werden hart zurückgewiesen; generische CPV101/102 bleiben separate Warnungen. |
+| V32a | M / Projektionsprofil | P | E20 | APV102 prüft im aktuell geprüften Jurisdiktionsprofil/21-Landschaften-Scope auflösbare Anforderungen. Kein universelles Angebot-/Dimensionskreuzprodukt. |
+| V32b | M / Projektionsprofil | P | E20 | APV103 prüft projizierte Erreichbarkeit von Scope-Wurzeln im gleichen begrenzten Prüfprofil. Kein universelles Angebot-/Dimensionskreuzprodukt. |
+
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| G31 | M / Legacy-Phase-Validatorprofil | H | E09 | validateGraph.ts940–970 prüft effektive lokale Phasenränge für vergleichbare Labelsysteme. Konfigurierter Profilmodus hart; legacy-warn ausdrücklich gesondert. Kein Anspruch auf kalenderabhängige Graphsemantik. |
+| G32 | M / HE-GO-Rollout ohne Overview | H | E14 | validateGraph.ts977–997: erster atomarer HE-GO-Knoten muss Motivation sein, leerer Atomscope ist Fehler. Landscape-Allowlist122–139 schließt Overview aus. Isolierter CLI-Gegenfall noch nicht identifiziert. |
+| G33 | M / GVR-005/GVR-011-Profilselector | H | E14 | validateGraph.ts999–1045 prüft GVR005/GVR011 gegen konfigurierte Anker; fehlender Anker/fehlender Weg Fehler. Lokal effektive Relation; für genau dieses Profil, kein globaler Graphbeweis. |
+| G34 | M / MIT-OCW-Module | H | E47 | validateGraph.ts1087–1152: MIT-OCW-Modulprofil verlangt concept/practice/assessment und valide OCW-course-URLs. C527 validate:graph hart in Defaultmodus. Kein isolierter CLI-Mutationsfall hierfür gefunden; optionale Content-Links bleiben eigener Vertrag. |
+| G35 | M / Alle geladenen Landschaften | H | E47 | validateGraph.ts395–405,675–681 weist extendedData.sourceLinks und oerContent als GVR008 zurück. C527 Default streng. Kein isolierter negativer CLI-Legacyfeldtest gefunden. |
+| G36 | M / Kanonische Mathematik Sek I/II | H | E16 | Outlook-Validator prüft curricularArea-Wurzeln sowie kind/stage von Einstiegen/Meilensteinen im ausgewiesenen Mathprofil. testHardLearningRouteValidation186–269 hat echte falscher-Kind-/falsche-Stage-Gegenfälle. |
+| G37 | M / Kanonische Mathematik Sek I/II | H | E16 | Outlook-Direktankerregel im realen Math-Graphaufruf; testHardLearningRouteValidation234–269 verwirft Clusterabkürzung/falsche Stage statt autorisiertem direktem Einstieg. |
+| G38 | M / Kanonische Mathematik Sek I/II | H | E16 | Outlook-Gegenfälle testHardLearningRouteValidation156–170 trennen fehlende contains-Mitgliedschaft und fehlenden direkten requires-Pfad. C527/539 prüfen Daten und Tests. |
+| G39 | M / examData taskContent/solutionContent einschließlich EN | H | E17 | Vier tatsächlich konsumierte Exam-Markdownfelder werden im ganzen geladenen Graph geprüft; kleine Pipe-Singletons gelten ausdrücklich nicht als Tabelle. Echte kaputte Trennzeilen/Spaltenzahlen im Gegentest. |
+| G40 | M / Curriculum-Manifest | H | E04 | validateGraph.ts1407–1431 prüft gegen bekannte Titelmenge aller Sprachserialisierungen. C527 hart. Fehlender/abweichender Manifesttitel eigener Fehler; kein isolierter CLI-Gegentest belegt. |
+| G41 | M / Deklarierte Metadatenprofile | H | E11 | validateGraph.ts700–719 prüft deklarierte Phasen-/Leitideen-/Kompetenzvokabulare. Nicht jede freie Domäne wird zu HE-Metadaten umgedeutet; dedizierte CLI-Mutationsfälle fehlen. |
+| G42 | M / Atomar normalisierter Gesamtgraph | N | E08/E49 | Kein harter statischer Checker der global atomar expandierten Voraussetzungskanten gefunden. Gegenbeispiel: A contains a, B contains b; a requires B,b requires A. Goal-node-effective azyklisch, atomar a↔b. S0-§7.3-Auditor prüft bewusst andere Relation. |
+| V33 | M / Retained unsichtbare Kompatibilitätscluster | P | E20 | applicabilityCompiler.ts1008–1012 liefert ausgeschlossenen Knoten leeren Scope und1268 überspringt child-union. Kein vollständiger negativer Autorencorpusfall für alle retained compatibility clusters gefunden; Prüfprofil21 Landschaften. |
+| V34 | M / Mathematik Sek I Views | H | E18 | validateCompositionViews.ts697–711 CPV210: jede einschlägige Math-SekI-View enthält kanonischen Anker. C601 reale Views. Dedizierter Mutationstest dieses CLI-Zweigs nicht identifiziert. |
+| V35 | M / Mathematik Sek I Views | H | E18 | validateCompositionViews.ts722–755 CPV211: konfigurierte Jahresordner und anwendbare Aufgaben sichtbar, explizit fremde Jurisdiktion bzw. nicht verfügbare target-Basis korrekt herausgefiltert. C601 harte echte Viewprüfung. |
+| V36 | M / Mathematik Sek I Prüfungsordner | H | E18 | validateCompositionViews.ts535–684 CPV212 prüft reale Jahresordner, atomare Aufgaben/examData/Anforderungen/Duplikate/alte Terminals. C601 hart; vollständige spezifische Mutationstestzuordnung fehlt. |
+| V37 | M / Mathematik Sek I Views | H | E18 | validateCompositionViews.ts712–719 CPV213 lehnt sichtbaren alten SekI-Übungsaggregatzweig ab. C601 hart im deklarierten Scope; isolierter CLI-Gegentest nicht identifiziert. |
+| V38 | M / Mathematik Sek II/CrossStage Views | H | E18 | validateCompositionViews.ts771–780 CPV214 prüft Math-SekII/CrossStage-Anker. C601 hart; isolierter CLI-Gegentest nicht identifiziert. |
+| V39 | M / Mathematik Sek II/CrossStage Views | P | E18 | validateCompositionViews.ts781–793 CPV215 fordert sichtbare konfigurierte Terminal-ID. Der Zweig prüft nicht selbst noch atomar/examData; andere Graph-/Routenchecks ergänzen, aber vollständige kombinierte CLI-Mutation fehlt. |
+| V40 | M / HE-Mathematik G8/G9-Projektion | H | E24 | reportHeMathDurationProjection.ts454–469 und C561 check:he-math-duration-projection prüfen aktuellen tatsächlichen HE-Math-G8/G9-Belegumfang auf authored Jahresstruktur/Placements. Noch kein vollständiger isolierter Gegenfallkatalog identifiziert. |
+| V41 | M / Angebotene Gymnasium-Dauermodelle | P | E24 | C571–577 prüft aktuellen Bericht/Offerings und reviewed Policies mit Flags für Math sowie M6-Subjects. Kein universeller harter Nachweis aller ungeschützten Curricula/aller künftigen Angebotsprofile. |
+| V42 | M / Kanonische Migration | N | E45/E49 | Cutover-Status-/Bestandsberichte vorhanden, aber kein generisches CI-Gate gefunden, das jede konkrete Umstellung des Lernendeneinstiegs technisch an genau cutover_ready bindet. Evidenz-Watch ist engerer Baseline-Delta-Vertrag. |
+
+### QA und Reviewevidenz nach Einzelregel
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| Q01 | M / Curriculum-Maturity | H | E28 | deriveCurriculumMaturity5990–6022 berechnet kumulative Stufen. Unitnegatives M7-ohne-M6/fehlender Scope. Berichtsgültigkeit ist hart; nicht jede wahrheitsgemäß niedrige Stufe scheitert CI. |
+| Q02 | M / CQR-Status | H | E28 | Verschiedene Statuswerte bleiben erhalten; not_configured verhindert die abhängige höhere Stufe. testDeepUnderstandingRollout143–168 prüft fehlende Konfiguration/Scope. Kein fehlender Check wird als pass umgewandelt. |
+| Q03 | M / M0–M6-Ableitung | H | E28 | M0–M6 entstehen algorithmisch aus aktuellen CQR-Werten und konfigurierten Scopes; C618–621 regeneriert und vergleicht Artefakte. Das ist keine universelle Mindeststufe für ungeschützte Fächer. |
+| Q04 | M / Scope-Maturity | K | E28 | Konzept Scope-Reife sagt maximal M3, unmittelbar folgende Tabelle und deriveScopeMaturity erlauben M4. Implementierung folgt Tabelle. D-QS braucht eindeutige normative Auflösung; keine automatische Auswahl im Audit. |
+| Q05 | M / Geschützte Curricula | H | E29 | Aktuelle eindeutige Landschafts-/Fachidentität und minimumMaturity pro geschütztem Eintrag hart; konkrete nichtbestandene CQR-Regeln bei tatsächlichem Unterschreiten ausgegeben. Zehn geschützte Curricula, wie Normprofil. |
+| Q06 | M / Änderung geschützter Untergrenzen | P | E29 | Floor-Policy verlangt reason und gültige Struktur, lehnt nicht unterstützte Ausnahmeobjekte ab. Kein technischer Nachweis authentischer Product-Owner-Zustimmung zur Policyänderung; positiver Text allein ist keine Zustimmung. |
+| Q07 | M / Kanonische Änderungen | H | E28/E29 | C618–621 erzeugt aus aktuellem Code/Quellenstatus und vergleicht alle getrackten/ungetrackten Statusartefakte; geschützte Floors werden geprüft. Haupt-CI-Pfadfilter beachten: reine normale Normdokumentänderung startet diesen Workflow nicht. |
+| Q08 | M / M7-Nenner | P | E30 | reportDeepUnderstandingRollout hasStrictDeepUnderstandingCompletion800 prüft nichtleere exakte aktuelle IDs, doppelte Claims werden entzogen. Aktive Fachreviewkonfiguration definiert geprüften Nenner; keine neue globale all-subject-M7-Registry behauptet. |
+| Q09 | M / M7-Abdeckung | H | E30 | intersectStrictGoalGates765 und completion800 bilden exakten Schnitt statt Summen/Rundungen; testDeepUnderstandingRollout215–225 echte fehlende Gate-/Duplikat-Gegenfälle. |
+| Q10 | M / M7-Abschluss | P | E28/E30 | M7-Ableitung verlangt M6 plus zentralen vollständigen Bericht/requiredChecks/Issues. Reale Durchsetzung über konfigurierte Fachberichte und geschützte M7-Floors; kein universelles Owner-Akzeptanzsignal. |
+| Q11 | M / M7-Berechnung | H | E28/E30 | CQR303 wird aus zentralem reportDeepUnderstandingRollout projiziert (generateCurriculumQualityStatus3846–3883). Kein eigener zweiter M7-Zähler dieser Statuspipeline; weitere UI-Projektionen Runtimezuordnung separat. |
+| Q12 | M / M7-V | H | E30/E36 | testDeepUnderstandingRollout115–131 prüft ausdrücklich: menschliches NOK vetoisiert V nicht, Human-OK allein erfüllt V nicht, stale Hash blockiert. Displayfreigabe E36 ist anderer Vertrag und darf nicht gleichgesetzt werden. |
+| Q13 | M / M7-V | H | E30 | testDeepUnderstandingRollout132–139: deferred_provider_limitation und deferred_quality_review bleiben trotz früherem Human-OK offen. C611 sowie reale CQR303/Floors. |
+| Q14 | M / Beschreibungsgate D | P | E31 | Aktuelle doppelte Runden-/Synthesebindungen zentral ausgewertet; Tests manipulieren Kampagne/Prompt/Kontext/Bündel. Maschinen prüfen Manifest und Vollständigkeit, nicht tatsächlichen unsichtbaren unabhängigen Denkprozess. Reale Scopebindung konfigurierte Fächer. |
+| Q15 | M / V2-Verständnisgate P | P | E32 | V2-Schema plus Goal-/Reviewinput-/Kriterien-/Run-/Ressourcenfingerprints werden im aktiven Reviewprofil geprüft; stale Hash echte Gegentests. Kein M7-Pass für unkonfigurierte Profile und kein C(q)-Vollanwendungsbeweis. |
+| Q16 | M / Profilstatus | P | E31/E32/E38 | Stale Review wird in den aktiven Evidenzkonsumenten verworfen, Tests ändern aktuelle Goal-/Ressourceninputs. Nicht jede mögliche neue Runtime-Guidanceintegration ist dadurch nachgewiesen; vorhandene gebundene Verbraucher geprüft. |
+| Q17 | M / Profilfreigabe | H | E32 | positiveGoalEvidenceProfileModel174–178 und goalEvidenceProfileModel200 verlangen human bei approved; AI muss needs_human_review bleiben. testPositiveGoalEvidenceProfileModel338–347 verwirft forged approved. Authentizität realer Menschentscheidungen bleibt außerhalb dieser JSON-Strukturprüfung. |
+| Q18 | M / Reviewkampagne | P | E31 | validateGoalDescriptionReviewCampaign754–808 bindet genaue Artefakte, OutputDigest und exakte geordnete Goal-IDs; falscher/stale Prompt/Input im Test verworfen. Aktive echte Kampagnen durch zentralen Gatebericht, kein universeller Vollcorpusdirektaufruf. |
+| Q19 | M / Bilinguale Beschreibungskorrektur | P | E31 | Kampagnenschema/Record-Semantik sichert DE/EN-Ersetzungsfelder und Entscheidungstypen. Sprachliche Bedeutungsäquivalenz bleibt fachliches Urteil; kein Maschinentest darf sie allein anhand zweier vorhandener Strings behaupten. |
+| Q20 | M / Kontrollierte Autorenänderung | N | E49 | Kein allgemeiner CI-Change-Set-Übernahmevalidator identifiziert, der exakt menschlich akzeptierte Ersetzungen gegen kanonische Schreibdiffs bindet und historische Graphsemantik bewahrt. Vorhandene Resolution-/Synthesis-Materialisierer erzeugen Reviewdaten, kein vollständiger Nachweis dieses Autorenübergangs. |
+| Q21 | M / Zweite Blindrunde | P | E31 | validateGoalDescriptionReviewDualRound159–216 erzwingt getrennte campaign/round/independenceGroup und Blindflags. diversityPolicy kann report_only sein; strenge Variante fordert disjoint Provider ODER exakte Modellidentitäten inkl.Version, keine geprüfte Modellfamilienunabhängigkeit. Tatsächliche verdeckte Inputs nicht maschinell bewiesen. |
+| Q22 | M / Reviewsynthese | P | E31 | Dual-round-Resolution-/Synthesis-Tests erhalten gebundene Dissensbegründung und unterscheiden stale Inputs. Keine maschinelle Wahrheit darüber, ob eine fachliche Entscheidung den Dissens angemessen löst; Scope aktuelle konfigurierte Kampagnen. |
+| Q23 | M / Semantische Atomizität | P | E33/E28 | CQR301/zentral A fordert aktuelle ausgewählte Contentreviews. Direkter semanticAtomicityReview-CLI blockingErrors301–304 enthält parse/shape/duplikat/fehlend/stale; non_atomic,needs_developer_review und obsolete werden separat gemeldet und müssen über CQR/Gate-A bewertet werden. Keine all-subject-harte direkte CLI-Behauptung. |
+| Q24 | M / Atomizitätsscope | P | E33 | semanticAtomicityReview127–135 schließt Orientation/Memory/Practice/Exam aus gewöhnlicher Lane aus; zentrale Fachscopeprüfung. Kein eigener gezielter Mutationskatalog aller ausgeschlossenen Arten identifiziert. |
+| Q25 | M / Fachliche Atomizität | ND | E33 | Fachliche Atomizität ist kein vollständig deterministisches Prädikat. E33 prüft aktuelle eindeutige begründete Reviewhülle; Keywordzählung ersetzt das Urteil nicht. |
+| Q26 | M / Memory-Entscheidungen | P | E34 | memoryCardReview582–632 validiert aktuellen Decisionstatus, Grund und Goal-/Konfigurationsbindung; reale aktive Reviewkonfigurationen C609 hart. Fehlende gesamte Konfiguration verhindert M6 via CQR302 statt universellen graph-CI-Fehler. |
+| Q27 | M / memory_required | H | E34 | memory_required muss existierende Memorygoals und Decks referenzieren (memoryCardReview605–627); fehlende/unlesbare Decks fließen in harte Fehler ein. Scope konfigurierter Review, wie Norm. |
+| Q28 | M / Memory-Views | H | E34 | collectMemoryVisibilityReport347–432 prüft jede deklarierte View und wenigstens einen referenzierten Memorygoal; fehlende/ungültige visibilityScopes werden in aktiver Configdiscovery negativ getestet. |
+| Q29 | M / Aktive Primärkarten | H | E34 | memoryCardReview634–674 verlangt kept,necessary=true,Origin und aktuellen Cardhash;1143–1150 blockiert fehlende/stale/obsolete Cardreviews. Scope aktive Primärkarten des konfigurierten Checks. |
+| Q30 | M / Kartenursprung | H | E34 | memoryCardReview660–671 prüft ordinary-atom Ursprung,current memory_required und exakt zugehöriges Deck. Keine Source-Jurisdiktion wird zur kanonischen Kompetenzidentität gemacht. |
+| Q31 | M / Entfernte Karten | H | E34 | memoryCardReview1149 meldet jede weiterhin aktive als remove markierte Karte hart. Historische remove-Records ohne aktive Karte sind erlaubt (obsolete-Ausnahme1021). |
+| Q32 | M / Memory-Trace | H | E34 | Traceability/Missing-Trace-Fehler1151–1154 prüfen Begründung über behaltene Karten und aktuelle Memoryentscheidung; kein pauschales Abrufmastery daraus. |
+| Q33 | M / Memory-Namens-/Ablageprofil | N | E34/E49 | Kein generischer CI-Checker gefunden, der kanonische Deck-/Card-/Datei-IDs vollständig auf verbotene Source-Bundeslandpräfixe prüft. Bestehender Memoryreview prüft Identitätsauflösung, nicht dieses gesamte Namensprofil. |
+| Q34 | M / Memory-Reports | H | E34/E28 | prequality:curriculum-status regeneriert alle aktiven Memoryberichte; C618–621 vergleicht generierten Status. Reviewledgers bleiben Quelle, nicht manuell vergebener Reportstatus. |
+| Q35 | M / Memory-Eignung | ND | E34 | Ob kompakte Inhalte tatsächlich abrufpflichtig sind und jede no_memory_needed-Entscheidung einzeln angemessen ist, bleibt fachliche Prüfung. Deterministisch werden Grund/Status/Scope/aktuelle Bindung und Trace geprüft. |
+| Q36 | M / M6 | H | E28/E34 | deriveCurriculumMaturity6019: fehlendes CQR302-pass beendet auf M5; CQR303-pass wird erst danach für M7 ausgewertet. Unitgegenfälle fehlende Konfiguration und M7-ohne-M6. |
+| Q37 | M / M5-View-Verfügbarkeit | P | E18/E28 | CQR401 prüft vorhandene Compositionviewzuordnung; C601 validiert echte registrierte Views. Niedrigere ungeschützte Curricula können ehrlich unter M5 bleiben; kein universelles Angebotserfordernis. |
+| Q38 | M / Applicability-Warnschuld | P | E20/E21/E28 | CQR501 erfasst aktive und obsolete akzeptierte Warnschuld als eigene Reifebedingung; APV202 bleibt diagnosis. validate:view-filters allein scheitert für Warnungen nicht; harte Reifewirkung nur benötigtes Profil/Floor. |
+| Q39 | M / M7 und Human-Freigaben | H | E30/E36 | Explizite Tests halten Human-OK/-NOK bei maschineller V-Auswertung unverändert. Separates Displaygate hat menschliches NOK als Veto; M7 zählt das nicht als eigene menschliche Freigabe. |
+| Q49 | M / Neue gewöhnliche Kompetenzformulierungen | ND | E51 | Prüfbarkeit/Verständlichkeit und fachlich begründete Zielgrenze sind Urteile. Wordinglint verbietet bestimmte Formelsammlungsformulierungen, kann aber gute Kompetenzformulierung nicht beweisen. |
+| Q50 | M / Formelsammlung-Ausnahme | P | E51 | validate_competency_wording.py29–53 verlangt exakte path/goalId-Schlüssel sowie nichtleere sourceRef/sourceQuote und verbotenes Wort im Zitat; unbekannte/stale Ausnahme scheitert. Der zitierte offizielle Inhalt wird nicht extern automatisch verifiziert. |
+| Q51 | M / Textkorrekturen | P | E51 | Bekannte wissenschaftliche oe-Kollisionsfehler werden hart gegen Math/Physikbestand geprüft; echte negative/positive Unitfälle. Kein algorithmischer Nachweis jedes individuellen Sprach-/Fachurteils oder aller deutschen Schreibweisen. |
+| Q52 | M / Reviewportabilität | P | E02/E27/E31 | Repository-Source-Availability weist absolute/ignorierte Pfade zurück, Curriculumsymlinks portabel geprüft. Kampagnen repositoryPath154 erlaubt aber absolute Pfade innerhalb desselben Repo, positive repoPath122 ähnlich; kein einheitlicher repo-relativer/committable-Vertrag aller Reviewinputs. |
+| Q53 | M / Reviewformate | P | E01/E31/E32/E34 | Reale JSON/JSONL-Verbraucher parsen vollständig und scheitern bei Syntaxfehlern. Kein universeller Test identifiziert, der nach jedem Autorenschreiben erneut liest oder jede rohe Toolausgabe vor vermeintlicher JSON-Speicherung absichert. |
+| Q54 | M / Historische Reviewreparatur | N | E49 | Kein allgemeines automatisches Gate für bytegetreue historische Roharchive plus additive reparierte Reviewnachfolger gefunden. Aktuelle Run-/Artefakthashes prüfen aktuelle Bindungen, sind kein pauschaler historischer Immutabilitätsvertrag. |
+| Q55 | M / Wirksamkeitsclaim | ND | E30 | Maschinelles M7 und separater Humanprozess sind belegte Statusverträge; allgemeine Wirksamkeits-/Fehlerfreiheitsclaims benötigen zusätzliche wissenschaftliche Evidenz und sind kein vollständig deterministisch prüfbarer Inhaltsclaim. |
+
+### Quellen und Bilder nach Einzelregel
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| S01 | M / Registrierte Source-Snapshots | P | E25/E27 | CQR000 prüft aktuelle registrierte Extraktionsmetadaten/lesbare Eingaben und offizielle HTTP(S)-URL; Sourceinventory-Tests prüfen Komponenten/Versionen/fehlenden Cache. Reifewirkung über konfigurierte Quellen und geschützte Floors, kein automatischer Amtlichkeitsbeweis des URLinhalts. |
+| S02 | M / Source-Ingestion | P | E27 | generateCurriculumQualityStatus5812ff erfasst extrahierte/unregistrierte Goal-/Atom-IDs und CQR000-Frische. Direkter Sourceinventory-Test und reale Statusregeneration; ungeschützter niedriger Reifestand kann ehrlich committed werden. |
+| S03 | M / Deklarierte Quellenabdeckung | P | E24/E27 | Quellen-/Jurisdiktions-/Dauermodellberichte prüfen registrierte benötigte Zellen und reviewed Entscheidungen. Geschützte Floors plus Math/M6-duration-Flags hart; vollständiges beliebiges Angebotskreuzprodukt nicht belegt. |
+| S04 | M / Source-Cache | H | E27/E52 | Repositorysource-Vertrag unterscheidet offiziellen URL/lesbare Extraktion von optionalem PDFcache; Sourceverification unterstützt strict bzw. explizit committed-bindings. Tests fehlender Cache/Originalbytes verhindern erfundenen Extraktionsabschluss. Kein LiveHTTP-Claim in committed-bindings. |
+| S05 | M / Bundesland-Quellenabdeckung | P | E26/E27 | CQR003 und harter Math/Physik-Sourceaudit verwenden direkte/reviewed Quellenbelege je Jurisdiktion. Andere ungeschützte Fächer nur Bericht/Reifestufe; kein vollständiges all-subject-Passgate. |
+| S06 | M / Rückwärtsabdeckung | P | E27 | CQR003-Rückwärtsabdeckung erfasst komplette Sourceatomclosure und fehlende Viewmappings. Reale Statusdaten werden neu gerechnet, Fehler beeinflussen Reife/Floors. Sourceoriginal-Inventar selbst muss autorisiert vollständig sein. |
+| S07 | M / Belegrollen | H | E26 | sourceCoverageEvidence38–106 akzeptiert direkte Belege oder explizit registrierten zulässigen Surrogat; reine requires-closure/cluster/assessment-Kette negativ getestet266–341. Override/child-union allein wird nicht als Quelle gewertet. |
+| S08 | M / requires-closure-Surrogate | P | E26 | Ausdrücklich reviewed Surrogatregister plus aktive requires-Herkunft und gültige ordinary atomare Zielroute erforderlich; Zyklus/fehlender/Cluster-/Assessmentweg scheitert. Fachliche Legitimität der logischen Sequenzlücke bleibt Reviewurteil. |
+| S09 | M / Mappingfit und Vollständigkeit | P | E20/E26/E27 | APV202 zeigt partial-only als Diagnose; Sourceaudit/CQR prüfen tatsächliche registrierte Abdeckung getrennt. partial-Existenz wird nicht mit Vollcoverage gleichgesetzt; fachlicher Fit bleibt Review, kein allgemeines hartes Gate nur aus Label. |
+| S10 | M / CQR-003-Pass | P | E27/E28 | CQR003-Pass erfordert beidseitige volle registrierte Abdeckung und passende Projektionslage; zentrale Datenbedingungen bei generateCurriculumQualityStatus5640–5717. Hart über benötigte Floors, nicht durch jede bloß wahrheitsgemäß rote CQR-Zeile. |
+| S11 | M / Source-Kursniveau | P | E27 | CQR004 evaluateCourseLevelMapping4690–4837 prüft LK/GK_LK-Zieltags; C605 test:course-level-mapping-consistency echte Gegenfälle plus Status/Floors. Begrenzter Source-/Kursprofilumfang, kein allgemeines Textverständnis von Kursnamen. |
+| S12 | M / Unspecified-Kursniveau | P | E27 | resolveSourceCourseLevel4590ff setzt UNSPECIFIED konservativ GK_LK, reviewed courseLevelDecision darf LK-only begründet wählen. C605+Status/Floors; Authentizität/fachliche Angemessenheit der Einzelentscheidung nicht automatisch bewiesen. |
+| S13 | M / CQR-004-Kursniveauabdeckung | P | E27 | CQR004 überspringt partial-Mappings als akzeptierten Kursniveaunachweis bei4786 und erfasst ungemappte Ziele. Teil der aktuellen Sourceprofile/Floors; keine neue all-subject-Mindestfreigabe. |
+| S14 | M / Amtliche Vollständigkeit | ND | E27/E52 | Sachgerechte vollständige Wiedergabe der tatsächlichen Originalquelle ist fachliches Quellenurteil. ID-/Komponenten-/Textanker-/Hashprüfung sichert die Evidenzhülle, nicht automatisch sämtliche PDF/HTML-Inhalte. |
+| S15 | M / Source-Text-Verifikation | P | E52 | Sourceverification bindet Claimtypen, Sourcebytes, Text/PDFprojektion, Passage/Locator und sha256. --check sowie echte Mutationsselftests werden im realen Mathrelease-Conformanceprofil aufgerufen; kein all-subject/live-PDF-Vollgate. |
+| S16 | M / Source-Text-Human-Restfälle | P | E52 | humanReviewRecords und reviewEvidenceSha256 müssen zum aktuellen Evidenzpayload passen; completed drift scheitert. Schema verlangt Entscheidungshülle, tatsächliche menschliche/rechtliche Freigabe bleibt gesondert. |
+| S17 | M / Quellen versus Lernmaterialien | P | E47 | Separate Contentkataloge/Goal-Mappings sind hart validiert; konkrete11Goal-Physik-Libre-Verlagerung geprüft. Kein allgemeines CI-Verbot identifiziert, das jeden neuen optionalen externen resourceLink auf jedem kanonischen Goal zurückweist; bestehende MIT-GVR007-Linkpflicht separat. |
+| S18 | M / Content-Ownership | P | E47 | Contentpaket ist separate geschlossene Struktur mit stabilen bekannten Goal-IDs. Autorisierte Materialauswahl an SkillPilot-ID ist zusätzlicher Runtimevertrag S19–24; statisch kein generischer Beweis sämtlicher möglicher kanonischer Contentfelder. |
+| S25 | M / Contentmigration | P | E47 | Konkretes Migrationmanifest hält before/after Quellen/Bildlinks fest. Semantikhash wird nur mit --verify-relocation geprüft, das Main-CI nicht setzt. Keine universelle automatische Rückbindung aller historischen Practicefingerprints. |
+| S26 | M / Contentmigration | P | E28/E38/E47 | Live-Bücher/Status werden aus Autoreninputs neu erzeugt; konkrete historische Bildhashes E35 gepinnt. Kein allumfassendes bytehistorisches Gate für jeden eingefrorenen Snapshot/jedes publizierte Paket/jeden Reviewreceipt. |
+| S27 | M / Materialmapping | ND | E47 | Unterstützung eines Lernziels ist fachliche Mappingaussage. Technische package-review/independent-mapping/link-only-Metadaten verhindern keine beliebigen falschen Freitextclaims; kein Maschinenpass für Fehlerfreiheit oder Lernergebnis. |
+| S28 | M / Nachvollziehbare Quellenrationale | P | E46 | Begründungsmodell trennt classic_source_reviewed,classic_source_gap und MEMroute; exakte All-Relevant-IDMenge/aktuelle Goaltexte geprüft. Publicindex prüft Summenminima und PoCrouten, nicht jeden Claim gegen sämtliche Originalpassagen neu. |
+| S29 | M / Retained Source-Artefakte | P | E27/E40/E52 | Release-/Sourcebelege binden Quellstand und Jurisdiktion mit Digests; Sourcepfadname allein keine Identität. Nicht alle archivierten Sourceassets universell unter einem harten Zuordnungsvalidator gefunden. |
+| S30 | M / Source-Landscape-Registry | P | E25 | checkEntry116–120 überspringt fehlenden archiveSourcePath,nichtregulären/nichtJSONPfad ohne finding. Existierende parsebare lokale JSONquelle muss deklarierte Landscape-ID treffen. Vollständige lokale Auflösung/Mehrdeutigkeit wird damit nicht garantiert; kein missing-file-Gegentest gefunden. |
+| S31 | M / Kanonisches DE-Gymnasium-Landschaftsverzeichnis und Reviewinputs | P | E01/E27 | Runtime-Discovery-/Symlinkprüfung und Sourceavailability prüfen deklarierte Eingabegrenzen; quality-Verzeichnis bewusst separat. Kein universeller Dateiinhalts-/Scratchcache-Verbotschecker für sämtliche curricula-Verzeichnisse gefunden. |
+| I01 | M / Kanonische Bildlinks | H | E35 | Assetchecker120–142 prüft konkretes type/resourceType/role/skillpilotId im ganzen kanonischen DE-Pool; C625 echte Daten. Spezifischer Mutationssuite des CLI fehlt, bestehende Bildmodelltests allein nicht dafür zählen. |
+| I02 | M / Bildassetidentität | P | E35/E36 | Goal-ID-Dateiname/Pfad,altText und reviewStatus hart; provider,license,lang sind im Runtime-schema optional und Assetchecker verlangt sie nicht vollständig. Keine vollständige Metadatenpflichtprüfung behaupten. |
+| I03 | M / Aktive und kopierte Assets | H | E35 | Pfad/Realpathcontainment und sha256 aller drei aktiven Kopien hart nach prepare:runtime-assets. Gepinnte historische Assets ebenfalls bytegeprüft. Kein Schluss auf sichtbare Hostanzeige. |
+| I04 | M / Bildproduktion | P | E35/E36 | Providerpromptdatei muss vorhanden/innerhalb Root sein, Reviewhash bindet aktives Bild. Kein allgemeiner harter Prüfer tatsächlicher Provider-/Modell-/Promptwahrheit und aller Kandidatenhashes; Hilfsdefaults sind keine Herkunftsbelege. |
+| I05 | M / Bildgenerierung | P | E36 | Aktives Bild benötigt aktuelle freigegebene Evidenzhülle (oder exakt authorisierte Pilotexception), Generation allein genügt nicht. Tatsächliche gesonderte Sichtprüfung ist nicht durch vorhandenes File/Approvalstring bewiesen. |
+| I06 | M / Fachliche Bildqualität | ND | E36 | Fachliche Korrektheit des sichtbaren Bilds ist kein vollständig deterministisches Prädikat; aktuelle gebundene Reviewentscheidung und explizite NOK-Felder sind prüfbare Hülle. |
+| I07 | M / Darstellungsqualität | ND | E35/E36 | Altersgerechte Lesbarkeit/Barrierearmut benötigt konkrete Sicht-/Nutzungsprüfung; nonempty Alttext/Datei/Approval allein beweist diese Eigenschaften nicht. |
+| I08 | M / KEEP und Ersatz | P | E35/E36 | Historische Bildbytes und aktuelle Reviewbindung geschützt, aber kein allgemeiner deterministischer KEEP/Ersatzentscheidungsvalidator mit vollständig begründeter fachlicher Schwäche gefunden. |
+| I09 | M / Programmgenerierte Endbilder | N | E35/E49 | Standalone-SVG-Guard prüft aktive/externe Inhalte, nicht vollständige dokumentierte fachliche Ausnahmebegründung für jedes programmgenerierte Endbild. Kein entsprechender harter Regelscope/Gegenfall identifiziert. |
+| I10 | M / Substantielle Bildänderung | P | E30/E32/E36 | Asset-/Goal-/Textdrift macht Hashbindungen stale und verhindert aktuellen Gatepass. Inhaltlich tatsächlich erneutes Review statt bloßer Hashänderung bleibt Reviewprozess; kein Allwissen der Maschine. |
+| I11 | M / Bildprompts | L | E53 | Lokaler Promptappend-/Reconstruction-Checker erkennt technische Tokens/GoalIDs, ist kein Hauptworkflowgate. Keine vollständige automatisierte Erkennung sämtlicher privaten Promptinhalte; Providerregeln gelten weiterhin. |
+| I12 | M / Rejected/Deferred-Bilder | P | E35/E36/E37 | Current approvals und Displayveto blockieren ungeeignete aktive Bilder im ausgewählten Subjectscope; genau ein explicit-owner hashgebundener rejected Pilot bleibt zulässige Ausnahme. Kein universelles vollständiges Failed-attempt-Archiv-/Inaktivitätsgate. |
+| I13 | M / Bildstatus | P | E35/E36 | Nichtleerer reviewStatus hart, aktuelle Approval separat. Weder Schema noch Assetcheck binden jeden möglichen Statuswechsel pilot→released an tatsächliche Releasefreigabe; vorhandener Assetlink allein ist kein Pass. |
+| I14 | M / Bildfreigabe-Releasegate | P | E36 | Math/Physik/Chemie Displaygate verlangt Human-OK oder aktuelle AI; aktuelles Human-NOK blockiert. Separates exact-hash Ownerpilotmodell wird ausdrücklich nicht M7. Kein all-subject-Hardcheck außerhalb der ausgewählten Ledger. |
+| I15 | M / Bild-M7-Abgrenzung | H | E30/E36 | Gegentests testDeepUnderstandingRollout115–139 und Approval-Coverage-Suite beweisen unterschiedliche maschinelle V- und Displaybedingungen. Kein ableitbares Menschenfreigabesignal aus M7. |
+| I16 | M / Atomic-Split | ND | E35/E49 | Ob gutes Aggregatbild nach fachlichem Split weiterhin korrekter Parentüberblick ist, braucht fachliche Prüfung. Kein allgemeines automatisiertes Split-/KEEP-Reviewgate identifiziert. |
+| I17 | M / Bildbedeutung | P | E35/E47 | Eigener goal-visualization-Linktyp trennt Bild von curriculum/resource/material. Kein universeller statischer Validator semantischer Freitextclaims in Bild/Alttext/Coachtext; Runtimebildtool bleibt separat read-only zu prüfen. |
+
+### Bücher und Publikation nach Einzelregel
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| B01 | M / GoalBook HTML/PDF | H | E38/E54 | Versioniertes serialisiertes Modell ist gemeinsamer HTML/PDF- und Browserinput; Publicationchecker validiert denselben Runtimeparser. F395 Pipeline/F446 echte UI-Verträge und B325/327 tatsächliche Publikationen. |
+| B02 | M / Initiale atomare Buchedition | H | E38/E54 | buildGoalBookModel1829ff verwendet explizite current curricularAtomic-target-Menge; Tests echte ausgeschlossene Memory/Exam/Support und ungebundene Fremdteilbäume561–567. Scope initiale registrierte Edition. |
+| B03 | M / Goalpages | H | E38/E54 | Renderer assertGoalBookRenderable1315 und PDFinspection3146 prüfen eindeutige Goals/eine Seite sowie physische Seitenanzahl; Layoutoverflow-Gegenfälle1278–1306. Frontmatter ist separat gezählt, kein zweites Goalblatt. |
+| B04 | M / Goalpages | H | E38/E54 | Modell/Renderer verlangen vollständige Goal-ID/Texte/Fingerprint und Version; PDFartifactinspection prüft Text/Links gegen Modell. Größengrenze führt zu Fehler statt heimlicher Kürzung. |
+| B05 | M / Buchnavigation | H | E38/E54 | Gebundene Navigationview und enumerierte Sourceviews werden unabhängig gehasht, genaue Zielmenge/Platzierung validiert. F395 Model-/Chapterprojectiontests, B echte Bücher. |
+| B06 | M / Buchreihenfolge | H | E54 | goalBookModel1357 topologicallyOrderTargets ordnet prerequisite vor consumer mit deterministischen TieBreaks; testGoalBookModel376–385 und Konfliktfixtures prüfen es. Keine Änderung kanonischer Autorenkanten. |
+| B07 | M / Buchrelationen | H | E38/E54 | Model-/Publicationparser lösen direkte/reverse Relationsziele und sichere URLs auf; negative wrong-landscape/edition/credentials und unbound-external Tests Publication178–245/Model532–588. |
+| B08 | M / Buchexternes Prerequisite | H | E38/E54 | Externe fachliche landscapeId muss digestgebunden sein, Buchcontext eigener canonicalUrl. testGoalBookPublication211–245 echte falsche Quelllandschaft/Fremdbindung, testGoalBookModel561–588 unbound subtree/closed fields. |
+| B09 | M / Fail-closed Layout | H | E54 | Layoutinspektion prüft Goalregionen/Frontmatter, Overflow verhindert Ausgabe. testGoalBookRenderer706 verbietet shrink transform,1278–1306 stellt sicher, dass fehlerhafte HTML/PDF bestehende Artefakte nicht ersetzt. |
+| B10 | M / HTML/PDF-Parität | H | E38/E54 | Beide Renderformen konsumieren identisches Modell; HTML/PDF-Relationen und endgültiges PDF werden geprüft. Unit-/UI-/Runtimeparität plus tatsächlicher Publicationchecker, keine getrennte fachliche Auswahl. |
+| B11 | M / Buchreproduzierbarkeit | H | E54 | testGoalBookModel239–247 baut gleiche Inputs mehrfach und vergleicht normalisierte Bytes/Digest; Renderer prüft stabile Destinations/Outline. Keine Behauptung bytegleicher volatiler PDFs. |
+| B12 | M / Publikationsmanifest | H | E38/E54 | Publicationchecker351–505 vergleicht aktuelle Inputs, Modellsemantik und Bytehashes/Manifest aller Outputs; Fremd-/stale-URL-/Manifestnegatives vorhanden. Exakter Registry-/Locale-/Scopescope. |
+| B13 | M / Publikationsfrische | H | E38 | ExpectedSerializedModel/currentBuild-Abgleich408–423 und Ausgabehashes454ff machen stale publiziertes Artefakt hart ungültig. B forcebuild+verify, kein grüner alte-Cache-Shortcut. |
+| B14 | M / Nationwide Atlas | H | E38/E54 | goalBookModel1123ff collectAtlasTargetUnion prüft genau authorisierte Sourceviewmanifest-Union samt scopes; nur explizite Publikationsregistry wird gebaut. Dateiglob allein reicht nicht. |
+| B15 | M / Atlas-Applicability | H | E54 | goalBookModel1151–1299 konstruiert konkrete Scopekeys als Bundesland/Stage/Duration/Course; Modeltests Dauer-/Kurs-/Scopeänderungen ab630ff und Renderer1500ff verwerfen fehlerhafte Tupel. Kein dimensionskartesisches Produkt. |
+| B16 | M / Atlasfilter | H | E54 | Browserruntime goalBookRuntime.test.ts über F395 prüft konkrete Filtersemantik; Renderer/Modelparser gültige tuple. null wird als fehlende Differenzierung erhalten, Duration an Jurisdiktion gebunden. |
+| B17 | M / Buchpräorder | H | E54 | Modell2460–2465 und Renderer1450–1455 verlangen eindeutige lückenlose gemeinsame treeOrder; F395 Chapterprojection-/Model-/Renderertests und B echte Artefakte. |
+| B18 | M / PDF-Navigation | H | E54 | inspectGoalBookPdfOutline3031 und artifact3146 vergleichen vollständigen Outlinebaum/Destinations/TOC mit Modell; testGoalBookRenderer473–564 korrumpiert Parent und PDFpreconditions. |
+| B19 | M / Print-Ressourcen | P | E54 | openValidatedGoalBookPage2016 routet nur virtuelle Origin; unerwartete externe Requests werden2050 erfasst und2071 nach goto als Fehler gemeldet, aber kein catch-all/offline-Block gefunden. Erfolgreiches Rendern verwirft Netzwerkversuch, verhindert nicht ausdrücklich jeden früheren Request. Printoriginal/Derivathash getrennt; Assetnegative1042–1114. |
+| B20 | M / Review versus Public | H | E38/E54 | publicationMode-Parser und Bildselection goalBookModel1448 trennen review/public; Modeltests328–374 entfernen stale/human-nicht-freigegebene Kandidaten aus public, lassen gebundene Reviewdarstellung erhalten. |
+| B21 | M / Öffentlicher Reviewatlas | P | E38/E54 | Reviewmode und tatsächliche Assetstatus bleiben im Model/UI erhalten, F446 GoalBookUI tests. Kein generisches Gate, das jede mögliche öffentlich gehostete abgeleitete Kopie außerhalb der registrierten Pipeline prüft. |
+| B22 | M / Originalquellen-Cache | P | E38/E54 | goalBookSourceAtlasInputs mit reviewed sourceDocumentSnapshots prüft Cachebytehash und erlaubt cachefreie gleiche Ableitung. Reale sourceatlas Chemistry/Biology preflight checkGoalBookPublication323–345 hart. Gezielter testGoalBookSourceAtlasInputs67–107 existiert, ist aber nicht direkt in package/workflowpipeline verdrahtet. |
+| B23 | M / Buchdaten und Generierung | H | E38 | B317–322 verbietet getrackte generierte lernzielbuch-Dateien; build und currentInputcomparison bilden einzige aktuelle Wahrheit. Kein unabhängiges Handpatchen eines fertigen PDF als grüne Freigabe. |
+| B24 | M / CI-Publikationsartefakt | H | E38 | B325/327 baut+prüft alle registrierten Bücher, shared runartifact nach SHA wird F/C restored. Job needs verhindert Weiterlauf ohne erfolgreiche Publikationen; fehlende Upload-/Downloadartefakte sind Fehler. |
+| B25 | M / Reviewbundle | P | E55 | exportGoalBookReviewBundle bindet exakte PDF-/Modell-/ReviewJSONL-/Markdownbytes; testGoalBookReviewBundle251–259/477ff prüft Bindung und fremde Inputs. F395 Tests, aktuelles Bundle wird nicht für jeden zukünftigen Reviewgegenstand in CI neu erzeugt. |
+| B26 | M / Reviewfinding | P | E55 | Findingbatch193–244 bindet konkrete Goal-/Page-/Bundle-/Runfingerprints und geschlossene Pflichtfelder. Echte stale/fremde/forged-status-Gegenfälle in testGoalEvidenceReviewContracts. Inhaltliche Reproduktion/Beobachtung kann Schema allein nicht beweisen. |
+| B27 | M / Generischer Multi-AI-Review | P | E31/E55 | Runmanifest/Blindflags und spezifische Description-Dualrunde geprüft. Kein allgemeiner aggregierter Batchgate gefunden, der für jeden generischen MultiAIreview exakt alle Rollen-/Prompt-/Providerfamilien nach tatsächlicher Verfügbarkeit erfordert. |
+| B28 | M / Generalisierung G2 | N | E55/E49 | Finding-Schema lässt E0–E5/G0–G4 als getrennte Enums zu. Kein vollständiger harter Validator gefunden, der G2 genau an E3,mehrere Goals/zwei Kapitel und echten bestandenen Gegenversuch bindet. |
+| B29 | M / Generalisierung G3 | N | E55/E49 | Keine vollständige automatische Evidence-/Samplematrix für G3-Stratifizierung und unabhängige Replikation gefunden. Gefüllte Freitextfelder oder G3-Enum sind kein solcher Nachweis. |
+| B30 | M / Generalisierung G4 | N | E55/E49 | Kein durch CI ausgelöstes vollständiges G4-Gate für beide Fächer/mehrere Archetypen/Offline-Replikation/Canaryphase gefunden. M7 ist ausdrücklich kein Ersatz. |
+| B31 | M / Findingautorität | P | E55 | AI Findings bleiben candidate/ai_candidate; Defaultscope im Reviewbundle begrenzt Claim. Kein allgemeiner maschineller Vergleich tatsächlicher späterer Code-/Normänderung mit belegtem Claimscope identifiziert. |
+| B32 | M / Feedbackautorität | H | E56 | Feedbacksubmission speichert eigenes untrusted Envelope, keine kanonischen Goal-/Profil-/Masterywrites. Public schema verwirft accepted/unerlaubte Felder, Backend vollständige check-Suite. Autorisierte spätere menschliche Änderung eigener Ablauf. |
+| B33 | M / Feedbackbindung | H | E56 | Serverregistry bindet historischen Publicationcontext und prüft genaue Linktuple. GoalFeedbackPublicationRenderVariantTest82–106 bewahrt Originalaudits über Rebuild/Restart und weist falschen Pagefingerprint zurück. |
+| B34 | M / Öffentliche Buch-/Reviewdaten | P | E38/E55/E56 | assertNoLearnerDataKeys sowie geschlossene Review-/Feedbackschema und reserved URLparam Guard blockieren bekannte private Felder. Freitext kann semantisch private Daten enthalten; keine pauschale maschinelle Unbedenklichkeitsgarantie. |
+| B35 | M / Feedbacktrust | P | E56 | Submitservice133–232 gleicht trusted Context serverseitig ab und speichert externen Text getrennt. Keine Canonicalwrites/automatische URLfetches im Submitpfad; generischer späterer automatischer lokaler Intake braucht eigenen untrusted-content-Vertrag. |
+| B36 | M / Spätere Runtimeintegration | P | E32/E48 | Profilstatus und M7 sind keine serverseitig erzwungene Lernenden-Mastery. Der zusätzliche Q-Anerkennungsvertrag ist separat unerfüllt; kein statischer Profilcheck kann ihn nachträglich implementiert erklären. |
+| B37 | M / Neue didaktische Publikationen | N | E49 | Spätere Topictext-/Worksheetpublikation ist verfasster Zielvertrag ohne vollständigen hier identifizierten aktuellen Publikations-/Goalcoverage-/Masterygate. Keine spekulative Implementation als Auditnebeneffekt. |
+| B38 | M / Buchlayoutfehler | H | E54 | inspectGoalBookPageLayout1799ff liefert GoalID und Region; openValidatedPage scheitert bei overflow/loaderror. testGoalBookRenderer1278–1306 bewahrt vorheriges HTML und erzeugt kein defektes PDF. |
+
+### Curriculum-Pakete nach Einzelregel
+
+| Norm-ID | Normstand / deklarierter Scope | Status | Vollständige Belegkette | Regelspezifische Scope-/Gegentestgrenze |
+| --- | --- | --- | --- | --- |
+| K01 | M / Dualer Release | P | E40/E43/E50 | JSONrelease-Modell wird zweimal unabhängig kompiliert/validiert; Ontologie-/Reverse-/Dualverträge optional. Kein allgemeiner Artefaktdiffchecker verbietet jede spätere externe ZIP-Handänderung; Hashdrift macht geprüfte Bindung ungültig. |
+| K02 | M / Runtimeformat | H | E39/E41/E57 | JSON als einziges unterstütztes Runtimeformat wird im Loader manifestvariant=json erzwungen. Ontologierückweg eigene Rekonstruktion/Normalform, kein produktiver zweiter OWLruntimepfad. |
+| K03 | M / Ontologiebau | P | E43/E60 | buildFwuOwlCurriculumPackage liest fertiges JSON-ZIP, Ontologiemanifest bindet Sourcehash; Builder-/Contractselftests optional. Main-PR-CI baut nicht jede reale Ontologievariante. |
+| K04 | M / Variantenparität | P | E43/E50/E60 | Normalisierungs-/Dualverträge und realer MEMFWUpilot vergleichen fachliche Records/Assets. Vollständiges reales finalZIP-Paar wird im hier gelesenen Hauptworkflow nicht durch Vergleich akzeptiert; optionale Reversepfade oft Selftests. |
+| K05 | M / Releaseidentität | H | E39/E57 | Trusted Manifestcontract und Loader154–176 verlangen identische Paket-/Release-/Versions-/Digestwerte; äußeres ZIP bleibt externes Binding. Adversariale Manifestbindingfixtures und Loader-Tamper-Gegenfälle. |
+| K06 | M / V1-Releaseprofil | H | E39/E41/E57 | releaseProfile und vollständige Rollenregistry/schema sind Pflicht; fehlendes/fremdes Profil und Pflichtrollen werden in echten Contract-/Validatorfixtures verworfen. Eigenes Completionruntime1.1-Profil ist explizit getrennt. |
+| K07 | M / Paketloader | H | E57 | JsonCurriculumPackageLoader68–289 folgt Lock/Manifest/Runtimekatalog, liest katalogisierte Rollen; LoaderTest20–135 prüft fremde/ungebundene/tampered Artefakte. Keine Dateiglob-Fachdiscovery im Packagemode. |
+| K08 | M / Normalisierungsrollen | H | E39/E41/E58 | semanticBinding.normalizationRole wird gegen vertrauenswürdige Rollenregistry und Manifest geprüft; missing/duplicate/conflicting Rolle ist harter Contract-/Validatorfehler, keine inference aus Dateiendung. |
+| K09 | M / Publikationsevidenz | H | E40/E58 | Publicationfieldclassification prüft Mapping/Source/Quality und schließt sie als closure seeds aus. validate_curriculum_release_model_fixtures857 und echte Mutationen verhindern Publicationevidence als zusätzliche Runtimegoals. |
+| K10 | M / Schemas | H | E39/E41 | Offline schemacatalog + manifest role/schema binding werden unabhängig geprüft; remote Trustschema/Schematausch/fehlende Zuordnung echte negative Fixtures. Runtime-JSON unbekannte Felder je konkretem Schemavertrag, keine stillschweigende generelle Löschung. |
+| K11 | M / Schematrust | H | E39/E41 | Validator lädt gepinnte Bootstraptrusts und prüft gehashte packagecatalogs dagegen. Packagegelieferter Katalog kann eigenen Trust nicht erfinden; forged catalog und raw-JSON-Gegenfälle im CLI. |
+| K12 | M / Runtimekatalog | H | E39/E57 | runtime catalog contract132/399 und Loader rollenweise Endpunkte/defaults/capabilities vollständig; konkrete catalog↔manifest-bindingfixtures und Javaexakte-default/APItests. Vollständigkeit relativ zum bezeichneten unterstützten Vertrag, nicht erfundene zukünftige Felder. |
+| K13 | M / Kompilierte Applicability | H | E40/E57 | Releasecompiler materialisiert effektive Applicability; Package-domainstate übernimmt diese Definition. Packagemode-APItests laden Katalog/Views ohne Repository-Sourceindexrekonstruktion. |
+| K14 | M / Scopeauflösung | H | E39/E57 | Catalogscope/default/singleview/ordered merge hart geprüft; PackageCompositionViewStateTest29–65 exakte Scopes und erklärter Merge,636 unpublished/scope drift negative. Kein stilles Kombinieren beliebiger Views. |
+| K15 | M / Module/Fragmente | H | E39/E57 | Catalogrollen Root/module/fragment getrennt, Closure kontrolliert Erreichbarkeit. JsonCurriculumPackageLoaderTest252–304 blockiert Rollen-/Landscapecollision und erhält Modulparentbindung; Module werden nicht neue Roots. |
+| K16 | M / Standalone-Runtime | P | E42/E57 | Backend-/Frontendselbsttests und Main-Packageconsumer-Build plus optional **echter** MathZIP hermetischer HTTP/Browserlauf. Keine Fullruntimeakzeptanz aller realen Fächer/Pakete oder jede Rekonstruktionsvariante durch normale PR-CI. |
+| K17 | M / Standalone-Ressourcen | H | E41/E57/E58 | FinishedZIP-Closure verlangt runtimeRequired Karten/Bilder/Metadaten lokal; externe URLs bleiben Metadaten. ResourceTest131–156 prüft kein Proxy und harte lokale Identitätsauflösung; offline source URL nicht als hard seed. |
+| K18 | M / Dependency Closure | H | E40/E41/E58 | derive_expected_closure reconstructiert harte refs aus Manifest/schema-registry statt publiziertem closure Oracle; Validator3647 und selftest4065–4200 verwirft seed-/reference-elision. |
+| K19 | M / Closure-Abgrenzung | H | E40/E58 | Referencefieldregistry unterscheidet harte role-seeds von Provenance/optionalen URLs; inverse Fremdeltern nur eigene hardreference. Unabhängige Closurefixtures testen ownership/fixedpoint und Publicationoutsideclosure. |
+| K20 | M / Embedded-Ownership | P | E40/E41/E57 | Fremddefinitionen/Closureownerdigests geprüft, aber DPK006a Runtime weist embeddedDependencies/embedded-fragment ausdrücklich zurück (Loader202–203/619–620). Kein stilles Fragment als vollständiges fremdes Curriculum geladen; vollständige akzeptierende Capability bleibt offen. |
+| K21 | M / Mehrpaketinstallation | H | E57 | Loader.mergeDefinitions1013–1018 dedupliziert identische owner/digest-Bindung und verwirft Konflikte. Echte LoaderTest187–224 enthält2Packages/1Definition und ungleichen Owner; globale Landscape-ID-Kollision ebenfalls Fehler227ff. |
+| K22 | M / Paketintegrität | P | E41/E57/E58 | Paketvalidator und Loader prüfen Identitäten/Refs/Closure/Scope hart, jedoch kein vollständiger Beweis **aller** G/V-Normen (insbesondere G16/G17-Minimalität/G42globale Atomzyklen) gefunden. Packagevalid ist nicht universeller Graphauditpass. |
+| K23 | M / Assetintegrität | H | E41/E57 | FinishedZIP MIME/Länge/hash und ResourceState.Read revalidieren tatsächliche Bytes. ResourceTest203–215 ersetzt Bildbytes und erwartet SHA256 drift statt Fallback; malformed MIME/Owner fixtures unabhängig. |
+| K24 | M / Transportmodelle | P | E39/E57 | TS-/Java-Modellparität MainF383 plus PackageLandscapeModelParityTest16/107 prüft Vertragsfelder und absent-core-vs-false. Vollständige automatische bidirektionale Generierung sämtlicher künftiger Schemadomainadapter nicht belegt; aktuelle Felder haben echte Roundtripchecks. |
+| K25 | M / Hermetischer Consumer | P | E42/E43/E60 | Reales OriginalMathZIP durch O fullconformance/ProvisionedTest, Reversehermetik/FinishedZIPreportbindung selftest optional. Kein gleicher echter vollständiger Smoke beider finalen realen Varianten in normalerPR-CI oder in hier gefundenem dual-pair-run. |
+| K26 | M / FWU-Corebindung | H | E40/E43/E60 | provision_pinned_fwu_ontology.sh in Mainconformance prüft genaue Coretrustbindung; optionale FWUtools prüfen lokale Core-/Catalogbytes/Pin. Fehlende/falsche Pinnings echte Contractmutationen, kein stilles neuestes Core. |
+| K27 | M / Core-first-Semantik | ND | E43/E60 | Ob Corebegriffe fachlich passend sind, benötigt Ontologiesemantikreview. Maschinen prüfen registrierte Term-/Feld-/Parthoodstruktur und Reasoning; das beweist keine universelle semantische Angemessenheit. |
+| K28 | M / Ontologiefelder | P | E43/E58/E60 | Feldregistry effective/direct verweigert unregistrierte Runtimefelder; Reversevertrag registrierte RDFabbildung. Tatsächliche ganze Ontologiepakete optional; MainPR nur JSONrelease-Modell, keine every-package ontologyacceptance. |
+| K29 | M / Ontologiecarrier | P | E43/E60 | Bounded Ontologie-/Reverseverträge verweigern opaque full-carrier und beschränken registered canonical JSONliteral. Echte invalid/mutationfixtures optional; keine allgemeine RDF-Inhaltswahrheit aus grünem Pilot ableiten. |
+| K30 | M / RDF-Listen | P | E43/E60 | RDF-listen-/Indexregistry und Reverse reconstruction bewahren deklarierte Reihenfolge; spezifische falsche/missing Ordinals sind Contract-/Reversegegenfälle. Ganzer aktueller Stand nicht universell als finishedZIP durch MainCI geprüft. |
+| K31 | M / RDF-Segmente | P | E43/E60 | FwuSecureZip/Validation bindet bundle.nt an deterministisch geordnete Segmente, bundle zählt nicht doppelt. Optionaler Validator/Builder mutiert Segmente/Hashes; MainPR kein echter vollFWUbuild. |
+| K32 | M / Ontologievalidität | P | E43/E60 | O173–178 führt echten semantischen MEM/FWU-Pilot und OWL2DL/HermiT aus; O182 fullpackage-validator nur --self-test. Nicht als allgemeine akzeptierte Ontologie aller finalen fertigen ZIPs ausgeben. |
+| K33 | M / Semantische Nodeart | H | E40/E58 | Release-model erwartet explizites unterstütztes semanticKind mit aktueller authoritative ledgerbindung; source-fingerprint mutations6277–6290 verhindern Umdeutung nach Titel/Mathe-ID. Scope aktuelles Releaseprofil. |
+| K34 | M / Feldregistry-Auflösung | H | E39/E41/E58 | FieldRegistry.direct/effective1794–1871 segmentiert RFC6901 und wählt eindeutige höchste Spezifität, Gleichstand/unknown Fehler. Vertrag-/Fixtureprüfungen wirkliche Pointer-/Overlapmutationen. |
+| K35 | M / Literal-Unterbaum | P | E43/E58/E60 | Registryliteral und spezifischer-nachkomme-Reverse-Merge geprüft; escaped/unregistered/conflicting carrier-Fälle. Voller Ontologierelease optional, normalerPR kein universeller echter Pairlauf. |
+| K36 | M / Semantische Normalform | H | E39/E41/E58 | Strict rawJSON und Normalizer bewahren endliche Zahlen/Unicode/list semantics/absence-null-default gemäß registriertem Feldvertrag; NaN/duplicates/noncharacter sowie Normalformmutationen in tatsächlichen VertragsCLIs. |
+| K37 | M / Mapping-Truth | H | E40/E57 | Releasecompiler folgt reviewed decision und Matchtyppriorität; PackageLandscapeMappingCompilerTest70–98/168–199 verwirft doppelte/konfliktäre/metadata-stale/unknown-field Kanten. Fehlend wird nicht pauschal exact. |
+| K38 | M / Contentdigest | H | E39/E41/E58 | Definition-/Contentindex-normalizer mit framed Digestberechnung507–512/1411ff unabhängig validiert; altered JSON/BinaryDigest/fehlende-role Tests. Technische Verpackungs-/Dokurollen gesondert excluded-generated. |
+| K39 | M / Isolierter Reverse-Compiler | P | E43/E60 | Hermeticreverse runner führt isoliertes read-only Eingabelayout/gebundene Tools aus, --self-test2957 echte adversariale Oracleread-/Path-/Reportprüfungen. O185 ruft Selftest, kein allgemeiner Realpairrekonstruktionslauf in Main. |
+| K40 | M / Paketreproduzierbarkeit | P | E40/E44/E60 | JSONmodel zwei Builds+byte-diff in Main, Subjectexport optional Reprogate. Zwei frische **vollständige** ZIP-Builds beider finalen Varianten mit komplett gepinnter Umgebung nicht als allgemeiner PflichtPRlauf gefunden. |
+| K41 | M / Äquivalenzbericht | P | E50/E60 | Dualreportcontract bindet finale Hashes/Tools/roles/comparisons/smoke/repro anhand Fixtures; kein verifizierter vollständiger realer Releasepaarbericht bloß durch grünen Contractselftest. |
+| K42 | M / Paketinstallation | H | E59/E57 | Provisioner quarantiniert/hashprüft ZIP vor Validierung und contentadressierter Ablage, aktiviert Lock per CAS. Selftest358ff echte Fehler-/Tamper-/staleCASfälle; RuntimeSnapshotProviderTest18–41 bewahrt exakten vorigen Snapshot bei fehlerhaftem Reload. |
+| K43 | M / Package-Lock | H | E59/E57 | Lock pinnt outerZIP/manifest/closure/definitionIndex/Version; provisioner1658/2014 prüft Semantik/CAS. Reale O-packageaktivierung plus Mainselftests, keine ungepinnte latest-Auflösung. |
+| K44 | M / Paketrollen-/Runtimeisolation | H | E57 | GenerationSha wird zwischen Domain/View/Resource/Evidence states abgeglichen; kein RepoFallback im Packagemode. ResourceTest203 und PackageSourceEvidenceStateTest138/232 echte fehlende-evidence-Role/-tamper Fälle, Providerfailedreloadtest erhält vorherige ganze Generation. |
+| K45 | M / Ressourcenzugriff | H | E57 | PackageCurriculumResourceState liefert exact package/version Hrefs; Test23/131–156 verwirft falsche Version/Goalbindung und liefert externeURLnur als Metadata. Byteänderung Read203 führt Fehler. |
+| K46 | M / Noch nicht unterstützte Packagefähigkeit | H | E57 | Loader196–206 lehnt unbekannteCapabilities und embeddedDependencies explizit ab,619–620 embedded-fragment. Kein partielles Akzeptieren oder Repofallback; konkrete Loadercapabilitynegative im Backendcheck. |
+| K47 | M / Technische Kompatibilität | H | E39/E57 | Loader162–177 prüft Package-/Runtime-/Releaseprofil und consumersemver; Tests137–159 foreign version/prereleaseboundary, Paket-/Ontologieprofilpinnings separat. Keine SemVer-Verträglichkeit durch nur gleichen Dateinamen. |
+| K48 | M / Unveränderliche Releases | P | E39/E59 | Contentadressierte lokale Storeobjekte sind immutable, neue Versionen/CAS geprüft. Allgemeine veröffentlichte Package-Downloadziele/Releaseüberschreibungen werden nicht durch jeden PRvalidator kontrolliert; externe Publicationpolicy extra. |
+| K49 | M / ID-Bedeutung | P | E40/E57 | Aktuelle Kollisionen und Definitiondigestkonflikte hart; versionierte migrationaliases geprüft. Historische Bedeutungsidentität jeder wiederverwendeten ID kann Hashsyntax allein nicht beweisen; kein globaler historischer Semanticreviewautomat. |
+| K50 | M / Lernergebnismigration | P | E40/E58 | Migrationvertrag/fixtures494ff unterscheiden renamed/split/replace/merge und verlangen versionierte Regeln, geänderte origin/history Inputs negative. Vollständige automatische Bedeutungsgleichheit und jeder tatsächlich persistierte Lernermigrationspfad nicht durch reinen Packagevalidator nachgewiesen. |
+| K51 | M / ZIP-Pfade/-Einträge | H | E39/E41/E59 | SecureZIP/Provisioner prüfen reguläre Entries, portable collision/traversal/symlink/nested/executable/rawJSONduplicates. Echte vom Validator selbst erstellte bad ZIPs3848–3908 und Provisionerselftests591ff. |
+| K52 | M / V1-Paketgrößen | P | E39/E41/E57 | Vertrauenswürdig gepinnte Profile/Größenlimits werden in Builder/Validator/Loader geprüft, echte Oversize-/Ratio-/Depthfälle. Vollständiger gemeinsamer Cross-Implementation-Grenzwertabgleich aller Limits nicht einzeln nachgewiesen; veröffentlichte aktuelle Limits bleiben maßgeblich. |
+| K53 | M / Stable-Signatur | P | E50 | Forged verified/stable ist fail-closed zurückgewiesen; tatsächliche Crypto-/Identityverifikation meldet NOT_IMPLEMENTED. Kein erfolgreicher stable-Signaturakzeptanzpfad oder verifizierte Veröffentlichung behauptet. |
+| K54 | M / Signingprojection | H | E50 | validate_release1309–1318 entfernt vollständigen releaseIndexSignature-Block vor Canonicalhash; Mutationen1470–1472 prüfen forged claims. Normsigningprojection definiert; tatsächliche Cryptoacceptance bleibt K53offen. |
+| K55 | M / Stable-Promotion | N | E50/E49 | Kein fertiger atomarer Stablepromotionpfad mit Enddownloadprüfung beider Varianten/Signaturen/Freigaben gefunden. Validator1350 verweigert Stable explizit solange Cryptooperation nicht implementiert ist. |
+| K56 | M / Lizenzallocation | H | E41/E52 | BuildertestFullStandaloneCurriculumPackageBuilder632–651 mutiert Apache/CCBY-Allocation, Policytext/Digest und Contentlicensetextoverride und erwartet Fehler. Technischer Eigene-Inhaltegrant ist gebunden; keine neue Einzelgoalfreigabe verlangt. |
+| K57 | M / Drittrechte | P | E41/E52 | Closed provenance/license/redistribution metadata getrennt; tests610ff verweigern nativeprovenance ohne license bei allowed. Tatsächliche Drittrechte/Urheberschaft bleiben Review; AIgenerated nicht automatisch rights-cleared. |
+| K58 | M / Publikationsrechte | P | E40/E41/E52 | Readinessberechnung blockiert review-required/prohibited/publicationReadyfälschung; voller Conformancepfad erwartet ehrlich not-ready-incomplete. Kein noch fehlender Stablepromotionmechanismus wird daraus als implementiert erklärt. |
+| K59 | M / Lizenzartefakte | P | E39/E41/E52 | Manifest-Lizenztexte/Attribution/Hashes und grant-bound CCText werden hart geprüft; staging null-license darf nur not-ready bleiben. Tatsächliche Vollständigkeit fremder Hinweispflichten bleibt Review, öffentlicher Vollreleasepfad extra. |
+| K60 | M / Medienneutrale Ressourcen | H | E39/E41/E57 | runtimeRequired/embedded, MIMEallowlist, Größe und aktive Capability werden unabhängig geprüft; ResourceTest159–200 verhindert Asset außerhalb supported lane. Unbekannte/ausführbare Typen werden verworfen. |
+| K61 | M / Human-Fach-/Ontologiefreigabe | P | E40/E41/E52 | Releaseprofil bindet Bild-/Redistributionreview an aktuelle Artefakte und zeigt offene Freigaben als not-ready; echte Menschen-/Ontologie-/Drittrechteentscheidung nicht durch technischegrüne Checks ersetzbar. Main-CI keine allgemeine Publicstablefreigabe. |
+| K62 | M / Releasepaar | H | E50 | Dualreleasecontract1233ff vergleicht packageVersion/contentDigest exakt in beiden finalen Variantenbindings. Adversariale Version-/Digestmutationen; O186 fixturecontracthart, kein tatsächlich publiziertes Paar behauptet. |
+| K63 | M / MEM/FWU-Prerequisiteprofil | P | E43/E60 | memFwuRoundtrip2016–2028 emittiert nur spezifische LP0000554prerequisite-References bzw. explizite SkillPilot-Runtimekante. Reale Pilotsemanticroundtrip optional; allgemeiner CE-Verweis wird nicht als requires rekonstruiert. |
+| K64 | M / MEM/FWU-direkte Contains | P | E43/E60 | memFwuRoundtrip2006–2012 serialisiert jede authored contains als sp:containsGoal unabhängig von optional BFO. Pilotroundtrip/OWLreasoning prüft Rückweg, keine inferierten Transitivkanten als Autorenkanten übernehmen. |
+| K65 | M / MEM/FWU-Core-Parthood | P | E43/E60 | shouldWriteStrictCurricularPart entscheidet nach semantischer Typklasse; UI-/Memory-/Practice-/Orientationrelation bleibt SkillPilotextension. Formale Muster im Pilot geprüft; tatsächliche fachliche Parthoodsemantik bleibt Review, nicht allein HermiT. |
+| K66 | M / Ontologie-Binärressourcen | H | E43/E60 | Fwu-Builder/BinarySidecarregistry bindet tatsächliche Mediabytes/digest und Reversecompiler liest Sidecars; fullcarrier-/opaqueBinary-Literalpolicy wird in optionalen Contract-/Buildertests verworfen. Normsupportprofile, kein allePakete-Hostpass. |
+
+## Technische Belegketten
+
+Die E01–E45 gehen aus den eingefrorenen technischen Notizen hervor. Für diesen
+Main-Abgleich wurden Workflow-Aufrufe, npm-Ketten und die relevanten aktuellen
+Implementierungen erneut gelesen. Wo dort noch kein wirklicher Gegenfall
+identifiziert wurde, bleibt das ausdrücklich offen. Alte Prozent-/M7-/CI-Stände
+sind nicht als neuer Nachweis übernommen.
+
+### Graph identity, schema and prerequisites
+
+| Rule / group | Actual implementation | Test / counterexample evidence | CI invocation and enforcement | Concrete limits |
+| --- | --- | --- | --- | --- |
+| E01  Runtime landscape JSON shape and required fields | `scripts/validate_schemas.py:541–549` discovery, `:591–620` `validate_file`, `:663–678` traversal/exit; `docs/landscape-runtime.schema.json:590–600` goal required fields | Embedded discovery negative corpus `validate_schemas.py:552–588`; personalization schema and semantic negative corpora `:65–537` | `ci.yml:697`: `python scripts/validate_schemas.py`; **unconditional-fail** for discovered runtime documents/JSON parse errors | `quality` is intentionally excluded from runtime schema, though its JSON still parses. Goal schema allows additional properties. A schema description is not a semantic check. |
+| E02  Portable curriculum symlinks / no external or ignored source escape | `validate_schemas.py:16–62` `curriculum_symlink_errors`; invoked `:652–656` | `scripts/test_validate_schemas_symlinks.py:35–90`: relocation, absolute, dangling, outside-repository and ignored-target cases | `ci.yml:695` unit suite; `:697` real-tree validation; **unconditional-fail** | Limited to committable curriculum paths selected by Git discovery; not a whole-workspace filesystem policy. |
+| E03  UUID shape for stable goal IDs and relations | `scripts/validate_goal_ids_uuid.py:8–12`, `:28–71`, exit `:74–86` | No standalone malformed canonical-UUID regression was identified in the inspected suites | `ci.yml:699`: `python scripts/validate_goal_ids_uuid.py`; **profile-fail by path**, not general canonical coverage | **Gap:** `rglob("json/*.json")` at `:28` misses `canonical/*.json`. Runtime schema `goal.id` `:603–606` and relation items `:660–672` require only strings, no UUID pattern. |
+| E04  Duplicate goal IDs within one file; shortKey uniqueness within logical landscape | `app/scripts/validateGraph.ts:585–593` `validateLandscape`; shortKey owner sets `:363–382` | No dedicated CLI malformed-input fixture for duplicate IDs/shortKeys found by searches of app tests. Real-corpus invocation exists | `ci.yml:527`: `npm run validate:graph`; package script `app/package.json:100`; **unconditional-fail** | Same-ID locale serializations are accepted without equivalence comparison at `validateGraph.ts:330–346`. General ID meaning stability is not checked. |
+| E05  Global canonical goal-ID uniqueness | `app/scripts/validateCompositionViews.ts:918–930` builds canonical global universe and throws for repeated IDs | No focused cross-landscape duplicate-ID negative test identified | `ci.yml:601`: `npm run validate:composition-views`; **unconditional-fail** within canonical registry | This stronger protection is canonical-DE-Gymnasium composition infrastructure, not global uniqueness for every loaded landscape. |
+| E06  `requires`/`contains` referential integrity and self-reference | `validateGraph.ts:723–758` `checkReference`; qualified lookup at `:724–729` | No isolated CLI malformed-reference regression found; schema discovery tests do not test this semantic resolver | `ci.yml:527` `validate:graph`; **unconditional-fail** for reported errors | **Gap:** fallback `:732–738` accepts any global candidate when `length >= 1`, despite the comment saying unique; ambiguity is not rejected there. Fully qualified foreign IDs use the exact composite lookup. |
+| E07  Direct `requires` and `contains` DAGs | `validateGraph.ts:765–805` `buildEdgeMap` / `detectCycles`, invoked immediately after; CQR `generateCurriculumQualityStatus.ts:1836–1885` independently checks local direct edges | No generic malformed cross-landscape graph CLI regression identified; formal/example graph tests are separate | `ci.yml:527` real graph checker **unconditional-fail**; CQR report/floors at `:618–621` | **Gap:** `buildEdgeMap:769–771` retains only same-landscape edges. CQR also retains only same-landscape edges (`:1863`, `:1874`). This is not a general cross-subject/global DAG gate. |
+| E08  Inherited effective prerequisites and effective DAG | `validateGraph.ts:902–938` `computeEffectiveRequires`, parent inheritance and local effective cycle detection | No targeted generic inherited-cycle CLI counterexample found in inspected test names/references | `ci.yml:527` `validate:graph`; **unconditional-fail** for detected effective cycles | Does not perform full global atomic cluster expansion. Foreign edges are removed at `:934`. **Suspect unreachable self-inheritance guard:** `:917` removes self requirements before `:925` tests for them; ancestor guards may catch some cases, but that is not evidence for this guard. |
+| E09  Ancestor/container/child dependency anti-patterns; phase monotonicity | `validateGraph.ts:850–899` GVR-001/003/006; `:940–970` phase rule; severity selector `:145–147` | No generic negative CLI suite found for all of these guards | `ci.yml:527` default **profile-fail**; `VALIDATE_GRAPH_STRICT_RULES=0` changes selected rules to **warn-only** | Direct-child rule is landscape-allowlisted (`:141–144`, `:876`); phase ranks only comparable phase systems. These checks do not prove complete effective atomic acyclicity. |
+| E10  Explicit atomic/cluster type agrees with leaf structure; canonical semantic-kind completeness | `validateGraph.ts:684–698` GVR-009; canonical-Math ledger checks `:595–641` | Hard-route negative tests `app/scripts/testHardLearningRouteValidation.ts:39–56,156–175`; those do not exercise every CLI type path | `ci.yml:527`; type rule default **profile-fail** via strict switch; Math ledger checks **unconditional-fail** | Complete authoritative ledger coverage here is Math-specific. Same semantic-kind obligations for all subjects need separate evidence. |
+| E11  Numeric/metadata domains and weighted aggregation prerequisites | Phase/leitidee/competency checks `validateGraph.ts:700–719`; `docs/landscape-runtime.schema.json:649–651` weight only `type:number` | No general weight=1 / unique-descendant cluster-weight counterexample located | `ci.yml:527,697`: hard checks for implemented domains; **inactive** for additional weight invariants | No general positivity/integer/atomic-weight=1/cluster-weight=unique-descendants gate identified in these primary validators. These didactic conventions require inventory cross-reference. |
+| E12  Lokale/transitive Minimalität | `app/scripts/auditTransitiveMinimality.ts:32–145`: eindeutige Referenzen, vollständige Vorfahren, Entfernen jeder Autorenkante an allen geerbten Ursprüngen, erneutes R_effective auf Goal-Knoten; kein Atomausweiten. CLI Math/Physik `:149` ff. | `testTransitiveMinimality.ts:10–70`: raw/inherited redundante Kante, alternative Herkunft, entfernte Ursprungskopie, Fremdvererbung, cluster-boundary, fehlend/mehrdeutig/zyklisch; `:77` ff. unabhängige literale Fixpunkt-/Kantenentfernungsreferenz für kleine Graphen. Lokal ausgeführt: `npx --no-install tsx scripts/testTransitiveMinimality.ts`: 572 literale Vergleiche bestanden, 3593 ungültige effektive Graphen korrekt verworfen. Das ist kein realer Curriculum-CI-Lauf. | Keine Verdrahtung in Workflow/package.json; lokaler `npx tsx scripts/auditTransitiveMinimality.ts --check` ist hart (1 bei Befunden). **L**, kein CI-Gate. | Bestandsbericht 923 Math +396 Physik =1319 echte §7.3-Befunde. Der Prüfer expandiert keine Cluster in atomare Voraussetzungsknoten. Die anderslautende ZIP-Zensusformulierung G17 ist korrigiert; keine Normverschärfung nötig, um diese Befunde zu lesen. |
+
+### Routes, projections and authoring structure
+
+| Rule / group | Actual implementation | Test / counterexample evidence | CI invocation and enforcement | Concrete limits |
+| --- | --- | --- | --- | --- |
+| E13  Orientation is atomic/prerequisite-free and contains no exam/memory duties | `app/scripts/lib/hardLearningRouteValidation.ts:53` `validateOrientationMotivationStructure`; `validateGraph.ts:644–654` emits unconditional errors | `testHardLearningRouteValidation.ts:13–56`: valid and malformed orientation including prerequisites, examData, examples and memory | `ci.yml:527` real corpus and `:539` `npm run test:hard-learning-routes`; **unconditional-fail** | Classification comes from authoritative Math ledger or each other goal's semanticKind/tags; incomplete classification outside Math is a scope risk. |
+| E14  Hard direct atomic route from motivation to terminal assessment | `hardLearningRouteValidation.ts:166` `validateHardDirectAtomicRoutes`; `validateGraph.ts:1049–1063` emits `error` | `testHardLearningRouteValidation.ts:297–487` good/broken routes and scope counterexamples | `ci.yml:527,539`; **profile-fail**, unconditional severity for selected scope | Profiles `validateGraph.ts:535–552` cover canonical Mathematics Sek I/II. This hard route gate is not a universal all-subject route guarantee. |
+| E15  Scoped atomic prerequisites must not point to clusters | `validateGraph.ts:1066–1082` GVR-013; profiles `:554–560` | Route tests exercise atomic route semantics; no general all-subject GVR-013 CLI regression identified | `ci.yml:527`; **profile-fail**, downgradeable by strict switch | Only selected canonical Math non-memory atomic goals; cluster inheritance and other subjects remain compatible elsewhere. |
+| E16  Orientation outlook references, stage locality and downstream route | `validateGraph.ts:1212–1236` `validateOrientationOutlooks` | `testHardLearningRouteValidation.ts:156–175`: internal labels, unknown roots, subtree membership, missing route and incorrect anchor kind | `ci.yml:527,539`; **profile-fail** | Invoked only for canonical Math Sek I/II. |
+| E17  Exam Markdown table shape | `app/scripts/lib/examMarkdownValidation.ts:49` `findExamMarkdownTableIssues`; `validateGraph.ts:656–672` scans four task/solution language fields | `testExamMarkdownValidation.ts:14–45` malformed delimiters/columns and non-table negatives; `:60–74` real released task rendering | `ci.yml:527,529`: real checker plus `npm run test:exam-markdown`; **unconditional-fail** | Only intended pipe-table blocks, not general mathematical/semantic correctness or grading validity. |
+| E18  Composition normalized schema, references, projection roles, no overlap/duplicate visible goal/parent | `app/src/utils/authoring/compositionViewAuthoring.ts:285` `compileCompositionView`; CPV-001/002/004/005/006/007/008/009 at `:296–620`; imported `lib/learnerFacingCompositionLabels.ts:15–67` CPV216/217, invoked `validateCompositionViews.ts:973–974`; CLI exit `validateCompositionViews.ts:1127–1139` | `testCompositionProjectionRoles.ts:300–368` specificity/target behavior, `:385–412` unknown role/opaque curricular-area negatives; `testGoalBookModel.ts:561–567` unbound external subtrees fail; `testLearnerFacingCompositionLabels.ts:27–93` internal labels/duplicate phases rejected with allowed controls | `ci.yml:545,601,603`: `test:learner-facing-composition-labels`, `validate:composition-views`, `test:composition-projection-roles`; **unconditional-fail** for CPV errors | Generic labels CPV-101 and phase-like roots CPV-102 are warnings. Static composition uniqueness is not unique acquisition ownership of future learning units. |
+| E19  `target` / `prerequisiteOnly` scope and overlap specificity | `compositionViewAuthoring.ts:74` `getCompositionProjectionRole`, `:113` `collectCompositionProjectionRoleGoalIds`; compile and runtime projection consume these | `testCompositionProjectionRoles.ts:192–252,300–368` target exclusion and specificity, including direct overrides | `ci.yml:603`; **unconditional-fail** for test assertions plus authored-role compile errors | Does not prove all future resolved learner states or new learning-unit required-Q choices. Root audit owns runtime mastery/frontier semantics. |
+| E20  Applicability evidence, consistency and filtered prerequisites/reachability | `app/scripts/applicabilityCompiler.ts:788` `buildApplicabilityCompilation`; APV-001/002/003/101/102/103/104 emit errors at `:623–1217,1423–1478`; CLI `validateViewFilters.ts:99–147,195` | `sourceCoverageAndApplicabilityRegression.test.ts:187–263` all-of and roles; `:279–341` missing/cyclic/cluster/assessment source routes fail closed | `ci.yml:557`: `validate:view-filters`; source regression is run at `:579` through `app/package.json:139`; **profile-fail** for errors | Default selected set is 21 canonical landscapes (`validateViewFilters.ts:104–126`), unless `APPLICABILITY_VALIDATION_SCOPE=all`. Supported compilation dimension is jurisdiction (`applicabilityCompiler.ts:18`). |
+| E21  Applicability overrides, partial mappings and stale compiled applicability | `applicabilityCompiler.ts:1155–1156` APV-201 warning; `:1201–1202` APV-202 diagnostic; `:1396–1397` APV-203 warning; CLI exit only errors | Regression `sourceCoverageAndApplicabilityRegression.test.ts:256–263`; active Memory bindings additionally asserted `:155–161` | `ci.yml:557`; **warn-only / diagnostic** in generic APV invocation | Accepted-warning registry changes active/accepted reporting, not warning-to-error behavior. Source audit and maturity floors can separately fail selected consequences; no universal stale-applicability failure follows from APV-203 alone. |
+| E22  Rendered fallback tree single occurrence / one visible parent | `app/scripts/treeProjectionValidator.ts:86` collector, TPV-101/102 `:140–171`, orchestration `:178–202` | No focused TPV malformed-input suite identified | `validateViewFilters.ts:102,138`, `ci.yml:557`; **profile-fail** | Skips landscapes without programUnits or goalPlacements and all landscapes having composition views (`treeProjectionValidator.ts:183–186`). Composition compiler provides a different check for the latter. |
+| E23  Offered Mathematics scope has matching composition and only reviewed fallback | `app/scripts/reportCanonicalMathScopeCoverage.ts:253–270` missing/unapproved fallback exit | Subject/scope-specific regressions exist, but no single exhaustive offered-scope negative suite mapped in this pass | `ci.yml:569`: `check:canonical-math-scope-coverage`; **profile-fail** | Math-specific offering resolution. Future all-subject learning-unit scope matrix is not supplied by it. |
+| E24  Duration-specific projections / generated offerings / reviewed G8/G9 policies | `reportHeMathDurationProjection.ts:454–469`; `reportGymnasiumDurationModelReadiness.ts:920–948` staleness, required subjects/M6 and policy errors; `generateGymnasiumDurationOfferings.ts:55` check flag | Scope tests exist; exact full negative-test mapping remains unverified in this bounded audit | `ci.yml:561–577`: projection, generated views/readiness and `--require-reviewed-subject=Mathematik` / `--require-reviewed-m6` via package scripts `:211–226`; **profile-fail** | Readiness-only `--check` primarily checks report freshness; stronger reviewed-policy checks depend on flags. Some generated subjects have no main CI command (e.g. politics/economics generator is in package scripts but not in this workflow block). |
+
+### QA evidence, source fidelity and images
+
+| Rule / group | Actual implementation | Test / counterexample evidence | CI invocation and enforcement | Concrete limits |
+| --- | --- | --- | --- | --- |
+| E25  Source registry files resolve with matching landscape IDs | `app/scripts/checkSourceLandscapeRegistry.ts:116` `checkEntry`, `:159–174` main/exit | No standalone malformed registry negative suite identified | `ci.yml:559`: `check:source-landscape-registry`; **unconditional-fail** for registry entries | Existing regular local JSON paths are parsed/ID-checked; `checkEntry:117–120` silently skips missing/nonregular/non-JSON paths. Not completeness/accuracy of extraction or guaranteed resolution of every registry path. |
+| E26  Ordinary source coverage distinct from requires closure/assessment applicability | `app/scripts/sourceCoverageEvidence.ts:38` direct evidence, `:48` reviewed recursive coverage checker; audit `generateCurriculumSourceCoverageAudit.ts:307` `buildAudit`, `:424–458` problems, `:469–476` failure | `sourceCoverageAndApplicabilityRegression.test.ts:266–341`: ordinary recursive evidence succeeds, missing/cycles/clusters/assessment chains fail | `ci.yml:579`: `quality:source-coverage-audit:check` runs tests then actual audit (`app/package.json:139`); **profile-fail** | Actual audit targets Math/Physics only (`generateCurriculumSourceCoverageAudit.ts:22–29`). It does not establish PDF extraction completeness. |
+| E27  Full source inventory, version/components and no invented review completion | `generateCurriculumQualityStatus.ts:4355` source inventories, `:4993` missing pipeline, `:5812` ingestion, `:5866` jurisdiction coverage | `testSourceExtractionInventory.ts:18–52,68–105,135–144` component/version/cache cases and explicit incomplete review; `testRepositorySourceAvailability.ts:25–35` ignored/outside paths fail | `ci.yml:613,615` unit/real-input checks; report/floors `:618–621`; **profile-fail** where floor requires CQR-000/003 | Report can honestly record lower maturity for unprotected curricula. Existing source snapshots define the checked universe; missing content in the official source is not automatically detectable. |
+| E28  CQR basic integrity and cumulative M0–M7 derivation | `generateCurriculumQualityStatus.ts:1836` graph integrity; `:5988–6022` maturity derivation; `:6244–6264` write/check behavior | `testDeepUnderstandingRollout.ts:143–168` no-scope, mismatch, M7 requires M6, absent routes prevent promotion | `ci.yml:611` tests, `:618` regenerates, `:619` floor checker, `:620–621` tracked/untracked status drift; **profile-fail**, not fail-on-every-CQR-finding | Report generator does not exit nonzero merely for every CQR warn/fail. A newly committed truthful low status can pass unless protected floor or another hard gate fails. |
+| E29  Protected maturity cannot regress | `app/scripts/checkCurriculumMaturityFloors.ts:43–61` policy checks, `:83–111` unique identity/minimum and throw; policy `app/scripts/config/curriculum-maturity-floor-policy.json:17–87` | Maturity transition counterexamples `testDeepUnderstandingRollout.ts:165–168`; no standalone malicious-floor-mutation suite identified | `ci.yml:619`: `check:curriculum-maturity-floors`; **profile-fail** | Ten protected curricula. CQR-303 deliberately not floor-binding below M7 (`checkCurriculumMaturityFloors.ts:57–61`). Policy change is not itself technically owner-authenticated by this checker. |
+| E30  D/P/A/M/V exact current intersection, no missing/duplicate goal or stale review evidence | `app/scripts/reportDeepUnderstandingRollout.ts:749` unique claim, `:765` gate intersection, `:800` strict completion, `:1878` real report; CQR-303 projection `generateCurriculumQualityStatus.ts:3846–3883` | `testDeepUnderstandingRollout.ts:48–61` incomplete checks rejected, `:86–89` forged deferral rejected, `:187–197` stale P evidence/required approval, `:215–225` gate intersection and duplicate claim | `ci.yml:611` tests plus real CQR report/floors `:618–621`; **profile-fail** | Active review configuration and M7 floors determine enforced content. Historical M7 does not qualify new C(q) application proof. No empirical classroom-effectiveness gate. |
+| E31  Description-review task/run/input/criteria/schema fingerprint binding and independent rounds | `app/scripts/validateGoalDescriptionReviewCampaign.ts:177` bundle bindings, `:306` full input fingerprint, `:645` campaign validator, `:736` batch; central rollout consumes current evidence | `testGoalDescriptionReviewCampaign.ts:220–228` stale verified prompt, `:616–625` changed canonical context, `:640–650` stale bundle; `testDeepUnderstandingRollout.ts:86–89` forged deferral | `frontend-ci`, `ci.yml:395`: `test:goal-book-pipeline` includes description contract suites (`app/package.json:86`); real active evidence enforced through central report/floors | Direct `validate:goal-description-*` CLI commands are not all separately invoked in main CI. Test existence alone must not be called a full live-corpus gate; actual integration is central rollout for configured subjects. |
+| E32  Positive understanding evidence, valid run artifacts, current goal/criteria/resource fingerprints | `app/scripts/positiveGoalEvidenceReview.ts:189–224` run checks, `:305` `reviewPositiveGoalEvidenceConfig`, `:382–424` schema/ID/scope/run/resource validation | `testPositiveGoalEvidenceReview.ts:272–280` prompt tampering, `:336–353` stale resource/current goal; `testPositiveGoalEvidenceProfileModel.ts:253–294` stale goal/review-input fingerprints | `frontend-ci`, `ci.yml:395` pipeline; `graph-validation:611,618–621` central QA; **profile-fail** | These are normal positive understanding-evidence contracts, not independent application proof of every qualified assessment coverage goal. |
+| E33  Semantic atomicity review is current and well-formed | `app/scripts/semanticAtomicityReview.ts:192–203` record semantics, `:230–250` stale fingerprints, `:304` blocking stale records; central report gate A | Strict intersection negatives `testDeepUnderstandingRollout.ts:215–225`; targeted atomicity unit-counterexample mapping not completed | Real central QA report/floors `ci.yml:618–621`; **profile-fail** | Static machine integrity cannot itself determine fachliche atomicity. Direct `quality:semantic-atomicity:check` is a package script, not a separate main workflow invocation found here. |
+| E34  Required card content, traceability, current goal/card fingerprints, required-view visibility | `app/scripts/memoryCardReview.ts:512` deck evidence, `:582,634` record validation, `:1151–1154` trace/visibility blockers, `:1184–1185` exit; config runner `runMemoryCardReviewConfigs.ts:61–78` propagates failures | `sourceCoverageAndApplicabilityRegression.test.ts:71–80` invalid active config; `:120–161` actual Memory-origin scope; `testDeepUnderstandingRollout.ts:165–168` M6/M7 dependency | `ci.yml:609` `quality:memory-card-review:check:all`; **profile-fail** for all discovered active configs | Scope is active/configured reviews; empty/missing inventory coverage needs dedicated registry completeness evidence. Recall is not C(q) ordinary proof. |
+| E35  Active image bytes/path/copy integrity and immutable historical assets | `scripts/check_goal_visualization_assets.mjs:35` hash, `:39–44` standalone SVG guard, `:65–77` path/realpath containment, `:87–118` history/primary-link checks and final nonzero exit | Image QA model negatives `testGoalVisualizationQaModel.ts:26–62`; asset-checker specific full mutation suite not mapped | `ci.yml:625`: `check:goal-visualization-assets`, after asset preparation; **unconditional-fail** for canonical linked assets | Canonical DE Gymnasium source directory; raster orphan scan intentionally excludes unlinked SVG (`check_goal_visualization_assets.mjs:18–21`). Byte integrity does not prove image correctness or host display. |
+| E36  Generated image QA ledger freshness / exact-asset current approval | `generateGoalVisualizationQaLedgers.ts:379–412` check mode and stale files; `checkGoalVisualizationQaApprovalCoverage.ts:26–52` approval + one exact owner pilot, `:62–109` active coverage/exit | `testGoalVisualizationQaModel.ts:36–62` stale/legacy rejection; `testGoalVisualizationQaApprovalCoverage.ts:77–81` pilot subject/hash/NOK boundaries | Real commands `ci.yml:627,629`; model tests `frontend-ci:403–408`; **profile-fail** | Main subject defaults/arguments Math/Physics/Chemistry. Display approval accepts human OR current AI, human NOK wins; strict M7 V is separate and machine-only. Exact rejected owner-pilot exception is display-only. |
+| E37  Image rollout coverage and QA parity | `reportGoalVisualizationRolloutStatus.ts:908` `coverageGateFailure`, `:916–954` freshness/required-coverage exit; `checkGoalVisualizationQaCoverageParity.ts:44–105` ID-set/scope checks | `testGoalVisualizationRolloutStatus.ts` via `ci.yml:407`; QA hash/pilot tests above | `ci.yml:632–635` all three subjects and parity; **profile-fail** | `coverageGatePassed` at `reportGoalVisualizationRolloutStatus.ts:637` means regular-unlinked count zero, not automatic resolution of every deferral or empirical content/host acceptance. |
+
+### Build, publication and package boundaries
+
+| Rule / group | Actual implementation | Test / counterexample evidence | CI invocation and enforcement | Concrete limits |
+| --- | --- | --- | --- | --- |
+| E38  Generated goal books bind current source/model/PDF/index/artifacts | `app/scripts/checkGoalBookPublication.ts:348` `verifyPublishedGoalBook`, stale source/model `:408–423`, PDF/model/page/index binding `:454–505`; `buildGoalBookPublications.ts:193` registry build | `testGoalBookPublication.ts:139–153` missing/foreign registered book, `:178–205` relation-URL tampering; unbound subtree negatives `testGoalBookModel.ts:561–567` | `CI / goal-book-publication`, `ci.yml:324–327`: `build:goal-books -- --force`, `check:goal-book-publication`; graph job depends on it `:495`; **profile-fail** over registered publications | Not all conceptual scopes automatically register books; successful generation/publication checks are not host or human effectiveness acceptance. |
+| E39  Package trusted schemas, runtime catalog, locks, manifest bindings and adversarial raw fixtures | `scripts/validate_curriculum_package_contracts.py:459,876,950,1005` trusted contracts/manifest; fixture suites `:2157,2261,2508,2600`; main errors `:2865–2877` | Real adversarial fixture suites are called by this CLI, not just documentary examples; package-validator self-tests below | `ci.yml:684–690`: package/catalog/schema contracts plus full-validator/provisioner/consumer self-tests; **unconditional-fail** within their fixture contracts | These self-tests do not validate every real subject package ZIP in the main PR job. |
+| E40  Release-model actual input/closure/evidence equivalence and deterministic compilation | `scripts/run_curriculum_release_model_conformance.sh:85–110` compiles, independently validates, checks current source/redistribution evidence, recompiles and byte-diffs; validator `validate_curriculum_release_model.py:3350` expected model, `:1544` acyclicity | Same shell `:49–51` fixture/dependency self-tests; `:65–83` symlink output rejection preserves sentinels | `ci.yml:691–692`: `SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false bash scripts/run_curriculum_release_model_conformance.sh`; **profile-fail** | Explicitly returns at shell `:112–114` before complete package/provision/runtime smoke when full=false. Audits the configured profile, not every canonical pool. |
+| E41  Full standalone ZIP closure, asset digest, offline schema trust, runtime catalog | `scripts/validate_full_standalone_curriculum_package.py:878` archive, `:1434` docs/schema, `:2255` content/assets, `:2599` catalog, `:3647` hard closure, `:3803` package | `:3848` `run_self_test`; builder negatives `app/scripts/testFullStandaloneCurriculumPackageBuilder.ts:507,565–641` paths/licenses/metadata | Main CI `ci.yml:637` builder tests and `:688` validator self-test; real full ZIP in `Optional Package CI / package-ci`, `owl-ci.yml:77–89`; **fixture-fail on PR**, real-package **optional-workflow profile-fail** | Full package CI is schedule/manual. Main job does not thereby enforce full ZIP/provision/runtime readiness for every curriculum. |
+| E42  Real package backend load and package-only consumer isolation | Real full conformance shell, consumer/provisioner; main builds package-only frontend `ci.yml:641`; full-validator closure above | `run_package_consumer_smoke.py --self-test` at main `ci.yml:690`; optional backend `ProvisionedCurriculumPackageConformanceTest` | `owl-ci.yml:83–89` real provisioned package test in optional workflow; main self-tests/build; **profile-fail / optional** | Real runtime acceptance of every package/host is not proved by self-tests or successful bundle build. Root owns deeper backend isolation mapping. |
+| E43  FWU/OWL semantic reconstruction, OWL 2 DL/reasoning and reverse compiler | Optional workflow calls actual semantic roundtrip and reasoning `owl-ci.yml:173–178`, then dedicated contract/self-test scripts `:181–186` | Dedicated FWU/reverse conformance contract self-tests run there; bounded completion-package FWU tests separately in assessment workflow | `Optional Package CI / fwu-owl-ci`, schedule/manual; **optional-workflow profile-fail** | Not a main PR gate. No inference from these semantic/package tests to arbitrary assessment application proofs or transitive minimality. |
+| E44  Real subject export release and live source checks | `owl-ci.yml:224–236` invokes `npm run export:subject-release-gate:ci` with explicit URL-audit flags | Export contract tests are available in `app/package.json:236`; exact complete mapping remains outside bounded pass | `Optional Package CI / subject-export-release-gate`; **optional-workflow profile-fail** | Live source audit and strict URL failure flags default false and require dispatch inputs (`owl-ci.yml:6–15,225–227`). Source truth is not automatically refreshed by every PR. |
+| E45  Known Physics/Chemistry evidence regressions relative to baseline | `scripts/run_canonical_physics_evidence_watch.sh:15–17` render+delta check; Chemistry script `:15–18` self-test/render/check | Chemistry runs its own self-test; detailed checker conditions were not fully mapped in this bounded pass | `.github/workflows/canonical_physics_evidence_watch.yml:54`, Chemistry `:56`; separate path-filtered push/PR/schedule jobs, **profile-fail** | Baseline/delta regression guard is not a universal source, all-subject graph or new-C(q) qualification gate. |
+
+
+### Ergänzte Belegketten für Quellen, Inhalt und Paketfreigabe
+
+| Kette | Implementierung | Echter Gegenfall / Testlücke | Workflow, Job, Kommando, Fehlerwirkung | Geprüfter Scope / Grenze |
+| --- | --- | --- | --- | --- |
+| E46 Quellenbegründungen | `app/scripts/checkGoalSourceRationaleRuntimeIndex.ts:105–196`: Request, Mengen, aktuelle Goaltexte und vier MEM-PoC-Routen; `checkGoalSourceRationaleAllRelevantReport.ts`: exakte erwartete ID-Menge, Duplikate, unbekannte/malforme/stale Goaltexte; `checkGoalSourceRationaleBuildArtifact.ts:65–105`: bytegleiche Publickopie, keine JS-Inline-Daten/SW-Precache | Build-/Deploymentmodus-Gegenfälle `testGoalSourceRationaleDeploymentSmoke.ts` und `testPackageGoalSourceEvidence.ts` über F `:398–401`. Kein isolierter Mutationstest der beiden realen Index-CLIs gefunden; ihre direkten Fehlerzweige sind kein getesteter Gegentest. | C `ci.yml:581–589`: `check:goal-source-rationales:math-public`, `:math-all-relevant`, `check:goal-source-rationale-coverage`, `:gap-issues`, `:mapping-batch-01`; C `:643` `check:goal-source-rationales:build-artifact`. Nichtnull beendet Job. | Public-Indexchecker trotz Scriptname für Math UND Physik; All-Relevant-Bericht Math. Coverage/Gap-/Batch-Checks prüfen berichtete Lage/Frische und können ehrliche offene Lücken enthalten. Summenminima des Publicindex sind kein Beweis einer exakten vollständigen Auswahl; der All-Relevant-Checker macht diese exakte Menge nur für seinen Scope. Keine allgemeine PDF-Wahrheitsprüfung. |
+| E47 Optionale Materialien und reine Verlagerung | `scripts/validate_content_packages.mjs:24–105`: geschlossene Felder, bekannte Goals, link-only/public-link, getrennte Provider, sichere HTTPS-Links ohne Query; `:108–155` Canonical-/Katalogauflösung. `scripts/check_content_link_migration.mjs:12–30` prüft 11 dokumentierte Verlagerungen | `scripts/validate_content_packages.test.mjs:61–104,107–138,171–226`: unbekannte/duplizierte Goals, verbotene private Felder, unsichere URLs, Provider-/Katalogabweichung. Semantikhash-Vergleich des Migrationstools ist **nur** mit `--verify-relocation` bei `:17–23` aktiv. | C `ci.yml:553–555`: `node ../scripts/validate_content_packages.mjs`, `node --test ../scripts/validate_content_packages.test.mjs`, `node ../scripts/check_content_link_migration.mjs`. Alle Fehler hart; Hauptworkflowtrigger wie C. | Aktive content-Katalogeinträge und konkrete Physik-Libre-Migration, kein universelles Verbot neuer externer Goal-Links über alle Curricula. Main-CI setzt **nicht** `--verify-relocation`: kein permanenter Semantikhash-Freeze. Laufzeit-Auswahl/Session/Privacy sind gesonderte Runtimeverträge. |
+| E48 Zusätzliche Q-/Lerneinheiten-Sollregeln | Keine vollständige Main-Implementierung gefunden für qualifizierte feste C(q), historische Q-Bedeutung, eindeutige direkte Erwerbsownership, jede RequiredOwnQ-Alternative, rekursive Unit-Q/K-Vollständigkeit und Whole-unit-Blockordnung. Schwächere Main-Strukturchecks `generateCurriculumQualityStatus.ts:2640–2700` und A-Completion-Profile sind vorhanden. | Keine echten Negativfälle für den vollständigen PR83-Einheitenvertrag in den statischen Hauptprüfern gefunden. Vorhandene Profilfixtures ersetzen ihn nicht. | Kein harter Gesamtaufruf für diesen zusätzlichen Sollvertrag; A `:88–95` validiert vorhandene alte Completion-Profile. **N** für vollständige neue statische Regel, nicht behaupteter Pass durch alte grüne Tests. | Main / zusätzlicher eingefrorener PR83-Stand getrennt. Keine Implementierung oder Units-Zerlegung durch dieses Audit. Einzelne Runtime-Facetten stehen in der Laufzeitmatrix. |
+| E49 Kein allgemeiner statischer Herkunfts-/Historienbeweis | Gesucht in `validateGraph.ts`, `validateCompositionViews.ts`, `compositionViewAuthoring.ts`, `applicabilityCompiler.ts`, `treeProjectionValidator.ts`, runtime schema und einschlägigen Tests. Keine passende vollständige Implementierung für die jeweils so markierte Normregel gefunden. | Kein entsprechender durch CI ausgelöster echter Gegenfall belegt. | Kein zusätzlicher harter Aufruf gefunden; **N**. Vorhandene Teilbelege sind in der betreffenden Regelzeile separat genannt. | Negativer Auditbefund mit ausgewiesenem Suchraum, kein Beweis, dass im gesamten Repository kein anderer Helfer existiert. Kein fehlender Befund wird als bestanden gewertet. |
+| E50 Duale Release-/Signaturverträge | `scripts/validate_curriculum_dual_release_contracts.py:1233–1365` bindet fertige ZIPs/Äquivalenzbericht und Signing-Projection. Verified-Signatur/Provenienz führt ausdrücklich zu NOT_IMPLEMENTED `:1324,1332`; stable immer zu `RELEASE_STABLE_VERIFICATION_NOT_IMPLEMENTED:1350`. | Eingebaute Mutationsmatrix `:1400–1503`, insbesondere `:1470–1472`: unsigned stable, falsches Signatureformat, forged verified. `main:1506` prüft reale Vertragsfixtures und Roh-JSON-Negatives. | O `owl-ci.yml:186`: `python -B scripts/validate_curriculum_dual_release_contracts.py`, optionaler Job `fwu-owl-ci`; Schedule/Dispatch, nicht jeder PR. Nichtnull beendet Job. | Versions-/Hash-/Policy-Vertrag mit ehrlichem fail-closed Stablezustand; keine tatsächliche kryptografische Stablefreigabe oder Veröffentlichung. Ein erfolgreiches unsigned-staging-Fixture kann Stablebereitschaft nicht bestätigen. |
+
+## Begrenzte erste Reparaturen
+
+1. Eindeutige Referenzauflösung und globale Zyklen sind ein begrenztes Paket:
+   lokale ID zuerst, explizite qualifizierte ID exakt, unqualifizierte Fremd-ID
+   nur bei genau einem logischen Eigentümer. Fehlende/mehrdeutige/ungültige
+   Referenzen immer Fehler. Alle Fremd-contains-Vorfahren vor Scopeselektion
+   einbeziehen; echte Selbstkanten bis zur Zyklusprüfung erhalten.
+2. Sprachdateien derselben qualifizierten Identität vor Deduplikation auf
+   normalisierte `contains`-/`requires`-Mengen und relevante Strukturmetadaten
+   vergleichen. Unterschiedliche Topologien mit beiden Dateipfaden melden;
+   nicht still vereinigen und dadurch künstliche Zyklen erzeugen.
+3. Echte neue Negativfälle: fremder direkter requires-/contains-Zyklus,
+   fremder geerbter effektiver Zyklus, geerbte Selbstforderung,
+   fehlender/mehrdeutiger Fremdverweis und konfliktäre Sprachvariante. Positive
+   Kontrollfälle für legitime Fremdverweise, mehrfache sprachliche Serialisierung
+   und allgemeine Mehrfachelternstruktur sichern die zulässige Grenze.
+4. UUID-Entdeckungsfehler ist keine garantierte grüne Kleinreparatur:
+   die unabhängige Root-Vollerhebung außerhalb `quality` fand 593 Runtime-
+   Formdateien/56171 Goals, 164 fehlerhafte IDs und 327 Referenzen. Beispiele:
+   kanonische Math-ID `99ef0fc2-150a-51e8-bac8-7e40e46917b` hat nur 35 Zeichen;
+   kanonische Wirtschaft enthält `de_gymnasium_economics_memory_cards` und
+   `mem_de_…`. `graph-definition.md:62–82` und
+   `general-goal-system-and-migration.md:607` enthalten keine erlaubte
+   symbolische Produktions-ID-Ausnahme. Eine Identitätsmigration oder ausdrücklich
+   genehmigte begrenzte Übergangspolitik ist separat zu entscheiden. Der Globfix
+   darf keine dauerhaften Lernenden-/Karten-/Asset-IDs nebenbei umnummerieren.
+5. §7.3 ist normativ klar und der lokale Auditor verwendet die richtige
+   Goal-Knotenrelation. Seine 1319 Befunde werden fachlich geprüft, bevor
+   Datenkanten geändert werden. Keine verdeckte Baseline, Warnung statt Fehler,
+   automatische didaktische Kantenkorrektur oder Einheitenzerlegung.
+
+
+| Kette | Implementierung | Echter Gegenfall / Testlücke | Workflow, Job, Kommando, Fehlerwirkung | Scope / Grenze |
+| --- | --- | --- | --- | --- |
+| E51 Kompetenzwortlaut und bekannte Schreibkollisionen | `scripts/validate_competency_wording.py:29–53,64–120` prüft Verbot, dokumentierte Ausnahme und stale Registry; `scripts/check_curriculum_spelling.mjs:7–56` prüft fünf bekannte oe-Kollisionen. | `scripts/check_curriculum_spelling.test.mjs` prüft fehlerhafte und zulässige Begriffe. Kein eigenständiger Mutationstest des Python-Ausnahme-CLI gefunden. | C `ci.yml:548–550`: `python -B ../scripts/validate_competency_wording.py`, `node --test ../scripts/check_curriculum_spelling.test.mjs`, `node ../scripts/check_curriculum_spelling.mjs`. Nichtnull hart, Haupt-CI-Trigger wie C. | Python durchläuft JSON-Goaldateien; Rechtschreibkollisionsprüfung nur kanonische Mathematik/Physik. Kein Wörterbuch, keine Autokorrektur, keine maschinelle fachliche Ziel-/Sprachqualitätsfreigabe. |
+
+
+| Kette | Implementierung | Echter Gegenfall / Testlücke | Workflow, Job, Kommando, Fehlerwirkung | Scope / Grenze |
+| --- | --- | --- | --- | --- |
+| E52 Aktuelle Originaltext-Verifikation | `scripts/generate_curriculum_source_verification_review.py:178–238` PDFbindung, `:430–458` Claimtyp/Reviewhash, `:536–551` completed-drift, `:585` build_review, `:1536` CLI. | `self_test:1313` ff.: acht Ledgermutationen, duplicate raw JSON key, stale completed review; PDF-Modus-/Rohbytefälle ab1398. Tatsächlicher Selftest ist Teil der aufgerufenen Conformance, nicht nur eine Beispieldatei. | C692 ruft `run_curriculum_release_model_conformance.sh:99–105` auf: Generator `--check` und `--self-test` mit explizitem `--allow-missing-source-pdfs` bei committed-bindings. Fehler hart im Mathrelease-Modellprofil. | Aktuelle source-/Text-/Locator-/Reviewbindungen des bezeichneten Profils, keine historischen absoluten Zählwerte als Sollnorm und kein universeller Live-PDF-/rechtlicher Freigabenachweis. |
+| E53 Lokale Bildpromptprüfer | `scripts/check_goal_visualization_prompt_appends.mjs:53–55,80–113` erkennt bekannte GoalIDs/SkillPilot; `generate_goal_visualization_reconstruction_prompts.mjs:285–297` prüft provider-facing Tokens und verwendet den Guard vor Schreiben355. | Bekannte Generatoroption-/Exactprompt-Gegenfälle in `scripts/generate_goal_visualization_nano_banana.test.mjs:32–107`; kein vollständiger privater-Promptnegativekatalog identifiziert. | `npm run visualization:check-prompt-appends` in app/package.json97 vorhanden; kein entsprechender Hauptworkflow-Aufruf gefunden. **L**. | Lokale Authoring-/Providerpromptgrenze; kein automatisches Gate sämtlicher vertraulicher Daten oder jedes manuellen Provideraufrufs. |
+
+
+| Kette | Implementierung | Echter Gegenfall / Testlücke | Workflow, Job, Kommando, Fehlerwirkung | Scope / Grenze |
+| --- | --- | --- | --- | --- |
+| E54 Gemeinsames Buchmodell und wirklicher Renderer | `app/scripts/goalBookModel.ts:1055–1299` Mitgliedschaft/exakte Scopetupel, `:1357` stabile Topologie, `:1829` Build, `:2460` treeOrder; `goalBookRenderer.ts:1315` Rendervertrag, `:1759–2005` Layout, `:2007` lokaler Browser, `:3031–3353` echte PDFinspection, `:3355` atomarer PDFwrite. | `testGoalBookModel.ts:239–385,463–588,630` ff.: Determinismus, stale Asset/kind/Scope/externes Ziel; `testGoalBookRenderer.ts:473–564,903–1114,1278–1306`: korruptes PDF/Outline, Assets, Überlauf. `src/utils/goalBookRuntime.test.ts` und `goalBookChapterProjection.test.ts` prüfen Konsumenten. `testGoalBookSourceAtlasInputs.ts:67–107` lokale Cachepositive/-negative existieren, aber kein Workflow-/package-Aufruf identifiziert. | F395 `npm run test:goal-book-pipeline` expandiert alle genannten **außer** separatem SourceAtlasInputs-Test; F446 `npm run test:goal-book-ui`; B325/327 baut/prüft tatsächlich alle registrierten Bücher. Normale Haupt-CI-Trigger; Fehler hart, keine continue-on-error-Renderpipeline. | Registrierte Publikationen und aktuelle vereinbarte Version/Locale/Scope. Bildlesbarkeit/Didaktik und tatsächliche Browserhosterfahrung werden dadurch nicht als menschlich abgenommen erklärt. Keine byteidentischen volatilen PDFmetadaten zugesagt. |
+| E55 Reviewbundle und Findingvertrag | `app/scripts/exportGoalBookReviewBundle.ts:427` Build aus exakter PDF/Modelldatei, `:256` Markdown; `validateGoalEvidenceFindings.ts:88–175` Runbindings, `:193–244` batch/schema/fingerprint/authority. | `testGoalBookReviewBundle.ts:251–259,397,477` deterministische Bundlebindung und falsche Inputs; `testGoalEvidenceReviewContracts.ts` closed fields/forged accepted/stale run-/goal-/page-Bindings. Schema E0–E5/G0–G4 hat **keinen** vollständigen Generalisierungsbeweisautomat. | F395 `test:goal-book-pipeline` enthält `test:goal-book-review-bundle` und `test:goal-evidence-contracts`; jeweilige Assertions hart. Generischer realer `validate:goal-evidence-findings` CLI nicht als voller Produktionsreviewcorpusaufruf in Main gefunden. | Gegenstand-/ID-/Hash-/Autoritätshülle. Wirkliche unabhängige Replikation, fachlicher Mechanismus und spätere globale Änderungsscopefreigabe sind nicht durch bloße Enums bewiesen. |
+| E56 Öffentliches Feedback und historische Bindung | Backend `goalfeedback/GoalFeedbackPublicationRegistry.java:105–213` resolveCurrent/historical/public, `GoalFeedbackSubmissionService.java:133–232` exact supplied/trusted Context und separate Envelopes; app `goalFeedbackInbox.ts` eigener Intake. | `GoalFeedbackPublicationRenderVariantTest.java:82–106` Rebuild/Restart bewahrt alte Context-/Pagebindung und verwirft falschen Hash. `app/scripts/testGoalPublicFeedbackV2Contract.ts:89–124` private/invalid fields und Privacyauthority. Weitere Backend-Feedbackklassen laufen in voller checksuite; einzelne Sicherheitsdetails werden hier nicht als vollständig auditiert behauptet. | Hauptworkflow `CI / backend-ci`, `ci.yml:773` ruft `python3 -B ../scripts/run_backend_ci.py --manifest ...`; dieser führt nach eventuellem früheren Fehlerselektor bei `scripts/run_backend_ci.py:198` **./gradlew check** ohne hier gefundene Feedbackausschlüsse aus. F395 enthält Publicfeedback-Vertrag via test:goal-evidence-contracts; F446 UI. Gleiche Haupt-CI-Trigger, Tests hart. | Reale Backend-/Schema-/Publikationsbindung; externe Meldung bleibt untrusted. Keine automatische fachliche Entscheidung, globale Coachregel oder Menschenfreigabe daraus ableiten. App testGoalFeedbackOperations vorhanden, aber nicht pauschal als eigener Main-CI-Aufruf gezählt. |
+
+
+| Kette | Implementierung | Echter Gegenfall / Testlücke | Workflow, Job, Kommando, Fehlerwirkung | Scope / Grenze |
+| --- | --- | --- | --- | --- |
+| E57 Manifestgebundener Packageconsumer | Backend `curriculumpackage/JsonCurriculumPackageLoader.java:68–289` Lock/Manifest/Katalog/Capabilities, `:1013–1018` Definitionkonflikt; `PackageCurriculumResourceState.java:60–164` generation-bound loading und Reads, `CurriculumRuntimeSnapshotProvider.java:32–35` atomarer candidate snapshot. | `JsonCurriculumPackageLoaderTest.java:107–224` Tamper,Softwarebereich,identischesDefinitiondedup/Ownerkonflikt; `PackageCompositionViewStateTest.java:455–636` Rollen-,Merge-,Duplicate-/Scopeabweichungen; `PackageCurriculumResourceStateTest.java:23–85,131–215` Version/Owner/MIME/Externalnotproxy/Readtamper; `CurriculumRuntimeSnapshotProviderTest.java:18–41` bewahrt vorigen Snapshot. `PackageLandscapeModelParityTest.java:16–129` bidirektionaler Domainvertrag. | CI backend-ci `ci.yml:773` → run_backend_ci.py198 **./gradlew check**; F383 `test:package-landscape-model`,F385 `test:runtime-curriculum-catalog`; O83–89 echter ProvisionedMathConformanceTest mit Storeenv. Dieser echte Großpakettest überspringt ohne Env/Lock (Test24–31) und ist im normalen backendcheck kein Realpaketbeweis. | Harte aktuelle Consumer-/Fixtureverträge im Mainbackendcheck. Reales vollständiges MathZIP nur optionaler Paketworkflow. Nicht unterstützte Fragmente werden ausdrücklich abgelehnt; das ist kein akzeptierender Capabilitypfad. |
+| E58 Unabhängige Normalform und Closure | `scripts/validate_full_standalone_curriculum_package.py:1794–1871` FieldRegistry, `:2255` content/assets, `:2945` DerivedClosure, `:3647–3724` unabhängige hardreferenceclosure; `validate_curriculum_release_model.py:929–1285` Pointer/Normalform, `:1411` Digests, `:3350` expected model. | Fullvalidator selftest `:3848–3908` echte badZIPs; `:4065–4200` Closure-reference/seedelision wird unabhängig entdeckt. `validate_curriculum_release_model_fixtures.py:226` Closure, `:494` Migration, `:714` Publication, `:857` publicationoutsideclosure, `:919` mutierte Ausführung. Aktuelle Modellmutationen u.a. Source/fingerprint/binary/Migration5790–6505. | C684–692 ContractCLIs/Selftests/Realrelease-Modellconformance; O77–81 actual fullZIPvalidation. Hauptworkflow-/optionaltrigger unterscheiden sich wie oben. Nichtnull hart, keine versteckte Baseline. | Normalisierungs-/Closurevertrag des expliziten v1Releaseprofils; nicht automatische didaktische Minimalität aller G/V-Normen. Echte fullZIP-Prüfung nicht in jeder PR. |
+| E59 Quarantäne, Store und atomarer Lock | `scripts/provision_curriculum_package.py:627–716` quarantine identity, `:804` reportbind, `:1526–1640` Install, `:1658` Locksemantik, `:2014` CASactivate. | Wirklicher `self-test` delegiert an `scripts/test_curriculum_package_provisioner.py:358` ff.; staleCAS520–577, Symlink591–632, Payload-/Permissiontamper715–763. Fakevalidator in dieser Suite ist begrenzte Lifecyclefixture, kein Beweis tatsächlicher FinishedZIPvalidierung. | C689 `python -B scripts/provision_curriculum_package.py self-test`; O-fullconformance reale install/verify/activate/status plus Reporterabgleich (`run_curriculum_release_model_conformance.sh:185–244`). Fehler hart. | Kein ungültiger Kandidat darf aktiven Lock ersetzen; tatsächlicher Realpaketpfad zusätzlich optional. Packageactivation ist lokale Runtimevorbereitung, keine Produktionsumstellung/Stablepublikation. |
+| E60 Ontologie- und Reverseverträge | `app/scripts/buildFwuOwlCurriculumPackage.ts` SourceZIP/Schema/Sidecars, `app/scripts/memFwuRoundtrip.ts:200–221,2006–2028` Core/authoringrelations; `scripts/validate_fwu_owl_curriculum_package.py:1045` Validation/SecureZIP, `reconstruct_json_curriculum_package_from_fwu_owl.py:527` Registry/`:705` Reconstructor, `run_fwu_owl_reverse_compiler_hermetic.py:789` pathlayout/`:2159` reconstructedvalidation. | `testFwuOwlCurriculumPackageBuilder.ts` echte Buildernegative; Python CLIselftests FullFWU2038,Reverse2472,Hermetic2957,Packagecontracts mutationmatrix1569–1649. Fixtures prüfen schema-/sourcearchive-/core-/carrier-/segment-/Tool-/reportdrift, nicht automatisch jeden vollständigen realen Release. | O160–186 typecheck+buildertest, echter Mathematiksubjectexport und MEMsemantic-/OWL2DL/HermiTpilot, danach explizite --self-test- und Contractaufrufe. Schedule/Dispatch, kein allgemeiner PR-Trigger. A94 Completion-FWUbuildertest ist engeres alternatives Profil. | Vollständiger echter JSON→OWLZIP→isolierterJSONZIP→beide hermetische Smoke-/Reprolauf ist aus diesen **Selftest**-Kommandos nicht als universeller Produktgate abzuleiten. Alle tatsächlich aufgerufenen Fehler hart; stable Cryptooperationen E50 weiterhin offen. |
+
+
+## Reparaturnachtrag: echte Strukturprüfungen vor jeder höheren Maturity
+
+**Lokaler Implementierungsstand nach dem ursprünglichen Audit, noch keine
+behauptete Remote-Abnahme oder Wiederherstellung der zehn Floors.** Der reine
+Prüfer `app/scripts/lib/skillGraphIntegrity.ts` führt G01a/G01b/G02/G05/G06/G07/
+G15/G42/G16/G17 aus. Jede Prüfung besitzt einen expliziten Status `pass`, `fail`
+oder `blocked`; fehlende, blockierte oder doppelte Einträge und ein leerer/fremder
+Scope können keinen vollständigen Integritätsnachweis erzeugen.
+
+`generateCurriculumQualityStatus.ts:1814–1845` persistiert den tatsächlich
+berechneten Bericht in CQR-001. `deriveCurriculumMaturity:5949–5960` verlangt ihn
+vor jeder höheren Stufe und liefert bei einem unvollständigen oder fehlerhaften
+Strukturbericht M0. Auch der eigenständige Floorchecker
+`checkCurriculumMaturityFloors.ts:103–108` weist ein behauptetes M6/M7 ohne
+vollständigen passenden Strukturbericht zurück. Die zehn genehmigten Floors
+werden dafür nicht gesenkt. Der nachgewiesene D/P/A/M/V-Reviewstand bleibt
+getrennte Evidenz; eine alte Stufenzeichenfolge ersetzt keinen neu ausgeführten
+harten Vertrag.
+
+Die feste Auflösungsmenge ist der Katalog aller 21 kanonischen deutschen
+Landschaftsdateien. Pro Fach wird dessen vollständiger Goalumfang plus echte
+Referenzclosure und sämtliche contains-Vorfahren mit ihren Anforderungen geprüft.
+Ein nur für Vererbung benötigter fremder Vorfahr importiert keine unbeteiligten
+Geschwister. Personalisierung, Fokus, Applicability und Mastery kürzen diese
+Strukturprüfung nicht. Identitätsduplikate werden zurückgewiesen; keine erste
+Datei und keine vereinigte Konflikttopologie wird still als Wahrheit gewählt.
+
+G17 benutzt weiterhin genau `effective(C,R ohne die betrachtete Autorenkante)`
+auf Goal-Knoten. Der vorhandene §7.3-Kern wurde dafür wiederverwendet. Die
+getrennte G42-Prüfung expandiert Clusteranforderungen in Atome und prüft deren
+Graph auf Zyklen. Iterative Traversierung und nur tatsächlich beitragende
+Vorfahrenursprünge verhindern Rekursionsüberlauf sowie quadratische Mengen
+anforderungsfreier Vorfahren. Ausgelassene `requires`/`contains` behalten den
+bestehenden leeren Default; explizites null oder Skalare sind ungültig.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E61 Strikter Gesamtstrukturvertrag vor Maturity | `app/scripts/lib/skillGraphIntegrity.ts` reiner Prüfer/Abdeckungsmanifest; `auditTransitiveMinimality.ts` unveränderte §7.3-Entfernungssemantik mit iterativen Hilfen. `testSkillGraphIntegrity.ts` prüft echte UUID-/Gewichts-/Identitäts-/Referenzfehler, fremde direkte/geerbte/atomar expandierte Zyklen, Entfernen aller geerbten Kopien eines Ursprungs, gültige Polyhierarchie und gültige/zyklische 12000-Knotenketten. Lokal bestanden. Vorhandener Minimalitätstest unverändert bestanden:572 literale Vergleiche,3593 korrekt verworfene ungültige Graphen. Fokussierter strenger TypeScriptcheck und diffcheck bestanden. | `app/package.json:78` führt über C611 `npm run test:deep-understanding-rollout` zuerst die vollständige Suite `npm run test:skill-graph-integrity` danach `testPoliticsEconomicsMemoryEntries.ts` und `testDeepUnderstandingRollout.ts` aus. Dessen Import bei `:5` bindet zusätzlich `testCurriculumGraphMaturity.ts` ein:14 tatsächlich fehlerhafte Graphen führen über CQR-001 zu M0 und M6/M7-Floorfehlern,35 fehlende/gefälschte Berichte werden zurückgewiesen. C618/C619 regeneriert/prüft tatsächliche Daten. Ein Suitefehler beendet denselben CI-Step; eine frische Remote-Ausführung dieses Branchstands ist damit nicht behauptet. |
+
+Der ursprüngliche Q04-/D-QS-Konflikt bleibt in der Baselinezeile sichtbar.
+Im aktuellen Branch wurde der widersprüchliche Fließtext in
+`curriculum-quality-maturity-and-routes.md:243–247` redaktionell auf maximal
+Scope-`M4` berichtigt. Die bereits vorhandene M4-Tabelle, die Voraussetzung
+für Curriculum-M5, die bestehende `deriveScopeMaturity`-Berechnung und sämtliche
+Fach-Untergrenzen wurden dadurch nicht verändert.
+
+Die **lesende Erhebung vor Datenreparaturen** liegt vollständig mit
+Quellbytes-Hashes und Zeugen in `tmp/ci-contract-strict-graph-before-repair.json`.
+Sie ergab für den neuen Strukturvertrag:
+
+| Fach / bestehender Floor | G16 | G17 im geprüften vollständigen Scope | UUID-Feststellungen | nichtpositive Gewichte |
+| --- | --- | --- | --- | --- |
+| Biologie M7 |16|359|0|0|
+| Chemie M7 |13|341|0|0|
+| Deutsch M6 |0|91|0|0|
+| Geschichte M6 |13|13|0|0|
+| Informatik M6 |22|94|0|0|
+| Latein M6 |0|0|0|0|
+| Mathematik M7 |0|923|2|0|
+| Physik M7 |14|610|2|0|
+| Politik und Wirtschaft M6 |0|126|477|18|
+| Wirtschaftswissenschaften M7 |0|92|12|1|
+
+Physiks Scope enthält214 Mathematikbefunde zusätzlich zu396 eigenen
+§7.3-Befunden. UUID-Feststellungen zählen Goal- und Referenzverletzungen, nicht
+verschiedene zu migrierende IDs. Alle zehn Scopes bestanden in dieser Erhebung
+die direkten, effektiven und atomar normalisierten DAG-Prüfungen; Latein bestand
+den gesamten neuen Strukturvertrag. Daraus folgt noch keine vollständige neue
+M6-Abnahme. Die anderen tatsächlichen Befunde benötigen fachlich geprüfte
+Korrektur beziehungsweise eine ausdrücklich entworfene Identitätsmigration;
+kein automatischer Kantenabbau, reines Hashnachführen oder Ausnehmen bestehender
+Daten wird dadurch autorisiert.
+
+Der erste danach tatsächlich neu erzeugte CQR-Bericht enthält die 19 behobenen
+Nullgewichte (18 Politik/Wirtschaft, eines Wirtschaftswissenschaften) und weist
+Latein mit bestandenem Strukturvertrag wieder als M6 aus. Die anderen neun
+geschützten Fächer stehen wegen ihrer tatsächlichen verbleibenden Fehler auf M0.
+Der frische Artefaktabgleich besteht; der anschließende Floorcheck scheitert
+ehrlich an diesen neun unverändert geltenden Untergrenzen. Die vollständigen
+aktuellen Fachzahlen stehen im [Reparatur-Handoff](../dev/ci-contract-audit-handoff-2026-11-06.md).
+
+Der anschließende getrennte Geschichte-Commit entfernt 13 nachweislich geerbte
+Duplikate aus sieben Assessmentzielen. Nach jedem Entzug bleibt die vollständige
+effektive und atomare Adjazenz identisch; Aufgaben und Bewertung bleiben gleich.
+Die echte erneute Gesamterzeugung vom `2026-11-06T10:41:36.865Z` bestätigt
+Geschichte mit zehn bestandenen Strukturchecks als M6. Latein bleibt M6;
+die acht anderen geschützten Fächer bleiben M0 und ihr Floorcheck schlägt fehl.
+Die [Anwendungsquittung](../dev/ci-graph-repairs/history-inherited-duplicate-repair-2026-11-06.json)
+bindet die tatsächlichen Daten- und Berichthashes. Unveränderte Reviewledgers
+werden dabei nicht umetikettiert.
+
+Der anschließende Deutsch-Stand ist ebenfalls tatsächlich M6: Der frische
+Gesamtbericht vom `2026-11-06T11:36:07.203Z` enthält null Strukturbefunde und
+bestandene CQR-301/302/401/501. Die 68 fachlichen Voraussetzungskorrekturen,
+41 getrennt closuregleiche Normalisierungen und 23 separat geprüften
+Scopeoperationen sind durch die verlinkten Einzelquittungen gebunden; alle
+27 authored Targetmengen bleiben unverändert. Die sieben übrigen geschützten
+Fachstände bleiben M0 und lassen die unveränderten Untergrenzen scheitern.
+
+Ein zusätzliches echtes G01b-Gegenbeispiel wurde zunächst fälschlich akzeptiert:
+Groß- und Kleinschrift desselben UUID-Werts ergaben zwei Strings. Die
+wertbezogene Kollisionsprüfung verwirft jetzt solche Doppelidentitäten;
+positive Referenzfälle bestätigen gleichzeitig, dass gültige UUID-Verweise
+unabhängig von Hex-Schreibweise auflösen. Qualifizierte Eigentümer bleiben
+verbindlich, und die verfassten IDs werden nicht umgeschrieben. Die ursprünglichen
+13 Graphgegenfälle sind damit um einen vollständigen Maturity-Negativfall
+erweitert; Einzel-Großschreibung bleibt zulässig. Die aktuelle 14-/35-Integration,
+Strictsuite, fokussiertes ESLint und der bestehende Deep-QA-Aufruf bestehen.
+Ein frischer Aufruf desselben Graphprüfers auf allen 21 aktuellen Katalogen
+stimmt exakt mit den gespeicherten CQR-001-Berichten überein.
+
+Die anschließend tatsächlich angewandte Informatik-Normalisierung entfernt
+22 geerbte und zehn unabhängig geprüfte transitive Duplikate aus neun
+`requires`-Arrays. Nach jedem Entzug bleiben die vollständige globale
+Goal-Erreichbarkeit, die atomare Erreichbarkeit und die rein atomaren
+Autorenrouten identisch. Der zurückgestellte Fall `INFO-G17-056` bleibt
+unverändert. Der vollständige frische CQR-Bericht vom
+`2026-11-06T13:18:14.655Z` bestätigt null G16 und weiterhin 62 G17 in Informatik;
+die übrigen acht Strukturchecks bestehen. Informatik bleibt M0; Deutsch,
+Geschichte und Latein bleiben M6, die sieben übrigen geschützten Fachfloors
+scheitern weiterhin. Die [Anwendungsquittung](../dev/ci-graph-repairs/informatics-normalization-application-2026-11-06.json)
+bindet Quellen, unabhängigen Review, vollständigen Replay und tatsächlichen
+CQR-Bericht. Diese Normalisierung genehmigt keine neuen Aufgaben- oder
+Anerkennungsverträge.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E62 UUID-CLI auf dem tatsächlichen Curriculumkatalog | `scripts/validate_goal_ids_uuid.py` entdeckt laufzeitförmige Landschaften unter `curricula` und schließt nur Qualitätsunterverzeichnisse aus; keine festgeschriebene Dateianzahl. Exakte UUID-Gruppen, typisierte Relationsendpunkte, fehlende versus explizit ungültige Felder und JSON-Fehler werden hart geprüft; ein insgesamt leerer Goalumfang scheitert. `scripts/test_validate_goal_ids_uuid.py` führt 15 echte CLI-Fixtures aus: Der kanonische Fehlformatfall war mit dem alten Glob tatsächlich rot, weil die alte CLI bei null geprüften Dateien fälschlich Erfolg meldete. Alle 15 Kontrollen bestehen nach Reparatur. | C-Job `graph-validation`: eigener Step `Test Curriculum Goal UUID CLI` mit `python -B scripts/test_validate_goal_ids_uuid.py -v` im Repositoryroot; bestehender Produktionsstep `Validate Curriculum Goal IDs (UUIDs)` mit `python scripts/validate_goal_ids_uuid.py` bleibt hart. Zehn lokale Workflowkontrollen bestanden am Commit dieser Reparatur; spätere zusätzliche Workflowtests besitzen eigene Belege. Der tatsächliche Kataloglauf prüft 593 Dateien / 56.171 serialisierte Goals und scheitert an 164 ungültigen IDs plus 327 ungültigen Referenzendpunkten, insgesamt 491 Fehlern. Keine Migration oder Baseline-Ausnahme. Referenzexistenz, Identitätseindeutigkeit und Topologiekonflikte bleiben separate Graphverträge. |
+
+Der [CLI-Reparaturbeleg](../dev/ci-graph-repairs/goal-uuid-cli-repair-2026-11-06.json)
+enthält die konkreten Eingabe-/Code-/Logbindungen und die echte Rot-Grün-Folge.
+Die ursprüngliche G01a-Baselinezeile oben bleibt als Befund der unveränderten
+Main-Auditbasis erhalten. E62 beschreibt die spätere Reparatur, keinen
+bestandenen Vollkatalog und keine frische Remote-Abnahme.
+
+| Neue Belegkette | Implementierung / Gegenprüfer | Tatsächlicher Aufruf und Grenze |
+| --- | --- | --- |
+| E63 Eindeutige Referenzauflösung im allgemeinen Graph-CLI | `app/scripts/validateGraph.ts` verwendet einen reinen Identitäts-/Ownerindex: lokal hat Vorrang, qualifizierter Owner wird exakt geprüft, sonst ist genau ein logischer Fremdowner erforderlich. Sprachserialisierungen zählen nicht als zusätzliche Owner; UUID-Endpunkte werden wertbezogen verglichen, symbolische Alt-IDs bleiben exakt. Die Topologieprüfungen verwenden weiterhin die jeweils verfasste Datei; fremde oder konfliktbehaftete Graphen werden nicht vereinigt. `testGeneralGraphReferenceCli.ts` führt 23 echte CLI-Kontrollen aus; der mehrdeutige Fremdverweis wurde von der alten CLI tatsächlich fälschlich akzeptiert und wird jetzt verworfen. | C-Job `graph-validation`: `npm run test:general-graph-references` vor `npm run validate:graph`, beide hart. 23 CLI- und elf Workflowtests bestehen lokal. Der tatsächliche Vollkatalog scheitert vor und nach dieser Reparatur exakt an denselben zwei Deutsch-Phasenverstößen GVR-002; null zusätzliche G05-Befunde. Drei vorhandene Standalone-TypeScriptdiagnosen und ein getrennt fehlgeschlagener Mathematik-Projektionstest sind ausdrücklich erhalten. Kein neuer globaler Zyklus-/Topologiekonsistenznachweis und keine Datenänderung. |
+
+Der [Referenz-Reparaturbeleg](../dev/ci-graph-repairs/general-graph-reference-cli-repair-2026-11-06.json)
+bindet die wirklichen CLI-Läufe, Baselinevergleiche und Grenzen. Damit wird
+die in der ursprünglichen G05-Zeile dokumentierte Mehrdeutigkeitslücke repariert;
+die ebenfalls dort genannten weitergehenden Strukturverträge benötigen ihre
+jeweiligen eigenen Gegenprüfer.
+
+Der danach angewandte [Grundlagen-Folgeschritt](../dev/ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
+behebt auch die beiden Deutsch-Phasenfehler fachlich. Der tatsächliche allgemeine
+CLI besteht jetzt für alle 593 Landschaften; keine Phase oder Prüfregel wurde
+ausgenommen. Der vollständige CQR-Bericht vom `2026-11-06T14:51:11.291Z`
+bestätigt weiterhin Deutsch, Geschichte und Latein als M6. Sechs geprüfte
+Informatik-Voraussetzungskorrekturen ändern tatsächlichen fachlichen Bedarf;
+sie sind ausdrücklich keine closuregleichen Normalisierungen. Informatik
+behält 62 G17-Befunde und bleibt M0. Die vollständige Compositionprüfung
+besteht mit 352 Views, 21 Katalogen, null Fehlern und 2358 Warnungen; der echte
+Floorcheck scheitert weiterhin an sieben unveränderten Fachuntergrenzen.
+
+Der neue [vollständige Topologie-Zensus](../dev/ci-graph-repairs/locale-topology-conflicts-2026-11-06.md)
+bestätigt die bereits in G01b genannten 19 echten Konflikte mit heutigen
+Quellbytes. Sie betreffen acht Mannheimer Owner und sind nicht durch die
+G05-Referenzreparatur gelöst. 147 Mehrfachserialisierungen werden nach logischer
+Identität verglichen; keine erste Datei und kein Vereinigungsgraph werden als
+autoritative Definition ausgegeben. Dieser lesende Befund ist noch kein neuer
+harter Topologiekonsistenzprüfer und kein Vollständigkeitsurteil.
+
+Die weitere [Informatik-Anwendung](../dev/ci-graph-repairs/informatics-whole-exam-foundation-application-2026-11-06.md)
+ändert 39 einzeln geprüfte gewöhnliche Voraussetzungen und 166 exakt abgeleitete
+Jurisdiction-Felder. Alle 35 Scopefolgen sind ausdrücklich geprüft; der kanonische
+Nenner bleibt unverändert. General593 und Composition352 bestehen; der neue
+vollständige CQR-Bericht vom `2026-11-06T17:08:02.394Z` weist weiterhin drei M6-Fächer
+und sieben verletzte geschützte Floors aus. Informatik fällt mit 59 offenen
+G17-Befunden korrekt auf M0. Die Einzelerfolge ersetzen weder die verbleibenden
+fachlichen Korrekturen noch fehlende Aufgaben-/Praxis-/D/P-Nachweise.
+
+## Weitere Reparaturbelege: Prüfungsinhalt und aktueller Bestand
+
+Der [reparierte CQR-202-Gegenprüfer](../dev/ci-graph-repairs/cqr202-known-generic-exam-readiness-repair-2026-11-06.json)
+verwirft die tatsächlich vorhandene generische Musterlösung auch mit
+zusätzlichen Nummern, Aufgabenlabels oder einer echten Aufgabenstellung.
+`evaluateExamTaskReadiness` und `deriveScopeMaturity` werden über den vorhandenen
+Routenpfad bis zum geschützten Floor geprüft. Sechs eingefrorene reale
+Negativpayloads, zwölf Varianten und echte Mathematik-/Physikpositive ergänzen
+die vorhandenen Strukturkontrollen. Die Negativfälle scheitern auch in einem
+sonst gültigen Graph-/Meilensteinfixture und werden dadurch nicht von einem
+vorherigen M0-Fehler verdeckt. Der bestehende harte CI-Aufruf
+`test:deep-understanding-rollout` führt diese Fälle aus. Die Fail-Policy war
+bereits vorher aktiv; korrigiert wurde die Erkennung der leeren Lösung.
+Der Zensus über 925 vorhandene `examData` ändert genau sechs Einstufungen;
+unveränderte Einstufung bedeutet keine neue fachliche Inhaltsfreigabe.
+
+Die [Math-Memory-Anwendung](../dev/ci-graph-repairs/math-memory-prerequisites-application-2026-11-06.md)
+enthält vier echte neue Typbindungen nach fachlicher Prüfung statt eines
+automatischen QA-Rehashs. Die
+[fünf Sprachoperationen](../dev/ci-graph-repairs/global-orientation-cycles-application-2026-11-06.md)
+beseitigen drei geerbte Selbstzyklen; alle anderen atomaren Nachfragen bleiben
+erhalten. Die [weiteren 26 Informatikkorrekturen](../dev/ci-graph-repairs/informatics-bounded26-prerequisites-application-2026-11-06.md)
+sind inzwischen unabhängig geprüft und angewandt. Ihr aktiver globaler Replay
+bestätigt genau 52 Goal-/52 Atomquellen mit ausgewiesener fachlicher Wirkung,
+keine fremde Quelle und null Zykluskomponenten.
+
+Der [historische CQR-Zwischenstand](../dev/ci-graph-repairs/informatics-bounded26-current-cqr-2026-11-06.json)
+vom `2026-11-06T18:45:31.502Z` bestätigt Informatik mit CQR-101/102 PASS und
+47 verbleibenden G17-Befunden; CQR-202 lehnt weiter sechs schwache Terminals ab.
+Der damalige Routenscope umfasst 14 von 24 Informatik-`examData`, nicht alle 24.
+Alle 21 Kataloge bestehen G15/G42. Mathematik hat 919 CQR-001-/917 G17-Befunde.
+Deutsch, Geschichte und Latein bleiben M6, sieben geschützte Floors scheitern
+weiterhin hart. Frühere datierte Zähler bleiben historische Zwischenstände.
+Der feste Regelkorpus und seine 261/243/14-Zuordnung werden hierdurch nicht
+umgeschrieben; diese Nachträge beschreiben die tatsächlichen späteren Reparaturen.
+
+## Folgeschritt: vollständiger technischer Assessmentumfang
+
+Der [implementierte CQR-202/204-Folgeschritt](../dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.md)
+ergänzt die bisherigen E28-/E29-Belege für Q01, Q03 und Q05. Der native
+Bestandszensus erfasst 925 Prüfungsdefinitionen auf Struktur und 872 verbindliche
+Prüfungen auf Bereitschaft: konfigurierte Routen einschließlich Daueralternativen,
+veröffentlichte Offer-Zweige und tatsächliche Prüfungs-Targets eigener Fachviews.
+Vollständige, nicht angebotene Drafts bleiben strukturell prüfpflichtig.
+
+Meilensteinableitung und direkter Floorverbrauch verwenden denselben Validator
+gegen eine vom Report unabhängige aktuelle native Sollmenge. Der
+[unabhängige Schlussreview](../dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06.md)
+belegt fehlende, rote, doppelte, gemeinsam gekürzte, fremd zugeordnete und
+in-place manipulierte Reports als tatsächliche Gegenfälle. Der vollständige
+lokale Deep-Einstieg besteht. Die Fachfloors bleiben unverändert; fachliche
+Aufgabeneignung und neue Anerkennungsregeln werden durch diese technische
+Umfangskorrektur nicht als erfüllt erklärt. Der feste Regelkorpus und seine
+Baselinezeilen bleiben nachvollziehbar.
+
+## Aktueller technischer Prüfumfang nach den Folgeschritten
+
+Der [tatsächliche Gesamtnachlauf vom 6. November, 22:41 UTC](../dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json)
+enthält die vollständigen 925 Definitions- und 872 Bereitschaftsprüfungen;
+alle 24 Informatikdefinitionen sind erfasst. Die historischen 14er-Aussagen
+beschreiben den früheren Teilprüfer. Sechs Informatikprüfungen bleiben
+unzureichend. Informatik hat nach den separat geprüften E9-/Logkorrekturen
+noch 37 G17; Mathematik bleibt bei 919 Struktur- und 917 G17-Befunden.
+
+Die [CQR-104-Routenkorrektur](../dev/ci-graph-repairs/cqr104-informatics-route-scope-repair-2026-11-06.md)
+prüft zusätzlich alle 48 realen Informatik-Länder-/Kurs-/Dauerprojektionen
+gegen die vorhandenen erwarteten Abschlussmengen. 42 leere erwartete Mengen
+sind harte Fehler. Die elf anderen Routenprofile sind im nativen Vorher-/
+Nachhervergleich exakt gleich. Eigene Gegenfälle über den normalen Evaluator
+laufen durch `test:deep-understanding-rollout`; es wurde keine zweite
+Scopeauflösung oder neue Prüfung als Ersatz für fehlende Angebote erfunden.
+
+Der [terminale Remote-Curriculumjob auf 6fe](../dev/ci-graph-repairs/remote-6fe-curriculum-terminal-2026-11-06.json)
+bestätigt die früher implementierte vollständige Assessmentkette und den
+Deep-Einstieg; danach scheitert der echte Floorcheck an sieben Fächern.
+Die CQR-104-Erweiterung gehört zu einem späteren Codecheckpoint und erhält
+ihren eigenen Remote-Lauf. Deutsch, Geschichte und Latein bleiben im lokalen
+Gesamtnachlauf M6; ein wiederhergestelltes M7 der anderen Fächer wird nicht
+behauptet. Die Source-A- und A/M-Bausteine sind getrennt belegte, noch
+unvollständig integrierte Arbeit und kein Ersatz für diese Fachbefunde.
+
+## Nachlauf E30: aktueller Originalkontext bis zum direkten M7-Floor
+
+Die [V-Consumerintegration vom 7. November](../dev/ci-graph-repairs/visualization-fixed54-consumer-integration-2026-11-07.md)
+schließt die technische Originalkontextlücke für genau den fest gebundenen
+54er-Bestand. Sie liest aktuelle Ziele, Ledger und beide Bildkopien und
+authentifiziert die vollständige alte Inputkette unter externer Autorität.
+Der gemeinsame native Schnitt ist an Deep-QA, CQR-303, Meilensteinableitung
+und direkten Floorverbrauch angeschlossen. Ein serialisierter Pass ohne
+passenden aktuellen nativen Erwartungskontext genügt nicht.
+
+Echte Original-, Kontext-, Bild-, Scope-, Missing-Receipt- und
+Erwartungsgegenfälle wirken bis zum Meilenstein/Floor. Der volle lokale
+Deep-Selbsttest besteht; der unabhängige Peer führt neun weitere Kontrollen
+aus. Von 2.483 aktuellen `curricularAtomic`-Zielen sind tatsächlich 54
+V-Kontexte qualifiziert und 2.429 offen. Das ist keine Freigabe der ganzen
+Fächer oder semantischer Fachrichtigkeit. Neue Math-Bilder und der private
+Math3-Quellenstand sind noch nicht angewandt. Die 518 Regel-IDs und ihre
+Zuordnung bleiben unverändert; neue Gesamtproducer- und Remote-Ergebnisse
+werden gesondert geführt.

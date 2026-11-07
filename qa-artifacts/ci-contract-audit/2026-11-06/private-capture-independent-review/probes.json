@@ -1,0 +1,76 @@
+{
+  "status": "actual-independent-small-counterprobes",
+  "sourceWritesPerformed": false,
+  "fullSourceAClaimed": false,
+  "results": [
+    {
+      "case": "TEXT_SELECTED_INPUT_TAMPER",
+      "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+      "mutation": {
+        "path": "app/scripts/fixture.js",
+        "declaredOriginalHash": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+        "oldSha256": "d383125bfb4f5c18557c31b0d460dec927eb4adc6cf5b1d7b141f2f32e1a4acd",
+        "newSha256": "bf9f101e7a7ef39e52a2adb0e899079e67f7ae0afd9a14d9ef19b21c4651aa4e",
+        "preparationReceiptChanged": false
+      },
+      "exitCode": 0,
+      "stdout": "tampered bound producer text accepted\n",
+      "stderr": ""
+    },
+    {
+      "case": "PROJECTED_GRAPH_TEXT_TAMPER",
+      "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+      "mutation": {
+        "path": "curricula/DE/Gymnasium/canonical/capture-fixture.json",
+        "projectedDocumentListed": true,
+        "oldSha256": "f6eeda895a1975861fb039e56cf068e15401ccad99c180bd3eff12eddc85d973",
+        "newSha256": "729eb2418343be5d6ec08a5aee13de7ca66063e4c27b4030cd6c54e82fd998ec",
+        "preparationReceiptChanged": false
+      },
+      "exitCode": 0,
+      "stdout": "tampered projected graph accepted\n",
+      "stderr": ""
+    },
+    {
+      "case": "GROUPED_ASSET_ENTRY_REPLACEMENT",
+      "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+      "mutation": {
+        "logicalAsset": "app/public/assets/goal-visualizations/a.bin",
+        "storeBlobStillMatchesReceipt": true,
+        "mountedAssetSha256": "1a5360262908a36cb53764901d2f675d3b58e8442392e2a4cdf8301b0f50e177",
+        "expectedSha256": "9ad0a72abe0e03602cbb9b12edb72cf0c72d66cea70602a59d206863093a31da",
+        "preparationReceiptChanged": false
+      },
+      "exitCode": 0,
+      "stdout": "unbound grouped asset bytes accepted\n",
+      "stderr": ""
+    },
+    {
+      "case": "CONTROL_STORE_BLOB_TAMPER_REJECTED",
+      "boundary": "actual materializer then actual bwrap launcher, synthetic tiny Git inputs; no full Source-A authority",
+      "mutation": {
+        "logicalAsset": "app/public/assets/goal-visualizations/a.bin"
+      },
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Private asset changed: app/public/assets/goal-visualizations/a.bin\n"
+    },
+    {
+      "case": "ABSOLUTE_OUTPUT_PATH_ESCAPES_CAPTURE",
+      "boundary": "actual tiny Git materializer, arbitrary outside-capture sentinel owned by this probe only",
+      "before": "DO NOT CHANGE",
+      "after": "",
+      "outsideSentinelChanged": true,
+      "returnedPreparation": true,
+      "outputPathIncluded": true
+    },
+    {
+      "case": "HOST_WORKTREE_VIA_PARENT_PROCESS_ROOT",
+      "boundary": "actual bwrap launcher and probe-owned host sentinel only; no real private file accessed",
+      "directHostPathMaskedExpected": true,
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/202238/root/dev/shm/capture-proc-peer-8xq3f66m/host/private-probe-sentinel.txt'\n"
+    }
+  ]
+}

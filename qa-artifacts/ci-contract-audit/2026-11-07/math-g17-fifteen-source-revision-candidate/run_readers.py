@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,subprocess,time,copy,hashlib,shutil
+R=Path('/home/enpasos/projects/skillpilot');P=Path(__file__).resolve().parent;s=json.loads((P/'private-workspace.json').read_bytes());W=Path(s['workspace']);records=[];helper=R/'app/scripts/lib/goalVisualizationMath58Contexts.ts';contracts=R/'contracts/goal-visualization-context/v1'
+def run(mode,source,new_helper=True,new_contracts=None):
+ a=['bwrap','--ro-bind','/','/','--dev-bind','/dev','/dev','--proc','/proc','--bind',str(W),str(W),'--setenv','TMPDIR',str(W/'tmp'),'--chdir',str(R)]
+ if source:a+=['--ro-bind',str(source),str(R/s['source'])]
+ if new_helper:a+=['--ro-bind',str(W/'goalVisualizationMath58Contexts.ts'),str(helper),'--ro-bind',str(new_contracts or W/'contracts-v1'),str(contracts)]
+ a+=['--',str(R/'app/node_modules/.bin/tsx'),str(P/'check_reader.mts'),mode];t=time.time();p=subprocess.run(a,capture_output=True);(P/(mode+'.stdout')).write_bytes(p.stdout);(P/(mode+'.stderr')).write_bytes(p.stderr);records.append({'mode':mode,'argv':a,'exitCode':p.returncode,'elapsedSeconds':time.time()-t,'activeRootReadOnly':True});(P/'reader-execution.json').write_text(json.dumps(records,indent=2)+'\n');print(mode,p.returncode,p.stdout.decode(),p.stderr.decode(),flush=True);assert p.returncode==0;shutil.copy2(W/('reader-'+mode+'.json'),P/('reader-'+mode+'.json'))
+run('cold',W/'after.json');run('old-pin-new-source',W/'after.json',False);run('new-pin-new-source',W/'after.json');run('new-pin-old-source',None)
+third=json.loads((W/'after.json').read_bytes());third['title']=str(third.get('title',''))+' unauthorized third source';(W/'third-source.json').write_text(json.dumps(third,ensure_ascii=False,indent=2)+'\n');run('new-pin-third-source',W/'third-source.json')
+drift=json.loads((W/'after.json').read_bytes());id=json.loads((P/'full58-unchanged.json').read_bytes())[0]['goalId'];next(g for g in drift['goals']if g['id']==id)['description']+=' Unauthorized changed goal.';(W/'drift-source.json').write_text(json.dumps(drift,ensure_ascii=False,indent=2)+'\n');run('new-pin-semantic-source-drift',W/'drift-source.json')
+C=W/'forged-contracts';shutil.copytree(W/'contracts-v1',C);name='math58-current-supplement-pins-g17-fifteen-2026-11-07.candidate.json';j=json.loads((C/name).read_bytes());j['sourceRevisionEvidence']['sha256']='0'*64;(C/name).write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');run('new-pin-forged-proof-reference',W/'after.json',True,C)

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "complete-source-inventory-regeneration-and-independent-verification-pass-source-only",
+  "baseCommit": "feca58176fc2c1d86360c7d00d4bb0506c497335",
+  "rawManifestSha256": "21cb578e9bb8b2f320c8748b9c7de0acc3f56f4d0d389036995d155bb43c733c",
+  "sourceProjectionSha256": "06cb7c9757a98b2ffb5efa83ab942fb970946b41cc09f79326efd0564b31ece2",
+  "catalogSourceCount": 593,
+  "boundDocumentCount": 8601,
+  "identityRuleCount": 164,
+  "losslessCompressedProof": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-bijection-feca58176f-2026-11-07.proposal.json.gz",
+    "sha256": "df5d3a65dedf7f456b04f77fb87c6e3e623514bcca43a7a0f21f18ad9d8e41f2",
+    "bytes": 610275
+  },
+  "rawManifestBytes": 10489152,
+  "actualCommands": [
+    {
+      "command": "python3 -B scripts/canonical_goal_source_identity_proof.py --repo-root REPO generate --base-commit feca58176fc2c1d86360c7d00d4bb0506c497335 --output PRIVATE/source.proposal.json",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07/generate.stdout.txt",
+        "sha256": "0b0fbd2a627ab44d3820b3831368d98a25be111e3654f78b124c5a08cc0bd0e5",
+        "bytes": 370
+      },
+      "stderr": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07/generate.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": "python3 -B scripts/canonical_goal_source_identity_proof.py --repo-root REPO verify --manifest PRIVATE/source.proposal.json --expected-base-commit feca58176fc2c1d86360c7d00d4bb0506c497335 --accepted-manifest-sha256 21cb578e9bb8b2f320c8748b9c7de0acc3f56f4d0d389036995d155bb43c733c",
+      "exitCode": 0,
+      "stdout": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07/verify.stdout.txt",
+        "sha256": "0b0fbd2a627ab44d3820b3831368d98a25be111e3654f78b124c5a08cc0bd0e5",
+        "bytes": 370
+      },
+      "stderr": {
+        "path": "docs/dev/ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07/verify.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allSixSourceAContractBindingsUnchanged": {
+    "registry": {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    "registrySchemaBinding": {
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    "schemaBinding": {
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    "canonicalJsonProfile": {
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    "verifier": {
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    "identityKernelBinding": {
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  },
+  "comparisonToDb9c": {
+    "oldBase": "db9c71155997842ebb7cf48dda413ff6196f1a9f",
+    "catalogExactlyEqual": true,
+    "rulesExactlyEqual": true,
+    "all8591PreviousDocumentsExactlyEqual": true,
+    "removedDocuments": [],
+    "addedImmutableDocuments": [
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-final-three-duration-binding-2026-11-06/candidate-policy.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "dbb468a72a419cb1b46398f5d1dbb04aff02a87a5669c19a892f310e555ae149",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/bundle/book-model.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "417721f53c480ed3cd840fade5cc27076b0e0eb5586b203e49f43923329eb0ee",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/bundle/book-model.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "dc5a47b3631162949ac6bcb37f7f9426eb369e8c7f751b698b42751ea6649060",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/global-current-note-routing-census.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "bbf302cbe0fd737f29112e9f10b108e34a36b6c7349f985714ed00f94818cce4",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/five-ledger-field-census.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "5acf9705355daea6adc56eee9a23e46d9f1ef3d2f99af5561af5edd9f3a1dfed",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/failure-input-census.json",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "e70e3f0d9b53e1ea062c98ff4ab321d297cadf03e79a593af5cfccf59ff98c46",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+        "classification": "immutable-original",
+        "handling": "preserve-exact-bytes",
+        "sourceSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+        "reason": "Historical machine/review evidence remains byte-identical.",
+        "matchedSourceGoalIds": []
+      }
+    ]
+  },
+  "previousFailedCb128": "docs/dev/ci-graph-repairs/source-identity-cb128-source-rebase-failure-2026-11-07.json",
+  "twoLogApplication": "docs/dev/ci-graph-repairs/source-identity-cqr104-two-log-archive-application-2026-11-07.json",
+  "noSchemaRegistryVerifierChange": true,
+  "physicalCandidateQaExecuted": false,
+  "sourceQaOrStateActivationPerformed": false,
+  "runtimeActivationAllowed": false,
+  "limits": [
+    "Not a full private original/candidate read-scope or QA producer run.",
+    "No all-five-ledger V-context qualification, native QA adapter/factory integration or M7 restoration.",
+    "Seven protected subject floors remain unresolved.",
+    "The new source proof binds exactly feca; later work must never rewrite this checkpoint pin."
+  ]
+}

@@ -1,0 +1,2864 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-06",
+  "executionLocalDate": "2026-11-07",
+  "status": "bounded-selective-shallow-transport-probe-pass-independent-review-pending",
+  "scope": "Exactly the18 already qualified original chains in the independently pinned two-family census. Transport does not grant a content decision or runtime/Source-A authority.",
+  "externalAuthority": {
+    "acceptedRepositoryCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+    "acceptedCensusSha256": "3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90",
+    "capsuleManifest": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/capsule.json",
+      "sha256": "bfd2435e3479fd2d6bfd059259fa4113c6f0e95dc0885888781bc01286d54154",
+      "bytes": 237780
+    },
+    "callerMustProvideAllThreePins": true,
+    "manifestOwnClaimsAreNotAuthority": true
+  },
+  "implementation": {
+    "path": "scripts/visualization_review_git_capsule.py",
+    "sha256": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34",
+    "bytes": 16852
+  },
+  "objectProof": {
+    "objects": 578,
+    "commitObjects": 457,
+    "treeObjects": 67,
+    "blobObjects": 54,
+    "shallowBoundaries": [
+      "8ef49014fc627a3ef55995c9408cf3318f0b89e2",
+      "9d8aabe64487c6d96e7d2a7afe6aeff4a07534c1"
+    ],
+    "everyObjectSha1RecomputedFromTypeLengthAndRawBytes": true,
+    "everyOriginalBlobSha256CheckedAgainstPinnedReceipt": true,
+    "originalReferences": 54,
+    "unreferencedObjectsRejected": true,
+    "ancestry": "Exact raw commit parent links from the externally accepted anchor to all selected original commits; actual boundary commits are included and marked shallow. Boundaries only truncate earlier history and cannot invent an edge.",
+    "pathProof": "Exact raw Git tree chains select each regular original path; no basename, suffix, symlink or locale fallback.",
+    "mutableGitFeatures": "Build/materialize disable replacement refs and graft files and clear inherited Git repository/ODB redirections. Native core independently applies the same restrictions."
+  },
+  "measuredResources": {
+    "storedCapsuleLogicalBytes": 1030716,
+    "embeddedUncompressedBytes": 4640125,
+    "alreadyMatchingOriginalInputsBytes": 34534406,
+    "missingHistoricalSourcePayloadBytes": 4344915,
+    "privateWorkingPaths": 109,
+    "privateWorkingUniqueBytes": 44024845,
+    "gitObjectPayloadBytes": 39174531,
+    "measuredUniquePrivateAllocatedBytes": 80166912,
+    "privateHardlinkInventory": "PASS",
+    "noHostHardlinks": true,
+    "workingDataBudgetBytes": 67108864,
+    "objectPayloadBudgetBytes": 67108864,
+    "reserveBytes": 268435456,
+    "temporaryStorage": "/dev/shm",
+    "observedFreeTmpfsBytesBefore": 9810173952,
+    "observedRootFilesystemFreeBytesBefore": 121647104,
+    "fullHistoryFetchPerformed": false,
+    "fullRepositoryCopyPerformed": false
+  },
+  "actualNativeProbe": {
+    "reader": {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b",
+      "bytes": 20675
+    },
+    "probe": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/native-probe.mts",
+      "sha256": "acdef81c4fc49ec5872d733976b6937be2b3a5cd02441827a7faf2bd298c0a93",
+      "bytes": 3707
+    },
+    "actualResult": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-f83-native-shallow.json",
+      "sha256": "5d0a9b1d24d060b3245dbc3fc54ac3ca161de4b305368c4ccc1db03a65186aee",
+      "bytes": 3769
+    },
+    "positiveCases": 18,
+    "trulyShallow": true,
+    "remotes": false,
+    "alternates": false,
+    "unchangedNativeReaderUsed": true,
+    "sourceWrites": false
+  },
+  "negativeControls": {
+    "count": 9,
+    "result": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-nine-negative-probes.json",
+      "sha256": "f1637f47a4c372ee5b3dc6088690c2cf4349597b96bdfeacf16b6e59b500e485",
+      "bytes": 2241
+    },
+    "cases": [
+      "external-hash",
+      "external-anchor",
+      "unknown-field",
+      "runtime-claim",
+      "missing-original-ref",
+      "duplicate-object",
+      "changed-object-bytes",
+      "extra-valid-object",
+      "false-shallow-boundary"
+    ]
+  },
+  "reproduction": {
+    "build": "python3 -B scripts/visualization_review_git_capsule.py build --accepted-commit 6fe35a6b0fa807e5a97475b34f3715dc16a89c00 --accepted-census-sha256 3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90 --output <new-capsule-dir>",
+    "materialize": "python3 -B scripts/visualization_review_git_capsule.py materialize --accepted-commit 6fe35a6b0fa807e5a97475b34f3715dc16a89c00 --accepted-census-sha256 3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90 --capsule qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule --accepted-capsule-sha256 bfd2435e3479fd2d6bfd059259fa4113c6f0e95dc0885888781bc01286d54154 --output <new-private-mini-repo>",
+    "native": "app/node_modules/.bin/tsx qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/native-probe.mts <new-private-mini-repo> 6fe35a6b0fa807e5a97475b34f3715dc16a89c00 3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90",
+    "outputPathsMustBeNew": true,
+    "buildRequiresOriginalRepositoryGitObjects": true,
+    "materializationNeedsNoHistoryFetch": true
+  },
+  "limits": [
+    "No normal V/Deep/M7/workflow consumer wired.",
+    "This exact capsule authenticates the fixed6fe original-history context, not an arbitrary later HEAD. Default-HEAD CI consumption requires an explicitly accepted context or an authenticated later-HEAD bridge; none is silently inferred.",
+    "Original working inputs and installed Node/tsx code/dependencies are separately used/pinned for this component probe; this is not the complete Source-A physical read-scope/toolchain proof.",
+    "The new B review on d99 is tested separately; adding it to a capsule requires its fifth original input dependency (the original-review-bound fresh attribution row). The18-case capsule does not claim B transport.",
+    "No active source/QA/state/policy change; no mass approval qualification."
+  ],
+  "proofArtifacts": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-build.txt",
+      "sha256": "ff95cbea2637f05d3a78e569065589387e75e96a29aa1f8aa6b21a1ab9d97522",
+      "bytes": 322
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-current-materialize.txt",
+      "sha256": "5ed1daf47dd064635c7b54fe4f2ab428b38f2b73969a9b39b4ed0ebeacbae7d4",
+      "bytes": 254
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-f83-native-shallow.json",
+      "sha256": "5d0a9b1d24d060b3245dbc3fc54ac3ca161de4b305368c4ccc1db03a65186aee",
+      "bytes": 3769
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/materialize.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/materialize.stdout.txt",
+      "sha256": "5ed1daf47dd064635c7b54fe4f2ab428b38f2b73969a9b39b4ed0ebeacbae7d4",
+      "bytes": 254
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/native.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/native.stdout.json",
+      "sha256": "5d0a9b1d24d060b3245dbc3fc54ac3ca161de4b305368c4ccc1db03a65186aee",
+      "bytes": 3769
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/negative-probes.json",
+      "sha256": "f1637f47a4c372ee5b3dc6088690c2cf4349597b96bdfeacf16b6e59b500e485",
+      "bytes": 2241
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/negative-probes.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/negative-probes.stdout.txt",
+      "sha256": "70483fe6552dc9f4cac6e9602ce18a6b7f4f6fe5c6470d7cd5bba07a521916db",
+      "bytes": 39
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/summary.json",
+      "sha256": "db16f06db6df8379e715a4fa17f09c666ce76c00331f77f1d5a5ed058631fb72",
+      "bytes": 306
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-nine-negative-probes.json",
+      "sha256": "f1637f47a4c372ee5b3dc6088690c2cf4349597b96bdfeacf16b6e59b500e485",
+      "bytes": 2241
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-nine-negative-probes.txt",
+      "sha256": "70483fe6552dc9f4cac6e9602ce18a6b7f4f6fe5c6470d7cd5bba07a521916db",
+      "bytes": 39
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-private-footprint.json",
+      "sha256": "a3cdb071aa77f6094ecfc9769172b7f510ee00e4668460407639025fb6801eb7",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/capsule.json",
+      "sha256": "bfd2435e3479fd2d6bfd059259fa4113c6f0e95dc0885888781bc01286d54154",
+      "bytes": 237780
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/00/b441ed4cf0ed5a14598276d4da10e4c74d19a9",
+      "sha256": "25f70bd88048fce4267c66b89d8bebd652cc628f329f4f9195cdf6f73a853167",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/00/d206d45c4dd655e2bc5e6ee2a3469386fd4cf0",
+      "sha256": "a8238f7372bd4f8f59f2bd515565ffc50504a97b8fe8058a3be28b7a24a76d49",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/01/5e64542f193fd7bca855abbd32fabcd102dcbe",
+      "sha256": "2e1d3a06908eae6a3653a148f09f963cd4a60a59087e1dd0d289ca5550f36a4c",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/01/ee7c506bca69ba86c3e106d8b146d1834c50b0",
+      "sha256": "6b8ec22457dfacac86d39fb22942b14fde1033410763527c4156131a3e2509f9",
+      "bytes": 398
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/02/0349d1b9a9537c36a3fb6b2ff4924a0f99a79c",
+      "sha256": "4bb85a827d2f109cc80fbacacc0998f4d0160656f5c7d6f6fba4cef050c2577f",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/02/39cae6bf59df68014b8ad66d5f3bf9ab47b1ad",
+      "sha256": "e02121f8f1de0a28aae526d3097f611bd191f2e448ffde66a8f937f27a3f0645",
+      "bytes": 889
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/02/ac3dad6430ba9950ed3067c2191f45a01f5ed5",
+      "sha256": "01b54791a32a54366cdff83126708bc08d4cf8f00502817afc5ab7dc2f4de5f9",
+      "bytes": 416
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/02/f7d5ab17c2e1b803a0e2be23517b351d7fcacf",
+      "sha256": "e9481fb4e59f1f62bb5ec007720f2784198ee20e14922d349f6cb9daa8c1a929",
+      "bytes": 383
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/03/9cb5a1737f7e7191ebd2f1d795512162de96c9",
+      "sha256": "780e8710bb3fb8b07e1dd9b0689fe018ca3e7ad38808ea32fc6c03578cf1b1a6",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/04/885ac4c39d005b5109de963879e7a570d79193",
+      "sha256": "3fe56e77f17c44425d4e799f4ada7307b24820f1722239d40b38364ea73d5888",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/05/024fa45bdf95f2ea5da54d961bfee727600f23",
+      "sha256": "b20044002b813bf8aad064127f608671c459ab3c1bc6f5fe971427a146398f64",
+      "bytes": 239
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/05/4cce3ae7f1018c95492e7bb39f3784a1a21fdf",
+      "sha256": "b168868d3c241e7e804b1dda1b263d98b45c3b22209cd48622a58564714fe20a",
+      "bytes": 553
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/06/62b58b63eb44c034e7140f535819c52435c995",
+      "sha256": "a7ae4372ecc4234199e5014d5d3f64cd2bee327215c6b0783df395b2e3b7ada7",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/06/a03ecbc193550b73d7d7b3af53a5a7e61b17fb",
+      "sha256": "475ebc2907411e75eab00ea06c84fac18b6a71c9dc22552d1dc5f4471dedfb27",
+      "bytes": 529
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/06/ab6928e0bedf55e9b7342460c3d7f5d659d01c",
+      "sha256": "f3cfcf144f3c28d4ce3a22765430828d7719f8989d1b15c2b5c38553676f9c75",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/06/eb89ace81d83893d99f9597673fdc7d055d356",
+      "sha256": "2da60fdc6dc3413cf565696d5adcfaa441f5502cc860f035d7bee7e62d2b10b4",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/08/61a33b2a0faee4ccca1fa0ca315920e0bcfbcb",
+      "sha256": "38121c82286f7382d1a0128b3fc9b262c9d5c1e5b5563f2ae4af4df5542ea89c",
+      "bytes": 273
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/08/6a80aac88fbb301eb3558b395e9296f22027dc",
+      "sha256": "6416e9bd0f54fa930cacb5c6b4614158afd9c96f2cab479f5dff2fb88af492c5",
+      "bytes": 278
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/09/18c7aaa78ace64118c7c9499d7f2a85f3ac8ca",
+      "sha256": "ce3746c5dbc025ccf992a8b8e8db132cb83fcdeab3bd201d6288b315d3e3405a",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/09/ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "sha256": "278d89c832524f6bc8f15ce39d0150990a04246a1773cce13d8ad50ecd4f7aca",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0a/463c66f2603ca72c3f288b5ddfc574447c0025",
+      "sha256": "64f0ea88d72caf9ad7dea15414d0effa5734b3c6659810dcfa32ead6d1007ee8",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0a/7cd5286ab297ded44e63b3d6d9ed1ae2fbdbb1",
+      "sha256": "5ec86ba78b6a60b2e810dcbac7c3f640103294687fab73fa488edd069f04a022",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0a/7fdc7443722dc08cd5360008a7429475f5a453",
+      "sha256": "0a03768d65521b7404ea2f1024c0143cfc2df9c6c86b653c82f5ca7970c8d63b",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0a/f05906c8dfa4c62212b6600759c37f902211c6",
+      "sha256": "15206318ec97d2dd8cf0f9030c0ae4de6decdcd5613f463fe6569179f436e4c1",
+      "bytes": 157
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0b/3452675cde9b2c3ca13a5843e18a94dd689c59",
+      "sha256": "b8a0b9c03ce86c87c585dc23806bdd70f3bf0d12e88fb45f35bfdfe8b9b5f27a",
+      "bytes": 409
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0b/bc34fc7745a0bede52fdcc86438b0e6316e9f7",
+      "sha256": "e5c8df7b70c81ff54d2e230a65db4e6dacfad823317df92d228d1220dca3f4cb",
+      "bytes": 217
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0b/d4f072ad74a9de2cd6352dccf058dac96b6e18",
+      "sha256": "8b69e40f660560236665cf02321db249ced8096528fb386efbf0a43c5010d8fa",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0c/e5a8d791eeb9783a919195fd8590bfb79f3595",
+      "sha256": "cb4130b94bbd10630f7bd63abef500ff4ad9ec47b3944bcc065a351daa80be9b",
+      "bytes": 918
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0d/2d23b3fba59eff06fc01834ebab072d92437b4",
+      "sha256": "86e722818fbe57be503a70ac24c93cda481c98a6b2124b5c1f9d786255bb8822",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0d/3a4b07bd249f77da44cc7b9a564d5d77265a2e",
+      "sha256": "9717a20f6f9457de70d9165c236761c9fcb812c4b9b2fc9001e1341632449688",
+      "bytes": 349
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0d/a8756d965981ac482e8805664c56c3fedad6df",
+      "sha256": "adb892566bf5ad59feeff6bbf25571bfd4b6b99d6146067616ebe88456c5ff28",
+      "bytes": 289
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0d/cb06faa96c3e72767aa1beea49a9b11f9b5125",
+      "sha256": "90d80e68e8936f4b4c068e0c24ed27c59d2566465285b0b33a2f9595a0f14497",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0d/da32dad903e5f859a147696397f6d042023c34",
+      "sha256": "bed0f80142967a700b48e3e14cd30d877c02e803a04fab1d4083e753768e6cdb",
+      "bytes": 213
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0e/dfe0ae7cf7cd7b31a4e88e5bb26ddec16bb555",
+      "sha256": "9107b02b3163895afa6508137fc6a4d24896b4c1e8c25d5bea7a9c2de4d913f1",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0e/f38fe0d76d000cdca994d37c4d59f33fd0a2bb",
+      "sha256": "fb97092a2be512d91ba489afb5661ac36c7a13fe24a369d8ae0f67513d8854b3",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0f/798505260073d978429403b7f591734b4bd493",
+      "sha256": "725d311fe26994f083cb960764d28f2c925b8cea5bda24129b9e0d589ebd7635",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/0f/86df880a24f366d7d357160271dceeb6ce94c0",
+      "sha256": "290c98daf775394ad11e2f3a7ff480bf551b990094d35dd85aeec663d1509ed0",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/10/937d2037a0457ee497b3f1df368e12cd67b889",
+      "sha256": "6ee5fa7f6b34d47606f939bbbaa28680973901f0c1e0d9fe88c716f03c5e597a",
+      "bytes": 365
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/11/6720104913252fcf2a0a7d39c0f8b3b5149055",
+      "sha256": "bc008dde09b89a59bffc28948a68fd51c5840ff9a07c1e9af2fa8fa79b2df7b9",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/11/7af81b4457a46f3710b1d780ab0daa3835cb7f",
+      "sha256": "1fca1716163d9961546830c5fd2fe21b78ed572fc37a31b30d7c68587e2967ab",
+      "bytes": 325
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/12/2b7645da86ca75500def30f0363b77b764a799",
+      "sha256": "73935040a77a2599bebc74c3fc787175f9505deabcd1d862527c7d2744c2064e",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/12/2d4eaf351850892600c28e7047372d59e2b498",
+      "sha256": "b31c2d3bf871401a21f56d4ba7dea0a3d0e7650e70b6346bf7876ae1323d4ecf",
+      "bytes": 328
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/12/cb01fe8ebb2351174e1c9882f73d053f8918ec",
+      "sha256": "498a16efda8b939756c614ecd89c8ad470925ee64f0dc060eca6d44ea86b8a09",
+      "bytes": 212
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/12/ccaba72f43deb8495c3a45850d624e4330caed",
+      "sha256": "1d30e5f7ac88f5615cdee503de58cd293039c00fb69ba48402967591bb29183c",
+      "bytes": 411
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/13/7bb66f1c3800876094c8bb4e38a1399f1065e2",
+      "sha256": "44b01755ddd07daa15a77bfcae6e12dd846ed1479afc658ddafabc840c93d51c",
+      "bytes": 161
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/13/94481fd5769b0e9eac2c077cbb4d6b37d05982",
+      "sha256": "dbf7a8872a44fc9c46d4fecdd995d68ca14aa5dd82e200230609e836d4040c80",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/14/22a742d984debca4cf2f9c29ed272bd87389ea",
+      "sha256": "5bb055dfda6593e8a7c67a4ef4646dfec7053ed3751ff2f28ad25ebccd819a83",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/14/3b7f51515cb3fb3087295d6161d07ced80de8c",
+      "sha256": "8f9ff5f78324cbf2af399c0d4fa5d6c1dc4bbb025b1505267c72c5ebae004f32",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/16/78bb28e8720ee07249d512d10666011dcab2bc",
+      "sha256": "884c9684fc7e9dba8d2192a65b83928afd392703e06bd835e317340bcd5f53b2",
+      "bytes": 195
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/17/92443d61185aae6eb10de4a4ae27a9b2492d4a",
+      "sha256": "aa57bcb5bfd832448d999d204a8553481a30e3f933027adf8b710ebaf256871b",
+      "bytes": 23518
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/18/525f309875699a914e0589d3d468ea2cee6a77",
+      "sha256": "d15f93ea17d2f8a7b5c1252fc2e59471131f03e211b1e7a7dd85fc0dd1e87784",
+      "bytes": 396
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/18/fc5be1cc8dfe3f6bf09ff5f06789902b20ff65",
+      "sha256": "9c0d73de2f165028338835165f98bb46ff87467f27d3165ff328a1248f110a0b",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/19/643f39daac6d14bac3f3fef838b1959c20e20d",
+      "sha256": "d9fee2e742f907aaa3a7422bcb202d4851800b594f41644e65028dd138035fbc",
+      "bytes": 213
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/19/af9cf76b3b8847e87fce98f13b4a6f8532ed2e",
+      "sha256": "8fcd1769525c1b4cccbff2c1699e26f33c2befac5e81d18502a2cc6df51307c3",
+      "bytes": 191
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1a/f73659007344556f676c860f300150092cbd04",
+      "sha256": "913d9824246a6f61f43aaab1d7c342adc0a6b9dea6033e8c660bbf4918f7b638",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1b/ac4e7907e28fdaff6dd1933647f54006972e17",
+      "sha256": "63b0995649e47584c9041377a68746fd81f7a75ad3566d2d699c779212bffdc6",
+      "bytes": 1334
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1b/c13679e13c969c4ec7781fdcb342e699013657",
+      "sha256": "4d24588cf8d7408ede78af3cdcf2a4d9253279066f26d3a1bd8d66272a1ec596",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1b/cccef82e0d027537aa5022ba54618f7671b7e0",
+      "sha256": "44955ae262e056506d239751d76f6af3e20d2482123b35ac0c7f33db799cbbd8",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1b/f87af74c7ca08dbc3a3aeaa85f4d7027862a60",
+      "sha256": "e19a9ada42ee04a21892c37cb0121582f47cbd68cbd7b88b366c63738ffffb69",
+      "bytes": 212
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1c/6294b8ab2e23cda6b12c090e413afff456aa51",
+      "sha256": "1086600f176fadac2fd9d6d439bf022ebb9eb05f0ed0d644230251e2ab4476cd",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1d/2c56fb2ecc0ff9a6a5aba99be7309296181f01",
+      "sha256": "583c8f633e12c32ec9ab5afce8aad0c78073f1fc866af9d99b7f926b9e634aed",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1d/c056378bce7ca44f53a107af9d585e84d2970a",
+      "sha256": "e151671dd6024b8d0a297e0eb02db209d8e14e39e266c5da86c923867587d464",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/1d/ccbcf67e5f8aa283bd557edd1fd62936badd75",
+      "sha256": "78c681fb9c2b1c408d8b350efec5c2f8ea600a000dd1d109f26aa31b8585f3f4",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/20/04487f9165bebb1cf77059617af1f64fc34ab8",
+      "sha256": "fa993096b7ca60b5f8a43a4e5a3261c6c060341c77edddc3490a6dd16dbee058",
+      "bytes": 398
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/20/c3e4422e16d6442441d43598bb93a381aa6267",
+      "sha256": "defb40c439e57794edbd323da4dbf4bcaea7453f701d58efc357f319f2de35ec",
+      "bytes": 162
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/21/2eebd39a28afba212551efd773633fd55d6338",
+      "sha256": "77d335eed9d57e694d010e06a60d5d9e79e086b06d73098d0bb8da50ca68ed58",
+      "bytes": 192
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/21/54deb4c871be2ecc4f64b712402708e5712bd6",
+      "sha256": "3b76ac026322a7895e673ea53a86b66453baab1d9013d7a0248372520c55449e",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/22/09a0a1351d845f203bd459d0fcaa937649705b",
+      "sha256": "73fefb699fe27c76e6333db701294e7a98728228c283336c8079f5c12d590ac7",
+      "bytes": 573
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/22/7dd27fe83d64c508c6a33712065f36790abb18",
+      "sha256": "224206e97b66cf551e55b9c80d120589d5d7aca9f2f07b7906648ed0448f8dc5",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/23/4372d013e67bf4016ba2e239194b2278b61a25",
+      "sha256": "2ba0b386e6de93bdea4eaeb26ad0a5b1d498371a67b72bd7a3acd9f5c5cfe071",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/23/7ef7949239b417dce7e8d96586ad31bacf0d70",
+      "sha256": "7087af62eb834c91dbbe9a941d830ab6465a30fab46873da1e0889f938330ef2",
+      "bytes": 216
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/25/32c1bcaba64c96425cc9152baaabd36248df3d",
+      "sha256": "68afff513a49074857ed64ca505066b60b5636570728495c6a60043fde3c8660",
+      "bytes": 261
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/27/be741aaf9513e733a6ef6e5b34f99ce80f4e60",
+      "sha256": "0a59d8924333f46778430f5c3e070ddf04dde4e8e18dbbff1e6573e4f7feda3e",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/28/b948ae32ee7dba3785fbae161d181716dcc276",
+      "sha256": "a6407d9e6c81586436fa5cadc97b875b64ffa0e141af394d9dc3644e478431c8",
+      "bytes": 217
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/29/b20eae71524a38213863cae0fbe4706d270b2b",
+      "sha256": "00c2ecfa0a1acd979f2e142d9b8a899b7bbbdcd527514f792f56c80371942009",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2a/8de4b6602e8d731bfd0767624c25e073fbd839",
+      "sha256": "3fff80b9175339c9c0e0214e66843aa0f5d4886446ed4475c0b3a80772a76e5d",
+      "bytes": 569
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2a/dcc31e734b6ce10432b575b915fd25c36b7f5e",
+      "sha256": "1fa3c4700f2d661b40714e31bb2612d133878f468e3a784cead8b197b4bb7d55",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2a/f758e0d4301c2bd45a7c5b8105d749ec9fbaff",
+      "sha256": "0bd9ecf587c311a5bd2f598f12124c10b3046cf09e00e605b97a68afea23ee4e",
+      "bytes": 971
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2b/aca3c41eb5df1ea23920c905ec06f9fefd492f",
+      "sha256": "99757032ace67ca5e325396ffe257a8811d48e94e2de4ff7c16b5c05a2c48405",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2b/b03809e332c2b4660c4073752a5e18d9f81c5a",
+      "sha256": "da466586687e089bbe4df5804b8452689537191f31c419e70404b0a4c761e16d",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2b/bec2ab610b4293fc6dcd6c453b369c45e16bf1",
+      "sha256": "01c16e4a81e1df2b9da002d3843ddb6ae9e2c453206ed4b60ab49842c5b560e8",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2c/2f026dddbcef67f07c215768886e4dbea01805",
+      "sha256": "c14e10eb24e9e478a70cf4735ee75d6abcdac52608aa45629e3e8c0f55def3ff",
+      "bytes": 404
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2c/b61f52c2999718af41e606727dfe372a8f0058",
+      "sha256": "4fb008982f81c4a41968c8fe38a4396a815fa4753bace793e4ee2fc2846c4b91",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2e/412adcfeb6be72a9226d332ff370f49056bc13",
+      "sha256": "a0f3537d0775ad7fcd50cb1f9380ed6f3b038f848261e6b7c741933a56713444",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2e/4d4cd2dc0ef4f273e1dca812ba004e25a0cc71",
+      "sha256": "7f2420f81e9fb6203a52cea1bad7c6d15388190b5f6ce59a9eeee74f5a6e8c3c",
+      "bytes": 334
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2e/8e9acba0f613c8bd1d8ac01404598254d65f5c",
+      "sha256": "b5c3bcab172aae1373fb064a0fc3fdcfd853d9f35657bd88f79abd805c0fba4f",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2f/72c011f18f529804a12098ca0373752dca46a1",
+      "sha256": "d4f87a2a57992cc1035d42da4d065e23bf4b1096c84c2a90c2702c33d8bbaf11",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/2f/d57186a028e81f01e1dd76eb4705fd6218977c",
+      "sha256": "7739ea3a81e26fe4955c5b31647ed2f7d1e11fc73cb856a41d7663376ed4d626",
+      "bytes": 571
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/30/39ea2e60df34f4b6b3625dd2e9adab1c3ee667",
+      "sha256": "018c66935343104ca73439ebb573a10d3b0d7ca122fc087193767e1eb1af393f",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/30/58932318e03483ecb31fd716d6b411ee6faf2f",
+      "sha256": "f08393e95eed128c7dd4f09daddf4984bc7bdc0653069697d227f75764e34e01",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/31/612b20034153a3d1668f88a5c3890576adde59",
+      "sha256": "1a9e7275d89b65209773ae6ad53104231ac498d90c96dd708829a41d9b486cf5",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/31/79fc69b5277ed83194805ab3740beded8aa2ef",
+      "sha256": "3e245d4dd428dc0ac04754901642b1ec7ebaf1c6d94417126a59a5f6c972b37c",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/32/8c8db4515ef9c85ad616d7edb09876f63579b6",
+      "sha256": "c62c2bf21160ee6b8b2508526ca8fb6aed7ca404309d5aeed9c15878d0738bde",
+      "bytes": 1273
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/32/ac7f64d9de9687fc24292cf9f3fc8b2752d320",
+      "sha256": "90961c84439873e56fb7786b06ebe28d415460f799a13a2a1ef04e0126dbb79e",
+      "bytes": 261
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/34/0c8172e39f02c5776bf8a28dce7092be35a08e",
+      "sha256": "fe8e8832148552704456037a8df49178d7a7500190555f954f35c968fff6e04e",
+      "bytes": 369
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/34/2b866d215ec3786d217df4532e3f00da03f879",
+      "sha256": "8904273bffbf1761958c49c23ffdece7136eb47be56b79761705597dbde615a4",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/34/877d325070203ec6894425cfa2f2c388bad233",
+      "sha256": "ee6e154e6f05e4d4db5be1f1fb9b0cf5fc48ee0be58ea0573540aa42d911910d",
+      "bytes": 350
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/34/d3600e55b099e00547da556021ab463ae670a3",
+      "sha256": "87b2a4d9eab593be3f1eae8e8854755a38a7ffb85ea05b5b89fcb49e7c39645d",
+      "bytes": 210
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/35/d2879620993b356e286790637d7dea9e7e87b9",
+      "sha256": "bf468a9cd3c7f57deabe4f7f6aba10a88f31be45302a30839eb5a96a2ab89018",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/36/575199d38ee371ca065f3ee283a7211bd3fc0a",
+      "sha256": "97ceea7d57dc6a4392bfcce3a082bda4412bbb938571ffb9b4f28bb4e1a0ca2b",
+      "bytes": 385
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/36/95049f30ebc41026aaecfee2aff8d82f81e7d4",
+      "sha256": "87245b8e93b393601614ec577b810c32693638c65a51ca99cc2bc2982d3a7aa9",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/36/dfb8eb39bef7bda7f86046d872d0272e8ae991",
+      "sha256": "6dcefcc5584002b98cd32324c01d752576d602b486918ed4382d20fa63310786",
+      "bytes": 353
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/36/f51fc71e5d6c47bb3b49f9a61040f5f954f673",
+      "sha256": "a5301cb2689a667332eeeb95de2d47b895435252d699fab48d6061cec50ac592",
+      "bytes": 435
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/37/2ae78c25dcac82a8f453f24a3f6a04cea7c4b6",
+      "sha256": "f4026a5fd885437f916d32f352a56954491324d2d9578e68d095b9a9cdf15841",
+      "bytes": 295
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/38/a06ac8eacffe33fca6ad40c2188433f749f802",
+      "sha256": "a0fa67a9cb4db1c0bd97ac7da086b7ec5c9dbc3350698c21ed0c34aaa524ad65",
+      "bytes": 157
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/38/afe63846ad8405de726d227f4c756931d40cc5",
+      "sha256": "23ed9ad8b0ff0547bf634483eb321e54b3f54306fe62307ea35a4196c9dc85ae",
+      "bytes": 342
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/39/b7f6e68cdebcfd6eefb3f59faf7fcbcd5d673d",
+      "sha256": "744bff21df1d74b32fb6f42374292dec3ea7735341097692d762ab98717fd488",
+      "bytes": 213
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3a/8530cab79941c84a39e67c289c29ab852928fb",
+      "sha256": "9e5a742382518a35e3efe3072615087b1ebee4f698e8c7ad769f89892c81dde8",
+      "bytes": 927
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3b/16956c5faecdbcee6578a303eb143ab6060af2",
+      "sha256": "4485d207c2da44395d1237847ee60d3f5e6f1394ae571018fde65f22c123e582",
+      "bytes": 295
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3b/985e83b0ea499e00c041af0842aa7baee32aff",
+      "sha256": "0f0529d73c6155e532d2c836c915a20967dcab4144b849e1cdcd629d90770471",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3b/c27a9b0d110bd085d6cf3f131a1bc5848fdbbe",
+      "sha256": "baa919189765a2ffd8a892b46e917bc128657e091287f3784c54ab3038e796ac",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3b/c30b2c40b4e3f110dc699c62c6a8720666a298",
+      "sha256": "34788e1678a16c45ee2ff34cdad705d1ef34114d6a14a6ab3ca382e0b21bf64f",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3c/95049ce74aa8d9a3e9ec6984632fc640a737d2",
+      "sha256": "4b3a3b89f0d40eaa49dd9234bdfaf8ba61d969871bc318d2031246e514adf6ef",
+      "bytes": 192
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3c/e5dcbca8b089c01a28bdab063183eb2f5f7c67",
+      "sha256": "90ac895f479b1b2e4cb480c93c68566b10a9bdb1ffb1d9c138b531661f40ccc0",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3d/16b10650fade8dfa7d5189e7c2d02127fef558",
+      "sha256": "5cba038d0cc71db6d3a8818940ed96192febdc387c9c10529b41c2f8dfbe6e73",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3e/097b36d519b37113c7777a5af49205690b1862",
+      "sha256": "c8eb5dbd80f550e335ab87c5c1104f9b3f17f7453078ec7618a5f048c7a4ee77",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3e/352e7e7f2a3a7aef7329abe6bfa6c0b5a3cebf",
+      "sha256": "81e65d8bd42a0243146e9eee9726fc85dd66cb91a8221dc76d8581af19e1da5b",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3e/f222952264e9094602bd7cccef2c8feb9a8664",
+      "sha256": "7acb15a8f4208ef970f6571f7e9c10affc286bc781615ccb0f427ac3a88d155f",
+      "bytes": 857
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3f/67d1fc054e10021a34bb3c3db2e5fd6d935386",
+      "sha256": "950f901c65a0f19ee368db2b5fc3bc86d84924b07bda2f95c210d320268fb560",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3f/aea58a2d03b6b906dfc958f29d84f6b955f679",
+      "sha256": "f783dc616e82312597a5462aa2a5a9580717402a1b96cd8add6ad13b7d461cbf",
+      "bytes": 402
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/3f/dec2c04d7fc4b9311bb1a667b418f020e1bee5",
+      "sha256": "283a622596698c903fe4993a4c6131deb99512de73fe91bbd8d0161c67621a3d",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/40/1755cbd230c20457c7369f43977388ecc090f7",
+      "sha256": "32e46b4fb69c6527f2b6779bc06433db8ad33373f5cdf79f5ef2ec7f0a948ce8",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/40/4d58baa2d56798c827ddec6ee51a483467e56e",
+      "sha256": "c024d9bb12eaa54e4bdb3ae1643620680ec6909b40979b027b01fd9332c17847",
+      "bytes": 454
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/40/6f82f9da6a3afba8cec25af72d3dcb1d2a01ac",
+      "sha256": "eaf722701081d6a6c924da91de92763e5411e065a298cbd84d65a4de93cc7df5",
+      "bytes": 345
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/40/985380df392ef3b0d77d4f5e1dc57c437f8b96",
+      "sha256": "de5a46a8307507f82c24696038521745d052e20d21afc0d984b1671e9881d5ae",
+      "bytes": 299
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/41/7d4110ea7b8c2d5a65e0bccaee7d0453f23a2a",
+      "sha256": "85eb17ae0e1f363b538ef5b7fa5669e728556f86287b898a7e52387e4086c7b5",
+      "bytes": 169
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/41/8aa9286eaa527de29503c0cf11c7a60f21fdb0",
+      "sha256": "28fb5b201bf49f45f343ee924fc773a6568954d9b17cff62e28af59ad08c776e",
+      "bytes": 355
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/41/a37acd0016c7ac9613edb87de283e5a918f543",
+      "sha256": "4ea654a4625d08ae8fd416528acdc30cfe1f7bdbc2cdf319a16dde23b6a970d6",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/42/095f427223545968e452d494e4f982c196c7e2",
+      "sha256": "5fdfd54425d4c4b60d0145436c8dbccd6d2e316c168ef3a2261ed077ff5aa992",
+      "bytes": 411
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/42/46ddbff5947392990f484a56f05a312ed80c11",
+      "sha256": "5d96326b8f190964ce4b16df229e43ac0d62593f86bf1d9562cd4335ee4c8ef5",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/42/e62121a991e29c108b85a1ffa81f50ff1a5e63",
+      "sha256": "0831f49c008b8e302469731032df32f60588ed3ee6da7bb82d6b336bad702782",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/43/0a0f30b87056c3be4404e9ad7c69e581e90245",
+      "sha256": "2f5422080b5609eb1ec6493e18e121cf40dbefd5c67861451b4c6539a5b4bf2c",
+      "bytes": 262
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/43/461b906438572f4f3b64d056112f4189dca4f4",
+      "sha256": "5333860b0e9eadc270f9ad13733ec9234fa56db1f55f5af7949e7abed1db4e29",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/43/b5ce7f4bc8bfbf46f219ae329cc5ed6308e5f8",
+      "sha256": "9a8b8f55710453cc013a0eddde3c9ff3d6324d2ed83ef14ece6e65ff61ea28a6",
+      "bytes": 303
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/44/0b78bcc4e0193edaaed42e0ec690b5469f5d7e",
+      "sha256": "107291c0af5877448e626ac9b36d15e143c44280f2aeead7a0be2a54971a66e5",
+      "bytes": 397
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/44/2f7821ed4f22c41dd487959ea9f2c899ac27e9",
+      "sha256": "ec07da8b20708732c7cd73247090b0ca990b254f2d43fd349fab88bde020c33f",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/45/4d4b9e6ecec329f1f7424d9ab6e7e9f42cf719",
+      "sha256": "d347b26cfb586849d4cd5de2ddd98e3532047983f4ba1fe69608527dc1fb438b",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/45/6ba35a09776f4b36163ad0e38c57a9322da09a",
+      "sha256": "1de76e5af17d5906d5c930d93cf6426b7812ab19cceff93c1d6aafb5b81a7499",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/45/e55318ca1adbb5c29e4ddb2122dcfc5fd78654",
+      "sha256": "819550ae1083b1a810cf3c6fc6044155b1e96892d398ed8c6b84035cfc1db6b4",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/46/00693fd163e9519d5eb21c3c4e7008d39d12d6",
+      "sha256": "223e68f7ded7b72fda8a9ced6274d135889a72b7b373e5b8171213a0ccce4772",
+      "bytes": 386
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/46/967d50b98f5f31a33cc268b8a35d03dec91505",
+      "sha256": "80e015e8ac94b0282404c0fc683c3a0a8a9d711023002ae57a22c197e4f27948",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/46/c9ef264da98460a77c43f3f4e66e918ea0bf8a",
+      "sha256": "29a549549c0d14933db73c044edda03ba3992c5ea3c9ec3d4d74fcfe38a67d39",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/47/218b09475c2557efc8a262657c546aaa7e8595",
+      "sha256": "d8c34a982d4bfbf227da1bce0f2574febcd993f8bb9c059f5439141d0f10f823",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/47/4c53cd2a817ecc0a34102299c605ed06541200",
+      "sha256": "88a16fd557a8e3b6136846b415f80e1006b7cff20b4475e335b4afaab0f7820a",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/47/7330d2caa3447f65e448ce81235894d03f0375",
+      "sha256": "0f900a58941578d1879ce68d3fa00d325479e1d4c32f1ddf4cf39d2755b55487",
+      "bytes": 163
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/47/c06051e21530170aa66fe7115f5d75293d037e",
+      "sha256": "78d4af687b3f7a912b45b7b5eb78eecc827c5db5f8bc45c9bd3ae8e7629bcb42",
+      "bytes": 340
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/48/24deeaad6841bc7b861fb850b4b5c22890ef72",
+      "sha256": "bd168e8de5c28a0f5e4c3c3ece0f6c902286fce23080f7fe289d3184d606b630",
+      "bytes": 329
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/48/b52ee578d7ebc4924198a4cc71588820726b21",
+      "sha256": "940da6fc5874e5b90244f7ef14d0ca684338d8ca696d9595f6abd082a176d363",
+      "bytes": 306
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/49/90b9fc028204641e7235c176bfb4dfff8c5286",
+      "sha256": "c6a5f9d0481b6671f3736a91e6ad889b8f8df8bb185110a43dd992ee28c0ac77",
+      "bytes": 226
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/49/c3616886d01b7a84deddc4a3d5091262d1b390",
+      "sha256": "fa43a14afab6937729bdeb37f3e2575da433e1a2532fba5640118952742d3cae",
+      "bytes": 162
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/49/e0401ffe8fe49784ea9cd11eecfca9452afd3f",
+      "sha256": "ef90101b038fa846fe4d566159a5a3dbf6020a61bebbdd1755df564fea28bccc",
+      "bytes": 418
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/49/f02ce762a687707b0a96dd39f5439455e1f6ad",
+      "sha256": "486c3f5903ec64031baf8435c76da7fb6ff125cdd553e7ea9acb4f492500ebfd",
+      "bytes": 210
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/49/fc16f05a9bd20d62f30575cf5ef0e0f08d736b",
+      "sha256": "f7541fa6d8ccd4cdb04c948dc8f101f138e868eab4c48858cfb9390588111959",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4a/cddb95dd25d04df9bdea7fdf6bcd6be7429414",
+      "sha256": "dcba7e783e448ad7d69aa1e863a56acb7393990c9c1be722670ca428503f35ab",
+      "bytes": 326
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4b/194621031648b77bd816a89d45b55801520806",
+      "sha256": "355d421add458a1275987a5cb07f9c05f543c6a308e201f806856126d9c4d704",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4b/5c99b5b79a84ddf0b0eaccb50ec438435405f2",
+      "sha256": "52f88a91306e60df17496e92621cdefcb08040aeb1f3761aa5e90ceab311f65d",
+      "bytes": 169
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4d/08cd8300dbb20d129a52df4681c6c222ad4c6a",
+      "sha256": "7ba74953997eabaa596cd3d636489b552e3e7254fc59eca257daeec87d5ff8fc",
+      "bytes": 933
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4d/d8c3a6a294b098cc7411c8193df36183da0796",
+      "sha256": "352f5b8aa8fe47e1d84760a929098a37c638d34b9d6f49273a154e42589ad2dd",
+      "bytes": 341
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4e/b105ac13de1a88853217a2a13a1ae7b62c5e8b",
+      "sha256": "bdad2055db3612f03fd6ca68b2aa6cdfbfda34d1b1be15b933275616f22329ea",
+      "bytes": 1244
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4e/ef6c60b8fb93d57b043e91dcaa48f7c929326f",
+      "sha256": "6c7c145f90508fd45d6a6d7f549ee711b7829be67be534c3e4483bbad7552e34",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/4f/90d145fb75fd23f3a0b00e6f4857a527fb6edd",
+      "sha256": "f896cbbe03ec0d39fda697f0cdc99d4d3c5f9a4054240c0776f19641c94ca774",
+      "bytes": 259
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/53/44554de0cb8243fbca26275978cb5396e1ded9",
+      "sha256": "7af543b4556cd9285c352c71fbd1d6360293dbadc8aca1f49006a15a7d6f5867",
+      "bytes": 209
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/53/9840878015744f3b4117a49fed433577b47d9a",
+      "sha256": "cf77fdeef921aa783f542544f8f9b89b42ed6b95a8b2b81efe8e81aa26bf5cc2",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/54/31ff98e2223cf4c7fa7a76ec79a0bcd3fbabaa",
+      "sha256": "a40466ebfc427df54afb53ac1a79f3b8d601fcf4dc81e11288bf809321cc83c5",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/55/4d35d6b7a183342c0fe37f64b4d8ea294c0e3b",
+      "sha256": "a43779a4e4b0cf4f3d385c5b052eeed6c8b64141ae152d6a7ff9b618315d1fd7",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/55/d505d46c8c486a677760c35ecf57ebcb3b2be3",
+      "sha256": "e52465ec78a6d312b904272e17caa5b4834b47bfd536ef19cc86bd9f2aa99485",
+      "bytes": 344
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/56/ce02498ca0dacd79995e55f55263a5ba9e16fe",
+      "sha256": "28b4ccf5257f380ef8e543acb31fcc3a81020533e6ac658782a5337966a7e1b5",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/57/5f7a203e74de3883da52c81cbfbe9297169aa7",
+      "sha256": "33cd1aae0387be4f3c8e8afc1b0d2a9ab4b55f021c34351c80f68372724e32c1",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/57/7096a6bb2d7254e20c265571e497b726d788b4",
+      "sha256": "83011568851b1570ffc65fec46a74726449cc3c4114ab88ed870ed835ce6498a",
+      "bytes": 410
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/57/c8a813df6187b779cd966a06c3fbba5399809f",
+      "sha256": "3b883e9729617780966e47b0396fc353e91953dbfa076b1ce5f4ecc5385d5c4c",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/57/f34b0e49665a1b62e24b99076f07712b2d72b0",
+      "sha256": "060690cc8b3a3084d97bcff8736a866765fdd25a95735d54322e263f4daa42fa",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/58/34bf55c53eed76ae8887c8622e6f7d8fb0ed76",
+      "sha256": "cf4ae48736f143f2d6cdd335467a5f690481ce36b7b041d5e98b979d55843c75",
+      "bytes": 333
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/58/9837b4cf367a5fa3508e31e661da6ebe6899d5",
+      "sha256": "819170cf1f52666333f05dc5b1ff490b7bdabb40f90c4d166bbc2b30e006e589",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/59/7c8de7ca80839e55204d1290877d1bb08e2be4",
+      "sha256": "55138a3ff163f67632f8ffb152992cb024cc9a58527b357ee9be5c3011c0c373",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/59/7fec18ee46f8aba14e5e478d3152fd3ec5a8af",
+      "sha256": "1009a54bc65eaca1ef33c7dfbba2a8d1fb5850a459ce0d65434bc11534f05c80",
+      "bytes": 406
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/59/ebb2405bd64f6e0e2bad7b39ab775fa0fff28a",
+      "sha256": "b8315666e38afe8de73f2746b457b73d43f9399495db9badd5d965d053d2ffd8",
+      "bytes": 325
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5b/2a39862c7c7b94b3d9eabf38ff6201b1db5a89",
+      "sha256": "842bbea662eb32417a2151fd4d163998874b9cbaf1b23ac3d05eebdfffb759b7",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5c/0d733f9c11341ae229a8595bc616d53e5a4853",
+      "sha256": "227a8ad2d37e28f6144013b2a65cba1a7a674ddbf60e77cbd7d8066d6b71a536",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5c/9ff83586c407fd9189207c38238400c74bce51",
+      "sha256": "b4aff010b3303c2b466b6cdfdca9d480f5d12528c978b1408b7fbb9e7061af1e",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5c/b5e567d08bc9f640942529d9099cbce03a4747",
+      "sha256": "c4a22de490c37db01b3c926d170cffd025da4c02ffe7c356319c39bda8da99f8",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5c/ba3cdc1b615726dacd9a7ddb822ff8da4129db",
+      "sha256": "ff314560af063e0dce34fc75c4b5c3cd2f6fd11cde4ca03b349d34b41f6ef435",
+      "bytes": 195
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5c/d49400726af19d1be72c3add687ea53293934c",
+      "sha256": "9fdd6e329b2431bd6ed68d962232da6465abf8a219ca01731cd2ce2722eb2d6d",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5d/0614c7b104a216f96a45247f1729ec61b46b96",
+      "sha256": "0a4f35594da01c5af4f05d712ecf890d85f3798861dba183f5fef3d7d1d513d2",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5d/0dd6e249370e83b321f70aea675d248cee5459",
+      "sha256": "54f409e2aeb747623c2b1bad0923cf4efda808ee08e3267f3b817a99e6fd6dbe",
+      "bytes": 389
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5d/66fa5519753d45df2a44b0ddca544390161a68",
+      "sha256": "d9ff7e9616ad26501c43a3b472ae61924d199d957a69ef3ee00f0bc0de04a9f5",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5d/8dc3264e1b9971de6794d354095db6ae56b305",
+      "sha256": "2e5d3d4b093f2470249442262a30196e2f918f0c19a97edde2a94d882e5b6b0f",
+      "bytes": 376
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5d/e98a06bae18fbbbe2c0d377c3b711a08e975eb",
+      "sha256": "a2a11e78a68022e48c5e72056b3549afbceb86355cf145374a9b2e00987be3fd",
+      "bytes": 337
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5e/21dd6200cd5c6b653be84f728effae0f08727a",
+      "sha256": "9b116dbe318052da2b6b6d760acd853e677647934778f4d0bd82524992598ce4",
+      "bytes": 958
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5e/3462185046496ee3a187ce3e2a631cc454b5c0",
+      "sha256": "546859ffc8f3ff0368185221289fa1414d3fd901d47f61191871f7238e3e9e69",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5e/6d922d47e8ebc80cbf969bb5844b722ad1424a",
+      "sha256": "c9c0b14aa83393f9304d43a683b37dc4cbd278e819083adabcdea9c6a3163b1f",
+      "bytes": 187
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5f/2c9c71d1758bd843da05c674372f2ffd772e0d",
+      "sha256": "746011cdd8d244906c4f52a95eccd82f356b2d6a564c4dc7d2099a0390110647",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/5f/8a52188049990a40b1c308525760da6ce025d8",
+      "sha256": "df22a7a80c4ee378f8b26a40678f52e93522672b367338cb285cae1e690ffb21",
+      "bytes": 324
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/60/1983755dacb8ad52ed0e5242c8332d7edef13c",
+      "sha256": "ea42a5854fb461f90a16c852b7cf1487719e429a0af2c1d46f8d3f7ea7ebcd5d",
+      "bytes": 195
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/60/3f55dc32286ab11a58ad7bb5b7b41309c36c14",
+      "sha256": "82fbef7f034c272d02208f677722a645f8028a97b31eb9fc01def325d3de59a5",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/60/62f502b1876c8efcbfb1f86b3c136b8f387044",
+      "sha256": "6fd7ccf9246a48d904c1501a69a31f35006a7139c2740707dd3d1425b1742ad4",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/61/6324e857aeac915b1335de7b2f10d087e3c5ba",
+      "sha256": "f18495d6b12ff3dc1371cc4cff1ace41ee6a70147879bc2070fe7d403fb4763b",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/62/532fcd80e9a33ecb91979d85bc27a7ac900d5b",
+      "sha256": "55cd8f7904bf3e495481e7351595ca6f47388f053efcd15b362116bbe5904608",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/62/77d7db8ebe4ad0ce272e8e73dae2c718ca97bd",
+      "sha256": "b6082ea0e57d8042c9c4207f41b9c149f98e8cd801494385d2e4c900126584d8",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/62/82de47e320600deae5faf36d2c7ae27594be6a",
+      "sha256": "f16f004481f4146472549d5345a91f06110fcf6c453698307565ffbba4b41c74",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/64/38af8e505a42648fb7154944298078ce9a59ec",
+      "sha256": "565b8686d7a31700d1d94b7357cf8b575dfe8291c33e7edfc86cf37e212ca835",
+      "bytes": 163
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/65/133b13e55883e93eb59bc699114e8db6b00baf",
+      "sha256": "cf283157fe1c14323befe4a7ef947416d1d9937012a4d1ccbd731af0ff01b389",
+      "bytes": 261
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/65/9a0ea838b045ed1ad917df7e7853dc7bd9088b",
+      "sha256": "960d1d87fbf6f7e765a7c8a2f154391012f3946d38ca35e8a3c2ed21c308b1ff",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/65/dfda2a507aac72d89e61bd34568e758ae857df",
+      "sha256": "494a1a056e309b904189e7c4982fc25dd7e67ffc6c71763d49577b6aa81f7197",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/66/af69f1e3d488bf45f04ffe8c9ce260b73c5812",
+      "sha256": "aba64ea7ef357a9bffe7a1dbb12f6a9213f7b98ef4d249ff04bcbcecafdd4122",
+      "bytes": 377
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/67/54609e97cfa57b722225033ac19c889d2bd8ea",
+      "sha256": "cbfa82d09e968542735da848d9f9bb3e73fdfe0753921a34fe1c48e3df7317f0",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/67/7b9c5adbac79331133820badc4169230d24bbc",
+      "sha256": "d80b644c9a6a4df73247d435e2e758c5dfba3462a7ccbdb225a87f492aba6319",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/67/bc8cffd1608953b6360c13d194b9d0a0ae5738",
+      "sha256": "de0b9e60c800d0f46c74c22ee59d97de1e27aa8e0d97e22b39fd1c7e1d32c0d6",
+      "bytes": 218
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/68/253d02f6c415a5255500680494fb93f9af887f",
+      "sha256": "31bcb55a957014ee6fdafa59eb808edfc35915e459c11f2626bf9986de1b3c23",
+      "bytes": 346
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/69/2d44294af4c9bdd74556dd609b4d36f845fcfa",
+      "sha256": "a594b14d5501c7073b44a02a5231b475b01eb91fb4d19970a5619ba6e815ffe6",
+      "bytes": 161
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/69/3872e8ea8663384281d06f61858b0f8fef332f",
+      "sha256": "e6dff7197ac4a719ce4b08c5f1c11359dcf1a3980b2134538222bb5a7c2ca78b",
+      "bytes": 936
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/69/4efe04e3150cfe584d5282d6739e13c923e543",
+      "sha256": "44f0814e9602e2f7595d565efda53dea0a48620325679c8574af54e908443e5c",
+      "bytes": 217
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/69/a4a5d5f1ea2aefa5920bab1e72e2e557d0f429",
+      "sha256": "023999d3ee230695e38602bfe3efdc44658b7e3732ef1241313e54adf73cb62a",
+      "bytes": 216
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/69/b08858eb9402540aad041546f5232b961bf921",
+      "sha256": "ea7de2fca4ec273c56b3aed699943e6ea7ad5d3c9975c64d808624b997669128",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6a/9d76e271be1ee1e3a7dcbe02e1f95ed6115b35",
+      "sha256": "d83b5233cdbaccd5bba6b94fd55df87d6b5116924bd61a24bdd6974191d771be",
+      "bytes": 330
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6a/b65c40e63f9e4378a900059ef26d6ea2d0cfc1",
+      "sha256": "ca519f186432ded46d1521fca52c1fde10ebe933ae40937fe5686f5f0e3af9d2",
+      "bytes": 355
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6b/634c8ec71e3bc2aae59b501d2120e1cc0f08d4",
+      "sha256": "58c8d314cc8bd5bb4fca7054fb0468c1673d7c7c917befe3683957f4f22a7101",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6b/b25c42d858062fb9a28fcb1ef34752022fef37",
+      "sha256": "2bfc5295eb2a7cb5e89c365fc176d67177cae696433ece5b87014222451da6da",
+      "bytes": 183
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6b/dab266d500dafec76667add1dc0fbd58f3e059",
+      "sha256": "68f77eb3be9524b391b3978007543dd6910059e0002b58cab5489447a2d275eb",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6b/ff15ed2f4f6849b7fbf4cd87b73273d2ee75a3",
+      "sha256": "9f0f2c32408cbbc21f2de052ab6a4238fe97dabb83af2bc7424169787b04c854",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6c/061ee6983febf3da514a31335b7856280722de",
+      "sha256": "c1b574475412dce85441814fafaac72b74156fba4bd3621cdaebdb11b660cee5",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6d/7ebcc8b8042b8ca7da03808fdbb76b31d1703f",
+      "sha256": "15094205961a6b43b9933b5ad7a796563d9c0241b8f4fd88b073c9d7fe0e1904",
+      "bytes": 369
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6e/6224eaa5e621f39ee20318dcdd6d7404102302",
+      "sha256": "23e74e1c3ecbe5f87b916a481e79bfa9469c5bbaf1ca3a04c1a0933bf9fb4934",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6e/d5157cebf244a41329e37ce3d66157f7cb2994",
+      "sha256": "d3c64c94a3b22a4c74f0f1ed85a8b885c6b0bce30e0d6c730316d2a3a1972463",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6f/740249476ff46a38f60705e358b153e1c723a9",
+      "sha256": "bab4fc6a3d659447ad5ed67949b26a3e945217209d978ac7d35588a2c1078cae",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6f/96d525e9021c89cfd6c19ff8a644a4bb9ef533",
+      "sha256": "8edde2f5dcd1c7b1e7607649a2827d4efb6718633ba80a5226a42a7cda89f7cf",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6f/e35a6b0fa807e5a97475b34f3715dc16a89c00",
+      "sha256": "f8f6595815feeea272dbc68388e9ede0cc069f872aab57ef66989ab6587c0ebb",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/6f/e79f1102b5a43baf1cb2ae30c60d94ca1e4d53",
+      "sha256": "b37a0660a2fc55fc6f31bed9dcb06471ab1f07a239ee1b849b6755b2ea807121",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/70/a2a25adb77ebfd8b1749fd50d93fc4aa35d301",
+      "sha256": "4c5f0f8f98e85c0d8c8b52901b165f964a31338e0a27f976a793333c9cf20795",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/70/acf7fb9f13f24825df82da632c436326312196",
+      "sha256": "28fb7bb0e86b0513ce7a02427727d3e55db19b96d6c6a670ff3610ddc7390c2f",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/71/ef5726bd695ba0529a1907ca996a103025fd02",
+      "sha256": "632c6c9a7ccbac9b7cd5d1d0f59ea4d2f2dd875981ebf1f3bb2f78382f865341",
+      "bytes": 162
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/71/f553806d76327443a71b9da9b2e21b1fdeebf5",
+      "sha256": "fc2140568523a93fedf4f09b42a245e5732c248747de730f9d897a3a8e18858b",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/74/849aec6bf9b7b1e0a23e203a2103f3761ff3af",
+      "sha256": "595cf75c3abc490902a689c91dbd2980056b363a605ae80173177a1f8060badc",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/75/34d5e844ce1c0e6149c2cdc98cb881e36ad30c",
+      "sha256": "a520aec1479e99228de9e8b42233c0005e074cd9a113534c985db2948f03e58d",
+      "bytes": 328
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/75/757e3b3dee851773b1395362b81507a94a1682",
+      "sha256": "beefc5e6590e833886c2c7eba821617f12761926242a149061af3424848d168e",
+      "bytes": 331
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/76/5556ef289c285bc69ece1041debfd2d8cb8558",
+      "sha256": "7cf1e1e1307393c3466e54dec3fc7b3b4c08b763ba80f4b4f0d82a4cb01253bc",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/76/945d4406702a1f6245cf6eedcfb0874c557d3f",
+      "sha256": "041346b543d6309d6bcdc857858511f02135bc8fba1d82cd627b23b8a4ccccd0",
+      "bytes": 219
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/76/aee6264888f0cc6d119a6310f7a0881fecfea2",
+      "sha256": "f3d65936ce20aabea54794c9ace751aa553818ed74301f455587f30eb22f6463",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/76/f9ff2026077872aed93a3fa7f31f069282b1c0",
+      "sha256": "4a57f5258762e3b4928480117d1a114eb4ed33611936625b5a5f9ec92d7c008d",
+      "bytes": 568
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/77/1d6474b1dcfb170035361190b7032b46b42f18",
+      "sha256": "06aabd29e5006fe3fdf15b3b44d0a436af96913e07d0492a1b46b485ba412c25",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/77/224c299026c3e2544da80d62231673d0d9881b",
+      "sha256": "7d6b6a4eedb3f2b98e986f7641bf14dcbf0536b7accd64c20072bc28f6a0b3d2",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/77/69f2f5bc25048b5c290d3992e7f761ecc32eb2",
+      "sha256": "4cc0e94479ab027f8dd1708134b4d376c6a66f55947b8ad756cdb92afe3bd596",
+      "bytes": 426
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/77/70a2a18e86a8251a72295b980d3f69fcb888f4",
+      "sha256": "8f9cca7662aafb38efb56f55ff1b7879d8a2a1b900d8006387e4c918a9453afa",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/77/f2da2579777e8137825acce22011df6f2fb384",
+      "sha256": "14f43de015cf2618f3cbbb528702bdf041ea26646f4d5e35b401974467de28a5",
+      "bytes": 319
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/78/55b1cf44d97578e33046e82e12a46607feb6c2",
+      "sha256": "e33d1abe51ec606b4ed4e65763a4ac3bc7259443db883fa82a2d12cb0e9ec3a3",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/78/982d076ef366aa66b01a288e5ee0d5c8f38612",
+      "sha256": "55047e81d4866233f0a2280e3236676401354739ff2f811221a4bc8c9832397c",
+      "bytes": 700
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/79/9b8b5de62720faf84a88617e76841728ed1f36",
+      "sha256": "ed6f445ca95f2649dce80969c490ba969b74519bab0e059c3953383fad3c2921",
+      "bytes": 1224
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/79/a4c113804de9718a64dba7f1d2790288fb11c9",
+      "sha256": "1caf6c21b7234b65d65fcb520d3383f46743528693860d6638a4424da6df8614",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7a/c7360c1c9b6fb0fc8439033d625f40eeba12fe",
+      "sha256": "b8253c971893a450fb49f44b66daeff64388c95c2a592e711d0ed8536b081099",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7a/d501ab86619b3e231d3f46194ae57edef77bf3",
+      "sha256": "82ccd728c75636a3bb9d1b361a234e870e5bbeb7b7b7257061acf30409ce8c8c",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7a/e6d2bd788b92860a63e5fc7d420cdf78efb9b2",
+      "sha256": "a264c489d7042aba08e02054ea7b5e5180122d5514c9d4bae4e7eecc5f266d57",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7b/6a570ca746c680ed16f49af3401d83b5350746",
+      "sha256": "c14a4c3f8efbf2dd9c72c4765d61e0bbba7efd709982bc99b49be2801e2997c7",
+      "bytes": 769
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7b/cf2a64435f1e95a97d2724942cf7874568f613",
+      "sha256": "ae5b015248869edb42874848b3f0a5838903275084d5c972e3bb369cc84728c5",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7b/ffc85144b9ba3ccf4e4d93076a5b6f33a49f85",
+      "sha256": "536bb18b622a2a173bf355b5f38c14c160dc21854468137b6ea01d7632f25c99",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7d/6b34783c9707f270e07e432d8031381bacc774",
+      "sha256": "9110e77a1f42c6ac012f950fdeafe1c2f9f2ead4433c3ee45a76e5802081cc4b",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7e/4bc34e4e62e6ee98098eb56d0803f1a0fe11b2",
+      "sha256": "3be7261924ac30e78f91744555061cfa84a8950a94843a6898b83bc740243ec4",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7f/0493213bde7b491400d1d5ad2fb3b9fccc7334",
+      "sha256": "b39c121eecd8cde2519801dd0c8adac908779ae95c76ed181cb4d59d1c8021c8",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7f/2dbdf904573730a76d98f574fb8944f39e43ed",
+      "sha256": "c8dedc794804b7febc8cccb6c1a56fdb1099d3a03c640a62e46c4a34c231f254",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7f/605a0a94d9a65ac093550586e7a124996ba8ec",
+      "sha256": "b521b348362d7456a2c1f7b685af36d77d10afba9135094e06305efa56cb4a03",
+      "bytes": 719
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/7f/c85cee30efe35eb9f85be8e05be31a92edda1c",
+      "sha256": "e10c251d875b7fbacea44858f8d578205d532cc77c14f4b6c047786fe269c278",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/80/042879db517888b244e12c4a0898fb3660dfee",
+      "sha256": "500d55bc92908fba9dc8d1441314f3ebe8b12aa0aa54ce7294e07a16dfb67161",
+      "bytes": 187
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/80/3a843b6af5a1b93030bc79d3f025d65362250b",
+      "sha256": "cd2d090f142bf843602641a5c48548589bd16b8d6ec572b9bec38d85dd88de90",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/80/80e841b38c52f48a0a1efc7f23cab0f3665cbc",
+      "sha256": "23512730dd52e13881bb5b5459bcaf826773d4c00816d2ab6fe1a53cf5c34680",
+      "bytes": 209
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/80/8fac33ffc4453e8eb26578194b0ec010bbb8cc",
+      "sha256": "077ad94de3001d236ead82e92ab1f7e3ee044fd2a11dc839d1d5704cb6be22b1",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/80/d70f08e0ce31cbdc214e62b5d3e0e80cd850db",
+      "sha256": "5f5d529fd20b8bfa1145e03a74e76ce0fe7c5d7ba0b2a02bd393b984e92baa35",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/81/5299f40cdc5ece1fd9c4c90f46386da4891597",
+      "sha256": "04e31f51b5464c78f46b731e58852cc616579b355c12da2ebe4db1fdffd01c56",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/81/71b0b359b2ad8ba3d74892b65caa66e0c6bb5f",
+      "sha256": "527917806a356f857bfe92f2c4921c430785113195eee19b9d9a0aa35d5548c3",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/82/588297f553ba31a87dbfb6cf7fdccda758de1a",
+      "sha256": "e5baed0fed6e54a2eb05bbf0b0b0c25250f66b046a47df3c897d68b9a3584979",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/82/826ff04ce32b42e137fe272826d64e6ba06d62",
+      "sha256": "a9ea3fe7134e71ba16ac9329436120baab01f844f802413b6d0e0dc8d3cfd411",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/82/82a9facdb287ad7323f1808fe36a95fe18bf97",
+      "sha256": "35f12e427e3f25d4d98ab8aa03755d04739f8e02ad97459c4e8983662dbfa561",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/82/a99caf4470f12cbc158ce9910ec8514d6d683e",
+      "sha256": "17c2646544a11563a7c59ce873b415b68c30dbf6f2eaf1e83c4a25819051a5a5",
+      "bytes": 130
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/82/e7e93791e0ecca56a3204d2997209f53c4e05f",
+      "sha256": "3ca4b0ea3a19ee1cee923cb482e5a414fb32aa9b56c78686801fa01412f0473f",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/83/2a4208c0b2ddbbf06469894696bbdda0a850d3",
+      "sha256": "75e592d87b7d1ebd579e1e979ef0357b0fdfc837a5e231600dda8b71ef715284",
+      "bytes": 143
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/84/06a0f77b8dc0a071ef1836fc4689a99836c5d4",
+      "sha256": "0f2bdfbd7787b12f6374ac5b7359420c2f750d5b3ded084d89d7be44f6a3d160",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/84/33011ad1847c0613a79ef002670d93aa014ffe",
+      "sha256": "e009fa7890b2fe8e4819ba9d8c8786a87fb2bd0b9a81b38b7e5766f792386d01",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/85/89c5e499ccae9ff87c891a2611e4ed6f5ed532",
+      "sha256": "2b14115c239cf1ea0acd909e80c029fe068eccd1b38a6fef37566f158f13292c",
+      "bytes": 187
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/86/5925877634883d089e6b85a03b3fe746cf3d34",
+      "sha256": "3168a79ebaf61a93bdb56569821846bdb3b363156364a8f10b35b8278dd6168e",
+      "bytes": 280
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/87/1b31e5e86b725efb4d485446706c9474acf453",
+      "sha256": "39795e7eeb6cb023d60b129f29c77c0edfb1ef2fdecb15d73c70924e82072924",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/87/8519efd44e0a9bfa49b144a3afdb3a3c32c02c",
+      "sha256": "39f552a554a24f8a26690ec03fd86e1c405172d725e94ed5f5ebf313bd19a6ae",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/87/9375fb2c7f08770bbb16b62e62d4fe3c3f37cd",
+      "sha256": "ca625471530447b138888aa1da6d43c05a01f9fa46a1224e7923330c98aad8e1",
+      "bytes": 348
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/87/ea99cabc166448dd223fbb7a5a27a6626ea00f",
+      "sha256": "8ce0cfacc1147ec92201549a9601a288da5be29a4ddef67b8f038b65cb2f180f",
+      "bytes": 418
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/88/370bab3d30387e16e91b411ccd451ed55245eb",
+      "sha256": "946fffadca7be24466c935b189d3ad936e77287f185c7e962686bf79c2a318f3",
+      "bytes": 218
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/88/bcc85ff29efe5b1c1bd10f1a1fb241d2637950",
+      "sha256": "eb47c3d9667829963759648c6b5718c3fa8c8bdbcbcd8f35ac4c082f5562fa18",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/88/d9dd3bbfe54cbbbc9bdbccb1d65f8a2bb3cefb",
+      "sha256": "5e86497368f681b5f138a5ad24d194c33994ba0cf89ee4439799378804eac9a0",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/89/4a8be6213a18e05ea531d2c2c87b8bd1350dce",
+      "sha256": "a0b9a644235927d0d24bf84b4cc3b8d97ad9f2c23392eb81f71028c823b327b2",
+      "bytes": 785
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/89/ca45eccee8b0068ec1f4b84d88bac495494542",
+      "sha256": "04b2b616c5087b2f53d524dc201b4dd5731a85d1b7b367add82abe2bde22e5b2",
+      "bytes": 1444
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8a/27ab1a055224db6b2f69e9b08dae0a905f5cb0",
+      "sha256": "162bd382a658b97a027117ff93eb12b51008c7beb200f639bb78e9606c961a24",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8a/56a9788ff82902c52c62a42a15a8cd43ed073a",
+      "sha256": "f652e92afb90a1c30312b21ba426abad84e0276b29ac6a5c219f19a170906211",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8a/8f67743d94e2f51c546547abd2c53b6df6aada",
+      "sha256": "699334ffa6447d4ec6d2723eafc16f4a4b4da0022fdd6b2108a572aa438a995b",
+      "bytes": 958
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8a/d1ecaaf7346289782827bc67ee5e981660f544",
+      "sha256": "f15c4014efdb08934e7e1278dc95f78deb9b72202164bc3cd0c517061e7449d1",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8a/ee10595168afe3958ce262ece2c22ee27f3a41",
+      "sha256": "2bfa3d62cb8e9436b3454fcacce00427a6e8a04fc3b6b08fd6f445e639088020",
+      "bytes": 302
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8b/87611fd7fe402f6d6119ef774db21a334d9b9e",
+      "sha256": "59f86e2ce266fde8a22f84e2e88af15a5b38160174201fb206c65ec50b1866c7",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8b/8f195aa50d63a1dc567ff2f9ce2548ae50e0bc",
+      "sha256": "66eb5cb3ed08b39f14b096617ea69557f7600754dd912ef07d11d86715dae8d3",
+      "bytes": 193
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8b/9cbc4b8b35c3cf9dfd6c18d76a2f14898a2e80",
+      "sha256": "cbc3f330973aafd0ba972001d2389e88dd10bcaacf4ea3464b85632f71ea341a",
+      "bytes": 484
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8b/e3ede04322ed8383c6d803b9bbb964009bc779",
+      "sha256": "98e2cb8d1b04f40e582c54c16d020226bd1d3c30be5dffd1a237472236a03483",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8c/0b4cb7589f0925dc1447f710c7b28807d5cb2a",
+      "sha256": "79fc1944a3b76445ebb7b3f9c4b270fbf74111c13540cb76f028a1af9c7de9a5",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8c/4e995143e1968f2b4ca7f35bbb4e7af7784732",
+      "sha256": "f40a223a14a253f4fa9d7936bb494cd00b2dff510757c328ea048a2a6891ddbb",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8c/71344e46ea99aca9cbdd21b6edec798a275d75",
+      "sha256": "7e201f5efb24c4b30b3baae67c3395d955b06869f9a7a1654bd59c4d6aa13798",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8d/9b409ed6d033f7cee8fe8927ed2cdbb41602e3",
+      "sha256": "cd81d48a1d1f5e6261e4da1a6c799cab64e7c08eba341f1485d63bb370ae8ed1",
+      "bytes": 359
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8d/9caa0384b76d8482fe510d40f88290f35a3167",
+      "sha256": "1b6d6abccc75fbf67789cbbb67a2e1acba500a93f479c3db76362682a762791a",
+      "bytes": 259
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8d/a39bb72bce11aa59b081b003615a2fba3d6fbf",
+      "sha256": "2e6463d11f8bf1216e741e765ed6a24d53a9616415ca7b1645438198b3e9f90e",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8d/c0fa9b8fad65db28f2be25a165dd4a72a36bce",
+      "sha256": "64d59624de77b49c4ad16f0c291079cafd633a4b2c8ba63f5c7ab79d561df9fe",
+      "bytes": 191
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/2b7b8acc3125377a713366e8ba83a61dcf1add",
+      "sha256": "32ca5122b0b7ba97607fb24bd374fdda158a05ee72e30f650ae59c3fd680fea6",
+      "bytes": 163
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/3213c5b39ab87f9bd85db1ef1e4788860f1e4a",
+      "sha256": "bdc3c87c7bda18af7b0e0a93eb4b15c0ece15abd8a7ddc9434985385f7ea18d3",
+      "bytes": 552
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/5f8c768ef12f66c3120228ff21eafd18ab0712",
+      "sha256": "f8f128cb7e3c092f2e5c9a2981206529fab4666863ba17514ca8a79b0871a654",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/7d37d40dee9a84ed5c7a6786dcace1f5817b42",
+      "sha256": "2b6a20954b00a8694c8f0b17e0d49fab2d7f3801878f81d3aebdd6b76a475cf4",
+      "bytes": 431
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/c9ecae48f85c50913e148672aa7a265b4b3b9b",
+      "sha256": "65e912d4df7fd674917608850a1e65ed267a34d69b2fde8284f8eee980cecb5f",
+      "bytes": 330
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8e/f49014fc627a3ef55995c9408cf3318f0b89e2",
+      "sha256": "d89f8dbbe36989f95b5c5935d0f007d50e2b2306905a1ba94dee01029fe2ff57",
+      "bytes": 192
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8f/7e1b5c731b4495e835088a5a6b63eb961d10b2",
+      "sha256": "8a2db82c5556b5be4e4599948e73ae948089f824aa880ccf759238c93a50f577",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8f/84cbf3df941a5e7aacd9c592ce923f0645c667",
+      "sha256": "d177f7de7b641655244b0016b3c498dfb0abf8ca0539c5b68bb76032a6183d21",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/8f/da13b6505df9f2ba4f8239e1703d8e54d2456e",
+      "sha256": "f780f0effb88242fa73ffbbdc5bc9dd8bde2b1a40966afb5a89dd81cd4c88397",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/90/67bb2cdaeb90aec1b0d6b541cea5330a2e8fd5",
+      "sha256": "758ba95614f9189006f9920b365e060cc706cc752346c1509f07b4f18dd563ad",
+      "bytes": 655
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/91/9223de92e4b1fb5e664a2e0f067c923fe59522",
+      "sha256": "c9cd424f46338bb61e02909c6e0bc2e95efd18b333c5ffb4cf668518a5d3d68d",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/91/a30521d6ba198cc214e15ab2bfb5dfdad2a0a4",
+      "sha256": "464ee0da20f318f4f0aa4a01b996f395527e4b8114d9b59b51d0c3c7d321621f",
+      "bytes": 215
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/92/323dd0c93bbdc62abdd3029ee5b051a6959988",
+      "sha256": "a1ca628077a2bce8f216c6e35816dbfbeb7abb8b1a1019b0437ad603602657a8",
+      "bytes": 353
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/93/4b00125bfca5952a8c2c34dfa04b107ac21a59",
+      "sha256": "9a46de9bf4f2bc807b7167c52c5add817c6e4a4b905d3f81c60a44bb79d78433",
+      "bytes": 418
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/93/50cf20a1f16a0a14272ca83c6407b105c875e9",
+      "sha256": "1836ab8db36e12e3b2948e3561d8838373c0689c8518216defcc4ce7bd7fc40e",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/93/7780a2776c303f316ebfb0d80beeba7d7012db",
+      "sha256": "486e8603c413e2d1d64a26a3c5219c838f9bdcc14a6753d11c774a4158d1c230",
+      "bytes": 352
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/93/b5c68466a1c300a47e03286594906492ef2c7a",
+      "sha256": "acfc41ec5f3989289af653136b1e816563a0402fbd1496152cd0ae9c21594508",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/94/2d4707de01a8c48051acdf0b23be3dffbbad3a",
+      "sha256": "1a8ec1b4321fdc0d63a35e00e6a6ed77981b6f8098db370791107a8d5d4a97f2",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/95/c3b7dce42e20a1bba2b6d7b910874555d8a46d",
+      "sha256": "b09761d06628faec8a883aa8686f6a923b45e056f056ef3d6b137c67c629165e",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/96/5e16473ea9251f99eaa339db44f69354213088",
+      "sha256": "dfb2524926b446b3611ea32a178ceee41a35f170ddfc4eb46b655e5b712fc7eb",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/96/f443a698c2a9c4ad631013d9449b4a1cb750c7",
+      "sha256": "0e3c40d3cc9c6a61dfe8954f136aaa928ade2ca4df7ba1c478fb796c583ec0b4",
+      "bytes": 569
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/97/f45bf54c3aa2b44364ce8f85f02e9085ba6d42",
+      "sha256": "4e9076c78e1336e92a05415de1a8a6d6d694e1e0399be6230c75c815b0228042",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/98/f8522154a3490f3e5e3b7f26fbe2cc9307a50e",
+      "sha256": "67288e0cea980a28d36cea2521265305ff341e7b770a8fbc431b6014693aa253",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/99/f0aa5f56dc2dadfb4e06a238bc73f9234b8b09",
+      "sha256": "a91379e9f6b942fc05c20996834c46e5e0c0f4e33b305df48bbd43810ff8fc8b",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/99/f6a9ce49ea54cf99f3a7d87a7b4c31c6005262",
+      "sha256": "2af45a414ad658cecf0d2effa1edd0c0a338ac31bd93314b013aaa5218a83466",
+      "bytes": 216
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9a/10fd51011e390fbf83a8524454b024279825da",
+      "sha256": "d70c65f8d1d21e7167544c604ea7bde25db22a2005fa41eb223bbb2b7b252b71",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9a/a9f21ec99f88ab5a51a8ca29b951fe23c710c7",
+      "sha256": "944e97ee553ef324675469b786647bc7d03571bc9cf2ac086b407965eb6dc7d1",
+      "bytes": 312
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9c/1e1de367492012b1ce316d9d228880d3f6a7ca",
+      "sha256": "10f03279e09ad924faa556a9562225a9a4524d26a494f140049e5304e74d4893",
+      "bytes": 214
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9c/81103fd20a8e1af047ab7762d73618b611cf37",
+      "sha256": "2cddc4571fbad7cdd979cd5a00c6a4ef57e68c74f770b8856daa12bd1cfcd58a",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9c/ac9d6cdac86f070c984d47cd75ab1914e3e641",
+      "sha256": "11015812a2f0d25a52a2a28dd05382dd9891fa56afb789fd48a4d1da5c7dba2a",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9c/b42cb4f70131108812697db322a0d8d9bec446",
+      "sha256": "52cdfee8c4fc8f4b3a071a4891ee8d1cbdbc53c3f11b7ab518aa38a922646781",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9d/8aabe64487c6d96e7d2a7afe6aeff4a07534c1",
+      "sha256": "125079af5b0c4e89df954849ac570192eb3aaca945ab9726fa93fd53ec70ee63",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9d/eb4e2520dc05f1db19401d0c24d409fa8911ca",
+      "sha256": "835f13d3ff4df25fe0fc8eb061d302679b39862cb596bb7c05f72b8a47e26b87",
+      "bytes": 375
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9e/16b50f6972e130b0e62e545eddf83f50fc23d3",
+      "sha256": "300466cf753404951314b88d615ffc964a2f4b81b03abc83a275e73e24da60b5",
+      "bytes": 210
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9e/2e73bf58fea90a3bfbeb5a4f8f7c56f16f3f88",
+      "sha256": "8779d8da4f2dbefa368d37287a1294e125b44f286c4f6dad4a8b9fcad1eff30a",
+      "bytes": 158883
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9e/9778219bf6ee2281734b44840b476d12948703",
+      "sha256": "8b9e0e9bf348741d04e2c2bd36757e52ab89579cd7eb64f71243a533bd1fe97a",
+      "bytes": 205
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9e/c9814596f38853dc2d10fcea2f2d99ff1db90f",
+      "sha256": "4078a391e90c360fee313399082482597c76fe814ab2f4cb4885131929f7bed3",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/9f/dcf7cadf847b621bbc920029adad28f21e0d83",
+      "sha256": "0a918f67caf80ee7292154a38566acf17650dc67669538f51a73dc08cf2c8a75",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a0/7e62b6ab748405fabe6d2684f2da93a037ad18",
+      "sha256": "4602664e002ad81ac1f4bf16505bbbe3648ee9ddbb9d7fd7712fca578c13b58f",
+      "bytes": 187
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a0/e3c164426ee9d4513e9678daf0a47371cc8bbd",
+      "sha256": "263027d252394ce1cc5db941a63b30ccc3965f838b6924e76e67bd54f7859e95",
+      "bytes": 402
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a2/426e403c5cc6e6598cfa8cbeb569b9bdffe4f9",
+      "sha256": "1a89fb8a3d0fe2084af273ae3b7c15a812500ee28bbc50b949355351aa6571dd",
+      "bytes": 419
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a2/d67a0a0ad865453e6a15cde9068f3a553dcce4",
+      "sha256": "c7f407ea159c340f7e177ce8e49bc554dc30a2e8a881a5012d7f6f16fb707a08",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a3/4c2c2e7a9ce323d15cb79a945ce026561042b4",
+      "sha256": "9acac9040ab8c9118b3aa1a49bb7a8736d880ea652cf405ec632212c35866772",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a3/ce8962654cf48d5a719a046ceb21b74b5d22d0",
+      "sha256": "c97ef4cd7e17761321292b1b125005d87640bbdbf16a6e4fc74b5f1d3d0851a2",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a3/e7dc08e5a964dd83374d91923e7515f7e5df31",
+      "sha256": "08e3869b6ecb55b238b641bcff5d65dbb7cce53d518d955214e2b1ed01364afd",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a4/2b1e8346bae363125d7b6f12f556971bbb47fb",
+      "sha256": "649e66913b09eb8aa6c36a289977fe7de2e8babc4716cb86c3bfd6fd666314a4",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a4/2f8f0641f5d31e46a0716d9887a07ca284672c",
+      "sha256": "ac9c3b4efb448aff9c9c27d998e0128f7e3ca3ec577f073276c1ac046e91f395",
+      "bytes": 170
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a4/35cdfe87bf1f728b147dbb98c9f403374bb2b5",
+      "sha256": "9f16097419e6e936dd9e355ca648086c3d47a7b0f16e6bd74e41abdcbbd2d289",
+      "bytes": 966
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a5/2e5605ce42b6ee72f7c75d581692c02c6c6953",
+      "sha256": "4dcad05942ef4415883d72a17aeaf2e4d84c470efb160c1fc540ffd7e6e2ff76",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a5/4b7de8484e8195ac8b73ddaf63c40b413cdcfb",
+      "sha256": "53b6488c05a38f364a6340524dca42d374443e8984291c68f2a46fe2ca46e3ac",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a7/3dd58314a0f6c0673125b6587e6cace4ea1623",
+      "sha256": "9f9823f5fb3eb4aac38bfd195d7f76bc63fd711b4791ecd0215ccc28877b55a2",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a7/5a3e7ec97489e7c50588d3a58fdd3ae2522695",
+      "sha256": "41db57f1fe89977390c6bb172ff81851cb02db99781addc38145cd96c1732a5c",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a7/6040f4c5f8533a86234ef6f2f6ba341e5b8997",
+      "sha256": "21f45673b3a6e7ed8f77ab4e9b6cfd7228da335bc1668e1ba5e5c088a997df14",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a8/5246ff36c8d9e998dc28efdc31c76ac68d1b31",
+      "sha256": "ff92185dd01f812f44f64e66bede72546f17f0064c08ffb8ad03c80221c919e3",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a8/6627dade307f09c199e642b468cf33df16efd1",
+      "sha256": "fba9c38117f8c56dc9d6b046271d55369f65e7964016dde32583394405cfeeb5",
+      "bytes": 439
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a9/3d2357326dfd4d921934407c1aeffdbac0e005",
+      "sha256": "d2115077310234600298e5d8014b39b28b4c9b4e7fd2218ae8ea13ea3ada7c2e",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/a9/a78120a62e5957bc5065d9780f4d42b02dc8bd",
+      "sha256": "a46aeb587054bcab8acb5a1f9ddb636d379904dba682a02d92ee21299a68f7cf",
+      "bytes": 508
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/aa/78179ffc6c459e747b624f5d2771868880e75a",
+      "sha256": "777d27ca18f213aed6cbbc049abd0b2a814f5fb3eae7801793c1e7c55bfb0c1e",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/aa/b0e3c4043b5d2690c5d76d273b47decbdad0cf",
+      "sha256": "ee81e637a1041a54476c70d9af27014d6b3ace784d159bb3149f5350b46cc4df",
+      "bytes": 314
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ab/1a1a2b93eeb9a896ef6ac79ff9c26387edf6c6",
+      "sha256": "d351030513200e9f57321fed1d916ece490d0bd04c877343d97ada1d1f493295",
+      "bytes": 358
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ab/ff3dece588d06e58fbbf1bf60efd1cdffd4ac6",
+      "sha256": "48e0774debb75ca8f3bf7eb3e1ab2f4aec6d68ef48b02d6d2a23a4e5eed4ebbb",
+      "bytes": 440
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ac/219ffa71802952a748b896077e59d39647f7a5",
+      "sha256": "2c61c5ec828a71fc0c35cb43ad4ffaa7ff92690a70d54e1f88857cb8312c1441",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ac/2f65fbb23475c561d5648b484ab9a370dbf71c",
+      "sha256": "b5f32589d767efc5c46cd334f760591d7575f21c8f5a4820ffb9022f64ea078d",
+      "bytes": 699
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ad/aa0e1dc4e404c8703e038e6aeda8ab43987b43",
+      "sha256": "f1451cf100b1f58c0906d8d23c82a7cbf6d930acd83cff1f46de90ac225b3198",
+      "bytes": 419
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ad/b8b46dbd40eb2ab5c34759aec94f5d4b6e91f8",
+      "sha256": "40e290f75bf05ba66816548cd1758b85e21e7c1b100889f1ea1323d0fe874a1a",
+      "bytes": 392
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ad/ec7a305806c62f3947a5828b23b72913d5f480",
+      "sha256": "7fe5ba96916e29f2297a980216ce7036d21424f9e8d8674b1c9c9df8b6d320ea",
+      "bytes": 214
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ad/f187d8ff2f8f1e82d64c8e553c38bde7370f27",
+      "sha256": "16429d44792fe211404fbfde8c54e3157345ed2a5571fa136f44895b8f678860",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ae/a54de69a0ed988be2bd8ed19ce531a28a2beb3",
+      "sha256": "137fd9c2bbc577ffaf0b21abae408726be168692efbddbf5d6bb5ff2fe03a7e6",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ae/fa2b819c5e8bcab1b8215a9277a39020a40120",
+      "sha256": "eb9fe5c31cbccf02f2455fe81c4d8a6f4b2c896316fd479e02b411b0c70092f5",
+      "bytes": 192
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/af/ae9382a23c163dfb289e9c7945f551f72dfafe",
+      "sha256": "8b4fa9876d8be5041c2c0022a26a07edf298f4617beca4a32264c554d4a32b10",
+      "bytes": 220
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/af/af584cd29003d4ce0e9e30d24d6bec1b81bbfd",
+      "sha256": "43205f7f9ad0d1f8faa79702ba32f9b348ae462a56e4fef15c32984e1d7fff09",
+      "bytes": 370
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b0/37cd3d2d8d347c839abd5cf263595dcd8178af",
+      "sha256": "a67888213d0a4a305664b9aab57a07637c1b5b2a70cdf2de976f114a912e551d",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b0/954cab95be33414f0af4175c63a0f2fcca68cc",
+      "sha256": "191487d80fcefa4262a1a5e6ed847d4cadf117cfa38725d890d741f9754c5621",
+      "bytes": 1183
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b2/195c1fec19655f2fc3e8e87ae48b85b6d05728",
+      "sha256": "8c2d5ec4cc5669102c989c4de844e7433ffbeac054eccdaf2d6cbd1931fd7b76",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b2/57970de283a1a7af8db4566a24feebb1996b1e",
+      "sha256": "455c20a5cff9bed22918501cb95e47cc912b730ad67879a0a9676aa93cebcde6",
+      "bytes": 239
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b2/5a5f6c4e0442293310afae83628eb1251b057c",
+      "sha256": "dcb58d3f59aae3e99abfaa13dd9d625dd6f2aeb4a5cbe12a898b404abcd0ad28",
+      "bytes": 214
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b2/5fdb5bcd880d3a607859521aa6360a327fe56d",
+      "sha256": "b922539d58bfbfe55b02398c3e15fb2401a38c91800d2682577fb1c74d90a14e",
+      "bytes": 364
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b2/6ebcf585928ffa7b6c9f10028d2851f36b3023",
+      "sha256": "3cd37b986452896af236f715b57bcceb27a17ec6ebf1f30f88498b8d8c77cef9",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b3/82baaf942d078c546d97545a4171023fa7e80b",
+      "sha256": "98c20e1ffe05b0ffbe3666e9f1202d4bbfe9f669917aaf9739679326161bbfbe",
+      "bytes": 342
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b3/c8d2886238ab791a8500fe4ff5d017b65bb47c",
+      "sha256": "376811a891524f3738f88cdf0c8a032c6c7866028cf0fd69a478b0eba4ce355b",
+      "bytes": 188
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b4/fa48305ea915e22b861de9b6766be42240641c",
+      "sha256": "b8c4e2b0549eefa17cb4361975b24fd22e203a84f5f852c6a0782f3120fb6ad5",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b6/32553b00d534b34110517c8705ab2d637b056b",
+      "sha256": "e66cb446a38d134e5a0be5526832db97381da70daad41d0821d42d9f4a65ca80",
+      "bytes": 355
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b6/8f8e5b579807837845ed91969d4293b35a503d",
+      "sha256": "e552394661ec8991e6d898b4db4dd550ad0b93842bf474ac8e2a56297e200232",
+      "bytes": 566
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b7/b7b5f51b9d4f2dc7697e5b0ac9608d019afee5",
+      "sha256": "8640b61202fda92cf74de23170fa1f5735eab6c55d26ea1af759fa58d1eec063",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b8/7079afc4e4111ab299af65c67ce4fb0babd711",
+      "sha256": "bade028992d8efff1c1927cc8dd9d5b5fb841d2ae1c0cdc4278b86116a976ec8",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b8/97f48ac95fcd01c6f2051c37ca7ff19b5f21f8",
+      "sha256": "5c6788e264f05df7e3fcf58ceb4b193a75515d2a58ddc9f83595d91fccd0cc60",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b8/a66053693926824baf8242acc77f6b6b027727",
+      "sha256": "9e357d6a4f70eef9728356c181c68e3e3472dfede2e7a62948833691ee904dd7",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b8/eef5b967890e8dfd12fc6a379508f651c44df3",
+      "sha256": "02ee2403946730746ac9e2429a84f7f19ccb02ba23f24a0e9bed3f5bf1a7cbf9",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b9/bf79f36c26492a3df6b53b8dc62b154eb361b6",
+      "sha256": "5e7dd20779f7b28e19e2b357ce93ceb0a71331f64e536aa7b838f2c5a6391c1a",
+      "bytes": 209
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/b9/fdbecdbd8e96e32da5ae5580bc5b4f2d4cde3b",
+      "sha256": "505aa4284f96296dd9df6f244fec54a7462531e8ed2150da6864e811b2cf64a3",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ba/3a740a307cd008540d9a4439da429b11311fc5",
+      "sha256": "d2ebfd5a3cb74ab91d0f98691ec1113d04106eb50b94cf7d6642410870f59b2e",
+      "bytes": 176
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/bb/d1627b6e3f7cec34e9ddbb3fb861dc9d3cdc2b",
+      "sha256": "9f15580cf6fa4c45db743f57977a1fe544b9aab74ecf066de378e9651dcfafb8",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/bc/837c41b1f9a4d4eb17ae2fef87de632ad52642",
+      "sha256": "8f1d965ff0f179a94c52198e0e8c8dd13ab1e766198108030d009f1e50ec4cf3",
+      "bytes": 315
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/be/07d93e9357a8405a892b354c1eefaa3442568e",
+      "sha256": "6a8e11733704facfbd3f22a5abc09f9b01dab7d75a62b2fe898e0a81464df2e1",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/be/b3418134e8b01c89884e4ac93d8ba4a5832b85",
+      "sha256": "2c657f87c280d8e2dbad366368b3b17df1ceba755d34a7f8767384ab3fb10a6e",
+      "bytes": 418
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/be/c0101c46e0588984c3d7e3c416f0929988f484",
+      "sha256": "a3c9f4f72ef5d22059c826a7e7562a2219fe5affe8aa05eb8002e41a096e6500",
+      "bytes": 519
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/bf/796dc2859792437237dd14e18aa3d0c24eb93e",
+      "sha256": "6511c794e3b91f10ff0596fb3a94cb6901285165415053afbfe8864ee150248b",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/bf/d6720dc7a054a9a46ac6f712aad6d9c9f317d2",
+      "sha256": "72567f6e174d8e022b9847ffc358037b09a908ea148a63172ae751ac5bd3964d",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c1/a1d54d20e4604b5b63917682e02c9f8d9042ed",
+      "sha256": "9e384b465dd332a12593caa6f2146cca6f791fc0ee9d5584b68242ea29746462",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c2/dcee44702dcb263808c60d1ee5f4496713e171",
+      "sha256": "20b873e25d7c744397c82f0ac837dd81cf33911ae641952a7e4b5c65b6906002",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c3/081b454b1b27b972510a4beed794b9a6cadec4",
+      "sha256": "5b5b65a6f7b41fb64c9f37d07b7cf6e3fc4583b9110dc82bd5021b44d3cd5380",
+      "bytes": 385
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c4/ca15980f7432dcb1a2d2a4f537ab252134984a",
+      "sha256": "1814e3e328072ca7659ef66a3dae6f13da375a24c258e3c1b92c4b224528b25a",
+      "bytes": 449
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c4/e8accffb33bcad71d14743879bedf50efa0093",
+      "sha256": "cf7ca03c87b9d8e0ce646a481174cf6c4935305d829e8ef69c108eca4940fb0b",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c4/ed0c942a43cababa6a54434e95cfa70cda37ac",
+      "sha256": "63fb05ec78ff44c6c4eed59df85d37828cb42caa5c37f196b79d90044d324183",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c5/555f5e4f891a2c64caa2f5290213237aaf8675",
+      "sha256": "3748511c4c626393ba3e271a792e6fccee84e8adadf0631a127bcc48ad8e84b8",
+      "bytes": 212
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c7/5ded917a209ffc9e25a8917cebb3387eec7890",
+      "sha256": "23507729762f3346fde1bd7b5b486b17991551b0a3d94ee154bbe180f9cd1951",
+      "bytes": 13826
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c7/e73b078894e7882bab1b1f33859e50359cf1fc",
+      "sha256": "ef71be327c8cf6e93d8a400bc386e13a1872fde886eb56b7dbc3d2f732a60d3e",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c9/653edbdefa1782c40ff9da6c42db34b78d7be0",
+      "sha256": "ee84f967788cf9cadf95435eaa045e2c436f32ea3ec9bc0869a3e03a96f7208a",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c9/c8dde1896ff4e85c58893d55ba5add3170a15b",
+      "sha256": "1e1c6a39ea8e1c24eb5f192007ceaaaef517f6790c3db4b46e30922a470bd635",
+      "bytes": 192
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c9/dcda33d3197d8ba6df2aed3c1971c4f0d40119",
+      "sha256": "2f9af54378d89733a2101062886bb68697e842581941c227a4e4d7bacabfc608",
+      "bytes": 345
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/c9/f951f7fc6e028aff63414ef6a6d38774897845",
+      "sha256": "cd553a18dd8e3477ad43fa4f84c81989dc62088ebe373483cff07473b3e4b7cc",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/cb/a472ef817fe7aa5b216f13fc7f0717d9428bfd",
+      "sha256": "35f15cd60388fc52d1530419559eb7765410e05adfd238453c611e2b2b214fc3",
+      "bytes": 206
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/cb/c32044f55223979815dc0eef3757caee82a5e0",
+      "sha256": "aa038d7b80c31226c82cc92ca2b600066796e84277a8ea0fd4552a0f11e93fac",
+      "bytes": 1539
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/cb/e25d1f0d9a3963a5da170b6816c116140ba7b5",
+      "sha256": "d3a5fc50825086ef8af62671124999c39745a4d0f261eb789eb2ba73e9837765",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/cd/297c280c611f52a31ef535ee9224c0f1c7ee98",
+      "sha256": "f87b47aefd2a2eed01a025caae9c447e70e833648bdf8b36952ec5e303e84141",
+      "bytes": 355
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/cd/7f5d3455676954d43d34743d659cf86388fbbd",
+      "sha256": "64e1d3a4692fc153c58cbbf3a3fd2ad80eef9cecbad4d59351d4a2f0a618b4dd",
+      "bytes": 489
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ce/5f74c926da670925d48206a02f9931d7d009de",
+      "sha256": "dc7744a59c8f5aec91b6ce350b2536251d33b70a466c2e9c0fedd2da7649d7e3",
+      "bytes": 225
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ce/729873a9d5e7c67b0bc9999066aea693b16deb",
+      "sha256": "5884cd909a85efa2ac454e22eba23b3eac0d0ee810a1d0363ac75caa9a346da6",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ce/94f7fc558e69ee69b98ad8058045bcf8b6302e",
+      "sha256": "d07c974d846f461e813d81f25901e03cc10ad7722b593c7e59269990ac838737",
+      "bytes": 202
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ce/e5cb2871944f5d5770cc50d4898432ad47c0a2",
+      "sha256": "8ffca2fd90f2e29954f0b0882c62ea2fe9fe40aa908d930fe8f7f86df07b666a",
+      "bytes": 328
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d0/a50c1938fbd98fc8e42f5a3efbab21f1c9ef49",
+      "sha256": "05599f0eb25d1f9c3c2d12fed3562d215f7ef230efb45467322082ac6ca9b702",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d1/ff8034f8b6e003cc9d212cdd0edf7abc772dfe",
+      "sha256": "f754c38cb6766e2e5ab681a0a87649bd0cbf393f2d8633569d6b854f0faa1c63",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d2/6799c9e0d38f7d2e60a6a25de6a15718a12069",
+      "sha256": "34c160050c6d22763fe6d422bc51416e1f9aab4ad50920d1f1c688d3f8fd1a63",
+      "bytes": 942
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d2/db4c6f3192bf91ca8827760528c831f9372de1",
+      "sha256": "ae8c2fcea8495fe6b06684a311969282345edf8c955f028cf70aa00be82c2f09",
+      "bytes": 259
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d2/dbac352ca9c7e4c916d8780b78114d8cc84c40",
+      "sha256": "54b493ea20974dea597d988acffe04a5e2a88109d7dc3b55f2f0ea9a6600a233",
+      "bytes": 423
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d2/f21f6aae60aa60fe0093a0ef90af70eedbf62c",
+      "sha256": "e24e13cc5417da3258c95877e7377663eecc03f5ac279efe7b64bc91fd30f2a2",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d3/84f164fe08f41fb576602b333233ba707cfec4",
+      "sha256": "5dfdebf5ce38e5f261acf806d0a26d49f40043b77ba07b590e9f2adba9480825",
+      "bytes": 355
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d4/3fb3d17d43379f1741442cf690741e1f131108",
+      "sha256": "85ec7fe2ba7a2fb426b2cf7180a38a89261cbce9c3d85a03dfedd896df60ed45",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d4/86510229aa923e9a4de86eb95551de887e4ba0",
+      "sha256": "f72439ba2a4fb917c591ccdaf2a6894f4a2ac4aad6a317684f8c2e4736e0da14",
+      "bytes": 329
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d5/4ad59a1fe9c792e50944488ff7045a2af4a800",
+      "sha256": "62a2de5ade63a5534728312b156b5d8da135a4a5aed035e3c06676e5e7163666",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d5/cc7481b81fbba99aed585049975e4b7ddf34f9",
+      "sha256": "a521580abeeab298a4a164b03662db8f65a00d23d62579808fc2b82781772154",
+      "bytes": 213
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d6/090929968e116b9279dcd745d3e21373542c9f",
+      "sha256": "bf502a9913bee8538110b8017e27722300d4e79a0a605239ad15e60d55d0b743",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d6/714e504a010f1aa8e8b12efa036d3354d39da8",
+      "sha256": "0c8e6ddd8ec5dc342de2696e5ebff18d706eb67fd8ec1630a8779cc4a65ab632",
+      "bytes": 301
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d6/db9cff00cb64ffc6797e019973fb71404ec27c",
+      "sha256": "66faeb4bd1ad0cd4517456bfee33221281ce7cbd114191147b8d557a239597ca",
+      "bytes": 916
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d6/fd2c4a9fcebf60563778a2512b309d79a47055",
+      "sha256": "eb5833c7dbd1d044336ad84b2a20daa44cbcade2e915deba89eed272b545cc59",
+      "bytes": 211
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d7/a74eba9c5bcba3f5703424694bde95332a5df8",
+      "sha256": "8926740d2cab5d86c8d761e8fbabc4cba9f63a79047aeae74eeff9ff5877907a",
+      "bytes": 411
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d8/067abc8124127d8da25d098fa6a7a0d548ec6e",
+      "sha256": "54ac441e6db85fe7c33a26b9001a7ab5f60a081b4f8f8f892f9ed471fb6a9ce0",
+      "bytes": 169
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d8/1f0eb128ad0894d913e116ea71923ef3c8cbb4",
+      "sha256": "dce425b5b89785db596340eb00fbf457e81bee580978e16e99b1583fefcf98ba",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d8/343a6d129c343508df65ebadcb2d82e515972d",
+      "sha256": "24f62e088650a95a6ae825ede391399bf68b5a242c567054ad513147d8447c29",
+      "bytes": 416
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d8/79c5757ca95fec88ae98b700f1a0e9f332a671",
+      "sha256": "4b6524effbe61507ec0fdb0a0c32f4ddc1f3d4775adb48a046f85eca6fd393b0",
+      "bytes": 446763
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d8/a2945b6b35f4a386e6ad9c717aebdf3b858762",
+      "sha256": "e92b49e3a8a9a0a70d31c9983d3c9fd093546d0031beaa8c29f36a7418f6d9b7",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d9/4a910333d4d7831d6aaaaa993cc89bfc60d047",
+      "sha256": "b8adf1414126cafef4514d4dfed700a21be8b07587b2fd0777401a88553a04c4",
+      "bytes": 379
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/d9/f42e6f0729d7e76a0d740482c1a8444da08e76",
+      "sha256": "9f8b314661c9247812548d0098a0b7a9433e69be5d5af2db40584e67afca58c2",
+      "bytes": 213
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/db/8b188a1b5f6ef443587fcf02775649d7348a21",
+      "sha256": "70f8848739cb7db0d0a892409b991d2585ddf382a2da90b75c8699ef718c564f",
+      "bytes": 142
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/db/9c71155997842ebb7cf48dda413ff6196f1a9f",
+      "sha256": "7edb2c141b410ba463333ddab4aa7d0831f8106f87d0ca78ba5277cc661064f1",
+      "bytes": 209
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/dc/152ada919dc1dc69c92434d9f08921e84db1a7",
+      "sha256": "b58c6dbe94aa90585e9e8dc1011c5a6c6d3c3ac0057709298f1b20590458cf0b",
+      "bytes": 200
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/dc/583ce54c2bc597e54226495c4802d610ab0137",
+      "sha256": "ed43af5fc58b57a1d4de6a4eec4121afba81d5009c2e4874b849edcc83237f08",
+      "bytes": 352
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/dc/7810f36e13dc191a960e782730ca57a1c0ec5a",
+      "sha256": "bfe542bfffa09c9ad5e21c62fc06f7c84adcd649965a57034a1b7f73d076aa3e",
+      "bytes": 167
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/dc/88c00e13183905a37c314bd48b02639d28259b",
+      "sha256": "71adc241f1b0db7941d71435859c7432bec3169163bec377b1c9e9e9bfb82cae",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/dd/14f13caec4e5989d1a30b4ca11221b2d423fc8",
+      "sha256": "362991422ba0ae53a78d71a67156d1bec0ad08f285f9f465f296389b8e212675",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/de/54ad9f21e98248b14906be721318b0542e82b5",
+      "sha256": "8bfdd05c807743ae9b0340cff053d89dc496afa4462adbc68858ebad3de65195",
+      "bytes": 168
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/de/a7cb359bf376ef577d56b1cdc10fcf32873802",
+      "sha256": "4d7363156dd76ec5630a62ba7fa7acbe571757128fd447ba52e722207acff964",
+      "bytes": 1071
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/de/c4cb3e997ec906868e55c6c064b5381ad35376",
+      "sha256": "f98a4840b0243b0b0debe98f2d986d4e3ebc4db93ea63f627aa481621a96eff8",
+      "bytes": 723
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/df/4585e930bc5fbc097f2dced39e9b1aa57f9203",
+      "sha256": "01418f63c4f8de0f94a6daea31b31dc0d6b289d6fc69d90f11789c0708e6fc37",
+      "bytes": 332
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/df/d029aeb72afe133638c2cbf75d00cdf55da1a5",
+      "sha256": "23fd59f4e9b0324d84be9ea94d85acb594f9f7ce09969e18b5b617a221ae3ab5",
+      "bytes": 319
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e0/8fb008c052d87adfe9c79b4781b82d66db0c9b",
+      "sha256": "02e3ba2ffb8d1dfe8ccc0d432465d9c6bf44540fd15228193596f84be40e2970",
+      "bytes": 191
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e0/f09df8a43cd138a7fa1c924ff56595f375cbad",
+      "sha256": "9001d47ceec8df1648d98849657d6060f3e44f203b963d9cc44621c352a97b8d",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e1/155424d851228d5a3fc5a06f70660d29409f69",
+      "sha256": "971c95a6f266ecf5269bcc0d88c702881b59ad938533701b076c5736e967ea9f",
+      "bytes": 187
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e1/7a2bb1c226ee1e67c7f372acacbe2c58146b5b",
+      "sha256": "0db7343fbebc15a6f31695f8154930dabac3b7f348d327ef625a14eb4b48da46",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e1/a7cda9404f2e8fa83a17a608b379c4d3633dd7",
+      "sha256": "f49da71c4d1cb280597eba24b94aa00563edb8daf869beb46ae4691cdbd5e515",
+      "bytes": 338
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e2/514eacb595010648ffe50bc4c444ba4553257c",
+      "sha256": "87fad78d3909639b8d3e15837941e2edb24d83e6c0d457f1f72af6dc1a3d767f",
+      "bytes": 926
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e2/da2f885ce749669745c0eecb08c9e17e49f33c",
+      "sha256": "11acf2bd18adf68f304ba977829ebf5077dd26f921411caf0e80d25c2c6fc359",
+      "bytes": 371
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e3/e12141c117a420450e15feed585b1fd8df7947",
+      "sha256": "7e486a08cedb88195f4432059944b55721ac42f136692d8f1a17a5bd00dcef1f",
+      "bytes": 197
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e4/5c6f203e50a489b5494fe58c4edfb05afabaa4",
+      "sha256": "5a7f3f26372b424d4339843f816bfbd307da16bd9d1713142683f3a33480be8f",
+      "bytes": 326
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e4/ce343284287c4fe1474028351c25a9421a9c7d",
+      "sha256": "2a30c61e5c7c2fade2b336c1a3039230214d9e244108d5cbbf627ca93fc9ee2f",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e5/3239af9b96ac1449e44ca77a6e81dc300f2cbb",
+      "sha256": "85338b6550384a0f430974cdae94b047fffccd98db4ca55f91b0c14d0db50f80",
+      "bytes": 312
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e5/66c5b5a0d993db6c900bf9fa09d19ebcb8a775",
+      "sha256": "d177d8ecaea6dc0c3a152578f086f415a45b5de5ed41e013a43b1189ab09d615",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e5/c377dca706b0d045d20624860dd2120b974f38",
+      "sha256": "14e36d21543069ff6d5ed139b22f6e739714908077b66ee0ed1b887912802ae2",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e5/f75813a0c49ba96ad68662ffbdbb2c7e1ce12a",
+      "sha256": "d944c41a4af93121caa6e9553e256e97f90a4f6b2d5ad73334786649afccb1d4",
+      "bytes": 201
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e6/55eebbca6be58571186a203b5bd6da5e7b39df",
+      "sha256": "b2d239ef3f64b8f027f3691f68abeaead29459836e2eb207863427bf4ec9ab89",
+      "bytes": 232
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e7/4e6536e1ffdb802f7edc23e544276830f43fce",
+      "sha256": "b1ef12cad9aac8fedcee600a1ba1c94fb3f6692cd589e245a37856f7977de0a1",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e8/7bb3cde6fed6d7e7a9afbff006e92aefcb4994",
+      "sha256": "b8533f48f0abb6b081945b01e9d6b2ee0678425c8cad1f56962342583e71f894",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e8/ad0caf5e8ad39a7cde8a787da88b91ddb48cf1",
+      "sha256": "409a03e41bdb5756d31f197e2d4779f74169d611d1146537f9688c0229a59dde",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/e8/f97c2b7a93578beef77be729f166f6fd47e206",
+      "sha256": "2ccaa6f74e0cc5bba5a1f629d7605ef6c9d452756f9dde86d4e593da92053d23",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/eb/f694d96629c81277ab0ad960ea826e7c954861",
+      "sha256": "5a989814cc5ba7bac262436554088312eed85983218a10a99036964d19ed3355",
+      "bytes": 130
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ec/afe24296a49130a87b151a1f8270b295ac23da",
+      "sha256": "226e3b49f895e841cd7f24c67af81d04fa0f1d2f4830d3ecedc2b3f88f0440eb",
+      "bytes": 351
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ec/fc79ae9eee2134899e44e8ebed170425daa849",
+      "sha256": "d661ab818bf848242f5e2e9330313c764b619194934b99c2495bae18c82c01f4",
+      "bytes": 208
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ed/fe00167111d87dae44b79ebc78aeec9cf3da86",
+      "sha256": "2b92d6ee58a98392dbdeaa47c971d83894d664224f2dfa78f76f8ebe35f6d8b0",
+      "bytes": 350
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ee/13896d9832a36a1946143191bdbf62f3ec64ff",
+      "sha256": "e1000a86734838ab31f7e6b113e3c854bd516e554119f1f8a3a39cde3a47bce3",
+      "bytes": 198
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ee/3fed1453d6012497b0f54f3caf557151ccc9e2",
+      "sha256": "4abc050bda51643e7ac5e3108a94735ef8113a41a7d3bd92896df0a696ca0c0e",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ee/91563f8b5eac41e00d1e13e8b1c4dd8fafc8a2",
+      "sha256": "202beb22e0ff339dadefc35707102b8bb4e28f350d3c91bb34c54b8c239a758c",
+      "bytes": 461
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ef/72434e067673d104e02abad1a8e749615ffa64",
+      "sha256": "afb5afdd1b063598b9f703c0a931c77691cfb7ee89837a3af0c3139bce3298cf",
+      "bytes": 1052
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ef/f7e5acbadc6457bff2e1d03b72108d7793f989",
+      "sha256": "b569a206f26759502c07e7a7a19909da59f24ace72c622630b21219deea71d5e",
+      "bytes": 158
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ef/f8f68ffef2202f0a283c0b3192dfa9b59e5e00",
+      "sha256": "35d5cd5e98e217d3207995a427f06c84fc40fbe5949454808ab3697469ebd75b",
+      "bytes": 169
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ef/fb6b51c663dcab3018ca9eda739330d6fddb8a",
+      "sha256": "107e1adf910f8ddeff272eaeddd9025d3225a8f26a77ed138624ec65cea516ab",
+      "bytes": 259
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f0/b47e97297c63703cac9b39b22c243951bff1a9",
+      "sha256": "c1deaa5d8e3d704428d6239ba839d89bac0f5fc24ef993ac53bdd57534667f98",
+      "bytes": 195
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f0/bb35a7bc68588a7e0a327f37715c7ad7ba215e",
+      "sha256": "6358d55c0d1027834b56c913066fa80dbf887bdfe38448ffd0b6be4e77110dfd",
+      "bytes": 925
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f0/e9bf9cccb2815cd1541ed3c957bbb772da5381",
+      "sha256": "3b6f1176f46cf1942407f74f479d6f4a332eb1bc0585ce4a0a768990c13be687",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f1/86348b593030f5282e308a1fdb663cb8f17b60",
+      "sha256": "481f5861909130a18262d30fd20523462a7951f8dcd4fcf91dd86f7e0c797377",
+      "bytes": 210
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f1/9026482173e6533a15b7608081bc50bb29f13b",
+      "sha256": "341e7899f87120cba737a3ae6f0455d82bd5bd5f0729715df457bc52a747953e",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f1/b29ef802f20ca84a2f27f2328078ecb917e4b0",
+      "sha256": "826675c36d8f5aff69a82ace9cf61f658b0481978c767db5986fdf163719be94",
+      "bytes": 413
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f1/ca1fe35deb15c62d669baaf64262cbc611c527",
+      "sha256": "1553817d8ace1de8b2e180179578ceb58075077a58356309f9bd05352e48453c",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f1/e452067771291acc02ac0b99b6dcc3f3cb08ed",
+      "sha256": "50a443ff7e6bafe1202c7793ed6dfca211325339a17a8e61ce56b648bfb19a40",
+      "bytes": 474
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f2/2976e9a4c498afa2d4cd6950beb3d89dd301fe",
+      "sha256": "b44c01fda92c8bc19d9ed1449ac84609782693547e0855d29ced42113bc64852",
+      "bytes": 353
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f2/73b9638b14325a67d7d4a8c391e800a1b7ddf7",
+      "sha256": "55938870de3b4f8c6b4601829755bc5b43fd7c485f5cee880eeebe5c6c49921f",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f3/564f300c04dbbb5517e4cf9ce78613086f88d3",
+      "sha256": "79e361defe0d4dde6ec0717d014c9385935c402c88663c136e046ea9de7155d1",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f3/8fbc282e305d3f066fc18a29c85c4aa7d0bbfa",
+      "sha256": "ffb98f4801a9b95b7901edd4d9196442b100ee9a0dfeb621e09a91c00391dd1e",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f3/bc00419a0e0c2fd7ec3f012c4e39959a6536a2",
+      "sha256": "251ef566c29e8b7e14d60dc0f7015c1d196711760021898b931a52c3169c4d80",
+      "bytes": 390
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f4/4934108a35f4a2add980407856d4e8159761a1",
+      "sha256": "4e7684e502f6df56df3875c58696e1b4ab99284636b14af37f1aa8c9ee608d2b",
+      "bytes": 376
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f4/4ff2c84602669ea7d4ae9f95ce4f3de68569f4",
+      "sha256": "3237e1efe1d165d3534e7b90d744e3002738c457d45fbcf51787f4eadd596e2c",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f5/05cbe3ad537f652503404e34e04b1b7f747f46",
+      "sha256": "32ebe80546b624ca83cad0783e833e356968ace09a402944cf7347065f9dee49",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f5/0e7117662060a1c4db8b7baa6e1ace7f660185",
+      "sha256": "38368ad38bf18d8ba8317d4dc54a616a95965ff2dc2e67f31687cbae323127e8",
+      "bytes": 445
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f5/4ff97710c9cc0c8bec063b664fdcbd2df12de0",
+      "sha256": "2fdc4a2a8f16523a9a8a277c520bab3279a9401381c7675a8c424f73649dc64e",
+      "bytes": 204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f6/5ccdd15315b0944bc4f9f9f6aea700e49f7ac7",
+      "sha256": "67c7e93b0cac6cce659c2861dff65075c6d448d60d4c6a586aaec4a0c05f3ea0",
+      "bytes": 207
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f6/97026bc98364490feaf809c1b9e6aac94a616b",
+      "sha256": "c9fff3521f11bc3146eed5583292a339d8e04536f4bb18e7462ebddf1c455b52",
+      "bytes": 160
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f6/99666b73f0e826575c7f6e0a8d55a78cbf4f06",
+      "sha256": "e326d497e0f514facebeb60b3c405dd40c24b55f880bbdb2f90fcd3eb3fcff8a",
+      "bytes": 366
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f7/0096e69f78937d160045944b8ae855ddc0cbe3",
+      "sha256": "a43a8ef4485a1b26385ed89769f7cdea1dd1ca974d80d697b0661cb050d73681",
+      "bytes": 196
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f7/1a1e24561fa9f9673c2c1f8588e1927d61329e",
+      "sha256": "c98303228ce183555770196213170fbb46411724614c1bcbd8e2c00283ebcf57",
+      "bytes": 902
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f7/622b9f6c2ce4fe33fd1d101fd4a63dadda3ce7",
+      "sha256": "e735b4a44973952485fca002033d9234f7e3980277f3d10a6c5bb6ca6d93e50d",
+      "bytes": 226
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f9/2c4b1a047748ce43c8fcb94f9ecb2009881bac",
+      "sha256": "6731322ef73e34539e2f1b57b4b0f858bf79a4bf9c3df411ad7c9e241154f4c1",
+      "bytes": 260
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f9/686c444e9132242d17121deb8fcdf9ad36a09c",
+      "sha256": "33b7653339fc94e59b3716cf6722e2cfe5e49e81e358fd0645334fb72de8aa2e",
+      "bytes": 194
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/f9/9d27534c4827481f38aab80041aab864168ff4",
+      "sha256": "2a33c99313590198a97743afad24efbe49f56d6065b4ff592bdbbdf0352799bb",
+      "bytes": 326
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fa/3a551d4b3737a6441f9687642aa13a9d0944c6",
+      "sha256": "b48d1c42d03a2aa25110819e33952e3461fbea9605f0fac3dc54e8ef1dd2d807",
+      "bytes": 366
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fa/46753adc6824c36c78dddf5bf9ccc4aa3a8069",
+      "sha256": "72a85ee7b38e6fd9f6117302ffeb370e854c245c1b511cc92970296993ed976b",
+      "bytes": 199
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fa/5320f49a8ec3f0c477a2672ad7fc464d07a2b7",
+      "sha256": "5cc99d30a1d9bb29b8c4e9e1fb800e92552ea12f773a6c379c83949f9e3474e3",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fb/c4e2bc5a1f2635a6381e503d479bc0aecaa8e7",
+      "sha256": "f410e20bfa4a356616f18bdc5f345d38a6271edcf7e17f86f440a58c036b71d3",
+      "bytes": 212
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fb/de16db94e4e17400d3939ab61dc38de7614f15",
+      "sha256": "a568b3a092de9634a4d363bed6ce2ccd6d77efab8e5bac99b3e6ce795bb41292",
+      "bytes": 230
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fc/fb144d421402ab5efab922d71d56746f2135ad",
+      "sha256": "b126be2e790bbdec7479df8d065623c5f11b6670886074cef9bc9c8ab02f991f",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fd/1f419769c96197073f3daa16b5526241084473",
+      "sha256": "5de17689d59e25f3d3957f96d26153bfb2bfaff89266cafe4124805a81dec13a",
+      "bytes": 404
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fd/7ccea4b96707b8782eed46667786413f63e1f9",
+      "sha256": "00e183e13c349e1e58d1d3663afcccab4a89fbb0f11d865eecab1fee70ddaa19",
+      "bytes": 163
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fd/f3b49ce7948026a7f06a12fbaaef274018d862",
+      "sha256": "84bc5ec9912b9ad39ebd3a4f9034b7320195417154162796a7c3cb90188814f5",
+      "bytes": 451
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fe/69e122a66d9afa0ecb19c35c5e3ec92bfc9d40",
+      "sha256": "b583c9f22c391bae472edc6d241531cb73c80435e2c4ccbf56c26cf2ceaaa5ca",
+      "bytes": 291
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/fe/d73cdd8f41c5116d8c7c62d127b53cd0e75447",
+      "sha256": "530b4d244c2d8e771d26a8eb102612d5876df5009073b2f11709b8ffdb3a925e",
+      "bytes": 341
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ff/1f1da37a2f2feae25547c21bd649a8356cd46e",
+      "sha256": "61af1b8ed88ee7c1c317ffaa1c339a4bb09e82bed76b47085e291f763da329a8",
+      "bytes": 216
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/ff/c28bef26482e489beff5919f7d4f5f3c8bdb92",
+      "sha256": "e1033620ab63894cb102a35d1b29f0899eca384c18bc32d63da7d45246a00902",
+      "bytes": 159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/historical-a375-native-shallow.json",
+      "sha256": "d0d5586fa152c9271fc7f0e4f152b268f04db064c3d8dcee4fda27e34bd25c6d",
+      "bytes": 3769
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/native-probe.mts",
+      "sha256": "acdef81c4fc49ec5872d733976b6937be2b3a5cd02441827a7faf2bd298c0a93",
+      "bytes": 3707
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/negative-probes.py",
+      "sha256": "a668d7109a13199c254d925479327eee1fc5b08078337720ac3dd4f9b7a4af75",
+      "bytes": 4964
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/original-git-dependency-census.json",
+      "sha256": "f0bf6be29f16b200ced89a9d1d9b01f654f5b93a419044229e9364d7837d9808",
+      "bytes": 31656
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/replay_transport.py",
+      "sha256": "bef9efaeabceb59e5c0bb2696201195d79b220bfb3a5f902bacc7fb162485661",
+      "bytes": 4219
+    }
+  ],
+  "smallReproducer": {
+    "script": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/replay_transport.py",
+      "sha256": "bef9efaeabceb59e5c0bb2696201195d79b220bfb3a5f902bacc7fb162485661",
+      "bytes": 4219
+    },
+    "frozenReaderSha256": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b",
+    "scope": "Explicit historical f83 reader/schema overlay; this replay does not claim a later direct reader is safe from local object-store tampering. The transport already authenticates its own complete object closure.",
+    "actualExitCode": 0,
+    "result": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/actual-frozen-transport-replay/summary.json",
+      "sha256": "db16f06db6df8379e715a4fa17f09c666ce76c00331f77f1d5a5ed058631fb72",
+      "bytes": 306
+    }
+  }
+}

@@ -1,0 +1,3676 @@
+{
+  "status": "targeted author counterexample execution passed;independent review still required",
+  "nativeMaterialSha256": "cb82c27a5cf0a53d7d946475dfd4f2ceae8e1065348580f97b7f0f9202871c92",
+  "counts": {
+    "checks": 215,
+    "passed": 215
+  },
+  "checks": [
+    {
+      "id": "C-T21-PG-before-base-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-before-view-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-after-GRANT-view-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-after-GRANT-base-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-after-REVOKE-base-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-after-REVOKE-view-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-contact-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-write-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-subquery",
+      "actual": "20\n30",
+      "expected": "20\n30",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-targeted-update",
+      "actual": "35",
+      "expected": "35",
+      "pass": true
+    },
+    {
+      "id": "C-T21-PG-DDL-existing-default",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-before-base-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-before-view-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-after-GRANT-view-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-after-GRANT-base-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-after-REVOKE-base-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-after-REVOKE-view-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-contact-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-write-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-subquery",
+      "actual": "20\n30",
+      "expected": "20\n30",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-targeted-update",
+      "actual": "35",
+      "expected": "35",
+      "pass": true
+    },
+    {
+      "id": "B-T21-PG-DDL-existing-default",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-before-base-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-before-view-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-after-GRANT-view-query",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-after-GRANT-base-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-after-REVOKE-base-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-after-REVOKE-view-still-allowed",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-contact-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-write-denied",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-subquery",
+      "actual": "20\n30",
+      "expected": "20\n30",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-targeted-update",
+      "actual": "35",
+      "expected": "35",
+      "pass": true
+    },
+    {
+      "id": "F-T21-PG-DDL-existing-default",
+      "actual": "5",
+      "expected": "5",
+      "pass": true
+    },
+    {
+      "id": "C-T04-correct-SQL-plus-isolated-39-typo",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-perfect-answer",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-wrong-join-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-wrong-ORDER-BY-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-missing-status-filter-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-missing-output-row-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T04-wrong-output-order-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-T04-review-typo-full-contract-pass",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-T04-real-SQL-error-no-compensation",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-T04-review-typo-full-contract-pass",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-T04-real-SQL-error-no-compensation",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-T04-review-typo-full-contract-pass",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-T04-real-SQL-error-no-compensation",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "id": "B-T04-correct-SQL-plus-isolated-39-typo",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-perfect-answer",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-wrong-join-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-wrong-ORDER-BY-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-missing-status-filter-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-missing-output-row-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "B-T04-wrong-output-order-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-T04-review-typo-full-contract-pass",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-T04-real-SQL-error-no-compensation",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "id": "F-T04-correct-SQL-plus-isolated-39-typo",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-perfect-answer",
+      "actual": [
+        1,
+        1
+      ],
+      "expected": [
+        1,
+        1
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-wrong-join-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-wrong-ORDER-BY-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-missing-status-filter-remains-open",
+      "actual": [
+        0,
+        0
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-missing-output-row-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "F-T04-wrong-output-order-remains-open",
+      "actual": [
+        1,
+        0
+      ],
+      "expected": [
+        1,
+        0
+      ],
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-T04-review-typo-full-contract-pass",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-T04-real-SQL-error-no-compensation",
+      "actual": false,
+      "expected": false,
+      "pass": true
+    },
+    {
+      "id": "C-T07-rendered-code-executes-full-iteration",
+      "actual": [
+        "10 Fotobasis 20",
+        "20 Audiolabor 30",
+        "40 Datenschutz-Werkstatt 10",
+        "50 Archiv <offen> 15"
+      ],
+      "expected": [
+        "10 Fotobasis 20",
+        "20 Audiolabor 30",
+        "40 Datenschutz-Werkstatt 10",
+        "50 Archiv <offen> 15"
+      ],
+      "pass": true
+    },
+    {
+      "id": "C-T20-rendered-code-UPDATE-rowcount",
+      "actual": 1,
+      "expected": 1,
+      "pass": true
+    },
+    {
+      "id": "C-T20-rendered-code-persistent-change-and-others",
+      "actual": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "all-five-assembly-identities",
+      "actual": [
+        "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+        "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+        "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+      ],
+      "expected": [
+        "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+        "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+        "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+      ],
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-exact-ordered-coverage",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-thresholds-unchanged",
+      "actual": [
+        20,
+        20
+      ],
+      "expected": [
+        20,
+        20
+      ],
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-criterion-identities-points-unchanged",
+      "actual": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T17-C1",
+          1
+        ],
+        [
+          "C-T17-C2",
+          1
+        ],
+        [
+          "C-T18-C1",
+          1
+        ],
+        [
+          "C-T18-C2",
+          1
+        ],
+        [
+          "C-T19-C1",
+          1
+        ],
+        [
+          "C-T19-C2",
+          1
+        ]
+      ],
+      "expected": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T17-C1",
+          1
+        ],
+        [
+          "C-T17-C2",
+          1
+        ],
+        [
+          "C-T18-C1",
+          1
+        ],
+        [
+          "C-T18-C2",
+          1
+        ],
+        [
+          "C-T19-C1",
+          1
+        ],
+        [
+          "C-T19-C2",
+          1
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-draft-preserved",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-exact-ordered-coverage",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-thresholds-unchanged",
+      "actual": [
+        40,
+        40
+      ],
+      "expected": [
+        40,
+        40
+      ],
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-criterion-identities-points-unchanged",
+      "actual": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T03-C1",
+          1
+        ],
+        [
+          "C-T03-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T06-C1",
+          1
+        ],
+        [
+          "C-T06-C2",
+          1
+        ],
+        [
+          "C-T07-C1",
+          1
+        ],
+        [
+          "C-T07-C2",
+          1
+        ],
+        [
+          "C-T08-C1",
+          1
+        ],
+        [
+          "C-T08-C2",
+          1
+        ],
+        [
+          "C-T09-C1",
+          1
+        ],
+        [
+          "C-T09-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T12-C1",
+          1
+        ],
+        [
+          "C-T12-C2",
+          1
+        ],
+        [
+          "C-T13-C1",
+          1
+        ],
+        [
+          "C-T13-C2",
+          1
+        ],
+        [
+          "C-T14-C1",
+          1
+        ],
+        [
+          "C-T14-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T16-C1",
+          1
+        ],
+        [
+          "C-T16-C2",
+          1
+        ],
+        [
+          "C-T17-C1",
+          1
+        ],
+        [
+          "C-T17-C2",
+          1
+        ],
+        [
+          "C-T18-C1",
+          1
+        ],
+        [
+          "C-T18-C2",
+          1
+        ],
+        [
+          "C-T19-C1",
+          1
+        ],
+        [
+          "C-T19-C2",
+          1
+        ],
+        [
+          "C-T20-C1",
+          1
+        ],
+        [
+          "C-T20-C2",
+          1
+        ]
+      ],
+      "expected": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T03-C1",
+          1
+        ],
+        [
+          "C-T03-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T06-C1",
+          1
+        ],
+        [
+          "C-T06-C2",
+          1
+        ],
+        [
+          "C-T07-C1",
+          1
+        ],
+        [
+          "C-T07-C2",
+          1
+        ],
+        [
+          "C-T08-C1",
+          1
+        ],
+        [
+          "C-T08-C2",
+          1
+        ],
+        [
+          "C-T09-C1",
+          1
+        ],
+        [
+          "C-T09-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T12-C1",
+          1
+        ],
+        [
+          "C-T12-C2",
+          1
+        ],
+        [
+          "C-T13-C1",
+          1
+        ],
+        [
+          "C-T13-C2",
+          1
+        ],
+        [
+          "C-T14-C1",
+          1
+        ],
+        [
+          "C-T14-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T16-C1",
+          1
+        ],
+        [
+          "C-T16-C2",
+          1
+        ],
+        [
+          "C-T17-C1",
+          1
+        ],
+        [
+          "C-T17-C2",
+          1
+        ],
+        [
+          "C-T18-C1",
+          1
+        ],
+        [
+          "C-T18-C2",
+          1
+        ],
+        [
+          "C-T19-C1",
+          1
+        ],
+        [
+          "C-T19-C2",
+          1
+        ],
+        [
+          "C-T20-C1",
+          1
+        ],
+        [
+          "C-T20-C2",
+          1
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-draft-preserved",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-exact-ordered-coverage",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-thresholds-unchanged",
+      "actual": [
+        82,
+        82
+      ],
+      "expected": [
+        82,
+        82
+      ],
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-criterion-identities-points-unchanged",
+      "actual": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T03-C1",
+          1
+        ],
+        [
+          "C-T03-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T21-C1",
+          1
+        ],
+        [
+          "C-T21-C2",
+          1
+        ],
+        [
+          "C-T06-C1",
+          1
+        ],
+        [
+          "C-T06-C2",
+          1
+        ],
+        [
+          "C-T07-C1",
+          1
+        ],
+        [
+          "C-T07-C2",
+          1
+        ],
+        [
+          "C-T22-C1",
+          1
+        ],
+        [
+          "C-T22-C2",
+          1
+        ],
+        [
+          "C-T08-C1",
+          1
+        ],
+        [
+          "C-T08-C2",
+          1
+        ],
+        [
+          "C-T09-C1",
+          1
+        ],
+        [
+          "C-T09-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T23-C1",
+          1
+        ],
+        [
+          "C-T23-C2",
+          1
+        ],
+        [
+          "C-T24-C1",
+          1
+        ],
+        [
+          "C-T24-C2",
+          1
+        ],
+        [
+          "C-T12-C1",
+          1
+        ],
+        [
+          "C-T12-C2",
+          1
+        ],
+        [
+          "C-T25-C1",
+          1
+        ],
+        [
+          "C-T25-C2",
+          1
+        ],
+        [
+          "C-T26-C1",
+          1
+        ],
+        [
+          "C-T26-C2",
+          1
+        ],
+        [
+          "C-T13-C1",
+          1
+        ],
+        [
+          "C-T13-C2",
+          1
+        ],
+        [
+          "C-T14-C1",
+          1
+        ],
+        [
+          "C-T14-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T27-C1",
+          1
+        ],
+        [
+          "C-T27-C2",
+          1
+        ],
+        [
+          "C-T28-C1",
+          1
+        ],
+        [
+          "C-T28-C2",
+          1
+        ],
+        [
+          "C-T29-C1",
+          1
+        ],
+        [
+          "C-T29-C2",
+          1
+        ],
+        [
+          "C-T30-C1",
+          1
+        ],
+        [
+          "C-T30-C2",
+          1
+        ],
+        [
+          "C-T31-C1",
+          1
+        ],
+        [
+          "C-T31-C2",
+          1
+        ],
+        [
+          "C-T32-C1",
+          1
+        ],
+        [
+          "C-T32-C2",
+          1
+        ],
+        [
+          "C-T33-C1",
+          1
+        ],
+        [
+          "C-T33-C2",
+          1
+        ],
+        [
+          "C-T34-C1",
+          1
+        ],
+        [
+          "C-T34-C2",
+          1
+        ],
+        [
+          "C-T35-C1",
+          1
+        ],
+        [
+          "C-T35-C2",
+          1
+        ],
+        [
+          "C-T37-C1",
+          1
+        ],
+        [
+          "C-T37-C2",
+          1
+        ],
+        [
+          "C-T36-C1",
+          1
+        ],
+        [
+          "C-T36-C2",
+          1
+        ],
+        [
+          "C-T38-C1",
+          1
+        ],
+        [
+          "C-T38-C2",
+          1
+        ],
+        [
+          "C-T39-C1",
+          1
+        ],
+        [
+          "C-T39-C2",
+          1
+        ],
+        [
+          "C-T40-C1",
+          1
+        ],
+        [
+          "C-T40-C2",
+          1
+        ],
+        [
+          "C-T41-C1",
+          1
+        ],
+        [
+          "C-T41-C2",
+          1
+        ],
+        [
+          "C-T42-C1",
+          1
+        ],
+        [
+          "C-T42-C2",
+          1
+        ],
+        [
+          "C-T43-C1",
+          1
+        ],
+        [
+          "C-T43-C2",
+          1
+        ],
+        [
+          "C-T44-C1",
+          1
+        ],
+        [
+          "C-T44-C2",
+          1
+        ],
+        [
+          "C-T45-C1",
+          1
+        ],
+        [
+          "C-T45-C2",
+          1
+        ],
+        [
+          "C-T16-C1",
+          1
+        ],
+        [
+          "C-T16-C2",
+          1
+        ]
+      ],
+      "expected": [
+        [
+          "C-T01-C1",
+          1
+        ],
+        [
+          "C-T01-C2",
+          1
+        ],
+        [
+          "C-T02-C1",
+          1
+        ],
+        [
+          "C-T02-C2",
+          1
+        ],
+        [
+          "C-T03-C1",
+          1
+        ],
+        [
+          "C-T03-C2",
+          1
+        ],
+        [
+          "C-T04-C1",
+          1
+        ],
+        [
+          "C-T04-C2",
+          1
+        ],
+        [
+          "C-T05-C1",
+          1
+        ],
+        [
+          "C-T05-C2",
+          1
+        ],
+        [
+          "C-T21-C1",
+          1
+        ],
+        [
+          "C-T21-C2",
+          1
+        ],
+        [
+          "C-T06-C1",
+          1
+        ],
+        [
+          "C-T06-C2",
+          1
+        ],
+        [
+          "C-T07-C1",
+          1
+        ],
+        [
+          "C-T07-C2",
+          1
+        ],
+        [
+          "C-T22-C1",
+          1
+        ],
+        [
+          "C-T22-C2",
+          1
+        ],
+        [
+          "C-T08-C1",
+          1
+        ],
+        [
+          "C-T08-C2",
+          1
+        ],
+        [
+          "C-T09-C1",
+          1
+        ],
+        [
+          "C-T09-C2",
+          1
+        ],
+        [
+          "C-T10-C1",
+          1
+        ],
+        [
+          "C-T10-C2",
+          1
+        ],
+        [
+          "C-T11-C1",
+          1
+        ],
+        [
+          "C-T11-C2",
+          1
+        ],
+        [
+          "C-T23-C1",
+          1
+        ],
+        [
+          "C-T23-C2",
+          1
+        ],
+        [
+          "C-T24-C1",
+          1
+        ],
+        [
+          "C-T24-C2",
+          1
+        ],
+        [
+          "C-T12-C1",
+          1
+        ],
+        [
+          "C-T12-C2",
+          1
+        ],
+        [
+          "C-T25-C1",
+          1
+        ],
+        [
+          "C-T25-C2",
+          1
+        ],
+        [
+          "C-T26-C1",
+          1
+        ],
+        [
+          "C-T26-C2",
+          1
+        ],
+        [
+          "C-T13-C1",
+          1
+        ],
+        [
+          "C-T13-C2",
+          1
+        ],
+        [
+          "C-T14-C1",
+          1
+        ],
+        [
+          "C-T14-C2",
+          1
+        ],
+        [
+          "C-T15-C1",
+          1
+        ],
+        [
+          "C-T15-C2",
+          1
+        ],
+        [
+          "C-T27-C1",
+          1
+        ],
+        [
+          "C-T27-C2",
+          1
+        ],
+        [
+          "C-T28-C1",
+          1
+        ],
+        [
+          "C-T28-C2",
+          1
+        ],
+        [
+          "C-T29-C1",
+          1
+        ],
+        [
+          "C-T29-C2",
+          1
+        ],
+        [
+          "C-T30-C1",
+          1
+        ],
+        [
+          "C-T30-C2",
+          1
+        ],
+        [
+          "C-T31-C1",
+          1
+        ],
+        [
+          "C-T31-C2",
+          1
+        ],
+        [
+          "C-T32-C1",
+          1
+        ],
+        [
+          "C-T32-C2",
+          1
+        ],
+        [
+          "C-T33-C1",
+          1
+        ],
+        [
+          "C-T33-C2",
+          1
+        ],
+        [
+          "C-T34-C1",
+          1
+        ],
+        [
+          "C-T34-C2",
+          1
+        ],
+        [
+          "C-T35-C1",
+          1
+        ],
+        [
+          "C-T35-C2",
+          1
+        ],
+        [
+          "C-T37-C1",
+          1
+        ],
+        [
+          "C-T37-C2",
+          1
+        ],
+        [
+          "C-T36-C1",
+          1
+        ],
+        [
+          "C-T36-C2",
+          1
+        ],
+        [
+          "C-T38-C1",
+          1
+        ],
+        [
+          "C-T38-C2",
+          1
+        ],
+        [
+          "C-T39-C1",
+          1
+        ],
+        [
+          "C-T39-C2",
+          1
+        ],
+        [
+          "C-T40-C1",
+          1
+        ],
+        [
+          "C-T40-C2",
+          1
+        ],
+        [
+          "C-T41-C1",
+          1
+        ],
+        [
+          "C-T41-C2",
+          1
+        ],
+        [
+          "C-T42-C1",
+          1
+        ],
+        [
+          "C-T42-C2",
+          1
+        ],
+        [
+          "C-T43-C1",
+          1
+        ],
+        [
+          "C-T43-C2",
+          1
+        ],
+        [
+          "C-T44-C1",
+          1
+        ],
+        [
+          "C-T44-C2",
+          1
+        ],
+        [
+          "C-T45-C1",
+          1
+        ],
+        [
+          "C-T45-C2",
+          1
+        ],
+        [
+          "C-T16-C1",
+          1
+        ],
+        [
+          "C-T16-C2",
+          1
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-draft-preserved",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-exact-ordered-coverage",
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-thresholds-unchanged",
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ],
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-criterion-identities-points-unchanged",
+      "actual": [
+        [
+          "B-T27-C1",
+          1
+        ],
+        [
+          "B-T27-C2",
+          1
+        ],
+        [
+          "B-T05-C1",
+          1
+        ],
+        [
+          "B-T05-C2",
+          1
+        ],
+        [
+          "B-T25-C1",
+          1
+        ],
+        [
+          "B-T25-C2",
+          1
+        ],
+        [
+          "B-T24-C1",
+          1
+        ],
+        [
+          "B-T24-C2",
+          1
+        ],
+        [
+          "B-T01-C1",
+          1
+        ],
+        [
+          "B-T01-C2",
+          1
+        ],
+        [
+          "B-T21-C1",
+          1
+        ],
+        [
+          "B-T21-C2",
+          1
+        ],
+        [
+          "B-T02-C1",
+          1
+        ],
+        [
+          "B-T02-C2",
+          1
+        ],
+        [
+          "B-T03-C1",
+          1
+        ],
+        [
+          "B-T03-C2",
+          1
+        ],
+        [
+          "B-T29-C1",
+          1
+        ],
+        [
+          "B-T29-C2",
+          1
+        ],
+        [
+          "B-T23-C1",
+          1
+        ],
+        [
+          "B-T23-C2",
+          1
+        ],
+        [
+          "B-T32-C1",
+          1
+        ],
+        [
+          "B-T32-C2",
+          1
+        ],
+        [
+          "B-T30-C1",
+          1
+        ],
+        [
+          "B-T30-C2",
+          1
+        ],
+        [
+          "B-T28-C1",
+          1
+        ],
+        [
+          "B-T28-C2",
+          1
+        ],
+        [
+          "B-T31-C1",
+          1
+        ],
+        [
+          "B-T31-C2",
+          1
+        ],
+        [
+          "B-T12-C1",
+          1
+        ],
+        [
+          "B-T12-C2",
+          1
+        ],
+        [
+          "B-T33-C1",
+          1
+        ],
+        [
+          "B-T33-C2",
+          1
+        ],
+        [
+          "B-T42-C1",
+          1
+        ],
+        [
+          "B-T42-C2",
+          1
+        ],
+        [
+          "B-T11-C1",
+          1
+        ],
+        [
+          "B-T11-C2",
+          1
+        ],
+        [
+          "B-T43-C1",
+          1
+        ],
+        [
+          "B-T43-C2",
+          1
+        ],
+        [
+          "B-T34-C1",
+          1
+        ],
+        [
+          "B-T34-C2",
+          1
+        ],
+        [
+          "B-T15-C1",
+          1
+        ],
+        [
+          "B-T15-C2",
+          1
+        ],
+        [
+          "B-T04-C1",
+          1
+        ],
+        [
+          "B-T04-C2",
+          1
+        ],
+        [
+          "B-T10-C1",
+          1
+        ],
+        [
+          "B-T10-C2",
+          1
+        ]
+      ],
+      "expected": [
+        [
+          "B-T27-C1",
+          1
+        ],
+        [
+          "B-T27-C2",
+          1
+        ],
+        [
+          "B-T05-C1",
+          1
+        ],
+        [
+          "B-T05-C2",
+          1
+        ],
+        [
+          "B-T25-C1",
+          1
+        ],
+        [
+          "B-T25-C2",
+          1
+        ],
+        [
+          "B-T24-C1",
+          1
+        ],
+        [
+          "B-T24-C2",
+          1
+        ],
+        [
+          "B-T01-C1",
+          1
+        ],
+        [
+          "B-T01-C2",
+          1
+        ],
+        [
+          "B-T21-C1",
+          1
+        ],
+        [
+          "B-T21-C2",
+          1
+        ],
+        [
+          "B-T02-C1",
+          1
+        ],
+        [
+          "B-T02-C2",
+          1
+        ],
+        [
+          "B-T03-C1",
+          1
+        ],
+        [
+          "B-T03-C2",
+          1
+        ],
+        [
+          "B-T29-C1",
+          1
+        ],
+        [
+          "B-T29-C2",
+          1
+        ],
+        [
+          "B-T23-C1",
+          1
+        ],
+        [
+          "B-T23-C2",
+          1
+        ],
+        [
+          "B-T32-C1",
+          1
+        ],
+        [
+          "B-T32-C2",
+          1
+        ],
+        [
+          "B-T30-C1",
+          1
+        ],
+        [
+          "B-T30-C2",
+          1
+        ],
+        [
+          "B-T28-C1",
+          1
+        ],
+        [
+          "B-T28-C2",
+          1
+        ],
+        [
+          "B-T31-C1",
+          1
+        ],
+        [
+          "B-T31-C2",
+          1
+        ],
+        [
+          "B-T12-C1",
+          1
+        ],
+        [
+          "B-T12-C2",
+          1
+        ],
+        [
+          "B-T33-C1",
+          1
+        ],
+        [
+          "B-T33-C2",
+          1
+        ],
+        [
+          "B-T42-C1",
+          1
+        ],
+        [
+          "B-T42-C2",
+          1
+        ],
+        [
+          "B-T11-C1",
+          1
+        ],
+        [
+          "B-T11-C2",
+          1
+        ],
+        [
+          "B-T43-C1",
+          1
+        ],
+        [
+          "B-T43-C2",
+          1
+        ],
+        [
+          "B-T34-C1",
+          1
+        ],
+        [
+          "B-T34-C2",
+          1
+        ],
+        [
+          "B-T15-C1",
+          1
+        ],
+        [
+          "B-T15-C2",
+          1
+        ],
+        [
+          "B-T04-C1",
+          1
+        ],
+        [
+          "B-T04-C2",
+          1
+        ],
+        [
+          "B-T10-C1",
+          1
+        ],
+        [
+          "B-T10-C2",
+          1
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-draft-preserved",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-exact-ordered-coverage",
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-thresholds-unchanged",
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ],
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-criterion-identities-points-unchanged",
+      "actual": [
+        [
+          "F-T27-C1",
+          1
+        ],
+        [
+          "F-T27-C2",
+          1
+        ],
+        [
+          "F-T05-C1",
+          1
+        ],
+        [
+          "F-T05-C2",
+          1
+        ],
+        [
+          "F-T25-C1",
+          1
+        ],
+        [
+          "F-T25-C2",
+          1
+        ],
+        [
+          "F-T24-C1",
+          1
+        ],
+        [
+          "F-T24-C2",
+          1
+        ],
+        [
+          "F-T01-C1",
+          1
+        ],
+        [
+          "F-T01-C2",
+          1
+        ],
+        [
+          "F-T21-C1",
+          1
+        ],
+        [
+          "F-T21-C2",
+          1
+        ],
+        [
+          "F-T02-C1",
+          1
+        ],
+        [
+          "F-T02-C2",
+          1
+        ],
+        [
+          "F-T03-C1",
+          1
+        ],
+        [
+          "F-T03-C2",
+          1
+        ],
+        [
+          "F-T29-C1",
+          1
+        ],
+        [
+          "F-T29-C2",
+          1
+        ],
+        [
+          "F-T23-C1",
+          1
+        ],
+        [
+          "F-T23-C2",
+          1
+        ],
+        [
+          "F-T32-C1",
+          1
+        ],
+        [
+          "F-T32-C2",
+          1
+        ],
+        [
+          "F-T30-C1",
+          1
+        ],
+        [
+          "F-T30-C2",
+          1
+        ],
+        [
+          "F-T28-C1",
+          1
+        ],
+        [
+          "F-T28-C2",
+          1
+        ],
+        [
+          "F-T31-C1",
+          1
+        ],
+        [
+          "F-T31-C2",
+          1
+        ],
+        [
+          "F-T12-C1",
+          1
+        ],
+        [
+          "F-T12-C2",
+          1
+        ],
+        [
+          "F-T33-C1",
+          1
+        ],
+        [
+          "F-T33-C2",
+          1
+        ],
+        [
+          "F-T42-C1",
+          1
+        ],
+        [
+          "F-T42-C2",
+          1
+        ],
+        [
+          "F-T11-C1",
+          1
+        ],
+        [
+          "F-T11-C2",
+          1
+        ],
+        [
+          "F-T43-C1",
+          1
+        ],
+        [
+          "F-T43-C2",
+          1
+        ],
+        [
+          "F-T34-C1",
+          1
+        ],
+        [
+          "F-T34-C2",
+          1
+        ],
+        [
+          "F-T15-C1",
+          1
+        ],
+        [
+          "F-T15-C2",
+          1
+        ],
+        [
+          "F-T04-C1",
+          1
+        ],
+        [
+          "F-T04-C2",
+          1
+        ],
+        [
+          "F-T10-C1",
+          1
+        ],
+        [
+          "F-T10-C2",
+          1
+        ]
+      ],
+      "expected": [
+        [
+          "F-T27-C1",
+          1
+        ],
+        [
+          "F-T27-C2",
+          1
+        ],
+        [
+          "F-T05-C1",
+          1
+        ],
+        [
+          "F-T05-C2",
+          1
+        ],
+        [
+          "F-T25-C1",
+          1
+        ],
+        [
+          "F-T25-C2",
+          1
+        ],
+        [
+          "F-T24-C1",
+          1
+        ],
+        [
+          "F-T24-C2",
+          1
+        ],
+        [
+          "F-T01-C1",
+          1
+        ],
+        [
+          "F-T01-C2",
+          1
+        ],
+        [
+          "F-T21-C1",
+          1
+        ],
+        [
+          "F-T21-C2",
+          1
+        ],
+        [
+          "F-T02-C1",
+          1
+        ],
+        [
+          "F-T02-C2",
+          1
+        ],
+        [
+          "F-T03-C1",
+          1
+        ],
+        [
+          "F-T03-C2",
+          1
+        ],
+        [
+          "F-T29-C1",
+          1
+        ],
+        [
+          "F-T29-C2",
+          1
+        ],
+        [
+          "F-T23-C1",
+          1
+        ],
+        [
+          "F-T23-C2",
+          1
+        ],
+        [
+          "F-T32-C1",
+          1
+        ],
+        [
+          "F-T32-C2",
+          1
+        ],
+        [
+          "F-T30-C1",
+          1
+        ],
+        [
+          "F-T30-C2",
+          1
+        ],
+        [
+          "F-T28-C1",
+          1
+        ],
+        [
+          "F-T28-C2",
+          1
+        ],
+        [
+          "F-T31-C1",
+          1
+        ],
+        [
+          "F-T31-C2",
+          1
+        ],
+        [
+          "F-T12-C1",
+          1
+        ],
+        [
+          "F-T12-C2",
+          1
+        ],
+        [
+          "F-T33-C1",
+          1
+        ],
+        [
+          "F-T33-C2",
+          1
+        ],
+        [
+          "F-T42-C1",
+          1
+        ],
+        [
+          "F-T42-C2",
+          1
+        ],
+        [
+          "F-T11-C1",
+          1
+        ],
+        [
+          "F-T11-C2",
+          1
+        ],
+        [
+          "F-T43-C1",
+          1
+        ],
+        [
+          "F-T43-C2",
+          1
+        ],
+        [
+          "F-T34-C1",
+          1
+        ],
+        [
+          "F-T34-C2",
+          1
+        ],
+        [
+          "F-T15-C1",
+          1
+        ],
+        [
+          "F-T15-C2",
+          1
+        ],
+        [
+          "F-T04-C1",
+          1
+        ],
+        [
+          "F-T04-C2",
+          1
+        ],
+        [
+          "F-T10-C1",
+          1
+        ],
+        [
+          "F-T10-C2",
+          1
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-draft-preserved",
+      "actual": "draft",
+      "expected": "draft",
+      "pass": true
+    },
+    {
+      "id": "C-T01-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "expected": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T02-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "expected": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "pass": true
+    },
+    {
+      "id": "C-T04-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "expected": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T05-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "expected": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "C-T10-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "expected": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "C-T11-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "pass": true
+    },
+    {
+      "id": "C-T15-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "expected": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "pass": true
+    },
+    {
+      "id": "C-T17-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann einen schwachen Entitätstyp mit identifizierender Beziehung und partiellem Schlüssel modellieren und seine Identifikation in einem Relationenschema darstellen.",
+      "expected": "Die lernende Person kann einen schwachen Entitätstyp mit identifizierender Beziehung und partiellem Schlüssel modellieren und seine Identifikation in einem Relationenschema darstellen.",
+      "pass": true
+    },
+    {
+      "id": "C-T18-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann mehrwertige Attribute in einem Datenmodell erkennen und sie mit ihren zugehörigen Schlüsseln in ein Relationenschema überführen.",
+      "expected": "Die lernende Person kann mehrwertige Attribute in einem Datenmodell erkennen und sie mit ihren zugehörigen Schlüsseln in ein Relationenschema überführen.",
+      "pass": true
+    },
+    {
+      "id": "C-T19-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann eine is-a-Beziehung zwischen Entitätstypen modellieren und ihre Schlüsselbeziehung in einem konsistenten Relationenschema darstellen.",
+      "expected": "Die lernende Person kann eine is-a-Beziehung zwischen Entitätstypen modellieren und ihre Schlüsselbeziehung in einem konsistenten Relationenschema darstellen.",
+      "pass": true
+    },
+    {
+      "id": "C-T03-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "expected": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T06-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+      "expected": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+      "pass": true
+    },
+    {
+      "id": "C-T07-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+      "expected": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+      "pass": true
+    },
+    {
+      "id": "C-T08-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+      "expected": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+      "pass": true
+    },
+    {
+      "id": "C-T09-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Sicherheitsziele und organisatorische Maßnahmen begründen.",
+      "expected": "Die lernende Person kann Sicherheitsziele und organisatorische Maßnahmen begründen.",
+      "pass": true
+    },
+    {
+      "id": "C-T12-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "expected": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "pass": true
+    },
+    {
+      "id": "C-T13-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+      "expected": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T14-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Datenschutzrisiken im Alltag beurteilen und Einstellungen anpassen.",
+      "expected": "Die lernende Person kann Datenschutzrisiken im Alltag beurteilen und Einstellungen anpassen.",
+      "pass": true
+    },
+    {
+      "id": "C-T16-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann die oekonomische Verwertbarkeit von Daten, Datenfilterung und Auswirkungen auf Wahrnehmung oder Meinungsbildung bewerten.",
+      "expected": "Die lernende Person kann die oekonomische Verwertbarkeit von Daten, Datenfilterung und Auswirkungen auf Wahrnehmung oder Meinungsbildung bewerten.",
+      "pass": true
+    },
+    {
+      "id": "C-T20-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann aus einem Programm eine vorgegebene SQL-Anweisung mit gebundenen Parametern ohne Ergebnismenge ausführen und die Änderung am Datenbestand prüfen.",
+      "expected": "Die lernende Person kann aus einem Programm eine vorgegebene SQL-Anweisung mit gebundenen Parametern ohne Ergebnismenge ausführen und die Änderung am Datenbestand prüfen.",
+      "pass": true
+    },
+    {
+      "id": "C-T21-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "expected": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "pass": true
+    },
+    {
+      "id": "C-T22-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Benutzerverwaltung und Zugriffsrechte in Webdatenbanken beschreiben.",
+      "expected": "Die lernende Person kann Benutzerverwaltung und Zugriffsrechte in Webdatenbanken beschreiben.",
+      "pass": true
+    },
+    {
+      "id": "C-T23-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "expected": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "pass": true
+    },
+    {
+      "id": "C-T24-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "expected": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "pass": true
+    },
+    {
+      "id": "C-T25-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "expected": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "pass": true
+    },
+    {
+      "id": "C-T26-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+      "expected": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+      "pass": true
+    },
+    {
+      "id": "C-T27-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "expected": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "pass": true
+    },
+    {
+      "id": "C-T28-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "expected": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "pass": true
+    },
+    {
+      "id": "C-T29-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "expected": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T30-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "expected": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T31-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "expected": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "pass": true
+    },
+    {
+      "id": "C-T32-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "expected": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "pass": true
+    },
+    {
+      "id": "C-T33-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "expected": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "C-T34-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "expected": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "pass": true
+    },
+    {
+      "id": "C-T35-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann RESTful APIs modellieren und Datenbankzugriffe kapseln.",
+      "expected": "Die lernende Person kann RESTful APIs modellieren und Datenbankzugriffe kapseln.",
+      "pass": true
+    },
+    {
+      "id": "C-T37-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Sessions, Tokens und Cookies sicher handhaben.",
+      "expected": "Die lernende Person kann Sessions, Tokens und Cookies sicher handhaben.",
+      "pass": true
+    },
+    {
+      "id": "C-T36-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Eingaben client-/serverseitig validieren und Angriffe mindern.",
+      "expected": "Die lernende Person kann Eingaben client-/serverseitig validieren und Angriffe mindern.",
+      "pass": true
+    },
+    {
+      "id": "C-T38-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Caching/Asynchronität für Web-Apps begründen.",
+      "expected": "Die lernende Person kann Caching/Asynchronität für Web-Apps begründen.",
+      "pass": true
+    },
+    {
+      "id": "C-T39-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Datenschutzprinzipien in Systemdesigns verankern.",
+      "expected": "Die lernende Person kann Datenschutzprinzipien in Systemdesigns verankern.",
+      "pass": true
+    },
+    {
+      "id": "C-T40-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Bedrohungen (OWASP Top 10) klassifizieren.",
+      "expected": "Die lernende Person kann Bedrohungen (OWASP Top 10) klassifizieren.",
+      "pass": true
+    },
+    {
+      "id": "C-T41-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann symm./asymm. Verfahren und Signaturen einordnen.",
+      "expected": "Die lernende Person kann symm./asymm. Verfahren und Signaturen einordnen.",
+      "pass": true
+    },
+    {
+      "id": "C-T42-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "expected": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "pass": true
+    },
+    {
+      "id": "C-T43-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "pass": true
+    },
+    {
+      "id": "C-T44-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Grenzen relationaler Datenbanken erklaeren und alternative Organisationsformen grosser Datenmengen wie NoSQL- oder Wide-Column-Datenbanken einordnen.",
+      "expected": "Die lernende Person kann Grenzen relationaler Datenbanken erklaeren und alternative Organisationsformen grosser Datenmengen wie NoSQL- oder Wide-Column-Datenbanken einordnen.",
+      "pass": true
+    },
+    {
+      "id": "C-T45-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann das Map-Reduce-Paradigma als parallele Verarbeitung grosser Datenmengen beschreiben und an einfachen Verarbeitungsschritten erlaeutern.",
+      "expected": "Die lernende Person kann das Map-Reduce-Paradigma als parallele Verarbeitung grosser Datenmengen beschreiben und an einfachen Verarbeitungsschritten erlaeutern.",
+      "pass": true
+    },
+    {
+      "id": "B-T27-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "expected": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "pass": true
+    },
+    {
+      "id": "B-T05-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "expected": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "B-T25-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "expected": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "pass": true
+    },
+    {
+      "id": "B-T24-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "expected": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "pass": true
+    },
+    {
+      "id": "B-T01-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "expected": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "pass": true
+    },
+    {
+      "id": "B-T21-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "expected": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "pass": true
+    },
+    {
+      "id": "B-T02-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "expected": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "pass": true
+    },
+    {
+      "id": "B-T03-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "expected": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "B-T29-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "expected": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "pass": true
+    },
+    {
+      "id": "B-T23-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "expected": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "pass": true
+    },
+    {
+      "id": "B-T32-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "expected": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "pass": true
+    },
+    {
+      "id": "B-T30-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "expected": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "B-T28-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "expected": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "pass": true
+    },
+    {
+      "id": "B-T31-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "expected": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "pass": true
+    },
+    {
+      "id": "B-T12-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "expected": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "pass": true
+    },
+    {
+      "id": "B-T33-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "expected": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "B-T42-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "expected": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "pass": true
+    },
+    {
+      "id": "B-T11-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "pass": true
+    },
+    {
+      "id": "B-T43-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "pass": true
+    },
+    {
+      "id": "B-T34-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "expected": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "pass": true
+    },
+    {
+      "id": "B-T15-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "expected": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "pass": true
+    },
+    {
+      "id": "B-T04-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "expected": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "pass": true
+    },
+    {
+      "id": "B-T10-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "expected": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "F-T27-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "expected": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+      "pass": true
+    },
+    {
+      "id": "F-T05-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "expected": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "F-T25-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "expected": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "pass": true
+    },
+    {
+      "id": "F-T24-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "expected": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "pass": true
+    },
+    {
+      "id": "F-T01-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "expected": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "pass": true
+    },
+    {
+      "id": "F-T21-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "expected": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "pass": true
+    },
+    {
+      "id": "F-T02-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "expected": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "pass": true
+    },
+    {
+      "id": "F-T03-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "expected": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "F-T29-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "expected": "Die lernende Person kann Sequenzdiagramme für Nebenläufigkeit und Services modellieren.",
+      "pass": true
+    },
+    {
+      "id": "F-T23-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "expected": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+      "pass": true
+    },
+    {
+      "id": "F-T32-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "expected": "Die lernende Person kann ACID/Isolation-Level erläutern und Anomalien erkennen.",
+      "pass": true
+    },
+    {
+      "id": "F-T30-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "expected": "Die lernende Person kann 1NF–BCNF prüfen und Schemata normalisieren.",
+      "pass": true
+    },
+    {
+      "id": "F-T28-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "expected": "Die lernende Person kann komplexere Zustandsautomaten modellieren (Hierarchie/Parallelität).",
+      "pass": true
+    },
+    {
+      "id": "F-T31-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "expected": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+      "pass": true
+    },
+    {
+      "id": "F-T12-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "expected": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "pass": true
+    },
+    {
+      "id": "F-T33-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "expected": "Die lernende Person kann Views/Rollen zur Zugriffsteuerung einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "F-T42-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "expected": "Die lernende Person kann Tupel-/Domänenkalkül anwenden.",
+      "pass": true
+    },
+    {
+      "id": "F-T11-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "pass": true
+    },
+    {
+      "id": "F-T43-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "expected": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+      "pass": true
+    },
+    {
+      "id": "F-T34-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "expected": "Die lernende Person kann einfache Optimierungen (Join-Reihenfolge, Indexgebrauch) begründen.",
+      "pass": true
+    },
+    {
+      "id": "F-T15-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "expected": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "pass": true
+    },
+    {
+      "id": "F-T04-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "expected": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "pass": true
+    },
+    {
+      "id": "F-T10-full-goal-meaning-unchanged",
+      "actual": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "expected": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "pass": true
+    },
+    {
+      "id": "festival-model-repeat-and-optional-actual-Endzeit",
+      "actual": [
+        [
+          4,
+          "11:00"
+        ],
+        [
+          5,
+          null
+        ]
+      ],
+      "expected": [
+        [
+          4,
+          "11:00"
+        ],
+        [
+          5,
+          null
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "festival-model-open-invariant-valid",
+      "actual": [],
+      "expected": [],
+      "pass": true
+    },
+    {
+      "id": "festival-model-open-invariant-negative",
+      "actual": [
+        [
+          3
+        ]
+      ],
+      "expected": [
+        [
+          3
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/README.md-unchanged",
+      "actual": "49fe3810957411746155d8921c41dc9d0ddd53873e51dea7d68272edbfebe63f",
+      "expected": "49fe3810957411746155d8921c41dc9d0ddd53873e51dea7d68272edbfebe63f",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/assembly-material-reference-check.json-unchanged",
+      "actual": "21f1f5341931a6d374694a01cb7be21e32c7ba341050bed42e606b9c996e07f7",
+      "expected": "21f1f5341931a6d374694a01cb7be21e32c7ba341050bed42e606b9c996e07f7",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/author-provenance.json-unchanged",
+      "actual": "a4365924001f6e3c1047912ed35f90bf7150197a6f93e43fba3a0d154aca481e",
+      "expected": "a4365924001f6e3c1047912ed35f90bf7150197a6f93e43fba3a0d154aca481e",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/author.py-unchanged",
+      "actual": "91d4e9cf9524987916d057594928b32371aecad9c516a55d9455b5af45508d74",
+      "expected": "91d4e9cf9524987916d057594928b32371aecad9c516a55d9455b5af45508d74",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/build-receipt.json-unchanged",
+      "actual": "708ef4af18e7b540104317378d73311b165c92c05b2df09b20dae8f270bda200",
+      "expected": "708ef4af18e7b540104317378d73311b165c92c05b2df09b20dae8f270bda200",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/casebank.json-unchanged",
+      "actual": "e470025e75de5ba9c34735f720551233ecd78640630c888e5237e73372e8aa75",
+      "expected": "e470025e75de5ba9c34735f720551233ecd78640630c888e5237e73372e8aa75",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/complete-review-dossier.py-unchanged",
+      "actual": "698f76d007d74eb1c433c46593c84415e8f2e1fe73e5ff468257c41e7175eb51",
+      "expected": "698f76d007d74eb1c433c46593c84415e8f2e1fe73e5ff468257c41e7175eb51",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/exam-assemblies.json-unchanged",
+      "actual": "552e0e0ac408719476a9256ad208e741b9aa9751bd2e31af2e321558358cdbc0",
+      "expected": "552e0e0ac408719476a9256ad208e741b9aa9751bd2e31af2e321558358cdbc0",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/execution-evidence.json-unchanged",
+      "actual": "c0c59bc2ebe6ad34175176b3dad59e16f0a4c450916a6800a4b8c9ec671acbfe",
+      "expected": "c0c59bc2ebe6ad34175176b3dad59e16f0a4c450916a6800a4b8c9ec671acbfe",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/full-meaning-and-material-completeness.json-unchanged",
+      "actual": "0150430a294018fab1fa89ed3cf5b8089dca8b63a7e0540c9c5f832aa1bd6460",
+      "expected": "0150430a294018fab1fa89ed3cf5b8089dca8b63a7e0540c9c5f832aa1bd6460",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/native-examData.json-unchanged",
+      "actual": "424d79c1c84ff7f0973c312756730008428a23d5bdfd84ab866287352c537364",
+      "expected": "424d79c1c84ff7f0973c312756730008428a23d5bdfd84ab866287352c537364",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/official-dsgvo-current-de.html.gz-unchanged",
+      "actual": "7e4990f01ada9b58c09759793b9f7e43f500929e4a0a5f904e51691bbec1b3d0",
+      "expected": "7e4990f01ada9b58c09759793b9f7e43f500929e4a0a5f904e51691bbec1b3d0",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/official-law-retrieval.json-unchanged",
+      "actual": "e275f2a983ab8f918018f374439932e2cf3de85b31dc73c267c07afd0b036a02",
+      "expected": "e275f2a983ab8f918018f374439932e2cf3de85b31dc73c267c07afd0b036a02",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/official-owasp-retrieval.json-unchanged",
+      "actual": "3311b8c71686ddac10d68690654bf86841cd7ee720211457563415d247abd10f",
+      "expected": "3311b8c71686ddac10d68690654bf86841cd7ee720211457563415d247abd10f",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/original22-preservation.json-unchanged",
+      "actual": "c677db9908ee77d69cf2429032b5473850b0a9a6e75847bfd972e2c8308f3328",
+      "expected": "c677db9908ee77d69cf2429032b5473850b0a9a6e75847bfd972e2c8308f3328",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/reference-courses.py-unchanged",
+      "actual": "b5fd806ed8ce7ef2b80a692c1dc9af1a79cb6a78aefc9fc5aebc4f8328516e18",
+      "expected": "b5fd806ed8ce7ef2b80a692c1dc9af1a79cb6a78aefc9fc5aebc4f8328516e18",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/reference-festival.py-unchanged",
+      "actual": "ac0ac8e02346311bca6b38de8caaf4d40c9d67d931e42335f854ec0662f7f3f0",
+      "expected": "ac0ac8e02346311bca6b38de8caaf4d40c9d67d931e42335f854ec0662f7f3f0",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/reference-library.py-unchanged",
+      "actual": "b495159f901054d72f19a25add63114f33efa04f5b3152fcaf347590e569ff46",
+      "expected": "b495159f901054d72f19a25add63114f33efa04f5b3152fcaf347590e569ff46",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/reference.py-unchanged",
+      "actual": "b5fd806ed8ce7ef2b80a692c1dc9af1a79cb6a78aefc9fc5aebc4f8328516e18",
+      "expected": "b5fd806ed8ce7ef2b80a692c1dc9af1a79cb6a78aefc9fc5aebc4f8328516e18",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/materials/run-reference-checks.py-unchanged",
+      "actual": "c65c439515c0fd67e2e575932b750aa374dd8c6c2cb50b3e44a9f95237919669",
+      "expected": "c65c439515c0fd67e2e575932b750aa374dd8c6c2cb50b3e44a9f95237919669",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/README.md-unchanged",
+      "actual": "a402a15b08d807fdd838fe0faaf6c6357331a52a00ff6cd3b0dd42e13b335b33",
+      "expected": "a402a15b08d807fdd838fe0faaf6c6357331a52a00ff6cd3b0dd42e13b335b33",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/c-t07-render.png-unchanged",
+      "actual": "86e120441f3bbcb9570286686a1ed31bb75c414245e05af9eb7a7a2a551a7711",
+      "expected": "86e120441f3bbcb9570286686a1ed31bb75c414245e05af9eb7a7a2a551a7711",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/exact-supported-sets.json-unchanged",
+      "actual": "5ba526f667bf77fca2340c3d62051c42aaf924d41596a602ddd655de515f823d",
+      "expected": "5ba526f667bf77fca2340c3d62051c42aaf924d41596a602ddd655de515f823d",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/findings.json-unchanged",
+      "actual": "551f5777d47aa1d9ef308fd8b15ddc694df03fc2d325fc2d1726cee9b247383e",
+      "expected": "551f5777d47aa1d9ef308fd8b15ddc694df03fc2d325fc2d1726cee9b247383e",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/independent-execution.json-unchanged",
+      "actual": "f901563f3c401d0bd2b738989b51b7da59231663d40acfd4adc9543fbfbeab23",
+      "expected": "f901563f3c401d0bd2b738989b51b7da59231663d40acfd4adc9543fbfbeab23",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/independent-probes.py-unchanged",
+      "actual": "ac36a314d306b328a8769c50a15f0e6b54f626eb0ca13d8c1e45d86a7c323f7d",
+      "expected": "ac36a314d306b328a8769c50a15f0e6b54f626eb0ca13d8c1e45d86a7c323f7d",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/per-case-review.json-unchanged",
+      "actual": "25d49d2b14df6f5f44b587316e2c42d4adb09e869647b6428a26502557b7f388",
+      "expected": "25d49d2b14df6f5f44b587316e2c42d4adb09e869647b6428a26502557b7f388",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/preservation-and-inputs.json-unchanged",
+      "actual": "04280ed80c0d5b27585d1fb5bf6431e821e7cfe8c8f177150a7a6dff21d0e1ed",
+      "expected": "04280ed80c0d5b27585d1fb5bf6431e821e7cfe8c8f177150a7a6dff21d0e1ed",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/render-observations.json-unchanged",
+      "actual": "6c43b74016b880e0b4c2aba0e714afcbcc535d23e574822d34e6a636dfc44b99",
+      "expected": "6c43b74016b880e0b4c2aba0e714afcbcc535d23e574822d34e6a636dfc44b99",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/render-probe.mjs-unchanged",
+      "actual": "98404131ff535d47705e22afaca181ab63d9dfb0498191a21f9319fd6143ea9d",
+      "expected": "98404131ff535d47705e22afaca181ab63d9dfb0498191a21f9319fd6143ea9d",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/source-boundary-review.json-unchanged",
+      "actual": "123bc5f5bd78d01941cbbc6f2a245227461bbb0614a0c257110538c4cd9a4b7a",
+      "expected": "123bc5f5bd78d01941cbbc6f2a245227461bbb0614a0c257110538c4cd9a4b7a",
+      "pass": true
+    },
+    {
+      "id": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-full-material-independent-review/write-review.py-unchanged",
+      "actual": "7d9641161af72fc6d95603a41067f4a7e680a391c1eccbb3e238426d2816b713",
+      "expected": "7d9641161af72fc6d95603a41067f4a7e680a391c1eccbb3e238426d2816b713",
+      "pass": true
+    },
+    {
+      "id": "active-informatics-source-unmodified",
+      "actual": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+      "expected": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+      "pass": true
+    }
+  ],
+  "rubricProbeLimit": "Finite hand-constructed review submissions with explicit expected judgments,backed by executed SQL;not a production grading framework or native scorer proof.",
+  "dclEvidence": "Actual PostgreSQL18 native GRANT/REVOKE and permission-denied SQLSTATE42501;isolated cluster stopped and removed.",
+  "renderEvidence": "Exact Python text read from actual GoalCard Chromium DOM compiled/executed with supplied fixture variables.",
+  "noMaterialApprovalOrLearnerResult": true
+}

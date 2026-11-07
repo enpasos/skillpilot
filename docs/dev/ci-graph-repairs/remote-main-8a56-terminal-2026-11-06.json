@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-06T22:14:37Z",
+  "head": "8a56a9788ff82902c52c62a42a15a8cd43ed073a",
+  "status": "terminal-main-CI-seven-jobs-pass-rationale-derived-output-stale",
+  "mainRun": {
+    "id": 42292698134,
+    "conclusion": "failure",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42292698134"
+  },
+  "mainJobs": [
+    {
+      "id": 128149942050,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128149942113,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128149942176,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128149942183,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128149942186,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128161034122,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Check Goal Source Rationale Coverage Report"
+      ]
+    },
+    {
+      "id": 128161034323,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128161034612,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    }
+  ],
+  "interpretation": {
+    "backendAndFrontendPassed": true,
+    "mathDurationCompositionViewsPassed": true,
+    "curriculumFailedAt": "Check Goal Source Rationale Coverage Report",
+    "strictDeepAndProtectedFloorStepsExecuted": false,
+    "localNativeRationaleRegenerationAndCheck": "pass; six removed Math prerequisites reflected as2460→2454; no source gap clearance or threshold change",
+    "newContainingHeadStillRequiresRemoteAcceptance": true
+  }
+}

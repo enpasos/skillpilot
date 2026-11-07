@@ -73,6 +73,17 @@ M7 erreicht =
 
 Die Berechnung erfolgt ausschließlich aus dem zentralen Fünf-Gate-Bericht und den zugehörigen Prüfungen. Es gibt keine zweite, unabhängig nachgebildete M7-Rechnung.
 
+Die technische V-Prüfung bindet qualifizierte Originalreviews an die tatsächlich
+begutachteten Zieltexte, den exakten Eigentümer und die Bildbytes. Ein fester
+externer Receiptindex und authentisierte historische Gitobjekte begrenzen die
+unterstützten Nachweisketten. Ein heutiger Ledgertext oder eine unveränderte
+Bilddatei allein erneuert keine frühere Inhaltsfreigabe. Nicht belegte oder
+abweichende Kontexte bleiben offen; vorhandene Scope-, AI-/Human- und
+Deferralregeln gelten weiterhin. Der direkte M7-Floorleser prüft denselben
+V-Nachweis gegen neu gelesene aktuelle Quellen und Assets, auch bei einem als
+M7 gespeicherten Bericht. Diese technische Qualifikation ist kein neues
+fachliches Bildreview.
+
 ### 3.2 Bedeutung von 100 %
 
 **100 % bedeutet vollständige Abdeckung des festgelegten QS-Verfahrens.** Es bedeutet weder garantierte Fehlerfreiheit noch vollständig nachgewiesene Unterrichtswirksamkeit.

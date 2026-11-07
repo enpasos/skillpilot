@@ -1,0 +1,63 @@
+270704 execve("/dev/shm/skillpilot-read-auth-native-u9gxrrso/producer", ["/dev/shm/skillpilot-read-auth-native-u9gxrrso/producer", "cwd-unbound", "/dev/shm/skillpilot-read-auth-native-u9gxrrso/outside/goal.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PWD=/dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate"]) = 0
+270704 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x70c16e2b2000
+270704 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+270704 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+270704 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x70c16e2a2000
+270704 close(3</etc/ld.so.cache>)       = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+270704 read(0x3, 0x7ffc815e9fc8, 0x340) = 0x340
+270704 pread64(0x3, 0x7ffc815e9bd0, 0x310, 0x40) = 0x310
+270704 pread64(0x3, 0x7ffc815e9b90, 0x30, 0x350) = 0x30
+270704 pread64(0x3, 0x7ffc815e9b40, 0x44, 0x380) = 0x44
+270704 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+270704 pread64(0x3, 0x7ffc815e9aa0, 0x310, 0x40) = 0x310
+270704 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x70c16e000000
+270704 mmap(0x70c16e028000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x70c16e028000
+270704 mmap(0x70c16e1bd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x70c16e1bd000
+270704 mmap(0x70c16e216000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x70c16e216000
+270704 mmap(0x70c16e21c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x70c16e21c000
+270704 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+270704 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x70c16e29f000
+270704 getcwd("/dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate", 4096) = 70
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "data", O_RDONLY|O_DIRECTORY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>
+270704 fcntl(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, F_DUPFD_CLOEXEC, 20) = 20</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>
+270704 openat(20</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, "goal.json", O_RDONLY) = 4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>
+270704 read(0x4, 0x7ffc815e8c10, 0x1000) = 0x73
+270704 close(4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>) = 0
+270704 clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x70c16e29fa10) = 270706
+270706 chdir("unselected")              = 0
+270706 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/unselected>, "goal.json", O_RDONLY) = 4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/unselected/goal.json>
+270706 read(0x4, 0x7ffc815e8bf0, 0x1000) = 0x20
+270706 close(4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/unselected/goal.json>) = 0
+270706 openat(20</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, "goal.json", O_RDONLY) = 4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>
+270706 read(0x4, 0x7ffc815e8c10, 0x1000) = 0x73
+270706 close(4</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>) = 0
+270706 exit_group(0)                    = ?
+270704 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=270706, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+270704 newfstatat(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, "", {st_dev=makedev(0, 0x41), st_ino=151248, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=4096, st_blocks=0, st_size=120, st_atime=1794007145 /* 2026-11-07T00:19:05.176454687+0100 */, st_atime_nsec=176454687, st_mtime=1794007145 /* 2026-11-07T00:19:05.177410341+0100 */, st_mtime_nsec=177410341, st_ctime=1794007145 /* 2026-11-07T00:19:05.177410341+0100 */, st_ctime_nsec=177410341}, AT_EMPTY_PATH) = 0
+270704 fcntl(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, F_GETFL) = 0x18000 (flags O_RDONLY|O_LARGEFILE|O_DIRECTORY)
+270704 fcntl(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, F_SETFD, FD_CLOEXEC) = 0
+270704 getdents64(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, [{d_ino=151248, d_off=1, d_reclen=24, d_type=DT_DIR, d_name="."}, {d_ino=151247, d_off=6, d_reclen=24, d_type=DT_DIR, d_name=".."}, {d_ino=151257, d_off=5, d_reclen=40, d_type=DT_REG, d_name="required.config.json"}, {d_ino=151256, d_off=4, d_reclen=32, d_type=DT_REG, d_name="\303\244.json"}, {d_ino=151255, d_off=3, d_reclen=40, d_type=DT_REG, d_name="space name.json"}, {d_ino=151254, d_off=2147483647, d_reclen=32, d_type=DT_REG, d_name="goal.json"}], 32768) = 192
+270704 getdents64(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>, [], 32768) = 0
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "alias/goal.json", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0x73
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/goal.json>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "data/space name.json", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/space name.json>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0x6
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/space name.json>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "data/\303\244.json", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/\303\244.json>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0x5
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data/\303\244.json>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "tool/input.txt", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/tool/input.txt>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0xd
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/tool/input.txt>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "dependency/input.txt", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/dependency/input.txt>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0x13
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/dependency/input.txt>) = 0
+270704 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate>, "reports/generated.txt", O_RDONLY) = 3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/reports/generated.txt>
+270704 read(0x3, 0x7ffc815e8bf0, 0x1000) = 0x13
+270704 close(3</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/reports/generated.txt>) = 0
+270704 close(20</dev/shm/skillpilot-read-auth-native-u9gxrrso/case-4sekdhli/candidate/data>) = 0
+270704 exit_group(0)                    = ?

@@ -1,0 +1,389 @@
+[
+  {
+    "id": "ea2ce31f-a0c7-5102-9213-ee1db5b2d475",
+    "type": "atomic",
+    "title": "Schul-AG: Webabruf erklären und absichern",
+    "titleEn": "School club: explain and protect a web request",
+    "description": "Die lernende Person kann an einer vollständigen Netzskizze und HTTP-Spur Netzkomponenten, Namensauflösung, Protokollschichten und Client-Server-Kommunikation erklären sowie die Risiken von unverschlüsselter Übertragung und Tokenprotokollierung begründet beurteilen.",
+    "descriptionEn": "The learner can explain network components, name resolution, protocol layers and client-server communication using a complete network diagram and HTTP trace, and assess the risks of unencrypted transmission and token logging.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "phase": "E",
+    "contains": [],
+    "requires": [
+      "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+      "ace0c141-9e7c-546e-914f-64c24d42d85d",
+      "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-informatics",
+      "phase": "E",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "I4",
+        "I5"
+      ]
+    },
+    "extendedData": {
+      "routeTerminal": true,
+      "provenance": {
+        "sourceLandscapeTitle": "Own local HE-compatible E material design; no official exam",
+        "sourceGoalId": "private-e-material-netz-20261107"
+      }
+    },
+    "examData": {
+      "reviewStatus": "draft",
+      "coveredGoalIds": [
+        "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+        "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+        "ace0c141-9e7c-546e-914f-64c24d42d85d",
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ],
+      "coveredStrands": [
+        "I4",
+        "I5"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "# Schul-AG: Einen Webabruf erklären und absichern\n\nDies ist ein abgeschlossener Modellfall. Alle Adressen, Namen, Personenkennungen und Tokens sind erfunden. Es werden keine fremden Systeme angesprochen. Die Netze sind in der Zeichnung bereits korrekt verbunden; Subnetzberechnungen, Paketzerlegung, Kryptoverfahren und Serverimplementierung sind nicht verlangt.\n\n## Material N1: Netz und Dienst\n\n```text\nSchul-LAN                              andere Netze\nNotebook A ── Switch S ── Router R ── Internet ── Webserver W\n                 │                       └────── DNS-Server D\n             Drucker P\n\nA: 192.0.2.10   P: 192.0.2.20   R im Schul-LAN: 192.0.2.1\nD: 198.51.100.53               W: 203.0.113.20\n```\n\nDer Browser auf A soll `http://ag.schule.test/status` öffnen. Die Browser- und Betriebssystem-Caches sind leer. Für diesen Fall antwortet D auf die DNS-Anfrage nach `ag.schule.test` mit `203.0.113.20`. Anschließend besteht eine TCP-Verbindung von A zu Port 80 auf W. Die lokale Kabelverbindung verwendet Ethernet. Die DNS-Anfrage verwendet hier UDP. Diese Annahmen gelten nur für den Modellfall.\n\nW bietet den Dienst „freie AG-Plätze anzeigen“ an. Ein fiktiver, vorher ausgegebener Bearer-Token wird als Zugangsberechtigung geprüft. W akzeptiert `DEMO-NUR-AUFGABE`; ohne akzeptierten Token liefert W `401 Unauthorized`. Besitz dieses Tokens ist keine verlässliche Identifikation einer bestimmten Person.\n\n## Material N2: Vollständiger fachlich relevanter Ausschnitt\n\nDie folgenden Zeilen wurden nach Aufbau der Verbindung aufgezeichnet. Nicht abgedruckte Transportdetails sind nicht Gegenstand der Aufgabe.\n\n```http\nGET /status HTTP/1.1\nHost: ag.schule.test\nAuthorization: Bearer DEMO-NUR-AUFGABE\n\nHTTP/1.1 200 OK\nContent-Type: text/plain; charset=utf-8\nConnection: close\n\nFreie AG-Plaetze: 4\n```\n\nDanach enthält das Serverlog folgende Zeile:\n\n```text\n10:00:01 client=192.0.2.10 path=/status status=200 token=DEMO-NUR-AUFGABE\n```\n\nDer Modellabruf verwendet unverschlüsseltes HTTP. Eine Person mit Zugriff auf die entsprechende unverschlüsselte Übertragungsstrecke kann diese Anwendungsdaten mitlesen. Die Administrationsgruppe kann das Serverlog lesen.\n\n## Arbeitsauftrag\n\n1. Erklären Sie am gezeichneten Abruf die Aufgaben von Notebook/Browser, Switch, Router, DNS-Server und Webserver. Unterscheiden Sie einen Weg zum lokalen Drucker von einem Weg zum Webserver. (3 Kriterien)\n2. Erklären Sie den Unterschied zwischen Domainname und IP-Adresse und die DNS-Auflösung im Fall. Ordnen Sie HTTP und DNS, TCP und UDP, IP sowie Ethernet den vier Schichten des TCP/IP-Modells zu. Erklären Sie an diesem Abruf, weshalb DNS allein noch keine Webseite liefert. (3 Kriterien)\n3. Erläutern Sie Dienst, Protokoll und Client-/Serverrolle am Ausschnitt. Interpretieren Sie Pfad, Status `200` und Nutzdaten. Sagen Sie begründet voraus, was W laut Material bei einem fehlenden Token liefert. (3 Kriterien)\n4. Erläutern Sie zwei verschiedene Risiken: das Mitlesen des HTTP-Abrufs und das gespeicherte Token im Log. Nennen Sie jeweils eine passende Gegenmaßnahme und eine Grenze dieser Maßnahme. Beurteilen Sie die Aussage: „Status 200 beweist, welche Person den Abruf ausgelöst hat.“ (3 Kriterien)\n\nAbgabe: beschriftete Netzskizze oder eindeutige Textzuordnung, Schichtentabelle und begründete Antworten. Jede richtige gleichwertige Darstellung ist zulässig. Ein Detailfehler wird nicht allein wegen unüblicher Formulierung unterstellt.\n",
+      "solutionContent": "# Lösung und Rubrik: Webabruf\n\n**N1, 3 Kriterien:** (1) Browser ist anfragender Client, W stellt den Webdienst bereit; Hardwareknoten und Programmrollen werden unterschieden. (2) S verbindet Endgeräte im lokalen Netz, R verbindet dieses mit anderen Netzen. Der lokale Druckerweg A–S–P benötigt R in dieser Skizze nicht, W wird über A–S–R–Internet–W erreicht. (3) D liefert die Namensauflösung; A erreicht D hier ebenfalls über S und R. W und D sind unterschiedliche Dienste, auch wenn solche Dienste allgemein auf derselben Maschine laufen könnten.\n\n**N2, 3 Kriterien:** (1) `ag.schule.test` ist der benutzbare Domainname, `203.0.113.20` die von D gelieferte IP-Adresse von W; eine IP-Adresse identifiziert keine verlässliche Person. (2) Anwendung: HTTP/DNS; Transport: TCP/UDP; Internet: IP; Netzzugang: Ethernet. Andere gebräuchliche deutsche Namen für dieselben vier Schichten zählen. (3) DNS beantwortet die Namensfrage, die Inhalte folgen erst im getrennten HTTP-Dialog über TCP. Die angegebene Transportwahl für DNS ist eine Fallannahme, keine Behauptung, DNS verwende stets UDP.\n\n**N3, 3 Kriterien:** (1) Dienst ist hier die Platzanzeige; HTTP ist die Regelmenge der Nachrichten, der Browser fragt an und W antwortet. (2) `GET /status` fordert die Ressource an; `200 OK` meldet eine erfolgreiche Bearbeitung, der Body nennt vier freie Plätze. Ein erfolgreicher Transport allein garantiert keine richtige Geschäftslogik. (3) Ohne akzeptierten Token antwortet dieser Server mit `401 Unauthorized`; das ist die explizite Fallregel und keine aus HTTP allgemein ableitbare Implementierung jeder Webseite.\n\n**N4, 3 Kriterien:** (1) Mitlesen offenbart Platzanzeige und wiederverwendbaren Zugangstoken; korrekt eingesetztes HTTPS schützt die Übertragung auf dieser Strecke gegen bloßes Mitlesen. Es verschlüsselt nicht automatisch die gespeicherten Serverlogs und verhindert keinen Zugriff am entsperrten Endgerät. (2) Token im Log kann Berechtigung an Loglesende weitergeben; keine rohen Tokens loggen, stattdessen zweckgebundene Ereignis-/Statusdaten, Zugriff und Aufbewahrung begrenzen. Das ersetzt keine Transportverschlüsselung. (3) Ein akzeptierter Token belegt die präsentierte Berechtigung, nicht zwingend die Person: ein kopierter Token kann denselben Erfolg auslösen. `200` ist erst recht kein Identitätsbeweis.\n\n**Bewertung:** 12 binäre Mindestkriterien, je 1 Punkt; bestanden bei 12/12. Ein Punkt bedeutet, dass die genannte fachliche Mindestleistung erkennbar korrekt ist, nicht perfekte Wortwahl. Die fachlich unabhängigen Kriterien werden nicht untereinander kompensiert. Bei fehlender Leistung erfolgt eine gezielte neue Bearbeitung, keine Anerkennung der gesamten Vierer-Coverage durch Punkte in einem anderen Teil.\n\n**Gegenfälle:** „DNS liefert die Seite“ verfehlt N2.3; „Switch ist der Zugang ins Internet“ verfehlt N1.2; „HTTPS verschlüsselt auch das vorhandene Log“ verfehlt N4.1; „POST/Token/Status200 beweisen die Person“ verfehlt N4.3. Ein bloßes Benennen von HTTPS ohne passendes Risiko und Grenze genügt N4.1 nicht. Paketsegmentierung, POP3/SMTP, Passwörter, RSA und Angriffsprogramme werden weder verlangt noch durch diese Aufgabe anerkannt.\n",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 12,
+        "steps": [
+          {
+            "id": "N1.1",
+            "points": 1,
+            "description": "Client/Serverprogramme und Geräte korrekt unterscheiden"
+          },
+          {
+            "id": "N1.2",
+            "points": 1,
+            "description": "Switch/Router und zwei tatsächliche Wege erklären"
+          },
+          {
+            "id": "N1.3",
+            "points": 1,
+            "description": "DNS-Dienst und seinen Weg zuordnen"
+          },
+          {
+            "id": "N2.1",
+            "points": 1,
+            "description": "Namen/IP-Adressen und konkrete Auflösung erklären"
+          },
+          {
+            "id": "N2.2",
+            "points": 1,
+            "description": "Vier Schichten mit allen gegebenen Protokollen korrekt zuordnen"
+          },
+          {
+            "id": "N2.3",
+            "points": 1,
+            "description": "Namensauflösung von Inhaltsabruf unterscheiden"
+          },
+          {
+            "id": "N3.1",
+            "points": 1,
+            "description": "Dienst/Protokoll/Rollen am konkreten Dialog erklären"
+          },
+          {
+            "id": "N3.2",
+            "points": 1,
+            "description": "Pfad, Status und Nutzdaten korrekt interpretieren"
+          },
+          {
+            "id": "N3.3",
+            "points": 1,
+            "description": "Fehlenden Token nach konkretem Serververtrag beurteilen"
+          },
+          {
+            "id": "N4.1",
+            "points": 1,
+            "description": "Mitleserisiko, HTTPS-Gegenmaßnahme und Grenze begründen"
+          },
+          {
+            "id": "N4.2",
+            "points": 1,
+            "description": "Logrisiko, passende Gegenmaßnahme und Grenze begründen"
+          },
+          {
+            "id": "N4.3",
+            "points": 1,
+            "description": "Tokenbesitz/Status von verlässlicher Personenidentität unterscheiden"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "c24236b2-d783-53be-84d5-96b4f4ef8159",
+    "type": "atomic",
+    "title": "Schul-AG: HTML-Formular und Grundlayout reparieren",
+    "titleEn": "School club: repair an HTML form and basic layout",
+    "description": "Die lernende Person kann ein vollständiges HTML-Dokument mit Formular eigenständig korrigieren und erweitern, dessen Elementbaum darstellen, ein einfaches einspaltiges CSS-Grid gestalten und die Datenübergabe per GET und POST erklären.",
+    "descriptionEn": "The learner can correct and extend a complete HTML document with a form, represent its element tree, create a simple one-column CSS grid and explain data transfer using GET and POST.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "phase": "E",
+    "contains": [],
+    "requires": [
+      "1a03f790-a88f-57af-a618-80249960b63b",
+      "2897717b-e143-540d-9c7a-6d2120807675",
+      "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-informatics",
+      "phase": "E",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "I2",
+        "I3",
+        "I4"
+      ]
+    },
+    "extendedData": {
+      "routeTerminal": true,
+      "provenance": {
+        "sourceLandscapeTitle": "Own local HE-compatible E material design; no official exam",
+        "sourceGoalId": "private-e-material-web-20261107"
+      }
+    },
+    "examData": {
+      "reviewStatus": "draft",
+      "coveredGoalIds": [
+        "757256e2-eb59-572f-a403-e1b1d53e37d4",
+        "1a03f790-a88f-57af-a618-80249960b63b",
+        "2897717b-e143-540d-9c7a-6d2120807675",
+        "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03"
+      ],
+      "coveredStrands": [
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "taskContent": "# Schul-AG: Ein Formular nachvollziehbar reparieren\n\nDie Seite läuft in einem lokalen Übungsrahmen. Es gibt keine echten Anmeldungen. Der folgende Serververtrag ist vollständig für diese Aufgabe: `POST /anmeldung` nimmt `application/x-www-form-urlencoded` mit den Feldern `name` und `termin` entgegen; bei dem Beispiel `name=Lea&termin=fr` antwortet er mit `200 OK` und `Anfrage empfangen`. Er bucht keine Plätze. Kein JavaScript und kein eigener Servercode sind für diese Aufgabe nötig.\n\n## Material W1: Fehlerhafter Ausgangsstand\n\n```html\n<!doctype html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>AG-Anfrage</title>\n  <link rel=\"stylesheet\" href=\"ag.css\">\n</head>\n<body>\n  <main>\n    <h1>AG-Anfrage</h1>\n    <p>Informationen stehen bei <a href=\"/info\">unserer AG</a>.</p>\n    <form action=\"/anmeldung\" method=\"get\">\n      <div class=\"feld\">\n        <label for=\"person\">Name</label>\n        <input id=\"person\" type=\"text\" required>\n      </div>\n      <div class=\"feld\">\n        <label for=\"termin\">Termin</label>\n        <select id=\"termin\" name=\"termin\">\n          <option value=\"do\">Donnerstag</option>\n          <option value=\"fr\">Freitag</option>\n        </select>\n      </div>\n      <button type=\"submit\">Anfragen</button>\n    </form>\n  </main>\n</body>\n</html>\n```\n\n```css\n/* ag.css */\nbody { font-family: sans-serif; }\n#feld { margin-bottom: 0.75rem; }\nform { display: block; }\n```\n\n## Arbeitsauftrag\n\n1. Geben Sie ein vollständiges korrigiertes HTML-Dokument ab. Ergänzen Sie vor dem Formular einen mit `h2` überschriebenen Abschnitt mit einer ungeordneten Liste der beiden Termine. Verwenden Sie weiterhin `main`, gültige Verschachtelung, den vorhandenen Hyperlink und zwei verschiedene Eingabeelementtypen. Das Formular muss den genannten Serververtrag erfüllen. Erläutern Sie am Namenfeld den Unterschied zwischen `id` und `name`. (3 Kriterien)\n2. Zeichnen Sie den Elementbaum Ihres `main`-Elements bis einschließlich `input`, `select`, dessen `option`-Elementen und dem Button. Textknoten müssen nicht eingezeichnet werden. Begründen Sie die Eltern-Kind-Beziehungen zwischen Formular, Feldgruppen und Eingabeelementen. (2 Kriterien)\n3. Korrigieren und ergänzen Sie die CSS-Datei: serifenlose Schrift; `main` mit höchstens `36rem` Breite, automatisch gleichen Außenrändern links/rechts und `1rem` Innenabstand; das Formular als **einspaltiges** Grid mit `0.75rem` Abstand zwischen seinen direkten Kindern; jede `.feld`-Gruppe mit Label oberhalb des Eingabeelements. Erläutern Sie Klasse und ID am fehlerhaften Selektor `#feld`. Keine Breakpoints, zweite Layoutvariante oder Responsive-Spezialleistung sind verlangt. (3 Kriterien)\n4. Nehmen Sie die Eingabe `Lea`, Auswahl `Freitag`. Schreiben Sie die resultierenden Feld-Wert-Paare und den Anfragebody in der vorhandenen Reihenfolge. Vergleichen Sie damit die Query einer entsprechenden GET-Anfrage. Begründen Sie, weshalb POST allein keine Verschlüsselung gewährleistet. (2 Kriterien)\n\nAbgabe: vollständiges HTML, vollständiges CSS, Baum und kurze Erläuterungen. Die Dokumente müssen aus den Angaben allein rekonstruierbar sein. Exakte Einrückung oder zusätzliche sinnvolle Attribute sind keine Pflicht.\n",
+      "solutionContent": "# Lösung und Rubrik: Formular\n\nDie beigefügten `web-solution.html` und `web-solution.css` sind eine vollständige Musterlösung. Der HTML-Link auf `/info` bleibt eine vorgegebene Zieladresse; diese Aufgabe benötigt keine zusätzliche Infoseite. Der lokale Server wird nicht implementiert.\n\n**W1, 3 Kriterien:** (1) Vollständiges korrekt verschachteltes HTML mit Grundgerüst, `main`, Überschriften, `section`, Liste und Hyperlink. (2) Formular mit `action=\"/anmeldung\"`, `method=\"post\"`, Textfeld `name=\"name\"`, Auswahlfeld `name=\"termin\"`, passenden Labels und Submitbutton. (3) `id` identifiziert ein Element im Dokument und dient hier der Labelzuordnung; `name` benennt den übertragenen Formularwert. Allein `id=\"person\"` sendet keinen `name`-Wert.\n\n**W2, 2 Kriterien:** (1) Baum enthält korrekt `main -> h1,p,section,form`, `p -> a`, `section -> h2,ul`, `ul -> li,li`. (2) `form -> div,div,button`; erstes `div -> label,input`; zweites `div -> label,select`; `select -> option,option`. Eine gleichwertige andere gültige eigene HTML-Lösung erhält ihren dazu passenden Baum. Geschwister sind keine Unterelemente voneinander.\n\n**W3, 3 Kriterien:** (1) Korrekte Grundtypografie und `main`-Breite, Innenabstand, automatische horizontale Außenränder. (2) `form` verwendet `display:grid`, eine Spalte und den verlangten Gap; die Feldgruppen ordnen Label und Eingabe untereinander. (3) `.feld` trifft beide Klassenmitglieder, `#feld` hätte nur ein Element mit `id=\"feld\"` getroffen, das im Ausgangsdokument gar nicht vorhanden ist. Andere passende einfache CSS-Lösungen zählen, solange der verlangte Grundgrid wirklich benutzt wird.\n\n**W4, 2 Kriterien:** (1) Übertragung `name=Lea&termin=fr`; POST-Body enthält diese Zeichenfolge bei `Content-Type: application/x-www-form-urlencoded`; bei GET lägen die gleichen Daten in `/anmeldung?name=Lea&termin=fr`. Der Button besitzt keinen Namen und erzeugt hier kein eigenes Feld. (2) GET/POST regeln unter anderem Anfrageform/-semantik, sind keine Verschlüsselung. Beide brauchen für geschützten Transport HTTPS; sensible Daten können außerdem in Logs, Endgeräten oder Serveranwendungen sichtbar bleiben. W1 benutzt POST wegen des konkret festgelegten Serververtrags, nicht weil POST an sich geheim wäre.\n\n**Bewertung:** 10 binäre Mindestkriterien, je 1 Punkt; bestanden bei 10/10. Die vier abgedeckten Kompetenzen werden dadurch nicht gegeneinander ausgeglichen. Stilpräferenzen und unnötige Zusatzfeatures sind keine Kriterien.\n\n**Gegenfälle:** Nur `method` ändern lässt den Namen verschwinden; nur `id=\"name\"` ergänzt weiterhin keinen Übertragungsnamen. Der Baum `input -> label` ist falsch. Ein funktionierender Blocksatz ohne Grid erfüllt W3.2 nicht. Ein Grid mit zwei Spalten statt der verlangten einen ist kein korrekter Ersatz. „POST ist verschlüsselt“ verfehlt W4.2. Dieses einfache Grid prüft keine Anpassung an unterschiedliche Viewports; das weitergehende kanonische Ziel `f15d09fd...` wird nicht anerkannt.\n\n```html\n<!doctype html>\n<html lang=\"de\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>AG-Anfrage</title>\n  <link rel=\"stylesheet\" href=\"web-solution.css\">\n</head>\n<body>\n  <main>\n    <h1>AG-Anfrage</h1>\n    <p>Informationen stehen bei <a href=\"/info\">unserer AG</a>.</p>\n    <section>\n      <h2>Termine</h2>\n      <ul><li>Donnerstag</li><li>Freitag</li></ul>\n    </section>\n    <form action=\"/anmeldung\" method=\"post\">\n      <div class=\"feld\">\n        <label for=\"person\">Name</label>\n        <input id=\"person\" name=\"name\" type=\"text\" required>\n      </div>\n      <div class=\"feld\">\n        <label for=\"termin\">Termin</label>\n        <select id=\"termin\" name=\"termin\">\n          <option value=\"do\">Donnerstag</option>\n          <option value=\"fr\">Freitag</option>\n        </select>\n      </div>\n      <button type=\"submit\">Anfragen</button>\n    </form>\n  </main>\n</body>\n</html>\n```\n\n```css\nbody { font-family: sans-serif; }\nmain { max-width: 36rem; margin: 0 auto; padding: 1rem; }\nform { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }\n.feld { display: grid; grid-template-columns: 1fr; gap: 0.25rem; }\n```\n",
+      "scoring": {
+        "maxPoints": 10,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "W1.1",
+            "points": 1,
+            "description": "Vollständiges semantisch strukturiertes und korrekt verschachteltes HTML erstellen"
+          },
+          {
+            "id": "W1.2",
+            "points": 1,
+            "description": "Formular mit zwei Eingabetypen nach Serververtrag implementieren"
+          },
+          {
+            "id": "W1.3",
+            "points": 1,
+            "description": "id und Übertragungsname am konkreten Element unterscheiden"
+          },
+          {
+            "id": "W2.1",
+            "points": 1,
+            "description": "Oberen Elementbaum korrekt modellieren"
+          },
+          {
+            "id": "W2.2",
+            "points": 1,
+            "description": "Formularbaum einschließlich Optionen korrekt modellieren"
+          },
+          {
+            "id": "W3.1",
+            "points": 1,
+            "description": "Grundtypografie, Breite und Abstände implementieren"
+          },
+          {
+            "id": "W3.2",
+            "points": 1,
+            "description": "Einspaltiges Grid und Feldgruppenlayout implementieren"
+          },
+          {
+            "id": "W3.3",
+            "points": 1,
+            "description": "Klassen- und ID-Selektor fachlich unterscheiden"
+          },
+          {
+            "id": "W4.1",
+            "points": 1,
+            "description": "POST-Body und entsprechende GET-Query korrekt herleiten"
+          },
+          {
+            "id": "W4.2",
+            "points": 1,
+            "description": "Transportverschlüsselung von GET/POST unterscheiden"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "6aa77baf-a199-5c66-b07c-8dc23439acca",
+    "type": "atomic",
+    "title": "Schul-AG: Buchungslogik implementieren und testen",
+    "titleEn": "School club: implement and test booking logic",
+    "description": "Die lernende Person kann vorgegebenen fehlerhaften Code anhand eines vollständigen Vertrags in eine reine Auswertungsfunktion und eine zustandsändernde Buchungsmethode zerlegen und korrigieren, eine gegebene Ereignishülle zur Ein-/Ausgabe ergänzen sowie Normal-, Grenz-, Fehler- und Folgetests tatsächlich ausführen und dokumentieren.",
+    "descriptionEn": "The learner can correct and decompose faulty code under a complete contract into a pure evaluation function and a state-changing booking method, complete a supplied event handler for input/output, and execute and document normal, boundary, invalid-input and sequential tests.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment"
+    ],
+    "phase": "E",
+    "contains": [],
+    "requires": [
+      "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+      "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+      "8f1a342c-5976-5473-b0ee-c0180afd5861",
+      "a45e73d2-db0d-50b0-a984-44a5315474ce"
+    ],
+    "applicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-informatics",
+      "phase": "E",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "I1",
+        "I3",
+        "I4"
+      ]
+    },
+    "extendedData": {
+      "routeTerminal": true,
+      "provenance": {
+        "sourceLandscapeTitle": "Own local HE-compatible E material design; no official exam",
+        "sourceGoalId": "private-e-material-code-20261107"
+      }
+    },
+    "examData": {
+      "reviewStatus": "draft",
+      "coveredGoalIds": [
+        "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+        "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+        "5ca1960e-6b02-5679-b271-043a5c29b189",
+        "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+        "d5914986-fba8-56cc-99be-d9560ac7666d",
+        "8f1a342c-5976-5473-b0ee-c0180afd5861",
+        "a45e73d2-db0d-50b0-a984-44a5315474ce"
+      ],
+      "coveredStrands": [
+        "I1",
+        "I3",
+        "I4"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2",
+        "AB3"
+      ],
+      "taskContent": "# Schul-AG: Kleine Buchungslogik korrigieren und prüfen\n\nDies ist eine reine lokale Übung; keine echte Buchung, Serververbindung oder Datenbank. Eine AG hat 6 Plätze, 2 sind schon belegt. Das bereitgestellte Objekt `plan` trägt genau diesen Zustand. Ein Klick auf den Button soll `plan.buche(...)` aufrufen und den Rückgabestring in das Ausgabelabel schreiben. Die GUI-Elemente und Ereignishülle sind gegeben; Sie ergänzen die Ein-/Ausgabe. Sie müssen weder Klassen entwerfen noch einen Server programmieren.\n\n## Vollständiger Funktionsvertrag\n\nEine Eingabe besteht aus einer oder mehreren durch Kommas getrennten Gruppengrößen. Jeder Teil wird durch `Number(teil)` konvertiert und muss eine ganze Zahl zwischen 1 und 6 sein. Leere und nur aus Leerzeichen bestehende Teile sind ungültig. Alle von `Number` akzeptierten Darstellungen dieser Zahlen sind hier erlaubt. Es gibt absichtlich keine Beschränkung auf eine Ziffernschreibweise. `Number.isInteger(...)` ist vorgegeben als Prüfung auf eine endliche ganze Zahl. `split(\",\")` liefert ein Feld von Zeichenketten; `trim()` entfernt äußere Leerzeichen.\n\nDie gesamte Anfrage wird atomar behandelt: Entweder alle Gruppen passen zusammen auf die noch freien Plätze oder keine wird gebucht. Teilbuchungen sind unzulässig. Bei ungültiger Eingabe lautet das Ergebnis exakt `Ungültige Eingabe.`; bei zu wenig Platz `Nicht genug Plätze.`. In beiden Fällen bleiben die belegten Plätze unverändert. Andernfalls erhöht sich `plan.belegt` um die Summe, und die Rückgabe lautet beispielsweise `Gebucht: 3; frei: 1`. Genaues Füllen ist erlaubt. Ein neuer Klick arbeitet auf dem aktuellen Objektzustand weiter.\n\n## Material P1: Vollständig ausführbare, fehlerhafte Buchungsfunktion\n\n```javascript\nconst plan = {\n  kapazitaet: 6,\n  belegt: 2,\n  buche(eingabe) {\n    let summe = 0;\n    for (const teil of eingabe.split(\",\")) {\n      const n = Number(teil);\n      if (teil.trim() === \"\" || !Number.isInteger(n) || n < 1 || n > 6) {\n        return \"Ungültige Eingabe.\";\n      }\n      summe = summe + teil;\n    }\n    if (summe >= this.kapazitaet - this.belegt) {\n      return \"Nicht genug Plätze.\";\n    }\n    this.belegt = summe;\n    return \"Gebucht: \" + summe + \"; frei: \" + (this.kapazitaet - this.belegt);\n  }\n};\n```\n\n## Material P2: Gegebene Benutzeroberfläche\n\n```html\n<label for=\"gruppen\">Gruppengrößen</label>\n<input id=\"gruppen\" type=\"text\" value=\"2,1\">\n<button id=\"buchen\" type=\"button\">Buchen</button>\n<output id=\"antwort\" aria-live=\"polite\"></output>\n```\n\n```javascript\ndocument.querySelector(\"#buchen\").addEventListener(\"click\", () => {\n  // Ergänzen Sie hier Einlesen, Methodenaufruf und Ausgabe.\n});\n```\n\nAPI-Hilfe: `document.querySelector(\"#gruppen\").value` liest den aktuellen Text als String. Durch Zuweisung an `document.querySelector(\"#antwort\").textContent` wird Text ausgegeben. Die vorgegebene Ereignishülle führt den ergänzten Code bei jedem Klick neu aus. Andere DOM- oder HTML-Kenntnisse sind hier nicht erforderlich.\n\n## Arbeitsauftrag\n\n1. Führen Sie den Ausgangscode für `2,1` schrittweise aus. Halten Sie mit einem tatsächlichen Konsolen-Trace oder Debugger-Watch nach jedem Schleifendurchlauf `teil`, `n`, `summe` und den Datentyp von `summe` fest. Erklären Sie Ursache und Auswirkung des Fehlers. Finden Sie außerdem einen Eingabefall, der das Grenzproblem der Platzprüfung zeigt, sowie den Fehler bei der Zustandsänderung. (3 Kriterien)\n2. Korrigieren und zerlegen Sie den Code in eine Funktion `summeAnfragen(eingabe)`, die die Zahlensumme oder `null` zurückgibt und keine Zustände verändert, und die Methode `plan.buche(eingabe)`, die diese Funktion aufruft, die Kapazität prüft und gegebenenfalls den Objektzustand verändert. Geben Sie den vollständigen lauffähigen Code und einen kurzen Ablaufplan in Worten oder als Struktogramm ab. Begründen Sie die Wahl der Parameter, Rückgaben und die Trennung der beiden Aufgaben. (4 Kriterien)\n3. Ergänzen Sie die Ereignishülle um lauffähige Ein-/Ausgabe. Erklären Sie an einem Klick mit `2,1` den Datenfluss vom Textfeld über Funktionsparameter und Rückgabe bis zum Ausgabeelement. Nennen Sie die belegten und freien Plätze vor/nach dem Klick und nach einem weiteren Klick mit `1`. Begründen Sie, weshalb `this.belegt` ein Objektzustand ist und weshalb reine lokale Summenänderungen den Zustand noch nicht buchen. (2 Kriterien)\n4. Planen und führen Sie mindestens folgende Tests aus. Dokumentieren Sie für jeden Test Anfangszustand, Eingabe, erwartete Ausgabe/Endzustand, tatsächliche Ausgabe/Endzustand und Befund: normale Mehrfachgruppe, genaues Füllen, Überbuchung, fehlerhafte Eingabe einschließlich leerem Teil, Randwerte 1 und 6, aufeinanderfolgende Klicks und abgelehnte Anfrage ohne Teilbuchung. Verwenden Sie frische Objekte, wenn nicht ausdrücklich eine Folge geprüft wird. Zeigen Sie mindestens einen fehlgeschlagenen Ausgangstest und denselben erfolgreichen Test nach der Reparatur. (3 Kriterien)\n\nAbgabe: Trace, korrigierter Code, Ablauf-/Schnittstellenerklärung und tatsächliches Testprotokoll. Programmiersprache dieses eigenen Übungsangebots ist JavaScript; daraus folgt keine Festlegung der Programmiersprache einer hessischen Schule. Gleichwertiger lauffähiger Code zählt, sofern die gegebenen Schnittstellen eingehalten werden. Die Übung prüft keine objektorientierte Modellierung oder Klassenhierarchie.\n",
+      "solutionContent": "# Lösung und Rubrik: Buchungslogik\n\n`code-solution.mjs` ist die vollständige lauffähige Musterlösung; die Factory erzeugt lediglich frische Testobjekte. Für die gegebene Benutzeroberfläche wird deren `plan` verwendet. Keine Eingabe wird an einen Server gesendet.\n\n**P1, 3 Kriterien:** (1) Tatsächlicher Trace für `2,1`: nach erstem Durchlauf `teil=\"2\"`, `n=2`, `summe=\"02\"`, Typ `string`; nach zweitem `teil=\"1\"`, `n=1`, `summe=\"021\"`, Typ `string`. Der Operator addiert hier eine Zeichenkette an; beim Vergleich wird `\"021\"` als 21 interpretiert, daher ungerechtfertigte Ablehnung. Die Korrektur summiert `n`. (2) Eingabe `4` füllt bei Anfangsbelegung 2 genau 6 Plätze; `>=` lehnt diese zulässige Grenze ab, `>` ist richtig. (3) `this.belegt = summe` überschreibt frühere Belegung und kann im Ausgangscode sogar einen String speichern; erforderlich ist die numerische Erhöhung um die neue Summe.\n\n**P2, 4 Kriterien:** (1) `summeAnfragen` iteriert über das ganze Eingabefeld, konvertiert jeden Teil, prüft Leere/Ganzzahligkeit/1–6 und liefert bei irgendeinem ungültigen Teil `null`; keine zustandsändernde Teilbuchung. (2) Gültige Teile werden numerisch aufsummiert und die vollständige Summe zurückgegeben. (3) `buche` übergibt den Eingabestring, nutzt den Rückgabewert, unterscheidet `null` von Zahlen, prüft die aktuelle freie Kapazität und lässt den Zustand bei Ablehnung unverändert; genaues Füllen ist erlaubt. (4) Der vollständige korrigierte Code läuft; Ablaufplan/Schnittstellenerklärung begründen die reine Auswertung getrennt von zustandsabhängiger Buchung. Eine bloße Übernahme zweier Funktionsnamen ohne funktionierende Zerlegung genügt nicht.\n\n**P3, 2 Kriterien:** (1) Die selbst ergänzte Ereignishülle liest tatsächlich einen String aus dem Textfeld, übergibt ihn an `buche` und weist den Nachrichtentext `textContent` zu. Die Erklärung stimmt damit überein: `buche` nutzt die Rückgabe der Auswertungsfunktion. Nummer, String, Feld und Wahrheitsausdruck werden an ihren tatsächlichen Verwendungen unterschieden. (2) Nach `2,1`: `belegt=5`, frei=1, Ausgabe `Gebucht: 3; frei: 1`; nach anschließendem `1`: `belegt=6`, frei=0, Ausgabe `Gebucht: 1; frei: 0`. Die Objektzuweisung bleibt über Aufrufe erhalten, die lokale Summe wird je Aufruf neu berechnet. Reine Änderung einer lokalen Zahl ändert `plan.belegt` nicht.\n\nVollständige Ergänzung der Ereignishülle:\n\n```javascript\ndocument.querySelector(\"#buchen\").addEventListener(\"click\", () => {\n  const eingabe = document.querySelector(\"#gruppen\").value;\n  document.querySelector(\"#antwort\").textContent = plan.buche(eingabe);\n});\n```\n\n**P4, 3 Kriterien:** (1) Der Testplan begründet Normalfall, Grenzen und Fehlerklassen einschließlich leerem Teil; nicht nur drei ähnliche Erfolgseingaben. (2) Tatsächliches Protokoll enthält Erwartung und Beobachtung für Ausgabe **und** Zustand, frische Ausgangszustände sowie die Klickfolge. Ablehnung von `2,3` bei Belegung2 darf nicht erst zwei Plätze buchen und danach ablehnen. (3) Ein echter Trace/Debuggerbeleg und der beobachtete Vorher-/Nachher-Gegenfall werden zur Fehlerlokalisierung und erfolgreichen Reparatur verwendet; erwartete Werte allein gelten nicht als ausgeführter Test.\n\nMuster-Testwerte bei frischem Zustand `(Kapazität6, belegt2)`:\n\n| Eingabe | Ergebnis | Endbelegung |\n|---|---|---:|\n| `2,1` | `Gebucht: 3; frei: 1` |5|\n| `4` | `Gebucht: 4; frei: 0` |6|\n| `5` | `Nicht genug Plätze.` |2|\n| `1` | `Gebucht: 1; frei: 3` |3|\n| `6` | `Nicht genug Plätze.` |2|\n| `2,3` | `Nicht genug Plätze.` |2|\n| `2,x` / `2,,1` / leere Eingabe | `Ungültige Eingabe.` |2|\n| `0` / `7` / `1.5` / `Infinity` | `Ungültige Eingabe.` |2|\n| ` 2 , 1 ` | `Gebucht: 3; frei: 1` |5|\n\nBei der Folge `2,1` → `1` → `1` entstehen Belegungen5 →6 →6; der letzte Aufruf wird mit `Nicht genug Plätze.` abgelehnt. Gemäß explizitem Sprachkonvertierungsvertrag sind auch `2e0` und `0x2` als Zahl2 zulässig; ein schulisches anderes Eingabeformat müsste ausdrücklich einen anderen Vertrag und andere Lösung bekommen.\n\n**Bewertung:** 12 binäre Mindestkriterien, je 1 Punkt; bestanden bei 12/12. Sprachstil und ein bestimmtes Werkzeug werden nicht bewertet; die fachliche Prüfung muss tatsächlich stattgefunden haben. Code allein ohne Zustands-/Testnachweis reicht nicht für die deklarierte Coverage. Ein wenig kürzerer Code genügt, sofern alle Anforderungen erkennbar erfüllt sind.\n\n**Gegenfälle:** Zeichenkettenaddition; `>=` statt `>`; Überschreiben statt Erhöhen der Belegung; Zustandsänderung vor vollständiger Validierung; Testen nur der Rückgaben, ohne `belegt` und dessen numerischen Typ zu kontrollieren; wiederverwendetes Objekt versehentlich als frischer Test; reine Behauptung, Tests seien erfolgreich. Alle sind durch konkrete Eingaben unterscheidbar. Qualitätssiegel, formales Pflichtenheft, Versionsmanagement oder Teamprojektleistung werden nicht miterteilt.\n\n```javascript\nexport function summeAnfragen(eingabe) {\n  let summe = 0;\n  for (const teil of eingabe.split(\",\")) {\n    const n = Number(teil);\n    if (teil.trim() === \"\" || !Number.isInteger(n) || n < 1 || n > 6) {\n      return null;\n    }\n    summe += n;\n  }\n  return summe;\n}\n\nexport function neuerPlan() {\n  return {\n    kapazitaet: 6,\n    belegt: 2,\n    buche(eingabe) {\n      const summe = summeAnfragen(eingabe);\n      if (summe === null) return \"Ungültige Eingabe.\";\n      if (summe > this.kapazitaet - this.belegt) return \"Nicht genug Plätze.\";\n      this.belegt += summe;\n      return \"Gebucht: \" + summe + \"; frei: \" + (this.kapazitaet - this.belegt);\n    }\n  };\n}\n\nexport const plan = neuerPlan();\n```\n",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 12,
+        "steps": [
+          {
+            "id": "P1.1",
+            "points": 1,
+            "description": "Tatsächlichen Typ-/Werttrace zur Stringadditionsdiagnose nutzen"
+          },
+          {
+            "id": "P1.2",
+            "points": 1,
+            "description": "Exaktes Füllen als Gegenfall zur falschen Grenze finden"
+          },
+          {
+            "id": "P1.3",
+            "points": 1,
+            "description": "Überschreiben statt Erhöhen des Objektzustands identifizieren"
+          },
+          {
+            "id": "P2.1",
+            "points": 1,
+            "description": "Alle Teile mit Schleife und vollständiger Eingabeprüfung verarbeiten"
+          },
+          {
+            "id": "P2.2",
+            "points": 1,
+            "description": "Numerische Summe als Rückgabe berechnen"
+          },
+          {
+            "id": "P2.3",
+            "points": 1,
+            "description": "Parameter/Rückgabe, Kapazitätsprüfung und unveränderten Ablehnungszustand korrekt implementieren"
+          },
+          {
+            "id": "P2.4",
+            "points": 1,
+            "description": "Lauffähige funktionale Zerlegung implementieren und begründen"
+          },
+          {
+            "id": "P3.1",
+            "points": 1,
+            "description": "Ereignisgebundene Ein-/Ausgabe selbst ergänzen und Typen/Datenfluss erklären"
+          },
+          {
+            "id": "P3.2",
+            "points": 1,
+            "description": "Zustandsentwicklung über aufeinanderfolgende Klicks erklären"
+          },
+          {
+            "id": "P4.1",
+            "points": 1,
+            "description": "Systematischen Plan für Normal-, Grenz-, Fehler- und Folgetests begründen"
+          },
+          {
+            "id": "P4.2",
+            "points": 1,
+            "description": "Erwartung und tatsächliche Beobachtung für Ausgabe und Zustand dokumentieren"
+          },
+          {
+            "id": "P4.3",
+            "points": 1,
+            "description": "Ausgeführten Debugger-/Konsolenbeleg und wirklichen Vorher-/Nachhertest nutzen"
+          }
+        ]
+      }
+    }
+  }
+]

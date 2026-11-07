@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "implemented-local-checks-and-independent-review-pass-no-full-producer-run-by-this-task",
+  "frozenScopePlan": {
+    "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-hardening-plan-2026-11-06.md",
+    "sha256": "a34a2e89e45569739b5ea37e9c0b60436deebb42727e4cb406d4ab68e235e71b"
+  },
+  "ruleAnchors": [
+    "N19",
+    "Q01",
+    "Q03",
+    "Q04",
+    "Q05"
+  ],
+  "implementationPins": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "694b3f424d693636c3b7b0e670bdca7e912bf247ce66f3496f3a51d80fb23518"
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "c43382f6d6e94192718a7854e48116b0f6713b08f861bfe5fdd7d10d2051f94c"
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "sha256": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "sha256": "8a29bc20970673051e4ec2f3ed4867279480807e3c14ee0e6f39b8ad116adda7"
+    },
+    {
+      "path": "app/scripts/testCurriculumGraphMaturity.ts",
+      "sha256": "1f4b5d900e768113c47c0c84d191d6ba97f0277758f7a673b1657d041ac15c86"
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "42a4423ee3ee7fa14f6ab58bd765b725ceaa1a754952e2784453125c1b6a531c"
+    },
+    {
+      "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+      "sha256": "9bebd640355115aae57f578133d67edc2c7975a762acb4ee5211c7fbe3d4ac13"
+    }
+  ],
+  "sourceContext": {
+    "infoSha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+    "pins": {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/source-and-offer-inputs.json",
+      "sha256": "51436c25dd6e57d0435fcb00a8fc2c2108194d7b8967a669bc24f15f4a2257d7"
+    },
+    "gateTaskSourceWrites": false,
+    "separatePriorE9Application": {
+      "path": "docs/dev/ci-graph-repairs/informatics-ephase-terminal-normalization-application-2026-11-06.json",
+      "sha256": "91f2a89dcae80633a18a913cfa26c50631f49577f75cfb6ed5f775617336e55a"
+    }
+  },
+  "implementation": {
+    "CQR-204": "Universal existing structure inspection of all retained exam definitions, including unoffered drafts.",
+    "globalCQR-202": "Deduplicated original route endpoints, recursively released offers and actually rendered own-subject view exam targets.",
+    "localCQR201202203": "Existing route semantics retained; no extension of CQR203 to all196 legacy definitions.",
+    "sharedValidator": "Pure common checker compares both complete reports to an independent natively discovered source scope, all five metrics and exact owner:goal membership in the checked graph.",
+    "scopeIndependence": "Discovery object/arrays frozen; each report gets independent array copies. No report-derived expected scope.",
+    "floorCli": "Current canonical source and own-subject view discovery is explicitly obtained before the same shared floor validation. Missing context fails closed.",
+    "freshnessBoundary": "The existing full producer --check remains necessary for whole-artifact freshness; this is not a cryptographic snapshot/activation proof."
+  },
+  "nativeCensus": {
+    "canonicalSources": 21,
+    "presentExamData": 925,
+    "previousRouteChecked": 726,
+    "previouslyOmitted": 199,
+    "structureChecked": 925,
+    "requiredReadinessChecked": 872,
+    "newRequiredExams": 146,
+    "newReleasedOfferExams": 130,
+    "newActualViewExamTargets": 16,
+    "definitionsOutsideRequiredReadiness": 53,
+    "knownGenericInfoFailures": 6,
+    "newDiscoveryIssues": 0,
+    "allExpectedArraysFrozen": true,
+    "fullVersusRoleLimitedCompilerReportsExact": true,
+    "retainedEmptyOrGenericDefinitionExemption": false,
+    "unmarkedActualOfferedLeaves": 0,
+    "offeredLeafCount": 130,
+    "releasedOfferRoots": 30,
+    "noNewUniversalOrdinaryLeafExamPolicy": true,
+    "subjects": [
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sourceSha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "definitions": 26,
+        "requiredExams": 26,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sourceSha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "definitions": 117,
+        "requiredExams": 115,
+        "nonRequiredDefinitionGoalIds": [
+          "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+          "ee494d08-9514-54f2-ac5e-eebc20ca8725"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "sourceSha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237",
+        "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+        "definitions": 10,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [
+          "11e60289-b1e6-5e59-b9d5-302d9015b1be",
+          "97cfa023-ebc7-5380-b8ab-2e69c6038a7a",
+          "987ff352-c5f7-5b34-83fc-052e9c510c15",
+          "9e6749f8-a32e-5617-8c7e-7685385a1999",
+          "a1ee51cc-cd72-5686-9e76-8bffb3da1859",
+          "b0abab7e-ea12-5cd9-9856-5123ac897a8f",
+          "b74867a4-e2c8-5953-aa2f-ff6ab5904e58",
+          "bf09a267-8e7c-5f7f-ad06-b13a12b62be4",
+          "dbe5bff6-30b5-58dc-8298-229e6c960299",
+          "f64b3f1d-5a61-59a1-a661-d2011c5f0f04"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "sourceSha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9",
+        "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "definitions": 17,
+        "requiredExams": 17,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "sourceSha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+        "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+        "definitions": 14,
+        "requiredExams": 6,
+        "nonRequiredDefinitionGoalIds": [
+          "2518d804-c766-5c71-abe1-586eaaae756f",
+          "6486799b-239f-5417-99fc-662c34e4a413",
+          "9f049a85-cf6a-5cbe-82d6-0a21313ca99d",
+          "b5688db8-5c54-5009-9cba-7103167a72b2",
+          "c9ee2fef-15c9-542d-88f2-847da26c91fb",
+          "de1db0cd-4234-5802-825a-08a69da114b1",
+          "e1e05939-223c-5024-b2ad-a593e320c80e",
+          "e8ee5aa7-0111-585f-a8fd-7b5a3b275db9"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "sourceSha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498",
+        "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+        "definitions": 14,
+        "requiredExams": 6,
+        "nonRequiredDefinitionGoalIds": [
+          "38b628e5-5e9c-59df-ab7d-63ff3314a30d",
+          "3ab7fc1e-b9a9-5ab7-a5f2-f4dde7344f59",
+          "5d1b0019-eb50-5271-ac30-c288c2fc3e34",
+          "747d9cb8-fd6b-5bf6-9e8d-f30875254e04",
+          "8e92535c-0d85-57c9-aa88-afd20ee15c54",
+          "ca1ba9ec-e03a-56fa-8abe-733b8b8264c6",
+          "ced45739-c759-5343-9f85-76b8229e5cea",
+          "f0dc8a3f-1100-539b-b654-f6594d39d386"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "sourceSha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e",
+        "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "definitions": 15,
+        "requiredExams": 15,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "sourceSha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162",
+        "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+        "definitions": 14,
+        "requiredExams": 6,
+        "nonRequiredDefinitionGoalIds": [
+          "0108c6f1-66b1-550f-8eeb-b703fe8c3971",
+          "2a3905f7-9fe1-5760-82fd-2383af5465aa",
+          "31a9ceda-8e52-5cf9-81e7-1dfc0d640754",
+          "359dee14-c918-5c50-8b1e-84856a05ed5f",
+          "4933e455-15be-55c0-93c9-8fce77e6fe23",
+          "73affe22-5f3e-54b6-bac2-06256885536c",
+          "9948ef71-2a5d-56e1-bae9-9876434821af",
+          "af8a7de9-ab02-5b86-8e06-575f1637be79"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sourceSha256": "00bcdbaf0723441eea0e33dfef36c674ed865b61d7009705cd6c83241a897422",
+        "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "definitions": 24,
+        "requiredExams": 24,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "fail",
+        "readinessStatus": "fail",
+        "failingGoalIds": [
+          "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+          "342511c3-45fb-5783-b601-906149e78c2d",
+          "49ba66cf-accd-5938-a63e-f031bc786767",
+          "65aa807f-f998-5648-a3a6-2e0e96dba714",
+          "a5e33d4d-f312-51d2-816b-e0b10dd1e701"
+        ],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "sourceSha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+        "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+        "definitions": 0,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "sourceSha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+        "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "definitions": 15,
+        "requiredExams": 15,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "definitions": 163,
+        "requiredExams": 163,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "sourceSha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+        "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+        "definitions": 13,
+        "requiredExams": 5,
+        "nonRequiredDefinitionGoalIds": [
+          "214c911a-e7a0-5465-a911-3c3a455d794e",
+          "3207f270-031c-564f-aadd-726358f8199f",
+          "432f886c-0ef1-50c6-828a-7d40f9241f32",
+          "5a2cb7c9-722f-580a-a70b-d3270639d90d",
+          "5c229d41-a2b3-5474-8b90-0ff7c2c62c54",
+          "698072a7-1ed1-5fc4-be26-67f6ab15dae9",
+          "910300d7-ce58-57f2-9255-9ec274aa2235",
+          "9388b958-b513-5a66-aa47-260671851c52"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "sourceSha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+        "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+        "definitions": 0,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sourceSha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "definitions": 156,
+        "requiredExams": 155,
+        "nonRequiredDefinitionGoalIds": [
+          "3631c8f7-ff48-57ff-b7ee-8397ff1d166a"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "sourceSha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "definitions": 20,
+        "requiredExams": 20,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "sourceSha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+        "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+        "definitions": 0,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "sourceSha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+        "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+        "definitions": 0,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "sourceSha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+        "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+        "definitions": 14,
+        "requiredExams": 6,
+        "nonRequiredDefinitionGoalIds": [
+          "004a171a-3623-53ad-976a-9e1eae0a6653",
+          "5e97903d-ca5b-5ec5-a3ac-9ab9cf569d9c",
+          "6a6366f6-fe87-5f3c-9d00-cd675a53ab5d",
+          "6dc4e1a5-9088-5ef7-a933-48ae0615358d",
+          "713c9be6-7042-560b-be13-ada9d736d7b1",
+          "ba62498d-e8c2-5756-aaa5-b63251774788",
+          "d77a6001-6f8c-54d5-a53c-8a0a31ca8c0f",
+          "deebc240-f95c-5ef6-b500-00a8baac8ca3"
+        ],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "sourceSha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+        "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+        "definitions": 0,
+        "requiredExams": 0,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      },
+      {
+        "file": "DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sourceSha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3",
+        "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "definitions": 293,
+        "requiredExams": 293,
+        "nonRequiredDefinitionGoalIds": [],
+        "structureStatus": "pass",
+        "readinessStatus": "pass",
+        "failingGoalIds": [],
+        "discoveryIssues": []
+      }
+    ],
+    "fullResults": {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06.native-census.json.gz",
+      "sha256": "70138080c7db5bcbab40d1d949728718cbdb4e289db6559d9b7dba4af62f5792"
+    },
+    "uncompressedSha256": "10b5d7f369f992a9927d616bb54d3977dceb4ad8a3bf7448bd6d4f2e75840f84"
+  },
+  "regressions": {
+    "realInfoOffers": 10,
+    "actualDEAndHistoryViewExamTargets": 16,
+    "payloadMutations": 56,
+    "missingActualOfferPayloadRetainsAssessmentDeclaration": true,
+    "existingSixGenericNegativeFixturesPreserved": true,
+    "existingActualMathPhysicsPositiveFixturesPreserved": true,
+    "nativeGraphToScopeToCurriculumToBothProtectedFloors": true,
+    "missingDuplicateIncompleteRedReports": true,
+    "allFiveMetricMismatches": true,
+    "jointTruncationWithOriginalAndConsistentZeroMetrics": true,
+    "inPlaceAliasAttackDoesNotMutateExpectedScope": true,
+    "checkedForeignPrerequisiteCannotReplaceOwnedExam": true,
+    "missingIndependentExpectedContextRejected": true,
+    "legacyMissingReviewStatusAndCompleteUnofferedDraftPreserved": true,
+    "noRouteConfigurationInvented": true
+  },
+  "historicalRedGreen": {
+    "result": {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/historical-native-red-green.json",
+      "sha256": "a9ea3a1d4d2be152a30b2db2c262da4f70a2a3bc43ccbe157b75911436541895"
+    },
+    "reproducer": {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/historical-native-red-green.mts",
+      "sha256": "0a2575af58a66c1c7e1d283978a2b2a00b6de984b235d58fe9657fc465ff76bb"
+    },
+    "method": "Exact old derive function extracted from pinned5c9 Git object via TypeScript AST; real concrete63509366 payload and real strict graph fixture. All four cases were M7 before, M3 now. Not an actual Info-M7 baseline claim."
+  },
+  "checks": [
+    {
+      "command": "cd app && ./node_modules/.bin/tsx scripts/testCurriculumExamReadiness.ts",
+      "exitCode": 0,
+      "log": {
+        "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/focused-test.txt",
+        "sha256": "2d8ff590858fc483ac6551e63d2e4f08ac639f432ce846c8e25d10143c41a216"
+      }
+    },
+    {
+      "command": "cd app && npm run test:deep-understanding-rollout",
+      "exitCode": 0,
+      "log": {
+        "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/deep-test.txt",
+        "sha256": "385ea940ea442ea88c03d9d9b0004210f4d2272a5bafaf49684ad407e13cd110"
+      }
+    },
+    {
+      "command": "git diff --check -- app/scripts docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+      "exitCode": 0
+    }
+  ],
+  "typecheck": {
+    "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-repair-2026-11-06/typecheck-comparison.json",
+    "sha256": "30bdc061b2740f4e58dd36485e95be4a35d26b4375fafe07c75c4b7a29478187"
+  },
+  "independentReview": {
+    "path": "docs/dev/ci-graph-repairs/cqr202-204-independent-code-review-2026-11-06.json",
+    "sha256": "077b925aa5f18d9e1b1e4296a913cfdffcd0f1d36d02205dbf5cd64a2011b5ac"
+  },
+  "limits": [
+    "No whole CQR producer/freshness/floor success claimed for the live repository by this task; Root owns that real generation.",
+    "The same bounded material/scoring inspection is not full schema validation or substantive correctness of the other919 tasks.",
+    "The six old generic Info tasks remain failures; no content, release or P/M6 approval supplied.",
+    "All-marks removal from a leaf is not reclassified through titles or a new lifecycle policy; the actual unmarked offered-leaf census is0.",
+    "No canonical, view, examData, review, floor-policy, learner-state, mastery, SRS, package, runtime, deployment or identity-activation changes by this gate patch."
+  ]
+}

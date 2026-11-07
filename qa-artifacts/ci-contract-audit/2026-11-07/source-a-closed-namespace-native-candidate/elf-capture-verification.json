@@ -1,0 +1,167 @@
+{
+  "kind": "bounded native ELF derivation/capture verification, no mount/reader/source QA acceptance",
+  "checks": [
+    {
+      "id": "all-private-bytes-and-inodes",
+      "pass": true
+    },
+    {
+      "id": "all-source-files-rechecked",
+      "pass": true
+    },
+    {
+      "id": "all-exact-tool-alias-texts",
+      "pass": true
+    },
+    {
+      "id": "every-needed-edge-has-parent-and-real-child-binding",
+      "pass": true
+    },
+    {
+      "id": "actual-inhibit-cache-loader-misses-all-independently-derived",
+      "pass": true,
+      "events": 19
+    },
+    {
+      "id": "wrong-cache-bytes",
+      "pass": true,
+      "reason": "Private blob changed"
+    },
+    {
+      "id": "external-private-inode-alias",
+      "pass": true,
+      "reason": "Private capture blob has external hardlink alias"
+    },
+    {
+      "id": "foreign-hwcap-context-denied",
+      "pass": true,
+      "reason": "Modern HWCAP diagnostic mask/help mismatch"
+    }
+  ],
+  "nativeOptionalMissEvents": [
+    {
+      "operation": "access",
+      "path": "/etc/ld.so.preload",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/tls/haswell/x86_64/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/tls/haswell/x86_64",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/tls/haswell/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/tls/haswell",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/tls/x86_64/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/tls/x86_64",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/tls/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/tls",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/haswell/x86_64/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/haswell/x86_64",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/haswell/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/haswell",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "openat",
+      "path": "/lib/x86_64-linux-gnu/x86_64/libdl.so.2",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    },
+    {
+      "operation": "newfstatat",
+      "path": "/lib/x86_64-linux-gnu/x86_64",
+      "errno": "ENOENT",
+      "derivedBeforeTrace": true
+    }
+  ],
+  "captureManifestSha256": "a7df539067a63ffa4557f648cde0da69acbcd50e5374ae41af6e8986f7eac874",
+  "implementationSha256": "8f1f411e786661642fa0b22f0b41f110318d1e3b22c176af7fb20eeab6ce5b33",
+  "nativeLoaderTraceSha256": "5a95a1882f46a5e3d43db0f52bb48b3eb4015433aa4b7126dfb81cb2bb8318d9",
+  "limits": [
+    "Source-A basis, semantic QA, actual mount fidelity and syscall/process ownership are separate capabilities.",
+    "Optional candidates require actual ENOENT with readonly flags, current bound executable/ELF context, an unchanged complete RO parent and later actual successful required-library binding; this JSON alone grants no lookup capability.",
+    "Native addon/dlopen/NSS inputs not in these explicit Node/esbuild root closures remain unbound and must fail closed if encountered.",
+    "Static esbuild executable aliases are byte-bound but parent launcher must prove its actual argv/process lineage.",
+    "Root executables with RPATH/RUNPATH after relocation or another ELF ABI/loader version are rejected; no claim of a general multi-platform ELF resolver."
+  ]
+}

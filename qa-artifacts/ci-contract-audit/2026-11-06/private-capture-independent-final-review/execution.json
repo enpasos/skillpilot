@@ -1,0 +1,27 @@
+[
+  {
+    "argv": [
+      "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+      "-B",
+      "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-review/probes.py"
+    ],
+    "exitCode": 0,
+    "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/original-probes-after.txt"
+  },
+  {
+    "argv": [
+      "/home/enpasos/.pyenv/versions/3.12.9/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts",
+      "-p",
+      "test_*identity_qa*.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "log": "qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/independent-17-tests.txt"
+  }
+]

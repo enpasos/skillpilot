@@ -1,0 +1,76 @@
+{
+  "readyForActiveApplication": false,
+  "reason": "One fresh independent P review still missing; final V-authority integration is separate.",
+  "sourceUnchanged": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+  "sourceSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+  "writesAfterQualificationOnly": [
+    {
+      "target": "curricula/DE/Gymnasium/visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "source": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+      "beforeSha256": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "afterSha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07"
+    },
+    {
+      "target": "app/public/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "source": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+      "beforeSha256": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "afterSha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07"
+    },
+    {
+      "target": "backend/src/main/resources/static/assets/goal-visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/b819973b-4cad-48a4-9f7e-f74b5e75ea6c.png",
+      "source": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-candidate/b819973b-4cad-48a4-9f7e-f74b5e75ea6c-candidate-v2.png",
+      "beforeSha256": "173f6e3e885ee50892849d69689585d3a5e785bbfe44b764419b2f6b6a515330",
+      "afterSha256": "e1bda233419154cd20aa46feae46d1fa2f480881a25bccc4c4d227623233ec07"
+    },
+    {
+      "target": "curricula/DE/Gymnasium/visualizations/mathematik/b819973b-4cad-48a4-9f7e-f74b5e75ea6c/prompt.de.md",
+      "source": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/after-native-import-prompt.de.md",
+      "beforeSha256": "64f5338d9953d571f5ac189850a4667044eca4f712a1708455eec8335df4926c"
+    },
+    {
+      "target": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "applyExactDiff": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/V-row-application-diff.json",
+      "independentEvidence": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-image-correction-independent-review/review.json",
+      "allOtherRowsUnchanged": true,
+      "allHumanFieldsUnchanged": true
+    },
+    {
+      "target": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/P-retained12.config.json",
+      "action": "new inactive config; exact unchanged12-goal retained scope"
+    },
+    {
+      "target": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/P-retained12.review.jsonl",
+      "action": "new inactive raw-byte-identical12 historical rows; no review metadata change"
+    },
+    {
+      "target": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/P-target.config.json",
+      "action": "pending independent target1 review; template P-target.config.pending.json"
+    },
+    {
+      "target": "qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/P-target.review.jsonl",
+      "action": "missing; only a new real independent current-image P review may create this record"
+    },
+    {
+      "target": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "action": "after independent P and nativecheck only: exact guarded P-routing-application-diff.pending.json"
+    }
+  ],
+  "noChangesTo": [
+    "current goal JSON, title/description DE/EN, source/scope/requires, resource URL",
+    "existing D resolution indexes/reviews/timestamps/page hashes",
+    "existing A/M configs/reviews",
+    "historical13 P config/review and all12 historical row bytes",
+    "human approval fields and historical image/review evidence"
+  ],
+  "netPGoalCountDeltaRequired": 0,
+  "nativeChecks": {
+    "A": "807/807 current; exit0",
+    "M": "807/807 current; exit0",
+    "D": "affected existing5 index ready5; no PNG-byte claim",
+    "P": "old13 before overlay0 errors; newPNG onlytarget1 stale; retained12 new native scope0 errors",
+    "Vfreshness": "candidate ledger+all3PNG overlay exit0; existing authority lacks new receipt, separate Math58 integration pending"
+  },
+  "fullCqrRun": false,
+  "prohibitedSourceAProbeRun": false,
+  "activeWrites": false
+}

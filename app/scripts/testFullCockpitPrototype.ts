@@ -161,7 +161,14 @@ try {
   assert.equal(await flip.getAttribute('data-drill-instance-witness'), 'original')
 
   stage = 'same explicit and implicit icons, whole-subject and plan-scope counts'
-  await page.getByTestId('full-cockpit-scenario').selectOption('completed')
+  // Both snapshots arrive before the first refresh can settle. The final
+  // completion event must survive the refresh throttle.
+  await page.getByTestId('full-cockpit-scenario').evaluate((select: HTMLSelectElement) => {
+    for (const scenario of ['ordinary', 'completed']) {
+      select.value = scenario
+      select.dispatchEvent(new Event('change', { bubbles: true }))
+    }
+  })
   await selected.getByText('Prüfungsaufgabe', { exact: true }).waitFor()
   const mathProgress = page.getByTestId('learner-plan-subject-mathematik')
   await mathProgress.getByTestId('learner-plan-achieved-goals').filter({ hasText: '2 von 2' }).waitFor()

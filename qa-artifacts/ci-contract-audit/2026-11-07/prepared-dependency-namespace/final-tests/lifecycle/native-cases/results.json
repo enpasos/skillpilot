@@ -1,0 +1,54 @@
+{
+  "purpose": "real-recorded-lifecycle-positive-and-abstract-argument-negatives",
+  "testsRun": 6,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "originalRecorderRawSha256": "1226d4c2b13dbe0429f0a8522c0b4f40ce91638d2d38e8907166bf08c67008da",
+  "overlappingResumeRecorderRawSha256": "dd760b136c629cd6165c2b0b82c27825ebb382222a0e00818571e7efd01146a3",
+  "positiveFacts": [
+    {
+      "category": "aborted-non-input-identity-observation",
+      "operation": "getpid",
+      "hostPid": 439890,
+      "threadGroupHostPid": 439886,
+      "entry": 2047,
+      "resume": 2050,
+      "returnedPidValue": null,
+      "identityEvidence": false,
+      "namespaceValueDerived": false,
+      "priorNumericGroupIdentityEntry": 2013,
+      "exitWitness": {
+        "hostPid": 439892,
+        "entry": 2046,
+        "resume": 2049,
+        "exitStatus": 0
+      },
+      "inputReadSkipped": false,
+      "exitEvidenceSkipped": false
+    },
+    {
+      "category": "aborted-non-input-identity-observation",
+      "operation": "getpid",
+      "hostPid": 367286,
+      "threadGroupHostPid": 367285,
+      "entry": 1980,
+      "resume": 1982,
+      "returnedPidValue": null,
+      "identityEvidence": false,
+      "namespaceValueDerived": false,
+      "priorNumericGroupIdentityEntry": 1934,
+      "exitWitness": {
+        "hostPid": 367285,
+        "entry": 1979,
+        "resume": 1983,
+        "exitStatus": 0
+      },
+      "inputReadSkipped": false,
+      "exitEvidenceSkipped": false
+    }
+  ],
+  "newActiveProducers": 0,
+  "rawRecorderBytesModified": false,
+  "traceCapabilityMintedFromFixture": false
+}

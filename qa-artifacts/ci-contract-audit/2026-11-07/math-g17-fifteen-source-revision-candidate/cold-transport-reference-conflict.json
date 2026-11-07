@@ -1,0 +1,90 @@
+{
+  "status": "EXACT_COLD_REFERENCE_CONFLICT_NO_TRANSPORT_SUCCESSOR_BUILT",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "beforeSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "beforeBytes": 3715033,
+    "afterSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+    "afterBytes": 3714313,
+    "byteDelta": -720
+  },
+  "unchangedOldTransportPins": [
+    {
+      "file": "contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "jsonPointer": "/currentContextBinding/source",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06"
+      }
+    },
+    {
+      "file": "contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "jsonPointer": "/currentReferences/60",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+        "bytes": 3715033
+      }
+    },
+    {
+      "file": "qa-artifacts/ci-contract-audit/2026-11-07/math58-active-integration/capsule-132/capsule.json",
+      "jsonPointer": "/workingInputs/120",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+        "bytes": 3715033
+      }
+    },
+    {
+      "file": "scripts/visualization_qualified_context_capsule.py",
+      "literal": "MATH132_CONTEXT_BINDING.source",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06"
+      }
+    }
+  ],
+  "relatedPinDatasetReferences": [
+    {
+      "file": "contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "jsonPointer": "/currentContextBinding/math58Pins",
+      "binding": {
+        "path": "contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json",
+        "sha256": "b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76"
+      }
+    },
+    {
+      "file": "contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json",
+      "jsonPointer": "/currentReferences/59",
+      "binding": {
+        "path": "contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json",
+        "sha256": "b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76",
+        "bytes": 333421
+      }
+    },
+    {
+      "file": "qa-artifacts/ci-contract-audit/2026-11-07/math58-active-integration/capsule-132/capsule.json",
+      "jsonPointer": "/workingInputs/59",
+      "binding": {
+        "path": "contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json",
+        "sha256": "b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76",
+        "bytes": 333421
+      }
+    }
+  ],
+  "separateNewHelperDataset": {
+    "path": "contracts/goal-visualization-context/v1/math58-current-supplement-pins-g17-fifteen-2026-11-07.candidate.json",
+    "sha256": "521de7276ac11ad26ae3ed471e4672a88dc85b2509e929b2beacf8ded3d56658",
+    "privateFile": "math58-current-supplement-pins-g17-fifteen-2026-11-07.candidate.json"
+  },
+  "whyTwoConstantsAloneDoNotBootstrap": "Authority initialize runs the unchanged selector against the current repository root before evaluating a context. index_originals binds source bytes above to the old digest. The new helper dataset is read only after this bootstrap.",
+  "nativeColdFailureEvidence": "reader-cold.json",
+  "minimalFiniteFollowup": "After independent current P reviews: preserve old index/capsule/dataset bytes; version a new finite index binding the exact successor source and new current dataset, keep all132 receipt rows and433 original references exact, construct corresponding current working inventory/census references, externally pin its actual manifest/digests in the existing selector+authority, recompute all measured resource totals. Do not reuse old measured totals as proof or reclassify current source as historical.",
+  "noNewTransportOrRebuildPerformed": true,
+  "PReviewFirst": {
+    "file": "P-subset-findings.json",
+    "configs": 10,
+    "goals": 15
+  },
+  "proofFileMachineSemantics": "The two-constant helper binds the dataset bytes, but does not open sourceRevisionEvidence.path. This external proof requires admission review; no runtime closure-proof verification is claimed."
+}

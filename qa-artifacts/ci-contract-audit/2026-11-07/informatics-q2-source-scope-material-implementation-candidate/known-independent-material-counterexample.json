@@ -1,0 +1,73 @@
+{
+  "state": "independent full-material review still in progress; concrete reported counterexample verified against sealed task/solution/roles and exact assembly membership",
+  "materialPinUnchanged": "424d79c1c84ff7f0973c312756730008428a23d5bdfd84ab866287352c537364",
+  "casebankSha256": "e470025e75de5ba9c34735f720551233ecd78640630c888e5237e73372e8aa75",
+  "cases": [
+    {
+      "caseId": "C-T21",
+      "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+      "affectedExamIds": [
+        "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+      ],
+      "exactTask": "Beschreiben Sie fachlich und mit konkretem M2-Ergebnis: SELECT kid FROM Kurs WHERE preis>(SELECT AVG(preis) FROM Kurs); UPDATE Kurs SET preis=preis+5 WHERE kid=20; ALTER TABLE Kurs ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1; GRANT SELECT ON KursAuskunft TO auskunft. Ordnen Sie DML,DDL,DCL zu;erläutern Sie Unterabfrage/äußere Abfrage und Rechtegrenze. Sicht/Rollen nach M5 sind vorausgesetzt.",
+      "exactSolution": "Inneres AVG=(20+30+40+10+15)/5=23;äußerer SELECT liefert(kid)={(20),(30)}. SELECT ist lesende Abfrage(je Lehrkonvention DQL oder DML-Leseteil,beides zulässig). UPDATE ist DML,ändert nur Kurs20 von30auf35. ALTER ist DDL,ergänzt sichtbar mit NOT NULL und Default1;alle vorhandenen Zeilen erhalten1. GRANT ist DCL,erlaubt SELECT nur auf KursAuskunft,kein Schreiben und kein direkter Person-/Kontaktzugriff. Jeder Befehl startet bei M2;KursAuskunft zeigt nur kid,titel,preis.",
+      "exactRolesMaterial": "M5 – Lehrrollenmodell (keine Behauptung eines ausgeführten Rollenservers): Rollen auskunft und anmeldedienst existieren, niemand erbt Rechte von PUBLIC; auskunft hat versehentlich SELECT auf Person, sonst keine Rechte; anmeldedienst hat keine Rechte. Vorgaben: auskunft darf nur KursAuskunft(kid,titel,preis) lesen; anmeldedienst darf Buchung lesen/einfügen, sonst nichts; Eigentümer führt DDL/DML aus. Unterstützte Syntax: CREATE VIEW name AS SELECT ...; GRANT SELECT[,INSERT] ON object TO role; REVOKE SELECT ON object FROM role. Tabellenrechte gelten auf der genannten Tabelle, Sichtrechte erlauben nur die Sicht. Keine Rolle hat Eigentümer-/Superuserrechte. Rechtebeschreibungen und Rechtebefehle müssen zu dieser Matrix passen.",
+      "reportedIndependentCounterexample": "Existing SELECT on the person table from M5 is not revoked by GRANT on the restricted view. The solution claim of no direct person-table access does not follow. Other tasks start fresh, so later REVOKE does not repair this task.",
+      "teachingSetOperationResult": {
+        "Person": [
+          "SELECT"
+        ],
+        "KursAuskunft": [
+          "SELECT"
+        ]
+      },
+      "personSELECTRemains": true,
+      "actualDBMSExecutionClaimed": false
+    },
+    {
+      "caseId": "B-T21",
+      "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+      "affectedExamIds": [
+        "269a561b-f12e-57b2-9b05-e20f58c9dcf6"
+      ],
+      "exactTask": "Beschreiben Sie fachlich und mit konkretem M2-Ergebnis: SELECT mid FROM Medium WHERE gebuehr>(SELECT AVG(gebuehr) FROM Medium); UPDATE Medium SET gebuehr=gebuehr+5 WHERE mid=20; ALTER TABLE Medium ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1; GRANT SELECT ON MedienAuskunft TO auskunft. Ordnen Sie DML,DDL,DCL zu;erläutern Sie Unterabfrage/äußere Abfrage und Rechtegrenze. Sicht/Rollen nach M5 sind vorausgesetzt.",
+      "exactSolution": "Inneres AVG=(20+30+40+10+15)/5=23;äußerer SELECT liefert(mid)={(20),(30)}. SELECT ist lesende Abfrage(je Lehrkonvention DQL oder DML-Leseteil,beides zulässig). UPDATE ist DML,ändert nur Medium20 von30auf35. ALTER ist DDL,ergänzt sichtbar mit NOT NULL und Default1;alle vorhandenen Zeilen erhalten1. GRANT ist DCL,erlaubt SELECT nur auf MedienAuskunft,kein Schreiben und kein direkter Leser-/Leserkontaktzugriff. Jeder Befehl startet bei M2;MedienAuskunft zeigt nur mid,titel,gebuehr.",
+      "exactRolesMaterial": "M5 – Lehrrollenmodell (keine Behauptung eines ausgeführten Rollenservers): Rollen auskunft und anmeldedienst existieren, niemand erbt Rechte von PUBLIC; auskunft hat versehentlich SELECT auf Leser, sonst keine Rechte; anmeldedienst hat keine Rechte. Vorgaben: auskunft darf nur MedienAuskunft(mid,titel,gebuehr) lesen; anmeldedienst darf Ausleihe lesen/einfügen, sonst nichts; Eigentümer führt DDL/DML aus. Unterstützte Syntax: CREATE VIEW name AS SELECT ...; GRANT SELECT[,INSERT] ON object TO role; REVOKE SELECT ON object FROM role. Tabellenrechte gelten auf der genannten Tabelle, Sichtrechte erlauben nur die Sicht. Keine Rolle hat Eigentümer-/Superuserrechte. Rechtebeschreibungen und Rechtebefehle müssen zu dieser Matrix passen.",
+      "reportedIndependentCounterexample": "Existing SELECT on the person table from M5 is not revoked by GRANT on the restricted view. The solution claim of no direct person-table access does not follow. Other tasks start fresh, so later REVOKE does not repair this task.",
+      "teachingSetOperationResult": {
+        "Leser": [
+          "SELECT"
+        ],
+        "MedienAuskunft": [
+          "SELECT"
+        ]
+      },
+      "personSELECTRemains": true,
+      "actualDBMSExecutionClaimed": false
+    },
+    {
+      "caseId": "F-T21",
+      "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+      "affectedExamIds": [
+        "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+      ],
+      "exactTask": "Beschreiben Sie fachlich und mit konkretem M2-Ergebnis: SELECT auftritt_id FROM Auftritt WHERE preis>(SELECT AVG(preis) FROM Auftritt); UPDATE Auftritt SET preis=preis+5 WHERE auftritt_id=20; ALTER TABLE Auftritt ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1; GRANT SELECT ON ProgrammAuskunft TO auskunft. Ordnen Sie DML,DDL,DCL zu;erläutern Sie Unterabfrage/äußere Abfrage und Rechtegrenze. Sicht/Rollen nach M5 sind vorausgesetzt.",
+      "exactSolution": "Inneres AVG=(20+30+40+10+15)/5=23;äußerer SELECT liefert(auftritt_id)={(20),(30)}. SELECT ist lesende Abfrage(je Lehrkonvention DQL oder DML-Leseteil,beides zulässig). UPDATE ist DML,ändert nur Auftritt20 von30auf35. ALTER ist DDL,ergänzt sichtbar mit NOT NULL und Default1;alle vorhandenen Zeilen erhalten1. GRANT ist DCL,erlaubt SELECT nur auf ProgrammAuskunft,kein Schreiben und kein direkter Gast-/Gastkontaktzugriff. Jeder Befehl startet bei M2;ProgrammAuskunft zeigt nur auftritt_id,titel,preis.",
+      "exactRolesMaterial": "M5 – Lehrrollenmodell (keine Behauptung eines ausgeführten Rollenservers): Rollen auskunft und anmeldedienst existieren, niemand erbt Rechte von PUBLIC; auskunft hat versehentlich SELECT auf Gast, sonst keine Rechte; anmeldedienst hat keine Rechte. Vorgaben: auskunft darf nur ProgrammAuskunft(auftritt_id,titel,preis) lesen; anmeldedienst darf Reservierung lesen/einfügen, sonst nichts; Eigentümer führt DDL/DML aus. Unterstützte Syntax: CREATE VIEW name AS SELECT ...; GRANT SELECT[,INSERT] ON object TO role; REVOKE SELECT ON object FROM role. Tabellenrechte gelten auf der genannten Tabelle, Sichtrechte erlauben nur die Sicht. Keine Rolle hat Eigentümer-/Superuserrechte. Rechtebeschreibungen und Rechtebefehle müssen zu dieser Matrix passen.",
+      "reportedIndependentCounterexample": "Existing SELECT on the person table from M5 is not revoked by GRANT on the restricted view. The solution claim of no direct person-table access does not follow. Other tasks start fresh, so later REVOKE does not repair this task.",
+      "teachingSetOperationResult": {
+        "Gast": [
+          "SELECT"
+        ],
+        "ProgrammAuskunft": [
+          "SELECT"
+        ]
+      },
+      "personSELECTRemains": true,
+      "actualDBMSExecutionClaimed": false
+    }
+  ],
+  "own20AndHE10DoNotBindT21": true,
+  "noCorrectionOrPassRelabeling": true,
+  "nextWork": "After the independent full batch, create an actual material successor and recheck exact new material/source pins; preserve this424d79 and native7586 version."
+}

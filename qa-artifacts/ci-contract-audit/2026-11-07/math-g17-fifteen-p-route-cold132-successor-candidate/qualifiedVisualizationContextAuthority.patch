@@ -1,0 +1,17 @@
+--- a/app/scripts/lib/qualifiedVisualizationContextAuthority.ts
++++ b/app/scripts/lib/qualifiedVisualizationContextAuthority.ts
+@@ -10,10 +10,10 @@
+ // These are external acceptance pins for this finite historical input set.
+ // Neither a receipt nor a caller can nominate its own acceptance authority.
+ export const qualifiedVisualizationAuthority = Object.freeze({
+-  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index-math58-132-2026-11-07.candidate.json',
+-  indexSha256: '441b710b8965f529c231f046bbde6ade4be17d2c0bd4a43baf46829ee0287803',
+-  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/math58-active-integration/capsule-132',
+-  capsuleSha256: 'bf797d97d48d3ebb436037cfcf487189e06455e9cf2120a4d385f7921b20b0bf',
++  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index-math58-132-g17-fifteen-2026-11-07.candidate.json',
++  indexSha256: 'd047c2125157f07f87c7186bc95136679e6e5fa9045ded315cf957f533acedd3',
++  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/capsule-132-g17-fifteen',
++  capsuleSha256: '95eeb3e3c57cffa10e32c7650502267c6ac19a86590a3ddf101c9a61c2dd82ea',
+   acceptedRepositoryCommit: '25a6f2164a81a7e6ae50db3557d20521fecf5124',
+ })
+ interface Index { rows: Array<{ landscapeId: string; goalId: string; receipt: VisualizationContextReceiptReference }> }

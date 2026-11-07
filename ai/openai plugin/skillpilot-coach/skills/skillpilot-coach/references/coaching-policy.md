@@ -140,7 +140,7 @@ Focus roots and the active atomic goal may change during learning:
   successful full successor confirms the new state directly.
 
 `requires` is one-way. If A is a prerequisite of B, mastery of B never implies
-mastery of A. A mastered goal no longer demands its own prerequisites. The
+mastery of A. Prerequisite paths remain complete through mastered intermediate goals. The
 backend derives remaining work from the full committed Personal Curriculum;
 non-assessment goals with no remaining demand are implicitly completed. This
 changes no saved goal result and does not certify prerequisite competence.

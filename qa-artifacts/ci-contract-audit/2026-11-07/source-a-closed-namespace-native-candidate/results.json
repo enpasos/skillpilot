@@ -1,0 +1,131 @@
+{
+  "format": "source-a-closed-namespace-native-candidate/v1",
+  "status": "bounded-packages-1-3-private-candidate-native-evidence",
+  "results": [
+    {
+      "role": "original",
+      "mode": "writer",
+      "exitCode": 0,
+      "authenticated": true,
+      "runId": "fa61f31ba2ac487da7dbf98ba3b978a9",
+      "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/fa61f31ba2ac487da7dbf98ba3b978a9/evidence",
+      "processes": 18,
+      "sourceReadCount": 600,
+      "failures": 422,
+      "traceSha256": "838bd495e8fb60a8031b1f5c03ab495bf84f9e6ddc14c6686669d1e91855b75f",
+      "output": {
+        "/qa/pair/original80/docs/qa-ci/status/namespace-report.json": {
+          "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/fa61f31ba2ac487da7dbf98ba3b978a9/outputs/namespace-report.json",
+          "sha256": "961c94d70f5b5bb233fbb4d8ed6c9fd8b47947fed59f3ef98533b0c7d516d346",
+          "bytes": 122009,
+          "inode": 565463,
+          "device": 65
+        }
+      },
+      "staleSourceFrameDenied": "Stale output belongs to another frozen source/tool namespace frame",
+      "sourceAsOutputDenied": "Output/source/tool inode overlap",
+      "outputRwAliasDenied": "Output has a readable/writable inode alias",
+      "artifactEvidence": "runs/original-writer"
+    },
+    {
+      "role": "original",
+      "mode": "reader",
+      "exitCode": 0,
+      "authenticated": true,
+      "runId": "e34f94b78e864f45895fb697aed2d8ab",
+      "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/e34f94b78e864f45895fb697aed2d8ab/evidence",
+      "processes": 18,
+      "sourceReadCount": 4,
+      "failures": 73,
+      "traceSha256": "52f6f376ed20799817bbefbead382aa580df2113041fd096ad93639affbaf8ad",
+      "output": {
+        "/qa/pair/original80/docs/qa-ci/status/namespace-report.json": {
+          "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/fa61f31ba2ac487da7dbf98ba3b978a9/outputs/namespace-report.json",
+          "sha256": "961c94d70f5b5bb233fbb4d8ed6c9fd8b47947fed59f3ef98533b0c7d516d346",
+          "bytes": 122009,
+          "inode": 565463,
+          "device": 65
+        }
+      },
+      "artifactEvidence": "runs/original-reader"
+    },
+    {
+      "role": "candidate",
+      "mode": "writer",
+      "exitCode": 0,
+      "authenticated": true,
+      "runId": "1365ac260334485daeb81d886bd6beb5",
+      "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/1365ac260334485daeb81d886bd6beb5/evidence",
+      "processes": 18,
+      "sourceReadCount": 600,
+      "failures": 422,
+      "traceSha256": "ef2637b8738c3a38a52c1f2f1723401fd3af0cb981968a92f0e5976f34ff2d19",
+      "output": {
+        "/qa/pair/projectedA80/docs/qa-ci/status/namespace-report.json": {
+          "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/1365ac260334485daeb81d886bd6beb5/outputs/namespace-report.json",
+          "sha256": "f823d3f4845b53dc06d2ca3cf4e7cacfcaa08757e17e1e01e9f1c03ebb303bb6",
+          "bytes": 122016,
+          "inode": 565611,
+          "device": 65
+        }
+      },
+      "staleSourceFrameDenied": "Stale output belongs to another frozen source/tool namespace frame",
+      "sourceAsOutputDenied": "Output/source/tool inode overlap",
+      "outputRwAliasDenied": "Output has a readable/writable inode alias",
+      "artifactEvidence": "runs/candidate-writer"
+    },
+    {
+      "role": "candidate",
+      "mode": "reader",
+      "exitCode": 0,
+      "authenticated": true,
+      "runId": "f9ed7b9b42e043a2b7c850e8f4e0220a",
+      "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/f9ed7b9b42e043a2b7c850e8f4e0220a/evidence",
+      "processes": 19,
+      "sourceReadCount": 4,
+      "failures": 73,
+      "traceSha256": "c5f18b67ada3bc572fd0b7eb79ab0c63d6c6ad3480937eeb1614e2bf95a63b41",
+      "output": {
+        "/qa/pair/projectedA80/docs/qa-ci/status/namespace-report.json": {
+          "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/1365ac260334485daeb81d886bd6beb5/outputs/namespace-report.json",
+          "sha256": "f823d3f4845b53dc06d2ca3cf4e7cacfcaa08757e17e1e01e9f1c03ebb303bb6",
+          "bytes": 122016,
+          "inode": 565611,
+          "device": 65
+        }
+      },
+      "artifactEvidence": "runs/candidate-reader"
+    }
+  ],
+  "negativeCases": 29,
+  "all29NegativeCasesDenied": true,
+  "additionalFinalWriterCapabilityCountercases": 6,
+  "sourceProof": false,
+  "originalQaEvidence": false,
+  "candidateQaReaderContext": false,
+  "candidateQaSemanticPass": false,
+  "AQA02_03FullRepoPass": false,
+  "M7Acceptance": false,
+  "currentSourceARebasePreparedOnly": true,
+  "ordinaryNodeGlobalSearchRetained": true,
+  "explicitProfile": {
+    "TSX_DISABLE_CACHE": "1",
+    "noGlobalSearchPathsFlag": false
+  },
+  "activeGuards": {
+    "catalog": 593,
+    "canonical": 21,
+    "protectedPins": 46,
+    "allUnchanged": true
+  },
+  "inputs": {
+    "manifestSha256": "85ff31b0a32e744086123784af446a04c6a11b11db8f81da3bce211e08851de9",
+    "toolClosureManifestSha256": "a7df539067a63ffa4557f648cde0da69acbcd50e5374ae41af6e8986f7eac874",
+    "codePinsSha256": "e187e497edf6d7e5017ca8edfb0137c13750db219dccf39a4d07775a67a0d29b"
+  },
+  "ramRoot": "/dev/shm/source-a-closed-namespace-native-candidate-20261107",
+  "providerRejectedReaderPeerInvoked": false,
+  "noGit": true,
+  "fullNativeProducerSuiteExecuted": false,
+  "followUp": "Existing contract packages4–6, separate genuine source proof/original-QA/candidate-reader/full-producer coupling."
+}

@@ -1,0 +1,626 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+  "title": "Source-only canonical identity projection for isolated QA candidates",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1,
+      "type": "integer"
+    },
+    "migrationId": {
+      "const": "canonical-goal-id-format-2026-11-06"
+    },
+    "uuidNamespace": {
+      "const": "97d8c00c-411d-5dec-b260-4e6f22ab688b"
+    },
+    "baseCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "registry": {
+      "$ref": "#/$defs/binding"
+    },
+    "verifier": {
+      "$ref": "#/$defs/binding"
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "const": "all-runtime-shaped-curricula-excluding-quality"
+        },
+        "sourceFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalogSource"
+          },
+          "minItems": 593,
+          "maxItems": 593
+        },
+        "fileCount": {
+          "const": 593,
+          "type": "integer"
+        },
+        "serializedGoals": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "logicalGoalKeys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolvedReferencesBefore": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolvedReferencesAfter": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "scope",
+        "sourceFiles",
+        "fileCount",
+        "serializedGoals",
+        "logicalGoalKeys",
+        "resolvedReferencesBefore",
+        "resolvedReferencesAfter"
+      ]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 164,
+      "maxItems": 164
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/document"
+      },
+      "minItems": 1
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bijectiveRuleCount": {
+          "type": "integer",
+          "const": 164
+        },
+        "globalExistingIdentityCollisionCount": {
+          "type": "integer",
+          "const": 0
+        },
+        "inverseDocumentEqualityVerified": {
+          "type": "boolean",
+          "const": true
+        },
+        "unclassifiedInputHitCount": {
+          "type": "integer",
+          "const": 0
+        },
+        "historicalInputBytesBound": {
+          "type": "boolean",
+          "const": true
+        },
+        "cardAndAssetBytesRenamed": {
+          "type": "boolean",
+          "const": false
+        },
+        "sourceProjectionSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "bijectiveRuleCount",
+        "globalExistingIdentityCollisionCount",
+        "inverseDocumentEqualityVerified",
+        "unclassifiedInputHitCount",
+        "historicalInputBytesBound",
+        "cardAndAssetBytesRenamed",
+        "sourceProjectionSha256"
+      ]
+    },
+    "schemaBinding": {
+      "$ref": "#/$defs/binding"
+    },
+    "canonicalJsonProfile": {
+      "$ref": "#/$defs/binding"
+    },
+    "registrySchemaBinding": {
+      "$ref": "#/$defs/binding"
+    },
+    "proofType": {
+      "const": "canonical-goal-source-bijection"
+    },
+    "capability": {
+      "const": "isolated-qa-candidate-projection"
+    },
+    "runtimeActivationAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "qaValidityClaimed": {
+      "type": "boolean",
+      "const": false
+    },
+    "identityKernelBinding": {
+      "$ref": "#/$defs/binding"
+    },
+    "derivedOutputExclusions": {
+      "type": "array",
+      "const": [
+        {
+          "path": "curricula/DE/Gymnasium/migrations/canonical-goal-id-format-2026-11-06.json",
+          "producerId": "source-bijection-proof-v1",
+          "kind": "identity-proof-output"
+        },
+        {
+          "path": "docs/dev/ci-graph-repairs/canonical-goal-id-format-2026-11-06.proposal.json",
+          "producerId": "identity-proposal-v1",
+          "kind": "identity-proof-output"
+        },
+        {
+          "path": "docs/dev/ci-graph-repairs/canonical-goal-identity-activation-2026-11-06.receipt.json",
+          "producerId": "identity-activation-receipt-v1",
+          "kind": "identity-proof-output"
+        },
+        {
+          "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-2026-11-06.proposal.json",
+          "producerId": "source-bijection-proof-v1",
+          "kind": "identity-proof-output"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.json",
+          "producerId": "curriculum-quality-status",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.md",
+          "producerId": "curriculum-quality-status",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+          "producerId": "goal-source-rationale-coverage",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+          "producerId": "goal-source-rationale-coverage",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/memory-card-review-canonical-economics-current.md",
+          "producerId": "memory-card-review",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/memory-card-review-canonical-economics-full.md",
+          "producerId": "memory-card-review",
+          "kind": "current-generated-output"
+        },
+        {
+          "path": "docs/qa-ci/status/memory-card-review-canonical-politics-economics-full.md",
+          "producerId": "memory-card-review",
+          "kind": "current-generated-output"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "producerId": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "current-generated-output",
+              "identity-proof-output"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "producerId",
+          "kind"
+        ]
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "migrationId",
+    "uuidNamespace",
+    "baseCommit",
+    "registry",
+    "verifier",
+    "catalog",
+    "rules",
+    "documents",
+    "proof",
+    "schemaBinding",
+    "canonicalJsonProfile",
+    "registrySchemaBinding",
+    "proofType",
+    "capability",
+    "runtimeActivationAllowed",
+    "qaValidityClaimed",
+    "identityKernelBinding",
+    "derivedOutputExclusions"
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ]
+    },
+    "catalogSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "landscapeId": {
+          "type": "string"
+        },
+        "goalCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gitMode": {
+          "type": "string",
+          "enum": [
+            "100644",
+            "100755",
+            "120000"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "landscapeId",
+        "goalCount",
+        "gitMode"
+      ]
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "landscapeId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "sourceGoalId": {
+          "type": "string"
+        },
+        "targetGoalId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "relation": {
+          "const": "renamed"
+        },
+        "masteryPolicy": {
+          "const": "copy-exact"
+        },
+        "historyPolicy": {
+          "const": "preserve-original-and-add-alias"
+        },
+        "sourceFile": {
+          "type": "string"
+        },
+        "sourcePointer": {
+          "type": "string"
+        },
+        "beforeGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "hypotheticalGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "inverseGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "semanticPayloadSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "landscapeId",
+        "sourceGoalId",
+        "targetGoalId",
+        "relation",
+        "masteryPolicy",
+        "historyPolicy",
+        "sourceFile",
+        "sourcePointer",
+        "beforeGoalSha256",
+        "hypotheticalGoalSha256",
+        "inverseGoalSha256",
+        "semanticPayloadSha256"
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pointer": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "key",
+            "value"
+          ]
+        },
+        "role": {
+          "enum": [
+            "identity",
+            "reference",
+            "reference-key"
+          ]
+        },
+        "landscapeId": {
+          "type": "string"
+        },
+        "before": {
+          "type": "string"
+        },
+        "after": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pointer",
+        "kind",
+        "role",
+        "landscapeId",
+        "before",
+        "after"
+      ]
+    },
+    "preservedField": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pointer": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "key",
+            "value"
+          ]
+        },
+        "matchedSourceGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pointer",
+        "kind",
+        "matchedSourceGoalIds",
+        "reason"
+      ]
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "pointer": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "pointer",
+        "reason",
+        "value"
+      ]
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "classification": {
+          "enum": [
+            "runtime-graph",
+            "composition",
+            "mapping",
+            "provenance-registry",
+            "qa-scope-config",
+            "duration-policy",
+            "immutable-original"
+          ]
+        },
+        "handling": {
+          "enum": [
+            "explicit-pointer-projection",
+            "preserve-exact-bytes"
+          ]
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "beforeCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "hypotheticalCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "inverseCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          },
+          "minItems": 0
+        },
+        "preservedFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preservedField"
+          },
+          "minItems": 0
+        },
+        "matchedSourceGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "reason": {
+          "type": "string"
+        },
+        "boundFromGoalKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "path",
+        "classification",
+        "handling",
+        "sourceSha256",
+        "matchedSourceGoalIds"
+      ]
+    },
+    "sourceInputClassifications": {
+      "type": "array",
+      "const": [
+        {
+          "path": "app/scripts/testSkillGraphIntegrity.ts",
+          "classification": "immutable-original",
+          "handling": "preserve-exact-bytes",
+          "reason": "Actual malformed Math UUID is a genuine strict-identity negative fixture, not a live target definition. Preserve the original control bytes."
+        },
+        {
+          "path": "docs/dev/ci-graph-repairs/math-minimality-review-2026-11-06.json",
+          "classification": "immutable-original",
+          "handling": "preserve-exact-bytes",
+          "reason": "The pinned AI-review snapshot records the original Math goal registry. It is neither a canonical definition nor a new QA approval; preserve this source-commit context."
+        }
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "classification": {
+            "const": "immutable-original"
+          },
+          "handling": {
+            "const": "preserve-exact-bytes"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "classification",
+          "handling",
+          "reason"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "originalGitCommit": "f47de77faa158ddaab236c3967df7bba63ca75a2",
+  "gitBundle": "fixture.git.bundle",
+  "gitBundleSha256": "baba6d81f5a33cace11af8f0aa7a25eff24c220486932916941e3043dd63c22b",
+  "originalGitFiles": {
+    "data/goal.json": {
+      "sha256": "18580554d40be225589e70b746a2deeae4375c1e6f77e71bf726532b92e13046",
+      "bytes": 85
+    },
+    "data/space name.json": {
+      "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+      "bytes": 6
+    },
+    "data/ä.json": {
+      "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+      "bytes": 5
+    },
+    "data/required.config.json": {
+      "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+      "bytes": 28
+    },
+    "other/goal.json": {
+      "sha256": "31b2f11e513b12af4f29f3584860a6951853aaabb657c1c05f4b553bc48dd42c",
+      "bytes": 14
+    },
+    "tool/input.txt": {
+      "sha256": "3b6b9fc42151c853ef605424a0ffd114c99576f93dd60160b07748f57aa3ff91",
+      "bytes": 13
+    },
+    "dependency/input.txt": {
+      "sha256": "afb651f1b7a20196a37f865b42006e8820eec3b4285db443c12ed14c14e29475",
+      "bytes": 19
+    }
+  },
+  "candidateTypedFields": [
+    {
+      "pointer": "/goals/0/id",
+      "kind": "value",
+      "before": "legacy",
+      "after": "00000000-0000-4000-8000-000000000001"
+    }
+  ],
+  "candidateGoalSha256": "476ace4d519782fa3c1d5e4232c923121e280db092afa2259f08bc31829d1471",
+  "existingKernel": "/home/enpasos/projects/skillpilot/scripts/canonical_goal_identity_migration.py",
+  "existingKernelSha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+  "directorySelectorFromActualGitLsTree": [
+    [
+      "goal.json",
+      "file"
+    ],
+    [
+      "required.config.json",
+      "file"
+    ],
+    [
+      "space name.json",
+      "file"
+    ],
+    [
+      "ä.json",
+      "file"
+    ]
+  ],
+  "aliasTextFromActualGitBlob": "data",
+  "nativeOutputProducer": {
+    "argv": [
+      "/dev/shm/skillpilot-read-auth-native-q4ce2jtx/producer",
+      "emit-output"
+    ],
+    "exitCode": 0,
+    "stdoutSha256": "3e36c71d5d1f8be400ec9b1c21b50ddbaa310b69f11bba4ed5254a2a593daa2e"
+  },
+  "explicitFixtureRuntimeBindings": {
+    "/etc/ld.so.cache": {
+      "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+      "category": "tool",
+      "provenance": "explicit fixture runtime bytes captured before execution"
+    },
+    "/lib/x86_64-linux-gnu/libc.so.6": {
+      "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+      "category": "dependency",
+      "provenance": "explicit fixture runtime bytes captured before execution"
+    },
+    "/lib64/ld-linux-x86-64.so.2": {
+      "sha256": "8c7e2990d2847ca210d6f716d4b9aa62997c2fd2acfcda587c1ec398ed364618",
+      "category": "dependency",
+      "provenance": "explicit fixture runtime bytes captured before execution"
+    },
+    "/dev/shm/skillpilot-read-auth-native-q4ce2jtx/producer": {
+      "sha256": "4f0d07741d8cebc8fc0beebd162bb5cff978d0f156350f465e9df0de998c3938",
+      "category": "tool",
+      "provenance": "explicit fixture runtime bytes captured before execution"
+    }
+  },
+  "fullProductionSourceAValidationClaimed": false
+}

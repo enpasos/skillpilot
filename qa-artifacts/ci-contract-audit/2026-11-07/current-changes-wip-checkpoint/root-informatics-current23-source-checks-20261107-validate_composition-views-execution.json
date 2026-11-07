@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_composition-views",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_composition-views",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_composition-views/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot/app",
+    "--",
+    "npm",
+    "run",
+    "validate:composition-views"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-11-07T12:44:07.648858+00:00",
+  "finishedAt": "2026-11-07T12:49:26.294467+00:00",
+  "stdoutSha256": "70d06b45c8d07918ae8cbab698ac2221b8fece8e6dd7337ebf3dbff7712c2841",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

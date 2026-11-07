@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "status": "guarded-unapplied-D-only-integration-plan",
+  "canonicalSourceRequired": {
+    "rawSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "basis": "actual e4de source including native matrix PNG import; not historical 967a"
+  },
+  "originalRegistry": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "039958cb886633e6b800fedc068d493bc59724d2ae77fc3206b8e69ad96bcc18",
+    "bytes": 720634
+  },
+  "priorUnappliedPlan": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-diagram-description-resolution-2026-11-06/registry-change-plan.json",
+    "sha256": "943cd8ee629cc7ca4c61a0e7d35d2d86ed26dd503d433fae216b110fefe1d76e",
+    "bytes": 3594
+  },
+  "scope": "Only D entries: compose the old Math3 proposal with exactly one new matrix successor. Runtime owns P/V; no P edits from the old proposal are authorized by this D plan.",
+  "guards": {
+    "subjectIndex": 0,
+    "subject": "mathematik",
+    "allHistoricalIndexesRemainRegistered": true,
+    "resolutionSupersessionsPropertyAbsent": true,
+    "allThreeNewIndexPathsAbsent": true,
+    "oldAndNewIndexDigests": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.retained-before-parallel-png-20260927-v1.json",
+        "sha256": "f88cd64b580354515807de0d4cb3026feae2a786f587a5128869a9a9ab204849",
+        "bytes": 11384
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolution-index.current-subset-v1.json",
+        "sha256": "5b1bd008394beb95f183830f592c09e089eeb0ce2dbcdf535b84c02a92c35cb8",
+        "bytes": 1338
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolution-index.retained-before-image-binding-three-20260928-v1.json",
+        "sha256": "d691d62644d0e1b1091af542b3abc997a694bd5a8086a5c2504900100ef10fb0",
+        "bytes": 3441
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/resolution-index.json",
+        "sha256": "1a5cc2d0d0fba2a8d93fb73ae9cd0efa8e4def2f0dbf751550600a8fc10c93b6",
+        "bytes": 1335
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json",
+        "sha256": "3d04b4d38e5ab33d653a921caedb930136d0d28e9c1f5ba565c5888d28f64611",
+        "bytes": 2088
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-resolution-2026-11-07/packet/resolution-index.json",
+        "sha256": "0076c4b10742d522fdf89f0a8dd833d0f3a8d01b3fef4cfcc0cb465ee602fdd7",
+        "bytes": 1372
+      }
+    ],
+    "historicalResolutionDigestsExact": [
+      {
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolution-index.retained-before-image-binding-three-20260928-v1.json",
+        "resolutionDigest": "sha256:219932bc6b3a72885a4fbe7977ca2ac3f64cc61afa3ea23f5ffd90e9272d9781"
+      },
+      {
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolution-index.current-subset-v1.json",
+        "resolutionDigest": "sha256:f82cb0bdb270b52f84ae050218de46519f1dd755e9f35b90a06310617015cabe"
+      },
+      {
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "indexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.retained-before-parallel-png-20260927-v1.json",
+        "resolutionDigest": "sha256:a0177a74c02fb1b56a80261d2c8248bc77396e02821758c824ab86d60651cc4e"
+      },
+      {
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "indexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json",
+        "resolutionDigest": "sha256:d3bb845f1312f3d44c128a491aa1d2f0e23af3323e71074992a647bdd8d86ec2"
+      }
+    ]
+  },
+  "jsonPatchAfterAllGuards": [
+    {
+      "op": "add",
+      "path": "/subjects/0/resolutionIndexPaths/-",
+      "value": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json"
+    },
+    {
+      "op": "add",
+      "path": "/subjects/0/resolutionIndexPaths/-",
+      "value": "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/resolution-index.json"
+    },
+    {
+      "op": "add",
+      "path": "/subjects/0/resolutionIndexPaths/-",
+      "value": "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-resolution-2026-11-07/packet/resolution-index.json"
+    },
+    {
+      "op": "add",
+      "path": "/subjects/0/resolutionSupersessions",
+      "value": [
+        {
+          "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolution-index.retained-before-image-binding-three-20260928-v1.json",
+          "historicalResolutionDigest": "sha256:219932bc6b3a72885a4fbe7977ca2ac3f64cc61afa3ea23f5ffd90e9272d9781",
+          "replacementIndexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/resolution-index.json"
+        },
+        {
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolution-index.current-subset-v1.json",
+          "historicalResolutionDigest": "sha256:f82cb0bdb270b52f84ae050218de46519f1dd755e9f35b90a06310617015cabe",
+          "replacementIndexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json"
+        },
+        {
+          "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "supersededIndexPath": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.retained-before-parallel-png-20260927-v1.json",
+          "historicalResolutionDigest": "sha256:a0177a74c02fb1b56a80261d2c8248bc77396e02821758c824ab86d60651cc4e",
+          "replacementIndexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json"
+        },
+        {
+          "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+          "supersededIndexPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json",
+          "historicalResolutionDigest": "sha256:d3bb845f1312f3d44c128a491aa1d2f0e23af3323e71074992a647bdd8d86ec2",
+          "replacementIndexPath": "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-resolution-2026-11-07/packet/resolution-index.json"
+        }
+      ]
+    }
+  ],
+  "nativeValidatedChains": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "indexPaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-functions-diagrams-next10-seven-keep-partial-20260923-v1/resolution-index.retained-before-image-binding-three-20260928-v1.json",
+        "qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/resolution-index.json"
+      ]
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "indexPaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-inverse-post-revision-1-v1/resolution-index.current-subset-v1.json",
+        "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json",
+        "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-resolution-2026-11-07/packet/resolution-index.json"
+      ]
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "indexPaths": [
+        "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-26/batch-001-final-20-v2/resolution-index.retained-before-parallel-png-20260927-v1.json",
+        "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/resolution-index.json"
+      ]
+    }
+  ],
+  "nativeCurrentMath3GoalIds": [
+    "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+    "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+  ],
+  "notApplied": true,
+  "requiredAtRealIntegration": [
+    "Preserve all cold inputs, original results, native output bytes and their relative locator targets.",
+    "Use the actual e4de source, its current resource bytes and correct private/current semantic-kind rows; do not label 967a as the post-import source.",
+    "Coordinate the separately reviewed current P/V and duration artifacts; this D-only result gives no P/V/floor pass.",
+    "Run the actual full native D consumer and the required integration gates on the final materialized registry/source combination."
+  ]
+}

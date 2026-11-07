@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-fifteen-current-20261107-v1-resolution-6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+  "goal": {
+    "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c3ec721bedc5c0e7d72b69b56dd45e7932f4869d7a725a460cea37a44d726f98",
+    "pageFingerprint": "sha256:8c3a3d2a9fa6623f2973a4661c44b05aeb60e78aa5929a063ef7e1cd857a82a0",
+    "goalReviewContextFingerprint": "sha256:0e9faa9066af5c8b7572b59bfc94a66479cab672da39bfa592fa222b43908db8",
+    "finalText": {
+      "titleDe": "Matrizen addieren und subtrahieren",
+      "titleEn": "Add and subtract matrices",
+      "descriptionDe": "Die lernende Person kann gleich große Matrizen addieren bzw. subtrahieren und die Ergebnisse korrekt berechnen.",
+      "descriptionEn": "The learner can add or subtract matrices of the same size and compute results correctly."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-a",
+      "campaignDigest": "sha256:6984bd4c5c68ba73ddc8b443babddf3fa18b3f8907efe2e793a2e42fbf21d3cb",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-a",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-a",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:0e9faa9066af5c8b7572b59bfc94a66479cab672da39bfa592fa222b43908db8",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-a.batch-001",
+      "runId": "math15-description-a-a2bda914-665d-4c43-a161-3880e1169865",
+      "runManifestDigest": "sha256:03aeb8d2d59b486e9cf0fccfc9d3b8ffdfbba05762db3f726c42193f23084c56",
+      "resultsDigest": "sha256:733b772d94da8b8f5a0e73b16f0f6d517566498e0d62c09b74b67464607b2e76",
+      "recordId": "math15-description-a-8382a94d-2c04-495b-9223-a24ade4a702e",
+      "recordDigest": "sha256:4cddb59f8c2d922f25a231fd9d7a5ffb7a931885bdbc22640c5a844720ed92c8"
+    },
+    "second": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-b",
+      "campaignDigest": "sha256:c1257044e892402263daeb5bcd5fc09916c5816c5c44c36842b83167cb0bcba9",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-b",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-b",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:0e9faa9066af5c8b7572b59bfc94a66479cab672da39bfa592fa222b43908db8",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-b.batch-001",
+      "runId": "math15-blind-b-edd6f6ee-cfdd-4579-b518-90b67850b9cb",
+      "runManifestDigest": "sha256:96849dca162f0450eeed9a0b2f1b70ac1484fd52bad272d77b1a163a8498ef98",
+      "resultsDigest": "sha256:f1104394c9bdd95969ec256772dfa9702c992b5738e11aaf94e9882fb8c66cfc",
+      "recordId": "math15-b-644718e1-aca6-472d-8189-9d300b9fd6f5",
+      "recordDigest": "sha256:a5adc88e7e9b3e7ecc94c640ba51771d7274e2f0459ebee90da1ea2eb806b616"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:be8589bafc90b85431da20b1739b62d14a30a86a382a76ebbf125066941c7168"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-g17-fifteen-description-independent-synthesis-20261107-v1",
+    "manifestDigest": "sha256:c6be0cd92839abe1cd9dc9749a10a4bc8f60e457b1bf817e8c527d8c1f0aae44",
+    "manifestFingerprint": "sha256:1dca75d04465042f9a6a18f9201b8724ff420b21216156dc6e3859b18afcae35",
+    "decisionId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "/root/math15_description_synthesis; independent AI post-review synthesis; actual time in review-receipt.json",
+    "synthesizedAt": "2026-11-07T12:38:27.000Z",
+    "rationaleDe": "A ersetzt die teilweise redundante Formulierung durch „gleiche Zeilen- und Spaltenzahl“ und „eintragsweise“; dies ist kürzer und stilistisch gut, aber nicht notwendig. „Gleich große Matrizen“/“matrices of the same size” bezeichnet im gebundenen Zeilen-/Spaltenkontext gleiche Dimensionen, nicht gleiche Anzahl beliebig angeordneter Einträge. Addition/Subtraktion sind bereits definierte Positionsoperationen. B prüft den kritischen rechteckigen Gegenfall ausdrücklich in der Evidenz. Deshalb wird As exakter Ersatz als optionale Redaktionsvariante zurückgewiesen; es wird nicht behauptet, längerer Text sei grundsätzlich schlechter.",
+    "rationaleEn": "A replaces partly redundant wording with “same numbers of rows and columns” and “entry by entry”; it is shorter and stylistically useful, but unnecessary. “Matrices of the same size” denotes matching dimensions in the bound row/column context, not equal counts of arbitrarily arranged entries. Addition and subtraction already denote positional operations. B explicitly tests the crucial rectangular countercase in its evidence. A’s exact replacement is therefore rejected as an optional editorial variant; this is not a general claim that longer wording is worse.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Matrixaddition und -subtraktion verbinden Einträge an denselben Zeilen- und Spaltenpositionen. Beide Matrizen müssen dieselbe Zeilen- und Spaltenzahl besitzen; gleich viele Einträge insgesamt genügen nicht. Bei der Subtraktion bleibt die Reihenfolge der Operanden bedeutsam.",
+      "essentialUnderstandingEn": "Matrix addition and subtraction combine entries in matching row and column positions. Both matrices must have the same number of rows and columns; the same total number of entries is insufficient. Operand order remains significant in subtraction.",
+      "observablePerformanceDe": "Die lernende Person prüft eigenständig, ob zwei Matrizen gleich dimensioniert sind, berechnet die angegebene Summe oder Differenz positionsweise und erläutert insbesondere die Vorzeichen beim Subtrahieren negativer Einträge.",
+      "observablePerformanceEn": "The learner independently checks whether two matrices have the same dimensions, calculates the specified sum or difference entry by entry, and explains in particular the signs when subtracting negative entries.",
+      "transferExpectationDe": "Eine neue Aufgabe enthält rechteckige Matrizen, darunter ein Paar mit gleich vielen Einträgen, aber vertauschter Zeilen- und Spaltenzahl. Die lernende Person unterscheidet zulässige von unzulässigen Summen und Differenzen und berechnet die zulässigen Operationen mit korrekter Zuordnung.",
+      "transferExpectationEn": "A new task contains rectangular matrices, including a pair with equal numbers of entries but interchanged row and column counts. The learner distinguishes valid from invalid sums and differences and calculates the valid operations with correct positional matching."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-f450d1503234523fba2318ed060100d793b335a9d5fd1c96bd62f23026e79340",
+        "source": "first",
+        "textDe": "Die erste Runde schlug folgende Revision vor: „Die lernende Person kann Matrizen mit gleicher Zeilen- und Spaltenzahl eintragsweise addieren und subtrahieren.“ Die Synthese verwirft diesen Ersatztext ausdrücklich und behält den aktuellen kanonischen Wortlaut bei. A ersetzt die teilweise redundante Formulierung durch „gleiche Zeilen- und Spaltenzahl“ und „eintragsweise“; dies ist kürzer und stilistisch gut, aber nicht notwendig. „Gleich große Matrizen“/“matrices of the same size” bezeichnet im gebundenen Zeilen-/Spaltenkontext gleiche Dimensionen, nicht gleiche Anzahl beliebig angeordneter Einträge. Addition/Subtraktion sind bereits definierte Positionsoperationen. B prüft den kritischen rechteckigen Gegenfall ausdrücklich in der Evidenz. Deshalb wird As exakter Ersatz als optionale Redaktionsvariante zurückgewiesen; es wird nicht behauptet, längerer Text sei grundsätzlich schlechter.",
+        "textEn": "The first round proposed this revision: “The learner can add and subtract matrices with the same numbers of rows and columns entry by entry.” The synthesis explicitly rejects that replacement text and retains the current canonical wording. A replaces partly redundant wording with “same numbers of rows and columns” and “entry by entry”; it is shorter and stylistically useful, but unnecessary. “Matrices of the same size” denotes matching dimensions in the bound row/column context, not equal counts of arbitrarily arranged entries. Addition and subtraction already denote positional operations. B explicitly tests the crucial rectangular countercase in its evidence. A’s exact replacement is therefore rejected as an optional editorial variant; this is not a general claim that longer wording is worse.",
+        "disposition": "rejected_revision_evidence_accepted"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:7bbde2b2a77c3d9fd8d2ac3c3b4bedebab4d1979ef0a659a9866c851675059e1"
+}

@@ -1,0 +1,19 @@
+import pathlib,json,hashlib,os,shutil
+W=pathlib.Path('/dev/shm/source-a-closed-namespace-native-candidate-20261107');R=pathlib.Path('/home/enpasos/projects/skillpilot');h=lambda b:hashlib.sha256(b).hexdigest();capture=json.loads((W/'capture-inputs.json').read_text())
+producer="""import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {createRequire,globalPaths} from 'node:module';
+const root=path.resolve(process.cwd(),'..');const spec=JSON.parse(fs.readFileSync(path.join(root,'namespace-fixture.json'),'utf8'));const hash=(b:Buffer)=>createHash('sha256').update(b).digest('hex');const observations:any[]=[];
+for(const e of spec.catalog){const b=fs.readFileSync(path.join(root,e.path));if(hash(b)!==e.sha256)throw Error('wrong actual source');const parsed=JSON.parse(b.toString());observations.push({path:e.path,sha256:hash(b),goals:parsed.goals.length});}
+const canonical=fs.readdirSync(path.join(root,'curricula/DE/Gymnasium/canonical'),{withFileTypes:true}).map(e=>({name:e.name,kind:e.isDirectory()?'directory':e.isSymbolicLink()?'symlink':'file'}));
+for(const e of spec.assets){const b=fs.readFileSync(path.join(root,e.path));if(hash(b)!==e.sha256)throw Error('wrong actual asset');observations.push({path:e.path,sha256:hash(b),bytes:b.length});}
+const csv=fs.readFileSync(path.join(root,spec.csv.path));if(hash(csv)!==spec.csv.sha256||!csv.toString('utf16le').includes('vollständig'))throw Error('empty/wrong UTF16');const temporary=path.join(process.env.TMPDIR!,'source-transport.csv');fs.writeFileSync(temporary,csv);if(hash(fs.readFileSync(temporary))!==spec.csv.sha256)throw Error('wrong source transport');
+const aliasEntries=fs.readdirSync(path.join(root,'curricula/native-asset-alias')).sort();let missing='';try{createRequire(import.meta.url).resolve('controlled-uninstalled-closed-namespace-fixture-20261107')}catch(e:any){missing=e.code;}if(missing!=='MODULE_NOT_FOUND')throw Error('missing probe');
+const report={kind:'actual namespace mechanics,not SourceA/QA pass',role:spec.role,catalog:observations,canonical,aliasEntries,csvSha256:hash(csv),csvBytes:csv.length,missing,globalPaths,argv:process.argv,cwd:process.cwd()};fs.writeFileSync(path.join(root,spec.output),JSON.stringify(report,null,2)+'\\n');console.log(JSON.stringify({role:spec.role,catalogFiles:spec.catalog.length,csvBytes:csv.length,assets:spec.assets.length,written:true}));
+"""
+reader="""import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';const root=path.resolve(process.cwd(),'..');const spec=JSON.parse(fs.readFileSync(path.join(root,'namespace-fixture.json'),'utf8'));const raw=fs.readFileSync(path.join(root,spec.output));const report=JSON.parse(raw.toString());if(report.role!==spec.role||report.catalog.length!==spec.catalog.length+spec.assets.length||report.csvSha256!==spec.csv.sha256)throw Error('wrong or old report');console.log(JSON.stringify({role:spec.role,actualReader:true,sha256:createHash('sha256').update(raw).digest('hex'),bytes:raw.length}));
+"""
+for role,folder in [('original','original80'),('candidate','projectedA80')]:
+ root=W/'pair'/folder
+ for rel,raw in [('app/scripts/namespace-producer.ts',producer.encode()),('app/scripts/namespace-reader.ts',reader.encode()),('app/package.json',(R/'app/package.json').read_bytes()),*[(str(p.relative_to(R)),p.read_bytes())for p in (R/'app').glob('tsconfig*.json')]]:
+  p=root/rel;p.parent.mkdir(exist_ok=True,parents=True);p.write_bytes(raw);os.chmod(p,0o444);capture['files'].append({'role':role,'path':rel,'kind':'file','sha256':h(raw),'bytes':len(raw),'category':'source','origin':'explicit pinned native mechanics probe/config'})
+ capture.setdefault('sourceAliases',[]).append({'role':role,'path':'curricula/native-asset-alias','target':'DE/Gymnasium/visualizations/biologie/8e2244e1-8616-5f24-859f-8e10df1c887b'})
+(W/'capture-inputs.json').write_text(json.dumps(capture,ensure_ascii=False,indent=2)+'\n')

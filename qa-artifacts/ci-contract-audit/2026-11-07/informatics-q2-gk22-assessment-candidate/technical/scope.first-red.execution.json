@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "bwrap",
+    "--die-with-parent",
+    "--unshare-net",
+    "--ro-bind",
+    "/",
+    "/",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--bind",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107",
+    "--ro-bind",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107/cqr-export-only.ts",
+    "/home/enpasos/projects/skillpilot/app/scripts/generateCurriculumQualityStatus.ts",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/derive-scope.mts",
+    "/dev/shm/skillpilot-informatics-q2-gk22-20261107/native-scope.json"
+  ],
+  "exitCode": 1,
+  "elapsedSeconds": 0.7031610139965778
+}

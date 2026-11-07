@@ -1,0 +1,11 @@
+--- a/app/scripts/lib/goalVisualizationMath58Contexts.ts
++++ b/app/scripts/lib/goalVisualizationMath58Contexts.ts
+@@ -3,6 +3,6 @@
+ import type { VisualizationContextQualification, VisualizationCurrentContext, VisualizationReviewArtifact, VisualizationReviewedContext } from '../goalVisualizationReviewedContext'
+ 
+-export const MATH58_PIN_PATH = 'contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json'
+-export const MATH58_PIN_SHA256 = 'b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76'
++export const MATH58_PIN_PATH = 'contracts/goal-visualization-context/v1/math58-current-supplement-pins-g17-first20-2026-11-07.candidate.json'
++export const MATH58_PIN_SHA256 = '9f54e1aeca7c3248afc70e87a3f35dbbd0c3dfbac2a8d74de75916523a8bac1d'
+ export const isMath58Profile = (profile: string): boolean => profile === 'math-current62-with-current-viewports-v1' || profile === 'math-independent-ten-with-current-viewports-v1'
+ export interface BoundCurrentEvidence { path: string; sha256: string; bytes?: number }

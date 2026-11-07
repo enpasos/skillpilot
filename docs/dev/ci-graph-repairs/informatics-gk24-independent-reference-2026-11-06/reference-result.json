@@ -1,0 +1,218 @@
+{
+  "status": "bounded-independent-GK24-reviewer-reference-checks-pass",
+  "authorRunClaimed": false,
+  "oldLkRunsReusedAsNewPass": false,
+  "learnerEffectivenessClaimed": false,
+  "sourceOrDraftWrites": false,
+  "inputPins": {
+    ".task.md": "aac9fe49b71430fbb40abdeb85b5ede0c920bcc18001ec8cf3478a39810c5fa7",
+    ".solution.md": "731212704993a78aaf1f76e7cc931c58670f720e543893a303fa39ca09d00b91",
+    ".exam-data.json": "6a99cf279e353aeba72ac841b2104d35c4086b37fb53e412477bf806e98b8899"
+  },
+  "coreCases": [
+    {
+      "id": "state-sequence-and-explicit-loop",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-amount-0",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-amount--1",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-amount-1.5",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-amount-7",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-amount-NaN",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-field-name",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-field-email",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-field-course",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-field-places",
+      "status": "pass"
+    },
+    {
+      "id": "invalid-field-confirmTestData",
+      "status": "pass"
+    },
+    {
+      "id": "full-course-no-mutation",
+      "status": "pass"
+    },
+    {
+      "id": "tariff-and-real-version-difference",
+      "status": "pass"
+    },
+    {
+      "id": "C1-caesar-apply-and-invert",
+      "status": "pass"
+    },
+    {
+      "id": "C2-all-caesar-keys-and-controlled-key",
+      "status": "pass"
+    },
+    {
+      "id": "C3-vigenere-apply-and-invert",
+      "status": "pass"
+    },
+    {
+      "id": "C4-known-prefix-recover-and-invert",
+      "status": "pass"
+    },
+    {
+      "id": "smtp-token-and-http-body",
+      "status": "pass"
+    },
+    {
+      "id": "all24-required-no-compensation",
+      "status": "pass"
+    }
+  ],
+  "oldCodeNegatives": [
+    {
+      "places": 2,
+      "expectedOk": true,
+      "expectedReserved": 5,
+      "actualOk": false,
+      "actualReserved": 3,
+      "expectedOldFailureObserved": true,
+      "repairedPass": true
+    },
+    {
+      "places": 3,
+      "expectedOk": true,
+      "expectedReserved": 6,
+      "actualOk": true,
+      "actualReserved": 3,
+      "expectedOldFailureObserved": true,
+      "repairedPass": true
+    },
+    {
+      "places": 4,
+      "expectedOk": false,
+      "expectedReserved": 3,
+      "actualOk": true,
+      "actualReserved": 4,
+      "expectedOldFailureObserved": true,
+      "repairedPass": true
+    }
+  ],
+  "browserVersion": "147.0.7727.15",
+  "browserRows": [
+    {
+      "width": 320,
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "grid": "288px",
+        "cards": 3
+      },
+      "realFormSequence": "pass",
+      "networkAttempts": [],
+      "pageErrors": [],
+      "storage": {
+        "local": 0,
+        "session": 0
+      }
+    },
+    {
+      "width": 767,
+      "layout": {
+        "width": 767,
+        "scrollWidth": 767,
+        "grid": "735px",
+        "cards": 3
+      },
+      "realFormSequence": "pass",
+      "networkAttempts": [],
+      "pageErrors": [],
+      "storage": {
+        "local": 0,
+        "session": 0
+      }
+    },
+    {
+      "width": 768,
+      "layout": {
+        "width": 768,
+        "scrollWidth": 768,
+        "grid": "234.656px 234.672px 234.672px",
+        "cards": 3
+      },
+      "realFormSequence": "pass",
+      "networkAttempts": [],
+      "pageErrors": [],
+      "storage": {
+        "local": 0,
+        "session": 0
+      }
+    },
+    {
+      "width": 1024,
+      "layout": {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "grid": "320px 320px 320px",
+        "cards": 3
+      },
+      "realFormSequence": "pass",
+      "networkAttempts": [],
+      "pageErrors": [],
+      "storage": {
+        "local": 0,
+        "session": 0
+      }
+    }
+  ],
+  "extractedFiles": [
+    {
+      "path": "gk24-final.html",
+      "bytes": 5787,
+      "sha256": "f10e93f60ae5559524888333811f6d92a17d4dcb82919b056ef50ed0152de969"
+    },
+    {
+      "path": "gk24-v1.html",
+      "bytes": 3196,
+      "sha256": "b3b9033c704c21297289e5731dea415a98d90da2229f86c333e0f00eb1d515e9"
+    },
+    {
+      "path": "gk24-v2.mjs",
+      "bytes": 2580,
+      "sha256": "07c792adcbb95a00ae75411cd110536f4005086a35deab0c94af61ccf5dc3136"
+    },
+    {
+      "path": "gk24-crypto.mjs",
+      "bytes": 1377,
+      "sha256": "cbf814c231b2bac0d2ea8cf84223a59027fcf85a64f7a2dcd3c1766e1cef1239"
+    },
+    {
+      "path": "gk24-320.png",
+      "bytes": 88927,
+      "sha256": "41e8d2eb3ef9144dc02f827602db250f86400e0655d8302b6e7071acce67b096"
+    },
+    {
+      "path": "gk24-1024.png",
+      "bytes": 83935,
+      "sha256": "1c787e7deb4321c34cb170b348e3661c68439f4297614079fd6380034d107f04"
+    }
+  ]
+}

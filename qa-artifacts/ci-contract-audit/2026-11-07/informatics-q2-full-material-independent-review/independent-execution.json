@@ -1,0 +1,3238 @@
+{
+  "status": "independent concrete checks, not a subject acceptance or published QA ledger",
+  "count": 188,
+  "matched": 188,
+  "checks": [
+    {
+      "name": "courses/T04",
+      "actual": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/T05",
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/subquery",
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/wrong-join",
+      "actual": 0,
+      "expected": 0,
+      "matched": true
+    },
+    {
+      "name": "courses/wrong-status-filter-distinguished",
+      "actual": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/RA-projection-duplicate",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/RA-no-DISTINCT-negative",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/RA-7",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/RA-8",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/RA-9",
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/nested-RA",
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/pushdown-equivalence",
+      "actual": [
+        [
+          1,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          2,
+          "Fotobasis"
+        ],
+        [
+          3,
+          "Fotobasis"
+        ],
+        [
+          5,
+          "Datenschutz-Werkstatt"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          2,
+          "Fotobasis"
+        ],
+        [
+          3,
+          "Fotobasis"
+        ],
+        [
+          5,
+          "Datenschutz-Werkstatt"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/DDL-DML-step1",
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/DDL-DML-step2",
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/DDL-DML-step3",
+      "actual": [],
+      "expected": [],
+      "matched": true
+    },
+    {
+      "name": "courses/DDL-orphan",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "courses/DDL-duplicate",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=30",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-full-filter",
+      "actual": [
+        [
+          "10",
+          "Fotobasis",
+          "20"
+        ],
+        [
+          "20",
+          "Audiolabor",
+          "30"
+        ],
+        [
+          "40",
+          "Datenschutz-Werkstatt",
+          "10"
+        ],
+        [
+          "50",
+          "Archiv <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "10",
+          "Fotobasis",
+          "20"
+        ],
+        [
+          "20",
+          "Audiolabor",
+          "30"
+        ],
+        [
+          "40",
+          "Datenschutz-Werkstatt",
+          "10"
+        ],
+        [
+          "50",
+          "Archiv <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-literal-angle-title",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=0",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=-1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=%EF%BC%93%EF%BC%90",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=0%20OR%201=1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/kurse?maxPreis=30&maxPreis=40",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=1",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=3",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-lastpage",
+      "actual": [
+        [
+          "50",
+          "Archiv <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "50",
+          "Archiv <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-lastpage-links",
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=4",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=0",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=1&page=2",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-/seiten?page=9999999999999999999999999999999999999999999999999999999999999999999",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-stored-text-update",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "courses/new-connection-persistence-and-other-rows",
+      "actual": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-stored-script-is-text",
+      "actual": "<script>alert(1)</script> x' OR 1=1",
+      "expected": "<script>alert(1)</script> x' OR 1=1",
+      "matched": true
+    },
+    {
+      "name": "courses/HTML-no-script-tag",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-wrong-token",
+      "actual": 403,
+      "expected": 403,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-foreign-pid",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-unknown",
+      "actual": 404,
+      "expected": 404,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-duplicate",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-capacity",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-success",
+      "actual": 201,
+      "expected": 201,
+      "matched": true
+    },
+    {
+      "name": "courses/HTTP-book-repeated",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "courses/T21-retained-base-right-after-GRANT",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "courses/T25-T33-explicit-REVOKE",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "library/T04",
+      "actual": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/T05",
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/subquery",
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/wrong-join",
+      "actual": 0,
+      "expected": 0,
+      "matched": true
+    },
+    {
+      "name": "library/wrong-status-filter-distinguished",
+      "actual": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/RA-projection-duplicate",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/RA-no-DISTINCT-negative",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/RA-53",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/RA-54",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/RA-55",
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/nested-RA",
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/pushdown-equivalence",
+      "actual": [
+        [
+          1,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Privatsphaere"
+        ],
+        [
+          3,
+          "Datenatlas"
+        ],
+        [
+          5,
+          "Privatsphaere"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Privatsphaere"
+        ],
+        [
+          3,
+          "Datenatlas"
+        ],
+        [
+          5,
+          "Privatsphaere"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/DDL-DML-step1",
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/DDL-DML-step2",
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/DDL-DML-step3",
+      "actual": [],
+      "expected": [],
+      "matched": true
+    },
+    {
+      "name": "library/DDL-orphan",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "library/DDL-duplicate",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=30",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/HTML-full-filter",
+      "actual": [
+        [
+          "10",
+          "Datenatlas",
+          "20"
+        ],
+        [
+          "20",
+          "Klangbuch",
+          "30"
+        ],
+        [
+          "40",
+          "Privatsphaere",
+          "10"
+        ],
+        [
+          "50",
+          "Magazin <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "10",
+          "Datenatlas",
+          "20"
+        ],
+        [
+          "20",
+          "Klangbuch",
+          "30"
+        ],
+        [
+          "40",
+          "Privatsphaere",
+          "10"
+        ],
+        [
+          "50",
+          "Magazin <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/HTML-literal-angle-title",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=0",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=-1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=%EF%BC%93%EF%BC%90",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=0%20OR%201=1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/kurse?maxPreis=30&maxPreis=40",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=1",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=3",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/HTML-lastpage",
+      "actual": [
+        [
+          "50",
+          "Magazin <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "50",
+          "Magazin <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/HTML-lastpage-links",
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=4",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=0",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=1&page=2",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-/seiten?page=9999999999999999999999999999999999999999999999999999999999999999999",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-stored-text-update",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "library/new-connection-persistence-and-other-rows",
+      "actual": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "library/HTML-stored-script-is-text",
+      "actual": "<script>alert(1)</script> x' OR 1=1",
+      "expected": "<script>alert(1)</script> x' OR 1=1",
+      "matched": true
+    },
+    {
+      "name": "library/HTML-no-script-tag",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-wrong-token",
+      "actual": 403,
+      "expected": 403,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-foreign-pid",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-unknown",
+      "actual": 404,
+      "expected": 404,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-duplicate",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-capacity",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-success",
+      "actual": 201,
+      "expected": 201,
+      "matched": true
+    },
+    {
+      "name": "library/HTTP-book-repeated",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "library/T21-retained-base-right-after-GRANT",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "library/T25-T33-explicit-REVOKE",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "festival/T04",
+      "actual": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/T05",
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/subquery",
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/wrong-join",
+      "actual": 0,
+      "expected": 0,
+      "matched": true
+    },
+    {
+      "name": "festival/wrong-status-filter-distinguished",
+      "actual": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          3
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          40,
+          2
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/RA-projection-duplicate",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/RA-no-DISTINCT-negative",
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/RA-99",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/RA-100",
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/RA-101",
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/nested-RA",
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/pushdown-equivalence",
+      "actual": [
+        [
+          1,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Freie Bühne"
+        ],
+        [
+          2,
+          "Morgenquartett"
+        ],
+        [
+          3,
+          "Morgenquartett"
+        ],
+        [
+          5,
+          "Freie Bühne"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Freie Bühne"
+        ],
+        [
+          2,
+          "Morgenquartett"
+        ],
+        [
+          3,
+          "Morgenquartett"
+        ],
+        [
+          5,
+          "Freie Bühne"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/DDL-DML-step1",
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/DDL-DML-step2",
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/DDL-DML-step3",
+      "actual": [],
+      "expected": [],
+      "matched": true
+    },
+    {
+      "name": "festival/DDL-orphan",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "festival/DDL-duplicate",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=30",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-full-filter",
+      "actual": [
+        [
+          "10",
+          "Morgenquartett",
+          "20"
+        ],
+        [
+          "20",
+          "Nachtklang",
+          "30"
+        ],
+        [
+          "40",
+          "Freie Bühne",
+          "10"
+        ],
+        [
+          "50",
+          "Finale <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "10",
+          "Morgenquartett",
+          "20"
+        ],
+        [
+          "20",
+          "Nachtklang",
+          "30"
+        ],
+        [
+          "40",
+          "Freie Bühne",
+          "10"
+        ],
+        [
+          "50",
+          "Finale <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-literal-angle-title",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=0",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=-1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=%EF%BC%93%EF%BC%90",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=0%20OR%201=1",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/kurse?maxPreis=30&maxPreis=40",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=1",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=3",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-lastpage",
+      "actual": [
+        [
+          "50",
+          "Finale <offen>",
+          "15"
+        ]
+      ],
+      "expected": [
+        [
+          "50",
+          "Finale <offen>",
+          "15"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-lastpage-links",
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=4",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=0",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=1&page=2",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-/seiten?page=9999999999999999999999999999999999999999999999999999999999999999999",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-stored-text-update",
+      "actual": 200,
+      "expected": 200,
+      "matched": true
+    },
+    {
+      "name": "festival/new-connection-persistence-and-other-rows",
+      "actual": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "<script>alert(1)</script> x' OR 1=1"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-stored-script-is-text",
+      "actual": "<script>alert(1)</script> x' OR 1=1",
+      "expected": "<script>alert(1)</script> x' OR 1=1",
+      "matched": true
+    },
+    {
+      "name": "festival/HTML-no-script-tag",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-wrong-token",
+      "actual": 403,
+      "expected": 403,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-foreign-pid",
+      "actual": 400,
+      "expected": 400,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-unknown",
+      "actual": 404,
+      "expected": 404,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-duplicate",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-capacity",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-success",
+      "actual": 201,
+      "expected": 201,
+      "matched": true
+    },
+    {
+      "name": "festival/HTTP-book-repeated",
+      "actual": 409,
+      "expected": 409,
+      "matched": true
+    },
+    {
+      "name": "festival/T21-retained-base-right-after-GRANT",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "festival/T25-T33-explicit-REVOKE",
+      "actual": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "name": "weak-local-number-1",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "weak-local-number-2",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "weak-duplicate",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "weak-orphan",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "phone-first",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "phone-second",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "phone-shared",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "phone-duplicate",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "subtype",
+      "actual": "allowed",
+      "expected": "allowed",
+      "matched": true
+    },
+    {
+      "name": "subtype-orphan",
+      "actual": "rejected",
+      "expected": "rejected",
+      "matched": true
+    },
+    {
+      "name": "supertype-without-subtype",
+      "actual": [
+        [
+          20
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "BCNF-keys",
+      "actual": [
+        [
+          "dozent",
+          "student"
+        ],
+        [
+          "fach",
+          "student"
+        ]
+      ],
+      "expected": [
+        [
+          "dozent",
+          "student"
+        ],
+        [
+          "fach",
+          "student"
+        ]
+      ],
+      "matched": true
+    },
+    {
+      "name": "BCNF-local-valid-global-SF-to-D-violated",
+      "actual": 2,
+      "expected": 2,
+      "matched": true
+    },
+    {
+      "name": "hierarchical-parallel-state-traces",
+      "actual": {
+        "sequences": 1365,
+        "mismatches": []
+      },
+      "expected": {
+        "sequences": 1365,
+        "mismatches": []
+      },
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/goal-binding",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/criterion-binding",
+      "actual": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T17-C1",
+        "C-T17-C2",
+        "C-T18-C1",
+        "C-T18-C2",
+        "C-T19-C1",
+        "C-T19-C2"
+      ],
+      "expected": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T17-C1",
+        "C-T17-C2",
+        "C-T18-C1",
+        "C-T18-C2",
+        "C-T19-C1",
+        "C-T19-C2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/all-essential-threshold",
+      "actual": [
+        20,
+        20
+      ],
+      "expected": [
+        20,
+        20
+      ],
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/draft",
+      "actual": "draft",
+      "expected": "draft",
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/full-native-task-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/full-native-solution-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254/full-native-material-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/goal-binding",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/criterion-binding",
+      "actual": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T03-C1",
+        "C-T03-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T06-C1",
+        "C-T06-C2",
+        "C-T07-C1",
+        "C-T07-C2",
+        "C-T08-C1",
+        "C-T08-C2",
+        "C-T09-C1",
+        "C-T09-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T12-C1",
+        "C-T12-C2",
+        "C-T13-C1",
+        "C-T13-C2",
+        "C-T14-C1",
+        "C-T14-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T16-C1",
+        "C-T16-C2",
+        "C-T17-C1",
+        "C-T17-C2",
+        "C-T18-C1",
+        "C-T18-C2",
+        "C-T19-C1",
+        "C-T19-C2",
+        "C-T20-C1",
+        "C-T20-C2"
+      ],
+      "expected": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T03-C1",
+        "C-T03-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T06-C1",
+        "C-T06-C2",
+        "C-T07-C1",
+        "C-T07-C2",
+        "C-T08-C1",
+        "C-T08-C2",
+        "C-T09-C1",
+        "C-T09-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T12-C1",
+        "C-T12-C2",
+        "C-T13-C1",
+        "C-T13-C2",
+        "C-T14-C1",
+        "C-T14-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T16-C1",
+        "C-T16-C2",
+        "C-T17-C1",
+        "C-T17-C2",
+        "C-T18-C1",
+        "C-T18-C2",
+        "C-T19-C1",
+        "C-T19-C2",
+        "C-T20-C1",
+        "C-T20-C2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/all-essential-threshold",
+      "actual": [
+        40,
+        40
+      ],
+      "expected": [
+        40,
+        40
+      ],
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/draft",
+      "actual": "draft",
+      "expected": "draft",
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/full-native-task-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/full-native-solution-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a/full-native-material-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/goal-binding",
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/criterion-binding",
+      "actual": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T03-C1",
+        "C-T03-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T21-C1",
+        "C-T21-C2",
+        "C-T06-C1",
+        "C-T06-C2",
+        "C-T07-C1",
+        "C-T07-C2",
+        "C-T22-C1",
+        "C-T22-C2",
+        "C-T08-C1",
+        "C-T08-C2",
+        "C-T09-C1",
+        "C-T09-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T23-C1",
+        "C-T23-C2",
+        "C-T24-C1",
+        "C-T24-C2",
+        "C-T12-C1",
+        "C-T12-C2",
+        "C-T25-C1",
+        "C-T25-C2",
+        "C-T26-C1",
+        "C-T26-C2",
+        "C-T13-C1",
+        "C-T13-C2",
+        "C-T14-C1",
+        "C-T14-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T27-C1",
+        "C-T27-C2",
+        "C-T28-C1",
+        "C-T28-C2",
+        "C-T29-C1",
+        "C-T29-C2",
+        "C-T30-C1",
+        "C-T30-C2",
+        "C-T31-C1",
+        "C-T31-C2",
+        "C-T32-C1",
+        "C-T32-C2",
+        "C-T33-C1",
+        "C-T33-C2",
+        "C-T34-C1",
+        "C-T34-C2",
+        "C-T35-C1",
+        "C-T35-C2",
+        "C-T37-C1",
+        "C-T37-C2",
+        "C-T36-C1",
+        "C-T36-C2",
+        "C-T38-C1",
+        "C-T38-C2",
+        "C-T39-C1",
+        "C-T39-C2",
+        "C-T40-C1",
+        "C-T40-C2",
+        "C-T41-C1",
+        "C-T41-C2",
+        "C-T42-C1",
+        "C-T42-C2",
+        "C-T43-C1",
+        "C-T43-C2",
+        "C-T44-C1",
+        "C-T44-C2",
+        "C-T45-C1",
+        "C-T45-C2",
+        "C-T16-C1",
+        "C-T16-C2"
+      ],
+      "expected": [
+        "C-T01-C1",
+        "C-T01-C2",
+        "C-T02-C1",
+        "C-T02-C2",
+        "C-T03-C1",
+        "C-T03-C2",
+        "C-T04-C1",
+        "C-T04-C2",
+        "C-T05-C1",
+        "C-T05-C2",
+        "C-T21-C1",
+        "C-T21-C2",
+        "C-T06-C1",
+        "C-T06-C2",
+        "C-T07-C1",
+        "C-T07-C2",
+        "C-T22-C1",
+        "C-T22-C2",
+        "C-T08-C1",
+        "C-T08-C2",
+        "C-T09-C1",
+        "C-T09-C2",
+        "C-T10-C1",
+        "C-T10-C2",
+        "C-T11-C1",
+        "C-T11-C2",
+        "C-T23-C1",
+        "C-T23-C2",
+        "C-T24-C1",
+        "C-T24-C2",
+        "C-T12-C1",
+        "C-T12-C2",
+        "C-T25-C1",
+        "C-T25-C2",
+        "C-T26-C1",
+        "C-T26-C2",
+        "C-T13-C1",
+        "C-T13-C2",
+        "C-T14-C1",
+        "C-T14-C2",
+        "C-T15-C1",
+        "C-T15-C2",
+        "C-T27-C1",
+        "C-T27-C2",
+        "C-T28-C1",
+        "C-T28-C2",
+        "C-T29-C1",
+        "C-T29-C2",
+        "C-T30-C1",
+        "C-T30-C2",
+        "C-T31-C1",
+        "C-T31-C2",
+        "C-T32-C1",
+        "C-T32-C2",
+        "C-T33-C1",
+        "C-T33-C2",
+        "C-T34-C1",
+        "C-T34-C2",
+        "C-T35-C1",
+        "C-T35-C2",
+        "C-T37-C1",
+        "C-T37-C2",
+        "C-T36-C1",
+        "C-T36-C2",
+        "C-T38-C1",
+        "C-T38-C2",
+        "C-T39-C1",
+        "C-T39-C2",
+        "C-T40-C1",
+        "C-T40-C2",
+        "C-T41-C1",
+        "C-T41-C2",
+        "C-T42-C1",
+        "C-T42-C2",
+        "C-T43-C1",
+        "C-T43-C2",
+        "C-T44-C1",
+        "C-T44-C2",
+        "C-T45-C1",
+        "C-T45-C2",
+        "C-T16-C1",
+        "C-T16-C2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/all-essential-threshold",
+      "actual": [
+        82,
+        82
+      ],
+      "expected": [
+        82,
+        82
+      ],
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/draft",
+      "actual": "draft",
+      "expected": "draft",
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/full-native-task-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/full-native-solution-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "0df1bedd-5fda-5b3b-a959-c9610237bb3e/full-native-material-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/goal-binding",
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/criterion-binding",
+      "actual": [
+        "B-T27-C1",
+        "B-T27-C2",
+        "B-T05-C1",
+        "B-T05-C2",
+        "B-T25-C1",
+        "B-T25-C2",
+        "B-T24-C1",
+        "B-T24-C2",
+        "B-T01-C1",
+        "B-T01-C2",
+        "B-T21-C1",
+        "B-T21-C2",
+        "B-T02-C1",
+        "B-T02-C2",
+        "B-T03-C1",
+        "B-T03-C2",
+        "B-T29-C1",
+        "B-T29-C2",
+        "B-T23-C1",
+        "B-T23-C2",
+        "B-T32-C1",
+        "B-T32-C2",
+        "B-T30-C1",
+        "B-T30-C2",
+        "B-T28-C1",
+        "B-T28-C2",
+        "B-T31-C1",
+        "B-T31-C2",
+        "B-T12-C1",
+        "B-T12-C2",
+        "B-T33-C1",
+        "B-T33-C2",
+        "B-T42-C1",
+        "B-T42-C2",
+        "B-T11-C1",
+        "B-T11-C2",
+        "B-T43-C1",
+        "B-T43-C2",
+        "B-T34-C1",
+        "B-T34-C2",
+        "B-T15-C1",
+        "B-T15-C2",
+        "B-T04-C1",
+        "B-T04-C2",
+        "B-T10-C1",
+        "B-T10-C2"
+      ],
+      "expected": [
+        "B-T27-C1",
+        "B-T27-C2",
+        "B-T05-C1",
+        "B-T05-C2",
+        "B-T25-C1",
+        "B-T25-C2",
+        "B-T24-C1",
+        "B-T24-C2",
+        "B-T01-C1",
+        "B-T01-C2",
+        "B-T21-C1",
+        "B-T21-C2",
+        "B-T02-C1",
+        "B-T02-C2",
+        "B-T03-C1",
+        "B-T03-C2",
+        "B-T29-C1",
+        "B-T29-C2",
+        "B-T23-C1",
+        "B-T23-C2",
+        "B-T32-C1",
+        "B-T32-C2",
+        "B-T30-C1",
+        "B-T30-C2",
+        "B-T28-C1",
+        "B-T28-C2",
+        "B-T31-C1",
+        "B-T31-C2",
+        "B-T12-C1",
+        "B-T12-C2",
+        "B-T33-C1",
+        "B-T33-C2",
+        "B-T42-C1",
+        "B-T42-C2",
+        "B-T11-C1",
+        "B-T11-C2",
+        "B-T43-C1",
+        "B-T43-C2",
+        "B-T34-C1",
+        "B-T34-C2",
+        "B-T15-C1",
+        "B-T15-C2",
+        "B-T04-C1",
+        "B-T04-C2",
+        "B-T10-C1",
+        "B-T10-C2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/all-essential-threshold",
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ],
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/draft",
+      "actual": "draft",
+      "expected": "draft",
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/full-native-task-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/full-native-solution-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "269a561b-f12e-57b2-9b05-e20f58c9dcf6/full-native-material-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/goal-binding",
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/criterion-binding",
+      "actual": [
+        "F-T27-C1",
+        "F-T27-C2",
+        "F-T05-C1",
+        "F-T05-C2",
+        "F-T25-C1",
+        "F-T25-C2",
+        "F-T24-C1",
+        "F-T24-C2",
+        "F-T01-C1",
+        "F-T01-C2",
+        "F-T21-C1",
+        "F-T21-C2",
+        "F-T02-C1",
+        "F-T02-C2",
+        "F-T03-C1",
+        "F-T03-C2",
+        "F-T29-C1",
+        "F-T29-C2",
+        "F-T23-C1",
+        "F-T23-C2",
+        "F-T32-C1",
+        "F-T32-C2",
+        "F-T30-C1",
+        "F-T30-C2",
+        "F-T28-C1",
+        "F-T28-C2",
+        "F-T31-C1",
+        "F-T31-C2",
+        "F-T12-C1",
+        "F-T12-C2",
+        "F-T33-C1",
+        "F-T33-C2",
+        "F-T42-C1",
+        "F-T42-C2",
+        "F-T11-C1",
+        "F-T11-C2",
+        "F-T43-C1",
+        "F-T43-C2",
+        "F-T34-C1",
+        "F-T34-C2",
+        "F-T15-C1",
+        "F-T15-C2",
+        "F-T04-C1",
+        "F-T04-C2",
+        "F-T10-C1",
+        "F-T10-C2"
+      ],
+      "expected": [
+        "F-T27-C1",
+        "F-T27-C2",
+        "F-T05-C1",
+        "F-T05-C2",
+        "F-T25-C1",
+        "F-T25-C2",
+        "F-T24-C1",
+        "F-T24-C2",
+        "F-T01-C1",
+        "F-T01-C2",
+        "F-T21-C1",
+        "F-T21-C2",
+        "F-T02-C1",
+        "F-T02-C2",
+        "F-T03-C1",
+        "F-T03-C2",
+        "F-T29-C1",
+        "F-T29-C2",
+        "F-T23-C1",
+        "F-T23-C2",
+        "F-T32-C1",
+        "F-T32-C2",
+        "F-T30-C1",
+        "F-T30-C2",
+        "F-T28-C1",
+        "F-T28-C2",
+        "F-T31-C1",
+        "F-T31-C2",
+        "F-T12-C1",
+        "F-T12-C2",
+        "F-T33-C1",
+        "F-T33-C2",
+        "F-T42-C1",
+        "F-T42-C2",
+        "F-T11-C1",
+        "F-T11-C2",
+        "F-T43-C1",
+        "F-T43-C2",
+        "F-T34-C1",
+        "F-T34-C2",
+        "F-T15-C1",
+        "F-T15-C2",
+        "F-T04-C1",
+        "F-T04-C2",
+        "F-T10-C1",
+        "F-T10-C2"
+      ],
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/all-essential-threshold",
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ],
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/draft",
+      "actual": "draft",
+      "expected": "draft",
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/full-native-task-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/full-native-solution-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f/full-native-material-binding",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "name": "sealed-input-manifest-integrity",
+      "actual": true,
+      "expected": true,
+      "matched": true
+    }
+  ],
+  "limits": [
+    "DCL is explicit set-model simulation, not a role DBMS execution.",
+    "Loopback fixtures, not production security or host acceptance.",
+    "No author test runner or author execution-evidence imported."
+  ]
+}

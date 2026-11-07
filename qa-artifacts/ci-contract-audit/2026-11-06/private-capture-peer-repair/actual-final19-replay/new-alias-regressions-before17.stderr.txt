@@ -1,0 +1,159 @@
+test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) ... 
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='other') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='directory') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='outside') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='cycle') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='missing') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='target-alias') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='target-outside') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='other') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='directory') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='outside') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='cycle') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='missing') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='target-alias') ... FAIL
+  test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='target-outside') ... FAIL
+test_directory_alias_is_rechecked_after_command_for_both_roots (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_is_rechecked_after_command_for_both_roots) ... 
+  test_directory_alias_is_rechecked_after_command_for_both_roots (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_is_rechecked_after_command_for_both_roots) (role='original') ... FAIL
+  test_directory_alias_is_rechecked_after_command_for_both_roots (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_is_rechecked_after_command_for_both_roots) (role='candidate') ... FAIL
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='other')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='directory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='cycle')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-_ov41uu0/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-_ov41uu0/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-_ov41uu0/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/dev/shm/capture-alias-boundary-_ov41uu0/pair/prepare-tool/identity_qa_private_capture.py", line 67, in file_binding\n    require(Path(path).is_file(), "Captured input is not a file: " + str(path))\n  File "/dev/shm/capture-alias-boundary-_ov41uu0/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Captured input is not a file: /dev/shm/capture-alias-boundary-_ov41uu0/pair/original80/cases/real/review-input.json\n'
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='target-alias')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-_dral4ez/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-_dral4ez/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-_dral4ez/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n  File "/dev/shm/capture-alias-boundary-_dral4ez/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Private text input changed: original:cases/real/review-input.json\n'
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='original', mutation='target-outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-f7gk6rgc/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-f7gk6rgc/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-f7gk6rgc/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/dev/shm/capture-alias-boundary-f7gk6rgc/pair/prepare-tool/identity_qa_private_capture.py", line 51, in private_path\n    require(result.resolve(strict=False).is_relative_to(root), "Capture path escapes its declared root")\n  File "/dev/shm/capture-alias-boundary-f7gk6rgc/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Capture path escapes its declared root\n'
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='other')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='directory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='cycle')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 139, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertNotEqual(rejected.returncode, 0, rejected.stdout)
+AssertionError: 0 == 0 : UNREACHABLE
+
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-ks646krh/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-ks646krh/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-ks646krh/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/dev/shm/capture-alias-boundary-ks646krh/pair/prepare-tool/identity_qa_private_capture.py", line 67, in file_binding\n    require(Path(path).is_file(), "Captured input is not a file: " + str(path))\n  File "/dev/shm/capture-alias-boundary-ks646krh/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Captured input is not a file: /dev/shm/capture-alias-boundary-ks646krh/pair/projectedA80/cases/real/review-input.json\n'
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='target-alias')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-8vtckd2z/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-8vtckd2z/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-8vtckd2z/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n  File "/dev/shm/capture-alias-boundary-8vtckd2z/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Private text input changed: candidate:cases/real/review-input.json\n'
+
+======================================================================
+FAIL: test_directory_alias_type_target_and_internal_resolution_rechecked_before_command (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_type_target_and_internal_resolution_rechecked_before_command) (role='candidate', mutation='target-outside')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 140, in test_directory_alias_type_target_and_internal_resolution_rechecked_before_command
+    self.assertIn("Directory alias", rejected.stderr)
+AssertionError: 'Directory alias' not found in 'Traceback (most recent call last):\n  File "/dev/shm/capture-alias-boundary-a0uip14c/pair/run-isolated.py", line 21, in <module>\n    verify_inputs()\n  File "/dev/shm/capture-alias-boundary-a0uip14c/pair/run-isolated.py", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File "/dev/shm/capture-alias-boundary-a0uip14c/pair/prepare-tool/identity_qa_private_capture.py", line 133, in verify_prepared_inputs\n    require(file_binding(private_path(root, path)) == expected, "Private text input changed: " + role + ":" + path)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/dev/shm/capture-alias-boundary-a0uip14c/pair/prepare-tool/identity_qa_private_capture.py", line 51, in private_path\n    require(result.resolve(strict=False).is_relative_to(root), "Capture path escapes its declared root")\n  File "/dev/shm/capture-alias-boundary-a0uip14c/pair/prepare-tool/identity_qa_private_capture.py", line 16, in require\n    raise ValueError(message)\nValueError: Capture path escapes its declared root\n'
+
+======================================================================
+FAIL: test_directory_alias_is_rechecked_after_command_for_both_roots (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_is_rechecked_after_command_for_both_roots) (role='original')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 160, in test_directory_alias_is_rechecked_after_command_for_both_roots
+    self.assertNotEqual(run.returncode, 0, stdout)
+AssertionError: 0 == 0 : 
+
+======================================================================
+FAIL: test_directory_alias_is_rechecked_after_command_for_both_roots (test_prepare_identity_qa_candidate.IsolationTests.test_directory_alias_is_rechecked_after_command_for_both_roots) (role='candidate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_prepare_identity_qa_candidate.py", line 160, in test_directory_alias_is_rechecked_after_command_for_both_roots
+    self.assertNotEqual(run.returncode, 0, stdout)
+AssertionError: 0 == 0 : 
+
+----------------------------------------------------------------------
+Ran 2 tests in 4.549s
+
+FAILED (failures=16)

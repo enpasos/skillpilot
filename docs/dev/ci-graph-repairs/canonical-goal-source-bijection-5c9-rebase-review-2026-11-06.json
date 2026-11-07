@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-06T19:44:47.806791+00:00",
+  "status": "source-only-proof-recomputed-on-explicit-current-checkpoint-no-candidate-QA-or-activation",
+  "baseCommit": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "sourceOnlyProof": {
+    "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-5c9-2026-11-06.proposal.json",
+    "sha256": "7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209",
+    "bytes": 10481850
+  },
+  "historicalProof": {
+    "path": "docs/dev/ci-graph-repairs/canonical-goal-source-bijection-2026-11-06.proposal.json",
+    "sha256": "c75e263450b35183db0a32ac6ce2dd767e41fe7895882b68b4b63fd4d481f300",
+    "bytes": 10481850
+  },
+  "actualCommands": [
+    {
+      "command": "python3 scripts/canonical_goal_source_identity_proof.py generate --base-commit 5c9ff83586c407fd9189207c38238400c74bce51 --output PRIVATE_TMP/source.proposal.json",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/sourcea-current-5c9-generation.log",
+        "sha256": "7f484a2e4f6ade38568c085be2f4d3b40670643b50e900bcbe6496123f4d0b4e",
+        "bytes": 370
+      }
+    },
+    {
+      "command": "python3 scripts/canonical_goal_source_identity_proof.py verify --manifest PRIVATE_TMP/source.proposal.json --expected-base-commit 5c9ff83586c407fd9189207c38238400c74bce51 --accepted-manifest-sha256 7228360915bbbff170cd8d1bcbc0d21afedfad17677422fc73cd5ce6a6498209",
+      "exitCode": 0,
+      "log": {
+        "path": "tmp/sourcea-current-5c9-verify.log",
+        "sha256": "7f484a2e4f6ade38568c085be2f4d3b40670643b50e900bcbe6496123f4d0b4e",
+        "bytes": 370
+      }
+    }
+  ],
+  "catalogFiles": 593,
+  "boundDocuments": 8584,
+  "activePointers": 14926,
+  "identityRules": 164,
+  "identityRulesExactlyEqualToHistorical": true,
+  "catalogPathsAndDocumentPathsEqualToHistorical": true,
+  "changedCatalogBindings": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+  ],
+  "changedBoundDocuments": [
+    "app/scripts/testSkillGraphIntegrity.ts",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "docs/dev/ci-graph-repairs/math-minimality-review-2026-11-06.json",
+    "docs/qa-ci/skill-graph-ci-static-matrix-2026-11-06.md"
+  ],
+  "sourceProjectionSha256": "5d479a67b5ea3ddd60963942bb5aabd333a887416475c20fb2f10fee5733cec7",
+  "actualCandidateQaClaimed": false,
+  "runtimeOrStateActivationAllowed": false,
+  "boundaries": [
+    "This proof binds Git5c9; later source changes require their own accepted source context.",
+    "Existing current QA decisions are inputs, not newly approved by an identity-format proof.",
+    "No physical current candidate, full producer outputs or actual B runtime/state integration is established.",
+    "19 Mannheim topology conflicts are not repaired by a bijective rename.",
+    "No curriculum floor or M7 restoration is claimed."
+  ]
+}

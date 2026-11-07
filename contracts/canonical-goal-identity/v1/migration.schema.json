@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/canonical-goal-identity/v1/migration.schema.json",
+  "title": "Unapplied bounded canonical goal identity proof",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/contracts/canonical-goal-identity/v1/migration.schema.json"
+    },
+    "schemaVersion": {
+      "const": 1,
+      "type": "integer"
+    },
+    "migrationId": {
+      "const": "canonical-goal-id-format-2026-11-06"
+    },
+    "uuidNamespace": {
+      "const": "97d8c00c-411d-5dec-b260-4e6f22ab688b"
+    },
+    "baseCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "status": {
+      "enum": [
+        "blocked",
+        "proposal-verified"
+      ]
+    },
+    "runtimeApplied": {
+      "const": false,
+      "type": "boolean"
+    },
+    "runtimeAliasSupportClaimed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "qaApprovalClaimed": {
+      "const": false,
+      "type": "boolean"
+    },
+    "registry": {
+      "$ref": "#/$defs/binding"
+    },
+    "verifier": {
+      "$ref": "#/$defs/binding"
+    },
+    "catalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "const": "all-runtime-shaped-curricula-excluding-quality"
+        },
+        "sourceFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/catalogSource"
+          },
+          "minItems": 593,
+          "maxItems": 593
+        },
+        "fileCount": {
+          "const": 593,
+          "type": "integer"
+        },
+        "serializedGoals": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "logicalGoalKeys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolvedReferencesBefore": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolvedReferencesAfter": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "scope",
+        "sourceFiles",
+        "fileCount",
+        "serializedGoals",
+        "logicalGoalKeys",
+        "resolvedReferencesBefore",
+        "resolvedReferencesAfter"
+      ]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 164,
+      "maxItems": 164
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/document"
+      },
+      "minItems": 1
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blocker"
+      },
+      "minItems": 0
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bijectiveRuleCount": {
+          "const": 164,
+          "type": "integer"
+        },
+        "globalExistingIdentityCollisionCount": {
+          "const": 0,
+          "type": "integer"
+        },
+        "inverseDocumentEqualityVerified": {
+          "const": true,
+          "type": "boolean"
+        },
+        "unclassifiedOrUnreadyHitCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "historicalEvidenceBytesPreserved": {
+          "const": true,
+          "type": "boolean"
+        },
+        "cardAndAssetBytesRenamed": {
+          "const": false,
+          "type": "boolean"
+        },
+        "activationReady": {
+          "const": false,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "bijectiveRuleCount",
+        "globalExistingIdentityCollisionCount",
+        "inverseDocumentEqualityVerified",
+        "unclassifiedOrUnreadyHitCount",
+        "historicalEvidenceBytesPreserved",
+        "cardAndAssetBytesRenamed",
+        "activationReady"
+      ]
+    },
+    "schemaBinding": {
+      "$ref": "#/$defs/binding"
+    },
+    "canonicalJsonProfile": {
+      "$ref": "#/$defs/binding"
+    },
+    "registrySchemaBinding": {
+      "$ref": "#/$defs/binding"
+    }
+  },
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "migrationId",
+    "uuidNamespace",
+    "baseCommit",
+    "status",
+    "runtimeApplied",
+    "runtimeAliasSupportClaimed",
+    "qaApprovalClaimed",
+    "registry",
+    "verifier",
+    "catalog",
+    "rules",
+    "documents",
+    "blockers",
+    "proof",
+    "schemaBinding",
+    "canonicalJsonProfile",
+    "registrySchemaBinding"
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ]
+    },
+    "catalogSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "landscapeId": {
+          "type": "string"
+        },
+        "goalCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gitMode": {
+          "type": "string",
+          "enum": [
+            "100644",
+            "100755",
+            "120000"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "landscapeId",
+        "goalCount",
+        "gitMode"
+      ]
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "landscapeId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "sourceGoalId": {
+          "type": "string"
+        },
+        "targetGoalId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "minLength": 36,
+          "maxLength": 36
+        },
+        "relation": {
+          "const": "renamed"
+        },
+        "masteryPolicy": {
+          "const": "copy-exact"
+        },
+        "historyPolicy": {
+          "const": "preserve-original-and-add-alias"
+        },
+        "sourceFile": {
+          "type": "string"
+        },
+        "sourcePointer": {
+          "type": "string"
+        },
+        "beforeGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "hypotheticalGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "inverseGoalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "semanticPayloadSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "landscapeId",
+        "sourceGoalId",
+        "targetGoalId",
+        "relation",
+        "masteryPolicy",
+        "historyPolicy",
+        "sourceFile",
+        "sourcePointer",
+        "beforeGoalSha256",
+        "hypotheticalGoalSha256",
+        "inverseGoalSha256",
+        "semanticPayloadSha256"
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pointer": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "key",
+            "value"
+          ]
+        },
+        "role": {
+          "enum": [
+            "identity",
+            "reference",
+            "reference-key"
+          ]
+        },
+        "landscapeId": {
+          "type": "string"
+        },
+        "before": {
+          "type": "string"
+        },
+        "after": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pointer",
+        "kind",
+        "role",
+        "landscapeId",
+        "before",
+        "after"
+      ]
+    },
+    "preservedField": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pointer": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "key",
+            "value"
+          ]
+        },
+        "matchedSourceGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pointer",
+        "kind",
+        "matchedSourceGoalIds",
+        "reason"
+      ]
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "pointer": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "pointer",
+        "reason",
+        "value"
+      ]
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "classification": {
+          "enum": [
+            "runtime-graph",
+            "composition",
+            "mapping",
+            "provenance-registry",
+            "qa-scope-config",
+            "duration-policy",
+            "immutable-original",
+            "derived-output",
+            "unclassified",
+            "active-code-consumer"
+          ]
+        },
+        "handling": {
+          "enum": [
+            "explicit-pointer-projection",
+            "preserve-exact-bytes",
+            "requires-review",
+            "requires-integration"
+          ]
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "beforeCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "hypotheticalCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "inverseCanonicalSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          },
+          "minItems": 0
+        },
+        "preservedFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/preservedField"
+          },
+          "minItems": 0
+        },
+        "matchedSourceGoalIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        },
+        "reason": {
+          "type": "string"
+        },
+        "boundFromGoalKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "path",
+        "classification",
+        "handling",
+        "sourceSha256",
+        "matchedSourceGoalIds"
+      ]
+    }
+  }
+}

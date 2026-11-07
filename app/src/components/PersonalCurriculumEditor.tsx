@@ -382,14 +382,23 @@ export const PersonalCurriculumEditor: React.FC<PersonalCurriculumEditorProps> =
   }
 
   if (!plan || plan.stage === 'INVALID') {
+    const reselectBase = plan?.problemCode === 'canonical-subject-scope-unresolved'
     return (
       <div className={`rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 ${className ?? ''}`} role="alert">
         <div className="flex items-start gap-3">
           <AlertTriangle size={20} className="mt-0.5 shrink-0 text-amber-600 dark:text-amber-400" />
           <div>
             <h3 className="font-semibold text-amber-900 dark:text-amber-200">{copy.invalidTitle}</h3>
-            <p className="mt-1 text-sm text-amber-800/80 dark:text-amber-200/80">{copy.invalidBody}</p>
-            {plan?.problemCode && (
+            <p className="mt-1 text-sm text-amber-800/80 dark:text-amber-200/80">{reselectBase
+              ? (language === 'en' ? 'Choose a base curriculum and configure your learning scope.' : 'Wähle einen Basislehrplan und richte deinen Lernumfang ein.')
+              : copy.invalidBody}</p>
+            {reselectBase && (
+              <a href="/?start=coach" data-testid="personal-curriculum-reselect-base"
+                className="mt-3 inline-flex min-h-11 items-center rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm font-medium text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-100">
+                {language === 'en' ? 'Choose base curriculum' : 'Basislehrplan auswählen'}
+              </a>
+            )}
+            {!reselectBase && plan?.problemCode && (
               <p className="mt-2 font-mono text-xs text-amber-700 dark:text-amber-300">{plan.problemCode}</p>
             )}
             <button

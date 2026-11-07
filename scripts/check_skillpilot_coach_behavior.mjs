@@ -17,6 +17,9 @@ export function assertCurrentCompletionBehavior({ skill, policy, serverInstructi
   const sources = [skill, policy, serverInstructions].map(compact);
   for (const source of sources) {
     assert.doesNotMatch(source,
+      /(?:mastered goals? (?:no longer demands?|ends?) (?:their|its) own prerequisite|end their own prerequisite demand)/iu,
+      "Mastered intermediate goals must not cut prerequisite paths.");
+    assert.doesNotMatch(source,
       /(?:mastery of a dependent goal never implies mastery of, or suppresses, an unmastered prerequisite|Do not suppress or mark A as mastered|Every unmastered (?:personalized target|target in the Personal Curriculum) remains (?:a normal frontier candidate|subject to the normal frontier test))/iu,
       "Obsolete mandatory-prerequisite instructions must not override backend-derived implicit completion.");
     assert.doesNotMatch(source,
@@ -26,8 +29,8 @@ export function assertCurrentCompletionBehavior({ skill, policy, serverInstructi
   requireRules(sources[0], [
     [/Mastery of a goal never implies mastery of its prerequisites/u,
       "The skill must prohibit mastery transfer to prerequisites."],
-    [/backend alone determines remaining work[\s\S]+mastered goals end their own prerequisite demand/u,
-      "The skill must defer remaining work and mastered-goal demand to the backend."],
+    [/backend alone determines remaining work[\s\S]+prerequisite paths remain complete through mastered intermediate goals/u,
+      "The skill must defer remaining work and complete prerequisite demand to the backend."],
     [/implicitly completed without changing any saved goal result/u,
       "Implicit completion must remain separate from saved goal results."],
     [/Do not restore implicitly completed work as mandatory or create mastery for it/u,
@@ -36,8 +39,8 @@ export function assertCurrentCompletionBehavior({ skill, policy, serverInstructi
   requireRules(sources[1], [
     [/`requires` is one-way[\s\S]+mastery of B never implies mastery of A/u,
       "The policy must prohibit mastery transfer to prerequisites."],
-    [/A mastered goal no longer demands its own prerequisites/u,
-      "Mastered intermediate goals must end their own preparation demand."],
+    [/Prerequisite paths remain complete through mastered intermediate goals/u,
+      "Prerequisite demand must include mastered intermediate paths."],
     [/full committed Personal Curriculum[\s\S]+non-assessment goals with no remaining demand are implicitly completed/u,
       "The policy must preserve the full authoritative demand scope."],
     [/changes no saved goal result and does not certify prerequisite competence/u,
@@ -50,8 +53,8 @@ export function assertCurrentCompletionBehavior({ skill, policy, serverInstructi
   requireRules(sources[2], [
     [/Mastery never propagates to prerequisites/u,
       "Live instructions must prohibit prerequisite mastery transfer."],
-    [/full committed Personal Curriculum[\s\S]+a mastered goal no longer demands its own prerequisites/u,
-      "Live instructions must use the full scope and stop demand at mastered goals."],
+    [/full committed Personal Curriculum[\s\S]+prerequisite paths remain complete through mastered intermediate goals/u,
+      "Live instructions must use the full scope and retain complete prerequisite paths."],
     [/non-assessment goals with no remaining demand are implicitly completed/u,
       "Live instructions must permit general implicit completion."],
     [/Implicit completion changes no saved goal result and is not proof of prerequisite competence/u,

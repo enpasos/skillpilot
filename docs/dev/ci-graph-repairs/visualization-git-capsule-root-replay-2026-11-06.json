@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "root-actual-bounded-shallow-transport-replay-pass",
+  "codePins": {
+    "scripts/visualization_review_git_capsule.py": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34",
+    "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/replay_transport.py": "bef9efaeabceb59e5c0bb2696201195d79b220bfb3a5f902bacc7fb162485661"
+  },
+  "acceptedRepositoryCommit": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "acceptedCensusSha256": "3b8c7c3dc08c9a49c51a4c7436459894ee7459a397dc8bfbb252b31d209bad90",
+  "acceptedCapsuleSha256": "bfd2435e3479fd2d6bfd059259fa4113c6f0e95dc0885888781bc01286d54154",
+  "command": "python3 -B qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/replay_transport.py --accepted-commit <exact above> --accepted-census-sha256 <exact above> --accepted-capsule-sha256 <exact above> --output <new private RAM path>",
+  "exitCode": 0,
+  "result": {
+    "status": "PASS-historical-f83-transport-component",
+    "nativeOriginalChains": 18,
+    "capsuleNegatives": 9,
+    "frozenReader": "f83be87fc6ef30723c5e53efbbc71cae9362048086844f55543aa016f85e469b",
+    "currentReaderApprovalClaimed": false,
+    "sourceWritesPerformed": false,
+    "normalConsumerWired": false
+  },
+  "log": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-git-capsule-root-replay/actual.log.gz",
+    "sha256": "8b87e81620399344fb392addd4c9acded032f194f2115b3723613460fb0f87b6",
+    "uncompressedSha256": "9af17ec518b752eb545a552805fc205c7fd042be88b5189f0b86f75aefb3123e"
+  },
+  "limits": [
+    "Retained historical f83 reader/schema, not approval of the later current reader.",
+    "No full five-subject read-scope or all-ledger V qualification.",
+    "No workflow/Deep/M7 wiring, active V-row update or current-SourceA/B activation."
+  ]
+}

@@ -20,6 +20,9 @@ import {
   hasUnavailableCurricularAtomicAssessmentPrerequisite,
   isAssessmentExplicitlyOutsideJurisdiction,
 } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import { assertCompositionKindCoverage, loadCompositionSemanticKinds } from './lib/compositionSemanticKinds'
+import { compositionKindsFromSourceIdentityView, createSourceIdentityQaMetadataView,
+  type SourceIdentityQaMetadataOptions } from './lib/sourceIdentityQaMetadata'
 
 interface CompositionViewValidationFinding extends CompositionViewFinding {
   viewId: string
@@ -792,7 +795,15 @@ const collectCanonicalMathSek2RouteEndpointVisibilityFindings = (
 }
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
-const repoRoot = resolve(scriptDir, '../..')
+const isolatedContextArguments = process.argv.slice(2).filter((arg) => arg.startsWith('--source-identity-qa-context='))
+if (isolatedContextArguments.length > 1) throw new Error('Only one isolated Source-A context is allowed')
+const isolatedMetadataView = isolatedContextArguments.length === 1
+  ? await createSourceIdentityQaMetadataView(JSON.parse(readFileSync(
+    resolve(isolatedContextArguments[0].slice('--source-identity-qa-context='.length)), 'utf8',
+  )) as SourceIdentityQaMetadataOptions)
+  : undefined
+if (isolatedMetadataView) console.log(`[isolated-source-a-metadata] ${isolatedMetadataView.evidenceDirectory}`)
+const repoRoot = isolatedMetadataView?.candidateRoot ?? resolve(scriptDir, '../..')
 const canonicalRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/canonical')
 const compositionViewRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views')
 const semanticKindLedgerRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/release-model')
@@ -832,65 +843,22 @@ const semanticKindLedgerFiles = collectFiles(
   (fileName) => /\.semantic-kinds\.json$/i.test(fileName),
 )
 
-const semanticKindsByLandscapeId = new Map<string, Map<string, string>>()
-
-for (const ledgerPath of semanticKindLedgerFiles) {
-  try {
-    const ledger = JSON.parse(readFileSync(ledgerPath, 'utf8')) as {
-      sourceLandscapeId?: string
-      decisions?: Array<{
-        goalId?: string
-        semanticKind?: string
-        decisionStatus?: string
-      }>
-    }
-    const landscapeId = ledger.sourceLandscapeId?.trim() ?? ''
-    if (!landscapeId) {
-      throw new Error('sourceLandscapeId fehlt')
-    }
-    if (semanticKindsByLandscapeId.has(landscapeId)) {
-      throw new Error(`Mehr als ein Semantic-Kind-Ledger für Landscape ${landscapeId}`)
-    }
-
-    const semanticKindByGoalId = new Map<string, string>()
-    for (const decision of ledger.decisions ?? []) {
-      const goalId = decision.goalId?.trim() ?? ''
-      const semanticKind = decision.semanticKind?.trim() ?? ''
-      if (!goalId || !semanticKind || decision.decisionStatus !== 'authoritative') {
-        throw new Error('Semantic-Kind-Entscheidungen müssen vollständig und authoritative sein')
-      }
-      if (semanticKindByGoalId.has(goalId)) {
-        throw new Error(`Doppelte Semantic-Kind-Entscheidung für ${goalId}`)
-      }
-      semanticKindByGoalId.set(goalId, semanticKind)
-    }
-    semanticKindsByLandscapeId.set(landscapeId, semanticKindByGoalId)
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unbekannter Fehler'
-    console.error(`❌ [semantic-kind-ledger-load] ${ledgerPath} konnte nicht geladen werden: ${message}`)
-    process.exit(1)
-  }
-}
+const semanticKindsByLandscapeId = isolatedMetadataView
+  ? new Map<string, Map<string, string>>()
+  : loadCompositionSemanticKinds(semanticKindLedgerFiles)
 
 const canonicalByLandscapeId = new Map<string, { path: string, landscape: CanonicalAuthoringLandscape }>()
 
 for (const canonicalPath of canonicalFiles) {
   try {
-    const normalized = normalizeCanonicalLandscape(JSON.parse(readFileSync(canonicalPath, 'utf8')))
+    const canonicalBytes = readFileSync(canonicalPath)
+    const normalized = normalizeCanonicalLandscape(JSON.parse(canonicalBytes.toString('utf8')))
     if (!normalized.landscapeId) continue
-    const semanticKindByGoalId = semanticKindsByLandscapeId.get(normalized.landscapeId)
+    const semanticKindByGoalId = isolatedMetadataView
+      ? compositionKindsFromSourceIdentityView(isolatedMetadataView, normalized.landscapeId, canonicalPath, canonicalBytes)
+      : semanticKindsByLandscapeId.get(normalized.landscapeId)
     if (semanticKindByGoalId) {
-      const canonicalGoalIds = new Set(normalized.goals.map((goal) => goal.id))
-      const missingDecisionIds = normalized.goals
-        .filter((goal) => !semanticKindByGoalId.has(goal.id))
-        .map((goal) => goal.id)
-      const unknownDecisionIds = Array.from(semanticKindByGoalId.keys())
-        .filter((goalId) => !canonicalGoalIds.has(goalId))
-      if (missingDecisionIds.length > 0 || unknownDecisionIds.length > 0) {
-        throw new Error(
-          `Semantic-Kind-Ledger ist nicht deckungsgleich (fehlend: ${missingDecisionIds.slice(0, 5).join(', ') || '-'}; unbekannt: ${unknownDecisionIds.slice(0, 5).join(', ') || '-'})`,
-        )
-      }
+      assertCompositionKindCoverage(semanticKindByGoalId, normalized.goals.map((goal) => goal.id))
     }
     const landscape = semanticKindByGoalId
       ? {

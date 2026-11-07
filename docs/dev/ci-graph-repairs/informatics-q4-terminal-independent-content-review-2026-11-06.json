@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "independent-content-review-positive-application-held-for-course-scope",
+  "reviewer": "Astra independent agent review",
+  "humanApproval": false,
+  "dataChangesApplied": false,
+  "runtimePolicyChanged": false,
+  "sourceGuard": {
+    "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sourceFileSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "observedHead": "42e62121a991e29c108b85a1ffa81f50ff1a5e63",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "goalId": "a5e33d4d-f312-51d2-816b-e0b10dd1e701",
+    "goalPointer": "/goals/281",
+    "originalGoalCanonicalSha256": "103adc4420d915ae9486bdd02e2f28eaeec7f1d048e4b74c0dd86c049cf08124",
+    "originalExamDataCanonicalSha256": "2d3110e57f4a9f41fec546c379d05aa09f6cea89408e2d8f97030e5565efffc1",
+    "coveredGoalIds": [
+      "70b8919e-8707-580f-9e13-0536c9e81476",
+      "ca39fae0-1b12-5982-a453-54d12602dde8",
+      "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+      "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+      "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+      "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+      "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+      "17a72609-a619-52e7-a154-67b714826e74",
+      "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+      "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+      "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+      "42467606-f969-5bd7-bfc8-114c4853ecad",
+      "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+      "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+      "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+      "325661fb-1df9-54d1-8fca-e651c94483f1",
+      "feb50fce-1dad-5a48-8ff3-c9737d507843",
+      "d6577123-0842-520e-b039-8ac72ab507b6"
+    ],
+    "coveredGoalIdsCanonicalSha256": "c47ea466bcf34195284a7799083ab468064e6b6ed23ca430cef8d00a771eaf0b"
+  },
+  "sourceContinuityIndependentlyVerified": {
+    "initialCommit": "a0e3c164426ee9d4513e9678daf0a47371cc8bbd",
+    "wholeGoalPayloadsEqual": 20,
+    "currentParentContextsEqual": 19
+  },
+  "reviewedArtifactBindings": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.review-input.json",
+      "sha256": "ebddb402ddc63cfc07b6e9aea7032ee60512ad75ecb935e9818410e5572a0766"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.examData.json",
+      "sha256": "b4443aa806b10bafbd849efddfba73d1a928731a9e1a3662827f491e0363c910"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.task.md",
+      "sha256": "49a74c33ed2611e75a144884c5c199c3ffbad9733a67fabb65fa1ec5d1c56024"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.solution.md",
+      "sha256": "bf2830329eaadc588b5e96f2a8f98e21ef34af6224e5357026a0a121a31470ed"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.prolog.pl",
+      "sha256": "0fd5c0b1a2ed17e3157983f1672faed6a8d4f5d534911eac8f81d8fa6ac2cad0"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-q4-terminal-candidate-2026-11-06.functional.mjs",
+      "sha256": "dadbd7875fb79e2051d5fa037a9130e192cb9e1792f1417b144f3a1ae3242be4"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/verify_informatics_q4_terminal_candidate.py",
+      "sha256": "26ba180f581b1c9904fbc7de2948963dd35074b10a288239e4fea60df07ae974"
+    }
+  ],
+  "scopeOfRead": "Full task, full solution, complete Prolog and functional reference programs, executable verifier, examData, all 19 complete current original goal payloads and their actual direct parent contexts; original terminal and parent additionally inspected.",
+  "fullContentReview": [
+    {
+      "criterionId": "K01",
+      "taskId": "A1",
+      "goalId": "70b8919e-8707-580f-9e13-0536c9e81476",
+      "goalCanonicalSha256": "148309feb18181cf92e75c63efa9204f3f6da17958e6d04278b3e04b2057a4c0",
+      "title": "Binärsysteme anwenden",
+      "description": "Die lernende Person kann mit Binär-/Hexadezimalzahlen rechnen und Zweierkomplement erklären.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Die beiden achtbittigen Summanden und das Byteformat sind vollständig gegeben. Die Überträge ergeben 0x44, die Konstruktion von −13 ergibt 0xF3; 0x7F+1 trennt unsignierte Darstellbarkeit von vorzeichenbehaftetem Überlauf. Rechnung und Begründung sind obligatorisch; reine Konversion genügt nicht.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K02",
+      "taskId": "A2",
+      "goalId": "ca39fae0-1b12-5982-a453-54d12602dde8",
+      "goalCanonicalSha256": "3d28007ece510f475dbed512fe60a265444065aa1384db5f906055b10379fc14",
+      "title": "Schaltnetze entwerfen",
+      "description": "Die lernende Person kann logische Gatter, Wahrheitstabellen, DNF und Vereinfachungen mit KV-Diagrammen nutzen.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Die achtzeilige Wahrheitstabelle und das fehlerhafte Gatternetz tragen DNF, Gray-KV und einen eigenen Schaltungsentwurf. Beide überlappenden Zweiergruppen sind gültig; A=0,B=0,C=1 widerlegt das alte Netz. Jede der vier im Ziel genannten Darstellungsformen wird verlangt.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K03",
+      "taskId": "A3",
+      "goalId": "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+      "goalCanonicalSha256": "8cfbd61cc38342f093cda194d11da3aa9d28d4f44265edbde82e7761457a823e",
+      "title": "Folgeglieder verstehen",
+      "description": "Die lernende Person kann RS- und D-Flip-Flops modellieren und Anwendungen beschreiben.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Das ausdrücklich definierte aktive High-NOR-RS-Modell beseitigt Polaritätsmehrdeutigkeit. Die vollständige Übergangstabelle und die D-Flankenfolge 1,1,1,0,1 sind richtig. Zwei begründete Speicheranwendungen werden zusätzlich verlangt; elektrisch geprüfte Hardware wird nicht behauptet.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K04",
+      "taskId": "B1",
+      "goalId": "5f48f0bb-a1a6-588e-a498-fab20245efcd",
+      "goalCanonicalSha256": "c811a7856c557c5e5229dd9bdabd8d8c82d6418bb87cd1c643c570709303abd5",
+      "title": "Fakten und Regeln schreiben",
+      "description": "Die lernende Person kann einfache Fakten, Regeln und Anfragen formulieren.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Alle vier Elternfakten liegen vollständig vor, die Großelternregel muss selbst formuliert werden. Beide Anfragen samt vollständigen Antworten zeigen Fakten, Regel und Anfrage getrennt; die Lösung liefert genau (ada,dora) und (ada,emil).",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K05",
+      "taskId": "B2",
+      "goalId": "82911b58-bd79-5e96-8fcc-2adb029e2f70",
+      "goalCanonicalSha256": "1409038d487801dbc65e3fa2b51989fa98dfa9fc2a4a0e8afd5524445bb01946",
+      "title": "Probleme mit Prolog lösen",
+      "description": "Die lernende Person kann Verwandtschaftsbeziehungen oder Logikrätsel modellieren.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Die Geschwisterregel prüft gemeinsamen Elternteil und Verschiedenheit nach der Variablenbindung. Beide Anfragerichtungen liefern nur clara; die Selbstbeziehung scheitert. Verwandtschaft ist eine ausdrücklich erlaubte Alternative des Originalziels und ersetzt keine obligatorischen Logikrätsel.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K06",
+      "taskId": "B3",
+      "goalId": "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+      "goalCanonicalSha256": "28e6ea41f74aee845be00059f5c00171c0a9b15f1e104fca89ab8a88fbb25ba8",
+      "title": "Listenverarbeitung in Prolog",
+      "description": "Die lernende Person kann Listenoperationen implementieren.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Eigene Mitgliedschafts- und Längenprädikate werden verlangt. Erfolg, Misserfolg, leere und nichtleere Liste prüfen Basis- und Rekursionsfälle. Die Lösung terminiert für die angegebenen endlichen, eingesetzten Listen; generative Vollreversibilität wird nicht behauptet.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K07",
+      "taskId": "A4",
+      "goalId": "9ab554ad-c308-50ed-a5d2-499dd06120ff",
+      "goalCanonicalSha256": "cd51a214e73201016aab27bef5b66d9c350f99b861489ec44c07d0063c7f9ccc",
+      "title": "Schaltnetze praktisch optimieren",
+      "description": "Die lernende Person kann Schaltnetze mit KV-Diagrammen vereinfachen und Addierer implementieren.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Der Volladdierer wird aus der arithmetischen Spezifikation entworfen, seine Übertragsfunktion per KV minimiert und beide Funktionen werden implementiert. Alle acht Eingaben und der Zweibitlauf sind obligatorisch. Die exakten Pythonfunktionen bestehen acht Volladdierer- und 16 Zweibitfälle; bloßes Ablesen genügt nicht.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K08",
+      "taskId": "B4",
+      "goalId": "17a72609-a619-52e7-a154-67b714826e74",
+      "goalCanonicalSha256": "00b323b1e003d8a0c605b77592d7fb3e088183e6603edee926cf9dad037bcbff",
+      "title": "Wissensbasis strukturieren",
+      "description": "Die lernende Person kann Fakten und Regeln so modellieren, dass logische Anfragen vielfältige Probleme lösen.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Rollen, Ausweise und Zonen tragen zwei wiederverwendbare Regeln für Zutritt und Erneuerung. Drei Anfragen und die gezielte Faktenänderung prüfen Wiederverwendbarkeit und Trennung von Daten und Regeln. Die Antworten vor und nach der Änderung sind vollständig; hartcodierte Antworttabellen sind ausgeschlossen.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K09",
+      "taskId": "C1",
+      "goalId": "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+      "goalCanonicalSha256": "6f7eea4dfb49efe1dad07764181455616d5e8097811f8f5594f65ff76752b17c",
+      "title": "Netz- und Systemsicherheit",
+      "description": "Die lernende Person kann grundlegende Schutzmechanismen (TLS, Auth, Firewalls) einordnen.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Diagramm und drei Vorfälle tragen die Einordnung von Transportverschlüsselung, Authentisierung/Autorisierung und Netzfilter. Die Lösung trennt TLS bis zum Gateway von Speicherung und weiteren Verbindungen sowie Login von Rollenrecht. Ein reales Sicherheits- oder Complianceaudit wird nicht behauptet.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K10",
+      "taskId": "C2",
+      "goalId": "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+      "goalCanonicalSha256": "86b719981c43eb9066c95fd219e51cb969b6492eb31ba0a895d91fa6ed51c70c",
+      "title": "Nebenläufigkeit/Threads",
+      "description": "Die lernende Person kann Threads, Race Conditions und Synchronisation erklären.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Das Modell atomarer Einzelschritte mit sequentieller Konsistenz macht beide Interleavings eindeutig prüfbar. Verlorenes Update und serielles Ergebnis 2 sind richtig; der Mutex umfasst Lesen, Erhöhen und Schreiben. Nur Schreiben zu sperren lässt den gezeigten Fehler weiterhin zu.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K11",
+      "taskId": "C3",
+      "goalId": "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+      "goalCanonicalSha256": "34c1d946277d77ef069f5ab5498200bb022e1e7dd1e9fe82cbab423528495aea",
+      "title": "Virtualisierung/Container",
+      "description": "Die lernende Person kann Virtualisierung und Containerisierung einordnen.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Host-, VM- und Container-RAM sind vollständig gegeben; 7 GiB und 2,5 GiB sind richtig. Der Vergleich verlangt zusätzlich Gastbetriebssystem, Kernelgrenze und Grenzen der Isolation. Eine reine Rechnung genügt deshalb nicht; die Aussagen bleiben auf das gesetzte Modell begrenzt.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K12",
+      "taskId": "C4",
+      "goalId": "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+      "goalCanonicalSha256": "8054e2a7f6716a36864604887e851df19766018e83ec33c31e21394f6fdb127c",
+      "title": "Cloud-Grundprinzipien",
+      "description": "Die lernende Person kann Cloud-Betriebsmodelle und Skalierung erklären.",
+      "parentContextIds": [
+        "a6cb5e91-bfac-5fe1-bc94-e6c7c86c858f"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Private/Public und PaaS/SaaS sind aus den Angeboten ableitbar; IaaS, Hybrid und Skalierungsarten müssen erklärt werden. Drei Instanzen ohne Ausfall und vier mit Einzelausfall sind im Modell minimal. Die Datenbankgrenze 120 wird getrennt geprüft; unbeschränkte reale Skalierbarkeit wird nicht behauptet.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K13",
+      "taskId": "B5",
+      "goalId": "42467606-f969-5bd7-bfc8-114c4853ecad",
+      "goalCanonicalSha256": "cb52a4636215a624019cbf6584d053d32758eb23dcbe0d69fae32f8d8f3f0d1d",
+      "title": "Logikprogrammierung vertiefen",
+      "description": "Die lernende Person kann Backtracking/Unifikation in Prolog analysieren.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Die geordnete Faktenbasis trägt eine konkrete Unifikations- und Backtrackspur. Kopfbindung, ben→dora, Fehlvergleich, Rücknahme, clara→emil und Erschöpfung sind richtig. Die Rubrik verlangt die Suchsteuerung; eine bloße Antwortmenge genügt nicht.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K14",
+      "taskId": "B6",
+      "goalId": "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+      "goalCanonicalSha256": "b17fb1bab1435c6a1d0cb26212ef0df74d52beb8519a1bb77e97b6a10f88540f",
+      "title": "Listen in Prolog",
+      "description": "Die lernende Person kann rekursive Listenoperationen in Prolog formulieren.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "append_list und reverse_list müssen rekursiv mit Basisfällen formuliert werden. Musterlösung und Rückkehrfolge für [finish,a,start] sind richtig; eine gültige Akkumulatoralternative bleibt zulässig. Damit wird die rekursive Listenkompetenz trotz Überschneidung mit K06 eigenständig geprüft.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K15",
+      "taskId": "B7",
+      "goalId": "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+      "goalCanonicalSha256": "8a11a56d7631c0e23842f17d4eb9a48c36d48b7116182a79bd1c8a665760f577",
+      "title": "Graphalgorithmen in Prolog",
+      "description": "Die lernende Person kann einfache Graphalgorithmen deklarativ ausdrücken.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Der gerichtete Graph enthält einen echten Zyklus und genau zwei einfache Start-Finish-Pfade. Die Besuchsliste verhindert Wiederholung, gebundene Negation ist korrekt eingesetzt und die wachsende Besuchsmenge begrenzt die Tiefe. Der Nullkantenfall verletzt keine Aufgabenforderung.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K16",
+      "taskId": "B8",
+      "goalId": "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+      "goalCanonicalSha256": "c371d8ee3732e7dc9ea21cbdc811b98adc9bc043d4ffb7e4d175b95807cf8a73",
+      "title": "Cut und Nichtdeterminismus",
+      "description": "Die lernende Person kann Cut/Nichtdeterminismus in Prolog steuern.",
+      "parentContextIds": [
+        "f5e6a2d7-6793-5023-8296-dea1de828a68"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Der frühe Cut entfernt gerade die noch benötigte east-Alternative. Beide Korrekturen trennen vollständige Aufzählung von absichtlicher Erstlösung; die zweite Wissensbasis mit beiden offenen Toren macht den Unterschied beobachtbar. Geprüft wird Steuerung des Nichtdeterminismus, nicht nur Syntax.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K17",
+      "taskId": "D1",
+      "goalId": "325661fb-1df9-54d1-8fca-e651c94483f1",
+      "goalCanonicalSha256": "01713c226feef41a4c151af5c53b58a6d255e13dac347a75c58c6bb800175409",
+      "title": "Funktionale Programmierung einordnen",
+      "description": "Die lernende Person kann funktionale Programmierung als deklaratives Paradigma von imperativer und logischer Programmierung abgrenzen.",
+      "parentContextIds": [
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Imperativer Akkumulator, Prologrelation und reine Funktionsgleichungen werden konkret verglichen. Zustandsänderung, Funktionswert und Unifikation/Suche sind zutreffend getrennt; is benötigt eine auswertbare rechte Seite und ist kein allgemeiner Gleichungslöser. Fehlende englische Originalzieltexte werden nicht ergänzt.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K18",
+      "taskId": "D2",
+      "goalId": "feb50fce-1dad-5a48-8ff3-c9737d507843",
+      "goalCanonicalSha256": "c0763cfde296842a8615f85cd58cd6c656129814150f32e398b0b3247ab390ae",
+      "title": "Funktionen und Terme deklarativ modellieren",
+      "description": "Die lernende Person kann einfache funktionale Programme mit Termen, Funktionsdeklarationen und rekursiven Abhaengigkeiten modellieren.",
+      "parentContextIds": [
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "raised, sum und total werden als eigene vollständige Funktionsgleichungen einschließlich beider Basisfälle verlangt. Abhängigkeiten und rekursive Listenreste sind richtig; die Gleichungen gelten strukturell für jede endliche Liste im mathematischen Bereich. Die begrenzte Node-Ausführung bleibt davon getrennt.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    },
+    {
+      "criterionId": "K19",
+      "taskId": "D3",
+      "goalId": "d6577123-0842-520e-b039-8ac72ab507b6",
+      "goalCanonicalSha256": "c910462da6ec4193933292cb6e4b2d7983da4c7a740a66662071b0429cbc8592",
+      "title": "Funktionale Auswertung durch Reduktion erklaeren",
+      "description": "Die lernende Person kann die Auswertung funktionaler Programme durch wiederholte Reduktion von Termen erlaeutern.",
+      "parentContextIds": [
+        "b7bc2bf3-582c-5e01-b7c9-1b10d30e6103"
+      ],
+      "decision": "content-approved-for-complete-19-competence-contract",
+      "reason": "Die Reduktion führt über raised([]) und sum([]) richtig zu 5 und auf leerer Eingabe zu 0. Echt verkürzte endliche Listen tragen das Terminierungsargument. Andere korrekte Reduktionsreihenfolgen sind zulässig; bloße Ergebnisangaben genügen nicht.",
+      "noCriterionMayBeOmittedAtPassingThreshold": true
+    }
+  ],
+  "passContract": {
+    "binaryCriteria": 19,
+    "pointsEach": 1,
+    "passingPoints": 19,
+    "possibleBinaryScoreVectors": 524288,
+    "passingVectors": 1,
+    "passingVector": "All 19 criteria awarded 1; all named subperformances mandatory; equivalent implementations do not waive a competency.",
+    "limitation": "Arithmetic rules out compensation only under the authored correct 0/1 grading; it does not mechanically establish semantic grading quality."
+  },
+  "verification": {
+    "verifier": "docs/dev/ci-graph-repairs/verify_informatics_q4_terminal_candidate.py",
+    "independentRun": "PASS-bounded-executable-and-reference-checks-only",
+    "exactPythonFullAdderCases": 8,
+    "exactPythonTwoBitCases": 16,
+    "threadSchedules": 20,
+    "threadResults": {
+      "1": 18,
+      "2": 2
+    },
+    "functionalNodeCases": 4,
+    "functionalTermProof": "Independent structural reasoning: raised/sum recurse on the proper list tail and have explicit empty bases; total composes these. Node cases do not prove unlimited numeric range or arbitrarily large recursion.",
+    "prologProgramExecuted": false,
+    "prologRuntimeAvailable": false,
+    "prologReview": "Full source manually traced under declared clause/goal order, ground-negation and input modes; Python fact/graph checks are not a Prolog execution."
+  },
+  "englishAndSourceLimits": {
+    "inventedEnglishGoalTexts": false,
+    "threeGoalsWithoutOriginalEnglish": [
+      "325661fb-1df9-54d1-8fca-e651c94483f1",
+      "feb50fce-1dad-5a48-8ff3-c9737d507843",
+      "d6577123-0842-520e-b039-8ac72ab507b6"
+    ],
+    "officialSourceRequalificationClaimed": false,
+    "reviewedScope": "Existing exact canonical goal meanings and supplied task materials, not a fresh audit of official state curriculum mappings."
+  },
+  "applicationHold": {
+    "id": "INFO-Q4-SCOPE-001",
+    "status": "confirmed-root-requested-explicit-course-repair",
+    "existingMismatch": "Original terminal tags GK+LK and full 19-goal coverage coexist with 13 LK-only covered goals. Actual HE/BY role/filter projections include the terminal in GK but only six covered targets. LK includes all 19.",
+    "prohibitedWorkaround": "No lower total threshold, missing criteria, coverage downscope, shared scope-dependent pass of the same ID, silent deletion of the GK target, or automatic mastery translation.",
+    "rootRepairDirection": "Preserve the original 19-competence identity and content as the LK assessment; author a separate stable GK assessment for the actual GK target competencies and explicit course placement. A full all-view census and reviewable guards remain necessary.",
+    "scopeRows": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+        "jurisdiction": "DE-HE",
+        "profile": "GK",
+        "terminalTarget": true,
+        "coveredTargetCount": 6,
+        "coveredOutsideTarget": [
+          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+          "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+          "42467606-f969-5bd7-bfc8-114c4853ecad",
+          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+          "325661fb-1df9-54d1-8fca-e651c94483f1",
+          "feb50fce-1dad-5a48-8ff3-c9737d507843",
+          "d6577123-0842-520e-b039-8ac72ab507b6"
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+        "jurisdiction": "DE-HE",
+        "profile": "LK",
+        "terminalTarget": true,
+        "coveredTargetCount": 19,
+        "coveredOutsideTarget": []
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+        "jurisdiction": "DE-BY",
+        "profile": "GK",
+        "terminalTarget": true,
+        "coveredTargetCount": 6,
+        "coveredOutsideTarget": [
+          "01cd4048-8ce2-5167-bfa6-f3cb042c84f1",
+          "170a6edb-64af-5bb5-a59d-69b6ac5ee7e8",
+          "a93357e9-5e5b-57c5-98d2-35404a6e6e56",
+          "5f6fb041-835b-51b1-aea9-6c42fee54e69",
+          "e9b74953-2c4c-553c-aa2c-eca278f336ed",
+          "e9f348d8-300e-5101-b7f1-3ba00ff969a1",
+          "42467606-f969-5bd7-bfc8-114c4853ecad",
+          "d3adb904-ee7e-503b-b67b-c2a65497cb3b",
+          "3b98d9f8-b63e-53b6-b447-3881a95e4841",
+          "e6b07eba-a0dd-5cbf-aed0-1c1259d21a7f",
+          "325661fb-1df9-54d1-8fca-e651c94483f1",
+          "feb50fce-1dad-5a48-8ff3-c9737d507843",
+          "d6577123-0842-520e-b039-8ac72ab507b6"
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+        "jurisdiction": "DE-BY",
+        "profile": "LK",
+        "terminalTarget": true,
+        "coveredTargetCount": 19,
+        "coveredOutsideTarget": []
+      }
+    ]
+  },
+  "primaryLanguageReferenceChecks": [
+    {
+      "url": "https://www.swi-prolog.org/pldoc/man?predicate=%21%2F0",
+      "use": "Cut prunes current predicate alternatives and left-goal choicepoints; supports B8 source trace."
+    },
+    {
+      "url": "https://www.swi-prolog.org/pldoc/man?predicate=is%2F2",
+      "use": "is evaluates its expression; supports bounded input-mode statement inD1."
+    }
+  ],
+  "releaseBoundary": "No application or released-status approval until explicit course repair, Root second review and actual parser/QA checks. This does not implement C(q), units, mastery inference, or learner-state migration."
+}

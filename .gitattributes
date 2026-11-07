@@ -1,4 +1,9 @@
 * text=auto eol=lf
+# Preserve these exact captured review diffs and failed-test streams as evidence.
+qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/reviewed.diff -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-06/private-capture-independent-final-review/reviewed.diff -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/actual-final19-replay/new-alias-regressions-before17.stderr.txt -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-06/private-capture-peer-repair/alias-first-red.txt -text -whitespace
 # Preserve sealed source/review bytes in the inactive Chemistry working checkpoint.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/evidence/** -text -whitespace
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-17/chemie-current439-source-requires-working-checkpoint-20261017-v1/candidate/** -text -whitespace
@@ -270,3 +275,63 @@ contracts/drafts/openai/skillpilot-coach/*-SNAPSHOT/ui/** -text -whitespace
 # Previously advertised MCP resources keep their exact content-addressed bytes.
 backend/src/main/resources/openai/retained/skillpilot/coach/v1/sha256-*/*.html -text -whitespace
 backend/src/main/resources/claude-connector-v1/mcp-apps/retained/sha256-*/*.html -text -whitespace
+# Preserve the byte-bound HTML actually read by both cold description rounds.
+qa-artifacts/ci-contract-audit/2026-11-06/math-single-description-input-2026-11-06/packet/bundle/book.html -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/bundle/book.html -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-current-description-input-2026-11-07/packet/bundle/book.html -text -whitespace
+# These zlib-framed Git objects are opaque byte-bound binary evidence.
+qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-git-capsule-probe/capsule/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index/capsule/objects/** binary -whitespace
+# Preserve mandatory blank context markers in the exact reviewed code diff.
+qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-consumer-integration/results/reviewable-code-diff.patch -text -whitespace
+# Preserve the exact generated six-export diff, including empty context lines.
+qa-artifacts/ci-contract-audit/2026-11-07/source-identity-am-review-slice-mechanics/six-export-only.patch -text -whitespace
+# Exact native Git diagnostic output includes blank hint context lines.
+qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/native-probe.stderr.txt -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index-math3-2026-11-07/capsule/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math3-fixed57-authority-integration-candidate/metadata/private-code-only.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-core-proposal.diff -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/native-assessment-contract.txt -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/tasks.md -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/tasks.md -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/economics-fixed74-authority-integration-candidate/capsule/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/economics-fixed74-authority-integration-candidate/private-application.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/remote645-terminal/code-and-regression.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/remote645-scope-safe-refresh-successor/successor-vs-first-candidate.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/editorial.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-material-implementation-candidate/reproducers/freeze.py -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/source-a-closed-namespace-native-candidate/implementation/closed_namespace.py -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/source-a-closed-namespace-native-candidate/implementation/identity_qa_read_launcher.py.diff -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/source-a-closed-namespace-native-candidate/implementation/identity_qa_read_trace.py.diff -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/source-a-complete-reader-namespace-analysis/node-readelf.txt -text -whitespace
+# Preserve literal blank context in the sealed, inactive P2 review patch.
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-v3-correction-candidate/ci-p2-successor/successor.patch -text -whitespace
+# The sealed gate-only patch retains its literal original diff context.
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-retained-coverage-gate-only-candidate/gate-only.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/backend-canonical-projection-scope-fixture-fix/fixture-fix.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math58-active-integration/capsule-132/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/powi52-private-runtime-integration-candidate/backend-runtime.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-first-batch-analysis/proposed-source-revision-reader.patch -text -whitespace
+# Preserve exact sealed workflow proposals and captured fixture diff context.
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-ci-parallel-core-proposal/ci.proposed.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-ci-parallel-core-proposal/ci.proposed.yml -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-ci-parallel-core-implementation-candidate/candidate/.github/workflows/ci.yml -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-ci-parallel-core-implementation-candidate/ci.before.yml -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-ci-parallel-core-implementation-candidate/workflow.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/backend-cross-subject-projection-role-scope-fixture-fix/fixture-fix.patch -text -whitespace
+# Preserve exact bytes in the WIP audit reviews and captured native context.
+# These zlib Git objects are binary; recorded candidate/log EOFs stay exact.
+qa-artifacts/ci-contract-audit/2026-11-07/biology56-reader-capsule-integration-candidate/capsule-188/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/capsule-132-g17-fifteen/objects/** binary -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/biology56-reader-capsule-integration-candidate/candidate/app/scripts/lib/goalVisualizationBiology56Contexts.ts -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/biology56-reader-capsule-integration-candidate/lint.stdout -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/current-changes-wip-checkpoint/root-informatics-current23-source-checks-20261107-quality_source-coverage-audit_check-stdout -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/current-changes-wip-checkpoint/root-informatics-current23-source-checks-20261107-validate_view-filters-stdout -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/informatics-material-context-bound-candidate/material-context-delta.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/curriculum-material-context-candidate/implementation.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/biology56-reader-capsule-integration-candidate/candidate.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-source-revision-candidate/proposed-source-revision-reader.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/goalVisualizationMath58Contexts.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/visualization_qualified_context_capsule.patch -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-description-blind-input-candidate/packet/bundle/book.html -text -whitespace
+qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-description-synthesis-review/packet/bundle/book.html -text -whitespace

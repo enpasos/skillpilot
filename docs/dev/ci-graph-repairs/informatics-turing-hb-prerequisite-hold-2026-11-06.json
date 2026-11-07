@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "status": "HOLD-NOT-application-NOT-country-or-support-materialization",
+  "snapshot": {
+    "label": "5cb/e0ff historical snapshot BEFORE the separate Math-memory application",
+    "primaryInformaticsSourceBaseCommit": "7d6b34783c9707f270e07e432d8031381bacc774",
+    "primaryInformaticsSourceSha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e",
+    "completeCanonicalCatalogCommit": "7d6b34783c9707f270e07e432d8031381bacc774",
+    "canonicalCatalogFiles": 21,
+    "mathSourceSha256": "e0ff0cafccf0f638c4cb36d5a252480ccc7062750619ef0452a447775bf96fe1",
+    "currentMathPatchIncluded": false,
+    "freshIntegratedReplayAfterMathPatchClaimed": false
+  },
+  "caseId": "INFO-REM-017",
+  "fullConsumerGoal": {
+    "goalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944",
+    "canonicalPayloadSha256": "62fe62fa9c06f244d57726b7db131c5d8cd27f2ba6e395a40ee78e4fb13808a0",
+    "title": "Berechenbarkeitsgrenzen diskutieren",
+    "description": "Die lernende Person kann Grenzen der Berechenbarkeit an geeigneten Beispielen beschreiben und deren Bedeutung einordnen.",
+    "titleEn": "Discuss Computability Limits",
+    "descriptionEn": "The learner can describe limits of computability using suitable examples and classify their significance.",
+    "semanticKind": null,
+    "phase": "Q3",
+    "requires": [
+      "18691bbb-b996-57a6-9f91-8ff54acabbce",
+      "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    ],
+    "contains": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-MV",
+        "DE-RP",
+        "DE-SN"
+      ]
+    },
+    "parentGoalIds": [
+      "49e18e35-3a6d-53f7-842f-4dc9e39c745a"
+    ]
+  },
+  "fullProposedPrerequisite": {
+    "goalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+    "canonicalPayloadSha256": "8633d986f48d546aefbdd97c5c9cf80e3ddff7b0eecce07aabb52b9941d4c6c6",
+    "title": "Turingmaschine programmieren",
+    "description": "Die lernende Person kann eine Turingmaschine für einfache arithmetische oder logische Aufgaben beschreiben.",
+    "titleEn": "Program Turing Machine",
+    "descriptionEn": "The learner can describe a Turing machine for simple arithmetic or logical tasks.",
+    "semanticKind": null,
+    "phase": "Q3",
+    "requires": [
+      "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    ],
+    "contains": [],
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-MV",
+        "DE-RP",
+        "DE-SL",
+        "DE-SN",
+        "DE-TH"
+      ]
+    },
+    "parentGoalIds": [
+      "49e18e35-3a6d-53f7-842f-4dc9e39c745a"
+    ]
+  },
+  "testedCandidateRequires": [
+    "e7f0dec3-3d78-551b-8770-c182670eee6d"
+  ],
+  "actualImpact": {
+    "newComputedApplicability": "e7f gains DE-HB solely through requires-closure",
+    "newMaterializationDrift": "APV-203 for e7f",
+    "newMissingAuthoredHBReference": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hb-gym-informatics-crossstage.view.json",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage"
+        },
+        "changes": {
+          "rawMissingDirectPrerequisites": {
+            "removed": [],
+            "added": [
+              {
+                "prerequisiteGoalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+                "sourceGoalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944"
+              }
+            ]
+          },
+          "inferredMissingDirectPrerequisites": {
+            "removed": [],
+            "added": [
+              {
+                "prerequisiteGoalId": "e7f0dec3-3d78-551b-8770-c182670eee6d",
+                "sourceGoalId": "21ce0c27-45fc-53c9-a8f2-161cc052f944"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "independentDidacticJudgment": "Die volle e7f-Leistung ist nicht als universelle Vorleistung nachgewiesen: 21ce verlangt Grenzen der Berechenbarkeit anhand geeigneter Beispiele zu beschreiben und einzuordnen; es verlangt nicht, vorher selbst eine Turingmaschine für arithmetische oder logische Aufgaben beschreiben zu können. An einem vollständig vorgegebenen Maschinen-/Programmablauf und einer erläuterten Halteproblem-Argumentation kann die Grenze innerhalb von 21ce erworben werden. Der vorhandene Automaten-Grundschritt 7ad kann dafür als lesbare Modellbasis dienen; der kanonische Turing-Elterncluster allein begründet keine zusätzliche universelle Pflicht in allen gemappten Ländern.",
+  "unvalidatedAlternativeForIndependentReview": {
+    "requires": [
+      "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
+    ],
+    "meaning": "Die bereits bestehende Automatenbasis behalten, nur den überstarken Chomsky-Komplettabschluss entfernen. Diese Alternative wurde NICHT global oder im Scope-Snapshot ausgeführt und ist keine Anwendungsfreigabe.",
+    "orientationPlaceholderUsed": false
+  },
+  "primaryHBSource": {
+    "path": "curricula/DE/Gymnasium/input/HB/GyO_Informatik_2009.pdf",
+    "sha256": "49895eb9237a8426470670e98a57acbdbadd3f108137563660830b9263eb85a3",
+    "pagesRead": [
+      7,
+      8,
+      9
+    ],
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_informatics_upper_secondary_source_extraction_to_canonical_informatics.review.json",
+    "boundedObservation": "Die gelesenen Seiten nennen Automatenmodelle und Grenzen der Berechenbarkeit. Sie belegen keinen vorgängigen Abschluss der gesamten e7f-Leistung; dies ist keine Behauptung, dass Turingmodelle im Land verboten oder im vollständigen Plan nirgends erwähnt seien."
+  },
+  "requiresRootDecision": [
+    "Universelle fachliche Grundlage am vollen Zieltext entscheiden.",
+    "Keine automatische HB-Ausweitung oder Supportrolle aus dem Requires-Compiler ableiten.",
+    "Eine geänderte Entscheidung benötigt einen neuen aktuellen integrierten Kataloglauf nach dem Math-Patch."
+  ]
+}

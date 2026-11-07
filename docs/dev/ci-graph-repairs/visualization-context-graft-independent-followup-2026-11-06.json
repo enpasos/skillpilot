@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-visualization-context-graft-followup",
+  "reviewedAt": "2026-11-06T23:08:47+00:00",
+  "reviewer": "Codex Astra independent bounded replay",
+  "status": "additional-graft-hold-closed-in-current-two-profile-core",
+  "origin": "Root independently found that --no-replace-objects alone still honors local .git/info/grafts. Earlier two-hold peers remain unchanged and describe their exact controls only.",
+  "previousPeer": {
+    "path": "docs/dev/ci-graph-repairs/visualization-context-core-repair-independent-followup-2026-11-06.json",
+    "sha256": "70b820e8eee8228d342698eb407e3003b7eee29dac4eccf07745003440dcaee4"
+  },
+  "codePins": [
+    {
+      "path": "app/scripts/goalVisualizationReviewedContext.ts",
+      "sha256": "a375d017ed8faa34661eb963fd2cac42244119cbd87fda6b72f1a3f6459817c7",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/code/goalVisualizationReviewedContext.ts"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationContextNamespaces.ts",
+      "sha256": "8d0d270ef1d4fb6195492360438384c00f6c075d77c9fa60b509fbc016a29684",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/code/testGoalVisualizationContextNamespaces.ts"
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationReviewedContext.ts",
+      "sha256": "bf2d3a7a2f75a16820c232f993565b18cb8506e9905623a89e7a5dbc2486b666",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/code/testGoalVisualizationReviewedContext.ts"
+    },
+    {
+      "path": "contracts/goal-visualization-context/v1/qualification.schema.json",
+      "sha256": "20bec1526b71566c933577a7d3a045cbaeda68d4da32a397a74bbd6e32002c12",
+      "preserved": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/code/qualification.schema.json"
+    }
+  ],
+  "finding": {
+    "id": "VCTX-GRAFT",
+    "before": "The exact new eight-case test under a private readonly bwrap overlay of the preserved 94d728 core accepts an unaccepted forged review commit through .git/info/grafts. The same receipt without a graft is rejected.",
+    "correction": "Both actual Git subprocess paths now share environment with GIT_GRAFT_FILE=devNull and GIT_NO_REPLACE_OBJECTS=1, retain --no-replace-objects, and remove inherited Git directory/worktree/index/object-store redirections.",
+    "after": "The same eight-case test on a375d017 rejects the grafted forged review. Genuine historical-byte control and all prior namespace/replace controls retain their expected results."
+  },
+  "actualRuns": [
+    {
+      "mode": "preserved-94d728-before-readonly-bwrap-overlay",
+      "testPath": "app/scripts/testGoalVisualizationContextNamespaces.ts",
+      "testSha256": "8d0d270ef1d4fb6195492360438384c00f6c075d77c9fa60b509fbc016a29684",
+      "exitCode": 1,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/actual-before.log",
+        "sha256": "2bab1bdb125a53fe6f17c06bbefff96b21ffe4118e23f42d46bf09ac957f10d3"
+      },
+      "unexpectedAccepts": 1,
+      "privateTmpfsGitOnly": true
+    },
+    {
+      "mode": "current-a375d017",
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationContextNamespaces.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/actual-after.log",
+        "sha256": "83e112e3c1de2fa426cabd2ebaa774c89e7cfdaa14b68a674b95da862f5d57b4"
+      },
+      "controls": 8,
+      "unexpectedAccepts": 0
+    },
+    {
+      "mode": "current-a375d017-authentic-originals",
+      "command": "./node_modules/.bin/tsx scripts/testGoalVisualizationReviewedContext.ts",
+      "cwd": "app",
+      "exitCode": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-graft-independent-review/native-core.log",
+        "sha256": "cfe8a200056f0c81e6db8e28daa145f5295e5daf5e9394faaad6649eb8cf030b"
+      },
+      "historicalPositives": 18,
+      "negativeControls": 26
+    }
+  ],
+  "noActiveWrites": true,
+  "scope": "No producer/consumer wiring, fresh B adapter, additional original-family adapters, full V/M7/CI result or new visual review is approved by this code peer."
+}

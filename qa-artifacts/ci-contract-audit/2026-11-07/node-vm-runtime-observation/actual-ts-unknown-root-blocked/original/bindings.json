@@ -1,0 +1,1216 @@
+{
+  "files": {
+    "data/goal.json": {
+      "category": "source",
+      "sha256": "18580554d40be225589e70b746a2deeae4375c1e6f77e71bf726532b92e13046",
+      "provenance": "exact Git blob a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3"
+    },
+    "data/space name.json": {
+      "category": "source",
+      "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+      "provenance": "exact Git blob a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3"
+    },
+    "data/\u00e4.json": {
+      "category": "source",
+      "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+      "provenance": "exact Git blob a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3"
+    },
+    "data/required.config.json": {
+      "category": "source",
+      "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+      "provenance": "exact Git blob a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3"
+    },
+    "other/goal.json": {
+      "category": "source",
+      "sha256": "31b2f11e513b12af4f29f3584860a6951853aaabb657c1c05f4b553bc48dd42c",
+      "provenance": "exact Git blob a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3"
+    },
+    "tool/input.txt": {
+      "category": "tool",
+      "sha256": "3b6b9fc42151c853ef605424a0ffd114c99576f93dd60160b07748f57aa3ff91",
+      "provenance": "separate explicit fixture tool bytes"
+    },
+    "dependency/input.txt": {
+      "category": "dependency",
+      "sha256": "afb651f1b7a20196a37f865b42006e8820eec3b4285db443c12ed14c14e29475",
+      "provenance": "separate explicit fixture dependency bytes"
+    },
+    "reports/generated.txt": {
+      "category": "output",
+      "sha256": "3e36c71d5d1f8be400ec9b1c21b50ddbaa310b69f11bba4ed5254a2a593daa2e",
+      "provenance": "actual fixture producer exit0/stdout SHA"
+    },
+    "tool/discovery.mjs": {
+      "category": "tool",
+      "sha256": "7141c9155dec3618a8500ebc64beb61a9e0f8565ebf54d4afc70582243e542bf",
+      "provenance": "exact actual Node discovery fixture code"
+    },
+    "tool/discovery.mts": {
+      "category": "tool",
+      "sha256": "7b52c514f1c97c6b710ca191b7b1b48bd969ff4a58c6f9bea42bd9a01dd59724",
+      "provenance": "exact tiny TypeScript producer/config pinned before launch"
+    },
+    "package.json": {
+      "category": "tool",
+      "sha256": "1239d4d885dcad42201a27ed9324f8f0f760b78700d8db9ced39a511cffe7eae",
+      "provenance": "exact tiny TypeScript producer/config pinned before launch"
+    },
+    "tsconfig.json": {
+      "category": "tool",
+      "sha256": "2a4e0f9abf47b2f54ab80c3964aa3cfdde83ac77f8647e0694654b6a66e787a0",
+      "provenance": "exact tiny TypeScript producer/config pinned before launch"
+    }
+  },
+  "externalFiles": {
+    "/etc/ssl/openssl.cnf": {
+      "category": "tool",
+      "sha256": "47fdeeac79328ffb03c9d855237a500b4ad5216dc971a8b2f40a420b4b3c11ef",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/dev/null": {
+      "category": "tool",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libpthread.so.0": {
+      "category": "dependency",
+      "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30": {
+      "category": "dependency",
+      "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2": {
+      "category": "dependency",
+      "sha256": "8c7e2990d2847ca210d6f716d4b9aa62997c2fd2acfcda587c1ec398ed364618",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libm.so.6": {
+      "category": "dependency",
+      "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node": {
+      "category": "tool",
+      "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1": {
+      "category": "dependency",
+      "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libc.so.6": {
+      "category": "dependency",
+      "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/usr/lib/x86_64-linux-gnu/libdl.so.2": {
+      "category": "dependency",
+      "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/etc/ld.so.cache": {
+      "category": "tool",
+      "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+      "provenance": "explicit Node runtime/tool bytes bound before launch"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild/linux-x64/README.md": {
+      "category": "dependency",
+      "sha256": "3b0ebdffe92e5b77c948c4ac0bf4bc4a38803b15405d0425b517705221c27a2f",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild/linux-x64/bin/esbuild": {
+      "category": "dependency",
+      "sha256": "ecd2aeff7d78a9feefa96d9c6f3bb9a9cbb38cc74ec3e7f044e8e6ed02e33d00",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild/linux-x64/package.json": {
+      "category": "dependency",
+      "sha256": "bb6a1435e39368fc5041d0abcdb5927e021f5810e5129e8cf01094f1884e6318",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/LICENSE.md": {
+      "category": "dependency",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/README.md": {
+      "category": "dependency",
+      "sha256": "6d481cd60ec3c679e5e395f547ab4221147f35642894f6b95a8df38fd25c87bd",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/bin/esbuild": {
+      "category": "dependency",
+      "sha256": "ecd2aeff7d78a9feefa96d9c6f3bb9a9cbb38cc74ec3e7f044e8e6ed02e33d00",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/install.js": {
+      "category": "dependency",
+      "sha256": "10f6fa3644d8d23d066ff67b0ae449074e75884503546a9fedb667f1dcb9ade2",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/main.d.ts": {
+      "category": "dependency",
+      "sha256": "161c8e0690c46021506e32fda85956d785b70f309ae97011fd27374c065cac9b",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/main.js": {
+      "category": "dependency",
+      "sha256": "948fce5d4115d4486af681d49211dd0a4de0f3b8e86c2af312ae3684cd9f534f",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/package.json": {
+      "category": "dependency",
+      "sha256": "3139328c2722a5f517e908ef5c3d8aa28cf154fe3931185ed456351e662025df",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/LICENSE": {
+      "category": "dependency",
+      "sha256": "10c904a49af44409b073532e45a53fd4df19bdf26eaf9afc7917258c2b354382",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/README.md": {
+      "category": "dependency",
+      "sha256": "790c76148be7f82424dbef23730795d01a76b938d43e0a5b7cb4b3ba5cbd71ba",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/dist/index.cjs": {
+      "category": "dependency",
+      "sha256": "840625ff5c171c534c150f0c5d4b39f9c84a4104ec901bd2c5522f5a186707f6",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/dist/index.d.cts": {
+      "category": "dependency",
+      "sha256": "83de03c3bc0bf6247fa576dd1ffaade6a2a4703d367b634fab0b81de0d89a9d1",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/dist/index.d.mts": {
+      "category": "dependency",
+      "sha256": "83de03c3bc0bf6247fa576dd1ffaade6a2a4703d367b634fab0b81de0d89a9d1",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/dist/index.mjs": {
+      "category": "dependency",
+      "sha256": "4307500aa178759e855eafd359aad58de72e6f9fd7df6cac3ae36f7e707d5757",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/package.json": {
+      "category": "dependency",
+      "sha256": "8d506183857f961bff977fad697712e70136b5608b74aa7eda296d90dcee19cb",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/LICENSE": {
+      "category": "dependency",
+      "sha256": "10c904a49af44409b073532e45a53fd4df19bdf26eaf9afc7917258c2b354382",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/README.md": {
+      "category": "dependency",
+      "sha256": "cb82232c87083b5f5afc2a4b4ed80b6dc3680ee443d1d52b16be8523283c2dc4",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/dist/index.cjs": {
+      "category": "dependency",
+      "sha256": "dc0ffaba25e180745bb1ce1622be094bbc97d07dc275c52413eb546580d9ff49",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/dist/index.d.cts": {
+      "category": "dependency",
+      "sha256": "f21fca4c17af045586afdcd64c029379b52374b28f7a0bdebf04abffe708c1a2",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/dist/index.d.mts": {
+      "category": "dependency",
+      "sha256": "f21fca4c17af045586afdcd64c029379b52374b28f7a0bdebf04abffe708c1a2",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/dist/index.mjs": {
+      "category": "dependency",
+      "sha256": "5472eb24afa47c614e7edaccb0ccb4c6259f897d875c27057ee00b7c2cdc3672",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/package.json": {
+      "category": "dependency",
+      "sha256": "e372f809865bc3fc6ad75be76a90b031eece36e9d12d283de9955aca6be8537d",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/LICENSE": {
+      "category": "dependency",
+      "sha256": "8dded67841a9261a622c739fb61c81785e93765de852828ceeb9403d20a74581",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/README.md": {
+      "category": "dependency",
+      "sha256": "bdc095a5be01c6f9e626b417ba025fa5e8dad669f081540f58e4ad9daede0971",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/api/index.cjs": {
+      "category": "dependency",
+      "sha256": "b396a280df2ea1de64a7fa989db0d46cf1b90fc07f12e4dc5e57d5e5a99d4feb",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/api/index.d.cts": {
+      "category": "dependency",
+      "sha256": "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/api/index.d.mts": {
+      "category": "dependency",
+      "sha256": "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/api/index.mjs": {
+      "category": "dependency",
+      "sha256": "685c2a23306b7bba191e8f4f123382fa380fdcb2a58bbb1cc46a1f0a6d2255ff",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/index.cjs": {
+      "category": "dependency",
+      "sha256": "a6d966dff90f93d5a9cb22206d9a37f05eb3f66f004a07424bd96aebfeda9acf",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/index.mjs": {
+      "category": "dependency",
+      "sha256": "940bf50aae38d11425db038dfacd2102e469eca6b6e896879c927611e593f6cf",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.cjs": {
+      "category": "dependency",
+      "sha256": "c2553d91855f764f54abd5959973fb2359028678eb3cf4e598b7babe0d404e46",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs": {
+      "category": "dependency",
+      "sha256": "8729ecfb90d9d568939e4190e6f1d3317c946583b7d37a776e0c23a21c021cf8",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/client-BQVF1NaW.mjs": {
+      "category": "dependency",
+      "sha256": "334ad3dbfaf820eeb08dd2fa40750c8316e6f8a61311bdf99defd3c361fbece4",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/client-D6NvIMSC.cjs": {
+      "category": "dependency",
+      "sha256": "af10790d58385f62c205140c3f7c25dae26638c2961fa24eb958f888d8995a40",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/api/index.cjs": {
+      "category": "dependency",
+      "sha256": "b97d8aa5122372689e759de9a7c30e6d1f29eb683a7a714beaab953cc8eceaa7",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/api/index.d.cts": {
+      "category": "dependency",
+      "sha256": "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/api/index.d.mts": {
+      "category": "dependency",
+      "sha256": "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/api/index.mjs": {
+      "category": "dependency",
+      "sha256": "477bed5ef167ef825ec4cb99ed010ac6d70833d1b4e8b46e23825cc6de543d8e",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/index.cjs": {
+      "category": "dependency",
+      "sha256": "a95457ef5fea5e06d56c8bafbb96f4ce86c651fa0bfcc4ccb90b740f126f4863",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/index.mjs": {
+      "category": "dependency",
+      "sha256": "9fab711543eb155d50fb147f8984e104db348a73b74daee4e3974bec109aa381",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/get-pipe-path-BHW2eJdv.mjs": {
+      "category": "dependency",
+      "sha256": "307483caa22c2406677b4bd513bf602b4de3986f3e23eac7724e99c0d7ddc8d6",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/get-pipe-path-BoR10qr8.cjs": {
+      "category": "dependency",
+      "sha256": "70a7fd0d550d1df1336946c504b36dcf97658a7c3328e02a69834ae0c4bfee91",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/index-7AaEi15b.mjs": {
+      "category": "dependency",
+      "sha256": "47851348bc3bbc11413edd4bf44758b7a85e28419847583231d74a182b044e22",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/index-BWFBUo6r.cjs": {
+      "category": "dependency",
+      "sha256": "fe29b97b254312970fceb8995a519abc8751f26972c221281959a7d77858a464",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/index-gbaejti9.mjs": {
+      "category": "dependency",
+      "sha256": "76febbe946957c96066d1d59293c4a26fc874c05876394cf4c178e4f4d0b6ba8",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/index-gckBtVBf.cjs": {
+      "category": "dependency",
+      "sha256": "49ad679be79684c7706ad7ca495f0afa7bfa361b354eb77e6389cf19df91c524",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/lexer-DQCqS3nf.mjs": {
+      "category": "dependency",
+      "sha256": "6b77bebaee2dd7741177e287a78ef4329d9ef91f6939d09cfcf0029b3859f883",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/lexer-DgIbo0BU.cjs": {
+      "category": "dependency",
+      "sha256": "9b92935847bf0f6daade96b21c8271139ed8b48ef3fa59647af0ef1d36770db0",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/loader.cjs": {
+      "category": "dependency",
+      "sha256": "ff33128961cec9865a3c8ffb37f4edaecfd1ba960cc9a0a249f816594972dcf9",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/loader.mjs": {
+      "category": "dependency",
+      "sha256": "0b1c5b86192772fe9257710e739959cee5947c11ae1f93b61abfaa9b80c6def1",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node-features-_8ZFwP_x.mjs": {
+      "category": "dependency",
+      "sha256": "dbf95f05cce9b129a9a89f33f43b7804ab641aa8b256e7cf64ad9f92b880cecc",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node-features-roYmp9jK.cjs": {
+      "category": "dependency",
+      "sha256": "18c0185390eec5bb60600ecb503a933673a77832bb93db3a258933f4ab051768",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package-CeBgXWuR.mjs": {
+      "category": "dependency",
+      "sha256": "81246f1169deb713dd5bae44fc39d68bd876395e99b6ce1560d4882e2dd70dd4",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package-Dxt5kIHw.cjs": {
+      "category": "dependency",
+      "sha256": "a6f7dc15288c2e5dc03394061d16945e42190e43cb1cf6422a93d064c1fc1377",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/patch-repl.cjs": {
+      "category": "dependency",
+      "sha256": "33f5f6755270054783f4c568d0d48d4a79fecde965ec6f91ca27f0f949ba6da6",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/patch-repl.mjs": {
+      "category": "dependency",
+      "sha256": "3850acac507aa554620693d272bed6b7ac1e1b8ab5af406581c632522ad8c872",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/preflight.cjs": {
+      "category": "dependency",
+      "sha256": "a088ad17ad4151c1a9f2ad7090fcdbc422fe26c8f4e5fdc53a489dcb0b21ae69",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/preflight.mjs": {
+      "category": "dependency",
+      "sha256": "cf384c149f11748fb8497b2118d58e21ea884ae2848e4b4c81298927f268c3bb",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/register-2sWVXuRQ.cjs": {
+      "category": "dependency",
+      "sha256": "583b65c6caaec95e71e73fa65617c95162428aacd845394689f690b48a9328d5",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/register-B7jrtLTO.mjs": {
+      "category": "dependency",
+      "sha256": "10184ddf4354bab38743d80a5844796f26ffc4589d2820781da90c6a67507aaf",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/register-CFH5oNdT.mjs": {
+      "category": "dependency",
+      "sha256": "7c7d2d4f757a1a35610b483e0348aee2eb1140968631f4b2105c4b4ad9ffbf0a",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/register-D46fvsV_.cjs": {
+      "category": "dependency",
+      "sha256": "7f0e410a859fadcc75a452160e69c860543f5e13e2321b934c0bc4e3d14c01f6",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/repl.cjs": {
+      "category": "dependency",
+      "sha256": "1dcdd7c363bbedd2f93062a838f5800651b9a432d91f081031bb2856faede47c",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/repl.mjs": {
+      "category": "dependency",
+      "sha256": "061e45ad7e989290e5ee79c6b36848d2a9dc818fd695b6387655e74380f7617b",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/require-D4F1Lv60.cjs": {
+      "category": "dependency",
+      "sha256": "468f626104c0572958b7944fbce075777efa2f4ef1577c9fa0c89499cb9e100b",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/require-DQxpCAr4.mjs": {
+      "category": "dependency",
+      "sha256": "dc1b6944ffaa8f4d70e5007116b9aeac77c1cdf80a62526763eab34a123fa902",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/suppress-warnings.cjs": {
+      "category": "dependency",
+      "sha256": "028063d20bd49083f03a0b1ed4f7a3d55fac1f64f5aca0e58e1ec61601f20ee7",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/suppress-warnings.mjs": {
+      "category": "dependency",
+      "sha256": "4c7d8eb24f7c16282453bc18d649c310028a63d3850e6590338932cdd896017f",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/temporary-directory-B83uKxJF.cjs": {
+      "category": "dependency",
+      "sha256": "da189099aba4a7aff1e0ca337cd71410a0f96abc66298403db041cb812cbd24c",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/temporary-directory-CwHp0_NW.mjs": {
+      "category": "dependency",
+      "sha256": "e0771b7d9b216d438ff2ade7494a7a3ac6202c66cb752f2cd99bffb3d78226fe",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/types-Cxp8y2TL.d.ts": {
+      "category": "dependency",
+      "sha256": "f462b6fc33bc3f82d1551ac0678834dfff89192ce1e848eb0bb8ca5bfe8bc76f",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    },
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/package.json": {
+      "category": "dependency",
+      "sha256": "6e764b21991c21595441f82387c1451ccd10a3e7a3f0973cc5e3649a12dea7d2",
+      "provenance": "actual private complete dependency capture c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+    }
+  },
+  "externalDirectoryMetadata": {
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52": [
+      "statx"
+    ],
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud": [
+      "statx"
+    ],
+    "/dev/shm": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild/linux-x64": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/@esbuild/linux-x64/bin": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/bin": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/get-tsconfig/dist": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/resolve-pkg-maps/dist": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cjs/api": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/esm/api": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ],
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107": [
+      "lstat",
+      "newfstatat",
+      "stat",
+      "statx"
+    ]
+  },
+  "capture": {
+    "bytes": 22928845,
+    "entries": [
+      {
+        "kind": "directory",
+        "path": "@esbuild"
+      },
+      {
+        "kind": "directory",
+        "path": "@esbuild/linux-x64"
+      },
+      {
+        "bytes": 141,
+        "executable": false,
+        "kind": "file",
+        "path": "@esbuild/linux-x64/README.md",
+        "sha256": "3b0ebdffe92e5b77c948c4ac0bf4bc4a38803b15405d0425b517705221c27a2f"
+      },
+      {
+        "kind": "directory",
+        "path": "@esbuild/linux-x64/bin"
+      },
+      {
+        "bytes": 11100344,
+        "executable": true,
+        "kind": "file",
+        "path": "@esbuild/linux-x64/bin/esbuild",
+        "sha256": "ecd2aeff7d78a9feefa96d9c6f3bb9a9cbb38cc74ec3e7f044e8e6ed02e33d00"
+      },
+      {
+        "bytes": 372,
+        "executable": false,
+        "kind": "file",
+        "path": "@esbuild/linux-x64/package.json",
+        "sha256": "bb6a1435e39368fc5041d0abcdb5927e021f5810e5129e8cf01094f1884e6318"
+      },
+      {
+        "kind": "directory",
+        "path": "esbuild"
+      },
+      {
+        "bytes": 1069,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/LICENSE.md",
+        "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681"
+      },
+      {
+        "bytes": 175,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/README.md",
+        "sha256": "6d481cd60ec3c679e5e395f547ab4221147f35642894f6b95a8df38fd25c87bd"
+      },
+      {
+        "kind": "directory",
+        "path": "esbuild/bin"
+      },
+      {
+        "bytes": 11100344,
+        "executable": true,
+        "kind": "file",
+        "path": "esbuild/bin/esbuild",
+        "sha256": "ecd2aeff7d78a9feefa96d9c6f3bb9a9cbb38cc74ec3e7f044e8e6ed02e33d00"
+      },
+      {
+        "bytes": 11160,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/install.js",
+        "sha256": "10f6fa3644d8d23d066ff67b0ae449074e75884503546a9fedb667f1dcb9ade2"
+      },
+      {
+        "kind": "directory",
+        "path": "esbuild/lib"
+      },
+      {
+        "bytes": 23392,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/lib/main.d.ts",
+        "sha256": "161c8e0690c46021506e32fda85956d785b70f309ae97011fd27374c065cac9b"
+      },
+      {
+        "bytes": 88698,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/lib/main.js",
+        "sha256": "948fce5d4115d4486af681d49211dd0a4de0f3b8e86c2af312ae3684cd9f534f"
+      },
+      {
+        "bytes": 1463,
+        "executable": false,
+        "kind": "file",
+        "path": "esbuild/package.json",
+        "sha256": "3139328c2722a5f517e908ef5c3d8aa28cf154fe3931185ed456351e662025df"
+      },
+      {
+        "kind": "directory",
+        "path": "get-tsconfig"
+      },
+      {
+        "bytes": 1089,
+        "executable": false,
+        "kind": "file",
+        "path": "get-tsconfig/LICENSE",
+        "sha256": "10c904a49af44409b073532e45a53fd4df19bdf26eaf9afc7917258c2b354382"
+      },
+      {
+        "bytes": 6582,
+        "executable": false,
+        "kind": "file",
+        "path": "get-tsconfig/README.md",
+        "sha256": "790c76148be7f82424dbef23730795d01a76b938d43e0a5b7cb4b3ba5cbd71ba"
+      },
+      {
+        "kind": "directory",
+        "path": "get-tsconfig/dist"
+      },
+      {
+        "bytes": 22488,
+        "executable": true,
+        "kind": "file",
+        "path": "get-tsconfig/dist/index.cjs",
+        "sha256": "840625ff5c171c534c150f0c5d4b39f9c84a4104ec901bd2c5522f5a186707f6"
+      },
+      {
+        "bytes": 50166,
+        "executable": false,
+        "kind": "file",
+        "path": "get-tsconfig/dist/index.d.cts",
+        "sha256": "83de03c3bc0bf6247fa576dd1ffaade6a2a4703d367b634fab0b81de0d89a9d1"
+      },
+      {
+        "bytes": 50166,
+        "executable": false,
+        "kind": "file",
+        "path": "get-tsconfig/dist/index.d.mts",
+        "sha256": "83de03c3bc0bf6247fa576dd1ffaade6a2a4703d367b634fab0b81de0d89a9d1"
+      },
+      {
+        "bytes": 22476,
+        "executable": true,
+        "kind": "file",
+        "path": "get-tsconfig/dist/index.mjs",
+        "sha256": "4307500aa178759e855eafd359aad58de72e6f9fd7df6cac3ae36f7e707d5757"
+      },
+      {
+        "bytes": 1031,
+        "executable": false,
+        "kind": "file",
+        "path": "get-tsconfig/package.json",
+        "sha256": "8d506183857f961bff977fad697712e70136b5608b74aa7eda296d90dcee19cb"
+      },
+      {
+        "kind": "directory",
+        "path": "resolve-pkg-maps"
+      },
+      {
+        "bytes": 1089,
+        "executable": false,
+        "kind": "file",
+        "path": "resolve-pkg-maps/LICENSE",
+        "sha256": "10c904a49af44409b073532e45a53fd4df19bdf26eaf9afc7917258c2b354382"
+      },
+      {
+        "bytes": 7773,
+        "executable": false,
+        "kind": "file",
+        "path": "resolve-pkg-maps/README.md",
+        "sha256": "cb82232c87083b5f5afc2a4b4ed80b6dc3680ee443d1d52b16be8523283c2dc4"
+      },
+      {
+        "kind": "directory",
+        "path": "resolve-pkg-maps/dist"
+      },
+      {
+        "bytes": 2150,
+        "executable": true,
+        "kind": "file",
+        "path": "resolve-pkg-maps/dist/index.cjs",
+        "sha256": "dc0ffaba25e180745bb1ce1622be094bbc97d07dc275c52413eb546580d9ff49"
+      },
+      {
+        "bytes": 497,
+        "executable": false,
+        "kind": "file",
+        "path": "resolve-pkg-maps/dist/index.d.cts",
+        "sha256": "f21fca4c17af045586afdcd64c029379b52374b28f7a0bdebf04abffe708c1a2"
+      },
+      {
+        "bytes": 497,
+        "executable": false,
+        "kind": "file",
+        "path": "resolve-pkg-maps/dist/index.d.mts",
+        "sha256": "f21fca4c17af045586afdcd64c029379b52374b28f7a0bdebf04abffe708c1a2"
+      },
+      {
+        "bytes": 2080,
+        "executable": true,
+        "kind": "file",
+        "path": "resolve-pkg-maps/dist/index.mjs",
+        "sha256": "5472eb24afa47c614e7edaccb0ccb4c6259f897d875c27057ee00b7c2cdc3672"
+      },
+      {
+        "bytes": 951,
+        "executable": false,
+        "kind": "file",
+        "path": "resolve-pkg-maps/package.json",
+        "sha256": "e372f809865bc3fc6ad75be76a90b031eece36e9d12d283de9955aca6be8537d"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx"
+      },
+      {
+        "bytes": 1088,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/LICENSE",
+        "sha256": "8dded67841a9261a622c739fb61c81785e93765de852828ceeb9403d20a74581"
+      },
+      {
+        "bytes": 1375,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/README.md",
+        "sha256": "bdc095a5be01c6f9e626b417ba025fa5e8dad669f081540f58e4ad9daede0971"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx/dist"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx/dist/cjs"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx/dist/cjs/api"
+      },
+      {
+        "bytes": 586,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cjs/api/index.cjs",
+        "sha256": "b396a280df2ea1de64a7fa989db0d46cf1b90fc07f12e4dc5e57d5e5a99d4feb"
+      },
+      {
+        "bytes": 1090,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/cjs/api/index.d.cts",
+        "sha256": "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee"
+      },
+      {
+        "bytes": 1090,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/cjs/api/index.d.mts",
+        "sha256": "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee"
+      },
+      {
+        "bytes": 513,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cjs/api/index.mjs",
+        "sha256": "685c2a23306b7bba191e8f4f123382fa380fdcb2a58bbb1cc46a1f0a6d2255ff"
+      },
+      {
+        "bytes": 484,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cjs/index.cjs",
+        "sha256": "a6d966dff90f93d5a9cb22206d9a37f05eb3f66f004a07424bd96aebfeda9acf"
+      },
+      {
+        "bytes": 412,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cjs/index.mjs",
+        "sha256": "940bf50aae38d11425db038dfacd2102e469eca6b6e896879c927611e593f6cf"
+      },
+      {
+        "bytes": 120491,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cli.cjs",
+        "sha256": "c2553d91855f764f54abd5959973fb2359028678eb3cf4e598b7babe0d404e46"
+      },
+      {
+        "bytes": 120402,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/cli.mjs",
+        "sha256": "8729ecfb90d9d568939e4190e6f1d3317c946583b7d37a776e0c23a21c021cf8"
+      },
+      {
+        "bytes": 500,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/client-BQVF1NaW.mjs",
+        "sha256": "334ad3dbfaf820eeb08dd2fa40750c8316e6f8a61311bdf99defd3c361fbece4"
+      },
+      {
+        "bytes": 549,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/client-D6NvIMSC.cjs",
+        "sha256": "af10790d58385f62c205140c3f7c25dae26638c2961fa24eb958f888d8995a40"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx/dist/esm"
+      },
+      {
+        "kind": "directory",
+        "path": "tsx/dist/esm/api"
+      },
+      {
+        "bytes": 1255,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/esm/api/index.cjs",
+        "sha256": "b97d8aa5122372689e759de9a7c30e6d1f29eb683a7a714beaab953cc8eceaa7"
+      },
+      {
+        "bytes": 1152,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/esm/api/index.d.cts",
+        "sha256": "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c"
+      },
+      {
+        "bytes": 1152,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/esm/api/index.d.mts",
+        "sha256": "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c"
+      },
+      {
+        "bytes": 1109,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/esm/api/index.mjs",
+        "sha256": "477bed5ef167ef825ec4cb99ed010ac6d70833d1b4e8b46e23825cc6de543d8e"
+      },
+      {
+        "bytes": 7652,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/esm/index.cjs",
+        "sha256": "a95457ef5fea5e06d56c8bafbb96f4ce86c651fa0bfcc4ccb90b740f126f4863"
+      },
+      {
+        "bytes": 7014,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/esm/index.mjs",
+        "sha256": "9fab711543eb155d50fb147f8984e104db348a73b74daee4e3974bec109aa381"
+      },
+      {
+        "bytes": 368,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/get-pipe-path-BHW2eJdv.mjs",
+        "sha256": "307483caa22c2406677b4bd513bf602b4de3986f3e23eac7724e99c0d7ddc8d6"
+      },
+      {
+        "bytes": 435,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/get-pipe-path-BoR10qr8.cjs",
+        "sha256": "70a7fd0d550d1df1336946c504b36dcf97658a7c3328e02a69834ae0c4bfee91"
+      },
+      {
+        "bytes": 52247,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/index-7AaEi15b.mjs",
+        "sha256": "47851348bc3bbc11413edd4bf44758b7a85e28419847583231d74a182b044e22"
+      },
+      {
+        "bytes": 1181,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/index-BWFBUo6r.cjs",
+        "sha256": "fe29b97b254312970fceb8995a519abc8751f26972c221281959a7d77858a464"
+      },
+      {
+        "bytes": 1058,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/index-gbaejti9.mjs",
+        "sha256": "76febbe946957c96066d1d59293c4a26fc874c05876394cf4c178e4f4d0b6ba8"
+      },
+      {
+        "bytes": 52353,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/index-gckBtVBf.cjs",
+        "sha256": "49ad679be79684c7706ad7ca495f0afa7bfa361b354eb77e6389cf19df91c524"
+      },
+      {
+        "bytes": 13456,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/lexer-DQCqS3nf.mjs",
+        "sha256": "6b77bebaee2dd7741177e287a78ef4329d9ef91f6939d09cfcf0029b3859f883"
+      },
+      {
+        "bytes": 13507,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/lexer-DgIbo0BU.cjs",
+        "sha256": "9b92935847bf0f6daade96b21c8271139ed8b48ef3fa59647af0ef1d36770db0"
+      },
+      {
+        "bytes": 1032,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/loader.cjs",
+        "sha256": "ff33128961cec9865a3c8ffb37f4edaecfd1ba960cc9a0a249f816594972dcf9"
+      },
+      {
+        "bytes": 729,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/loader.mjs",
+        "sha256": "0b1c5b86192772fe9257710e739959cee5947c11ae1f93b61abfaa9b80c6def1"
+      },
+      {
+        "bytes": 526,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/node-features-_8ZFwP_x.mjs",
+        "sha256": "dbf95f05cce9b129a9a89f33f43b7804ab641aa8b256e7cf64ad9f92b880cecc"
+      },
+      {
+        "bytes": 628,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/node-features-roYmp9jK.cjs",
+        "sha256": "18c0185390eec5bb60600ecb503a933673a77832bb93db3a258933f4ab051768"
+      },
+      {
+        "bytes": 31,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/package-CeBgXWuR.mjs",
+        "sha256": "81246f1169deb713dd5bae44fc39d68bd876395e99b6ce1560d4882e2dd70dd4"
+      },
+      {
+        "bytes": 47,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/package-Dxt5kIHw.cjs",
+        "sha256": "a6f7dc15288c2e5dc03394061d16945e42190e43cb1cf6422a93d064c1fc1377"
+      },
+      {
+        "bytes": 506,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/patch-repl.cjs",
+        "sha256": "33f5f6755270054783f4c568d0d48d4a79fecde965ec6f91ca27f0f949ba6da6"
+      },
+      {
+        "bytes": 496,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/patch-repl.mjs",
+        "sha256": "3850acac507aa554620693d272bed6b7ac1e1b8ab5af406581c632522ad8c872"
+      },
+      {
+        "bytes": 1008,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/preflight.cjs",
+        "sha256": "a088ad17ad4151c1a9f2ad7090fcdbc422fe26c8f4e5fdc53a489dcb0b21ae69"
+      },
+      {
+        "bytes": 973,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/preflight.mjs",
+        "sha256": "cf384c149f11748fb8497b2118d58e21ea884ae2848e4b4c81298927f268c3bb"
+      },
+      {
+        "bytes": 1664,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/register-2sWVXuRQ.cjs",
+        "sha256": "583b65c6caaec95e71e73fa65617c95162428aacd845394689f690b48a9328d5"
+      },
+      {
+        "bytes": 1472,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/register-B7jrtLTO.mjs",
+        "sha256": "10184ddf4354bab38743d80a5844796f26ffc4589d2820781da90c6a67507aaf"
+      },
+      {
+        "bytes": 7496,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/register-CFH5oNdT.mjs",
+        "sha256": "7c7d2d4f757a1a35610b483e0348aee2eb1140968631f4b2105c4b4ad9ffbf0a"
+      },
+      {
+        "bytes": 8003,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/register-D46fvsV_.cjs",
+        "sha256": "7f0e410a859fadcc75a452160e69c860543f5e13e2321b934c0bc4e3d14c01f6"
+      },
+      {
+        "bytes": 758,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/repl.cjs",
+        "sha256": "1dcdd7c363bbedd2f93062a838f5800651b9a432d91f081031bb2856faede47c"
+      },
+      {
+        "bytes": 718,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/repl.mjs",
+        "sha256": "061e45ad7e989290e5ee79c6b36848d2a9dc818fd695b6387655e74380f7617b"
+      },
+      {
+        "bytes": 524,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/require-D4F1Lv60.cjs",
+        "sha256": "468f626104c0572958b7944fbce075777efa2f4ef1577c9fa0c89499cb9e100b"
+      },
+      {
+        "bytes": 465,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/require-DQxpCAr4.mjs",
+        "sha256": "dc1b6944ffaa8f4d70e5007116b9aeac77c1cdf80a62526763eab34a123fa902"
+      },
+      {
+        "bytes": 497,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/suppress-warnings.cjs",
+        "sha256": "028063d20bd49083f03a0b1ed4f7a3d55fac1f64f5aca0e58e1ec61601f20ee7"
+      },
+      {
+        "bytes": 484,
+        "executable": true,
+        "kind": "file",
+        "path": "tsx/dist/suppress-warnings.mjs",
+        "sha256": "4c7d8eb24f7c16282453bc18d649c310028a63d3850e6590338932cdd896017f"
+      },
+      {
+        "bytes": 166,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/temporary-directory-B83uKxJF.cjs",
+        "sha256": "da189099aba4a7aff1e0ca337cd71410a0f96abc66298403db041cb812cbd24c"
+      },
+      {
+        "bytes": 151,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/temporary-directory-CwHp0_NW.mjs",
+        "sha256": "e0771b7d9b216d438ff2ade7494a7a3ac6202c66cb752f2cd99bffb3d78226fe"
+      },
+      {
+        "bytes": 135,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/dist/types-Cxp8y2TL.d.ts",
+        "sha256": "f462b6fc33bc3f82d1551ac0678834dfff89192ce1e848eb0bb8ca5bfe8bc76f"
+      },
+      {
+        "bytes": 1624,
+        "executable": false,
+        "kind": "file",
+        "path": "tsx/package.json",
+        "sha256": "6e764b21991c21595441f82387c1451ccd10a3e7a3f0973cc5e3649a12dea7d2"
+      }
+    ],
+    "gitLockBinding": {
+      "bytes": 710198,
+      "gitObjectId": "31064e951e6755158c93f5319e1423fd9e73250e",
+      "path": "app/package-lock.json",
+      "resolvedGitPath": "app/package-lock.json",
+      "sha256": "c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175"
+    },
+    "installedBytesClaimedAsGitContents": false,
+    "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+    "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359"
+  }
+}

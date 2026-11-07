@@ -10,12 +10,12 @@
   "summary": {
     "scope": "Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) / amtliche Source-Extraction",
     "reviewedSourceGoals": 91,
-    "acceptedSourceGoals": 91,
+    "acceptedSourceGoals": 89,
     "exactMappings": 17,
-    "partialMappings": 74,
-    "needsCanonicalGoal": 0,
+    "partialMappings": 72,
+    "needsCanonicalGoal": 2,
     "unreviewed": 0,
-    "notes": "Informatik Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction): alle 91 amtlichen Source-Ziele sind reviewed und inhaltlich abgedeckt. Exact/partial zaehlt nur die Mappingform."
+    "notes": "Aktueller Autorenstand: 89 zugeordnete Source-Ziele, 2 konkrete offene Canonical-Zuordnungslücken. Frühere Gesamtvollständigkeit ist keine Freigabe des geänderten Stands."
   },
   "mappings": [
     {
@@ -65,18 +65,6 @@
       "canonicalGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
       "matchType": "exact",
       "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-005-reale-automaten-analysieren-6a9078c0"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f",
-      "canonicalGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f"
     },
     {
       "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-007-algorithmen-testen-und-weiterentwickeln-58d0b9c6",
@@ -227,18 +215,6 @@
       "canonicalGoalId": "f81be4d3-2445-54aa-b17e-2a27466e7e0d",
       "matchType": "partial",
       "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-019-algorithmische-bausteine-darstellen-719b4b04"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af",
-      "canonicalGoalId": "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af"
-    },
-    {
-      "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af"
     },
     {
       "legacyGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-021-algorithmuseigenschaften-nutzen-4a92755a",
@@ -1110,17 +1086,13 @@
     },
     {
       "sourceGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-006-automatenmodelle-entwerfen-5d3fc82f",
-      "canonicalGoalIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ],
-      "decision": "mapped",
-      "mappingStrength": "partial",
-      "coverage": "content-covered",
-      "rationale": "Das Source-Ziel wird vollstaendig durch mehrere kanonische SkillPilot-Ziele abgedeckt; partial beschreibt die Zuordnungsform, nicht eine offene Luecke.",
-      "reviewedBy": "Codex",
-      "reviewedAt": "2026-05-14",
-      "sourceSpan": "ST-INF-SEKI-9-ALG.6"
+      "sourceSpan": "ST-INF-SEKI-9-ALG.6",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Zu realen Automaten zugehörige Automatenmodelle entwerfen. Das vorhandene Grundziel trifft reales Automatenmodellieren, verlangt zusätzlich Simulation. Eine vollständige quellen- und leistungsidentische Zuordnung dieser zusätzlichen Leistung wurde hier nicht bewiesen; keine automatische Vollabdeckung.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "sourceGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-007-algorithmen-testen-und-weiterentwickeln-58d0b9c6",
@@ -1305,17 +1277,13 @@
     },
     {
       "sourceGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-020-automatentafel-und-zustandsdiagramm-uebertragen-315870af",
-      "canonicalGoalIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ],
-      "decision": "mapped",
-      "mappingStrength": "partial",
-      "coverage": "content-covered",
-      "rationale": "Das Source-Ziel wird vollstaendig durch mehrere kanonische SkillPilot-Ziele abgedeckt; partial beschreibt die Zuordnungsform, nicht eine offene Luecke.",
-      "reviewedBy": "Codex",
-      "reviewedAt": "2026-05-14",
-      "sourceSpan": "ST-INF-SEKI-9-ALG.20"
+      "sourceSpan": "ST-INF-SEKI-9-ALG.20",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Automatentafel und Zustandsdiagramm endlicher Automaten interpretieren und in beide Richtungen übertragen. Das allgemeine Modellieren/Simulieren von Automaten nennt weder die Automatentafel noch die wechselseitige Darstellungsübertragung; diese konkrete Leistung bleibt offen.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "sourceGoalId": "de-st-informatik-seki-fachlehrplan-gymnasium-2022-st-inf-seki-9-alg-021-algorithmuseigenschaften-nutzen-4a92755a",
@@ -2302,5 +2270,6 @@
       "reviewedAt": "2026-05-14",
       "sourceSpan": "ST-INF-SEKI-10-THEORY.28"
     }
-  ]
+  ],
+  "status": "author-draft-with-explicit-source-gaps"
 }

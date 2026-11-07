@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "contractId": "canonical-goal-identity-reference-fields-v1",
+  "migrationId": "canonical-goal-id-format-2026-11-06",
+  "uuidNamespace": "97d8c00c-411d-5dec-b260-4e6f22ab688b",
+  "derivation": "UUIDv5(namespace, UTF8(canonical JSON array [migrationId, landscapeId, sourceGoalId]))",
+  "ownerFields": [
+    "targetLandscapeId",
+    "canonicalLandscapeId",
+    "landscapeId"
+  ],
+  "activeFields": [
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/id",
+      "role": "identity"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/contains/*",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/requires/*",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/examData/coveredGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/resourceLinks/*/skillpilotId",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/extendedData/orientationOutlook/paths/*/entryGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/extendedData/orientationOutlook/paths/*/subtreeRootIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/extendedData/orientationOutlook/paths/*/milestoneGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "composition",
+      "pointer": "/rootNodes/**/goalId",
+      "role": "reference"
+    },
+    {
+      "class": "composition",
+      "pointer": "/rootNodes/**/rootGoalId",
+      "role": "reference"
+    },
+    {
+      "class": "mapping",
+      "pointer": "/mappings/*/canonicalGoalId",
+      "role": "reference"
+    },
+    {
+      "class": "mapping",
+      "pointer": "/decisions/*/canonicalGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "provenance-registry",
+      "pointer": "/landscapes/*/goalProvenance/*",
+      "role": "reference-key"
+    },
+    {
+      "class": "qa-scope-config",
+      "pointer": "/scope/rootGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "qa-scope-config",
+      "pointer": "/scope/leafGoalIds/*",
+      "role": "reference"
+    },
+    {
+      "class": "duration-policy",
+      "pointer": "/sek1Templates/*/placements/*/oldClusterGoalId",
+      "role": "reference"
+    },
+    {
+      "class": "duration-policy",
+      "pointer": "/policy/j6StructuralSplitContract/stableParentClusterIds/*",
+      "role": "reference"
+    }
+  ],
+  "preservedActiveFields": [
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/resourceLinks/*/url",
+      "reason": "Stable asset locator; asset bytes and historical names remain unchanged."
+    },
+    {
+      "class": "runtime-graph",
+      "pointer": "/goals/*/extendedData/provenance/**",
+      "reason": "Source/provenance identity is not canonical target identity."
+    },
+    {
+      "class": "composition",
+      "pointer": "/rootNodes/**/id",
+      "reason": "Authored navigation-node identifier, not a goal reference."
+    },
+    {
+      "class": "duration-policy",
+      "pointer": "/sek1Templates/*/placements/*/replacementNode/id",
+      "reason": "Authored navigation-node identifier, not a goal reference."
+    }
+  ],
+  "immutableDocumentRules": [
+    {
+      "prefix": "app/public/assets/",
+      "reason": "Didactic asset bytes and stable asset URLs remain byte-identical; the old ID in a filename is not a goal identity."
+    },
+    {
+      "prefix": "curricula/DE/Gymnasium/quality/",
+      "reason": "Original QA evidence/configuration bytes remain bound to original definitions; a verified future QA projection is required, not a source rewrite."
+    },
+    {
+      "prefix": "curricula/DE/Gymnasium/memory-decks/",
+      "reason": "Original card IDs, card content and origin evidence remain byte-identical; aliases require separate consumer integration."
+    },
+    {
+      "prefix": "app/public/data/",
+      "reason": "Published/runtime card payload copy remains byte-identical."
+    },
+    {
+      "prefix": "curricula/DE/Gymnasium/visualizations/",
+      "reason": "Historical didactic image authoring evidence remains byte-identical."
+    },
+    {
+      "prefix": "qa-artifacts/",
+      "reason": "Historical machine/review evidence remains byte-identical."
+    },
+    {
+      "prefix": "contracts/",
+      "reason": "Existing contract profiles, fixtures and published-package bytes are not reinterpreted by this new profile."
+    },
+    {
+      "prefix": "curricula/DE/Gymnasium/migrations/",
+      "reason": "Versioned identity bridges preserve their original source IDs and proof provenance; never reinterpret them as canonical goal definitions."
+    }
+  ],
+  "derivedDocumentPrefixes": [
+    "docs/qa-ci/status/"
+  ],
+  "note": "Exact expanded JSON pointers are recorded per document. Undeclared values and keys are blockers. No arbitrary string replacement, active data application, alias runtime, QA approval, timestamp rewrite or receipt rebinding is provided.",
+  "immutableExactDocuments": [
+    {
+      "path": "app/scripts/applyMathBatch003StructuralSplits.ts",
+      "reason": "Historical one-off authoring migration, absent from package/CI commands; original source and explanatory old-ID evidence are retained, not advertised as a current curriculum generator."
+    },
+    {
+      "path": "app/scripts/applyMathBatch012VolumeStructuralSplit.ts",
+      "reason": "Historical one-off authoring migration, absent from package/CI commands; source replay is not a new alias capability."
+    },
+    {
+      "path": "app/scripts/testGoalVisualizationRolloutStatus.ts",
+      "reason": "Explicit Legacy stable goal ID markdown/parser fixture; its historical input remains a genuine regression control, not a current target lookup."
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cluster-weight-repair-2026-11-06.json",
+      "reason": "Immutable separate 19-weight application receipt; original goal identities and source-byte hashes remain historical evidence."
+    },
+    {
+      "path": "docs/dev/learning-units-inventory/2026-11-06/native-math-physics.json",
+      "reason": "Dated unmerged learning-unit inventory snapshot, not an active learner plan or canonical definition."
+    },
+    {
+      "path": "docs/qa-ci/math-physics-deep-understanding-rollout-checkpoint-2026-08-27.md",
+      "reason": "Dated historical QA checkpoint; goal labels record the then-current identities."
+    },
+    {
+      "path": "docs/qa-ci/skill-graph-ci-static-matrix-2026-11-06.md",
+      "reason": "The invalid ID is cited as an exact original audit finding, not as a current learner target or executable reference."
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/canonical-goal-id-format-2026-11-06.proposal.json",
+      "reason": "Prior unapplied identity proposal is historical evidence, not a new target identity source."
+    }
+  ],
+  "activeCodeConsumers": [
+    {
+      "path": "app/scripts/generatePoliticsEconomicsSekICompositionViews.ts",
+      "reason": "The package generate/check commands execute this producer with five hard-coded old memory IDs. It requires a separate reviewed code repair before the actual ID migration."
+    }
+  ]
+}

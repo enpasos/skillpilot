@@ -30,7 +30,7 @@ import { useSrsMastery } from '../hooks/useSrsMastery'
 import { useFlashcardSetStatus } from '../hooks/useFlashcardSetStatus'
 import { getSrsFilterTagsForGoal } from '../utils/srsTags'
 import { interpolateTemplate } from '../utils/interpolateTemplate'
-import { goalMatchesFilter, isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
+import { isWildcardFilter, splitFilterIds } from '../utils/goalFilters'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../utils/curriculumDisplay'
 import {
@@ -411,7 +411,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   routeGoalId,
   skillpilotId,
   landscapeId,
-  landscapeSubject,
   currentLandscapeHasMatchedCompositionView,
   activeFilter = 'all',
   onLogout,
@@ -539,6 +538,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
+  const pendingFullRefreshRef = useRef<{
+    scopeKey: string
+    resume: () => Promise<void>
+  } | null>(null)
+  const fullRefreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const forceActiveGoalRevealRef = useRef(false)
   const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
   const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
@@ -874,9 +878,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     })
     return supportedActiveFilters.length > 0 ? supportedActiveFilters.join(',') : undefined
   }, [landscapeId, personalConfig, activeFilter, supportedFilterIds])
-  const bavarianMathCompositionView = currentLandscapeHasMatchedCompositionView
-    && landscapeSubject === 'Mathematik'
-    && normalizeJurisdictionCode(rootLandscapeId ? personalConfig[rootLandscapeId]?.filterId : undefined) === 'DE-BY'
   const learnerTreeProjection = useMemo(
     () => {
       const visibleChildren = currentLandscapeHasMatchedCompositionView
@@ -1479,70 +1480,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     revealScope,
   ])
 
-  // Frontier Logic: Identify the "Next Actionable" goal in every branch.
-  // Assumption: Content is sequential within containers.
-  const frontierIds = useMemo(() => {
-    const ids = new Set<string>()
-
-    const check = (id: string, visiting: Set<string> = new Set()): boolean => {
-      // Respect Global Visibility Config (e.g. Personal Curriculum)
-      if (!visibleGoals.has(id)) return false
-      if (visiting.has(id)) return false
-
-      const nextVisiting = new Set(visiting)
-      nextVisiting.add(id)
-
-      const g = goalIndexAll.get(id)
-      if (!g) return false
-
-      // Check Prerequisites (Requires)
-      // If ANY required goal is not masterd, this goal is BLOCKED (not frontier).
-      if (g.requires && g.requires.length > 0) {
-        for (const reqId of g.requires) {
-          // Check if requirement is visible? Usually yes.
-          // Check mastery.
-          if (!isMastered(getEffectiveMastery(reqId))) {
-            return false // Blocked by prerequisite
-          }
-        }
-      }
-
-      // 1. If Atomic
-      if (!g.contains || g.contains.length === 0) {
-        if (!bavarianMathCompositionView && !goalMatchesFilter(g, effectiveActiveFilter)) {
-          return false
-        }
-
-        const m = getEffectiveMastery(id)
-        if (!isMastered(m)) {
-          ids.add(id)
-          return true // Found frontier, branch is active
-        }
-        return false // Mastered
-      }
-
-      // 2. If Container
-      // If the container ITSELF is marked mastered (explicitly), we might skip children?
-      // But typically mastery is on atomic leaves. Let's traverse children.
-      let containerActive = false
-      for (const childId of g.contains) {
-        // If we found the frontier in this child, we STOP checking subsequent children (Sequential assumption).
-        // This ensures typically only 1 frontier goal per container.
-        const childActive = check(childId, nextVisiting)
-        if (childActive) {
-          containerActive = true
-          break
-        }
-      }
-      return containerActive
-    }
-
-    // Check all visible roots in parallel (parallel tracks)
-    visibleRootGoals.forEach(r => check(r.id))
-
-    return ids
-  }, [visibleRootGoals, goalIndexAll, getEffectiveMastery, visibleGoals, effectiveActiveFilter, bavarianMathCompositionView])
-
   const atomicFrontierOptions = useMemo(() => {
     const atomic = frontierOptions.filter((candidate) => candidate.type === 'atomic')
     const strategy = learnerData?.learningStrategy ?? 'SEQUENTIAL'
@@ -1580,7 +1517,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       : !effectiveActiveGoalId)
 
   const usesGuidedPersonalCurriculumEditor =
-    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID || stateRequiredAction === 'setPersonalization'
   const personalConfigLoadStatus: LearnerStateLoadStatus =
     personalConfigLoadState.scopeKey === learnerStateScopeKey
       ? personalConfigLoadState.status
@@ -2063,7 +2000,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rewindPersonalCurriculum,
   ])
 
-  const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+  useEffect(() => () => {
+    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
+    fullRefreshTimerRef.current = null
+    pendingFullRefreshRef.current = null
+    lastFullRefreshAtRef.current = 0
+  }, [learnerStateScopeKey])
+
+  const handleSseUpdate = useCallback(async function handleSseUpdate(payload?: { type?: string; nodeId?: string }) {
+    if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
     if (payload?.type === 'PREFERENCES_CHANGED') {
       const saving = preferenceSaveRefreshRef.current
       if (saving?.scopeKey === learnerStateScopeKey) {
@@ -2103,10 +2048,34 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       saving.receivedEvent = true
       return
     }
+    const resumePendingFullRefresh = () => {
+      const pending = pendingFullRefreshRef.current
+      pendingFullRefreshRef.current = null
+      if (pending?.scopeKey === currentLearnerStateScopeKeyRef.current) {
+        void pending.resume()
+      }
+    }
     const now = Date.now()
-    if (fullRefreshInFlightRef.current) return
-    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
+    if (fullRefreshInFlightRef.current) {
+      pendingFullRefreshRef.current = { scopeKey: learnerStateScopeKey, resume: () => handleSseUpdate(payload) }
+      return
+    }
+    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) {
+      pendingFullRefreshRef.current = { scopeKey: learnerStateScopeKey, resume: () => handleSseUpdate(payload) }
+      if (fullRefreshTimerRef.current === null) {
+        const timer = setTimeout(() => {
+          if (fullRefreshTimerRef.current !== timer) return
+          fullRefreshTimerRef.current = null
+          resumePendingFullRefresh()
+        }, 800 - (now - lastFullRefreshAtRef.current))
+        fullRefreshTimerRef.current = timer
+      }
+      return
+    }
 
+    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
+    fullRefreshTimerRef.current = null
+    pendingFullRefreshRef.current = null
     fullRefreshInFlightRef.current = true
     lastFullRefreshAtRef.current = now
     console.log('[SSE] 🔄 Triggering full refresh...')
@@ -2118,6 +2087,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         refreshLearningPlans(),
         onRefresh?.()
       ])
+      if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
       dispatchLearnerUiRefresh({
         skillpilotId,
         reason: payload?.type ?? 'FULL_REFRESH',
@@ -2126,6 +2096,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.log('[SSE] ✅ Refresh complete')
     } finally {
       fullRefreshInFlightRef.current = false
+      resumePendingFullRefresh()
     }
   }, [learnerStateScopeKey, refreshPreferences, refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
 
@@ -2486,6 +2457,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const response = scopedLearningPlans
     if (
       !skillpilotId
+      || isGuidedPersonalizationRequired
       || learnerStateLoadStatus !== 'ready'
       || learningPlansLoadStatus !== 'ready'
       || !response?.followLearningPlans
@@ -2544,6 +2516,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     applyLearningPlanTransition,
     effectiveActiveGoalId,
+    isGuidedPersonalizationRequired,
     learnerLearningPlanCopy.reconcileFailed,
     learnerStateLoadStatus,
     learnerStateScopeKey,
@@ -3541,7 +3514,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               activeGoalId={effectiveActiveGoalId ?? undefined}
               expandedGoalIds={expandedGoalIds}
               onToggleExpanded={toggleExpandedGoal}
-              frontierIds={frontierIds}
               completionWaivers={completionTreeWaivers}
               audience="learner"
               visibleChildrenByParentOverride={learnerVisibleChildrenByParent}

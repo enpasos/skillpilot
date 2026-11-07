@@ -594,8 +594,8 @@ public class ClaudeV1McpContractAdapter {
 
                 Assessment completion route: when context.levelCompletion is present, use its
                 exact backend statement and published choices. Section completion is scoped work
-                completion, never new mastery. Within the authoritative scope, mastered goals no
-                longer demand their own prerequisites; non-assessment goals with no remaining demand
+                completion, never new mastery. Within the authoritative scope, prerequisite paths remain complete through
+                mastered intermediate goals; non-assessment goals with no remaining demand
                 are implicitly completed. This does not certify prerequisite competence or change
                 saved goal results. A section with no required assessments may also be complete.
                 Do not recalculate this result or restore implicitly completed work as mandatory;

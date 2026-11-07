@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Werkstatttag – lokale Demo</title>
+  <style>
+    body { margin: 0; font: 1rem/1.5 system-ui, sans-serif; color: #172033; background: #f5f7fa; }
+    header, footer { background: #173657; color: white; padding: 1rem; }
+    nav a { color: inherit; margin-right: 1rem; }
+    main { max-width: 70rem; margin: auto; padding: 1rem; }
+    .cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .card { min-width: 0; background: white; border: 1px solid #566577; border-radius: .4rem; padding: 1rem; }
+    label { display: block; margin-top: .8rem; }
+    input, select, button { font: inherit; max-width: 100%; box-sizing: border-box; }
+    button { margin-top: 1rem; padding: .5rem 1rem; }
+    :focus-visible { outline: 3px solid #a74d00; outline-offset: 2px; }
+    #status { padding: 1rem; border-left: .3rem solid #173657; background: white; }
+    @media (min-width: 768px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  </style>
+</head>
+<body>
+<header><h1>Werkstatttag</h1><p>Nur lokale Demo mit erfundenen Testdaten; keine Anmeldung wird übertragen.</p>
+  <nav aria-label="Seitennavigation"><a href="#angebote">Angebote</a><a href="#anmeldung">Demo-Anmeldung</a></nav>
+</header>
+<main>
+  <section id="angebote" aria-labelledby="angebote-titel"><h2 id="angebote-titel">Unsere Werkstätten</h2>
+    <div class="cards">
+      <article class="card"><h3>Robotik</h3><p>Motoren und Sensoren erproben.</p><p>Frei: <span data-free-for="robotik">3</span> von 6.</p></article>
+      <article class="card"><h3>Medienlabor</h3><p>Kurze Hörstücke gestalten.</p><p>Frei: <span data-free-for="medien">0</span> von 4.</p></article>
+      <article class="card"><h3>Licht und Laser</h3><p>Lichtwege untersuchen.</p><p>Frei: <span data-free-for="laser">4</span> von 5.</p></article>
+    </div>
+  </section>
+  <section id="anmeldung"><h2>Reservierung simulieren</h2>
+    <p>3,00 EUR je Platz; ab vier Plätzen einmalig 2,00 EUR Gruppenrabatt. Eine Anfrage umfasst 1 bis 6 ganze Plätze.</p>
+    <form id="booking" action="/anmeldung" method="post">
+      <label for="name">Erfundener Name</label><input id="name" name="name" autocomplete="off" required>
+      <label for="email">Erfundene E-Mail-Adresse</label><input id="email" name="email" type="email" autocomplete="off" required>
+      <label for="course">Werkstatt</label><select id="course" name="course"><option value="robotik">Robotik</option><option value="medien">Medienlabor</option><option value="laser">Licht und Laser</option></select>
+      <label for="places">Plätze</label><input id="places" name="places" type="number" min="1" max="6" step="1" value="1" required>
+      <label><input id="testdata" name="testdata" type="checkbox" required> Ich benutze ausschließlich erfundene Testdaten.</label>
+      <button type="submit" disabled>Lokal prüfen</button>
+    </form>
+    <p id="status" role="status">Noch keine lokale Reservierung.</p>
+  </section>
+</main>
+<footer><p>Schul-AG – Modellprodukt für eine Informatikprüfung.</p></footer>
+
+</body>
+</html>

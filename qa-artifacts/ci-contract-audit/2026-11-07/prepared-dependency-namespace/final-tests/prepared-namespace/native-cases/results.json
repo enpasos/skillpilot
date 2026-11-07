@@ -1,0 +1,782 @@
+{
+  "purpose": "tiny-actual-materializer-prepared-namespace-tests-not-SourceA-QA",
+  "testsRun": 6,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actualNativeRuns": [
+    {
+      "case": "test_actual_both_role_namespace_exec_fd_alias_types_and_closed_directory.original",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app",
+        "argv": [
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-original/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-original",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-original",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app",
+          "--",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "93d157ccb15c48ecae986f33e5265099babbd45247d3b1bbd9ada4839e813e06",
+        "stdoutSha256": "5126a53a2f9c262085f2f7eec419f09e541588d02ab105cadcfa686834b64bbb",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3519256
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3519257
+          }
+        },
+        "recorderTraceSha256": "2b43c6e2f8ff17169229cc265aa021ec04950aaa5bec95b94f840ea4224018f6",
+        "producerBoundary": {
+          "recorderLine": 476,
+          "hostPid": 442029,
+          "executable": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper",
+          "argv": [
+            "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "11d22c3a4421383e45605a2368085fb720e970d19f41dfe92cf092c3df7c6460",
+            "viewRole": "original",
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d"
+          },
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "11d22c3a4421383e45605a2368085fb720e970d19f41dfe92cf092c3df7c6460",
+            "viewRole": "candidate",
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-original",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper",
+          "producerExecutableSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/helper",
+          "producerSha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false,
+          "preparedNamespace": {
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d",
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app",
+            "lockLeaseHeld": true,
+            "filesystemOnlyNotSourceAOrQaApproval": true
+          }
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "stdout": {
+        "landscapeId": "fixture-owner",
+        "goals": [
+          {
+            "id": "old-id",
+            "title": "Controlled fixture",
+            "contains": [],
+            "requires": []
+          }
+        ]
+      },
+      "authentication": "bounded-facts-pass",
+      "actualMaterializerUsed": true,
+      "fullSourceAProofClaimed": false,
+      "facts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "original",
+        "processCount": 1,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "explicit actual C loader/runtime bytes",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "dependency:original:pkg/helper",
+            "namespacePath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/helper",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/helper",
+            "sha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+            "provenance": "prepared namespace dependency capture 776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "observedOperations": [
+              "execve"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "dependency:original:pkg/value.txt",
+            "namespacePath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/value.txt",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/value.txt",
+            "sha256": "ec8a5ec0aff3fb009797689a0d4433d842a1c66b5aa80c631cc3ad4a6bff770c",
+            "provenance": "prepared namespace dependency capture 776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "curricula/DE/Gymnasium/canonical/fixture.json",
+            "sha256": "16e253d7c1e679e3098f9f326cc5681817d1f6ae9b719c138ca37eae6ec72b14",
+            "provenance": "actual materialized source bytes",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "explicit actual C loader/runtime bytes",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "curricula/DE/Gymnasium/canonical/fixture.json"
+        ],
+        "closedDirectoryDiscoveries": {
+          "dependency:original:": [
+            [
+              "alias",
+              "symlink"
+            ],
+            [
+              "pkg",
+              "directory"
+            ]
+          ]
+        },
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "original",
+            "launchTraceSha256": "93d157ccb15c48ecae986f33e5265099babbd45247d3b1bbd9ada4839e813e06",
+            "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "pid": 442029,
+            "traceEntry": 47,
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app>",
+            "requestedPath": "node_modules/pkg/missing.txt",
+            "resolvedAttempt": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg/missing.txt",
+            "operation": "newfstatat",
+            "flags": "0",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/missing.txt",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          }
+        ],
+        "ownedLauncherTransportMetadata": [
+          {
+            "pid": 442029,
+            "descriptor": 1,
+            "origin": "launcher:output:1",
+            "kernelFdIdentity": "pipe:[3519256]"
+          }
+        ],
+        "volatileRuntimeObservations": [],
+        "explicitToolDirectoryMetadata": [
+          {
+            "pid": 442029,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg",
+            "kind": "directory",
+            "operation": "openat",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442029,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/pkg",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg",
+            "kind": "directory",
+            "operation": "fchdir",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442029,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules/alias",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/alias",
+            "kind": "symlink",
+            "operation": "readlink",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442029,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "kind": "directory",
+            "operation": "openat",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442029,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "kind": "directory",
+            "operation": "newfstatat",
+            "category": "bound-dependency-namespace-metadata"
+          }
+        ],
+        "abortedNonInputIdentityObservations": []
+      }
+    },
+    {
+      "case": "test_actual_both_role_namespace_exec_fd_alias_types_and_closed_directory.candidate",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app",
+        "argv": [
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-candidate/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-candidate",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-candidate",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app",
+          "--",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "16654ddbcf3c631b26a8da46a1c59f1142ed2d1b82c223aa81f28dac4b056e12",
+        "stdoutSha256": "872da7e48a48df97359fe4188a7e8bdd19cb5f49bd86079102cd06a591af6a46",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3570727
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3570728
+          }
+        },
+        "recorderTraceSha256": "df60637d0ce6665ac7e34b32eb192a84d35ed2d678bd17a9494b23816050e96c",
+        "producerBoundary": {
+          "recorderLine": 476,
+          "hostPid": 442046,
+          "executable": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper",
+          "argv": [
+            "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/original80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "11d22c3a4421383e45605a2368085fb720e970d19f41dfe92cf092c3df7c6460",
+            "viewRole": "original",
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d"
+          },
+          {
+            "source": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "target": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+            "readonly": true,
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "captureReceiptSha256": "11d22c3a4421383e45605a2368085fb720e970d19f41dfe92cf092c3df7c6460",
+            "viewRole": "candidate",
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/evidence-candidate",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper",
+          "producerExecutableSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/helper",
+          "producerSha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false,
+          "preparedNamespace": {
+            "preparationRawSha256": "6dbe577e75db08b4657c6dabdabfa9f40958bd2374c8f257d844668e4cb6dc8d",
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app",
+            "lockLeaseHeld": true,
+            "filesystemOnlyNotSourceAOrQaApproval": true
+          }
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "stdout": {
+        "goals": [
+          {
+            "contains": [],
+            "id": "00000000-0000-4000-8000-000000000001",
+            "requires": [],
+            "title": "Controlled fixture"
+          }
+        ],
+        "landscapeId": "fixture-owner"
+      },
+      "authentication": "bounded-facts-pass",
+      "actualMaterializerUsed": true,
+      "fullSourceAProofClaimed": false,
+      "facts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "candidate",
+        "processCount": 1,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "explicit actual C loader/runtime bytes",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "dependency:candidate:pkg/helper",
+            "namespacePath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/helper",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/helper",
+            "sha256": "29ad883bc31999ffde0bffec946f0c6ccc5ff7ba5a4dd59860c3f4effe7f3276",
+            "provenance": "prepared namespace dependency capture 776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "observedOperations": [
+              "execve"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "dependency:candidate:pkg/value.txt",
+            "namespacePath": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/value.txt",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg/value.txt",
+            "sha256": "ec8a5ec0aff3fb009797689a0d4433d842a1c66b5aa80c631cc3ad4a6bff770c",
+            "provenance": "prepared namespace dependency capture 776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "curricula/DE/Gymnasium/canonical/fixture.json",
+            "sha256": "9d88a50a07fe1d0be378e067be0e1d2a59be00f92f13e5bf8693ca947912c8c1",
+            "provenance": "actual materialized source bytes",
+            "observedOperations": [
+              "openat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "explicit actual C loader/runtime bytes",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "curricula/DE/Gymnasium/canonical/fixture.json"
+        ],
+        "closedDirectoryDiscoveries": {
+          "dependency:candidate:": [
+            [
+              "alias",
+              "symlink"
+            ],
+            [
+              "pkg",
+              "directory"
+            ]
+          ]
+        },
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          },
+          {
+            "category": "dependency-metadata-absence",
+            "role": "candidate",
+            "launchTraceSha256": "16654ddbcf3c631b26a8da46a1c59f1142ed2d1b82c223aa81f28dac4b056e12",
+            "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+            "physicalCaptureRoot": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "treeSha256": "776922570aa5c18cf9f49e6747870d1ed127c52e2e649e3a2abc9d1ca2ce6c69",
+            "pid": 442046,
+            "traceEntry": 46,
+            "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app",
+            "dirfd": "AT_FDCWD</dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app>",
+            "requestedPath": "node_modules/pkg/missing.txt",
+            "resolvedAttempt": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg/missing.txt",
+            "operation": "newfstatat",
+            "flags": "0",
+            "errno": "ENOENT",
+            "firstMissingComponent": "pkg/missing.txt",
+            "lastKnownDirectory": "pkg",
+            "aliasHops": [],
+            "sourceInput": false
+          }
+        ],
+        "ownedLauncherTransportMetadata": [
+          {
+            "pid": 442046,
+            "descriptor": 1,
+            "origin": "launcher:output:1",
+            "kernelFdIdentity": "pipe:[3570727]"
+          }
+        ],
+        "volatileRuntimeObservations": [],
+        "explicitToolDirectoryMetadata": [
+          {
+            "pid": 442046,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg",
+            "kind": "directory",
+            "operation": "openat",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442046,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/pkg",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/pkg",
+            "kind": "directory",
+            "operation": "fchdir",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442046,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules/alias",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules/alias",
+            "kind": "symlink",
+            "operation": "readlink",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442046,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "kind": "directory",
+            "operation": "openat",
+            "category": "bound-dependency-namespace-metadata"
+          },
+          {
+            "pid": 442046,
+            "path": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/projectedA80/app/node_modules",
+            "physicalSource": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-grytco6k/pair/capture/node_modules",
+            "kind": "directory",
+            "operation": "newfstatat",
+            "category": "bound-dependency-namespace-metadata"
+          }
+        ],
+        "abortedNonInputIdentityObservations": []
+      }
+    },
+    {
+      "case": "test_source_overlap_kernel_identity_and_missing_actual_mount_reject",
+      "producerExitCode": 0,
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/pair/original80",
+        "cwd": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/pair/original80/app",
+        "argv": [
+          "/usr/bin/true"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,fchdir,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/normal-no-view/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/pair/original80",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/pair/original80",
+          "--tmpfs",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/normal-no-view",
+          "--remount-ro",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/normal-no-view",
+          "--chdir",
+          "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/pair/original80/app",
+          "--",
+          "/usr/bin/true"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "f686f98579f41f00ecc730719c0a9947dd2024540e8fbbedddf183392a6b982c",
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3571854
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3571855
+          }
+        },
+        "recorderTraceSha256": "e5988074ddf01c762eaa0e07d878e006e90598120e16effd7166b8b94e671d4a",
+        "producerBoundary": {
+          "recorderLine": 368,
+          "hostPid": 442197,
+          "executable": "/usr/bin/true",
+          "argv": [
+            "/usr/bin/true"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {},
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-prepared-namespace-bdyysono/case-qj6pnmfb/normal-no-view",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/usr/bin/true",
+          "producerExecutableSource": "/usr/bin/true",
+          "producerSha256": "89c77cc9a7d6432f3efba4bf2699764a0f2084892cbb1914bcb1c741450c8779",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "missingMountRejected": true,
+      "fullSourceAProofClaimed": false
+    }
+  ],
+  "capture19Changed": false
+}

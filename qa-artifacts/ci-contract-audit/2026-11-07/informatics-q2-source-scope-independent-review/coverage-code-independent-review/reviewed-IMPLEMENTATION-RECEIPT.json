@@ -1,0 +1,306 @@
+{
+  "status": "private implementation/tests complete; no active application and no curricular QA acceptance",
+  "recordedAtUTC": "2026-11-07T07:21:26.602843+00:00",
+  "executionContractSha256": "87ab20e0ac12fc6eb1131a08486a65a3410973b15504d9a2112e97c4195ccd70",
+  "test": {
+    "argv": [
+      "./node_modules/.bin/tsx",
+      "scripts/testCurriculumExamReadiness.ts"
+    ],
+    "cwd": "/dev/shm/informatics-q2-source-scope-v3-20261107/ci/app",
+    "exitCode": 0,
+    "stdout": {
+      "path": "completed-21-tests.stdout",
+      "sha256": "7dc3b7738439ad391a9973a8a8678fdb76f9c79b62050eb0cccb01f856b3af3d"
+    },
+    "stderr": {
+      "path": "completed-21-tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "groups": [
+      {
+        "id": "T01",
+        "checks": "bound actual 24; native CQR204 keeps six real placeholder errors",
+        "status": "pass"
+      },
+      {
+        "id": "T02",
+        "checks": "native isolated Q3 21→22",
+        "status": "pass"
+      },
+      {
+        "id": "T03",
+        "checks": "native isolated Q3 18→19",
+        "status": "pass"
+      },
+      {
+        "id": "T04",
+        "checks": "actual frozen V2 source both Q3 drifts independently found",
+        "status": "pass"
+      },
+      {
+        "id": "T05",
+        "checks": "all14 explicit native pins; UNKNOWN not replaced; no V2 blanket pass",
+        "status": "pass"
+      },
+      {
+        "id": "T06",
+        "checks": "same-cardinality atom swap and removal fail",
+        "status": "pass"
+      },
+      {
+        "id": "T07",
+        "checks": "own and covered protected meaning; unknown fields not ignored",
+        "status": "pass"
+      },
+      {
+        "id": "T08",
+        "checks": "task solution rubric and threshold changes blocked",
+        "status": "pass"
+      },
+      {
+        "id": "T09",
+        "checks": "exact evidence pins positive; stale pins owner source meaning and atoms negative",
+        "status": "pass"
+      },
+      {
+        "id": "T10",
+        "checks": "all ten unchanged ABSENT own contracts preserved without coverage member",
+        "status": "pass"
+      },
+      {
+        "id": "T11",
+        "checks": "every ABSENT→empty/null/list and new claim fails",
+        "status": "pass"
+      },
+      {
+        "id": "T12",
+        "checks": "direct inherited transitive requires never become coverage",
+        "status": "pass"
+      },
+      {
+        "id": "T13",
+        "checks": "history exact source/inventory pins, internal row owner and contents",
+        "status": "pass"
+      },
+      {
+        "id": "T14",
+        "checks": "view absence review draft preserve24; source deletion/type change fail",
+        "status": "pass"
+      },
+      {
+        "id": "T15",
+        "checks": "native missing cycle duplicate foreign malformed refs fail closed",
+        "status": "pass"
+      },
+      {
+        "id": "T16",
+        "checks": "captured immutable source vs later fresh bytes and stale frame",
+        "status": "pass"
+      },
+      {
+        "id": "T17",
+        "checks": "missing duplicate fabricated CQR204 manifests are rejected by native consumer",
+        "status": "pass"
+      },
+      {
+        "id": "T18",
+        "checks": "missing fabricated replayed expected context and policy IDs never opt out",
+        "status": "pass"
+      },
+      {
+        "id": "T19",
+        "checks": "new20 first binding pending; unknown standalone and alias remain unregistered",
+        "status": "pass"
+      },
+      {
+        "id": "T20",
+        "checks": "held HE absent positive; active source/view appearance hard fail",
+        "status": "pass"
+      },
+      {
+        "id": "T21",
+        "checks": "fixed synthetic Info owner native positive M6 / sole coverage failure M3 / perfect-hash forged M7 and standalone CLI",
+        "status": "pass"
+      }
+    ],
+    "nativeChain": {
+      "group": "T21",
+      "owner": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "positiveMaturity": "M6",
+      "negativeMaturity": "M3",
+      "singleCoverageFailingGoalIds": [
+        "0a16d19b-a826-5beb-b169-7a17fc7742f0"
+      ],
+      "realNativeGraphAndReadinessPass": true,
+      "perfectHashForgedM7Rejected": true,
+      "noProductionTestFactory": true
+    },
+    "fixtureOverlayReceipt": {
+      "path": "tmp/retained-assessment-chain-fixture/overlay-evidence.json",
+      "sha256": "05a5e73eccba8baf044c6f913031a2f7ffcd19dd8b92db342143bff7cdf39197",
+      "positiveCliExit": 0,
+      "perfectHashForgedNegativeCliExit": 1
+    },
+    "syntheticProofsOnly": [
+      "T09 exact equivalence",
+      "T09 same-declared-contract repair",
+      "T19 exact first twenty with draft-readiness failure",
+      "T19 standalone first definition with absent coverage",
+      "T13 duplicate first registry"
+    ]
+  },
+  "helperTypecheck": {
+    "exitCode": 0,
+    "files": [
+      "app/scripts/lib/retainedAssessmentCoverage.ts",
+      "app/scripts/lib/curriculumAssessmentValidation.ts"
+    ],
+    "stdout": "final-helper-typecheck.stdout",
+    "stderr": "final-helper-typecheck.stderr"
+  },
+  "diffWhitespaceChecks": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "success": true,
+      "exitCode": 1,
+      "explanation": "no whitespace errors; no-index exit1 records intended content differences"
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "success": true,
+      "exitCode": 1,
+      "explanation": "no whitespace errors; no-index exit1 records intended content differences"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "success": true,
+      "exitCode": 1,
+      "explanation": "no whitespace errors; no-index exit1 records intended content differences"
+    }
+  ],
+  "actualSourceV3": {
+    "sha256": "c824e0b360470ef67ae4deb560146c7e677ad9601446b26cd5a46097c426e53b",
+    "historical": 24,
+    "definitions": 25,
+    "undeclared": 10,
+    "retainedStatus": "fail",
+    "failingGoalIds": [
+      "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+      "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+    ],
+    "coverageAddRemoveFindings": 0,
+    "expectedSourceDiscoveryIssues": [],
+    "consumedProductionBindings": 0
+  },
+  "files": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "bytes": 291259,
+      "sha256": "bfc0f3719dfe5297a9798872b190d0930cd513f3f30332806717c795922e666f",
+      "beforeSha256": "4342979a74b85e3aa2bce2e95a95e14f7c5a05fe83698076bd82b8c0182b5da6",
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "bytes": 4134,
+      "sha256": "32a07b6567acb8e0d4cf5bfba68e71c28735ccc594f4eb7b4870c50e803e4809",
+      "beforeSha256": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7",
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/lib/retainedAssessmentCoverage.ts",
+      "bytes": 24520,
+      "sha256": "9aa6997cc327b325e21201c010384a64e5c539ee60b3b3004ade4259ec49f740",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "bytes": 23523,
+      "sha256": "8d4c13a58ee2cb6c8fe636648fb7b319805da473f45bba6d8cf9db2b95476c11",
+      "beforeSha256": "a7d066962ca3191736e5267e9ef141ccf94489862abbbd2fda6c8e049e2d8513",
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/testRetainedAssessmentCoverage.ts",
+      "bytes": 14815,
+      "sha256": "e4079658f4ce01f609569375a171b8a2b5ea3dd227003c9ca13f6aeff0f3ce97",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/testRetainedAssessmentCoverageChain.ts",
+      "bytes": 23564,
+      "sha256": "b8be2ed081c324fd79cfc5b7e11d50794a1697b58b6cd78a6561e5f6955371b0",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/fixtures/retained-assessment-coverage/informatics-v2.json.gz",
+      "bytes": 158303,
+      "sha256": "44f9efca845f7e84a590edd18906128951ad4af5eaefcff2c844118a5004237a",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "app/scripts/fixtures/retained-assessment-coverage/informatics-v2.pin.json",
+      "bytes": 266,
+      "sha256": "3e18068f21fdb033021e95f9772da0520981d55fd1c73fd7ed05c353ffae04b8",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "contracts/curriculum-assessment-coverage/v1/informatics/README.md",
+      "bytes": 1962,
+      "sha256": "92f97a3a7eefc073b4b735f2f5ddf25b6758059847389deea93b7092faa261d1",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "contracts/curriculum-assessment-coverage/v1/informatics/historical-informatics-source.json.gz",
+      "bytes": 59694,
+      "sha256": "7d65e10b4df75b49147f3963136f3800a979cc5e9ce9cc8164ab98920938f657",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "contracts/curriculum-assessment-coverage/v1/informatics/history-inventory.json",
+      "bytes": 43826,
+      "sha256": "3a1bf33c5dff8e310cc2ebc593a8fe61017bb34d8819a965fea0ec73a9e2f891",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "contracts/curriculum-assessment-coverage/v1/informatics/prospective/source-v3-c824e0b36047.json.gz",
+      "bytes": 163577,
+      "sha256": "e217f5062d526475f869395eea87e7fd2048b0581e6aa82136c9b3f3499f615a",
+      "beforeSha256": null,
+      "category": "private-code-or-contract-data"
+    },
+    {
+      "path": "qm/curriculum-assessment-retained-coverage.md",
+      "bytes": 3064,
+      "sha256": "b620c46ae30b44d9d02690d612cc811da6e753df23196d97b9953b801945d503",
+      "beforeSha256": null,
+      "category": "documentation-successor"
+    }
+  ],
+  "notChanged": [
+    "active repository source/view/QA/Git state",
+    "Floor CLI source and maturity policy",
+    "deriveCurriculumMaturity source",
+    "learner runtime and stored results"
+  ],
+  "reviewPending": [
+    "SourceV3 exact protected metadata/meaning bindings for three old Q2 exams and 875",
+    "6ebc concrete first binding; prospective manifest only"
+  ],
+  "artifacts": [
+    "source-v3-retained-coverage.actual.json",
+    "source-v3-prospective-bindings.review-pending.json"
+  ]
+}

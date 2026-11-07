@@ -1,0 +1,29 @@
+{
+  "exitCode": 0,
+  "probe": {
+    "kind": "actual-independent-declared-directory-alias-probe",
+    "boundary": "Tiny genuine Git snapshot, native materialize and bwrap launcher; not a full Source-A authority fixture.",
+    "sourceWritesPerformed": false,
+    "declaredAliases": [
+      {
+        "path": "cases/alias",
+        "target": "real",
+        "gitObjectId": "ac558a3e1bf44424bf2af97380ee201860ba8a58"
+      }
+    ],
+    "baseline": {
+      "exitCode": 0,
+      "stdout": "{\"review\":\"authentic-for-alias\"}\n",
+      "stderr": ""
+    },
+    "afterAliasReplacement": {
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/dev/shm/capture-alias-peer-z41ll4t2/pair/run-isolated.py\", line 21, in <module>\n    verify_inputs()\n  File \"/dev/shm/capture-alias-peer-z41ll4t2/pair/run-isolated.py\", line 19, in verify_inputs\n    capture.verify_prepared_inputs(r,b)\n  File \"/dev/shm/capture-alias-peer-z41ll4t2/pair/prepare-tool/identity_qa_private_capture.py\", line 126, in verify_prepared_inputs\n    verify_directory_aliases(receipt, roots)\n  File \"/dev/shm/capture-alias-peer-z41ll4t2/pair/prepare-tool/identity_qa_private_capture.py\", line 109, in verify_directory_aliases\n    require(os.readlink(physical) == target, \"Directory alias target changed: \" + role + \":\" + path)\n  File \"/dev/shm/capture-alias-peer-z41ll4t2/pair/prepare-tool/identity_qa_private_capture.py\", line 16, in require\n    raise ValueError(message)\nValueError: Directory alias target changed: original:cases/alias\n"
+    },
+    "originalTarget": "real",
+    "replacementTarget": "other",
+    "receiptByteIdentical": true,
+    "allSelectedPhysicalInputsStillMatch": true
+  }
+}

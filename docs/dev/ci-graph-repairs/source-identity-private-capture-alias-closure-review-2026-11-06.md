@@ -1,0 +1,9 @@
+# Unabhängiger Abschluss der vier Capture-Gegenbefunde
+
+Alle vier konkret reproduzierten Holds sind im gebundenen Codezustand geschlossen. Der eigene unveränderte Sechser-Harness weist die Text-/Projektions-, Forest- und Output-Manipulationen weiterhin korrekt ab; der eigene Sentinel bleibt unverändert. Der zusätzliche unveränderte Alias-Harness akzeptiert den richtigen Git-Pfad mit Exit 0 und verwirft denselben umgebogenen Link jetzt vor dem Producerstart mit Exit 1, obwohl Receipt und alle ausgewählten Dateihashes unverändert bleiben.
+
+Der unabhängige vollständige kleine Lauf ergibt **19 Tests, 0 Fehler, 0 Skips**. Die beiden neuen Testmethoden prüfen gültige verkettete Aliasse, sieben konkrete Mutationen je Rootrolle sowie nachträgliche Änderungen in beiden Rollen. Der Diff bindet Linktyp, genauen Git-Linktext und tatsächliche interne Endauflösung an die deklarierte Aliasstruktur; diese Prüfung läuft vor und nach dem Producer.
+
+Der [maschinenlesbare Schlussbeleg](source-identity-private-capture-alias-closure-review-2026-11-06.json) enthält die vier aktuellen Codepins, unveränderte Source-A-Pins, gesicherte Codekopien, den genauen Diff und die eigenen Rohresultate. Die [erste Prüfung](source-identity-private-capture-independent-review-2026-11-06.md) und der [17er-Zwischenstand](source-identity-private-capture-followup-review-2026-11-06.md) bleiben als historische Belege erhalten. Das neue Rohpacket liegt unter `qa-artifacts/ci-contract-audit/2026-11-06/private-capture-alias-closure-peer/`.
+
+Das Urteil gilt ausschließlich für diese geprüften Capture-Grenzen und die kontrollierte Prep-/Run-Lock-Nutzung. Vollständige Leseinventur und native Original-/Kandidaten-QA bleiben eigenständig nachzuweisen. Es folgt keine M6/M7-, Remote-CI-, Lernwirksamkeits- oder Aktivierungsfreigabe; auch kein D/P/A/M/V-Review wird dadurch erneuert. Der Reviewer hat weder Produktiv-/Capturecode noch Curricula oder aktive QA-Datensätze geändert.

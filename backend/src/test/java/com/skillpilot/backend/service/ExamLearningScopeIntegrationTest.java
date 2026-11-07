@@ -152,12 +152,10 @@ class ExamLearningScopeIntegrationTest {
         List<String> selected = selected(EXAM_ROOTS);
         assertThat(selected).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         masteryRepository.saveAndFlush(new Mastery(learner, UNIFORM, 1.0));
-        // Achieved uniform motion ends its own preparation demand. Its direct
-        // successor is available even in strict mode, while goals with their
-        // own open direct requirements remain blocked. No earlier goal is mastered.
+        // The mastered intermediate does not erase the successor's full
+        // transitive preparation demand. No earlier goal is mastered.
         assertThat(learners.getFrontier(id()))
-                .contains("bf8517a9-142b-5789-826a-767f3b277998")
-                .doesNotContain(DIAGRAMS, ACCELERATION);
+                .doesNotContain("bf8517a9-142b-5789-826a-767f3b277998", DIAGRAMS, ACCELERATION);
         assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIFORM, 1.0));
 
         // Keep one achieved target for the scope/counting assertions below, but

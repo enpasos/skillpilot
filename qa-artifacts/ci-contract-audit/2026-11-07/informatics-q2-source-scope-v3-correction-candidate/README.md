@@ -1,0 +1,58 @@
+# Informatik V3: privater Source-, Scope-, Material- und Retained-CI-Kandidat
+
+Dieser Nachfolger ist konkret implementiert und nativ geprüft, aber **nicht freigegeben**. Aktive Quellen, Code, bestehende QA und Gitzustand wurden durch die Implementierung nicht geändert. Dieses neue Belegpaket ist die einzige dauerhafte Ausgabe. Alle neuen Bewertungen sind Autorenentwürfe. Keine Gesamt-M6-/M7-Abnahme; SourceA84 bleibt unverändert und unapproved.
+
+**Separater CI-Reviewbefund P2:** Das originale39-Dateien-Overlay und seine13CI-Dateien bleiben unverändert historisch. Sein Rawtext-Viewscan hat belegte FalsePositives und ist kein freigegebener CI-Pass. Ein kleiner getrennt geprüfter Nachfolger liegt unter `ci-p2-successor/`; seine Anwendung und unabhängige Freigabe stehen aus. Ordinary875-Äquivalenz und alle vier Retainedbindungen bleiben offen.
+
+## Gebundener Stand
+
+- Aktive Informatik: `85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e`.
+- Privater V3-Source: `c824e0b360470ef67ae4deb560146c7e677ad9601446b26cd5a46097c426e53b`.
+- Genau vier vollständige Materialverträge aus `informatics-q2-material-review-corrections/native-examData.json`, SHA256 `cb82c27a5cf0a53d7d946475dfd4f2ceae8e1065348580f97b7f0f9202871c92`, sind objektgleich integriert: alte41/Bibliothek23/Festival23 und neuer eigener kanonischer20. Der unabhängige Materialnachtest liegt im bestehenden Paket `informatics-q2-material-corrections-independent-recheck/`. HE10 bleibt vollständig im separaten Materialentwurf, aber ist hier weder Sourcegoal noch Vieweintrag.
+- Maßgebliche Sourceablehnung: `informatics-q2-source-scope-independent-review/README.md`. Retained-Ausführungsvertrag `coverage-contract-followup/execution-contract.json`, SHA256 `87ab20e0ac12fc6eb1131a08486a65a3410973b15504d9a2112e97c4195ccd70`.
+- 21 tatsächliche kanonische Eingaben eingefroren, darunter Math e4de und PoWi29. 1708 eingefrorene Dateien einschließlich aktuellem Code/Verträgen wurden abschließend bytegleich geprüft; beim ursprünglichen Nativeabschluss keine Live-Code-Drift. Nach dem getrennten P2-Lauf sind sechs legitime parallele UI-/LearnerService-Nachfolger im finalen Postguard protokolliert; sämtliche Replays bleiben im unveränderten eingefrorenen Frame. Das ist ein aktueller eingefrorener Codeframe mit genau dem privaten CI-Overlay, kein als V74 umbenannter V57-Lauf. `pins/frozen-manifest.json.gz` und `pins/postguards.json.gz` enthalten die exakten Pins.
+
+## Tatsächliche Änderungen
+
+`candidate-overlay.tar.gz` enthält alle39 vorgeschlagenen neuen/geänderten Dateien an ihren echten Repositorypfaden. Vorher-/Nachherhashes stehen in `pins/candidate-file-changes.json.gz`. Die vollständigen geänderten Goalwerte stehen in `evidence/full-goal-field-differences.json.gz`; die vollständigen24 alten Definitionen und alle nativen Coverage-/Vorbereitungsmengen in den beiden `old24`-Belegen. Keine alte Goaldefinition oder Exam-ID wird gelöscht, verkleinert, umbenannt oder auf den neuen20er-Abschluss aliased.
+
+875 behält den vollständigen Hierarchie-/Parallelitätsinhalt, LK-Tag, ID und historische Ergebnisse. Es hängt am vorhandenen allgemeinen Root29ec statt unterQ3.2; die ausdrücklich im unabhängigen Review geprüfte PhaseQ3 und die echte FSM-Grundlage7ad8 bleiben. Damit wachsen weder die zwei alten Coverageverträge noch die sieben Q3-Vorbereitungsclosures um875. Die falsche HE-exactSeed-/Q2.1.117-Amtlichkeitsbehauptung wird aus dem aktuellen Quellen-/Mappingnenner entfernt und als historischer Autorenrecord erhalten.
+
+Die zwei Voraussetzungen von Index98fc und View/Rollen a49d verwenden Grund-SELECT fd1f statt Aggregation13be. Die drei alten41/23/23-Verträge bekommen Aggregation13be ausdrücklich zurück. Sonst nur die18 fachlich unterstützten alten Kürzungen; kein weiterer G17-Abbau. Die drei neuen ER-Atome sind direkte Kinder des vorhandenen Q2-Gesamtclusters, außerhalb des alten Q2.1-Clusters. So entsteht keine unbelegte universelle ER-Vorbereitung für vier alte DB-Abiturmaterialien. Ihre tatsächlich benannten, aber nicht vollständig vorhandenen Material1–4 bleiben eigene fachliche Holds; die automatische Fünfer-Platzhalterregel ist keine Vollfreigabe dieser Aufgaben.
+
+Die direkten875- und alten Praxisast-Referenzen werden in allen16 Landesviews und beiden kanonischen Defaultviews entfernt; die zusätzliche bestehende SekI-View wird unverändert mitgeprüft. Native Ausgangsgegenfälle zeigten, dass bloßes Mappinglöschen wegen Broad-Ancestor-/Provenance-/Requires-Closure die falsche Pflicht zurückimportiert. Deshalb nutzt der Kandidat vorhandene Metadaten ausdrücklich: `applicabilityProjection=excluded` für875/alte3/den eigenen20er-Abschluss; atomare `applicabilityMappingInheritance=boundary` für die vier neuen gewöhnlichen Ziele. Das ist eine fachlich zu prüfende Autorentscheidung über gesetzliche Projektion, kein Aufheben der Goalbedeutung oder des globalen Assessmentgates. Explizite eigene Studienangebote können Ziele referenzieren; daraus wird keine Landespflicht. Die Quellen-/Applicability-Gegenfälle und vollständigen Entscheidungen liegen unverändert in `native/` und `evidence/source-projection-authority-decisions.json.gz`.
+
+SH DB4 bekommt ein eigenes grundlegendes Performancefragment mit exaktem amtlichem PDFbeleg (DateiSHA25669b844e7…, PDFseite48/gedruckt46). Die allgemeine Datenmanipulation darf laut Kontext durch Anwendungen geschehen, ohneSQL. Nur konkrete SQL-Schreibsyntax ist erhöht markiert. Neun tatsächlich geprüfte volle Kandidatenzieltexte passen nicht vollständig auf den grundlegenden Satz: ehrlicher `needsCanonicalGoal`-Gap statt neuer SQL-/DCL-GK-Pflicht. Voller Kontexttext, gerenderte Seite und Vergleich liegen bei. Es wurde kein unbelegter Gapgoal erfunden.
+
+## Native Ergebnisse und Grenzen
+
+| Prüfung | Tatsächlicher Befund |
+|---|---|
+| Bestehender Graphchecker, alle21 Eingaben | G17:37→27; alle anderen geprüften Regeln0, kein Graphpass |
+| Alle24 alten Examverträge |14 deklarierte Coverage-Mengen vollständig erhalten;10 fehlende Felder bleiben ABSENT/unknown, nie[] |
+|19 vorhandene Views |875/alte41/23/23 in keiner dieser Targetmengen |
+| Finaler normaler CQR-Reader/Producer |0 Discoveryfehler;25 InfoDefinitionen; globale926Definitionen/873Required, keine Baselineabsenkung |
+| CQR204 und202 |je9 rote Definitionen:5 echte Platzhalter +alte3 Meaning-/Materialbindungen +neuer20er Erstbindungs-Hold |
+|50 tatsächliche Projektionen |42 ohne erwarteten Abschluss;32 ohne Jurisdiction/Stage-Authority;49 ohne direkte/effektive Abschlussroute;5 ohne Motivationsroute |
+| Echte globale angebotene Flowfälle |39 COMPLETE, nichtleer, ohne vier unbegründete Legacytargets;12 angefragte GK+LK-Kombinationen nicht angeboten, daher SELECTION |
+| Explizite direkte Owner-Profile |51 COMPLETE, ohne vier Legacytargets; separat als direkte Konfigurationsfixtures, kein globaler Flowbeweis |
+| Ownerdirekt `{}`, strictMode=false |COMPLETE, keine View, Identitätsprojektion mit288 Targets inklusive875/alte3: verbleibender Runtimehold |
+| Historische Mastery |Alle24 alten Exams +875 unverändert bei1; neuer20er und Karten nicht geschrieben; unveränderter CardGoal hat weiterhin alle9 Karten |
+
+Die39 globalen Positivfälle wurden ausschließlich aus den tatsächlich angebotenen nativen Optionen aufgebaut, einschließlich ROOT.selected und nativer completedOptionIds. Pro Fall sind selectedCurriculum, vollständiger PC-JSONstring, alle Learnerfelder, Options-IDs, Plan, actualPackageState, findDefaultView, viewIds und Targetmengen aufgezeichnet. PackageState ist tatsächlich in allen51 Fällennull; dies ist das normale Repository-Wiring. Es gibt keinen als Produktfreigabe ausgegebenen In-Memory-PackageState. HE+GK/LK verwendet im aktuellen Matcher die kanonische Kursview, was keine HE2027/28-Freigabe ist. Die12 nicht angebotenen Kombinationen werden weder durch Legacy-Mapping noch durch erfundene Union grün gemacht. Die fehlerhafte alte globale Legacy-PC-Fixture bleibt ausschließlich als Diagnosebeleg erhalten.
+
+CQR104 enthält außerdem3 Projektionen mit unvollständigen expliziten Voraussetzungen,8 mit unvollständigen Whole-Material-Coverage-Bindungen und3 mit unvollständiger Whole-Material-Voraussetzungsclosure. Die vier von gesetzlicher Applicability ausgeschlossenen Abschlussdefinitionen bleiben dort sichtbare Fehler. `RESULT.json` und der verlustfrei komprimierte50er-Rawreport enthalten alle Zahlen und Zielmengen. HE-Kohortenbindung, BYregulär/spät, Quellenlücken und Endpunktholds sind weiterhin offen. Scopeausblendung ist kein Materialpass.
+
+## Retained-CI-Vertrag
+
+Der private Code liest die realen Sourcebytes genau einmal über `captureCurriculumSource`; nur dasselbe unveränderliche Objekt trägt den vertrauenswürdigen Kontext. Er vergleicht die gebundene historische24er-Identität, echte native Coverageexpansion und geschützte Goal-/Materialbedeutung. Die zehn ABSENT-Verträge bestätigen nur ihre eigene erhaltene Examidentität. UNKNOWN→declared wird nicht automatisch zugelassen. Die Produktionsregistry für konkrete Reviewbindungen ist leer. Vier exakt vorbereitete V3-Bindungsvorschläge sind ausdrücklich `review-pending`, ungenutzt und nicht freigegeben.
+
+Alle21 vertraglichen Testgruppen sind mit stdout/stderr und Codebelegen nachgewiesen. Die beiden echten Q3-Gegenfälle21→22 und18→19 liefern jeweils genau einen zusätzlichen Retainedfehler: CQR2046→7. Die exakte atomare Pinpositive erhält die alte Coverage, bleibt wegen sechs realer Materialfehler rot. Consumer, Maturity und M6-/M7-Floors weisen passende gefälschte M7-Reports zurück. Dieser tatsächliche Test abstrahiert andere bereits erfüllte Graph-/Routegates ausdrücklich als Testfixture; er behauptet keinen InfoGraphpass. Der separate T21-Test hat einen gültigen, klar synthetischen InfoOwnerfall mit ansonsten nativen grünen Gates: M6 positiv, alleiniger Coveragefehler M3, StandaloneFloorCLI positiv0/gefälscht1. Beide Belegarten sind getrennt und dienen unterschiedlichen Aussagen.
+
+Der erste50er-Diagnoselauf nachCI-Merge benutzte noch normales JSON.parse/Objektkopie und wurde korrekt mit fehlendem Sourcekontext zurückgewiesen. `native-loader-adapter-correction.json.gz` dokumentiert die Korrektur am Testadapter; der finale Rawreport stammt vom tatsächlichen SourceReader mit identischem Objekt. Keine Produktionsregel wurde für den Test abgeschwächt. Die Beobachtung der50 lokalen Producerkontexte ist ein einzelner ausgewiesener Callback in einer sonst bytegleichen temporären Producerkopie; diese Kopie ist kein Teil des Produkt-Overlays.
+
+## Reproduktion und Erhaltung
+
+Arbeits- und Klassensnapshots liegen unter `/dev/shm/informatics-q2-source-scope-v3-20261107/`. Die bwrap-Aufrufe binden vollständige bestehende Host-QA/Assets read-only ein und überlagern genau die eingefrorenen Code-/Vertrags-/Katalogdateien an ihren echten Pfaden. Keine leeren Assets, keine zweite Scopeengine, kein PR83-/LearningUnit-Runtimepatch. Die Backendklassen wurden erst nach SHA256-Abgleich sämtlicher484 damals aktueller Javaquellen/Klassen wiederverwendet. Nur synthetische In-Memory-Learner werden verändert; Repositories erlauben Leseaufrufe und werfen bei Schreibversuchen. Exakte Commands und terminale Exitcodes liegen in den Executionbelegen. Die Reproducer benötigen den gebundenen RAM-/Repositoryframe; dieses Paket ist kein neuer portabler Releasecontainer.
+
+SourceA84 wurde ausschließlich durch vorhandene Inventar-/Payloadhashes lesend auf Erhaltung geprüft:83 Payloads +Inventory unverändert. Kein abgewiesener Providerreader wurde erneut gestartet. V2Source7586, historische Befunde und alle alten Materialpakete bleiben unverändert. Der unabhängige Ownerdirekt-Readiness-Auftrag bleibt separat bei Root/RemoteSol; hier ist kein Runtimefix eingemischt.

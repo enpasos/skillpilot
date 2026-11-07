@@ -1,0 +1,284 @@
+{
+  "baseCommit": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+  "findings": [
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "pointer": "",
+      "reason": "Unclassified document containing a migration identity",
+      "value": "",
+      "rawSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+      "bytes": 73230,
+      "gitBlobOid": "14deb477098cf618f22eb6445bf2fd2ecd91f19b",
+      "preservedBytesPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "matchedLineCount": 15,
+      "matchedSourceGoalIds": [
+        "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+        "0a4f24c6-08a5-56398-3931-1aa1f486e408",
+        "0aab91d3-2653-5502e-541e-bde02ecca3cf",
+        "0e270b78-4e42-503ab-ffb8-e1d02c175f53",
+        "0f3d97e7-6146-58f61-6a58-80d39276c1e8",
+        "0f7fe055-ce23-521ec-8b93-37ece4fc0f81",
+        "237feda9-e701-56ae0-c47d-e814a35ac70e",
+        "65ab1087-a09e-5da38-31a0-3fcb04718ac6",
+        "6e39f0e5-204e-5f6d7-ae12-bcc882bd946f",
+        "77f26224-d26b-55dc8-308a-679d9fbd96c3",
+        "7bbce8b4-b33b-567c6-853c-ae5d53b7ac21",
+        "99ef0fc2-150a-51e8-bac8-7e40e46917b",
+        "f052de7d-3053-5b0f8-57eb-699b9cfb61a4",
+        "f5f1b3d5-c37a-5371f-3d9f-4fa5e1bfc63e"
+      ],
+      "witnesses": [
+        {
+          "line": 53,
+          "migrationSourceGoalIds": [
+            "99ef0fc2-150a-51e8-bac8-7e40e46917b"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1f89d69e-ead1-424b-8221-fae37fdea2bc: contains reference 99ef0fc2-150a-51e8-bac8-7e40e46917b does not have a UUID goal endpoint."
+        },
+        {
+          "line": 177,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: Goal id 0a474cbf-2809-555c9-101b-c9df3a5b8416 does not belong to the UUID domain."
+        },
+        {
+          "line": 178,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "0aab91d3-2653-5502e-541e-bde02ecca3cf"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 0aab91d3-2653-5502e-541e-bde02ecca3cf does not have a UUID goal endpoint."
+        },
+        {
+          "line": 179,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "237feda9-e701-56ae0-c47d-e814a35ac70e"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 237feda9-e701-56ae0-c47d-e814a35ac70e does not have a UUID goal endpoint."
+        },
+        {
+          "line": 180,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "65ab1087-a09e-5da38-31a0-3fcb04718ac6"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 65ab1087-a09e-5da38-31a0-3fcb04718ac6 does not have a UUID goal endpoint."
+        },
+        {
+          "line": 181,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "6e39f0e5-204e-5f6d7-ae12-bcc882bd946f"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 6e39f0e5-204e-5f6d7-ae12-bcc882bd946f does not have a UUID goal endpoint."
+        },
+        {
+          "line": 182,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "77f26224-d26b-55dc8-308a-679d9fbd96c3"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 77f26224-d26b-55dc8-308a-679d9fbd96c3 does not have a UUID goal endpoint."
+        },
+        {
+          "line": 183,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "7bbce8b4-b33b-567c6-853c-ae5d53b7ac21"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 7bbce8b4-b33b-567c6-853c-ae5d53b7ac21 does not have a UUID goal endpoint."
+        },
+        {
+          "line": 184,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "f052de7d-3053-5b0f8-57eb-699b9cfb61a4"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference f052de7d-3053-5b0f8-57eb-699b9cfb61a4 does not have a UUID goal endpoint."
+        },
+        {
+          "line": 185,
+          "migrationSourceGoalIds": [
+            "0a474cbf-2809-555c9-101b-c9df3a5b8416",
+            "f5f1b3d5-c37a-5371f-3d9f-4fa5e1bfc63e"
+          ],
+          "text": "    - G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference f5f1b3d5-c37a-5371f-3d9f-4fa5e1bfc63e does not have a UUID goal endpoint."
+        },
+        {
+          "line": 186,
+          "migrationSourceGoalIds": [
+            "0a4f24c6-08a5-56398-3931-1aa1f486e408"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a4f24c6-08a5-56398-3931-1aa1f486e408: Goal id 0a4f24c6-08a5-56398-3931-1aa1f486e408 does not belong to the UUID domain."
+        },
+        {
+          "line": 187,
+          "migrationSourceGoalIds": [
+            "0aab91d3-2653-5502e-541e-bde02ecca3cf"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0aab91d3-2653-5502e-541e-bde02ecca3cf: Goal id 0aab91d3-2653-5502e-541e-bde02ecca3cf does not belong to the UUID domain."
+        },
+        {
+          "line": 189,
+          "migrationSourceGoalIds": [
+            "0e270b78-4e42-503ab-ffb8-e1d02c175f53"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0e270b78-4e42-503ab-ffb8-e1d02c175f53: Goal id 0e270b78-4e42-503ab-ffb8-e1d02c175f53 does not belong to the UUID domain."
+        },
+        {
+          "line": 190,
+          "migrationSourceGoalIds": [
+            "0f3d97e7-6146-58f61-6a58-80d39276c1e8"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f3d97e7-6146-58f61-6a58-80d39276c1e8: Goal id 0f3d97e7-6146-58f61-6a58-80d39276c1e8 does not belong to the UUID domain."
+        },
+        {
+          "line": 191,
+          "migrationSourceGoalIds": [
+            "0f7fe055-ce23-521ec-8b93-37ece4fc0f81"
+          ],
+          "text": "    - G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f7fe055-ce23-521ec-8b93-37ece4fc0f81: Goal id 0f7fe055-ce23-521ec-8b93-37ece4fc0f81 does not belong to the UUID domain."
+        }
+      ],
+      "workingTreeBytesEqualPinnedGit": true
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "pointer": "",
+      "reason": "Unclassified document containing a migration identity",
+      "value": "",
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "bytes": 262861,
+      "gitBlobOid": "1470c140d34723c0a72d9306e3b039b974385ca8",
+      "preservedBytesPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "matchedLineCount": 15,
+      "matchedSourceGoalIds": [
+        "141591fa-6541-5bdf6-6cc3-6a3fd44a4866",
+        "16e196d1-b5cd-501ab-0d83-e0a1569d12e5",
+        "1d539e52-2075-5b367-bd17-34d0d4819ef3",
+        "2db09361-d9b5-57560-4db3-75fc7830ac8e",
+        "3222a5ef-a297-55ca1-c91b-9d35e278c1c6",
+        "3deee591-ec78-53fdb-db04-5477e7afc259",
+        "458feb48-eadb-52115-367e-12433f305f22",
+        "5e0977ed-abf7-59a0a-186a-ff5466f5da19",
+        "7198ab33-5d2d-5916e-530b-350e4e1b1f2b",
+        "795106d0-96a5-50cf7-0913-290f3a987e5e",
+        "a99b5436-92d2-5b836-0774-bceecf9fed1b",
+        "b1379112-8d5f-5ccd2-ee49-df646cc1745d",
+        "c1b37738-f9e2-5e754-19f0-2840eb77156a",
+        "e48f4e30-4807-58eed-7cd2-097ab67b5afa",
+        "mem_de_gym_economics_business_law"
+      ],
+      "witnesses": [
+        {
+          "line": 241,
+          "migrationSourceGoalIds": [
+            "mem_de_gym_economics_business_law"
+          ],
+          "text": "- Vertragstypen und Pflichten der Vertragsparteien abgrenzen [479fb87a-3a5a-5892-8b3e-dfb1d07e9612]: Die unabhängige ganze Beschreibungskorrektur erhält die individuelle bestehende Memoryentscheidung; bereitgestellte Fall-/Materialanalyse fügt keine Abrufquote hinzu. Memory required: KEEP existing compact economics-law-contract-types principle in de_gymnasium_economics_business_law/mem_de_gym_economics_business_law; main task remains supplied-norm case application, and the card is not evidence of full case mastery. curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-contract-types-one-independent-B-20261009-v1/actual-independent-whole479-DEEN-P1-two-cases-source-tax-AM-card-visibility.review.receipt.json sha256:c2c9bf0a29d1dba131cd3b564848b35e4f292d059bc691354638a7e581c92141. Exact current independently approved source/image binding; human pending. Tatsächlicher Science-Beleg: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final56-seven-description-remedies-whole-independent-a-v1. Native binding only; no human approval."
+        },
+        {
+          "line": 832,
+          "migrationSourceGoalIds": [
+            "3222a5ef-a297-55ca1-c91b-9d35e278c1c6"
+          ],
+          "text": "- Demokratie und Diktatur hinsichtlich Gefahren unterscheiden [3222a5ef-a297-55ca1-c91b-9d35e278c1c6]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 842,
+          "migrationSourceGoalIds": [
+            "1d539e52-2075-5b367-bd17-34d0d4819ef3"
+          ],
+          "text": "- EU-Beitritt und Erweiterung beurteilen [1d539e52-2075-5b367-bd17-34d0d4819ef3]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 864,
+          "migrationSourceGoalIds": [
+            "e48f4e30-4807-58eed-7cd2-097ab67b5afa"
+          ],
+          "text": "- Global Governance als kooperative Konfliktbearbeitung beurteilen [e48f4e30-4807-58eed-7cd2-097ab67b5afa]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 873,
+          "migrationSourceGoalIds": [
+            "458feb48-eadb-52115-367e-12433f305f22"
+          ],
+          "text": "- internationale Konflikte, Akteure und Völkerrecht einordnen [458feb48-eadb-52115-367e-12433f305f22]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 874,
+          "migrationSourceGoalIds": [
+            "a99b5436-92d2-5b836-0774-bceecf9fed1b"
+          ],
+          "text": "- Internationalen Strafgerichtshof beurteilen [a99b5436-92d2-5b836-0774-bceecf9fed1b]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 875,
+          "migrationSourceGoalIds": [
+            "795106d0-96a5-50cf7-0913-290f3a987e5e"
+          ],
+          "text": "- Kennzeichen des Völkerrechts und internationale Kooperation beurteilen [795106d0-96a5-50cf7-0913-290f3a987e5e]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 890,
+          "migrationSourceGoalIds": [
+            "5e0977ed-abf7-59a0a-186a-ff5466f5da19"
+          ],
+          "text": "- NATO und internationale Sicherheitskooperation beurteilen [5e0977ed-abf7-59a0a-186a-ff5466f5da19]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 892,
+          "migrationSourceGoalIds": [
+            "3deee591-ec78-53fdb-db04-5477e7afc259"
+          ],
+          "text": "- parlamentarische, semipräsidentielle und präsidentielle Systeme vergleichen [3deee591-ec78-53fdb-db04-5477e7afc259]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 898,
+          "migrationSourceGoalIds": [
+            "7198ab33-5d2d-5916e-530b-350e4e1b1f2b"
+          ],
+          "text": "- politische Systeme anhand von Herrschaftsdimensionen zuordnen [7198ab33-5d2d-5916e-530b-350e4e1b1f2b]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 904,
+          "migrationSourceGoalIds": [
+            "c1b37738-f9e2-5e754-19f0-2840eb77156a"
+          ],
+          "text": "- Sozialstaat zwischen Verantwortung und Solidarität begründen [c1b37738-f9e2-5e754-19f0-2840eb77156a]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 906,
+          "migrationSourceGoalIds": [
+            "b1379112-8d5f-5ccd2-ee49-df646cc1745d"
+          ],
+          "text": "- Sozialstaatsmodelle international vergleichen [b1379112-8d5f-5ccd2-ee49-df646cc1745d]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 907,
+          "migrationSourceGoalIds": [
+            "16e196d1-b5cd-501ab-0d83-e0a1569d12e5"
+          ],
+          "text": "- Sozialstaatsprinzipien und Eigenverantwortung erklären [16e196d1-b5cd-501ab-0d83-e0a1569d12e5]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 909,
+          "migrationSourceGoalIds": [
+            "141591fa-6541-5bdf6-6cc3-6a3fd44a4866"
+          ],
+          "text": "- Staatstheorien der Aufklärung demokratiegeschichtlich reflektieren [141591fa-6541-5bdf6-6cc3-6a3fd44a4866]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        },
+        {
+          "line": 921,
+          "migrationSourceGoalIds": [
+            "2db09361-d9b5-57560-4db3-75fc7830ac8e"
+          ],
+          "text": "- völkerrechtliche Entwicklungen zu Menschenrechten und Kriegsführung darstellen [2db09361-d9b5-57560-4db3-75fc7830ac8e]: Memory-Anteil streng begrenzt auf wenige politisch-ökonomische Grundbegriffe, Institutionen, Verfahren, Akteure und Modellanker; Analyse, Fallbezug, Abwägung und Urteil bleiben führend."
+        }
+      ],
+      "workingTreeBytesEqualPinnedGit": true
+    }
+  ]
+}

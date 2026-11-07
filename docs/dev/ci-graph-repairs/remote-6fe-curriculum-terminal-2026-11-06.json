@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "status": "terminal-remote-curriculum-job-failure-seven-real-protected-floors",
+  "prHead": "6fe35a6b0fa807e5a97475b34f3715dc16a89c00",
+  "runId": 42304852672,
+  "jobId": 128202031349,
+  "jobConclusion": "failure",
+  "failedStep": "Verify committed curriculum quality status",
+  "failedCommand": "npm run check:curriculum-maturity-floors",
+  "generationCompletedBeforeFloorcheck": true,
+  "subsequentReportGitDiffWasReached": false,
+  "capture19": {
+    "executed": 19,
+    "skipped": 0,
+    "outcome": "OK",
+    "elapsedSeconds": 4.302
+  },
+  "deep": {
+    "status": "actual-complete-self-test-pass",
+    "denominators": {
+      "Mathematik": 807,
+      "Physik": 478,
+      "Biologie": 397,
+      "Chemie": 455,
+      "Wirtschaftswissenschaften": 346
+    }
+  },
+  "protectedFloorFailures": [
+    {
+      "subject": "Mathematik",
+      "current": "M0",
+      "required": "M7"
+    },
+    {
+      "subject": "Physik",
+      "current": "M0",
+      "required": "M7"
+    },
+    {
+      "subject": "Biologie",
+      "current": "M0",
+      "required": "M7"
+    },
+    {
+      "subject": "Chemie",
+      "current": "M0",
+      "required": "M7"
+    },
+    {
+      "subject": "Informatik",
+      "current": "M0",
+      "required": "M6"
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "current": "M0",
+      "required": "M6"
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "current": "M0",
+      "required": "M7"
+    }
+  ],
+  "logs": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-curriculum-terminal/curriculum-floor.txt.gz",
+      "sha256": "8e50394a681a61142b4faac438610689da099af06e1b4c44fca28a6fbdb0adf5",
+      "uncompressedSha256": "11a2824d1756bcbb69e671435f5c1ebda14b50cb6437772a9babd62489738df6",
+      "uncompressedBytes": 361615
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-curriculum-terminal/capture19.txt.gz",
+      "sha256": "7d0c2882be246c49796057a22bc52f956afadf7ed0853e9a5c690a8cd3c7bea5",
+      "uncompressedSha256": "cbc6151e0b3e841507c1ab7ea64ef1f43f06f4870fe86f676e353bf5542e5daf",
+      "uncompressedBytes": 12534
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/remote-6fe-curriculum-terminal/deep.txt.gz",
+      "sha256": "fc6e25d9888c64e9e7978802a7138c61e5c1bd7c8303ef22fb9afd666f653bcc",
+      "uncompressedSha256": "9ef8649ddc3381db1e384239e0e580b4b3387ab2fa387aa02469713e7c37491e",
+      "uncompressedBytes": 2747
+    }
+  ],
+  "limits": [
+    "This is one terminal job, not yet the overall terminal workflow.",
+    "The CQR104 forty-eight-scope change belongs to later local commit1a49bc and was not tested by this remote head.",
+    "The final report git-diff freshness assertion and later steps were not reached after the hard floor failure.",
+    "No floor, gate, source or QA decision is relaxed."
+  ]
+}

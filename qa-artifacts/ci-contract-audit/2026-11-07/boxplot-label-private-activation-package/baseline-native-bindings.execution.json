@@ -1,0 +1,29 @@
+{
+  "case": "baseline-native-bindings",
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/boxplot-private-activation-c28y_tmr",
+    "/dev/shm/boxplot-private-activation-c28y_tmr",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/boxplot-private-activation-c28y_tmr/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/boxplot-label-private-activation-package/native-probe.ts"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 10.808249235153198,
+  "stdoutSha256": "d2846e229af0cd6ac979309f529982c3a9f2affda2202468bf1077a9fce51b9b",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -805,7 +805,7 @@ const resolveExternalLandscapes = (
   }
 }
 
-const parseSemanticKindLedger = (
+export const parseSemanticKindLedger = (
   value: unknown,
   rawLandscape: unknown,
   landscapeId: string,

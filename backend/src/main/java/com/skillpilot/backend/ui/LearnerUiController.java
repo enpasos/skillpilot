@@ -318,7 +318,7 @@ public class LearnerUiController {
     public void updateCurriculum(@PathVariable String skillpilotId, @RequestBody UpdateCurriculumRequest request) {
         learnerLifecycle.withActivity(skillpilotId, () -> {
             learnerService.assertWritableLearningSession(skillpilotId);
-            learnerService.setCurriculum(skillpilotId, request.getCurriculumId());
+            learnerService.setCurriculumFromPublicCatalog(skillpilotId, request.getCurriculumId());
         });
     }
 

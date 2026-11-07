@@ -135,8 +135,8 @@ const selectionPlan: PersonalizationPlan = {
   pendingDecisions: [],
 }
 
-const installApi = async (page: Page) => {
-  let selectedCurriculumId = CANONICAL_GYMNASIUM_ROOT_ID
+const installApi = async (page: Page, recovery = false) => {
+  let selectedCurriculumId = recovery ? '7d51b38c-a149-5407-bddc-d2ce7878b020' : CANONICAL_GYMNASIUM_ROOT_ID
   const metrics = {
     landscapeRequests: 0,
     rewindRequests: 0,
@@ -175,7 +175,7 @@ const installApi = async (page: Page) => {
       path.endsWith('/personalization-plan')
       && request.method() === 'GET'
     ) {
-      await respond(path.includes(incompleteLearnerId) ? selectionPlan : completePlan)
+      await respond(recovery ? (metrics.curriculumSaveRequests ? selectionPlan : { ...completePlan, stage: 'INVALID', completedDecisions: [], problemCode: 'canonical-subject-scope-unresolved' }) : path.includes(incompleteLearnerId) ? selectionPlan : completePlan)
       return
     }
     if (
@@ -246,6 +246,7 @@ const installApi = async (page: Page) => {
 const openFreshSetupPage = async (
   context: BrowserContext,
   baseUrl: string,
+  recovery = false,
 ) => {
   const page = await context.newPage()
   page.setDefaultTimeout(10_000)
@@ -254,7 +255,7 @@ const openFreshSetupPage = async (
   page.on('console', (message) => {
     if (message.type() === 'error') browserErrors.push(message.text())
   })
-  const apiMetrics = await installApi(page)
+  const apiMetrics = await installApi(page, recovery)
   await page.goto(baseUrl)
   await page.getByTestId('public-landing-action-learning').click().catch((error: unknown) => {
     throw new Error(
@@ -296,6 +297,30 @@ try {
     ],
   })
   const baseUrl = `${server.baseUrl}/scripts/fixtures/sessionSetupCompletionUi.html`
+
+  // An unresolved direct subject returns to the existing base selection and authored flow.
+  {
+  const context = await browser.newContext({ locale: 'de-DE' })
+  await context.addInitScript(terms => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', terms)
+  }, CURRENT_TERMS_VERSION)
+  const h = await openFreshSetupPage(context, `${server.baseUrl}/scripts/fixtures/sessionSetupCompletionUi.html`, true)
+  await h.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)
+  await h.page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' }).click()
+  const recovery = h.page.getByTestId('personal-curriculum-reselect-base')
+  await recovery.waitFor()
+  assert(await recovery.getAttribute('href') === '/?start=coach', 'recovery uses the existing first-party setup route')
+  assert(await h.page.getByTestId('coach-provider-choice').count() === 0, 'an unresolved owner cannot launch a coach')
+  const select = h.page.getByLabel('Dein Curriculum')
+  await select.selectOption(CANONICAL_GYMNASIUM_ROOT_ID)
+  await h.page.getByText('Alle Bundesländer', { exact: true }).waitFor()
+  assert(h.apiMetrics.curriculumSaveRequests === 1, 'one explicit base selection persists the replacement')
+  assert(await recovery.count() === 0, 'the existing authored flow replaces the unresolved-owner diagnostic')
+  assert(await h.page.getByTestId('coach-provider-choice').count() === 0, 'the learner must still finish the authored flow')
+  assert(h.browserErrors.length === 0, `unexpected browser errors: ${h.browserErrors.join('; ')}`)
+  await context.close()
+  }
 
   const termsContext = await browser.newContext({ locale: 'de-DE' })
   await termsContext.addInitScript(() => {

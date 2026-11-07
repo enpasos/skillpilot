@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "status": "independent-bounded-content-review-complete-not-applied",
+  "date": "2026-11-06",
+  "reviewer": "ci_runtime (Sol 6.1 Ultra)",
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/informatics-foundation-prerequisite-repair-proposal-2026-11-06.json",
+    "rawSha256": "220da5643e7f50fd72ea8cc198b53b6a3e1b6f649a538c0201fbc7a130e56d83",
+    "operationsSha256": "be8359a06de7e1109eed24f8624ab14f93f594974278e3eeb6143e278a4df70c",
+    "canonicalProfile": "skillpilot-canonical-json-decimal-v1"
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "dataChangesApplied": false,
+  "qaApprovalClaimed": false,
+  "decisions": [
+    {
+      "operationId": "INFO-FOUND-03",
+      "decision": "no-hold-on-bounded-removal",
+      "before": [
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "after": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "reason": "DDL/DML/DCL and access-control design do not require aggregation or GROUP BY. Given a table Member(id,name), creating it, inserting a row, and granting/revoking SELECT to a reader can be acquired without aggregation. The already required basic SQL goal remains; its full join/sort breadth and current Q1-exam predecessor are not newly certified as minimal by this bounded correction."
+    },
+    {
+      "operationId": "INFO-FOUND-04",
+      "decision": "no-hold-on-bounded-replacement",
+      "before": [
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+      ],
+      "after": [
+        "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a"
+      ],
+      "reason": "Time-ordered method calls between participating objects and services use the class/object/method concepts in cb2. Independent calls can be modelled in a parallel sequence fragment without a relational schema or normalization to 3NF. The exact description adds modelling concurrency/services as the new performance; requiring a POP/SMTP-specific goal would be unnecessary. The current cb2-to-E-exam path remains an open earlier prerequisite finding."
+    },
+    {
+      "operationId": "INFO-FOUND-05",
+      "decision": "no-hold-on-bounded-replacement",
+      "before": [
+        "70b8919e-8707-580f-9e13-0536c9e81476"
+      ],
+      "after": [
+        "6c4fd4a4-b245-512f-99ec-4ec6d1e37126"
+      ],
+      "reason": "Classifying TLS, authentication/authorization and firewall protection needs client/server risks and identities, which the existing foundation provides. Distinguishing WLAN eavesdropping from missing role rights and an exposed database port does not require binary/hex arithmetic or two-complement calculations. The proposed Q4 C1 task provides this additional concrete context; this is no source, practice, or effectiveness approval."
+    }
+  ],
+  "checks": {
+    "fullCurrentGermanAndEnglishEndpointsRead": true,
+    "directParentsAndOriginalOrReplacementFoundationsRead": true,
+    "exactThreeBeforeAfterArraysMatchProposal": true,
+    "sourceAndWholeProposalAndCanonicalOperationsHashesMatched": true,
+    "noLiveWrites": true,
+    "globalReplayPerformedByThisReviewer": false
+  },
+  "limits": [
+    "Independent content judgment is bounded to these three author arrays; the separate two entry-goal decisions are in informatics-entry-prerequisite-independent-review-2026-11-06.json.",
+    "Astra/root own the full global demand, applicability, projection and cycle replay and application guards. Their reported 0 additions are not independently recomputed by this reviewer.",
+    "No terminal normalization, DFS/BFS hold removal, complex-state-diagram dependency addition, task release, coverage change, practice approval, mastery/SRS or learning-unit recognition is authorized by this review."
+  ]
+}

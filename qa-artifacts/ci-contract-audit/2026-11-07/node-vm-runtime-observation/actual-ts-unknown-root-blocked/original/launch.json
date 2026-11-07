@@ -1,0 +1,143 @@
+{
+  "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+  "role": "original",
+  "root": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+  "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+  "argv": [
+    "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+    "--no-cache",
+    "--tsconfig",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+  ],
+  "command": [
+    "/usr/bin/strace",
+    "-f",
+    "-qq",
+    "-yy",
+    "--decode-pids=pidns",
+    "-v",
+    "-s",
+    "65535",
+    "-e",
+    "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+    "-e",
+    "raw=read,pread64,readv,preadv,preadv2",
+    "-o",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller/recorder.strace",
+    "/usr/bin/bwrap",
+    "--die-with-parent",
+    "--unshare-net",
+    "--unshare-pid",
+    "--clearenv",
+    "--setenv",
+    "PATH",
+    "/usr/bin:/bin",
+    "--setenv",
+    "LC_ALL",
+    "C",
+    "--setenv",
+    "PYTHONDONTWRITEBYTECODE",
+    "1",
+    "--ro-bind",
+    "/",
+    "/",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--ro-bind",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+    "--ro-bind",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+    "--tmpfs",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+    "--remount-ro",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+    "--chdir",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+    "--",
+    "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+    "--no-cache",
+    "--tsconfig",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+    "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+  ],
+  "producerExitCode": 0,
+  "traceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+  "stdoutSha256": "c42ef4258d46fc207d0a15fdfbfaace1ad763da647a450d0428702958de7a80b",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdio": {
+    "0": {
+      "kind": "stdin-null",
+      "path": "/dev/null",
+      "deviceMajor": 1,
+      "deviceMinor": 3
+    },
+    "1": {
+      "kind": "output-pipe",
+      "pipeInode": 2847102
+    },
+    "2": {
+      "kind": "output-pipe",
+      "pipeInode": 2847103
+    }
+  },
+  "recorderTraceSha256": "d7650d5a116e961e391987b6e5add402738f539838519d5ab641a0eff39e6c29",
+  "producerBoundary": {
+    "recorderLine": 395,
+    "hostPid": 371920,
+    "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "argv": [
+      "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+      "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+      "--no-cache",
+      "--tsconfig",
+      "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+      "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+    ],
+    "selection": "exact-first-producer-exec-and-all-descendants",
+    "fullPreludePreserved": true
+  },
+  "namespaceProcessIds": {
+    "371920": 2,
+    "371937": 13,
+    "371949": 25
+  },
+  "readonlyDependencyMounts": [
+    {
+      "source": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+      "target": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+      "readonly": true,
+      "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+      "captureReceiptSha256": "9023a300cbd12211f8927d0deae7fa3104d3ef3e458a41401fc97da0938da389"
+    }
+  ],
+  "abortedNonInputIdentityObservations": [],
+  "recorderProtection": {
+    "recorderOutsideProducerPidNamespace": true,
+    "evidenceDirectory": "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+    "producerView": "empty-readonly-tmpfs",
+    "writableEvidenceMounts": [],
+    "stdoutStderr": "controller-owned-pipes"
+  },
+  "toolKernelContext": {
+    "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+    "kernelMachine": "x86_64",
+    "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+    "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+    "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+    "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+    "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+    "osObservationBytesImmutable": false
+  },
+  "runtimeActivationAllowed": false,
+  "qaValidityClaimed": false
+}

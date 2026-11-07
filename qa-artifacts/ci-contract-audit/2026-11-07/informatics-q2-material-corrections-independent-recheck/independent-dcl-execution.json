@@ -1,0 +1,249 @@
+{
+  "postgresVersion": "postgres (PostgreSQL) 18.1",
+  "transport": "private Unix socket, no TCP listener",
+  "statements": [
+    {
+      "sql": "CREATE ROLE auskunft NOLOGIN;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "CREATE SCHEMA review_c; GRANT USAGE ON SCHEMA review_c TO auskunft;SET search_path TO review_c;CREATE TABLE Person(pid integer primary key,name text);INSERT INTO Person VALUES(1,'base-data');CREATE TABLE Kurs(kid integer primary key,titel text,preis integer);INSERT INTO Kurs VALUES(10,'public-data',20);CREATE TABLE Kontakt(email text);INSERT INTO Kontakt VALUES('private@example.invalid');CREATE VIEW KursAuskunft AS SELECT kid,titel,preis FROM Kurs;GRANT SELECT ON Person TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM Person;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM KursAuskunft;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_c;GRANT SELECT ON KursAuskunft TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM Person;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM KursAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM Kontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;UPDATE Kurs SET preis=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_c;REVOKE SELECT ON Person FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM Person;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM KursAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;SELECT * FROM Kontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_c;SET ROLE auskunft;UPDATE Kurs SET preis=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "CREATE SCHEMA review_b; GRANT USAGE ON SCHEMA review_b TO auskunft;SET search_path TO review_b;CREATE TABLE Leser(pid integer primary key,name text);INSERT INTO Leser VALUES(1,'base-data');CREATE TABLE Medium(mid integer primary key,titel text,gebuehr integer);INSERT INTO Medium VALUES(10,'public-data',20);CREATE TABLE Leserkontakt(email text);INSERT INTO Leserkontakt VALUES('private@example.invalid');CREATE VIEW MedienAuskunft AS SELECT mid,titel,gebuehr FROM Medium;GRANT SELECT ON Leser TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM Leser;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM MedienAuskunft;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_b;GRANT SELECT ON MedienAuskunft TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM Leser;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM MedienAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM Leserkontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;UPDATE Medium SET gebuehr=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_b;REVOKE SELECT ON Leser FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM Leser;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM MedienAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;SELECT * FROM Leserkontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_b;SET ROLE auskunft;UPDATE Medium SET gebuehr=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "CREATE SCHEMA review_f; GRANT USAGE ON SCHEMA review_f TO auskunft;SET search_path TO review_f;CREATE TABLE Gast(pid integer primary key,name text);INSERT INTO Gast VALUES(1,'base-data');CREATE TABLE Auftritt(auftritt_id integer primary key,titel text,preis integer);INSERT INTO Auftritt VALUES(10,'public-data',20);CREATE TABLE Gastkontakt(email text);INSERT INTO Gastkontakt VALUES('private@example.invalid');CREATE VIEW ProgrammAuskunft AS SELECT auftritt_id,titel,preis FROM Auftritt;GRANT SELECT ON Gast TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM Gast;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM ProgrammAuskunft;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_f;GRANT SELECT ON ProgrammAuskunft TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM Gast;",
+      "returncode": 0,
+      "stdout": "1|base-data",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM ProgrammAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM Gastkontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;UPDATE Auftritt SET preis=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_f;REVOKE SELECT ON Gast FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM Gast;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM ProgrammAuskunft;",
+      "returncode": 0,
+      "stdout": "10|public-data|20",
+      "stderr": ""
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;SELECT * FROM Gastkontakt;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "sql": "SET search_path TO review_f;SET ROLE auskunft;UPDATE Auftritt SET preis=0;",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    }
+  ],
+  "clusterStopped": true,
+  "clusterRemovedOnContextExit": true,
+  "scope": "Independent minimal fixtures verify exact three supplied GRANT/REVOKE statements and permitted/forbidden reads/writes; no production or security rollout."
+}

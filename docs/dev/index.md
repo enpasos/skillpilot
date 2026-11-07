@@ -4,6 +4,61 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Start Here
 
+- [CI-Vertragsaudit: Übergabe vom 6. November 2026](ci-contract-audit-handoff-2026-11-06.md)
+  Eigenständiger Auftrag vor weiterer Einheitenarbeit; eingefrorener Stand,
+  gesicherte Befunde und Starttext für den neuen Chat.
+- [Kanonische ID-Korrektur und vollständige Voraussetzungenauflösung](canonical-id-repair-and-transitive-frontier-plan-2026-11-06.md)
+  Konkrete Reparaturgrenzen für Identitäten, gespeicherte Ergebnisse, Reviewbelege und vollständige Voraussetzungen.
+- [Unabhängige Prüfung des Identitätsbeweises A/B](ci-graph-repairs/canonical-identity-proof-independent-review-2026-11-06.md)
+  Reproduzierter Quellbeweis, vier behobene Kernbefunde und die weiterhin geschlossene Runtime-Aktivierung.
+- [Zustandsprojektion und getrennte B-Abnahme](ci-graph-repairs/goal-identity-state-projection-plan-2026-11-06.md)
+  Noch unverdrahteter Kern und zehn tatsächlich offene Backend-, Paket- und Browsergrenzen.
+- [Unabhängige Prüfung der reinen Zustandsprojektion](ci-graph-repairs/canonical-identity-state-projection-independent-review-2026-11-06.md)
+  Getrennte Kerntests und konkrete offene Grenzen bei ursprünglichen Speicherkeys.
+- [Laufzeitkorrektur: vollständige transitive Voraussetzungen](ci-contract-runtime-transitivity-proposal-2026-11-06.md)
+  Begrenzte Korrektur der bestehenden Graphauflösung mit tatsächlichen Gegenbeispielen und getrennten Sollständen.
+- [Prüfung geerbter Voraussetzungsduplikate](ci-graph-repairs/inherited-duplicate-review-2026-11-06.md)
+  Einzelbelege, exakte Vererbungsgleichheit und Auswirkungen auf gebundene Reviews vor Inhaltskorrekturen.
+- [Deutsch: fachliche Prüfung der Zwischenvoraussetzungen](ci-graph-repairs/german-held-prerequisites-review-2026-11-06.md)
+  Einzeln begründete Kantenkorrekturen vor einer erneut geprüften Minimalitätsnormalisierung.
+- [Deutsch: Applicability und explizite Supportrolle](ci-graph-repairs/german-applicability-support-review-2026-11-06.md)
+  Geprüfte Metadatenderivate, unveränderte Zielmengen und vorhandene Sek-I-Vorbereitung in HE-Sek-II.
+- [Informatik: begrenzte Voraussetzungskorrektur](ci-graph-repairs/informatics-prerequisite-normalization-proposal-2026-11-06.md)
+  Einzelne Normalisierungen mit vollständigem globalem Beweis; Anwendung getrennt von Inhaltsfreigabe.
+- [Informatik: offene Aufgaben- und Coverage-Befunde](ci-graph-repairs/informatics-terminal-task-coverage-review-2026-11-06.md)
+  Tatsächlich fehlende Materialien und unbelegte Prüfungsabdeckung mit konkretem Reparaturumfang.
+- [Informatik: Grundlagen für den Voraussetzungsreview](ci-graph-repairs/informatics-ordinary-prerequisite-review-input-2026-11-06.md)
+  Vollständige Endpunkttexte und wirkliche Wege über gewöhnliche Ziele und fremde Prüfungen.
+- [Angewandte Grundlagenkorrekturen in Informatik und Deutsch](ci-graph-repairs/informatics-german-foundation-application-2026-11-06.md)
+  13 geschützte Feldänderungen mit vollständigen Nachfragedeltas und frischer tatsächlicher QA.
+- [Backend-Fixtures: unabhängiger Zweitblick](ci-graph-repairs/main-transitivity-fixture-independent-review-2026-11-06.json)
+  Fünf echte Remote-Fehler eingegrenzt; 231 Tests ohne Produktionsänderung bestanden.
+- [Informatik: angewandte Grundlagen und Angebotsfolgen](ci-graph-repairs/informatics-whole-exam-foundation-application-2026-11-06.md)
+  39 geprüfte Voraussetzungskorrekturen mit 166 abgeleiteten Feldern und tatsächlicher unabhängiger Nachprüfung.
+- [Identitätskern: exakte Owner-Namensräume](ci-graph-repairs/canonical-identity-owner-namespace-repair-independent-review-2026-11-06.md)
+  Sechs reproduzierte Fehler korrigiert, 43 Tests unabhängig bestanden; die Migration bleibt unverdrahtet.
+- [Mathematik: unabhängiger HE-Scope-Gegenblick](ci-graph-repairs/he-gk-q24-q25-scope-independent-review-2026-11-06.md)
+  Historische Ziel-IDs, aktuelle Ersatzkompetenzen und regionale Supportrollen mit 110 echten Verlustkontrollen.
+- [Kartenabschluss: unabhängiger Zweitblick](ci-graph-repairs/srs-completion-retention-independent-review-2026-11-06.md)
+  Echte spätere Fälligkeit und abgewiesene Wiederprüfung bei unverändertem Masterednachweis.
+- [Mehrfachserialisierungen und offene Topologiekonflikte](ci-graph-repairs/locale-topology-conflicts-2026-11-06.md)
+  Vollständiger lesender 593-Dateien-Zensus mit 19 ungeklärten Mannheimer Goaldefinitionen.
+- [Informatik-Q4: tatsächliche Prologausführung](ci-graph-repairs/informatics-q4-prolog-execution-2026-11-06.md)
+  40 Interpreterabfragen für getrennte Aufgabenentwürfe, ohne Prüfungs- oder Runtimefreigabe.
+- [Mathematik: fachliche Minimalitätsprüfung](ci-graph-repairs/math-minimality-review-2026-11-06.md)
+  Vollständige 923-Fall-Zuordnung; laufende Einzelprüfung, noch keine Kantenübernahme.
+- [Mathematik: Voraussetzungen der Kartenziele](ci-graph-repairs/math-memory-prerequisites-review-2026-11-06.md)
+  Kleine getrennte, noch nicht angewandte Reparaturgruppe mit tatsächlichen Kartenbelegen.
+- [Mathematik: elementare Arithmetikvoraussetzungen](ci-graph-repairs/math-arithmetic-prerequisites-review-2026-11-06.md)
+  Fachliche Gegenprüfung der überbreiten Vorbereitungswege; Anwendung und aktuelle QA stehen aus.
+- [Mathematik: globale Wirkungsprüfung des kleinen Piloten](ci-graph-repairs/math-pilot-global-integration-review-2026-11-06.md)
+  Vollständiger lesender Replay und noch zu prüfende Voraussetzungenfolgen für Physik.
+- [Physik: vier gezielte Grundlagen nach dem Mathematikpiloten](ci-graph-repairs/math-physics-prerequisite-followup-review-2026-11-06.md)
+  Fachlich geprüfte Fremdfolgen und noch erforderliche aktuelle QA, ohne Anwendung.
+- [Natives Mathematik-/Physikinventar](learning-units-inventory/2026-11-06/README.md)
+  Reproduzierbare Angebotsauflösung als Ausgangsbefund für den CI-Audit.
+- [Transitive Minimalität: Istbericht](learning-units-inventory/2026-11-06/transitive-minimality.md)
+  Noch unerfüllte Bedingungen mit Zeugenpfaden; keine bestandene Freigabe.
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Aktueller Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)

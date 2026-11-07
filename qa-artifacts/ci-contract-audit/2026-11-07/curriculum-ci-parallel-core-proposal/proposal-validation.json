@@ -1,0 +1,287 @@
+{
+  "method": "Static YAML/raw-step preservation plus executing only the proposed first-step Bash guard in RAM. No curriculum/Source-A/book/application commands executed.",
+  "unchangedOtherJobs": [
+    "action-regression-ci",
+    "openai-mcp-app-ci",
+    "claude-connector-v1-ci",
+    "openai-v1-public-edge-ci",
+    "goal-book-publication",
+    "frontend-ci",
+    "backend-ci"
+  ],
+  "all85OldStepsPresentWithExactStepBytes": true,
+  "duplicatedOldStepsOnlyForRunnerBootstrap": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    69,
+    72
+  ],
+  "oldSemanticCommandsDroppedOrEdited": [],
+  "guardCases": [
+    {
+      "core": "success",
+      "book": "success",
+      "exitCode": 0
+    },
+    {
+      "core": "success",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "success",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "success",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "success",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "success",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "success",
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "failure",
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "cancelled",
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "skipped",
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "",
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": null,
+      "book": "neutral",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "success",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "failure",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "cancelled",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "skipped",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "",
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": null,
+      "exitCode": 1
+    },
+    {
+      "core": "neutral",
+      "book": "neutral",
+      "exitCode": 1
+    }
+  ],
+  "guardPassedCases": 1,
+  "guardRejectedCases": 48,
+  "originalWorkflowUnchanged": true,
+  "remoteRunOrSpeedClaim": false,
+  "focusedStaticWorkflowTests": {
+    "existing": 4,
+    "added": 3,
+    "passed": 7,
+    "failed": 0,
+    "unselectedUnrelatedTests": 9,
+    "workflowNegativeMutations": 19,
+    "actualSourceACommandsExecuted": false,
+    "bookProducerBuildValidateUploadOrderChecked": true
+  }
+}

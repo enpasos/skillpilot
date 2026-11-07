@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "status": "guarded-final967a-technical-binding-proposal-NOT-applied",
+  "target": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+  "beforeFileSha256": "4415411350eabee64077f9c4769603814a428b9d3f3421cfaa7ceda1339f3227",
+  "afterFileSha256": "dbb468a72a419cb1b46398f5d1dbb04aff02a87a5669c19a892f310e555ae149",
+  "allowedJsonOperations": [
+    {
+      "op": "test",
+      "path": "/inputs/canonical/sha256",
+      "value": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    {
+      "op": "replace",
+      "path": "/inputs/canonical/sha256",
+      "value": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318"
+    }
+  ],
+  "requiredGuardsBeforeAnyFutureLivePolicyWrite": {
+    "canonicalMustAlreadyEqualFinalReviewedCandidate": {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318"
+    },
+    "kindLedgerMustEqualActuallyReviewedCandidate": {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "188ff969598df64e6f455c761f30f65240cba6ad6304558baaefd15b8d82baea"
+    },
+    "unchangedGenerator": {
+      "path": "app/scripts/generateMathDurationCompositionViews.ts",
+      "sha256": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+      "bytes": 77692
+    },
+    "allOtherPolicyFieldsExactlyEqualOriginal": true,
+    "all13BoundOriginalReviewFilesUnchanged": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-058bf6de-structural-split-2026-08-27.adjudication.json",
+        "sha256": "19cc1a2d0b8d48f8717f20e58732ae6f18e0825743620fc75fccdf891a8396e0",
+        "bytes": 15232
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-08-28/batch-012-j6-volume-structural-split-1-v1/source-edge-adjudication.json",
+        "sha256": "b06d7d4f2309cd15b3fbe488927cc856e165ac05ea063653b64b00284ab6103f",
+        "bytes": 35429
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-032v-approved-graph-split-final-recheck-5-v1/duration-layout-adjudication.json",
+        "sha256": "28069fb72f663f403d0c7072329323f8cfcbe491c12231f534de39e4caf4f1fb",
+        "bytes": 4455
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-06/batch-038-derivative-applications-and-exponentials-20-v1/duration-scope-adjudication-v3.json",
+        "sha256": "2e7f0b537d8dbcbf71cf5d9410be0100784e33e8dc08b09796564379b877f19d",
+        "bytes": 3084
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-sphere-split-source-audit-20260928-v1/duration-layout-adjudication.json",
+        "sha256": "91a8608338694d28a41aa94908fac9478e2c8dd941594137439c6696e7714367",
+        "bytes": 4375
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-j10-derivative-split-20260928-v1/duration-layout-adjudication.json",
+        "sha256": "08459a78076ee2d232ecc30b1e586043a79457bf4a10d382a75e7ff2ae65e3e9",
+        "bytes": 2996
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-vector-shared-operations-20260928-v1/duration-layout-adjudication.json",
+        "sha256": "85483d13e13b26fe7179c88fe79bd232b7a2447212655bd6331294eb75ee1c77",
+        "bytes": 4228
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/mathematik-j10-analysis-source-stage-decisions-20260929.md",
+        "sha256": "cd2a7bd122f4e3560eb7a90238461e99aabe94124223d9150e6130d8b975e8fa",
+        "bytes": 11923
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/mathematik-f65-he-year-source-decision-20260929.md",
+        "sha256": "2fa52dcf70491496aee392184021c8c2c83516ccf4233df86f203561158a331d",
+        "bytes": 3881
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/mathematik/sl-j10-sphere-b23-source-audit-20260929-v1.md",
+        "sha256": "e0c6b1d22647a4d0a1052f5bb3e8b105902e9f9d8f88d432e7cc20d947ea2686",
+        "bytes": 2786
+      },
+      {
+        "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_math_lower_secondary_source_extraction_to_canonical_math.review.json",
+        "sha256": "2c6c42f7eea284ffbcd8973b4e299ec0370b02c6c8199922111c207ef455daa6",
+        "bytes": 549553
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/source-scope-review/mathematik/2026-09-29/he-g9-j8-body-placements-decision.md",
+        "sha256": "0abfeb3a4321709bb27df059121c09b0e08ce41c0ef935c0968cf3bf8eb2ef60",
+        "bytes": 1237
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/canonical-math-structural-split-composition-view-follow-up-2026-08-16.receipt.json",
+        "sha256": "f0aa55d2f4f1390fa3f511c885ce1f297eebb787ae04d9146a779a85ecbe08ab",
+        "bytes": 49242
+      }
+    ],
+    "all18LiveOutputHashesUnchanged": [
+      {
+        "fileName": "de-he-seki-g8.view.json",
+        "baselineGeneratedSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+        "candidateGeneratedSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+        "liveSha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+        "bytes": 46326,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-he-seki-g9.view.json",
+        "baselineGeneratedSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+        "candidateGeneratedSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+        "liveSha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+        "bytes": 51740,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-seki-g8.view.json",
+        "baselineGeneratedSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+        "candidateGeneratedSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+        "liveSha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+        "bytes": 40366,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-seki-g9.view.json",
+        "baselineGeneratedSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+        "candidateGeneratedSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+        "liveSha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+        "bytes": 42823,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-seki-g8.view.json",
+        "baselineGeneratedSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+        "candidateGeneratedSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+        "liveSha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+        "bytes": 41262,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-seki-g9.view.json",
+        "baselineGeneratedSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+        "candidateGeneratedSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+        "liveSha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+        "bytes": 42244,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-he-gk-g8.view.json",
+        "baselineGeneratedSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+        "candidateGeneratedSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+        "liveSha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+        "bytes": 70745,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-he-gk-g9.view.json",
+        "baselineGeneratedSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+        "candidateGeneratedSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+        "liveSha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+        "bytes": 74096,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-he-lk-g8.view.json",
+        "baselineGeneratedSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+        "candidateGeneratedSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+        "liveSha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+        "bytes": 66234,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-he-lk-g9.view.json",
+        "baselineGeneratedSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+        "candidateGeneratedSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+        "liveSha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+        "bytes": 69585,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-gk-g8.view.json",
+        "baselineGeneratedSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+        "candidateGeneratedSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+        "liveSha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+        "bytes": 64201,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-gk-g9.view.json",
+        "baselineGeneratedSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+        "candidateGeneratedSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+        "liveSha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+        "bytes": 66787,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-lk-g8.view.json",
+        "baselineGeneratedSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+        "candidateGeneratedSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+        "liveSha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+        "bytes": 63728,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-rp-lk-g9.view.json",
+        "baselineGeneratedSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+        "candidateGeneratedSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+        "liveSha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+        "bytes": 66314,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-gk-g8.view.json",
+        "baselineGeneratedSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+        "candidateGeneratedSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+        "liveSha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+        "bytes": 70335,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-gk-g9.view.json",
+        "baselineGeneratedSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+        "candidateGeneratedSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+        "liveSha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+        "bytes": 71258,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-lk-g8.view.json",
+        "baselineGeneratedSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+        "candidateGeneratedSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+        "liveSha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+        "bytes": 72041,
+        "allThreeRawBytesEqual": true
+      },
+      {
+        "fileName": "de-sh-lk-g9.view.json",
+        "baselineGeneratedSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+        "candidateGeneratedSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+        "liveSha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+        "bytes": 72646,
+        "allThreeRawBytesEqual": true
+      }
+    ],
+    "rootSafepointAndExplicitWriteAuthorizationRequired": true
+  },
+  "requiredGeneratedFileWrites": [],
+  "noCanonicalKindQaViewOrHistoricalReviewWritesAuthorizedByThisPlan": true,
+  "applicationMethodIfSeparatelyAuthorized": "Verify every guard; change exactly the one policy field; require exact afterFileSha256; private inode/fsync/0644/os.replace; run unchanged native --check and compare all18 live hashes again."
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "independent-bounded-content-review-complete-not-applied",
+  "reviewer": "ci_runtime (Sol 6.1 Ultra)",
+  "proposal": {
+    "path": "docs/dev/ci-graph-repairs/informatics-dfs-foundation-repair-proposal-2026-11-06.json",
+    "rawSha256": "8352687a25750d692bac401785569151da750da19f13d7c82ecdac49c183f939",
+    "operationCanonicalSha256": "071dd219ebc64a7ddf4f1cd839ee06d53705ff194edaaa2198ea6de656c9aa67",
+    "canonicalProfile": "skillpilot-canonical-json-decimal-v1"
+  },
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "rawSha256": "5a1487a47e61f59fbc9dfcd71e350443ce3357da171f6507cd85cd6c3a785e7e"
+  },
+  "operationId": "INFO-DFS-FOUNDATION-01",
+  "goalId": "6d10ced5-0213-558c-9b65-db70ccb824b4",
+  "beforeRequires": [
+    "881edb2d-b0c9-5775-b2ba-3062f2e91f83"
+  ],
+  "afterRequires": [
+    "f0910b55-48a9-4f81-aed6-d15ac0446c70"
+  ],
+  "decision": "no-content-hold-on-this-separate-semantic-repair",
+  "rationale": [
+    "The complete unchanged German/English target demands cycle and bridge detection using DFS. Its text does not require prior completion of the whole separate DFS/BFS/shortest-BFS-path competence.",
+    "The now concrete acquisition route develops following an unvisited neighbor, keeping a path, returning after exhaustion and identifying a back connection within the target itself. Those are taught procedures here, not silently assumed entry knowledge.",
+    "The existing graph-terms foundation provides the required concepts of nodes, edges and paths. Drawing a provided graph and executing a manual DFS does not require an adjacency-list or object-oriented implementation, programming recursion, BFS or shortest paths.",
+    "The earlier hold left the edge untouched while a narrower acquisition route was undocumented. The explicit route in this separate proposal now resolves that gap; transitive reachability alone was not used as didactic justification.",
+    "A real result for 6d10 still needs defensible DFS-based cycle and bridge detection. Merely naming graph terms or recognizing the pictured triangle would not establish the complete competence. The whole meaning of 881e and the Q1 assessment's existing separate search requirement/coverage remain unchanged. No new result or mastery transfer follows from this repair."
+  ],
+  "finiteExampleChecks": {
+    "source": "proposal.manualAcquisitionExample",
+    "scope": "The supplied undirected four-vertex graph only; acquisition illustration, not an authored examination release or a learner trial.",
+    "independentIterativeDfsExecuted": true,
+    "visitOrder": ["A", "B", "C", "D"],
+    "treeEdges": [["A", "B"], ["B", "C"], ["C", "D"]],
+    "backEdgesToActiveAncestors": [["C", "A"]],
+    "cycle": ["A", "B", "C", "A"],
+    "allFourEdgeRemovalConnectivityChecksExecuted": true,
+    "onlyBridge": ["C", "D"],
+    "matchesProposal": true
+  },
+  "checks": {
+    "proposalAndActualSourceRawHashesMatched": true,
+    "operationCanonicalHashIndependentlyRecomputed": true,
+    "allFourFullGermanEnglishEndpointAndParentPayloadsMatchActualSource": true,
+    "goalTextAndExistingSearchCompetenceRemainUnchanged": true,
+    "noLiveCurriculumWritesByReviewer": true,
+    "globalDemandReplayPerformedByReviewer": false
+  },
+  "boundaries": [
+    "Root owns the separately composed global demand, applicability, projection, cycle and strict-check replay before application.",
+    "The existing graph-terms-to-E-examination path remains an open earlier authoring boundary; this review does not certify its whole preparation demand as minimal.",
+    "No new goal, shortened BFS/search result, Q1 assessment deletion, coverage reduction, practice approval, C(q), unit runtime, SRS or stored mastery change is included."
+  ]
+}

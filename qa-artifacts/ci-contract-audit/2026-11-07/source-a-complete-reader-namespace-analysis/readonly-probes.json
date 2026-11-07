@@ -1,0 +1,282 @@
+{
+  "startedAtActualUtc": "2026-11-07T05:17:04.035329+00:00",
+  "finishedAtActualUtc": "2026-11-07T05:17:04.988880+00:00",
+  "purpose": "diagnostic-native-node-search-construction-and-preserved-evidence-check-only",
+  "node": {
+    "path": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+    "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd"
+  },
+  "strace": {
+    "path": "/usr/bin/strace",
+    "sha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d"
+  },
+  "readelf": {
+    "path": "/usr/bin/readelf",
+    "sha256": "546ad429c364d6932cd695945de2f19e13f39dc1a7805a2502e26b0f38152a0d",
+    "exitCode": 0,
+    "stdoutSha256": "a26d17bd0547a9df057fa84c6d06eab13bbbd574c8e9607aa73bd5bcd790371a",
+    "stdoutPath": "node-readelf.txt"
+  },
+  "probeEntry": {
+    "ramPath": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs",
+    "sha256": "265b898a1a69b4eca911d7fc6e9de63f53102bc95e43176e221a79610fcbfc2e",
+    "code": "const Module=require('node:module');const path=require('node:path');\nconst anchors=[__filename,'/qa/pair/original80/app/node_modules/tsx/dist/cli.mjs','/qa/pair/projectedA80/app/scripts/reportDeepUnderstandingRollout.ts'];\nlet missing;try{require.resolve('skillpilot-controlled-missing-namespace-probe-20261107')}catch(e){missing=e.code}\nconsole.log(JSON.stringify({execPath:process.execPath,version:process.version,globalPaths:Module.globalPaths,\n  anchors:anchors.map(anchor=>({anchor,directories:Module._nodeModulePaths(path.dirname(anchor))})),missing}));\n"
+  },
+  "runs": [
+    {
+      "name": "current-cleared-environment",
+      "command": [
+        "/usr/bin/strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-v",
+        "-s",
+        "65535",
+        "-e",
+        "trace=%file",
+        "-o",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/current-cleared-environment.strace",
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LC_ALL": "C"
+      },
+      "cwd": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg",
+      "startedAtActualUtc": "2026-11-07T05:17:04.308507+00:00",
+      "finishedAtActualUtc": "2026-11-07T05:17:04.429052+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "execPath": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "version": "v20.20.2",
+        "globalPaths": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/lib/node"
+        ],
+        "anchors": [
+          {
+            "anchor": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs",
+            "directories": [
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/node_modules",
+              "/dev/shm/node_modules",
+              "/dev/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+            "directories": [
+              "/qa/pair/original80/app/node_modules/tsx/dist/node_modules",
+              "/qa/pair/original80/app/node_modules/tsx/node_modules",
+              "/qa/pair/original80/app/node_modules",
+              "/qa/pair/original80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/projectedA80/app/scripts/reportDeepUnderstandingRollout.ts",
+            "directories": [
+              "/qa/pair/projectedA80/app/scripts/node_modules",
+              "/qa/pair/projectedA80/app/node_modules",
+              "/qa/pair/projectedA80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          }
+        ],
+        "missing": "MODULE_NOT_FOUND"
+      },
+      "stderr": "",
+      "traceRawSha256": "1e58c8e69e9ba4b253de1070d59ef2af2498f7ba332bd46ad3dc682cd67645f5",
+      "traceRawBytes": 23852,
+      "traceGzipSha256": "94a84eab3badc25c2332a358810a79f54547b6d1c14666d8e24e6553f2afc58b",
+      "traceGzipPath": "current-cleared-environment.strace.gz"
+    },
+    {
+      "name": "explicit-empty-home-path",
+      "command": [
+        "/usr/bin/strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-v",
+        "-s",
+        "65535",
+        "-e",
+        "trace=%file",
+        "-o",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/explicit-empty-home-path.strace",
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LC_ALL": "C",
+        "HOME": "/qa/home"
+      },
+      "cwd": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg",
+      "startedAtActualUtc": "2026-11-07T05:17:04.429825+00:00",
+      "finishedAtActualUtc": "2026-11-07T05:17:04.534159+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "execPath": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "version": "v20.20.2",
+        "globalPaths": [
+          "/qa/home/.node_modules",
+          "/qa/home/.node_libraries",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/lib/node"
+        ],
+        "anchors": [
+          {
+            "anchor": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs",
+            "directories": [
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/node_modules",
+              "/dev/shm/node_modules",
+              "/dev/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+            "directories": [
+              "/qa/pair/original80/app/node_modules/tsx/dist/node_modules",
+              "/qa/pair/original80/app/node_modules/tsx/node_modules",
+              "/qa/pair/original80/app/node_modules",
+              "/qa/pair/original80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/projectedA80/app/scripts/reportDeepUnderstandingRollout.ts",
+            "directories": [
+              "/qa/pair/projectedA80/app/scripts/node_modules",
+              "/qa/pair/projectedA80/app/node_modules",
+              "/qa/pair/projectedA80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          }
+        ],
+        "missing": "MODULE_NOT_FOUND"
+      },
+      "stderr": "",
+      "traceRawSha256": "d8ec9868c77dec970d5c7feb1ab5b69bd1b5363aae57797b846b6a86b231eec5",
+      "traceRawBytes": 24318,
+      "traceGzipSha256": "b514d911303e5fa5b60059af2330b3be15efba966a04184f84aeb9a5d658e991",
+      "traceGzipPath": "explicit-empty-home-path.strace.gz"
+    },
+    {
+      "name": "optional-no-global-search-profile",
+      "command": [
+        "/usr/bin/strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-v",
+        "-s",
+        "65535",
+        "-e",
+        "trace=%file",
+        "-o",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/optional-no-global-search-profile.strace",
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "--no-global-search-paths",
+        "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs"
+      ],
+      "environment": {
+        "PATH": "/usr/bin:/bin",
+        "LC_ALL": "C",
+        "HOME": "/qa/home"
+      },
+      "cwd": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg",
+      "startedAtActualUtc": "2026-11-07T05:17:04.534777+00:00",
+      "finishedAtActualUtc": "2026-11-07T05:17:04.641808+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "execPath": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "version": "v20.20.2",
+        "globalPaths": [],
+        "anchors": [
+          {
+            "anchor": "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/probe.cjs",
+            "directories": [
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules/pkg/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/app/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/original80/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/pair/node_modules",
+              "/dev/shm/source-a-namespace-analysis-0hpv5l_u/node_modules",
+              "/dev/shm/node_modules",
+              "/dev/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/original80/app/node_modules/tsx/dist/cli.mjs",
+            "directories": [
+              "/qa/pair/original80/app/node_modules/tsx/dist/node_modules",
+              "/qa/pair/original80/app/node_modules/tsx/node_modules",
+              "/qa/pair/original80/app/node_modules",
+              "/qa/pair/original80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          },
+          {
+            "anchor": "/qa/pair/projectedA80/app/scripts/reportDeepUnderstandingRollout.ts",
+            "directories": [
+              "/qa/pair/projectedA80/app/scripts/node_modules",
+              "/qa/pair/projectedA80/app/node_modules",
+              "/qa/pair/projectedA80/node_modules",
+              "/qa/pair/node_modules",
+              "/qa/node_modules",
+              "/node_modules"
+            ]
+          }
+        ],
+        "missing": "MODULE_NOT_FOUND"
+      },
+      "stderr": "",
+      "traceRawSha256": "d679d038b53c798287cfcba6a7f870967b397a0c0cb043239da2075d0f11d3b9",
+      "traceRawBytes": 23647,
+      "traceGzipSha256": "0bf266923ef09907d830b44a1f3f8e3ee9b627b76e946a19f801069dc15971ac",
+      "traceGzipPath": "optional-no-global-search-profile.strace.gz"
+    }
+  ],
+  "historicalEvidenceVerification": {
+    "command": [
+      "python3",
+      "-B",
+      "qa-artifacts/ci-contract-audit/2026-11-07/prepared-namespace-parent/verify-selected-evidence.py",
+      "--check-current-code"
+    ],
+    "exitCode": 0,
+    "stdout": "{\n  \"purpose\": \"selected-historical-mechanics-evidence-verification-not-QA-acceptance\",\n  \"logicalFiles\": 374,\n  \"uniqueBlobs\": 261,\n  \"tests\": 49,\n  \"actualNativeRuns\": 67,\n  \"tsProducerExits\": [\n    0,\n    0\n  ],\n  \"fullReadAuthenticationPassed\": false,\n  \"currentCodeChecked\": true,\n  \"sourceAQaValidityClaimed\": false\n}\n",
+    "stderr": "",
+    "nativeTestsRepeated": false
+  },
+  "fullProducerOrNamespaceAcceptanceClaimed": false,
+  "sourceAOrAQA02_03PassClaimed": false,
+  "limits": [
+    "Diagnostic trace runs use the ordinary host environment with explicitly cleared child environment, not the proposed namespace.",
+    "The two /qa anchors are path-construction inputs; no /qa files or future namespace were fabricated.",
+    "No failed path observed here is installed as a permission or whitelist.",
+    "readelf records the first executable layer only, not the complete transitive ELF/tool closure.",
+    "The optional no-global-search flag is a measured possible future profile, not a recommendation to alter existing producer semantics silently."
+  ]
+}

@@ -1,0 +1,35 @@
+# Unabhängiger Fach- und Scopereview: drei lokale Informatik-E-Aufgaben
+
+**Urteil:** Die drei vollständig ausgearbeiteten und nachgebesserten E-Aufgaben sind für den ausdrücklich begrenzten HE-kompatiblen eigenen Zuschnitt fachlich zulässig. Die Einbindung in HE-CrossStage und die beiden technischen Own-GK/LK-Views sowie der gezielte Rückzug aus den 15 fremden Landesviews sind konsistent. Dieser Review findet dafür keinen weiteren Material-, Scope-, Metadaten- oder Referenzblocker. **Der gesamte aktuelle Informatikstand bleibt rot und erhält hier keine Integrations-, M6/M7- oder Human-Freigabe.**
+
+Geprüfter Endstand: Source `85ed339482b57f9ea19661df76acce4403ca5b7b9b9727261c1fffb1796dd48b`, Inventory `33cab19b56781cd9372d90ca709425a621a4e6c979896bc8b9b57e028c7a921f`, Seal `5919a0b092e120d111594fabbb989e28dcb16cf4a08c9a38ee4c63536c59cad9`. Reviewer `/root/informatics_e_independent_review` war weder Autor noch Doing-Agent. Die unveränderte Autorenbasis mit Receipt `bb752c90…` und das ausdrücklich neue Wortlautdelta `b98d056e…` wurden getrennt gelesen und geprüft.
+
+## Fachliches Ergebnis
+
+Alle drei Aufgaben, Lösungen, binären Rubriken, Referenzprogramme und die 15 vollständigen gewöhnlichen Zielbeschreibungen wurden gelesen. Der tatsächliche lokale HE-Originaltext auf Druckseiten 30–32 trägt die gewählten Grundinhalte. E.1–E.3 sind verbindlich; Grid wird ausdrücklich genannt. E.4/E.5 werden dadurch nicht zu einer zusätzlichen pauschalen Doppelpflicht. Die Aufgabe prüft weder die weitergehende Mehrviewport-Leistung noch Projekt-/Kryptologie-Sammelleistungen. Die Sprachwahl JavaScript ist ein konkretes eigenes Angebot, keine behauptete hessische Sprachfestlegung. Der Review erklärt keine vollständige amtliche E-Abdeckung oder Kohortenqualifikation.
+
+| Aufgabe | Neue Identität | Gewöhnliche Coverage | Urteil |
+|---|---|---:|---|
+| Netz/HTTP/Sicherheit | ea2ce31f-a0c7-5102-9213-ee1db5b2d475 | 4 | Nach N2.2-Korrektur zulässig |
+| HTML/CSS/Formular | c24236b2-d783-53be-84d5-96b4f4ef8159 | 4 | Zulässig |
+| Programmierung/Testen | 6aa77baf-a199-5c66-b07c-8dc23439acca | 7 | Nach Auftrags-/Rubrikabgleich zulässig |
+
+Der erste Entwurf ließ das TCP/IP-Ziel bereits durch bloße Protokollzuordnung bestehen. Das wurde als echte Coverage-Lücke beanstandet. Aufgabe, Lösung und N2.2 verlangen nun die Aufgaben aller vier Schichten; reine Zuordnungsantworten bestehen nicht. Gleichwertige kurze fachliche Erklärungen bleiben zulässig. Segmentierung oder Transportgarantien werden nicht zusätzlich verlangt. P3.1 verlangt die schon bewertete Typunterscheidung jetzt auch im Arbeitsauftrag. Die CSS-Angabe ist als Inhaltsbreite eindeutig. Alle drei Befunde sind am exakten Delta geschlossen; IDs, Coverage, Voraussetzungen, 34 Mindestkriterien und Programm-/HTML-/CSS-Blöcke bleiben gleich. Bei 12/12, 10/10 und 12/12 kann eine fehlende Kompetenz nicht durch Punkte eines anderen Teils ersetzt werden; Stilperfektion ist kein Kriterium.
+
+## Enge Einbindung und offene Grenzen
+
+Frisch nachgerechnet wurden sämtliche 22 Payloadhashes, alle 37 Archivpfade, die 18 Änderungen gegenüber Source37 und die exakten Goalobjekte. Alle 25 gewöhnlichen E-Definitionen bleiben gleich. Die beiden alten Prüfungen werden ausdrücklich durch drei neue Identitäten ersetzt. Bei vorhandenen Goalobjekten ändern sich nur der E-Parent und vier Draftstatus; Own20 bleibt vollständig gleich. Für die 15 Fremdviews stimmen die gesamten JSON-Objekte nach dem ausschließlichen Entfernen der alten E-Parentreferenz überein. Der alte aktuelle HE-Link 7fc8→bb651 wird ausschließlich in die Historie verschoben, niemals auf die neuen Prüfungen umgebunden. Ergebnisse, Aliase oder Migrationsruntime wurden nicht erzeugt.
+
+Der Parent enthält nur die drei Aufgaben, keine pauschalen Themencluster-Voraussetzungen, Gewicht 3 und die bestehende Mapping-Vererbungsgrenze. Die tatsächliche BY-Belegkette besteht aus partiellen Zuordnungen zum breiten gemeinsamen Root 29ec47db. Diese tragen keine Qualifikation der neuen HE-Prüfungen. Die gelesene bestehende Compilerfunktion stoppt oberhalb des Parents gestartete Mappingvererbung, lässt die direkte HE-Parentzuordnung zu den Kindern und die Childunion nach oben aber bestehen. Das ist eine begründete lokale Autorenkorrektur, keine Engineänderung oder nachträgliche Filterung eines fehlgeschlagenen Qualitätschecks. Der strukturelle Elternlink bleibt ausdrücklich kein amtlicher Material-/Pflichtnachweis.
+
+Die bereits ausgeführte native Prüfung der 19 Views wurde als gebundene Doing-Evidenz wiederverwendet: keine Compilefehler, gewöhnliche Targets und andere Prüfungsrouten unverändert, drei positive Views, Vorbereitungsumfänge 5/5/8 mit allein zusätzlicher Orientierung. Der native Boundary-Vergleich meldet genau die vier E-Astknoten geändert und die übrigen 280 Informatik-Applicabilitymengen gleich. Der Graph-/Scopebeleg bindet Source71e39d; dessen Wiederverwendung ist durch den vollständigen Feldvergleich zur ausschließlich textlich geänderten Source85ed3394 belegt. Die aktuelle native Readinessprüfung bindet direkt Source85ed3394. Es gab keinen erneuten Full-CQR-, 51-Scope- oder SourceA-Lauf.
+
+Die beiden SL-LLM.1-Inventarassoziationen stimmen mit dem vorhandenen Klasse-10-Eintrag `SL-INF-GYM9-10-2026`, dessen Webextraktpfad und den tatsächlichen kanonischen Zielzuordnungen überein. Dies ist eine Metadatenkorrektur, kein neuer Original-PDF-Review. Der Q2-Profilanschluss an Own-Root66630624 führt zu Own20; sein fehlender `compiledApplicability`-Nachweis und seine erste aktuelle Vertragsbindung bleiben offen.
+
+## Prüfung und verbleibende rote Befunde
+
+Eigene Ausführung: zehn zusätzliche frische JavaScriptfälle, fünf Folgeaufrufe und zwei reine Auswertungsfälle erfolgreich; insbesondere spätere Ungültigkeit und Ablehnung ändern den Buchungszustand nicht. Ein eigener Chromiumcheck bestätigt Formularserialisierung mit Sonderzeichen, Labelzuordnung, Grundgrid und die Inhalts-/Außenbreite. Der echte POST sowie GUI-Klicks und frühere Mutanten-/Tracebelege wurden ausdrücklich als Autoren-/Doing-Evidenz wiederverwendet. Es wird kein Lernertest, keine automatische semantische Wirksamkeitsprüfung und keine Hostabnahme behauptet.
+
+Alle 23 aktuellen Prüfungsdefinitionen bleiben Required und Checked, einschließlich der Drafts. 13 sind DECLARED, zehn ABSENT/UNKNOWN. CQR-202 bleibt mit acht Draftbefunden rot: vier generische Platzhalter, drei konkrete neue E-Materialien und Own20. CQR-204 bleibt unter der unveränderten alten Vertragsautorität bei 17 Befunden; diese Zahl ist keine aktuelle Prüfungsanzahl und keine Forderung nach Ergebniskompatibilität. Die aktuelle Identitäts-/Coverageautorität muss später explizit gebunden werden; dieser Review ersetzt sie nicht. Ebenso offen bleiben die zehn gewöhnlichen E-Residualrouten, andere Landeszuschnitte, die vier weiteren Platzhalter, Own20, die bestehenden Quellen-/Kohorten-/DB-/Modellfragen und G17=27.
+
+Änderungen dieses Reviewers liegen ausschließlich in diesem neuen Reviewordner. Autorenpakete, aktive Curriculumsdateien, Git, DB, Produktivsysteme und veröffentlichte Artefakte wurden nicht verändert.

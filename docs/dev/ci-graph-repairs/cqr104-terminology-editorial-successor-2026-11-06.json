@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "editorial-terminology-successor-no-new-review-or-measurement",
+  "originalCommit": "1a49bc24e790c74f4b2482d15db3a7c4fa070d74",
+  "file": "docs/dev/ci-graph-repairs/cqr104-informatics-route-scope-independent-review-2026-11-06.json",
+  "beforeSha256": "2e1ba357f3147a977e286bef8f77726a9f631cda4a5427a689089c4d28be985f",
+  "afterSha256": "b8d714757b6772b0ff84f63d589f74a92e28ae988fa0b7bbd60baa2496b004a5",
+  "meaning": "Canonical terminology only. Original independently reviewed bytes remain in the pinned Git commit. Counts, judgments, code/fixture/source pins and executions are unchanged. No new content approval, source repair, QA rehash or terminology exception.",
+  "actualTerminologyRerun": {
+    "command": "cd app && npm run check:terminology",
+    "exitCode": 0,
+    "scannedFiles": 178765,
+    "unchangedExactHistoricalOccurrences": 57,
+    "logs": [
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-terminology-editorial-successor/after-math-checkpoint.log.gz",
+        "sha256": "e5cf1f8c661cb1e5e6d7c45dfdcb0cfb376b7c5207d60372eba1ca2927f833b3",
+        "uncompressedSha256": "229dde1c9931cd2c43fc088951bb2af25cb347634b1ef985752fba5204251567"
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-terminology-editorial-successor/after-cqr104-editorial.log.gz",
+        "sha256": "8c29efae1a7d7ff23afde8702a8ffccd8db8ae046675282ac4f957dc58f2d650",
+        "uncompressedSha256": "423a83a94f77411a93319f2528111baa076efe158e7b9e3f919a43a3f1b6b90f"
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-terminology-editorial-successor/final-cqr104-editorial.log.gz",
+        "sha256": "e000abc891bb9800e2471b67022d7b844bb6f7ea260aceebe80cae819f259475",
+        "uncompressedSha256": "6a407c79e8e2fcc541054e35f5edef49ddb80b62b9c88f94701ae1cdffc0bce2"
+      }
+    ],
+    "scope": "Actual current working tree including independent in-progress tools; no checker or exception changed."
+  },
+  "exactJsonDeltaPaths": [
+    "/findings/3/reason"
+  ]
+}

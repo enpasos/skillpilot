@@ -1,0 +1,715 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-06",
+  "status": "implemented-and-locally-verified",
+  "independentReview": {
+    "status": "requested-separate-review-pending"
+  },
+  "problem": "Informatics CQR104 compared18 uncompiled authored views and accepted them; the existing compiled-country mode must actually inspect48 country/view projections. Expected endpoints must also obey the authored course/duration filter already used for Economics.",
+  "authority": {
+    "task": "Root authorized exactly the two existing CI corrections, preserving all source/view/coverage/identity/policy data and empty-endpoint failure.",
+    "historicalOverlay": {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-e25-integration-overlay-2026-11-06.json",
+      "sha256": "8ab47c7148fc3ba772b47a7ce0d326a89c168eac8219e82f31702814bea271bd",
+      "bytes": 902676
+    },
+    "historicalNativeEvidence": {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-e25-integration-overlay-2026-11-06.native-evidence.json.gz",
+      "sha256": "be8e99dece0ad9647fc274b2b3a75ea4f2607f936ebf191243f52084e56a1470",
+      "bytes": 5579283
+    },
+    "usedHistoricalBranch": "fullRouteCounterfindings.all48BaselineApplicabilityObservations",
+    "newGkClusterOrCandidateSourceApplied": false
+  },
+  "codeBindings": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "70e5f9af01d452b508bc069e990b7c1915a0031c307d9428e7b9ceca876db7e6",
+      "bytes": 285891
+    },
+    {
+      "path": "app/scripts/testCurriculumRouteEndpointScope.ts",
+      "sha256": "026807f191431eef9de874d7d21269f20233ae8178ca656490ca951a09d1d426",
+      "bytes": 6807
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "a902f2fd6f403c2ff9eab10b31c46204eb64f267cfb30a740a6fa27bbfffdd9a",
+      "bytes": 22959
+    }
+  ],
+  "sourceBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+    "bytes": 462648
+  },
+  "testedCanonicalCatalogPins": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+    }
+  ],
+  "testedInfoViewPins": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-bb-gym-informatics-crossstage.view.json",
+      "sha256": "1f2d12d0edefcae866ae4e56c503e6a250a0662bddfa1c9e119be019da3bf98a",
+      "bytes": 17662
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-be-gym-informatics-crossstage.view.json",
+      "sha256": "277e433fb68f06b8596a0e1ef43039daae292fd1914566fc6dded333bd46771c",
+      "bytes": 17662
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-bw-gym-informatics-crossstage.view.json",
+      "sha256": "5f29e184485174ea18a90287e600a9907d2ceb078e1830835309001c86e657c8",
+      "bytes": 18704
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+      "sha256": "e27fb27ee64bc2fefd900efda6951dbe27a7c6fc508d59dde4e98c542c119fa6",
+      "bytes": 47696
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-gk.view.json",
+      "sha256": "5f630e13df9cbb4ad28210e5f98659f362d3ba28bdba2005c813e33180cc69a3",
+      "bytes": 4916
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-informatics-lk.view.json",
+      "sha256": "8d6b63d337bb8a68d71e72c8d52eb01194bd79a64fe06dd7e12b3603f6a2a2bd",
+      "bytes": 3859
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-de-gym-seki-informatics.view.json",
+      "sha256": "0e514004ea7b109e98cde86a66e0b1505733895120cfa66a19d17aea885ea430",
+      "bytes": 2114
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hb-gym-informatics-crossstage.view.json",
+      "sha256": "1f0f0c8ae06e105b8d6d1613e546db371b5016f3c66dc764f7248839cfd24be2",
+      "bytes": 22633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+      "sha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df",
+      "bytes": 47696
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-hh-gym-informatics-crossstage.view.json",
+      "sha256": "95d1fa4c3361bfa2376c4ac09a003d0c33bed47862e1787dbdd0574824c3db19",
+      "bytes": 18833
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-mv-gym-informatics-crossstage.view.json",
+      "sha256": "4c14aeff7619ab3b7c99cb6903abc4c890170a1a368e20e3b4ee2d2a9c71369c",
+      "bytes": 31977
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-ni-gym-informatics-crossstage.view.json",
+      "sha256": "bad18f44722e1cb626aa28c92549aa673b595c8ca1a5de04f05115494f736fd8",
+      "bytes": 18911
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-nw-gym-informatics-crossstage.view.json",
+      "sha256": "740c61b2af22ccfb9995fee79e03d6a4f6289c7c667ace6d558c3abe1e0d7f01",
+      "bytes": 20754
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-rp-gym-informatics-crossstage.view.json",
+      "sha256": "b4df3ec030b62c1280d3e0767c995e0357460da2aca124d3e80b9d9235a77008",
+      "bytes": 23078
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sh-gym-informatics-crossstage.view.json",
+      "sha256": "1b1792dbe7b06083d80bb246fadff6044eb245e08e34796a707e36750b22b771",
+      "bytes": 27166
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sl-gym-informatics-crossstage.view.json",
+      "sha256": "40e8a376a9ae7eaf6c92c86eb8ef20b8e594c9620039108440e4a3a272e327d9",
+      "bytes": 23533
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-sn-gym-informatics-crossstage.view.json",
+      "sha256": "e72cfd4d9f3940aa984846aa9a202768028aea1ae2789cff72e7a99817afde0c",
+      "bytes": 28415
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-st-gym-informatics-crossstage.view.json",
+      "sha256": "35ee896e37b90a86a9a4ccf431441b388e2676034e2f147b9be4297bdf1944c4",
+      "bytes": 18521
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/informatik/de-th-gym-informatics-crossstage.view.json",
+      "sha256": "e806fd4d863eec82cdceb3c8657906310d595d675d86af7dcb68fb60ab518627",
+      "bytes": 21486
+    }
+  ],
+  "changes": [
+    "The existing canonical-informatics-crossstage profile enables compositionViewApplicabilityMode='compiled-jurisdiction'.",
+    "The existing authored-course/duration predicate for expected Economics endpoints also applies to Informatics endpoints.",
+    "Existing routeProfiles/evaluateRouteProfile are exported for direct tests. An optional explicit file list supplies temporary fixture views to the same reader/projection functions; the default production discovery is unchanged.",
+    "The existing test:deep-understanding-rollout caller imports the focused country/course regression test."
+  ],
+  "currentNativeResult": {
+    "allConfiguredProfiles": 12,
+    "otherCompleteProfilesExactlyUnchanged": [
+      "canonical-math-sek1",
+      "canonical-math-sek2",
+      "canonical-physics-sek1",
+      "canonical-physics-sek2",
+      "canonical-chemistry-sek2",
+      "canonical-biology-sek2",
+      "canonical-economics-crossstage",
+      "canonical-politics-economics-crossstage",
+      "canonical-history-crossstage",
+      "canonical-german-crossstage",
+      "canonical-latin-crossstage"
+    ],
+    "everyNonCqr104InfoRuleExactlyUnchanged": true,
+    "before": {
+      "cqr104Status": "pass",
+      "evaluatedProjectionScopes": 18,
+      "emptyEndpointScopes": 0
+    },
+    "after": {
+      "cqr104Status": "fail",
+      "evaluatedProjectionScopes": 48,
+      "emptyEndpointScopes": 42,
+      "matchingNonemptyScopes": 6,
+      "missingEndpointScopes": 0,
+      "unexpectedEndpointScopes": 0
+    },
+    "matchingNativeContexts": [
+      {
+        "viewId": "de-by-gym-informatics-crossstage",
+        "jurisdiction": "DE-BY"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-HE"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-BY"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-HE"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-BY"
+      },
+      {
+        "viewId": "de-he-gym-informatics-crossstage",
+        "jurisdiction": "DE-HE"
+      }
+    ],
+    "all42EmptyNativeContexts": [
+      {
+        "viewId": "de-bb-gym-informatics-crossstage",
+        "jurisdiction": "DE-BB"
+      },
+      {
+        "viewId": "de-be-gym-informatics-crossstage",
+        "jurisdiction": "DE-BE"
+      },
+      {
+        "viewId": "de-bw-gym-informatics-crossstage",
+        "jurisdiction": "DE-BW"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-BW"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-BB"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-BE"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-NI"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-NW"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-SH"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-HB"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-HH"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-MV"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-RP"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-SL"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-SN"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-ST"
+      },
+      {
+        "viewId": "de-de-gym-informatics-gk",
+        "jurisdiction": "DE-TH"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-BW"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-BB"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-BE"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-NI"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-NW"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-SH"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-HB"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-HH"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-MV"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-RP"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-SL"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-SN"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-ST"
+      },
+      {
+        "viewId": "de-de-gym-informatics-lk",
+        "jurisdiction": "DE-TH"
+      },
+      {
+        "viewId": "de-hb-gym-informatics-crossstage",
+        "jurisdiction": "DE-HB"
+      },
+      {
+        "viewId": "de-hh-gym-informatics-crossstage",
+        "jurisdiction": "DE-HH"
+      },
+      {
+        "viewId": "de-mv-gym-informatics-crossstage",
+        "jurisdiction": "DE-MV"
+      },
+      {
+        "viewId": "de-ni-gym-informatics-crossstage",
+        "jurisdiction": "DE-NI"
+      },
+      {
+        "viewId": "de-nw-gym-informatics-crossstage",
+        "jurisdiction": "DE-NW"
+      },
+      {
+        "viewId": "de-rp-gym-informatics-crossstage",
+        "jurisdiction": "DE-RP"
+      },
+      {
+        "viewId": "de-sh-gym-informatics-crossstage",
+        "jurisdiction": "DE-SH"
+      },
+      {
+        "viewId": "de-sl-gym-informatics-crossstage",
+        "jurisdiction": "DE-SL"
+      },
+      {
+        "viewId": "de-sn-gym-informatics-crossstage",
+        "jurisdiction": "DE-SN"
+      },
+      {
+        "viewId": "de-st-gym-informatics-crossstage",
+        "jurisdiction": "DE-ST"
+      },
+      {
+        "viewId": "de-th-gym-informatics-crossstage",
+        "jurisdiction": "DE-TH"
+      }
+    ],
+    "detailSampleBoundary": "The unchanged makeRule keeps20 detail samples. All48 actual per-projection native results, including all42 empty cases, are separately bound in actual48-projections.json.gz.",
+    "all48HistoricalBaselineContextsCountsAndEmptyFlagsExactlyAgree": true,
+    "sameInfoRouteScopeMaturityBeforeAndAfter": "M2; other existing readiness failures already block it. The CQR104 change closes a real predicate gap and does not grant any maturity.",
+    "unregisteredExpandedProfileDiagnostic": {
+      "productionProfileExpanded": false,
+      "fixtureOnlyClusters": [
+        "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+        "c764b417-2d6b-5f1f-ba1a-851bfb44fb24"
+      ],
+      "boundary": "Additional diagnostic only: treating the two existing Abitur offer clusters as route endpoints is not authorized by this patch and is not applied.",
+      "beforeMissingScopes": 18,
+      "afterMissingScopes": 6,
+      "afterEmptyScopes": 42,
+      "newReadinessOrRoutePolicyClaimed": false
+    }
+  },
+  "regressions": {
+    "realBeforeCountryFailure": "The native evaluator examines2 national views instead of4 country/course iterations.",
+    "realCountryOnlyFailure": "After enabling countries alone, all4 fixture iterations falsely demand the other course endpoint: LK-only da96 inGK, GK-only635 inLK.",
+    "correctedPositiveControls": "Existing native evaluator and native projection/filter functions pass four explicit-country and four national-country/course fixture projections.",
+    "trueNegatives": [
+      "missing BY-specific endpoint",
+      "missing GK-specific endpoint",
+      "both actual and expected endpoint sets empty",
+      "terminal lacks any compiled jurisdiction"
+    ],
+    "maturityBoundary": "Correct CQR104 fixture staysM3 because actual legacy tasks retain their CQR203 warning. Missing/empty endpoints lower its actual returned scope maturity toM2.",
+    "fixtureScope": "Small temporary views and a deliberately narrowed fixture graph/compilation; no live view write, new source mapping, official coverage claim or extra production route cluster."
+  },
+  "checks": [
+    {
+      "command": "python3 -B qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/replay_focused.py --output <new-private-output>",
+      "exitCode": 0,
+      "actualSummary": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/summary.json",
+        "sha256": "7c2127192b7d129bd6672cfa72ef94cff0c20b92e519ae7bd3ffe7ff8b19374c",
+        "bytes": 331
+      },
+      "stages": [
+        {
+          "stage": "before",
+          "exitCode": 1
+        },
+        {
+          "stage": "country-only",
+          "exitCode": 1
+        },
+        {
+          "stage": "final",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testCurriculumRouteEndpointScope.ts",
+      "exitCode": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/green-focused-final.txt",
+        "sha256": "72bb173aa290ee4ca8ba5b687e99ab33984473860d7daeeec37bb215144ce918",
+        "bytes": 136
+      }
+    },
+    {
+      "command": "cd app && npm run test:deep-understanding-rollout",
+      "exitCode": 0,
+      "log": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/deep-regression.txt",
+        "sha256": "c3586fecf21683a8d13931f87b2cd67c7fdcf915f7fc19e1caa6c3989404904b",
+        "bytes": 2100
+      },
+      "terminalObserved": true,
+      "liveDenominators": {
+        "Mathematics": 807,
+        "Physics": 478,
+        "Biology": 397,
+        "Chemistry": 455,
+        "Economics": 346
+      }
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "typecheck": {
+    "status": "no-new-typescript-errors",
+    "baselineExitCode": 2,
+    "currentExitCode": 2,
+    "baselineErrorCount": 48,
+    "currentErrorCount": 48,
+    "newErrors": [],
+    "removedErrors": [],
+    "wholeTypecheckClaimedGreen": false
+  },
+  "limits": [
+    "No source/view/scope/ID/examData/QA-record/state/policy/floor write.",
+    "No new GK cluster or E-only replacement gate.",
+    "The42 existing empty applicable route projections remain hard failures.",
+    "No full CQR producer, floor-report regeneration, runtime/B activation, publication or deployment performed by this patch.",
+    "Additional applicable endpoints need their own concrete scope/content work; these findings do not justify silently downscoping learners."
+  ],
+  "boundEvidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/before.stderr.txt",
+      "sha256": "bc11aed98e4bcc5a9366bbb4a1e8733b31b1cafa6eb044188eceaac5152d68bc",
+      "bytes": 656
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/before.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/country-only.stderr.txt",
+      "sha256": "b61936e63ce7f41c1f451fc30d7dca6108f2c0e5c71e51115542b7ddd2baaa54",
+      "bytes": 4101
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/country-only.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/final.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/final.stdout.txt",
+      "sha256": "72bb173aa290ee4ca8ba5b687e99ab33984473860d7daeeec37bb215144ce918",
+      "bytes": 136
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual-frozen-focused-replay/summary.json",
+      "sha256": "7c2127192b7d129bd6672cfa72ef94cff0c20b92e519ae7bd3ffe7ff8b19374c",
+      "bytes": 331
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/actual48-projections.json.gz",
+      "sha256": "c3614fcef3f68b08a28b31cfaf921c90dbdf282b324b2133ac764a21163b7909",
+      "bytes": 4171
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/after-native.json.gz",
+      "sha256": "65c2fda975e2281c2f78eeefc942ce5f9f15406af50f6cf81d1635562dfab933",
+      "bytes": 5171
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/before-native.json.gz",
+      "sha256": "ad42381faef41c01bff3e2d0364e8b3dc5426d10bc46db38368708a6922dc460",
+      "bytes": 5388
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/deep-regression.txt",
+      "sha256": "c3586fecf21683a8d13931f87b2cd67c7fdcf915f7fc19e1caa6c3989404904b",
+      "bytes": 2100
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/final-generator.ts",
+      "sha256": "70e5f9af01d452b508bc069e990b7c1915a0031c307d9428e7b9ceca876db7e6",
+      "bytes": 285891
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/focused-before-generator.ts",
+      "sha256": "c60d4501974ed4d0472c3239e16b1456cd434033bed2b2706c6a5151e9d65747",
+      "bytes": 285745
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/focused-country-only-generator.ts",
+      "sha256": "22c22b98c0641b6e981052b1362b4834925dd6c4b804451f887ed90f2c8f1340",
+      "bytes": 285808
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/green-focused-final.txt",
+      "sha256": "72bb173aa290ee4ca8ba5b687e99ab33984473860d7daeeec37bb215144ce918",
+      "bytes": 136
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/historical48-comparison.json",
+      "sha256": "8b0dff1f06bac2087cfe056f1b2fd955f1e1532c8351dc26ccb936e169232c2e",
+      "bytes": 284
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/native-before-generator.ts",
+      "sha256": "b4e65e2334f00a57fc541bdfb23046ce0c0f011b47281948d0fc7cd72502f529",
+      "bytes": 285605
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/native-comparison.json",
+      "sha256": "f638af5fe77a9da14c8333ac75d7ebefe47b24ff38ddb9811cb8fc6a2758264b",
+      "bytes": 4443
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/native-probe.mts",
+      "sha256": "f18438fa043e4775ca2a434173e729e7889724d06e38b548d258eae3389bb38c",
+      "bytes": 1892
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/projection-census.mts",
+      "sha256": "f101fc8fee147fc158ab60e4261351e1763f744cf099fe965b73d60d01e2c8ca",
+      "bytes": 3052
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/red-country.txt",
+      "sha256": "bc11aed98e4bcc5a9366bbb4a1e8733b31b1cafa6eb044188eceaac5152d68bc",
+      "bytes": 656
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/red-course-after-country-only.txt",
+      "sha256": "298a4d991daae64bcef470887109aff8d7f1957e698e299a813e022c72b3434d",
+      "bytes": 4101
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/replay-bindings.json",
+      "sha256": "037e85087637b123517bbc6c92bbdbd8e18d59f6b43455798ae28ef25ac47747",
+      "bytes": 1923
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/replay_focused.py",
+      "sha256": "3b423fb3be2d94c853d63e1754036eb7d1dd40ede02ac666796d05ec38950e45",
+      "bytes": 2767
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/testCurriculumRouteEndpointScope.ts",
+      "sha256": "026807f191431eef9de874d7d21269f20233ae8178ca656490ca951a09d1d426",
+      "bytes": 6807
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/testDeepUnderstandingRollout.ts",
+      "sha256": "a902f2fd6f403c2ff9eab10b31c46204eb64f267cfb30a740a6fa27bbfffdd9a",
+      "bytes": 22959
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/typecheck-baseline.txt",
+      "sha256": "2e70ba29078cd7d16bd36d9b2f07adf82f8436304ef14a1a7a7390d7c5c1a9ca",
+      "bytes": 11735
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/typecheck-comparison.json",
+      "sha256": "e17c1878f54363024c64cd3a1665d08e5c17ad938670a56557b81cd58d965aa2",
+      "bytes": 228
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-route-endpoint-scope-repair/typecheck-current.txt",
+      "sha256": "48b84a8aafd8679883a4924b866f3e2f850db057882fc8d641825c634a3cd63b",
+      "bytes": 11735
+    }
+  ],
+  "integrityReplay": {
+    "path": "docs/dev/ci-graph-repairs/verify_cqr104_route_endpoint_scope_repair.py",
+    "sha256": "7482ab0f05f32e7406414ecc130ab94bd30d1f56acfcc25335162c1168576414",
+    "bytes": 3747,
+    "writesData": false,
+    "regeneratesProducerOutputs": false
+  }
+}

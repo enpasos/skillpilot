@@ -128,6 +128,7 @@ try {
   const open = async (
     initial?: Partial<Record<Endpoint, Reply | Promise<Reply>>>,
     root: 'canonical' | 'legacy' = 'canonical',
+    unresolvedOwner = false,
   ) => {
     const context = await browser!.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE' })
     contexts.push(context)
@@ -175,6 +176,9 @@ try {
           && request.method() === 'GET') {
         contentRequests.push(path)
         return json({ status: 404, body: { error: 'Optional content pilot disabled' } })
+      }
+      if (unresolvedOwner && path.endsWith('/personalization-plan')) {
+        return json({ body: { ...savedPlan, stage: 'INVALID', problemCode: 'canonical-subject-scope-unresolved' } })
       }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
@@ -512,6 +516,80 @@ try {
     await h.context.close()
   }
 
+  // A new learner's SSE update must survive an older learner's in-flight
+  // refresh. Old replies must never restore that learner's focus or status.
+  {
+    const h = await open()
+    await waitReady(h.page, mathTitle)
+    const oldStateGate = gate()
+    h.replies[learnerA]!.state = oldStateGate.promise
+    const oldStateRequest = h.page.waitForRequest(request => (
+      new URL(request.url()).pathname === `/api/ui/learners/${learnerA}/state`
+    ))
+    await emit(h.page, learnerA, 'FULL_REFRESH')
+    await oldStateRequest
+    await h.page.evaluate(() => {
+      (window as unknown as { startupFixtureActiveGoals: string[] }).startupFixtureActiveGoals = []
+    })
+    await h.page.getByTestId('fixture-switch-learner').click()
+    await waitReady(h.page, physicsTitle)
+    const bStateReads = () => h.requests.filter(r => r.learnerId === learnerB && r.endpoint === 'state').length
+    const bPlanReads = () => h.requests.filter(r => r.learnerId === learnerB && r.endpoint === 'plans').length
+    assert.equal(bStateReads(), 1, 'B has exactly one initial state read while A is still pending')
+    assert.equal(bPlanReads(), 1, 'B has exactly one initial plan read while A is still pending')
+    const nextTitle = 'Kräfte und Bewegung erklären'
+    h.replies[learnerB]!.state = { body: {
+      activeGoal: { id: 'physics-lower' }, frontier: [],
+      goals: { planned: [{ id: 'physics-lower' }], mastered_count: 1, total_count: 4,
+        personalized: { mastered_atomic: 1, total_atomic: 4 } },
+      stateMachine: { activeGoal: { id: 'physics-lower' }, goalOptions: [], requiredAction: null },
+    } }
+    h.replies[learnerB]!.plans = { body: {
+      ...(plans().body as object), status: {
+        ...planStatusBody, activeGoal: { title: nextTitle, announcement: `Dein aktives Lernziel: ${nextTitle}` },
+        subjects: planStatusBody.subjects.map(subject => subject.subjectKey === 'physik' ? {
+          ...subject, periodText: 'Tagesziel 1 von 1',
+          periodGauge: { completed: 1, target: 1, needlePosition: 1 },
+        } : subject),
+      },
+    } }
+    await emit(h.page, learnerB, 'FULL_REFRESH')
+    await settledFrame(h.page)
+    assert.equal(bStateReads(), 1, 'B event waits for the one in-flight A refresh')
+    const newStateResponse = h.page.waitForResponse(response => (
+      new URL(response.url()).pathname === `/api/ui/learners/${learnerB}/state`
+    ), { timeout: 5000 })
+    oldStateGate.resolve({ body: {
+      activeGoal: { id: 'math-lower' }, frontier: [],
+      goals: { planned: [{ id: 'math-lower' }], mastered_count: 999, total_count: 999 },
+      stateMachine: { activeGoal: { id: 'math-lower' }, goalOptions: [], requiredAction: 'setPersonalization' },
+    } })
+    await newStateResponse
+    const banner = h.page.getByTestId('learner-active-goal-banner')
+    await banner.getByText(`Dein aktives Lernziel: ${nextTitle}`, { exact: true }).waitFor()
+    await h.page.getByTestId('learner-plan-subject-physik').getByTestId('learner-plan-period-gauge')
+      .getByText('1 von 1', { exact: true }).waitFor()
+    await settledFrame(h.page)
+    assert.equal(bStateReads(), 2, 'exactly one queued B state refresh follows its initial read')
+    assert.equal(bPlanReads(), 2, 'the same queued B refresh reads its authoritative plan once')
+    assert.equal(h.requests.filter(r => r.learnerId === learnerB && r.endpoint === 'profile').length, 1,
+      'draining B does not duplicate its stable profile read')
+    const activeTexts = await h.page.evaluate(() => (
+      window as unknown as { startupFixtureActiveGoals: string[] }
+    ).startupFixtureActiveGoals)
+    assert(!activeTexts.some(text => text.includes(mathTitle) || text.includes('Lineare Gleichungen lösen')),
+      'neither the old A banner nor its late goal may flash after switching to B')
+    const texts = await h.page.evaluate(() => (
+      window as unknown as { startupFixtureTexts: string[] }
+    ).startupFixtureTexts)
+    assert(!texts.some(text => text.includes('999')), 'late A counters must not flash in B')
+    await assertNoFalseSetup(h.page)
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+    console.log('Cross-learner in-flight SSE regression passed: one queued B refresh, no A UI leak.')
+  }
+
   // Legacy landscapes do not use the canonical scope-loading screen. The
   // independently placed banner must still wait for the new learner's state.
   {
@@ -600,6 +678,23 @@ try {
     assert.equal(await focus.count(), 1)
     assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(h.requests.filter((r) => r.learnerId === learnerB && r.endpoint === 'profile').length, 1)
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  // A backend-required setup also gates a directly selected subject, even when
+  // that subject is not the global Gymnasium presentation root.
+  {
+    const h = await open({ state: { body: {
+      activeGoal: null, frontier: [],
+      goals: { planned: [], mastered_count: 0, total_count: 0 },
+      stateMachine: { activeGoal: null, goalOptions: [], requiredAction: 'setPersonalization' },
+    } } }, 'legacy', true)
+    await h.page.getByTestId('personal-curriculum-reselect-base').waitFor()
+    assert.equal(await h.page.getByTestId('learner-current-goal').count(), 0,
+      'the unconfigured direct subject cannot render a raw fallback teaching goal')
+    assert.equal(await h.page.getByTestId('personal-curriculum-reselect-base').getAttribute('href'), '/?start=coach')
     assert.deepEqual(h.unexpected, [])
     assert.deepEqual(h.errors, [])
     await h.context.close()

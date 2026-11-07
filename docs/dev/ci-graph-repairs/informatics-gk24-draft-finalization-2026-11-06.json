@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "status": "source-bound-GK24-draft-prepared-NOT-independent-review-or-release",
+  "observedHead": "5c9ff83586c407fd9189207c38238400c74bce51",
+  "sourceBinding": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "f95c0a1186de2469e87c626d3c6b53895b1111bb3e5164cab8b1aabb78354372",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+  },
+  "artifacts": [
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-content-consistency-2026-11-06.json",
+      "bytes": 2531,
+      "sha256": "ec9bbe22bb64d37ac6e2fe27b2aaf59db3fb3ed6f112480828d28a4c5245dddd"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-current-35-scope-input-2026-11-06.json",
+      "bytes": 351133,
+      "sha256": "d6369af757ae60f813acce7fdd4828411841efaa9f2947234634d6fbee9198bc"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-integration-plan-2026-11-06.json",
+      "bytes": 92793,
+      "sha256": "947ab004fcdeb9db9745bd0e82e8979a7cf5d99b99a588f4a7e63109f487bad2"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-integration-plan-2026-11-06.md",
+      "bytes": 9275,
+      "sha256": "4a0b7b5ab95c4ad491151c6e329407b4a84b2d9c7b7a2816ec3be3f77df62dfc"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.exam-data.json",
+      "bytes": 86627,
+      "sha256": "6a99cf279e353aeba72ac841b2104d35c4086b37fb53e412477bf806e98b8899"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.md",
+      "bytes": 4087,
+      "sha256": "84ba03b8b94d754da45007633c98103664b1c824a1cf16f0fd8cc8f26f8e7305"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.review-input.json",
+      "bytes": 128783,
+      "sha256": "3ca457e68be743c3457ca0781ac0fdb7aa6aa56bd0a5c4134abc0868d5c5cdfc"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.solution.md",
+      "bytes": 51261,
+      "sha256": "731212704993a78aaf1f76e7cc931c58670f720e543893a303fa39ca09d00b91"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.task.md",
+      "bytes": 21261,
+      "sha256": "aac9fe49b71430fbb40abdeb85b5ede0c920bcc18001ec8cf3478a39810c5fa7"
+    }
+  ],
+  "totalBytes": 747751,
+  "boundedChecks": {
+    "goalAndParentPayloadsEqualActualSource": 24,
+    "canonicalGoalHashesVerified": 24,
+    "all24GoalsExplicitlyGkTagged": true,
+    "uniqueCoverageAndCriteria": 24,
+    "criterionPointsEach": 1,
+    "maxPoints": 24,
+    "passingPoints": 24,
+    "missingOneMaximum": 23,
+    "taskAndSolutionSectionsEach": 24,
+    "taskAndSolutionEmbeddedBytesExact": true,
+    "canonicalCatalogSourcePinsVerified": 21,
+    "scopeInputCodePinsVerified": 4,
+    "all35ScopeRowsPresent": true,
+    "unreservedUuid5DerivationsVerified": 2,
+    "frozenLkArtifactRawHashesUnchanged": 4,
+    "ownMarkdownFilesLinkChecked": 4,
+    "trailingWhitespaceAndFinalNewlineCheck": "pass",
+    "nativeMaterialCheckerResult": "fail",
+    "nativeMaterialCheckerOnlyIssue": "reviewStatus=draft"
+  },
+  "commands": [
+    {
+      "command": "./app/node_modules/.bin/tsx app/scripts/checkMarkdownLinks.ts docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.md docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.task.md docs/dev/ci-graph-repairs/informatics-gk24-terminal-draft-2026-11-06.solution.md docs/dev/ci-graph-repairs/informatics-gk24-integration-plan-2026-11-06.md",
+      "exitCode": 0,
+      "output": "Markdown link check passed for 4 files."
+    }
+  ],
+  "scopeConclusions": {
+    "actualRows": 35,
+    "actualViews": 19,
+    "completeGk24Offers": 3,
+    "completeLk25Offers": 3,
+    "remainingScopeRowsNotExpanded": 29,
+    "jurisdictionsForSixOffers": [
+      "DE-BY",
+      "technical-national-projection",
+      "DE-HE"
+    ]
+  },
+  "openRequirements": [
+    "Independent GK24 content review and actual fresh author reference/negative execution; old LK execution is not transferred.",
+    "Unreserved identity proposals need complete repository/package/review collision checks and explicit integration decision.",
+    "No canonical requires array is assigned: independently justify a minimal preparation path, exclude inherited LK packet demand, satisfy G16/G17 and Goal/atomic DAGs. Do not use the disputed authentication/log-to-whole-SMTP prerequisite as an assumed witness.",
+    "New closed QA endpoint configuration/schema/loader/gates are required, with new practice container in direct-child discovery; account separately for all future25 examData identities versus15 route endpoints.",
+    "Actual future source/metadata/view candidate must retain ordinary target sets and pass all35 scope and global-demand replays; no source/application/QA/state approval claimed."
+  ],
+  "newGkReferenceExecutionPerformed": false,
+  "independentGkContentReviewPerformed": false,
+  "sourceOrViewOrQaOrStateOrProductionCodeWritten": false,
+  "fullCqrProducerInvoked": false,
+  "existing25ContractCoverageAndResultsChanged": false,
+  "learningUnitModelIntroduced": false
+}

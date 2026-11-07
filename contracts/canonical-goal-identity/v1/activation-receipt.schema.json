@@ -1,0 +1,383 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/canonical-goal-identity/v1/activation-receipt.schema.json",
+  "title": "Identity activation evidence: separate from source-only QA projection",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/contracts/canonical-goal-identity/v1/activation-receipt.schema.json"
+    },
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "receiptType": {
+      "const": "canonical-goal-identity-activation-evidence"
+    },
+    "migrationId": {
+      "const": "canonical-goal-id-format-2026-11-06"
+    },
+    "sourceProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "rawSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "sourceProjectionSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "path",
+        "rawSha256",
+        "sourceProjectionSha256"
+      ]
+    },
+    "baseCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "snapshotBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "REPOSITORY",
+            "PACKAGE"
+          ]
+        },
+        "snapshotId": {
+          "type": "string"
+        },
+        "sourceGenerationSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "candidateGenerationSha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "mode",
+        "snapshotId",
+        "sourceGenerationSha256",
+        "candidateGenerationSha256"
+      ]
+    },
+    "schemaBinding": {
+      "$ref": "#/$defs/binding"
+    },
+    "verifier": {
+      "$ref": "#/$defs/binding"
+    },
+    "operationalOutputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "producerId": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "sourceProofRawSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "sourceProjectionSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "producerCode": {
+            "$ref": "#/$defs/binding"
+          },
+          "verificationReceipt": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "required": [
+          "path",
+          "producerId",
+          "sha256",
+          "sourceProofRawSha256",
+          "sourceProjectionSha256",
+          "producerCode",
+          "verificationReceipt"
+        ]
+      },
+      "minItems": 1
+    },
+    "requiredStateContracts": {
+      "const": [
+        "mastery-and-timestamps",
+        "srs-verified-recall-and-card-state",
+        "planned-goals-and-active-navigation",
+        "learning-plan-original-capture",
+        "completion-history-and-statistics",
+        "signed-import-before-projection",
+        "conflicting-alias-state-rejection",
+        "repository-snapshot-isolation",
+        "package-snapshot-isolation",
+        "browser-plan-and-deep-links"
+      ]
+    },
+    "stateEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contractId": {
+            "enum": [
+              "mastery-and-timestamps",
+              "srs-verified-recall-and-card-state",
+              "planned-goals-and-active-navigation",
+              "learning-plan-original-capture",
+              "completion-history-and-statistics",
+              "signed-import-before-projection",
+              "conflicting-alias-state-rejection",
+              "repository-snapshot-isolation",
+              "package-snapshot-isolation",
+              "browser-plan-and-deep-links"
+            ]
+          },
+          "sourceProofRawSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "snapshotGenerationSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "testSource": {
+            "$ref": "#/$defs/binding"
+          },
+          "verificationReceipt": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "required": [
+          "contractId",
+          "sourceProofRawSha256",
+          "snapshotGenerationSha256",
+          "testSource",
+          "verificationReceipt"
+        ]
+      },
+      "minItems": 10,
+      "maxItems": 10,
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "mastery-and-timestamps"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "srs-verified-recall-and-card-state"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "planned-goals-and-active-navigation"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "learning-plan-original-capture"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "completion-history-and-statistics"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "signed-import-before-projection"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "conflicting-alias-state-rejection"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "repository-snapshot-isolation"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "package-snapshot-isolation"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "contractId": {
+                "const": "browser-plan-and-deep-links"
+              }
+            },
+            "required": [
+              "contractId"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  },
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "receiptType",
+    "migrationId",
+    "sourceProof",
+    "baseCommit",
+    "snapshotBinding",
+    "schemaBinding",
+    "verifier",
+    "operationalOutputs",
+    "requiredStateContracts",
+    "stateEvidence"
+  ],
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ]
+    }
+  }
+}

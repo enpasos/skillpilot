@@ -9,8 +9,8 @@ import java.util.Set;
 /** Linear work-discharge evaluation over one immutable compiled context and binary mastery. */
 public final class CompletionEvaluator {
     /**
-     * Open assessments retain direct prerequisite demand. Mastered nodes stop
-     * that demand, so no transitive consumer relation is precomputed or applied.
+     * Open assessments retain full transitive prerequisite demand, including
+     * paths through explicitly mastered intermediate goals.
      * Every remaining unmastered ordinary node is implicitly complete in this
      * context, even when no mastery or assessment exists in the context.
      */
@@ -38,7 +38,7 @@ public final class CompletionEvaluator {
         while (!pending.isEmpty()) {
             int consumer = pending.removeFirst();
             for (int prerequisite : graph.prerequisiteIndices(consumer)) {
-                if (mastered[prerequisite] || needed[prerequisite]) continue;
+                if (needed[prerequisite]) continue;
                 needed[prerequisite] = true;
                 blockingAssessment[prerequisite] = blockingAssessment[consumer];
                 pending.addLast(prerequisite);

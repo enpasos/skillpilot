@@ -1,0 +1,601 @@
+{
+  "checkedAt": "2026-11-07T11:34:01.765342+00:00",
+  "scope": "Small exact arithmetic and algebraic crosschecks; mathematical derivations are reviewer reasoning, not automatic full correctness or learner evidence.",
+  "cases": [
+    {
+      "goalNumber": 1,
+      "caseId": "square-branch-explanation",
+      "result": "checked",
+      "actual": [
+        [
+          5,
+          9
+        ],
+        [
+          -1,
+          9
+        ]
+      ],
+      "interpretation": "Both roots satisfy the source equation; explaining the plus/minus branch remains indispensable."
+    },
+    {
+      "goalNumber": 1,
+      "caseId": "inequality-explanation",
+      "result": "checked",
+      "actual": [
+        [
+          -2,
+          true,
+          true
+        ],
+        [
+          3,
+          true,
+          true
+        ],
+        [
+          4,
+          false,
+          false
+        ]
+      ],
+      "interpretation": "Sample boundary check accompanies the general derivation: divide by positive 3, then add 1; no reversed inequality."
+    },
+    {
+      "goalNumber": 2,
+      "caseId": "three-roles-in-one-frame",
+      "result": "checked",
+      "actual": [
+        3,
+        -2,
+        4
+      ],
+      "interpretation": "Displacement is B-A, not the position vector of B."
+    },
+    {
+      "goalNumber": 2,
+      "caseId": "shifted-origin-fixed-displacement",
+      "result": "checked",
+      "actual": [
+        [
+          3,
+          2,
+          3
+        ],
+        [
+          1,
+          5,
+          3
+        ],
+        [
+          -2,
+          3,
+          0
+        ]
+      ],
+      "interpretation": "Subtracting the same origin cancels in Q-P."
+    },
+    {
+      "goalNumber": 3,
+      "caseId": "directed-claims",
+      "result": "checked",
+      "actual": [
+        [
+          "3/4",
+          false,
+          false
+        ],
+        [
+          "4/5",
+          false,
+          false
+        ],
+        [
+          "9/10",
+          true,
+          true
+        ]
+      ],
+      "interpretation": "H0 includes equality; H1 uses the requested population proportion direction. Defect improvement p<.04 is left-sided."
+    },
+    {
+      "goalNumber": 3,
+      "caseId": "two-sided-and-recoding",
+      "result": "checked",
+      "actual": "1/5",
+      "interpretation": "p != .5 is two-sided; p>.8 iff q=1-p<.2, with H0 q>=.2."
+    },
+    {
+      "goalNumber": 4,
+      "caseId": "stretch-linear",
+      "result": "checked",
+      "actual": [
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ]
+      ],
+      "interpretation": "Symbolic identity: T(u+v)=(2a+2c,b+d)=T(u)+T(v); T(su)=(2sa,sb)=sT(u). Matrix is a descriptive certificate, not an extra learner demand."
+    },
+    {
+      "goalNumber": 4,
+      "caseId": "squared-coordinate",
+      "result": "checked",
+      "actual": [
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "interpretation": "For u=(1,1), S(2u)!=(2)S(u); S(0)=0 is insufficient."
+    },
+    {
+      "goalNumber": 5,
+      "caseId": "group-composition",
+      "result": "checked",
+      "actual": [
+        "9/25",
+        "37/50",
+        "9/10",
+        "4/5",
+        "3/10",
+        "1/5"
+      ],
+      "interpretation": "Overall B is larger, but A is larger in both strata. This arithmetic does not justify either causal direction."
+    },
+    {
+      "goalNumber": 5,
+      "caseId": "inspection-base-rate",
+      "result": "checked",
+      "actual": [
+        "180",
+        "490",
+        "18/67",
+        "2/3"
+      ],
+      "interpretation": "Posterior denominator counts all flags; sensitivity is a different conditional probability."
+    },
+    {
+      "goalNumber": 6,
+      "caseId": "die-payments",
+      "result": "checked",
+      "actual": [
+        [
+          0,
+          2,
+          0,
+          2,
+          0,
+          5
+        ],
+        "1/2"
+      ],
+      "interpretation": "Three payout values have probabilities 1/2,1/3,1/6."
+    },
+    {
+      "goalNumber": 6,
+      "caseId": "diagram-to-event",
+      "result": "checked",
+      "actual": [
+        "1",
+        "3/4",
+        0
+      ],
+      "interpretation": "Discrete support excludes 2; interpolation is invalid."
+    },
+    {
+      "goalNumber": 7,
+      "caseId": "two-item-check",
+      "result": "checked",
+      "actual": [
+        [
+          "GG",
+          0
+        ],
+        [
+          "GD",
+          1
+        ],
+        [
+          "DG",
+          1
+        ],
+        [
+          "DD",
+          2
+        ]
+      ],
+      "interpretation": "Different ordered outcomes can have the same value; no probabilities are needed."
+    },
+    {
+      "goalNumber": 7,
+      "caseId": "distance-from-target",
+      "result": "checked",
+      "actual": [
+        [
+          2,
+          1,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "interpretation": "Distance assignment differs structurally from counting defects."
+    },
+    {
+      "goalNumber": 8,
+      "caseId": "bridge-height-parameter",
+      "result": "checked",
+      "actual": [
+        [
+          "0",
+          "2",
+          "0"
+        ],
+        [
+          0,
+          4,
+          0
+        ]
+      ],
+      "interpretation": "h_a=4a-a*x^2: height scales, zeros and symmetry axis remain fixed; derivative -2ax is consistent, not the sole admissible explanation."
+    },
+    {
+      "goalNumber": 8,
+      "caseId": "horizontal-family-parameter",
+      "result": "checked",
+      "actual": [
+        [
+          0,
+          -3,
+          3,
+          9,
+          6
+        ],
+        [
+          2,
+          -1,
+          5,
+          9,
+          6
+        ]
+      ],
+      "interpretation": "Contextual nonnegative domain moves; peak height and span remain invariant."
+    },
+    {
+      "goalNumber": 9,
+      "caseId": "exponential-composition",
+      "result": "checked",
+      "actual": [
+        1.0,
+        true,
+        true
+      ],
+      "interpretation": "General derivation: exp(-x^2)>0, derivative -2x exp(-x^2); even function, unique maximum (0,1), limit zero as |x| tends to infinity."
+    },
+    {
+      "goalNumber": 9,
+      "caseId": "logarithmic-composition",
+      "result": "checked",
+      "actual": [
+        true,
+        0,
+        true
+      ],
+      "interpretation": "General derivation: domain (-2,2), derivative -2x/(4-x^2), maximum ln4, zeros +/-sqrt3; log argument tends to 0+ at both finite boundaries."
+    },
+    {
+      "goalNumber": 10,
+      "caseId": "rectangular-product-and-admissibility",
+      "result": "checked",
+      "actual": [
+        [
+          [
+            -1,
+            0,
+            5,
+            6
+          ],
+          [
+            2,
+            14,
+            2,
+            -2
+          ]
+        ],
+        false
+      ],
+      "interpretation": "AB is 2x4; BA is undefined because 4!=2. Every one of eight AB entries recalculated."
+    },
+    {
+      "goalNumber": 10,
+      "caseId": "square-products-order-changes-values",
+      "result": "checked",
+      "actual": [
+        [
+          [
+            4,
+            2
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        [
+          [
+            2,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      ],
+      "interpretation": "All eight entries independently recalculated; equal shape does not imply commutativity."
+    },
+    {
+      "goalNumber": 11,
+      "caseId": "negative-scalar-rectangular-matrix",
+      "result": "checked",
+      "actual": [
+        [
+          -6,
+          8,
+          0
+        ],
+        [
+          "-1",
+          2,
+          -10
+        ]
+      ],
+      "interpretation": "Every entry, including fractional and zero entries, receives the same scalar."
+    },
+    {
+      "goalNumber": 11,
+      "caseId": "check-submitted-scaling-and-zero",
+      "result": "checked",
+      "actual": [
+        [
+          [
+            "0",
+            "3"
+          ],
+          [
+            "-4",
+            "1"
+          ],
+          [
+            "5",
+            "-2"
+          ]
+        ],
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "interpretation": "All six submitted entries checked; only row3/column1 is wrong. Zero scalar preserves shape."
+    },
+    {
+      "goalNumber": 12,
+      "caseId": "aligned-stock-tables",
+      "result": "checked",
+      "actual": [
+        [
+          [
+            15,
+            7,
+            8
+          ],
+          [
+            12,
+            22,
+            5
+          ]
+        ],
+        [
+          [
+            9,
+            3,
+            8
+          ],
+          [
+            2,
+            -2,
+            3
+          ]
+        ]
+      ],
+      "interpretation": "Position (2,2) means blue size-L stock, so -2 is a comparison, not negative physical stock."
+    },
+    {
+      "goalNumber": 12,
+      "caseId": "recover-additive-change-and-check-shape",
+      "result": "checked",
+      "actual": [
+        [
+          [
+            -3,
+            5
+          ],
+          [
+            -4,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            3
+          ],
+          [
+            -4,
+            5
+          ]
+        ]
+      ],
+      "interpretation": "Equal entry count does not permit 1x4 minus 2x2."
+    },
+    {
+      "goalNumber": 13,
+      "caseId": "two-state-next-period",
+      "result": "checked",
+      "actual": [
+        "58",
+        "42"
+      ],
+      "interpretation": "Row destinations and column origins match stated model; totals preserved."
+    },
+    {
+      "goalNumber": 13,
+      "caseId": "three-state-reordered-input",
+      "result": "checked",
+      "actual": [
+        [
+          "21",
+          "41",
+          "38"
+        ],
+        [
+          "32",
+          "37",
+          "31"
+        ]
+      ],
+      "interpretation": "Wrong data order yields a different still sum-preserving vector; checking total alone cannot pass this rubric."
+    },
+    {
+      "goalNumber": 14,
+      "caseId": "two-state-weather-graph",
+      "result": "checked",
+      "actual": [
+        "1",
+        "1"
+      ],
+      "interpretation": "Outgoing dry/wet rows normalize; a loop consumes a day."
+    },
+    {
+      "goalNumber": 14,
+      "caseId": "three-state-table-to-graph",
+      "result": "checked",
+      "actual": [
+        [
+          "1",
+          "1",
+          1
+        ],
+        [
+          [
+            0,
+            0,
+            "1/2"
+          ],
+          [
+            0,
+            1,
+            "1/2"
+          ],
+          [
+            1,
+            1,
+            "1/4"
+          ],
+          [
+            1,
+            2,
+            "3/4"
+          ],
+          [
+            2,
+            0,
+            "1"
+          ]
+        ]
+      ],
+      "interpretation": "All five nonzero directed edges match the stated row-origin convention; A->C impossible."
+    },
+    {
+      "goalNumber": 15,
+      "caseId": "coordinate-table-base",
+      "result": "checked",
+      "actual": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "interpretation": "Base angle-coordinate pairs are correct; amplitude1 and angular period2pi."
+    },
+    {
+      "goalNumber": 15,
+      "caseId": "clockwise-motion-transfer",
+      "result": "counterexample-to-uniqueness",
+      "actual": {
+        "at_t_pi_over_2_expected_theta_minus_t": [
+          0,
+          -1
+        ],
+        "also_admissible_theta_minus_2t": [
+          -1,
+          0
+        ]
+      },
+      "interpretation": "Both curves start at (1,0), stay on unit circle, are uniform and clockwise as parameter t increases. The unchanged task does not fix angular rate; theta=-t cannot be required uniquely."
+    },
+    {
+      "goalNumber": 15,
+      "caseId": "quarter-turn-start-transfer",
+      "result": "checked",
+      "actual": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "interpretation": "Angular increment is explicitly t in this third case; quarter-period identity is well posed."
+    }
+  ]
+}

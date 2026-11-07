@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-26T05:23:38.128Z
+Generated: 2026-11-07T10:30:27.069Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -15,40 +15,40 @@ Rules version: curriculum-quality-v5
 | Metric | Value |
 | --- | ---: |
 | Curricula | 21 |
-| M0 | 11 |
+| M0 | 18 |
 | M1 | 0 |
 | M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 5 |
-| M7 | 5 |
+| M6 | 3 |
+| M7 | 0 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M7 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 0 |
-| Chemie (Gymnasium, DE) | M7 | 742 | 641 | 31/32 | 16/16 | 1 | 0 | 0 |
-| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Biologie (Gymnasium, DE) | M0 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 742 | 641 | 31/32 | 16/16 | 1 | 0 | 2 |
+| Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
-| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 0 |
+| Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 1 |
+| Französisch (Gymnasium, DE) | M0 | 331 | 275 | 3/3 | 2/16 | 0 | 2 | 1 |
 | Geschichte (Gymnasium, DE) | M6 | 217 | 177 | 31/31 | 16/16 | 1 | 0 | 0 |
-| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 0 |
-| Informatik (Gymnasium, DE) | M6 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 0 |
+| Griechisch (Gymnasium, DE) | M0 | 198 | 185 | 2/2 | 2/16 | 0 | 2 | 1 |
+| Gymnasium (DE) | M0 | 1 | 0 | - | 0/16 | 0 | 2 | 1 |
+| Informatik (Gymnasium, DE) | M0 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 5 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M7 | 1252 | 978 | 31/31 | 16/16 | 2 | 0 | 0 |
-| Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 0 |
-| Physik (Gymnasium, DE) | M7 | 766 | 641 | 25/25 | 16/16 | 2 | 0 | 0 |
-| Politik und Wirtschaft (Gymnasium, DE) | M6 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 0 |
+| Mathematik (Gymnasium, DE) | M0 | 1252 | 978 | 31/31 | 16/16 | 2 | 0 | 2 |
+| Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 1 |
+| Physik (Gymnasium, DE) | M0 | 766 | 641 | 25/25 | 16/16 | 2 | 0 | 2 |
+| Politik und Wirtschaft (Gymnasium, DE) | M0 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 1 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
+| Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M7 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 0 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 2 |
 
 ## Mapping Pipeline
 
@@ -394,7 +394,7 @@ Rules version: curriculum-quality-v5
 | Rule | Target | Category | Description |
 | --- | --- | --- | --- |
 | CQR-000 | M1 | applicability | Original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered in the source membership/closure ledger. |
-| CQR-001 | M0 | graph | Goal IDs, local references, self-reference guards, and direct DAG checks are clean. |
+| CQR-001 | M0 | graph | All mandatory strict checks pass on the resolved canonical scope: UUID identity, positive weights, unambiguous references, containment/direct/effective/atomic DAGs, and authored local/transitive minimality. |
 | CQR-002 | M0 | graph | Stored type metadata agrees with structural atomic/cluster classification. |
 | CQR-003 | M2 | applicability | Bundesland composition-view source-coverage atoms are source-backed and registered source original goals are fully covered by view atoms. |
 | CQR-004 | M2 | applicability | Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed. |
@@ -404,8 +404,9 @@ Rules version: curriculum-quality-v5
 | CQR-103 | M3 | route | Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing. |
 | CQR-104 | M3 | route | Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views. |
 | CQR-201 | M4 | assessment | Terminal autonomy goals in configured scopes carry examData. |
-| CQR-202 | M4 | assessment | Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose. |
+| CQR-202 | M4 | assessment | Route endpoints, released-offer exams and rendered subject-view exam targets are ready for hard exam mode and are not placeholders. |
 | CQR-203 | M4 | assessment | Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata. |
+| CQR-204 | M4 | assessment | Every exam definition has task, solution and scoring structure, including non-offered drafts. The configured Informatics history additionally preserves exact owner-bound declared coverage and protected meaning; unknown coverage stays absent. |
 | CQR-301 | M5 | review | Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries. |
 | CQR-302 | M6 | review | Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible. |
 | CQR-303 | M7 | review | The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval. |

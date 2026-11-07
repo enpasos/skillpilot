@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "status": "guarded-read-only-proposal-NOT-applied-or-QA-approved",
+  "sourceDataApplied": false,
+  "qaApprovalClaimed": false,
+  "humanReviewed": false,
+  "reviewQualification": "Independent AI review plus separately recorded actual native contract measurements, not a human/content release approval.",
+  "variant": "documentation-motivation-only1",
+  "currentAnalysisContext": {
+    "path": "docs/dev/ci-graph-repairs/informatics-bounded-current-candidate-context-2026-11-06.json",
+    "sha256": "ca6c786ce559f20ba5cd52de367027fbacc32b0d9c0b19a80d295b2147aa2b69"
+  },
+  "observationHead": "39b7f6e68cdebcfd6eefb3f59faf7fcbcd5d673d",
+  "exactCatalogSnapshotIncludesUncommittedLanguageRepair": true,
+  "uncommittedSourceDifferencesFromObservationHead": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "gitHeadSha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+      "actualWorkingTreeSha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "gitHeadSha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+      "actualWorkingTreeSha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "gitHeadSha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+      "actualWorkingTreeSha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+    }
+  ],
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+    "sha256": "93a653b110949ff410a73bd750b2a605a9ab0329fe1cd157f016869d848e1f7e"
+  },
+  "operations": [
+    {
+      "op": "replace",
+      "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "path": "/goals/228/requires",
+      "guardGoalId": "91230113-91b0-5a8b-94e4-4419014cfb58",
+      "guardGoalCanonicalSha256": "122d81c6aaa3f5aada33caaff5e3702374a4e9a78eee33470a0559eb8cd6241d",
+      "guardRequiresBefore": [
+        "300d490f-e5bf-541a-a4c7-a136e97c42ea"
+      ],
+      "value": [
+        "300d490f-e5bf-541a-a4c7-a136e97c42ea",
+        "d848ceb9-cd73-5a13-9407-f3364764c223"
+      ],
+      "caseIds": [
+        "INFO-DOC-MOTIVATION-001"
+      ],
+      "motivationJustification": "Vorhandener didaktischer Einstieg nach Graphdefinition§8.5/CQR101 ergänzen; der bestehende Klassen-/Objektbedarf bleibt exakt erhalten. Keine AB3-Funktionsleistung und kein neues fachliches Detailwissen wird behauptet."
+    }
+  ],
+  "operationsCanonicalSha256": "612ca671a1f30e5413f61211ef2d42671ebb069f567dd80d93508e07d83e1d41",
+  "operationCount": 1,
+  "hypotheticalSourceSha256": "fbd981094eaffe9567836a6a9fc5c63009ceb94f4e199258711d747dd0ac90c1",
+  "authorReviews": [
+    {
+      "goalId": "91230113-91b0-5a8b-94e4-4419014cfb58",
+      "title": "Quellcode- und Bibliotheksdokumentation nutzen",
+      "description": "Die lernende Person kann Dokumentationen zu gegebenem Quellcode und Bibliotheken auswerten und daraus korrekte Nutzungsschritte ableiten.",
+      "oldPrerequisiteDefinitions": [
+        {
+          "id": "300d490f-e5bf-541a-a4c7-a136e97c42ea",
+          "title": "Klassen und Objekte erschließen",
+          "titleEn": "Develop Classes and Objects",
+          "description": "Cluster zum Erschließen von Klassen, Objekten, Attributen und Methoden in einfachen objektorientierten Modellen.",
+          "descriptionEn": "Cluster for developing classes, objects, attributes, and methods in simple object-oriented models.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+            "6c284640-1f28-4837-aabd-445656ad7f54"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "6836e91a-2ec5-4a8d-9a56-1ad7d1c9be5d"
+            }
+          },
+          "type": "cluster"
+        }
+      ],
+      "proposedPrerequisiteDefinitions": [
+        {
+          "id": "300d490f-e5bf-541a-a4c7-a136e97c42ea",
+          "title": "Klassen und Objekte erschließen",
+          "titleEn": "Develop Classes and Objects",
+          "description": "Cluster zum Erschließen von Klassen, Objekten, Attributen und Methoden in einfachen objektorientierten Modellen.",
+          "descriptionEn": "Cluster for developing classes, objects, attributes, and methods in simple object-oriented models.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK"
+          ],
+          "contains": [
+            "cb2af3ef-c261-4d92-bc30-3eeb7a2af96a",
+            "6c284640-1f28-4837-aabd-445656ad7f54"
+          ],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I3",
+              "I4"
+            ],
+            "phase": "Q1"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "6836e91a-2ec5-4a8d-9a56-1ad7d1c9be5d"
+            }
+          },
+          "type": "cluster"
+        },
+        {
+          "id": "d848ceb9-cd73-5a13-9407-f3364764c223",
+          "semanticKind": "orientation",
+          "title": "Warum Informatik? - Relevanz und Orientierung",
+          "titleEn": "Why Informatik? - Relevance and Orientation",
+          "description": "Der Big-Picture-Einstieg zeigt, welche Möglichkeiten Informatik im Alltag, bei gesellschaftlicher Teilhabe sowie in Studium und Beruf eröffnet und welche positiven Perspektiven der folgende Stoff bietet. Die lernende Person wählt nur, was sie neugierig macht oder ob sie weiterlernen möchte; fachliches Detailwissen wird hier weder vorausgesetzt noch geprüft.",
+          "descriptionEn": "Big-picture entry: The learner can explain why Informatik matters for everyday life, social participation, studies, and career, and how working through this curriculum systematically leads to durable competence growth.",
+          "weight": 1,
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "contains": [],
+          "requires": [],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-informatics",
+            "demandLevel": "AB1",
+            "processCompetencies": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "guidingIdeas": [
+              "I1",
+              "I2",
+              "I3",
+              "I4",
+              "I5"
+            ],
+            "phase": "E"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-BB",
+              "DE-BE",
+              "DE-BW",
+              "DE-BY",
+              "DE-HB",
+              "DE-HE",
+              "DE-HH",
+              "DE-MV",
+              "DE-NI",
+              "DE-NW",
+              "DE-RP",
+              "DE-SH",
+              "DE-SL",
+              "DE-SN",
+              "DE-ST",
+              "DE-TH"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "c1a02ddd-736d-4975-920b-18b03aff147f",
+              "sourceLandscapeTitle": "Informatik Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "db2d4785-9a69-468f-ba42-ac4be2bcfdb3"
+            }
+          },
+          "type": "atomic"
+        }
+      ],
+      "caseIds": [
+        "INFO-DOC-MOTIVATION-001"
+      ],
+      "rationale": "Vorhandener didaktischer Einstieg nach Graphdefinition§8.5/CQR101 ergänzen; der bestehende Klassen-/Objektbedarf bleibt exakt erhalten. Keine AB3-Funktionsleistung und kein neues fachliches Detailwissen wird behauptet.",
+      "ordinaryPreparationPreserved": "The unchanged classes/objects cluster and both contained competencies remain required. The explicit orientation supplies the legitimate motivational entry without restoring the removed functions/design demand. Existing broad cluster necessity is not newly generally approved.",
+      "motivationJustification": "Vorhandener didaktischer Einstieg nach Graphdefinition§8.5/CQR101 ergänzen; der bestehende Klassen-/Objektbedarf bleibt exakt erhalten. Keine AB3-Funktionsleistung und kein neues fachliches Detailwissen wird behauptet."
+    }
+  ],
+  "heldSeparateMandatoryFollowups": [
+    {
+      "goalId": "004cf04d-f0d2-5673-a8a9-5973e51a039f",
+      "topic": "ISA prerequisite plus three broad theoretical-exam cluster contracts; held operation excluded."
+    },
+    {
+      "goalId": "06999c9f-1c52-5284-adb4-bcd459ba14bf",
+      "topic": "Cache prerequisite imports the same three unsupported architecture completion demands; held operation excluded."
+    },
+    {
+      "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+      "topic": "Existing separate authoritative-source/phase/placement hold; no edit in these operations."
+    }
+  ],
+  "bounds": "Only guarded ordinary requires arrays. No terminal normalization, source/applicability/role/country policy, IDs/texts/contains/weights/material/coverage, QA rehash, learner/mastery state, runtime or schema change.",
+  "measurementLimit": "Actual native/global results are separate evidence, not self-asserted pass fields. Remaining G17 and weak examData continue to fail the full milestone."
+}

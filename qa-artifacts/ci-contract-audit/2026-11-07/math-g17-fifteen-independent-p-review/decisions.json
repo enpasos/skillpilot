@@ -1,0 +1,1515 @@
+{
+  "reviewCompletedAt": "2026-11-07T11:34:01.888555+00:00",
+  "actor": "Codex AI independent P reviewer /root/math_p15_independent_review",
+  "humanApproved": false,
+  "scope": "15 current P profiles; original goal text, profiles and resources unchanged; independent informed review, not blind D and not unit recognition acceptance.",
+  "decisions": [
+    {
+      "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+      "title": "Lösung nachvollziehbar erklären",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "06323e2deebc96b489f2334b1214132c9842676b62f9bfcda2d73e4432b2f41d",
+        "reviewInputFingerprint": "sha256:43745bfccd22456468f342237e28aba7e38016865b0f51e345b75078584df1af",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/121ef4c5-c1c2-5294-9582-86bab2355907/121ef4c5-c1c2-5294-9582-86bab2355907.jpg": "sha256:0c09157d9d9d5f58fb8efd068f065a4108f0eaad7fa516f88b97c9161ea3ad3d"
+        }
+      },
+      "profilePin": "sha256:a35c9684acf0aaa5e4453b52f8fe11c7d6d0e1b76707031b0cef24bd186eb45e",
+      "casePinSha256": "19019e789041c2e77350a3ea70b92c20221e27c4d8de5712b62e29ad91883d50",
+      "effectiveRequires": [
+        "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+        "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:121ef4c5-c1c2-5294-9582-86bab2355907",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:121ef4c5-c1c2-5294-9582-86bab2355907",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:121ef4c5-c1c2-5294-9582-86bab2355907",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f0f9c084-631f-5c04-a1c2-93b6b548dd32"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Beide Fälle verlangen eine adressatengerechte, begründete Schrittfolge: Beim Quadrat sind die beiden Wurzelzweige und beide Proben nötig; bei der Ungleichung muss die positive Division begründet werden. x=5 allein besteht den ersten Erwartungshorizont nicht. Die verlangten Probe- und Formulierungskompetenzen bleiben echte Voraussetzungen; das Intro wird nicht zum zusätzlichen Prüfungsinhalt.",
+      "caseReviews": [
+        {
+          "goalNumber": 1,
+          "caseId": "square-branch-explanation",
+          "result": "checked",
+          "actual": [
+            [
+              5,
+              9
+            ],
+            [
+              -1,
+              9
+            ]
+          ],
+          "interpretation": "Both roots satisfy the source equation; explaining the plus/minus branch remains indispensable."
+        },
+        {
+          "goalNumber": 1,
+          "caseId": "inequality-explanation",
+          "result": "checked",
+          "actual": [
+            [
+              -2,
+              true,
+              true
+            ],
+            [
+              3,
+              true,
+              true
+            ],
+            [
+              4,
+              false,
+              false
+            ]
+          ],
+          "interpretation": "Sample boundary check accompanies the general derivation: divide by positive 3, then add 1; no reversed inequality."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-27/math-aeae-notation-imagegen-p-rebind-v1/retained-fourteen.review.jsonl",
+        "lineNumber": 3,
+        "rawLineSha256": "b8ae572fb72318bb222fe3004626d9a0a611f0d4c34a9fe60b02f5401dd2fd68",
+        "reviewer": "Codex subagent / Math Q4 P-v2 independent AI author",
+        "reviewedAt": "2026-09-23T05:24:25Z",
+        "oldReviewInputFingerprint": "sha256:46e6db1447c2d35c5c1bbef8c9dbd6ad809a1b40afd724401448f8ce39a3283f",
+        "errors": [
+          "121ef4c5-c1c2-5294-9582-86bab2355907: stale reviewInputFingerprint; expected sha256:43745bfccd22456468f342237e28aba7e38016865b0f51e345b75078584df1af"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "29eba9d243d76571993e3514207314c419a9dc12505cda6a07811b88043f958c",
+        "reviewInputFingerprint": "sha256:ec9e0d6a8ff88fd29be7bf45bec69fd7d0c3241ebe44fbd10dcc02cd3f0791e0",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.png": "sha256:b3578775616dae549fcf1fc0b7e281ada8841cef048158da03c6fc2153571af2"
+        }
+      },
+      "profilePin": "sha256:1fac821529d95c2f0eaae0a9c5c32da3f87a58f20edafcd5e001cd5f8fea2d32",
+      "casePinSha256": "c0921b3be4ddeff04ad99509b3b4952fc34f63140098487c270d30a94d2382d2",
+      "effectiveRequires": [
+        "075f1ef2-6860-4b20-9df2-878157eb395e"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die drei Vektorrollen werden an Komponenten, Pfeilanfang und Pfeilende unterschieden. AB=(3,-2,4) gibt Richtung und Verschiebung an, keine endliche Geradenlänge. Der Ursprungswechsel ergibt (3,2,3) und (1,5,3), während PQ=(-2,3,0) invariant bleibt. Das fordert eigene Darstellung und Interpretation auf dem bestehenden Niveau; keine Geradengleichung oder Längenrechnung wird hinzugefügt.",
+      "caseReviews": [
+        {
+          "goalNumber": 2,
+          "caseId": "three-roles-in-one-frame",
+          "result": "checked",
+          "actual": [
+            3,
+            -2,
+            4
+          ],
+          "interpretation": "Displacement is B-A, not the position vector of B."
+        },
+        {
+          "goalNumber": 2,
+          "caseId": "shifted-origin-fixed-displacement",
+          "result": "checked",
+          "actual": [
+            [
+              3,
+              2,
+              3
+            ],
+            [
+              1,
+              5,
+              3
+            ],
+            [
+              -2,
+              3,
+              0
+            ]
+          ],
+          "interpretation": "Subtracting the same origin cancels in Q-P."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-stale-isolation-20260928-v1/retained-11/positive-evidence.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-stale-isolation-20260928-v1/retained-11/positive-evidence.review.jsonl",
+        "lineNumber": 1,
+        "rawLineSha256": "09edb9493de5c159031edc2cc7773da482c940e72e767aabe6d85f668b67eda2",
+        "reviewer": "Codex / informed profile author / math_statistics_blind_a",
+        "reviewedAt": "2026-09-21T22:21:03Z",
+        "oldReviewInputFingerprint": "sha256:94463f16d2b72891a2f7eecaa309e538d661144608163c7a0ebcc8296cd24d1d",
+        "errors": [
+          "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8: stale reviewInputFingerprint; expected sha256:ec9e0d6a8ff88fd29be7bf45bec69fd7d0c3241ebe44fbd10dcc02cd3f0791e0"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "title": "Null- und Alternativhypothesen formulieren",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "6ba0e3f207a933354d6bfb6ee8247aa94fd9ee7b684c71ee21c1d9104158c9f3",
+        "reviewInputFingerprint": "sha256:2d0ce8297c0d41d06e57c7b258e4539442d58824d14f02e99571fd065bffc1fd",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/f14e1643-ad8d-5235-a832-97987fa18489/f14e1643-ad8d-5235-a832-97987fa18489.jpg": "sha256:3ee6a3d8cf5ad67dceeade83327f6e0efd285d3c7c7d083a141cde423588c753"
+        }
+      },
+      "profilePin": "sha256:9c6106cd59f402a381a4be7842444ab2dcf852bef588366283ed633305d3228f",
+      "casePinSha256": "28d80ab468b9af05c833a409253e1030419be06411ea80f8430e8d4c47722e57",
+      "effectiveRequires": [
+        "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+        "09f47964-2cd0-410e-93ee-9632b582fc91",
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f14e1643-ad8d-5235-a832-97987fa18489",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f14e1643-ad8d-5235-a832-97987fa18489",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f14e1643-ad8d-5235-a832-97987fa18489",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die Keim- und Defektfragen verlangen verschieden gerichtete Hypothesen mit vollständig komplementären H0/H1 einschließlich Gleichheit. Münze und q=1-p prüfen zweiseitige Alternative und Ereignisumcodierung; q<0,20 ist korrekt. Stichprobenhäufigkeit genügt nicht als Parameterdefinition. Testgrenzen- oder Irrtumswahrscheinlichkeitsrechnung ist weiterhin keine zusätzliche Leistungspflicht.",
+      "caseReviews": [
+        {
+          "goalNumber": 3,
+          "caseId": "directed-claims",
+          "result": "checked",
+          "actual": [
+            [
+              "3/4",
+              false,
+              false
+            ],
+            [
+              "4/5",
+              false,
+              false
+            ],
+            [
+              "9/10",
+              true,
+              true
+            ]
+          ],
+          "interpretation": "H0 includes equality; H1 uses the requested population proportion direction. Defect improvement p<.04 is left-sided."
+        },
+        {
+          "goalNumber": 3,
+          "caseId": "two-sided-and-recoding",
+          "result": "checked",
+          "actual": "1/5",
+          "interpretation": "p != .5 is two-sided; p>.8 iff q=1-p<.2, with H0 q>=.2."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-proof-statistics-repaired8-20260921-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-proof-statistics-repaired8-20260921-v1.review.jsonl",
+        "lineNumber": 2,
+        "rawLineSha256": "34ef10443fc641794c47ecdef3cecaf57158ea645826ddcc683d240af150f308",
+        "reviewer": "Codex root integration after independent current P-delta review",
+        "reviewedAt": "2026-09-21T21:41:38.651Z",
+        "oldReviewInputFingerprint": "sha256:5a18b6f1fd5aab7967342665e973e441d77f4fec1da1744766064c39f96e2c00",
+        "errors": [
+          "f14e1643-ad8d-5235-a832-97987fa18489: stale reviewInputFingerprint; expected sha256:2d0ce8297c0d41d06e57c7b258e4539442d58824d14f02e99571fd065bffc1fd"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "title": "Geometrische Abbildungen als linear erkennen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "d7ebf3a0c5e8346a96469769670f46e36ae3c294a10bb228700af5ac764e87c3",
+        "reviewInputFingerprint": "sha256:5d8ef3a5a958a7ed3e46ced668803d66993b1983ff14c7a339b52376bb5d79fd",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/69243680-c2c1-5661-80c0-c95a2be1dabf/69243680-c2c1-5661-80c0-c95a2be1dabf.png": "sha256:f6f6ab870716cf26b837c31321678318b8aab47bab40f36b028bb4559d471639"
+        }
+      },
+      "profilePin": "sha256:81dd1ca8e7d8ce68d67bdfc091df023cf34fa24173a0bf0bd8e0976409e84bab",
+      "casePinSha256": "1c66811fef1328d5e5a307c39a3a74e3c42d5ec4b4305e89ae45d3244fda43af",
+      "effectiveRequires": [
+        "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:69243680-c2c1-5661-80c0-c95a2be1dabf",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:69243680-c2c1-5661-80c0-c95a2be1dabf",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. T(x,y)=(2x,y) erhält Addition und Skalierung allgemein; nur die gezeichneten Beispielpfeile nachzusprechen reicht gemäß ausdrücklich verlangtem allgemeinen Nachweis nicht. S(1,1) liefert mit Skalar2 das Gegenbeispiel (2,4)!=(2,2). Der Wechsel von Bestätigung zu Widerlegung ist fachlicher Transfer, ohne Calculus oder eine neue Matrixkompetenz zu verlangen.",
+      "caseReviews": [
+        {
+          "goalNumber": 4,
+          "caseId": "stretch-linear",
+          "result": "checked",
+          "actual": [
+            [
+              true,
+              true
+            ],
+            [
+              true,
+              true
+            ]
+          ],
+          "interpretation": "Symbolic identity: T(u+v)=(2a+2c,b+d)=T(u)+T(v); T(su)=(2sa,sb)=sT(u). Matrix is a descriptive certificate, not an extra learner demand."
+        },
+        {
+          "goalNumber": 4,
+          "caseId": "squared-coordinate",
+          "result": "checked",
+          "actual": [
+            [
+              2,
+              4
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          "interpretation": "For u=(1,1), S(2u)!=(2)S(u); S(0)=0 is insufficient."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-held-seven-current-20260920-v1.retained-six-route-hold.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-held-seven-current-20260920-v1.retained-six-route-hold.review.jsonl",
+        "lineNumber": 2,
+        "rawLineSha256": "1d60539806e4c7a0ddd9fd4af7ff237825fd61a64865554b3427aaa10c5d91a0",
+        "reviewer": "Codex Root informed current-scope mathematical evidence author",
+        "reviewedAt": "2026-09-20T19:48:24.723Z",
+        "oldReviewInputFingerprint": "sha256:0b991ba1bd40ce74a924fb3df4af306573986b67186b7250eff1432ae2466853",
+        "errors": [
+          "69243680-c2c1-5661-80c0-c95a2be1dabf: stale reviewInputFingerprint; expected sha256:5d8ef3a5a958a7ed3e46ced668803d66993b1983ff14c7a339b52376bb5d79fd"
+        ]
+      },
+      "notes": "Das aktuelle Bild verwendet ebenfalls T(x,y)=(2x,y), zeigt aber nur spezielle Pfeile. KEEP hängt am vorhandenen allgemeinen Nachweis für beliebige Vektoren und Skalare und am separaten nichtlinearen Fall; die Abbildung abzulesen zählt nicht als unabhängige Leistung.",
+      "holds": []
+    },
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "title": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "b960ab1fef8db96fea30c2cc43315caea3020c2dd888d5a80a546265c26140d9",
+        "reviewInputFingerprint": "sha256:34f7ce419183a60043c009cbfff98e518841c9341bde6d9c0155bcffccf82ae1",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/3e974075-b2fd-43e6-88d9-5f596ad053ec/3e974075-b2fd-43e6-88d9-5f596ad053ec.png": "sha256:5885a835c6da43fcf99f2c76616bc72ab05a5b9342620c9ecf19dd223750a68b"
+        }
+      },
+      "profilePin": "sha256:2ae4cb0a66bd89639bce7b6f6635242724bb2c0956b4603b173f61dcc3023176",
+      "casePinSha256": "26ba4e8ef2eeb6466aa1ed002eb09b894d93870832d5dfe6636b7ca71f614eb1",
+      "effectiveRequires": [
+        "c2831918-26f1-421e-90fb-ce707689594e"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3e974075-b2fd-43e6-88d9-5f596ad053ec",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c2831918-26f1-421e-90fb-ce707689594e",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3e974075-b2fd-43e6-88d9-5f596ad053ec",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c2831918-26f1-421e-90fb-ce707689594e"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c2831918-26f1-421e-90fb-ce707689594e",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die Gruppenanteile 36%/74% kehren sich innerhalb beider Prüfungsgruppen zugunsten A um; der Erwartungshorizont verlangt zusätzlich Auswahl-, Frage- und Stichprobenkritik und erlaubt keine Gegenkausalität. Der Scannerfall ergibt18/67 und2/3 bei geänderter Basisrate. Beide unabdingbaren Erwartungen bleiben erforderlich; bloß korrektes Rechnen oder die Bildcheckliste genügt nicht.",
+      "caseReviews": [
+        {
+          "goalNumber": 5,
+          "caseId": "group-composition",
+          "result": "checked",
+          "actual": [
+            "9/25",
+            "37/50",
+            "9/10",
+            "4/5",
+            "3/10",
+            "1/5"
+          ],
+          "interpretation": "Overall B is larger, but A is larger in both strata. This arithmetic does not justify either causal direction."
+        },
+        {
+          "goalNumber": 5,
+          "caseId": "inspection-base-rate",
+          "result": "checked",
+          "actual": [
+            "180",
+            "490",
+            "18/67",
+            "2/3"
+          ],
+          "interpretation": "Posterior denominator counts all flags; sensitivity is a different conditional probability."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.review.jsonl",
+        "lineNumber": 2,
+        "rawLineSha256": "7c983ce96dc6f218768ef4c672c10452aa51524cd7149ad464e1ba90d70fa32e",
+        "reviewer": "Codex Root current-profile mathematical check after candidate-author preparation",
+        "reviewedAt": "2026-09-20T20:00:12.374Z",
+        "oldReviewInputFingerprint": "sha256:36ceee8f09a0b452ae5941773ff23ac9a506a614cbc24975979ae4e4157bd14e",
+        "errors": [
+          "3e974075-b2fd-43e6-88d9-5f596ad053ec: stale reviewInputFingerprint; expected sha256:34f7ce419183a60043c009cbfff98e518841c9341bde6d9c0155bcffccf82ae1"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "title": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "531e9532be807c23349a253bd0d32a709062ca36cc9091f8903062d3cf79438a",
+        "reviewInputFingerprint": "sha256:360a64bfcce78ebbcbe851682fc3b92ec8410cbd55fdd474ad3602a6e727a7ae",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/5927ca6a-91d5-4541-84e9-833bbb2cd7df/5927ca6a-91d5-4541-84e9-833bbb2cd7df.png": "sha256:02a7f831b6a9211a1ddb964d624e63ed36feeef48786b28014a67144e7bc6c8c"
+        }
+      },
+      "profilePin": "sha256:7109c794bf12b86df01723240ec96add30d326d37dca9239032999ce06a878a7",
+      "casePinSha256": "9c687796df2818dcc2d29d82c263d3ff3140447c0eb97a13c964866d3a514266",
+      "effectiveRequires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die Würfelauszahlung verlangt eigenständige Zuordnung, Tabelle, Diagramm und Ereignissumme1/2. Der Rückweg aus diskreten Diagrammwerten ergibt P(Y>0)=3/4 und P(Y=2)=0; Interpolation würde die verlangte Kompetenz verfehlen. Die ursprüngliche Bildkritik bleibt historisch erhalten: Das aktuell tatsächlich betrachtete PNG zeigt den mittleren Balken auf1/2. Dies ist keine neue V-Freigabe.",
+      "caseReviews": [
+        {
+          "goalNumber": 6,
+          "caseId": "die-payments",
+          "result": "checked",
+          "actual": [
+            [
+              0,
+              2,
+              0,
+              2,
+              0,
+              5
+            ],
+            "1/2"
+          ],
+          "interpretation": "Three payout values have probabilities 1/2,1/3,1/6."
+        },
+        {
+          "goalNumber": 6,
+          "caseId": "diagram-to-event",
+          "result": "checked",
+          "actual": [
+            "1",
+            "3/4",
+            0
+          ],
+          "interpretation": "Discrete support excludes 2; interpolation is invalid."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.review.jsonl",
+        "lineNumber": 8,
+        "rawLineSha256": "57c82c8f077decb1c7ee89bea537759d3bc476493c192f3fda5a539e2b0082b0",
+        "reviewer": "Codex Root current-profile mathematical check after candidate-author preparation",
+        "reviewedAt": "2026-09-20T20:00:12.374Z",
+        "oldReviewInputFingerprint": "sha256:e09adb8e5c93b26dbd73d177482969248597a9aa33bb8e9c4416b108164945ed",
+        "errors": [
+          "5927ca6a-91d5-4541-84e9-833bbb2cd7df: stale reviewInputFingerprint; expected sha256:360a64bfcce78ebbcbe851682fc3b92ec8410cbd55fdd474ad3602a6e727a7ae"
+        ]
+      },
+      "notes": "Der alte dissent zur Bildhöhe wird nicht als aktueller Dissens umetikettiert. Originalzeile und Originalurteil bleiben bytegenau erhalten; das P-Urteil bewertet die korrekten Aufgaben.",
+      "holds": []
+    },
+    {
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "title": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "ff6e458f5dfe347038d7d5626f838e4d14d61088dc7babbf7641977f0832b1e1",
+        "reviewInputFingerprint": "sha256:eca7944c063fb85eac5c3f94c08c32e9a64ad342060daad9218a88563f0c5a22",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/d711bc18-c27c-4739-8289-edac53dc8ba3/d711bc18-c27c-4739-8289-edac53dc8ba3.jpg": "sha256:fc3cbdda02aa50eda9c528fc3606e25b8c3e88dae6b1faf5a9a51b70c1557c2e"
+        }
+      },
+      "profilePin": "sha256:1a39c77e8c76a2532427466e554b86fb999332a8d84847e009a219977020098c",
+      "casePinSha256": "0a84f5f3220122815d0df925c7ed0007f613605276d388c1232567823d36ece8",
+      "effectiveRequires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d711bc18-c27c-4739-8289-edac53dc8ba3",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d711bc18-c27c-4739-8289-edac53dc8ba3",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:09f47964-2cd0-410e-93ee-9632b582fc91",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die Bauteilzuordnung trennt Ergebnis und Zahlenwert, insbesondere GD und DG bei gleichem Wert1. Die frische Distanzzuordnung Y(w)=|w-3| ergibt2,1,0,1,2,3 und das Urbild {2,4}. Dieser Transfer verhindert eine Anerkennung allein durch Wiederholung des Münzbildes. Wahrscheinlichkeitsrechnung bleibt ausdrücklich außerhalb des engen Zuordnungsziels.",
+      "caseReviews": [
+        {
+          "goalNumber": 7,
+          "caseId": "two-item-check",
+          "result": "checked",
+          "actual": [
+            [
+              "GG",
+              0
+            ],
+            [
+              "GD",
+              1
+            ],
+            [
+              "DG",
+              1
+            ],
+            [
+              "DD",
+              2
+            ]
+          ],
+          "interpretation": "Different ordered outcomes can have the same value; no probabilities are needed."
+        },
+        {
+          "goalNumber": 7,
+          "caseId": "distance-from-target",
+          "result": "checked",
+          "actual": [
+            [
+              2,
+              1,
+              0,
+              1,
+              2,
+              3
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "interpretation": "Distance assignment differs structurally from counting defects."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-stochastics-final-current-18-20260920-v1.review.jsonl",
+        "lineNumber": 9,
+        "rawLineSha256": "45830ae232f29791b1c8c1c7308a49a34ace488e1727e3ddb1fbedc11e7a804b",
+        "reviewer": "Codex Root current-profile mathematical check after candidate-author preparation",
+        "reviewedAt": "2026-09-20T20:00:12.374Z",
+        "oldReviewInputFingerprint": "sha256:ebcbf2322edc2d8b78bec4fb0457b43da773d179b8b1245e23ed0b0b9c1a444b",
+        "errors": [
+          "d711bc18-c27c-4739-8289-edac53dc8ba3: stale reviewInputFingerprint; expected sha256:eca7944c063fb85eac5c3f94c08c32e9a64ad342060daad9218a88563f0c5a22"
+        ]
+      },
+      "notes": "Der direkte Zählfall liegt nahe am Münzbild; erst eigenständige Zuordnung plus der veränderte Distanzfall erfüllt den bestehenden Gesamtvertrag. Kein Bild-Abschreibebeleg.",
+      "holds": []
+    },
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "title": "Parameter von Funktionen und Funktionsscharen im Kontext untersuchen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "7b03771fe29bbee47399945b6bf41358a857e88aeb902a1739c45a4f3920ad8a",
+        "reviewInputFingerprint": "sha256:162337c8270d64f25d9e810adaf0511945c90ade0235187c030c824789f1392e",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/91e2f564-3bc8-4924-af85-2a3fa84c1471/91e2f564-3bc8-4924-af85-2a3fa84c1471.jpg": "sha256:ddf455483b906385b56037990fcda4471827344be5cf9250a301b9b1e9f30142"
+        }
+      },
+      "profilePin": "sha256:e0095fe16e1831cdcca29bf87c56f45c176e4e29051c5fcb7d1291938b4184a1",
+      "casePinSha256": "7dec60189eedb37ceb89ae54d85d84422129b84fb710660cb78c0c611060e49e",
+      "effectiveRequires": [
+        "71683f37-24de-4e0f-badd-858b56fa4d64"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91e2f564-3bc8-4924-af85-2a3fa84c1471",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91e2f564-3bc8-4924-af85-2a3fa84c1471",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71683f37-24de-4e0f-badd-858b56fa4d64",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91e2f564-3bc8-4924-af85-2a3fa84c1471",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71683f37-24de-4e0f-badd-858b56fa4d64"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71683f37-24de-4e0f-badd-858b56fa4d64",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Beim Bogen h_a bleiben Nullstellen±2, Achse0 und Spannweite4 fest; die Höhe steigt2→4. Bei q_b bewegen sich Scheitel und Träger um2, während Höhe9 und Spannweite6 bleiben. Beide Parameterwirkungen sind korrekt und fordern eine Kontextdeutung. f_k=kx(6-x) im Erwartungsbeispiel illustriert dieselbe Invariantenleistung; es ist keine zusätzliche dritte Pflichtaufgabe. Termargumente bleiben neben der angegebenen Ableitung zulässig.",
+      "caseReviews": [
+        {
+          "goalNumber": 8,
+          "caseId": "bridge-height-parameter",
+          "result": "checked",
+          "actual": [
+            [
+              "0",
+              "2",
+              "0"
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ],
+          "interpretation": "h_a=4a-a*x^2: height scales, zeros and symmetry axis remain fixed; derivative -2ax is consistent, not the sole admissible explanation."
+        },
+        {
+          "goalNumber": 8,
+          "caseId": "horizontal-family-parameter",
+          "result": "checked",
+          "actual": [
+            [
+              0,
+              -3,
+              3,
+              9,
+              6
+            ],
+            [
+              2,
+              -1,
+              5,
+              9,
+              6
+            ]
+          ],
+          "interpretation": "Contextual nonnegative domain moves; peak height and span remain invariant."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-functions-calculus-current-14-20260920-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-functions-calculus-current-14-20260920-v1.review.jsonl",
+        "lineNumber": 14,
+        "rawLineSha256": "472bb0afbba6ce2afef5ca93e83f4cf50a22cd7b9aeb28c7bcd2c7bc1e5436f4",
+        "reviewer": "codex-math-m7-current-scope-p-v2-author",
+        "reviewedAt": "2026-09-20T18:25:10Z",
+        "oldReviewInputFingerprint": "sha256:303d5a3ee369111ad30de53def30e17cffec3806983f84a865136985b7c64508",
+        "errors": [
+          "91e2f564-3bc8-4924-af85-2a3fa84c1471: stale reviewInputFingerprint; expected sha256:162337c8270d64f25d9e810adaf0511945c90ade0235187c030c824789f1392e"
+        ]
+      },
+      "notes": "Die erwartete Leistung an f_k und der erste Fall h_a benutzen verschiedene gleichartige Bögen. Die allgemeine Erwartung ist Parameterwirkung/Invarianten; der Formelaustausch ist kein Rechenfehler. Keine dritte Pflichtaufgabe oder ausschließliche Ableitungsmethode aus dem exemplarischen Feld ableiten.",
+      "holds": []
+    },
+    {
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "title": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "7f14f92e5977d36299f84044c0a5401d9a5e09ab5452d7a4e8d97ca2e653b6f6",
+        "reviewInputFingerprint": "sha256:8ce8ae0ae80a7c7eb4e2c53b8d58ca4c6b4fdf63627c9d9dfe2dcd8a6050fac9",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/c72a8032-71f6-56ed-a896-06ae435ff2ec/c72a8032-71f6-56ed-a896-06ae435ff2ec.png": "sha256:776f054c3eda82146f814671e7ecfea805a4e912c5753c525c648a7e341e7e0e"
+        }
+      },
+      "profilePin": "sha256:e421a89fe8276494c9599aa704662f58d7986e6c56d865f871eb185aca67a48f",
+      "casePinSha256": "eb4422d5bf06cba196255d5ec2a00478e061fa0d8c092be3f1ae9f37d9581375",
+      "effectiveRequires": [
+        "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+        "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c72a8032-71f6-56ed-a896-06ae435ff2ec",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c72a8032-71f6-56ed-a896-06ae435ff2ec",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c72a8032-71f6-56ed-a896-06ae435ff2ec",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. E=exp(-x²) besitzt ganz R als Bereich und Maximum1 bei0. L=ln(4-x²) besitzt(-2,2), Maximum ln4, Nullstellen±sqrt3 und beidseitig negative unendliche Randwerte. Innerer Faktor und äußerer Definitionsbereich müssen begründet werden. Der Wechsel des Funktionstyps und des zulässigen Bereichs ist eigenständiger LK-Transfer; die unveränderte Introentfernung ändert keine dieser Anforderungen.",
+      "caseReviews": [
+        {
+          "goalNumber": 9,
+          "caseId": "exponential-composition",
+          "result": "checked",
+          "actual": [
+            1.0,
+            true,
+            true
+          ],
+          "interpretation": "General derivation: exp(-x^2)>0, derivative -2x exp(-x^2); even function, unique maximum (0,1), limit zero as |x| tends to infinity."
+        },
+        {
+          "goalNumber": 9,
+          "caseId": "logarithmic-composition",
+          "result": "checked",
+          "actual": [
+            true,
+            0,
+            true
+          ],
+          "interpretation": "General derivation: domain (-2,2), derivative -2x/(4-x^2), maximum ln4, zeros +/-sqrt3; log argument tends to 0+ at both finite boundaries."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-functions-calculus-current-14-20260920-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-m7-functions-calculus-current-14-20260920-v1.review.jsonl",
+        "lineNumber": 7,
+        "rawLineSha256": "c88c7ba9b7e8813c1df677b621328f24cfa4aaf849f67287709c8977077911ef",
+        "reviewer": "codex-math-m7-current-scope-p-v2-author",
+        "reviewedAt": "2026-09-20T18:25:10Z",
+        "oldReviewInputFingerprint": "sha256:09bf076d3aff4761232cb15d6c30669bf70a7409a0db6f553296e533cf099b97",
+        "errors": [
+          "c72a8032-71f6-56ed-a896-06ae435ff2ec: stale reviewInputFingerprint; expected sha256:8ce8ae0ae80a7c7eb4e2c53b8d58ca4c6b4fdf63627c9d9dfe2dcd8a6050fac9"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "title": "Matrizen multiplizieren",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "abfa185d0a175b15a8c219e82d3ba5b144fc225424ec7147f8fae7b942bcb3a7",
+        "reviewInputFingerprint": "sha256:8e0fc8580f585827a3c3eff84179114221b63049a547ecd190d8971c0dd7eba6",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/304111dd-426b-520b-a275-3fa37da1b0e0/304111dd-426b-520b-a275-3fa37da1b0e0.png": "sha256:add0b17d0ea7d252f99de72a54c4abaa879e40f087f365ccaf2c40f7c2a5f14b"
+        }
+      },
+      "profilePin": "sha256:b5f30469791eed9e1fb76ba16cf8eeabf5af15b7ca6c76e7d3c901d093dbba49",
+      "casePinSha256": "306c8c644069ca9b013f076b0ea58afceea37fd5febb7a962a794851e0ba8dd3",
+      "effectiveRequires": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Sämtliche16 Produkteinträge beider Fälle sind neu nachgerechnet. Das Rechteckprodukt ist[[-1,0,5,6],[2,14,2,-2]], BA ist wegen4!=2 nicht definiert. UV=[[4,2],[1,1]] und VU=[[2,4],[1,3]] zeigen Nichtkommutativität trotz gleicher Größe. Dimensionsbedingung, vollständiges Zeilen-Spalten-Produkt und begründeter Reihenfolgevergleich sind gemeinsam unabdingbar; Inversen/Potenzen bleiben außerhalb.",
+      "caseReviews": [
+        {
+          "goalNumber": 10,
+          "caseId": "rectangular-product-and-admissibility",
+          "result": "checked",
+          "actual": [
+            [
+              [
+                -1,
+                0,
+                5,
+                6
+              ],
+              [
+                2,
+                14,
+                2,
+                -2
+              ]
+            ],
+            false
+          ],
+          "interpretation": "AB is 2x4; BA is undefined because 4!=2. Every one of eight AB entries recalculated."
+        },
+        {
+          "goalNumber": 10,
+          "caseId": "square-products-order-changes-values",
+          "result": "checked",
+          "actual": [
+            [
+              [
+                4,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                2,
+                4
+              ],
+              [
+                1,
+                3
+              ]
+            ]
+          ],
+          "interpretation": "All eight entries independently recalculated; equal shape does not imply commutativity."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.review.jsonl",
+        "lineNumber": 3,
+        "rawLineSha256": "ffd0aba2e88a2e535a7db3c03d678934f22f179f74b2f3481972b6ea27ece123",
+        "reviewer": "codex-math-matrices-informed-profile-author-20260913",
+        "reviewedAt": "2026-09-13T19:50:42Z",
+        "oldReviewInputFingerprint": "sha256:dd5a6f1763198ee57687afebbd0ab1b0853acbe56c89e446d9a6e69cef8a6ae0",
+        "errors": [
+          "304111dd-426b-520b-a275-3fa37da1b0e0: stale reviewInputFingerprint; expected sha256:8e0fc8580f585827a3c3eff84179114221b63049a547ecd190d8971c0dd7eba6"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "title": "Skalare Multiplikation von Matrizen durchführen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "def6b0dda43d342ffe3edf879e8901abb9024ae4e806d99274e87ca90642882b",
+        "reviewInputFingerprint": "sha256:8dead3a2a7c1cc4b9ed5728a93562f42a953b4accf090b02caa966fcbff06f5a",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/4fb40e58-58c1-5964-b58e-3347a8022b97/4fb40e58-58c1-5964-b58e-3347a8022b97.png": "sha256:4b36f820723b40eecff0fc4e2d8d40c3d551eeb43dac1f8c6f58c8adfe20ff08"
+        }
+      },
+      "profilePin": "sha256:c866b3158ff4df71ae477ce9936d995395873b7a45a1d7039abd46f1f69f2a5c",
+      "casePinSha256": "ede6b7ef601f98be51f4a7917b5130975f5ae89324a6074cf6a21328c1fc15b2",
+      "effectiveRequires": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4fb40e58-58c1-5964-b58e-3347a8022b97",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4fb40e58-58c1-5964-b58e-3347a8022b97",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4fb40e58-58c1-5964-b58e-3347a8022b97",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Der negative Skalar wirkt auf alle sechs Einträge, einschließlich0 und1/2, mit Ergebnis[[-6,8,0],[-1,2,-10]]. Der zweite Fall verlangt vollständige Prüfung: der Fehler10 statt5 liegt in(3,1), und0C bleibt eine3x2-Nullmatrix. Die Richtungsänderung von Ausführen zu Prüfen ist echte Variation; kein Eintrag darf durch bloßes Zustimmen ersetzt werden.",
+      "caseReviews": [
+        {
+          "goalNumber": 11,
+          "caseId": "negative-scalar-rectangular-matrix",
+          "result": "checked",
+          "actual": [
+            [
+              -6,
+              8,
+              0
+            ],
+            [
+              "-1",
+              2,
+              -10
+            ]
+          ],
+          "interpretation": "Every entry, including fractional and zero entries, receives the same scalar."
+        },
+        {
+          "goalNumber": 11,
+          "caseId": "check-submitted-scaling-and-zero",
+          "result": "checked",
+          "actual": [
+            [
+              [
+                "0",
+                "3"
+              ],
+              [
+                "-4",
+                "1"
+              ],
+              [
+                "5",
+                "-2"
+              ]
+            ],
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          "interpretation": "All six submitted entries checked; only row3/column1 is wrong. Zero scalar preserves shape."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.review.jsonl",
+        "lineNumber": 1,
+        "rawLineSha256": "17a8a23d215d54168bac7b0f9af109ca484da667db95fe33c981a56e66714416",
+        "reviewer": "codex-math-matrices-informed-profile-author-20260913",
+        "reviewedAt": "2026-09-13T19:50:42Z",
+        "oldReviewInputFingerprint": "sha256:f5d55485dcca65f31e4e887399ca6c53c7b6f05e1eab0f386c936bb4f2d6e246",
+        "errors": [
+          "4fb40e58-58c1-5964-b58e-3347a8022b97: stale reviewInputFingerprint; expected sha256:8dead3a2a7c1cc4b9ed5728a93562f42a953b4accf090b02caa966fcbff06f5a"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "title": "Matrizen addieren und subtrahieren",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "9024ae956c2b4e8af619481ac4d05088ea35f79c1c0938cf0c5b371f4f08015b",
+        "reviewInputFingerprint": "sha256:4703929098aad14bea4794174d67697d3ab621c7aa82951d4d3167e15ff3768c",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.png": "sha256:f9f5919b014cfa4de1df6f3453a8f531f0bd1221d49bcc03fa763093757ec211"
+        }
+      },
+      "profilePin": "sha256:497face284b367dfd3eb35455483d2f7d238f9c510ce981f0e28b078afecb555",
+      "casePinSha256": "bc8362189915e4fcf12ff38997b123bad55b0876275d55dfed137fc55a2f96bf",
+      "effectiveRequires": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Die Bestandsmatrizen liefern die vollständig nachgerechneten Summe und Differenz; -2 bei blauen L-Shirts bezeichnet einen Vergleich. Die unbekannte Änderung D=[[-3,5],[-4,0]] wird durch vollständige Addition geprüft. Die1x4-Darstellung ist trotz gleicher Eintragszahl nicht mit2x2 subtrahierbar. Beide Operationen und die Positions-/Größenbindung werden gefordert, ohne eine fremde Matrixkompetenz hinzuzufügen.",
+      "caseReviews": [
+        {
+          "goalNumber": 12,
+          "caseId": "aligned-stock-tables",
+          "result": "checked",
+          "actual": [
+            [
+              [
+                15,
+                7,
+                8
+              ],
+              [
+                12,
+                22,
+                5
+              ]
+            ],
+            [
+              [
+                9,
+                3,
+                8
+              ],
+              [
+                2,
+                -2,
+                3
+              ]
+            ]
+          ],
+          "interpretation": "Position (2,2) means blue size-L stock, so -2 is a comparison, not negative physical stock."
+        },
+        {
+          "goalNumber": 12,
+          "caseId": "recover-additive-change-and-check-shape",
+          "result": "checked",
+          "actual": [
+            [
+              [
+                -3,
+                5
+              ],
+              [
+                -4,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                3
+              ],
+              [
+                -4,
+                5
+              ]
+            ]
+          ],
+          "interpretation": "Equal entry count does not permit 1x4 minus 2x2."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-matrices-3-v1.review.jsonl",
+        "lineNumber": 2,
+        "rawLineSha256": "cbd10216fcfa0ca9c643e8c0cda07a193102a367244be1d2cae175a6fd77ba58",
+        "reviewer": "codex-math-matrices-informed-profile-author-20260913",
+        "reviewedAt": "2026-09-13T19:50:42Z",
+        "oldReviewInputFingerprint": "sha256:6a396172be5b7d845d74b9c6b37ba03ab5b4eba1a8b1cec8630905e35b607ec9",
+        "errors": [
+          "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8: stale reviewInputFingerprint; expected sha256:4703929098aad14bea4794174d67697d3ab621c7aa82951d4d3167e15ff3768c"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+      "title": "Matrix-Vektor-Produkte berechnen",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "19cba38b9539f7a96256384c377367f27538779eab218db9138529f58d775ca9",
+        "reviewInputFingerprint": "sha256:3a517711b5f01a769446f11e2050f1137c19e7056ec477b26ba9474cd7984c0f",
+        "resourceDigests": {
+          "/assets/goal-visualizations/mathematik/6f09c97e-779b-500b-8092-3fb9696aa5bb/6f09c97e-779b-500b-8092-3fb9696aa5bb.jpg": "sha256:c65e8805d549fb9455f66f0fd5c7a1cbaceff85097dab0f69706d4d710a22ee0"
+        }
+      },
+      "profilePin": "sha256:ba56f6d9b2ff95558bb8b373bcc2292d1696ddc83fa97e02c286158b2125e2f5",
+      "casePinSha256": "6ad7d6a0aac702aa019c192a9dd7361e8a75f534b7378565cb96023b91c6be41",
+      "effectiveRequires": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6f09c97e-779b-500b-8092-3fb9696aa5bb",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6f09c97e-779b-500b-8092-3fb9696aa5bb",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Beide Zeilenprodukte sind korrekt: (58,42) und nach Sortierung der Eingabe zu(20,30,50) das Ergebnis(21,41,38). Das absichtlich unverändert falsch sortierte Eingabeschema ergäbe(32,37,31), ebenfalls Summe100; die explizite Komponenteninterpretation verhindert daher eine Anerkennung allein über eine Summenprobe. Es wird ein Modellfolgezustand, keine garantierte Einzelrealisierung eines stochastischen Prozesses, beschrieben.",
+      "caseReviews": [
+        {
+          "goalNumber": 13,
+          "caseId": "two-state-next-period",
+          "result": "checked",
+          "actual": [
+            "58",
+            "42"
+          ],
+          "interpretation": "Row destinations and column origins match stated model; totals preserved."
+        },
+        {
+          "goalNumber": 13,
+          "caseId": "three-state-reordered-input",
+          "result": "checked",
+          "actual": [
+            [
+              "21",
+              "41",
+              "38"
+            ],
+            [
+              "32",
+              "37",
+              "31"
+            ]
+          ],
+          "interpretation": "Wrong data order yields a different still sum-preserving vector; checking total alone cannot pass this rubric."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "configPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-current-positive-candidates-2026-11-06/retained-2.config.json",
+        "reviewPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-current-positive-candidates-2026-11-06/retained-2.review.jsonl",
+        "lineNumber": 6,
+        "rawLineSha256": "a743242f61be813e388c9eb21930189ba1c58042a076e3a788f56d0ceaa3a222",
+        "reviewer": "codex-math-resume-audit-post-change-profile-author",
+        "reviewedAt": "2026-09-13T18:26:39Z",
+        "oldReviewInputFingerprint": "sha256:67c73b6be59efcfea23d04d79732fead8681d602a977084d2893cc842e27dd62",
+        "errors": [
+          "6f09c97e-779b-500b-8092-3fb9696aa5bb: stale reviewInputFingerprint; expected sha256:3a517711b5f01a769446f11e2050f1137c19e7056ec477b26ba9474cd7984c0f"
+        ]
+      },
+      "notes": "Die Übergangsmatrix ist als Anteilsmodell zu interpretieren. Wären Einzelfall-Zufallsübergänge gemeint, sind Mx die modellierten Erwartungszahlen; keine Behauptung, dass exakt58 Geräte in einer zufälligen Realisierung in A sein müssen.",
+      "holds": []
+    },
+    {
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "title": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+      "decision": "KEEP",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "74465d907dc136dbfb7e663330ae906fe26d60a16d2e462bb4758a57c752157d",
+        "reviewInputFingerprint": "sha256:f43b635a6aabb0d5cf8854eb3616440f0659ae25ebae12d1b406a4303b6fdbdd",
+        "resourceDigests": {}
+      },
+      "profilePin": "sha256:2cdfa9664738fa1c88d6dc32bdae25e6f5106d234f32decdc9ee57e5f707ee81",
+      "casePinSha256": "78fc05dc377997b2229425304971d2a914455ac1b5ba4ec4353f3d76c0adb64d",
+      "effectiveRequires": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e893892-393e-5df0-b705-fb3b3458122f",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e893892-393e-5df0-b705-fb3b3458122f",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e893892-393e-5df0-b705-fb3b3458122f",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "KEEP. Der Tagesgraph enthält beide bedingten Wechsel und Schleifen mit ausgehender Summe1; eine Schleife bedeutet einen weiteren Zeitschritt. Die neue dreizeilige Ursprungstabelle erzeugt genau fünf positive Kanten und verbietet A→C. Der Tabellenwechsel gegenüber dem Bild verlangt die gelesene Richtungskonvention, keine kopierte Spaltenregel. Matrixpotenzen, Gleichgewicht oder langfristige Vorhersage werden nicht gefordert.",
+      "caseReviews": [
+        {
+          "goalNumber": 14,
+          "caseId": "two-state-weather-graph",
+          "result": "checked",
+          "actual": [
+            "1",
+            "1"
+          ],
+          "interpretation": "Outgoing dry/wet rows normalize; a loop consumes a day."
+        },
+        {
+          "goalNumber": 14,
+          "caseId": "three-state-table-to-graph",
+          "result": "checked",
+          "actual": [
+            [
+              "1",
+              "1",
+              1
+            ],
+            [
+              [
+                0,
+                0,
+                "1/2"
+              ],
+              [
+                0,
+                1,
+                "1/2"
+              ],
+              [
+                1,
+                1,
+                "1/4"
+              ],
+              [
+                1,
+                2,
+                "3/4"
+              ],
+              [
+                2,
+                0,
+                "1"
+              ]
+            ]
+          ],
+          "interpretation": "All five nonzero directed edges match the stated row-origin convention; A->C impossible."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-045-current-keep7-v1.retained-before-m7-functions-20260920-v1.retained-before-q2-rule-png-20260923-v1.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-batch-045-current-keep7-v1.retained-before-m7-functions-20260920-v1.retained-before-q2-rule-png-20260923-v1.review.jsonl",
+        "lineNumber": 1,
+        "rawLineSha256": "428720f81282d63f09cc311cee85f6de385566773bf030a44b3f55cced90770e",
+        "reviewer": "codex-goal-book-ci-integration-b045-current-profile-author",
+        "reviewedAt": "2026-09-07T15:26:51Z",
+        "oldReviewInputFingerprint": "sha256:f9d11595144969ab99fbeefdb1284d941c9f6dd29c358691f5d895fdeb2321ee",
+        "errors": [
+          "5e893892-393e-5df0-b705-fb3b3458122f: stale reviewInputFingerprint; expected sha256:f43b635a6aabb0d5cf8854eb3616440f0659ae25ebae12d1b406a4303b6fdbdd"
+        ]
+      },
+      "notes": null,
+      "holds": []
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "title": "Sinus- und Kosinusfunktionen verstehen",
+      "decision": "HOLD",
+      "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+      "reviewedAt": "2026-11-07T11:34:01.888555+00:00",
+      "humanApproved": false,
+      "contextPin": {
+        "sourceSha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+        "goalObjectSha256": "82872045a459d9ed9eadd8a3b91dbacc3b9dd0136aabf0e7642ea79bbb274038",
+        "reviewInputFingerprint": "sha256:9613fc17c9d306dbc6b73a04e43738f3e119bc9bc5f4a6ba6b4e1d5b229c376b",
+        "resourceDigests": {}
+      },
+      "profilePin": "sha256:1945a89fbbc843ff3f84e7868b604052c9d30872310dd9e8878d4b61c46c8c8a",
+      "casePinSha256": "86bc7f1a6ba9a9a8632c79bfd7d9455d1b73d54f67d0983c0dd01334535928fb",
+      "effectiveRequires": [
+        "cdf49335-cebf-54b4-9f52-50d5badabe2f"
+      ],
+      "nativeJointRemovalWitness": {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "witness": [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bbef7cf2-90fa-59fa-a115-8b651aab9231",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cdf49335-cebf-54b4-9f52-50d5badabe2f",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "supportingOrigins": [
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bbef7cf2-90fa-59fa-a115-8b651aab9231",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cdf49335-cebf-54b4-9f52-50d5badabe2f"
+          },
+          {
+            "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cdf49335-cebf-54b4-9f52-50d5badabe2f",
+            "prerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          }
+        ]
+      },
+      "reason": "HOLD. clockwise-motion-transfer legt nur zunehmenden Parameter t und Uhrzeigersinn fest, verlangt aber eindeutig x=cos t,y=-sin t. Auch theta(t)=-2t erfüllt diese Angaben, sogar gleichförmig auf dem Einheitskreis. Bei t=pi/2 liefert es(-1,0) statt(0,-1). Damit kann eine fachlich richtige Antwort abgewiesen werden. t muss im DE/EN-Aufgabentext als ab Start zurückgelegter Winkel im Bogenmaß festgelegt werden; dies ist kein Effekt der redundanten Introentfernung. Kein aktueller KEEP-Record für den unveränderten Körper.",
+      "caseReviews": [
+        {
+          "goalNumber": 15,
+          "caseId": "coordinate-table-base",
+          "result": "checked",
+          "actual": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              -1,
+              0
+            ],
+            [
+              0,
+              -1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "interpretation": "Base angle-coordinate pairs are correct; amplitude1 and angular period2pi."
+        },
+        {
+          "goalNumber": 15,
+          "caseId": "clockwise-motion-transfer",
+          "result": "counterexample-to-uniqueness",
+          "actual": {
+            "at_t_pi_over_2_expected_theta_minus_t": [
+              0,
+              -1
+            ],
+            "also_admissible_theta_minus_2t": [
+              -1,
+              0
+            ]
+          },
+          "interpretation": "Both curves start at (1,0), stay on unit circle, are uniform and clockwise as parameter t increases. The unchanged task does not fix angular rate; theta=-t cannot be required uniquely."
+        },
+        {
+          "goalNumber": 15,
+          "caseId": "quarter-turn-start-transfer",
+          "result": "checked",
+          "actual": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "interpretation": "Angular increment is explicitly t in this third case; quarter-period identity is well posed."
+        }
+      ],
+      "allRequiredExpectationsRemainMandatory": true,
+      "noRuntimeMasteryClaim": true,
+      "originalEvidence": {
+        "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-stale-isolation-20260928-v1/retained-15/positive-evidence.config.json",
+        "reviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-stale-isolation-20260928-v1/retained-15/positive-evidence.review.jsonl",
+        "lineNumber": 5,
+        "rawLineSha256": "b3434f1cb2d025bff0879e29dc4204152711ae92cd150477c938705b2fe7dca0",
+        "reviewer": "codex-math-rollout-v1-batch-030-positive-understanding-candidate-author-2026-09-05",
+        "reviewedAt": "2026-09-05T20:00:00.000Z",
+        "oldReviewInputFingerprint": "sha256:ee3cf9eace470c4df979252510c4765722f95d4f328ebd26c14db763c324c9d4",
+        "errors": [
+          "bbef7cf2-90fa-59fa-a115-8b651aab9231: stale reviewInputFingerprint; expected sha256:9613fc17c9d306dbc6b73a04e43738f3e119bc9bc5f4a6ba6b4e1d5b229c376b"
+        ]
+      },
+      "notes": "Die aktuelle Visualisierung zeigt Uhrzeigersinnpfeile, während der Grundgraph positiv orientierten Winkel benutzt. Sie liefert keine fehlende t-Konvention für den isolierten Transferfall. Kein neuer V-Befund oder V-Pass wird hier registriert.",
+      "holds": [
+        "P-case-parameterization-undefined"
+      ]
+    }
+  ]
+}

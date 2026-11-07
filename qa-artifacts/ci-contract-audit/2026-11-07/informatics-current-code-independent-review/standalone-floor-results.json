@@ -1,0 +1,56 @@
+{
+  "status": "HOLD_REPRODUCED",
+  "nativeMaterialFailureCounts": [
+    8,
+    9
+  ],
+  "falseClaimedMaturity": "M6",
+  "sourceSha256": "50a26163a1934216727ee178f8b0d2740c2476f62482ce32911fecbf890654e8",
+  "cases": [
+    {
+      "label": "graph-shaped-pass-with-honest-material",
+      "startUnix": 1794053373.0551174,
+      "endUnix": 1794053376.3893962,
+      "exitCode": 1,
+      "accepted": false,
+      "expectedObservationAccepted": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "6300326f3a7f4cec6a0653b32b99bfba66b4e66ab2db911a4d29adf6f94fc0b2",
+      "floorProgramUnmodified": true,
+      "freshSourceDiscovery": true,
+      "sourceBytesUnchanged": true,
+      "policy": "Exact active Informatics M6 entry only; unrelated floors omitted to bound the process",
+      "fullCqr": false
+    },
+    {
+      "label": "honest-graph-with-forged-material",
+      "startUnix": 1794053376.3915074,
+      "endUnix": 1794053379.7468915,
+      "exitCode": 1,
+      "accepted": false,
+      "expectedObservationAccepted": false,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "cef546713c4eca6f3badc0ca82c4270e24bdcd9142a5936d3e29e1dc16eaaf59",
+      "floorProgramUnmodified": true,
+      "freshSourceDiscovery": true,
+      "sourceBytesUnchanged": true,
+      "policy": "Exact active Informatics M6 entry only; unrelated floors omitted to bound the process",
+      "fullCqr": false
+    },
+    {
+      "label": "passing-shaped-graph-with-forged-material",
+      "startUnix": 1794053379.7481518,
+      "endUnix": 1794053382.8782222,
+      "exitCode": 0,
+      "accepted": true,
+      "expectedObservationAccepted": true,
+      "stdoutSha256": "f6f55a59539529b1892b4215bf2b2ad1297ab81442bb6e02093867064e874da1",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "floorProgramUnmodified": true,
+      "freshSourceDiscovery": true,
+      "sourceBytesUnchanged": true,
+      "policy": "Exact active Informatics M6 entry only; unrelated floors omitted to bound the process",
+      "fullCqr": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "reviewerAgent": "/root/economics_existing_v_context_batch/private_q2_review",
+  "scope": "Independent technical read-only peer review. No model-specific Astra or human acceptance claimed.",
+  "authenticatedOriginalPaths": 126,
+  "rawGitObjects": 465,
+  "authenticatedParentRouteNodes": 273,
+  "currentContextsAndAssetPairs": 17,
+  "bilingualAndDemandBindings": 16,
+  "deOnlyCorrection": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+  "findings": [
+    {
+      "finding": "Probe overwrote expected input pins with current hashes and reused prepared source context.",
+      "resolution": "Strict expected-pin pre/post checks; freshly parsed live source and derived primary asset/actual context; full candidate comparison.",
+      "status": "resolved"
+    },
+    {
+      "finding": "Private6-profile receipt type incompatible with active5-profile reader/Q3 types.",
+      "resolution": "Private reader type-only import from private core; private Q3 helper differs only in type-only import; focused tsc pass.",
+      "status": "resolved"
+    }
+  ],
+  "remainingTechnicalBlockersFound": false,
+  "activeNewQualifications": 0,
+  "typecheckExitCode": 0,
+  "readerSha256": "05e4462eaddd456cb59213cb53d58b8cc54124cdbd8c7394075e90e19fc59fa7",
+  "coreSha256": "18c3043423075cdfdacd76a23b338c1bc20ba54a27ae19f6e167b2397e943fed"
+}

@@ -1,0 +1,24 @@
+{
+  "startedAt": "2026-11-07T10:06:25.739646+00:00",
+  "command": [
+    "/home/enpasos/.local/pgsql-18/bin/psql",
+    "-h",
+    "127.0.0.1",
+    "-p",
+    "48517",
+    "-d",
+    "postgres",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-c",
+    "CREATE ROLE completion_test LOGIN;",
+    "-c",
+    "CREATE DATABASE skillpilot_completion_test OWNER completion_test;"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "pid": 794469,
+  "exitCode": 0,
+  "finishedAt": "2026-11-07T10:06:25.802154+00:00",
+  "stdoutSha256": "765856f3263dee2e267c02a0bcb675d8d1cdd8ce1daae71699266512fd8c7ac0",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

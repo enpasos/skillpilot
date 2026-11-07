@@ -1,0 +1,11 @@
+import fs from'node:fs';import assert from'node:assert/strict';
+import {fingerprintGoalForPositiveEvidence,fingerprintPositiveGoalEvidenceReviewInput,fingerprintPositiveGoalEvidenceProfile,validatePositiveGoalEvidenceRecordSemantics}from'/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceProfileModel.ts';
+const R=process.cwd(),rel='qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-independent-p-review',P=R+'/'+rel,read=(p:string)=>JSON.parse(fs.readFileSync(P+'/'+p,'utf8'));
+const I=read('review-inputs.json'),C=read('native-contexts.json').contexts,D=read('decisions.json').decisions,reviewId='math-g17-fifteen-independent-p-keep14-20261107-v1';
+const records=D.filter((d:any)=>d.decision==='KEEP').map((d:any)=>{const x=I.find((r:any)=>r.goal.id===d.goalId),c=C.find((r:any)=>r.goalId===d.goalId),old=x.originalEvidence.record;
+ const r={...old,reviewId,goalFingerprint:fingerprintGoalForPositiveEvidence(x.goal,c.semanticKind),reviewInputFingerprint:fingerprintPositiveGoalEvidenceReviewInput(x.goal,old.reviewCriteriaFingerprint,c.resourceDigests,c.semanticKind),profileFingerprint:fingerprintPositiveGoalEvidenceProfile(old.profile),reviewedAt:d.reviewedAt,reviewer:d.reviewer,reason:d.reason,reviewRunIds:[],dissent:[],status:'needs_human_review',reviewAuthority:'ai_candidate',evidenceLevel:'E1',maximumClaimScope:'G1'};
+ assert.deepEqual(validatePositiveGoalEvidenceRecordSemantics(r,x.goal,c.resourceDigests,c.semanticKind),[]);assert.equal(r.profileFingerprint,old.profileFingerprint);assert.equal(r.reviewInputFingerprint,d.contextPin.reviewInputFingerprint);return r;});assert.equal(records.length,14);
+fs.writeFileSync(P+'/current-keep14.review.jsonl',records.map(r=>JSON.stringify(r)).join('\n')+'\n');
+const config={...I[0].config,reviewId,reviewPath:rel+'/current-keep14.review.jsonl',reviewRunManifestPaths:[],requireApproved:false,scope:{label:'Private current P candidates for 14 independently reviewed unchanged profiles on Source15; one separate clockwise-parameterization HOLD is excluded. E1/G1 AI evidence only.',goalIds:records.map(r=>r.goalId)}};
+fs.writeFileSync(P+'/current-keep14.config.json',JSON.stringify(config,null,2)+'\n');
+console.log(JSON.stringify({materialized:records.length,nativeRecordSemanticsErrors:0,historicalRecordsOverwritten:0}));

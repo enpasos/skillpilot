@@ -1,0 +1,1449 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed-proposal-unapplied-no-qa-approval",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+  },
+  "candidate": {
+    "sha256": "b2155f4167f104e5b8eef183f7bb9a7a792a873a9e5d009d5083e0bc84c68cfd",
+    "localPath": "tmp/math-orientation-normalization-review-2026-11-06/cumulative-three.candidate.json",
+    "reconstructWith": "python3 -B docs/dev/ci-graph-repairs/prepare_math_orientation_three_normalization.py --candidate-out tmp/math-orientation-three-reconstructed.json"
+  },
+  "operations": [
+    {
+      "operationId": "MATH-MIN-0027-ORIENTATION-NORM",
+      "stage": "closure-preserving-normalization",
+      "operation": "replace",
+      "path": "/goals/129/requires",
+      "guardGoalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "guardRequiresBefore": [
+        "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "guardGoalCanonicalJsonSha256": "31ef7b817b843faf388a94b8390d7b6ed5e69b2f7a610c8ed10c3d08288999cd",
+      "value": [
+        "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd"
+      ]
+    },
+    {
+      "operationId": "MATH-MIN-0745-ORIENTATION-NORM",
+      "stage": "closure-preserving-normalization",
+      "operation": "replace",
+      "path": "/goals/931/requires",
+      "guardGoalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "guardRequiresBefore": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "304111dd-426b-520b-a275-3fa37da1b0e0"
+      ],
+      "guardGoalCanonicalJsonSha256": "371241ff02a4863442f3dabaf01d03c00cafccfe3fad172c3470a6e8b24f5220",
+      "value": [
+        "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+        "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+        "304111dd-426b-520b-a275-3fa37da1b0e0"
+      ]
+    },
+    {
+      "operationId": "MATH-MIN-0751-ORIENTATION-NORM",
+      "stage": "closure-preserving-normalization",
+      "operation": "replace",
+      "path": "/goals/4/requires",
+      "guardGoalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "guardRequiresBefore": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "guardGoalCanonicalJsonSha256": "cbaacd123ab3a2be660b0ae12854c628c164016b45afecca50729dc21624c58d",
+      "value": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "MATH-MIN-0027",
+      "decision": "bounded-normalization-proposal-pending-native-and-independent-review",
+      "reviewAuthority": "AI bounded didactic review, NOT human approval",
+      "caseSpecificReason": "Interpreting noticeable features, comparisons and trends in simple diagrams depends on correctly reading the same diagrams' axes, labels, units and values. That carrier supplies the explicit motivational entry; the source does not acquire an unrelated topic or specialised tool obligation from this carrier. Remove only the repeated orientation endpoint; retain the complete reading preparation.",
+      "reviewedWitnessContexts": [
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "goal": {
+            "id": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+            "shortKey": "canonical_math_sek1_interpret_simple_diagrams",
+            "title": "Diagramme deuten",
+            "titleEn": "Interpret Diagrams (Lower Secondary)",
+            "description": "Die lernende Person kann aus einfachen Diagrammen Auffälligkeiten, Vergleiche und erste Trends beschreiben und in Worte fassen.",
+            "descriptionEn": "The learner can describe noticeable features, comparisons, and first trends from simple diagrams and express them in words.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+              "canonical"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K4.1",
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "J6",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.SEK1.EARLY.REPRESENTATIONS.DIAGRAMS.B"
+            },
+            "contains": [],
+            "requires": [
+              "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+                "title": "Visualisierung: Diagramme deuten",
+                "url": "/assets/goal-visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Diagramme deuten.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Diagramme deuten\". Die lernende Person kann aus einfachen Diagrammen Auffälligkeiten, Vergleiche und erste Trends beschreiben und in Worte fassen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3f03058e-7f93-44ca-a08e-e22349ead59d"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+          "goal": {
+            "id": "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+            "shortKey": "canonical_math_sek1_read_simple_diagrams",
+            "title": "Diagramme lesen",
+            "titleEn": "Read Diagrams (Lower Secondary)",
+            "description": "Die lernende Person kann in einfachen Diagrammen Achsen, Beschriftungen, Einheiten und Werte sicher ablesen.",
+            "descriptionEn": "The learner can reliably read axes, labels, units, and values from simple diagrams.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+              "canonical"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K4.1"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "J6",
+              "area": "Analysis",
+              "topicCode": "CANONICAL.MATH.SEK1.EARLY.REPRESENTATIONS.DIAGRAMS.A"
+            },
+            "contains": [],
+            "requires": [
+              "c9df47fa-81a9-4890-91b7-2cc80da813cb",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+                "title": "Visualisierung: Diagramme lesen",
+                "url": "/assets/goal-visualizations/mathematik/5e7d5ff2-b92c-4989-85bc-8d87ad7edadd/5e7d5ff2-b92c-4989-85bc-8d87ad7edadd.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Diagramme lesen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Diagramme lesen\". Die lernende Person kann in einfachen Diagrammen Achsen, Beschriftungen, Einheiten und Werte sicher ablesen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3f03058e-7f93-44ca-a08e-e22349ead59d"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+          "goal": {
+            "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+            "semanticKind": "orientation",
+            "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+            "titleEn": "Why Mathematics? – Discovery, Patterns & Everyday Life",
+            "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+            "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "Motivation",
+              "Orientation",
+              "canonical",
+              "phase:SekI"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "sourceRef": "Canonical lower-secondary orientation anchor for Gymnasium mathematics in Germany",
+            "extendedData": {
+              "treeOrder": 1,
+              "orientationOutlook": {
+                "paths": [
+                  {
+                    "id": "numbers-and-quantities",
+                    "title": "Zahlen, Größen und faire Entscheidungen",
+                    "titleEn": "Numbers, quantities and fair decisions",
+                    "learningOutlook": "Du lernst, Zahlen, Terme, Prozente, Größen und Einheiten sicher zu nutzen und reale Situationen damit nachvollziehbar zu planen und zu beurteilen.",
+                    "learningOutlookEn": "You learn to use numbers, expressions, percentages, quantities and units confidently and to plan and assess real situations transparently.",
+                    "practicalContexts": [
+                      "Einkaufen, Rabatte und Verträge vergleichen",
+                      "Zeit, Wege, Flächen und Mengen planen",
+                      "Rechnungen und Behauptungen auf Plausibilität prüfen"
+                    ],
+                    "practicalContextsEn": [
+                      "Comparing purchases, discounts and contracts",
+                      "Planning time, routes, areas and quantities",
+                      "Checking calculations and claims for plausibility"
+                    ],
+                    "subtreeRootIds": [
+                      "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+                      "8034d078-facf-450c-bed6-b00b9a94f07d"
+                    ],
+                    "entryGoalIds": [
+                      "d825f7ce-e19b-594a-8181-eff199c21d93"
+                    ],
+                    "milestoneGoalIds": [
+                      "d825f7ce-e19b-594a-8181-eff199c21d93",
+                      "72b6bfa5-8e34-4029-8f85-0277207c485e",
+                      "093397e0-eec8-45bb-9a5a-a24827876df5"
+                    ]
+                  },
+                  {
+                    "id": "geometry-and-space",
+                    "title": "Formen, Räume und Bauen",
+                    "titleEn": "Shapes, space and building",
+                    "learningOutlook": "Du lernst, Figuren und Körper zu beschreiben, zu konstruieren und zu berechnen und räumliche Beziehungen mit Zeichnungen und Koordinaten zu erklären.",
+                    "learningOutlookEn": "You learn to describe, construct and calculate shapes and solids and to explain spatial relationships with drawings and coordinates.",
+                    "practicalContexts": [
+                      "Bauen, Einrichten und technische Zeichnungen",
+                      "Karten, Koordinaten und räumliche Orientierung",
+                      "Design, Symmetrie und 3D-Modelle"
+                    ],
+                    "practicalContextsEn": [
+                      "Building, furnishing and technical drawings",
+                      "Maps, coordinates and spatial orientation",
+                      "Design, symmetry and 3D models"
+                    ],
+                    "subtreeRootIds": [
+                      "ed631938-ad77-405e-ac25-b06d750b9c05",
+                      "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+                      "9710e996-f6d0-4b8b-b893-592213c91767"
+                    ],
+                    "entryGoalIds": [
+                      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+                    ],
+                    "milestoneGoalIds": [
+                      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                      "b44f038c-fb1f-527e-b9ad-382214d0328a"
+                    ]
+                  },
+                  {
+                    "id": "patterns-and-functions",
+                    "title": "Muster, Funktionen und digitale Welt",
+                    "titleEn": "Patterns, functions and the digital world",
+                    "learningOutlook": "Du lernst, veränderliche Größen in Tabellen, Graphen und Termen zu erkennen, Zusammenhänge zu beschreiben und Entwicklungen mit Funktionen vorherzusagen.",
+                    "learningOutlookEn": "You learn to recognise changing quantities in tables, graphs and expressions, describe relationships and predict developments with functions.",
+                    "practicalContexts": [
+                      "Apps, Sensoren und digitale Darstellungen verstehen",
+                      "Wachstum, Bewegung und regelmäßige Vorgänge beschreiben",
+                      "Aus Daten passende Modelle und Vorhersagen entwickeln"
+                    ],
+                    "practicalContextsEn": [
+                      "Understanding apps, sensors and digital representations",
+                      "Describing growth, motion and recurring processes",
+                      "Developing suitable models and predictions from data"
+                    ],
+                    "subtreeRootIds": [
+                      "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+                      "88f8e185-a89b-4a34-869d-766042977f38",
+                      "0756b198-0074-49d5-becd-9bb9f161a291"
+                    ],
+                    "entryGoalIds": [
+                      "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+                    ],
+                    "milestoneGoalIds": [
+                      "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+                      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+                    ]
+                  },
+                  {
+                    "id": "data-and-chance",
+                    "title": "Daten, Zufall und Risiken",
+                    "titleEn": "Data, chance and risk",
+                    "learningOutlook": "Du lernst, Daten und Diagramme kritisch zu lesen, Zufall zu modellieren und Wahrscheinlichkeiten für begründete Entscheidungen zu nutzen.",
+                    "learningOutlookEn": "You learn to read data and charts critically, model chance and use probabilities for well-founded decisions.",
+                    "practicalContexts": [
+                      "Umfragen, Statistiken und Medienberichte beurteilen",
+                      "Chancen und Risiken in Spielen und Alltag einschätzen",
+                      "Simulationen nutzen, wenn exakte Vorhersagen unmöglich sind"
+                    ],
+                    "practicalContextsEn": [
+                      "Assessing surveys, statistics and media reports",
+                      "Estimating chances and risks in games and everyday life",
+                      "Using simulations when exact predictions are impossible"
+                    ],
+                    "subtreeRootIds": [
+                      "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+                      "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+                      "3823e90d-a34b-46d2-a0f8-3168138d3a95"
+                    ],
+                    "entryGoalIds": [
+                      "91571d3f-3651-4477-ba21-320fc4077453"
+                    ],
+                    "milestoneGoalIds": [
+                      "91571d3f-3651-4477-ba21-320fc4077453",
+                      "acbb7e26-f85f-405b-a3e5-affa6add6711",
+                      "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+                    ]
+                  }
+                ]
+              }
+            },
+            "contains": [],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2",
+                "K3",
+                "K4"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2",
+                "L3",
+                "L4",
+                "L5"
+              ],
+              "phase": "GLOBAL",
+              "area": "Mathematik",
+              "topicCode": "CANONICAL.MATH.SEK1.ORIENTATION"
+            },
+            "shortKey": "canonical_math_why_sek1",
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "65365dce-f33f-49d8-9516-42f75883aa86",
+                "title": "Visualisierung: Warum Mathematik? – Entdecken, Muster & Alltag",
+                "url": "/assets/goal-visualizations/mathematik/65365dce-f33f-49d8-9516-42f75883aa86/65365dce-f33f-49d8-9516-42f75883aa86.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Warum Mathematik? – Entdecken, Muster & Alltag.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Entdecken, Muster & Alltag\". Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c01b1ce9-a667-4a46-b251-ec33ae602b15"
+          ]
+        }
+      ],
+      "witnessKeys": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "witnessHops": [
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c2ddfcd-1399-41ad-aaed-4f061812602a",
+          "mode": "direct"
+        },
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5e7d5ff2-b92c-4989-85bc-8d87ad7edadd",
+          "mode": "direct"
+        }
+      ],
+      "sourceGoalCanonicalSha256": "31ef7b817b843faf388a94b8390d7b6ed5e69b2f7a610c8ed10c3d08288999cd",
+      "scopeLimit": "This judges only the retained displayed carrier and removal of the repeated orientation edge. It does not approve every other existing prerequisite, content artifact or whole curriculum.",
+      "sourceGoalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+    },
+    {
+      "caseId": "MATH-MIN-0745",
+      "decision": "bounded-normalization-proposal-pending-native-and-independent-review",
+      "reviewAuthority": "AI bounded didactic review, NOT human approval",
+      "caseSpecificReason": "The source explicitly requires verifying a computed inverse by multiplication with the original matrix and checking the identity matrix. Matrix products, dimension compatibility and order are the actual operation used in that verification, rather than a coincident topic. The retained multiplication goal still directly demands the orientation; no substantive mathematical prerequisite is removed.",
+      "reviewedWitnessContexts": [
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+          "goal": {
+            "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+            "title": "Einfache inverse Matrizen bestimmen",
+            "titleEn": "Determine simple inverse matrices",
+            "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+            "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "contains": [],
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+              "304111dd-426b-520b-a275-3fa37da1b0e0"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "semanticAtomic": true,
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+                "title": "Visualisierung: Einfache inverse Matrizen bestimmen",
+                "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Einfache inverse Matrizen bestimmen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen die Inverse bestimmen und das Ergebnis durch Multiplikation prüfen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c9b5958d-6cee-503c-be48-6eb8053ca9b9"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+          "goal": {
+            "id": "304111dd-426b-520b-a275-3fa37da1b0e0",
+            "title": "Matrizen multiplizieren",
+            "titleEn": "Multiply matrices",
+            "description": "Die lernende Person kann Matrizenprodukte berechnen, Dimensionsbedingungen prüfen und typische Fehlerquellen bei der Reihenfolge vermeiden.",
+            "descriptionEn": "The learner can compute matrix products, check dimension conditions, and avoid common order errors.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "contains": [],
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "semanticAtomic": true,
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+                "title": "Visualisierung: Matrizen multiplizieren",
+                "url": "/assets/goal-visualizations/mathematik/304111dd-426b-520b-a275-3fa37da1b0e0/304111dd-426b-520b-a275-3fa37da1b0e0.png",
+                "provider": "OpenAI / ChatGPT-Codex image generation (image_gen)",
+                "description": "Visualisierung zum Lernziel: Matrizen multiplizieren.",
+                "altText": "A = [1, 2, 0; 3, 1, 2] hat Größe 2×3, B = [2, 1; 0, 3; 4, 2] Größe 3×2. Zeile mal Spalte liefert AB = [2, 7; 14, 10], etwa c12 = 1·1+2·3+0·2 = 7. Auch BA ist definiert, aber 3×3: [5, 5, 2; 9, 3, 6; 10, 10, 4].",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c9b5958d-6cee-503c-be48-6eb8053ca9b9"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "goal": {
+            "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "semanticKind": "orientation",
+            "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+            "titleEn": "Why Mathematics? – Thinking, Patterns & Future",
+            "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+            "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "Motivation",
+              "Orientation",
+              "canonical"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "extendedData": {
+              "treeOrder": 1,
+              "orientationOutlook": {
+                "paths": [
+                  {
+                    "id": "change-and-models",
+                    "title": "Veränderung, Wachstum und Modelle",
+                    "titleEn": "Change, growth and models",
+                    "learningOutlook": "Du lernst, Funktionen in verschiedenen Darstellungen zu lesen, Änderungsraten und Integrale zu deuten und mit Differenzialgleichungen sowie Parametern reale Entwicklungen zu modellieren.",
+                    "learningOutlookEn": "You learn to read functions in different representations, interpret rates of change and integrals, and model real developments with differential equations and parameters.",
+                    "practicalContexts": [
+                      "Wachstum, Klima, Epidemien und wirtschaftliche Entwicklungen modellieren",
+                      "Bewegungen, Verbräuche und optimale Entscheidungen untersuchen",
+                      "Algorithmen, Datenmodelle und Vorhersagen in Smartphone und KI besser verstehen"
+                    ],
+                    "practicalContextsEn": [
+                      "Modelling growth, climate, epidemics and economic developments",
+                      "Investigating motion, consumption and optimal decisions",
+                      "Understanding algorithms, data models and predictions in smartphones and AI"
+                    ],
+                    "subtreeRootIds": [
+                      "a668ea17-9226-4074-8f8e-051acbe839eb",
+                      "c8951a07-a3e7-59d2-8a23-dce545dd811a",
+                      "6c8a677b-ede8-5c2c-86d8-0ef0be8ace28"
+                    ],
+                    "entryGoalIds": [
+                      "8dd9f210-2683-5902-acab-e3be22725232",
+                      "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+                      "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+                    ],
+                    "milestoneGoalIds": [
+                      "8dd9f210-2683-5902-acab-e3be22725232",
+                      "2afba4a2-287d-5e8f-aeee-a3bcf8652236",
+                      "5fe4218e-4fb0-5339-8764-c989befa244e",
+                      "993a14e8-60f0-5764-9340-b2447a5fa84b"
+                    ]
+                  },
+                  {
+                    "id": "space-and-linear-algebra",
+                    "title": "Räume, Vektoren und lineare Abbildungen",
+                    "titleEn": "Space, vectors and linear transformations",
+                    "learningOutlook": "Du lernst, Punkte, Geraden und Ebenen mit Vektoren zu beschreiben, Winkel und Abstände zu bestimmen und geometrische Veränderungen mit Matrizen und Projektionen zu verstehen.",
+                    "learningOutlookEn": "You learn to describe points, lines and planes with vectors, determine angles and distances, and understand geometric change with matrices and projections.",
+                    "practicalContexts": [
+                      "Navigation, Robotik und Bewegungen im Raum",
+                      "3D-Grafik, Bildverarbeitung und technische Konstruktion",
+                      "Architektur, Vermessung und räumliche Modellierung"
+                    ],
+                    "practicalContextsEn": [
+                      "Navigation, robotics and motion in space",
+                      "3D graphics, image processing and technical construction",
+                      "Architecture, surveying and spatial modelling"
+                    ],
+                    "subtreeRootIds": [
+                      "98dcf9bd-d119-5eb1-835c-7d719f67b485"
+                    ],
+                    "entryGoalIds": [
+                      "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+                    ],
+                    "milestoneGoalIds": [
+                      "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                      "9460c3ff-e72d-4107-bc73-087d217200aa",
+                      "bd3576b8-f4e5-542a-a8a2-74524d9cee21"
+                    ]
+                  },
+                  {
+                    "id": "data-and-decisions",
+                    "title": "Daten, Zufall und begründete Entscheidungen",
+                    "titleEn": "Data, chance and evidence-based decisions",
+                    "learningOutlook": "Du lernst, Daten aufzubereiten, Zufallsmodelle und Verteilungen zu nutzen und mit Hypothesentests sowie Konfidenzintervallen die Aussagekraft von Ergebnissen kritisch einzuschätzen.",
+                    "learningOutlookEn": "You learn to prepare data, use random models and distributions, and critically assess evidence with hypothesis tests and confidence intervals.",
+                    "practicalContexts": [
+                      "Medizinische Tests und Studienergebnisse beurteilen",
+                      "Risiken, Qualitätskontrollen und Prognosen einordnen",
+                      "Umfragen, A/B-Tests und datenbasierte Entscheidungen kritisch prüfen"
+                    ],
+                    "practicalContextsEn": [
+                      "Assessing medical tests and study results",
+                      "Interpreting risks, quality controls and forecasts",
+                      "Critically checking surveys, A/B tests and data-driven decisions"
+                    ],
+                    "subtreeRootIds": [
+                      "3e937f39-1187-58b3-96c3-ec39278c0e3c"
+                    ],
+                    "entryGoalIds": [
+                      "508292f2-671b-4fd3-acbf-53d705e44693"
+                    ],
+                    "milestoneGoalIds": [
+                      "83a5546e-0ea6-576e-83e2-3387b30872bb",
+                      "e495fa38-b198-5280-a405-9e41cafd6d17",
+                      "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+                      "5c9ac68c-3928-518c-bbe0-e044667035a6"
+                    ]
+                  }
+                ]
+              }
+            },
+            "contains": [],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K3"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2",
+                "L3",
+                "L4",
+                "L5"
+              ],
+              "phase": "E"
+            },
+            "shortKey": "canonical_math_why",
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+                "title": "Visualisierung: Warum Mathematik? – Denken, Muster & Zukunft",
+                "url": "/assets/goal-visualizations/mathematik/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2/71cec9fb-3751-4d61-8b34-c5adbbf6e5f2.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Warum Mathematik? – Denken, Muster & Zukunft.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Denken, Muster & Zukunft\". Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c01b1ce9-a667-4a46-b251-ec33ae602b15"
+          ]
+        }
+      ],
+      "witnessKeys": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "witnessHops": [
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ce198bc9-b014-52ba-814f-25cc3e020668",
+          "mode": "direct"
+        },
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:304111dd-426b-520b-a275-3fa37da1b0e0",
+          "mode": "direct"
+        }
+      ],
+      "sourceGoalCanonicalSha256": "371241ff02a4863442f3dabaf01d03c00cafccfe3fad172c3470a6e8b24f5220",
+      "scopeLimit": "This judges only the retained displayed carrier and removal of the repeated orientation edge. It does not approve every other existing prerequisite, content artifact or whole curriculum.",
+      "sourceGoalId": "ce198bc9-b014-52ba-814f-25cc3e020668"
+    },
+    {
+      "caseId": "MATH-MIN-0751",
+      "decision": "bounded-normalization-proposal-pending-native-and-independent-review",
+      "reviewAuthority": "AI bounded didactic review, NOT human approval",
+      "caseSpecificReason": "Ordering and comparing integers extends the existing natural-number comparison/order competence, including its positive-number domain. The retained carrier is the same mathematical comparison operation on the earlier number domain, not a larger specialist topic. Its direct motivational entry remains; only the repeated orientation edge is proposed for removal.",
+      "reviewedWitnessContexts": [
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "goal": {
+            "id": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+            "shortKey": "canonical_math_sek1_j5_integers_order_number_line",
+            "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+            "titleEn": "Order integers and represent them on the number line",
+            "description": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+            "descriptionEn": "The learner can represent integers, including zero, on the number line, compare them, and order them with justification in everyday contexts.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+              "canonical"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K3.1",
+                "K4.1"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "J5",
+              "area": "Arithmetic",
+              "topicCode": "CANONICAL.MATH.SEK1.J5.1A.ORDER"
+            },
+            "contains": [],
+            "requires": [
+              "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+                "title": "Visualisierung: Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+                "url": "/assets/goal-visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Ganze Zahlen ordnen und an der Zahlengeraden darstellen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Ganze Zahlen ordnen und an der Zahlengeraden darstellen\". Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8dd5199b-f614-4ebd-8819-b5ff37326524"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "goal": {
+            "id": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+            "shortKey": "canonical_math_sek1_j5_natural_numbers_order_compare",
+            "title": "Natürliche Zahlen ordnen und vergleichen",
+            "titleEn": "Order and compare natural numbers",
+            "description": "Die lernende Person kann natürliche Zahlen begründet vergleichen, der Größe nach ordnen und Vergleichsaussagen mit passenden Relationszeichen notieren.",
+            "descriptionEn": "The learner can justify comparisons of natural numbers, order them by size, and record comparison statements using suitable relation symbols.",
+            "core": true,
+            "weight": 1,
+            "tags": [
+              "canonical"
+            ],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K3.1",
+                "K4.1"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "J5",
+              "area": "Arithmetic",
+              "topicCode": "CANONICAL.MATH.SEK1.J5.1B.ORDER"
+            },
+            "contains": [],
+            "requires": [
+              "cf474eab-1379-4877-907e-58b0892ce734",
+              "65365dce-f33f-49d8-9516-42f75883aa86"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+                "title": "Visualisierung: Natürliche Zahlen ordnen und vergleichen",
+                "url": "/assets/goal-visualizations/mathematik/9ef6c4fa-b97a-5d7a-86c1-96690f02d916/9ef6c4fa-b97a-5d7a-86c1-96690f02d916.jpg",
+                "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+                "description": "Visualisierung zum Lernziel: Natürliche Zahlen ordnen und vergleichen.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Natürliche Zahlen ordnen und vergleichen\". Die lernende Person kann natürliche Zahlen begründet vergleichen, der Größe nach ordnen und Vergleichsaussagen mit passenden Relationszeichen notieren.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8dd5199b-f614-4ebd-8819-b5ff37326524"
+          ]
+        },
+        {
+          "key": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+          "goal": {
+            "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+            "semanticKind": "orientation",
+            "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+            "titleEn": "Why Mathematics? – Discovery, Patterns & Everyday Life",
+            "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+            "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "Motivation",
+              "Orientation",
+              "canonical",
+              "phase:SekI"
+            ],
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "sourceRef": "Canonical lower-secondary orientation anchor for Gymnasium mathematics in Germany",
+            "extendedData": {
+              "treeOrder": 1,
+              "orientationOutlook": {
+                "paths": [
+                  {
+                    "id": "numbers-and-quantities",
+                    "title": "Zahlen, Größen und faire Entscheidungen",
+                    "titleEn": "Numbers, quantities and fair decisions",
+                    "learningOutlook": "Du lernst, Zahlen, Terme, Prozente, Größen und Einheiten sicher zu nutzen und reale Situationen damit nachvollziehbar zu planen und zu beurteilen.",
+                    "learningOutlookEn": "You learn to use numbers, expressions, percentages, quantities and units confidently and to plan and assess real situations transparently.",
+                    "practicalContexts": [
+                      "Einkaufen, Rabatte und Verträge vergleichen",
+                      "Zeit, Wege, Flächen und Mengen planen",
+                      "Rechnungen und Behauptungen auf Plausibilität prüfen"
+                    ],
+                    "practicalContextsEn": [
+                      "Comparing purchases, discounts and contracts",
+                      "Planning time, routes, areas and quantities",
+                      "Checking calculations and claims for plausibility"
+                    ],
+                    "subtreeRootIds": [
+                      "6e28d5ad-5f18-4a26-8a9e-9ea7e50b0fbb",
+                      "8034d078-facf-450c-bed6-b00b9a94f07d"
+                    ],
+                    "entryGoalIds": [
+                      "d825f7ce-e19b-594a-8181-eff199c21d93"
+                    ],
+                    "milestoneGoalIds": [
+                      "d825f7ce-e19b-594a-8181-eff199c21d93",
+                      "72b6bfa5-8e34-4029-8f85-0277207c485e",
+                      "093397e0-eec8-45bb-9a5a-a24827876df5"
+                    ]
+                  },
+                  {
+                    "id": "geometry-and-space",
+                    "title": "Formen, Räume und Bauen",
+                    "titleEn": "Shapes, space and building",
+                    "learningOutlook": "Du lernst, Figuren und Körper zu beschreiben, zu konstruieren und zu berechnen und räumliche Beziehungen mit Zeichnungen und Koordinaten zu erklären.",
+                    "learningOutlookEn": "You learn to describe, construct and calculate shapes and solids and to explain spatial relationships with drawings and coordinates.",
+                    "practicalContexts": [
+                      "Bauen, Einrichten und technische Zeichnungen",
+                      "Karten, Koordinaten und räumliche Orientierung",
+                      "Design, Symmetrie und 3D-Modelle"
+                    ],
+                    "practicalContextsEn": [
+                      "Building, furnishing and technical drawings",
+                      "Maps, coordinates and spatial orientation",
+                      "Design, symmetry and 3D models"
+                    ],
+                    "subtreeRootIds": [
+                      "ed631938-ad77-405e-ac25-b06d750b9c05",
+                      "5ecf51c3-07bd-44fb-9862-5f2e5f2a99d1",
+                      "9710e996-f6d0-4b8b-b893-592213c91767"
+                    ],
+                    "entryGoalIds": [
+                      "25593605-5e13-55cc-9a05-8f3d737e15e9"
+                    ],
+                    "milestoneGoalIds": [
+                      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+                      "b44f038c-fb1f-527e-b9ad-382214d0328a"
+                    ]
+                  },
+                  {
+                    "id": "patterns-and-functions",
+                    "title": "Muster, Funktionen und digitale Welt",
+                    "titleEn": "Patterns, functions and the digital world",
+                    "learningOutlook": "Du lernst, veränderliche Größen in Tabellen, Graphen und Termen zu erkennen, Zusammenhänge zu beschreiben und Entwicklungen mit Funktionen vorherzusagen.",
+                    "learningOutlookEn": "You learn to recognise changing quantities in tables, graphs and expressions, describe relationships and predict developments with functions.",
+                    "practicalContexts": [
+                      "Apps, Sensoren und digitale Darstellungen verstehen",
+                      "Wachstum, Bewegung und regelmäßige Vorgänge beschreiben",
+                      "Aus Daten passende Modelle und Vorhersagen entwickeln"
+                    ],
+                    "practicalContextsEn": [
+                      "Understanding apps, sensors and digital representations",
+                      "Describing growth, motion and recurring processes",
+                      "Developing suitable models and predictions from data"
+                    ],
+                    "subtreeRootIds": [
+                      "5c6b7342-0f67-4b4c-894d-fd83a6df64b3",
+                      "88f8e185-a89b-4a34-869d-766042977f38",
+                      "0756b198-0074-49d5-becd-9bb9f161a291"
+                    ],
+                    "entryGoalIds": [
+                      "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+                    ],
+                    "milestoneGoalIds": [
+                      "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+                      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                      "3e4032bd-4d8c-4e72-bfdd-64a34df053c9"
+                    ]
+                  },
+                  {
+                    "id": "data-and-chance",
+                    "title": "Daten, Zufall und Risiken",
+                    "titleEn": "Data, chance and risk",
+                    "learningOutlook": "Du lernst, Daten und Diagramme kritisch zu lesen, Zufall zu modellieren und Wahrscheinlichkeiten für begründete Entscheidungen zu nutzen.",
+                    "learningOutlookEn": "You learn to read data and charts critically, model chance and use probabilities for well-founded decisions.",
+                    "practicalContexts": [
+                      "Umfragen, Statistiken und Medienberichte beurteilen",
+                      "Chancen und Risiken in Spielen und Alltag einschätzen",
+                      "Simulationen nutzen, wenn exakte Vorhersagen unmöglich sind"
+                    ],
+                    "practicalContextsEn": [
+                      "Assessing surveys, statistics and media reports",
+                      "Estimating chances and risks in games and everyday life",
+                      "Using simulations when exact predictions are impossible"
+                    ],
+                    "subtreeRootIds": [
+                      "728db43c-cf11-4fb6-b1dc-27e76573bcfc",
+                      "a66c8d6d-8f3c-4e15-855a-019186e5eee4",
+                      "3823e90d-a34b-46d2-a0f8-3168138d3a95"
+                    ],
+                    "entryGoalIds": [
+                      "91571d3f-3651-4477-ba21-320fc4077453"
+                    ],
+                    "milestoneGoalIds": [
+                      "91571d3f-3651-4477-ba21-320fc4077453",
+                      "acbb7e26-f85f-405b-a3e5-affa6add6711",
+                      "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+                    ]
+                  }
+                ]
+              }
+            },
+            "contains": [],
+            "requires": [],
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2",
+                "K3",
+                "K4"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2",
+                "L3",
+                "L4",
+                "L5"
+              ],
+              "phase": "GLOBAL",
+              "area": "Mathematik",
+              "topicCode": "CANONICAL.MATH.SEK1.ORIENTATION"
+            },
+            "shortKey": "canonical_math_why_sek1",
+            "type": "atomic",
+            "resourceLinks": [
+              {
+                "type": "goal-visualization",
+                "resourceType": "image",
+                "role": "primary",
+                "skillpilotId": "65365dce-f33f-49d8-9516-42f75883aa86",
+                "title": "Visualisierung: Warum Mathematik? – Entdecken, Muster & Alltag",
+                "url": "/assets/goal-visualizations/mathematik/65365dce-f33f-49d8-9516-42f75883aa86/65365dce-f33f-49d8-9516-42f75883aa86.jpg",
+                "provider": "Google Gemini / Nano Banana Pro",
+                "description": "Visualisierung zum Lernziel: Warum Mathematik? – Entdecken, Muster & Alltag.",
+                "altText": "Didaktische Visualisierung zum Lernziel \"Warum Mathematik? – Entdecken, Muster & Alltag\". Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge.",
+                "lang": "de",
+                "license": "AI-generated, SkillPilot-curated",
+                "reviewStatus": "pilot"
+              }
+            ]
+          },
+          "containsParents": [
+            "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c01b1ce9-a667-4a46-b251-ec33ae602b15"
+          ]
+        }
+      ],
+      "witnessKeys": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "witnessHops": [
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+          "mode": "direct"
+        },
+        {
+          "fromKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "toKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+          "authoredOriginKey": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "mode": "direct"
+        }
+      ],
+      "sourceGoalCanonicalSha256": "cbaacd123ab3a2be660b0ae12854c628c164016b45afecca50729dc21624c58d",
+      "scopeLimit": "This judges only the retained displayed carrier and removal of the repeated orientation edge. It does not approve every other existing prerequisite, content artifact or whole curriculum.",
+      "sourceGoalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+    }
+  ],
+  "catalogSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "a3994ef18ce0f7e060f1d4d63370af2d04e76c489e1785913a60fdf3e1cf686f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "da6392e33d698952cc287ba7c5d4cf7464c5832f301225de1f002aa3802b3237"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "effc98ba4f4bf67b4edd8cff48a5b9962a10493521db24fa2a98eac73c0c1498"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "ecea21e7bcf5a7f5e84a75ac440013fffe306916fa181b338940bca1c648711e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "0b0fa8e4573b27113502ed1e1dc3561a8012da31169860c9570f5a3d13261162"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "e1719316bdacf2a874b23ee06ed77192ce71831781309991ddc26ba0e49faf1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "3a60e7ba51cac98666f3943cee3ebb77c129c653f9fdde9f4c09bb20446da9b3"
+    }
+  ],
+  "graphHelper": {
+    "path": "docs/dev/ci-graph-repairs/verify_german_minimality_review.py",
+    "sha256": "18a3fa5de10a12c4dee59477c4857cb7aee7d32088460850e62fb506e5578303"
+  },
+  "independentPeer": {
+    "path": "docs/dev/ci-graph-repairs/math-orientation-three-independent-review-2026-11-06.json",
+    "sha256": "34b9a418e4afa57e40434797c753b7804c1e728df6f1288c322d5f8b29bd4c72"
+  },
+  "historicalProposal": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-peer/original-proposal-and-global-proof.json",
+    "sha256": "48c260c9cc45baac98ee46352482d5f167fe1381e7943b19e1cd28a23741156d"
+  },
+  "smallCompleteComparisonEvidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/scope-comparison.json",
+      "sha256": "c40499acc8374464327cd48aea2330e789db1a852a5c7e7ab59c23cd51ec5804",
+      "bytes": 36013
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/consumer-comparison.json",
+      "sha256": "9841aac87cdc4e7fab51dab0d62af24aead46390be5dd9397b9b6dcb5b418d7e",
+      "bytes": 29295
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/fields-and-negative-controls.json",
+      "sha256": "42f39c9f68d6a9810df4f0e21b7481ecd143067b0b77217c23646119bca8a749",
+      "bytes": 1096
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/evidence-impact.json",
+      "sha256": "e435113958fc9068c0753a3bff50c2c3e079f7fc6918881bfd715c59c83dff41",
+      "bytes": 113001
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/native-scope-execution.json",
+      "sha256": "8b37b516463e630278c4183343060ff8231467b9d658720da479d1a737b97af0",
+      "bytes": 6227
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/consumer-execution.json",
+      "sha256": "eabefd93294fb80de754ff9c09cbc2c82a13a5dd1cc568cd15bc0164793d77a9",
+      "bytes": 155319
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/native-compile.json",
+      "sha256": "e73a43eeb57d30cc6051333e07bd8cc2081d649c470f39d69ed8568e32ba0743",
+      "bytes": 30788
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/storage-inventory.json",
+      "sha256": "845f910b75fbbf18141ae8b35ca436e911a1a375791d9024a889c3a321268a14",
+      "bytes": 6073
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/split-layout-candidate-guard.json",
+      "sha256": "be6e605d87318d5175943a0d55e0d8db50442b4572f6a7eb62153ee1e8c33188",
+      "bytes": 1204
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/split-layout-candidate-guard.txt",
+      "sha256": "e0c0e24b8233ee5d34bc5c24b155114ee7c6a4461a83c6182f75ca29ae4f76d6",
+      "bytes": 679
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/current-eighteen-layout-output-pins.json",
+      "sha256": "c6f5e84b4c70ab2db67d8e98cc57712fe26aa909b9f801f4930039ee87fe9bb2",
+      "bytes": 4159
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/positive-replacement-plan.json",
+      "sha256": "fdeed1bda1b6a0759ada68983d8807c235a0018a21bcead9511a512db7a074b8",
+      "bytes": 23334
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/positive-plan-execution.json",
+      "sha256": "27915bc0152949bdbd2d059c643b26bbe37b79eef479a5199c578b9ccfbcf0f7",
+      "bytes": 1380
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/reconstruct-and-verify.json",
+      "sha256": "935c1cfd2ca45f224081cd75b8a6befec874654bf514ecdf080a4912fdac2b4e",
+      "bytes": 1895
+    }
+  ],
+  "originalProbeBytes": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/native-scope.mts",
+      "sha256": "621e32acd8e655bebabdac4453dd836096e5be5a4f2739c5be3f17b4e18b090a"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/run-native-scopes.py",
+      "sha256": "f4d79ce3efac2cf2d054572c036badeef578d694f83ec79497e8b29aa9a6c2a7"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/MathOrientationConsumerProbe.java",
+      "sha256": "a719b72df0c566fa9d79acdefa346f71c5a79bfb272f640ca1332b70156253d0"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/run-native-consumers.py",
+      "sha256": "1f6f8a7c6b21d1fa226a9cdfafaf211cb6d5697ab208c73f7fe8c4f9a6efe8cf"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/consumer-requests.json",
+      "sha256": "725514bd6fe599a1d2aee82a36f653414eca94feb1e187be30285ec2c2063880"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/compare-scopes.py",
+      "sha256": "e60d0c480a6a408c38a02b2884d98f579f39cac6604fadbee15ddc4ad25c669d"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/compare-consumers.py",
+      "sha256": "c9ce9b05d28d5ecd12cb20e27990f832a11d751b3db2a545c7173fd612e8acda"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/original-measurement-probes/inspect_evidence.mts",
+      "sha256": "0fd26cf3dff74ddb739060d78e40f16d55c98b2c5b03319c46aaa0fae53d2795"
+    }
+  ],
+  "fullResultsRemainLocal": {
+    "rawBytes": 351389489,
+    "gzipBytes": 74073389,
+    "inventoryPath": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/storage-inventory.json",
+    "inventorySha256": "845f910b75fbbf18141ae8b35ca436e911a1a375791d9024a889c3a321268a14",
+    "noLargeDuplicateCopy": true
+  },
+  "applicationProcedure": [
+    {
+      "step": 1,
+      "action": "Reverify exact source SHA, all21catalog pins, three goal payload/array guards, unchanged QA bytes and independent reviews. Never transplant onto a changed source."
+    },
+    {
+      "step": 2,
+      "action": "Only after explicit Root coordination, construct exactly b215 candidate and use private inode, fsync, mode0644 and os.replace. Verify exactly three requires pointers and all other fields equal; do not edit live files in place or touch aliases, mastery, applicability, QA, views or policy."
+    },
+    {
+      "step": 3,
+      "action": "Record a separate application receipt and immediately run native strict graph, scope/applicability/route and freshness consumers. Keep this proposal unchanged."
+    }
+  ],
+  "integrationHolds": [
+    "Three D/P/Kind bindings are stale on candidate. Prepare genuine new reviews; never replace old row fingerprints.",
+    "Math-duration split plan binds the whole da47 source. Its input binding needs a distinct guarded technical follow-up before a future applied candidate can pass its unchanged check. No policy change is included here.",
+    "The914 remainingG17 and2G01a failures remain. NoM6/M7 or floor restoration is claimed."
+  ],
+  "activeWritesAuthorized": false,
+  "positiveReplacementPlan": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/positive-replacement-plan.json",
+    "sha256": "fdeed1bda1b6a0759ada68983d8807c235a0018a21bcead9511a512db7a074b8",
+    "requiresActualFreshPAuthorshipBeforeReadiness": true
+  },
+  "nativeBlindDescriptionPreparation": {
+    "path": "docs/dev/ci-graph-repairs/math-three-description-input-preparation-2026-11-06.json",
+    "sha256": "80df58840a08885c619ee58bd32b70db04b004cda96278308ff1162a767ab340",
+    "reviewInputsOnlyNoReviewPass": true
+  },
+  "reconstructor": {
+    "path": "docs/dev/ci-graph-repairs/prepare_math_orientation_three_normalization.py",
+    "sha256": "ec7f7039f83b2a9f7122cc7ea24acae1a6bdb5edc5be87c03e72811a0cb04c2c",
+    "actualReplay": "qa-artifacts/ci-contract-audit/2026-11-06/math-orientation-three-normalization-plan/reconstruct-and-verify.json",
+    "actualExitCode": 0,
+    "noLiveApplicationMode": true
+  }
+}

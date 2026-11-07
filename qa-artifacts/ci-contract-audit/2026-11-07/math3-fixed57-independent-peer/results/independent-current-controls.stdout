@@ -1,0 +1,95 @@
+{
+  "kind": "independent-bounded-current57-component-controls",
+  "positives": 4,
+  "negativeCases": 9,
+  "copiedExpectationNegatives": 8,
+  "cases": [
+    {
+      "case": "genuine-current-or-retained-ce198bc9-b014-52ba-814f-25cc3e020668",
+      "outcome": "native-pass-and-copied-expectation-rejected",
+      "issues": []
+    },
+    {
+      "case": "genuine-current-or-retained-d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "outcome": "native-pass-and-copied-expectation-rejected",
+      "issues": []
+    },
+    {
+      "case": "genuine-current-or-retained-0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "outcome": "native-pass-and-copied-expectation-rejected",
+      "issues": []
+    },
+    {
+      "case": "genuine-current-or-retained-922d89fc-1cbd-56e9-ac5d-5cb59085de6c",
+      "outcome": "native-pass-and-copied-expectation-rejected",
+      "issues": []
+    },
+    {
+      "case": "cached-index-byte-change",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: External visualization context index changed"
+      ]
+    },
+    {
+      "case": "cached-receipt-byte-change",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: Context receipt byte hash differs"
+      ]
+    },
+    {
+      "case": "actual-publicAssetPath-byte-change",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: current actual image bytes differ"
+      ]
+    },
+    {
+      "case": "actual-canonicalAssetPath-byte-change",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: current actual image bytes differ"
+      ]
+    },
+    {
+      "case": "actual-current-EN-source-change",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "case": "AI-no-cannot-be-replaced-by-human-yes",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: current image/AI approval preconditions are incomplete"
+      ]
+    },
+    {
+      "case": "no-primary-role",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: current image/AI approval preconditions are incomplete"
+      ]
+    },
+    {
+      "case": "DE-display-relabel-is-not-original-review",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "case": "caller-nominated-unqualified-goal",
+      "outcome": "native-rejected",
+      "issues": [
+        "mathematik: 00000000-0000-4000-8000-000000000099: Missing immutable reviewed-context receipt"
+      ]
+    }
+  ],
+  "actualSourceSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+  "actualIndexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+  "hostWrites": false,
+  "currentVIsNotHumanOrWholeM7Approval": true
+}

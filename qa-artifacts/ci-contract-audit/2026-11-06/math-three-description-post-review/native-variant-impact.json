@@ -1,0 +1,406 @@
+{
+  "status": "read-only-native-fingerprint-impact-not-review-transport",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "recordPins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-a/results/mathematik-three-targets-20261106-v1-first-pass-a.batch-001.records.jsonl",
+      "sha256": "de9520b16f05596f0332586c470fe6fc8fd4f8a3822f08b96826a6237e8bc800"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-three-description-input-2026-11-06/packet/round-b/results/mathematik-three-targets-20261106-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "fb50ceb9962f42cf21b7bc10706b2d37ff12699bba33a69f5f78277d09951ce2"
+    }
+  ],
+  "ledger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+    "sha256": "78a5f2d9b4f48f35f2871b2c8b59f51c60bea5e2e2dde7857f6bdad85672472b"
+  },
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "sha256": "90d5511603dc1d31fa33161b7f0a7425469c48e16dd03b96619a0ecb0bd92f9b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "sha256": "5e1e071231587496e7bd5ecab4a8bee07fa51eea1db08d39f2112b0ef7e0fa1e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "1961b30115afcaf8cc83d965ff54e17ba6c88948e1d53c54522a6e61681b4c55"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "48e7ce0988922b086e654eb534686b8fd705ad4b0a6226b3babe71d65639e0ad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "sha256": "b14bbb860e2e325eed7f42c970dd43a2e4b8735179ee45a37ccb6c71a5d836f7"
+    }
+  ],
+  "nativeFingerprintExtraction": [
+    {
+      "sourcePin": {
+        "path": "app/scripts/semanticAtomicityReview.ts",
+        "sha256": "b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+      },
+      "selectedDeclarationsSha256": "a1d14e0b3603e3c0800b5ba7a1ba6e4a180018d1a6890d7851456a9a69337193",
+      "functionNames": [
+        "normalizeText",
+        "stableJson",
+        "getSemanticPayload",
+        "fingerprintGoal"
+      ]
+    },
+    {
+      "sourcePin": {
+        "path": "app/scripts/memoryCardReview.ts",
+        "sha256": "e42b154d8557e4ccff249c7cb41ac26b7c40560dd150dbd3255923cd038446f5"
+      },
+      "selectedDeclarationsSha256": "9bf87facbdd4f90854054b73772cfca3f21c323299c948b706bbd1aba3199d5d",
+      "functionNames": [
+        "normalizeText",
+        "stableJson",
+        "fingerprintGoal"
+      ]
+    }
+  ],
+  "nativeImports": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "6bb140e098d39f61ae901c6a10cbf6980e3e9f6c450f9776e0fec01630efad9f"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "sha256": "50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    }
+  ],
+  "rows": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "currentARecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "fingerprint": "sha256:b9cb153cec54816f8fc4a166c24e1bc6660f3c7329ef48effd24bbbffbd4390a",
+        "reviewedAt": "2026-05-04",
+        "reviewer": "codex",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reason": "Sek-I-J6-Review: Eine einzelne Diagrammdeutungsroutine.",
+        "suggestedSplit": []
+      },
+      "currentMRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "fingerprint": "sha256:8d65b7fb70991eba9d01fef381143efaa6f8fce293f30e175c07825105807ded",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-05-17",
+        "reviewer": "codex-memory-pilot",
+        "reason": "Konservative Pilotentscheidung: Dieses Lernziel wird primär durch Verstehen, Anwenden und Aufgabenpraxis verankert; ein eigenes Memory-Deck wäre hier nicht gerechtfertigt."
+      },
+      "primaryCardRecordsReferencingGoal": [],
+      "positiveConfig": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.config.json",
+        "sha256": "d58835be8a3b664a5c5fd6eb26dbf87d64a0e3fbd5abe616c51a79d5735b2c7e"
+      },
+      "positiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/m7-functions-diagrams-next10-p-20260923-v1/image-bound-six.review.jsonl",
+        "sha256": "80ae6f3df74523ebe402365b7823afc7240fa266e69d1ddc2b39885a16945839"
+      },
+      "resourceDigests": {
+        "/assets/goal-visualizations/mathematik/0c2ddfcd-1399-41ad-aaed-4f061812602a/0c2ddfcd-1399-41ad-aaed-4f061812602a.jpg": "sha256:8090330079dfc1c4ec5752b0991a13bde32b0a95b2e820c8cea7722930284f2f"
+      },
+      "measurements": {
+        "live": {
+          "semanticKindFingerprint": "sha256:edf990dca4dbc9ebbf0890f554826bc06eaf0610808ea7bfea34d2a7de024184",
+          "A": "sha256:b9cb153cec54816f8fc4a166c24e1bc6660f3c7329ef48effd24bbbffbd4390a",
+          "M": "sha256:8d65b7fb70991eba9d01fef381143efaa6f8fce293f30e175c07825105807ded",
+          "PGoal": "sha256:1f35bdd0fdeb1e323839fe9b3bd004dd894bd0a14a228ba9fededc72c35fa2e9",
+          "PReviewInput": "sha256:aef17c3f485d4b322aa111ef937f7cc7e3d399d14e0833a43c230c495ce3570d",
+          "historicalPErrors": []
+        },
+        "requiresOnly": {
+          "semanticKindFingerprint": "sha256:46ae1b84f6a57df44a8c6db538be9c47bfae4aafefb082f102ea15db797dfd4f",
+          "A": "sha256:b9cb153cec54816f8fc4a166c24e1bc6660f3c7329ef48effd24bbbffbd4390a",
+          "M": "sha256:8d65b7fb70991eba9d01fef381143efaa6f8fce293f30e175c07825105807ded",
+          "PGoal": "sha256:1f35bdd0fdeb1e323839fe9b3bd004dd894bd0a14a228ba9fededc72c35fa2e9",
+          "PReviewInput": "sha256:75775b0c290418c722eeb55db6fda50d12d6d51d60c57bd80219e459ec9da4d9",
+          "historicalPErrors": [
+            "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale reviewInputFingerprint; expected sha256:75775b0c290418c722eeb55db6fda50d12d6d51d60c57bd80219e459ec9da4d9"
+          ]
+        },
+        "a": {
+          "semanticKindFingerprint": "sha256:2aadd9c5319cbb0b6bffad0c5080805a8997a465bee9e224941ef3fcacab95b7",
+          "A": "sha256:b595c937a5211eeb02f0393ed9dcbefb9ef17bce2b3755076cbd669585c69ddd",
+          "M": "sha256:b0c965d67a00cb5c9cbbe5d36e1896a9c24ed322243fb72242acc6399e4bf5bb",
+          "PGoal": "sha256:1403ef9354e5724e54a288977bb9c6f97abf3c017c1addd6eee828fa33193156",
+          "PReviewInput": "sha256:f7cff0ef7934d9ce50ac473f2f61a7bdabeb3d8b8f835257fab7d467e1312a22",
+          "historicalPErrors": [
+            "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale goalFingerprint; expected sha256:1403ef9354e5724e54a288977bb9c6f97abf3c017c1addd6eee828fa33193156",
+            "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale reviewInputFingerprint; expected sha256:f7cff0ef7934d9ce50ac473f2f61a7bdabeb3d8b8f835257fab7d467e1312a22"
+          ]
+        },
+        "b": {
+          "semanticKindFingerprint": "sha256:b05a9934d54006a6e1bb6a3114fa07eda1a48abef68d347022f9d7a554c36189",
+          "A": "sha256:186fd350f54d60cd119e00089638a8bf2259149e537d136e638227823ee3287d",
+          "M": "sha256:716c5a77eb3a75c0c20c05ce42649d254e41702af5478c5c36bdc7146e0f1df4",
+          "PGoal": "sha256:03eeda9a88ae70ccdddb282e9f89d743039897a967cb6755f6f165ea035897e0",
+          "PReviewInput": "sha256:68f6dceb84215007b1e7be1d221d7be0e08a735181ba38686dbeb99523184ea9",
+          "historicalPErrors": [
+            "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale goalFingerprint; expected sha256:03eeda9a88ae70ccdddb282e9f89d743039897a967cb6755f6f165ea035897e0",
+            "0c2ddfcd-1399-41ad-aaed-4f061812602a: stale reviewInputFingerprint; expected sha256:68f6dceb84215007b1e7be1d221d7be0e08a735181ba38686dbeb99523184ea9"
+          ]
+        }
+      }
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "currentARecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-09-13",
+        "reviewer": "codex-mathematics-inverse-matrix-adjudication-20260913",
+        "reason": "Die Bestimmung der Inversen einer einfachen invertierbaren 2x2-Matrix oder Diagonalmatrix und die Probe auf die Einheitsmatrix prüfen denselben inversen Zusammenhang. Die Existenzbedingung begrenzt diesen Gegenstand; sie eröffnet weder eine allgemeine Invertierbarkeitstheorie noch eine zweite unabhängige Kompetenz. Die ergänzte Voraussetzung sichert die bereits beanspruchte Matrixmultiplikation ab.",
+        "suggestedSplit": []
+      },
+      "currentMRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "fingerprint": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-09-13",
+        "reviewer": "codex-mathematics-inverse-matrix-adjudication-20260913",
+        "reason": "Die Inverse wird methodenoffen aus dem inversen Zusammenhang bestimmt und durch das Matrixprodukt zur Einheitsmatrix geprüft. Passende Beispiele, Begründung der Existenzbedingung und Aufgabenpraxis tragen diese Kompetenz; die Präzisierung begründet keine eigenständige abrufpflichtige Faktensammlung und kein Memory-Deck."
+      },
+      "primaryCardRecordsReferencingGoal": [],
+      "positiveConfig": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-post-change-7-v1.config.json",
+        "sha256": "c85c6a9c96b346c4d53d2c100be0ce800ce7549baf373db901fd3bb54f8a7aec"
+      },
+      "positiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-math-positive-understanding-evidence-rollout-v1-20260913-post-change-7-v1.review.jsonl",
+        "sha256": "9d8cb3a7ab58cba833e1dd943f3b6bb06ed4972ea33502cf99a6f6648ea8bbb1"
+      },
+      "resourceDigests": {
+        "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.jpg": "sha256:30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75"
+      },
+      "measurements": {
+        "live": {
+          "semanticKindFingerprint": "sha256:868b4524069153661472d1d85dab011c714a990c78fbcdee335d1b75623d2648",
+          "A": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+          "M": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+          "PGoal": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+          "PReviewInput": "sha256:e8ffd0a05d2fc99904ce2801beb7cad17687ef5dbbaac875d0d9c232c63fea3b",
+          "historicalPErrors": []
+        },
+        "requiresOnly": {
+          "semanticKindFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+          "A": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+          "M": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+          "PGoal": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+          "PReviewInput": "sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83",
+          "historicalPErrors": [
+            "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+          ]
+        },
+        "a": {
+          "semanticKindFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+          "A": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+          "M": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+          "PGoal": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+          "PReviewInput": "sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83",
+          "historicalPErrors": [
+            "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+          ]
+        },
+        "b": {
+          "semanticKindFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+          "A": "sha256:927fd90cd6e262ed368817276804ec6e81d142d29bbc93feb67a2916cae555d1",
+          "M": "sha256:18109546a6586c673abfaa659fb5117fbe65275bfe9f7ca578452941439fffa0",
+          "PGoal": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+          "PReviewInput": "sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83",
+          "historicalPErrors": [
+            "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+          ]
+        }
+      }
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "currentARecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "fingerprint": "sha256:2cb602fc22c2dd52cc16d71b6108b66c807b857bc1d1631b392efef6b98dac29",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-08-26",
+        "reviewer": "codex-description-synthesis-qa",
+        "reason": "Frische fachliche Synthese nach Präzisierung: Darstellen, Vergleichen und begründetes Ordnen einschließlich null sind auf der Zahlengeraden koordinierte Schritte derselben prüfbaren Ordnungsroutine.",
+        "suggestedSplit": []
+      },
+      "currentMRecord": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-math-full",
+        "ruleVersion": "memory-card-review-v1",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "fingerprint": "sha256:3aa98eb728624eb890dd6801cbd19b6ecc97ad40959f8fcc220e68718d05b752",
+        "status": "no_memory_needed",
+        "memoryUseful": false,
+        "reviewedAt": "2026-08-26",
+        "reviewer": "codex-description-synthesis-qa",
+        "reason": "Frische Memory-Prüfung nach Präzisierung: Ganze Zahlen einschließlich null darzustellen, zu vergleichen und kontextbezogen zu ordnen verlangt Zahlengeraden- und Ordnungsverständnis an wechselnden Situationen; kein eigenes Memory-Deck ist nötig."
+      },
+      "primaryCardRecordsReferencingGoal": [],
+      "positiveConfig": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-checkpoint-20260928-v1/retained-3/positive-evidence.config.json",
+        "sha256": "9ed26fbfe3683387e210295ec2aab927cfb9446c52ea4647cd4cb48af549b7be"
+      },
+      "positiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-09-28/math-m7-p-checkpoint-20260928-v1/retained-3/positive-evidence.review.jsonl",
+        "sha256": "b108811c82143aa1cd41b365a06764de69da3703ae49f282235c6e1fac9f20b1"
+      },
+      "resourceDigests": {},
+      "measurements": {
+        "live": {
+          "semanticKindFingerprint": "sha256:632f95ccb714e255b49556d3e4d547bcfe566b31d130f3f8054534e8cb82a1cf",
+          "A": "sha256:2cb602fc22c2dd52cc16d71b6108b66c807b857bc1d1631b392efef6b98dac29",
+          "M": "sha256:3aa98eb728624eb890dd6801cbd19b6ecc97ad40959f8fcc220e68718d05b752",
+          "PGoal": "sha256:a38b1c51edc464914d329a44c15c4c43fdfe78fd6465db7105b21aa5ecbbafdb",
+          "PReviewInput": "sha256:83ccecf814204d2df06372c5b4cfc0b78e44aaeedb64c871df7cbaf27ceeeb6e",
+          "historicalPErrors": []
+        },
+        "requiresOnly": {
+          "semanticKindFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+          "A": "sha256:2cb602fc22c2dd52cc16d71b6108b66c807b857bc1d1631b392efef6b98dac29",
+          "M": "sha256:3aa98eb728624eb890dd6801cbd19b6ecc97ad40959f8fcc220e68718d05b752",
+          "PGoal": "sha256:a38b1c51edc464914d329a44c15c4c43fdfe78fd6465db7105b21aa5ecbbafdb",
+          "PReviewInput": "sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345",
+          "historicalPErrors": [
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe: stale reviewInputFingerprint; expected sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345"
+          ]
+        },
+        "a": {
+          "semanticKindFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+          "A": "sha256:2cb602fc22c2dd52cc16d71b6108b66c807b857bc1d1631b392efef6b98dac29",
+          "M": "sha256:3aa98eb728624eb890dd6801cbd19b6ecc97ad40959f8fcc220e68718d05b752",
+          "PGoal": "sha256:a38b1c51edc464914d329a44c15c4c43fdfe78fd6465db7105b21aa5ecbbafdb",
+          "PReviewInput": "sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345",
+          "historicalPErrors": [
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe: stale reviewInputFingerprint; expected sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345"
+          ]
+        },
+        "b": {
+          "semanticKindFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+          "A": "sha256:2cb602fc22c2dd52cc16d71b6108b66c807b857bc1d1631b392efef6b98dac29",
+          "M": "sha256:3aa98eb728624eb890dd6801cbd19b6ecc97ad40959f8fcc220e68718d05b752",
+          "PGoal": "sha256:a38b1c51edc464914d329a44c15c4c43fdfe78fd6465db7105b21aa5ecbbafdb",
+          "PReviewInput": "sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345",
+          "historicalPErrors": [
+            "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe: stale reviewInputFingerprint; expected sha256:41daf7074c2ffe43f317fe3d700bd1d7c1a034b8c25cbe078a1e58f5cb235345"
+          ]
+        }
+      }
+    }
+  ],
+  "totalDeltas": {
+    "requiresOnly": {
+      "Kind": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "ce198bc9-b014-52ba-814f-25cc3e020668"
+      ],
+      "A": [],
+      "M": [],
+      "PGoal": []
+    },
+    "a": {
+      "Kind": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "ce198bc9-b014-52ba-814f-25cc3e020668"
+      ],
+      "A": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ],
+      "M": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ],
+      "PGoal": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ]
+    },
+    "b": {
+      "Kind": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+        "ce198bc9-b014-52ba-814f-25cc3e020668"
+      ],
+      "A": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ],
+      "M": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ],
+      "PGoal": [
+        "0c2ddfcd-1399-41ad-aaed-4f061812602a"
+      ]
+    }
+  },
+  "variantBKindDrafts": [
+    {
+      "goalId": "0c2ddfcd-1399-41ad-aaed-4f061812602a",
+      "sourceFingerprint": "sha256:b05a9934d54006a6e1bb6a3114fa07eda1a48abef68d347022f9d7a554c36189",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    },
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "sourceFingerprint": "sha256:7a4c62de091f25f06cd9f89e06637ef6ff4ee66b5e640684af96f9eb7111162e",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    },
+    {
+      "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "sourceFingerprint": "sha256:1b30e399f55d2318a34000f90f85a8175684b03030c3525376f33fb429990812",
+      "semanticKind": "curricularAtomic",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-semantic-recheck-curricular-atomic"
+    }
+  ],
+  "kindValidation": {
+    "liveWithLiveLedger": "pass",
+    "variantBWithLiveLedger": "reject",
+    "variantBWithThreeNewKindDrafts": "pass"
+  },
+  "activeWrites": false,
+  "fullNativeQaExecuted": false
+}
