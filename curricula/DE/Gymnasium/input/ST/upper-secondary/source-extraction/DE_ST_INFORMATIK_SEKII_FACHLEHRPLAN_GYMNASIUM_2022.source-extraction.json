@@ -110,7 +110,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -124,8 +124,14 @@
           {
             "id": "m3-content-covered-st-informatik-sekii",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 82/82; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "Explizite fachliche Zuordnungslücken bleiben nach aktueller Quellenbereinigung offen; keine vollständige Inhaltsabdeckung."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -342,10 +348,14 @@
       "rawSourceText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
       "rawSourceSpan": "ST-INF-SEKII-Q-OOP.3",
       "rawParentBulletText": "Prozesse mithilfe von Aktivitaets- oder Zustandsdiagrammen modellieren",
-      "canonicalTargetIds": [
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Prozesse mit Aktivitäts- oder Zustandsdiagrammen modellieren; die amtliche Alternative erhalten.",
+        "reason": "Klassendiagramme modellieren keine Prozessabläufe. Das vorhandene Automatenziel bildet die zugelassene Aktivitätsdiagramm-Alternative nicht vollständig ab und ist keine nachgewiesene niveaugleiche Ersatzzuordnung.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-st-informatik-sekii-fachlehrplan-gymnasium-2022-st-inf-sekii-q-oop-004-klassen-implementieren-e0513b1a",

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
+import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   deriveCurriculumMaturity,
@@ -37,11 +38,11 @@ const evaluate = (root: IntegrityLandscape, catalog: IntegrityLandscape[] = [roo
 // A real valid graph result, rather than a hand-written CQR-001 pass, isolates
 // the downstream maturity tests from unrelated authored curriculum debt.
 export const strictGraphFixtureRule = evaluate(landscape([goal(A, [B]), goal(B)]))
+const strictAssessmentSource = captureCurriculumSource<SkillLandscape>('fixtures/strict-maturity-fixture.json',
+  JSON.stringify(landscape([goal(A, [B]), goal(B)])))
+export const strictGraphFixtureAssessmentScope = discoverCurriculumAssessmentScope(strictAssessmentSource, [])
 export const strictGraphFixtureAssessmentRules = evaluateCurriculumExamReadiness(
-  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
-)
-export const strictGraphFixtureAssessmentScope = discoverCurriculumAssessmentScope(
-  landscape([goal(A, [B]), goal(B)]) as SkillLandscape, [],
+  strictAssessmentSource, [], [strictAssessmentSource], strictGraphFixtureAssessmentScope,
 )
 const expectedScopes = new Map([[strictGraphFixtureId, strictGraphFixtureAssessmentScope]])
 assert.equal(strictGraphFixtureRule.status, 'pass')

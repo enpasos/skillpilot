@@ -1,0 +1,47 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_KIND_PARSER_AND_FINGERPRINT_CHECKS",
+  "startedAt": "2026-11-07T12:12:12.277Z",
+  "finishedAt": "2026-11-07T12:12:12.945Z",
+  "actor": "Codex /root/math15_semantic_kind_review",
+  "nativeModule": "app/scripts/goalBookModel.ts",
+  "nativeSelectedOldAndNewFingerprintPairs": 15,
+  "expectedHoldFingerprintMatches": 15,
+  "candidateSha256": "b231f6fce8a1fe9a205ffd09d109d92362f89440bb55dec996b538b347c2cea4",
+  "unchangedRows": 1237,
+  "checks": [
+    {
+      "name": "Unchanged active source plus unchanged old ledger",
+      "outcome": "accepted",
+      "nativeDecisionCount": 1252,
+      "curricularAtomicCount": 807
+    },
+    {
+      "name": "Source15 plus old ledger is stale",
+      "outcome": "rejected",
+      "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal 121ef4c5-c1c2-5294-9582-86bab2355907; expected sha256:cdca282275b06fb0a48937ace44fcd511a444c96ebc33e885e89267d4eddb8b4."
+    },
+    {
+      "name": "Source15 plus fifteen independently reasoned decisions",
+      "outcome": "accepted",
+      "nativeDecisionCount": 1252,
+      "curricularAtomicCount": 807
+    },
+    {
+      "name": "New decisions cannot be applied to old source",
+      "outcome": "rejected",
+      "diagnostic": "Error: Goal-book model: stale semantic-kind decision for goal 121ef4c5-c1c2-5294-9582-86bab2355907; expected sha256:123a6e78718f6c8d042efbf2042ec073f53150bf562ddf7f5d12ff03cabd71a0."
+    },
+    {
+      "name": "Actor evidence must remain outside closed ledger row",
+      "outcome": "rejected",
+      "diagnostic": "Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/85 must NOT have additional properties; data must match exactly one schema in oneOf."
+    },
+    {
+      "name": "Review method cannot be invented for this successor",
+      "outcome": "rejected",
+      "diagnostic": "Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/reviewMethod must be equal to constant; data must match exactly one schema in oneOf."
+    }
+  ],
+  "producerRuns": 0,
+  "activeFilesWritten": false
+}

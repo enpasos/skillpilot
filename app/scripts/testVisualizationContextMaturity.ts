@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { evaluateCurrentVisualizationGate, hasCompletePassingVisualizationContext,
   type CurriculumVisualizationValidation, type VisualizationGateRecord } from './lib/curriculumVisualizationValidation'
@@ -64,8 +65,8 @@ const routeClusters = routeClusterIds.map(id => {
   assert.ok(original)
   return { ...original, weight: 1, requires: [], contains: [exam.id] }
 })
-const fixture: SkillLandscape = { ...source, goals: [{ ...goal, weight: 1, contains: [], requires: [] },
-  { ...exam, weight: 1, contains: [], requires: [] }, ...routeClusters] }
+const fixture: SkillLandscape = captureCurriculumSource('fixtures/visualization-material.json', JSON.stringify({ ...source, goals: [{ ...goal, weight: 1, contains: [], requires: [] },
+  { ...exam, weight: 1, contains: [], requires: [] }, ...routeClusters] }))
 const graph = evaluateGraphIntegrity(fixture, [fixture])
 assert.equal(graph.status, 'pass')
 assert.equal(graph.graphIntegrity?.ok, true)

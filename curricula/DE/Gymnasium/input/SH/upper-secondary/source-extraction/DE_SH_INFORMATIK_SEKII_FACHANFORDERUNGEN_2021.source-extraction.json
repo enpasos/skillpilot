@@ -30,8 +30,8 @@
   },
   "qualityReview": {
     "sourceGoalCountPeerBaseline": {
-      "accepted": true,
-      "details": "DE-SH Sek II wurde wegen der stark gebuendelten Tabellenzeilen fachlich nach Inhaltsaspekten auf 123 Source-Ziele aufgeteilt; die Zielzahl liegt damit im Korridor der bereits geprueften Informatik-Sek-II-Laender."
+      "accepted": false,
+      "details": "Primary-performance extraction changed in a private author draft; old peer baseline remains historical, not approval of the repair."
     }
   },
   "expectedTopicCodes": [
@@ -110,7 +110,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -120,6 +120,18 @@
             "label": "M3-Review-Datei wird generiert",
             "passed": true,
             "details": "Alle Source-Ziele erhalten eine fachliche Review-Entscheidung."
+          },
+          {
+            "id": "20261107-author-repair-independent-source-review",
+            "label": "Primary source/level/mapping repair is an author draft pending independent review",
+            "passed": false,
+            "details": "No old complete seed or new goal count is accepted as independent approval of changed source evidence."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -3035,7 +3047,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB3.2",
       "parentBulletText": "DB3 … erstellen Datenbankabfragen Datenbankabfragen Ziel ist das Selektieren, und wenden sie an. · mithilfe geführter Abfragen Aggregieren, Zusammen- · mithilfe von SQL-Befehlen führen und Transformie- · select from where ren von Daten. · joins · subqueries",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 48.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialBindingContentAspect",
       "stage": "SekII",
       "tags": [
@@ -3052,7 +3064,18 @@
         "fd1f5c79-20e6-5829-98c1-0909e047cad4",
         "2e2e1230-3009-5652-b3a8-68c834e53bd5",
         "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db4-1-sql-insert-delete-und-update-d879df22",
@@ -3066,7 +3089,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB4",
       "parentBulletText": "DB4 … wenden Operationen zur Ände- Manipulation von Datenbank- Auf grundlegendem An- rung von Datenbankinhalten an. inhalten forderungsniveau kann mithilfe von SQL-Befehlen mit Anwendungen gear- · insert into beitet werden, die keine · delete from SQL-Kenntnisse voraus- · update setzen. 46 FACHANFORDERUNGEN INFORMATIK III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 48.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3081,7 +3104,18 @@
       "rawParentBulletText": "DB4 … wenden Operationen zur Ände- Manipulation von Datenbank- Auf grundlegendem An- rung von Datenbankinhalten an. inhalten forderungsniveau kann mithilfe von SQL-Befehlen mit Anwendungen gear- · insert into beitet werden, die keine · delete from SQL-Kenntnisse voraus- · update setzen. 46 FACHANFORDERUNGEN INFORMATIK III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II",
       "canonicalTargetIds": [
         "2e2e1230-3009-5652-b3a8-68c834e53bd5"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db5-1-klassendiagramm-aus-datenbankstruktur-f89e4f7f",
@@ -3125,7 +3159,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB6",
       "parentBulletText": "DB6 … entwickeln aus einer Problem- · Beziehungen lationenschema, Objekte stellung ein Klassendiagramm. · Kardinalitäten statt Tupel, Objektmenge statt Relation und Klasse statt Relationstyp. Methoden werden im Kon- text von OOM und OOP im Bereich Softwareent- wicklung behandelt.",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3141,7 +3175,18 @@
       "canonicalTargetIds": [
         "2cf7589d-5451-5239-badf-1ebb981a2f20",
         "b24084e1-bff3-5fc6-800d-ec6c024e52aa"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db7-1-primaer-und-fremdschluessel-2450f9cf",
@@ -3217,7 +3262,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB8",
       "parentBulletText": "DB8 … erstellen aus einem Klassendia- · Referentielle Integrität gramm ein Datenbankschema. · funktionale Abhängigkeiten",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3234,7 +3279,18 @@
         "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
         "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
         "1eb09d02-9123-50e2-bfee-e2f0b5b23564"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db9-1-redundanz-und-anomalien-72e82748",
@@ -3278,7 +3334,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB10",
       "parentBulletText": "DB10 … implementieren eine Daten- Erzeugen einer Datenbank bank. · mit einem Editor · mithilfe von SQL-Befehlen · create database · create table",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3293,7 +3349,18 @@
       "rawParentBulletText": "DB10 … implementieren eine Daten- Erzeugen einer Datenbank bank. · mit einem Editor · mithilfe von SQL-Befehlen · create database · create table",
       "canonicalTargetIds": [
         "2e2e1230-3009-5652-b3a8-68c834e53bd5"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db11-1-views-mit-editor-oder-sql-erzeugen-ed2288af",
@@ -3307,7 +3374,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB11",
       "parentBulletText": "DB11 … erstellen Views zur Verarbeitung Erzeugen Views Views werden auch unter von Daten. · mit einem Editor den Aspekten von Rollen · mithilfe von SQL-Befehlen und Rechten betrachtet · create view (vgl. Betriebssysteme). Querschnittbereich: Big Data & KI",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3323,7 +3390,18 @@
       "canonicalTargetIds": [
         "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
         "16ce7d7a-fc31-58d0-83f8-427318331e73"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db12-1-performanz-und-struktureinschraenkungen-rel-44298377",
@@ -3337,7 +3415,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB12",
       "parentBulletText": "DB12 … begründen Grenzen relationaler Performanz Datenbanken. Struktureinschränkungen",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3353,7 +3431,18 @@
       "canonicalTargetIds": [
         "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
         "98fcf9d1-71b8-5e5b-928b-166917330da4"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db13-1-nosql-und-wide-column-datenbanken-245c9cb8",
@@ -3367,7 +3456,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB13",
       "parentBulletText": "DB13 … beschreiben alternative Orga- Organisation großer Datenmengen nisationsformen großer Daten- (NO-SQL, Wide-Column) mengen. III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II 2 Kompetenzbereiche",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 49.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3382,7 +3471,18 @@
       "rawParentBulletText": "DB13 … beschreiben alternative Orga- Organisation großer Datenmengen nisationsformen großer Daten- (NO-SQL, Wide-Column) mengen. III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II 2 Kompetenzbereiche",
       "canonicalTargetIds": [
         "fbc07e78-53a7-5fb5-a5c7-04a85e605339"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db14-1-informationsgewinnung-aus-meta-und-sensorda-797c8862",
@@ -3425,7 +3525,7 @@
       "sourceSpan": "SH-INF-SEKII-DB DB15",
       "parentBulletText": "DB15 … erläutern, wie große Datenmen- Map-Reduce gen parallel mit dem Paradigma Map-Reduce bearbeitet werden. Querschnittbereich: Informatik, Mensch und Gesellschaft",
       "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 50.",
-      "courseLevel": "GK/LK",
+      "courseLevel": "LK",
       "granularity": "officialCompetencyNumber",
       "stage": "SekII",
       "tags": [
@@ -3441,7 +3541,18 @@
       "canonicalTargetIds": [
         "e94beeaa-784d-5490-932b-38b81bf669fc",
         "eb4b3d2b-6756-5d88-97de-c404793003d4"
-      ]
+      ],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "printedPages": [
+          37,
+          46,
+          47,
+          48
+        ],
+        "rule": "bold+gray elevated; mixed DB3.2 entire compound requires subquery elevated; DB4 SQL wording elevated",
+        "reviewStatus": "author-draft"
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-db16-1-daten-als-wirtschaftsfaktor-be336533",
@@ -3767,12 +3878,14 @@
       "rawSourceText": "SE7: Anwendungsfaelle und Ausloeser. SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
       "rawSourceSpan": "SH-INF-SEKII-SE SE7",
       "rawParentBulletText": "SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
-      "canonicalTargetIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
-        "5054427c-9b93-547d-8c17-b30064f180c5",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Anwendungsfälle und Auslöser eines Systems anhand gestellter Anforderungen identifizieren und in einem grundlegenden Modell verbinden.",
+        "reason": "Domänenaggregate/Bounded Contexts, UML-Klassenassoziationen/Aggregationen und nebenläufige Service-Sequenzen belegen diese grundlegende Anwendungsfall-/Auslöserleistung nicht vollständig.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-se7-2-statische-struktur-mit-komponenten-und-klass-39c4a42e",
@@ -3799,12 +3912,14 @@
       "rawSourceText": "SE7: statische Struktur mit Komponenten und Klassen. SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
       "rawSourceSpan": "SH-INF-SEKII-SE SE7",
       "rawParentBulletText": "SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
-      "canonicalTargetIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
-        "5054427c-9b93-547d-8c17-b30064f180c5",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Die statische Struktur eines Systems mit Komponenten und Klassen grundlegend modellieren.",
+        "reason": "Das vorhandene Klassenziel verlangt Assoziationen/Aggregationen; Komponentenmodellierung ist darin nicht ausdrücklich enthalten. Domänenaggregate und nebenläufige Service-Sequenzen ersetzen die fehlende Grundzuordnung nicht.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-se7-3-dynamisches-systemverhalten-73a40123",
@@ -3831,12 +3946,14 @@
       "rawSourceText": "SE7: dynamisches Systemverhalten. SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
       "rawSourceSpan": "SH-INF-SEKII-SE SE7",
       "rawParentBulletText": "SE7 … entwickeln Modelle eines Sys- Identifizieren von Anwendungsfällen Möglich sind thematische tems basierend auf gestellten Auslöser Bezüge zu Kunst/Design Anforderungen. im Bereich „Usability“ Ablauf oder gesellschaftliche Analyse der statischen Struktur eines Aspekte im Bereich „Zu- Systems gänglichkeit“ von Syste- Komponenten men. Klassen Analyse des dynamischen Systemverhal- tens Ereignisse und Aktionen",
-      "canonicalTargetIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
-        "5054427c-9b93-547d-8c17-b30064f180c5",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Dynamisches Systemverhalten mit Ereignissen und Aktionen grundlegend analysieren und modellieren.",
+        "reason": "Nebenläufige Service-Sequenzen sind eine spezielle weitergehende Leistung; ein allgemeines Ereignis-/Aktionsmodell ist damit nicht vollständig belegt.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-se8-1-uml-anwendungsfall-klassen-sequenz-und-zusta-17396f67",
@@ -3863,12 +3980,14 @@
       "rawSourceText": "SE8: UML-Anwendungsfall-, Klassen-, Sequenz- und Zustandsdiagramme. SE8 … verwenden geeignete Beschrei- UML-Diagramme bungsformate, um solche Model- · Anwendungsfalldiagramm le darzustellen. · Klassendiagramm · Sequenzdiagramm · Zustandsdiagramm",
       "rawSourceSpan": "SH-INF-SEKII-SE SE8",
       "rawParentBulletText": "SE8 … verwenden geeignete Beschrei- UML-Diagramme bungsformate, um solche Model- · Anwendungsfalldiagramm le darzustellen. · Klassendiagramm · Sequenzdiagramm · Zustandsdiagramm",
-      "canonicalTargetIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "b24084e1-bff3-5fc6-800d-ec6c024e52aa",
-        "5054427c-9b93-547d-8c17-b30064f180c5",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Geeignete grundlegende UML-Anwendungsfall-, Klassen-, Sequenz- und Zustandsdiagramme zur Darstellung des jeweiligen Systems verwenden.",
+        "reason": "Ein Klassendiagrammziel und ein spezielles Nebenläufigkeits-/Service-Sequenzziel liefern weder alle vier UML-Formate noch die geforderte grundlegende Auswahl-/Darstellungsleistung.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-sh-informatik-sekii-fa2021-se9-1-model-view-controller-und-observer-1ec2839f",
@@ -4049,6 +4168,247 @@
       "canonicalTargetIds": [
         "69f09bee-69a8-5155-9c81-9044e4bff5ac"
       ]
+    },
+    {
+      "id": "de-sh-informatik-sekii-fa2021-db3-basic-select-join-repair-20261107",
+      "passageId": "de-sh-informatik-sekii-fa2021:datenbanken",
+      "topicCode": "SH-INF-SEKII-DB-DB3",
+      "bulletIndex": 5,
+      "aspectIndex": 3,
+      "title": "DB3: grundlegende SQL-Abfragen ohne Unterabfrage",
+      "description": "SQL SELECT FROM WHERE und Joins formulieren und anwenden.",
+      "sourceText": "SQL SELECT FROM WHERE und Joins formulieren und anwenden.",
+      "sourceSpan": "gedruckt46,DB3,ungegraute SQL-Elemente",
+      "parentBulletText": "DB3 … erstellen Datenbankabfragen Datenbankabfragen Ziel ist das Selektieren, und wenden sie an. · mithilfe geführter Abfragen Aggregieren, Zusammen- · mithilfe von SQL-Befehlen führen und Transformie- · select from where ren von Daten. · joins · subqueries",
+      "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), Datenbanken, S. 48.",
+      "courseLevel": "GK/LK",
+      "granularity": "officialBindingContentAspect",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SH-INF-SEKII-DB",
+        "officialCode:DB3",
+        "primary-fragment:basic"
+      ],
+      "rawSourceText": "mithilfe von SQL-Befehlen; select from where; joins",
+      "rawSourceSpan": "SH-INF-SEKII-DB DB3",
+      "rawParentBulletText": "DB3 … erstellen Datenbankabfragen Datenbankabfragen Ziel ist das Selektieren, und wenden sie an. · mithilfe geführter Abfragen Aggregieren, Zusammen- · mithilfe von SQL-Befehlen führen und Transformie- · select from where ren von Daten. · joins · subqueries",
+      "canonicalTargetIds": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "reviewStatus": "author-draft"
+    },
+    {
+      "id": "de-sh-informatik-sekii-fa2021-db4-basic-application-data-change-20261107",
+      "passageId": "de-sh-informatik-sekii-fa2021:datenbanken",
+      "topicCode": "SH-INF-SEKII-DB-DB4",
+      "bulletIndex": 6,
+      "aspectIndex": 2,
+      "title": "DB4: Datenbankinhalte mit einer Anwendung ändern",
+      "description": "Die lernende Person kann Operationen zur Änderung von Datenbankinhalten mit einer Datenbankanwendung anwenden; SQL-Kenntnisse werden auf grundlegendem Niveau hierfür nicht vorausgesetzt.",
+      "sourceText": "Operationen zur Änderung von Datenbankinhalten anwenden; auf grundlegendem Anforderungsniveau darf eine Anwendung ohne SQL-Kenntnisse verwendet werden.",
+      "sourceSpan": "gedruckte S.46/PDF-Seite48, DB4: ungegraute Kompetenzspalte und Hinweis; SQL-Ausführung separat erhöht",
+      "parentBulletText": "DB4 … wenden Operationen zur Ände- Manipulation von Datenbank- Auf grundlegendem An- rung von Datenbankinhalten an. inhalten forderungsniveau kann mithilfe von SQL-Befehlen mit Anwendungen gear- · insert into beitet werden, die keine · delete from SQL-Kenntnisse voraus- · update setzen. 46 FACHANFORDERUNGEN INFORMATIK III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II",
+      "sourceRef": "Fachanforderungen Informatik Sekundarstufe I und II Schleswig-Holstein (2021), gedruckte S.46/PDF-Seite48, DB4",
+      "courseLevel": "GK/LK",
+      "granularity": "officialBasicPerformanceFragment",
+      "stage": "SekII",
+      "tags": [
+        "jurisdiction:DE-SH",
+        "subject:Informatik",
+        "stage:SekII",
+        "topic:SH-INF-SEKII-DB",
+        "officialCode:DB4",
+        "primary-fragment:basic"
+      ],
+      "rawSourceText": "… wenden Operationen zur Änderung von Datenbankinhalten an. Auf grundlegendem Anforderungsniveau kann mit Anwendungen gearbeitet werden, die keine SQL-Kenntnisse voraussetzen.",
+      "rawSourceSpan": "SH-INF-SEKII-DB DB4",
+      "rawParentBulletText": "DB4 … wenden Operationen zur Ände- Manipulation von Datenbank- Auf grundlegendem An- rung von Datenbankinhalten an. inhalten forderungsniveau kann mithilfe von SQL-Befehlen mit Anwendungen gear- · insert into beitet werden, die keine · delete from SQL-Kenntnisse voraus- · update setzen. 46 FACHANFORDERUNGEN INFORMATIK III FACHANFORDERUNGEN INFORMATIK SEKUNDARSTUFE II",
+      "canonicalTargetIds": [],
+      "primaryLevelEvidence": {
+        "pdfSha256": "69b844e76e2e673e8ac41fee8e0cdbabb343fce12f4fc5f05d8395b911789d89",
+        "pdfPage": 48,
+        "printedPage": 46,
+        "visualRule": "General competency and note not bold/grey; only SQL implementation and insert/delete/update bold/grey.",
+        "level": "basic",
+        "reviewStatus": "author-draft"
+      },
+      "reviewStatus": "author-draft",
+      "extractionProvenance": {
+        "normalization": "Primary words dehyphenated and joined from table competence and notes; SQL implementation column remains separate elevated record",
+        "visualPageArtifact": "sh-db4-page.png",
+        "status": "author-draft"
+      }
     }
-  ]
+  ],
+  "repairDraft": {
+    "status": "author-draft",
+    "changes": [
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db3-2-sql-select-from-where-joins-und-subqueries-22986bb2",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB3"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db4-1-sql-insert-delete-und-update-d879df22",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB4"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db6-1-klassendiagramm-aus-problemstellung-6d0760e7",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB6"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db8-1-datenbankschema-aus-klassendiagramm-87f8a605",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB8"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db10-1-datenbank-mit-editor-oder-sql-erzeugen-7c9ec0e2",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB10"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db11-1-views-mit-editor-oder-sql-erzeugen-ed2288af",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB11"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db12-1-performanz-und-struktureinschraenkungen-rel-44298377",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB12"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db13-1-nosql-und-wide-column-datenbanken-245c9cb8",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB13"
+      },
+      {
+        "id": "de-sh-informatik-sekii-fa2021-db15-1-map-reduce-zur-parallelen-verarbeitung-eabf0599",
+        "before": "GK/LK",
+        "after": "LK",
+        "code": "DB15"
+      }
+    ],
+    "basicRowsRetained": [
+      "DB7",
+      "DB9",
+      "DB16",
+      "DB17"
+    ],
+    "sourceTextNeverRewritten": true,
+    "mixedRowSplit": {
+      "retainedCombinedRecord": "de-sh-informatik-sekii-fa2021-db3-2-sql-select-from-where-joins-und-subqueries-22986bb2",
+      "newBasicFragment": "de-sh-informatik-sekii-fa2021-db3-basic-select-join-repair-20261107",
+      "notFullCanonicalGoalEntitlement": "Sorting is not asserted by this fragment; mapping remains partial."
+    },
+    "historicalPipelineStatus": {
+      "currentStep": "MAPPING-3",
+      "steps": [
+        {
+          "id": "ORIGINALQUELLEN",
+          "label": "Originalquellen bereitgestellt",
+          "status": "complete",
+          "dependsOn": [],
+          "checks": [
+            {
+              "id": "official-source-document-present-sh-informatik-sekii",
+              "label": "Amtliche SH-Informatik-Quelle liegt lokal vor",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Informatik_Sekundarstufe_2021_barrierearm.pdf"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-1",
+          "label": "Original-Lehrplanpassagen extrahiert",
+          "status": "complete",
+          "dependsOn": [
+            "ORIGINALQUELLEN"
+          ],
+          "checks": [
+            {
+              "id": "official-passages-extracted-sh-informatik-sekii",
+              "label": "Inhaltsbezogene Kompetenzbereiche als Originalpassagen extrahiert",
+              "passed": true,
+              "details": "4 Passagen aus den offiziellen Kompetenzbereichen."
+            },
+            {
+              "id": "source-extraction-official-pdf-sh-informatik-sekii",
+              "label": "Source-Extraction basiert auf amtlicher PDF statt Legacy-Snapshot",
+              "passed": true,
+              "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Informatik_Sekundarstufe_2021_barrierearm.pdf"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-2",
+          "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-1"
+          ],
+          "checks": [
+            {
+              "id": "source-goals-created-sh-informatik-sekii",
+              "label": "Source-Ziele aus offiziellen Kompetenznummern/Inhaltsaspekten erzeugt",
+              "passed": true,
+              "details": "123 Source-Ziele."
+            },
+            {
+              "id": "source-goal-ids-unique-sh-informatik-sekii",
+              "label": "Source-Ziel-IDs sind eindeutig",
+              "passed": true,
+              "details": "Doppelte IDs: -"
+            },
+            {
+              "id": "source-goal-passages-valid-sh-informatik-sekii",
+              "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+              "passed": true,
+              "details": "Ohne Passage: -"
+            }
+          ]
+        },
+        {
+          "id": "MAPPING-3",
+          "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+          "status": "complete",
+          "dependsOn": [
+            "MAPPING-2"
+          ],
+          "checks": [
+            {
+              "id": "review-file-generated-sh-informatik-sekii",
+              "label": "M3-Review-Datei wird generiert",
+              "passed": true,
+              "details": "Alle Source-Ziele erhalten eine fachliche Review-Entscheidung."
+            }
+          ]
+        }
+      ]
+    },
+    "historicalQualityReview": {
+      "sourceGoalCountPeerBaseline": {
+        "accepted": true,
+        "details": "DE-SH Sek II wurde wegen der stark gebuendelten Tabellenzeilen fachlich nach Inhaltsaspekten auf 123 Source-Ziele aufgeteilt; die Zielzahl liegt damit im Korridor der bereits geprueften Informatik-Sek-II-Laender."
+      }
+    },
+    "DB4Split": {
+      "retainedSqlFragment": "de-sh-informatik-sekii-fa2021-db4-1-sql-insert-delete-und-update-d879df22",
+      "basicFragment": "de-sh-informatik-sekii-fa2021-db4-basic-application-data-change-20261107",
+      "basicMapping": "needsCanonicalGoal; no existing whole-goal match",
+      "noSqlDdlDclCompulsion": true
+    }
+  }
 }

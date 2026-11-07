@@ -4,15 +4,15 @@
   "sourceLandscapeId": "5cbaaf5c-6f1a-580d-9401-6c9d69d9bc55",
   "targetLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_INFORMATIK_SEKII_RAHMENPLAN_2019.source-extraction.json",
-  "status": "complete",
+  "status": "author-draft-with-explicit-source-gaps",
   "summary": {
     "sourceGoals": 140,
     "reviewedSourceGoals": 140,
     "seedMappedSourceGoals": 140,
-    "mappedSourceGoals": 140,
-    "needsCanonicalGoal": 0,
+    "mappedSourceGoals": 139,
+    "needsCanonicalGoal": 1,
     "exactMappings": 71,
-    "partialMappings": 69,
+    "partialMappings": 138,
     "inheritedMappings": 0
   },
   "mappings": [
@@ -1257,18 +1257,6 @@
       "canonicalGoalId": "c10e647b-2f51-5002-b352-830933a67214",
       "matchType": "partial",
       "reviewDecisionId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-2-realitaetsausschnitte-analysieren-459a0dda"
-    },
-    {
-      "legacyGoalId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e",
-      "canonicalGoalId": "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-      "matchType": "partial",
-      "reviewDecisionId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e"
-    },
-    {
-      "legacyGoalId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e",
-      "canonicalGoalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-      "matchType": "partial",
-      "reviewDecisionId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e"
     },
     {
       "legacyGoalId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-4-einfache-modelle-entwickeln-1ccc6708",
@@ -3285,19 +3273,14 @@
       "courseLevelDecision": "GK/LK"
     },
     {
-      "id": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e",
-      "legacyGoalId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e",
       "sourceGoalId": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-3-modelle-variieren-und-erweitern-4145b44e",
-      "decision": "mapped",
-      "matchType": "partial",
-      "canonicalGoalIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ],
-      "rationale": "Fachliche Zuordnung aus dem amtlichen MV-Rahmenplan Informatik Qualifikationsphase zu bestehenden kanonischen Informatikzielen.",
-      "reviewedBy": "codex",
-      "reviewedAt": "2026-05-14",
-      "courseLevelDecision": "GK/LK"
+      "sourceSpan": "MV-INF-SEKII-PROB.3",
+      "decision": "needsCanonicalGoal",
+      "canonicalGoalIds": [],
+      "rationale": "Vorgegebene Modelle variieren und erweitern, ohne Festlegung auf Domänenmodelle. Domänenverfeinerung mit Aggregaten/Bounded Contexts verlangt eine bestimmte zusätzliche Modellierungstechnik; das allgemeine Variieren/Erweitern ist damit nicht vollständig und niveaugleich gebunden.",
+      "reviewStatus": "draft",
+      "reviewer": "Codex author proposal",
+      "reviewedAt": "2026-11-07"
     },
     {
       "id": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-4-einfache-modelle-entwickeln-1ccc6708",

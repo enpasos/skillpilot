@@ -116,7 +116,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -126,6 +126,12 @@
             "label": "M3-Review-Datei wird generiert",
             "passed": true,
             "details": "Alle MV-Informatik-Source-Ziele erhalten eine fachliche Review-Entscheidung."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -4418,10 +4424,14 @@
       "rawSourceText": "vorgegebene Modelle variieren und erweitern",
       "rawSourceSpan": "MV-INF-SEKII-PROB.3",
       "rawParentBulletText": "vorgegebene Modelle variieren und erweitern",
-      "canonicalTargetIds": [
-        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Vorgegebene Modelle variieren und erweitern, ohne Festlegung auf Domänenmodelle.",
+        "reason": "Domänenverfeinerung mit Aggregaten/Bounded Contexts verlangt eine bestimmte zusätzliche Modellierungstechnik; das allgemeine Variieren/Erweitern ist damit nicht vollständig und niveaugleich gebunden.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-mv-informatik-sekii-2019-mv-inf-sekii-prob-4-einfache-modelle-entwickeln-1ccc6708",

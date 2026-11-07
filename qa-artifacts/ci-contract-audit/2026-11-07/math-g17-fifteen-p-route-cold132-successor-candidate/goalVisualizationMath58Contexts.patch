@@ -1,0 +1,13 @@
+--- a/app/scripts/lib/goalVisualizationMath58Contexts.ts
++++ b/app/scripts/lib/goalVisualizationMath58Contexts.ts
+@@ -2,8 +2,8 @@
+ import { createHash } from 'node:crypto'
+ import type { VisualizationContextQualification, VisualizationCurrentContext, VisualizationReviewArtifact, VisualizationReviewedContext } from '../goalVisualizationReviewedContext'
+ 
+-export const MATH58_PIN_PATH = 'contracts/goal-visualization-context/v1/math58-current-supplement-pins-2026-11-07.candidate.json'
+-export const MATH58_PIN_SHA256 = 'b561cd08c41439154a529b5e8fe3243a41567204ffce9f4c43adca531f843f76'
++export const MATH58_PIN_PATH = 'contracts/goal-visualization-context/v1/math58-current-supplement-pins-g17-fifteen-2026-11-07.candidate.json'
++export const MATH58_PIN_SHA256 = '521de7276ac11ad26ae3ed471e4672a88dc85b2509e929b2beacf8ded3d56658'
+ export const isMath58Profile = (profile: string): boolean => profile === 'math-current62-with-current-viewports-v1' || profile === 'math-independent-ten-with-current-viewports-v1'
+ export interface BoundCurrentEvidence { path: string; sha256: string; bytes?: number }
+ export type ReadBoundCurrentEvidence = (binding: BoundCurrentEvidence, fromRepository?: boolean) => Buffer

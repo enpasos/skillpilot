@@ -111,7 +111,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -125,8 +125,14 @@
           {
             "id": "m3-content-covered-th-informatik-sekii",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 92/92; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "Explizite fachliche Zuordnungslücken bleiben nach aktueller Quellenbereinigung offen; keine vollständige Inhaltsabdeckung."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -658,10 +664,14 @@
       "rawSourceText": "Arbeitsweise deterministischer Automaten erlaeutern",
       "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.7",
       "rawParentBulletText": "Arbeitsweise deterministischer Automaten erlaeutern",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Die Arbeitsweise deterministischer Automaten erläutern (hier LK).",
+        "reason": "Das allgemeine Modellieren/Simulieren von Automaten belegt die spezifische Erläuterung deterministischer Arbeitsweise nicht vollständig; der LK-Kontext bleibt erhalten.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-008-turingmaschine-beschreiben-d1881e2d",
@@ -916,10 +926,14 @@
       "rawSourceText": "deterministischen Automaten entwerfen und implementieren",
       "rawSourceSpan": "TH-INF-SEKII-Q-THEORY.16",
       "rawParentBulletText": "deterministischen Automaten entwerfen und implementieren",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Deterministische Automaten entwerfen und implementieren (hier LK).",
+        "reason": "Simulation ist kein Nachweis einer eigenständigen Implementierung. Das Grundziel verspricht die konkrete Implementierungsleistung nicht; der LK-Kontext bleibt erhalten.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-th-informatik-sekii-lehrplan-gymnasium-2012-th-inf-sekii-q-theory-017-interpreter-entwerfen-0e4e2110",

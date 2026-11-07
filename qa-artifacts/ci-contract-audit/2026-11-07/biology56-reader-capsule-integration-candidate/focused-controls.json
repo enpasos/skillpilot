@@ -1,0 +1,58 @@
+{
+  "controls": [
+    {
+      "control": "positive-original-human",
+      "status": "accepted"
+    },
+    {
+      "control": "positive-retained-raster-and-later-native",
+      "status": "accepted"
+    },
+    {
+      "control": "current-english-context-drift",
+      "status": "stale",
+      "issues": [
+        "Current goal/image context differs from the original actually reviewed context"
+      ]
+    },
+    {
+      "control": "untrusted-reviewer-attribution",
+      "status": "invalid",
+      "issues": [
+        "Original decision/reviewer/time/reason differs"
+      ]
+    },
+    {
+      "control": "earlier-raster-time-is-not-later-native-time",
+      "status": "invalid",
+      "issues": [
+        "Original decision/reviewer/time/reason differs"
+      ]
+    },
+    {
+      "control": "excluded-flora-current-asset-drift",
+      "status": "invalid",
+      "issues": [
+        "Bio56 goal is outside the fixed Human20/Flora19/HE17 set"
+      ]
+    },
+    {
+      "control": "excluded-he-current-english-drift",
+      "status": "invalid",
+      "issues": [
+        "Bio56 goal is outside the fixed Human20/Flora19/HE17 set"
+      ]
+    },
+    {
+      "control": "excluded-he-original-split",
+      "status": "invalid",
+      "issues": [
+        "Bio56 goal is outside the fixed Human20/Flora19/HE17 set"
+      ]
+    }
+  ],
+  "originalReviewOrSealOrOutputBytesManipulated": false,
+  "callerAndUntrustedReceiptCopiesOnly": true,
+  "sourceAOrNamespaceProbes": 0,
+  "combinedProducerRuns": 0
+}

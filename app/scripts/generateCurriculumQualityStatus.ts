@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource } from './lib/retainedAssessmentCoverage'
+import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource, concreteExamReadinessIssues, createCurriculumSourceMaterialContext, isTrustedCurriculumSourceMaterialContext, sourceMaterialContextMatchesSource } from './lib/retainedAssessmentCoverage'
 import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -1007,7 +1007,7 @@ const CANONICAL_GYM_INFORMATICS_PRACTICE_CLUSTER_IDS = [
   'f05a9276-f27c-5d74-af65-588f12ab4de3',
   '91c5be09-cc6b-5f57-bfe1-9f0038faf26a',
   '6982b63a-c6c8-5a6f-b5cb-51568301ac1c',
-  '010651ba-ddd0-510b-8ed1-e3610031f6e1',
+  '66630624-08b1-5d02-8544-877d0ffb12c9',
   '70ef7a45-540a-5d8c-b970-19b9f740c40a',
   '4d22b75a-c395-5785-9131-68a8a5e203c1',
 ]
@@ -2580,80 +2580,6 @@ function evaluateRouteEndpointCompositionVisibility(
   )
 }
 
-function normalizeExamTextForInspection(value: unknown): string {
-  return String(value ?? '')
-    .toLocaleLowerCase('de')
-    .normalize('NFKC')
-    .replace(/ü/g, 'ue')
-    .replace(/ä/g, 'ae')
-    .replace(/ö/g, 'oe')
-    .replace(/ß/g, 'ss')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function hasExamSubtaskMarkers(normalizedTask: string): boolean {
-  return /(?:\b1\.|\ba\)|\baufgabe\s+1\b|\bteilaufgabe\b)/u.test(normalizedTask)
-}
-
-function hasScoringStructure(goal: LearningGoal): boolean {
-  const scoring = goal.examData?.scoring
-  return !!scoring
-    && Number(scoring.maxPoints) > 0
-    && Number(scoring.passingPoints) > 0
-    && Array.isArray(scoring.steps)
-    && scoring.steps.length > 0
-    && scoring.steps.every((step) =>
-      !!step && typeof step.id === 'string'
-      && step.id.trim().length > 0
-      && Number(step.points) > 0
-      && typeof step.description === 'string'
-      && step.description.trim().length > 0)
-}
-
-function hasBlockingExamReviewStatus(goal: LearningGoal): boolean {
-  const status = String(goal.examData?.reviewStatus ?? '').trim().toLowerCase()
-  return status.length > 0 && status !== 'released'
-}
-
-function isPlaceholderExamData(goal: LearningGoal): boolean {
-  if (!goal.examData) return false
-  const task = normalizeExamTextForInspection(goal.examData.taskContent)
-  const solution = normalizeExamTextForInspection(goal.examData.solutionContent)
-  // This known boilerplate supplies no solution, regardless of task numbers
-  // or subtask markers. Other text still requires substantive content review.
-  if (solution === normalizeExamTextForInspection(
-    'Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.',
-  )) return true
-  if (/^eine materialgestuetzte j\d+[- ]uebungsaufgabe\b/u.test(task)) return true
-  if (/^eine integrative sek[- ]i[- ]abschlussaufgabe\b/u.test(task)) return true
-  if (task.includes('uebungsaufgabe verbindet') && !hasExamSubtaskMarkers(task)) return true
-  return solution.startsWith('die loesung zeigt ')
-    && !hasExamSubtaskMarkers(task)
-    && !/\b\d+[,.]?\d*\b/u.test(task)
-}
-
-function concreteExamReadinessIssues(goal: LearningGoal, requireReadyStatus = true): string[] {
-  if (!goal.examData) return ['missing examData']
-  const issues: string[] = []
-  if (requireReadyStatus && hasBlockingExamReviewStatus(goal)) {
-    issues.push(`reviewStatus=${String(goal.examData.reviewStatus)}`)
-  }
-  if (typeof goal.examData.taskContent !== 'string' || goal.examData.taskContent.trim().length === 0) {
-    issues.push('missing taskContent')
-  }
-  if (typeof goal.examData.solutionContent !== 'string' || goal.examData.solutionContent.trim().length === 0) {
-    issues.push('missing solutionContent')
-  }
-  if (!hasScoringStructure(goal)) {
-    issues.push('incomplete scoring')
-  }
-  if (isPlaceholderExamData(goal)) {
-    issues.push('placeholder examData')
-  }
-  return issues
-}
-
 export function evaluateExamTaskReadiness(terminalAutonomyGoals: LearningGoal[]): RuleResult {
   const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
     .map((goal) => ({ goal, issues: concreteExamReadinessIssues(goal).filter((issue) => issue !== 'missing examData') }))
@@ -2806,7 +2732,8 @@ function discoverCapturedCurriculumAssessmentScope(
   const requiredGoalIds = [...required].sort()
   const issues = [...new Set(discoveryIssues)].sort()
   const retainedCoverage = createRetainedCoverageContext(repoRoot, landscape, definitionGoalIds, requiredGoalIds, files, assessmentInputFrame)
-  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}),
+  const sourceMaterialContext = createCurriculumSourceMaterialContext(landscape, definitionGoalIds, requiredGoalIds, issues, files, assessmentInputFrame)
+  return Object.freeze({ landscapeId: landscape.landscapeId, ...(retainedCoverage ? { retainedCoverage } : {}), ...(sourceMaterialContext ? { sourceMaterialContext } : {}),
     definitionGoalIds: Object.freeze(definitionGoalIds), requiredGoalIds: Object.freeze(requiredGoalIds),
     discoveryIssues: Object.freeze(issues) })
 }
@@ -2831,20 +2758,26 @@ export function evaluateCurriculumExamReadiness(
     const retainedFailures = kind === 'structure' && landscape.landscapeId === RETAINED_INFO_OWNER
       && isTrustedRetainedCoverageContext(retained) ? retained.manifest.failingGoalIds : []
     const failingGoalIds = [...new Set([...failures.map(({ id }) => id), ...retainedFailures])].sort()
-    const allIssues = [...issues, ...retainedIssues]
+    const material = expectedScope.sourceMaterialContext
+    const materialIssues = landscape.landscapeId === RETAINED_INFO_OWNER ? []
+      : isTrustedCurriculumSourceMaterialContext(material) ? [...material.manifest.discoveryIssues,
+        ...(sourceMaterialContextMatchesSource(material, landscape) ? [] : ['current-frame-invalid: producer source differs from captured material context'])]
+        : ['expected-context-missing: source material context']
+    const allIssues = [...new Set([...issues, ...retainedIssues, ...materialIssues])]
     const retainedPass = kind !== 'structure' || landscape.landscapeId !== RETAINED_INFO_OWNER
       || (isTrustedRetainedCoverageContext(retained) && retained.manifest.status === 'pass')
     const result = makeRule(kind === 'structure' ? 'CQR-204' : 'CQR-202',
       failingGoalIds.length === 0 && allIssues.length === 0 && retainedPass ? 'pass' : 'fail',
       kind === 'structure'
-        ? 'Complete retained exam-definition structure check (N19) and configured source-bound historical contracts.'
+        ? 'Complete current exam-definition structure check (N19) and exact source-bound authoring-revision/coverage contracts.'
         : 'Complete route, released-offer and subject-view target exam readiness check.',
       { examDefinitions: definitionGoalIds.length, requiredExams: requiredGoalIds.length,
         checkedExams: checkedGoalIds.length, weakExamData: failingGoalIds.length, discoveryIssues: allIssues.length },
       [...allIssues, ...retainedFailures.map(id => `${id}: retained coverage contract failed`), ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
     result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
       definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
-      failingGoalIds, discoveryIssues: [...allIssues], ...(kind === 'structure' && retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
+      failingGoalIds, discoveryIssues: [...allIssues], ...(retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}),
+      ...(material ? { sourceMaterialManifest: structuredClone(material.manifest) } : {}) }
     return result
   })
 }

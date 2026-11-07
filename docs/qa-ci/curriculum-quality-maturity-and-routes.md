@@ -706,6 +706,73 @@ wird die lokale Release-/Coveragemetadatenpflicht nicht pauschal auf alte
 Legacydefinitionen erweitert. Fehlende Routenprofile bleiben unkonfiguriert;
 ein leerer globaler Bereitschaftsumfang erteilt ihnen keine `M6`-Freigabe.
 
+Alle normalen Curricula brauchen einen authentischen sourcegebundenen
+Materialkontext. Der bestehende native Discoveryweg ermittelt Definitions- und
+Requiredmengen; die gemeinsame konkrete Readinessfunktion berechnet daraus die
+echten Fehlermengen der unveraenderlich erfassten Quelle. `sourceMaterialContext`
+bindet fuer die anderen Faecher Sourcepfad/-hash/-owner, Scope-IDs,
+Discoveryfehler und aktuelle Viewbytes im bestehenden WeakMap-/Freeze-Kontext.
+Beide CQR-Berichte tragen das vollstaendige `sourceMaterialManifest`; der
+Verbraucher verlangt dessen exakte Uebereinstimmung mit dem frisch gelesenen
+Kontext und lehnt echte Material- oder Statusfehler auch bei einem veralteten
+positiven M6-Bericht ab. Fehlende Teile erhalten keine leeren Ersatzwerte.
+Ungecapturte veraenderbare Quellen begruenden keinen bestandenen Kontext.
+Gemeinsame Testfixtures verwenden deshalb dieselbe echte Capturefactory.
+
+Informatik behaelt seinen separat verifizierten Retained-Kontext einschliesslich
+Materialbindung; andere Faecher erhalten keine Informatik-Historienpruefung.
+Bestehende Legacy-Statussemantik, Requiredentdeckung und die Readinessfunktion
+bleiben unveraendert. Ein vollstaendiger unangebotener Draft begruendet weiterhin
+keine neue Releasepflicht. Der normale Gesamtproducer erzeugt die verpflichtenden
+Manifeste frisch; alte Berichte ohne diese Bindung gelten nicht als aktuelle
+unabhaengige Floor-Evidenz. Das ist keine Behauptung eines gesamten CI-Bypasses:
+Main-CI regeneriert ihre Berichte. Der unabhaengige Meilenstein-/Floorverbraucher
+muss dennoch eine inzwischen verletzte echte Quellanforderung selbst erkennen.
+
+Die konkrete Informatik-Autorenrevision `2026-11-07-current23` bindet im
+bestehenden Helper 23 aktuelle Pruefungsvertraege und prueft neun ausdruecklich
+retirierte historische Identitaeten getrennt auf Abwesenheit. Die alten
+24er-Quellbytes und ihr Inventory bleiben Audit; die 15 ueberlebenden eigenen
+Pruefungsbedeutungen und fuenf deklarierten Coverages bleiben unveraendert.
+Acht prospektive Definitionen erhalten feste Erstbindungen an archivierte
+Initialbytes, native Coverage und unabhaengige Belegpins. Die zehn abwesenden
+Coveragefelder bleiben UNKNOWN, auch bei den vier bekannten DB-Materialdrafts.
+
+Die neue Revision ist eine codeeigene endliche Bindung am kanonischen
+CapturedSourcepfad, kein JSON-Register und keine Allowlist heutiger Sourcehashes.
+Das Initialarchiv wird nicht aus spaeteren Kandidaten neu erzeugt. Die aktuelle
+Quelle wird weiterhin frisch erfasst und gegen ihre festen Pruefungsbedeutungen
+verglichen; Frame und vollstaendiger Manifestverbrauch binden aktuelle Viewbytes,
+Definitions-/Requiredmengen sowie Initial-/Reviewpins. Reintroduktion, zusaetzliche
+oder fehlende Pruefungsdefinition, breitere Coverage und geaenderte Aufgaben- oder
+Bestehensbedeutung bleiben Fehler. Historische Audit- und synthetische
+Testcaptures sind eigene vorhandene Frames, keine Umschaltung des produktiven
+Readers. Die drei E-Freigaben beseitigen keine anderen Material-, Scope-, Graph-
+oder Reifefehler. Vollstaendige Definitionenpruefung und Readinesspruefung laufen
+weiterhin getrennt und umfassen auch alle Drafts.
+
+Vier individuell belegte unvollstaendige DB-Materialkoerper werden zusaetzlich
+an ihrem stabilen Task-/Loesungs-/Scoringfingerprint erkannt. Ein Wechsel von
+`draft` zu `released` oder eine neue Reviewnotiz liefert keine fehlenden
+ER-/Schema-/SQL-/Algebra-Eingaben und hebt diesen konkreten Inhaltsfehler nicht
+auf. Diese endliche Gegenpruefung ist kein allgemeiner maschineller
+Textqualitaetsnachweis und kein pauschaler ID-Bann. Tatsaechlich repariertes
+Material braucht weiterhin die vorhandene explizite Bedeutungs-/Evidenzpruefung.
+
+Die bestehende konkrete Readinessfunktion liegt gemeinsam mit ihren unveraenderten
+Text-, Scoring-, Reviewstatus- und DB-Fingerprintpruefungen im Retained-Helper;
+der Producer importiert dieselbe Funktion. Der vertrauenswuerdige Kontext leitet
+`sourceMaterialFailures` selbst aus der eingefrorenen Capture ab: Strukturfehler
+ueber alle aktuellen Definitionen ohne Statuspflicht, Readinessfehler ueber die
+vollstaendige Requiredmenge mit Statuspflicht. Fehlende Definitionen sind Fehler.
+Diese beiden obligatorischen Mengen sind im WeakMap-/Freeze-Kontext, im Framehash
+und im vollstaendigen Manifest gebunden, das beide serialisierten Pruefberichte
+tragen. Der gemeinsame Verbraucher weist nichtleere echte Fehlermengen auch bei
+gefaelschten Nullfehlerberichten ab. Fehlende, erfundene oder stale Manifestteile
+erhalten keine leeren Ersatzlisten. Ein technischer Definitionsvertragspass bleibt
+von einem Materialpass getrennt; Maturityfunktion und Floor-CLI verwenden weiterhin
+denselben bestehenden Verbraucher und unveraenderte Reifegrenzen.
+
 ### `CQR-301` - Semantic atomicity review freshness
 
 Ziel:

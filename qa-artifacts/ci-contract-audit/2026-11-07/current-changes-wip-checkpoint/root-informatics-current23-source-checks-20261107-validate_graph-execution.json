@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_graph",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_graph",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/root-informatics-current23-source-checks-20261107/validate_graph/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot/app",
+    "--",
+    "npm",
+    "run",
+    "validate:graph"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-11-07T12:44:07.646968+00:00",
+  "finishedAt": "2026-11-07T12:44:14.935949+00:00",
+  "stdoutSha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

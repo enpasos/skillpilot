@@ -1,0 +1,9 @@
+# Deutscher Source-Draft bei unverändertem M6-Bericht
+
+Dieser echte eng begrenzte Gegenfall bestätigt die allgemeine Quellenbindungslücke außerhalb des Informatik-RetainedContext. Er verändert keine aktive Datei. Die private Policy enthält exakt den unveränderten tatsächlichen deutschen M6-Flooreintrag; das Artefakt enthält den unveränderten echten deutschen M6-Bericht aus dem normalen Bericht vom 7. November, 10:30 UTC.
+
+Baseline: frischer Standalone-Floor mit echter deutscher Quelle und diesem Bericht EXIT0. Private Sourcevariante: ausschließlich `2fb368b0-7b9d-5df0-99b6-6d719fd47f95.examData.reviewStatus` wird von ABSENT auf draft gesetzt. Eine tatsächliche frische Sourceaufnahme mit dem bestehenden nativen Reader findet 17 Definitionen/17 Required, keineDiscoveryfehler, CQR-204 PASS mit null und CQR-202 FAIL mit einem Befund für genau dieses Goal. Der unveränderte Standalone-Floor mit exakt demselben alten M6-Bericht und derselben privaten Sourcevariante endet dennoch mit EXIT 0. Kein Graphbericht, Statuswert, Fehlermenge oder Scope im Report wurde gefälscht.
+
+Alle aktiven Source-/Code-/Policy-/Berichtsdateien blieben hashgleich. commands mit read-only Bindings, stdout/stderr, exakte private Inputs und guardPins sind erhalten. Der Codeframe enthält bereits die geprüfte spezifische Informatik-H1-Reparatur. Sie schützt andere Fächer noch nicht.
+
+Dies beweist einen Fehler des unabhängigen Floors beim Verbrauch eines veralteten positiven Berichts. Es ist KEINE Behauptung, die gesamte Remote-CI ließe sich allein so umgehen: der Hauptworkflow erzeugt seinen Bericht vorher neu. Die Quellenbindung des eigenständigen Verbrauchers ist trotzdem Teil des verlangten harten Vertrags und wird im vorhandenen gemeinsamen Pfad repariert. Kein Full-CQR, keine SourceA-Probes, kein produktiver Sourceedit oder Deployment.

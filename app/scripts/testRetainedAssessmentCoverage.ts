@@ -40,11 +40,15 @@ const row = (bundle: ReturnType<typeof bind>, id: string) => bundle.manifest.row
 const fails = (s: SkillLandscape, id: string, code: string) => assert.ok(row(bind(s), id).issues.some(i => i.startsWith(code)), `${id}: ${code}`)
 const results: Array<{ id: string; checks: string; status: string }> = []
 const group = (id: string, checks: string, execute: () => void) => { execute(); results.push({ id, checks, status: 'pass' }); console.log(`retained coverage ${id}: pass (${checks})`) }
-group('T01', 'bound actual 24; native CQR204 keeps six real placeholder errors', () => {
+group('T01', 'bound actual24; six generic placeholders plus four known missing-input materials remain hard', () => {
   const b = bind(clone()); assert.equal(b.manifest.status,'pass'); assert.equal(b.manifest.rows.length,24)
   assert.equal(b.manifest.rows.filter(r => r.decision === 'declared-preserved').length,14)
   assert.equal(b.manifest.rows.filter(r => r.decision === 'undeclared-preserved').length,10)
-  assert.equal(b.structure.status,'fail'); assert.equal(b.structure.assessmentValidation!.failingGoalIds.length,6)
+  assert.equal(b.structure.status,'fail'); assert.equal(b.structure.assessmentValidation!.failingGoalIds.length,10)
+  for (const id of ['b86e8ab3-2c12-5b6b-b515-1e7d457c99c2','d13e297f-505d-576a-9a86-11ab4d7896c9',
+    'd9892508-97b5-529e-9b9e-c4889fba2166','4e0668e3-edca-57f4-b258-df87f23d2b4e']) {
+    assert.ok(b.structure.details?.some(detail => detail.startsWith(id + ': missing concrete ER/')))
+  }
 })
 for (const [index, id] of Q3.entries()) group(`T0${index+2}`, `native isolated Q3 ${[21,18][index]}→${[22,19][index]}`, () => {
   const s = clone(); goal(s,CLUSTER).contains!.push(ADDITION)

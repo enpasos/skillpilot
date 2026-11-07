@@ -1,0 +1,38 @@
+..
+----------------------------------------------------------------------
+Ran 2 tests in 1.580s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 4.771s
+
+OK
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: ["mathematik: ce198bc9-b014-52ba-814f-25cc3e020668: Authenticated original-context capsule failed: Traceback (most recent call last):\n  File \"/home/enpasos/projects/skillpilot/scripts/visualization_qualified_context_capsule.py\", line 143, in <module>\n    kernel.main()\n  File \"/home/enpasos/projects/skillpilot/scripts/visualization_review_git_capsule.py\", line 292, in main\n    build(args) if args.action == 'build' else materialize(args)\n                                               ^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/projects/skillpilot/scripts/visualization_qualified_context_capsule.py\", line 127, in bounded\n    result = action(args)\n             ^^^^^^^^^^^^\n  File \"/home/enpasos/projects/skillpilot/scripts/visualization_review_git_capsule.py\", line 266, in materialize\n    path.write_bytes(read_bound(root, row['path'], row['sha256']))\n  File \"/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py\", line 1037, in write_bytes\n    return f.write(view)\n           ^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device\n"]
++ actual - expected
+
++ []
+- [
+-   'ce198bc9-b014-52ba-814f-25cc3e020668'
+- ]
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testVisualizationContextMaturity.ts:39:10)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [],
+  expected: [ 'ce198bc9-b014-52ba-814f-25cc3e020668' ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

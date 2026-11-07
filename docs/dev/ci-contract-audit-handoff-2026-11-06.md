@@ -33,6 +33,13 @@ einer Testkorrektur implementiert.
 
 ## Aktueller Zwischenstand vom 7. November
 
+**WIP-Checkpoint auf Ownerwunsch:** Der
+[gesicherte aktuelle Stand](ci-contract-audit-checkpoint-2026-11-07.md)
+enthält inzwischen die angewandte Informatikquelle `50a26163…` und die
+fachübergreifende Quellenbindung der Materialprüfung. Der neue Gesamtproducer
+und die Wiederholung des Deep-Entry laufen noch. Der folgende Bericht vom
+10:30-Stand ist ausdrücklich älter; ein aktueller Gesamtpass wird nicht behauptet.
+
 Der reguläre Gesamtbericht vom `2026-11-07T10:30:27.069Z` enthält die
 [aktive Math58-/Boxplot-Korrektur](ci-graph-repairs/visualization-math58-active-integration-2026-11-07.md)
 und die zuvor angewandten zehn fachlich geprüften PoWi-Kantenkürzungen.
@@ -75,8 +82,8 @@ der frische Remotenachweis der Aufteilung steht noch aus.
 **Informatik benötigt keine Erhaltung oder Übernahme alter Ergebnisse.**
 Die [verbindliche Klarstellung](ci-graph-repairs/informatics-retained-contract-result-gap-2026-11-07.md)
 erlaubt die Bereinigung der überholten Prüfungsbündel ohne Historienruntime.
-Der aktuelle aktive Informatiksource ist davon noch unverändert. Drei konkrete
-lokale E-Aufgaben ersetzen im privaten Nachfolger zwei unbrauchbare Bündel;
+Die geprüfte Informatikquelle `50a26163…` ist lokal angewandt. Drei konkrete
+lokale E-Aufgaben ersetzen darin zwei unbrauchbare Bündel;
 sie prüfen 15 vorhandene Kompetenzen, während zehn weitere Ziele ausdrücklich
 nicht mitanerkannt werden. Der Materialreview hat eine echte TCP/IP-Lücke
 und eine Rubrikabweichung korrigieren lassen. Der enge Source-/Scope-Review

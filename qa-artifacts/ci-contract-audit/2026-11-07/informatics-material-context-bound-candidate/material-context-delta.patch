@@ -1,0 +1,353 @@
+--- predecessor47ae9d47/app/scripts/generateCurriculumQualityStatus.ts
++++ candidate/app/scripts/generateCurriculumQualityStatus.ts
+@@ -1,5 +1,5 @@
+ import { createHash } from 'node:crypto'
+-import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource, coverageSha256, stableCoverageJson } from './lib/retainedAssessmentCoverage'
++import { captureCurriculumSource, createRetainedCoverageContext, RETAINED_INFO_OWNER, isTrustedRetainedCoverageContext, retainedContextMatchesSource, concreteExamReadinessIssues } from './lib/retainedAssessmentCoverage'
+ import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
+ import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+@@ -2580,96 +2580,6 @@
+   )
+ }
+ 
+-function normalizeExamTextForInspection(value: unknown): string {
+-  return String(value ?? '')
+-    .toLocaleLowerCase('de')
+-    .normalize('NFKC')
+-    .replace(/ü/g, 'ue')
+-    .replace(/ä/g, 'ae')
+-    .replace(/ö/g, 'oe')
+-    .replace(/ß/g, 'ss')
+-    .replace(/\s+/g, ' ')
+-    .trim()
+-}
+-
+-function hasExamSubtaskMarkers(normalizedTask: string): boolean {
+-  return /(?:\b1\.|\ba\)|\baufgabe\s+1\b|\bteilaufgabe\b)/u.test(normalizedTask)
+-}
+-
+-function hasScoringStructure(goal: LearningGoal): boolean {
+-  const scoring = goal.examData?.scoring
+-  return !!scoring
+-    && Number(scoring.maxPoints) > 0
+-    && Number(scoring.passingPoints) > 0
+-    && Array.isArray(scoring.steps)
+-    && scoring.steps.length > 0
+-    && scoring.steps.every((step) =>
+-      !!step && typeof step.id === 'string'
+-      && step.id.trim().length > 0
+-      && Number(step.points) > 0
+-      && typeof step.description === 'string'
+-      && step.description.trim().length > 0)
+-}
+-
+-function hasBlockingExamReviewStatus(goal: LearningGoal): boolean {
+-  const status = String(goal.examData?.reviewStatus ?? '').trim().toLowerCase()
+-  return status.length > 0 && status !== 'released'
+-}
+-
+-function isPlaceholderExamData(goal: LearningGoal): boolean {
+-  if (!goal.examData) return false
+-  const task = normalizeExamTextForInspection(goal.examData.taskContent)
+-  const solution = normalizeExamTextForInspection(goal.examData.solutionContent)
+-  // This known boilerplate supplies no solution, regardless of task numbers
+-  // or subtask markers. Other text still requires substantive content review.
+-  if (solution === normalizeExamTextForInspection(
+-    'Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.',
+-  )) return true
+-  if (/^eine materialgestuetzte j\d+[- ]uebungsaufgabe\b/u.test(task)) return true
+-  if (/^eine integrative sek[- ]i[- ]abschlussaufgabe\b/u.test(task)) return true
+-  if (task.includes('uebungsaufgabe verbindet') && !hasExamSubtaskMarkers(task)) return true
+-  return solution.startsWith('die loesung zeigt ')
+-    && !hasExamSubtaskMarkers(task)
+-    && !/\b\d+[,.]?\d*\b/u.test(task)
+-}
+-
+-// Four independently established missing-input bodies, not a subject/ID ban.
+-// Review metadata is intentionally absent from this stable material fingerprint.
+-// New concrete material is still checked by the existing exact meaning/evidence
+-// contract; changing a review label cannot repair these unchanged inputs.
+-const KNOWN_INCOMPLETE_DB_MATERIALS: Readonly<Record<string, string>> = {
+-  'b86e8ab3-2c12-5b6b-b515-1e7d457c99c2': '1868fb107825df5c244488127c69fb1a75a844bd90eacb2e8f925a8c2f84f95c',
+-  'd13e297f-505d-576a-9a86-11ab4d7896c9': '18a92ce26b592d575294d5e7305163f7ee3032229c7f45dbc58c839fef0722d2',
+-  'd9892508-97b5-529e-9b9e-c4889fba2166': '581cebc5f8c3248bc6d32fd1954d88bafa2607d3641bcf9754e86710cadf83ce',
+-  '4e0668e3-edca-57f4-b258-df87f23d2b4e': 'd4f0ea6595865e623cd08099e986dc341012040d0fc11c28b00fabbd04c683b4',
+-}
+-
+-function concreteExamReadinessIssues(goal: LearningGoal, requireReadyStatus = true): string[] {
+-  if (!goal.examData) return ['missing examData']
+-  const issues: string[] = []
+-  const knownIncompleteMaterial = KNOWN_INCOMPLETE_DB_MATERIALS[goal.id]
+-  if (knownIncompleteMaterial && coverageSha256(stableCoverageJson({ taskContent: goal.examData.taskContent,
+-    solutionContent: goal.examData.solutionContent, scoring: goal.examData.scoring })) === knownIncompleteMaterial) {
+-    issues.push('missing concrete ER/schema/SQL/relational-algebra input materials')
+-  }
+-  if (requireReadyStatus && hasBlockingExamReviewStatus(goal)) {
+-    issues.push(`reviewStatus=${String(goal.examData.reviewStatus)}`)
+-  }
+-  if (typeof goal.examData.taskContent !== 'string' || goal.examData.taskContent.trim().length === 0) {
+-    issues.push('missing taskContent')
+-  }
+-  if (typeof goal.examData.solutionContent !== 'string' || goal.examData.solutionContent.trim().length === 0) {
+-    issues.push('missing solutionContent')
+-  }
+-  if (!hasScoringStructure(goal)) {
+-    issues.push('incomplete scoring')
+-  }
+-  if (isPlaceholderExamData(goal)) {
+-    issues.push('placeholder examData')
+-  }
+-  return issues
+-}
+-
+ export function evaluateExamTaskReadiness(terminalAutonomyGoals: LearningGoal[]): RuleResult {
+   const terminalAutonomyGoalsWithWeakExamData = terminalAutonomyGoals
+     .map((goal) => ({ goal, issues: concreteExamReadinessIssues(goal).filter((issue) => issue !== 'missing examData') }))
+@@ -2860,7 +2770,7 @@
+       [...allIssues, ...retainedFailures.map(id => `${id}: retained coverage contract failed`), ...failures.map(({ id, issues: goalIssues }) => `${id}: ${goalIssues.join(', ')}`)])
+     result.assessmentValidation = { landscapeId: landscape.landscapeId, kind,
+       definitionGoalIds: [...definitionGoalIds], requiredGoalIds: [...requiredGoalIds], checkedGoalIds: [...checkedGoalIds],
+-      failingGoalIds, discoveryIssues: [...allIssues], ...(kind === 'structure' && retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
++      failingGoalIds, discoveryIssues: [...allIssues], ...(retained ? { retainedCoverageManifest: structuredClone(retained.manifest) } : {}) }
+     return result
+   })
+ }
+--- predecessor47ae9d47/app/scripts/lib/curriculumAssessmentValidation.ts
++++ candidate/app/scripts/lib/curriculumAssessmentValidation.ts
+@@ -38,7 +38,9 @@
+   const retained = expected.retainedCoverage
+   if (landscapeId === RETAINED_INFO_OWNER && (!isTrustedRetainedCoverageContext(retained)
+     || !retainedContextMatchesScope(retained, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds)
+-    || retained.manifest.status !== 'pass')) return false
++    || retained.manifest.status !== 'pass'
++    || retained.manifest.sourceMaterialFailures.structureGoalIds.length !== 0
++    || retained.manifest.sourceMaterialFailures.readinessGoalIds.length !== 0)) return false
+   const definitions = expected.definitionGoalIds
+   const required = expected.requiredGoalIds
+   if (!required.every((id) => definitions.includes(id))) return false
+@@ -52,7 +54,7 @@
+     const rule = record(matches[0])!
+     const manifest = record(rule.assessmentValidation)
+     const metrics = record(rule.metrics)
+-    if (id === 'CQR-204' && landscapeId === RETAINED_INFO_OWNER
++    if (landscapeId === RETAINED_INFO_OWNER
+       && (!isTrustedRetainedCoverageContext(retained)
+         || stableCoverageJson(manifest?.retainedCoverageManifest) !== stableCoverageJson(retained.manifest))) return false
+     const checked = kind === 'structure' ? definitions : required
+--- predecessor47ae9d47/app/scripts/lib/retainedAssessmentCoverage.ts
++++ candidate/app/scripts/lib/retainedAssessmentCoverage.ts
+@@ -31,6 +31,7 @@
+   revision?: { revisionId: string; definitionSourcePath: string; initialSourceReference: { path: string; sha256: string; gzip?: boolean };
+     initialInventoryReference: { path: string; sha256: string }; dataSha256: string; reviewPins: Array<{ path: string; sha256: string }> }
+   retirementChecks?: Array<{ goalId: string; decision: 'retired-current-definition' | 'fail'; issues: string[] }>
++  sourceMaterialFailures: { structureGoalIds: string[]; readinessGoalIds: string[] }
+   currentDefinitionGoalIds: string[]
+   introductionGoalIds: string[]
+   rows: RetainedCoverageRow[]
+@@ -41,7 +42,7 @@
+ export interface CapturedSource { readonly path: string; readonly sha256: string; readonly owner: string }
+ export interface RetainedCoverageContext { readonly manifest: RetainedCoverageManifest }
+ const captures = new WeakMap<object, CapturedSource>()
+-const contexts = new WeakMap<object, { owner: string; source?: CapturedSource; definitions: readonly string[]; required: readonly string[] }>()
++const contexts = new WeakMap<object, { owner: string; source?: CapturedSource; definitions: readonly string[]; required: readonly string[]; materialFailures: RetainedCoverageManifest['sourceMaterialFailures'] }>()
+ export const coverageSha256 = (bytes: string | Buffer): string => createHash('sha256').update(bytes).digest('hex')
+ export function stableCoverageJson(value: unknown): string {
+   if (Array.isArray(value)) return `[${value.map(stableCoverageJson).join(',')}]`
+@@ -75,6 +76,97 @@
+   if (!isTrustedRetainedCoverageContext(context)) return false
+   const frame = contexts.get(context)!
+   return frame.owner === owner && same(frame.definitions, definitions) && same(frame.required, required)
++    && same(frame.materialFailures, context.manifest.sourceMaterialFailures)
++}
++
++function normalizeExamTextForInspection(value: unknown): string {
++  return String(value ?? '')
++    .toLocaleLowerCase('de')
++    .normalize('NFKC')
++    .replace(/ü/g, 'ue')
++    .replace(/ä/g, 'ae')
++    .replace(/ö/g, 'oe')
++    .replace(/ß/g, 'ss')
++    .replace(/\s+/g, ' ')
++    .trim()
++}
++
++function hasExamSubtaskMarkers(normalizedTask: string): boolean {
++  return /(?:\b1\.|\ba\)|\baufgabe\s+1\b|\bteilaufgabe\b)/u.test(normalizedTask)
++}
++
++function hasScoringStructure(goal: LearningGoal): boolean {
++  const scoring = goal.examData?.scoring
++  return !!scoring
++    && Number(scoring.maxPoints) > 0
++    && Number(scoring.passingPoints) > 0
++    && Array.isArray(scoring.steps)
++    && scoring.steps.length > 0
++    && scoring.steps.every((step) =>
++      !!step && typeof step.id === 'string'
++      && step.id.trim().length > 0
++      && Number(step.points) > 0
++      && typeof step.description === 'string'
++      && step.description.trim().length > 0)
++}
++
++function hasBlockingExamReviewStatus(goal: LearningGoal): boolean {
++  const status = String(goal.examData?.reviewStatus ?? '').trim().toLowerCase()
++  return status.length > 0 && status !== 'released'
++}
++
++function isPlaceholderExamData(goal: LearningGoal): boolean {
++  if (!goal.examData) return false
++  const task = normalizeExamTextForInspection(goal.examData.taskContent)
++  const solution = normalizeExamTextForInspection(goal.examData.solutionContent)
++  // This known boilerplate supplies no solution, regardless of task numbers
++  // or subtask markers. Other text still requires substantive content review.
++  if (solution === normalizeExamTextForInspection(
++    'Erwartet wird eine fachlich korrekte, begründete und überprüfte Lösung, die die relevanten Kompetenzen des Abschnitts vernetzt nutzt.',
++  )) return true
++  if (/^eine materialgestuetzte j\d+[- ]uebungsaufgabe\b/u.test(task)) return true
++  if (/^eine integrative sek[- ]i[- ]abschlussaufgabe\b/u.test(task)) return true
++  if (task.includes('uebungsaufgabe verbindet') && !hasExamSubtaskMarkers(task)) return true
++  return solution.startsWith('die loesung zeigt ')
++    && !hasExamSubtaskMarkers(task)
++    && !/\b\d+[,.]?\d*\b/u.test(task)
++}
++
++// Four independently established missing-input bodies, not a subject/ID ban.
++// Review metadata is intentionally absent from this stable material fingerprint.
++// New concrete material is still checked by the existing exact meaning/evidence
++// contract; changing a review label cannot repair these unchanged inputs.
++const KNOWN_INCOMPLETE_DB_MATERIALS: Readonly<Record<string, string>> = {
++  'b86e8ab3-2c12-5b6b-b515-1e7d457c99c2': '1868fb107825df5c244488127c69fb1a75a844bd90eacb2e8f925a8c2f84f95c',
++  'd13e297f-505d-576a-9a86-11ab4d7896c9': '18a92ce26b592d575294d5e7305163f7ee3032229c7f45dbc58c839fef0722d2',
++  'd9892508-97b5-529e-9b9e-c4889fba2166': '581cebc5f8c3248bc6d32fd1954d88bafa2607d3641bcf9754e86710cadf83ce',
++  '4e0668e3-edca-57f4-b258-df87f23d2b4e': 'd4f0ea6595865e623cd08099e986dc341012040d0fc11c28b00fabbd04c683b4',
++}
++
++export function concreteExamReadinessIssues(goal: LearningGoal, requireReadyStatus = true): string[] {
++  if (!goal.examData) return ['missing examData']
++  const issues: string[] = []
++  const knownIncompleteMaterial = KNOWN_INCOMPLETE_DB_MATERIALS[goal.id]
++  if (knownIncompleteMaterial && coverageSha256(stableCoverageJson({ taskContent: goal.examData.taskContent,
++    solutionContent: goal.examData.solutionContent, scoring: goal.examData.scoring })) === knownIncompleteMaterial) {
++    issues.push('missing concrete ER/schema/SQL/relational-algebra input materials')
++  }
++  if (requireReadyStatus && hasBlockingExamReviewStatus(goal)) {
++    issues.push(`reviewStatus=${String(goal.examData.reviewStatus)}`)
++  }
++  if (typeof goal.examData.taskContent !== 'string' || goal.examData.taskContent.trim().length === 0) {
++    issues.push('missing taskContent')
++  }
++  if (typeof goal.examData.solutionContent !== 'string' || goal.examData.solutionContent.trim().length === 0) {
++    issues.push('missing solutionContent')
++  }
++  if (!hasScoringStructure(goal)) {
++    issues.push('incomplete scoring')
++  }
++  if (isPlaceholderExamData(goal)) {
++    issues.push('placeholder examData')
++  }
++  return issues
+ }
+ 
+ /** Only these exact fields are nonsemantic in the finite retained contract. */
+@@ -1636,12 +1728,20 @@
+   const revision = revisionRequested ? { revisionId: CURRENT_INFO_REVISION.revisionId, definitionSourcePath: CURRENT_INFO_SOURCE_PATH,
+     initialSourceReference: { ...CURRENT_INFO_REVISION.initialSourceReference }, initialInventoryReference: { ...CURRENT_INFO_REVISION.initialInventoryReference },
+     dataSha256: coverageSha256(stableCoverageJson(CURRENT_INFO_REVISION)), reviewPins: CURRENT_INFO_REVISION.reviewPins.map(pin => ({ ...pin })) } : undefined
++  // These are derived here from the immutable capture, never supplied by a
++  // producer/report caller. The technical identity contract remains separate.
++  const materialFailuresFor = (ids: readonly string[], ready: boolean) => sorted(ids.filter(id => {
++    const goal = byId.get(id)
++    return !goal || concreteExamReadinessIssues(goal, ready).length > 0
++  }))
++  const sourceMaterialFailures = { structureGoalIds: materialFailuresFor(definitionGoalIds, false),
++    readinessGoalIds: materialFailuresFor(requiredGoalIds, true) }
+   const manifest: RetainedCoverageManifest = { contractVersion: revisionRequested ? 'informatics-current-assessment-coverage-2026-11-07-v1' : 'informatics-retained-assessment-coverage-v1', owner: RETAINED_INFO_OWNER,
+     historySourceSha256: RETAINED_INFO_SOURCE_SHA, historyInventorySha256: RETAINED_INFO_INVENTORY_SHA,
+-    frameDigest: coverageSha256(stableCoverageJson({ source: capture ?? null, views, consumedPins, ...(revisionRequested ? { revision, revisionPins: revisionCheck?.pins, retirementChecks } : {}), definitionGoalIds, requiredGoalIds })),
+-    historicalGoalIds, ...(revisionRequested ? { revision, retirementChecks } : {}), currentDefinitionGoalIds: [...definitionGoalIds], introductionGoalIds: introductions,
++    frameDigest: coverageSha256(stableCoverageJson({ source: capture ?? null, views, consumedPins, ...(revisionRequested ? { revision, revisionPins: revisionCheck?.pins, retirementChecks } : {}), definitionGoalIds, requiredGoalIds, sourceMaterialFailures })),
++    sourceMaterialFailures, historicalGoalIds, ...(revisionRequested ? { revision, retirementChecks } : {}), currentDefinitionGoalIds: [...definitionGoalIds], introductionGoalIds: introductions,
+     rows, failingGoalIds: sorted([...rows.filter(row => row.decision === 'fail').map(row => row.goalId), ...(retirementChecks?.filter(row => row.decision === 'fail').map(row => row.goalId) ?? [])]),
+     discoveryIssues: sorted(discoveryIssues), status: rows.every(row => row.decision !== 'fail') && !retirementChecks?.some(row => row.decision === 'fail')
+       && !discoveryIssues.length && historicalGoalIds.length === 24 && (!revisionRequested || (currentRevision && rows.length === 23 && retirementChecks?.length === 9)) ? 'pass' : 'fail' }
+-  const context = freeze({ manifest }); contexts.set(context, { owner: landscape.landscapeId, source: capture, definitions: [...definitionGoalIds], required: [...requiredGoalIds] }); return context
+-}
++  const context = freeze({ manifest }); contexts.set(context, { owner: landscape.landscapeId, source: capture, definitions: [...definitionGoalIds], required: [...requiredGoalIds], materialFailures: sourceMaterialFailures }); return context
++}
+--- predecessor47ae9d47/app/scripts/testInformaticsCurrentDefinitionRevision.ts
++++ candidate/app/scripts/testInformaticsCurrentDefinitionRevision.ts
+@@ -36,4 +36,5 @@
+ group('R11-complete-material-positive-and-no-ID-ban',()=>{for(const id of ['ea2ce31f-a0c7-5102-9213-ee1db5b2d475','c24236b2-d783-53be-84d5-96b4f4ef8159','6aa77baf-a199-5c66-b07c-8dc23439acca'])assert.equal(evaluateExamTaskReadiness([goal(original,id)]).status,'pass');const s=clone(),g=goal(s,db[0]),complete=goal(s,'6ebc2a67-ea20-5c4e-8a63-635f40438d6a').examData!;g.examData={taskContent:complete.taskContent,solutionContent:complete.solutionContent,scoring:structuredClone(complete.scoring),reviewStatus:'released'};assert.equal(evaluateExamTaskReadiness([g]).status,'pass','Complete supplied DB material is not blocked merely because of the old bad-body ID.');assert(!Object.hasOwn(g.examData,'coveredGoalIds'));assert(bind(s).manifest.rows.find(r=>r.goalId===db[0])!.issues.includes('meaning-change-unproved'),'Different material still needs the existing explicit same-meaning/evidence path.');return {threeIndependentlyReviewedEControlsReady:true,existingCompleteDbBodyNotIdBanned:true,unreviewedReplacementNotAcceptedAsSameContract:true}})
+ group('R12-exact-initial-inventory-and-review-poisons',()=>{const root=mkdtempSync(resolve(tmpdir(),'info-current-contract-inputs-'));try{const files=['contracts/curriculum-assessment-coverage/v1/informatics/historical-informatics-source.json.gz','contracts/curriculum-assessment-coverage/v1/informatics/history-inventory.json',revision.initialSourceReference.path,revision.initialInventoryReference.path,...revision.reviewPins.map((p:{path:string})=>p.path)];for(const rel of files){mkdirSync(dirname(resolve(root,rel)),{recursive:true});writeFileSync(resolve(root,rel),readFileSync(resolve(R,rel)))}assert.equal(bind(clone(),root).manifest.status,'pass');for(const rel of [revision.initialSourceReference.path,revision.initialInventoryReference.path,...revision.reviewPins.map((p:{path:string})=>p.path)]){const p=resolve(root,rel),raw=readFileSync(p);writeFileSync(p,Buffer.concat([raw,Buffer.from('\n')]));const bad=bind(clone(),root).manifest;assert.equal(bad.status,'fail');assert(bad.discoveryIssues.some(i=>i.startsWith('revision-pin-invalid')));writeFileSync(p,raw)}const archivePath=resolve(root,revision.initialSourceReference.path),archive=readFileSync(archivePath);for(const duplicate of [false,true]){const initial=JSON.parse(gunzipSync(archive).toString()) as SkillLandscape;if(duplicate)initial.goals.push(structuredClone(goal(initial,survivors[0])));else initial.goals=initial.goals.filter(g=>g.id!==survivors[0]);writeFileSync(archivePath,gzipSync(Buffer.from(JSON.stringify(initial))));const bad=bind(clone(),root).manifest;assert.equal(bad.status,'fail');assert(bad.discoveryIssues.includes('revision-partition-invalid'),'Actual duplicate/one-sided initial partitions must fail independently of their stale file pins.');writeFileSync(archivePath,archive)}return {exactControl:true,poisonedPins:5,duplicateOrOneSidedInitialPartitions:2}}finally{rmSync(root,{recursive:true,force:true})}})
+ group('R13-current-context-and-complete-manifest-consumer',()=>{const s=clone();goal(s,'31026f4a-629b-571f-b45d-a87f47a09d9e').contains!.push('0ef581d1-c033-5a98-a65a-48ea7b80136f');const bad=bind(s),graph=evaluateGraphIntegrity(bad.source,[{landscapeId:OWNER,goals:bad.source.goals}]),rules=[graph,...bad.rules];assert.equal(bad.manifest.status,'fail');const forged=structuredClone(rules);for(const r of forged){if(!r.assessmentValidation)continue;r.status='pass';r.metrics!.weakExamData=0;r.metrics!.discoveryIssues=0;r.assessmentValidation.failingGoalIds=[];r.assessmentValidation.discoveryIssues=[];if(r.assessmentValidation.retainedCoverageManifest){const m=r.assessmentValidation.retainedCoverageManifest;m.status='pass';m.failingGoalIds=[];m.discoveryIssues=[];for(const row of m.rows){row.issues=[];row.decision=row.historyKind==='first-definition'?'first-definition-bound':row.historyKind==='declared'?'declared-preserved':'undeclared-preserved'}}}assert.equal(hasCompletePassingCurriculumExamReadiness(forged,OWNER,bad.scope),false);for(const expected of [undefined,JSON.parse(JSON.stringify(bad.scope)),{...bad.scope,retainedCoverage:{manifest:bad.manifest}}])assert.equal(hasCompletePassingCurriculumExamReadiness(forged,OWNER,expected),false);for(const minimumMaturity of ['M6','M7']){const policy={schemaVersion:1,policyId:'current-fixed-contract-negative',baselineDate:'2026-08-20',exceptions:[],knownPreBaselineRegressions:[],floors:[{landscapeId:OWNER,frameworkId:'test',subject:'Informatics fixture',minimumMaturity,reason:'Check unchanged current-context floor consumer.'}]},artifact={curricula:[{landscapeId:OWNER,frameworkId:'test',subject:'Informatics fixture',maturity:minimumMaturity,rules:forged}]};assert(collectCurriculumMaturityFloorFailures(artifact,policy,new Map([[OWNER,bad.scope]])).some(s=>s.includes('complete passing assessment reports')))}return {exactRetirementAndRevisionManifestConsumed:true,forgedZeroErrorsRejected:true,deserializedContextRejected:true,m6AndM7FloorRejected:true}})
++group('R14-valid-contract-real-material-report-forgery',()=>{assert.equal(m.status,'pass');const actual=m.sourceMaterialFailures;assert.equal(actual.structureGoalIds.length,8);assert.equal(actual.readinessGoalIds.length,9);assert.deepEqual(actual.structureGoalIds,baseline.rules.find(r=>r.id==='CQR-204')!.assessmentValidation!.failingGoalIds);assert.deepEqual(actual.readinessGoalIds,baseline.rules.find(r=>r.id==='CQR-202')!.assessmentValidation!.failingGoalIds);assert(Object.isFrozen(actual));assert(Object.isFrozen(actual.readinessGoalIds));const rules=[evaluateGraphIntegrity(baseline.source,[{landscapeId:OWNER,goals:baseline.source.goals}]),...baseline.rules];for(const clearMaterialManifest of [false,true]){const forged=structuredClone(rules);for(const r of forged){if(!r.assessmentValidation)continue;r.status='pass';r.metrics!.weakExamData=0;r.metrics!.discoveryIssues=0;r.assessmentValidation.failingGoalIds=[];r.assessmentValidation.discoveryIssues=[];if(clearMaterialManifest)r.assessmentValidation.retainedCoverageManifest!.sourceMaterialFailures={structureGoalIds:[],readinessGoalIds:[]}}assert.equal(hasCompletePassingCurriculumExamReadiness(forged,OWNER,baseline.scope),false)}const statusEdit=clone();goal(statusEdit,'6ebc2a67-ea20-5c4e-8a63-635f40438d6a').examData!.reviewStatus='released';const next=bind(statusEdit);assert.equal(next.manifest.status,'pass');assert.equal(next.manifest.sourceMaterialFailures.structureGoalIds.length,8);assert.equal(next.manifest.sourceMaterialFailures.readinessGoalIds.length,8);assert.notEqual(next.manifest.frameDigest,m.frameDigest);return {actualMaterialFailures:[8,9],validTechnicalRows:23,separateRetirements:9,forgedReportOnlyRejected:true,forgedManifestZeroesRejected:true,statusChangeFreshlyDerived:[8,8]}})
+ console.log(JSON.stringify({currentDefinitionRevisionGroups:output.length,groups:output,sourceSha256:coverageSha256(readFileSync(resolve(R,path))),sourceWrites:false,productionCodeInjection:false}))
+--- predecessor47ae9d47/app/scripts/testRetainedAssessmentCoverageChain.ts
++++ candidate/app/scripts/testRetainedAssessmentCoverageChain.ts
+@@ -73,6 +73,18 @@
+ const policy={schemaVersion:1,policyId:'fixed-synthetic-info-M6-floor',baselineDate:'2026-08-20',exceptions:[],knownPreBaselineRegressions:[],floors:[{landscapeId:O,frameworkId:'synthetic',subject:'Synthetic native Info gate fixture',minimumMaturity:'M6',reason:'Isolate exact retained-coverage failure'}]};
+ const artifact=(c,m=c.maturity)=>({curricula:[{landscapeId:O,frameworkId:'synthetic',subject:'Synthetic native Info gate fixture',maturity:m,scopes:routes,rules:c.rules}]});
+ const good=current();assert.equal(good.expected.retainedCoverage.manifest.status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-204').status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-202').status,'pass');assert.equal(good.rules.find(r=>r.id==='CQR-001').status,'pass');assert.equal(good.maturity,'M6');assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,good.expected),true);checkCurriculumMaturityFloors(artifact(good),policy,good.scopes);
++// A valid complete control proves both serialized material halves are mandatory.
++assert.deepEqual(good.expected.retainedCoverage.manifest.sourceMaterialFailures,{structureGoalIds:[],readinessGoalIds:[]});
++let materialSerializationNegatives=0;
++for(const id of ['CQR-204','CQR-202'])for(const mutation of ['absent-all','absent-structure','absent-readiness','invent-structure','invent-readiness']){const changed=structuredClone(good.rules),m=changed.find(r=>r.id===id).assessmentValidation.retainedCoverageManifest;if(mutation==='absent-all')delete m.sourceMaterialFailures;if(mutation==='absent-structure')delete m.sourceMaterialFailures.structureGoalIds;if(mutation==='absent-readiness')delete m.sourceMaterialFailures.readinessGoalIds;if(mutation==='invent-structure')m.sourceMaterialFailures.structureGoalIds=[${JSON.stringify(exams[0].id)}];if(mutation==='invent-readiness')m.sourceMaterialFailures.readinessGoalIds=[${JSON.stringify(exams[0].id)}];assert.equal(hasCompletePassingCurriculumExamReadiness(changed,O,good.expected),false);materialSerializationNegatives++}
++const draft=structuredClone(base);draft.goals.find(g=>g.id===${JSON.stringify(exams[0].id)}).examData.reviewStatus='draft';writeFileSync(path,JSON.stringify(draft));const statusOnly=current();assert.equal(statusOnly.expected.retainedCoverage.manifest.status,'pass');assert.deepEqual(statusOnly.expected.retainedCoverage.manifest.sourceMaterialFailures,{structureGoalIds:[],readinessGoalIds:[${JSON.stringify(exams[0].id)}]});assert.equal(statusOnly.rules.find(r=>r.id==='CQR-204').status,'pass');assert.equal(statusOnly.rules.find(r=>r.id==='CQR-202').status,'fail');assert.equal(statusOnly.rules.find(r=>r.id==='CQR-001').status,'pass');assert.equal(statusOnly.maturity,'M3');
++const statusForged=structuredClone(statusOnly);for(const r of statusForged.rules){if(!r.assessmentValidation)continue;r.status='pass';r.metrics.weakExamData=0;r.metrics.discoveryIssues=0;r.assessmentValidation.failingGoalIds=[];r.assessmentValidation.discoveryIssues=[]}
++assert.equal(hasCompletePassingCurriculumExamReadiness(statusForged.rules,O,statusOnly.expected),false);assert.equal(deriveCurriculumMaturity(statusForged.rules,routes,O,statusOnly.expected),'M3');assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,statusOnly.expected),false);assert.equal(hasCompletePassingCurriculumExamReadiness(statusOnly.rules,O,good.expected),false);
++for(const minimumMaturity of ['M6','M7'])assert.throws(()=>checkCurriculumMaturityFloors(artifact(statusForged,minimumMaturity),{...policy,floors:[{...policy.floors[0],minimumMaturity}]},statusOnly.scopes),/assessment reports bound to current source discovery/);
++writeFileSync(${JSON.stringify(resolve(scratch,'material-only-source.json'))},JSON.stringify(draft));writeFileSync(${JSON.stringify(resolve(scratch,'material-only-forged-status.json'))},JSON.stringify(artifact(statusForged,'M6')));
++for(const expected of [JSON.parse(JSON.stringify(good.expected)),{...good.expected,retainedCoverage:{manifest:good.expected.retainedCoverage.manifest}}])assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,expected),false);
++assert(Object.isFrozen(good.expected.retainedCoverage.manifest.sourceMaterialFailures));assert(Object.isFrozen(good.expected.retainedCoverage.manifest.sourceMaterialFailures.structureGoalIds));
++writeFileSync(path,JSON.stringify(base));console.log(JSON.stringify({group:'T22',materialSerializationNegatives,isolatedStatusFailure:true,technicalContractStillPass:true,sourceDerivedStructure:0,sourceDerivedReadiness:1,forgedZeroReadinessRejected:true,materialOnlyM6AndM7Rejected:true,freshAndStaleSourceContextsSeparated:true,positiveMaturity:good.maturity}));
+ writeFileSync(${JSON.stringify(resolve(scratch,'positive-status.json'))},JSON.stringify(artifact(good)));writeFileSync(${JSON.stringify(resolve(scratch,'policy.json'))},JSON.stringify(policy));
+ for(const scope of [undefined,{...good.expected,retainedCoverage:undefined},JSON.parse(JSON.stringify(good.expected)),{...good.expected,definitionGoalIds:[]}])assert.equal(hasCompletePassingCurriculumExamReadiness(good.rules,O,scope),false);
+ for(const alter of [r=>r.filter(x=>x.id!=='CQR-204'),r=>[...r,r.find(x=>x.id==='CQR-204')],r=>r.map(x=>x.id==='CQR-204'?{...x,status:'not_configured'}:x),r=>r.map(x=>x.id==='CQR-204'?{...x,assessmentValidation:{...x.assessmentValidation,retainedCoverageManifest:{...x.assessmentValidation.retainedCoverageManifest,rows:[]}}}:x)])assert.equal(hasCompletePassingCurriculumExamReadiness(alter(structuredClone(good.rules)),O,good.expected),false);
+@@ -89,9 +101,11 @@
+ // is rejected on a fresh independent standalone read.
+ put('docs/qa-ci/status/curriculum-quality-status.json',readFileSync(resolve(scratch,'forged-status.json')))
+ const cliBad=runFixture(cliEntry,'floor-negative');assert.notEqual(cliBad.status,0);assert.match(cliBad.stderr,/assessment reports bound to current source discovery/)
++put(sourcePath,readFileSync(resolve(scratch,'material-only-source.json')));put('docs/qa-ci/status/curriculum-quality-status.json',readFileSync(resolve(scratch,'material-only-forged-status.json')))
++const cliMaterialBad=runFixture(cliEntry,'floor-material-negative');assert.notEqual(cliMaterialBad.status,0);assert.match(cliMaterialBad.stderr,/assessment reports bound to current source discovery/)
+ put(sourcePath,raw);put('docs/qa-ci/status/curriculum-quality-status.json',readFileSync(resolve(scratch,'positive-status.json')))
+ const cliGood=runFixture(cliEntry,'floor-positive');assert.equal(cliGood.status,0,cliGood.stderr)
+-writeFileSync(resolve(scratch,'overlay-evidence.json'),JSON.stringify({fixtureOnly:true,productionSourceChanged:false,sourceSha256:sourceSha,inventorySha256:inventorySha,transformations:mutationLog,positiveCli:{exit:cliGood.status,stdout:cliGood.stdout,stderr:cliGood.stderr},perfectHashForgedNegativeCli:{exit:cliBad.status,stdout:cliBad.stdout,stderr:cliBad.stderr}},null,2)+'\n')
++writeFileSync(resolve(scratch,'overlay-evidence.json'),JSON.stringify({fixtureOnly:true,productionSourceChanged:false,sourceSha256:sourceSha,inventorySha256:inventorySha,transformations:mutationLog,isolatedReadinessNegativeCli:{exit:cliMaterialBad.status,stdout:cliMaterialBad.stdout,stderr:cliMaterialBad.stderr},positiveCli:{exit:cliGood.status,stdout:cliGood.stdout,stderr:cliGood.stderr},perfectHashForgedNegativeCli:{exit:cliBad.status,stdout:cliBad.stdout,stderr:cliBad.stderr}},null,2)+'\n')
+ console.log('retained coverage T21: native Info owner M6 control, sole coverage error M3, M6/M7 floor and standalone fresh-source CLI forgery rejection passed')
+ 
+ // Exact positive equivalence and first-introduction codepaths use only pinned,
+--- predecessor47ae9d47/docs/qa-ci/curriculum-quality-maturity-and-routes.md
++++ candidate/docs/qa-ci/curriculum-quality-maturity-and-routes.md
+@@ -719,7 +719,7 @@
+ CapturedSourcepfad, kein JSON-Register und keine Allowlist heutiger Sourcehashes.
+ Das Initialarchiv wird nicht aus spaeteren Kandidaten neu erzeugt. Die aktuelle
+ Quelle wird weiterhin frisch erfasst und gegen ihre festen Pruefungsbedeutungen
+-verglichen; Frame und unveraenderter Manifestverbrauch binden aktuelle Viewbytes,
++verglichen; Frame und vollstaendiger Manifestverbrauch binden aktuelle Viewbytes,
+ Definitions-/Requiredmengen sowie Initial-/Reviewpins. Reintroduktion, zusaetzliche
+ oder fehlende Pruefungsdefinition, breitere Coverage und geaenderte Aufgaben- oder
+ Bestehensbedeutung bleiben Fehler. Historische Audit- und synthetische
+@@ -735,6 +735,20 @@
+ auf. Diese endliche Gegenpruefung ist kein allgemeiner maschineller
+ Textqualitaetsnachweis und kein pauschaler ID-Bann. Tatsaechlich repariertes
+ Material braucht weiterhin die vorhandene explizite Bedeutungs-/Evidenzpruefung.
++
++Die bestehende konkrete Readinessfunktion liegt gemeinsam mit ihren unveraenderten
++Text-, Scoring-, Reviewstatus- und DB-Fingerprintpruefungen im Retained-Helper;
++der Producer importiert dieselbe Funktion. Der vertrauenswuerdige Kontext leitet
++`sourceMaterialFailures` selbst aus der eingefrorenen Capture ab: Strukturfehler
++ueber alle aktuellen Definitionen ohne Statuspflicht, Readinessfehler ueber die
++vollstaendige Requiredmenge mit Statuspflicht. Fehlende Definitionen sind Fehler.
++Diese beiden obligatorischen Mengen sind im WeakMap-/Freeze-Kontext, im Framehash
++und im vollstaendigen Manifest gebunden, das beide serialisierten Pruefberichte
++tragen. Der gemeinsame Verbraucher weist nichtleere echte Fehlermengen auch bei
++gefaelschten Nullfehlerberichten ab. Fehlende, erfundene oder stale Manifestteile
++erhalten keine leeren Ersatzlisten. Ein technischer Definitionsvertragspass bleibt
++von einem Materialpass getrennt; Maturityfunktion und Floor-CLI verwenden weiterhin
++denselben bestehenden Verbraucher und unveraenderte Reifegrenzen.
+ 
+ ### `CQR-301` - Semantic atomicity review freshness
+ 

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import { isTrustedRetainedCoverageContext, retainedContextMatchesScope, RETAINED_INFO_OWNER, stableCoverageJson,
+  isTrustedCurriculumSourceMaterialContext, sourceMaterialContextMatchesScope, type CurriculumSourceMaterialContext, type CurriculumSourceMaterialManifest,
   type RetainedCoverageContext, type RetainedCoverageManifest } from './retainedAssessmentCoverage'
 export interface CurriculumAssessmentScope {
+  readonly sourceMaterialContext?: CurriculumSourceMaterialContext
   readonly retainedCoverage?: RetainedCoverageContext
   readonly landscapeId: string
   readonly definitionGoalIds: readonly string[]
@@ -13,6 +15,7 @@ export interface CurriculumAssessmentValidation extends CurriculumAssessmentScop
   definitionGoalIds: string[]
   requiredGoalIds: string[]
   discoveryIssues: string[]
+  sourceMaterialManifest?: CurriculumSourceMaterialManifest
   retainedCoverageManifest?: RetainedCoverageManifest
   kind: 'structure' | 'readiness'
   checkedGoalIds: string[]
@@ -38,7 +41,15 @@ export function hasCompletePassingCurriculumExamReadiness(
   const retained = expected.retainedCoverage
   if (landscapeId === RETAINED_INFO_OWNER && (!isTrustedRetainedCoverageContext(retained)
     || !retainedContextMatchesScope(retained, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds)
-    || retained.manifest.status !== 'pass')) return false
+    || retained.manifest.status !== 'pass'
+    || retained.manifest.sourceMaterialFailures.structureGoalIds.length !== 0
+    || retained.manifest.sourceMaterialFailures.readinessGoalIds.length !== 0)) return false
+  const material = expected.sourceMaterialContext
+  if (landscapeId !== RETAINED_INFO_OWNER && (!isTrustedCurriculumSourceMaterialContext(material)
+    || !sourceMaterialContextMatchesScope(material, landscapeId, expected.definitionGoalIds, expected.requiredGoalIds, expected.discoveryIssues)
+    || material.manifest.discoveryIssues.length !== 0
+    || material.manifest.sourceMaterialFailures.structureGoalIds.length !== 0
+    || material.manifest.sourceMaterialFailures.readinessGoalIds.length !== 0)) return false
   const definitions = expected.definitionGoalIds
   const required = expected.requiredGoalIds
   if (!required.every((id) => definitions.includes(id))) return false
@@ -52,9 +63,12 @@ export function hasCompletePassingCurriculumExamReadiness(
     const rule = record(matches[0])!
     const manifest = record(rule.assessmentValidation)
     const metrics = record(rule.metrics)
-    if (id === 'CQR-204' && landscapeId === RETAINED_INFO_OWNER
+    if (landscapeId === RETAINED_INFO_OWNER
       && (!isTrustedRetainedCoverageContext(retained)
         || stableCoverageJson(manifest?.retainedCoverageManifest) !== stableCoverageJson(retained.manifest))) return false
+    if (landscapeId !== RETAINED_INFO_OWNER
+      && (!isTrustedCurriculumSourceMaterialContext(material)
+        || stableCoverageJson(manifest?.sourceMaterialManifest) !== stableCoverageJson(material.manifest))) return false
     const checked = kind === 'structure' ? definitions : required
     if (rule.status !== 'pass' || !manifest || !metrics
       || manifest.landscapeId !== landscapeId || manifest.kind !== kind

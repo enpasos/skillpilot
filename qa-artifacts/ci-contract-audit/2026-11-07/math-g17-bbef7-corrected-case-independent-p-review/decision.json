@@ -1,0 +1,68 @@
+{
+  "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+  "decision": "KEEP",
+  "reviewer": "Codex AI independent P reviewer /root/math_p15_independent_review",
+  "reviewedAt": "2026-11-07T11:49:37.601460+00:00",
+  "humanApproved": false,
+  "source15Sha256": "9f3945e209e0cef503428e0a20c3c2302261346e35f533bf1264e525f16cdf96",
+  "oldHOLDRemainsHistorical": true,
+  "profileChanges": [
+    {
+      "path": "profile.applicationCaseBriefs[1].taskDemandDe",
+      "old": "Ein Punkt startet bei (1|0) und bewegt sich mit zunehmendem Parameter t im Uhrzeigersinn. Bestimme seine x- und y-Koordinatenfunktionen und erkläre, welche der Grundgraphen unverändert bleibt und welcher gespiegelt wird.",
+      "new": "Ein Punkt startet auf dem Einheitskreis bei (1|0). Der Parameter t≥0 bezeichnet den ab dem Start im Uhrzeigersinn zurückgelegten Winkel im Bogenmaß. Bestimme seine x- und y-Koordinatenfunktionen und erkläre, welcher der Grundgraphen unverändert bleibt und welcher gespiegelt wird."
+    },
+    {
+      "path": "profile.applicationCaseBriefs[1].taskDemandEn",
+      "old": "A point starts at (1,0) and moves clockwise as parameter t increases. Determine its x- and y-coordinate functions and explain which base graph stays unchanged and which is reflected.",
+      "new": "A point starts at (1,0) on the unit circle. The parameter t≥0 is the angle swept clockwise from the starting position, measured in radians. Determine its x- and y-coordinate functions and explain which of the base graphs stays unchanged and which is reflected."
+    }
+  ],
+  "mathematicalReview": {
+    "correctedParameter": "t>=0 is the swept clockwise angle in radians, not elapsed time. With the usual counterclockwise signed angle alpha, alpha=-t modulo full turns.",
+    "coordinates": "x(t)=cos(-t)=cos(t), y(t)=sin(-t)=-sin(t). Cosine remains unchanged and sine is reflected across the horizontal axis.",
+    "quarterTurnValues": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "oldCounterexample": "theta=-2t swept angle is2t, so it violates the revised definition except at isolated coincident positions; at t=pi/2 it gives(-1,0), not the required(0,-1).",
+    "noSpeedRequirement": "No clock, angular speed, derivative or law relating angle to time is requested or needed. The angle itself is the independent variable.",
+    "otherCases": "The five standard coordinate pairs and the quarter-turn start identity sin(t+pi/2)=cos(t) remain correct. All expectations, coverage settings, three demonstrations, variation axes, expected-performance and understanding-focus fields are identical.",
+    "independence": "The learner must generate the coordinate traces and justify the orientation/phase changes; copying the unchanged teaching image alone does not meet the complete profile."
+  },
+  "resourceBindingDecision": {
+    "oldReviewedResourceTypes": [],
+    "newReviewedResourceTypes": [
+      "goal-visualization"
+    ],
+    "reason": "Explicitly requested current image-bound successor; current exact raster was actually inspected in the preceding independent review and its bytes are reverified unchanged. This is a declared new P input binding, not an inherited old context or a new V review."
+  },
+  "holds": [],
+  "excludedClaims": [
+    "whole successor package seal",
+    "V or cold transport pass",
+    "full807 QA",
+    "M7",
+    "human approval",
+    "learner mastery",
+    "unit recognition"
+  ]
+}

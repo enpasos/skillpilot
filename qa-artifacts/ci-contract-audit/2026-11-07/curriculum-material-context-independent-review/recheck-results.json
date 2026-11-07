@@ -1,0 +1,33 @@
+{
+  "status": "PASS_COMMON_MATERIAL_BINDING_RECHECK",
+  "independentStandaloneCases": [
+    {
+      "label": "fresh-native-german-M6-positive",
+      "exitCode": 0,
+      "assessmentFailurePresent": false,
+      "artifactSha256": "5daa6a420fbe5bebdcf484df740250f18bc8bbc62040806422390024629ca150",
+      "sourceSha256": "c2c700c611d9596ea9abd9ef11a78df64c1a4a5c6e122f1e5a2941d8624134e9",
+      "graphEdited": false
+    },
+    {
+      "label": "exact-previous-draft-source-and-old-M6-falsepass",
+      "exitCode": 1,
+      "assessmentFailurePresent": true,
+      "artifactSha256": "d86d20199fe3842b872fe70a5f4b1f8a219661ea65f3b9add111cba74d069064",
+      "sourceSha256": "98ddff610d5de7e78690a35b25388a05170de8f7e7bf9e9f0ad5272da307b1ca",
+      "graphEdited": false
+    },
+    {
+      "label": "draft-source-with-fresh-baseline-M6",
+      "exitCode": 1,
+      "assessmentFailurePresent": true,
+      "artifactSha256": "5daa6a420fbe5bebdcf484df740250f18bc8bbc62040806422390024629ca150",
+      "sourceSha256": "98ddff610d5de7e78690a35b25388a05170de8f7e7bf9e9f0ad5272da307b1ca",
+      "graphEdited": false
+    }
+  ],
+  "normalAssessmentEntryExitCode": 0,
+  "fullCqr": false,
+  "sourceAProbes": false,
+  "newProductionCode": false
+}

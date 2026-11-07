@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/math-g17-fifteen-jm976p3s",
+    "/dev/shm/math-g17-fifteen-jm976p3s",
+    "--setenv",
+    "TMPDIR",
+    "/dev/shm/math-g17-fifteen-jm976p3s/tmp",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-source-revision-candidate/validate.mts",
+    "core"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 11.707763433456421,
+  "stdoutSha256": "91b65ff26579fcec7d53e83f1a41d4e6a0057c3579fbafb13427b604b56d1a9a",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "activeRootReadOnly": true
+}

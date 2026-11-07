@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "mathematik-fifteen-current-20261107-v1-resolution-5e893892-393e-5df0-b705-fb3b3458122f",
+  "goal": {
+    "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:6697f34bcd2130309026154d0582bd0be6cd1dc6401e3074d179d7508a372b4d",
+    "pageFingerprint": "sha256:af792a346f61894d6c8c7524614d3bf38823d2e37bb94fc787d47d00cdcb2e5b",
+    "goalReviewContextFingerprint": "sha256:a9d9dd16126fa76e717dbdcf786bbf91c03286f7823aca87b0c6c99d385157d2",
+    "finalText": {
+      "titleDe": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+      "titleEn": "Describe transition processes using state and transition graphs",
+      "descriptionDe": "Die lernende Person kann Übergangsprozesse mithilfe von Zustands- beziehungsweise Übergangsgraphen beschreiben, die Knoten und Übergänge im Kontext deuten und passende Graphdarstellungen erstellen.",
+      "descriptionEn": "The learner can describe transition processes using state or transition graphs, interpret nodes and transitions in context, and create suitable graph representations."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-a",
+      "campaignDigest": "sha256:6984bd4c5c68ba73ddc8b443babddf3fa18b3f8907efe2e793a2e42fbf21d3cb",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-a",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-a",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:a9d9dd16126fa76e717dbdcf786bbf91c03286f7823aca87b0c6c99d385157d2",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-a.batch-001",
+      "runId": "math15-description-a-a2bda914-665d-4c43-a161-3880e1169865",
+      "runManifestDigest": "sha256:03aeb8d2d59b486e9cf0fccfc9d3b8ffdfbba05762db3f726c42193f23084c56",
+      "resultsDigest": "sha256:733b772d94da8b8f5a0e73b16f0f6d517566498e0d62c09b74b67464607b2e76",
+      "recordId": "math15-description-a-7e17ce51-0c48-4b06-ab21-e21e48d1e252",
+      "recordDigest": "sha256:a2e1ff4007ff45e2b29387dbf32c7acecdc46a91538a62ee2edb702a00b08a4f"
+    },
+    "second": {
+      "campaignId": "mathematik-fifteen-current-20261107-v1-b",
+      "campaignDigest": "sha256:c1257044e892402263daeb5bcd5fc09916c5816c5c44c36842b83167cb0bcba9",
+      "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-b",
+      "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-b",
+      "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+      "goalReviewContextFingerprint": "sha256:a9d9dd16126fa76e717dbdcf786bbf91c03286f7823aca87b0c6c99d385157d2",
+      "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-b.batch-001",
+      "runId": "math15-blind-b-edd6f6ee-cfdd-4579-b518-90b67850b9cb",
+      "runManifestDigest": "sha256:96849dca162f0450eeed9a0b2f1b70ac1484fd52bad272d77b1a163a8498ef98",
+      "resultsDigest": "sha256:f1104394c9bdd95969ec256772dfa9702c992b5738e11aaf94e9882fb8c66cfc",
+      "recordId": "math15-b-d2bce8ff-97bb-434c-aab4-2c2e27f1298a",
+      "recordDigest": "sha256:dab7c95454167a776fd166a92de48d2402ad9f0bf23a64e8fea781932f5979cf"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:be8589bafc90b85431da20b1739b62d14a30a86a382a76ebbf125066941c7168"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "math-g17-fifteen-description-independent-synthesis-20261107-v1",
+    "manifestDigest": "sha256:c6be0cd92839abe1cd9dc9749a10a4bc8f60e457b1bf817e8c527d8c1f0aae44",
+    "manifestFingerprint": "sha256:1dca75d04465042f9a6a18f9201b8724ff420b21216156dc6e3859b18afcae35",
+    "decisionId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-011"
+  },
+  "synthesis": {
+    "synthesisId": "math-g17-fifteen-description-independent-synthesis-20261107-v1-decision-011",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "/root/math15_description_synthesis; independent AI post-review synthesis; actual time in review-receipt.json",
+    "synthesizedAt": "2026-11-07T12:38:27.000Z",
+    "rationaleDe": "Beide Runden bestätigen das gemeinsame Erstellen und Deuten gerichteter Graphen. A wird gewählt, weil der Transfer auf mögliche Ein-Schritt-Übergänge begrenzt bleibt. Zustände, Richtung, Schleifen und kontextabhängige Gewichte sind die nötigen Inhalte; Matrixerstellung, Potenzen und Grenzprozesse bleiben getrennt. Die zusätzlich gezeigte Matrix und stochastische Normierung erweitern diese Beschreibung nicht.",
+    "rationaleEn": "Both rounds confirm the joint construction and interpretation of directed graphs. A is selected because its transfer stays within possible one-step transitions. States, direction, loops and contextual weights are the necessary content; constructing matrices, powers and limiting processes remain separate. The extra matrix and stochastic normalization shown do not expand this description.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Knoten eines Zustandsgraphen stehen für die betrachteten Zustände; gerichtete Kanten beschreiben mögliche Übergänge vom Ausgangs- zum Zielzustand. Beschriftungen haben eine kontextgebundene Bedeutung pro betrachteten Schritt. Eine Schleife bedeutet Verbleib im Zustand, nicht zwingend das Ende des Prozesses.",
+      "essentialUnderstandingEn": "Nodes of a state graph represent the states being considered; directed edges describe possible transitions from source to target states. Labels have a context-dependent meaning for each step considered. A loop denotes remaining in a state, not necessarily the end of the process.",
+      "observablePerformanceDe": "Die lernende Person erstellt selbstständig aus einer beschriebenen Übergangssituation einen passenden gerichteten Graphen, benennt die Zustände und erklärt Richtungen, gegebenenfalls Gewichte und Schleifen im Sachkontext; umgekehrt liest sie solche Übergangsaussagen aus einem gegebenen Graphen.",
+      "observablePerformanceEn": "The learner independently creates a suitable directed graph from a described transition situation, names the states, and explains directions, weights where applicable, and loops in context; conversely, the learner reads such transition statements from a given graph.",
+      "transferExpectationDe": "In einer neuen Situation wird eine bisher mögliche Rückkehr durch einen absorbierenden Zustand oder einen ausgeschlossenen Übergang ersetzt. Die lernende Person verändert die Graphdarstellung entsprechend und erklärt, welche Ein-Schritt-Übergänge dadurch möglich beziehungsweise unmöglich werden.",
+      "transferExpectationEn": "In a fresh situation, a previously possible return is replaced by an absorbing state or an excluded transition. The learner adapts the graph representation accordingly and explains which one-step transitions consequently become possible or impossible."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-43c218dc91b1a3c93e491127390ec730cb8eac0c767c9c0a37d5e35829786562",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:74907b060798f7a2935453467c6ad9f660bd2cebb8a8a46853e42ee333cbdded"
+}

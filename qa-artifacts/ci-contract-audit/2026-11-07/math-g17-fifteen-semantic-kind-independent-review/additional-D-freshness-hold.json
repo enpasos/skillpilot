@@ -1,0 +1,2963 @@
+{
+  "status": "ADDITIONAL_D_CONTEXT_FRESHNESS_HOLD_READ_ONLY_STATIC_EVIDENCE",
+  "inspectedAtActualUTC": "2026-11-07T12:11:59.661473+00:00",
+  "actor": "Codex /root/math15_semantic_kind_review",
+  "combinedConfig": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-p-route-cold132-successor-candidate/native-combined.config.json",
+    "sha256": "2b9fddcd97c7ddf0b7365d16261a33a9d31646b8a0e799d83bbda190e61c6426",
+    "bytes": 188851
+  },
+  "affectedGoals": 15,
+  "registeredIndices": 10,
+  "bothRoundsInspected": true,
+  "roundGoalContexts": 30,
+  "nativeContractEvidence": {
+    "contextBuilder": {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "anchor": "buildGoalDescriptionCanonicalContext, requires at line 264"
+    },
+    "contextComparison": {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "anchor": "validateCurrentGoalBindings, lines 710-712"
+    },
+    "earlyScopeReturn": {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "anchor": "validateResolutionIndex, not current curricularAtomic then early return before loadRound"
+    }
+  },
+  "rows": [
+    {
+      "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-argumentation-communication-fourteen-keep-partial-20260923-v1/resolution-index.json",
+        "sha256": "f5596c06cf995e716b902e7ecab7f31a5a35a6449dc127ba64cc9dd50d4de5d0",
+        "bytes": 9327
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-argumentation-communication-fourteen-keep-partial-20260923-v1/resolutions/121ef4c5-c1c2-5294-9582-86bab2355907.resolution.json",
+        "sha256": "4154a3ee77ae37dcc0924e9b9c973d2a85daa9a86bee4b448f7ad65e969796be",
+        "bytes": 6854
+      },
+      "indexEntry": {
+        "goalId": "121ef4c5-c1c2-5294-9582-86bab2355907",
+        "titleDe": "Lösung nachvollziehbar erklären",
+        "groupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/121ef4c5-c1c2-5294-9582-86bab2355907.resolution.json",
+        "resolutionDigest": "sha256:4154a3ee77ae37dcc0924e9b9c973d2a85daa9a86bee4b448f7ad65e969796be",
+        "resolutionFingerprint": "sha256:7acef595f8737657ed89cc9a49803e04b9b9d55ea4c16cde8179988e2e2b728f",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-q4-argumentation-communication-20-current-20260923-v1",
+        "artifactDirectory": "../m7-q4-argumentation-communication-20-current-20260923-v1",
+        "dualSummaryPath": "../m7-q4-argumentation-communication-20-current-20260923-v1/dual-summary.json",
+        "dualSummaryDigest": "sha256:632be9191fa8b68d37297f3dbebb56f11b02705c01efa7c16fee9f7be26282f8",
+        "campaignGoalCount": 20,
+        "resolvedGoalCount": 14
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-argumentation-communication-20-current-20260923-v1/round-a/description-review-input.json",
+            "sha256": "cae8ac1cf1aab36dd3cda17edbaf1b003003f41806e1b23720d24ce723e81250",
+            "bytes": 231443
+          },
+          "goalPointer": "/goals/5",
+          "inputReviewFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+              "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+            "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+          ],
+          "source15Requires": [
+            "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+            "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-q4-argumentation-communication-20-current-20260923-v1/round-b/description-review-input.json",
+            "sha256": "cae8ac1cf1aab36dd3cda17edbaf1b003003f41806e1b23720d24ce723e81250",
+            "bytes": 231443
+          },
+          "goalPointer": "/goals/5",
+          "inputReviewFingerprint": "sha256:57b9029e7e6285564bd7d54383eb8b47b158b1b0b831bcb98fa45d91d6f24701",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB2",
+              "processCompetencies": [
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q4"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+              "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+            "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+          ],
+          "source15Requires": [
+            "f0f9c084-631f-5c04-a1c2-93b6b548dd32",
+            "fcb4cef1-b17a-5682-924c-41498fc6c9b2"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-d-context-checkpoint-isolation-20260928-v1/retained-06.resolution-index.json",
+        "sha256": "c0d993817c3c6d9c0c4894828157366b0d2c62a801284a402c49c3dad29c0a3f",
+        "bytes": 9927
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2/resolutions-stable-keepkeep-15-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.resolution.json",
+        "sha256": "b9c57c080d28859d00e50c4c63b894f9441dcee75bf6336c57bcf128b0916a89",
+        "bytes": 7067
+      },
+      "indexEntry": {
+        "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "titleDe": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+        "groupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2",
+        "decision": "keep_current",
+        "resolutionPath": "../../2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2/resolutions-stable-keepkeep-15-v1/be0e8715-3c3a-5ffb-937a-0b6bce4f01d8.resolution.json",
+        "resolutionDigest": "sha256:b9c57c080d28859d00e50c4c63b894f9441dcee75bf6336c57bcf128b0916a89",
+        "resolutionFingerprint": "sha256:6cb8ebdb5a52cac38e888b8792cf80c8aa5313dc19a69d8ea84396b75728726f",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-matrix-spatial-repaired-and-scope20-current-20260923-v2",
+        "artifactDirectory": "../../2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2",
+        "dualSummaryPath": "../../2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2/dual-summary.json",
+        "dualSummaryDigest": "sha256:1b678c12f71ed2ce1eae62e741b671103f25b9b58a3312c78f5e2e0488768fae",
+        "campaignGoalCount": 20,
+        "resolvedGoalCount": 13
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2/round-a/description-review-input.json",
+            "sha256": "983ee533699c48ada79566a7e79f1ad7ed8c014b6f538ecabcdc5599541921d5",
+            "bytes": 255173
+          },
+          "goalPointer": "/goals/10",
+          "inputReviewFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L3"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "075f1ef2-6860-4b20-9df2-878157eb395e",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "075f1ef2-6860-4b20-9df2-878157eb395e",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "075f1ef2-6860-4b20-9df2-878157eb395e"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-23/m7-matrix-spatial-repaired-and-scope20-current-v2/round-b/description-review-input.json",
+            "sha256": "983ee533699c48ada79566a7e79f1ad7ed8c014b6f538ecabcdc5599541921d5",
+            "bytes": 255173
+          },
+          "goalPointer": "/goals/10",
+          "inputReviewFingerprint": "sha256:c894789d0e2df572be1c8923cd7103a66f44bc4a51faa767533c11a8be946f86",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.2, S. 41, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L3"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "075f1ef2-6860-4b20-9df2-878157eb395e",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "075f1ef2-6860-4b20-9df2-878157eb395e",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "075f1ef2-6860-4b20-9df2-878157eb395e"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-proof-statistics-hold-repairs-7-v1/resolution-index.json",
+        "sha256": "a9d7fb3ee028d9cd5ef71fec647432eac4170d2ad22b755404a17b8e9d88b264",
+        "bytes": 5184
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-proof-statistics-hold-repairs-7-v1/resolutions/f14e1643-ad8d-5235-a832-97987fa18489.resolution.json",
+        "sha256": "835dc24100ecd097c1bfeb3902680ea2edcb85e87f66b02c069b8f85ffcd2547",
+        "bytes": 8584
+      },
+      "indexEntry": {
+        "goalId": "f14e1643-ad8d-5235-a832-97987fa18489",
+        "titleDe": "Null- und Alternativhypothesen formulieren",
+        "groupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/f14e1643-ad8d-5235-a832-97987fa18489.resolution.json",
+        "resolutionDigest": "sha256:835dc24100ecd097c1bfeb3902680ea2edcb85e87f66b02c069b8f85ffcd2547",
+        "resolutionFingerprint": "sha256:2f691674aa2d3ec3233bcbb55d3b4b5aa354258fe631b0821026e7190d438b0f",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-proof-statistics-hold-repairs-7-20260921-v1",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:46fe16b12b5a49f658df91afd2c03268860f3ec30874570f45bcbd6e579b38e2",
+        "campaignGoalCount": 7,
+        "resolvedGoalCount": 7
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-proof-statistics-hold-repairs-7-v1/round-a/description-review-input.json",
+            "sha256": "d77b3d044ddc022d523c931c2ddfde75318113d28447c1a031fa99e6ac88153e",
+            "bytes": 86403
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:d0fd45cab7f27f9c1f372a0c4323c3c87734bbc479062affdadc1fa0726a62ad",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ],
+          "source15Requires": [
+            "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-21/m7-proof-statistics-hold-repairs-7-v1/round-b/description-review-input.json",
+            "sha256": "d77b3d044ddc022d523c931c2ddfde75318113d28447c1a031fa99e6ac88153e",
+            "bytes": 86403
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:d0fd45cab7f27f9c1f372a0c4323c3c87734bbc479062affdadc1fa0726a62ad",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.3, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ],
+          "source15Requires": [
+            "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b",
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-held-seven-current-v1/resolution-index.current-6-route-hold.json",
+        "sha256": "e3c376d45f0f63432b54301e634fb8bf823c8ff0c92935ca21e1746a62e029a7",
+        "bytes": 4246
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-held-seven-current-v1/resolutions/69243680-c2c1-5661-80c0-c95a2be1dabf.resolution.json",
+        "sha256": "eb2cfcb7751593e891453d8a20a417fe5560b0378e959b7f8fa0ba34ba24f673",
+        "bytes": 7476
+      },
+      "indexEntry": {
+        "goalId": "69243680-c2c1-5661-80c0-c95a2be1dabf",
+        "titleDe": "Geometrische Abbildungen als linear erkennen",
+        "groupId": "mathematik-m7-held-seven-current-v1-20260920",
+        "decision": "current_after_revision",
+        "resolutionPath": "resolutions/69243680-c2c1-5661-80c0-c95a2be1dabf.resolution.json",
+        "resolutionDigest": "sha256:eb2cfcb7751593e891453d8a20a417fe5560b0378e959b7f8fa0ba34ba24f673",
+        "resolutionFingerprint": "sha256:3a1ab529c44b0eca7d4615b947b6972167b52a3eade4161705da3614467d7c1f",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-held-seven-current-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:df2b5ca216848275292589635af8d4882184a5b76aca49328f03aa1344f04958",
+        "campaignGoalCount": 7,
+        "resolvedGoalCount": 6
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-held-seven-current-v1/round-a/description-review-input.json",
+            "sha256": "771c885fdf83d79958bd6fc25864bd26e6f363dcd1ef7c5e732e6cff6193b910",
+            "bytes": 88808
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L3"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+          ],
+          "source15Requires": [
+            "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-held-seven-current-v1/round-b/description-review-input.json",
+            "sha256": "771c885fdf83d79958bd6fc25864bd26e6f363dcd1ef7c5e732e6cff6193b910",
+            "bytes": 88808
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:0da1905e27d565ea41cd6c2e2af697d6846480645fe76c813d4fe43e5e094297",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L3"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+          ],
+          "source15Requires": [
+            "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolution-index.retained-proof-statistics-delta-20260921-v1.json",
+        "sha256": "6442afcbbcf990dfad10bf82775aa775a47b3f1b7e9e2fdc3b6f136449587f15",
+        "bytes": 10937
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolutions/3e974075-b2fd-43e6-88d9-5f596ad053ec.resolution.json",
+        "sha256": "ad982e200431d01f09a7951abb335588e654e4cea61edab0e27e0b69ce87e017",
+        "bytes": 8693
+      },
+      "indexEntry": {
+        "goalId": "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+        "titleDe": "Datenaussagen mit bedingten Wahrscheinlichkeiten kritisch prüfen",
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/3e974075-b2fd-43e6-88d9-5f596ad053ec.resolution.json",
+        "resolutionDigest": "sha256:ad982e200431d01f09a7951abb335588e654e4cea61edab0e27e0b69ce87e017",
+        "resolutionFingerprint": "sha256:09424afe0ae4ef609d5174463bbd94558402f275cb12b56dad4bdbbe8e2d2fc3",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:8e7a1139ab9a20d8f6f7119bd40300aa5f1da16e758fb40cb3b7132d5c2ce9b9",
+        "campaignGoalCount": 18,
+        "resolvedGoalCount": 17
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-a/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K3.3",
+                "K4.2",
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "c2831918-26f1-421e-90fb-ce707689594e",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "c2831918-26f1-421e-90fb-ce707689594e",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "c2831918-26f1-421e-90fb-ce707689594e"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-b/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K3.3",
+                "K4.2",
+                "K6.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "c2831918-26f1-421e-90fb-ce707689594e",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "c2831918-26f1-421e-90fb-ce707689594e",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "c2831918-26f1-421e-90fb-ce707689594e"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolution-index.retained-proof-statistics-delta-20260921-v1.json",
+        "sha256": "6442afcbbcf990dfad10bf82775aa775a47b3f1b7e9e2fdc3b6f136449587f15",
+        "bytes": 10937
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolutions/5927ca6a-91d5-4541-84e9-833bbb2cd7df.resolution.json",
+        "sha256": "7d27014a357c60b872fc1948eeba5bd827190053c7195a3d869b9af17bc1bc56",
+        "bytes": 8290
+      },
+      "indexEntry": {
+        "goalId": "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+        "titleDe": "Zufallsgrößen beschreiben und Wahrscheinlichkeitsverteilungen in Tabellen und Diagrammen nutzen",
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/5927ca6a-91d5-4541-84e9-833bbb2cd7df.resolution.json",
+        "resolutionDigest": "sha256:7d27014a357c60b872fc1948eeba5bd827190053c7195a3d869b9af17bc1bc56",
+        "resolutionFingerprint": "sha256:b54304994b48436715fd25dd480d381c0475a299e2ee0d2702f8664006969062",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:8e7a1139ab9a20d8f6f7119bd40300aa5f1da16e758fb40cb3b7132d5c2ce9b9",
+        "campaignGoalCount": 18,
+        "resolvedGoalCount": 17
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-a/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/7",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.2",
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-b/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/7",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.2",
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolution-index.retained-proof-statistics-delta-20260921-v1.json",
+        "sha256": "6442afcbbcf990dfad10bf82775aa775a47b3f1b7e9e2fdc3b6f136449587f15",
+        "bytes": 10937
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/resolutions/d711bc18-c27c-4739-8289-edac53dc8ba3.resolution.json",
+        "sha256": "2f63877d573a9db68d5bedc3be4f155f25e9a8193f40edad9c79a46d686a85d6",
+        "bytes": 8172
+      },
+      "indexEntry": {
+        "goalId": "d711bc18-c27c-4739-8289-edac53dc8ba3",
+        "titleDe": "Zufallsgrößen als Zuordnungen einführen und beschreiben",
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/d711bc18-c27c-4739-8289-edac53dc8ba3.resolution.json",
+        "resolutionDigest": "sha256:2f63877d573a9db68d5bedc3be4f155f25e9a8193f40edad9c79a46d686a85d6",
+        "resolutionFingerprint": "sha256:39ad59a4cd58cda7adbf96fd59d0f03e96da04d258ef17ea24e214a824d4432d",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-stochastics-final-current-18-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:8e7a1139ab9a20d8f6f7119bd40300aa5f1da16e758fb40cb3b7132d5c2ce9b9",
+        "campaignGoalCount": 18,
+        "resolvedGoalCount": 17
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-a/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.2",
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-stochastics-final-current-18-v1/round-b/description-review-input.json",
+            "sha256": "a85d92d6c72b904339fca0cdf0c7b8eaf85f58db7829841051015295f3fe92eb",
+            "bytes": 234603
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:0a8697c154caba7a02ce29a5737aabea4d101040c83f68c2691441a99cbf755e",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q3.2, S. 47, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K1.2",
+                "K4.2"
+              ],
+              "guidingIdeas": [
+                "L4",
+                "L5"
+              ],
+              "phase": "Q3"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "09f47964-2cd0-410e-93ee-9632b582fc91",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "09f47964-2cd0-410e-93ee-9632b582fc91"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/resolution-index.current-14.json",
+        "sha256": "29e4d818d78d5bd65551156373d4dcec9fb7f82ef0c53ea1c73d8acb766f43f2",
+        "bytes": 9016
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/resolutions/c72a8032-71f6-56ed-a896-06ae435ff2ec.resolution.json",
+        "sha256": "8da02fd07baa613e233b5216894e43242de073286fa559305306bac3fad0b2d8",
+        "bytes": 9852
+      },
+      "indexEntry": {
+        "goalId": "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+        "titleDe": "Verkettete Exponential- und Logarithmusfunktionen analysieren (LK)",
+        "groupId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/c72a8032-71f6-56ed-a896-06ae435ff2ec.resolution.json",
+        "resolutionDigest": "sha256:8da02fd07baa613e233b5216894e43242de073286fa559305306bac3fad0b2d8",
+        "resolutionFingerprint": "sha256:51c5776f64606394df696ff21d95faa7f425041d1353f4a3f154f09119395afb",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:a8c31ff0c5f7dfacd25273050c558446844341787d27a33f7fac6497ea55d824",
+        "campaignGoalCount": 20,
+        "resolvedGoalCount": 14
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/round-a/description-review-input.json",
+            "sha256": "1dc8ca612961783778eceb98c1d818e7de569abf1cd472b4eedfd198f9c899a6",
+            "bytes": 262401
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K2.3",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+              "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/round-b/description-review-input.json",
+            "sha256": "1dc8ca612961783778eceb98c1d818e7de569abf1cd472b4eedfd198f9c899a6",
+            "bytes": 262401
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K2.3",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+              "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4",
+            "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/resolution-index.current-14.json",
+        "sha256": "29e4d818d78d5bd65551156373d4dcec9fb7f82ef0c53ea1c73d8acb766f43f2",
+        "bytes": 9016
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/resolutions/91e2f564-3bc8-4924-af85-2a3fa84c1471.resolution.json",
+        "sha256": "5182e8eb1bcf74634d3fb0572d90b6a22c0c27bee9343324ad0d4f448f5d2350",
+        "bytes": 8125
+      },
+      "indexEntry": {
+        "goalId": "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+        "titleDe": "Parameter von Funktionen und Funktionsscharen im Kontext untersuchen",
+        "groupId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/91e2f564-3bc8-4924-af85-2a3fa84c1471.resolution.json",
+        "resolutionDigest": "sha256:5182e8eb1bcf74634d3fb0572d90b6a22c0c27bee9343324ad0d4f448f5d2350",
+        "resolutionFingerprint": "sha256:bb7023f22fb8a57c5f6ed8cecf4f639625490939987ba9df41d23c11140e074a",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-m7-functions-calculus-current-20-v1-20260920",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:a8c31ff0c5f7dfacd25273050c558446844341787d27a33f7fac6497ea55d824",
+        "campaignGoalCount": 20,
+        "resolvedGoalCount": 14
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/round-a/description-review-input.json",
+            "sha256": "1dc8ca612961783778eceb98c1d818e7de569abf1cd472b4eedfd198f9c899a6",
+            "bytes": 262401
+          },
+          "goalPointer": "/goals/19",
+          "inputReviewFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K2.3",
+                "K5.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71683f37-24de-4e0f-badd-858b56fa4d64",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-20/m7-functions-calculus-current-20-v1/round-b/description-review-input.json",
+            "sha256": "1dc8ca612961783778eceb98c1d818e7de569abf1cd472b4eedfd198f9c899a6",
+            "bytes": 262401
+          },
+          "goalPointer": "/goals/19",
+          "inputReviewFingerprint": "sha256:85edb443deb10002b12967208948a1ffefb5e71fa29db22bfbd8ee0c39471fb1",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "canonical-gymnasium-math",
+              "demandLevel": "AB3",
+              "processCompetencies": [
+                "K2.3",
+                "K5.2"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L4"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": null,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71683f37-24de-4e0f-badd-858b56fa4d64",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "71683f37-24de-4e0f-badd-858b56fa4d64"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolution-index.json",
+        "sha256": "fc71c856977e39b740ee68a82e3eb1b28118d835c2f90a1c1236f396e1251ee6",
+        "bytes": 2707
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolutions/4fb40e58-58c1-5964-b58e-3347a8022b97.resolution.json",
+        "sha256": "ea8689e014e4faa6dc7455a19b1bafa2bc0423fa6b79f2c70bb59aab701c71cb",
+        "bytes": 10083
+      },
+      "indexEntry": {
+        "goalId": "4fb40e58-58c1-5964-b58e-3347a8022b97",
+        "titleDe": "Skalare Multiplikation von Matrizen durchführen",
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/4fb40e58-58c1-5964-b58e-3347a8022b97.resolution.json",
+        "resolutionDigest": "sha256:ea8689e014e4faa6dc7455a19b1bafa2bc0423fa6b79f2c70bb59aab701c71cb",
+        "resolutionFingerprint": "sha256:f8bea75f8654f67e4de9139f027e8c1093ad95857451dfc8830c3212fdf89dad",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:26d9988068fa9ac2154c95ac04cf6a724cbab060f970033575736a131c66262f",
+        "campaignGoalCount": 3,
+        "resolvedGoalCount": 3
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-a/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/0",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-b/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/0",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolution-index.json",
+        "sha256": "fc71c856977e39b740ee68a82e3eb1b28118d835c2f90a1c1236f396e1251ee6",
+        "bytes": 2707
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolutions/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.resolution.json",
+        "sha256": "60b397d91383c2fdc9f5283a41ae9476888d685734db92a72da9acc29cfee623",
+        "bytes": 10013
+      },
+      "indexEntry": {
+        "goalId": "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+        "titleDe": "Matrizen addieren und subtrahieren",
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8.resolution.json",
+        "resolutionDigest": "sha256:60b397d91383c2fdc9f5283a41ae9476888d685734db92a72da9acc29cfee623",
+        "resolutionFingerprint": "sha256:40fc63a35d734b267e32bcb7d25c08e1ea3bed26fc98b956101f408834c7083f",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:26d9988068fa9ac2154c95ac04cf6a724cbab060f970033575736a131c66262f",
+        "campaignGoalCount": 3,
+        "resolvedGoalCount": 3
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-a/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-b/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/1",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolution-index.json",
+        "sha256": "fc71c856977e39b740ee68a82e3eb1b28118d835c2f90a1c1236f396e1251ee6",
+        "bytes": 2707
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/resolutions/304111dd-426b-520b-a275-3fa37da1b0e0.resolution.json",
+        "sha256": "b166f3e95b1f51b6cc969685368270d0d59900c0fb6d5dbbaa31cce47e3da9b3",
+        "bytes": 10047
+      },
+      "indexEntry": {
+        "goalId": "304111dd-426b-520b-a275-3fa37da1b0e0",
+        "titleDe": "Matrizen multiplizieren",
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions/304111dd-426b-520b-a275-3fa37da1b0e0.resolution.json",
+        "resolutionDigest": "sha256:b166f3e95b1f51b6cc969685368270d0d59900c0fb6d5dbbaa31cce47e3da9b3",
+        "resolutionFingerprint": "sha256:145cc8d28ca2099978e9babeea6d12b930550dfba2bb9fedef3602ca4864e789",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-047-matrix-images-current-3-v1-20260913",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:26d9988068fa9ac2154c95ac04cf6a724cbab060f970033575736a131c66262f",
+        "campaignGoalCount": 3,
+        "resolvedGoalCount": 3
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-a/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/2",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-047-matrix-images-current-3-v1/round-b/description-review-input.json",
+            "sha256": "fe436e15afa6b237a5ca4610605d71e2d6a156bb0f4d7a993bdaf6c7fdf24d63",
+            "bytes": 40327
+          },
+          "goalPointer": "/goals/2",
+          "inputReviewFingerprint": "sha256:d37d7ebfa8527971b920ace071ac757a7d9e35133037c320aca27b57ab2f41c6",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/resolution-index.current-subset-v1.json",
+        "sha256": "06a84b69c76bb0ab20959d368f29bb19c1c9a241215bd2f7b8122201fe2ef8e4",
+        "bytes": 4383
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/resolutions-current-subset/6f09c97e-779b-500b-8092-3fb9696aa5bb.resolution.json",
+        "sha256": "76be5de462d3bc5efaf9e9c31e21abf4738339baefd02fb0699cfbaa58ac7e71",
+        "bytes": 8338
+      },
+      "indexEntry": {
+        "goalId": "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+        "titleDe": "Matrix-Vektor-Produkte berechnen",
+        "groupId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions-current-subset/6f09c97e-779b-500b-8092-3fb9696aa5bb.resolution.json",
+        "resolutionDigest": "sha256:76be5de462d3bc5efaf9e9c31e21abf4738339baefd02fb0699cfbaa58ac7e71",
+        "resolutionFingerprint": "sha256:d4e43c296ce00fc57c785686c466a87e1f7c28eac43cb21ea17934a96cf5b05b",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-044h-045h-post-change-7-v1-20260913",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:8b20934ce839a38b809da2d7053084e89655cc46a25bead19d926a1f35a305c7",
+        "campaignGoalCount": 7,
+        "resolvedGoalCount": 6
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-a/description-review-input.json",
+            "sha256": "8103379b35b8c272fadad84505f37fd34577d61cf52ecb9234f761fed80702bf",
+            "bytes": 98582
+          },
+          "goalPointer": "/goals/5",
+          "inputReviewFingerprint": "sha256:de85e63128e0293c7b37fd4fdd4f23b64d3a70be220f5f2ce1631accb87369f0",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-13/batch-044h-045h-post-change-7-v1/round-b/description-review-input.json",
+            "sha256": "8103379b35b8c272fadad84505f37fd34577d61cf52ecb9234f761fed80702bf",
+            "bytes": 98582
+          },
+          "goalPointer": "/goals/5",
+          "inputReviewFingerprint": "sha256:de85e63128e0293c7b37fd4fdd4f23b64d3a70be220f5f2ce1631accb87369f0",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1/resolution-index.current-keep7-v1.retained-before-m7-functions-and-context-delta-20260920-v1.json",
+        "sha256": "60ceb2c52242ec818e1e0bb564d72f8dd0c4a3f730d10c94d645e29e03da413c",
+        "bytes": 3315
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1/resolutions-current-keep7-v1/5e893892-393e-5df0-b705-fb3b3458122f.resolution.json",
+        "sha256": "00dd84a64c90559ac890717729108bbeb5e63691f1bd0624216c293e5c6125f5",
+        "bytes": 7365
+      },
+      "indexEntry": {
+        "goalId": "5e893892-393e-5df0-b705-fb3b3458122f",
+        "titleDe": "Übergangsprozesse mit Zustands- und Übergangsgraphen beschreiben",
+        "groupId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907",
+        "decision": "keep_current",
+        "resolutionPath": "resolutions-current-keep7-v1/5e893892-393e-5df0-b705-fb3b3458122f.resolution.json",
+        "resolutionDigest": "sha256:00dd84a64c90559ac890717729108bbeb5e63691f1bd0624216c293e5c6125f5",
+        "resolutionFingerprint": "sha256:7fae1e8c1f26f6e4ec1f7aeb26e8e88d7594cea65faa7953de5eb2adf9487d9a",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-045-q2-function-combinations-and-transition-matrices-20-v1-20260907",
+        "artifactDirectory": ".",
+        "dualSummaryPath": "dual-summary.json",
+        "dualSummaryDigest": "sha256:c17788ae74adafd8dc01947f34fe4e216cb591226f3dcc55fe63cf1190ee51d8",
+        "campaignGoalCount": 20,
+        "resolvedGoalCount": 4
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1/round-a/description-review-input.json",
+            "sha256": "989e8cb3c27937fb3fc7f89fca8dde9fa06753061ef270b1abf4719ccc944e59",
+            "bytes": 264891
+          },
+          "goalPointer": "/goals/9",
+          "inputReviewFingerprint": "sha256:2210e465b03df573847b102caf15d5deb2dbf9c1df00b0ffe21b7f7c0e5bb784",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-07/batch-045-q2-function-combinations-and-transition-matrices-20-v1/round-b/description-review-input.json",
+            "sha256": "989e8cb3c27937fb3fc7f89fca8dde9fa06753061ef270b1abf4719ccc944e59",
+            "bytes": 264891
+          },
+          "goalPointer": "/goals/9",
+          "inputReviewFingerprint": "sha256:2210e465b03df573847b102caf15d5deb2dbf9c1df00b0ffe21b7f7c0e5bb784",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK",
+              "canonical"
+            ],
+            "competencyRefs": [],
+            "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 1",
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.3"
+              ],
+              "guidingIdeas": [
+                "L1",
+                "L2"
+              ],
+              "phase": "Q2"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+              "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+            "f378917f-2ca7-4c68-bd66-3f9457095dd5"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    },
+    {
+      "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+      "registeredIndex": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-28/m7-d-context-checkpoint-isolation-20260928-v1/retained-11.resolution-index.json",
+        "sha256": "9847d3995806f5734d11e862d9dcc30c859bf0d66350310a0c2a7baaf353e73c",
+        "bytes": 8369
+      },
+      "resolution": {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-030-atlas-context-recheck-18-v1/resolutions/bbef7cf2-90fa-59fa-a115-8b651aab9231.resolution.json",
+        "sha256": "2dc2d587051ed175c2bee19f0520bb7ca200a8c33fe36404a456103fcd158f40",
+        "bytes": 8266
+      },
+      "indexEntry": {
+        "goalId": "bbef7cf2-90fa-59fa-a115-8b651aab9231",
+        "titleDe": "Sinus- und Kosinusfunktionen verstehen",
+        "groupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905",
+        "decision": "keep_current",
+        "resolutionPath": "../../2026-09-05/batch-030-atlas-context-recheck-18-v1/resolutions/bbef7cf2-90fa-59fa-a115-8b651aab9231.resolution.json",
+        "resolutionDigest": "sha256:2dc2d587051ed175c2bee19f0520bb7ca200a8c33fe36404a456103fcd158f40",
+        "resolutionFingerprint": "sha256:e167f48032d985c1d330e1b250ce39846639cffb4561ef564e07e438cec39102",
+        "strictDescriptionComplete": true
+      },
+      "group": {
+        "groupId": "mathematik-rollout-v1-batch-030-atlas-context-recheck-18-v1-20260905",
+        "artifactDirectory": "../../2026-09-05/batch-030-atlas-context-recheck-18-v1",
+        "dualSummaryPath": "../../2026-09-05/batch-030-atlas-context-recheck-18-v1/dual-summary.json",
+        "dualSummaryDigest": "sha256:e39c6377655c66470ad7c61b22deea31649467cc06d732bf94e4cae07941dd8c",
+        "campaignGoalCount": 18,
+        "resolvedGoalCount": 11
+      },
+      "rounds": [
+        {
+          "round": "round-a",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-030-atlas-context-recheck-18-v1/round-a/description-review-input.json",
+            "sha256": "fdfdfb8892aaae0f1511158fdd7ecdc7e287f1fc3fe375c8c5a304007d4f6488",
+            "bytes": 200054
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L2",
+                "L4"
+              ],
+              "phase": "E"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "cdf49335-cebf-54b4-9f52-50d5badabe2f"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        },
+        {
+          "round": "round-b",
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-description-review/mathematik/rollout-v1/2026-09-05/batch-030-atlas-context-recheck-18-v1/round-b/description-review-input.json",
+            "sha256": "fdfdfb8892aaae0f1511158fdd7ecdc7e287f1fc3fe375c8c5a304007d4f6488",
+            "bytes": 200054
+          },
+          "goalPointer": "/goals/8",
+          "inputReviewFingerprint": "sha256:6e59e8f7ce25cfecc71959a030b46adcf12f39c197a92cf0d1184d2e372438d5",
+          "canonicalContextComplete": {
+            "shortKey": null,
+            "phase": null,
+            "core": null,
+            "weight": 1,
+            "tags": [
+              "GK",
+              "LK"
+            ],
+            "competencyRefs": [],
+            "sourceRef": null,
+            "dimensionTags": {
+              "framework": "hessen-kc-2024",
+              "demandLevel": "AB1",
+              "processCompetencies": [
+                "K2.2",
+                "K3.2"
+              ],
+              "guidingIdeas": [
+                "L2",
+                "L4"
+              ],
+              "phase": "E"
+            },
+            "applicability": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-HH",
+                "DE-MV",
+                "DE-NI",
+                "DE-NW",
+                "DE-RP",
+                "DE-SH",
+                "DE-SL",
+                "DE-SN",
+                "DE-ST",
+                "DE-TH"
+              ]
+            },
+            "type": "atomic",
+            "nodeKind": null,
+            "semanticAtomic": true,
+            "semanticKind": null,
+            "applicabilitySemantics": {
+              "fromRequires": null,
+              "mappingInheritance": null,
+              "projection": null
+            },
+            "requires": [
+              "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+              "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+            ],
+            "contains": [],
+            "examples": []
+          },
+          "retainedRequires": [
+            "cdf49335-cebf-54b4-9f52-50d5badabe2f",
+            "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+          ],
+          "source15Requires": [
+            "cdf49335-cebf-54b4-9f52-50d5badabe2f"
+          ],
+          "requiresEqualToBeforeSource": true,
+          "requiresEqualToSource15": false
+        }
+      ],
+      "freshnessFinding": "Both registered D input contexts retain the removed Intro requires. The existing current-context equality check must reject Source15 once current curricularAtomic scope is restored."
+    }
+  ],
+  "requiredFollowup": "Current D evidence for these fifteen goals needs a legitimate successor process under the existing D contract. Do not overwrite historical round inputs, reviewer identities/times or resolution hashes. This kind review is not either blind D round.",
+  "A_M": "Existing A/M fingerprint payloads do not include requires or ledger bytes; the source comparison changes none of their payload fields. No A/M rebind is implied by this kind-only delta; no A/M producer run is claimed.",
+  "P_V": "The separately sealed P15/transport predecessor is not re-reviewed here. Kind delta changes no Source15 or P/V content. Whole-file ledger pin changes, if any prospective transport tracks it, are an application/closure binding obligation rather than permission to alter old receipts.",
+  "producerRuns": 0,
+  "modifiedFreshnessInputs": []
+}

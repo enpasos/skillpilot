@@ -1,0 +1,44 @@
+{
+  "status": "HOLD_CURRENT_IMPLEMENTATION_UNTIL_SOURCE_BOUND_MATERIAL_FAILURE_CONSUMPTION",
+  "reviewedCandidateInventorySha256": "15c694336f9ab314861e6ba6a3a05672cdfdfb0b53c520f17241a65026c097e2",
+  "reviewedCandidateSealSha256": "47ae9d47d191cb5144cefbe17bb6b235b82bf0eea9f6f946aeec84bd95fef513",
+  "reviewedSourceSha256": "50a26163a1934216727ee178f8b0d2740c2476f62482ce32911fecbf890654e8",
+  "activeSourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+  "keep": [
+    "Exact 46-file overlay, sealed sources, old evidence and full code frame",
+    "Finite 15-survivor/9-retirement/8-birth partition;23 current contracts",
+    "13 declared and10 UNKNOWN;Q3 21/18",
+    "Code-owned ExactMeaningEvidence and initial/review pins;no source whitelist",
+    "Canonical Capture/WeakMap/freeze;serialized revision and retirement binding",
+    "Four known missing DB material guards independent of review metadata",
+    "Existing regression coverage and no Maturity/Floor rule lowering"
+  ],
+  "hold": [
+    {
+      "id": "H1",
+      "severity": "blocking-before-active-application",
+      "finding": "Fresh expected source context contains a passing technical contract but no independently consumed actual material failure sets. Report-only forged readiness zeroes are accepted.",
+      "nativeMaterialFailures": {
+        "CQR-204": 8,
+        "CQR-202": 9
+      },
+      "directConsumerAcceptsForgedReadiness": true,
+      "standaloneFloorWithHonestGraphAndForgedReadiness": "Rejects only graph, no assessment error",
+      "standaloneFloorWithPassingShapedGraphAndForgedReadinessExitCode": 0,
+      "claimedMaturity": "M6",
+      "graphReportAlsoForgedForWholeFloorFalsePass": true,
+      "productionCodeChangedByReview": false,
+      "requiredNext": "Bind genuinely computed material failure sets into existing trusted ExpectedContext/Manifest path and consume them; preserve boundaries and existing semantics."
+    }
+  ],
+  "independentCurrentRevisionGroups": 14,
+  "independentCurrentTestsExitCode": 0,
+  "independentExtraCases": 6,
+  "standaloneFloorCases": 3,
+  "fullCqr": false,
+  "sourceAProbes": false,
+  "gitDbActiveSourceOrCodeWrites": false,
+  "subagentsSpawned": false,
+  "implementationRepairIncluded": false,
+  "normalCurrentQualityRemainsRed": true
+}

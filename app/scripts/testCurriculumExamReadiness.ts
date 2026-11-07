@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
+import { captureCurriculumSource } from './lib/retainedAssessmentCoverage'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   deriveCurriculumMaturity,
@@ -16,7 +17,8 @@ import { checkCurriculumMaturityFloors, collectCurriculumMaturityFloorFailures }
 import { strictGraphFixtureAssessmentRules, strictGraphFixtureAssessmentScope, strictGraphFixtureId, strictGraphFixtureRule } from './testCurriculumGraphMaturity'
 
 const canonical = resolve(import.meta.dirname, '../../curricula/DE/Gymnasium/canonical')
-const load = (file: string): SkillLandscape => JSON.parse(readFileSync(resolve(canonical, file), 'utf8'))
+const load = (file: string): SkillLandscape => captureCurriculumSource('curricula/DE/Gymnasium/canonical/'+file, readFileSync(resolve(canonical, file)))
+const capturedFixture = (source: SkillLandscape) => captureCurriculumSource<SkillLandscape>('fixtures/assessment/'+source.landscapeId+'.json', JSON.stringify(source))
 const fixtures = JSON.parse(readFileSync(resolve(import.meta.dirname, 'fixtures/informatics-generic-terminal-exams.json'), 'utf8'))
 const generic = fixtures.goals as LearningGoal[]
 assert.equal(generic.length, 6, 'The actual six known negative payloads must be discovered.')
@@ -133,25 +135,31 @@ const manifestFor = (rules: ReturnType<typeof evaluateCurriculumExamReadiness>, 
   assert.ok(rule?.assessmentValidation)
   return rule.assessmentValidation
 }
-const mutate = (landscape: SkillLandscape, id: string, patch: Partial<NonNullable<LearningGoal['examData']>>) => ({
+const mutate = (landscape: SkillLandscape, id: string, patch: Partial<NonNullable<LearningGoal['examData']>>) => capturedFixture({
   ...landscape, goals: landscape.goals.map(goal => goal.id === id
     ? { ...goal, examData: { ...goal.examData!, ...patch } } : goal),
 })
 const boilerplate = generic[0].examData!.solutionContent
+const knownIncompleteDbOffers = new Set(['b86e8ab3-2c12-5b6b-b515-1e7d457c99c2',
+  'd13e297f-505d-576a-9a86-11ab4d7896c9','d9892508-97b5-529e-9b9e-c4889fba2166','4e0668e3-edca-57f4-b258-df87f23d2b4e'])
 let hiddenPayloadNegatives = 0
+let alreadyBlockedDbMutations = 0
 for (const id of offerIds) {
   const goal = info.goals.find(goal => goal.id === id)
   assert.ok(goal?.examData)
-  assert.equal(evaluateExamTaskReadiness([goal]).status, 'pass')
+  const knownIncomplete = knownIncompleteDbOffers.has(id)
+  assert.equal(evaluateExamTaskReadiness([goal]).status, knownIncomplete ? 'fail' : 'pass')
   const baseline = manifestFor(evaluateCurriculumExamReadiness(info, []), 'readiness')
   assert.ok(baseline.requiredGoalIds.includes(id))
-  assert.ok(!baseline.failingGoalIds.includes(id))
+  assert.equal(baseline.failingGoalIds.includes(id), knownIncomplete,
+    'Known missing inputs are individual failures, not positive legacy readiness controls.')
   for (const patch of [{ taskContent: '' }, { solutionContent: '' },
     { scoring: { ...goal.examData.scoring, steps: [] } }, { solutionContent: boilerplate }]) {
     const rules = evaluateCurriculumExamReadiness(mutate(info, id, patch), [])
     assert.ok(manifestFor(rules, 'readiness').failingGoalIds.includes(id))
     assert.ok(manifestFor(rules, 'structure').failingGoalIds.includes(id))
     hiddenPayloadNegatives++
+    if (knownIncomplete) alreadyBlockedDbMutations++
   }
 }
 for (const [file, ids] of viewTargetIds) {
@@ -168,6 +176,8 @@ for (const [file, ids] of viewTargetIds) {
   }
 }
 assert.equal(hiddenPayloadNegatives, 56)
+assert.equal(alreadyBlockedDbMutations, 16)
+assert.equal(hiddenPayloadNegatives - alreadyBlockedDbMutations, 40)
 const missingOfferPayload = { ...info, goals: info.goals.map(goal => goal.id === offerIds[0]
   ? { ...goal, examData: undefined } : goal) }
 for (const kind of ['structure', 'readiness'] as const) {
@@ -191,6 +201,7 @@ const offer = (landscape: SkillLandscape) => ({ ...landscape, goals: landscape.g
   ? { ...goal, release: { examYear: 2026, kind: 'offer' as const, status: 'released' as const, courseLevel: 'GK' as const } }
   : goal) })
 const fullCore = (landscape: SkillLandscape, viewFiles: string[] = [], catalog = [landscape]) => {
+  landscape = capturedFixture(landscape)
   const actualCatalog = [landscape, ...catalog.filter((entry) => entry.landscapeId !== landscape.landscapeId)]
   const expectedScope = discoverCurriculumAssessmentScope(landscape, viewFiles, actualCatalog)
   const rules = [
@@ -254,7 +265,7 @@ const ownedCaseFixture = { ...fixture, landscapeId: uuidOwner, goals: fixture.go
   ? { ...goal, id: caseGoal } : goal.tags?.includes('root')
     ? { ...goal, contains: [`${uuidOwner}:${caseGoal.toUpperCase()}`, B], release: {
       examYear: 2026, kind: 'offer' as const, status: 'released' as const, courseLevel: 'GK' as const } } : goal) }
-assert.equal(evaluateCurriculumExamReadiness(ownedCaseFixture, []).find(rule => rule.id === 'CQR-202')?.status, 'pass')
+assert.equal(evaluateCurriculumExamReadiness(capturedFixture(ownedCaseFixture), []).find(rule => rule.id === 'CQR-202')?.status, 'pass')
 const wrongCaseOwner = { ...ownedCaseFixture, goals: ownedCaseFixture.goals.map(goal => goal.tags?.includes('root')
   ? { ...goal, contains: [`${uuidOwner.toUpperCase()}:${caseGoal}`, B] } : goal) }
 assert.equal(evaluateCurriculumExamReadiness(wrongCaseOwner, []).find(rule => rule.id === 'CQR-202')?.status, 'fail')
@@ -344,8 +355,13 @@ try {
   writeView('target', `wrong-owner:${A}`)
   assertStopsFloors(fullCore(fixture, [viewFile]))
 } finally { rmSync(directory, { recursive: true, force: true }) }
-console.log(`Complete assessment gate passed: 10 actual Info offers, 16 actual DE/History view targets, ${hiddenPayloadNegatives} payload negatives; retained/draft/legacy/discovery/manifest guards and real graph → M7/M6-floor chain.`)
+console.log(`Complete assessment gate passed: 6 accepted Info offer controls, 4 known missing-input offers, 16 actual DE/History view targets, ${hiddenPayloadNegatives - alreadyBlockedDbMutations} independently failing payload mutations plus ${alreadyBlockedDbMutations} mutations of already blocked DB bodies; retained/draft/legacy/discovery/manifest guards and real graph → M7/M6-floor chain.`)
 
 // Finite source-bound retained assessment contract and independent consumer chain.
 await import('./testRetainedAssessmentCoverage')
 await import('./testRetainedAssessmentCoverageChain')
+
+// Concrete current authoring revision and known DB material countercases.
+await import('./testInformaticsCurrentDefinitionRevision')
+
+await import('./testCurriculumSourceMaterialContext')

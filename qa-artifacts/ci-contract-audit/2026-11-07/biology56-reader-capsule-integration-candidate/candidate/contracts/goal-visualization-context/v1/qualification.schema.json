@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-visualization-context/v1/qualification.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "kind",
+    "normalization",
+    "reviewProfile",
+    "context",
+    "originalReview",
+    "originalInput",
+    "ownerSource",
+    "reviewedAsset",
+    "originalDecision",
+    "reviewedAt",
+    "reviewer",
+    "originalReason",
+    "qualification"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "visualization-reviewed-context-qualification"
+    },
+    "normalization": {
+      "const": "skillpilot-visualization-display-whitespace-v1"
+    },
+    "reviewProfile": {
+      "enum": [
+        "matrix-candidate-v1",
+        "economics-native-v1",
+        "diagram-current-b-v1",
+        "economics-q3-embedded-v1",
+        "economics-q3-trade-finance-v1",
+        "economics-q2-monetary-social-embedded-v1",
+        "math-current62-with-current-viewports-v1",
+        "math-independent-ten-with-current-viewports-v1",
+        "biology-sealed-native-three-families-v1"
+      ]
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landscapeId",
+        "goalId",
+        "subject",
+        "title",
+        "description",
+        "assetSha256"
+      ],
+      "properties": {
+        "landscapeId": {
+          "$ref": "#/$defs/text"
+        },
+        "goalId": {
+          "$ref": "#/$defs/text"
+        },
+        "subject": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "assetSha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "titleEn": {
+          "$ref": "#/$defs/text"
+        },
+        "descriptionEn": {
+          "$ref": "#/$defs/text"
+        },
+        "demandLevel": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "originalReview": {
+      "$ref": "#/$defs/artifact"
+    },
+    "originalInput": {
+      "$ref": "#/$defs/artifact"
+    },
+    "ownerSource": {
+      "$ref": "#/$defs/artifact"
+    },
+    "reviewedAsset": {
+      "$ref": "#/$defs/artifact"
+    },
+    "originalDecision": {
+      "enum": [
+        "keep",
+        "KEEP",
+        "yes",
+        "accept_current_asset",
+        "accepted_pilot"
+      ]
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewer": {
+      "$ref": "#/$defs/text"
+    },
+    "originalReason": {
+      "$ref": "#/$defs/text"
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualifiedAt",
+        "qualifier",
+        "reason"
+      ],
+      "properties": {
+        "qualifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "qualifier": {
+          "$ref": "#/$defs/text"
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "currentSupplement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "gitCommit",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/text"
+        },
+        "gitCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reviewProfile": {
+            "enum": [
+              "math-current62-with-current-viewports-v1",
+              "math-independent-ten-with-current-viewports-v1"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "currentSupplement"
+        ],
+        "properties": {
+          "currentSupplement": {}
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "currentSupplement"
+          ],
+          "properties": {
+            "currentSupplement": {}
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "command": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--bind",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-semantic-kind-independent-review",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-semantic-kind-independent-review",
+    "--tmpfs",
+    "/tmp",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--unshare-net",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--setenv",
+    "TSX_DISABLE_CACHE",
+    "1",
+    "node",
+    "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+    "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-semantic-kind-independent-review/native_kind_check.mts"
+  ],
+  "startedAtActualUTC": "2026-11-07T12:12:11.542966+00:00",
+  "finishedAtActualUTC": "2026-11-07T12:12:12.977816+00:00",
+  "exitCode": 0,
+  "readOnlyRoot": true,
+  "networkUnshared": true,
+  "writableRepositoryPath": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-semantic-kind-independent-review",
+  "producerRuns": 0
+}

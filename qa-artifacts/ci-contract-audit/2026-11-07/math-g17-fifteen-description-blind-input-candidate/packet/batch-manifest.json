@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "mathematik-fifteen-current-20261107-v1",
+  "subject": "mathematik",
+  "subjectLabel": "Mathematik",
+  "configPath": "qa-artifacts/ci-contract-audit/2026-11-07/math-g17-fifteen-description-blind-input-candidate/batch.config.json",
+  "configDigest": "sha256:0b1d938d7e6c83699b34c39d863ae6ff321e50de14c8a5ef869a48084d510b6c",
+  "goalIds": [
+    "121ef4c5-c1c2-5294-9582-86bab2355907",
+    "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+    "f14e1643-ad8d-5235-a832-97987fa18489",
+    "69243680-c2c1-5661-80c0-c95a2be1dabf",
+    "3e974075-b2fd-43e6-88d9-5f596ad053ec",
+    "5927ca6a-91d5-4541-84e9-833bbb2cd7df",
+    "d711bc18-c27c-4739-8289-edac53dc8ba3",
+    "c72a8032-71f6-56ed-a896-06ae435ff2ec",
+    "91e2f564-3bc8-4924-af85-2a3fa84c1471",
+    "4fb40e58-58c1-5964-b58e-3347a8022b97",
+    "6ebdc8cc-3393-5eb3-aadb-107e4f6d12b8",
+    "304111dd-426b-520b-a275-3fa37da1b0e0",
+    "6f09c97e-779b-500b-8092-3fb9696aa5bb",
+    "5e893892-393e-5df0-b705-fb3b3458122f",
+    "bbef7cf2-90fa-59fa-a115-8b651aab9231"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 807,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-math-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "baseBookDigest": "sha256:3ffedf1918e5a938883738ad791957e1253b04e26cd1e3367b48ae19ae08e2f7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:640797baa618f7d78ea3377c40516bd1b739ed9bb9f4263f6cc51461dab90368",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3ec86180385f245fd6635b0bc728bd0f466c93e3fa6d87b89893643b39a85ca1",
+    "reviewInputFingerprint": "sha256:80c31e8398593952b40d221282db5be61f8428e0203774bf8e2d1e7c7c198081",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "mathematik-fifteen-current-20261107-v1-a",
+        "campaignDigest": "sha256:6984bd4c5c68ba73ddc8b443babddf3fa18b3f8907efe2e793a2e42fbf21d3cb",
+        "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-a",
+        "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-a",
+        "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:d5a83ad62b1b6d1c881af27ffd371ed2ba3a7ce908ef8a87788bac4e4050f7af"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "mathematik-fifteen-current-20261107-v1-b",
+        "campaignDigest": "sha256:c1257044e892402263daeb5bcd5fc09916c5816c5c44c36842b83167cb0bcba9",
+        "roundId": "mathematik-fifteen-current-20261107-v1-first-pass-b",
+        "independenceGroupId": "mathematik-fifteen-current-20261107-v1-independent-b",
+        "batchId": "mathematik-fifteen-current-20261107-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9ac71249c2c4f6677fd059f9e45526b691200fe6bdbbea6a6faba7125f4b882c"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

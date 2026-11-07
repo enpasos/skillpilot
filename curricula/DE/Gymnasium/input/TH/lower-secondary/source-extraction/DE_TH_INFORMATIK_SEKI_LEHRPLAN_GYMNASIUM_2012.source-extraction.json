@@ -113,7 +113,7 @@
       {
         "id": "MAPPING-3",
         "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-        "status": "complete",
+        "status": "incomplete",
         "dependsOn": [
           "MAPPING-2"
         ],
@@ -127,8 +127,14 @@
           {
             "id": "m3-content-covered-th-informatik-seki",
             "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
-            "passed": true,
-            "details": "Abgedeckt: 105/105; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+            "passed": false,
+            "details": "Explizite fachliche Zuordnungslücken bleiben nach aktueller Quellenbereinigung offen; keine vollständige Inhaltsabdeckung."
+          },
+          {
+            "id": "20261107-current-basic-source-gap",
+            "label": "Grundlegende Source-Leistungen vollständig und niveaugleich zugeordnet",
+            "passed": false,
+            "details": "Konkrete offene Mappinglücken; Originalpassagen und Kurs-/Wahlkontext bleiben erhalten. Unabhängiges Review steht aus."
           }
         ]
       }
@@ -1588,10 +1594,14 @@
       "rawSourceText": "Zustandsdiagramme beschreiben",
       "rawSourceSpan": "TH-INF-SEKI-10-ALG.10",
       "rawParentBulletText": "Zustandsdiagramme beschreiben",
-      "canonicalTargetIds": [
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Zustandsdiagramme beschreiben.",
+        "reason": "Allgemeines Automatenmodellieren/Simulieren benennt die geforderte Diagrammbeschreibung nicht ausdrücklich; eine direkte vollständige Leistungsbindung fehlt.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-011-algorithmen-pruefen-784903ac",
@@ -1762,10 +1772,14 @@
       "rawSourceText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
       "rawSourceSpan": "TH-INF-SEKI-10-ALG.16",
       "rawParentBulletText": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Automaten analysieren und mithilfe von Zustandsdiagrammen modellieren.",
+        "reason": "Das Grundziel benennt Modellieren/Simulieren, aber die konkrete Analyse- und Diagrammleistung ist nicht vollständig gebunden.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-alg-017-algorithmusergebnisse-reflektieren-98e2c96b",
@@ -2629,10 +2643,14 @@
       "rawSourceText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
       "rawSourceSpan": "TH-INF-SEKI-10-TECH.12",
       "rawParentBulletText": "Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren",
-      "canonicalTargetIds": [
-        "7ad8caf0-3a31-56f1-bee1-574c01b0c156",
-        "875cb53c-b48d-5b2b-8cb0-e20f27534f16"
-      ]
+      "canonicalTargetIds": [],
+      "mappingGap": {
+        "status": "needsCanonicalGoal",
+        "requiredPerformance": "Im Wahlpflichtthema Technische Informatik Roboter analysieren und mithilfe von Zustandsdiagrammen modellieren.",
+        "reason": "Das vorhandene Grundziel ist allgemeines Modellieren/Simulieren; Roboteranalyse und explizite Zustandsdiagramme bleiben unbewiesen. Der Wahlpflichtstatus wird nicht zur allgemeinen Pflicht erweitert.",
+        "authorProposal": true,
+        "independentSourceReviewPending": true
+      }
     },
     {
       "id": "de-th-informatik-seki-lehrplan-gymnasium-2012-th-inf-seki-10-tech-013-roboterverhalten-beeinflussen-adbc194f",
