@@ -1,13 +1,16 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller gesicherter Nachlauf: `2026-11-06T22:41:52.172Z`. Der
-[Gesamt-CQR-Beleg mit vollständigen Assessmentgates](cqr104-current-cqr-2026-11-06.json)
+Aktueller gesicherter Nachlauf: `2026-11-07T02:06:31.722Z`. Der
+[normale Gesamt-CQR mit neuem V-Gate](visualization-fixed54-normal-cqr-producer-2026-11-07.json)
 bindet alle 21 Quellen, 925 Definitions- und 872 Bereitschaftsprüfungen sowie
 die zehn unveränderten Fachfloors. Deutsch, Geschichte und Latein bleiben M6;
 der tatsächliche harte Floorcheck scheitert an sieben übrigen Fachständen.
 Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
-sechs unzureichende Prüfungen. Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
-bleibt historisch erhalten.
+sechs unzureichende Prüfungen. Alle Scopes, Zielmengen und Meilensteine bleiben
+gegenüber [22:41](cqr104-current-cqr-2026-11-06.json) exakt gleich; CQR-303
+zeigt nun die tatsächlichen 54 qualifizierten und 2.429 offenen V-Kontexte.
+Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
+bleibt ebenfalls historisch erhalten.
 
 - [Terminaler Remote-Lauf auf cb128](remote-cb128-workflows-terminal-2026-11-07.json):
   Docs, Assessment, OAuth und Gemini sowie sechs Hauptjobs einschließlich
@@ -24,8 +27,11 @@ bleibt historisch erhalten.
   36 echte Originalketten, 35 Kontrollen und unveränderte frühere Gegenfälle
   bestehen, ebenso fokussiertes ESLint und TypeScript. Der
   [Root-Nachlauf](visualization-economics-q3-root-followup-2026-11-07.json)
-  wiederholt die nativen Kontrollen. Die Einbindung in V, Deep-QA und direkten
-  Floorverbrauch läuft getrennt; der Komponentenpass ist keine M7-Freigabe.
+  wiederholt die nativen Kontrollen. Die nachfolgende
+  [V-/Deep-/direkteFloor-Integration](visualization-fixed54-consumer-integration-2026-11-07.md)
+  besteht den vollständigen Deep-Test und den unabhängigen Consumerpeer.
+  Der normale Producer endet mit Exit 0, der anschließende echte Floorcheck
+  mit Exit 1 an sieben Fächern. Die offene Bestandsqualität bleibt sichtbar.
 - [Source-A-Lesegrenze](source-identity-node-vm-lifecycle-boundary-2026-11-07.md):
   35 Tests und 58 native Regressionsläufe bestehen. Die beiden kleinen
   TypeScriptprogramme enden erfolgreich; ihre vollständige Leseauthentisierung

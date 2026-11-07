@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 1,
+  "status": "normal-producer-complete-floor-fails-seven-subjects",
+  "recordedAt": "2026-11-07T02:13:13.025071+00:00",
+  "codeIntegrationReceipt": {
+    "path": "docs/dev/ci-graph-repairs/visualization-fixed54-consumer-integration-2026-11-07.json",
+    "sha256": "5f052b9c45fff948a50a38801f7be618b887f1bf10d370f0ea9161dc930854a5"
+  },
+  "producer": {
+    "exitCode": 0,
+    "startedAt": "2026-11-07T02:00:14.642392+00:00",
+    "endedAt": "2026-11-07T02:06:32.449102+00:00",
+    "elapsedSeconds": 377.8241688630005,
+    "maximumDescendantRssKiB": 1499772,
+    "normalCommandUnchanged": true,
+    "generatorRuns": 1,
+    "standaloneDeepRuns": 0
+  },
+  "normalCommand": "npm run quality:curriculum-status",
+  "ordinaryMemoryPrehookReportCount": 10,
+  "allTenMemoryReportsAndChemistryQaByteIdentical": true,
+  "outputIsolation": {
+    "method": "Read-only host filesystem with only existing status-output directory and one Chemistry generated-report path overlaid by own-inode RAM copies. Original npm command and generator bytes unchanged.",
+    "rootFreeBeforeBytes": 30711808,
+    "statusRamMirrorBytes": 50457639,
+    "rawLogsOnlyInRam": true,
+    "durableLogsLosslessGzipOnly": true,
+    "ordinaryProducerRuns": 1,
+    "standaloneDeepRuns": 0
+  },
+  "transfer": {
+    "transferredAt": "2026-11-07T02:07:31.966136+00:00",
+    "generatedAt": "2026-11-07T02:06:31.722Z",
+    "changes": [
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.json",
+        "beforeSha256": "459ee320b9f6df2a9dee8f13f07dab307ac8fa9081449cb1effc0fc8e2b6d594",
+        "beforeBytes": 11115624,
+        "afterSha256": "65d9827f9627dfec65ab1aa8af7887445b91c4a723cb3a0cd25d2498f35c057e",
+        "afterBytes": 11534383
+      },
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.md",
+        "beforeSha256": "9f4479b090a8c6c2a0fd0a86f88e03e070e77b2ad573988949efac597ff9a09e",
+        "beforeBytes": 66514,
+        "afterSha256": "caefc60e5c0f73b26ea17a60c204f0844c72ffd8a2bf8c4fb6e1aa3ab8820e37",
+        "afterBytes": 66514
+      }
+    ],
+    "applied": [
+      "docs/qa-ci/status/curriculum-quality-status.json",
+      "docs/qa-ci/status/curriculum-quality-status.md"
+    ],
+    "oldHistory": [
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.json",
+        "commit": "1a49bc24e790c74f4b2482d15db3a7c4fa070d74",
+        "sha256": "459ee320b9f6df2a9dee8f13f07dab307ac8fa9081449cb1effc0fc8e2b6d594",
+        "equalsBefore": true
+      },
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.md",
+        "commit": "1a49bc24e790c74f4b2482d15db3a7c4fa070d74",
+        "sha256": "9f4479b090a8c6c2a0fd0a86f88e03e070e77b2ad573988949efac597ff9a09e",
+        "equalsBefore": true
+      }
+    ],
+    "protectedInputCount": 230,
+    "protectedInputsUnchanged": true,
+    "frozen20PinsUnchanged": true,
+    "chemistryQaUnchanged": true,
+    "privateOwnInodeAtomicReplacement": true,
+    "reserveBytes": 8388608,
+    "rootFreeAfter": 25083904
+  },
+  "transferAttempts": [
+    {
+      "attempt": 1,
+      "exitCode": 1,
+      "hostWrites": false,
+      "reason": "Conservative16MiB operational reserve stopped before any replacement when free headroom fell during the run."
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "hostChangedFiles": 2,
+      "operationalReserveBytes": 8388608,
+      "generatorOrCodeOrPolicyChanged": false
+    }
+  ],
+  "floor": {
+    "exitCode": 1,
+    "startedAt": "2026-11-07T02:07:47.845360+00:00",
+    "endedAt": "2026-11-07T02:09:38.955429+00:00",
+    "elapsedSeconds": 111.11580664200301,
+    "maximumDescendantRssKiB": 384736,
+    "actualHostGeneratedReportsRead": true,
+    "policyUnchanged": true,
+    "floorRuns": 1
+  },
+  "actualFloorCommand": "npm run check:curriculum-maturity-floors",
+  "floorPolicy": {
+    "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+    "sha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+    "byteEqualToHeadAndBefore": true,
+    "baselineOrExceptionChanges": false
+  },
+  "failedProtectedSubjects": [
+    {
+      "subject": "Mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected M7 has no complete passing visualization context report bound to current source/asset/review inputs",
+        "current M0 is below protected floor M7"
+      ]
+    },
+    {
+      "subject": "Physik",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected M7 has no complete passing visualization context report bound to current source/asset/review inputs",
+        "current M0 is below protected floor M7"
+      ]
+    },
+    {
+      "subject": "Biologie",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected M7 has no complete passing visualization context report bound to current source/asset/review inputs",
+        "current M0 is below protected floor M7"
+      ]
+    },
+    {
+      "subject": "Chemie",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected M7 has no complete passing visualization context report bound to current source/asset/review inputs",
+        "current M0 is below protected floor M7"
+      ]
+    },
+    {
+      "subject": "Informatik",
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected maturity has no complete passing assessment reports bound to current source discovery",
+        "current M0 is below protected floor M6"
+      ]
+    },
+    {
+      "subject": "Politik und Wirtschaft",
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "current M0 is below protected floor M6"
+      ]
+    },
+    {
+      "subject": "Wirtschaftswissenschaften",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "diagnostics": [
+        "protected maturity has no complete passing strict graph-integrity report",
+        "protected M7 has no complete passing visualization context report bound to current source/asset/review inputs",
+        "current M0 is below protected floor M7"
+      ]
+    }
+  ],
+  "passingProtectedSubjects": [
+    {
+      "subject": "Deutsch",
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "maturity": "M6",
+      "floor": "M6"
+    },
+    {
+      "subject": "Geschichte",
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "maturity": "M6",
+      "floor": "M6"
+    },
+    {
+      "subject": "Latein",
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "maturity": "M6",
+      "floor": "M6"
+    }
+  ],
+  "qualityStatusSnapshot": {
+    "generatedAt": "2026-11-07T02:06:31.722Z",
+    "curricula": 21,
+    "sameOwners": true,
+    "allGoalCountsUnchanged": true,
+    "allScopeReportsUnchanged": true,
+    "allMaturitiesUnchanged": true,
+    "changedGlobalRulesOnly": [
+      "CQR-303"
+    ],
+    "currentQualifiedV": 54,
+    "currentCurricularAtomic": 2483,
+    "currentOpenV": 2429
+  },
+  "protectedInputs": {
+    "namedSourceAndActiveQaInputs": 230,
+    "allBeforeAfterHashesExact": true,
+    "allCode20PinsExact": true,
+    "canonicalSourceOrReviewDecisionChanges": false
+  },
+  "sourceIdentityBoundary": "No Source-A candidate QA, physical source pair, identity activation, runtime/state change or deployment is proved by this normal report run. That work remains separate.",
+  "logCarriers": [
+    {
+      "originalName": "normal-producer.stdout.log",
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "rawBytes": 262861,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/normal-producer.stdout.log.gz",
+      "carrierSha256": "e24f443ba4faaa026efa97be154b9cdaf3a1b9ba0a8c06c9b70e6dc59c038394",
+      "carrierBytes": 57670,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "normal-producer.stderr.log",
+      "rawSha256": "6361422743e5135c6cf96002f15ea9c64f88df25ac195e4ec519eae8e632df7a",
+      "rawBytes": 208,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/normal-producer.stderr.log.gz",
+      "carrierSha256": "fc4c4d56d8851954b540f9f380e526fac65c3bdd3ad54fd4c8a560a327ffcaa7",
+      "carrierBytes": 156,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "floor.stdout.log",
+      "rawSha256": "1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "rawBytes": 101,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/floor.stdout.log.gz",
+      "carrierSha256": "5d0e187a99baa64ec1629dc653746386752e039dec0115a533fde3176170ad27",
+      "carrierBytes": 101,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "floor.stderr.log",
+      "rawSha256": "96cd486801ccea9912e3f6423407a42b499dfb5a0640c1a86cb29204da189a5f",
+      "rawBytes": 84505,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/floor.stderr.log.gz",
+      "carrierSha256": "6a9e39ea586e105f281b4198c0ea238d85f98e8007d1c20f2831cd839bd28f30",
+      "carrierBytes": 11112,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "transfer-attempt1.stdout.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt1.stdout.txt.gz",
+      "carrierSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "carrierBytes": 20,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "transfer-attempt1.stderr.txt",
+      "rawSha256": "eaae3ba3c38df5f9035cd03c232df64f299f4d18cf9108af83f662f478a660a9",
+      "rawBytes": 454,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt1.stderr.txt.gz",
+      "carrierSha256": "4b7f63308707d0ad2e19a2904cbb48d0ab32da5398b3846c888dcd19b6d801e2",
+      "carrierBytes": 262,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "transfer-attempt2.stdout.json",
+      "rawSha256": "01cae0f9002acccc62dfaab9289927eb10fc4b6e4d72ac833f5facea671deccd",
+      "rawBytes": 1436,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt2.stdout.json.gz",
+      "carrierSha256": "26ff7df44fbfb4b9be03bc29ae5d3ebd1f9bd4846b4aea1b67fd7723a546e1e6",
+      "carrierBytes": 576,
+      "exactRoundtripVerified": true
+    },
+    {
+      "originalName": "transfer-attempt2.stderr.txt",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawBytes": 0,
+      "carrierPath": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt2.stderr.txt.gz",
+      "carrierSha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "carrierBytes": 20,
+      "exactRoundtripVerified": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/command.json",
+      "sha256": "e3e4b427e0faaf4f7bcc835fc6ffbbd8a395b94732013b73b836f43d27c2d175",
+      "bytes": 779
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/floor-command.json",
+      "sha256": "b2dbd3a009631e678a6d9510da06d64792880c3ba5db4bb77afeeba29260c7f7",
+      "bytes": 397
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/floor-policy-before.json",
+      "sha256": "5700e59e0d5058bd774f2707065b1ccc72f8b79018cfa8f8cde282d90143fbec",
+      "bytes": 203
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/floor-result.json",
+      "sha256": "206565fbae3614c2f6e0931cd86b5641a16c4cc6d3806194b1653219cec25623",
+      "bytes": 284
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/generated-deltas-before-transfer.json",
+      "sha256": "2783b31a06d3590159fe866331b9e3df55c2087f2f9f85474554f5b4440adcad",
+      "bytes": 1251
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/normal-producer-result.json",
+      "sha256": "7c503125da7ce892f7ec2baabed1536fb2027e1f783a468f47df2d07277f2779",
+      "bytes": 280
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/postflight.json",
+      "sha256": "9dbc1b491957b4f0b07fa5b243c5ec647d550a05c74700128a5e87d0d39f5278",
+      "bytes": 54181
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/preflight.json",
+      "sha256": "cbb912064e333cd867b06e0e6dcb7ef8308e36d254a8017af27f65e76f58b801",
+      "bytes": 69163
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/semantic-report-deltas.json",
+      "sha256": "ed9807ef12d9bc9aba054196e7f6afff43951458ba811fbc40af1b8c3a576778",
+      "bytes": 15396
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/transfer-reserve-adjustment.json",
+      "sha256": "4e4d94f9e6e4398bd560c4b2ecc698da0ef64f17f384f9743ec755d9351e6036",
+      "bytes": 394
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/metadata/transfer-result.json",
+      "sha256": "4065f0a4d6202a1e895f6484e92922b3ae2bfe430c8d609fedd3dd97b7d7ac10",
+      "bytes": 1630
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/operational-scripts/transfer-reported-reserve16-before.py",
+      "sha256": "314b20b3b3f8bb3d4e6eae768d588a03049adeda82a6ced18d5d03d3306047e8",
+      "bytes": 4465
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/operational-scripts/transfer_reports.py",
+      "sha256": "30eaf05e78654d229599afff4d4c2382062a6fe4ce4552b1953ee3c888fac74d",
+      "bytes": 4464
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/floor.stderr.log.gz",
+      "sha256": "6a9e39ea586e105f281b4198c0ea238d85f98e8007d1c20f2831cd839bd28f30",
+      "bytes": 11112
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/floor.stdout.log.gz",
+      "sha256": "5d0e187a99baa64ec1629dc653746386752e039dec0115a533fde3176170ad27",
+      "bytes": 101
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/inventory.json",
+      "sha256": "9b1a092f0f45f266530659f53ba52e50362c8089dbd5950301eb6e2418b7de3a",
+      "bytes": 3721
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/normal-producer.stderr.log.gz",
+      "sha256": "fc4c4d56d8851954b540f9f380e526fac65c3bdd3ad54fd4c8a560a327ffcaa7",
+      "bytes": 156
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/normal-producer.stdout.log.gz",
+      "sha256": "e24f443ba4faaa026efa97be154b9cdaf3a1b9ba0a8c06c9b70e6dc59c038394",
+      "bytes": 57670
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt1.stderr.txt.gz",
+      "sha256": "4b7f63308707d0ad2e19a2904cbb48d0ab32da5398b3846c888dcd19b6d801e2",
+      "bytes": 262
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt1.stdout.txt.gz",
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "bytes": 20
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt2.stderr.txt.gz",
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "bytes": 20
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/visualization-fixed54-normal-cqr-producer/raw-log-carriers/transfer-attempt2.stdout.json.gz",
+      "sha256": "26ff7df44fbfb4b9be03bc29ae5d3ebd1f9bd4846b4aea1b67fd7723a546e1e6",
+      "bytes": 576
+    }
+  ],
+  "freshRemoteCiExecuted": false,
+  "commitOrPushPerformed": false
+}

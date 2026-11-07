@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url'
 import { hasCompletePassingSkillGraphIntegrity } from './lib/skillGraphIntegrity'
 import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope } from './lib/curriculumAssessmentValidation'
 import { readCurrentCurriculumAssessmentScopes } from './generateCurriculumQualityStatus'
+import { readCurrentCurriculumVisualizationScopes } from './reportDeepUnderstandingRollout'
+import { hasCompletePassingVisualizationContext, type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
 
 interface MaturityRule {
   id?: string
@@ -12,6 +14,7 @@ interface MaturityRule {
   details?: string[]
   graphIntegrity?: unknown
   assessmentValidation?: unknown
+  visualizationValidation?: unknown
   metrics?: Record<string, number>
 }
 
@@ -78,6 +81,7 @@ export function collectCurriculumMaturityFloorFailures(
   artifact: { curricula?: CurriculumStatus[] },
   policy: FloorPolicy,
   expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
+  expectedVisualizationScopes?: ReadonlyMap<string, CurriculumVisualizationValidation>,
 ): string[] {
   if (policy.schemaVersion !== 1 || !policy.policyId || policy.baselineDate !== '2026-08-20' || !Array.isArray(policy.floors) || policy.floors.length === 0 || !Array.isArray(policy.exceptions) || !Array.isArray(policy.knownPreBaselineRegressions)) {
     throw new Error('Invalid or empty curriculum maturity-floor policy')
@@ -115,6 +119,10 @@ export function collectCurriculumMaturityFloorFailures(
       expectedAssessmentScopes?.get(floor.landscapeId))) {
       failures.push(`${floor.subject} [${floor.landscapeId}]: protected maturity has no complete passing assessment reports bound to current source discovery`)
     }
+    if (floorRank >= 7 && !hasCompletePassingVisualizationContext(current.rules, floor.landscapeId,
+      expectedVisualizationScopes?.get(floor.landscapeId))) {
+      failures.push(`${floor.subject} [${floor.landscapeId}]: protected M7 has no complete passing visualization context report bound to current source/asset/review inputs`)
+    }
     if (maturityRank(current.maturity, floor.subject) < floorRank) {
       failures.push(`${floor.subject} [${floor.landscapeId}]: current ${current.maturity} is below protected floor ${floor.minimumMaturity}`)
       failures.push(...diagnosticLines(current, floorRank))
@@ -128,8 +136,9 @@ export function checkCurriculumMaturityFloors(
   artifact: { curricula?: CurriculumStatus[] },
   policy: FloorPolicy,
   expectedAssessmentScopes?: ReadonlyMap<string, CurriculumAssessmentScope>,
+  expectedVisualizationScopes?: ReadonlyMap<string, CurriculumVisualizationValidation>,
 ): void {
-  const failures = collectCurriculumMaturityFloorFailures(artifact, policy, expectedAssessmentScopes)
+  const failures = collectCurriculumMaturityFloorFailures(artifact, policy, expectedAssessmentScopes, expectedVisualizationScopes)
   if (failures.length > 0) {
     throw new Error([
       `Curriculum maturity regression detected by ${policy.policyId}.`,
@@ -146,7 +155,9 @@ function main(): void {
   const policy = JSON.parse(readFileSync(policyPath, 'utf8')) as FloorPolicy
   const expectedScopes = readCurrentCurriculumAssessmentScopes((policy.floors ?? [])
     .flatMap((floor) => floor.landscapeId ? [floor.landscapeId] : []))
-  checkCurriculumMaturityFloors(artifact, policy, expectedScopes)
+  const expectedVisualizationScopes = readCurrentCurriculumVisualizationScopes((policy.floors ?? [])
+    .flatMap(floor => floor.landscapeId && floor.minimumMaturity === 'M7' ? [floor.landscapeId] : []))
+  checkCurriculumMaturityFloors(artifact, policy, expectedScopes, expectedVisualizationScopes)
   console.log(`curriculum maturity floors passed: ${policy.floors!.length} protected curricula`)
 }
 

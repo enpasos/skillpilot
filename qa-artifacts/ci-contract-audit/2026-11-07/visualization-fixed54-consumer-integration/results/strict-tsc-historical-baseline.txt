@@ -1,0 +1,76 @@
+scripts/applicabilityCompiler.ts(517,31): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+scripts/applicabilityCompiler.ts(520,13): error TS2322: Type 'unknown' is not assignable to type 'string'.
+scripts/applicabilityCompiler.ts(521,13): error TS2322: Type 'unknown' is not assignable to type 'string'.
+scripts/applicabilityCompiler.ts(522,13): error TS2322: Type 'unknown' is not assignable to type 'string'.
+scripts/applicabilityCompiler.ts(971,66): error TS2345: Argument of type 'Set<string>' is not assignable to parameter of type 'Iterable<"DE-BY" | "DE-BB" | "DE-BE" | "DE-BW" | "DE-HB" | "DE-HH" | "DE-MV" | "DE-NI" | "DE-NW" | "DE-RP" | "DE-SH" | "DE-SL" | "DE-SN" | "DE-ST" | "DE-TH" | "DE-HE">'.
+  The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+    Type 'IteratorResult<string, undefined>' is not assignable to type 'IteratorResult<"DE-BY" | "DE-BB" | "DE-BE" | "DE-BW" | "DE-HB" | "DE-HH" | "DE-MV" | "DE-NI" | "DE-NW" | "DE-RP" | "DE-SH" | "DE-SL" | "DE-SN" | "DE-ST" | "DE-TH" | "DE-HE", any>'.
+      Type 'IteratorYieldResult<string>' is not assignable to type 'IteratorResult<"DE-BY" | "DE-BB" | "DE-BE" | "DE-BW" | "DE-HB" | "DE-HH" | "DE-MV" | "DE-NI" | "DE-NW" | "DE-RP" | "DE-SH" | "DE-SL" | "DE-SN" | "DE-ST" | "DE-TH" | "DE-HE", any>'.
+        Type 'IteratorYieldResult<string>' is not assignable to type 'IteratorYieldResult<"DE-BY" | "DE-BB" | "DE-BE" | "DE-BW" | "DE-HB" | "DE-HH" | "DE-MV" | "DE-NI" | "DE-NW" | "DE-RP" | "DE-SH" | "DE-SL" | "DE-SN" | "DE-ST" | "DE-TH" | "DE-HE">'.
+          Type 'string' is not assignable to type '"DE-BY" | "DE-BB" | "DE-BE" | "DE-BW" | "DE-HB" | "DE-HH" | "DE-MV" | "DE-NI" | "DE-NW" | "DE-RP" | "DE-SH" | "DE-SL" | "DE-SN" | "DE-ST" | "DE-TH" | "DE-HE"'.
+scripts/exportGoalBookReviewBundle.ts(265,24): error TS18047: 'evidenceProfile' is possibly 'null'.
+scripts/exportGoalBookReviewBundle.ts(265,76): error TS18047: 'evidenceProfile' is possibly 'null'.
+scripts/generateCurriculumQualityStatus.ts(1417,3): error TS2322: Type '({ key: string | undefined; title: string; path: string | undefined; url: string | undefined; landingUrl: string | undefined; official: boolean | undefined; available: boolean; hasUsableUrl: boolean; } | null)[]' is not assignable to type 'MappingPipelineSourceDocumentStatus[]'.
+  Type '{ key: string | undefined; title: string; path: string | undefined; url: string | undefined; landingUrl: string | undefined; official: boolean | undefined; available: boolean; hasUsableUrl: boolean; } | null' is not assignable to type 'MappingPipelineSourceDocumentStatus'.
+    Type 'null' is not assignable to type 'MappingPipelineSourceDocumentStatus'.
+scripts/generateCurriculumQualityStatus.ts(1454,37): error TS2677: A type predicate's type must be assignable to its parameter's type.
+  Type 'MappingPipelineSourceDocumentStatus' is not assignable to type '{ key: string | undefined; title: string; path: string | undefined; url: string | undefined; landingUrl: string | undefined; official: boolean | undefined; available: boolean; hasUsableUrl: boolean; }'.
+    Property 'key' is optional in type 'MappingPipelineSourceDocumentStatus' but required in type '{ key: string | undefined; title: string; path: string | undefined; url: string | undefined; landingUrl: string | undefined; official: boolean | undefined; available: boolean; hasUsableUrl: boolean; }'.
+scripts/generateCurriculumQualityStatus.ts(3235,17): error TS2322: Type 'unknown' is not assignable to type 'string'.
+scripts/generateCurriculumQualityStatus.ts(4089,59): error TS2345: Argument of type '(warning: Pick<ApplicabilityFinding, "landscapeId" | "goalId" | "value" | "code" | "dimension">) => string' is not assignable to parameter of type '(value: AcceptedWarningEntry, index: number, array: AcceptedWarningEntry[]) => string'.
+  Types of parameters 'warning' and 'value' are incompatible.
+    Type 'AcceptedWarningEntry' is not assignable to type 'Pick<ApplicabilityFinding, "landscapeId" | "goalId" | "value" | "code" | "dimension">'.
+      Types of property 'code' are incompatible.
+        Type 'string' is not assignable to type 'FindingCode'.
+scripts/generateCurriculumQualityStatus.ts(4166,78): error TS2345: Argument of type 'AcceptedWarningEntry' is not assignable to parameter of type 'Pick<ApplicabilityFinding, "landscapeId" | "goalId" | "value" | "code" | "dimension">'.
+  Types of property 'code' are incompatible.
+    Type 'string' is not assignable to type 'FindingCode'.
+scripts/generateCurriculumQualityStatus.ts(4413,42): error TS2345: Argument of type 'CompositionCanonicalSubtreeNode | CompositionGoalEntryNode | CompositionLandscapeEntryNode' is not assignable to parameter of type 'CompositionCanonicalSubtreeNode | CompositionGoalEntryNode'.
+  Type 'CompositionLandscapeEntryNode' is not assignable to type 'CompositionCanonicalSubtreeNode | CompositionGoalEntryNode'.
+    Property 'goalId' is missing in type 'CompositionLandscapeEntryNode' but required in type 'CompositionGoalEntryNode'.
+scripts/generateCurriculumQualityStatus.ts(4709,25): error TS2352: Conversion of type 'DimensionTags' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Index signature for type 'string' is missing in type 'DimensionTags'.
+scripts/generateCurriculumQualityStatus.ts(4759,16): error TS2339: Property 'stage' does not exist on type 'SourceExtractionGoal'.
+scripts/generateCurriculumQualityStatus.ts(4760,16): error TS2339: Property 'phase' does not exist on type 'SourceExtractionGoal'.
+scripts/generateCurriculumQualityStatus.ts(4761,16): error TS2551: Property 'sourcePath' does not exist on type 'SourceExtractionGoal'. Did you mean 'sourceSpan'?
+scripts/generateCurriculumQualityStatus.ts(4763,16): error TS2339: Property 'passageId' does not exist on type 'SourceExtractionGoal'.
+scripts/generateGoalVisualizationQaLedgers.ts(15,3): error TS2305: Module '"../../scripts/goal_visualization_scope.mjs"' has no exported member 'isActiveClusterOverviewForVisualization'.
+scripts/generateGoalVisualizationQaLedgers.ts(338,51): error TS2345: Argument of type 'string' is not assignable to parameter of type '`${string}
+${string}`'.
+scripts/generateGoalVisualizationQaLedgers.ts(339,68): error TS2345: Argument of type 'GoalVisualizationQaRecord | undefined' is not assignable to parameter of type '(Partial<GoalVisualizationQaRecord> & Record<string, unknown>) | undefined'.
+  Type 'GoalVisualizationQaRecord' is not assignable to type 'Partial<GoalVisualizationQaRecord> & Record<string, unknown>'.
+    Type 'GoalVisualizationQaRecord' is not assignable to type 'Record<string, unknown>'.
+      Index signature for type 'string' is missing in type 'GoalVisualizationQaRecord'.
+scripts/goalBookModel.ts(616,5): error TS2454: Variable 'profile' is used before being assigned.
+scripts/goalBookModel.ts(617,8): error TS2454: Variable 'profile' is used before being assigned.
+scripts/goalBookModel.ts(618,17): error TS2454: Variable 'profile' is used before being assigned.
+scripts/goalBookModel.ts(641,19): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(iterable?: Iterable<unknown> | null | undefined): Set<unknown>', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'Iterable<unknown> | null | undefined'.
+  Overload 2 of 2, '(values?: readonly any[] | null | undefined): Set<any>', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'readonly any[] | null | undefined'.
+scripts/goalBookModel.ts(641,35): error TS18046: 'value' is of type 'unknown'.
+scripts/goalBookModel.ts(644,19): error TS2488: Type 'unknown' must have a '[Symbol.iterator]()' method that returns an iterator.
+scripts/goalBookModel.ts(1246,64): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type '"GK" | "LK"'.
+  Type 'undefined' is not assignable to type '"GK" | "LK"'.
+scripts/goalBookModel.ts(1247,79): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type '"GK" | "LK"'.
+  Type 'undefined' is not assignable to type '"GK" | "LK"'.
+scripts/goalBookModel.ts(1252,11): error TS2322: Type 'string | undefined' is not assignable to type '"GK" | "LK" | null'.
+  Type 'undefined' is not assignable to type '"GK" | "LK" | null'.
+scripts/goalBookModel.ts(1318,10): error TS18047: 'declared' is possibly 'null'.
+scripts/goalBookModel.ts(1318,19): error TS2339: Property 'includes' does not exist on type '{}'.
+scripts/goalBookModel.ts(1318,40): error TS18047: 'declared' is possibly 'null'.
+scripts/goalBookModel.ts(1318,49): error TS2339: Property 'includes' does not exist on type '{}'.
+scripts/goalBookModel.ts(1610,7): error TS2322: Type 'string' is not assignable to type '"SekI" | "SekI+SekII"'.
+scripts/goalBookModel.ts(1796,33): error TS18047: 'result.projection' is possibly 'null'.
+scripts/goalBookModel.ts(1808,3): error TS2322: Type 'GoalBookChapterProjection | null' is not assignable to type 'GoalBookChapterProjection'.
+  Type 'null' is not assignable to type 'GoalBookChapterProjection'.
+scripts/goalBookModel.ts(1918,9): error TS18048: 'rawCompositionViewSources' is possibly 'undefined'.
+scripts/goalBookModel.ts(1921,27): error TS18048: 'rawCompositionViewSources' is possibly 'undefined'.
+scripts/goalBookModel.ts(1932,9): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+scripts/goalBookRenderer.ts(2665,44): error TS2345: Argument of type 'GoalBookPdfOutlineNode' is not assignable to parameter of type 'PlannedGoalBookPdfOutlineNode'.
+  Type 'GoalBookPdfOutlineNode' is missing the following properties from type '{ kind: "goal" | "book" | "chapter"; sourceId: string; treeOrder: number; children: PlannedGoalBookPdfOutlineNode[]; }': kind, sourceId, treeOrder
+scripts/goalBookRenderer.ts(2813,29): error TS2345: Argument of type 'GoalBookPdfOutlineNode' is not assignable to parameter of type 'PlannedGoalBookPdfOutlineNode'.
+  Type 'GoalBookPdfOutlineNode' is missing the following properties from type '{ kind: "goal" | "book" | "chapter"; sourceId: string; treeOrder: number; children: PlannedGoalBookPdfOutlineNode[]; }': kind, sourceId, treeOrder
+src/hooks/useLandscapes.ts(141,34): error TS2339: Property 'env' does not exist on type 'ImportMeta'.

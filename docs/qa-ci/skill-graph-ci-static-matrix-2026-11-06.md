@@ -756,5 +756,25 @@ Deep-Einstieg; danach scheitert der echte Floorcheck an sieben Fächern.
 Die CQR-104-Erweiterung gehört zu einem späteren Codecheckpoint und erhält
 ihren eigenen Remote-Lauf. Deutsch, Geschichte und Latein bleiben im lokalen
 Gesamtnachlauf M6; ein wiederhergestelltes M7 der anderen Fächer wird nicht
-behauptet. Die Source-A-, V-Kontext- und A/M-Bausteine sind getrennt belegte,
-noch unvollständig integrierte Arbeit und kein Ersatz für diese Fachbefunde.
+behauptet. Die Source-A- und A/M-Bausteine sind getrennt belegte, noch
+unvollständig integrierte Arbeit und kein Ersatz für diese Fachbefunde.
+
+## Nachlauf E30: aktueller Originalkontext bis zum direkten M7-Floor
+
+Die [V-Consumerintegration vom 7. November](../dev/ci-graph-repairs/visualization-fixed54-consumer-integration-2026-11-07.md)
+schließt die technische Originalkontextlücke für genau den fest gebundenen
+54er-Bestand. Sie liest aktuelle Ziele, Ledger und beide Bildkopien und
+authentifiziert die vollständige alte Inputkette unter externer Autorität.
+Der gemeinsame native Schnitt ist an Deep-QA, CQR-303, Meilensteinableitung
+und direkten Floorverbrauch angeschlossen. Ein serialisierter Pass ohne
+passenden aktuellen nativen Erwartungskontext genügt nicht.
+
+Echte Original-, Kontext-, Bild-, Scope-, Missing-Receipt- und
+Erwartungsgegenfälle wirken bis zum Meilenstein/Floor. Der volle lokale
+Deep-Selbsttest besteht; der unabhängige Peer führt neun weitere Kontrollen
+aus. Von 2.483 aktuellen `curricularAtomic`-Zielen sind tatsächlich 54
+V-Kontexte qualifiziert und 2.429 offen. Das ist keine Freigabe der ganzen
+Fächer oder semantischer Fachrichtigkeit. Neue Math-Bilder und der private
+Math3-Quellenstand sind noch nicht angewandt. Die 518 Regel-IDs und ihre
+Zuordnung bleiben unverändert; neue Gesamtproducer- und Remote-Ergebnisse
+werden gesondert geführt.

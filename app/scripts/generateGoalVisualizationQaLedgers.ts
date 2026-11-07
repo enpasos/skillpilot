@@ -19,7 +19,7 @@ import {
 
 type YesNo = GoalVisualizationQaYesNo
 
-interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields, GoalVisualizationAssetStateFields {
+export interface GoalVisualizationQaRecord extends GoalVisualizationAiReviewFields, GoalVisualizationAssetStateFields {
   goalId: string
   title: string
   description: string
@@ -231,7 +231,7 @@ const createDefaultRecord = (row: Omit<GoalVisualizationQaRecord,
   ...emptyGoalVisualizationAiReview(),
 } as GoalVisualizationQaRecord)
 
-const normalizeExistingRecord = (
+export const normalizeExistingRecord = (
   current: GoalVisualizationQaRecord,
   existing: (Partial<GoalVisualizationQaRecord> & Record<string, unknown>) | undefined,
 ): GoalVisualizationQaRecord => {
@@ -416,4 +416,4 @@ const main = () => {
   }
 }
 
-main()
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main()

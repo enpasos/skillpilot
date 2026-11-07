@@ -117,23 +117,31 @@ export const hasVerifiedVisualizationContext = (capability: unknown, current: Vi
   !!capability && typeof capability === 'object' && capabilities.has(capability)
   && sameContext((capability as VerifiedVisualizationContext).context, current)
 
-export const createVisualizationContextVerifier = (options: { repositoryRoot?: string; acceptedRepositoryCommit?: string } = {}) => {
+export const createVisualizationContextVerifier = (options: {
+  repositoryRoot?: string
+  originalEvidenceRepositoryRoot?: string
+  acceptedRepositoryCommit?: string
+  onAuthenticatedOriginalRead?: (binding: Readonly<VisualizationReviewArtifact>, currentCopyRequired: boolean) => void
+} = {}) => {
   const root = realpathSync(options.repositoryRoot ?? repoRoot)
-  const originalGit = createAuthenticatedGitEvidenceReader({ repositoryRoot: root, acceptedRepositoryCommit: options.acceptedRepositoryCommit })
+  const originalsRoot = realpathSync(options.originalEvidenceRepositoryRoot ?? root)
+  const originalGit = createAuthenticatedGitEvidenceReader({ repositoryRoot: originalsRoot, acceptedRepositoryCommit: options.acceptedRepositoryCommit })
   const safePath = validateGitEvidencePath
   return (reference: unknown, current: VisualizationCurrentContext): VisualizationContextValidation => {
     if (!reference) return { ok: false, status: 'missing', issues: ['Missing immutable reviewed-context receipt'] }
     try {
       const captures = new Map<string, Buffer>()
-      const currentBytes = (path: string): Buffer => {
+      const capturedBytes = (base: string, path: string): Buffer => {
         path = safePath(path)
-        if (!captures.has(path)) {
-          const absolute = realpathSync(resolve(root, path)), local = relative(root, absolute)
+        const key = base + '\0' + path
+        if (!captures.has(key)) {
+          const absolute = realpathSync(resolve(base, path)), local = relative(base, absolute)
           requireValue(local && !local.startsWith('../') && !isAbsolute(local), 'Evidence file escapes repository')
-          captures.set(path, Buffer.from(readFileSync(absolute)))
+          captures.set(key, Buffer.from(readFileSync(absolute)))
         }
-        return captures.get(path)!
+        return captures.get(key)!
       }
+      const currentBytes = (path: string): Buffer => capturedBytes(root, path)
       const ref = record(reference)
       requireValue(Object.keys(ref).sort().join(',') === 'path,sha256' && typeof ref.path === 'string'
         && typeof ref.sha256 === 'string' && /^[0-9a-f]{64}$/u.test(ref.sha256), 'Invalid context receipt reference')
@@ -145,7 +153,8 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
       const artifact = (binding: VisualizationReviewArtifact, requireCurrentCopy = true): Buffer => {
         const path = safePath(binding.path)
         const raw = originalGit.readArtifact(binding)
-        if (requireCurrentCopy) requireValue(hash(currentBytes(path)) === binding.sha256, 'Original input bytes changed')
+        if (requireCurrentCopy) requireValue(hash(capturedBytes(originalsRoot, path)) === binding.sha256, 'Original input bytes changed')
+        options.onAuthenticatedOriginalRead?.(Object.freeze({ ...binding }), requireCurrentCopy)
         return raw
       }
       // Capture all supplied originals before interpreting any claims from them.

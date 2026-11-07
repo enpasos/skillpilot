@@ -75,10 +75,13 @@ const artifact = (graphRules: GraphRule[], claimedMaturity = maturity(graphRules
   }],
 })
 
-assert.equal(maturity([strictGraphFixtureRule]), 'M7')
+assert.equal(maturity([strictGraphFixtureRule]), 'M6', 'A graph fixture has no native original-context V evidence.')
 for (const floor of ['M6', 'M7'] as const) {
-  assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes), [])
-  assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes))
+  if (floor === 'M6') {
+    assert.deepEqual(collectCurriculumMaturityFloorFailures(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes), [])
+    assert.doesNotThrow(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes))
+  } else assert.throws(() => checkCurriculumMaturityFloors(artifact([strictGraphFixtureRule]), floorPolicy(floor), expectedScopes),
+    /no complete passing visualization context report/)
 }
 
 let malformedGraphs = 0

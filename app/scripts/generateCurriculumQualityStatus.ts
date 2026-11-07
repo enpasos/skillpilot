@@ -23,7 +23,8 @@ import {
   defaultMemoryCardReviewConfigDir,
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
-import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
+import { generateDeepUnderstandingRollout, getCurrentVisualizationScope, hasStrictDeepUnderstandingCompletion,
+  type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
@@ -37,6 +38,8 @@ import {
 
 import { hasCompletePassingCurriculumExamReadiness, type CurriculumAssessmentScope,
   type CurriculumAssessmentValidation } from './lib/curriculumAssessmentValidation'
+import { hasCompleteCurrentVisualizationScope, hasCompletePassingVisualizationContext, hasMatchingVisualizationContextManifest,
+  type CurriculumVisualizationValidation } from './lib/curriculumVisualizationValidation'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -61,6 +64,7 @@ interface RuleResult {
   details?: string[]
   graphIntegrity?: IntegrityReport
   assessmentValidation?: CurriculumAssessmentValidation
+  visualizationValidation?: CurriculumVisualizationValidation
 }
 
 
@@ -3985,6 +3989,7 @@ export function evaluateDeepUnderstandingQa(
   landscape: SkillLandscape,
   landscapePath: string,
   report: DeepUnderstandingRolloutReport,
+  expectedVisualizationScope?: CurriculumVisualizationValidation,
 ): RuleResult {
   const matches = report.subjects.filter((subject) => subject.landscapeId === landscape.landscapeId
     || subject.landscapePath === landscapePath)
@@ -3996,12 +4001,15 @@ export function evaluateDeepUnderstandingQa(
     return makeRule('CQR-303', 'fail', 'The central deep-understanding report does not unambiguously identify this curriculum.')
   }
   const checksPassed = subject.requiredChecks.filter(({ status }) => status === 'pass').length
+  const currentVisualizationScope = expectedVisualizationScope ?? getCurrentVisualizationScope(subject)
   const status: RuleStatus = subject.issues.length > 0 || subject.denominator === null || subject.denominator <= 0
+    || !hasCompleteCurrentVisualizationScope(currentVisualizationScope)
+    || !hasMatchingVisualizationContextManifest(subject.visualizationValidation, currentVisualizationScope)
     ? 'fail'
-    : subject.strictCompletionReady ? 'pass' : 'warn'
-  return makeRule(
+    : subject.strictCompletionReady && hasStrictDeepUnderstandingCompletion(subject) ? 'pass' : 'warn'
+  const rule = makeRule(
     'CQR-303', status,
-    subject.strictCompletionReady
+    status === 'pass'
       ? `Deep curriculum QA is complete for all ${subject.denominator} current curricularAtomic goals.`
       : `Deep curriculum QA is incomplete: ${subject.strictComplete}/${subject.denominator ?? 'unknown'} current curricularAtomic goals strictly complete.`,
     {
@@ -4015,11 +4023,16 @@ export function evaluateDeepUnderstandingQa(
     },
     [
       ...subject.issues,
+      ...(!hasCompleteCurrentVisualizationScope(currentVisualizationScope)
+        || !hasMatchingVisualizationContextManifest(subject.visualizationValidation, currentVisualizationScope)
+        ? ['The immutable original-context V manifest is absent, incomplete, stale or not bound to the current native source scope.'] : []),
       ...(subject.deferredVisualizationGoalIds.length > 0
         ? [`${subject.deferredVisualizationGoalIds.length} current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V.`]
         : []),
     ],
   )
+  rule.visualizationValidation = subject.visualizationValidation ? structuredClone(subject.visualizationValidation) : undefined
+  return rule
 }
 
 function readCompositionViewCountsByLandscapeId(): Map<string, number> {
@@ -6145,6 +6158,7 @@ export function deriveCurriculumMaturity(
   scopes: ScopeStatus[],
   landscapeId: string,
   expectedAssessmentScope?: CurriculumAssessmentScope,
+  expectedVisualizationScope?: CurriculumVisualizationValidation,
 ): MaturityLevel {
   const graphRules = curriculumRules.filter((rule) => rule.id === 'CQR-001')
   const graphReady = graphRules.length === 1
@@ -6171,7 +6185,7 @@ export function deriveCurriculumMaturity(
   if (!m5Ready) return 'M4'
 
   if (curriculumRules.find((rule) => rule.id === 'CQR-302')?.status !== 'pass') return 'M5'
-  return curriculumRules.find((rule) => rule.id === 'CQR-303')?.status === 'pass' ? 'M7' : 'M6'
+  return hasCompletePassingVisualizationContext(curriculumRules, landscapeId, expectedVisualizationScope) ? 'M7' : 'M6'
 }
 
 function pushGeneratedMarkdownNotice(lines: string[]): void {
@@ -6340,7 +6354,8 @@ async function main() {
         subject: landscape.subject,
         frameworkId: landscape.frameworkId,
         path: toRepoPath(file),
-        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId, assessmentScope),
+        maturity: deriveCurriculumMaturity(curriculumRules, scopes, landscape.landscapeId, assessmentScope,
+          getCurrentVisualizationScope(deepUnderstandingReport.subjects.find(subject => subject.landscapeId === landscape.landscapeId))),
         humanTrialBlockingFindings: countHumanTrialBlockingFindings(landscape, goalVisualizationQaLedgers),
         goals: landscape.goals.length,
         atomicGoals,

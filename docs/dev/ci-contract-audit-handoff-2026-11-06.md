@@ -842,3 +842,69 @@ Für den Quellenumfang gilt die Nutzerpräzisierung: Neben amtlich belegten
 Zielen sind fachlich begründete notwendige Lückenschließer zulässig. Eine
 allgemeine Vertiefung allein belegt diese Notwendigkeit nicht. Der konkrete
 Informatik-875-/Prüfungsscope wird an diesem Maßstab weiter repariert.
+
+## 7. November: Originalkontextprüfung im Meilensteinpfad
+
+Die [V-Consumerintegration](ci-graph-repairs/visualization-fixed54-consumer-integration-2026-11-07.md)
+bindet die feste externe Receipt-/Commitautorität, eine tatsächlich in einem
+Shallow-Checkout geprüfte kleine Git-Kapsel und die aktuellen Goal-/QA-/Bildbytes
+an denselben V-Schnitt. CQR-303, die Meilensteinberechnung und der direkte
+Floorleser verlangen dessen vollständigen nativen Erwartungskontext. Ein
+gespeicherter Pass ohne aktuelle Gegenprüfung, ein fehlender Receipt oder ein
+veralteter Kontext ergeben keinen M7-Pass.
+
+54 echte Originalketten und 28 Gegenfälle sowie fünf Authority-/Transportproben
+bestehen. Der vollständige vorhandene Deep-Selbsttest ist tatsächlich mit
+Exit 0 abgeschlossen. Der unabhängige Consumerpeer hat neun eigene Kontrollen
+ausgeführt und die 20 Codepins sowie 38 Autorbelege geprüft. Die bisherigen
+Graph-/Prüfungsgegenfälle bleiben erhalten. Ihre isolierten Fixtures behaupten
+ohne echte V-Belege nur M6; ein getrenntes gültiges Original belegt M7 und den
+Floorpfad. Das ist keine vollständige fachliche Bestandsfreigabe.
+
+Der tatsächliche aktuelle V-Scope zählt **54 von 2.483** qualifizierten
+`curricularAtomic`-Kontexten: Mathematik 2/807, Physik 0/478, Chemie 0/455,
+Biologie 0/397 und Wirtschaft 52/346. **2.429 bleiben offen.** Der frühere
+Census bleibt als historische Zuordnung unverändert; von seinen 945 passenden
+Ketten mit damals offenem Reader sind inzwischen genau 36 konkret geschlossen.
+Eine unveränderte Originalkette ist dadurch kein neuer Bildreview. Ein beim
+Normalizerimport versehentlich ausgelöster Schreiblauf war bytegleich zu HEAD;
+alle fünf Ledger und der zusätzliche Wirtschaftsinput sind unabhängig erneut
+geprüft. Ein CLI-Entryguard verhindert diesen Importseiteneffekt nun.
+
+Die drei Math-Korrekturen sind weiter nicht angewandt. Die beiden zusätzlich
+betroffenen Bilder wurden wirklich neu betrachtet. Die Zahlengerade passt;
+das alte Matrixbild erhielt wegen notwendiger Kleinschrift REVISE. Eine neue
+vereinfachte Matrixfassung wurde nach tatsächlicher Vorbereitung erzeugt,
+mit dem bestehenden Helper privat importiert und unabhängig in Original-,
+360- und 680-Pixel-Ansichten akzeptiert. Der erste Kandidat ohne vorherigen
+Helperlauf bleibt mit seinem tatsächlichen Ablauf erhalten. Der private neue
+Quellenstand `e4de3c3e…` hat genau fünf Ressourcenänderungen gegenüber `967a…`.
+Kind/A/M und 30 der 31 P-Belege bleiben gleich; Matrix-P und die explizit
+gebundene alte Matrix-Buchseite brauchen echte aktuelle Nachfolger. Auch die
+Duration-Policy benötigt ihre technisch neu geprüfte Quellenbindung.
+
+Auf dem weiterhin gepushten Kopf `9b798d6ef6…` bestehen inzwischen Docs,
+Assessment, OAuth und Gemini; der Hauptlauf ist noch aktiv. Spätere lokale
+Consumer-, Source-A- und Kandidatenstände sind damit nicht remote abgenommen.
+Ein neuer normaler Gesamt-CQR-Producer und Floorcheck werden getrennt
+nachgeführt. Die Fachfloors und sämtliche aktuellen kanonischen Quellen,
+Bestandsbilder und QA-Entscheidungen bleiben unverändert.
+
+Der neue [normale Gesamtproducer](ci-graph-repairs/visualization-fixed54-normal-cqr-producer-2026-11-07.json)
+ist nun tatsächlich mit Exit 0 abgeschlossen, einschließlich des regulären
+10er-Memory-Prehooks. Der Bericht vom `2026-11-07T02:06:31.722Z` verändert
+ausschließlich CQR-303: Alle 21 Scopes, Ziel-/Atommengen, Meilensteine und
+übrigen Regeln bleiben gegenüber 22:41 gleich. Die beiden erzeugten
+CQR-Dateien sind mit eigenen Inodes überführt; alle zehn Memoryberichte
+einschließlich des Chemie-QA-Berichts sind bytegleich geblieben. 230
+geschützte Eingaben und 20 Codepins sind unverändert.
+
+Der genau einmal danach ausgeführte echte Floorcheck liest diese Hostreports
+und endet mit Exit 1 an denselben sieben Defizitfächern. Deutsch, Geschichte
+und Latein bleiben M6. Producer-, Floor- und Überführungslogs sind vollständig
+verlustfrei komprimiert erhalten; ein vor jedem Hostwrite gestoppter
+Platzreservetest bleibt als Fehlversuch sichtbar. Die Fachpolicy wurde nicht
+verändert. Root hat außerdem die 20 Codepins und 38 Consumerbelege unabhängig
+nachgeprüft sowie ESLint für die 13 betroffenen TypeScriptdateien und alle
+94 Tests des tatsächlichen Apps-CI-Aufrufs bestanden. Das ersetzt keine
+frische Remote-Abnahme des folgenden Codekopfs.

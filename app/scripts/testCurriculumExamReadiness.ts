@@ -78,7 +78,7 @@ const scopeFor = (goals: LearningGoal[]) => {
 }
 const goodScope = scopeFor(positives)
 assert.equal(goodScope.maturity, 'M4')
-assert.equal(deriveCurriculumMaturity(coreRules, [goodScope], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M7')
+assert.equal(deriveCurriculumMaturity(coreRules, [goodScope], strictGraphFixtureId, strictGraphFixtureAssessmentScope), 'M6', 'The assessment fixture has no native original-context V evidence.')
 const badScope = scopeFor(generic)
 const actual202 = badScope.rules.find(rule => rule.id === 'CQR-202')!
 assert.equal(actual202.status, 'fail')
@@ -93,7 +93,8 @@ for (const minimumMaturity of ['M6', 'M7'] as const) {
   const status = (scope: typeof badScope) => ({ curricula: [{ landscapeId: strictGraphFixtureId,
     frameworkId: 'fixture-framework', subject: 'Fixture', rules: coreRules, scopes: [scope],
     maturity: deriveCurriculumMaturity(coreRules, [scope], strictGraphFixtureId, strictGraphFixtureAssessmentScope) }] })
-  assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes))
+  if (minimumMaturity === 'M6') assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes))
+  else assert.throws(() => checkCurriculumMaturityFloors(status(goodScope), policy, baseExpectedScopes), /no complete passing visualization context report/)
   const failures = collectCurriculumMaturityFloorFailures(status(badScope), policy, baseExpectedScopes)
   assert.ok(failures.some(line => line.includes(`current M3 is below protected floor ${minimumMaturity}`)))
   assert.ok(failures.some(line => line.includes('CQR-202 fail')))
@@ -213,8 +214,10 @@ const assertStopsFloors = (bundle: ReturnType<typeof fullCore>) => {
       landscapeId: strictGraphFixtureId, frameworkId: 'fixture-framework', subject: 'Fixture',
       maturity, rules: current.rules, scopes: [goodScope],
     }] })
-    assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(passed), policy,
+    if (minimumMaturity === 'M6') assert.doesNotThrow(() => checkCurriculumMaturityFloors(status(passed), policy,
       new Map([[strictGraphFixtureId, passed.expectedScope]])))
+    else assert.throws(() => checkCurriculumMaturityFloors(status(passed), policy,
+      new Map([[strictGraphFixtureId, passed.expectedScope]])), /no complete passing visualization context report/)
     assert.throws(() => checkCurriculumMaturityFloors(status(passed), policy), /assessment reports bound to current source discovery/)
     const failures = collectCurriculumMaturityFloorFailures(status(bundle), policy, expected)
     assert.ok(failures.some(line => line.includes(`current M3 is below protected floor ${minimumMaturity}`)))
@@ -228,14 +231,14 @@ const assertStopsFloors = (bundle: ReturnType<typeof fullCore>) => {
   }
 }
 const passed = fullCore(offer(fixture))
-assert.equal(maturityFor(passed), 'M7')
+assert.equal(maturityFor(passed), 'M6')
 // The existing parser may normalize a goal endpoint, but owner qualification is
 // an exact namespace assertion. No suffix fallback can certify another owner.
 for (const ref of [`${strictGraphFixtureId}:${A}`, A]) {
   const withOfferRoot = { ...fixture, goals: fixture.goals.map(goal => goal.tags?.includes('root')
     ? { ...goal, contains: [ref, B], release: { examYear: 2026, kind: 'offer' as const,
       status: 'released' as const, courseLevel: 'GK' as const } } : goal) }
-  assert.equal(maturityFor(fullCore(withOfferRoot)), 'M7')
+  assert.equal(maturityFor(fullCore(withOfferRoot)), 'M6')
 }
 for (const ref of [`${strictGraphFixtureId.toUpperCase()}:${A}`, `wrong-owner:${A}`, `:${A}`, `${strictGraphFixtureId}:${A}:extra`]) {
   const invalid = { ...fixture, goals: fixture.goals.map(goal => goal.tags?.includes('root')
@@ -302,7 +305,7 @@ const own = { ...fixture, goals: fixture.goals.filter(goal => goal.id !== B).map
   ? { ...goal, requires: [`foreign-owner:${B}`] }
   : { ...goal, contains: [A], weight: 1 }) }
 const withForeign = fullCore(offer(own), [], [own, foreign])
-assert.equal(maturityFor(withForeign), 'M7')
+assert.equal(maturityFor(withForeign), 'M6')
 assert.ok(withForeign.rules.find(rule => rule.id === 'CQR-001')?.graphIntegrity?.checkedGoalKeys.includes(`foreign-owner:${B}`))
 assertStopsFloors({ ...withForeign, rules: withForeign.rules.map(rule => !rule.assessmentValidation ? rule : ({
   ...rule, assessmentValidation: { ...rule.assessmentValidation, definitionGoalIds: [B], requiredGoalIds: [B], checkedGoalIds: [B] },
@@ -316,11 +319,11 @@ assertStopsFloors(fullCore(mutate(fixture, A, { solutionContent: boilerplate }))
 assertStopsFloors(fullCore({ ...fixture, goals: fixture.goals.map(goal => goal.id === A
   ? { ...goal, examData: undefined } : goal) }))
 const draft = mutate(fixture, A, { reviewStatus: 'draft' })
-assert.equal(maturityFor(fullCore(draft)), 'M7', 'Complete unoffered drafts do not invent a release obligation.')
+assert.equal(maturityFor(fullCore(draft)), 'M6', 'Complete unoffered drafts do not invent a release obligation.')
 assert.equal(evaluateExamTaskReadiness([draft.goals[0]]).status, 'fail')
 assertStopsFloors(fullCore(offer(draft)))
 const legacy = mutate(offer(fixture), A, { reviewStatus: undefined })
-assert.equal(maturityFor(fullCore(legacy)), 'M7', 'Legacy missing reviewStatus retains the existing readiness semantics.')
+assert.equal(maturityFor(fullCore(legacy)), 'M6', 'Legacy missing reviewStatus retains the existing readiness semantics.')
 const noRoutes = fullCore(fixture)
 assert.equal(deriveCurriculumMaturity(noRoutes.rules, [], strictGraphFixtureId, noRoutes.expectedScope), 'M2', 'Assessment checks do not configure absent routes.')
 
@@ -335,7 +338,7 @@ try {
   writeView('target')
   assertStopsFloors(fullCore(draft, [viewFile]))
   writeView('prerequisiteOnly')
-  assert.equal(maturityFor(fullCore(draft, [viewFile])), 'M7', 'Support-only references are not exam targets.')
+  assert.equal(maturityFor(fullCore(draft, [viewFile])), 'M6', 'Support-only references are not exam targets.')
   writeView('target', '00000000-0000-4000-8000-000000000099')
   assertStopsFloors(fullCore(fixture, [viewFile]))
   writeView('target', `wrong-owner:${A}`)

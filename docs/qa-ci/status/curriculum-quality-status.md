@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-11-06T22:41:52.172Z
+Generated: 2026-11-07T02:06:31.722Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -28,8 +28,8 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M0 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 1 |
-| Chemie (Gymnasium, DE) | M0 | 742 | 641 | 31/32 | 16/16 | 1 | 0 | 1 |
+| Biologie (Gymnasium, DE) | M0 | 484 | 427 | 17/23 | 16/16 | 1 | 0 | 2 |
+| Chemie (Gymnasium, DE) | M0 | 742 | 641 | 31/32 | 16/16 | 1 | 0 | 2 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 1 |
@@ -40,15 +40,15 @@ Rules version: curriculum-quality-v5
 | Informatik (Gymnasium, DE) | M0 | 282 | 237 | 29/29 | 16/16 | 1 | 0 | 5 |
 | Italienisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Latein (Gymnasium, DE) | M6 | 176 | 136 | 26/26 | 16/16 | 1 | 0 | 0 |
-| Mathematik (Gymnasium, DE) | M0 | 1252 | 978 | 31/31 | 16/16 | 2 | 0 | 1 |
+| Mathematik (Gymnasium, DE) | M0 | 1252 | 978 | 31/31 | 16/16 | 2 | 0 | 2 |
 | Musik (Gymnasium, DE) | M0 | 76 | 52 | 2/2 | 2/16 | 0 | 2 | 1 |
-| Physik (Gymnasium, DE) | M0 | 766 | 641 | 25/25 | 16/16 | 2 | 0 | 1 |
+| Physik (Gymnasium, DE) | M0 | 766 | 641 | 25/25 | 16/16 | 2 | 0 | 2 |
 | Politik und Wirtschaft (Gymnasium, DE) | M0 | 512 | 439 | 33/33 | 16/16 | 1 | 0 | 1 |
 | Polnisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 1 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 1 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M0 | 702 | 650 | 30/30 | 16/16 | 1 | 0 | 2 |
 
 ## Mapping Pipeline
 
