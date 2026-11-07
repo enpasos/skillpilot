@@ -1,0 +1,548 @@
+{
+  "method": "Independent execution and finite human-readable reviewer judgments; no claimed LLM grader or learner trial",
+  "cases": [
+    {
+      "caseId": "C-T04",
+      "submission": "correct original SQL plus independently correct explanation of complete rows/order; isolated manual price40->39",
+      "executedSQL": "SELECT p.pseudonym,k.titel,k.preis FROM Person p JOIN Buchung b ON b.pid=p.pid JOIN Kurs k ON k.kid=b.kid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis DESC,p.pseudonym,k.kid,p.pid",
+      "actualCorrectRows": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "submittedRows": [
+        [
+          "ada",
+          "Videoschnitt",
+          39
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        1
+      ],
+      "reason": "Explicit corrected global rule and C2 establish harmless transfer without loss of an already demonstrated essential competence."
+    },
+    {
+      "caseId": "C-T04",
+      "submission": "SQL price ascending, explicitly defended as correct for descending requirement",
+      "sql": "SELECT p.pseudonym,k.titel,k.preis FROM Person p JOIN Buchung b ON b.pid=p.pid JOIN Kurs k ON k.kid=b.kid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis ASC,p.pseudonym,k.kid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Essential sort semantics absent; not a transcription error."
+    },
+    {
+      "caseId": "C-T04",
+      "submission": "wrongFKjoin",
+      "sql": "SELECT p.pseudonym,k.titel,k.preis FROM Person p JOIN Buchung b ON b.pid=p.pid+1 JOIN Kurs k ON k.kid=b.kid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis DESC,p.pseudonym,k.kid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Wrong assignment/selection of rows; unrelated points cannot compensate."
+    },
+    {
+      "caseId": "C-T04",
+      "submission": "statusfiltermissing; learner says cancelled bookings belong",
+      "fixtureAddition": [
+        1,
+        20,
+        "storniert"
+      ],
+      "sql": "SELECT p.pseudonym,k.titel,k.preis FROM Person p JOIN Buchung b ON b.pid=p.pid JOIN Kurs k ON k.kid=b.kid WHERE p.ort='Kassel' AND k.preis>=20 ORDER BY k.preis DESC,p.pseudonym,k.kid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ada",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Actual filter error demonstrable on a valid counterfixture, not excused because original rows accidentally agree."
+    },
+    {
+      "caseId": "C-T04",
+      "submission": "correctSQL,but learner explicitly asserts the first eligible booking should be omitted and reports only3rows",
+      "submittedRows": [
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Missing understanding of complete result, expressly outside harmless-typo rule."
+    },
+    {
+      "caseId": "B-T04",
+      "submission": "correct original SQL plus independently correct explanation of complete rows/order; isolated manual price40->39",
+      "executedSQL": "SELECT p.alias,k.titel,k.gebuehr FROM Leser p JOIN Ausleihe b ON b.pid=p.pid JOIN Medium k ON k.mid=b.mid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.gebuehr>=20 ORDER BY k.gebuehr DESC,p.alias,k.mid,p.pid",
+      "actualCorrectRows": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "submittedRows": [
+        [
+          "ada",
+          "Filmarchiv",
+          39
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        1
+      ],
+      "reason": "Explicit corrected global rule and C2 establish harmless transfer without loss of an already demonstrated essential competence."
+    },
+    {
+      "caseId": "B-T04",
+      "submission": "SQL price ascending, explicitly defended as correct for descending requirement",
+      "sql": "SELECT p.alias,k.titel,k.gebuehr FROM Leser p JOIN Ausleihe b ON b.pid=p.pid JOIN Medium k ON k.mid=b.mid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.gebuehr>=20 ORDER BY k.gebuehr ASC,p.alias,k.mid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Essential sort semantics absent; not a transcription error."
+    },
+    {
+      "caseId": "B-T04",
+      "submission": "wrongFKjoin",
+      "sql": "SELECT p.alias,k.titel,k.gebuehr FROM Leser p JOIN Ausleihe b ON b.pid=p.pid+1 JOIN Medium k ON k.mid=b.mid WHERE p.ort='Kassel' AND b.status='aktiv' AND k.gebuehr>=20 ORDER BY k.gebuehr DESC,p.alias,k.mid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Wrong assignment/selection of rows; unrelated points cannot compensate."
+    },
+    {
+      "caseId": "B-T04",
+      "submission": "statusfiltermissing; learner says cancelled bookings belong",
+      "fixtureAddition": [
+        1,
+        20,
+        "storniert"
+      ],
+      "sql": "SELECT p.alias,k.titel,k.gebuehr FROM Leser p JOIN Ausleihe b ON b.pid=p.pid JOIN Medium k ON k.mid=b.mid WHERE p.ort='Kassel' AND k.gebuehr>=20 ORDER BY k.gebuehr DESC,p.alias,k.mid,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ada",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Actual filter error demonstrable on a valid counterfixture, not excused because original rows accidentally agree."
+    },
+    {
+      "caseId": "B-T04",
+      "submission": "correctSQL,but learner explicitly asserts the first eligible booking should be omitted and reports only3rows",
+      "submittedRows": [
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Missing understanding of complete result, expressly outside harmless-typo rule."
+    },
+    {
+      "caseId": "F-T04",
+      "submission": "correct original SQL plus independently correct explanation of complete rows/order; isolated manual price40->39",
+      "executedSQL": "SELECT p.alias,k.titel,k.preis FROM Gast p JOIN Reservierung b ON b.pid=p.pid JOIN Auftritt k ON k.auftritt_id=b.auftritt_id WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis DESC,p.alias,k.auftritt_id,p.pid",
+      "actualCorrectRows": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "submittedRows": [
+        [
+          "ada",
+          "Lichtensemble",
+          39
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        1
+      ],
+      "reason": "Explicit corrected global rule and C2 establish harmless transfer without loss of an already demonstrated essential competence."
+    },
+    {
+      "caseId": "F-T04",
+      "submission": "SQL price ascending, explicitly defended as correct for descending requirement",
+      "sql": "SELECT p.alias,k.titel,k.preis FROM Gast p JOIN Reservierung b ON b.pid=p.pid JOIN Auftritt k ON k.auftritt_id=b.auftritt_id WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis ASC,p.alias,k.auftritt_id,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Essential sort semantics absent; not a transcription error."
+    },
+    {
+      "caseId": "F-T04",
+      "submission": "wrongFKjoin",
+      "sql": "SELECT p.alias,k.titel,k.preis FROM Gast p JOIN Reservierung b ON b.pid=p.pid+1 JOIN Auftritt k ON k.auftritt_id=b.auftritt_id WHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20 ORDER BY k.preis DESC,p.alias,k.auftritt_id,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Wrong assignment/selection of rows; unrelated points cannot compensate."
+    },
+    {
+      "caseId": "F-T04",
+      "submission": "statusfiltermissing; learner says cancelled bookings belong",
+      "fixtureAddition": [
+        1,
+        20,
+        "storniert"
+      ],
+      "sql": "SELECT p.alias,k.titel,k.preis FROM Gast p JOIN Reservierung b ON b.pid=p.pid JOIN Auftritt k ON k.auftritt_id=b.auftritt_id WHERE p.ort='Kassel' AND k.preis>=20 ORDER BY k.preis DESC,p.alias,k.auftritt_id,p.pid",
+      "actualRows": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ada",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        0,
+        0
+      ],
+      "reason": "Actual filter error demonstrable on a valid counterfixture, not excused because original rows accidentally agree."
+    },
+    {
+      "caseId": "F-T04",
+      "submission": "correctSQL,but learner explicitly asserts the first eligible booking should be omitted and reports only3rows",
+      "submittedRows": [
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "reviewerScore": [
+        1,
+        0
+      ],
+      "reason": "Missing understanding of complete result, expressly outside harmless-typo rule."
+    }
+  ]
+}

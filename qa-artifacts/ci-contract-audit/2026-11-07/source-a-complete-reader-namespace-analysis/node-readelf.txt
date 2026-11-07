@@ -1,0 +1,89 @@
+
+Elf file type is EXEC (Executable file)
+Entry point 0xbb8330
+There are 14 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040
+                 0x0000000000000310 0x0000000000000310  R      0x8
+  INTERP         0x0000000000000350 0x0000000000400350 0x0000000000400350
+                 0x000000000000001c 0x000000000000001c  R      0x1
+      [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+  LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000
+                 0x000000000076e5d8 0x000000000076e5d8  R      0x1000
+  LOAD           0x000000000076f000 0x0000000000b6f000 0x0000000000b6f000
+                 0x0000000000001e90 0x0000000000001e90  R E    0x1000
+  LOAD           0x0000000000772000 0x0000000000b72000 0x0000000000b72000
+                 0x0000000001a8bca0 0x0000000001a8bca0  R E    0x1000
+  LOAD           0x0000000002200000 0x0000000002600000 0x0000000002600000
+                 0x00000000000001f1 0x00000000000001f1  R E    0x1000
+  LOAD           0x0000000002201000 0x0000000002601000 0x0000000002601000
+                 0x0000000003038cae 0x0000000003038cae  R      0x1000
+  LOAD           0x0000000005239ec8 0x000000000563aec8 0x000000000563aec8
+                 0x00000000000215f8 0x000000000004dfc8  RW     0x1000
+  DYNAMIC        0x000000000523bd80 0x000000000563cd80 0x000000000563cd80
+                 0x0000000000000250 0x0000000000000250  RW     0x8
+  NOTE           0x000000000000036c 0x000000000040036c 0x000000000040036c
+                 0x0000000000000044 0x0000000000000044  R      0x4
+  TLS            0x0000000005239ec8 0x000000000563aec8 0x000000000563aec8
+                 0x0000000000000004 0x0000000000000100  R      0x8
+  GNU_EH_FRAME   0x0000000004f005a8 0x00000000053005a8 0x00000000053005a8
+                 0x000000000009449c 0x000000000009449c  R      0x4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0x10
+  GNU_RELRO      0x0000000005239ec8 0x000000000563aec8 0x000000000563aec8
+                 0x0000000000003138 0x0000000000003138  R      0x1
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.gnu.build-id .note.ABI-tag .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt 
+   03     .init .plt 
+   04     .text 
+   05     lpstub .fini 
+   06     .rodata .eh_frame_hdr .eh_frame .gcc_except_table 
+   07     .tdata .init_array .fini_array .data.rel.ro .dynamic .got .data .bss 
+   08     .dynamic 
+   09     .note.gnu.build-id .note.ABI-tag 
+   10     .tdata .tbss 
+   11     .eh_frame_hdr 
+   12     
+   13     .tdata .init_array .fini_array .data.rel.ro .dynamic .got 
+
+Dynamic section at offset 0x523bd80 contains 32 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so.2]
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libpthread.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+ 0x000000000000000c (INIT)               0xb6f000
+ 0x000000000000000d (FINI)               0x26001e4
+ 0x0000000000000019 (INIT_ARRAY)         0x563aed0
+ 0x000000000000001b (INIT_ARRAYSZ)       6464 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x563c810
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x4003b0
+ 0x0000000000000005 (STRTAB)             0x6305d0
+ 0x0000000000000006 (SYMTAB)             0x478ff8
+ 0x000000000000000a (STRSZ)              5333110 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000003 (PLTGOT)             0x563cfd0
+ 0x0000000000000002 (PLTRELSZ)           11664 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0xb6b848
+ 0x0000000000000007 (RELA)               0xb6b2d8
+ 0x0000000000000008 (RELASZ)             1392 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x0000000000000018 (BIND_NOW)           
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW
+ 0x000000006ffffffe (VERNEED)            0xb6b018
+ 0x000000006fffffff (VERNEEDNUM)         7
+ 0x000000006ffffff0 (VERSYM)             0xb46646
+ 0x0000000000000000 (NULL)               0x0

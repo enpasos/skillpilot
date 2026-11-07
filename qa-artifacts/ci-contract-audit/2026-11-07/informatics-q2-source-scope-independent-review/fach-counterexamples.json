@@ -1,0 +1,135 @@
+{
+  "status": "independent finite counterexamples; no curriculum or material pass",
+  "indexSelectionWithoutAggregation": {
+    "sql": "SELECT id,label FROM Item WHERE price>=? AND price<? ORDER BY price",
+    "beforePlan": [
+      [
+        3,
+        0,
+        0,
+        "SCAN Item"
+      ],
+      [
+        15,
+        0,
+        0,
+        "USE TEMP B-TREE FOR ORDER BY"
+      ]
+    ],
+    "afterPlan": [
+      [
+        4,
+        0,
+        0,
+        "SEARCH Item USING INDEX ix_price (price>? AND price<?)"
+      ]
+    ],
+    "result": [
+      [
+        2,
+        "b"
+      ],
+      [
+        3,
+        "c"
+      ]
+    ],
+    "selection": "B-tree supports ordered range search; equality-only hash has no direct ordered range operation.",
+    "suppliedCostModel": {
+      "fullScan": 8192,
+      "btreeEquality": 14,
+      "hashEquality": 2,
+      "writes": 100,
+      "extraCostPerWrite": 2,
+      "extraWriteCost": 200
+    },
+    "observation": "Index choice and cost tradeoff can be reasoned about without grouping or aggregate-function competence; this is exactly the old full goal and T31 topic."
+  },
+  "viewRoleWithoutAggregation": {
+    "sql": "CREATE VIEW PublicItem AS SELECT id,label FROM Item",
+    "visibleRows": [
+      [
+        1,
+        "a"
+      ],
+      [
+        2,
+        "b"
+      ],
+      [
+        3,
+        "c"
+      ],
+      [
+        4,
+        "d"
+      ]
+    ],
+    "explicitRolePolicy": {
+      "reader:PublicItem": true,
+      "reader:Item": false
+    },
+    "limit": "Role policy is an explicit logical permission matrix, not a claim that SQLite supplies role GRANT/REVOKE."
+  },
+  "basicAutomatonWithoutHierarchyParallelism": {
+    "states": [
+      0,
+      1,
+      2
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "event": "coin",
+        "to": 1
+      },
+      {
+        "from": 1,
+        "event": "coin",
+        "to": 2
+      },
+      {
+        "from": 2,
+        "event": "coin",
+        "to": 2
+      },
+      {
+        "from": 0,
+        "event": "vend",
+        "to": 0
+      },
+      {
+        "from": 1,
+        "event": "vend",
+        "to": 1
+      },
+      {
+        "from": 2,
+        "event": "vend",
+        "to": 0
+      }
+    ],
+    "traces": [
+      [
+        0,
+        1,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        2,
+        2,
+        0
+      ]
+    ],
+    "observation": "Ordinary state modelling and simulation are possible without composite or orthogonal states. Basic FSM authority does not itself establish an unavoidable hierarchy/parallelism gap."
+  },
+  "scopeCounterexample": "Preserved old exam coverage proves the old exam demands875; it does not prove state curriculum demands875."
+}

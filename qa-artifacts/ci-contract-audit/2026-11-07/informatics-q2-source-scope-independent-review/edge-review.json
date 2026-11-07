@@ -1,0 +1,1079 @@
+{
+  "status": "finite independent fach review, not QA approval",
+  "supportedRemovals": 18,
+  "heldRemovals": 3,
+  "records": [
+    {
+      "iteration": 0,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+      "verdict": "support_preparation_minimization",
+      "rationale": "HTML formatting of an actual queried result is a coherent continuation of programmatic connection/query/result handling. T07 independently tests that complete earlier performance; T13 is not used to infer its full mastery.",
+      "fullEndpointGoals": [
+        {
+          "id": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+          "title": "Ergebnismengen formatieren",
+          "description": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+          "requires": [
+            "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+            "757256e2-eb59-572f-a403-e1b1d53e37d4"
+          ]
+        },
+        {
+          "id": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+          "title": "SQL aus Programmen ausführen",
+          "description": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+          "requires": [
+            "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T07",
+        "C-T13"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0cfb39a2-985f-55ba-b2b3-e667d07f48d3"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:0421e39b-1b35-5897-bbf8-38a75e4d221e"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0421e39b-1b35-5897-bbf8-38a75e4d221e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:0cfb39a2-985f-55ba-b2b3-e667d07f48d3"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 1,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "verdict": "reject_fach_witness_and_hold_removal",
+      "rationale": "Reject supplied fach witness: index selection/costs do not require grouping. The second native alternative via Views/Rollen also does not require grouping. T31 and T33, and independent finite counterexamples, make both false prerequisites concrete. Restore direct aggregation preparation for all three exams after repairing both intermediate edges.",
+      "fullEndpointGoals": [
+        {
+          "id": "98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "title": "Indizes und Kosten",
+          "description": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+          "requires": [
+            "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+          ]
+        },
+        {
+          "id": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+          "title": "Gruppierung und Aggregatfunktionen",
+          "description": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T05",
+        "C-T31",
+        "B-T05",
+        "B-T31",
+        "F-T05",
+        "F-T31"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 2,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Entity/relationship modelling supplies the domain concepts and associations that aggregate/context refinement organizes. T01 still explicitly tests entity/relationship/cardinality/optionality; T27 does not substitute for that complete evidence.",
+      "fullEndpointGoals": [
+        {
+          "id": "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "title": "Domänenmodelle verfeinern",
+          "description": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        },
+        {
+          "id": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+          "title": "ER-Modell anwenden",
+          "description": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T01",
+        "C-T27",
+        "B-T27",
+        "B-T01",
+        "F-T27",
+        "F-T01"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 3,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Deriving schemas and identifying keys is a coherent foundation for decomposing schemas using dependencies through 3NF. T02 remains independently assessed alongside T03.",
+      "fullEndpointGoals": [
+        {
+          "id": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "title": "Normalisierung durchführen",
+          "description": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+          "requires": [
+            "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+          ]
+        },
+        {
+          "id": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+          "title": "Tabellen ableiten",
+          "description": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T02",
+        "C-T03",
+        "B-T02",
+        "B-T03",
+        "F-T02",
+        "F-T03"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 4,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "71fe327a-9677-5348-a405-fba0dbd302d7",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Privacy principles and legal foundations are preparation for applying those principles to a system design. T08 separately demands the full foundations, T39 the design; no design pass alone is asserted to prove every legal detail.",
+      "fullEndpointGoals": [
+        {
+          "id": "7299e142-0c10-55b2-a72a-c62057e22943",
+          "title": "Privacy by Design",
+          "description": "Die lernende Person kann Datenschutzprinzipien in Systemdesigns verankern.",
+          "requires": [
+            "71fe327a-9677-5348-a405-fba0dbd302d7"
+          ]
+        },
+        {
+          "id": "71fe327a-9677-5348-a405-fba0dbd302d7",
+          "title": "Recht auf informationelle Selbstbestimmung",
+          "description": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T08",
+        "C-T39"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:7299e142-0c10-55b2-a72a-c62057e22943",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:71fe327a-9677-5348-a405-fba0dbd302d7"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:7299e142-0c10-55b2-a72a-c62057e22943"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:7299e142-0c10-55b2-a72a-c62057e22943",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:71fe327a-9677-5348-a405-fba0dbd302d7"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 5,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic relational problem expressions are a coherent prior step to equivalence-preserving rewrites and cost reasoning. SQL transfer remains expressly assessed in T11; it is not inferred solely from T43 optimization.",
+      "fullEndpointGoals": [
+        {
+          "id": "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "title": "Optimierung Relationenalgebra",
+          "description": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+          "requires": [
+            "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          ]
+        },
+        {
+          "id": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+          "title": "Abfrageterme formulieren",
+          "description": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T11",
+        "C-T43",
+        "B-T11",
+        "B-T43",
+        "F-T11",
+        "F-T43"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 6,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Producing a parameterized form request is a coherent foundation for validating and securing its request parameters. T06 remains explicitly assessed in addition to T26.",
+      "fullEndpointGoals": [
+        {
+          "id": "70523f2e-b331-51c0-95d0-919c8a189cad",
+          "title": "Parameterübergabe absichern",
+          "description": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+          "requires": [
+            "e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+          ]
+        },
+        {
+          "id": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+          "title": "Formulare mit Backend verknüpfen",
+          "description": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+          "requires": [
+            "757256e2-eb59-572f-a403-e1b1d53e37d4"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T06",
+        "C-T26"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:70523f2e-b331-51c0-95d0-919c8a189cad",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:70523f2e-b331-51c0-95d0-919c8a189cad"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:70523f2e-b331-51c0-95d0-919c8a189cad",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:e00b6124-ce32-5fc9-8a52-f16d4283c16d"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 7,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic SQL query formulation is a coherent preparation for authoring views and permissions. T04 still explicitly demands projection, selection, joins and sorting; a simple view task alone does not stand in for full SELECT mastery.",
+      "fullEndpointGoals": [
+        {
+          "id": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "title": "SQL-Berechtigungen verwalten",
+          "description": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        },
+        {
+          "id": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "title": "Grundlegende Selects schreiben",
+          "description": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T04",
+        "C-T25",
+        "B-T25",
+        "B-T04",
+        "F-T25",
+        "F-T04"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 8,
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "removedPrerequisite": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Relation/scheme manipulation with elementary operators is a coherent didactic foundation for set operations/renaming. T10 explicitly preserves all four basic operators; T23 is not treated as evidence of those untested operations.",
+      "fullEndpointGoals": [
+        {
+          "id": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "title": "Weitere Operatoren nutzen",
+          "description": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        },
+        {
+          "id": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "title": "Grundoperatoren anwenden",
+          "description": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T10",
+        "C-T23",
+        "B-T23",
+        "B-T10",
+        "F-T23",
+        "F-T10"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 9,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "verdict": "reject_fach_witness_and_hold_removal",
+      "rationale": "Reject supplied fach witness: index selection/costs do not require grouping. The second native alternative via Views/Rollen also does not require grouping. T31 and T33, and independent finite counterexamples, make both false prerequisites concrete. Restore direct aggregation preparation for all three exams after repairing both intermediate edges.",
+      "fullEndpointGoals": [
+        {
+          "id": "98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "title": "Indizes und Kosten",
+          "description": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+          "requires": [
+            "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+          ]
+        },
+        {
+          "id": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+          "title": "Gruppierung und Aggregatfunktionen",
+          "description": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T05",
+        "C-T31",
+        "B-T05",
+        "B-T31",
+        "F-T05",
+        "F-T31"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 10,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Entity/relationship modelling supplies the domain concepts and associations that aggregate/context refinement organizes. T01 still explicitly tests entity/relationship/cardinality/optionality; T27 does not substitute for that complete evidence.",
+      "fullEndpointGoals": [
+        {
+          "id": "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "title": "Domänenmodelle verfeinern",
+          "description": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        },
+        {
+          "id": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+          "title": "ER-Modell anwenden",
+          "description": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T01",
+        "C-T27",
+        "B-T27",
+        "B-T01",
+        "F-T27",
+        "F-T01"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 11,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Deriving schemas and identifying keys is a coherent foundation for decomposing schemas using dependencies through 3NF. T02 remains independently assessed alongside T03.",
+      "fullEndpointGoals": [
+        {
+          "id": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "title": "Normalisierung durchführen",
+          "description": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+          "requires": [
+            "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+          ]
+        },
+        {
+          "id": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+          "title": "Tabellen ableiten",
+          "description": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T02",
+        "C-T03",
+        "B-T02",
+        "B-T03",
+        "F-T02",
+        "F-T03"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 12,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic relational problem expressions are a coherent prior step to equivalence-preserving rewrites and cost reasoning. SQL transfer remains expressly assessed in T11; it is not inferred solely from T43 optimization.",
+      "fullEndpointGoals": [
+        {
+          "id": "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "title": "Optimierung Relationenalgebra",
+          "description": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+          "requires": [
+            "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          ]
+        },
+        {
+          "id": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+          "title": "Abfrageterme formulieren",
+          "description": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T11",
+        "C-T43",
+        "B-T11",
+        "B-T43",
+        "F-T11",
+        "F-T43"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 13,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic SQL query formulation is a coherent preparation for authoring views and permissions. T04 still explicitly demands projection, selection, joins and sorting; a simple view task alone does not stand in for full SELECT mastery.",
+      "fullEndpointGoals": [
+        {
+          "id": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "title": "SQL-Berechtigungen verwalten",
+          "description": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        },
+        {
+          "id": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "title": "Grundlegende Selects schreiben",
+          "description": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T04",
+        "C-T25",
+        "B-T25",
+        "B-T04",
+        "F-T25",
+        "F-T04"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 14,
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "removedPrerequisite": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Relation/scheme manipulation with elementary operators is a coherent didactic foundation for set operations/renaming. T10 explicitly preserves all four basic operators; T23 is not treated as evidence of those untested operations.",
+      "fullEndpointGoals": [
+        {
+          "id": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "title": "Weitere Operatoren nutzen",
+          "description": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        },
+        {
+          "id": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "title": "Grundoperatoren anwenden",
+          "description": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T10",
+        "C-T23",
+        "B-T23",
+        "B-T10",
+        "F-T23",
+        "F-T10"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 15,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "verdict": "reject_fach_witness_and_hold_removal",
+      "rationale": "Reject supplied fach witness: index selection/costs do not require grouping. The second native alternative via Views/Rollen also does not require grouping. T31 and T33, and independent finite counterexamples, make both false prerequisites concrete. Restore direct aggregation preparation for all three exams after repairing both intermediate edges.",
+      "fullEndpointGoals": [
+        {
+          "id": "98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "title": "Indizes und Kosten",
+          "description": "Die lernende Person kann Indexarten auswählen und Kostenfolgen abschätzen.",
+          "requires": [
+            "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+          ]
+        },
+        {
+          "id": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+          "title": "Gruppierung und Aggregatfunktionen",
+          "description": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T05",
+        "C-T31",
+        "B-T05",
+        "B-T31",
+        "F-T05",
+        "F-T31"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:98fcf9d1-71b8-5e5b-928b-166917330da4",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 16,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Entity/relationship modelling supplies the domain concepts and associations that aggregate/context refinement organizes. T01 still explicitly tests entity/relationship/cardinality/optionality; T27 does not substitute for that complete evidence.",
+      "fullEndpointGoals": [
+        {
+          "id": "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "title": "Domänenmodelle verfeinern",
+          "description": "Die lernende Person kann konzeptionelle Modelle mit Aggregaten/Bounded Contexts verfeinern.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        },
+        {
+          "id": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+          "title": "ER-Modell anwenden",
+          "description": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T01",
+        "C-T27",
+        "B-T27",
+        "B-T01",
+        "F-T27",
+        "F-T01"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:2cf7589d-5451-5239-badf-1ebb981a2f20"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 17,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Deriving schemas and identifying keys is a coherent foundation for decomposing schemas using dependencies through 3NF. T02 remains independently assessed alongside T03.",
+      "fullEndpointGoals": [
+        {
+          "id": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "title": "Normalisierung durchführen",
+          "description": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+          "requires": [
+            "42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+          ]
+        },
+        {
+          "id": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+          "title": "Tabellen ableiten",
+          "description": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+          "requires": [
+            "2cf7589d-5451-5239-badf-1ebb981a2f20"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T02",
+        "C-T03",
+        "B-T02",
+        "B-T03",
+        "F-T02",
+        "F-T03"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:42ad3e11-9e31-5e15-b65c-b611ce1537ce"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 18,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic relational problem expressions are a coherent prior step to equivalence-preserving rewrites and cost reasoning. SQL transfer remains expressly assessed in T11; it is not inferred solely from T43 optimization.",
+      "fullEndpointGoals": [
+        {
+          "id": "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "title": "Optimierung Relationenalgebra",
+          "description": "Die lernende Person kann Relationenalgebra-Ausdrücke umformen und Kosten schätzen.",
+          "requires": [
+            "b5926cbc-4bd6-589d-987e-ba468ccebc69"
+          ]
+        },
+        {
+          "id": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+          "title": "Abfrageterme formulieren",
+          "description": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T11",
+        "C-T43",
+        "B-T11",
+        "B-T43",
+        "F-T11",
+        "F-T43"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:b5926cbc-4bd6-589d-987e-ba468ccebc69"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 19,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Basic SQL query formulation is a coherent preparation for authoring views and permissions. T04 still explicitly demands projection, selection, joins and sorting; a simple view task alone does not stand in for full SELECT mastery.",
+      "fullEndpointGoals": [
+        {
+          "id": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "title": "SQL-Berechtigungen verwalten",
+          "description": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+          "requires": [
+            "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+          ]
+        },
+        {
+          "id": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+          "title": "Grundlegende Selects schreiben",
+          "description": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T04",
+        "C-T25",
+        "B-T25",
+        "B-T04",
+        "F-T25",
+        "F-T04"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:16ce7d7a-fc31-58d0-83f8-427318331e73",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fd1f5c79-20e6-5829-98c1-0909e047cad4"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    },
+    {
+      "iteration": 20,
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "removedPrerequisite": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "verdict": "support_preparation_minimization",
+      "rationale": "Relation/scheme manipulation with elementary operators is a coherent didactic foundation for set operations/renaming. T10 explicitly preserves all four basic operators; T23 is not treated as evidence of those untested operations.",
+      "fullEndpointGoals": [
+        {
+          "id": "56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "title": "Weitere Operatoren nutzen",
+          "description": "Die lernende Person kann Vereinigung, Schnitt, Differenz und Umbenennung anwenden.",
+          "requires": [
+            "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+          ]
+        },
+        {
+          "id": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+          "title": "Grundoperatoren anwenden",
+          "description": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+          "requires": [
+            "d848ceb9-cd73-5a13-9407-f3364764c223"
+          ]
+        }
+      ],
+      "materialCaseIds": [
+        "C-T10",
+        "C-T23",
+        "B-T23",
+        "B-T10",
+        "F-T23",
+        "F-T10"
+      ],
+      "nativeWitness": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "nativeSupportingOrigins": [
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781"
+        },
+        {
+          "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:56e5edb6-b883-50a0-92bb-732d5e44c781",
+          "prerequisite": "7d51b38c-a149-5407-bddc-d2ce7878b020:fdfa87be-06ca-5c54-9950-d8408dba8e38"
+        }
+      ],
+      "nativeReplayExact": true,
+      "coverageStillExplicit": true
+    }
+  ],
+  "proposedExactFiveChanges": [
+    {
+      "goalId": "98fcf9d1-71b8-5e5b-928b-166917330da4",
+      "requiresBefore": [
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "requiresAfter": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "goalId": "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+      "requiresBefore": [
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+      ],
+      "requiresAfter": [
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4"
+      ]
+    },
+    {
+      "goalId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "addDirectRequires": "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+    },
+    {
+      "goalId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "addDirectRequires": "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+    },
+    {
+      "goalId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "addDirectRequires": "13be8508-9eb3-510d-bd5c-4ba4efcc2589"
+    }
+  ]
+}

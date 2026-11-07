@@ -1,0 +1,990 @@
+{
+  "status": "existing-official-context-found-no-new-scope-decision",
+  "preparedAtUtc": "2026-11-07T04:32:36.875637+00:00",
+  "sourcePins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/review.md",
+      "bytes": 17412,
+      "sha256": "1904f6ec515948ac146c1133267339145ee738fed77dcc203e402ca120b688f4"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/scope-review.json",
+      "bytes": 120700,
+      "sha256": "c215ffd47325daa241109af36aafab6808d86f80ff8a08edf46464008998bedb"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/review-provenance.json",
+      "bytes": 11239,
+      "sha256": "b4b9e777bf80c0041c414257808c0dd2a9394647d258523b1e92a8f76a1bd964"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-source-manifest.json",
+      "bytes": 7047,
+      "sha256": "516c51e50f988f90dbe24a838f6b2252af14b00692128c010f0f28381059ee10"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "bytes": 667952,
+      "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_INFORMATIK_SEKII_KC2024.source-extraction.json",
+      "bytes": 233251,
+      "sha256": "879a22b9334f184dd0130e5551886760b8b53e5e0f0c98fa5d30644bd8def666"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/la26-abiturerlass.pdf",
+      "bytes": 1218556,
+      "sha256": "41f6c480cb64a0448c089ef1ac173b5ebff9c2932d6337765424074222a0fee5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/la26_abiturerlass_informatik.txt",
+      "bytes": 2356,
+      "sha256": "d05d3cab39433d113f37604027b1e6b1f7285e61a8be50b49a21ef212e8a0edf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/abi_2026_informatik_exam_blueprint.json",
+      "bytes": 4415,
+      "sha256": "40c7e4c05c778e26f24a68c11fe98366d0ac466d5600a824988d1fe07163a368"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+      "bytes": 145623,
+      "sha256": "3a8e89378e96b650414442c876153b774fba5ec2d5bf8fe00dbe2410044b7502"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_INFORMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "bytes": 487799,
+      "sha256": "4fcc7adc250439990cd99a14dc6a8b870ed7e15572a0d674669a89bca3beee53"
+    }
+  ],
+  "localRelevantContextExcerpts": [
+    {
+      "id": "kc2024-pdf-page-1",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 1,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "b4a6ed669079d41b17c18ec23296361eeda68f0a69459b009711a5ce82bc3928",
+      "text": "Hessisches Ministerium für Kultus, Bildung und Chancen\n\n\n\n\nKerncurriculum\ngymnasiale Oberstufe\n\n\n\n\n                                                     INFORMATIK\n                                                     Ausgabe 2024\n"
+    },
+    {
+      "id": "kc2024-pdf-page-2",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 2,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "af1733ffb94ba7b459bea9606678ce2a45b8f828ac5d880b2c759264881a70fe",
+      "text": "Impressum\nHerausgeber:   Hessisches Ministerium für Kultus, Bildung und Chancen (HMKB)\n               Luisenplatz 10\n               65185 Wiesbaden\n               Telefon: 0611 368-0\n               E-Mail: poststelle.hmkb@kultus.hessen.de\n               Internet: https://kultus.hessen.de\nStand:         Ausgabe 2024, Stand 01.08.2025\n"
+    },
+    {
+      "id": "kc2024-pdf-page-19",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 19,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "f8c8b7e0f08e068b230de586fbc6f605b0766a39a5f59ec64ad8cbf3e513fe6c",
+      "text": "HMKB                                                                         Kerncurriculum\nInformatik                                                           gymnasiale Oberstufe\n\n3    Bildungsstandards und Unterrichtsinhalte\n\n3.1 Einführende Erläuterungen\nNachfolgend werden die am Ende der gymnasialen Oberstufe erwarteten fachlichen Kompe-\ntenzen in Form von Bildungsstandards, gegliedert nach Kompetenzbereichen (Abschnitt 3.2),\nsowie die verbindlichen Unterrichtsinhalte (Abschnitt 3.3), thematisch strukturiert in Kurshalb-\njahre und Themenfelder, aufgeführt. Diese sind durch verbindlich zu bearbeitende inhaltliche\nAspekte konkretisiert und durch ergänzende Erläuterungen didaktisch fokussiert.\nIm Unterricht werden Bildungsstandards und Themenfelder so zusammengeführt, dass die\nLernenden in unterschiedlichen inhaltlichen Kontexten die Bildungsstandards – je nach\nSchwerpunktsetzung – erarbeiten können. Mit wachsenden Anforderungen an die Komplexität\nder Zusammenhänge und kognitiven Operationen entwickeln sie in entsprechend gestalteten\nLernumgebungen ihre fachlichen Kompetenzen weiter.\nDie Themenfelder bieten die Möglichkeit – im Rahmen der Unterrichtsplanung didaktisch-me-\nthodisch aufbereitet – jeweils in thematische Einheiten umgesetzt zu werden. Zugleich lassen\nsich, themenfeldübergreifend, inhaltliche Aspekte der Themenfelder, die innerhalb eines Kurs-\nhalbjahres vielfältig miteinander verschränkt sind und je nach Kontext auch aufeinander auf-\nbauen können, in einen unterrichtlichen Zusammenhang stellen.\nThemenfelder und inhaltliche Aspekte sind über die Kurshalbjahre hinweg so angeordnet, dass\nim Verlauf der Lernzeit – auch Kurshalbjahre übergreifend – immer wieder Bezüge zwischen\nden Themenfeldern hergestellt werden können. In diesem Zusammenhang bieten die inhalts-\nbezogenen Kompetenzbereiche (vergleiche ausführliche Darstellung in Abschnitt 2.4) Orien-\ntierungshilfen, um fachliches Wissen zu strukturieren, anschlussfähig zu machen und zu\nvernetzen.\nIm Fach Informatik gliedern sich die Bildungsstandards in prozessbezogene und inhaltsbezo-\ngene Kompetenzen. Die prozessbezogenen Kompetenzen sind nach Anforderungsbereichen,\ndie inhaltsbezogenen Kompetenzen nach Kursen auf grundlegendem Niveau (Grund- und\nLeistungskurs) und auf erhöhtem Niveau (Leistungskurs) differenziert. In den Kurshalbjahren\nder Qualifikationsphase werden die Fachinhalte ebenfalls nach grundlegendem Niveau\n(Grundkurs und Leistungskurs) und erhöhtem Niveau (Leistungskurs) unterschieden. Die je-\nweils fachbezogenen Anforderungen, die an Lernende in Grund- und Leistungskurs gestellt\nwerden, unterscheiden sich wie folgt: „Grundkurse vermitteln grundlegende wissenschaftspro-\npädeutische Kenntnisse und Einsichten in Stoffgebiete und Methoden, Leistungskurse exemp-\nlarisch vertieftes wissenschaftspropädeutisches Verständnis und erweiterte Kenntnisse“ (§ 8\nAbsatz 2 OAVO).\n\n\n\n\n                                                                                             19\n"
+    },
+    {
+      "id": "kc2024-pdf-page-26",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 26,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "3132bb9b4f56e42ed1223c32b315b74f87f2a8b57934eaf81ebbccc8d1100455",
+      "text": "HMKB                                                                         Kerncurriculum\nInformatik                                                           gymnasiale Oberstufe\n\n3.3 Kurshalbjahre und Themenfelder\nDem Unterricht in der Einführungsphase kommt mit Blick auf den Übergang in die Qualifika-\ntionsphase eine vorbereitende und kompensatorische Funktion zu. Zum einen erhalten die\nLernenden die Möglichkeit, Neigungen und Stärken zu identifizieren, um auf die Wahl der\nGrundkurs- und Leistungskursfächer entsprechend vorbereitet zu sein. Zum anderen werden\ndie Lernenden an das wissenschaftspropädeutische Arbeiten herangeführt. Damit wird eine\nsolide Ausgangsbasis geschaffen, um in der Qualifikationsphase erfolgreich zu lernen. Die\nThemenfelder der Einführungsphase sind dementsprechend ausgewählt und bilden die Basis\nfür die Qualifikationsphase.\nIn der Qualifikationsphase erwerben die Lernenden eine solide Wissensbasis sowohl im Fa-\nchunterricht als auch in fachübergreifenden und fächerverbindenden Zusammenhängen und\nwenden ihr Wissen bei der Lösung zunehmend anspruchsvoller und komplexer Frage- und\nProblemstellungen an. Dabei erschließen sie Zusammenhänge zwischen Wissensbereichen\nund erlernen Methoden und Strategien zur systematischen Beschaffung, Strukturierung und\nNutzung von Informationen und Materialien. Der Unterricht in der Qualifikationsphase zielt auf\nselbstständiges und eigenverantwortliches Lernen und Arbeiten sowie auf die Weiterentwick-\nlung der Kommunikationsfähigkeit; der Erwerb einer angemessenen Fachsprache ermöglicht\ndie Teilhabe am fachbezogenen Diskurs. Durch die Wahl von Grund- und Leistungskursen ist\ndie Möglichkeit gegeben, individuelle Schwerpunkte zu setzen und auf unterschiedlichen An-\nspruchsebenen zu lernen. Dementsprechend beschreiben die Bildungsstandards und die ver-\nbindlichen Themenfelder die Leistungserwartungen für das Erreichen der Allgemeinen\nHochschulreife.\n\nVerbindliche Regelungen zur Bearbeitung der Themenfelder\nEinführungsphase\nIn der Einführungsphase sind die Themenfelder 1 bis 3 verbindliche Grundlage des Unter-\nrichts. Die „zum Beispiel“-Nennungen in den Themenfeldern dienen der inhaltlichen Anregung\nund sind nicht verbindlich. Soweit sich eine bestimmte Reihenfolge der Themenfelder nicht\naus fachlichen Erfordernissen ableitet, kann die Reihenfolge frei gewählt werden. Für die Be-\narbeitung der verbindlichen Themenfelder sind etwa zwei Drittel der gemäß OAVO zur Verfü-\ngung stehenden Unterrichtszeit – in der Regel etwa 24 Unterrichtswochen – vorgesehen. In\nden Fächern, für die auf der Grundlage der OAVO die Schule entscheiden kann, ob der Un-\nterricht zwei- oder dreistündig angeboten wird, bezieht sich diese Regelung auf den dreistün-\ndigen Unterricht. In der verbleibenden Unterrichtszeit ist es möglich, Aspekte der verbindlichen\nThemenfelder zu vertiefen oder zu erweitern oder eines der nicht verbindlichen Themenfelder\nzu bearbeiten.\nQualifikationsphase\nIn den Kurshalbjahren Q1 bis Q3 sind die Themenfelder 1 und 2 verbindliche Grundlage des\nUnterrichts. Für Kurse auf erhöhtem Niveau ist im Kurshalbjahr Q1 zusätzlich das Themenfeld\n3 verbindlich. Durch Erlass wird ein weiteres Themenfeld in zwei dieser drei Kurshalbjahre\nsowie ein Themenfeld im Kurshalbjahr Q4 verbindlich festgelegt. So ergeben sich für Kurse\nauf grundlegendem Niveau insgesamt neun, für Kurse auf erhöhtem Niveau insgesamt zehn\nverbindliche Themenfelder für die schriftlichen Abiturprüfungen. Im Hinblick darauf können\ndurch Erlass Schwerpunkte sowie Konkretisierungen innerhalb dieser Themenfelder ausge-\nwiesen werden. Die „zum Beispiel“-Nennungen in den Themenfeldern dienen der inhaltlichen\nAnregung und sind nicht verbindlich. Soweit sich eine bestimmte Reihenfolge der Themenfel-\nder nicht aus fachlichen Erfordernissen ableitet, kann die Reihenfolge frei gewählt werden. Für\n\n                                                                                             26\n"
+    },
+    {
+      "id": "kc2024-pdf-page-27",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 27,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "f031fcc4c585e15136da1d9b5910b0d4c3c1695b71efd4152c5aec2153cacbcb",
+      "text": "HMKB                                                                      Kerncurriculum\nInformatik                                                         gymnasiale Oberstufe\n\ndie Bearbeitung der verbindlichen Themenfelder sind etwa zwei Drittel der gemäß OAVO zur\nVerfügung stehenden Unterrichtszeit – in Q1-3 in der Regel 12 Unterrichtswochen und in der\nQ4 in der Regel 4 Unterrichtswochen – vorgesehen. In der verbleibenden Unterrichtszeit ist es\nmöglich, Aspekte der verbindlichen Themenfelder zu vertiefen oder zu erweitern oder eines\nder nicht verbindlichen Themenfelder zu bearbeiten.\n\n\n\n\n                                                                                          27\n"
+    },
+    {
+      "id": "kc2024-pdf-page-28",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 28,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "5fc1f6b78a07569743708bf2eb144a26f91131831fc073c71822c5ba550b4c4d",
+      "text": "HMKB                                                                      Kerncurriculum\nInformatik                                                         gymnasiale Oberstufe\n\nÜbersicht über die Themen der Kurshalbjahre und die Themenfelder\n\nEinführungsphase (E)\n\n E1/E2   Einführung in die Informatik\n Themenfelder\n   E.1   Internetprotokolle\n   E.2   HTML-Dokumente\n   E.3   Grundlagen der Programmierung\n   E.4   Informatikprojekt\n   E.5   Kryptologie\nverbindlich: Themenfelder 1-3\n\nQualifikationsphase (Q)\n\n Q1      Algorithmik und objektorientierte Modellierung\n Themenfelder\n  Q1.1   Klassen und Objekte\n  Q1.2   Such- und Sortieralgorithmen\n  Q1.3   Rekursion\n  Q1.4   Höhere Datenstrukturen und ihre objektorientierte Modellierung\n  Q1.5   Graphen\nverbindlich: Für Kurse auf grundlegendem Niveau Themenfelder 1 und 2 sowie in zwei der\ndrei Kurshalbjahre Q1-3 ein weiteres aus den Themenfeldern 3 oder 4, durch Erlass festgelegt;\nfür Kurse auf erhöhtem Niveau Themenfelder 1-3 sowie in zwei der drei Kurshalbjahre Q1-3\nein weiteres aus den Themenfeldern 4 oder 5, durch Erlass festgelegt; innerhalb dieser The-\nmenfelder können durch Erlass Schwerpunkte sowie Konkretisierungen ausgewiesen werden\n\n Q2      Datenbanken\n Themenfelder\n  Q2.1   ER- und Relationenmodell\n  Q2.2   SQL\n  Q2.3   Webdatenbankprojekt\n  Q2.4   Datenschutz und Datensicherheit\n  Q2.5   Relationenalgebra\nverbindlich: Themenfelder 1 und 2 sowie in zwei der drei Kurshalbjahre Q1-3 ein weiteres\naus den Themenfeldern 3-5, durch Erlass festgelegt; innerhalb dieser Themenfelder können\ndurch Erlass Schwerpunkte sowie Konkretisierungen ausgewiesen werden\n\n\n\n\n                                                                                          28\n"
+    },
+    {
+      "id": "kc2024-pdf-page-29",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 29,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "f80351b8ec7cd97033add62d4e0b2388361df6c19d21ccc7d6ec59dd3057df92",
+      "text": "HMKB                                                                        Kerncurriculum\nInformatik                                                          gymnasiale Oberstufe\n\n Q3       Konzepte und Anwendungen der theoretischen Informatik\n Themenfelder\n  Q3.1    Formale Sprachen und Grammatiken\n  Q3.2    Endliche Automaten\n  Q3.3    Kellerautomat\n  Q3.4    Turingmaschine\n  Q3.5    Registermaschine\nverbindlich: Themenfelder 1 und 2 sowie in zwei der drei Kurshalbjahre Q1-3 ein weiteres\naus den Themenfeldern 3-5, durch Erlass festgelegt; innerhalb dieser Themenfelder können\ndurch Erlass Schwerpunkte sowie Konkretisierungen ausgewiesen werden\n\n Q4       Vertiefendes Themenfeld\n Themenfelder\n   Q4.1      Grundlagen der technischen Informatik\n   Q4.2      Prolog als logische Programmiersprache\n   Q1.3      Rekursion (nur grundlegendes Niveau)\n   Q1.4      Höhere Datenstrukturen und ihre objektorientierte Modellierung\n   Q1.5      Graphen\n   Q3.3      Kellerautomat\n   Q3.4      Turingmaschine\n   Q3.5      Registermaschine\nverbindlich: ein Themenfeld, durch Erlass festgelegt. Dies kann Themenfeld Q4.1 oder Q4.2\noder eines aus den nicht bereits in Q1-Q3 festgelegten Themenfeldern sein\nIm Zusammenhang der Bearbeitung der Themen der Kurshalbjahre und der Themenfelder des\nFaches lassen sich vielfältig Bezüge auch zu Themenfeldern anderer Fächer (innerhalb eines\nKurshalbjahres) herstellen, um sich komplexeren Fragestellungen aus unterschiedlichen\nFachperspektiven zu nähern. Auf diese Weise erfahren die Lernenden die Notwendigkeit und\nWirksamkeit interdisziplinärer Kooperation und erhalten gleichzeitig Gelegenheit, ihre fachspe-\nzifischen Kenntnisse in anderen Kontexten zu erproben und zu nutzen. Dabei erwerben sie\nneues Wissen, welches die Fachdisziplinen verbindet. Dies bereitet sie auf den Umgang mit\nvielschichtigen und vielgestaltigen Problemlagen vor und fördert eine systemische Sichtweise.\nDurch fachübergreifende und fächerverbindende Themenstellungen können mit dem An-\nspruch einer stärkeren Lebensweltorientierung auch die Interessen und Fragestellungen, die\njunge Lernende bewegen, Berücksichtigung finden. In der Anlage der Themenfelder in den\nKurshalbjahren sind – anknüpfend an bewährte Unterrichtspraxis – fachübergreifende und fä-\ncherverbindende Bezüge jeweils mitgedacht. Dies erleichtert die Kooperation zwischen den\nFächern und ermöglicht interessante Themenstellungen.\n\n\n\n\n                                                                                            29\n"
+    },
+    {
+      "id": "kc2024-pdf-page-36",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 36,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "65ffd9ee3333dbbef0f3922d7ff38cefa338b6523c0736a1a1f38ffd32d4e43a",
+      "text": "HMKB                                                                      Kerncurriculum\nInformatik                                                         gymnasiale Oberstufe\n\nQ2   Datenbanken\n\nDatenbanksysteme gehören zu den wichtigsten Anwendungsgebieten von Computern in un-\nserer Gesellschaft. Im Hinblick auf die nahezu weltweite Vernetzung und den damit verbunde-\nnen Zugriff auf eine immense Datenfülle rücken Organisation dieser Daten und darauf\nwirkende Operationen in den Mittelpunkt. In Datenbanken werden Texte, multimediale Ele-\nmente sowie weitere Daten unterschiedlichster Art in digitaler Form gespeichert. Daher ist es\nfür die Lernenden von großer Bedeutung, die Möglichkeiten von Datenbanksystemen zu ver-\nstehen und deren Strukturen zu durchschauen, um einen kompetenten Umgang damit zu er-\nreichen.\nFür die Realisierung einer relationalen Datenbank ist die Modellierung eine grundlegende Vo-\nraussetzung. Ausgehend von der Analyse einer Problembeschreibung führen die Lernenden\neine Modellierung durch, das heißt eine Reduktion auf relevante Objekte und Beziehungen\nsowie eine Abstraktion von unwesentlichen Details. Mit Entitäts- und Beziehungstypen reprä-\nsentieren sie nicht nur die Datenstruktur, sondern auch deren Semantik, wobei zur Darstellung\nER- oder UML-Klassendiagramme dienen. Das aus dem erstellten Diagramm abgeleitete Re-\nlationenmodell setzen die Lernenden in Tabellen um. Um Operationen auf den Daten durch-\nzuführen, verwenden sie interaktiv die Datenbankabfragesprache SQL (engl. Structured Query\nLanguage). Dabei analysieren sie die Select-Anweisung mit ihren vielfältigen Möglichkeiten\nund verwenden sie, um gezielt Daten aus einer oder mehreren Tabellen abzufragen.\nDa der Umgang mit internetbasierten Datenbanken im Erfahrungsbereich der Lernenden liegt,\neignet sich ein Webdatenbankprojekt in besonderer Weise für den Unterricht. Hierbei wenden\ndie Lernenden die neu erarbeiteten Modelle, Konzepte und Verfahren an und stellen diese mit\nden Themenfeldern der Einführungsphase und dem Kurshalbjahr Q1 in einen gemeinsamen\nKontext. Die Lernenden erhalten somit einen Einblick in die Wirkprinzipien datenbankbasierter\nClient-Server-Systeme mit dynamischen Webinhalten.\nIm Leistungskurs beschäftigen sich die Lernenden darüber hinaus mit Anomalien und führen\neine Normalisierung durch, um im Datenbankschema vorhandene Redundanzen weitgehend\nzu beseitigen.\nDatenschutz basiert auf dem Recht auf informationelle Selbstbestimmung, nach dem jeder\nMensch grundsätzlich selbst über die Verwendung seiner persönlichen Daten entscheiden\nkann. Die Lernenden setzen sich diskursiv mit dem Recht auf informationelle Selbstbestim-\nmung und mit Risiken auseinander, die sich aus der Datenspeicherung in Datenbanken erge-\nben. Dazu begründen und bewerten sie auf Basis der Datenschutzprinzipien und Daten-\nschutzgesetze Fallbeispiele, reflektieren ihren eigenen Umgang mit persönlichen Daten und\npassen Datenschutz- sowie Datensicherheitseinstellungen in von ihnen verwendeten Informa-\ntiksystemen an. Zudem diskutieren die Lernenden Gefahren mangelnder Datensicherheit und\ntechnisch-organisatorische Maßnahmen zur Herstellung von Datensicherheit.\nDie Relationenalgebra begegnet den Lernenden als theoretische Grundlage für Abfragespra-\nchen in relationalen Datenbanken. Ausgehend von dem Begriff Relation als Teilmenge des\nkartesischen Produkts lassen sich die datenbankspezifischen Operationen Projektion, Selek-\ntion und Join mit Relationen gut erklären.\nBezug zu den inhaltsbezogenen Kompetenzbereichen: Maßgebliche inhaltsbezogene Kompe-\ntenzbereiche für das Kurshalbjahr sind Information und Daten (I3), Informatiksysteme (I4)\nsowie Informatik, Mensch und Gesellschaft (I5).\n\n\n\n\n                                                                                          36\n"
+    },
+    {
+      "id": "kc2024-pdf-page-37",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 37,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "01fa97d0fbfef7b55e7c860ce805634fd405e786c7a0123fcf5b2686972eac98",
+      "text": "HMKB                                                                        Kerncurriculum\nInformatik                                                           gymnasiale Oberstufe\n\nThemenfelder\n\nverbindlich: Themenfelder 1 und 2 sowie in zwei der drei Kurshalbjahre Q1-3 ein weiteres\naus den Themenfeldern 3-5, durch Erlass festgelegt; innerhalb dieser Themenfelder können\ndurch Erlass Schwerpunkte sowie Konkretisierungen ausgewiesen werden.\n\nDie Bearbeitung der einzelnen Themenfelder kann unterschiedlich viel Unterrichtszeit bean-\nspruchen, da im Zuschnitt der Themenfelder die je verschiedene inhaltliche Komplexität be-\nrücksichtigt ist (zum Beispiel im Grundkurs 5 Wochen für Themenfeld 1 und 3 Wochen für\nThemenfeld 2). Für die Bearbeitung der verbindlichen Themenfelder wird in der Regel ein zeit-\nlicher Gesamtumfang von etwa 12 Unterrichtswochen zugrunde gelegt.\n\nQ2.1   ER- und Relationenmodell\ngrundlegendes Niveau (Grundkurs und Leistungskurs)\n   -   ER-Modell:\n       Entität, Entitätstyp (auch schwacher Entitätstyp), Attribut (auch mehrwertiges Attri-\n       but), Beziehungstyp (auch is-a-Beziehungstyp), Kardinalität, Optionalität\n   -   Relationenmodell:\n       Schlüssel, Relationenschema, Datenbanktabellen\nerhöhtes Niveau (Leistungskurs)\n   -   ER-Modell:\n       Rekursiver Beziehungstyp, Ternärer Beziehungstyp\n   -   Normalisierung:\n       Anomalien, erste, zweite, dritte Normalform\n\nQ2.2   SQL\ngrundlegendes Niveau (Grundkurs und Leistungskurs)\n   -   grundlegende Select-Abfragen:\n       Projektion, Selektion, Aggregatfunktionen, Join, Sortierung, Gruppierung\nerhöhtes Niveau (Leistungskurs)\n   -   weiterführende Select-Abfragen:\n       Unterabfragen, Abfragen über rekursive Beziehungen\n   -   weitere SQL-Sprachbereiche:\n       Datenbearbeitung mit der DML, Datendefinition mit der DDL, Datenberechtigungen\n       mit der DCL\n\nQ2.3   Webdatenbankprojekt\ngrundlegendes Niveau (Grundkurs und Leistungskurs)\n   -   HTML-Formulare:\n       GUI-Elemente, Parameterübergabe, get- versus post-Methode\n   -   Ausführung von SQL-Anweisungen:\n\n\n\n\n                                                                                               37\n"
+    },
+    {
+      "id": "kc2024-pdf-page-38",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "bytes": 667952,
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85"
+      },
+      "pdfPageOneBased": 38,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "7d5f8d8e00c4ceea7ca37c3f7d4e256f4c6cfabf52db62f1939cff51a40f5b68",
+      "excerptSha256": "6ddcb77e73907bbf7c7b3a334ed83138f9de437e55dcf14ef31af569524cd94c",
+      "text": "HMKB                                                                         Kerncurriculum\nInformatik                                                           gymnasiale Oberstufe\n\n       Datenbankverbindung, Aufbereitung von SQL-Anweisungen, Ausführen von SQL-An-\n       weisungen mit und ohne Rückgabemenge\n   -   dynamische Webseiten:\n       Zugriff auf einzelne Datensätze des Ergebnisses einer Abfrage, Darstellung der Er-\n       gebnismenge einer Abfrage in einem HTML-Dokument\nerhöhtes Niveau (Leistungskurs)\n   -   Datensicherheit:\n       Benutzerverwaltung und Zugriffsberechtigungen\n\nQ2.4   Datenschutz und Datensicherheit\ngrundlegendes Niveau (Grundkurs und Leistungskurs)\n   -   Datenschutz:\n       Recht auf informationelle Selbstbestimmung, Datenschutzprinzipien, Datenschutzge-\n       setze\n   -   Datensicherheit:\n       Vertraulichkeit, Integrität und Verfügbarkeit, Datensicherheitsgebote (Zutrittskontrolle,\n       Zugangskontrolle, Zugriffskontrolle), Sicherheit bei der Internetnutzung\n\nQ2.5   Relationenalgebra\ngrundlegendes Niveau (Grundkurs und Leistungskurs)\n   -   Operatoren:\n   -   kartesisches Produkt, Selektion, Projektion, Join\n   -   Terme:\n       einfache Terme mit Bedingungen, geschachtelte Terme, Ergebnismengen von Abfra-\n       getermen, Abfrageterme für gegebene Problemstellungen, Abbildung von Termen in\n       SQL\nerhöhtes Niveau (Leistungskurs)\n   -   Operatoren:\n       Vereinigung, Schnitt, Differenz, Umbenennung\n\n\n\n\n                                                                                              38\n"
+    },
+    {
+      "id": "abi26-pdf-page-1",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/abi/la26-abiturerlass.pdf",
+        "bytes": 1218556,
+        "sha256": "41f6c480cb64a0448c089ef1ac173b5ebff9c2932d6337765424074222a0fee5"
+      },
+      "pdfPageOneBased": 1,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "e30bd5a5e87ab6c8490e9edae6afa6acf796552007447c59122f07a92ebeb59b",
+      "excerptSha256": "b5e08655350b1bad3233cd56313ada859debc0022a547a1d33dfccb2198d9c1f",
+      "text": "Hinweise zur Vorbereitung auf die schriftlichen\nAbiturprüfungen im Landesabitur 2026 (Abiturerlass)\n\nErlass vom 26. Juni 2024\nIII.A.3 – 234.000.013 – 00272\n\n\n\nI   Allgemeine Grundlagen\nGrundlage für die Vorbereitung und Durchführung der schriftlichen Abiturprüfungen im\nLandesabitur 2026 in den öffentlichen und privaten gymnasialen Oberstufen des\nersten und zweiten Bildungsweges sowie den beruflichen Gymnasien und für\nNichtschülerinnen und Nichtschüler ist die Oberstufen- und Abiturverordnung (OAVO)\nvom 20. Juli 2009 (ABl. S. 408), zuletzt geändert durch Gesetz vom 18. März 2021\n(GVBl. S. 166), in der jeweils geltenden Fassung. Zudem gelten die Einheitlichen\nPrüfungsanforderungen in der Abiturprüfung (EPA), die Bildungsstandards für die\nfortgeführte Fremdsprache (Englisch/Französisch), das Fach Deutsch und das Fach\nMathematik für die Allgemeine Hochschulreife gemäß dem Beschluss der\nKultusministerkonferenz vom 18. Oktober 2012 sowie die Bildungsstandards für das\nFach Biologie, das Fach Chemie und das Fach Physik gemäß dem Beschluss der\nKultusministerkonferenz vom 18. Juni 2020 (im Folgenden kurz: KMK-Standards)\nsowie die Kerncurricula für die gymnasiale Oberstufe (KCGO) nach der Verordnung\nüber die Kerncurricula für die gymnasiale Oberstufe, das berufliche Gymnasium, das\nAbendgymnasium und das Hessenkolleg (VOKCGOBG) vom 17. Juli 2018\n(ABl. S. 683), zuletzt geändert durch Verordnung vom 27. Juli 2022 (ABl. S. 374).\nDer vorliegende Erlass ist über die Website des Hessischen Ministeriums für Kultus,\nBildung und Chancen unter www.kultus.hessen.de abrufbar.\nDie in Abschnitt IV genannten Fächer sind unter der Berücksichtigung der genannten\nKursarten als Prüfungsfächer auf der Grundlage der OAVO zugelassen. Darüber\nhinaus sind für das Landesabitur 2026 folgende Fächer nach § 7 Abs. 5 OAVO durch\nEinzelerlass als schriftliche Abiturprüfungsfächer ausgewiesen: Italienisch\n(Leistungskurs), Russisch (Leistungskurs), Litauisch (Leistungskurs), Erdkunde\nbilingual Französisch (Grundkurs) und adventistische Religion (Grund- und\nLeistungskurs). Für diese Fächer erfolgt die Aufgabenerstellung dezentral. Näheres\nwird in den Durchführungsbestimmungen zum Landesabitur 2026 geregelt.\n\n\nII Prüfungszeitraum, Bearbeitungszeit (inklusive Auswahlzeit)\nDie schriftlichen Abiturprüfungen 2026 finden im Zeitraum vom 15. April bis 8. Mai\n2026, die Nachprüfungen vom 19. Mai bis 3. Juni 2026 statt. Die genauen Termine\nsowie organisatorische Hinweise für die einzelnen Fächer werden vor Beginn des\nSchuljahres 2025/2026 bekannt gegeben.\n\nDie Bearbeitungszeit einer schriftlichen Prüfung wird nach § 25 Abs. 2 OAVO im\nLeistungsfach auf 300 und im Grundkursfach auf 255 Minuten festgelegt. Im\nLeistungsfach Deutsch beträgt die Bearbeitungszeit 315 Minuten, im Leistungsfach\nder modernen Fremdsprachen 285 Minuten. Im Fach Kunst wird die Bearbeitungszeit\nfür praktische Aufgaben mit theoretischem Anteil im Leistungsfach auf bis zu 345 und\nim Grundkursfach auf bis zu 300 Minuten verlängert. Im Fach Mathematik beträgt die\nBearbeitungszeit im Leistungsfach 330 Minuten, im Grundkursfach 285 Minuten.\nHinweise zur Vorbereitung auf die schriftlichen Abiturprüfungen im Landesabitur 2026   Seite 1/90\n"
+    },
+    {
+      "id": "abi26-pdf-page-88",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/abi/la26-abiturerlass.pdf",
+        "bytes": 1218556,
+        "sha256": "41f6c480cb64a0448c089ef1ac173b5ebff9c2932d6337765424074222a0fee5"
+      },
+      "pdfPageOneBased": 88,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "e30bd5a5e87ab6c8490e9edae6afa6acf796552007447c59122f07a92ebeb59b",
+      "excerptSha256": "2c7db3254b4deb0d414ed7f60177f9d8b338dc9da86f2bb93dc2e19aae98cd58",
+      "text": "      Informatik\n23.1 Kursart\nGrundlegendes/erhöhtes Niveau (Grundkurs/Leistungskurs)\n\n23.2 Struktur der Prüfungsaufgaben\nAufgabenart nach EPA Informatik in der Fassung vom 5. Februar 2004\n\nDie Pflichtaufgabe A zum Halbjahresthema Algorithmik und objektorientierte\nModellierung wird im Grund- und im Leistungskurs in den beiden Sprachvarianten\nJava und Python angeboten. Dem Prüfling wird die Aufgabe A in der Sprachvariante\nvorgelegt, die im Unterricht benutzt wurde.\n\nFür den Leistungskurs liegt der weiteren Pflichtaufgabe B entweder das Kurshalbjahr\nDatenbanken oder das Kurshalbjahr Konzepte und Anwendungen der theoretischen\nInformatik zugrunde.\n\n23.3 Auswahlmodus\nIm Grundkurs werden dem Prüfling zusätzlich zur Pflichtaufgabe A zwei\nAufgabenvorschläge B1 und B2, entweder zum Kurshalbjahr Datenbanken oder zum\nKurshalbjahr Konzepte und Anwendungen der theoretischen Informatik, zur Auswahl\nvorgelegt. Der Prüfling bearbeitet somit zwei Aufgaben, die sich schwerpunktmäßig\nauf die Inhalte zweier unterschiedlicher Kurshalbjahre beziehen.\n\nIm Leistungskurs werden dem Prüfling zusätzlich zu den Pflichtaufgaben A und B zwei\nweitere Aufgabenvorschläge C1 und C2 zur Auswahl vorgelegt. Diesen beiden\nAufgabenvorschlägen liegt das Kurshalbjahr zugrunde, das durch die beiden\nPflichtaufgaben nicht abgedeckt ist. Der Prüfling bearbeitet somit drei Aufgaben, die\nsich schwerpunktmäßig auf die Inhalte dreier unterschiedlicher Kurshalbjahre\nbeziehen.\n\n23.4 Hinweise zum Prüfungsinhalt\nGrundlage ist das Kerncurriculum für die gymnasiale Oberstufe (KCGO) für das Fach\nInformatik.\n\nAuf die nachfolgend aufgeführten Themenfelder und Konkretisierungen des KCGO\nwerden sich die Prüfungsaufgaben im grundlegenden und im erhöhten Niveau\n(Grundkurs und Leistungskurs) schwerpunktmäßig beziehen.\ngrundlegendes Niveau (Grundkurs)\nQ1.1 Such- und Sortieralgorithmen\nQ1.2 Rekursion\nQ1.3 Klassen und Objekte\n\nQ2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra\n\nQ3.1 Zeitkomplexität und Berechenbarkeit\nQ3.2 Endliche Automaten\nQ3.3 Formale Sprachen und Grammatiken\n\n\n\nHinweise zur Vorbereitung auf die schriftlichen Abiturprüfungen im Landesabitur 2026   Seite 88/90\n"
+    },
+    {
+      "id": "abi26-pdf-page-89",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/abi/la26-abiturerlass.pdf",
+        "bytes": 1218556,
+        "sha256": "41f6c480cb64a0448c089ef1ac173b5ebff9c2932d6337765424074222a0fee5"
+      },
+      "pdfPageOneBased": 89,
+      "printedPageUsuallyEqualsPdfPage": true,
+      "extraction": "pdftotext -layout complete existing local PDF, selected page split on form feed",
+      "derivedFullTextSha256": "e30bd5a5e87ab6c8490e9edae6afa6acf796552007447c59122f07a92ebeb59b",
+      "excerptSha256": "1a91c17b8dcb62672561803626d75550eb574402cb2135aea011ff3426e9bd06",
+      "text": "erhöhtes Niveau (Leistungskurs)\nQ1.1 Such- und Sortieralgorithmen\nQ1.2 Rekursion\nQ1.3 Klassen und Objekte\nQ1.4 Höhere Datenstrukturen und ihre objektorientierte Modellierung\n\nQ2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra\n\nQ3.1   Zeitkomplexität und Berechenbarkeit\nQ3.2   Endliche Automaten\nQ3.3   Formale Sprachen und Grammatiken\nQ3.5   Registermaschine\n\n23.5 Erlaubte Hilfsmittel\nein Wörterbuch der deutschen Rechtschreibung; eine Liste der fachspezifischen\nOperatoren\n\n23.6 Sonstige Hinweise\nNach § 9 Abs. 12 Satz 3 OAVO führen schwerwiegende und gehäufte Verstöße gegen\ndie sprachliche Richtigkeit in der deutschen Sprache in der Beurteilung zu einem\nAbzug von ein oder zwei Punkten nach Anlage 9b der OAVO. Grundlage der\nBewertung der Rechtschreibung und Zeichensetzung ist die amtliche Regelung der\ndeutschen Rechtschreibung in der jeweils geltenden Fassung.\n\n\n\n\nHinweise zur Vorbereitung auf die schriftlichen Abiturprüfungen im Landesabitur 2026   Seite 89/90\n"
+    },
+    {
+      "id": "by10-database-and-project",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+        "bytes": 145623,
+        "sha256": "3a8e89378e96b650414442c876153b774fba5ec2d5bf8fe00dbe2410044b7502"
+      },
+      "jsonPointerRange": [
+        "/goals/25",
+        "/goals/42"
+      ],
+      "startLineOneBased": 326,
+      "endLineOneBased": 541,
+      "goalCount": 18,
+      "excerptSha256": "758d7c40be036432419ca4464c754b5b36ad089dd45e692e0b66f39632406b87",
+      "text": "    {\n      \"id\": \"da1b8d2d-dc6a-5765-9d2f-dc48fb27c225\",\n      \"title\": \"Inf10 Lernbereich 1: Datenmodellierung und relationale Datenbanksysteme (ca. 17 Std.)\",\n      \"contains\": [\n        \"4db8848f-80a9-5ce7-a3f5-9ec5513009e6\",\n        \"7e76ed32-98a5-52dd-9f83-fa75b2182d8d\",\n        \"f15cc0e0-3204-5b67-ae07-303e5137e542\",\n        \"715e3f47-fd67-56d5-8a99-34e056615ced\",\n        \"160fd9a0-8294-5110-bf49-83e7e274389e\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"4db8848f-80a9-5ce7-a3f5-9ec5513009e6\",\n      \"title\": \"analysieren und strukturieren mithilfe objektorientierter Konzepte Datenbestände geeigneter Beispiel...\",\n      \"description\": \"analysieren und strukturieren mithilfe objektorientierter Konzepte Datenbestände geeigneter Beispiele aus der Praxis (z. B. Bibliotheksverwaltung) und stellen das daraus entwickelte Datenmodell als Klassendiagramm mit mehreren Klassen dar.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"7e76ed32-98a5-52dd-9f83-fa75b2182d8d\",\n      \"title\": \"überführen objektorientierte Datenmodelle in entsprechende relationale Modelle und setzen diese in e...\",\n      \"description\": \"überführen objektorientierte Datenmodelle in entsprechende relationale Modelle und setzen diese in einem Datenbanksystem um.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"f15cc0e0-3204-5b67-ae07-303e5137e542\",\n      \"title\": \"konzipieren geeignete SQL-Abfragen, um zielgerichtet Informationen aus einer relationalen Datenbank ...\",\n      \"description\": \"konzipieren geeignete SQL-Abfragen, um zielgerichtet Informationen aus einer relationalen Datenbank zu gewinnen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"715e3f47-fd67-56d5-8a99-34e056615ced\",\n      \"title\": \"erkennen Redundanzen und Anomalien in einer relationalen Datenbank und beurteilen die dadurch entste...\",\n      \"description\": \"erkennen Redundanzen und Anomalien in einer relationalen Datenbank und beurteilen die dadurch entstehende Problematik im Hinblick auf die Konsistenz des Datenbestands.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"160fd9a0-8294-5110-bf49-83e7e274389e\",\n      \"title\": \"bewerten Chancen und Risiken der automatisierten Analyse verknüpfter Datenbestände, auch im Hinblick...\",\n      \"description\": \"bewerten Chancen und Risiken der automatisierten Analyse verknüpfter Datenbestände, auch im Hinblick auf gesellschaftliche Auswirkungen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"e1e2a171-1ae3-5486-bd1f-de7f5437fbab\",\n      \"title\": \"Inf10 Lernbereich 2: Objektorientierte Modellierung und Programmierung (ca. 27 Std.)\",\n      \"contains\": [\n        \"6a81edfb-4ea1-5001-8072-8ed62409ad93\",\n        \"38bbb5a7-c67e-5fed-8327-e2598fde6a5e\",\n        \"7202c84b-8eaa-5271-8261-b3fa52ffe5d4\",\n        \"bdecf169-907e-57d1-b688-be99431a2fa0\",\n        \"43b0dc83-fa90-54c6-9bac-da84769b725c\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"6a81edfb-4ea1-5001-8072-8ed62409ad93\",\n      \"title\": \"wenden eine eindimensional indizierte Datenstruktur bei einfachen Problemstellungen zur Speicherung ...\",\n      \"description\": \"wenden eine eindimensional indizierte Datenstruktur bei einfachen Problemstellungen zur Speicherung und Verwaltung gleichartiger Daten an.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"38bbb5a7-c67e-5fed-8327-e2598fde6a5e\",\n      \"title\": \"analysieren und modellieren Objektbeziehungen und das Kommunikationsverhalten innerhalb eines System...\",\n      \"description\": \"analysieren und modellieren Objektbeziehungen und das Kommunikationsverhalten innerhalb eines Systems (beispielsweise eines Fahrradverleihs).\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"7202c84b-8eaa-5271-8261-b3fa52ffe5d4\",\n      \"title\": \"implementieren die im Klassendiagramm festgelegten Beziehungen sachgerecht durch Referenzen, um währ...\",\n      \"description\": \"implementieren die im Klassendiagramm festgelegten Beziehungen sachgerecht durch Referenzen, um während der Laufzeit des Programms die Kommunikation zwischen den entsprechenden Objekten durch den Aufruf geeigneter Methoden zu ermöglichen. Dabei wird ihnen die Grundidee der Datenkapselung bewusst.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"bdecf169-907e-57d1-b688-be99431a2fa0\",\n      \"title\": \"modellieren und implementieren im Rahmen eines einfachen Beispiels aus der Praxis (etwa der Mitglied...\",\n      \"description\": \"modellieren und implementieren im Rahmen eines einfachen Beispiels aus der Praxis (etwa der Mitgliederverwaltung eines Vereins) eine Struktur zur Verwaltung gleichartiger Objekte. Hierbei entwickeln sie ausgewählte Methoden, z. B. zum Einfügen, Entfernen und Bearbeiten von Elementen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"43b0dc83-fa90-54c6-9bac-da84769b725c\",\n      \"title\": \"nutzen in Generalisierungshierarchien das Konzept des Polymorphismus zur Implementierung verschieden...\",\n      \"description\": \"nutzen in Generalisierungshierarchien das Konzept des Polymorphismus zur Implementierung verschiedener Verhaltensweisen, z. B. die spartenabhängige Berechnung der Mitgliedsbeiträge eines Sportvereins.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"024eebc3-328c-5b58-99b1-06bc1633d61e\",\n      \"title\": \"Inf10 Lernbereich 3: Projekt (ca. 12 Std.)\",\n      \"contains\": [\n        \"7beb041a-ca0d-5a34-8d07-7ecfe56f52d7\",\n        \"1d1edb93-ea26-5882-bb20-374ab52b99db\",\n        \"fb6dbb96-0c1c-572d-ac9a-51207cb16189\",\n        \"2338c591-756c-506c-9647-d0139697eb71\",\n        \"cf222e02-e1bd-5aa3-83b6-e5889916d70e\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"7beb041a-ca0d-5a34-8d07-7ecfe56f52d7\",\n      \"title\": \"erstellen im Team einen Projektplan, um eine Datenbank bzw. ein objektorientiertes Programm zu einem...\",\n      \"description\": \"erstellen im Team einen Projektplan, um eine Datenbank bzw. ein objektorientiertes Programm zu einem Szenario aus ihrer Erfahrungswelt, wie z. B. einem Buchungssystem (ggf. mit Benutzerschnittstelle) oder einem einfachen Spiel, zu entwickeln.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"1d1edb93-ea26-5882-bb20-374ab52b99db\",\n      \"title\": \"analysieren das gegebene Szenario und modellieren relevante Ausschnitte durch ein Klassendiagramm un...\",\n      \"description\": \"analysieren das gegebene Szenario und modellieren relevante Ausschnitte durch ein Klassendiagramm und ggf. weitere Diagramme. Dabei arbeiten sie ggf. mit bereits existierenden Modellen bzw. Modellausschnitten.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"fb6dbb96-0c1c-572d-ac9a-51207cb16189\",\n      \"title\": \"implementieren zum gegebenen Szenario arbeitsteilig und auf Grundlage der vorhandenen Modellierung d...\",\n      \"description\": \"implementieren zum gegebenen Szenario arbeitsteilig und auf Grundlage der vorhandenen Modellierung die Datenbank einschließlich geeigneter Abfragen bzw. das objektorientierte Programm.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"2338c591-756c-506c-9647-d0139697eb71\",\n      \"title\": \"testen die entwickelte Datenbank bzw. das entwickelte Programm hinsichtlich der Anforderungen des ge...\",\n      \"description\": \"testen die entwickelte Datenbank bzw. das entwickelte Programm hinsichtlich der Anforderungen des gegebenen Szenarios.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"cf222e02-e1bd-5aa3-83b6-e5889916d70e\",\n      \"title\": \"dokumentieren ihre Projektarbeit geeignet.\",\n      \"description\": \"dokumentieren ihre Projektarbeit geeignet.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n",
+      "limits": "Existing retained BY source snapshot; not a newly authored target policy, mapping approval or unconditional transfer between tracks."
+    },
+    {
+      "id": "by12-late-complete",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+        "bytes": 145623,
+        "sha256": "3a8e89378e96b650414442c876153b774fba5ec2d5bf8fe00dbe2410044b7502"
+      },
+      "jsonPointerRange": [
+        "/goals/183",
+        "/goals/212"
+      ],
+      "startLineOneBased": 2234,
+      "endLineOneBased": 2593,
+      "goalCount": 30,
+      "excerptSha256": "e2379ae7e4ed5472d3d5507d6ff0d83c4d07374701953fbfb64414cd9d362471",
+      "text": "    {\n      \"id\": \"eef84a49-9de2-5519-884e-66d5fbb93b68\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 1: Objektorientierte Modellierung und Programmierung (ca. 37 Std.)\",\n      \"contains\": [\n        \"e184d6d8-072e-5069-8f38-62b9dea902cf\",\n        \"60d32524-e7ee-5937-ab21-956425641355\",\n        \"a5207089-00f5-596c-8de2-bda73cbcf42e\",\n        \"02a2e872-30ef-55ae-a9c1-2246c73c9cdf\",\n        \"cca575a2-7da5-5efc-a875-2aedbd5679e6\",\n        \"7af670fb-e05f-5720-943a-02d4ded5f010\",\n        \"8effc00e-70da-5afd-926a-2b324f57834d\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"e184d6d8-072e-5069-8f38-62b9dea902cf\",\n      \"title\": \"analysieren Objekte hinsichtlich ihrer Attribute und Methoden, abstrahieren sie zu Klassen und stell...\",\n      \"description\": \"analysieren Objekte hinsichtlich ihrer Attribute und Methoden, abstrahieren sie zu Klassen und stellen Objekte und Klassen grafisch dar.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"60d32524-e7ee-5937-ab21-956425641355\",\n      \"title\": \"deklarieren Klassen sowie die zugehörigen Attribute und Methoden in einer objektorientierten Program...\",\n      \"description\": \"deklarieren Klassen sowie die zugehörigen Attribute und Methoden in einer objektorientierten Programmiersprache.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"a5207089-00f5-596c-8de2-bda73cbcf42e\",\n      \"title\": \"implementieren Methoden auf der Grundlage gegebener oder selbst entwickelter Algorithmen. Dabei über...\",\n      \"description\": \"implementieren Methoden auf der Grundlage gegebener oder selbst entwickelter Algorithmen. Dabei übertragen sie ihre Kenntnisse über Variablen, Kontrollstrukturen und Funktionen auf eine objektorientierte Programmiersprache.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"02a2e872-30ef-55ae-a9c1-2246c73c9cdf\",\n      \"title\": \"analysieren im Rahmen einfacher Beispiele aus der Praxis (etwa der Mitgliederverwaltung eines Verein...\",\n      \"description\": \"analysieren im Rahmen einfacher Beispiele aus der Praxis (etwa der Mitgliederverwaltung eines Vereins) Beziehungen zwischen Objekten verschiedener Klassen und modellieren sie in Objekt- und Klassendiagrammen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"cca575a2-7da5-5efc-a875-2aedbd5679e6\",\n      \"title\": \"implementieren die im Klassendiagramm festgelegten Beziehungen durch Referenzen, um während der Lauf...\",\n      \"description\": \"implementieren die im Klassendiagramm festgelegten Beziehungen durch Referenzen, um während der Laufzeit des Programms die Kommunikation zwischen den entsprechenden Objekten durch den Aufruf geeigneter Methoden zu ermöglichen. Dabei wenden sie insbesondere eine eindimensional indizierte Datenstruktur zur Speicherung und Verwaltung gleichartiger Referenzen an.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"7af670fb-e05f-5720-943a-02d4ded5f010\",\n      \"title\": \"modellieren durch Klassendiagramme Generalisierungshierarchien zu Strukturen aus ihrer Erfahrungswel...\",\n      \"description\": \"modellieren durch Klassendiagramme Generalisierungshierarchien zu Strukturen aus ihrer Erfahrungswelt.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"8effc00e-70da-5afd-926a-2b324f57834d\",\n      \"title\": \"implementieren mithilfe einer objektorientierten Sprache Generalisierungshierarchien, indem sie das ...\",\n      \"description\": \"implementieren mithilfe einer objektorientierten Sprache Generalisierungshierarchien, indem sie das Konzept der Vererbung anwenden; sie nutzen dabei die Möglichkeit, Methoden zu überschreiben, und erläutern dabei das Konzept des Polymorphismus zur Implementierung verschiedener Verhaltensweisen, z. B. zur spartenabhängigen Berechnung der Mitgliedsbeiträge eines Sportvereins.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"1ef168b1-857b-5199-af14-fbe526b1d432\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 2: Rekursion (ca. 5 Std.)\",\n      \"contains\": [\n        \"8013febf-c9d7-53b7-90e7-6f73a713fd5f\",\n        \"5b79a990-6768-5bae-a4fd-2e9734f594e0\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"8013febf-c9d7-53b7-90e7-6f73a713fd5f\",\n      \"title\": \"analysieren rekursive Algorithmen und erläutern das Prinzip der Rekursion. Dabei vergleichen sie ite...\",\n      \"description\": \"analysieren rekursive Algorithmen und erläutern das Prinzip der Rekursion. Dabei vergleichen sie iterative und rekursive Algorithmen für geeignete Problemstellungen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"5b79a990-6768-5bae-a4fd-2e9734f594e0\",\n      \"title\": \"implementieren rekursive Algorithmen zur Lösung von Problemen und Aufgaben, wie z. B. Berechnung des...\",\n      \"description\": \"implementieren rekursive Algorithmen zur Lösung von Problemen und Aufgaben, wie z. B. Berechnung des ggT, Erzeugung selbstähnlicher Figuren, Türme von Hanoi.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"a90496fe-da40-5630-9e31-55ed0da0fdb2\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 3: Listen (ca. 11 Std.)\",\n      \"contains\": [\n        \"1d43c244-9f47-5743-a26b-90f82a369fa6\",\n        \"029c7419-494e-50d5-babe-e36093d6d4cc\",\n        \"29b8b03d-10ce-5bbe-ad40-29c567c257c9\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"1d43c244-9f47-5743-a26b-90f82a369fa6\",\n      \"title\": \"modellieren mithilfe einfach verketteter Listen lineare Datenstrukturen aus verschiedenen Situatione...\",\n      \"description\": \"modellieren mithilfe einfach verketteter Listen lineare Datenstrukturen aus verschiedenen Situationen ihres Lebensumfeldes, z. B. eine Playlist. Sie nutzen dabei das Konzept der Trennung von Struktur und Daten.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"029c7419-494e-50d5-babe-e36093d6d4cc\",\n      \"title\": \"entwickeln für eine einfach verkettete Liste Algorithmen zum Einfügen bzw. Löschen von Elementen an ...\",\n      \"description\": \"entwickeln für eine einfach verkettete Liste Algorithmen zum Einfügen bzw. Löschen von Elementen an beliebiger Stelle sowie zum Durchlaufen der Liste, um z. B. Elemente zu suchen oder zu verändern. Dabei nutzen sie das Prinzip der Rekursion.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"29b8b03d-10ce-5bbe-ad40-29c567c257c9\",\n      \"title\": \"implementieren einfach verkettete Listen und die zugehörigen Algorithmen mithilfe einer objektorient...\",\n      \"description\": \"implementieren einfach verkettete Listen und die zugehörigen Algorithmen mithilfe einer objektorientierten Programmiersprache.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"22ce5b6f-f41a-5f33-801f-a33e827af890\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 4: Graphen (ca. 10 Std.)\",\n      \"contains\": [\n        \"defff42b-dc4b-53b0-9409-58578ef3c850\",\n        \"7182e1c6-9181-5fe0-9815-5a6eb7e9a6a4\",\n        \"5ec1804d-9933-54c5-b1bc-6f4b1823fcb5\",\n        \"829ee59c-2a60-5a8a-b73c-64711104c8e2\",\n        \"bfb5ecef-6ae1-5683-b81a-c17c49d8e27b\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"defff42b-dc4b-53b0-9409-58578ef3c850\",\n      \"title\": \"modellieren im Rahmen praktischer Fragestellungen vernetzte Strukturen als Graphen und klassifiziere...\",\n      \"description\": \"modellieren im Rahmen praktischer Fragestellungen vernetzte Strukturen als Graphen und klassifizieren diese anhand ihrer Eigenschaften.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"7182e1c6-9181-5fe0-9815-5a6eb7e9a6a4\",\n      \"title\": \"implementieren unter Verwendung einer Adjazenzmatrix die Datenstruktur Graph.\",\n      \"description\": \"implementieren unter Verwendung einer Adjazenzmatrix die Datenstruktur Graph.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"5ec1804d-9933-54c5-b1bc-6f4b1823fcb5\",\n      \"title\": \"erläutern die Idee der Tiefensuche, formulieren den zugehörigen Algorithmus und wenden diesen an kon...\",\n      \"description\": \"erläutern die Idee der Tiefensuche, formulieren den zugehörigen Algorithmus und wenden diesen an konkreten Beispielen an.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"829ee59c-2a60-5a8a-b73c-64711104c8e2\",\n      \"title\": \"implementieren den Tiefensuche-Algorithmus und modifizieren diesen in geeigneter, vom Anwendungskont...\",\n      \"description\": \"implementieren den Tiefensuche-Algorithmus und modifizieren diesen in geeigneter, vom Anwendungskontext abhängiger Weise, z. B. bei der Auswahl oder Bearbeitung aller erreichbaren Knoten mit bestimmten Eigenschaften.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"bfb5ecef-6ae1-5683-b81a-c17c49d8e27b\",\n      \"title\": \"analysieren und erläutern die Funktionsweise des Dijkstra-Algorithmus, wenden diesen an konkreten Be...\",\n      \"description\": \"analysieren und erläutern die Funktionsweise des Dijkstra-Algorithmus, wenden diesen an konkreten Beispielen an und erläutern dessen Alltagsrelevanz.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"d22b170b-a3b6-5716-b95e-0261f7643b7b\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 5: Informationssicherheit (ca. 6 Std.)\",\n      \"contains\": [\n        \"b9987859-5e8c-5970-a710-85f3bb5a3fad\",\n        \"41135600-0ecc-5038-bcf5-947f55adcbde\",\n        \"26f5f253-1d3f-5678-a8dc-6c5d00a9b3d8\",\n        \"806a74b1-f415-56b6-a5b7-f5a907559058\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"b9987859-5e8c-5970-a710-85f3bb5a3fad\",\n      \"title\": \"bewerten Regelungen zum Datenschutz im Spannungsfeld zwischen den Persönlichkeitsrechten des Einzeln...\",\n      \"description\": \"bewerten Regelungen zum Datenschutz im Spannungsfeld zwischen den Persönlichkeitsrechten des Einzelnen und wirtschaftlichen sowie öffentlichen Interessen, beispielsweise bei der polizeilichen Fahndung.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"41135600-0ecc-5038-bcf5-947f55adcbde\",\n      \"title\": \"analysieren exemplarisch ein Informatiksystem (z. B. Smartphone-App, Smarthome-System, Informatiksys...\",\n      \"description\": \"analysieren exemplarisch ein Informatiksystem (z. B. Smartphone-App, Smarthome-System, Informatiksystem eines Unternehmens) hinsichtlich der Umsetzung wichtiger Schutzziele der Informationssicherheit und bewerten das Erreichen dieser Ziele. Dabei wird ihnen der Zusammenhang zwischen den Schutzzielen und den datenschutzrechtlichen Vorgaben bewusst.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"26f5f253-1d3f-5678-a8dc-6c5d00a9b3d8\",\n      \"title\": \"beschreiben verschiedene Arten der Gefährdung eines Informatiksystems.\",\n      \"description\": \"beschreiben verschiedene Arten der Gefährdung eines Informatiksystems.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"806a74b1-f415-56b6-a5b7-f5a907559058\",\n      \"title\": \"erläutern Maßnahmen, die die Informationssicherheit und den Schutz personenbezogener Daten gewährlei...\",\n      \"description\": \"erläutern Maßnahmen, die die Informationssicherheit und den Schutz personenbezogener Daten gewährleisten sollen. In diesem Kontext werden ihnen technische und wirtschaftliche Grenzen bewusst.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"d1f8c0a0-9ac3-5854-9cb3-28db601e9ccc\",\n      \"title\": \"spät beginnende Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 6: Praktische Softwareentwicklung, Projekt (ca. 15 Std.)\",\n      \"contains\": [\n        \"01e92320-6132-5b16-ab10-0c208680def6\",\n        \"b8df8af3-db70-5b81-a614-05689c932a70\",\n        \"4051d6c8-afad-5c0f-909d-a1c302620917\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"01e92320-6132-5b16-ab10-0c208680def6\",\n      \"title\": \"nutzen Klassen aus einer Programmbibliothek, z. B. zur Implementierung einer grafischen Benutzerober...\",\n      \"description\": \"nutzen Klassen aus einer Programmbibliothek, z. B. zur Implementierung einer grafischen Benutzeroberfläche.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"b8df8af3-db70-5b81-a614-05689c932a70\",\n      \"title\": \"beschreiben anhand des Wasserfallmodells Phasen für den Ablauf von Softwareprojekten und vergleichen...\",\n      \"description\": \"beschreiben anhand des Wasserfallmodells Phasen für den Ablauf von Softwareprojekten und vergleichen dieses mit einem Modell aus der agilen Softwareentwicklung.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"4051d6c8-afad-5c0f-909d-a1c302620917\",\n      \"title\": \"führen ein Softwareprojekt zu einer einfachen Aufgabenstellung aus der Praxis (z. B. Mitgliederverwa...\",\n      \"description\": \"führen ein Softwareprojekt zu einer einfachen Aufgabenstellung aus der Praxis (z. B. Mitgliederverwaltung eines Vereins, einfaches Spiel) gemäß einem Vorgehensmodell der Softwareentwicklung im Team eigenverantwortlich und arbeitsteilig durch.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n",
+      "limits": "Existing retained BY source snapshot; not a newly authored target policy, mapping approval or unconditional transfer between tracks."
+    },
+    {
+      "id": "by12-basic-information-security-and-project",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+        "bytes": 145623,
+        "sha256": "3a8e89378e96b650414442c876153b774fba5ec2d5bf8fe00dbe2410044b7502"
+      },
+      "jsonPointerRange": [
+        "/goals/121",
+        "/goals/132"
+      ],
+      "startLineOneBased": 1490,
+      "endLineOneBased": 1633,
+      "goalCount": 12,
+      "excerptSha256": "6d9dca2cb8363d1ae34446b3f0eb37361c4f383215da80f1200156f8789ad8d3",
+      "text": "    {\n      \"id\": \"a9903727-9e5a-57f0-820d-d4cf7cc3c74a\",\n      \"title\": \"Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 5: Informationssicherheit (ca. 6 Std.)\",\n      \"contains\": [\n        \"fc9a295e-0719-5f71-bcfc-02dd7d3a328e\",\n        \"9508878b-9f33-53da-a3be-bc712472dbc8\",\n        \"10d190bf-43eb-5a38-af17-66d8028e617e\",\n        \"d972b186-b4f6-5849-bc77-d6300e54b941\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"fc9a295e-0719-5f71-bcfc-02dd7d3a328e\",\n      \"title\": \"analysieren exemplarisch ein Informatiksystem (z. B. Smartphone-App, Smarthome-System, Informatiksys...\",\n      \"description\": \"analysieren exemplarisch ein Informatiksystem (z. B. Smartphone-App, Smarthome-System, Informatiksystem eines Unternehmens) hinsichtlich der Umsetzung wichtiger Schutzziele der Informationssicherheit und bewerten das Erreichen dieser Ziele.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"9508878b-9f33-53da-a3be-bc712472dbc8\",\n      \"title\": \"beschreiben verschiedene Arten der Gefährdung eines Informatiksystems und analysieren ein mögliches ...\",\n      \"description\": \"beschreiben verschiedene Arten der Gefährdung eines Informatiksystems und analysieren ein mögliches Angriffsszenario.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"10d190bf-43eb-5a38-af17-66d8028e617e\",\n      \"title\": \"erläutern Maßnahmen, die die Informationssicherheit gewährleisten sollen. In diesem Kontext werden i...\",\n      \"description\": \"erläutern Maßnahmen, die die Informationssicherheit gewährleisten sollen. In diesem Kontext werden ihnen technische und wirtschaftliche Grenzen bewusst.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"d972b186-b4f6-5849-bc77-d6300e54b941\",\n      \"title\": \"erörtern verschiedene Perspektiven einer Fragestellung der Informationssicherheit, z. B. Offenlegung...\",\n      \"description\": \"erörtern verschiedene Perspektiven einer Fragestellung der Informationssicherheit, z. B. Offenlegung oder Nichtoffenlegung von Schwachstellen. Dabei berücksichtigen sie individuelle und gesellschaftliche Auswirkungen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"b9ed9524-8d24-5e92-9b9f-a74c6d8fbfa3\",\n      \"title\": \"Informatik 12 (grundlegendes Anforderungsniveau): Inf12 Lernbereich 6: Praktische Softwareentwicklung, Projekt (ca. 26 Std.)\",\n      \"contains\": [\n        \"4893abd3-a70e-583c-87f9-4782efcf5425\",\n        \"bca7a0a2-3ff8-599f-b322-83b1598d6348\",\n        \"4cc5f7f5-4488-5752-80e4-580b4c281c65\",\n        \"63cc28c1-0cc5-5dcc-a5b4-ecf84aa2ae72\",\n        \"6299648e-e342-5267-99f1-47ba208cb127\",\n        \"036a55ac-7a99-513b-a853-4342d5e01f10\"\n      ],\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"weight\": 0,\n      \"description\": \"\"\n    },\n    {\n      \"id\": \"4893abd3-a70e-583c-87f9-4782efcf5425\",\n      \"title\": \"nutzen Klassen aus einer Programmbibliothek und verwenden dabei die zugehörige Dokumentation.\",\n      \"description\": \"nutzen Klassen aus einer Programmbibliothek und verwenden dabei die zugehörige Dokumentation.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"bca7a0a2-3ff8-599f-b322-83b1598d6348\",\n      \"title\": \"implementieren einfache grafische Benutzeroberflächen.\",\n      \"description\": \"implementieren einfache grafische Benutzeroberflächen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"4cc5f7f5-4488-5752-80e4-580b4c281c65\",\n      \"title\": \"erläutern die Grundidee des Architekturmusters Model-View-Controller.\",\n      \"description\": \"erläutern die Grundidee des Architekturmusters Model-View-Controller.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"63cc28c1-0cc5-5dcc-a5b4-ecf84aa2ae72\",\n      \"title\": \"überprüfen die Funktionalität eines vorgegebenen Softwareprodukts mit unterschiedlichen Testverfahre...\",\n      \"description\": \"überprüfen die Funktionalität eines vorgegebenen Softwareprodukts mit unterschiedlichen Testverfahren, nutzen das Prinzip der Refaktorierung zur Verbesserung des Quelltexts und dokumentieren diesen.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"6299648e-e342-5267-99f1-47ba208cb127\",\n      \"title\": \"beschreiben anhand des Wasserfallmodells Phasen für den Ablauf von Softwareprojekten und vergleichen...\",\n      \"description\": \"beschreiben anhand des Wasserfallmodells Phasen für den Ablauf von Softwareprojekten und vergleichen dieses mit einem Modell aus der agilen Softwareentwicklung.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n    {\n      \"id\": \"036a55ac-7a99-513b-a853-4342d5e01f10\",\n      \"title\": \"führen ein Softwareprojekt zu einer Aufgabenstellung aus der Praxis (z. B. Software zur Inventarverw...\",\n      \"description\": \"führen ein Softwareprojekt zu einer Aufgabenstellung aus der Praxis (z. B. Software zur Inventarverwaltung, einfaches Spiel, Software für eine Smarthome-Anwendung) gemäß einem Vorgehensmodell der Softwareentwicklung im Team eigenverantwortlich und arbeitsteilig unter Verwendung eines Versionsverwaltungssystems durch.\",\n      \"dimensionTags\": {\n        \"phase\": \"GLOBAL\"\n      },\n      \"requires\": [],\n      \"contains\": [],\n      \"weight\": 0\n    },\n",
+      "limits": "Existing retained BY source snapshot; not a newly authored target policy, mapping approval or unconditional transfer between tracks."
+    },
+    {
+      "id": "he-extraction-source-metadata",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_INFORMATIK_SEKII_KC2024.source-extraction.json",
+        "bytes": 233251,
+        "sha256": "879a22b9334f184dd0130e5551886760b8b53e5e0f0c98fa5d30644bd8def666"
+      },
+      "startLineOneBased": 1,
+      "endLineOneBased": 21,
+      "excerptSha256": "f24eabecfaa4a5b9f435d10618b6cd1eb6629a3ce6a69bd27833c9111c506161",
+      "text": "{\n  \"schemaVersion\": 1,\n  \"extractionId\": \"DE_HE_INFORMATIK_SEKII_KC2024\",\n  \"sourceLandscapeId\": \"c1a02ddd-736d-4975-920b-18b03aff147f\",\n  \"title\": \"Informatik Oberstufe (Hessen, KC 2024)\",\n  \"jurisdiction\": \"DE-HE\",\n  \"subject\": \"Informatik\",\n  \"stage\": \"SekII\",\n  \"sourceDocument\": {\n    \"title\": \"Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024\",\n    \"path\": \"curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot\",\n    \"url\": \"https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf\"\n  },\n  \"sourceDocuments\": [\n    {\n      \"title\": \"Kerncurriculum Gymnasiale Oberstufe Informatik Hessen 2024\",\n      \"path\": \"curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_INFORMATIK.de.json.snapshot\",\n      \"url\": \"https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf\"\n    }\n  ],\n  \"method\": \"Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.\",\n"
+    },
+    {
+      "id": "by-extraction-source-metadata",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_INFORMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "bytes": 487799,
+        "sha256": "4fcc7adc250439990cd99a14dc6a8b870ed7e15572a0d674669a89bca3beee53"
+      },
+      "startLineOneBased": 1,
+      "endLineOneBased": 21,
+      "excerptSha256": "d48ecd7f668e8b8cbc207f9f61a720e0a0526901e7e6cd30d3def68ad31c097e",
+      "text": "{\n  \"schemaVersion\": 1,\n  \"extractionId\": \"DE_BY_INFORMATIK_GYMNASIUM_LEHRPLANPLUS\",\n  \"sourceLandscapeId\": \"1af3eba8-749f-5359-8f12-18f87b13616c\",\n  \"title\": \"Informatik (Gymnasium)\",\n  \"jurisdiction\": \"DE-BY\",\n  \"subject\": \"Informatik\",\n  \"stage\": \"SekI+SekII\",\n  \"sourceDocument\": {\n    \"title\": \"LehrplanPLUS Bayern Gymnasium Informatik\",\n    \"path\": \"curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json\",\n    \"url\": \"https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/informatik\"\n  },\n  \"sourceDocuments\": [\n    {\n      \"title\": \"LehrplanPLUS Bayern Gymnasium Informatik\",\n      \"path\": \"curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json\",\n      \"url\": \"https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/informatik\"\n    }\n  ],\n  \"method\": \"Source snapshot converted into reviewed mapping pipeline artifact; existing source-goal registry and seed mappings remain the evidence base.\",\n"
+    },
+    {
+      "id": "retained-la26-informatik-full",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/la26_abiturerlass_informatik.txt",
+        "bytes": 2356,
+        "sha256": "d05d3cab39433d113f37604027b1e6b1f7285e61a8be50b49a21ef212e8a0edf"
+      },
+      "startLineOneBased": 1,
+      "endLineOneBased": 58,
+      "excerptSha256": "d05d3cab39433d113f37604027b1e6b1f7285e61a8be50b49a21ef212e8a0edf",
+      "text": "Informatik - Landesabitur Hessen 2026\nAuszug aus dem allgemeinen Abiturerlass, Abschnitt 23\n\n23.1 Kursart\nGrundlegendes/erhoehtes Niveau (Grundkurs/Leistungskurs)\n\n23.2 Struktur der Pruefungsaufgaben\nAufgabenart nach EPA Informatik in der Fassung vom 5. Februar 2004.\nDie Pflichtaufgabe A zum Halbjahresthema Algorithmik und objektorientierte\nModellierung wird im Grund- und im Leistungskurs in den beiden Sprachvarianten\nJava und Python angeboten. Dem Pruefling wird die Aufgabe A in der Sprachvariante\nvorgelegt, die im Unterricht benutzt wurde.\nFuer den Leistungskurs liegt der weiteren Pflichtaufgabe B entweder das\nKurshalbjahr Datenbanken oder das Kurshalbjahr Konzepte und Anwendungen der\ntheoretischen Informatik zugrunde.\n\n23.3 Auswahlmodus\nIm Grundkurs werden dem Pruefling zusaetzlich zur Pflichtaufgabe A zwei\nAufgabenvorschlaege B1 und B2, entweder zum Kurshalbjahr Datenbanken oder zum\nKurshalbjahr Konzepte und Anwendungen der theoretischen Informatik, zur Auswahl\nvorgelegt. Der Pruefling bearbeitet somit zwei Aufgaben, die sich\nschwerpunktmaessig auf die Inhalte zweier unterschiedlicher Kurshalbjahre beziehen.\n\nIm Leistungskurs werden dem Pruefling zusaetzlich zu den Pflichtaufgaben A und B\nzwei weitere Aufgabenvorschlaege C1 und C2 zur Auswahl vorgelegt. Diesen beiden\nAufgabenvorschlaegen liegt das Kurshalbjahr zugrunde, das durch die beiden\nPflichtaufgaben nicht abgedeckt ist. Der Pruefling bearbeitet somit drei Aufgaben,\ndie sich schwerpunktmaessig auf die Inhalte dreier unterschiedlicher Kurshalbjahre\nbeziehen.\n\n23.4 Hinweise zum Pruefungsinhalt - Schwerpunktkern 2026\nGrundlegendes Niveau (Grundkurs)\nQ1.1 Such- und Sortieralgorithmen\nQ1.2 Rekursion\nQ1.3 Klassen und Objekte\nQ2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra\nQ3.1 Zeitkomplexitaet und Berechenbarkeit\nQ3.2 Endliche Automaten\nQ3.3 Formale Sprachen und Grammatiken\n\nErhoehtes Niveau (Leistungskurs)\nQ1.1 Such- und Sortieralgorithmen\nQ1.2 Rekursion\nQ1.3 Klassen und Objekte\nQ1.4 Hoehere Datenstrukturen und ihre objektorientierte Modellierung\nQ2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra\nQ3.1 Zeitkomplexitaet und Berechenbarkeit\nQ3.2 Endliche Automaten\nQ3.3 Formale Sprachen und Grammatiken\nQ3.5 Registermaschine\n\n23.5 Erlaubte Hilfsmittel\nein Woerterbuch der deutschen Rechtschreibung;\neine Liste der fachspezifischen Operatoren\n"
+    },
+    {
+      "id": "retained-la26-blueprint-draft-metadata",
+      "source": {
+        "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/abi_2026_informatik_exam_blueprint.json",
+        "bytes": 4415,
+        "sha256": "40c7e4c05c778e26f24a68c11fe98366d0ac466d5600a824988d1fe07163a368"
+      },
+      "jsonPointers": [
+        "/examYear",
+        "/frameworkId",
+        "/status",
+        "/sourceFiles",
+        "/selectionMode",
+        "/officialFocusTopics"
+      ],
+      "values": {
+        "examYear": 2026,
+        "frameworkId": "hessen-kc-2024-informatics",
+        "status": "draft",
+        "sourceFiles": [
+          "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+          "curricula/DE/Gymnasium/input/DE-HE/abi/la26-abiturerlass.pdf",
+          "curricula/DE/Gymnasium/input/DE-HE/abi/Informatik/la26_abiturerlass_informatik.txt"
+        ],
+        "selectionMode": {
+          "gk": {
+            "mandatory": [
+              "A"
+            ],
+            "choicePool": [
+              "B1",
+              "B2"
+            ],
+            "pickAdditional": 1
+          },
+          "lk": {
+            "mandatory": [
+              "A",
+              "B"
+            ],
+            "choicePool": [
+              "C1",
+              "C2"
+            ],
+            "pickAdditional": 1
+          }
+        },
+        "officialFocusTopics": [
+          {
+            "officialCode": "Q1.1",
+            "title": "Such- und Sortieralgorithmen",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "f9207c66-1347-4121-bf56-fd3ce0ad4ec9"
+            ],
+            "mappingStatus": "renumbered"
+          },
+          {
+            "officialCode": "Q1.2",
+            "title": "Rekursion",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "e1feb075-47f4-43e9-9f7b-418323dd0fb7"
+            ],
+            "mappingStatus": "renumbered"
+          },
+          {
+            "officialCode": "Q1.3",
+            "title": "Klassen und Objekte",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "9aa30b59-f7bd-49f8-9814-faaeaddbe4e8"
+            ],
+            "mappingStatus": "renumbered"
+          },
+          {
+            "officialCode": "Q1.4",
+            "title": "Hoehere Datenstrukturen und ihre objektorientierte Modellierung",
+            "courseLevels": [
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "431089c2-9152-4387-a142-ba80852d9a7b"
+            ],
+            "mappingStatus": "direct"
+          },
+          {
+            "officialCode": "Q2.1",
+            "title": "ER- und Relationenmodell",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "18f714d2-62ea-440f-be5c-f4c203fe9d90"
+            ],
+            "mappingStatus": "direct"
+          },
+          {
+            "officialCode": "Q2.2",
+            "title": "SQL",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "250ee1b5-a9af-44a9-bfa1-d0322370e32b"
+            ],
+            "mappingStatus": "direct"
+          },
+          {
+            "officialCode": "Q2.5",
+            "title": "Relationenalgebra",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "b12daa97-81eb-4e4c-8039-9c9bc243dcdd"
+            ],
+            "mappingStatus": "direct"
+          },
+          {
+            "officialCode": "Q3.1",
+            "title": "Zeitkomplexitaet und Berechenbarkeit",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "8eee5d80-e5cd-40a4-9f1b-6745c4c08e85",
+              "7fcdd1bc-ee17-4ffe-ae8c-5a4956d871f3"
+            ],
+            "mappingStatus": "partial"
+          },
+          {
+            "officialCode": "Q3.2",
+            "title": "Endliche Automaten",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "074cec9d-b501-405c-a131-be6db239ddad"
+            ],
+            "mappingStatus": "direct"
+          },
+          {
+            "officialCode": "Q3.3",
+            "title": "Formale Sprachen und Grammatiken",
+            "courseLevels": [
+              "GK",
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "f4847d81-6764-4fa7-b9e1-ece381520408"
+            ],
+            "mappingStatus": "renumbered"
+          },
+          {
+            "officialCode": "Q3.5",
+            "title": "Registermaschine",
+            "courseLevels": [
+              "LK"
+            ],
+            "currentCurriculumRefs": [
+              "b76f6f88-78ee-4cdf-a7ce-36109d5eb169"
+            ],
+            "mappingStatus": "direct"
+          }
+        ]
+      },
+      "limits": "Draft implementation artifact; year2026 and frameworkId KC2024 string do not override official cohort transition or establish current universal Q2 scope."
+    }
+  ],
+  "officialWebObservations": [
+    {
+      "id": "he-current-kc-landing",
+      "url": "https://kultus.hessen.de/unterricht/kerncurricula-und-lehrplaene/kerncurricula/kerncurricula-fuer-die-gymnasiale-oberstufe-kcgo",
+      "observedDate": "2026-11-07",
+      "locator": "HTML lines7-10 and Informatik link15",
+      "summaryDe": "Das Ministerium verknüpft die reformierten KCGO mit dem E-Phasen-Halbjahreswechsel2024/25 und nennt das Landesabitur2027 als erste Prüfungsanwendung. Die aktuelle Informatik-Verknüpfung führt zur2025-10-PDF (Ausgabe2024, Stand01.08.2025).",
+      "shortQuote": "erstmals die inhaltliche Grundlage für das Landesabitur 2027"
+    },
+    {
+      "id": "he-cohort-transition",
+      "url": "https://verkuendung.hessen.de/sites/verkuendung.hessen.de/files/veroeffentlichungsplattform_plugin/published/515/GVBl_2024_Nr_62_Regelungstext.pdf",
+      "observedDate": "2026-11-07",
+      "version": "GVBl2024Nr62, Fünfte Änderungsverordnung vom05.11.2024, veröffentlicht13.11.2024",
+      "locator": "PDFpage2, Artikel1Nr4 neuer§5 und Artikel2",
+      "summaryDe": "Die Änderung gilt ab03.02.2025. Wer vor dem Schuljahr2024/25 in die E-Phase eingetreten ist, bleibt hinsichtlich§§1und3 auf der am02.02.2025 geltenden Fassung. Diese Kohortengrenze schließt eine pauschale Rückprojektion des reformierten KCGO auf den Abiturjahrgang2026 aus.",
+      "shortQuote": "Diese Verordnung tritt am 3. Februar 2025 in Kraft."
+    },
+    {
+      "id": "he-exam-rule-index",
+      "url": "https://kultus.hessen.de/schulsystem/schulrecht",
+      "observedDate": "2026-11-07",
+      "locator": "Abitur und Oberstufe, Links15-17",
+      "summaryDe": "Tatsächlich verlinkt sind LA2027 vom02.07.2025, dessen Änderung vom02.02.2026 und LA2028 vom28.05.2026. Es wurde kein beliebiger heute geltender Erlass aus dem Kalenderdatum unterstellt."
+    },
+    {
+      "id": "he-exam-explanation",
+      "url": "https://kultus.hessen.de/schulsystem/schulformen-und-bildungsgaenge/gymnasium/landesabitur",
+      "observedDate": "2026-11-07",
+      "locator": "Rechtliche Grundlagen, HTMLlines26-32",
+      "summaryDe": "Die Ministeriumsseite trennt allgemeine OAVO-Verfahrensregeln von jahrgangsbezogenen inhaltlichen Einzelbestimmungen im Abiturerlass. Diese werden vor Eintritt des betreffenden Jahrgangs in die Q-Phase bekanntgemacht."
+    },
+    {
+      "id": "he-abi27-actual",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-08/abiturerlass_la_2027.pdf",
+      "observedDate": "2026-11-07",
+      "version": "Erlassvom02.07.2025, derzeit verlinkte PDF-Datei08/2026",
+      "locator": "AbschnittIII27.3 Informatik, gedruckteSeiten122-123 (PDFpages130-131)",
+      "summaryDe": "Die tatsächlich gelesene Informatikregel benennt ausdrücklich KCGO Ausgabe2024. Für GK undLK nennt sie in Q2 die Themenfelder1,2,5. Webdatenbankprojekt3 und Datenschutz/Datensicherheit4 werden an dieser Stelle nicht als Q2-Schwerpunktthemen ausgewählt. Das rechtfertigt keine Wegnahme ihrer Fachinhalte aus einem ausdrücklich anders zusammengesetzten eigenen Angebot; ebenso macht es LK-Zusatzanforderungen in1und2 nicht zu GK.",
+      "shortQuote": "Q2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra"
+    },
+    {
+      "id": "he-abi27-amendment-actual",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-02/la27_abiturerlass_aenderungserlass_.pdf",
+      "observedDate": "2026-11-07",
+      "version": "Änderungvom02.02.2026",
+      "locator": "einseitigeÄnderung, Punkte1und2",
+      "summaryDe": "Die gelesene Änderung betrifft das WortEnglisch in AbschnittII9.4 und die Nummerierung Q3.5→Q3.3 in AbschnittIII46.3. Informatik27.3 wird dort nicht geändert. Kein erfundener Informatik-Änderungseffekt."
+    },
+    {
+      "id": "he-abi28-actual",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/abiturerlass_2028.pdf",
+      "observedDate": "2026-11-07",
+      "version": "Erlassvom28.05.2026",
+      "locator": "AbschnittIII27.3 Informatik, gedruckteSeiten124-125 (PDFpages131-132)",
+      "summaryDe": "Auch die tatsächlich gelesene2028-Regel beruft sich auf KCGO Ausgabe2024 und wählt in Q2 für GK undLK die Themenfelder1,2,5. Dies ist ein Beleg für den ausdrücklich benannten Abiturjahrgang2028, kein zeitloser HE-GK-Gesamtvertrag.",
+      "shortQuote": "Q2.1 ER- und Relationenmodell\nQ2.2 SQL\nQ2.5 Relationenalgebra"
+    },
+    {
+      "id": "by-late12-current",
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/informatik/grundlegend-spaet",
+      "observedDate": "2026-11-07",
+      "locator": "Titel und vollständiges Inhaltsverzeichnis, Lernbereiche1bis6",
+      "summaryDe": "Die amtliche Seite unterscheidet ausdrücklich spät beginnende Informatik12 auf grundlegendem Anforderungsniveau. Die sechs Einheiten sind OOP, Rekursion, Listen, Graphen, Informationssicherheit und Softwareprojekt. Eine eigenständige Datenbankeinheit steht dort nicht. Die vorhandenen lokalen Ziele183bis212 bilden diesen eigenen Pfad ab; sein Fehlen im begrenzten Cold-Input belegt kein Fehlen der Quelle im Repo.",
+      "shortQuote": "spät beginnende Informatik 12 (grundlegendes Anforderungsniveau)"
+    },
+    {
+      "id": "by-qualification-overview",
+      "url": "https://www.isb.bayern.de/fileadmin/user_upload/Gymnasium/IlluPA/Inf/IlluPA_Informatik_Uebersichtsblatt.pdf",
+      "observedDate": "2026-11-07",
+      "version": "StandSeptember2023, Abiturab2026",
+      "locator": "Seite1TabelleInformatik/spätbeginnend/Leistungsfach; Seite2Kolloquium",
+      "summaryDe": "Das amtliche ISB-Blatt unterscheidet normale gA-Informatik und spät beginnende gA-Informatik (beide3Stunden) sowie das5-stündige Leistungsfach. Schriftliches Abitur ist für den spät beginnenden Pfad dort ausgeschlossen; mündliches ist möglich. Eine technische GK-Projektion darf diese Unterschiede nicht allein durch ihre Bezeichnung aufheben."
+    }
+  ],
+  "officialHttpBytePins": [
+    {
+      "requestedUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "finalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "status": 200,
+      "bytes": 615541,
+      "sha256": "041053cdecd7dbb3fb936d92f1268c85802f0de0128b9429cfa59aa89fc2780a",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:28:12 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "615541",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Tue, 26 Nov 2024 11:59:33 GMT",
+        "ETag": "\"96475-627cf9513e571\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:32:33 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-CDN": "1",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    },
+    {
+      "name": "kc-official-current",
+      "requestedUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "finalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "httpStatus": 200,
+      "bytes": 667952,
+      "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:29:00 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "667952",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Wed, 08 Oct 2025 05:20:40 GMT",
+        "ETag": "\"a3130-6409ed87663d7\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:34:00 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    },
+    {
+      "name": "abi27",
+      "requestedUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-08/abiturerlass_la_2027.pdf",
+      "finalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-08/abiturerlass_la_2027.pdf",
+      "httpStatus": 200,
+      "bytes": 2809963,
+      "sha256": "bb335202e8b8d7608e9e29f1ee91961f9635562384f628aeaba79ee5ffafa4e5",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:29:00 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "2809963",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Tue, 18 Aug 2026 12:24:03 GMT",
+        "ETag": "\"2ae06b-659515cba3047\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:33:38 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-CDN": "1",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    },
+    {
+      "name": "abi27-amendment",
+      "requestedUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-02/la27_abiturerlass_aenderungserlass_.pdf",
+      "finalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-02/la27_abiturerlass_aenderungserlass_.pdf",
+      "httpStatus": 200,
+      "bytes": 79137,
+      "sha256": "50aac28db5c6bfaeaa4ae7483958cf8a9edba69a64b33043ea0e92ffc8481a01",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:29:00 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "79137",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Mon, 02 Feb 2026 15:21:27 GMT",
+        "ETag": "\"13521-649d8e07166d5\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:33:38 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-CDN": "1",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    },
+    {
+      "name": "abi28",
+      "requestedUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/abiturerlass_2028.pdf",
+      "finalUrl": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2026-07/abiturerlass_2028.pdf",
+      "httpStatus": 200,
+      "bytes": 1517626,
+      "sha256": "5b0bc0aa6268f8b056acab68f195c057b9fec7e00eab6d71c5553d58f395987f",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:29:00 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "1517626",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Tue, 07 Jul 2026 07:25:26 GMT",
+        "ETag": "\"17283a-656004b7d7ee0\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:33:38 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-CDN": "1",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    },
+    {
+      "name": "cohort-regulation",
+      "requestedUrl": "https://verkuendung.hessen.de/sites/verkuendung.hessen.de/files/veroeffentlichungsplattform_plugin/published/515/GVBl_2024_Nr_62_Regelungstext.pdf",
+      "finalUrl": "https://verkuendung.hessen.de/sites/verkuendung.hessen.de/files/veroeffentlichungsplattform_plugin/published/515/GVBl_2024_Nr_62_Regelungstext.pdf",
+      "httpStatus": 200,
+      "bytes": 293631,
+      "sha256": "0a1bb7c7c6b389e803462121b5dda72fb62769e8d17c4e09e19bf4b1f34fdd6a",
+      "headers": {
+        "Server": "myracloud",
+        "Date": "Sat, 07 Nov 2026 04:29:00 GMT",
+        "Content-Type": "application/pdf",
+        "Content-Length": "293631",
+        "Connection": "close",
+        "X-Xss-Protection": "1; mode=block",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "default-src https: data: blob: 'unsafe-inline' 'unsafe-eval' http://img.youtube.com",
+        "X-Content-Type-Options": "nosniff",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+        "Last-Modified": "Wed, 13 Nov 2024 05:24:11 GMT",
+        "ETag": "\"47aff-626c48b3d7357\"",
+        "Cache-Control": "max-age=300",
+        "Expires": "Sat, 07 Nov 2026 04:33:20 GMT",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-CDN": "1",
+        "Accept-Ranges": "bytes"
+      },
+      "capturedAtDate": "2026-11-07"
+    }
+  ],
+  "keyFindingsDe": [
+    "Die gebundene Cold-KC-PDF ist Ausgabe 2024, Stand 01.08.2025, und exakt bytegleich mit der amtlich aktuell verlinkten 2025-10-PDF.",
+    "Die im Source-Artifact hinterlegte 2024-11-URL liefert heute eine andere ältere PDF (041053cd...), nicht die gebundenen af0234cb-Bytes.",
+    "Die amtliche Kohortenregel legt die Reform ab E-Phase 2024/25 fest; die Ministeriumsseite weist die Erstanwendung im Landesabitur 2027 aus.",
+    "Der 2026-Erlass ist eine vorhandene historische Quelle; 2027 und 2028 wurden zusätzlich wirklich geöffnet und wählen Q2.1/2/5 für GK und LK.",
+    "Der spät beginnende BY12-Pfad ist im Repo präzise vorhanden und amtlich abrufbar; das Fehlen im kalten Input ist keine Repo-Absenz."
+  ],
+  "coldInputGuard": {
+    "inputs": [
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/assessment-criteria-binding.json",
+        "sha256": "ce46ea2909ea72d91a927280ed875def1486cfc33f69f8a88d04b2bf3676c061",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/criteria.md",
+        "sha256": "aec3348fabffa1fa42f47c29172e9a10fa330a13e423573379952dad65255168",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/current-goal-definitions.json",
+        "sha256": "672dba695c493be2b69bc7a54400b3ff84ced2be573b2431a2ff1374ac7f55b7",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/data.sql",
+        "sha256": "42da87abe1a76585783998253e3247df29bad2569adda54b96aaea31a304e90d",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/materials.md",
+        "sha256": "ae0b6048f5d9162840d422eac2ae605207a4551a464f87be9dddfc3ba007df09",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/native-assessment-contract.txt",
+        "sha256": "5ab9afbe3d925e0df813b13cb45c1f5c600b457d9e034c175a9e4523704e2ba9",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/native-scope-binding.json",
+        "sha256": "409cb3e64f0c315847bdfba358b2a93e6fda0756d69a6530bddbebcc17a6b55e",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/new-goal-definition.json",
+        "sha256": "db8f2125cc464ad8377024bf90f6e7b7fbf421ac899320c524f9ef12b2f8b876",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-source-manifest.json",
+        "sha256": "516c51e50f988f90dbe24a838f6b2252af14b00692128c010f0f28381059ee10",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics10.html.gz",
+        "sha256": "5ca562252d9e1023a448b0a8e90bbae793363f999369b713fe068069ffd4f261",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics10.txt",
+        "sha256": "2eb5d17c72b87863cc72bdedaa392fa6d54520c5aee6292ad99927db3d663e9f",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics11-late.html.gz",
+        "sha256": "ed813b3eb2be805515748e2beb2d908c2e35ff656121e200449b355c8257d5c3",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics11-late.txt",
+        "sha256": "e641e87bbabdf47cbebdea0703873f7c89254420fd1f6463c1edebe820e39f91",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics11-ntg.html.gz",
+        "sha256": "ae84e5e6324b6af6c24eaa9bbe9cfa69a670565775af219fc3b0634a5e48d348",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics11-ntg.txt",
+        "sha256": "af38e5198fe9363535c41d7947f5172c33a90c4219827065f60124f556da9e70",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics12-basic.html.gz",
+        "sha256": "e94b2c167719a5cd4e18ce403667437c1c9aaa00744faca3f11afbf2293900d5",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics12-basic.txt",
+        "sha256": "3af3000aaecf73e17bd83bae620a4554646f4b3a666c7af4daa71c982d3b5964",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics13-basic.html.gz",
+        "sha256": "6c7a2ca4a233251689552f0fadfd8076036d2307c338276ebac18cef7e10cecc",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/by-informatics13-basic.txt",
+        "sha256": "d286c963db998a524a6b8c4f59e8bb277748b032d1c5030cd720d9589cdfca2d",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/he-kc2024-page36.txt",
+        "sha256": "9125f71f8be161144554b0bf7cb373b7d06afb8ea2205fb5953781961cde354c",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/he-kc2024-page37.txt",
+        "sha256": "ff4ec79c6b24a379cd749d9dd8bb361d3d4db8acb225676c780727b009422d01",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-sources/he-kc2024-page38.txt",
+        "sha256": "f6cb5fc17019bb200370cc271cba595afbbda7aef7a404015109a7e853ef964a",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/reference.py",
+        "sha256": "c2aa8ab48b6b1894a4c9d073e0b41e9ee8cf37dc0fe33ab6af4cb641bbc028e9",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/review-sheet.json",
+        "sha256": "ba161b9b235630c1107791bd24d236307649ed299f21a4b864b10e1298e51ac8",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/rubric.json",
+        "sha256": "131f5b15228ca4bff2e3c2cf7f56c35fab80b89fc35f8e1539239a7370b8c424",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/solutions.md",
+        "sha256": "2d6fbf76416b532cd59ee0a42896505aca9baef7e484c194c72d9f5c407a19e4",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/tasks.md",
+        "sha256": "4fa3e80a5774c5189b278b7696c890511d9fad828cd72db39857ab452bba5e46",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+        "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+        "matchesPinnedColdInput": true
+      },
+      {
+        "path": "docs/qa-ci/curriculum-quality-maturity-and-routes.md",
+        "sha256": "9bebd640355115aae57f578133d67edc2c7975a762acb4ee5211c7fbe3d4ac13",
+        "matchesPinnedColdInput": true
+      }
+    ],
+    "coldInputCount": 27,
+    "externalVerificationCount": 3,
+    "all27Plus3Unchanged": true
+  },
+  "limits": [
+    "Evidence input only; normative scope decision belongs to the subsequent Astra analysis.",
+    "No22-goal count, universal national Pflichtlehrplan, new GK entitlement for full LK goals, or current individualized cohort selection is inferred.",
+    "The two actually retrieved2027/2028 rules close only their expressly named cohort-specific choice question.",
+    "Retained2026 blueprint remains draft and old41er/875 results and new draft identities are not redefined or merged.",
+    "New web-only documents are represented by short quotes, paraphrases, page/section locators and exact byte pins, not whole PDFs or long quotations.",
+    "No Git, active source, QA, mapping, learner or approval-state mutation."
+  ],
+  "finalLocalSourceGuards": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/review.md",
+      "sha256": "1904f6ec515948ac146c1133267339145ee738fed77dcc203e402ca120b688f4",
+      "unchanged": true
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/scope-review.json",
+      "sha256": "c215ffd47325daa241109af36aafab6808d86f80ff8a08edf46464008998bedb",
+      "unchanged": true
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-independent-cold-scope-review/review-provenance.json",
+      "sha256": "b4b9e777bf80c0041c414257808c0dd2a9394647d258523b1e92a8f76a1bd964",
+      "unchanged": true
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-gk22-assessment-candidate/cold-inputs/primary-source-manifest.json",
+      "sha256": "516c51e50f988f90dbe24a838f6b2252af14b00692128c010f0f28381059ee10",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+      "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_INFORMATIK_SEKII_KC2024.source-extraction.json",
+      "sha256": "879a22b9334f184dd0130e5551886760b8b53e5e0f0c98fa5d30644bd8def666",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/la26-abiturerlass.pdf",
+      "sha256": "41f6c480cb64a0448c089ef1ac173b5ebff9c2932d6337765424074222a0fee5",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/la26_abiturerlass_informatik.txt",
+      "sha256": "d05d3cab39433d113f37604027b1e6b1f7285e61a8be50b49a21ef212e8a0edf",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/Informatik/abi_2026_informatik_exam_blueprint.json",
+      "sha256": "40c7e4c05c778e26f24a68c11fe98366d0ac466d5600a824988d1fe07163a368",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Informatik.json",
+      "sha256": "3a8e89378e96b650414442c876153b774fba5ec2d5bf8fe00dbe2410044b7502",
+      "unchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_INFORMATIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "4fcc7adc250439990cd99a14dc6a8b870ed7e15572a0d674669a89bca3beee53",
+      "unchanged": true
+    }
+  ]
+}

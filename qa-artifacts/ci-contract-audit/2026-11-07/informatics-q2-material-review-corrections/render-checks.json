@@ -1,0 +1,69 @@
+{
+  "method": "Actual unmodified GoalCard + LanguageProvider rendered via React SSR,then Chromium DOM and visual probe;real GoalCard Markdown dependencies bundled from repository",
+  "displayGuard": "Only isolated in-memory presentation clones omit reviewStatus to exercise existing render guard;all pinned inputs stay draft;synthetic mastery prop is a renderer probe,not a learner result",
+  "componentHashes": {
+    "app/src/components/GoalCard.tsx": "ca02ba5f1679ff65524e49287c1473a4dd5cccd95272ef4e91b250441b21acdf",
+    "app/src/contexts/LanguageContext.tsx": "2dc02b6e1f840583b205bb0b289f6061d019fe2c454bfc50b138b506de13765f",
+    "app/src/hooks/useRuntimeCurriculumCatalog.ts": "54e33b4efcaaed02ea0d3f232695d0b0acdbf2e7dfffde1e76344e9592c5bf2a"
+  },
+  "observations": [
+    {
+      "caseId": "C-T07",
+      "code": [
+        {
+          "text": "import sqlite3\nfrom contextlib import closing\nwith closing(sqlite3.connect(db_path)) as con:\n    rows=con.execute('SELECT kid,titel,preis FROM Kurs WHERE preis<=? ORDER BY kid',(max_preis,)).fetchall()\nfor kid,titel,preis in rows:\n    print(kid,titel,preis)\n",
+          "language": "language-python",
+          "whiteSpace": "pre"
+        }
+      ],
+      "paragraphs": [
+        "Lokale Darstellungsprobe",
+        "Bei30: [(10,'Fotobasis',20),(20,'Audiolabor',30),(40,'Datenschutz-Werkstatt',10),(50,'Archiv <offen>',15)]. Verbindung entsteht vor execute, Parameter werden getrennt gebunden, alle Zeilen gelesen und iteriert. Bei Fehler schließt closing; der Server darf danach kontrolliert500 liefern. HTML-Ausgabe ist eine eigene Aufgabe."
+      ],
+      "bodyText": "C-T07\nPrüfungsaufgabe\n\nLokale Darstellungsprobe\n\nMusterlösung\nimport sqlite3\nfrom contextlib import closing\nwith closing(sqlite3.connect(db_path)) as con:\n    rows=con.execute('SELECT kid,titel,preis FROM Kurs WHERE preis<=? ORDER BY kid',(max_preis,)).fetchall()\nfor kid,titel,preis in rows:\n    print(kid,titel,preis)\n\n\nBei30: [(10,'Fotobasis',20),(20,'Audiolabor',30),(40,'Datenschutz-Werkstatt',10),(50,'Archiv <offen>',15)]. Verbindung entsteht vor execute, Parameter werden getrennt gebunden, alle Zeilen gelesen und iteriert. Bei Fehler schließt closing; der Server darf danach kontrolliert500 liefern. HTML-Ausgabe ist eine eigene Aufgabe.",
+      "exactCodeAndIndentation": true
+    },
+    {
+      "caseId": "C-T20",
+      "code": [
+        {
+          "text": "con=sqlite3.connect(db_path)\ntry:\n    cur=con.execute('UPDATE Kurs SET titel=? WHERE kid=?',('Grundlagenkurs',10))\n    affected=cur.rowcount\n    con.commit()\nexcept sqlite3.Error:\n    con.rollback()\n    raise\nfinally:\n    con.close()\nwith closing(sqlite3.connect(db_path)) as check:\n    after=check.execute('SELECT kid,titel FROM Kurs ORDER BY kid').fetchall()\nassert affected==1\n# after=[(10,'Grundlagenkurs'),(20,'Audiolabor'),(30,'Videoschnitt'),(40,'Datenschutz-Werkstatt'),(50,'Archiv <offen>')]\n",
+          "language": "language-python",
+          "whiteSpace": "pre"
+        }
+      ],
+      "paragraphs": [
+        "Lokale Darstellungsprobe",
+        "execute bindet Titel und ID getrennt;kein fetchall() auf UPDATE. SELECT-only oder fehlendes commit mit nur derselben Verbindung beweist den Vertragszustand nicht. Fehler rollback/close nach API."
+      ],
+      "bodyText": "C-T20\nPrüfungsaufgabe\n\nLokale Darstellungsprobe\n\nMusterlösung\ncon=sqlite3.connect(db_path)\ntry:\n    cur=con.execute('UPDATE Kurs SET titel=? WHERE kid=?',('Grundlagenkurs',10))\n    affected=cur.rowcount\n    con.commit()\nexcept sqlite3.Error:\n    con.rollback()\n    raise\nfinally:\n    con.close()\nwith closing(sqlite3.connect(db_path)) as check:\n    after=check.execute('SELECT kid,titel FROM Kurs ORDER BY kid').fetchall()\nassert affected==1\n# after=[(10,'Grundlagenkurs'),(20,'Audiolabor'),(30,'Videoschnitt'),(40,'Datenschutz-Werkstatt'),(50,'Archiv <offen>')]\n\n\nexecute bindet Titel und ID getrennt;kein fetchall() auf UPDATE. SELECT-only oder fehlendes commit mit nur derselben Verbindung beweist den Vertragszustand nicht. Fehler rollback/close nach API.",
+      "exactCodeAndIndentation": true
+    },
+    {
+      "examId": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+      "codeBlocks": 1,
+      "rawHtmlRemainsText": true
+    },
+    {
+      "examId": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+      "codeBlocks": 3,
+      "rawHtmlRemainsText": true
+    },
+    {
+      "examId": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "codeBlocks": 3,
+      "rawHtmlRemainsText": true
+    },
+    {
+      "examId": "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "codeBlocks": 2,
+      "rawHtmlRemainsText": true
+    },
+    {
+      "examId": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+      "codeBlocks": 2,
+      "rawHtmlRemainsText": true
+    }
+  ],
+  "limits": "Not a running full application,production service,learner attempt or client-host acceptance."
+}

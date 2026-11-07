@@ -1,0 +1,20 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {collectCompositionProjectionRoleGoalIds} from '../../../../app/src/utils/authoring/compositionViewAuthoring.ts';
+import {collectWholeMaterialPrerequisiteClosure} from './native-closure-functions.mts';
+const R=process.cwd(),O=R+'/qa-artifacts/ci-contract-audit/2026-11-07/informatics-q2-source-scope-independent-review';
+const path='curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json';
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const before=read(R+'/'+path),candidate=read('/dev/shm/info-source-review/'+path);
+const rootSibling=structuredClone(candidate), special='875cb53c-b48d-5b2b-8cb0-e20f27534f16';
+rootSibling.goals.find((g:any)=>g.id==='31026f4a-629b-571f-b45d-a87f47a09d9e').contains=rootSibling.goals.find((g:any)=>g.id==='31026f4a-629b-571f-b45d-a87f47a09d9e').contains.filter((i:string)=>i!==special);
+rootSibling.goals.find((g:any)=>g.id==='29ec47db-7dfe-553d-b850-40e06f164545').contains.push(special);
+const atoms=(s:any,ids:string[])=>{const m=new Map(s.goals.map((g:any)=>[g.id,g]));const r=collectCompositionProjectionRoleGoalIds(ids.map(goalId=>({kind:'canonicalSubtree',goalId})),m as any);return [...r.targetGoalIds].filter(i=>!(m.get(i)as any)?.contains?.length).sort()};
+const difference=(a:string[],b:string[])=>a.filter(i=>!b.includes(i));
+const rows=before.goals.filter((g:any)=>g.examData).map((b:any)=>{
+ const c=candidate.goals.find((g:any)=>g.id===b.id),r=rootSibling.goals.find((g:any)=>g.id===b.id);
+ const bc=atoms(before,b.examData.coveredGoalIds??[]),cc=atoms(candidate,c.examData.coveredGoalIds??[]),rc=atoms(rootSibling,r.examData.coveredGoalIds??[]);
+ const bp=collectWholeMaterialPrerequisiteClosure(before,b.id),cp=collectWholeMaterialPrerequisiteClosure(candidate,b.id),rp=collectWholeMaterialPrerequisiteClosure(rootSibling,b.id);
+ return {id:b.id,title:b.title,originalAtomicCoverage:bc,candidateAtomicCoverage:cc,coverageAdded:difference(cc,bc),coverageRemoved:difference(bc,cc),rootSiblingCounterfactualCoverageAdded:difference(rc,bc),rootSiblingCounterfactualCoverageRemoved:difference(bc,rc),originalHardPrerequisites:[...bp.atomicGoalIds].sort(),candidateHardPrerequisites:[...cp.atomicGoalIds].sort(),hardPrerequisitesAdded:difference([...cp.atomicGoalIds],[...bp.atomicGoalIds]),hardPrerequisitesRemoved:difference([...bp.atomicGoalIds],[...cp.atomicGoalIds]),rootSiblingCounterfactualHardPrerequisitesAdded:difference([...rp.atomicGoalIds],[...bp.atomicGoalIds]),rootSiblingCounterfactualHardPrerequisitesRemoved:difference([...bp.atomicGoalIds],[...rp.atomicGoalIds])};
+});
+writeFileSync(O+'/full-old-exam-consumer-check.json',JSON.stringify({method:'Native composition descendant expansion and exact native CQR whole-material prerequisite-closure function; read-only in-memory models.',rows,coverageDriftCount:rows.filter(r=>r.coverageAdded.length||r.coverageRemoved.length).length,hardPrerequisiteDriftCount:rows.filter(r=>r.hardPrerequisitesAdded.length||r.hardPrerequisitesRemoved.length).length,rootSiblingCounterfactual:'Existing canonical root owns875 instead of curricular Q3.2; independent basic FSM prerequisite remains, no new node or runtime.'},null,2)+'\n');
+console.log(JSON.stringify(rows.filter(r=>r.coverageAdded.length||r.coverageRemoved.length||r.hardPrerequisitesAdded.length||r.hardPrerequisitesRemoved.length).map(r=>({id:r.id,title:r.title,coverageAdded:r.coverageAdded,hardAdded:r.hardPrerequisitesAdded,hardRemoved:r.hardPrerequisitesRemoved,rootSiblingAdded:r.rootSiblingCounterfactualHardPrerequisitesAdded}))));

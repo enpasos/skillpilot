@@ -1,0 +1,113 @@
+[
+  {
+    "id": "FMR-01",
+    "kind": "fachliche Musterloesungskorrektur",
+    "caseIds": [
+      "C-T21",
+      "B-T21",
+      "F-T21"
+    ],
+    "priority": "required",
+    "claim": "GRANT auf Sicht beseitigt bestehendes Basisrecht nicht.",
+    "evidence": "M5 gibt auskunft anfangs SELECT auf Person/Leser/Gast. T21 führt nur GRANT SELECT ON Sicht aus; jede Aufgabe startet neu. Der Satz kein direkter Person-/Leser-/Gastzugriff beschreibt deshalb den resultierenden Zustand nicht korrekt.",
+    "counterexample": {
+      "before": [
+        "SELECT Person"
+      ],
+      "statement": "GRANT SELECT ON KursAuskunft TO auskunft",
+      "after": [
+        "SELECT Person",
+        "SELECT KursAuskunft"
+      ],
+      "stillAllowed": "SELECT * FROM Person"
+    },
+    "correction": "Zwischen Wirkung des Einzelbefehls und gesamten effektiven Rechten unterscheiden. Bestehendes SELECT auf Person/Leser/Gast ausdrücklich bleibt bestehen; Sollpolitik erst nach gesondertem REVOKE. KriteriumC2 muss korrekte Reichweite bewerten, keine falsche Verneinung verlangen. T25/T33 nicht umdeuten.",
+    "recheck": "Für alle drei Domänen Anfangsrechte, nur GRANT, dann explizites REVOKE mit erlaubten/verbotenen Operationen prüfen; keine Aufgabenfortsetzung ausT25 unterstellen.",
+    "examIds": [
+      "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+    ]
+  },
+  {
+    "id": "FMR-02",
+    "kind": "wesentliche Bewertungsambiguity",
+    "caseIds": [
+      "C-T04",
+      "B-T04",
+      "F-T04"
+    ],
+    "priority": "required",
+    "claim": "Harmloser Abschreibfehler kann trotz nachgewiesener SQL-Kompetenz den Vollumfangspass verlieren.",
+    "evidence": "T04-C2 verlangt alle vier Ergebnistupel richtig; bei richtigem SQL und einzelnem Preis-Abschreibfehler bleibt ausdrücklich nur das SQL-Kriterium erhalten. passingPoints=maxPoints und ohne Doppelabzug schließenC1=1,C2=0 nicht eindeutig aus.",
+    "counterexample": {
+      "submission": "Vollständig korrekte eigenständige SELECT-Abfrage einschließlich ORDER BY; beim manuellen Abschreiben nur erster Preis39 statt40. Alle Zeilen und ihre Ordnung korrekt.",
+      "plausibleLiteralScore": "C1=1,C2=0; gesamte Prüfung nicht bestanden obwohl Projektion/Selektion/Join/Sortierung vollständig gezeigt."
+    },
+    "correction": "Explizit kriteriumsbezogen definieren: ein nachweislich isolierter nebensächlicher Abschreib-/Rechenfehler nimmt kein bereits belegtes wesentliches Kompetenzkriterium weg. Echte Filter-/Join-/Gruppierungs-/Sortierungs-/Mengen- oder Sicherheitsfehler bleiben0; keine Schwellenabsenkung oder Kompensation. Regel für vergleichbare Ergebniskriterien konsistent anwenden.",
+    "recheck": "Den beschriebenen korrektenSQL+einzelnerPreis-TypoFall positiv bewerten; fehlenderJoin oder falschesORDERBY bleiben negativ. Keine zusätzliche perfekte Ausgabe verlangen, wenn vollständige Kompetenz anderweitig im selben Beitrag sichtbar ist.",
+    "examIds": [
+      "f37f2d37-7686-5ed7-9c20-6f83d4fd2254",
+      "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+      "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+      "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+    ]
+  },
+  {
+    "id": "FMR-03",
+    "kind": "tatsaechlich reproduzierter Material-Renderfehler",
+    "caseIds": [
+      "C-T07",
+      "C-T20"
+    ],
+    "priority": "required",
+    "claim": "Lokale Python-Musterlösungen verlieren Zeilen und Einrückung.",
+    "evidence": "Eigene Chromiumprobe mit exactGoalCard Markdownplugins:0pre/code in beiden Abschnitten; import/with/for bzw.try/except/finally werden Fließtext. Screenshot und DOM-Text gebunden. Der separate Vollreferenzanhang bleibt korrekt gefenced.",
+    "correction": "Diese Python-Snippets in python-Codefences setzen und erläuternden Text/Ergebnis aus dem Codeblock trennen. Inhalt und Kriterien beibehalten.",
+    "recheck": "Exakte Pipeline zeigt je einen Codeblock; Code textContent erhält Originalzeilen/Einrückung und lässt sich mit den gegebenen Fixturevariablen ausführen.",
+    "examIds": [
+      "6ebc2a67-ea20-5c4e-8a63-635f40438d6a",
+      "0df1bedd-5fda-5b3b-a959-c9610237bb3e"
+    ]
+  },
+  {
+    "id": "FMR-04",
+    "kind": "Rubrik-Fallinkonsistenz",
+    "caseIds": [
+      "F-T01",
+      "F-T02"
+    ],
+    "priority": "required",
+    "claim": "Festival-Pflichtkriterien verwenden weiterhin Ausleihe/Rückgabe.",
+    "evidence": "F-T01-C1 verlangt wiederholbare Ausleihe, C2 offene-Ausleihe-Zusatzregel;F-T02-C2 optionale Rückgabe. FestivalM1 hat Künstler,Produktion,Auftrittsauftrag und tatsächlicheEndzeit.",
+    "correction": "Ausleihe durch Auftrittsauftrag und Rückgabe durch tatsächlicheEndzeit ersetzen; Wiederholungsidentität, alleKardinalitäten und Offen-Invariante vollständig erhalten.",
+    "recheck": "Aufgaben/M1/Lösungen/scoring.steps/essentialCriteria benennen denselben Vorgang; ein richtiges Festivalmodell verlangt keine erfundene Ausleihe.",
+    "examIds": [
+      "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+    ]
+  },
+  {
+    "id": "FMR-05",
+    "kind": "redaktionelle Nacharbeit",
+    "caseIds": [
+      "B-T03",
+      "B-T24",
+      "B-T27",
+      "B-T30",
+      "F-T03",
+      "F-T24",
+      "F-T27",
+      "F-T30"
+    ],
+    "priority": "recommended",
+    "claim": "Mechanische Domänensubstitution hinterlässt unpassende Grammatik und Begriffe.",
+    "evidence": "M9: eine leitende Leser/Gast, Leseren/Gasten; M14:Ausleih-/Ausleihservice; M4 teamName/buchungen statt zur Domäne passender Bezeichnung. Kein zusätzlicher fachlicher Umfang abgeleitet.",
+    "correction": "Im konkreten Kontext sprachlich glätten; Szenarioannahmen und Schlüssel/FDs nicht ändern. Allgemeine fachliche Schemafälle deutlich als unabhängig kennzeichnen.",
+    "recheck": "Lesbare konsistente Benennung, gleiche Daten/FDs/Abdeckung.",
+    "examIds": [
+      "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+      "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f"
+    ]
+  }
+]

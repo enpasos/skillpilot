@@ -1,0 +1,843 @@
+{
+  "kind": "expanded-context-independent-subject-scope-analysis",
+  "baselineSourceSha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+  "observedGoalCount": 22,
+  "numberIsNotConstraint": true,
+  "authority": "Existing general study-oriented canonical purpose plus this repair instruction; no national uniform official syllabus; no transfer of Math/Chemistry special decisions.",
+  "cohortLimit": "HE KC Ausgabe2024 Stand01.08.2025 and actually read LA2027/2028 §III27.3; no automatic learner cohort selection, no claim for all future years.",
+  "BYLimit": "NTG10, regular gA12 and late-starting gA12 stay distinct. Common technical GK/G9 metadata is not a path binding.",
+  "records": [
+    {
+      "observedNumber": 1,
+      "goalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+      "title": "ER-Modell anwenden",
+      "currentFullDescription": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+      "definitionSha256": "de8d68fa9273c4f5a43ae6e672717b9ab97a60a866a1fcdbcf596a28bd616f83",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Vollständiger bestehender Anspruch durch Q2.1 grundlegend gedeckt. Seine allgemeine Formulierung erfasst die drei konkret fehlenden ER-Spezialleistungen nicht als bereits nachgewiesene historische Zusatzkompetenzen.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "BY10 NTG fordert UML-Klassendiagramme. ER und UML sind nicht automatisch derselbe überprüfte Darstellungsnachweis. Voller ER-Anspruch nicht universal; spät12 OOP ersetzt ihn nicht.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Grundlage des zusammenhängenden relationalen Datenkorridors; amtlicher grundlegender HE-Umfang.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.1-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A01",
+        "solution": "S01",
+        "rubric": "R01",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 2,
+      "goalId": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+      "title": "Tabellen ableiten",
+      "currentFullDescription": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+      "definitionSha256": "66faa96fe11640af335e948eaf470575bc51817c03dc10039800a6406350ba44",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.1 verlangt Schlüssel, Relationenschema und Tabellen; der Einleitungstext beschreibt die Ableitung aus dem Modell.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "path_specific_direct",
+        "reason": "Direkter Teil des NTG10-Datenbankwegs: Überführung objektorientierter Modelle in relationale Modelle; Schlüssel gehören zu dessen Inhalt. Keine entsprechende Datenbankpflicht in spät12.",
+        "NTG10DirectFullGoal": true,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Relationale Ableitung und Schlüssel bilden den notwendigen Gegenstand der gewählten Datenbankkompetenz; direkter Beleg.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.1-basic",
+        "BY10-DB"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A02",
+        "solution": "S02",
+        "rubric": "R02",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 3,
+      "goalId": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+      "title": "Normalisierung durchführen",
+      "currentFullDescription": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+      "definitionSha256": "3bdeeb0fcc136885eedc1dec31bd89e7c148631b81274d3dd325733ec180da81",
+      "HE_GK_2027_2028": {
+        "decision": "explicit_increased_level",
+        "reason": "Q2.1 weist Anomalien und Normalformen 1–3 ausdrücklich dem erhöhten Niveau zu. Keine notwendige vollständige GK-Vorbereitung: das Schema kann über das ER-Modell abgeleitet werden.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "NTG10 fordert Erkennen/Bewerten von Redundanzen und Anomalien, nicht vollständige Normalisierung bis3NF. Weder regulär12 noch spät12 begründet diesen Zusatz.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten im eigenen Grundangebot: NRW GK S27–29 belegt 1–3NF ausdrücklich; ST S26–27 belegt den vollständigen Anomalie-/Normalisierungsumfang zusätzlich. HE-LK ist eine Landesgrenze, kein Verbot eines anderen belegten eigenen Grundangebots.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.1-increased",
+        "NW-GK-normalization",
+        "ST-Q-course2"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A03",
+        "solution": "S03",
+        "rubric": "R03",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 4,
+      "goalId": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+      "title": "Grundlegende Selects schreiben",
+      "currentFullDescription": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+      "definitionSha256": "be11ba89e01b06aede8b7c3770bb4454e6004680266631a6239834acb6272dfb",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.2 grundlegend nennt Projektion, Selektion, Join und Sortierung.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "NTG10 SQL über verknüpfte Tabellen ist belegt, nicht jede Komponente des vollständigen alten Ziels einschließlich Sortierung als eigene universelle Pflicht.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Grundlegender Abfragekern; vollständiger HE-Beleg.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.2-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A04",
+        "solution": "S04",
+        "rubric": "R04",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 5,
+      "goalId": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+      "title": "Gruppierung und Aggregatfunktionen",
+      "currentFullDescription": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+      "definitionSha256": "8b5a622be71ddc9ad3d801f4d47bf4af5093ccaed93c28c996e8dcf06783af37",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.2 grundlegend nennt Aggregatfunktionen und Gruppierung. LEFT JOIN/HAVING als einzig erlaubte Technik wäre eine zusätzliche Materialforderung, nicht die Zieldefinition.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Allgemeine NTG10-Abfragekompetenz allein verpflichtet nicht zum vollen Aggregat-/Gruppierungspaket. Beide12-Pfade haben keinen solchen Datenbankteil.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Aggregat-/Gruppierungsteil desselben Abfragekerns; vollständiger HE-Beleg.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.2-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A05",
+        "solution": "S05",
+        "rubric": "R05",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 6,
+      "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+      "title": "Erweiterte SQL-Bereiche nutzen",
+      "currentFullDescription": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+      "definitionSha256": "6af87f01e079d58212296ac9ea245ae0de25462016190e7b3990ef997f60235d",
+      "HE_GK_2027_2028": {
+        "decision": "explicit_increased_level",
+        "reason": "Unterabfragen und weitere SQL-Sprachbereiche sind Q2.2 erhöht. Der ganze zusammengesetzte Anspruch ist für grundlegende SELECT-Abfragen nicht notwendig.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kein voller Unterabfrage-/DML-/DDL-/Rechtebeleg in den gelesenen BY-Pfaden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "Nicht im minimalen eigenen Grundangebot: der ganze Unterabfrage-/DDL-/DML-/Rechteanspruch ist im geprüften vollständigen Primärbeleg erhöht. SH-Teiltreffer reichen nicht; DDL und Views sind dort ebenfalls erhöht markiert.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "HE-Q2.2-increased"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A06",
+        "solution": "S06",
+        "rubric": "R06",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 7,
+      "goalId": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+      "title": "Formulare mit Backend verknüpfen",
+      "currentFullDescription": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+      "definitionSha256": "e5be1ab6e40e069ac33de3d4f0c3bbe80db3da289bff285e31de3d1914f1d0d7",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "In Q2.3 auf grundlegendem Niveau direkt beschrieben, aber Q2.3 wird für den hier konkret gebundenen HE-2027/2028-Vertrag nicht ausgewählt.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "BY11 Client/Server/HTML und BY12 allgemeines Projekt belegen nicht selbständige Formular-Backend-Implementierung als festen ganzen Datenbankanspruch.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: Das eigene Angebot wählt ausdrücklich den amtlich grundlegenden Webdatenbankteil. Eine für einen HE-Jahrgang fehlende Auswahl macht diesen belegten Gegenstand nicht unmöglich.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.3-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A07",
+        "solution": "S07",
+        "rubric": "R07",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 8,
+      "goalId": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+      "title": "SQL aus Programmen ausführen",
+      "currentFullDescription": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+      "definitionSha256": "d3102680542f49e067319adbb5e5e9e79f486748dfaf8e2ade0ce2b3c050b007",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "Q2.3 enthält Verbindung, Aufbereitung/Ausführung und Resultatverarbeitung. Kein Pflichtziel des gebundenen HE-2027/2028-Zuschnitts; ohne Rückgabemenge ist zusätzlich im amtlichen Projektumfang enthalten, aber nicht im bestehenden Zieltext.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Ein Datenbank-oder-OOP-Projekt in NTG10 und allgemeine12er-Projekte machen SQL aus Programmen nicht zur notwendigen gemeinsamen Leistung.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: Verbindung, vorbereitete Anweisung und Ergebnismenge sind zentrale Webdatenbankleistungen. Den fehlenden Nicht-Resultat-Fall als eigene zusätzliche Bedeutung modellieren.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.3-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A08",
+        "solution": "S08",
+        "rubric": "R08",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 9,
+      "goalId": "71fe327a-9677-5348-a405-fba0dbd302d7",
+      "title": "Recht auf informationelle Selbstbestimmung",
+      "currentFullDescription": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+      "definitionSha256": "722fb7844a05dc6664e287b12ac25b03ebd7c473756a384ad2630927f33118df",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "Q2.4 ist ein grundlegendes amtliches Thema, gehört jedoch nicht zur Q2-Auswahl des gebundenen HE-2027/2028-Angebots.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "path_specific_direct",
+        "reason": "Jetzt direkt belegt für spät12 LB5: Datenschutzgesetze, Zweck, Grundsätze und Betroffenenrechte. In regulär12 ist dieser konkrete volle Rechtsgrundlagenumfang nicht gleichermaßen festgeschrieben; dessen frühere Internetreflexion darf nicht ungeprüft gleichgesetzt werden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": true,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: Der ausdrücklich gewählte Datenschutzteil ist amtlich grundlegend belegt; BY spät12 liefert zusätzlich konkrete Gesetze/Grundsätze/Rechte.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.4-basic",
+        "BY12-late-LB5"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A09",
+        "solution": "S09",
+        "rubric": "R09",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 10,
+      "goalId": "58173dab-0cb2-52ae-a052-63d3a0f33644",
+      "title": "Datensicherheit umsetzen",
+      "currentFullDescription": "Die lernende Person kann Sicherheitsziele und organisatorische Maßnahmen begründen.",
+      "definitionSha256": "4fa49c8cea6d366762b92aa0791055cf78b77b9c3b29f8e95449e8c65ab0fed5",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "Q2.4 grundlegendes Niveau; die übergreifende Bedeutung von Sicherheit ersetzt keine Themenauswahl. Kein vollständiger Zusatz-GK-Pflichtanspruch aus einer einzelnen SQL-Aufgabe.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "path_specific_direct",
+        "reason": "Direkt belegt in beiden12er-gA-Pfaden: Schutzziele und organisatorische/technische/physische Maßnahmen. Dies ist ein Teil, kein vollständiger Abschluss von Informationssicherheit.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": true,
+        "late12DirectFullGoal": true,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: grundlegende Sicherheitsziele und Maßnahmen im gewählten datenbezogenen Angebot; HE und beide BY12-Pfade belegen passende Teile.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.4-basic",
+        "BY12-basic-LB5",
+        "BY12-late-LB5"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A10",
+        "solution": "S10",
+        "rubric": "R10",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 11,
+      "goalId": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+      "title": "Grundoperatoren anwenden",
+      "currentFullDescription": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+      "definitionSha256": "8bb934a1199cd22b4c81857d7df77edd49eae239aaede17ba0327fd0d1cabdb7",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.5 grundlegend und jetzt durch die tatsächlich gelesenen Erlasse 2027 und 2028 ausgewählt. Vier genannte Operatoren sind einzeln zu prüfen.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kein eigener formaler Relationenalgebraanspruch in den gelesenen BY-Pfaden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: grundlegende formale Basis als eigener, ausdrücklich gewählter Teil dieses studienorientierten Angebots; keine bloße behauptete Voraussetzung von SQL.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.5-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A11",
+        "solution": "S11",
+        "rubric": "R11",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 12,
+      "goalId": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+      "title": "Abfrageterme formulieren",
+      "currentFullDescription": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+      "definitionSha256": "abd8d526d982b545b08b57e689746f295e0c45e3bf2a1a0468849c1d0743a802",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.5 fordert Problem-Abfrageterme und SQL-Abbildung. Die konkrete Auswahlgrundlage ist jetzt geschlossen.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kein voller Problemterm-plus-SQL-Übersetzungsanspruch in den gelesenen BY-Pfaden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: eigenständige Entwicklung eines formalen Abfrageterms und Umsetzung in SQL.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.5-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A12",
+        "solution": "S12",
+        "rubric": "R12",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 13,
+      "goalId": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+      "title": "Kardinalitäten und Optionalitäten sichern",
+      "currentFullDescription": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+      "definitionSha256": "e2e5e59502d67da851ae1f40857e1c836ca4b50a4804cff614ba6c629f5e1367",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "Kardinalität/Optionalität und deren Begründung gehören zum Modellieren. Ein eigener unbeschränkt komplexer Zusatzanspruch ist weder klar begrenzt noch unvermeidbar. Die grundlegenden Begründungen werden in Ziel01 geprüft; das gesamte alte Ziel wird nicht eng umdefiniert.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kardinalitäten in NTG10-Datenmodellen sind belegt. Der zusätzliche unbestimmt komplexe ER-Begründungsanspruch ist damit nicht vollständig begründet.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "Nicht zusätzlich verpflichten: die Begründung grundlegender Kardinalitäten lässt sich in Ziel01 nachweisen. Ein weiterer unbestimmter Komplexitätsanspruch wäre bloße Vertiefung. Kein neuer engerer Zieltext unter alter ID.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "HE-Q2.1-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A13",
+        "solution": "S13",
+        "rubric": "R13",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 14,
+      "goalId": "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+      "title": "Schemas auf Konsistenz prüfen",
+      "currentFullDescription": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+      "definitionSha256": "5f7736641e347248f065919b106f3b6a118b835cd31bd3986aca0b6f36749ee0",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "Schlüsselrichtigkeit ist Bestandteil von Ziel02. Eine eigenständige Redundanz-/Konsistenzbewertung im vollständigen alten Umfang ist für HE-GK nicht unmittelbar belegt; Normalisierung wird erhöht zugeordnet. Engere Prüfung der eigenen Ableitung genügt.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "path_specific_direct",
+        "reason": "Direkter NTG10-Datenbankbezug zu Schlüsseln, Redundanz, Anomalien und Konsistenz. Kein Grund, dies spät12 ohne Datenbankthema zwingend aufzuerlegen.",
+        "NTG10DirectFullGoal": true,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: BY10 NTG verlangt Redundanz-/Anomalie-/Konsistenzbeurteilung. SH DB7 und DB9 ergänzen Schlüssel und Bewertung relationaler Modelle. DB8 wird wegen seiner erhöhten Niveaumarkierung ausdrücklich nicht als grundlegender Beleg verwendet. Die Bewertung ist von vollständiger 3NF-Synthese unterscheidbar.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "BY10-DB",
+        "SH-DB7-and-9-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A14",
+        "solution": "S14",
+        "rubric": "R14",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 15,
+      "goalId": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+      "title": "SQL-Berechtigungen verwalten",
+      "currentFullDescription": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+      "definitionSha256": "5dd57848ab52d1797c0ff72ca064eb9e8a8f6789c8f6bedc0b7172f48f6dc244",
+      "HE_GK_2027_2028": {
+        "decision": "explicit_increased_level",
+        "reason": "DML/DDL/DCL und Gestaltung von Berechtigungen sind erhöht. Die GK_LK-Zeile des abgeleiteten HE-Snapshots ist keine Primärnorm und hier sachlich zu korrigieren.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kein voller DML-/DDL-/DCL-Anwendungsbeleg in den gelesenen BY-Pfaden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "Nicht im minimalen eigenen Grundangebot. Die vollständige Anwendung der drei SQL-Sprachfamilien wird in HE erhöht gefordert; eine allgemeine Rechtebegründung ist kein gleichbedeutender Beleg.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "HE-Q2.2-increased"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A15",
+        "solution": "S15",
+        "rubric": "R15",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 16,
+      "goalId": "70523f2e-b331-51c0-95d0-919c8a189cad",
+      "title": "Parameterübergabe absichern",
+      "currentFullDescription": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+      "definitionSha256": "68cb249828dff9a348585457a9f8e5aab58513aaf949dc5946fb95440ffa2265",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "GET/POST-Validierung plus Sicherheitsmaßnahmen ist weder als gesamter Q2.1/2.2/2.5-Anspruch belegt noch notwendige Vorbereitung dafür. Auch ein legitimiertes Webprojekt erzwingt nicht jede alte Handler-/Sicherheitsanforderung: ein enger, vorgegebener sicherer Adapter bleibt möglich.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Keine vollständige GET/POST-Validierungsleistung aus den allgemeinen Internet-/Projektpassagen ableitbar.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "Nicht als separaten Pflichtnachweis übernehmen. Für das gewählte Webprojekt werden sichere, dokumentierte Hilfsfunktionen bereitgestellt. Unabhängiger Nachweis der ganzen GET/POST-Sicherheitsleistung ist dadurch nicht nötig. Der alte weitergehende Anspruch bleibt unverändert erhalten.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "HE-Q2.3-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A16",
+        "solution": "S16",
+        "rubric": "R16",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 17,
+      "goalId": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+      "title": "Ergebnismengen formatieren",
+      "currentFullDescription": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+      "definitionSha256": "07a81df1cf406a13f015b4abda6c43d83ad9eb5e09c89cc83008f6d505f6d106",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "HTML-Ausgabe ist Q2.3; die Filter-Alternative kann eine grundlegende SELECT-Selektion konkretisieren. Q2.3 ist im hier gebundenen HE-Vertrag nicht ausgewählt. Die Zielalternative darf nicht zu Pagination UND Filter verschärft werden.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Kein verpflichtendes Webdatenbank-/HTML-Ergebnisprojekt; Filter/Pagination kann nicht aus allgemeiner GUI-Implementierung gefolgert werden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_source_supported_combination_with_real_alternative",
+        "reason": "Beibehalten als Verbindung der unmittelbar belegten HTML-Ergebnisausgabe (Q2.3) mit grundlegender Selektion (Q2.2). Das ist eine begründete Operationalisierung, kein wörtlicher amtlicher Paginationauftrag. HTML plus Filter erfüllt das disjunktive Ziel vollständig; eine freiwillige korrekte Paginationlösung bleibt als alternative Leistung zulässig. Pagination wird nicht zusätzlich verpflichtend.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.3-basic",
+        "HE-Q2.2-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A17",
+        "solution": "S17",
+        "rubric": "R17",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 18,
+      "goalId": "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+      "title": "Eigenen Umgang mit Daten reflektieren",
+      "currentFullDescription": "Die lernende Person kann Datenschutzrisiken im Alltag beurteilen und Einstellungen anpassen.",
+      "definitionSha256": "532e20e0e42ee9b1e057777525df59dbf21b3384e453e0606564442279c6e703",
+      "HE_GK_2027_2028": {
+        "decision": "direct_basic_topic_not_selected",
+        "reason": "Q2.4 samt Einleitung S36 nennt Reflexion und Einstellungen. Im gebundenen Auswahlvertrag kein zusätzliches Q2-Pflichtziel.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Alltags-/Internetreflexion ist belegt, tatsächliches Anpassen von Einstellungen im ganzen Anspruch nicht explizit gesichert. Die neue spät12-Rechtsquelle schließt diese andere Leistung nicht automatisch.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: Reflexion und ein tatsächlicher Einstellungswechsel konkretisieren die ausdrücklich belegte Datenschutzleistung des gewählten Angebots.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2-introduction",
+        "HE-Q2.4-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A18",
+        "solution": "S18",
+        "rubric": "R18",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 19,
+      "goalId": "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+      "title": "Relationale Terme in SQL übersetzen",
+      "currentFullDescription": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+      "definitionSha256": "51b6dbf6d8d7e1d888daacdeed3e16d7c7a81b382cd7b434eaee6f4be7729511",
+      "HE_GK_2027_2028": {
+        "decision": "direct_mandatory_named_cohort",
+        "reason": "Q2.5 grundlegend enthält geschachtelte Terme und SQL-Abbildung. Komplex darf hier mit geschachtelten grundlegenden Operatoren operationalisiert werden; der bestehende Text verlangt nicht automatisch sämtliche erhöhten Operatoren.",
+        "targetInProposedNamedContract": true
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Keine formale geschachtelte Relationenalgebra als volle BY-Pflicht belegt.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten als Transfer eines gegebenen geschachtelten Terms in SQL. Dies unterscheidet die Übersetzungsleistung von der eigenständigen Problemmodellierung in Ziel12, ohne erhöhte Operatoren einzuführen. Anders als beim unbestimmten komplexen ER-Zusatz in Ziel 13 nennt die Primärquelle hier ausdrücklich geschachtelte Terme; daraus folgt die endliche Operationalisierung mit grundlegenden Operatoren.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "HE-Q2.5-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A19",
+        "solution": "S19",
+        "rubric": "R19",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 20,
+      "goalId": "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+      "title": "Nichtrelationale Datenbanken einordnen",
+      "currentFullDescription": "Die lernende Person kann Grenzen relationaler Datenbanken erklaeren und alternative Organisationsformen grosser Datenmengen wie NoSQL- oder Wide-Column-Datenbanken einordnen.",
+      "definitionSha256": "8ac2df20ce57544efa95351afea9098a1da34287bb96034023ae56e558eb1dc8",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "Kein Beleg in HE Q2.1/2.2/2.5; NoSQL/Wide-Column ist nicht zum Ausführen relationaler Abfragen erforderlich.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Keine volle NoSQL-/Wide-Column-Leistung in den gelesenen BY-Pfaden.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "In ein erhöhtes Datenbankangebot verlagern, nicht aus dem Graph löschen: SH DB12/13 sind im Original ausdrücklich fett/grau. Die extrahierten GK/LK-Tags haben die Niveaumarkierung verloren.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "SH-DB12-13-increased"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A20",
+        "solution": "S20",
+        "rubric": "R20",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 21,
+      "goalId": "e94beeaa-784d-5490-932b-38b81bf669fc",
+      "title": "Map-Reduce-Prinzip erlaeutern",
+      "currentFullDescription": "Die lernende Person kann das Map-Reduce-Paradigma als parallele Verarbeitung grosser Datenmengen beschreiben und an einfachen Verarbeitungsschritten erlaeutern.",
+      "definitionSha256": "94ad8b52d2ac33844afbe40cc3ad3f750863bc225eb8ab6d7910c7d706c7c8f6",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "Kein HE-Q2-Beleg; Parallelität oder eine eigens entworfene Massendatenaufgabe begründet keinen notwendigen ganzen Map-Reduce-Anspruch.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "Regulär12 behandelt nebenläufige Prozesse mit Synchronisation/Deadlocks/Monitoren. Map-Reduce ersetzt diese Pflicht nicht; spät12 hat an dieser Stelle Graphen.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "do_not_require_full_goal",
+        "reason": "In erhöhtes Angebot verlagern: SH DB15 ist fett/grau und damit erhöht. Inhaltlich sinnvoll, aber weder notwendiger Lückenschließer noch grundlegender Direktbeleg.",
+        "proposedTarget": false
+      },
+      "sourceIds": [
+        "SH-DB15-increased"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A21",
+        "solution": "S21",
+        "rubric": "R21",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    },
+    {
+      "observedNumber": 22,
+      "goalId": "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+      "title": "Daten als Wirtschaftsfaktor bewerten",
+      "currentFullDescription": "Die lernende Person kann die oekonomische Verwertbarkeit von Daten, Datenfilterung und Auswirkungen auf Wahrnehmung oder Meinungsbildung bewerten.",
+      "definitionSha256": "40e35eb49dddc48852f5498339c3011406ee8f6ee54bb6e9265f3ea4775bf79c",
+      "HE_GK_2027_2028": {
+        "decision": "full_claim_not_established",
+        "reason": "HE-Datenschutz allein deckt den vollständigen Wirtschaft-/Filter-/Meinungsbildungsanspruch nicht. Die neue SH-Quelle ändert den kanonischen, nicht den HE-2027/2028-Vertrag.",
+        "targetInProposedNamedContract": false
+      },
+      "BY_GK": {
+        "decision": "not_full_universal_claim",
+        "reason": "BY enthält Datenanalyse-/Marketing-/gesellschaftliche Kontexte, nicht den vollständig gleichbedeutenden Wirtschafts-/Filterwirkungsanspruch in jedem Pfad. SH legitimiert kanonisch, nicht automatisch BY.",
+        "NTG10DirectFullGoal": false,
+        "regular12DirectFullGoal": false,
+        "late12DirectFullGoal": false,
+        "universalAllPathwaysClaim": false
+      },
+      "canonicalOwnBasicOffer": {
+        "decision": "include_direct_source_supported",
+        "reason": "Beibehalten: SH DB16/17 sind grundlegende, nicht erhöhte Zeilen. Ihre Verbindung passt zum gewählten Datenkorridor und stützt den vollen Wirtschafts-/Filterwirkungsanspruch; kein nationaler amtlicher Pflichtlehrplan wird behauptet.",
+        "proposedTarget": true
+      },
+      "sourceIds": [
+        "SH-DB16-17-basic"
+      ],
+      "necessaryGapForEntireOldGoal": false,
+      "meaningHistory": "Keep current ID and full description unchanged. Selection change is not a new meaning or a result conversion.",
+      "materialStartingPoint": {
+        "task": "A22",
+        "solution": "S22",
+        "rubric": "R22",
+        "coldReviewIsUnchanged": "cold-review.material-review.json.gz"
+      }
+    }
+  ],
+  "proposedRetainedOldGoalNumbers": {
+    "HE": [
+      1,
+      2,
+      4,
+      5,
+      11,
+      12,
+      19
+    ],
+    "canonicalBasic": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      17,
+      18,
+      19,
+      22
+    ]
+  },
+  "newNecessaryGapClaimCount": 0,
+  "gapExplanation": "The required additions below have direct official support. No unproven whole-goal necessity is manufactured from a custom exercise; safe support may be supplied where a separate advanced target is unnecessary."
+}

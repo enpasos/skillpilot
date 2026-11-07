@@ -1,0 +1,3983 @@
+{
+  "status": "passed local author-reference execution;not independent material acceptance",
+  "counts": {
+    "checks": 265,
+    "passed": 265
+  },
+  "checks": [
+    {
+      "id": "courses-SELECT",
+      "pass": true,
+      "actual": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Videoschnitt",
+          40
+        ],
+        [
+          "ben",
+          "Audiolabor",
+          30
+        ],
+        [
+          "ada",
+          "Fotobasis",
+          20
+        ],
+        [
+          "ben",
+          "Fotobasis",
+          20
+        ]
+      ]
+    },
+    {
+      "id": "courses-GROUP",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "courses-SUBQUERY",
+      "pass": true,
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_PROBLEM",
+      "pass": true,
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_A-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_B-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_C-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_D-full",
+      "pass": true,
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "courses-ALG_OPT",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          3,
+          "Fotobasis"
+        ],
+        [
+          5,
+          "Datenschutz-Werkstatt"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Fotobasis"
+        ],
+        [
+          2,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          3,
+          "Fotobasis"
+        ],
+        [
+          5,
+          "Datenschutz-Werkstatt"
+        ]
+      ]
+    },
+    {
+      "id": "courses-wrong-join-counterexample",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "courses-at-most-one-valid-missing-pair",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "courses-duplicate-business-pair-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "courses-unknown-owner-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "courses-DDL-DML-insert",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "courses-DDL-DML-update",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "courses-DDL-duplicate-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "courses-DDL-unknown-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "courses-DDL-DML-delete",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "courses-DDL-default",
+      "pass": true,
+      "actual": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "id": "courses-program-SELECT-filter-only",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Fotobasis",
+          20
+        ],
+        [
+          20,
+          "Audiolabor",
+          30
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt",
+          10
+        ],
+        [
+          50,
+          "Archiv <offen>",
+          15
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Fotobasis",
+          20
+        ],
+        [
+          20,
+          "Audiolabor",
+          30
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt",
+          10
+        ],
+        [
+          50,
+          "Archiv <offen>",
+          15
+        ]
+      ]
+    },
+    {
+      "id": "courses-program-SELECT-empty",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "courses-UPDATE-no-result-rowcount",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "id": "courses-UPDATE-persistent-and-other-rows",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "courses-UPDATE-missing-row",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "courses-filter-only-no-pagination",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "courses-filter-form",
+      "pass": true,
+      "actual": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ],
+      "expected": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ]
+    },
+    {
+      "id": "courses-escaped-result-no-executable-tag",
+      "pass": true,
+      "actual": [
+        false,
+        true
+      ],
+      "expected": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "courses-pagination-first",
+      "pass": true,
+      "actual": [
+        [
+          [
+            10,
+            "Fotobasis",
+            20
+          ],
+          [
+            20,
+            "Audiolabor",
+            30
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            10,
+            "Fotobasis",
+            20
+          ],
+          [
+            20,
+            "Audiolabor",
+            30
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "courses-pagination-last",
+      "pass": true,
+      "actual": [
+        [
+          [
+            50,
+            "Archiv <offen>",
+            15
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            50,
+            "Archiv <offen>",
+            15
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "courses-pagination-empty",
+      "pass": true,
+      "actual": [
+        [],
+        5
+      ],
+      "expected": [
+        [],
+        5
+      ]
+    },
+    {
+      "id": "courses-pagination-first-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "courses-pagination-last-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "courses-pagination-empty-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=3"
+      ],
+      "expected": [
+        "/seiten?page=3"
+      ]
+    },
+    {
+      "id": "courses-HTTP-filter-form-request",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-empty-filter",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-pagination",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-empty-page",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-invalid-5000digit-price",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-5000digit-page",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-duplicate",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-zero",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-sql-text",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-unicode",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-missing",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-invalid-unknown",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-CSRF-negative",
+      "pass": true,
+      "actual": 403,
+      "expected": 403
+    },
+    {
+      "id": "courses-HTTP-session-override-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-unknown-course",
+      "pass": true,
+      "actual": 404,
+      "expected": 404
+    },
+    {
+      "id": "courses-HTTP-book-success",
+      "pass": true,
+      "actual": 201,
+      "expected": 201
+    },
+    {
+      "id": "courses-HTTP-book-duplicate",
+      "pass": true,
+      "actual": 409,
+      "expected": 409
+    },
+    {
+      "id": "courses-HTTP-POST-title",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-harmless-title-rendered-as-text",
+      "pass": true,
+      "actual": [
+        true,
+        false
+      ],
+      "expected": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "courses-HTTP-overlong-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-empty-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "courses-HTTP-SQL-injection-title-is-data",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "courses-HTTP-SQL-injection-did-not-drop-or-rewrite-all",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Audiolabor"
+        ],
+        [
+          30,
+          "Videoschnitt"
+        ],
+        [
+          40,
+          "Datenschutz-Werkstatt"
+        ],
+        [
+          50,
+          "Archiv <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,zahlungOK,bereit",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,bereit",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,zahlungOK",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,zahlungOK,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,bereit,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "courses-hierarchical-parallel-state-absenden,abbrechen,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "courses-settings-copy-preserved",
+      "pass": true,
+      "actual": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      },
+      "expected": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      }
+    },
+    {
+      "id": "courses-settings-unrelated-preserved",
+      "pass": true,
+      "actual": [
+        "de",
+        true
+      ],
+      "expected": [
+        "de",
+        true
+      ]
+    },
+    {
+      "id": "courses-settings-actual-change",
+      "pass": true,
+      "actual": [
+        false,
+        false,
+        false,
+        7
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        7
+      ]
+    },
+    {
+      "id": "library-SELECT",
+      "pass": true,
+      "actual": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Filmarchiv",
+          40
+        ],
+        [
+          "ben",
+          "Klangbuch",
+          30
+        ],
+        [
+          "ada",
+          "Datenatlas",
+          20
+        ],
+        [
+          "ben",
+          "Datenatlas",
+          20
+        ]
+      ]
+    },
+    {
+      "id": "library-GROUP",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "library-SUBQUERY",
+      "pass": true,
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_PROBLEM",
+      "pass": true,
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_A-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_B-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_C-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_D-full",
+      "pass": true,
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "library-ALG_OPT",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Privatsphaere"
+        ],
+        [
+          3,
+          "Datenatlas"
+        ],
+        [
+          5,
+          "Privatsphaere"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Datenatlas"
+        ],
+        [
+          2,
+          "Privatsphaere"
+        ],
+        [
+          3,
+          "Datenatlas"
+        ],
+        [
+          5,
+          "Privatsphaere"
+        ]
+      ]
+    },
+    {
+      "id": "library-wrong-join-counterexample",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "library-at-most-one-valid-missing-pair",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "library-duplicate-business-pair-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "library-unknown-owner-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "library-DDL-DML-insert",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "library-DDL-DML-update",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "library-DDL-duplicate-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "library-DDL-unknown-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "library-DDL-DML-delete",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "library-DDL-default",
+      "pass": true,
+      "actual": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "id": "library-program-SELECT-filter-only",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Datenatlas",
+          20
+        ],
+        [
+          20,
+          "Klangbuch",
+          30
+        ],
+        [
+          40,
+          "Privatsphaere",
+          10
+        ],
+        [
+          50,
+          "Magazin <offen>",
+          15
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Datenatlas",
+          20
+        ],
+        [
+          20,
+          "Klangbuch",
+          30
+        ],
+        [
+          40,
+          "Privatsphaere",
+          10
+        ],
+        [
+          50,
+          "Magazin <offen>",
+          15
+        ]
+      ]
+    },
+    {
+      "id": "library-program-SELECT-empty",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "library-UPDATE-no-result-rowcount",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "id": "library-UPDATE-persistent-and-other-rows",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "library-UPDATE-missing-row",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "library-filter-only-no-pagination",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "library-filter-form",
+      "pass": true,
+      "actual": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ],
+      "expected": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ]
+    },
+    {
+      "id": "library-escaped-result-no-executable-tag",
+      "pass": true,
+      "actual": [
+        false,
+        true
+      ],
+      "expected": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "library-pagination-first",
+      "pass": true,
+      "actual": [
+        [
+          [
+            10,
+            "Datenatlas",
+            20
+          ],
+          [
+            20,
+            "Klangbuch",
+            30
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            10,
+            "Datenatlas",
+            20
+          ],
+          [
+            20,
+            "Klangbuch",
+            30
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "library-pagination-last",
+      "pass": true,
+      "actual": [
+        [
+          [
+            50,
+            "Magazin <offen>",
+            15
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            50,
+            "Magazin <offen>",
+            15
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "library-pagination-empty",
+      "pass": true,
+      "actual": [
+        [],
+        5
+      ],
+      "expected": [
+        [],
+        5
+      ]
+    },
+    {
+      "id": "library-pagination-first-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "library-pagination-last-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "library-pagination-empty-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=3"
+      ],
+      "expected": [
+        "/seiten?page=3"
+      ]
+    },
+    {
+      "id": "library-HTTP-filter-form-request",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-empty-filter",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-pagination",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-empty-page",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-invalid-5000digit-price",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-5000digit-page",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-duplicate",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-zero",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-sql-text",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-unicode",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-missing",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-invalid-unknown",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-CSRF-negative",
+      "pass": true,
+      "actual": 403,
+      "expected": 403
+    },
+    {
+      "id": "library-HTTP-session-override-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-unknown-course",
+      "pass": true,
+      "actual": 404,
+      "expected": 404
+    },
+    {
+      "id": "library-HTTP-book-success",
+      "pass": true,
+      "actual": 201,
+      "expected": 201
+    },
+    {
+      "id": "library-HTTP-book-duplicate",
+      "pass": true,
+      "actual": 409,
+      "expected": 409
+    },
+    {
+      "id": "library-HTTP-POST-title",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-harmless-title-rendered-as-text",
+      "pass": true,
+      "actual": [
+        true,
+        false
+      ],
+      "expected": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "library-HTTP-overlong-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-empty-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "library-HTTP-SQL-injection-title-is-data",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "library-HTTP-SQL-injection-did-not-drop-or-rewrite-all",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Klangbuch"
+        ],
+        [
+          30,
+          "Filmarchiv"
+        ],
+        [
+          40,
+          "Privatsphaere"
+        ],
+        [
+          50,
+          "Magazin <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,zahlungOK,bereit",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,bereit",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,zahlungOK",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,zahlungOK,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,bereit,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "library-hierarchical-parallel-state-absenden,abbrechen,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "library-settings-copy-preserved",
+      "pass": true,
+      "actual": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      },
+      "expected": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      }
+    },
+    {
+      "id": "library-settings-unrelated-preserved",
+      "pass": true,
+      "actual": [
+        "de",
+        true
+      ],
+      "expected": [
+        "de",
+        true
+      ]
+    },
+    {
+      "id": "library-settings-actual-change",
+      "pass": true,
+      "actual": [
+        false,
+        false,
+        false,
+        7
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        7
+      ]
+    },
+    {
+      "id": "festival-SELECT",
+      "pass": true,
+      "actual": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ],
+      "expected": [
+        [
+          "ada",
+          "Lichtensemble",
+          40
+        ],
+        [
+          "ben",
+          "Nachtklang",
+          30
+        ],
+        [
+          "ada",
+          "Morgenquartett",
+          20
+        ],
+        [
+          "ben",
+          "Morgenquartett",
+          20
+        ]
+      ]
+    },
+    {
+      "id": "festival-GROUP",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          2,
+          40
+        ],
+        [
+          20,
+          2,
+          60
+        ],
+        [
+          30,
+          2,
+          80
+        ],
+        [
+          40,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": "festival-SUBQUERY",
+      "pass": true,
+      "actual": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ],
+      "expected": [
+        [
+          20
+        ],
+        [
+          30
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_PROBLEM",
+      "pass": true,
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_A-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_B-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          10,
+          "rot"
+        ],
+        [
+          1,
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_C-full",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_D-full",
+      "pass": true,
+      "actual": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "gruen"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "festival-ALG_OPT",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Freie Bühne"
+        ],
+        [
+          3,
+          "Morgenquartett"
+        ],
+        [
+          5,
+          "Freie Bühne"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Morgenquartett"
+        ],
+        [
+          2,
+          "Freie Bühne"
+        ],
+        [
+          3,
+          "Morgenquartett"
+        ],
+        [
+          5,
+          "Freie Bühne"
+        ]
+      ]
+    },
+    {
+      "id": "festival-wrong-join-counterexample",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "festival-at-most-one-valid-missing-pair",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "festival-duplicate-business-pair-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "festival-unknown-owner-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "festival-DDL-DML-insert",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "festival-DDL-DML-update",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Geladene Kamera mitbringen"
+        ]
+      ]
+    },
+    {
+      "id": "festival-DDL-duplicate-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "festival-DDL-unknown-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "festival-DDL-DML-delete",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "festival-DDL-default",
+      "pass": true,
+      "actual": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "id": "festival-program-SELECT-filter-only",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Morgenquartett",
+          20
+        ],
+        [
+          20,
+          "Nachtklang",
+          30
+        ],
+        [
+          40,
+          "Freie Bühne",
+          10
+        ],
+        [
+          50,
+          "Finale <offen>",
+          15
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Morgenquartett",
+          20
+        ],
+        [
+          20,
+          "Nachtklang",
+          30
+        ],
+        [
+          40,
+          "Freie Bühne",
+          10
+        ],
+        [
+          50,
+          "Finale <offen>",
+          15
+        ]
+      ]
+    },
+    {
+      "id": "festival-program-SELECT-empty",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "festival-UPDATE-no-result-rowcount",
+      "pass": true,
+      "actual": 1,
+      "expected": 1
+    },
+    {
+      "id": "festival-UPDATE-persistent-and-other-rows",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "Grundlagenkurs"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "festival-UPDATE-missing-row",
+      "pass": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "id": "festival-filter-only-no-pagination",
+      "pass": true,
+      "actual": [],
+      "expected": []
+    },
+    {
+      "id": "festival-filter-form",
+      "pass": true,
+      "actual": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ],
+      "expected": [
+        "get",
+        "/kurse",
+        "maxPreis"
+      ]
+    },
+    {
+      "id": "festival-escaped-result-no-executable-tag",
+      "pass": true,
+      "actual": [
+        false,
+        true
+      ],
+      "expected": [
+        false,
+        true
+      ]
+    },
+    {
+      "id": "festival-pagination-first",
+      "pass": true,
+      "actual": [
+        [
+          [
+            10,
+            "Morgenquartett",
+            20
+          ],
+          [
+            20,
+            "Nachtklang",
+            30
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            10,
+            "Morgenquartett",
+            20
+          ],
+          [
+            20,
+            "Nachtklang",
+            30
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "festival-pagination-last",
+      "pass": true,
+      "actual": [
+        [
+          [
+            50,
+            "Finale <offen>",
+            15
+          ]
+        ],
+        5
+      ],
+      "expected": [
+        [
+          [
+            50,
+            "Finale <offen>",
+            15
+          ]
+        ],
+        5
+      ]
+    },
+    {
+      "id": "festival-pagination-empty",
+      "pass": true,
+      "actual": [
+        [],
+        5
+      ],
+      "expected": [
+        [],
+        5
+      ]
+    },
+    {
+      "id": "festival-pagination-first-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "festival-pagination-last-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=2"
+      ],
+      "expected": [
+        "/seiten?page=2"
+      ]
+    },
+    {
+      "id": "festival-pagination-empty-links",
+      "pass": true,
+      "actual": [
+        "/seiten?page=3"
+      ],
+      "expected": [
+        "/seiten?page=3"
+      ]
+    },
+    {
+      "id": "festival-HTTP-filter-form-request",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-empty-filter",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-pagination",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-empty-page",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-invalid-5000digit-price",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-5000digit-page",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-duplicate",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-zero",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-sql-text",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-unicode",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-missing",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-invalid-unknown",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-CSRF-negative",
+      "pass": true,
+      "actual": 403,
+      "expected": 403
+    },
+    {
+      "id": "festival-HTTP-session-override-negative",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-unknown-course",
+      "pass": true,
+      "actual": 404,
+      "expected": 404
+    },
+    {
+      "id": "festival-HTTP-book-success",
+      "pass": true,
+      "actual": 201,
+      "expected": 201
+    },
+    {
+      "id": "festival-HTTP-book-duplicate",
+      "pass": true,
+      "actual": 409,
+      "expected": 409
+    },
+    {
+      "id": "festival-HTTP-POST-title",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-harmless-title-rendered-as-text",
+      "pass": true,
+      "actual": [
+        true,
+        false
+      ],
+      "expected": [
+        true,
+        false
+      ]
+    },
+    {
+      "id": "festival-HTTP-overlong-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-empty-title",
+      "pass": true,
+      "actual": 400,
+      "expected": 400
+    },
+    {
+      "id": "festival-HTTP-SQL-injection-title-is-data",
+      "pass": true,
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "id": "festival-HTTP-SQL-injection-did-not-drop-or-rewrite-all",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          "x' OR 1=1"
+        ],
+        [
+          20,
+          "Nachtklang"
+        ],
+        [
+          30,
+          "Lichtensemble"
+        ],
+        [
+          40,
+          "Freie Bühne"
+        ],
+        [
+          50,
+          "Finale <offen>"
+        ]
+      ]
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,zahlungOK,bereit",
+      "pass": true,
+      "actual": "Erledigt",
+      "expected": "Erledigt"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,bereit",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,zahlungOK",
+      "pass": true,
+      "actual": "Bearbeitung",
+      "expected": "Bearbeitung"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,zahlungOK,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,bereit,abbrechen",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "festival-hierarchical-parallel-state-absenden,abbrechen,bereit,zahlungOK",
+      "pass": true,
+      "actual": "Storniert",
+      "expected": "Storniert"
+    },
+    {
+      "id": "festival-settings-copy-preserved",
+      "pass": true,
+      "actual": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      },
+      "expected": {
+        "personalizedRecommendations": true,
+        "preciseLocation": true,
+        "profilePublic": true,
+        "analyticsRetentionDays": 365,
+        "language": "de",
+        "bookingNotifications": true
+      }
+    },
+    {
+      "id": "festival-settings-unrelated-preserved",
+      "pass": true,
+      "actual": [
+        "de",
+        true
+      ],
+      "expected": [
+        "de",
+        true
+      ]
+    },
+    {
+      "id": "festival-settings-actual-change",
+      "pass": true,
+      "actual": [
+        false,
+        false,
+        false,
+        7
+      ],
+      "expected": [
+        false,
+        false,
+        false,
+        7
+      ]
+    },
+    {
+      "id": "weak-same-partial-number-different-owner-valid",
+      "pass": true,
+      "actual": [
+        [
+          10,
+          1,
+          "2027-02-01"
+        ],
+        [
+          20,
+          1,
+          "2027-02-02"
+        ]
+      ],
+      "expected": [
+        [
+          10,
+          1,
+          "2027-02-01"
+        ],
+        [
+          20,
+          1,
+          "2027-02-02"
+        ]
+      ]
+    },
+    {
+      "id": "weak-duplicate-composite-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "weak-missing-owner-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "multivalue-zero-and-many-shared-number-valid",
+      "pass": true,
+      "actual": [
+        [
+          2,
+          "0123"
+        ],
+        [
+          2,
+          "0456"
+        ],
+        [
+          3,
+          "0123"
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          "0123"
+        ],
+        [
+          2,
+          "0456"
+        ],
+        [
+          3,
+          "0123"
+        ]
+      ]
+    },
+    {
+      "id": "multivalue-duplicate-pair-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "isa-preserved-identity",
+      "pass": true,
+      "actual": [
+        [
+          2,
+          2,
+          "DB"
+        ]
+      ],
+      "expected": [
+        [
+          2,
+          2,
+          "DB"
+        ]
+      ]
+    },
+    {
+      "id": "isa-person-without-subtype-valid",
+      "pass": true,
+      "actual": [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ],
+      "expected": [
+        [
+          1
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "id": "isa-subtype-without-person-rejected",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "algebra-full-product",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ],
+        [
+          1,
+          "rot",
+          20,
+          "gruen"
+        ],
+        [
+          2,
+          "blau",
+          10,
+          "rot"
+        ],
+        [
+          2,
+          "blau",
+          20,
+          "gruen"
+        ]
+      ]
+    },
+    {
+      "id": "algebra-full-selection",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "algebra-projection",
+      "pass": true,
+      "actual": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          "blau"
+        ],
+        [
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "algebra-full-theta-join",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          "rot",
+          10,
+          "rot"
+        ]
+      ]
+    },
+    {
+      "id": "algebra-advanced-operators",
+      "pass": true,
+      "actual": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "id": "normalization-lossless-full-fixture",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "BCNF-lossless-example",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "BCNF-candidate-keys-from-FDs",
+      "pass": true,
+      "actual": [
+        [
+          "student",
+          "fach"
+        ],
+        [
+          "student",
+          "dozent"
+        ]
+      ],
+      "expected": [
+        [
+          "student",
+          "fach"
+        ],
+        [
+          "student",
+          "dozent"
+        ]
+      ]
+    },
+    {
+      "id": "BCNF-dozent-not-superkey",
+      "pass": true,
+      "actual": 2,
+      "expected": 2
+    },
+    {
+      "id": "ranking-complete-universe-zero-tie",
+      "pass": true,
+      "actual": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "expected": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ]
+    },
+    {
+      "id": "ranking-sponsor",
+      "pass": true,
+      "actual": [
+        50,
+        10,
+        20,
+        30,
+        40
+      ],
+      "expected": [
+        50,
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    {
+      "id": "economic-direct-surplus",
+      "pass": true,
+      "actual": 4,
+      "expected": 4
+    },
+    {
+      "id": "mapreduce-groups-complete",
+      "pass": true,
+      "actual": {
+        "10": [
+          1,
+          1,
+          1
+        ],
+        "20": [
+          1,
+          1
+        ],
+        "30": [
+          1
+        ]
+      },
+      "expected": {
+        "10": [
+          1,
+          1,
+          1
+        ],
+        "20": [
+          1,
+          1
+        ],
+        "30": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "mapreduce-reduced",
+      "pass": true,
+      "actual": {
+        "10": 3,
+        "20": 2,
+        "30": 1
+      },
+      "expected": {
+        "10": 3,
+        "20": 2,
+        "30": 1
+      }
+    },
+    {
+      "id": "role-model-allowed-view",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "role-model-no-person-contact-drop",
+      "pass": true,
+      "actual": [
+        false,
+        false,
+        false
+      ],
+      "expected": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-exact-ordered-coverage",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ]
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-threshold-essential-count",
+      "pass": true,
+      "actual": [
+        20,
+        20
+      ],
+      "expected": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-binary-steps",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-all-competence-positive-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-any-essential-missing-negative-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-draft-only",
+      "pass": true,
+      "actual": "draft",
+      "expected": "draft"
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-unique-criterion-identities",
+      "pass": true,
+      "actual": 20,
+      "expected": 20
+    },
+    {
+      "id": "f37f2d37-7686-5ed7-9c20-6f83d4fd2254-exact-goal-bindings",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5"
+      ]
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-exact-ordered-coverage",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ]
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-threshold-essential-count",
+      "pass": true,
+      "actual": [
+        40,
+        40
+      ],
+      "expected": [
+        40,
+        40
+      ]
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-binary-steps",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-all-competence-positive-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-any-essential-missing-negative-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-draft-only",
+      "pass": true,
+      "actual": "draft",
+      "expected": "draft"
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-unique-criterion-identities",
+      "pass": true,
+      "actual": 40,
+      "expected": 40
+    },
+    {
+      "id": "6ebc2a67-ea20-5c4e-8a63-635f40438d6a-exact-goal-bindings",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+        "5c6ba0c6-5b7a-512f-8c19-739b20473639",
+        "2d1021d7-aa6a-520d-a56e-19a8305db9f3",
+        "58180f3b-3cf7-577d-b2ff-d9066ef481f5",
+        "b855c123-cd28-5d6c-9485-4852d01bc5eb"
+      ]
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-exact-ordered-coverage",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ]
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-threshold-essential-count",
+      "pass": true,
+      "actual": [
+        82,
+        82
+      ],
+      "expected": [
+        82,
+        82
+      ]
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-binary-steps",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-all-competence-positive-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-any-essential-missing-negative-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-draft-only",
+      "pass": true,
+      "actual": "draft",
+      "expected": "draft"
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-unique-criterion-identities",
+      "pass": true,
+      "actual": 82,
+      "expected": 82
+    },
+    {
+      "id": "0df1bedd-5fda-5b3b-a959-c9610237bb3e-exact-goal-bindings",
+      "pass": true,
+      "actual": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ],
+      "expected": [
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+        "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+        "43164b7c-3ef9-5d45-9f7d-07adfd13964a",
+        "71fe327a-9677-5348-a405-fba0dbd302d7",
+        "58173dab-0cb2-52ae-a052-63d3a0f33644",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "70523f2e-b331-51c0-95d0-919c8a189cad",
+        "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+        "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "303cb242-31c2-579d-b50f-16b03a0e412c",
+        "955c771a-6c00-5cfc-872a-3f1b1accf730",
+        "0e09df97-e0e4-592b-b204-f0754a3296d7",
+        "1a355b54-4da7-56ef-a731-8aa9dc91b1c0",
+        "7299e142-0c10-55b2-a72a-c62057e22943",
+        "2f5f29fb-ff3f-5a7e-a256-6ae058a985df",
+        "f029bea7-1c08-5844-894c-9aeb96bf9ec2",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+        "e94beeaa-784d-5490-932b-38b81bf669fc",
+        "7a9fdfe7-a806-5a31-b276-0da27a4617fc"
+      ]
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-exact-ordered-coverage",
+      "pass": true,
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ]
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-threshold-essential-count",
+      "pass": true,
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ]
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-binary-steps",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-all-competence-positive-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-any-essential-missing-negative-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-draft-only",
+      "pass": true,
+      "actual": "draft",
+      "expected": "draft"
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-unique-criterion-identities",
+      "pass": true,
+      "actual": 46,
+      "expected": 46
+    },
+    {
+      "id": "269a561b-f12e-57b2-9b05-e20f58c9dcf6-exact-goal-bindings",
+      "pass": true,
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ]
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-exact-ordered-coverage",
+      "pass": true,
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ]
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-threshold-essential-count",
+      "pass": true,
+      "actual": [
+        46,
+        46
+      ],
+      "expected": [
+        46,
+        46
+      ]
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-binary-steps",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-all-competence-positive-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-any-essential-missing-negative-contract",
+      "pass": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-draft-only",
+      "pass": true,
+      "actual": "draft",
+      "expected": "draft"
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-unique-criterion-identities",
+      "pass": true,
+      "actual": 46,
+      "expected": 46
+    },
+    {
+      "id": "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f-exact-goal-bindings",
+      "pass": true,
+      "actual": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ],
+      "expected": [
+        "1212f50a-325f-5b9b-8ce2-5323f6dc53f9",
+        "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+        "16ce7d7a-fc31-58d0-83f8-427318331e73",
+        "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+        "2cf7589d-5451-5239-badf-1ebb981a2f20",
+        "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+        "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+        "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+        "5054427c-9b93-547d-8c17-b30064f180c5",
+        "56e5edb6-b883-50a0-92bb-732d5e44c781",
+        "5b969704-05c0-5c15-a5cc-d671e15be036",
+        "5d07f77d-d955-54ff-90d8-2dddf01566be",
+        "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "98fcf9d1-71b8-5e5b-928b-166917330da4",
+        "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+        "a49d9d9c-a8f2-52e7-a90a-6ad4bfafafbb",
+        "b2d2fafe-e9eb-5457-8f74-2ac7c0e37e76",
+        "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+        "c4995fb0-c881-5474-bbe6-ba56f1e9ac32",
+        "c7394a41-d900-5b31-8ac1-bac8c3be8b26",
+        "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+        "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+        "fdfa87be-06ca-5c54-9950-d8408dba8e38"
+      ]
+    }
+  ],
+  "referenceSha256": {
+    "reference-festival.py": "ac0ac8e02346311bca6b38de8caaf4d40c9d67d931e42335f854ec0662f7f3f0",
+    "reference-library.py": "b495159f901054d72f19a25add63114f33efa04f5b3152fcaf347590e569ff46",
+    "reference-courses.py": "b5fd806ed8ce7ef2b80a692c1dc9af1a79cb6a78aefc9fc5aebc4f8328516e18"
+  },
+  "limits": [
+    "No human learner or host acceptance.",
+    "Role/DCL assignments checked against given teaching matrix only;no actual role DBMS execution.",
+    "HTTP uses a deliberately supplied local fictional session contract,not production authentication.",
+    "Contract negative cases verify declared arithmetic threshold;native scorer/gates remain source-agent responsibility.",
+    "No measured workload/performance or legal review beyond the dated official card."
+  ]
+}

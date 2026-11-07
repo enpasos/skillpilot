@@ -1,0 +1,651 @@
+{
+  "status": "actual PostgreSQL18 local throwaway-cluster statements/permission queries executed",
+  "version": "postgres (PostgreSQL) 18.1",
+  "transport": "private Unix socket only,no listening TCP host",
+  "statements": [
+    {
+      "schema": null,
+      "role": null,
+      "sql": "CREATE ROLE auskunft NOLOGIN;CREATE ROLE anmeldedienst NOLOGIN;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": null,
+      "role": null,
+      "sql": "CREATE SCHEMA courses;GRANT USAGE ON SCHEMA courses TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "\nCREATE TABLE Person(pid INTEGER PRIMARY KEY,pseudonym TEXT NOT NULL,ort TEXT NOT NULL);\nCREATE TABLE Team(tid INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Raum(rid INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Kurs(kid INTEGER PRIMARY KEY,titel TEXT NOT NULL,preis INTEGER NOT NULL CHECK(preis>=0),maxPlaetze INTEGER NOT NULL CHECK(maxPlaetze>0),tid INTEGER NOT NULL REFERENCES Team(tid),rid INTEGER REFERENCES Raum(rid));\nCREATE TABLE Buchung(pid INTEGER NOT NULL REFERENCES Person(pid),kid INTEGER NOT NULL REFERENCES Kurs(kid),status TEXT NOT NULL CHECK(status IN ('aktiv','storniert')),PRIMARY KEY(pid,kid));\nCREATE TABLE Kontakt(pid INTEGER PRIMARY KEY REFERENCES Person(pid),email TEXT NOT NULL);\nINSERT INTO Person VALUES(1,'ada','Kassel'),(2,'ben','Kassel'),(3,'cora','Fulda'),(4,'dino','Marburg'),(5,'eva','Fulda');\nINSERT INTO Team VALUES(1,'Werkstatt'),(2,'Offene Medien'),(3,'Archiv');\nINSERT INTO Raum VALUES(1,'Nord'),(2,'Sued');\nINSERT INTO Kurs VALUES(10,'Fotobasis',20,3,1,1),(20,'Audiolabor',30,2,2,2),(30,'Videoschnitt',40,2,1,NULL),(40,'Datenschutz-Werkstatt',10,4,2,1),(50,'Archiv <offen>',15,2,3,NULL);\nINSERT INTO Buchung VALUES(1,10,'aktiv'),(2,10,'aktiv'),(3,10,'storniert'),(2,20,'aktiv'),(3,20,'aktiv'),(1,30,'aktiv'),(4,30,'aktiv'),(5,40,'aktiv'),(2,40,'storniert');\nINSERT INTO Kontakt VALUES(1,'ada@example.invalid'),(3,'cora@example.invalid');\nCREATE TABLE R(a INTEGER PRIMARY KEY,x TEXT NOT NULL);\nCREATE TABLE S(b INTEGER PRIMARY KEY,y TEXT NOT NULL);\nCREATE TABLE V(a INTEGER REFERENCES R(a),b INTEGER REFERENCES S(b),PRIMARY KEY(a,b));\nINSERT INTO R VALUES(1,'rot'),(2,'blau');INSERT INTO S VALUES(10,'rot'),(20,'gruen');INSERT INTO V VALUES(1,10),(1,20),(2,20);\nCREATE VIEW KursAuskunft AS SELECT kid,titel,preis FROM Kurs;GRANT SELECT ON Person TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Person",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM KursAuskunft",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "GRANT SELECT ON KursAuskunft TO auskunft",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM KursAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Person",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "REVOKE SELECT ON Person FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Person",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM KursAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "SELECT * FROM Kontakt",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "courses",
+      "role": "auskunft",
+      "sql": "UPDATE Kurs SET titel='falsch'",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "SELECT kid FROM Kurs WHERE preis>(SELECT AVG(preis) FROM Kurs) ORDER BY kid;",
+      "returncode": 0,
+      "stdout": "20\n30",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "UPDATE Kurs SET preis=preis+5 WHERE kid=20;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "SELECT preis FROM Kurs WHERE kid=20;",
+      "returncode": 0,
+      "stdout": "35",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "ALTER TABLE Kurs ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "courses",
+      "role": null,
+      "sql": "SELECT sum(sichtbar) FROM Kurs;",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": null,
+      "role": null,
+      "sql": "CREATE SCHEMA library;GRANT USAGE ON SCHEMA library TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "\nCREATE TABLE Leser(pid INTEGER PRIMARY KEY,alias TEXT NOT NULL,ort TEXT NOT NULL);\nCREATE TABLE Verlag(verlag_id INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Regal(regal_id INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Medium(mid INTEGER PRIMARY KEY,titel TEXT NOT NULL,gebuehr INTEGER NOT NULL CHECK(gebuehr>=0),exemplarzahl INTEGER NOT NULL CHECK(exemplarzahl>0),verlag_id INTEGER NOT NULL REFERENCES Verlag(verlag_id),regal_id INTEGER REFERENCES Regal(regal_id));\nCREATE TABLE Ausleihe(pid INTEGER NOT NULL REFERENCES Leser(pid),mid INTEGER NOT NULL REFERENCES Medium(mid),status TEXT NOT NULL CHECK(status IN ('aktiv','storniert')),PRIMARY KEY(pid,mid));\nCREATE TABLE Leserkontakt(pid INTEGER PRIMARY KEY REFERENCES Leser(pid),email TEXT NOT NULL);\nINSERT INTO Leser VALUES(1,'ada','Kassel'),(2,'ben','Kassel'),(3,'cora','Fulda'),(4,'dino','Marburg'),(5,'eva','Fulda');\nINSERT INTO Verlag VALUES(1,'Lernverlag'),(2,'Hoerverlag'),(3,'Archivverlag');\nINSERT INTO Regal VALUES(1,'Nord'),(2,'Sued');\nINSERT INTO Medium VALUES(10,'Datenatlas',20,3,1,1),(20,'Klangbuch',30,2,2,2),(30,'Filmarchiv',40,2,1,NULL),(40,'Privatsphaere',10,4,2,1),(50,'Magazin <offen>',15,2,3,NULL);\nINSERT INTO Ausleihe VALUES(1,10,'aktiv'),(2,10,'aktiv'),(3,10,'storniert'),(2,20,'aktiv'),(3,20,'aktiv'),(1,30,'aktiv'),(4,30,'aktiv'),(5,40,'aktiv'),(2,40,'storniert');\nINSERT INTO Leserkontakt VALUES(1,'ada@example.invalid'),(3,'cora@example.invalid');\nCREATE TABLE R(a INTEGER PRIMARY KEY,x TEXT NOT NULL);\nCREATE TABLE S(b INTEGER PRIMARY KEY,y TEXT NOT NULL);\nCREATE TABLE V(a INTEGER REFERENCES R(a),b INTEGER REFERENCES S(b),PRIMARY KEY(a,b));\nINSERT INTO R VALUES(1,'rot'),(2,'blau');INSERT INTO S VALUES(10,'rot'),(20,'gruen');INSERT INTO V VALUES(1,10),(1,20),(2,20);\nCREATE VIEW MedienAuskunft AS SELECT mid,titel,gebuehr FROM Medium;GRANT SELECT ON Leser TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Leser",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM MedienAuskunft",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "GRANT SELECT ON MedienAuskunft TO auskunft",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM MedienAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Leser",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "REVOKE SELECT ON Leser FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Leser",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM MedienAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "SELECT * FROM Leserkontakt",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "library",
+      "role": "auskunft",
+      "sql": "UPDATE Medium SET titel='falsch'",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "SELECT mid FROM Medium WHERE gebuehr>(SELECT AVG(gebuehr) FROM Medium) ORDER BY mid;",
+      "returncode": 0,
+      "stdout": "20\n30",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "UPDATE Medium SET gebuehr=gebuehr+5 WHERE mid=20;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "SELECT gebuehr FROM Medium WHERE mid=20;",
+      "returncode": 0,
+      "stdout": "35",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "ALTER TABLE Medium ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "library",
+      "role": null,
+      "sql": "SELECT sum(sichtbar) FROM Medium;",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": null,
+      "role": null,
+      "sql": "CREATE SCHEMA festival;GRANT USAGE ON SCHEMA festival TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "\nCREATE TABLE Gast(pid INTEGER PRIMARY KEY,alias TEXT NOT NULL,ort TEXT NOT NULL);\nCREATE TABLE Buehne(buehne_id INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Zone(zone_id INTEGER PRIMARY KEY,name TEXT NOT NULL);\nCREATE TABLE Auftritt(auftritt_id INTEGER PRIMARY KEY,titel TEXT NOT NULL,preis INTEGER NOT NULL CHECK(preis>=0),platzlimit INTEGER NOT NULL CHECK(platzlimit>0),buehne_id INTEGER NOT NULL REFERENCES Buehne(buehne_id),zone_id INTEGER REFERENCES Zone(zone_id));\nCREATE TABLE Reservierung(pid INTEGER NOT NULL REFERENCES Gast(pid),auftritt_id INTEGER NOT NULL REFERENCES Auftritt(auftritt_id),status TEXT NOT NULL CHECK(status IN ('aktiv','storniert')),PRIMARY KEY(pid,auftritt_id));\nCREATE TABLE Gastkontakt(pid INTEGER PRIMARY KEY REFERENCES Gast(pid),email TEXT NOT NULL);\nINSERT INTO Gast VALUES(1,'ada','Kassel'),(2,'ben','Kassel'),(3,'cora','Fulda'),(4,'dino','Marburg'),(5,'eva','Fulda');\nINSERT INTO Buehne VALUES(1,'Hauptbuehne'),(2,'Zeltbuehne'),(3,'Nebenbuehne');\nINSERT INTO Zone VALUES(1,'Nord'),(2,'Sued');\nINSERT INTO Auftritt VALUES(10,'Morgenquartett',20,3,1,1),(20,'Nachtklang',30,2,2,2),(30,'Lichtensemble',40,2,1,NULL),(40,'Freie Bühne',10,4,2,1),(50,'Finale <offen>',15,2,3,NULL);\nINSERT INTO Reservierung VALUES(1,10,'aktiv'),(2,10,'aktiv'),(3,10,'storniert'),(2,20,'aktiv'),(3,20,'aktiv'),(1,30,'aktiv'),(4,30,'aktiv'),(5,40,'aktiv'),(2,40,'storniert');\nINSERT INTO Gastkontakt VALUES(1,'ada@example.invalid'),(3,'cora@example.invalid');\nCREATE TABLE R(a INTEGER PRIMARY KEY,x TEXT NOT NULL);\nCREATE TABLE S(b INTEGER PRIMARY KEY,y TEXT NOT NULL);\nCREATE TABLE V(a INTEGER REFERENCES R(a),b INTEGER REFERENCES S(b),PRIMARY KEY(a,b));\nINSERT INTO R VALUES(1,'rot'),(2,'blau');INSERT INTO S VALUES(10,'rot'),(20,'gruen');INSERT INTO V VALUES(1,10),(1,20),(2,20);\nCREATE VIEW ProgrammAuskunft AS SELECT auftritt_id,titel,preis FROM Auftritt;GRANT SELECT ON Gast TO auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Gast",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM ProgrammAuskunft",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "GRANT SELECT ON ProgrammAuskunft TO auskunft",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM ProgrammAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Gast",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "REVOKE SELECT ON Gast FROM auskunft;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM Gast",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT count(*) FROM ProgrammAuskunft",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "SELECT * FROM Gastkontakt",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "festival",
+      "role": "auskunft",
+      "sql": "UPDATE Auftritt SET titel='falsch'",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "ERROR:  42501"
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "SELECT auftritt_id FROM Auftritt WHERE preis>(SELECT AVG(preis) FROM Auftritt) ORDER BY auftritt_id;",
+      "returncode": 0,
+      "stdout": "20\n30",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "UPDATE Auftritt SET preis=preis+5 WHERE auftritt_id=20;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "SELECT preis FROM Auftritt WHERE auftritt_id=20;",
+      "returncode": 0,
+      "stdout": "35",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "ALTER TABLE Auftritt ADD COLUMN sichtbar INTEGER NOT NULL DEFAULT 1;",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "schema": "festival",
+      "role": null,
+      "sql": "SELECT sum(sichtbar) FROM Auftritt;",
+      "returncode": 0,
+      "stdout": "5",
+      "stderr": ""
+    }
+  ],
+  "commandResults": [
+    {
+      "program": "initdb",
+      "returncode": 0
+    },
+    {
+      "program": "pg_ctl",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 1
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "psql",
+      "returncode": 0
+    },
+    {
+      "program": "pg_ctl",
+      "returncode": 0
+    },
+    {
+      "program": "postgres",
+      "returncode": 0
+    }
+  ],
+  "clusterStopped": true,
+  "noCredentialsOrProductionSettingsChanged": true
+}

@@ -1,0 +1,143 @@
+{
+  "preliminaryFourRuns": {
+    "results": [
+      {
+        "role": "original",
+        "mode": "writer",
+        "exitCode": 0,
+        "authenticated": true,
+        "runId": "529862c85b284cac88f1075192943aa2",
+        "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/529862c85b284cac88f1075192943aa2/evidence",
+        "processes": 18,
+        "sourceReadCount": 600,
+        "failures": 422,
+        "traceSha256": "5ecaef7465774066f54e8527705a41512318d8afaa7ba6498e58ef32a8c0e7d2",
+        "output": {
+          "/qa/pair/original80/docs/qa-ci/status/namespace-report.json": {
+            "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/529862c85b284cac88f1075192943aa2/outputs/namespace-report.json",
+            "sha256": "5a510bd458b4a97ff6af760b45898ab3190aa361cde10647e740501169b95bdf",
+            "bytes": 122009,
+            "inode": 561791,
+            "device": 65
+          }
+        }
+      },
+      {
+        "role": "original",
+        "mode": "reader",
+        "exitCode": 0,
+        "authenticated": true,
+        "runId": "e8bc781170a34402913187d6d7180461",
+        "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/e8bc781170a34402913187d6d7180461/evidence",
+        "processes": 18,
+        "sourceReadCount": 4,
+        "failures": 73,
+        "traceSha256": "ce38b9ba2c9ef367aaf99ae612e670dfec7108955ce9f6304b9208df15997afe",
+        "output": {
+          "/qa/pair/original80/docs/qa-ci/status/namespace-report.json": {
+            "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/529862c85b284cac88f1075192943aa2/outputs/namespace-report.json",
+            "sha256": "5a510bd458b4a97ff6af760b45898ab3190aa361cde10647e740501169b95bdf",
+            "bytes": 122009,
+            "inode": 561791,
+            "device": 65
+          }
+        }
+      },
+      {
+        "role": "candidate",
+        "mode": "writer",
+        "exitCode": 0,
+        "authenticated": true,
+        "runId": "2e74a467811c4e5eb2dd73df6ed4ad76",
+        "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/2e74a467811c4e5eb2dd73df6ed4ad76/evidence",
+        "processes": 18,
+        "sourceReadCount": 600,
+        "failures": 422,
+        "traceSha256": "a61d8dc87f1e4b372dd7642107a01c8112416b514135364ee6c6273800784d13",
+        "output": {
+          "/qa/pair/projectedA80/docs/qa-ci/status/namespace-report.json": {
+            "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/2e74a467811c4e5eb2dd73df6ed4ad76/outputs/namespace-report.json",
+            "sha256": "b026441cb547cb85c6c9e130d2daae7737fa441ab45acb22b1e1ea734c212837",
+            "bytes": 122016,
+            "inode": 564788,
+            "device": 65
+          }
+        }
+      },
+      {
+        "role": "candidate",
+        "mode": "reader",
+        "exitCode": 0,
+        "authenticated": true,
+        "runId": "bf711e1e98dc4d6da1f1210cb516d85b",
+        "evidence": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/bf711e1e98dc4d6da1f1210cb516d85b/evidence",
+        "processes": 18,
+        "sourceReadCount": 4,
+        "failures": 73,
+        "traceSha256": "85de8410b206e5c969caabcf6808647fc2d32b652d542e402a8c4abef6ec3992",
+        "output": {
+          "/qa/pair/projectedA80/docs/qa-ci/status/namespace-report.json": {
+            "physical": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs/2e74a467811c4e5eb2dd73df6ed4ad76/outputs/namespace-report.json",
+            "sha256": "b026441cb547cb85c6c9e130d2daae7737fa441ab45acb22b1e1ea734c212837",
+            "bytes": 122016,
+            "inode": 564788,
+            "device": 65
+          }
+        }
+      }
+    ],
+    "terminal": true
+  },
+  "finalRunsAreSeparate": true,
+  "actualDevelopmentFindings": [
+    {
+      "observation": "bwrap block-fd holds before mount setup",
+      "consequence": "Not accepted as postmount barrier; fixed static actual postmount/preexec stop used."
+    },
+    {
+      "observation": "get-tsconfig invertCase(cwd) metadata probe outside ordinary Node family",
+      "consequence": "Derived exact separate probe from captured module and cwd; all root membership remains closed."
+    },
+    {
+      "observation": "temporary CSV source was initially categorized as output; scratch exec lacked explicit early denial",
+      "consequence": "Final contract retains original Source binding and rejects executable scratch."
+    },
+    {
+      "observation": "a real internal Go socketpair read was interrupted with ERESTARTSYS",
+      "consequence": "Failed file/runtime reads remain denied; only zero-byte EAGAIN/EINTR/ERESTARTSYS on internally created control FDs are classified."
+    },
+    {
+      "observation": "expanded ioctl trace observes TCGETS ENOTTY and FIONBIO [1] on known owned transport FDs",
+      "consequence": "Exact benign FD-state cases accounted; unknown ioctl remains denied."
+    },
+    {
+      "observation": "role-only sealed output did not bind source frame/inode",
+      "consequence": "Final separate-reader flow binds frozen source/tool namespace, exact output inode/hash, role, writer run and trace."
+    }
+  ],
+  "barrierNegativeTraceBindings": [
+    {
+      "runId": "4c72d662f3c14c9c9e6ed90b4da9dcb7",
+      "artifactTrace": "runs/barrier-negative-4c72d662f3c14c9c9e6ed90b4da9dcb7/recorder.strace.gz",
+      "sha256": "1d09d56eca712bd46d4151175371f24e08ac011660a59a989ae5fd427d161591"
+    },
+    {
+      "runId": "5fffd600e6df4ed2948d12118556d203",
+      "artifactTrace": "runs/barrier-negative-5fffd600e6df4ed2948d12118556d203/recorder.strace.gz",
+      "sha256": "9e2c4e24e6ba91e0e2542df593855a6721949c669425bb2f0270e8e95d6a4e40"
+    },
+    {
+      "runId": "8228fbf29cc243629896616fa5e6c064",
+      "artifactTrace": "runs/barrier-negative-8228fbf29cc243629896616fa5e6c064/recorder.strace.gz",
+      "sha256": "f7cf51fd00a661b31c64faa9e712e63fdd098e674d3acf5bf7fc10eb9df1e22b"
+    },
+    {
+      "runId": "d2248d10b28d43c48e4b4be49fc99837",
+      "artifactTrace": "runs/barrier-negative-d2248d10b28d43c48e4b4be49fc99837/recorder.strace.gz",
+      "sha256": "177ba8987891f6f66a0a463f630c661ee5c86c77ae15a3e102b747539a5912fa"
+    }
+  ],
+  "negativeCaseCodeFrames": "Twelve real capture/barrier guards ran before final sealed-output strengthening. Remaining countercases use their actual recorded genuine writer and foreign-argv runs. Final four positive runs and six extra writer countercases independently test the final pinned implementation. Kinds distinguish synthetic event mutations from native executions.",
+  "oldRawEvidenceRetainedInRam": "/dev/shm/source-a-closed-namespace-native-candidate-20261107/runs",
+  "noProviderRejectedPeerInvoked": true
+}

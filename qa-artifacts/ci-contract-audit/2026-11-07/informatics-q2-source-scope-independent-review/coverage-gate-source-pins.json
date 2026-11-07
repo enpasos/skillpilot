@@ -1,0 +1,155 @@
+{
+  "readOnlyInputs": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "4342979a74b85e3aa2bce2e95a95e14f7c5a05fe83698076bd82b8c0182b5da6",
+      "equalsFrozenNative": true
+    },
+    {
+      "path": "app/scripts/lib/curriculumAssessmentValidation.ts",
+      "sha256": "e7a933c348ab36ed3d7285247647e0c82aa8dd2e5f7630756ed079345ddffff7"
+    },
+    {
+      "path": "app/scripts/testCurriculumExamReadiness.ts",
+      "sha256": "a7d066962ca3191736e5267e9ef141ccf94489862abbbd2fda6c8e049e2d8513"
+    },
+    {
+      "path": "docs/concept/skill-graph/node-types.md",
+      "sha256": "4a07a12fa22e1e0e5044c78ef2820c224443e97f77169f3844c703264948cc69"
+    },
+    {
+      "path": "docs/concept/skill-graph/assessment-gated-completion.md",
+      "sha256": "2a2117698f6923131a093717e9e18ee8e8e4a66e64bf01f33c095b27826682bf"
+    },
+    {
+      "path": "docs/concept/skill-graph/graph-definition.md",
+      "sha256": "51c5bfe9d2adbbe28adee2a83bdb9cbaf228f47b177129a6c0aa5293d353b874"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/informatics-875-retained-definition-contract-review-2026-11-06.md",
+      "sha256": "41ba92732fedf91a345cb82e0201036fae5ac7e62dd8333a12b334d070d5f4b0"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr202-complete-assessment-scope-hardening-plan-2026-11-06.md",
+      "sha256": "a34a2e89e45569739b5ea37e9c0b60436deebb42727e4cb406d4ab68e235e71b"
+    }
+  ],
+  "normativeMainRefs": {
+    "main": {
+      "commit": "8fda13b6505df9f2ba4f8239e1703d8e54d2456e",
+      "documents": [
+        {
+          "path": "docs/concept/skill-graph/graph-definition.md",
+          "sha256": "51c5bfe9d2adbbe28adee2a83bdb9cbaf228f47b177129a6c0aa5293d353b874",
+          "matches": [
+            {
+              "line": 708,
+              "text": "cannot reinterpret an old exam pass as proof of newly added competencies."
+            }
+          ],
+          "matchesWorktreeBytes": true
+        },
+        {
+          "path": "docs/concept/skill-graph/node-types.md",
+          "sha256": "22680c1cdd61d85c86002030ef8410066a429a5b2dea3b8fa8628b57450bb381",
+          "matches": [
+            {
+              "line": 309,
+              "text": "The stable assessment identity must retain its recognition meaning across"
+            },
+            {
+              "line": 310,
+              "text": "equivalent task variants. Broader later graph/unit definitions cannot expand"
+            }
+          ],
+          "matchesWorktreeBytes": false
+        },
+        {
+          "path": "docs/concept/skill-graph/assessment-gated-completion.md",
+          "sha256": "a4166eaece3b5dc3c2a34369cf15165bb9946dacdaaf47e554093c7436a596b7",
+          "matches": [
+            {
+              "line": 157,
+              "text": "A stable assessment ID binds stable recognition meaning. Task variants may"
+            },
+            {
+              "line": 158,
+              "text": "preserve it. Expanded claims need a new assessment identity or a reviewed"
+            },
+            {
+              "line": 160,
+              "text": "an old pass as evidence of additional competencies. Ambiguous historical meaning"
+            }
+          ],
+          "matchesWorktreeBytes": false
+        }
+      ]
+    },
+    "origin/main": {
+      "commit": "0ce5a8d791eeb9783a919195fd8590bfb79f3595",
+      "documents": [
+        {
+          "path": "docs/concept/skill-graph/graph-definition.md",
+          "sha256": "51c5bfe9d2adbbe28adee2a83bdb9cbaf228f47b177129a6c0aa5293d353b874",
+          "matches": [
+            {
+              "line": 708,
+              "text": "cannot reinterpret an old exam pass as proof of newly added competencies."
+            }
+          ],
+          "matchesWorktreeBytes": true
+        },
+        {
+          "path": "docs/concept/skill-graph/node-types.md",
+          "sha256": "22680c1cdd61d85c86002030ef8410066a429a5b2dea3b8fa8628b57450bb381",
+          "matches": [
+            {
+              "line": 309,
+              "text": "The stable assessment identity must retain its recognition meaning across"
+            },
+            {
+              "line": 310,
+              "text": "equivalent task variants. Broader later graph/unit definitions cannot expand"
+            }
+          ],
+          "matchesWorktreeBytes": false
+        },
+        {
+          "path": "docs/concept/skill-graph/assessment-gated-completion.md",
+          "sha256": "a4166eaece3b5dc3c2a34369cf15165bb9946dacdaaf47e554093c7436a596b7",
+          "matches": [
+            {
+              "line": 157,
+              "text": "A stable assessment ID binds stable recognition meaning. Task variants may"
+            },
+            {
+              "line": 158,
+              "text": "preserve it. Expanded claims need a new assessment identity or a reviewed"
+            },
+            {
+              "line": 160,
+              "text": "an old pass as evidence of additional competencies. Ambiguous historical meaning"
+            }
+          ],
+          "matchesWorktreeBytes": false
+        }
+      ]
+    }
+  },
+  "candidateNativeFunctionEquivalence": [
+    {
+      "from": "function normalizeExamTextForInspection",
+      "untilExclusive": "export function readCurrentCurriculumAssessmentScopes",
+      "currentSha256": "91930bddbf9aba4c3d5115e5e58025bf9f90513f79e67ff686e7262a4269d510",
+      "candidateSha256": "91930bddbf9aba4c3d5115e5e58025bf9f90513f79e67ff686e7262a4269d510",
+      "identical": true
+    },
+    {
+      "from": "function stringArray",
+      "untilExclusive": "export function evaluateRouteProfile",
+      "currentSha256": "8915fccf959ed303ade8bce982b15c1b1f79ded698c7f571ef95e0e337840182",
+      "candidateSha256": "8915fccf959ed303ade8bce982b15c1b1f79ded698c7f571ef95e0e337840182",
+      "identical": true
+    }
+  ]
+}

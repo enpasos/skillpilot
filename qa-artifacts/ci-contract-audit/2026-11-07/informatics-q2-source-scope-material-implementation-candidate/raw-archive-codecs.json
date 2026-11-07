@@ -1,0 +1,23 @@
+{
+  "reason": "Whole bounded package below4MB; standard lossless XZ retains every exact native raw JSON byte. Other reports use gzip. Original gzip versions remain in task RAM.",
+  "beforeAfterArchive": "native/before-after-native.raw.tar.xz",
+  "entries": [
+    {
+      "rawEntry": "baseline-observed.native.json",
+      "rawBytes": 5919650,
+      "rawSha256": "69eb3c459d29baa5362747f685cbe252facb11f04796aa4ce1c1d16a86bf0d71",
+      "formerGzipSha256RetainedInRam": "60bee243c423238161f82dab2383c49b77018a532d084a68fa361eb1e087a64c"
+    },
+    {
+      "rawEntry": "candidate-final-v2.native.json",
+      "rawBytes": 6507987,
+      "rawSha256": "636d2b90778e51de69b30e52aafc7c32dcb97a87a5a074d0354d9b5e5dd9c1d2",
+      "formerGzipSha256RetainedInRam": "91530fe5a1248152dcb32e820997be0b7176115abfd2421457700b60d8614933"
+    }
+  ],
+  "fullPriorVariant": {
+    "artifact": "native/full-cqr-material-v1.status.json.xz",
+    "rawSha256": "9f0a1d388798cd496afabedda3f5a58c4625c8fc6722559364e24ed52e359e11",
+    "rawBytes": 11720563
+  }
+}

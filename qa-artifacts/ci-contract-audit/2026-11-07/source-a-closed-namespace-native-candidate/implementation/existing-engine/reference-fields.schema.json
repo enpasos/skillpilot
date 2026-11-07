@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "contractId": {
+      "const": "canonical-goal-identity-reference-fields-v1"
+    },
+    "migrationId": {
+      "const": "canonical-goal-id-format-2026-11-06"
+    },
+    "uuidNamespace": {
+      "const": "97d8c00c-411d-5dec-b260-4e6f22ab688b"
+    },
+    "derivation": {
+      "type": "string"
+    },
+    "ownerFields": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "targetLandscapeId",
+          "canonicalLandscapeId",
+          "landscapeId"
+        ]
+      }
+    },
+    "activeFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "class": {
+            "enum": [
+              "runtime-graph",
+              "composition",
+              "mapping",
+              "provenance-registry",
+              "qa-scope-config",
+              "duration-policy"
+            ]
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "identity",
+              "reference",
+              "reference-key"
+            ]
+          }
+        },
+        "required": [
+          "class",
+          "pointer",
+          "role"
+        ]
+      }
+    },
+    "preservedActiveFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "class": {
+            "enum": [
+              "runtime-graph",
+              "composition",
+              "mapping",
+              "provenance-registry",
+              "qa-scope-config",
+              "duration-policy"
+            ]
+          },
+          "pointer": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "class",
+          "pointer",
+          "reason"
+        ]
+      }
+    },
+    "immutableDocumentRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "prefix": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "prefix",
+          "reason"
+        ]
+      }
+    },
+    "derivedDocumentPrefixes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "immutableExactDocuments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "reason"
+        ]
+      }
+    },
+    "activeCodeConsumers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "reason"
+        ]
+      }
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "migrationId",
+    "uuidNamespace",
+    "derivation",
+    "ownerFields",
+    "activeFields",
+    "preservedActiveFields",
+    "immutableDocumentRules",
+    "derivedDocumentPrefixes",
+    "immutableExactDocuments",
+    "activeCodeConsumers",
+    "note"
+  ]
+}
