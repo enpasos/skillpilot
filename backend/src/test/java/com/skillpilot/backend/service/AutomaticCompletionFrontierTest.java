@@ -25,6 +25,7 @@ import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.ExamData;
 import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LandscapeFilter;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.repository.LearnerClientStateRepository;
@@ -48,9 +49,11 @@ class AutomaticCompletionFrontierTest {
     private final Map<String, Double> mastery = new LinkedHashMap<>();
     private final List<String> focus = new ArrayList<>(List.of("ROOT"));
     private Learner learner;
+    private SkillLandscape landscape;
     private LearnerService service;
     private MasteryRepository masteryRepository;
     private CompletionApplicationService completion;
+    private CompletionCanonicalGraphResolver resolver;
 
     @BeforeEach void setUp() {
         // Q -> C -> B -> A. Z and O have no consumers; neither is a final exam.
@@ -69,7 +72,7 @@ class AutomaticCompletionFrontierTest {
         root.setContains(List.of("MIDDLE", "B", "C", "Q", "O"));
         graph.put("ROOT", root);
 
-        SkillLandscape landscape = new SkillLandscape();
+        landscape = new SkillLandscape();
         landscape.setLandscapeId("base");
         landscape.setTitle("Test curriculum");
         landscape.setGoals(List.copyOf(graph.values()));
@@ -108,9 +111,46 @@ class AutomaticCompletionFrontierTest {
         completion = new CompletionApplicationService(
                 new CompletionProfileCatalog(Map.of(), Map.of(), "frontier-generation", true));
         ReflectionTestUtils.setField(service, "completionApplicationService", completion);
-        var resolver = mock(CompletionCanonicalGraphResolver.class);
+        resolver = mock(CompletionCanonicalGraphResolver.class);
         when(resolver.load("base")).thenReturn(graph);
+        when(resolver.loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap())).thenReturn(graph);
         ReflectionTestUtils.setField(service, "completionCanonicalGraphResolver", resolver);
+    }
+
+    @Test void graphBasisIsScopedToLevel2AndSharedAcrossFocusAndMasteryChanges() {
+        graph.get("O").setTags(List.of("LK"));
+        LandscapeFilter gk = new LandscapeFilter();
+        gk.setId("GK");
+        LandscapeFilter lk = new LandscapeFilter();
+        lk.setId("LK");
+        landscape.setFilters(List.of(gk, lk));
+        learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"GK\"}}");
+        assertThat(service.getFrontier(LEARNER)).contains("A");
+        focus.clear();
+        focus.addAll(List.of("Q", "A"));
+        mastery.put("B", 1.0);
+        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
+        assertThat(ids(service.getUncompactedRichFrontierForFocus(LEARNER, List.of("A"))))
+                .containsExactly("A");
+        verify(resolver, times(1)).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
+
+        learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"LK\"}}");
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.argThat(targets -> !targets.contains("O")),
+                org.mockito.ArgumentMatchers.anyMap());
+        verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.argThat(targets -> targets.contains("O")),
+                org.mockito.ArgumentMatchers.anyMap());
+        learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"GK\"}}");
+        mastery.clear();
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        verify(resolver, times(2)).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
+                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
+        verify(masteryRepository, never()).save(any());
+        verify(masteryRepository, never()).saveAll(any());
     }
 
     @Test void unusedGoalsAndOrientationDoNotBlockTheRequiredPreparation() {
@@ -120,13 +160,13 @@ class AutomaticCompletionFrontierTest {
         verify(masteryRepository, never()).save(any());
     }
 
-    @Test void masteredIntermediateEndsOnlyItsOwnPreparationDemandAndUsesOneMasteryRead() {
+    @Test void masteredIntermediateRetainsTransitivePreparationDemandAndUsesOneMasteryRead() {
         mastery.put("B", 1.0);
         clearInvocations(masteryRepository);
-        assertThat(ids(service.getRichFrontier(LEARNER))).contains("C").doesNotContain("A", "B");
+        assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("B", "C");
         verify(masteryRepository, times(1)).findByLearner_SkillpilotId(LEARNER);
-        assertThat(service.getFrontier(LEARNER)).contains("C").doesNotContain("A", "B");
-        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A", "C");
+        assertThat(service.getFrontier(LEARNER)).contains("A").doesNotContain("B", "C");
+        assertThat(ids(service.getUncompactedRichFrontier(LEARNER))).contains("A").doesNotContain("C");
         mastery.clear();
         assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("C");
         verify(masteryRepository, never()).save(any());
@@ -138,17 +178,17 @@ class AutomaticCompletionFrontierTest {
         assertThat(service.getFrontier(LEARNER)).containsExactly("A");
         assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
         mastery.put("B", 1.0);
-        assertThat(service.getFrontier(LEARNER)).isEmpty();
-        assertThat(service.getRichFrontier(LEARNER)).isEmpty();
+        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
         assertThat(ids(service.getUncompactedRichFrontierForFocus(LEARNER, List.of("A"))))
                 .containsExactly("A");
     }
 
-    @Test void disablingDirectAssessmentOffersDoesNotRestoreUnneededWork() {
+    @Test void disablingDirectAssessmentOffersRetainsTransitiveRequiredPreparation() {
         learner.setUseAssessmentShortcuts(false);
         mastery.put("B", 1.0);
-        assertThat(service.getFrontier(LEARNER)).contains("C").doesNotContain("A", "O", "Z");
-        assertThat(ids(service.getRichFrontier(LEARNER))).contains("C").doesNotContain("A", "O", "Z");
+        assertThat(service.getFrontier(LEARNER)).contains("A").doesNotContain("C", "O", "Z");
+        assertThat(ids(service.getRichFrontier(LEARNER))).contains("A").doesNotContain("C", "O", "Z");
     }
 
     @Test void releasedExamWithoutPreparationRemainsNormallyAvailableWhenShortcutOffersAreOff() {
@@ -222,7 +262,9 @@ class AutomaticCompletionFrontierTest {
     @Test void implicitFocusCompletionOffersTheNextScopeWithActualRemainingWork() {
         focus.clear();
         focus.add("A");
-        mastery.put("B", 1.0);
+        mastery.put("Q", 1.0);
+        graph.get("O").setSemanticKind(null);
+        graph.get("O").setNodeKind("exam");
         var state = service.getCoachLearnerState(LEARNER);
         assertThat(state.goals().scope_completed()).isTrue();
         assertThat(state.goals().scope().mastered_atomic()).isZero();
@@ -230,6 +272,19 @@ class AutomaticCompletionFrontierTest {
         assertThat(ids(state.stateMachine().goalOptions())).contains("ROOT").doesNotContain("MIDDLE");
         assertThat(focus).containsExactly("A");
         assertThat(learner.getActiveGoalId()).isNull();
+        verify(masteryRepository, never()).save(any());
+    }
+
+    @Test void masteredIntermediateCannotCompleteFocusOrTriggerWideningWhileItsAssessmentIsOpen() {
+        focus.clear();
+        focus.add("A");
+        mastery.put("B", 1.0);
+        var state = service.getCoachLearnerState(LEARNER);
+        assertThat(state.goals().scope_completed()).isFalse();
+        assertThat(state.stateMachine().requiredAction()).isNotEqualTo("setScope");
+        assertThat(ids(state.frontier())).containsExactly("A");
+        assertThat(focus).containsExactly("A");
+        assertThat(mastery).containsOnlyKeys("B");
         verify(masteryRepository, never()).save(any());
     }
 

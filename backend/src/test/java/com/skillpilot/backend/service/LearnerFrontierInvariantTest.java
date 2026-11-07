@@ -203,8 +203,7 @@ public class LearnerFrontierInvariantTest {
                 snapshot.mastery(),
                 snapshot.plannedGoals());
 
-        // A persisted intermediate skill ends its own preparation demand without
-        // certifying its prerequisite.
+        // A persisted intermediate retains the successor's transitive demand.
         // This real export has symmetry -> polynomial basics -> orientation,
         // with only polynomial basics mastered.
         String symmetry = "8f42b49d-a2fb-45f5-9da3-97ec96b8113e";
@@ -217,7 +216,7 @@ public class LearnerFrontierInvariantTest {
         assertThat(snapshot.mastery().getOrDefault(symmetry, 0.0)).isZero();
         assertThat(snapshot.mastery()).containsEntry(polynomialBasics, 1.0);
         assertThat(snapshot.mastery().getOrDefault(orientation, 0.0)).isZero();
-        assertThat(actual).contains(orientation, symmetry);
+        assertThat(actual).contains(orientation).doesNotContain(symmetry);
         assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
 
         Set<String> expectedAtomic = expected.stream()
@@ -345,21 +344,30 @@ public class LearnerFrontierInvariantTest {
         Map<String, LearningGoal> filteredGoals = getFilteredGoals(curriculumId, personalCurriculumJson);
         Map<String, LearningGoal> structuralGoals = getFilteredGoals(curriculumId, "{}");
 
-        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(filteredGoals);
+        Map<String, List<String>> effectiveRequires = computeEffectiveRequires(structuralGoals);
         Map<String, Double> effectiveMastery = computeEffectiveMastery(filteredGoals, masteryMap);
-        Map<String, Double> effectivePrereqMastery = computeEffectivePrereqMastery(filteredGoals, masteryMap);
         Set<String> scope = computeScope(plannedIds, structuralGoals);
 
-        // Direct effective prerequisites are conjunctive; a mastered intermediate
-        // must not reintroduce its own earlier preparation requirements.
+        // Independent reference: expand required clusters on the unfiltered
+        // graph and follow every atomic requirement before restricting endpoints.
+        // Neither mastery nor visibility participates in this graph traversal.
         Map<String, Set<String>> reachablePrerequisites = new LinkedHashMap<>();
         for (LearningGoal goal : filteredGoals.values()) {
             Set<String> prerequisites = new LinkedHashSet<>();
-            for (String ref : effectiveRequires.getOrDefault(goal.getId(), List.of())) {
-                String prerequisite = resolveGoalRef(ref, filteredGoals);
-                if (prerequisite != null && (plannedIds.isEmpty() || scope.contains(prerequisite))) {
-                    prerequisites.add(prerequisite);
+            Set<String> visited = new HashSet<>();
+            Deque<String> pending = new ArrayDeque<>(effectiveRequires.getOrDefault(goal.getId(), List.of()));
+            while (!pending.isEmpty()) {
+                String ref = pending.removeFirst();
+                String id = resolveGoalRef(ref, structuralGoals);
+                if (id == null) throw new AssertionError("Unknown authored reference: " + ref);
+                if (!visited.add(id)) continue;
+                LearningGoal required = structuralGoals.get(id);
+                if (required.getContains() != null && !required.getContains().isEmpty()) {
+                    pending.addAll(required.getContains());
+                } else {
+                    prerequisites.add(id);
                 }
+                pending.addAll(effectiveRequires.getOrDefault(id, List.of()));
             }
             reachablePrerequisites.put(goal.getId(), prerequisites);
         }
@@ -378,15 +386,8 @@ public class LearnerFrontierInvariantTest {
             Set<String> requires = reachablePrerequisites.get(goal.getId());
             if (requires != null) {
                 for (String reqId : requires) {
-                    String resolvedReqId = resolveGoalRef(reqId, filteredGoals);
-                    if (resolvedReqId == null) {
-                        continue;
-                    }
-                    if (!plannedIds.isEmpty() && !scope.contains(resolvedReqId)) {
-                        continue;
-                    }
-                    Double reqMastery = effectivePrereqMastery.getOrDefault(resolvedReqId, 0.0);
-                    if (reqMastery < 0.9) {
+                    if (!filteredGoals.containsKey(reqId) || !plannedIds.isEmpty() && !scope.contains(reqId)) continue;
+                    if (masteryMap.getOrDefault(reqId, 0.0) < 0.9) {
                         prerequisitesMet = false;
                         break;
                     }
@@ -913,80 +914,6 @@ public class LearnerFrontierInvariantTest {
         visiting.remove(goalId);
         cache.put(goalId, effective);
         return effective;
-    }
-
-    private static Map<String, Double> computeEffectivePrereqMastery(Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap) {
-        Map<String, Double> cache = new HashMap<>();
-        Set<String> visiting = new HashSet<>();
-
-        for (String goalId : allGoals.keySet()) {
-            computeEffectivePrereqMastery(goalId, allGoals, masteryMap, cache, visiting);
-        }
-
-        return cache;
-    }
-
-    private static double computeEffectivePrereqMastery(String goalId, Map<String, LearningGoal> allGoals,
-            Map<String, Double> masteryMap, Map<String, Double> cache, Set<String> visiting) {
-        Double cached = cache.get(goalId);
-        if (cached != null) {
-            return cached;
-        }
-        if (visiting.contains(goalId)) {
-            return masteryMap.getOrDefault(goalId, 0.0);
-        }
-        visiting.add(goalId);
-
-        LearningGoal goal = allGoals.get(goalId);
-        double mastery = masteryMap.getOrDefault(goalId, 0.0);
-        double effective = mastery;
-
-        if (goal != null && goal.getContains() != null && !goal.getContains().isEmpty()) {
-            List<String> childIds = new ArrayList<>();
-            boolean hasCoreChild = false;
-            for (String childRef : goal.getContains()) {
-                String childId = resolveGoalRef(childRef, allGoals);
-                if (childId == null) {
-                    continue;
-                }
-                childIds.add(childId);
-                LearningGoal child = allGoals.get(childId);
-                if (child != null && isCoreForPrereqs(child)) {
-                    hasCoreChild = true;
-                }
-            }
-
-            List<Double> childValues = new ArrayList<>();
-            for (String childId : childIds) {
-                LearningGoal child = allGoals.get(childId);
-                if (child == null) {
-                    continue;
-                }
-                if (hasCoreChild && !isCoreForPrereqs(child)) {
-                    continue;
-                }
-                childValues.add(computeEffectivePrereqMastery(childId, allGoals, masteryMap, cache, visiting));
-            }
-            if (!childValues.isEmpty()) {
-                effective = childValues.stream().min(Double::compareTo).orElse(mastery);
-            }
-        }
-
-        visiting.remove(goalId);
-        cache.put(goalId, effective);
-        return effective;
-    }
-
-    private static boolean isCoreForPrereqs(LearningGoal goal) {
-        if (goal == null) {
-            return false;
-        }
-        List<String> tags = goal.getTags();
-        if (tags == null || tags.isEmpty()) {
-            return true;
-        }
-        return tags.contains("GK");
     }
 
     private static Set<String> computeScope(List<String> plannedIds, Map<String, LearningGoal> allGoals) {

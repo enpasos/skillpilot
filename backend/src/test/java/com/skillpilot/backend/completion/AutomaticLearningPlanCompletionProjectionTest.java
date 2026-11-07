@@ -26,9 +26,9 @@ class AutomaticLearningPlanCompletionProjectionTest {
         assertThat(calls).hasValue(1);
     }
 
-    @Test void masteredIntermediateStopsDemandEvenWhenItsAssessmentIsOutsideTheDatedPlan() {
+    @Test void masteredIntermediateRetainsDemandFromAssessmentOutsideTheDatedPlan() {
         var context = context(atom("a"), atom("b", "a"), exam("c", "b"));
-        assertThat(waived(context, Set.of("a"), Map.of("b", 1.0))).containsExactly("a");
+        assertThat(waived(context, Set.of("a"), Map.of("b", 1.0))).isEmpty();
         assertThat(waived(context, Set.of("a"), Map.of())).isEmpty();
         assertThat(waived(context, Set.of("a"), Map.of("c", 1.0))).containsExactly("a");
     }
