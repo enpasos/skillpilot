@@ -1,0 +1,7 @@
+# Bildinventar nach tatsächlichem Math-Bildwechsel
+
+Der frische Remote-Frontendjob auf 9bbfebfc scheiterte am unveränderten Inventar: eine aktive Mathematikillustration wechselte JPG→PNG und Gemini→OpenAI image_gen. Der vorhandene Scanner erzeugte die begrenzte Layer-A-Korrektur aus den echten aktuellen Quelldaten. Geändert sind ausschließlich zwei Erweiterungszahlen und zwei Providerzählungen. Snapshot, Herkunftsaussagen, übrige Medienhashes und Prüfwerte bleiben gleich. Der erzeugte Patch wurde vor Anwendung feldweise geprüft.
+
+Der erste lokale Scan/Emit wurde zusätzlich von einer fehlenden ignorierten Backendkopie des neuen ce198bc9-PNG blockiert. Das vorhandene copyGoalVisualizationAsset erzeugte genau diese Kopie aus dem vorhandenen Source; es gab keinen kompletten deploy:assets-Lauf und keine Produktionsauslieferung. Der normale Scanner vergleicht anschließend alle gebundenen Quelldateien und Runtimekopien. Die fehlgeschlagenen Erstbelege bleiben separat erhalten.
+
+Nach Übernahme bestehen npm run check:ai-transparency-inventory und der vorhandene Regressionstestentry tatsächlich. Ergebnis: 2568 Visualisierungen, 2517 mit den dokumentierten oberflächlichen C2PA-Containermarkern, 64 weitere gebundene Runtimebilder, 753 lokalisierte Kartenrecords, acht Audiodateien. Das ist keine kryptografische C2PA-Prüfung. Kein neuer Regressionstest war für die reine generierte Datenkorrektur nötig. Frischer Remote-Pass steht aus.

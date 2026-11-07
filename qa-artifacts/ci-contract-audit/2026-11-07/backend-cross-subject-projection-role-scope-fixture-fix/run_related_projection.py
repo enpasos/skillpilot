@@ -1,0 +1,11 @@
+from pathlib import Path
+import subprocess,json,hashlib,datetime,os
+R=Path('/home/enpasos/projects/skillpilot');W=Path('/dev/shm/backend-cross-subject-scope-fixture-fix-20261107');cp=(W/'classpath.txt').read_text()+':'+str(next(Path('/tmp/skillpilot-plan-gradle-20261022/caches/modules-2/files-2.1/org.springframework/spring-test').rglob('*.jar')));jdk=R/'tmp/amazon-corretto-25.0.2.10.1/bin';prefix=['bwrap','--ro-bind','/','/','--dev-bind','/dev','/dev','--proc','/proc','--bind','/dev/shm','/dev/shm','--'];source=R/'backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java';before=hashlib.sha256(source.read_bytes()).hexdigest()
+def run(name,args):
+ rec={'startedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'command':args,'cwd':str(R/'backend')}
+ with (W/(name+'.stdout')).open('w') as o,(W/(name+'.stderr')).open('w') as e:p=subprocess.run(args,cwd=R/'backend',stdout=o,stderr=e,env={**os.environ,'TMPDIR':str(W/'temporary')})
+ rec.update(exitCode=p.returncode,finishedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),stdoutSha256=hashlib.sha256((W/(name+'.stdout')).read_bytes()).hexdigest(),stderrSha256=hashlib.sha256((W/(name+'.stderr')).read_bytes()).hexdigest());(W/(name+'.json')).write_text(json.dumps(rec,indent=2)+'\n');print(name,p.returncode);print((W/(name+'.stdout')).read_text()[-10000:]);print((W/(name+'.stderr')).read_text()[-1000:]);return p.returncode
+assert run('related-javac',prefix+[str(jdk/'javac'),'-J-Djava.io.tmpdir='+str(W/'temporary'),'-J-Xmx500m','-cp',cp,'-sourcepath',str(W/'empty-sourcepath'),'-d',str(W/'classes'),str(source)])==0
+agent=next(Path('/tmp/skillpilot-plan-gradle-20261022/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent').rglob('*.jar'));status=run('related-junit',prefix+[str(jdk/'java'),'-Djava.io.tmpdir='+str(W/'temporary'),'-Xmx1000m','-javaagent:'+str(agent),'-cp',cp,'RunProjectionTests','47','com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest'])
+assert hashlib.sha256(source.read_bytes()).hexdigest()==before
+(W/'related-source-before.json').write_text(json.dumps({'path':str(source.relative_to(R)),'sourceSha256':before,'activeFileChanged':False},indent=2)+'\n');raise SystemExit(status)

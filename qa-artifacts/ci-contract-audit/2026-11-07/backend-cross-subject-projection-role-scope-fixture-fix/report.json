@@ -1,0 +1,90 @@
+{
+  "status": "local-three-full-classes-passed-remote-rerun-not-claimed",
+  "remoteRunId": "42366147729",
+  "remoteBackendJobId": "128389536807",
+  "remoteHeadPrefix": "9bb",
+  "observedRemoteTests": {
+    "completed": 4,
+    "failed": 1,
+    "skipped": 1,
+    "failure": "LearnerServiceCrossSubjectPilotTest#canonicalPhysicsPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal",
+    "oldLine": 1536,
+    "actualActiveGoal": null
+  },
+  "remoteFullLogBytes": 76824,
+  "remoteFullLogSha256": "9fba9c6964ee69db05349d0bf0ed17085403729fb4ec79be937aad0fd7705367",
+  "crossSubjectDiagnosis": "ten guarded fixtures used PC {} and a LearnerService without CompositionViewService; two earlier guarded cases were already prepared",
+  "crossSubjectFixedGuardedCases": 10,
+  "crossSubjectOtherCasesUnchanged": 85,
+  "physicsScope": {
+    "schoolForm": "Gymnasium",
+    "jurisdiction": "DE-HE",
+    "stage": "CrossStage",
+    "courseProfile": "GK",
+    "nativeViewId": "de-he-gym-physics-gk",
+    "nativeViewPath": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+    "nativeViewSha256": "ae687c82e782598f11f32e565041e6647bb52c074069ff03e2c1985a341fabbf",
+    "preservedTargetGoal": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+  },
+  "projectionRoleBefore": {
+    "found": 47,
+    "started": 47,
+    "succeeded": 37,
+    "failed": 10,
+    "skipped": 0,
+    "containersFailed": 0,
+    "sourceCause": "common canonical synthetic fixture missing stage; earlier readiness guard blocked the actual intended target/focus assertions"
+  },
+  "projectionRoleFixedScope": {
+    "schoolForm": "Gymnasium",
+    "stage": "SekII",
+    "courseProfile": "LK",
+    "commonResolverExactMatcher": true,
+    "anyMapResolversAdded": 0,
+    "assertionsPreserved": true
+  },
+  "changedActiveFiles": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java",
+      "beforeSha256": "5738e34a5e2ce9db608f2f0bf0e8be510841ad7341fca624ec325bad4194df25",
+      "afterSha256": "ded3690cfec46231315497459c90e19742e5ff336303213fea0cacffed8fea76"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java",
+      "beforeSha256": "709b88e4ea1b8dd9dd6a35bf86b76bdc5ce3433a338fac93ee01c556ba0a2981",
+      "afterSha256": "226aadcd450eb26f5565a022441e315382943dc60b34607b67af19a484d5ed81"
+    }
+  ],
+  "unchangedReadinessTestSha256": "b4cbfd30960ccee0b23aa6e8cb821e2711cf13316d82e0a0d80299be370050f1",
+  "freshlyCompiledCompleteTestClasses": {
+    "LearnerServiceCrossSubjectPilotTest": 95,
+    "ProjectionRoleLearnerServiceTest": 47,
+    "CanonicalSubjectScopeReadinessTest": 6
+  },
+  "junitTotals": {
+    "found": 148,
+    "started": 148,
+    "succeeded": 148,
+    "failed": 0,
+    "skipped": 0,
+    "aborted": 0,
+    "containersFailed": 0
+  },
+  "mainJavaSourcesUnchanged": 484,
+  "activeSubjectSourcePins": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json": "dc148f0be7b3156c2014ca1b23137273ce62b9bd44b34ffb28ff43957c224896"
+  },
+  "privatePoWiAliasCodeInClasspath": false,
+  "executionBoundary": "fresh javac for all three full test classes plus the unchanged prerequisite fixture helper; real production services/native Physics view plus synthetic Repository mocks, precise synthetic projection-role view matcher, read-only filesystem under bwrap except RAM; no PostgreSQL/JPA storage pass",
+  "productionCodeChanged": false,
+  "viewsChanged": false,
+  "sourcesChanged": false,
+  "policyChanged": false,
+  "workflowFilesEditedByThisTask": false,
+  "gitWritesExecuted": false,
+  "productionDbAccessExecuted": false,
+  "fullBackendSuiteExecuted": false,
+  "freshRemoteCIPassClaimed": false
+}

@@ -51,12 +51,26 @@ unverändert. Die [vollständigen lokalen Ausführungsbelege](https://github.com
 trennen den erfolgreichen Producer vom echten Floorfehler und dokumentieren
 auch den korrigierten Fehler bei der Berichtsübertragung.
 
-Der bisherige Remote-Kopf `6e8bb160` hat zwei ältere Backend-Testfixtures ohne
-vollständigen kanonischen Lernscope aufgedeckt. Beide sind inzwischen lokal
-repariert: ein tatsächlicher Zweistarttest mit isoliertem PostgreSQL sowie
-58 Projektions- und sechs unveränderte Readinessfälle bestehen. Der
-Produktionsguard bleibt unverändert. Ein frischer Remote-Lauf dieses neuen
-Gesamtstandes ist weiterhin erforderlich; es gab kein Deployment.
+Der Remote-Kopf `9bbfebfc411b218cce139b9e99fbe80638fc660d` ist terminal:
+Assessment-Completion, OAuth, Docs und Gemini bestehen. Im Hauptworkflow
+bestehen fünf Jobs; Frontend, Backend und Curriculum CI scheitern.
+Der Curriculumproducer und die strengen Selbsttests bestehen; der tatsächliche
+Floorcheck verweigert die Freigabe. Die alten Reparaturen des Zweistarttests
+und der CanonicalProjection-Klasse bleiben erhalten. Neu gefunden wurden ein
+veraltetes KI-Bildinventar und weitere Testfixtures ohne vollständigen
+kanonischen Lernscope. Die begrenzte Inventarkorrektur besteht lokal mit dem
+normalen Scanner und dessen Regressionstests. Die beiden neuen Scope-Fixtures
+bestehen vollständig: 95 CrossSubject-, 47 ProjectionRole- und sechs
+unveränderte Readinessfälle, ohne Skips. Der Produktionsguard bleibt unverändert.
+Ein frischer Remote-Pass dieser Korrekturen steht noch aus. Die
+[terminalen Rohbelege](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-07/remote9bb-terminal/README.md)
+belegen keinen grünen Gesamtlauf und kein Deployment.
+
+Die [aktuelle Workflowaufteilung](ci-graph-repairs/curriculum-source-checks-parallel-2026-11-07.md)
+führt Quellprüfungen parallel zum Buchbau aus. Der abschließende Pflichtkontext
+`Curriculum CI` verlangt beide erfolgreichen Vorläufer. Alle bisherigen
+Befehle bleiben erhalten. Die 16 normalen lokalen Workflowtests bestehen;
+der frische Remotenachweis der Aufteilung steht noch aus.
 
 **Informatik benötigt keine Erhaltung oder Übernahme alter Ergebnisse.**
 Die [verbindliche Klarstellung](ci-graph-repairs/informatics-retained-contract-result-gap-2026-11-07.md)

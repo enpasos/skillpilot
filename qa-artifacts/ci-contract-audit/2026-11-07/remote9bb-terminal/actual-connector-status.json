@@ -1,0 +1,99 @@
+{
+  "head": "9bbfebfc411b218cce139b9e99fbe80638fc660d",
+  "workflows": [
+    {
+      "id": 42366147749,
+      "name": "Gemini integration local checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42366147789,
+      "name": "Assessment completion",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42366147764,
+      "name": "OAuth client authentication",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42366147732,
+      "name": "Docs Checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 42366147729,
+      "name": "CI",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "mainJobs": [
+    {
+      "id": 128384539133,
+      "name": "action-regression-ci",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128384539157,
+      "name": "OpenAI MCP Apps CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128384539189,
+      "name": "Claude Connector V1 CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128384539199,
+      "name": "Learning-goal book build",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128384539250,
+      "name": "OpenAI MCP V1 public edge CI",
+      "status": "completed",
+      "conclusion": "success",
+      "failedSteps": []
+    },
+    {
+      "id": 128389536716,
+      "name": "Application frontend CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Check AI transparency inventory"
+      ]
+    },
+    {
+      "id": 128389536807,
+      "name": "backend-ci",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Run backend tests"
+      ]
+    },
+    {
+      "id": 128389536818,
+      "name": "Curriculum CI",
+      "status": "completed",
+      "conclusion": "failure",
+      "failedSteps": [
+        "Verify committed curriculum quality status"
+      ]
+    }
+  ]
+}

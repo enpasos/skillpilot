@@ -35,6 +35,16 @@ als bestanden erklärt.
 
 ## Gemeinsame Aufrufverträge
 
+**Aktueller Branchanschluss vom 7. November:** Die folgenden Main-Zeilenanker
+bleiben historische Auditanker. Im aktuellen Workflow führt `graph-validation`
+die Quellprüfungen als `Curriculum source contracts` parallel zum Buchbau aus.
+Der abschließende Job `curriculum-ci` heißt weiterhin `Curriculum CI` und
+verlangt beide erfolgreichen Vorläufer vor der bestehenden Integration.
+Alle bisherigen Befehle bleiben hart; lokale Status- und Negativkontrollen
+sowie die noch offene Remoteprüfung sind im
+[Änderungsnachweis](../dev/ci-graph-repairs/curriculum-source-checks-parallel-2026-11-07.md)
+getrennt dokumentiert. Regel-IDs und Prüfumfänge ändern sich dadurch nicht.
+
 - **C**: `.github/workflows/ci.yml:493`, Job `graph-validation`, Anzeigename
   `Curriculum CI`, Arbeitsverzeichnis `app`. Jeder unten genannte C-Aufruf ist
   ein eigener Step ohne `continue-on-error`; nichtnull beendet den Step/Job.

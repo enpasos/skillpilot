@@ -1,0 +1,28 @@
+{
+  "startedAt": "2026-11-07T11:43:48.152892+00:00",
+  "command": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm/curriculum-ci-parallel-core-candidate-20261107",
+    "/dev/shm/curriculum-ci-parallel-core-candidate-20261107",
+    "--chdir",
+    "/dev/shm/curriculum-ci-parallel-core-candidate-20261107/candidate-root",
+    "--",
+    "node",
+    "--test",
+    "scripts/plugin_ci_workflows.test.mjs"
+  ],
+  "cwd": "/dev/shm/curriculum-ci-parallel-core-candidate-20261107/candidate-root",
+  "exitCode": 0,
+  "finishedAt": "2026-11-07T11:43:53.465333+00:00",
+  "stdoutSha256": "6f7f6b607746286a1be02c8bf31d7c4160280c1f080c66db532bfa782f98fae4",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

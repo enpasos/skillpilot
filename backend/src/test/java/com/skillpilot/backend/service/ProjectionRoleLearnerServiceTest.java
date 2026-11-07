@@ -75,11 +75,14 @@ class ProjectionRoleLearnerServiceTest {
     private static final String GLOBAL_ASSESSMENT_EXAM_ID = "global-assessment-exam";
     private static final String SYNTHETIC_STRUCTURE_ID =
             "composition:projection-role-test:structure:sek2";
+    private static final Map<String, String> PROJECTION_SCOPE = Map.of(
+            "schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "LK");
     private static final String PERSONAL_CURRICULUM = """
             {
               "projection-roles": {
                 "selected": true,
-                "filterId": "LK"
+                "filterId": "LK",
+                "stage": "SekII"
               }
             }
             """;
@@ -716,7 +719,7 @@ class ProjectionRoleLearnerServiceTest {
                                 "landscapeId", mathematicsLandscapeId,
                                 "rootNodes", List.of(goalEntry(EXTERNAL_PREREQUISITE_ID, mathematicsRole))));
                 fixture.learner().setPersonalCurriculum("""
-                        {"projection-roles":{"selected":true,"filterId":"LK"},
+                        {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                          "transitive-mathematics":{"selected":true,"filterId":"LK"}}
                         """);
                 fixture.learner().setStrictMode(strictMode);
@@ -808,7 +811,7 @@ class ProjectionRoleLearnerServiceTest {
                         "landscapeId", mathematicsLandscapeId,
                         "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_ROOT_ID))));
         String personalCurriculum = """
-                {"projection-roles":{"selected":true,"filterId":"LK"},
+                {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                  "independent-mathematics":{"selected":true,"filterId":"LK"}}
                 """;
         fixture.learner().setPersonalCurriculum(personalCurriculum);
@@ -847,7 +850,7 @@ class ProjectionRoleLearnerServiceTest {
                         "landscapeId", mathematicsLandscapeId,
                         "rootNodes", List.of(canonicalSubtree(EXTERNAL_PREREQUISITE_CHILD_ID))));
         String personalCurriculum = """
-                {"projection-roles":{"selected":true,"filterId":"LK"},
+                {"projection-roles":{"selected":true,"filterId":"LK","stage":"SekII"},
                  "independent-mathematics":{"selected":true,"filterId":"LK"}}
                 """;
         fixture.learner().setPersonalCurriculum(personalCurriculum);
@@ -1451,7 +1454,7 @@ class ProjectionRoleLearnerServiceTest {
         when(compositionViewService.isAuthoritativeForLandscape(LANDSCAPE_ID))
                 .thenReturn(true);
         if (matchedView != null) {
-            when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), anyMap()))
+            when(compositionViewService.findLearnerScopeView(eq(LANDSCAPE_ID), eq(PROJECTION_SCOPE)))
                     .thenReturn(matchedView);
             when(compositionViewService.findDefaultView(LANDSCAPE_ID))
                     .thenReturn(matchedView);
@@ -1593,6 +1596,7 @@ class ProjectionRoleLearnerServiceTest {
         return Map.of(
                 "viewId", "projection-role-test",
                 "landscapeId", LANDSCAPE_ID,
+                "scope", PROJECTION_SCOPE,
                 "rootNodes", List.of(entries));
     }
 
