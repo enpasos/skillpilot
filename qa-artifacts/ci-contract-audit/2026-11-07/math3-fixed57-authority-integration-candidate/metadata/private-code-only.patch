@@ -1,0 +1,164 @@
+--- a/app/scripts/lib/qualifiedVisualizationContextAuthority.ts
++++ b/app/scripts/lib/qualifiedVisualizationContextAuthority.ts
+@@ -10,11 +10,11 @@
+ // These are external acceptance pins for this finite historical input set.
+ // Neither a receipt nor a caller can nominate its own acceptance authority.
+ export const qualifiedVisualizationAuthority = Object.freeze({
+-  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index.json',
+-  indexSha256: '3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e',
+-  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index/capsule',
+-  capsuleSha256: 'e78eb4c6338340eead74d3de696da955b50cdca3f4f377160c3d9d87e3454c6b',
+-  acceptedRepositoryCommit: '6fe35a6b0fa807e5a97475b34f3715dc16a89c00',
++  indexPath: 'contracts/goal-visualization-context/v1/qualified-context-index-math3-2026-11-07.json',
++  indexSha256: '46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0',
++  capsulePath: 'qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index-math3-2026-11-07/capsule',
++  capsuleSha256: '4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852',
++  acceptedRepositoryCommit: '25a6f2164a81a7e6ae50db3557d20521fecf5124',
+ })
+ interface Index { rows: Array<{ landscapeId: string; goalId: string; receipt: VisualizationContextReceiptReference }> }
+ const sha = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
+@@ -25,7 +25,7 @@
+   if (sha(raw) !== pins.indexSha256) throw new Error('External visualization context index differs')
+   const index = parseVisualizationReviewJson(raw) as Index
+   const rows = new Map(index.rows.map(row => [row.landscapeId + ':' + row.goalId, Object.freeze({ ...row.receipt })]))
+-  if (index.rows.length !== 54 || rows.size !== 54) throw new Error('External visualization index is incomplete or ambiguous')
++  if (index.rows.length !== 57 || rows.size !== 57) throw new Error('External visualization index is incomplete or ambiguous')
+   // A small separate original-evidence repository works in an actual shallow
+   // checkout. The same raw OID/parent/path verifier runs before any V decision.
+   const temporary = mkdtempSync(resolve(tmpdir(), 'skillpilot-qualified-v-'))
+--- a/app/scripts/testVisualizationContextMaturity.ts
++++ b/app/scripts/testVisualizationContextMaturity.ts
+@@ -18,7 +18,7 @@
+ const root = resolve(import.meta.dirname, '../..')
+ const sourcePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+ const source: SkillLandscape = JSON.parse(readFileSync(resolve(root, sourcePath), 'utf8'))
+-const goal = source.goals.find(goal => goal.id === '922d89fc-1cbd-56e9-ac5d-5cb59085de6c')! as LocalGoal
++const goal = source.goals.find(goal => goal.id === 'ce198bc9-b014-52ba-814f-25cc3e020668')! as LocalGoal
+ assert.ok(goal)
+ const ledger: { records: GoalVisualizationQaRecord[] } = JSON.parse(readFileSync(resolve(root,
+   'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'), 'utf8'))
+@@ -28,30 +28,28 @@
+   evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId, landscapePath: sourcePath, subject: 'mathematik',
+     goalById: new Map([[definition.id, definition]]), currentGoalIds: new Set([definition.id]), records: [record] })
+ const current = native()
+-if (process.argv.includes('--reject-external-authority-mutation')) {
+-  assert.deepEqual(current.readyGoalIds, [])
+-  assert.match(current.issues.join(' '), /External visualization context index differs|Authenticated original-context capsule failed/u)
+-  console.log('Mutated external index/capsule/input rejected by the actual native V boundary.')
+-  process.exit(0)
+-}
+-assert.deepEqual(current.readyGoalIds, [goal.id], JSON.stringify(current.issues))
+-assert.ok(Object.isFrozen(current) && Object.isFrozen(current.currentGoalIds) && Object.isFrozen(current.readyGoalIds))
++const rejectMutation = process.argv.includes('--reject-external-authority-mutation')
++let actualQualified = 0
+ const fixedIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(root,
+   qualifiedVisualizationAuthority.indexPath), 'utf8'))
+-let actualQualified = 0
+-for (const [subject, name] of [['mathematik', 'MATHEMATIK'], ['wirtschaftswissenschaften', 'WIRTSCHAFT']]) {
+-  const path = `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`
+-  const landscape: SkillLandscape = JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+-  const qa: { records: VisualizationGateRecord[] } = JSON.parse(readFileSync(resolve(root,
+-    `curricula/DE/Gymnasium/quality/goal-visualization-qa/${subject}.qa.json`), 'utf8'))
+-  const ids = fixedIndex.rows.filter(row => row.landscapeId === landscape.landscapeId).map(row => row.goalId).sort()
+-  const validation = evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId: landscape.landscapeId,
+-    landscapePath: path, subject, goalById: new Map(landscape.goals.map(goal => [goal.id, goal])),
+-    currentGoalIds: new Set(ids), records: qa.records })
+-  assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
+-  actualQualified += ids.length
++if (!rejectMutation) {
++  assert.deepEqual(current.readyGoalIds, [goal.id], JSON.stringify(current.issues))
++  assert.ok(Object.isFrozen(current) && Object.isFrozen(current.currentGoalIds) && Object.isFrozen(current.readyGoalIds))
++  for (const [subject, name] of [['mathematik', 'MATHEMATIK'], ['wirtschaftswissenschaften', 'WIRTSCHAFT']]) {
++    const path = `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`
++    const landscape: SkillLandscape = JSON.parse(readFileSync(resolve(root, path), 'utf8'))
++    const qa: { records: VisualizationGateRecord[] } = JSON.parse(readFileSync(resolve(root,
++      `curricula/DE/Gymnasium/quality/goal-visualization-qa/${subject}.qa.json`), 'utf8'))
++    const ids = fixedIndex.rows.filter(row => row.landscapeId === landscape.landscapeId).map(row => row.goalId).sort()
++    const validation = evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId: landscape.landscapeId,
++      landscapePath: path, subject, goalById: new Map(landscape.goals.map(goal => [goal.id, goal])),
++      currentGoalIds: new Set(ids), records: qa.records })
++    assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
++    actualQualified += ids.length
++  }
++  assert.equal(actualQualified, 57, 'All fixed candidates must really pass through the authenticated shallow capsule.')
++
+ }
+-assert.equal(actualQualified, 54, 'All fixed candidates must really pass through the authenticated shallow capsule.')
+ 
+ // Real original goal/image/review bytes, plus an actually checked minimal graph,
+ // isolate this V integration from unrelated prerequisites in the full landscape.
+@@ -103,6 +101,17 @@
+     floors: [{ landscapeId: source.landscapeId, frameworkId: source.frameworkId, subject: source.subject,
+       minimumMaturity: 'M7', reason: 'Current original-context V evidence must protect the existing M7 floor.' }],
+   }, new Map([[source.landscapeId, assessment]]), expected ? new Map([[source.landscapeId, expected]]) : new Map())
++if (rejectMutation) {
++  assert.deepEqual(current.readyGoalIds, [])
++  assert.match(current.issues.join(' '), /External visualization|Authenticated original-context capsule failed|Context receipt byte hash differs|Current goal\/image context differs|actual image bytes differ/u)
++  assert.equal(deepRule(current).status, 'fail')
++  assert.equal(maturity(current), 'M6')
++  const failures = floors('M7')
++  assert.ok(failures.some(line => line.includes('no complete passing visualization context report')))
++  assert.ok(!failures.some(line => line.includes('strict graph-integrity') || line.includes('assessment reports')))
++  console.log('Actual private input/authority mutation rejected through V/CQR303/M6/direct floor with a real passing structural graph.')
++  process.exit(0)
++}
+ assert.equal(deepRule(current).status, 'pass')
+ assert.equal(maturity(current), 'M7')
+ assert.deepEqual(floors('M7'), [])
+@@ -133,6 +142,18 @@
+ denies('Technical deferral remains unfinished', native({ ...goal, resourceLinks: [] }, { ...row, visualizationState: 'missing',
+   missingReason: 'deferred_provider_limitation', imageUrl: '', assetSha256: '' }), /missing or deferred/u)
+ 
++// The original actual da47 definitions cannot stand in for the new current contexts.
++const historical: { cases: Array<{ goal: LocalGoal; row: VisualizationGateRecord }> } = JSON.parse(readFileSync(resolve(root,
++  'qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index-math3-2026-11-07/fixtures/historical-current-contexts.json'), 'utf8'))
++for (const entry of historical.cases) denies('Historical owner source is not a current reviewed definition: ' + entry.goal.id,
++  native(entry.goal, entry.row), /Current goal\/image context differs/u)
++denies('Full current EN context remains bound', native({ ...goal, descriptionEn: goal.descriptionEn + ' Additional unrelated competence.' }),
++  /Current goal\/image context differs/u)
++const previous: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(root,
++  'contracts/goal-visualization-context/v1/qualified-context-index.json'), 'utf8'))
++const previousIds = new Set(previous.rows.map(row => row.landscapeId + ':' + row.goalId))
++assert.deepEqual(fixedIndex.rows.filter(row => previousIds.has(row.landscapeId + ':' + row.goalId)), previous.rows)
++assert.equal(fixedIndex.rows.filter(row => !previousIds.has(row.landscapeId + ':' + row.goalId)).length, 3)
+ const goodRules = rules(current)
+ for (const mutated of [
+   goodRules.filter(rule => rule.id !== 'CQR-303'),
+--- a/scripts/visualization_qualified_context_capsule.py
++++ b/scripts/visualization_qualified_context_capsule.py
+@@ -10,7 +10,18 @@
+ import visualization_review_git_capsule as kernel
+ 
+ 
++# Closed external transports: historical54 and its separately qualified Math3 successor.
++_ACCEPTED_INDEXES = {
++    '3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e':
++        ('6fe35a6b0fa807e5a97475b34f3715dc16a89c00', 54),
++    '46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0':
++        ('25a6f2164a81a7e6ae50db3557d20521fecf5124', 57),
++}
++
++
+ def index_originals(root, index_path, accepted_index):
++    kernel.require(accepted_index in _ACCEPTED_INDEXES, 'Unknown fixed reviewed-context transport')
++    expected_anchor, expected_count = _ACCEPTED_INDEXES[accepted_index]
+     def unique_object(pairs):
+         value = {}
+         for key, item in pairs:
+@@ -26,6 +37,7 @@
+                    'Wrong reviewed-context index contract')
+     kernel.require(re.fullmatch('[0-9a-f]{40}', index['acceptedRepositoryCommit']) is not None,
+                    'Invalid original-history anchor')
++    kernel.require(index['acceptedRepositoryCommit'] == expected_anchor, 'Crossed fixed original-history anchor')
+     refs, receipts, working, goals = {}, [], {}, set()
+     def digest(value):
+         kernel.require(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) is not None, 'Invalid input SHA256')
+@@ -36,7 +48,7 @@
+         kernel.require(path not in working or working[path] == row, 'Conflicting original working input')
+         working[path] = row
+     add_working(index_path, accepted_index)
+-    kernel.require(isinstance(index['rows'], list) and len(index['rows']) == 54, 'The accepted index has exactly 54 cases')
++    kernel.require(isinstance(index['rows'], list) and len(index['rows']) == expected_count, 'The fixed reviewed-context transport count differs')
+     for row in index['rows']:
+         kernel.require(set(row) == {'landscapeId', 'goalId', 'receipt'}
+                        and isinstance(row['landscapeId'], str) and isinstance(row['goalId'], str), 'Invalid owner/goal row')

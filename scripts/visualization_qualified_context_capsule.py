@@ -10,7 +10,18 @@ import re
 import visualization_review_git_capsule as kernel
 
 
+# Closed external transports: historical54 and its separately qualified Math3 successor.
+_ACCEPTED_INDEXES = {
+    '3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e':
+        ('6fe35a6b0fa807e5a97475b34f3715dc16a89c00', 54),
+    '46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0':
+        ('25a6f2164a81a7e6ae50db3557d20521fecf5124', 57),
+}
+
+
 def index_originals(root, index_path, accepted_index):
+    kernel.require(accepted_index in _ACCEPTED_INDEXES, 'Unknown fixed reviewed-context transport')
+    expected_anchor, expected_count = _ACCEPTED_INDEXES[accepted_index]
     def unique_object(pairs):
         value = {}
         for key, item in pairs:
@@ -26,6 +37,7 @@ def index_originals(root, index_path, accepted_index):
                    'Wrong reviewed-context index contract')
     kernel.require(re.fullmatch('[0-9a-f]{40}', index['acceptedRepositoryCommit']) is not None,
                    'Invalid original-history anchor')
+    kernel.require(index['acceptedRepositoryCommit'] == expected_anchor, 'Crossed fixed original-history anchor')
     refs, receipts, working, goals = {}, [], {}, set()
     def digest(value):
         kernel.require(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) is not None, 'Invalid input SHA256')
@@ -36,7 +48,7 @@ def index_originals(root, index_path, accepted_index):
         kernel.require(path not in working or working[path] == row, 'Conflicting original working input')
         working[path] = row
     add_working(index_path, accepted_index)
-    kernel.require(isinstance(index['rows'], list) and len(index['rows']) == 54, 'The accepted index has exactly 54 cases')
+    kernel.require(isinstance(index['rows'], list) and len(index['rows']) == expected_count, 'The fixed reviewed-context transport count differs')
     for row in index['rows']:
         kernel.require(set(row) == {'landscapeId', 'goalId', 'receipt'}
                        and isinstance(row['landscapeId'], str) and isinstance(row['goalId'], str), 'Invalid owner/goal row')

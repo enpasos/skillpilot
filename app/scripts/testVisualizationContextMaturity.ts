@@ -18,7 +18,7 @@ type LocalGoal = LearningGoal & { titleEn?: string; descriptionEn?: string }
 const root = resolve(import.meta.dirname, '../..')
 const sourcePath = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
 const source: SkillLandscape = JSON.parse(readFileSync(resolve(root, sourcePath), 'utf8'))
-const goal = source.goals.find(goal => goal.id === '922d89fc-1cbd-56e9-ac5d-5cb59085de6c')! as LocalGoal
+const goal = source.goals.find(goal => goal.id === 'ce198bc9-b014-52ba-814f-25cc3e020668')! as LocalGoal
 assert.ok(goal)
 const ledger: { records: GoalVisualizationQaRecord[] } = JSON.parse(readFileSync(resolve(root,
   'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json'), 'utf8'))
@@ -28,30 +28,28 @@ const native = (definition: LocalGoal = goal, record: VisualizationGateRecord = 
   evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId, landscapePath: sourcePath, subject: 'mathematik',
     goalById: new Map([[definition.id, definition]]), currentGoalIds: new Set([definition.id]), records: [record] })
 const current = native()
-if (process.argv.includes('--reject-external-authority-mutation')) {
-  assert.deepEqual(current.readyGoalIds, [])
-  assert.match(current.issues.join(' '), /External visualization context index differs|Authenticated original-context capsule failed/u)
-  console.log('Mutated external index/capsule/input rejected by the actual native V boundary.')
-  process.exit(0)
-}
-assert.deepEqual(current.readyGoalIds, [goal.id], JSON.stringify(current.issues))
-assert.ok(Object.isFrozen(current) && Object.isFrozen(current.currentGoalIds) && Object.isFrozen(current.readyGoalIds))
+const rejectMutation = process.argv.includes('--reject-external-authority-mutation')
+let actualQualified = 0
 const fixedIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(root,
   qualifiedVisualizationAuthority.indexPath), 'utf8'))
-let actualQualified = 0
-for (const [subject, name] of [['mathematik', 'MATHEMATIK'], ['wirtschaftswissenschaften', 'WIRTSCHAFT']]) {
-  const path = `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`
-  const landscape: SkillLandscape = JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-  const qa: { records: VisualizationGateRecord[] } = JSON.parse(readFileSync(resolve(root,
-    `curricula/DE/Gymnasium/quality/goal-visualization-qa/${subject}.qa.json`), 'utf8'))
-  const ids = fixedIndex.rows.filter(row => row.landscapeId === landscape.landscapeId).map(row => row.goalId).sort()
-  const validation = evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId: landscape.landscapeId,
-    landscapePath: path, subject, goalById: new Map(landscape.goals.map(goal => [goal.id, goal])),
-    currentGoalIds: new Set(ids), records: qa.records })
-  assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
-  actualQualified += ids.length
+if (!rejectMutation) {
+  assert.deepEqual(current.readyGoalIds, [goal.id], JSON.stringify(current.issues))
+  assert.ok(Object.isFrozen(current) && Object.isFrozen(current.currentGoalIds) && Object.isFrozen(current.readyGoalIds))
+  for (const [subject, name] of [['mathematik', 'MATHEMATIK'], ['wirtschaftswissenschaften', 'WIRTSCHAFT']]) {
+    const path = `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`
+    const landscape: SkillLandscape = JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+    const qa: { records: VisualizationGateRecord[] } = JSON.parse(readFileSync(resolve(root,
+      `curricula/DE/Gymnasium/quality/goal-visualization-qa/${subject}.qa.json`), 'utf8'))
+    const ids = fixedIndex.rows.filter(row => row.landscapeId === landscape.landscapeId).map(row => row.goalId).sort()
+    const validation = evaluateCurrentVisualizationGate({ repositoryRoot: root, landscapeId: landscape.landscapeId,
+      landscapePath: path, subject, goalById: new Map(landscape.goals.map(goal => [goal.id, goal])),
+      currentGoalIds: new Set(ids), records: qa.records })
+    assert.deepEqual(validation.readyGoalIds, ids, JSON.stringify(validation.issues))
+    actualQualified += ids.length
+  }
+  assert.equal(actualQualified, 57, 'All fixed candidates must really pass through the authenticated shallow capsule.')
+
 }
-assert.equal(actualQualified, 54, 'All fixed candidates must really pass through the authenticated shallow capsule.')
 
 // Real original goal/image/review bytes, plus an actually checked minimal graph,
 // isolate this V integration from unrelated prerequisites in the full landscape.
@@ -103,6 +101,17 @@ const floors = (claimed: string, ruleSet = rules(current), expected: CurriculumV
     floors: [{ landscapeId: source.landscapeId, frameworkId: source.frameworkId, subject: source.subject,
       minimumMaturity: 'M7', reason: 'Current original-context V evidence must protect the existing M7 floor.' }],
   }, new Map([[source.landscapeId, assessment]]), expected ? new Map([[source.landscapeId, expected]]) : new Map())
+if (rejectMutation) {
+  assert.deepEqual(current.readyGoalIds, [])
+  assert.match(current.issues.join(' '), /External visualization|Authenticated original-context capsule failed|Context receipt byte hash differs|Current goal\/image context differs|actual image bytes differ/u)
+  assert.equal(deepRule(current).status, 'fail')
+  assert.equal(maturity(current), 'M6')
+  const failures = floors('M7')
+  assert.ok(failures.some(line => line.includes('no complete passing visualization context report')))
+  assert.ok(!failures.some(line => line.includes('strict graph-integrity') || line.includes('assessment reports')))
+  console.log('Actual private input/authority mutation rejected through V/CQR303/M6/direct floor with a real passing structural graph.')
+  process.exit(0)
+}
 assert.equal(deepRule(current).status, 'pass')
 assert.equal(maturity(current), 'M7')
 assert.deepEqual(floors('M7'), [])
@@ -133,6 +142,18 @@ denies('Current negative AI decision remains binding', native(goal, { ...row, ai
 denies('Technical deferral remains unfinished', native({ ...goal, resourceLinks: [] }, { ...row, visualizationState: 'missing',
   missingReason: 'deferred_provider_limitation', imageUrl: '', assetSha256: '' }), /missing or deferred/u)
 
+// The original actual da47 definitions cannot stand in for the new current contexts.
+const historical: { cases: Array<{ goal: LocalGoal; row: VisualizationGateRecord }> } = JSON.parse(readFileSync(resolve(root,
+  'qa-artifacts/ci-contract-audit/2026-11-07/visualization-qualified-context-index-math3-2026-11-07/fixtures/historical-current-contexts.json'), 'utf8'))
+for (const entry of historical.cases) denies('Historical owner source is not a current reviewed definition: ' + entry.goal.id,
+  native(entry.goal, entry.row), /Current goal\/image context differs/u)
+denies('Full current EN context remains bound', native({ ...goal, descriptionEn: goal.descriptionEn + ' Additional unrelated competence.' }),
+  /Current goal\/image context differs/u)
+const previous: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(root,
+  'contracts/goal-visualization-context/v1/qualified-context-index.json'), 'utf8'))
+const previousIds = new Set(previous.rows.map(row => row.landscapeId + ':' + row.goalId))
+assert.deepEqual(fixedIndex.rows.filter(row => previousIds.has(row.landscapeId + ':' + row.goalId)), previous.rows)
+assert.equal(fixedIndex.rows.filter(row => !previousIds.has(row.landscapeId + ':' + row.goalId)).length, 3)
 const goodRules = rules(current)
 for (const mutated of [
   goodRules.filter(rule => rule.id !== 'CQR-303'),
