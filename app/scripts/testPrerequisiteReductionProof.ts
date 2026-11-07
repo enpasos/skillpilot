@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import type { LearningGoal } from '../src/landscapeTypes'
 import {
   fingerprintPrerequisiteReductionDocument as digest,
@@ -224,7 +225,35 @@ try {
   const dangling = fixture()
   rmSync(resolve(dangling.directory, 'proof.json'))
   symlinkSync('missing-proof.json', resolve(dangling.directory, 'proof.json'))
-  await assert.rejects(dangling.load, /ENOENT/u, 'a dangling declared registry is invalid, not absent')
+  await assert.rejects(dangling.load, /registry must be a regular file/u,
+    'a dangling declared registry is invalid, not absent')
+  const linked = fixture()
+  writeFileSync(resolve(linked.directory, 'valid-proof.json'), JSON.stringify(linked.registry))
+  rmSync(resolve(linked.directory, 'proof.json'))
+  symlinkSync('valid-proof.json', resolve(linked.directory, 'proof.json'))
+  await assert.rejects(linked.load, /registry must be a regular file/u,
+    'even a symlink to valid proof bytes is rejected before reading')
+  const directory = fixture()
+  rmSync(resolve(directory.directory, 'proof.json'))
+  mkdirSync(resolve(directory.directory, 'proof.json'))
+  await assert.rejects(directory.load, /registry must be a regular file/u)
+  if (process.platform !== 'win32') {
+    const fifo = fixture()
+    rmSync(resolve(fifo.directory, 'proof.json'))
+    execFileSync('mkfifo', [resolve(fifo.directory, 'proof.json')])
+    // A subprocess deadline catches a regression that blocks on reading the FIFO.
+    const script = `const { loadVerifiedPrerequisiteReductionContext } = await import(${JSON.stringify(
+      pathToFileURL(resolve(root, 'app/scripts/prerequisiteReductionProof.ts')).href,
+    )}); await loadVerifiedPrerequisiteReductionContext(${JSON.stringify({
+      repositoryRoot: fifo.directory, registryPath: 'proof.json', catalogPath: 'canonical',
+    })});`
+    const result = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '--eval', script], {
+      cwd: resolve(root, 'app'), encoding: 'utf8', timeout: 5000,
+    })
+    assert.equal(result.error, undefined, 'a FIFO must be rejected before a blocking read')
+    assert.equal(result.status, 1)
+    assert.match(result.stderr, /registry must be a regular file/u)
+  }
   const aliases = baseline()
   aliases.goals[0].requires = ['p', 'r', ':r', 'proof-test:r']
   const aliasContext = await fixture(aliases).load()

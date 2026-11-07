@@ -162,7 +162,9 @@ export async function loadVerifiedPrerequisiteReductionContext({
 }: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
   Promise<VerifiedPrerequisiteReductionContext | undefined> {
   const registryFile = repositoryPath(repositoryRoot, registryPath)
-  try { lstatSync(registryFile) } catch (error) {
+  try {
+    ensure(lstatSync(registryFile).isFile(), `registry must be a regular file: ${registryPath}`)
+  } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined
     throw error
   }
@@ -271,5 +273,7 @@ export function reviewBindingGoal(
   const verified = snapshot.current.get(qualifiedId)
   ensure(verified && stableJson(verified) === stableJson(currentRawGoal),
     `current goal differs from verified snapshot: ${qualifiedId}`)
-  return snapshot.baseline.get(qualifiedId)!
+  const baseline = snapshot.baseline.get(qualifiedId)
+  ensure(baseline, `baseline goal missing from verified snapshot: ${qualifiedId}`)
+  return baseline
 }

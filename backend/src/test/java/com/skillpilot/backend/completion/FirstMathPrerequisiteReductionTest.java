@@ -64,10 +64,22 @@ class FirstMathPrerequisiteReductionTest {
             "67bd301b-e11a-582d-94ba-4f4b1a4cefff", "92406d94-e3c1-58ec-b7c6-12122278d25a",
             "7d51b38c-a149-5407-bddc-d2ce7878b020", "668cf206-941e-51f8-8704-3e8938631235",
             "51b60137-46e8-5498-973e-ea38bb32f327");
-    private static final Path REPOSITORY = Path.of("..").toAbsolutePath().normalize();
+    private static final Path REPOSITORY = findRepositoryRoot();
     private static final Path MATH_SOURCE = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
+
+    private static Path findRepositoryRoot() {
+        Path start = Path.of("").toAbsolutePath().normalize();
+        for (Path candidate = start; candidate != null; candidate = candidate.getParent()) {
+            if (Files.isDirectory(candidate.resolve("curricula"))
+                    && Files.isDirectory(candidate.resolve("app/src/generated"))
+                    && Files.isDirectory(candidate.resolve("backend"))) {
+                return candidate;
+            }
+        }
+        throw new IllegalStateException("Cannot locate SkillPilot repository root from " + start);
+    }
 
     @Test
     void firstMathEdgePreservesLiveOfferingsProjectionsAtomicDemandAndDirectRoleValidity() throws Exception {

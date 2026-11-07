@@ -366,6 +366,8 @@ const baseArtifacts: GoalDescriptionDualRoundResolutionBindingArtifacts = {
 const valid = await validateGoalDescriptionDualRoundResolutionBindings(baseArtifacts)
 assert.deepEqual(valid.errors, [])
 assert.equal(valid.strictDescriptionComplete, true)
+assert.equal(baseArtifacts.canonicalLandscapeId, undefined,
+  'strict current validation keeps its original supported absent-landscape-ID mode')
 
 // Only the current canonical-context comparison can use a certified historical
 // requires array. Existing input/page/round/resolution bindings stay unchanged.
@@ -402,6 +404,19 @@ try {
   })
   assert.deepEqual(reduced.errors, [])
   assert.equal(reduced.strictDescriptionComplete, true)
+  assert.ok(prerequisiteReductionContext)
+  for (const canonicalLandscapeId of [undefined, '', ' ', 'resolution-proof:foreign', null, 42]) {
+    const invalidNamespace = await validateGoalDescriptionDualRoundResolutionBindings({
+      ...current, prerequisiteReductionContext, canonicalLandscapeId: canonicalLandscapeId as string | undefined,
+    })
+    assert.match(invalidNamespace.errors.join('\n'), /requires a non-empty, unqualified canonicalLandscapeId/u)
+    assert.equal(invalidNamespace.strictDescriptionComplete, false)
+  }
+  const ignoredOptionalId = await validateGoalDescriptionDualRoundResolutionBindings({
+    ...baseArtifacts, canonicalLandscapeId: '',
+  })
+  assert.deepEqual(ignoredOptionalId.errors, [], 'no-proof current validation retains its existing behavior')
+  assert.equal(ignoredOptionalId.strictDescriptionComplete, true)
 } finally {
   rmSync(reductionRoot, { recursive: true, force: true })
 }

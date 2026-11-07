@@ -161,6 +161,7 @@ export type GoalDescriptionDualRoundResolutionSource = {
 
 export type GoalDescriptionDualRoundResolutionBindingArtifacts = {
   prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
+  // Strict current validation needs no namespace; a supplied proof does.
   canonicalLandscapeId?: string
   resolution: GoalDescriptionDualRoundResolution
   dualSummary: GoalDescriptionDualRoundSummary
@@ -714,6 +715,12 @@ const validateCurrentGoalBindings = ({
   }
   const currentGoal = matches[0]
   if (canonicalGoal) {
+    if (prerequisiteReductionContext !== undefined && (
+      typeof canonicalLandscapeId !== 'string' || canonicalLandscapeId.length === 0 || /[:\s]/u.test(canonicalLandscapeId)
+    )) {
+      errors.push('Verified prerequisite-reduction binding requires a non-empty, unqualified canonicalLandscapeId')
+      return { errors }
+    }
     const canonicalGoalId = String(canonicalGoal.id ?? '')
     if (canonicalGoalId !== resolution.goal.goalId) {
       errors.push(`Canonical goal id ${canonicalGoalId || '(missing)'} does not match resolution goal ${resolution.goal.goalId}`)
