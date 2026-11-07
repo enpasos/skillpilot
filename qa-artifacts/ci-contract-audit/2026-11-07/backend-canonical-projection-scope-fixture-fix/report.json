@@ -1,0 +1,56 @@
+{
+  "status": "local-full-test-classes-passed-remote-rerun-not-claimed",
+  "remoteRunId": "42361156693",
+  "remoteBackendJobId": "128373669023",
+  "remoteHeadPrefix": "6e8",
+  "observedRemoteTests": {
+    "completed": 2,
+    "failed": 1,
+    "skipped": 1,
+    "failure": "LearnerServiceCanonicalProjectionTest#canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal",
+    "oldLine": 1128,
+    "actualActiveGoal": null
+  },
+  "remoteFullLogBytes": 73732,
+  "remoteFullLogSha256": "8af7b062d4c706df9babb080eadf3c0dd1b39d869fdb5c2afb4bb193d04b986e",
+  "diagnosis": "four learning-state/write fixtures lacked explicit canonical subject stage and the existing CompositionViewService; raw mapping fixtures preserve their previous setup",
+  "scope": {
+    "schoolForm": "Gymnasium",
+    "stage": "CrossStage",
+    "courseProfile": "GK",
+    "nativeViewId": "de-de-gym-math-gk",
+    "nativeViewPath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+    "nativeViewSha256": "89f13bef448c5c57d2c1609ed66532845f33995cddfb71a17137a3e81f9bc8af"
+  },
+  "changedActiveFiles": [
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java"
+  ],
+  "testBeforeSha256": "d97760471b7e698fd60581f0d64434fdb50594a751fa6cf2acc71e3e0e04bd67",
+  "testAfterSha256": "ebfaafaa937230bebd6c05d98de40d8204cc1f9bb5c3e874127376f4276ceafc",
+  "unchangedReadinessTestSha256": "b4cbfd30960ccee0b23aa6e8cb821e2711cf13316d82e0a0d80299be370050f1",
+  "compiledTestClasses": {
+    "LearnerServiceCanonicalProjectionTest": 58,
+    "CanonicalSubjectScopeReadinessTest": 6
+  },
+  "junitTotals": {
+    "found": 64,
+    "started": 64,
+    "succeeded": 64,
+    "failed": 0,
+    "skipped": 0,
+    "aborted": 0,
+    "containersFailed": 0
+  },
+  "mainJavaSourcesUnchanged": 484,
+  "dependencyJars": 173,
+  "executionBoundary": "fresh javac of both complete test classes and strict JUnit runner; actual services and native view loader with synthetic Mockito repositories, filesystem read-only under bwrap except RAM; no PostgreSQL/JPA storage pass",
+  "productionCodeChanged": false,
+  "viewsChanged": false,
+  "sourcesChanged": false,
+  "policyChanged": false,
+  "gitWritesExecuted": false,
+  "productionDbAccessExecuted": false,
+  "aliasCodeActivated": false,
+  "fullBackendSuiteExecuted": false,
+  "freshRemoteCIPassClaimed": false
+}

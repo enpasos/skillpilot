@@ -1,0 +1,110 @@
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java
+@@ -29,6 +29,7 @@
+ import java.nio.file.Path;
+ import java.time.Instant;
+ import java.lang.reflect.Method;
++import java.util.LinkedHashMap;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.Optional;
+@@ -36,6 +37,10 @@
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
+ import org.springframework.context.ApplicationEventPublisher;
++import org.springframework.transaction.PlatformTransactionManager;
++import org.springframework.transaction.TransactionDefinition;
++import org.springframework.transaction.TransactionStatus;
++import org.springframework.transaction.support.SimpleTransactionStatus;
+ 
+ class LearnerServiceCanonicalProjectionTest {
+ 
+@@ -63,7 +68,7 @@
+     private static final String CANONICAL_BIOLOGY_ID = "08a43a1b-d97e-522c-9dfa-c950a493364e";
+     private static final String CANONICAL_MATH_GK_PERSONAL_CONFIG = """
+             {
+-              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"}
++              "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK", "stage": "CrossStage"}
+             }
+             """;
+     private static final String LEGACY_SEK1_CLUSTER_ID = "86e86a3b-740b-44aa-b3ab-68cd3ee25def";
+@@ -206,6 +211,7 @@
+     private static ObjectMapper objectMapper;
+     private static LandscapeService landscapeService;
+     private static GoalMappingService goalMappingService;
++    private static CompositionViewService compositionViewService;
+ 
+     private LearnerRepository learnerRepository;
+     private LearnerClientStateRepository learnerClientStateRepository;
+@@ -223,6 +229,12 @@
+         properties.setDirectory(resolveCurriculaDir().toString());
+         landscapeService = new LandscapeService(properties, objectMapper);
+         goalMappingService = new GoalMappingService(properties, objectMapper);
++        compositionViewService = new CompositionViewService(properties, objectMapper, () -> {
++            Map<String, List<String>> containsByGoalId = new LinkedHashMap<>();
++            landscapeService.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->
++                    containsByGoalId.put(goal.getId(), goal.getContains())));
++            return containsByGoalId;
++        });
+     }
+ 
+     @BeforeEach
+@@ -849,7 +861,7 @@
+     void canonicalPilotLearnerStateUsesProjectedMasteryWithoutLegacyLeakage() {
+         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                 .thenReturn(List.of(new Mastery(learner, LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0)));
+-        learner.setPersonalCurriculum(CANONICAL_MATH_GK_PERSONAL_CONFIG);
++        prepareCanonicalMathLearningScope();
+ 
+         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
+ 
+@@ -1120,6 +1132,7 @@
+ 
+     @Test
+     void canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal() {
++        prepareCanonicalMathLearningScope();
+         learner.setActiveGoalId(LEGACY_FUNCTION_CONCEPT_ID);
+         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+ 
+@@ -1135,6 +1148,7 @@
+ 
+     @Test
+     void getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt() {
++        prepareCanonicalMathLearningScope();
+         learner.setActiveGoalId(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_ANALYSIS_CLUSTER_ID)));
+@@ -1157,6 +1171,7 @@
+ 
+     @Test
+     void setMasteryUsesCanonicalGoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView() {
++        prepareCanonicalMathLearningScope();
+         learner.setActiveGoalId(LEGACY_FUNCTION_CONCEPT_ID);
+         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
+         when(masteryRepository.findById(new MasteryId(LEARNER_ID, CANONICAL_FUNCTION_CONCEPT_ID)))
+@@ -1192,6 +1207,25 @@
+ 
+         assertThat(mastery).containsEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0);
+         assertThat(mastery).doesNotContainKey(CANONICAL_FUNCTION_CONCEPT_ID);
++    }
++
++    /** Learning actions use the existing reviewed CrossStage/GK view; raw mapping reads keep their fixture. */
++    private void prepareCanonicalMathLearningScope() {
++        learner.setPersonalCurriculum(CANONICAL_MATH_GK_PERSONAL_CONFIG);
++        assertThat(compositionViewService.findLearnerScopeView(CANONICAL_MATH_ID, Map.of(
++                "schoolForm", "Gymnasium", "stage", "CrossStage", "courseProfile", "GK")))
++                .containsEntry("viewId", "de-de-gym-math-gk");
++        PlatformTransactionManager transactions = new PlatformTransactionManager() {
++            @Override public TransactionStatus getTransaction(TransactionDefinition definition) {
++                return new SimpleTransactionStatus();
++            }
++            @Override public void commit(TransactionStatus status) { }
++            @Override public void rollback(TransactionStatus status) { }
++        };
++        learnerService = new LearnerService(
++                learnerRepository, learnerClientStateRepository, masteryRepository, plannedGoalRepository,
++                landscapeService, goalMappingService, deckResourceService, compositionViewService,
++                objectMapper, eventPublisher, transactions);
+     }
+ 
+     private static Path resolveCurriculaDir() {

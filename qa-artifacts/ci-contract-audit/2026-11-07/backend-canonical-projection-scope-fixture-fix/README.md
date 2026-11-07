@@ -1,0 +1,11 @@
+# Canonical Projection: fehlender Testscope repariert
+
+Der frische Remote-Haupt-CI-Lauf `42361156693`, Backendjob `128373669023`, brach beim alten Fixture an `canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal` ab: `activeGoal` war `null`. Die zwei gemeldeten Fälle waren ein Fehler und ein Skip; das war kein vollständiger Klassenlauf.
+
+Das gemeinsame alte Unitfixture konstruierte den LearnerService ohne CompositionViewService und mit leerem Personal Curriculum. Vier Methoden testen Lernzustand oder Masterywrite und benötigen inzwischen einen tatsächlich aufgelösten kanonischen Fachscope. Nur diese vier erhalten jetzt explizit `CrossStage`/`GK` und den normalen Loader der vorhandenen View `de-de-gym-math-gk`. Der Helper prüft die genaue View-ID. Die übrigen 54 Projektionsfälle behalten ihren bisherigen Scope. Sämtliche vorhandenen fachlichen Assertions bleiben erhalten.
+
+Frisch kompiliert und vollständig ausgeführt: **58 CanonicalProjection-Fälle plus sechs unveränderte CanonicalSubjectScopeReadiness-Fälle**. Der strikte Runner bestätigt genau 64 gefunden/gestartet/erfolgreich, null Fehler, Skips, Abbrüche oder fehlgeschlagene Container. `git diff --check` für die Testdatei besteht. Alle 484 Main-Java-Sourcen sind hashgleich; Produktguard, Views, Curricula und Policy wurden nicht verändert. Privater PoWi-Aliascode bleibt außerhalb des verwendeten Classpaths und nicht aktiviert.
+
+Methodengrenze: Die beiden vollständigen Testklassen verwenden tatsächlichen LearnerService, LandscapeService, GoalMappingService und den nativen CompositionViewService mit synthetischen Repositorymocks. Es gab keinen PostgreSQL-/JPA-Persistenzlauf, keinen vollständigen Backendlauf und noch keinen frischen Remote-CI-Pass dieses Fixes. Der Testprozess lief unter einem read-only Filesystemmount mit ausschließlichem RAM-Schreibbereich. Git- oder Produktionsdatenbankänderungen wurden nicht ausgeführt.
+
+`report.json` enthält Vorher-/Nachherhash und die genaue Scope-/Methodengrenze. Der unveränderte vollständige Remote-Backendlog (73.732 UTF-8-Bytes einschließlich BOM, 73.730 Zeichen vor Gzip) und der vollständige lokale JUnit-Output liegen komprimiert bei. Compile-/Laufreceipts, vollständiger Sourceguard, Classpath, strikter Runner und der eng begrenzte Testdiff sind beigefügt.
