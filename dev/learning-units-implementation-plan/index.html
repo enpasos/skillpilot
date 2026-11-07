@@ -1,0 +1,5096 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/dev/learning-units-implementation-plan/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Umsetzungsplan: Lerneinheiten und integrierte Lernkarte - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#umsetzungsplan-lerneinheiten-und-integrierte-lernkarte" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Umsetzungsplan: Lerneinheiten und integrierte Lernkarte
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/curriculum-quality-and-human-trial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/skill-graph/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/skillpilot-graph-definition.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Die Graph-Definition von SkillPilot (PDF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/assessment-gated-completion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assessment-Gated Completion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/learning-units/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Units (Lerneinheiten)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/learning-unit-progression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Unit Progression
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/daily-learning-progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tagesfortschritt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/unified-learning-plan-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einheitlicher Lernplanstatus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../deploy/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/openai-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot ChatGPT Experimental Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/gemini-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gemini Integration (Controlled Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy/claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ergebnis-und-reihenfolge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ergebnis und Reihenfolge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ausgangspunkt-und-ehrlicher-lieferstand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ausgangspunkt und ehrlicher Lieferstand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verbindliche-umsetzungskriterien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Verbindliche Umsetzungskriterien
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lieferstufen-und-abnahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Lieferstufen und Abnahmen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lieferstufen und Abnahmen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s1-karte-als-erganzende-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S1: Karte als ergänzende Navigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s1-bedienung-und-nachweise-des-produktkandidaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S1: Bedienung und Nachweise des Produktkandidaten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s2-zuerst-eine-fachlich-kleine-echte-einheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S2: zuerst eine fachlich kleine echte Einheit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3-minimale-gemeinsame-architektur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S3: minimale gemeinsame Architektur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konkrete-technische-arbeitspakete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konkrete technische Arbeitspakete
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mathematik-systematisch-und-vollstandig-umbauen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Mathematik systematisch und vollständig umbauen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-alten-pr-gezielt-nachnutzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Alten PR gezielt nachnutzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-gemeinsame-abnahmematrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Gemeinsame Abnahmematrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-migration-rollout-und-arbeitsweise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Migration, Rollout und Arbeitsweise
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-nachster-ausfuhrbarer-schritt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Nächster ausführbarer Schritt
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="umsetzungsplan-lerneinheiten-und-integrierte-lernkarte">Umsetzungsplan: Lerneinheiten und integrierte Lernkarte</h1>
+<p><strong>Stand: 5. November 2026. Arbeitsgrundlage für die Umsetzung.</strong> Dieser Plan ersetzt den
+<a href="../curriculum-recognition-restart-plan/">vorherigen Neustartplan</a> als Arbeitsgrundlage.
+Der alte Plan und <a href="https://github.com/enpasos/skillpilot/pull/79">PR #79</a> bleiben als
+Historie und Bausteinbestand erhalten. Ein geprüftes Konzept, lokale Browserprüfung,
+grüne CI, Deployment und tatsächlich beobachteter Coachablauf sind verschiedene Nachweise.</p>
+<h2 id="1-ergebnis-und-reihenfolge">1. Ergebnis und Reihenfolge</h2>
+<p>Wir führen das akzeptierte rekursive <strong>Lerneinheitenmodell</strong> ein und bauen die
+angebotenen Curricula darauf um: zuerst <strong>Mathematik</strong>, anschließend jeweils
+separat <strong>Physik → Chemie → Biologie</strong>. Der Mathematik-Meilenstein bedeutet den
+vollständigen Fachumbau innerhalb der zu Beginn erfassten Angebote, nicht das
+Fertigstellen einer einzelnen Demonstration. Wirtschaft gehört nicht zu diesem Auftrag.</p>
+<p>Das vollständige bestehende Cockpit bleibt die Basis. Die neue Karte kommt als
+zusätzliche Navigation neben den Baum. Zielkarte, Lernzielbild, Tachos, Prüfungen,
+Kartenübungen, Coachstart, Einstellungen und Datenverwaltung bleiben erhalten.
+Erst erprobte Verbesserungen dürfen später weitere Teile des Baums ersetzen.</p>
+<p>Wir liefern früh zwei voneinander unabhängige Ergebnisse:</p>
+<ol>
+<li><strong>Karte im bestehenden Cockpit:</strong> mit echten sichtbaren Zielen und bisherigen
+   Abläufen, ohne den gesamten Curriculumsumbau abzuwarten.</li>
+<li><strong>Eine vollständige echte Lerneinheit:</strong> mit geprüfter Aufgabenbedeutung,
+   korrekter Anerkennung und einem beobachtbaren Lernablauf; anschließend Ausbau
+   bis zum Mathematik-Fachabschluss.</li>
+</ol>
+<p>Grundlage sind <a href="../../concept/skill-graph/learning-units/">Lerneinheiten</a>,
+<a href="../../concept/skill-graph/assessment-gated-completion/">Anerkennung</a>,
+<a href="../../concept/skill-graph/learning-unit-progression/">Fortschreiten und Zugang</a>,
+<a href="../../concept/skill-graph/graph-definition/">Graph Definition</a> und die
+<a href="../../concept/skill-graph/skillpilot-graph-definition.tex">illustrierte Gesamtdarstellung</a>.
+Dieser Plan konkretisiert die Umsetzung; er eröffnet diese beschlossenen Begriffe nicht neu.</p>
+<h2 id="2-ausgangspunkt-und-ehrlicher-lieferstand">2. Ausgangspunkt und ehrlicher Lieferstand</h2>
+<p><strong>Fortschreibung vom 5. November:</strong> <a href="https://github.com/enpasos/skillpilot/pull/80">PR #80</a>
+ist mit <code>e2514eacb595010648ffe50bc4c444ba4553257c</code> in <code>main</code> gemergt.
+Der Product Owner meldet Deployment und bestandenen Smoke-Test. Damit ist S0
+ausgerollt; die Meldung ersetzt keine darüber hinausgehende Coach-Hostabnahme.
+S1 beginnt auf dem neuen Branch <code>feat/cockpit-learning-map</code>, direkt auf diesem
+frisch abgerufenen <code>origin/main</code>. Der vorherige Branch wird nicht fortgeführt.
+Die folgende Bestandsaufnahme beschreibt die Ausgangslage dieses Schritts;
+eine Vorschau oder ein Merge allein schließen S1 noch nicht ab.</p>
+<p>Planungsbasis ist main <code>8fda13b6505df9f2ba4f8239e1703d8e54d2456e</code> mit dem akzeptierten
+Lerneinheitenkonzept. Der am 4. November erneut gelesene alte Draft-PR #79 ist
+offen und ungemergt, Remotehead <code>802f333f80c58d3409ab5d9fb3e9913fecafbf54</code>.
+Der zusätzliche lokale Checkpoint <code>4f1241b634c7e399c7651b90425b556acd4610f6</code>
+besitzt darüber hinaus sieben geänderte Testdateien; seine Produktions-,
+Canonical- und Viewdateien entsprechen dem alten Remotehead. Beide Quellen
+bleiben getrennt. Ihre Ergebnisse gelten nur für die jeweils geprüfte damalige
+Revision und Semantik.</p>
+<table>
+<thead>
+<tr>
+<th>Bestandteil</th>
+<th>Heute belegt</th>
+<th>Noch zu liefern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rekursive Lerneinheiten</td>
+<td>Konzept und Formeln beschlossen.</td>
+<td>Autoritative Datenbindung, Compiler, Runtime und geprüfte echte Einheiten.</td>
+</tr>
+<tr>
+<td>Karte im vollständigen Cockpit</td>
+<td>Vorschau auf main; native Produktanbindung mit derselben Baumprojektion entsteht in <a href="https://github.com/enpasos/skillpilot/pull/81">PR #81</a>.</td>
+<td>S1-Nachweise am endgültigen Kandidaten und gesonderte Produktionsabnahme.</td>
+</tr>
+<tr>
+<td>Bisherige Completion-Engine</td>
+<td>Vorhandener automatischer Bedarfs-/Erlassmechanismus.</td>
+<td>Neue globale Anerkennung aus unveränderlichen lokalen Einheitsverträgen; alte Semantik nicht unverändert übernehmen.</td>
+</tr>
+<tr>
+<td>Prüfungen und Inhalte</td>
+<td>Bestehende Quellen, Aufgaben, Rubriken und QA-Bestände auf main und im alten PR.</td>
+<td>Prüfung des neuen Anwendungsanspruchs, Erwerbszuordnung und historische ID-Bedeutung.</td>
+</tr>
+<tr>
+<td>Fachabschluss Mathematik</td>
+<td>Noch nicht erreicht.</td>
+<td>Sämtliche angebotenen Auflösungen und ihre erforderlichen Verträge nach diesem Konzept abnehmen.</td>
+</tr>
+</tbody>
+</table>
+<p>Die aktuelle Vorschau und ihre Grenzen stehen in der technischen
+Bedienbeschreibung <code>app/prototypes/full-cockpit-README.md</code>.
+Sie ist keine bereits ausgerollte Runtime und ihre Beispielgruppen sind keine
+freigegebene Aufteilung des Mathematikcurriculums.</p>
+<h2 id="3-verbindliche-umsetzungskriterien">3. Verbindliche Umsetzungskriterien</h2>
+<ul>
+<li><strong>Ein gespeichertes Ergebnis je atomarem Ziel:</strong> ausschließlich binäres M.
+  Implizite Anerkennung ergänzt das abgeleitete M_eff global gleichwertig, ohne
+  Masteryzeilen für Vorbereitungsziele oder zusätzliche Lernerqualifikationen anzulegen.</li>
+<li><strong>Eigene und enthaltene Ziele trennen:</strong> Own(U) gehört direkt zur Einheit;
+  T(U) enthält dedupliziert auch erforderliche Kinder. Jedes Ziel hat innerhalb
+  eines aufgelösten Erwerbswegs eine direkte Heimat. Eltern duplizieren die
+  Erwerbszuordnung ihrer Kinder nicht.</li>
+<li><strong>Eigene Pflichten bleiben explizit:</strong> Prüfungen Q und Karten K werden nie
+  implizit bestanden. Ein bestandenes Elternexamen ersetzt weder Kinderprüfungen
+  noch deren Recall; offene Elternpflichten öffnen gültige Kinderergebnisse nicht.</li>
+<li><strong>Anerkennung braucht Anwendung:</strong> Aufgaben und normale Bestehensrubrik müssen
+  jede freigegebene wesentliche Kompetenz tatsächlich fordern. <code>requires</code>, ein
+  Coverage-Feld oder ein aktualisierter Hash beweisen dies nicht allein.</li>
+<li><strong>Volle transitive Nachfrage und minimale Kanten:</strong> durch explizit gemeisterte
+  Zwischenziele und externe Unterstützung hindurch rechnen. I nicht erneut in
+  die lokale Anerkennungsableitung einspeisen. Gewöhnliche ungedeckte Endpunkte
+  sind Fehler; M=0 darf nicht plötzlich Fachkompetenzen anerkennen.</li>
+<li><strong>Globale Gleichwertigkeit:</strong> gültige Anerkennung erfüllt spätere Voraussetzungen
+  und bleibt bei Fokus-, Fach- und Lehrplanwechsel erhalten. Der aktuelle
+  Zielumfang bestimmt den Fortschrittsnenner, nicht die Existenz gültiger Ergebnisse.</li>
+<li><strong>Planung getrennt zählen:</strong> Gesamtfortschritt einschließlich gültigem I;
+  Tages-/Wochenkontingent nur tatsächliche explizite Ereignisse. Die vorhandene
+  explizit-only-Präferenz betrifft die Plananrechnung, keine fachliche Aberkennung.</li>
+<li><strong>Zugang nicht nebenbei verändern:</strong> die technische Sperrwirkung von
+  Ganz-Einheits-Voraussetzungen ist offen. Neue Gruppierungen erzeugen keine
+  pauschalen Gates; der bestehende bewusste Direktprüfungszugriff bleibt erhalten.</li>
+</ul>
+<h2 id="4-lieferstufen-und-abnahmen">4. Lieferstufen und Abnahmen</h2>
+<p><strong>Verbindlich für jede Stufe S0–S5 und für jedes einzelne Fach in S5:</strong> Der
+konkret reviewte, committed Kandidat muss mit der bestehenden produktiven
+Konfiguration build- und deploybar sein und die vorhandenen produktiven Abläufe
+erhalten. Keine Stufe darf eine spätere Stufe zur Reparatur oder Fertigstellung
+des produktiven Pfads voraussetzen. Diese Bedingung gilt zusätzlich zu jeder
+Abnahme in der folgenden Tabelle.</p>
+<p>Beschlossene Korrekturen wie globale Anerkennung und getrennte Gesamt-/
+Periodenanrechnung werden ausdrücklich als beabsichtigte Verhaltensänderungen
+benannt und gegen ihre neuen Sollwerte geprüft. Funktionserhalt konserviert
+keine abgelöste Semantik. Unfertige Erweiterungen bleiben außerhalb des
+produktiven Pfads. Zusätzliche Flags oder Konfiguration sind dafür keine
+pauschale Pflicht; falls nötig, werden sie begründet und bewusst entschieden.</p>
+<p>Zur Fertigmeldung gehören die für das Delta angemessene Regression der
+bisherigen Cockpit-, Baum-, Plan-, Prüfungs-, Karten-, Mastery-, Coach-, Session-,
+Personalisierungs- und Datenabläufe sowie der Release-Preflight am konkreten
+Kandidaten. Bei betroffenen Daten oder Verträgen werden Migration und Rollback
+reviewt; die erforderliche CI muss am exakten Commit terminal grün sein.
+Eine bestandene Prototypprüfung ersetzt diese Nachweise nicht. Deploybarkeit,
+tatsächlicher Rollout und echte Hostabnahme bleiben getrennte Nachweise;
+die Meilensteinabnahme autorisiert kein Deployment.</p>
+<table>
+<thead>
+<tr>
+<th>Stufe</th>
+<th>Konkretes Lieferstück</th>
+<th>Abnahme / sichtbarer Nachweis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S0 – gesicherter Neustart</strong></td>
+<td>Neuer Branch und Draft-PR; dieser Plan; inventarisierte Nachnutzung; geprüfte lokale Cockpit-Erweiterung gesichert.</td>
+<td>Benannte Commits, klare Grenze zum alten PR und keine ungesicherte mehrtägige Gesamtänderung.</td>
+</tr>
+<tr>
+<td><strong>S1 – Karte im Produkt-Cockpit</strong></td>
+<td>Baum/Karte im vorhandenen Navigationsbereich mit nativen Daten; Originalhauptinhalt und Aktionen bleiben bestehen.</td>
+<td>Echte aufgelöste Lehrplanansicht, Zielwahl ohne Aktivwechsel, Reveal/Fokus/Fachwechsel, Zustandserhalt, mobile Bedienung und frühe Owner-Demo. Eigener kleiner PR, CI und separater Rolloutkandidat.</td>
+</tr>
+<tr>
+<td><strong>S2 – erster geprüfter Einheitsvertrag</strong></td>
+<td>Kleine reale Mathematikeinheit mit stabiler Placementbindung, Own/Children/Q/K, geeigneter Einführung, Quellen, Aufgaben/Rubrik und historischer Ergebnisentscheidung.</td>
+<td>Native Angebotsauflösung und unabhängiges fachliches Gegenbeispielreview; kein bloßer Demo-Snapshot.</td>
+</tr>
+<tr>
+<td><strong>S3 – vollständiger Einheitsablauf</strong></td>
+<td>Minimale gemeinsame Compiler-/Runtimebasis und die Einheit aus S2 durch Cockpit, Coach, Prüfung, Recall soweit erforderlich, Anerkennung, Frontier und Plan.</td>
+<td>Durchgängige Demo an derselben veröffentlichten Revision; gespeichertes M und abgeleitetes I sichtbar unterscheidbar, fachlich gleichwertig. CI, Deployment und echte Claude-Abnahme getrennt nachweisen.</td>
+</tr>
+<tr>
+<td><strong>S4 – Mathematik vollständig</strong></td>
+<td>Alle tatsächlich angebotenen Mathematikauflösungen in sinnvolle rekursive Einheiten überführt und fachlich/technisch geprüft.</td>
+<td>Fixiertes Angebotsinventar vollständig grün, kein ungedeckter Rest, alle erforderlichen QA-/M7-/Releasegates, unabhängiges Review und freigegebener Fach-Rollout.</td>
+</tr>
+<tr>
+<td><strong>S5 – weitere Fächer</strong></td>
+<td>Physik, danach Chemie, danach Biologie mit derselben Engine und eigenen Inhalten/Verträgen.</td>
+<td>Je Fach eigene Angebotsliste, Inhaltsabnahme, Regression und Rollout. Mathematik bleibt unabhängig freigabefähig und nutzbar.</td>
+</tr>
+</tbody>
+</table>
+<p>S1 und die fachliche Arbeit an S2 können parallel laufen. S3 braucht den
+freigegebenen Vertrag aus S2; der allgemeine Mechanismus wird an dieser einen
+realen Einheit fertiggestellt, bevor breite Inhaltskorrekturen anlaufen.
+Ein geschlossener kleiner Block wird jeweils zuerst reviewt, committed und
+gegen CI geprüft. Ein lokales Beispiel allein wird nicht als S4 berichtet.</p>
+<h3 id="s1-karte-als-erganzende-navigation">S1: Karte als ergänzende Navigation</h3>
+<p>Die bereits vorhandenen Scoped-Tree-Daten sind die gemeinsame Quelle. Die Karte
+liest dieselben sichtbaren Mitglieder, authored Kinder, Auswahl, aktives Ziel,
+expliziten Ergebnisse und gültigen impliziten Ergebnisse. Sie führt keine eigene
+Personalisierung, Frontier oder Abschlussberechnung ein.</p>
+<p>Einzelklick/Enter wählt das betrachtete Ziel; das aktive Lernziel wechselt nur
+über den bisherigen expliziten Backendweg. Hinein-/Auftauchen verändert keinen
+Lernfokus. Bestehende Reveal- und Plansprünge führen zuverlässig zum richtigen
+sichtbaren Ziel. Bild und vollständige Details erscheinen weiterhin genau einmal
+in der Original-Zielkarte. Reine Fokusbewegung löst keine Auswahl aus.</p>
+<p>Für die neue Lerneinheitenprojektion werden zwei Kantenbedeutungen unterschieden:
+bewusst authored Ganz-Einheits-Voraussetzungen und bloße Zusammenfassungen
+atomarer Anforderungen. Die zweite Art ist Kontext, kein Vollabschluss-Gate.
+Inverse Pfeilrichtung zeigt den möglichen Lernfluss. Temporäre fehlende Daten,
+Scopeänderung, Suche und Layoutfehler brauchen klare lokale Zustände.
+Zusammenfassungen bewahren die Herkunft zu ihren atomaren Kanten; ausgeblendete
+Unterstützung bleibt als Kontext erklärbar, ohne in den Zielnenner aufzurücken.
+Ein Navigationsbereich heißt erst dann Lerneinheit, wenn diese Rolle fachlich
+gebunden ist. Die vorhandenen Ergebnisanzeigen werden in S1 korrekt als
+bisherige Projektion verwendet, nicht als schon implementierte globale Anerkennung
+aus S3 ausgegeben.</p>
+<p>Die lokale Snapshot-Aufbereitung wird durch einen Produktadapter ersetzt.
+Fetch-, EventSource- und Storage-Testadapter gelangen nicht in den Produktpfad.
+ELK-Layout, Culling und Kamerahistorie bleiben wiederverwendbare Darstellungstechnik.
+Die neue Ansicht darf zunächst ohne vollständige curriculare Lerneinheiten mit
+der vorhandenen geprüften Hierarchie arbeiten; sie behauptet dadurch noch keine
+neuen Abschlussverträge.</p>
+<h3 id="s1-bedienung-und-nachweise-des-produktkandidaten">S1: Bedienung und Nachweise des Produktkandidaten</h3>
+<p><a href="https://github.com/enpasos/skillpilot/pull/81">PR #81</a> ergänzt den Produktadapter.
+Im normalen Cockpit bleibt zunächst <strong>Baum</strong> gewählt; <strong>Lernkarte</strong> öffnet die
+zusätzliche Navigation. Erst dabei werden die Karte und ihre Layouttechnik
+geladen. Einzelklick oder Enter wählt ein Ziel für die gewohnte Zielkarte;
+Doppelklick oder der eigene Öffnungsknopf führt in einen Bereich, Shift mit
+Doppelklick wieder hinaus. Blattziele besitzen keinen Öffnungsknopf.
+Auswahl und Zoom setzen weder Mastery noch Lernfokus oder aktives Ziel.</p>
+<p>Bereiche zeigen die vorhandene sichtbare Hierarchie. Zusammengefasste Pfeile
+sind beschreibende Graphbezüge; zusätzliche Voraussetzungen und deren Herkunft
+lassen sich bei Bedarf aufklappen. Dadurch entstehen keine neuen Lerneinheiten
+oder Ganz-Einheits-Sperren. Ergebnisanzeigen verwenden weiterhin den bestehenden
+Backendstand; S3-Anerkennung wird damit nicht vorweggenommen.</p>
+<p>Die native Prüfung beginnt bei <code>index.html</code> und <code>App</code>, ohne Prototyp-Adapter.
+Abgeschottete Test-HTTP-Antworten prüfen Bedienung und Zustandsisolation;
+zusätzlich vergleicht ein Test die Kartenprojektion mit der aktuell hinterlegten
+hessischen Mathematikansicht Sekundarstufe II LK. Beides ist von einer echten
+Produktions- oder Coach-Hostabnahme zu unterscheiden.</p>
+<p>Relevante Befehle in <code>app/</code> sind <code>npm run test:learner-map</code>,
+<code>npm run test:learner-cockpit-startup</code> und <code>npm run test:learner-learning-plans</code>.
+Nach dem normalen Produktionsbuild prüft <code>npm run test:learner-map-build</code> die
+tatsächlich erzeugten Karten-/Workerdateien und deren Ausschluss vom
+Start-Precache. Diese Prüfungen sind im Frontend-CI-Pfad eingebunden.
+S1 benötigt keine neuen Backend-, Datenbank-, Curriculum- oder Pluginverträge
+und keine zusätzliche Betriebskonfiguration. Beim Rollout bleiben der normale
+Release-Preflight und ein Smoke-Test einschließlich Baum/Karte, Zielwahl,
+Prüfung, Kartenübung und Plan erforderlich. Ein Kartenfehler muss lokal bleiben
+und die Rückkehr zum Baum erlauben.</p>
+<h3 id="s2-zuerst-eine-fachlich-kleine-echte-einheit">S2: zuerst eine fachlich kleine echte Einheit</h3>
+<p>Primärer Prüfauftrag ist der vorhandene <strong>Skalarprodukt-/Projektionsausschnitt</strong>
+mit A=<code>3016ec37-1c2e-47db-83f5-e767923bc97e</code> und
+Q=<code>e98672c6-871a-5d0b-889c-5afc51040f0d</code>. Aktuelle direkte/subtree Referenzen
+weisen zunächst auf <strong>Hessen Sekundarstufe II LK</strong>, nicht auf eine vorausgesetzte
+GK-Zuordnung. Die tatsächliche native Angebotsauflösung ist noch zu prüfen.
+Das vorhandene Memoryreview von A nennt <code>no_memory_needed</code>; daraus folgt keine
+Befreiung fremder Karten oder weiterer Ziele.</p>
+<p>Vor Implementierung müssen fünf Dinge belegt sein: eine passende echte
+Einheitsgrenze mit Erwerbszuordnung; vollständige eigene Q/K und Kinder;
+normalisierte externe Unterstützung; passende normale Aufgabe/Rubrik für
+selbständige Anwendung; stabile historische Prüfungsbedeutung. Ein positiver
+Rechenfall und der alte Zwei-Ziel-Pilot beweisen den neuen Anspruch nicht.
+Einführung und verständliches Lernversprechen dürfen ohne neue künstliche
+Motivationsatome beschrieben werden.</p>
+<p>Der bisher vorgeschlagene größere Bereich Q2.4 „Matrizen und Übergangsprozesse“
+bleibt ein nachfolgender Kandidat. Seine 15 Fachziele und das breite bestehende
+Kartendeck dürfen den ersten sichtbaren Lernablauf nicht unnötig vergrößern.
+Wenn der kleinere Kandidat fachlich nicht trägt, wird die Grenze oder Aufgabe
+begründet korrigiert; eine begrenzte Alternative wird ausdrücklich benannt,
+statt unbemerkt immer weitere Curricula zu bearbeiten.</p>
+<h3 id="s3-minimale-gemeinsame-architektur">S3: minimale gemeinsame Architektur</h3>
+<ol>
+<li><strong>Datenvertrag festlegen:</strong> vorhandene Program-/Placement-/Compositiondaten
+   verwenden. Sie besitzen bisher keinen vollständigen Own-/Children-/Q-/K-Vertrag.
+   Eine kleine Schemaentscheidung benennt die minimal nötige Ergänzung,
+   stabile Unit-Referenzen, gewählte Pflichtkinder und getrennte Zugangsmetadaten.
+   Keine zweite kopierte Zielhierarchie und keine gepflegten Erlass-Ziellisten.
+   Schema-/Loader-/Exportversionen müssen unbekannte Abschlusssemantik erkennen;
+   still ignorierte neue Felder dürfen bei alten Consumern keinen falschen Abschluss erzeugen.</li>
+<li><strong>Statisch kompilieren:</strong> Mitgliedschaft, Ownership, Quellenrollen, Karten,
+   vollständige atomare Anforderungen, Aufgaben und Rubriken an unveränderliche
+   veröffentlichte Vertragsrevisionen binden. Referenzen, Zyklen, transitive
+   Minimalität, lokale Verbraucher und bei Blockfolge deren Realisierbarkeit prüfen.</li>
+<li><strong>Einheitlich auswerten:</strong> der bisherige Mastery-Bedarfsstopp wird für diese
+   Anerkennung ersetzt. Ein kohärenter Lernenden-/SRS-Snapshot liefert M und
+   daraus M_eff aus allen dafür gültigen lokalen Verträgen. Die globale
+   Vertragsgeltung hängt nicht von einem früheren Scopebesuch ab.</li>
+<li><strong>Bestehende Abläufe anschließen:</strong> Voraussetzungen, notwendige Arbeit,
+   freiwillige Vertiefung, Fokusabschluss/-weitung, Gesamtfortschritt und Plan
+   verwenden denselben Backendstand. Kinder und Eltern schließen rekursiv;
+   ungeprüfte oder unaufgelöste Verträge gelten nicht als erledigt.
+   API und UI behalten die getrennte Herkunft M/I für Icons, Export und Historie;
+   M_eff dient der fachlichen Erfüllung. Den eigenen Compiler-/Evaluatorcache des
+   Planpfads gemeinsam mit dem normalen Completionpfad umstellen.</li>
+<li><strong>Coach und Betrieb abnehmen:</strong> gemeinsame Skills nutzen veröffentlichte
+   Backendoptionen, nennen konkrete Einheit/Prüfung und verlangen Zustimmung
+   vor Zielwechsel. Ausführliche normale Prüfungsbewertung bleibt bestehen.
+   Instruktionen gehören nicht in eine Startup-Nachricht.</li>
+</ol>
+<p>Statische Verträge werden nach Artefaktdigest und Semantikrevision gecacht;
+Q/K-Rückwärtsindizes begrenzen dynamische Neuberechnung. Pro relevantem Vertrag
+genügt eine lineare Traversierung über Knoten/Kanten; keine quadratische
+Transitivitätsmatrix oder kalte Gesamtkompilierung je Anfrage. Dynamische
+Snapshots benötigen Lernendenrevision, zuverlässigen SRS-Bezug, begrenzte Caches
+und getestete Invalidierung. Messwerte für Kaltstart, warme Anfragen und große
+aktuelle Angebote vor und nach der Änderung dokumentieren; erst daraus werden
+begründete Regressionsgrenzen vereinbart.</p>
+<h3 id="konkrete-technische-arbeitspakete">Konkrete technische Arbeitspakete</h3>
+<table>
+<thead>
+<tr>
+<th>Paket</th>
+<th>Bestehende Ansatzpunkte und notwendige Ergänzung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produktkarte</td>
+<td><code>App.tsx</code>, <code>LearnerView.tsx</code>, <code>treeProjectionRuntime</code> und <code>compositionViewRuntime</code>: echten Adapter anschließen; <code>FullCockpitMap</code> ist bisher nur lokal. UI-Tests ausdrücklich in einen passenden CI-Pfad aufnehmen und Worker-/Assetbuild prüfen.</td>
+</tr>
+<tr>
+<td>Format und Kompilierung</td>
+<td><code>ProgramUnit</code>, <code>GoalPlacement</code>, Runtime-/Composition-/Paketschemata und Authoringwerkzeuge; vorhandene <code>CompletionProfileCompiler</code>, <code>CompiledCompletionGraph</code> und <code>CompletionCanonicalGraphResolver</code> wiederverwenden. Neue Einheitsbedeutung explizit versionieren.</td>
+</tr>
+<tr>
+<td>Gemeinsame Lesesicht</td>
+<td><code>LearnerService</code>, <code>UnifiedLearnerStateResponse</code>, <code>MasteryResponse</code>, <code>CoachStateProjection</code> und <code>CoachToolFacade</code>: kohärenten M-/I-/M_eff-Snapshot bis zur normalen Frontier und Fortsetzung tragen. Der bisherige Name <code>computeEffectiveMastery</code> allein belegt diese neue Semantik nicht.</td>
+</tr>
+<tr>
+<td>Planung</td>
+<td><code>LearnerLearningPlanService</code>, <code>LearningPlanCompletionProjection</code>, <code>UnifiedLearningPlanStatusCalculator</code>: neuen Kern statt einer abweichenden zweiten Berechnung verwenden; explizite Ereignisse erhalten.</td>
+</tr>
+<tr>
+<td>Coach und Release</td>
+<td>Gemeinsame Skills, <code>ClaudeV1CompletionContractRegistry</code> und vorhandene Task-/Sessionprüfungen: geprüfte Bedeutung und Versionsbindung gemeinsam aktualisieren, veröffentlichte Pluginbytes bewahren.</td>
+</tr>
+<tr>
+<td>Fachprüfung und CI</td>
+<td>Graph-/Composition-/Schema-/Packagechecks, bestehende Completion-/Frontier-/SRS-/Plan-/HTTP-/PostgreSQL-Tests sowie <code>assessment-completion.yml</code>: neue Vertragsdateien und Prüfungen tatsächlich ausführen. Alte Gegenmodelltests gezielt ersetzen.</td>
+</tr>
+</tbody>
+</table>
+<p>Die frühere automatische Semantik trägt heute ausdrücklich die Version
+<code>direct-demand-stops-at-mastery-v1</code>. Tests wie
+<code>masteredIntermediateStopsDemandFromAnOpenAssessment</code> und
+<code>anAssessmentFreeScopeCompletesWithoutAnyStoredMastery</code> sichern das Gegenmodell;
+sie dürfen nicht als unveränderliche neue Sollwerte weiterlaufen.</p>
+<h2 id="5-mathematik-systematisch-und-vollstandig-umbauen">5. Mathematik systematisch und vollständig umbauen</h2>
+<p>Zu Beginn der Umsetzung entsteht aus dem tatsächlichen Backend-/Plannerangebot
+ein versioniertes Inventar: Land, Stufe, Dauer, Kursprofil/Kursunion,
+aufgelöste Targets/Support, erforderliche Einheiten und deren Own/Q/K/Children.
+Dateizahlen und alte Angebotszahlen ersetzen diesen Nenner nicht. Gemeinsame
+kanonische Ziele werden nicht pro Land kopiert.</p>
+<p>Pro fachlichem Paket werden zuerst sinnvolle kleine Erwerbseinheiten begründet,
+dann Eltern/Aggregate und gegebenenfalls echte Syntheseprüfungen. Bestehende
+Quellen- und Inhaltsnachweise für unveränderte Inhalte bleiben nutzbar; neue
+Grenzen und neue Anwendungsansprüche werden zusätzlich geprüft. Kalenderjahr,
+Clustername und Darstellung erzeugen allein keinen Abschlussvertrag.</p>
+<p>Breite Kartenziele brauchen ehrliche Ownership: eine passende größere Einheit
+oder eine fachlich geprüfte Aufteilung mit stabilen Karten-/Zielidentitäten und
+Evidenzmigration. Karten nicht zum Elternknoten verschieben oder verkürzen,
+um künstlich fertige kleine Kinder zu erhalten. Eine spätere Einheit darf
+bereits erworbene Kompetenzen anwenden, ohne deren Erwerb neu zu verbuchen.</p>
+<p>Jedes Paket schließt mit deterministischen Strukturprüfungen und unabhängiger
+Aufgaben-/Rubrikprüfung. Gleiche Vertragsbedeutungen dürfen ein Inhaltsreview
+teilen; jede tatsächlich angebotene Projektion bleibt maschinell zu prüfen.
+M7 ist maschinelle QA und ersetzt weder dieses Inhaltsreview noch menschliche
+Erprobung oder einen Nachweis der Lernwirksamkeit.</p>
+<h2 id="6-alten-pr-gezielt-nachnutzen">6. Alten PR gezielt nachnutzen</h2>
+<p>Die neue statische Inventur vergleicht die genannte main-Basis mit dem alten
+Remote-/Produktionsstand; sie ist kein neu erfolgreicher Angebotslauf:</p>
+<table>
+<thead>
+<tr>
+<th>Kanonischer Mathematikbestand</th>
+<th style="text-align: right;">main-Basis</th>
+<th style="text-align: right;">Alter PR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Curriculare atomare Identitäten</td>
+<td style="text-align: right;">807</td>
+<td style="text-align: right;">dieselben 807</td>
+</tr>
+<tr>
+<td>Zusätzliche Prüfungs-IDs</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr>
+<td>Bestehende IDs mit neuer exam-Rolle</td>
+<td style="text-align: right;">–</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr>
+<td>Registrierte Viewdateien</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">147</td>
+</tr>
+</tbody>
+</table>
+<p>Die 39 neuen IDs und 35 Rollenwechsel sind unterschiedliche Mengen. Die
+unveränderten 807 curricularen Identitäten bleiben unabhängig von der
+Ausführungsrolle in der QA-Population. Mehr Viewdateien beweisen noch keine
+vollständige native Auflösung oder neue Vertragsfreigabe.</p>
+<p>Kein Gesamtmerge und kein pauschaler Cherry-pick des alten Großdeltas. Für jeden
+übernommenen Baustein werden Quellref, Dateien, Entscheidung, neue Semantik und
+die neue Abnahme im PR dokumentiert. Zuerst prüfen, was bereits auf main vorhanden
+ist; bestehende Arbeit wird nicht ein zweites Mal eingeführt.</p>
+<table>
+<thead>
+<tr>
+<th>Baustein</th>
+<th>Geplante Behandlung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Graphresolver, Indizes, Cachebudgets, Task-/Owner-/Revisionsschutz</td>
+<td>Vorhandene Basis erhalten; fehlende geeignete Teile isoliert übernehmen.</td>
+</tr>
+<tr>
+<td>Automatische Mastery-Stopp-/Full-PC-Erlasssemantik</td>
+<td>Ersetzen; nicht als neue globale Anerkennung weiterführen.</td>
+</tr>
+<tr>
+<td>Memory-Klassifikation, Taskbereitschaft, Fokus-/Composition-/Kursunionkorrekturen</td>
+<td>Eng prüfen und nachnutzen; kein Ersatz für Inhaltsprüfung oder Erwerbszuordnung.</td>
+</tr>
+<tr>
+<td>Prüfungsaufgaben, Rubriken, Quellen-/Placementgeneratoren</td>
+<td>Paketweise prüfen; passende vorhandene Aufgaben erhalten, Lücken gezielt verbessern.</td>
+</tr>
+<tr>
+<td>Bestehende Verständnis-ID wird im alten PR zum Exam</td>
+<td>Alte ID/M-Bedeutung bewahren; stärkerer Anspruch bekommt grundsätzlich eigene Prüfungs-ID. Gleichbedeutende historische Ausnahmen einzeln belegen.</td>
+</tr>
+<tr>
+<td>Semantisches Ledger, QA-Populationsresolver, deterministische Strukturtests</td>
+<td>Erhalten und auf Einheits-/Own-/Kind- und tatsächliche Angebotsprüfung erweitern.</td>
+</tr>
+<tr>
+<td>Gesamt-/Periodentrennung, Restart-/Provider-/Browserfixtures</td>
+<td>Wiederverwenden und neue Sollwerte/Identitäten einsetzen.</td>
+</tr>
+<tr>
+<td>Alte M7-/N6-/CI-Berichte und PDFs</td>
+<td>Historische Belege referenzieren; nicht als neue erfolgreiche Abnahme kopieren.</td>
+</tr>
+<tr>
+<td>Neue lokale Karte und bewährte Original-Cockpitkomponenten</td>
+<td>Darstellungstechnik und bestandene Zustands-/Mobile-Tests nachnutzen; Testtransport durch native Datenbindung ersetzen.</td>
+</tr>
+</tbody>
+</table>
+<p><code>MemoryGoalClassification</code>, <code>ExamTaskReadiness</code> und <code>AssessmentTaskContract</code>
+sind Beispiele für im alten PR vorhandene Ergänzungen, die auf der genannten
+main-Basis noch fehlen. Sie werden getrennt vom bereits vorhandenen Resolver
+bewertet. Taskbereitschaft oder sicherer Prüfungsstart sind keine zusätzliche
+gespeicherte Lernendenqualifikation und ersetzen keinen Anwendungsnachweis.</p>
+<p>Das Einzelinventar der früheren ID-Umtypisierungen im
+<a href="../curriculum-recognition-restart-plan/#6-wiederverwendung-und-zwingende-id-migration">alten Neustartplan, Abschnitt 6</a>
+bleibt Recherchehilfe. Die Liste ist keine bereits getroffene Migrationsentscheidung.</p>
+<h2 id="7-gemeinsame-abnahmematrix">7. Gemeinsame Abnahmematrix</h2>
+<table>
+<thead>
+<tr>
+<th>Bereich</th>
+<th>Wesentliche Fälle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anerkennung</td>
+<td>Q→B→A auch durch gemeistertes B; mehrere lokale Verbraucher; externe spätere Prüfung; M=0; keine impliziten Q/K; ungedeckte Fachendpunkte sind Fehler.</td>
+</tr>
+<tr>
+<td>Rekursion</td>
+<td>Pure Aggregate; eigene Elternsynthese; fertiges Kind bei offener Elternprüfung; bestandene Elternprüfung bei offenen Kinderprüfungen/Karten; Deduplizierung und eindeutige Ownership.</td>
+</tr>
+<tr>
+<td>Historie</td>
+<td>Alter gültiger Pass behält Bedeutung ohne zweiten Pass; erweiterter Anspruch erhält keine rückwirkende Anerkennung; keine Waiver-Materialisierung als M.</td>
+</tr>
+<tr>
+<td>Scope und Daten</td>
+<td>Native Angebote einschließlich Kursunionen, target/prerequisiteOnly und externer Unterstützung; globale Anerkennung nach Fokus-/Lehrplanwechsel; normale/strikte Voraussetzungen unterscheiden.</td>
+</tr>
+<tr>
+<td>UX</td>
+<td>Alle bisherigen Cockpitelemente erreichbar; Bild genau einmal; Baum/Karte teilen Auswahl; Aktivwechsel nur explizit; Suche, Reveal, mobile Navigation und laufender Drill bleiben korrekt.</td>
+</tr>
+<tr>
+<td>Coach</td>
+<td>Alle passenden Prüfungen backendseitig auffindbar, Paging vollständig; direkter gewählter Start; ausführliche Bewertung; Fortsetzen und Zustimmung zum Zielwechsel.</td>
+</tr>
+<tr>
+<td>Pläne</td>
+<td>Gesamt einschließlich I, Periode ausschließlich explizit; keine zusätzlichen Ereignisse durch Anerkennung; gewählte Anrechnungspräferenz bleibt lokal zur Planung.</td>
+</tr>
+<tr>
+<td>Betrieb</td>
+<td>Konsistente Revisionen, SRS-/Lernerisolation, Kalt-/Warmverhalten, Cacheinvalidierung, Neustart und fehlende Artefakte; Fehler einer unabhängigen Einheit sperren kein anderes Fach pauschal.</td>
+</tr>
+<tr>
+<td>Deploybarkeit je Meilenstein/Fach</td>
+<td>Reviewter Commit mit bestehender Produktionskonfiguration build- und deploybar; Regression und Release-Preflight bestanden, erforderliche CI am exakten Head grün; betroffene Migration/Rollback geprüft, keine Reparatur durch spätere Stufen nötig.</td>
+</tr>
+</tbody>
+</table>
+<p>Für jede geänderte fachliche Freigabemenge gilt zusätzlich der Gegenversuch:
+<strong>Kann jemand nach der normalen Rubrik bestehen, obwohl die wesentliche
+anerkannte Kompetenz vollständig fehlt?</strong> Falls ja, muss der Vertrag, die
+Aufgabe/Rubrik oder die Einheitsgrenze korrigiert werden. Keine Kompensation
+durch fachfremde Punkte und keine künstlichen <code>requires</code>-Kanten nur für QA.
+Die Inhaltsprüfung wird nach den tatsächlich verschiedenen
+<code>D_U(a) = {p ∈ P_U | p R⁺ a}</code> gebündelt. Jede tatsächlich freigebende Kombination
+und erlaubte Aufgabenvariante braucht eine tragfähige normale Rubrik; ein
+blindes Durchprobieren aller 2^Q-Teilmengen ist kein vorgeschaltetes Gesamtprojekt.
+Das gilt ausdrücklich auch <strong>vor Vollabschluss der Einheit</strong>: Ist D_U(a)
+bereits bestanden, kann a anerkannt sein, obwohl eine unabhängige Prüfung oder
+Kartenpflicht die Einheit noch offen hält. Review und Tests prüfen deshalb
+beispielsweise Q_a bestanden/Q_b offen mit getrennten Kompetenzen A/B; sie
+warten nicht pauschal auf alle Q/K. Anerkennung und Gesamtabschluss bleiben getrennt.</p>
+<h2 id="8-migration-rollout-und-arbeitsweise">8. Migration, Rollout und Arbeitsweise</h2>
+<ul>
+<li>Arbeit auf neuem Branch ab aktuellem main, mit kleinen nachvollziehbaren
+  Commits und Draft-PR. Der neue PR darf zunächst Plan und geprüfte Vorschau
+  sichern; sein Titel und Status behaupten keine fertige Runtime.</li>
+<li><strong>6.1 Sol Ultra</strong> übernimmt technische Bestandsaufnahme, Implementierung,
+  Generatoren und Tests. <strong>Astra Ultra</strong> übernimmt grundlegende Analyse,
+  Einheits-/Prüfungsbedeutung und unabhängige Reviews. Ein Review erzeugt keine
+  Produktionsfreigabe für ungeprüfte andere Inhalte.</li>
+<li>Keine Umschreibung bestehender Lerner-Mastery durch den Curriculumsumbau.
+  Alte falsche Erlasse werden nicht in explizite Ergebnisse umgewandelt.
+  Gültige historische Verträge bleiben rekonstruierbar; Rückrollen darf nicht
+  still gültige anerkannte Kompetenzen verlieren lassen.</li>
+<li>Bei fehlendem/ungültigem neuen Vertrag keine neue Anerkennung behaupten;
+  verlässliche explizite Ergebnisse und sichere normale Lernwege erhalten.
+  Gemischter Alt-/Neustand braucht eine ausdrücklich getestete Semantikgrenze,
+  keine unbemerkte pauschale Abschaltung des bisherigen Angebots.</li>
+<li>Backend, WebGUI und nötige gemeinsame Coach-/Pluginartefakte werden als
+  zusammenpassende konkrete Kandidaten geplant. Claude zuerst, reale Hostabnahme
+  gesondert. Andere Provider nutzen denselben fachlichen Vertrag; kein zweiter
+  fachlicher Kern und keine schwächere Ersatzfunktion als dauerhafte Architektur.</li>
+<li>Nach jedem Lieferstück: lokale relevante Tests, unabhängiges Review, Commit,
+  Push und terminale CI am konkreten Head. Deployment/Marketplace-Veröffentlichung
+  und Owner-Abnahme bleiben ausdrücklich ausgewiesene eigene Schritte.</li>
+</ul>
+<p>Der Fortschrittsbericht nennt pro Lieferung <strong>implementiert, lokal geprüft,
+inhaltlich reviewt, CI grün, deploybar, ausgerollt, im echten Host beobachtet</strong>.
+<strong>Deploybar</strong> nennt den konkreten Commit und die Nachweise aus Abschnitt 4. Für Mathematik
+kommen erledigte/offene Einheiten und Angebote aus dem fixierten Inventar hinzu.
+Nenneränderungen werden erklärt. Keine schwankenden geschätzten Gesamtprozente
+anstelle fertiger, sichtbar demonstrierbarer Ergebnisse.</p>
+<h2 id="9-nachster-ausfuhrbarer-schritt">9. Nächster ausführbarer Schritt</h2>
+<p>S0 ist ausgerollt. Jetzt S1 an eine echte aufgelöste Mathematikansicht anbinden,
+mit einem eigenen PR sowie den Funktions- und Deploybarkeitsnachweisen aus
+Abschnitt 4. Anschließend beziehungsweise unabhängig parallel für den benannten
+kleinen S2-Kandidaten einen vollständigen Vertragsbefund erzeugen. Vor größerem
+Inhaltsausbau steht die erste tatsächliche Owner-Demo. Die genaue technische
+Sperrwirkung von Einheitszugängen wird als separate Produktentscheidung behandelt
+und blockiert diese beiden Lieferstücke nicht.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

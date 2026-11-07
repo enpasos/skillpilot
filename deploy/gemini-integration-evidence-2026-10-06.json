@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-06T02:48:04.954936+00:00",
+  "date": "2026-10-06",
+  "scope": "CONTROLLED_REAL_GEMINI_CORE_INTEGRATION",
+  "license": "Apache-2.0",
+  "host": {
+    "product": "consumer Gemini Web",
+    "uiLanguage": "English",
+    "selectedModelUiLabel": "Flash",
+    "browser": "Chromium",
+    "accountsTested": 1,
+    "database": "separate operator-created local PostgreSQL development database",
+    "meteredModelApiCalls": false,
+    "productionDeploymentPerformed": false,
+    "learningEvidence": "Operator test learner; substantive task solutions submitted by the test agent in Gemini; no human longitudinal learning study"
+  },
+  "source": {
+    "coreObservedOnBaseRevision": "f4e6f94e6f6343a998e30ec07c4194f00473fce0",
+    "nativeImageCorrectionRevision": "933e1e57d74790ad8ebd3d3aa9c221d3d27e5d3a",
+    "candidateFamilyTrees": {
+      "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/": {
+        "files": 26,
+        "sha256": "94de3a192174e6b4a5acba906a52077a47ff68fc9db0e16e57ad5179cb5e6113"
+      },
+      "ai/gemini/gateway/server/": {
+        "files": 4,
+        "sha256": "b9bd6e43d9eb3f3a234d47d6b427468b96d9963d9eb22502ce664b7d26c15dd1"
+      },
+      "ai/gemini/coach/": {
+        "files": 5,
+        "sha256": "ab928bcc4360994f76fd1e1ddab825e1d426d334811838b0cf31d363df7e9e58"
+      },
+      "app/src/coachVariants/geminiV1/": {
+        "files": 3,
+        "sha256": "c7d5fcbb70972aba54848c0c1db058d87e4292416d499cffb9acf848bf4e8cf5"
+      }
+    },
+    "treeHashAlgorithm": "Sort tracked paths lexicographically; concatenate each path, NUL, SHA256(file bytes), LF; SHA256 that UTF-8 sequence. Excludes runtime directories and generated ZIPs.",
+    "skillZipSha256": "2a5f5de47cd04345196cd21f0ab4dc4e0b3247b509a9deaaa0e2f8cd74d30a40"
+  },
+  "skillImport": {
+    "result": "PASS",
+    "observedAt": "2026-10-06T01:17:28.495Z",
+    "libraryVisibleAfterReload": true,
+    "name": "skillpilot-coach-v1",
+    "instructionsLength": 13690,
+    "canonicalInstructionsSha256": "c15844e1b5bebd2dd5bf1388e626b85ec05736c0620a294b3cc8dfd8e641a1c4",
+    "normalization": "Strip YAML frontmatter and trim surrounding whitespace",
+    "initialUnsupportedFileTypeRejectionRetained": true,
+    "successfulArchiveRootEntries": [
+      "SKILL.md",
+      "LICENSE.txt"
+    ]
+  },
+  "oauth": {
+    "result": "PASS_ACTUAL_HOST",
+    "exactGoogleCallbackPrivatelyPinned": true,
+    "pkceMethod": "S256",
+    "clientAuthenticationMethod": "client_secret_post",
+    "scope": [
+      "skillpilot.read",
+      "skillpilot.write"
+    ],
+    "actualRefreshObserved": true,
+    "boundedMissingRefreshResourceCompatibility": true,
+    "nativeInitializationAndToolsList": "PASS",
+    "registeredTools": 15,
+    "grantsLostOnRestart": true,
+    "absoluteGrantLifetimeSeconds": 3600
+  },
+  "initialLearningFlow": {
+    "result": "PASS_ACTUAL_HOST_AND_INDEPENDENT_CANONICAL_READ",
+    "nativeSkillAndAppSelected": true,
+    "contextResultAt": "2026-10-06T01:36:30.894Z",
+    "contextStateVersion": 8,
+    "substantiveIndependentTaskWorkSubmitted": true,
+    "nativeAllowClickedAt": "2026-10-06T01:40:50.446Z",
+    "masteryTool": "set_skillpilot_mastery",
+    "masteryResultAt": "2026-10-06T01:40:58.011Z",
+    "masteryHttpStatus": 200,
+    "savedStateVersion": 9,
+    "independentCanonicalReadAt": "2026-10-06T01:41:12.913814Z",
+    "masteryValue": 1,
+    "changedMasteryGoals": 1,
+    "onlyCompletedGoalChanged": true,
+    "canonicalSuccessorTitle": "Darstellung erstellen und beschriften",
+    "coachClaimedSaveOnlyAfterSuccess": true,
+    "successorTeachingWaitedForExplicitContinuation": true
+  },
+  "distinctNewChat": {
+    "result": "PASS_ACTUAL_HOST",
+    "submittedAt": "2026-10-06T01:41:58.157Z",
+    "nativeSkillAndAppSelected": true,
+    "sameOriginalLearningSessionUsed": true,
+    "distinctGoogleChatIdsVerified": true,
+    "contextResultAt": "2026-10-06T01:42:09.355Z",
+    "contextHttpStatus": 200,
+    "loadedSavedStateVersion": 9,
+    "correctCanonicalSuccessorVisible": true,
+    "newTeachingWaitedAsRequested": true
+  },
+  "ordinaryWebGui": {
+    "observedAt": "2026-10-06T01:47:31.794Z",
+    "finishedAt": "2026-10-06T01:47:38.062Z",
+    "result": "PASS_REAL_LOCAL_GUI_HANDOFF",
+    "apiMocksUsed": false,
+    "realLaunchStatus": 200,
+    "requestLocale": "de",
+    "requestClient": "web-start",
+    "realResponseDisplayedUnchanged": true,
+    "realClipboardContainsExactPreparedPrompt": true,
+    "noSessionOrLearnerInOpenUrl": true,
+    "sessionNotPersistedInBrowserStorage": true,
+    "masteryUnchanged": true,
+    "profilePreferencesUnchanged": true,
+    "canonicalStateVersionBefore": 9,
+    "canonicalStateVersionAfter": 9,
+    "existingGeminiTabsUnchanged": true,
+    "servedFrontendBuild": {
+      "buildId": "6c061ee6983f-2026-10-06T01:15:19.055Z",
+      "buildTime": "2026-10-06T01:15:19.055Z",
+      "commit": "6c061ee6983febf3da514a31335b7856280722de",
+      "dirty": true,
+      "mode": "production"
+    },
+    "servedHintMatchesCurrentSource": false,
+    "supplementalLiteralHandoff": {
+      "result": "PASS_AFTER_EXPLICIT_APP_RESELECTION_RETRY",
+      "realGuiLaunchResponseUsed": true,
+      "nativeSkillAndAppSelected": true,
+      "submittedAt": "2026-10-06T02:15:16.155Z",
+      "firstAttempt": {
+        "result": "NO_CONTEXT_TOOL_CALL_AFTER_SUCCESSFUL_OAUTH_INITIALIZATION_AND_TOOLS_LIST",
+        "modelClaim": "No direct MCP tool access",
+        "causeNotEstablished": true,
+        "backendContextFaultEstablished": false
+      },
+      "explicitAppReselectionRetrySubmittedAt": "2026-10-06T02:17:13.041Z",
+      "contextResultAt": "2026-10-06T02:17:25.068Z",
+      "contextHttpStatus": 200,
+      "loadedSavedStateVersion": 10,
+      "correctCanonicalSuccessorVisible": true,
+      "canonicalMasteryAndVersionUnchanged": true,
+      "privateSessionPublished": false
+    }
+  },
+  "nativeImage": {
+    "initialJsonOnlyCandidate": {
+      "result": "FAIL_CLIENT_PRESENTATION_AFTER_SUCCESSFUL_RENDERER",
+      "successfulRendererResultAt": [
+        "2026-10-06T01:38:14.831Z",
+        "2026-10-06T01:44:47.019Z",
+        "2026-10-06T01:47:44.519Z"
+      ],
+      "canonicalInlineImagesObserved": 0,
+      "canonicalImageLinksObserved": 0,
+      "causeNotEstablished": true
+    },
+    "correctedCandidate": {
+      "observedAt": "2026-10-06T01:57:56.735Z",
+      "source": "actual Gemini Web DOM after corrected native renderer",
+      "directCanonicalImageLinkVisible": true,
+      "directLinkLabel": "Lernzielbild öffnen",
+      "linkUsesPublicCanonicalAsset": true,
+      "inlineCanonicalImageCount": 0,
+      "modelResponseComplete": true,
+      "privateSessionInLink": false,
+      "clickedLinkOpenedCanonicalImage": true,
+      "openedImageDimensions": {
+        "loaded": true,
+        "width": 2752,
+        "height": 1536
+      },
+      "result": "PASS_NATIVE_CANONICAL_LINK_FALLBACK",
+      "automaticRendererResultAt": "2026-10-06T01:56:21.598Z",
+      "automaticRendererHttpStatus": 200,
+      "sourceByteBinding": "candidateFamilyTrees backend Gemini Java hash; running process built before Git commit with those same bytes",
+      "embeddedImageAcceptance": "NOT_OBSERVED"
+    }
+  },
+  "correctedCandidateLearningRetest": {
+    "result": "PASS_ACTUAL_HOST_AND_INDEPENDENT_CANONICAL_READ",
+    "nativeSkillAndAppSelected": true,
+    "sourceRevision": "933e1e57d74790ad8ebd3d3aa9c221d3d27e5d3a",
+    "sourceByteBinding": "candidateFamilyTrees backend Gemini Java hash; running process built before Git commit with those same bytes",
+    "contextResultAt": "2026-10-06T01:56:14.325Z",
+    "contextStateVersion": 9,
+    "substantiveIndependentTaskWorkSubmitted": true,
+    "nativeAllowClickedAt": "2026-10-06T01:59:23.124Z",
+    "masteryResultAt": "2026-10-06T01:59:31.956Z",
+    "masteryHttpStatus": 200,
+    "savedStateVersion": 10,
+    "independentCanonicalReadAt": "2026-10-06T02:00:39.227393+00:00",
+    "changedMasteryGoals": 1,
+    "completedGoalMasteryValue": 1,
+    "previousGoalStillMastered": true,
+    "canonicalSuccessorTitle": "Informationen aus Darstellungen entnehmen",
+    "distinctNewChat": {
+      "submittedAt": "2026-10-06T02:02:42.535Z",
+      "nativeSkillAndAppSelected": true,
+      "sameOriginalLearningSessionUsed": true,
+      "distinctGoogleChatIdsVerified": true,
+      "contextResultAt": "2026-10-06T02:02:53.641Z",
+      "contextHttpStatus": 200,
+      "loadedSavedStateVersion": 10,
+      "correctCanonicalSuccessorVisible": true,
+      "newTeachingWaitedAsRequested": true,
+      "canonicalMasteryAndVersionUnchanged": true
+    }
+  },
+  "localVerification": {
+    "geminiBackend": {
+      "tests": 159,
+      "classes": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "existingProviderIsolation": {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "gatewayTests": 25,
+    "skillArchiveReproducible": true,
+    "providerPublishedResourceBytesPreserved": true,
+    "actualGitHubCi": "See exact final PR-head workflows; local tests are not a CI or host substitute."
+  },
+  "privacy": {
+    "permanentLearnerIdsPublished": false,
+    "learningSessionValuesPublished": false,
+    "googleAccountCallbacksPublished": false,
+    "oauthOrOperatorSecretsPublished": false,
+    "chatTranscriptsOrAnswersPublished": false,
+    "chatAnswersAcceptedByActiveToolSchemas": false
+  },
+  "remainingAcceptance": [
+    "Additional Google accounts and public multi-user OAuth onboarding",
+    "Normal memory practice, Verified Recall and exams in the actual Gemini host",
+    "Denied writes, replay, stale version and expiry in this real integration host; covered locally and independently in synthetic PoC where stated",
+    "Embedded image display; canonical direct-link fallback has actual host evidence",
+    "Production HTTPS/gateway/backend rollout and acceptance",
+    "Host dispatch reliability; one supplemental GUI-start attempt required explicit App re-selection after successful OAuth and tool discovery"
+  ]
+}

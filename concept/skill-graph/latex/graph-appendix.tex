@@ -1,0 +1,225 @@
+% SPDX-License-Identifier: Apache-2.0
+\appendix
+\section{Statusabgleich und Grenzen der Aussagen}
+\label{sec:implementation}
+Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
+4. November 2026. Geprüfte Hauptlinie für den jüngsten Konzeptabgleich:
+\code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
+und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
+ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
+Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
+
+\begin{longtable}{@{}P{32mm}P{116mm}@{}}
+\toprule
+Gegenstand & Nachprüfbare Grenze\\
+\midrule\endhead
+Abschlussrechnung &
+\code{CompletionEvaluator.evaluateAutomaticGraph} stoppt an gemeisterten
+Zwischenzielen. In $Q\to B\to A$ mit nur B gemeistert wird A dort
+entlassen. Die neue Formel lässt A für die offene Prüfung Q benötigt.
+Der historische Profilpfad im selben Service ist ein anderer Algorithmus;
+auch seine Existenz beweist keine Umsetzung des neuen Vertrags.\\
+Geschützte Ziele & Der bisherige automatische Pfad beginnt bei offenen
+Assessments; der neue Vertrag schützt zusätzlich alle ausgewählten
+Memorierziele und verlangt eigene fachliche Assessmentabdeckung für jede
+gewöhnliche eigene Fachkompetenz. Aggregation und Synthese
+werden dadurch nicht zu künstlichen neuen Erwerbsverträgen.\\
+Globale Wirkung & Kontextbezogene bisherige Freistellung ist nicht schon
+die dauerhaft vertragsgebundene globale Menge $M_{\mathrm{eff}}$.
+Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung
+müssen gemeinsam implementiert und gesondert geprüft werden.\\
+Graphgültigkeit & Transitive Minimalität ist verbindlich. Ein lokaler
+Validator oder historische Tests ersetzen keine Prüfung der vollständigen
+normalisierten Relation und keine fachliche Inhaltsprüfung.\\
+Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
+Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
+\code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
+Memorierung & Der dokumentierte Zieltypvertrag nennt verifizierten Abruf
+und keine fälligen Karten. Backend und \code{useSrsMastery} verwenden den
+verifizierten Abruf aller erforderlichen Karten. Die Abweichung ist
+vor einer entsprechenden Konformitätsbehauptung ausdrücklich aufzulösen.\\
+Lerneinheiten & Rekursive Ziel-/Kinderstruktur mit eindeutigem Ersterwerb
+und abgeleitetem Abschluss; noch kein behauptetes Runtimefeature.
+Technische Ganzheitssperren und direkter Prüfungszugriff unter einem
+solchen Profil sind unentschieden. Zeit und Budget bleiben zusätzliche
+Planung, kein Synonym für die Einheit.\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Prüfbare Codeanker.}
+\srcref{backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java}{CompletionEvaluator.java};
+\srcref{backend/src/main/java/com/skillpilot/backend/service/LearnerService.java}{LearnerService.java};
+\srcref{app/src/hooks/useSrsMastery.ts}{useSrsMastery.ts};
+\srcref{app/scripts/validateGraph.ts}{validateGraph.ts};
+\srcref{backend/src/main/java/com/skillpilot/backend/domain/Mastery.java}{Mastery.java}.
+Die verlinkte Hauptlinie entwickelt sich weiter. Das Build-Manifest bindet
+die bei dieser Dokumentfassung tatsächlich gelesenen Dateien per SHA-256.
+
+\section{Prüfstrategie für die Abschlussberechnung}
+Das begleitende \code{latex/check-assessment-model.py} ist eine
+mathematische Referenzprüfung mit Python-Standardbibliothek. Es liest keine
+Lernerdaten und ändert keinen Runtimezustand.
+
+\begin{center}\begin{tabularx}{\linewidth}{@{}P{40mm}X@{}}
+\toprule
+Prüfbereich & Geprüfte Aussage\\
+\midrule
+Endliche Modellprüfung & Alle DAGs bis vier Knoten in topologischer
+Ordnung mit jeder Mastery-/Schutzmengenbelegung, soweit die lokalen
+gewöhnlichen Ziele vollständig assessmentabgedeckt sind:
+5\,222 gültige Fälle. Traversierung und statische transitive Hülle
+liefern dieselbe implizite Menge.\\
+Minimalität & Transitive Reduktion ist minimal und erhält die Hülle.
+Redundante Kanten der normalisierten Relation ändern die Anerkennung
+nicht; ein Gegenbeispiel prüft die nach Kantenentfernung neu berechnete
+Vererbung für verfasste Minimalität.\\
+Globale Monotonie & Zusätzliche ausdrückliche Mastery öffnet bei festen
+gültigen Verträgen keine effektiv beherrschte Arbeit erneut. Prüfungs-
+und Memorierziele werden nie implizit bestanden.\\
+Rekursive Einheiten & 128 Belegungen des Mechanikbeispiels prüfen
+Abschluss, eigene Anerkennung und explizite Kindpflichten. Ein Aggregat
+braucht keine eigene Prüfung; eine reine Synthese braucht keine neuen
+gewöhnlichen Ziele.\\
+Einheitsgruppierung & 948 Gruppierungsfälle vergleichen den Block-DAG
+mit einer vollständigen Blockreihenfolge. Ein Gegenbeispiel zeigt einen
+atomaren DAG mit zyklischer Zusammenfassung; keine technische Sperrpolitik
+wird daraus abgeleitet.\\
+Konkrete Gegenbeispiele & Kein Stopp an Mastery-Zwischenknoten;
+lokale Anerkennung trotz späterer Prüfung; dauerhafte Vertragsvereinigung,
+künftige Voraussetzungen, Target-Schnitt und externe Unterstützung.\\
+Ungültige Eingaben & Zyklen, unbekannte Referenzen und isolierte
+gewöhnliche Ziele sind Fehler, keine automatische Beherrschung.\\
+\bottomrule
+\end{tabularx}\end{center}
+
+Die Diagrammerzeugung prüft die konkret gezeigten Mengen und vergleicht mit
+\code{--check} die neu gerenderten PNG-Bytes. Diese Tests prüfen weder
+reale Aufgabenqualität noch Benotungszuverlässigkeit, Identitätskontrolle
+oder pädagogische Wirkung. Die geforderte unabhängige Inhaltsprüfung
+bleibt ein eigener Schritt. Runtimeintegration und deren Sicherheits-,
+Nebenläufigkeits- und Oberflächentests sind künftige Implementierungsarbeit.
+
+\section{Begriffe und Symbole}
+\begin{longtable}{@{}P{36mm}P{112mm}@{}}
+\toprule
+Zeichen / Begriff & Bedeutung\\
+\midrule\endhead
+$G,A,K$ (Kern) & Ziele, strukturelle Atome, Cluster.\\
+$C,R,\Reff$ (Kern) & Enthaltensein, direkte und geerbte Voraussetzungen.\\
+$R_{\mathrm{at}}$ & Vollständig atomar expandierte effektive Relation;
+im Abschlusskapitel kurz $R$.\\
+$X^+,X^{-1}$ & Nichtleere transitive Hülle und Umkehrrelation.\\
+$\Atoms(g)$ & Atomare Basis; bei einem Atom die einelementige Menge.\\
+$m,M$ & Ein gespeicherter binärer Zielzustand und die Menge seiner
+ausdrücklichen Erfolge. $m(a)=0$ schließt implizite Beherrschung nicht aus.\\
+$M_{\mathrm{eff}},M_A$ & Globale Vereinigung ausdrücklicher und gültig
+abgeleiteter impliziter Beherrschung; allgemeine Erfüllungsmenge im Kern.\\
+$U,\Own(U),T(U)$ & Lerneinheit, eigene atomare Erwerbsziele und Gesamtumfang einschließlich der Kinder.\\
+$\Complete(U)$ & Rekursiv abgeleiteter Abschluss; keine zusätzlich gespeicherte Unit-Mastery.\\
+$Q_U,K_U,P_U$ & Eigene Prüfungs-, Memorier- und gemeinsame Schutzmenge.
+$K_U$ bezeichnet hier keine strukturellen Cluster.\\
+$N_U$ & Vollständige transitive Nachfrage der offenen eigenen geschützten Ziele,
+ohne Stopp an gemeisterten Zwischenzielen.\\
+$I_U$ & Lokal abgeleitete Anwendung eigener gewöhnlicher Erwerbsziele.
+Keine zusätzliche gespeicherte Ergebnisart.\\
+Personal Curriculum & Verbindliche persönliche Zielauswahl auf Level 2;
+kein Filter, der vorhandene globale Anerkennung zurücknimmt.\\
+Fokus & Temporärer Arbeitsbereich auf Personalisierungslevel 3.\\
+$T_\pi,B_\pi,\ell_\pi$ & Geplante Erwerbsziele, Eintrittsbasis und
+optionale kalenderbezogene Planungsstufen.\\
+M7 & Maschineller Curriculum-QA-Reifegrad, kein menschlicher
+Wirksamkeitsnachweis.\\
+\bottomrule
+\end{longtable}
+
+\section{Quellenzuordnung und Abbildungen}
+Die Kapitel sind eine redaktionell zusammengeführte deutsche Darstellung
+der folgenden Repositoryquellen. Querverweise nennen die jeweilige
+fachliche Verantwortung; sie sind keine Behauptung, dass alle optionalen
+Konzepte bereits implementiert seien.
+
+\begin{longtable}{@{}P{38mm}P{110mm}@{}}
+\toprule
+Inhalt & Maßgebliche Quelle\\
+\midrule\endhead
+Formaler Kern und Filter &
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition},
+Abschnitte 1--11.\\
+Schichten und Migration &
+\srcref{docs/concept/skill-graph/general-goal-system-and-migration.md}{General Goal System and Migration};
+\srcref{docs/concept/skill-graph/canonical-gymnasium-rollout.md}{Canonical Gymnasium Rollout}.\\
+Sichten und persönliche Auswahl &
+\srcref{docs/concept/skill-graph/view-projection-and-goal-placement.md}{View Projection and Goal Placement};
+\srcref{docs/concept/levels-of-personalization.md}{Levels of Personalization}.\\
+Zieltypen und Evidenz &
+\srcref{docs/concept/skill-graph/node-types.md}{Node Types};
+\srcref{AGENTS.md}{AGENTS.md, insbesondere Orientierung und Mastery}.\\
+Rekursive Lerneinheiten &
+\srcref{docs/concept/skill-graph/learning-units.md}{Learning Units};
+\srcref{docs/concept/skill-graph/learning-unit-progression.md}{Learning Unit Progression};
+\srcref{docs/concept/skill-graph/graph-definition.md}{Graph Definition, Abschnitt 12}.\\
+Optionale Zeitplanung &
+\srcref{docs/concept/didactic/curriculum-time-axis-and-pacing.md}{Curriculum Time Axis and Pacing}.\\
+Impliziter Abschluss &
+\srcref{docs/concept/skill-graph/assessment-gated-completion.md}{Assessment-Gated Completion};
+\srcref{docs/concept/runtime-workflows/exam-preparation-planning.md}{Exam Preparation Planning}.\\
+Herkunft und Materialien &
+\srcref{docs/concept/skill-graph/source-and-resource-links.md}{Source and Resource Links};
+\srcref{docs/concept/skill-graph/content-integration.md}{Content Integration};
+\srcref{docs/concept/skill-graph/human-readable-source-rationales.md}{Human-Readable Source Rationales}.\\
+Bilder und Zielbücher &
+\srcref{docs/concept/skill-graph/atomic-goal-visualizations.md}{Atomic Goal Visualizations};
+\srcref{docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md}{Learning-Goal Book and Evidence-Review Pipeline}.\\
+Validierung und QA &
+\srcref{docs/qa-ci/graph-validation-rules.md}{Graph Validation Rules};
+\srcref{docs/qa-ci/curriculum-quality-maturity-and-routes.md}{Curriculum Quality Maturity and Routes};
+\srcref{docs/qa-ci/semantic-atomicity-review.md}{Semantic Atomicity Review}.\\
+Austausch und Rechte &
+\srcref{docs/concept/skill-graph/dual-curriculum-package-releases.md}{Dual Curriculum Package Releases};
+\srcref{docs/concept/skill-graph/mem-fwu-roundtrip-plan.md}{MEM/FWU Roundtrip Plan};
+\srcref{LICENSING.md}{LICENSING.md}.\\
+\bottomrule
+\end{longtable}
+
+Die sieben didaktischen Graphabbildungen stammen aus
+\href{https://github.com/enpasos/skillpilot/tree/main/docs/concept/skill-graph/assets/graph-definition}{SkillPilot: Graph Definition, Abbildungsbestand}
+und werden unverändert mit deutschen Erläuterungen verwendet.
+Die zusätzlichen Diagramme auf dem Titelblatt sowie zu Zeitplanung,
+atomarer Expansion, effektiver Minimalität, transitivem Bedarf, lokaler
+Anerkennung, rekursiven Lerneinheiten und Planstand werden deterministisch
+mit Matplotlib als PNG erzeugt. Maßgeblich sind die Formeln und Bildlegenden;
+die Bilder behaupten keine zusätzlichen Kanten oder Anforderungen.
+
+Technischer Text, Formelspezifikation und Build-Werkzeuge stehen unter
+Apache-2.0; die didaktischen Illustrationen unter CC BY 4.0, soweit die
+entsprechenden Rechte vorliegen. Lizenztexte und Abgrenzung:
+\srcref{LICENSE}{LICENSE},
+\srcref{LICENSES/CC-BY-4.0.txt}{LICENSES/CC-BY-4.0.txt} und
+\srcref{LICENSING.md}{LICENSING.md}.
+Quellenhinweis für die Illustrationen: SkillPilot, enpasos -- Enterprise
+Patterns \& Solutions GmbH, Graph Definition, Fassung vom 29. Oktober 2026.
+Zusammenführung und deutsche Erläuterungen: diese Dokumentfassung.
+
+\section{Dokument bauen und prüfen}
+Die Hauptdatei \code{skillpilot-graph-definition.tex} bindet die Kapitel
+aus \code{latex/} und die PNG-Abbildungen aus
+\code{assets/graph-definition/} ein. Alle eingebundenen Abbildungen einschließlich Titelbild sind Bitmap-PNGs.
+
+Vom Repositorywurzelverzeichnis aus:
+\begin{quote}\scriptsize\ttfamily
+python3 docs/concept/skill-graph/latex/generate-completion-diagrams.py --check\par
+python3 docs/concept/skill-graph/latex/build-document.py\par
+python3 docs/concept/skill-graph/latex/check-assessment-model.py
+\end{quote}
+Benötigt werden Python 3, Matplotlib und LuaLaTeX mit deutscher Sprachunterstützung
+und den Präambelpaketen. Hilfsdateien liegen unter
+\code{tmp/skill-graph-document/}, das PDF neben der Hauptdatei.
+Der Build löst Verweise in mehreren Läufen auf und bindet Eingabedateien
+und PDF durch SHA-256 im Build-Manifest samt Datum und Werkzeugversion.
+Über unterschiedliche TeX-Versionen hinweg ist Byteidentität nicht garantiert.
+
+Zum Abschluss gehören ein fehlerfreier LaTeX-Lauf, aufgelöste Verweise,
+die Prüfung auf überbreite beziehungsweise überhohe Boxen und eine
+visuelle Sichtung des erzeugten PDF. Die Formelprüfung ergänzt diese
+Dokumentprüfungen, ersetzt aber weder Runtime-Tests noch unabhängige
+fachliche und empirische Validierung.
