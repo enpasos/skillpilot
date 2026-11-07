@@ -1,0 +1,596 @@
+{
+  "purpose": "actual-small-private-capture-tsx-probe-not-SourceA-QA-acceptance",
+  "runs": [
+    {
+      "role": "original",
+      "producerExitCode": 0,
+      "output": {
+        "producer": "actual-tsx-on-private-complete-tool-tree",
+        "inputs": [
+          {
+            "name": "\u00e4.json",
+            "bytes": 5
+          },
+          {
+            "name": "goal.json",
+            "bytes": 85
+          },
+          {
+            "name": "required.config.json",
+            "bytes": 28
+          },
+          {
+            "name": "space name.json",
+            "bytes": 6
+          }
+        ],
+        "owner": "fixture-owner",
+        "goalIds": [
+          "legacy"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "firstFinding": "Failed/unexplained input attempt: /dev/shm/node_modules"
+      },
+      "actualToolAbsenceProofsBeforeFirstVmObservation": [
+        {
+          "category": "dependency-metadata-absence",
+          "role": "original",
+          "launchTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 371920,
+          "traceEntry": 222,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package.json",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package.json",
+          "operation": "openat",
+          "flags": "O_RDONLY|O_CLOEXEC",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/dist/package.json",
+          "lastKnownDirectory": "tsx/dist",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "original",
+          "launchTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 371920,
+          "traceEntry": 226,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/dist/node_modules",
+          "lastKnownDirectory": "tsx/dist",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "original",
+          "launchTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 371920,
+          "traceEntry": 227,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/node_modules",
+          "lastKnownDirectory": "tsx",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "original",
+          "launchTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 371920,
+          "traceEntry": 228,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "node_modules",
+          "lastKnownDirectory": ".",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "original",
+          "launchTraceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 371920,
+          "traceEntry": 234,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/package.json",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/package.json",
+          "operation": "openat",
+          "flags": "O_RDONLY|O_CLOEXEC",
+          "errno": "ENOENT",
+          "firstMissingComponent": "esbuild/lib/package.json",
+          "lastKnownDirectory": "esbuild/lib",
+          "aliasHops": [],
+          "sourceInput": false
+        }
+      ],
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "--ro-bind",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "3cebe450223105ff8c5899c8efaf3b0bbab03c541a6290e3c47e98afd4c5e716",
+        "stdoutSha256": "c42ef4258d46fc207d0a15fdfbfaace1ad763da647a450d0428702958de7a80b",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2847102
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2847103
+          }
+        },
+        "recorderTraceSha256": "d7650d5a116e961e391987b6e5add402738f539838519d5ab641a0eff39e6c29",
+        "producerBoundary": {
+          "recorderLine": 395,
+          "hostPid": 371920,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tsconfig.json",
+            "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-hzt2ja52/original/tool/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "371920": 2,
+          "371937": 13,
+          "371949": 25
+        },
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+            "target": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "9023a300cbd12211f8927d0deae7fa3104d3ef3e458a41401fc97da0938da389"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/original/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "captureAndSourceBytesAfterChecked": true,
+      "qaValidityClaimed": false
+    },
+    {
+      "role": "candidate",
+      "producerExitCode": 0,
+      "output": {
+        "producer": "actual-tsx-on-private-complete-tool-tree",
+        "inputs": [
+          {
+            "name": "\u00e4.json",
+            "bytes": 5
+          },
+          {
+            "name": "goal.json",
+            "bytes": 115
+          },
+          {
+            "name": "required.config.json",
+            "bytes": 28
+          },
+          {
+            "name": "space name.json",
+            "bytes": 6
+          }
+        ],
+        "owner": "fixture-owner",
+        "goalIds": [
+          "00000000-0000-4000-8000-000000000001"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "firstFinding": "Failed/unexplained input attempt: /dev/shm/node_modules"
+      },
+      "actualToolAbsenceProofsBeforeFirstVmObservation": [
+        {
+          "category": "dependency-metadata-absence",
+          "role": "candidate",
+          "launchTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 372048,
+          "traceEntry": 222,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package.json",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/package.json",
+          "operation": "openat",
+          "flags": "O_RDONLY|O_CLOEXEC",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/dist/package.json",
+          "lastKnownDirectory": "tsx/dist",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "candidate",
+          "launchTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 372048,
+          "traceEntry": 226,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/dist/node_modules",
+          "lastKnownDirectory": "tsx/dist",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "candidate",
+          "launchTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 372048,
+          "traceEntry": 227,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "tsx/node_modules",
+          "lastKnownDirectory": "tsx",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "candidate",
+          "launchTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 372048,
+          "traceEntry": 228,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/node_modules/esbuild",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/node_modules/esbuild",
+          "operation": "statx",
+          "flags": "AT_STATX_SYNC_AS_STAT",
+          "errno": "ENOENT",
+          "firstMissingComponent": "node_modules",
+          "lastKnownDirectory": ".",
+          "aliasHops": [],
+          "sourceInput": false
+        },
+        {
+          "category": "dependency-metadata-absence",
+          "role": "candidate",
+          "launchTraceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+          "root": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+          "pid": 372048,
+          "traceEntry": 234,
+          "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "dirfd": "AT_FDCWD</dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate>",
+          "requestedPath": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/package.json",
+          "resolvedAttempt": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/esbuild/lib/package.json",
+          "operation": "openat",
+          "flags": "O_RDONLY|O_CLOEXEC",
+          "errno": "ENOENT",
+          "firstMissingComponent": "esbuild/lib/package.json",
+          "lastKnownDirectory": "esbuild/lib",
+          "aliasHops": [],
+          "sourceInput": false
+        }
+      ],
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tool/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/candidate/controller/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "--ro-bind",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+          "--tmpfs",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/candidate/controller",
+          "--remount-ro",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/candidate/controller",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tool/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "2a2845bb4f5d9fe47d4837e73a646701290c5ef1212d3607b958352414b04125",
+        "stdoutSha256": "00aae0c32d5ffbd043900d57c55df0399852c4bdb61a7600663640c488103c03",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2851757
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2851758
+          }
+        },
+        "recorderTraceSha256": "bc6caeda00e208ff11553c4a9b82b1c15bb83a61fe02eeb72c0b5fd9e78fa132",
+        "producerBoundary": {
+          "recorderLine": 396,
+          "hostPid": 372048,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tsconfig.json",
+            "/dev/shm/skillpilot-read-auth-native-j0rs2kud/case-s135hwp6/candidate/tool/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "372048": 2,
+          "372059": 13,
+          "372071": 25
+        },
+        "readonlyDependencyMounts": [
+          {
+            "source": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+            "target": "/dev/shm/skillpilot-ts-node-vm-lifecycle-tool-capture-20261107/node_modules",
+            "readonly": true,
+            "treeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+            "captureReceiptSha256": "9023a300cbd12211f8927d0deae7fa3104d3ef3e458a41401fc97da0938da389"
+          }
+        ],
+        "abortedNonInputIdentityObservations": [
+          {
+            "category": "aborted-non-input-identity-observation",
+            "entry": 1964,
+            "exitEvidenceSkipped": false,
+            "exitWitness": {
+              "entry": 1963,
+              "exitStatus": 0,
+              "hostPid": 372071,
+              "resume": 1968
+            },
+            "hostPid": 372072,
+            "identityEvidence": false,
+            "inputReadSkipped": false,
+            "namespaceValueDerived": false,
+            "operation": "getpid",
+            "priorNumericGroupIdentityEntry": 1903,
+            "resume": 1967,
+            "returnedPidValue": null,
+            "threadGroupHostPid": 372071
+          }
+        ],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-ts-node-vm-lifecycle-evidence-20261107/candidate/controller",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "captureAndSourceBytesAfterChecked": true,
+      "qaValidityClaimed": false
+    }
+  ],
+  "capture19Changed": false,
+  "originalFixtureGitCommit": "a7ac594f5a1c90cc9b8888f2e6432eb9f9f822e3",
+  "candidateTypedFields": [
+    {
+      "pointer": "/goals/0/id",
+      "kind": "value",
+      "before": "legacy",
+      "after": "00000000-0000-4000-8000-000000000001"
+    }
+  ]
+}

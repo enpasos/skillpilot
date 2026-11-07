@@ -1,0 +1,176 @@
+{
+  "purpose": "actual-two-role-native-Node-discovery-measurement-not-SourceA-QA-acceptance",
+  "originalGitBundleSha256": "e72248636827abf7c78298523bc7288b60c7ba860a52df6aeefb5b1e8becd89f",
+  "existingKernelSha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5",
+  "authenticatorSha256": "9af4a482bcd911693ea12ea1c88dfeeecedab5512083f55c86097db8b479e2d3",
+  "nodeSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+  "discoveryCodeSha256": "62c7f6032a36d688d6b03eb84fee234ad146576dc4866d1187f8a3b511749d21",
+  "runtimeBindings": {
+    "/lib/x86_64-linux-gnu/libm.so.6": {
+      "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+      "category": "dependency"
+    },
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1": {
+      "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+      "category": "dependency"
+    },
+    "/lib/x86_64-linux-gnu/libstdc++.so.6": {
+      "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+      "category": "dependency"
+    },
+    "/etc/ld.so.cache": {
+      "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+      "category": "tool"
+    },
+    "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node": {
+      "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+      "category": "tool"
+    },
+    "/lib/x86_64-linux-gnu/libc.so.6": {
+      "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+      "category": "dependency"
+    },
+    "/lib/x86_64-linux-gnu/libpthread.so.0": {
+      "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+      "category": "dependency"
+    },
+    "/lib64/ld-linux-x86-64.so.2": {
+      "sha256": "8c7e2990d2847ca210d6f716d4b9aa62997c2fd2acfcda587c1ec398ed364618",
+      "category": "dependency"
+    },
+    "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/discovery.mjs": {
+      "sha256": "62c7f6032a36d688d6b03eb84fee234ad146576dc4866d1187f8a3b511749d21",
+      "category": "tool"
+    },
+    "/lib/x86_64-linux-gnu/libdl.so.2": {
+      "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+      "category": "dependency"
+    }
+  },
+  "runs": [
+    {
+      "role": "original",
+      "producerExitCode": 0,
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--clearenv",
+        "--setenv",
+        "PATH",
+        "/usr/bin:/bin",
+        "--setenv",
+        "LC_ALL",
+        "C",
+        "--ro-bind",
+        "/",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i",
+        "--bind",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/original-logs",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/original-logs",
+        "--chdir",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/original",
+        "--",
+        "/usr/bin/strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-v",
+        "-s",
+        "65535",
+        "-e",
+        "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,getdents,getdents64,clone,clone3,fork,vfork,getcwd,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+        "-e",
+        "raw=read,pread64,readv,preadv,preadv2",
+        "-o",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/original-logs/node.strace",
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/discovery.mjs"
+      ],
+      "traceSha256": "5bc3e9101402f7f2ee5ea1eb28035f422c1cb4f4bec26eca1a2946ce007e6be3",
+      "traceBytes": 43078,
+      "actualNodeDiscoveryMatchesExpectedFixtureNamesAndByteLengths": true,
+      "sourceBindings": {
+        "data/ä.json": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+        "data/space name.json": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+        "data/required.config.json": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+        "data/goal.json": "18580554d40be225589e70b746a2deeae4375c1e6f77e71bf726532b92e13046"
+      },
+      "qaReadinessClaimed": false,
+      "authenticationOutcome": "blocked-fail-closed",
+      "blockingReason": "FD has no traced open/dup/clone provenance: 0</dev/null<char 1:3>>"
+    },
+    {
+      "role": "candidate",
+      "producerExitCode": 0,
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--clearenv",
+        "--setenv",
+        "PATH",
+        "/usr/bin:/bin",
+        "--setenv",
+        "LC_ALL",
+        "C",
+        "--ro-bind",
+        "/",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i",
+        "--bind",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/candidate-logs",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/candidate-logs",
+        "--chdir",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/candidate",
+        "--",
+        "/usr/bin/strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-v",
+        "-s",
+        "65535",
+        "-e",
+        "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,getdents,getdents64,clone,clone3,fork,vfork,getcwd,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+        "-e",
+        "raw=read,pread64,readv,preadv,preadv2",
+        "-o",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/candidate-logs/node.strace",
+        "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+        "/dev/shm/skillpilot-node-read-auth-final-1rwc_m7i/discovery.mjs"
+      ],
+      "traceSha256": "bf4e664316121232ef72d3988619b738a76f3ea11445e47e1c92db4e4957048d",
+      "traceBytes": 42966,
+      "actualNodeDiscoveryMatchesExpectedFixtureNamesAndByteLengths": true,
+      "sourceBindings": {
+        "data/goal.json": "476ace4d519782fa3c1d5e4232c923121e280db092afa2259f08bc31829d1471",
+        "data/required.config.json": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+        "data/space name.json": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+        "data/ä.json": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529"
+      },
+      "qaReadinessClaimed": false,
+      "authenticationOutcome": "blocked-fail-closed",
+      "blockingReason": "FD has no traced open/dup/clone provenance: 0</dev/null<char 1:3>>"
+    }
+  ],
+  "fullProductionSourceAValidationClaimed": false,
+  "largeCaptureStarted": false
+}

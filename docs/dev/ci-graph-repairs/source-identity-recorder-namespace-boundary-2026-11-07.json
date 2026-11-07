@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "status": "recorder-namespace-isolation-and-existing-regressions-PASS;native-TS-authentication-BLOCKED;unwired",
+  "recordedAtActual": "2026-11-07T00:11:01.093739+00:00",
+  "observedHead": "c125cdcaa7d4d8b3e5132bf25a524b4a85498f45",
+  "historicalDocketsUnchanged": [
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-authentication-first-boundary-2026-11-07.json",
+      "bytes": 6864,
+      "sha256": "07bc8b8455c085d4e3b5538ceb032a03cb5ac49555ddc1309741f57e4e05b5fd"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-authentication-first-boundary-2026-11-07.md",
+      "bytes": 3604,
+      "sha256": "8527508d8ece774aaa0b2ddade2f204a1505798cd1da76483ea94617910303f4"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-launcher-runtime-boundary-2026-11-07.json",
+      "bytes": 7217,
+      "sha256": "6af07939e67c62dbd203755f5dae961d966ee46812ef096dab0fa14133d9aa14"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-launcher-runtime-boundary-2026-11-07.md",
+      "bytes": 4145,
+      "sha256": "3a1a96ab33ed77386ebd443036308847fa2c7933868efb3f5aa10dc1df5109c1"
+    }
+  ],
+  "staticFinding": {
+    "priorLauncherSha256": "c61b1784836d66b7b2b1d52ccc8d4a087aae04a6e4391f5edc1d945773c6d3b8",
+    "finding": "The previous launcher ran strace and the producer in the same namespace and exposed the recorder evidence directory through an RW --bind. Recorder reads.strace was therefore a producer-visible writable path. No active trace-manipulation program was used.",
+    "otherProvenance": "Factory values and stdio pipe hashes were controller-owned; any exported receipt/output file in the same mounted directory would share the prior writable exposure."
+  },
+  "repair": {
+    "controller": "strace now runs outside bwrap; exact environment cleared for recorder and producer",
+    "producerMounts": "role input RO; evidence directory masked by an empty tmpfs remounted RO; no RW evidence mount",
+    "processVisibility": "separate --unshare-pid and namespace-local /proc; controller recorder and recorder FDs outside that process namespace",
+    "fileOwnership": "fresh controller-owned evidence directory0700 and recorder.strace0600; protection comes from namespace/mount isolation, not same-UID permissions alone",
+    "traceCompleteness": "Full recorder trace retained and raw SHA bound. The trusted pinned bwrap prelude is separate tool provenance; producer facts use the first successful execve of the exact executable and ordered argv and all its descendants. No prior secondary executable accepted.",
+    "pidMapping": "strace --decode-pids=pidns provides kernel Host-PID clone lineage; actual traced getpid binds namespace process-group IDs for /proc/self facts.",
+    "transport": "stdin actual /dev/null; stdout/stderr controller-owned pipes; no recorder FD inherited by producer"
+  },
+  "code": [
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "bytes": 31756,
+      "sha256": "1c5e6b50242b889536d35d4af41c0c8eb102ca5436d4b3b7be056a7d069db80b"
+    },
+    {
+      "path": "scripts/identity_qa_read_launcher.py",
+      "bytes": 11499,
+      "sha256": "9ce72b9cdb32374a7e69d0863b8163437e10e6c87ab76a9c0d665a472b3bc161"
+    },
+    {
+      "path": "scripts/test_repository_read_trace.py",
+      "bytes": 17597,
+      "sha256": "fd98d06123832d3382a38809e50faf065ac91c514dc6f7d07c2f79ff60c9c8a0"
+    },
+    {
+      "path": "scripts/test_repository_read_launcher.py",
+      "bytes": 11998,
+      "sha256": "b112c39f52326146658055d318918638e6a93dab644244b580a052137935c0d9"
+    },
+    {
+      "path": "scripts/test_repository_recorder_boundary.py",
+      "bytes": 5071,
+      "sha256": "3f64fc0f53538f4c57441b9c01568a191da092d25dd8d6c658d3d21322d00e0e"
+    }
+  ],
+  "reproducers": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/probe-native-typescript.py",
+      "bytes": 6962,
+      "sha256": "fe9db0b4d2a481e3de5722b75c78c3da8640f60dd62fd110b68083422357662e"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/probe-native-typescript-bound-metadata.py",
+      "bytes": 10563,
+      "sha256": "50d38690f68517206f83be3c218acf76415e3786fa3170ca765338f5e1d21609"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "c",
+      "testsRun": 13,
+      "actualNativeRuns": 29,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/c/execution.json",
+        "bytes": 245,
+        "sha256": "e6904760d44bfb0d3eb4198e7f4fe7366a719da2c153aaba646793801b8002ca"
+      },
+      "results": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/c/native-cases/native-runs.json",
+        "bytes": 73499,
+        "sha256": "9541c102c2bb6ec6bc3dd38ffb231215391049e87764f22c50b2dcd1339a8e14"
+      }
+    },
+    {
+      "name": "node",
+      "testsRun": 4,
+      "actualNativeRuns": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/node/execution.json",
+        "bytes": 251,
+        "sha256": "17c140c781bd654baeb8c96a65339893f7fd271381f51e03fed9e2c8f278733f"
+      },
+      "results": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/node/native-cases/native-runs.json",
+        "bytes": 111314,
+        "sha256": "80028b2814cdd382ab23cd81dd0a890baf274d48f71a78f131ec80dece8739cd"
+      }
+    },
+    {
+      "name": "visibility",
+      "testsRun": 1,
+      "actualNativeRuns": 2,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/visibility/execution.json",
+        "bytes": 260,
+        "sha256": "008a7348900fa48044169f523495975c11435d744144568d241ffd3a10b22e14"
+      },
+      "results": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/regression/visibility/native-cases/results.json",
+        "bytes": 14721,
+        "sha256": "731ece580f3eaf502f6b59c537bb0c17a3394dc62ee9420b00b9700c6ffaea7e"
+      }
+    }
+  ],
+  "ordinaryPermissionControl": {
+    "actualNativeRoles": 2,
+    "evidenceEntries": [],
+    "recorderPathExistsInProducer": false,
+    "writeAccessOutcome": "EROFS",
+    "recorderFdVisible": false,
+    "controllerPidVisible": false,
+    "sourceReadAuthenticationClaimedForVisibilityProbe": false
+  },
+  "typescript": [
+    {
+      "stage": "typescript-first-blocked",
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/typescript-first-blocked/results.json",
+        "bytes": 13352,
+        "sha256": "3e026be4fb6f0977d20a1878f3c985c3294a41eadefc411309b8218c8ec26958"
+      },
+      "runs": [
+        {
+          "role": "original",
+          "producerExitCode": 0,
+          "actualGoalIds": [
+            "legacy"
+          ],
+          "authentication": {
+            "status": "blocked",
+            "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/package.json",
+            "sourceAQaValidityClaimed": false
+          }
+        },
+        {
+          "role": "candidate",
+          "producerExitCode": 0,
+          "actualGoalIds": [
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "authentication": {
+            "status": "blocked",
+            "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/package.json",
+            "sourceAQaValidityClaimed": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "typescript-one-bound-metadata",
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/typescript-one-bound-metadata/results.json",
+        "bytes": 15098,
+        "sha256": "0c0f29e81703a4082f43081464c3d8bf5927f8852f844d6d1b3b5444ae137849"
+      },
+      "runs": [
+        {
+          "role": "original",
+          "producerExitCode": 0,
+          "actualGoalIds": [
+            "legacy"
+          ],
+          "authentication": {
+            "status": "blocked",
+            "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/node_modules/esbuild",
+            "sourceAQaValidityClaimed": false
+          }
+        },
+        {
+          "role": "candidate",
+          "producerExitCode": 0,
+          "actualGoalIds": [
+            "00000000-0000-4000-8000-000000000001"
+          ],
+          "authentication": {
+            "status": "blocked",
+            "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/node_modules/esbuild",
+            "sourceAQaValidityClaimed": false
+          }
+        }
+      ]
+    }
+  ],
+  "oneExactToolMetadataBinding": {
+    "profile": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/typescript-one-bound-metadata/tool-metadata-profile.json",
+      "bytes": 8165,
+      "sha256": "77a94ba6ce4b931c3446f6322f235f4fa3a1b711d20efc99a7045d85bd96a629"
+    },
+    "locator": "app/node_modules/tsx/dist/package.json",
+    "operation": "openat",
+    "flags": "O_RDONLY|O_CLOEXEC",
+    "outcome": "ENOENT",
+    "provenance": "Actual complete tsx file/directory/symlink membership and manifest SHA; every file SHA equals its independently bound dependency bytes; exact parent is a real directory and the exact locator absent; membership identical before/after actual run.",
+    "prefixException": false,
+    "curriculumFailureExemption": false,
+    "firstLaterBlock": "app/node_modules/tsx/dist/node_modules/esbuild"
+  },
+  "protectedCapture19": {
+    "files": [
+      {
+        "path": "scripts/identity_qa_private_capture.py",
+        "bytes": 21528,
+        "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46"
+      },
+      {
+        "path": "scripts/test_identity_qa_private_capture.py",
+        "bytes": 7937,
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1"
+      },
+      {
+        "path": "scripts/prepare_identity_qa_candidate.py",
+        "bytes": 29635,
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f"
+      },
+      {
+        "path": "scripts/test_prepare_identity_qa_candidate.py",
+        "bytes": 25904,
+        "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f"
+      },
+      {
+        "path": "scripts/verify_identity_qa_producer_reads.py",
+        "bytes": 2190,
+        "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729"
+      }
+    ],
+    "globFiles": [
+      "scripts/test_identity_qa_private_capture.py",
+      "scripts/test_prepare_identity_qa_candidate.py"
+    ],
+    "guardAndCountChanged": false,
+    "rerunClaimed": false
+  },
+  "evidenceInventory": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/recorder-namespace-isolation/closure-inventory.json",
+    "bytes": 45678,
+    "sha256": "3b1b3b2b9726d4e2121d687ad05c7512b2781efb0abeae9462466d84a23dc386"
+  },
+  "limits": [
+    "Lower-level fixture Git + one dummy typed field projection only; not actual164/593 Source-A proof or prepared-mount integration.",
+    "Small native tsx commands execute successfully but fail closed during read authentication; the shown later block is the first finding, not an exhaustive inventory of remaining TS requirements.",
+    "Exact tool-metadata absence is a separately recorded finite probe contract, not an allowed package-directory prefix or missing curriculum input.",
+    "No large pair materialization, full Deep/CQR producer, Source-A factory integration, AQA02/03 completion, runtime/state activation, M6/M7 restoration, or CI wiring is claimed.",
+    "Full controller prelude is retained as bound trusted-tool provenance; no claim that it is curriculum source evidence.",
+    "RO host is not a confidential-host sandbox. No arbitrary Linux/tool hermeticity or external-writer ABA guarantee.",
+    "No active trace manipulation program or additional escape program was added. Existing unchanged C/Node regression counterexamples were rerun.",
+    "Two historical dockets, their code snapshots and protected Capture19/preparer/V files remain unchanged."
+  ]
+}

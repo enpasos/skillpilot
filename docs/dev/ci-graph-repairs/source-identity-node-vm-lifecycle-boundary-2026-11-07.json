@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "status": "exact-Node-VM-and-noninput-lifecycle-controls-PASS;actual-small-TS-EXIT0-authentication-BLOCKED-at-unknown-root;unwired",
+  "recordedAtActual": "2026-11-07T01:16:31.777465+00:00",
+  "previousFourDocketsUnchanged": [
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-authentication-first-boundary-2026-11-07.json",
+      "bytes": 6864,
+      "sha256": "07bc8b8455c085d4e3b5538ceb032a03cb5ac49555ddc1309741f57e4e05b5fd"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-authentication-first-boundary-2026-11-07.md",
+      "bytes": 3604,
+      "sha256": "8527508d8ece774aaa0b2ddade2f204a1505798cd1da76483ea94617910303f4"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-launcher-runtime-boundary-2026-11-07.json",
+      "bytes": 7217,
+      "sha256": "6af07939e67c62dbd203755f5dae961d966ee46812ef096dab0fa14133d9aa14"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-read-launcher-runtime-boundary-2026-11-07.md",
+      "bytes": 4145,
+      "sha256": "3a1a96ab33ed77386ebd443036308847fa2c7933868efb3f5aa10dc1df5109c1"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-recorder-namespace-boundary-2026-11-07.json",
+      "bytes": 12535,
+      "sha256": "7fc3ff95988694cbc2626b2571ef2333bcb849bfd41da6cc9da9bf89f9cccfcf"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-recorder-namespace-boundary-2026-11-07.md",
+      "bytes": 3023,
+      "sha256": "763a56ede7ada7f87841954a3e4b6852918fa326a29e95616d111156e678157c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-dependency-tree-absence-boundary-2026-11-07.json",
+      "bytes": 14285,
+      "sha256": "c090478aa9642c897ac6960c654ade6e93a394384744cc1a5c911e06acf08c9c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/source-identity-dependency-tree-absence-boundary-2026-11-07.md",
+      "bytes": 4017,
+      "sha256": "87cfa9906adb3c67179858082071a5cdd9cbdeba204e9848ee7aeede9f605de8"
+    }
+  ],
+  "code": [
+    {
+      "path": "scripts/identity_qa_read_trace.py",
+      "bytes": 37238,
+      "sha256": "d2c065407a90e5b05675e2243a0af121ac77a786f8a38c17d9d281f251f61429"
+    },
+    {
+      "path": "scripts/identity_qa_read_launcher.py",
+      "bytes": 13854,
+      "sha256": "573d01d1f2b7f95d3ff172be4406ced7a64c5faae5f932bdba5999fb619aa937"
+    },
+    {
+      "path": "scripts/identity_qa_trace_lifecycle.py",
+      "bytes": 2535,
+      "sha256": "db283896e42ba35ebe58fec8328a1b176f76c039172eddd641f1f9d405d80e62"
+    },
+    {
+      "path": "scripts/identity_qa_tool_tree.py",
+      "bytes": 11797,
+      "sha256": "c4367d076f0dd0bd4c07ca9162fe2dcf28850a22e14ae25669b1ff0342d54bb6"
+    },
+    {
+      "path": "scripts/test_repository_node_vm_contract.py",
+      "bytes": 8508,
+      "sha256": "d5146f8a82427a0acf8c7037324359a364138471821cef70d8fe780bd3ecc0f3"
+    },
+    {
+      "path": "scripts/test_repository_trace_lifecycle.py",
+      "bytes": 6077,
+      "sha256": "d65d6fc00447d022ba43a3b33c7b86b5f2796fe25cc8db8fcfa9c1614a742502"
+    },
+    {
+      "path": "scripts/test_repository_tool_tree.py",
+      "bytes": 13049,
+      "sha256": "d9687e6cb21241d30a91d5e1fd25a3e35202cd64fca0beb619201b4aaaa0c338"
+    },
+    {
+      "path": "scripts/test_repository_read_trace.py",
+      "bytes": 17597,
+      "sha256": "fd98d06123832d3382a38809e50faf065ac91c514dc6f7d07c2f79ff60c9c8a0"
+    },
+    {
+      "path": "scripts/test_repository_read_launcher.py",
+      "bytes": 11998,
+      "sha256": "b112c39f52326146658055d318918638e6a93dab644244b580a052137935c0d9"
+    },
+    {
+      "path": "scripts/test_repository_recorder_boundary.py",
+      "bytes": 5071,
+      "sha256": "3f64fc0f53538f4c57441b9c01568a191da092d25dd8d6c658d3d21322d00e0e"
+    }
+  ],
+  "nodeVmRule": {
+    "path": "/proc/sys/vm/overcommit_memory",
+    "executableSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+    "executableProfile": "exact measured Node20.20.2, actual Process.executable must equal the genuine root Node executable and match its bytes; no inheritance to other executables",
+    "requiredContext": "actual launch/role/trace SHA, observed numeric PID-group mapping, actual kernel release and boot ID",
+    "operations": [
+      "openat(O_RDONLY|O_CLOEXEC)",
+      "one read requesting/reporting exactly1byte",
+      "one close"
+    ],
+    "metadata": "volatile kernel observation; contentSha256=None; immutableCurriculumInput=False",
+    "prefixException": false,
+    "scopeLimit": "current profile requires direct Node root launch, not an automatically qualified npm/shell parent"
+  },
+  "lifecycleRule": {
+    "event": "only actual unfinished getpid with result ?",
+    "conditions": [
+      "same actual clone-lineage group",
+      "earlier completed numeric getpid of that group in the same recorded events",
+      "overlapping exit_group(0) of exactly that group with normal no-return result"
+    ],
+    "derivedPidValue": null,
+    "identityEvidence": false,
+    "readsLineageAndExitsSkipped": false,
+    "originalRealRecorderRawSha256": "1226d4c2b13dbe0429f0a8522c0b4f40ce91638d2d38e8907166bf08c67008da",
+    "positiveCarrier": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/lifecycle-positive-recorder.strace.gz",
+      "bytes": 33015,
+      "sha256": "009461bd57da57a3a607a9df6025b05f478ae4435d728913f052a81eb7069fd4"
+    },
+    "negativeControlKind": "abstract event/model arguments only; original raw bytes unchanged; missing/freshly unbelegted/wrong group, missing/nonzero/nonoverlapping exit, actual other syscall/read and altered result remain errors",
+    "freshActualLaunchObservations": [
+      {
+        "role": "original",
+        "abortedNonInputIdentityObservations": []
+      },
+      {
+        "role": "candidate",
+        "abortedNonInputIdentityObservations": [
+          {
+            "category": "aborted-non-input-identity-observation",
+            "entry": 1964,
+            "exitEvidenceSkipped": false,
+            "exitWitness": {
+              "entry": 1963,
+              "exitStatus": 0,
+              "hostPid": 372071,
+              "resume": 1968
+            },
+            "hostPid": 372072,
+            "identityEvidence": false,
+            "inputReadSkipped": false,
+            "namespaceValueDerived": false,
+            "operation": "getpid",
+            "priorNumericGroupIdentityEntry": 1903,
+            "resume": 1967,
+            "returnedPidValue": null,
+            "threadGroupHostPid": 372071
+          }
+        ]
+      }
+    ]
+  },
+  "tests": [
+    {
+      "name": "lifecycle",
+      "testsRun": 5,
+      "actualNativeRuns": 0,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/lifecycle/native-cases/results.json",
+        "bytes": 933,
+        "sha256": "ebb2ee6b2e539d73a09280c9d913017fab96220e93bb06bef5fb8d3d9cb3f29d"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/lifecycle/execution.json",
+        "bytes": 262,
+        "sha256": "a9004e6be2eda167d53d2adebe2d09f0e9a2369342c53105c29940cc62c84714"
+      }
+    },
+    {
+      "name": "node-vm",
+      "testsRun": 5,
+      "actualNativeRuns": 5,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/node-vm/native-cases/results.json",
+        "bytes": 85021,
+        "sha256": "651813adbeb8e1ae1063d66c53642adc24daae5f30b2ac3f5f9159656726d451"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/node-vm/execution.json",
+        "bytes": 260,
+        "sha256": "61d2980741804d186eda7999a94999f8ce6a796dd73d966061c65b99a6e5b561"
+      }
+    },
+    {
+      "name": "tool-tree",
+      "testsRun": 7,
+      "actualNativeRuns": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/tool-tree/native-cases/results.json",
+        "bytes": 96917,
+        "sha256": "ea08074ffb240688e547edb51bee66f1664ccac462f25e59e3e8a8650818b6b0"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/tool-tree/execution.json",
+        "bytes": 256,
+        "sha256": "c08a0bb9e1e943fdfdca9ddd0fa77107235ac9d8077aa1184840f4e6fa50f359"
+      }
+    },
+    {
+      "name": "trace",
+      "testsRun": 13,
+      "actualNativeRuns": 29,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/trace/native-cases/native-runs.json",
+        "bytes": 73601,
+        "sha256": "f8465b8f6892218de234fc7b7540ec89bc2bc2c30ef3fcc4d6314d8773f66ec6"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/trace/execution.json",
+        "bytes": 253,
+        "sha256": "7b65edff3beae1eb78988126c376749b087332df7dd63b979122e20554e99042"
+      }
+    },
+    {
+      "name": "launcher",
+      "testsRun": 4,
+      "actualNativeRuns": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/launcher/native-cases/native-runs.json",
+        "bytes": 112417,
+        "sha256": "41947d478b83ab93592b3c6d54404eecfb4098e8e3a366a86e9c5f53791d8306"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/launcher/execution.json",
+        "bytes": 258,
+        "sha256": "aaf7565895a3080d46c5848bec95970abe8384386816c3b87b401f8e63528a3c"
+      }
+    },
+    {
+      "name": "recorder",
+      "testsRun": 1,
+      "actualNativeRuns": 2,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "result": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/recorder/native-cases/results.json",
+        "bytes": 14903,
+        "sha256": "d8c6801b96d6b9f4abb5f6c88b4c22ffe89616a04e745a36096ba0cec91b06ad"
+      },
+      "execution": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/accepted-tests/recorder/execution.json",
+        "bytes": 263,
+        "sha256": "191d3a510254af35c75cce8a7d7f948b4bee7a8f30d60c697eec4c9af9826c72"
+      }
+    }
+  ],
+  "totalTests": 35,
+  "totalNativeRegressionRuns": 58,
+  "actualTs": {
+    "results": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/actual-ts-unknown-root-blocked/results.json",
+      "bytes": 27525,
+      "sha256": "60ab448360efe76f50d0cbc6fd3e8cdbf3b00c370596be40414ce04e5e548fe9"
+    },
+    "runs": [
+      {
+        "role": "original",
+        "producerExitCode": 0,
+        "goalIds": [
+          "legacy"
+        ],
+        "authentication": {
+          "status": "blocked",
+          "firstFinding": "Failed/unexplained input attempt: /dev/shm/node_modules"
+        }
+      },
+      {
+        "role": "candidate",
+        "producerExitCode": 0,
+        "goalIds": [
+          "00000000-0000-4000-8000-000000000001"
+        ],
+        "authentication": {
+          "status": "blocked",
+          "firstFinding": "Failed/unexplained input attempt: /dev/shm/node_modules"
+        }
+      }
+    ],
+    "captureTreeSha256": "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+    "captureBytes": 22928845,
+    "firstUnknownRoot": "/dev/shm/node_modules",
+    "unknownRootRuleAdded": false,
+    "sourceAQaValidityClaimed": false
+  },
+  "scopeComparison": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/scope-mount-cwd-comparison.json",
+    "bytes": 19048,
+    "sha256": "ccd6f48d02935f72a71ee12188bd44e50c30ae9541027f42439c5d7f426f1975"
+  },
+  "nextIntegrationDesign": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-preparer-read-launcher-integration-plan-2026-11-07.md",
+    "bytes": 5876,
+    "sha256": "27f4e553e6a1f800d74458abf9901c23b5dc1eca32c5da6d2a3aef91ad96f390"
+  },
+  "historicalBeforeLifecycle": {
+    "directory": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/before-lifecycle",
+    "normalNodeVmTests": 5,
+    "normalNativeNodeVmRuns": 5,
+    "originalTsInterpretationOutcome": "original-role attempt failed at getpid ?; no launch capability minted and no old result rewritten",
+    "rawCarriers": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/before-lifecycle/carriers.json",
+      "bytes": 1063,
+      "sha256": "6feca80ca7fd9836dfe73d8ab969ea0adf78081db472a59c75e796ff3ce97b29"
+    }
+  },
+  "storage": {
+    "inventory": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/node-vm-runtime-observation/closure-inventory.json",
+      "bytes": 82976,
+      "sha256": "3961adfb7b7eac5298518db4ac34faa8e27c273d4e1e7241f7f9bbd5b086b954"
+    },
+    "files": 280,
+    "artifactBytes": 3046630,
+    "finalRawCarriers": 96,
+    "finalRawBytes": 7259686,
+    "finalGzipBytes": 661297,
+    "roundtripByteEqual": true,
+    "largeToolTreeStillOnlyInRam": true
+  },
+  "protectedCapture19": {
+    "files": [
+      {
+        "path": "scripts/identity_qa_private_capture.py",
+        "bytes": 21528,
+        "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46"
+      },
+      {
+        "path": "scripts/test_identity_qa_private_capture.py",
+        "bytes": 7937,
+        "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1"
+      },
+      {
+        "path": "scripts/prepare_identity_qa_candidate.py",
+        "bytes": 29635,
+        "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f"
+      },
+      {
+        "path": "scripts/test_prepare_identity_qa_candidate.py",
+        "bytes": 25904,
+        "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f"
+      },
+      {
+        "path": "scripts/verify_identity_qa_producer_reads.py",
+        "bytes": 2190,
+        "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729"
+      }
+    ],
+    "globFiles": [
+      "scripts/test_identity_qa_private_capture.py",
+      "scripts/test_prepare_identity_qa_candidate.py"
+    ],
+    "guardOrCountChanged": false,
+    "rerunClaimed": false
+  },
+  "limits": [
+    "No production Source-A164/593 validation or actual full prepared-pair adapter, no whole Deep/CQR producer or AQA02/03, runtime/state activation, M6/M7 restoration or CI wiring.",
+    "Both actual TS producers exit0, but complete read authentication remains blocked by an unbound outer module-search root; no old path exception was carried over.",
+    "Existing normal C/Node/recorder regressions remain unchanged; no new active escape or recorder-manipulation program.",
+    "Lifecycle positive uses exact real retained bytes and a fresh candidate launch also exhibits the classified condition. Near-case controls operate on abstract Python event arguments, not on a forged actual launch.",
+    "Four previous dockets and protected Capture19/preparer files remain byte-identical. No canonical source, active QA, policy, state or Git mutation.",
+    "No general Linux-tool hermeticity, confidential-host or external-writer ABA guarantee."
+  ]
+}

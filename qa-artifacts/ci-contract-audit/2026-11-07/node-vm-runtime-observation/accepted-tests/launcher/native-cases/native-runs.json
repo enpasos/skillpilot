@@ -1,0 +1,2967 @@
+{
+  "purpose": "actual-Node-launcher-runtime-fixtures-not-SourceA-QA-pass",
+  "testsRun": 4,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "actualNativeRuns": [
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.original.host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original/tool/discovery.mjs",
+          "host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-nnvmglse/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-nnvmglse",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-nnvmglse",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original/tool/discovery.mjs",
+          "host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "b27e649563cb8d4e353f6f23f2fa421a38dc42df61ce22c8cd94c0af4ac799d2",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2941562
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2941563
+          }
+        },
+        "recorderTraceSha256": "a9a92d1d9b6480a5d8e50fd4eadcf2ece64c80253e47f435fb38cbf24d13cc3a",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 384444,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-vyf_t9cc/original/tool/discovery.mjs",
+            "host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "384444": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-nnvmglse",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.original.proc-host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original/tool/discovery.mjs",
+          "proc-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-3cqnxgqx/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-3cqnxgqx",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-3cqnxgqx",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original/tool/discovery.mjs",
+          "proc-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "2468ed26ed4b468aca09dd91f3b090758bfbe7afd7d570e9c251e9706775f121",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2941584
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2941585
+          }
+        },
+        "recorderTraceSha256": "40d20cf776970841654b227282cf9ba07db15d0bb343b12d28bf4632c117da3e",
+        "producerBoundary": {
+          "recorderLine": 363,
+          "hostPid": 384466,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-39e9cpcf/original/tool/discovery.mjs",
+            "proc-host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "384466": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-3cqnxgqx",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.original.alias-host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original/tool/discovery.mjs",
+          "alias-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-utx6_q5v/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-utx6_q5v",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-utx6_q5v",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original/tool/discovery.mjs",
+          "alias-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "228ebe3ca8e114690d5b523dde8ea53fb8749d35973584f52b789fe615350df3",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2941619
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2941620
+          }
+        },
+        "recorderTraceSha256": "359966c96fa45a4d4d42108b397bde4f50f4a5394560d98039d0b95693cd58b3",
+        "producerBoundary": {
+          "recorderLine": 362,
+          "hostPid": 385314,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-fjw798l7/original/tool/discovery.mjs",
+            "alias-host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "385314": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-utx6_q5v",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.original.host-directory",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original/tool/discovery.mjs",
+          "host-directory",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-wx79mr00/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-wx79mr00",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-wx79mr00",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original/tool/discovery.mjs",
+          "host-directory",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "fb13ff8343d1207caf345cfc4c5fb2fe6bba297406c94fe7777a7a6a6f389700",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2994668
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2994669
+          }
+        },
+        "recorderTraceSha256": "2f8b8d701929d397ab70b5e6554ddaa391cac18702b1ece9b7c6c3c5157a2a7b",
+        "producerBoundary": {
+          "recorderLine": 364,
+          "hostPid": 386322,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-r23as2be/original/tool/discovery.mjs",
+            "host-directory",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "386322": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-wx79mr00",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.candidate.host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate/tool/discovery.mjs",
+          "host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-iql7wmdq/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-iql7wmdq",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-iql7wmdq",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate/tool/discovery.mjs",
+          "host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "40c054f464b8ca539badd91b255982764bf05453172ff7e6c2adaf903a48bdc6",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3007324
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3007325
+          }
+        },
+        "recorderTraceSha256": "bc5550fd310ab5d2f9cfcce4442289a0e0e92e5e776948c75fd1c4f51c6e0abc",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 387517,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-i6rzsav9/candidate/tool/discovery.mjs",
+            "host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "387517": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-iql7wmdq",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.candidate.proc-host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate/tool/discovery.mjs",
+          "proc-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-c1xd2d89/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-c1xd2d89",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-c1xd2d89",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate/tool/discovery.mjs",
+          "proc-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "5fa5cccb8d7609eaacdbbf7560dce5af47221c7cac5ce3e81ca0b61f252886df",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3005208
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3005209
+          }
+        },
+        "recorderTraceSha256": "74895dc94b21cbbe458b0a4f33ec3630b621739850608b88b8241f7401d09336",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 388102,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-37zlh56b/candidate/tool/discovery.mjs",
+            "proc-host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "388102": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-c1xd2d89",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.candidate.alias-host",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate/tool/discovery.mjs",
+          "alias-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-n3vnf8yj/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-n3vnf8yj",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-n3vnf8yj",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate/tool/discovery.mjs",
+          "alias-host",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "944123ba01bbe71c2f7a3da251a990f16d92ad3aa2ade4bbfbda9c91a540b97d",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3011769
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3011770
+          }
+        },
+        "recorderTraceSha256": "eaab1ae8f75e6718c44fac75a71f66ee094e33b06238ceb03ea70539937dbdf9",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 388311,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-atfebe2e/candidate/tool/discovery.mjs",
+            "alias-host",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "388311": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-n3vnf8yj",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_host_proc_alias_and_directory_reads_still_reject.candidate.host-directory",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate/tool/discovery.mjs",
+          "host-directory",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-euub6r91/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-euub6r91",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-euub6r91",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate/tool/discovery.mjs",
+          "host-directory",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "2e118c0c121e76ca48220f6e64800459cf253f633fa376d4f570f08f179ced35",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3031128
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3031129
+          }
+        },
+        "recorderTraceSha256": "2e0ddde0ac388b91fc3c9324baa70fbd241a078e708a6f603e8bf67ef0db321f",
+        "producerBoundary": {
+          "recorderLine": 362,
+          "hostPid": 388993,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tyxeun58/candidate/tool/discovery.mjs",
+            "host-directory",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "388993": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-euub6r91",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "authenticationRejectedAsExpected": true
+    },
+    {
+      "case": "test_actual_role_trace_and_forged_launch_provenance_reject.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-1wrudci5/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-1wrudci5",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-1wrudci5",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "6975cf268ebadd7323dfb6af543d1f6406c48e26b2642fb370499f8af89520db",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3032576
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3032577
+          }
+        },
+        "recorderTraceSha256": "1cffdc2b872802b9a8701ba80937b28e5c29023f35f7a1146b0e1d5bc4c8b2ef",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 390034,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-jqvr4tro/original/tool/discovery.mjs",
+            "normal",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "390034": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-1wrudci5",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "separateProvenanceMutationsRejected": [
+        "wrong-role",
+        "forged-verified-JSON",
+        "changed-actual-trace",
+        "runtime-without-launcher",
+        "wrong-producer-SHA",
+        "wrong-kernel-context",
+        "wrong-runtime-trace-SHA",
+        "missing-measured-runtime-path",
+        "missing-measured-runtime-operation"
+      ]
+    },
+    {
+      "case": "test_actual_two_role_node_discovery_with_bound_stdio_and_exact_runtime.original.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-ql5tksz8/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-ql5tksz8",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-ql5tksz8",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "6b8285a527a1d0f638fffcd29bbd2224dca0c2caae26f6d073ba1566fbd81d42",
+        "stdoutSha256": "7298e818a7d07dd2f4ac37641c3dae132ab607084eead6bb380673df049b2a75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3044979
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3044980
+          }
+        },
+        "recorderTraceSha256": "4ce85a7516e879d9603c2b6c43e051a7ebac1e8638b87cebd6b57b908fe95303",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 391364,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5/original/tool/discovery.mjs",
+            "normal",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "391364": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-ql5tksz8",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "boundedAuthenticationFacts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "original",
+        "processCount": 11,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+            "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+            "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+            "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+            "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+            "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/goal.json",
+            "sha256": "18580554d40be225589e70b746a2deeae4375c1e6f77e71bf726532b92e13046",
+            "provenance": "exact Git blob ff6ffa4348731b8cdae028bf6233aca68c17b82d",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/required.config.json",
+            "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+            "provenance": "exact Git blob ff6ffa4348731b8cdae028bf6233aca68c17b82d",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/space name.json",
+            "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+            "provenance": "exact Git blob ff6ffa4348731b8cdae028bf6233aca68c17b82d",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/ä.json",
+            "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+            "provenance": "exact Git blob ff6ffa4348731b8cdae028bf6233aca68c17b82d",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/dev/null",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ssl/openssl.cnf",
+            "sha256": "47fdeeac79328ffb03c9d855237a500b4ad5216dc971a8b2f40a420b4b3c11ef",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "execve",
+              "openat",
+              "mmap",
+              "runtime-executable-identity"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "tool/discovery.mjs",
+            "sha256": "7141c9155dec3618a8500ebc64beb61a9e0f8565ebf54d4afc70582243e542bf",
+            "provenance": "exact actual Node discovery fixture code",
+            "observedOperations": [
+              "statx",
+              "openat",
+              "read"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "data/goal.json",
+          "data/required.config.json",
+          "data/space name.json",
+          "data/ä.json"
+        ],
+        "closedDirectoryDiscoveries": {
+          "data": [
+            [
+              "goal.json",
+              "file"
+            ],
+            [
+              "required.config.json",
+              "file"
+            ],
+            [
+              "space name.json",
+              "file"
+            ],
+            [
+              "ä.json",
+              "file"
+            ]
+          ]
+        },
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          }
+        ],
+        "ownedLauncherTransportMetadata": [
+          {
+            "pid": 391364,
+            "descriptor": 0,
+            "origin": "launcher:stdin",
+            "kernelFdIdentity": "/dev/null"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 1,
+            "origin": "launcher:output:1",
+            "kernelFdIdentity": "pipe:[3044979]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 2,
+            "origin": "launcher:output:2",
+            "kernelFdIdentity": "pipe:[3044980]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 4,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035093]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 5,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035093]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 6,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035094]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 7,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035094]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 8,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          },
+          {
+            "pid": 391368,
+            "descriptor": 10,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035095]"
+          },
+          {
+            "pid": 391368,
+            "descriptor": 11,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3035095]"
+          },
+          {
+            "pid": 391368,
+            "descriptor": 12,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 14,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3018550]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 15,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3018550]"
+          },
+          {
+            "pid": 391364,
+            "descriptor": 16,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          }
+        ],
+        "volatileRuntimeObservations": [
+          {
+            "pid": 391364,
+            "descriptor": 3,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 4,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 5,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 6,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 7,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 8,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 9,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 10,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 11,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 12,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 13,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 14,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 15,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "descriptor": 16,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 16,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/sys/fs/cgroup/non-systemd/memory.max",
+            "kernelPath": "/sys/fs/cgroup/non-systemd/memory.max",
+            "operation": "openat",
+            "resultClass": "ENOENT-probe",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/sys/fs/cgroup/non-systemd/memory.high",
+            "kernelPath": "/sys/fs/cgroup/non-systemd/memory.high",
+            "operation": "openat",
+            "resultClass": "ENOENT-probe",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1475,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 258,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 391364,
+            "threadGroup": 391364,
+            "declaredPath": "/proc/self/exe",
+            "kernelPath": "/proc/2/exe",
+            "operation": "readlink",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          }
+        ],
+        "explicitToolDirectoryMetadata": [
+          {
+            "pid": 391364,
+            "path": "/dev",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 391364,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-wer_mva5",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          }
+        ],
+        "abortedNonInputIdentityObservations": []
+      }
+    },
+    {
+      "case": "test_actual_two_role_node_discovery_with_bound_stdio_and_exact_runtime.candidate.normal",
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-xes1j8gp/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-xes1j8gp",
+          "--remount-ro",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-xes1j8gp",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate/tool/discovery.mjs",
+          "normal",
+          "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "1484de5941f7b096239065d7badbd4ccb767b17b0c5266ec79b84b150373395f",
+        "stdoutSha256": "c8fc99697ac7dbb9165aaef78bda07fc3513ad7661d0365fbe0095f626328f75",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 3032656
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 3032657
+          }
+        },
+        "recorderTraceSha256": "e6f57fbb75dc46182d2bfea7fe97ed7215166560c61db913e1ab42073f75783b",
+        "producerBoundary": {
+          "recorderLine": 361,
+          "hostPid": 392291,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c/candidate/tool/discovery.mjs",
+            "normal",
+            "/home/enpasos/projects/skillpilot/tmp/read-launcher-host-cvheya0l/goal.json"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "392291": 2
+        },
+        "readonlyDependencyMounts": [],
+        "abortedNonInputIdentityObservations": [],
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/launcher-evidence-xes1j8gp",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "nativeProducerExitCode": 0,
+      "boundedAuthenticationFacts": {
+        "purpose": "bounded-role-read-authentication-facts-not-qa-readiness",
+        "role": "candidate",
+        "processCount": 11,
+        "files": [
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+            "sha256": "c662f0eb3e4b8da67692edd53934263e9e4807105d4228b0c12c3d93dca49fd3",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "pread64",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+            "sha256": "6d6060611eecdc455d9e2eac5138270c5db42f4735d1188038801dc7c4efbf3e",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+            "sha256": "fc9d43b2f6c20e53b009238f767c5b949d202389e20de9e202ea684b4ba3729a",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+            "sha256": "2877e828e386ca225c14ec01cb2d7f07e61dbc025ffb15e524c100a1e9ab3070",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+            "sha256": "fdfd7d83a335ba12bd73e857f95a798dae0355f37935231966fd088647978e23",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "dependency",
+            "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30",
+            "sha256": "ff0825e113603c3866680d5d52216bc6d8eedf3a59f52a0aef67ff01994db128",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "read",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/goal.json",
+            "sha256": "476ace4d519782fa3c1d5e4232c923121e280db092afa2259f08bc31829d1471",
+            "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/required.config.json",
+            "sha256": "a571c6a7e2669c92606f8e794af35a8c1d8173f6ece8f8bad6c497494cc9e7c9",
+            "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/space name.json",
+            "sha256": "9d39745403e5faf662463b32d613eedf45037d0180983ae8bc87f538cf0c9653",
+            "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "source",
+            "path": "data/ä.json",
+            "sha256": "cba283815827c37b9b7941dc6041718419e0db56b32b25b51a58c53aeaf8e529",
+            "provenance": "fixture-only existing-kernel typed projection with inverse equality",
+            "observedOperations": [
+              "openat",
+              "statx",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/dev/null",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ld.so.cache",
+            "sha256": "3e504f30282f323eafb701be47b96413c8aef26bba9df56a42359c2aa986f38d",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "mmap"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/etc/ssl/openssl.cnf",
+            "sha256": "47fdeeac79328ffb03c9d855237a500b4ad5216dc971a8b2f40a420b4b3c11ef",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "openat",
+              "newfstatat",
+              "read"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+            "provenance": "explicit Node runtime/tool bytes bound before launch",
+            "observedOperations": [
+              "execve",
+              "openat",
+              "mmap",
+              "runtime-executable-identity"
+            ]
+          },
+          {
+            "category": "tool",
+            "path": "tool/discovery.mjs",
+            "sha256": "7141c9155dec3618a8500ebc64beb61a9e0f8565ebf54d4afc70582243e542bf",
+            "provenance": "exact actual Node discovery fixture code",
+            "observedOperations": [
+              "statx",
+              "openat",
+              "read"
+            ]
+          }
+        ],
+        "actualSourceReadOrMapPaths": [
+          "data/goal.json",
+          "data/required.config.json",
+          "data/space name.json",
+          "data/ä.json"
+        ],
+        "closedDirectoryDiscoveries": {
+          "data": [
+            [
+              "goal.json",
+              "file"
+            ],
+            [
+              "required.config.json",
+              "file"
+            ],
+            [
+              "space name.json",
+              "file"
+            ],
+            [
+              "ä.json",
+              "file"
+            ]
+          ]
+        },
+        "explicitToolProbeFailures": [
+          {
+            "syscall": "access",
+            "path": "/etc/ld.so.preload",
+            "errno": "ENOENT",
+            "category": "tool-probe"
+          }
+        ],
+        "ownedLauncherTransportMetadata": [
+          {
+            "pid": 392291,
+            "descriptor": 0,
+            "origin": "launcher:stdin",
+            "kernelFdIdentity": "/dev/null"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 1,
+            "origin": "launcher:output:1",
+            "kernelFdIdentity": "pipe:[3032656]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 2,
+            "origin": "launcher:output:2",
+            "kernelFdIdentity": "pipe:[3032657]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 4,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3070787]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 5,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3070787]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 6,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3070788]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 7,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3070788]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 8,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          },
+          {
+            "pid": 392308,
+            "descriptor": 10,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3056299]"
+          },
+          {
+            "pid": 392308,
+            "descriptor": 11,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3056299]"
+          },
+          {
+            "pid": 392308,
+            "descriptor": 12,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 14,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3058800]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 15,
+            "origin": "pipe2",
+            "kernelFdIdentity": "pipe:[3058800]"
+          },
+          {
+            "pid": 392291,
+            "descriptor": 16,
+            "origin": "eventfd2",
+            "kernelFdIdentity": "anon_inode:[eventfd]"
+          }
+        ],
+        "volatileRuntimeObservations": [
+          {
+            "pid": 392291,
+            "descriptor": 3,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 4,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 5,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 6,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 7,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 8,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 9,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 10,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 11,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 12,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 13,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 14,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 15,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "descriptor": 16,
+            "operation": "fcntl F_SETFD FD_CLOEXEC",
+            "resultClass": "EBADF-probe",
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 16,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/cgroup",
+            "kernelPath": "/proc/2/cgroup",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/sys/fs/cgroup/non-systemd/memory.max",
+            "kernelPath": "/sys/fs/cgroup/non-systemd/memory.max",
+            "operation": "openat",
+            "resultClass": "ENOENT-probe",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/sys/fs/cgroup/non-systemd/memory.high",
+            "kernelPath": "/sys/fs/cgroup/non-systemd/memory.high",
+            "operation": "openat",
+            "resultClass": "ENOENT-probe",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1475,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/meminfo",
+            "kernelPath": "/proc/meminfo",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 258,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "openat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "newfstatat",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "read",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": 1024,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/maps",
+            "kernelPath": "/proc/2/maps",
+            "operation": "close",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          },
+          {
+            "pid": 392291,
+            "threadGroup": 392291,
+            "declaredPath": "/proc/self/exe",
+            "kernelPath": "/proc/2/exe",
+            "operation": "readlink",
+            "resultClass": "volatile-kernel-observation",
+            "bytesReported": null,
+            "contentSha256": null,
+            "immutableCurriculumInput": false
+          }
+        ],
+        "explicitToolDirectoryMetadata": [
+          {
+            "pid": 392291,
+            "path": "/dev",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          },
+          {
+            "pid": 392291,
+            "path": "/dev/shm/skillpilot-read-auth-native-xa_nm4wz/case-tic6px3c",
+            "operation": "statx",
+            "category": "tool-directory-metadata-only",
+            "directoryContentsRead": false
+          }
+        ],
+        "abortedNonInputIdentityObservations": []
+      }
+    }
+  ],
+  "capture19Changed": false
+}

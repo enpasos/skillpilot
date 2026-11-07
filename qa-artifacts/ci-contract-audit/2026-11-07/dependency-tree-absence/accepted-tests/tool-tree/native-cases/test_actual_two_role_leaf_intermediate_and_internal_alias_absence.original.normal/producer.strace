@@ -1,0 +1,35 @@
+361206 execve("/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/tool/producer", ["/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/tool/producer", "normal", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/data/goal.json", "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/unbound-node_modules/pkg/absent.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PYTHONDONTWRITEBYTECODE=1", "PWD=/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original"] <unfinished ...>
+361206 <... execve resumed>)            = 0
+361206 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0 <unfinished ...>
+361206 <... mmap resumed>)              = 0x793d79e00000
+361206 access("/etc/ld.so.preload", R_OK <unfinished ...>
+361206 <... access resumed>)            = -1 ENOENT (No such file or directory)
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC <unfinished ...>
+361206 <... openat resumed>)            = 3</etc/ld.so.cache>
+361206 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+361206 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x793d79df0000
+361206 close(3</etc/ld.so.cache>)       = 0
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+361206 read(0x3, 0x7ffef0c237a8, 0x340) = 0x340
+361206 pread64(0x3, 0x7ffef0c233b0, 0x310, 0x40) = 0x310
+361206 pread64(0x3, 0x7ffef0c23370, 0x30, 0x350) = 0x30
+361206 pread64(0x3, 0x7ffef0c23320, 0x44, 0x380) = 0x44
+361206 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+361206 pread64(0x3, 0x7ffef0c23280, 0x310, 0x40) = 0x310
+361206 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x793d79a00000
+361206 mmap(0x793d79a28000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x793d79a28000
+361206 mmap(0x793d79bbd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x793d79bbd000
+361206 mmap(0x793d79c16000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x793d79c16000
+361206 mmap(0x793d79c1c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x793d79c1c000
+361206 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+361206 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x793d79ded000
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/data/goal.json", O_RDONLY|O_CLOEXEC) = 3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/data/goal.json>
+361206 read(0x3, 0x7ffef0c23380, 0x64)  = 0x1d
+361206 close(3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original/data/goal.json>) = 0
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/pkg/package.json", O_RDONLY|O_CLOEXEC) = 3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/pkg/package.json>
+361206 read(0x3, 0x7ffef0c23380, 0x64)  = 0x21
+361206 close(3</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/pkg/package.json>) = 0
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/pkg/absent.json", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+361206 newfstatat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/pkg/missing-dir/deep.json", 0x7ffef0c23430, 0) = -1 ENOENT (No such file or directory)
+361206 openat(AT_FDCWD</dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/original>, "/dev/shm/skillpilot-tool-tree-3_f7ovv0/case-cwrfat77/node_modules/alias/absent.json", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+361206 exit_group(0)                    = ?

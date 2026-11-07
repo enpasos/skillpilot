@@ -1,0 +1,24 @@
+361307 execve("/dev/shm/skillpilot-read-auth-native-hl9cz6wb/producer", ["/dev/shm/skillpilot-read-auth-native-hl9cz6wb/producer", "write", "/dev/shm/skillpilot-read-auth-native-hl9cz6wb/outside/goal.json"], ["PATH=/usr/bin:/bin", "LC_ALL=C", "PWD=/dev/shm/skillpilot-read-auth-native-hl9cz6wb/case-7k9zoqn9/candidate"]) = 0
+361307 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x78d303af7000
+361307 access("/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+361307 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-hl9cz6wb/case-7k9zoqn9/candidate>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache>
+361307 newfstatat(3</etc/ld.so.cache>, "", {st_dev=makedev(0x8, 0x30), st_ino=23751, st_mode=S_IFREG|0644, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=128, st_size=64203, st_atime=1793978831 /* 2026-11-06T16:27:11.321055400+0100 */, st_atime_nsec=321055400, st_mtime=1793978831 /* 2026-11-06T16:27:11.289055400+0100 */, st_mtime_nsec=289055400, st_ctime=1793978831 /* 2026-11-06T16:27:11.305055400+0100 */, st_ctime_nsec=305055400}, AT_EMPTY_PATH) = 0
+361307 mmap(NULL, 64203, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x78d303ae7000
+361307 close(3</etc/ld.so.cache>)       = 0
+361307 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-hl9cz6wb/case-7k9zoqn9/candidate>, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/x86_64-linux-gnu/libc.so.6>
+361307 read(0x3, 0x7ffe08759928, 0x340) = 0x340
+361307 pread64(0x3, 0x7ffe08759530, 0x310, 0x40) = 0x310
+361307 pread64(0x3, 0x7ffe087594f0, 0x30, 0x350) = 0x30
+361307 pread64(0x3, 0x7ffe087594a0, 0x44, 0x380) = 0x44
+361307 newfstatat(3</usr/lib/x86_64-linux-gnu/libc.so.6>, "", {st_dev=makedev(0x8, 0x30), st_ino=82683, st_mode=S_IFREG|0755, st_nlink=1, st_uid=65534, st_gid=65534, st_blksize=4096, st_blocks=4344, st_size=2220400, st_atime=1793984284 /* 2026-11-06T17:58:04.681445324+0100 */, st_atime_nsec=681445324, st_mtime=1738095930 /* 2025-01-28T21:25:30+0100 */, st_mtime_nsec=0, st_ctime=1742195187 /* 2025-03-17T08:06:27.595901596+0100 */, st_ctime_nsec=595901596}, AT_EMPTY_PATH) = 0
+361307 pread64(0x3, 0x7ffe08759400, 0x310, 0x40) = 0x310
+361307 mmap(NULL, 2264656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0) = 0x78d303800000
+361307 mmap(0x78d303828000, 1658880, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x28000) = 0x78d303828000
+361307 mmap(0x78d3039bd000, 360448, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x1bd000) = 0x78d3039bd000
+361307 mmap(0x78d303a16000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/x86_64-linux-gnu/libc.so.6>, 0x215000) = 0x78d303a16000
+361307 mmap(0x78d303a1c000, 52816, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x78d303a1c000
+361307 close(3</usr/lib/x86_64-linux-gnu/libc.so.6>) = 0
+361307 mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x78d303ae4000
+361307 getcwd("/dev/shm/skillpilot-read-auth-native-hl9cz6wb/case-7k9zoqn9/candidate", 4096) = 70
+361307 openat(AT_FDCWD</dev/shm/skillpilot-read-auth-native-hl9cz6wb/case-7k9zoqn9/candidate>, "data/goal.json", O_WRONLY|O_TRUNC) = -1 EROFS (Read-only file system)
+361307 exit_group(0)                    = ?

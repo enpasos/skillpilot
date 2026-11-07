@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "status": "bounded-read-authentication-primitive-C13-29-PASS-native-Node-BLOCKED-production-unwired",
+  "completedAtActual": "2026-11-06T23:24:50.149071+00:00",
+  "module": {
+    "path": "scripts/identity_qa_read_trace.py",
+    "sha256": "9af4a482bcd911693ea12ea1c88dfeeecedab5512083f55c86097db8b479e2d3",
+    "bytes": 19913
+  },
+  "tests": {
+    "path": "scripts/test_repository_read_trace.py",
+    "sha256": "fd98d06123832d3382a38809e50faf065ac91c514dc6f7d07c2f79ff60c9c8a0",
+    "bytes": 17597
+  },
+  "existingPlan": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-5c9-isolated-qa-doing-plan-2026-11-06.json",
+    "sha256": "e24112cf60a28c6fa6f1c61ee3cd619694602cd8b47a14b90e907387d4fed70d",
+    "bytes": 230254
+  },
+  "existingPreparerAndProducerReadVerifierChanged": false,
+  "capture19ProtectedFiles": [
+    {
+      "path": "scripts/identity_qa_private_capture.py",
+      "sha256": "be4d2285c85656de4905a35e64d12e7fe0ef03ccb8711793acd805b715e41d46",
+      "bytes": 21528
+    },
+    {
+      "path": "scripts/test_identity_qa_private_capture.py",
+      "sha256": "d8841d2009b5d63f039b65a2375aceacc221b9981323ce344b1aa718e3a199d1",
+      "bytes": 7937
+    },
+    {
+      "path": "scripts/prepare_identity_qa_candidate.py",
+      "sha256": "3dad896644722c118331070f376f0053b7eec52efa3394d587201504b2ae7e8f",
+      "bytes": 29635
+    },
+    {
+      "path": "scripts/test_prepare_identity_qa_candidate.py",
+      "sha256": "0b01cc7969af9bcf0ae656d4f53b4780f06a69ba31d4ea71c36dcb9ba5d36b4f",
+      "bytes": 25904
+    },
+    {
+      "path": "scripts/verify_identity_qa_producer_reads.py",
+      "sha256": "280d4666f7a7653ba9e056f5b4a77098f3e63da8dca1593c0acc92683e784729",
+      "bytes": 2190
+    }
+  ],
+  "protectedCiGlobFilesExactlyUnchanged": [
+    "scripts/test_identity_qa_private_capture.py",
+    "scripts/test_prepare_identity_qa_candidate.py"
+  ],
+  "separateNativeSuite": {
+    "testsRun": 13,
+    "actualNativeProducerRuns": 29,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "execution": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/required-discovery-final/execution.json",
+      "sha256": "64aac6c634c42857ee551cc7da031358c048fcbaab107b41c76ee6bc9caf5642",
+      "bytes": 464
+    },
+    "fullResults": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/required-discovery-final/native-cases/native-runs.json",
+      "sha256": "1700f461a8a91e6cd3e9b516123f4510fbc1b55714860dec0e401060a52a9194",
+      "bytes": 71317
+    },
+    "fixtureBindings": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/required-discovery-final/native-cases/fixture-bindings.json",
+      "sha256": "7b198cf9e6a64581578ee4806ddb1d777ab750fc86c1a39e07450d3c7e9ece6c",
+      "bytes": 3228
+    },
+    "actualGitBundle": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/required-discovery-final/native-cases/fixture.git.bundle",
+      "sha256": "e72248636827abf7c78298523bc7288b60c7ba860a52df6aeefb5b1e8becd89f",
+      "bytes": 915
+    },
+    "actualCProducer": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/required-discovery-final/native-cases/producer.bin",
+      "sha256": "4f0d07741d8cebc8fc0beebd162bb5cff978d0f156350f465e9df0de998c3938",
+      "bytes": 16720
+    }
+  },
+  "demonstratedBoundaries": [
+    "PID clone lineage; independent childcwd; inherited+fcntl-duplicated directoryFD; relative and directoryFD file reads.",
+    "Both physical roles see the actual tiny Git originals or existing-kernel field projection/inverse-equal candidate bytes; this is not the real164-rule SourceA proof.",
+    "Actual UTF8 octal-escaped and spaced paths; unchanged declared internal alias accepted.",
+    "Actual child missing inputs, unbound cwd/dirfd inputs, unknown host input, external/proc aliases, internal alias retargets, swapped role bytes, and attempted sourcewrites rejected.",
+    "Exact independent Git selector vs getdents64 names/types through EOF; real extra/missing entries, partial readdir and completely omitted mandatory discovery rejected.",
+    "Source/tool/dependency/current-output inputs are separated; no dependency/output prefix is silently skipped.",
+    "Removed-PID/cwd/EOF/exit trace-integrity mutations are labelled separately from actual native producer runs."
+  ],
+  "actualNodeDiscovery": {
+    "producerExitCodes": [
+      0,
+      0
+    ],
+    "actualDiscoveryBothRolesMatchesFixtureNamesAndByteLengths": true,
+    "authenticationOutcome": "blocked-fail-closed",
+    "blockingReasons": [
+      "FD has no traced open/dup/clone provenance: 0</dev/null<char 1:3>>",
+      "FD has no traced open/dup/clone provenance: 0</dev/null<char 1:3>>"
+    ],
+    "evidence": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-a-read-auth-first-boundary/node-current/probe.json",
+      "sha256": "73b542750cbc2871d2a1721cd13209555c09259d350abb1ee404483398456d32",
+      "bytes": 7119
+    }
+  },
+  "runtimeContextObserved": {
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+    "machine": "x86_64",
+    "strace": "strace -- version 5.16",
+    "cc": "cc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+  },
+  "remainingLimits": [
+    "No production SourceA verifier/factory is wired. A production caller must execute the genuine externally pinned SourceA verification; the plain lower-level ReadContract is not an authorization capability.",
+    "Explicit initial FD/stdin/output-transport provenance is not yet supported. Native Node remains rejected.",
+    "Observed Node /proc/self/cgroup, /proc/self/maps, /proc/self/exe, /proc/meminfo and two cgroup ENOENT probes need a separate exact runtime-provenance contract; no prefix exemption is granted.",
+    "Actual prepared asset/dependency bind-mount sources must be authenticated against the existing private-capture receipt inside the physical mount mapping; direct-file fixtures do not prove that integration.",
+    "No claim of complete arbitrary-Linux-syscall security, shared-thread overlapping cwd/FD mutation support, immutable OS observations, or external-writer ABA protection. Traces must come from the controlled recorded launcher/options.",
+    "No full native TS/Deep/CQR producer has been accepted, no AQA02/03 closure or large9.8GBcapture, no SourceA validity/Ready/activation/M6/M7 result."
+  ],
+  "nextAuthorizedSmallStep": "Explicit launcher stdin=/dev/null and owned stdout/stderr bindings, exact observed Node OS/tool provenance inventory, then genuine role/host-escape controls.",
+  "largeCaptureStarted": false,
+  "readySetCreated": false,
+  "qaInverseGraphCreated": false,
+  "canonicalQaPolicyStateOrVCodeChanged": false
+}

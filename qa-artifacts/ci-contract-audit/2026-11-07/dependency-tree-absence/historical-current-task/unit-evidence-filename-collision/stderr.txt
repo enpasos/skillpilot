@@ -1,0 +1,19 @@
+......E
+======================================================================
+ERROR: test_missing_file_binding_and_other_actual_launch_reject (__main__.ToolTreeTests.test_missing_file_binding_and_other_actual_launch_reject)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/scripts/test_repository_tool_tree.py", line 181, in test_missing_file_binding_and_other_actual_launch_reject
+    other,other_contract,other_launch,other_record=self.launch()
+                                                   ^^^^^^^^^^^^^
+  File "/home/enpasos/projects/skillpilot/scripts/test_repository_tool_tree.py", line 113, in launch
+    target=EVIDENCE/record['case'];target.mkdir()
+                                   ^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: '/dev/shm/skillpilot-tool-tree-final-tests-20261107/tool-tree/native-cases/test_missing_file_binding_and_other_actual_launch_reject.original.normal'
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.035s
+
+FAILED (errors=1)

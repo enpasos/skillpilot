@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "qa-artifacts/ci-contract-audit/2026-11-07/dependency-tree-absence/probe-native-typescript-captured-tree.py",
+    "--repo-root",
+    "/home/enpasos/projects/skillpilot",
+    "--base-commit",
+    "b363c61a1c6f6ad4697cc46f85279a0264f63a1f",
+    "--source-tool-tree",
+    "/dev/shm/skillpilot-small-ts-tool-source-20261107",
+    "--expected-tool-tree-sha256",
+    "c8aea9359fb3f7aad86cf62f78930426d38cc318dbff30c84387d5f672ad3359",
+    "--private-root",
+    "/dev/shm/skillpilot-small-ts-tool-capture-20261107",
+    "--evidence-dir",
+    "/dev/shm/skillpilot-small-ts-tool-evidence-20261107"
+  ],
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-07/dependency-tree-absence/probe-native-typescript-captured-tree.py\", line 68, in <module>\n    launch=run_readonly(role,root,root,[str(helper.node),str(capture.root/'tsx/dist/cli.mjs'),'--no-cache','--tsconfig',str(root/'tsconfig.json'),str(script)],\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/projects/skillpilot/scripts/identity_qa_read_launcher.py\", line 195, in run_readonly\n    trace, namespace_ids, boundary = _producer_trace(recorder_trace, sandbox_command, argv)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/enpasos/projects/skillpilot/scripts/identity_qa_read_launcher.py\", line 108, in _producer_trace\n    group, local_pid = groups[pid], number(result)\n                                    ^^^^^^^^^^^^^^\n  File \"/home/enpasos/projects/skillpilot/scripts/identity_qa_read_trace.py\", line 256, in number\n    require(found is not None, 'Missing numeric syscall result/FD')\n  File \"/home/enpasos/projects/skillpilot/scripts/identity_qa_read_trace.py\", line 30, in require\n    raise ValueError(message)\nValueError: Missing numeric syscall result/FD\n"
+}

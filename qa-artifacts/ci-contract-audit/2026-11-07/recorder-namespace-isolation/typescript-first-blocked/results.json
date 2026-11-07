@@ -1,0 +1,337 @@
+{
+  "purpose": "actual-small-tsx-discovery-not-production-QA-acceptance",
+  "runs": [
+    {
+      "role": "original",
+      "producerExitCode": 0,
+      "actualTypeScriptOutput": {
+        "producer": "actual-tsx-typescript-discovery",
+        "inputs": [
+          {
+            "name": "\u00e4.json",
+            "bytes": 5
+          },
+          {
+            "name": "goal.json",
+            "bytes": 85
+          },
+          {
+            "name": "required.config.json",
+            "bytes": 28
+          },
+          {
+            "name": "space name.json",
+            "bytes": 6
+          }
+        ],
+        "owner": "fixture-owner",
+        "goalIds": [
+          "legacy"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/package.json",
+        "sourceAQaValidityClaimed": false
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "original",
+        "root": "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tool/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/original/controller-evidence/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original",
+          "--tmpfs",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/original/controller-evidence",
+          "--remount-ro",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/original/controller-evidence",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tool/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "ca696d4ddc6a28116300d31f7caf4ac6240b2af88fe0936a291c4b83b5b3f21d",
+        "stdoutSha256": "150d705ecad08b2c30a694422661139b933ff0423ff071828c1635c70c22e572",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2585939
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2585940
+          }
+        },
+        "recorderTraceSha256": "8433d2d33d671b64a1f6315cade639aa1a48f583266c94f4ffa2dfed0ac8ddcf",
+        "producerBoundary": {
+          "recorderLine": 366,
+          "hostPid": 333658,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tsconfig.json",
+            "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-jj87ojlo/original/tool/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "333658": 2,
+          "333669": 13,
+          "333681": 25
+        },
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/original/controller-evidence",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceInputsBeforeAfterChecked": true
+    },
+    {
+      "role": "candidate",
+      "producerExitCode": 0,
+      "actualTypeScriptOutput": {
+        "producer": "actual-tsx-typescript-discovery",
+        "inputs": [
+          {
+            "name": "\u00e4.json",
+            "bytes": 5
+          },
+          {
+            "name": "goal.json",
+            "bytes": 115
+          },
+          {
+            "name": "required.config.json",
+            "bytes": 28
+          },
+          {
+            "name": "space name.json",
+            "bytes": 6
+          }
+        ],
+        "owner": "fixture-owner",
+        "goalIds": [
+          "00000000-0000-4000-8000-000000000001"
+        ]
+      },
+      "authentication": {
+        "status": "blocked",
+        "reason": "Failed/unexplained input attempt: /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/package.json",
+        "sourceAQaValidityClaimed": false
+      },
+      "launch": {
+        "purpose": "actual-read-launch-provenance-not-qa-acceptance",
+        "role": "candidate",
+        "root": "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate",
+        "cwd": "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate",
+        "argv": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tool/discovery.mts"
+        ],
+        "command": [
+          "/usr/bin/strace",
+          "-f",
+          "-qq",
+          "-yy",
+          "--decode-pids=pidns",
+          "-v",
+          "-s",
+          "65535",
+          "-e",
+          "trace=%file,%network,read,pread64,readv,preadv,preadv2,close,dup,dup2,dup3,fcntl,pipe,pipe2,eventfd,eventfd2,getdents,getdents64,clone,clone3,fork,vfork,getcwd,getpid,mmap,close_range,unshare,setns,exit,exit_group,io_uring_setup,io_uring_register,io_uring_enter,open_by_handle_at,pidfd_getfd,process_vm_readv,ptrace",
+          "-e",
+          "raw=read,pread64,readv,preadv,preadv2",
+          "-o",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/candidate/controller-evidence/recorder.strace",
+          "/usr/bin/bwrap",
+          "--die-with-parent",
+          "--unshare-net",
+          "--unshare-pid",
+          "--clearenv",
+          "--setenv",
+          "PATH",
+          "/usr/bin:/bin",
+          "--setenv",
+          "LC_ALL",
+          "C",
+          "--setenv",
+          "PYTHONDONTWRITEBYTECODE",
+          "1",
+          "--ro-bind",
+          "/",
+          "/",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--ro-bind",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate",
+          "--tmpfs",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/candidate/controller-evidence",
+          "--remount-ro",
+          "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/candidate/controller-evidence",
+          "--chdir",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate",
+          "--",
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "--no-cache",
+          "--tsconfig",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tsconfig.json",
+          "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tool/discovery.mts"
+        ],
+        "producerExitCode": 0,
+        "traceSha256": "1118d255b49bfffddba448c2ed478805752e4f31f5dba64e9fca4313945dc0d4",
+        "stdoutSha256": "17c4e72fce0fa11530f75a0f6ed86769f848eb433b173e228a446075c31d1163",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdio": {
+          "0": {
+            "kind": "stdin-null",
+            "path": "/dev/null",
+            "deviceMajor": 1,
+            "deviceMinor": 3
+          },
+          "1": {
+            "kind": "output-pipe",
+            "pipeInode": 2586034
+          },
+          "2": {
+            "kind": "output-pipe",
+            "pipeInode": 2586035
+          }
+        },
+        "recorderTraceSha256": "f7624f6b75e53a47bab3d88dee38e1651083c374ed8e94b8fda5a8718fce8608",
+        "producerBoundary": {
+          "recorderLine": 368,
+          "hostPid": 333704,
+          "executable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "argv": [
+            "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+            "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+            "--no-cache",
+            "--tsconfig",
+            "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tsconfig.json",
+            "/dev/shm/skillpilot-read-auth-native-9ptrga3w/case-eix1esri/candidate/tool/discovery.mts"
+          ],
+          "selection": "exact-first-producer-exec-and-all-descendants",
+          "fullPreludePreserved": true
+        },
+        "namespaceProcessIds": {
+          "333704": 2,
+          "333715": 13,
+          "333727": 25
+        },
+        "recorderProtection": {
+          "recorderOutsideProducerPidNamespace": true,
+          "evidenceDirectory": "/dev/shm/skillpilot-recorder-ts-probe-accepted-20261107/candidate/controller-evidence",
+          "producerView": "empty-readonly-tmpfs",
+          "writableEvidenceMounts": [],
+          "stdoutStderr": "controller-owned-pipes"
+        },
+        "toolKernelContext": {
+          "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+          "kernelMachine": "x86_64",
+          "kernelBootId": "737967f7-e48d-4d9e-b116-6130731e5c77",
+          "producerExecutable": "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "producerSha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+          "straceSha256": "38a5c75cb29dd85ddd7780d54f5bf595554d7a1b5c42524b23065f5dc4c4b01d",
+          "bwrapSha256": "d78807229d616606e339c5988392b9e0ab4a6a6998fa51e4590837f426a12fca",
+          "environment": "cleared; PATH=/usr/bin:/bin; LC_ALL=C; PYTHONDONTWRITEBYTECODE=1",
+          "osObservationBytesImmutable": false
+        },
+        "runtimeActivationAllowed": false,
+        "qaValidityClaimed": false
+      },
+      "sourceInputsBeforeAfterChecked": true
+    }
+  ],
+  "capture19Changed": false,
+  "aqa02_03Claimed": false
+}
