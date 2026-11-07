@@ -47,14 +47,18 @@ weist die sieben Verletzungen nach; Untergrenzen und Ausnahmen sind unverändert
 Der tatsächliche Remote-Lauf auf `6451880` ist abgeschlossen: sechs Hauptjobs
 bestehen, Frontend und Curriculum scheitern vor der Meilensteinprüfung. Die vier
 Nebenworkflows bestehen. Die anschließenden PoWi-/74-Kontext-Änderungen sind
-in diesem Remote-Lauf noch nicht enthalten.
+in diesem Remote-Lauf noch nicht enthalten. Die beiden Ursachen sind
+inzwischen [lokal repariert und geprüft](ci-graph-repairs/remote645-scope-refresh-and-rationales-repair-2026-11-07.md);
+ein frischer Remote-Nachlauf steht noch aus.
 
 Der [kalte Informatik-Q2-Review](ci-graph-repairs/informatics-q2-independent-scope-material-review-2026-11-07.md)
 bleibt mit seinem begrenzten damaligen Quellenstand erhalten. Die anschließende
 vollständige Scopeanalyse trennt das eigene kanonische Angebot vom amtlichen
 Pflichtumfang und benannten Abiturjahrgängen. Neue vollständige Materialien und
-ihre private native Einbindung bleiben Entwurf. Der unabhängige Inhaltsreview
-hat einen konkreten Fehler im Rechteentzug gefunden; eine Freigabe liegt nicht vor.
+ihre private native Einbindung bleiben Entwurf. Die vier konkreten Materialfehler sind in einem getrennten Nachfolger
+behoben und unabhängig nachgeprüft. Der Source-/Scope-Kandidat bleibt wegen
+weiterhin unbegründeter staatlicher Ziele, fehlender grundlegender Quellenanteile
+und veränderter alter Prüfungsverträge ausdrücklich unangewandt.
 Das Einheiten-Goal und PR #83 bleiben eingefroren.
 
 ## Verwendbare Ergebnisse

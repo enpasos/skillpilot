@@ -1,0 +1,99 @@
+--- a/app/src/views/LearnerView.tsx
++++ b/app/src/views/LearnerView.tsx
+@@ -538,6 +538,8 @@
+   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
+   const fullRefreshInFlightRef = useRef(false)
+   const lastFullRefreshAtRef = useRef(0)
++  const pendingFullRefreshRef = useRef<{ type?: string; nodeId?: string } | null>(null)
++  const fullRefreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+   const forceActiveGoalRevealRef = useRef(false)
+   const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
+   const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
+@@ -1995,7 +1997,13 @@
+     rewindPersonalCurriculum,
+   ])
+ 
+-  const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
++  useEffect(() => () => {
++    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
++    fullRefreshTimerRef.current = null
++    pendingFullRefreshRef.current = null
++  }, [learnerStateScopeKey])
++
++  const handleSseUpdate = useCallback(async function handleSseUpdate(payload?: { type?: string; nodeId?: string }) {
+     if (payload?.type === 'PREFERENCES_CHANGED') {
+       const saving = preferenceSaveRefreshRef.current
+       if (saving?.scopeKey === learnerStateScopeKey) {
+@@ -2036,9 +2044,28 @@
+       return
+     }
+     const now = Date.now()
+-    if (fullRefreshInFlightRef.current) return
+-    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
+-
++    if (fullRefreshInFlightRef.current) {
++      pendingFullRefreshRef.current = payload ?? {}
++      return
++    }
++    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) {
++      pendingFullRefreshRef.current = payload ?? {}
++      if (fullRefreshTimerRef.current === null) {
++        fullRefreshTimerRef.current = setTimeout(() => {
++          fullRefreshTimerRef.current = null
++          const pending = pendingFullRefreshRef.current
++          pendingFullRefreshRef.current = null
++          if (pending && currentLearnerStateScopeKeyRef.current === learnerStateScopeKey) {
++            void handleSseUpdate(pending)
++          }
++        }, 800 - (now - lastFullRefreshAtRef.current))
++      }
++      return
++    }
++
++    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
++    fullRefreshTimerRef.current = null
++    pendingFullRefreshRef.current = null
+     fullRefreshInFlightRef.current = true
+     lastFullRefreshAtRef.current = now
+     console.log('[SSE] 🔄 Triggering full refresh...')
+@@ -2058,6 +2085,11 @@
+       console.log('[SSE] ✅ Refresh complete')
+     } finally {
+       fullRefreshInFlightRef.current = false
++      const pending = pendingFullRefreshRef.current
++      pendingFullRefreshRef.current = null
++      if (pending && currentLearnerStateScopeKeyRef.current === learnerStateScopeKey) {
++        void handleSseUpdate(pending)
++      }
+     }
+   }, [learnerStateScopeKey, refreshPreferences, refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
+ 
+--- a/app/prototypes/fullCockpitApi.ts
++++ b/app/prototypes/fullCockpitApi.ts
+@@ -332,7 +332,7 @@
+       const { strategy, ...prefs } = body
+       snapshot = { ...snapshot, profile: { ...snapshot.profile, ...prefs,
+         ...(strategy === 'RANDOM' || strategy === 'SEQUENTIAL' ? { learningStrategy: strategy } : {}) } }
+-      emit('PREFERENCES_UPDATED'); return json({})
++      emit('PREFERENCES_CHANGED'); return json({})
+     }
+     if (suffix === '/personal-curriculum' && method === 'PUT') {
+       snapshot = { ...snapshot, profile: { ...snapshot.profile, personalCurriculum: JSON.stringify(body) } }
+--- a/app/scripts/testFullCockpitPrototype.ts
++++ b/app/scripts/testFullCockpitPrototype.ts
+@@ -161,7 +161,14 @@
+   assert.equal(await flip.getAttribute('data-drill-instance-witness'), 'original')
+ 
+   stage = 'same explicit and implicit icons, whole-subject and plan-scope counts'
+-  await page.getByTestId('full-cockpit-scenario').selectOption('completed')
++  // Both snapshots arrive before the first refresh can settle. The final
++  // completion event must survive the refresh throttle.
++  await page.getByTestId('full-cockpit-scenario').evaluate((select: HTMLSelectElement) => {
++    for (const scenario of ['ordinary', 'completed']) {
++      select.value = scenario
++      select.dispatchEvent(new Event('change', { bubbles: true }))
++    }
++  })
+   await selected.getByText('Prüfungsaufgabe', { exact: true }).waitFor()
+   const mathProgress = page.getByTestId('learner-plan-subject-mathematik')
+   await mathProgress.getByTestId('learner-plan-achieved-goals').filter({ hasText: '2 von 2' }).waitFor()

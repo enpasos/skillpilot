@@ -1,0 +1,14 @@
+Full Cockpit navigation failed at: same explicit and implicit icons, whole-subject and plan-scope counts
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('learner-plan-subject-mathematik').getByTestId('learner-plan-achieved-goals').filter({ hasText: '2 von 2' }) to be visible[22m
+
+    at <anonymous> (/dev/shm/skillpilot-remote645-fixes-zudo1f92/app/scripts/testFullCockpitPrototype.ts:174:96) {
+  name: 'TimeoutError'
+}
+
+Node.js v20.20.2

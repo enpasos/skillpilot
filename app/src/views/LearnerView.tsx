@@ -538,6 +538,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
   const lastFullRefreshAtRef = useRef(0)
+  const pendingFullRefreshRef = useRef<{
+    scopeKey: string
+    resume: () => Promise<void>
+  } | null>(null)
+  const fullRefreshTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const forceActiveGoalRevealRef = useRef(false)
   const prevRevealedActiveGoalIdRef = useRef<string | null>(null)
   const pendingActiveGoalRouteSyncRef = useRef<string | null>(null)
@@ -1995,7 +2000,15 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     rewindPersonalCurriculum,
   ])
 
-  const handleSseUpdate = useCallback(async (payload?: { type?: string; nodeId?: string }) => {
+  useEffect(() => () => {
+    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
+    fullRefreshTimerRef.current = null
+    pendingFullRefreshRef.current = null
+    lastFullRefreshAtRef.current = 0
+  }, [learnerStateScopeKey])
+
+  const handleSseUpdate = useCallback(async function handleSseUpdate(payload?: { type?: string; nodeId?: string }) {
+    if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
     if (payload?.type === 'PREFERENCES_CHANGED') {
       const saving = preferenceSaveRefreshRef.current
       if (saving?.scopeKey === learnerStateScopeKey) {
@@ -2035,10 +2048,34 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       saving.receivedEvent = true
       return
     }
+    const resumePendingFullRefresh = () => {
+      const pending = pendingFullRefreshRef.current
+      pendingFullRefreshRef.current = null
+      if (pending?.scopeKey === currentLearnerStateScopeKeyRef.current) {
+        void pending.resume()
+      }
+    }
     const now = Date.now()
-    if (fullRefreshInFlightRef.current) return
-    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) return
+    if (fullRefreshInFlightRef.current) {
+      pendingFullRefreshRef.current = { scopeKey: learnerStateScopeKey, resume: () => handleSseUpdate(payload) }
+      return
+    }
+    if (!forceActiveGoalReveal && now - lastFullRefreshAtRef.current < 800) {
+      pendingFullRefreshRef.current = { scopeKey: learnerStateScopeKey, resume: () => handleSseUpdate(payload) }
+      if (fullRefreshTimerRef.current === null) {
+        const timer = setTimeout(() => {
+          if (fullRefreshTimerRef.current !== timer) return
+          fullRefreshTimerRef.current = null
+          resumePendingFullRefresh()
+        }, 800 - (now - lastFullRefreshAtRef.current))
+        fullRefreshTimerRef.current = timer
+      }
+      return
+    }
 
+    if (fullRefreshTimerRef.current !== null) clearTimeout(fullRefreshTimerRef.current)
+    fullRefreshTimerRef.current = null
+    pendingFullRefreshRef.current = null
     fullRefreshInFlightRef.current = true
     lastFullRefreshAtRef.current = now
     console.log('[SSE] 🔄 Triggering full refresh...')
@@ -2050,6 +2087,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         refreshLearningPlans(),
         onRefresh?.()
       ])
+      if (currentLearnerStateScopeKeyRef.current !== learnerStateScopeKey) return
       dispatchLearnerUiRefresh({
         skillpilotId,
         reason: payload?.type ?? 'FULL_REFRESH',
@@ -2058,6 +2096,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       console.log('[SSE] ✅ Refresh complete')
     } finally {
       fullRefreshInFlightRef.current = false
+      resumePendingFullRefresh()
     }
   }, [learnerStateScopeKey, refreshPreferences, refreshState, refreshLearningPlans, onRefresh, currentGoal?.id, skillpilotId])
 

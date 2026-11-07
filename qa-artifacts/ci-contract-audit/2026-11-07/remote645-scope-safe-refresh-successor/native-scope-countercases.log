@@ -1,0 +1,33 @@
+[SSE] 🔄 Triggering full refresh...
+[SSE] 🔄 Triggering full refresh...
+[SSE] ✅ Refresh complete
+[SSE] 🔄 Triggering full refresh...
+[SSE] ✅ Refresh complete
+[SSE] 🔄 Triggering full refresh...
+[SSE] ✅ Refresh complete
+[SSE] 🔄 Triggering full refresh...
+[SSE] ✅ Refresh complete
+{
+  "kind": "actual-production-callback-and-cleanup-native-countercases",
+  "candidateSha256": "3a7caba3e7a4987971e1fda9df0b688f06e54154954cd9e6a7117536c508d440",
+  "callbackSha256": "80590769816ebea384c31908c22a6cf2a04d6c3a5f4ec07a0342504464c9a72b",
+  "AInFlightThenB": {
+    "BRequests": 1,
+    "pending": null,
+    "timer": null,
+    "uiRefreshes": [
+      "B"
+    ]
+  },
+  "obsoleteATimerThenB": {
+    "BRequests": 2,
+    "pending": null,
+    "timer": null,
+    "uiRefreshes": [
+      "B",
+      "B"
+    ]
+  },
+  "result": "pass",
+  "limits": "Actual callbacks and cleanup extracted and transpiled; native promise scheduling, controlled timer scheduling for the obsolete-timer case. Browser lifecycle validation is separate."
+}

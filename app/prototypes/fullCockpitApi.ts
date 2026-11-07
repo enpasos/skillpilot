@@ -332,7 +332,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       const { strategy, ...prefs } = body
       snapshot = { ...snapshot, profile: { ...snapshot.profile, ...prefs,
         ...(strategy === 'RANDOM' || strategy === 'SEQUENTIAL' ? { learningStrategy: strategy } : {}) } }
-      emit('PREFERENCES_UPDATED'); return json({})
+      emit('PREFERENCES_CHANGED'); return json({})
     }
     if (suffix === '/personal-curriculum' && method === 'PUT') {
       snapshot = { ...snapshot, profile: { ...snapshot.profile, personalCurriculum: JSON.stringify(body) } }
