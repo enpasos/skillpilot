@@ -1,0 +1,420 @@
+{
+  "kind": "Author material consistency and actual local execution; not independent subject approval",
+  "normal": [
+    {
+      "initial": 2,
+      "input": "2,1",
+      "expected": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "actual": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "4",
+      "expected": {
+        "output": "Gebucht: 4; frei: 0",
+        "end": 6
+      },
+      "actual": {
+        "output": "Gebucht: 4; frei: 0",
+        "end": 6
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "5",
+      "expected": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "1",
+      "expected": {
+        "output": "Gebucht: 1; frei: 3",
+        "end": 3
+      },
+      "actual": {
+        "output": "Gebucht: 1; frei: 3",
+        "end": 3
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "6",
+      "expected": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "2,3",
+      "expected": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Nicht genug Plätze.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "2,x",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "2,,1",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "   ",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "0",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "7",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "1.5",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "Infinity",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": " 2 , 1 ",
+      "expected": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "actual": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "2e0",
+      "expected": {
+        "output": "Gebucht: 2; frei: 2",
+        "end": 4
+      },
+      "actual": {
+        "output": "Gebucht: 2; frei: 2",
+        "end": 4
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "0x2",
+      "expected": {
+        "output": "Gebucht: 2; frei: 2",
+        "end": 4
+      },
+      "actual": {
+        "output": "Gebucht: 2; frei: 2",
+        "end": 4
+      },
+      "pass": true
+    },
+    {
+      "initial": 2,
+      "input": "-1",
+      "expected": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "actual": {
+        "output": "Ungültige Eingabe.",
+        "end": 2
+      },
+      "pass": true
+    },
+    {
+      "kind": "sequential",
+      "initial": 2,
+      "input": "2,1",
+      "expected": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "actual": {
+        "output": "Gebucht: 3; frei: 1",
+        "end": 5
+      },
+      "pass": true
+    },
+    {
+      "kind": "sequential",
+      "initial": 5,
+      "input": "1",
+      "expected": {
+        "output": "Gebucht: 1; frei: 0",
+        "end": 6
+      },
+      "actual": {
+        "output": "Gebucht: 1; frei: 0",
+        "end": 6
+      },
+      "pass": true
+    },
+    {
+      "kind": "sequential",
+      "initial": 6,
+      "input": "1",
+      "expected": {
+        "output": "Nicht genug Plätze.",
+        "end": 6
+      },
+      "actual": {
+        "output": "Nicht genug Plätze.",
+        "end": 6
+      },
+      "pass": true
+    }
+  ],
+  "counterexamples": [
+    {
+      "kind": "actual-original-code",
+      "input": "2,1",
+      "before": {
+        "output": "Nicht genug Plätze.",
+        "state": 2,
+        "type": "number"
+      },
+      "after": {
+        "output": "Gebucht: 3; frei: 1",
+        "state": 5,
+        "type": "number"
+      }
+    },
+    {
+      "kind": "actual-original-code",
+      "input": "4",
+      "before": {
+        "output": "Nicht genug Plätze.",
+        "state": 2,
+        "type": "number"
+      },
+      "after": {
+        "output": "Gebucht: 4; frei: 0",
+        "state": 6,
+        "type": "number"
+      }
+    },
+    {
+      "kind": "actual-original-code",
+      "input": "2",
+      "before": {
+        "output": "Gebucht: 02; frei: 4",
+        "state": "02",
+        "type": "string"
+      },
+      "after": {
+        "output": "Gebucht: 2; frei: 2",
+        "state": 4,
+        "type": "number"
+      }
+    },
+    {
+      "kind": "isolated-code-mutant",
+      "name": "string-addition",
+      "input": "2,1",
+      "actual": "Nicht genug Plätze.",
+      "state": 2,
+      "rejected": true
+    },
+    {
+      "kind": "isolated-code-mutant",
+      "name": "boundary",
+      "input": "4",
+      "actual": "Nicht genug Plätze.",
+      "state": 2,
+      "rejected": true
+    },
+    {
+      "kind": "isolated-code-mutant",
+      "name": "state-overwrite",
+      "input": "2",
+      "actual": "Gebucht: 2; frei: 4",
+      "state": 2,
+      "rejected": true
+    }
+  ],
+  "trace": [
+    {
+      "teil": "2",
+      "n": 2,
+      "summe": "02",
+      "type": "string"
+    },
+    {
+      "teil": "1",
+      "n": 1,
+      "summe": "021",
+      "type": "string"
+    }
+  ],
+  "browser": {
+    "form": {
+      "form": {
+        "method": "post",
+        "entries": [
+          [
+            "name",
+            "Lea"
+          ],
+          [
+            "termin",
+            "fr"
+          ]
+        ],
+        "display": "grid",
+        "columns": "576px",
+        "children": [
+          "DIV",
+          "DIV",
+          "BUTTON"
+        ]
+      },
+      "actualRequest": {
+        "method": "POST",
+        "contentType": "application/x-www-form-urlencoded",
+        "body": "name=Lea&termin=fr"
+      },
+      "pass": true
+    },
+    "gui": {
+      "sequence": [
+        {
+          "input": "2,1",
+          "expected": "Gebucht: 3; frei: 1",
+          "actual": "Gebucht: 3; frei: 1"
+        },
+        {
+          "input": "1",
+          "expected": "Gebucht: 1; frei: 0",
+          "actual": "Gebucht: 1; frei: 0"
+        },
+        {
+          "input": "1",
+          "expected": "Nicht genug Plätze.",
+          "actual": "Nicht genug Plätze."
+        },
+        {
+          "input": "",
+          "expected": "Ungültige Eingabe.",
+          "actual": "Ungültige Eingabe."
+        }
+      ],
+      "pageErrors": [],
+      "pass": true
+    },
+    "limit": "Actual local Chromium at800x700 for functional execution only; no host/mobile/visualization QA or learner trial."
+  }
+}

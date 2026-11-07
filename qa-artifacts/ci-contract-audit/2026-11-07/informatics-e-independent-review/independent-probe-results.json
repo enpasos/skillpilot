@@ -1,0 +1,156 @@
+{
+  "kind": "Independent bounded material counterprobes; neither full CQR nor host/learner acceptance",
+  "materialReceipt": "bb752c90759b2c7dd56b243e97ff895e5f450896ecd058cd09d4be8fa50ebca8",
+  "inventoryFilesRehashed": 23,
+  "freshCases": [
+    {
+      "input": "2, ",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": ",2",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": "2,NaN",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": "2,1e999",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": "6,x",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": "2,3,0",
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 2,
+      "pass": true
+    },
+    {
+      "input": "2e0,0b10",
+      "expected": "Gebucht: 4; frei: 0",
+      "actual": "Gebucht: 4; frei: 0",
+      "end": 6,
+      "pass": true
+    },
+    {
+      "input": "+2,02",
+      "expected": "Gebucht: 4; frei: 0",
+      "actual": "Gebucht: 4; frei: 0",
+      "end": 6,
+      "pass": true
+    },
+    {
+      "input": "3,1",
+      "expected": "Gebucht: 4; frei: 0",
+      "actual": "Gebucht: 4; frei: 0",
+      "end": 6,
+      "pass": true
+    },
+    {
+      "input": "0b10,0o1",
+      "expected": "Gebucht: 3; frei: 1",
+      "actual": "Gebucht: 3; frei: 1",
+      "end": 5,
+      "pass": true
+    }
+  ],
+  "sequence": [
+    {
+      "input": "2",
+      "initial": 2,
+      "expected": "Gebucht: 2; frei: 2",
+      "actual": "Gebucht: 2; frei: 2",
+      "end": 4,
+      "pass": true
+    },
+    {
+      "input": "1,x",
+      "initial": 4,
+      "expected": "Ungültige Eingabe.",
+      "actual": "Ungültige Eingabe.",
+      "end": 4,
+      "pass": true
+    },
+    {
+      "input": "1,2",
+      "initial": 4,
+      "expected": "Nicht genug Plätze.",
+      "actual": "Nicht genug Plätze.",
+      "end": 4,
+      "pass": true
+    },
+    {
+      "input": "2",
+      "initial": 4,
+      "expected": "Gebucht: 2; frei: 0",
+      "actual": "Gebucht: 2; frei: 0",
+      "end": 6,
+      "pass": true
+    },
+    {
+      "input": "1",
+      "initial": 6,
+      "expected": "Nicht genug Plätze.",
+      "actual": "Nicht genug Plätze.",
+      "end": 6,
+      "pass": true
+    }
+  ],
+  "purity": [
+    {
+      "input": "1,1",
+      "actual": 2,
+      "stateUnchanged": true
+    },
+    {
+      "input": "2,x",
+      "actual": null,
+      "stateUnchanged": true
+    }
+  ],
+  "browser": {
+    "geometry": {
+      "computedWidth": "576px",
+      "borderBoxWidth": 608,
+      "paddingLeft": "16px",
+      "paddingRight": "16px",
+      "boxSizing": "content-box"
+    },
+    "serialization": {
+      "entries": [
+        [
+          "name",
+          "Mia & Co"
+        ],
+        [
+          "termin",
+          "fr"
+        ]
+      ],
+      "body": "name=Mia+%26+Co&termin=fr",
+      "labelMatch": true,
+      "columns": "576px"
+    },
+    "limits": "One 800x700 local setContent check; submission/GUI execution evidence reused only from author receipt; no viewport, host or learner claim."
+  }
+}

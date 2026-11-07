@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>AG-Anfrage</title>
+  <link rel="stylesheet" href="web-solution.css">
+</head>
+<body>
+  <main>
+    <h1>AG-Anfrage</h1>
+    <p>Informationen stehen bei <a href="/info">unserer AG</a>.</p>
+    <section>
+      <h2>Termine</h2>
+      <ul><li>Donnerstag</li><li>Freitag</li></ul>
+    </section>
+    <form action="/anmeldung" method="post">
+      <div class="feld">
+        <label for="person">Name</label>
+        <input id="person" name="name" type="text" required>
+      </div>
+      <div class="feld">
+        <label for="termin">Termin</label>
+        <select id="termin" name="termin">
+          <option value="do">Donnerstag</option>
+          <option value="fr">Freitag</option>
+        </select>
+      </div>
+      <button type="submit">Anfragen</button>
+    </form>
+  </main>
+</body>
+</html>

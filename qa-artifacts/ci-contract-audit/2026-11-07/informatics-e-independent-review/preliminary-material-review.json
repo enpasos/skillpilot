@@ -1,0 +1,259 @@
+{
+  "kind": "Independent subject and scope review: material stage, pending revised final candidate",
+  "reviewer": "/root/informatics_e_independent_review",
+  "notAuthorOrDoing": true,
+  "designReceiptSha256": "bb752c90759b2c7dd56b243e97ff895e5f450896ecd058cd09d4be8fa50ebca8",
+  "designInventorySha256": "da0abc2ff42044b23e6757aafe9dc4fe2948800f2fe591501febf699d2e34c19",
+  "officialPdf": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-informatik.pdf",
+    "sha256": "af0234cb868eafdc459d2e85e96e7ebf1459accaa74e9d34bc4beaf937042f85",
+    "printedPagesActuallyRead": [
+      30,
+      31,
+      32
+    ],
+    "method": "pdftotext -layout original local PDF; sourceSnapshot rows not substituted for original text"
+  },
+  "materialFilesActuallyRead": [
+    "materials/netz-task.md",
+    "materials/netz-solution.md",
+    "materials/web-task.md",
+    "materials/web-solution.md",
+    "materials/web-solution.html",
+    "materials/web-solution.css",
+    "materials/code-task.md",
+    "materials/code-solution.md",
+    "materials/code-broken.mjs",
+    "materials/code-solution.mjs",
+    "materials/code-solution.html"
+  ],
+  "findings": [
+    {
+      "id": "E-REVIEW-01",
+      "severity": "material_coverage_blocker_until_corrected",
+      "examId": "ea2ce31f-a0c7-5102-9213-ee1db5b2d475",
+      "goalId": "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+      "criterion": "N2.2",
+      "problem": "The current ordinary goal requires explanation of the layers. Task, model and scoring require protocol assignment only. A fully correct table with no layer-function explanation earns the entire criterion. Other criteria do not require transport/network-access layer functions.",
+      "counteranswer": "Anwendung: HTTP/DNS; Transport: TCP/UDP; Internet: IP; Netzzugang: Ethernet.",
+      "minimalRemedy": "Require one short layer-function explanation per layer in task, model answer and N2.2 scoring. Keep four coverage atoms and 12 criteria. No segmentation, transport-guarantee or OSI extension."
+    },
+    {
+      "id": "E-REVIEW-02",
+      "severity": "rubric_alignment_required",
+      "examId": "6aa77baf-a199-5c66-b07c-8dc23439acca",
+      "criterion": "P3.1",
+      "problem": "The rubric explicitly requires distinguishing number, string, field and Boolean expression, but task 3 explicitly asks data flow and state only. At an all-criteria threshold the expectation should be stated.",
+      "minimalRemedy": "Add the already assessed distinctions explicitly to task 3; no new goal or criterion."
+    },
+    {
+      "id": "E-REVIEW-03",
+      "severity": "nonblocking_wording_clarification",
+      "examId": "c24236b2-d783-53be-84d5-96b4f4ef8159",
+      "criterion": "W3.1",
+      "problem": "36rem means content width in the sample; padding makes the actual border-box 38rem. The wording width could be misunderstood.",
+      "minimalRemedy": "Say Inhaltsbreite in task 3. Keeping the standard CSS content-box interpretation is otherwise consistent."
+    }
+  ],
+  "coverageReview": [
+    {
+      "goalId": "ca07458c-1fc1-5ca1-b226-69f59e2d62d3",
+      "title": "Aufbau von Rechnernetzen erklären",
+      "task": "netz",
+      "rubricCriteria": [
+        "N1.1",
+        "N1.2",
+        "N1.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "6539320a-aa0e-59e5-a34a-55f1a8b78337",
+      "title": "TCP/IP-Referenzmodell beschreiben",
+      "task": "netz",
+      "rubricCriteria": [
+        "N2.1",
+        "N2.2",
+        "N2.3"
+      ],
+      "decision": "REVISE_N2_2_EXPLANATION_REQUIRED",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "ace0c141-9e7c-546e-914f-64c24d42d85d",
+      "title": "Client-Server-Dienste analysieren",
+      "task": "netz",
+      "rubricCriteria": [
+        "N3.1",
+        "N3.2",
+        "N3.3",
+        "N4.1"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "6c4fd4a4-b245-512f-99ec-4ec6d1e37126",
+      "title": "Sicherheitsaspekte in Netzen reflektieren",
+      "task": "netz",
+      "rubricCriteria": [
+        "N4.1",
+        "N4.2",
+        "N4.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "757256e2-eb59-572f-a403-e1b1d53e37d4",
+      "title": "HTML-Grundgerüst anwenden",
+      "task": "web",
+      "rubricCriteria": [
+        "W1.1",
+        "W1.2"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "1a03f790-a88f-57af-a618-80249960b63b",
+      "title": "Gestaltung mit CSS planen",
+      "task": "web",
+      "rubricCriteria": [
+        "W3.1",
+        "W3.2",
+        "W3.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "2897717b-e143-540d-9c7a-6d2120807675",
+      "title": "Formulare erstellen und Daten übertragen",
+      "task": "web",
+      "rubricCriteria": [
+        "W1.2",
+        "W1.3",
+        "W4.1",
+        "W4.2"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "4e0d72e9-2a30-5dc0-a856-1a2e2e353b03",
+      "title": "Dokumentbaum analysieren",
+      "task": "web",
+      "rubricCriteria": [
+        "W2.1",
+        "W2.2"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "18317e31-71f7-4e4a-b18c-f61e2b25769d",
+      "title": "Grundlegende Datentypen und Variablen nutzen",
+      "task": "code",
+      "rubricCriteria": [
+        "P2.1",
+        "P2.2",
+        "P3.1"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "2aaefe0b-3e56-477e-94f0-bb05fa035ed5",
+      "title": "Attributwerte ändern und Objektzustände deuten",
+      "task": "code",
+      "rubricCriteria": [
+        "P1.3",
+        "P3.2"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "5ca1960e-6b02-5679-b271-043a5c29b189",
+      "title": "Kontrollstrukturen anwenden",
+      "task": "code",
+      "rubricCriteria": [
+        "P2.1",
+        "P2.2",
+        "P2.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "5961bae4-87c0-52a3-b9cc-56a71b0d5abb",
+      "title": "Prozeduren und Funktionen entwerfen",
+      "task": "code",
+      "rubricCriteria": [
+        "P2.3",
+        "P2.4"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "d5914986-fba8-56cc-99be-d9560ac7666d",
+      "title": "Programme testen und debuggen",
+      "task": "code",
+      "rubricCriteria": [
+        "P1.1",
+        "P1.2",
+        "P1.3",
+        "P4.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "8f1a342c-5976-5473-b0ee-c0180afd5861",
+      "title": "Teststrategien dokumentieren",
+      "task": "code",
+      "rubricCriteria": [
+        "P4.1",
+        "P4.2",
+        "P4.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    },
+    {
+      "goalId": "a45e73d2-db0d-50b0-a984-44a5315474ce",
+      "title": "Vorgegebenen Code anpassen",
+      "task": "code",
+      "rubricCriteria": [
+        "P2.4",
+        "P4.3"
+      ],
+      "decision": "MATERIAL_COVERAGE_PLAUSIBLE_IN_FINITE_TASK",
+      "limit": "Independent ordinary-goal task coverage judgement only; current exact integration not reviewed yet."
+    }
+  ],
+  "scopeDesignAssessment": {
+    "supported": "Three own HE-compatible finite E tasks; HE and technical Own GK/LK. No all-E curricular-completeness or statewide official exam claim.",
+    "residualOrdinaryGoals": 10,
+    "ordinaryDefinitionsPreservedAsDesignCondition": 25,
+    "newExamIdentities": 3,
+    "foreignViewsWithdrawalRequired": 15,
+    "boundaryRequired": "Set applicabilityMappingInheritance=boundary at HE E parent to stop broad foreign ancestor mapping leakage; preserve direct HE mapping and child-union upward. Verify against final candidate and native results.",
+    "finalIntegrationDecision": "PENDING_FINAL_SEAL"
+  },
+  "reusedChecks": {
+    "authorMaterialReceiptSha256": "63e90f5330d0e7d34ea99eaef212cbb9a909965454cf2b96f1e8bbe50509a9d6",
+    "authorNativeScopeReceiptSha256": "ab7b8fd9af2fd7b9c58a5f204c1e1e936df75d74046fb1c32d0899c3283833bb",
+    "limit": "Reused author evidence only; no fresh full CQR/51-scope/SourceA run. My fresh probes are separately recorded."
+  },
+  "freshProbeResultsSha256": "d7d02c605218068d19e96275e81f7eb97e1cea1b7e15e2e0a351f328323e6b4c",
+  "approvalLimits": [
+    "No current-source acceptance before corrected final candidate and exact seal.",
+    "No M6/M7, Human Approval, host or learner acceptance, publication or deployment.",
+    "Four other placeholders and Own20 remain outside this material review.",
+    "No result compatibility, aliases, backups or result migration requested or reviewed."
+  ]
+}
