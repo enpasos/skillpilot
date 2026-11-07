@@ -1290,25 +1290,30 @@ public class LearnerServiceTest {
     void earlierWorkOnFutureGoalsCoversQuotaAndStopsAutomaticExtraWork() {
         prepareRepresentationLearningPlan();
         LocalDate today = LocalDate.parse("2026-09-02");
-        replaceRepresentationLearningPlanSchedule(today, today.plusDays(1),
+        replaceRepresentationLearningPlanSchedule(today, today.plusDays(2),
                 List.of(CANONICAL_CHOOSE_REPRESENTATION_ID,
                         CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_READ_REPRESENTATION_ID));
         // This mastery was acquired after the plan baseline, with no known completion
         // timestamp. It contributes to I, never to H, and stays in the fixed plan set.
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         var fixedPlan = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, today);
+        assertThat(fixedPlan.blocks()).singleElement().satisfies(block ->
+                assertThat(block.atomicGoalIds()).containsExactlyInAnyOrder(
+                        CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID,
+                        CANONICAL_READ_REPRESENTATION_ID));
+        assertThat(LearnerLearningPlanService.dueAtomicGoalIdsForSchedule(fixedPlan.blocks(), today))
+                .containsExactly(CANONICAL_CHOOSE_REPRESENTATION_ID);
         masteryRepository.saveAndFlush(new Mastery(learner, CANONICAL_READ_REPRESENTATION_ID, 1.0));
-        // READ is CREATE's only consumer. Mastering READ also ends CREATE's
-        // demand, so the default I now credits both without inventing an event
-        // or mastery for CREATE. CHOOSE still has other open consumers.
+        // Open assessments retain CREATE through the mastered READ intermediate.
+        // Only explicit READ contributes to I; no date event contributes to H.
+        // Three goals over three days give today's quota of one.
         assertThat(learnerService.getCoachLearnerState(learnerId).levelCompletion().waivedTargetGoalIds())
-                .contains(CANONICAL_CREATE_REPRESENTATION_ID)
-                .doesNotContain(CANONICAL_CHOOSE_REPRESENTATION_ID);
+                .doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID, CANONICAL_CHOOSE_REPRESENTATION_ID);
         assertThat(learnerService.getMastery(learnerId)
                 .getOrDefault(CANONICAL_CREATE_REPRESENTATION_ID, 0.0)).isZero();
         assertThat(learnerService.getGoalCompletionsOnDate(learnerId, today)).isEmpty();
         var before = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(2);
+        assertThat(before.erfuelltesPeriodenziel()).isEqualTo(1);
         assertThat(before.offenesPeriodenpensum()).isZero();
         assertThat(before.rohsaldo()).isZero();
         learnerService.setPreferences(learnerId, "SEQUENTIAL", true, null, null, true);
@@ -1320,7 +1325,7 @@ public class LearnerServiceTest {
                 Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
 
         var balance = subjectBalance(today, CANONICAL_MATH_LANDSCAPE_ID);
-        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(2);
+        assertThat(balance.erfuelltesPeriodenziel()).isEqualTo(1);
         assertThat(balance.offenesPeriodenpensum()).isZero();
         assertThat(balance.vorsprung()).isEqualTo(1);
         assertThat(completion.activeGoal()).isNull();
