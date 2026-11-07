@@ -786,3 +786,30 @@ Verdrahtung und die vollständige Bestandsqualifikation bleiben offen. Die
 vorhandenen N11/N12-Servicegegenfälle sind in der Laufzeitmatrix nun präzise
 nachgeführt; es wurden dafür keine doppelten Tests oder neue Masterylogik
 geschaffen. Die drei Math-Korrekturen bleiben unangewandt.
+
+## Quellenpass am 7. November und Grenzen der neuen Bausteine
+
+Der [vollständige Quellenbeweis auf feca](ci-graph-repairs/source-identity-feca-source-rebase-2026-11-07.md)
+ist nach Generator und unabhängiger Neuprüfung grün: 593 Quellen, 8.601
+gebundene Dokumente und unveränderte 164 Regeln. Die bisherigen 8.591
+Dokumentbindungen und der ganze Katalog bleiben exakt gleich; zehn neue
+historische Belege werden durch die vorhandene Archivregel bytegleich
+gebunden. Der zuvor rote cb128-Generatorlauf bleibt erhalten. Zwei zusätzliche
+Rohlogs wurden mit alten internen Dateilocators archiviert; ihre tatsächlichen
+Fehler und sieben Floorverletzungen wurden nicht verändert.
+
+Der getrennte [A/M-Eingabekontext](ci-graph-repairs/source-identity-am-root-technical-followup-2026-11-07.json)
+besteht 35 tatsächlich wiederholte Kontrollen mit 63 nativen Kandidatenviews.
+Er bindet nur ausgewählte originale Source-/Reviewbytes und die exakte
+Kernelprojektion; normale unadaptierte Kandidatenprüfungen bleiben `warn`.
+Vollfactory, tatsächliche vollständige Lese-/Subprozessintegration, physische
+Kandidaten-QA und A/B-Aktivierung bleiben offen. Die vollständige V-Bestands-
+qualifikation läuft; bestehende V-/Deep-/M7-Verbraucher sind noch nicht an die
+neue Originalkontextbindung angeschlossen.
+
+PR #84 ist auf `cb1289bf…` gesichert. Auf diesem neuen Remote-Kopf bestehen
+bereits Docs, Assessment, OAuth, Gemini und Apps-CI. Damit sind die beiden
+zuvor roten Docs-/Apps-Einbindungen auch remote bestätigt. Der Hauptlauf war
+bei diesem Zwischenstand noch nicht terminal; die sieben tatsächlichen
+Fachfloor-Reparaturen sind weiterhin offen. Spätere lokale Quellen-/QA-
+Codecheckpoints werden hierdurch nicht als bereits remote geprüft ausgegeben.

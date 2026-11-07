@@ -36,9 +36,10 @@ bleibt historisch erhalten.
   die spätere Readerkorrektur und weitere Formate sind getrennte Stände.
   Bestehende V-/Deep-/M7-Verbraucher sind noch nicht angeschlossen, die
   vollständige Bestandsqualifikation läuft.
-- [Aktuelle Source-A-Neuverifikation](source-identity-db9c-source-rebase-2026-11-06.md):
-  593 Quellen, 8.591 exakt gebundene Dokumente und 164 unveränderte Regeln;
-  sieben historische Belege sind bytegleich archiviert, v1 bleibt unverändert.
+- [Aktuelle Source-A-Neuverifikation](source-identity-feca-source-rebase-2026-11-07.md):
+  593 Quellen, 8.601 exakt gebundene Dokumente und 164 unveränderte Regeln;
+  die bisherigen 8.591 Bindungen bleiben exakt gleich, zehn historische Belege
+  kommen ohne neue Ausnahme hinzu. Der rote cb128-Lauf bleibt erhalten.
   Das ist weiterhin keine tatsächliche vollständige Kandidaten-QA oder Aktivierung.
 - [Privates Capture nach unabhängigem Gegenreview](source-identity-private-capture-peer-repair-2026-11-06.md):
   vier echte Grenzfehler geschlossen, Originalstände erhalten; der
