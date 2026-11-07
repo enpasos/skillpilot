@@ -6,7 +6,7 @@ import { gunzipSync } from 'node:zlib'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import {
   collectMemoryDeckEvidence, collectMemoryVisibilityReport, evaluateMemoryCardReview,
   evaluateSemanticAtomicity, fingerprintGoal, validateMemoryCardRecordShape, validateMemoryCardReviewCardRecordShape,

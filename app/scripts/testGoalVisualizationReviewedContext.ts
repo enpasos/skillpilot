@@ -8,18 +8,20 @@ import {
   createVisualizationContextVerifier, hasVerifiedVisualizationContext, parseVisualizationReviewJson,
   type VisualizationContextQualification, type VisualizationCurrentContext,
 } from './goalVisualizationReviewedContext'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+type LocalizedLandscape = Omit<SkillLandscape, 'goals'> & { goals: Array<LearningGoal & { titleEn?: string; descriptionEn?: string }> }
 
 const root = resolve(import.meta.dirname, '../..')
 const packet = resolve(root, 'qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families')
-const census = JSON.parse(readFileSync(resolve(packet, 'family-census.json'), 'utf8'))
+const census: { acceptedRepositoryCommit: string; candidateReceipts: Array<{ path: string; sha256: string }> } = JSON.parse(readFileSync(resolve(packet, 'family-census.json'), 'utf8'))
 const verify = createVisualizationContextVerifier({ acceptedRepositoryCommit: census.acceptedRepositoryCommit })
 const sha = (raw: Buffer): string => createHash('sha256').update(raw).digest('hex')
 const actualContext = (receipt: VisualizationContextQualification): VisualizationCurrentContext => {
   const name = receipt.context.subject === 'mathematik' ? 'MATHEMATIK' : 'WIRTSCHAFT'
-  const source = JSON.parse(readFileSync(resolve(root, `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`), 'utf8'))
-  const goal = source.goals.find((goal: any) => goal.id === receipt.context.goalId)
+  const source: LocalizedLandscape = JSON.parse(readFileSync(resolve(root, `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${name}.de.json`), 'utf8'))
+  const goal = source.goals.find(goal => goal.id === receipt.context.goalId)
   assert.ok(goal)
-  const primary = goal.resourceLinks.filter((link: any) => link.type === 'goal-visualization' && (!link.role || link.role === 'primary'))
+  const primary = (goal.resourceLinks ?? []).filter(link => link.type === 'goal-visualization' && (!link.role || link.role === 'primary'))
   assert.equal(primary.length, 1)
   const imageUrl = primary[0].url
   const publicAssetPath = 'app/public' + imageUrl
@@ -29,11 +31,11 @@ const actualContext = (receipt: VisualizationContextQualification): Visualizatio
     canonicalAssetPath: 'curricula/DE/Gymnasium/visualizations/' + imageUrl.slice('/assets/goal-visualizations/'.length),
     assetSha256: 'sha256:' + sha(readFileSync(resolve(root, publicAssetPath))) }
 }
-const selected = census.candidateReceipts.map((entry: any) => ({ ref: { path: entry.path, sha256: entry.sha256 },
+const selected = census.candidateReceipts.map(entry => ({ ref: { path: entry.path, sha256: entry.sha256 },
   receipt: JSON.parse(readFileSync(resolve(root, entry.path), 'utf8')) as VisualizationContextQualification }))
 assert.equal(selected.length, 18, 'The real finite independently qualified family examples must be present.')
-const matrix = selected.find((row: any) => row.receipt.reviewProfile === 'matrix-candidate-v1')!
-const economics = selected.find((row: any) => row.receipt.reviewProfile === 'economics-native-v1')!
+const matrix = selected.find(row => row.receipt.reviewProfile === 'matrix-candidate-v1')!
+const economics = selected.find(row => row.receipt.reviewProfile === 'economics-native-v1')!
 
 if (process.argv.includes('--private-original-byte-probe') || process.argv.includes('--private-current-asset-probe')) {
   const context = actualContext(matrix.receipt)
@@ -77,7 +79,7 @@ if (process.argv.includes('--private-original-byte-probe') || process.argv.inclu
   ]) deny(matrix.ref, { ...current, ...patch }, /Current goal\/image context differs/u)
   const scratch = mkdtempSync(resolve(root, 'qa-artifacts/ci-contract-audit/2026-11-06/v-context-temporary-test-'))
   try {
-    const edited = (mutate: (receipt: VisualizationContextQualification & Record<string, any>) => void) => {
+    const edited = (mutate: (receipt: VisualizationContextQualification & { verified?: boolean }) => void) => {
       const receipt = structuredClone(matrix.receipt)
       mutate(receipt)
       const raw = Buffer.from(JSON.stringify(receipt)), path = resolve(scratch, 'qualification.json')

@@ -5,16 +5,22 @@ import { basename, resolve, dirname } from 'node:path'
 import { createHash } from 'node:crypto'
 import { spawnSync } from 'node:child_process'
 import { deflateSync } from 'node:zlib'
-import { createVisualizationContextVerifier } from './goalVisualizationReviewedContext'
+import { createVisualizationContextVerifier, type VisualizationContextQualification, type VisualizationCurrentContext,
+  type VisualizationContextValidation, type VisualizationReviewedContext } from './goalVisualizationReviewedContext'
+import type { SkillLandscape } from '../src/landscapeTypes'
 
 const root = resolve(import.meta.dirname, '../..')
-const census = JSON.parse(readFileSync(resolve(root, 'qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/family-census.json'), 'utf8'))
-const row = census.candidateReceipts.map((r: any) => ({ ...r, receipt: JSON.parse(readFileSync(resolve(root, r.path), 'utf8')) }))
-  .find((r: any) => r.receipt.reviewProfile === 'matrix-candidate-v1')
+const census: { candidateReceipts: Array<{ path: string; sha256: string }> } = JSON.parse(readFileSync(resolve(root, 'qa-artifacts/ci-contract-audit/2026-11-06/visualization-context-first-two-families/family-census.json'), 'utf8'))
+const row = census.candidateReceipts.map(r => {
+  const receipt: VisualizationContextQualification = JSON.parse(readFileSync(resolve(root, r.path), 'utf8'))
+  return { ...r, receipt }
+}).find(r => r.receipt.reviewProfile === 'matrix-candidate-v1')
+if (!row) throw new Error('Actual original matrix receipt is absent')
 const original = row.receipt
 const scratch = mkdtempSync('/dev/shm/skillpilot-v-context-peer-')
 const sha = (raw: Buffer) => createHash('sha256').update(raw).digest('hex')
-const outputRows: any[] = []
+const outputRows: Array<{ id: string; label: string; expectedOk: boolean; actualOk: boolean;
+  result: { ok: boolean; context?: Readonly<VisualizationReviewedContext>; status?: string; issues?: string[] } }> = []
 const local = (p: string, raw: Buffer | string) => { mkdirSync(dirname(resolve(scratch, p)), { recursive: true }); writeFileSync(resolve(scratch, p), raw) }
 const git = (...args: string[]): Buffer => {
   const p = spawnSync('git', ['-C', scratch, ...args], { maxBuffer: 16 * 1024 * 1024 })
@@ -28,22 +34,23 @@ const commit = (message: string) => {
 }
 const oldSource = spawnSync('git', ['--no-replace-objects', '-C', root, 'show', original.ownerSource.gitCommit + ':' + original.ownerSource.path], { maxBuffer: 16 * 1024 * 1024 }).stdout
 const originalReview = readFileSync(resolve(root, original.originalReview.path))
-const actualSource = JSON.parse(readFileSync(resolve(root, original.ownerSource.path), 'utf8'))
-const goal = actualSource.goals.find((g: any) => g.id === original.context.goalId)
-const primary = goal.resourceLinks.filter((l: any) => l.type === 'goal-visualization' && (!l.role || l.role === 'primary'))
+const actualSource: SkillLandscape = JSON.parse(readFileSync(resolve(root, original.ownerSource.path), 'utf8'))
+const goal = actualSource.goals.find(g => g.id === original.context.goalId)
+if (!goal) throw new Error('Actual reviewed goal is absent')
+const primary = (goal.resourceLinks ?? []).filter(l => l.type === 'goal-visualization' && (!l.role || l.role === 'primary'))
 if (primary.length !== 1) throw new Error('Ambiguous actual primary asset')
 const imageUrl = primary[0].url
-const current: any = { ...original.context, imageUrl, publicAssetPath: 'app/public' + imageUrl,
+const current: VisualizationCurrentContext = { ...original.context, imageUrl, publicAssetPath: 'app/public' + imageUrl,
   canonicalAssetPath: 'curricula/DE/Gymnasium/visualizations/' + imageUrl.slice('/assets/goal-visualizations/'.length) }
 const receiptAt = (base: string) => {
   const receipt = structuredClone(original)
-  for (const key of ['originalReview', 'originalInput', 'ownerSource', 'reviewedAsset']) receipt[key].gitCommit = base
+  for (const key of ['originalReview', 'originalInput', 'ownerSource', 'reviewedAsset'] as const) receipt[key].gitCommit = base
   return receipt
 }
-const run = (id: string, label: string, anchor: string, receipt: any, context: any, expectedOk: boolean) => {
+const run = (id: string, label: string, anchor: string, receipt: VisualizationContextQualification, context: VisualizationCurrentContext, expectedOk: boolean) => {
   const raw = Buffer.from(JSON.stringify(receipt))
   local('peer/receipt.json', raw)
-  let result: any
+  let result: VisualizationContextValidation | { ok: false; status: 'invalid-anchor'; issues: string[] }
   try {
     result = createVisualizationContextVerifier({ repositoryRoot: scratch, acceptedRepositoryCommit: anchor })({ path: 'peer/receipt.json', sha256: sha(raw) }, context)
   } catch (error) {
@@ -60,7 +67,7 @@ try {
   const receipt = receiptAt(base)
   run('VCTX-PEER-CONTROL', 'Genuine original review and image bytes in an isolated committed fixture', base, receipt, current, true)
 
-  const foreign = JSON.parse(oldSource.toString())
+  const foreign: SkillLandscape = JSON.parse(oldSource.toString())
   foreign.landscapeId = '11111111-2222-4333-8444-555555555555'
   const foreignRaw = Buffer.from(JSON.stringify(foreign))
   const foreignPath = 'qa-artifacts/foreign-owner-copy.json'
@@ -88,7 +95,7 @@ try {
   // The externally supplied base commit must keep its actual original tree even
   // when a local Git replacement ref redirects Git's ordinary object traversal.
   local(original.ownerSource.path, oldSource)
-  const forgedReview = JSON.parse(originalReview.toString())
+  const forgedReview: { goalSnapshot: { description: string } } = JSON.parse(originalReview.toString())
   forgedReview.goalSnapshot.description += ' Zusätzlich eine nie begutachtete neue Leistung.'
   const forgedRaw = Buffer.from(JSON.stringify(forgedReview))
   local(original.originalReview.path, forgedRaw)

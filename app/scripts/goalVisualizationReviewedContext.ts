@@ -7,6 +7,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import { normalizeGoalVisualizationSubject } from '../../scripts/goal_visualization_scope.mjs'
 import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from './lib/authenticatedGitEvidence'
+import { readEconomicsQ3Context } from './lib/goalVisualizationEconomicsQ3Contexts'
 
 export interface VisualizationReviewArtifact { path: string; gitCommit: string; sha256: string }
 export interface VisualizationReviewedContext {
@@ -20,7 +21,7 @@ export interface VisualizationContextReceiptReference { path: string; sha256: st
 export interface VisualizationContextQualification {
   schemaVersion: 1; kind: 'visualization-reviewed-context-qualification'
   normalization: 'skillpilot-visualization-display-whitespace-v1'
-  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1'
+  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1'
   context: VisualizationReviewedContext
   originalReview: VisualizationReviewArtifact; originalInput: VisualizationReviewArtifact
   ownerSource: VisualizationReviewArtifact; reviewedAsset: VisualizationReviewArtifact
@@ -44,11 +45,13 @@ addFormats(ajv)
 const validateSchema = ajv.compile(schema)
 const hash = (raw: Buffer): string => createHash('sha256').update(raw).digest('hex')
 const text = (value: unknown): string => String(value ?? '').replace(/\s+/gu, ' ').trim()
-const requireValue = (value: unknown, message: string): void => { if (!value) throw new Error(message) }
-const record = (value: unknown): Record<string, any> => {
-  requireValue(!!value && typeof value === 'object' && !Array.isArray(value), 'Expected object')
-  return value as Record<string, any>
+const requireValue: (value: unknown, message: string) => asserts value = (value, message) => { if (!value) throw new Error(message) }
+const isRecord = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value)
+const record = (value: unknown): Record<string, unknown> => {
+  requireValue(isRecord(value), 'Expected object')
+  return value
 }
+const suppliedString = (value: unknown): string => { requireValue(typeof value === 'string', 'Original supplied text must be a string'); return value }
 const sha = (value: unknown): string => {
   requireValue(typeof value === 'string' && /^(?:sha256:)?[0-9a-f]{64}$/u.test(value), 'Invalid original asset hash')
   return String(value).replace(/^sha256:/u, '')
@@ -100,6 +103,10 @@ const reviewOwners = {
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
   'diagram-current-b-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
+  'economics-q3-embedded-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
+    sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
+  'economics-q3-trade-finance-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
+    sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
 } as const
 const sameContext = (left: VisualizationReviewedContext, right: VisualizationReviewedContext): boolean =>
   contextKeys.every(key => !(key in left) || (key === 'landscapeId' || key === 'goalId' || key === 'subject' || key === 'assetSha256'
@@ -128,7 +135,8 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
         return captures.get(path)!
       }
       const ref = record(reference)
-      requireValue(Object.keys(ref).sort().join(',') === 'path,sha256' && /^[0-9a-f]{64}$/u.test(ref.sha256), 'Invalid context receipt reference')
+      requireValue(Object.keys(ref).sort().join(',') === 'path,sha256' && typeof ref.path === 'string'
+        && typeof ref.sha256 === 'string' && /^[0-9a-f]{64}$/u.test(ref.sha256), 'Invalid context receipt reference')
       const receiptRaw = currentBytes(ref.path)
       requireValue(hash(receiptRaw) === ref.sha256, 'Context receipt byte hash differs')
       const parsed = parseVisualizationReviewJson(receiptRaw)
@@ -149,60 +157,68 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
       requireValue(receipt.context.landscapeId === profileOwner.landscapeId && receipt.context.subject === profileOwner.subject
         && receipt.ownerSource.path === profileOwner.sourcePath && receipt.ownerSource.gitCommit === receipt.originalReview.gitCommit,
       'Original owner/goal/subject association differs from the closed review profile')
-      const originals = Array.isArray(source.goals) ? source.goals.filter((goal: any) => goal?.id === receipt.context.goalId) : []
+      const originals = Array.isArray(source.goals) ? source.goals.filter((goal: unknown) => isRecord(goal) && goal.id === receipt.context.goalId) : []
       requireValue(originals.length === 1 && source.landscapeId === receipt.context.landscapeId
         && normalizeGoalVisualizationSubject(source.subject) === receipt.context.subject, 'Original owner/goal/subject association differs')
       requireValue(review.goalId === receipt.context.goalId, 'Original review goal differs')
       let native: VisualizationReviewedContext
       let decision: unknown, reviewedAt: unknown, reviewer: unknown, reason: unknown, assetPath: unknown
       if (receipt.reviewProfile === 'matrix-candidate-v1') {
+        const candidate = record(review.candidate), scopeFit = record(review.scopeFit)
         requireValue(review.schemaVersion === 1 && review.kind === 'independent-goal-visualization-candidate-review'
           && review.reviewAuthority === 'ai_candidate' && review.decision === 'keep'
           && Array.isArray(review.blockingFindings) && review.blockingFindings.length === 0
-          && review.candidate?.actuallyViewed === true && review.scopeFit?.outcome === 'pass', 'Original matrix review is not an actual positive AI content review')
+          && candidate.actuallyViewed === true && scopeFit.outcome === 'pass', 'Original matrix review is not an actual positive AI content review')
         requireValue(['path', 'gitCommit', 'sha256'].every(key =>
           receipt.originalInput[key as keyof VisualizationReviewArtifact] === receipt.originalReview[key as keyof VisualizationReviewArtifact]),
         'Matrix context must come from the original review itself')
         const snapshot = record(input.goalSnapshot)
-        native = { landscapeId: source.landscapeId, goalId: review.goalId, subject: normalizeGoalVisualizationSubject(source.subject),
-          title: snapshot.title, description: snapshot.description, assetSha256: 'sha256:' + sha(review.candidate.sha256),
-          ...(snapshot.titleEn ? { titleEn: snapshot.titleEn } : {}), ...(snapshot.descriptionEn ? { descriptionEn: snapshot.descriptionEn } : {}),
-          ...(snapshot.demandLevel ? { demandLevel: snapshot.demandLevel } : {}) }
-        decision = review.decision; reviewedAt = review.reviewedAt; reviewer = review.reviewer; reason = review.scopeFit.evidenceDe; assetPath = review.candidate.path
+        native = { landscapeId: receipt.context.landscapeId, goalId: receipt.context.goalId, subject: receipt.context.subject,
+          title: suppliedString(snapshot.title), description: suppliedString(snapshot.description), assetSha256: 'sha256:' + sha(candidate.sha256),
+          ...(snapshot.titleEn ? { titleEn: suppliedString(snapshot.titleEn) } : {}), ...(snapshot.descriptionEn ? { descriptionEn: suppliedString(snapshot.descriptionEn) } : {}),
+          ...(snapshot.demandLevel ? { demandLevel: suppliedString(snapshot.demandLevel) } : {}) }
+        decision = review.decision; reviewedAt = review.reviewedAt; reviewer = review.reviewer; reason = scopeFit.evidenceDe; assetPath = candidate.path
       } else if (receipt.reviewProfile === 'economics-native-v1') {
-        requireValue(review.schemaVersion === 1 && review.decision === 'KEEP' && review.reviewer?.status === 'ai_candidate'
-          && review.reviewer?.humanApproved === false && review.generationIsApproval === false
+        const reviewActor = record(review.reviewer), binding = record(review.nativeBeforeAndGenerationTechnicalBinding)
+        const viewed = record(review.actualViewedAsset)
+        requireValue(review.schemaVersion === 1 && review.decision === 'KEEP' && reviewActor.status === 'ai_candidate'
+          && reviewActor.humanApproved === false && review.generationIsApproval === false
           && review.actualWholeDEENGoalRead === true && review.actualNativeBeforeMetadataAndDidacticPromptRead === true
-          && Number.isInteger(review.actualWholeNative360680Views) && review.actualWholeNative360680Views > 0
-          && review.nativeBeforeAndGenerationTechnicalBinding?.sourceBytesMatchPreservedOriginalGeneratedImage === true,
+          && typeof review.actualWholeNative360680Views === 'number' && Number.isInteger(review.actualWholeNative360680Views) && review.actualWholeNative360680Views > 0
+          && binding.sourceBytesMatchPreservedOriginalGeneratedImage === true,
         'Original Economics review is not an actual positive AI content review')
-        requireValue(review.nativeBeforeAndGenerationTechnicalBinding.nativeBeforeMetadataSha256 === receipt.originalInput.sha256,
+        requireValue(binding.nativeBeforeMetadataSha256 === receipt.originalInput.sha256,
           'Original review does not bind these exact original metadata bytes')
-        requireValue(input.skillpilotId === review.goalId && review.nativeBeforeAndGenerationTechnicalBinding.goalId === review.goalId
+        requireValue(input.skillpilotId === review.goalId && binding.goalId === review.goalId
           && normalizeGoalVisualizationSubject(input.subjectPath) === receipt.context.subject, 'Original input identity differs')
-        requireValue(sha(review.actualViewedAsset?.sha256) === sha(review.nativeBeforeAndGenerationTechnicalBinding.originalSha256), 'Original reviewed asset bindings contradict')
-        native = { landscapeId: source.landscapeId, goalId: review.goalId, subject: normalizeGoalVisualizationSubject(source.subject),
-          title: input.title, description: input.description, assetSha256: 'sha256:' + sha(review.actualViewedAsset.sha256) }
-        decision = review.decision; reviewedAt = review.actualCompletedAt; reviewer = review.reviewer.agentIdentity
-        reason = review.actualGoalSpecificSubjectFormatAccessibilityAndPerspectiveReason; assetPath = review.actualViewedAsset.path
+        requireValue(sha(viewed.sha256) === sha(binding.originalSha256), 'Original reviewed asset bindings contradict')
+        native = { landscapeId: receipt.context.landscapeId, goalId: receipt.context.goalId, subject: receipt.context.subject,
+          title: suppliedString(input.title), description: suppliedString(input.description), assetSha256: 'sha256:' + sha(viewed.sha256) }
+        decision = review.decision; reviewedAt = review.actualCompletedAt; reviewer = reviewActor.agentIdentity
+        reason = review.actualGoalSpecificSubjectFormatAccessibilityAndPerspectiveReason; assetPath = viewed.path
+      } else if (receipt.reviewProfile === 'economics-q3-embedded-v1' || receipt.reviewProfile === 'economics-q3-trade-finance-v1') {
+        ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readEconomicsQ3Context(receipt, review, assetRaw, artifact, parseVisualizationReviewJson))
       } else {
+        const inspection = record(review.visualInspection), bound = record(review.boundGoal)
+        const candidate = record(bound.candidate), originalSource = record(bound.sourceOriginal)
         requireValue(review.schemaVersion === 1
           && review.kind === 'independent-fresh-visualization-content-review-for-exact-diagram-description-B'
-          && review.visualInspection?.judgment === 'appropriate instructional visualization for current B goal'
-          && text(review.visualInspection?.method) && Array.isArray(review.visualInspection?.observations)
-          && review.visualInspection.observations.length > 0, 'Original B review is not an actual positive image/context inspection')
+          && inspection.judgment === 'appropriate instructional visualization for current B goal'
+          && text(inspection.method) && Array.isArray(inspection.observations)
+          && inspection.observations.length > 0, 'Original B review is not an actual positive image/context inspection')
         requireValue(review.landscapeId === source.landscapeId && input.id === review.goalId,
           'Original B review/input identity differs')
-        requireValue(review.boundGoal?.candidate?.path === receipt.originalInput.path
-          && review.boundGoal.candidate.sha256 === receipt.originalInput.sha256,
+        requireValue(candidate.path === receipt.originalInput.path
+          && candidate.sha256 === receipt.originalInput.sha256,
         'Original B review does not bind these exact candidate goal bytes')
-        requireValue(review.boundGoal?.sourceOriginal?.path === receipt.ownerSource.path
-          && review.boundGoal.sourceOriginal.sha256 === receipt.ownerSource.sha256,
+        requireValue(originalSource.path === receipt.ownerSource.path
+          && originalSource.sha256 === receipt.ownerSource.sha256,
         'Original B review does not bind this original owner source')
         requireValue(Array.isArray(review.assets) && review.assets.length === 2
-          && review.assets.every((asset: any) => asset?.sha256 === receipt.reviewedAsset.sha256)
-          && review.assets.some((asset: any) => asset.path === receipt.reviewedAsset.path), 'Original B asset pair differs')
-        const originalRowRef = { path: review.candidateRow?.path, sha256: review.candidateRow?.sha256,
+          && review.assets.every((asset: unknown) => isRecord(asset) && asset.sha256 === receipt.reviewedAsset.sha256)
+          && review.assets.some((asset: unknown) => isRecord(asset) && asset.path === receipt.reviewedAsset.path), 'Original B asset pair differs')
+        const rowBinding = record(review.candidateRow)
+        const originalRowRef = { path: suppliedString(rowBinding.path), sha256: suppliedString(rowBinding.sha256),
           gitCommit: receipt.originalReview.gitCommit }
         requireValue(typeof originalRowRef.path === 'string' && /^[0-9a-f]{64}$/u.test(originalRowRef.sha256),
           'Original B review must bind the actual fresh reviewer row')
@@ -211,15 +227,16 @@ export const createVisualizationContextVerifier = (options: { repositoryRoot?: s
           && originalRow.subject === receipt.context.subject && originalRow.aiApproved === 'yes'
           && originalRow.aiReviewedAt === review.reviewedAt && text(originalRow.aiReviewer) && text(originalRow.aiNotes),
         'Original B reviewer attribution/decision differs')
-        requireValue(text(input.description) === text(review.boundGoal.descriptionDe)
-          && text(input.descriptionEn) === text(review.boundGoal.descriptionEn)
+        requireValue(text(input.description) === text(bound.descriptionDe)
+          && text(input.descriptionEn) === text(bound.descriptionEn)
           && text(originalRow.title) === text(input.title) && text(originalRow.description) === text(input.description)
           && sha(originalRow.aiApprovedAssetSha256) === receipt.reviewedAsset.sha256
           && sha(originalRow.assetSha256) === receipt.reviewedAsset.sha256, 'Original B row/context/image bindings contradict')
-        native = { landscapeId: source.landscapeId, goalId: input.id, subject: normalizeGoalVisualizationSubject(source.subject),
-          title: input.title, description: input.description, assetSha256: 'sha256:' + receipt.reviewedAsset.sha256,
-          ...(input.titleEn ? { titleEn: input.titleEn } : {}), ...(input.descriptionEn ? { descriptionEn: input.descriptionEn } : {}),
-          ...(input.dimensionTags?.demandLevel ? { demandLevel: input.dimensionTags.demandLevel } : {}) }
+        const tags = input.dimensionTags === undefined ? {} : record(input.dimensionTags)
+        native = { landscapeId: receipt.context.landscapeId, goalId: receipt.context.goalId, subject: receipt.context.subject,
+          title: suppliedString(input.title), description: suppliedString(input.description), assetSha256: 'sha256:' + receipt.reviewedAsset.sha256,
+          ...(input.titleEn ? { titleEn: suppliedString(input.titleEn) } : {}), ...(input.descriptionEn ? { descriptionEn: suppliedString(input.descriptionEn) } : {}),
+          ...(tags.demandLevel ? { demandLevel: suppliedString(tags.demandLevel) } : {}) }
         decision = originalRow.aiApproved; reviewedAt = originalRow.aiReviewedAt; reviewer = originalRow.aiReviewer
         reason = originalRow.aiNotes; assetPath = receipt.reviewedAsset.path
       }
