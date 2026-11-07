@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal } from '../src/landscapeTypes'
+import { reviewBindingGoal, type VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import {
   buildCanonicalGraphIndex,
   normalizeCanonicalLandscape,
@@ -321,6 +322,7 @@ export interface GoalBookEvidenceReviewBuildSource {
 }
 
 export interface GoalBookBuildInput {
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
   landscape: unknown
   compositionView?: unknown
   compositionViewManifest?: unknown
@@ -810,6 +812,7 @@ const parseSemanticKindLedger = (
   rawLandscape: unknown,
   landscapeId: string,
   landscapePath: string,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): SemanticKindLedgerResult => {
   const validator = cachedSemanticKindLedgerSchemaValidator
     ?? (cachedSemanticKindLedgerSchemaValidator = createSchemaValidator(
@@ -881,8 +884,11 @@ const parseSemanticKindLedger = (
     if (semanticKindByGoalId.has(goalId)) {
       fail(`semantic-kind ledger contains duplicate decision for ${goalId}.`)
     }
+    const historicalFingerprint = fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+      prerequisiteReductionContext, `${landscapeId}:${goalId}`, rawGoalById.get(goalId)!,
+    ))
     const currentFingerprint = fingerprintSemanticKindSourceGoal(rawGoalById.get(goalId)!)
-    if (decision.sourceFingerprint !== currentFingerprint) {
+    if (decision.sourceFingerprint !== currentFingerprint && decision.sourceFingerprint !== historicalFingerprint) {
       fail(`stale semantic-kind decision for goal ${goalId}; expected ${currentFingerprint}.`)
     }
     semanticKindByGoalId.set(goalId, semanticKind)
@@ -971,7 +977,11 @@ const parseEvidenceReviewSources = (
   landscape: CanonicalAuthoringLandscape,
   semanticKindByGoalId: ReadonlyMap<string, string>,
   qaRecordsByGoalId: ReadonlyMap<string, GoalVisualizationQaRecord>,
+  rawLandscape: unknown,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): EvidenceReviewParseResult => {
+  const rawGoals = asRecord(rawLandscape, 'landscape').goals as Record<string, unknown>[]
+  const rawGoalById = new Map(rawGoals.map((goal) => [String(goal.id), goal]))
   if (!Array.isArray(sources)) fail('evidenceReviewSources must be an array.')
   if (sources.length !== configuredPaths.length) {
     fail('evidenceReviewSources must match config.evidenceReviewPaths exactly.')
@@ -1017,6 +1027,8 @@ const parseEvidenceReviewSources = (
         goal as unknown as LearningGoal,
         resourceDigests,
         semanticKind,
+        prerequisiteReductionContext,
+        rawGoalById.get(goalId),
       )
       if (semanticErrors.length > 0) {
         fail(`${label} violates goal-evidence semantics: ${semanticErrors.join(' | ')}.`)
@@ -1827,6 +1839,7 @@ const targetCollectionFromProjection = (
 })
 
 export const buildGoalBookModel = ({
+  prerequisiteReductionContext,
   landscape: rawLandscape,
   compositionView: rawCompositionView,
   compositionViewManifest: rawCompositionViewManifest,
@@ -1903,6 +1916,7 @@ export const buildGoalBookModel = ({
     rawLandscape,
     landscapeId,
     landscapePath,
+    prerequisiteReductionContext,
   )
   const sourceManifest = compositionViewManifestPath
     ? parseSourceManifest(rawCompositionViewManifest)
@@ -1969,6 +1983,8 @@ export const buildGoalBookModel = ({
     landscape,
     semanticKindLedger.semanticKindByGoalId,
     goalVisualizationQaRecords,
+    rawLandscape,
+    prerequisiteReductionContext,
   )
   const projectedOccurrences = membershipTargetCollection.occurrences
   const membershipOccurrences = projectedOccurrences.filter(({ goalId }) => (
@@ -2689,6 +2705,7 @@ const parseJson = (text: string, label: string): unknown => {
 export const loadGoalBookBuildInputs = async (
   configPath: string,
   repositoryRoot = REPOSITORY_ROOT,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): Promise<LoadedGoalBookBuildInputs> => {
   const absoluteConfigPath = resolveRepositoryPath(repositoryRoot, configPath, 'configPath')
   const config = parseGoalBookConfig(parseJson(await readFile(absoluteConfigPath, 'utf8'), absoluteConfigPath))
@@ -2787,6 +2804,7 @@ export const loadGoalBookBuildInputs = async (
     repositoryRoot,
   )
   const model = buildGoalBookModel({
+    prerequisiteReductionContext,
     landscape: parseJson(landscapeText, config.landscapePath),
     ...(compositionViewText && config.compositionViewPath
       ? { compositionView: parseJson(compositionViewText, config.compositionViewPath) }

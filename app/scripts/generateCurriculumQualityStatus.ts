@@ -22,6 +22,7 @@ import {
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
@@ -624,6 +625,7 @@ interface CurriculumStatus {
 }
 
 interface StatusDocument {
+  prerequisiteReductionProof?: DeepUnderstandingRolloutReport['prerequisiteReductionProof']
   schemaVersion: 1
   rulesVersion: 'curriculum-quality-v5'
   generatedAt: string
@@ -6059,6 +6061,8 @@ function renderMarkdown(status: StatusDocument): string {
   pushGeneratedMarkdownNotice(lines)
   lines.push(`Generated: ${status.generatedAt}`)
   lines.push(`Rules version: ${status.rulesVersion}`)
+  const proof = status.prerequisiteReductionProof
+  if (proof) lines.push(`Review binding: ${proof.proofContract}; ${proof.mode}; ${proof.auditScope}; registry=${proof.registryDigest}; goals=${proof.affectedGoalIds.join(',')}`)
   lines.push('')
   lines.push('## Summary')
   lines.push('')
@@ -6129,7 +6133,8 @@ async function main() {
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
   const goalVisualizationQaLedgers = readGoalVisualizationQaLedgers()
-  const deepUnderstandingReport = await generateDeepUnderstandingRollout()
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const deepUnderstandingReport = await generateDeepUnderstandingRollout(undefined, prerequisiteReductionContext)
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
@@ -6210,6 +6215,9 @@ async function main() {
   })
 
   const statusDraft: StatusDocument = {
+    ...(deepUnderstandingReport.prerequisiteReductionProof ? {
+      prerequisiteReductionProof: deepUnderstandingReport.prerequisiteReductionProof,
+    } : {}),
     schemaVersion: 1,
     rulesVersion: 'curriculum-quality-v5',
     generatedAt: new Date().toISOString(),

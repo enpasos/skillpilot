@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import { createHash } from 'node:crypto'
 import { readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
@@ -228,8 +229,12 @@ const refreshFixtureSemanticKindFingerprint = (
   decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(sourceGoal)
 }
 
-const expectBuildFailure = (input: GoalBookBuildInput, pattern: RegExp) => {
-  assert.throws(() => buildGoalBookModel(input), pattern)
+const expectBuildFailure = (
+  input: GoalBookBuildInput,
+  pattern: RegExp,
+  prerequisiteReductionContext?: GoalBookBuildInput['prerequisiteReductionContext'],
+) => {
+  assert.throws(() => buildGoalBookModel({ ...input, prerequisiteReductionContext }), pattern)
 }
 
 const fixture = fixtureInput()
@@ -1047,7 +1052,8 @@ const sekIBookConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-de-gym-seki-math.json',
   import.meta.url,
 ))
-const sekIBook = (await loadGoalBookBuildInputs(sekIBookConfigPath)).model
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+const sekIBook = (await loadGoalBookBuildInputs(sekIBookConfigPath, undefined, prerequisiteReductionContext)).model
 assert.equal(sekIBook.book.id, 'de-de-gym-seki-mathematik')
 assert.equal(sekIBook.book.viewId, 'de-de-gym-seki-math')
 assert.equal(sekIBook.book.scope.stage, 'SekI')
@@ -1163,7 +1169,7 @@ const sekIIGkBookConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-de-gym-sekii-gk-math.json',
   import.meta.url,
 ))
-const sekIIGkBook = (await loadGoalBookBuildInputs(sekIIGkBookConfigPath)).model
+const sekIIGkBook = (await loadGoalBookBuildInputs(sekIIGkBookConfigPath, undefined, prerequisiteReductionContext)).model
 assert.equal(sekIIGkBook.book.viewId, 'de-de-gym-sekii-math-gk')
 assert.ok(sekIIGkBook.pages.length > 100)
 assert.equal(new Set(sekIIGkBook.pages.map(({ goalId }) => goalId)).size, sekIIGkBook.pages.length)
@@ -1183,7 +1189,7 @@ const nationalAtlasConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-gym-math-national-atlas.json',
   import.meta.url,
 ))
-const nationalAtlas = (await loadGoalBookBuildInputs(nationalAtlasConfigPath)).model
+const nationalAtlas = (await loadGoalBookBuildInputs(nationalAtlasConfigPath, undefined, prerequisiteReductionContext)).model
 const publishedNationalAtlasText = await readFile(fileURLToPath(new URL(
   '../public/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json',
   import.meta.url,
@@ -1416,7 +1422,7 @@ const descriptionUnderstandingEvidenceCalibrationConfigPath = fileURLToPath(new 
   import.meta.url,
 ))
 const descriptionUnderstandingEvidenceCalibration = (
-  await loadGoalBookBuildInputs(descriptionUnderstandingEvidenceCalibrationConfigPath)
+  await loadGoalBookBuildInputs(descriptionUnderstandingEvidenceCalibrationConfigPath, undefined, prerequisiteReductionContext)
 ).model
 assert.equal(
   descriptionUnderstandingEvidenceCalibration.book.id,
@@ -1470,7 +1476,7 @@ const pilotBuildInput: GoalBookBuildInput = {
     evidenceReviewPaths: [PILOT_EVIDENCE_REVIEW_PATH],
   },
 }
-const pilotBook = buildGoalBookModel(pilotBuildInput)
+const pilotBook = buildGoalBookModel({ ...pilotBuildInput, prerequisiteReductionContext })
 assert.equal(pilotBook.pages.length, 1)
 const pilotPage = pilotBook.pages[0]
 assert.equal(pilotPage.goalId, PILOT_GOAL_ID)
@@ -1495,13 +1501,13 @@ assert.equal(pilotPage.evidenceReview?.status, 'needs_human_review')
 
 const archivedV1EvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
 archivedV1EvidenceInput.evidenceReviewSources[0].text = archivedPilotEvidenceReviewText
-expectBuildFailure(archivedV1EvidenceInput, /stale goalFingerprint/u)
+expectBuildFailure(archivedV1EvidenceInput, /stale goalFingerprint/u, prerequisiteReductionContext)
 
 const changedEvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
 const changedEvidenceRecord = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 changedEvidenceRecord.status = 'rejected'
 changedEvidenceInput.evidenceReviewSources[0].text = `${JSON.stringify(changedEvidenceRecord)}\n`
-const changedEvidenceBook = buildGoalBookModel(changedEvidenceInput)
+const changedEvidenceBook = buildGoalBookModel({ ...changedEvidenceInput, prerequisiteReductionContext })
 assert.equal(changedEvidenceBook.pages[0].goalFingerprint, pilotPage.goalFingerprint)
 assert.notEqual(changedEvidenceBook.pages[0].pageFingerprint, pilotPage.pageFingerprint)
 assert.notEqual(changedEvidenceBook.digest, pilotBook.digest)
@@ -1510,13 +1516,13 @@ const staleEvidenceInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBo
 const staleEvidenceRecord = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 staleEvidenceRecord.reviewInputFingerprint = `sha256:${'f'.repeat(64)}`
 staleEvidenceInput.evidenceReviewSources[0].text = `${JSON.stringify(staleEvidenceRecord)}\n`
-expectBuildFailure(staleEvidenceInput, /stale reviewInputFingerprint/u)
+expectBuildFailure(staleEvidenceInput, /stale reviewInputFingerprint/u, prerequisiteReductionContext)
 
 const evidenceWithUnknownFieldInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
 const evidenceWithUnknownField = JSON.parse(currentV1CompatibilityText.trim()) as Record<string, unknown>
 evidenceWithUnknownField.unexpected = true
 evidenceWithUnknownFieldInput.evidenceReviewSources[0].text = `${JSON.stringify(evidenceWithUnknownField)}\n`
-expectBuildFailure(evidenceWithUnknownFieldInput, /violates the closed goal-evidence schema/u)
+expectBuildFailure(evidenceWithUnknownFieldInput, /violates the closed goal-evidence schema/u, prerequisiteReductionContext)
 
 const evidenceWithUnknownFacetInput = JSON.parse(JSON.stringify(pilotBuildInput)) as GoalBookBuildInput
 const evidenceWithUnknownFacet = JSON.parse(currentV1CompatibilityText.trim()) as {
@@ -1524,7 +1530,7 @@ const evidenceWithUnknownFacet = JSON.parse(currentV1CompatibilityText.trim()) a
 }
 evidenceWithUnknownFacet.profile.coverageRequirements.allOf.push('unknown-facet')
 evidenceWithUnknownFacetInput.evidenceReviewSources[0].text = `${JSON.stringify(evidenceWithUnknownFacet)}\n`
-expectBuildFailure(evidenceWithUnknownFacetInput, /coverage references unknown facet/u)
+expectBuildFailure(evidenceWithUnknownFacetInput, /coverage references unknown facet/u, prerequisiteReductionContext)
 
 const bookModelSchema = JSON.parse(await readFile(
   fileURLToPath(new URL(`../../${BOOK_MODEL_SCHEMA_PATH}`, import.meta.url)),

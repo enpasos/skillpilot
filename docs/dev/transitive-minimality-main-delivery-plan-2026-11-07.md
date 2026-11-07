@@ -11,8 +11,12 @@ nach main übernommen: Commit
 [`ab0aa4ea9f`](https://github.com/enpasos/skillpilot/commit/ab0aa4ea9f861c8a6bd6e6600268548a516ef666).
 Sie entstand auf `fix/g17-checker` von `0ce5a8d791e` und bestand die frischen
 Pflichtworkflows einschließlich G17-Regressionen und unveränderter Fachfloors.
-Die notwendige technische Transitivitätskorrektur folgt jetzt auf
-`fix/g17-transitive-prerequisites` von diesem Main-Commit. PR84 bleibt als
+Die notwendige technische Transitivitätskorrektur ist mit
+[PR #87](https://github.com/enpasos/skillpilot/pull/87) und Main-Commit
+[`d63e1b408d`](https://github.com/enpasos/skillpilot/commit/d63e1b408dd18ce744ad47682f06398bc0f01be0)
+geliefert. Alle fünf frischen Pflichtworkflows einschließlich sämtlicher acht
+Hauptjobs waren erfolgreich. Der nächste kleine Lieferumfang entsteht auf
+`fix/g17-first-reduction` von diesem Main-Commit. PR84 bleibt als
 Herkunft des alten Auditstands getrennt erhalten. Der alte WIP und lokale
 Änderungen sind gesichert; unversionierte Altartefakte bleiben erhalten.
 
@@ -56,7 +60,8 @@ Den gesamten WIP zusammen zu mergen ist nicht der Lieferplan.
 | Lieferung | Inhalt aus dem WIP | Konkrete Main-Abnahme |
 | --- | --- | --- |
 | G17-Prüfer, geliefert | Eigenständiger `app/scripts/auditTransitiveMinimality.ts`, Algorithmus- und CLI-Regressionen, eindeutiger vollständiger Bestandsaufruf und dieser Lieferplan. | PR #86 auf main bei `ab0aa4ea9f`; frische Pflicht-CI erfolgreich. 572 unabhängige Literalvergleiche, 3.593 abgewiesene ungültige Graphen und zwölf echte CLI-Testgruppen. Tatsächlicher aktueller Bestandsaufruf: 21 Roots, fünf `pass`, zwölf `fail`, vier `invalid-input`, korrekt Exit 2. |
-| Technische Transitivitätsabhängigkeit | Nur die nachgewiesen erforderlichen fünf Produktionsdateien und gezielten Regressionen aus `b8eef5b967`: gemeinsame Voraussetzungstopologie, vollständige kanonische Level-2-Zielclosure und Fokusfilter nach transitiver Auswertung. | Ein redundanter Shortcut darf Frontier und Required Work vor/nach Entfernung nicht verändern, auch bei gemeistertem oder außerhalb des Fokus liegendem Zwischenziel. Alle vier Frontier-APIs, normale/strikte Modi, fremde/vererbte Voraussetzungen und Cachetrennung prüfen. Gespeicherte Mastery und Anerkennungsregeln bleiben unverändert. Frische Pflicht-CI und Lieferung nach main. |
+| Technische Transitivitätsabhängigkeit, geliefert | Nur die nachgewiesen erforderlichen fünf Produktionsdateien und gezielten Regressionen aus `b8eef5b967`: gemeinsame Voraussetzungstopologie, vollständige kanonische Level-2-Zielclosure und Fokusfilter nach transitiver Auswertung. | PR #87 auf main bei `d63e1b408d`; vollständiger regulärer lokaler Backendcheck mit 2.689 bestandenen Fällen, 19 bestehenden optionalen Skips und null Fehlern; alle fünf frischen Remote-Workflows erfolgreich. Regressionen über alle vier Frontier-APIs, normale/strikte Modi, gemeisterte und außerhalb des Fokus liegende Zwischenziele sowie fremde/vererbte Voraussetzungen. Gespeicherte Mastery und Anerkennungsregeln bleiben unverändert. |
+| Begrenzter Frischeanschluss und erste Reduktion, in Arbeit | Genau die Mathematikkante `bf17cada… → 71cec9fb…` mit direkt authored atomarem Ersatzpfad `bf17cada… → 91e2f564… → 71cec9fb…`. Eine harte Reduktionsbescheinigung erlaubt ausschließlich den nachgewiesenen historischen Vergleichswert an den betroffenen Reviewbindungen. | Vollständiger Katalogabgleich, geordnete Auditorprüfung, unveränderte übrige Felder und tatsächlicher Applicability-Vergleich. Native CI-Regression für Projektion, vollständige atomare Nachfrage und direkte Rollenprüfung. Originale Fingerprintfunktionen und Reviewarchive bleiben unverändert; ungültige deklarierte Beweise scheitern hart. Diese erste Beweisform deckt direkt authored atomare Blattpfade ab und ist keine Freigabe sämtlicher Bestandskandidaten. Frische Pflicht-CI und Lieferung nach main. |
 | G17-Bestand und Standard-Meilensteinprüfung | Mechanisch belegte Reduktionsbatches, G17 in der regulären Meilensteinberechnung und verpflichtender CI-Aufruf gegen die tatsächlichen Dateien. Vorhandene geeignete Korrekturen wiederverwenden. | Null G17-Verstöße im Abnahmebestand; Invarianten erhalten; wieder eingefügte Redundanz oder unvollständige Prüfung verhindert den Meilensteinpass. Sämtliche zehn Zielstände werden regulär auf main mindestens erreicht, alle erforderlichen frischen CI-Prüfungen bestehen und die Änderungen sind nach main geliefert. Erst damit ist das Goal erledigt. |
 
 Die erste Lieferung hat den Prüfer auf main gebracht, behauptet aber keinen minimalen
@@ -82,11 +87,22 @@ Prüfungen vorbei. Blockieren bestehende technische Frischebindungen die zweite
 Lieferung, wird genau diese Abhängigkeit isoliert und offen gelöst. Keine
 stillen Fingerprintwechsel und keine dadurch gestarteten Fachreviewkampagnen.
 
-Ein konkreter technischer Fehler ist belegt: Main kann
-Voraussetzungspfade an gemeisterten oder außerhalb liegenden Zwischenknoten
-abbrechen. Die vorhandene Transitivitätskorrektur aus `b8eef5b967` darf deshalb
-nur im nachweislich erforderlichen Umfang als G17-Abhängigkeit übernommen
-werden. Ein reproduzierbarer Unterschied stoppt den betroffenen Batch.
+Die erste native Reduktionsregression hat eine konkrete technische Abhängigkeit
+aufgedeckt: In Biologie `DE-BY/CrossStage/G9/GK` wurde ein nicht benötigter
+Cluster aus der Projektionsmenge als kanonisches Voraussetzungstarget validiert.
+Das setzte die echte Frontier-Topologie auf `null` und blockierte selbst
+„Warum Biologie?“. Die begrenzte Korrektur validiert denselben vollständigen
+atomaren Level-2-Wurzelsatz, mit dem der Voraussetzungskontext aufgebaut wird.
+Alle transitiven Anforderungen bleiben unabhängig von Fokus und Mastery geprüft;
+Rollenprüfung und Lernzielinhalte ändern sich dadurch nicht. Der echte Bio-Fall
+und eine ungültige atomare Anforderung außerhalb des Fokus gehören zur Regression.
+Ein Vorher-/Nachher-Fehlergleichstand ersetzt diesen erfolgreichen Nachweis nicht.
+
+Der zuvor belegte technische Fehler auf main war der Abbruch von
+Voraussetzungspfaden an gemeisterten oder außerhalb liegenden Zwischenknoten.
+Die notwendige Transitivitätskorrektur aus `b8eef5b967` wurde mit PR #87 im
+nachgewiesenen Umfang geliefert. Ein reproduzierbarer Unterschied stoppt
+weiterhin den betroffenen Reduktionsbatch.
 Daraus folgt kein Auftrag zur fachlichen Neugestaltung.
 
 ## Weitere erhaltenswerte Arbeit: geplante Lieferwarteschlange
@@ -124,9 +140,17 @@ unbefristeter Draft oder ein Archivbranch ersetzt den Lieferweg nicht.
 Umgekehrt wird erhaltenswerte Arbeit nicht ungeprüft gemerged, nur um sie
 formal auf main zu haben.
 
-Abgeschlossen ist die kleine G17-Prüferlieferung. Nächster Schritt ist die
-notwendige technische Transitivitätskorrektur, danach folgen begrenzte
-Frischeanschlüsse und mechanische Reduktionen samt Standardintegration.
+Abgeschlossen und nach main geliefert sind G17-Prüfer und technische
+Transitivitätskorrektur. Nächster Schritt ist der begrenzte Frischeanschluss
+mit genau einer realen Kantenentfernung, danach folgen mechanische
+Reduktionen samt Standardintegration. Die vollständige In-Memory-Vorschau
+hat 2.435 Ursprungskanten nacheinander mit jeweils frischem Auditor entfernt
+und im geschützten Scope null verbleibende G17-Befunde erreicht. Dabei wurden
+keine Curriculumdateien geändert. Die zusätzlichen nativen Messungen zeigen,
+dass atomare Erreichbarkeitsgleichheit allein die bestehende direkte
+Rollenprüfung nicht abdeckt; entsprechende Unterschiede sind vor einer
+Übernahme der gesamten Liste gesondert zu klären. Das eröffnet keine
+fachliche Überarbeitung und ersetzt keine Bestands- oder Main-Abnahme.
 Die M6/M7-Wiederherstellung unter der erweiterten
 Standardprüfung ist verbindliche Abnahme dieses Goals. Der breite
 518-Regel-Audit und semantische Arbeiten gehören weiterhin nicht dazu.

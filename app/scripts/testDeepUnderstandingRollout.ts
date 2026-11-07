@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { loadVerifiedPrerequisiteReductionContext, verifiedPrerequisiteReductionSummary } from './prerequisiteReductionProof'
 import './testMemoryVisibilityStatusParity'
 import './testDeepUnderstandingSupersessionChains'
 import './testDeepUnderstandingSemanticRetirements'
@@ -177,7 +178,8 @@ assert.equal(countHumanTrialBlockingFindings(fixtureLandscape, [{ schemaVersion:
 // Exercise the production P validator, including a scope that mandates human approval.
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const configuredEvidence = loadDeepUnderstandingRolloutConfig().subjects[0].positiveEvidenceConfigPaths[0]
-const evidenceReview = reviewPositiveGoalEvidenceConfig(configuredEvidence)
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+const evidenceReview = reviewPositiveGoalEvidenceConfig(configuredEvidence, prerequisiteReductionContext)
 assert.deepEqual(evidenceReview.errors, [])
 const aiCandidate = evidenceReview.records.find(({ reviewAuthority }) => reviewAuthority === 'ai_candidate')
 assert.ok(aiCandidate, 'The rollout fixture must retain an honestly identified AI candidate.')
@@ -193,7 +195,7 @@ const approvalFixtureDir = mkdtempSync(resolve(repositoryRoot, 'tmp/m7-human-app
 try {
   const approvalConfigPath = resolve(approvalFixtureDir, 'require-approved.config.json')
   writeFileSync(approvalConfigPath, JSON.stringify({ ...evidenceReview.config, requireApproved: true }))
-  const requiredApproval = reviewPositiveGoalEvidenceConfig(relative(repositoryRoot, approvalConfigPath))
+  const requiredApproval = reviewPositiveGoalEvidenceConfig(relative(repositoryRoot, approvalConfigPath), prerequisiteReductionContext)
   assert.ok(requiredApproval.errors.some((error) => error.includes('configured scope requires an approved profile')),
     'A mandatory human approval must continue to block a valid AI candidate.')
 } finally {
@@ -247,7 +249,10 @@ assert.throws(
   'A resolution-bound manifest path must not escape its concrete batch root.',
 )
 
-const report = await generateDeepUnderstandingRollout()
+const report = await generateDeepUnderstandingRollout(undefined, prerequisiteReductionContext)
+assert.equal(Object.hasOwn(report, 'prerequisiteReductionProof'), prerequisiteReductionContext !== undefined)
+if (prerequisiteReductionContext) assert.deepEqual(report.prerequisiteReductionProof,
+  verifiedPrerequisiteReductionSummary(prerequisiteReductionContext))
 const mathematics = report.subjects.find(({ subject }) => subject === 'mathematik')
 const physics = report.subjects.find(({ subject }) => subject === 'physik')
 const biology = report.subjects.find(({ subject }) => subject === 'biologie')

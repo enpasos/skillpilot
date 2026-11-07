@@ -5,6 +5,11 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal } from '../src/landscapeTypes'
+import {
+  loadVerifiedPrerequisiteReductionContext,
+  reviewBindingGoal,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
 import {
   GOAL_BOOK_EDITION,
@@ -155,6 +160,8 @@ export type GoalDescriptionDualRoundResolutionSource = {
 }
 
 export type GoalDescriptionDualRoundResolutionBindingArtifacts = {
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
+  canonicalLandscapeId?: string
   resolution: GoalDescriptionDualRoundResolution
   dualSummary: GoalDescriptionDualRoundSummary
   dualSummaryBytes: Buffer
@@ -669,10 +676,14 @@ const validateCurrentGoalBindings = ({
   resolution,
   currentInput,
   canonicalGoal,
+  prerequisiteReductionContext,
+  canonicalLandscapeId,
 }: {
   resolution: GoalDescriptionDualRoundResolution
   currentInput: GoalDescriptionReviewInput
   canonicalGoal?: Record<string, unknown>
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
+  canonicalLandscapeId?: string
 }) => {
   const errors: string[] = []
   if (currentInput.schemaVersion !== 3) {
@@ -707,8 +718,12 @@ const validateCurrentGoalBindings = ({
     if (canonicalGoalId !== resolution.goal.goalId) {
       errors.push(`Canonical goal id ${canonicalGoalId || '(missing)'} does not match resolution goal ${resolution.goal.goalId}`)
     }
+    const historicalCanonicalContext = buildGoalDescriptionCanonicalContext(reviewBindingGoal(
+      prerequisiteReductionContext, `${canonicalLandscapeId}:${canonicalGoalId}`, canonicalGoal,
+    ))
     const expectedCanonicalContext = buildGoalDescriptionCanonicalContext(canonicalGoal)
-    if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)) {
+    if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)
+      && stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(historicalCanonicalContext)) {
       errors.push(`Current V3 context for ${resolution.goal.goalId} disagrees with the canonical goal`)
     }
     const expectedGoalFingerprint = fingerprintGoalForEvidence(
@@ -792,6 +807,8 @@ const validateGoalDescriptionDualRoundResolutionBindingsInternal = async ({
   dualSummaryBytes,
   currentInput,
   canonicalGoal,
+  prerequisiteReductionContext,
+  canonicalLandscapeId,
   firstSource,
   secondSource,
   synthesisDecisionManifestArtifact,
@@ -834,7 +851,9 @@ const validateGoalDescriptionDualRoundResolutionBindingsInternal = async ({
     errors.push('Resolution dualSummary validationContract does not match the persisted dual summary')
   }
 
-  const currentBindings = validateCurrentGoalBindings({ resolution, currentInput, canonicalGoal })
+  const currentBindings = validateCurrentGoalBindings({
+    resolution, currentInput, canonicalGoal, prerequisiteReductionContext, canonicalLandscapeId,
+  })
   errors.push(...currentBindings.errors)
   const summaryGoalMatches = dualSummary.goals.filter(({ goalId }) => goalId === resolution.goal.goalId)
   if (summaryGoalMatches.length !== 1) {
@@ -974,6 +993,7 @@ const validateGoalDescriptionDualRoundResolutionInternal = async ({
   dualSummaryBytes,
   currentInput,
   landscape,
+  prerequisiteReductionContext,
   first,
   second,
   synthesisDecisionManifestArtifact,
@@ -984,6 +1004,7 @@ const validateGoalDescriptionDualRoundResolutionInternal = async ({
   dualSummaryBytes: Buffer
   currentInput: GoalDescriptionReviewInput
   landscape: unknown
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
   first: GoalDescriptionReviewRoundArtifacts
   second: GoalDescriptionReviewRoundArtifacts
   synthesisDecisionManifestArtifact?: GoalDescriptionDualRoundResolutionBindingArtifacts['synthesisDecisionManifestArtifact']
@@ -1057,6 +1078,8 @@ const validateGoalDescriptionDualRoundResolutionInternal = async ({
     dualSummaryBytes,
     currentInput,
     canonicalGoal: historicalOnly ? undefined : canonicalMatches[0],
+    prerequisiteReductionContext,
+    canonicalLandscapeId: (landscape as { landscapeId?: string } | null)?.landscapeId,
     firstSource: firstSourceResult.source,
     secondSource: secondSourceResult.source,
     synthesisDecisionManifestArtifact,
@@ -1198,6 +1221,7 @@ const main = async () => {
     }
   }
   const result = await validateGoalDescriptionDualRoundResolution({
+    prerequisiteReductionContext: await loadVerifiedPrerequisiteReductionContext(),
     resolution,
     dualSummary: parseJson<GoalDescriptionDualRoundSummary>(dualSummaryBytes, paths.dualSummary),
     dualSummaryBytes,

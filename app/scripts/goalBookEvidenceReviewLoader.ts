@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal } from '../src/landscapeTypes'
+import type { VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import {
   type GoalEvidenceReviewRecord,
   validateGoalEvidenceRecordSemantics,
@@ -66,6 +67,8 @@ export function validateGoalBookEvidenceReviewRecordSemantics(
   goal: LearningGoal | undefined,
   resourceDigests: Readonly<Record<string, string>> = {},
   effectiveSemanticKind?: string,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+  currentRawGoal?: Record<string, unknown>,
 ): string[] {
   return record.schemaVersion === 2
     ? validatePositiveGoalEvidenceRecordSemantics(
@@ -73,6 +76,8 @@ export function validateGoalBookEvidenceReviewRecordSemantics(
       goal,
       resourceDigests,
       effectiveSemanticKind,
+      prerequisiteReductionContext,
+      currentRawGoal,
     )
     : validateGoalEvidenceRecordSemantics(
       record,

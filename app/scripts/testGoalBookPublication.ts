@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
@@ -34,7 +35,8 @@ for (const key of ['bookId', 'landscapePath', 'semanticKindLedgerPath', 'manifes
   )
 }
 
-const verifiedBooks = await verifyPublishedGoalBooks()
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+const verifiedBooks = await verifyPublishedGoalBooks(prerequisiteReductionContext)
 assert.deepEqual(
   verifiedBooks.map(({ model }) => model.book.id),
   GOAL_BOOK_PUBLICATION_REGISTRY.map(({ bookId }) => bookId),
@@ -255,7 +257,7 @@ try {
       verifyPublishedGoalBook({
         ...paths,
         configPath: join(dirname(paths.configPath), 'missing-publication-input-companion.json'),
-      }),
+      }, prerequisiteReductionContext),
       /ENOENT.*missing-publication-input-companion\.inputs\.json/u,
       `${subject}: missing source-input companions must fail before artifact verification`,
     )
@@ -266,7 +268,7 @@ try {
     verifyPublishedGoalBook({
       ...defaultGoalBookPublicationPaths,
       originalSourcesPath: staleSourcesPath,
-    }),
+    }, prerequisiteReductionContext),
     /original sources are stale/u,
     'source changes cannot silently publish stale original-source links',
   )
@@ -279,7 +281,7 @@ try {
     verifyPublishedGoalBook({
       ...defaultGoalBookPublicationPaths,
       modelPath: browserIncompatibleModelPath,
-    }),
+    }, prerequisiteReductionContext),
     /BookModel is incompatible with the browser runtime/u,
     'publication runs the actual browser parser before native model and artifact checks',
   )
@@ -290,7 +292,7 @@ try {
     verifyPublishedGoalBook({
       ...defaultGoalBookPublicationPaths,
       originalSourcesPath: oversizedSourcesPath,
-    }),
+    }, prerequisiteReductionContext),
     /original sources exceed the browser runtime size budget/u,
     'original sources that the browser cannot load cannot pass publication',
   )
@@ -301,7 +303,7 @@ try {
     verifyPublishedGoalBook({
       ...defaultGoalBookPublicationPaths,
       pdfPath: tamperedPdfPath,
-    }),
+    }, prerequisiteReductionContext),
     /PDF byte digest does not match index\.json/u,
     'a changed PDF fails closed before publication',
   )
@@ -312,7 +314,7 @@ try {
     verifyPublishedGoalBook({
       ...defaultGoalBookPublicationPaths,
       modelPath: oversizedModelPath,
-    }),
+    }, prerequisiteReductionContext),
     /BookModel exceeds the browser runtime size budget/u,
     'a BookModel that the browser runtime cannot load fails the publication gate',
   )

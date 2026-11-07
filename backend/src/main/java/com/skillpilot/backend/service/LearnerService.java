@@ -7209,7 +7209,7 @@ public class LearnerService {
         try {
             Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
             var topology = new CompletionProfileCompiler().normalizePrerequisites(lookup);
-            topology.validateContext(projection.targetGoalIds());
+            topology.validateContext(automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection));
             return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
         } catch (CompletionCompilationException invalid) {
             // Broken authored definitions never become an empty, successful demand.
