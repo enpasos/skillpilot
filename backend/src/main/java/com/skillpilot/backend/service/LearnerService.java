@@ -8294,6 +8294,8 @@ public class LearnerService {
         }
         boolean personalizationRequired =
                 personalizationPlan.required() || !personalizationPlan.valid();
+        // An unresolved setup is not an empty or completed learning scope.
+        scopeCompleted = scopeCompleted && !personalizationRequired;
 
         if (allowSideEffects && !followingLearningPlans) {
             activeGoalId = maybeAutoActivateFrontierGoal(
@@ -8364,7 +8366,8 @@ public class LearnerService {
                 && (!call.supported() || completion == null || completion.evaluation() == null
                     || (projectedNavigation != null && projectedNavigation.directAssessment() != null
                         && !ownsDirectAssessment(call, projectedNavigation)));
-        if (invalidDirect || blockedCoach) {
+        if (invalidDirect || blockedCoach
+                || "canonical-subject-scope-unresolved".equals(personalizationPlan.problemCode())) {
             // Hide protected teaching state without clearing another session's persisted work.
             activeGoal = null;
             activeGoalMastered = false;
@@ -10174,6 +10177,9 @@ public class LearnerService {
             return PersonalizationPlan.complete(List.of());
         }
 
+        if (hasUnresolvedCanonicalSubjectScope(learner)) {
+            return PersonalizationPlan.invalid("canonical-subject-scope-unresolved");
+        }
         Map<String, Object> personalCurriculum =
                 mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());
         PersonalizationPlan plan = rawPersonalizationPlan(
@@ -10185,6 +10191,32 @@ public class LearnerService {
                 plan,
                 curriculumId,
                 personalCurriculum);
+    }
+
+    /** A no-flow subject still needs its existing authored scope to be resolved. */
+    private boolean hasUnresolvedCanonicalSubjectScope(Learner learner) {
+        String curriculumId = learner.getSelectedCurriculum();
+        SkillLandscape root = landscapeService.getById(curriculumId);
+        if (!isCanonicalGymnasiumLandscape(root)
+                || CANONICAL_GYMNASIUM_ROOT_ID.equals(curriculumId)
+                || root.getPersonalizationFlow() != null
+                || landscapeService.isCompatibilityOnlyLandscape(curriculumId)) {
+            return false;
+        }
+        Map<String, Map<String, Object>> config =
+                parsePersonalCurriculumConfig(learner.getPersonalCurriculum());
+        // Preserve the existing explicit published-default contract in package mode.
+        if (config.isEmpty() && compositionViewService != null
+                && compositionViewService.isAuthoritativeForLandscape(curriculumId)
+                && compositionViewService.findDefaultView(curriculumId) != null) {
+            return false;
+        }
+        Map<String, String> scope = deriveCompositionScope(curriculumId, config);
+        if (!scope.containsKey("stage") || compositionViewService == null) {
+            return true;
+        }
+        Map<String, Object> matchedView = compositionViewService.findLearnerScopeView(curriculumId, scope);
+        return matchedView == null || matchedView.isEmpty();
     }
 
     private PersonalizationPlan decoratePersonalizationPlan(

@@ -595,3 +595,17 @@ Das sind deterministische Material- und Umfangsprüfungen für Main-N19. Sie
 beweisen weder fachliche Richtigkeit beliebiger Aufgaben noch die vollständige
 U37-Qualifikation jedes freigebenden Consumer-Sets. Die vorbereiteten
 PR-83-Anerkennungsregeln bleiben getrennt und werden hier nicht implementiert.
+
+## Reparaturnachtrag vom 7. November: ungeklärter direkter Fachzugang
+
+Der [begrenzte Implementierungsnachweis](../dev/ci-graph-repairs/canonical-subject-entry-readiness-repair-2026-11-07.md)
+ergänzt die historischen Zeilen R04, R14 und R16. Ein fehlender verfasster
+Auswahlfluss allein macht einen direkten kanonischen Fachzugang nicht zu einem
+aufgelösten Level-2-Umfang. Die Laufzeitprüfung verwendet den vorhandenen
+Scope-/View-Resolver; sie filtert keine einzelnen fachlichen Ziele heraus.
+
+| Regel | Tatsächlicher Guard und Gegenprüfung | CI-Aufruf, Trigger und Fehlerwirkung | Umfang und Grenze |
+| --- | --- | --- | --- |
+| R04 / M | `LearnerService.buildPersonalizationPlan` erkennt ungeklärte kanonische Fachscopes; `getLearnerState` verhindert deren Abschluss und Unterrichtsausgabe. Der tatsächliche Informatik-Servicevergleich hat vorher zweimal `scope_completed=true`, danach zweimal false mit `setPersonalization`; passende explizite und globale Scopes bleiben nutzbar. | `CI / backend-ci`, `Run backend tests`, `scripts/run_backend_ci.py`; PR gegen main, Push auf main oder manueller Lauf. Die sechs neuen `CanonicalSubjectScopeReadinessTest`-Fälle laufen in der bestehenden Suite. Jeder Testfehler lässt den Backendjob scheitern. | P für R04 insgesamt; dieser neue technische Einstiegsguard ist belegt. Keine Behauptung über sämtliche anderen Abschluss- oder Anerkennungsfälle. Der lokale Servicevergleich ist kein zusätzlicher automatisch aufgerufener CI-Test. |
+| R14 / M | `hasUnresolvedCanonicalSubjectScope` verlangt explizite Stage und tatsächlich passende bestehende View. `courseProfileNeverInfersTheMissingStage`, fehlende View und positiver expliziter Scope sind Gegenfälle; No-flow-Domänen und klassifizierte Kompatibilität sind Kontrollen. | Derselbe harte Backendaufruf. Lokale Neuübersetzung und exakt 22 erfolgreiche JUnit-Fälle sind im Anwendungsnachweis gebunden; neue Remoteabnahme ausstehend. | H für die neu geprüften Fachzugangsgrenzen. Ein expliziter autoritativer Paketdefault bleibt eigener bestehender Vertrag; diese Reparatur führt keinen Default ein. Kein Vollständigkeitsbeweis landesspezifischer Pflichtziele. |
+| R16 / M | `LearnerUiController.updateCurriculum` nutzt `setCurriculumFromPublicCatalog`; zwei Controllerfälle prüfen Delegation und Ablehnung. `PersonalCurriculumEditor` bietet die bestehende Basiswahl; `LearnerView` unterbindet während offener Einrichtung den automatischen Planabgleich. | `CI / Application frontend CI`: `test:learner-cockpit-startup`, `test:session-setup-ui`, `test:personal-curriculum-editor`; dieselben Code-PR-/Main-/Manualtrigger. Neue Fälle sind in den tatsächlich aufgerufenen vorhandenen Skripten enthalten; Assertionfehler sind hart. | H für die konkreten API-/Einrichtungsgrenzen und Browserkontrollen. Kein neuer Coachmutator, keine Masteryschreibung und kein Host- oder Deploymentbeleg. |

@@ -128,6 +128,7 @@ try {
   const open = async (
     initial?: Partial<Record<Endpoint, Reply | Promise<Reply>>>,
     root: 'canonical' | 'legacy' = 'canonical',
+    unresolvedOwner = false,
   ) => {
     const context = await browser!.newContext({ viewport: { width: 1280, height: 900 }, locale: 'de-DE' })
     contexts.push(context)
@@ -175,6 +176,9 @@ try {
           && request.method() === 'GET') {
         contentRequests.push(path)
         return json({ status: 404, body: { error: 'Optional content pilot disabled' } })
+      }
+      if (unresolvedOwner && path.endsWith('/personalization-plan')) {
+        return json({ body: { ...savedPlan, stage: 'INVALID', problemCode: 'canonical-subject-scope-unresolved' } })
       }
       const match = /^\/api\/ui\/learners\/(fixture-learner-[ab])(?:\/(state|learning-plans|resume))?$/u.exec(path)
       if (match && (request.method() === 'GET' || (match[2] === 'resume' && request.method() === 'POST'))) {
@@ -674,6 +678,23 @@ try {
     assert.equal(await focus.count(), 1)
     assert.match(await focus.locator('xpath=ancestor::*[@data-goal-id][1]').innerText(), /Elektrische Felder/u)
     assert.equal(h.requests.filter((r) => r.learnerId === learnerB && r.endpoint === 'profile').length, 1)
+    assert.deepEqual(h.unexpected, [])
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
+  }
+
+  // A backend-required setup also gates a directly selected subject, even when
+  // that subject is not the global Gymnasium presentation root.
+  {
+    const h = await open({ state: { body: {
+      activeGoal: null, frontier: [],
+      goals: { planned: [], mastered_count: 0, total_count: 0 },
+      stateMachine: { activeGoal: null, goalOptions: [], requiredAction: 'setPersonalization' },
+    } } }, 'legacy', true)
+    await h.page.getByTestId('personal-curriculum-reselect-base').waitFor()
+    assert.equal(await h.page.getByTestId('learner-current-goal').count(), 0,
+      'the unconfigured direct subject cannot render a raw fallback teaching goal')
+    assert.equal(await h.page.getByTestId('personal-curriculum-reselect-base').getAttribute('href'), '/?start=coach')
     assert.deepEqual(h.unexpected, [])
     assert.deepEqual(h.errors, [])
     await h.context.close()

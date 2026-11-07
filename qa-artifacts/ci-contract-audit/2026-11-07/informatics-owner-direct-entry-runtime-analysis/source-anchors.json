@@ -1,0 +1,205 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha256": "16b52af808ec213a982ee1f88d33637219e3f0586262698d2b76d0c8aa43d043",
+    "snippets": [
+      {
+        "firstLine": 300,
+        "lastLine": 309,
+        "text": "300: - catalog navigation (for example Schule / Hochschule / Sprachen) precedes the\n301:   selected base curriculum and is not learner scope; the committed Personal\n302:   Curriculum is backend-owned Level 2 state, edited through the authored flow\n303:   in first-party WebGUI surfaces. The OpenAI V1 coach neither presents nor\n304:   mutates that configuration\n305: - Level 2 contains jurisdiction or canonical view, applicable duration model,\n306:   explicit stage, selected subjects, and course profile per subject; an absent\n307:   stage stays unresolved, and LK is a subject attribute that never implies\n308:   Sekundarstufe II\n309: - For the current Bavarian Mathematics rollout, `GK` and `LK` are **technical"
+      }
+    ]
+  },
+  {
+    "path": "docs/concept/runtime-workflows/learning-workflow.md",
+    "sha256": "eba385fdbe1ef8da6fc0ad860ab6dafa200cd488d0cd21a3dee66a7641dbdf77",
+    "snippets": [
+      {
+        "firstLine": 34,
+        "lastLine": 65,
+        "text": "34: \n35: ### Before Step 1: Catalog Navigation\n36: \n37: The UI may first group available curricula into catalog areas such as school,\n38: university and higher education, or languages and continuing education. This\n39: helps the learner find a curriculum but does not become part of learner state.\n40: \n41: ### Step 1: Base Curriculum Selection\n42: Before learning starts, a **base curriculum** must be chosen.\n43: \n44: - Definition: the authority-defined landscape that provides the full goal universe.\n45: - Example: \"Gymnasium (DE)\" or a specific university pathway.\n46: \n47: ### Step 2: Committed Personal Curriculum\n48: The learner narrows the base curriculum to the longer-lived subset relevant for\n49: their own path.\n50: \n51: - Definition: the committed selection of authored curriculum dimensions that\n52:   should count as in-scope.\n53: - Example: selecting advanced Math and basic Physics while omitting unrelated subjects.\n54: - School order: jurisdiction or explicit canonical view, applicable duration\n55:   model, stage, subjects, then course profile per subject.\n56: - Result: the resolved learner-facing composition view becomes the candidate\n57:   space for focus, frontier, progress, and completion.\n58: - Ownership: one backend-owned state is configured exclusively through the\n59:   first-party start screen and Cockpit. The OpenAI V1 ChatClient neither asks\n60:   for nor mutates Level 2.\n61: - Invariants: LK is a subject profile and never implies upper secondary;\n62:   missing stage information never means both stages; ambiguous scope requests\n63:   require clarification.\n64: \n65: The local teacher course planner also derives its selectable goal universe from"
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/landscape/RepositoryCurriculumConfiguration.java",
+    "sha256": "34e5c26ded075ebf9e2f9ab310bde13f69db3ae694643f1f62f777c4bebc04be",
+    "snippets": [
+      {
+        "firstLine": 10,
+        "lastLine": 47,
+        "text": "10: /** Repository-backed curriculum services for the authoring/runtime compatibility mode. */\n11: @Configuration(proxyBeanMethods = false)\n12: @ConditionalOnProperty(\n13:         prefix = \"skillpilot.curriculum\",\n14:         name = \"source\",\n15:         havingValue = \"repository\",\n16:         matchIfMissing = true)\n17: public class RepositoryCurriculumConfiguration {\n18: \n19:     @Bean\n20:     GoalMappingService repositoryGoalMappingService(\n21:             LandscapeProperties properties,\n22:             ObjectMapper objectMapper) {\n23:         return new GoalMappingService(properties, objectMapper);\n24:     }\n25: \n26:     @Bean\n27:     LandscapeService repositoryLandscapeService(\n28:             LandscapeProperties properties,\n29:             ObjectMapper objectMapper,\n30:             GoalMappingService goalMappingService) {\n31:         return new LandscapeService(properties, objectMapper, goalMappingService);\n32:     }\n33: \n34:     @Bean\n35:     CompositionViewService repositoryCompositionViewService(\n36:             LandscapeProperties properties,\n37:             ObjectMapper objectMapper,\n38:             LandscapeService landscapeService) {\n39:         return new CompositionViewService(properties, objectMapper, () -> {\n40:             java.util.Map<String, java.util.List<String>> contains = new java.util.LinkedHashMap<>();\n41:             landscapeService.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->\n42:                     contains.put(goal.getId(), goal.getContains() == null\n43:                             ? java.util.List.of() : java.util.List.copyOf(goal.getContains()))));\n44:             return contains;\n45:         });\n46:     }\n47: "
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/resources/application.yml",
+    "sha256": "d684b1cf80d4730dcb5612853751a6482af99a4051bbb818ef9cdaf50c4b8d50",
+    "snippets": [
+      {
+        "firstLine": 183,
+        "lastLine": 190,
+        "text": "183:   curriculum:\n184:     source: ${SKILLPILOT_CURRICULUM_SOURCE:repository}\n185:     consumer-version: ${SKILLPILOT_CURRICULUM_CONSUMER_VERSION:0.1.0}\n186:     packages:\n187:       store-directory: ${SKILLPILOT_CURRICULUM_PACKAGE_STORE:../tmp/curriculum-package-store}\n188:       active-lock: ${SKILLPILOT_CURRICULUM_PACKAGE_LOCK:locks/active.json}\n189:   landscapes:\n190:     directory: ../curricula"
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+    "sha256": "5cb90e216a0b11b431981de46b012859ab0cc733a49d48e04a1483e901dcf5bf",
+    "snippets": [
+      {
+        "firstLine": 64,
+        "lastLine": 85,
+        "text": "64:     public CompositionViewService(LandscapeProperties properties, ObjectMapper objectMapper) {\n65:         this(properties, objectMapper, null);\n66:     }\n67: \n68:     public CompositionViewService(\n69:             LandscapeProperties properties,\n70:             ObjectMapper objectMapper,\n71:             Supplier<Map<String, List<String>>> canonicalGraphSupplier) {\n72:         this.properties = Objects.requireNonNull(properties, \"properties\");\n73:         this.objectMapper = Objects.requireNonNull(objectMapper, \"objectMapper\");\n74:         this.packageState = null;\n75:         this.canonicalGraphSupplier = canonicalGraphSupplier;\n76:     }\n77: \n78:     public CompositionViewService(PackageCompositionViewState packageState) {\n79:         this.properties = null;\n80:         this.objectMapper = null;\n81:         this.packageState = Objects.requireNonNull(packageState, \"packageState\");\n82:         this.canonicalGraphSupplier = null;\n83:     }\n84: \n85:     public record CompositionStructureResolution("
+      },
+      {
+        "firstLine": 655,
+        "lastLine": 667,
+        "text": "655:     public Map<String, Object> findDefaultView(String landscapeId) {\n656:         if (packageState == null || !StringUtils.hasText(landscapeId)) {\n657:             return null;\n658:         }\n659:         return packageState.resolveDefaultDocument(landscapeId.trim());\n660:     }\n661: \n662:     public boolean isAuthoritativeForLandscape(String landscapeId) {\n663:         return packageState != null\n664:                 && StringUtils.hasText(landscapeId)\n665:                 && packageState.isManagedLandscape(landscapeId.trim());\n666:     }\n667: "
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/CurriculumPersonalizationPlanner.java",
+    "sha256": "407f28b3787e0a261d1c1c598d70f8cceec3439b87c0cd4a9e48b46b68862f9c",
+    "snippets": [
+      {
+        "firstLine": 25,
+        "lastLine": 32,
+        "text": "25: \n26: /**\n27:  * Evaluates an explicitly authored curriculum-personalization flow.\n28:  *\n29:  * <p>The skill graph is intentionally absent from this implementation.\n30:  * In particular, {@code contains} and {@code requires} never create user\n31:  * choices. A curriculum without an authored flow has no mandatory guided\n32:  * personalization. A malformed authored flow fails closed.</p>"
+      },
+      {
+        "firstLine": 65,
+        "lastLine": 76,
+        "text": "65: \n66:         SkillLandscape root = landscapeResolver.apply(rootLandscapeId);\n67:         if (root == null || !rootLandscapeId.equals(root.getLandscapeId())) {\n68:             return PersonalizationPlan.invalid(\"personalization-root-unknown\");\n69:         }\n70: \n71:         PersonalizationFlow flow = root.getPersonalizationFlow();\n72:         if (flow == null) {\n73:             return PersonalizationPlan.complete(List.of());\n74:         }\n75: \n76:         ValidationResult validation = validate(flow, landscapeResolver);"
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/domain/Learner.java",
+    "sha256": "1ef216f8e1d7685cb358a89164bfc6e8e3d317ea41797fa84bcf7b872c5eb05a",
+    "snippets": [
+      {
+        "firstLine": 38,
+        "lastLine": 44,
+        "text": "38: \n39:     @Column(name = \"selected_curriculum\")\n40:     private String selectedCurriculum;\n41: \n42:     @Column(name = \"personal_curriculum\", columnDefinition = \"TEXT\")\n43:     private String personalCurriculum;\n44: "
+      },
+      {
+        "firstLine": 126,
+        "lastLine": 141,
+        "text": "126: \n127:     public String getSelectedCurriculum() {\n128:         return selectedCurriculum;\n129:     }\n130: \n131:     public void setSelectedCurriculum(String selectedCurriculum) {\n132:         this.selectedCurriculum = selectedCurriculum;\n133:     }\n134: \n135:     public String getPersonalCurriculum() {\n136:         return personalCurriculum;\n137:     }\n138: \n139:     public void setPersonalCurriculum(String personalCurriculum) {\n140:         this.personalCurriculum = personalCurriculum;\n141:     }"
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/ui/LearnerUiController.java",
+    "sha256": "7eb0a715aff8f3433c6b4190a85b2897efc4b8938a5ac9be3ca0e23eae45f457",
+    "snippets": [
+      {
+        "firstLine": 315,
+        "lastLine": 323,
+        "text": "315: \n316:     @PutMapping(\"/{skillpilotId}/curriculum\")\n317:     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = \"x-openai-isConsequential\", value = \"false\", parseValue = true)))\n318:     public void updateCurriculum(@PathVariable String skillpilotId, @RequestBody UpdateCurriculumRequest request) {\n319:         learnerLifecycle.withActivity(skillpilotId, () -> {\n320:             learnerService.assertWritableLearningSession(skillpilotId);\n321:             learnerService.setCurriculum(skillpilotId, request.getCurriculumId());\n322:         });\n323:     }"
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "sha256": "ef64d164448b6ac0cb106008e2367ac690cc6619e586b8193b5dd6656b21e659",
+    "snippets": [
+      {
+        "firstLine": 4790,
+        "lastLine": 4799,
+        "text": "4790:     private boolean hasCompletedPersonalCurriculum(Learner learner) {\n4791:         if (learner == null\n4792:                 || learner.getSelectedCurriculum() == null\n4793:                 || learner.getSelectedCurriculum().isBlank()) {\n4794:             return false;\n4795:         }\n4796:         PersonalizationPlan plan = buildPersonalizationPlan(learner);\n4797:         return plan.valid() && !plan.required();\n4798:     }\n4799: "
+      },
+      {
+        "firstLine": 5226,
+        "lastLine": 5250,
+        "text": "5226:     @Transactional\n5227:     public void setCurriculumFromPublicCatalog(String skillpilotId, String curriculumId) {\n5228:         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)\n5229:                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, \"Learner not found\"));\n5230:         assertWritableLearningSession(learner);\n5231: \n5232:         String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();\n5233:         if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {\n5234:             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,\n5235:                     \"curriculumId must not be empty.\");\n5236:         }\n5237:         long publishedMatches = getAvailableBaseCurricula(false).stream()\n5238:                 .filter(Objects::nonNull)\n5239:                 .filter(summary -> effectiveCurriculumId.equals(summary.getCurriculumId()))\n5240:                 .limit(2)\n5241:                 .count();\n5242:         if (publishedMatches != 1) {\n5243:             throw new ResponseStatusException(\n5244:                     org.springframework.http.HttpStatus.CONFLICT,\n5245:                     \"The selected curriculum is no longer available in the current public catalog.\");\n5246:         }\n5247: \n5248:         applyCurriculumSelection(learner, effectiveCurriculumId);\n5249:     }\n5250: "
+      },
+      {
+        "firstLine": 5251,
+        "lastLine": 5286,
+        "text": "5251:     private void applyCurriculumSelection(Learner learner, String curriculumId) {\n5252:         String effectiveCurriculumId = curriculumId == null ? null : curriculumId.trim();\n5253:         if (effectiveCurriculumId == null || effectiveCurriculumId.isBlank()) {\n5254:             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,\n5255:                     \"curriculumId must not be empty.\");\n5256:         }\n5257:         if (landscapeService.getById(effectiveCurriculumId) == null) {\n5258:             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,\n5259:                     \"Invalid curriculum ID: \" + effectiveCurriculumId);\n5260:         }\n5261:         if (landscapeService.isCompatibilityOnlyLandscape(effectiveCurriculumId)) {\n5262:             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,\n5263:                     buildCompatibilityOnlyRetirementMessage(effectiveCurriculumId));\n5264:         }\n5265:         boolean curriculumChanged = !Objects.equals(learner.getSelectedCurriculum(), effectiveCurriculumId);\n5266:         learner.setSelectedCurriculum(effectiveCurriculumId);\n5267:         if (curriculumChanged) {\n5268:             saveCompletionWorkflow(learner, null);\n5269:             // Level 2 and Level 3a belong to the selected root. Level 4 mastery\n5270:             // remains global and is deliberately not touched here.\n5271:             learner.setPersonalCurriculum(null);\n5272:             plannedGoalRepository.deleteByLearner_SkillpilotId(learner.getSkillpilotId());\n5273:             learner.setActiveGoalId(null);\n5274:             if (hasCompletedPersonalCurriculum(learner)) {\n5275:                 GoalProjection projection = getGoalProjection(\n5276:                         effectiveCurriculumId,\n5277:                         learner.getPersonalCurriculum());\n5278:                 String defaultFocusId = resolveDefaultProjectedFocusId(\n5279:                         effectiveCurriculumId,\n5280:                         projection);\n5281:                 if (defaultFocusId != null) {\n5282:                     plannedGoalRepository.save(new PlannedGoal(learner, defaultFocusId));\n5283:                 }\n5284:             }\n5285:         }\n5286:         learner.setLearningState(LearningState.FRONTIER);"
+      },
+      {
+        "firstLine": 10168,
+        "lastLine": 10188,
+        "text": "10168:     private PersonalizationPlan buildPersonalizationPlan(Learner learner) {\n10169:         if (learner == null) {\n10170:             return PersonalizationPlan.complete(List.of());\n10171:         }\n10172:         String curriculumId = learner.getSelectedCurriculum();\n10173:         if (curriculumId == null || curriculumId.isBlank()) {\n10174:             return PersonalizationPlan.complete(List.of());\n10175:         }\n10176: \n10177:         Map<String, Object> personalCurriculum =\n10178:                 mutablePersonalCurriculumPayload(learner.getPersonalCurriculum());\n10179:         PersonalizationPlan plan = rawPersonalizationPlan(\n10180:                 curriculumId,\n10181:                 learner.getPersonalCurriculum(),\n10182:                 parsePersonalCurriculumConfig(\n10183:                         writePersonalCurriculumConfig(personalCurriculum)));\n10184:         return decoratePersonalizationPlan(\n10185:                 plan,\n10186:                 curriculumId,\n10187:                 personalCurriculum);\n10188:     }"
+      },
+      {
+        "firstLine": 10772,
+        "lastLine": 10816,
+        "text": "10772:                 allGoals,\n10773:                 config,\n10774:                 closure).visibleGoals();\n10775:     }\n10776: \n10777:     private GoalProjection applyCompositionViewProjection(\n10778:             String curriculumId,\n10779:             Map<String, LearningGoal> allGoals,\n10780:             Map<String, LearningGoal> structuralGoals,\n10781:             Map<String, Map<String, Object>> config,\n10782:             List<SkillLandscape> closure) {\n10783:         if (compositionViewService == null\n10784:                 || curriculumId == null\n10785:                 || curriculumId.isBlank()\n10786:                 || allGoals == null\n10787:                 || allGoals.isEmpty()\n10788:                 || closure == null\n10789:                 || closure.isEmpty()) {\n10790:             return identityGoalProjection(allGoals, structuralGoals);\n10791:         }\n10792:         boolean authoritativeCurriculum = compositionViewService.isAuthoritativeForLandscape(curriculumId);\n10793:         if ((config == null || config.isEmpty()) && !authoritativeCurriculum) {\n10794:             return identityGoalProjection(allGoals, structuralGoals);\n10795:         }\n10796:         Map<String, Map<String, Object>> effectiveConfig =\n10797:                 config == null ? Collections.emptyMap() : config;\n10798: \n10799:         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();\n10800:         List<Map<String, CompositionGoalReference>> referencesByView = new ArrayList<>();\n10801:         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();\n10802:         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();\n10803:         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();\n10804:         boolean authoritativeCandidateSeen = authoritativeCurriculum;\n10805:         boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();\n10806:         if (defaultCurriculumViewRequested) {\n10807:             Map<String, Object> defaultView = compositionViewService.findDefaultView(curriculumId);\n10808:             if (defaultView != null && !defaultView.isEmpty()) {\n10809:                 addCompositionViewId(defaultView, compositionViewIds);\n10810:                 addCompositionPresentationRootGoalId(\n10811:                         defaultView,\n10812:                         landscapeService.getById(readString(defaultView.get(\"landscapeId\"))),\n10813:                         presentationRootGoalIds);\n10814:                 collectCompositionViewGoalReferences(defaultView.get(\"rootNodes\"), referencedGoals);\n10815:                 referencesByView.add(new LinkedHashMap<>(referencedGoals));\n10816:             }"
+      },
+      {
+        "firstLine": 10829,
+        "lastLine": 10851,
+        "text": "10829:             if (requestedScope.isEmpty()) {\n10830:                 if (!authoritative) {\n10831:                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);\n10832:                 }\n10833:                 continue;\n10834:             }\n10835:             Map<String, Object> matchedView =\n10836:                     compositionViewService.findLearnerScopeView(\n10837:                             landscape.getLandscapeId(),\n10838:                             requestedScope);\n10839:             if (matchedView == null || matchedView.isEmpty()) {\n10840:                 if (!authoritative) {\n10841:                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);\n10842:                 }\n10843:                 continue;\n10844:             }\n10845:             addCompositionViewId(matchedView, compositionViewIds);\n10846:             addCompositionPresentationRootGoalId(\n10847:                     matchedView,\n10848:                     landscape,\n10849:                     presentationRootGoalIds);\n10850:             LinkedHashMap<String, CompositionGoalReference> landscapeReferencedGoals = new LinkedHashMap<>();\n10851:             collectCompositionViewGoalReferences(matchedView.get(\"rootNodes\"), landscapeReferencedGoals);"
+      },
+      {
+        "firstLine": 11134,
+        "lastLine": 11161,
+        "text": "11134:         String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);\n11135:         String landscapeFilterId = readFilterId(config, landscapeId);\n11136:         String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);\n11137:         String courseProfile = normalizeCourseProfileScope(landscapeFilterId);\n11138:         String stage = inferCompositionStageScope(config, landscapeId);\n11139:         String durationModel = resolveDurationModelScope(\n11140:                 readScopeValue(config, landscapeId, \"durationModel\"),\n11141:                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, \"durationModel\"),\n11142:                 rootFilterId,\n11143:                 landscapeFilterId);\n11144: \n11145:         if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {\n11146:             return Collections.emptyMap();\n11147:         }\n11148: \n11149:         Map<String, String> scope = new LinkedHashMap<>();\n11150:         scope.put(\"schoolForm\", \"Gymnasium\");\n11151:         if (jurisdiction != null) {\n11152:             scope.put(\"jurisdiction\", jurisdiction);\n11153:         }\n11154:         if (stage != null) {\n11155:             scope.put(\"stage\", stage);\n11156:         }\n11157:         if (courseProfile != null && !\"SekI\".equals(stage)) {\n11158:             scope.put(\"courseProfile\", courseProfile);\n11159:         }\n11160:         if (durationModel != null) {\n11161:             scope.put(\"durationModel\", durationModel);"
+      },
+      {
+        "firstLine": 11229,
+        "lastLine": 11254,
+        "text": "11229:     private String inferCompositionStageScope(\n11230:             Map<String, Map<String, Object>> config,\n11231:             String landscapeId) {\n11232:         String explicitStage = resolveStageScope(\n11233:                 readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, \"stage\"),\n11234:                 readScopeValue(config, landscapeId, \"stage\"));\n11235:         if (explicitStage != null) {\n11236:             return explicitStage;\n11237:         }\n11238:         Boolean sek1Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK1_ID);\n11239:         Boolean sek2Selected = readSelectedFlagIfPresent(config, STAGE_SCOPE_SEK2_ID);\n11240:         if (sek1Selected == null && sek2Selected == null) {\n11241:             return null;\n11242:         }\n11243:         if (Boolean.TRUE.equals(sek1Selected) && Boolean.TRUE.equals(sek2Selected)) {\n11244:             return \"CrossStage\";\n11245:         }\n11246:         if (Boolean.TRUE.equals(sek1Selected)) {\n11247:             return \"SekI\";\n11248:         }\n11249:         if (Boolean.TRUE.equals(sek2Selected)) {\n11250:             return \"SekII\";\n11251:         }\n11252:         return null;\n11253:     }\n11254: "
+      }
+    ]
+  },
+  {
+    "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewState.java",
+    "sha256": "81360a167c0eea08e207d75fb17f93d2b94aabe087fb159513dcb76f66811e89",
+    "snippets": [
+      {
+        "firstLine": 64,
+        "lastLine": 81,
+        "text": "64: \n65:     public static PackageCompositionViewState load(CurriculumRuntimeSnapshot snapshot, ObjectMapper objectMapper) {\n66:         Objects.requireNonNull(snapshot, \"snapshot\");\n67:         Objects.requireNonNull(objectMapper, \"objectMapper\");\n68: \n69:         Map<String, CurriculumRuntimeSnapshot.PackageDescriptor> packagesById = new LinkedHashMap<>();\n70:         for (CurriculumRuntimeSnapshot.PackageDescriptor descriptor : snapshot.packages()) {\n71:             packagesById.put(descriptor.packageId(), descriptor);\n72:         }\n73:         LandscapeGraph graph = LandscapeGraph.load(snapshot, objectMapper);\n74: \n75:         Map<String, View> views = new LinkedHashMap<>();\n76:         for (CurriculumRuntimeSnapshot.ViewDescriptor descriptor : snapshot.viewsById().values()) {\n77:             CurriculumRuntimeSnapshot.PackageDescriptor packageDescriptor = packagesById.get(descriptor.packageId());\n78:             if (packageDescriptor == null) {\n79:                 throw failure(\"View belongs to an unknown package: \" + descriptor.viewId());\n80:             }\n81:             validateScope(descriptor.scope(), packageDescriptor, \"view \" + descriptor.viewId());"
+      },
+      {
+        "firstLine": 138,
+        "lastLine": 151,
+        "text": "138:         Map<String, Offering> defaults = new LinkedHashMap<>();\n139:         for (CurriculumRuntimeSnapshot.LandscapeDescriptor landscape : snapshot.landscapesById().values()) {\n140:             if (landscape.defaultOfferingId() == null) {\n141:                 continue;\n142:             }\n143:             Offering offering = offerings.get(landscape.defaultOfferingId());\n144:             if (offering == null || !offering.landscapeId().equals(landscape.landscapeId())) {\n145:                 throw failure(\"Invalid default offering for landscape \" + landscape.landscapeId());\n146:             }\n147:             defaults.put(landscape.landscapeId(), offering);\n148:         }\n149: \n150:         return new PackageCompositionViewState(\n151:                 snapshot.generationSha256(),"
+      },
+      {
+        "firstLine": 203,
+        "lastLine": 211,
+        "text": "203: \n204:     public ResolvedView resolveDefault(String landscapeId) {\n205:         if (landscapeId == null) {\n206:             return null;\n207:         }\n208:         Offering offering = defaultOfferingsByLandscapeId.get(landscapeId.trim());\n209:         return offering == null ? null : resolutionsByOfferingId.get(offering.offeringId());\n210:     }\n211: "
+      }
+    ]
+  },
+  {
+    "path": "backend/src/test/java/com/skillpilot/backend/service/CurriculumPersonalizationPlannerTest.java",
+    "sha256": "2c18b918fe636228732d440fe833a15affb18de7f9c9cf3e06f62181284a1e59",
+    "snippets": [
+      {
+        "firstLine": 30,
+        "lastLine": 44,
+        "text": "30: \n31:     @Test\n32:     void completesWithoutMandatoryChoicesWhenNoFlowIsAuthored() {\n33:         SkillLandscape root = landscape(ROOT_ID, \"Orbit\");\n34: \n35:         PersonalizationPlan plan =\n36:                 CurriculumPersonalizationPlanner.plan(ROOT_ID, List.of(root), Map.of());\n37: \n38:         assertThat(plan.valid()).isTrue();\n39:         assertThat(plan.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);\n40:         assertThat(plan.canReopenMigratedPersonalization()).isFalse();\n41:         assertThat(plan.required()).isFalse();\n42:         assertThat(plan.options()).isEmpty();\n43:     }\n44: "
+      }
+    ]
+  },
+  {
+    "path": "backend/src/test/java/com/skillpilot/backend/service/CompositionViewServiceTest.java",
+    "sha256": "47b780bfabf605cefffeb46c72e22251d2972ab5e56940698a2cfef1d9cbd63c",
+    "snippets": [
+      {
+        "firstLine": 635,
+        "lastLine": 655,
+        "text": "635:     @Test\n636:     void learnerScopeDoesNotInferSekTwoFromCourseProfile() {\n637:         CompositionViewService service = createService();\n638: \n639:         for (String courseProfile : List.of(\"GK\", \"LK\")) {\n640:             assertThat(service.findLearnerScopeView(\n641:                             CANONICAL_MATH_ID,\n642:                             Map.of(\n643:                                     \"schoolForm\", \"Gymnasium\",\n644:                                     \"jurisdiction\", \"DE-HE\",\n645:                                     \"courseProfile\", courseProfile)))\n646:                     .as(courseProfile + \" without an explicit stage\")\n647:                     .isNull();\n648:         }\n649:     }\n650: \n651:     @Test\n652:     void learnerScopeResolvesExplicitHessianSekTwoPhysicsGkView() {\n653:         CompositionViewService service = createService();\n654: \n655:         assertThat(service.findLearnerScopeView("
+      }
+    ]
+  },
+  {
+    "path": "AGENTS.md",
+    "frame": "0ce5a8d791eeb9783a919195fd8590bfb79f3595",
+    "snippets": [
+      {
+        "firstLine": 300,
+        "lastLine": 309,
+        "text": "300: - catalog navigation (for example Schule / Hochschule / Sprachen) precedes the\n301:   selected base curriculum and is not learner scope; the committed Personal\n302:   Curriculum is backend-owned Level 2 state, edited through the authored flow\n303:   in first-party WebGUI surfaces. The OpenAI V1 coach neither presents nor\n304:   mutates that configuration\n305: - Level 2 contains jurisdiction or canonical view, applicable duration model,\n306:   explicit stage, selected subjects, and course profile per subject; an absent\n307:   stage stays unresolved, and LK is a subject attribute that never implies\n308:   Sekundarstufe II\n309: - For the current Bavarian Mathematics rollout, `GK` and `LK` are **technical"
+      }
+    ]
+  }
+]

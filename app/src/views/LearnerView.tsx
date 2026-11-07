@@ -1517,7 +1517,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       : !effectiveActiveGoalId)
 
   const usesGuidedPersonalCurriculumEditor =
-    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
+    rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID || stateRequiredAction === 'setPersonalization'
   const personalConfigLoadStatus: LearnerStateLoadStatus =
     personalConfigLoadState.scopeKey === learnerStateScopeKey
       ? personalConfigLoadState.status
@@ -2457,6 +2457,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     const response = scopedLearningPlans
     if (
       !skillpilotId
+      || isGuidedPersonalizationRequired
       || learnerStateLoadStatus !== 'ready'
       || learningPlansLoadStatus !== 'ready'
       || !response?.followLearningPlans
@@ -2515,6 +2516,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [
     applyLearningPlanTransition,
     effectiveActiveGoalId,
+    isGuidedPersonalizationRequired,
     learnerLearningPlanCopy.reconcileFailed,
     learnerStateLoadStatus,
     learnerStateScopeKey,

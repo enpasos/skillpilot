@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -57,6 +58,28 @@ class LearnerUiControllerPersonalizationTest {
                 learnerService,
                 mock(ChatSessionService.class),
                 learnerLifecycle);
+    }
+
+    @Test
+    void baseSelectionUsesTheExistingPublicCatalogGuard() {
+        var request = new com.skillpilot.backend.api.UpdateCurriculumRequest();
+        request.setCurriculumId("published-base");
+        controller.updateCurriculum(LEARNER_ID, request);
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
+        ordered.verify(learnerService).setCurriculumFromPublicCatalog(LEARNER_ID, "published-base");
+        verifyNoMoreInteractions(learnerService);
+    }
+
+    @Test
+    void hiddenSubjectSelectionPropagatesCatalogRejection() {
+        org.mockito.Mockito.doThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Not a public base"))
+                .when(learnerService).setCurriculumFromPublicCatalog(LEARNER_ID, "hidden-subject");
+        var request = new com.skillpilot.backend.api.UpdateCurriculumRequest();
+        request.setCurriculumId("hidden-subject");
+        assertThatThrownBy(() -> controller.updateCurriculum(LEARNER_ID, request))
+                .isInstanceOf(ResponseStatusException.class);
+        verify(learnerService, never()).setCurriculum(org.mockito.ArgumentMatchers.anyString(), org.mockito.ArgumentMatchers.anyString());
     }
 
     @Test

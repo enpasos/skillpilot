@@ -377,3 +377,12 @@ assert(
 )
 
 console.log('personal curriculum editor label render tests passed')
+
+for (const language of ['de', 'en'] as const) {
+  const invalid = { ...plan, stage: 'INVALID' as const, problemCode: 'canonical-subject-scope-unresolved' }
+  const recovery = renderEditor(language, invalid)
+  assert(recovery.includes('href="/?start=coach"') && recovery.includes('personal-curriculum-reselect-base'),
+    'an unresolved canonical subject provides the existing first-party base selection route')
+  assert(recovery.includes(language === 'de' ? 'Basislehrplan auswählen' : 'Choose base curriculum'))
+  assert(!recovery.includes('canonical-subject-scope-unresolved'), 'ordinary recovery copy does not display the internal code')
+}
