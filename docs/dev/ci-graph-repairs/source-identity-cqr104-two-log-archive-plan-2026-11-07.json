@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact-two-historical-log-archive-plan",
+  "date": "2026-11-07",
+  "status": "native-private-controls-pass-not-applied-root-review-pending",
+  "sourceBase": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+  "workingHeadAtPlan": "c125cdcaa7d4d8b3e5132bf25a524b4a85498f45",
+  "originalReceipt": {
+    "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json",
+    "sha256": "d7493ce576364c7243b4a5f8a6775021d89201bc43c741cec32a0636da8fcae0"
+  },
+  "sourceAFailureReceipt": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-cb128-source-rebase-failure-2026-11-07.json",
+    "sha256": "a1a9dce851a17a252d0a090be06b742a7ec70b4b7ac1b17a1fd86bf1fca11715"
+  },
+  "archiveOperations": [
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt",
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "bytes": 262861,
+      "sourceGitMode": "100644",
+      "archiveGitObjectId": "1470c140d34723c0a72d9306e3b039b974385ca8",
+      "aliasGitObjectId": "01410de491a2b2aaaa68f3a72d6a65a7609b42cb",
+      "originalCommandExitCode": 0,
+      "matchedExistingImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "gitEntryModesAndObjectIdsExact": true
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+      "rawSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+      "bytes": 73230,
+      "sourceGitMode": "100644",
+      "archiveGitObjectId": "14deb477098cf618f22eb6445bf2fd2ecd91f19b",
+      "aliasGitObjectId": "c7d3d81e1f44869a258ab418051e575e772f1990",
+      "originalCommandExitCode": 1,
+      "matchedExistingImmutableRule": {
+        "prefix": "qa-artifacts/",
+        "reason": "Historical machine/review evidence remains byte-identical."
+      },
+      "nativeAliasBytesEqual": true,
+      "filesystemAliasBytesEqual": true,
+      "gitEntryModesAndObjectIdsExact": true
+    }
+  ],
+  "supportingLocatorAliases": [],
+  "codeAndContractPins": [
+    {
+      "field": "registry",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "field": "registrySchemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "field": "schemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "field": "canonicalJsonProfile",
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "field": "verifier",
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "field": "identityKernelBinding",
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "nativeExperiment": {
+    "terminalExitCode": 0,
+    "command": "python3 -B qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/probe.py --repo-root /home/enpasos/projects/skillpilot --output /dev/shm/NEW-RESULT.json",
+    "nativeGitSnapshotReadOriginalAndArchiveEqual": true,
+    "gitRegularAndSymlinkObjectIdsAndModesExact": true,
+    "nativeMatchingPaths": [
+      "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+      "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt"
+    ],
+    "badLocatorsRejected": [
+      "cycle",
+      "escape",
+      "missing"
+    ],
+    "stderr": "Git emits only its graft-file deprecation advice because the private probe explicitly disables inherited grafts; captured verbatim, exit0.",
+    "privateOnly": true
+  },
+  "incomingLocatorAnalysis": {
+    "pinnedTree": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+    "completeTrackedTreeSearch": "git --no-replace-objects grep -n -F -e OLD_FLOORS_PATH -e OLD_PRODUCER_PATH cb128 -- .",
+    "actualMatchingLines": [
+      "cb1289bf067fb9831ef855685daa8b0ab4e6aa96:docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json:115:        \"path\": \"docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt\",",
+      "cb1289bf067fb9831ef855685daa8b0ab4e6aa96:docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json:123:        \"path\": \"docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt\","
+    ],
+    "uniquePinnedConsumerPaths": [
+      "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json"
+    ],
+    "preservedReceiptPointers": [
+      "/actualCommands/0/log/path",
+      "/actualCommands/0/log/sha256",
+      "/actualCommands/1/log/path",
+      "/actualCommands/1/log/sha256"
+    ],
+    "currentUntrackedFailureReceiptAlsoUsesOriginalLocators": true,
+    "activeConsumerSearch": "Working-tree exact-path search in curricula, contracts, backend, app/scripts, scripts, .github found no active consumer.",
+    "hashOnlyReferencesAreNotLocatorUpdates": "The same producer content hash also appears in older historical CQR receipts with different original paths. None is rebound or edited.",
+    "outgoingMarkdownLocators": "The two payloads are plain txt execution logs, not relocated Markdown documents; no supporting aliases or link-text edits are required."
+  },
+  "preservedExecutionClaims": {
+    "producerExitCode": 0,
+    "floorExitCode": 1,
+    "protectedFloorViolations": 7,
+    "receiptOrLogFieldsRewritten": false,
+    "currentReadinessRecomputed": false,
+    "newQaClaim": false
+  },
+  "requiredApplicationGuards": [
+    "Check both old paths are regular files matching exact cb128 Gitblob OIDs, SHA256 and lengths; check the original receipt pin and six immutable v1 code/contract pins.",
+    "Both archive destination files must be absent. Write exact original bytes via private tempfile, fsync, chmod0644 and os.replace; do not overwrite existing hardlinked inodes.",
+    "Replace exactly the two old paths with the specified internal relative file symlinks; validate exact link text, mode120000 Gitobject, in-repository resolution, no cycles/escapes, and exact archived bytes.",
+    "Preserve all historical receipt/log hashes, failures and original locator strings. No additional supporting alias, schema/registry/output exclusion or baseline rule is permitted by this plan.",
+    "Run the same small native GitSnapshot/alias controls on actual applied bytes and record a separate application receipt.",
+    "Only after Root chooses a new exact checkpoint, run the unchanged complete Source-A generator and independent verifier; record actual new counts/raw/projection hashes. Do not relabel failed cb128 or prior db9c."
+  ],
+  "gitRawLocatorBoundary": "git show NEW:OLD_ALIAS returns link text. For original bytes use cb128:OLD_PATH or NEW:ARCHIVE_PATH; filesystem and native GitSnapshot intentionally dereference the internal alias.",
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/native-probe-result.json",
+      "sha256": "edd9153a40e55e80c072632e5db4101a60585c1fef8d5e2d8c55aad8d83b9814",
+      "bytes": 3007
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/native-probe.stdout.txt",
+      "sha256": "1d254dcc47eb60cb43cce735087bf05a092a44f72675580e619b4abf7a945a25",
+      "bytes": 96
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/native-probe.stderr.txt",
+      "sha256": "97da19e74d25ebb0ca8cdf686ce46439db3e2ed0027405504b94a40133b74f18",
+      "bytes": 927
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/pinned-incoming-locators.txt",
+      "sha256": "1b7a8803abaee7c020c0b661e5e16b11f425cfe2ff6dbe997af76950f5d42960",
+      "bytes": 386
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-plan/probe.py",
+      "sha256": "692e72ba8e5aa2ee15c154cf1d25d53dcc4e75d824012cf148c1676a11a4e7ff",
+      "bytes": 8090
+    }
+  ],
+  "sourceWritesPerformed": false,
+  "archivesApplied": false,
+  "schemaRegistryVerifierChanged": false,
+  "newSourceProofProduced": false,
+  "candidatePhysicalQaExecuted": false,
+  "runtimeActivationAllowed": false
+}

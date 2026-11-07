@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact-two-historical-log-archive-application",
+  "executionLocalDate": "2026-11-07",
+  "status": "applied-exact-two-archives-and-two-internal-locators-native-replay-pass-no-new-proof",
+  "sourceOriginalCommit": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+  "appliedPlan": {
+    "path": "docs/dev/ci-graph-repairs/source-identity-cqr104-two-log-archive-plan-2026-11-07.json",
+    "sha256": "577b5611d8cdf7fb27dbc55b66f55d66e7c385faa8108e875a95a4e119436fc9"
+  },
+  "originalCqr104Receipt": {
+    "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06.json",
+    "sha256": "d7493ce576364c7243b4a5f8a6775021d89201bc43c741cec32a0636da8fcae0"
+  },
+  "operations": [
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "beforeDevice": 2096,
+      "beforeInode": 37605129,
+      "beforeNlink": 1,
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt",
+      "archiveDevice": 2096,
+      "archiveInode": 37678274,
+      "archiveNlink": 1,
+      "archiveMode": "0644",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/producer.txt",
+      "aliasGitObjectId": "01410de491a2b2aaaa68f3a72d6a65a7609b42cb",
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "bytes": 262861,
+      "nativeReplayPending": false
+    },
+    {
+      "originalPath": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "beforeDevice": 2096,
+      "beforeInode": 37605130,
+      "beforeNlink": 1,
+      "archivePath": "qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+      "archiveDevice": 2096,
+      "archiveInode": 37678275,
+      "archiveNlink": 1,
+      "archiveMode": "0644",
+      "aliasTarget": "../../../../qa-artifacts/ci-contract-audit/2026-11-06/cqr104-current-cqr-2026-11-06/floors.txt",
+      "aliasGitObjectId": "c7d3d81e1f44869a258ab418051e575e772f1990",
+      "rawSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+      "bytes": 73230,
+      "nativeReplayPending": false
+    }
+  ],
+  "supportingAliasesCreated": 0,
+  "changedHistoricalLogBytes": false,
+  "historicalProducerExitCode": 0,
+  "historicalFloorExitCode": 1,
+  "historicalProtectedFloorViolations": 7,
+  "originalCqr104ReceiptBytesUnchanged": true,
+  "inodeBoundary": "Each archive has its own new inode with nlink1. The old inode was never opened for writing; the old path was atomically replaced by an exact relative symlink. File data and parent directories were fsynced.",
+  "rawGitLocatorBoundary": "git show NEW:OLD_ALIAS returns link text. For original bytes use cb128:OLD_PATH or NEW:ARCHIVE_PATH; filesystem and native GitSnapshot intentionally dereference the internal alias.",
+  "nativeReplay": {
+    "command": "python3 -B docs/dev/ci-graph-repairs/verify_source_identity_cqr104_archive_application.py",
+    "terminalExitCode": 0,
+    "script": {
+      "path": "docs/dev/ci-graph-repairs/verify_source_identity_cqr104_archive_application.py",
+      "sha256": "4de21ddc86d922e94f1aa526c6317fe76f8737db579c04f5d058095435eacb75"
+    },
+    "actualAppliedBytesUsed": true,
+    "oldAndNewGitSnapshotReadBytesEqual": true,
+    "gitModesAndBlobObjectsExact": true,
+    "separatePrivateRamGitOnly": true
+  },
+  "sixContractPinsUnchanged": [
+    {
+      "field": "registry",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "field": "registrySchemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "field": "schemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "field": "canonicalJsonProfile",
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "field": "verifier",
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "field": "identityKernelBinding",
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "historicalFailureAndPlanPreserved": {
+    "failurePath": "docs/dev/ci-graph-repairs/source-identity-cb128-source-rebase-failure-2026-11-07.json",
+    "failureSha256": "a1a9dce851a17a252d0a090be06b742a7ec70b4b7ac1b17a1fd86bf1fca11715",
+    "planJsonSha256": "577b5611d8cdf7fb27dbc55b66f55d66e7c385faa8108e875a95a4e119436fc9",
+    "planMdSha256": "a494a808dcc034a357222aaa3e22f45de76d61d5b75aee88f5f10c4f8cabb613"
+  },
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-application/application.json",
+      "sha256": "9d86c84ab64bae5165a9a8d949ce207a0786839d0d1a79849a6be36cf90fa18e",
+      "bytes": 2016
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-application/native-replay.json",
+      "sha256": "11ef9e062894783fb16bb0fc472e7ce14729a0ee0bb6fabd0db23da973d04d30",
+      "bytes": 1475
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/cqr104-two-log-archive-application/native-replay.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "activeCanonicalQaStateOrPolicyWrites": false,
+  "schemaRegistryOrOutputExceptionsAdded": false,
+  "newCompleteSourceProofGenerated": false,
+  "physicalCandidateQaRun": false,
+  "runtimeOrBActivation": false,
+  "nextBoundary": "Root reviews and commits this exact archive/locator delta, then explicitly chooses a new source checkpoint before any full Source-A generation/independent verify. cb128 remains the genuine failed attempt; db9c and the A/M slice retain their original pins."
+}

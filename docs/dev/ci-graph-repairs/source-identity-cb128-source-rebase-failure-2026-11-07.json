@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "kind": "source-a-fixed-checkpoint-generator-failure",
+  "executionLocalDate": "2026-11-07",
+  "status": "genuine-closed-v1-generator-rejection-no-new-proof",
+  "baseCommit": "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+  "previousSuccessfulBase": "db9c71155997842ebb7cf48dda413ff6196f1a9f",
+  "previousSourceProofPreserved": true,
+  "sourceAContractBindings": [
+    {
+      "field": "registry",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.json",
+      "sha256": "3ac1012f56fa57a27c78bd1f4b73d4b0f1aa455055a559590d276c7db2c1323e"
+    },
+    {
+      "field": "registrySchemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/reference-fields.schema.json",
+      "sha256": "5e0146a39b2e76762ad6723fdbb5eadb8c1e829d4df410e9f9d975a58be62388"
+    },
+    {
+      "field": "schemaBinding",
+      "path": "contracts/canonical-goal-identity/v1/source-bijection-proof.schema.json",
+      "sha256": "f9f2e307e3aadad486e02865445ff90a5c87a98cac94122b4d14e28939021ca4"
+    },
+    {
+      "field": "canonicalJsonProfile",
+      "path": "contracts/canonical-goal-identity/v1/canonical-json-profile.json",
+      "sha256": "1d693f475ff585b3c392284ae488317d786d5a8ef1eead22e8d20f0d563bb30e"
+    },
+    {
+      "field": "verifier",
+      "path": "scripts/canonical_goal_source_identity_proof.py",
+      "sha256": "3cd97b096cec039d131e4bd7b510ed805a0d972d4cf35d66bbdda566c4956f6b"
+    },
+    {
+      "field": "identityKernelBinding",
+      "path": "scripts/canonical_goal_identity_migration.py",
+      "sha256": "a1e45c45ea75f872722d56a5eef351ff896d2ebbc415eedc8c66f7883bcec7e5"
+    }
+  ],
+  "actualGeneration": {
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/canonical_goal_source_identity_proof.py",
+      "--repo-root",
+      "/home/enpasos/projects/skillpilot",
+      "generate",
+      "--base-commit",
+      "cb1289bf067fb9831ef855685daa8b0ab4e6aa96",
+      "--output",
+      "/dev/shm/skillpilot-sourcea-cb128-current-fks3nrik/source.proposal.json"
+    ],
+    "terminalExitCode": 1,
+    "sessionHandle": 79664,
+    "manifestCreated": false,
+    "rawSha256": null,
+    "sourceProjectionSha256": null,
+    "newProofCatalogCount": null,
+    "newProofDocumentCount": null,
+    "failureMessage": "Unclassified or unready source inputs: [{\"path\": \"docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt\", \"pointer\": \"\", \"reason\": \"Unclassified document containing a migration identity\", \"value\": \"\"}, {\"path\": \"docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt\", \"pointer\": \"\", \"reason\": \"Unclassified document containing a migration identity\", \"value\": \"\"}]",
+    "runtimeActivationAllowed": false
+  },
+  "exactBlockingInputs": [
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "pointer": "",
+      "reason": "Unclassified document containing a migration identity",
+      "value": "",
+      "rawSha256": "742c0ce22cedb101a40b34f63f51db42c1c2f40726e141522c85f501921c4099",
+      "bytes": 73230,
+      "gitBlobOid": "14deb477098cf618f22eb6445bf2fd2ecd91f19b",
+      "preservedBytesPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/floors.txt",
+      "matchedLineCount": 15,
+      "workingTreeBytesEqualPinnedGit": true,
+      "uniqueMigrationSourceGoalIds": 14
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "pointer": "",
+      "reason": "Unclassified document containing a migration identity",
+      "value": "",
+      "rawSha256": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+      "bytes": 262861,
+      "gitBlobOid": "1470c140d34723c0a72d9306e3b039b974385ca8",
+      "preservedBytesPath": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/original-inputs/docs/dev/ci-graph-repairs/cqr104-current-cqr-2026-11-06/producer.txt",
+      "matchedLineCount": 15,
+      "workingTreeBytesEqualPinnedGit": true,
+      "uniqueMigrationSourceGoalIds": 15
+    }
+  ],
+  "independentFullVerifier": {
+    "executed": false,
+    "reason": "The generator rejected the closed input inventory and emitted no new manifest. No prior proof was renamed or passed as the cb128 result."
+  },
+  "evidence": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/generate.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/generate.stderr.txt",
+      "sha256": "11144ec6458001d39d0bac662d1a8ec224b6c541f134d726665ecf3e3b9c597e",
+      "bytes": 490
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/location.json",
+      "sha256": "578bf2ad8ec660516cbe8dedf3d9ff059f93359051aace12ba6e13b3599146e0",
+      "bytes": 1547
+    }
+  ],
+  "changesPerformed": {
+    "schemaRegistryVerifierKernelChanged": false,
+    "originalInputsMovedOrSymlinked": false,
+    "baselineExceptionAdded": false,
+    "activeSourceOrQaChanged": false,
+    "physicalCandidatePairMaterialized": false,
+    "runtimeOrBActivated": false,
+    "frozenAmSliceChanged": false,
+    "earlierDb9cProofChanged": false
+  },
+  "nextBoundary": "Root must review the exact two unclassified historical input paths before any separately authorized handling. This receipt does not reclassify them or authorize an archive move.",
+  "laterCheckpointNotice": "Root committed c4228a36427c62ee36e8bab3249dce47a5920425 while this read-only run was active. This attempt remains strictly bound to cb128 and does not claim a c422 proof.",
+  "detailedInputCensus": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/source-identity-cb128-source-rebase-failure/failure-input-census.json",
+    "sha256": "e70e3f0d9b53e1ea062c98ff4ab321d297cadf03e79a593af5cfccf59ff98c46",
+    "oldIdWitnessesKeptInExistingAuditArtifactLane": true,
+    "originalInputsNotMoved": true
+  }
+}
