@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "kind": "bounded-chemistry-original-context-census-freeze",
+  "frozenAt": "2026-11-07T00:31:15+00:00",
+  "summary": {
+    "subject": "chemie",
+    "qaRows": 478,
+    "curricularAtomic": 455,
+    "cluster": 23,
+    "disjointStatusCounts": {
+      "hold-original-context-unclosed-in-bounded-corpus": 308,
+      "matching-original-context-closed-adapter-pending": 155,
+      "hold-proven-text-drift": 13,
+      "hold-proven-asset-drift": 2
+    },
+    "existingSupportedClosedProfile": 0,
+    "genuineOriginalChains": 185,
+    "positiveOriginalVDecisions": 184,
+    "negativeOriginalVDecisions": 1,
+    "uniqueGoalsWithGenuineOriginalChains": 170,
+    "matchingOriginalMetadataCounts": {
+      "complete-original-attribution-and-time": 147,
+      "reviewer": 6,
+      "reviewedAt": 2
+    },
+    "matchingOriginalContextIncompleteFields": {
+      "four-text-fields-captured": 149,
+      "titleEn": 6
+    },
+    "allRowsByGoalKind": {
+      "curricularAtomic": {
+        "hold-original-context-unclosed-in-bounded-corpus": 294,
+        "matching-original-context-closed-adapter-pending": 148,
+        "hold-proven-text-drift": 11,
+        "hold-proven-asset-drift": 2
+      },
+      "cluster": {
+        "matching-original-context-closed-adapter-pending": 7,
+        "hold-original-context-unclosed-in-bounded-corpus": 14,
+        "hold-proven-text-drift": 2
+      }
+    },
+    "nativeQualificationIssued": 0,
+    "freshVisualReviews": 0,
+    "currentPinsVerifiedUnchanged": true,
+    "searchManifest": "search-manifest.json",
+    "allGoalRows": "chemie-478-context-census.json.gz",
+    "allOriginalChains": "chemie-original-chains.json.gz",
+    "flatTable": "chemie-478-context-census.csv",
+    "limitations": [
+      "155 matching original contexts are adapter candidates, not native-qualified approvals; 8 selected matching records additionally lack original reviewer or review time.",
+      "Missing original attribution/time remains null. Role attribution is retained verbatim and does not prove an unrecorded model identity.",
+      "Original English title is absent in 6 selected matching records and is not inferred.",
+      "Some native image bytes resolve only through explicitly documented exact SHA aliases; some historical responsive derivatives are unretained or not individually verified.",
+      "308 holds mean no original chain closed in this bounded search, not that no original chain exists elsewhere.",
+      "185 verified original chains include 184 positive decisions and one original HOLD for fec1563e; the HOLD remains asset-drift evidence only and never enters the 155 matching adapter candidates."
+    ]
+  },
+  "artifactHashes": [
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/census.py",
+      "sha256": "ced55ee003dc4d054d7bee9da8bb0aae43ce9d05a1a0e2a89718f139c29336ba",
+      "bytes": 24642
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/chemie-478-context-census.csv",
+      "sha256": "5be29939117dd4a580c149f5c99d86c04294fc7d2013ce144897ebfcec756a8e",
+      "bytes": 203743
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/chemie-478-context-census.json.gz",
+      "sha256": "0f7d21c6f844e7deffc78ab69eba9d247d0a8553d48bbb92b00ef2121f4dc1af",
+      "bytes": 15422134
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/chemie-candidate-search-records.json.gz",
+      "sha256": "5c5d5170a50c0d8ddcd9f5ed55d812a36519832975e7ca4ad7127ed1c8e05116",
+      "bytes": 1758340
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/chemie-original-chains.json.gz",
+      "sha256": "a02e66080bb56d3c498cd4d1181d242e8329432442cb203f2d4e7708f4b16216",
+      "bytes": 176244
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/finalize.py",
+      "sha256": "4738f937a01a32face65fe2eb542a4563ab29abbcf30b8fcaf1d4b24f7b00c33",
+      "bytes": 13127
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/search-manifest.json",
+      "sha256": "5138a0979c33349d1c0b2d182040b0ef5af4a082641cebd03a23e6dcca3aa3b6",
+      "bytes": 34824
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/summary.json",
+      "sha256": "ecd4825bfaa8555ef5ac5578780e5fd065ba8f4e98395c2d726d1ff236b0710d",
+      "bytes": 2407
+    }
+  ],
+  "inputsAndAuditHelperHashes": [
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/review-paths.json",
+      "sha256": "cbeb034a968a54b95330acbf79e810510fe951ca2b861e56115d111ce78ee81e",
+      "bytes": 48353
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/remaining-visual-families.json",
+      "sha256": "54596d8df870e78570ec535853c400028b1cb4b6b04ff0c18206f2847fc53f79",
+      "bytes": 58585
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/index.chemie.json",
+      "sha256": "539b5cc393f7da6c645c7b9a8b5ee94294f5a39a595ad0476afd59beb68cafb3",
+      "bytes": 55122235
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/inspected.json",
+      "sha256": "298ea8d84ff1d33c3aa9206c02738c21025e233e5e4c7a458ff487414424ddd3",
+      "bytes": 26192
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/errors.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-chemistry-census/artifact-hashes.json",
+      "sha256": "4180761b8c4a2dc23e1fd2fcb3a00af7746b86647a17ba61501cca9c6531473b",
+      "bytes": 1512
+    },
+    {
+      "path": "/dev/shm/skillpilot-v-full-review-record-index/structured-visual-review-records.json.gz",
+      "sha256": "b196e8b7dc045178b2de53bb885723ca687f1579421692b6ebc4f239b5be5a0b",
+      "bytes": 4544065
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-evidence-census-full/artifact-discovery.json.gz",
+      "sha256": "7b77131dcc07b13e6e3e2840e329011527b9dc5e09fac96f3c579d4c857996ce",
+      "bytes": 7950043
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-evidence-census-full/goal-evidence-candidates.json.gz",
+      "sha256": "472ffec4f6e02b2a66caed88658d33cc2f9c9f68c63ae3a4856931128c5b12f6",
+      "bytes": 29293549
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/audit-original-discovery-aliases.py",
+      "sha256": "5449bc4f40fcad6355d77fd0ee1071db8604843946772474e7a4efbec9b2bdba",
+      "bytes": 3664
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/biology_original_context_helpers.py",
+      "sha256": "a6df2d86239f687661bc3fffa717273ec39f139e77b6bbb23b739b5691f6fe56",
+      "bytes": 2653
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/extract-actual-visual-review-records.py",
+      "sha256": "50c752fdb50830c635805f9229e4ae2c84845437215e853db32e2f7d8bbccd91",
+      "bytes": 7897
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/extract-all-structured-visual-review-records.py",
+      "sha256": "768e67b31d22026829690db435546795706c2eba6f9dcea51dd5196ce398e3a1",
+      "bytes": 9479
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/index-five-ledger-original-evidence.pre-full-selection.py",
+      "sha256": "f457f69e212afb93b76c3ba5b4f62bd0281a801b40045d7e165031f7ebc002a4",
+      "bytes": 10031
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/index-five-ledger-original-evidence.py",
+      "sha256": "4bbe35a19797c6e2f51a95bb26213cab184baf79782411771dcc27e0fcb40767",
+      "bytes": 9983
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/multi_subject_original_context_helpers.py",
+      "sha256": "15cfc8c68bbb1b0bb0e12468968a421ff30f37cb72807e36f4d89bbc0fb14cca",
+      "bytes": 700
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-five-current-originals.py",
+      "sha256": "ac43d55680a8d0373acdec5188329ccee7322832b3e94c013b70c6a3f6205f10",
+      "bytes": 3141
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-genetic-hb-neural-originals.py",
+      "sha256": "bf0e13d558f4a19997a32c2e65cabb8b25b299fd325f94e4d39d99df098c74d4",
+      "bytes": 2714
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-he18-ecology20-original-families.py",
+      "sha256": "c8edaad1d5348c37b2e2605250bde24b2ab7d216d6be3f3ca57c7b95799c87db",
+      "bytes": 4940
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-health-neuro-stoffwechsel-current-families.py",
+      "sha256": "2738968d673caea8a77355833556f52899f814fbb212b85229939c50be87acad",
+      "bytes": 3229
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-human-flora-he7-original-families.py",
+      "sha256": "4c7b3b3ae9e081f04320cf4258604382e52c668adc1d83485137e04b852cf2d8",
+      "bytes": 2677
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-insect-ecology-evolution-original-families.py",
+      "sha256": "2a677802f48d768967748e5f4c752cd6ae49c61a19a8fd8ca1628d90d7335d06",
+      "bytes": 3498
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-molecular23-original-families.py",
+      "sha256": "7ff3b345708f2840029d489958fbe25805d0cf7074af81081a24495f78d8dc7b",
+      "bytes": 2433
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-neuro21-original-families.py",
+      "sha256": "089b2dee836313d62d753fad77a96145ceffdd09acbfcb352cc328df2a4e3b0c",
+      "bytes": 2865
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-open18-original-family.py",
+      "sha256": "091c94f0633867bea86ae9f4c2dbfb7704e36d262072e8a96b224c4f87163e14",
+      "bytes": 2850
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-original-q1-component-chains.py",
+      "sha256": "8a02e91113ed45852154761a73b022c91fd7a009352179794b9d1f022408140a",
+      "bytes": 3718
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-q1-seven-ethics-carrier-originals.py",
+      "sha256": "8b9322ad7485e83cb461acc7778da3f420b508fa9229d4c83bde41059994c562",
+      "bytes": 2245
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-seven-targeted-originals.py",
+      "sha256": "44beb43a033be5e71ff08a6b98767907b805eb11de1da8f3913fcae245b20a5b",
+      "bytes": 3522
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-targeted-he9-stoffwechsel-original-families.py",
+      "sha256": "d980ca1f08a4937ae1e1f25f12aa08002767b0447f7c4f9933dca8d16191fcb7",
+      "bytes": 2686
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-two-sealed-original-families.py",
+      "sha256": "bf49cc37095e609e9f472c6be3027444a46043d95e8b137d640a6f3d0bddcebc",
+      "bytes": 5467
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-biology-upper16-upper14-original-families.py",
+      "sha256": "72f5a5051afa52e85ede3b6b36ad9ff979adc80d33aed3b76c3dac743e0fc23c",
+      "bytes": 3443
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-economics-q4-corrections.py",
+      "sha256": "d9c96334cae507d5c1ee027554e836994db6589047b0507d93083118668784c4",
+      "bytes": 4067
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-first-two-families.py",
+      "sha256": "80bb492c133c332e748a25cacc6b89a7c2a94a7febe6d7a94c78b6b5d83ff15f",
+      "bytes": 14591
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-four-more-economics-families.py",
+      "sha256": "0f7e671aef005b6d66d034f91dd8b58e25f70fee45bca8eae057fc7c210d589a",
+      "bytes": 12045
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-last-six-economics-contexts.py",
+      "sha256": "74108f398f8b612193d909d53099113de70bc9a1afcc13049427e89bd83981b3",
+      "bytes": 5921
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-explicit-original-context-families.py",
+      "sha256": "32222f093b40cfd1c3ad0f9bd1eedd2f13e5ebefdd854bc1cbe921e3c1d1c414",
+      "bytes": 5758
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-late-six-originals.py",
+      "sha256": "b48d3b0995ac0abfc4b6f563a101adb30c3ffbbbba0c4b2f0c83ca2eca854b9e",
+      "bytes": 2495
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-original-sixty-two-input-family.py",
+      "sha256": "4a29f1b633ff76939f3bf4dd68dd6034990a3ed76d77dc3ff86fda7bdb7e500f",
+      "bytes": 1082
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-physics-original-archive-chains.py",
+      "sha256": "448c24db9642c73c3538c4995636a416b3049e49923428f0159a23fd04a9db1c",
+      "bytes": 3900
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-small-original-context-families.py",
+      "sha256": "3f72a176c23d8bf3a18ef31544337cd4258c82b9c7be0a0b0121b614bf580c86",
+      "bytes": 3568
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-math-three-original-markdown-contexts.py",
+      "sha256": "9c0279b83f4e1342c3a61c1b4b472b8a2ae24c4fa832b482f0b42f827c1a1aa3",
+      "bytes": 1654
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-nine-economics-context-families.py",
+      "sha256": "fa602091729d91fb224ce40cf869a0707aa6a5d432559d764363711b243b8cdd",
+      "bytes": 8391
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-six-economics-sealed-families.py",
+      "sha256": "12f81a3e192c7f18162bb2c7c346bcc9a76490f1e869d542a7b06ca768764b64",
+      "bytes": 8386
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-six-embedded-economics-families.py",
+      "sha256": "212ed9f0aa025e9c9e6ff78bb050bfe5aefcf98cbcf8fe78347a4c514800cdac",
+      "bytes": 4808
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-three-biology-original-context-families.py",
+      "sha256": "1a5db2c4a74b7a3c4ceb46449363f0ed601b9274e2aa9f6be1edddf34b3fda5a",
+      "bytes": 6342
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/qa-artifacts/ci-contract-audit/2026-11-06/visualization-review-context-gap/qualify-three-final-original-contexts.py",
+      "sha256": "e9dfca3ef1f579c45ae8bd8889f2ca1d4509cd5d2f1bbc36e6cf9c6984650e72",
+      "bytes": 2202
+    }
+  ],
+  "validation": {
+    "uniqueCurrentGoalIds": 478,
+    "curricularAtomic": 455,
+    "clusters": 23,
+    "verifiedOriginalChains": 185,
+    "matchingApprovedOriginalContexts": 155,
+    "nativeQualificationsIssued": 0,
+    "currentSourceQaPinsUnchanged": true,
+    "originalHoldCannotEnterMatchingCandidates": true
+  },
+  "scopeClosed": "No further original-family discovery after the explicitly bounded first-through-seventh extractors. Missing-chain status describes this corpus and method only."
+}

@@ -813,3 +813,32 @@ zuvor roten Docs-/Apps-Einbindungen auch remote bestätigt. Der Hauptlauf war
 bei diesem Zwischenstand noch nicht terminal; die sieben tatsächlichen
 Fachfloor-Reparaturen sind weiterhin offen. Spätere lokale Quellen-/QA-
 Codecheckpoints werden hierdurch nicht als bereits remote geprüft ausgegeben.
+
+## Abgeschlossener Remote-Lauf cb128 und endlicher Bildbeleg-Abgleich
+
+Der [Remote-Lauf cb128](ci-graph-repairs/remote-cb128-workflows-terminal-2026-11-07.json)
+ist inzwischen terminal. Docs, Assessment, OAuth und Gemini bestehen; im
+Hauptlauf bestehen sechs Jobs einschließlich Backend, Apps und Buchbau.
+Curriculum scheitert am tatsächlichen harten Floorcheck derselben sieben
+Fächer. Die abschließende Report-Diff-Prüfung und nachfolgende Schritte werden
+nicht erreicht. Frontend scheitert zusätzlich an 17 `no-explicit-any`-Fehlern
+in drei neuen V-Kontext-Prüfer-/Testdateien; dafür läuft eine getrennte
+Typkorrektur. Die vier maßgeblichen Schrittlogs bleiben bytegenau komprimiert
+erhalten. Spätere lokale Commits sind durch diesen Lauf nicht geprüft.
+
+Der [vollständige Bildbeleg-Census](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-context-census-2026-11-06/README.md)
+ist dauerhaft gesichert und mit 16 unveränderten aktuellen Eingabepins geprüft.
+Alle 2.562 Ziele sind disjunkt zugeordnet: 18 bestehende Profilkandidaten,
+945 passende Originalkontexte mit noch offenem Readervertrag, 1.550 im
+erklärten Korpus nicht geschlossene Originalketten, 44 Text- und fünf
+Assetabweichungen. Diese Zahlen sind keine nativen Freigaben. Innerhalb der
+945 haben 60 nur ein echtes ursprüngliches Datum ohne Uhrzeit und 32
+zusätzliche Attributions-/Zeit-Holds; fehlende Zeiten werden nicht erfunden.
+Die Einzelbelege und begrenzten Reader-/Review-Worklists sind enthalten.
+Neue Bildreviews, aktive QA-Änderungen oder M7-Freigaben sind daraus nicht
+abgeleitet.
+
+Für den Quellenumfang gilt die Nutzerpräzisierung: Neben amtlich belegten
+Zielen sind fachlich begründete notwendige Lückenschließer zulässig. Eine
+allgemeine Vertiefung allein belegt diese Notwendigkeit nicht. Der konkrete
+Informatik-875-/Prüfungsscope wird an diesem Maßstab weiter repariert.
