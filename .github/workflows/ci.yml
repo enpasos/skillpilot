@@ -525,6 +525,8 @@ jobs:
           path: app/public/lernzielbuch/
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Test transitive-minimality auditor and CLI contracts
+        run: npm run test:transitive-minimality
       - name: Test exam Markdown conventions
         run: npm run test:exam-markdown
       - name: Test reviewed Mathematics checkpoint assessments
