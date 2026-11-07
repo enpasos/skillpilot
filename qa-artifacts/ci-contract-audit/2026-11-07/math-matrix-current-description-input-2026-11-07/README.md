@@ -1,0 +1,11 @@
+# Aktueller Matrix-D-Eingang
+
+Dieses Paket enthält genau einen noch unbewerteten D-Eingang für `ce198bc9-b014-52ba-814f-25cc3e020668`. Zwei unabhängige Erstpässe sind vorbereitet; es gibt keine Ergebnisrecords oder erwartete Entscheidung. Die beiden getrennten Aufträge stehen in `cold-review-a.md` und `cold-review-b.md`. Die Reviewer erhalten ausschließlich die dort genannte Eingabemenge, nicht die technische Vorbereitungsakte oder frühere Urteile.
+
+Der unveränderte native Paketbuilder wurde tatsächlich mit der importierten e4de-Quelle, dem vorhandenen privaten Kindseed und dem PNG 3d2e ausgeführt. Prepare und Check endeten jeweils mit Exit 0. Das erzeugte PDF hat zwei Vorspannseiten und genau eine vollständige Lernzielseite; diese liegt zusätzlich als tatsächlich gerenderte Seite in `material-context` vor. Die komplette zweisprachige Definition, Eltern-/Voraussetzungs-/Nachfolgertexte und die konkreten vorhandenen Quellenbelege sind gebunden.
+
+Der native Ledgergenerator erzeugte ausschließlich im privaten Verzeichnis eine Materialzeile zur neuen PNG-Datei. Alte AI-/Human-Freigaben wurden wegen des neuen Assethashes nicht übernommen; die Seite trägt `review_candidate`, `approvedForPublication=false` und kein P-Profil. Dies ist keine neue V- oder D-Freigabe.
+
+Die Ausführung nutzte Bubblewrap mit schreibgeschütztem Hostbaum, privaten vollständigen Overlayverzeichnissen für die beiden Matrix-Assetpfade und dem QA-Materialverzeichnis sowie privatem RAM-Ausgabeverzeichnis. Die neuen PNG-Dateien wurden nicht im aktiven Canonical-/Public-Baum angelegt. Die vollständigen tatsächlichen Argumente, Rohlogs, Code-/Inputpins und komprimierten privaten Kind-/Materialdateien stehen in `preparation`. Die e4de-Gesamtquelle bleibt im dort exakt referenzierten vorhandenen V2-Archiv. Keine aktive Quelle, QA-Datei oder andere D-Auflösung wurde verändert.
+
+Für die Darstellung der root-relativen Bild-URL in `book.html` wird weiterhin das dokumentierte private Assetoverlay benötigt; `book.pdf` und die zusätzlich gerenderte Seite enthalten die tatsächlich eingebetteten Bildbytes. Der HTML-Text wurde nicht nachbearbeitet. Der native stabile Landscape-Digest ist ein anderer Vertrag als der Rohdatei-SHA e4de; beide stehen ausdrücklich im Inputbeleg.

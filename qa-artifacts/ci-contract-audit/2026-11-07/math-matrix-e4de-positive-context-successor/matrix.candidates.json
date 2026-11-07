@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "mathematik-inverse-matrix-e4de-context-20261107-v1",
+  "reviewedAt": "2026-11-07T02:32:34.760324+00:00",
+  "reviewer": "OpenAI Codex /root/ci_runtime (current matrix P context review)",
+  "goals": [
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "reason": "Aktueller eigener P-Kontextreview der vollständigen DE/EN-Zieldefinition und aller Erwartungen, Aufgaben, erwarteten Leistungen und Transferkriterien gegen den wirklichen privaten Nachimport e4de3c3e und die tatsächlich neu betrachteten PNG-Bytes 3d2e99d2. Source967a ist nur der Eingang vor dem Bildimport. Das neue Bild zeigt ausdrücklich ein Beispiel A=[[2,1],[1,1]], dessen korrekte Inverse und I; eine allgemeine Tausch-/Negationsregel oder sichtbare det=1-Anweisung wird dort nicht mehr behauptet. Der erste unabhängige Fall A=[[3,1],[1,1]] mit det=2 verlangt weiterhin B=(1/2)[[1,-1],[-1,3]] und das vollständige Einheitsprodukt. Weder die Bildmatrix noch die unskalierte Adjunkte genügt; die Produkte wurden mit exakten Brüchen berechnet. Der zweite unabhängig zu stellende Fall D=diag(2,-4,1/2) verlangt diag(1/2,-1/4,2) und alle neun Einträge von I3. Dieser Wechsel von Struktur und Dimension sowie negativem und gebrochenem Eintrag verhindert bloßes Nachbilden des gezeigten 2x2-Beispiels. Beliebige mathematisch gültige Verfahren bleiben zulässig; eine zusätzliche Nichtinvertierbarkeitsaufgabe oder allgemeine Existenztheorie ist nicht gefordert. Alttext, PNG-URL und reviewStatus=candidate des e4de-Ressourcenkontexts wurden vollständig gelesen und werden nativ gebunden. Der unveränderte Fallkörper bleibt nach dieser echten erneuten Kontexteinordnung passend. Neuer AI-Kandidat mit heutiger eigener Attribution; der alte Matrixrecord mit Eingangs-Fingerprint dcb678ec bleibt unverändert historisch. Keine menschliche Freigabe, kein V-Receipt, keine aktuelle D-Buchseite, keine Durationbindung und kein beobachteter Lernerfolg werden hieraus abgeleitet.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": [
+        "Actual current P-context AI candidate for one imported matrix context only; no human approval, blind D review, V qualification, duration-policy validation, or observed learner outcome."
+      ],
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "inverse-identity-check",
+            "essentialUnderstandingDe": "Eine inverse Matrix macht die Wirkung einer quadratischen Matrix rückgängig; das Multiplikationsergebnis ist die Einheitsmatrix. Bei einer invertierbaren Diagonalmatrix werden die von null verschiedenen Diagonaleinträge durch ihre Kehrwerte rückgängig gemacht.",
+            "essentialUnderstandingEn": "An inverse matrix reverses the action of a square matrix; multiplication yields the identity matrix. For an invertible diagonal matrix, each nonzero diagonal entry is undone by its reciprocal.",
+            "observablePerformanceDe": "Die lernende Person bestimmt die Inverse einer vorgelegten einfachen invertierbaren 2×2- oder Diagonalmatrix mit einem mathematisch gültigen Verfahren. Sie prüft das vollständige Produkt mit der Ausgangsmatrix und erklärt dessen Übereinstimmung mit der Einheitsmatrix; nur ein passender Produkteintrag oder eine abgeschriebene Kandidatenmatrix genügt nicht.",
+            "observablePerformanceEn": "The learner determines the inverse of a presented simple invertible 2×2 or diagonal matrix by a mathematically valid method. They check the complete product with the original matrix and explain its agreement with the identity matrix; one matching product entry or a copied candidate matrix is insufficient."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "inverse-identity-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "structural-transfer",
+            "textDe": "Von einer nichtdiagonalen 2×2-Matrix zu einer invertierbaren Diagonalmatrix anderer Größe mit negativem und gebrochenem Eintrag; alle Aufgaben bleiben innerhalb der ausdrücklich vorausgesetzten Invertierbarkeit.",
+            "textEn": "From a nondiagonal 2×2 matrix to an invertible diagonal matrix of another size with negative and fractional entries; all tasks remain within the explicitly given invertibility condition."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "nonunit-determinant-inverse",
+            "taskDemandDe": "Bestimme für A=[[3,1],[1,1]] die Inverse und prüfe dein Ergebnis durch Multiplikation. Erläutere, woran du im Produkt erkennst, dass die Matrix die Wirkung von A rückgängig macht.",
+            "taskDemandEn": "Find the inverse of A=[[3,1],[1,1]] and verify your result by multiplication. Explain how the product shows that the matrix reverses the action of A.",
+            "expectedPerformanceDe": "Eine gültige Inverse ist B=(1/2)[[1,-1],[-1,3]]. Das vollständige Produkt AB=(1/2)[[3-1,-3+3],[1-1,-1+3]]=[[1,0],[0,1]] bestätigt den Kandidaten. Ein vollständiges korrektes Prüfprodukt genügt in dieser Aufgabe; ein zweites Produkt in umgekehrter Reihenfolge ist keine zusätzliche Pflicht. Die Einheitsmatrix lässt jeden Eingangsvektor unverändert. Für die Bestimmung ist jedes mathematisch gültige Verfahren zulässig, etwa ein Gleichungssystem oder eine gültige 2×2-Regel.",
+            "expectedPerformanceEn": "A valid inverse is B=(1/2)[[1,-1],[-1,3]]. The complete product AB=(1/2)[[3-1,-3+3],[1-1,-1+3]]=[[1,0],[0,1]] confirms the candidate. One complete correct checking product suffices for this task; a second product in reverse order is not an additional requirement. The identity matrix leaves every input vector unchanged. Any mathematically valid determination method is allowed, such as a linear system or a valid 2×2 rule.",
+            "understandingFocusDe": "Die gefundene Inverse wird über das Einheitsprodukt begründet; der Vorfaktor gehört zur gesamten Matrix.",
+            "understandingFocusEn": "The inverse is justified through the identity product; the scalar factor applies to the entire matrix."
+          },
+          {
+            "id": "diagonal-structure-transfer",
+            "taskDemandDe": "Bestimme in einer frischen unabhängig gestellten Aufgabe die Inverse der invertierbaren Matrix D=diag(2,-4,1/2). Prüfe das vollständige Produkt mit D und erläutere, wie die Diagonalstruktur die Bestimmung und Prüfung verändert. Jedes gültige Verfahren ist zulässig.",
+            "taskDemandEn": "In a fresh independently presented task, find the inverse of the invertible matrix D=diag(2,-4,1/2). Check the complete product with D and explain how its diagonal structure changes the determination and check. Any valid method is allowed.",
+            "expectedPerformanceDe": "D⁻¹=diag(1/2,-1/4,2). Die drei diagonalen Produkte sind jeweils 1; die sechs Einträge außerhalb der Diagonalen sind 0, weil dort jeder Summand einen Nullfaktor enthält. Das vollständige Produkt ist I₃. Die von null verschiedenen Diagonaleinträge ermöglichen ihre Kehrwerte. Ein allgemeiner Beweis der Nichtinvertierbarkeit weiterer Matrizen oder ein bestimmtes Inversionsverfahren ist keine zusätzliche Pflicht.",
+            "expectedPerformanceEn": "D⁻¹=diag(1/2,-1/4,2). The three diagonal products are each 1, and the six off-diagonal entries are 0 because every corresponding summand contains a zero factor. The complete product is I₃. The nonzero diagonal entries allow their reciprocals. A general proof of noninvertibility for other matrices or a particular inversion method is not an additional requirement.",
+            "understandingFocusDe": "Umkehrbeziehung und vollständige Einheitsmatrixprüfung bei veränderter Matrixstruktur und Dimension.",
+            "understandingFocusEn": "Inverse relationship and complete identity-matrix check under changed matrix structure and dimension."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "case": "negative-current-description",
+    "exitCode": 1,
+    "expectedCauses": [
+      "stale goalFingerprint",
+      "stale reviewInputFingerprint"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale goalFingerprint; expected sha256:22abc2c1dfe6c14f2700a44898eb544d31b098113ae93a18ff79a95973a56624",
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:c8f768abec23cd6eda0da1a6dd91ba602b895f1b2bd6069d3c804166fe97ff1a"
+    ]
+  },
+  {
+    "case": "negative-current-alttext",
+    "exitCode": 1,
+    "expectedCauses": [
+      "stale reviewInputFingerprint"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:766ec28632df0f9d53dcb93ec4e70cead42b845ade842992c6cf51a9681a7db0"
+    ]
+  },
+  {
+    "case": "negative-current-resource-status",
+    "exitCode": 1,
+    "expectedCauses": [
+      "stale reviewInputFingerprint"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:4e4da59f754668ce3b9628362cef69d60d2525c332be435c37ec9082d996e8df"
+    ]
+  },
+  {
+    "case": "negative-actual-asset-bytes",
+    "exitCode": 1,
+    "expectedCauses": [
+      "stale reviewInputFingerprint"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:a0661bf360a7186ef1a61ee6c45ad8cf9f11d4cf3cf5acef5272320df623a72c"
+    ]
+  },
+  {
+    "case": "negative-exact-owner",
+    "exitCode": 1,
+    "expectedCauses": [
+      "landscapeId does not match"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: landscapeId does not match 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+    ]
+  },
+  {
+    "case": "negative-ai-not-human-approved",
+    "exitCode": 1,
+    "expectedCauses": [
+      "data/reviewAuthority must be equal to constant",
+      "data/status must be equal to constant"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: data/reviewAuthority must be equal to constant; data must match \"then\" schema; data/status must be equal to constant; data must match \"then\" schema",
+      "ce198bc9-b014-52ba-814f-25cc3e020668: missing review record"
+    ]
+  },
+  {
+    "case": "negative-config-needs-human",
+    "exitCode": 1,
+    "expectedCauses": [
+      "configured scope requires an approved profile"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: configured scope requires an approved profile"
+    ]
+  },
+  {
+    "case": "negative-entry967a-is-not-imported-e4de",
+    "exitCode": 1,
+    "expectedCauses": [
+      "stale reviewInputFingerprint"
+    ],
+    "actualErrors": [
+      "ce198bc9-b014-52ba-814f-25cc3e020668: stale reviewInputFingerprint; expected sha256:dcb678ec2f0abeaef581b58e4d7925c84056c880730b53d199ab74d415407e83"
+    ]
+  }
+]

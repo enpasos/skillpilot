@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "visualization-reviewed-context-qualification",
+  "normalization": "skillpilot-visualization-display-whitespace-v1",
+  "reviewProfile": "matrix-candidate-v1",
+  "context": {
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "subject": "mathematik",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "assetSha256": "sha256:3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091",
+    "titleEn": "Determine simple inverse matrices",
+    "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+    "demandLevel": "AB1"
+  },
+  "originalReview": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-v2-independent-review/review.json",
+    "sha256": "9c77794fbcb5a1e6435e3b5bc89ca8cb1b248d170ec0cc89c9e91ace114dea49",
+    "gitCommit": "0b8a13761ce12f5245243bbafcc648de3b9981fd"
+  },
+  "originalInput": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-v2-independent-review/review.json",
+    "sha256": "9c77794fbcb5a1e6435e3b5bc89ca8cb1b248d170ec0cc89c9e91ace114dea49",
+    "gitCommit": "0b8a13761ce12f5245243bbafcc648de3b9981fd"
+  },
+  "ownerSource": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "gitCommit": "0b8a13761ce12f5245243bbafcc648de3b9981fd",
+    "sha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6"
+  },
+  "reviewedAsset": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/ce198bc9-b014-52ba-814f-25cc3e020668.png",
+    "sha256": "3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091",
+    "gitCommit": "0b8a13761ce12f5245243bbafcc648de3b9981fd"
+  },
+  "originalDecision": "keep",
+  "reviewedAt": "2026-11-07T01:33:05Z",
+  "reviewer": "OpenAI Codex /root/normative_corpus",
+  "originalReason": "Der zweite tatsächlich vorbereitete und importierte Kandidat wurde neu in Originalgröße sowie in echten 360- und 680-Pixel-Browseransichten angesehen. A=((2,1),(1,1)), A^-1=((1,-1),(-1,2)) und I=((1,0),(0,1)) sind korrekt und vollständig lesbar. Die beiden negativen Einträge und der Exponent -1 bleiben auch bei 360 Pixeln erkennbar. Die Produktprobe ergibt die Einheitsmatrix. Ein Beispiel begrenzt die Aussage sichtbar: Es wird weder eine allgemeine Tausch-/Negationsregel ohne Determinantenbedingung noch eine zusätzliche notwendige Fachleistung behauptet. Die Grafik orientiert passend zum unveränderten vollständigen DE/EN-Zieltext und AB1 an Inverse und Produktprobe; sie ersetzt keinen Erwerb oder Leistungsnachweis.",
+  "qualification": {
+    "qualifiedAt": "2026-11-07T02:50:43.357649+00:00",
+    "qualifier": "OpenAI Codex /root/ci_runtime technical original-byte-context verification",
+    "reason": "Technical qualification of the exact existing original review/input and image chain against the private e4de current context. Historical canonical source at reviewcommit0b8 establishes ownership only; it is not asserted to contain the private imported source. No new image review, human approval or active authority/index/source change."
+  }
+}

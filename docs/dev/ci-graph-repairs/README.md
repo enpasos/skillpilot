@@ -12,6 +12,24 @@ zeigt nun die tatsächlichen 54 qualifizierten und 2.429 offenen V-Kontexte.
 Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
 bleibt ebenfalls historisch erhalten.
 
+- [Terminaler Remote-Lauf auf 9b798](remote9b-terminal-2026-11-07.json):
+  sieben von acht Hauptjobs einschließlich Frontend/Lint, Backend, Apps und
+  Buchbau sowie Docs, Assessment, OAuth und Gemini bestehen. Curriculum
+  scheitert am tatsächlichen Floorcheck derselben sieben Fächer; seine
+  abschließende Report-Diffprüfung wird nicht erreicht. Die spätere
+  V-Verbraucherverschärfung ist durch diesen älteren Lauf nicht geprüft.
+- [Frischer Docs-Befund auf 25a6](remote25a-docs-link-failure-2026-11-07.json):
+  Das unveränderte statische Namespace-Folgedokument fehlte im Gitstand,
+  obwohl es lokal vorhanden war. Commit `46d69682eb` ergänzt genau diese
+  Datei. Der native Linkchecker besteht gegen 519 exakte Markdown-Dateien
+  und die Pfad-/Symlinkmenge des Gitindex. Der Nachweis ist lokal; der
+  neue Remote-Lauf steht aus. MkDocs und PostgreSQL bestehen bereits auf 25a6.
+- [Tatsächlicher e4de-Duration-Nachlauf](math-e4de-duration-binding-technical-review-2026-11-07.json):
+  vier native Generate-/Check-Läufe bestehen, fünf echte unveränderte
+  Gegenfälle werden abgewiesen. Alle 18 erzeugten Dateien und ihre nativen
+  Baum-/Rollen-/Filtermengen bleiben gleich; alle 13 ursprünglichen Reviews
+  sind bytegleich. Nur die geprüfte private Policybindung folgt der real
+  importierten Matrixabbildung; Quelle und Policy sind noch nicht angewandt.
 - [Terminaler Remote-Lauf auf cb128](remote-cb128-workflows-terminal-2026-11-07.json):
   Docs, Assessment, OAuth und Gemini sowie sechs Hauptjobs einschließlich
   Backend, Apps und Buchbau bestehen. Die Docs-/Apps-Reparaturen sind damit
@@ -40,6 +58,14 @@ bleibt ebenfalls historisch erhalten.
   [Root-Abgleich](source-identity-read-component-root-checkpoint-2026-11-07.json)
   prüft die Inventare und aktuellen Pins; die tatsächliche Preparerintegration
   und große Kandidaten-QA bleiben offen.
+- [Tatsächlicher gebundener Rollen-Elternscope](source-identity-prepared-namespace-parent-boundary-2026-11-07.md):
+  49 Tests mit 67 kurzen nativen Aufrufen bestehen. Die neue Fähigkeit bindet
+  vollständige Mitglieder des tatsächlichen schreibgeschützten Rollenordners;
+  fehlende Quellenbindungen und nicht vollständig beschriebene binäre
+  Preparer-Overlays werden abgewiesen. Beide echten TS-Läufe enden mit Exit 0,
+  ihre vollständige Leseauthentisierung bleibt am höheren Paarordner gesperrt.
+  Der [Root-Abgleich](source-identity-namespace-parent-root-checkpoint-2026-11-07.json)
+  bestätigt 374 erhaltene logische Belege und die aktuellen Codepins.
 - [Aktuelle Informatik-875-Reparaturrichtung](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/informatics-875-required-scope-repair-followup-2026-11-07.md):
   gleiche Bedeutung und alte Ergebnisse erhalten, unbelegte Pflichtrolle
   korrigieren, eigenständige vollständige Prüfungsnachfolger und erhaltene
@@ -61,6 +87,25 @@ bleibt ebenfalls historisch erhalten.
 - [Math-D3/P31-Auditcheckpoint](math-three-current-evidence-completion-2026-11-06.md):
   drei aktuelle native D-Auflösungen, drei echte neue P-Kandidaten und 28
   unveränderte Bestandsrecords; keine Anwendung oder neue menschliche Freigabe.
+- [Aktuelle Matrix-D-Bindung nach Bildimport](math-matrix-current-description-root-binding-check-2026-11-07.json):
+  zwei neue unabhängige kalte Erstpässe urteilen KEEP. Die native Synthese
+  bindet die echte neue Buchseite; der aktuelle Consumer bestätigt genau die
+  drei vorgesehenen Math-D-Claims. Die 53 kalten Eingaben und 265 erfassten
+  Dateien bleiben bytegleich. Der einzelne neue Matrixclaim wird getrennt
+  von den erhaltenen Integer-/Diagrammauflösungen gesichert und ist unangewandt.
+- [Aktueller Matrix-P-Kontext](math-matrix-e4de-positive-root-binding-check-2026-11-07.json):
+  der vollständige Fallkörper wurde am tatsächlich importierten Bild neu
+  geprüft und bleibt inhaltlich gleich. Der alte Bildkontext ist nativ rot,
+  der neue 31er-Satz grün; acht echte Gegenfälle bleiben rot. Die 30 übrigen
+  P-Records und der Zielsatz bleiben exakt gleich. Der Root-Abgleich prüft
+  99 Eingabe-/Code-/Artefaktbindungen; keine aktive QA wurde geändert.
+- [Drei aktuelle Math-V-Qualifikationen](math3-e4de-visualization-root-binding-check-2026-11-07.json):
+  die vorhandenen geschlossenen Reader bestätigen im echten privaten
+  e4de-/PNG-Kontext drei Originale. 18 Metadaten-/Fremdbeleg- und vier
+  physische Bildgegenfälle werden abgewiesen. Die tatsächliche Git-Lesekette
+  bindet zehn eindeutige historische Originalreferenzen. Die aktive
+  54er-Autorität, Quelle und QA bleiben unverändert; der 3er-Kandidat ist
+  kein verkleinerter M7-Scope und keine zusätzliche Bildentscheidung.
 - [Konkrete Remote-Integrationsreparaturen auf 6fe](remote-6fe-ci-integration-repairs-2026-11-06.json):
   der Workflowtest schützt jetzt alle 19 Capture-/Vorbereitungskontrollen;
   alle 94 Tests des tatsächlichen Apps-CI-Befehls bestehen lokal. Der Docs-Build
@@ -78,8 +123,9 @@ bleibt ebenfalls historisch erhalten.
   historische Originalketten werden an den echten Goaltext und die Bildbytes
   gebunden. Der gesicherte Transport prüft 18 Ketten und neun Gegenfälle;
   die spätere Readerkorrektur und weitere Formate sind getrennte Stände.
-  Bestehende V-/Deep-/M7-Verbraucher sind noch nicht angeschlossen, die
-  vollständige Bestandsqualifikation läuft.
+  Dieser frühe Baustein war noch nicht an V-/Deep-/M7 angeschlossen. Die
+  oben belegte spätere Fixed54-Integration stellt diese Verdrahtung her;
+  die vollständige Bestandsqualifikation bleibt offen.
 - [Aktuelle Source-A-Neuverifikation](source-identity-feca-source-rebase-2026-11-07.md):
   593 Quellen, 8.601 exakt gebundene Dokumente und 164 unveränderte Regeln;
   die bisherigen 8.591 Bindungen bleiben exakt gleich, zehn historische Belege

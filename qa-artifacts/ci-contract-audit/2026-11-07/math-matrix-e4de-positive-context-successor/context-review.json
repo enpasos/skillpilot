@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "status": "fresh-ai-P-candidate-native-verified-unapplied",
+  "reviewedAt": "2026-11-07T02:32:34.760324+00:00",
+  "reviewer": "OpenAI Codex /root/ci_runtime (current matrix P context review)",
+  "sourceContext": {
+    "beforeWholeSourceSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "actualPrivateAfterImportSourceSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "liveCanonicalSourceSha256": "da4724ae0db70d85cae68eb273df663f59b17b2ca761a86181fa462299a123b6",
+    "liveSourceChanged": false,
+    "actualSourceContextIsPrivateROOverlay": true
+  },
+  "completeCurrentGoal": {
+    "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "titleEn": "Determine simple inverse matrices",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "b5062446-332f-4a67-aaf7-3bfa3e5aded9",
+      "f378917f-2ca7-4c68-bd66-3f9457095dd5",
+      "304111dd-426b-520b-a275-3fa37da1b0e0"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024",
+      "demandLevel": "AB1",
+      "processCompetencies": [
+        "K2.2",
+        "K3.3"
+      ],
+      "guidingIdeas": [
+        "L1"
+      ],
+      "phase": "Q2"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "sourceRef": "HMKB Kerncurriculum Mathematik gymnasiale Oberstufe, Q2.4, S. 43, Spiegelstrich 2; Q2.5, S. 44, Spiegelstrich 2",
+    "semanticAtomic": true,
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+        "title": "Visualisierung: Einfache inverse Matrizen bestimmen",
+        "url": "/assets/goal-visualizations/mathematik/ce198bc9-b014-52ba-814f-25cc3e020668/ce198bc9-b014-52ba-814f-25cc3e020668.png",
+        "provider": "OpenAI built-in image_gen (Codex)",
+        "description": "Visualisierung zum Lernziel: Einfache inverse Matrizen bestimmen.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "candidate"
+      }
+    ]
+  },
+  "imageActuallyViewed": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/ce198bc9-b014-52ba-814f-25cc3e020668.png",
+    "sha256": "3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091",
+    "tool": "view_image(detail=original)",
+    "nativeOnlyViewedByThisPReviewer": true,
+    "reviewIsPContextFitNotNewVAcceptance": true
+  },
+  "fullPBodyJudgment": {
+    "bodyReadCompletelyDeAndEn": true,
+    "actualGoalResourceAltTextAndCandidateStatusRead": true,
+    "unchangedFullProfileBodyCanonicalSha256": "311e11822a9456efeace35af42124ba778305d4c248343cc1a6f2de6c0650cbd",
+    "methodFlexibilityPreserved": true,
+    "invertibleInputBoundaryPreserved": true,
+    "full2x2And3x3ProductsRequiredAsBefore": true,
+    "bothCasesRemainIndependentOfWorkedImage": true,
+    "exactFractionChecks": "results/reference-matrices.json",
+    "reason": "Aktueller eigener P-Kontextreview der vollständigen DE/EN-Zieldefinition und aller Erwartungen, Aufgaben, erwarteten Leistungen und Transferkriterien gegen den wirklichen privaten Nachimport e4de3c3e und die tatsächlich neu betrachteten PNG-Bytes 3d2e99d2. Source967a ist nur der Eingang vor dem Bildimport. Das neue Bild zeigt ausdrücklich ein Beispiel A=[[2,1],[1,1]], dessen korrekte Inverse und I; eine allgemeine Tausch-/Negationsregel oder sichtbare det=1-Anweisung wird dort nicht mehr behauptet. Der erste unabhängige Fall A=[[3,1],[1,1]] mit det=2 verlangt weiterhin B=(1/2)[[1,-1],[-1,3]] und das vollständige Einheitsprodukt. Weder die Bildmatrix noch die unskalierte Adjunkte genügt; die Produkte wurden mit exakten Brüchen berechnet. Der zweite unabhängig zu stellende Fall D=diag(2,-4,1/2) verlangt diag(1/2,-1/4,2) und alle neun Einträge von I3. Dieser Wechsel von Struktur und Dimension sowie negativem und gebrochenem Eintrag verhindert bloßes Nachbilden des gezeigten 2x2-Beispiels. Beliebige mathematisch gültige Verfahren bleiben zulässig; eine zusätzliche Nichtinvertierbarkeitsaufgabe oder allgemeine Existenztheorie ist nicht gefordert. Alttext, PNG-URL und reviewStatus=candidate des e4de-Ressourcenkontexts wurden vollständig gelesen und werden nativ gebunden. Der unveränderte Fallkörper bleibt nach dieser echten erneuten Kontexteinordnung passend. Neuer AI-Kandidat mit heutiger eigener Attribution; der alte Matrixrecord mit Eingangs-Fingerprint dcb678ec bleibt unverändert historisch. Keine menschliche Freigabe, kein V-Receipt, keine aktuelle D-Buchseite, keine Durationbindung und kein beobachteter Lernerfolg werden hieraus abgeleitet."
+  },
+  "newRecord": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-matrix-e4de-positive-context-successor/matrix.review.jsonl",
+    "sha256": "0fcc2417688ce1abb85ad6ada3b4adbc9a17569662e2c29fb4e7b118925d7d1e",
+    "goalFingerprint": "sha256:9c1816a3a41f5669b966f9a9c4c34f2796e1ffca46a47b9c78fbfb51ae5e1509",
+    "reviewInputFingerprint": "sha256:67078d957eeea68a6244da496e236b4f16ed74bc6920cb2c057ec79e09fa8f0c",
+    "profileFingerprint": "sha256:68530a7775b728a45024d794d0692dbc982dc7b48883bca937a3b36688f717fe",
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": []
+  },
+  "retention": {
+    "originalRowsUntouched": true,
+    "retainedRawRowsExactlyEqual": 30,
+    "orderedUniqueGoalScopes": 31,
+    "onlyMatrixInputFingerprintChanged": true,
+    "all31GoalAndProfileFingerprintsEqual": true,
+    "proposedConfigRoutes": "proposed-config-routing.json",
+    "rowEvidence": "scope-and-retention.json"
+  },
+  "nativeChecks": {
+    "before967aOriginal31": {
+      "exit": 0,
+      "errors": 0
+    },
+    "aftere4deOriginal31": {
+      "exit": 1,
+      "errors": 1,
+      "onlyStaleMatrix": true
+    },
+    "actualMaterializerAndCheckExitCodes": [
+      0,
+      0
+    ],
+    "aftere4deProposed31": {
+      "exit": 0,
+      "errors": 0
+    },
+    "targetedNativeNegatives": 8,
+    "allNegativesRejectExpectedRealCauses": true,
+    "portableReadOnlyReproducerExit": 0,
+    "primaryNativeProcesses": 13,
+    "portableReproducerNativeProcesses": 13,
+    "normalDeepOrCqrRun": false,
+    "fixtureCorrection": "A forbidden AI/approved row is rejected by the conditional schema earlier than the initially expected semantic text. Existing raw result retained; only the harness expectation was corrected. No validator/code change and no rerun of that native case."
+  },
+  "limits": [
+    "AI candidate only; no human approval or observed learner effect.",
+    "No V receipts, new D page, duration binding, active P registry change, source/QA/state change, Source-A or M7 pass.",
+    "The native P validator uses the existing authoritative semantic-kind classification; this P-only run does not prove current semantic-kind fingerprint freshness or the separate Kind/A/M gates.",
+    "The finite31 selected P scopes are preserved; no complete807-goal central rollout was rerun."
+  ],
+  "protectedOriginalAndLiveInputsUnchanged": true,
+  "allProductionCodePinsUnchanged": true
+}

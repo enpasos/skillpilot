@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e1f39d3f6f1149d4ac4876ee36e2a4c576394b7b1fd5522003ae9536f4642656",
+  "reviewInputFingerprint": "sha256:4756a7a7527eef9ba91b20a4c591dbc1a33c5693716a50a4444cf8f6ff7e63c5",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "mathematik-matrix-current-page-20261107-v1-a",
+      "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-a",
+      "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-a",
+      "runIds": [
+        "math-matrix-current-d-a-20261107T024029Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "mathematik-matrix-current-page-20261107-v1-b",
+      "roundId": "mathematik-matrix-current-page-20261107-v1-first-pass-b",
+      "independenceGroupId": "mathematik-matrix-current-page-20261107-v1-independent-b",
+      "runIds": [
+        "mathematik-matrix-current-page-20261107-v1-first-pass-b.20261107T024219Z"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [
+      "OpenAI::gpt-6-astra::(unspecified-version)"
+    ],
+    "distinctProviderOrModel": false,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+      "firstRecordId": "math-matrix-current-d-a-20261107T024029Z-ce198bc9",
+      "secondRecordId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.20261107T024219Z.ce198bc9-b014-52ba-814f-25cc3e020668",
+      "firstRunId": "math-matrix-current-d-a-20261107T024029Z",
+      "secondRunId": "mathematik-matrix-current-page-20261107-v1-first-pass-b.20261107T024219Z",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
