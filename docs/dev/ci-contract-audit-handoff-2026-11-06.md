@@ -33,23 +33,29 @@ einer Testkorrektur implementiert.
 
 ## Aktueller Zwischenstand vom 7. November
 
-Der regulär neu erzeugte Bericht vom `2026-11-07T04:18:33.234Z` enthält die
-[drei angewandten Mathematikreparaturen](ci-graph-repairs/math-three-reviewed-repairs-application-2026-11-07.md).
-Der normale Graphprüfer bestätigt 919 → 916 Befunde ohne neue Befunde.
-Beschreibungen, Aufgabenbelege, Atomicity und Kartenreview bestehen bei allen
-807 Mathematikzielen. Die feste Bildkontextmenge umfasst nun 57 von insgesamt
-2.483 Zielen der fünf M7-Fächer; 2.426 Nachweise bleiben offen.
+Der reguläre Gesamtbericht vom `2026-11-07T05:46:48.445Z` enthält die
+[drei Mathematikreparaturen](ci-graph-repairs/math-three-reviewed-repairs-application-2026-11-07.md)
+und [vier fachlich geprüfte PoWi-Korrekturen samt korrigierter Bildprüfung](ci-graph-repairs/powi-four-fixed74-repairs-application-2026-11-07.md).
+Mathematik bleibt bei 916 Strukturbefunden; PoWi sinkt von 603 auf 599.
+Die strenge Bildkontextprüfung bestätigt 74 von insgesamt 2.483 Kontexten der
+fünf M7-Fächer. 2.409 Nachweise bleiben offen. Die vollständigen Zielmengen
+und alle 21 abgeleiteten Meilensteine sind unverändert.
 
 Deutsch, Geschichte und Latein sind M6. Die übrigen sieben geschützten Fächer
-sind weiterhin M0; der direkte Floorcheck weist alle sieben Verletzungen nach.
-Die Policy und ihre Untergrenzen sind unverändert. Der Remote-Lauf auf
-`0b0f4637` ist abgeschlossen: sieben Hauptjobs bestehen, Curriculum scheitert
-am Floorcheck. Er enthält die anschließende Mathematikanwendung noch nicht.
+sind weiterhin M0. Der neue [direkte Floorcheck](ci-graph-repairs/powi-four-fixed74-normal-cqr-producer-2026-11-07.json)
+weist die sieben Verletzungen nach; Untergrenzen und Ausnahmen sind unverändert.
+Der tatsächliche Remote-Lauf auf `6451880` ist abgeschlossen: sechs Hauptjobs
+bestehen, Frontend und Curriculum scheitern vor der Meilensteinprüfung. Die vier
+Nebenworkflows bestehen. Die anschließenden PoWi-/74-Kontext-Änderungen sind
+in diesem Remote-Lauf noch nicht enthalten.
 
 Der [kalte Informatik-Q2-Review](ci-graph-repairs/informatics-q2-independent-scope-material-review-2026-11-07.md)
-trennt den technisch beobachteten 22er-Pool von amtlich belegtem oder fachlich
-notwendigem Pflichtumfang. Er findet konkrete Aufgaben- und Scopefehler; der
-Entwurf bleibt ohne Anwendung. Das Einheiten-Goal und PR #83 bleiben eingefroren.
+bleibt mit seinem begrenzten damaligen Quellenstand erhalten. Die anschließende
+vollständige Scopeanalyse trennt das eigene kanonische Angebot vom amtlichen
+Pflichtumfang und benannten Abiturjahrgängen. Neue vollständige Materialien und
+ihre private native Einbindung bleiben Entwurf. Der unabhängige Inhaltsreview
+hat einen konkreten Fehler im Rechteentzug gefunden; eine Freigabe liegt nicht vor.
+Das Einheiten-Goal und PR #83 bleiben eingefroren.
 
 ## Verwendbare Ergebnisse
 

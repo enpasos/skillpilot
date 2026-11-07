@@ -1,0 +1,726 @@
+[
+  {
+    "id": "build:single74-over-working-rejected",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:duplicate-working-last-over-bound",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:equals-working-over-bound",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes=201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:abbreviated-working-over-bound",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-w",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:duplicate-selector-last-is74",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:equals-selector-is74",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256=234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:abbreviated-selector-is74",
+    "argv": [
+      "build",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-s",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-working-bytes:normal",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-working-bytes:equals",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-bytes=201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-working-bytes:abbrev",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-b",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-object-bytes:normal",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-bytes",
+      "268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-object-bytes:equals",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-bytes=268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-object-bytes:abbrev",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-b",
+      "268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-embedded-bytes:normal",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-bytes",
+      "16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-embedded-bytes:equals",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-bytes=16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:--maximum-embedded-bytes:abbrev",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-b",
+      "16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "build:valid74",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456"
+    ],
+    "expectedAllow": true
+  },
+  {
+    "id": "build:legacy:46416dd5",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": true
+  },
+  {
+    "id": "build:legacy:3421fa1a",
+    "argv": [
+      "build",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": true
+  },
+  {
+    "id": "materialize:single74-over-working-rejected",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:duplicate-working-last-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:equals-working-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes=201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:abbreviated-working-over-bound",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-w",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:duplicate-selector-last-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:equals-selector-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256=234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:abbreviated-selector-is74",
+    "argv": [
+      "materialize",
+      "--repository-root",
+      "/home/enpasos/projects/skillpilot",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-s",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-working-bytes:normal",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-working-bytes:equals",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-bytes=201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-working-bytes:abbrev",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-working-b",
+      "201326593"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-object-bytes:normal",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-bytes",
+      "268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-object-bytes:equals",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-bytes=268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-object-bytes:abbrev",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-object-b",
+      "268435457"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-embedded-bytes:normal",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-bytes",
+      "16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-embedded-bytes:equals",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-bytes=16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:--maximum-embedded-bytes:abbrev",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--maximum-embedded-b",
+      "16777217"
+    ],
+    "expectedAllow": false
+  },
+  {
+    "id": "materialize:valid74",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456"
+    ],
+    "expectedAllow": true
+  },
+  {
+    "id": "materialize:legacy:46416dd5",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": true
+  },
+  {
+    "id": "materialize:legacy:3421fa1a",
+    "argv": [
+      "materialize",
+      "--accepted-commit",
+      "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+      "--output",
+      "/dev/shm/fixed74-argument-boundary-review/never-created",
+      "--accepted-census-sha256",
+      "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+      "--maximum-working-bytes",
+      "201326592",
+      "--maximum-object-bytes",
+      "268435456",
+      "--accepted-census-sha256",
+      "3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e",
+      "--maximum-working-bytes",
+      "201326593"
+    ],
+    "expectedAllow": true
+  }
+]

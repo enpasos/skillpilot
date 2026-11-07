@@ -3,57 +3,162 @@
   "$id": "https://skillpilot.com/schemas/goal-visualization-context/v1/qualification.schema.json",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "kind", "normalization", "reviewProfile", "context", "originalReview", "originalInput", "ownerSource", "reviewedAsset", "originalDecision", "reviewedAt", "reviewer", "originalReason", "qualification"],
+  "required": [
+    "schemaVersion",
+    "kind",
+    "normalization",
+    "reviewProfile",
+    "context",
+    "originalReview",
+    "originalInput",
+    "ownerSource",
+    "reviewedAsset",
+    "originalDecision",
+    "reviewedAt",
+    "reviewer",
+    "originalReason",
+    "qualification"
+  ],
   "properties": {
-    "schemaVersion": { "const": 1 },
-    "kind": { "const": "visualization-reviewed-context-qualification" },
-    "normalization": { "const": "skillpilot-visualization-display-whitespace-v1" },
-    "reviewProfile": { "enum": ["matrix-candidate-v1", "economics-native-v1", "diagram-current-b-v1", "economics-q3-embedded-v1", "economics-q3-trade-finance-v1"] },
+    "schemaVersion": {
+      "const": 1
+    },
+    "kind": {
+      "const": "visualization-reviewed-context-qualification"
+    },
+    "normalization": {
+      "const": "skillpilot-visualization-display-whitespace-v1"
+    },
+    "reviewProfile": {
+      "enum": [
+        "matrix-candidate-v1",
+        "economics-native-v1",
+        "diagram-current-b-v1",
+        "economics-q3-embedded-v1",
+        "economics-q3-trade-finance-v1",
+        "economics-q2-monetary-social-embedded-v1"
+      ]
+    },
     "context": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["landscapeId", "goalId", "subject", "title", "description", "assetSha256"],
+      "required": [
+        "landscapeId",
+        "goalId",
+        "subject",
+        "title",
+        "description",
+        "assetSha256"
+      ],
       "properties": {
-        "landscapeId": { "$ref": "#/$defs/text" },
-        "goalId": { "$ref": "#/$defs/text" },
-        "subject": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
-        "title": { "$ref": "#/$defs/text" },
-        "description": { "$ref": "#/$defs/text" },
-        "assetSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
-        "titleEn": { "$ref": "#/$defs/text" },
-        "descriptionEn": { "$ref": "#/$defs/text" },
-        "demandLevel": { "$ref": "#/$defs/text" }
+        "landscapeId": {
+          "$ref": "#/$defs/text"
+        },
+        "goalId": {
+          "$ref": "#/$defs/text"
+        },
+        "subject": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "assetSha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "titleEn": {
+          "$ref": "#/$defs/text"
+        },
+        "descriptionEn": {
+          "$ref": "#/$defs/text"
+        },
+        "demandLevel": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
-    "originalReview": { "$ref": "#/$defs/artifact" },
-    "originalInput": { "$ref": "#/$defs/artifact" },
-    "ownerSource": { "$ref": "#/$defs/artifact" },
-    "reviewedAsset": { "$ref": "#/$defs/artifact" },
-    "originalDecision": { "enum": ["keep", "KEEP", "yes"] },
-    "reviewedAt": { "type": "string", "format": "date-time" },
-    "reviewer": { "$ref": "#/$defs/text" },
-    "originalReason": { "$ref": "#/$defs/text" },
+    "originalReview": {
+      "$ref": "#/$defs/artifact"
+    },
+    "originalInput": {
+      "$ref": "#/$defs/artifact"
+    },
+    "ownerSource": {
+      "$ref": "#/$defs/artifact"
+    },
+    "reviewedAsset": {
+      "$ref": "#/$defs/artifact"
+    },
+    "originalDecision": {
+      "enum": [
+        "keep",
+        "KEEP",
+        "yes"
+      ]
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reviewer": {
+      "$ref": "#/$defs/text"
+    },
+    "originalReason": {
+      "$ref": "#/$defs/text"
+    },
     "qualification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["qualifiedAt", "qualifier", "reason"],
+      "required": [
+        "qualifiedAt",
+        "qualifier",
+        "reason"
+      ],
       "properties": {
-        "qualifiedAt": { "type": "string", "format": "date-time" },
-        "qualifier": { "$ref": "#/$defs/text" },
-        "reason": { "$ref": "#/$defs/text" }
+        "qualifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "qualifier": {
+          "$ref": "#/$defs/text"
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
       }
     }
   },
   "$defs": {
-    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
     "artifact": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["path", "gitCommit", "sha256"],
+      "required": [
+        "path",
+        "gitCommit",
+        "sha256"
+      ],
       "properties": {
-        "path": { "$ref": "#/$defs/text" },
-        "gitCommit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
-        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        "path": {
+          "$ref": "#/$defs/text"
+        },
+        "gitCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
       }
     }
   }

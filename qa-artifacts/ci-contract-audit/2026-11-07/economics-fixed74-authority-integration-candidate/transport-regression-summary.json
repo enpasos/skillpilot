@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "name": "preserved54-transport",
+      "actualShallow": true,
+      "result": {
+        "status": "private-shallow-component-materialized",
+        "objects": 867,
+        "uniqueWorkingBytes": 120520955,
+        "objectPayloadBytes": 130773790,
+        "workingPaths": 276,
+        "hostHardlinksCreated": false,
+        "fullRepositoryMaterialized": false,
+        "sourceWritesPerformed": false
+      },
+      "workingLimit": 134217728
+    },
+    {
+      "name": "preserved57-transport",
+      "actualShallow": true,
+      "result": {
+        "status": "private-shallow-component-materialized",
+        "objects": 914,
+        "uniqueWorkingBytes": 126046386,
+        "objectPayloadBytes": 140105632,
+        "workingPaths": 287,
+        "hostHardlinksCreated": false,
+        "fullRepositoryMaterialized": false,
+        "sourceWritesPerformed": false
+      },
+      "workingLimit": 134217728
+    },
+    {
+      "name": "actual-working-one-byte-too-small",
+      "expectedFailure": "Private component budget exceeded",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "actual-object-one-byte-too-small",
+      "expectedFailure": "Private component budget exceeded",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "new74-crossed-old128MiB-budget",
+      "expectedFailure": "Private component budget exceeded",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "new74-working-policy-one-byte-too-large",
+      "expectedFailure": "Fixed74 working allowance exceeds",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "new74-object-policy-one-byte-too-large",
+      "expectedFailure": "Fixed74 object allowance exceeds",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "new74-crossed-old54-anchor",
+      "expectedFailure": "External capsule authority differs",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "new74-crossed-old57-capsule",
+      "expectedFailure": "External capsule authority differs",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "old57-crossed-new74-capsule-and-budget",
+      "expectedFailure": "External capsule authority differs",
+      "noPartialMaterializationCreated": true
+    },
+    {
+      "name": "unknown-caller-index-selector",
+      "expectedFailure": "Unknown fixed reviewed-context transport"
+    },
+    {
+      "name": "preserved57-normal-maturity-with-new-reader",
+      "existing57Qualified": true,
+      "historicalMathContextFixturesRetained": true
+    }
+  ],
+  "rawGitKernelChanged": false,
+  "newBudgetOnlyFixed74": 201326592,
+  "old54And57AuthorityWorkingLimits": 134217728,
+  "unchangedObjectBudget": 268435456,
+  "unchangedEmbeddedBudget": 16777216
+}

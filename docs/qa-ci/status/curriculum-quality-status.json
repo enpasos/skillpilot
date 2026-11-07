@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-11-07T04:18:33.234Z",
+  "generatedAt": "2026-11-07T05:46:48.445Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -10072,8 +10072,8 @@
             "readyGoalIds": [],
             "deferredGoalIds": [],
             "contextsSha256": "dfcb0f034f30dee58a7c2181e72ae18778ac0fcefcee1b23c75c42f51e6e1535",
-            "indexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
-            "capsuleSha256": "4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852",
+            "indexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+            "capsuleSha256": "60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77",
             "issues": [
               "biologie: 002543f9-2d14-5c57-99b4-fb4bf7e53734: Missing immutable reviewed-context receipt",
               "biologie: 01819a6c-f965-5b33-8c4e-07affb3c659f: Missing immutable reviewed-context receipt",
@@ -22943,8 +22943,8 @@
             "readyGoalIds": [],
             "deferredGoalIds": [],
             "contextsSha256": "3be336684d56a4700a45134693dcf048ae933e83e6ac270ea98bf61877a75634",
-            "indexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
-            "capsuleSha256": "4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852",
+            "indexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+            "capsuleSha256": "60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77",
             "issues": [
               "chemie: 00c647e8-0858-5640-b9da-76d85d528820: Missing immutable reviewed-context receipt",
               "chemie: 014e6d85-eecf-5228-9031-52a39981cd0d: Missing immutable reviewed-context receipt",
@@ -55342,20 +55342,20 @@
         {
           "id": "CQR-001",
           "status": "fail",
-          "summary": "Strict graph integrity is incomplete: 3844 finding(s); 10/10 checks executed.",
+          "summary": "Strict graph integrity is incomplete: 3840 finding(s); 10/10 checks executed.",
           "metrics": {
             "catalogLandscapes": 21,
             "catalogGoals": 6524,
             "checkedGoals": 6523,
             "checkedLandscapes": 21,
             "containsEdges": 6846,
-            "authoredRequires": 11565,
-            "effectiveRequires": 12846,
+            "authoredRequires": 11561,
+            "effectiveRequires": 12842,
             "atomicGoals": 5494,
-            "atomicRequires": 29474,
+            "atomicRequires": 29470,
             "localRedundancies": 503,
-            "transitiveRedundancies": 2850,
-            "findings": 3844,
+            "transitiveRedundancies": 2846,
+            "findings": 3840,
             "requiredHardChecks": 10,
             "executedHardChecks": 10
           },
@@ -61971,7 +61971,7 @@
               },
               {
                 "id": "G17",
-                "findingCount": 2850,
+                "findingCount": 2846,
                 "status": "fail"
               }
             ],
@@ -66868,38 +66868,12 @@
                 "ruleId": "G17",
                 "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
                 "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "022c620f-fdb3-5814-a9b7-f18614130793",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
                 "goalId": "0322a606-cee9-5a3f-b008-357b7344334a",
                 "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
                 "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:0322a606-cee9-5a3f-b008-357b7344334a",
                   "51b60137-46e8-5498-973e-ea38bb32f327:eae80308-0ec4-57d2-996b-e17c20a561e8",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -70997,19 +70971,6 @@
                 "message": "Goal id b2c65099-b4cb-5f1a8-cd80-53263fd71bbd does not belong to the UUID domain."
               },
               {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "b2d76b0d-cdb3-5f35-893f-896903d673db",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
                 "ruleId": "G01a",
                 "code": "INVALID_GOAL_UUID",
                 "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
@@ -71191,19 +71152,6 @@
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:bef7069d-ac64-5ace-baaf-5cb62669c94d",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b642f7ae-eab8-53af-9a5e-420f6083637c",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -71994,6 +71942,7 @@
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:f5fae603-b076-5ccb-8c76-c05fa91f78c3",
                   "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -109337,13 +109286,13 @@
               "checkedGoals": 6523,
               "checkedLandscapes": 21,
               "containsEdges": 6846,
-              "authoredRequires": 11565,
-              "effectiveRequires": 12846,
+              "authoredRequires": 11561,
+              "effectiveRequires": 12842,
               "atomicGoals": 5494,
-              "atomicRequires": 29474,
+              "atomicRequires": 29470,
               "localRedundancies": 503,
-              "transitiveRedundancies": 2850,
-              "findings": 3844
+              "transitiveRedundancies": 2846,
+              "findings": 3840
             }
           }
         },
@@ -143164,8 +143113,8 @@
             ],
             "deferredGoalIds": [],
             "contextsSha256": "baaa1711c22c3a9e4d712aa2fb0a819d5a1c8707fe817635cebeb6e44f33cea0",
-            "indexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
-            "capsuleSha256": "4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852",
+            "indexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+            "capsuleSha256": "60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77",
             "issues": [
               "mathematik: 01217f4a-5221-5df9-b379-7b241fccf809: Missing immutable reviewed-context receipt",
               "mathematik: 0190e463-51a7-4860-9b35-d875530a85ba: Missing immutable reviewed-context receipt",
@@ -160909,8 +160858,8 @@
             "readyGoalIds": [],
             "deferredGoalIds": [],
             "contextsSha256": "4fe50e385c168427095b81e318b44b6ab3cad1ea256cf1f01d6b0b8ff21676f0",
-            "indexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
-            "capsuleSha256": "4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852",
+            "indexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+            "capsuleSha256": "60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77",
             "issues": [
               "physik: 00245a43-eb89-47d2-92d7-21799dbec9f3: Missing immutable reviewed-context receipt",
               "physik: 0172ca41-cc42-51d6-94ad-f0f4680059e4: Missing immutable reviewed-context receipt",
@@ -166413,29 +166362,27 @@
         {
           "id": "CQR-001",
           "status": "fail",
-          "summary": "Strict graph integrity is incomplete: 603 finding(s); 10/10 checks executed.",
+          "summary": "Strict graph integrity is incomplete: 599 finding(s); 10/10 checks executed.",
           "metrics": {
             "catalogLandscapes": 21,
             "catalogGoals": 6524,
             "checkedGoals": 513,
             "checkedLandscapes": 2,
             "containsEdges": 645,
-            "authoredRequires": 986,
-            "effectiveRequires": 1035,
+            "authoredRequires": 982,
+            "effectiveRequires": 1031,
             "atomicGoals": 439,
-            "atomicRequires": 1328,
+            "atomicRequires": 1324,
             "localRedundancies": 0,
-            "transitiveRedundancies": 126,
-            "findings": 603,
+            "transitiveRedundancies": 122,
+            "findings": 599,
             "requiredHardChecks": 10,
             "executedHardChecks": 10
           },
           "details": [
             "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:0108e6fc-c68c-5d4c-b746-c71c402093a9: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:0108e6fc-c68c-5d4c-b746-c71c402093a9 -> 51b60137-46e8-5498-973e-ea38bb32f327:68e8e6e1-e345-5f2a-893b-b6acda0e4c96 -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
             "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:021ff2a5-60b8-57d2-a511-53e168d62cb2: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:021ff2a5-60b8-57d2-a511-53e168d62cb2 -> 51b60137-46e8-5498-973e-ea38bb32f327:4b26d891-28cf-5ef8-bd84-35a125829ce1 -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
-            "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793 -> 51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
             "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:0322a606-cee9-5a3f-b008-357b7344334a: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:0322a606-cee9-5a3f-b008-357b7344334a -> 51b60137-46e8-5498-973e-ea38bb32f327:eae80308-0ec4-57d2-996b-e17c20a561e8 -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
-            "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b -> 51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5 -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
             "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: Goal id 0a474cbf-2809-555c9-101b-c9df3a5b8416 does not belong to the UUID domain.",
             "G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 0aab91d3-2653-5502e-541e-bde02ecca3cf does not have a UUID goal endpoint.",
             "G01a INVALID_REFERENCE_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0a474cbf-2809-555c9-101b-c9df3a5b8416: contains reference 237feda9-e701-56ae0-c47d-e814a35ac70e does not have a UUID goal endpoint.",
@@ -166450,7 +166397,9 @@
             "G17 TRANSITIVE_REDUNDANT_REQUIREMENT 51b60137-46e8-5498-973e-ea38bb32f327:0d01f221-211f-54d8-9d79-4c6987701b76: Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin. Witness: 51b60137-46e8-5498-973e-ea38bb32f327:0d01f221-211f-54d8-9d79-4c6987701b76 -> 51b60137-46e8-5498-973e-ea38bb32f327:1a13fb23-86f3-5681-9fcd-46fcbd1dc5a6 -> 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
             "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0e270b78-4e42-503ab-ffb8-e1d02c175f53: Goal id 0e270b78-4e42-503ab-ffb8-e1d02c175f53 does not belong to the UUID domain.",
             "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f3d97e7-6146-58f61-6a58-80d39276c1e8: Goal id 0f3d97e7-6146-58f61-6a58-80d39276c1e8 does not belong to the UUID domain.",
-            "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f7fe055-ce23-521ec-8b93-37ece4fc0f81: Goal id 0f7fe055-ce23-521ec-8b93-37ece4fc0f81 does not belong to the UUID domain."
+            "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f7fe055-ce23-521ec-8b93-37ece4fc0f81: Goal id 0f7fe055-ce23-521ec-8b93-37ece4fc0f81 does not belong to the UUID domain.",
+            "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:0f9d0252-0719-55f24-935a-284e55fe47d3: Goal id 0f9d0252-0719-55f24-935a-284e55fe47d3 does not belong to the UUID domain.",
+            "G01a INVALID_GOAL_UUID 51b60137-46e8-5498-973e-ea38bb32f327:1121265d-b786-5acb6-5bc0-7487427d974f: Goal id 1121265d-b786-5acb6-5bc0-7487427d974f does not belong to the UUID domain."
           ],
           "graphIntegrity": {
             "ok": false,
@@ -167032,7 +166981,7 @@
               },
               {
                 "id": "G17",
-                "findingCount": 126,
+                "findingCount": 122,
                 "status": "fail"
               }
             ],
@@ -167067,38 +167016,12 @@
                 "ruleId": "G17",
                 "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
                 "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "022c620f-fdb3-5814-a9b7-f18614130793",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
                 "goalId": "0322a606-cee9-5a3f-b008-357b7344334a",
                 "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
                 "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:0322a606-cee9-5a3f-b008-357b7344334a",
                   "51b60137-46e8-5498-973e-ea38bb32f327:eae80308-0ec4-57d2-996b-e17c20a561e8",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -171196,19 +171119,6 @@
                 "message": "Goal id b2c65099-b4cb-5f1a8-cd80-53263fd71bbd does not belong to the UUID domain."
               },
               {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "b2d76b0d-cdb3-5f35-893f-896903d673db",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
                 "ruleId": "G01a",
                 "code": "INVALID_GOAL_UUID",
                 "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
@@ -171390,19 +171300,6 @@
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:bef7069d-ac64-5ace-baaf-5cb62669c94d",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b642f7ae-eab8-53af-9a5e-420f6083637c",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
-                ]
-              },
-              {
-                "ruleId": "G17",
-                "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
-                "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
-                "goalId": "bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
-                "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
-                "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
-                "witness": [
-                  "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
-                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -172193,6 +172090,7 @@
                 "witness": [
                   "51b60137-46e8-5498-973e-ea38bb32f327:f5fae603-b076-5ccb-8c76-c05fa91f78c3",
                   "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+                  "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
                   "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
                 ]
               },
@@ -172498,13 +172396,13 @@
               "checkedGoals": 513,
               "checkedLandscapes": 2,
               "containsEdges": 645,
-              "authoredRequires": 986,
-              "effectiveRequires": 1035,
+              "authoredRequires": 982,
+              "effectiveRequires": 1031,
               "atomicGoals": 439,
-              "atomicRequires": 1328,
+              "atomicRequires": 1324,
               "localRedundancies": 0,
-              "transitiveRedundancies": 126,
-              "findings": 603
+              "transitiveRedundancies": 122,
+              "findings": 599
             }
           }
         },
@@ -185960,20 +185858,20 @@
         {
           "id": "CQR-303",
           "status": "fail",
-          "summary": "Deep curriculum QA is incomplete: 52/346 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 69/346 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 346,
-            "remaining": 294,
-            "strictComplete": 52,
+            "remaining": 277,
+            "strictComplete": 69,
             "currentDescriptionResolutions": 346,
             "currentPositiveEvidenceProfiles": 346,
             "currentSemanticAtomicityDecisions": 346,
             "currentMemoryReviewDecisions": 346,
-            "currentVisualizationQaRecords": 52,
+            "currentVisualizationQaRecords": 69,
             "deferredVisualizations": 0,
             "requiredChecksPassed": 5,
             "requiredChecksTotal": 6,
-            "blockingIssues": 294
+            "blockingIssues": 277
           },
           "details": [
             "wirtschaftswissenschaften: 00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: Missing immutable reviewed-context receipt",
@@ -186359,23 +186257,32 @@
               "1582ec45-1655-5f7c-a2bd-a3fc00e583fa",
               "167bfd78-9202-5599-9325-66d7a1579185",
               "1bddc795-8aeb-5408-90b3-12e4be51e912",
+              "25278ecf-2e77-556e-9fe6-8f0b954cc680",
               "26ebbe6e-6512-520d-80a4-2e7e80f29f72",
+              "29076abc-83ab-5e01-af81-18b7b3f7cf5a",
               "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
               "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+              "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
               "43acb850-7685-5e53-acf6-6675120120d1",
               "45bd0edd-3d4e-55f1-88bf-407c4706e860",
               "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
               "54049ed4-9364-5564-a55a-3959193d9018",
+              "577f0e2d-643a-5a0c-833b-301622a6cb00",
               "596c02e3-6263-5084-8593-c5f51808326b",
               "5ae551bf-942c-5896-b8e0-93aad36fe9b0",
+              "5b5d1d53-71c3-5fbf-b1cf-977c868b60e3",
               "5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5",
               "604cde3e-4095-50c3-b712-e6bd7cea4717",
               "606c4050-d196-509e-9a95-53733d6b06bb",
               "641dee8e-9658-5db1-89eb-2353f8322a8a",
               "667b75ad-2d20-5f22-ad57-46be5b7c53c7",
+              "66ca6838-c9b3-5ab3-b47a-6a669bc4c21c",
+              "676684da-5ba2-5c2a-ba7e-a8413915c29c",
               "682facbf-3c9d-5485-88a3-20f2394ed77f",
               "6f75cdff-7d32-533b-8fe9-3d003b7af241",
               "7727b988-e62c-5ebf-8e2f-0c719b13881c",
+              "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+              "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
               "7cbcca15-e93b-57ce-8f14-ffd1a557e288",
               "7d0c69c6-0c67-5221-9ccc-d55e3eb2c303",
               "7d399b4d-d057-5284-8e2c-6778e023307d",
@@ -186386,27 +186293,35 @@
               "87ee2b5a-8d10-51e4-a288-539e5ac251ea",
               "8adaa076-10ad-5fbf-8a22-247b52046da4",
               "8dee6c0a-0f76-5717-87b6-04ec89229371",
+              "8ebbbe19-43dd-53ff-a6d0-9d94a5973616",
               "9267ad99-f474-5fd7-8b6a-bd03fbc70394",
+              "9832485e-8431-58cb-b251-9473da415a5e",
               "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
               "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
               "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
+              "a72ddc94-6b38-5c14-8d8b-661472e4dfba",
               "b456e539-24bb-5ec5-a996-14c9c77b64d0",
               "b4a82d8d-6311-5575-b222-cbaf6ea90d32",
               "bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4",
               "becf0989-ee9f-5c8e-8173-5b8246e7944a",
+              "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+              "c7341b02-3da3-50f8-a750-5d10ed7c9958",
               "cc57df5b-69fd-5774-90d7-aa5ebd3d1632",
+              "d17ff931-085d-56be-932d-3839b5b88ba8",
               "d22433a8-fa0a-5db5-b65f-9d47b801f2d9",
+              "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
               "ebbce1c2-51b3-5215-8bcb-fbb74affdd62",
               "f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91",
               "f7034be8-64e9-5f63-9556-d7b8dc59eda7",
+              "f9132615-8166-5e42-ad04-d8b2b75d719d",
               "fb249488-944c-5123-a21e-5cb9a0431e8b",
               "fcf756f1-7252-54cb-9257-de8259090021",
               "fd913fec-e64a-5a1a-88f6-724d788ed951"
             ],
             "deferredGoalIds": [],
             "contextsSha256": "f7633ecff50d3bce70555bf24b4fc765a4d6dc6e16c5f729458bc7fa5bda7079",
-            "indexSha256": "46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0",
-            "capsuleSha256": "4f46e57864b5a1277764992f6301f4cb4da9b15ea7cf789e7e96d9d5175d5852",
+            "indexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+            "capsuleSha256": "60b70c93df293c5ac06d3923e4ec9328b0277d99f927dfe4179094dde919bc77",
             "issues": [
               "wirtschaftswissenschaften: 00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 0242e34e-e2fe-5a0f-8aed-57905c6ebb26: Missing immutable reviewed-context receipt",
@@ -186439,11 +186354,9 @@
               "wirtschaftswissenschaften: 1f5c3e82-dc4a-54cc-838e-66e4d434a7b5: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 21dc877b-e281-5269-8244-05be788f7771: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 21dd1fce-730a-5470-bcc3-76195941ee83: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 25278ecf-2e77-556e-9fe6-8f0b954cc680: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 25393414-3b59-56f9-ae1b-e785d9f8b21b: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 273809d9-bc31-5c1b-8a58-149dd61d2ba0: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 2790f704-116b-577d-aca7-b502d57a21f6: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 29076abc-83ab-5e01-af81-18b7b3f7cf5a: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 2aee114f-d0d2-516f-8f95-1b72f707401d: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 2ccb9f7e-1512-5970-85a1-71ec42734eb9: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2: Missing immutable reviewed-context receipt",
@@ -186460,7 +186373,6 @@
               "wirtschaftswissenschaften: 3ed27350-0257-5690-89d9-5acefeffcf68: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 40676995-14fc-55a9-89ae-440b2ee3ab33: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 410e7ab4-a4ef-5090-8d4c-11a28372082d: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 424bae9f-8f2e-5093-a17d-ee5eadb6edde: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 431ed662-a906-5d96-b81f-35a66c3683cd: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 43a90b29-abf8-5430-99fa-b92f3768516b: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 44080e8d-f414-54e6-8c63-cd2042fbb40e: Missing immutable reviewed-context receipt",
@@ -186487,11 +186399,9 @@
               "wirtschaftswissenschaften: 543bf91f-f6c6-5b1b-ba9e-43de321d8c7f: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 550a050a-36bb-5b9e-ae0a-1afc7f9a0df0: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 575c08d4-204f-5f78-8f2f-1994db6f19ee: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 577f0e2d-643a-5a0c-833b-301622a6cb00: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 59c95c87-bef0-57e1-8d9a-ad1d5a851fc4: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 5a72a72a-609a-5e60-8a25-4f5048b8b09c: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 5aaf5abf-5e70-57c6-b030-1d08a35d17b8: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 5b5d1d53-71c3-5fbf-b1cf-977c868b60e3: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 5b5ed3cb-7c2c-5b0f-a515-c967d8d23644: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 5ccb466f-25c7-5802-bb0a-763ca51cdf62: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 5d8c708f-699b-535d-84c7-a92e67f7bac6: Missing immutable reviewed-context receipt",
@@ -186505,8 +186415,6 @@
               "wirtschaftswissenschaften: 65d9f38e-d35d-5d84-8b66-3c05e388734f: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 6600f5f0-0b30-5458-b144-b2468d897087: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 66a0d96f-a231-5b36-894e-2ffb16adf7db: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 66ca6838-c9b3-5ab3-b47a-6a669bc4c21c: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 676684da-5ba2-5c2a-ba7e-a8413915c29c: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 685624a0-6839-521c-8228-c5914342bc6e: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 6d4a38df-527c-534b-8c0a-c6b546dae5b1: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 6de44afa-7f91-5fa4-9292-ec06e86e97a4: Missing immutable reviewed-context receipt",
@@ -186531,7 +186439,6 @@
               "wirtschaftswissenschaften: 77edbcf9-d14d-547e-8a5f-43863a3e300b: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 78e87088-f467-5541-8239-99d24b3958b3: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 78eeb8fe-fd5c-5d21-81be-75c3990fc4b5: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 79d244e0-049e-59e9-a2fb-b8f8670b315a: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 79edbe3a-7557-5b3b-a0f2-c31f45b6dad7: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 7a2435f2-0ce7-5179-81a5-2ef5c313e3dd: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 7a3f0ae8-370e-5fc3-afce-09e1f7f35508: Missing immutable reviewed-context receipt",
@@ -186539,7 +186446,6 @@
               "wirtschaftswissenschaften: 7a926b77-2fbe-52de-810f-954c054b35c2: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 7aef0e2f-ca08-5276-a432-906cdb3313b4: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 7c72848d-8bc9-58e2-a690-fd17ac650a88: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 7c9efc27-e74f-5a82-bf56-95a9aa21cb94: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 7f8f6648-6faa-52c5-9793-3654ef9dc36d: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 80c92945-155b-56ea-8aa2-46ee72852303: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 81ea1a00-5248-5e36-8ca0-3f3f48ac2385: Missing immutable reviewed-context receipt",
@@ -186563,7 +186469,6 @@
               "wirtschaftswissenschaften: 8d44b7e8-4ddc-53b9-88e8-1ab5e48f665d: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 8e065dac-4345-5b88-aee1-dbca803a2631: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 8e8a672e-67c6-52dd-8f87-3c1f2e874a3d: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 8ebbbe19-43dd-53ff-a6d0-9d94a5973616: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 8f0fde77-85c4-5ad5-ba8b-da2efe297854: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 8fbd0f7b-839b-5fe5-a257-8e0f6d24751b: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 912ab267-ee00-581b-a31c-dfc0b3587184: Missing immutable reviewed-context receipt",
@@ -186579,7 +186484,6 @@
               "wirtschaftswissenschaften: 96c2c114-8474-5e4c-bfcf-c9e526c8c9ad: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 980a3f45-b0ad-500d-8d5b-975948362b68: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 98136a27-120d-5278-b9b9-d833c0ea5fc0: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: 9832485e-8431-58cb-b251-9473da415a5e: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 9a1a3f9b-909d-53d3-8851-759c416bd763: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 9a5b2913-75d4-59d5-8a10-d255a8af80f4: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: 9b6ef4f1-229b-5560-b692-0a6b6de79de7: Missing immutable reviewed-context receipt",
@@ -186600,7 +186504,6 @@
               "wirtschaftswissenschaften: a6a609cb-e8bf-5136-805b-67bddab6b28e: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: a6a8bf1a-a131-5f17-9113-02a1321899e4: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: a6d0929c-3929-5f02-8e57-b6a448f25e71: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: a72ddc94-6b38-5c14-8d8b-661472e4dfba: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: a773d8a6-3b0d-5ab5-a914-ca234e7fb813: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: aa9db8f6-c81e-5247-8f84-5f2b968ab2c4: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: ab556d14-b0c0-5630-8ee3-f07877fa28bd: Missing immutable reviewed-context receipt",
@@ -186639,9 +186542,7 @@
               "wirtschaftswissenschaften: c4c5bae8-575a-5a70-ba30-bada55f93abb: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c4f27b51-958c-5416-a2de-d96a6e59e8b5: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c4faf50c-8778-5540-8276-87840cc81e05: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: c5272ab8-baa0-570b-9f31-426d1f4460f2: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c6f05990-4c2d-56ce-9412-3a4a4bcfc488: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: c7341b02-3da3-50f8-a750-5d10ed7c9958: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c73bc13e-6871-50c3-82d3-90283f1f54ce: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c7b03538-25a2-510b-8fd4-a81bcc3de406: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: c7bd5875-b547-5ba6-8b41-122420cf0bf1: Missing immutable reviewed-context receipt",
@@ -186649,7 +186550,6 @@
               "wirtschaftswissenschaften: c9847c36-7a66-5cbd-9aee-60f71a8440de: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: caf3ceaa-b376-519e-bc36-c3f819082402: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: cb21bcbe-755d-5b0d-b02a-be22c9d26e43: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: d17ff931-085d-56be-932d-3839b5b88ba8: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: d2467bbb-eea0-58a2-8f8b-fbaea060d566: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: d36664f5-1dc2-5e4b-bda0-0a288407d2af: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: d3c11bfa-103c-5b58-8183-561e0b076251: Missing immutable reviewed-context receipt",
@@ -186659,7 +186559,6 @@
               "wirtschaftswissenschaften: d76af11e-7fb3-5e81-a622-9f3642efedaf: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: d9a3db94-2629-53d0-80c6-801adc0f6641: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: da43dd2a-693b-5327-811f-c4c19ee064cd: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: dae93971-726c-56e5-8044-19dbd40febf7: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: dc55f829-9c65-5bde-952c-47f5eacdeb5f: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: dd38e0c5-d77b-5893-815c-548ea2a84429: Missing immutable reviewed-context receipt",
@@ -186695,7 +186594,6 @@
               "wirtschaftswissenschaften: f79decb1-4d32-5d99-b998-e87e34d16527: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: f7c051f4-ebb0-5d74-81b1-c1cdb562414f: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: f90e4741-368b-5524-8053-417d06197c80: Missing immutable reviewed-context receipt",
-              "wirtschaftswissenschaften: f9132615-8166-5e42-ad04-d8b2b75d719d: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: fab48742-756b-564d-87ef-cd6f3c75f348: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: fc1d5252-3b01-555e-bcc5-c8ee3d6b48bd: Missing immutable reviewed-context receipt",
               "wirtschaftswissenschaften: fed15db6-e700-514d-a65e-6c2a34f1c81a: Missing immutable reviewed-context receipt",

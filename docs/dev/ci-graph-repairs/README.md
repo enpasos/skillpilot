@@ -1,16 +1,17 @@
 # Belege zu den CI-Vertragsreparaturen
 
-Aktueller gesicherter Nachlauf: `2026-11-07T02:06:31.722Z`. Der
-[normale Gesamt-CQR mit neuem V-Gate](visualization-fixed54-normal-cqr-producer-2026-11-07.json)
-bindet alle 21 Quellen, 925 Definitions- und 872 Bereitschaftsprüfungen sowie
-die zehn unveränderten Fachfloors. Deutsch, Geschichte und Latein bleiben M6;
-der tatsächliche harte Floorcheck scheitert an sieben übrigen Fachständen.
-Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
-sechs unzureichende Prüfungen. Alle Scopes, Zielmengen und Meilensteine bleiben
-gegenüber [22:41](cqr104-current-cqr-2026-11-06.json) exakt gleich; CQR-303
-zeigt nun die tatsächlichen 54 qualifizierten und 2.429 offenen V-Kontexte.
-Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
-bleibt ebenfalls historisch erhalten.
+Aktueller regulärer Nachlauf: `2026-11-07T05:46:48.445Z`. Der
+[normale Gesamt-CQR mit vier PoWi-Korrekturen und 74 Bildkontexten](powi-four-fixed74-normal-cqr-producer-2026-11-07.json)
+bindet alle 21 Quellen und die zehn unveränderten Fachfloors. Deutsch, Geschichte
+und Latein bleiben M6; der tatsächliche harte Floorcheck scheitert an sieben
+übrigen Fachständen. Mathematik hat 916 Strukturbefunde, davon 914 G17; PoWi
+hat 599, davon 122 G17 und 477 G01a. Informatik bleibt bei 37 G17 und sechs
+unzureichenden Prüfungen. Alle Zielmengen und Meilensteine bleiben unverändert.
+CQR-303 bestätigt 74 qualifizierte und 2.409 offene V-Kontexte bei unverändertem
+Gesamtumfang von 2.483. Die
+[Anwendungsnotiz](powi-four-fixed74-repairs-application-2026-11-07.md) trennt
+fachliche Kantenkorrekturen, historische Bildbelege und die Transportkorrektur.
+Die früheren Nachläufe bleiben mit ihren damaligen Eingaben erhalten.
 
 - [Terminaler Remote-Lauf auf 9b798](remote9b-terminal-2026-11-07.json):
   sieben von acht Hauptjobs einschließlich Frontend/Lint, Backend, Apps und
@@ -216,6 +217,12 @@ bleibt ebenfalls historisch erhalten.
   66 Scopeurteile und 22 Materialurteile, ohne vorgegebenen GK-Sollumfang.
   Unbelegte Pflichtzuordnungen, konkrete Aufgabenfehler und fehlende amtlich
   verlangte Leistungen verhindern die Anwendung des bisherigen Entwurfs.
+
+- [Vier angewandte PoWi-Korrekturen und 74 aktuelle Bildkontexte](powi-four-fixed74-repairs-application-2026-11-07.md):
+  unabhängiger fachlicher Review, unveränderte effektive Voraussetzungen,
+  tatsächlicher normaler Gesamtbericht und weiterhin sieben echte Floorfehler.
+  Die Argumentgrenzen der Bildtransport-CLI sind zusätzlich durch echte
+  Negativaufrufe in der wiederkehrenden CI geschützt.
 
 Die [zentrale Übergabe](../ci-contract-audit-handoff-2026-11-06.md) führt
 Auftrag und nächste Schritte. Der feste 518-Regelkorpus und seine Matrizen

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import './testMemoryVisibilityStatusParity'
 import './testDeepUnderstandingSupersessionChains'
 import './testDeepUnderstandingSemanticRetirements'
@@ -287,8 +288,14 @@ assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
 assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0))
 for (const subject of [physics, biology]) assert.deepEqual(nonVisualizationIssues(subject), [],
   `${subject.subject}: the new V gate must not change existing non-V outcomes.`)
-const contextIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(readFileSync(resolve(repositoryRoot,
-  'contracts/goal-visualization-context/v1/qualified-context-index.json'), 'utf8'))
+const contextIndexBytes = readFileSync(resolve(repositoryRoot,
+  'contracts/goal-visualization-context/v1/qualified-context-index-economics17-2026-11-07.json'))
+assert.equal(createHash('sha256').update(contextIndexBytes).digest('hex'),
+  '234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785',
+  'The expected finite set is bound to its independently reviewed original-context index.')
+const contextIndex: { rows: Array<{ landscapeId: string; goalId: string }> } = JSON.parse(contextIndexBytes.toString('utf8'))
+assert.equal(contextIndex.rows.length, 74)
+assert.equal(new Set(contextIndex.rows.map(row => row.landscapeId + ':' + row.goalId)).size, 74)
 for (const subject of report.subjects) {
   const expected = contextIndex.rows.filter(row => row.landscapeId === subject.landscapeId && subject.currentGoalIds.includes(row.goalId))
     .map(row => row.goalId).sort()
@@ -299,6 +306,7 @@ for (const subject of report.subjects) {
   assert.equal(subject.strictCompletionReady, false, 'Missing original-context evidence cannot grant M7.')
   assert.deepEqual(subject.visualizationValidation!.currentGoalIds, subject.currentGoalIds)
 }
+assert.equal(report.subjects.reduce((sum, subject) => sum + subject.gates.currentVisualizationQaRecords, 0), 74)
 assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
 assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
 for (const subject of [mathematics, physics, biology, chemistry, economics]) {

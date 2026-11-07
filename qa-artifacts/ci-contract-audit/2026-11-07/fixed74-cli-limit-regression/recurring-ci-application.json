@@ -1,0 +1,96 @@
+{
+  "appliedAtActual": "2026-11-07T05:51:03.304245+00:00",
+  "changes": [
+    {
+      "path": "app/package.json",
+      "beforeSha256": "8db305e2076f0211f7a6340d66e1aadcf651ef6ff800b01a9b38391935da0f79",
+      "afterSha256": "07079b7b4c654642f6074ea7f1568d73e26b99f0a133b3ed03f7f3e821391b07"
+    },
+    {
+      "path": "scripts/test_visualization_qualified_context_capsule_limits.py",
+      "beforeSha256": null,
+      "afterSha256": "62faac51e392af219d2ff8800bce58ba86343062494c1fd6b7d97f2eedffd760"
+    },
+    {
+      "path": "docs/dev/ci-contract-audit-handoff-2026-11-06.md",
+      "beforeSha256": "6ac8ff6f09b6f1cbf1f199af39f5049847738db9f1878d91cba830fa31ef1618",
+      "afterSha256": "2091f342a28c59846db1b467a861a14575a5c702cec9031f9418d3181301309c"
+    },
+    {
+      "path": "docs/dev/ci-graph-repairs/README.md",
+      "beforeSha256": "6c00e7f6097bdbb1034d46acd71f8855d24f384dae1dec089faf2e003dc48244",
+      "afterSha256": "7b1ff096c8c45a0833cc0ff7d95a3904753316d089c7f237d670a01646937bce"
+    }
+  ],
+  "normalProducerAndFloorBothTerminalBeforeApplication": true,
+  "testPackageCommand": "npm run test:deep-understanding-rollout",
+  "normalChainExecution": "First four ordinary chain components passed; its retained54 expectation failed; corrected SHA-bound74 deep self-test passed as the targeted affected-component rerun. No fresh remote result claimed.",
+  "finalDeepSelfTest": {
+    "status": "terminal",
+    "startedAtActual": "2026-11-07T06:01:40.258564+00:00",
+    "command": [
+      "bwrap",
+      "--ro-bind",
+      "/",
+      "/",
+      "--dev-bind",
+      "/dev",
+      "/dev",
+      "--proc",
+      "/proc",
+      "--bind",
+      "/dev/shm",
+      "/dev/shm",
+      "--bind",
+      "/dev/shm/root-fixed74-ci-regression/repository-tmp",
+      "/home/enpasos/projects/skillpilot/tmp",
+      "--chdir",
+      "/home/enpasos/projects/skillpilot/app",
+      "--setenv",
+      "TMPDIR",
+      "/dev/shm/root-fixed74-ci-regression",
+      "--setenv",
+      "npm_config_cache",
+      "/dev/shm/root-fixed74-ci-regression/npm-cache",
+      "--setenv",
+      "GIT_INDEX_FILE",
+      "/dev/shm/skillpilot-v74-powi-normal-cqr-_v0s7aci/workspace.index.readonly",
+      "--",
+      "./node_modules/.bin/tsx",
+      "scripts/testDeepUnderstandingRollout.ts"
+    ],
+    "changedTestSha256": "a864d842f5e6b1cab1406f2ae1e2e44405db71c9a4e616f5c12c422ce4eee93e",
+    "reason": "The complete chain passed its first four components then exposed a stale54-index expectation. The expected set is now explicitly SHA-bound to the independently reviewed74-index; all original strict completion/denominator/floor assertions remain.",
+    "childPid": 654573,
+    "exitCode": 0,
+    "completedAtActual": "2026-11-07T06:07:07.678748+00:00",
+    "elapsedSeconds": 327.43800809299864,
+    "stdoutSha256": "904ec1888ba2feb5dd85d9c0ebdf414ccbfdcf3c0bf09a74d60f5a3e98f71a43",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "testExpectationChange": {
+    "path": "app/scripts/testDeepUnderstandingRollout.ts",
+    "beforeCommit": "bc106e1a7bc35a34143a46bb414b4c4e864e6ebd",
+    "beforeSha256": "2922971122c8823dfb5708827f5fb9881ae3140e3d865936d8766fb2a6816565",
+    "afterSha256": "a864d842f5e6b1cab1406f2ae1e2e44405db71c9a4e616f5c12c422ce4eee93e",
+    "expectedIndexSha256": "234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785",
+    "expectedUniqueContexts": 74,
+    "strictNegativeAndDenominatorAssertionsRetained": true
+  },
+  "checks": {
+    "markdownLinks": {
+      "exitCode": 0,
+      "files": 523
+    },
+    "documentationIndexes": {
+      "exitCode": 0,
+      "indexes": 8
+    },
+    "workingTreeTerminology": {
+      "exitCode": 1,
+      "findings": 2,
+      "scope": "Two newly authored explanatory terms in the separate uncommitted Informatics authority input; no exception added. Editorial correction pending."
+    }
+  },
+  "recordedAtActual": "2026-11-07T06:10:19.686575+00:00"
+}

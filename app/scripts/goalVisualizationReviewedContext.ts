@@ -7,6 +7,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import { normalizeGoalVisualizationSubject } from '../../scripts/goal_visualization_scope.mjs'
 import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from './lib/authenticatedGitEvidence'
+import { readEconomicsQ2MonetarySocialContext } from './lib/goalVisualizationEconomicsQ2MonetarySocialContexts'
 import { readEconomicsQ3Context } from './lib/goalVisualizationEconomicsQ3Contexts'
 
 export interface VisualizationReviewArtifact { path: string; gitCommit: string; sha256: string }
@@ -21,7 +22,7 @@ export interface VisualizationContextReceiptReference { path: string; sha256: st
 export interface VisualizationContextQualification {
   schemaVersion: 1; kind: 'visualization-reviewed-context-qualification'
   normalization: 'skillpilot-visualization-display-whitespace-v1'
-  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1'
+  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1' | 'economics-q2-monetary-social-embedded-v1'
   context: VisualizationReviewedContext
   originalReview: VisualizationReviewArtifact; originalInput: VisualizationReviewArtifact
   ownerSource: VisualizationReviewArtifact; reviewedAsset: VisualizationReviewArtifact
@@ -97,6 +98,8 @@ const contextKeys = ['landscapeId', 'goalId', 'subject', 'title', 'description',
 // These versioned readers describe exact existing canonical review formats.
 // A freely selected later source snapshot cannot grant a different namespace.
 const reviewOwners = {
+  'economics-q2-monetary-social-embedded-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
+    sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
   'matrix-candidate-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
   'economics-native-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
@@ -205,6 +208,8 @@ export const createVisualizationContextVerifier = (options: {
           title: suppliedString(input.title), description: suppliedString(input.description), assetSha256: 'sha256:' + sha(viewed.sha256) }
         decision = review.decision; reviewedAt = review.actualCompletedAt; reviewer = reviewActor.agentIdentity
         reason = review.actualGoalSpecificSubjectFormatAccessibilityAndPerspectiveReason; assetPath = viewed.path
+      } else if (receipt.reviewProfile === 'economics-q2-monetary-social-embedded-v1') {
+        ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readEconomicsQ2MonetarySocialContext(receipt, review, assetRaw, artifact, parseVisualizationReviewJson))
       } else if (receipt.reviewProfile === 'economics-q3-embedded-v1' || receipt.reviewProfile === 'economics-q3-trade-finance-v1') {
         ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readEconomicsQ3Context(receipt, review, assetRaw, artifact, parseVisualizationReviewJson))
       } else {

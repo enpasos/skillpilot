@@ -10,12 +10,14 @@ import re
 import visualization_review_git_capsule as kernel
 
 
-# Closed external transports: historical54 and its separately qualified Math3 successor.
+# Closed transports: preserved historical54/Math57 and exact independently reviewed Econ17 successor.
 _ACCEPTED_INDEXES = {
     '3421fa1a64b0c9ccac607bd283fabc3aeeb2391aec6cad0118f317d81c87742e':
         ('6fe35a6b0fa807e5a97475b34f3715dc16a89c00', 54),
     '46416dd5939db442dd82c9905008cb89c79dbe9db08e9b19b03f10cde7fd3fd0':
         ('25a6f2164a81a7e6ae50db3557d20521fecf5124', 57),
+    '234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785':
+        ('25a6f2164a81a7e6ae50db3557d20521fecf5124', 74),
 }
 
 
@@ -76,8 +78,24 @@ def index_originals(root, index_path, accepted_index):
     return index, [refs[key] for key in sorted(refs)], receipts, [working[path] for path in sorted(working)]
 
 
+def _with_fixed74_limits(action):
+    """Guard the effective Namespace from the one authoritative kernel parser."""
+    def bounded(args):
+        if args.accepted_census_sha256 == '234b9cee0f87d937edfa8410c36483ebdc55b5032d84947c5188c3f3b74f8785':
+            kernel.require(args.maximum_working_bytes <= 201326592,
+                           'Fixed74 working allowance exceeds its external192-MiB bound')
+            kernel.require(args.maximum_object_bytes <= 268435456,
+                           'Fixed74 object allowance exceeds unchanged256-MiB bound')
+            kernel.require(args.maximum_embedded_bytes <= 16777216,
+                           'Fixed74 embedded allowance exceeds unchanged16-MiB bound')
+        return action(args)
+    return bounded
+
+
 if __name__ == '__main__':
-    # Only the closed input selector changes. Raw OID, ancestry, path inclusion,
-    # exact object inventory, own-inode and resource checks remain the same code.
+    # Parse exactly once inside unchanged kernel.main(). Both actual operations
+    # receive the same effective Namespace after this closed resource guard.
     kernel.originals = index_originals
+    kernel.build = _with_fixed74_limits(kernel.build)
+    kernel.materialize = _with_fixed74_limits(kernel.materialize)
     kernel.main()

@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--dev-bind",
+    "/dev",
+    "/dev",
+    "--proc",
+    "/proc",
+    "--bind",
+    "/dev/shm",
+    "/dev/shm",
+    "--setenv",
+    "GIT_INDEX_FILE",
+    "/dev/shm/skillpilot-fixed74-argument-et0l77ka/workspace.index.readonly",
+    "--ro-bind",
+    "/dev/shm/skillpilot-fixed74-argument-et0l77ka/workspace.index.readonly",
+    "/dev/shm/skillpilot-fixed74-argument-et0l77ka/workspace.index.readonly",
+    "--chdir",
+    "/home/enpasos/projects/skillpilot",
+    "--",
+    "git",
+    "apply",
+    "--check",
+    "/dev/shm/skillpilot-fixed74-argument-et0l77ka/combined-application.patch"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "hostReadOnly": true
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Resource option interpretation through actual selector process and unchanged kernel parser; existing normal V maturity tests provide the valid authenticated transport case.",
+  "kernelSha256": "307bb0b0ca99c680261afa176eed7ab05e88b108d79261cafb28903ddf231f34",
+  "testSha256": "62faac51e392af219d2ff8800bce58ba86343062494c1fd6b7d97f2eedffd760",
+  "cases": [
+    {
+      "name": "retained-original-wrapper",
+      "command": [
+        "python3",
+        "-B",
+        "/dev/shm/root-fixed74-ci-regression/old-wrapper/test_visualization_qualified_context_capsule_limits.py",
+        "-v"
+      ],
+      "exitCode": 1,
+      "realCliCases": 24,
+      "failedSubcases": 24,
+      "selectorSha256": "f3a0b4cd62982c2ce334e708e7139d127210cbe57b2fea47097dd6a741486a3e",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "506ac8486b892897fb67e0cc4954aed6bf2b8d0e1bac917e3432409ea9fa4d13"
+    },
+    {
+      "name": "corrected-active-wrapper",
+      "command": [
+        "python3",
+        "-B",
+        "/dev/shm/root-fixed74-ci-regression/test_visualization_qualified_context_capsule_limits.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "realCliCases": 24,
+      "failedSubcases": 0,
+      "selectorSha256": "466ea51b476ba60602616c9c807b8281c8c9c516c408061f5299dab4e4f6aed5",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "26be3645a556107a2fd9eb2d210dae59ba9b5bd58f22fcb52a0c1ab8afa31ff9"
+    }
+  ],
+  "recurringCiWiringPreparedButNotYetApplied": true
+}
