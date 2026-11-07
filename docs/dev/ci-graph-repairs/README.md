@@ -9,6 +9,44 @@ Mathematik hat 919 Strukturbefunde, davon 917 G17; Informatik noch 37 G17 und
 sechs unzureichende Prüfungen. Die [vorherige 18:45-Quittung](informatics-bounded26-current-cqr-2026-11-06.json)
 bleibt historisch erhalten.
 
+- [Terminaler Remote-Lauf auf cb128](remote-cb128-workflows-terminal-2026-11-07.json):
+  Docs, Assessment, OAuth und Gemini sowie sechs Hauptjobs einschließlich
+  Backend, Apps und Buchbau bestehen. Die Docs-/Apps-Reparaturen sind damit
+  remote bestätigt. Curriculum scheitert an denselben sieben tatsächlichen
+  Fachfloors; Frontend zusätzlich an 17 Typ-Lintfehlern in drei neuen
+  V-Prüfer-/Testdateien. Spätere lokale Korrekturen brauchen ihren eigenen Lauf.
+- [Vollständiger Originalkontext-Census](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/visualization-five-ledger-original-context-census-2026-11-06/README.md):
+  alle 2.562 Ziele disjunkt erfasst, 16 aktuelle Eingabepins geprüft;
+  Einzelbelege und endliche Reader-/Review-Worklists dauerhaft gesichert.
+  Die 963 passenden Kontexte sind keine nativen Freigaben. Fehlende
+  Attribution und ursprüngliche Zeitgranularität bleiben ausdrücklich offen.
+- [Zwei konkrete Wirtschafts-Reader](visualization-economics-q3-two-family-reader-2026-11-07.md):
+  36 echte Originalketten, 35 Kontrollen und unveränderte frühere Gegenfälle
+  bestehen, ebenso fokussiertes ESLint und TypeScript. Der
+  [Root-Nachlauf](visualization-economics-q3-root-followup-2026-11-07.json)
+  wiederholt die nativen Kontrollen. Die Einbindung in V, Deep-QA und direkten
+  Floorverbrauch läuft getrennt; der Komponentenpass ist keine M7-Freigabe.
+- [Source-A-Lesegrenze](source-identity-node-vm-lifecycle-boundary-2026-11-07.md):
+  35 Tests und 58 native Regressionsläufe bestehen. Die beiden kleinen
+  TypeScriptprogramme enden erfolgreich; ihre vollständige Leseauthentisierung
+  bleibt an einer äußeren Modulsuche gesperrt. Fünf erhaltene Belegfamilien
+  und ihre Originalstände sind gesichert. Der
+  [Root-Abgleich](source-identity-read-component-root-checkpoint-2026-11-07.json)
+  prüft die Inventare und aktuellen Pins; die tatsächliche Preparerintegration
+  und große Kandidaten-QA bleiben offen.
+- [Aktuelle Informatik-875-Reparaturrichtung](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/informatics-875-required-scope-repair-followup-2026-11-07.md):
+  gleiche Bedeutung und alte Ergebnisse erhalten, unbelegte Pflichtrolle
+  korrigieren, eigenständige vollständige Prüfungsnachfolger und erhaltene
+  alte Inhalte wirklich prüfen. Keine Datenanwendung oder Retained-Ausnahme.
+- [Zwei tatsächliche aktuelle Math-Bildreviews](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/README.md):
+  Zahlengerade KEEP, altes Matrixbild REVISE wegen notwendiger Kleinschrift.
+  Eine vereinfachte Matrixfassung hat nach tatsächlichem Prepare-vor-Generation-
+  und privatem Importlauf einen eigenen
+  [aktuellen Gegenreview](https://github.com/enpasos/skillpilot/blob/feat/skill-graph-ci-contracts/qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-v2-independent-review/README.md)
+  mit KEEP nach tatsächlicher Original-/360-/680-Ansicht. Der erste visuell
+  akzeptierte Kandidat ohne vorherigen Helperlauf bleibt samt diesem Ablauf
+  erhalten. Alte Entscheidung und Bilder bleiben erhalten; neue Pixel, QA
+  und Quellen sind nicht angewandt.
 - [Korrigierter Informatik-Routenscope](cqr104-informatics-route-scope-repair-2026-11-06.md):
   CQR-104 prüft alle 48 tatsächlichen Länder-/Kurs-/Dauerprojektionen und
   beanstandet 42 leere Abschlussmengen. Alle elf übrigen Routenprofile bleiben
@@ -22,7 +60,7 @@ bleibt historisch erhalten.
   alle 94 Tests des tatsächlichen Apps-CI-Befehls bestehen lokal. Der Docs-Build
   braucht die erhaltenen Audit-Originale zusätzlich im schlanken Checkout;
   der konkrete MkDocs-Fehler ist damit lokal reproduziert und geschlossen.
-  Die frische Remote-Abnahme dieser Reparaturen steht noch aus.
+  Die spätere Remote-Abnahme auf cb128 besteht für diese beiden Reparaturen.
 - [Terminale Workflows auf 6fe](remote-6fe-workflows-terminal-2026-11-06.json):
   sechs Hauptjobs einschließlich Backend, Frontend und Buchbau sowie Assessment,
   OAuth und Gemini bestehen. Der [Curriculumjob](remote-6fe-curriculum-terminal-2026-11-06.json)

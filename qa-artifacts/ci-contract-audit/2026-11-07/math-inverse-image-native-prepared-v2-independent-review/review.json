@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "OpenAI Codex /root/normative_corpus",
+  "reviewerModel": "Astra Ultra requested; exact serving model identifier not asserted",
+  "reviewedAt": "2026-11-07T01:33:05Z",
+  "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "subject": "mathematik",
+  "decision": "keep",
+  "goalSnapshot": {
+    "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "titleEn": "Determine simple inverse matrices",
+    "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+    "demandLevel": "AB1"
+  },
+  "wholeGoalInput": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/whole-goal.after-native-import.json",
+    "sha256": "e920d8368e463cc0de9cf335ff97cbd2ce2b1d7b7e9a5289a0e662ee3761f422",
+    "bytes": 2472
+  },
+  "sourceContext": {
+    "preparedInputSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "privateImportedSourceRawSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "privateImportedSourceCompressed": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/candidate-source.after-native-import.json.gz",
+      "sha256": "1b2e8185f91ea53a75851faea720c160fb0465e6ef9e8f14a33944e7babe293c",
+      "bytes": 530483
+    },
+    "wholeGoalAndSourceCompared": true,
+    "source967aIsOnlyBeforeImport": true,
+    "exactResourceDiff": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-v2-independent-review/source-resource-diff.json",
+      "sha256": "1d36a54ae31f337457005f3c7c19280fc8682006256ddb40c4f885787d218dab",
+      "bytes": 1340
+    },
+    "allNonResourceGoalFieldsUnchanged": true
+  },
+  "candidate": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/ce198bc9-b014-52ba-814f-25cc3e020668.png",
+    "sha256": "sha256:3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091",
+    "actuallyViewed": true,
+    "format": "PNG",
+    "width": 1677,
+    "height": 938
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Der zweite tatsächlich vorbereitete und importierte Kandidat wurde neu in Originalgröße sowie in echten 360- und 680-Pixel-Browseransichten angesehen. A=((2,1),(1,1)), A^-1=((1,-1),(-1,2)) und I=((1,0),(0,1)) sind korrekt und vollständig lesbar. Die beiden negativen Einträge und der Exponent -1 bleiben auch bei 360 Pixeln erkennbar. Die Produktprobe ergibt die Einheitsmatrix. Ein Beispiel begrenzt die Aussage sichtbar: Es wird weder eine allgemeine Tausch-/Negationsregel ohne Determinantenbedingung noch eine zusätzliche notwendige Fachleistung behauptet. Die Grafik orientiert passend zum unveränderten vollständigen DE/EN-Zieltext und AB1 an Inverse und Produktprobe; sie ersetzt keinen Erwerb oder Leistungsnachweis."
+  },
+  "blockingFindings": [],
+  "views": [
+    {
+      "kind": "native",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/ce198bc9-b014-52ba-814f-25cc3e020668.png",
+      "sha256": "3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091",
+      "bytes": 1457637,
+      "width": 1677,
+      "height": 938,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:32:27Z",
+      "toolCompletedAt": "2026-11-07T01:32:27Z",
+      "renderingOrigin": "original generated PNG"
+    },
+    {
+      "kind": "browser-width-360",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/browser-width-360.png",
+      "sha256": "f2d8abe7c24436ed2d3f94a9ccfb5712bee45e17a54a27a2d378d9919877eb4b",
+      "bytes": 84356,
+      "width": 360,
+      "height": 202,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:32:42Z",
+      "toolCompletedAt": "2026-11-07T01:32:42Z",
+      "renderingOrigin": "Root actual Chromium capture; independently viewed here, not browser-executed by this reviewer"
+    },
+    {
+      "kind": "browser-width-680",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/browser-width-680.png",
+      "sha256": "c05aed3f4093c8015c3db205b1044483ce2956d0aa44a27efb9587935f051f66",
+      "bytes": 252766,
+      "width": 680,
+      "height": 381,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:32:42Z",
+      "toolCompletedAt": "2026-11-07T01:32:42Z",
+      "renderingOrigin": "Root actual Chromium capture; independently viewed here, not browser-executed by this reviewer"
+    }
+  ],
+  "mathematicalChecks": {
+    "displayedA": [
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "displayedInverse": [
+      [
+        1,
+        -1
+      ],
+      [
+        -1,
+        2
+      ]
+    ],
+    "displayedIdentity": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "independentlyComputedProduct": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "entriesAndSignsActuallyViewed": true,
+    "operatorReading": "Der tatsächliche Operator ist ein weiß gefüllter Punkt mit schwarzer Kontur zwischen den Matrizen; er ist nicht schwarz ausgefüllt. Diese Darstellungsweise entspricht dem ebenfalls weiß gefüllten, schwarz konturierten Gleichheitszeichen. Im sichtbaren A-mal-A^-1-gleich-I-Beispiel ist der zentrierte Punkt als Produktoperator lesbar; sein Inneres ist weiß, nicht die blaue Hintergrundfarbe. Das Urteil beruht auf den tatsächlichen Pixeln und behauptet keine wörtliche Erfüllung einer Forderung nach einem schwarzen Punkt.",
+    "noGeneralAlgorithmClaim": true,
+    "noCommutativityClaim": true,
+    "additionalDeterminantOrOtherAssessmentNotRequired": true
+  },
+  "responsiveReadability": {
+    "native": "Alle zwölf Einträge, beide Minuszeichen, Exponent -1, Klammern, Punkt, Gleichheitszeichen und Beispielkennzeichnung tatsächlich gelesen.",
+    "phone360": "Tatsächliche 360x202-Browseransicht selbst angesehen. Die drei großen Matrizen und alle fachlich tragenden Zeichen sind lesbar. Keine kleine Bedingungsfußnote; kein Beschnitt.",
+    "desktop680": "Tatsächliche 680x381-Browseransicht selbst angesehen. Vollständige Darstellung und klar lesbare Produktprobe.",
+    "independentBrowserExecutionClaimed": false
+  },
+  "perspectiveAndAccessibility": {
+    "reason": "Frontal lesbare Tafeln ohne widersprüchliche Perspektive. Zahlen und Vorzeichen sind kontrastreich; Farben tragen keine alleinige mathematische Bedeutung. Das dekorative Gesicht suggeriert keine verkehrte Leserichtung.",
+    "actualImportedAltText": "Didaktische Visualisierung zum Lernziel \"Einfache inverse Matrizen bestimmen\". Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "actualAltTextAssessment": "Der native Import liefert den aktuellen vollständigen Zieltext als generischen Alttext, keine transkribierte Matrixrechnung. Das ist wahrheitsgemäße Zielorientierung; eine vollständige Screenreader-Wiedergabe der Bildrechnung wurde damit nicht nachgewiesen.",
+    "optionalMoreSpecificAltTextDe": "Ein Beispiel zur Probe einer inversen Matrix: Die Matrix mit den Zeilen 2, 1 und 1, 1 wird mit der Matrix mit den Zeilen 1, minus 1 und minus 1, 2 multipliziert. Das Produkt ist die Einheitsmatrix mit Einsen auf der Hauptdiagonale und Nullen daneben.",
+    "altTextChangedByReviewer": false,
+    "screenReaderAcceptanceClaimed": false
+  },
+  "nativePreparationAndImport": {
+    "beforeExecution": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/native-before.execution.json",
+      "sha256": "6bffc697a82899bfcc7e1225b2f2134dfa8d0b6c0f7eac065e1ebafc05e9a8fb",
+      "bytes": 1511
+    },
+    "beforeMetadata": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/native-before.metadata.json",
+      "sha256": "eab4a9ac31b0d43e901993e8c2232268cd62437fa205065cd9d4481d59fa4bc2",
+      "bytes": 922
+    },
+    "beforePrompt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/native-before.prompt.de.md",
+      "sha256": "2eabc3da827a39b6dff99c0698aa624fd3c3547b0f083cfb575dfa32746db8e7",
+      "bytes": 1920
+    },
+    "actualGenerationPrompt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/actual-generation-prompt.txt",
+      "sha256": "f75eaaec6eeb57d786a6e9ab0e8ddad075f8aa3628fd733fec628dde15bca1c0",
+      "bytes": 2564
+    },
+    "importedPrompt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/imported-prompt.de.md",
+      "sha256": "3a3f0f1e597a5d8b44d6529808f2289939769480cc32a4051a5e39be760a9e33",
+      "bytes": 3504
+    },
+    "generationAndImportReceipt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/native-generation-import-receipt.json",
+      "sha256": "9c5d3326d92367872be0ec87d0d601ec8dc7b8a143b015889f33f1343b2e835c",
+      "bytes": 2060
+    },
+    "actualProvider": "OpenAI built-in image_gen (Codex)",
+    "independentEvidenceAndByteCheck": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-v2-independent-review/verification.json",
+      "sha256": "67a51a87d9a1061dd439ff1132cdcda754b3b029800da16e71576e298b61b607",
+      "bytes": 7588
+    },
+    "preparationCompletedAt": "2026-11-07T01:27:24.419399+00:00",
+    "importCompletedAt": "2026-11-07T01:28:52.630281+00:00",
+    "generationOrImportExecutedByThisReviewer": false,
+    "generationReceiptIsApproval": false
+  },
+  "browserEvidence": {
+    "successfulCapture": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/browser-view-execution.json",
+      "sha256": "facda240415769fa21fa43b9cf2ed8209774410467fed53df5f6c2759e74e870",
+      "bytes": 952
+    },
+    "priorFailedAttempt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/browser-first-attempt-failure.json",
+      "sha256": "50e5cf8cef5ceffe4969e1712d13831c25f2a440cacc849f02b86acd239fb894",
+      "bytes": 332
+    },
+    "priorFailureCountsAsViewed": false,
+    "successfulViewsIndependentlyViewed": true
+  },
+  "priorReviews": [
+    {
+      "record": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/review.json",
+        "sha256": "b1a10472d907fcaa279d72c7417855ba2f8fc9051de58c2ecec331f01f941d1d",
+        "bytes": 17088
+      },
+      "priorAssetSha256": "30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75",
+      "decision": "REVISE",
+      "preserved": true,
+      "relation": "Alte kleine notwendige det=1-Fußnote und gedrängte Rechnung bleiben ein echter Befund; neuer Kandidat zeigt stattdessen ein einziges großes Beispiel ohne allgemeine Regel."
+    },
+    {
+      "record": {
+        "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-independent-review/review.json",
+        "sha256": "483c7f1f53a93719c2a51a4325fce74188a310967b8fdecc9aa5e53859f494a6",
+        "bytes": 9112
+      },
+      "priorAssetSha256": "00a254160803ebe8f50ae40932b31185575914fc6f5e0343d1c0ab4c804e917a",
+      "decision": "KEEP",
+      "preserved": true,
+      "relation": "Erstes tatsächliches visuelles Urteil bleibt erhalten; erforderliches prepare vor jener Generierung fehlte. Keine nachträgliche Pipelinefreigabe. Dieses zweite Urteil wurde neu am anderen Pixelhash abgegeben."
+    }
+  ],
+  "boundaries": {
+    "newActualAiContentReview": true,
+    "humanApproval": false,
+    "nativeQualificationReceiptMinted": false,
+    "nativeVPassClaimed": false,
+    "m7OrCiPassClaimed": false,
+    "activeSourceOrAssetOrQaChanged": false,
+    "durableLearnerStateChanged": false,
+    "goalMeaningChanged": false,
+    "oldReviewRewritten": false,
+    "firstCandidateJudgmentTransferred": false
+  },
+  "integrationNote": "Vor jeder nativen Qualifikation sind diese Originalbytes und ihr tatsächlicher neuer Kontext unveränderlich zu sichern und vom jeweiligen geschlossenen Reader ausdrücklich zu validieren. Keine aktive V-Zeile oder Annahmeindexänderung erfolgt in diesem Review."
+}

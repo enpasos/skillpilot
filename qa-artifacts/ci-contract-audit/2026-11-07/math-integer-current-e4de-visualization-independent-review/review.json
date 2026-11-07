@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "OpenAI Codex /root/normative_corpus",
+  "reviewerModel": "Astra Ultra requested; exact serving model identifier not asserted",
+  "reviewedAt": "2026-11-07T01:36:47Z",
+  "goalId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "subject": "mathematik",
+  "decision": "keep",
+  "goalSnapshot": {
+    "id": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+    "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+    "description": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+    "titleEn": "Order integers and represent them on the number line",
+    "descriptionEn": "The learner can represent integers, including zero, on the number line, compare them, and order them with justification in everyday contexts.",
+    "demandLevel": "AB1"
+  },
+  "wholeGoalInput": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-integer-current-e4de-visualization-independent-review/whole-goal.input.json",
+    "sha256": "76f56118afd49f106fd7905181f00182bf99ed3667530529f1fd599406cab611",
+    "bytes": 2329
+  },
+  "sourceContext": {
+    "privateCurrentSourceRawSha256": "e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06",
+    "privateCurrentSourceRawBytes": 3715033,
+    "compressedSourceOriginal": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-native-prepared-candidate-v2/candidate-source.after-native-import.json.gz",
+      "sha256": "1b2e8185f91ea53a75851faea720c160fb0465e6ef9e8f14a33944e7babe293c",
+      "bytes": 530483
+    },
+    "sourceLocationReceipt": {
+      "path": "tmp/root-matrix-native-preparation-location-2026-11-07.json",
+      "sha256": "6de05a44d8dbc18056c5c552704b526ea183b49c15fdf78970bc6355f6c1f4df",
+      "bytes": 332
+    },
+    "actualPrivateSourcePath": "/dev/shm/skillpilot-root-matrix-native-preparation-20261107-iqvq9dwm/candidate.json",
+    "compressedAndPrivateSourceBytesEqual": true,
+    "wholeGoalExtractedAndCompared": true,
+    "wholeGoalUnchangedFromPrepared967aInput": true,
+    "containsParents": [
+      {
+        "id": "8dd5199b-f614-4ebd-8819-b5ff37326524",
+        "title": "Zahlenverständnis und Grundoperationen aufbauen"
+      }
+    ]
+  },
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg",
+    "sha256": "sha256:12ab0a11be17129b5223e1df4c60b7cdd7792d214138411bddacffc022aef550",
+    "actuallyViewed": true,
+    "format": "JPEG",
+    "width": 2752,
+    "height": 1536,
+    "existingAssetNotNewGeneration": true
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Die unveränderten Bildbytes wurden jetzt erneut in Originalgröße und in den vorhandenen 360- und 680-Pixel-Ansichten gegen die ganze Zieldefinition aus e4de3c3e geprüft. Die Zahlengerade zeigt gleichmäßige Einerschritte von -5 bis 5, null an der korrekten Stelle, negative Werte links und positive Werte rechts. Die Markierungen -4, -2 und +1 liegen genau auf den zugehörigen Teilstrichen. Die Vergleichskette -4 < -2 < +1 stimmt; alle Vorzeichen und Vergleichszeichen sind auch bei 360 Pixeln lesbar. Das entspricht der orientierenden Darstellung des vollständigen DE/EN-Ziels für J5/AB1. Es wird keine Rechenoperation oder zusätzliche Voraussetzung eingeführt. Eine konkrete Alltagssituation wird nicht dargestellt; die Grafik ersetzt weder diesen Teil des Erwerbs noch eine entsprechende Prüfleistung."
+  },
+  "blockingFindings": [],
+  "views": [
+    {
+      "kind": "native",
+      "path": "curricula/DE/Gymnasium/visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg",
+      "sha256": "12ab0a11be17129b5223e1df4c60b7cdd7792d214138411bddacffc022aef550",
+      "bytes": 2118219,
+      "width": 2752,
+      "height": 1536,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:36:23Z",
+      "toolCompletedAt": "2026-11-07T01:36:23Z",
+      "renderingOrigin": "existing original JPEG"
+    },
+    {
+      "kind": "width-360",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.width-360.png",
+      "sha256": "feaf498c2f363b57fecd2795f53441dd1e4a1e8ddabea2ea29be006d98c8f05b",
+      "bytes": 86454,
+      "width": 360,
+      "height": 201,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:36:23Z",
+      "toolCompletedAt": "2026-11-07T01:36:23Z",
+      "renderingOrigin": "existing uncropped proportional Pillow LANCZOS display-width derivative; independently viewed again, no browser execution claimed"
+    },
+    {
+      "kind": "width-680",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.width-680.png",
+      "sha256": "273a728cbe1e034735e19b552647cb93168b62845d9dedebec3d8a13a209968a",
+      "bytes": 281871,
+      "width": 680,
+      "height": 380,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:36:23Z",
+      "toolCompletedAt": "2026-11-07T01:36:23Z",
+      "renderingOrigin": "existing uncropped proportional Pillow LANCZOS display-width derivative; independently viewed again, no browser execution claimed"
+    }
+  ],
+  "mathematicalChecks": {
+    "displayedTickLabels": [
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equalUnitSpacingActuallyViewed": true,
+    "zeroPresentAndCorrectlyPositioned": true,
+    "markedCoordinates": [
+      -4,
+      -2,
+      1
+    ],
+    "allThreePointersMatchTicks": true,
+    "displayedComparison": "-4 < -2 < +1",
+    "comparisonTrue": true,
+    "negativeAndPositiveLabelsCorrect": true,
+    "zeroNotCalledPositiveOrNegative": true,
+    "axisArrowsShowContinuation": true,
+    "signsAndComparisonSymbolsActuallyViewed": true,
+    "noAdditionSubtractionOrNewPrerequisiteClaim": true
+  },
+  "responsiveReadability": {
+    "native": "Alle elf Achsenbeschriftungen, drei markierten Zahlen, Pfeilspitzen, null, Vorzeichen und Vergleichszeichen selbst gelesen.",
+    "phone360": "Vorhandene 360x201-Darstellung erneut angesehen. Zahlen, Vorzeichen, Skalenstriche und die Vergleichskette bleiben lesbar; keine notwendige Information ist nur in einer Fußnote vorhanden.",
+    "desktop680": "Vorhandene 680x380-Darstellung erneut angesehen. Achse, Markierungen und vollständige Beschriftung klar, kein Beschnitt.",
+    "existingDerivativesIndependentlyConfirmedAgainstExactJpeg": true,
+    "browserOrHostAcceptanceClaimed": false
+  },
+  "perspectiveAndAccessibility": {
+    "reason": "Flache frontal lesbare Zahlengerade, keine widersprüchliche Perspektive. Die Farbcodierung der drei Markierungen wird durch Zahlwerte und Pfeile ergänzt; Farbe ist nicht alleiniger Informationsträger. Dunkle Skala und Beschriftung haben guten Kontrast zum hellen Hintergrund.",
+    "actualResourceAltText": "Didaktische Visualisierung zum Lernziel \"Ganze Zahlen ordnen und an der Zahlengeraden darstellen\". Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+    "actualAltTextAssessment": "Der vorhandene Alttext benennt das volle aktuelle Lernziel. Er ist korrekt, transkribiert aber nicht die konkrete Beispielkette; eine vollständige Screenreader-Wiedergabe wurde hier nicht nachgewiesen.",
+    "optionalMoreSpecificAltTextDe": "Eine Zahlengerade mit gleichen Einerschritten von minus fünf bis fünf. Pfeile markieren minus vier, minus zwei und plus eins. Von links nach rechts werden die Zahlen größer; darunter steht minus vier kleiner als minus zwei kleiner als plus eins.",
+    "altTextChanged": false,
+    "screenReaderAcceptanceClaimed": false
+  },
+  "existingResourceMetadata": {
+    "type": "goal-visualization",
+    "resourceType": "image",
+    "role": "primary",
+    "skillpilotId": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+    "title": "Visualisierung: Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+    "url": "/assets/goal-visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg",
+    "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+    "description": "Visualisierung zum Lernziel: Ganze Zahlen ordnen und an der Zahlengeraden darstellen.",
+    "altText": "Didaktische Visualisierung zum Lernziel \"Ganze Zahlen ordnen und an der Zahlengeraden darstellen\". Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+    "lang": "de",
+    "license": "AI-generated, SkillPilot-curated",
+    "reviewStatus": "pilot"
+  },
+  "provenanceBoundary": {
+    "newGenerationOrImportPerformed": false,
+    "providerFromExistingResourceMetadata": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+    "existingProviderMetadataIsNotANewGenerationVerification": true,
+    "existingLicenseTextIsProvenanceNotNewLicenseReview": true,
+    "samePublicAsset": {
+      "path": "app/public/assets/goal-visualizations/mathematik/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe/d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe.jpg",
+      "sha256": "12ab0a11be17129b5223e1df4c60b7cdd7792d214138411bddacffc022aef550",
+      "bytes": 2118219
+    },
+    "publicAndCanonicalBytesEqual": true
+  },
+  "priorReview": {
+    "record": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/review.json",
+      "sha256": "b1a10472d907fcaa279d72c7417855ba2f8fc9051de58c2ecec331f01f941d1d",
+      "bytes": 17088
+    },
+    "originalReviewUnchanged": true,
+    "newDecisionIsIndependentActualReinspection": true,
+    "oldTimestampOrDecisionNotTransferred": true
+  },
+  "boundaries": {
+    "newActualAiContentReview": true,
+    "humanApproval": false,
+    "nativeQualificationReceiptMinted": false,
+    "nativeVPassClaimed": false,
+    "m7OrCiPassClaimed": false,
+    "activeSourceOrAssetOrQaChanged": false,
+    "durableLearnerStateChanged": false,
+    "goalMeaningChanged": false,
+    "prerequisiteAppropriatenessApproved": false,
+    "descriptionOrPositiveEvidenceQualificationClaimed": false,
+    "oldReviewRewritten": false
+  },
+  "integrationNote": "Dies ist eine neue tatsächliche KI-Bildprüfung im vorhandenen independent-goal-visualization-candidate-review-Format, keine umetikettierte historische Freigabe. Originalreview, ganzer Goalinput und genaue Bildbytes müssen vor einer getrennten nativen Qualifikation unveränderlich gebunden werden. Keine aktive V-Zeile, kein Annahmeindex und kein allgemeiner neuer Reader werden hier erstellt."
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "kind": "875-bounded-minimal-repair-plan",
+  "status": "analysis-complete-not-applied",
+  "decision": "retain-original-meaning-and-results-unoffered; remove-unjustified-required-scope; do-not-relabel-as-simple-automata",
+  "currentSource": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "sha256": "85411185514af4b2ecf818807f3bd6fe5df17fb5011c5ebf8c4996de1a47817e"
+  },
+  "fullEvidence": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/informatics-875-required-scope-repair-followup-2026-11-07.evidence.json.gz",
+    "sha256": "ee11c7e10a6536ff9f5249d258fd33d0df564a1bc2fb61875282e45f7d7efe25",
+    "rawSha256": "b3cac8d1d4a00cdd883c37da9c7c10111140968daf24dfaf0f87e9dee712863f"
+  },
+  "entryRemovals": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-by-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "e27fb27ee64bc2fefd900efda6951dbe27a7c6fc508d59dde4e98c542c119fa6",
+      "path": "/rootNodes/0/children/2/children/3/children/40",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-he-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "ffb1f0c68e294253fd2d806dd2939d781b89317083406dbc70df7d7d714a07df",
+      "path": "/rootNodes/0/children/2/children/3/children/40",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-mv-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "4c14aeff7619ab3b7c99cb6903abc4c890170a1a368e20e3b4ee2d2a9c71369c",
+      "path": "/rootNodes/0/children/2/children/3/children/40",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-sh-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "1b1792dbe7b06083d80bb246fadff6044eb245e08e34796a707e36750b22b771",
+      "path": "/rootNodes/0/children/2/children/3/children/21",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-st-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "35ee896e37b90a86a9a4ccf431441b388e2676034e2f147b9be4297bdf1944c4",
+      "path": "/rootNodes/0/children/2/children/3/children/11",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/informatik/de-th-gym-informatics-crossstage.view.json",
+      "guardFileSha256": "e806fd4d863eec82cdceb3c8657906310d595d675d86af7dcb68fb60ab518627",
+      "path": "/rootNodes/0/children/2/children/3/children/13",
+      "guardBefore": {
+        "kind": "goalEntry",
+        "goalId": "875cb53c-b48d-5b2b-8cb0-e20f27534f16",
+        "displayLabel": "Zustandsdiagramme vertiefen"
+      },
+      "plannedOperation": "remove from this mandatory view, definition retained"
+    }
+  ],
+  "existingSchema": {
+    "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+    "sha256": "a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+    "anchors": [
+      "/properties/rootNodes",
+      "/$defs/structureNode/properties/children",
+      "/$defs/goalEntryNode",
+      "/$defs/canonicalSubtreeNode",
+      "/$defs/projectionRole"
+    ]
+  },
+  "scopeTotals": {
+    "all": 35,
+    "affected": 10,
+    "unchanged": 25,
+    "advancedTargetRemovals": 7,
+    "oldExamReplacements": 6
+  },
+  "examIdentityBoundary": {
+    "oldExam": "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+    "oldCoverageCount": 41,
+    "newGkCoverageCount": 22,
+    "newLkCoverageCount": 40,
+    "newIdsNotAllocated": true,
+    "oldResultsUnchanged": true,
+    "noAutomaticResultTransfer": true
+  },
+  "currentCqr204UniversalRetainedStructureRecognized": true,
+  "closedRetainedQaOfferingDistinctionStillToImplement": true,
+  "noNewCqr003SupplementException": true,
+  "no875OfficialOrNecessaryGapEvidenceFound": true,
+  "noNew35ScopeProducerClaim": true,
+  "noActiveWrites": true
+}

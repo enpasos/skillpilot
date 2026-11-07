@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-goal-visualization-candidate-review",
+  "reviewAuthority": "ai_candidate",
+  "reviewer": "OpenAI Codex /root/normative_corpus",
+  "reviewedAt": "2026-11-07T01:17:52Z",
+  "reviewerModel": "Astra Ultra requested; exact serving model identifier not asserted",
+  "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+  "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+  "subject": "mathematik",
+  "decision": "keep",
+  "goalSnapshot": {
+    "id": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "title": "Einfache inverse Matrizen bestimmen",
+    "description": "Die lernende Person kann für einfache 2x2-Matrizen oder Diagonalmatrizen, sofern sie invertierbar sind, die Inverse bestimmen und durch Multiplikation mit der Ausgangsmatrix prüfen, ob die Einheitsmatrix entsteht.",
+    "titleEn": "Determine simple inverse matrices",
+    "descriptionEn": "The learner can determine the inverse of simple 2x2 matrices or diagonal matrices, provided they are invertible, and check by multiplication with the original matrix whether the identity matrix is obtained.",
+    "demandLevel": "AB1"
+  },
+  "wholeGoalInput": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/ce198bc9-b014-52ba-814f-25cc3e020668.goal.json",
+    "sha256": "bef5906a79c686ead9d30f264ef2fa4c014bcadaf1819ae4cc40a19aaffacc1d",
+    "fullSourceCandidatePath": "tmp/math-diagram-recheck-preparer-20261106/candidate.json",
+    "fullSourceCandidateSha256": "967a9cf8f27c5ee678777401697ba8b69874dbc889f7cfe753267f7c5a05c318",
+    "exactCurrentCandidateGoalCompared": true
+  },
+  "candidate": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/ce198bc9-b014-52ba-814f-25cc3e020668.candidate.png",
+    "sha256": "sha256:00a254160803ebe8f50ae40932b31185575914fc6f5e0343d1c0ab4c804e917a",
+    "actuallyViewed": true,
+    "format": "PNG",
+    "width": 1677,
+    "height": 938
+  },
+  "scopeFit": {
+    "outcome": "pass",
+    "evidenceDe": "Der neue Kandidat zeigt genau ein korrektes invertierbares 2x2-Beispiel: A=((2,1),(1,1)), A^-1=((1,-1),(-1,2)), A*A^-1=I. Alle zwölf Einträge, die beiden Minuszeichen der Inversen, die Hochstellung -1, der mittige weiße Multiplikationspunkt mit dunkler Kontur und das Gleichheitszeichen wurden in Original-, 360- und 680-px-Ansicht tatsächlich geprüft. Die fachlich tragenden Einträge und Operatoren sind in der Telefonansicht lesbar. Ein Beispiel begrenzt die Aussage sichtbar; es gibt keine Tausch-/Negationsregel und damit keine versteckte det=1-Fußnotenbedingung oder allgemeine falsche Algorithmusbehauptung. Die reduzierte Grafik orientiert passend zum vollständigen DE/EN-Zieltext und AB1 an Inverse und Produktprobe. Sie führt keine zusätzliche Lernzielpflicht ein und ersetzt weder Erwerb noch Assessment."
+  },
+  "blockingFindings": [],
+  "views": [
+    {
+      "kind": "native",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/ce198bc9-b014-52ba-814f-25cc3e020668.candidate.png",
+      "sha256": "00a254160803ebe8f50ae40932b31185575914fc6f5e0343d1c0ab4c804e917a",
+      "width": 1677,
+      "height": 938,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:17:27Z",
+      "toolCompletedAt": "2026-11-07T01:17:27Z",
+      "renderingOrigin": "original generated PNG"
+    },
+    {
+      "kind": "browser-width-360",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/browser-width-360.png",
+      "sha256": "8a86d5c3b3e427a5fe60e7a097a57c97cdd33acfbd22f66592bd6c981aef60ab",
+      "width": 360,
+      "height": 202,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:17:27Z",
+      "toolCompletedAt": "2026-11-07T01:17:27Z",
+      "renderingOrigin": "Root-provided actual Chromium capture; independently viewed here, Chromium was not rerun by this reviewer"
+    },
+    {
+      "kind": "browser-width-680",
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/browser-width-680.png",
+      "sha256": "2fa8db51f1751504c19ab42b9efbdf1e3800cc9ccf5638ebf926d53384e29a75",
+      "width": 680,
+      "height": 381,
+      "actuallyViewed": true,
+      "tool": "view_image(detail=original)",
+      "toolStartedAt": "2026-11-07T01:17:27Z",
+      "toolCompletedAt": "2026-11-07T01:17:27Z",
+      "renderingOrigin": "Root-provided actual Chromium capture; independently viewed here, Chromium was not rerun by this reviewer"
+    }
+  ],
+  "mathematicalChecks": {
+    "displayedA": [
+      [
+        2,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "displayedInverse": [
+      [
+        1,
+        -1
+      ],
+      [
+        -1,
+        2
+      ]
+    ],
+    "displayedIdentity": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "independentlyComputedProduct": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "entriesAndSignsActuallyViewed": true,
+    "operatorReading": "Der helle Punkt ist mittig zwischen den Matrizen mit dunkler Kontrastkontur gezeichnet. Er dient als Multiplikationspunkt; kein Plus-, Dezimal- oder Gleichheitszeichen ersetzt die Multiplikation.",
+    "noGeneralAlgorithmClaim": true,
+    "noCommutativityClaim": true,
+    "noAdditionalDiagonalMatrixOrDeterminantAssessmentRequired": true
+  },
+  "responsiveReadability": {
+    "native": "Alle Matrixeinträge, Operatoren, Titel und Beispiellabel vollständig gelesen. Keine abgeschnittenen Klammern.",
+    "phone360": "Tatsächliche 360x202-Chromiumansicht angesehen. A, A^-1, I sowie alle Einträge/Vorzeichen sind groß genug; Produktpunkt und Gleichheitszeichen klar getrennt. Ein Beispiel und die drei kurzen Feldtitel sind lesbar. Keine Pflichtfußnote vorhanden.",
+    "desktop680": "Tatsächliche 680x381-Chromiumansicht angesehen. Klare vollständige drei Matrizen, kein Beschnitt und kein 448-px-Höhencap nötig.",
+    "independentBrowserExecutionClaimed": false
+  },
+  "perspectiveAndAccessibility": {
+    "reason": "Frontal lesbare Tafeln ohne Benutzer- oder Blickrichtungswiderspruch. Das dekorative Gesicht liest keine verdrehte Schrift. Zahlen und Vorzeichen sind beschriftet und kontrastreich; Weiß/Gelb ist keine alleinige Bedeutungscodierung.",
+    "proposedAltTextDe": "Ein Beispiel zur Probe einer inversen Matrix: Die Matrix mit den Zeilen 2, 1 und 1, 1 wird mit der Matrix mit den Zeilen 1, minus 1 und minus 1, 2 multipliziert. Das Produkt ist die Einheitsmatrix mit Einsen auf der Hauptdiagonale und Nullen daneben.",
+    "altTextApplied": false,
+    "screenReaderAcceptanceClaimed": false
+  },
+  "formatDecision": {
+    "near16By9": true,
+    "reason": "Die neue 1677x938-Komposition löst die tatsächlich dokumentierte Informationsdichte. Keine mechanische Änderung einer ansonsten guten Grafik; alte JPG-Bytes bleiben erhalten."
+  },
+  "priorReview": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-06/math-two-current-visualization-content-review-2026-11-07/review.json",
+    "sha256": "b1a10472d907fcaa279d72c7417855ba2f8fc9051de58c2ecec331f01f941d1d",
+    "goalId": "ce198bc9-b014-52ba-814f-25cc3e020668",
+    "priorDecision": "REVISE",
+    "priorAssetSha256": "30578b5de91511cab5c560e857e15aa25b080835e00d2268f0fd0e9dfff4ae75",
+    "priorFinding": "Notwendige det=1-Grenze der Tausch-/Negationsregel zu klein bei 360 px; gedrängte Produktzwischenrechnung.",
+    "correctionActuallyObserved": "Regel und Fußnotenbedingung vollständig entfernt, doppelte Gegeben-Beschriftung und ausmultiplizierte Zwischenrechnung ebenfalls entfernt; nur das explizite Beispiel mit großer Produktprobe bleibt.",
+    "originalReviewUnchanged": true
+  },
+  "authorGenerationReceipt": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/generation-receipt.json",
+    "sha256": "fa4ea2cba7050c6bc2a817f72b9bc784adca187142f6f36196f92d26e257c912",
+    "prompt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/math-inverse-image-correction-candidate/prompt.txt",
+      "sha256": "667aa9dd3eb3c0e21896fb3eea36cf6546ca81d90e274b1a881b9e7b77bb29f0"
+    },
+    "generationReceiptIsApproval": false,
+    "generationExecutedByThisReviewer": false
+  },
+  "boundaries": {
+    "newActualAiContentReview": true,
+    "humanApproval": false,
+    "nativeQualificationReceiptMinted": false,
+    "nativeVPassClaimed": false,
+    "m7OrCiPassClaimed": false,
+    "sourceOrAssetOrActiveQaChanged": false,
+    "durableLearnerStateChanged": false,
+    "goalMeaningChanged": false,
+    "oldReviewRewritten": false
+  },
+  "integrationNote": "Original bytes and this fresh review must be immutably committed/pinned before qualification. This record truthfully uses the existing independent-goal-visualization-candidate-review shape; compatibility with a later qualification/caller still needs explicit native validation. No active row or acceptance index is created here."
+}

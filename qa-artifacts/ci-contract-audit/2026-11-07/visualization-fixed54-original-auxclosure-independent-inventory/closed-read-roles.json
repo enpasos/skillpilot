@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-actual-read-role-list-for-fixed54",
+  "baseCommit": "9b798d6ef6e715c148e93cae82f6ce7c3f7ec3a4",
+  "historicalRoles": [
+    {
+      "role": "originalReview",
+      "calls": 54,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "originalInput",
+      "calls": 54,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "ownerSource",
+      "calls": 54,
+      "requireCurrentCopy": false
+    },
+    {
+      "role": "reviewedAsset",
+      "calls": 54,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "native-goal-metadata",
+      "calls": 16,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "whole-goal-candidate-array",
+      "calls": 16,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "inspection-native",
+      "calls": 16,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "inspection-360",
+      "calls": 36,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "inspection-680",
+      "calls": 36,
+      "requireCurrentCopy": true
+    },
+    {
+      "role": "prior-REJECT-review",
+      "calls": 8,
+      "requireCurrentCopy": true
+    }
+  ],
+  "profileAuxiliaryRoles": {
+    "matrix-candidate-v1": [],
+    "economics-native-v1": [],
+    "economics-q3-embedded-v1": [
+      "inspection-360",
+      "inspection-680",
+      "prior-REJECT-review only correction-v2"
+    ],
+    "economics-q3-trade-finance-v1": [
+      "native-goal-metadata",
+      "whole-goal-candidate-array",
+      "inspection-native",
+      "inspection-360",
+      "inspection-680",
+      "prior-REJECT-review only correction-v2"
+    ],
+    "diagram-current-b-v1": "zero receipts selected; candidate-row branch excluded from these counts"
+  },
+  "separateLocalQualificationRole": "54 externally selected reference+SHA records, not historical original blobs",
+  "separateCurrentRoles": [
+    "CURRENT_GOAL_SOURCE",
+    "CURRENT_PUBLIC_IMAGE",
+    "CURRENT_CANONICAL_IMAGE"
+  ],
+  "separateSoftwareInput": "code-local qualification.schema.json and frozen reader implementation",
+  "recursiveFollowOfUnlistedFields": false,
+  "noOriginalOwnerSourceAsCurrentGoalInput": true
+}

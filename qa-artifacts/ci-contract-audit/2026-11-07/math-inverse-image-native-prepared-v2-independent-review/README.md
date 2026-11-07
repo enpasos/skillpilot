@@ -1,0 +1,11 @@
+# Zweiter tatsächlich vorbereiteter Matrixkandidat: unabhängiger Bildreview
+
+**KEEP** für die neue PNG-Datei `3d2e99d21ccdc30695657c5778173d6420cce22514cba2f061bddd745d60f091`. Die Originalansicht wurde am 7. November 2026 um 01:32:27 UTC, die neuen tatsächlichen Chromiumansichten bei 360 und 680 Pixeln um 01:32:42 UTC unabhängig angesehen. Das Urteil wurde um 01:33:05 UTC abgegeben.
+
+Alle drei Matrizen, Minuszeichen, der Exponent und die Produktprobe stimmen. In der Telefonansicht bleibt die fachlich notwendige Information lesbar. Der tatsächliche Produktpunkt ist weiß gefüllt mit schwarzer Kontur, passend zum Gleichheitszeichen; eine schwarze Füllung wird nicht behauptet. „Ein Beispiel“ begrenzt die Aussage. Eine allgemeine Inversionsregel oder zusätzliche notwendige Fachleistung wird nicht eingeführt.
+
+Der vollständige DE/EN-Zieltext und AB1 bleiben gleich. Der private native Import änderte genau fünf Ressourcenfelder: URL, Provider, Lizenz, Alttext und Kandidatenstatus. `967a9cf8…` ist der Eingang vor Import; der wirklich nach Import geprüfte private Quellenstand lautet **`e4de3c3e3a294a1751d7ebcd70fa4e63a457a63e51016996055c0e78f4510a06`**. Die ganzen Metadaten und die unveränderten Helperkopien wurden gelesen bzw. bytegenau verglichen. Vorbereitung, Generation, Import und Chromium wurden vom Autor ausgeführt; dieser Reviewer hat deren Belege geprüft und die tatsächlichen Bilder selbst angesehen. Der fehlgeschlagene erste Browserversuch zählt nicht als Ansicht.
+
+Der alte JPG-REVISE-Befund und das visuelle KEEP des ersten neuen Bildes bleiben unverändert. Beim ersten Bild fehlte das vorgeschriebene prepare vor der Generierung; dessen Urteil wird deshalb nicht als vollständige Pipeline ausgegeben. Dieses Urteil betrifft ausschließlich die zweite Pixelvariante nach der belegten neuen Vorbereitung.
+
+[Review](review.json), [unabhängiger Byte- und Kontextabgleich](verification.json) und [vollständiger Ressourcendiff](source-resource-diff.json) binden die tatsächlichen Eingaben. Der native generische Alttext enthält den vollständigen aktuellen Zieltext; eine Screenreader-Wiedergabe der konkreten Matrixrechnung ist damit nicht belegt. Keine aktiven Quellen, Assets, QA-Zeilen oder Lernerdaten geändert; keine menschliche, native V-, M7-, CI- oder Source-A-Freigabe.
