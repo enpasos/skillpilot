@@ -47,6 +47,7 @@ esac
 bash scripts/provision_pinned_fwu_ontology.sh
 
 python3 -B scripts/validate_curriculum_release_model_fixtures.py
+python3 -B scripts/test_prerequisite_reduction_semantic_kind.py
 python3 -B scripts/compile_curriculum_release_model.py \
   --self-test-dependency-emission
 

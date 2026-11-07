@@ -131,6 +131,29 @@ Regeneration ändert ausschließlich diese Zähler und den Zeitstempel; der
 zugehörige Check besteht. Zielmengen, Quellenbegründungen und alle übrigen
 offenen Lücken bleiben gleich.
 
+Die tatsächliche Pflicht-CI kompiliert und validiert außerdem das Release-Modell
+auch ohne vollständigen Paketexport. Beide Pythonwerkzeuge verglichen die
+Semantic-kind-Bindung bisher ausschließlich mit dem aktuellen Rohwert und
+wiesen deshalb dasselbe reduzierte Ziel zurück. Sie starten nun jeweils den
+bestehenden Node-Verifier unabhängig, prüfen vollständigen Source-Snapshot,
+Datei-/Registry-Bytes und sämtliche aktuellen Fingerprints und erlauben erst
+danach den zertifizierten ursprünglichen Wert derselben Vergleichsfamilie.
+Die Fingerprintfunktionen und historischen Ledger bleiben unverändert;
+kompilierte Inhalte entstehen weiterhin aus dem aktuellen reduzierten Dokument.
+Der vorhandene Conformance-Bericht weist den Nachweis aus und wird vom
+unabhängigen Validator vollständig rekonstruiert. Source-freie Consumer binden
+diesen Bericht über das Manifest und benötigen dafür weder Node noch Repository.
+
+Der aktuelle normalisierte Modell-Digest ändert sich durch die Kantenentfernung.
+Deshalb wird die aktive Redistribution-Bindung mit dem vorhandenen Generator
+ausdrücklich von `e8ad1ec76513cac8248234798ea10e612db11fb58785ad9723b49b77ca80b97a`
+auf `fb51e95c0113339cf0252653ee91f0258bd56f80893d85fe6f45fb7dc775e602`
+fortgeschrieben. Der geprüfte Ledgerdelta besteht ausschließlich aus
+`/contentDigest`; alle Entscheidungen und Fingerprints, 839 offene Prüfungen
+und `publicationReady: false` bleiben gleich. Build-Inputs, Ressourcenindex,
+Source-Verification-Ledger und historische Paketartefakte bleiben unverändert.
+Diese technische Pflege erklärt keine neue fachliche oder menschliche Freigabe.
+
 Der zuvor belegte technische Fehler auf main war der Abbruch von
 Voraussetzungspfaden an gemeisterten oder außerhalb liegenden Zwischenknoten.
 Die notwendige Transitivitätskorrektur aus `b8eef5b967` wurde mit PR #87 im

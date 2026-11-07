@@ -5,8 +5,8 @@ The validator intentionally does not import the release-model compiler.  It
 reconstructs the expected Mathematik pilot from the trusted build profile and
 source files, validates every closed JSON schema, recomputes semantic and
 binary digests, proves the hard-reference fixed point, and checks the complete
-output inventory.  Small in-memory adversarial cases exercise the fail-closed
-checks without copying the roughly 1.7 GiB visualization corpus.
+output inventory. Small adversarial cases, including reversible report mutations,
+exercise the fail-closed checks without copying the roughly 1.7 GiB visualization corpus.
 """
 
 from __future__ import annotations
@@ -32,6 +32,10 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 from jsonschema import Draft202012Validator, FormatChecker
 import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
+from prerequisite_reduction_semantic_kind import (
+    PrerequisiteReductionBindingError,
+    load_verified_semantic_kind_bindings,
+)
 
 
 sys.dont_write_bytecode = True
@@ -3423,12 +3427,24 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         "sourceFingerprint"
     ]
     allowed_semantic_kinds = set(context.ontology_profile["semanticKinds"])
+    current_fingerprints = {
+        goal_id: source_fingerprint(goal, source_contract)
+        for goal_id, goal in source_goal_by_id.items()
+    }
+    try:
+        reduction_bindings = load_verified_semantic_kind_bindings(
+            REPO_ROOT, source_path, source_landscape, current_fingerprints,
+        )
+    except PrerequisiteReductionBindingError as error:
+        raise ValidationError(str(error)) from error
     for goal in goals:
         goal_id = goal["id"]
         decision = decisions_by_goal[goal_id]
         require(
-            decision.get("sourceFingerprint")
-            == source_fingerprint(source_goal_by_id[goal_id], source_contract),
+            decision.get("sourceFingerprint") in (
+                current_fingerprints[goal_id],
+                reduction_bindings.baseline_fingerprints[goal_id] if reduction_bindings else current_fingerprints[goal_id],
+            ),
             f"Stale semantic-kind decision for goal {goal_id}",
         )
         semantic_kind = decision.get("semanticKind")
@@ -3798,6 +3814,7 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
 
     return {
         "sourceLandscape": source_landscape,
+        "prerequisiteReductionProof": dict(reduction_bindings.provenance) if reduction_bindings else None,
         "sourceGoalById": source_goal_by_id,
         "landscape": compiled_landscape,
         "landscapePath": landscape_output,
@@ -4781,6 +4798,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
         "readyStatus": "conformance-model-only-not-a-package",
         "passed": True,
     }
+    if model["prerequisiteReductionProof"] is not None:
+        conformance["prerequisiteReductionProof"] = model["prerequisiteReductionProof"]
 
     model.update(
         {
@@ -6517,7 +6536,36 @@ def run_adversarial_self_tests(
             incomplete_catalog, model["runtimeCatalog"], "adversarial runtime catalog"
         ),
     )
-    require(len(passed) == 49, f"Expected 49 adversarial cases, got {len(passed)}")
+    expected_case_count = 49
+    if model.get("prerequisiteReductionProof") is not None:
+        # Exercise the actual artifact comparison against the independently
+        # reconstructed model, then restore the exact validated output bytes.
+        report_path = "metadata/release-model-conformance.json"
+        report_file = safe_join(model["releaseRoot"], report_path)
+        original_bytes = report_file.read_bytes()
+        for mutation in ("missing", "changed"):
+            changed = copy.deepcopy(documents_by_path[report_path])
+            if mutation == "missing":
+                changed.pop("prerequisiteReductionProof")
+            else:
+                changed["prerequisiteReductionProof"]["registryDigest"] = ZERO_DIGEST
+            try:
+                report_file.write_bytes(pretty_json_bytes(changed))
+                try:
+                    validate_output_files(context, model)
+                except ValidationError as error:
+                    require(report_path in str(error) and "prerequisiteReductionProof" in str(error)
+                            and "trusted reconstruction" in str(error),
+                            f"Tampered conformance proof hit an unexpected guard: {error}")
+                    passed.append(f"conformance-proof-{mutation}")
+                else:
+                    raise ValidationError(f"Tampered conformance proof was accepted: {mutation}")
+            finally:
+                report_file.write_bytes(original_bytes)
+        require(report_file.read_bytes() == original_bytes, "Conformance proof test changed validated output bytes")
+        expected_case_count += 2
+    require(len(passed) == expected_case_count,
+            f"Expected {expected_case_count} adversarial cases, got {len(passed)}")
     return passed
 
 
@@ -6535,7 +6583,7 @@ def validate_release_model(
     adversarial_cases = (
         run_adversarial_self_tests(context, model, documents) if run_self_tests else []
     )
-    return {
+    summary = {
         "releaseRoot": str(release_root.relative_to(REPO_ROOT)).replace("\\", "/"),
         "releaseId": model["releaseId"],
         "contentDigest": model["contentDigest"],
@@ -6551,6 +6599,9 @@ def validate_release_model(
         "adversarialCases": adversarial_cases,
         "passed": True,
     }
+    if model["prerequisiteReductionProof"] is not None:
+        summary["prerequisiteReductionProof"] = model["prerequisiteReductionProof"]
+    return summary
 
 
 def parse_args(argv: Sequence[str]) -> argparse.Namespace:
