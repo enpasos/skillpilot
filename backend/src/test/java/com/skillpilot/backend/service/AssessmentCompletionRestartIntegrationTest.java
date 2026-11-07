@@ -58,11 +58,13 @@ import org.springframework.web.server.ResponseStatusException;
 @EnabledIfEnvironmentVariable(named = "SKILLPILOT_TEST_POSTGRES_URL", matches = "jdbc:postgresql://.+")
 class AssessmentCompletionRestartIntegrationTest {
     private static final String PROFILE = "automatic:personal-curriculum";
+    private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
     private static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     private static final String CHOOSE = "choose_skillpilot_completion_route";
     private static final Path CANONICAL = Path.of("DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
+    private static final Path HE_LK_VIEW = Path.of("DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json");
     @TempDir Path temporary;
     private final ObjectMapper files = new ObjectMapper();
     private final Map<Path, String> sourceHashes = new LinkedHashMap<>();
@@ -181,10 +183,9 @@ class AssessmentCompletionRestartIntegrationTest {
                 String freshSession = b.sessions().createFirstPartyLaunch(learnerId,
                         new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
                 b.confirm(freshSession);
-                // This isolated canonical curriculum deliberately has no composition
-                // views. A named subsection is not required for its automatic scope.
-                // Use an actual fresh published choice to prove the new session can
-                // navigate, while retaining the already passed assessment unchanged.
+                // The existing HE/LK composition view resolves the explicit stage
+                // and course scope; no named subsection is needed. Use a fresh
+                // published choice while retaining the passed assessment unchanged.
                 var overview = b.service().getCoachLearnerState(learnerId).levelCompletion();
                 assertThat(overview.profileId()).isEqualTo(PROFILE);
                 assertThat(overview.masteredAssessmentCount()).isEqualTo(1);
@@ -242,7 +243,7 @@ class AssessmentCompletionRestartIntegrationTest {
     private Path copyRequiredRepositoryInputs() throws Exception {
         Path sourceRoot = Path.of("../curricula").toAbsolutePath().normalize();
         Path targetRoot = temporary.resolve("curricula");
-        List<Path> inputs = new ArrayList<>(List.of(CANONICAL));
+        List<Path> inputs = new ArrayList<>(List.of(CANONICAL, HE_LK_VIEW));
         for (var goal : files.readTree(Files.readAllBytes(sourceRoot.resolve(CANONICAL))).path("goals")) {
             String source = goal.path("extendedData").path("vocabularySource").asText();
             if (!source.isBlank()) inputs.add(Path.of("DE/Gymnasium/memory-decks").resolve(Path.of(source).getFileName()));
@@ -320,8 +321,13 @@ class AssessmentCompletionRestartIntegrationTest {
             // Normal focus mode deliberately offers the unmastered preparation goal after the
             // assessment; strict global prerequisites would correctly suppress that action.
             learner.setAutoPilot(false); learner.setStrictMode(false);
-            learner.setPersonalCurriculum(mapper().writeValueAsString(Map.of(MATH, Map.of("selected", true, "filterId", "GK+LK"))));
+            learner.setPersonalCurriculum(mapper().writeValueAsString(Map.of(
+                    ROOT, Map.of("selected", true, "filterId", "DE-HE", "stage", "CrossStage"),
+                    MATH, Map.of("selected", true, "filterId", "LK", "stage", "CrossStage"))));
             learners().saveAndFlush(learner); focus().saveAndFlush(new PlannedGoal(learner, PREPARATION));
+            var plan = service().getCoachPersonalizationPlan(id);
+            assertThat(plan.valid()).isTrue();
+            assertThat(plan.required()).isFalse();
             service().chooseLevelCompletion(id, new LevelCompletionActionRequest("selectProfile", PROFILE, null, null, version(id)));
         }
         String launchDirect(String id) {
