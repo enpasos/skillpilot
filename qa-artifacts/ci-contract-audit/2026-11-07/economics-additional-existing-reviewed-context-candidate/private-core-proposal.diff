@@ -1,0 +1,59 @@
+--- active/goalVisualizationReviewedContext.ts
++++ PRIVATE/goalVisualizationReviewedContext.private.ts
+@@ -3,11 +3,13 @@
+ import { readFileSync, realpathSync } from 'node:fs'
+ import { dirname, isAbsolute, relative, resolve } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+-import Ajv2020 from 'ajv/dist/2020.js'
+-import addFormats from 'ajv-formats'
+-import { normalizeGoalVisualizationSubject } from '../../scripts/goal_visualization_scope.mjs'
+-import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from './lib/authenticatedGitEvidence'
+-import { readEconomicsQ3Context } from './lib/goalVisualizationEconomicsQ3Contexts'
++import Ajv2020 from '/home/enpasos/projects/skillpilot/app/node_modules/ajv/dist/2020.js'
++import addFormats from '/home/enpasos/projects/skillpilot/app/node_modules/ajv-formats/dist/index.js'
++import { normalizeGoalVisualizationSubject } from '/home/enpasos/projects/skillpilot/scripts/goal_visualization_scope.mjs'
++import { createAuthenticatedGitEvidenceReader, validateGitEvidencePath } from '/home/enpasos/projects/skillpilot/app/scripts/lib/authenticatedGitEvidence'
++import { readEconomicsQ3Context } from './goalVisualizationEconomicsQ3Contexts.private'
++
++import { readEconomicsQ2MonetarySocialContext } from './economicsQ2MonetarySocialContext.private'
+ 
+ export interface VisualizationReviewArtifact { path: string; gitCommit: string; sha256: string }
+ export interface VisualizationReviewedContext {
+@@ -21,7 +23,7 @@
+ export interface VisualizationContextQualification {
+   schemaVersion: 1; kind: 'visualization-reviewed-context-qualification'
+   normalization: 'skillpilot-visualization-display-whitespace-v1'
+-  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1'
++  reviewProfile: 'matrix-candidate-v1' | 'economics-native-v1' | 'diagram-current-b-v1' | 'economics-q3-embedded-v1' | 'economics-q3-trade-finance-v1' | 'economics-q2-monetary-social-embedded-v1'
+   context: VisualizationReviewedContext
+   originalReview: VisualizationReviewArtifact; originalInput: VisualizationReviewArtifact
+   ownerSource: VisualizationReviewArtifact; reviewedAsset: VisualizationReviewArtifact
+@@ -38,8 +40,8 @@
+   | { ok: false; status: 'missing' | 'invalid' | 'stale'; issues: string[] }
+ 
+ const capabilities = new WeakSet<object>()
+-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+-const schema = JSON.parse(readFileSync(resolve(repoRoot, 'contracts/goal-visualization-context/v1/qualification.schema.json'), 'utf8'))
++const repoRoot = '/home/enpasos/projects/skillpilot'
++const schema = JSON.parse(readFileSync(new URL('./qualification.private.schema.json', import.meta.url), 'utf8'))
+ const ajv = new Ajv2020({ strict: true, allErrors: true })
+ addFormats(ajv)
+ const validateSchema = ajv.compile(schema)
+@@ -97,6 +99,8 @@
+ // These versioned readers describe exact existing canonical review formats.
+ // A freely selected later source snapshot cannot grant a different namespace.
+ const reviewOwners = {
++  'economics-q2-monetary-social-embedded-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
++    sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json' },
+   'matrix-candidate-v1': { landscapeId: '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced', subject: 'mathematik',
+     sourcePath: 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json' },
+   'economics-native-v1': { landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901', subject: 'wirtschaftswissenschaften',
+@@ -205,6 +209,8 @@
+           title: suppliedString(input.title), description: suppliedString(input.description), assetSha256: 'sha256:' + sha(viewed.sha256) }
+         decision = review.decision; reviewedAt = review.actualCompletedAt; reviewer = reviewActor.agentIdentity
+         reason = review.actualGoalSpecificSubjectFormatAccessibilityAndPerspectiveReason; assetPath = viewed.path
++      } else if (receipt.reviewProfile === 'economics-q2-monetary-social-embedded-v1') {
++        ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readEconomicsQ2MonetarySocialContext(receipt, review, assetRaw, artifact, parseVisualizationReviewJson))
+       } else if (receipt.reviewProfile === 'economics-q3-embedded-v1' || receipt.reviewProfile === 'economics-q3-trade-finance-v1') {
+         ;({ native, decision, reviewedAt, reviewer, reason, assetPath } = readEconomicsQ3Context(receipt, review, assetRaw, artifact, parseVisualizationReviewJson))
+       } else {

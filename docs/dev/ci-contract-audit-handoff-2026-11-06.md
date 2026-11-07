@@ -22,12 +22,34 @@ Die [Sicherung mit Reviewnotizen](../archive/learning-units/2026-11-06-s0-freeze
 erklärt deren Umfang und Grenzen. Der getrennte
 [Draft-PR #84](https://github.com/enpasos/skillpilot/pull/84) ist angelegt.
 
-**Zwei Vertragsstände unterscheiden:** Der neue CI-Branch hat die Normtexte
-von main. Die vorbereitete Anerkennungsänderung des Einheitenbranchs vom
-6. November ist zusätzliches Zielmaterial, keine bereits auf main umgesetzte
-Funktion. Der Audit muss beide Stände ausdrücklich kennzeichnen. Die neue
-Prüfungsanerkennung, Einheitenruntime oder ein ganzer Einheitenkatalog werden
-nicht als Nebenwirkung einer Testkorrektur implementiert.
+**Zwei Vertragsstände unterscheiden:** Die globale Anerkennung und die
+vollständige Voraussetzungenauflösung vom 4. November stehen bereits in den
+Normtexten der Main-Basis `0ce5a8d`; ihre tatsächliche Umsetzung ist zu prüfen.
+Die zusätzlichen Ownership-/Coverage-Regeln des eingefrorenen Einheitenstands
+vom 6. November sind getrenntes Zielmaterial. Ein Normtext ist kein Nachweis
+einer schon funktionierenden Runtime. Zusätzliche PR83-Anerkennungsverträge,
+Einheitenruntime oder ein ganzer Einheitenkatalog werden nicht als Nebenwirkung
+einer Testkorrektur implementiert.
+
+## Aktueller Zwischenstand vom 7. November
+
+Der regulär neu erzeugte Bericht vom `2026-11-07T04:18:33.234Z` enthält die
+[drei angewandten Mathematikreparaturen](ci-graph-repairs/math-three-reviewed-repairs-application-2026-11-07.md).
+Der normale Graphprüfer bestätigt 919 → 916 Befunde ohne neue Befunde.
+Beschreibungen, Aufgabenbelege, Atomicity und Kartenreview bestehen bei allen
+807 Mathematikzielen. Die feste Bildkontextmenge umfasst nun 57 von insgesamt
+2.483 Zielen der fünf M7-Fächer; 2.426 Nachweise bleiben offen.
+
+Deutsch, Geschichte und Latein sind M6. Die übrigen sieben geschützten Fächer
+sind weiterhin M0; der direkte Floorcheck weist alle sieben Verletzungen nach.
+Die Policy und ihre Untergrenzen sind unverändert. Der Remote-Lauf auf
+`0b0f4637` ist abgeschlossen: sieben Hauptjobs bestehen, Curriculum scheitert
+am Floorcheck. Er enthält die anschließende Mathematikanwendung noch nicht.
+
+Der [kalte Informatik-Q2-Review](ci-graph-repairs/informatics-q2-independent-scope-material-review-2026-11-07.md)
+trennt den technisch beobachteten 22er-Pool von amtlich belegtem oder fachlich
+notwendigem Pflichtumfang. Er findet konkrete Aufgaben- und Scopefehler; der
+Entwurf bleibt ohne Anwendung. Das Einheiten-Goal und PR #83 bleiben eingefroren.
 
 ## Verwendbare Ergebnisse
 
@@ -379,9 +401,14 @@ geprüft; Fälligkeit entzieht keine Verifikation oder Mastery.
    landschaftslokal; die separaten strengen CQR-Checks besitzen ihren eigenen
    vollständigen Scope. Bestehende Topologiekonflikte zwischen Sprachdateien
    werden durch diesen reinen Identitätsindex nicht als konsistent freigegeben.
-3. Ein Test kann aktiv die alte Semantik absichern. Die vorbereitete neue
-   globale Anerkennung und vollständige transitive Fokusauswertung sind
-   dadurch nicht bereits nachgewiesen.
+3. Ein Test kann aktiv die alte Semantik absichern. Die Main-Basis `0ce5a8d`
+   schneidet äußere Fokusträger noch vor ihrer transitiven Kette ab. Der
+   CI-Branch enthält dafür die getrennte Reparatur `b8eef5b967` und ihren
+   [begrenzten lokalen Nachweis](ci-graph-repairs/runtime-transitive-demand-local-verification-2026-11-06.json).
+   Globale Anerkennung und vollständige Voraussetzungenauflösung sind schon
+   Main-Pflichten vom 4. November; zusätzliche PR83-Coverage-Regeln bleiben
+   davon getrennt. Der einzelne Reparaturbeleg beweist weder sämtliche
+   Anerkennungsregeln noch alle konkreten Fach-/Fokusscopes.
 4. Der Product Owner hat den Kartenzielvertrag am **6. November 2026**
    klargestellt: Die Karten gehören zum Lernziel und werden mit Wiederholungen
    gelernt; die bestandene Abschlussprüfung liefert dessen Masterednachweis.

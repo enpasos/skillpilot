@@ -1,0 +1,19 @@
+{
+  "purpose": "new-draft-identities-not-found-in-any-current-curricula-json",
+  "argv": [
+    "rg",
+    "-n",
+    "--glob",
+    "*.json",
+    "--fixed-strings",
+    "-e",
+    "a9ab1716-8d3d-58bc-ad8e-8942b1d749be",
+    "-e",
+    "6242a7a5-0481-5e06-b10b-ff32bf9590ec",
+    "curricula"
+  ],
+  "exitCode": 1,
+  "matches": 0,
+  "elapsedSeconds": 9.676387852996413,
+  "activeIdAllocationClaimed": false
+}

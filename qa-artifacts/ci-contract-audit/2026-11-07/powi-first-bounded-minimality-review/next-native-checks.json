@@ -1,0 +1,80 @@
+{
+  "status": "required-next-native-checks-not-executed-here",
+  "nativeCodeAnchors": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java",
+      "symbols": [
+        "normalizePrerequisites",
+        "PrerequisiteTopology.transitivePrerequisites",
+        "PrerequisiteTopology.validateContext"
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "symbols": [
+        "frontierPrerequisites",
+        "areFrontierPrerequisitesMastered",
+        "getRequiredOrientationGoals"
+      ]
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java",
+      "symbols": [
+        "load"
+      ]
+    }
+  ],
+  "norm": [
+    "graph-definition §7.3: remove authored origin and reinherit Goal-node effective relation for G17",
+    "graph-definition §6.4 and §11: normalize atomic targets then compute full transitive demand before restricting focus endpoints; neither mastery nor outside-focus intermediate cuts traversal"
+  ],
+  "formalConsequence": "For any fixed target/focus set F, the proved identical complete atomic transitive relation has the same intersection with F×F. This is a mathematical consequence, not an executed native service comparison. Actual target selection, qualified resolution, inherited-parent discovery, direct-reference validity and other service guards must also stay identical.",
+  "tests": [
+    {
+      "id": "P-NATIVE-01",
+      "case": "Actual BY canonical fallback, same catalog and no authored BY view; actual owner IDs resolved through existing resolver including incoming foreign Gymnasium root. Compare all four native prerequisite sets before/after."
+    },
+    {
+      "id": "P-NATIVE-02",
+      "case": "Use actual native focus containing author022c and Intro but excluding carrier041b/a2bd. With Intro unmastered, the full transitive prerequisite still blocks; normal traversal must not cut at the outside-focus carrier."
+    },
+    {
+      "id": "P-NATIVE-03",
+      "case": "Same focus and carrier041b mastered, Intro unmastered: demand remains blocking; adding Intro mastery satisfies this particular requirement only, never writes another goal."
+    },
+    {
+      "id": "P-NATIVE-04",
+      "case": "Author-only focus excludes Intro: normal mode filters that outside endpoint, strict mode still demands it. Compare before/after with identical valid Level2 targets."
+    },
+    {
+      "id": "P-NATIVE-05",
+      "case": "Actual28 views and single/multiple focus roots through existing resolver. Explicitly preserve missing prerequisite041b in the measured HE-CrossStage scope as a configuration failure, not a new passing frontier. Do not auto-infer prerequisiteOnly roles."
+    },
+    {
+      "id": "P-NATIVE-06",
+      "case": "Orientation priority/list, focus widening targets, cluster satisfaction and canonical/BY course+duration fallback are unchanged. Existing goal/card/mastery state remains untouched."
+    },
+    {
+      "id": "P-NEG-01",
+      "case": "Delete a2bd→Intro after the four removals: both complete closure comparisons must fail. Executed by verify_proposal.py."
+    },
+    {
+      "id": "P-NEG-02",
+      "case": "Delete retained041b→a2bd: both complete closure comparisons must fail. Executed by verify_proposal.py."
+    },
+    {
+      "id": "P-NEG-03",
+      "case": "Alter the exact old requires guard: proposal verifier rejects. Executed by verify_proposal.py."
+    },
+    {
+      "id": "P-NEG-04",
+      "case": "Mutate wrong qualified owner/unknown support in a private actual resolver fixture: existing fail-closed result remains; no global UUID/owner fallback invented."
+    }
+  ],
+  "applicationOrder": [
+    "Independent peer of these exact four fachlich supported cases; fifth stays held.",
+    "Run above existing native resolver/service comparisons without new scope implementation.",
+    "Recheck all21source, fourwholeGoal/array guards and current codepins; only four exact requires replacements may be applied by separately authorized owner.",
+    "Run actual strict/Composer/applicability/A/M/routes and normal CQR/floors after application; retain remaining477UUID/122G17 findings, no floor weakening."
+  ]
+}

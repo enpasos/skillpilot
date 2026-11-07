@@ -1,0 +1,116 @@
+{
+  "maxPoints": 110,
+  "passingPoints": 110,
+  "steps": [
+    {
+      "id": "R01",
+      "points": 5,
+      "description": "A01/S01: Entitäten/Identitäten; Buchung/Status/M:N; Team-Kurs-Beteiligungen; Raum-Optionalität; Kontakt-Optionalität und Abgrenzung der Kapazitätsbedingung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R02",
+      "points": 5,
+      "description": "A02/S02: Entitäten zu Tabellen; korrekte PKs; M:N-Tabelle mit zusammengesetztem PK; FK-Richtungen; Optionalität/NULL/Kontaktbegründung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R03",
+      "points": 5,
+      "description": "A03/S03: drei konkrete Anomalien; 1NF/Schlüssel/FDs; 2NF-Zerlegung; 3NF-Zerlegung; verlustfreie Schlüsselverknüpfung begründet. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R04",
+      "points": 5,
+      "description": "A04/S04: Projektion; beide Joins; alle drei Selektionen; beide Sortierschlüssel; alle vier Zeilen in richtiger Folge. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R05",
+      "points": 5,
+      "description": "A05/S05: Gruppierung/aktiver Joinfilter; COUNT des Buchungsschlüssels; Umsatzaggregation; alle fünf Ergebniszeilen; HAVING/IDs/NULL-Begründung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R06",
+      "points": 5,
+      "description": "A06/S06: Unterabfrage/Mittelwert; äußeres Ergebnis; DML-Wirkung; DDL/Default; DCL-Reichweite und Klassifikation. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R07",
+      "points": 5,
+      "description": "A07/S07: benutzbares beschriftetes GET; Namen/page1; tatsächliche URL; POST-Ziel/kid/CSRF; Methoden-/Sitzungsbegründung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R08",
+      "points": 5,
+      "description": "A08/S08: Verbindungsaufbau/Laufzeit; SELECT-Bedingung; Parametertupel; LIMIT/OFFSET/Sortierung; Iteration und konkrete Zeilen. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R09",
+      "points": 5,
+      "description": "A09/S09: Wiederzuordenbarkeit; Selbstbestimmung; getrennte Zwecke/Grundlagen; zwei konkrete Prinzipienanwendungen; Information/Wahlfreiheit. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R10",
+      "points": 5,
+      "description": "A10/S10: drei Sicherheitsziele mit Fallbezug; differenzierte Maßnahmen; Zuständigkeiten; überprüfbare organisatorische Kontrollen; konkretes Restrisiko. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R11",
+      "points": 5,
+      "description": "A11/S11: Selektion/Ergebnis; Projektion/Menge; Produktoperator; alle sechs Produktpaare; Join und konkrete vier Paare. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R12",
+      "points": 5,
+      "description": "A12/S12: vollständiger eigener Term; drei Selektionen; beide SQL-Joins; DISTINCT/Operatorentsprechung; konkrete Ergebnismenge. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R13",
+      "points": 5,
+      "description": "A13/S13: Kurs-Terminkardinalität; Teilnahmebeteiligungen/Schlüssel; Leitungs-/Doppelrolle; konkretes Gegenbeispiel; präzise Buchungsbedingung und Grenze bloßer Kardinalitäten. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R14",
+      "points": 5,
+      "description": "A14/S14: ID-Schlüsselgrenze; konkreter Widerspruch; Eindeutigkeits-/FK-/Werteconstraints; Teamredundanz/Zerlegung; bewusste Datenklärung vor Migration. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R15",
+      "points": 5,
+      "description": "A15/S15: DDL/PK/FK; INSERT/UPDATE; gezieltes DELETE/Endzustand; Sicht mit genau öffentlichen Spalten; Rollenprivilegien/REVOKE ohne Mehrrechte. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R16",
+      "points": 5,
+      "description": "A16/S16: Werte-/Mehrfach-/Bereichsvalidierung; konkrete Fehlercodes; SQL-Wertbindung; Session-/CSRF-Trennung; Grenzen von POST/Clientkontrollen. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R17",
+      "points": 5,
+      "description": "A17/S17: echte Tabelleniteration; kontextsichere Kodierung; richtige zwei Seiten; Links mit behaltenem Filter; leere Seite/Seitenberechnung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R18",
+      "points": 5,
+      "description": "A18/S18: gültige veränderte Konfiguration; konkrete Vorher-/Nachherwerte; drei Risikobegründungen; Komfortabwägung; Analyse-/Buchungszweck getrennt. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R19",
+      "points": 5,
+      "description": "A19/S19: A und die Kassel-Bedingung; alle B-Paare/Statusselektion; innerer Join C mit vier Ergebnissen; vollständige schrittweise SQL-Abbildung; D mit Reihenfolge und Operatorentsprechung. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R20",
+      "points": 5,
+      "description": "A20/S20: begründete relationale Buchungswahl; Dokumentstruktur; Wide-Column-Einordnung; arbeitslastbezogene Grenzen; begründete Zurückweisung pauschaler Größen-/NoSQL-Garantien. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R21",
+      "points": 5,
+      "description": "A21/S21: vollständige P1-Mapausgaben; vollständige P2-Mapausgaben; Shuffle-Gruppen; Reduce-Werte; Parallel-/Aufteilungsbegründung am Fall. Je erfüllte Teilleistung 1 Punkt."
+    },
+    {
+      "id": "R22",
+      "points": 5,
+      "description": "A22/S22: Erlös/abgegrenzter Überschuss; beide Rankings; wirtschaftlicher Nutzen/Alternative; konkrete Datenschutz-/Filterwirkung; begründetes Urteil mit Evidenzgrenze. Je erfüllte Teilleistung 1 Punkt."
+    }
+  ]
+}

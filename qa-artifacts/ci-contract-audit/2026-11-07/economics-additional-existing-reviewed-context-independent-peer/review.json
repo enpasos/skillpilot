@@ -1,0 +1,158 @@
+{
+  "kind": "independent-technical-and-semantic-peer-review-of-private-closed-profile",
+  "reviewStartedBeforeFirstInputReadUtc": "2026-11-07T04:20:48Z",
+  "completedUtc": "2026-11-07T04:28:26.069154+00:00",
+  "modelConfigurationFromAssignment": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra"
+  },
+  "runtimeModelIndependentlyVerifiable": false,
+  "seed": null,
+  "backendParameters": null,
+  "verdict": "Keine blockierenden technischen oder semantischen Fehler im konkret gepinnten privaten 17er-Profil gefunden. Die geschlossene Fortgeltungsprüfung ist für die 17 vorhandenen historischen Bildkontexte innerhalb ihrer ausdrücklich attestierten Sprach-/Demandgrenzen belastbar. Aktivierung/Authorityintegration und normale CQR-Gesamtprüfung bleiben separat offen.",
+  "newImageSubjectReviews": 0,
+  "newHumanApprovals": 0,
+  "activeNewQualifications": 0,
+  "activeAuthorityContextCount": 57,
+  "candidateContextCount": 17,
+  "duplicateCount": 0,
+  "originalCommit": "42095f427223545968e452d494e4f982c196c7e2",
+  "acceptedRepositoryCommit": "25a6f2164a81a7e6ae50db3557d20521fecf5124",
+  "exactReviewedPrivateCodeAndInputPins": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/economicsQ2MonetarySocialContext.private.ts",
+      "sha256": "05e4462eaddd456cb59213cb53d58b8cc54124cdbd8c7394075e90e19fc59fa7"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/goalVisualizationReviewedContext.private.ts",
+      "sha256": "18c3043423075cdfdacd76a23b338c1bc20ba54a27ae19f6e167b2397e943fed"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/goalVisualizationEconomicsQ3Contexts.private.ts",
+      "sha256": "c66c1cad9d4603fe7c4b01964584305e717f86f1af5ee243ba48e349c1f1d5b3"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/qualification.private.schema.json",
+      "sha256": "383ee8e3270f0b1473eaa877df5efc826c1708fbd8248ec5c70456dd1798f7cd"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/private-family-pins.json",
+      "sha256": "a2a0930765426e53765863296102164d7e6bd1f5c73cd7f849085ac6cc46475b"
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/economics-additional-existing-reviewed-context-candidate/candidate-index.json",
+      "sha256": "7c3017af3209149593b24bad5276aa901f9fd9ad66e57ea5262c5edd52a6d530"
+    }
+  ],
+  "ownEvidence": {
+    "rawObjects": 465,
+    "rawParentRouteNodes": 273,
+    "originalPaths": 126,
+    "currentFullGoalsRead": 17,
+    "fullyDecodedImages": 17,
+    "fullyDecodedDerivatives": 34,
+    "bothCurrentQaLedgersChecked": true,
+    "ownMainVerifierCases": 124,
+    "ownInputEdgeSubreviewCases": 69,
+    "testCountsMayOverlap": true,
+    "unmodifiedFiveProfileAttempts": 85,
+    "unmodifiedFiveProfilePasses": 0,
+    "privateOriginalContextPasses": 17,
+    "typecheckExitCode": 0,
+    "existingProfileBranchesUnchanged": true,
+    "rawGitKernelUnchanged": true
+  },
+  "findings": [
+    {
+      "id": "PEER-01",
+      "severity": "no-blocker-found",
+      "anchors": [
+        "economicsQ2MonetarySocialContext.private.ts:7-19",
+        "economicsQ2MonetarySocialContext.private.ts:31-60",
+        "app/scripts/lib/authenticatedGitEvidence.ts:15-108"
+      ],
+      "finding": "Die neue Formatgrenze ist tatsächlich endlich: ein SHA256-gepinnter Originalsatz, genau 17 IDs, fester Originalcommit, feste Owner-/Familien-/Pfadbindungen und vollständige originale Dependencies. Heutige umgeschriebene oder neu gehashte Reviews können die Originale im festen historischen Tree nicht ersetzen.",
+      "evidence": "Eigene rohe SHA1-Framing-/SHA256-/Treepfad-/Parentprüfung:465 Objekte,126 Originalpfade,273 Parentknoten.69 Inputkantenfälle einschließlich fehlender Dateien und heutiger Reviewfälschung.",
+      "requiredAction": "Bei Integration diese exakten Pins und die unveränderte Raw-Git-Prüfung erhalten; keine Aufnahme weiterer Familien durch lose Feld-/Wortsuche."
+    },
+    {
+      "id": "PEER-02",
+      "severity": "scope-boundary",
+      "anchors": [
+        "economicsQ2MonetarySocialContext.private.ts:87-130",
+        "goalVisualizationReviewedContext.private.ts:116-119"
+      ],
+      "finding": "16 Originale attestieren vollständigen DE-Text und gebundenen bilingualen Authorinput mit Demand. Die676684da-Nachsicht attestiert ausdrücklich nur DE und korrigiertes Bild. Ihre reale REJECT-Vorgeschichte bleibt erhalten; EN/Demand dürfen aus dem verworfenen früheren Review nicht vererbt werden.",
+      "evidence": "Die exakte scope-Aussage steht im authentifizierten correction-v2-Review. Eigene Checks: erfundene EN-/Demand-Felder im Receipt scheitern; heutige EN-/Demand-Änderungen ändern den reinen DE-V-Kontext nicht.",
+      "requiredAction": "DE-only explizit beibehalten. Der erfolgreiche V-Nachweis ist kein EN-,Demand-,D/P- oder Kursfreigabenachweis."
+    },
+    {
+      "id": "PEER-03",
+      "severity": "integration-boundary",
+      "anchors": [
+        "run-private-probe.ts:11-35",
+        "goalVisualizationReviewedContext.private.ts:139-175",
+        "goalVisualizationReviewedContext.private.ts:264-271"
+      ],
+      "finding": "Der generische Verifier liest nicht eigenständig das heutige volle Goal samt resourceLinks. Er erhält diesen Kontext vom Aufrufer und prüft danach die gebundenen Textfelder sowie echte Public-/Canonicalbytes. Die aktuelle eindeutige Primärrolle muss daher weiter aus der tatsächlichen Quelle ermittelt werden.",
+      "evidence": "Dieser Review hat die aktuellen17Goals selbst aus der gepinnten DE-Quelle gelesen, eindeutige PrimaryresourceLinks inklusive skillpilotId/lang/resourceType geprüft, beide tatsächlichen Assetpaare vollständig decodiert und beide QA-Ledger verglichen. Im Kandidatentreiber bleibt die aktuelle Ableitung vorhanden.",
+      "requiredAction": "Die geprüfte Quellableitung und die externen aktiven Pins als Integrationspflicht erhalten. Ein direkt aufgerufenes privates Verifierresultat ersetzt keine gegen aktuelle Quellen laufende Authority/Scopeprüfung."
+    },
+    {
+      "id": "PEER-04",
+      "severity": "nonvisual-scope-delta",
+      "anchors": [
+        "full-goal-definition-deltas.json"
+      ],
+      "finding": "Die ganzen Goals sind gegenüber dem authentifizierten Author-Snapshot nicht unverändert: neben17 ResourceLink-Ergänzungen gibt es8 Applicabilityänderungen,3 Requiresänderungen und2 GK/LK-Tagänderungen. Die für V tatsächlich attestierten DE/EN/Demand-Felder stimmen innerhalb ihrer jeweiligen Originalgrenzen dennoch überein.",
+      "evidence": "Vollständige Feld-Differenzen pro 17 Goals dokumentiert. Beispielsweise 424bae9f hat geänderte Jurisdictions, Requires und Tags;7c9efc27 geänderte Tags.",
+      "requiredAction": "Keine Quellen-,Pflicht-,Vorbereitungs- oder Angebotsfreigabe aus dem Bildreview ableiten. Diese Änderungen bleiben den bestehenden separaten Semantik-/D/P/A/M-/Scopeprüfungen unterworfen. Der hier geprüfte V-Vertrag behauptet keinen Gesamtgoal-Fingerprint."
+    },
+    {
+      "id": "PEER-05",
+      "severity": "open-integration",
+      "anchors": [
+        "app/scripts/lib/qualifiedVisualizationContextAuthority.ts:12-28",
+        "private-family-pins.json",
+        "candidate-index.json"
+      ],
+      "finding": "Die aktive Authority bleibt exakt 57 Kontexte mit 5 Math + 52 Econ. Die 17 neuen Kontexte überschneiden sich nicht damit, gehören aber noch nicht zu diesem extern akzeptierten Index/Capsule. Ihr privater Profilpass zählt deshalb keine zusätzliche aktiveV-Freigabe.",
+      "evidence": "Der aktuelle57erIndex und sein fester Hash wurden erneut gelesen; Schnittmenge mit 17 IDs leer. Der aktive Kern akzeptiert das neue Profil nicht;85 Versuche über 5 bestehende Profile ergeben 0 Pässe.",
+      "requiredAction": "Separat die 17 Receipts, 126 Originalreferenzen, Raw-Git-Capsule und externeAuthoritypins integrieren und anschließend den normalen vollständigen CQR auf aktuellen Eingaben prüfen. Dieser Review führt das nicht aus und ersetzt den von Root laufenden Math57-Floorcheck nicht."
+    }
+  ],
+  "visualHistorySpotcheck": {
+    "goalId": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+    "viewedOriginalRejectedAndCurrentCorrectedImages": true,
+    "observation": "Original zeigt Bankreserven-Tresor und festen steigenden Preispfad; heutige Korrektur zeigt Forderung/Einlage und offene Preise?-Frage mit gestrichelten Wirkungspfeilen. Das bestätigt die Zuordnung der dokumentierten Korrekturgeschichte, ohne einen neuen Bildfreigabestatus zu erzeugen."
+  },
+  "limits": [
+    "Kein neues fachliches Bildreview, keine menschliche Freigabe, keine Lernenden- oder Hostabnahme.",
+    "Raw-Git-Authentizität belegt Originalbytes und akzeptierte Historie, aber nicht unabhängig die tatsächliche Person oder die exakte Modellkennung des damaligen Reviewers. Dessen Scope- und Inspektionsattestation ist der historische Reviewbeleg.",
+    "Keine allgemeine Sicherheitsgarantie aus endlichen Negativfällen.",
+    "Kein vollständiger CQR-/Floorlauf dieses noch privaten Profils; Root behandelt Math57 separat."
+  ],
+  "artifacts": {
+    "originalSemanticEvidence": "original-semantic-evidence.json",
+    "fullGoalDeltas": "full-goal-definition-deltas.json",
+    "ownVerifierTests": "own-verifier-tests.json",
+    "inputEdgeReview": "input-edge-review.json",
+    "ownTypecheck": "own-typecheck.json",
+    "codeDiff": "independent-code-diff-check.json",
+    "initialPins": "initial-pins.json"
+  },
+  "mutationScope": "Nur eigener neuer Reviewordner und temporäres /dev/shm; keine aktiven Source-, QA-, Code- oder Git-Schreibvorgänge.",
+  "verifiedActiveContextsByOwner": {
+    "605bdaf6-32d5-56fd-8d92-5a80c2fd2901": 52,
+    "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": 5
+  },
+  "reviewContractReference": {
+    "path": "docs/dev/ci-graph-repairs/visualization-reviewed-context-binding-plan-2026-11-06.md",
+    "sha256": "0f09c07f3a2458fd1163bc19403dd9ee866df4c169d5c11bc018a2cb387c4ebf",
+    "lines": [
+      5,
+      7
+    ],
+    "meaning": "Minimum current V contract binds identity, displayed full title/description and exact image; claimed further language/course/material scope requires actual bound input. A full-goal fingerprint is not a substitute."
+  }
+}

@@ -1,0 +1,398 @@
+[
+  {
+    "goalId": "2cf7589d-5451-5239-badf-1ebb981a2f20",
+    "goalTitle": "ER-Modell anwenden",
+    "goalDescription": "Die lernende Person kann Entitäten, Beziehungen, Kardinalitäten und Optionalitäten modellieren.",
+    "taskAnchor": "A01",
+    "solutionAnchor": "S01",
+    "rubricId": "R01",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Entitäten/Identitäten",
+      "Buchung/Status/M:N",
+      "Team-Kurs-Beteiligungen",
+      "Raum-Optionalität",
+      "Kontakt-Optionalität und Abgrenzung der Kapazitätsbedingung"
+    ],
+    "fullTask": "## A01 – ER-Modell anwenden\n\nModellieren Sie M1 mit Entitäten, Beziehungen, Schlüsseln sowie Mindest- und\nHöchstbeteiligungen. Die freiwillige Kontaktangabe und der Onlinekurs ohne\nRaum müssen sichtbar sein. Eine präzise textuelle Min-Max-Notation ist zulässig.\n\n",
+    "fullSolution": "## S01 / R01 – ER-Modell\n\nEntitäten: Person(pid), Team(tid), Raum(rid), Kurs(kid), Buchung(pid,kid),\nKontakt(pid). Buchung ist eine assoziative Entität oder attributierte\nM:N-Beziehung: Jede Buchung gehört genau einer Person/einem Kurs; beide\nhaben jeweils 0..n Buchungen. Team0..n–Kurs1..1; Raum0..n–Kurs0..1;\nPerson0..1–Kontakt1..1. Kapazität ist eine zusätzliche Zählbedingung;\nPseudonyme sind Attribute, keine Schlüssel.\n\nFünf Leistungen: Entitäten/Identitäten; Buchung/Status/M:N;\nTeam-Kurs-Beteiligungen; Raum-Optionalität; Kontakt-Optionalität und\nAbgrenzung der Kapazitätsbedingung.\n\n"
+  },
+  {
+    "goalId": "42ad3e11-9e31-5e15-b65c-b611ce1537ce",
+    "goalTitle": "Tabellen ableiten",
+    "goalDescription": "Die lernende Person kann Relationenschemata aus Modellen gewinnen und Schlüssel bestimmen.",
+    "taskAnchor": "A02",
+    "solutionAnchor": "S02",
+    "rubricId": "R02",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Entitäten zu Tabellen",
+      "korrekte PKs",
+      "M:N-Tabelle mit zusammengesetztem PK",
+      "FK-Richtungen",
+      "Optionalität/NULL/Kontaktbegründung"
+    ],
+    "fullTask": "## A02 – Relationenschemata ableiten\n\nLeiten Sie aus M1 die Tabellen samt Primär-/Fremdschlüsseln ab. Begründen Sie\ndie Zwischentabelle Buchung, deren zusammengesetzten Schlüssel und die\nDarstellung der optionalen Kontaktangabe. Markieren Sie zulässige NULL-Werte.\n\n",
+    "fullSolution": "## S02 / R02 – Tabellenableitung\n\nM2 ist eine passende Ableitung. Buchung braucht PK(pid,kid) und beide\nNOT-NULL-FKs. Kurs.tid ist obligatorisch, Kurs.rid kann NULL sein.\nKontakt.pid ist zugleich PK/FK; eine fehlende Kontaktzeile stellt die\nfreiwillige Angabe dar. Ein PK nur auf pid oder kid verböte erlaubte\nMehrfachbuchungen verschiedener Kurse beziehungsweise Personen.\n\nFünf Leistungen: Entitäten zu Tabellen; korrekte PKs; M:N-Tabelle mit\nzusammengesetztem PK; FK-Richtungen; Optionalität/NULL/Kontaktbegründung.\n\n"
+  },
+  {
+    "goalId": "46b4ebba-dbaf-5f5e-be48-7a1dd72bd471",
+    "goalTitle": "Normalisierung durchführen",
+    "goalDescription": "Die lernende Person kann Anomalien erkennen und bis zur dritten Normalform normalisieren.",
+    "taskAnchor": "A03",
+    "solutionAnchor": "S03",
+    "rubricId": "R03",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "drei konkrete Anomalien",
+      "1NF/Schlüssel/FDs",
+      "2NF-Zerlegung",
+      "3NF-Zerlegung",
+      "verlustfreie Schlüsselverknüpfung begründet"
+    ],
+    "fullTask": "## A03 – Bis zur dritten Normalform normalisieren\n\nZeigen Sie an M3 je eine konkrete Änderungs-, Einfüge- und Löschanomalie.\nNormalisieren Sie den Export nachvollziehbar über 1NF und 2NF bis 3NF.\nNennen Sie die verwendeten Abhängigkeiten und begründen Sie die verlustfreie\nVerknüpfung Ihrer Zerlegung anhand der Schlüssel.\n\n",
+    "fullSolution": "## S03 / R03 – Normalisierung\n\nÄnderungsanomalie: Fotobasispreis steht mehrfach; eine geänderte Zeile\nwiderspricht den übrigen. Einfügeanomalie: Neuer Kurs ohne Buchung/Person\nlässt sich unter dem Exportschlüssel nicht regulär speichern. Löschanomalie:\nLöschen der einzigen Audiolaborbuchung entfernt zugleich Kurs-/Teamangaben.\n\nDie gegebenen Zellen sind atomar (1NF). Zur 2NF werden die partiellen\nAbhängigkeiten pid→pseudonym,ort und kid→titel,preis,tid,teamName getrennt:\nPerson, Buchung(pid,kid,status), KursZwischen(kid,titel,preis,tid,teamName).\nZur 3NF wird kid→tid→teamName getrennt: Team(tid,teamName) und\nKurs(kid,titel,preis,tid). Die eindeutigen pid/kid/tid-Verknüpfungen\nrekonstruieren jeden Exportdatensatz ohne zusätzliche Kombinationen.\nRaum/Kontakt sind nicht nachträglich aus dem Export zu erfinden.\n\nFünf Leistungen: drei konkrete Anomalien; 1NF/Schlüssel/FDs;\n2NF-Zerlegung; 3NF-Zerlegung; verlustfreie Schlüsselverknüpfung begründet.\n\n"
+  },
+  {
+    "goalId": "fd1f5c79-20e6-5829-98c1-0909e047cad4",
+    "goalTitle": "Grundlegende Selects schreiben",
+    "goalDescription": "Die lernende Person kann projektion, Selektion, Join und Sortierung mit SQL formulieren.",
+    "taskAnchor": "A04",
+    "solutionAnchor": "S04",
+    "rubricId": "R04",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Projektion",
+      "beide Joins",
+      "alle drei Selektionen",
+      "beide Sortierschlüssel",
+      "alle vier Zeilen in richtiger Folge"
+    ],
+    "fullTask": "## A04 – Selektieren, projizieren, verknüpfen und sortieren\n\nSchreiben Sie eine SQL-Abfrage, die Pseudonym, Kurstitel und Preis für aktive\nBuchungen von Personen aus Kassel bei Kursen ab 20 EUR ausgibt. Sortieren Sie\nnach Preis absteigend, dann Pseudonym aufsteigend. Geben Sie das vollständige\nErgebnis für M2 in dieser Reihenfolge an.\n\n",
+    "fullSolution": "## S04 / R04 – SELECT und Reihenfolge\n\n```sql\nSELECT p.pseudonym,k.titel,k.preis FROM Person p\nJOIN Buchung b ON b.pid=p.pid JOIN Kurs k ON k.kid=b.kid\nWHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis>=20\nORDER BY k.preis DESC,p.pseudonym ASC;\n```\n\nErgebnis: `(ada,Videoschnitt,40)`, `(ben,Audiolabor,30)`,\n`(ada,Fotobasis,20)`, `(ben,Fotobasis,20)`.\nFünf Leistungen: Projektion; beide Joins; alle drei Selektionen;\nbeide Sortierschlüssel; alle vier Zeilen in richtiger Folge.\n\n"
+  },
+  {
+    "goalId": "13be8508-9eb3-510d-bd5c-4ba4efcc2589",
+    "goalTitle": "Gruppierung und Aggregatfunktionen",
+    "goalDescription": "Die lernende Person kann Aggregatfunktionen und Gruppierung einsetzen.",
+    "taskAnchor": "A05",
+    "solutionAnchor": "S05",
+    "rubricId": "R05",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Gruppierung/aktiver Joinfilter",
+      "COUNT des Buchungsschlüssels",
+      "Umsatzaggregation",
+      "alle fünf Ergebniszeilen",
+      "HAVING/IDs/NULL-Begründung"
+    ],
+    "fullTask": "## A05 – Gruppieren und aggregieren\n\nErmitteln Sie für jeden Kurs, auch ohne aktive Buchung, dessen ID, aktive\nBuchungszahl und geplanten Umsatz aus aktiven Buchungen. Stornierungen zählen\nnicht; Kurs50 muss mit null Buchungen und null Umsatz erscheinen. Geben Sie\nSQL und alle Ergebniszeilen an. Formulieren Sie danach die zusätzliche\nGruppenbedingung „mindestens zwei aktive Buchungen“ und nennen Sie die\nverbleibenden Kurs-IDs. Begründen Sie, weshalb COUNT(*) beim LEFT JOIN hier\nein falsches Ergebnis liefern kann.\n\n",
+    "fullSolution": "## S05 / R05 – Aggregation\n\n```sql\nSELECT k.kid,COUNT(b.pid) AS aktive,\n SUM(CASE WHEN b.pid IS NOT NULL THEN k.preis ELSE 0 END) AS umsatz\nFROM Kurs k LEFT JOIN Buchung b ON b.kid=k.kid AND b.status='aktiv'\nGROUP BY k.kid ORDER BY k.kid;\n```\n\nErgebnis `(kid,aktive,umsatz)`:\n`(10,2,40),(20,2,60),(30,2,80),(40,1,10),(50,0,0)`.\nZusatz `HAVING COUNT(b.pid)>=2` lässt10/20/30.\nCOUNT(*) zählt auch die NULL-erweiterte Joinzeile von Kurs50;\nSUM(preis) ohne Fallunterscheidung lieferte dort fälschlich15.\n\nFünf Leistungen: Gruppierung/aktiver Joinfilter; COUNT des Buchungsschlüssels;\nUmsatzaggregation; alle fünf Ergebniszeilen; HAVING/IDs/NULL-Begründung.\n\n"
+  },
+  {
+    "goalId": "2e2e1230-3009-5652-b3a8-68c834e53bd5",
+    "goalTitle": "Erweiterte SQL-Bereiche nutzen",
+    "goalDescription": "Die lernende Person kann Unterabfragen, DML/DDL und Berechtigungen beschreiben.",
+    "taskAnchor": "A06",
+    "solutionAnchor": "S06",
+    "rubricId": "R06",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Unterabfrage/Mittelwert",
+      "äußeres Ergebnis",
+      "DML-Wirkung",
+      "DDL/Default",
+      "DCL-Reichweite und Klassifikation"
+    ],
+    "fullTask": "## A06 – Erweiterte SQL-Bereiche beschreiben\n\nErläutern Sie jeden der vier gegebenen Befehle in M4 fachlich: innerer und\näußerer Abfrageschritt samt konkretem Ergebnis, Wirkung des UPDATE auf M2,\nSchemaänderung mit Vorgabewert sowie Reichweite der Berechtigung. Ordnen Sie\nDML, DDL und DCL zu; unterscheiden Sie die beschreibende Teilfrage von der\ntatsächlichen Anwendung in A15.\n\n",
+    "fullSolution": "## S06 / R06 – SQL-Bereiche erklären\n\nDie innere Abfrage ergibt115/5=23; die äußere liefert kid20/30.\nUPDATE (DML) ändert nur Preis20 von30 auf35, keine Struktur.\nALTER TABLE (DDL) ergänzt sichtbar; bestehende Zeilen und spätere\nfehlende Werte erhalten den Vorgabewert1. GRANT (DCL) verleiht nur SELECT\nauf der Sicht, keine Schreibrechte und kein pauschales Person-/Kontaktlesen.\n\nFünf Leistungen: Unterabfrage/Mittelwert; äußeres Ergebnis;\nDML-Wirkung; DDL/Default; DCL-Reichweite und Klassifikation.\n\n"
+  },
+  {
+    "goalId": "e00b6124-ce32-5fc9-8a52-f16d4283c16d",
+    "goalTitle": "Formulare mit Backend verknüpfen",
+    "goalDescription": "Die lernende Person kann HTML-Formulare mit Parametern gestalten und an Server weitergeben.",
+    "taskAnchor": "A07",
+    "solutionAnchor": "S07",
+    "rubricId": "R07",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "benutzbares beschriftetes GET",
+      "Namen/page1",
+      "tatsächliche URL",
+      "POST-Ziel/kid/CSRF",
+      "Methoden-/Sitzungsbegründung"
+    ],
+    "fullTask": "## A07 – HTML-Formular an den Server anbinden\n\nSchreiben Sie ein benutzbares HTML-Formular für die öffentliche Kurssuche\naus M4 mit beschriftetem Preisfeld und Startseite1. Zeigen Sie die tatsächliche\nRequest-URL für maxPreis30. Entwerfen Sie außerdem das Buchungsformular mit\nMethode, Ziel, Kursparameter und gegebenem CSRF-Token; begründen Sie GET/POST.\nDie Personen-ID darf nicht aus einem versteckten Clientfeld übernommen werden.\n\n",
+    "fullSolution": "## S07 / R07 – Formulare\n\n```html\n<form action=\"/kurse\" method=\"get\">\n <label for=\"preis\">Hoechstpreis in EUR</label>\n <input id=\"preis\" name=\"maxPreis\" type=\"number\" min=\"0\" max=\"1000\" required>\n <input name=\"page\" type=\"hidden\" value=\"1\">\n <button type=\"submit\">Suchen</button>\n</form>\n<form action=\"/buchen\" method=\"post\">\n <input name=\"kid\" type=\"hidden\" value=\"40\">\n <input name=\"csrfToken\" type=\"hidden\" value=\"SERVERGEGEBENES_TOKEN\">\n <button type=\"submit\">Kurs 40 buchen</button>\n</form>\n```\n\nFür30: `/kurse?maxPreis=30&page=1`. GET ist die lesende verlinkbare Suche;\nPOST ist der Buchungsauftrag. Clientgrenzen ersetzen keine Serverprüfung;\ndie Personen-ID kommt aus der Sitzung.\n\nFünf Leistungen: benutzbares beschriftetes GET; Namen/page1;\ntatsächliche URL; POST-Ziel/kid/CSRF; Methoden-/Sitzungsbegründung.\n\n"
+  },
+  {
+    "goalId": "0cfb39a2-985f-55ba-b2b3-e667d07f48d3",
+    "goalTitle": "SQL aus Programmen ausführen",
+    "goalDescription": "Die lernende Person kann eine Datenbankverbindung herstellen, SQL vorbereiten und Ergebnismengen ausgeben.",
+    "taskAnchor": "A08",
+    "solutionAnchor": "S08",
+    "rubricId": "R08",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Verbindungsaufbau/Laufzeit",
+      "SELECT-Bedingung",
+      "Parametertupel",
+      "LIMIT/OFFSET/Sortierung",
+      "Iteration und konkrete Zeilen"
+    ],
+    "fullTask": "## A08 – SQL aus einem Programm ausführen\n\nImplementieren Sie für die Kurssuche den Verbindungsaufbau, eine parametrisierte\nSQL-Abfrage für Preisfilter, Reihenfolge und Seitengröße2 sowie die Iteration\nüber das Ergebnis. Nutzen Sie maxPreis30/page1 und nennen Sie die beiden\nresultierenden Kurse. Kennzeichnen Sie die Verbindungslaufzeit und die von\nSQL-Code getrennten Parameter. Es reicht nicht, SQL nur als Text anzuzeigen.\n\n",
+    "fullSolution": "## S08 / R08 – SQL im Programm\n\n```python\nimport sqlite3\nfrom contextlib import closing\nwith closing(sqlite3.connect(db_path)) as con:\n rows = con.execute(\n  'SELECT kid,titel,preis FROM Kurs WHERE preis<=? ORDER BY kid LIMIT ? OFFSET ?',\n  (max_preis,2,(page-1)*2)).fetchall()\nfor kid,titel,preis in rows:\n print(kid,titel,preis)\n```\n\nBei30/1: `(10,Fotobasis,20),(20,Audiolabor,30)`.\nWertparameter bleiben vom SQL-Text getrennt. Die Verbindung wird nach dem\nArbeitsblock geschlossen; Ergebniskodierung in HTML ist zusätzlich S17.\n\nFünf Leistungen: Verbindungsaufbau/Laufzeit; SELECT-Bedingung;\nParametertupel; LIMIT/OFFSET/Sortierung; Iteration und konkrete Zeilen.\n\n"
+  },
+  {
+    "goalId": "71fe327a-9677-5348-a405-fba0dbd302d7",
+    "goalTitle": "Recht auf informationelle Selbstbestimmung",
+    "goalDescription": "Die lernende Person kann Datenschutzprinzipien und gesetzliche Grundlagen erläutern.",
+    "taskAnchor": "A09",
+    "solutionAnchor": "S09",
+    "rubricId": "R09",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Wiederzuordenbarkeit",
+      "Selbstbestimmung",
+      "getrennte Zwecke/Grundlagen",
+      "zwei konkrete Prinzipienanwendungen",
+      "Information/Wahlfreiheit"
+    ],
+    "fullTask": "## A09 – Informationelle Selbstbestimmung und Rechtsgrundlagen\n\nBeurteilen Sie M6: Sind die Pseudonyme anonym? Unterscheiden Sie den Zweck\nder notwendigen Kursbuchung von personalisierter Werbung. Erläutern Sie\ninformationelle Selbstbestimmung und mindestens zwei passende\nDatenschutzprinzipien mit konkreter Anwendung. Ordnen Sie anhand der\nNormenkarte eine geeignete Grundlage für notwendige Vertragsdaten und für\ndie hier freiwillige Werbung ein; benennen Sie auch die Informationspflicht.\n\n",
+    "fullSolution": "## S09 / R09 – Recht und Zweckbindung\n\nDie Pseudonyme sind über pid/Kontakt wieder zuordenbar und im Fall nicht\nanonym. Selbstbestimmung schützt die Entscheidung über personenbezogene\nDaten, bedeutet aber keine schrankenlose Beliebigkeit. Notwendige\nBuchungsdaten dienen der vereinbarten Leistung (Art.6-Vertragszweck);\nhier freiwillige Werbung benötigt eine getrennte passende Grundlage und\ninformierte Wahl. Zweckbindung spricht gegen heimlichen Datenverkauf,\nMinimierung gegen unnötige Kontakt-/Standortweitergabe, Speicherbegrenzung\ngegen unbegründete unbegrenzte Aufbewahrung. Zwecke/Empfänger werden vor\nErhebung erklärt. Werbung abzuschalten rechtfertigt keine pauschale\nLöschung aller nötigen Buchungsbelege.\n\nFünf Leistungen: Wiederzuordenbarkeit; Selbstbestimmung; getrennte\nZwecke/Grundlagen; zwei konkrete Prinzipienanwendungen; Information/Wahlfreiheit.\n\n"
+  },
+  {
+    "goalId": "58173dab-0cb2-52ae-a052-63d3a0f33644",
+    "goalTitle": "Datensicherheit umsetzen",
+    "goalDescription": "Die lernende Person kann Sicherheitsziele und organisatorische Maßnahmen begründen.",
+    "taskAnchor": "A10",
+    "solutionAnchor": "S10",
+    "rubricId": "R10",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "drei Sicherheitsziele mit Fallbezug",
+      "differenzierte Maßnahmen",
+      "Zuständigkeiten",
+      "überprüfbare organisatorische Kontrollen",
+      "konkretes Restrisiko"
+    ],
+    "fullTask": "## A10 – Datensicherheit organisatorisch umsetzen\n\nErstellen Sie für die drei Sicherheitsmängel aus M6 einen Maßnahmenplan mit\nSicherheitsziel, konkreter Maßnahme, Zuständigkeit und überprüfbarer Kontrolle.\nVertraulichkeit, Integrität und Verfügbarkeit müssen vorkommen. Begründen Sie\nmindestens zwei organisatorische Maßnahmen und einen verbleibenden Restrisikoaspekt.\n\n",
+    "fullSolution": "## S10 / R10 – Sicherheitsorganisation\n\nVertraulichkeit: individuelle rollenbegrenzte Konten statt Sammeladmin;\nAdministration setzt um, Leitung gibt frei, quartalsweiser Rechtecheck\nund Schulung. Integrität: freigegebene Änderungsabläufe, Constraints und\nTransaktionen, nachvollziehbare Protokolle; Datenverantwortliche kontrollieren\nStichproben, kritische Änderungen erhalten Vier-Augen-Freigabe.\nVerfügbarkeit: tägliches getrenntes verschlüsseltes Backup und regelmäßiger\nprotokollierter Restoretest durch den Betrieb auf Ersatzsystem.\nRestrisiko: Änderungen seit letztem Backup oder kompromittiertes Einzelkonto;\nVerschlüsselung allein beweist keine Wiederherstellbarkeit.\n\nFünf Leistungen: drei Sicherheitsziele mit Fallbezug; differenzierte\nMaßnahmen; Zuständigkeiten; überprüfbare organisatorische Kontrollen;\nkonkretes Restrisiko.\n\n"
+  },
+  {
+    "goalId": "fdfa87be-06ca-5c54-9950-d8408dba8e38",
+    "goalTitle": "Grundoperatoren anwenden",
+    "goalDescription": "Die lernende Person kann kartesisches Produkt, Projektion, Selektion und Join einsetzen.",
+    "taskAnchor": "A11",
+    "solutionAnchor": "S11",
+    "rubricId": "R11",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Selektion/Ergebnis",
+      "Projektion/Menge",
+      "Produktoperator",
+      "alle sechs Produktpaare",
+      "Join und konkrete vier Paare"
+    ],
+    "fullTask": "## A11 – Relationenalgebra-Grundoperatoren anwenden\n\nVerwenden Sie die Daten aus M2: (a) bilden Sie die Selektion der Personen aus\nKassel und projizieren Sie deren Pseudonyme; (b) bilden Sie das kartesische\nProdukt dieser beiden Personen-IDs mit den Kurs-IDs der Kurse bis20EUR und\ngeben Sie alle Paare an; (c) verknüpfen Sie die Kasseler Personen mit ihren\naktiven Buchungen und den Kurstiteln. Notieren Sie jeweils die Operatoren\nund die konkreten Ergebnisse. Relationenalgebra verwendet Mengen.\n\n",
+    "fullSolution": "## S11 / R11 – Relationenalgebra\n\n`sigma_ort='Kassel'(Person)` liefert1/2; `pi_pseudonym` liefert `{ada,ben}`.\n`pi_pid(sigma_ort='Kassel'(Person)) X pi_kid(sigma_preis<=20(Kurs))`\nergibt `{(1,10),(1,40),(1,50),(2,10),(2,40),(2,50)}`.\n`pi_pseudonym,titel(sigma_ort='Kassel'(Person)\nJOIN sigma_status='aktiv'(Buchung) JOIN Kurs)` ergibt\n`{(ada,Fotobasis),(ada,Videoschnitt),(ben,Fotobasis),(ben,Audiolabor)}`.\n\nFünf Leistungen: Selektion/Ergebnis; Projektion/Menge;\nProduktoperator; alle sechs Produktpaare; Join und konkrete vier Paare.\n\n"
+  },
+  {
+    "goalId": "b5926cbc-4bd6-589d-987e-ba468ccebc69",
+    "goalTitle": "Abfrageterme formulieren",
+    "goalDescription": "Die lernende Person kann Relationenalgebra-Terme für Problemstellungen entwickeln und in SQL überführen.",
+    "taskAnchor": "A12",
+    "solutionAnchor": "S12",
+    "rubricId": "R12",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "vollständiger eigener Term",
+      "drei Selektionen",
+      "beide SQL-Joins",
+      "DISTINCT/Operatorentsprechung",
+      "konkrete Ergebnismenge"
+    ],
+    "fullTask": "## A12 – Abfrageterm entwickeln und in SQL überführen\n\nGesucht sind unterschiedliche Pseudonyme aus Kassel mit mindestens einer\naktiven Buchung eines Kurses bis20EUR. Entwickeln Sie zuerst einen\nRelationenalgebra-Term und überführen Sie ihn in SQL. Erläutern Sie die\nEntsprechung von Selektion/Join/Projektion und geben Sie das Ergebnis an.\n\n",
+    "fullSolution": "## S12 / R12 – Abfrageterm und Übersetzung\n\n`pi_pseudonym(sigma_ort='Kassel'(Person) JOIN sigma_status='aktiv'(Buchung)\nJOIN sigma_preis<=20(Kurs))`.\n\n```sql\nSELECT DISTINCT p.pseudonym FROM Person p\nJOIN Buchung b ON b.pid=p.pid JOIN Kurs k ON k.kid=b.kid\nWHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis<=20 ORDER BY p.pseudonym;\n```\n\nErgebnis `{ada,ben}`. WHERE ist Selektion, die Tabellenverknüpfung Join,\nSELECT DISTINCT mengenwertige Projektion. Mehrfachbuchungen sollen nicht\nmehrfach denselben Namen erzeugen.\n\nFünf Leistungen: vollständiger eigener Term; drei Selektionen;\nbeide SQL-Joins; DISTINCT/Operatorentsprechung; konkrete Ergebnismenge.\n\n"
+  },
+  {
+    "goalId": "1eb09d02-9123-50e2-bfee-e2f0b5b23564",
+    "goalTitle": "Kardinalitäten und Optionalitäten sichern",
+    "goalDescription": "Die lernende Person kann Kardinalitätsregeln in komplexen ER-Modellen begründen.",
+    "taskAnchor": "A13",
+    "solutionAnchor": "S13",
+    "rubricId": "R13",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Kurs-Terminkardinalität",
+      "Teilnahmebeteiligungen/Schlüssel",
+      "Leitungs-/Doppelrolle",
+      "konkretes Gegenbeispiel",
+      "präzise Buchungsbedingung und Grenze bloßer Kardinalitäten"
+    ],
+    "fullTask": "## A13 – Kardinalitätsregeln im komplexeren ER-Modell begründen\n\nErweitern Sie M1 um M5. Geben Sie alle Beteiligungsgrenzen für\nKurs–Termin, Person–Teilnahme–Termin und Person–leitet–Kurs an. Zeigen Sie an\neinem konkreten unzulässigen Teilnahmetupel aus M2, warum die zusätzliche\nBuchungsbedingung nötig ist. Formulieren Sie diese Bedingung präzise und\nerklären Sie, was die reinen binären Kardinalitäten allein nicht ausdrücken.\n\n",
+    "fullSolution": "## S13 / R13 – Komplexere ER-Regeln\n\nKurs1..n–Termin1..1. Person0..n–Teilnahme1..1 und\nTermin0..n–Teilnahme1..1; Teilnahme kann PK(pid,terminId) haben.\nPerson0..n–leitet–Kurs1..1 ist unabhängig von der Teilnehmerrolle.\nGehört TerminT20 zu Kurs20, ist Teilnahme(1,T20) bei M2 ungültig:\nPerson1 hat keine aktive Buchung für20. Teilnahme(2,T20) ist nach der\ngegebenen Bedingung zulässig. Für jede Teilnahme(p,t) muss ein Kursk mit\nTermin(t,k) und Buchung(p,k,status='aktiv') existieren. Reine binäre\nKardinalitäten erzwingen diese Kursübereinstimmung nicht. Leitung\nverlangt nach M5 keine eigene Teilnehmerbuchung.\n\nFünf Leistungen: Kurs-Terminkardinalität; Teilnahmebeteiligungen/Schlüssel;\nLeitungs-/Doppelrolle; konkretes Gegenbeispiel;\npräzise Buchungsbedingung und Grenze bloßer Kardinalitäten.\n\n"
+  },
+  {
+    "goalId": "9a4967d2-09dd-5712-926c-4ea8c5b8f1fa",
+    "goalTitle": "Schemas auf Konsistenz prüfen",
+    "goalDescription": "Die lernende Person kann Relationenschemata hinsichtlich Schlüssel, Redundanzen und Konsistenz bewerten.",
+    "taskAnchor": "A14",
+    "solutionAnchor": "S14",
+    "rubricId": "R14",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "ID-Schlüsselgrenze",
+      "konkreter Widerspruch",
+      "Eindeutigkeits-/FK-/Werteconstraints",
+      "Teamredundanz/Zerlegung",
+      "bewusste Datenklärung vor Migration"
+    ],
+    "fullTask": "## A14 – Ein Schema auf Konsistenz prüfen\n\nPrüfen Sie Vorschlag B aus M3 hinsichtlich Schlüssel, Redundanz und\nKonsistenz. Zeigen Sie an beiden konkreten Beispielen die Probleme.\nFormulieren Sie geeignete Schlüssel-/Referenz-/Werteconstraints. Begründen\nSie, weshalb die zusätzliche ID in BuchungB die Person-Kurs-Eindeutigkeit\nnicht ersetzt und warum widersprüchliche Bestandsdaten geklärt werden müssen.\n\n",
+    "fullSolution": "## S14 / R14 – Schemakritik\n\nID verhindert gleiche id, nicht doppelte(pid,kid). Die beiden\nBuchungB-Zeilen widersprechen der aktuellen Person-Kurs-Eindeutigkeit.\nUNIQUE(pid,kid) oder PK(pid,kid), NOT NULL, Person-/Kurs-FKs und\nStatus-CHECK sind nötig. Bestandswidersprüche werden fachlich geklärt;\neine beliebige Zeile zu behalten ist keine bewiesene Korrektur.\nDie zwei Namen für tid1 widersprechen tid→teamName. Team(tid,name)\nmit eindeutigem tid und FK aus Kurs beseitigt die Redundanz.\n\nFünf Leistungen: ID-Schlüsselgrenze; konkreter Widerspruch;\nEindeutigkeits-/FK-/Werteconstraints; Teamredundanz/Zerlegung;\nbewusste Datenklärung vor Migration.\n\n"
+  },
+  {
+    "goalId": "16ce7d7a-fc31-58d0-83f8-427318331e73",
+    "goalTitle": "SQL-Berechtigungen verwalten",
+    "goalDescription": "Die lernende Person kann DML-, DDL- und DCL-Befehle anwenden und Berechtigungen gestalten.",
+    "taskAnchor": "A15",
+    "solutionAnchor": "S15",
+    "rubricId": "R15",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "DDL/PK/FK",
+      "INSERT/UPDATE",
+      "gezieltes DELETE/Endzustand",
+      "Sicht mit genau öffentlichen Spalten",
+      "Rollenprivilegien/REVOKE ohne Mehrrechte"
+    ],
+    "fullTask": "## A15 – DDL, DML und Berechtigungen anwenden\n\nSchreiben Sie DDL für `Hinweis(kid,text)` mit Kursreferenz und höchstens einem\nHinweis je Kurs. Fügen Sie für Kurs10 den Text `Kamera mitbringen` ein, ändern\nSie ihn in `Geladene Kamera mitbringen` und löschen Sie diesen Hinweis wieder.\nErzeugen Sie die öffentliche Sicht KursAuskunft und formulieren Sie im\nRollenmodell aus M4 die nötigen GRANT-/REVOKE-Befehle für beide Rollen.\nEntziehen Sie `auskunft` explizit einen versehentlich vergebenen Person-Lesezugriff.\n\n",
+    "fullSolution": "## S15 / R15 – DDL/DML/DCL anwenden\n\n```sql\nCREATE TABLE Hinweis(kid INTEGER PRIMARY KEY REFERENCES Kurs(kid), text TEXT NOT NULL);\nINSERT INTO Hinweis(kid,text) VALUES(10,'Kamera mitbringen');\nUPDATE Hinweis SET text='Geladene Kamera mitbringen' WHERE kid=10;\nDELETE FROM Hinweis WHERE kid=10;\nCREATE VIEW KursAuskunft AS SELECT kid,titel,preis FROM Kurs;\n-- DCL im gegebenen Rollenmodell, ausdrücklich nicht in SQLite:\nGRANT SELECT ON KursAuskunft TO auskunft;\nREVOKE SELECT ON Person FROM auskunft;\nGRANT SELECT,INSERT ON Buchung TO anmeldedienst;\n```\n\nHinweis ist danach leer. PK/FK verhindern unbekannte/doppelte Kursverweise.\nKontakt-, DROP- oder pauschale Datenbankrechte werden nicht vergeben.\nEin Nur-Neuanlagedienst darf einen bestehenden Stornosatz nicht überschreiben;\neine Wiederaufnahme benötigt einen gesondert berechtigten Ablauf.\n\nFünf Leistungen: DDL/PK/FK; INSERT/UPDATE; gezieltes DELETE/Endzustand;\nSicht mit genau öffentlichen Spalten; Rollenprivilegien/REVOKE ohne Mehrrechte.\n\n"
+  },
+  {
+    "goalId": "70523f2e-b331-51c0-95d0-919c8a189cad",
+    "goalTitle": "Parameterübergabe absichern",
+    "goalDescription": "Die lernende Person kann GET/POST-Parameter validieren und Sicherheitsmaßnahmen beschreiben.",
+    "taskAnchor": "A16",
+    "solutionAnchor": "S16",
+    "rubricId": "R16",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Werte-/Mehrfach-/Bereichsvalidierung",
+      "konkrete Fehlercodes",
+      "SQL-Wertbindung",
+      "Session-/CSRF-Trennung",
+      "Grenzen von POST/Clientkontrollen"
+    ],
+    "fullTask": "## A16 – GET-/POST-Parameter absichern\n\nImplementieren oder präzisieren Sie die serverseitige Validierung von M4.\nEntscheiden Sie mit Fehlercode für maxPreis=`0 OR 1=1`, page=`-1`, zwei\npage-Parametern und falschem POST-CSRF-Token. Zeigen Sie die sichere SQL-Wertbindung\nund Sessionzuordnung. Erläutern Sie, warum POST allein keine Datenverschlüsselung,\nSQL-Injection-Abwehr oder fachliche Zugriffsprüfung liefert.\n\n",
+    "fullSolution": "## S16 / R16 – Parameter und Sitzung\n\nGenau ein Wert je Parameter, ASCII-Ganzzahlformat und Grenzen werden\nserverseitig geprüft. `0 OR 1=1`, page-1 und doppelte page ergeben400;\nfalsches CSRF-Token403. SQL bindet Werte wie S08 statt Konkatenation.\nkid wird auf Format/Existenz geprüft; pid stammt aus der gegebenen Sitzung.\nPOST verschlüsselt nichts (dafür HTTPS), bindet keine SQL-Werte und prüft\nkeine fachliche Berechtigung. Ein CSRF-Token ersetzt diese ebenfalls nicht;\nClient-min/max sind keine Serverprüfung.\n\nFünf Leistungen: Werte-/Mehrfach-/Bereichsvalidierung; konkrete Fehlercodes;\nSQL-Wertbindung; Session-/CSRF-Trennung; Grenzen von POST/Clientkontrollen.\n\n"
+  },
+  {
+    "goalId": "0421e39b-1b35-5897-bbf8-38a75e4d221e",
+    "goalTitle": "Ergebnismengen formatieren",
+    "goalDescription": "Die lernende Person kann SQL-Ergebnisse in HTML ausgeben und Pagination oder Filter implementieren.",
+    "taskAnchor": "A17",
+    "solutionAnchor": "S17",
+    "rubricId": "R17",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "echte Tabelleniteration",
+      "kontextsichere Kodierung",
+      "richtige zwei Seiten",
+      "Links mit behaltenem Filter",
+      "leere Seite/Seitenberechnung"
+    ],
+    "fullTask": "## A17 – Ergebnis-HTML und Pagination implementieren\n\nImplementieren Sie aus A08 eine HTML-Tabelle mit Preisfilter und funktionierenden\nVor-/Zurück-Links. Zeigen Sie Seite1 und Seite2 für maxPreis30, einschließlich\nkorrekter Links und der Darstellung von `Archiv <offen>`. Geben Sie das\nVerhalten bei einer gültigen leeren Seite an. Benutzereingaben dürfen nicht\nals HTML ausgeführt werden.\n\n",
+    "fullSolution": "## S17 / R17 – HTML und Pagination\n\n```python\nfrom html import escape\ncells = ''.join('<tr><td>'+str(kid)+'</td><td>'+escape(titel,quote=True)\n +'</td><td>'+str(preis)+'</td></tr>' for kid,titel,preis in rows)\n```\n\nDie Referenz ergänzt thead, Formular und URL-kodierte Links. Seite1 bei30:\nFotobasis20/Audiolabor30. Weiter `/kurse?maxPreis=30&page=2`.\nSeite2: Datenschutz-Werkstatt10 und Archiv <offen>15 als Text,\nim HTML `Archiv &lt;offen&gt;`; Zurück page1. Nach letzter Trefferseite\nkein Weiter, leere gültige Seite mit Leermeldung statt400.\nFilter bleibt erhalten, OFFSET=(page-1)*2.\n\nFünf Leistungen: echte Tabelleniteration; kontextsichere Kodierung;\nrichtige zwei Seiten; Links mit behaltenem Filter; leere Seite/Seitenberechnung.\n\n"
+  },
+  {
+    "goalId": "de3af5ce-344c-5e04-a081-4c2904eb9fad",
+    "goalTitle": "Eigenen Umgang mit Daten reflektieren",
+    "goalDescription": "Die lernende Person kann Datenschutzrisiken im Alltag beurteilen und Einstellungen anpassen.",
+    "taskAnchor": "A18",
+    "solutionAnchor": "S18",
+    "rubricId": "R18",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "gültige veränderte Konfiguration",
+      "konkrete Vorher-/Nachherwerte",
+      "drei Risikobegründungen",
+      "Komfortabwägung",
+      "Analyse-/Buchungszweck getrennt"
+    ],
+    "fullTask": "## A18 – Eigene Datenschutzeinstellungen tatsächlich ändern\n\nGeben Sie für das fiktive Einstellungsobjekt aus M6 eine konkret geänderte,\ngültige Konfiguration an und wenden Sie sie auf eine private Kopie an oder\nprotokollieren Sie die vier neuen Werte. Begründen Sie mindestens drei\nÄnderungen mit Risiko und bewusster Abwägung eines entfallenden Komforts.\nTrennen Sie optionale Analyseverarbeitung von nötigen Buchungsdaten.\n\n",
+    "fullSolution": "## S18 / R18 – Tatsächliche Einstellungen\n\nEin gültiger, nicht einziger begründbarer Folgezustand:\n\n```json\n{\"personalizedRecommendations\":false,\"preciseLocation\":false,\n \"profilePublic\":false,\"analyticsRetentionDays\":7}\n```\n\nDie Referenz wendet diese Werte auf eine private Kopie an. Weniger\nPersonalisierung begrenzt Profilbildung, kostet Empfehlungen; kein genauer\nStandort mindert Ortsprofilrisiko, verlangt Ortsauswahl; kein öffentliches\nProfil mindert Zuordnung und öffentliche Vernetzung; kurze Analysefrist\nbegrenzt Langzeitprofile und historische Auswertung. Nötige Buchungsdaten\nhaben einen anderen Zweck und werden dadurch nicht pauschal aufgehoben.\n\nFünf Leistungen: gültige veränderte Konfiguration; konkrete Vorher-/Nachherwerte;\ndrei Risikobegründungen; Komfortabwägung; Analyse-/Buchungszweck getrennt.\n\n"
+  },
+  {
+    "goalId": "e67e06e6-cfd6-5251-b060-5aa81092d14c",
+    "goalTitle": "Relationale Terme in SQL übersetzen",
+    "goalDescription": "Die lernende Person kann komplexe Relationenalgebra-Terme schrittweise in SQL-Abfragen überführen.",
+    "taskAnchor": "A19",
+    "solutionAnchor": "S19",
+    "rubricId": "R19",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "A und die Kassel-Bedingung",
+      "alle B-Paare/Statusselektion",
+      "innerer Join C mit vier Ergebnissen",
+      "vollständige schrittweise SQL-Abbildung",
+      "D mit Reihenfolge und Operatorentsprechung"
+    ],
+    "fullTask": "## A19 – Einen komplexeren relationalen Term schrittweise übersetzen\n\nÜberführen Sie diesen geschachtelten Term schrittweise in SQL und bestimmen\nSie jedes Zwischenergebnis für M2. Geben Sie bei B die Person-Kurs-Paare,\nbei C die Kurs-ID mit Teamnamen und bei D die vollständigen Tupel an:\n\n```text\nA = Selektion_ort='Kassel'(Person)\nB = Selektion_status='aktiv'(Buchung)\nC = Selektion_preis<=30(Kurs) JOIN Team\nD = Projektion_pseudonym,titel,name ((A JOIN B) JOIN C)\n```\n\nZeigen Sie, wie die innere Verknüpfung in C und die äußeren Verknüpfungen\nsowie Bedingungen in Ihrer SQL-Abfrage wiederzufinden sind. Geben Sie D\ngeordnet nach Pseudonym und Kurs-ID an. \n",
+    "fullSolution": "## S19 / R19 – Geschachtelte Übersetzung\n\nA enthält Personen1/2. B enthält die aktiven Paare\n`{(1,10),(1,30),(2,10),(2,20),(3,20),(4,30),(5,40)}`.\nC enthält `(10,Werkstatt),(20,Offene Medien),(40,Offene Medien),(50,Archiv)`.\nD ergibt `(ada,Fotobasis,Werkstatt),(ben,Fotobasis,Werkstatt),\n(ben,Audiolabor,Offene Medien)`.\n\n```sql\nSELECT DISTINCT p.pseudonym,k.titel,t.name\nFROM Person p JOIN Buchung b ON b.pid=p.pid\nJOIN Kurs k ON k.kid=b.kid JOIN Team t ON t.tid=k.tid\nWHERE p.ort='Kassel' AND b.status='aktiv' AND k.preis<=30\nORDER BY p.pseudonym,k.kid;\n```\n\nDie Selektionen aus A/B/C werden in WHERE umgesetzt; der Team-Join bildet\nzunächst den Modellteil C, die pid/kid-Verknüpfungen verbinden ihn mit A/B.\nGleichwertig sind benannte Zwischenabfragen. Die Ausgabe entspricht der\nProjektion; DISTINCT erhält die Mengenbedeutung.\n\nFünf Leistungen: A und die Kassel-Bedingung; alle B-Paare/Statusselektion;\ninnerer Join C mit vier Ergebnissen; vollständige schrittweise SQL-Abbildung;\nD mit Reihenfolge und Operatorentsprechung.\n\n"
+  },
+  {
+    "goalId": "fbc07e78-53a7-5fb5-a5c7-04a85e605339",
+    "goalTitle": "Nichtrelationale Datenbanken einordnen",
+    "goalDescription": "Die lernende Person kann Grenzen relationaler Datenbanken erklaeren und alternative Organisationsformen grosser Datenmengen wie NoSQL- oder Wide-Column-Datenbanken einordnen.",
+    "taskAnchor": "A20",
+    "solutionAnchor": "S20",
+    "rubricId": "R20",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "begründete relationale Buchungswahl",
+      "Dokumentstruktur",
+      "Wide-Column-Einordnung",
+      "arbeitslastbezogene Grenzen",
+      "begründete Zurückweisung pauschaler Größen-/NoSQL-Garantien"
+    ],
+    "fullTask": "## A20 – Datenorganisationsformen begründet einordnen\n\nVergleichen Sie für beide Arbeitslasten aus M7 relationale Tabellen,\nDokument- und Wide-Column-Speicher. Wählen Sie begründet für Buchung und\nKlickanalyse. Benennen Sie je eine Grenze der Wahl; erläutern Sie,\nwarum weder „groß“ noch „NoSQL“ allein eine technische Qualitätsgarantie ist.\n\n",
+    "fullSolution": "## S20 / R20 – Datenorganisation\n\nBuchungen passen zu relationalen Schlüsseln, FKs und Transaktionen.\nFlexible Ereignisse können als JSON-Dokumente je Ereignis oder in\nWide-Column-Ablagen entlang Zeit/Kurs gespeichert werden. Passende\nPartitionierung, Abfragen und Konsistenz-/Duplikatregeln bleiben nötig.\nRelationale Systeme können ebenfalls groß sein; NoSQL garantiert weder\nGeschwindigkeit noch korrekte Beziehungen oder Datenschutz. Ein gemeinsames\nJSON-Dokument beweist keine zuverlässige konkurrierende Platzvergabe.\nMinutenverzögerung ist im Fall für Statistik akzeptiert, nicht für die\nletzte verbindliche Kursbuchung.\n\nFünf Leistungen: begründete relationale Buchungswahl; Dokumentstruktur;\nWide-Column-Einordnung; arbeitslastbezogene Grenzen;\nbegründete Zurückweisung pauschaler Größen-/NoSQL-Garantien.\n\n"
+  },
+  {
+    "goalId": "e94beeaa-784d-5490-932b-38b81bf669fc",
+    "goalTitle": "Map-Reduce-Prinzip erlaeutern",
+    "goalDescription": "Die lernende Person kann das Map-Reduce-Paradigma als parallele Verarbeitung grosser Datenmengen beschreiben und an einfachen Verarbeitungsschritten erlaeutern.",
+    "taskAnchor": "A21",
+    "solutionAnchor": "S21",
+    "rubricId": "R21",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "vollständige P1-Mapausgaben",
+      "vollständige P2-Mapausgaben",
+      "Shuffle-Gruppen",
+      "Reduce-Werte",
+      "Parallel-/Aufteilungsbegründung am Fall"
+    ],
+    "fullTask": "## A21 – Map-Reduce an konkreten Daten erklären\n\nZeigen Sie sämtliche Map-Ausgaben beider Partitionen, die Shuffle-Gruppen\nund die Reduce-Ergebnisse für M7. Erklären Sie, welche Arbeit parallel\nerfolgen kann und weshalb eine andere Aufteilung bei derselben Zählfunktion\ndieselben Endzählungen liefert. Gefordert ist das einfache Verarbeitungsprinzip,\nkeine Hierarchie/Parallelität von Zustandsautomaten und kein Clusterbetrieb.\n\n",
+    "fullSolution": "## S21 / R21 – Map, Shuffle, Reduce\n\nMap(P1)=`[(10,1),(20,1),(10,1)]`,\nMap(P2)=`[(30,1),(20,1),(10,1)]`.\nShuffle=`10:[1,1,1],20:[1,1],30:[1]`.\nReduce(Summe)=`10:3,20:2,30:1`.\nDie Map-Arbeit kann pro Ereignis/Partition unabhängig erfolgen;\nShuffle führt gleiche Schlüssel zusammen. Umordnung oder andere\nAufteilung derselben Ereignisse ändert die Summe der Einsen je Schlüssel\nnicht. Kein Statechart-/Synchronisations-/Clusterabschluss ist verlangt.\n\nFünf Leistungen: vollständige P1-Mapausgaben; vollständige P2-Mapausgaben;\nShuffle-Gruppen; Reduce-Werte; Parallel-/Aufteilungsbegründung am Fall.\n\n"
+  },
+  {
+    "goalId": "7a9fdfe7-a806-5a31-b276-0da27a4617fc",
+    "goalTitle": "Daten als Wirtschaftsfaktor bewerten",
+    "goalDescription": "Die lernende Person kann die oekonomische Verwertbarkeit von Daten, Datenfilterung und Auswirkungen auf Wahrnehmung oder Meinungsbildung bewerten.",
+    "taskAnchor": "A22",
+    "solutionAnchor": "S22",
+    "rubricId": "R22",
+    "maxPoints": 5,
+    "observablePerformances": [
+      "Erlös/abgegrenzter Überschuss",
+      "beide Rankings",
+      "wirtschaftlicher Nutzen/Alternative",
+      "konkrete Datenschutz-/Filterwirkung",
+      "begründetes Urteil mit Evidenzgrenze"
+    ],
+    "fullTask": "## A22 – Daten als Wirtschaftsfaktor bewerten\n\nBerechnen Sie mit M8 Werbeerlös und bekannten direkten Überschuss sowie\ndie ungeförderte und gesponserte Kursreihenfolge. Bewerten Sie W/F gegenüber N\nmit mindestens einem wirtschaftlichen Vorteil, einem Datenschutzrisiko und\neiner konkret datenbezogenen Wirkung der Filterung auf Wahrnehmung/Auswahl.\nGrenzen Sie eine plausible Einflussmöglichkeit von einem hier nicht\nnachgewiesenen kausalen Meinungsbildungseffekt ab.\n",
+    "fullSolution": "## S22 / R22 – Wirtschaft und Wirkung\n\nErlös=2000/1000*5=10EUR. Bekannter direkter Überschuss=10-6=4EUR,\nnicht bereits Gesamtgewinn nach allen Kosten. Organisch10,20,30;\ngesponserte Scores3,12,1 ergeben20,10,30. W kann Finanzierung ermöglichen,\nverknüpfbare Profile/Kontaktweitergabe erhöhen Datenschutz-/Abhängigkeitsrisiken.\nF kann den Eindruck erwecken, es gebe vor allem schon geklickte Themen;\nKurs20 wird trotz weniger organischer Aufrufe prominent. N erhält\nEntdeckbarkeit/erkennbare abschaltbare Werbung, kann weniger gezielte\nWerbeerlöse erzielen. Sechs Ereignisse beweisen keine repräsentative\nPräferenzverteilung oder kausalen Meinungswandel. Ein Urteil trennt diesen\nEvidenzrand von plausiblen Einflussmöglichkeiten der Auswahl/Sortierung.\n\nFünf Leistungen: Erlös/abgegrenzter Überschuss; beide Rankings;\nwirtschaftlicher Nutzen/Alternative; konkrete Datenschutz-/Filterwirkung;\nbegründetes Urteil mit Evidenzgrenze.\n"
+  }
+]

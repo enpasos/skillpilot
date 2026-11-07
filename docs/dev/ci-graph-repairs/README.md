@@ -203,6 +203,20 @@ bleibt ebenfalls historisch erhalten.
   zwei alte Begriffe korrigiert, drei JSON-Blätter einschließlich eines
   eingehenden Hashverweises geändert; Messungen und Urteile bleiben gleich.
 
+- [Angewandte drei Mathematikreparaturen](math-three-reviewed-repairs-application-2026-11-07.md):
+  tatsächlicher nativer Graphvergleich 919 → 916 ohne neue Befunde, gemeinsam
+  eingebundene aktuelle D-/P-/A-/M-/V-Belege und regulärer neuer Qualitätsbericht.
+  Die unveränderten geschützten Untergrenzen scheitern weiterhin in sieben Fächern.
+- [Abgeschlossener Remote-Lauf auf 0b0f4637](remote0b-terminal-2026-11-07.json):
+  sieben Hauptjobs und alle vier Nebenworkflows bestehen; Curriculum scheitert
+  am direkten Floorcheck. Der abgebrochene Diagnosetext belegt nicht jede
+  einzelne Fachfehlermeldung; der vollständige lokale Sieben-Fächer-Nachweis
+  bleibt ein getrennter Beleg.
+- [Kalter Quellen- und Materialreview für Informatik Q2](informatics-q2-independent-scope-material-review-2026-11-07.md):
+  66 Scopeurteile und 22 Materialurteile, ohne vorgegebenen GK-Sollumfang.
+  Unbelegte Pflichtzuordnungen, konkrete Aufgabenfehler und fehlende amtlich
+  verlangte Leistungen verhindern die Anwendung des bisherigen Entwurfs.
+
 Die [zentrale Übergabe](../ci-contract-audit-handoff-2026-11-06.md) führt
 Auftrag und nächste Schritte. Der feste 518-Regelkorpus und seine Matrizen
 bleiben unverändert; Main-Verträge und der eingefrorene PR-83-Einheitenstand

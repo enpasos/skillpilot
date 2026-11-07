@@ -1,0 +1,1440 @@
+{
+  "status": "native-bounded-private-candidate-comparison-complete-not-release",
+  "source": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+    "sha256": "49e68eedeac6a891a0327551bfbe7c9d31a44573d97b464b69b49d5023511c94",
+    "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327"
+  },
+  "candidateSourceSha256": "29d02016b7e31b5683b1d51196e21c68ab4a310b8a88aa1a09bd5f30d1ee2eef",
+  "candidateOnlyPrivateRamAndReadOnlyCanonicalOverlay": true,
+  "rawCarriers": [
+    {
+      "path": "baseline-native-scope.json.gz",
+      "sha256": "72847fdae417de3624ba2a14c74b5318f568a25a22c6085b2e6a05bd2c9a8f15",
+      "bytes": 281052,
+      "uncompressedName": "baseline-native-scope.json",
+      "uncompressedSha256": "31b023738950775a2a9bc4ff11922d5f9d8c2ae0f77fc9021d37bb22e0c3aea3",
+      "uncompressedBytes": 5326548
+    },
+    {
+      "path": "candidate-native-scope.json.gz",
+      "sha256": "3fe797acde917b82068db65a16e827a60650ca5b1f65af3de9b8c7d245b32f69",
+      "bytes": 270919,
+      "uncompressedName": "candidate-native-scope.json",
+      "uncompressedSha256": "d1dec2f1282b160fbd8c423ea8193007ad971cf399f946343834b56b6ae1e882",
+      "uncompressedBytes": 5310160
+    }
+  ],
+  "strictBefore": [
+    {
+      "id": "G01a",
+      "findingCount": 477,
+      "status": "fail"
+    },
+    {
+      "id": "G01b",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G02",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G05",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G06",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G07",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G15",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G42",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G16",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G17",
+      "findingCount": 126,
+      "status": "fail"
+    }
+  ],
+  "strictAfter": [
+    {
+      "id": "G01a",
+      "findingCount": 477,
+      "status": "fail"
+    },
+    {
+      "id": "G01b",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G02",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G05",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G06",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G07",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G15",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G42",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G16",
+      "findingCount": 0,
+      "status": "pass"
+    },
+    {
+      "id": "G17",
+      "findingCount": 122,
+      "status": "fail"
+    }
+  ],
+  "wholeGlobalRelationProof": {
+    "catalogs": 21,
+    "goalKeys": 6524,
+    "atomicKeys": 5495,
+    "baselineGoalClosureSha256": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+    "baselineAtomicClosureSha256": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907",
+    "baselineGoalCyclicComponents": 0,
+    "baselineAtomicCyclicComponents": 0,
+    "steps": [
+      {
+        "caseId": "POWI-J8-INTRO-01",
+        "goalClosureEqual": true,
+        "atomicClosureEqual": true,
+        "goalClosureSha256": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+        "atomicClosureSha256": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-02",
+        "goalClosureEqual": true,
+        "atomicClosureEqual": true,
+        "goalClosureSha256": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+        "atomicClosureSha256": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-03",
+        "goalClosureEqual": true,
+        "atomicClosureEqual": true,
+        "goalClosureSha256": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+        "atomicClosureSha256": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-04",
+        "goalClosureEqual": true,
+        "atomicClosureEqual": true,
+        "goalClosureSha256": "9d0e33fb5af4e19bb40e1f830cacd1b2a25ef409dc4f38ad0824ccefe3353446",
+        "atomicClosureSha256": "2659df33fb6ba99d023f6a3c370ec0393d1864b9c072ee4435e73e9df9726907",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      }
+    ],
+    "finalWitnesses": [
+      {
+        "caseId": "POWI-J8-INTRO-01",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-02",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-03",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      },
+      {
+        "caseId": "POWI-J8-INTRO-04",
+        "witnessKeys": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ],
+        "origins": [
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+            "mode": "direct"
+          },
+          {
+            "fromKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "toKey": "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197",
+            "authoredOriginKey": "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "mode": "direct"
+          }
+        ]
+      }
+    ],
+    "allGlobalDemandEqual": true,
+    "focusRuntimeApprovalClaimed": false
+  },
+  "nativeComposition": {
+    "authoredViews": 28,
+    "jurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "stages": [
+      "CrossStage",
+      "SekI"
+    ],
+    "filterProbes": 252,
+    "filterDefinition": "Each actual authored view plus native goalMatchesFilters for no course/GK/LK crossed with no duration/G8/G9; these probes are not 252 independently authored offerings.",
+    "unchanged": [
+      "authoredTargetAndSupportSets",
+      "compiledTreeHashes",
+      "compilerFindings",
+      "all252FilteredTargetAndSupportSets",
+      "allSelectedAuthorDirectReferenceAvailabilityChecks"
+    ],
+    "views": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bb-gym-politics-economics-crossstage.view.json",
+        "sha256": "63a3b54b5c085298c0c91f651b21e247255eba3af8f78032dc0d063717ab5247",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "b2fc41459bc0be9b7d45e76e8b5f12b382ba141c7b1209152716d5b35f236d90"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bb-gym-politics-economics-seki.view.json",
+        "sha256": "d9072773325b1a6abd210c0d2fac51e1f9f914ff061fac3af2dad37a16679f9e",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "6252d3506026e2683d4873526759e2ed0e4388816af07fd2dc88170410d36196"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-be-gym-politics-economics-crossstage.view.json",
+        "sha256": "2c218de88fd8e97e20918bbf3e4b948c46a13901f73b862ef0e502c0a4cb953f",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "ec781c65da49e1f20360ad8a41869b15a9b66538f2af01b5902470552700c5e3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-be-gym-politics-economics-seki.view.json",
+        "sha256": "53aed75b0371023ee65e9382db7166795bde713dbe79daaa9df923f499ad8542",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "0aaadac498428ac8fd0cc18a9e0ed4b34352ddd9b2cc9c593448beb9f5cfef49"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-bw-gym-politics-economics-crossstage.view.json",
+        "sha256": "dc86e342b9546f949093ca758a29436f3f113847c8a5b2744dce4f6ccd92fd69",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BW",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "59fc7047e28a402a6925d8be9eaeda87a37498d6bcc2d224bd851cddad60492d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hb-gym-politics-economics-crossstage.view.json",
+        "sha256": "79b62c9a0fc025fd2b0a1c732faaabfdd2597d7cd070f9fbbe9e570bcbb94104",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "462fe65fb2efa07a13150f2ffe13ea42566f7c42310bd34585187c7ddbabf6e3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hb-gym-politics-economics-seki.view.json",
+        "sha256": "4b789d398ed6c0dd0a5e9d41bb30c0e45f3c4a6f02deba3b9e978b557455ba78",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "c86cc8b306610f0bfb80dba0acfa8ba120c55dfeb143767f7683d027ef8d528d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-he-gym-politics-economics-crossstage.view.json",
+        "sha256": "0dffda5994bc7d3a9a3ba6ce293e8ad5c6a9d42340a58be80163c20e44b08ada",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "ef491c7e7c68c7698c6ace23821a36a1a3d049a033d99008f05c89b057fbed47"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-he-gym-politics-economics-seki.view.json",
+        "sha256": "f8116c915bb2abbce57d9870746d2eb3904bb1a5e0d684324fb7f514039ea2a3",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "db4f1deb1bcafcb992f0fbba82a6eed2c555e0c02dcc9e11b09b7f22bcd67c35"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hh-gym-politics-economics-crossstage.view.json",
+        "sha256": "228b640cc5d63a243715df54bdbf9cd57d9498a33c3052648fbb242e135b7d80",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "d02f8d906e9ac8308f0bbb4ed3613a77704f8aa573c87ff7a99c137b74c030a1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-hh-gym-politics-economics-seki.view.json",
+        "sha256": "92c24c0513348caaf05d96d2b7fa54f7c35905666999c837a67a3fcf80c6be44",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "4b2a506d615ed2b06eb4dccd32073c58b79a9fed0f7282bb09cb313b7e2e3101"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-mv-gym-politics-economics-crossstage.view.json",
+        "sha256": "a03bb71f47100a69dd171e5e1c7cac4aaa41cd194220dba8c675702badc14bc5",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "9a93796aa76d22b4b7175d0cb554ae8b63ef800265054e0ad313b09ee1ebd3f6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-mv-gym-politics-economics-seki.view.json",
+        "sha256": "38b59a1a5e032bdeefacae9ec0f1c2ea019fdfd340d2c0b81c1a816b087ea1e1",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "2a59622ee04432986bfb95994d870987bb66c765f7f09e6245da56d30b984ee7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-ni-gym-politics-economics-crossstage.view.json",
+        "sha256": "7cf8e641f2f944fa74339f36f76102223ba7ec91363a4981450cfcee67c91833",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "c845e4df24a810066059d9eccf95b9e45b9d5fd780747fae509ab647c2fef865"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-nw-gym-politics-economics-crossstage.view.json",
+        "sha256": "41c237bf3d7804bd448c47c2d28b223f0f6026d32bfcd442bb19586f49c8775d",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "12e2f6572d7aea02e18b0532fcc09ad521a10bd220d4a7b4208b46c7e06dc06e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-nw-gym-politics-economics-seki.view.json",
+        "sha256": "d2a2642daa530436efcf33ed7af85660625226dad99697168e4f4c639c1271c6",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "ca6cb576351f3002ecfbe379ea7f9f4cd5478a6cf8c5c06c32e18a84f12bdbc3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-rp-gym-politics-economics-crossstage.view.json",
+        "sha256": "2a82aa4634cf4c5e24b95f92ee73d060bdb8f74bc2c4bdf6b6e688dfe1f77d5a",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-RP",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "71c68ee036c27183703f24a959b1bcf40931c7b999883eba7e420d3a18ee954b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-rp-gym-politics-economics-seki.view.json",
+        "sha256": "a673701d6d321277fc79b77d587708daa2e578c1edc7cf9ed5611417dae4e151",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-RP",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "47cd119ae0a3bccfae9e9c614f9f4ef3a2486875140844843b7408ae3268fad9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sh-gym-politics-economics-crossstage.view.json",
+        "sha256": "5dc96b9d97beb5e667bf45ab65d150c594bbca2bb3069b466693f3bf5c762c95",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "bfed1ac75426dd8fad4ad1bd9a4b78bf4698452486480de32b087622f1584dd7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sh-gym-politics-economics-seki.view.json",
+        "sha256": "c9ab934b549162ffaf27fc417b2d2dc0c73a46b50a10dbe9444b26924d372e37",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "2e5dac559078689f608c12f0bbc6eaff87ed0d753ac8cd337e3a5e87dc1a6b9b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sl-gym-politics-economics-crossstage.view.json",
+        "sha256": "19aa2d17456cb609d69105871c0cf64e85c28a28dbaf4d9e3cf27a223e73fbf6",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "e67a5fe60c49de3cbcf2a0c69cd6182dde864af3e0345b761c6f37b54bc6ddf7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sl-gym-politics-economics-seki.view.json",
+        "sha256": "376ade4514825c35906aad0a60f1572bdc8b019b55cd8b325a34cf4cddc1f54d",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "b7102949ceeb7aaf29feb9c9211812f25fc3d2791896ec4627a9d92109767660"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sn-gym-politics-economics-crossstage.view.json",
+        "sha256": "389771ad39999f38c69812436e02aa1d79ce10a8e00635e400f223ddac31c7d2",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "05cc351432d47ba1ec0cd53a334db300d84263d16ef3305533a6ccf68fb6fc08"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-sn-gym-politics-economics-seki.view.json",
+        "sha256": "7e8d0a4d43512ced7b672a84e05ec8ec86cfa14fcafa43b6b5350b74f3a15f35",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "018527f77d3c25758ff4ac3ebd43eef997623314c5d8ac7a4571c63c2004d735"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-st-gym-politics-economics-crossstage.view.json",
+        "sha256": "9b5dadeba34e17ca37cdf94122335d96e5921ab60afcd1d5aeada08dcb0d2b93",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "257a49a9099fec59a32d2df332ad4699ae8aeea884b88b068f3bc2a8a6110778"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-st-gym-politics-economics-seki.view.json",
+        "sha256": "4488582eaaf73c5bb2ce64ad5ece19abf8e66e135f27d934daa0f409df9323c4",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "2f9161d5ae8f3dbe07373f2b51ee73a1b547a9b2c7abeeb05fce522995bbe0ae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-th-gym-politics-economics-crossstage.view.json",
+        "sha256": "0d28f1432eec72a9333184b709e6b6f1009d1054e57f46fa54f2f0f19e5fabb0",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage"
+        },
+        "compiledTreeSha256": "e2134157d31ac79b45fe86ea4c1254100958673baa0fc7600ce9f60ed0264d59"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-th-gym-politics-economics-seki.view.json",
+        "sha256": "e40e4b1997737197d1853e23367218c199c18d7400d3790a9a6bb246b7378d91",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "SekI"
+        },
+        "compiledTreeSha256": "3a872b0ba604e5716e60aabb15e15c8cce2f7d7b9d51b7523374ba2390ed0eb8"
+      }
+    ],
+    "existingHeCrossStageBoundary": {
+      "changedAuthorGoalId": "022c620f-fdb3-5814-a9b7-f18614130793",
+      "missingDirectRequiredGoalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+      "beforeAfterIdentical": true,
+      "views": [
+        "curricula/DE/Gymnasium/composition-views/politik-und-wirtschaft/de-he-gym-politics-economics-crossstage.view.json"
+      ],
+      "measuredProjectionFact": [
+        {
+          "goalId": "022c620f-fdb3-5814-a9b7-f18614130793",
+          "allDirectReferencesAvailable": false,
+          "missing": [
+            "041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+          ]
+        },
+        {
+          "goalId": "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+          "allDirectReferencesAvailable": true,
+          "missing": []
+        }
+      ],
+      "serviceOutcomeExecuted": false
+    },
+    "bavarianAuthoredViewPresent": false,
+    "canonicalBackendFallbackExecuted": false
+  },
+  "applicability": {
+    "all512CompiledValuesUnchanged": true,
+    "allFindingsUnchanged": true,
+    "foreignReportsUnchanged": true,
+    "changedEvidenceGoalId": "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+    "removedRequiresClosureOriginEvidence": [
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by 022c620f-fdb3-5814-a9b7-f18614130793"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by 041b4a11-d7a3-5557-b5d0-2c365faccc5b"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by b2d76b0d-cdb3-5f35-893f-896903d673db"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BB",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BE",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BW",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-BY",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HB",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HE",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-HH",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-MV",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NI",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-NW",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-RP",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SH",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SL",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-SN",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-ST",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      },
+      {
+        "dimension": "jurisdiction",
+        "value": "DE-TH",
+        "kind": "requires-closure",
+        "source": "required by bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee"
+      }
+    ],
+    "addedEvidence": [],
+    "mappingOrProvenanceChanged": false
+  },
+  "nativeRouteResultsUnchanged": true,
+  "nativeRouteResults": [
+    {
+      "scopeId": "canonical-politics-economics-crossstage",
+      "label": "Sekundarstufe I/II",
+      "selectedAtomicGoals": 407,
+      "maturity": "M4",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 407,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 407,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "pass",
+          "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 15,
+            "evaluatedProjectionScopes": 15,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 14,
+            "requiredTerminalAutonomyGoals": 14,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 0,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+            "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+            "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+            "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 0,
+            "visibleSelectedAtomicGoalOccurrences": 1312,
+            "visibleProfileSelectedAtomicGoalOccurrences": 1312,
+            "visibleProjectedRouteTargetGoalOccurrences": 1312,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 14,
+            "terminalAutonomyGoalsWithExamData": 14,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 14,
+            "concreteExamData": 14,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 14,
+            "releasedCoverageCompleteExamData": 14,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "nativeA": {
+    "id": "CQR-301",
+    "status": "pass",
+    "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+    "metrics": {
+      "configs": 1,
+      "leafGoals": 413,
+      "atomic": 413,
+      "needsDeveloperReview": 0,
+      "nonAtomic": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    }
+  },
+  "nativeM": {
+    "id": "CQR-302",
+    "status": "pass",
+    "summary": "Memory-card review is current: 107/413 ordinary atomic goals intentionally use memorization support, 62/62 primary cards are kept with origin traces, all 5 memory goals are traced, and 672 view-visible memory-required goals resolve to visible memory nodes.",
+    "metrics": {
+      "configs": 1,
+      "reviewedGoals": 413,
+      "noMemoryNeeded": 306,
+      "memoryRequired": 107,
+      "needsDeveloperReview": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "duplicateRecords": 0,
+      "invalidRecords": 0,
+      "primaryCards": 62,
+      "keptCards": 62,
+      "cardsMarkedRemove": 0,
+      "cardNeedsDeveloperReview": 0,
+      "missingCardReviews": 0,
+      "staleCardReviews": 0,
+      "obsoleteCardReviews": 0,
+      "duplicateCardReviewRecords": 0,
+      "invalidCardReviewRecords": 0,
+      "untracedMemoryRequiredGoals": 0,
+      "visibilityScopes": 15,
+      "visibilityCheckedMemoryRequiredGoals": 672,
+      "visibilityMissingVisibleMemoryGoals": 0,
+      "visibilityErrors": 0,
+      "memoryGoals": 5,
+      "tracedMemoryGoals": 5,
+      "untracedMemoryGoals": 0,
+      "deckIds": 5,
+      "deckFiles": 5,
+      "cardRows": 62
+    },
+    "details": [
+      "canonical-politics-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-politics-economics-full.md"
+    ]
+  },
+  "selectedNativeFingerprintsUnchanged": [
+    {
+      "goalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+      "atomicity": "sha256:bf7222eabe0cfb6db4c5740184a7522fb348fc6e398a5a3648badc512344d63c",
+      "memory": "sha256:aba63a86bdb1941641d47940d8658b31488a36945be6c9a2ce55d58c302028eb"
+    },
+    {
+      "goalId": "bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+      "atomicity": "sha256:fd1815d91dab020e72487661b42937c2456382d4fbd3e0bbc595430dc9b4cf34",
+      "memory": "sha256:9f7af2314537b56b5c4abaa67727b78f99a730e53db89eae8924c2f4190e80ba"
+    },
+    {
+      "goalId": "022c620f-fdb3-5814-a9b7-f18614130793",
+      "atomicity": "sha256:be1b66500feacb51561113cf6039a74778204ef3bf70a7953eb9ad8ec900c24a",
+      "memory": "sha256:870ceb9dd5ff5b1993b750da220b94329104d02ea9bd45d9741d49b98f602497"
+    },
+    {
+      "goalId": "b2d76b0d-cdb3-5f35-893f-896903d673db",
+      "atomicity": "sha256:9568db2438ae3696e9669510c60208e2a9e8e97847482e9c8201ba671c4ff635",
+      "memory": "sha256:47823cbf4621a2e73b381ba496a87216bc82d48531b19bd53fe25efa50c9903e"
+    },
+    {
+      "goalId": "f5fae603-b076-5ccb-8c76-c05fa91f78c3",
+      "atomicity": "sha256:c29a32651788168c3a24da9ee9bdbe8d327e995345ae21068d64d817feb590c2",
+      "memory": "sha256:ace3684cecc5451b3220bb0da0b0482301797d83aab221298854b2e3612cf859"
+    },
+    {
+      "goalId": "a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+      "atomicity": "sha256:826434c9ed75c0cd0e7d59f11d65625fa970bd4bc88b46b5bac9807af27c1bb0",
+      "memory": "sha256:3e12ef4c516feb1f5839c6b93af128e3d8f9b771d3efc394c70d67477f8ca503"
+    },
+    {
+      "goalId": "b76a024a-55a6-5c77-85cd-b37ef10e5197",
+      "atomicity": "sha256:d4bbddfe6274f2d2f73a1bc36dae762dbc6d5feffb47f62dbccb6d916c6fd9f1",
+      "memory": "sha256:65d0013025579cd290e1ec309f5a2ccebef418c2b56a365c374f3dfe9bb378e5"
+    }
+  ],
+  "codePins": [
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd"
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    },
+    {
+      "path": "app/src/utils/goalFilters.ts",
+      "sha256": "49e4896fba8d946ce9cc0de30230f73770a29db61486fc3a6dc53f099a4bc89f"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "4342979a74b85e3aa2bce2e95a95e14f7c5a05fe83698076bd82b8c0182b5da6"
+    },
+    {
+      "path": "app/scripts/lib/skillGraphIntegrity.ts",
+      "sha256": "0d031384b9b1d5a0741b27adefed48aa8c78166b0b688dcfc5c124083e1e4984"
+    },
+    {
+      "path": "app/scripts/auditTransitiveMinimality.ts",
+      "sha256": "dd6d1dad87f269f9aecac5387d1df700483496d9fc8987edd594239b759cd908"
+    }
+  ],
+  "claimLimits": [
+    "No executed LearnerService/focus/strict-mode regression; those checks remain a next-step condition.",
+    "G01a remains477 and G17 remains122; this is not M6 restoration or a passing whole skill graph.",
+    "No independent approval of existing assessment materials or of all old source mappings.",
+    "No new A/M/D/P/V review is inferred from this formal normalization."
+  ],
+  "exactFindingDelta": {
+    "removed": [
+      {
+        "ruleId": "G17",
+        "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "goalId": "022c620f-fdb3-5814-a9b7-f18614130793",
+        "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+        "witness": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:022c620f-fdb3-5814-a9b7-f18614130793",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ]
+      },
+      {
+        "ruleId": "G17",
+        "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "goalId": "041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+        "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+        "witness": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ]
+      },
+      {
+        "ruleId": "G17",
+        "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "goalId": "b2d76b0d-cdb3-5f35-893f-896903d673db",
+        "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+        "witness": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:b2d76b0d-cdb3-5f35-893f-896903d673db",
+          "51b60137-46e8-5498-973e-ea38bb32f327:041b4a11-d7a3-5557-b5d0-2c365faccc5b",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ]
+      },
+      {
+        "ruleId": "G17",
+        "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "goalId": "bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+        "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+        "witness": [
+          "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+          "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+          "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+        ]
+      }
+    ],
+    "added": [],
+    "retainedWithChangedWitness": [
+      {
+        "before": {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+          "goalId": "f5fae603-b076-5ccb-8c76-c05fa91f78c3",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+          "witness": [
+            "51b60137-46e8-5498-973e-ea38bb32f327:f5fae603-b076-5ccb-8c76-c05fa91f78c3",
+            "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+          ]
+        },
+        "after": {
+          "ruleId": "G17",
+          "code": "TRANSITIVE_REDUNDANT_REQUIREMENT",
+          "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+          "goalId": "f5fae603-b076-5ccb-8c76-c05fa91f78c3",
+          "sourceFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "message": "Requirement 51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197 remains reachable after removing its authored origin.",
+          "witness": [
+            "51b60137-46e8-5498-973e-ea38bb32f327:f5fae603-b076-5ccb-8c76-c05fa91f78c3",
+            "51b60137-46e8-5498-973e-ea38bb32f327:bf0f8cac-3fb9-5c50-ad93-bbb6e2241aee",
+            "51b60137-46e8-5498-973e-ea38bb32f327:a2bd27fa-8e31-59ff-ab34-66fac86c0bb5",
+            "51b60137-46e8-5498-973e-ea38bb32f327:b76a024a-55a6-5c77-85cd-b37ef10e5197"
+          ]
+        }
+      }
+    ]
+  }
+}
