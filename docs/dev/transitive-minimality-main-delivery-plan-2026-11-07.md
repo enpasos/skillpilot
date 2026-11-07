@@ -6,9 +6,14 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-Die erste Lieferung entsteht auf `fix/g17-checker`, ausgehend von
-`origin/main` (`0ce5a8d791eeb9783a919195fd8590bfb79f3595`). PR84 bleibt
-als Herkunft des alten Auditstands getrennt erhalten. Der alte WIP und lokale
+Die erste Lieferung ist mit [PR #86](https://github.com/enpasos/skillpilot/pull/86)
+nach main übernommen: Commit
+[`ab0aa4ea9f`](https://github.com/enpasos/skillpilot/commit/ab0aa4ea9f861c8a6bd6e6600268548a516ef666).
+Sie entstand auf `fix/g17-checker` von `0ce5a8d791e` und bestand die frischen
+Pflichtworkflows einschließlich G17-Regressionen und unveränderter Fachfloors.
+Die notwendige technische Transitivitätskorrektur folgt jetzt auf
+`fix/g17-transitive-prerequisites` von diesem Main-Commit. PR84 bleibt als
+Herkunft des alten Auditstands getrennt erhalten. Der alte WIP und lokale
 Änderungen sind gesichert; unversionierte Altartefakte bleiben erhalten.
 
 **Lieferregel:** Den jeweils kleinen, abgeschlossenen PR mit erfolgreicher
@@ -46,14 +51,15 @@ in [PR #84](https://github.com/enpasos/skillpilot/pull/84) erhalten. Seine
 erhaltenswerten Nettoänderungen werden in kleine lieferbare Pakete aufgeteilt.
 Den gesamten WIP zusammen zu mergen ist nicht der Lieferplan.
 
-## G17: zwei PRs innerhalb derselben Aufgabe
+## G17: kleine Lieferungen innerhalb derselben Aufgabe
 
 | Lieferung | Inhalt aus dem WIP | Konkrete Main-Abnahme |
 | --- | --- | --- |
-| G17-Prüfer | Eigenständiger `app/scripts/auditTransitiveMinimality.ts`, `testTransitiveMinimality.ts`, eindeutiger Bestandsaufruf, echte CLI-Gegenfälle und dieser Lieferplan. Die beiden vorhandenen Codedateien hängen nur von Node beziehungsweise voneinander ab. | Vereinbarter Scope vollständig; Vererbung und wechselnde Zeugen korrekt; Redundanz, fehlender Scope und ungültige Auflösung werden tatsächlich abgewiesen; bestehende Pflichtprüfungen dieses kleinen PR bestehen. Nach erfolgreicher Prüfung nach main übernehmen. |
+| G17-Prüfer, geliefert | Eigenständiger `app/scripts/auditTransitiveMinimality.ts`, Algorithmus- und CLI-Regressionen, eindeutiger vollständiger Bestandsaufruf und dieser Lieferplan. | PR #86 auf main bei `ab0aa4ea9f`; frische Pflicht-CI erfolgreich. 572 unabhängige Literalvergleiche, 3.593 abgewiesene ungültige Graphen und zwölf echte CLI-Testgruppen. Tatsächlicher aktueller Bestandsaufruf: 21 Roots, fünf `pass`, zwölf `fail`, vier `invalid-input`, korrekt Exit 2. |
+| Technische Transitivitätsabhängigkeit | Nur die nachgewiesen erforderlichen fünf Produktionsdateien und gezielten Regressionen aus `b8eef5b967`: gemeinsame Voraussetzungstopologie, vollständige kanonische Level-2-Zielclosure und Fokusfilter nach transitiver Auswertung. | Ein redundanter Shortcut darf Frontier und Required Work vor/nach Entfernung nicht verändern, auch bei gemeistertem oder außerhalb des Fokus liegendem Zwischenziel. Alle vier Frontier-APIs, normale/strikte Modi, fremde/vererbte Voraussetzungen und Cachetrennung prüfen. Gespeicherte Mastery und Anerkennungsregeln bleiben unverändert. Frische Pflicht-CI und Lieferung nach main. |
 | G17-Bestand und Standard-Meilensteinprüfung | Mechanisch belegte Reduktionsbatches, G17 in der regulären Meilensteinberechnung und verpflichtender CI-Aufruf gegen die tatsächlichen Dateien. Vorhandene geeignete Korrekturen wiederverwenden. | Null G17-Verstöße im Abnahmebestand; Invarianten erhalten; wieder eingefügte Redundanz oder unvollständige Prüfung verhindert den Meilensteinpass. Sämtliche zehn Zielstände werden regulär auf main mindestens erreicht, alle erforderlichen frischen CI-Prüfungen bestehen und die Änderungen sind nach main geliefert. Erst damit ist das Goal erledigt. |
 
-Die erste Lieferung bringt den Prüfer auf main, behauptet aber keinen minimalen
+Die erste Lieferung hat den Prüfer auf main gebracht, behauptet aber keinen minimalen
 Bestand und erfüllt das Goal noch nicht. Ein separater grüner G17-Check reicht
 ebenfalls nicht: Die Standard-Meilensteinprüfung muss die Zielstände tatsächlich
 berechnen. Ihr echter Bestandscheck bleibt bei vorhandenen Fehlern rot. Es gibt
@@ -76,7 +82,7 @@ Prüfungen vorbei. Blockieren bestehende technische Frischebindungen die zweite
 Lieferung, wird genau diese Abhängigkeit isoliert und offen gelöst. Keine
 stillen Fingerprintwechsel und keine dadurch gestarteten Fachreviewkampagnen.
 
-Ein konkreter technischer Risikofall ist bereits bekannt: Main kann
+Ein konkreter technischer Fehler ist belegt: Main kann
 Voraussetzungspfade an gemeisterten oder außerhalb liegenden Zwischenknoten
 abbrechen. Die vorhandene Transitivitätskorrektur aus `b8eef5b967` darf deshalb
 nur im nachweislich erforderlichen Umfang als G17-Abhängigkeit übernommen
@@ -118,8 +124,10 @@ unbefristeter Draft oder ein Archivbranch ersetzt den Lieferweg nicht.
 Umgekehrt wird erhaltenswerte Arbeit nicht ungeprüft gemerged, nur um sie
 formal auf main zu haben.
 
-Erster Umsetzungsschritt: den kleinen G17-Prüfer-Diff auf der dann aktuellen
-Main-Basis vorbereiten. Die M6/M7-Wiederherstellung unter der erweiterten
+Abgeschlossen ist die kleine G17-Prüferlieferung. Nächster Schritt ist die
+notwendige technische Transitivitätskorrektur, danach folgen begrenzte
+Frischeanschlüsse und mechanische Reduktionen samt Standardintegration.
+Die M6/M7-Wiederherstellung unter der erweiterten
 Standardprüfung ist verbindliche Abnahme dieses Goals. Der breite
 518-Regel-Audit und semantische Arbeiten gehören weiterhin nicht dazu.
 Ein tatsächlich fachlicher Blocker wird konkret benannt; er ist kein Auftrag,

@@ -17,13 +17,13 @@ class AutomaticCompletionTest {
     private final CompletionProfileCompiler compiler = new CompletionProfileCompiler();
     private final CompletionEvaluator evaluator = new CompletionEvaluator();
 
-    @Test void masteredIntermediateStopsDemandFromAnOpenAssessment() {
+    @Test void masteredIntermediateRetainsTransitiveDemandFromAnOpenAssessment() {
         var graph = graph(atom("a"), atom("b", "a"), exam("c", "b"));
         var compiled = compile(graph);
         assertThat(compiled.directPrerequisites("c")).containsExactly("b");
         var result = evaluator.evaluateAutomatic(compiled, Set.of("b"));
-        assertThat(result.waivedGoalIds()).containsExactly("a");
-        assertThat(result.pendingTargetGoalIds()).containsExactly("c");
+        assertThat(result.waivedGoalIds()).isEmpty();
+        assertThat(result.pendingTargetGoalIds()).containsExactly("a", "c");
         assertThat(result.masteredGoalIds()).containsExactly("b");
         assertThat(result.complete()).isFalse();
     }
@@ -33,6 +33,36 @@ class AutomaticCompletionTest {
         assertThat(result.waivedGoalIds()).isEmpty();
         assertThat(result.pendingTargetGoalIds()).containsExactly("a", "c");
         assertThat(result.blockedByGoalIds()).containsEntry("a", "c");
+    }
+
+    @Test void removingAGoalEffectiveRedundantEdgePreservesAutomaticRequiredWork() {
+        var withShortcut = graph(atom("A"), atom("B", "A"), exam("Q", "B", "A"));
+        var withoutShortcut = graph(atom("A"), atom("B", "A"), exam("Q", "B"));
+
+        var before = evaluate(withShortcut, Set.of("B"));
+        var after = evaluate(withoutShortcut, Set.of("B"));
+
+        assertThat(before.waivedGoalIds()).isEmpty();
+        assertThat(before.pendingTargetGoalIds()).containsExactly("A", "Q");
+        assertThat(after.waivedGoalIds()).isEqualTo(before.waivedGoalIds());
+        assertThat(after.pendingTargetGoalIds()).isEqualTo(before.pendingTargetGoalIds());
+        assertThat(after.blockedByGoalIds()).isEqualTo(before.blockedByGoalIds());
+        assertThat(after.masteredGoalIds()).containsExactly("B");
+    }
+
+    @Test void requiredClusterKeepsItsAtomsTransitivePreparationAfterThoseAtomsAreMastered() {
+        var cluster = atom("K");
+        cluster.setContains(List.of("B"));
+        var graph = graph(atom("A"), atom("B", "A"), cluster, exam("Q", "K"));
+        var compiled = compiler.compileAutomatic(graph, Set.of("A", "B", "Q"), Set.of("A", "B", "Q"), "generation");
+        assertThat(compiled.directPrerequisites("Q")).containsExactly("B");
+        assertThat(compiled.directPrerequisites("B")).containsExactly("A");
+
+        var result = evaluator.evaluateAutomatic(compiled, Set.of("B"));
+
+        assertThat(result.waivedGoalIds()).isEmpty();
+        assertThat(result.pendingTargetGoalIds()).containsExactly("A", "Q");
+        assertThat(result.masteredGoalIds()).containsExactly("B");
     }
 
     @Test void ordinaryTerminalGoalsOrientationAndCardsHaveNoExtraProtection() {
@@ -93,9 +123,8 @@ class AutomaticCompletionTest {
 
     @Test void implicitReasonsNeverInventAssessmentEvidenceForOrdinaryMastery() {
         var result = evaluate(graph(atom("a"), atom("b", "a"), exam("c", "b")), Set.of("b"));
-        assertThat(result.waiverReasons()).containsOnlyKeys("a");
-        assertThat(result.waiverReasons().get("a").ruleId()).isEqualTo("no_remaining_demand");
-        assertThat(result.waiverReasons().get("a").assessmentGoalIds()).isEmpty();
+        assertThat(result.waiverReasons()).isEmpty();
+        assertThat(result.blockedByGoalIds()).containsEntry("a", "c");
         assertThat(result.masteredAssessmentGoalIds()).isEmpty();
     }
 
@@ -135,7 +164,7 @@ class AutomaticCompletionTest {
         assertThatThrownBy(() -> result.waivedGoalIds().clear()).isInstanceOf(UnsupportedOperationException.class);
     }
 
-    @Test void everySmallDagAndBinaryAssignmentMatchesTheIndependentLocalConsumerFixedPoint() {
+    @Test void everySmallDagAndBinaryAssignmentMatchesIndependentTransitiveReachability() {
         for (int count = 1; count <= 4; count++) {
             List<int[]> possibleEdges = new ArrayList<>();
             for (int from = 0; from < count; from++) for (int to = from + 1; to < count; to++)
@@ -161,21 +190,28 @@ class AutomaticCompletionTest {
                     for (int masteryMask = 0; masteryMask < 1 << count; masteryMask++) {
                         Set<String> mastery = new TreeSet<>();
                         for (int node = 0; node < count; node++) if ((masteryMask & 1 << node) != 0) mastery.add("v" + node);
-                        // Independent semantics: repeatedly discharge ordinary goals
-                        // whose direct consumers are all already done, starting at M.
-                        Set<String> done = new HashSet<>(mastery);
-                        boolean changed;
-                        do {
-                            changed = false;
-                            for (String id : graph.keySet()) {
-                                if (done.contains(id) || assessments.contains(id)) continue;
-                                boolean allConsumersDone = graph.values().stream()
-                                        .filter(g -> g.getRequires().contains(id)).allMatch(g -> done.contains(g.getId()));
-                                if (allConsumersDone) changed |= done.add(id);
+                        // Independent all-pairs reference: no production queue or
+                        // mastery-dependent traversal is reused by this oracle.
+                        boolean[][] reachable = new boolean[count][count];
+                        for (int from = 0; from < count; from++) for (int to = 0; to < count; to++) {
+                            reachable[from][to] = graph.get("v" + from).getRequires().contains("v" + to);
+                        }
+                        for (int via = 0; via < count; via++) for (int from = 0; from < count; from++)
+                            for (int to = 0; to < count; to++)
+                                reachable[from][to] |= reachable[from][via] && reachable[via][to];
+                        Set<String> expected = new TreeSet<>();
+                        for (int node = 0; node < count; node++) {
+                            String id = "v" + node;
+                            if (mastery.contains(id)) continue;
+                            boolean needed = assessments.contains(id);
+                            for (int assessment = 0; assessment < count; assessment++) {
+                                String q = "v" + assessment;
+                                needed |= assessments.contains(q) && !mastery.contains(q) && reachable[assessment][node];
                             }
-                        } while (changed);
-                        Set<String> expected = new TreeSet<>(done);
-                        expected.removeAll(mastery);
+                            if (!needed) expected.add(id);
+                        }
+                        Set<String> done = new HashSet<>(mastery);
+                        done.addAll(expected);
                         var actual = evaluator.evaluateAutomatic(compiled, mastery);
                         assertThat(actual.waivedGoalIds()).isEqualTo(expected);
                         assertThat(actual.masteredTargetCount() + actual.waivedTargetCount() + actual.pendingTargetCount())

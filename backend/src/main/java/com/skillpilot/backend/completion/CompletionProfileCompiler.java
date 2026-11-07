@@ -22,6 +22,83 @@ import java.util.TreeSet;
  * context, so an unrelated expansion defect does not change this scope.
  */
 public final class CompletionProfileCompiler {
+    /** Immutable, mastery-independent normalization shared with ordinary availability. */
+    public static final class PrerequisiteTopology {
+        private final Map<String, Node> nodes;
+        private final Map<String, Set<String>> prerequisites;
+
+        private PrerequisiteTopology(Map<String, Node> nodes,
+                Map<String, Set<String>> prerequisites) {
+            this.nodes = Map.copyOf(nodes);
+            this.prerequisites = immutableSets(prerequisites);
+        }
+
+        private static Map<String, Set<String>> immutableSets(Map<String, Set<String>> values) {
+            Map<String, Set<String>> result = new TreeMap<>();
+            values.forEach((id, refs) -> result.put(id, java.util.Collections.unmodifiableSet(new TreeSet<>(refs))));
+            return java.util.Collections.unmodifiableMap(result);
+        }
+
+        private Set<String> directPrerequisites(String id) {
+            if (!nodes.containsKey(id)) fail("MISSING_REFERENCE", "Unknown goal " + id);
+            return prerequisites.get(id);
+        }
+
+        /** Full atomic demand; mastery and endpoint scope never stop traversal. */
+        public Set<String> transitivePrerequisites(String id) {
+            directPrerequisites(id);
+            return java.util.Collections.unmodifiableSet(new TreeSet<>(reachable(id, prerequisites)));
+        }
+
+        public void validateContext(Set<String> roots) {
+            Map<String, Set<String>> edges = new TreeMap<>();
+            ArrayDeque<String> pending = new ArrayDeque<>(roots);
+            while (!pending.isEmpty()) {
+                String id = pending.removeFirst();
+                if (edges.containsKey(id)) continue;
+                Set<String> refs = directPrerequisites(id);
+                edges.put(id, refs);
+                pending.addAll(refs);
+            }
+            topologicalOrder(edges, "ATOMIC_CYCLE");
+        }
+    }
+
+    /** Inherit globally, expand every required cluster, then traverse atomic edges. */
+    public PrerequisiteTopology normalizePrerequisites(Map<String, LearningGoal> canonicalGoals) {
+        if (canonicalGoals == null || canonicalGoals.isEmpty()) fail("MISSING_REFERENCE", "No canonical goals");
+        Map<String, Node> nodes = snapshot(canonicalGoals);
+        Map<String, Set<String>> contains = new TreeMap<>();
+        Map<String, Set<String>> requires = new TreeMap<>();
+        for (Node node : nodes.values()) {
+            contains.put(node.id(), node.children());
+            requires.put(node.id(), node.requires());
+        }
+        List<String> containsOrder = topologicalOrder(contains, "CONTAINS_CYCLE");
+        topologicalOrder(requires, "REQUIRES_CYCLE");
+        // Parent-before-child propagation follows every contains path, including multiple parents.
+        Map<String, Set<String>> effective = new HashMap<>();
+        for (Node node : nodes.values()) effective.put(node.id(), new TreeSet<>(node.requires()));
+        for (String id : containsOrder) {
+            for (String child : nodes.get(id).children()) effective.get(child).addAll(effective.get(id));
+        }
+        Map<String, Set<String>> atoms = new HashMap<>();
+        for (int i = containsOrder.size() - 1; i >= 0; i--) {
+            String id = containsOrder.get(i);
+            Node node = nodes.get(id);
+            Set<String> basis = new TreeSet<>();
+            if (node.children().isEmpty()) basis.add(id);
+            else for (String child : node.children()) basis.addAll(atoms.get(child));
+            atoms.put(id, basis);
+        }
+        Map<String, Set<String>> expanded = new TreeMap<>();
+        for (String id : nodes.keySet()) {
+            Set<String> refs = new TreeSet<>();
+            for (String prerequisite : effective.get(id)) refs.addAll(atoms.get(prerequisite));
+            expanded.put(id, refs);
+        }
+        return new PrerequisiteTopology(nodes, expanded);
+    }
     /** Adds existing scope metadata without requiring authored review or waiver grants. */
     public CompiledCompletionProfile compileAutomaticProfile(
             CompletionProfileDefinition definition,
@@ -116,32 +193,8 @@ public final class CompletionProfileCompiler {
         if (resolvedScopeTargetIds == null || resolvedScopeTargetIds.isEmpty()) fail("EMPTY_SCOPE", "Empty target scope");
         if (level2TargetIds == null) fail("FOREIGN_TARGET", "Missing authoritative Level-2 targets");
 
-        Map<String, Node> nodes = snapshot(canonicalGoals);
-        Map<String, Set<String>> contains = new TreeMap<>();
-        Map<String, Set<String>> requires = new TreeMap<>();
-        for (Node node : nodes.values()) {
-            contains.put(node.id(), node.children());
-            requires.put(node.id(), node.requires());
-        }
-        List<String> containsOrder = topologicalOrder(contains, "CONTAINS_CYCLE");
-        topologicalOrder(requires, "REQUIRES_CYCLE");
-
-        // Parent-before-child propagation follows every contains path, including multiple parents.
-        Map<String, Set<String>> effective = new HashMap<>();
-        for (Node node : nodes.values()) effective.put(node.id(), new TreeSet<>(node.requires()));
-        for (String id : containsOrder) {
-            for (String child : nodes.get(id).children()) effective.get(child).addAll(effective.get(id));
-        }
-
-        Map<String, Set<String>> atoms = new HashMap<>();
-        for (int i = containsOrder.size() - 1; i >= 0; i--) {
-            String id = containsOrder.get(i);
-            Node node = nodes.get(id);
-            Set<String> basis = new TreeSet<>();
-            if (node.children().isEmpty()) basis.add(id);
-            else for (String child : node.children()) basis.addAll(atoms.get(child));
-            atoms.put(id, basis);
-        }
+        PrerequisiteTopology topology = normalizePrerequisites(canonicalGoals);
+        Map<String, Node> nodes = topology.nodes;
 
         Set<String> targets = sorted(resolvedScopeTargetIds);
         Set<String> assessments = new TreeSet<>();
@@ -160,8 +213,7 @@ public final class CompletionProfileCompiler {
         while (!pending.isEmpty()) {
             String id = pending.removeFirst();
             if (!context.add(id)) continue;
-            Set<String> prerequisites = new TreeSet<>();
-            for (String prerequisite : effective.get(id)) prerequisites.addAll(atoms.get(prerequisite));
+            Set<String> prerequisites = topology.directPrerequisites(id);
             expanded.put(id, prerequisites);
             pending.addAll(prerequisites);
         }

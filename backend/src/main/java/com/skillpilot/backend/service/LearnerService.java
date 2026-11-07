@@ -251,21 +251,38 @@ public class LearnerService {
     private CompletionCanonicalGraphResolver completionCanonicalGraphResolver;
 
     private Map<String, LearningGoal> completionCanonicalGraph(String curriculumId) {
-        if (completionApplicationService.catalog().automatic()) {
-            return completionApplicationService.automaticCanonicalGraph(curriculumId,
-                    () -> completionCanonicalGraphResolver.load(curriculumId));
-        }
         return completionApplicationService.canonicalGraph(curriculumId,
                 () -> completionCanonicalGraphResolver.load(curriculumId));
     }
 
     private static final String AUTOMATIC_COMPLETION_PREFIX = "automatic:";
     private static final String AUTOMATIC_COMPLETION_DEFAULT = AUTOMATIC_COMPLETION_PREFIX + "personal-curriculum";
-    private static final String AUTOMATIC_COMPLETION_REVISION = "direct-demand-v1";
+    private static final String AUTOMATIC_COMPLETION_REVISION = "full-transitive-demand-v2";
 
     private Map<String, LearningGoal> completionGraph(Learner learner, GoalProjection projection) {
-        Map<String, LearningGoal> canonical = completionCanonicalGraph(learner.getSelectedCurriculum());
-        if (!completionApplicationService.catalog().automatic()) return canonical;
+        if (!completionApplicationService.catalog().automatic())
+            return completionCanonicalGraph(learner.getSelectedCurriculum());
+        return prerequisiteGraph(learner, projection);
+    }
+
+    private Map<String, LearningGoal> prerequisiteGraph(Learner learner, GoalProjection projection) {
+        CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
+                ? completionCanonicalGraphResolver
+                : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
+        Set<String> targets = automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection);
+        java.util.function.Supplier<Map<String, LearningGoal>> loader = () -> resolver.loadForTargets(
+                learner.getSelectedCurriculum(), targets, projection.structuralGoals());
+        Map<String, LearningGoal> canonical = completionApplicationService != null
+                && completionApplicationService.catalog().available()
+                ? completionApplicationService.automaticCanonicalGraph(
+                        learner.getSelectedCurriculum() + ":" + completionScopeDigest(learner)
+                                + ":" + AUTOMATIC_COMPLETION_REVISION, loader)
+                : loader.get();
+        return applyAuthoredAtomicEntries(canonical, projection);
+    }
+
+    private Map<String, LearningGoal> applyAuthoredAtomicEntries(
+            Map<String, LearningGoal> canonical, GoalProjection projection) {
         Map<String, LearningGoal> resolved = new LinkedHashMap<>(canonical);
         // A reviewed direct goalEntry can intentionally make a canonical cluster
         // an atomic target. Apply that authoritative structure, never UI collapse.
@@ -7186,57 +7203,39 @@ public class LearnerService {
     private FrontierPrerequisites frontierPrerequisites(
             Learner learner, GoalProjection projection, Map<String, Double> mastery, Set<String> scope) {
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
-        Map<String, LearningGoal> lookup = projection.structuralGoals();
         Set<String> prerequisiteScope = strictMode ? null : projection.targetGoalIds().stream()
                 .filter(id -> scope == null || scope.contains(id))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
-        // Inherit on the structural graph first. Only the ensuing traversal is
-        // restricted to F, so an ancestor outside F may still author an internal edge.
-        return new FrontierPrerequisites(lookup, computeEffectiveRequires(lookup),
-                computeEffectivePrereqMastery(lookup, mastery, prerequisiteScope), strictMode, prerequisiteScope);
+        try {
+            Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
+            var topology = new CompletionProfileCompiler().normalizePrerequisites(lookup);
+            topology.validateContext(projection.targetGoalIds());
+            return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
+        } catch (CompletionCompilationException invalid) {
+            // Broken authored definitions never become an empty, successful demand.
+            return new FrontierPrerequisites(Map.of(), null, mastery, prerequisiteScope);
+        }
     }
 
     private record FrontierPrerequisites(Map<String, LearningGoal> lookup,
-            Map<String, List<String>> effectiveRequires, Map<String, Double> mastery,
-            boolean strictMode, Set<String> scope) { }
+            CompletionProfileCompiler.PrerequisiteTopology topology, Map<String, Double> mastery,
+            Set<String> scope) { }
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
-        Map<String, LearningGoal> prerequisiteLookupGoals = prerequisites.lookup();
-        List<String> requires = prerequisites.effectiveRequires().getOrDefault(goal.getId(), goal.getRequires());
-        if (requires != null) {
-            for (String reqId : requires) {
-                String resolvedReqId = resolveGoalRef(reqId, prerequisiteLookupGoals);
-                boolean direct = isDirectRequirement(
-                        goal, resolvedReqId == null ? reqId : resolvedReqId, prerequisiteLookupGoals);
-                if (resolvedReqId == null) {
-                    if (prerequisites.strictMode() || (projection.compositionViewApplied() && direct)) {
-                        return false;
-                    }
-                    // Preserve optimistic unknown legacy compatibility requirements.
-                    continue;
-                }
-                if (projection.compositionViewApplied()
-                        && !projection.targetGoalIds().contains(resolvedReqId)
-                        && !projection.prerequisiteOnlyGoalIds().contains(resolvedReqId)) {
-                    if (direct) {
-                        return false;
-                    }
-                    // Broad inherited compatibility requirements outside an authored
-                    // projection must not become hidden blockers.
-                    continue;
-                }
-                // Validate authored Level-2 references before applying the Level-3
-                // boundary. A valid edge leaving F is absent, including its whole chain.
-                if (prerequisites.scope() != null && !prerequisites.scope().contains(resolvedReqId)) {
-                    continue;
-                }
-                if (prerequisites.mastery().getOrDefault(resolvedReqId, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) {
-                    return false;
-                }
-                // An achieved prerequisite ends its own preparation demand.
-                // This does not certify or write mastery of earlier prerequisites.
+        if (prerequisites.topology() == null) return false;
+        // Preserve the explicit Level-2 composition validity boundary. Canonical
+        // traversal supplies lookup, never an inferred target/support role.
+        if (projection.compositionViewApplied() && goal.getRequires() != null) {
+            for (String ref : goal.getRequires()) {
+                String id = resolveGoalRef(ref, prerequisites.lookup());
+                if (id == null || !projection.targetGoalIds().contains(id)
+                        && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
             }
+        }
+        for (String id : prerequisites.topology().transitivePrerequisites(goal.getId())) {
+            if (prerequisites.scope() != null && !prerequisites.scope().contains(id)) continue;
+            if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) return false;
         }
         return true;
     }
