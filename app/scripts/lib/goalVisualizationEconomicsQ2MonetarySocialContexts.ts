@@ -18,8 +18,8 @@ const base = 'curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaf
 const inputs = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/'
 const correctedGoal = '676684da-5ba2-5c2a-ba7e-a8413915c29c'
 const requireValue: (value: unknown, message: string) => asserts value = (value, message) => { if (!value) throw new Error(message) }
-const object = (value: unknown): Record<string, any> => { requireValue(value && typeof value === 'object' && !Array.isArray(value), 'Q2 object missing'); return value as Record<string, any> }
-const array = (value: unknown): Record<string, any>[] => { requireValue(Array.isArray(value), 'Q2 array missing'); return value.map(object) }
+const object = (value: unknown): Record<string, unknown> => { requireValue(value && typeof value === 'object' && !Array.isArray(value), 'Q2 object missing'); return value as Record<string, unknown> }
+const array = (value: unknown): Record<string, unknown>[] => { requireValue(Array.isArray(value), 'Q2 array missing'); return value.map(object) }
 const supplied = (value: unknown): string => { requireValue(typeof value === 'string' && value.trim(), 'Q2 supplied text missing'); return value }
 const digest = (value: unknown): string => { requireValue(typeof value === 'string' && /^(sha256:)?[a-f0-9]{64}$/u.test(value), 'Q2 hash missing'); return value.replace(/^sha256:/u, '') }
 const relative = (path: string) => path.replace(/^\/home\/enpasos\/projects\/skillpilot\//u, '')
@@ -82,11 +82,11 @@ export function readEconomicsQ2MonetarySocialContext(receipt: VisualizationConte
   const generation = read(generationPath, r.generationRecordSha256)
   requireValue(generation.goalId === goal && generation.candidatePath === assetPath && digest(generation.sha256) === receipt.reviewedAsset.sha256
     && generation.generationIsApproval === false && generation.humanApprovalClaimed === false
-    && Number.isFinite(Date.parse(generation.startedAt)) && Date.parse(generation.startedAt) <= Date.parse(generation.completedAt)
-    && Date.parse(generation.completedAt) <= Date.parse(r.reviewedAt), 'Q2 original generation receipt contradicts image/review')
+    && Number.isFinite(Date.parse(supplied(generation.startedAt))) && Date.parse(supplied(generation.startedAt)) <= Date.parse(supplied(generation.completedAt))
+    && Date.parse(supplied(generation.completedAt)) <= Date.parse(r.reviewedAt), 'Q2 original generation receipt contradicts image/review')
   let native: VisualizationContextQualification['context'] = { landscapeId: owner, goalId: goal, subject,
     title: supplied(r.goalTitle), description: supplied(r.goalDescription), assetSha256: 'sha256:' + digest(r.assetSha256) }
-  let copies: Record<string, any>[]
+  let copies: Record<string, unknown>[]
   if (!corrected) {
     requireValue(r.authorCandidateBilingualGoalPath === inputs + 'whole-goals.candidate.json'
       && r.nativeBeforeGenerationReceiptPath === inputs + 'native-image-preparation/native-seventeen-preparation.actual.json'
@@ -115,7 +115,7 @@ export function readEconomicsQ2MonetarySocialContext(receipt: VisualizationConte
       && prior.independentReviewer === r.independentReviewer && prior.imageAuthorIsReviewer === false && prior.humanApproved === false
       && prior.goalTitle === r.goalTitle && prior.goalDescription === r.goalDescription
       && Array.isArray(prior.blockingFindings) && prior.blockingFindings.length > 0, 'Q2 actual rejected original/context not retained')
-    requireValue(prior.assetPath === base + goal + '/' + goal + '.png' && relative(generation.referencedImagePath) === prior.assetPath
+    requireValue(prior.assetPath === base + goal + '/' + goal + '.png' && relative(supplied(generation.referencedImagePath)) === prior.assetPath
       && createHash('sha256').update(raw(prior.assetPath, prior.assetSha256)).digest('hex') === digest(prior.assetSha256),
       'Q2 actual prior image binding differs')
     requireValue(r.actualPromptPath === base + goal + '/correction-v2/prompt.actual.txt'
@@ -131,7 +131,7 @@ export function readEconomicsQ2MonetarySocialContext(receipt: VisualizationConte
   for (const suffix of ['metadata.json', 'nano-banana-prompt.de.md']) {
     const matches = copies.filter(row => row.path === nativeDir + suffix)
     requireValue(matches.length === 1, 'Q2 fixed native input path missing')
-    const data = raw(matches[0].path, matches[0].sha256)
+    const data = raw(supplied(matches[0].path), matches[0].sha256)
     if (suffix === 'metadata.json') {
       const metadata = object(parseJson(data))
       requireValue(metadata.skillpilotId === goal && metadata.subjectPath === subject && metadata.lang === 'de'

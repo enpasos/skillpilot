@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-07T08:07:10.003072+00:00",
+  "check": "Full local npm run lint",
+  "exitCode": 1,
+  "currentRemoteHelperFourErrorsRepaired": true,
+  "remainingErrors": [
+    {
+      "path": "app/tmp/biologie-open18-current397-v4/capture_actual.ts",
+      "sha256": "1c6c9dae138fba5e46f2dfe673b9f1743511ecf3574430c4523c353953abe352",
+      "findings": [
+        "4:10 no-unused-vars pathToFileURL",
+        "60:47 no-explicit-any"
+      ],
+      "tracked": false,
+      "modifiedByThisRepair": false
+    }
+  ],
+  "successorFrame": "Same normal npm run lint with empty app/tmp, which has zero tracked files and is absent from fresh CI checkout; no ESLint configuration or tracked-input exclusions changed."
+}
