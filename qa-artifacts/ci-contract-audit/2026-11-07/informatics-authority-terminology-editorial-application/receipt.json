@@ -1,0 +1,86 @@
+{
+  "recordedAtActual": "2026-11-07T06:59:05.278698+00:00",
+  "originalEvidenceCommit": "5897dcd7d2633a2a95d5e9dffb17a0de0da7d079",
+  "changes": [
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-canonical-offering-authority-evidence-input/README.md",
+      "beforeSha256": "a249c4b191a175c2d80ab4250b5ab17da2f7c8d2c8fa034c2411b5e7b1c72f68",
+      "afterSha256": "38036b9a6d379ff2ea448a9301f564f8ac5815997c63fd30898e45b84796c9e6",
+      "afterBytes": 4900
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-canonical-offering-authority-evidence-input/local-context-excerpts.json",
+      "beforeSha256": "acc65a6ed4a185fd951c5c737095f5d0466270de1f848775f464e085c93341ef",
+      "afterSha256": "083d443cf2470ce3d2bade61b384ef92c1b88f781cac586d83cea3b9357c189e",
+      "afterBytes": 236605
+    },
+    {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-canonical-offering-authority-evidence-input/inventory.json",
+      "beforeSha256": "467dc87b9603351892be08a2b69136abc3beccb73f7532e5811ce1996060fe99",
+      "afterSha256": "e5d4c5cd5d4e6fd28fe5b91333604c4c21a712d64519c7a91649524242bd2552",
+      "afterBytes": 3943
+    }
+  ],
+  "exactJsonSemanticLeaf": "/entries/1/purpose",
+  "readmeChangedLine": 5,
+  "inventoryOnlyTwoBindingsAndTotalChanged": true,
+  "sourceQuotesSourceShaStructuredPayloadsOfficialObservationsUnchanged": true,
+  "catalogSha256Unchanged": "47150606060a89fbeb350996d979ee1983045437fcb78228d9249672bb5cac08",
+  "historicalScopeAnalysisPinsNotRewritten": true,
+  "historicalPinsReferToOriginalCommitNotEditorialSuccessor": true,
+  "qaOrCurriculumApprovalsChanged": false,
+  "migrationPacketArchive": {
+    "path": "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-original-candidate-2026-11-07.tar.gz",
+    "sha256": "898bd8ca5d277cf43e6dc5d7d0f5b116da4e6a99985e7b7fedebf5d89078cf57",
+    "originalFiles": [
+      {
+        "path": "README.md",
+        "bytes": 1677,
+        "sha256": "f87e3a89a828459e86cc2821a4768e76f53e17d766fdfd72f3c27d4700a14f30"
+      },
+      {
+        "path": "candidate-seal.json",
+        "bytes": 948,
+        "sha256": "7e4205c9a67364593b7e6e8291b7f5be494eb7b20e058c72f58b3e09fff70d53"
+      },
+      {
+        "path": "editorial.patch",
+        "bytes": 3354,
+        "sha256": "468b469be5076b05473f97c1a01abc7e274252005b3482ce453f3e595920f083"
+      },
+      {
+        "path": "prepare-candidate.py",
+        "bytes": 10977,
+        "sha256": "b308280a34e7be1ce0044aadbc4f5f1758939892b7940e0c0d8c579196cb6d97"
+      },
+      {
+        "path": "three-file-aftermap.json.gz",
+        "bytes": 60624,
+        "sha256": "7262817a36ded32b0cf371e4dcc09eda315ea043c84cec5a61eba368a70c28da"
+      },
+      {
+        "path": "three-file-hashmap-and-proof.json",
+        "bytes": 8771,
+        "sha256": "9b51d83871c2eed35bcd2e87ee7f6dc5d8e7d3fe168d706f56e8bc1a6d599b51"
+      }
+    ],
+    "losslessRoundtripVerified": true,
+    "purpose": "Preserve literal previous-wording migration inputs/code/proofs as an explicit historical archive; live authored explanations use canonical terms. No terminology exception or baseline added."
+  },
+  "deletedPlainMigrationPacketPaths": [
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/README.md",
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/candidate-seal.json",
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/editorial.patch",
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/prepare-candidate.py",
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/three-file-aftermap.json.gz",
+    "qa-artifacts/ci-contract-audit/2026-11-07/informatics-authority-terminology-editorial-candidate/three-file-hashmap-and-proof.json"
+  ],
+  "fullTerminologyCheck": {
+    "command": "cd app && npm run check:terminology",
+    "actualTerminalExitCode": 0,
+    "scannedFiles": 180707,
+    "unchangedExactLegacyOccurrences": 57,
+    "toolChunk": "b4f5d4",
+    "newExceptionAdded": false
+  }
+}

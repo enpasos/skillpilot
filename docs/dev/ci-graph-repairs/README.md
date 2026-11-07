@@ -228,6 +228,10 @@ Die früheren Nachläufe bleiben mit ihren damaligen Eingaben erhalten.
   tatsächliche native und Browser-Gegenfälle, unveränderte Fortschrittsanforderungen,
   reguläre Generatoren und sechs bestandene Prüfungen der aktiven Arbeitskopie.
 
+- [Redaktioneller Nachfolger der Informatik-Kontexterläuterungen](informatics-authority-terminology-editorial-successor-2026-11-07.md):
+  zwei Erläuterungen korrigiert, Originale im Gitverlauf erhalten,
+  vollständiger Terminologiecheck ohne neue Ausnahme bestanden.
+
 Die [zentrale Übergabe](../ci-contract-audit-handoff-2026-11-06.md) führt
 Auftrag und nächste Schritte. Der feste 518-Regelkorpus und seine Matrizen
 bleiben unverändert; Main-Verträge und der eingefrorene PR-83-Einheitenstand
