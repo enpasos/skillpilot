@@ -240,10 +240,20 @@ function rootReport(catalog: AuditLandscape[], rootLandscapeId: string) {
   }
 }
 
+type CliReport = { schemaVersion: 2; mode: 'report-only' | 'validation' } & (
+  | { status: 'invalid-input'; error: string }
+  | {
+    status: 'pass' | 'fail' | 'invalid-input'; rule: string; semantics: string; scopeSemantics: string
+    selection: 'explicit-roots' | 'complete-catalog'; roots: string[]
+    referenceCatalogSources: { path: string; sha256: string; landscapeId: string }[]
+    auditorSha256: string; rootResults: ReturnType<typeof rootReport>[]
+  }
+)
+
 function main() {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
   const options: Options = { reportOnly: false, catalog: 'curricula/DE/Gymnasium/canonical', roots: [] }
-  let report: Record<string, unknown>, exitCode: number
+  let report: CliReport, exitCode: number
   try {
     parseArgs(process.argv.slice(2), options)
     const loaded = catalogFiles(resolve(root, options.catalog)).map((path) => {

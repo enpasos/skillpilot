@@ -6,16 +6,15 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-Die erste Lieferung entsteht auf `fix/g17-checker` im bereits geöffneten
-IDE-Ordner `/home/enpasos/projects/skillpilot`, frisch von
+Die erste Lieferung entsteht auf `fix/g17-checker`, ausgehend von
 `origin/main` (`0ce5a8d791eeb9783a919195fd8590bfb79f3595`). PR84 bleibt
-als Herkunft des alten Auditstands getrennt erhalten. Lokale Änderungen sind unter
-Stash `e0bf68c43ff6c46533d1610eb911cd3ff2abce70` zusätzlich gesichert;
-unversionierte Altartefakte bleiben erhalten.
+als Herkunft des alten Auditstands getrennt erhalten. Der alte WIP und lokale
+Änderungen sind gesichert; unversionierte Altartefakte bleiben erhalten.
 
 **Lieferregel:** Den jeweils kleinen, abgeschlossenen PR mit erfolgreicher
 Pflicht-CI nach main bringen, bevor der nächste Änderungsumfang begonnen wird.
-Die Entwicklung bleibt im sichtbaren IDE-Ordner; kein separater Arbeitsbaum.
+Die Entwicklung bleibt im bereits geöffneten, sichtbaren
+IDE-Checkout; kein separater Arbeitsbaum.
 
 ## Ein aktives Ziel, ein tatsächlicher Lieferweg
 
