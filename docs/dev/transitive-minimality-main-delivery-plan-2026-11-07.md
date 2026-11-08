@@ -53,23 +53,57 @@ keinen Blocker. Die volle agentische Copilot-Prüfung brach beim Setup mit
 HTTP 504 ab; das vorhandene Lite-Review mit drei Hinweisen wurde getrennt
 geprüft und im PR mit begründeter Einordnung erledigt. Die Snapshotguards
 bleiben strikt. Alle drei frischen Repository-Workflows und sämtliche acht
-Haupt-CI-Jobs des PR bestanden; die Main-Push-CI wird getrennt beobachtet.
+Haupt-CI-Jobs des PR bestanden. Der folgende Main-Lauf scheiterte im
+Cockpit-Prototyptest; dessen isoliert nachgewiesene Fixture-Korrektur ist Teil
+der nachfolgenden Lieferung.
 
-Der sichtbare Checkout liegt auf `fix/g17-covered-cluster-batch`,
-ausgehend vom geprüften QA-Commit. Der bereits vorgesehene mechanische
-16er-Folgebatch ist lokal vollständig geprüft und als `cebfd0cd4c` committed
-und gepusht. Der getrennte [PR #94](https://github.com/enpasos/skillpilot/pull/94)
-läuft nun auf Basis der gelieferten QA-Reparatur. Der zusätzlich ausgelöste
+Der mechanische 16er-Folgebatch ist mit
+[PR #94](https://github.com/enpasos/skillpilot/pull/94) auf main bei
+[`1d21d87580`](https://github.com/enpasos/skillpilot/commit/1d21d875806d75869448b72228a97ff9d2dfe269)
+geliefert. Der endgültige PR-Head `5bdc2f5096` bestand alle sechs ausgelösten
+Workflows und alle acht Haupt-CI-Jobs; der tatsächliche Main-Dateibaum ist exakt
+gleich. Die separate Main-Push-CI läuft noch; der automatische Dokumentationslauf
+ist bereits erfolgreich. Der Datencommit bleibt `cebfd0cd4c`. Der zusätzlich ausgelöste
 Chemie-Evidence-Watch erkannte ausschließlich die sechs geprüften Chemie-
 Anforderungslöschungen. Die [begrenzte Wartungsnotiz](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-08.md)
 belegt deren Herkunft, die vollständige frühere Beobachtungsbaseline und die
 unveränderten 159 übrigen Records. Nur der geprüfte Beobachtungsrecord wird
 fortgeschrieben; Checker, Hashverfahren und sämtliche 21 historischen
-Graph-Nachweisbaselines bleiben unverändert. Es wird kein weiterer Themenblock
-begonnen.
+Graph-Nachweisbaselines bleiben unverändert. Die notwendigen CI-Reparaturen
+betreffen einen fehlenden Dokumentationsindexeintrag, das bestehende
+Präferenzereignis der Cockpit-Fixture und die Trennung vollständiger
+Clusterverfügbarkeit von optionaler Anzeigeverdichtung im Chemietest. Die native
+Gegenprobe bestätigt dort dieselben 15 verfügbaren Atome in derselben Reihenfolge;
+die ursprünglichen Verfügbarkeitsprüfungen bleiben erhalten. Es wurde keine
+produktive Frontier-, Mastery- oder Inhaltsregel geändert.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
+
+Der sichtbare IDE-Checkout arbeitet nun auf `fix/g17-atomic-materialization-proof`,
+direkt auf dem gelieferten Main-Commit. Die nächste kleine Lieferung bleibt auf
+`app/scripts/prerequisiteReductionProof.ts`, dessen Regressionen und diesen Plan
+begrenzt. Sie ergänzt einen getypten, geordneten V3-Nachlauf: Ein Atompaar darf
+nur materialisiert werden, wenn es durch eine vorhandene rohe Anforderung und
+tatsächliche `contains`-Pfade bereits unmittelbar induziert ist. Danach darf die
+bestehende V2-Prüfung eine Cluster→Atom-Anforderung entfernen, sobald sämtliche
+atomaren Nachfahren durch überlebende rohe Atompfade abgedeckt sind. Die umgekehrte
+Reihenfolge oder unvollständige Abdeckung scheitert hart.
+
+Die 21 historischen Basisdigests, 204 bisherigen Entfernungen und 200
+ursprünglichen Arrays bleiben unverändert. Der V2-Präfix samt seinen Zeugen wird
+vor dem Nachlauf vollständig geprüft; Ergänzungen dürfen ihn nicht nachträglich
+reparieren. Exakter Dokument-Replay, tatsächliche Applicability-Gleichheit und
+die bisherigen Endgraphzeugen bleiben Pflicht. Die Live-Registry bleibt zunächst
+V2; diese Supportlieferung verändert keine Curricula und aktiviert noch kein
+Standard-Meilensteingate.
+
+Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
+erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8
+ist selbst redundant. Alte Operationen werden deshalb nicht umgeschrieben;
+spätere Entfernungen müssen ihre Ersatzwege durch neue Beweisschritte bis zum
+überlebenden Endgraphen absichern. Diese Erweiterung und die tatsächliche
+Atomnormalisierung bleiben eigene Folgeschritte innerhalb desselben G17-Goals.
 
 **Lieferregel:** Kleine, abgeschlossene PRs mit erfolgreicher Pflicht-CI
 geordnet nach main liefern. Die vorstehend ausdrücklich getrennten QA- und
@@ -128,12 +162,12 @@ einzeln geprüft übernommen. Die 173 falsch priorisierten Löschungen werden ni
 blind zurückgespielt. Historische Inventare und Vorschauen im folgenden Plan
 ersetzen diese neue Zielpriorität nicht.
 
-Die vorbereitete Folgelieferung wird auf 16 bereits atomar abgedeckte
-Clusteranforderungen begrenzt: Biologie 2, Chemie 6, Physik 6 sowie Politik und
-Wirtschaft 2. Nur `requires`-Arrays von zwölf Clusterquellen ändern sich;
-atomare Autorenkanten und `contains` bleiben erhalten. Der bestehende V2-Vertrag
-wird wiederverwendet, die bisherigen 188 Operationen und ursprünglichen
-Katalogbindungen bleiben erhalten. Der neue Gesamtstand hat 204 Operationen
+Die mit PR #94 gelieferte Folgelieferung umfasst 16 bereits atomar abgedeckte
+Clusteranforderungen: Biologie 2, Chemie 6, Physik 6 sowie Politik und
+Wirtschaft 2. Nur `requires`-Arrays von zwölf Clusterquellen wurden geändert;
+atomare Autorenkanten und `contains` blieben erhalten. Der bestehende V2-Vertrag
+wurde wiederverwendet; die bisherigen 188 Operationen und ursprünglichen
+Katalogbindungen blieben erhalten. Der gelieferte Gesamtstand hat 204 Operationen
 und 200 Quellen; für die 16 Ergänzungen überleben 81 rohe atomare Pfadzeugen.
 Auf dem eingefrorenen Stand bestanden die vollständige Auditor-/Nachweissuite
 mit echten Negativfällen, der tatsächliche Applicability-Vergleich und beide
@@ -149,10 +183,11 @@ kanonischen Atomprobes schließen sechs harte Missing-Role-Gegenfälle ein;
 sie werden nicht als zusätzliche reale Benutzerkonfigurationen ausgegeben.
 Die Wirtschaftsregression erhält für HE-GK/LK die strikte Blockade ohne
 Orientierung in beiden Frames; auch die bestehenden Math-/Bio-/Lateinkontrollen
-bestehen. Quellenreview mit Astra ist ohne Blocker abgeschlossen. Das ist die
-lokale Abnahme dieses begrenzten Batches; der getrennte Remote-Lauf und die
-Main-Lieferung stehen noch aus. Die vollständige atomare Normalform und G17 in
-der Standard-Meilensteinprüfung sind damit weiterhin nicht abgenommen.
+bestehen. Quellenreview mit Astra ist ohne Blocker abgeschlossen. Der endgültige
+PR-Head bestand nach den isolierten CI-Testkorrekturen alle sechs ausgelösten
+Workflows und acht Hauptjobs und ist auf main geliefert. Die separate Main-CI
+wird weiterhin beobachtet. Die vollständige atomare Normalform und G17 in der
+Standard-Meilensteinprüfung sind damit weiterhin nicht abgenommen.
 
 Die zwei zunächst geplanten Wirtschafts-Cuts gehören weiterhin zur offenen
 Gesamtaufgabe, jedoch nicht zu diesem Batch: Ein echter HE-GK/LK-Backendtest

@@ -10,11 +10,16 @@ import {
   fingerprintPrerequisiteReductionDocument as digest,
   loadVerifiedPrerequisiteReductionContext,
   CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+  ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
   verifiedPrerequisiteReductionSummary,
   type PrerequisiteReductionRegistry,
+  type LegacyPrerequisiteReductionRegistry,
+  type OrderedPrerequisiteReductionRegistry,
+  type AtomicPrerequisiteMaterialization,
+  type OrderedPrerequisiteReductionStep,
   type DirectPrerequisiteReduction,
   type ClusterPrerequisiteReduction,
   type VerifiedPrerequisiteReductionContext,
@@ -50,7 +55,7 @@ function fixture(before: Document = baseline(), after?: Document) {
   mkdirSync(resolve(directory, 'canonical'), { recursive: true })
   const current = after ?? structuredClone(before)
   if (!after) current.goals[0].requires = ['p']
-  const registry: Omit<PrerequisiteReductionRegistry, 'removals'> & { removals: DirectPrerequisiteReduction[] } = {
+  const registry: Omit<LegacyPrerequisiteReductionRegistry, 'removals'> & { removals: DirectPrerequisiteReduction[] } = {
     schemaVersion: 1, proofContract: PREREQUISITE_REDUCTION_CONTRACT, auditScope: 'origin-source-landscape-closure',
     catalogSources: [{ path: 'canonical/test.json', landscapeId: before.landscapeId,
       baselineDocumentDigest: digest(before), currentDocumentDigest: digest(current) }],
@@ -92,6 +97,75 @@ function foreignSource(f: ReturnType<typeof clusterFixture>, document: Document)
   writeFileSync(resolve(f.directory, path), JSON.stringify(document))
   f.registry.catalogSources.push({ path, landscapeId: document.landscapeId,
     baselineDocumentDigest: digest(document), currentDocumentDigest: digest(document) })
+  f.save()
+}
+const local = (id: string) => `proof-test:${id}`
+const materialization = (id: string): AtomicPrerequisiteMaterialization => ({
+  operation: 'materialize-atomic', source: local(id), prerequisite: local('r'),
+  origin: { source: local('k'), prerequisite: 'r',
+    sourceContainsPath: ['k', 'h', id].map(local), prerequisiteContainsPath: [local('r')] },
+})
+const orderedBaseline = (): Document => ({ ...baseline(), goals: [
+  ...baseline().goals,
+  { ...goal('k', ['r']), type: 'cluster', contains: ['h'] },
+  { ...goal('h'), type: 'cluster', contains: ['a', 'b'] },
+  goal('a'), goal('b'),
+] })
+function orderedFixture(
+  before = orderedBaseline(),
+  suffix: OrderedPrerequisiteReductionStep[] = [materialization('a'), materialization('b'), {
+    operation: 'remove-cluster', source: local('k'), prerequisite: local('r'),
+    atomicWitnesses: [['a', 'r'].map(local), ['b', 'r'].map(local)],
+  }],
+  changeFinal: (document: Document) => void = (document) => {
+    document.goals.find(({ id }) => id === 'k')!.requires = []
+    for (const id of ['a', 'b']) document.goals.find((entry) => entry.id === id)!.requires = ['r']
+  },
+) {
+  const checkpoint = structuredClone(before)
+  checkpoint.goals[0].requires = ['p']
+  const f = fixture(before, checkpoint)
+  f.registry.proofContract = CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
+  const history = structuredClone(f.registry) as LegacyPrerequisiteReductionRegistry
+  const registry = Object.assign(f.registry, {
+    proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+    v2Checkpoint: {
+      registryDigest: digest(history),
+      currentDocumentDigests: history.catalogSources.map(({ path, currentDocumentDigest }) => ({ path, currentDocumentDigest })),
+    },
+    suffixOriginalRequires: [...new Set(suffix.map(({ source }) => source))]
+      .filter((source) => !history.originalRequires.some((entry) => entry.source === source))
+      .map((source) => {
+        const raw = before.goals.find(({ id }) => local(id) === source)!
+        return { source, requires: Object.hasOwn(raw, 'requires') ? structuredClone(raw.requires) : null }
+      }),
+    suffix: structuredClone(suffix),
+  }) as OrderedPrerequisiteReductionRegistry
+  changeFinal(f.current)
+  const save = () => {
+    registry.catalogSources[0].currentDocumentDigest = digest(f.current)
+    f.save()
+  }
+  save()
+  return { ...f, registry, history, save }
+}
+async function rejectOrderedMutation(
+  mutate: (f: ReturnType<typeof orderedFixture>) => void, expected: RegExp,
+) {
+  const f = orderedFixture()
+  mutate(f)
+  f.save()
+  await assert.rejects(f.load, expected)
+}
+function unchangedOrderedDocument(f: ReturnType<typeof orderedFixture>, document: Document) {
+  const path = `canonical/${document.landscapeId}.json`
+  writeFileSync(resolve(f.directory, path), JSON.stringify(document))
+  const binding = { path, landscapeId: document.landscapeId,
+    baselineDocumentDigest: digest(document), currentDocumentDigest: digest(document) }
+  f.registry.catalogSources.push(binding)
+  f.history.catalogSources.push(structuredClone(binding))
+  f.registry.v2Checkpoint.currentDocumentDigests.push({ path, currentDocumentDigest: digest(document) })
+  f.registry.v2Checkpoint.registryDigest = digest(f.history)
   f.save()
 }
 async function rejectMutation(
@@ -405,6 +479,219 @@ try {
   applicability.goals[1].extendedData = { applicabilityOverrides: { jurisdiction: ['DE-HE'] } }
   applicability.goals[2].extendedData = { applicabilityOverrides: { jurisdiction: ['DE-BY'] } }
   await assert.rejects(fixture(applicability).load, /compiled applicability changed/u)
+
+  const ordered = orderedFixture()
+  const orderedContext = await ordered.load()
+  assert.ok(orderedContext, 'nested materializations precede the existing complete cluster cut')
+  assert.equal(verifiedPrerequisiteReductionSummary(orderedContext)!.proofContract, ORDERED_PREREQUISITE_REDUCTION_CONTRACT)
+  assert.deepEqual(verifiedPrerequisiteReductionSummary(orderedContext)!.affectedGoalIds, ['a', 'b', 'k', 'q'].map(local))
+  assert.deepEqual(ordered.registry.originalRequires, ordered.history.originalRequires)
+  assert.deepEqual(ordered.registry.removals, ordered.history.removals)
+  assert.deepEqual(ordered.registry.catalogSources.map(({ baselineDocumentDigest }) => baselineDocumentDigest),
+    ordered.history.catalogSources.map(({ baselineDocumentDigest }) => baselineDocumentDigest))
+  for (const id of ['a', 'b', 'k', 'q']) {
+    const current = ordered.current.goals.find((entry) => entry.id === id)!
+    assert.deepEqual(reviewBindingGoal(orderedContext, local(id), current).requires,
+      orderedBaseline().goals.find((entry) => entry.id === id)!.requires)
+  }
+  assert.deepEqual(ordered.current.goals.find(({ id }) => id === 'a')!.requires, ['r'])
+  assert.deepEqual(ordered.current.goals.find(({ id }) => id === 'k')!.requires, [])
+  const noRequires = orderedBaseline()
+  delete (noRequires.goals.find(({ id }) => id === 'a')! as Record<string, unknown>).requires
+  const absent = orderedFixture(noRequires)
+  const absentContext = await absent.load()
+  assert.ok(absentContext)
+  assert.equal(Object.hasOwn(reviewBindingGoal(absentContext, local('a'),
+    absent.current.goals.find(({ id }) => id === 'a')!), 'requires'), false,
+  'null overlay restores absent fields rather than introducing empty arrays')
+  assert.equal(absent.registry.suffixOriginalRequires.find(({ source }) => source === local('a'))!.requires, null)
+
+  const clusterTarget = orderedBaseline()
+  clusterTarget.goals.find(({ id }) => id === 'a')!.requires = ['target']
+  clusterTarget.goals.push({ ...goal('target'), type: 'cluster', contains: ['inner'] },
+    { ...goal('inner'), type: 'cluster', contains: ['r'] })
+  const reflexive: AtomicPrerequisiteMaterialization = {
+    ...materialization('a'), origin: { source: local('a'), prerequisite: 'target',
+      sourceContainsPath: [local('a')], prerequisiteContainsPath: ['target', 'inner', 'r'].map(local) },
+  }
+  const expanded = orderedFixture(clusterTarget, [reflexive], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['target', 'r']
+  })
+  assert.ok(await expanded.load(), 'atomic source reflexivity and nested cluster-target expansion use actual paths')
+  assert.deepEqual(expanded.current.goals.find(({ id }) => id === 'a')!.requires, ['target', 'r'],
+    'the deterministic local reference appends after the original ordered array')
+
+  const crossStep: AtomicPrerequisiteMaterialization = { ...materialization('a'), prerequisite: 'foreign:r',
+    origin: { source: 'foreign:k', prerequisite: ':target',
+      sourceContainsPath: ['foreign:k', local('a')], prerequisiteContainsPath: ['foreign:target', 'foreign:r'] } }
+  const cross = orderedFixture(orderedBaseline(), [crossStep], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['foreign:r']
+  })
+  const foreign: Document = { landscapeId: 'foreign', title: 'Qualified cross-landscape origin', goals: [
+    { ...goal('k', [':target']), type: 'cluster', contains: [local('a')] },
+    { ...goal('target'), type: 'cluster', contains: ['r'] }, goal('r'),
+  ] }
+  unchangedOrderedDocument(cross, foreign)
+  assert.ok(await cross.load(), 'qualified foreign origin and foreign raw-reference append are verified')
+  const ambiguousOrigin = orderedFixture(orderedBaseline(), [{ ...crossStep, origin: {
+    ...crossStep.origin, source: 'third:k', prerequisite: 'r', sourceContainsPath: ['third:k', local('a')],
+  } }], (document) => { document.goals.find(({ id }) => id === 'a')!.requires = ['foreign:r'] })
+  unchangedOrderedDocument(ambiguousOrigin, { landscapeId: 'foreign', title: 'Another r', goals: [goal('r')] })
+  unchangedOrderedDocument(ambiguousOrigin, { landscapeId: 'third', title: 'Ambiguous raw origin', goals: [
+    { ...goal('k', ['r']), type: 'cluster', contains: [local('a')] },
+  ] })
+  await assert.rejects(ambiguousOrigin.load, /ambiguous (?:or unknown )?reference/iu)
+  const historicalSourceBefore = orderedBaseline()
+  historicalSourceBefore.goals.find(({ id }) => id === 'h')!.contains.push('q')
+  historicalSourceBefore.goals.find(({ id }) => id === 'k')!.requires = ['s']
+  historicalSourceBefore.goals.push(goal('s'))
+  const historicalSourceStep = materialization('q')
+  historicalSourceStep.prerequisite = local('s')
+  historicalSourceStep.origin.prerequisite = 's'
+  historicalSourceStep.origin.prerequisiteContainsPath = [local('s')]
+  const historicalSource = orderedFixture(historicalSourceBefore, [historicalSourceStep], (document) => {
+    document.goals[0].requires = ['p', 's']
+  })
+  assert.ok(await historicalSource.load(), 'an already historical source needs no duplicate original overlay')
+  assert.deepEqual(historicalSource.registry.suffixOriginalRequires, [])
+  assert.deepEqual(historicalSource.registry.originalRequires, historicalSource.history.originalRequires)
+
+  await rejectOrderedMutation(({ registry }) => registry.suffix.reverse(), /not directly authored/u)
+  await rejectOrderedMutation(({ registry }) => {
+    registry.suffix.splice(1, 1)
+    registry.suffixOriginalRequires = registry.suffixOriginalRequires.filter(({ source }) => source !== local('b'))
+  }, /baseline document digest|not directly authored/u)
+  const incomplete = orderedFixture(orderedBaseline(), [materialization('a'), {
+    operation: 'remove-cluster', source: local('k'), prerequisite: local('r'), atomicWitnesses: [['a', 'r'].map(local)],
+  }], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['r']
+    document.goals.find(({ id }) => id === 'k')!.requires = []
+  })
+  await assert.rejects(incomplete.load, /descendant coverage/u,
+    'a cut after partial materialization still needs all actual canonical descendants')
+  for (const endpoint of ['k', 'unknown']) {
+    await rejectOrderedMutation(({ registry }) => registry.suffix[0].prerequisite = local(endpoint), /actual atomic leaves/u)
+    await rejectOrderedMutation(({ registry }) => registry.suffix[0].source = local(endpoint),
+      /suffix original|unknown suffix original/u)
+  }
+  await rejectOrderedMutation(({ registry }) => registry.suffix[0].prerequisite = local('a'), /self materialization/u)
+  await rejectOrderedMutation(({ registry }) => registry.suffix.splice(1, 0, structuredClone(registry.suffix[0])),
+    /already directly authored/u)
+  const aliasDuplicate = orderedBaseline()
+  aliasDuplicate.goals.find(({ id }) => id === 'a')!.requires = [':r']
+  await assert.rejects(orderedFixture(aliasDuplicate).load, /already directly authored/u,
+    'resolved raw aliases cannot be added again')
+  for (const mutate of [
+    (step: AtomicPrerequisiteMaterialization) => { step.origin.prerequisite = 'proof-test:r' },
+    (step: AtomicPrerequisiteMaterialization) => { step.origin.source = local('unknown') },
+    (step: AtomicPrerequisiteMaterialization) => { step.origin.prerequisite = 'unknown' },
+  ]) await rejectOrderedMutation(({ registry }) => mutate(registry.suffix[0] as AtomicPrerequisiteMaterialization),
+    /origin is not directly authored/u)
+  for (const path of [['k', 'a'], ['k', 'h', 'unknown', 'a'], ['h', 'a'], ['k', 'h', 'k', 'a']]) {
+    await rejectOrderedMutation(({ registry }) => {
+      (registry.suffix[0] as AtomicPrerequisiteMaterialization).origin.sourceContainsPath = path.map(local)
+    }, /contains path/u)
+  }
+  await rejectOrderedMutation(({ registry }) => {
+    (registry.suffix[0] as AtomicPrerequisiteMaterialization).origin.prerequisiteContainsPath = [local('p'), local('r')]
+  }, /contains path endpoints/u)
+  const transitive = orderedBaseline()
+  transitive.goals.find(({ id }) => id === 'k')!.requires = ['p']
+  const merelyTransitive = materialization('a')
+  merelyTransitive.origin.prerequisite = 'p'
+  merelyTransitive.origin.prerequisiteContainsPath = ['p', 'r'].map(local)
+  await assert.rejects(orderedFixture(transitive, [merelyTransitive], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['r']
+  }).load, /contains path edge/u, 'transitive requires reachability is not immediate induced atomic demand')
+  const unknownReference = orderedBaseline()
+  unknownReference.goals.find(({ id }) => id === 'k')!.requires = ['absent:r']
+  const unknownOrigin = materialization('a')
+  unknownOrigin.origin.prerequisite = 'absent:r'
+  await assert.rejects(orderedFixture(unknownReference, [unknownOrigin], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['r']
+  }).load, /unknown reference/iu)
+  const cyclicMaterialization = orderedBaseline()
+  cyclicMaterialization.goals.find(({ id }) => id === 'a')!.requires = ['target']
+  cyclicMaterialization.goals.find(({ id }) => id === 'b')!.requires = ['a']
+  cyclicMaterialization.goals.push({ ...goal('target'), type: 'cluster', contains: ['b'] })
+  const cycleStep: AtomicPrerequisiteMaterialization = { ...materialization('a'), prerequisite: local('b'),
+    origin: { source: local('a'), prerequisite: 'target', sourceContainsPath: [local('a')],
+      prerequisiteContainsPath: ['target', 'b'].map(local) } }
+  await assert.rejects(orderedFixture(cyclicMaterialization, [cycleStep], (document) => {
+    document.goals.find(({ id }) => id === 'a')!.requires = ['target', 'b']
+  }).load, /cycle/iu, 'an addition-only suffix cannot expose an atomic cycle through cluster-target expansion')
+  for (const change of [
+    (f: ReturnType<typeof orderedFixture>) => { f.current.goals.find(({ id }) => id === 'a')!.title = 'Undeclared text' },
+    (f: ReturnType<typeof orderedFixture>) => { f.current.goals.find(({ id }) => id === 'a')!.contains = ['r'] },
+    (f: ReturnType<typeof orderedFixture>) => { f.current.goals.find(({ id }) => id === 'a')!.requires = [':r'] },
+    (f: ReturnType<typeof orderedFixture>) => { f.current.goals.find(({ id }) => id === 'h')!.contains.reverse() },
+  ]) await rejectOrderedMutation(change, /baseline document digest|replay differs/u)
+  await rejectOrderedMutation(({ registry }) => registry.suffixOriginalRequires.pop(), /missing suffix original/u)
+  await rejectOrderedMutation(({ registry }) => registry.suffixOriginalRequires.push({ source: local('p'), requires: ['r'] }),
+    /extra or duplicate suffix original/u)
+  await rejectOrderedMutation(({ registry }) => registry.suffixOriginalRequires.push({ source: local('q'), requires: ['p', 'r'] }),
+    /extra or duplicate suffix original/u)
+  await rejectOrderedMutation(({ registry }) => registry.catalogSources[0].baselineDocumentDigest = `sha256:${'0'.repeat(64)}`,
+    /historical V2 registry digest/u)
+  await rejectOrderedMutation(({ registry }) => registry.v2Checkpoint.registryDigest = `sha256:${'0'.repeat(64)}`,
+    /historical V2 registry digest/u)
+  await rejectOrderedMutation(({ registry, history }) => {
+    registry.v2Checkpoint.currentDocumentDigests[0].currentDocumentDigest = `sha256:${'0'.repeat(64)}`
+    history.catalogSources[0].currentDocumentDigest = registry.v2Checkpoint.currentDocumentDigests[0].currentDocumentDigest
+    registry.v2Checkpoint.registryDigest = digest(history)
+  }, /V2 checkpoint document digest/u)
+  await rejectOrderedMutation(({ registry }) => registry.removals[0].source = local('p'), /historical V2 registry digest/u)
+  await rejectOrderedMutation(({ registry }) => registry.originalRequires[0].requires.reverse(), /historical V2 registry digest/u)
+  await rejectOrderedMutation(({ registry }) => registry.v2Checkpoint.currentDocumentDigests.push(
+    { ...registry.v2Checkpoint.currentDocumentDigests[0] }), /V2 checkpoint paths/u)
+  for (const mutate of [
+    (registry: OrderedPrerequisiteReductionRegistry) => Object.assign(registry, { operations: [] }),
+    (registry: OrderedPrerequisiteReductionRegistry) => Object.assign(registry.suffix[0], { rawReference: 'r' }),
+    (registry: OrderedPrerequisiteReductionRegistry) => Object.assign((registry.suffix[0] as AtomicPrerequisiteMaterialization).origin,
+      { witness: [] }),
+    (registry: OrderedPrerequisiteReductionRegistry) => Object.assign(registry.suffix[0], { operation: 'remove-atomic' }),
+    (registry: OrderedPrerequisiteReductionRegistry) => Object.assign(registry.suffix[2], { witness: ['a', 'r'].map(local) }),
+  ]) await rejectOrderedMutation(({ registry }) => mutate(registry), /fields|unsupported ordered operation/u)
+  await rejectOrderedMutation(({ registry }) => {
+    delete (registry.suffix[0] as unknown as Record<string, unknown>).origin
+  }, /materialization fields/u)
+  const unsupportedTarget = orderedFixture()
+  unsupportedTarget.registry.suffix[2].prerequisite = local('h')
+  unsupportedTarget.save()
+  await assert.rejects(unsupportedTarget.load, /actual atomic leaves/u, 'new cluster-to-cluster cuts remain unsupported')
+
+  const badHistoryBefore = orderedBaseline()
+  badHistoryBefore.goals.find(({ id }) => id === 'p')!.requires = ['r', 's', 'target']
+  badHistoryBefore.goals.push(goal('s', ['r']), { ...goal('target'), type: 'cluster', contains: ['r'] })
+  const healingStep: AtomicPrerequisiteMaterialization = { ...materialization('p'), origin: {
+    source: local('p'), prerequisite: 'target', sourceContainsPath: [local('p')],
+    prerequisiteContainsPath: ['target', 'r'].map(local),
+  } }
+  const heal = orderedFixture(badHistoryBefore, [healingStep], (document) => {
+    document.goals.find(({ id }) => id === 'p')!.requires = ['s', 'target', 'r']
+  })
+  heal.registry.originalRequires.push({ source: local('p'), requires: ['r', 's', 'target'] })
+  heal.registry.removals.push({ source: local('p'), prerequisite: local('r'), witness: ['p', 's', 'r'].map(local) })
+  heal.registry.suffixOriginalRequires = []
+  heal.history.originalRequires = structuredClone(heal.registry.originalRequires)
+  heal.history.removals = structuredClone(heal.registry.removals)
+  const brokenCheckpoint = structuredClone(badHistoryBefore)
+  brokenCheckpoint.goals[0].requires = ['p']
+  brokenCheckpoint.goals.find(({ id }) => id === 'p')!.requires = ['s', 'target']
+  heal.history.catalogSources[0].currentDocumentDigest = digest(brokenCheckpoint)
+  heal.registry.v2Checkpoint.currentDocumentDigests[0].currentDocumentDigest = digest(brokenCheckpoint)
+  heal.registry.v2Checkpoint.registryDigest = digest(heal.history)
+  heal.save()
+  await assert.rejects(heal.load, /witness edge.*deleted/u, 'a later materialization cannot repair invalid historical end witnesses')
+
+  const changedApplicability = orderedBaseline()
+  const assessment = changedApplicability.goals.find(({ id }) => id === 'a')!
+  assessment.extendedData = { applicabilityFromRequires: true }
+  assessment.tags = ['Assessment']
+  changedApplicability.goals.find(({ id }) => id === 'r')!.extendedData = {
+    applicabilityOverrides: { jurisdiction: ['DE-BY'] },
+  }
+  await assert.rejects(orderedFixture(changedApplicability).load, /compiled applicability changed/u)
   const malformed = fixture()
   writeFileSync(resolve(malformed.directory, 'proof.json'), '{}')
   await assert.rejects(malformed.load, /invalid registry/u)
@@ -486,12 +773,21 @@ try {
   const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
   const liveContext = await loadVerifiedPrerequisiteReductionContext()
   assert.ok(liveContext)
-  const liveGoals = new Map(files(catalog).flatMap((path) => {
+  const liveGoals = new Map<string, Goal>(files(catalog).flatMap((path) => {
     const document = JSON.parse(readFileSync(path, 'utf8')) as Document
     return document.goals.map((goal) => [`${document.landscapeId}:${goal.id}`, goal] as const)
   }))
   assert.equal(liveGoals.size, 6524)
   assert.equal(liveRegistry.catalogSources.length, 21)
+  assert.equal(liveRegistry.removals.length, 204)
+  assert.equal(liveRegistry.originalRequires.length, 200)
+  assert.equal(liveRegistry.proofContract, CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
+  // Fixed pins of the actual historical prefix, independent of fixture edits.
+  assert.equal(digest(liveRegistry), 'sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f')
+  assert.equal(digest(liveRegistry.catalogSources.map(({ path, landscapeId, baselineDocumentDigest }) =>
+    ({ path, landscapeId, baselineDocumentDigest }))), 'sha256:356ffe9a535fb4b35734c7c1bee0c5e9258feab163ea6dec83c4260d793d1471')
+  assert.equal(digest(liveRegistry.removals), 'sha256:2c533d75b972288ab828a7312af9156d59c738e9d4a0e5755c3b25862470630f')
+  assert.equal(digest(liveRegistry.originalRequires), 'sha256:b731e23f6ef9e142d4efb7b95c844f8bed84f11e71c462fa21e40d9b2dc6583c')
   assert.equal(liveRegistry.removals[0].source, `${math.document.landscapeId}:${q.id}`,
     'the original first Math operation stays first')
   assert.deepEqual(liveRegistry.originalRequires[0], {
