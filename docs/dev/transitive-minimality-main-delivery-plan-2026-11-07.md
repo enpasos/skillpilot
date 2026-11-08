@@ -85,7 +85,8 @@ mit [PR #95](https://github.com/enpasos/skillpilot/pull/95) auf main bei
 [`0adcd834d5`](https://github.com/enpasos/skillpilot/commit/0adcd834d5dee6df3c67f5d6e5b387e9713fa447)
 geliefert. Ihr geprüfter Head `b7de2aa37c` bestand alle vier ausgelösten
 PR-Workflows und acht Hauptjobs; der tatsächliche Main-Dateibaum ist exakt gleich.
-Die separate frische Main-Push-CI läuft noch. Copilot konnte das vollständige
+Auch die separate frische Main-Push-CI bestand alle fünf ausgelösten Workflows
+und sämtliche acht Hauptjobs. Copilot konnte das vollständige
 Review wegen Modell-/Tarifbeschränkungen nicht abschließen und erteilte keine
 automatisierte Freigabe; sein Kommentar enthält keinen konkreten Codebefund.
 Das abgeschlossene Astra-Ultra-Quellenreview und die tatsächlichen Negativfälle
@@ -165,9 +166,28 @@ ursprünglichen Snapshot und behält seinen historischen Erwartungswert bei.
 Er prüft zusätzlich das ausschließliche `requires`-Delta und weist einen
 fehlenden Nachweiskontext, falschen Fachbezug sowie unbescheinigte Änderungen
 zurück. Gemeinsame Fingerprintfunktion und Reviewbindungen bleiben unverändert.
-Frische Remote-CI am reparierten Stand und Main-Lieferung dieses Batches stehen
-noch aus. Die vollständige atomare Reduktion und das harte
-Standard-Meilensteingate bleiben offen.
+Der nächste Remote-Lauf bestand sieben von acht Hauptjobs und alle vier
+Begleitworkflows. Im letzten Paket-Konformitätsschritt wurde die alte
+Weitergabebindung des normalisierten Mathematikmodells zurückgewiesen.
+Die [gesonderte technische Wartungsnotiz](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)
+belegt den ausschließlich aus `requires` bestehenden Rohdelta und den regulären
+Generatorkandidaten: Im vollständigen Reviewobjekt ändert sich nur
+`contentDigest` von `fb51e95c…` auf den tatsächlich berechneten Modell-Digest
+`eec1b300…`. Der Shell-Pin wird vom älteren `e8ad1ec7…` an denselben Digest
+angeschlossen. Alle 836 Assetrecords, vier Klassenrecords, 839 offenen
+Prüfungen, null menschlichen Freigaben und `publicationReady: false` bleiben
+unverändert. Der vollständige lokale CI-Konformitätslauf bestand mit allen
+36 Eingaben unverändert, unabhängiger Modellvalidierung, den bisherigen
+Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Frische
+Remote-CI und Main-Lieferung stehen weiterhin aus.
+
+Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
+`5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
+Ihre lokalen Nachweis-, Auditor-, Python-, Schema-, nativen 1.240-Konfigurations-,
+58er-Projektions- und regulären Meilensteinprüfungen bestanden. Sie bleibt bis
+zur Main-Lieferung von #96 getrennt. Vor ihrem eigenen PR ist auch der bekannte
+Paket-Konformitätsanschluss am tatsächlichen reduzierten Datenstand auszuführen.
+Das harte Standard-Meilensteingate und der Gesamtauftrag bleiben offen.
 
 Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
 erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8
