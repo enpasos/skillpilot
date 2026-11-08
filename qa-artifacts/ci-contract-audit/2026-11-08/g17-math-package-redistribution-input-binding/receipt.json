@@ -1,0 +1,155 @@
+{
+  "recordType": "technical-active-content-binding-maintenance",
+  "date": "2026-11-08",
+  "baseCommit": "a2d7043e6c4f40c71061e222ca043a71576b18b8",
+  "actualFailure": {
+    "runId": 42512294687,
+    "jobId": 128834320684,
+    "step": "Validate Curriculum Package Contracts",
+    "diagnostic": "REVIEW_IDENTITY_MISMATCH",
+    "field": "/contentDigest"
+  },
+  "previousLedger": {
+    "path": "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json",
+    "gitBlob": "956463f046b98ffab69156b60131e8a8dced71bd",
+    "rawSha256": "c0956609116f7c330047814bdf39237ce98c85be123eede288f7fad8e4be8825",
+    "commitFileUrl": "https://github.com/enpasos/skillpilot/blob/a2d7043e6c4f40c71061e222ca043a71576b18b8/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json",
+    "precedentCommitUrl": "https://github.com/enpasos/skillpilot/commit/30d6fe824a41ee285a7a2483579a46d76730cf2e"
+  },
+  "changedBindings": {
+    "curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json": {
+      "deltaPaths": [
+        "/contentDigest"
+      ],
+      "before": "sha256:fb51e95c0113339cf0252653ee91f0258bd56f80893d85fe6f45fb7dc775e602",
+      "after": "sha256:eec1b30025591b37014b7742635be15c71f0ad69020910051624b6021cd42ae6",
+      "rawSha256": "817fb3c0e2da25e224d30c7c064113746a85f14462517992e193bb0295e0b170"
+    },
+    "scripts/run_curriculum_release_model_conformance.sh": {
+      "deltaAssignments": [
+        "EXPECTED_CONTENT_DIGEST"
+      ],
+      "before": "sha256:e8ad1ec76513cac8248234798ea10e612db11fb58785ad9723b49b77ca80b97a",
+      "after": "sha256:eec1b30025591b37014b7742635be15c71f0ad69020910051624b6021cd42ae6",
+      "rawSha256": "cdab364d4c8fd57b91e530587858157fee31f5128e68b835f8927015dae0a606",
+      "meaning": "same normalized model contentDigest, not a ZIP digest"
+    }
+  },
+  "sourceDelta": {
+    "parentCommit": "0adcd834d5dee6df3c67f5d6e5b387e9713fa447",
+    "headCommit": "a2d7043e6c4f40c71061e222ca043a71576b18b8",
+    "mathBeforeSha256": "07749daefff5535416b17d133a84cdcfad40eb5b3137de4958898b8386d79838",
+    "mathAfterSha256": "e28dea9ed0d8a82f3ccd8ea30a60fd8b3cc6ae35bb499622e3c0aaf5d0b79448",
+    "registrySha256": "deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29",
+    "onlyChangedGoalField": "requires",
+    "changedGoalCount": 29,
+    "atomicMaterializations": 27,
+    "clusterCuts": 2,
+    "goalsUnchangedExceptRequires": 1252,
+    "historicalRemovalsPreserved": 204,
+    "historicalOriginalArraysPreserved": 200,
+    "originalDocumentDigestsPreserved": 21,
+    "suffixSteps": 29,
+    "suffixOriginals": 29
+  },
+  "proofRegistry": {
+    "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "proofContract": "ordered-atomic-materialization-and-cluster-reduction-v3",
+    "rawSha256": "deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29",
+    "historicalRemovals": 204,
+    "historicalOriginalRequires": 200,
+    "catalogSources": 21,
+    "suffixSteps": 29,
+    "suffixOriginalRequires": 29
+  },
+  "preserved": {
+    "otherCanonicalDocumentsByteIdentical": 20,
+    "requiresFieldPresence": true,
+    "fullAssetDecisionRecords": 836,
+    "fullClassDecisionRecords": 4,
+    "allOtherLedgerFields": true,
+    "assetSetSha256": "sha256:4b429441b5ef146dbe0a3b1582d29ccf57c2a00890fab7dd1e8adefb3be0d3a5",
+    "sourceReleaseModel": true,
+    "targetProfile": true,
+    "pathClassificationOverrides": true,
+    "projectLicenseGrant": true,
+    "reviewEvidenceAndFingerprints": true,
+    "summary": {
+      "assetCount": 836,
+      "automaticAllowedClassCount": 1,
+      "classDecisionCount": 4,
+      "externalResourceCount": 76,
+      "humanApprovedAssetCount": 0,
+      "humanApprovedClassCount": 0,
+      "humanReviewItemCount": 839,
+      "pendingAssetCount": 836,
+      "pendingClassCount": 3,
+      "prohibitedAssetCount": 0,
+      "prohibitedClassCount": 0,
+      "publicationReady": false,
+      "userProvidedAssetCount": 19
+    }
+  },
+  "generator": {
+    "command": [
+      "python",
+      "-B",
+      "scripts/generate_curriculum_package_redistribution_review.py",
+      "--generate",
+      "--release-root",
+      "/home/enpasos/projects/skillpilot/tmp/g17-pr96-redistribution-binding-20261108/model-probe"
+    ],
+    "exitCode": 0,
+    "rawSha256": "a0631319126c40d7a6fc22f6805cfeb73fb9d18deee0b7528e339ece2edf5adc",
+    "completeGeneratedObjectDeltaPaths": [
+      "/contentDigest"
+    ],
+    "sourceAnalysisSha256": "bdb45607370e6e66772bfb43e571c9aa1d8cd84d74553700e69c73d0b9039f32",
+    "maintenanceResultSha256": "ae0ca7add45ad60a6303891fe029b5db5b794be16a4aa90e1801b76008af09c0"
+  },
+  "verification": {
+    "status": "passed",
+    "command": "bash scripts/run_curriculum_release_model_conformance.sh",
+    "environment": {
+      "SKILLPILOT_SOURCE_PDF_MODE": "committed-bindings",
+      "SKILLPILOT_FULL_PACKAGE_CONFORMANCE": "false",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "nodeVersion": "20.20.2",
+    "localResultPath": "app/node_modules/.tmp/g17-pr96-redistribution-binding-20261108/conformance-result.json",
+    "exitCode": 0,
+    "startedAt": "2026-11-08T20:31:36.290287+00:00",
+    "finishedAt": "2026-11-08T20:47:12.059926+00:00",
+    "unchangedInputs": true,
+    "inputCount": 36,
+    "sourceInputsStillMatch": true,
+    "resultSha256": "4cdc0779a2ebac13c6721d5a7adff722835bc3350472b774c2189645b23eeb61",
+    "logSha256": "6827221963b293536cd283398c2fdc5dc2f4c1e0a3cce05f0e73c2c157989a3c",
+    "compiledArtifacts": {
+      "mathematik-a": {
+        "metadata/semantic-content-index.json": "796c10c7789828d3099130413ec68b058fb3695416efd683618d001acd74d993",
+        "metadata/release-model-conformance.json": "41003aa71f5362c9a2effc925c660fad04f36e6ae7b8000f9011ef3dab6329a4",
+        "metadata/build-inputs.json": "5a34d4a64421f1ff5a8b34211864afc70fd57c6190800a9a951b8b973cb2509a",
+        "data/resources/resource-index.json": "03b666b31d81e98831eb123eeee295901af3787b1821c336d3eb665dab4750dc"
+      },
+      "mathematik-b": {
+        "metadata/semantic-content-index.json": "796c10c7789828d3099130413ec68b058fb3695416efd683618d001acd74d993",
+        "metadata/release-model-conformance.json": "41003aa71f5362c9a2effc925c660fad04f36e6ae7b8000f9011ef3dab6329a4",
+        "metadata/build-inputs.json": "5a34d4a64421f1ff5a8b34211864afc70fd57c6190800a9a951b8b973cb2509a",
+        "data/resources/resource-index.json": "03b666b31d81e98831eb123eeee295901af3787b1821c336d3eb665dab4750dc"
+      }
+    }
+  },
+  "claims": {
+    "noNewRightsDecision": true,
+    "noNewSourceOrLayoutReview": true,
+    "noHumanApprovalRecorded": true,
+    "noAutomaticAssetApproval": true,
+    "publicationReady": false,
+    "noProofOrFingerprintFunctionChange": true,
+    "fullPackageZipBuilt": false,
+    "nativeOrProjectionRerun": false,
+    "cqrRegenerated": false,
+    "remoteAcceptanceClaimed": false
+  }
+}
