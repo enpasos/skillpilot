@@ -740,7 +740,28 @@ try {
   const files = (directory: string): string[] => readdirSync(directory, { withFileTypes: true }).flatMap((entry) =>
     entry.isDirectory() ? files(resolve(directory, entry.name))
       : /\.json$/iu.test(entry.name) && !/_deck/iu.test(entry.name) ? [resolve(directory, entry.name)] : []).sort()
+  const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
+  const liveOrdered = liveRegistry.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT ? liveRegistry : undefined
+  assert.ok(liveOrdered, 'the live registry uses the ordered V3 contract')
   const originals = files(catalog).map((path) => ({ path, document: JSON.parse(readFileSync(path, 'utf8')) as Document }))
+  if (liveOrdered) {
+    // Keep this isolated V1 replay on the actual historical V2 checkpoint even
+    // when the live catalog has already applied the ordered V3 suffix.
+    const suffixOriginals = new Map(liveOrdered.suffixOriginalRequires.map((entry) => [entry.source, entry.requires]))
+    const checkpointDigests = new Map(liveOrdered.v2Checkpoint.currentDocumentDigests
+      .map(({ path, currentDocumentDigest }) => [path, currentDocumentDigest]))
+    for (const { path, document } of originals) {
+      for (const goal of document.goals) {
+        const key = `${document.landscapeId}:${goal.id}`
+        if (!suffixOriginals.has(key)) continue
+        const original = suffixOriginals.get(key)!
+        if (original === null) delete (goal as Record<string, unknown>).requires
+        else goal.requires = structuredClone(original)
+      }
+      assert.equal(digest(document), checkpointDigests.get(relative(root, path)),
+        `isolated first Math fixture starts from the V2 checkpoint: ${path}`)
+    }
+  }
   const math = originals.find(({ document }) => document.goals.some(({ id }) => id === 'bf17cada-3ccd-5d9a-b9e3-42065cfdbb01'))!
   const q = math.document.goals.find(({ id }) => id === 'bf17cada-3ccd-5d9a-b9e3-42065cfdbb01')!
   q.requires = ['91e2f564-3bc8-4924-af85-2a3fa84c1471', '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2']
@@ -770,7 +791,6 @@ try {
   const current = { ...q, requires: [q.requires[0]] }
   assert.deepEqual(reviewBindingGoal(actual, `${math.document.landscapeId}:${q.id}`, current), q)
   // Exercise the actual cumulative registry, not just the isolated first case.
-  const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
   const liveContext = await loadVerifiedPrerequisiteReductionContext()
   assert.ok(liveContext)
   const liveGoals = new Map<string, Goal>(files(catalog).flatMap((path) => {
@@ -781,9 +801,22 @@ try {
   assert.equal(liveRegistry.catalogSources.length, 21)
   assert.equal(liveRegistry.removals.length, 204)
   assert.equal(liveRegistry.originalRequires.length, 200)
-  assert.equal(liveRegistry.proofContract, CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
+  const historicalRegistry: LegacyPrerequisiteReductionRegistry = liveOrdered ? {
+    schemaVersion: liveOrdered.schemaVersion,
+    proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: liveOrdered.auditScope,
+    catalogSources: liveOrdered.catalogSources.map((entry) => {
+      const checkpoints = liveOrdered.v2Checkpoint.currentDocumentDigests.filter(({ path }) => path === entry.path)
+      assert.equal(checkpoints.length, 1, `one historical checkpoint binding: ${entry.path}`)
+      return { ...entry, currentDocumentDigest: checkpoints[0].currentDocumentDigest }
+    }),
+    originalRequires: liveOrdered.originalRequires,
+    removals: liveOrdered.removals,
+  } : liveRegistry as LegacyPrerequisiteReductionRegistry
+  assert.equal(historicalRegistry.proofContract, CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
   // Fixed pins of the actual historical prefix, independent of fixture edits.
-  assert.equal(digest(liveRegistry), 'sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f')
+  const historicalDigest = 'sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f'
+  assert.equal(digest(historicalRegistry), historicalDigest)
   assert.equal(digest(liveRegistry.catalogSources.map(({ path, landscapeId, baselineDocumentDigest }) =>
     ({ path, landscapeId, baselineDocumentDigest }))), 'sha256:356ffe9a535fb4b35734c7c1bee0c5e9258feab163ea6dec83c4260d793d1471')
   assert.equal(digest(liveRegistry.removals), 'sha256:2c533d75b972288ab828a7312af9156d59c738e9d4a0e5755c3b25862470630f')
@@ -793,20 +826,43 @@ try {
   assert.deepEqual(liveRegistry.originalRequires[0], {
     source: `${math.document.landscapeId}:${q.id}`, requires: q.requires,
   })
+  const allOriginals: Array<{ source: string; requires: string[] | null }> = [...liveRegistry.originalRequires]
+  if (liveOrdered) {
+    assert.equal(liveOrdered.v2Checkpoint.registryDigest, historicalDigest)
+    assert.equal(liveOrdered.v2Checkpoint.currentDocumentDigests.length, 21)
+    assert.equal(liveOrdered.suffix.length, 29)
+    assert.equal(liveOrdered.suffix.filter(({ operation }) => operation === 'materialize-atomic').length, 27)
+    assert.equal(liveOrdered.suffix.filter(({ operation }) => operation === 'remove-cluster').length, 2)
+    assert.equal(liveOrdered.suffixOriginalRequires.length, 29)
+    const historicalSources = new Set(liveRegistry.originalRequires.map(({ source }) => source))
+    assert.ok(liveOrdered.suffixOriginalRequires.every(({ source }) => !historicalSources.has(source)),
+      'all 29 suffix overlays are new sources, without rewriting the historical prefix')
+    assert.deepEqual(liveOrdered.suffixOriginalRequires.map(({ source }) => source).sort(),
+      [...new Set(liveOrdered.suffix.map(({ source }) => source))].sort())
+    allOriginals.push(...liveOrdered.suffixOriginalRequires)
+    assert.equal(new Set(allOriginals.map(({ source }) => source)).size, 229)
+  }
   assert.deepEqual(verifiedPrerequisiteReductionSummary(liveContext)!.affectedGoalIds,
-    liveRegistry.originalRequires.map(({ source }) => source).sort())
-  for (const original of liveRegistry.originalRequires) {
+    allOriginals.map(({ source }) => source).sort())
+  for (const original of allOriginals) {
     const raw = liveGoals.get(original.source)!
     const historical = reviewBindingGoal(liveContext, original.source, raw)
-    assert.deepEqual(historical.requires, original.requires, `exact ordered original requires: ${original.source}`)
-    assert.deepEqual({ ...historical, requires: raw.requires }, raw,
+    assert.equal(Object.hasOwn(historical, 'requires'), original.requires !== null,
+      `exact original requires presence: ${original.source}`)
+    if (original.requires !== null) {
+      assert.deepEqual(historical.requires, original.requires, `exact ordered original requires: ${original.source}`)
+    }
+    const restoredCurrent = structuredClone(historical)
+    if (Object.hasOwn(raw, 'requires')) restoredCurrent.requires = structuredClone(raw.requires)
+    else delete restoredCurrent.requires
+    assert.deepEqual(restoredCurrent, raw,
       `historical binding changes only requires: ${original.source}`)
     assert.equal(reviewBindingGoal(undefined, original.source, raw), raw,
       `missing context retains the strict current raw value: ${original.source}`)
     assert.notEqual(fingerprintSemanticKindSourceGoal(raw), fingerprintSemanticKindSourceGoal(historical),
       `historical comparison requires the verified capability: ${original.source}`)
   }
-  console.log(`Prerequisite reduction proof: strict negatives, refreshed multi-removal witnesses, first Math and ${liveRegistry.removals.length} cumulative operations passed.`)
+  console.log(`Prerequisite reduction proof: strict negatives, refreshed multi-removal witnesses, first Math, ${liveRegistry.removals.length} historical operations and ${liveOrdered?.suffix.length ?? 0} ordered suffix steps passed.`)
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }

@@ -17,6 +17,7 @@ REGISTRY_PATH = "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-
 COMPARISON_FAMILY = "semantic-kind-source-fingerprint-v1"
 PROOF_CONTRACT = "direct-atomic-leaf-prerequisite-reduction-v1"
 CLUSTER_PROOF_CONTRACT = "atomic-descendant-covered-cluster-reduction-v2"
+ORDERED_PROOF_CONTRACT = "ordered-atomic-materialization-and-cluster-reduction-v3"
 SOFTWARE_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -100,7 +101,7 @@ def load_verified_semantic_kind_bindings(
                            "sha256": digest(source_bytes)}, "Canonical source byte or owner binding differs")
         proof = receipt["proof"]
         exact_fields(proof, {"proofContract", "mode", "auditScope", "registryPath", "registryDigest", "affectedGoalIds"}, "proof summary")
-        require(proof["proofContract"] in (PROOF_CONTRACT, CLUSTER_PROOF_CONTRACT)
+        require(proof["proofContract"] in (PROOF_CONTRACT, CLUSTER_PROOF_CONTRACT, ORDERED_PROOF_CONTRACT)
                 and proof["mode"] == "current-or-certified-baseline-comparison"
                 and proof["auditScope"] == "origin-source-landscape-closure"
                 and proof["registryPath"] == REGISTRY_PATH

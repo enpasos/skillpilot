@@ -1287,11 +1287,29 @@ foreignRequiresEdges.forEach(({ goalId }) => {
 assert(!foreignRequiresEdges.some(({ goalId }) => goalId === '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'))
 const mathFixtureGoal = rawMathLandscape.goals.find(({ id }) => id === '000b2764-c5d9-5521-b39e-fc15a4aa72e2')
 assert(mathFixtureGoal, 'known mathematics source-fingerprint fixture is missing')
+const mathFixtureKey = `${String(rawMathLandscape.landscapeId)}:${String(mathFixtureGoal.id)}`
+const reviewedMathFixtureGoal = reviewBindingGoal(prerequisiteReductionContext, mathFixtureKey, mathFixtureGoal)
 assert.equal(
-  sourceFingerprint(mathFixtureGoal, fingerprintContract),
+  sourceFingerprint(reviewedMathFixtureGoal, fingerprintContract),
   'sha256:3f3ae251b2b2d66a0dc22eb0ec76584c9c3b5902a0ea9376aae5f3accc5a1d0a',
   'semantic-kind source-fingerprint implementation drifted from the reviewed mathematics fixture',
 )
+assert.deepEqual(reviewedMathFixtureGoal.requires, [])
+assert.deepEqual(mathFixtureGoal.requires, ['71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'])
+assert.deepEqual({ ...reviewedMathFixtureGoal, requires: mathFixtureGoal.requires }, mathFixtureGoal,
+  'the reviewed Math canary differs only by the certified raw prerequisite materialization')
+assert.notEqual(
+  sourceFingerprint(reviewBindingGoal(undefined, mathFixtureKey, mathFixtureGoal), fingerprintContract),
+  sourceFingerprint(reviewedMathFixtureGoal, fingerprintContract),
+  'without the verified context the current raw Math value cannot satisfy the historical canary',
+)
+if (prerequisiteReductionContext) {
+  assert.throws(() => reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:${String(mathFixtureGoal.id)}`,
+    mathFixtureGoal), /snapshot/u, 'the Physics owner cannot bind the Math canary')
+  assert.throws(() => reviewBindingGoal(prerequisiteReductionContext, mathFixtureKey,
+    { ...mathFixtureGoal, examples: ['unreviewed drift'] }), /snapshot/u,
+  'unrelated Math canary drift is rejected before historical comparison')
+}
 
 const ledger = readJson<SemanticKindLedger>(LEDGER_PATH)
 const ledgerSchema = readJson<Record<string, unknown>>(LEDGER_SCHEMA_PATH)

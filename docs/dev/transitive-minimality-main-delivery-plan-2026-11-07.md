@@ -62,8 +62,8 @@ Der mechanische 16er-Folgebatch ist mit
 [`1d21d87580`](https://github.com/enpasos/skillpilot/commit/1d21d875806d75869448b72228a97ff9d2dfe269)
 geliefert. Der endgültige PR-Head `5bdc2f5096` bestand alle sechs ausgelösten
 Workflows und alle acht Haupt-CI-Jobs; der tatsächliche Main-Dateibaum ist exakt
-gleich. Die separate Main-Push-CI läuft noch; der automatische Dokumentationslauf
-ist bereits erfolgreich. Der Datencommit bleibt `cebfd0cd4c`. Der zusätzlich ausgelöste
+gleich. Auch die separate frische Main-Push-CI bestand alle sieben ausgelösten
+Workflows und alle acht Haupt-CI-Jobs. Der Datencommit bleibt `cebfd0cd4c`. Der zusätzlich ausgelöste
 Chemie-Evidence-Watch erkannte ausschließlich die sechs geprüften Chemie-
 Anforderungslöschungen. Die [begrenzte Wartungsnotiz](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-08.md)
 belegt deren Herkunft, die vollständige frühere Beobachtungsbaseline und die
@@ -80,8 +80,17 @@ PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
 
-Der sichtbare IDE-Checkout arbeitet nun auf `fix/g17-atomic-materialization-proof`,
-direkt auf dem gelieferten Main-Commit. Die nächste kleine Lieferung bleibt auf
+Die getrennte Supportlieferung auf `fix/g17-atomic-materialization-proof` ist
+mit [PR #95](https://github.com/enpasos/skillpilot/pull/95) auf main bei
+[`0adcd834d5`](https://github.com/enpasos/skillpilot/commit/0adcd834d5dee6df3c67f5d6e5b387e9713fa447)
+geliefert. Ihr geprüfter Head `b7de2aa37c` bestand alle vier ausgelösten
+PR-Workflows und acht Hauptjobs; der tatsächliche Main-Dateibaum ist exakt gleich.
+Auch die separate frische Main-Push-CI bestand alle fünf ausgelösten Workflows
+und sämtliche acht Hauptjobs. Copilot konnte das vollständige
+Review wegen Modell-/Tarifbeschränkungen nicht abschließen und erteilte keine
+automatisierte Freigabe; sein Kommentar enthält keinen konkreten Codebefund.
+Das abgeschlossene Astra-Ultra-Quellenreview und die tatsächlichen Negativfälle
+bleiben getrennte Prüfbelege. Die Supportlieferung bleibt auf
 `app/scripts/prerequisiteReductionProof.ts`, dessen Regressionen und diesen Plan
 begrenzt. Sie ergänzt einen getypten, geordneten V3-Nachlauf: Ein Atompaar darf
 nur materialisiert werden, wenn es durch eine vorhandene rohe Anforderung und
@@ -94,9 +103,91 @@ Die 21 historischen Basisdigests, 204 bisherigen Entfernungen und 200
 ursprünglichen Arrays bleiben unverändert. Der V2-Präfix samt seinen Zeugen wird
 vor dem Nachlauf vollständig geprüft; Ergänzungen dürfen ihn nicht nachträglich
 reparieren. Exakter Dokument-Replay, tatsächliche Applicability-Gleichheit und
-die bisherigen Endgraphzeugen bleiben Pflicht. Die Live-Registry bleibt zunächst
-V2; diese Supportlieferung verändert keine Curricula und aktiviert noch kein
-Standard-Meilensteingate.
+die bisherigen Endgraphzeugen bleiben Pflicht. Die Supportlieferung selbst
+belässt die Live-Registry bei V2 und aktiviert noch kein Standard-Meilensteingate.
+
+Der sichtbare IDE-Checkout arbeitet auf `fix/g17-math-atomic-prerequisites`
+an der unmittelbar davon abhängigen Mathematiklieferung. Deren lokal vollständig
+geprüfter Daten-/Consumerstand ist als `92b0e2236d` committet und gepusht.
+Der gelieferte Main-Stand von #95 wurde anschließend bei unverändertem
+Mathematik-Dateibaum aufgenommen. Der eigene Mathematik-PR folgt damit auf die
+tatsächliche Main-Lieferung seines Prüfvertrags. Die laufende Remote-CI wurde
+für diese gekoppelte Vorbereitung genutzt; ein weiterer unabhängiger
+Änderungsumfang wurde nicht begonnen.
+
+Der endliche Mathematikbatch überträgt die Anforderung der beiden GK-/LK-
+Abiturcluster an das vorhandene Orientierungsziel auf ihre 13 beziehungsweise
+14 atomaren Nachfahren: 27 Ergänzungen, anschließend zwei Clusterlöschungen.
+`contains` und die 204 historischen Entfernungen mit ihren 200 Originalarrays
+bleiben unverändert. Die Vorbereitung an einer Kopie des vollständigen Katalogs
+bestand den tatsächlichen Applicability-Vergleich aller 6.524 Ziele und den
+unveränderten vollständigen V3-Loader. Dessen Vergleichsfähigkeit rekonstruiert
+alle 229 betroffenen Quellen und sämtliche 21 ursprünglichen Dokumentdigests.
+Die bisherigen 269 Zeugenpfade mit 953 Kantenpositionen bleiben erhalten.
+
+Zur Datenlieferung gehören die notwendigen Anpassungen der vorhandenen
+Vergleichsprüfungen: Python akzeptiert den bekannten V3-Vertrag ausschließlich
+über den bestehenden Node-Prüfer; der native Vergleich rekonstruiert sowohl
+historische als auch neue Quellen und prüft vollständige Dokumentdigests.
+Fehlendes `requires` und `requires: []` bleiben unterscheidbar. Die bisherigen
+historischen Bestandsprüfungen bleiben erhalten; neue Quellen werden zusätzlich
+geprüft. Der unveränderte reguläre Meilensteinproducer besteht am tatsächlichen
+Aktivierungsstand mit fünf M7- und fünf M6-Fächern einschließlich aller zehn
+geschützten Untergrenzen. Seine Reportänderungen betreffen ausschließlich den
+Zeitstempel und die V3-Nachweismetadaten; sämtliche Regelwerte bleiben gleich.
+Die native lokale Gegenprüfung bestand drei Tests mit 1.240 realen
+Konfigurationen und 370.306 Kontext-/Rollenvergleichen. Alle 229 Quellen sind
+abgedeckt: 227 über tatsächliche Scopes, die zwei bisherigen nicht exponierten
+PoWi-Quellen weiterhin separat über dieselben nativen APIs. Die 6.480 neuen
+Math-Frontiervergleiche enthalten 1.080 positive Kontrollen tatsächlich
+angebotener atomarer Ziele; historische Kontrollen bleiben erhalten.
+Die unveränderte Projektionsklasse bestand zusätzlich alle 58 Tests ohne
+Fehler oder Skips. Auditor-/Nachweissuite, Python-Brücke, Schema- und
+Dokumentationsprüfungen bestanden ebenfalls. Die Lieferung liegt in
+[PR #96](https://github.com/enpasos/skillpilot/pull/96). Sein erster Remote-Lauf
+wies im Pflichtschritt `check:math-duration-composition-views` einen veralteten
+aktiven Raw-Inputpin des bestehenden Dauerlayoutplans zurück.
+Die [begrenzte Wartungsnotiz](canonical-math-duration-input-binding-review-2026-11-08.md)
+belegt den ausdrücklichen Anschluss `07749dae… → e28dea9e…` nach der bestehenden
+Pflegeanweisung: ausschließlich das eine Inputfeld ändert sich; alle 18 Views,
+83 Platzierungen, sieben Adjudikationen und fünf Quellen-Scope-Bindungen bleiben
+erhalten. Historische Reviews und die vier Vergleichsfamilien ändern sich nicht.
+Der zusätzlich tatsächlich veraltete Rationale-Coverage-Bericht wird regulär
+erneuert; nur Zeitstempel und die zwei rohen beziehungsweise offenen
+Relationszähler ändern sich von 2.459 auf 2.484. Der Gap-Issue-Check besteht mit
+unveränderten Dateien. Auch der separate reguläre CQR-Frischecheck einschließlich
+aller zehn geschützten Untergrenzen besteht; der CQR-Status wurde nicht neu
+generiert.
+
+Ein zweiter Remote-Befund betrifft den historischen Fingerprint-Kontrollwert im
+Physik-Buchtest: Er wurde unmittelbar aus dem inzwischen materialisierten
+Mathematikziel berechnet. Der Test nutzt dafür nun den bereits verifizierten
+ursprünglichen Snapshot und behält seinen historischen Erwartungswert bei.
+Er prüft zusätzlich das ausschließliche `requires`-Delta und weist einen
+fehlenden Nachweiskontext, falschen Fachbezug sowie unbescheinigte Änderungen
+zurück. Gemeinsame Fingerprintfunktion und Reviewbindungen bleiben unverändert.
+Der nächste Remote-Lauf bestand sieben von acht Hauptjobs und alle vier
+Begleitworkflows. Im letzten Paket-Konformitätsschritt wurde die alte
+Weitergabebindung des normalisierten Mathematikmodells zurückgewiesen.
+Die [gesonderte technische Wartungsnotiz](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)
+belegt den ausschließlich aus `requires` bestehenden Rohdelta und den regulären
+Generatorkandidaten: Im vollständigen Reviewobjekt ändert sich nur
+`contentDigest` von `fb51e95c…` auf den tatsächlich berechneten Modell-Digest
+`eec1b300…`. Der Shell-Pin wird vom älteren `e8ad1ec7…` an denselben Digest
+angeschlossen. Alle 836 Assetrecords, vier Klassenrecords, 839 offenen
+Prüfungen, null menschlichen Freigaben und `publicationReady: false` bleiben
+unverändert. Der vollständige lokale CI-Konformitätslauf bestand mit allen
+36 Eingaben unverändert, unabhängiger Modellvalidierung, den bisherigen
+Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Frische
+Remote-CI und Main-Lieferung stehen weiterhin aus.
+
+Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
+`5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
+Ihre lokalen Nachweis-, Auditor-, Python-, Schema-, nativen 1.240-Konfigurations-,
+58er-Projektions- und regulären Meilensteinprüfungen bestanden. Sie bleibt bis
+zur Main-Lieferung von #96 getrennt. Vor ihrem eigenen PR ist auch der bekannte
+Paket-Konformitätsanschluss am tatsächlichen reduzierten Datenstand auszuführen.
+Das harte Standard-Meilensteingate und der Gesamtauftrag bleiben offen.
 
 Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
 erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8
@@ -185,8 +276,9 @@ Die Wirtschaftsregression erhält für HE-GK/LK die strikte Blockade ohne
 Orientierung in beiden Frames; auch die bestehenden Math-/Bio-/Lateinkontrollen
 bestehen. Quellenreview mit Astra ist ohne Blocker abgeschlossen. Der endgültige
 PR-Head bestand nach den isolierten CI-Testkorrekturen alle sechs ausgelösten
-Workflows und acht Hauptjobs und ist auf main geliefert. Die separate Main-CI
-wird weiterhin beobachtet. Die vollständige atomare Normalform und G17 in der
+Workflows und acht Hauptjobs und ist auf main geliefert. Die separate frische
+Main-CI bestand anschließend ebenfalls alle sieben ausgelösten Workflows und
+acht Hauptjobs. Die vollständige atomare Normalform und G17 in der
 Standard-Meilensteinprüfung sind damit weiterhin nicht abgenommen.
 
 Die zwei zunächst geplanten Wirtschafts-Cuts gehören weiterhin zur offenen
