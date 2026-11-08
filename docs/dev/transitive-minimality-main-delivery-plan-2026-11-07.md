@@ -205,6 +205,25 @@ Main-Voraussetzung für den getrennten Mathematik-Folge-PR ist damit erfüllt;
 seine eigene Remote-Abnahme steht noch aus.
 Das harte Standard-Meilensteingate und der Gesamtauftrag bleiben offen.
 
+Dieser Mathematikstand liegt in [PR #97](https://github.com/enpasos/skillpilot/pull/97).
+Ein konkreter Copilot-Befund wies dort auf den zusätzlich veralteten NPM-
+Standalone-Plancheck hin. Der unveränderte Originalaufruf scheiterte tatsächlich
+mit `Expected entry count 1060, got 1061.`. Die anschließende Planmessung mit
+allen bestehenden Prüfern ergab 1.061 Einträge, 1.059 Manifestdateien, 836
+Binärassets und denselben Modell-Digest `5d3cf9c7…`. Ausschließlich die drei
+veralteten Erwartungsliterale wurden korrigiert; danach bestand der originale
+NPM-Aufruf. Die [begrenzte Wartungsnotiz](canonical-math-standalone-plan-pin-review-2026-11-09.md)
+bindet diese drei tatsächlichen Ausführungen. Daten, Prüfer, Modell, sämtliche
+Reviewrecords und alle 32 CQR-Eingaben bleiben unverändert. Die Korrektur erhält
+ihre eigene frische PR-CI; ein ZIP oder eine Publikationsfreigabe wird nicht
+behauptet.
+
+Der unmittelbar folgende deutsche Einzelfall bleibt als ausdrücklich
+unfertiger WIP `534af7911f` auf `fix/g17-german-first-cluster-prerequisite`
+committet und gepusht erhalten. Sein Main-Weg ist der gekoppelte nächste
+G17-PR nach der Main-Lieferung von #97 und nach vollständiger eigener Abnahme;
+für die konkrete Elternkorrektur ruht seine Umsetzung vorübergehend.
+
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren
 Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
