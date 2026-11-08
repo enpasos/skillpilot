@@ -71,6 +71,71 @@ async function waitDrawer(page: Page, open: boolean) {
   }, open)
 }
 
+async function scenarioRefreshRace(page: Page) {
+  // Capture an actual older fixture response before holding its delivery. The
+  // completed scenario must refresh independently and survive that stale reply.
+  const probe = await page.evaluateHandle(() => {
+    const originalFetch = window.fetch
+    let release!: () => void
+    const heldResponse = new Promise<void>(resolve => { release = resolve })
+    type Summary = { revision: number; achieved: number; target: number }
+    const probe = { held: null as Summary | null, responses: [] as Summary[], release,
+      restore() { window.fetch = originalFetch } }
+    window.fetch = async (input, init) => {
+      const response = await originalFetch(input, init)
+      const url = new URL(input instanceof Request ? input.url : String(input), location.origin)
+      if (url.pathname.endsWith('/learning-plans') && (init?.method ?? 'GET') === 'GET') {
+        const payload = await response.clone().json() as { plans: { revision: number }[];
+          status: { subjects: { subjectKey: string; learningScope: { achievedGoalCount: number; targetGoalCount: number } }[] } }
+        const scope = payload.status.subjects.find(subject => subject.subjectKey === 'mathematik')!.learningScope
+        const summary = { revision: payload.plans[0].revision, achieved: scope.achievedGoalCount, target: scope.targetGoalCount }
+        probe.responses.push(summary)
+        if (!probe.held) {
+          probe.held = summary
+          await heldResponse
+        }
+      }
+      return response
+    }
+    return probe
+  })
+  const events: string[] = []
+  const recordEvent = (message: { text: () => string }) => {
+    if (message.text().startsWith('[SSE]')) events.push(message.text())
+  }
+  page.on('console', recordEvent)
+  try {
+    await page.getByTestId('full-cockpit-scenario').selectOption('memory')
+    await page.waitForFunction(probe => probe.held !== null, probe)
+    assert.deepEqual(await probe.evaluate(probe => [probe.held?.achieved, probe.held?.target]), [0, 2])
+    const completedRefreshFinished = page.waitForEvent('console', { predicate: message => message.text() === '[SSE] ✅ Preferences refresh complete' })
+    await page.getByTestId('full-cockpit-scenario').selectOption('completed')
+    const progress = page.getByTestId('learner-plan-subject-mathematik').getByTestId('learner-plan-achieved-goals')
+    await progress.filter({ hasText: '2 von 2' }).waitFor()
+    await unchangedMain(page)
+    await completedRefreshFinished
+    const olderRefreshFinished = page.waitForEvent('console', { predicate: message => message.text() === '[SSE] ✅ Preferences refresh complete' })
+    await probe.evaluate(probe => probe.release())
+    await olderRefreshFinished
+    assert.equal(await progress.innerText(), '2 von 2', 'an older scenario response must not replace the completed scenario')
+  } finally {
+    console.log('Full Cockpit scenario refresh race:', JSON.stringify({
+      ...await probe.evaluate(probe => ({ held: probe.held, responses: probe.responses,
+        scenario: (document.querySelector('[data-testid="full-cockpit-scenario"]') as HTMLSelectElement)?.value,
+        selectedGoalId: document.querySelector('[data-testid="full-cockpit-comparison"]')?.getAttribute('data-selected-goal-id'),
+        progress: document.querySelector('[data-testid="learner-plan-subject-mathematik"] [data-testid="learner-plan-achieved-goals"]')?.textContent,
+        mainWitness: document.querySelector('[data-testid="learner-main-content"]')?.getAttribute('data-instance-witness') })), events,
+    }))
+    await probe.evaluate(probe => { probe.release(); probe.restore() })
+    await probe.dispose()
+    page.off('console', recordEvent)
+  }
+  await page.getByTestId('full-cockpit-scenario').selectOption('ordinary')
+  await page.getByTestId('learner-plan-subject-mathematik').getByTestId('learner-plan-achieved-goals').filter({ hasText: '0 von 2' }).waitFor()
+  await page.locator('.learner-cockpit-selection img').waitFor()
+  await unchangedMain(page)
+}
+
 try {
   await mkdir(artifacts, { recursive: true })
   const page = await open(1440)
@@ -86,6 +151,9 @@ try {
   await selected.locator('img').evaluate(async (image: HTMLImageElement) => { if (!image.complete) await image.decode() })
   assert.ok(await selected.locator('img').evaluate((image: HTMLImageElement) => image.naturalWidth > 0))
   await page.screenshot({ path: `${artifacts}/10-full-classic.png` })
+
+  stage = 'scenario refresh replaces an older in-flight fixture response without remounting'
+  await scenarioRefreshRace(page)
 
   stage = 'navigation-only map, original GoalCard, separate active goal and restored tree width'
   await navigation(page, 'map', data.mathScopeId)
