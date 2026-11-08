@@ -115,7 +115,7 @@ Wichtig:
 - Die Zahl `QA-Scopes` zaehlt nicht einzelne Pfade im Graphen.
 - Sie zaehlt nicht Aufgaben, Uebungen oder Lernwegvarianten.
 - Sie zaehlt nur die im Generator registrierten QA-Profile.
-- Ein Curriculum ohne QA-Scope bleibt im Dashboard `M0`, auch wenn seine reine Graphstruktur technisch valide ist.
+- Fehlende QA-Scopes verhindern im aktuellen Aggregator `M3` bis `M7`; wenn die vorherigen Quellen- und Basischecks bestehen, kann der berechnete Stand dennoch `M2` sein. Die frühere pauschale Dashboard-Angabe `M0` beschrieb diesen Codepfad nicht korrekt.
 
 Aktuell sind fuer Mathematik und Physik jeweils zwei Pflicht-Scopes registriert:
 
@@ -200,6 +200,23 @@ Die direkte atomare Routenpruefung beantwortet:
 
 > Ist die kanonische didaktische Route auf atomarer Lernzielebene modelliert?
 
+**Migrationshinweis (Product Owner, 8. November 2026):** Der verbindliche
+Zielzustand erfasst alle `requires` mit atomarem Quell- und Voraussetzungsziel
+($R\subseteq A\times A$). Bei Bestandsdaten zuerst die vollstaendigen reviewten
+atomaren Voraussetzungen materialisieren oder erhalten, danach die durch sie
+abgedeckten nichtatomaren `requires` entfernen und erst dann die atomare Relation
+transitiv reduzieren. Die vollstaendige normalisierte atomare
+Voraussetzungshuelle sowie die relevanten Scope-, Applicability-, Target-,
+Frontier-, Abschluss- und Mastery-Vertraege muessen erhalten bleiben; rohe
+Erreichbarkeit zwischen nichtatomaren Zielknoten darf sich dabei aendern.
+Atomare Kanten zugunsten geerbter Clusterpfade zu loeschen widerspricht dieser
+Reihenfolge. Cluster-Kompatibilitaet ist kein erfuellter kanonischer Zielzustand.
+Dies ist weder eine Behauptung bereits vollstaendiger CI-Durchsetzung noch eine
+Gate-Ausnahme: `CQR-102` und `GVR-012` verlangen weiterhin direkt atomare Routen;
+die M3- bis M7-Anforderungen bleiben unveraendert. Einzelheiten und pruefbarer
+Erhaltungsnachweis stehen in [Graph Definition §§5.2 und
+7.3](../concept/skill-graph/graph-definition.md#73-atomic-transitive-minimality-and-ordered-migration-g17).
+
 ### Terminale Autonomie
 
 Terminale Autonomie meint Ziele, in denen Lernende das Gelernte selbststaendig anwenden muessen, typischerweise in Klausur-, Abschluss- oder Pruefungsform.
@@ -233,9 +250,20 @@ Die Dashboard-Spalten `Warnungen` und `Fehler` zaehlen alle Regeln mit diesem St
 
 Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle relevanten niedrigeren Bedingungen voraus.
 
+Die [vollstaendige Zuordnung der Graph-Definition](graph-definition-rule-milestone-matrix.md)
+trennt Sollpflicht und heutige Gatewirkung. Die globale atomare Normalform und
+vollstaendige G17-Pruefung sind nach der Ownerpraezisierung Basis vor jedem
+Fach-Meilensteinpass `M1` bis `M7`; die unten beschriebene aktuelle Aufstiegskette
+setzt diesen neuen Basisvertrag noch nicht vollstaendig durch. Insbesondere
+sind Katalogziel und wirkliche Promotionsschwelle nicht gleich: `CQR-104` traegt
+Katalogziel `M3`, wird im Aggregator aber erst fuer Curriculum-`M4` erforderlich;
+`CQR-203` traegt Katalogziel `M4`, wird dort erst fuer Curriculum-`M5` erforderlich.
+Dies ist eine Ist-Beschreibung und keine neue Gate-Ausnahme oder abgesenkte Norm.
+
+
 ### Scope-Reife
 
-Ein einzelner QA-Scope kann maximal `M3` erreichen.
+Ein einzelner QA-Scope kann im aktuellen Producer maximal `M4` erreichen. Scope-Reife und Curriculum-Reife sind verschiedene Skalen.
 
 | Scope-Reife | Exakte Bedingung |
 | --- | --- |

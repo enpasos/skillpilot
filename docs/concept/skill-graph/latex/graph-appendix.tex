@@ -1,11 +1,15 @@
 % SPDX-License-Identifier: Apache-2.0
 \appendix
+\input{latex/graph-rule-milestones.tex}
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
-Diese Fassung beschreibt die verbindliche Konzeptkorrektur vom
-4. November 2026. Geprüfte Hauptlinie für den jüngsten Konzeptabgleich:
-\code{616324e857} (kurzer Git-Präfix). Es wurde ausschließlich Dokumentation
-und deren Werkzeugbestand verändert. Die neue globale Anwendungsanerkennung
+Diese Fassung ergänzt die Konzeptkorrektur vom 4. November um die
+atomare Zielpräzisierung und die Meilensteinzuordnung vom 8. November 2026.
+Der folgende historische Implementierungsabgleich bezog sich auf
+\code{616324e857}; er ist kein neuer vollständiger Runtimeabnahmelauf.
+Die aktuelle Gatezuordnung im vorigen Anhang wurde gegen die Hauptlinie
+\code{3b71ee9370} geprüft. In dieser Bearbeitung wurden nur Dokumentation
+und deren Buildstand verändert. Die neue globale Anwendungsanerkennung
 ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
 Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
 
@@ -28,16 +32,17 @@ Globale Wirkung & Kontextbezogene bisherige Freistellung ist nicht schon
 die dauerhaft vertragsgebundene globale Menge $M_{\mathrm{eff}}$.
 Folge-Frontier, Gesamt-IST, Vertragsrevision und historische Bedeutung
 müssen gemeinsam implementiert und gesondert geprüft werden.\\
-Graphgültigkeit & Transitive Minimalität ist verbindlich. Ein lokaler
-Validator oder historische Tests ersetzen keine Prüfung der vollständigen
-normalisierten Relation und keine fachliche Inhaltsprüfung.\\
+Graphgültigkeit & Vollständige atomare Autorierung und transitive
+Minimalität sind verbindliche Basis vor M1. Heutige lokale oder
+profilbegrenzte Checks ersetzen den vollständigen Zielnachweis nicht.
+Die Matrix weist die fehlenden Gates aus.\\
 Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
 Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
 \code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
-Memorierung & Der dokumentierte Zieltypvertrag nennt verifizierten Abruf
-und keine fälligen Karten. Backend und \code{useSrsMastery} verwenden den
-verifizierten Abruf aller erforderlichen Karten. Die Abweichung ist
-vor einer entsprechenden Konformitätsbehauptung ausdrücklich aufzulösen.\\
+Memorierung & Der eigene erfolgreiche Abschlussabruf begründet den
+Zielabschluss. Kartenfälligkeit ist kein automatischer Masteryentzug;
+die ältere Fälligkeits-Sollformel ist überholt. Historische Ableitung aus
+Abrufflags belegt nicht den vollständigen Runtimevertrag.\\
 Lerneinheiten & Rekursive Ziel-/Kinderstruktur mit eindeutigem Ersterwerb
 und abgeleitetem Abschluss; noch kein behauptetes Runtimefeature.
 Technische Ganzheitssperren und direkter Prüfungszugriff unter einem
@@ -71,8 +76,8 @@ gewöhnlichen Ziele vollständig assessmentabgedeckt sind:
 liefern dieselbe implizite Menge.\\
 Minimalität & Transitive Reduktion ist minimal und erhält die Hülle.
 Redundante Kanten der normalisierten Relation ändern die Anerkennung
-nicht; ein Gegenbeispiel prüft die nach Kantenentfernung neu berechnete
-Vererbung für verfasste Minimalität.\\
+nicht. Der ältere Vererbungsgegenfall ist eine Bestandsdiagnose; dieser
+Modelltest belegt nicht die neue atomare Migrationspriorität.\\
 Globale Monotonie & Zusätzliche ausdrückliche Mastery öffnet bei festen
 gültigen Verträgen keine effektiv beherrschte Arbeit erneut. Prüfungs-
 und Memorierziele werden nie implizit bestanden.\\
