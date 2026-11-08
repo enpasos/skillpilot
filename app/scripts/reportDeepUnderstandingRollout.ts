@@ -6,6 +6,13 @@ import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
+import {
+  loadVerifiedPrerequisiteReductionContext,
+  reviewBindingGoal,
+  verifiedPrerequisiteReductionSummary,
+  type PrerequisiteReductionProofSummary,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintSemanticKindSourceGoal,
@@ -143,6 +150,7 @@ export interface DeepUnderstandingCompletionCheck {
 }
 
 export interface DeepUnderstandingRolloutReport {
+  prerequisiteReductionProof?: Readonly<PrerequisiteReductionProofSummary>
   schemaVersion: 1
   reportId: string
   subjects: DeepUnderstandingSubjectReport[]
@@ -854,7 +862,10 @@ const runTsxCheck = (scriptPath: string, args: string[]): { valid: boolean; deta
   }
 }
 
-const loadAuthoritativeScope = (config: DeepUnderstandingSubjectConfig): AuthoritativeScope => {
+const loadAuthoritativeScope = (
+  config: DeepUnderstandingSubjectConfig,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+): AuthoritativeScope => {
   const issues: string[] = []
   let rawLandscape: JsonObject
   let landscape: SkillLandscape
@@ -931,8 +942,11 @@ const loadAuthoritativeScope = (config: DeepUnderstandingSubjectConfig): Authori
       return
     }
     try {
+      const historicalFingerprint = fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+        prerequisiteReductionContext, `${landscapeId}:${decision.goalId}`, goal,
+      ))
       const expectedFingerprint = fingerprintSemanticKindSourceGoal(goal)
-      if (decision.sourceFingerprint !== expectedFingerprint) {
+      if (decision.sourceFingerprint !== expectedFingerprint && decision.sourceFingerprint !== historicalFingerprint) {
         addIssue(issues, config.subject, `stale semantic-kind decision for ${decision.goalId}`)
         return
       }
@@ -1207,6 +1221,7 @@ export const validateResolutionIndex = async (
   supersededGoalIds: ReadonlySet<string> = new Set(),
   withdrawnResolutionDigests: ReadonlyMap<string, string> = new Map(),
   semanticRetirements?: ValidatedResolutionSemanticRetirements,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): Promise<{
   ready: Set<string>
   claimedGoalIds: Set<string>
@@ -1464,6 +1479,7 @@ export const validateResolutionIndex = async (
         continue
       }
       const validation = await validateGoalDescriptionDualRoundResolution({
+        prerequisiteReductionContext,
         resolution,
         dualSummary: group.dualSummary,
         dualSummaryBytes: group.dualSummaryBytes,
@@ -1585,6 +1601,7 @@ const loadDescriptionReadyGoals = async (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): Promise<Set<string>> => {
   const validationResults: ResolutionIndexValidation[] = []
   const ownerByGoalId = new Map<string, string>()
@@ -1642,6 +1659,7 @@ const loadDescriptionReadyGoals = async (
     const result = await validateResolutionIndex(
       indexPath, config, scope, supersededByIndex.get(indexPath), withdrawnByIndex.get(indexPath),
       semanticRetirements,
+      prerequisiteReductionContext,
     )
     result.issues.forEach((issue) => issues.push(issue))
     validationResults.push({ path: indexPath, ...result })
@@ -1673,7 +1691,7 @@ const loadDescriptionReadyGoals = async (
       if (uniqueClaims.has(goalId) && !invalidGoalIds.has(goalId)) ready.add(goalId)
     })
   })
-  validateCurrentCanonicalBindingAudits(config, scope, ready, issues)
+  validateCurrentCanonicalBindingAudits(config, scope, ready, issues, prerequisiteReductionContext)
   return ready
 }
 
@@ -1682,6 +1700,7 @@ const validateCurrentCanonicalBindingAudits = (
   scope: AuthoritativeScope,
   ready: Set<string>,
   issues: string[],
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): void => {
   const expected = new Set(config.currentCanonicalBindingAuditGoalIds ?? [])
   const originalReady = new Set(ready)
@@ -1733,7 +1752,11 @@ const validateCurrentCanonicalBindingAudits = (
           || !scope.atomicGoalIds.has(goalId)
         ) throw new Error('audit decision, finding, digest, or current curricularAtomic scope is invalid')
         const goal = scope.rawGoalById.get(goalId)
-        if (!goal || sha256(stableGoalBookJson(goal)) !== record.canonicalGoalDigest) {
+        const historicalDigest = goal && sha256(stableGoalBookJson(reviewBindingGoal(
+          prerequisiteReductionContext, `${scope.landscape.landscapeId}:${goalId}`, goal,
+        )))
+        if (!goal || (sha256(stableGoalBookJson(goal)) !== record.canonicalGoalDigest
+          && historicalDigest !== record.canonicalGoalDigest)) {
           throw new Error('full current canonical goal changed after the targeted source/image audit')
         }
         const provenance = (goal.extendedData as JsonObject | undefined)?.provenance as JsonObject | undefined
@@ -1787,6 +1810,7 @@ const loadEvidenceReadyGoals = (
   config: DeepUnderstandingSubjectConfig,
   scope: AuthoritativeScope,
   issues: string[],
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): Set<string> => {
   const validatedByConfig = new Map<string, Set<string>>()
   const ownerByGoalId = new Map<string, string>()
@@ -1810,7 +1834,7 @@ const loadEvidenceReadyGoals = (
     }
     let result: ReturnType<typeof reviewPositiveGoalEvidenceConfig>
     try {
-      result = reviewPositiveGoalEvidenceConfig(configPath)
+      result = reviewPositiveGoalEvidenceConfig(configPath, prerequisiteReductionContext)
     } catch (error) {
       addIssue(issues, config.subject, `${configPath}: ${error instanceof Error ? error.message : String(error)}`)
       continue
@@ -1877,11 +1901,12 @@ export const loadDeepUnderstandingRolloutConfig = (
 
 export const generateDeepUnderstandingRollout = async (
   configuredPath = defaultConfigPath,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): Promise<DeepUnderstandingRolloutReport> => {
   const config = loadDeepUnderstandingRolloutConfig(configuredPath)
   const subjects: DeepUnderstandingSubjectReport[] = []
   for (const subjectConfig of config.subjects) {
-    const scope = loadAuthoritativeScope(subjectConfig)
+    const scope = loadAuthoritativeScope(subjectConfig, prerequisiteReductionContext)
     const descriptionIssues: string[] = []
     const evidenceIssues: string[] = []
     const atomicityIssues: string[] = []
@@ -1889,12 +1914,12 @@ export const generateDeepUnderstandingRollout = async (
     const visualizationIssues: string[] = []
     const deferredVisualizationGoalIds = new Set<string>()
     const [descriptionReady, atomicityReady, memoryReady, visualizationReady] = await Promise.all([
-      loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues),
+      loadDescriptionReadyGoals(subjectConfig, scope, descriptionIssues, prerequisiteReductionContext),
       Promise.resolve(loadAtomicityReadyGoals(subjectConfig, scope, atomicityIssues)),
       Promise.resolve(loadMemoryReadyGoals(subjectConfig, scope, memoryIssues)),
       Promise.resolve(loadVisualizationReadyGoals(subjectConfig, scope, visualizationIssues, deferredVisualizationGoalIds)),
     ])
-    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues)
+    const evidenceReady = loadEvidenceReadyGoals(subjectConfig, scope, evidenceIssues, prerequisiteReductionContext)
     const strictCompleteGoalIds = scope.denominator === null
       ? []
       : intersectStrictGoalGates(scope.atomicGoalIds, [
@@ -1943,6 +1968,9 @@ export const generateDeepUnderstandingRollout = async (
   return {
     schemaVersion: 1,
     reportId: config.reportId,
+    ...(prerequisiteReductionContext === undefined ? {} : {
+      prerequisiteReductionProof: verifiedPrerequisiteReductionSummary(prerequisiteReductionContext),
+    }),
     subjects,
     blockingIssueCount: subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
   }
@@ -1963,6 +1991,8 @@ const parseArgs = (argv: string[]): CliArgs => {
 
 const renderText = (report: DeepUnderstandingRolloutReport): string => {
   const lines = [`# Deep Understanding Rollout: ${report.reportId}`]
+  const proof = report.prerequisiteReductionProof
+  if (proof) lines.push(`Review binding: ${proof.proofContract}; ${proof.mode}; ${proof.auditScope}; registry=${proof.registryDigest}; goals=${proof.affectedGoalIds.join(',')}`)
   report.subjects.forEach((subject) => {
     const denominator = subject.denominator === null ? 'n/a' : String(subject.denominator)
     lines.push(`${subject.label}: ${subject.strictComplete}/${denominator} (${subject.percentage})`)
@@ -1982,7 +2012,8 @@ const renderText = (report: DeepUnderstandingRolloutReport): string => {
 
 const main = async (): Promise<void> => {
   const args = parseArgs(process.argv.slice(2))
-  const report = await generateDeepUnderstandingRollout(args.configPath)
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const report = await generateDeepUnderstandingRollout(args.configPath, prerequisiteReductionContext)
   console.log(args.format === 'json' ? JSON.stringify(report, null, 2) : renderText(report))
   if (args.mode === 'check' && report.blockingIssueCount > 0) process.exitCode = 1
 }

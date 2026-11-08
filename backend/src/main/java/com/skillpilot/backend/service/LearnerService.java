@@ -7209,7 +7209,7 @@ public class LearnerService {
         try {
             Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
             var topology = new CompletionProfileCompiler().normalizePrerequisites(lookup);
-            topology.validateContext(projection.targetGoalIds());
+            topology.validateContext(automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection));
             return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
         } catch (CompletionCompilationException invalid) {
             // Broken authored definitions never become an empty, successful demand.
@@ -7223,7 +7223,9 @@ public class LearnerService {
 
     private boolean areFrontierPrerequisitesMastered(
             LearningGoal goal, GoalProjection projection, FrontierPrerequisites prerequisites) {
-        if (prerequisites.topology() == null) return false;
+        // Visible navigation clusters can have no atomic descendants in this
+        // scope and therefore no node in the validated prerequisite graph.
+        if (prerequisites.topology() == null || !prerequisites.lookup().containsKey(goal.getId())) return false;
         // Preserve the explicit Level-2 composition validity boundary. Canonical
         // traversal supplies lookup, never an inferred target/support role.
         if (projection.compositionViewApplied() && goal.getRequires() != null) {

@@ -6,6 +6,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import {
+  loadVerifiedPrerequisiteReductionContext,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
+import {
   loadGoalBookBuildInputs,
   parseAndValidateGoalBookModel,
   stableGoalBookJson,
@@ -347,6 +351,7 @@ export const verifyGoalBookSourceAtlasInputs = (
 
 export const verifyPublishedGoalBook = async (
   paths: GoalBookPublicationPaths = defaultGoalBookPublicationPaths,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ) => {
   const { sourceAtlasConfig, sourceAtlasInputs } = verifyGoalBookSourceAtlasInputs(paths)
   const [
@@ -362,7 +367,7 @@ export const verifyPublishedGoalBook = async (
     readFile(paths.pdfPath),
     readFile(paths.renderManifestPath, 'utf8'),
     readFile(paths.renderManifestSchemaPath, 'utf8'),
-    loadGoalBookBuildInputs(paths.configPath),
+    loadGoalBookBuildInputs(paths.configPath, undefined, prerequisiteReductionContext),
   ])
   if (sourceAtlasInputs && sourceAtlasConfig) {
     assertGoalBookSourceAtlasConfigBinding(sourceAtlasConfig, currentBuild.config)
@@ -513,7 +518,9 @@ export const verifyPublishedGoalBook = async (
   }
 }
 
-export const verifyPublishedGoalBooks = async (): Promise<Awaited<
+export const verifyPublishedGoalBooks = async (
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+): Promise<Awaited<
   ReturnType<typeof verifyPublishedGoalBook>
 >[]> => {
   const index = parseGoalBookPublicationIndex(
@@ -522,7 +529,7 @@ export const verifyPublishedGoalBooks = async (): Promise<Awaited<
   return Promise.all(index.books.map((book) => {
     const definition = goalBookDefinitionById(book.bookId)
     if (!definition) return fail(`registered book ${book.bookId} has no publication definition`)
-    return verifyPublishedGoalBook(goalBookPublicationPaths(definition))
+    return verifyPublishedGoalBook(goalBookPublicationPaths(definition), prerequisiteReductionContext)
   }))
 }
 
@@ -530,7 +537,7 @@ const isMain = process.argv[1]
   && import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 
 if (isMain) {
-  verifyPublishedGoalBooks().then((verifiedBooks) => {
+  loadVerifiedPrerequisiteReductionContext().then(verifyPublishedGoalBooks).then((verifiedBooks) => {
     for (const { model, pdfSha256 } of verifiedBooks) {
       console.log(
         `Published goal book verified: ${model.book.id}; ${model.pages.length} pages; ${pdfSha256}`,

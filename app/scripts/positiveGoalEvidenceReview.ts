@@ -6,6 +6,10 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import {
+  loadVerifiedPrerequisiteReductionContext,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
+import {
   POSITIVE_GOAL_EVIDENCE_GOAL_FINGERPRINT_RULE_VERSION,
   POSITIVE_GOAL_EVIDENCE_PROFILE_RULE_VERSION,
   type PositiveGoalEvidenceReviewRecord,
@@ -304,6 +308,7 @@ function loadReviewRunManifests(
 
 export function reviewPositiveGoalEvidenceConfig(
   configuredPath: string,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): PositiveGoalEvidenceReviewResult {
   const ajv = new Ajv2020({ allErrors: true, strict: true })
   addFormats(ajv)
@@ -428,6 +433,7 @@ export function reviewPositiveGoalEvidenceConfig(
       goal,
       resourceState.digests,
       semanticKind,
+      prerequisiteReductionContext,
     ))
     if (config.requireApproved && record.status !== 'approved') {
       errors.push(`${record.goalId}: configured scope requires an approved profile`)
@@ -451,9 +457,10 @@ export function reviewPositiveGoalEvidenceConfig(
   return { config, records, errors, counts }
 }
 
-function main() {
+async function main() {
   const args = parseArgs(process.argv.slice(2))
-  const result = reviewPositiveGoalEvidenceConfig(args.configPath)
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const result = reviewPositiveGoalEvidenceConfig(args.configPath, prerequisiteReductionContext)
   console.log(`# Positive Goal Evidence Review: ${result.config.reviewId}`)
   console.log(`Scope: ${result.config.scope.label}`)
   console.log(`Configured goals: ${result.config.scope.goalIds.length}`)
@@ -467,10 +474,8 @@ function main() {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try {
-    main()
-  } catch (error) {
+  main().catch((error) => {
     console.error(error instanceof Error ? error.message : String(error))
     process.exitCode = 1
-  }
+  })
 }

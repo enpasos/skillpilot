@@ -20,6 +20,10 @@ import {
   type GoalBookPublicationIndex,
 } from './checkGoalBookPublication'
 import { loadGoalBookBuildInputs, type GoalBookModel } from './goalBookModel'
+import {
+  loadVerifiedPrerequisiteReductionContext,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 import { buildGoalBookOriginalSources, goalBookOriginalSourceMappingPaths, serializeGoalBookOriginalSources } from './goalBookOriginalSources'
 import { writeGoalBookPdf, writeGoalBookRenderManifest } from './goalBookRenderer'
 import {
@@ -41,6 +45,7 @@ const execFileAsync = promisify(execFile)
 const serialize = (value: unknown): string => `${JSON.stringify(value, null, 2)}\n`
 
 export type GoalBookPublicationsBuildOptions = {
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
   force?: boolean
   outputDirectory?: string
   chromiumExecutablePath?: string
@@ -221,7 +226,7 @@ export const buildGoalBookPublications = async (options: GoalBookPublicationsBui
     let rendered = 0
     for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
       const paths = goalBookPublicationPaths(definition, stagingDirectory)
-      const { model } = await loadGoalBookBuildInputs(paths.configPath)
+      const { model } = await loadGoalBookBuildInputs(paths.configPath, undefined, options.prerequisiteReductionContext)
       const modelBytes = serialize(model)
       const originalSources = buildGoalBookOriginalSources(model, REPOSITORY_ROOT,
         goalBookOriginalSourceMappingPaths(model, REPOSITORY_ROOT, paths.configPath))
@@ -267,7 +272,7 @@ export const buildGoalBookPublications = async (options: GoalBookPublicationsBui
     await writeFile(join(stagingDirectory, 'index.json'), indexBytes, 'utf8')
     await writeFile(join(stagingDirectory, GOAL_BOOK_BUILD_CACHE_FILE), serialize(nextCache), 'utf8')
     for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
-      await verifyPublishedGoalBook(goalBookPublicationPaths(definition, stagingDirectory))
+      await verifyPublishedGoalBook(goalBookPublicationPaths(definition, stagingDirectory), options.prerequisiteReductionContext)
       console.log(`Goal-book publication verified: ${definition.bookId}`)
     }
     // No book becomes visible until the complete registry passes the original strict gate.
@@ -297,6 +302,7 @@ const main = async () => {
     if (flag === '--output-dir') options.outputDirectory = resolve(value)
     else options.chromiumExecutablePath = resolve(value)
   }
+  options.prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
   await buildGoalBookPublications(options)
 }
 

@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto'
 import type { LearningGoal } from '../src/landscapeTypes'
+import { normalizeCanonicalGoal } from '../src/utils/authoring/canonicalAuthoring'
+import { reviewBindingGoal, type VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import {
   fingerprintGoalForEvidence,
   goalEvidenceReviewInputPayload,
@@ -140,6 +142,8 @@ export function validatePositiveGoalEvidenceRecordSemantics(
   goal: LearningGoal | undefined,
   resourceDigests: Readonly<Record<string, string>> = {},
   effectiveSemanticKind?: string,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+  currentRawGoal?: Record<string, unknown>,
 ): string[] {
   const errors: string[] = []
   if (!goal) return [`${record.goalId}: goal does not exist in the configured landscape`]
@@ -157,12 +161,26 @@ export function validatePositiveGoalEvidenceRecordSemantics(
   }
 
   const expectedReviewInputFingerprint = fingerprintPositiveGoalEvidenceReviewInput(
-    goal,
-    record.reviewCriteriaFingerprint,
-    resourceDigests,
-    effectiveSemanticKind,
+    goal, record.reviewCriteriaFingerprint, resourceDigests, effectiveSemanticKind,
   )
-  if (record.reviewInputFingerprint !== expectedReviewInputFingerprint) {
+  const historicalReviewInputFingerprint = prerequisiteReductionContext === undefined ? undefined
+    : fingerprintPositiveGoalEvidenceReviewInput(
+      reviewBindingGoal(
+        prerequisiteReductionContext,
+        `${record.landscapeId}:${record.goalId}`,
+        currentRawGoal ?? goal as unknown as Record<string, unknown>,
+      ) as unknown as LearningGoal,
+      record.reviewCriteriaFingerprint,
+      resourceDigests,
+      effectiveSemanticKind,
+    )
+  if (prerequisiteReductionContext && currentRawGoal && stableGoalEvidenceJson(normalizeCanonicalGoal(goal, 0))
+    !== stableGoalEvidenceJson(normalizeCanonicalGoal(currentRawGoal, 0))) {
+    errors.push(`${record.goalId}: current consumer goal differs from the verified raw goal after canonical normalization`)
+  }
+  if (record.reviewInputFingerprint !== expectedReviewInputFingerprint
+    && (historicalReviewInputFingerprint === undefined
+      || record.reviewInputFingerprint !== historicalReviewInputFingerprint)) {
     errors.push(`${record.goalId}: stale reviewInputFingerprint; expected ${expectedReviewInputFingerprint}`)
   }
 

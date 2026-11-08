@@ -7,8 +7,9 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-26T05:23:38.128Z
+Generated: 2026-11-07T20:15:40.474Z
 Rules version: curriculum-quality-v5
+Review binding: direct-atomic-leaf-prerequisite-reduction-v1; current-or-certified-baseline-comparison; origin-source-landscape-closure; registry=sha256:539bad056cb59c23cbaab12eb4320f936fe54b60804c795205a05ce73355fe71; goals=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:bf17cada-3ccd-5d9a-b9e3-42065cfdbb01
 
 ## Summary
 

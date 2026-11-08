@@ -33,6 +33,10 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 from jsonschema import Draft202012Validator, FormatChecker
 import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
+from prerequisite_reduction_semantic_kind import (
+    PrerequisiteReductionBindingError,
+    load_verified_semantic_kind_bindings,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -2990,13 +2994,24 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     assessment_sources: dict[str, str] = {}
     relocation = profile["pathRelocations"]
     semantic_counts: Counter[str] = Counter()
+    current_fingerprints = {
+        goal_id: source_fingerprint(goal, source_contract)
+        for goal_id, goal in source_goal_by_id.items()
+    }
+    try:
+        reduction_bindings = load_verified_semantic_kind_bindings(
+            REPO_ROOT, source_landscape_path, source_landscape, current_fingerprints,
+        )
+    except PrerequisiteReductionBindingError as error:
+        raise CompilationError(str(error)) from error
     for goal in goals:
         if not isinstance(goal, dict) or not isinstance(goal.get("id"), str):
             raise CompilationError("Malformed canonical goal")
         goal_id = goal["id"]
         decision = decisions_by_goal[goal_id]
-        actual_fingerprint = source_fingerprint(source_goal_by_id[goal_id], source_contract)
-        if decision.get("sourceFingerprint") != actual_fingerprint:
+        actual_fingerprint = current_fingerprints[goal_id]
+        historical_fingerprint = reduction_bindings.baseline_fingerprints[goal_id] if reduction_bindings else actual_fingerprint
+        if decision.get("sourceFingerprint") not in (actual_fingerprint, historical_fingerprint):
             raise CompilationError(f"Stale semantic-kind decision for goal {goal_id}")
         semantic_kind = decision.get("semanticKind")
         if semantic_kind not in ontology_profile["semanticKinds"]:
@@ -4072,6 +4087,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "readyStatus": "conformance-model-only-not-a-package",
         "passed": True,
     }
+    if reduction_bindings:
+        summary["prerequisiteReductionProof"] = dict(reduction_bindings.provenance)
     write_json(output_root, "metadata/release-model-conformance.json", summary)
     return summary
 

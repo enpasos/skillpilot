@@ -3,6 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring'
 import { loadGoalBookBuildInputs } from './goalBookModel'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 
 const root = resolve(import.meta.dirname, '../..')
 const canonicalPath = resolve(root, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
@@ -68,7 +69,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
 }
 assert.ok(viewCount >= 32, 'Too few authored Mathematics Sek-II/CrossStage course views tested')
 
-const { model } = await loadGoalBookBuildInputs(atlasConfig)
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+const { model } = await loadGoalBookBuildInputs(atlasConfig, undefined, prerequisiteReductionContext)
 const pages = new Map(model.pages.map((page) => [page.goalId, page]))
 for (const id of [spatId, tetraId, lkVolumeDerivationId]) {
   const page = pages.get(id)

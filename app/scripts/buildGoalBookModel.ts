@@ -1,5 +1,6 @@
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import {
   loadGoalBookBuildInputs,
   writeGoalBookModel,
@@ -23,7 +24,8 @@ const main = async () => {
   }
 
   const configPath = args[0] ? resolve(args[0]) : DEFAULT_CONFIG
-  const { model, outputPath } = await loadGoalBookBuildInputs(configPath)
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const { model, outputPath } = await loadGoalBookBuildInputs(configPath, undefined, prerequisiteReductionContext)
   await writeGoalBookModel(model, outputPath)
   console.log(`Goal-book model written: ${outputPath}`)
   console.log(`Pages: ${model.pages.length}; digest: ${model.digest}`)

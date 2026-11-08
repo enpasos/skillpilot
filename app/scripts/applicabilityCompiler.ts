@@ -529,21 +529,26 @@ function loadMemoryReviewOriginReferences(): Map<string, MemoryReviewOriginRefer
   return referencesByMemoryGoalKey
 }
 
-function loadCanonicalLandscapes(): LoadedCanonicalLandscape[] {
-  return getAllJsonFiles(canonicalDir)
-    .sort((a, b) => a.localeCompare(b))
-    .map((file) => {
-      const landscape = JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape
-      const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
-      const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
+export interface ApplicabilityCanonicalInput {
+  file: string
+  landscape: SkillLandscape
+}
 
-      return {
-        file,
-        landscape,
-        goalById,
-        rootGoalId: rootGoal?.id ?? null,
-      }
-    })
+function loadCanonicalLandscapes(suppliedCatalog?: readonly ApplicabilityCanonicalInput[]): LoadedCanonicalLandscape[] {
+  const inputs = suppliedCatalog ?? getAllJsonFiles(canonicalDir)
+    .sort((a, b) => a.localeCompare(b))
+    .map((file) => ({ file, landscape: JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape }))
+  return inputs.map(({ file, landscape }) => {
+    const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+    const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
+
+    return {
+      file,
+      landscape,
+      goalById,
+      rootGoalId: rootGoal?.id ?? null,
+    }
+  })
 }
 
 function loadMappingFiles(): LoadedMappingFile[] {
@@ -785,8 +790,10 @@ function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {
   return normalizeCompiledApplicability(normalized)
 }
 
-export function buildApplicabilityCompilation(): ApplicabilityCompilationResult {
-  const canonicalLandscapes = loadCanonicalLandscapes()
+export function buildApplicabilityCompilation(
+  suppliedCatalog?: readonly ApplicabilityCanonicalInput[],
+): ApplicabilityCompilationResult {
+  const canonicalLandscapes = loadCanonicalLandscapes(suppliedCatalog)
   const canonicalLandscapeById = new Map(
     canonicalLandscapes.map((entry) => [entry.landscape.landscapeId, entry]),
   )

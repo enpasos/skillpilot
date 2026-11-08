@@ -1,5 +1,12 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import {
+  fingerprintPrerequisiteReductionDocument,
+  loadVerifiedPrerequisiteReductionContext,
+  PREREQUISITE_REDUCTION_CONTRACT,
+} from './prerequisiteReductionProof'
 import type { LearningGoal } from '../src/landscapeTypes'
 import {
   GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION,
@@ -64,7 +71,7 @@ const canonicalGoal = {
   applicability: { jurisdiction: ['DE-HE'] },
   type: 'atomic',
   semanticAtomic: true,
-  requires: [],
+  requires: ['proof-prerequisite-p', 'proof-prerequisite-r'],
   contains: [],
   examples: ['fixture-example'],
 }
@@ -359,6 +366,60 @@ const baseArtifacts: GoalDescriptionDualRoundResolutionBindingArtifacts = {
 const valid = await validateGoalDescriptionDualRoundResolutionBindings(baseArtifacts)
 assert.deepEqual(valid.errors, [])
 assert.equal(valid.strictDescriptionComplete, true)
+assert.equal(baseArtifacts.canonicalLandscapeId, undefined,
+  'strict current validation keeps its original supported absent-landscape-ID mode')
+
+// Only the current canonical-context comparison can use a certified historical
+// requires array. Existing input/page/round/resolution bindings stay unchanged.
+const reductionParent = resolve(import.meta.dirname, '../node_modules/.tmp')
+mkdirSync(reductionParent, { recursive: true })
+const reductionRoot = mkdtempSync(resolve(reductionParent, 'resolution-reduction-'))
+try {
+  mkdirSync(resolve(reductionRoot, 'canonical'))
+  const before = { landscapeId: 'resolution-proof', title: 'Resolution proof', goals: [
+    canonicalGoal,
+    { id: 'proof-prerequisite-p', type: 'atomic', title: 'P', weight: 1, contains: [], requires: ['proof-prerequisite-r'] },
+    { id: 'proof-prerequisite-r', type: 'atomic', title: 'R', weight: 1, contains: [], requires: [] },
+  ] }
+  const after = structuredClone(before)
+  after.goals[0].requires = ['proof-prerequisite-p']
+  writeFileSync(resolve(reductionRoot, 'canonical/test.json'), JSON.stringify(after))
+  writeFileSync(resolve(reductionRoot, 'proof.json'), JSON.stringify({
+    schemaVersion: 1, proofContract: PREREQUISITE_REDUCTION_CONTRACT, auditScope: 'origin-source-landscape-closure',
+    catalogSources: [{ path: 'canonical/test.json', landscapeId: before.landscapeId,
+      baselineDocumentDigest: fingerprintPrerequisiteReductionDocument(before),
+      currentDocumentDigest: fingerprintPrerequisiteReductionDocument(after) }],
+    originalRequires: [{ source: `resolution-proof:${canonicalGoal.id}`, requires: canonicalGoal.requires }],
+    removals: [{ source: `resolution-proof:${canonicalGoal.id}`, prerequisite: 'resolution-proof:proof-prerequisite-r',
+      witness: [canonicalGoal.id, ...canonicalGoal.requires].map((id) => `resolution-proof:${id}`) }],
+  }))
+  const current = { ...baseArtifacts, canonicalGoal: after.goals[0] }
+  const stale = await validateGoalDescriptionDualRoundResolutionBindings(current)
+  assert.match(stale.errors.join('\n'), /disagrees with the canonical goal/u)
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext({
+    repositoryRoot: reductionRoot, catalogPath: 'canonical', registryPath: 'proof.json',
+  })
+  const reduced = await validateGoalDescriptionDualRoundResolutionBindings({
+    ...current, prerequisiteReductionContext, canonicalLandscapeId: before.landscapeId,
+  })
+  assert.deepEqual(reduced.errors, [])
+  assert.equal(reduced.strictDescriptionComplete, true)
+  assert.ok(prerequisiteReductionContext)
+  for (const canonicalLandscapeId of [undefined, '', ' ', 'resolution-proof:foreign', null, 42]) {
+    const invalidNamespace = await validateGoalDescriptionDualRoundResolutionBindings({
+      ...current, prerequisiteReductionContext, canonicalLandscapeId: canonicalLandscapeId as string | undefined,
+    })
+    assert.match(invalidNamespace.errors.join('\n'), /requires a non-empty, unqualified canonicalLandscapeId/u)
+    assert.equal(invalidNamespace.strictDescriptionComplete, false)
+  }
+  const ignoredOptionalId = await validateGoalDescriptionDualRoundResolutionBindings({
+    ...baseArtifacts, canonicalLandscapeId: '',
+  })
+  assert.deepEqual(ignoredOptionalId.errors, [], 'no-proof current validation retains its existing behavior')
+  assert.equal(ignoredOptionalId.strictDescriptionComplete, true)
+} finally {
+  rmSync(reductionRoot, { recursive: true, force: true })
+}
 
 const exactRecordLine = `  ${JSON.stringify({
   recordId: 'record-byte-bound',
