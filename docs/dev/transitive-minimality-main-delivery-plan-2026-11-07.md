@@ -58,8 +58,15 @@ Haupt-CI-Jobs des PR bestanden; die Main-Push-CI wird getrennt beobachtet.
 Der sichtbare Checkout liegt auf `fix/g17-covered-cluster-batch`,
 ausgehend vom geprüften QA-Commit. Der bereits vorgesehene mechanische
 16er-Folgebatch ist lokal vollständig geprüft und als `cebfd0cd4c` committed
-und gepusht. Nach der nun erfolgten QA-Lieferung erhält er seinen getrennten
-Main-PR. Es wird kein weiterer Themenblock begonnen.
+und gepusht. Der getrennte [PR #94](https://github.com/enpasos/skillpilot/pull/94)
+läuft nun auf Basis der gelieferten QA-Reparatur. Der zusätzlich ausgelöste
+Chemie-Evidence-Watch erkannte ausschließlich die sechs geprüften Chemie-
+Anforderungslöschungen. Die [begrenzte Wartungsnotiz](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-08.md)
+belegt deren Herkunft, die vollständige frühere Beobachtungsbaseline und die
+unveränderten 159 übrigen Records. Nur der geprüfte Beobachtungsrecord wird
+fortgeschrieben; Checker, Hashverfahren und sämtliche 21 historischen
+Graph-Nachweisbaselines bleiben unverändert. Es wird kein weiterer Themenblock
+begonnen.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
