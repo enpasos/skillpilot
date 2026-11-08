@@ -32,7 +32,8 @@ import {
 import { deriveBavariaOptionalOnlyGoalIds } from './mathBavariaOptionalCourseProjection'
 import { parseGoalBookPublicationIndex } from './checkGoalBookPublication'
 
-await testGoalBookInputIsolation()
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+await testGoalBookInputIsolation(prerequisiteReductionContext)
 
 const PILOT_GOAL_ID = '8dd9f210-2683-5902-acab-e3be22725232'
 const PILOT_PREREQUISITE_ID = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
@@ -1052,7 +1053,6 @@ const sekIBookConfigPath = fileURLToPath(new URL(
   './config/goal-books/de-de-gym-seki-math.json',
   import.meta.url,
 ))
-const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
 const sekIBook = (await loadGoalBookBuildInputs(sekIBookConfigPath, undefined, prerequisiteReductionContext)).model
 assert.equal(sekIBook.book.id, 'de-de-gym-seki-mathematik')
 assert.equal(sekIBook.book.viewId, 'de-de-gym-seki-math')

@@ -4,6 +4,7 @@ import { isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { checkGoalBookSourceAtlasInputs } from './goalBookSourceAtlasInputs'
 import { testGoalBookSourceAtlasInputs } from './testGoalBookSourceAtlasInputs'
+import type { VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url))
 const globalLedgerRoot = resolve(repoRoot, 'curricula/DE/Gymnasium/quality/release-model')
@@ -37,8 +38,8 @@ const assertNoGlobalCopy = (bookLandscapeIds: Set<string>, landscapeId: string):
   assert.ok(!bookLandscapeIds.has(landscapeId), 'Book-only classifications must not change global view validation')
 }
 
-export const testGoalBookInputIsolation = async (): Promise<void> => {
-  testGoalBookSourceAtlasInputs()
+export const testGoalBookInputIsolation = async (prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext): Promise<void> => {
+  testGoalBookSourceAtlasInputs(prerequisiteReductionContext)
   for (const path of ['chemie.semantic-kinds.json', 'nested/biologie.semantic-kinds.json']) {
     assert.throws(() => assertBookOnlyPath(resolve(globalLedgerRoot, path)), /global semantic-kind discovery/)
   }
@@ -57,7 +58,7 @@ export const testGoalBookInputIsolation = async (): Promise<void> => {
     bookLandscapeIds.add(expectedLandscapeId)
     const model = await readJson(resolve(repoRoot, config.outputPath))
     assert.equal(model.source.semanticKindLedgerPath, config.semanticKindLedgerPath)
-    const { receipt } = checkGoalBookSourceAtlasInputs(`app/scripts/config/goal-books/${configName}.inputs.json`, repoRoot)
+    const { receipt } = checkGoalBookSourceAtlasInputs(`app/scripts/config/goal-books/${configName}.inputs.json`, repoRoot, prerequisiteReductionContext)
     assert.equal(receipt.bookId, config.bookId)
     assert.equal(receipt.counts.publishedCurricularAtomicGoals, model.book.pageCount)
   }

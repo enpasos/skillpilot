@@ -216,7 +216,7 @@ export const buildGoalBookPublications = async (options: GoalBookPublicationsBui
   let stagingDirectory: string | undefined
   try {
     for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
-      verifyGoalBookSourceAtlasInputs(goalBookPublicationPaths(definition, outputDirectory))
+      verifyGoalBookSourceAtlasInputs(goalBookPublicationPaths(definition, outputDirectory), REPOSITORY_ROOT, options.prerequisiteReductionContext)
     }
     const environmentDigest = await renderEnvironmentDigest(executablePath)
     const previousCache = await readGoalBookBuildCache(outputDirectory)

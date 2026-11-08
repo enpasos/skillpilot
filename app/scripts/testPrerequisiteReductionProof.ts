@@ -10,6 +10,7 @@ import {
   fingerprintPrerequisiteReductionDocument as digest,
   loadVerifiedPrerequisiteReductionContext,
   PREREQUISITE_REDUCTION_CONTRACT,
+  PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
   verifiedPrerequisiteReductionSummary,
   type PrerequisiteReductionRegistry,
@@ -210,6 +211,14 @@ try {
     witness: ['proof-test:p', 'proof-test:s', 'proof-test:r'] })
   supportFixture.save()
   await assert.rejects(supportFixture.load, /witness edge.*deleted/u)
+  supportFixture.registry.removals.reverse()
+  supportFixture.save()
+  await assert.rejects(supportFixture.load, /no matching concrete/u,
+    'prerequisite-first ordering still requires a fresh auditor witness')
+  supportFixture.registry.removals[1].witness = ['q', 'p', 's', 'r'].map((id) => `proof-test:${id}`)
+  supportFixture.save()
+  assert.ok(await supportFixture.load(),
+    'prerequisite-first removal with refreshed witnesses survives the complete replay')
   const applicability = baseline()
   applicability.goals[0].extendedData = { applicabilityFromRequires: true }
   applicability.goals[0].tags = ['Assessment']
@@ -294,7 +303,35 @@ try {
   assert.ok(actual)
   const current = { ...q, requires: [q.requires[0]] }
   assert.deepEqual(reviewBindingGoal(actual, `${math.document.landscapeId}:${q.id}`, current), q)
-  console.log('Prerequisite reduction proof: strict negatives, comparison boundaries, aliases and complete first Math case passed.')
+  // Exercise the actual cumulative registry, not just the isolated first case.
+  const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
+  const liveContext = await loadVerifiedPrerequisiteReductionContext()
+  assert.ok(liveContext)
+  const liveGoals = new Map(files(catalog).flatMap((path) => {
+    const document = JSON.parse(readFileSync(path, 'utf8')) as Document
+    return document.goals.map((goal) => [`${document.landscapeId}:${goal.id}`, goal] as const)
+  }))
+  assert.equal(liveGoals.size, 6524)
+  assert.equal(liveRegistry.catalogSources.length, 21)
+  assert.equal(liveRegistry.removals[0].source, `${math.document.landscapeId}:${q.id}`,
+    'the original first Math operation stays first')
+  assert.deepEqual(liveRegistry.originalRequires[0], {
+    source: `${math.document.landscapeId}:${q.id}`, requires: q.requires,
+  })
+  assert.deepEqual(verifiedPrerequisiteReductionSummary(liveContext)!.affectedGoalIds,
+    liveRegistry.originalRequires.map(({ source }) => source).sort())
+  for (const original of liveRegistry.originalRequires) {
+    const raw = liveGoals.get(original.source)!
+    const historical = reviewBindingGoal(liveContext, original.source, raw)
+    assert.deepEqual(historical.requires, original.requires, `exact ordered original requires: ${original.source}`)
+    assert.deepEqual({ ...historical, requires: raw.requires }, raw,
+      `historical binding changes only requires: ${original.source}`)
+    assert.equal(reviewBindingGoal(undefined, original.source, raw), raw,
+      `missing context retains the strict current raw value: ${original.source}`)
+    assert.notEqual(fingerprintSemanticKindSourceGoal(raw), fingerprintSemanticKindSourceGoal(historical),
+      `historical comparison requires the verified capability: ${original.source}`)
+  }
+  console.log(`Prerequisite reduction proof: strict negatives, refreshed multi-removal witnesses, first Math and ${liveRegistry.removals.length} cumulative operations passed.`)
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }
