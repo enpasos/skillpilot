@@ -130,7 +130,7 @@ Vergleichsfamilie; Projektionen und Receipts werden aus aktuellen Daten erzeugt.
 
 Die vollständige deterministische Atlasregeneration erzeugt 27 Ausgaben.
 26 sind bytegleich; im aktiven
-[Biologie-Receipt](../../app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json)
+[Biologie-Receipt](https://github.com/enpasos/skillpilot/blob/18570a629e20b4f4cdd0f5e1be9478c87b41f16d/app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json)
 ändert sich ausschließlich `/inputBindings/0/sha256` von
 `sha256:9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79`
 auf `sha256:6c68f48d0c83bf50734d0f42c9efc9efb8c85fc2bb2ad2a23a15845caf974444`.
