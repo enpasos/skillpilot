@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "proofContract": "direct-atomic-leaf-prerequisite-reduction-v1",
+  "proofContract": "atomic-descendant-covered-cluster-reduction-v2",
   "auditScope": "origin-source-landscape-closure",
   "catalogSources": [
     {
@@ -67,7 +67,7 @@
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
       "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
       "baselineDocumentDigest": "sha256:8af0d2d7cc397f46fc7d53511baf7976fcf7186d123272312d490fc9f9fb51f3",
-      "currentDocumentDigest": "sha256:8af0d2d7cc397f46fc7d53511baf7976fcf7186d123272312d490fc9f9fb51f3"
+      "currentDocumentDigest": "sha256:7169e196c5d8baa811f932640be4f5bc9bf1b7813e34bbf27d29e9927838648b"
     },
     {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
@@ -1676,6 +1676,12 @@
       "requires": [
         "2517be3f-e42f-5e41-889d-70f00dc24686",
         "2d451684-6e53-565e-a987-f362da919d2c"
+      ]
+    },
+    {
+      "source": "668cf206-941e-51f8-8704-3e8938631235:e82cc731-ebf4-588f-9fea-f0d31f7ad0e7",
+      "requires": [
+        "551f2d6c-a030-57cc-9dbd-af30b2c3972a"
       ]
     }
   ],
@@ -3717,6 +3723,17 @@
         "08a43a1b-d97e-522c-9dfa-c950a493364e:c5435624-7b6a-5330-b8cc-0d3186e19911",
         "08a43a1b-d97e-522c-9dfa-c950a493364e:2517be3f-e42f-5e41-889d-70f00dc24686",
         "08a43a1b-d97e-522c-9dfa-c950a493364e:2d451684-6e53-565e-a987-f362da919d2c"
+      ]
+    },
+    {
+      "source": "668cf206-941e-51f8-8704-3e8938631235:e82cc731-ebf4-588f-9fea-f0d31f7ad0e7",
+      "prerequisite": "668cf206-941e-51f8-8704-3e8938631235:551f2d6c-a030-57cc-9dbd-af30b2c3972a",
+      "atomicWitnesses": [
+        [
+          "668cf206-941e-51f8-8704-3e8938631235:bd6b8f87-f9b5-54ad-828e-e1c36c1d4d82",
+          "668cf206-941e-51f8-8704-3e8938631235:1476af3f-0ff9-59c0-8a1a-e81dfc011ae2",
+          "668cf206-941e-51f8-8704-3e8938631235:551f2d6c-a030-57cc-9dbd-af30b2c3972a"
+        ]
       ]
     }
   ]

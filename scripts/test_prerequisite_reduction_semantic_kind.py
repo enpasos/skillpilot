@@ -127,6 +127,45 @@ class SemanticKindReductionTest(unittest.TestCase):
                 self.assertEqual(result.returncode, 1)
                 self.assertIn(b"canonical source is not in the verified catalog", result.stderr)
 
+    def test_cluster_contract_uses_real_node_verifier(self):
+        before = {"landscapeId": "fixture", "goals": [
+            {"id": "k", "type": "cluster", "contains": ["a"], "requires": ["r"]},
+            {"id": "a", "type": "atomic", "contains": [], "requires": ["p"]},
+            {"id": "p", "type": "atomic", "contains": [], "requires": ["r"]},
+            {"id": "r", "type": "atomic", "contains": [], "requires": []},
+        ]}
+        self.document = copy.deepcopy(before)
+        self.document["goals"][0]["requires"] = []
+        self.source.write_text(json.dumps(self.document))
+        registry = {
+            "schemaVersion": 1, "proofContract": bridge.CLUSTER_PROOF_CONTRACT,
+            "auditScope": "origin-source-landscape-closure",
+            "catalogSources": [{"path": SOURCE, "landscapeId": "fixture",
+                "baselineDocumentDigest": bridge.digest(compiler.canonical_json_bytes(before)),
+                "currentDocumentDigest": bridge.digest(compiler.canonical_json_bytes(self.document))}],
+            "originalRequires": [{"source": "fixture:k", "requires": ["r"]}],
+            "removals": [{"source": "fixture:k", "prerequisite": "fixture:r",
+                          "atomicWitnesses": [["fixture:a", "fixture:p", "fixture:r"]]}],
+        }
+        self.registry.write_text(json.dumps(registry))
+        profile = compiler.load_json(PROFILE)
+        ontology = compiler.load_json(ROOT / profile["contracts"]["ontologyProfilePath"])
+        contract = ontology["semanticKindDecisions"]["sourceFingerprint"]
+        self.fingerprints = {
+            goal["id"]: compiler.source_fingerprint(goal, contract) for goal in self.document["goals"]
+        }
+        verified = self.load()
+        self.assertEqual(verified.provenance["proofContract"], bridge.CLUSTER_PROOF_CONTRACT)
+        self.assertEqual(verified.baseline_fingerprints["k"], compiler.source_fingerprint(before["goals"][0], contract))
+        self.assertNotEqual(verified.baseline_fingerprints["k"], self.fingerprints["k"])
+        for invalid, message in ((bridge.PROOF_CONTRACT, "invalid removal fields"),
+                                 ("effective-prerequisite-reduction-v2", "unsupported registry contract")):
+            registry["proofContract"] = invalid
+            self.registry.write_text(json.dumps(registry))
+            with self.subTest(contract=invalid):
+                with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
+                    self.load()
+
     def test_nonregular_registry_never_means_absent(self):
         self.registry.unlink()
         for kind in ("directory", "dangling-symlink", "file-symlink"):
@@ -164,6 +203,8 @@ class SemanticKindReductionTest(unittest.TestCase):
             "source-path": at(["source", "path"], "elsewhere.json"),
             "source-owner": at(["source", "landscapeId"], "other"),
             "registry-bytes": at(["proof", "registryDigest"], BASELINE),
+            "unknown-proof-contract": at(["proof", "proofContract"], "effective-prerequisite-reduction-v2"),
+            "extra-proof-field": at(["proof", "atomicWitnesses"], []),
             "family": at(["comparisonFamily"], "other"),
             "current-fingerprint": at(["goals", 0, "currentFingerprint"], BASELINE),
             "missing-goal": at(["goals"], []),
@@ -180,6 +221,9 @@ class SemanticKindReductionTest(unittest.TestCase):
                 with patch.object(bridge.subprocess, "run", return_value=self.completed(receipt)):
                     with self.assertRaises(bridge.PrerequisiteReductionBindingError):
                         self.load()
+        with patch.object(bridge.subprocess, "run", return_value=self.completed()):
+            self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
+        self.receipt["proof"]["proofContract"] = bridge.CLUSTER_PROOF_CONTRACT
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
 
