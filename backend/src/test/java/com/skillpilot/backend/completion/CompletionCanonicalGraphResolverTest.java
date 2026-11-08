@@ -96,6 +96,7 @@ class CompletionCanonicalGraphResolverTest {
         var graph = new CompletionCanonicalGraphResolver(landscapes, new ObjectMapper()).loadForTargets("base", Set.of("Q"), Map.of());
         var topology = new CompletionProfileCompiler().normalizePrerequisites(graph);
         topology.validateContext(Set.of("Q"));
+        assertThat(topology.transitiveGoalPrerequisites("Q")).containsExactly("K");
         assertThat(topology.transitivePrerequisites("Q")).containsExactly("A", "B");
         assertThat(base.getGoals().getFirst().getRequires()).containsExactly("foreign:K");
     }
@@ -115,6 +116,7 @@ class CompletionCanonicalGraphResolverTest {
         var graph = new CompletionCanonicalGraphResolver(landscapes, new ObjectMapper()).loadForTargets("base", Set.of("Q"), Map.of());
         var topology = new CompletionProfileCompiler().normalizePrerequisites(graph);
         topology.validateContext(Set.of("Q"));
+        assertThat(topology.transitiveGoalPrerequisites("Q")).containsExactly("A", "B");
         assertThat(topology.transitivePrerequisites("Q")).containsExactly("A", "B");
         assertThat(graph).containsOnlyKeys("Q", "P", "A", "B");
         assertThat(graph.get("P").getContains()).containsExactly("Q");

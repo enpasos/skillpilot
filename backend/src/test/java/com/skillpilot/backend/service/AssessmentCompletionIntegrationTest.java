@@ -30,6 +30,7 @@ class AssessmentCompletionIntegrationTest {
     static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
     static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     static final String UNRELATED = "1b67aeb4-2a55-531f-94da-283b4e3df5f1";
+    static final String G9_MISSING_PREREQUISITE_ROLE = "f242a3e8-55a3-492e-8354-b81b24cdbb78";
     @Autowired LearnerService learners;
     @Autowired LearnerRepository learnerRepository;
     @Autowired MasteryRepository masteryRepository;
@@ -87,6 +88,67 @@ class AssessmentCompletionIntegrationTest {
         TestTransaction.end();
         TestTransaction.start();
         learner = learnerRepository.findById(id).orElseThrow();
+    }
+
+    private void useRoleCompleteG8OrdinaryScope() {
+        // Select an existing authored scope; do not add or infer prerequisite roles.
+        try {
+            var config = (com.fasterxml.jackson.databind.node.ObjectNode) mapper.readTree(learner.getPersonalCurriculum());
+            ((com.fasterxml.jackson.databind.node.ObjectNode) config.get(ROOT)).put("durationModel", "G8");
+            learner.setPersonalCurriculum(mapper.writeValueAsString(config));
+            learnerRepository.saveAndFlush(learner);
+        } catch (com.fasterxml.jackson.core.JsonProcessingException invalid) {
+            throw new AssertionError(invalid);
+        }
+        Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", ROOT, learner.getPersonalCurriculum(), false);
+        assertThat(ReflectionTestUtils.<Boolean>invokeMethod(projection, "compositionViewApplied")).isTrue();
+        assertThat(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "compositionViewIds"))
+                .contains("merged:de-he-gym-math-lk-g8+de-he-gym-math-gk-g8");
+        Set<String> targets = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
+        Set<String> support = ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
+        assertThat(targets).contains(PREPARATION, EXAM, UNRELATED);
+        Set<String> declared = new HashSet<>(targets);
+        declared.addAll(support);
+        Object prerequisites = ReflectionTestUtils.invokeMethod(learners, "frontierPrerequisites", learner,
+                projection, Map.of(), Set.of(PREPARATION));
+        CompletionProfileCompiler.PrerequisiteTopology topology = ReflectionTestUtils.invokeMethod(prerequisites, "topology");
+        assertThat(topology).isNotNull();
+        assertThat(topology.transitiveGoalPrerequisites(PREPARATION)).hasSize(8).contains(G9_MISSING_PREREQUISITE_ROLE);
+        assertThat(topology.transitiveGoalPrerequisites(EXAM)).hasSize(9).contains(PREPARATION);
+        for (String target : List.of(PREPARATION, EXAM)) {
+            assertThat(declared).as("authored G8 prerequisite roles for %s", target)
+                    .containsAll(topology.transitiveGoalPrerequisites(target));
+        }
+    }
+
+    @Test void missingG9RoleBlocksOrdinaryPreparationEvenWithMasteredPrerequisitesOutsideFocus() throws Exception {
+        assertThat(mapper.readTree(learner.getPersonalCurriculum()).path(ROOT).path("durationModel").asText()).isEqualTo("G9");
+        learner.setStrictMode(false);
+        Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", ROOT, learner.getPersonalCurriculum(), false);
+        assertThat(ReflectionTestUtils.<Boolean>invokeMethod(projection, "compositionViewApplied")).isTrue();
+        Set<String> targets = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
+        Set<String> support = ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
+        assertThat(targets).contains(PREPARATION, EXAM).doesNotContain(G9_MISSING_PREREQUISITE_ROLE);
+        assertThat(support).doesNotContain(G9_MISSING_PREREQUISITE_ROLE);
+        Object prerequisites = ReflectionTestUtils.invokeMethod(learners, "frontierPrerequisites", learner,
+                projection, Map.of(), Set.of(PREPARATION));
+        CompletionProfileCompiler.PrerequisiteTopology topology = ReflectionTestUtils.invokeMethod(prerequisites, "topology");
+        assertThat(topology).isNotNull();
+        Set<String> required = topology.transitiveGoalPrerequisites(PREPARATION);
+        assertThat(required).hasSize(8).contains(G9_MISSING_PREREQUISITE_ROLE).doesNotContain(PREPARATION, EXAM);
+        Set<String> atomicDemand = topology.transitivePrerequisites(PREPARATION);
+        assertThat(atomicDemand).contains(G9_MISSING_PREREQUISITE_ROLE).doesNotContain(PREPARATION, EXAM);
+        for (String id : atomicDemand) masteryRepository.saveAndFlush(new Mastery(learner, id, 1.0));
+        assertThat(learners.getFrontier(learner.getSkillpilotId())).doesNotContain(PREPARATION);
+        assertThat(learners.getRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).doesNotContain(PREPARATION);
+        assertThat(learners.getUncompactedRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).doesNotContain(PREPARATION);
+        assertThat(learners.getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), List.of(PREPARATION)))
+                .extracting(FrontierGoal::id).doesNotContain(PREPARATION);
+        assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId())).extracting(PlannedGoal::getGoalId)
+                .containsExactly(PREPARATION);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).allSatisfy(value ->
+                assertThat(value.getValue()).isEqualTo(1.0)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrderElementsOf(atomicDemand).doesNotContain(PREPARATION, EXAM);
     }
 
     @Test void discoveryPublishesOnlyAssessmentMetadataWithoutChangingOrdinaryLearning() throws Exception {
@@ -316,6 +378,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void disabledShortcutsStillAllowAnOrdinaryPrerequisiteSatisfiedExam() {
+        useRoleCompleteG8OrdinaryScope();
         learners.setPreferences(learner.getSkillpilotId(), null, false, false, null, null, null, false);
         learners.setPlannedGoals(learner.getSkillpilotId(), Set.of(PREPARATION, EXAM));
         masteryRepository.saveAndFlush(new Mastery(learner, PREPARATION, 1.0));
@@ -492,6 +555,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void existingAssessmentMasteryCompletesOnlyThisScopeWithoutCreatingPreparationMastery() {
+        useRoleCompleteG8OrdinaryScope();
         masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
         var state = select();
         assertThat(state.levelCompletion().calculationStatus()).isEqualTo("valid");
@@ -582,6 +646,7 @@ class AssessmentCompletionIntegrationTest {
     @org.junit.jupiter.params.ParameterizedTest
     @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
     void pauseBeforeOrAfterCompletionKeepsTheProfileAndNeedsFreshDeliberateWorkToResume(boolean completed) throws Exception {
+        useRoleCompleteG8OrdinaryScope();
         learner.setAutoPilot(true);
         learner.setFollowLearningPlans(true);
         if (completed) masteryRepository.saveAndFlush(new Mastery(learner, EXAM, 1.0));
@@ -644,6 +709,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void directAssessmentCanOnlyRestartThroughAnExplicitFreshChoice() {
+        useRoleCompleteG8OrdinaryScope();
         select();
         learners.startCompletionAssessment(learner.getSkillpilotId(),
                 new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
@@ -668,6 +734,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void choosingPublishedSupportEndsTheDirectExceptionWithoutWritingAnExamResult() throws Exception {
+        useRoleCompleteG8OrdinaryScope();
         select();
         learners.startCompletionAssessment(learner.getSkillpilotId(),
                 new CompletionAssessmentStart(PROFILE, EXAM, learner.getCoachStateRevision()),
@@ -868,6 +935,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void evenAnInContextGoalRequiresAnExplicitPublishedRouteChoice() {
+        useRoleCompleteG8OrdinaryScope();
         select();
         long revision = learner.getCoachStateRevision();
         assertThatThrownBy(() -> learners.setActiveGoal(learner.getSkillpilotId(), PREPARATION))
@@ -918,6 +986,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void emptyAllowlistDoesNotReadTheReviewedCanonicalGraphOrPublishAnEmptyPicker() {
+        useRoleCompleteG8OrdinaryScope();
         ReflectionTestUtils.setField(learners, "completionApplicationService", new CompletionApplicationService(
                 new CompletionProfileCatalog(Map.of(), Map.of(), "empty-generation")));
         var originalResolver = (CompletionCanonicalGraphResolver) ReflectionTestUtils.getField(learners, "completionCanonicalGraphResolver");
@@ -1165,6 +1234,7 @@ class AssessmentCompletionIntegrationTest {
     }
 
     @Test void parallelAssessmentMasteryPreservesCurrentWorkAndVoluntaryContinuationSurvivesReload() throws Exception {
+        useRoleCompleteG8OrdinaryScope();
         var selected = select();
         nextRequestTransaction(true);
         var required = selected.levelCompletion().actions().stream()

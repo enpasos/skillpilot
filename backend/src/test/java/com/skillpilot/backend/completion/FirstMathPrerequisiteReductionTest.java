@@ -67,6 +67,8 @@ class FirstMathPrerequisiteReductionTest {
     private static final Path REPOSITORY = findRepositoryRoot();
     private static final Path MATH_SOURCE = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json");
+    private static final Path BIOLOGY_SOURCE = REPOSITORY.resolve(
+            "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private static Path findRepositoryRoot() {
@@ -82,8 +84,9 @@ class FirstMathPrerequisiteReductionTest {
     }
 
     @Test
-    void firstMathEdgePreservesLiveOfferingsProjectionsAtomicDemandAndDirectRoleValidity() throws Exception {
+    void firstMathEdgePreservesLiveOfferingsProjectionsAtomicDemandAndEffectiveRoleValidity() throws Exception {
         byte[] sourceBytes = Files.readAllBytes(MATH_SOURCE);
+        byte[] biologyBytes = Files.readAllBytes(BIOLOGY_SOURCE);
         var before = new NativeFixture(BEFORE);
         var after = new NativeFixture(AFTER);
         JsonNode offerings = readGuiOfferings();
@@ -91,6 +94,7 @@ class FirstMathPrerequisiteReductionTest {
         int validRoles = 0, invalidRoles = 0;
         boolean negativeRoleCaseChecked = false;
         boolean navigationClusterCaseChecked = false;
+        boolean inheritedRoleCaseChecked = false, transitiveRoleCaseChecked = false;
         Map<String, Integer> configurationCounts = new TreeMap<>();
 
         for (String subject : SUBJECTS) {
@@ -108,6 +112,24 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(right.graph().keySet()).as("complete resolved graph: %s", scope)
                         .isEqualTo(left.graph().keySet());
                 assertThat(right.context()).as("complete native compiler context: %s", scope).isEqualTo(left.context());
+
+                if (BIOLOGY.equals(subject) && "DE-MV/SekI/G8/".equals(entry.getKey())) {
+                    assertDuplicateRemovalKeepsMissingRoleInvalid(before.service, left,
+                            "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30", "b530a382-2786-5794-8821-3e01a62d88fd");
+                    assertDuplicateRemovalKeepsMissingRoleInvalid(after.service, right,
+                            "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30", "b530a382-2786-5794-8821-3e01a62d88fd");
+                    for (NativeScope actual : List.of(left, right)) {
+                        assertThat(actual.graph().get("b530a382-2786-5794-8821-3e01a62d88fd").getType()).isEqualTo("cluster");
+                    }
+                    inheritedRoleCaseChecked = true;
+                }
+                if (MATH.equals(subject) && "ALL/CrossStage//GK".equals(entry.getKey())) {
+                    assertDuplicateRemovalKeepsMissingRoleInvalid(before.service, left,
+                            "1878f680-095c-511d-aaed-e98393f7fde9", "9460c3ff-e72d-4107-bc73-087d217200aa");
+                    assertDuplicateRemovalKeepsMissingRoleInvalid(after.service, right,
+                            "1878f680-095c-511d-aaed-e98393f7fde9", "9460c3ff-e72d-4107-bc73-087d217200aa");
+                    transitiveRoleCaseChecked = true;
+                }
 
                 if (BIOLOGY.equals(subject) && "DE-BY/CrossStage/G9/GK".equals(entry.getKey())) {
                     for (NativeScope actual : List.of(left, right)) {
@@ -149,16 +171,15 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(hasDeclaredRole(right, REMOVED)).as("reduced prerequisite retains a declared role: %s", scope).isTrue();
                 boolean originalHelper = roleProbe(before.service, left, left.projection());
                 boolean reducedHelper = roleProbe(after.service, right, right.projection());
-                assertThat(reducedHelper).as("native direct-role helper: %s", scope).isEqualTo(originalHelper);
+                assertThat(reducedHelper).as("native effective-role helper: %s", scope).isEqualTo(originalHelper);
                 if (originalHelper) validRoles++; else invalidRoles++;
                 if (left.roles().targets().contains(SOURCE)) sourceTargets++; else sourceContextsOnly++;
 
                 if (!negativeRoleCaseChecked && originalHelper
                         && Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(left.projection(), "compositionViewApplied"))) {
-                    // Same real graphs and atomic demand, but deleting the direct endpoint's role
-                    // changes the native helper. Reachability equality alone cannot approve a repair.
+                    // The endpoint remains required transitively under the same E+ role policy.
                     assertThat(roleProbe(before.service, left, withoutRole(left.projection(), REMOVED))).isFalse();
-                    assertThat(roleProbe(after.service, right, withoutRole(right.projection(), REMOVED))).isTrue();
+                    assertThat(roleProbe(after.service, right, withoutRole(right.projection(), REMOVED))).isFalse();
                     negativeRoleCaseChecked = true;
                 }
             }
@@ -167,13 +188,16 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(sourceContextsOnly).as("Math source present only in supporting compiler context").isPositive();
         assertThat(foreignContexts).isPositive();
         assertThat(validRoles).isPositive();
-        // Existing GK projections may omit RETAINED's direct role. Preserve those false results.
+        // Existing incomplete GK roles remain invalid under the unified policy.
         assertThat(invalidRoles).isPositive();
-        assertThat(negativeRoleCaseChecked).as("direct-role negative control executed").isTrue();
+        assertThat(negativeRoleCaseChecked).as("effective-role negative control executed").isTrue();
         assertThat(navigationClusterCaseChecked).as("actual Bio navigation-cluster counterexample executed").isTrue();
+        assertThat(inheritedRoleCaseChecked).as("actual Bio inherited-role counterexample executed").isTrue();
+        assertThat(transitiveRoleCaseChecked).as("actual Math transitive-role counterexample executed").isTrue();
         before.verifyOnlyUnsavedFixtures();
         after.verifyOnlyUnsavedFixtures();
         assertThat(Files.readAllBytes(MATH_SOURCE)).as("canonical source remains untouched").isEqualTo(sourceBytes);
+        assertThat(Files.readAllBytes(BIOLOGY_SOURCE)).as("Biology source remains untouched").isEqualTo(biologyBytes);
         System.out.printf("FIRST_MATH_REDUCTION_NATIVE_COVERAGE configurations=%s sourceTargets=%d sourceContextsOnly=%d foreignContexts=%d validRoles=%d invalidRoles=%d%n",
                 configurationCounts, sourceTargets, sourceContextsOnly, foreignContexts, validRoles, invalidRoles);
     }
@@ -378,13 +402,43 @@ class FirstMathPrerequisiteReductionTest {
     }
 
     private static boolean roleProbe(LearnerService service, NativeScope scope, Object projection) throws Exception {
+        return roleProbe(service, scope, projection, SOURCE, scope.topology());
+    }
+
+    private static boolean roleProbe(LearnerService service, NativeScope scope, Object projection,
+            String sourceId, CompletionProfileCompiler.PrerequisiteTopology topology) throws Exception {
         Map<String, Double> mastered = new TreeMap<>();
         scope.graph().keySet().forEach(id -> mastered.put(id, 1.0));
         var type = Class.forName("com.skillpilot.backend.service.LearnerService$FrontierPrerequisites");
         var constructor = type.getDeclaredConstructor(Map.class, CompletionProfileCompiler.PrerequisiteTopology.class, Map.class, Set.class);
         constructor.setAccessible(true);
-        Object prerequisites = constructor.newInstance(scope.graph(), scope.topology(), mastered, null);
-        return ReflectionTestUtils.invokeMethod(service, "areFrontierPrerequisitesMastered", scope.graph().get(SOURCE), projection, prerequisites);
+        Object prerequisites = constructor.newInstance(scope.graph(), topology, mastered, null);
+        return ReflectionTestUtils.invokeMethod(service, "areFrontierPrerequisitesMastered", scope.graph().get(sourceId), projection, prerequisites);
+    }
+
+    private static void assertDuplicateRemovalKeepsMissingRoleInvalid(LearnerService service, NativeScope scope,
+            String sourceId, String prerequisiteId) throws Exception {
+        assertThat(scope.roles().targets()).contains(sourceId);
+        assertThat(scope.context()).contains(sourceId);
+        assertThat(hasDeclaredRole(scope, prerequisiteId)).isFalse();
+        assertThat(scope.topology().transitiveGoalPrerequisites(sourceId)).contains(prerequisiteId);
+        assertThat(roleProbe(service, scope, scope.projection(), sourceId, scope.topology())).isFalse();
+        LearningGoal source = scope.graph().get(sourceId);
+        List<String> original = source.getRequires();
+        assertThat(original).contains(prerequisiteId);
+        try {
+            // Remove just this duplicate in the isolated native graph, never in canonical data.
+            source.setRequires(original.stream().filter(id -> !prerequisiteId.equals(id)).toList());
+            var reduced = new CompletionProfileCompiler().normalizePrerequisites(scope.graph());
+            reduced.validateContext(scope.roles().atomicTargets());
+            assertThat(reduced.transitiveGoalPrerequisites(sourceId))
+                    .isEqualTo(scope.topology().transitiveGoalPrerequisites(sourceId));
+            assertThat(reduced.transitivePrerequisites(sourceId))
+                    .isEqualTo(scope.topology().transitivePrerequisites(sourceId));
+            assertThat(roleProbe(service, scope, scope.projection(), sourceId, reduced)).isFalse();
+        } finally {
+            source.setRequires(original);
+        }
     }
 
     private static Object withoutRole(Object projection, String id) throws Exception {

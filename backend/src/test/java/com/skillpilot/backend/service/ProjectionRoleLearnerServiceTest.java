@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
@@ -376,33 +377,111 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void omittedDirectPrerequisiteFailsClosedButOmittedInheritedCompatibilityPrerequisiteDoesNotBlock() {
-        Fixture directRequirement = fixture(view(goalEntry(TARGET_ID)));
-        when(directRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(directRequirement.learner(), TARGET_ID)));
+    void missingInheritedOrTransitiveRoleBlocksAllFrontiersRegardlessOfMasteryOrFocus() {
+        for (boolean inherited : List.of(false, true)) {
+            String target = inherited ? OUTSIDE_TARGET_ID : TARGET_ID;
+            for (String omitted : List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID)) {
+                for (boolean strict : List.of(false, true)) {
+                    for (boolean mastered : List.of(false, true)) {
+                        List<Map<String, Object>> entries = new ArrayList<>(List.of(goalEntry(target)));
+                        for (String id : List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID)) {
+                            if (!id.equals(omitted)) entries.add(goalEntry(id, "prerequisiteOnly"));
+                        }
+                        Fixture fixture = fixture(view(entries.toArray(Map[]::new)));
+                        if (inherited) {
+                            fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                                    .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID));
+                            fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                                    .findFirst().orElseThrow().setContains(List.of(target));
+                            // A null raw list must not suppress inherited role validation.
+                            fixture.landscape().getGoals().stream().filter(goal -> target.equals(goal.getId()))
+                                    .findFirst().orElseThrow().setRequires(null);
+                        }
+                        fixture.learner().setStrictMode(strict);
+                        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                                .thenReturn(List.of(new PlannedGoal(fixture.learner(), target)));
+                        List<Mastery> stored = mastered ? List.of(
+                                new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0),
+                                new Mastery(fixture.learner(), TRANSITIVE_PREREQUISITE_ID, 1.0)) : List.of();
+                        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(stored);
+                        assertThat(frontierPaths(fixture, List.of(target)).values()).allSatisfy(ids ->
+                                assertThat(ids).doesNotContain(target));
+                        assertThat(fixture.service().getMastery(LEARNER_ID)).hasSize(stored.size());
+                        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+                        verify(fixture.masteryRepository(), never()).saveAll(any());
+                    }
+                }
+            }
+        }
+    }
 
-        assertThat(directRequirement.service().getFrontier(LEARNER_ID)).isEmpty();
-        assertThat(directRequirement.service().getRichFrontier(LEARNER_ID))
-                .extracting(FrontierGoal::id)
-                .doesNotContain(TARGET_ID);
+    @Test
+    void completeExplicitInheritedAndTransitiveRolesPreserveFocusAndStrictMasteryChecks() {
+        for (boolean inherited : List.of(false, true)) {
+            String target = inherited ? OUTSIDE_TARGET_ID : TARGET_ID;
+            for (String role : List.of("target", "prerequisiteOnly")) {
+                Fixture fixture = fixture(view(goalEntry(target), goalEntry(PREREQUISITE_ID, role),
+                        goalEntry(TRANSITIVE_PREREQUISITE_ID, role)));
+                if (inherited) {
+                    fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                            .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID));
+                    fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
+                            .findFirst().orElseThrow().setContains(List.of(target));
+                }
+                when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                        .thenReturn(List.of(new PlannedGoal(fixture.learner(), target)));
+                assertThat(frontierPaths(fixture, List.of(target)).values()).allSatisfy(ids ->
+                        assertThat(ids).contains(target));
+                fixture.learner().setStrictMode(true);
+                assertThat(frontierPaths(fixture, List.of(target)).values()).allSatisfy(ids ->
+                        assertThat(ids).doesNotContain(target));
+                when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of(
+                        new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0),
+                        new Mastery(fixture.learner(), TRANSITIVE_PREREQUISITE_ID, 1.0)));
+                assertThat(frontierPaths(fixture, List.of(target)).values()).allSatisfy(ids ->
+                        assertThat(ids).contains(target));
+                assertThat(fixture.service().getMastery(LEARNER_ID))
+                        .containsExactlyInAnyOrderEntriesOf(Map.of(PREREQUISITE_ID, 1.0, TRANSITIVE_PREREQUISITE_ID, 1.0));
+                verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+                verify(fixture.masteryRepository(), never()).saveAll(any());
+            }
+        }
+    }
 
-        Fixture inheritedRequirement = fixture(view(goalEntry(OUTSIDE_TARGET_ID)));
-        inheritedRequirement.landscape().getGoals().stream()
-                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
-                .findFirst()
-                .orElseThrow()
-                .setRequires(List.of(PREREQUISITE_ID));
-        inheritedRequirement.landscape().getGoals().stream()
-                .filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId())).findFirst().orElseThrow()
-                .setContains(List.of(OUTSIDE_TARGET_ID));
-        when(inheritedRequirement.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(inheritedRequirement.learner(), OUTSIDE_TARGET_ID)));
-
-        assertThat(inheritedRequirement.service().getFrontier(LEARNER_ID))
-                .containsExactly(OUTSIDE_TARGET_ID);
-        assertThat(inheritedRequirement.service().getRichFrontier(LEARNER_ID))
-                .extracting(FrontierGoal::id)
-                .containsExactly(OUTSIDE_TARGET_ID);
+    @Test
+    void requiredClusterKeepsItsIdentityWithoutRoleDutyFromAtomicExpansion() {
+        Fixture fixture = fixture(view(goalEntry(OUTSIDE_TARGET_ID),
+                canonicalSubtree(NESTED_CLUSTER_ID, "prerequisiteOnly")));
+        fixture.landscape().setGoals(List.of(
+                clusterGoal(ROOT_CLUSTER_ID, List.of(OUTSIDE_TARGET_ID, NESTED_CLUSTER_ID)),
+                clusterGoal(NESTED_CLUSTER_ID, List.of(PREREQUISITE_ID)),
+                atomicGoal(PREREQUISITE_ID, List.of(TRANSITIVE_PREREQUISITE_ID)),
+                atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of()),
+                atomicGoal(OUTSIDE_TARGET_ID, List.of(NESTED_CLUSTER_ID))));
+        when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+        Object projection = ReflectionTestUtils.invokeMethod(fixture.service(), "getGoalProjection", LANDSCAPE_ID, PERSONAL_CURRICULUM);
+        Map<String, LearningGoal> graph = ReflectionTestUtils.invokeMethod(fixture.service(), "prerequisiteGraph", fixture.learner(), projection);
+        assertThat(graph.get(NESTED_CLUSTER_ID).getType()).isEqualTo("cluster");
+        assertThat(graph.get(NESTED_CLUSTER_ID).getContains()).containsExactly(PREREQUISITE_ID);
+        var topology = new CompletionProfileCompiler().normalizePrerequisites(graph);
+        assertThat(topology.transitiveGoalPrerequisites(OUTSIDE_TARGET_ID)).containsExactly(NESTED_CLUSTER_ID);
+        assertThat(topology.transitivePrerequisites(OUTSIDE_TARGET_ID))
+                .containsExactlyInAnyOrder(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projectionSets(fixture.service()).targetGoalIds()).doesNotContain(TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projectionSets(fixture.service()).prerequisiteOnlyGoalIds()).doesNotContain(TRANSITIVE_PREREQUISITE_ID);
+        assertThat(frontierPaths(fixture, List.of(OUTSIDE_TARGET_ID)).values()).allSatisfy(ids ->
+                assertThat(ids).contains(OUTSIDE_TARGET_ID));
+        fixture.learner().setStrictMode(true);
+        assertThat(frontierPaths(fixture, List.of(OUTSIDE_TARGET_ID)).values()).allSatisfy(ids ->
+                assertThat(ids).doesNotContain(OUTSIDE_TARGET_ID));
+        when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of(
+                new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0),
+                new Mastery(fixture.learner(), TRANSITIVE_PREREQUISITE_ID, 1.0)));
+        assertThat(frontierPaths(fixture, List.of(OUTSIDE_TARGET_ID)).values()).allSatisfy(ids ->
+                assertThat(ids).contains(OUTSIDE_TARGET_ID));
+        verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
+        verify(fixture.masteryRepository(), never()).saveAll(any());
     }
 
     @Test
@@ -1324,7 +1403,8 @@ class ProjectionRoleLearnerServiceTest {
     void storedPrerequisiteOnlyFocusIsFilteredFromLearnerFacingReadsAndCannotConstrainFrontier() {
         Fixture fixture = fixture(view(
                 canonicalSubtree(ROOT_CLUSTER_ID),
-                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+                goalEntry(PREREQUISITE_ID, "prerequisiteOnly"),
+                goalEntry(TRANSITIVE_PREREQUISITE_ID, "prerequisiteOnly")));
         PlannedGoal stalePrerequisiteOnlyFocus =
                 new PlannedGoal(fixture.learner(), PREREQUISITE_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))

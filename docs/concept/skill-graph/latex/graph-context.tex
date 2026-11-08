@@ -187,16 +187,20 @@ eine unterstützende Voraussetzung sein. Eine gemeinsame Planung
 identifiziert es dennoch nur einmal. Seine Physikrolle löscht keine
 Mathematikergebnisse und erzeugt auch keinen zweiten Kompetenzerwerb.
 
-Jede direkte kanonische Voraussetzung eines sichtbaren Ziels muss
-in der maßgeblichen Level-2-Komposition als \code{target} oder
-\code{prerequisiteOnly} auflösbar sein. Fehlt sie, ist die
-Konfiguration fehlerhaft und das Ziel bleibt gesperrt. Nur bei
-ausgelassenen Anforderungen, die von übergangsweise vorhandenen
-Legacy-Clustern geerbt werden, bleibt das besondere
-Kompatibilitätsverhalten bestehen. Diese Gültigkeitsprüfung ist
-von der späteren Level-3-Fokuswahl getrennt: Eine gültig
-aufgelöste Voraussetzung außerhalb des Fokus blockiert den
-Normalmodus weiterhin nicht.
+Nach der Ownerentscheidung vom 7. November 2026 muss jede über einen
+oder mehrere wirksame Voraussetzungsschritte erreichbare Voraussetzung
+eines sichtbaren Ziels in der maßgeblichen Level-2-Komposition als
+\code{target} oder \code{prerequisiteOnly} auflösbar sein. Das gilt
+gleichermaßen für direkte, geerbte und transitive Voraussetzungen.
+Geprüft wird die Zielknotenrelation vor der atomaren Auflösung von
+Voraussetzungsclustern; reine \code{contains}-Nachkommen erhalten dadurch
+keine zusätzliche Rollenpflicht. Fehlt eine Rolle, bleibt das Ziel auch
+dann gesperrt, wenn die Voraussetzung gemeistert ist oder außerhalb des
+Fokus liegt. Die frühere Ausnahme für geerbte Legacy-Anforderungen
+entfällt; bisher zulässige Konfigurationen können deshalb blockieren.
+Rollen werden weiterhin ausdrücklich festgelegt. Diese Gültigkeitsprüfung
+ist von der späteren Level-3-Fokuswahl getrennt: Eine gültig aufgelöste
+Voraussetzung außerhalb des Fokus blockiert den Normalmodus weiterhin nicht.
 
 \subsection{Anwendbarkeit ist keine Platzierung}
 

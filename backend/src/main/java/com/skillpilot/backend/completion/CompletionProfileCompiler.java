@@ -26,11 +26,13 @@ public final class CompletionProfileCompiler {
     public static final class PrerequisiteTopology {
         private final Map<String, Node> nodes;
         private final Map<String, Set<String>> prerequisites;
+        private final Map<String, Set<String>> effectiveGoalRequires;
 
         private PrerequisiteTopology(Map<String, Node> nodes,
-                Map<String, Set<String>> prerequisites) {
+                Map<String, Set<String>> prerequisites, Map<String, Set<String>> effectiveGoalRequires) {
             this.nodes = Map.copyOf(nodes);
             this.prerequisites = immutableSets(prerequisites);
+            this.effectiveGoalRequires = immutableSets(effectiveGoalRequires);
         }
 
         private static Map<String, Set<String>> immutableSets(Map<String, Set<String>> values) {
@@ -48,6 +50,12 @@ public final class CompletionProfileCompiler {
         public Set<String> transitivePrerequisites(String id) {
             directPrerequisites(id);
             return java.util.Collections.unmodifiableSet(new TreeSet<>(reachable(id, prerequisites)));
+        }
+
+        /** Inherited and transitive goal-node requirements, before contains expansion. */
+        public Set<String> transitiveGoalPrerequisites(String id) {
+            directPrerequisites(id);
+            return java.util.Collections.unmodifiableSet(new TreeSet<>(reachable(id, effectiveGoalRequires)));
         }
 
         public void validateContext(Set<String> roots) {
@@ -97,7 +105,7 @@ public final class CompletionProfileCompiler {
             for (String prerequisite : effective.get(id)) refs.addAll(atoms.get(prerequisite));
             expanded.put(id, refs);
         }
-        return new PrerequisiteTopology(nodes, expanded);
+        return new PrerequisiteTopology(nodes, expanded, effective);
     }
     /** Adds existing scope metadata without requiring authored review or waiver grants. */
     public CompiledCompletionProfile compileAutomaticProfile(
