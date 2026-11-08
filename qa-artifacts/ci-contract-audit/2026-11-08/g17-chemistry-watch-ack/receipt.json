@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "recordType": "documentation-of-completed-local-maintenance-checks",
+  "acknowledgedAtUtc": "2026-11-08T11:55:50Z",
+  "pr": "https://github.com/enpasos/skillpilot/pull/94",
+  "testedDataCommit": "3a1b0d5d7a00e531e6870e1a1bc584d323b434bf",
+  "testedQaHead": "35f01974cdf98cff5ba0e3212f5111a155c906cf",
+  "priorBaseline": {
+    "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+    "commit": "8edadbf9aad3497a9738066e7a95f27ef98ee599",
+    "gitBlobId": "6dbbfb593d35e864f48be38d23e022a06806d870",
+    "sha256": "417637838ba0b2eb4c3e665be541079947ec3c048a7d3e246b4f1ad94648bf2f",
+    "bytes": 49289,
+    "recordCount": 160,
+    "url": "https://github.com/enpasos/skillpilot/blob/8edadbf9aad3497a9738066e7a95f27ef98ee599/curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+    "preservation": "Complete document retained in reachable merged main history; no duplicate snapshot."
+  },
+  "chemistry": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "hashMode": "canonical-evidence-json-v1",
+    "oldNativeSha256": "af344ee308129ebab7622a3af186062d72f6d510516a19c3a00ff6f6583a1416",
+    "currentNativeSha256": "5da87f60f3a89d27f1dda9f3680f7c9a89b0fd6cff95ed6955e580cbda11d1ee",
+    "currentRawSha256": "e9da9f8a6fc1411795d385d4ab20d2bfdba5dd09796d0fe89cb26587699a6791",
+    "oldHashReproducedFromMergedMainAndTestedQaHead": true,
+    "removedRequires": [
+      {"source": "bb707fda-504c-4699-a78c-d0a6c320658f", "prerequisite": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"},
+      {"source": "871eabde-6e19-59d3-bc7c-60977a9837db", "prerequisite": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3"},
+      {"source": "871eabde-6e19-59d3-bc7c-60977a9837db", "prerequisite": "1286f2fe-89b7-4454-8e11-85b6abd6e278"},
+      {"source": "08b44b8f-e407-5a1f-82dc-e70e598022cf", "prerequisite": "1c1420c2-a8e2-520f-8015-6df637a973bd"},
+      {"source": "08b44b8f-e407-5a1f-82dc-e70e598022cf", "prerequisite": "95dc0ee5-a0af-5682-af32-d66e36fbeb50"},
+      {"source": "10ce2814-8796-5633-9bed-f6990d039b91", "prerequisite": "326d45bf-9f77-57d5-a054-93e76b034dd5"}
+    ],
+    "changedClusters": 4,
+    "allOtherJsonValuesIncludingContainsUnchanged": true
+  },
+  "observationUpdate": {
+    "onlyChangedBaselineFields": ["updatedAt", "canonicalChemistryRecord.sha256", "canonicalChemistryRecord.lastModifiedUtc"],
+    "currentRecordLastModifiedUtc": "2026-11-08T10:32:06Z",
+    "otherCompleteRecordsUnchanged": 159,
+    "watchedInventory": 160,
+    "addedPaths": 0,
+    "removedPaths": 0,
+    "captureBaselineUsed": false
+  },
+  "proofIdentity": {
+    "registryPath": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "registrySha256": "d7e25fe65e56d20f6e9eb00aa20b7e74e4a416ac7f4a6f6a048d21af8a02e9d2",
+    "operations": 204,
+    "originalRequiresSources": 200,
+    "historicalBaselineDigestsUnchanged": 21,
+    "historicalRemovalPrefixEntriesUnchanged": 188,
+    "historicalOriginalRequiresPrefixEntriesUnchanged": 188
+  },
+  "frozenInputs": {
+    "count": 29,
+    "byteExactSinceTestedDataCommit": true,
+    "localFreeze": {"file": "root-combined-freeze.json", "sha256": "e7df812d771f604ff0062e19058eb1232219159446761d8dfd95b9fdece869ec"},
+    "exactCommitValidation": {"file": "root-final-exact-commit-validation.json", "sha256": "31f8475a99de741d4ed1f7c2c976d7812f49ee98410a8e2ffc12f0303ccfb6f3"},
+    "dataDeltaValidation": {"file": "root-data-delta-verification.json", "sha256": "48827b32f0d8430803e775f4e21ebb7c323316eab6d723028bf2f9f35698642f"}
+  },
+  "failedCi": {
+    "workflow": "Canonical Chemistry Evidence Watch",
+    "runId": 42476139632,
+    "jobId": 128717822880,
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42476139632/job/128717822880",
+    "headSha": "3a1b0d5d7a00e531e6870e1a1bc584d323b434bf",
+    "baseSha": "8edadbf9aad3497a9738066e7a95f27ef98ee599",
+    "checkoutMergeShaPrefix": "756cfd389",
+    "localLogs": [
+      {"file": "chem-watch-failed-ci-full.log", "sha256": "943b695c0cbbf67cbafc9dff66e464a2deb2199c32408885badbf2a027f77095"},
+      {"file": "chem-watch-failed-ci-excerpt.log", "sha256": "762e28fa633bccb9555acc0e96d5f2ca62b06f0811314f7cbd64389285210a9f"}
+    ],
+    "actualTerminalLines": ["2026-11-08T11:38:10.9082646Z Canonical Chemistry evidence-watch self-test passed.", "2026-11-08T11:38:11.7035638Z chemistry-evidence-watch: changed=1 added=0 removed=0", "2026-11-08T11:38:11.7036683Z CHANGED curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json", "2026-11-08T11:38:11.7136694Z ##[error]Process completed with exit code 1."],
+    "cause": "The unchanged observation hash includes requires; the already proved six deletions changed only canonical Chemistry."
+  },
+  "existingProofResults": {
+    "localEvidenceRoot": "app/node_modules/.tmp/g17-covered-cluster-16-20261108/",
+    "node": {
+      "result": {"file": "validation-summary.json", "sha256": "6a03f62b2cc7619d8a83ce43aa91f2893c17b535767d5f3c37ffa592b47ad6c8"},
+      "commandReferences": "validation-summary.json#/checks/*/command",
+      "completedCheckNames": ["minimality", "atlas-biology-check", "atlas-chemistry-check", "eslint-proof-test", "diff-check"],
+      "allFiveExitCodes": 0,
+      "allInputAndSourceFreezeFlags": true
+    },
+    "sourceAtlas": {
+      "biologyLog": {"file": "validation-atlas-biology-check.log", "sha256": "20aa60c8cdb042b530a98d3b345d00ef7e85c05ab0c566015d6391ff014b8cca"},
+      "chemistryLog": {"file": "validation-atlas-chemistry-check.log", "sha256": "1382210a355351d32409cdadf08f3e4157d6b2a729b364e0c4c806bb48bd0996"},
+      "bothChecksPassed": true,
+      "chemistryReceipt": {"path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json", "sha256": "cb966006c556b981928fffd23c27460831b37d6b8287acc609191d070dc86aac"},
+      "chemistryCanonicalGoals": 455,
+      "chemistryPublishedGoals": 423,
+      "chemistrySourceViews": 48
+    },
+    "native": {
+      "result": {"file": "native-20261108T103428Z-result.json", "sha256": "5940d23abb2d4aa151c2fb4d33a24b8896b8b9a89912f9aa96639866801fb620"},
+      "junit": {"file": "native-20261108T103428Z.xml", "sha256": "d4a65f49ea5df1cd98df147a384a505799ad7e6c0a5ede6e2a0a046a92a894d6"},
+      "log": {"file": "native-20261108T103428Z.log", "sha256": "6de6dafbd101797b3946272b3e1096ca9547c5957cd1dbe369c4ba3e284ad4f8"},
+      "commandReference": "native-20261108T103428Z-result.json#/command",
+      "exitCode": 0,
+      "junitCounts": {"tests": 2, "failures": 0, "errors": 0, "skipped": 0},
+      "configurations": 1240,
+      "registeredSources": 200,
+      "liveSources": 198,
+      "canonicalSources": 2,
+      "combinedSources": 200,
+      "canonicalMissingRoleCases": 6,
+      "contextGoalComparisons": 370306,
+      "all23BeforeAfterHashesEqualToFrozenInputs": true
+    },
+    "cqr": {
+      "producerResult": {"file": "regular-producer.result.json", "sha256": "37c37f03d1eee8661a5d2e8423bc145a8f25bac1067c5988a93996d1e77d3e6c"},
+      "statusVerification": {"file": "root-regular-status-verification.json", "sha256": "095b670b699503251ac4ded1a1436a3244793b24262c06db876f98d1b6268931"},
+      "commandReference": "regular-producer.result.json#/command",
+      "exitCode": 0,
+      "allFrozenInputFlags": true,
+      "canonicalRoots": 21,
+      "protectedMaturityFloors": 10,
+      "m7Floors": 5,
+      "m6Floors": 5,
+      "regularOutcomesUnchangedFromMain": true
+    }
+  },
+  "unchangedWatchContract": {
+    "requiresStillIncludedInNativeHash": true,
+    "reopenConditions": ["visible scope", "source-backed projection status", "runtime mapping coverage", "composition-view eligibility"],
+    "allFourReopenConditionsUnchanged": true,
+    "gateBindings": [
+      {"path": "scripts/canonical_chemistry_evidence_watch.py", "sha256": "f6c1129474eef828c5a3796632da52e903e25960c12f06e89dcd142c3b369c0f"},
+      {"path": "scripts/run_canonical_chemistry_evidence_watch.sh", "sha256": "44b6b7cf3d65ab5003c360b9406c3b13e98b8b41fb1296bbe9015f3f1607dc7d"},
+      {"path": ".github/workflows/canonical_chemistry_evidence_watch.yml", "sha256": "4b72a745f6f04ae2a1d4d1994becb377d5ddcb29a7caa4f6c986758dffa4703a"},
+      {"path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json", "sha256": "f3445bf3dc6de01799989fd2fe22d44376c69c0763d9837e7bd584ec04f81f8e"}
+    ]
+  },
+  "completedLocalChecks": {
+    "selfTest": {"command": "python3 scripts/canonical_chemistry_evidence_watch.py self-test", "exitCode": 0},
+    "normalRunner": {"command": "bash scripts/run_canonical_chemistry_evidence_watch.sh", "exitCode": 0},
+    "normalRunnerOutput": ["Canonical Chemistry evidence-watch self-test passed.", "chemistry-evidence-watch: changed=0 added=0 removed=0", "CHEMISTRY_EVIDENCE_WATCH=OK"],
+    "generatedViewsWereRegeneratedByNormalRunner": true,
+    "temporaryRejectionProbeCount": 32,
+    "probeGroups": {"deltaAndScope": 7, "receiptData": 4, "resultData": 15, "junitData": 3, "genuineWatchDrift": 3},
+    "actualLocalProbeResult": {"file": "app/node_modules/.tmp/g17-covered-cluster-16-20261108/chem-watch-local-validation/completed-local-checks.json", "sha256": "c4d3c124dce3fd33943623b2e638089366197aa5f1ffcfc0382c202f648e9ace"},
+    "archivedLocalScript": {"file": "app/node_modules/.tmp/g17-covered-cluster-16-20261108/chem-watch-local-validation/verify.py", "sha256": "ed3f6a672b9da15951f5a09fbdb17200e7d9f5daff11117644dc8c09ee6660b7"},
+    "archivedFullLocalReceipt": {"file": "app/node_modules/.tmp/g17-covered-cluster-16-20261108/chem-watch-local-validation/receipt.full.json", "sha256": "6c409e5a697cb6df4f1806e3bbd7d4b7cd67d212c072b03c1112b6310f00f75b"},
+    "probeEvidenceMeaning": "Completed local checks only; no permanent receipt verifier or new comparison family."
+  },
+  "maintenanceClaims": {
+    "newScientificReviews": 0,
+    "newCompletions": 0,
+    "sourceMappingViewLearnerScopeTaskImageUnitMasteryChanges": false,
+    "checkerManifestWorkflowHashFunctionOrProofHistoryChanges": false,
+    "futureUnacknowledgedChangesRemainRejected": true,
+    "freshRemoteCi": "pending"
+  }
+}
