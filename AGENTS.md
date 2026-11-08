@@ -359,6 +359,16 @@ Interpretation rules:
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
 - projection roles are authored scope semantics and must never be inferred automatically from phase, year, stage, or `requires`
+- Under the **7 November 2026 Product Owner decision**, a reviewed Level 2
+  composition must explicitly resolve every effective prerequisite goal reachable
+  from a target through one or more prerequisite steps as `target` or
+  `prerequisiteOnly`, including inherited and transitive prerequisites. Check
+  this goal relation before expanding prerequisite clusters into atomic
+  descendants; `contains` descendants alone gain no additional role obligation.
+  A missing role blocks the target regardless of mastery or Level 3 focus.
+  The former inherited legacy-cluster exception is retired; previously allowed
+  configurations may block. Valid outside-focus prerequisites retain the existing
+  normal-mode focus behavior, and no role or mastery is inferred.
 - only `target` goals participate in the learner-facing tree, frontier, progress, and completion scope; `prerequisiteOnly` goals retain their stable canonical IDs and global mastery values solely for prerequisite checks
 - when overlapping composition references assign different projection roles, specificity decides: a direct `goalEntry` overrides a role inherited from a `canonicalSubtree`, and the nearest/deepest matching `canonicalSubtree` overrides a broader subtree; only at equal specificity does `target` win
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent

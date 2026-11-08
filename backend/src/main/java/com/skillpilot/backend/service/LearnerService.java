@@ -7228,10 +7228,9 @@ public class LearnerService {
         if (prerequisites.topology() == null || !prerequisites.lookup().containsKey(goal.getId())) return false;
         // Preserve the explicit Level-2 composition validity boundary. Canonical
         // traversal supplies lookup, never an inferred target/support role.
-        if (projection.compositionViewApplied() && goal.getRequires() != null) {
-            for (String ref : goal.getRequires()) {
-                String id = resolveGoalRef(ref, prerequisites.lookup());
-                if (id == null || !projection.targetGoalIds().contains(id)
+        if (projection.compositionViewApplied()) {
+            for (String id : prerequisites.topology().transitiveGoalPrerequisites(goal.getId())) {
+                if (!projection.targetGoalIds().contains(id)
                         && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
             }
         }

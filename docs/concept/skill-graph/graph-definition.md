@@ -618,14 +618,18 @@ Memory goals are optional support, not mandatory checkpoints. They are selected 
 
 The canonical inventory rule and a learner-facing projection rule are both
 necessary. `GVR-012` proves that the authored canonical graph has complete
-routes; it cannot prove that a narrower composition view retained every direct
-prerequisite. A reviewed view therefore has to include each direct prerequisite
-of every visible target either as another `target` or explicitly as
-`prerequisiteOnly`. Projection roles remain authored decisions and are never
-inferred from stage or graph position. At runtime, a direct canonical
-prerequisite missing from the authored Level 2 composition fails closed and
-blocks the target; only omitted prerequisites inherited from transitional
-legacy clusters retain the compatibility behavior. This configuration check is
+routes; it cannot prove that a narrower composition view retained every effective
+prerequisite. Under the Product Owner decision of 7 November 2026, a reviewed
+view must include every prerequisite goal reachable from a visible target through
+one or more effective prerequisite steps, whether direct, inherited, or
+transitive, either as another `target` or explicitly as `prerequisiteOnly`.
+This relation is evaluated before prerequisite clusters are expanded into atomic
+descendants. A `contains` descendant alone does not acquire an additional role
+obligation. Projection roles remain authored decisions and are never inferred
+from stage or graph position. A missing prerequisite role blocks the target even
+when that prerequisite is mastered or outside the current focus. The former
+exception for inherited legacy-cluster prerequisites is retired; previously
+allowed configurations may therefore block. This Level 2 configuration check is
 distinct from Level 3 focus selection: a valid prerequisite outside the chosen
 focus is ignored in normal mode and checked globally only in strict mode.
 The Hessen Sek-II mathematics LK regression additionally proves complete direct
@@ -1013,7 +1017,7 @@ $$
 
 **How to read it:** Both panels use $M_{\mathrm{eff}}=\varnothing$. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Kinematics directly requires Vectors, and Acceleration directly requires Velocity. Through containment, Velocity and Acceleration inherit Kinematics’ requirement for Vectors. Every requires arrow points from a goal to what it requires. Solid arrows labelled requires are authored and dashed arrows labelled requires (inherited) are derived, regardless of colour. In the optimistic panel, the three orange arrows to Vectors are excluded from the scoped prerequisite check: Velocity is available, but Acceleration still requires Velocity. In the strict panel, these requirements are checked as well: neither atomic goal is available.
 
-**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). The same focus restriction applies to direct and inherited prerequisites, including reviewed composition views. The separate Level 2 validity check in §8.5 still rejects missing authored direct references; it does not make a valid outside-focus prerequisite block normal-mode entry.
+**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). The same focus restriction applies to direct and inherited prerequisites, including reviewed composition views. The separate Level 2 validity check in §8.5 requires an explicit role for every transitively reachable effective prerequisite goal, before atomic expansion of prerequisite clusters. It does not make a valid outside-focus prerequisite block normal-mode entry.
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-07 -->
 
