@@ -41,23 +41,25 @@ und alle acht Haupt-CI-Jobs; der Merge hat exakt denselben Dateibaum.
 Der frische Main-Lauf von PR #92 bestand anschließend ebenfalls die fünf
 Repository-Workflows einschließlich aller acht Haupt-CI-Jobs.
 
-Die notwendige QA-Leserreparatur ist separat in
-[PR #93](https://github.com/enpasos/skillpilot/pull/93) bei `35f01974cd`
-gesichert: drei Node-Dateien, unveränderte Curriculumdaten und bestehender
-V2-Nachweisvertrag. Die isolierten lokalen Regressionen, die tatsächliche
+Die notwendige QA-Leserreparatur ist mit
+[PR #93](https://github.com/enpasos/skillpilot/pull/93) auf main bei
+[`8edadbf9aa`](https://github.com/enpasos/skillpilot/commit/8edadbf9aad3497a9738066e7a95f27ef98ee599)
+geliefert: drei Node-Dateien, unveränderte Curriculumdaten und bestehender
+V2-Nachweisvertrag. Der geprüfte PR-Head ist `35f01974cd`; der tatsächliche
+Main-Dateibaum ist bytegleich. Die isolierten lokalen Regressionen, die tatsächliche
 Physikprüfung und der reguläre Meilensteinlauf gegen unveränderte Main-Daten
 bestanden; alle zehn Fachfloors bleiben erhalten. Astra fand im Quellenreview
 keinen Blocker. Die volle agentische Copilot-Prüfung brach beim Setup mit
 HTTP 504 ab; das vorhandene Lite-Review mit drei Hinweisen wurde getrennt
 geprüft und im PR mit begründeter Einordnung erledigt. Die Snapshotguards
-bleiben strikt. Die Remote-CI des PR läuft noch; der PR ist damit noch keine
-Main-Lieferung.
+bleiben strikt. Alle drei frischen Repository-Workflows und sämtliche acht
+Haupt-CI-Jobs des PR bestanden; die Main-Push-CI wird getrennt beobachtet.
 
 Der sichtbare Checkout liegt auf `fix/g17-covered-cluster-batch`,
-ausgehend von diesem unveränderten QA-Commit. Während seiner Remote-Prüfung
-wird ausschließlich der bereits vorgesehene mechanische 16er-Folgebatch
-fertiggestellt. PR #93 wird zuerst nach main geliefert; der Datenbatch erhält
-danach einen getrennten PR. Es wird kein weiterer Themenblock begonnen.
+ausgehend vom geprüften QA-Commit. Der bereits vorgesehene mechanische
+16er-Folgebatch ist lokal vollständig geprüft und als `cebfd0cd4c` committed
+und gepusht. Nach der nun erfolgten QA-Lieferung erhält er seinen getrennten
+Main-PR. Es wird kein weiterer Themenblock begonnen.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
