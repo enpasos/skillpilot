@@ -146,6 +146,10 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_SYMMETRY_ID = "d8c9eb57-1614-4c1d-829a-618134def352";
     private static final String CANONICAL_CHEMISTRY_SEK1_CLUSTER_ID = "3588c15e-adbe-5b81-b3a7-10da20574e3d";
     private static final String CANONICAL_CHEMISTRY_SEK1_HAZARDS_ID = "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0";
+    private static final String CANONICAL_CHEMISTRY_SEK1_HAZARD_LABELS_ID = "9e656697-fc05-5aa9-9aca-871af2e89eb7";
+    private static final String CANONICAL_CHEMISTRY_SEK1_PROTECTIVE_MEASURES_ID = "4b6d1824-20e4-597e-b639-fae401f740f0";
+    private static final String CANONICAL_CHEMISTRY_SEK1_DISPOSAL_ROUTES_ID = "805a2f58-29ce-55d0-8a85-42ee486239b3";
+    private static final String CANONICAL_CHEMISTRY_SEK1_RISK_MINIMIZATION_ID = "ebaae4f5-cc13-5493-98b1-10e1abeb638f";
     private static final String CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID = "5a709938-e0f5-42b7-94f0-cfded08963a2";
     private static final String CANONICAL_CHEMISTRY_SEK1_STATES_ID = "326d45bf-9f77-57d5-a054-93e76b034dd5";
     private static final String CANONICAL_CHEMISTRY_SEK1_SOLUTIONS_ID = "53fd1bfd-facb-54ae-b2dc-f667ed1414fc";
@@ -623,12 +627,22 @@ class LearnerServiceCanonicalProjectionTest {
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0)));
 
-        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
-
-        assertThat(frontier)
+        // Display compaction may omit optional navigation clusters; their
+        // availability remains visible in the uncompacted frontier.
+        assertThat(learnerService.getUncompactedRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_CHEMISTRY_SEK1_HAZARDS_ID, CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID,
-                        CANONICAL_CHEMISTRY_SEK1_STATES_ID, CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID);
+                        CANONICAL_CHEMISTRY_SEK1_STATES_ID, CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_SEK1_PROTECTIVE_MEASURES_ID,
+                        CANONICAL_CHEMISTRY_SEK1_RISK_MINIMIZATION_ID);
+
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_CHEMISTRY_SEK1_HAZARD_LABELS_ID, CANONICAL_CHEMISTRY_SEK1_DISPOSAL_ROUTES_ID,
+                        CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID, CANONICAL_CHEMISTRY_SEK1_STATES_ID,
+                        CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID)
+                .doesNotContain(CANONICAL_CHEMISTRY_SEK1_PROTECTIVE_MEASURES_ID,
+                        CANONICAL_CHEMISTRY_SEK1_RISK_MINIMIZATION_ID);
     }
 
     @Test
