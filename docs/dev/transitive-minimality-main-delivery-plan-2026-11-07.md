@@ -85,7 +85,8 @@ mit [PR #95](https://github.com/enpasos/skillpilot/pull/95) auf main bei
 [`0adcd834d5`](https://github.com/enpasos/skillpilot/commit/0adcd834d5dee6df3c67f5d6e5b387e9713fa447)
 geliefert. Ihr geprüfter Head `b7de2aa37c` bestand alle vier ausgelösten
 PR-Workflows und acht Hauptjobs; der tatsächliche Main-Dateibaum ist exakt gleich.
-Die separate frische Main-Push-CI läuft noch. Copilot konnte das vollständige
+Auch die separate frische Main-Push-CI bestand alle fünf ausgelösten Workflows
+und sämtliche acht Hauptjobs. Copilot konnte das vollständige
 Review wegen Modell-/Tarifbeschränkungen nicht abschließen und erteilte keine
 automatisierte Freigabe; sein Kommentar enthält keinen konkreten Codebefund.
 Das abgeschlossene Astra-Ultra-Quellenreview und die tatsächlichen Negativfälle
@@ -105,8 +106,8 @@ reparieren. Exakter Dokument-Replay, tatsächliche Applicability-Gleichheit und
 die bisherigen Endgraphzeugen bleiben Pflicht. Die Supportlieferung selbst
 belässt die Live-Registry bei V2 und aktiviert noch kein Standard-Meilensteingate.
 
-Der sichtbare IDE-Checkout arbeitet auf `fix/g17-math-atomic-prerequisites`
-an der unmittelbar davon abhängigen Mathematiklieferung. Deren lokal vollständig
+Die unmittelbar davon abhängige Mathematiklieferung liegt auf
+`fix/g17-math-atomic-prerequisites`. Deren lokal vollständig
 geprüfter Daten-/Consumerstand ist als `92b0e2236d` committet und gepusht.
 Der gelieferte Main-Stand von #95 wurde anschließend bei unverändertem
 Mathematik-Dateibaum aufgenommen. Der eigene Mathematik-PR folgt damit auf die
@@ -168,6 +169,58 @@ zurück. Gemeinsame Fingerprintfunktion und Reviewbindungen bleiben unverändert
 Frische Remote-CI am reparierten Stand und Main-Lieferung dieses Batches stehen
 noch aus. Die vollständige atomare Reduktion und das harte
 Standard-Meilensteingate bleiben offen.
+
+Die beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und gepusht;
+die fünf frischen PR-Workflows laufen. Die gezielte Physikprüfung mit ihren
+Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
+ESLint sowie Dokumentations- und Terminologieprüfungen bestanden lokal.
+
+Der sichtbare IDE-Checkout bereitet nun auf
+`fix/g17-math-transitive-reduction`, ausgehend von diesem Reparaturcommit, den
+unmittelbar abhängigen atomaren Mathematikbatch vor. Die ausgeführte Vorprobe
+findet 922 redundante Rohkanten aus 490 zusätzlichen Quellen: 2.484 atomare
+Anforderungen werden zu 1.562 reduziert; der bestehende Auditor findet danach
+keine Mathematikredundanz. Alle 6.524 tatsächlich kompilierten Geltungswerte
+bleiben gleich. Dies ist eine Vorprobe, noch keine native oder Remote-Abnahme.
+Der Batch ist inzwischen auf dem sichtbaren Branch angewendet. Der bestehende
+Auditor bestätigt am tatsächlichen Endstand 1.253 Scopeknoten, 1.562 rohe und
+wirksame Anforderungen und keine Mathematikbefunde. Der vollständige neue
+Nachweis bestand in rund 89 Sekunden: unveränderter V3-Präfix, ursprüngliche
+Dokumentdigests, 719 betroffene Ausgangsquellen und tatsächlich kompilierte
+Applicability. Genau ein betroffener historischer Zeuge wird durch den
+ausdrücklich bezeichneten neuen Zeugen fortgeführt; sämtliche Endpfade müssen
+als tatsächliche Kanten überleben.
+
+Der bekannte Frischeanschluss besteht auch an diesen Daten: alle 18 Ansichten
+bytegleich, ausschließlich die aktive Inputbindung fortgeschrieben und die
+regulären Coverage-Zähler von 2.484 auf 1.562 erneuert. Das geänderte
+Mathematikdokument besteht die vorhandene Runtime-Schemaprüfung; der anschließende
+vollständige Schemalauf bestand 119.199 Dateien. Der unveränderte reguläre
+Meilensteinproducer und alle zehn geschützten Untergrenzen bestanden auf 32
+unveränderten Eingaben mit fünf M7- und fünf M6-Fächern. Der strukturierte
+Reportvergleich zeigt ausschließlich Zeit- und V4-Nachweismetadatenänderungen;
+alle bisherigen Regel- und Statuswerte bleiben gleich. Python-Gesamtsuite,
+Auditor-/Nachweissuite, Standard-Mathematik-CLI und ESLint bestehen ebenfalls.
+Astras vollständiges Quellenreview ist ohne Befund abgeschlossen.
+
+Die erste native Gesamtgegenprüfung erreichte eine veraltete Direktkanten-
+Testannahme: Tail 912 entfernt das in der Fixture anschließend erneut simulierte
+Duplikat bereits im echten Endgraphen. Die materiellen Prüfungen auf fehlende
+Rolle und weiterhin vollständige Voraussetzung waren auch dort erfolgreich.
+Der destruktive Vorher-Fall bleibt erhalten; der Nachher-Fall prüft vollständige
+Nachfragegleichheit und alle sechs tatsächlichen Kanten des zertifizierten
+Ersatzwegs. Root und Astra prüften diese isolierte Testkorrektur ohne Befund.
+Der begründete neue Native-Gesamtlauf bestand alle drei Tests mit 1.240 realen
+Konfigurationen, 370.306 Kontext-/Zielvergleichen und 292.429 Vergleichen
+tatsächlicher atomarer Ziele. Alle 490 neuen Quellen sind über reale Scopes
+exponiert. Von insgesamt 719 registrierten Quellen sind 717 real erfasst;
+die zwei bisherigen PoWi-Gegenproben bleiben mit ihren sechs Atomen und sechs
+fehlenden Rollenfällen separat erhalten. Die fünf positiven und negativen
+Fokusfälle des fortgeschriebenen Mathematikzeugen bestehen ebenfalls.
+Anschließend bestand die unveränderte Projektionsklasse alle 58 Tests ohne
+Fehler oder Skips. Sämtliche gebundenen Eingaben blieben während beider Läufe
+unverändert. Ein Folge-PR entsteht erst nach der Main-Lieferung von #96;
+weitere fachliche Arbeit wird nicht begonnen.
 
 Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
 erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8

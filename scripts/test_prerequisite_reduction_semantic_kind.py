@@ -26,7 +26,7 @@ BASELINE = "sha256:" + "b" * 64
 
 class SemanticKindReductionTest(unittest.TestCase):
     def setUp(self) -> None:
-        scratch = ROOT / "app/node_modules/.tmp"
+        scratch = ROOT / "app/node_modules/.tmp/g17-math-transitive-reduction-20261108"
         scratch.mkdir(parents=True, exist_ok=True)
         self.temporary = tempfile.TemporaryDirectory(prefix="semantic-kind-bridge-", dir=scratch)
         self.addCleanup(self.temporary.cleanup)
@@ -67,7 +67,7 @@ class SemanticKindReductionTest(unittest.TestCase):
         self.assertEqual(result, {goal["id"]: validator.source_fingerprint(goal, contract) for goal in document["goals"]})
         return result
 
-    def ordered_fixture(self):
+    def ordered_fixture(self, *, continued=False, non_atomic=False):
         before = {"landscapeId": "fixture", "goals": [
             {"id": "q", "type": "atomic", "contains": [], "requires": ["p", "r"]},
             {"id": "p", "type": "atomic", "contains": [], "requires": ["r"]},
@@ -76,6 +76,11 @@ class SemanticKindReductionTest(unittest.TestCase):
             {"id": "a", "type": "atomic", "contains": [], "requires": []},
             {"id": "b", "type": "atomic", "contains": []},
         ]}
+        if continued:
+            before["goals"][1]["requires"].append("s")
+            before["goals"].append({"id": "s", "type": "atomic", "contains": [], "requires": ["r"]})
+        if non_atomic:
+            before["goals"][1]["requires"].append("k")
         checkpoint = copy.deepcopy(before)
         checkpoint["goals"][0]["requires"] = ["p"]
         history = {
@@ -115,21 +120,54 @@ class SemanticKindReductionTest(unittest.TestCase):
         self.registry.write_text(json.dumps(registry))
         self.fingerprints = self.fingerprint_document(self.document)
 
+    def continue_registry(self, ordered, *, source="p", tail_originals=None):
+        checkpoint = copy.deepcopy(self.document)
+        registry = {**copy.deepcopy(ordered), "proofContract": bridge.CONTINUED_PROOF_CONTRACT,
+            "v3Checkpoint": {"registryDigest": bridge.digest(compiler.canonical_json_bytes(ordered)),
+                "currentDocumentDigests": [{"path": SOURCE,
+                    "currentDocumentDigest": ordered["catalogSources"][0]["currentDocumentDigest"]}]},
+            "tailOriginalRequires": tail_originals if tail_originals is not None else [
+                {"source": f"fixture:{source}", "requires": copy.deepcopy(next(
+                    goal["requires"] for goal in checkpoint["goals"] if goal["id"] == source))}],
+            "atomicRemovals": [{"source": f"fixture:{source}", "prerequisite": "fixture:r",
+                "witness": [f"fixture:{source}", "fixture:s", "fixture:r"]}],
+            "witnessContinuations": [{"historicalRemovalIndex": 0, "edgeIndex": 1, "tailRemovalIndex": 0}],
+        }
+        next(goal for goal in self.document["goals"] if goal["id"] == source)["requires"].remove("r")
+        self.save_ordered_fixture(registry)
+        return checkpoint, registry
+
+    def continued_fixture(self, *, non_atomic=False):
+        before, _, _, ordered = self.ordered_fixture(continued=True, non_atomic=non_atomic)
+        checkpoint, registry = self.continue_registry(ordered)
+        return before, checkpoint, ordered, registry
+
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
         with patch.object(bridge.subprocess, "run", side_effect=AssertionError("Node must not run")):
             self.assertIsNone(self.load())
 
     def test_absent_context_keeps_both_real_tools_strict(self):
-        # No artifact is written: each original guard rejects q before output construction.
+        profile = compiler.load_json(PROFILE)
+        document = compiler.load_json(ROOT / SOURCE)
+        ledger = compiler.load_json(ROOT / profile["canonicalLandscape"]["semanticKindLedgerPath"])
+        decisions = {row["goalId"]: row["sourceFingerprint"] for row in ledger["decisions"]}
+        fingerprints = self.fingerprint_document(document)
+        # Both tools check source order. Additional certified cuts can move the
+        # first stale ledger binding before the original first Math example q.
+        stale_goals = [goal["id"] for goal in document["goals"]
+                       if fingerprints[goal["id"]] != decisions[goal["id"]]]
+        self.assertIn(Q, stale_goals, "the original first Math case still needs the verified context")
+        expected = f"Stale semantic-kind decision for goal {stale_goals[0]}"
         with patch.object(compiler, "load_verified_semantic_kind_bindings", return_value=None):
-            with self.assertRaisesRegex(compiler.CompilationError, f"Stale semantic-kind decision for goal {Q}"):
+            with self.assertRaisesRegex(compiler.CompilationError, expected):
                 compiler.compile_model(PROFILE, self.root / "compiler-output")
         context = validator.load_trusted_context(PROFILE)
         with patch.object(validator, "load_verified_semantic_kind_bindings", return_value=None):
-            with self.assertRaisesRegex(validator.ValidationError, f"Stale semantic-kind decision for goal {Q}"):
+            with self.assertRaisesRegex(validator.ValidationError, expected):
                 validator.build_expected_model(context, self.root / "validator-output")
         self.assertFalse((self.root / "compiler-output").exists())
+        self.assertFalse((self.root / "validator-output").exists())
 
     def test_live_node_bridge_matches_both_native_fingerprint_functions(self):
         profile = compiler.load_json(PROFILE)
@@ -275,13 +313,15 @@ class SemanticKindReductionTest(unittest.TestCase):
                 with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
                     self.load()
 
-    def test_ordered_suffix_cannot_heal_an_invalid_historical_witness(self):
+    def invalid_ordered_history_fixture(self, *, with_tail=False):
         before, checkpoint, history, registry = self.ordered_fixture()
         before["goals"][1]["requires"] = ["r", "s", "target"]
         before["goals"].extend([
             {"id": "s", "type": "atomic", "contains": [], "requires": ["r"]},
             {"id": "target", "type": "cluster", "contains": ["r"], "requires": []},
         ])
+        if with_tail:
+            before["goals"].append({"id": "t", "type": "atomic", "contains": [], "requires": ["r", "s"]})
         checkpoint["goals"] = copy.deepcopy(before["goals"])
         checkpoint["goals"][0]["requires"] = ["p"]
         checkpoint["goals"][1]["requires"] = ["s", "target"]
@@ -303,6 +343,85 @@ class SemanticKindReductionTest(unittest.TestCase):
         self.document = copy.deepcopy(checkpoint)
         self.document["goals"][1]["requires"].append("r")
         self.save_ordered_fixture(registry)
+        return registry
+
+    def test_ordered_suffix_cannot_heal_an_invalid_historical_witness(self):
+        self.invalid_ordered_history_fixture()
+        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "witness edge.*deleted"):
+            self.load()
+
+    def test_continued_contract_requires_explicit_matching_historical_witness_continuation(self):
+        before, checkpoint, ordered, registry = self.continued_fixture()
+        verified = self.load()
+        self.assertIsNotNone(verified)
+        self.assertEqual(verified.provenance["proofContract"], bridge.CONTINUED_PROOF_CONTRACT)
+        self.assertEqual(verified.provenance["affectedGoalIds"], [f"fixture:{key}" for key in ("a", "b", "k", "p", "q")])
+        self.assertEqual(verified.baseline_fingerprints, self.fingerprint_document(before))
+        self.assertEqual(next(goal["requires"] for goal in checkpoint["goals"] if goal["id"] == "p"), ["r", "s"])
+        self.assertEqual(next(goal["requires"] for goal in self.document["goals"] if goal["id"] == "p"), ["s"])
+        for field in ("originalRequires", "removals", "v2Checkpoint", "suffixOriginalRequires", "suffix"):
+            self.assertEqual(registry[field], ordered[field], field)
+        self.assertEqual(registry["v3Checkpoint"]["registryDigest"], bridge.digest(compiler.canonical_json_bytes(ordered)))
+        self.assertEqual(registry["witnessContinuations"], [
+            {"historicalRemovalIndex": 0, "edgeIndex": 1, "tailRemovalIndex": 0}])
+        registry["witnessContinuations"] = []
+        self.registry.write_text(json.dumps(registry))
+        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "continuation|witness edge.*deleted"):
+            self.load()
+
+    def test_continued_contract_rejects_invalid_tail_and_continuations_without_current_fallback(self):
+        cases = ("missing-continuations", "extra-continuation", "mismatched-continuation", "unused-continuation",
+                 "bad-checkpoint", "bad-checkpoint-document", "non-atomic-scope", "missing-tail-original",
+                 "corrupt-tail-original", "missing-catalog", "missing-current-source", "corrupt-current-snapshot",
+                 "missing-current-fingerprint", "corrupt-current-fingerprint")
+        for name in cases:
+            with self.subTest(case=name):
+                _, _, ordered, registry = self.continued_fixture(non_atomic=name == "non-atomic-scope")
+                message = "Node prerequisite reduction verification failed"
+                if name == "missing-continuations":
+                    del registry["witnessContinuations"]
+                elif name == "extra-continuation":
+                    registry["witnessContinuations"] *= 2
+                elif name == "mismatched-continuation":
+                    registry["witnessContinuations"][0]["tailRemovalIndex"] = 1
+                elif name == "unused-continuation":
+                    registry["witnessContinuations"].append(
+                        {"historicalRemovalIndex": 0, "edgeIndex": 0, "tailRemovalIndex": 0})
+                elif name == "bad-checkpoint":
+                    registry["v3Checkpoint"]["registryDigest"] = "sha256:" + "0" * 64
+                elif name == "bad-checkpoint-document":
+                    wrong_digest = "sha256:" + "0" * 64
+                    ordered["catalogSources"][0]["currentDocumentDigest"] = wrong_digest
+                    registry["v3Checkpoint"]["currentDocumentDigests"][0]["currentDocumentDigest"] = wrong_digest
+                    registry["v3Checkpoint"]["registryDigest"] = bridge.digest(compiler.canonical_json_bytes(ordered))
+                elif name == "missing-tail-original":
+                    registry["tailOriginalRequires"] = []
+                elif name == "corrupt-tail-original":
+                    registry["tailOriginalRequires"][0]["requires"] = ["r"]
+                elif name == "missing-catalog":
+                    (self.source.parent / "unregistered.json").write_text("{}")
+                elif name == "missing-current-source":
+                    self.source.unlink()
+                    message = "binding failed"
+                elif name == "corrupt-current-snapshot":
+                    self.document["goals"][0]["examples"] = ["undeclared"]
+                    message = "Full canonical source differs"
+                elif name == "missing-current-fingerprint":
+                    del self.fingerprints["p"]
+                    message = "fingerprint coverage differs"
+                elif name == "corrupt-current-fingerprint":
+                    self.fingerprints["p"] = CURRENT
+                    message = "Node/Python current fingerprint differs"
+                self.registry.write_text(json.dumps(registry))
+                try:
+                    with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
+                        self.load()
+                finally:
+                    (self.source.parent / "unregistered.json").unlink(missing_ok=True)
+
+    def test_continued_contract_verifies_the_entire_parent_before_the_tail(self):
+        ordered = self.invalid_ordered_history_fixture(with_tail=True)
+        self.continue_registry(ordered, source="t")
         with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "witness edge.*deleted"):
             self.load()
 
@@ -367,6 +486,9 @@ class SemanticKindReductionTest(unittest.TestCase):
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
         self.receipt["proof"]["proofContract"] = bridge.ORDERED_PROOF_CONTRACT
+        with patch.object(bridge.subprocess, "run", return_value=self.completed()):
+            self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
+        self.receipt["proof"]["proofContract"] = bridge.CONTINUED_PROOF_CONTRACT
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
 
