@@ -81,8 +81,15 @@ Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
 
 Die getrennte Supportlieferung auf `fix/g17-atomic-materialization-proof` ist
-bei `b7de2aa37c` in [PR #95](https://github.com/enpasos/skillpilot/pull/95)
-committet und gepusht; ihre Pflicht-CI läuft noch. Sie bleibt auf
+mit [PR #95](https://github.com/enpasos/skillpilot/pull/95) auf main bei
+[`0adcd834d5`](https://github.com/enpasos/skillpilot/commit/0adcd834d5dee6df3c67f5d6e5b387e9713fa447)
+geliefert. Ihr geprüfter Head `b7de2aa37c` bestand alle vier ausgelösten
+PR-Workflows und acht Hauptjobs; der tatsächliche Main-Dateibaum ist exakt gleich.
+Die separate frische Main-Push-CI läuft noch. Copilot konnte das vollständige
+Review wegen Modell-/Tarifbeschränkungen nicht abschließen und erteilte keine
+automatisierte Freigabe; sein Kommentar enthält keinen konkreten Codebefund.
+Das abgeschlossene Astra-Ultra-Quellenreview und die tatsächlichen Negativfälle
+bleiben getrennte Prüfbelege. Die Supportlieferung bleibt auf
 `app/scripts/prerequisiteReductionProof.ts`, dessen Regressionen und diesen Plan
 begrenzt. Sie ergänzt einen getypten, geordneten V3-Nachlauf: Ein Atompaar darf
 nur materialisiert werden, wenn es durch eine vorhandene rohe Anforderung und
@@ -98,12 +105,14 @@ reparieren. Exakter Dokument-Replay, tatsächliche Applicability-Gleichheit und
 die bisherigen Endgraphzeugen bleiben Pflicht. Die Supportlieferung selbst
 belässt die Live-Registry bei V2 und aktiviert noch kein Standard-Meilensteingate.
 
-Der sichtbare IDE-Checkout bereitet jetzt auf
-`fix/g17-math-atomic-prerequisites` die unmittelbar davon abhängige
-Mathematiklieferung vor. Der PR-Head von #95 bleibt unverändert; der Folge-PR
-wird erst nach dessen Main-Lieferung eröffnet. Die lange laufende Remote-CI
-wird damit für die gekoppelte Vorbereitung genutzt, ohne einen weiteren
-unabhängigen Änderungsumfang zu beginnen.
+Der sichtbare IDE-Checkout arbeitet auf `fix/g17-math-atomic-prerequisites`
+an der unmittelbar davon abhängigen Mathematiklieferung. Deren lokal vollständig
+geprüfter Daten-/Consumerstand ist als `92b0e2236d` committet und gepusht.
+Der gelieferte Main-Stand von #95 wurde anschließend bei unverändertem
+Mathematik-Dateibaum aufgenommen. Der eigene Mathematik-PR folgt damit auf die
+tatsächliche Main-Lieferung seines Prüfvertrags. Die laufende Remote-CI wurde
+für diese gekoppelte Vorbereitung genutzt; ein weiterer unabhängiger
+Änderungsumfang wurde nicht begonnen.
 
 Der endliche Mathematikbatch überträgt die Anforderung der beiden GK-/LK-
 Abiturcluster an das vorhandene Orientierungsziel auf ihre 13 beziehungsweise
