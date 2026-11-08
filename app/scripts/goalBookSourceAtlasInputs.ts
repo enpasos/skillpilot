@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
 import { collectCompositionProjectionRoleGoalIds, compileCompositionView, normalizeCompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { fingerprintSemanticKindSourceGoal, parseSubjectDurationModelPolicy } from './goalBookModel'
+import { reviewBindingGoal, type VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 
 type Row = Record<string, unknown>
 export interface GoalBookSourceAtlasInputConfig {
@@ -166,7 +167,11 @@ export const expandGoalBookSourceAtlasReceipt = (compact: Row): Row => {
 }
 
 /** Pure with respect to the worktree: computes bytes, never writes or mutates inputs. */
-export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputConfig, repoRoot = REPO_ROOT) => {
+export const buildGoalBookSourceAtlasInputs = (
+  config: GoalBookSourceAtlasInputConfig,
+  repoRoot = REPO_ROOT,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+) => {
   assert.equal(config.schemaVersion, 1)
   assert.ok(Number.isInteger(config.expectedUnresolvedScopeDecisionCount) && config.expectedUnresolvedScopeDecisionCount >= 0)
   assert.deepEqual(config.expectedJurisdictions, sorted(config.expectedJurisdictions))
@@ -204,7 +209,12 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
     const goal = goals.get(str(decision.goalId))
     assert.ok(goal, `Unknown semantic-kind goal: ${str(decision.goalId)}`)
     assert.equal(decision.decisionStatus, 'authoritative')
-    assert.equal(decision.sourceFingerprint, fingerprintSemanticKindSourceGoal(goal), `Stale semantic-kind binding: ${str(goal.id)}`)
+    const historicalFingerprint = fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+      prerequisiteReductionContext, `${landscapeId}:${str(goal.id)}`, goal,
+    ))
+    const currentFingerprint = fingerprintSemanticKindSourceGoal(goal)
+    assert.ok(decision.sourceFingerprint === currentFingerprint || decision.sourceFingerprint === historicalFingerprint,
+      `Stale semantic-kind binding: ${str(goal.id)}`)
   }
   const atoms = new Set(decisions.filter(d => d.semanticKind === 'curricularAtomic').map(d => str(d.goalId)))
   const durationPolicy = read(config.durationModelPolicyPath)
@@ -362,9 +372,13 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
 
 export const readGoalBookSourceAtlasInputConfig = (configPath: string, repoRoot = REPO_ROOT): GoalBookSourceAtlasInputConfig => JSON.parse(readFileSync(local(repoRoot, configPath), 'utf8')) as GoalBookSourceAtlasInputConfig
 
-export const checkGoalBookSourceAtlasInputs = (configPath: string, repoRoot = REPO_ROOT) => {
+export const checkGoalBookSourceAtlasInputs = (
+  configPath: string,
+  repoRoot = REPO_ROOT,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
+) => {
   const config = readGoalBookSourceAtlasInputConfig(configPath, repoRoot)
-  const result = buildGoalBookSourceAtlasInputs(config, repoRoot)
+  const result = buildGoalBookSourceAtlasInputs(config, repoRoot, prerequisiteReductionContext)
   for (const [path, expected] of Object.entries(result.outputs)) {
     assert.ok(existsSync(local(repoRoot, path)), `Missing generated atlas input: ${path}`)
     assert.ok(readFileSync(local(repoRoot, path), 'utf8') === expected, `Stale generated atlas input: ${path}`)

@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { verifiedPrerequisiteReductionSummary, type VerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import { verifyGoalBookSourceAtlasInputs } from './checkGoalBookPublication'
 import {
   buildGoalBookSourceAtlasInputs,
@@ -19,7 +20,7 @@ import {
 } from './goalBookSourceAtlasInputs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
-export const testGoalBookSourceAtlasInputs = (): void => {
+export const testGoalBookSourceAtlasInputs = (prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext): void => {
   assert.deepEqual(sourceAtlasFacet([{ stage: 'Sekundarstufe I' }], 'stage'), ['SekI'])
   assert.deepEqual(sourceAtlasFacet([{ tags: ['phase:SekI'] }, { stage: 'SekI+SekII' }], 'stage'), ['SekI'])
   assert.deepEqual(sourceAtlasFacet([{ phase: 'Q1', title: 'LK', core: false }], 'stage'), [])
@@ -69,6 +70,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     write('source.json', { ...source, sourceDocument: { ...source.sourceDocument, path: pdfPath } })
     // A clean checkout has no ignored PDF downloads and must derive identical bytes.
     const offline = buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot)
+    assert.throws(() => buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot,
+      {} as VerifiedPrerequisiteReductionContext), /unregistered or forged context/,
+    'A matching current source fingerprint must not bypass capability validation')
     write(pdfPath, 'fixture source bytes')
     assert.deepEqual(buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot), offline)
     write(pdfPath, 'corrupted local cache')
@@ -163,7 +167,15 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     rmSync(fixtureRoot, { recursive: true, force: true })
   }
 
-  const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
+  const biologyConfigPath = 'app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json'
+  const hasBiologyReductions = prerequisiteReductionContext !== undefined
+    && verifiedPrerequisiteReductionSummary(prerequisiteReductionContext)!.affectedGoalIds
+      .some(id => id.startsWith('08a43a1b-d97e-522c-9dfa-c950a493364e:'))
+  if (hasBiologyReductions) {
+    assert.throws(() => buildGoalBookSourceAtlasInputs(readGoalBookSourceAtlasInputConfig(biologyConfigPath, root), root),
+      /Stale semantic-kind binding/, 'The real reduced Biology source remains stale without a verified context')
+  }
+  const biology = checkGoalBookSourceAtlasInputs(biologyConfigPath, root, prerequisiteReductionContext)
   // The reviewed current universe has four new atoms and two former atoms
   // converted to clusters. The source atlas must publish the current397 atoms.
   assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 397, publishedCurricularAtomicGoals: 397, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
@@ -360,7 +372,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ], 'The gel-method scope must retain its direct GA/EA source witness')
   }
   assert.ok(biology.receipt.scopes.filter(s => s.stage === 'SekII').every(s => s.witnesses.every(w => w.coverage === 'direct')), 'No coarse mapped-cluster inheritance into biology GK/LK')
-  const chemistry = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json', root)
+  const chemistry = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json', root, prerequisiteReductionContext)
   // Three reviewed content atoms replace one former compound atom (+2).
   // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
   // quantitative paraben transfer remains explicitly outside source coverage.
@@ -633,7 +645,21 @@ export const testGoalBookSourceAtlasInputs = (): void => {
         copyFileSync(resolve(root, path), resolve(checkoutRoot, path))
       }
       for (const path of snapshotPaths) assert.equal(existsSync(resolve(checkoutRoot, path)), false, `${subject}: the checkout fixture must omit every declared source cache: ${path}`)
-      assert.deepEqual(checkGoalBookSourceAtlasInputs(configPath, checkoutRoot), result)
+      assert.deepEqual(checkGoalBookSourceAtlasInputs(configPath, checkoutRoot, prerequisiteReductionContext), result)
+      if (subject === 'biology' && hasBiologyReductions) {
+        const landscapePath = resolve(checkoutRoot, config.landscapePath)
+        const changed = JSON.parse(readFileSync(landscapePath, 'utf8')) as { goals: Record<string, unknown>[] }
+        const goal = changed.goals.find(goal => goal.id === '002543f9-2d14-5c57-99b4-fb4bf7e53734')!
+        goal.title = `${String(goal.title)} unsupported mutation`
+        writeFileSync(landscapePath, `${JSON.stringify(changed, null, 2)}\n`)
+        const ledgerPath = resolve(checkoutRoot, config.semanticKindLedgerPath)
+        const ledger = JSON.parse(readFileSync(ledgerPath, 'utf8')) as { decisions: Record<string, unknown>[] }
+        ledger.decisions.find(decision => decision.goalId === goal.id)!.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+        writeFileSync(ledgerPath, `${JSON.stringify(ledger, null, 2)}\n`)
+        assert.throws(() => buildGoalBookSourceAtlasInputs(config, checkoutRoot, prerequisiteReductionContext),
+          /current goal differs from verified snapshot/,
+          'A newly matching current ledger must not bypass the verified full raw-goal snapshot')
+      }
     } finally {
       rmSync(checkoutRoot, { recursive: true, force: true })
     }

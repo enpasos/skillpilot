@@ -327,6 +327,7 @@ export const assertGoalBookSourceAtlasConfigBinding = (
 export const verifyGoalBookSourceAtlasInputs = (
   paths: Pick<GoalBookPublicationPaths, 'bookId' | 'configPath'>,
   repositoryRoot = REPOSITORY_ROOT,
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ) => {
   const sourceAtlasDefinition = goalBookDefinitionById(paths.bookId)
   const needsSourceAtlasInputs = sourceAtlasDefinition?.subject === 'chemistry'
@@ -342,7 +343,7 @@ export const verifyGoalBookSourceAtlasInputs = (
       JSON.parse(readFileSync(paths.configPath, 'utf8')) as GoalBookConfigFile)
   }
   const sourceAtlasInputs = sourceAtlasConfig
-    ? checkGoalBookSourceAtlasInputs(companionPath, repositoryRoot) : null
+    ? checkGoalBookSourceAtlasInputs(companionPath, repositoryRoot, prerequisiteReductionContext) : null
   if (sourceAtlasInputs && sourceAtlasInputs.receipt.bookId !== paths.bookId) {
     fail('source-derived atlas input companion belongs to a different book')
   }
@@ -353,7 +354,7 @@ export const verifyPublishedGoalBook = async (
   paths: GoalBookPublicationPaths = defaultGoalBookPublicationPaths,
   prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ) => {
-  const { sourceAtlasConfig, sourceAtlasInputs } = verifyGoalBookSourceAtlasInputs(paths)
+  const { sourceAtlasConfig, sourceAtlasInputs } = verifyGoalBookSourceAtlasInputs(paths, REPOSITORY_ROOT, prerequisiteReductionContext)
   const [
     indexRaw,
     publishedModelRaw,

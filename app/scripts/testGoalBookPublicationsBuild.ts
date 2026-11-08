@@ -7,6 +7,7 @@ import { GOAL_BOOK_PUBLICATION_REGISTRY } from '../src/utils/goalBookPublication
 import { parseVerifiedGoalBookRuntimeModel } from '../src/utils/goalBookRuntime'
 import { buildGoalBookPublications, goalBookBuildArtifactNames, verifyGoalBookPrintFonts } from './buildGoalBookPublications'
 import { loadGoalBookBuildInputs } from './goalBookModel'
+import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
 import {
   GOAL_BOOK_BUILD_CACHE_FILE,
   goalBookBuildCacheMatches,
@@ -68,7 +69,8 @@ try {
     './config/goal-books/de-gym-biology-national-atlas.json',
     import.meta.url,
   ))
-  const biologyBook = (await loadGoalBookBuildInputs(biologyConfigPath)).model
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const biologyBook = (await loadGoalBookBuildInputs(biologyConfigPath, undefined, prerequisiteReductionContext)).model
   const biologyMethodsPage = biologyBook.pages.find(
     (page) => page.goalId === 'd97f6957-fbc9-569c-8648-f7df5eb9dfd8',
   )
@@ -86,7 +88,7 @@ try {
     `../../${economicsConfig.semanticKindLedgerPath}`,
     import.meta.url,
   )), 'utf8')) as { decisions: Array<{ goalId: string; semanticKind: string }> }
-  const economicsBook = (await loadGoalBookBuildInputs(economicsConfigPath)).model
+  const economicsBook = (await loadGoalBookBuildInputs(economicsConfigPath, undefined, prerequisiteReductionContext)).model
   const expectedEconomicsIds = economicsLedger.decisions
     .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
     .map(({ goalId }) => goalId).sort()

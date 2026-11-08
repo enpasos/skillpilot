@@ -20,9 +20,13 @@ Mathematikreduktion sind mit [PR #88](https://github.com/enpasos/skillpilot/pull
 auf main bei
 [`2c2fc3bc0d`](https://github.com/enpasos/skillpilot/commit/2c2fc3bc0dd9e964261ebe3c7badab3b247f09d5)
 geliefert. Auch dessen geprüfter PR-Head bestand alle fünf Pflichtworkflows
-und sämtliche acht Hauptjobs. Der nächste kleine Lieferumfang setzt im
-sichtbaren Checkout auf `fix/g17-effective-prerequisite-roles` bei diesem
-Main-Commit an. PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
+und sämtliche acht Hauptjobs. Die bestätigte einheitliche Rollenpflicht ist mit
+[PR #89](https://github.com/enpasos/skillpilot/pull/89) auf main bei
+[`3ee1acc373`](https://github.com/enpasos/skillpilot/commit/3ee1acc373f8d56e565783e122c971abbac61122)
+geliefert; alle fünf frischen PR-Workflows und acht Hauptjobs bestanden.
+Der nächste kleine Lieferumfang setzt im sichtbaren Checkout auf
+`fix/g17-biology-orientation-reduction` bei diesem Main-Commit an.
+PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
 
@@ -68,7 +72,8 @@ Den gesamten WIP zusammen zu mergen ist nicht der Lieferplan.
 | G17-Prüfer, geliefert | Eigenständiger `app/scripts/auditTransitiveMinimality.ts`, Algorithmus- und CLI-Regressionen, eindeutiger vollständiger Bestandsaufruf und dieser Lieferplan. | PR #86 auf main bei `ab0aa4ea9f`; frische Pflicht-CI erfolgreich. 572 unabhängige Literalvergleiche, 3.593 abgewiesene ungültige Graphen und zwölf echte CLI-Testgruppen. Tatsächlicher aktueller Bestandsaufruf: 21 Roots, fünf `pass`, zwölf `fail`, vier `invalid-input`, korrekt Exit 2. |
 | Technische Transitivitätsabhängigkeit, geliefert | Nur die nachgewiesen erforderlichen fünf Produktionsdateien und gezielten Regressionen aus `b8eef5b967`: gemeinsame Voraussetzungstopologie, vollständige kanonische Level-2-Zielclosure und Fokusfilter nach transitiver Auswertung. | PR #87 auf main bei `d63e1b408d`; vollständiger regulärer lokaler Backendcheck mit 2.689 bestandenen Fällen, 19 bestehenden optionalen Skips und null Fehlern; alle fünf frischen Remote-Workflows erfolgreich. Regressionen über alle vier Frontier-APIs, normale/strikte Modi, gemeisterte und außerhalb des Fokus liegende Zwischenziele sowie fremde/vererbte Voraussetzungen. Gespeicherte Mastery und Anerkennungsregeln bleiben unverändert. |
 | Begrenzter Frischeanschluss und erste Reduktion, geliefert | Genau die Mathematikkante `bf17cada… → 71cec9fb…` mit direkt authored atomarem Ersatzpfad `bf17cada… → 91e2f564… → 71cec9fb…`. Eine harte Reduktionsbescheinigung erlaubt ausschließlich den nachgewiesenen historischen Vergleichswert an den betroffenen Reviewbindungen. | PR #88 auf main bei `2c2fc3bc0d`; alle fünf frischen PR-Workflows und acht Hauptjobs erfolgreich. Vollständiger Katalogabgleich, geordnete Auditorprüfung, unveränderte übrige Felder und tatsächlicher Applicability-Vergleich. Native CI-Regression über 1.240 Konfigurationen für Projektion, vollständige atomare Nachfrage und die bisherige Rollenprüfung. Tatsächliche Python-/Release-Modell-Conformance bestanden. Originale Fingerprintfunktionen und Reviewarchive bleiben unverändert; ungültige deklarierte Beweise scheitern hart. V1 deckt direkte atomare Blattpfade ab und ist keine Freigabe sämtlicher Bestandskandidaten. |
-| Einheitliche Rollenpflicht, in Arbeit | Ausdrücklich bestätigte Ownerentscheidung vom 7. November: direkte, geerbte und transitive Voraussetzungsknoten müssen in der Level-2-Komposition eine Rolle haben. Die bisherige Vererbungsausnahme entfällt. | Gemeinsame vorhandene Voraussetzungstopologie verwenden; fehlende Rollen blockieren auch bei Mastery und außerhalb des Fokus. Vollständige Rollen bleiben positiv, reine Contains-Nachkommen erhalten keine zusätzliche Rollenpflicht. Dieselbe neue Regel muss vor und nach einer Reduktion gelten. Normtexte, echte Negativfälle und frische Pflicht-CI begleiten den getrennten PR. |
+| Einheitliche Rollenpflicht, geliefert | Ausdrücklich bestätigte Ownerentscheidung vom 7. November: direkte, geerbte und transitive Voraussetzungsknoten müssen in der Level-2-Komposition eine Rolle haben. Die bisherige Vererbungsausnahme entfällt. | PR #89 auf main bei `3ee1acc373`; alle fünf frischen PR-Workflows und acht Hauptjobs erfolgreich. Vollständiger regulärer lokaler Backendlauf: 2.693 bestanden, 19 bestehende optionale Skips, keine Fehler. Vorhandene Topologie, unveränderte atomare Fokus-/Masteryprüfung, echte Bio-/Math-Reduktionsgegenfälle und 1.240 native Konfigurationen. Der reale unvollständige HE/G9-Scope ist ausdrücklich negativ geprüft; positive Assessmentfälle verwenden den bestehenden vollständig deklarierten HE/G8-Scope bei unveränderten Workflowassertionen. |
+| Biologie: redundante Anforderungen an ein Orientierungsziel, in Arbeit | 186 frisch belegte direkte Anforderungen an `2d451684…` entfernt; ausschließlich die jeweiligen `requires`-Arrays ändern sich. Von 187 vorbereiteten Kandidaten bleibt einer wegen seines aktuellen geerbten Clusterzeugen außerhalb des unveränderten V1-Vertrags unverändert. | Bestehende Mathematikoperation und ursprüngliche 21 Quelldigests erhalten; kumulativer Live-Prüfer mit 187 Operationen, vollständigem Replay, überlebenden Zeugen und tatsächlicher Applicability-Gleichheit über 6.524 Ziele bestanden. Biologie-Befunde sinken von 359 auf 173. Erweiterte native Prüfung aller 1.240 Konfigurationen einschließlich jeder registrierten Änderungsquelle läuft; reguläre Fachfloors, Pflicht-CI und Lieferung nach main bleiben erforderlich. |
 | G17-Bestand und Standard-Meilensteinprüfung | Mechanisch belegte Reduktionsbatches, G17 in der regulären Meilensteinberechnung und verpflichtender CI-Aufruf gegen die tatsächlichen Dateien. Vorhandene geeignete Korrekturen wiederverwenden. | Null G17-Verstöße im Abnahmebestand; Invarianten erhalten; wieder eingefügte Redundanz oder unvollständige Prüfung verhindert den Meilensteinpass. Sämtliche zehn Zielstände werden regulär auf main mindestens erreicht, alle erforderlichen frischen CI-Prüfungen bestehen und die Änderungen sind nach main geliefert. Erst damit ist das Goal erledigt. |
 
 Die erste Lieferung hat den Prüfer auf main gebracht, behauptet aber keinen minimalen
@@ -99,8 +104,39 @@ die frühere Ausnahme aufzuheben. Bisher erlaubte Konfigurationen dürfen dadurc
 blockieren. Geprüft wird die vorhandene wirksame Zielknotenrelation vor ihrer
 atomaren Clusterauflösung; reine Contains-Nachkommen erhalten keine weitere
 Rollenpflicht. Rollen werden nicht automatisch ergänzt, Fokus- und Masteryregeln
-bleiben bestehen. Diese isolierte Lieferung folgt auf PR #88; erst danach
-werden größere Reduktionsbatches unter derselben neuen Regel verglichen.
+bleiben bestehen. Diese isolierte Lieferung ist mit PR #89 auf main angekommen.
+Größere Reduktionsbatches werden jetzt unter derselben neuen Regel verglichen.
+
+Der erste Biologie-Batch nutzt nur direkt authored atomare Blattpfade.
+Er ordnet den vollständigen relevanten ursprünglichen `requires`-Graphen mit
+Voraussetzungen zuerst und filtert erst danach die Kandidaten. Jeder akzeptierte
+Schritt erhält einen frisch berechneten Auditorzeugen; 105 zuvor aufgezeichnete
+Wege waren durch spätere Löschungen gefährdet und durften nicht übernommen werden.
+Der Live-Prüfer bestätigt für 186 akzeptierte Entfernungen sämtliche endgültigen
+Wege und die unveränderte Applicability. Der Kandidat `135447a0…` bleibt bewusst
+offen, weil sein aktueller Zeuge einen Cluster und einen geerbten Ursprung nutzt.
+Es gibt dafür weder eine abweichende Zeugenwahl noch eine gelockerte V1-Prüfung.
+Die 173 übrigen Biologiebefunde und der Rest des Abnahmebestands bleiben offen.
+
+Der tatsächliche Buchbau deckte einen weiteren Aufruf derselben bestehenden
+Semantic-kind-Quellprüfung im Atlasgenerator auf. Dieser erhielt den bereits
+verifizierten Kontext noch nicht. Atlasbau, Veröffentlichungsprüfung und ihre
+CLI-/Testaufrufe reichen ihn nun ausdrücklich weiter; die Fingerprintfunktion
+und das historische Ledger bleiben unverändert. Ohne Kontext gilt weiterhin
+der aktuelle Rohwert. Mit Kontext wird zuerst der aktuelle Rohwert an den
+verifizierten Snapshot gebunden, bevor der aktuelle oder zertifizierte
+ursprüngliche Vergleichswert zulässig ist. Es entsteht keine fünfte
+Vergleichsfamilie; Projektionen und Receipts werden aus aktuellen Daten erzeugt.
+
+Die vollständige deterministische Atlasregeneration erzeugt 27 Ausgaben.
+26 sind bytegleich; im aktiven
+[Biologie-Receipt](https://github.com/enpasos/skillpilot/blob/18570a629e20b4f4cdd0f5e1be9478c87b41f16d/app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json)
+ändert sich ausschließlich `/inputBindings/0/sha256` von
+`sha256:9b3ef170c367b0cd9936804c9b0bb696d0b4f2465d8688f9f707abf962de7b79`
+auf `sha256:6c68f48d0c83bf50734d0f42c9efc9efb8c85fc2bb2ad2a23a15845caf974444`.
+Alle 24 Ansichten, Manifest, Navigation sowie sämtliche Scope-, Zeugen- und
+Entscheidungsfelder bleiben gleich. Dies ist ausdrücklich geprüfte Pflege des
+aktuellen Eingabepins, keine Neubindung historischer Reviewentscheidungen.
 
 Ein grüner G17-Einzelcheck erlaubt keinen Merge an anderen erforderlichen
 Prüfungen vorbei. Blockieren bestehende technische Frischebindungen die zweite
@@ -217,17 +253,17 @@ Umgekehrt wird erhaltenswerte Arbeit nicht ungeprüft gemerged, nur um sie
 formal auf main zu haben.
 
 Abgeschlossen und nach main geliefert sind G17-Prüfer, technische
-Transitivitätskorrektur und der begrenzte Frischeanschluss mit genau einer realen
-Kantenentfernung. Nächster Schritt ist die bestätigte einheitliche Rollenpflicht,
-danach folgen mechanische Reduktionen samt Standardintegration. Die vollständige
-In-Memory-Vorschau
+Transitivitätskorrektur, der begrenzte Frischeanschluss mit genau einer realen
+Kantenentfernung und die bestätigte einheitliche Rollenpflicht. Nächster Schritt
+ist der begrenzte Biologie-Batch; weitere mechanische Reduktionen und die
+Standardintegration bleiben Teil desselben Goals. Die vollständige In-Memory-Vorschau
 hat 2.435 Ursprungskanten nacheinander mit jeweils frischem Auditor entfernt
 und im geschützten Scope null verbleibende G17-Befunde erreicht. Dabei wurden
 keine Curriculumdateien geändert. Die zusätzlichen nativen Messungen zeigen,
 dass atomare Erreichbarkeitsgleichheit allein die bisherige direkte
-Rollenprüfung nicht abdeckt. Die Rollenentscheidung ist jetzt getroffen;
-ihre Umsetzung und ein neuer nativer Vorher-/Nachher-Vergleich unter derselben
-Regel bleiben vor Übernahme der gesamten Liste erforderlich. Das eröffnet keine
+Rollenprüfung nicht abdeckt. Die Rollenentscheidung ist umgesetzt; neue native
+Vorher-/Nachher-Vergleiche unter derselben Regel bleiben für jeden übernommenen
+Batch erforderlich. Das eröffnet keine
 fachliche Überarbeitung und ersetzt keine Bestands- oder Main-Abnahme.
 Die M6/M7-Wiederherstellung unter der erweiterten
 Standardprüfung ist verbindliche Abnahme dieses Goals. Der breite
