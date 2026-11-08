@@ -1,6 +1,7 @@
 package com.skillpilot.backend.completion;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
@@ -62,6 +63,10 @@ class FirstMathPrerequisiteReductionTest {
     private static final String SOURCE = "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01";
     private static final String RETAINED = "91e2f564-3bc8-4924-af85-2a3fa84c1471";
     private static final String REMOVED = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+    private static final String V2 = "atomic-descendant-covered-cluster-reduction-v2";
+    private static final String V3 = "ordered-atomic-materialization-and-cluster-reduction-v3";
+    private static final Set<String> MATH_EXAMS = Set.of("464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
+            "9ad83149-3cb7-5b87-a617-3eae3715a50c");
     private static final Set<String> UNEXPOSED_CANONICAL_ATOMIC_BASES = Set.of(
             "858335d7-3336-5958-adf0-24c772091cf0", "cadc3bb3-e98d-5cda-893b-8b61811ba166");
     private static final List<String> BEFORE = List.of(RETAINED, REMOVED);
@@ -93,6 +98,71 @@ class FirstMathPrerequisiteReductionTest {
             }
         }
         throw new IllegalStateException("Cannot locate SkillPilot repository root from " + start);
+    }
+
+    @Test
+    void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
+        JsonNode declared = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        assertThat(declared.path("proofContract").asText()).as("actual live activation uses V3").isEqualTo(V3);
+        ReductionRegistry registry = readReductionRegistry(declared);
+        JsonNode current = MAPPER.readTree(MATH_SOURCE.toFile());
+        List<ChangedSource> changes = registry.changesByFile().get(MATH_SOURCE);
+        ChangedSource atom = changes.stream().filter(changed -> registry.suffixSourceIds().contains(changed.goalId())
+                && changed.atomicSource()).findFirst().orElseThrow();
+        assertThat(atom.originalRequires()).isEmpty();
+        assertThat(atom.originalRequiresPresent()).isTrue();
+        assertThat(atom.currentRequires()).containsExactly(REMOVED);
+        JsonNode before = reconstructRawDocument(MATH_SOURCE, current, MATH, registry.documentDigests().get(MATH_SOURCE), changes, true);
+        JsonNode beforeAtom = rawGoals(before).get(atom.goalId());
+        assertThat(beforeAtom.has("requires")).isTrue();
+        assertThat(beforeAtom.path("requires")).isEmpty();
+
+        assertThatThrownBy(() -> reconstructRawDocument(MATH_SOURCE, current, MATH, registry.documentDigests().get(MATH_SOURCE),
+                changes.stream().filter(changed -> !changed.goalId().equals(atom.goalId())).toList(), true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
+        assertThatThrownBy(() -> reconstructRawDocument(MATH_SOURCE, current, MATH,
+                new DocumentDigests("sha256:" + "0".repeat(64), registry.documentDigests().get(MATH_SOURCE).current()), changes, true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
+        assertThatThrownBy(() -> reconstructRawDocument(MATH_SOURCE, current, MATH, registry.documentDigests().get(MATH_SOURCE),
+                changes.stream().map(changed -> changed.goalId().equals(atom.goalId()) ? changed.withOriginalPresence(false) : changed).toList(), true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
+        JsonNode absentArray = beforeAtom.deepCopy();
+        ((ObjectNode) absentArray).remove("requires");
+        var compiler = new CompletionProfileCompiler();
+        assertThat(compiler.normalizePrerequisites(Map.of(atom.goalId(), MAPPER.treeToValue(absentArray, LearningGoal.class)))
+                .transitivePrerequisites(atom.goalId())).isEmpty();
+        assertThat(compiler.normalizePrerequisites(Map.of(atom.goalId(), MAPPER.treeToValue(beforeAtom, LearningGoal.class)))
+                .transitivePrerequisites(atom.goalId())).isEmpty();
+        assertThat(absentArray.has("requires")).isFalse();
+
+        ObjectNode missing = declared.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ArrayNode) missing.path("suffixOriginalRequires")).remove(0);
+        assertThatThrownBy(() -> readReductionRegistry(missing)).isInstanceOf(AssertionError.class);
+        ObjectNode unknown = declared.deepCopy();
+        unknown.put("proofContract", "unreviewed-reduction-contract");
+        assertThatThrownBy(() -> readReductionRegistry(unknown)).isInstanceOf(AssertionError.class);
+
+        // The same raw reconstruction helper also preserves a genuine null
+        // overlay; native topology alone maps both raw forms to empty demand.
+        JsonNode syntheticCurrent = MAPPER.readTree("""
+                {"landscapeId":"presence-fixture","goals":[
+                  {"id":"a","type":"atomic","contains":[],"requires":["b"]},
+                  {"id":"b","type":"atomic","contains":[]}]}
+                """);
+        JsonNode syntheticBefore = syntheticCurrent.deepCopy();
+        ((ObjectNode) rawGoals(syntheticBefore).get("a")).remove("requires");
+        DocumentDigests syntheticDigests = new DocumentDigests(CompletionReviewBindings.canonicalHash(syntheticBefore, MAPPER),
+                CompletionReviewBindings.canonicalHash(syntheticCurrent, MAPPER));
+        ChangedSource absent = new ChangedSource("presence-fixture", "a", List.of(), List.of("b"), List.of(), true, false, true);
+        JsonNode restored = reconstructRawDocument(Path.of("synthetic-presence.json"), syntheticCurrent,
+                "presence-fixture", syntheticDigests, List.of(absent), true);
+        assertThat(rawGoals(restored).get("a").has("requires")).isFalse();
+        assertThat(CompletionReviewBindings.canonicalHash(restored, MAPPER)).isEqualTo(syntheticDigests.original());
+        assertThat(compiler.normalizePrerequisites(Map.of("a", MAPPER.treeToValue(rawGoals(restored).get("a"), LearningGoal.class)))
+                .transitivePrerequisites("a")).isEmpty();
+        assertThatThrownBy(() -> reconstructRawDocument(Path.of("synthetic-presence.json"), syntheticCurrent,
+                "presence-fixture", syntheticDigests, List.of(absent.withOriginalPresence(true)), true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
     }
 
     @Test
@@ -214,6 +284,8 @@ class FirstMathPrerequisiteReductionTest {
         Set<String> coveredChangedSources = new TreeSet<>();
         Map<String, Set<String>> coveredAtomicProbes = new TreeMap<>();
         long atomicFrontierComparisons = 0;
+        long mathFrontierComparisons = 0;
+        long mathPositiveTargetControls = 0;
         long liveAtomicTargetComparisons = 0;
         long contextGoalComparisons = 0;
 
@@ -301,9 +373,15 @@ class FirstMathPrerequisiteReductionTest {
                     assertThat(right.topology().transitiveGoalPrerequisites(id))
                             .as("pre-expansion prerequisite roles %s: %s", id, scope)
                             .isEqualTo(left.topology().transitiveGoalPrerequisites(id));
+                    boolean originalRoleValid = roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), id, originalFullMastery);
                     assertThat(roleProbeWithPrerequisites(after.service, right.graph(), right.projection(), id, reducedFullMastery))
                             .as("complete native role check %s: %s", id, scope)
-                            .isEqualTo(roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), id, originalFullMastery));
+                            .isEqualTo(originalRoleValid);
+                    if (registry.suffixSourceIds().contains(id)) {
+                        mathFrontierComparisons += assertMathSuffixAtomicFrontierPreserved(before.service, left,
+                                after.service, right, id, originalRoleValid, scope);
+                        if (originalRoleValid && left.roles().atomicTargets().contains(id)) mathPositiveTargetControls++;
+                    }
                     contextGoalComparisons++;
                 }
                 Map<String, Boolean> originalRoleValidity = new LinkedHashMap<>();
@@ -396,7 +474,12 @@ class FirstMathPrerequisiteReductionTest {
             }
             canonicalCoveredAtoms.put(source, atoms);
         }
-        assertThat(liveCoveredSources).as("sources with real authored-scope descendant probes").isEqualTo(198);
+        assertThat(coveredChangedSources.stream().filter(registry.historicalSourceIds()::contains).count())
+                .as("historical sources with real authored-scope descendant probes").isEqualTo(198);
+        assertThat(liveCoveredSources).as("all sources with real authored-scope descendant probes")
+                .isEqualTo(198 + registry.suffixSourceIds().size());
+        assertThat(coveredChangedSources).as("all new Math sources have actual authored-scope coverage")
+                .containsAll(registry.suffixSourceIds());
         assertThat(canonicalCoveredAtoms.values().stream().mapToInt(Set::size).sum()).isEqualTo(6);
         assertThat(canonicalRoleComparisons).as("canonical removed-role negative controls").isEqualTo(6);
         Set<String> allCoveredSources = new TreeSet<>(coveredChangedSources);
@@ -424,6 +507,8 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(transitiveRoleCaseChecked).as("actual Math transitive-role counterexample executed").isTrue();
         assertThat(latinMissingRoleCaseChecked).as("Latin descendant still requires the removed orientation role").isTrue();
         assertThat(atomicFrontierComparisons).as("actual Latin atomic-target frontier comparisons").isPositive();
+        assertThat(mathFrontierComparisons).as("actual new Math atomic-target frontier comparisons").isPositive();
+        assertThat(mathPositiveTargetControls).as("actually offered new Math targets with positive full-mastery frontier controls").isPositive();
         assertThat(liveAtomicTargetComparisons).as("all actual atomic scope targets checked").isPositive();
         before.verifyOnlyUnsavedFixtures();
         after.verifyOnlyUnsavedFixtures();
@@ -441,6 +526,8 @@ class FirstMathPrerequisiteReductionTest {
         System.out.printf("REGISTERED_REDUCTION_CANONICAL_COVERAGE liveSources=%d canonicalSources=%d combinedSources=%d canonicalAtoms=6 canonicalMissingRoleCases=%d liveAtomicTargetComparisons=%d%n",
                 liveCoveredSources, canonicalCoveredAtoms.size(), allCoveredSources.size(), canonicalRoleComparisons,
                 liveAtomicTargetComparisons);
+        System.out.printf("MATH_MATERIALIZATION_NATIVE_COVERAGE sources=%d atomicSources=27 clusterSources=2 frontierComparisons=%d positiveTargetControls=%d%n",
+                registry.suffixSourceIds().size(), mathFrontierComparisons, mathPositiveTargetControls);
     }
 
     private record Roles(Set<String> targets, Set<String> atomicTargets, Set<String> support, Set<String> viewIds) { }
@@ -518,10 +605,20 @@ class FirstMathPrerequisiteReductionTest {
             }
             Set<String> followupAtoms = new TreeSet<>();
             registry.changedSources().values().stream()
+                    .filter(changed -> registry.historicalSourceIds().contains(changed.goalId()))
                     .filter(changed -> !changed.atomicSource() && !LATIN_CLUSTER.equals(changed.goalId()))
                     .forEach(changed -> followupAtoms.addAll(atomicProbesBySource.get(changed.goalId())));
             assertThat(followupAtoms).as("canonical atomic descendants of all twelve follow-up cluster sources")
                     .hasSize(70);
+            if (!registry.suffixSourceIds().isEmpty()) {
+                Set<String> mathAtoms = new TreeSet<>();
+                for (String exam : MATH_EXAMS) mathAtoms.addAll(atomicProbesBySource.get(exam));
+                assertThat(atomicProbesBySource.get("464a6024-a2f8-53b4-84e0-d7b9df22a0b1")).hasSize(14);
+                assertThat(atomicProbesBySource.get("9ad83149-3cb7-5b87-a617-3eae3715a50c")).hasSize(13);
+                assertThat(mathAtoms).as("complete separate Math exam descendant basis").hasSize(27);
+                assertThat(mathAtoms).containsExactlyInAnyOrderElementsOf(registry.suffixSourceIds().stream()
+                        .filter(id -> registry.changedSources().get(id).atomicSource()).toList());
+            }
             assertThat(atomicProbesBySource.get(LATIN_CLUSTER)).containsExactly(LATIN_ATOM);
             assertThat(canonical.get(LATIN_ATOM).getRequires()).contains(LATIN_BRIDGE);
             assertThat(canonical.get(LATIN_BRIDGE).getRequires()).contains(LATIN_ORIENTATION);
@@ -565,22 +662,35 @@ class FirstMathPrerequisiteReductionTest {
     }
 
     private record ChangedSource(String owner, String goalId, List<String> originalRequires,
-            List<String> currentRequires, List<String> canonicalContains, boolean atomicSource) { }
+            List<String> currentRequires, List<String> canonicalContains, boolean atomicSource,
+            boolean originalRequiresPresent, boolean currentRequiresPresent) {
+        ChangedSource withOriginalPresence(boolean present) {
+            return new ChangedSource(owner, goalId, originalRequires, currentRequires, canonicalContains,
+                    atomicSource, present, currentRequiresPresent);
+        }
+    }
+    private record DocumentDigests(String original, String current) { }
     private record ClusterWitnessCoverage(String sourceId, String prerequisiteId, Set<String> atomicSourceIds) { }
     private record ReductionRegistry(Map<Path, String> canonicalOwners,
             Map<Path, List<ChangedSource>> changesByFile, Map<String, ChangedSource> changedSources,
-            List<ClusterWitnessCoverage> clusterWitnessCoverage) { }
+            List<ClusterWitnessCoverage> clusterWitnessCoverage, Map<Path, DocumentDigests> documentDigests,
+            Set<String> historicalSourceIds, Set<String> suffixSourceIds) { }
 
     private static ReductionRegistry readReductionRegistry() throws IOException {
-        JsonNode registry = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        return readReductionRegistry(MAPPER.readTree(REDUCTION_REGISTRY.toFile()));
+    }
+
+    private static ReductionRegistry readReductionRegistry(JsonNode registry) throws IOException {
         assertThat(registry.path("schemaVersion").asInt()).isEqualTo(1);
-        assertThat(registry.path("proofContract").asText()).isEqualTo("atomic-descendant-covered-cluster-reduction-v2");
+        assertThat(registry.path("proofContract").asText()).isIn(V2, V3);
+        boolean ordered = V3.equals(registry.path("proofContract").asText());
         assertThat(registry.path("auditScope").asText()).isEqualTo("origin-source-landscape-closure");
         assertThat(registry.path("catalogSources").isArray()).isTrue();
         assertThat(registry.path("originalRequires").isArray() && !registry.path("originalRequires").isEmpty()).isTrue();
         assertThat(registry.path("originalRequires").get(0).path("source").asText()).isEqualTo(MATH + ":" + SOURCE);
 
         Map<Path, String> canonicalOwners = new LinkedHashMap<>();
+        Map<Path, DocumentDigests> documentDigests = new LinkedHashMap<>();
         Map<String, Path> ownerFiles = new LinkedHashMap<>();
         Map<String, Map<String, JsonNode>> goalsByOwner = new LinkedHashMap<>();
         for (JsonNode source : registry.path("catalogSources")) {
@@ -594,8 +704,14 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(ownerFiles.putIfAbsent(owner, file)).as("unique canonical registry owner: %s", owner).isNull();
             JsonNode canonical = MAPPER.readTree(file.toFile());
             assertThat(canonical.path("landscapeId").asText()).isEqualTo(owner);
+            DocumentDigests digests = new DocumentDigests(source.path("baselineDocumentDigest").asText(),
+                    source.path("currentDocumentDigest").asText());
+            assertRawDocumentDigest(canonical, digests.current(), "current raw document " + relative);
+            documentDigests.put(file, digests);
             goalsByOwner.put(owner, rawGoals(canonical));
         }
+        assertThat(canonicalOwners).hasSize(21);
+        assertHistoricalBindings(registry, ordered);
         assertThat(canonicalOwners).containsKeys(MATH_SOURCE, BIOLOGY_SOURCE, LATIN_SOURCE);
         assertThat(registry.path("removals").isArray()).isTrue();
         assertThat(registry.path("removals")).as("complete registered operation count").hasSize(204);
@@ -645,9 +761,68 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(clusterRemovals).as("Latin plus sixteen covered follow-up operations").isEqualTo(17);
         assertThat(clusterSourceIds).as("Latin plus twelve follow-up cluster sources").hasSize(13);
 
+        Set<String> historicalSourceIds = new TreeSet<>(), suffixSourceIds = new TreeSet<>();
+        List<JsonNode> originals = new ArrayList<>();
+        for (JsonNode original : registry.path("originalRequires")) {
+            assertThat(historicalSourceIds.add(qualifiedIdentity(original.path("source").asText())[1])).isTrue();
+            assertThat(original.path("requires").isArray()).isTrue();
+            originals.add(original);
+        }
+        if (ordered) {
+            assertThat(registry.path("suffix").isArray()).isTrue();
+            assertThat(registry.path("suffix")).hasSize(29);
+            Set<String> newAtoms = new TreeSet<>(), newClusters = new TreeSet<>();
+            for (JsonNode step : registry.path("suffix")) {
+                String source = step.path("source").asText(), id = qualifiedIdentity(source)[1];
+                assertThat(qualifiedIdentity(source)[0]).isEqualTo(MATH);
+                assertThat(step.path("prerequisite").asText()).isEqualTo(MATH + ":" + REMOVED);
+                assertThat(suffixSourceIds.add(id)).as("one actual Math suffix step per source").isTrue();
+                assertThat(historicalSourceIds).doesNotContain(id);
+                JsonNode goal = registeredGoal(goalsByOwner, source);
+                if ("materialize-atomic".equals(step.path("operation").asText())) {
+                    assertAtomicWitness(goal, source);
+                    assertThat(rawRequires(goal.path("requires"), source)).containsExactly(REMOVED);
+                    newAtoms.add(id);
+                } else {
+                    assertThat(step.path("operation").asText()).isEqualTo("remove-cluster");
+                    assertThat(goal.path("type").asText()).isEqualTo("cluster");
+                    assertThat(rawRequires(goal.path("requires"), source)).isEmpty();
+                    Set<String> witnesses = new TreeSet<>();
+                    for (JsonNode witness : step.path("atomicWitnesses")) {
+                        List<String> path = rawRequires(witness, source);
+                        assertThat(path).hasSize(2);
+                        assertThat(path.get(1)).isEqualTo(MATH + ":" + REMOVED);
+                        assertAtomicWitness(registeredGoal(goalsByOwner, path.get(0)), path.get(0));
+                        assertThat(witnesses.add(qualifiedIdentity(path.get(0))[1])).isTrue();
+                    }
+                    assertThat(witnesses).isNotEmpty();
+                    clusterWitnessCoverage.add(new ClusterWitnessCoverage(id, REMOVED, Set.copyOf(witnesses)));
+                    clusterSourceIds.add(id);
+                    newClusters.add(id);
+                }
+            }
+            assertThat(newAtoms).hasSize(27);
+            assertThat(newClusters).containsExactlyInAnyOrderElementsOf(MATH_EXAMS);
+            assertThat(registry.path("suffixOriginalRequires").isArray()).isTrue();
+            Set<String> overlaid = new TreeSet<>();
+            for (JsonNode original : registry.path("suffixOriginalRequires")) {
+                String source = original.path("source").asText(), id = qualifiedIdentity(source)[1];
+                assertThat(qualifiedIdentity(source)[0]).isEqualTo(MATH);
+                assertThat(suffixSourceIds).contains(id);
+                assertThat(overlaid.add(id)).as("unique suffix original overlay: %s", id).isTrue();
+                assertThat(original.has("requires")).isTrue();
+                assertThat(original.path("requires").isNull() || original.path("requires").isArray()).isTrue();
+                if (newAtoms.contains(id)) {
+                    assertThat(original.path("requires").isArray()).as("actual new Math atom has a present empty before-array").isTrue();
+                    assertThat(original.path("requires")).isEmpty();
+                } else assertThat(rawRequires(original.path("requires"), source)).containsExactly(REMOVED);
+                originals.add(original);
+            }
+            assertThat(overlaid).containsExactlyInAnyOrderElementsOf(suffixSourceIds);
+        }
         Map<Path, List<ChangedSource>> changesByFile = new LinkedHashMap<>();
         Map<String, ChangedSource> changedSources = new LinkedHashMap<>();
-        for (JsonNode original : registry.path("originalRequires")) {
+        for (JsonNode original : originals) {
             String qualifiedSource = original.path("source").asText();
             String[] identity = qualifiedIdentity(qualifiedSource);
             String owner = identity[0], id = identity[1];
@@ -663,10 +838,12 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(clusterSourceIds).as("registered covered-cluster source %s", qualifiedSource).contains(id);
                 assertThat(goal.path("type").asText()).isEqualTo("cluster");
             }
-            List<String> before = rawRequires(original.path("requires"), qualifiedSource);
-            List<String> after = rawRequires(goal.path("requires"), qualifiedSource);
+            boolean beforePresent = !original.path("requires").isNull(), afterPresent = goal.has("requires");
+            List<String> before = beforePresent ? rawRequires(original.path("requires"), qualifiedSource) : List.of();
+            List<String> after = afterPresent ? rawRequires(goal.path("requires"), qualifiedSource) : List.of();
             assertThat(after).as("registered source has an actual raw reduction: %s", qualifiedSource).isNotEqualTo(before);
-            ChangedSource changed = new ChangedSource(owner, id, before, after, canonicalContains, atomicSource);
+            ChangedSource changed = new ChangedSource(owner, id, before, after, canonicalContains, atomicSource,
+                    beforePresent, afterPresent);
             assertThat(changedSources.putIfAbsent(id, changed)).as("unique registered canonical source: %s", id).isNull();
             changesByFile.computeIfAbsent(ownerFiles.get(owner), ignored -> new ArrayList<>()).add(changed);
         }
@@ -683,16 +860,95 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(latin.atomicSource()).isFalse();
         assertThat(latin.originalRequires()).containsExactly(LATIN_ORIENTATION);
         assertThat(latin.currentRequires()).isEmpty();
-        assertThat(changedSources.values().stream().filter(ChangedSource::atomicSource).count())
+        assertThat(changedSources.values().stream().filter(changed -> historicalSourceIds.contains(changed.goalId()))
+                .filter(ChangedSource::atomicSource).count())
                 .as("legacy native source checks remain atomic").isEqualTo(187);
-        assertThat(changedSources.values().stream().filter(changed -> !changed.atomicSource()).count())
+        assertThat(changedSources.values().stream().filter(changed -> historicalSourceIds.contains(changed.goalId()))
+                .filter(changed -> !changed.atomicSource()).count())
                 .as("all thirteen registered covered-cluster sources").isEqualTo(13);
+        assertThat(changedSources).hasSize(ordered ? 229 : 200);
+        assertThat(changedSources.values().stream().filter(ChangedSource::atomicSource).count()).isEqualTo(ordered ? 214 : 187);
+        assertThat(changedSources.values().stream().filter(changed -> !changed.atomicSource()).count()).isEqualTo(ordered ? 15 : 13);
 
         Map<Path, List<ChangedSource>> immutableChanges = new LinkedHashMap<>();
         changesByFile.forEach((file, changes) -> immutableChanges.put(file, List.copyOf(changes)));
-        return new ReductionRegistry(Collections.unmodifiableMap(canonicalOwners),
+        ReductionRegistry result = new ReductionRegistry(Collections.unmodifiableMap(canonicalOwners),
                 Collections.unmodifiableMap(immutableChanges), Collections.unmodifiableMap(changedSources),
-                List.copyOf(clusterWitnessCoverage));
+                List.copyOf(clusterWitnessCoverage), Collections.unmodifiableMap(documentDigests),
+                Set.copyOf(historicalSourceIds), Set.copyOf(suffixSourceIds));
+        for (var entry : canonicalOwners.entrySet()) {
+            reconstructRawDocument(entry.getKey(), MAPPER.readTree(entry.getKey().toFile()), entry.getValue(),
+                    documentDigests.get(entry.getKey()), immutableChanges.getOrDefault(entry.getKey(), List.of()), true);
+        }
+        return result;
+    }
+
+    private static void assertHistoricalBindings(JsonNode registry, boolean ordered) {
+        assertRawDocumentDigest(registry.path("originalRequires"),
+                "sha256:b731e23f6ef9e142d4efb7b95c844f8bed84f11e71c462fa21e40d9b2dc6583c", "historical 200 arrays");
+        assertRawDocumentDigest(registry.path("removals"),
+                "sha256:2c533d75b972288ab828a7312af9156d59c738e9d4a0e5755c3b25862470630f", "historical 204 removals");
+        var baselines = MAPPER.createArrayNode();
+        for (JsonNode source : registry.path("catalogSources")) {
+            var binding = baselines.addObject();
+            for (String field : List.of("path", "landscapeId", "baselineDocumentDigest")) binding.set(field, source.path(field));
+        }
+        assertRawDocumentDigest(baselines,
+                "sha256:356ffe9a535fb4b35734c7c1bee0c5e9258feab163ea6dec83c4260d793d1471", "historical 21 baseline bindings");
+        ObjectNode historical = registry.deepCopy();
+        if (ordered) {
+            JsonNode checkpoint = registry.path("v2Checkpoint");
+            assertThat(checkpoint.path("registryDigest").asText())
+                    .isEqualTo("sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f");
+            assertThat(checkpoint.path("currentDocumentDigests").isArray()).isTrue();
+            Map<String, String> currentDigests = new LinkedHashMap<>();
+            for (JsonNode entry : checkpoint.path("currentDocumentDigests")) {
+                assertThat(currentDigests.putIfAbsent(entry.path("path").asText(), entry.path("currentDocumentDigest").asText())).isNull();
+            }
+            assertThat(currentDigests).hasSize(21);
+            for (JsonNode source : historical.path("catalogSources")) {
+                assertThat(currentDigests).containsKey(source.path("path").asText());
+                ((ObjectNode) source).put("currentDocumentDigest", currentDigests.get(source.path("path").asText()));
+            }
+            historical.remove(List.of("v2Checkpoint", "suffixOriginalRequires", "suffix"));
+            historical.put("proofContract", V2);
+        }
+        assertRawDocumentDigest(historical,
+                "sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f", "complete historical V2 checkpoint");
+    }
+
+    private static void assertRawDocumentDigest(JsonNode document, String expected, String label) {
+        try {
+            assertThat(CompletionReviewBindings.canonicalHash(document, MAPPER)).as(label).isEqualTo(expected);
+        } catch (Exception error) {
+            throw new IllegalStateException("Cannot hash " + label, error);
+        }
+    }
+
+    private static JsonNode reconstructRawDocument(Path source, JsonNode current, String owner,
+            DocumentDigests digests, List<ChangedSource> changes, boolean originalBaseline) {
+        assertThat(current.path("landscapeId").asText()).isEqualTo(owner);
+        assertRawDocumentDigest(current, digests.current(), "current raw document " + source);
+        JsonNode result = current.deepCopy();
+        Map<String, JsonNode> goals = rawGoals(result);
+        for (ChangedSource changed : changes) {
+            JsonNode goal = goals.get(changed.goalId());
+            assertThat(goal).as("raw overlay source %s", changed.goalId()).isNotNull();
+            if (changed.atomicSource()) assertAtomicWitness(goal, changed.goalId());
+            else assertThat(goal.path("type").asText()).isEqualTo("cluster");
+            assertThat(rawRequires(goal.path("contains"), changed.goalId()))
+                    .as("unchanged canonical contains for %s", changed.goalId()).containsExactlyElementsOf(changed.canonicalContains());
+            assertThat(goal.has("requires")).as("current raw requires presence: %s", changed.goalId()).isEqualTo(changed.currentRequiresPresent());
+            assertThat(goal.has("requires") ? rawRequires(goal.path("requires"), changed.goalId()) : List.of())
+                    .as("pinned current raw requires: %s", changed.goalId()).containsExactlyElementsOf(changed.currentRequires());
+            if (originalBaseline) {
+                if (changed.originalRequiresPresent()) ((ObjectNode) goal).set("requires", MAPPER.valueToTree(changed.originalRequires()));
+                else ((ObjectNode) goal).remove("requires");
+            }
+        }
+        assertRawDocumentDigest(result, originalBaseline ? digests.original() : digests.current(),
+                (originalBaseline ? "baseline" : "current") + " raw document " + source);
+        return result;
     }
 
     private static String[] qualifiedIdentity(String reference) {
@@ -770,25 +1026,9 @@ class FirstMathPrerequisiteReductionTest {
         @Override public JsonFactory copy() { return new RegistryBaselineJsonFactory(this); }
         @Override public JsonParser createParser(File file) throws IOException {
             Path source = file.toPath().toAbsolutePath().normalize();
-            List<ChangedSource> changes = registry.changesByFile().get(source);
-            if (changes == null) return super.createParser(file);
-            JsonNode tree = MAPPER.readTree(file);
-            assertThat(tree.path("landscapeId").asText()).isEqualTo(registry.canonicalOwners().get(source));
-            Map<String, JsonNode> goals = rawGoals(tree);
-            for (ChangedSource changed : changes) {
-                JsonNode goal = goals.get(changed.goalId());
-                if (changed.atomicSource()) {
-                    assertAtomicWitness(goal, changed.goalId());
-                } else {
-                    assertThat(goal.path("type").asText()).isEqualTo("cluster");
-                }
-                assertThat(rawRequires(goal.path("contains"), changed.goalId()))
-                        .as("unchanged canonical contains for %s", changed.goalId())
-                        .containsExactlyElementsOf(changed.canonicalContains());
-                assertThat(rawRequires(goal.path("requires"), changed.goalId())).as("pinned current raw requires: %s", changed.goalId())
-                        .containsExactlyElementsOf(changed.currentRequires());
-                if (originalBaseline) ((ObjectNode) goal).set("requires", MAPPER.valueToTree(changed.originalRequires()));
-            }
+            if (!registry.canonicalOwners().containsKey(source)) return super.createParser(file);
+            JsonNode tree = reconstructRawDocument(source, MAPPER.readTree(file), registry.canonicalOwners().get(source),
+                    registry.documentDigests().get(source), registry.changesByFile().getOrDefault(source, List.of()), originalBaseline);
             return super.createParser(tree.toString());
         }
     }
@@ -877,6 +1117,30 @@ class FirstMathPrerequisiteReductionTest {
 
     private record AtomicFrontierCase(String name, Map<String, Double> mastery, Set<String> focus,
             boolean strict, Boolean expected) { }
+
+    private static int assertMathSuffixAtomicFrontierPreserved(LearnerService beforeService, NativeScope before,
+            LearnerService afterService, NativeScope after, String id, boolean validRoles, String scope) {
+        assertThat(before.topology().transitivePrerequisites(id)).as("original Math demand: %s/%s", scope, id).contains(REMOVED);
+        Map<String, Double> mastered = new TreeMap<>();
+        before.graph().keySet().forEach(goal -> mastered.put(goal, 1.0));
+        Map<String, Double> missingOrientation = new TreeMap<>(mastered);
+        missingOrientation.remove(REMOVED);
+        List<AtomicFrontierCase> cases = List.of(
+                new AtomicFrontierCase("math-normal-empty", Map.of(), null, false, null),
+                new AtomicFrontierCase("math-normal-mastered", mastered, null, false, validRoles),
+                new AtomicFrontierCase("math-strict-mastered", mastered, null, true, validRoles),
+                new AtomicFrontierCase("math-strict-missing-orientation", missingOrientation, null, true, false),
+                new AtomicFrontierCase("math-normal-atomic-focus", Map.of(), Set.of(id), false, validRoles),
+                new AtomicFrontierCase("math-strict-atomic-focus", Map.of(), Set.of(id), true, false));
+        for (AtomicFrontierCase probe : cases) {
+            boolean original = atomicFrontierProbe(beforeService, before, id, probe);
+            boolean reduced = atomicFrontierProbe(afterService, after, id, probe);
+            assertThat(reduced).as("new Math atomic frontier %s/%s: %s", id, probe.name(), scope).isEqualTo(original);
+            if (probe.expected() != null) assertThat(original).as("new Math frontier control %s/%s: %s", id, probe.name(), scope)
+                    .isEqualTo(probe.expected());
+        }
+        return cases.size();
+    }
 
     private static int assertLatinAtomicFrontierPreserved(LearnerService beforeService, NativeScope before,
             LearnerService afterService, NativeScope after, String atomId, boolean validRoles, String scope) {

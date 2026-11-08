@@ -59,6 +59,62 @@ class SemanticKindReductionTest(unittest.TestCase):
     def load(self):
         return bridge.load_verified_semantic_kind_bindings(self.root, self.source, self.document, self.fingerprints)
 
+    def fingerprint_document(self, document):
+        profile = compiler.load_json(PROFILE)
+        ontology = compiler.load_json(ROOT / profile["contracts"]["ontologyProfilePath"])
+        contract = ontology["semanticKindDecisions"]["sourceFingerprint"]
+        result = {goal["id"]: compiler.source_fingerprint(goal, contract) for goal in document["goals"]}
+        self.assertEqual(result, {goal["id"]: validator.source_fingerprint(goal, contract) for goal in document["goals"]})
+        return result
+
+    def ordered_fixture(self):
+        before = {"landscapeId": "fixture", "goals": [
+            {"id": "q", "type": "atomic", "contains": [], "requires": ["p", "r"]},
+            {"id": "p", "type": "atomic", "contains": [], "requires": ["r"]},
+            {"id": "r", "type": "atomic", "contains": [], "requires": []},
+            {"id": "k", "type": "cluster", "contains": ["a", "b"], "requires": ["r"]},
+            {"id": "a", "type": "atomic", "contains": [], "requires": []},
+            {"id": "b", "type": "atomic", "contains": []},
+        ]}
+        checkpoint = copy.deepcopy(before)
+        checkpoint["goals"][0]["requires"] = ["p"]
+        history = {
+            "schemaVersion": 1, "proofContract": bridge.CLUSTER_PROOF_CONTRACT,
+            "auditScope": "origin-source-landscape-closure",
+            "catalogSources": [{"path": SOURCE, "landscapeId": "fixture",
+                "baselineDocumentDigest": bridge.digest(compiler.canonical_json_bytes(before)),
+                "currentDocumentDigest": bridge.digest(compiler.canonical_json_bytes(checkpoint))}],
+            "originalRequires": [{"source": "fixture:q", "requires": ["p", "r"]}],
+            "removals": [{"source": "fixture:q", "prerequisite": "fixture:r",
+                          "witness": ["fixture:q", "fixture:p", "fixture:r"]}],
+        }
+        registry = {**copy.deepcopy(history), "proofContract": bridge.ORDERED_PROOF_CONTRACT,
+            "v2Checkpoint": {"registryDigest": bridge.digest(compiler.canonical_json_bytes(history)),
+                "currentDocumentDigests": [{"path": SOURCE,
+                    "currentDocumentDigest": history["catalogSources"][0]["currentDocumentDigest"]}]},
+            "suffixOriginalRequires": [{"source": "fixture:a", "requires": []},
+                                       {"source": "fixture:b", "requires": None},
+                                       {"source": "fixture:k", "requires": ["r"]}],
+            "suffix": [{"operation": "materialize-atomic", "source": f"fixture:{goal_id}",
+                "prerequisite": "fixture:r", "origin": {"source": "fixture:k", "prerequisite": "r",
+                    "sourceContainsPath": ["fixture:k", f"fixture:{goal_id}"],
+                    "prerequisiteContainsPath": ["fixture:r"]}} for goal_id in ("a", "b")]
+                + [{"operation": "remove-cluster", "source": "fixture:k", "prerequisite": "fixture:r",
+                    "atomicWitnesses": [["fixture:a", "fixture:r"], ["fixture:b", "fixture:r"]]}],
+        }
+        self.document = copy.deepcopy(checkpoint)
+        self.document["goals"][3]["requires"] = []
+        for goal in self.document["goals"][4:]:
+            goal["requires"] = ["r"]
+        self.save_ordered_fixture(registry)
+        return before, checkpoint, history, registry
+
+    def save_ordered_fixture(self, registry):
+        registry["catalogSources"][0]["currentDocumentDigest"] = bridge.digest(compiler.canonical_json_bytes(self.document))
+        self.source.write_text(json.dumps(self.document))
+        self.registry.write_text(json.dumps(registry))
+        self.fingerprints = self.fingerprint_document(self.document)
+
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
         with patch.object(bridge.subprocess, "run", side_effect=AssertionError("Node must not run")):
@@ -166,6 +222,90 @@ class SemanticKindReductionTest(unittest.TestCase):
                 with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
                     self.load()
 
+    def test_ordered_contract_uses_real_node_and_exact_native_baseline_fingerprints(self):
+        before, _, history, registry = self.ordered_fixture()
+        baseline = self.fingerprint_document(before)
+        verified = self.load()
+        self.assertIsNotNone(verified)
+        self.assertEqual(verified.provenance["proofContract"], bridge.ORDERED_PROOF_CONTRACT)
+        self.assertEqual(verified.provenance["affectedGoalIds"], ["fixture:a", "fixture:b", "fixture:k", "fixture:q"])
+        self.assertEqual(verified.baseline_fingerprints, baseline)
+        self.assertEqual({goal_id for goal_id in baseline if baseline[goal_id] != self.fingerprints[goal_id]},
+                         {"a", "b", "k", "q"})
+        self.assertEqual(registry["originalRequires"], history["originalRequires"])
+        self.assertEqual(registry["removals"], history["removals"])
+        # Both native fingerprint functions distinguish a present [] from an
+        # absent field; the real Node receipt must preserve that raw distinction.
+        with_empty_requires = copy.deepcopy(before)
+        with_empty_requires["goals"][5]["requires"] = []
+        self.assertNotEqual(baseline["b"], self.fingerprint_document(with_empty_requires)["b"])
+
+    def test_ordered_contract_rejects_invalid_proof_and_missing_inputs(self):
+        cases = ("missing-suffix-original", "bad-checkpoint", "bad-checkpoint-document", "unknown-contract",
+                 "missing-checkpoint", "missing-suffix", "missing-source")
+        for name in cases:
+            with self.subTest(case=name):
+                _, _, history, registry = self.ordered_fixture()
+                if name == "missing-suffix-original":
+                    registry["suffixOriginalRequires"].pop()
+                    message = "missing suffix original requires"
+                elif name == "bad-checkpoint":
+                    registry["v2Checkpoint"]["registryDigest"] = "sha256:" + "0" * 64
+                    message = "historical V2 registry digest differs"
+                elif name == "bad-checkpoint-document":
+                    wrong_digest = "sha256:" + "0" * 64
+                    history["catalogSources"][0]["currentDocumentDigest"] = wrong_digest
+                    registry["v2Checkpoint"]["currentDocumentDigests"][0]["currentDocumentDigest"] = wrong_digest
+                    registry["v2Checkpoint"]["registryDigest"] = bridge.digest(compiler.canonical_json_bytes(history))
+                    message = "V2 checkpoint document digest differs"
+                elif name == "unknown-contract":
+                    registry["proofContract"] = "ordered-atomic-materialization-and-cluster-reduction-v4"
+                    message = "invalid registry fields|unsupported registry contract"
+                elif name == "missing-checkpoint":
+                    del registry["v2Checkpoint"]
+                    message = "invalid ordered registry fields"
+                elif name == "missing-suffix":
+                    del registry["suffix"]
+                    message = "invalid ordered registry fields"
+                else:
+                    message = "binding failed"
+                self.registry.write_text(json.dumps(registry))
+                if name == "missing-source":
+                    self.source.unlink()
+                with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
+                    self.load()
+
+    def test_ordered_suffix_cannot_heal_an_invalid_historical_witness(self):
+        before, checkpoint, history, registry = self.ordered_fixture()
+        before["goals"][1]["requires"] = ["r", "s", "target"]
+        before["goals"].extend([
+            {"id": "s", "type": "atomic", "contains": [], "requires": ["r"]},
+            {"id": "target", "type": "cluster", "contains": ["r"], "requires": []},
+        ])
+        checkpoint["goals"] = copy.deepcopy(before["goals"])
+        checkpoint["goals"][0]["requires"] = ["p"]
+        checkpoint["goals"][1]["requires"] = ["s", "target"]
+        history["originalRequires"].append({"source": "fixture:p", "requires": ["r", "s", "target"]})
+        history["removals"].append({"source": "fixture:p", "prerequisite": "fixture:r",
+                                   "witness": ["fixture:p", "fixture:s", "fixture:r"]})
+        history["catalogSources"][0].update(
+            baselineDocumentDigest=bridge.digest(compiler.canonical_json_bytes(before)),
+            currentDocumentDigest=bridge.digest(compiler.canonical_json_bytes(checkpoint)))
+        registry.update(copy.deepcopy(history), proofContract=bridge.ORDERED_PROOF_CONTRACT,
+            v2Checkpoint={"registryDigest": bridge.digest(compiler.canonical_json_bytes(history)),
+                "currentDocumentDigests": [{"path": SOURCE,
+                    "currentDocumentDigest": history["catalogSources"][0]["currentDocumentDigest"]}]},
+            suffixOriginalRequires=[], suffix=[{
+                "operation": "materialize-atomic", "source": "fixture:p", "prerequisite": "fixture:r",
+                "origin": {"source": "fixture:p", "prerequisite": "target",
+                    "sourceContainsPath": ["fixture:p"], "prerequisiteContainsPath": ["fixture:target", "fixture:r"]},
+            }])
+        self.document = copy.deepcopy(checkpoint)
+        self.document["goals"][1]["requires"].append("r")
+        self.save_ordered_fixture(registry)
+        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "witness edge.*deleted"):
+            self.load()
+
     def test_nonregular_registry_never_means_absent(self):
         self.registry.unlink()
         for kind in ("directory", "dangling-symlink", "file-symlink"):
@@ -224,6 +364,9 @@ class SemanticKindReductionTest(unittest.TestCase):
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
         self.receipt["proof"]["proofContract"] = bridge.CLUSTER_PROOF_CONTRACT
+        with patch.object(bridge.subprocess, "run", return_value=self.completed()):
+            self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
+        self.receipt["proof"]["proofContract"] = bridge.ORDERED_PROOF_CONTRACT
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
 
