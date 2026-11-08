@@ -9,11 +9,14 @@ import type { LearningGoal } from '../src/landscapeTypes'
 import {
   fingerprintPrerequisiteReductionDocument as digest,
   loadVerifiedPrerequisiteReductionContext,
+  CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
   verifiedPrerequisiteReductionSummary,
   type PrerequisiteReductionRegistry,
+  type DirectPrerequisiteReduction,
+  type ClusterPrerequisiteReduction,
   type VerifiedPrerequisiteReductionContext,
 } from './prerequisiteReductionProof'
 import {
@@ -47,7 +50,7 @@ function fixture(before: Document = baseline(), after?: Document) {
   mkdirSync(resolve(directory, 'canonical'), { recursive: true })
   const current = after ?? structuredClone(before)
   if (!after) current.goals[0].requires = ['p']
-  const registry: PrerequisiteReductionRegistry = {
+  const registry: Omit<PrerequisiteReductionRegistry, 'removals'> & { removals: DirectPrerequisiteReduction[] } = {
     schemaVersion: 1, proofContract: PREREQUISITE_REDUCTION_CONTRACT, auditScope: 'origin-source-landscape-closure',
     catalogSources: [{ path: 'canonical/test.json', landscapeId: before.landscapeId,
       baselineDocumentDigest: digest(before), currentDocumentDigest: digest(current) }],
@@ -63,6 +66,33 @@ function fixture(before: Document = baseline(), after?: Document) {
   })
   save()
   return { directory, current, registry, save, load }
+}
+const clusterBaseline = (): Document => ({
+  landscapeId: 'proof-test', title: 'Cluster normalization fixture', goals: [
+    { ...goal('k', ['r']), type: 'cluster', contains: ['a'] },
+    goal('a', ['p']), goal('p', ['r']), goal('r'),
+  ],
+})
+function clusterFixture(before = clusterBaseline()) {
+  const current = structuredClone(before)
+  current.goals[0].requires = []
+  const f = fixture(before, current)
+  const registry: PrerequisiteReductionRegistry = f.registry
+  registry.proofContract = CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
+  registry.originalRequires = [{ source: 'proof-test:k', requires: [...before.goals[0].requires] }]
+  const operation: ClusterPrerequisiteReduction = {
+    source: 'proof-test:k', prerequisite: 'proof-test:r', atomicWitnesses: [['a', 'p', 'r'].map((id) => `proof-test:${id}`)],
+  }
+  registry.removals = [operation]
+  f.save()
+  return { ...f, registry, operation }
+}
+function foreignSource(f: ReturnType<typeof clusterFixture>, document: Document) {
+  const path = `canonical/${document.landscapeId}.json`
+  writeFileSync(resolve(f.directory, path), JSON.stringify(document))
+  f.registry.catalogSources.push({ path, landscapeId: document.landscapeId,
+    baselineDocumentDigest: digest(document), currentDocumentDigest: digest(document) })
+  f.save()
 }
 async function rejectMutation(
   mutate: (f: ReturnType<typeof fixture>) => void,
@@ -219,6 +249,136 @@ try {
   supportFixture.save()
   assert.ok(await supportFixture.load(),
     'prerequisite-first removal with refreshed witnesses survives the complete replay')
+
+  const normalized = clusterFixture()
+  const normalizedContext = await normalized.load()
+  assert.ok(normalizedContext)
+  assert.equal(verifiedPrerequisiteReductionSummary(normalizedContext)!.proofContract,
+    CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
+  assert.deepEqual(reviewBindingGoal(normalizedContext, 'proof-test:k', normalized.current.goals[0]).requires, ['r'])
+  assert.deepEqual(normalized.current.goals[0].requires, [], 'cluster normalization changes current raw content only')
+  assert.throws(() => reviewBindingGoal(normalizedContext, 'proof-test:k', {
+    ...normalized.current.goals[0], contains: ['p'],
+  }), /snapshot/u)
+  assert.throws(() => reviewBindingGoal({} as VerifiedPrerequisiteReductionContext,
+    'proof-test:k', normalized.current.goals[0]), /forged/u)
+
+  const nested = clusterBaseline()
+  nested.goals[0].contains = ['h']
+  nested.goals.push({ ...goal('h'), type: 'cluster', contains: ['a'] })
+  assert.ok(await clusterFixture(nested).load(), 'nested descendants without incoming cluster edges are covered')
+  const nestedIncoming = structuredClone(nested)
+  nestedIncoming.goals.push(goal('z', ['h']))
+  await assert.rejects(clusterFixture(nestedIncoming).load, /incoming requires to affected cluster/u,
+    'k contains h contains a, a has raw coverage, but z requires h would lose pre-expansion p')
+  for (const incoming of ['k', ':k', 'proof-test:k']) {
+    const input = clusterBaseline()
+    input.goals.push(goal('z', [incoming]))
+    await assert.rejects(clusterFixture(input).load, /incoming requires to affected cluster/u)
+  }
+  for (const incoming of ['k', 'proof-test:k']) {
+    const input = clusterFixture()
+    foreignSource(input, { landscapeId: 'foreign', title: 'Foreign incoming', goals: [goal('z', [incoming])] })
+    await assert.rejects(input.load, /incoming requires to affected cluster/u)
+  }
+  const unclearIncoming = clusterFixture()
+  foreignSource(unclearIncoming, {
+    landscapeId: 'foreign', title: 'Unresolved possible incoming', goals: [goal('z', ['absent:k'])],
+  })
+  await assert.rejects(unclearIncoming.load, /unknown reference/u)
+  const ambiguousIncoming = clusterFixture()
+  foreignSource(ambiguousIncoming, { landscapeId: 'other', title: 'Same local ID', goals: [goal('k')] })
+  foreignSource(ambiguousIncoming, { landscapeId: 'foreign', title: 'Ambiguous incoming', goals: [goal('z', ['k'])] })
+  await assert.rejects(ambiguousIncoming.load, /ambiguous or unknown reference/u)
+  const unrelatedUnknown = clusterFixture()
+  foreignSource(unrelatedUnknown, {
+    landscapeId: 'foreign', title: 'Independent unresolved experimental reference', goals: [goal('z', ['unknown-experimental'])],
+  })
+  assert.ok(await unrelatedUnknown.load(), 'unrelated unknown requires is not falsely resolved or a new all-root gate')
+
+  const clusterReject = async (
+    mutate: (f: ReturnType<typeof clusterFixture>) => void, expected: RegExp, before = clusterBaseline(),
+  ) => {
+    const f = clusterFixture(before)
+    mutate(f)
+    f.save()
+    await assert.rejects(f.load, expected)
+  }
+  const twoAtoms = clusterBaseline()
+  twoAtoms.goals[0].contains.push('b')
+  twoAtoms.goals.push(goal('b', ['p']))
+  await assert.rejects(clusterFixture(twoAtoms).load, /descendant coverage/u, 'every canonical atom descendant is required')
+  const completeAtoms = clusterFixture(twoAtoms)
+  completeAtoms.operation.atomicWitnesses.push(['b', 'p', 'r'].map((id) => `proof-test:${id}`))
+  completeAtoms.save()
+  assert.ok(await completeAtoms.load())
+  await clusterReject(({ operation }) => operation.atomicWitnesses.push([...operation.atomicWitnesses[0]]), /descendant coverage/u)
+  await clusterReject(({ operation }) => operation.atomicWitnesses.push(['proof-test:p', 'proof-test:r']), /descendant coverage/u)
+  await clusterReject(({ operation }) => operation.atomicWitnesses[0] = ['proof-test:a', 'proof-test:unknown', 'proof-test:r'],
+    /actual atomic leaves|not directly authored/u)
+  const inheritedOnly = clusterBaseline()
+  inheritedOnly.goals[1].requires = []
+  await clusterReject(({ operation }) => operation.atomicWitnesses[0] = ['proof-test:a', 'proof-test:r'],
+    /not directly authored/u, inheritedOnly)
+  for (const id of ['p', 'r']) {
+    const input = clusterBaseline()
+    const node = input.goals.find((entry) => entry.id === id)!
+    node.type = 'cluster'
+    node.contains = ['extra']
+    input.goals.push(goal('extra'))
+    await assert.rejects(clusterFixture(input).load, /actual atomic leaves/u)
+  }
+  const atomicSource = clusterBaseline()
+  atomicSource.goals[0].type = 'atomic'
+  atomicSource.goals[0].contains = []
+  await assert.rejects(clusterFixture(atomicSource).load, /nonempty cluster source/u)
+  const unknownDescendant = clusterBaseline()
+  unknownDescendant.goals[0].contains = ['unknown']
+  await assert.rejects(clusterFixture(unknownDescendant).load, /[Uu]nknown reference/u)
+  const containsCycle = structuredClone(nested)
+  containsCycle.goals.find(({ id }) => id === 'h')!.contains.push('k')
+  await assert.rejects(clusterFixture(containsCycle).load, /cycle/iu)
+  await clusterReject(({ registry }) => registry.proofContract = PREREQUISITE_REDUCTION_CONTRACT, /removal fields/u)
+  await clusterReject(({ registry }) => Object.assign(registry, { proofContract: 'effective-prerequisite-reduction-v2' }),
+    /unsupported registry contract/u, clusterBaseline())
+  await clusterReject(({ operation }) => Object.assign(operation, { witness: ['proof-test:k', 'proof-test:r'] }),
+    /cluster removal fields/u)
+  await clusterReject(({ operation }) => Object.assign(operation, { supportingOrigins: [] }), /cluster removal fields/u)
+  await clusterReject(({ operation }) => operation.atomicWitnesses = [], /invalid cluster removal/u)
+  await clusterReject(({ current, registry }) => {
+    current.goals[1].title = 'Undeclared text'
+    registry.catalogSources[0].currentDocumentDigest = digest(current)
+  }, /baseline document digest/u)
+  await clusterReject(({ current, registry }) => {
+    current.goals[0].requires = [':r']
+    registry.catalogSources[0].currentDocumentDigest = digest(current)
+  }, /replay differs/u)
+  const aliasInput = clusterBaseline()
+  aliasInput.goals[0].requires = ['r', ':r', 'proof-test:r']
+  assert.ok(await clusterFixture(aliasInput).load(), 'all raw aliases of a cluster relationship are removed')
+
+  const laterDeleted = clusterBaseline()
+  laterDeleted.goals.find(({ id }) => id === 'p')!.requires.push('s')
+  laterDeleted.goals.push(goal('s', ['r']))
+  const later = clusterFixture(laterDeleted)
+  later.current.goals.find(({ id }) => id === 'p')!.requires = ['s']
+  later.registry.catalogSources[0].currentDocumentDigest = digest(later.current)
+  later.registry.originalRequires.push({ source: 'proof-test:p', requires: ['r', 's'] })
+  later.registry.removals.push({ source: 'proof-test:p', prerequisite: 'proof-test:r',
+    witness: ['p', 's', 'r'].map((id) => `proof-test:${id}`) })
+  later.save()
+  await assert.rejects(later.load, /witness edge.*deleted/u, 'later atomic deletion cannot invalidate a cluster witness')
+  later.registry.removals.reverse()
+  later.operation.atomicWitnesses = [['a', 'p', 's', 'r'].map((id) => `proof-test:${id}`)]
+  later.save()
+  assert.ok(await later.load(), 'refreshed final raw witnesses cover the sequential normalization')
+  for (const before of [cluster, inherited]) {
+    const legacy = fixture(before)
+    legacy.registry.proofContract = CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
+    legacy.save()
+    await assert.rejects(legacy.load, /actual atomic leaves|not directly authored|inherited/u,
+      'the new contract does not relax legacy direct-leaf operations')
+  }
   const applicability = baseline()
   applicability.goals[0].extendedData = { applicabilityFromRequires: true }
   applicability.goals[0].tags = ['Assessment']

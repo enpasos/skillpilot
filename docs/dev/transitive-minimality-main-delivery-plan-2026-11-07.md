@@ -28,8 +28,14 @@ Der erste Biologie-Batch ist mit
 [PR #90](https://github.com/enpasos/skillpilot/pull/90) auf main bei
 [`3b71ee9370`](https://github.com/enpasos/skillpilot/commit/3b71ee9370805f98b37f0e7e9b3352b9ac26f845)
 geliefert; sein geprüfter PR-Head bestand fünf Pflichtworkflows und acht
-Hauptjobs. Der sichtbare Checkout liegt für die aktuelle Dokumentationslieferung
-auf `docs/graph-rules-and-milestones`, ausgehend von diesem Main-Commit.
+Hauptjobs. Die korrigierte atomare Norm und vollständige Regelzuordnung sind mit
+[PR #91](https://github.com/enpasos/skillpilot/pull/91) auf main bei
+[`02cc64e622`](https://github.com/enpasos/skillpilot/commit/02cc64e622bedd0275f1f551235c1d2248dbe77f)
+geliefert; alle drei Jobs des frischen
+[Main-Dokumentationslaufs](https://github.com/enpasos/skillpilot/actions/runs/42455488379)
+bestanden. Der sichtbare Checkout liegt für den nächsten begrenzten
+Umsetzungsschritt auf `fix/g17-latin-cluster-normalization`, ausgehend von
+diesem Main-Commit.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
@@ -44,13 +50,15 @@ IDE-Checkout; kein separater Arbeitsbaum.
 Der Owner stoppte am 8. November den bisherigen Umsetzungslauf und pausierte
 das G17-Goal. Diese Stopentscheidung bleibt als historische Korrektur erhalten.
 Anschließend hat der Owner die Fortsetzung ausdrücklich beauftragt; das Goal
-ist wieder aktiv. Zuerst wird die eigenständige Dokumentationslieferung
-abgeschlossen, danach folgt die Umsetzung unter der korrigierten atomaren Norm.
+ist wieder aktiv. Die eigenständige Dokumentationslieferung ist mit PR #91
+abgeschlossen; jetzt folgt die Umsetzung unter der korrigierten atomaren Norm.
 Verbindlich ist `R ⊆ A × A`: alle Voraussetzungen vollständig zwischen atomaren
 Zielen erfassen. Erst die atomare Repräsentation sichern, dann durch sie
 abgedeckte nichtatomare `requires` entfernen und erst danach die atomare Relation
 transitiv reduzieren. Atomare Autorenkanten zugunsten verbliebener Clusterkanten
-zu löschen ist nicht der beauftragte Zielzustand. `CQR-102` und `GVR-012` bleiben
+zu löschen ist nicht der beauftragte Zielzustand. Diese Änderung betrifft
+ausschließlich `requires`; Clusterknoten und `contains` bleiben erhalten.
+`CQR-102` und `GVR-012` bleiben
 direkt atomar; die vorgeschlagene Lockerung wurde verworfen.
 
 Die [vollständige Regel- und Meilensteinmatrix](../qa-ci/graph-definition-rule-milestone-matrix.md)
@@ -70,16 +78,31 @@ unversionierte Altartefakte bleiben erhalten. Dieser V2-Versuch ist keine
 freigegebene Löschliste. Er bewahrte atomare Wirkung, verletzte jedoch die
 vorgeschriebene Autorenrepräsentation und den korrekt ablehnenden M7-Floor.
 
-Die aktuelle Dokumentationsarbeit liegt sichtbar im selben IDE-Checkout auf
-`docs/graph-rules-and-milestones`, ausgehend vom genannten Main-Commit. Sie ist
-als eigenständige Dokumentationslieferung von der nicht akzeptierten
-Datenänderung getrennt und wird zuerst als Dokumentations-PR geliefert.
-Der nächste Umsetzungsschritt im wieder aktiven G17-Auftrag ist ein endlicher
-Atomarisierungs-/Erhaltungsnachweis auf tatsächlichen Scopes. Brauchbare
+Die Dokumentationslieferung wurde getrennt von der nicht akzeptierten
+Datenänderung nach main übernommen. Der nächste Umsetzungsschritt im selben
+sichtbaren IDE-Checkout ist ein begrenzter Erhaltungsnachweis auf tatsächlichen
+Scopes und eine Latein-Korrektur: Der Cluster `e82cc731…` verliert seine
+Anforderung an `551f2d6c…`, wenn für jeden kanonischen atomaren Nachfahren ein
+überlebender direkt atomarer Voraussetzungspfad nachgewiesen ist. Zusätzliche
+Eingangsprüfungen schützen die bestehende Rollenrelation. Die bisherigen
+187 bescheinigten atomaren Entfernungen und ursprünglichen Katalogbindungen
+bleiben erhalten. Diese Lieferung ersetzt weder die folgenden mechanischen
+Fachbatches noch die verpflichtende Standard-Meilensteinanbindung. Brauchbare
 Invarianztests und Vergleichsbindungen aus dem gesicherten WIP werden dafür
 einzeln geprüft übernommen. Die 173 falsch priorisierten Löschungen werden nicht
 blind zurückgespielt. Historische Inventare und Vorschauen im folgenden Plan
 ersetzen diese neue Zielpriorität nicht.
+
+Als direkte Folgelieferung nach diesem Main-Merge ist ein gemeinsamer Batch
+von 18 weiteren bereits atomar abgedeckten Clusteranforderungen vorbereitet:
+Biologie 2, Chemie 6, Physik 6, Wirtschaftswissenschaften 2 und Politik und
+Wirtschaft 2. Die Analyse umfasst 14 Clusterquellen mit 87 rohen atomaren
+Pfadzeugen; diese überleben auch die gemeinsame Entfernung. Die tatsächliche
+Applicability bleibt über alle 6.524 Ziele fachweise und gemeinsam unverändert.
+Dieser Befund ersetzt nicht die frische Nachweisprüfung, native Regression und
+CI der Folgelieferung. Es wird dafür kein neuer Nachweistyp eingeführt und keine
+atomare Autorenkante entfernt. Die anschließende vollständige Normalisierung
+und Standard-Meilensteinanbindung bleiben Teil desselben Goals.
 
 ## Ein aktives Ziel, ein tatsächlicher Lieferweg
 
