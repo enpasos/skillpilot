@@ -6,6 +6,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 - [Transitive Minimalität: Lieferplan nach main](transitive-minimality-main-delivery-plan-2026-11-07.md)
   Aktueller Auftrag: G17 in der Standard-Meilensteinprüfung und Wiederherstellung der ursprünglichen zehn M6-/M7-Fachstände in kleinen lieferbaren PRs.
+- [Mathematik-Dauerlayout: Pflege der Inputbindung, 8. November 2026](canonical-math-duration-input-binding-review-2026-11-08.md)
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Pausierter Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)

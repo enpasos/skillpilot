@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "status": "technical-maintenance-checks-passed",
+  "startedAt": "2026-11-08T18:35:09.930Z",
+  "finishedAt": "2026-11-08T18:35:18.150Z",
+  "failedCI": {
+    "pullRequest": 96,
+    "runId": "42506065816",
+    "jobId": "128815173044",
+    "step": "Check generated Math G8/G9 Composition Views",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42506065816/job/128815173044",
+    "error": "Invalid reviewed split-layout plan",
+    "source": "app/scripts/generateMathDurationCompositionViews.ts:393"
+  },
+  "previousPolicySnapshot": {
+    "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+    "sha256": "5715daa4b5b069c703b0c70363addb4b3347b5f525332b57f61a3a983662cca8",
+    "bytes": 69974,
+    "gitBlob": "b9739235c6f1ac6bf3adda7b258975743094c4bc",
+    "refs": [
+      {
+        "commit": "0adcd834d5dee6df3c67f5d6e5b387e9713fa447",
+        "gitBlob": "b9739235c6f1ac6bf3adda7b258975743094c4bc",
+        "url": "https://github.com/enpasos/skillpilot/blob/0adcd834d5dee6df3c67f5d6e5b387e9713fa447/app/scripts/config/math-duration-split-spanning-tree-policy.json"
+      },
+      {
+        "commit": "d4b2eba948bd3c7cbcec9a39e65999d90f4f80aa",
+        "gitBlob": "b9739235c6f1ac6bf3adda7b258975743094c4bc",
+        "url": "https://github.com/enpasos/skillpilot/blob/d4b2eba948bd3c7cbcec9a39e65999d90f4f80aa/app/scripts/config/math-duration-split-spanning-tree-policy.json"
+      }
+    ]
+  },
+  "currentPolicy": {
+    "path": "app/scripts/config/math-duration-split-spanning-tree-policy.json",
+    "sha256": "0180e4aa4b641f96ef7a56e5e95569d1a3052acc8491667486be70e9ae4b79fc",
+    "bytes": 69974,
+    "delta": [
+      {
+        "path": "inputs.canonical.sha256",
+        "before": "07749daefff5535416b17d133a84cdcfad40eb5b3137de4958898b8386d79838",
+        "after": "e28dea9ed0d8a82f3ccd8ea30a60fd8b3cc6ae35bb499622e3c0aaf5d0b79448"
+      }
+    ],
+    "allOtherFieldsIdentical": true,
+    "statusUnchanged": "APPROVED_REVIEWED_LAYOUT",
+    "placements": 83,
+    "templates": 6,
+    "additiveAdjudications": 7,
+    "sourceScopeBindings": 5,
+    "parentDerivativeReceiptUnchanged": true
+  },
+  "canonicalMath": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "previous": {
+      "commit": "0adcd834d5dee6df3c67f5d6e5b387e9713fa447",
+      "sha256": "07749daefff5535416b17d133a84cdcfad40eb5b3137de4958898b8386d79838",
+      "url": "https://github.com/enpasos/skillpilot/blob/0adcd834d5dee6df3c67f5d6e5b387e9713fa447/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+    },
+    "current": {
+      "commit": "d4b2eba948bd3c7cbcec9a39e65999d90f4f80aa",
+      "sha256": "e28dea9ed0d8a82f3ccd8ea30a60fd8b3cc6ae35bb499622e3c0aaf5d0b79448",
+      "url": "https://github.com/enpasos/skillpilot/blob/d4b2eba948bd3c7cbcec9a39e65999d90f4f80aa/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+    },
+    "materializations": 27,
+    "clusterRemovals": 2,
+    "otherGoalAndDocumentFieldsIdentical": true,
+    "containsIdentical": true,
+    "requiresDelta": [
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
+        "path": "goals.953.requires",
+        "type": "cluster",
+        "before": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "after": []
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:57c6506d-5412-5dc9-9d41-32d860f02a08",
+        "path": "goals.955.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3a2d5b64-3818-5d8a-b230-c2848aa75b2b",
+        "path": "goals.956.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:083079c3-bd26-5404-bd6a-7ec6cd9c0b43",
+        "path": "goals.957.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4eaf7b88-ca73-537c-8067-029a7b1116fa",
+        "path": "goals.958.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:81798ff9-cba0-5962-a95f-f930b543d606",
+        "path": "goals.959.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:8c12d84a-beff-5dbe-9a79-ae87462b903d",
+        "path": "goals.960.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fb48b8f8-1025-55bf-8ad4-4c6d6b538ea4",
+        "path": "goals.961.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4a906a0c-44eb-559a-99a7-9fc01b90409a",
+        "path": "goals.962.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:4e0291cf-c322-5f4d-a9d2-53a5fb40e45e",
+        "path": "goals.963.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c36723f-0de5-5bdb-8f07-3e67405c855e",
+        "path": "goals.964.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:68a262fc-43f4-5d23-af30-853870bfd45b",
+        "path": "goals.966.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5d3fd2c4-7c7e-569e-ae02-75486573f3cc",
+        "path": "goals.967.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:000b2764-c5d9-5521-b39e-fc15a4aa72e2",
+        "path": "goals.968.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6eb917e6-a204-5150-833f-a4455c8a05b0",
+        "path": "goals.969.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ad83149-3cb7-5b87-a617-3eae3715a50c",
+        "path": "goals.970.requires",
+        "type": "cluster",
+        "before": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ],
+        "after": []
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65cc2ab6-483e-5b2f-a77c-2f6c987439e8",
+        "path": "goals.972.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:629b1ce0-b604-594a-8113-8e0af351dbb1",
+        "path": "goals.973.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:0c3cd465-ea5e-51e5-bec5-24298bc2a1fa",
+        "path": "goals.974.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:f85d225d-9441-5479-b798-661e3ae9bdfa",
+        "path": "goals.975.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:fcb905ce-1276-5626-8c60-de0f035a9404",
+        "path": "goals.976.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:87ce54e8-8d6d-5ebb-bae4-018bfb079b39",
+        "path": "goals.977.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:341630b3-0268-5371-89d3-9fb793bfcc32",
+        "path": "goals.978.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5c56c1ee-5440-5455-a9f4-f3fd05ec4dd8",
+        "path": "goals.979.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:64a8a44d-d45b-5296-8123-834b4f88d6da",
+        "path": "goals.980.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:53de0639-c08b-53dc-8f70-9b519b7ecbbd",
+        "path": "goals.982.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:377e1f12-c134-50bb-a0a8-d3536cfee1ef",
+        "path": "goals.983.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:3449ecb6-7f5b-5ff2-b058-7eb6ca09ea39",
+        "path": "goals.984.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      },
+      {
+        "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:c2f6b981-f832-52ab-aa20-5e816eb33e64",
+        "path": "goals.985.requires",
+        "type": "atomic",
+        "before": [],
+        "after": [
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      }
+    ]
+  },
+  "certificate": {
+    "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "proofContract": "ordered-atomic-materialization-and-cluster-reduction-v3",
+    "sha256": "deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29",
+    "unchangedFromCommit": "d4b2eba948bd3c7cbcec9a39e65999d90f4f80aa",
+    "historicalRemovals": 204,
+    "originalRequires": 200,
+    "baselineDocuments": 21,
+    "originalBaselineBindingsUnchanged": true,
+    "v2CheckpointDigest": "sha256:9142a16a3418ec77a7689a14c74eb86d0f77ee6e0ed166fac39c0f4737c0650f",
+    "suffixSteps": 29,
+    "suffixOriginals": 29
+  },
+  "otherCanonicalDocuments": {
+    "count": 20,
+    "byteEqualCommit": "0adcd834d5dee6df3c67f5d6e5b387e9713fa447",
+    "manifestSha256": "42995aa054afdf1b10ca786b96ee05f6bea6909503e7c151cce6a16fbb12e17a"
+  },
+  "generatedViews": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "bytesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "bytesUnchanged": true
+    }
+  ],
+  "coverage": {
+    "before": {
+      "jsonSha256": "02bffdd49dbd123c073268dd56dfe1932bbe685fc81ccbab05ab4656b7f80277",
+      "markdownSha256": "6ed20713f6f3ed02315f94e339ce01b7d0b06ad778b55dcc6d3b897f3bf150a2"
+    },
+    "after": {
+      "jsonSha256": "9a8ef385ebcdfa63bb3eec04e023e2a0e5dc9853d12207569f1c981e387987ce",
+      "markdownSha256": "95e0ed6b00312e124c24362ffe6904c24d85c78f988b89490a2ba8a2acbb4523"
+    },
+    "delta": [
+      {
+        "path": "generatedAt",
+        "before": "2026-11-07T21:57:44.656Z",
+        "after": "2026-11-08T18:35:15.893Z"
+      },
+      {
+        "path": "summary.requiresRelations",
+        "before": 2459,
+        "after": 2484
+      },
+      {
+        "path": "workQueue.relationRationales.requiresRelationsPending",
+        "before": 2459,
+        "after": 2484
+      }
+    ],
+    "sourceRationaleTextsAndAllOtherReportFieldsIdentical": true
+  },
+  "gapIssueDiagnostics": {
+    "unchanged": true,
+    "sha256": {
+      "docs/qa-ci/status/goal-source-rationale-gap-issues.json": "09acfd560a5deb22a133775f8ab0ae303f9e2a112cbf4ee393ec1325dba64e6f",
+      "docs/qa-ci/status/goal-source-rationale-gap-issues.md": "cd788a6e54d532e3440d11604e3923d311e43af4a4fea7d4ae1ccb2c5b794e21"
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "check:math-duration-composition-views"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/duration-composition-check.log",
+      "logSha256": "292d56fe43638f3ede9304189455790e739fe606ae53c1ec8230db80bc078904"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check:goal-source-rationale-coverage"
+      ],
+      "cwd": "app",
+      "exitCode": 1,
+      "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/rationale-coverage-before-check.log",
+      "logSha256": "ec1023315931014baa04a6b0fa7ed0f859c197f3dc1c8c181541100e3ca07db8"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "quality:goal-source-rationale-coverage"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/rationale-coverage-regenerate.log",
+      "logSha256": "26821d63eb1c3b6a828f69b976ab178d61544cf27508454b1cbce9ff744df659"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check:goal-source-rationale-coverage"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/rationale-coverage-final-check.log",
+      "logSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check:goal-source-rationale-gap-issues"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/rationale-gap-issues-check.log",
+      "logSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed"
+    }
+  ],
+  "unchangedSourceHashes": {
+    "app/scripts/generateMathDurationCompositionViews.ts": "817a3652b44ef182608d8277ae6a57aa2ac68d2d5401cb480079f010e420c79d",
+    "app/scripts/reportGoalSourceRationaleCoverage.ts": "1e73e1c3ef3e2202c8d897e5dcb38668edcac7f28bccd539acc732470b63ee58",
+    "app/scripts/reportGoalSourceRationaleGapIssues.ts": "8417faf1fbb839245093daddf2090c1fd972ea09074e33784b5c0117fe121a1c",
+    "app/scripts/prerequisiteReductionProof.ts": "234d9762adac6f40dba790fef86957522a3777c04b11e54f6043d3870b48255d",
+    "app/scripts/verifyPrerequisiteReductionSemanticKindBindings.ts": "67126515fd23aed17ca4c36891cd427bb78f21ec58deae869a6f6d208b371617",
+    "app/public/data/goal-source-rationales-math-public.json": "22219148aa74d70430ce1860d4a36aeabb7f13ec59c8f4736c7e7b8d7ed99a47",
+    "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json": "8a00eaa2c8fc112e1d9da2827364067490d113ab85c151bed68787212dbd69be"
+  },
+  "preservedLocalResults": [
+    {
+      "path": "app/node_modules/.tmp/g17-math-activation-20261108/native-class-receipt.json",
+      "sha256": "7b21ed713a153ff495d3dbcf96758aa6f4c0e47971224daba45f387db6401940",
+      "inputHashesStillMatch": true
+    },
+    {
+      "path": "app/node_modules/.tmp/g17-math-activation-20261108/canonical-projection-receipt.json",
+      "sha256": "4a03a8c722d5ab0a80c5174f6a9d245ef5488dfc79e5c840bdeb1d526f98c8f7",
+      "inputHashesStillMatch": true
+    },
+    {
+      "path": "app/node_modules/.tmp/g17-math-activation-20261108/regular-milestone-receipt.json",
+      "sha256": "005b6f76d4aa53cab8ec6dd6a0990a84ad748af29a8078739db52a97fabec98b",
+      "inputHashesStillMatch": true
+    }
+  ],
+  "executedProbe": {
+    "path": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/maintain-duration-input.mjs",
+    "sha256": "aa4feedf746780759973a97822038ab66fc53ec822af6fefbfa1cb35f3ca778d"
+  },
+  "maintenanceInstruction": {
+    "path": "docs/qa-ci/math-m7-concept-and-handoff-2026-09-28.md",
+    "lines": "390-393"
+  },
+  "claims": {
+    "newSourceReview": false,
+    "newLayoutReview": false,
+    "humanApproval": false,
+    "newLearnerCompletion": false,
+    "newLayoutOrSourceDecision": false,
+    "existingReviewStatusPreserved": true,
+    "comparatorFamiliesExpanded": false,
+    "generatorCheckerOrWorkflowChanged": false,
+    "freshRemoteCIStillRequired": true,
+    "nativeRerun": false,
+    "projectionRerun": false,
+    "cqrStatusRegenerated": false
+  },
+  "recordClarification": {
+    "recordedAt": "2026-11-08T18:42:15.286Z",
+    "reason": "A separately running CQR freshness check is distinct from status regeneration and native/projection reruns.",
+    "source": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/split-maintenance-claims.mjs",
+    "sourceSha256": "5665d15d524605391821762a135dd41eef3612ba38cbc15f80fa227608e4b3ee"
+  },
+  "cqrFreshnessCheckAfterMaintenance": {
+    "command": [
+      "npm",
+      "run",
+      "quality:curriculum-status:check"
+    ],
+    "cwd": "app",
+    "startedAt": "2026-11-08T18:38:35.219353+00:00",
+    "finishedAt": "2026-11-08T18:47:31.989959+00:00",
+    "exitCode": 0,
+    "unchangedInputs": true,
+    "inputCount": 29,
+    "inputManifestSha256": "9e6295d6160be974ae6f38fa78d670459db08872ffc89f7c4f407a525860c331",
+    "result": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/regular-milestone-check-after-repair.json",
+    "resultSha256": "af895c9e54b24ac87109b7c0fc400331539b5cdd1e546c2b7b5efc0a34dbe3b3",
+    "log": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/regular-milestone-check-after-repair.log",
+    "logSha256": "96f88b8f602efe66e9084adbec9011f980adf487b549fae9d280e3d4ed39faee",
+    "statusOutputsMatchPriorProducer": {
+      "docs/qa-ci/status/curriculum-quality-status.json": "17b6cdd151aad8fe251fc4fa99611dddc6c15a472ad06d2c62b559bf4da9550f",
+      "docs/qa-ci/status/curriculum-quality-status.md": "369b82432ad46aaead927cab732c9dfe3a075e994f140648e225e6c936d72440"
+    },
+    "recordedAt": "2026-11-08T18:51:10.103Z",
+    "recorder": "app/node_modules/.tmp/g17-pr96-ci-failure-20261108/record-cqr-freshness.mjs",
+    "recorderSha256": "3d642ffb33f7a8da3f544504445da8738a971f9dbaf91d5779821ca4f02d118e"
+  }
+}

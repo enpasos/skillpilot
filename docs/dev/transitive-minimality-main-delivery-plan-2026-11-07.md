@@ -142,9 +142,32 @@ Math-Frontiervergleiche enthalten 1.080 positive Kontrollen tatsächlich
 angebotener atomarer Ziele; historische Kontrollen bleiben erhalten.
 Die unveränderte Projektionsklasse bestand zusätzlich alle 58 Tests ohne
 Fehler oder Skips. Auditor-/Nachweissuite, Python-Brücke, Schema- und
-Dokumentationsprüfungen bestanden ebenfalls. Frische Remote-CI und
-Main-Lieferung dieses Batches stehen noch aus. Die vollständige atomare
-Reduktion und das harte Standard-Meilensteingate bleiben offen.
+Dokumentationsprüfungen bestanden ebenfalls. Die Lieferung liegt in
+[PR #96](https://github.com/enpasos/skillpilot/pull/96). Sein erster Remote-Lauf
+wies im Pflichtschritt `check:math-duration-composition-views` einen veralteten
+aktiven Raw-Inputpin des bestehenden Dauerlayoutplans zurück.
+Die [begrenzte Wartungsnotiz](canonical-math-duration-input-binding-review-2026-11-08.md)
+belegt den ausdrücklichen Anschluss `07749dae… → e28dea9e…` nach der bestehenden
+Pflegeanweisung: ausschließlich das eine Inputfeld ändert sich; alle 18 Views,
+83 Platzierungen, sieben Adjudikationen und fünf Quellen-Scope-Bindungen bleiben
+erhalten. Historische Reviews und die vier Vergleichsfamilien ändern sich nicht.
+Der zusätzlich tatsächlich veraltete Rationale-Coverage-Bericht wird regulär
+erneuert; nur Zeitstempel und die zwei rohen beziehungsweise offenen
+Relationszähler ändern sich von 2.459 auf 2.484. Der Gap-Issue-Check besteht mit
+unveränderten Dateien. Auch der separate reguläre CQR-Frischecheck einschließlich
+aller zehn geschützten Untergrenzen besteht; der CQR-Status wurde nicht neu
+generiert.
+
+Ein zweiter Remote-Befund betrifft den historischen Fingerprint-Kontrollwert im
+Physik-Buchtest: Er wurde unmittelbar aus dem inzwischen materialisierten
+Mathematikziel berechnet. Der Test nutzt dafür nun den bereits verifizierten
+ursprünglichen Snapshot und behält seinen historischen Erwartungswert bei.
+Er prüft zusätzlich das ausschließliche `requires`-Delta und weist einen
+fehlenden Nachweiskontext, falschen Fachbezug sowie unbescheinigte Änderungen
+zurück. Gemeinsame Fingerprintfunktion und Reviewbindungen bleiben unverändert.
+Frische Remote-CI am reparierten Stand und Main-Lieferung dieses Batches stehen
+noch aus. Die vollständige atomare Reduktion und das harte
+Standard-Meilensteingate bleiben offen.
 
 Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
 erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8
