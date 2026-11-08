@@ -40,3 +40,35 @@ erhalten (Gitblob `956463f046b98ffab69156b60131e8a8dced71bd`, Raw-SHA256
 bindet Alt-/Neuwerte, vollständigen Deltavergleich und tatsächliche Ausführung.
 
 Der vollständige unveränderte lokale Release-Modell-Conformancelauf ist mit Exit 0 bestanden: Fixtures, bestehende Bridge- und Mutationstests, unabhängige Validierung, aktuelle Redistribution- und Source-Bindungen sowie zwei bytegleiche Modellbuilds. Er lief wie der betroffene CI-Schritt mit `committed-bindings` und `SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false`; ein ZIP-Bau und eine Publikationsfreigabe gehören nicht zu diesem Beleg. Native-, Projektions- und CQR-Läufe wurden für diese reine Bindungspflege nicht zusätzlich wiederholt. Remote-CI bleibt ein eigener Nachweis.
+
+
+## Folgeanschluss für den atomar reduzierten Math-Stand
+
+Der anschließend fertig geprüfte Math-Nachlauf enthält ausschließlich 922
+`requires`-Löschungen in 490 atomaren Quellen (2484→1562 Kanten). Die sieben
+eingefrorenen Daten-/Proof-/Consumer-Inputs bleiben exakt erhalten, darunter
+Math-Raw `664b6d15…` und V4-Registry `94f65d33…`. Alle anderen Zielfelder,
+Feldpräsenzen und 20 übrige kanonische Dokumente sowie die alten
+204/200/21-Bindungen und beide V3-29er-Inventare bleiben unverändert.
+
+Die echte isolierte V4-Kompilation ermittelt den neuen Modell-Digest
+`sha256:5d3cf9c732f2417fd4fd3df95eef7496a80ab05555bc7f34c6f6481d3540213d`. Der unveränderte reguläre Generator bestätigt wieder ausschließlich
+`/contentDigest`; auch bytegenau wird nur der bisherige Wert
+`sha256:eec1b30025591b37014b7742635be15c71f0ad69020910051624b6021cd42ae6` ersetzt. Ledger und Shellkonstante
+werden jeweils mit einer Digestzeile angeschlossen. Alle 836 vollständigen
+Assetrecords, vier Klassenrecords und übrigen Bindungen bleiben identisch:
+839 offene Redistributionsprüfungen, null menschliche Freigaben in diesem
+Rechte-Ledger und `publicationReady: false`. Es entsteht keine neue Rechte-,
+Quellen-, Layout- oder Assetentscheidung.
+
+Die vollständigen Vorstände sind sowohl in Parent
+[`b973e78728`](https://github.com/enpasos/skillpilot/blob/b973e787282646402dea8fddac8b1a035277036c/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json)
+als auch im sichtbaren Merge
+[`55fa7011c5`](https://github.com/enpasos/skillpilot/blob/55fa7011c59b7fd06e6d9416bb758180ebf11ead/curricula/DE/Gymnasium/quality/package-redistribution/de-gymnasium-mathematik-v1.review.json)
+gebunden. Der neue kompakte
+[Receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-08/g17-math-tr-package-redistribution-input-binding/receipt.json)
+führt beide Ledger-/Shell-Gitblobs, getrennte Raw-SHAs, die sieben unveränderten
+Inputs und das tatsächliche Ausführungsergebnis. Der vorige V3-Wartungsbeleg
+und der vorstehende historische Notiztext bleiben erhalten.
+
+Der vollständige unveränderte lokale V4-Conformancelauf ist mit Exit 0 bestanden: 17 bestehende Bridge-Tests, Fixtures und Ausgabepfadschutz, unabhängige Modellvalidierung, aktuelle Redistribution-/Source-Bindungen samt bestehenden Negativtests und zwei bytegleiche Modellbuilds. Er lief mit `committed-bindings` und `SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false`. ZIP-Bau und Publikationsfreigabe sind nicht umfasst. Die eingefrorenen Native-, Projektions-, CQR-, npm- und Schema-Belege wurden nicht durch separate Wiederholungen ersetzt. Remote-CI bleibt ein eigener Nachweis.

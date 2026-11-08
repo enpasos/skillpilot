@@ -178,30 +178,40 @@ angeschlossen. Alle 836 Assetrecords, vier Klassenrecords, 839 offenen
 Prüfungen, null menschlichen Freigaben und `publicationReady: false` bleiben
 unverändert. Der vollständige lokale CI-Konformitätslauf bestand mit allen
 36 Eingaben unverändert, unabhängiger Modellvalidierung, den bisherigen
-Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Frische
-Remote-CI und Main-Lieferung stehen weiterhin aus.
+Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Die Reparatur
+ist als `b973e78728` in #96 committet und gepusht. Am frischen Commit bestehen
+die vier Begleitworkflows; der Hauptworkflow läuft noch. Die Main-Lieferung
+steht weiterhin aus.
 
 Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
 `5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
 Ihre lokalen Nachweis-, Auditor-, Python-, Schema-, nativen 1.240-Konfigurations-,
 58er-Projektions- und regulären Meilensteinprüfungen bestanden. Sie bleibt bis
-zur Main-Lieferung von #96 getrennt. Vor ihrem eigenen PR ist auch der bekannte
-Paket-Konformitätsanschluss am tatsächlichen reduzierten Datenstand auszuführen.
+zur Main-Lieferung von #96 getrennt. Der sichtbare Merge `55fa7011c5` nimmt
+den bekannten Paketanschluss aus #96 auf. Die isolierte tatsächliche
+V4-Kompilation ermittelt für den reduzierten Stand den Modell-Digest
+`5d3cf9c7…`; der unveränderte Generator ändert wieder ausschließlich
+`contentDigest`. Ledger und Shell-Pin werden mit je einer Digestzeile
+angeschlossen, alle 836 Asset- und vier Klassenrecords bleiben unverändert.
+Der vollständige lokale CI-Konformitätslauf an diesem Stand bestand mit
+38 unveränderten Eingaben, unabhängiger Modellvalidierung, sämtlichen
+bisherigen Gegenprüfungen und zwei bytegleichen Modellbuilds. Die
+Main-Lieferung von #96 bleibt Voraussetzung für den Folge-PR.
 Das harte Standard-Meilensteingate und der Gesamtauftrag bleiben offen.
 
-Die beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und gepusht;
-die fünf frischen PR-Workflows laufen. Die gezielte Physikprüfung mit ihren
+Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
+gepusht. Die gezielte Physikprüfung mit ihren
 Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
 ESLint sowie Dokumentations- und Terminologieprüfungen bestanden lokal.
 
-Der sichtbare IDE-Checkout bereitet nun auf
-`fix/g17-math-transitive-reduction`, ausgehend von diesem Reparaturcommit, den
-unmittelbar abhängigen atomaren Mathematikbatch vor. Die ausgeführte Vorprobe
+Der sichtbare IDE-Checkout bleibt auf
+`fix/g17-math-transitive-reduction`. Die ursprüngliche Vorprobe des inzwischen
+committeten atomaren Mathematikbatches
 findet 922 redundante Rohkanten aus 490 zusätzlichen Quellen: 2.484 atomare
 Anforderungen werden zu 1.562 reduziert; der bestehende Auditor findet danach
 keine Mathematikredundanz. Alle 6.524 tatsächlich kompilierten Geltungswerte
-bleiben gleich. Dies ist eine Vorprobe, noch keine native oder Remote-Abnahme.
-Der Batch ist inzwischen auf dem sichtbaren Branch angewendet. Der bestehende
+bleiben gleich. Der anschließende tatsächliche Endstand ist lokal einschließlich
+der nativen Vergleiche geprüft; Remote-Abnahme steht noch aus. Der bestehende
 Auditor bestätigt am tatsächlichen Endstand 1.253 Scopeknoten, 1.562 rohe und
 wirksame Anforderungen und keine Mathematikbefunde. Der vollständige neue
 Nachweis bestand in rund 89 Sekunden: unveränderter V3-Präfix, ursprüngliche
