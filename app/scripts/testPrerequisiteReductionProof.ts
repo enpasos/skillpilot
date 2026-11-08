@@ -253,6 +253,8 @@ try {
   const normalized = clusterFixture()
   const normalizedContext = await normalized.load()
   assert.ok(normalizedContext)
+  assert.throws(() => reviewBindingGoal(normalizedContext, 'proof-test:q', currentQ), /snapshot/u,
+    'a verified context from another snapshot cannot authorize the current goal')
   assert.equal(verifiedPrerequisiteReductionSummary(normalizedContext)!.proofContract,
     CLUSTER_PREREQUISITE_REDUCTION_CONTRACT)
   assert.deepEqual(reviewBindingGoal(normalizedContext, 'proof-test:k', normalized.current.goals[0]).requires, ['r'])
@@ -312,6 +314,23 @@ try {
   completeAtoms.operation.atomicWitnesses.push(['b', 'p', 'r'].map((id) => `proof-test:${id}`))
   completeAtoms.save()
   assert.ok(await completeAtoms.load())
+  const multiplePrerequisites = clusterBaseline()
+  multiplePrerequisites.goals[0].requires = ['s', 'r']
+  multiplePrerequisites.goals.find(({ id }) => id === 'p')!.requires = ['s', 'r']
+  multiplePrerequisites.goals.push(goal('s'))
+  const multipleCuts = clusterFixture(multiplePrerequisites)
+  await assert.rejects(multipleCuts.load, /replay differs/u,
+    'a second cluster-edge deletion must have its own declared operation')
+  multipleCuts.registry.removals.push({ source: 'proof-test:k', prerequisite: 'proof-test:s',
+    atomicWitnesses: [['a', 'p', 's'].map((id) => `proof-test:${id}`)] })
+  multipleCuts.save()
+  const multipleContext = await multipleCuts.load()
+  assert.ok(multipleContext)
+  assert.deepEqual(reviewBindingGoal(multipleContext, 'proof-test:k', multipleCuts.current.goals[0]).requires,
+    ['s', 'r'], 'multiple cuts share one exact ordered original raw array')
+  multipleCuts.registry.originalRequires[0].requires.reverse()
+  multipleCuts.save()
+  await assert.rejects(multipleCuts.load, /baseline document digest/u)
   await clusterReject(({ operation }) => operation.atomicWitnesses.push([...operation.atomicWitnesses[0]]), /descendant coverage/u)
   await clusterReject(({ operation }) => operation.atomicWitnesses.push(['proof-test:p', 'proof-test:r']), /descendant coverage/u)
   await clusterReject(({ operation }) => operation.atomicWitnesses[0] = ['proof-test:a', 'proof-test:unknown', 'proof-test:r'],

@@ -33,15 +33,40 @@ Hauptjobs. Die korrigierte atomare Norm und vollständige Regelzuordnung sind mi
 [`02cc64e622`](https://github.com/enpasos/skillpilot/commit/02cc64e622bedd0275f1f551235c1d2248dbe77f)
 geliefert; alle drei Jobs des frischen
 [Main-Dokumentationslaufs](https://github.com/enpasos/skillpilot/actions/runs/42455488379)
-bestanden. Der sichtbare Checkout liegt für den nächsten begrenzten
-Umsetzungsschritt auf `fix/g17-latin-cluster-normalization`, ausgehend von
-diesem Main-Commit.
+bestanden. Die erste atomar abgedeckte Clusterentfernung ist mit
+[PR #92](https://github.com/enpasos/skillpilot/pull/92) auf main bei
+[`8874cb9c56`](https://github.com/enpasos/skillpilot/commit/8874cb9c56d7726d48b237dce4eaeabfc5420ce4)
+geliefert. Der geprüfte PR-Head `9f32bfb15d` bestand alle fünf Pflichtworkflows
+und alle acht Haupt-CI-Jobs; der Merge hat exakt denselben Dateibaum.
+Der frische Main-Lauf von PR #92 bestand anschließend ebenfalls die fünf
+Repository-Workflows einschließlich aller acht Haupt-CI-Jobs.
+
+Die notwendige QA-Leserreparatur ist separat in
+[PR #93](https://github.com/enpasos/skillpilot/pull/93) bei `35f01974cd`
+gesichert: drei Node-Dateien, unveränderte Curriculumdaten und bestehender
+V2-Nachweisvertrag. Die isolierten lokalen Regressionen, die tatsächliche
+Physikprüfung und der reguläre Meilensteinlauf gegen unveränderte Main-Daten
+bestanden; alle zehn Fachfloors bleiben erhalten. Astra fand im Quellenreview
+keinen Blocker. Die volle agentische Copilot-Prüfung brach beim Setup mit
+HTTP 504 ab; das vorhandene Lite-Review mit drei Hinweisen wurde getrennt
+geprüft und im PR mit begründeter Einordnung erledigt. Die Snapshotguards
+bleiben strikt. Die Remote-CI des PR läuft noch; der PR ist damit noch keine
+Main-Lieferung.
+
+Der sichtbare Checkout liegt auf `fix/g17-covered-cluster-batch`,
+ausgehend von diesem unveränderten QA-Commit. Während seiner Remote-Prüfung
+wird ausschließlich der bereits vorgesehene mechanische 16er-Folgebatch
+fertiggestellt. PR #93 wird zuerst nach main geliefert; der Datenbatch erhält
+danach einen getrennten PR. Es wird kein weiterer Themenblock begonnen.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
 
-**Lieferregel:** Den jeweils kleinen, abgeschlossenen PR mit erfolgreicher
-Pflicht-CI nach main bringen, bevor der nächste Änderungsumfang begonnen wird.
+**Lieferregel:** Kleine, abgeschlossene PRs mit erfolgreicher Pflicht-CI
+geordnet nach main liefern. Die vorstehend ausdrücklich getrennten QA- und
+16er-G17-Schritte dürfen am unveränderten PR-Head parallel vorbereitet werden;
+die Lieferreihenfolge bleibt QA-Reparatur vor Datenbatch. Vor einem weiteren
+unabhängigen Änderungsumfang wird der laufende kleine PR abgeschlossen.
 Die Entwicklung bleibt im bereits geöffneten, sichtbaren
 IDE-Checkout; kein separater Arbeitsbaum.
 
@@ -79,30 +104,86 @@ freigegebene Löschliste. Er bewahrte atomare Wirkung, verletzte jedoch die
 vorgeschriebene Autorenrepräsentation und den korrekt ablehnenden M7-Floor.
 
 Die Dokumentationslieferung wurde getrennt von der nicht akzeptierten
-Datenänderung nach main übernommen. Der nächste Umsetzungsschritt im selben
-sichtbaren IDE-Checkout ist ein begrenzter Erhaltungsnachweis auf tatsächlichen
-Scopes und eine Latein-Korrektur: Der Cluster `e82cc731…` verliert seine
-Anforderung an `551f2d6c…`, wenn für jeden kanonischen atomaren Nachfahren ein
-überlebender direkt atomarer Voraussetzungspfad nachgewiesen ist. Zusätzliche
-Eingangsprüfungen schützen die bestehende Rollenrelation. Die bisherigen
-187 bescheinigten atomaren Entfernungen und ursprünglichen Katalogbindungen
-bleiben erhalten. Diese Lieferung ersetzt weder die folgenden mechanischen
-Fachbatches noch die verpflichtende Standard-Meilensteinanbindung. Brauchbare
+Datenänderung nach main übernommen. PR #92 hat anschließend den begrenzten
+Erhaltungsnachweis und die Latein-Korrektur geliefert: Der Cluster `e82cc731…`
+verliert seine Anforderung an `551f2d6c…`; jeder kanonische atomare Nachfahre
+besitzt einen überlebenden direkt atomaren Voraussetzungspfad. Eingangsprüfungen
+für die Quelle und alle nichtatomaren Nachfahren schützen die bestehende
+Rollenrelation. Die bisherigen 187 bescheinigten atomaren Entfernungen und
+ursprünglichen Katalogbindungen bleiben erhalten. Die native Regression bestand
+alle 1.240 Konfigurationen und alle 188 Quellen, einschließlich 161
+Latein-Frontiervergleichen. Diese Lieferung ersetzt weder die folgenden
+mechanischen Fachbatches noch die verpflichtende Standard-Meilensteinanbindung. Brauchbare
 Invarianztests und Vergleichsbindungen aus dem gesicherten WIP werden dafür
 einzeln geprüft übernommen. Die 173 falsch priorisierten Löschungen werden nicht
 blind zurückgespielt. Historische Inventare und Vorschauen im folgenden Plan
 ersetzen diese neue Zielpriorität nicht.
 
-Als direkte Folgelieferung nach diesem Main-Merge ist ein gemeinsamer Batch
-von 18 weiteren bereits atomar abgedeckten Clusteranforderungen vorbereitet:
-Biologie 2, Chemie 6, Physik 6, Wirtschaftswissenschaften 2 und Politik und
-Wirtschaft 2. Die Analyse umfasst 14 Clusterquellen mit 87 rohen atomaren
-Pfadzeugen; diese überleben auch die gemeinsame Entfernung. Die tatsächliche
-Applicability bleibt über alle 6.524 Ziele fachweise und gemeinsam unverändert.
-Dieser Befund ersetzt nicht die frische Nachweisprüfung, native Regression und
-CI der Folgelieferung. Es wird dafür kein neuer Nachweistyp eingeführt und keine
-atomare Autorenkante entfernt. Die anschließende vollständige Normalisierung
-und Standard-Meilensteinanbindung bleiben Teil desselben Goals.
+Die vorbereitete Folgelieferung wird auf 16 bereits atomar abgedeckte
+Clusteranforderungen begrenzt: Biologie 2, Chemie 6, Physik 6 sowie Politik und
+Wirtschaft 2. Nur `requires`-Arrays von zwölf Clusterquellen ändern sich;
+atomare Autorenkanten und `contains` bleiben erhalten. Der bestehende V2-Vertrag
+wird wiederverwendet, die bisherigen 188 Operationen und ursprünglichen
+Katalogbindungen bleiben erhalten. Der neue Gesamtstand hat 204 Operationen
+und 200 Quellen; für die 16 Ergänzungen überleben 81 rohe atomare Pfadzeugen.
+Auf dem eingefrorenen Stand bestanden die vollständige Auditor-/Nachweissuite
+mit echten Negativfällen, der tatsächliche Applicability-Vergleich und beide
+Atlas-Checks. Der reguläre Meilensteinproducer erreicht unverändert fünf M7-
+und fünf M6-Fächer; alle zehn geschützten Fachfloors bestehen.
+
+Die native lokale Regression bestand mit zwei Tests ohne Fehler oder Skips:
+1.240 reale Konfigurationen, 370.306 Hüllen-/Rollenvergleiche und 292.429
+Vorkommen tatsächlicher atomarer Scope-Targets. Alle 200 Quellen sind vollständig
+abgedeckt: 198 mit Live-Nachfahrenabdeckung und getrennt zwei nicht in aktuellen
+Views exponierte PoWi-Quellen über dieselben Produktions-APIs. Die sechs
+kanonischen Atomprobes schließen sechs harte Missing-Role-Gegenfälle ein;
+sie werden nicht als zusätzliche reale Benutzerkonfigurationen ausgegeben.
+Die Wirtschaftsregression erhält für HE-GK/LK die strikte Blockade ohne
+Orientierung in beiden Frames; auch die bestehenden Math-/Bio-/Lateinkontrollen
+bestehen. Quellenreview mit Astra ist ohne Blocker abgeschlossen. Das ist die
+lokale Abnahme dieses begrenzten Batches; der getrennte Remote-Lauf und die
+Main-Lieferung stehen noch aus. Die vollständige atomare Normalform und G17 in
+der Standard-Meilensteinprüfung sind damit weiterhin nicht abgenommen.
+
+Die zwei zunächst geplanten Wirtschafts-Cuts gehören weiterhin zur offenen
+Gesamtaufgabe, jedoch nicht zu diesem Batch: Ein echter HE-GK/LK-Backendtest
+zeigt beim atomar projizierten Abitur-Target einen Verlust der bisher
+blockierenden Orientierungsvoraussetzung. Der 18er-Stand ist damit nicht
+abgenommen. Ein pauschaler Adaptermodus würde zehn andere bestehende Makros
+strenger behandeln; ein selektives neues View-Feld berührt den bestehenden
+V1-Schema-/Profilvertrag und eine aktive Reviewbindung. Diese Verträge und
+Reviewpins werden nicht still fortgeschrieben. Die Wirtschaftsquellen bleiben
+im 16er-Batch unverändert; die echte Regression wird beibehalten. Ihre spätere
+technische Lösung bleibt ein ausdrücklich offener Main-Folgeschritt desselben
+Goals. Vollständige Normalisierung und Standard-Meilensteinanbindung bleiben
+weiterhin erforderlich.
+
+Die anschließende vollständige Atomnormalisierung hat einen konkreten
+technischen Folgeblock. Die folgende historische Vorschau bezieht sich auf
+den virtuellen 18er-Stand, nicht auf eine neue Vermessung des 16er-Batches:
+Eine virtuelle Prüfung des bei PR #92 gebundenen 21-Dateien-Bestands erhält `R_at` und `R_at+` und findet in den zehn Zielfächern
+keine atomaren Zyklen oder Auflösungsfehler. Nach dem 18er-Batch bleiben jedoch
+369 nichtatomare Beziehungen (26 Cluster→Atom, 270 Atom→Cluster,
+73 Cluster→Cluster). Ihre vollständige Darstellung ändert 407 `requires`-Quellen
+und materialisiert 4.765 bereits induzierte atomare Paare. Der bestehende
+Applicabilitycompiler liefert dabei 38 andere Werte: Biologie 11, Physik 19,
+Chemie 7, Informatik 1. Ursache sind die Auswertung roher Voraussetzungseingänge
+und ihres Autorenorts sowie anschließende Clusteraggregation; gleiche atomare
+Nachfrage allein erhält diese Berechnung nicht.
+
+Beispielsweise wechselt der Compilerwert von Bio `487c79f5…` von BY/HE zu
+`{}`: Die Jurisdiktionsdimension fehlt dann; das bedeutet laut Norm keine
+Jurisdiktionseinschränkung und keine explizit leere Gültigkeitsmenge.
+Informatik `de388e30…` wird von BY/HE/SL auf alle 16 Jurisdiktionen erweitert.
+Ein exakter Mengen-Cap allein wäre keine Lösung: `APV-102` beanstandet weiterhin
+eine neu direkte Anforderung von einer Quelle mit 16 Jurisdiktionen an eine
+Voraussetzung mit drei. Die bereits autorisierte `prerequisiteOnly`-Rolle trennt
+Unterstützung von Targets; sie ist keine automatische Applicability-Freigabe.
+Dieser Folgeblock benötigt einen isolierten technischen Nachweis und die
+Klärung des vorhandenen Scopevertrags vor seiner Umsetzung. Es werden weder
+Gültigkeitsbereiche still umgedeutet noch Validatoren ausgenommen oder fachliche
+Quellenentscheidungen neu getroffen. Die virtuelle Prüfung ist kein nativer
+Vorher-/Nachher-Frontiernachweis und keine Abnahme der Gesamtumstellung.
 
 ## Ein aktives Ziel, ein tatsächlicher Lieferweg
 
