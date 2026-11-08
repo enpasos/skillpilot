@@ -11,16 +11,31 @@ export const PREREQUISITE_REDUCTION_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json'
 export const PREREQUISITE_REDUCTION_CONTRACT = 'direct-atomic-leaf-prerequisite-reduction-v1' as const
 export const CLUSTER_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-descendant-covered-cluster-reduction-v2' as const
-type ProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
+export const ORDERED_PREREQUISITE_REDUCTION_CONTRACT = 'ordered-atomic-materialization-and-cluster-reduction-v3' as const
+type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
+type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
+export type AtomicPrerequisiteMaterialization = {
+  operation: 'materialize-atomic'
+  source: string
+  prerequisite: string
+  origin: {
+    source: string
+    prerequisite: string
+    sourceContainsPath: string[]
+    prerequisiteContainsPath: string[]
+  }
+}
+export type OrderedPrerequisiteReductionStep = AtomicPrerequisiteMaterialization
+  | (ClusterPrerequisiteReduction & { operation: 'remove-cluster' })
 const CANONICAL_PATH = 'curricula/DE/Gymnasium/canonical'
 const REPOSITORY_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 type RawGoal = Record<string, unknown> & { id: string; requires?: string[]; contains?: string[] }
 type Document = Record<string, unknown> & { landscapeId: string; goals: RawGoal[] }
-export interface PrerequisiteReductionRegistry {
+export interface LegacyPrerequisiteReductionRegistry {
   schemaVersion: 1
-  proofContract: ProofContract
+  proofContract: LegacyProofContract
   auditScope: 'origin-source-landscape-closure'
   catalogSources: Array<{
     path: string
@@ -31,6 +46,17 @@ export interface PrerequisiteReductionRegistry {
   originalRequires: Array<{ source: string; requires: string[] }>
   removals: Array<DirectPrerequisiteReduction | ClusterPrerequisiteReduction>
 }
+export interface OrderedPrerequisiteReductionRegistry extends Omit<LegacyPrerequisiteReductionRegistry, 'proofContract'> {
+  proofContract: typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT
+  v2Checkpoint: {
+    registryDigest: string
+    currentDocumentDigests: Array<{ path: string; currentDocumentDigest: string }>
+  }
+  // null preserves an absent requires field in the original full document.
+  suffixOriginalRequires: Array<{ source: string; requires: string[] | null }>
+  suffix: OrderedPrerequisiteReductionStep[]
+}
+export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
 
 declare const verifiedReduction: unique symbol
 export type VerifiedPrerequisiteReductionContext = Readonly<{ [verifiedReduction]: true }>
@@ -70,6 +96,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT) return parseOrderedRegistry(value)
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals'], 'registry')
   ensure(value.schemaVersion === 1 && (value.proofContract === PREREQUISITE_REDUCTION_CONTRACT
     || value.proofContract === CLUSTER_PREREQUISITE_REDUCTION_CONTRACT),
@@ -103,6 +130,48 @@ function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
     }
   }
   return value as unknown as PrerequisiteReductionRegistry
+}
+function parseOrderedRegistry(value: Record<string, unknown>): OrderedPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals',
+    'v2Checkpoint', 'suffixOriginalRequires', 'suffix'], 'ordered registry')
+  // The existing parser remains authoritative for every historical V2 field.
+  parseRegistry({ schemaVersion: value.schemaVersion, proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: value.auditScope, catalogSources: value.catalogSources,
+    originalRequires: value.originalRequires, removals: value.removals })
+  fields(value.v2Checkpoint, ['registryDigest', 'currentDocumentDigests'], 'V2 checkpoint')
+  const isDigest = (digest: unknown) => typeof digest === 'string' && /^sha256:[0-9a-f]{64}$/u.test(digest)
+  ensure(isDigest(value.v2Checkpoint.registryDigest) && Array.isArray(value.v2Checkpoint.currentDocumentDigests),
+    'invalid V2 checkpoint')
+  for (const entry of value.v2Checkpoint.currentDocumentDigests) {
+    fields(entry, ['path', 'currentDocumentDigest'], 'V2 checkpoint document')
+    ensure(nonempty(entry.path) && isDigest(entry.currentDocumentDigest), 'invalid V2 checkpoint document')
+  }
+  ensure(Array.isArray(value.suffixOriginalRequires), 'invalid suffix original requires')
+  for (const entry of value.suffixOriginalRequires) {
+    fields(entry, ['source', 'requires'], 'suffix original requires')
+    ensure(qualified(entry.source) && (entry.requires === null
+      || (Array.isArray(entry.requires) && entry.requires.every(nonempty))), 'invalid suffix original requires')
+  }
+  ensure(Array.isArray(value.suffix) && value.suffix.length > 0, 'empty ordered suffix')
+  for (const entry of value.suffix) {
+    ensure(object(entry), 'invalid ordered step')
+    if (entry.operation === 'materialize-atomic') {
+      fields(entry, ['operation', 'source', 'prerequisite', 'origin'], 'materialization')
+      fields(entry.origin, ['source', 'prerequisite', 'sourceContainsPath', 'prerequisiteContainsPath'], 'materialization origin')
+      ensure(qualified(entry.source) && qualified(entry.prerequisite) && qualified(entry.origin.source)
+        && nonempty(entry.origin.prerequisite)
+        && [entry.origin.sourceContainsPath, entry.origin.prerequisiteContainsPath].every((path) =>
+          Array.isArray(path) && path.length > 0 && path.every(qualified)), 'invalid materialization')
+    } else {
+      ensure(entry.operation === 'remove-cluster', 'unsupported ordered operation')
+      fields(entry, ['operation', 'source', 'prerequisite', 'atomicWitnesses'], 'ordered cluster removal')
+      // Reuse the strict V2 operation parser; no new removal kind is accepted.
+      parseRegistry({ schemaVersion: value.schemaVersion, proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+        auditScope: value.auditScope, catalogSources: value.catalogSources, originalRequires: value.originalRequires,
+        removals: [{ source: entry.source, prerequisite: entry.prerequisite, atomicWitnesses: entry.atomicWitnesses }] })
+    }
+  }
+  return value as unknown as OrderedPrerequisiteReductionRegistry
 }
 function catalogFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -215,6 +284,87 @@ function requireClusterWitnesses(operation: ClusterPrerequisiteReduction, goals:
   }
   ensure(covered.size === atoms.size, `atomic witness descendant coverage differs: ${source}`)
 }
+function requireContainsPath(path: string[], source: string, target: string, goals: ReadonlyMap<string, RawGoal>) {
+  ensure(path[0] === source && path.at(-1) === target && new Set(path).size === path.length,
+    `contains path endpoints differ or repeat a vertex: ${source} -> ${target}`)
+  for (let index = 0; index < path.length; index++) {
+    const key = path[index], goal = goals.get(key)
+    ensure(goal, `unknown contains path reference ${key}`)
+    if (index === path.length - 1) continue
+    ensure(goal.type === 'cluster' && Array.isArray(goal.contains)
+      && goal.contains.some((raw) => nonempty(raw) && resolveReference(raw, key, goals) === path[index + 1]),
+    `contains path edge is not directly authored: ${key} -> ${path[index + 1]}`)
+  }
+}
+function materializeAtomicPrerequisite(operation: AtomicPrerequisiteMaterialization, goals: ReadonlyMap<string, RawGoal>) {
+  const { source, prerequisite, origin } = operation
+  requireDirectWitness([source], goals)
+  requireDirectWitness([prerequisite], goals)
+  ensure(source !== prerequisite, `self materialization: ${source}`)
+  const goal = goals.get(source)!, originGoal = goals.get(origin.source)
+  ensure(goal.requires === undefined || Array.isArray(goal.requires), `invalid materialization requires: ${source}`)
+  ensure(!(goal.requires ?? []).some((raw) => resolveReference(raw, source, goals) === prerequisite),
+    `materialization is already directly authored: ${source} -> ${prerequisite}`)
+  ensure(originGoal && Array.isArray(originGoal.requires) && originGoal.requires.includes(origin.prerequisite),
+    `materialization origin is not directly authored: ${origin.source} -> ${origin.prerequisite}`)
+  const originPrerequisite = resolveReference(origin.prerequisite, origin.source, goals)
+  requireContainsPath(origin.sourceContainsPath, origin.source, source, goals)
+  requireContainsPath(origin.prerequisiteContainsPath, originPrerequisite, prerequisite, goals)
+  const [landscapeId, goalId] = prerequisite.split(':')
+  goal.requires = [...(goal.requires ?? []), landscapeId === source.split(':')[0] ? goalId : prerequisite]
+}
+function requireEndWitnesses(
+  operations: Array<DirectPrerequisiteReduction | ClusterPrerequisiteReduction>, goals: ReadonlyMap<string, RawGoal>,
+) {
+  for (const operation of operations) {
+    if ('witness' in operation) requireDirectWitness(operation.witness, goals)
+    else requireClusterWitnesses(operation, goals)
+  }
+}
+function removePrerequisite(
+  operation: DirectPrerequisiteReduction | ClusterPrerequisiteReduction,
+  documents: Document[], goals: ReadonlyMap<string, RawGoal>, removed: Set<string>,
+) {
+  const { source, prerequisite } = operation
+  const pair = `${source}->${prerequisite}`
+  ensure(!removed.has(pair), `duplicate removal ${pair}`)
+  removed.add(pair)
+  // Retain the auditor's exact source-closure validity and finding checks.
+  const audit = auditTransitiveMinimality(documents as AuditLandscape[], [source.split(':')[0]])
+  if ('witness' in operation) {
+    const { witness } = operation
+    ensure(witness[0] === source && witness.at(-1) === prerequisite, `witness endpoints differ: ${pair}`)
+    const finding = audit.findings.find((entry) => entry.source === source && entry.prerequisite === prerequisite)
+    ensure(finding && stableJson(finding.witness) === stableJson(witness), `no matching concrete auditor finding: ${pair}`)
+    requireDirectWitness(witness, goals)
+    ensure(finding.supportingOrigins.every((origin, index) =>
+      origin.source === witness[index] && origin.prerequisite === witness[index + 1]),
+    `v1 rejects inherited witness origins: ${pair}`)
+  } else requireClusterWitnesses(operation, goals)
+  const goal = goals.get(source)!, before = goal.requires ?? []
+  goal.requires = before.filter((raw) => resolveReference(raw, source, goals) !== prerequisite)
+  ensure(goal.requires.length < before.length, `no authored origin removed: ${pair}`)
+  requireEndWitnesses([operation], goals)
+}
+function historicalRegistry(registry: OrderedPrerequisiteReductionRegistry): LegacyPrerequisiteReductionRegistry {
+  const checkpoints = new Map(registry.v2Checkpoint.currentDocumentDigests.map((entry) => [entry.path, entry.currentDocumentDigest]))
+  ensure(checkpoints.size === registry.v2Checkpoint.currentDocumentDigests.length
+    && checkpoints.size === registry.catalogSources.length, 'V2 checkpoint paths are missing, new, or duplicated')
+  const historical: LegacyPrerequisiteReductionRegistry = {
+    schemaVersion: registry.schemaVersion, proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: registry.auditScope,
+    catalogSources: registry.catalogSources.map((entry) => {
+      const currentDocumentDigest = checkpoints.get(entry.path)
+      ensure(currentDocumentDigest, `V2 checkpoint source missing: ${entry.path}`)
+      return { ...entry, currentDocumentDigest }
+    }),
+    originalRequires: registry.originalRequires,
+    removals: registry.removals,
+  }
+  ensure(fingerprintPrerequisiteReductionDocument(historical) === registry.v2Checkpoint.registryDigest,
+    'historical V2 registry digest differs')
+  return historical
+}
 function deepFreeze<T>(value: T): T {
   if (value !== null && typeof value === 'object') {
     Object.values(value).forEach(deepFreeze)
@@ -255,6 +405,8 @@ export async function loadVerifiedPrerequisiteReductionContext({
     ensure(binding.currentDocumentDigest === fingerprintPrerequisiteReductionDocument(document),
       `current document digest differs: ${path}`)
   }
+  const ordered = registry.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT ? registry : undefined
+  const historical = ordered ? historicalRegistry(ordered) : registry
   const replayDocuments = structuredClone(currentDocuments)
   const replayGoals = goalIndex(replayDocuments)
   const restored = new Set<string>()
@@ -268,6 +420,22 @@ export async function loadVerifiedPrerequisiteReductionContext({
   const removalSources = new Set(registry.removals.map(({ source }) => source))
   ensure(restored.size === removalSources.size && [...restored].every((key) => removalSources.has(key)),
     'original requires must describe exactly the removal sources')
+  const affectedSources = new Set(removalSources)
+  if (ordered) {
+    const newSources = new Set(ordered.suffix.map(({ source }) => source).filter((source) => !restored.has(source)))
+    const overlaid = new Set<string>()
+    for (const entry of ordered.suffixOriginalRequires) {
+      ensure(newSources.has(entry.source) && !overlaid.has(entry.source),
+        `extra or duplicate suffix original requires: ${entry.source}`)
+      overlaid.add(entry.source)
+      const goal = replayGoals.get(entry.source)
+      ensure(goal, `unknown suffix original source ${entry.source}`)
+      if (entry.requires === null) delete goal.requires
+      else goal.requires = structuredClone(entry.requires)
+    }
+    ensure(overlaid.size === newSources.size, 'missing suffix original requires')
+    ordered.suffix.forEach(({ source }) => affectedSources.add(source))
+  }
   replayDocuments.forEach((document, index) => ensure(
     declared.get(loaded[index].path)!.baselineDocumentDigest === fingerprintPrerequisiteReductionDocument(document),
     `baseline document digest differs: ${loaded[index].path}`,
@@ -275,39 +443,30 @@ export async function loadVerifiedPrerequisiteReductionContext({
   const baselineDocuments = structuredClone(replayDocuments)
   const removed = new Set<string>()
   for (const operation of registry.removals) {
-    const { source, prerequisite } = operation
-    const pair = `${source}->${prerequisite}`
-    ensure(!removed.has(pair), `duplicate removal ${pair}`)
-    removed.add(pair)
-    // The existing auditor selects the source landscape's complete outgoing
-    // and inherited closure from this full catalog, as in its per-root CLI.
-    const audit = auditTransitiveMinimality(replayDocuments as AuditLandscape[], [source.split(':')[0]])
-    if ('witness' in operation) {
-      const { witness } = operation
-      ensure(witness[0] === source && witness.at(-1) === prerequisite, `witness endpoints differ: ${pair}`)
-      const finding = audit.findings.find((entry) => entry.source === source && entry.prerequisite === prerequisite)
-      ensure(finding && stableJson(finding.witness) === stableJson(witness), `no matching concrete auditor finding: ${pair}`)
-      requireDirectWitness(witness, replayGoals)
-      ensure(finding.supportingOrigins.every((origin, index) =>
-        origin.source === witness[index] && origin.prerequisite === witness[index + 1]),
-      `v1 rejects inherited witness origins: ${pair}`)
-    } else {
-      // The existing audit checks the complete source closure's input validity.
-      // This normalization step does not claim an old goal-node redundancy:
-      // its proof is complete surviving raw atomic coverage of all descendants.
-      requireClusterWitnesses(operation, replayGoals)
-    }
-    const goal = replayGoals.get(source)!
-    const before = goal.requires ?? []
-    goal.requires = before.filter((raw) => resolveReference(raw, source, replayGoals) !== prerequisite)
-    ensure(goal.requires.length < before.length, `no authored origin removed: ${pair}`)
-    if ('witness' in operation) requireDirectWitness(operation.witness, replayGoals)
-    else requireClusterWitnesses(operation, replayGoals)
+    removePrerequisite(operation, replayDocuments, replayGoals, removed)
   }
-  registry.removals.forEach((operation) => {
-    if ('witness' in operation) requireDirectWitness(operation.witness, replayGoals)
-    else requireClusterWitnesses(operation, replayGoals)
-  })
+  // Validate all historical witnesses before the suffix can add any support.
+  requireEndWitnesses(registry.removals, replayGoals)
+  if (ordered) {
+    replayDocuments.forEach((document, index) => ensure(
+      historical.catalogSources.find(({ path }) => path === loaded[index].path)!.currentDocumentDigest
+        === fingerprintPrerequisiteReductionDocument(document),
+      `V2 checkpoint document digest differs: ${loaded[index].path}`,
+    ))
+    for (const operation of ordered.suffix) {
+      if (operation.operation === 'materialize-atomic') {
+        materializeAtomicPrerequisite(operation, replayGoals)
+        // Cluster-target expansion can expose an atomic cycle that the old
+        // goal-node relation did not contain. Retain the existing validity gate;
+        // ordinary redundancy findings are allowed during materialization.
+        auditTransitiveMinimality(replayDocuments as AuditLandscape[], [operation.source.split(':')[0]])
+      } else removePrerequisite(operation, replayDocuments, replayGoals, removed)
+    }
+    // A future atomic-reduction contract needs explicit witness continuation.
+    // This bounded contract retains every literal historical end witness.
+    requireEndWitnesses(registry.removals, replayGoals)
+    requireEndWitnesses(ordered.suffix.filter((step) => step.operation === 'remove-cluster'), replayGoals)
+  }
   ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
     'replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
   const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
@@ -327,7 +486,7 @@ export async function loadVerifiedPrerequisiteReductionContext({
     auditScope: registry.auditScope,
     registryPath,
     registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
-    affectedGoalIds: [...removalSources].sort(),
+    affectedGoalIds: [...affectedSources].sort(),
   })
   verifiedContexts.set(context, { current: currentGoals, baseline: goalIndex(baselineDocuments), summary })
   return context
