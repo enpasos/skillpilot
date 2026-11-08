@@ -7,6 +7,13 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import type { LearningGoal } from '../src/landscapeTypes'
 import type { GoalBookReviewBundleManifest } from './exportGoalBookReviewBundle'
 import { GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION, fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import {
+  CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+  fingerprintPrerequisiteReductionDocument,
+  loadVerifiedPrerequisiteReductionContext,
+  type PrerequisiteReductionRegistry,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 import { fingerprintGoalForEvidence } from './goalEvidenceProfileModel'
 import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
 import {
@@ -232,6 +239,111 @@ assert.equal(hasIntactResolutionSupersessionChain(currentChain, currentHistory, 
   'A valid sibling retirement cannot weaken a current atomic terminal readiness gate.')
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+const reductionParent = resolve(repo, 'app/node_modules/.tmp')
+mkdirSync(reductionParent, { recursive: true })
+const reductionRoot = mkdtempSync(join(reductionParent, 'semantic-retirement-reduction-'))
+try {
+  type RawGoal = Record<string, unknown> & { id: string; type: string; contains: string[]; requires?: string[] }
+  let reductionNumber = 0
+  const reductionFixture = async (retiredSource = false, foreignSnapshot = false) => {
+    const f = fixture()
+    const goals = structuredClone(f.landscape.goals) as RawGoal[]
+    const sourceId = retiredSource ? 'retired-a' : 'covered-cluster'
+    const atomId = retiredSource ? 'current-a' : 'covered-atom'
+    const prerequisiteId = 'raw-atomic-prerequisite'
+    if (!retiredSource) {
+      goals.push({ id: sourceId, type: 'cluster', title: foreignSnapshot ? 'Other verified snapshot' : 'Covered cluster',
+        contains: [atomId], requires: [prerequisiteId] })
+      goals.push({ id: atomId, type: 'atomic', contains: [], requires: [prerequisiteId] })
+    } else {
+      goals.find(({ id }) => id === sourceId)!.requires = [prerequisiteId]
+      goals.find(({ id }) => id === atomId)!.requires = [prerequisiteId]
+    }
+    goals.push({ id: prerequisiteId, type: 'atomic', contains: [], requires: [] })
+    const baseline = { landscapeId: 'fixture', goals }
+    const decisions = goals.map((g) => ({
+      goalId: g.id, sourceFingerprint: fingerprintSemanticKindSourceGoal(g),
+      semanticKind: g.type === 'cluster' ? 'curricularArea' : 'curricularAtomic', decisionStatus: 'authoritative',
+    }))
+    if (retiredSource) {
+      f.config.resolutionSemanticRetirements[0].currentSourceFingerprint = decisions
+        .find(({ goalId }) => goalId === sourceId)!.sourceFingerprint
+    }
+    const current = structuredClone(baseline)
+    current.goals.find(({ id }) => id === sourceId)!.requires = []
+    const directory = join(reductionRoot, String(reductionNumber++))
+    mkdirSync(join(directory, 'fixture'), { recursive: true })
+    writeFileSync(join(directory, f.config.landscapePath), JSON.stringify(current))
+    const registry: PrerequisiteReductionRegistry = {
+      schemaVersion: 1, proofContract: CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
+      auditScope: 'origin-source-landscape-closure',
+      catalogSources: [{ path: f.config.landscapePath, landscapeId: 'fixture',
+        baselineDocumentDigest: fingerprintPrerequisiteReductionDocument(baseline),
+        currentDocumentDigest: fingerprintPrerequisiteReductionDocument(current) }],
+      originalRequires: [{ source: `fixture:${sourceId}`, requires: [prerequisiteId] }],
+      removals: [{ source: `fixture:${sourceId}`, prerequisite: `fixture:${prerequisiteId}`,
+        atomicWitnesses: [[`fixture:${atomId}`, `fixture:${prerequisiteId}`]] }],
+    }
+    writeFileSync(join(directory, 'proof.json'), JSON.stringify(registry))
+    const context = await loadVerifiedPrerequisiteReductionContext({
+      repositoryRoot: directory, registryPath: 'proof.json', catalogPath: 'fixture',
+    })
+    assert.ok(context)
+    const atomic = decisions.filter(({ semanticKind }) => semanticKind === 'curricularAtomic').length
+    return { context, inputs: { ...f, landscape: current, semanticKindLedger: {
+      ...f.semanticKindLedger, decisions,
+      counts: { curricularAtomic: atomic, curricularArea: decisions.length - atomic, total: decisions.length },
+    } } }
+  }
+  const covered = await reductionFixture()
+  const strict = validateResolutionSemanticRetirements(covered.inputs)
+  assert.match(strict.issues.join('\n'), /current authoritative semantic source for covered-cluster/u)
+  assert.equal(strict.digestsByIndex.size, 0, 'without a context an unrelated reduced cluster remains stale')
+  const certified = validateResolutionSemanticRetirements({
+    ...covered.inputs, prerequisiteReductionContext: covered.context,
+  })
+  assert.deepEqual(certified.issues, [])
+  assert.equal(certified.digestsByIndex.get('old.json')?.size, 3)
+  const currentBindings = structuredClone(covered.inputs)
+  currentBindings.semanticKindLedger.decisions.forEach((decision) => {
+    decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(currentBindings.landscape.goals
+      .find(({ id }) => id === decision.goalId)!)
+  })
+  assert.deepEqual(validateResolutionSemanticRetirements({
+    ...currentBindings, prerequisiteReductionContext: covered.context,
+  }).issues, [], 'fresh current semantic decisions remain valid too')
+  const foreign = await reductionFixture(false, true)
+  for (const [label, context] of [
+    ['forged', {} as VerifiedPrerequisiteReductionContext], ['foreign', foreign.context],
+  ] as const) {
+    const rejected = validateResolutionSemanticRetirements({
+      ...currentBindings, prerequisiteReductionContext: context,
+    })
+    assert.ok(rejected.issues.length > 0, `${label} context cannot bypass a matching current fingerprint`)
+    assert.equal(rejected.digestsByIndex.size, 0)
+  }
+  const changedSnapshot = structuredClone(currentBindings)
+  const changed = changedSnapshot.landscape.goals.find(({ id }) => id === 'covered-cluster')!
+  changed.examples = ['unverified current snapshot']
+  changedSnapshot.semanticKindLedger.decisions.find(({ goalId }) => goalId === changed.id)!.sourceFingerprint =
+    fingerprintSemanticKindSourceGoal(changed)
+  const changedProof = validateResolutionSemanticRetirements({
+    ...changedSnapshot, prerequisiteReductionContext: covered.context,
+  })
+  assert.ok(changedProof.issues.length > 0, 'a freshly matching fingerprint cannot approve a changed snapshot')
+  assert.equal(changedProof.digestsByIndex.size, 0)
+  const retiredCut = await reductionFixture(true)
+  const retiredProof = validateResolutionSemanticRetirements({
+    ...retiredCut.inputs, prerequisiteReductionContext: retiredCut.context,
+  })
+  assert.ok(!retiredProof.issues.some((issue) => issue.includes('current authoritative semantic source')),
+    'the general semantic-kind comparison recognizes the certified baseline')
+  assert.match(retiredProof.issues.join('\n'), /current semantic source fingerprint is stale/u,
+    'the retired goal itself must still satisfy its separate raw-current fingerprint pins')
+  assert.equal(retiredProof.digestsByIndex.size, 0)
+} finally {
+  rmSync(reductionRoot, { recursive: true, force: true })
+}
 const schema = JSON.parse(readFileSync(resolve(repo,
   'curricula/DE/Gymnasium/quality/deep-understanding-rollout/deep-understanding-rollout.schema.json'), 'utf8'))
 const validate = new Ajv2020({ strict: true, allErrors: true }).compile(schema)

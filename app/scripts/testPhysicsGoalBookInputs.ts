@@ -21,6 +21,11 @@ import {
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
+import {
+  loadVerifiedPrerequisiteReductionContext,
+  reviewBindingGoal,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 import { HE_LK_ONLY_QUANTUM_GOAL_IDS, stripHeQuantumOverridesFromClonedView } from './lib/hePhysicsQuantumScope'
 
 type SemanticKind =
@@ -104,6 +109,7 @@ interface SourceManifest {
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
 const LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
 const LANDSCAPE_PATH = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'
 const ATOMICITY_CONFIG_PATH = 'curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json'
@@ -1324,13 +1330,43 @@ const actualCounts: SemanticKindLedger['counts'] = {
   orientation: 0,
   total: 0,
 }
+const semanticKindSourceMatches = (
+  decision: Pick<SemanticKindDecision, 'goalId' | 'sourceFingerprint'>,
+  rawGoal: Record<string, unknown>,
+  context: VerifiedPrerequisiteReductionContext | undefined,
+): boolean => {
+  // Validate even a currently matching fingerprint against the opaque snapshot.
+  const historical = reviewBindingGoal(context, `${LANDSCAPE_ID}:${decision.goalId}`, rawGoal)
+  return decision.sourceFingerprint === sourceFingerprint(rawGoal, fingerprintContract)
+    || (context !== undefined && decision.sourceFingerprint === sourceFingerprint(historical, fingerprintContract))
+}
+const currentBindingFixture = rawLandscape.goals[0]
+const currentMatchingDecision = {
+  goalId: String(currentBindingFixture.id), sourceFingerprint: sourceFingerprint(currentBindingFixture, fingerprintContract),
+}
+assert.throws(() => semanticKindSourceMatches(currentMatchingDecision, currentBindingFixture,
+  {} as VerifiedPrerequisiteReductionContext), /forged/u)
+if (prerequisiteReductionContext) {
+  assert.throws(() => semanticKindSourceMatches({ ...currentMatchingDecision, goalId: String(mathFixtureGoal.id) },
+    currentBindingFixture, prerequisiteReductionContext), /snapshot/u, 'a foreign goal binding cannot authorize a matching hash')
+  const changedBindingFixture = { ...currentBindingFixture, examples: ['unverified snapshot change'] }
+  assert.throws(() => semanticKindSourceMatches({ ...currentMatchingDecision,
+    sourceFingerprint: sourceFingerprint(changedBindingFixture, fingerprintContract),
+  }, changedBindingFixture, prerequisiteReductionContext), /snapshot/u,
+  'a freshly matching fingerprint cannot authorize a changed current snapshot')
+}
 ledger.decisions.forEach((decision) => {
   assert(!decisionByGoalId.has(decision.goalId), `duplicate semantic-kind decision ${decision.goalId}`)
   const goal = goalById.get(decision.goalId)
   const rawGoal = rawGoalById.get(decision.goalId)
   assert(goal && rawGoal, `obsolete semantic-kind decision ${decision.goalId}`)
   assert.equal(decision.decisionStatus, 'authoritative')
-  assert.equal(decision.sourceFingerprint, sourceFingerprint(rawGoal, fingerprintContract), `stale source fingerprint ${decision.goalId}`)
+  if (decision.sourceFingerprint !== sourceFingerprint(rawGoal, fingerprintContract)) {
+    assert.equal(semanticKindSourceMatches(decision, rawGoal, undefined), false,
+      `without a context the original stale source guard remains strict: ${decision.goalId}`)
+  }
+  assert(semanticKindSourceMatches(decision, rawGoal, prerequisiteReductionContext),
+    `stale source fingerprint ${decision.goalId}`)
   assert.deepEqual(
     { semanticKind: decision.semanticKind, decisionBasis: decision.decisionBasis },
     explicitClassification(goal, reviewedAtomicGoalIds, goalById, parentIdsByChild),

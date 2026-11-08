@@ -600,6 +600,7 @@ export const validateResolutionSemanticRetirements = ({
   semanticKindLedger,
   indices,
   scopeIssues = [],
+  prerequisiteReductionContext,
 }: {
   config: Pick<DeepUnderstandingSubjectConfig,
     'landscapePath' | 'resolutionIndexPaths' | 'resolutionSemanticRetirements' | 'resolutionWithdrawals'>
@@ -607,6 +608,7 @@ export const validateResolutionSemanticRetirements = ({
   semanticKindLedger: SemanticKindLedger
   indices: readonly { path: string; index: unknown }[]
   scopeIssues?: readonly string[]
+  prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext
 }): ValidatedResolutionSemanticRetirements => {
   const issues: string[] = []
   const digestsByIndex = new Map<string, Map<string, string>>()
@@ -645,8 +647,17 @@ export const validateResolutionSemanticRetirements = ({
       if (
         !goal || !semanticKinds.includes(decision.semanticKind as typeof semanticKinds[number])
         || decision.decisionStatus !== 'authoritative'
-        || decision.sourceFingerprint !== fingerprintSemanticKindSourceGoal(goal)
-      ) issues.push(`semantic retirement requires a current authoritative semantic source for ${decision.goalId}`)
+      ) {
+        issues.push(`semantic retirement requires a current authoritative semantic source for ${decision.goalId}`)
+        continue
+      }
+      const historicalFingerprint = fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+        prerequisiteReductionContext, `${landscape.landscapeId}:${decision.goalId}`, goal,
+      ))
+      const currentFingerprint = fingerprintSemanticKindSourceGoal(goal)
+      if (decision.sourceFingerprint !== currentFingerprint && decision.sourceFingerprint !== historicalFingerprint) {
+        issues.push(`semantic retirement requires a current authoritative semantic source for ${decision.goalId}`)
+      }
     } catch {
       issues.push(`semantic retirement cannot verify semantic source for ${decision.goalId}`)
     }
@@ -1617,6 +1628,7 @@ const loadDescriptionReadyGoals = async (
         semanticKindLedger: loadJson<SemanticKindLedger>(config.semanticKindLedgerPath),
         indices: config.resolutionIndexPaths.map((path) => ({ path, index: loadJson<unknown>(path) })),
         scopeIssues: scope.issues,
+        prerequisiteReductionContext,
       })
       semanticRetirements.issues.forEach((issue) => addIssue(issues, config.subject, issue))
     } catch (error) {
