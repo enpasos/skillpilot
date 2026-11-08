@@ -69,7 +69,7 @@ def main():
     build_dir.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
     # A fixed document timestamp makes same-toolchain rebuilds comparable.
-    env["SOURCE_DATE_EPOCH"] = "1793750400"  # 2026-11-04 00:00:00 UTC
+    env["SOURCE_DATE_EPOCH"] = "1794096000"  # 2026-11-08 00:00:00 UTC
     env["FORCE_SOURCE_DATE"] = "1"
     if args.texmf:
         tree = args.texmf.resolve()
@@ -146,7 +146,7 @@ def main():
     atomic_write(target, (build_dir / target.name).read_bytes())
     version = subprocess.check_output(["lualatex", "--version"], text=True).splitlines()[0]
     manifest = {
-        "documentDate": "2026-11-04",
+        "documentDate": "2026-11-08",
         "engine": version,
         "sourceDateEpoch": env["SOURCE_DATE_EPOCH"],
         "pdf": {"path": str(target.relative_to(root)), "sha256": digest(target)},

@@ -276,10 +276,13 @@ A **learning-flow view** depicts the inverse relation $R^{-1}$: an arrow $p\to g
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-03 -->
 
-### 5.2 Canonical modeling target (recommended)
+<a id="52-canonical-modeling-target-recommended"></a>
 
-The formal model allows direct prerequisite edges between arbitrary goals in $G$.
-However, for high-quality and mature curricula, the **canonical prerequisite layer** SHOULD primarily live between atomic goals:
+### 5.2 Binding canonical atomic target
+
+The compatibility model can read direct prerequisite edges between arbitrary
+goals in $G$. Under the Product Owner decision of **8 November 2026**, the
+canonical target state MUST author **every** prerequisite between atomic goals:
 
 $$
 R \subseteq A \times A
@@ -287,15 +290,22 @@ $$
 
 Interpretation:
 
-- atomic goals carry the precise didactic sequencing logic,
-- cluster goals remain useful for navigation, filtering, and aggregation,
-- cluster-level `requires` edges are best treated as a transitional authoring aid or as an intentionally strong universal statement.
+- both the source and the prerequisite of every authored `requires` are atomic;
+- clusters remain useful for navigation, filtering, aggregation and derived dependency summaries;
+- any `requires` with a cluster at either end is transitional data, including a claim that applies universally to a cluster's descendants. There is no permanent universal-cluster exception.
 
-If a direct prerequisite is authored on a cluster goal, it is stronger than a mere summary: under the semantics in §6 it constrains descendants via inheritance.
+Existing cluster requirements remain meaningful under §6: an outgoing cluster
+requirement constrains descendants through inheritance; a cluster prerequisite
+expands to its atomic basis. This compatibility semantics does not fulfill the
+canonical target norm. Migration MUST first materialize or retain the complete
+reviewed atomic prerequisite relationships, then remove non-atomic requirements
+once their atomic coverage is proved, and only then reduce atomic redundancy
+(§7.3). It MUST NOT remove atomic relationships in order to retain their cluster
+equivalents.
 
 **Quality-assurance requirements.** In the [curriculum quality model](../../qa-ci/curriculum-quality-maturity-and-routes.md), curriculum maturity **M3 and above** requires `CQR-101`, `CQR-102` and `CQR-103` to pass in every configured QA route scope. `CQR-102` requires direct atomic-to-atomic route coverage; `CQR-103` requires clusters selected by each scope's `clusterSelector` to have no direct `requires`. These scoped maturity gates do not by themselves prohibit every cluster-related edge in the full graph.
 
-[Graph Validation Rules](../../qa-ci/graph-validation-rules.md) defines the additional enforcement profiles. In particular, `GVR-013` prohibits direct local `requires` from selected atomic goals to cluster prerequisites within its configured scope. A maturity level and a validator rule must be interpreted with their applicable scope, not as a repository-wide guarantee that $R\subseteq A\times A$.
+[Graph Validation Rules](../../qa-ci/graph-validation-rules.md) defines the additional enforcement profiles. In particular, `GVR-013` prohibits direct local `requires` from selected atomic goals to cluster prerequisites within its configured scope. `CQR-102` and `GVR-012` continue to require direct atomic routes; inherited cluster paths are not substitutes. A maturity level and a validator rule must be interpreted with their applicable scope, not as a repository-wide guarantee that $R\subseteq A\times A$. The target norm is binding; this specification does not claim that current data or CI already satisfy or enforce it everywhere.
 
 ### 5.3 DAG constraint
 
@@ -411,6 +421,12 @@ as additional prerequisite edges.
 
 ---
 
+The [complete rule-to-milestone matrix](../../qa-ci/graph-definition-rule-milestone-matrix.md)
+separates the required minimum milestone from present enforcement and its scope.
+Full atomic normal form and the complete G17 check are required before any
+curriculum milestone pass M1–M7; M0 is not a validity certificate. Existing
+profile-specific route gates do not yet prove this global basis contract.
+
 ## 7. Validity constraints
 
 The constraints in this section apply in addition to the goal-attribute, identifier and relation requirements defined in §§1–5. Full-graph validity is summarized in §10.
@@ -441,9 +457,12 @@ The authored `requires` graph contains the acyclic chain $A \to X \to B$. Since 
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-05 -->
 
-### 7.2 Local minimality
+<a id="72-local-minimality"></a>
 
-A direct prerequisite MUST NOT be redundantly stated on a node if it is already inherited from an ancestor.
+### 7.2 Local duplicate diagnosis in transitional data
+
+In a graph still containing cluster requirements, a direct prerequisite can
+duplicate one inherited from an ancestor. The former local-minimality test was:
 
 $$
 \forall g,p\in G:
@@ -451,45 +470,98 @@ $$
 \neg \exists a\in Ancestors(g): (a,p)\in R
 $$
 
-### 7.3 Transitive minimality
+This remains a useful diagnosis of legacy authoring, but MUST NOT be used as a
+deletion instruction against the atomic target. If atomic $q$ directly requires
+atomic $p$ and a contains ancestor $k$ also requires $p$, retain $(q,p)$ while
+materializing the complete reviewed atomic coverage of $(k,p)$; then remove the
+cluster edge. In the target state $R\subseteq A\times A$, ancestors are clusters
+with no outgoing requirements, so this local duplicate condition holds
+automatically.
 
-Authored requirements MUST be transitively minimal. For each authored edge
-$(g,p)\in R$, remove that edge and recompute effective prerequisites from the
-unchanged containment relation:
+<a id="73-transitive-minimality"></a>
+
+### 7.3 Atomic transitive minimality and ordered migration (G17)
+
+The canonical target MUST satisfy both $R\subseteq A\times A$ (§5.2) and
+**atomic transitive minimality**:
+
+$$
+\forall(a,b)\in R:\qquad
+(a,b)\notin\big(R\setminus\{(a,b)\}\big)^+.
+$$
+
+For $Q\to B\to A$, the extra atomic edge $Q\to A$ is redundant. The remaining
+path still requires A even if B is mastered. Transitive closure is derived,
+never stored as additional authored edges. The binding 4 November requirement
+of transitive minimality remains in force; the 8 November decision fixes its
+atomic target and migration priority.
+
+**Required migration order.** Keep $C$ and stable goal identities unchanged:
+
+1. Resolve the existing prerequisite meaning using §6.4: inherit through
+   $contains$, expand prerequisite clusters into atoms, then take $R_{at}^+$.
+   Materialize or retain the complete reviewed atomic prerequisite relationships
+   before removing any non-atomic requirement. Existing atomic relationships
+   MUST NOT be removed merely because a cluster currently supplies an equivalent
+   path. Full atomic demand does not mean authoring every transitive pair as a
+   direct edge.
+2. Remove each `requires` whose source or prerequisite is non-atomic only after
+   proving that the authored atomic relationships cover its full atomic demand.
+   All such non-atomic requirements MUST be absent in the final target state,
+   including inherited duplicates and universally applicable cluster claims.
+3. Transitively reduce the resulting atomic relation, preserving its full
+   prerequisite closure.
+
+For the complete migration, the prerequisite-demand proof MUST establish:
+
+$$
+(R_{at}^{\mathrm{before}})^+
+= (R_{at}^{\mathrm{after}})^+
+= R_{\mathrm{after}}^+,
+\qquad R_{\mathrm{after}}\subseteq A\times A.
+$$
+
+Use the existing $R_{at}$ definition, not closure on raw goal nodes. The proof
+MUST also preserve the relevant resolved-scope, applicability, target, frontier,
+completion and mastery contracts. Equal global atomic closure alone does not
+prove those additional contracts, including direct atomic route gates and
+authored projection roles. Non-atomic goal-node prerequisite reachability may
+change when cluster edges are removed; preserving it is not the target norm.
+The migration MUST NOT automatically invent subject dependencies, infer roles,
+relax `CQR-102`/`GVR-012`, award mastery or rewrite learner state. An inconsistent
+legacy prerequisite claim needs separate subject review; normalization is not
+permission to silently discard it.
+
+**Legacy edge-removal diagnosis.** The former G17 test removed each authored
+edge $(g,p)\in R$ and recomputed effective prerequisites from unchanged $C$:
 
 $$
 R'=R\setminus\{(g,p)\},\qquad
 R'_{\mathrm{effective}}=effective(C,R').
 $$
 
-The removed requirement MUST NOT remain reachable through another effective
-path:
+It diagnosed a removable edge when the removed requirement remained reachable
+through another effective path; the corresponding minimality test was:
 
 $$
 \forall(g,p)\in R:\qquad
 (g,p)\notin(R'_{\mathrm{effective}})^+.
 $$
 
-This includes alternative paths contributed by inheritance, not just raw
-authored paths. With purely atomic prerequisites and no inheritance, it reduces
-to $(g,p)\notin(R\setminus\{(g,p)\})^+$. Local minimality separately diagnoses
-requirements directly duplicated by inheritance (§7.2).
-
-For $Q\to B\to A$, the extra edge $Q\to A$ is redundant. Full prerequisite
-reachability still includes A if B is mastered. The 31 October text abolishing
-this condition was unsupported and is superseded by the binding 4 November
-decision. Local duplicate inheritance (§7.2) is a separate redundancy check.
-
-Transitive closure is derived, never stored as additional authored edges.
-Reduction is not a learner-state operation: authoring reviews must still
-preserve source meaning, containment/inheritance and applicable validation
-contracts rather than mechanically rewriting a legacy graph.
+This includes inherited paths and is mathematically useful for existing data.
+It does not determine the correct deletion priority during atomarization. The
+current removal auditor still checks this legacy effective goal-node criterion;
+its result alone does not certify the ordered migration or the atomic target.
+Only after $R\subseteq A\times A$ does this criterion coincide with the atomic
+minimality rule above. In transitional data, apply the migration order rather
+than deleting an atomic edge in favour of a retained cluster requirement.
 
 ---
 
 ## 8. Recommended structural rules
 
 The following are common modeling rules that typically improve graph quality. They may be treated as warnings or enforced as hard constraints depending on the product needs.
+The reminder in §8.4 refers to the binding target in §5.2; it is not an optional profile.
 
 ### 8.1 Avoid requiring descendants
 
@@ -519,15 +591,17 @@ $$
 \forall c\in G:\ \left|\{\,p\in G \mid (p,c)\in C\,\}\right| \le 1
 $$
 
-### 8.4 Prefer atomic prerequisite authoring
+<a id="84-prefer-atomic-prerequisite-authoring"></a>
 
-For mature landscapes, the actual didactic sequencing SHOULD be authored on atomic goals first.
+### 8.4 Apply the binding atomic prerequisite target
+
+The binding target and migration order are defined in §§5.2 and 7.3.
 
 Practical guidance:
 
-- Prefer adding `requires` edges between atomic goals instead of between clusters.
-- Use cluster-level `requires` only temporarily during early modeling, or when the prerequisite claim truly applies to all relevant descendants.
-- When refining a curriculum over time, move broad cluster dependencies downward into the relevant atomic goals and let higher-level dependency views be derived from that atomic layer.
+- Author `requires` with atomic goals at both ends.
+- Treat all existing cluster-related requirements as transitional, including universal claims.
+- First establish their complete reviewed atomic coverage, then remove non-atomic requirements, then reduce atomic redundancy. Derive higher-level dependency views from that atomic layer.
 
 This keeps frontier logic precise and avoids over-blocking learners with coarse prerequisites.
 
@@ -791,16 +865,21 @@ practice of an already achieved goal remains possible without revoking credit.
 
 ## 10. Summary of required validity conditions
 
-A skill graph $(G,C,R)$ is valid iff:
+A skill graph $(G,C,R)$ satisfies the canonical target validity conditions iff:
 
 1. $Id$ is injective on $G$
 2. $(G,C)$ is acyclic (containment DAG / polyhierarchy; multiple parents allowed)
 3. $(G,R)$ is a DAG
 4. $R_{\mathrm{effective}}$ and its normalized atomic relation $R_{at}$ are acyclic
-5. $R$ satisfies local and transitive minimality (§§7.2–7.3)
+5. $R\subseteq A\times A$ and $R$ is atomically transitively minimal (§§5.2 and 7.3); the local duplicate condition then holds automatically (§7.2)
 6. Goal attributes satisfy their declared domains. If `ShortKey` or explicit atomic/cluster classification metadata is exposed, it satisfies the applicable requirements in §2.
 
-These requirements define base full-graph validity. Recommended modeling guidance is separate; named validator profiles and scoped views may impose additional requirements.
+These requirements define full-graph validity in the canonical target state.
+Existing cluster authoring remains readable through the compatibility semantics
+in §6, but is not target-conformant. Legacy diagnostics and current validator
+coverage must be distinguished from target compliance; migration requires the
+ordered proof in §7.3. Named validator profiles and scoped views may impose
+additional requirements.
 
 Important scope note:
 

@@ -268,8 +268,10 @@ We use exactly **two connection types**:
 
 1. `requires` – **prerequisite**  
    - `A.requires = [B, C]` means: A should only be approached if B und C sitzen.  
-   - Current compatibility model: prerequisites may still appear on clusters and can be inherited along `contains` for runtime/frontier purposes.
-   - Target modeling state: the canonical didactic sequencing layer should live on **atomic goals**; cluster-level `requires` are only transitional authoring shortcuts or rare, truly universal prerequisite claims.
+   - Current compatibility model: existing prerequisites on clusters are still read through `contains` inheritance and atomic expansion for runtime/frontier purposes. This is transition semantics, not the canonical target state.
+   - Binding target state (Product Owner, 8 November 2026): **all** authored `requires` have atomic source and prerequisite goals, $R\subseteq A\times A$. There is no permanent exception for universal cluster claims.
+   - Migration order: first materialize or retain the complete reviewed atomic prerequisite relationships; then remove `requires` with a non-atomic source or target only after proving that the atomic relationships cover their full prerequisite demand; finally transitively reduce the atomic relation. Never remove an atomic relationship in order to retain its inherited cluster equivalent.
+   - At unchanged `contains`, preserve the full normalized atomic prerequisite closure ($R_{at}^+$ in Graph Definition §6.4) and the relevant scope, applicability, target, frontier, completion and mastery contracts. Raw prerequisite reachability between non-atomic goal nodes may change when cluster edges are removed. This migration neither invents subject dependencies automatically nor writes learner results; transition compatibility alone does not fulfill the target norm or prove current CI enforcement.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -701,7 +703,7 @@ Dependencies between Themenfeldern should be **simple and regular**, not over-en
 
   * Use the logical structure of the curriculum:
     * Example: `Q1` Analysis requires the E-phase basics; `TF_Q3_2` (binomial distributions) requires `TF_Q3_1` (foundations).
-  * In mature landscapes, implement the canonical sequencing primarily on **atomic goals**. Use cluster-level `requires` only temporarily during early modeling or when the prerequisite claim truly applies to all relevant descendants.
+  * Express these dependencies through the relevant **atomic goals at both ends**, as required by §2.2. Cluster-level `requires` in existing data are transitional, including claims applying to all descendants; migrate them in the order defined there. Derive topic-level summaries from the atomic layer.
 
 Agents should **avoid creating very long or tangled `requires` chains**
 if they can be expressed via a small number of well-chosen prerequisites.

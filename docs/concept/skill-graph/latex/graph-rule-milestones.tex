@@ -1,0 +1,855 @@
+% SPDX-License-Identifier: Apache-2.0
+\section{Regeln und Meilensteine}
+\label{sec:rule-milestones}
+Die Zuordnung benennt das Prüfgebiet jeder Pflicht. Die daneben ausgewiesenen vorhandenen Gates belegen ausschließlich ihren tatsächlichen Umfang. Eine verbindliche, noch nicht vollständig gegatete Regel ist keine bereits bestandene Prüfung. M0 ist ein möglicher unvollständiger Ausgangsstand, kein Gütesiegel. Profilgebundene Routengates gelten in ihren benannten QA-Scopes. Die globale G17-Basisprüfung muss dagegen den vollständigen deklarierten kanonischen Fachbestand einschließlich relevanter fachfremder Voraussetzungen und vererbender Vorfahren erfassen; eine QA-Profil-Auswahl oder ein Teilscan genügt dafür nicht.
+
+Die vollständige atomare Normalform und eine vollständige Minimalitätsprüfung sind Sollbasis vor jedem Aufstieg zu M1–M7. Ein G17-Verstoß oder eine unvollständige Prüfung sperrt im betroffenen Fach jeden Meilensteinpass M1–M7; einzelne Quellen- oder Reviewchecks können gleichwohl für sich bestehen. Der atomare Zielzustand \(R\subseteq A\times A\) ist verbindlich. Zuerst werden vollständige atomare Voraussetzungen hergestellt oder erhalten, danach dadurch redundante nichtatomare Anforderungen entfernt und erst dann die feste atomare Relation transitiv reduziert. Ein geerbter Alternativpfad allein erlaubt keine Löschung einer atomaren Route. CQR-102 und GVR-012 bleiben direkt atomar.
+
+Kartenwiederholungen gehören zum Lernprozess. Der Kartenzielabschluss benötigt seinen eigenen ausdrücklichen Prüfnachweis; spätere Fälligkeit allein nimmt ihn nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit oder daraus abgeleitete Mastery-Rücknahme. Eine neue Prüfungsentität oder ein neues Schema folgt daraus nicht.
+
+Die 143 stabilen GD-IDs erschließen alle sechs Kapiteldateien. Fundstellen verwenden benannte Unterabschnitte statt veränderlicher Zeilennummern. Laufzeitverträge, neue Anerkennungs- und Einheitensemantik, optionale Planung sowie Veröffentlichungs- und Dokumentpflichten erhalten keine erfundene Zuordnung zu M7. Fachliche Richtigkeit, menschliche Erprobung und Lernwirksamkeit bleiben eigenständige Nachweise.
+
+\subsection{Kurzübersicht der Prüfgebiete}
+\begingroup\small
+\begin{longtable}{@{}P{23mm}P{64mm}P{61mm}@{}}
+\toprule
+Zuordnung & Prüfpflicht & Ist-Grenze\\
+\midrule\endhead
+M0-Basis, vor M1 & Identität, Referenzen, Struktur und Grundgraph; vollständige atomare Normalform und Minimalitätsprüfung als Sollbasis jedes höheren Meilensteinpasses. & CQR-001/002 und Graphvalidatoren prüfen Teile; kein vollständiger Strukturpass.\\\addlinespace[4pt]
+M1 & Lesbares, nachvollziehbar registriertes Quelleninventar. & CQR-000; noch kein Nachweis fachlich korrekter Mappings.\\\addlinespace[4pt]
+M2 & Beidseitig quellenbelegte Sichten, Kursniveau-Mapping und Plausibilität. & CQR-003/004/005 mit ihrer tatsächlichen Statuslogik.\\\addlinespace[4pt]
+M3 & Zusätzliche vollständige direkt atomare Orientierungs- und Terminalrouten in den benannten Scopes. & CQR-101/102/103; GVR-012/013 nur in ihren Profilen. Die globale Sollbasis wird dadurch nicht vollständig gegatet.\\\addlinespace[4pt]
+M4 & Sichtbare Routenendpunkte und konkrete terminale Aufgaben. & Tatsächlich CQR-104/201/202; Katalogziel von 104 ist M3. Keine Sitzungskonformität bewiesen.\\\addlinespace[4pt]
+M5 & Assessmentfreigabe/-deckung, aktuelle Atomaritätsreviews, Sichten und bereinigte Warnschuld. & Tatsächlich CQR-203/301/401/501; Katalogziel von 203 ist M4. View-Dateizählung allein genügt nicht.\\\addlinespace[4pt]
+M6 & Begründete Memoryentscheidung, rückverfolgbare Karten/Decks und erforderliche Sichtbarkeit. & CQR-302; keine Aussage über persönliche Fälligkeit oder Masteryentzug.\\\addlinespace[4pt]
+M7 & Gleichzeitig aktuelle D/P/A/M/V-Nachweise für alle aktuellen curricularAtomic-Ziele, Pflichtchecks und keine Blocker. & CQR-303 unter allen unteren Stufen; keine Humanfreigabe, Erprobung, Wirkung oder allgemeine Runtimekonformität.\\\addlinespace[4pt]
+Stufenübergreifend & Lernzustand, Erfüllung, Frontier, Personal Curriculum, Rollen, Fokus, Zieltyp- und Persistenzverträge. & Laufzeit-/Interaktionsnachweise separat; kein pauschales Curriculum-M-Gate.\\\addlinespace[4pt]
+Konzept / optional & Neue globale Anerkennung, rekursive Units sowie optionale Zeit-/Budgetplanung und offene Unit-Zugänge. & Keine implementierte neue Semantik oder harte Sperre aus M7 ableiten.\\\addlinespace[4pt]
+Artefakt / Dokument & Austausch, Veröffentlichung, Rechte, Datenschutz und Dokumentabschluss. & Eigene Paket-/Release-/Dokumentbelege; lokaler Build ist keine Veröffentlichung oder Hostannahme.\\\addlinespace[4pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{Gatebezug und tatsächliche Reichweite}
+\paragraph{BASIS.} CQR-001 (IDs, Referenzen, direkte DAGs) und CQR-002 (explizite Strukturtypen) tragen Katalogziel M0. \code{validate:graph} hat weitere eigenständige GVR-/Integritätsprüfungen. Daraus folgt keine vollständige Prüfung sämtlicher mathematischer oder Laufzeitregeln.
+\paragraph{QUELLE.} CQR-000 \ensuremath{\to} M1; CQR-003/004/005 \ensuremath{\to} Katalogziel M2. Erfasst werden Quelleninventar, View-Abdeckung, Kursniveau-Mapping und Plausibilität; die konkrete Statuslogik ist nicht überall gleich streng. Fachliche Richtigkeit folgt nicht allein aus der technischen Evidenzprüfung.
+\paragraph{ROUTE.} CQR-101/102/103 \ensuremath{\to} M3, nur konfigurierte QA-Scopes. CQR-102 benutzt ausschließlich direkt verfasste atomare Kanten; CQR-103 verbietet \code{requires} auf den selektierten Clustern. GVR-012/013 sind zusätzliche begrenzte Profile, kein globaler Vollständigkeitsnachweis. CQR-104 hat Katalogziel M3, blockiert in der tatsächlichen Curriculum-Promotionskette erst M4.
+\paragraph{EXAM.} CQR-201/202/203 haben Katalogziel M4. 201/202 sind tatsächlich Voraussetzung für Curriculum-M4; 203 erst zusammen mit den Kernreviews für M5. Metadaten-/Task-Readiness-Prüfungen beweisen weder korrekte Benotung in einer Sitzung noch unabhängige Anwendungsdeckung jeder Bestehenskombination.
+\paragraph{SICHT.} CQR-401 und CQR-501 \ensuremath{\to} M5. 401 zählt vorhandene View-Dateien, nicht deren vollständige fachliche Freigabe. Eigenständige \code{validate:composition-views}-/\code{validate:view-filters}-Gates prüfen weitere, jeweils begrenzte Struktur- und Projektionspflichten. Keine pauschale Gleichsetzung mit allen Laufzeitregeln.
+\paragraph{REVIEW.} CQR-301 \ensuremath{\to} M5 (aktuelle semantische Atomaritätsentscheidungen), CQR-302 \ensuremath{\to} M6 (Memory-Entscheidungen/Karten/Sichtbarkeit), CQR-303 \ensuremath{\to} M7 (vollständige aktuelle D/P/A/M/V-Schnittmenge mit erforderlichen Checks und ohne Blocker). M7 bleibt maschinelle Curriculum-QA.
+\paragraph{RT.} Stufenübergreifender Laufzeit-/Interaktionsvertrag; kein Curriculum-M-Gate für diese Gesamtaussage benannt. Die einzelnen Implementierungen und Tests müssten separat nachgewiesen werden. Ihr Vorhandensein ist keine aktuelle Konformitätsprüfung.
+\paragraph{KONZEPT.} Verbindlich beschrieben, aber neue globale Anerkennung / rekursive Unit-Semantik laut Dokument noch nicht produktiv implementiert. Kein bestehendes Curriculum-M-Gate. Struktur- oder Inhaltsanteile dürfen für eine spätere Umsetzung zuständigen Prüfgebieten zugeordnet werden, ohne M7-Erfüllung zu erfinden.
+\paragraph{OPTIONAL.} Optionales Planungsprofil bzw. noch unentschiedene Ganzheitszugangspolitik. Kein Curriculum-M-Gate; keine neue harte Sperre aus dem Dokument ableiten.
+\paragraph{ARTEFAKT.} Eigenständiger Veröffentlichungs-, Austausch-, Rechte- oder Datenschutzvertrag; keine automatische M0–M7-Zuordnung. Ein spezifischer Paket-/Releasecheck muss mit seinem eigenen Umfang belegt werden.
+\paragraph{DOKUMENT.} Dokumentbuild, Formelmodell oder Diagrammprüfung; kein Curriculum-M-Gate und kein Runtime-/Wirksamkeitsbeleg.
+
+Die tatsächliche Aufstiegskette verlangt CQR-104/201/202 erst für Curriculum-M4 und CQR-203 mit den Kernreviews für M5. Die Katalogziele von 104 (M3) und 203 (M4) sind davon zu unterscheiden. Fehlende Routeprofile begrenzen einen sonst quellenreifen Stand auf M2. CQR-004 blockiert im Aggregator bei \emph{fail}, CQR-005 bei \emph{warn}; deren \code{not\_configured} blockiert dort nicht eigenständig. CQR-401 zählt View-Dateien. Quellenabdeckung bindet vorhandene parsebare registrierte Snapshots, nicht allein die vollständige Extraktion amtlicher PDF.
+
+Routen werden in zwölf expliziten Profilen für zehn Curricula geprüft: Mathematik und Physik jeweils Sek I/Sek II; Chemie und Biologie jeweils Sek II; Wirtschaftswissenschaften, Politik und Wirtschaft, Informatik, Geschichte, Deutsch und Latein jeweils stufenübergreifend. GVR-012/013 gelten nur in ihren Mathematikprofilen; GVR-013 umfasst direkte lokale atomare Quellen, nicht sämtliche Fächer, Clusterquellen oder fachübergreifenden Kanten. CQR-103 prüft die jeweils selektierten Cluster. Ein globaler Gate für den atomaren Zielzustand und die geordnete Migration ist nicht belegt.
+
+Der vorhandene Minimalitätsauditor und seine CLI-/Kontrakttests sind ein eigener Prüfpfad. Ein vollständiger Nullbefund des aktuellen Katalogs ist kein bestehender CQR-/GVR-Reifegradgate. Der bisherige Test roher Kanten gegen effektive Vererbung beweist die neue atomare Priorität nicht.
+
+Der Statusproducer berechnet und schreibt den Bericht; fachliche Warnungen oder Fehler senken die Reife, ohne allein seinen Exitcode zu ändern. Der CI-Statusschritt prüft anschließend die geschützten Floors und den Commitvergleich der erzeugten Dateien. Die Floorprüfung vertraut auf die numerisch berechnete Reife und identifiziert genau einen passenden Facheintrag; sie berechnet keine eigene CQR-/G17-Entscheidung. Fünf Curricula sind auf M7 und fünf auf M6 geschützt, Experimentalstände ohne Floor bleiben berichtbar. Eigenständige Graph-, Routen-, Quellen-, Filter- und Kompositionschecks sind zusätzliche CI-Gates, keine automatisch weiteren CQR-Regeln.
+
+Die Workflowtrigger sind manuell, Push nach main und Pull Request nach main unter den jeweiligen Pfadfiltern. Reine Dokumentänderungen sind grundsätzlich ausgenommen, erzeugte QA-Statusdateien wieder eingeschlossen. Kein bestehender CI- oder Buildbefund bestätigt allein alle Laufzeit-, Fach- und Wirkungsregeln.
+
+\subsubsection*{Quellen des Gateverzeichnisses}
+\srcref{app/scripts/generateCurriculumQualityStatus.ts}{Statusgenerator}: Regelkatalog und Aufstiegsfunktionen.\par
+\code{deriveScopeMaturity} und \code{deriveCurriculumMaturity}.\par
+\srcref{app/scripts/validateGraph.ts}{Graphvalidator};
+\srcref{app/scripts/auditTransitiveMinimality.ts}{Minimalitätsauditor};
+\srcref{app/scripts/checkCurriculumMaturityFloors.ts}{Floorchecker};
+\srcref{app/scripts/config/curriculum-maturity-floor-policy.json}{Floorpolicy};
+\srcref{app/package.json}{Befehlsregister};
+\srcref{.github/workflows/ci.yml}{CI-Workflow}.
+Die lesbare Parallelausgabe steht in der \srcref{docs/qa-ci/graph-definition-rule-milestone-matrix.md}{vollständigen Markdownmatrix}.
+
+\subsection{C -- Formaler Kern}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-core.tex}{graph-core.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-C01}\textbf{GD-C01} &
+\textbf{Pflicht.} Endlicher Zielgraph \((G,C,R)\); genau \code{contains} und \code{requires} sind verfasste Zielkanten. Inverse und nichtleere transitive Hülle sind eigene Operationen. DAG-Prüfungen gelten den jeweils benannten Relationen, nicht pauschal \(C\cup R\).\par\smallskip
+\textbf{Soll.} M0-Basis; semantische Definition stufenübergreifend\par\smallskip
+\textbf{Ist und Lücke.} BASIS prüft Teilbedingungen; mathematische Interpretation ist kein eigener CQR-Pass.\par\smallskip
+\emph{Fundstelle:} „Das Grundobjekt“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C02}\textbf{GD-C02} &
+\textbf{Pflicht.} \code{contains}: Elternziel \ensuremath{\to} Kind; \code{requires}: abhängiges Ziel \ensuremath{\to} Voraussetzung. Eine Lernablaufdarstellung in Gegenrichtung muss die Umkehrung ausweisen.\par\smallskip
+\textbf{Soll.} M0-Basis / Darstellung stufenübergreifend\par\smallskip
+\textbf{Ist und Lücke.} BASIS/ROUTE verwenden die Richtung; Beschriftung ist keine CQR-Prüfung.\par\smallskip
+\emph{Fundstelle:} „Das Grundobjekt“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C03}\textbf{GD-C03} &
+\textbf{Pflicht.} Kanonische UUID-Identität ist injektiv und bleibt über Sprache, Platzierung und Ansicht erhalten; lokale Formelbuchstaben definieren kein anderes Speicherformat.\par\smallskip
+\textbf{Soll.} M0-Basis; Identitätserhalt zusätzlich RT/ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} BASIS prüft ID-Eindeutigkeit, nicht allein alle Versions-/Migrationsgarantien.\par\smallskip
+\emph{Fundstelle:} „Attribute und stabile Identität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C04}\textbf{GD-C04} &
+\textbf{Pflicht.} Basisattribute sind total: ID, Titel, strikt positives Gewicht. \code{description} ist verständlich und überprüfbar; \code{examples} sind Referenzen, kein Qualitäts- oder Kompetenznachweis.\par\smallskip
+\textbf{Soll.} M0-Basis für Form/Datendomäne; M7 für aktuelle Inhaltsnachweise\par\smallskip
+\textbf{Ist und Lücke.} BASIS deckt nicht nachgewiesen jede Attributforderung ab; REVIEW ist gesondert.\par\smallskip
+\emph{Fundstelle:} „Attribute und stabile Identität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C05}\textbf{GD-C05} &
+\textbf{Pflicht.} Optionaler ShortKey ist je logischer Landschaft eindeutig; wiederholte Sprachdateien dürfen dasselbe ID-/ShortKey-Paar verwenden.\par\smallskip
+\textbf{Soll.} M0-Basis\par\smallskip
+\textbf{Ist und Lücke.} GVR-010 / BASIS mit benannter Landschafts-/Lokalisierungsgrenze.\par\smallskip
+\emph{Fundstelle:} „Attribute und stabile Identität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C06}\textbf{GD-C06} &
+\textbf{Pflicht.} \code{phase} ist Kompatibilitäts-/Anzeigemetadatum, keine Identität oder Sequenzierung. \code{area}/\code{tags} ersetzen keine autoritative Zieltyp-/Scopeentscheidung; \code{level} ist Schwierigkeit; \code{core} entscheidet nicht allein den gewählten Pflichtumfang; \code{weight} bedeutet Fortschrittsanteil, weder Dauer noch Nachweisstärke; neue optionale Materialien gehören in Inhaltspakete.\par\smallskip
+\textbf{Soll.} Stufenübergreifender Modellvertrag; M2/M5 für jeweilige Mapping-/Sichtbelege; Materialvertrag ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Kein einzelnes CQR-Gate prüft alle Feldbedeutungen. Zu Quellen/Materialien siehe GD-X38–X43.\par\smallskip
+\emph{Fundstelle:} „Attribute und stabile Identität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C07}\textbf{GD-C07} &
+\textbf{Pflicht.} Strukturell atomar genau bei fehlenden \code{contains}-Kindern; sonst Cluster. Polyhierarchie erlaubt; explizite Typen müssen passen. Pädagogische Arten sind keine neuen Strukturtypen oder Programmeinheiten.\par\smallskip
+\textbf{Soll.} M0-Basis\par\smallskip
+\textbf{Ist und Lücke.} CQR-002 / GVR-009; semantische Arten benötigen zusätzliche autoritative Auflösung.\par\smallskip
+\emph{Fundstelle:} „Atomare Ziele und Cluster“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C08}\textbf{GD-C08} &
+\textbf{Pflicht.} Ein Blatt ist nicht schon semantisch atomar; mehrere unabhängige Teilkompetenzen können die Inhaltsprüfung verfehlen.\par\smallskip
+\textbf{Soll.} M5, vertiefte aktuelle Bindung M7\par\smallskip
+\textbf{Ist und Lücke.} CQR-301; CQR-303. Strukturtyp allein reicht nicht.\par\smallskip
+\emph{Fundstelle:} „Atomare Ziele und Cluster“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C09}\textbf{GD-C09} &
+\textbf{Pflicht.} \code{Anc}/\code{Desc} verwenden nichtleere \code{contains}-Pfade; \(\Atoms(a)=\{a\}\), sonst atomare Nachfahren. Im endlichen DAG hat jeder Cluster Blätter; Mengen zählen Mehrfachpfade nur einmal. Kinderlos heißt Atom, nicht leerer Cluster.\par\smallskip
+\textbf{Soll.} M0-Basis; RT für Auswertung\par\smallskip
+\textbf{Ist und Lücke.} BASIS belegt Strukturteile, nicht sämtliche Aggregationspfade.\par\smallskip
+\emph{Fundstelle:} „Hierarchie und atomare Basis“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C10}\textbf{GD-C10} &
+\textbf{Pflicht.} Mehrere Voraussetzungen gelten konjunktiv. Alternativen benötigen einen eigenen Auswahlvertrag; \code{R} ist azyklisch.\par\smallskip
+\textbf{Soll.} M0-Basis; Auswahlvertrag separat\par\smallskip
+\textbf{Ist und Lücke.} BASIS für DAG; keine stillschweigende ODER-Semantik.\par\smallskip
+\emph{Fundstelle:} „Direkte Anforderungen sind konjunktiv“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C11}\textbf{GD-C11} &
+\textbf{Pflicht.} Alle fachlichen Voraussetzungen werden im Zielzustand vollständig zwischen atomaren Lernzielen verfasst: \(R\subseteq A\times A\). Clustervererbung bleibt Übergangsmechanismus und ersetzt keine vollständige atomare Modellierung. Keine atomare Route zugunsten einer geerbten Repräsentation entfernen.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll, vor M1: notwendige Voraussetzung der vollständigen G17-Prüfung; keine Verschiebung auf M3\par\smallskip
+\textbf{Ist und Lücke.} ROUTE prüft Teilscopes; ein globaler Gate für vollständig atomar verfasste Voraussetzungen ist nicht vorhanden.\par\smallskip
+\emph{Fundstelle:} „Direkte Anforderungen sind konjunktiv“; „Effektive Anforderungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C12}\textbf{GD-C12} &
+\textbf{Pflicht.} Effektive direkte Anforderungen sind eigene plus alle von \code{contains}-Vorfahren geerbten; mehrere Eltern liefern Mengenvereinigung. Vererbung und transitive Hülle sind verschieden.\par\smallskip
+\textbf{Soll.} M0-Basis für gültigen Übergangsbestand; RT\par\smallskip
+\textbf{Ist und Lücke.} \code{validate:graph} prüft effektive Zyklen; das ist kein Beleg sämtlicher Laufzeitauswertungen.\par\smallskip
+\emph{Fundstelle:} „Effektive Anforderungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C13}\textbf{GD-C13} &
+\textbf{Pflicht.} Erst effektive Anforderungen atomar expandieren, dann transitive Hülle bilden; weiterführende Anforderungen expandierter Atome bleiben enthalten. Mastery eines Zwischenziels beendet die Hülle nicht.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll für normalisierte Gültigkeit; RT/KONZEPT für Ergebnisableitung\par\smallskip
+\textbf{Ist und Lücke.} Nicht pauschal durch CQR-001 oder historischen G17-/Completion-Test gedeckt.\par\smallskip
+\emph{Fundstelle:} „Effektive Anforderungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C14}\textbf{GD-C14} &
+\textbf{Pflicht.} \code{contains}, direktes \code{requires} und effektives \code{requires} sind azyklisch; auch durch atomare Expansion entstehende Selbst-/Rückabhängigkeiten sind ungültig.\par\smallskip
+\textbf{Soll.} M0-Basis\par\smallskip
+\textbf{Ist und Lücke.} BASIS und effektive DAG-Prüfungen bestehen nur mit ihren tatsächlich geprüften Relationen; vollständige atomare Expansion gesondert belegen.\par\smallskip
+\emph{Fundstelle:} „Verbindliche Bedingungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C15}\textbf{GD-C15} &
+\textbf{Pflicht.} Direkte und von Vorfahren geerbte gleiche Anforderung sind lokal doppelt. Bei Migration darf die Beseitigung dieser Doppelung die vollständige atomare Repräsentation nicht zurücknehmen.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll, vor M1, gemeinsam mit der atomaren Normalform\par\smallskip
+\textbf{Ist und Lücke.} Bestehende Diagnose- oder Bereinigungsprüfungen belegen die atomare Priorität nicht vollständig; ein heutiger Vollpass wird nicht behauptet.\par\smallskip
+\emph{Fundstelle:} „Verbindliche Bedingungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C16}\textbf{GD-C16} &
+\textbf{Pflicht.} Transitive Minimalität ist verbindlich. Erst vollständige atomare Voraussetzungen herstellen/erhalten, danach redundante nichtatomare Anforderungen entfernen, danach atomare transitive Reduktion. Der bisherige rohe Ursprungskantentest mit geerbtem Alternativpfad allein rechtfertigt keine Atomkantenlöschung.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll, vor M1: vollständige G17-Prüfung am atomaren Zielstand; Verstoß oder unvollständige Prüfung sperrt jeden Fach-Meilensteinpass M1–M7\par\smallskip
+\textbf{Ist und Lücke.} Die vorhandene Prüfung roher Ursprungskanten gegen effektive Vererbung belegt diese Reihenfolge nicht. CQR-102/GVR-012 bleiben direkt atomar.\par\smallskip
+\emph{Fundstelle:} „Verbindliche Bedingungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C17}\textbf{GD-C17} &
+\textbf{Pflicht.} Reduktion einer festen atomaren Relation erhält deren Hülle. Bei Änderungen des gemischten Bestands Vererbung/Expansion neu berechnen; atomaren Bedarf und einschlägige Scope-/Anwendbarkeits-/Frontierverträge erhalten. Alte Clusterknoten-Erreichbarkeit ist keine allgemeine Erhaltungsinvariante.\par\smallskip
+\textbf{Soll.} Stufenübergreifender Migrationsvertrag; seine Erfüllung trägt den atomaren G17-Zielstand als M0-Basis/Soll vor M1\par\smallskip
+\textbf{Ist und Lücke.} Ein raw/effective Reachability-Vergleich allein beweist die zulässige Migration nicht.\par\smallskip
+\emph{Fundstelle:} „Verbindliche Bedingungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C18}\textbf{GD-C18} &
+\textbf{Pflicht.} Identitäten und Referenzen sind auflösbar; unbekannte Ziele gelten nicht als erfüllte Voraussetzungen.\par\smallskip
+\textbf{Soll.} M0-Basis + RT\par\smallskip
+\textbf{Ist und Lücke.} BASIS für Referenzen; Fail-closed-Laufzeitsemantik separat.\par\smallskip
+\emph{Fundstelle:} „Verbindliche Bedingungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C19}\textbf{GD-C19} &
+\textbf{Pflicht.} Ein-Eltern-Baum ist optionales Zusatzprofil, keine globale DAG-Pflicht. Verbot eigener Vorfahren ist profilbezogen; eigene Nachfahren können schon effektive Selbstabhängigkeit erzeugen.\par\smallskip
+\textbf{Soll.} M0-Basis für tatsächliche Zyklen; Zusatzprofil separat\par\smallskip
+\textbf{Ist und Lücke.} GVR-001/003/006 haben deklarierte Scopes; keine generelle Baumforderung.\par\smallskip
+\emph{Fundstelle:} „Zusatzprofile und Gegenbeispiele“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C20}\textbf{GD-C20} &
+\textbf{Pflicht.} Graphgültigkeit, Projektionsgültigkeit und vollständige Lernbarkeit aus erklärtem Eintrittszustand sind verschiedene Aussagen. Atomare Selbstabhängigkeit und leerer Einstieg können Lernbarkeit widerlegen.\par\smallskip
+\textbf{Soll.} M0-Basis + SICHT; Lernbarkeitsprofil separat\par\smallskip
+\textbf{Ist und Lücke.} Ein einzelner grüner Validator beweist nicht alle drei.\par\smallskip
+\emph{Fundstelle:} „Zusatzprofile und Gegenbeispiele“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C21}\textbf{GD-C21} &
+\textbf{Pflicht.} Jedes nicht ausdrücklich ausgenommene Atom liegt auf direkter atomarer Route Orientierung \ensuremath{\to} Atom \ensuremath{\to} terminale Autonomie. Ausnahmen brauchen dokumentierten maschinenlesbaren Auswahlvertrag; Cluster sind keine Routenbrücken.\par\smallskip
+\textbf{Soll.} M3\par\smallskip
+\textbf{Ist und Lücke.} ROUTE; GVR-012 nur im deklarierten Profil. Formel ist Strukturkriterium, kein Didaktikbeweis.\par\smallskip
+\emph{Fundstelle:} „Didaktische Routen von Orientierung zu Autonomie“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C22}\textbf{GD-C22} &
+\textbf{Pflicht.} Routenprofile bestimmen Stufe, Zielarten, Reihenfolge und Prüfumfang. Memory-Unterstützung ist nur bei Bedarf, keine überall verpflichtende Zwischenstufe.\par\smallskip
+\textbf{Soll.} M3; Memory-Inhaltsentscheidung M6\par\smallskip
+\textbf{Ist und Lücke.} CQR-101/102/103 und GVR-012/013 gelten scoped; CQR-302 separat.\par\smallskip
+\emph{Fundstelle:} „Didaktische Routen von Orientierung zu Autonomie“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C23}\textbf{GD-C23} &
+\textbf{Pflicht.} Clusterübersichten dürfen aus atomarer Erreichbarkeit abgeleitet werden. Existenzielle Zusammenfassung ist keine universelle Voraussetzung; Prozentabdeckung braucht erklärten Nenner; keine neuen Cluster-\code{requires}.\par\smallskip
+\textbf{Soll.} Stufenübergreifende Darstellung; Verbot neuer Cluster-Autorenkanten folgt aus M0-Basis/Soll vor M1\par\smallskip
+\textbf{Ist und Lücke.} Kein CQR-Pass allein für Darstellungssemantik.\par\smallskip
+\emph{Fundstelle:} „Didaktische Routen von Orientierung zu Autonomie“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C24}\textbf{GD-C24} &
+\textbf{Pflicht.} Genau ein gespeicherter binärer Zustand pro Atom; Teilbewertung schafft keine dritte Masterystufe. Gewöhnliche Erfolge belegen Verstehen, Sondertypen nutzen eigene Abschlussverträge.\par\smallskip
+\textbf{Soll.} RT, stufenübergreifend\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate; siehe Zieltypregister.\par\smallskip
+\emph{Fundstelle:} „Erfüllung statt Rückschluss auf Voraussetzungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C25}\textbf{GD-C25} &
+\textbf{Pflicht.} \(M_{\mathrm{eff}}\) ist ausdrückliche Mastery vereinigt mit Ableitungen dauerhaft gültiger lokaler Verträge. Wirkt global auf Voraussetzungen/IST und über Fokuswechsel; keine synthetischen Masterydatensätze. Orientierung bedeutet nur erledigten Einstieg.\par\smallskip
+\textbf{Soll.} KONZEPT, kein M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Neue globale Anerkennung ausdrücklich noch nicht implementiert; M7 beweist sie nicht.\par\smallskip
+\emph{Fundstelle:} „Erfüllung statt Rückschluss auf Voraussetzungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C26}\textbf{GD-C26} &
+\textbf{Pflicht.} \code{Sat(g)} genau bei nichtleerer atomarer Basis vollständig in \(M_{\mathrm{eff}}\). Gemeistertes abhängiges Inhaltsziel allein belegt Voraussetzungen nicht; Clusterabschluss schreibt Kinder nicht zurück.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Appendix nennt historische Abweichung core-basierter Clusteraggregation; aktuelle Konformität separat.\par\smallskip
+\emph{Fundstelle:} „Erfüllung statt Rückschluss auf Voraussetzungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C27}\textbf{GD-C27} &
+\textbf{Pflicht.} Globale Frontier enthält unbeherrschte Atome mit sämtlichen transitiven effektiven atomaren Voraussetzungen; kein Stopp an gemeisterten Zwischenzielen, keine Erfüllung durch bloße Teilbearbeitung.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate für diese Gesamtaussage.\par\smallskip
+\emph{Fundstelle:} „Globale Frontier“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C28}\textbf{GD-C28} &
+\textbf{Pflicht.} Separate Clusterfrontier benutzt eigene/geerbte atomare Basis samt transitive Hülle und ersetzt atomare Lernfrontier nicht. UI kann weitere explizite Auswahlregeln anwenden.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Keine Gleichsetzung mathematischer Frontier mit jedem Menü.\par\smallskip
+\emph{Fundstelle:} „Globale Frontier“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C29}\textbf{GD-C29} &
+\textbf{Pflicht.} Gewichteter Fortschritt zählt eindeutige Zielatome, nicht zugleich Cluster und Kinder. Nur positive Gewichte; leere Zielmenge erhält keinen erfundenen 100\%-Wert. Einheitliche Gewichte sind Domänenkonvention, keine Pflicht; Personal Curriculum bestimmt Pflichtumfang. Fortschrittsanteil ist weder individuelle Teilmastery noch Note/Wahrscheinlichkeit.\par\smallskip
+\textbf{Soll.} RT; Attributbasis M0\par\smallskip
+\textbf{Ist und Lücke.} Kein einzelner CQR-Gate für alle Aggregations-/Anzeigeformeln.\par\smallskip
+\emph{Fundstelle:} „Aggregation ohne Mehrfachzählung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C30}\textbf{GD-C30} &
+\textbf{Pflicht.} Segmentierung darf ausdrückliche und implizite Beiträge trennen, Gesamtfortschritt zählt beide. Ein nur ausdrücklicher Zähler muss als solcher bezeichnet sein.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Neue gemeinsame Anerkennung nicht durch M7 oder bestehende Anzeige belegt.\par\smallskip
+\emph{Fundstelle:} „Aggregation ohne Mehrfachzählung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C31}\textbf{GD-C31} &
+\textbf{Pflicht.} Filter ist Prädikat; Applicability ist partielle dimensionale Zuordnung. Fehlende Dimension uneingeschränkt, vorhandene leere Wertemenge schließt konkrete Werte aus, \code{ALL} ignoriert Einschränkung nur als Abfragewert und wird nicht gespeichert. Ungeklärte persönliche Stufe bleibt ungeklärt.\par\smallskip
+\textbf{Soll.} SICHT/RT; M2/M5 nur jeweilige Quellen-/Warnschuldanteile\par\smallskip
+\textbf{Ist und Lücke.} Kein pauschaler CQR-Beleg für sämtliche Filterfälle.\par\smallskip
+\emph{Fundstelle:} „Filter als Prädikat und kompilierte Anwendbarkeit“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C32}\textbf{GD-C32} &
+\textbf{Pflicht.} Applicability-Overrides begründen Ausnahmen; Runtime verwendet kompilierte Anwendbarkeit. Sichtbarkeit beweist keine Quellenabdeckung.\par\smallskip
+\textbf{Soll.} M2 für Quellenbeleg; M5 für Warnschuld; RT\par\smallskip
+\textbf{Ist und Lücke.} QUELLE/SICHT getrennt; akzeptiertes Overlay ersetzt keine CQR-003-Abdeckung.\par\smallskip
+\emph{Fundstelle:} „Filter als Prädikat und kompilierte Anwendbarkeit“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C33}\textbf{GD-C33} &
+\textbf{Pflicht.} Globale Vererbung zuerst, Einschränkung danach; atomare Klassifikation bleibt aus dem kanonischen Graphen erhalten. Ausgeblendete Kinder machen Cluster nicht zu Atomen.\par\smallskip
+\textbf{Soll.} SICHT/RT\par\smallskip
+\textbf{Ist und Lücke.} Separate Projektionsprüfungen; keine neue Blattklassifikation im Filter.\par\smallskip
+\emph{Fundstelle:} „Erst global vererben, dann einschränken“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C34}\textbf{GD-C34} &
+\textbf{Pflicht.} Normalmodus beschränkt global berechnete transitive atomare Anforderungen auf Fokusendpunkte; leere relative Basis blockiert nicht. Strict prüft globale Voraussetzungen bei Kandidaten im Fokus. Strict-Frontier ist Teilmenge der Normalfrontier. Ausgeblendete Voraussetzungen werden nicht gemeistert.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate. Die globale Closure vor Filterung ist gesondert zu prüfen.\par\smallskip
+\emph{Fundstelle:} „Normalmodus und strikter Modus“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C35}\textbf{GD-C35} &
+\textbf{Pflicht.} Bei \(g\to x\to p\) und Fokus \(\{g,p\}\) bleibt p im Normalmodus erforderlich; Strict prüft zusätzlich x. Mastery von x entfernt die transitive Forderung an p nicht.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Eigenständiger Transitivitätsfall, nicht durch direktes Nachbarschaftsgate bewiesen.\par\smallskip
+\emph{Fundstelle:} „Normalmodus und strikter Modus“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-C36}\textbf{GD-C36} &
+\textbf{Pflicht.} Globale Diagnose nennt alle fehlenden transitiven Atome und unterscheidet innen/außen. Direkte Clusterlisten genügen nicht; Diagnose erzeugt weder Kanten noch Mastery und ist nicht identisch mit Normalmodusblockern.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate.\par\smallskip
+\emph{Fundstelle:} „Fehlende Voraussetzungen und fehlende Atome“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{X -- Kontext, Sicht, Zieltypen, Herkunft und Qualität}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-context.tex}{graph-context.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-X01}\textbf{GD-X01} &
+\textbf{Pflicht.} Ziele, Programme, Platzierungen, Kompetenzachsen und Kompositionssicht haben getrennte Aufgaben. Umordnung erzeugt keine neue Kompetenz und löscht keine Ergebnisse; breite Taxonomiekategorien sind keine konkreten Kompetenzen.\par\smallskip
+\textbf{Soll.} Stufenübergreifender Modellvertrag; M5-Soll für bereitgestellte Sichten\par\smallskip
+\textbf{Ist und Lücke.} SICHT prüft nur konkrete Strukturen; vollständige Migration ist nicht behauptet.\par\smallskip
+\emph{Fundstelle:} „Stabile Ziele, kontextabhängige Struktur“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X02}\textbf{GD-X02} &
+\textbf{Pflicht.} Identität bleibt über neue Platzierung erhalten. Programmtyp \code{exam} ist kein Prüfungsziel; \code{phase} erzeugt keine \code{contains}-/\code{requires}-Kanten. Historische Jahresbäume sind Kompatibilität, keine dauerhafte fachliche Identität.\par\smallskip
+\textbf{Soll.} M0-Basis für Identität; SICHT/RT für Projektion\par\smallskip
+\textbf{Ist und Lücke.} BASIS/SICHT nur Teilpflichten.\par\smallskip
+\emph{Fundstelle:} „Identität trotz unterschiedlicher Einordnung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X03}\textbf{GD-X03} &
+\textbf{Pflicht.} \code{programUnits} bilden Baum/Wald; \code{goalPlacements} unterscheiden primary, secondary und assessed. Zusätzliche Relevanz/Prüfungsbezüge erzeugen keine sichtbaren Zielkopien.\par\smallskip
+\textbf{Soll.} M5-Soll / SICHT\par\smallskip
+\textbf{Ist und Lücke.} Kein CQR-401-Vollnachweis; bloße Dateizählung genügt nicht.\par\smallskip
+\emph{Fundstelle:} „Platzierungen und Projektionen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X04}\textbf{GD-X04} &
+\textbf{Pflicht.} Im aufgelösten Kontext genau ein passender primärer Anker; fehlende Platzierung erlaubt keinen erfundenen Elternknoten. Mehrere passende primäre Platzierungen brauchen geprüfte Auflösung. Kontext ändert Ziel-ID nicht.\par\smallskip
+\textbf{Soll.} M5-Soll / SICHT\par\smallskip
+\textbf{Ist und Lücke.} Platzierungs-/Projektionschecks separat; keine automatische Reviewbehauptung.\par\smallskip
+\emph{Fundstelle:} „Platzierungen und Projektionen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X05}\textbf{GD-X05} &
+\textbf{Pflicht.} Inhaltsansicht folgt \code{contains}, Programmansicht Einheiten/Platzierungen, Kompetenzansicht Katalog-/Kompetenzreferenzen. Kindreihenfolge kommt aus deklarierter Datenordnung; topologische Lernreihenfolge ist eine gesonderte Ansicht.\par\smallskip
+\textbf{Soll.} SICHT/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein allgemeines M-Gate für alle Darstellungssemantiken.\par\smallskip
+\emph{Fundstelle:} „Platzierungen und Projektionen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X06}\textbf{GD-X06} &
+\textbf{Pflicht.} Kompositionssichten enthalten Struktur/Reihenfolge und kanonische Referenzen, keine neu verfassten Atome oder \code{requires}. Renderer darf maßgebliche Sicht nicht durch Titel-/Phasen-/Platzierungsheuristik ersetzen.\par\smallskip
+\textbf{Soll.} M5-Soll; RT\par\smallskip
+\textbf{Ist und Lücke.} Eigenständige Composition-Prüfung, nicht allein CQR-401.\par\smallskip
+\emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X07}\textbf{GD-X07} &
+\textbf{Pflicht.} Aufgelöster Standardbaum zeigt jedes Ziel höchstens einmal und unter höchstens einem Elternknoten. Polyhierarchie benötigt deterministisch geprüfte Auflösung; Rollenauflösung allein legitimiert keine Duplikate.\par\smallskip
+\textbf{Soll.} M5-Soll / SICHT\par\smallskip
+\textbf{Ist und Lücke.} Separate Strukturprüfungen; keine neue globale Ein-Eltern-Pflicht für kanonische Ziele.\par\smallskip
+\emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X08}\textbf{GD-X08} &
+\textbf{Pflicht.} Früh kompilieren: Kontext/Sicht auswählen, Referenzen expandieren, Rollen und sichtbare Eltern prüfen, Ergebnis vor UI-Rendering validieren.\par\smallskip
+\textbf{Soll.} M5-Soll / SICHT\par\smallskip
+\textbf{Ist und Lücke.} Architektur-/Bereitstellungsvertrag; CQR-401 zählt lediglich Dateien.\par\smallskip
+\emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X09}\textbf{GD-X09} &
+\textbf{Pflicht.} Autoritatives \code{curricularArea} darf per \code{goalEntry} nicht als undurchsichtiger scheinbarer Atomknoten auftreten. \code{canonicalSubtree} oder explizite Viewstruktur erhält beabsichtigte Nachkommen; Rollen ändern sich dadurch nicht.\par\smallskip
+\textbf{Soll.} M5-Soll / SICHT\par\smallskip
+\textbf{Ist und Lücke.} Konkreter View-Strukturvertrag, kein pauschales M7-Feature.\par\smallskip
+\emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X10}\textbf{GD-X10} &
+\textbf{Pflicht.} Katalognavigation liegt vor Personalisierung. Level 1 Basiscurriculum, Level 2 backendverantworteter dauerhafter Umfang, Level 3 temporärer Fokus mit einem aktiven Atom, Level 4 binäres Ergebnis an stabiler ID. Sicht-/Fokuswechsel erhält Ergebnisse, Clusterstand ist abgeleitet.\par\smallskip
+\textbf{Soll.} RT, kein Curriculum-M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Keine vollständige Implementierungsaussage aus QA-Reife.\par\smallskip
+\emph{Fundstelle:} „Vier Personalisierungsstufen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X11}\textbf{GD-X11} &
+\textbf{Pflicht.} LK ist Fachattribut, keine implizite Stufe; fehlende Stufe bleibt offen. Level-2-Änderung revalidiert Fokus/aktives Ziel, vergibt/löscht keine globalen Ergebnisse. Konfiguration erfolgt in vorgesehenen SkillPilot-Oberflächen, nicht selbständig im OpenAI-V1-Coach.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Anbieter-/Autorisierungsvertrag ist kein M7-Gate.\par\smallskip
+\emph{Fundstelle:} „Vier Personalisierungsstufen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X12}\textbf{GD-X12} &
+\textbf{Pflicht.} Alle Personal-Curriculum-Targets bleiben Gesamtpflicht; Fokus verengt nur Arbeit. \code{target} zählt zu Auswahl/Frontier/Fortschritt/Abschluss, \code{prerequisiteOnly} nur zu Voraussetzungsprüfungen mit globaler ID und Zustand, nicht zum Nenner.\par\smallskip
+\textbf{Soll.} SICHT/RT; M2/M5 nur konkrete View-Anteile\par\smallskip
+\textbf{Ist und Lücke.} CQR-Reife ersetzt keine Laufzeitprüfung dieser Rollenwirkungen.\par\smallskip
+\emph{Fundstelle:} „Vier Personalisierungsstufen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X13}\textbf{GD-X13} &
+\textbf{Pflicht.} Fehlende Rolle bedeutet target. Teilbaumrolle vererbt; direct goalEntry gewinnt vor Teilbaum, nähere Teilbaumwurzel vor breiterer, bei gleicher Spezifität target. Rollen nicht aus Alter/Phase/Pfaden erraten; Mehrfachkontexte erzeugen keinen doppelten Erwerb.\par\smallskip
+\textbf{Soll.} SICHT/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein einzelner CQR-Gate beweist sämtliche Überlappungsfälle.\par\smallskip
+\emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X14}\textbf{GD-X14} &
+\textbf{Pflicht.} Jede direkte/geerbte/transitive effektive Voraussetzung eines sichtbaren Ziels muss in Level 2 als target oder prerequisiteOnly auflösbar sein. Prüfung auf Zielknoten vor Clusterexpansion; bloße contains-Nachkommen erhalten keine zusätzliche Rollenpflicht. Fehlende Rolle sperrt trotz Mastery/außerhalb Fokus; Legacy-Ausnahme entfällt. Gültige Außenfokusziele bleiben normal-mode-nichtblockierend.\par\smallskip
+\textbf{Soll.} Stufenübergreifender Projektions-/RT-Vertrag\par\smallskip
+\textbf{Ist und Lücke.} Ownerregel 7.11.; kein automatischer M7-Nachweis. Vollständige heutige Durchsetzung separat prüfen.\par\smallskip
+\emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X15}\textbf{GD-X15} &
+\textbf{Pflicht.} Applicability beschreibt belegte Sichtbarkeit, Platzierung strukturellen Ort, weder bedeutet Mastery. Deklarierte Mappingvererbungsgrenzen schützen Ergänzungszweige vor falscher breiter Provenienz; direkte Quellen bleiben. Lokale Endpunktsichtbarkeit darf unter eigenem Vertrag aus prerequisites folgen, beweist aber keine Quellenabdeckung.\par\smallskip
+\textbf{Soll.} M2 für Quellenbelege; M5 für Warnschuld/Sichten; RT\par\smallskip
+\textbf{Ist und Lücke.} QUELLE/SICHT; Grenzen und abgeleitete Applicability sind keine automatische CQR-003-Erfüllung.\par\smallskip
+\emph{Fundstelle:} „Anwendbarkeit ist keine Platzierung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X16}\textbf{GD-X16} &
+\textbf{Pflicht.} Fokus ist Union ausgewählter sichtbarer Wurzeln/Nachkommen innerhalb Personal Curriculum. Normal prüft interne transitive effektive Anforderungen, Strict global; Ignorieren außen vergibt keine Mastery.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Verweis auf GD-C33–C35, kein zusätzlicher Curriculum-M-Gate.\par\smallskip
+\emph{Fundstelle:} „Fokuswechsel ohne impliziten Kompetenzerwerb“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X17}\textbf{GD-X17} &
+\textbf{Pflicht.} Fokusausweitung folgt eindeutigem sichtbarem Elternpfad, ist echte Obermenge mit mindestens einem offenen Ziel; ersetzt nur betroffene Mehrwurzelzweige und erhält unabhängige Wurzeln. Coach übernimmt vollständige Backendoption und wartet auf Zustimmung.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Eigenständige Backend-/Interaktionskonformität, kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Fokuswechsel ohne impliziten Kompetenzerwerb“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X18}\textbf{GD-X18} &
+\textbf{Pflicht.} Erst tatsächlicher Fokusabschluss rechtfertigt Ausweitung; leere Frontier kann Blockade sein. Neue Voraussetzungen werden regulär geprüft; bloßes Nachfolger-Mastery wirkt nicht rückwärts, gültig anerkannte Anwendung bleibt dagegen global erhalten und wird nicht wieder geöffnet.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Globale Anerkennung noch Konzept; Abschluss-/Leermengenunterscheidung separat.\par\smallskip
+\emph{Fundstelle:} „Fokuswechsel ohne impliziten Kompetenzerwerb“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X19}\textbf{GD-X19} &
+\textbf{Pflicht.} Graph erhält zieltypgerecht aufgelöstes binäres Ergebnis, beurteilt Antworten/Gespräche/Karten nicht selbst. Gewöhnliches Verstehen muss verlangte Aspekte abdecken; einzelne richtige Aufgabe ist nicht automatisch Gesamtbeherrschung, aber auch keine unbegründete Mindestaufgabenzahl.\par\smallskip
+\textbf{Soll.} RT; inhaltliche positive Nachweise M7\par\smallskip
+\textbf{Ist und Lücke.} CQR-303/P prüft Inhaltsprofile, nicht tatsächlichen Lernerfolg jeder Sitzung.\par\smallskip
+\emph{Fundstelle:} „Zieltypen und die Bedeutung eines Ergebnisses“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X20}\textbf{GD-X20} &
+\textbf{Pflicht.} Ausreichend belegter Erfolg wird unmittelbar gespeichert; erst bestätigte Speicherung erlaubt Erfolgsaussage. Zusätzliche Speicherzustimmung ist keine Abschlussbedingung. Neues Thema erst nach backendgewähltem Angebot und erkennbarem Einverständnis.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Persistenz-/Coachvertrag, kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Verstehen und Anwenden“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X21}\textbf{GD-X21} &
+\textbf{Pflicht.} Orientierung vermittelt ehrliche positive Möglichkeiten, prüft weder Vorwissen noch Fachkompetenz/Abruf/Transfer; keine Motivationsprozente. Reine voraussetzungsfreie atomare Einstiege ohne Prüfungs-/Memory-Metadaten.\par\smallskip
+\textbf{Soll.} M0-Basis/M3 für Struktur; RT für Gespräch\par\smallskip
+\textbf{Ist und Lücke.} GVR-014 strukturell; Routenprofile für Einbettung; Dialogqualität nicht dadurch bewiesen.\par\smallskip
+\emph{Fundstelle:} „Orientierung als eigener Abschlussvertrag“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X22}\textbf{GD-X22} &
+\textbf{Pflicht.} Interesse wählen beginnt Vertiefung statt Abschluss. Konkrete Verbindung, persönliche Reaktion; nach sinnvoller Antwort oder explizitem Ausstiegswunsch positive Zusammenfassung mit gesondertem Abschlussangebot; erst weitere Zustimmung schließt ab. Nicht auf Inhaltsziele übertragen.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate für Interaktionsfolge.\par\smallskip
+\emph{Fundstelle:} „Orientierung als eigener Abschlussvertrag“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X23}\textbf{GD-X23} &
+\textbf{Pflicht.} Beim echten Einstieg ohne Fachfortschritt sind offene Orientierungsziele einzige auswählbare Frontierziele; bestehender Fortschritt führt nicht zurück zur Einstiegssperre.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} GVR-Routen-/Orientierungsstruktur beweist keine personalisierte Frontiereintrittslogik.\par\smallskip
+\emph{Fundstelle:} „Orientierung als eigener Abschlussvertrag“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X24}\textbf{GD-X24} &
+\textbf{Pflicht.} Memorierziel bündelt erforderliche Karten. SRS-Übung und kontrollierter verifizierter Abruf sind getrennte Prozesszustände; Umdrehen/Selbsteinschätzung ist kein Abrufnachweis. Genau ein Zielergebnis, keine zusätzlichen Masterystufen.\par\smallskip
+\textbf{Soll.} RT; M6 nur Memory-Inhaltsbegründung\par\smallskip
+\textbf{Ist und Lücke.} CQR-302 prüft keine individuellen SRS-/Prüfergebnisse.\par\smallskip
+\emph{Fundstelle:} „Memorierung: Übung und verifizierter Abruf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X25}\textbf{GD-X25} &
+\textbf{Pflicht.} Wiederholungen gehören zum Karteikartenlernen; der Abschluss des Kartenziels benötigt seinen eigenen ausdrücklichen Prüfnachweis. Spätere Fälligkeit allein nimmt diesen Abschluss nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit und keine daraus abgeleitete Mastery-Rücknahme; freiwillige Wiederholung bleibt davon getrennt.\par\smallskip
+\textbf{Soll.} RT, bindende Ownerentscheidung; kein Curriculum-M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Individueller Übungsprozess und dauerhaftes Zielergebnis sind getrennt. Historische Codebeschreibungen sind datierte Befunde, keine abweichende Sollregel. Der Vertrag benötigt keine zusätzliche Prüfungsentität und kein neues Schema; eine Beschreibung ist kein Implementierungsnachweis.\par\smallskip
+\emph{Fundstelle:} „Memorierung: Übung und verifizierter Abruf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X26}\textbf{GD-X26} &
+\textbf{Pflicht.} Erforderliches Deck muss vollständig aufgelöst und gültig sein; fehlende Karten dürfen nicht als leeres automatisch abgeschlossenes Deck gelten.\par\smallskip
+\textbf{Soll.} M6 für authored Deckintegrität; RT für individuellen Abschluss\par\smallskip
+\textbf{Ist und Lücke.} REVIEW/RT getrennt.\par\smallskip
+\emph{Fundstelle:} „Memorierung: Übung und verifizierter Abruf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X27}\textbf{GD-X27} &
+\textbf{Pflicht.} Beschriebener SRS-Prozess hält Intervall, Wiederholungszähler, Ease und nächste Fälligkeit; ohne Zustand fällig, erfolgreiche Übung verlängert, unzureichende Übung setzt Folge zurück. Zeitplanung ersetzt keinen verifizierten Abruf.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Dokumentierter Prozess, kein M6-Beweis seiner Laufzeitkonformität; kein Masteryentzug daraus ableiten.\par\smallskip
+\emph{Fundstelle:} „Memorierung: Übung und verifizierter Abruf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X28}\textbf{GD-X28} &
+\textbf{Pflicht.} Kontrollierter Abruf darf beim aktiven Memoryziel trotz offener SRS-Warteschlange beginnen. Zuerst Frage, eigenständige Antwort, dann erwartete Antwort und Abrufbewertung. Bestehen aktualisiert Übungsspur; Fehlschlag betrifft Kartenprozess.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Kartenprozess und Zielabschluss sind getrennte Aussagen. Bloße spätere Fälligkeit nimmt einen Abschluss nicht zurück; ein neuer Masteryentzug wird hier nicht eingeführt.\par\smallskip
+\emph{Fundstelle:} „Memorierung: Übung und verifizierter Abruf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X29}\textbf{GD-X29} &
+\textbf{Pflicht.} Examziel hat Aufgabe, Lösung und Raster; gültige Schrittpunkte ergeben \(\Score=\min(\sum_j p_j,\MaxPoints)\), bestanden ab PassingPoints. Formel legitimiert weder erfundene/negative Punkte noch Inhaltsänderung.\par\smallskip
+\textbf{Soll.} M4/M5 für authored examData; RT für Bewertung\par\smallskip
+\textbf{Ist und Lücke.} EXAM prüft begrenzte Readiness/Metadaten; tatsächliche Bewertung ist kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Prüfungsziele im geltenden Ablauf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X30}\textbf{GD-X30} &
+\textbf{Pflicht.} Normaler Lernzugang prüft transitive effektive Voraussetzungen. Bewusst gewählter direkter Prüfungsversuch wird durch fehlende Vorbereitungsmastery nicht gesperrt; Aufgabe, Scope und autorisierte Sitzung bleiben erforderlich. Direkter Zugang ist keine globale Anerkennung.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Keine M7-Zusage; ganzheitliches späteres Sperrprofil bleibt offen.\par\smallskip
+\emph{Fundstelle:} „Prüfungsziele im geltenden Ablauf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X31}\textbf{GD-X31} &
+\textbf{Pflicht.} Prüfung zeigt vollständige unveränderte Aufgabe, ohne inhaltliche Hilfe; vollständige Abgabe nach Raster. Erfolg sofort speichern/Bestätigung abwarten. Fehlversuch speichert weder Ergebnis noch Punkte und lässt vorherige Mastery bestehen.\par\smallskip
+\textbf{Soll.} RT\par\smallskip
+\textbf{Ist und Lücke.} Metadatenchecks beweisen keine Sitzungskonformität.\par\smallskip
+\emph{Fundstelle:} „Prüfungsziele im geltenden Ablauf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X32}\textbf{GD-X32} &
+\textbf{Pflicht.} Feedback enthält Ergebnis/Punkte/Begründung/Lösung; neues Material nach Entscheidung. Unbegrenzte Wiederholung bleibt möglich; bekannte Lösung erzeugt keine neue Ergebnisstufe. Höhere Anwendungsanerkennung benötigt geprüften lokalen Inhaltsvertrag, keinen zweiten Personstatus oder Folgeprüfung.\par\smallskip
+\textbf{Soll.} RT/KONZEPT; unabhängige Inhaltsprüfung separat\par\smallskip
+\textbf{Ist und Lücke.} EXAM/CQR-303 sind kein Vollbeleg der neuen Anerkennungsbedeutung.\par\smallskip
+\emph{Fundstelle:} „Prüfungsziele im geltenden Ablauf“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X33}\textbf{GD-X33} &
+\textbf{Pflicht.} Zeitplan bindet Zielumfang, Curriculumrevision, Kalender, Kapazität und Planversion. Absolute Daten gehören nicht auf kanonische Ziele/Cluster/Placements; andere Zeitplanung ändert Identität nicht.\par\smallskip
+\textbf{Soll.} OPTIONAL/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate.\par\smallskip
+\emph{Fundstelle:} „Zeitplanung als ergänzende Sicht“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X34}\textbf{GD-X34} &
+\textbf{Pflicht.} Zeitplanung ist zusätzliche Ausführungsplanung, keine fünfte Personalisierungsstufe. Sie priorisiert verfügbare Ziele, erzeugt weder prerequisites noch Frontier oder Ergebnisse; Erwerb muss vor geplanter Verwendung liegen.\par\smallskip
+\textbf{Soll.} OPTIONAL/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein neuer Zugangsvalidator dadurch behauptet.\par\smallskip
+\emph{Fundstelle:} „Zeitplanung als ergänzende Sicht“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X35}\textbf{GD-X35} &
+\textbf{Pflicht.} Tatsächliche Minuten nach Kalenderausfällen; Aktivitäten, Reserve und verbindliche Fachbudgets ohne Doppelzählung einpassen.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Ausführliche Formeln GD-P07–P09, kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Zeitplanung als ergänzende Sicht“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X36}\textbf{GD-X36} &
+\textbf{Pflicht.} Plan-Soll und IST benutzen denselben benannten Umfang. Explizite und gültig implizite Ergebnisse bilden Gesamt-IST; manuelle Unterrichtsabdeckung ersetzt/versteckt keinen Abschluss. Fehlende Ergebnisse erkennbar, Revisionen deuten Historie nicht um.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Neuer globaler IST nicht durch M7 bestätigt.\par\smallskip
+\emph{Fundstelle:} „Zeitplanung als ergänzende Sicht“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X37}\textbf{GD-X37} &
+\textbf{Pflicht.} Lokaler Planungspilot und angestrebte backendverantwortete Architektur getrennt; Einheitendefinition behauptet keine implementierte fachübergreifende Budgetprüfung.\par\smallskip
+\textbf{Soll.} OPTIONAL/DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Lokaler Pilot und Zielarchitektur sind als unterschiedliche Implementierungsstände auszuweisen.\par\smallskip
+\emph{Fundstelle:} „Zeitplanung als ergänzende Sicht“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X38}\textbf{GD-X38} &
+\textbf{Pflicht.} Offizielle Quelle begründet Ziel, eigenes Bild erklärt, Material unterstützt Erwerb. Keines davon ist persönlicher Kompetenznachweis.\par\smallskip
+\textbf{Soll.} M1/M2 Quellen; M7 Bild-QA; RT-Grenze\par\smallskip
+\textbf{Ist und Lücke.} QUELLE/REVIEW liefern verschiedene Nachweise.\par\smallskip
+\emph{Fundstelle:} „Drei Arten von Verweisen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X39}\textbf{GD-X39} &
+\textbf{Pflicht.} Materialien referenzieren Curriculum, nicht umgekehrt Anbieterwahl. Neue optionale externe Materialien in getrennten Paketen mit stabilen Ziel-IDs; Paketwahl ändert weder Scope noch prerequisites/Mastery/Abschluss; Materiallücken sperren Lernen nicht.\par\smallskip
+\textbf{Soll.} ARTEFAKT/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate für gesamten Paket-/Runtimevertrag.\par\smallskip
+\emph{Fundstelle:} „Drei Arten von Verweisen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X40}\textbf{GD-X40} &
+\textbf{Pflicht.} Quellen/Mappings/Provenienz bleiben am Curriculum; eigene Bilder behalten kanonischen Qualitätsvertrag. Legacylinks begründen keine dauerhafte zweite Autorenarchitektur. Linklieferung beweist keinen gelesenen Inhalt.\par\smallskip
+\textbf{Soll.} M1/M2/M7 jeweilige Evidenz; ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Keine generelle Gateaussage für Inhaltszugriff des Coaches.\par\smallskip
+\emph{Fundstelle:} „Drei Arten von Verweisen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X41}\textbf{GD-X41} &
+\textbf{Pflicht.} Nachvollziehbare Herkunftskette: Ziel \ensuremath{\to} Quelle \ensuremath{\to} konkreter Abschnitt \ensuremath{\to} Extraktion \ensuremath{\to} geprüfte Mappingentscheidung. 1:1, teilweise, aggregierend oder aufgeteilt begründen; nicht fälschlich alles wortgleich.\par\smallskip
+\textbf{Soll.} M1/M2\par\smallskip
+\textbf{Ist und Lücke.} QUELLE; technische Vollständigkeit ist nicht allein fachliche Quellenprüfung.\par\smallskip
+\emph{Fundstelle:} „Quellenbegründung für Ziele und Beziehungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X42}\textbf{GD-X42} &
+\textbf{Pflicht.} Bei requires/contains zwischen ausdrücklich belegter Quelle und fachlicher Modellierungsentscheidung unterscheiden. Keine erfundene Provenienz; ungeklärte/veraltete/widersprüchliche Evidenz bleibt sichtbar.\par\smallskip
+\textbf{Soll.} M2-Soll für Provenienz; M3 für Sequenzierungsreview\par\smallskip
+\textbf{Ist und Lücke.} Kein heutiges CQR-Gate belegt automatisch jede einzelne Kantenbegründung.\par\smallskip
+\emph{Fundstelle:} „Quellenbegründung für Ziele und Beziehungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X43}\textbf{GD-X43} &
+\textbf{Pflicht.} Menschenlesbare Begründung ist abgeleitete Sicht strukturierter Evidenz, kein zweites führendes Register. Referenzen/Fingerprints konsistent in Dokument/Export/Runtime; MEM/FWU-Abgleich ersetzt Quellenroute nur mit geprüftem Scopevertrag.\par\smallskip
+\textbf{Soll.} M1/M2 + ARTEFAKT/RT\par\smallskip
+\textbf{Ist und Lücke.} Kein pauschaler Ersatznachweis durch weiteres Austauschformat.\par\smallskip
+\emph{Fundstelle:} „Quellenbegründung für Ziele und Beziehungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X44}\textbf{GD-X44} &
+\textbf{Pflicht.} Parser-, Referenz-, Zyklus-, Projektions-, Routen- und Inhaltsprüfungen haben verschiedene Aussagen und benötigen benannten Umfang. Einzelnes Migrationsgate oder Strukturpass bestätigt nicht alles.\par\smallskip
+\textbf{Soll.} Stufenübergreifend\par\smallskip
+\textbf{Ist und Lücke.} BASIS/ROUTE/SICHT/REVIEW ausdrücklich getrennt.\par\smallskip
+\emph{Fundstelle:} „Algorithmische Gültigkeit und fachliche Qualität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X45}\textbf{GD-X45} &
+\textbf{Pflicht.} Fünf aktuelle Inhaltsnachweise: D fachlich klare Beschreibung, P beobachtbare Verständnisleistung, A angemessener Zuschnitt, M begründeter Memorybedarf, V fachlich passendes gebundenes Bild.\par\smallskip
+\textbf{Soll.} M5 A, M6 M, M7 gleichzeitiger D/P/A/M/V-Abschluss\par\smallskip
+\textbf{Ist und Lücke.} REVIEW; keine Addition/Mittelung unabhängiger Erfüllungszahlen als Vollabschluss.\par\smallskip
+\emph{Fundstelle:} „Algorithmische Gültigkeit und fachliche Qualität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X46}\textbf{GD-X46} &
+\textbf{Pflicht.} M7 ist vollständiger geltender maschineller Abschluss samt unteren Reifegraden für erklärten Scope. Keine Humanfreigabe, menschliche Erprobung oder Lernwirksamkeit; KI-Übereinstimmung ersetzt verpflichtende Menschenentscheidung nicht.\par\smallskip
+\textbf{Soll.} M7-Grenze; menschliche Evidenz außerhalb M0–M7\par\smallskip
+\textbf{Ist und Lücke.} CQR-303 bestätigt nur seinen maschinellen Anspruch.\par\smallskip
+\emph{Fundstelle:} „Algorithmische Gültigkeit und fachliche Qualität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X47}\textbf{GD-X47} &
+\textbf{Pflicht.} Reviews binden genaue Gegenstandsrevision; alter Bildhash bestätigt neues Bild nicht. Inhalts-/Prerequisiteänderungen können Evidenz entwerten, technischer Umzug braucht eng begründete Kompatibilität; kein pauschales Hashauffrischen.\par\smallskip
+\textbf{Soll.} M5/M6/M7 je Reviewart\par\smallskip
+\textbf{Ist und Lücke.} REVIEW prüft aktuelle Bindungen; fachliche Änderungsbewertung nicht aus bloßem Hashersatz ableiten.\par\smallskip
+\emph{Fundstelle:} „Algorithmische Gültigkeit und fachliche Qualität“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X48}\textbf{GD-X48} &
+\textbf{Pflicht.} Fachliche Änderungen in kanonischen Autorenquellen, Artefakte neu erzeugen; veröffentlichte historische Archive unverändert.\par\smallskip
+\textbf{Soll.} ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate, keine Publikationsautorisation aus diesem Dokument.\par\smallskip
+\emph{Fundstelle:} „Veröffentlichung und Austausch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X49}\textbf{GD-X49} &
+\textbf{Pflicht.} JSON-/Ontologiepakete aus gleichem fachlichen Stand; JSON-Runtime normativ. Roundtrip erhält Identitäten, Relationen, Rollen, Texte und fachliche Felder gemäß Gleichheitsvertrag: Texte semantisch gleich, binäre Assets bytegleich. Keine abweichende Laufzeitsemantik.\par\smallskip
+\textbf{Soll.} ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Eigenständiger Roundtrip-/Releasebeleg; M7 allein prüft ihn nicht.\par\smallskip
+\emph{Fundstelle:} „Veröffentlichung und Austausch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X50}\textbf{GD-X50} &
+\textbf{Pflicht.} Externe Zielreferenzen vollständig schließen, auch fachübergreifende Voraussetzungen; keine leeren Platzhalter. Vollständige Paketclosure bestimmt noch keine Personal-Curriculum-Targets.\par\smallskip
+\textbf{Soll.} M0-Basis für Referenzen + ARTEFAKT/SICHT\par\smallskip
+\textbf{Ist und Lücke.} Referenzcheck und auslieferbare fachliche Closure sind nicht gleichbedeutend.\par\smallskip
+\emph{Fundstelle:} „Veröffentlichung und Austausch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X51}\textbf{GD-X51} &
+\textbf{Pflicht.} Prüf-/Releaseaussage nennt Artefakt, Scope, Version und Quellenbindung. Lokaler Build beweist weder Hostanzeige noch Wirkung; Kompendium erteilt keine Release-/Produktionsfreigabe.\par\smallskip
+\textbf{Soll.} ARTEFAKT/DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Außerhalb Curriculum-M-Gates.\par\smallskip
+\emph{Fundstelle:} „Veröffentlichung und Austausch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X52}\textbf{GD-X52} &
+\textbf{Pflicht.} Funktion bestimmt Lizenz: Software/technische Schemas/Devdoku/funktionale Coachanweisung Apache-2.0; eigene Landschaft/Inhalte/didaktische Medien CC-BY-4.0. Keine pauschale Doppellizenz. Drittrechte bleiben; Quelle/KI-Herkunft beweist Rechte/Qualität nicht; Export führt Lizenz/Herkunft/Änderungen mit.\par\smallskip
+\textbf{Soll.} ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Kein M-Gate ersetzt Rechteprüfung.\par\smallskip
+\emph{Fundstelle:} „Lizenzen und private Lernergebnisse“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-X53}\textbf{GD-X53} &
+\textbf{Pflicht.} Private Ergebnisse, Sitzungen und Gespräche fallen weder unter öffentliche Inhaltslizenz noch in öffentliche Quellen-/Reviewpakete.\par\smallskip
+\textbf{Soll.} ARTEFAKT/RT\par\smallskip
+\textbf{Ist und Lücke.} Datenschutz-/Exportvertrag stufenübergreifend; kein M7-Beleg.\par\smallskip
+\emph{Fundstelle:} „Lizenzen und private Lernergebnisse“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{U -- Rekursive Lerneinheiten}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-learning-units.tex}{graph-learning-units.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-U01}\textbf{GD-U01} &
+\textbf{Pflicht.} LearningUnit verbindet Lernversprechen, eigene Ziele und optionale Untereinheiten rekursiv. Kalenderabschnitte sind keine Synonyme; Personalisierung, QA-Reife und Schwierigkeit behalten eigene Bedeutungen.\par\smallskip
+\textbf{Soll.} KONZEPT, kein M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Kein behauptetes Runtimefeature.\par\smallskip
+\emph{Fundstelle:} „Lerneinheiten: vom Lernversprechen zum rekursiven Abschluss“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U02}\textbf{GD-U02} &
+\textbf{Pflicht.} Motivation erklärt Nutzen vor Einzelangeboten. Nur echtes Orientierungsziel nutzt dessen Ergebnisvertrag; synthetische Überschrift ist kein Ziel. Abgeleiteter Abschluss behauptet kein tatsächlich geführtes Motivationsgespräch.\par\smallskip
+\textbf{Soll.} KONZEPT/RT\par\smallskip
+\textbf{Ist und Lücke.} Keine neue Orientierungs-Mastery aus Unit-Anzeige.\par\smallskip
+\emph{Fundstelle:} „Motivation und eigener fachlicher Anspruch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U03}\textbf{GD-U03} &
+\textbf{Pflicht.} Aggregat braucht keine neue Prüfung. Zusätzlicher Integrationsanspruch kann Syntheseprüfung benötigen; eigene neue Kompetenz braucht Erwerbszuordnung und gültige Prüfungsdeckung. Reine Synthese erzwingt keine künstlichen gewöhnlichen Ziele oder erneutes Bestehen der Kinder.\par\smallskip
+\textbf{Soll.} KONZEPT; Inhaltsprüfung eigenständig\par\smallskip
+\textbf{Ist und Lücke.} EXAM/M7 beweisen keinen vollständigen Unit-Vertrag.\par\smallskip
+\emph{Fundstelle:} „Motivation und eigener fachlicher Anspruch“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U04}\textbf{GD-U04} &
+\textbf{Pflicht.} \code{Own(U)} sind eigene atomare Ziele, \code{Children(U)} verpflichtende Kinder nach aufgelöster Wahl. \(T(U)=\Own(U)\cup\bigcup_{V\in\Children(U)}T(V)\) ist nicht leer. Strukturmarker keine Ziele; Aggregat darf leeres Own bei nichtleerem Kinderumfang haben.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Eigener künftiger Strukturvertrag, kein heute vorhandener CQR-Gate.\par\smallskip
+\emph{Fundstelle:} „Direkter Erwerb, Kinder und Gesamtumfang“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U05}\textbf{GD-U05} &
+\textbf{Pflicht.} Ersterwerb gehört eindeutig zur kleinsten zuständigen autoritativen Einheit. Elternsicht macht Kindziele nicht zu eigenen Erwerbszielen; überlappende Referenzen werden mengenweise vereint, Fokuswechsel verändert Zuordnung/Anerkennungsvertrag nicht.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Kein zweiter Fortschritts-/Erwerbszähler aus Mehrfachsicht.\par\smallskip
+\emph{Fundstelle:} „Direkter Erwerb, Kinder und Gesamtumfang“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U06}\textbf{GD-U06} &
+\textbf{Pflicht.} Jede eigene gewöhnliche Kompetenz benötigt lokalen Prüfungsverbraucher und unabhängig geprüfte Anwendungsdeckung in realer Aufgabe/normaler Rubrik. Ohne Deckung ungültiger Vertrag; freie Anerkennungsmaske ersetzt sie nicht.\par\smallskip
+\textbf{Soll.} KONZEPT; Struktur-/Inhaltsprüfung getrennt\par\smallskip
+\textbf{Ist und Lücke.} ROUTE/EXAM prüfen verwandte, aber nicht diese vollständige Pflicht. Kein erfundenes M7-Gate.\par\smallskip
+\emph{Fundstelle:} „Direkter Erwerb, Kinder und Gesamtumfang“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U07}\textbf{GD-U07} &
+\textbf{Pflicht.} Autoritative Program-/Placement- oder geprüfte Composition-Struktur definiert Einheit. Aufgeklappter oder beliebiger contains-Cluster tut dies nicht; allgemeine Clustererfüllung bleibt gesondert.\par\smallskip
+\textbf{Soll.} KONZEPT/SICHT\par\smallskip
+\textbf{Ist und Lücke.} Keine automatische Runtimeklassifikation aller Cluster als Unit.\par\smallskip
+\emph{Fundstelle:} „Direkter Erwerb, Kinder und Gesamtumfang“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U08}\textbf{GD-U08} &
+\textbf{Pflicht.} \(\Complete(U)\) genau bei eigenen Zielen in \(M_{\mathrm{eff}}\) und allen Pflichtkindern abgeschlossen. Keine zusätzlich gespeicherte UnitMastery und kein Rückwärtsschreiben auf Kinder.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Dokumentmodellprüfung ist kein Runtime- oder M-Gate.\par\smallskip
+\emph{Fundstelle:} „Abschluss ohne zusätzlich gespeicherte Unit-Mastery“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U09}\textbf{GD-U09} &
+\textbf{Pflicht.} Prüfung und Memory bleiben explizit; Elternprüfung ersetzt weder Kindprüfung noch verifizierten Abruf. Syntheseprüfung ist eigene Zusatzpflicht; reine Kartensammlung beweist keine Anwendung. Kind-Recallpflicht darf nicht zum künstlichen Kindabschluss auf Eltern verschoben werden.\par\smallskip
+\textbf{Soll.} KONZEPT/RT\par\smallskip
+\textbf{Ist und Lücke.} Nicht aus M6-Kartenreview oder M7-Inhaltsstatus als erfüllt ableiten.\par\smallskip
+\emph{Fundstelle:} „Abschluss ohne zusätzlich gespeicherte Unit-Mastery“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U10}\textbf{GD-U10} &
+\textbf{Pflicht.} Eigene gewöhnliche Kompetenzen können vor unabhängigem Memory-/Kind-/Elternabschluss anerkannt werden. Nur eigene Ziele des lokalen Vertrags anerkennen; kein zweiter Elternvertrag über gesamten Nachfahrenumfang. Offene Synthese nimmt gültige Kindanerkennung nicht zurück.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Globale Wirkung noch nicht implementiert; siehe GD-A10–A14.\par\smallskip
+\emph{Fundstelle:} „Anerkennung vor dem Gesamtabschluss“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U11}\textbf{GD-U11} &
+\textbf{Pflicht.} Ausdrücklich autorisierte ganze Unit-Voraussetzung meint Vollabschluss und liegt außerhalb C/R. Atomare Voraussetzung fordert nur Kompetenz, nicht ganze fremde Einheit; Compiler/Coach dürfen dies nicht vermischen.\par\smallskip
+\textbf{Soll.} KONZEPT; Zugangspolitik OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Keine neue harte Sperre durch atomare Kante.\par\smallskip
+\emph{Fundstelle:} „Voraussetzungen und die Grenze einer Einheitsfolge“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U12}\textbf{GD-U12} &
+\textbf{Pflicht.} Einheitshierarchie azyklisch. Behauptete ungeteilte Unit-Abschlussfolge zusätzlich auf Blockzyklen prüfen; atomarer DAG reicht nicht. Zyklische Gruppierung verlangt andere Gruppierung oder feineren Ablauf, erzeugt keine implizite Ganzheitssperre.\par\smallskip
+\textbf{Soll.} KONZEPT / bedingter Strukturvertrag\par\smallskip
+\textbf{Ist und Lücke.} Endliches Dokumentmodell prüft Beispiele, kein produktiver Unit-Validator behauptet.\par\smallskip
+\emph{Fundstelle:} „Voraussetzungen und die Grenze einer Einheitsfolge“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U13}\textbf{GD-U13} &
+\textbf{Pflicht.} Gemeinsame transitive Minimalität bleibt für verfasste prerequisites verbindlich, in Übereinstimmung mit atomarer Zielregel/Migrationsfolge. Keine neue Minimalitätsregel für erst zu beschließende Ganzheitszugangsrelation.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll vor M1 wie GD-C11/GD-C16; Unitrelation OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Der gemeinsame Minimalitätsverweis autorisiert keine Atomkantenlöschung zugunsten verbliebener geerbter Clusteranforderungen.\par\smallskip
+\emph{Fundstelle:} „Voraussetzungen und die Grenze einer Einheitsfolge“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-U14}\textbf{GD-U14} &
+\textbf{Pflicht.} Hartes Unit-Zugangsprofil und direkter Examzugriff sind unentschieden. Beispiel \(\operatorname{Open}(U)=\bigwedge_{V\in\operatorname{Pred}(U)}\operatorname{Cleared}(V)\) und \(\operatorname{Cleared}=\operatorname{Open}\land\Complete\) gilt nur bei später autorisiertem Profil. Complete ist Nachweisstand, Cleared Kurspolitik; keines vergibt Mastery. Formel entscheidet Exam-Ausnahme nicht.\par\smallskip
+\textbf{Soll.} OPTIONAL, kein Curriculum-M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Keine technische Sperre autorisiert oder implementiert behaupten.\par\smallskip
+\emph{Fundstelle:} „Voraussetzungen und die Grenze einer Einheitsfolge“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{P -- Optionale Erwerbs- und Zeitplanung}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-planning.tex}{graph-planning.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-P01}\textbf{GD-P01} &
+\textbf{Pflicht.} Optionaler Zeitplan ordnet Unit-Erwerb Kalenderstufen zu; definiert Units nicht, verändert weder Grundgraphgültigkeit noch Mastery und führt keine Ganzheitssperren oder pauschalen Jahresabschlusszwang ein.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Kein neuer produktiver Budgetvalidator behauptet.\par\smallskip
+\emph{Fundstelle:} „Optionale Erwerbs- und Zeitplanung: Reihenfolge und Budget“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P02}\textbf{GD-P02} &
+\textbf{Pflicht.} Plan: atomare Erwerbsziele T, disjunkte erklärte Eintrittsbasis B, positive Stufenzahl, eindeutige Erststufe je Ziel; Stufen/Präfixe aus \ensuremath{\ell}. Spätere Übung/Anwendung ist Aktivität, keine neue ID. B schreibt keine Ergebnisse; persönliche Basislücken brauchen Diagnose/Zeit.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate.\par\smallskip
+\emph{Fundstelle:} „Plan, Eintrittsbasis und eindeutiger Ersterwerb“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P03}\textbf{GD-P03} &
+\textbf{Pflicht.} Hypothetische Relation entfernt ausgehende Anforderungen nur an erklärter Eintrittsbasis B. Sonst volle transitive Hülle einschließlich früherer Stufen; Ausnahme ist keine Erlaubnis, reale Mastery-Zwischenziele als Traversierungsstopp zu verwenden.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Reine Planungsrekonstruktion, kein Runtime-Masteryvertrag.\par\smallskip
+\emph{Fundstelle:} „Strukturelle Machbarkeit durch einen Abschlusszeugen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P04}\textbf{GD-P04} &
+\textbf{Pflicht.} Abschlusszeuge ordnet sämtliche Stufenziele so, dass jedes in globaler Frontier mit B, früheren Stufen und bisherigen Zeugenatomen liegt. Geerbte, Cluster- und fachübergreifende Anforderungen erhalten; keine Normalmodusausblendung, direkten Examsprünge oder vorweggenommene Anerkennung.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate; nicht durch aktuellen UI-Lernpfad belegt.\par\smallskip
+\emph{Fundstelle:} „Strukturelle Machbarkeit durch einen Abschlusszeugen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P05}\textbf{GD-P05} &
+\textbf{Pflicht.} Benötigte Atome sind volle Hülle der Planrelation. Notwendig: Bedarf jedes Ziels liegt in B oder spätestens eigener Stufe. Außerhalb ungeplant, höhere Stufe Reihenfolgefehler, gleiche Stufe erlaubt. Graph-/Expansionsgültigkeit vor Closureprüfung erforderlich.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Voraussetzung ist Strukturprüfung, nicht schon Zeitmachbarkeit.\par\smallskip
+\emph{Fundstelle:} „Strukturelle Machbarkeit durch einen Abschlusszeugen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P06}\textbf{GD-P06} &
+\textbf{Pflicht.} Endlicher Fixpunkt startet B+frühere Stufen und fügt jeweils verfügbare aktuelle Ziele hinzu; erfolgreich genau bei ganzer Stufe. Verfügbarkeit monoton, parallele Menge sequenzierbar; hypothetischer Test ohne Lernerdatenänderung. Atomarer DAG hat topologische Ordnung als Spezialfall.\par\smallskip
+\textbf{Soll.} OPTIONAL/DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Algorithmische Spezifikation, kein behaupteter Produktionsvalidator.\par\smallskip
+\emph{Fundstelle:} „Strukturelle Machbarkeit durch einen Abschlusszeugen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P07}\textbf{GD-P07} &
+\textbf{Pflicht.} Zeitbehauptung nennt Referenzlernende, Eintritt, Ziel-/Wahlauswahl, Kalender, Schätzmethode, Unsicherheit; gleiche kalibrierte Zeiteinheit. Work\ensuremath{\geq}0, Reserve\ensuremath{\geq}0, Budget\textgreater{}0; Work+Reserve\ensuremath{\leq}Budget. Reserve geschützt, Null offengelegt, kein doppelt verbuchter Prüfungs-/Wiederholungsaufwand.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Ohne belastbare Schätzung keine Zeitgültigkeit, kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Aufwand, Reserve und Budget“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P08}\textbf{GD-P08} &
+\textbf{Pflicht.} Aktivitätenmodell zählt tatsächlichen Aufwand einmal: Erwerb, Übung, Abruf, Prüfung, weitere Arbeit. Gemeinsames kanonisches Atom nicht fachübergreifend doppelt erwerben; zusätzliche Anwendung kann Zeit kosten. \code{weight}/unkalibrierte Zielpunkte sind keine Minuten.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Modell-/Datengrundlage muss separat belegt werden.\par\smallskip
+\emph{Fundstelle:} „Aufwand, Reserve und Budget“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P09}\textbf{GD-P09} &
+\textbf{Pflicht.} Rechenbeispiel ist keine empirische Curriculumsdauer. Zusätzlich bindende Fach-/Raum-/Terminbudgets erfüllen, geteilte Zeit nicht doppelt zählen; konkrete Voraussetzung vor geplanter Anwendung bereitstellen.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Gesamtbudget allein genügt bei weiteren Grenzen nicht.\par\smallskip
+\emph{Fundstelle:} „Aufwand, Reserve und Budget“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P10}\textbf{GD-P10} &
+\textbf{Pflicht.} Gültigkeit des optionalen Plans verlangt strukturelle und zeitliche Machbarkeit unter gebundenen Annahmen. Ohne belastbare Zeitdaten nur Strukturbehauptung; Claim bindet Plan/Revision/Scope/Schätzannahmen und garantiert keine gleiche Lerngeschwindigkeit.\par\smallskip
+\textbf{Soll.} OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Kein M7-/Wirksamkeitsnachweis.\par\smallskip
+\emph{Fundstelle:} „Gültigkeitsanspruch und Abschlussgrenzen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-P11}\textbf{GD-P11} &
+\textbf{Pflicht.} Unit-Abschluss folgt eigenen und Kinderpflichten; Units und Kalenderabschnitte können sich überkreuzen. Zeitprofil erzeugt keine Volljahresvoraussetzung für spätere Ziele.\par\smallskip
+\textbf{Soll.} OPTIONAL/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Zugangspolitik bleibt separat.\par\smallskip
+\emph{Fundstelle:} „Gültigkeitsanspruch und Abschlussgrenzen“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{A -- Implizite Beherrschung durch lokale Prüfungsverträge}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-assessment.tex}{graph-assessment.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-A01}\textbf{GD-A01} &
+\textbf{Pflicht.} Ausdrücklicher gewöhnlicher Erfolg belegt Verstehen, gültige lokale Prüfung selbstständige Anwendung; beide global wirksam. Ein binärer gespeicherter Zustand, keine Rückwärtsschreibungen, Zusatzqualifikation, manuelle Freistellungsprofile oder zweite Teilprüfung. Q/K selbst explizit.\par\smallskip
+\textbf{Soll.} KONZEPT, kein M-Gate\par\smallskip
+\textbf{Ist und Lücke.} Neue Semantik ausdrücklich noch nicht implementiert; bestehende Tests nicht umdeuten.\par\smallskip
+\emph{Fundstelle:} „Implizite Beherrschung durch gültige lokale Prüfungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A02}\textbf{GD-A02} &
+\textbf{Pflicht.} Lokaler Vertrag bindet autoritative eigene Unit-Ziele, kanonische IDs, Curriculumrevision und geprüfte Bedeutung eigener Exams. Gesamter Kinderumfang ist kein vergrößerter Elternanerkennungsvertrag; Anzeige/Fokus/Planwurzeln ändern Zuordnung nicht.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Künftiger Vertrags-/Versionsnachweis, kein CQR-401- oder M7-Ersatz.\par\smallskip
+\emph{Fundstelle:} „Vertrag, Zielumfang und geschützte Zieltypen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A03}\textbf{GD-A03} &
+\textbf{Pflicht.} Q/K autoritativ bestimmen; P schützt alle eigenen Prüfungs-/Memoryziele vor implizitem Bestehen. Orientierung ist keine Schutzklasse, aber ihr abgeleiteter Marker behauptet weder Kompetenz noch Gespräch. Externe Unterstützung vergrößert Abschlussnenner nicht und fremde Own-Ziele werden lokal nicht anerkannt.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Memory-Inhaltsreview allein belegt diese Anerkennungslogik nicht.\par\smallskip
+\emph{Fundstelle:} „Vertrag, Zielumfang und geschützte Zieltypen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A04}\textbf{GD-A04} &
+\textbf{Pflicht.} Vollständig atomar expandierte/geerbte Relation einschließlich versteckter und fachübergreifender Unterstützung; alle Referenzen auflösbar, normalisierter Graph azyklisch. Gesamte Hülle vor Anzeigeeinschränkung.\par\smallskip
+\textbf{Soll.} M0-Basis/Soll für Eingaben; KONZEPT für Nutzung\par\smallskip
+\textbf{Ist und Lücke.} BASIS ist kein Vollbeleg des Anerkennungsnormalisierers.\par\smallskip
+\emph{Fundstelle:} „Vertrag, Zielumfang und geschützte Zieltypen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A05}\textbf{GD-A05} &
+\textbf{Pflicht.} \(N_U=\operatorname{Reach}_{R}^{*}(P_U\setminus M)\) enthält offene geschützte Wurzeln selbst und alle Voraussetzungen, ohne Stopp an gemeisterten Zwischenzielen. \(I_U=\Own(U)\setminus(M\cup P_U\cup N_U)\); I disjunkt von M und P. Redundante Kanten ändern bei gleicher Hülle das Ergebnis nicht.\par\smallskip
+\textbf{Soll.} KONZEPT; Formelprüfung DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Bisherige Freistellungslogik ist kein Beleg dieser Formel.\par\smallskip
+\emph{Fundstelle:} „Transitive offene Nachfrage und implizite Menge“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A06}\textbf{GD-A06} &
+\textbf{Pflicht.} Nachfragealgorithmus besucht erreichbare Knoten/Kanten höchstens einmal: O(V+R); keine explizite quadratische Closure erforderlich.\par\smallskip
+\textbf{Soll.} KONZEPT / algorithmischer Vertrag\par\smallskip
+\textbf{Ist und Lücke.} Dokumentmodellprüfung, kein gemessener Produktionsleistungsnachweis.\par\smallskip
+\emph{Fundstelle:} „Transitive offene Nachfrage und implizite Menge“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A07}\textbf{GD-A07} &
+\textbf{Pflicht.} Formel nur unter gültigem Fachvertrag. Jede eigene gewöhnliche Kompetenz braucht lokalen Pfad zu eigener Abschlussprüfung; Memorypfad allein oder isoliertes Endziel genügt nicht. Fehlender späterer Verbraucher beweist nichts; keine frei gewählte Anerkennungsmaske.\par\smallskip
+\textbf{Soll.} KONZEPT; spätere Strukturvalidierung eigenständig\par\smallskip
+\textbf{Ist und Lücke.} ROUTE ist strukturell verwandt, nicht gleichbedeutend mit lokalem Unit-Vertrag.\par\smallskip
+\emph{Fundstelle:} „Warum der Graph allein noch keinen Anwendungsnachweis liefert“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A08}\textbf{GD-A08} &
+\textbf{Pflicht.} Aufgaben/Rubriken müssen beanspruchte Anwendung tragen; keine wesentliche Kompetenz vollständig durch fremde Punkte kompensierbar. Requires-Pfad/Titel/coveredGoalIds/Punkteschwelle/DAG beweisen das nicht. Unabhängiges Review aller Aufgaben/Lösungen/Raster und jeder freigebenden Bestehenskombination, nicht bloß Gesamtinhaltsunion.\par\smallskip
+\textbf{Soll.} KONZEPT; unabhängige Inhaltsprüfung außerhalb bestehender vollständiger M-Zuordnung\par\smallskip
+\textbf{Ist und Lücke.} EXAM/REVIEW prüfen Teilbelege, kein vorhandenes M7-Gate für diese Gesamtpflicht.\par\smallskip
+\emph{Fundstelle:} „Warum der Graph allein noch keinen Anwendungsnachweis liefert“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A09}\textbf{GD-A09} &
+\textbf{Pflicht.} Regulärer Prüfungserfolg bleibt ein binärer Gesamterfolg. Stärkere Bedeutung sitzt im vorab geprüften Inhalt, nicht zweiter Personstatus; historische ungeprüfte Prüfung wird nicht durch Diagramm/Software nachträglich qualifiziert.\par\smallskip
+\textbf{Soll.} KONZEPT/RT\par\smallskip
+\textbf{Ist und Lücke.} Die stärkere Prüfungsbedeutung sitzt im geprüften Inhalt; daraus folgt kein zweiter gespeicherter Personstatus.\par\smallskip
+\emph{Fundstelle:} „Warum der Graph allein noch keinen Anwendungsnachweis liefert“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A10}\textbf{GD-A10} &
+\textbf{Pflicht.} Gültige Vertragsmenge ist personen-/historiengebunden und dauerhaft; nicht nur aktuelle Ansicht/Plan oder alle neuesten Fassungen. \(M_{\mathrm{eff}}=M\cup\bigcup_U I_U\); Vertrag/Revision/Bedeutung bleiben nach Auswahlwechsel verfügbar. Ableitung nur aus expliziten Ergebnissen, keine Rückfütterung früherer impliziter Mengen.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Noch nicht produktiv behauptet; kein Curriculum-M-Gate.\par\smallskip
+\emph{Fundstelle:} „Globale Wirkung und dauerhafte Vertragsbindung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A11}\textbf{GD-A11} &
+\textbf{Pflicht.} Spätere Prüfung/Unit öffnet anerkanntes Ziel nicht wieder. Bei festen Verträgen kann zusätzliche explizite Mastery \(M_{\mathrm{eff}}\) nur vergrößern; Zielwechsel von I nach M verliert keine Erfüllung.\par\smallskip
+\textbf{Soll.} KONZEPT; Monotonieformel DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Endliche Modellprüfung \ensuremath{\neq} Runtimekonformität.\par\smallskip
+\emph{Fundstelle:} „Globale Wirkung und dauerhafte Vertragsbindung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A12}\textbf{GD-A12} &
+\textbf{Pflicht.} Stabile Exam-ID hat stabile Anerkennungsbedeutung, Varianten erfüllen gleichen Vertrag. Neue Ansprüche brauchen neue Assessmentidentität oder geprüfte Migration; ungeklärte historische Bedeutung lässt expliziten Erfolg erhalten, erfindet keine höhere Anwendung. Berechtigte Korrektur getrennt von bloßem Plan-/Verbraucherwechsel.\par\smallskip
+\textbf{Soll.} KONZEPT/RT/ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Kein zusätzlicher personeller Qualifikationsdatensatz; kein stilles historisches Upgrade.\par\smallskip
+\emph{Fundstelle:} „Globale Wirkung und dauerhafte Vertragsbindung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A13}\textbf{GD-A13} &
+\textbf{Pflicht.} Vollabschluss rekursiv; bei vollständiger Zielpflichtrepräsentation äquivalent zu \(T(U)\subseteq M_{\mathrm{eff}}\), eigene P dann in M. Eigene bestandene Q/K machen N leer und können eigene gewöhnliche Ziele anerkennen, nicht Kinder abschließen. Offene Elternsynthese widerruft Kindanerkennung nicht; Elternpass ersetzt keine Kind-Q/K.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Dokumentformel, kein bestehendes M7-Feature.\par\smallskip
+\emph{Fundstelle:} „Geschützte Ziele und vollständiger Abschluss“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A14}\textbf{GD-A14} &
+\textbf{Pflicht.} Offenes eigenes Memory blockiert Gesamtabschluss, aber andere Anerkennung nur bei transitivem Bedarf an ihr. Gemeinsame Grundlage bleibt benötigt, solange irgendein lokaler offener geschützter Verbraucher sie fordert. Späterer Verbraucher in anderem Vertrag hebt bestehende Anerkennung nicht auf.\par\smallskip
+\textbf{Soll.} KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Lokaler Vertrag und spätere Unit nicht zusammenwerfen.\par\smallskip
+\emph{Fundstelle:} „Geschützte Ziele und vollständiger Abschluss“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A15}\textbf{GD-A15} &
+\textbf{Pflicht.} Direkter Examzugriff bleibt Ausgangspunkt mit Aufgabe/Auth/Sitzung/ausdrücklicher Auswahl. Optionale Ganzheitssperre unentschieden, Unitkonzept schafft weder Sperre noch Umgehung. Normaler Lernzugang nutzt M\_eff und volle effektive Transitivität mit separater Normal-/Strict-Fokusregel.\par\smallskip
+\textbf{Soll.} RT/KONZEPT/OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Kein M-Gate und keine Zugangsentscheidung in dieser Dokuänderung.\par\smallskip
+\emph{Fundstelle:} „Geschützte Ziele und vollständiger Abschluss“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A16}\textbf{GD-A16} &
+\textbf{Pflicht.} Gesamt-IST zählt \(\lvert T_{\mathrm{Plan}}\cap M_{\mathrm{eff}}\rvert\), vorher Union zur Vermeidung doppelter expliziter/impliziter/Vertragsbeiträge. Nur-explizit braucht eigenen Nenner/Zählerhinweis. Laufende Periode zählt tatsächlich datierte explizite Abschlussereignisse, keine neu abgeleiteten Beiträge, Vorarbeit oder spätere Scopeausweitung.\par\smallskip
+\textbf{Soll.} RT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} M7 prüft keine personelle Plan-/Periodenstatistik.\par\smallskip
+\emph{Fundstelle:} „Gesamt-IST und datierte Periodenereignisse“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-A17}\textbf{GD-A17} &
+\textbf{Pflicht.} Statische Vertragsdaten revisionsgebunden cachebar; abgeleitete Ergebnisse sind keine zweite gespeicherte Wahrheit. Ungültige/ungeklärte Verträge bleiben als Einschränkung sichtbar. Maschinenformeltests ersetzen weder unabhängiges Inhaltsreview noch Humantrial/Wirkung.\par\smallskip
+\textbf{Soll.} KONZEPT/DOKUMENT; Evidenzgrenze stufenübergreifend\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate für gesamte Persistenz-/Kommunikationspflicht.\par\smallskip
+\emph{Fundstelle:} „Gesamt-IST und datierte Periodenereignisse“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{D -- Dokumentanhänge: Status, Prüfstrategie, Quellen und Abschluss}
+Quelle: \srcref{docs/concept/skill-graph/latex/graph-appendix.tex}{graph-appendix.tex}. Die benannten Unterabschnitte stehen in jeder Zeile; die GD-IDs bleiben unabhängig von späterer Abschnittsnummerierung.
+
+\begingroup\small
+\begin{longtable}{@{}P{20mm}P{128mm}@{}}
+\toprule
+Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
+\midrule\endhead
+\phantomsection\label{rule:GD-D01}\textbf{GD-D01} &
+\textbf{Pflicht.} Implementierungsstatus an benannten gelesenen Stand binden. Historischer Commit 616324e857 und Manifest sind keine Aussage zum heutigen HEAD. Dokumentbuild beweist keine Runtimekonformität/Deployment; globale Anerkennung bleibt als unimplementiert gekennzeichnet.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Datierte Implementierungsbefunde sind keine aktuelle Konformitätsprüfung.\par\smallskip
+\emph{Fundstelle:} „Statusabgleich und Grenzen der Aussagen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D02}\textbf{GD-D02} &
+\textbf{Pflicht.} Historische Abweichungen einzeln ausweisen: Completion-Traversierungsstopp, neue Schutzmenge und lokale Deckung, bisher kontextbezogene Freistellung statt globaler Vertragsmenge, unvollständige Gültigkeitsbelege, core-bevorzugende Clusteraggregation statt aller Atome. Keine Testexistenz als Lösung ausgeben.\par\smallskip
+\textbf{Soll.} DOKUMENT/KONZEPT\par\smallskip
+\textbf{Ist und Lücke.} Datierte Befunde, nicht automatisch aktuelle Fehler-/Passliste.\par\smallskip
+\emph{Fundstelle:} „Statusabgleich und Grenzen der Aussagen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D03}\textbf{GD-D03} &
+\textbf{Pflicht.} Der Memory-Zieltyp hat einen eigenen ausdrücklichen Abschlussnachweis; Wiederholungsfälligkeit ist keine Rücknahme abgeschlossener Mastery. Gewöhnliche abgeschlossene Ziele erhalten keine solche Fälligkeit. Units bleiben nicht implementiertes Konzept; Ganzheitssperren und Examzugriff darunter sind offen, Zeitplanung bleibt gesondert.\par\smallskip
+\textbf{Soll.} DOKUMENT/KONZEPT/OPTIONAL\par\smallskip
+\textbf{Ist und Lücke.} Die bindende Memoryentscheidung bleibt von datierten Implementierungsbefunden getrennt. Eigener Kartenabschluss, Wiederholungsprozess und offene Unit-Zugangspolitik sind gesonderte Verträge.\par\smallskip
+\emph{Fundstelle:} „Statusabgleich und Grenzen der Aussagen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D04}\textbf{GD-D04} &
+\textbf{Pflicht.} Modellchecker ist mathematische Referenzprüfung, liest keine Lernerdaten und verändert keine Runtime. Endliche DAG-/Mastery-/Schutzmengenprüfung gilt nur unter lokal vollständiger Assessmentabdeckung; angegebene 5.222 Fälle sind ein datierter Dokumentbefund.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Kein Curriculum-M-Gate, keine vollständige Produktionsverifikation.\par\smallskip
+\emph{Fundstelle:} „Prüfstrategie für die Abschlussberechnung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D05}\textbf{GD-D05} &
+\textbf{Pflicht.} Reduktions-/Closure- und Vererbungsgegenbeispiele belegen genau ihre Formelaussagen. Vorhandener roher Kanten-/Vererbungstest beweist die neue atomare Priorität nicht. Bericht muss neue Norm und begrenzten Modelltest auseinanderhalten.\par\smallskip
+\textbf{Soll.} DOKUMENT; G17-Sollbasis vor M1 bleibt separat, M3 betrifft zusätzliche Routen\par\smallskip
+\textbf{Ist und Lücke.} Der begrenzte Modelltest belegt seine benannten Formelaussagen, keinen implementierten Gate für die neue atomare Reihenfolge.\par\smallskip
+\emph{Fundstelle:} „Prüfstrategie für die Abschlussberechnung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D06}\textbf{GD-D06} &
+\textbf{Pflicht.} Monotonie, Q/K-Schutz, rekursive Unitfälle, Blockgruppierung, spätere Verträge/externe Unterstützung und Fehlerfälle sind getrennte mathematische Prüfaussagen. 128/948 Fälle sind keine vollständige Curriculum-/Runtimekonformität; Blockprüfung erzeugt keine Sperrpolitik.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Historische Modellzahlen nur als solche, kein frischer Run behauptet.\par\smallskip
+\emph{Fundstelle:} „Prüfstrategie für die Abschlussberechnung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D07}\textbf{GD-D07} &
+\textbf{Pflicht.} Diagrammprüfung vergleicht gezeigte Mengen und bei --check PNG-Bytes. Das beweist weder Aufgabenqualität noch Benotungszuverlässigkeit/Identitätskontrolle/Wirkung. Unabhängiges Inhaltsreview und künftige Runtime-/Sicherheits-/Concurrency-/UI-Prüfungen separat.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Kein M7-, Host- oder Humantrial-Beleg.\par\smallskip
+\emph{Fundstelle:} „Prüfstrategie für die Abschlussberechnung“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D08}\textbf{GD-D08} &
+\textbf{Pflicht.} Symboltabelle konsistent halten: K=Cluster im Kern, K\_U=Memory im Abschluss; R\_at ist atomare Relation, M/M\_eff explizit/effektiv, Own/T direkt/gesamt. \(m=0\) schließt implizit nicht aus. Begriffsdefinitionen begründen keine zusätzlichen Ergebnisarten.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Konsistenzverweis auf GD-C/U/A, keine neue eigenständige Inhaltsregel.\par\smallskip
+\emph{Fundstelle:} „Begriffe und Symbole“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D09}\textbf{GD-D09} &
+\textbf{Pflicht.} Kapitelquellen benennen fachliche Verantwortung; Querverweis ist keine Implementierungsbehauptung optionaler Konzepte. Keine Norm aus nicht gelesener externer Quelle im Register stillschweigend ergänzen.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Quellenregister, kein M-Gate.\par\smallskip
+\emph{Fundstelle:} „Quellenzuordnung und Abbildungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D10}\textbf{GD-D10} &
+\textbf{Pflicht.} Ursprungsabbildungen/zusätzliche deterministische PNGs korrekt zuordnen; Formeln/Legenden maßgeblich, Bilder erzeugen keine extra Kanten. Technischer Text/Build Apache, didaktische Bilder CC-BY bei vorhandenen Rechten; Herkunft/Version kenntlich.\par\smallskip
+\textbf{Soll.} DOKUMENT/ARTEFAKT\par\smallskip
+\textbf{Ist und Lücke.} Bildbyte-/Lizenzgrenzen unabhängig von Curriculum-M7.\par\smallskip
+\emph{Fundstelle:} „Quellenzuordnung und Abbildungen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D11}\textbf{GD-D11} &
+\textbf{Pflicht.} Wrapper bindet Kapitel/PNG; Buildvoraussetzungen und benannte Befehle dokumentieren. Mehrfachlauf löst Referenzen; Manifest bindet Eingaben/PDF per SHA-256 samt Datum/Tools. Verschiedene TeX-Versionen garantieren keine identischen PDF-Bytes.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Buildkonformität, kein Runtime-/Inhaltspass.\par\smallskip
+\emph{Fundstelle:} „Dokument bauen und prüfen“\\\addlinespace[5pt]
+\phantomsection\label{rule:GD-D12}\textbf{GD-D12} &
+\textbf{Pflicht.} Dokumentabschluss: fehlerfreier LaTeX-Lauf, aufgelöste Verweise, keine ungeprüften überbreiten/-hohen Boxen, visuelle PDF-Sichtung. Formelprüfung ergänzt, ersetzt weder Runtime- noch unabhängige fachliche/empirische Validierung.\par\smallskip
+\textbf{Soll.} DOKUMENT\par\smallskip
+\textbf{Ist und Lücke.} Dokumentbezogene Abschlusskriterien, außerhalb Curriculum-M0–M7.\par\smallskip
+\emph{Fundstelle:} „Dokument bauen und prüfen“\\\addlinespace[5pt]
+\bottomrule
+\end{longtable}
+\endgroup
+
+\paragraph{Vollständigkeits- und Aussagegrenze.}
+Das Register enthält 36 Kern-, 53 Kontext-, 14 Unit-, 11 Planungs-, 17 Anerkennungs- und 12 Dokumentgruppen, insgesamt 143. Eigenständige Unterpflichten bleiben in den Zeilen erhalten; wiederholte Erläuterungen und Beispiele gehören zu denselben Pflichten. Die Zuordnung behauptet weder vollständige Durchsetzung noch einen aktuellen CI-, Runtime-, Release- oder Wirkungsnachweis.

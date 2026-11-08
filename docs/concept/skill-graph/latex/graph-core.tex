@@ -126,10 +126,19 @@ ausgehende Kanten bedeuten \emph{alle} Voraussetzungen, keine Auswahl.
 Alternativen brauchen einen eigenen Auswahlvertrag außerhalb dieser Relation.
 Die Relation $R$ muss azyklisch sein.
 
-Als kanonisches Ziel der Modellierung wird $R\subseteq A\times A$
-bevorzugt. So liegt fachliche Sequenzierung auf den konkreten Kompetenzen.
-Eine am Cluster verfasste Voraussetzung ist stärker als eine summarische
-Darstellung: Sie gilt durch Vererbung für alle Nachfahren.
+Nach der verbindlichen Entscheidung vom 8. November 2026 gilt im
+kanonischen Zielzustand
+\begin{equation}
+ R\subseteq A\times A.
+ \label{eq:atomic-target}
+\end{equation}
+\emph{Alle} verfassten Anforderungen haben also atomare Quell- und
+Voraussetzungsziele. Auch eine universelle Clusteranforderung ist keine
+bleibende Ausnahme. Cluster dienen der Gliederung und abgeleiteten Übersicht.
+Bestehende Clusteranforderungen behalten ihre Lesesemantik im Übergang:
+Eine am Cluster verfasste Voraussetzung gilt durch Vererbung für alle
+Nachfahren; ein Cluster als Voraussetzung wird in seine Atome expandiert.
+Diese Kompatibilität erfüllt noch nicht den kanonischen Zielzustand.
 
 \sourcefig{03-direct-requires.png}
 {Direkte Voraussetzungen. Auch der gebogene Pfeil ist eine direkte Kante.
@@ -139,8 +148,8 @@ transitive Erreichbarkeit, keine Containment-Vererbung.}
 \FloatBarrier
 
 \subsection{Effektive Anforderungen}
-Die effektive Relation entsteht aus eigenen und von Vorfahren geerbten
-direkten Anforderungen:
+Die effektive Relation liest auch bestehende Clusteranforderungen. Sie
+entsteht aus eigenen und von Vorfahren geerbten direkten Anforderungen:
 \begin{equation}
  (g,p)\in\Reff\iff
  (g,p)\in R\ \lor\ \exists a\in\Anc(g):(a,p)\in R.
@@ -165,12 +174,12 @@ nach der Expansion einer Clusteranforderung weiterführen. Mastery eines
 Zwischenziels unterbricht diese Hülle nicht. Im Abschlusskapitel bezeichnet
 $R$ der Kürze halber diese vollständig normalisierte atomare Relation.
 
-Sind alle direkten Anforderungen atomar verfasst, gilt $\Reff=R$:
+Im vollständig atomar verfassten Zielzustand gilt $\Reff=R=R_{\mathrm{at}}$:
 Containment-Vorfahren sind Cluster und tragen dann keine ausgehenden
 Anforderungen. Transitive Ketten bleiben als Graphstruktur relevant.
 
 \sourcefig{04-effective-requires.png}
-{Eine Cluster-Anforderung wird vererbt. \emph{Vectors} liegt in diesem
+{Bestandsbeispiel einer vererbten Cluster-Anforderung. \emph{Vectors} liegt in diesem
 Beispiel außerhalb von \emph{Kinematics}. Würde es auch darin enthalten sein,
 erbte es die Anforderung an sich selbst. Durchgezogen heißt direkt verfasst,
 gestrichelt heißt geerbt.}
@@ -193,45 +202,100 @@ keine zusätzlich verfassten Autorenkanten.}
 \section{Gültigkeit, Minimalität und Lernbarkeit}
 \label{sec:validity}
 \subsection{Verbindliche Bedingungen}
-Ein vollständiger Graph ist unter dem normativen Kern genau dann gültig,
-wenn die Attribut- und Identitätsbedingungen sowie die folgenden Bedingungen
-erfüllt sind:
+Ein vollständiger Graph erfüllt den kanonischen Zielzustand genau dann,
+wenn neben den Attribut- und Identitätsbedingungen auch
+\eqref{eq:atomic-target}, die Azyklizität und atomare transitive Minimalität
+gelten:
 \begin{align}
  &\forall g\in G:\ (g,g)\notin C^+,\quad (g,g)\notin R^+,
-                  \quad (g,g)\notin\Reff^+,\label{eq:acyclic}\\
- &(g,p)\in R\Longrightarrow
-      \nexists a\in\Anc(g):(a,p)\in R.\label{eq:localmin}
+                  \quad (g,g)\notin\Reff^+,\quad
+                  (g,g)\notin R_{\mathrm{at}}^+,\label{eq:acyclic}\\
+ &\forall(a,b)\in R:\quad
+      (a,b)\notin\bigl(R\setminus\{(a,b)\}\bigr)^+.
+      \label{eq:atomicmin}
 \end{align}
-Zusätzlich gilt \textbf{transitive Minimalität}: Für jede verfasste
-Kante $e=(g,p)\in R$ werde $R'=R\setminus\{e\}$ gebildet und
-$R_{\mathrm{eff}}'$ mit unverändertem $C$ \emph{neu} berechnet.
-Dann muss $(g,p)\notin(R_{\mathrm{eff}}')^+$ gelten.
-Die Kante ist redundant, wenn ihr Ziel nach ihrer Entfernung noch über
-einen effektiven Pfad erreichbar bleibt. In der Kette $Q\to B\to A$ ist
-$Q\to A$ deshalb redundant und unzulässig. Nur ohne Clustervererbung
-vereinfacht sich dies zur gewöhnlichen Minimalität der rohen Relation $R$.
+In der atomaren Kette $Q\to B\to A$ ist $Q\to A$ redundant und zu
+entfernen. Die verbleibende Hülle fordert A weiterhin, auch wenn B bereits
+gemeistert ist. Die verbindliche transitive Minimalität vom 4. November
+bleibt bestehen; die Entscheidung vom 8. November legt die atomare Zielnorm
+und die Migrationsreihenfolge fest. Transitive Paare werden nicht als
+zusätzliche Direktkanten gespeichert.
 
-Abbildung~\ref{fig:inherited-redundancy} zeigt, weshalb nach einer
-Kantenentfernung die Vererbung erneut auszuwerten ist: Der verbleibende
-Pfad kann eine geerbte Kante enthalten, die im rohen $R$ fehlt.
+\paragraph{Verbindliche Migrationsreihenfolge.}
+Bei unverändertem $C$ und stabilen Zielidentitäten gilt:
+\begin{enumerate}
+ \item Zuerst die vollständigen reviewten atomaren Voraussetzungen
+ materialisieren oder erhalten. Die bestehende Bedeutung wird mit der oben
+ definierten Relation $R_{\mathrm{at}}$ ermittelt: erst vererben, dann
+ Clusterziele expandieren, dann die Hülle bilden. Die vollständige Hülle
+ bedeutet nicht, sämtliche transitiven Paare als Direktkanten zu verfassen.
+ Atomare Kanten dürfen nicht zugunsten ihrer geerbten Clusterentsprechung
+ entfernt werden.
+ \item Danach jede Anforderung mit nichtatomarem Quell- oder
+ Voraussetzungsziel erst nach dem Nachweis entfernen, dass die verfassten
+ atomaren Beziehungen ihren vollständigen atomaren Bedarf abdecken. Im
+ Zielzustand bleiben keine solchen Clusterkanten, auch keine universellen.
+ \item Erst anschließend die atomare Relation transitiv reduzieren und
+ dabei ihre vollständige Voraussetzungshülle erhalten.
+\end{enumerate}
+Der Nachweis muss für den gesamten Übergang insbesondere ergeben:
+\[
+ (R_{\mathrm{at}}^{\mathrm{vorher}})^+
+ = (R_{\mathrm{at}}^{\mathrm{nachher}})^+
+ = R_{\mathrm{nachher}}^+,\qquad
+ R_{\mathrm{nachher}}\subseteq A\times A.
+\]
+Zusätzlich sind die relevanten Scope-, Anwendbarkeits-, Zielmengen-,
+Frontier-, Abschluss- und Mastery-Verträge zu erhalten. Hüllengleichheit
+allein beweist diese weiteren Verträge nicht; dazu gehören direkt atomare
+Routen und ausdrücklich verfasste Projektionsrollen. Rohe Erreichbarkeit
+zwischen nichtatomaren Zielknoten darf sich beim Entfernen der Clusterkanten
+ändern. Die Migration erfindet weder automatisch fachliche Abhängigkeiten
+noch Rollen und schreibt keine Lernergebnisse. Widersprüchliche Altansprüche
+brauchen eine gesonderte fachliche Klärung.
+
+\paragraph{Bestandsdiagnosen sind keine umgekehrte Löschpräferenz.}
+Die frühere lokale Minimalitätsbedingung lautet
+\begin{equation}
+ (g,p)\in R\Longrightarrow
+ \nexists a\in\Anc(g):(a,p)\in R.
+ \label{eq:localmin}
+\end{equation}
+Sie zeigt direkte Dubletten geerbter Anforderungen, darf aber keine atomare
+Kante zugunsten einer Clusterkante beseitigen. Tragen ein atomares $q$ und sein
+Cluster-Vorfahr $k$ beide die Anforderung an das atomare $p$, bleibt $q\to p$
+bei der Atomarisierung erhalten. Nach vollständiger atomarer Abdeckung wird
+$k\to p$ entfernt. Im Zielzustand gilt \eqref{eq:localmin} automatisch,
+weil Cluster keine ausgehenden Anforderungen mehr tragen.
+
+Der bisherige G17-Entfernungstest bildet für jede verfasste Kante
+$e=(g,p)$ die Relation $R'=R\setminus\{e\}$ und berechnet
+$R_{\mathrm{eff}}'$ mit unverändertem $C$ neu. Er diagnostiziert
+Redundanz durch $(g,p)\in(R_{\mathrm{eff}}')^+$.
+Abbildung~\ref{fig:inherited-redundancy} zeigt diesen mathematisch korrekten
+Bestandsbefund und zugleich den Gegenfall zur falschen Löschpräferenz:
+Der alternative Pfad hängt noch von einer Clusteranforderung ab.
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/14-inherited-redundancy.png}
-\caption[Redundanz durch eine geerbte Voraussetzung]{Aus $k\mathbin{\code{contains}}b$
+\caption[Übergangsdiagnose: geerbte Redundanz]{Aus $k\mathbin{\code{contains}}b$
 und $k\to a$ wird $b\to a$ geerbt. Entfernt man die verfasste Kante
 $e=(g,a)$, bleibt nach erneuter Vererbung der effektive Pfad
-$g\to b\to a$. Deshalb ist e redundant, obwohl der alternative Pfad in
-der rohen Relation $R\setminus\{e\}$ fehlt. Nur die geerbte Kante ist gestrichelt.}
+$g\to b\to a$. Das ist eine Redundanzdiagnose des Übergangsgraphen,
+kein Auftrag, e zugunsten von $k\to a$ zu löschen. Zuerst ist die vollständige
+atomare Abdeckung von $k\to a$ zu materialisieren, dann die Clusterkante zu
+entfernen; erst danach entscheidet ein vollständig atomarer Ersatzpfad über
+die Reduktion von e. Nur die geerbte Kante ist gestrichelt.}
 \label{fig:inherited-redundancy}\end{figure}
 \FloatBarrier
 
-Die transitive Reduktion einer feststehenden normalisierten atomaren
-Relation erhält deren Hülle und damit Verfügbarkeit und Abschlussrechnung.
-Eine Änderung verfasster Clusterkanten verlangt dagegen erneute Vererbung
-und atomare Expansion; die rohe Reduktion darf hier nicht ungeprüft als
-bedeutungserhaltend gelten. Die lokale Bedingung~\eqref{eq:localmin}
-bleibt zusätzlich bestehen.
-Ein durch atomare Expansion entstehender Selbstzyklus ist ebenfalls ein
-Modellfehler, auch wenn die unexpandierten Kanten azyklisch aussehen.
+Der heutige Entfernungsauditor prüft noch das alte effektive Kriterium auf
+Zielknoten; sein Bestehen beweist die neue Migrationspriorität nicht.
+Erst im atomaren Zielzustand entspricht dieses Kriterium der
+Minimalität aus \eqref{eq:atomicmin}. Die Norm ist keine Behauptung bereits
+vollständiger Datenmigration oder CI-Durchsetzung. \code{CQR-102} und
+\code{GVR-012} bleiben direkt atomare Routennachweise ohne neue Ausnahme.
+Ein durch atomare Expansion entstehender Selbstzyklus bleibt ein Modellfehler,
+auch wenn die unexpandierten Kanten azyklisch aussehen.
 
 Die DAG-Bedingung für $R$ folgt bereits aus derjenigen für $\Reff$, weil
 $R\subseteq\Reff$. Sie bleibt als verständliche eigenständige
@@ -258,13 +322,14 @@ verboten. Anforderungen an eigene Nachfahren erzeugen durch Vererbung sogar
 eine effektive Selbstabhängigkeit und scheitern bereits am DAG-Vertrag.
 
 \begin{principle}{Ein DAG ist noch kein Beweis der Lernbarkeit}
-Seien $G=\{k,a\}$, $C=\{(k,a)\}$ und $R=\{(a,k)\}$.
+Als Bestandsgegenbeispiel seien $G=\{k,a\}$, $C=\{(k,a)\}$ und $R=\{(a,k)\}$.
 Die direkten und effektiven Relationen sind azyklisch und minimal.
 Aber $\Atoms(k)=\{a\}$: Um $a$ zu beginnen, müsste $a$ schon erfüllt sein.
 Die globale Frontier aus leerem Lernzustand ist leer.
-Die vollständig atomar normalisierte Relation enthält hier eine
-Selbstabhängigkeit und verletzt den erweiterten Gültigkeitsvertrag. Ein
-Abschlusszeuge würde denselben Fehler sichtbar machen.
+Die Clusteranforderung verfehlt bereits die atomare Zielnorm. Außerdem
+enthält die vollständig atomar normalisierte Relation eine Selbstabhängigkeit
+und verletzt damit die Azyklizität. Ein Abschlusszeuge würde denselben Fehler
+sichtbar machen.
 \end{principle}
 
 Deshalb müssen drei Aussagen getrennt bleiben: Grundgraph gültig,

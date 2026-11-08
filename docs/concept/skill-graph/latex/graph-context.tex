@@ -263,9 +263,9 @@ Das Ergebnis jedes Lernziels bleibt binär: geschafft oder noch nicht
 geschafft. Der Zieltyp bestimmt, wann es als geschafft gilt.
 Bei einem Inhaltsziel ist dies ausdrücklich festgestelltes Verstehen;
 eine gültige Prüfungsableitung belegt darüber hinaus selbstständige Anwendung.
-bei Orientierung der abgeschlossene motivierende Einstieg, kein
-fachliches Zertifikat. Bei Memorierung wird das eine Zielergebnis aus
-den Kartendaten abgeleitet. Unterschiede der Abschlussbedingungen
+Bei Orientierung ist es der abgeschlossene motivierende Einstieg, kein
+fachliches Zertifikat. Bei Memorierung ist es der eigene bestandene
+Abschlussnachweis durch kontrollierten Abruf der erforderlichen Karten. Unterschiede der Abschlussbedingungen
 erzeugen keine zusätzlichen Mastery-Stufen oder parallelen Zielergebnisse.
 
 \subsection{Verstehen und Anwenden}
@@ -320,47 +320,41 @@ Einstiegsregel zurückgesetzt.
 \subsection{Memorierung: Übung und verifizierter Abruf}
 
 Ein Memorierziel bündelt die erforderlichen Karten eines Decks.
-Die Karten besitzen zwei getrennte Prozesszustände. Die SRS-Übung steuert
-Wiederholungsintervalle. Der verifizierte Abruf hält fest, ob eine
-Karte in einer kontrollierten Abfrage korrekt beantwortet wurde.
-Das Umdrehen einer Karte oder eine Selbsteinschätzung in der Übung
-ist kein solcher Nachweis. Aus den Kartendaten folgt genau ein binäres
-Mastery-Ergebnis des Lernziels; Übungs- und Abrufprozess sind keine
-zusätzlichen gespeicherten Zielergebnisse.
+Die SRS-Übung steuert die Wiederholungsintervalle der Karten. Der
+kontrollierte Abruf hält fest, ob eine Karte ohne Kartenhilfe richtig
+beantwortet wurde. Umdrehen oder Selbsteinschätzung während der Übung
+sind kein solcher Nachweis. Den Masterednachweis des Lernziels gibt
+seine eigene bestandene Abschlussprüfung über die erforderlichen Karten.
+Kartenprozess und Zielabschluss sind zu unterscheiden; sie erzeugen
+keine zweite Masterystufe oder ein zusätzliches gespeichertes Zielergebnis.
 
-Sei $K_g$ die aufgelöste Menge erforderlicher Karten eines Ziels $g$.
-Für einen Zeitpunkt $t$ bezeichnet $\Due(k,t)$ die Fälligkeit und
-$\Verified(k)$ einen aktuell gültigen bestandenen Abruf. Der
-\emph{dokumentierte Zieltypvertrag} verlangt beide Bedingungen:
+Sei $K_g$ die vollständig aufgelöste, gültige Menge erforderlicher Karten.
+Mit $\operatorname{RecallPassed}(g)$ wird hier nur der ausdrücklich
+festgestellte erfolgreiche Abschlussabruf bezeichnet, kein neues
+Datenfeld oder zusätzliches Prüfungsziel. Dann gilt
 \[
-  \Complete_{\mathrm{memory,doc}}(g,t)
-  \iff
-  \bigl(\forall k\in K_g:\neg \Due(k,t)\bigr)
-  \land
-  \bigl(\forall k\in K_g:\Verified(k)\bigr).
+  \Complete_{\mathrm{memory}}(g)
+  \iff \operatorname{RecallPassed}(g).
 \]
-Diese Formel setzt ein vollständig aufgelöstes, gültiges Deck voraus.
-Fehlende Kartendaten werden dadurch nicht als leeres, automatisch
-abgeschlossenes Deck interpretiert.
+Fehlende oder unaufgelöste Kartendaten sind kein leeres, automatisch
+abgeschlossenes Deck. Das bloße Abarbeiten einer fälligen Übungswarteschlange
+ersetzt den Abschlussnachweis nicht.
 
-\textbf{Abweichung des geprüften Codes.} Der zum Dokumentstand
-gelesene \code{LearnerService} und der Frontend-Hook
-\code{useSrsMastery} leiten Memorier-Mastery dagegen allein aus dem
-verifizierten Abruf aller erforderlichen Karten ab. Für ein nichtleeres,
-vollständig aufgelöstes Deck lautet diese Implementierungsregel:
-\[
-  \Complete_{\mathrm{memory,code}}(g)
-  \iff \forall k\in K_g:\Verified(k).
-\]
-Neue SRS-Fälligkeit entzieht danach nicht automatisch die Mastery.
-Ein fehlgeschlagener erneuter Abruf kann sie hingegen zurücknehmen.
-Dokumentierte Sollsemantik und aktueller Code sind damit nicht
-deckungsgleich; dieses Kompendium trifft keine stillschweigende
-Migrationsentscheidung. Die Abweichung ist einmal im Zieltypvertrag
-aufzulösen. Die allgemeine Abschlussberechnung verwendet dasselbe binäre
-Zielergebnis wie die übrigen Oberflächen; es führt keine eigene
-Anerkennung von Memorier-Mastery ein. Fällige Übung bleibt eine
-Prozessaussage über die Karten.
+Gewöhnliche abgeschlossene Lernziele erhalten keine Wiederholungsfälligkeit.
+Bei Kartenzielen betrifft eine spätere Fälligkeit die Kartenübung und zieht
+einen festgestellten Zielabschluss nicht automatisch zurück. Auch ein
+späterer freiwilliger Kartenabruf betrifft zunächst dessen Prozesszustand;
+daraus wird kein automatischer Entzug abgeschlossener Zielmastery abgeleitet.
+Die frühere Sollformel „alle Karten verifiziert und keine Karte fällig“
+ist durch die bindende Ownerklarstellung überholt.
+
+\textbf{Implementierungsgrenze.} Die historische Codeprüfung beschrieb die
+Ableitung aus den aktuellen Abrufflags in \code{LearnerService} und
+\code{useSrsMastery}. Dieser Befund ist keine neue Sollregel für einen
+Masteryentzug und kein vollständiger Nachweis des Abschlussvertrags.
+Die vorliegende Dokumentkorrektur ändert weder Runtime noch Lernerdaten.
+Die allgemeine Abschlussberechnung verwendet dasselbe binäre Zielergebnis
+und führt keine eigene Anerkennung von Memorier-Mastery ein.
 
 Der gegenwärtig dokumentierte SRS-Vertrag verwendet SM-2-Zustand mit
 Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem

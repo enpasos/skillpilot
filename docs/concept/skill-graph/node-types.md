@@ -159,27 +159,18 @@ Rules applied on each review:
 
 ### Due and mastery semantics
 
-- A card is **due** if `nextReview <= now` or if it has no stored state yet.
-- SRS progress and verified recall progress are shown separately.
-- A memorization goal is treated as **mastered** only when:
-  - no required cards are currently due in the SRS lane, and
-  - every required card has `verifiedRecall.status = passed`.
-- Passing a hard recall test also updates the card's SRS lane as a strong successful retrieval.
-- Failing a hard recall test removes verified status for that card, schedules it back into practice, and keeps the memorization node incomplete until the card is passed in a later hard test.
+- A card is **due** if `nextReview <= now` or if it has no stored state yet. This controls card practice, not the completion status of its learning goal.
+- SRS practice and controlled recall are separate processes. Completing a practice queue does not establish goal mastery.
+- A memorization goal receives its one mastery result from its own successful completion check: controlled recall of all required cards in a fully resolved, valid deck. This check belongs to the memorization goal; it does not create another graph node or a second goal-result schema.
+- An ordinary completed learning goal has no recurring SRS due state. A later card due date does not withdraw a memorization goal's established completion either.
+- Passing a hard recall check also updates that card's SRS lane as a strong successful retrieval. A failed card check changes the card's verified/practice state; these process updates do not by themselves authorize withdrawing an already established goal result.
+- Missing or unresolved required cards are not an empty, automatically completed deck.
 
-This keeps the node model simple: the card node remains the learning goal; the hard test is a validation aspect of that goal, not a separate graph node.
-
-**Implementation discrepancy (checked 29 October 2026).** The conditions above
-describe the documented contract. The current
+**Implementation boundary.** The earlier documented conjunction of “all cards verified” and “no card due” is superseded by the owner's clarification. The code inspection dated 29 October 2026 found that the
 [backend](https://github.com/enpasos/skillpilot/blob/main/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java)
 (`isSrsMasteredByVerifiedRecall`) and
 [frontend](https://github.com/enpasos/skillpilot/blob/main/app/src/hooks/useSrsMastery.ts)
-derive mastery from verified recall of all required cards alone; renewed SRS
-due status does not itself remove mastery. A failed recall retest can remove
-it. These are distinct semantics requiring an explicit reconciliation decision;
-the completion proposal must not assume that the current code implements both
-conditions above. This documentation review does not change learner state or
-the implementation.
+derive a value from current verified recall flags. That observation is not a new rule permitting withdrawal of completed mastery and does not prove full conformance with the completion contract above. This documentation correction changes neither runtime behavior nor learner data.
 
 ### Flashcard practice and learning-coach/GPT-led hard recall
 

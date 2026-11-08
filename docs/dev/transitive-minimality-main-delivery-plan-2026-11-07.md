@@ -24,8 +24,12 @@ und sämtliche acht Hauptjobs. Die bestätigte einheitliche Rollenpflicht ist mi
 [PR #89](https://github.com/enpasos/skillpilot/pull/89) auf main bei
 [`3ee1acc373`](https://github.com/enpasos/skillpilot/commit/3ee1acc373f8d56e565783e122c971abbac61122)
 geliefert; alle fünf frischen PR-Workflows und acht Hauptjobs bestanden.
-Der nächste kleine Lieferumfang setzt im sichtbaren Checkout auf
-`fix/g17-biology-orientation-reduction` bei diesem Main-Commit an.
+Der erste Biologie-Batch ist mit
+[PR #90](https://github.com/enpasos/skillpilot/pull/90) auf main bei
+[`3b71ee9370`](https://github.com/enpasos/skillpilot/commit/3b71ee9370805f98b37f0e7e9b3352b9ac26f845)
+geliefert; sein geprüfter PR-Head bestand fünf Pflichtworkflows und acht
+Hauptjobs. Der sichtbare Checkout liegt für die aktuelle Dokumentationslieferung
+auf `docs/graph-rules-and-milestones`, ausgehend von diesem Main-Commit.
 PR84 bleibt als Herkunft des alten Auditstands getrennt erhalten.
 Der alte WIP und lokale Änderungen sind gesichert; unversionierte Altartefakte
 bleiben erhalten.
@@ -35,9 +39,51 @@ Pflicht-CI nach main bringen, bevor der nächste Änderungsumfang begonnen wird.
 Die Entwicklung bleibt im bereits geöffneten, sichtbaren
 IDE-Checkout; kein separater Arbeitsbaum.
 
+## Ownerkorrektur vom 8. November: historische Pause, Fortsetzung aktiv
+
+Der Owner stoppte am 8. November den bisherigen Umsetzungslauf und pausierte
+das G17-Goal. Diese Stopentscheidung bleibt als historische Korrektur erhalten.
+Anschließend hat der Owner die Fortsetzung ausdrücklich beauftragt; das Goal
+ist wieder aktiv. Zuerst wird die eigenständige Dokumentationslieferung
+abgeschlossen, danach folgt die Umsetzung unter der korrigierten atomaren Norm.
+Verbindlich ist `R ⊆ A × A`: alle Voraussetzungen vollständig zwischen atomaren
+Zielen erfassen. Erst die atomare Repräsentation sichern, dann durch sie
+abgedeckte nichtatomare `requires` entfernen und erst danach die atomare Relation
+transitiv reduzieren. Atomare Autorenkanten zugunsten verbliebener Clusterkanten
+zu löschen ist nicht der beauftragte Zielzustand. `CQR-102` und `GVR-012` bleiben
+direkt atomar; die vorgeschlagene Lockerung wurde verworfen.
+
+Die [vollständige Regel- und Meilensteinmatrix](../qa-ci/graph-definition-rule-milestone-matrix.md)
+erfasst den TeX-Korpus mit 143 Gruppen. Globale atomare Normalform und vollständige
+G17-Prüfung sind Sollbasis vor jedem Fach-Meilensteinpass M1–M7. Die Matrix
+weist bestehende Teilgates und Lücken aus; sie beauftragt keinen zusätzlichen
+143-Regel-Implementierungsauftrag und keine fachliche Inhaltsarbeit.
+
+PR #90 ist auf main bei `3b71ee9370805f98b37f0e7e9b3352b9ac26f845` geliefert;
+sein getesteter PR-Head bestand fünf Pflichtworkflows und acht Hauptjobs.
+Der anschließende, nicht akzeptierte V2-Versuch mit 173 weiteren Bio-Löschungen
+ist unverändert gesichert auf
+`archive/g17-biology-v2-before-atomic-target-20261108` bei
+`69dcee1ed22db53fc641c220f9246d0b508cbb89`. Alle elf WIP-Dateien wurden bytegleich
+geprüft; der alte Audit-WIP `2e73a5c05897aab3fd436eabd8267c2b9a1fd302` und
+unversionierte Altartefakte bleiben erhalten. Dieser V2-Versuch ist keine
+freigegebene Löschliste. Er bewahrte atomare Wirkung, verletzte jedoch die
+vorgeschriebene Autorenrepräsentation und den korrekt ablehnenden M7-Floor.
+
+Die aktuelle Dokumentationsarbeit liegt sichtbar im selben IDE-Checkout auf
+`docs/graph-rules-and-milestones`, ausgehend vom genannten Main-Commit. Sie ist
+als eigenständige Dokumentationslieferung von der nicht akzeptierten
+Datenänderung getrennt und wird zuerst als Dokumentations-PR geliefert.
+Der nächste Umsetzungsschritt im wieder aktiven G17-Auftrag ist ein endlicher
+Atomarisierungs-/Erhaltungsnachweis auf tatsächlichen Scopes. Brauchbare
+Invarianztests und Vergleichsbindungen aus dem gesicherten WIP werden dafür
+einzeln geprüft übernommen. Die 173 falsch priorisierten Löschungen werden nicht
+blind zurückgespielt. Historische Inventare und Vorschauen im folgenden Plan
+ersetzen diese neue Zielpriorität nicht.
+
 ## Ein aktives Ziel, ein tatsächlicher Lieferweg
 
-Das aktive Ziel ist **G17 in der Standard-Meilensteinprüfung und die tatsächliche
+Das wieder aktive Ziel bleibt **G17 in der Standard-Meilensteinprüfung und die tatsächliche
 Wiederherstellung aller ursprünglichen M6-/M7-Stände auf main**. Der Owner hat
 die Abnahme anhand seines Screenshots ausdrücklich festgelegt:
 
@@ -54,9 +100,10 @@ erhalten kein zusätzliches Aufstiegsziel; ihre offenen Befunde werden dennoch
 nicht als bestanden dargestellt. Eingabebestand und Prüferrevision werden vor
 der Umsetzung festgehalten.
 
-Die Arbeit bleibt deterministisch: aktuell redundante Ursprungskante entfernen,
-Vererbung neu auflösen, Zeugen und vereinbarte Graph-/Scope-/Frontierinvarianten
-prüfen. Geordnete Batches sind sinnvoll; alle anfangs redundanten Ursprünge
+Die Arbeit bleibt deterministisch: zuerst vollständige atomare Voraussetzungen
+sichern, dann redundante nichtatomare Anforderungen entfernen und zuletzt
+atomar reduzieren. Nach betroffenen Änderungen Vererbung und Expansion neu
+auflösen sowie Zeugen und vereinbarte Atom-/Scope-/Frontierinvarianten prüfen. Geordnete Batches sind sinnvoll; alle anfangs redundanten Ursprünge
 gleichzeitig zu löschen wäre unsicher. Keine neue Bewertung von Zielzuschnitt,
 Beschreibungen, Aufgaben, Bildern oder Quellen ist Teil dieses Auftrags.
 
@@ -73,7 +120,7 @@ Den gesamten WIP zusammen zu mergen ist nicht der Lieferplan.
 | Technische Transitivitätsabhängigkeit, geliefert | Nur die nachgewiesen erforderlichen fünf Produktionsdateien und gezielten Regressionen aus `b8eef5b967`: gemeinsame Voraussetzungstopologie, vollständige kanonische Level-2-Zielclosure und Fokusfilter nach transitiver Auswertung. | PR #87 auf main bei `d63e1b408d`; vollständiger regulärer lokaler Backendcheck mit 2.689 bestandenen Fällen, 19 bestehenden optionalen Skips und null Fehlern; alle fünf frischen Remote-Workflows erfolgreich. Regressionen über alle vier Frontier-APIs, normale/strikte Modi, gemeisterte und außerhalb des Fokus liegende Zwischenziele sowie fremde/vererbte Voraussetzungen. Gespeicherte Mastery und Anerkennungsregeln bleiben unverändert. |
 | Begrenzter Frischeanschluss und erste Reduktion, geliefert | Genau die Mathematikkante `bf17cada… → 71cec9fb…` mit direkt authored atomarem Ersatzpfad `bf17cada… → 91e2f564… → 71cec9fb…`. Eine harte Reduktionsbescheinigung erlaubt ausschließlich den nachgewiesenen historischen Vergleichswert an den betroffenen Reviewbindungen. | PR #88 auf main bei `2c2fc3bc0d`; alle fünf frischen PR-Workflows und acht Hauptjobs erfolgreich. Vollständiger Katalogabgleich, geordnete Auditorprüfung, unveränderte übrige Felder und tatsächlicher Applicability-Vergleich. Native CI-Regression über 1.240 Konfigurationen für Projektion, vollständige atomare Nachfrage und die bisherige Rollenprüfung. Tatsächliche Python-/Release-Modell-Conformance bestanden. Originale Fingerprintfunktionen und Reviewarchive bleiben unverändert; ungültige deklarierte Beweise scheitern hart. V1 deckt direkte atomare Blattpfade ab und ist keine Freigabe sämtlicher Bestandskandidaten. |
 | Einheitliche Rollenpflicht, geliefert | Ausdrücklich bestätigte Ownerentscheidung vom 7. November: direkte, geerbte und transitive Voraussetzungsknoten müssen in der Level-2-Komposition eine Rolle haben. Die bisherige Vererbungsausnahme entfällt. | PR #89 auf main bei `3ee1acc373`; alle fünf frischen PR-Workflows und acht Hauptjobs erfolgreich. Vollständiger regulärer lokaler Backendlauf: 2.693 bestanden, 19 bestehende optionale Skips, keine Fehler. Vorhandene Topologie, unveränderte atomare Fokus-/Masteryprüfung, echte Bio-/Math-Reduktionsgegenfälle und 1.240 native Konfigurationen. Der reale unvollständige HE/G9-Scope ist ausdrücklich negativ geprüft; positive Assessmentfälle verwenden den bestehenden vollständig deklarierten HE/G8-Scope bei unveränderten Workflowassertionen. |
-| Biologie: redundante Anforderungen an ein Orientierungsziel, in Arbeit | 186 frisch belegte direkte Anforderungen an `2d451684…` entfernt; ausschließlich die jeweiligen `requires`-Arrays ändern sich. Von 187 vorbereiteten Kandidaten bleibt einer wegen seines aktuellen geerbten Clusterzeugen außerhalb des unveränderten V1-Vertrags unverändert. | Bestehende Mathematikoperation und ursprüngliche 21 Quelldigests erhalten; kumulativer Live-Prüfer mit 187 Operationen, vollständigem Replay, überlebenden Zeugen und tatsächlicher Applicability-Gleichheit über 6.524 Ziele bestanden. Biologie-Befunde sinken von 359 auf 173. Erweiterte native Prüfung aller 1.240 Konfigurationen einschließlich jeder registrierten Änderungsquelle läuft; reguläre Fachfloors, Pflicht-CI und Lieferung nach main bleiben erforderlich. |
+| Biologie: redundante Anforderungen an ein Orientierungsziel, geliefert | 186 frisch belegte direkte Anforderungen an `2d451684…` entfernt; ausschließlich die jeweiligen `requires`-Arrays ändern sich. Von 187 vorbereiteten Kandidaten bleibt einer wegen seines aktuellen geerbten Clusterzeugen außerhalb des unveränderten V1-Vertrags unverändert. | PR #90 auf main bei `3b71ee9370`; sein geprüfter PR-Head bestand fünf Pflichtworkflows und acht Hauptjobs. Bestehende Mathematikoperation und ursprüngliche 21 Quelldigests erhalten; kumulativer Live-Prüfer mit 187 Operationen, vollständigem Replay, überlebenden Zeugen und tatsächlicher Applicability-Gleichheit über 6.524 Ziele bestanden. Biologie-Befunde sinken durch die 186 Entfernungen von 359 auf 173. Das ist die Abnahme dieses gelieferten Batches, nicht die vollständige G17-Abnahme. |
 | G17-Bestand und Standard-Meilensteinprüfung | Mechanisch belegte Reduktionsbatches, G17 in der regulären Meilensteinberechnung und verpflichtender CI-Aufruf gegen die tatsächlichen Dateien. Vorhandene geeignete Korrekturen wiederverwenden. | Null G17-Verstöße im Abnahmebestand; Invarianten erhalten; wieder eingefügte Redundanz oder unvollständige Prüfung verhindert den Meilensteinpass. Sämtliche zehn Zielstände werden regulär auf main mindestens erreicht, alle erforderlichen frischen CI-Prüfungen bestehen und die Änderungen sind nach main geliefert. Erst damit ist das Goal erledigt. |
 
 Die erste Lieferung hat den Prüfer auf main gebracht, behauptet aber keinen minimalen
@@ -254,14 +301,18 @@ formal auf main zu haben.
 
 Abgeschlossen und nach main geliefert sind G17-Prüfer, technische
 Transitivitätskorrektur, der begrenzte Frischeanschluss mit genau einer realen
-Kantenentfernung und die bestätigte einheitliche Rollenpflicht. Nächster Schritt
-ist der begrenzte Biologie-Batch; weitere mechanische Reduktionen und die
-Standardintegration bleiben Teil desselben Goals. Die vollständige In-Memory-Vorschau
+Kantenentfernung, die bestätigte einheitliche Rollenpflicht und der erste
+Biologie-Batch mit 186 Entfernungen aus PR #90. Zuerst folgt die eigenständige
+Dokumentationslieferung; der nächste Umsetzungsschritt ist der endliche
+Atomarisierungs-/Erhaltungsnachweis unter der verbindlichen atomaren Zielnorm.
+Weitere mechanische Reduktionen und die Standardintegration bleiben Teil
+desselben aktiven Goals. Die historische vollständige In-Memory-Vorschau
 hat 2.435 Ursprungskanten nacheinander mit jeweils frischem Auditor entfernt
 und im geschützten Scope null verbleibende G17-Befunde erreicht. Dabei wurden
 keine Curriculumdateien geändert. Die zusätzlichen nativen Messungen zeigen,
 dass atomare Erreichbarkeitsgleichheit allein die bisherige direkte
-Rollenprüfung nicht abdeckt. Die Rollenentscheidung ist umgesetzt; neue native
+Rollenprüfung nicht abdeckt. Diese Vorschau ist keine Freigabe unter der
+korrigierten atomaren Zielnorm. Die Rollenentscheidung ist umgesetzt; neue native
 Vorher-/Nachher-Vergleiche unter derselben Regel bleiben für jeden übernommenen
 Batch erforderlich. Das eröffnet keine
 fachliche Überarbeitung und ersetzt keine Bestands- oder Main-Abnahme.
