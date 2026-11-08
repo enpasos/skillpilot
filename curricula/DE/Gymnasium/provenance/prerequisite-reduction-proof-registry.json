@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "proofContract": "continued-atomic-prerequisite-reduction-v4",
+  "proofContract": "atomic-cluster-target-normalization-v5",
   "auditScope": "origin-source-landscape-closure",
   "catalogSources": [
     {
@@ -25,7 +25,7 @@
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
       "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
       "baselineDocumentDigest": "sha256:169c8789724cce32c70b2ea16bb23d9a7e1166bc5752996d919674b62ccea2ca",
-      "currentDocumentDigest": "sha256:169c8789724cce32c70b2ea16bb23d9a7e1166bc5752996d919674b62ccea2ca"
+      "currentDocumentDigest": "sha256:c0bbd3f50750391e4ec3d497f51fb9e3189f8f9e935cf769e44c3c843490bfac"
     },
     {
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
@@ -19566,6 +19566,281 @@
       "historicalRemovalIndex": 0,
       "edgeIndex": 1,
       "tailRemovalIndex": 608
+    }
+  ],
+  "v4Checkpoint": {
+    "registryDigest": "sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803",
+    "currentDocumentDigests": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "currentDocumentDigest": "sha256:776ab3352af63f38a8341fd2031edbb609471840aecd80921702202040b2ed32"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "currentDocumentDigest": "sha256:db4d5d62e560ea7742aaf45aa0ac70654d5b853d5a6d719d621ba603b52f2d73"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "currentDocumentDigest": "sha256:5ed19597130f96390c30b813c54e46abc2f6f363fdbe183d94e121f82aa62ad3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "currentDocumentDigest": "sha256:169c8789724cce32c70b2ea16bb23d9a7e1166bc5752996d919674b62ccea2ca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "currentDocumentDigest": "sha256:7db5f5ee116b4bb19dd41bbc3fb22eb18d26d1bc68231c71bbf04e33df7a1e2e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "currentDocumentDigest": "sha256:fa6d36055f0475ceaa0d50d26cf47b8aef38af5f4608064cbf40e4d22aa6da35"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "currentDocumentDigest": "sha256:a233f5f730696fc2f848d816d93ee207e3269a8697485e393ea85e0443b31674"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "currentDocumentDigest": "sha256:7803da8f41b618fa3fc26cc5efe36221cb7e85d88f5ba0a3a450841bf872b1c7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "currentDocumentDigest": "sha256:10129daadc524100ff68a309966bb773ee4b9ee9e17256528d7292215491698d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "currentDocumentDigest": "sha256:98dc86467df3b731dfe47380a7248a1fa5749beaf1df022fe70c03a17a9e1fa8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "currentDocumentDigest": "sha256:7169e196c5d8baa811f932640be4f5bc9bf1b7813e34bbf27d29e9927838648b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "currentDocumentDigest": "sha256:3e9cfc60d20e02d81ccaf5e9598951ed99c5949244bb2f1b2a6533b36fa52663"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "currentDocumentDigest": "sha256:a6731d547d45289d46ad23a8f68e0c200b564fbd7383dc0d221d248f55d2b8e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "currentDocumentDigest": "sha256:ae36e6a078ad8b0c9ec9bbfcc4d10494c3170781fcb7f67a53b7af158247c4b9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "currentDocumentDigest": "sha256:d940e65e82bbe28b09395a61f7d6a117ca95589fb758e361cee0c0751a4939f1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "currentDocumentDigest": "sha256:d064bbbf225860d8bd89b324ac066b7120aba33c47ea5aaea95b5286f84e217f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "currentDocumentDigest": "sha256:d33dc0dca18bdc8fe349420724ca459a9e4144d95e42423dcb0a0f8cfc3e30db"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "currentDocumentDigest": "sha256:97dd924162a2cd4d2e79935ca00a83e6b43350cd49581cafe3405608b8bdc9cc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "currentDocumentDigest": "sha256:13fa4926b76a91987878590d3f3d508569279d308cac20b9dae78d75be5e613d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "currentDocumentDigest": "sha256:44df40cf7b9f9cfa7922ee5c20cae72b6331b55abbc17e9edabc8e22d46e1813"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "currentDocumentDigest": "sha256:a37b4bc86b276cd6029ea11278c98c43854230141f2cd02ccebf3f436fe7d650"
+      }
+    ]
+  },
+  "clusterTargetOriginalRequires": [
+    {
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "requires": [
+        "53462f11-c368-51df-bb68-c36a83d761b1",
+        "bb3dee7b-d6d3-513b-8824-bdf6414e02df"
+      ]
+    }
+  ],
+  "clusterTargetSuffix": [
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:001b6ae3-207a-400d-852d-2c4068df8d2f",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:be66ab87-1857-561e-ad91-bae56b3ae849",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:001b6ae3-207a-400d-852d-2c4068df8d2f"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:17164008-3c30-4d22-8f2b-bf2e5a79f9de",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:bdd71d15-2ed3-5edb-9a1b-c55b1239795b",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:17164008-3c30-4d22-8f2b-bf2e5a79f9de"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2122b969-61e9-412f-9e97-8777c606d27a",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:abf6d684-791e-5e0d-90bf-3466087dc937",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2122b969-61e9-412f-9e97-8777c606d27a"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:263b9af0-c584-4364-a35f-6dfccd7aaf21",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:bc28576e-243e-5bff-aca0-872e174d59e5",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:263b9af0-c584-4364-a35f-6dfccd7aaf21"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:6904ca70-3f22-41eb-bc9c-9896bf7bb1e9",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:bc28576e-243e-5bff-aca0-872e174d59e5",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:6904ca70-3f22-41eb-bc9c-9896bf7bb1e9"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:bdd71d15-2ed3-5edb-9a1b-c55b1239795b",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:70f5f3c6-f0e9-4bd7-8095-a20be459975c"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:d4642285-5b73-4541-a088-6c1e77b37637",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:be66ab87-1857-561e-ad91-bae56b3ae849",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:d4642285-5b73-4541-a088-6c1e77b37637"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:ead22176-e8f4-45b6-8a3d-e04661f3c3e4",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:abf6d684-791e-5e0d-90bf-3466087dc937",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:ead22176-e8f4-45b6-8a3d-e04661f3c3e4"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:f0c354f9-6f7a-494a-8f64-675bf1b42f5e",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:bdd71d15-2ed3-5edb-9a1b-c55b1239795b",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:f0c354f9-6f7a-494a-8f64-675bf1b42f5e"
+        ]
+      }
+    },
+    {
+      "operation": "materialize-atomic",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:fb8f990d-224f-4277-92a1-13bee8f7f8a4",
+      "origin": {
+        "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+        "prerequisite": "53462f11-c368-51df-bb68-c36a83d761b1",
+        "sourceContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+        ],
+        "prerequisiteContainsPath": [
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:be66ab87-1857-561e-ad91-bae56b3ae849",
+          "67bd301b-e11a-582d-94ba-4f4b1a4cefff:fb8f990d-224f-4277-92a1-13bee8f7f8a4"
+        ]
+      }
+    },
+    {
+      "operation": "remove-cluster-target",
+      "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "prerequisite": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1"
     }
   ]
 }

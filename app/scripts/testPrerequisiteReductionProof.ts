@@ -12,6 +12,7 @@ import {
   CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
   ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
   CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
+  CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
@@ -20,6 +21,7 @@ import {
   type LegacyPrerequisiteReductionRegistry,
   type OrderedPrerequisiteReductionRegistry,
   type ContinuedPrerequisiteReductionRegistry,
+  type ClusterTargetPrerequisiteReductionRegistry,
   type AtomicPrerequisiteMaterialization,
   type OrderedPrerequisiteReductionStep,
   type DirectPrerequisiteReduction,
@@ -200,6 +202,37 @@ function unchangedContinuedDocument(f: ReturnType<typeof continuedFixture>, docu
   f.registry.v3Checkpoint.currentDocumentDigests.push({ path, currentDocumentDigest })
   f.registry.v3Checkpoint.registryDigest = digest(f.parent)
   f.save()
+}
+function clusterTargetBaseline(): Document {
+  return { landscapeId: 'cluster-target-test', title: 'Canonical cluster target', goals: [
+    goal('z', ['c', 'p']), { ...goal('c'), type: 'cluster', contains: ['k', 'b'] },
+    { ...goal('k'), type: 'cluster', contains: ['a'] }, goal('a'), goal('b'), goal('p'),
+  ] }
+}
+function clusterTargetFixture(document = clusterTargetBaseline()) {
+  const f = continuedFixture()
+  unchangedContinuedDocument(f, document)
+  const parent = structuredClone(f.registry), parentDocument = structuredClone(document)
+  const owner = document.landscapeId, key = (id: string) => `${owner}:${id}`
+  const additions: AtomicPrerequisiteMaterialization[] = ['a', 'b'].map(id => ({
+    operation: 'materialize-atomic', source: key('z'), prerequisite: key(id),
+    origin: { source: key('z'), prerequisite: 'c', sourceContainsPath: [key('z')],
+      prerequisiteContainsPath: (id === 'a' ? ['c', 'k', 'a'] : ['c', 'b']).map(key) },
+  }))
+  const registry = Object.assign(f.registry, { proofContract: CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT,
+    v4Checkpoint: { registryDigest: digest(parent), currentDocumentDigests: parent.catalogSources
+      .map(({ path, currentDocumentDigest }) => ({ path, currentDocumentDigest })) },
+    clusterTargetOriginalRequires: [{ source: key('z'), requires: [...document.goals[0].requires] }],
+    clusterTargetSuffix: [...additions, { operation: 'remove-cluster-target', source: key('z'), prerequisite: key('c') }],
+  }) as ClusterTargetPrerequisiteReductionRegistry
+  document.goals[0].requires = ['p', 'a', 'b']
+  const save = () => {
+    registry.catalogSources.find(entry => entry.landscapeId === owner)!.currentDocumentDigest = digest(document)
+    writeFileSync(resolve(f.directory, `canonical/${owner}.json`), JSON.stringify(document))
+    f.save()
+  }
+  save()
+  return { ...f, registry, parent, parentDocument, document, additions, key, save }
 }
 async function rejectMutation(
   mutate: (f: ReturnType<typeof fixture>) => void,
@@ -817,6 +850,49 @@ try {
   const aliasContext = await fixture(aliases).load()
   assert.ok(aliasContext, 'all raw aliases of the removed relationship are removed together')
 
+  const targetFixture = clusterTargetFixture()
+  const targetContext = await targetFixture.load()
+  assert.ok(targetContext)
+  assert.equal(verifiedPrerequisiteReductionSummary(targetContext)!.proofContract, CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT)
+  assert.deepEqual(reviewBindingGoal(targetContext, targetFixture.key('z'), targetFixture.document.goals[0]), targetFixture.parentDocument.goals[0])
+  const targetReject = async (mutate: (f: ReturnType<typeof clusterTargetFixture>) => void, expected: RegExp) => {
+    const f = clusterTargetFixture(); mutate(f); f.save(); await assert.rejects(f.load, expected)
+  }
+  await targetReject(f => { f.registry.v4Checkpoint.registryDigest = `sha256:${'0'.repeat(64)}` }, /historical V4 registry digest differs/u)
+  await targetReject(f => { f.registry.v4Checkpoint.currentDocumentDigests.pop() }, /V4 checkpoint paths/u)
+  await targetReject(f => { f.registry.clusterTargetOriginalRequires = [] }, /exactly one original snapshot/u)
+  await targetReject(f => { f.registry.clusterTargetOriginalRequires.push(structuredClone(f.registry.clusterTargetOriginalRequires[0])) }, /exactly one original snapshot/u)
+  await targetReject(f => { f.registry.clusterTargetOriginalRequires[0].source = f.key('a') }, /snapshot source differs/u)
+  await targetReject(f => { f.registry.clusterTargetOriginalRequires[0].requires = ['p'] }, /current document digest differs/u)
+  await targetReject(f => { f.registry.clusterTargetOriginalRequires[0].requires = null }, /current document digest differs/u)
+  await targetReject(f => { f.registry.clusterTargetSuffix.splice(1, 1) }, /leaf coverage is incomplete/u)
+  await targetReject(f => { f.registry.clusterTargetSuffix.splice(1, 0, structuredClone(f.additions[0])) }, /already directly authored/u)
+  await targetReject(f => { f.additions[0].prerequisite = f.key('p') }, /source or leaf differs/u)
+  await targetReject(f => { f.additions[0].origin.source = local('k') }, /source or leaf differs/u)
+  await targetReject(f => { f.additions[0].origin.prerequisite = 'missing' }, /original literal cluster origin/u)
+  await targetReject(f => { f.additions[0].origin.sourceContainsPath = [f.key('z'), f.key('z')] }, /source or leaf differs/u)
+  await targetReject(f => { f.additions[0].origin.prerequisiteContainsPath = [f.key('c'), f.key('a')] }, /not directly authored/u)
+  await targetReject(f => { f.registry.clusterTargetSuffix.reverse() }, /invalid cluster-target removal fields/u)
+  await targetReject(f => { (f.registry.clusterTargetSuffix.at(-1) as unknown as Record<string, unknown>).witness = [] }, /invalid cluster-target removal fields/u)
+  await targetReject(f => { f.document.goals[0].title = 'Undeclared content drift' }, /current document digest differs/u)
+  await targetReject(f => { f.document.goals[1].contains.reverse() }, /current document digest differs/u)
+  await targetReject(f => { f.document.goals[0].requires.reverse() }, /cluster-target replay differs/u)
+  const structuralTarget = clusterTargetBaseline()
+  structuralTarget.goals.forEach(entry => { delete entry.type })
+  assert.ok(await clusterTargetFixture(structuralTarget).load(), 'V5 structural leaves and clusters permit absent consistent optional type')
+  const alreadyMaterialized = clusterTargetBaseline()
+  alreadyMaterialized.goals[0].requires.push('a', 'b')
+  const zeroAdds = clusterTargetFixture(alreadyMaterialized)
+  zeroAdds.registry.clusterTargetSuffix = zeroAdds.registry.clusterTargetSuffix.slice(-1)
+  zeroAdds.save()
+  assert.ok(await zeroAdds.load(), 'a complete existing direct leaf basis needs only the final cut')
+  const badParent = clusterTargetFixture()
+  badParent.registry.atomicRemovals[0].witness[1] = local('q')
+  badParent.parent.atomicRemovals = structuredClone(badParent.registry.atomicRemovals)
+  badParent.registry.v4Checkpoint.registryDigest = digest(badParent.parent)
+  badParent.save()
+  await assert.rejects(badParent.load, /atomic tail witness|witness edge/u)
+
   // Replay the actual first Math case against the complete current catalog in
   // an ignored fixture. No live canonical or historical review file is edited.
   const catalog = resolve(root, 'curricula/DE/Gymnasium/canonical')
@@ -824,8 +900,16 @@ try {
     entry.isDirectory() ? files(resolve(directory, entry.name))
       : /\.json$/iu.test(entry.name) && !/_deck/iu.test(entry.name) ? [resolve(directory, entry.name)] : []).sort()
   const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
-  assert.equal(liveRegistry.proofContract, CONTINUED_PREREQUISITE_REDUCTION_CONTRACT, 'the live registry uses the continued V4 contract')
-  const liveContinued = liveRegistry as ContinuedPrerequisiteReductionRegistry
+  assert.equal(liveRegistry.proofContract, CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT, 'the live registry uses the cluster-target V5 contract')
+  const liveTarget = liveRegistry as ClusterTargetPrerequisiteReductionRegistry
+  const { v4Checkpoint, clusterTargetOriginalRequires, clusterTargetSuffix, ...livePrefix } = liveTarget
+  const v4Digests = new Map(v4Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
+  const liveContinued: ContinuedPrerequisiteReductionRegistry = { ...livePrefix, proofContract: CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
+    catalogSources: liveTarget.catalogSources.map(entry => ({ ...entry, currentDocumentDigest: v4Digests.get(entry.path)! })) }
+  assert.equal(digest(liveContinued), 'sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803')
+  assert.equal(v4Checkpoint.registryDigest, digest(liveContinued))
+  assert.equal(`sha256:${createHash('sha256').update(`${JSON.stringify(liveContinued, null, 2)}\n`).digest('hex')}`,
+    'sha256:94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394', 'the complete V4 parent remains byte-reconstructable')
   const parentDigests = new Map(liveContinued.v3Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
   const liveOrdered: OrderedPrerequisiteReductionRegistry = {
     schemaVersion: liveContinued.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
@@ -841,6 +925,15 @@ try {
   assert.equal(`sha256:${createHash('sha256').update(`${JSON.stringify(liveOrdered, null, 2)}\n`).digest('hex')}`,
     'sha256:deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29', 'the complete previous V3 registry remains reconstructable byte for byte')
   const originals = files(catalog).map((path) => ({ path, document: JSON.parse(readFileSync(path, 'utf8')) as Document }))
+  for (const { path, document } of originals) {
+    for (const original of clusterTargetOriginalRequires) {
+      if (!original.source.startsWith(`${document.landscapeId}:`)) continue
+      const goal = document.goals.find(entry => `${document.landscapeId}:${entry.id}` === original.source)!
+      if (original.requires === null) delete (goal as Record<string, unknown>).requires
+      else goal.requires = structuredClone(original.requires)
+    }
+    assert.equal(digest(document), v4Digests.get(relative(root, path)), `restored V4 parent document: ${path}`)
+  }
   const tailOriginals = new Map(liveContinued.tailOriginalRequires.map(entry => [entry.source, entry.requires]))
   for (const { path, document } of originals) {
     for (const goal of document.goals) {
