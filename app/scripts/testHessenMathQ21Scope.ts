@@ -3,6 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { loadVerifiedPrerequisiteReductionContext, reviewBindingGoal } from './prerequisiteReductionProof'
 import { buildApplicabilityCompilation, intersectApplicabilityJurisdictions } from './applicabilityCompiler'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
@@ -11,6 +12,8 @@ import {
   compileCompositionView,
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
+
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
@@ -94,7 +97,15 @@ for (const [id, kind] of expectedKinds) {
   const decisions = kindLedger.decisions.filter((decision) => decision.goalId === id)
   assert.equal(decisions.length, 1, `${id}: expected one semantic-kind classification`)
   assert.equal(decisions[0].semanticKind, kind, `${id}: structural repair must not change the semantic kind`)
-  assert.equal(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(rawGoalById.get(id)! as unknown as Record<string, unknown>), `${id}: semantic-kind source binding is stale`)
+  const rawGoal = rawGoalById.get(id)! as unknown as Record<string, unknown>
+  assert.equal(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+    prerequisiteReductionContext, `${raw.landscapeId}:${id}`, rawGoal,
+  )), `${id}: semantic-kind source binding is stale`)
+  if (id === '993a14e8-60f0-5764-9340-b2447a5fa84b') {
+    assert.notEqual(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+      undefined, `${raw.landscapeId}:${id}`, rawGoal,
+    )), `${id}: the reduced raw goal needs the verified comparison context`)
+  }
 }
 const heGkFiles = new Set(['de-he-sekii-gk.view.json', 'de-he-gk.view.json', 'de-he-gk-g8.view.json', 'de-he-gk-g9.view.json'])
 const ancestorClosure = (start: string) => {
@@ -121,12 +132,63 @@ for (const id of changedPrerequisites.slice(0, 2)) {
   }
 }
 
+// Coverage stays explicitly authored. The certified atomic cuts retain smaller
+// direct preparation bases and these literal final raw prerequisite witnesses.
+const assessmentExpectations = new Map<string, {
+  coveredIds: string[]
+  requiredIds: string[]
+  witnesses: string[][]
+}>([
+  ['bbb340ed-1009-4966-ae96-bfea4437505a', {
+    coveredIds: [
+      '61686d85-0301-550e-bab9-bd9411c3e7ce', '5dabf0b3-89b1-59a6-ae57-014f92becd3b',
+      '6517427b-cf4e-5ebf-9a76-e1035617687c',
+    ],
+    requiredIds: ['6517427b-cf4e-5ebf-9a76-e1035617687c'],
+    // Atomic tail cuts 648–649.
+    witnesses: [
+      ['bbb340ed-1009-4966-ae96-bfea4437505a', '6517427b-cf4e-5ebf-9a76-e1035617687c', '61686d85-0301-550e-bab9-bd9411c3e7ce'],
+      ['bbb340ed-1009-4966-ae96-bfea4437505a', '6517427b-cf4e-5ebf-9a76-e1035617687c', '5dabf0b3-89b1-59a6-ae57-014f92becd3b'],
+    ],
+  }],
+  ['46bb8422-a822-46e1-8bcc-8b6475994b3a', {
+    coveredIds: [
+      'dd6c5e08-0cc6-53c0-b317-ebaba277c776', '772b11c9-1348-5ab9-bc3f-458c46b312b6',
+      'a12bef54-7595-5f48-a7a8-9cfe1d8e9729', '4c6369b0-4b58-5ac0-915c-82c348ae1c14',
+      '62a1c6f2-1775-5a19-98e0-ed3dd722039f',
+    ],
+    requiredIds: ['a12bef54-7595-5f48-a7a8-9cfe1d8e9729', '62a1c6f2-1775-5a19-98e0-ed3dd722039f'],
+    // Atomic tail cuts 810–812.
+    witnesses: [
+      ['46bb8422-a822-46e1-8bcc-8b6475994b3a', '62a1c6f2-1775-5a19-98e0-ed3dd722039f', '4c6369b0-4b58-5ac0-915c-82c348ae1c14'],
+      ['46bb8422-a822-46e1-8bcc-8b6475994b3a', 'a12bef54-7595-5f48-a7a8-9cfe1d8e9729', '772b11c9-1348-5ab9-bc3f-458c46b312b6'],
+      ['46bb8422-a822-46e1-8bcc-8b6475994b3a', 'a12bef54-7595-5f48-a7a8-9cfe1d8e9729', 'dd6c5e08-0cc6-53c0-b317-ebaba277c776'],
+    ],
+  }],
+  ['1429363f-628f-4f42-80e5-8a9a935147cc', {
+    coveredIds: ['c15fe32d-1c83-4127-b1a4-9125af3d8f5d', 'dbc13bb0-963b-49a8-a441-2183f4b64c8e'],
+    requiredIds: ['dbc13bb0-963b-49a8-a441-2183f4b64c8e'],
+    // Atomic tail cut 914.
+    witnesses: [
+      ['1429363f-628f-4f42-80e5-8a9a935147cc', 'dbc13bb0-963b-49a8-a441-2183f4b64c8e', 'c15fe32d-1c83-4127-b1a4-9125af3d8f5d'],
+    ],
+  }],
+])
 const assessed = new Set<string>()
 for (const id of tasks) {
   const task = rawGoalById.get(id)
   assert(task?.examData, `${id}: task missing`)
   assert.equal(task.nodeKind, 'exam')
-  assert.deepEqual(task.requires, task.examData.coveredGoalIds, `${id}: declared coverage must equal the concrete assessed prerequisites`)
+  const expected = assessmentExpectations.get(id)!
+  assert.deepEqual(task.examData.coveredGoalIds, expected.coveredIds, `${id}: explicit assessment coverage changed`)
+  assert.deepEqual(task.requires, expected.requiredIds, `${id}: current direct preparation basis changed`)
+  for (const witness of expected.witnesses) {
+    for (let index = 0; index < witness.length - 1; index += 1) {
+      const source = witness[index]
+      const prerequisite = witness[index + 1]
+      assert(rawGoalById.get(source)?.requires.includes(prerequisite), `${id}: missing current preparation witness: ${source} -> ${prerequisite}`)
+    }
+  }
   for (const covered of task.examData.coveredGoalIds ?? []) {
     assert(common.includes(covered), `${id}: unrelated coverage added`)
     assert(!assessed.has(covered), `${id}: duplicate claimed coverage`)

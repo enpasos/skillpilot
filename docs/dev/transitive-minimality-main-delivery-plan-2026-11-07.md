@@ -241,6 +241,28 @@ Fehler oder Skips. Die 133 gebundenen Laufzeiteingaben sowie alle 124
 geschützten Eingaben bleiben bytegleich. Eine erfolgreiche Remote-Abnahme
 von #97 wird erst nach der frischen CI des korrigierten Heads behauptet.
 
+Der vollständige Remote-Lauf von `bcc7803424` bestätigte sieben der acht
+Hauptjobs einschließlich Backend und Frontend sowie alle vier
+Begleitworkflows. Nur die nachgelagerte Q2.5-Scope-Prüfung scheiterte an einem
+rohen Semantic-Kind-Fingerprintvergleich. Der Originalpin `49ed1468…` bleibt
+erhalten; die betroffenen Fingerprintvergleiche nutzen ausschließlich für
+diese bestehende Vergleichsfamilie den vorhandenen verifizierten Kontext.
+In fünf bereits aufgerufenen Testreadern werden Coverage und direkte
+Voraussetzungbasis getrennt festgeschrieben. Die
+[begrenzte Readernotiz](canonical-math-assessment-reader-bindings-review-2026-11-09.md)
+bindet die unveränderten Ledger- und Datenbytes, zwölf ausschließlich durch
+`requires` veränderte Goalzeilen sowie die tatsächlich überlebenden Zeugen.
+
+Alle vier tatsächlich in CI aufgerufenen Programme bestehen lokal. Der ganze
+Rollen-Caller legte zuvor zwei weitere Direktkantenannahmen in seiner eigenen
+Testdatei offen; beide fehlgeschlagenen Läufe und ihre Eingabeframes bleiben
+unverändert erhalten. Scoped ESLint aller fünf finalen Reader besteht. Die
+125 geschützten Daten-, Review-, Core- und Vieweingaben bleiben bytegleich;
+es erfolgt keine Fingerprint-Neubindung oder neue Inhaltsfreigabe. Der
+Reader-Folgecommit benötigt seine eigene frische Remote-CI, bevor #97 nach
+main übernommen wird. Der Gesamtauftrag einschließlich des harten
+Standard-G17-Gates bleibt offen.
+
 Der unmittelbar folgende deutsche Einzelfall ist vollständig lokal geprüft als
 `e7b317b222` auf `fix/g17-german-first-cluster-prerequisite` committet und
 gepusht erhalten. [Notiz und gebundene Nachweise](https://github.com/enpasos/skillpilot/blob/e7b317b222a3b0b204a2f92dfc4ae25ddab28443/docs/dev/german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
