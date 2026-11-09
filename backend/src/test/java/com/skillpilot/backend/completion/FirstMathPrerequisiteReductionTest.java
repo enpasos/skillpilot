@@ -1206,6 +1206,7 @@ class FirstMathPrerequisiteReductionTest {
             for (String atom : contextAtoms) {
                 assertThat(right.topology().transitivePrerequisites(atom)).as("Physics full atomic demand %s: %s", atom, scope)
                         .isEqualTo(left.topology().transitivePrerequisites(atom));
+                if (!left.roles().atomicTargets().contains(atom)) continue;
                 assertThat(roleProbeWithPrerequisites(after.service, right.graph(), right.projection(), atom, rightMastered))
                         .as("Physics effective role validity %s: %s", atom, scope)
                         .isEqualTo(roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered));

@@ -44,3 +44,6 @@ Der anschließende **tatsächliche Produktaufruf** des unveränderten Auditors
 Referenzdokumente und weist die explizite Physik-/Fremd-/Vererbungsscope aus.
 Dies ist noch keine Integration in die Standard-Meilensteinberechnung;
 Native, ganze TS-Kette, CQR/Floors und Remote-CI bleiben getrennt offen.
+
+Der anschließende native Rollenbefund und der gezielte View-Nachtrag stehen im
+[Nachtrag zur Voraussetzungsscope-Reparatur](projection-closure-followup.md).
