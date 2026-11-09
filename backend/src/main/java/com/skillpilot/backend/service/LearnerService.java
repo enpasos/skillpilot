@@ -7947,7 +7947,7 @@ public class LearnerService {
                         || !pathDescendantIds.contains(entryId)
                         || projection.prerequisiteOnlyGoalIds().contains(entryId)
                         || !isAtomicGoal(entryGoal)
-                        || !directlyRequiresGoal(entryGoal, activeGoalId, structuralGoals)) {
+                        || !hasAuthoredAtomicRequiresPath(entryGoal, activeGoalId, structuralGoals)) {
                     continue;
                 }
                 relatedGoalIds.add(entryId);
@@ -7994,16 +7994,34 @@ public class LearnerService {
         return paths.size() < 2 ? null : new OrientationOutlook(activeGoalId, List.copyOf(paths));
     }
 
-    private boolean directlyRequiresGoal(
+    private boolean hasAuthoredAtomicRequiresPath(
             LearningGoal goal,
             String requiredGoalId,
             Map<String, LearningGoal> structuralGoals) {
-        if (goal == null || goal.getRequires() == null) {
+        if (!isAtomicGoal(goal) || !isAtomicGoal(structuralGoals.get(requiredGoalId))) {
             return false;
         }
-        return goal.getRequires().stream()
-                .map(requirementRef -> resolveGoalRef(requirementRef, structuralGoals))
-                .anyMatch(requiredGoalId::equals);
+        Set<String> visited = new HashSet<>();
+        Deque<LearningGoal> pending = new ArrayDeque<>();
+        pending.add(goal);
+        while (!pending.isEmpty()) {
+            LearningGoal current = pending.removeFirst();
+            if (!visited.add(current.getId()) || current.getRequires() == null) {
+                continue;
+            }
+            for (String requirementRef : current.getRequires()) {
+                String prerequisiteId = resolveGoalRef(requirementRef, structuralGoals);
+                LearningGoal prerequisite = prerequisiteId == null ? null : structuralGoals.get(prerequisiteId);
+                if (!isAtomicGoal(prerequisite)) {
+                    continue;
+                }
+                if (requiredGoalId.equals(prerequisiteId)) {
+                    return true;
+                }
+                pending.addLast(prerequisite);
+            }
+        }
+        return false;
     }
 
     private void collectResolvedDescendants(

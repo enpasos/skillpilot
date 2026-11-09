@@ -11,6 +11,7 @@ import {
   loadVerifiedPrerequisiteReductionContext,
   CLUSTER_PREREQUISITE_REDUCTION_CONTRACT,
   ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+  CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_CONTRACT,
   PREREQUISITE_REDUCTION_REGISTRY_PATH,
   reviewBindingGoal,
@@ -18,6 +19,7 @@ import {
   type PrerequisiteReductionRegistry,
   type LegacyPrerequisiteReductionRegistry,
   type OrderedPrerequisiteReductionRegistry,
+  type ContinuedPrerequisiteReductionRegistry,
   type AtomicPrerequisiteMaterialization,
   type OrderedPrerequisiteReductionStep,
   type DirectPrerequisiteReduction,
@@ -166,6 +168,37 @@ function unchangedOrderedDocument(f: ReturnType<typeof orderedFixture>, document
   f.history.catalogSources.push(structuredClone(binding))
   f.registry.v2Checkpoint.currentDocumentDigests.push({ path, currentDocumentDigest: digest(document) })
   f.registry.v2Checkpoint.registryDigest = digest(f.history)
+  f.save()
+}
+function continuedFixture(before = orderedBaseline()) {
+  before.goals.find(({ id }) => id === 'p')!.requires = ['r', 's']
+  before.goals.push(goal('s', ['r']))
+  const f = orderedFixture(before)
+  const parentDocument = structuredClone(f.current), parent = structuredClone(f.registry)
+  const registry = Object.assign(f.registry, {
+    proofContract: CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
+    v3Checkpoint: { registryDigest: digest(parent), currentDocumentDigests: parent.catalogSources
+      .map(({ path, currentDocumentDigest }) => ({ path, currentDocumentDigest })) },
+    tailOriginalRequires: [{ source: local('p'), requires: ['r', 's'] }],
+    atomicRemovals: [{ source: local('p'), prerequisite: local('r'), witness: ['p', 's', 'r'].map(local) }],
+    witnessContinuations: [{ historicalRemovalIndex: 0, edgeIndex: 1, tailRemovalIndex: 0 }],
+  }) as ContinuedPrerequisiteReductionRegistry
+  f.current.goals.find(({ id }) => id === 'p')!.requires = ['s']
+  const save = () => { registry.catalogSources[0].currentDocumentDigest = digest(f.current); f.save() }
+  save()
+  return { ...f, registry, parent, parentDocument, save }
+}
+function unchangedContinuedDocument(f: ReturnType<typeof continuedFixture>, document: Document) {
+  const path = `canonical/${document.landscapeId}.json`, currentDocumentDigest = digest(document)
+  writeFileSync(resolve(f.directory, path), JSON.stringify(document))
+  const binding = { path, landscapeId: document.landscapeId, baselineDocumentDigest: currentDocumentDigest, currentDocumentDigest }
+  f.registry.catalogSources.push(structuredClone(binding)); f.parent.catalogSources.push(structuredClone(binding))
+  f.history.catalogSources.push(structuredClone(binding))
+  f.registry.v2Checkpoint.currentDocumentDigests.push({ path, currentDocumentDigest })
+  f.registry.v2Checkpoint.registryDigest = digest(f.history)
+  f.parent.v2Checkpoint = structuredClone(f.registry.v2Checkpoint)
+  f.registry.v3Checkpoint.currentDocumentDigests.push({ path, currentDocumentDigest })
+  f.registry.v3Checkpoint.registryDigest = digest(f.parent)
   f.save()
 }
 async function rejectMutation(
@@ -692,6 +725,56 @@ try {
     applicabilityOverrides: { jurisdiction: ['DE-BY'] },
   }
   await assert.rejects(orderedFixture(changedApplicability).load, /compiled applicability changed/u)
+  const continued = continuedFixture()
+  const continuedContext = await continued.load()
+  assert.ok(continuedContext)
+  assert.equal(verifiedPrerequisiteReductionSummary(continuedContext)!.proofContract, CONTINUED_PREREQUISITE_REDUCTION_CONTRACT)
+  assert.deepEqual(verifiedPrerequisiteReductionSummary(continuedContext)!.affectedGoalIds, ['a', 'b', 'k', 'p', 'q'].map(local))
+  const finalP = continued.current.goals.find(({ id }) => id === 'p')!
+  assert.deepEqual(reviewBindingGoal(continuedContext, local('p'), finalP).requires, ['r', 's'])
+  assert.deepEqual(finalP.requires, ['s'])
+  assert.throws(() => reviewBindingGoal(continuedContext, local('p'), { ...finalP, requires: ['r', 's'] }), /snapshot/u,
+    'the V3 current snapshot cannot be substituted for the V4 final snapshot')
+  assert.throws(() => reviewBindingGoal({} as VerifiedPrerequisiteReductionContext, local('p'), finalP), /forged/u)
+  const continuedReject = async (mutate: (fixture: ReturnType<typeof continuedFixture>) => void, expected: RegExp) => {
+    const f = continuedFixture(); mutate(f); f.save(); await assert.rejects(f.load, expected)
+  }
+  await continuedReject(({ registry }) => { registry.witnessContinuations = [] }, /missing witness continuation/u)
+  await continuedReject(({ registry }) => registry.witnessContinuations.push({ ...registry.witnessContinuations[0] }), /duplicate witness continuation/u)
+  await continuedReject(({ registry }) => { registry.witnessContinuations[0].edgeIndex = 0 }, /continuation endpoints/u)
+  await continuedReject(({ registry }) => { registry.witnessContinuations[0].tailRemovalIndex = 1 }, /continuation references/u)
+  await continuedReject(({ registry }) => Object.assign(registry.witnessContinuations[0], { witnessIndex: 0 }), /continuation fields/u)
+  await continuedReject(({ registry }) => { registry.tailOriginalRequires = [] }, /tail original/u)
+  await continuedReject(({ registry }) => registry.tailOriginalRequires.push({ source: local('r'), requires: [] }), /extra or duplicate tail original/u)
+  await continuedReject(({ registry }) => { registry.tailOriginalRequires[0].requires = null }, /current document digest/u)
+  await continuedReject(({ registry }) => { registry.tailOriginalRequires[0].requires = ['s', 'r'] }, /current document digest/u)
+  await continuedReject(({ registry }) => { registry.v3Checkpoint.registryDigest = `sha256:${'0'.repeat(64)}` }, /historical V3 registry digest/u)
+  await continuedReject(({ registry, parent }) => {
+    registry.v3Checkpoint.currentDocumentDigests[0].currentDocumentDigest = `sha256:${'0'.repeat(64)}`
+    parent.catalogSources[0].currentDocumentDigest = registry.v3Checkpoint.currentDocumentDigests[0].currentDocumentDigest
+    registry.v3Checkpoint.registryDigest = digest(parent)
+  }, /current document digest/u)
+  await continuedReject(({ registry }) => { registry.atomicRemovals[0].witness = ['p', 's', 'p', 'r'].map(local) }, /repeat a vertex/u)
+  const missingContinued = continuedFixture()
+  rmSync(resolve(missingContinued.directory, 'canonical/test.json'))
+  await assert.rejects(missingContinued.load, /catalog source paths/u)
+  const foreignAncestor = continuedFixture()
+  unchangedContinuedDocument(foreignAncestor, { landscapeId: 'foreign', title: 'Foreign ancestor', goals: [
+    { ...goal('parent', [local('r')]), type: 'cluster', contains: [local('a')] },
+  ] })
+  await assert.rejects(foreignAncestor.load, /closed atomic scope has a foreign requirement origin/u,
+    'fully bound valid V3 history does not permit a foreign inherited requirement in the atomic fast path')
+  const foreignChildBefore = orderedBaseline()
+  foreignChildBefore.goals.push({ ...goal('holder'), type: 'cluster', contains: ['foreign:child'] })
+  const foreignChild = continuedFixture(foreignChildBefore)
+  unchangedContinuedDocument(foreignChild, { landscapeId: 'foreign', title: 'Expanded foreign child', goals: [goal('child')] })
+  await assert.rejects(foreignChild.load, /closed atomic scope has expanded foreign nodes/u,
+    'an expanded foreign contains child is rejected despite consistent parent/current digests')
+  const harmlessAncestor = continuedFixture()
+  unchangedContinuedDocument(harmlessAncestor, { landscapeId: 'foreign', title: 'Empty foreign ancestor', goals: [
+    { ...goal('parent'), type: 'cluster', contains: [local('a')] },
+  ] })
+  assert.ok(await harmlessAncestor.load(), 'a requirement-free foreign inheritance ancestor is explicitly permitted')
   const malformed = fixture()
   writeFileSync(resolve(malformed.directory, 'proof.json'), '{}')
   await assert.rejects(malformed.load, /invalid registry/u)
@@ -741,9 +824,34 @@ try {
     entry.isDirectory() ? files(resolve(directory, entry.name))
       : /\.json$/iu.test(entry.name) && !/_deck/iu.test(entry.name) ? [resolve(directory, entry.name)] : []).sort()
   const liveRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
-  const liveOrdered = liveRegistry.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT ? liveRegistry : undefined
-  assert.ok(liveOrdered, 'the live registry uses the ordered V3 contract')
+  assert.equal(liveRegistry.proofContract, CONTINUED_PREREQUISITE_REDUCTION_CONTRACT, 'the live registry uses the continued V4 contract')
+  const liveContinued = liveRegistry as ContinuedPrerequisiteReductionRegistry
+  const parentDigests = new Map(liveContinued.v3Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
+  const liveOrdered: OrderedPrerequisiteReductionRegistry = {
+    schemaVersion: liveContinued.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: liveContinued.auditScope,
+    catalogSources: liveContinued.catalogSources.map(entry => ({ ...entry, currentDocumentDigest: parentDigests.get(entry.path)! })),
+    originalRequires: liveContinued.originalRequires, removals: liveContinued.removals,
+    v2Checkpoint: liveContinued.v2Checkpoint, suffixOriginalRequires: liveContinued.suffixOriginalRequires, suffix: liveContinued.suffix,
+  }
+  const v3Digest = 'sha256:55bbd974c3265cd3802b7bf5d8622beeb2d3d5ac4795d4e0dfdb27b63302f06b'
+  assert.equal(digest(liveOrdered), v3Digest)
+  assert.equal(liveContinued.v3Checkpoint.registryDigest, v3Digest)
+  assert.equal(liveContinued.v3Checkpoint.currentDocumentDigests.length, 21)
+  assert.equal(`sha256:${createHash('sha256').update(`${JSON.stringify(liveOrdered, null, 2)}\n`).digest('hex')}`,
+    'sha256:deb3d78f5e5f2797dd88d2776c7e9645f9d8869d7e375a00f2790f970d7aae29', 'the complete previous V3 registry remains reconstructable byte for byte')
   const originals = files(catalog).map((path) => ({ path, document: JSON.parse(readFileSync(path, 'utf8')) as Document }))
+  const tailOriginals = new Map(liveContinued.tailOriginalRequires.map(entry => [entry.source, entry.requires]))
+  for (const { path, document } of originals) {
+    for (const goal of document.goals) {
+      const key = `${document.landscapeId}:${goal.id}`
+      if (!tailOriginals.has(key)) continue
+      const before = tailOriginals.get(key)!
+      if (before === null) delete (goal as Record<string, unknown>).requires
+      else goal.requires = structuredClone(before)
+    }
+    assert.equal(digest(document), parentDigests.get(relative(root, path)), `restored V3 parent document: ${path}`)
+  }
   if (liveOrdered) {
     // Keep this isolated V1 replay on the actual historical V2 checkpoint even
     // when the live catalog has already applied the ordered V3 suffix.
@@ -842,6 +950,17 @@ try {
     allOriginals.push(...liveOrdered.suffixOriginalRequires)
     assert.equal(new Set(allOriginals.map(({ source }) => source)).size, 229)
   }
+  assert.equal(liveContinued.atomicRemovals.length, 922)
+  assert.equal(liveContinued.tailOriginalRequires.length, 490)
+  assert.equal(tailOriginals.size, 490)
+  assert.deepEqual([...tailOriginals.keys()].sort(), [...new Set(liveContinued.atomicRemovals.map(entry => entry.source))].sort())
+  const prefixSources = new Set(allOriginals.map(entry => entry.source))
+  assert.ok([...tailOriginals.keys()].every(source => !prefixSources.has(source)), 'all 490 tail sources are additional sources')
+  assert.deepEqual(liveContinued.witnessContinuations, [{ historicalRemovalIndex: 0, edgeIndex: 1, tailRemovalIndex: 608 }])
+  assert.deepEqual(liveContinued.atomicRemovals[608].witness, ['91e2f564-3bc8-4924-af85-2a3fa84c1471',
+    '71683f37-24de-4e0f-badd-858b56fa4d64', '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'].map(id => `${math.document.landscapeId}:${id}`))
+  allOriginals.push(...liveContinued.tailOriginalRequires)
+  assert.equal(new Set(allOriginals.map(entry => entry.source)).size, 719)
   assert.deepEqual(verifiedPrerequisiteReductionSummary(liveContext)!.affectedGoalIds,
     allOriginals.map(({ source }) => source).sort())
   for (const original of allOriginals) {
@@ -862,7 +981,7 @@ try {
     assert.notEqual(fingerprintSemanticKindSourceGoal(raw), fingerprintSemanticKindSourceGoal(historical),
       `historical comparison requires the verified capability: ${original.source}`)
   }
-  console.log(`Prerequisite reduction proof: strict negatives, refreshed multi-removal witnesses, first Math, ${liveRegistry.removals.length} historical operations and ${liveOrdered?.suffix.length ?? 0} ordered suffix steps passed.`)
+  console.log(`Prerequisite reduction proof: strict negatives, bound V3 parent, ${liveRegistry.removals.length} historical operations, ${liveOrdered.suffix.length} suffix steps, ${liveContinued.atomicRemovals.length} atomic cuts and ${allOriginals.length} snapshots passed.`)
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }

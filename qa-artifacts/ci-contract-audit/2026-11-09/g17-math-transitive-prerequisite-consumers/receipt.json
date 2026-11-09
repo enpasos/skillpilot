@@ -1,0 +1,477 @@
+{
+  "latestStatus": "passed",
+  "observedAt": "2026-11-09T00:42:30.883613+00:00",
+  "baseCommit": "4ffa18c26cb44bd7994c984e7cde758759f36881",
+  "branch": "fix/g17-math-transitive-reduction",
+  "actualFailure": {
+    "runId": 42535493092,
+    "head": "4ffa18c26cb44bd7994c984e7cde758759f36881",
+    "curriculumJob": 128905001408,
+    "frontendJob": 128905001509,
+    "backendJob": 128905001493,
+    "groups": [
+      "GVR015 redundant direct orientation-edge requirement",
+      "Q4 direct prerequisite basis incorrectly equated to assessment coverage",
+      "Orientation outlook direct-edge filter hides one transitively reachable authored entry"
+    ]
+  },
+  "sourceBefore": {
+    "app/scripts/lib/orientationOutlookValidation.ts": "704361324cfb5fb92570c1b8d1d53a2a6e9794c27e5ef50e4ceed7562f6d0bb4",
+    "app/scripts/testHardLearningRouteValidation.ts": "df47c023d0bfcbb4bf0544ed27081b1bdd1006d3f53f50f5de3d4111c86742d7",
+    "docs/qa-ci/graph-validation-rules.md": "33f4780266d156d9d3254a179d0da15d58daf9e50c45f7822eb003de3f3ae1fe",
+    "app/scripts/testGoalBookModel.ts": "6706f9f10cf8e7d3c94c86c38b0847aacf6450055427b47109eb4863baf447a2",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "9a8e39e5bb1735570d87c77fda18c64f918c5c331229e36c64da7318526dc492"
+  },
+  "sourceAfter": {
+    "app/scripts/lib/orientationOutlookValidation.ts": "0981497095e4d17198944d99086f453b4f5a10b2c189983d70ae9e6da69b2950",
+    "app/scripts/testHardLearningRouteValidation.ts": "fa97d3f71d7afa23384620472013a67ffe241c4fc61a727a7ef81d1b2594d289",
+    "docs/qa-ci/graph-validation-rules.md": "f17b26e5a6f6a76b90e692df108d500ad6eba24a08def15978158970c15bd166",
+    "app/scripts/testGoalBookModel.ts": "52f16c158cf7e9b36642756dfce125ddf35b8799ad43e39fca8eb98493b226fc",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "e570811a759d26ba8623965af758b8791ef57c7c4765b3bca5686a078fd9ba19",
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceOrientationOutlookRouteTest.java": "a676cda04175a84f740bd18522ac78a320b02cfc3d609af533c6d4d5051cdfc6"
+  },
+  "protectedInputs": {
+    "files": 124,
+    "unchanged": true,
+    "manifest": {
+      "path": "app/node_modules/.tmp/g17-pr97-transitive-prerequisite-consumers-20261109/protected-inputs-before.json",
+      "sha256": "dff1b46a832e4298aed3a16c3ba5423c934ce171f652c1c2e3f0b0f3ac6835d6"
+    },
+    "mathSha256": "664b6d151b7893256d0385e97678d5490e7470127c01eef0717c687d93932448",
+    "registrySha256": "94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394",
+    "canonicalDocuments": 21,
+    "mathViews": 88
+  },
+  "repairs": {
+    "graphValidation": "Remove only the direct E-to-O supplement; retain existing stage/kind/structural-leaf constrained authored-R+ validator",
+    "bookConsumer": "Pin six unchanged authored coverage targets separately from five current direct preparation requirements and the literal division-to-multiplication witness; retain both Mandelbrot exclusions",
+    "runtimeOutlook": "Only the sole-purpose private helper and its single caller change; iterative visited traversal follows existing resolved raw requires between structural leaves along at least one edge. Existing target/path/focus/prerequisiteOnly entry filters remain; relatedGoalIds contain authored entries only."
+  },
+  "certifiedCurrentWitnesses": [
+    {
+      "tailRemovalIndex": 13,
+      "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+      "removedPrerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+      "currentLiteralPath": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "literalEdgePositions": [
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:d825f7ce-e19b-594a-8181-eff199c21d93",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cf474eab-1379-4877-907e-58b0892ce734",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+        ]
+      ]
+    },
+    {
+      "tailRemovalIndex": 48,
+      "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "removedPrerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+      "currentLiteralPath": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "literalEdgePositions": [
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:2bb4bb91-7929-483a-b735-44275f6b5cdc",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6b0075bb-f71c-59f6-ab98-fb894568cc26",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+        ]
+      ]
+    },
+    {
+      "tailRemovalIndex": 336,
+      "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91571d3f-3651-4477-ba21-320fc4077453",
+      "removedPrerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86",
+      "currentLiteralPath": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91571d3f-3651-4477-ba21-320fc4077453",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+      ],
+      "literalEdgePositions": [
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:91571d3f-3651-4477-ba21-320fc4077453",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:ca8b2e67-7d14-5baf-8404-26820fe3d548",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a4c2b831-02f0-5d55-a300-7823a71352c4",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:cafd6520-c4af-4109-9863-cc49ba6fad4d",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:624764d6-becd-5f9b-ada3-0d4f9d143073",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:65365dce-f33f-49d8-9516-42f75883aa86"
+        ]
+      ]
+    },
+    {
+      "tailRemovalIndex": 86,
+      "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+      "removedPrerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "currentLiteralPath": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+      ],
+      "literalEdgePositions": [
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:075f1ef2-6860-4b20-9df2-878157eb395e",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:71cec9fb-3751-4d61-8b34-c5adbbf6e5f2"
+        ]
+      ]
+    },
+    {
+      "tailRemovalIndex": 688,
+      "source": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8525adc-fad3-53f5-953f-213bd37b09e8",
+      "removedPrerequisite": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+      "currentLiteralPath": [
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8525adc-fad3-53f5-953f-213bd37b09e8",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+        "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9a0987cd-1e6e-5c09-a602-9fda43b8f655"
+      ],
+      "literalEdgePositions": [
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:a8525adc-fad3-53f5-953f-213bd37b09e8",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d"
+        ],
+        [
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced:9a0987cd-1e6e-5c09-a602-9fda43b8f655"
+        ]
+      ]
+    }
+  ],
+  "graphWitnessPositionCounts": {
+    "positions": 16,
+    "distinctEdges": 15
+  },
+  "bookCoverageGoalIds": [
+    "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+    "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+    "9a0987cd-1e6e-5c09-a602-9fda43b8f655",
+    "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+    "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+    "8e18154d-41d6-592e-ba98-537edad338e8"
+  ],
+  "bookDirectPreparationGoalIds": [
+    "5922affd-b1f9-5ad9-963e-25d3734c3b72",
+    "eda8580e-1f10-5dbd-9aaf-92367f40a6bd",
+    "5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d",
+    "a7fb1a7a-8315-5bcb-842e-48293293dfcc",
+    "8e18154d-41d6-592e-ba98-537edad338e8"
+  ],
+  "checks": {
+    "node": {
+      "status": "passed",
+      "result": {
+        "path": "app/node_modules/.tmp/g17-pr97-transitive-prerequisite-consumers-20261109/node-result.json",
+        "sha256": "84f0195552f05c5c78043ca6192d2f0c14b46c054edca31e06edeb1b2684fd9e"
+      },
+      "startedAt": "2026-11-09T00:37:58.417860+00:00",
+      "finishedAt": "2026-11-09T00:41:33.148944+00:00",
+      "inputFiles": 133,
+      "unchangedInputs": true,
+      "unchangedProtectedInputs": true,
+      "commands": [
+        {
+          "name": "hard-learning-routes",
+          "command": [
+            "npm",
+            "run",
+            "test:hard-learning-routes"
+          ],
+          "startedAt": "2026-11-09T00:37:58.418077+00:00",
+          "finishedAt": "2026-11-09T00:37:58.918570+00:00",
+          "exitCode": 0,
+          "logSha256": "1378e961297a2d97abfc39cd33526d91903ea1999d842f939433ac70f3bd588a"
+        },
+        {
+          "name": "validate-graph",
+          "command": [
+            "npm",
+            "run",
+            "validate:graph"
+          ],
+          "startedAt": "2026-11-09T00:37:58.918731+00:00",
+          "finishedAt": "2026-11-09T00:38:02.832960+00:00",
+          "exitCode": 0,
+          "logSha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+        },
+        {
+          "name": "goal-book-model",
+          "command": [
+            "npm",
+            "run",
+            "test:goal-book-model"
+          ],
+          "startedAt": "2026-11-09T00:38:02.833110+00:00",
+          "finishedAt": "2026-11-09T00:41:30.523088+00:00",
+          "exitCode": 0,
+          "logSha256": "1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0"
+        },
+        {
+          "name": "scoped-eslint",
+          "command": [
+            "./node_modules/.bin/eslint",
+            "scripts/lib/orientationOutlookValidation.ts",
+            "scripts/testHardLearningRouteValidation.ts",
+            "scripts/testGoalBookModel.ts"
+          ],
+          "startedAt": "2026-11-09T00:41:30.523311+00:00",
+          "finishedAt": "2026-11-09T00:41:33.148777+00:00",
+          "exitCode": 0,
+          "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "junit": {
+      "status": "passed",
+      "result": {
+        "path": "app/node_modules/.tmp/g17-pr97-transitive-prerequisite-consumers-20261109/junit-result.json",
+        "sha256": "250938114e61c2dc4ddb4cb75e5826290f16a2b82abcc40774092032922ac5ac"
+      },
+      "startedAt": "2026-11-09T00:37:58.423235+00:00",
+      "finishedAt": "2026-11-09T00:42:23.567373+00:00",
+      "inputFiles": 133,
+      "unchangedInputs": true,
+      "unchangedProtectedInputs": true,
+      "commands": [
+        {
+          "name": "targeted-junit",
+          "command": [
+            "./gradlew",
+            "test",
+            "--tests",
+            "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+            "--tests",
+            "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest.hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder",
+            "--tests",
+            "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest.appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId",
+            "--no-daemon",
+            "--max-workers=1",
+            "--console=plain",
+            "--info",
+            "-Dorg.gradle.java.installations.paths=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+            "-Dorg.gradle.java.installations.auto-detect=false"
+          ],
+          "startedAt": "2026-11-09T00:37:58.423346+00:00",
+          "finishedAt": "2026-11-09T00:42:23.541592+00:00",
+          "exitCode": 0,
+          "logSha256": "3bc6457a5bef19a92de4ac657bed231ca1954a462297253714571c0762e0a4ed"
+        }
+      ],
+      "suites": [
+        {
+          "className": "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+            "tests": "13",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T00:42:19.283Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "1.839"
+          },
+          "xmlSha256": "ded6a278769fec1e2c0026c0a01f4b83f1a7e42c45c3b1a02f8b6950421614d9",
+          "testCases": [
+            {
+              "name": "requiresTheSourceToBeAStructuralLeaf()",
+              "time": "0.002",
+              "failures": []
+            },
+            {
+              "name": "acceptsDirectAuthoredReferenceUsingTheExistingResolver()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "doesNotUseAContainsParentAsAnInheritedRequirementOrigin()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "acceptsAValidAlternativeBesideANonLeafBranch()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "rejectsAPathToADifferentExistingAnchor()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "requiresTheAnchorToBeAStructuralLeaf()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "rejectsAnUnknownBridge()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "rejectsACycleThatDoesNotReachTheAnchor()",
+              "time": "0.017",
+              "failures": []
+            },
+            {
+              "name": "rejectsAMissingInnerAuthoredRequirement()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "acceptsMultipleAuthoredEdgesWithoutRawSemanticKindMetadata()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "requiresTheAnchorToExistInTheStructuralMap()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "rejectsANonLeafBridgeEvenWithAnAuthoredAnchorRequirement()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "sourceEqualToAnchorWithoutAnAuthoredEdgeIsNotAPath()",
+              "time": "0.001",
+              "failures": []
+            }
+          ]
+        },
+        {
+          "className": "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest",
+            "tests": "1",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T00:41:59.079Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "20.201"
+          },
+          "xmlSha256": "0835be7c87f2821f44f56b9ab074c225ae86702b479a0f8d0a91f5bf0e6a0046",
+          "testCases": [
+            {
+              "name": "hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder()",
+              "time": "3.814",
+              "failures": []
+            }
+          ]
+        },
+        {
+          "className": "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest",
+            "tests": "2",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T00:41:01.950Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "57.118"
+          },
+          "xmlSha256": "35e20a2d98d5e3feed0ae3820d66be50051b993a99977beed4766ad4eada9078",
+          "testCases": [
+            {
+              "name": "[1] nativeClient = false",
+              "time": "9.805",
+              "failures": []
+            },
+            {
+              "name": "[2] nativeClient = true",
+              "time": "5.945",
+              "failures": []
+            }
+          ]
+        }
+      ],
+      "tests": 16,
+      "allSuitesFresh": true
+    }
+  },
+  "partialCompletedLogs": {
+    "hard-learning-routes": {
+      "log": {
+        "path": "app/node_modules/.tmp/g17-pr97-transitive-prerequisite-consumers-20261109/hard-learning-routes.log",
+        "sha256": "1378e961297a2d97abfc39cd33526d91903ea1999d842f939433ac70f3bd588a"
+      },
+      "terminalPassVisible": true
+    },
+    "validate-graph": {
+      "log": {
+        "path": "app/node_modules/.tmp/g17-pr97-transitive-prerequisite-consumers-20261109/validate-graph.log",
+        "sha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+      },
+      "terminalPassVisible": true
+    }
+  },
+  "claims": {
+    "curriculumDataChanged": false,
+    "requiresRestoredOrRedundanciesWaived": false,
+    "assessmentTaskOrCoverageChanged": false,
+    "reviewOrFingerprintPinsChanged": false,
+    "newFingerprintFamily": false,
+    "frontierMasteryRoleOrActivationPolicyChanged": false,
+    "containsOrInheritanceUsedForOutlookReachability": false,
+    "wholeBackendOrNativeOrProjectionOrCqrRerun": false,
+    "remoteCiAccepted": false,
+    "overallG17Complete": false,
+    "gitWritesOrRemoteActionsByImplementationAgent": false
+  }
+}

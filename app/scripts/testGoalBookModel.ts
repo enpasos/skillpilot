@@ -1108,13 +1108,44 @@ const complexQ4Assessment = canonicalGoalById.get('a8525adc-fad3-53f5-953f-213bd
   | undefined
 assert.ok(complexQ4Assessment?.examData)
 assert.deepEqual(
-  complexQ4Assessment.requires,
   complexQ4Assessment.examData.coveredGoalIds,
-  'Q4 complex-number exam prerequisites must match its claimed assessment coverage',
+  [
+    '5922affd-b1f9-5ad9-963e-25d3734c3b72',
+    'eda8580e-1f10-5dbd-9aaf-92367f40a6bd',
+    '9a0987cd-1e6e-5c09-a602-9fda43b8f655',
+    '5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d',
+    'a7fb1a7a-8315-5bcb-842e-48293293dfcc',
+    '8e18154d-41d6-592e-ba98-537edad338e8',
+  ],
+  'The Q4 complex-number exam retains its six explicitly authored assessment coverage goals',
+)
+assert.deepEqual(
+  complexQ4Assessment.requires,
+  [
+    '5922affd-b1f9-5ad9-963e-25d3734c3b72',
+    'eda8580e-1f10-5dbd-9aaf-92367f40a6bd',
+    '5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d',
+    'a7fb1a7a-8315-5bcb-842e-48293293dfcc',
+    '8e18154d-41d6-592e-ba98-537edad338e8',
+  ],
+  'The Q4 complex-number exam has five current directly authored preparation goals',
+)
+// Atomic tail[688] preserves the literal exam -> division -> multiplication
+// preparation witness while assessment coverage remains explicitly authored.
+const complexQ4DivisionGoal = canonicalGoalById.get('5ba7b5aa-7ad5-5605-bcb5-f4aa4b4c6b2d')
+assert.ok(complexQ4DivisionGoal)
+assert.deepEqual(
+  complexQ4DivisionGoal.requires,
+  ['9a0987cd-1e6e-5c09-a602-9fda43b8f655'],
+  'The actual division goal retains multiplication as its literal prerequisite in the certified Q4 witness',
+)
+assert.ok(
+  !complexQ4Assessment.examData.coveredGoalIds.includes('9b339361-7719-573d-a913-432246c502ee'),
+  'The Q4 complex-number task does not claim assessment coverage of optional Mandelbrot iterations',
 )
 assert.ok(
   !complexQ4Assessment.requires.includes('9b339361-7719-573d-a913-432246c502ee'),
-  'The Q4 complex-number task does not assess optional Mandelbrot iterations',
+  'The Q4 complex-number exam does not directly require optional Mandelbrot iterations for preparation',
 )
 const pilotGoal = canonicalGoalById.get(PILOT_GOAL_ID)
 assert.ok(pilotGoal)

@@ -40,3 +40,21 @@ wurden nicht wiederholt. Der CQR-Status wurde nicht neu generiert; der separate
 Statusdateien. Dies ist technische Wartung und fügt keine
 Quellen- oder Layoutbegutachtung, menschliche Freigabe oder Lernzielerfüllung
 hinzu. Frische Remote-CI bleibt eine separate Prüfung.
+
+## Folgepflege bei der atomaren Mathematikreduktion
+
+Der unmittelbar abhängige Batch auf `fix/g17-math-transitive-reduction`
+entfernt 922 redundante atomare Anforderungen aus 490 Quellen. Gegen den
+vorherigen Stand `a2d7043e6c` ändern sich ausschließlich diese `requires`-Arrays;
+die 20 übrigen kanonischen Dokumente und der vollständige V3-Präfix bleiben
+erhalten. Die aktive Layoutbindung folgt diesem geprüften Rohdelta von
+`e28dea9e…` auf `664b6d15…`; sämtliche anderen Planfelder bleiben gleich.
+
+Der unveränderte reguläre Generator bestätigt erneut alle 18 Ansichten
+bytegleich. Der regulär erneuerte Coverage-Bericht ändert nur Zeitstempel und
+die beiden Relationszähler von 2.484 auf 1.562; der folgende Coverage- und
+Gap-Check bestehen. Die Gap-Dateien bleiben unverändert. Der
+[separate technische Receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-08/g17-math-atomic-reduction/receipt.json)
+bindet diesen Wartungsschritt. Vollständiger Graphnachweis, Applicability,
+native Frontier-Gleichheit, regulärer Meilensteinlauf und Remote-CI werden
+getrennt geprüft; die Inputpflege ersetzt keine dieser Abnahmen.

@@ -12,8 +12,9 @@ export const PREREQUISITE_REDUCTION_REGISTRY_PATH =
 export const PREREQUISITE_REDUCTION_CONTRACT = 'direct-atomic-leaf-prerequisite-reduction-v1' as const
 export const CLUSTER_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-descendant-covered-cluster-reduction-v2' as const
 export const ORDERED_PREREQUISITE_REDUCTION_CONTRACT = 'ordered-atomic-materialization-and-cluster-reduction-v3' as const
+export const CONTINUED_PREREQUISITE_REDUCTION_CONTRACT = 'continued-atomic-prerequisite-reduction-v4' as const
 type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
-type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT
+type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -56,7 +57,22 @@ export interface OrderedPrerequisiteReductionRegistry extends Omit<LegacyPrerequ
   suffixOriginalRequires: Array<{ source: string; requires: string[] | null }>
   suffix: OrderedPrerequisiteReductionStep[]
 }
+export interface ContinuedPrerequisiteReductionRegistry extends Omit<OrderedPrerequisiteReductionRegistry, 'proofContract'> {
+  proofContract: typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
+  v3Checkpoint: OrderedPrerequisiteReductionRegistry['v2Checkpoint']
+  tailOriginalRequires: OrderedPrerequisiteReductionRegistry['suffixOriginalRequires']
+  atomicRemovals: DirectPrerequisiteReduction[]
+  witnessContinuations: Array<{ historicalRemovalIndex: number; edgeIndex: number; tailRemovalIndex: number }>
+}
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
+  | ContinuedPrerequisiteReductionRegistry
+type LoadedDocument = { file: string; path: string; document: Document }
+type VerifiedDocumentFrame = {
+  currentDocuments: Document[]
+  baselineDocuments: Document[]
+  baselineApplicability: string
+  affectedSources: ReadonlySet<string>
+}
 
 declare const verifiedReduction: unique symbol
 export type VerifiedPrerequisiteReductionContext = Readonly<{ [verifiedReduction]: true }>
@@ -96,6 +112,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return parseContinuedRegistry(value)
   if (object(value) && value.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT) return parseOrderedRegistry(value)
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals'], 'registry')
   ensure(value.schemaVersion === 1 && (value.proofContract === PREREQUISITE_REDUCTION_CONTRACT
@@ -172,6 +189,38 @@ function parseOrderedRegistry(value: Record<string, unknown>): OrderedPrerequisi
     }
   }
   return value as unknown as OrderedPrerequisiteReductionRegistry
+}
+function parseContinuedRegistry(value: Record<string, unknown>): ContinuedPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals',
+    'v2Checkpoint', 'suffixOriginalRequires', 'suffix', 'v3Checkpoint', 'tailOriginalRequires', 'atomicRemovals',
+    'witnessContinuations'], 'continued registry')
+  const { v3Checkpoint, tailOriginalRequires, atomicRemovals, witnessContinuations, ...prefix } = value
+  parseOrderedRegistry({ ...prefix, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT })
+  fields(v3Checkpoint, ['registryDigest', 'currentDocumentDigests'], 'V3 checkpoint')
+  const digest = (item: unknown) => typeof item === 'string' && /^sha256:[0-9a-f]{64}$/u.test(item)
+  ensure(digest(v3Checkpoint.registryDigest) && Array.isArray(v3Checkpoint.currentDocumentDigests), 'invalid V3 checkpoint')
+  for (const entry of v3Checkpoint.currentDocumentDigests) {
+    fields(entry, ['path', 'currentDocumentDigest'], 'V3 checkpoint document')
+    ensure(nonempty(entry.path) && digest(entry.currentDocumentDigest), 'invalid V3 checkpoint document')
+  }
+  ensure(Array.isArray(tailOriginalRequires) && tailOriginalRequires.length > 0, 'empty tail original requires')
+  for (const entry of tailOriginalRequires) {
+    fields(entry, ['source', 'requires'], 'tail original requires')
+    ensure(qualified(entry.source) && (entry.requires === null
+      || (Array.isArray(entry.requires) && entry.requires.every(nonempty))), 'invalid tail original requires')
+  }
+  ensure(Array.isArray(atomicRemovals) && atomicRemovals.length > 0, 'empty atomic tail removals')
+  // Retain the exact direct-removal shape, independently of the V2 cluster form.
+  parseRegistry({ schemaVersion: value.schemaVersion, proofContract: PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: value.auditScope, catalogSources: value.catalogSources, originalRequires: value.originalRequires,
+    removals: atomicRemovals })
+  ensure(Array.isArray(witnessContinuations), 'invalid witness continuations')
+  for (const entry of witnessContinuations) {
+    fields(entry, ['historicalRemovalIndex', 'edgeIndex', 'tailRemovalIndex'], 'witness continuation')
+    ensure([entry.historicalRemovalIndex, entry.edgeIndex, entry.tailRemovalIndex]
+      .every(index => Number.isSafeInteger(index) && Number(index) >= 0), 'invalid witness continuation indices')
+  }
+  return value as unknown as ContinuedPrerequisiteReductionRegistry
 }
 function catalogFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -373,30 +422,10 @@ function deepFreeze<T>(value: T): T {
   return value
 }
 
-/** Load once at a Node entrypoint, then pass explicitly to comparison consumers. */
-export async function loadVerifiedPrerequisiteReductionContext({
-  repositoryRoot = REPOSITORY_ROOT,
-  registryPath = PREREQUISITE_REDUCTION_REGISTRY_PATH,
-  catalogPath = CANONICAL_PATH,
-}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
-  Promise<VerifiedPrerequisiteReductionContext | undefined> {
-  const registryFile = repositoryPath(repositoryRoot, registryPath)
-  try {
-    ensure(lstatSync(registryFile).isFile(), `registry must be a regular file: ${registryPath}`)
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined
-    throw error
-  }
-  // A declared proof is authoritative input: any failure is fatal, never a stale-check fallback.
-  const registryBytes = readFileSync(registryFile)
-  const registry = parseRegistry(JSON.parse(registryBytes.toString('utf8')))
-  const loaded = catalogFiles(repositoryPath(repositoryRoot, catalogPath)).map((file) => ({
-    file, path: relative(repositoryRoot, file).split(sep).join('/'),
-    document: JSON.parse(readFileSync(file, 'utf8')) as Document,
-  }))
-  const currentDocuments = loaded.map(({ document }) => document)
-  const currentGoals = goalIndex(currentDocuments)
-  const declared = new Map(registry.catalogSources.map((entry) => [entry.path, entry]))
+function requireCurrentCatalog(registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[]): Document[] {
+  const documents = loaded.map(({ document }) => document)
+  goalIndex(documents)
+  const declared = new Map(registry.catalogSources.map(entry => [entry.path, entry]))
   ensure(declared.size === registry.catalogSources.length && declared.size === loaded.length,
     'catalog source paths are missing, new, or duplicated')
   for (const { path, document } of loaded) {
@@ -405,6 +434,166 @@ export async function loadVerifiedPrerequisiteReductionContext({
     ensure(binding.currentDocumentDigest === fingerprintPrerequisiteReductionDocument(document),
       `current document digest differs: ${path}`)
   }
+  return documents
+}
+
+function requireClosedAtomicScope(documents: Document[], goals: ReadonlyMap<string, RawGoal>, roots: string[]) {
+  // Scope selection, reference validity and cycles remain the existing auditor's
+  // responsibility. Its selected inventory must consist only of these complete
+  // root documents and requirement-free foreign inheritance ancestors.
+  const audit = auditTransitiveMinimality(documents as AuditLandscape[], roots)
+  const rootSet = new Set(roots)
+  const owned = [...goals].filter(([key]) => rootSet.has(key.split(':')[0]))
+  const ancestors = new Set(audit.inheritanceOnlyAncestors)
+  ensure(ancestors.size === audit.inheritanceOnlyAncestors.length
+    && audit.nodeCount === owned.length + ancestors.size, 'closed atomic scope has expanded foreign nodes')
+  for (const key of ancestors) {
+    const goal = goals.get(key)
+    ensure(goal && !rootSet.has(key.split(':')[0]) && (goal.requires === undefined || goal.requires.length === 0),
+      `closed atomic scope has a foreign requirement origin: ${key}`)
+  }
+  let edges = 0
+  for (const [source, goal] of owned) {
+    ensure(goal.requires === undefined || Array.isArray(goal.requires), `closed atomic scope invalid requires: ${source}`)
+    const targets = new Set<string>()
+    if (goal.requires?.length) requireDirectWitness([source], goals)
+    for (const raw of goal.requires ?? []) {
+      const target = resolveReference(raw, source, goals)
+      ensure(rootSet.has(target.split(':')[0]), `closed atomic scope has a foreign prerequisite target: ${target}`)
+      requireDirectWitness([target], goals)
+      ensure(!targets.has(target), `closed atomic scope has duplicate prerequisite aliases: ${source} -> ${target}`)
+      targets.add(target)
+      edges++
+    }
+  }
+  ensure(audit.authoredRequiresCount === edges && audit.effectiveRequiresCount === edges,
+    'closed atomic scope has unaccounted or inherited requirements')
+  return audit
+}
+
+function requireContinuedHistory(registry: ContinuedPrerequisiteReductionRegistry, goals: ReadonlyMap<string, RawGoal>) {
+  const continuations = new Map<string, DirectPrerequisiteReduction>()
+  for (const entry of registry.witnessContinuations) {
+    const historical = registry.removals[entry.historicalRemovalIndex]
+    const replacement = registry.atomicRemovals[entry.tailRemovalIndex]
+    ensure(historical && 'witness' in historical && replacement,
+      'witness continuation references an unknown or non-direct operation')
+    ensure(entry.edgeIndex < historical.witness.length - 1
+      && replacement.source === historical.witness[entry.edgeIndex]
+      && replacement.prerequisite === historical.witness[entry.edgeIndex + 1], 'witness continuation endpoints differ')
+    const key = `${entry.historicalRemovalIndex}:${entry.edgeIndex}`
+    ensure(!continuations.has(key), 'duplicate witness continuation position')
+    requireDirectWitness(replacement.witness, goals)
+    continuations.set(key, replacement)
+  }
+  const used = new Set<string>()
+  registry.removals.forEach((operation, operationIndex) => {
+    if (!('witness' in operation)) { requireClusterWitnesses(operation, goals); return }
+    const composed = [operation.witness[0]]
+    for (let edge = 0; edge < operation.witness.length - 1; edge++) {
+      const source = operation.witness[edge], target = operation.witness[edge + 1]
+      const key = `${operationIndex}:${edge}`, replacement = continuations.get(key)
+      const literal = (goals.get(source)!.requires ?? []).some(raw => resolveReference(raw, source, goals) === target)
+      if (replacement) {
+        ensure(!literal, `unused witness continuation for surviving edge ${key}`)
+        used.add(key)
+        composed.push(...replacement.witness.slice(1))
+      } else {
+        ensure(literal, `missing witness continuation for historical edge ${key}`)
+        requireDirectWitness([source, target], goals)
+        composed.push(target)
+      }
+    }
+    ensure(new Set(composed).size === composed.length, 'composed historical witness repeats a vertex')
+    requireDirectWitness(composed, goals)
+  })
+  ensure(used.size === continuations.size, 'unused witness continuation')
+}
+
+async function verifyContinuedFrame(
+  registry: ContinuedPrerequisiteReductionRegistry, loaded: LoadedDocument[],
+): Promise<VerifiedDocumentFrame> {
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const { v3Checkpoint, tailOriginalRequires, atomicRemovals } = registry
+  const checkpoints = new Map(v3Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
+  ensure(checkpoints.size === v3Checkpoint.currentDocumentDigests.length && checkpoints.size === registry.catalogSources.length,
+    'V3 checkpoint paths are missing, new, or duplicated')
+  const parent: OrderedPrerequisiteReductionRegistry = {
+    schemaVersion: registry.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: registry.auditScope,
+    catalogSources: registry.catalogSources.map(entry => {
+      const digest = checkpoints.get(entry.path)
+      ensure(digest, `V3 checkpoint source missing: ${entry.path}`)
+      return { ...entry, currentDocumentDigest: digest }
+    }),
+    originalRequires: registry.originalRequires, removals: registry.removals,
+    v2Checkpoint: registry.v2Checkpoint, suffixOriginalRequires: registry.suffixOriginalRequires, suffix: registry.suffix,
+  }
+  ensure(fingerprintPrerequisiteReductionDocument(parent) === v3Checkpoint.registryDigest, 'historical V3 registry digest differs')
+  const parentDocuments = structuredClone(currentDocuments), parentGoals = goalIndex(parentDocuments)
+  const prefixSources = new Set([...parent.originalRequires.map(entry => entry.source), ...parent.suffix.map(step => step.source)])
+  const tailSources = new Set(atomicRemovals.map(step => step.source))
+  ensure([...tailSources].every(source => !prefixSources.has(source)), 'atomic tail sources overlap the certified prefix')
+  const restored = new Set<string>()
+  for (const entry of tailOriginalRequires) {
+    ensure(tailSources.has(entry.source) && !restored.has(entry.source), `extra or duplicate tail original requires: ${entry.source}`)
+    restored.add(entry.source)
+    const goal = parentGoals.get(entry.source)
+    ensure(goal, `unknown tail original source: ${entry.source}`)
+    if (entry.requires === null) delete goal.requires
+    else goal.requires = structuredClone(entry.requires)
+  }
+  ensure(restored.size === tailSources.size, 'missing tail original requires')
+  // No tail operation or continuation can repair a bad parent: the unchanged
+  // V3 path verifies its replay, every literal end witness and actual applicability.
+  const parentFrame = await verifyDocumentFrame(parent, loaded.map((entry, index) => ({ ...entry, document: parentDocuments[index] })))
+  deepFreeze(parentFrame.baselineDocuments)
+  const replayDocuments = structuredClone(parentDocuments), replayGoals = goalIndex(replayDocuments)
+  const roots = [...new Set(atomicRemovals.map(step => step.source.split(':')[0]))].sort()
+  requireClosedAtomicScope(replayDocuments, replayGoals, roots)
+  const removed = new Set<string>()
+  for (const operation of atomicRemovals) {
+    const { source, prerequisite, witness } = operation, pair = `${source}->${prerequisite}`
+    ensure(!removed.has(pair), `duplicate atomic tail removal: ${pair}`)
+    ensure(witness[0] === source && witness.at(-1) === prerequisite && new Set(witness).size === witness.length,
+      `atomic tail witness endpoints differ or repeat a vertex: ${pair}`)
+    requireDirectWitness(witness, replayGoals)
+    const goal = replayGoals.get(source)!, before = goal.requires ?? []
+    goal.requires = before.filter(raw => resolveReference(raw, source, replayGoals) !== prerequisite)
+    ensure(goal.requires.length === before.length - 1, `no unique authored atomic tail edge removed: ${pair}`)
+    removed.add(pair)
+    requireDirectWitness(witness, replayGoals)
+  }
+  const finalAudit = requireClosedAtomicScope(replayDocuments, replayGoals, roots)
+  ensure(finalAudit.findings.length === 0, 'atomic tail is not transitively minimal')
+  atomicRemovals.forEach(operation => requireDirectWitness(operation.witness, replayGoals))
+  requireContinuedHistory(registry, replayGoals)
+  requireEndWitnesses(parent.suffix.filter(step => step.operation === 'remove-cluster'), replayGoals)
+  ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
+    'atomic tail replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
+  // The identical deep-frozen baseline was already compiled in the complete
+  // parent verification. Only its immutable comparison value is reused here.
+  ensure(parentFrame.baselineApplicability === await compileApplicability(currentDocuments, loaded), 'compiled applicability changed after atomic tail')
+  return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
+    baselineApplicability: parentFrame.baselineApplicability,
+    affectedSources: new Set([...parentFrame.affectedSources, ...tailSources]) }
+}
+
+async function compileApplicability(documents: Document[], loaded: LoadedDocument[]): Promise<string> {
+  const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
+  return stableJson(buildApplicabilityCompilation(documents.map((document, index) => ({
+    file: loaded[index].file, landscape: document as unknown as SkillLandscape,
+  }))).reports.flatMap((report) => report.goals.map((goal) => ({
+    key: `${report.landscapeId}:${goal.goalId}`, compiledApplicability: goal.compiledApplicability,
+  }))).sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0))
+}
+
+async function verifyDocumentFrame(
+  registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[],
+): Promise<VerifiedDocumentFrame> {
+  if (registry.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return verifyContinuedFrame(registry, loaded)
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const declared = new Map(registry.catalogSources.map((entry) => [entry.path, entry]))
   const ordered = registry.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT ? registry : undefined
   const historical = ordered ? historicalRegistry(ordered) : registry
   const replayDocuments = structuredClone(currentDocuments)
@@ -469,14 +658,33 @@ export async function loadVerifiedPrerequisiteReductionContext({
   }
   ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
     'replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
-  const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
-  const applicability = (documents: Document[]) => buildApplicabilityCompilation(documents.map((document, index) => ({
-    file: loaded[index].file, landscape: document as unknown as SkillLandscape,
-  }))).reports.flatMap((report) => report.goals.map((goal) => ({
-    key: `${report.landscapeId}:${goal.goalId}`, compiledApplicability: goal.compiledApplicability,
-  }))).sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0)
-  ensure(stableJson(applicability(baselineDocuments)) === stableJson(applicability(currentDocuments)),
-    'compiled applicability changed')
+  const baselineApplicability = await compileApplicability(baselineDocuments, loaded)
+  ensure(baselineApplicability === await compileApplicability(currentDocuments, loaded), 'compiled applicability changed')
+  return { currentDocuments, baselineDocuments, baselineApplicability, affectedSources }
+}
+
+/** Load once at a Node entrypoint, then pass explicitly to comparison consumers. */
+export async function loadVerifiedPrerequisiteReductionContext({
+  repositoryRoot = REPOSITORY_ROOT,
+  registryPath = PREREQUISITE_REDUCTION_REGISTRY_PATH,
+  catalogPath = CANONICAL_PATH,
+}: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
+  Promise<VerifiedPrerequisiteReductionContext | undefined> {
+  const registryFile = repositoryPath(repositoryRoot, registryPath)
+  try {
+    ensure(lstatSync(registryFile).isFile(), `registry must be a regular file: ${registryPath}`)
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined
+    throw error
+  }
+  // A declared proof is authoritative input: any failure is fatal, never a stale-check fallback.
+  const registryBytes = readFileSync(registryFile)
+  const registry = parseRegistry(JSON.parse(registryBytes.toString('utf8')))
+  const loaded = catalogFiles(repositoryPath(repositoryRoot, catalogPath)).map((file) => ({
+    file, path: relative(repositoryRoot, file).split(sep).join('/'),
+    document: JSON.parse(readFileSync(file, 'utf8')) as Document,
+  }))
+  const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded)
   const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
   deepFreeze(currentDocuments)
   deepFreeze(baselineDocuments)
@@ -488,7 +696,7 @@ export async function loadVerifiedPrerequisiteReductionContext({
     registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
     affectedGoalIds: [...affectedSources].sort(),
   })
-  verifiedContexts.set(context, { current: currentGoals, baseline: goalIndex(baselineDocuments), summary })
+  verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary })
   return context
 }
 

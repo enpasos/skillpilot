@@ -1,6 +1,6 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 8. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 9. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
@@ -106,8 +106,8 @@ reparieren. Exakter Dokument-Replay, tatsächliche Applicability-Gleichheit und
 die bisherigen Endgraphzeugen bleiben Pflicht. Die Supportlieferung selbst
 belässt die Live-Registry bei V2 und aktiviert noch kein Standard-Meilensteingate.
 
-Der sichtbare IDE-Checkout arbeitet auf `fix/g17-math-atomic-prerequisites`
-an der unmittelbar davon abhängigen Mathematiklieferung. Deren lokal vollständig
+Die unmittelbar davon abhängige Mathematiklieferung liegt auf
+`fix/g17-math-atomic-prerequisites`. Deren lokal vollständig
 geprüfter Daten-/Consumerstand ist als `92b0e2236d` committet und gepusht.
 Der gelieferte Main-Stand von #95 wurde anschließend bei unverändertem
 Mathematik-Dateibaum aufgenommen. Der eigene Mathematik-PR folgt damit auf die
@@ -178,16 +178,153 @@ angeschlossen. Alle 836 Assetrecords, vier Klassenrecords, 839 offenen
 Prüfungen, null menschlichen Freigaben und `publicationReady: false` bleiben
 unverändert. Der vollständige lokale CI-Konformitätslauf bestand mit allen
 36 Eingaben unverändert, unabhängiger Modellvalidierung, den bisherigen
-Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Frische
-Remote-CI und Main-Lieferung stehen weiterhin aus.
+Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Die Reparatur
+ist als `b973e78728` in #96 committet und gepusht. Alle fünf frischen
+PR-Workflows und acht Hauptjobs bestanden. #96 ist bei `776be6e48a` nach main
+geliefert; sein tatsächlicher Main-Baum ist exakt der geprüfte Baum
+`7fc7fd65e9`. Auch alle sechs frischen Push-Workflows auf dem tatsächlichen
+Main-Commit und sämtliche acht Hauptjobs bestanden. Main-Referenz und
+Dateibaum wurden anschließend erneut gegen genau diesen Stand geprüft.
 
 Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
 `5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
 Ihre lokalen Nachweis-, Auditor-, Python-, Schema-, nativen 1.240-Konfigurations-,
-58er-Projektions- und regulären Meilensteinprüfungen bestanden. Sie bleibt bis
-zur Main-Lieferung von #96 getrennt. Vor ihrem eigenen PR ist auch der bekannte
-Paket-Konformitätsanschluss am tatsächlichen reduzierten Datenstand auszuführen.
+58er-Projektions- und regulären Meilensteinprüfungen bestanden. Der sichtbare
+Merge `55fa7011c5` nahm zunächst den bekannten Paketanschluss aus #96 auf.
+Der Anschluss an den reduzierten Stand ist als `79231af659` committet und
+gepusht. Der anschließende sichtbare Merge `18289e8aea` nimmt die tatsächliche
+Main-Lieferung `776be6e48a` auf; der geprüfte Mathematik-Arbeitsbaum
+`9f64cbef8e` bleibt dabei exakt unverändert. Die isolierte tatsächliche
+V4-Kompilation ermittelt für den reduzierten Stand den Modell-Digest
+`5d3cf9c7…`; der unveränderte Generator ändert wieder ausschließlich
+`contentDigest`. Ledger und Shell-Pin werden mit je einer Digestzeile
+angeschlossen, alle 836 Asset- und vier Klassenrecords bleiben unverändert.
+Der vollständige lokale CI-Konformitätslauf an diesem Stand bestand mit
+38 unveränderten Eingaben, unabhängiger Modellvalidierung, sämtlichen
+bisherigen Gegenprüfungen und zwei bytegleichen Modellbuilds. Die
+Main-Voraussetzung für den getrennten Mathematik-Folge-PR ist damit erfüllt;
+seine eigene Remote-Abnahme steht noch aus.
 Das harte Standard-Meilensteingate und der Gesamtauftrag bleiben offen.
+
+Dieser Mathematikstand liegt in [PR #97](https://github.com/enpasos/skillpilot/pull/97).
+Ein konkreter Copilot-Befund wies dort auf den zusätzlich veralteten NPM-
+Standalone-Plancheck hin. Der unveränderte Originalaufruf scheiterte tatsächlich
+mit `Expected entry count 1060, got 1061.`. Die anschließende Planmessung mit
+allen bestehenden Prüfern ergab 1.061 Einträge, 1.059 Manifestdateien, 836
+Binärassets und denselben Modell-Digest `5d3cf9c7…`. Ausschließlich die drei
+veralteten Erwartungsliterale wurden korrigiert; danach bestand der originale
+NPM-Aufruf. Die [begrenzte Wartungsnotiz](canonical-math-standalone-plan-pin-review-2026-11-09.md)
+bindet diese drei tatsächlichen Ausführungen. Daten, Prüfer, Modell, sämtliche
+Reviewrecords und alle 32 CQR-Eingaben bleiben unverändert. Die Korrektur erhält
+ihre eigene frische PR-CI; ein ZIP oder eine Publikationsfreigabe wird nicht
+behauptet.
+
+Der vollständige anschließende CI-Lauf belegte drei weitere Verbraucher, die
+noch eine Einzelkante statt der erhaltenen atomaren Voraussetzungspfade
+erwarteten. GVR-015 prüft bereits die streng stufenbezogene atomare
+Erreichbarkeit; seine zusätzliche Direktkantenforderung wird entfernt. Der
+nur im Orientierungs-Outlook verwendete Backendfilter erhält eine
+zyklensichere Suche nach einem nichtleeren Pfad aus direkt verfassten atomaren
+`requires`-Kanten. Die drei zuvor erwarteten Orientierungswege und die
+gesonderte Startfreigabe bleiben erhalten. Beim Q4-Buchtest werden die sechs
+expliziten Prüfungsziele und die fünf verbliebenen direkten Voraussetzungen
+getrennt festgeschrieben; der aktuelle Division→Multiplikation-Zeuge erhält
+den entfernten direkten Bedarf. Aufgaben, Prüfungsabdeckung und
+Curriculumdaten werden nicht geändert.
+
+Die [begrenzte Reparaturnotiz](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)
+bindet die tatsächlichen Gegenfälle und die einzelnen lokalen Ergebnisse.
+Graphvalidator, vollständige Hard-Route-Prüfung und vollständige Buchtestkette
+einschließlich beider angehängter Strukturtests bestehen. Auch alle 13 neuen
+Laufzeitfälle und die drei bisherigen Integrationsfälle bestanden ohne
+Fehler oder Skips. Die 133 gebundenen Laufzeiteingaben sowie alle 124
+geschützten Eingaben bleiben bytegleich. Eine erfolgreiche Remote-Abnahme
+von #97 wird erst nach der frischen CI des korrigierten Heads behauptet.
+
+Der vollständige Remote-Lauf von `bcc7803424` bestätigte sieben der acht
+Hauptjobs einschließlich Backend und Frontend sowie alle vier
+Begleitworkflows. Nur die nachgelagerte Q2.5-Scope-Prüfung scheiterte an einem
+rohen Semantic-Kind-Fingerprintvergleich. Der Originalpin `49ed1468…` bleibt
+erhalten; die betroffenen Fingerprintvergleiche nutzen ausschließlich für
+diese bestehende Vergleichsfamilie den vorhandenen verifizierten Kontext.
+In fünf bereits aufgerufenen Testreadern werden Coverage und direkte
+Voraussetzungbasis getrennt festgeschrieben. Die
+[begrenzte Readernotiz](canonical-math-assessment-reader-bindings-review-2026-11-09.md)
+bindet die unveränderten Ledger- und Datenbytes, zwölf ausschließlich durch
+`requires` veränderte Goalzeilen sowie die tatsächlich überlebenden Zeugen.
+
+Alle vier tatsächlich in CI aufgerufenen Programme bestehen lokal. Der ganze
+Rollen-Caller legte zuvor zwei weitere Direktkantenannahmen in seiner eigenen
+Testdatei offen; beide fehlgeschlagenen Läufe und ihre Eingabeframes bleiben
+unverändert erhalten. Scoped ESLint aller fünf finalen Reader besteht. Die
+125 geschützten Daten-, Review-, Core- und Vieweingaben bleiben bytegleich;
+es erfolgt keine Fingerprint-Neubindung oder neue Inhaltsfreigabe. Der
+Reader-Folgecommit benötigt seine eigene frische Remote-CI, bevor #97 nach
+main übernommen wird. Der Gesamtauftrag einschließlich des harten
+Standard-G17-Gates bleibt offen.
+
+Der unmittelbar folgende deutsche Einzelfall ist vollständig lokal geprüft als
+`e7b317b222` auf `fix/g17-german-first-cluster-prerequisite` committet und
+gepusht erhalten. [Notiz und gebundene Nachweise](https://github.com/enpasos/skillpilot/blob/e7b317b222a3b0b204a2f92dfc4ae25ddab28443/docs/dev/german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+bleiben am überprüften Commit zugänglich. Genau eine Clusterreferenz wird
+durch zehn bereits induzierte atomare Anforderungen ersetzt; die übrigen 45
+deutschen Atom→Cluster-Kanten gehören nicht zu diesem Stand. Sein Main-Weg ist
+der gekoppelte nächste G17-PR nach der Main-Lieferung von #97, Aufnahme der
+notwendigen Elternkorrektur und eigener frischer Remote-Abnahme. Bis dahin
+erfolgt keine weitere deutsche Datenbearbeitung. Das harte Standard-G17-Gate
+und der Gesamtauftrag bleiben offen.
+
+Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
+gepusht. Die gezielte Physikprüfung mit ihren
+Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
+ESLint sowie Dokumentations- und Terminologieprüfungen bestanden lokal.
+
+Der sichtbare IDE-Checkout bleibt auf
+`fix/g17-math-transitive-reduction`. Die ursprüngliche Vorprobe des inzwischen
+committeten atomaren Mathematikbatches
+findet 922 redundante Rohkanten aus 490 zusätzlichen Quellen: 2.484 atomare
+Anforderungen werden zu 1.562 reduziert; der bestehende Auditor findet danach
+keine Mathematikredundanz. Alle 6.524 tatsächlich kompilierten Geltungswerte
+bleiben gleich. Der anschließende tatsächliche Endstand ist lokal einschließlich
+der nativen Vergleiche geprüft; Remote-Abnahme steht noch aus. Der bestehende
+Auditor bestätigt am tatsächlichen Endstand 1.253 Scopeknoten, 1.562 rohe und
+wirksame Anforderungen und keine Mathematikbefunde. Der vollständige neue
+Nachweis bestand in rund 89 Sekunden: unveränderter V3-Präfix, ursprüngliche
+Dokumentdigests, 719 betroffene Ausgangsquellen und tatsächlich kompilierte
+Applicability. Genau ein betroffener historischer Zeuge wird durch den
+ausdrücklich bezeichneten neuen Zeugen fortgeführt; sämtliche Endpfade müssen
+als tatsächliche Kanten überleben.
+
+Der bekannte Frischeanschluss besteht auch an diesen Daten: alle 18 Ansichten
+bytegleich, ausschließlich die aktive Inputbindung fortgeschrieben und die
+regulären Coverage-Zähler von 2.484 auf 1.562 erneuert. Das geänderte
+Mathematikdokument besteht die vorhandene Runtime-Schemaprüfung; der anschließende
+vollständige Schemalauf bestand 119.199 Dateien. Der unveränderte reguläre
+Meilensteinproducer und alle zehn geschützten Untergrenzen bestanden auf 32
+unveränderten Eingaben mit fünf M7- und fünf M6-Fächern. Der strukturierte
+Reportvergleich zeigt ausschließlich Zeit- und V4-Nachweismetadatenänderungen;
+alle bisherigen Regel- und Statuswerte bleiben gleich. Python-Gesamtsuite,
+Auditor-/Nachweissuite, Standard-Mathematik-CLI und ESLint bestehen ebenfalls.
+Astras vollständiges Quellenreview ist ohne Befund abgeschlossen.
+
+Die erste native Gesamtgegenprüfung erreichte eine veraltete Direktkanten-
+Testannahme: Tail 912 entfernt das in der Fixture anschließend erneut simulierte
+Duplikat bereits im echten Endgraphen. Die materiellen Prüfungen auf fehlende
+Rolle und weiterhin vollständige Voraussetzung waren auch dort erfolgreich.
+Der destruktive Vorher-Fall bleibt erhalten; der Nachher-Fall prüft vollständige
+Nachfragegleichheit und alle sechs tatsächlichen Kanten des zertifizierten
+Ersatzwegs. Root und Astra prüften diese isolierte Testkorrektur ohne Befund.
+Der begründete neue Native-Gesamtlauf bestand alle drei Tests mit 1.240 realen
+Konfigurationen, 370.306 Kontext-/Zielvergleichen und 292.429 Vergleichen
+tatsächlicher atomarer Ziele. Alle 490 neuen Quellen sind über reale Scopes
+exponiert. Von insgesamt 719 registrierten Quellen sind 717 real erfasst;
+die zwei bisherigen PoWi-Gegenproben bleiben mit ihren sechs Atomen und sechs
+fehlenden Rollenfällen separat erhalten. Die fünf positiven und negativen
+Fokusfälle des fortgeschriebenen Mathematikzeugen bestehen ebenfalls.
+Anschließend bestand die unveränderte Projektionsklasse alle 58 Tests ohne
+Fehler oder Skips. Sämtliche gebundenen Eingaben blieben während beider Läufe
+unverändert. Ein Folge-PR entsteht erst nach der Main-Lieferung von #96;
+weitere fachliche Arbeit wird nicht begonnen.
 
 Für die spätere atomare Reduktion ist eine explizite Zeugenfortschreibung
 erforderlich: Die zweite Kante des historischen Biologiezeugen aus Operation 8

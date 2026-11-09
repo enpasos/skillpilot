@@ -9,8 +9,13 @@ import {
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
-import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { fingerprintSemanticKindSourceGoal, SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID } from './goalBookModel'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
+import {
+  loadVerifiedPrerequisiteReductionContext,
+  reviewBindingGoal,
+  type VerifiedPrerequisiteReductionContext,
+} from './prerequisiteReductionProof'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
@@ -174,8 +179,23 @@ assert.match(localAssessment.examData.taskContent ?? '', /richtigen Bruchteilen/
 assert.match(localAssessment.examData.taskContentEn ?? '', /correct fractions/u)
 
 const kindLedger = readJson('curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json') as {
+  sourceFingerprintContractId: string,
   counts: { curricularAtomic: number, practiceAssessment: number },
   decisions: Array<{ goalId: string, semanticKind: string, sourceFingerprint: string }>
+}
+assert.equal(kindLedger.sourceFingerprintContractId, SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID)
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+assert(prerequisiteReductionContext, 'The certified prerequisite reduction context is required for historical review bindings')
+const assertKindLedgerFingerprint = (
+  id: string,
+  sourceFingerprint: string,
+  context: VerifiedPrerequisiteReductionContext | undefined,
+) => {
+  const rawGoal = rawGoals.get(id)
+  assert(rawGoal)
+  assert.equal(sourceFingerprint, fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+    context, `${canonical.landscapeId}:${id}`, rawGoal as unknown as Record<string, unknown>,
+  )), `The semantic-kind review binding must match ${id}`)
 }
 const currentCurricularAtomicIds = new Set(kindLedger.decisions
   .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
@@ -184,7 +204,53 @@ assert.equal(kindLedger.counts.curricularAtomic, currentCurricularAtomicIds.size
 assert.equal(currentCurricularAtomicIds.has(localAssessmentId), false, 'The new terminal does not enter the M7 denominator')
 for (const [id, kind] of [[goalId, 'curricularAtomic'], [oldParentId, 'curricularArea'], [q25ParentId, 'curricularArea'], [q2PracticeId, 'practiceAssessment'], [assessmentId, 'practiceAssessment'], [localAssessmentId, 'practiceAssessment']]) {
   const decision = kindLedger.decisions.find((entry) => entry.goalId === id)
-  assert.equal(decision?.semanticKind, kind)
-  assert.equal(decision.sourceFingerprint, fingerprintSemanticKindSourceGoal(rawGoals.get(id)! as unknown as Record<string, unknown>))
+  assert(decision)
+  assert.equal(decision.semanticKind, kind)
+  assertKindLedgerFingerprint(id, decision.sourceFingerprint, prerequisiteReductionContext)
 }
+
+const pyramidDecision = kindLedger.decisions.find((entry) => entry.goalId === assessmentId)!
+const pyramidKey = `${canonical.landscapeId}:${assessmentId}`
+const rawPyramid = assessment as unknown as Record<string, unknown>
+const reviewedPyramid = reviewBindingGoal(prerequisiteReductionContext, pyramidKey, rawPyramid)
+const originalPyramidFingerprint = 'sha256:49ed146807de8b2432abaac9154bba9ad059ff03a27038967ee1fc30f8cb2a57'
+const currentPyramidFingerprint = fingerprintSemanticKindSourceGoal(rawPyramid)
+assert.equal(pyramidDecision.sourceFingerprint, originalPyramidFingerprint)
+assert.equal(currentPyramidFingerprint, 'sha256:256d8c4d1664b28eaa8236c66e29d4d8c6527dbfca93797367ee4a576aba59c1')
+assert.notEqual(currentPyramidFingerprint, originalPyramidFingerprint,
+  'The actual current pyramid value must exercise the historical binding rather than pass vacuously')
+assert.deepEqual(assessment.requires, [
+  '288633c1-f61c-5b48-af7e-a80357f96cad',
+  '5f548596-9bc3-532e-88a0-81d5029809e9',
+])
+const pyramidCoverage = [
+  '288633c1-f61c-5b48-af7e-a80357f96cad',
+  '9460c3ff-e72d-4107-bc73-087d217200aa',
+  '5f548596-9bc3-532e-88a0-81d5029809e9',
+  '5390691d-1b7c-5572-9589-a69c2bba9a27',
+]
+assert.deepEqual(assessment.examData.coveredGoalIds, pyramidCoverage,
+  'The pyramid task retains all four explicitly authored assessment coverage goals')
+assert.deepEqual(reviewedPyramid.requires, pyramidCoverage,
+  'The historical review binding retains the exact original preparation array')
+assert.deepEqual({ ...reviewedPyramid, requires: assessment.requires }, rawPyramid,
+  'Only the certified prerequisite reduction may differ in the historical review binding')
+assert.equal(reviewBindingGoal(undefined, pyramidKey, rawPyramid), rawPyramid)
+assert.throws(() => assertKindLedgerFingerprint(assessmentId, originalPyramidFingerprint, undefined),
+  /semantic-kind review binding/u, 'The historical pin must still fail without a verified context')
+assert.throws(() => assertKindLedgerFingerprint(assessmentId, `sha256:${'0'.repeat(64)}`, prerequisiteReductionContext),
+  /semantic-kind review binding/u, 'A verified context cannot approve an unrelated ledger fingerprint')
+assert.throws(() => reviewBindingGoal({} as VerifiedPrerequisiteReductionContext, pyramidKey, rawPyramid),
+  /unregistered or forged context/u)
+assert.throws(() => reviewBindingGoal(prerequisiteReductionContext,
+  `7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:${assessmentId}`, rawPyramid), /snapshot/u,
+  'A foreign landscape cannot bind the Mathematics assessment')
+assert.throws(() => reviewBindingGoal(prerequisiteReductionContext, pyramidKey,
+  { ...rawPyramid, title: `${assessment.title} (unreviewed drift)` }), /snapshot/u,
+  'Unrelated raw-goal drift must fail before historical fingerprint comparison')
+const driftOutsideFingerprint = { ...rawPyramid, examples: ['unreviewed drift'] }
+assert.equal(fingerprintSemanticKindSourceGoal(driftOutsideFingerprint), currentPyramidFingerprint,
+  'The full-snapshot negative must exercise a field outside the existing fingerprint family')
+assert.throws(() => reviewBindingGoal(prerequisiteReductionContext, pyramidKey, driftOutsideFingerprint),
+  /snapshot/u, 'Full-snapshot validation must reject drift even outside the fingerprint fields')
 console.log(`PASS HE-LK 7d/Q2.5 terminal, scoring and BY-exclusion regression across ${files.length} views (${heLkTargets} HE-LK targets)`)
