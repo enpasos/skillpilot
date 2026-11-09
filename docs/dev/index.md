@@ -12,6 +12,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Mathematik: Assessment-Reader und bestehende Reviewbindungen, 9. November 2026](canonical-math-assessment-reader-bindings-review-2026-11-09.md)
 - [Mathematikpaket: Pflege des Standalone-Planchecks, 9. November 2026](canonical-math-standalone-plan-pin-review-2026-11-09.md)
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+- [Deutsch: Integration der Mathematik-Assessment-Reader, 9. November 2026](german-assessment-reader-integration-review-2026-11-09.md)
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Pausierter Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)

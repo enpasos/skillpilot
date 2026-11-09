@@ -292,6 +292,21 @@ seiner frischen Remote-Abnahme. [Die lokale deutsche Notiz](german-first-cluster
 bleibt erhalten; es werden keine weiteren deutschen Kanten bearbeitet und
 kein Folge-PR vor der Main-Lieferung von #97 angelegt.
 
+Der zusätzliche Readerfix aus `200d21f9ff` ist im sichtbaren Deutsch-Branch
+als `68db5bf499` zusammengeführt. Die vier tatsächlichen npm-Aufrufer für
+Q2.5, Q2-M7, Caterer und den vollständigen Composition-Rollen-Test bestehen
+auch in diesem V5-Stand. Beide Läufe binden dieselben 130 unveränderten
+Eingaben. Die fünf Readerdateien stimmen bytegleich mit dem Elternfix überein;
+von den 125 geschützten Elterneingaben unterscheiden sich nur die neun bereits
+geprüften Deutsch-/V5-Dateien, die übrigen 116 sind unverändert. Die ursprünglichen
+35 Loader-, acht Python-, 32 CQR- und 43 Paket-Eingaben bleiben ebenfalls gleich.
+Das ergänzt die bestehenden lokalen Belege, ersetzt aber nicht die eigene
+frische Remote-Abnahme des folgenden Deutsch-PRs. Die
+[Integrationsnotiz](german-assessment-reader-integration-review-2026-11-09.md)
+bindet die tatsächlichen Aufrufer und Ergebnisdateien. Die Wirtschaftsentscheidung
+ist auf Ownerwunsch zurückgestellt; dafür erfolgt keine Vertrags- oder
+Datenänderung.
+
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren
 Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
@@ -694,14 +709,13 @@ unbefristeter Draft oder ein Archivbranch ersetzt den Lieferweg nicht.
 Umgekehrt wird erhaltenswerte Arbeit nicht ungeprüft gemerged, nur um sie
 formal auf main zu haben.
 
-Abgeschlossen und nach main geliefert sind G17-Prüfer, technische
-Transitivitätskorrektur, der begrenzte Frischeanschluss mit genau einer realen
-Kantenentfernung, die bestätigte einheitliche Rollenpflicht und der erste
-Biologie-Batch mit 186 Entfernungen aus PR #90. Zuerst folgt die eigenständige
-Dokumentationslieferung; der nächste Umsetzungsschritt ist der endliche
-Atomarisierungs-/Erhaltungsnachweis unter der verbindlichen atomaren Zielnorm.
-Weitere mechanische Reduktionen und die Standardintegration bleiben Teil
-desselben aktiven Goals. Die historische vollständige In-Memory-Vorschau
+Nach main geliefert sind die oben einzeln belegten Lieferungen bis PR #96:
+Auditor und Regressionen, notwendige technische Korrekturen, atomare Zielnorm,
+mechanische Reduktionen und der erste atomare Mathematiknachweis. Als Nächstes
+folgen die tatsächliche Main-Lieferung von Mathematik-PR #97 und danach der
+bereits lokal geprüfte erste deutsche Atom→Cluster-Fall. Weitere mechanische
+Reduktionen und die harte Standardintegration bleiben Teil desselben aktiven
+Goals. Die historische vollständige In-Memory-Vorschau
 hat 2.435 Ursprungskanten nacheinander mit jeweils frischem Auditor entfernt
 und im geschützten Scope null verbleibende G17-Befunde erreicht. Dabei wurden
 keine Curriculumdateien geändert. Die zusätzlichen nativen Messungen zeigen,
