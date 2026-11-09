@@ -24,15 +24,22 @@ frische Main-Dokumentationsprüfung und Dokumentationsveröffentlichung bestande
 Die weiterhin bestehende Cluster-Atomisierung bleibt eine ausgewiesene
 Implementierungslücke.
 
-Der sichtbare IDE-Branch für den nächsten kleinen Schritt ist
-`fix/g17-german-projection-prerequisite-roles`. Die vollständige nächste deutsche
-R-Gegenprobe erreicht alle 18 betroffenen Quellen in 99 tatsächlichen
-Konfigurationen. Sie belegt notwendige explizite Voraussetzungrollen in der
-bestehenden HE-GK-View; die kanonische Zielmenge und die fachlichen Beziehungen
-bleiben fest. Die begrenzte View-Korrektur mit 26 expliziten `prerequisiteOnly`-Referenzen
-ist lokal gegen unveränderte Zielmengen und Laufzeitverhalten geprüft;
-die tatsächliche PR-/Main-Abnahme folgt getrennt vor dem Reduktionsbatch. Bereits vorher ungültige Projektionen bleiben
-als solche ausgewiesen und werden nicht als bestandene Positivkontrollen gezählt.
+Die HE-GK-View-Korrektur liegt getrennt in [PR #100](https://github.com/enpasos/skillpilot/pull/100)
+auf Head `9c6192bf4e`. Ihre 26 expliziten `prerequisiteOnly`-Referenzen erhalten
+die Zielmengen und die vollständigen Laufzeitergebnisse. 99 Scopebilanzen,
+356 strikte View-Fälle und 751 R-Gegenprobenfälle bestanden; die 45 bereits
+ungültigen Source-/Scope-Paare bleiben ausdrücklich Negativkontrollen. Auch
+der reguläre lokale CQR-Check, die zehn geschützten Floors und die
+Composition-Prüfungen bestanden bei 4.573 unveränderten Produktquellpfaden.
+Die tatsächliche Remote-/Main-Abnahme wird getrennt begleitet.
+
+Der sichtbare IDE-Folgebranch `feat/g17-batched-prerequisite-proofs` enthält
+zunächst ausschließlich die geprüfte technische Verifier-Fortsetzung und ihre
+Tests. Die aktive V5-Registry und die Graphdaten bleiben unverändert. Diese
+[Code-Lieferung](prerequisite-reduction-batches-v6-support-2026-11-09.md) erhält
+einen eigenen kleinen PR über #100 nach main; der vollständige mechanische
+Deutsch-Datenbatch folgt separat. Das harte Standard-G17-Gate wird hier noch
+nicht aktiviert.
 
 Die ursprünglichen lokalen Nachweise aus dem ersten Deutsch-Schritt und ihre
 Quellbindungen bleiben erhalten. Der

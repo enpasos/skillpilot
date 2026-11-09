@@ -1,0 +1,55 @@
+{
+  "kind": "comparison-only-batched-prerequisite-proof-support",
+  "observedAt": "2026-11-09T07:09:05.299013+00:00",
+  "parentPr": 100,
+  "parentHead": "9c6192bf4e6e80aaa9ea650236eebe57cefef6c8",
+  "branch": "feat/g17-batched-prerequisite-proofs",
+  "activeProofContract": "atomic-cluster-target-normalization-v5",
+  "activeCatalogDataAndRegistryChanged": false,
+  "standardGateActivated": false,
+  "candidateSourceHashes": {
+    "app/scripts/prerequisiteReductionProof.ts": "88f1a9518bf14a08e600cbeae00d7f89eec69e0f6577d998b89713d2f9a3c81f",
+    "app/scripts/testPrerequisiteReductionProof.ts": "00e5e8cc79af85baa3402df13af04d078d68b1b7a27dec93c9ac31081f133a8b",
+    "scripts/prerequisite_reduction_semantic_kind.py": "009b43a1f0b51e405079885299d4c75faffc369ac057122f194f83a70d42819c",
+    "scripts/test_prerequisite_reduction_semantic_kind.py": "61cdd317b223bd7fc3d431e18bba7c18bd101f7de0a70d824471e8e672aefd21"
+  },
+  "unchangedDataPins": {
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": "7a87f30c8bd54d43ce491ad05820990587d95e2db67023c48a39dab1c92e238d",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "99088a0ffefbdbc9fdbd58d509b6e84cd41854d29a24ede0f6a0fba44442a1ab",
+    "curricula/DE/Gymnasium/composition-views/deutsch/de-he-sekii-gk.view.json": "00b257e3c075cc5ebc8c2d34caacec17fcb503c4e50c5ace8c63090d98543cb1"
+  },
+  "reviewedPreparedChecks": {
+    "v6CoreSyntheticFixtures": 31,
+    "extraNegativeFixtures": [
+      "unused witness continuation",
+      "actual full applicability difference"
+    ],
+    "rawFrameHelperFixtures": 9,
+    "pythonBridgeFixtureMethods": 7,
+    "legacyHelpersByteequalExceptParserDispatch": true,
+    "liveV5AssertionsPreserved": true,
+    "sixFieldSummaryUnchanged": true,
+    "pythonSubprocessTimeoutSecondsUnchanged": 180,
+    "AstraKernelReview": "no concrete blocker",
+    "AstraLiveAdapterReview": "no concrete blocker"
+  },
+  "productChecksCompletedBeforeSnapshot": {
+    "actualEslintTwoTypeScriptFiles": "PASS",
+    "pythonAstSyntax": "PASS"
+  },
+  "pendingProductAcceptance": [
+    "genuine current catalog proof verification",
+    "full transitive-minimality/proof suite",
+    "complete Python bridge suite including genuine Node call under180 seconds",
+    "current regular producer/floors or exact retained dependency evidence",
+    "fresh PR CI",
+    "separate actual main push CI"
+  ],
+  "limits": [
+    "Active registry remains V5; this support delivery does not activate V6 data.",
+    "Synthetic fixtures and the reviewed V6 live-test driver do not establish actual final V6 catalog acceptance.",
+    "The native Java V6 facade and concrete German R batch remain a separate dependent delivery.",
+    "The standard hard G17 CQR gate is separately prepared and not activated here.",
+    "Original ten subject milestones under that hard gate are still incomplete."
+  ]
+}
