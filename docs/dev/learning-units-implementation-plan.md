@@ -124,7 +124,7 @@ die Meilensteinabnahme autorisiert kein Deployment.
 | Stufe | Konkretes Lieferstück | Abnahme / sichtbarer Nachweis |
 | --- | --- | --- |
 | **S0 – gesicherter Neustart** | Neuer Branch und Draft-PR; dieser Plan; inventarisierte Nachnutzung; geprüfte lokale Cockpit-Erweiterung gesichert. | Benannte Commits, klare Grenze zum alten PR und keine ungesicherte mehrtägige Gesamtänderung. |
-| **S1 – Karte im Produkt-Cockpit** | Baum/Karte im vorhandenen Navigationsbereich mit nativen Daten; Originalhauptinhalt und Aktionen bleiben bestehen. | Echte aufgelöste Lehrplanansicht, Zielwahl ohne Aktivwechsel, Reveal/Fokus/Fachwechsel, Zustandserhalt, mobile Bedienung und frühe Owner-Demo. Eigener kleiner PR, CI und separater Rolloutkandidat. |
+| **S1 – Karte im Produkt-Cockpit** | Baum im vorhandenen Navigationsbereich, Lernkarte als Vollfensteransicht aus dem Hauptbereich, beide mit nativen Daten; Originalhauptinhalt und Aktionen bleiben bestehen. | Echte aufgelöste Lehrplanansicht, Zielwahl ohne Aktivwechsel, Reveal/Fokus/Fachwechsel, Zustandserhalt, mobile Bedienung und frühe Owner-Demo. Eigener kleiner PR, CI und separater Rolloutkandidat. |
 | **S2 – erster geprüfter Einheitsvertrag** | Kleine reale Mathematikeinheit mit stabiler Placementbindung, Own/Children/Q/K, geeigneter Einführung, Quellen, Aufgaben/Rubrik und historischer Ergebnisentscheidung. | Native Angebotsauflösung und unabhängiges fachliches Gegenbeispielreview; kein bloßer Demo-Snapshot. |
 | **S3 – vollständiger Einheitsablauf** | Minimale gemeinsame Compiler-/Runtimebasis und die Einheit aus S2 durch Cockpit, Coach, Prüfung, Recall soweit erforderlich, Anerkennung, Frontier und Plan. | Durchgängige Demo an derselben veröffentlichten Revision; gespeichertes M und abgeleitetes I sichtbar unterscheidbar, fachlich gleichwertig. CI, Deployment und echte Claude-Abnahme getrennt nachweisen. |
 | **S4 – Mathematik vollständig** | Alle tatsächlich angebotenen Mathematikauflösungen in sinnvolle rekursive Einheiten überführt und fachlich/technisch geprüft. | Fixiertes Angebotsinventar vollständig grün, kein ungedeckter Rest, alle erforderlichen QA-/M7-/Releasegates, unabhängiges Review und freigegebener Fach-Rollout. |
@@ -171,9 +171,15 @@ neuen Abschlussverträge.
 ### S1: Bedienung und Nachweise des Produktkandidaten
 
 [PR #81](https://github.com/enpasos/skillpilot/pull/81) ergänzt den Produktadapter.
-Im normalen Cockpit bleibt zunächst **Baum** gewählt; **Lernkarte** öffnet die
-zusätzliche Navigation. Erst dabei werden die Karte und ihre Layouttechnik
-geladen. Einzelklick oder Enter wählt ein Ziel für die gewohnte Zielkarte;
+Der Baum bleibt dauerhaft im Lernzielmenü. Nach Owner-Vorgabe vom 9. November
+2026 steht **Lernkarte** im Hauptbereich oben rechts neben **Lernen starten** und
+öffnet die zusätzliche Navigation als Dialog über das ganze Fenster; ein
+Schließen-Kreuz oder Escape führt zurück ins Cockpit. Erst beim ersten Öffnen
+werden die Karte und ihre Layouttechnik geladen. Einzelklick oder Enter wählt
+ein Ziel für die gewohnte Zielkarte, ohne die Karte zu schließen; danach zeigen
+Zielkarte und Baum dieses Ziel. Beim erneuten Öffnen bleibt die zuletzt gezeigte
+Kartenebene erhalten, solange zwischenzeitlich kein anderes Ziel gewählt oder
+angesteuert wurde.
 Doppelklick oder der eigene Öffnungsknopf führt in einen Bereich, Shift mit
 Doppelklick wieder hinaus. Blattziele besitzen keinen Öffnungsknopf.
 Auswahl und Zoom setzen weder Mastery noch Lernfokus oder aktives Ziel.

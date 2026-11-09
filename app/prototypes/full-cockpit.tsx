@@ -6,7 +6,7 @@ import { Info } from 'lucide-react'
 import { LanguageProvider } from '../src/contexts/LanguageContext'
 import { ThemeProvider } from '../src/contexts/ThemeContext'
 import { SessionSetup } from '../src/components/SessionSetup'
-import { LearnerView, type LearnerGoalNavigationMode } from '../src/views/LearnerView'
+import { LearnerView } from '../src/views/LearnerView'
 import { FullCockpitMap } from './FullCockpitMap'
 import { fullCockpitData } from './fullCockpitData'
 import { createFullCockpitApi } from './fullCockpitApi'
@@ -39,7 +39,6 @@ function FullCockpitPreview() {
   const [role, setRole] = useState<'learner' | 'trainer' | 'explorer' | null>('learner')
   const [setupLearnerId, setSetupLearnerId] = useState(fullCockpitData.learnerId)
   const snapshot = useSyncExternalStore(api.subscribe, api.getSnapshot)
-  const [navigationMode, setNavigationMode] = useState<LearnerGoalNavigationMode>('tree')
   const [selectedId, setSelectedId] = useState(fullCockpitData.initialGoalId)
   const initialGoal = fullCockpitData.goalIndexAll.get(fullCockpitData.initialGoalId)!
   const [landscapeId, setLandscapeId] = useState(fullCockpitData.rootLandscapeId)
@@ -91,7 +90,7 @@ function FullCockpitPreview() {
   const selectInLandscape = useCallback((_nextLandscapeId: string, id: string) => select(id), [select])
   const getMastery = useCallback((id: string) => snapshot.mastery[id] ?? 0, [snapshot.mastery])
   const logout = useCallback(() => notify('info', 'Lokale Vorschau: Abmelden verändert keinen echten Account.'), [notify])
-  return <div className="full-cockpit-shell" data-testid="full-cockpit-comparison" data-navigation-mode={navigationMode}
+  return <div className="full-cockpit-shell" data-testid="full-cockpit-comparison"
     data-selected-goal-id={selectedId} data-active-goal-id={snapshot.activeGoalId}>
     <header className="full-cockpit-comparison">
       <span className="full-cockpit-preview-label">Lokale Cockpit-Vorschau</span>
@@ -121,7 +120,7 @@ function FullCockpitPreview() {
         parentMap={fullCockpitData.parentMap} onLandscapeChange={setLandscapeId}
         onRefresh={noRefresh} onScopeDataRefresh={noRefresh}
         onLogout={logout}
-        onNotify={notify} goalNavigationMode={navigationMode} onGoalNavigationModeChange={setNavigationMode}
+        onNotify={notify}
         renderGoalNavigationMap={props => <FullCockpitMap {...props} active={props.active && !coachSetupOpen && !notice} />} />
     </div>
     {coachSetupOpen && <section className="full-cockpit-coach-setup" aria-label="Coach einrichten">

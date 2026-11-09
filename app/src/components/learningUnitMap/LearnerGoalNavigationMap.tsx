@@ -54,6 +54,6 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
       command={command} showInspector={false} onEntrySelect={props.onSelectGoal}
-      onReturnToTree={props.onReturnToTree} />
+      onReturnToTree={props.onReturnToTree} onEscape={props.onEscape} />
   </div>
 }
