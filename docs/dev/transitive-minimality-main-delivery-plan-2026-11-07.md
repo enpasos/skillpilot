@@ -1,6 +1,6 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 8. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 9. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
@@ -182,8 +182,9 @@ Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Die Reparatur
 ist als `b973e78728` in #96 committet und gepusht. Alle fünf frischen
 PR-Workflows und acht Hauptjobs bestanden. #96 ist bei `776be6e48a` nach main
 geliefert; sein tatsächlicher Main-Baum ist exakt der geprüfte Baum
-`7fc7fd65e9`. Die sechs frischen Push-Workflows auf main werden getrennt
-beobachtet; deren Abnahme steht noch aus.
+`7fc7fd65e9`. Auch alle sechs frischen Push-Workflows auf dem tatsächlichen
+Main-Commit und sämtliche acht Hauptjobs bestanden. Main-Referenz und
+Dateibaum wurden anschließend erneut gegen genau diesen Stand geprüft.
 
 Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
 `5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
@@ -218,11 +219,38 @@ Reviewrecords und alle 32 CQR-Eingaben bleiben unverändert. Die Korrektur erhä
 ihre eigene frische PR-CI; ein ZIP oder eine Publikationsfreigabe wird nicht
 behauptet.
 
-Der unmittelbar folgende deutsche Einzelfall bleibt als ausdrücklich
-unfertiger WIP `534af7911f` auf `fix/g17-german-first-cluster-prerequisite`
-committet und gepusht erhalten. Sein Main-Weg ist der gekoppelte nächste
-G17-PR nach der Main-Lieferung von #97 und nach vollständiger eigener Abnahme;
-für die konkrete Elternkorrektur ruht seine Umsetzung vorübergehend.
+Der vollständige anschließende CI-Lauf belegte drei weitere Verbraucher, die
+noch eine Einzelkante statt der erhaltenen atomaren Voraussetzungspfade
+erwarteten. GVR-015 prüft bereits die streng stufenbezogene atomare
+Erreichbarkeit; seine zusätzliche Direktkantenforderung wird entfernt. Der
+nur im Orientierungs-Outlook verwendete Backendfilter erhält eine
+zyklensichere Suche nach einem nichtleeren Pfad aus direkt verfassten atomaren
+`requires`-Kanten. Die drei zuvor erwarteten Orientierungswege und die
+gesonderte Startfreigabe bleiben erhalten. Beim Q4-Buchtest werden die sechs
+expliziten Prüfungsziele und die fünf verbliebenen direkten Voraussetzungen
+getrennt festgeschrieben; der aktuelle Division→Multiplikation-Zeuge erhält
+den entfernten direkten Bedarf. Aufgaben, Prüfungsabdeckung und
+Curriculumdaten werden nicht geändert.
+
+Die [begrenzte Reparaturnotiz](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)
+bindet die tatsächlichen Gegenfälle und die einzelnen lokalen Ergebnisse.
+Graphvalidator, vollständige Hard-Route-Prüfung und vollständige Buchtestkette
+einschließlich beider angehängter Strukturtests bestehen. Auch alle 13 neuen
+Laufzeitfälle und die drei bisherigen Integrationsfälle bestanden ohne
+Fehler oder Skips. Die 133 gebundenen Laufzeiteingaben sowie alle 124
+geschützten Eingaben bleiben bytegleich. Eine erfolgreiche Remote-Abnahme
+von #97 wird erst nach der frischen CI des korrigierten Heads behauptet.
+
+Der unmittelbar folgende deutsche Einzelfall ist vollständig lokal geprüft als
+`e7b317b222` auf `fix/g17-german-first-cluster-prerequisite` committet und
+gepusht erhalten. [Notiz und gebundene Nachweise](https://github.com/enpasos/skillpilot/blob/e7b317b222a3b0b204a2f92dfc4ae25ddab28443/docs/dev/german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+bleiben am überprüften Commit zugänglich. Genau eine Clusterreferenz wird
+durch zehn bereits induzierte atomare Anforderungen ersetzt; die übrigen 45
+deutschen Atom→Cluster-Kanten gehören nicht zu diesem Stand. Sein Main-Weg ist
+der gekoppelte nächste G17-PR nach der Main-Lieferung von #97, Aufnahme der
+notwendigen Elternkorrektur und eigener frischer Remote-Abnahme. Bis dahin
+erfolgt keine weitere deutsche Datenbearbeitung. Das harte Standard-G17-Gate
+und der Gesamtauftrag bleiben offen.
 
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren

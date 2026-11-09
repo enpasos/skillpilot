@@ -8,6 +8,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Aktueller Auftrag: G17 in der Standard-Meilensteinprüfung und Wiederherstellung der ursprünglichen zehn M6-/M7-Fachstände in kleinen lieferbaren PRs.
 - [Mathematik-Dauerlayout: Pflege der Inputbindung, 8. November 2026](canonical-math-duration-input-binding-review-2026-11-08.md)
 - [Mathematikpaket: Pflege der Weitergabebindung, 8. November 2026](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)
+- [Mathematik: Verbraucher transitiv reduzierter Voraussetzungen, 9. November 2026](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)
 - [Mathematikpaket: Pflege des Standalone-Planchecks, 9. November 2026](canonical-math-standalone-plan-pin-review-2026-11-09.md)
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Pausierter Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.

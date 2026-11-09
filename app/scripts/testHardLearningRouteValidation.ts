@@ -140,6 +140,86 @@ assert.deepEqual(
   'a bounded outlook with contained and directly reachable milestones is valid',
 )
 
+const indirectOrientationOutlookGoals = structuredClone(validOrientationOutlookGoals)
+indirectOrientationOutlookGoals.find((goal) => goal.id === 'goal-a')!.requires = ['goal-detached']
+indirectOrientationOutlookGoals.find((goal) => goal.id === 'goal-detached')!.requires = ['orientation-outlook']
+assert.deepEqual(
+  validateOrientationOutlooks(
+    indirectOrientationOutlookGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ),
+  [],
+  'an entry may reach its orientation through an in-stage curricularAtomic leaf without a redundant direct edge',
+)
+
+const brokenIndirectOrientationOutlookGoals = structuredClone(indirectOrientationOutlookGoals)
+brokenIndirectOrientationOutlookGoals.find((goal) => goal.id === 'goal-detached')!.requires = []
+assert.ok(
+  validateOrientationOutlooks(
+    brokenIndirectOrientationOutlookGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+  'removing an inner authored edge must invalidate the entry route',
+)
+
+const clusterIndirectOrientationOutlookGoals = structuredClone(indirectOrientationOutlookGoals)
+const clusterBridge = clusterIndirectOrientationOutlookGoals.find((goal) => goal.id === 'goal-detached')!
+clusterBridge.type = 'cluster'
+clusterBridge.contains = ['goal-b']
+assert.ok(
+  validateOrientationOutlooks(
+    clusterIndirectOrientationOutlookGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+  'a cluster cannot bridge an otherwise literal requires route',
+)
+
+for (const wrongBridgeKind of ['memory', 'practiceAssessment', 'runtimeSupport', undefined] as const) {
+  const wrongBridgeKinds = new Map(validOrientationOutlookKinds)
+  if (wrongBridgeKind === undefined) wrongBridgeKinds.delete('goal-detached')
+  else wrongBridgeKinds.set('goal-detached', wrongBridgeKind)
+  assert.ok(
+    validateOrientationOutlooks(
+      indirectOrientationOutlookGoals,
+      wrongBridgeKinds,
+      sekiOrientationOutlookProfiles,
+    ).some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+    `an inner route leaf must have authoritative curricularAtomic kind, rejecting ${wrongBridgeKind ?? 'unclassified'}`,
+  )
+}
+
+const crossStageBridgeGoals = structuredClone(indirectOrientationOutlookGoals)
+crossStageBridgeGoals.find((goal) => goal.id === 'goal-detached')!.stage = 'sekii'
+assert.ok(
+  validateOrientationOutlooks(
+    crossStageBridgeGoals,
+    validOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ).some((finding) => finding.message.includes('Entry goal goal-a is not reachable')),
+  'an inner leaf in another stage cannot bridge the entry to its orientation',
+)
+
+const alternativeOrientationOutlookGoals = structuredClone(indirectOrientationOutlookGoals)
+alternativeOrientationOutlookGoals.push({
+  id: 'valid-bridge', type: 'atomic', stage: 'seki', contains: [], requires: ['orientation-outlook'],
+})
+alternativeOrientationOutlookGoals.find((goal) => goal.id === 'goal-a')!.requires = ['goal-detached', 'valid-bridge']
+const alternativeOrientationOutlookKinds = new Map(validOrientationOutlookKinds)
+alternativeOrientationOutlookKinds.set('goal-detached', 'memory')
+alternativeOrientationOutlookKinds.set('valid-bridge', 'curricularAtomic')
+assert.deepEqual(
+  validateOrientationOutlooks(
+    alternativeOrientationOutlookGoals,
+    alternativeOrientationOutlookKinds,
+    sekiOrientationOutlookProfiles,
+  ),
+  [],
+  'a valid in-stage atomic alternative proves the route despite an impermissible side branch',
+)
+
 const invalidOrientationOutlookGoals = structuredClone(validOrientationOutlookGoals)
 const invalidOutlook = invalidOrientationOutlookGoals[0]?.extendedData
   ?.orientationOutlook as { paths: Array<Record<string, unknown>> }
