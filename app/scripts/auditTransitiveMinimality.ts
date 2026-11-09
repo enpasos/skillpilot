@@ -8,16 +8,29 @@ import { fileURLToPath } from 'node:url'
 export type AuditGoal = { id: string; title?: string; contains?: string[]; requires?: string[] }
 export type AuditLandscape = { landscapeId: string; goals: AuditGoal[] }
 type Node = { key: string; landscapeId: string; goal: AuditGoal; contains: string[]; requires: string[] }
-type Origin = { source: string; prerequisite: string }
-export type MinimalityFinding = Origin & { witness: string[]; supportingOrigins: Origin[] }
+export type MinimalityOrigin = { source: string; prerequisite: string }
+export type MinimalityFinding = MinimalityOrigin & { witness: string[]; supportingOrigins: MinimalityOrigin[] }
 // Unicode code-point order is independent of the process/host locale.
 const compareKeys = (left: string, right: string): number => {
-  const a = Array.from(left), b = Array.from(right)
-  for (let i = 0; i < Math.min(a.length, b.length); i++) {
-    const delta = a[i].codePointAt(0)! - b[i].codePointAt(0)!
+  let a = 0, b = 0
+  while (a < left.length && b < right.length) {
+    const leftPoint = left.codePointAt(a)!, rightPoint = right.codePointAt(b)!
+    const delta = leftPoint - rightPoint
     if (delta) return delta
+    a += leftPoint > 0xFFFF ? 2 : 1
+    b += rightPoint > 0xFFFF ? 2 : 1
   }
-  return a.length - b.length
+  // Equal prefixes retain the former numeric code-point length difference.
+  let remaining = 0
+  while (a < left.length) {
+    a += left.codePointAt(a)! > 0xFFFF ? 2 : 1
+    remaining++
+  }
+  while (b < right.length) {
+    b += right.codePointAt(b)! > 0xFFFF ? 2 : 1
+    remaining--
+  }
+  return remaining
 }
 const sorted = (items: Iterable<string>) => [...new Set(items)].sort(compareKeys)
 function ensure(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(message) }
@@ -66,7 +79,7 @@ function cycle(adjacency: Map<string, string[]>): string[] | undefined {
   }
 }
 
-export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandscapeIds: string[]) {
+function prepareAudit(catalog: AuditLandscape[], rootLandscapeIds: string[]) {
   validateCatalog(catalog)
   ensure(Array.isArray(rootLandscapeIds) && rootLandscapeIds.length > 0, 'Empty root scope')
   for (const id of rootLandscapeIds) {
@@ -146,13 +159,14 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
       if (incoming.get(child) === 0) ready.push(child)
     }
   }
-  const sources = (key: string): string[] => sorted(sourceSets.get(key)!)
+  const orderedSources = new Map([...sourceSets].map(([key, origins]) => [key, sorted(origins)]))
+  const sources = (key: string): string[] => orderedSources.get(key)!
   const origins = ordered.flatMap((n) => n.requires.map((p) => ({ source: n.key, prerequisite: p })))
   // Fixed C fixes sources(g). Omitting the authored pair in every contribution
   // exactly recomputes effective(C, R\{edge}), including all inherited copies.
   // Other authored origins of the same effective requirement survive.
-  const effective = (key: string, omitted?: Origin): Map<string, Origin> => {
-    const result = new Map<string, Origin>()
+  const effective = (key: string, omitted?: MinimalityOrigin): Map<string, MinimalityOrigin> => {
+    const result = new Map<string, MinimalityOrigin>()
     for (const source of sources(key)) for (const prerequisite of selected.get(source)!.requires) {
       if (omitted?.source === source && omitted.prerequisite === prerequisite) continue
       if (!result.has(prerequisite)) result.set(prerequisite, { source, prerequisite })
@@ -162,24 +176,53 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
   const fullEffective = new Map(ordered.map((n) => [n.key, [...effective(n.key).keys()]]))
   const effectiveCycle = cycle(fullEffective)
   ensure(!effectiveCycle, `effective requires cycle: ${effectiveCycle?.join(' -> ')}`)
+  return { selected, ordered, contains, fullEffective, childrenExpanded, origins, effective }
+}
+
+function findRedundantOrigin(
+  { effective }: ReturnType<typeof prepareAudit>, removed: MinimalityOrigin,
+): MinimalityFinding | undefined {
+  const queue = [removed.source], previous = new Map<string, { node: string; origin: MinimalityOrigin }>()
+  const visited = new Set(queue)
+  for (let index = 0; index < queue.length && !visited.has(removed.prerequisite); index++) {
+    const node = queue[index]
+    for (const [target, origin] of effective(node, removed)) {
+      if (visited.has(target)) continue
+      visited.add(target); previous.set(target, { node, origin }); queue.push(target)
+    }
+  }
+  if (!visited.has(removed.prerequisite)) return undefined
+  const witness = [removed.prerequisite], supportingOrigins: MinimalityOrigin[] = []
+  while (witness[0] !== removed.source) {
+    const step = previous.get(witness[0])!
+    witness.unshift(step.node); supportingOrigins.unshift(step.origin)
+  }
+  return { ...removed, witness, supportingOrigins }
+}
+
+// Validity only: this checks the complete audit scope afresh and makes no
+// statement about transitive minimality or the absence of redundant origins.
+export function validateTransitiveMinimalityScope(catalog: AuditLandscape[], rootLandscapeIds: string[]): void {
+  prepareAudit(catalog, rootLandscapeIds)
+}
+
+// A single authored-origin query, never a global minimality result. Scope and
+// catalog validation are identical to the full audit even when no origin exists.
+export function auditTransitiveMinimalityOrigin(
+  catalog: AuditLandscape[], rootLandscapeIds: string[], origin: MinimalityOrigin,
+): MinimalityFinding | undefined {
+  const prepared = prepareAudit(catalog, rootLandscapeIds)
+  const authored = prepared.origins.find((entry) => entry.source === origin.source && entry.prerequisite === origin.prerequisite)
+  return authored && findRedundantOrigin(prepared, authored)
+}
+
+export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandscapeIds: string[]) {
+  const prepared = prepareAudit(catalog, rootLandscapeIds)
+  const { selected, ordered, contains, fullEffective, childrenExpanded, origins } = prepared
   const findings: MinimalityFinding[] = []
-  for (const removed of origins) {
-    const queue = [removed.source], previous = new Map<string, { node: string; origin: Origin }>()
-    const visited = new Set(queue)
-    for (let index = 0; index < queue.length && !visited.has(removed.prerequisite); index++) {
-      const node = queue[index]
-      for (const [target, origin] of effective(node, removed)) {
-        if (visited.has(target)) continue
-        visited.add(target); previous.set(target, { node, origin }); queue.push(target)
-      }
-    }
-    if (!visited.has(removed.prerequisite)) continue
-    const witness = [removed.prerequisite], supportingOrigins: Origin[] = []
-    while (witness[0] !== removed.source) {
-      const step = previous.get(witness[0])!
-      witness.unshift(step.node); supportingOrigins.unshift(step.origin)
-    }
-    findings.push({ ...removed, witness, supportingOrigins })
+  for (const origin of origins) {
+    const finding = findRedundantOrigin(prepared, origin)
+    if (finding) findings.push(finding)
   }
   return {
     nodeCount: selected.size, authoredRequiresCount: origins.length,
