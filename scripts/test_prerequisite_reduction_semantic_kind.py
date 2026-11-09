@@ -701,16 +701,17 @@ class SemanticKindReductionTest(unittest.TestCase):
                 self.assertEqual(verified.baseline_fingerprints, {"q": BASELINE})
                 self.assertEqual(verified.provenance["proofContract"], contract)
 
-    def test_append_only_contract_invokes_node_with_unchanged_timeout_and_no_fallback(self):
+    def test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback(self):
+        self.assertEqual(bridge.NODE_VERIFIER_TIMEOUT_SECONDS, 600)
         self.receipt["proof"]["proofContract"] = "append-only-prerequisite-reduction-batches-v6"
         with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
         run.assert_called_once_with(
             ["node", "--import", "tsx", "scripts/verifyPrerequisiteReductionSemanticKindBindings.ts",
              "--canonical-source", SOURCE, "--repository-root", str(self.root)],
-            cwd=bridge.SOFTWARE_ROOT / "app", capture_output=True, timeout=180, check=False,
+            cwd=bridge.SOFTWARE_ROOT / "app", capture_output=True, timeout=600, check=False,
         )
-        with patch.object(bridge.subprocess, "run", side_effect=subprocess.TimeoutExpired("node", 180)) as run:
+        with patch.object(bridge.subprocess, "run", side_effect=subprocess.TimeoutExpired("node", 600)) as run:
             with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "binding failed"):
                 self.load()
         self.assertEqual(run.call_count, 1)
