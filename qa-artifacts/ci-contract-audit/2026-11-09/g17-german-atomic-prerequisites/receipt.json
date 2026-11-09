@@ -1,0 +1,943 @@
+{
+  "schemaVersion": 1,
+  "kind": "local-German-atomic-prerequisite-evidence-not-global-G17-acceptance",
+  "capturedUtc": "2026-11-09T11:33:15.503259+00:00",
+  "delivery": {
+    "dataCommit": "15593c82e92b62cc76601e340932800fdce8063c",
+    "dataTree": "8f3b3fba079412da0ad6c0f716d33088d97fee8d",
+    "integratedMain": "62316d3c653c753abbb822e8e4a1f5ebd1d04fb6",
+    "executionHead": "5048120d0eb5e6967c4fa874d93c9bf5b8a26be2",
+    "sameBaseTree": true,
+    "testedFiveFileBytesUnchanged": true,
+    "noTestRerunClaimedByMetadataIntegration": true,
+    "notYetPushed": true
+  },
+  "productRawSha256": {
+    "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "66976bad9fbd8c97848fdcbf7c1fe64483369f17dec6d429c88f7eeb900c1e42",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142",
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": "ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109",
+    "docs/qa-ci/status/curriculum-quality-status.json": "ac6b96f4d17d0d2ad10d75b3d904a0d57ba1849849efcf577ba5b481567ba24f",
+    "docs/qa-ci/status/curriculum-quality-status.md": "3efc528fac42515ce9281e7a42743b1e551efe01bb913e2d664ac1b23c6fa68f"
+  },
+  "change": {
+    "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+    "goalCount": 354,
+    "changedRequiresArrays": 18,
+    "normalizationGroups": 45,
+    "alreadyInducedAtomicMaterializations": 272,
+    "alreadyDirectRetainedLeaf": 1,
+    "clusterTargetCuts": 45,
+    "freshOrderedAtomicCuts": 311,
+    "refreshedAtomicEndWitnesses": 169,
+    "authoredRequiresBefore": 606,
+    "authoredRequiresAfter": 522,
+    "GermanMinimalityFindingsBefore": 91,
+    "GermanMinimalityFindingsAfter": 0,
+    "goalIdsTextsContainsAndAllOtherFieldsPreserved": true,
+    "learnerMasteryOrStateWrites": false,
+    "proofContract": "append-only-prerequisite-reduction-batches-v6",
+    "v5ParentCanonicalDigest": "sha256:672c5e69194f23d3178a80225e804ca8c01ba88c0af37a7630a7a339b2e3c637",
+    "v5ParentRawSha256": "7a87f30c8bd54d43ce491ad05820990587d95e2db67023c48a39dab1c92e238d",
+    "legacyWitnessPathsRetained": 1218,
+    "v5LeafClaimsRetained": 10,
+    "prefixSources": 720,
+    "newSources": 17,
+    "deduplicatedSources": 737
+  },
+  "writer": {
+    "reviewedManifestRawSha256": "54c2528bf3de2aa3fdf43d022031a2a5de8567c989434a69e84beae63f31eb84",
+    "inputPinsRawSha256": "6f91188275e7e366d6da4c8918dd62f9808c54a8809bd7fc965da8086694d076",
+    "activationReceiptRawSha256": "b474d89fbf3000e47322aea274a1f69018a2191077b2eb55e5b4ed6914db597d",
+    "rootAuthorizedTwoFileWrite": true,
+    "genuineV5ParentVerification": "VERIFIED_BY_PRODUCT_LOADER",
+    "fullDocumentBoundaries": 21,
+    "shapeAssertions": {
+      "documents": 21,
+      "normalizationGroups": 45,
+      "atomicAdditions": 272,
+      "retainedLeaves": 1,
+      "atomicCuts": 311,
+      "refreshedAtomicEndWitnesses": 169,
+      "prefixSources": 720,
+      "overlap": 1,
+      "newSources": 17,
+      "deduplicatedSources": 737,
+      "legacyWitnessPaths": 1218,
+      "v5LeafClaims": 10,
+      "overlapSources": [
+        "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95"
+      ],
+      "allApprovedBeforeAndCandidateArraysMatch": true,
+      "allOtherDocumentFieldsAndOrdersPreserved": true,
+      "historicalRegistryPrefixPreserved": true,
+      "originalGermanFormattingAndRestorationByteExact": true
+    },
+    "batchSourceIds": [
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:07f6437b-6b99-5f29-8dec-f19a3210a61e",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:09df0b45-762e-599d-aa65-7e40df20977a",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:196da4df-e478-5ff8-9eac-405b3a52ccb0",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:249535a9-4c52-5200-938c-312df0d90af7",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:24aa27dc-5d86-5fcb-90c8-074b28e55b9d",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2b37a065-5d23-5011-a3bb-52cb585f865c",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2f05ec27-de95-5875-9d6e-1739f1462c2e",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:46278a08-7d3d-52aa-9125-6fdb371cfad2",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:4631ba7a-77e8-5a74-b3d8-fc53e206fc40",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:65c8d2fa-e229-562b-a3d8-b51de7f13b2c",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:7601162a-8fde-57cb-9bb9-c62c685c58d1",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:aca05e9b-996e-5842-9d01-6bcf11e0fc2b",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:c75958e7-756d-548d-98a7-6eca4c8bdd02",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:d063b8d7-6bda-55c6-9f47-fd99269485b7",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:de86a077-6c71-56d7-92da-9d8e376fb110",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:886ffd34-44f6-5daa-4451-d21dd846a53a",
+      "67bd301b-e11a-582d-94ba-4f4b1a4cefff:d44c70eb-2cfb-5fc0-9a0c-64902ce1f1f6"
+    ]
+  },
+  "nodePythonVerification": {
+    "actualNode20Observed": true,
+    "actualNodeProcessCount": 1,
+    "affectedSourceInventorySha256": "ea549498d965b8b4d5066a9a69ef104a356402d666d63a1ac2d01cd3167b66ab",
+    "allReturnedBaselinesEqualNativeRestoration": true,
+    "baselineNativeFingerprintMapSha256": "cb597b1b49c50ece3ef3bc9b8ec49df213de0355efa530913ff449a748829914",
+    "baselineNativeImplementationsEqual": true,
+    "bridgeCallCount": 1,
+    "bridgeDurationSeconds": 166.576,
+    "bridgeReturned": true,
+    "bridgeTimeoutSeconds": 180,
+    "canonicalSourceRawSha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142",
+    "changedFingerprintCount": 18,
+    "changedFingerprintGoalIds": [
+      "07f6437b-6b99-5f29-8dec-f19a3210a61e",
+      "09df0b45-762e-599d-aa65-7e40df20977a",
+      "196da4df-e478-5ff8-9eac-405b3a52ccb0",
+      "249535a9-4c52-5200-938c-312df0d90af7",
+      "24aa27dc-5d86-5fcb-90c8-074b28e55b9d",
+      "2b37a065-5d23-5011-a3bb-52cb585f865c",
+      "2f05ec27-de95-5875-9d6e-1739f1462c2e",
+      "2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "46278a08-7d3d-52aa-9125-6fdb371cfad2",
+      "4631ba7a-77e8-5a74-b3d8-fc53e206fc40",
+      "65c8d2fa-e229-562b-a3d8-b51de7f13b2c",
+      "7601162a-8fde-57cb-9bb9-c62c685c58d1",
+      "886ffd34-44f6-5daa-4451-d21dd846a53a",
+      "aca05e9b-996e-5842-9d01-6bcf11e0fc2b",
+      "c75958e7-756d-548d-98a7-6eca4c8bdd02",
+      "d063b8d7-6bda-55c6-9f47-fd99269485b7",
+      "d44c70eb-2cfb-5fc0-9a0c-64902ce1f1f6",
+      "de86a077-6c71-56d7-92da-9d8e376fb110"
+    ],
+    "currentNativeFingerprintMapSha256": "083c8627f2fc13e6f05062f43d0d65324e4f560563ae2c69bdabe3b522ed0b52",
+    "currentNativeImplementationsEqual": true,
+    "deduplicatedAffectedSourceCount": 737,
+    "finishedUtc": "2026-11-09T09:34:24.728198+00:00",
+    "germanGoalCount": 354,
+    "germanSourceCount": 18,
+    "head": "5048120d0eb5e6967c4fa874d93c9bf5b8a26be2",
+    "passed": true,
+    "productAndProposalUnchanged": true,
+    "productInputCount": 4573,
+    "proofContract": "append-only-prerequisite-reduction-batches-v6",
+    "proposalInputCount": 22,
+    "registryRawSha256": "ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109",
+    "scope": "read-only proposed repository; not Main/native/final G17 acceptance",
+    "separateNodeVerificationCount": 0,
+    "startedUtc": "2026-11-09T09:31:35.482370+00:00"
+  },
+  "whole21DocumentAppComparison": {
+    "genuineProductV6Verifier": true,
+    "frame": "complete original-baseline versus final-current compiled applicability over all 21 documents",
+    "separateOrDuplicatePreflightCall": false,
+    "proposalBytesLaterActivatedUnchanged": true
+  },
+  "fullCatalogDiagnostic": {
+    "auditRulePassed": false,
+    "auditStatus": "invalid-input",
+    "cliExitCode": 2,
+    "durationSeconds": 4.43,
+    "roots": 21,
+    "rootStatusCounts": {
+      "fail": 10,
+      "invalid-input": 4,
+      "pass": 7
+    },
+    "German": {
+      "authoredRequiresCount": 522,
+      "containsCount": 354,
+      "crossLandscapeReferenceCount": 1,
+      "effectiveRequiresCount": 522,
+      "file": "DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "findingCount": 0,
+      "findingsByLandscape": {
+        "67bd301b-e11a-582d-94ba-4f4b1a4cefff": 0,
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": 0
+      },
+      "foreignInheritanceOnlyAncestorCount": 1,
+      "foreignInheritanceOnlyAncestorsByLandscape": {
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": 1
+      },
+      "inheritanceOnlyAncestorCount": 1,
+      "nodeCount": 355,
+      "rootLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "scopeLandscapeIds": [
+        "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e"
+      ],
+      "status": "pass",
+      "title": "Deutsch (Gymnasium, DE)"
+    },
+    "otherProtectedFindingsRemaining": 1214,
+    "rootResults": [
+      {
+        "rootLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "title": "Biologie (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 166,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+        "title": "Tschechisch (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+        "title": "Russisch (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+        "title": "Italienisch (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "title": "Politik und Wirtschaft (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 126,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "title": "Wirtschaftswissenschaften (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 92,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "title": "Latein (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "title": "Deutsch (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "title": "Mathematik (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+        "title": "Griechisch (Gymnasium, DE)",
+        "status": "invalid-input",
+        "findingCount": null,
+        "error": "Error: effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+      },
+      {
+        "rootLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "title": "Informatik (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 94,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "title": "Physik (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 390,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+        "title": "Chinesisch (Gymnasium, DE)",
+        "status": "invalid-input",
+        "findingCount": null,
+        "error": "Error: effective requires cycle: 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2 -> 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+      },
+      {
+        "rootLandscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+        "title": "Spanisch (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 32,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "title": "Geschichte (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 13,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+        "title": "Französisch (Gymnasium, DE)",
+        "status": "invalid-input",
+        "findingCount": null,
+        "error": "Error: effective requires cycle: 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52 -> 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
+      },
+      {
+        "rootLandscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+        "title": "Gymnasium (DE)",
+        "status": "invalid-input",
+        "findingCount": null,
+        "error": "Error: effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+      },
+      {
+        "rootLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "title": "Chemie (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 333,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+        "title": "Englisch (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 66,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+        "title": "Polnisch (Gymnasium, DE)",
+        "status": "pass",
+        "findingCount": 0,
+        "error": null
+      },
+      {
+        "rootLandscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+        "title": "Musik (Gymnasium, DE)",
+        "status": "fail",
+        "findingCount": 10,
+        "error": null
+      }
+    ],
+    "globalPassClaimed": false,
+    "scope": "read-only proposed repository inventory; not Main/standard-gate/final G17 acceptance",
+    "auditorSha256": "9478808978a1c23ce15af2ac2f19b5e5a21c53830f504e4c145e5509df689df2"
+  },
+  "nativeScopeSummary": "native-v6-summary.json",
+  "ordinaryLegacyCqr": {
+    "passed": true,
+    "commands": [
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "--import",
+          "tsx",
+          "scripts/generateCurriculumQualityStatus.ts"
+        ],
+        "durationSeconds": 746.439,
+        "exitCode": 0,
+        "logSha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861"
+      },
+      {
+        "command": [
+          "npm",
+          "run",
+          "check:curriculum-maturity-floors"
+        ],
+        "durationSeconds": 2.58,
+        "exitCode": 0,
+        "logSha256": "632cf40b86326d05e9626038f0e8299af4b21550547ef845a28ec2155f199e35"
+      }
+    ],
+    "scope": "existing whole CQR producer followed by ten protected floors",
+    "protectedCurricula": 10,
+    "actualMaturityCounts": {
+      "M7": 5,
+      "M6": 5
+    },
+    "floors": [
+      {
+        "subject": "Mathematik",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "minimumMaturity": "M7",
+        "actualMaturity": "M7"
+      },
+      {
+        "subject": "Physik",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "minimumMaturity": "M7",
+        "actualMaturity": "M7"
+      },
+      {
+        "subject": "Biologie",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "minimumMaturity": "M7",
+        "actualMaturity": "M7"
+      },
+      {
+        "subject": "Chemie",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "minimumMaturity": "M7",
+        "actualMaturity": "M7"
+      },
+      {
+        "subject": "Deutsch",
+        "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "minimumMaturity": "M6",
+        "actualMaturity": "M6"
+      },
+      {
+        "subject": "Geschichte",
+        "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "minimumMaturity": "M6",
+        "actualMaturity": "M6"
+      },
+      {
+        "subject": "Informatik",
+        "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "minimumMaturity": "M6",
+        "actualMaturity": "M6"
+      },
+      {
+        "subject": "Latein",
+        "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "minimumMaturity": "M6",
+        "actualMaturity": "M6"
+      },
+      {
+        "subject": "Politik und Wirtschaft",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "minimumMaturity": "M6",
+        "actualMaturity": "M6"
+      },
+      {
+        "subject": "Wirtschaftswissenschaften",
+        "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "minimumMaturity": "M7",
+        "actualMaturity": "M7"
+      }
+    ],
+    "currentLegacyCqrOnly": true,
+    "hardG17StandardGateActivated": false,
+    "proofContract": "append-only-prerequisite-reduction-batches-v6",
+    "registeredSources": 737,
+    "outputs": {
+      "docs/qa-ci/status/curriculum-quality-status.json": "ac6b96f4d17d0d2ad10d75b3d904a0d57ba1849849efcf577ba5b481567ba24f",
+      "docs/qa-ci/status/curriculum-quality-status.md": "3efc528fac42515ce9281e7a42743b1e551efe01bb913e2d664ac1b23c6fa68f"
+    }
+  },
+  "sourceGuards": {
+    "native": {
+      "lexicalKeysBefore": 122945,
+      "lexicalKeysAfter": 122945,
+      "changedInputs": [],
+      "unchangedInputs": true
+    },
+    "nativeToCqrInputBindingPassed": true,
+    "nativeAfterCompressedSnapshotRawSha256": "199b73aac7329065ac910cfc7d8a36d6c8610ac9633422103c2417600d5331c2",
+    "cqr": {
+      "lexicalKeysBefore": 122945,
+      "lexicalKeysAfter": 122945,
+      "sourceInputsUnchangedExceptDeclaredReports": true,
+      "declaredReportAndAliasDeltas": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-five-component-duration-policy-independent-b-v1/native-isolated-repo/docs/qa-ci/status/curriculum-quality-status.json",
+          "beforeRawSha256": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1",
+          "afterRawSha256": "ac6b96f4d17d0d2ad10d75b3d904a0d57ba1849849efcf577ba5b481567ba24f",
+          "symlink": true,
+          "resolvedTargetRelativePath": "docs/qa-ci/status/curriculum-quality-status.json",
+          "beforeBytes": 2853108,
+          "afterBytes": 2854526,
+          "linkText": "../../../../../../../../../../../docs/qa-ci/status/curriculum-quality-status.json",
+          "linkTextUnchanged": true,
+          "effect": "existing historical alias observes the current report target; no symlink replacement"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.json",
+          "beforeRawSha256": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1",
+          "afterRawSha256": "ac6b96f4d17d0d2ad10d75b3d904a0d57ba1849849efcf577ba5b481567ba24f",
+          "symlink": false,
+          "resolvedTargetRelativePath": "docs/qa-ci/status/curriculum-quality-status.json",
+          "beforeBytes": 2853108,
+          "afterBytes": 2854526
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.md",
+          "beforeRawSha256": "3c82e9562343a26b00f0f067c01f36d6c4bce5ad9cdb2c8c13e9a821fcb1da75",
+          "afterRawSha256": "3efc528fac42515ce9281e7a42743b1e551efe01bb913e2d664ac1b23c6fa68f",
+          "symlink": false,
+          "resolvedTargetRelativePath": "docs/qa-ci/status/curriculum-quality-status.md",
+          "beforeBytes": 119718,
+          "afterBytes": 120983
+        }
+      ],
+      "unexpectedInputDeltas": []
+    },
+    "compressedInputSnapshots": [
+      {
+        "description": "lossless 122945-key input snapshot",
+        "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/inputs-before.json.gz",
+        "rawSha256": "79bfbc86451407837ec8e4121b64c634e39b6a207a6aecdda0f3e8739c84808f",
+        "bytes": 8224385,
+        "availability": "local or archived; not a public download",
+        "uncompressedRawSha256": "80f01d8629e66920fe06102bbc5a525aa8e5d41c29839f15d4386f08f28565b1",
+        "uncompressedBytes": 81705745
+      },
+      {
+        "description": "lossless 122945-key input snapshot",
+        "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/inputs-after.json.gz",
+        "rawSha256": "199b73aac7329065ac910cfc7d8a36d6c8610ac9633422103c2417600d5331c2",
+        "bytes": 8224384,
+        "availability": "local or archived; not a public download",
+        "uncompressedRawSha256": "80f01d8629e66920fe06102bbc5a525aa8e5d41c29839f15d4386f08f28565b1",
+        "uncompressedBytes": 81705745
+      },
+      {
+        "description": "lossless 122945-key input snapshot",
+        "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/inputs-before.json.gz",
+        "rawSha256": "79bfbc86451407837ec8e4121b64c634e39b6a207a6aecdda0f3e8739c84808f",
+        "bytes": 8224385,
+        "availability": "local or archived; not a public download",
+        "uncompressedRawSha256": "80f01d8629e66920fe06102bbc5a525aa8e5d41c29839f15d4386f08f28565b1",
+        "uncompressedBytes": 81705745
+      },
+      {
+        "description": "lossless 122945-key input snapshot",
+        "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/inputs-after.json.gz",
+        "rawSha256": "9c9c6e3e9ca5f7efa9a26acd9c773f72b1f958ea9c95d16311348073bdc048a6",
+        "bytes": 8224381,
+        "availability": "local or archived; not a public download",
+        "uncompressedRawSha256": "721a41932373b548197407cc80c08655e01a58091c4229ea505fb3396a474feb",
+        "uncompressedBytes": 81705745
+      }
+    ],
+    "closedReadNamespaceClaim": false,
+    "historicalLexicalAliasAndResolvedTargetRecordedSeparately": true,
+    "archiveLoaderExistenceMtimeOnlyBinaryInputsNotClaimedContentHashed": true
+  },
+  "actualCurrentV6TsChain": {
+    "statusAtCapture": "RUNNING",
+    "ownerAgent": "/root/sol_pr101_fixture_repair",
+    "sessionHandle": 25347,
+    "beforeHead": "15593c82e92b62cc76601e340932800fdce8063c",
+    "declaredInputCount": 4624,
+    "selectedInputs": 4573,
+    "archiveAddendumInputs": 51,
+    "completedSteps": [
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "--import",
+          "tsx",
+          "scripts/testTransitiveMinimality.ts"
+        ],
+        "durationSeconds": 0.786,
+        "exitCode": 0,
+        "finishedUtc": "2026-11-09T11:22:47.572978+00:00",
+        "label": "01-transitive-minimality",
+        "logSha256": "e000ebf94b09de33806213118c9fa2e2bc5ac107c83549fb1c059c7fecad988c",
+        "startedUtc": "2026-11-09T11:22:46.786889+00:00"
+      },
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+          "--import",
+          "tsx",
+          "--test",
+          "scripts/testTransitiveMinimalityCli.ts"
+        ],
+        "durationSeconds": 9.193,
+        "exitCode": 0,
+        "finishedUtc": "2026-11-09T11:22:56.766220+00:00",
+        "label": "02-transitive-minimality-cli",
+        "logSha256": "bb49bfcbcf3793cd2b1e88a1606eb575c20692c40c649326696cea10f0167866",
+        "startedUtc": "2026-11-09T11:22:47.573469+00:00"
+      }
+    ],
+    "activeStep": "scripts/testPrerequisiteReductionProof.ts",
+    "activeLocalLog": "app/node_modules/.tmp/g17-german-v6-data-ts-20261109/03-prerequisite-reduction-proof.log",
+    "activeLogNotSealed": true,
+    "terminalProofResultPresentAtCapture": false,
+    "terminalSuiteResultPresentAtCapture": false,
+    "terminalPassClaimed": false
+  },
+  "futureStandardGate": {
+    "status": "PREPARED_NOT_INTEGRATED",
+    "preparedManifestRawSha256": "2c03f53d85dc2e106552e0c0f9c16aa62f85601a04802dcb38bd4ae75fe2d16d",
+    "boundedFixtures": {
+      "passed": 9,
+      "failed": 0
+    },
+    "fullDocumentBindingRepairInActualDataCommit": false,
+    "allProtectedSubjectG17AcceptanceClaimed": false
+  },
+  "localEvidenceRetention": {
+    "availability": "local/archived ignored scratch; descriptors are not public download links",
+    "nativeJsonArchives": [
+      {
+        "originalPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/he-gk-required-role-preparation/native/native-probe.json",
+        "originalSha256": "9d2655f8772dc9e8c5c85f1f1a9fb0eb0aa21deb0c695588dee2de82a93b152e",
+        "originalBytes": 16939684,
+        "compressedPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/he-gk-required-role-preparation/native/native-probe.json.gz",
+        "compressedSha256": "ca14043aa21f27ac8c0820a6e07464a56a2087eb52279a3b063361baf32c9c4d",
+        "compressedBytes": 631315,
+        "verifiedExactRestoration": true
+      },
+      {
+        "originalPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/he-gk-six-role-preparation/native/native-probe.json",
+        "originalSha256": "8f728785fcec11f41f6c340ed5e8336aafc2cefa9f6271596229e31ee7e2e13d",
+        "originalBytes": 11556250,
+        "compressedPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/he-gk-six-role-preparation/native/native-probe.json.gz",
+        "compressedSha256": "93ca8591a4f05ece509d061b32e546df37ee575e39f2cb67df4bce39caa8b4d6",
+        "compressedBytes": 507920,
+        "verifiedExactRestoration": true
+      },
+      {
+        "originalPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/native-attempt-2/native-probe.json",
+        "originalSha256": "c7c074113edef44e04c2d49627940c6e8e745b4e7dfebd0ec2221098181d005a",
+        "originalBytes": 7683684,
+        "compressedPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/native-attempt-2/native-probe.json.gz",
+        "compressedSha256": "ce9cfeb8a010fb7a258766157e561ee4674f2b93e000dbb3a03e9a6dead10f78",
+        "compressedBytes": 307494,
+        "verifiedExactRestoration": true
+      }
+    ],
+    "proposalArchives": [
+      {
+        "originalRoot": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-support-pr101-esm/proposed-repository",
+        "archivePath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-support-pr101-esm/proposed-repository.tar.gz",
+        "archiveSha256": "7f858d0a53ff56e2b55586d8f4b30095c4d8d84b336a4fa02be7e30c6cc55c0b",
+        "archiveBytes": 4169283,
+        "memberCount": 22,
+        "verifiedExactRestoration": true
+      },
+      {
+        "originalRoot": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-data-branch/proposed-repository",
+        "archivePath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-data-branch/proposed-repository.tar.gz",
+        "archiveSha256": "57fda1eabec246383a634109fefe7bb0cd89dd66e4d09d73ea7c4fc8391898e7",
+        "archiveBytes": 4169256,
+        "memberCount": 22,
+        "verifiedExactRestoration": true
+      },
+      {
+        "originalRoot": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/activation-data-branch/proposed-repository",
+        "archivePath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/activation-data-branch/proposed-repository.tar.gz",
+        "archiveSha256": "ad3945c21909cbfc7d76da02c30f529479a5ae094c8c19bf4b949346b73f5b97",
+        "archiveBytes": 4169292,
+        "memberCount": 22,
+        "verifiedExactRestoration": true
+      }
+    ],
+    "mappingFilesRetainAllOriginalMemberHashes": true,
+    "originalReceiptsAndInputBackupsRetained": true,
+    "largeInputManifestsOrRawGraphsCopiedIntoCommit": false
+  },
+  "evidenceDescriptors": [
+    {
+      "description": "data-checkpoint-commit.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/data-checkpoint-commit.json",
+      "rawSha256": "740066001d79e0e77d7a5fb314a862d1f7c3bf3b136b295ec98cc784db2173ba",
+      "bytes": 1282,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "main101-integration.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/main101-integration.json",
+      "rawSha256": "c6a62aa7fd3141b8033a8de76e01e125adc62eef7e0cd6681115b978823e7097",
+      "bytes": 340,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "local-two-file-write-result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/local-two-file-write-result.json",
+      "rawSha256": "02f7be2425267dd1311709c05aef67b91feb1e5dc0834abbb22750ceeed9d16e",
+      "bytes": 1736,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "java-facade-application.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/java-facade-application.json",
+      "rawSha256": "f025897d8b97c9b0e4ef65bb36141c75079d2c394dbe6428d66e2a47fe93a4c9",
+      "bytes": 711,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "root-write-readiness.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/root-write-readiness.json",
+      "rawSha256": "a279c367907c3e82eb5c575a33b93e9e21ac6d30c14f60b948e434a2c3d43039",
+      "bytes": 1208,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "lossless-compression-before-data-checks.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/lossless-compression-before-data-checks.json",
+      "rawSha256": "52aefee2a8da261703dd3025588ccba457dff5a1845217228cfa5efbb9033f49",
+      "bytes": 7113,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "lossless-compression-local-proposal-copies.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-local-data-delivery-20261109/lossless-compression-local-proposal-copies.json",
+      "rawSha256": "7746c7653d41b42adc7e71373993c9361428a0398c101c31b61f765aef87890f",
+      "bytes": 10622,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "artifact-manifest.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/artifact-manifest.json",
+      "rawSha256": "54c2528bf3de2aa3fdf43d022031a2a5de8567c989434a69e84beae63f31eb84",
+      "bytes": 1110,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "input-pins.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/input-pins.json",
+      "rawSha256": "6f91188275e7e366d6da4c8918dd62f9808c54a8809bd7fc965da8086694d076",
+      "bytes": 12341,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "execution-proposal-support-pr101.log",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/execution-proposal-support-pr101.log",
+      "rawSha256": "f5b7d580e673cb8c4c76b2a01d3bb9d91dc480997ff81dd72baccc4b72a25c0b",
+      "bytes": 1183,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "execution-proposal-support-pr101-esm-result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/execution-proposal-support-pr101-esm-result.json",
+      "rawSha256": "05ad78f19e23ebcb094e25dfa7aedfa783aceb3aa334d5aa329a228201b26d6f",
+      "bytes": 3488,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "proposal-support-pr101-esm/receipt.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-support-pr101-esm/receipt.json",
+      "rawSha256": "e707f8f3d7e7a47d2b565e67180f9383dab728e80d8bf2fb48ba947faf7d9456",
+      "bytes": 83684,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "execution-proposal-data-branch-result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/execution-proposal-data-branch-result.json",
+      "rawSha256": "4f757aa2d098eaabca9e8d8c0a65d1ae345e80738e2edfad17610258710042f1",
+      "bytes": 4304,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "proposal-data-branch/receipt.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/proposal-data-branch/receipt.json",
+      "rawSha256": "e892cd9bb579b32a20447135947c37f3f5499eb0af2445a8c710cd964ddb8fd8",
+      "bytes": 83683,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "activation-data-branch/receipt.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-writer-preparation-20261109/activation-data-branch/receipt.json",
+      "rawSha256": "b474d89fbf3000e47322aea274a1f69018a2191077b2eb55e5b4ed6914db597d",
+      "bytes": 83699,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "invocation.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/invocation.json",
+      "rawSha256": "f99ce078e7c9d1ced3153c20272f836bedf8b0b337472d2c326d6efed6d6f6b9",
+      "bytes": 3782,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/result.json",
+      "rawSha256": "6c1bda18c8900216119066e13d1d4ad831666c045ffd8c89ecb5c4aeeb08750f",
+      "bytes": 2252,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "actual-node-processes.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/actual-node-processes.json",
+      "rawSha256": "17b253fe824848bf1446946f728a33f4fd6d2d3e4e2b59597645c7ef67ea2f6b",
+      "bytes": 625,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "hashes-before.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/hashes-before.json",
+      "rawSha256": "8516ea1231530006f567f8d9e94d71b9341bb682210310d543b953b61a0d4be1",
+      "bytes": 737347,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "hashes-after.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/hashes-after.json",
+      "rawSha256": "a2992cce630b0a4fa95ce0baffad3853eae316eb9a03fff769840e4de37784b5",
+      "bytes": 737347,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "full-catalog-audit/summary.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/full-catalog-audit/summary.json",
+      "rawSha256": "abb10246a8a78275617ddfa958fb1c05c0e8f90c2bd6503fcfb761c1d5b69c42",
+      "bytes": 20185,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "full-catalog-audit/candidate-full-catalog-audit.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-candidate-python-20261109/full-catalog-audit/candidate-full-catalog-audit.json",
+      "rawSha256": "7a19235ac8e10532d0f7bb97a244019b2abd3f0d7556a1d864285343a7699422",
+      "bytes": 396190,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "native-run/result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/result.json",
+      "rawSha256": "72cb3675fad43831d48e779c846f9e8012b23b226557b9f395dd96bbedd92d68",
+      "bytes": 22627,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "native-run/junit.xml",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/junit.xml",
+      "rawSha256": "0e76f8489b4ecb93171698d38704d0d9ab493b583db8b897c50d8b587ddea17a",
+      "bytes": 260018,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "native-run/gradle.log",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/gradle.log",
+      "rawSha256": "d7ba5d30721ea7bc1dec33449cfa3119ab96885d241ec565230efd36e3e0e15f",
+      "bytes": 282028,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "native-run/coverage-markers.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/coverage-markers.json",
+      "rawSha256": "f014c19a25b4873cce85d63b17bc936dc47767c551e5f28342d2001d31797db5",
+      "bytes": 11086,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "native-run/input-deltas.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/native-run/input-deltas.json",
+      "rawSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "cqr-run/result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/result.json",
+      "rawSha256": "6c203222e2f58bb83cf93e90b8cd75fecddba8519e99fd0f48eb4923e12b28f7",
+      "bytes": 70613,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "cqr-run/whole-cqr.log",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/whole-cqr.log",
+      "rawSha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+      "bytes": 108,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "cqr-run/ten-protected-floors.log",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/ten-protected-floors.log",
+      "rawSha256": "632cf40b86326d05e9626038f0e8299af4b21550547ef845a28ec2155f199e35",
+      "bytes": 367,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "cqr-run/all-input-deltas.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/all-input-deltas.json",
+      "rawSha256": "264f11165b2d4e1510d08c61d441c4c177283b93ff0e3bfa6b9172169d65737c",
+      "bytes": 3182,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "cqr-run/native-to-cqr-input-deltas.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-native-acceptance-20261109/cqr-run/native-to-cqr-input-deltas.json",
+      "rawSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "invocation.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-data-ts-20261109/invocation.json",
+      "rawSha256": "dd8331c18d68d5315d77ec177458bc4544742cdbf93957dff9e855eaaaf154ce",
+      "bytes": 451,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "inputs-before.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-data-ts-20261109/inputs-before.json",
+      "rawSha256": "1ba3a9b971e0c5e828310567a7fd746a93e8391aca653aeec772ecd8f7904b44",
+      "bytes": 743088,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "01-transitive-minimality.result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-data-ts-20261109/01-transitive-minimality.result.json",
+      "rawSha256": "c5e6092cd9144a12ba400805cd3cfa32a08beef5ca4c1bf5d7e5c929a6f78ffb",
+      "bytes": 421,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "02-transitive-minimality-cli.result.json",
+      "localPath": "app/node_modules/.tmp/g17-german-v6-data-ts-20261109/02-transitive-minimality-cli.result.json",
+      "rawSha256": "83c62c25948bec29f93dd9d8a2ab99c2cb6caac94e804044971b33a03908f755",
+      "bytes": 442,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "normalization-and-atomic-reduction-inventory.json",
+      "localPath": "app/node_modules/.tmp/g17-german-next-batch-inventory-20261109/normalization-and-atomic-reduction-inventory.json",
+      "rawSha256": "29d10e03f5a6215171cee6c6bebd9c2f8370621b16780a0d92bc3499a6f11f73",
+      "bytes": 565370,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "candidate-requires.json",
+      "localPath": "app/node_modules/.tmp/g17-german-whole-batch-preflight-20261109/candidate-requires.json",
+      "rawSha256": "12b64e1dd3031787ed3ecf6bea217a767770af14dd3395ceb55f3341c05062ab",
+      "bytes": 155493,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "artifact-manifest.json",
+      "localPath": "app/node_modules/.tmp/g17-standard-milestone-document-binding-20261109/artifact-manifest.json",
+      "rawSha256": "2c03f53d85dc2e106552e0c0f9c16aa62f85601a04802dcb38bd4ae75fe2d16d",
+      "bytes": 5316,
+      "availability": "local or archived; not a public download"
+    },
+    {
+      "description": "fixture-results.json",
+      "localPath": "app/node_modules/.tmp/g17-standard-milestone-document-binding-20261109/fixture-results.json",
+      "rawSha256": "649d46de692c9ffd9d2a388197a5cc0946d497106e485b764bda9059a2e2cfcb",
+      "bytes": 887,
+      "availability": "local or archived; not a public download"
+    }
+  ],
+  "limits": {
+    "realDatabaseOrNetworkHttpAcceptance": false,
+    "realDeckRecallDueStateAcceptance": false,
+    "publicPositiveFrontierListCoverage": false,
+    "humanTrialOrEffectivenessClaim": false,
+    "remoteCiForDataCommitClaimed": false,
+    "fullG17MilestoneComplete": false,
+    "otherWip83And84StartedOrModified": false,
+    "newTestsOrProductEditsByEvidenceWriter": false
+  }
+}
