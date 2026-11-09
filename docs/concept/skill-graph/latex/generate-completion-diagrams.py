@@ -319,8 +319,8 @@ def inherited_redundancy():
     assert ("g", "a") not in closure(vertices, removed)
     assert ("g", "a") in closure(vertices, recomputed)
     fig, ax = canvas(4.65)
-    boundary(ax, .2, 1.75, 5.6, 5.55, "1 · Vor der Kantenentfernung")
-    boundary(ax, 6.2, 1.75, 5.6, 5.55, "2 · Danach neu vererben")
+    boundary(ax, .2, 1.75, 5.6, 5.55, "1 · Übergangsgraph mit Kante e")
+    boundary(ax, 6.2, 1.75, 5.6, 5.55, "2 · Testgraph ohne e: neu vererben")
     for offset in (0, 6):
         for x, y, name in [(1.4, 5.65, "k"), (1.4, 3, "b"),
                            (4.55, 3, "a"), (4.55, 5.65, "g")]:
@@ -332,12 +332,12 @@ def inherited_redundancy():
         ax.text(2.95+offset, 2.55, "b → a geerbt", ha="center", fontsize=9, color=BLUE)
     arrow(ax, (4.55, 5.25), (4.55, 3.4), color=ORANGE)
     ax.text(4.94, 4.35, "e", fontsize=11, color=ORANGE, weight="bold")
-    ax.text(9.9, 4.35, "e entfernt", ha="left", fontsize=9, color=ORANGE)
-    ax.text(6, 1.17, "e = g → a ist redundant: Nach Entfernung bleibt der effektive Pfad g → b → a.",
+    ax.text(9.9, 4.35, "ohne e geprüft", ha="left", fontsize=9, color=ORANGE)
+    ax.text(6, 1.17, "e = g → a: Im hypothetischen Test ohne e bleibt der effektive Pfad g → b → a.",
             ha="center", fontsize=10)
-    ax.text(6, .62, "Nur die rohen R-Kanten zu prüfen würde diesen verbleibenden Pfad übersehen.",
+    ax.text(6, .62, "Redundanzdiagnose im Übergangsbestand; keine Löschfreigabe für die Atomkante.",
             ha="center", fontsize=9.5)
-    ax.text(6, .12, "Grau: contains · Blau: requires · Gestrichelt: geerbt · Orange: verfasste, zu entfernende Kante e",
+    ax.text(6, .12, "Grau: contains · Blau: requires · Gestrichelt: geerbt · Orange: untersuchte verfasste Kante e",
             ha="center", fontsize=8.6)
     return fig
 

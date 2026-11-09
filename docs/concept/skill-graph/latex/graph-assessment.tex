@@ -28,12 +28,13 @@ Integrationsanspruch erweitert die Kindverträge nicht rückwirkend.
 Eine Anzeige, ein temporärer Fokus oder die aktuell ausgewählten Planwurzeln
 bestimmen diese Zuordnung nicht neu.
 
-Seien $Q$ und $K$ die autoritativ bestimmten Prüfungs- beziehungsweise
-Memorierziele. In diesem Kapitel bezeichnet $K$ diesen pädagogischen Typ;
-die strukturellen Cluster aus dem Kernkapitel sind hier nicht gemeint.
-Dann gelten
+Seien $Q\subseteq A$ die autoritativ bestimmten Prüfungsziele und
+$A_{\mathrm{mem}}\subseteq A$ die Memorierziele. $K=G\setminus A$ bleibt
+die Menge der strukturellen Cluster. Für die eigenen geschützten Ziele gelten
 \[
- Q_U=\Own(U)\cap Q,\qquad K_U=\Own(U)\cap K,\qquad P_U=Q_U\cup K_U.
+ Q_U=\Own(U)\cap Q,\qquad
+ A_{\mathrm{mem},U}=\Own(U)\cap A_{\mathrm{mem}},\qquad
+ P_U=Q_U\cup A_{\mathrm{mem},U}.
 \]
 $P_U$ schützt \emph{alle} eigenen Prüfungs- und Memorierziele vor
 implizitem Bestehen. Ein Erfolg an einer anderen Prüfung ersetzt weder
@@ -46,8 +47,9 @@ Unterstützung außerhalb $T(U)$ vergrößert den Gesamtabschlussnenner nicht.
 Eine Kompetenz außerhalb $\Own(U)$ wird in diesem eigenen Vertrag nicht
 implizit anerkannt; für Ziele der Kinder gelten deren eigene Verträge.
 
-Für die folgenden Formeln heißt die vollständig atomar expandierte und
-vererbte Voraussetzungrelation kurz $R$. Sie umfasst auch versteckte und
+Die folgenden Formeln verwenden die vollständig atomar expandierte und
+vererbte Voraussetzungrelation $R_{\mathrm{at}}$ aus dem Kernkapitel.
+Sie umfasst auch versteckte und
 fachübergreifende Unterstützung. Alle Referenzen müssen auflösbar und die
 normalisierte Relation muss azyklisch sein. Die Prüfung der gesamten
 Voraussetzungshülle geschieht vor einer bloßen Anzeigeeinschränkung.
@@ -55,20 +57,28 @@ Voraussetzungshülle geschieht vor einer bloßen Anzeigeeinschränkung.
 \subsection{Transitive offene Nachfrage und implizite Menge}
 Mit der globalen ausdrücklichen Mastery-Menge $M=\{a\mid m(a)=1\}$ sei
 \begin{align}
- N_U&=\operatorname{Reach}_{R}^{*}(P_U\setminus M),\label{eq:needed}\\
+ N_U&=\operatorname{Reach}_{R_{\mathrm{at}}}^{*}(P_U\setminus M),\label{eq:needed}\\
  I_U&=\Own(U)\setminus(M\cup P_U\cup N_U).\label{eq:implicit}
 \end{align}
 Die reflexive Erreichbarkeit enthält die offenen Wurzeln selbst und
 \emph{alle} ihre transitiven Voraussetzungen. Die Traversierung stoppt
-\textbf{nicht} an einem gemeisterten Zwischenziel. Dadurch bleibt
+\textbf{nicht} an einem gemeisterten Zwischenziel oder an der Grenze
+von $\Own(U)$. Dadurch bleibt
 $I_U$ unverändert, wenn eine redundante Kante hinzugefügt oder für die
 vorgeschriebene transitive Minimalität wieder entfernt wird.
 Es gilt stets $I_U\cap M=\varnothing$ und $I_U\cap P_U=\varnothing$.
 
-Ein direkter Algorithmus besucht von den offenen geschützten Zielwurzeln
-aus jeden erreichbaren Knoten und jede Kante höchstens einmal. Er benötigt
-$O(|V_U|+|R_U|)$ für die vollständige Voraussetzungshülle. Eine explizite
-quadratische Speicherung der transitiven Hülle ist dafür nicht nötig.
+Für den Aufwand seien $V_U^{\mathrm{reach}}=
+\operatorname{Reach}_{R_{\mathrm{at}}}^{*}(P_U\setminus M)$ die erreichbaren
+atomaren Knoten und
+$E_U^{\mathrm{reach}}=\{(a,b)\in R_{\mathrm{at}}\mid
+a\in V_U^{\mathrm{reach}}\}$ deren ausgehende Voraussetzungskanten.
+Ein direkter Algorithmus besucht jeden solchen Knoten und jede solche Kante
+höchstens einmal. Einschließlich der Verarbeitung von $\Own(U)$ für die
+gesamte Menge $I_U$ benötigt er
+$O(|\Own(U)|+|V_U^{\mathrm{reach}}|+|E_U^{\mathrm{reach}}|)$ Schritte,
+global höchstens $O(|A|+|R_{\mathrm{at}}|)$. Eine explizite quadratische
+Speicherung der transitiven Hülle ist dafür nicht nötig.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/08-transitive-demand.png}
@@ -113,7 +123,8 @@ nicht nachträglich allein durch ein neues Diagramm oder eine Softwareänderung.
 
 \subsection{Globale Wirkung und dauerhafte Vertragsbindung}
 Die Menge $\mathcal U_{\mathrm{valid}}$ umfasst die für diese Person
-dauerhaft anwendbaren autoritativen Einheitsverträge, nicht beliebige
+an ihre jeweilige Revision gebundenen, dauerhaft anwendbaren autoritativen
+Einheitsverträge, nicht beliebige
 besuchte Ansichten oder sämtliche neuesten Inhaltsfassungen. Es gilt
 \[
  M_{\mathrm{eff}}=M\cup
@@ -164,7 +175,7 @@ ein gültiger eigener Anerkennungsvertrag kann damit seine gewöhnlichen
 Erwerbsziele vervollständigen. Der Abschluss der Kinder folgt daraus
 \textbf{nicht}. Eine eigene Syntheseprüfung der Eltern kann offen bleiben,
 während gewöhnliche Kindziele bereits global anerkannt sind. Umgekehrt
-ersetzt ihr Bestehen keine offene Q-/K-Pflicht eines Kindes.
+ersetzt ihr Bestehen keine offene Prüfungs- oder Memorierpflicht eines Kindes.
 
 Ein offenes eigenes Memorierziel verhindert den ganzen Einheitsabschluss,
 blockiert aber nicht die Ableitung einer anderen gewöhnlichen Kompetenz,
@@ -186,6 +197,14 @@ implizit global beherrscht. Der ausdrückliche Erfolg von Q1 bleibt dabei
 erhalten; es gibt hier keine weiteren geschützten Ziele.}
 \label{fig:shared-assessments}\end{figure}
 \FloatBarrier
+
+Der Vergleich mit Abbildung~\ref{fig:local-recognition} setzt bereits
+fachlich begründete und unabhängig gültige Einheitsverträge voraus:
+Eine später offene Prüfung eines anderen Vertrags nimmt eine dort schon
+belegte Anerkennung nicht zurück. Im selben Vertrag zählt dagegen der
+gesamte noch offene Bedarf. Daraus folgt keine Anweisung, Prüfungen oder
+Lerneinheiten für einen gewünschten Recheneffekt aufzuteilen oder neu
+anzuordnen.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth]{assets/graph-definition/10-protected-support.png}
