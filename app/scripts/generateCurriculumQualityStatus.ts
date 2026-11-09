@@ -1143,7 +1143,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
 ]
 
-const routeProfiles: RouteProfile[] = [
+export const routeProfiles: RouteProfile[] = [
   {
     profileId: 'canonical-math-sek1',
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
@@ -2708,7 +2708,7 @@ function examReleaseCoverageIssues(goal: LearningGoal): string[] {
   return issues
 }
 
-function evaluateRouteProfile(
+export function evaluateRouteProfile(
   landscape: SkillLandscape,
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
@@ -4243,23 +4243,42 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   if (includePrerequisiteOnly) {
     const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
     const sourceRoot = entry.goals.find((goal) => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+    const sourceRootByLandscapeId = new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : [])
     const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
       normalizedView.rootNodes,
       sourceGoalById,
-      new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : []),
+      sourceRootByLandscapeId,
     )
-    const addAtomicIfIncluded = (goalId: string) => {
+    const selectedStageRoleNodes: CompositionViewNode[] = []
+    const collectSelectedStageRoleNodes = (nodes: CompositionViewNode[], insideSelectedStage = false) => {
+      nodes.forEach((node) => {
+        if (node.kind === 'structure') {
+          const nodeStage = compositionStructureStage(node)
+          if (nodeStage && nodeStage !== compositionStage) return
+          collectSelectedStageRoleNodes(node.children, insideSelectedStage || nodeStage === compositionStage)
+        } else if (insideSelectedStage) {
+          selectedStageRoleNodes.push(node)
+        }
+      })
+    }
+    if (restrictToSingleStage) collectSelectedStageRoleNodes(normalizedView.rootNodes)
+    const selectedStagePrerequisiteOnlyGoalIds = collectCompositionProjectionRoleGoalIds(
+      selectedStageRoleNodes,
+      sourceGoalById,
+      sourceRootByLandscapeId,
+    ).prerequisiteOnlyGoalIds
+    const addAtomicIfIncluded = (goalId: string, resolvedSupportGoalIds: Set<string>) => {
       const goal = sourceGoalById.get(goalId)
       if (
         goal
         && (goal.contains?.length ?? 0) === 0
-        && prerequisiteOnlyGoalIds.has(goalId)
+        && resolvedSupportGoalIds.has(goalId)
         && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))
       ) {
         atomicGoalIds.add(goalId)
       }
     }
-    const addAtomicSubtree = (rootGoalId: string) => {
+    const addAtomicSubtree = (rootGoalId: string, resolvedSupportGoalIds: Set<string>) => {
       const stack = [rootGoalId]
       const seen = new Set<string>()
       while (stack.length > 0) {
@@ -4269,25 +4288,30 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
         const goal = sourceGoalById.get(goalId)
         if (!goal) continue
         if ((goal.contains?.length ?? 0) === 0) {
-          addAtomicIfIncluded(goalId)
+          addAtomicIfIncluded(goalId, resolvedSupportGoalIds)
         } else {
           stack.push(...(goal.contains ?? []))
         }
       }
     }
-    const collectPrerequisiteOnly = (nodes: CompositionViewNode[]) => {
+    const collectPrerequisiteOnly = (nodes: CompositionViewNode[], insideSelectedStage = false) => {
       nodes.forEach((node) => {
         if (node.kind === 'structure') {
           const nodeStage = compositionStructureStage(node)
           if (restrictToSingleStage && nodeStage && nodeStage !== compositionStage) return
-          collectPrerequisiteOnly(node.children)
+          collectPrerequisiteOnly(node.children, insideSelectedStage || (restrictToSingleStage && nodeStage === compositionStage))
           return
         }
         if (getCompositionProjectionRole(node) !== 'prerequisiteOnly') return
+        // Explicit stage-local support is independent of a target placement in another stage.
+        // Global support still obeys the roles resolved over the complete view.
+        const resolvedSupportGoalIds = insideSelectedStage
+          ? selectedStagePrerequisiteOnlyGoalIds
+          : prerequisiteOnlyGoalIds
         if (node.kind === 'canonicalSubtree') {
-          addAtomicSubtree(node.goalId)
+          addAtomicSubtree(node.goalId, resolvedSupportGoalIds)
         } else if (node.kind === 'goalEntry') {
-          addAtomicIfIncluded(node.goalId)
+          addAtomicIfIncluded(node.goalId, resolvedSupportGoalIds)
         }
       })
     }

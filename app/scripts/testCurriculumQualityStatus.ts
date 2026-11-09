@@ -90,6 +90,39 @@ try {
   assert.deepEqual(requiredOutsideTarget.goals.find((candidate) => candidate.id === 'lower')!.requires, ['upper'])
   assert.deepEqual([...closure.atomicGoalIds].filter((id) => !scoped.visibleGoalIds.has(id)), ['upper'],
     'a required outside-stage target stays a missing prerequisite, rather than becoming implicit support or route-complete')
+
+  const stageLocalSupport = (subtree: boolean): CompositionView => {
+    const candidate = view(true)
+    const subject = candidate.rootNodes[0]
+    if (subject.kind !== 'structure' || subject.children[0].kind !== 'structure') {
+      throw new Error('Expected fixture lower stage')
+    }
+    subject.children[0].children.push(subtree
+      ? { kind: 'canonicalSubtree', goalId: 'support-family', projectionRole: 'prerequisiteOnly' }
+      : { kind: 'goalEntry', goalId: 'upper', projectionRole: 'prerequisiteOnly' })
+    return candidate
+  }
+  for (const subtree of [false, true]) {
+    const candidate = stageLocalSupport(subtree)
+    const local = collect(candidate, requiredOutsideTarget)
+    assert.deepEqual([...local.targetGoalIds].sort(), ['lower'])
+    assert.deepEqual([...local.visibleGoalIds].sort(), ['lower', 'real-support', 'upper'],
+      'explicit selected-stage support survives a separate target placement in another stage')
+    assert.deepEqual([...closure.atomicGoalIds].filter((id) => !local.visibleGoalIds.has(id)), [],
+      'the existing required outside-stage goal is visible only when support is explicitly placed in this stage')
+  }
+  const sameStageTarget = stageLocalSupport(true)
+  // Both a direct target and a nearer target subtree must beat local inherited support.
+  for (const kind of ['goalEntry', 'canonicalSubtree'] as const) {
+    const candidate = structuredClone(sameStageTarget)
+    const subject = candidate.rootNodes[0]
+    if (subject.kind !== 'structure' || subject.children[0].kind !== 'structure') {
+      throw new Error('Expected fixture lower stage')
+    }
+    subject.children[0].children.push({ kind, goalId: 'upper' })
+    assert.equal(collect(candidate).targetGoalIds.has('upper'), true,
+      'same-stage target specificity must preserve a target despite inherited local support')
+  }
   console.log('Curriculum quality stage-role specificity: resolved support, strict authority and missing-prerequisite controls passed.')
 } finally {
   rmSync(fixture, { recursive: true, force: true })

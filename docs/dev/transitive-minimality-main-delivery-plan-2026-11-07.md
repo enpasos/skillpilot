@@ -17,20 +17,25 @@ Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert
 der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
 Vollständige TS-Prüfung und nativer Projektionsvergleich sind bestanden;
-der abschließende Backendlauf und die Remote-CI laufen noch. Der frische
-reguläre Meilensteinlauf ist beendet: Der Producer besteht, die unveränderte
-Untergrenze stoppt Physik bei M3 statt M7. Konkret meldet CQR-104 eine
-mehrdeutige Sek-I-Stufenautorität zwischen den BW- beziehungsweise BY-GK-/LK-
-Views. Die übrigen neun geschützten Fachstände erreichen ihre Untergrenzen.
-Die Rollenauflösung des Routenprüfers wird anhand dieses Gegenfalls repariert;
-es gibt keinen Untergrenzen- oder Report-Pass als Ersatz. Der PR ist
-konfliktfrei, aber noch nicht auf main.
+der abschließende Backendlauf und die Remote-CI laufen noch. Die letzten
+regulären Meilensteinläufe stoppen Physik an CQR-104 bei M3 statt M7; die
+übrigen neun geschützten Fachstände erreichen ihre Untergrenzen. Die echten
+Gegenfälle betreffen die Rollenauflösung des Routenprüfers: Allgemeine
+Supportreferenzen müssen spezifischere Zielzuordnungen beachten, ausdrücklich
+innerhalb einer Stufe platzierte Voraussetzungen dagegen erhalten bleiben.
+Beide Fälle sind korrigiert. Die tatsächliche vollständige CQR-104-Regel über
+35 Views und 80 Scopes sowie die bestehende Physik-Projektionssuite bestehen
+einschließlich der Negativfälle. Der nächste reguläre Producer mit
+unveränderten Floors steht noch aus; ein erfolgreicher Gesamtbericht wird
+nicht aus der gezielten Regelprüfung abgeleitet. Der PR ist konfliktfrei,
+aber noch nicht auf main.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
-gleich dem vollständig geprüften Headtree. Der eigene frische Main-Lauf ist
-getrennte Evidenz. Das harte Standard-G17-Gate und die endgültige Abnahme aller
-zehn geschützten Fächer bleiben offen.
+gleich dem vollständig geprüften Headtree. Der eigene frische
+[Main-Lauf](https://github.com/enpasos/skillpilot/actions/runs/42705727514)
+hat ebenfalls alle acht Hauptjobs bestanden. Das harte Standard-G17-Gate und
+die endgültige Abnahme aller zehn geschützten Fächer bleiben offen.
 
 Die folgenden Lieferpositionen bewahren die früheren Prüfstände als Historie.
 
