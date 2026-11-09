@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -267,6 +268,14 @@ class LearnerServiceCrossSubjectPilotTest {
         landscapeService = new LandscapeService(properties, objectMapper);
         goalMappingService = new GoalMappingService(properties, objectMapper);
         compositionViewService = new CompositionViewService(properties, objectMapper);
+    }
+
+    @AfterAll
+    static void releaseLandscapeServices() {
+        landscapeService = null;
+        goalMappingService = null;
+        objectMapper = null;
+        compositionViewService = null;
     }
 
     @BeforeEach

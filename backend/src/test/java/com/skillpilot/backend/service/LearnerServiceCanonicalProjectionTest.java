@@ -32,6 +32,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -227,6 +228,13 @@ class LearnerServiceCanonicalProjectionTest {
         properties.setDirectory(resolveCurriculaDir().toString());
         landscapeService = new LandscapeService(properties, objectMapper);
         goalMappingService = new GoalMappingService(properties, objectMapper);
+    }
+
+    @AfterAll
+    static void releaseLandscapeServices() {
+        landscapeService = null;
+        goalMappingService = null;
+        objectMapper = null;
     }
 
     @BeforeEach
