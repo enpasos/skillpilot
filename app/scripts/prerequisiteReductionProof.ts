@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // A comparison-only capability for certified prerequisite-preserving reductions.
 import { createHash } from 'node:crypto'
-import { lstatSync, readFileSync, readdirSync } from 'node:fs'
+import { lstatSync, readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
@@ -17,6 +17,7 @@ export const CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-cluster-ta
 type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
 type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
   | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT | typeof BATCHED_PREREQUISITE_REDUCTION_CONTRACT
+  | typeof APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -106,9 +107,18 @@ export interface BatchedPrerequisiteReductionRegistry extends Omit<ClusterTarget
   v5Checkpoint: { registryDigest: string; currentDocumentDigests: Array<{ path: string; currentDocumentDigest: string }> }
   batches: PrerequisiteReductionBatch[]
 }
+export const APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT = 'prerequisite-reduction-applicability-refresh-v7' as const
+export interface ApplicabilityRefreshPrerequisiteReductionRegistry
+  extends Pick<LegacyPrerequisiteReductionRegistry, 'schemaVersion' | 'auditScope' | 'catalogSources'> {
+  proofContract: typeof APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
+  parentRegistryPath: string
+  parentRegistryRawDigest: string
+  originalApplicability: Array<{ source: string; present: boolean; value: Record<string, unknown> | null }>
+}
 
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
   | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry | BatchedPrerequisiteReductionRegistry
+  | ApplicabilityRefreshPrerequisiteReductionRegistry
 type LoadedDocument = { file: string; path: string; document: Document }
 type VerifiedDocumentFrame = {
   currentDocuments: Document[]
@@ -155,6 +165,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT) return parseApplicabilityRefreshRegistry(value)
   if (object(value) && value.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return parseBatchedRegistry(value)
   if (object(value) && value.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return parseClusterTargetRegistry(value)
   if (object(value) && value.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return parseContinuedRegistry(value)
@@ -192,6 +203,30 @@ function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
     }
   }
   return value as unknown as PrerequisiteReductionRegistry
+}
+function parseApplicabilityRefreshRegistry(value: Record<string, unknown>): ApplicabilityRefreshPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'parentRegistryPath',
+    'parentRegistryRawDigest', 'originalApplicability'], 'applicability refresh registry')
+  const isDigest = (digest: unknown) => typeof digest === 'string' && /^sha256:[0-9a-f]{64}$/u.test(digest)
+  ensure(value.schemaVersion === 1 && value.auditScope === 'origin-source-landscape-closure',
+    'invalid applicability refresh contract')
+  ensure(nonempty(value.parentRegistryPath) && isDigest(value.parentRegistryRawDigest), 'invalid applicability refresh parent binding')
+  ensure(Array.isArray(value.catalogSources) && value.catalogSources.length > 0, 'empty refresh catalog sources')
+  for (const entry of value.catalogSources) {
+    fields(entry, ['path', 'landscapeId', 'baselineDocumentDigest', 'currentDocumentDigest'], 'refresh catalog source')
+    ensure(nonempty(entry.path) && nonempty(entry.landscapeId)
+      && isDigest(entry.baselineDocumentDigest) && isDigest(entry.currentDocumentDigest), 'invalid refresh catalog source')
+  }
+  ensure(Array.isArray(value.originalApplicability) && value.originalApplicability.length > 0, 'empty original applicability')
+  const sources = new Set<string>()
+  for (const entry of value.originalApplicability) {
+    fields(entry, ['source', 'present', 'value'], 'original applicability')
+    ensure(qualified(entry.source) && !sources.has(entry.source)
+      && (entry.present === false && entry.value === null || entry.present === true && object(entry.value)),
+    'invalid or duplicate original applicability')
+    sources.add(entry.source)
+  }
+  return value as unknown as ApplicabilityRefreshPrerequisiteReductionRegistry
 }
 function parseOrderedRegistry(value: Record<string, unknown>): OrderedPrerequisiteReductionRegistry {
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals',
@@ -817,9 +852,72 @@ async function compileApplicability(documents: Document[], loaded: LoadedDocumen
   }))).sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0))
 }
 
-async function verifyDocumentFrame(
-  registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[],
+async function verifyApplicabilityRefreshFrame(
+  registry: ApplicabilityRefreshPrerequisiteReductionRegistry, loaded: LoadedDocument[], repositoryRoot: string,
 ): Promise<VerifiedDocumentFrame> {
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const parentFile = repositoryPath(repositoryRoot, registry.parentRegistryPath)
+  ensure(relative(repositoryRoot, parentFile).split(sep).join('/') === registry.parentRegistryPath,
+    'applicability refresh parent path must be canonical and relative')
+  const readParent = () => {
+    ensure(lstatSync(parentFile).isFile(), 'applicability refresh parent must be a regular file')
+    ensure(realpathSync(parentFile) === resolve(realpathSync(repositoryRoot), registry.parentRegistryPath),
+      'applicability refresh parent path contains a symlink')
+    const bytes = readFileSync(parentFile)
+    ensure(`sha256:${createHash('sha256').update(bytes).digest('hex')}` === registry.parentRegistryRawDigest,
+      'applicability refresh parent raw digest differs')
+    return bytes
+  }
+  const parentBytes = readParent(), parentValue: unknown = JSON.parse(parentBytes.toString('utf8'))
+  ensure(object(parentValue) && parentValue.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT,
+    'applicability refresh requires a strict V6 parent')
+  const parent = parseBatchedRegistry(parentValue)
+  const bindings = (sources: LegacyPrerequisiteReductionRegistry['catalogSources']) => sources
+    .map(({ path, landscapeId, baselineDocumentDigest }) => ({ path, landscapeId, baselineDocumentDigest }))
+    .sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0)
+  ensure(stableJson(bindings(registry.catalogSources)) === stableJson(bindings(parent.catalogSources)),
+    'applicability refresh parent catalog bindings differ')
+
+  const restoredDocuments = structuredClone(currentDocuments), restoredGoals = goalIndex(restoredDocuments)
+  for (const original of registry.originalApplicability) {
+    const goal = restoredGoals.get(original.source)
+    ensure(goal, `unknown original applicability source: ${original.source}`)
+    ensure(Object.hasOwn(goal, 'applicability') !== original.present
+      || original.present && stableJson(goal.applicability) !== stableJson(original.value),
+    `no-op applicability refresh: ${original.source}`)
+    if (original.present) goal.applicability = structuredClone(original.value)
+    else delete goal.applicability
+  }
+  // Only these cache fields are restored. The unchanged V6 verifier binds every
+  // other raw field and all historical checkpoints, witnesses and compiler values.
+  const parentFrame = await verifyDocumentFrame(parent, loaded.map((entry, index) => ({
+    ...entry, document: restoredDocuments[index],
+  })))
+  ensure(readParent().equals(parentBytes), 'applicability refresh parent changed during verification')
+  const currentApplicability = await compileApplicability(currentDocuments, loaded)
+  ensure(readParent().equals(parentBytes), 'applicability refresh parent changed during compilation')
+  ensure(currentApplicability === parentFrame.baselineApplicability, 'compiled applicability changed after cache refresh')
+  const compiled = new Map<string, Record<string, unknown>>((JSON.parse(currentApplicability) as Array<{
+    key: string; compiledApplicability: Record<string, unknown>
+  }>).map(({ key, compiledApplicability }) => [key, compiledApplicability]))
+  const expectedDocuments = structuredClone(parentFrame.currentDocuments), expectedGoals = goalIndex(expectedDocuments)
+  for (const original of registry.originalApplicability) {
+    const goal = expectedGoals.get(original.source)!, value = compiled.get(original.source)
+    ensure(object(value), `missing compiled applicability: ${original.source}`)
+    if (Object.keys(value).length > 0) goal.applicability = structuredClone(value)
+    else delete goal.applicability
+  }
+  ensure(stableJson(expectedDocuments) === stableJson(currentDocuments),
+    'applicability refresh differs from the complete compiled cache-only frame')
+  return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
+    baselineApplicability: parentFrame.baselineApplicability, affectedSources: parentFrame.affectedSources }
+}
+
+async function verifyDocumentFrame(
+  registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[], repositoryRoot = REPOSITORY_ROOT,
+): Promise<VerifiedDocumentFrame> {
+  if (registry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT)
+    return verifyApplicabilityRefreshFrame(registry, loaded, repositoryRoot)
   if (registry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return verifyBatchedFrame(registry, loaded)
   if (registry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return verifyClusterTargetFrame(registry, loaded)
   if (registry.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return verifyContinuedFrame(registry, loaded)
@@ -915,7 +1013,7 @@ export async function loadVerifiedPrerequisiteReductionContext({
     file, path: relative(repositoryRoot, file).split(sep).join('/'),
     document: JSON.parse(readFileSync(file, 'utf8')) as Document,
   }))
-  const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded)
+  const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded, repositoryRoot)
   const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
   deepFreeze(currentDocuments)
   deepFreeze(baselineDocuments)

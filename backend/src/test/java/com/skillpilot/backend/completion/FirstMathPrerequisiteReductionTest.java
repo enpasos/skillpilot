@@ -33,11 +33,14 @@ import com.skillpilot.backend.service.LearnerService;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
+import java.security.MessageDigest;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +87,7 @@ class FirstMathPrerequisiteReductionTest {
     private static final String V4 = "continued-atomic-prerequisite-reduction-v4";
     private static final String V5 = "atomic-cluster-target-normalization-v5";
     private static final String V6 = "append-only-prerequisite-reduction-batches-v6";
+    private static final String V7 = "prerequisite-reduction-applicability-refresh-v7";
     private static final Set<String> MATH_EXAMS = Set.of("464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
             "9ad83149-3cb7-5b87-a617-3eae3715a50c");
     private static final Set<String> UNEXPOSED_CANONICAL_ATOMIC_BASES = Set.of(
@@ -124,8 +128,20 @@ class FirstMathPrerequisiteReductionTest {
     /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
     @Test
     void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
-        JsonNode declared = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        assertThat(declared.path("proofContract").asText()).as("active V5 or V6 with independently reconstructed V5 prefix").isIn(V5, V6);
+        JsonNode declared = readNativeRegistryDeclaration();
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        if (V7.equals(active.path("proofContract").asText())) {
+            ObjectNode badParentDigest = active.deepCopy();
+            badParentDigest.put("parentRegistryRawDigest", "sha256:" + "0".repeat(64));
+            assertThatThrownBy(() -> readReductionRegistry(badParentDigest)).isInstanceOf(AssertionError.class);
+            ObjectNode missingCacheSnapshot = active.deepCopy();
+            ((com.fasterxml.jackson.databind.node.ArrayNode) missingCacheSnapshot.path("originalApplicability")).remove(0);
+            assertThatThrownBy(() -> readReductionRegistry(missingCacheSnapshot)).isInstanceOf(AssertionError.class);
+            ObjectNode wrongCachePresence = active.deepCopy();
+            ((ObjectNode) wrongCachePresence.path("originalApplicability").get(0)).put("present", false).putNull("value");
+            assertThatThrownBy(() -> readReductionRegistry(wrongCachePresence)).isInstanceOf(AssertionError.class);
+        }
+        assertThat(declared.path("proofContract").asText()).as("certified V5 or V6 with independently reconstructed V5 prefix").isIn(V5, V6);
         ReductionRegistry registry = readReductionRegistry(declared);
         JsonNode current = readFrameDocument(MATH_SOURCE, registry.currentDocuments());
         List<ChangedSource> changes = registry.changesByFile().get(MATH_SOURCE);
@@ -722,11 +738,11 @@ class FirstMathPrerequisiteReductionTest {
                 germanCompletionPairs, germanPolicyPairs, germanMasteredSourcePairs);
     }
 
-    /** Separate final-V6 evidence; the three existing tests retain exact V5-prefix coverage. */
+    /** Certified V6 end-frame evidence; active V7 restores its historical pre-cache frame explicitly. */
     @Test
     void batchedGermanSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
-        JsonNode declared = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        assertThat(declared.path("proofContract").asText()).as("this final-current regression requires actual V6 activation").isEqualTo(V6);
+        JsonNode declared = readNativeRegistryDeclaration();
+        assertThat(declared.path("proofContract").asText()).as("this native regression requires the certified V6 end frame").isEqualTo(V6);
         BatchNativeFrames frames = readBatchedReductionRegistry(declared);
         ReductionRegistry prefix = frames.legacy(), current = frames.current();
         assertThat(prefix.changedSources()).as("the independently checked V5 inventory remains separate").hasSize(720);
@@ -872,7 +888,7 @@ class FirstMathPrerequisiteReductionTest {
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
         assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
-        System.out.printf("GERMAN_BATCH_FINAL_V6_NATIVE_COVERAGE baseline=exact-V5-prefix current=actual-final-V6 prefixSources=%d registeredSources=%d germanBatchSources=%d newGermanSources=17 discoveredConfigurations=99 completedScopes=%d incompleteScopes=%d incomplete409Responses=%d contextReached=%s runtimeReachedUnion=%s rolePairs=%d frontierPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+        System.out.printf("GERMAN_BATCH_FINAL_V6_NATIVE_COVERAGE baseline=exact-V5-prefix current=certified-V6-end-frame prefixSources=%d registeredSources=%d germanBatchSources=%d newGermanSources=17 discoveredConfigurations=99 completedScopes=%d incompleteScopes=%d incomplete409Responses=%d contextReached=%s runtimeReachedUnion=%s rolePairs=%d frontierPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
                 prefix.changedSources().size(), current.changedSources().size(), germanSources.size(), completedScopes, incompleteScopes,
                 incomplete409Responses, contextReached, runtimeReachedUnion, rolePairs, frontierPairs, positiveControls, negativeControls, invalidRolePairs);
     }
@@ -1035,12 +1051,19 @@ class FirstMathPrerequisiteReductionTest {
             Set<String> batchSourceIds) { }
 
     private static ReductionRegistry readReductionRegistry() throws IOException {
-        return readReductionRegistry(MAPPER.readTree(REDUCTION_REGISTRY.toFile()));
+        return readReductionRegistry(readNativeRegistryDeclaration());
     }
 
     private static ReductionRegistry readReductionRegistry(JsonNode registry) throws IOException {
+        if (V7.equals(registry.path("proofContract").asText())) {
+            NativeV6Frame frame = readApplicabilityRefreshFrame(registry);
+            return readBatchedReductionRegistry(frame.registry(), frame.documents()).legacy();
+        }
         if (V6.equals(registry.path("proofContract").asText())) {
-            System.out.println("REGISTERED_NATIVE_FRAME active=V6 tested=exact-reconstructed-V5-prefix finalV6Coverage=false");
+            boolean activeRefresh = V7.equals(MAPPER.readTree(REDUCTION_REGISTRY.toFile()).path("proofContract").asText());
+            System.out.println(activeRefresh
+                    ? "REGISTERED_NATIVE_FRAME active=V7 tested=exact-reconstructed-V5-prefix via=historical-V6-precache-frame finalV7Coverage=false"
+                    : "REGISTERED_NATIVE_FRAME active=V6 tested=exact-reconstructed-V5-prefix finalV6Coverage=false");
             return readBatchedReductionRegistry(registry).legacy();
         }
         return readReductionRegistry(registry, Map.of());
@@ -1396,7 +1419,109 @@ class FirstMathPrerequisiteReductionTest {
     /** Native reader boundary only: Node remains the sequential proof/auditor authority. */
     private record BatchNativeFrames(ReductionRegistry legacy, ReductionRegistry current) { }
 
+    private record NativeV6Frame(JsonNode registry, Map<Path, JsonNode> documents) { }
+
+    private static JsonNode readNativeRegistryDeclaration() throws IOException {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        return V7.equals(active.path("proofContract").asText())
+                ? readApplicabilityRefreshFrame(active).registry() : active;
+    }
+
+    /** Bind only the raw cache boundary; the actual TS compiler certifies the derived cache values. */
+    private static NativeV6Frame readApplicabilityRefreshFrame(JsonNode registry) throws IOException {
+        assertFields(registry, "V7 cache refresh", "schemaVersion", "proofContract", "auditScope", "catalogSources",
+                "parentRegistryPath", "parentRegistryRawDigest", "originalApplicability");
+        assertThat(registry.path("schemaVersion").isIntegralNumber()).isTrue();
+        assertThat(registry.path("schemaVersion").asInt()).isEqualTo(1);
+        assertThat(registry.path("proofContract").asText()).isEqualTo(V7);
+        assertThat(registry.path("auditScope").asText()).isEqualTo("origin-source-landscape-closure");
+        assertThat(registry.path("parentRegistryPath").isTextual()).isTrue();
+        String parentPath = registry.path("parentRegistryPath").asText();
+        assertThat(parentPath).startsWith("curricula/DE/Gymnasium/provenance/");
+        Path parentFile = exactRegularRepositoryFile(parentPath);
+        byte[] parentBytes = Files.readAllBytes(parentFile);
+        assertThat(registry.path("parentRegistryRawDigest").asText()).matches("sha256:[0-9a-f]{64}");
+        assertThat(rawByteHash(parentBytes)).as("byte-identical historical V6 parent")
+                .isEqualTo(registry.path("parentRegistryRawDigest").asText());
+        JsonNode parent = MAPPER.readTree(parentBytes);
+        assertThat(parent.path("proofContract").asText()).as("V7 accepts only a strict V6 parent, never recursion").isEqualTo(V6);
+        assertThat(parent.path("catalogSources").isArray()).isTrue();
+        Map<String, JsonNode> parentBindings = new LinkedHashMap<>();
+        for (JsonNode source : parent.path("catalogSources")) {
+            assertFields(source, "parent catalog source", "path", "landscapeId", "baselineDocumentDigest", "currentDocumentDigest");
+            assertThat(parentBindings.putIfAbsent(source.path("path").asText(), source)).isNull();
+        }
+        assertThat(parentBindings).hasSize(21);
+        assertThat(registry.path("catalogSources").isArray()).isTrue();
+        Map<Path, JsonNode> currentDocuments = new LinkedHashMap<>();
+        for (JsonNode source : registry.path("catalogSources")) {
+            assertFields(source, "V7 catalog source", "path", "landscapeId", "baselineDocumentDigest", "currentDocumentDigest");
+            String relative = source.path("path").asText();
+            assertThat(relative).startsWith("curricula/DE/Gymnasium/canonical/");
+            JsonNode binding = parentBindings.get(relative);
+            assertThat(binding).as("same full V6/V7 catalog path %s", relative).isNotNull();
+            assertThat(source.path("landscapeId")).isEqualTo(binding.path("landscapeId"));
+            assertThat(source.path("baselineDocumentDigest")).isEqualTo(binding.path("baselineDocumentDigest"));
+            Path file = exactRegularRepositoryFile(relative);
+            JsonNode document = MAPPER.readTree(file.toFile());
+            assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
+            assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual V7 full document " + relative);
+            assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
+        }
+        assertThat(currentDocuments).hasSize(parentBindings.size());
+        Map<Path, JsonNode> restoredDocuments = mutableDocuments(currentDocuments);
+        Map<String, Map<String, JsonNode>> restoredGoals = frameGoals(restoredDocuments);
+        Map<String, Map<String, JsonNode>> currentGoals = frameGoals(currentDocuments);
+        assertThat(registry.path("originalApplicability").isArray()).isTrue();
+        assertThat(registry.path("originalApplicability")).as("the reviewed 19 Physics, 7 Chemistry and 1 Informatics caches").hasSize(27);
+        Set<String> sources = new TreeSet<>();
+        for (JsonNode original : registry.path("originalApplicability")) {
+            assertFields(original, "original applicability", "source", "present", "value");
+            String source = original.path("source").asText();
+            assertThat(sources.add(source)).as("one cache snapshot per source %s", source).isTrue();
+            assertThat(original.path("present").isBoolean()).isTrue();
+            boolean present = original.path("present").asBoolean();
+            assertThat(present ? original.path("value").isObject() : original.path("value").isNull()).isTrue();
+            ObjectNode goal = (ObjectNode) registeredGoal(restoredGoals, source);
+            JsonNode current = registeredGoal(currentGoals, source);
+            assertThat(current.has("applicability") == present
+                    && (!present || original.path("value").equals(current.get("applicability"))))
+                    .as("cache snapshot must describe a real change %s", source).isFalse();
+            if (present) goal.set("applicability", original.path("value").deepCopy());
+            else goal.remove("applicability");
+        }
+        for (var entry : restoredDocuments.entrySet()) {
+            String relative = REPOSITORY.relativize(entry.getKey()).toString().replace(File.separatorChar, '/');
+            assertRawDocumentDigest(entry.getValue(), parentBindings.get(relative).path("currentDocumentDigest").asText(),
+                    "historical V6 pre-cache full document " + relative);
+        }
+        assertThat(Files.readAllBytes(parentFile)).as("historical parent bytes remain unchanged").containsExactly(parentBytes);
+        System.out.printf("REGISTERED_NATIVE_FRAME active=V7 tested=historical-V6-precache-frame finalV7Coverage=false cacheSources=%d derivedCacheVerification=node-only%n", sources.size());
+        return new NativeV6Frame(parent, immutableDocuments(restoredDocuments));
+    }
+
+    private static Path exactRegularRepositoryFile(String relative) throws IOException {
+        Path file = REPOSITORY.resolve(relative).toAbsolutePath().normalize();
+        assertThat(file.startsWith(REPOSITORY)).isTrue();
+        assertThat(REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/')).isEqualTo(relative);
+        assertThat(Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS)).as("regular native frame file %s", relative).isTrue();
+        assertThat(file.toRealPath()).as("no native frame aliases %s", relative).isEqualTo(file);
+        return file;
+    }
+
+    private static String rawByteHash(byte[] bytes) {
+        try { return "sha256:" + HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes)); }
+        catch (java.security.NoSuchAlgorithmException error) { throw new IllegalStateException(error); }
+    }
+
     private static BatchNativeFrames readBatchedReductionRegistry(JsonNode registry) throws IOException {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        Map<Path, JsonNode> documents = V7.equals(active.path("proofContract").asText())
+                ? readApplicabilityRefreshFrame(active).documents() : Map.of();
+        return readBatchedReductionRegistry(registry, documents);
+    }
+
+    private static BatchNativeFrames readBatchedReductionRegistry(JsonNode registry, Map<Path, JsonNode> documents) throws IOException {
         assertFields(registry, "V6 registry", "schemaVersion", "proofContract", "auditScope", "catalogSources",
                 "originalRequires", "removals", "v2Checkpoint", "suffixOriginalRequires", "suffix", "v3Checkpoint",
                 "tailOriginalRequires", "atomicRemovals", "witnessContinuations", "v4Checkpoint",
@@ -1415,7 +1540,7 @@ class FirstMathPrerequisiteReductionTest {
             Path file = REPOSITORY.resolve(relative).toAbsolutePath().normalize();
             assertThat(file.startsWith(REPOSITORY)).isTrue();
             assertThat(REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/')).isEqualTo(relative);
-            JsonNode document = MAPPER.readTree(file.toFile());
+            JsonNode document = readFrameDocument(file, documents);
             assertThat(document.path("landscapeId").asText()).isEqualTo(source.path("landscapeId").asText());
             assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "V6 final document " + relative);
             assertThat(finalDocuments.putIfAbsent(file, document)).isNull();

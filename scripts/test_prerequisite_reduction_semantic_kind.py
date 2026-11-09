@@ -638,7 +638,8 @@ class SemanticKindReductionTest(unittest.TestCase):
                 self.registry.rmdir() if kind == "directory" else self.registry.unlink()
 
     def test_full_snapshot_covers_fields_outside_fingerprint(self):
-        for field, value in (("examples", ["changed"]), ("resourceLinks", [{"url": "changed"}])):
+        for field, value in (("examples", ["changed"]), ("resourceLinks", [{"url": "changed"}]),
+                             ("applicability", {"jurisdiction": ["DE-BY"]})):
             with self.subTest(field=field):
                 original = copy.deepcopy(self.document)
                 self.document["goals"][0][field] = value
@@ -664,6 +665,7 @@ class SemanticKindReductionTest(unittest.TestCase):
             "unknown-proof-contract": at(["proof", "proofContract"], "effective-prerequisite-reduction-v2"),
             "nearby-cluster-target-contract": at(["proof", "proofContract"], "atomic-cluster-target-normalization-v6"),
             "unknown-future-batch-contract": at(["proof", "proofContract"], "append-only-prerequisite-reduction-batches-v7"),
+            "nearby-refresh-contract": at(["proof", "proofContract"], "derived-applicability-cache-refresh-v7"),
             "proof-mode": at(["proof", "mode"], "current-only-comparison"),
             "proof-scope": at(["proof", "auditScope"], "source-only"),
             "registry-path": at(["proof", "registryPath"], "elsewhere.json"),
@@ -682,7 +684,8 @@ class SemanticKindReductionTest(unittest.TestCase):
             "unqualified-affected-goal": at(["proof", "affectedGoalIds"], ["q"]),
             "extra-field": at(["unverified"], True),
         }
-        for contract in (bridge.PROOF_CONTRACT, bridge.APPEND_ONLY_PROOF_CONTRACT):
+        for contract in (bridge.PROOF_CONTRACT, bridge.APPEND_ONLY_PROOF_CONTRACT,
+                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
             self.receipt["proof"]["proofContract"] = contract
             for name, mutate in cases.items():
                 with self.subTest(contract=contract, name=name):
@@ -693,7 +696,7 @@ class SemanticKindReductionTest(unittest.TestCase):
                             self.load()
         for contract in (bridge.PROOF_CONTRACT, bridge.CLUSTER_PROOF_CONTRACT, bridge.ORDERED_PROOF_CONTRACT,
                          bridge.CONTINUED_PROOF_CONTRACT, bridge.CLUSTER_TARGET_PROOF_CONTRACT,
-                         bridge.APPEND_ONLY_PROOF_CONTRACT):
+                         bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()):
@@ -703,18 +706,20 @@ class SemanticKindReductionTest(unittest.TestCase):
 
     def test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback(self):
         self.assertEqual(bridge.NODE_VERIFIER_TIMEOUT_SECONDS, 600)
-        self.receipt["proof"]["proofContract"] = "append-only-prerequisite-reduction-batches-v6"
-        with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:
-            self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
-        run.assert_called_once_with(
-            ["node", "--import", "tsx", "scripts/verifyPrerequisiteReductionSemanticKindBindings.ts",
-             "--canonical-source", SOURCE, "--repository-root", str(self.root)],
-            cwd=bridge.SOFTWARE_ROOT / "app", capture_output=True, timeout=600, check=False,
-        )
-        with patch.object(bridge.subprocess, "run", side_effect=subprocess.TimeoutExpired("node", 600)) as run:
-            with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "binding failed"):
-                self.load()
-        self.assertEqual(run.call_count, 1)
+        for contract in (bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
+            with self.subTest(contract=contract):
+                self.receipt["proof"]["proofContract"] = contract
+                with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:
+                    self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
+                run.assert_called_once_with(
+                    ["node", "--import", "tsx", "scripts/verifyPrerequisiteReductionSemanticKindBindings.ts",
+                     "--canonical-source", SOURCE, "--repository-root", str(self.root)],
+                    cwd=bridge.SOFTWARE_ROOT / "app", capture_output=True, timeout=600, check=False,
+                )
+                with patch.object(bridge.subprocess, "run", side_effect=subprocess.TimeoutExpired("node", 600)) as run:
+                    with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "binding failed"):
+                        self.load()
+                self.assertEqual(run.call_count, 1)
 
     def test_source_and_registry_cannot_change_during_verification(self):
         for target in (self.source, self.registry):
