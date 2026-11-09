@@ -12,12 +12,25 @@ type Origin = { source: string; prerequisite: string }
 export type MinimalityFinding = Origin & { witness: string[]; supportingOrigins: Origin[] }
 // Unicode code-point order is independent of the process/host locale.
 const compareKeys = (left: string, right: string): number => {
-  const a = Array.from(left), b = Array.from(right)
-  for (let i = 0; i < Math.min(a.length, b.length); i++) {
-    const delta = a[i].codePointAt(0)! - b[i].codePointAt(0)!
+  let a = 0, b = 0
+  while (a < left.length && b < right.length) {
+    const leftPoint = left.codePointAt(a)!, rightPoint = right.codePointAt(b)!
+    const delta = leftPoint - rightPoint
     if (delta) return delta
+    a += leftPoint > 0xFFFF ? 2 : 1
+    b += rightPoint > 0xFFFF ? 2 : 1
   }
-  return a.length - b.length
+  // Equal prefixes retain the former numeric code-point length difference.
+  let remaining = 0
+  while (a < left.length) {
+    a += left.codePointAt(a)! > 0xFFFF ? 2 : 1
+    remaining++
+  }
+  while (b < right.length) {
+    b += right.codePointAt(b)! > 0xFFFF ? 2 : 1
+    remaining--
+  }
+  return remaining
 }
 const sorted = (items: Iterable<string>) => [...new Set(items)].sort(compareKeys)
 function ensure(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(message) }
@@ -146,7 +159,8 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
       if (incoming.get(child) === 0) ready.push(child)
     }
   }
-  const sources = (key: string): string[] => sorted(sourceSets.get(key)!)
+  const orderedSources = new Map([...sourceSets].map(([key, origins]) => [key, sorted(origins)]))
+  const sources = (key: string): string[] => orderedSources.get(key)!
   const origins = ordered.flatMap((n) => n.requires.map((p) => ({ source: n.key, prerequisite: p })))
   // Fixed C fixes sources(g). Omitting the authored pair in every contribution
   // exactly recomputes effective(C, R\{edge}), including all inherited copies.

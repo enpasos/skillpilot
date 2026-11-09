@@ -89,11 +89,13 @@ assert.deepEqual(auditTransitiveMinimality([
 ], ['L']).landscapes, ['L', 'X'])
 
 // Catalog, goal and reference permutations leave counts, proof paths and origin
-// choices unchanged. Code-point ordering includes a non-BMP identifier.
+// choices unchanged. Code-point ordering includes BMP/non-BMP prefixes and
+// unpaired surrogates, which advance by one UTF-16 unit rather than two.
 const deterministic: AuditLandscape[] = [
   { landscapeId: 'L', goals: [
     { id: 'q', requires: ['F:b', 'a', 'F:c'] }, { id: 'a' },
-    ...['𐀀', '\uE000', 'ä', 'Z'].map((id) => ({ id, requires: ['q', 'a'] })),
+    ...['𐀀a', '\uD800a', '\uDC00', 'Za', '𐀀', '\uE000', '\uDC00a', 'äa', '\uD800', 'ä', 'Z']
+      .map((id) => ({ id, requires: ['q', 'a'] })),
   ] },
   { landscapeId: 'F', goals: [
     { id: 'parent', contains: ['b', 'c'], requires: ['L:a'] },
@@ -101,7 +103,10 @@ const deterministic: AuditLandscape[] = [
   ] },
 ]
 const stable = auditTransitiveMinimality(deterministic, ['L'])
-assert.deepEqual(stable.findings.map((finding) => finding.source), ['L:Z', 'L:q', 'L:ä', 'L:\uE000', 'L:𐀀'])
+assert.deepEqual(stable.findings.map((finding) => finding.source), [
+  'L:Z', 'L:Za', 'L:q', 'L:ä', 'L:äa', 'L:\uD800', 'L:\uD800a',
+  'L:\uDC00', 'L:\uDC00a', 'L:\uE000', 'L:𐀀', 'L:𐀀a',
+])
 assert.deepEqual(auditTransitiveMinimality(deterministic.slice().reverse().map((landscape) => ({
   ...landscape, goals: landscape.goals.slice().reverse().map((goal) => ({
     ...goal, contains: goal.contains?.slice().reverse(), requires: goal.requires?.slice().reverse(),
