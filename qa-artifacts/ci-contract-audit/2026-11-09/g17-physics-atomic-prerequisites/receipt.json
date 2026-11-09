@@ -191,5 +191,28 @@
       "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ],
-  "publicDownloadClaim": false
+  "publicDownloadClaim": false,
+  "currentProductStrictG17Audit": {
+    "recordedAfterCheckpoint": "c076b599d4a1ac080ce10a1aa3b2c3cf1e50b891",
+    "command": [
+      "/home/enpasos/.nvm/versions/node/v20.20.2/bin/node",
+      "--import",
+      "tsx",
+      "scripts/auditTransitiveMinimality.ts",
+      "--check",
+      "--root",
+      "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "--output",
+      "/mnt/e/skillpilot-g17-physics-current-audit-20261109/report.json"
+    ],
+    "exitCode": 0,
+    "seconds": 1.017,
+    "selection": "Physics root plus resolved foreign/inheritance scope, full21document reference catalog",
+    "nodeCount": 1041,
+    "authoredRequiresCount": 1722,
+    "minimalityFindingCount": 0,
+    "report": "current-physics-g17-audit.json",
+    "reportSha256": "31d6e2a5731f1bcc79ab964b4915b78c36b4682fe6626a8bbaffa2cf1d3299e6",
+    "standardMilestoneGateAlreadyIntegrated": false
+  }
 }

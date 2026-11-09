@@ -36,3 +36,11 @@ nativer Physiklauf, vollständige Live-TS-Prüfkette, frisches CQR/Floors und CI
 bleiben zum Erfassungszeitpunkt offen. Gesamt-G17 oder Host-/Lernwirksamkeits-
 Akzeptanz wird damit nicht behauptet. Die lokalen E:-Pfade sind keine
 öffentlichen Downloads.
+
+Der anschließende **tatsächliche Produktaufruf** des unveränderten Auditors
+`--check --root 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a` bestand in **1,017 s**:
+1.041 Ziele, 1.722 Ursprungskanten, **null Minimalitätsbefunde**. Der
+[unveränderte CLI-Bericht](current-physics-g17-audit.json) bindet alle21
+Referenzdokumente und weist die explizite Physik-/Fremd-/Vererbungsscope aus.
+Dies ist noch keine Integration in die Standard-Meilensteinberechnung;
+Native, ganze TS-Kette, CQR/Floors und Remote-CI bleiben getrennt offen.
