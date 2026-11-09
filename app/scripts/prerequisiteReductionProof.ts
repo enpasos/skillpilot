@@ -5,7 +5,7 @@ import { lstatSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
-import { auditTransitiveMinimality, type AuditLandscape } from './auditTransitiveMinimality'
+import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, type AuditLandscape } from './auditTransitiveMinimality'
 
 export const PREREQUISITE_REDUCTION_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json'
@@ -548,11 +548,12 @@ function removePrerequisite(
   ensure(!removed.has(pair), `duplicate removal ${pair}`)
   removed.add(pair)
   // Retain the auditor's exact source-closure validity and finding checks.
-  const audit = auditTransitiveMinimality(documents as AuditLandscape[], [source.split(':')[0]])
+  const finding = 'witness' in operation
+    ? auditTransitiveMinimalityOrigin(documents as AuditLandscape[], [source.split(':')[0]], { source, prerequisite })
+    : validateTransitiveMinimalityScope(documents as AuditLandscape[], [source.split(':')[0]])
   if ('witness' in operation) {
     const { witness } = operation
     ensure(witness[0] === source && witness.at(-1) === prerequisite, `witness endpoints differ: ${pair}`)
-    const finding = audit.findings.find((entry) => entry.source === source && entry.prerequisite === prerequisite)
     ensure(finding && stableJson(finding.witness) === stableJson(witness), `no matching concrete auditor finding: ${pair}`)
     requireDirectWitness(witness, goals)
     ensure(finding.supportingOrigins.every((origin, index) =>
@@ -782,7 +783,7 @@ async function verifyClusterTargetFrame(
   const leaves = canonicalClusterLeaves(cut.prerequisite, replayGoals)
   requireUniqueClusterTarget(cut.source, cut.prerequisite, replayGoals)
   const roots = [cut.source.split(':')[0]]
-  auditTransitiveMinimality(replayDocuments as AuditLandscape[], roots)
+  validateTransitiveMinimalityScope(replayDocuments as AuditLandscape[], roots)
   for (const addition of clusterTargetSuffix.slice(0, -1)) {
     materializeClusterTargetLeaf(addition as AtomicPrerequisiteMaterialization, cut, leaves, replayGoals)
   }
@@ -792,7 +793,7 @@ async function verifyClusterTargetFrame(
   goal.requires = before.filter(raw => resolveReference(raw, cut.source, replayGoals) !== cut.prerequisite)
   ensure(goal.requires.length === before.length - 1, 'cluster-target cut did not remove exactly one authored reference')
   requireDirectClusterTargetLeaves(cut.source, leaves, replayGoals)
-  auditTransitiveMinimality(replayDocuments as AuditLandscape[], roots)
+  validateTransitiveMinimalityScope(replayDocuments as AuditLandscape[], roots)
   // No historical witness receives a skip: all V4, V3 and continued V2
   // positions remain literal under the already bound continuation.
   parent.atomicRemovals.forEach(operation => requireDirectWitness(operation.witness, replayGoals))
@@ -878,7 +879,7 @@ async function verifyDocumentFrame(
         // Cluster-target expansion can expose an atomic cycle that the old
         // goal-node relation did not contain. Retain the existing validity gate;
         // ordinary redundancy findings are allowed during materialization.
-        auditTransitiveMinimality(replayDocuments as AuditLandscape[], [operation.source.split(':')[0]])
+        validateTransitiveMinimalityScope(replayDocuments as AuditLandscape[], [operation.source.split(':')[0]])
       } else removePrerequisite(operation, replayDocuments, replayGoals, removed)
     }
     // A future atomic-reduction contract needs explicit witness continuation.
@@ -1278,8 +1279,7 @@ function removeBatchedAtomic(
   requireUniqueAuthoredBatchEdge(source, prerequisite, goals)
   ensure(witness[0] === source && witness.at(-1) === prerequisite, 'batch atomic witness endpoints differ')
   requireLiteralCanonicalPath(witness, goals)
-  const audit = auditTransitiveMinimality(documents as AuditLandscape[], [source.split(':')[0]])
-  const finding = audit.findings.find(item => item.source === source && item.prerequisite === prerequisite)
+  const finding = auditTransitiveMinimalityOrigin(documents as AuditLandscape[], [source.split(':')[0]], { source, prerequisite })
   ensure(finding && stableJson(finding.witness) === stableJson(witness)
     && finding.supportingOrigins.length === witness.length - 1
     && finding.supportingOrigins.every((origin, edge) => origin.source === witness[edge] && origin.prerequisite === witness[edge + 1]),
@@ -1297,7 +1297,7 @@ function replayBatchOperation(
     const cut = operation.steps.at(-1) as ClusterTargetPrerequisiteReduction
     const leaves = canonicalClusterLeaves(cut.prerequisite, goals), roots = [cut.source.split(':')[0]]
     requireUniqueClusterTarget(cut.source, cut.prerequisite, goals)
-    auditTransitiveMinimality(documents as AuditLandscape[], roots)
+    validateTransitiveMinimalityScope(documents as AuditLandscape[], roots)
     for (const addition of operation.steps.slice(0, -1))
       materializeClusterTargetLeaf(addition as AtomicPrerequisiteMaterialization, cut, leaves, goals)
     requireUniqueClusterTarget(cut.source, cut.prerequisite, goals)
@@ -1306,25 +1306,25 @@ function replayBatchOperation(
     goal.requires = before.filter(raw => resolveReference(raw, cut.source, goals) !== cut.prerequisite)
     ensure(goal.requires.length === before.length - 1, 'grouped target cut differs from one raw edge')
     requireDirectClusterTargetLeaves(cut.source, leaves, goals)
-    auditTransitiveMinimality(documents as AuditLandscape[], roots)
+    validateTransitiveMinimalityScope(documents as AuditLandscape[], roots)
     registerBatchCoverage(state, 'cluster-target', cut.source, cut.prerequisite, operation.endAtomicWitnesses,
       operation.endAtomicWitnesses.map(path => ({ kind: 'batch-coverage', operationId: operation.id, source: path[0], prerequisite: path.at(-1)! })), created, goals)
   } else if ('endAtomicWitnesses' in operation) {
     const step = operation.step
     requireUniqueAuthoredBatchEdge(step.source, step.prerequisite, goals)
-    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    validateTransitiveMinimalityScope(documents as AuditLandscape[], [step.source.split(':')[0]])
     requireBatchedClusterCoverage(step.source, step.prerequisite, step.atomicWitnesses, goals, true)
     const goal = goals.get(step.source)!, before = goal.requires!
     goal.requires = before.filter(raw => resolveReference(raw, step.source, goals) !== step.prerequisite)
     ensure(goal.requires.length === before.length - 1, 'batch cluster removal differs from one raw edge')
     requireBatchedClusterCoverage(step.source, step.prerequisite, step.atomicWitnesses, goals, true)
-    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    validateTransitiveMinimalityScope(documents as AuditLandscape[], [step.source.split(':')[0]])
     registerBatchCoverage(state, 'cluster-source', step.source, step.prerequisite, operation.endAtomicWitnesses,
       operation.endAtomicWitnesses.map(path => ({ kind: 'batch-coverage', operationId: operation.id, source: path[0], prerequisite: path.at(-1)! })), created, goals)
   } else if ('operation' in operation.step) {
     const step = operation.step
     materializeBatchedAtomic(step, goals)
-    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    validateTransitiveMinimalityScope(documents as AuditLandscape[], [step.source.split(':')[0]])
     ensure(operation.endWitness[0] === step.source && operation.endWitness.at(-1) === step.prerequisite,
       'materialization end witness endpoints differ')
     registerBatchPath(state, { kind: 'batch-path', operationId: operation.id }, operation.endWitness, created)

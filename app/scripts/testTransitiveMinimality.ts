@@ -1,8 +1,44 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
-import { auditTransitiveMinimality, type AuditGoal, type AuditLandscape } from './auditTransitiveMinimality'
+import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope,
+  type AuditGoal, type AuditLandscape, type MinimalityOrigin } from './auditTransitiveMinimality'
 const one = (goals: AuditGoal[]): AuditLandscape[] => [{ landscapeId: 'L', goals }]
-const run = (goals: AuditGoal[]) => auditTransitiveMinimality(one(goals), ['L'])
+let targetedComparisons = 0, invalidScopeComparisons = 0
+function assertTargetedError(catalog: AuditLandscape[], roots: string[]) {
+  let reference: unknown
+  try { auditTransitiveMinimality(catalog, roots) } catch (error) { reference = error }
+  assert.ok(reference, 'full audit must reject the fixture')
+  for (const check of [
+    () => validateTransitiveMinimalityScope(catalog, roots),
+    () => auditTransitiveMinimalityOrigin(catalog, roots, { source: 'L:q', prerequisite: 'L:a' }),
+    () => auditTransitiveMinimalityOrigin(catalog, roots, { source: 'absent:q', prerequisite: 'absent:a' }),
+  ]) {
+    assert.throws(check, (error) => String(error) === String(reference))
+    invalidScopeComparisons++
+  }
+}
+function assertSelectedMatches(catalog: AuditLandscape[], roots: string[], origins: MinimalityOrigin[]) {
+  const before = JSON.stringify(catalog), reference = auditTransitiveMinimality(catalog, roots)
+  assert.equal(validateTransitiveMinimalityScope(catalog, roots), undefined)
+  for (const origin of origins) {
+    assert.deepEqual(auditTransitiveMinimalityOrigin(catalog, roots, origin),
+      reference.findings.find((finding) => finding.source === origin.source && finding.prerequisite === origin.prerequisite))
+    targetedComparisons++
+  }
+  assert.equal(JSON.stringify(catalog), before, 'targeted queries must not mutate the input')
+  return reference
+}
+const run = (goals: AuditGoal[]) => {
+  const catalog = one(goals)
+  try {
+    return assertSelectedMatches(catalog, ['L'], goals.flatMap((goal) => (goal.requires ?? []).map((ref) => ({
+      source: `L:${goal.id}`, prerequisite: ref.includes(':') ? ref : `L:${ref}`,
+    }))))
+  } catch (error) {
+    assertTargetedError(catalog, ['L'])
+    throw error
+  }
+}
 const pairs = (result: ReturnType<typeof run>) => result.findings.map((f) => [f.source, f.prerequisite])
 assert.throws(() => auditTransitiveMinimality(one([{ id: 'a' }]), []), /Empty root scope/)
 assert.throws(() => run([]), /Empty audit scope/)
@@ -161,6 +197,13 @@ for (let size = 1; size <= 4; size++) {
     if (expected === null) { assert.throws(() => run(goals), /effective requires cycle/); invalid++; continue }
     const result = run(goals)
     assert.deepEqual(pairs(result).sort(), expected)
+    // Include unauthored pairs: a surviving path alone cannot certify an origin.
+    for (const source of goals) for (const prerequisite of goals) if (!source.requires.includes(prerequisite.id)) {
+      assert.equal(auditTransitiveMinimalityOrigin(one(goals), ['L'], {
+        source: `L:${source.id}`, prerequisite: `L:${prerequisite.id}`,
+      }), undefined)
+      targetedComparisons++
+    }
     // Every reported path survives removal. Its provenance points to a distinct
     // still-authored requirement; a stale inherited copy is never an origin.
     for (const finding of result.findings) {
@@ -176,3 +219,66 @@ for (let size = 1; size <= 4; size++) {
   }
 }
 console.log(`PASS: ${compared} literal removal/reinheritance comparisons; ${invalid} invalid effective graphs rejected; cross-subject, duplicate-origin, cluster-boundary and input counterexamples.`)
+
+
+// Selected witnesses must not hide errors elsewhere in the complete scope.
+const selectedWitness: AuditGoal[] = [
+  { id: 'q', requires: ['b', 'a'] }, { id: 'b', requires: ['a'] }, { id: 'a' },
+]
+for (const extra of [
+  [{ id: 'x', requires: ['y'] }, { id: 'y', requires: ['x'] }],
+  [{ id: 'x', contains: ['y'] }, { id: 'y', contains: ['x'] }],
+  [{ id: 'x', requires: ['unknown'] }],
+] as AuditGoal[][]) assertTargetedError(one([...selectedWitness, ...extra]), ['L'])
+assertTargetedError([
+  ...one([...selectedWitness, { id: 'x', requires: ['shared'] }]),
+  { landscapeId: 'X', goals: [{ id: 'shared' }] },
+  { landscapeId: 'Y', goals: [{ id: 'shared' }] },
+], ['L'])
+// A foreign containment ancestor is imported for inheritance, not skipped by a
+// selected query whose redundant witness is entirely local.
+for (const requires of [['missing'], ['L:foreignEntry']]) assertTargetedError([
+  ...one([...selectedWitness, { id: 'foreignEntry', requires: ['F:child'] }]),
+  { landscapeId: 'F', goals: [{ id: 'parent', contains: ['child'], requires }, { id: 'child' }] },
+], ['L'])
+assertTargetedError([
+  ...one(selectedWitness), { landscapeId: 'F', goals: [{ id: 'bad', contains: ['missing'] }] },
+], ['L'])
+for (const [catalog, roots] of [
+  [one([{ id: 'a' }]), []], [one([]), ['L']], [one([{ id: 'a' }]), ['Missing']],
+  [one([{ id: 'a' }]), ['']], [[], ['L']],
+] as [AuditLandscape[], string[]][]) assertTargetedError(catalog, roots)
+
+const noAuthoredOrigin = one([
+  { id: 'q', requires: ['b'] }, { id: 'b', requires: ['a'] }, { id: 'a' },
+])
+assert.equal(auditTransitiveMinimalityOrigin(noAuthoredOrigin, ['L'], { source: 'L:q', prerequisite: 'L:a' }), undefined)
+// Omitting an authored origin removes its inherited contributions as well;
+// independently authored origins for that prerequisite continue to contribute.
+assertSelectedMatches(one([
+  { id: 'parent', contains: ['child'], requires: ['a'] }, { id: 'child' }, { id: 'a' },
+]), ['L'], [{ source: 'L:parent', prerequisite: 'L:a' }, { source: 'L:child', prerequisite: 'L:a' }])
+const alternateOrigins = assertSelectedMatches(one([
+  { id: 'outer', contains: ['parent'], requires: ['a'] },
+  { id: 'parent', contains: ['child'], requires: ['a'] }, { id: 'child' }, { id: 'a' },
+]), ['L'], [{ source: 'L:parent', prerequisite: 'L:a' }, { source: 'L:outer', prerequisite: 'L:a' }])
+assert.deepEqual(alternateOrigins.findings[0], {
+  source: 'L:parent', prerequisite: 'L:a', witness: ['L:parent', 'L:a'],
+  supportingOrigins: [{ source: 'L:outer', prerequisite: 'L:a' }],
+})
+// No cross-call preparation is reused: materialization may introduce a cycle.
+const mutated = one([{ id: 'q', requires: ['b'] }, { id: 'b' }])
+assert.equal(validateTransitiveMinimalityScope(mutated, ['L']), undefined)
+assert.equal(auditTransitiveMinimalityOrigin(mutated, ['L'], { source: 'L:q', prerequisite: 'L:b' }), undefined)
+mutated[0].goals[1].requires = ['q']
+assertTargetedError(mutated, ['L'])
+assertSelectedMatches(foreign, ['Math'], [
+  { source: 'Math:q', prerequisite: 'Math:a' }, { source: 'Math:cluster', prerequisite: 'Math:a' },
+])
+assertSelectedMatches(deterministic, ['L'], stable.findings)
+assertSelectedMatches(deterministic.slice().reverse().map((landscape) => ({
+  ...landscape, goals: landscape.goals.slice().reverse().map((goal) => ({
+    ...goal, contains: goal.contains?.slice().reverse(), requires: goal.requires?.slice().reverse(),
+  })),
+})), ['L', 'L'], stable.findings)
+console.log(`PASS: ${targetedComparisons} selected-origin/full-finding comparisons; ${invalidScopeComparisons} exact validity/selected/full-error comparisons; fresh mutation, missing origin, foreign ancestor and Unicode counterexamples.`)
