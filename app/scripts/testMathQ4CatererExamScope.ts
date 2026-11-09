@@ -8,6 +8,9 @@ import {
   normalizeCompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { loadVerifiedPrerequisiteReductionContext, reviewBindingGoal } from './prerequisiteReductionProof'
+
+const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const readJson = (path: string) => JSON.parse(readFileSync(resolve(repoRoot, path), 'utf8'))
@@ -22,15 +25,45 @@ const coveredIds = [
   '5836c821-d43b-5c02-9ee5-e86bb87bb054', // state model limitations
 ]
 
-const landscape = readJson(canonicalPath) as SkillLandscape
-const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+const rawLandscape = readJson(canonicalPath) as SkillLandscape
+const rawGoalById = new Map(rawLandscape.goals.map((goal) => [goal.id, goal]))
+const goalById = rawGoalById
 const examGoal = goalById.get(examId)
 assert(examGoal?.examData, 'Missing Q4 Caterer exam')
 const exam = examGoal.examData
-assert.deepEqual(examGoal.requires, coveredIds, 'Exam prerequisites must match the four assessed atoms exactly')
+assert.deepEqual(examGoal.requires, ['5836c821-d43b-5c02-9ee5-e86bb87bb054'], 'Exam retains its exact current direct preparation basis')
 assert.deepEqual(exam.coveredGoalIds, coveredIds, 'Exam coverage must match the four assessed atoms exactly')
 assert.deepEqual(examGoal.dimensionTags?.guidingIdeas, ['L1', 'L4'], 'Only number and functional-relation strands are assessed')
 assert.deepEqual(exam.coveredStrands, ['L1', 'L4'])
+
+// Atomic tail cuts 855–857 remove direct preparation edges, not assessment
+// coverage. Check their literal final witnesses against the current raw graph.
+const preparationWitnesses = [
+  [
+    examId, '5836c821-d43b-5c02-9ee5-e86bb87bb054',
+    'e03eca28-9a57-5b24-877c-2e63fecee986', 'dd582580-5cd3-55b3-b05e-e1c102533737',
+    '8d2021d0-aa14-5023-998b-187356de7986',
+  ],
+  [
+    examId, '5836c821-d43b-5c02-9ee5-e86bb87bb054',
+    'e03eca28-9a57-5b24-877c-2e63fecee986', 'dd582580-5cd3-55b3-b05e-e1c102533737',
+    '11f7090c-3e44-522f-9b77-1e07cceffc0f', 'a41761f2-8ba8-5af4-87c1-eb5e4ab1d020',
+    '70f37fda-545f-51dc-a002-c8e435e5c4a5',
+  ],
+  [
+    examId, '5836c821-d43b-5c02-9ee5-e86bb87bb054',
+    'e03eca28-9a57-5b24-877c-2e63fecee986', 'dd582580-5cd3-55b3-b05e-e1c102533737',
+    '11f7090c-3e44-522f-9b77-1e07cceffc0f', 'a41761f2-8ba8-5af4-87c1-eb5e4ab1d020',
+    '70f37fda-545f-51dc-a002-c8e435e5c4a5', 'fde351a8-98b1-5d75-b4df-813beb2bbe3c',
+  ],
+]
+for (const witness of preparationWitnesses) {
+  for (let index = 0; index < witness.length - 1; index += 1) {
+    const source = witness[index]
+    const prerequisite = witness[index + 1]
+    assert(goalById.get(source)?.requires.includes(prerequisite), `Missing current preparation witness: ${source} -> ${prerequisite}`)
+  }
+}
 
 const kinds = readJson(kindPath) as {
   decisions: Array<{ goalId: string, semanticKind: string, decisionStatus: string, sourceFingerprint: string }>
@@ -44,7 +77,15 @@ for (const id of coveredIds) {
   assert.equal(decisions.length, 1, `${id}: expected one semantic-kind decision`)
   assert.equal(decisions[0].semanticKind, 'curricularAtomic')
   assert.equal(decisions[0].decisionStatus, 'authoritative')
-  assert.equal(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(goal as unknown as Record<string, unknown>), `${id}: stale semantic-kind binding`)
+  const rawGoal = rawGoalById.get(id)! as unknown as Record<string, unknown>
+  assert.equal(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+    prerequisiteReductionContext, `${rawLandscape.landscapeId}:${id}`, rawGoal,
+  )), `${id}: stale semantic-kind binding`)
+  if (id === '70f37fda-545f-51dc-a002-c8e435e5c4a5') {
+    assert.notEqual(decisions[0].sourceFingerprint, fingerprintSemanticKindSourceGoal(reviewBindingGoal(
+      undefined, `${rawLandscape.landscapeId}:${id}`, rawGoal,
+    )), 'The reduced interpretation goal needs the verified comparison context')
+  }
 }
 
 // A direct GK/LK tag is insufficient if an LK-only prerequisite is hidden

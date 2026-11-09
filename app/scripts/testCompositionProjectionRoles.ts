@@ -612,11 +612,38 @@ const q2VolumeExam = canonicalGoalById.get('1878f680-095c-511d-aaed-e98393f7fde9
 assert.ok(q2VolumeExam)
 assert.deepEqual(q2VolumeExam.requires, [
   '288633c1-f61c-5b48-af7e-a80357f96cad',
+  '5f548596-9bc3-532e-88a0-81d5029809e9',
+], 'The Q2 pyramid task retains its certified current direct prerequisite basis.')
+assert.deepEqual(q2VolumeExam.examData?.coveredGoalIds, [
+  '288633c1-f61c-5b48-af7e-a80357f96cad',
   '9460c3ff-e72d-4107-bc73-087d217200aa',
   '5f548596-9bc3-532e-88a0-81d5029809e9',
   '5390691d-1b7c-5572-9589-a69c2bba9a27',
-], 'The Q2 pyramid task requires only competencies exercised by the actual task.')
-assert.deepEqual(q2VolumeExam.examData?.coveredGoalIds, q2VolumeExam.requires)
+], 'The Q2 pyramid task retains its four explicitly authored assessment coverage goals.')
+// Atomic tail[911]/[912] retain the two removed direct requirements through
+// these literal final paths; preparation reachability is not assessment coverage.
+const pyramidPreparationWitnesses = [
+  [
+    q2VolumeExam.id, '288633c1-f61c-5b48-af7e-a80357f96cad',
+    '1e77bb2f-0cd6-5961-b0fb-230317c73fce', 'd8e56cfc-a58d-5529-ab9f-e5187e31dd34',
+    'd6b74b15-1cbc-512b-a160-0f40aecafe8c', 'b04bd2d6-21d4-5ac5-9a77-b5f950a41c24',
+    '5390691d-1b7c-5572-9589-a69c2bba9a27',
+  ],
+  [
+    q2VolumeExam.id, '5f548596-9bc3-532e-88a0-81d5029809e9',
+    '636b3e2d-c687-5469-8850-e085df06878d', 'b4fd63de-1e36-5efd-ae0a-6c5e7741b0d2',
+    'eb070ed2-7ef4-5afe-b203-190ebb0116af', '50eb5156-5046-5887-80dc-3128c5f8cbd6',
+    '9460c3ff-e72d-4107-bc73-087d217200aa',
+  ],
+]
+for (const witness of pyramidPreparationWitnesses) {
+  for (let index = 0; index < witness.length - 1; index += 1) {
+    const source = witness[index]
+    const prerequisite = witness[index + 1]
+    assert(canonicalGoalById.get(source)?.requires.includes(prerequisite),
+      `The current pyramid preparation witness must retain ${source} -> ${prerequisite}.`)
+  }
+}
 assert.match(q2VolumeExam.examData?.taskContent ?? '', /Faktor \$1\/3\$.*Prisma/u)
 assert.match(q2VolumeExam.examData?.solutionContent ?? '', /Pyramidenvolumen ein Drittel/u)
 assert.match(
@@ -692,11 +719,31 @@ hesseLkDirectPrerequisiteClosure.forEach(([targetGoalId, prerequisiteGoalId]) =>
     true,
     `The reviewed Hessen LK target ${targetGoalId} must stay learner-facing.`,
   )
-  assert.equal(
-    canonicalGoalById.get(targetGoalId)?.requires.includes(prerequisiteGoalId),
-    true,
-    `The reviewed canonical edge ${targetGoalId} -> ${prerequisiteGoalId} must stay explicit.`,
-  )
+  if (targetGoalId === '508292f2-671b-4fd3-acbf-53d705e44693'
+      && prerequisiteGoalId === '4ac925cf-3862-4810-be2a-d92efff7d735') {
+    // Atomic tail[521] replaces only this redundant direct edge with its
+    // certified two-edge path. Every other pair below remains directly authored.
+    const witness = [targetGoalId, 'efc3506a-5f35-4d77-9498-d70a091a470b', prerequisiteGoalId]
+    for (const [scope, goalById] of [
+      ['canonical', canonicalGoalById],
+      ['learner-facing Hessen LK', learnerFacingGoalById],
+    ] as const) {
+      assert.ok(goalById.has(witness[1]), `The ${scope} lookup must retain the certified intermediary.`)
+      for (let index = 0; index < witness.length - 1; index += 1) {
+        assert.equal(
+          goalById.get(witness[index])?.requires.includes(witness[index + 1]),
+          true,
+          `The ${scope} graph must retain the literal prerequisite edge ${witness[index]} -> ${witness[index + 1]}.`,
+        )
+      }
+    }
+  } else {
+    assert.equal(
+      canonicalGoalById.get(targetGoalId)?.requires.includes(prerequisiteGoalId),
+      true,
+      `The reviewed canonical edge ${targetGoalId} -> ${prerequisiteGoalId} must stay explicit.`,
+    )
+  }
   assert.ok(
     learnerFacingGoalById.has(prerequisiteGoalId),
     `The direct prerequisite ${prerequisiteGoalId} of Hessen LK target ${targetGoalId} must remain in the projected structural lookup.`,
