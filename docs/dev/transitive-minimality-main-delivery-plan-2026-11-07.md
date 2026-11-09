@@ -6,6 +6,23 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
+**Aktuelle Lieferposition vom 9. November 2026:** Mathematik-PR #97 ist nach
+main bei `e94def51f625630da6c3f7fe8e54badefd8eb687` übernommen. Sein endgültiger
+Head `200d21f9ff` bestand alle fünf PR-Workflows und alle acht Hauptjobs;
+der tatsächliche Main-Dateibaum ist exakt gleich. Der separate frische
+[Main-Push-Lauf](https://github.com/enpasos/skillpilot/actions/runs/42558223543)
+ist gestartet und wird unabhängig begleitet. Das harte Standard-G17-Gate und
+die Abnahme aller zehn geschützten Fächer bleiben offen.
+
+Der sichtbare IDE-Branch `docs/projection-prerequisite-closure` liefert jetzt
+die ausdrücklich angeforderte konzeptionelle Projektionskorrektur als eigenen
+kleinen Dokumentations-PR. Er erhält vollständige Voraussetzungsketten und die
+kanonische Atomidentität; die noch bestehende Cluster-Atomisierung bleibt als
+Implementierungslücke ausgewiesen. Der Deutsch-Datenstand bleibt getrennt auf
+`fix/g17-german-first-cluster-prerequisite` bei `034629517b` gesichert und folgt
+nach dieser Dokumentationslieferung. Die nachfolgenden Einzelberichte bewahren
+die jeweilige Lieferhistorie und deren damalige Prüfstände.
+
 Die erste Lieferung ist mit [PR #86](https://github.com/enpasos/skillpilot/pull/86)
 nach main übernommen: Commit
 [`ab0aa4ea9f`](https://github.com/enpasos/skillpilot/commit/ab0aa4ea9f861c8a6bd6e6600268548a516ef666).
