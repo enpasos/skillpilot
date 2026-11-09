@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testCurriculumQualityStatus'
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 

@@ -1,6 +1,6 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 9. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 10. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
@@ -12,13 +12,19 @@ zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
 bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
 Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
 
-**Aktuelle Lieferposition vom 9. November 2026:** Die Physik-Lieferung ist in
+**Aktuelle Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
 der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
 Vollständige TS-Prüfung und nativer Projektionsvergleich sind bestanden;
-der abschließende Backendlauf, der frische reguläre Meilensteincheck und die
-Remote-CI laufen noch. Der PR ist konfliktfrei, aber noch nicht auf main.
+der abschließende Backendlauf und die Remote-CI laufen noch. Der frische
+reguläre Meilensteinlauf ist beendet: Der Producer besteht, die unveränderte
+Untergrenze stoppt Physik bei M3 statt M7. Konkret meldet CQR-104 eine
+mehrdeutige Sek-I-Stufenautorität zwischen den BW- beziehungsweise BY-GK-/LK-
+Views. Die übrigen neun geschützten Fachstände erreichen ihre Untergrenzen.
+Die Rollenauflösung des Routenprüfers wird anhand dieses Gegenfalls repariert;
+es gibt keinen Untergrenzen- oder Report-Pass als Ersatz. Der PR ist
+konfliktfrei, aber noch nicht auf main.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt

@@ -1941,7 +1941,7 @@ function terminalAutonomyGoalsForRouteScope(
  * prerequisites mean all of their atomic descendants; compatibility requires
  * inherited through actual contains ancestors remain hard gates as well.
  * Unresolved cross-landscape references are retained for fail-closed scope QA. */
-function collectWholeMaterialPrerequisiteClosure(
+export function collectWholeMaterialPrerequisiteClosure(
   landscape: SkillLandscape,
   terminalGoalId: string,
 ): { atomicGoalIds: Set<string>; unresolvedReferences: Set<string> } {
@@ -1982,6 +1982,18 @@ function collectWholeMaterialPrerequisiteClosure(
     pending.push(...inheritedReferences(goal.id))
   }
   return { atomicGoalIds, unresolvedReferences }
+}
+
+export function compositionStageAuthorityProjectionSetsAgree(
+  projections: ReadonlyArray<{ targetGoalIds: ReadonlySet<string>; visibleGoalIds: ReadonlySet<string> }>,
+): boolean {
+  const first = projections[0]
+  return !!first && projections.every(({ targetGoalIds, visibleGoalIds }) => (
+    targetGoalIds.size === first.targetGoalIds.size
+    && Array.from(targetGoalIds).every((goalId) => first.targetGoalIds.has(goalId))
+    && visibleGoalIds.size === first.visibleGoalIds.size
+    && Array.from(visibleGoalIds).every((goalId) => first.visibleGoalIds.has(goalId))
+  ))
 }
 
 function evaluateRouteEndpointCompositionVisibility(
@@ -2184,12 +2196,7 @@ function evaluateRouteEndpointCompositionVisibility(
           nationalProjectionScopesUsingJurisdictionStageAuthority += 1
           const jurisdictionStageTargetGoalIds = new Set(authorityProjectionSets[0].targetGoalIds)
           const jurisdictionStageVisibleGoalIds = new Set(authorityProjectionSets[0].visibleGoalIds)
-          const authoritySetsAgree = authorityProjectionSets.every(({ targetGoalIds, visibleGoalIds }) => (
-            targetGoalIds.size === jurisdictionStageTargetGoalIds.size
-            && Array.from(targetGoalIds).every((goalId) => jurisdictionStageTargetGoalIds.has(goalId))
-            && visibleGoalIds.size === jurisdictionStageVisibleGoalIds.size
-            && Array.from(visibleGoalIds).every((goalId) => jurisdictionStageVisibleGoalIds.has(goalId))
-          ))
+          const authoritySetsAgree = compositionStageAuthorityProjectionSetsAgree(authorityProjectionSets)
           if (!authoritySetsAgree) {
             ambiguousJurisdictionStageAuthorityScopes.push(
               `${scopeLabel}: ${authorityProjectionSets.map(({ file: authorityFile }) => toRepoPath(authorityFile)).join(', ')}`,
@@ -4168,7 +4175,7 @@ function collectCompositionStageStructures(
   return matches
 }
 
-function collectRenderedAtomicGoalIdsFromCompositionView(
+export function collectRenderedAtomicGoalIdsFromCompositionView(
   landscape: SkillLandscape,
   viewFile: string,
   scopeFilters: string[] = [],
@@ -4235,11 +4242,18 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
     .forEach(addRenderedAtomicGoal)
   if (includePrerequisiteOnly) {
     const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
+    const sourceRoot = entry.goals.find((goal) => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+    const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
+      normalizedView.rootNodes,
+      sourceGoalById,
+      new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : []),
+    )
     const addAtomicIfIncluded = (goalId: string) => {
       const goal = sourceGoalById.get(goalId)
       if (
         goal
         && (goal.contains?.length ?? 0) === 0
+        && prerequisiteOnlyGoalIds.has(goalId)
         && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))
       ) {
         atomicGoalIds.add(goalId)
