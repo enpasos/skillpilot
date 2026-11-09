@@ -6,30 +6,39 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-**Aktuelle Lieferposition vom 9. November 2026:** Mathematik-PR #97 ist nach
-main bei `e94def51f625630da6c3f7fe8e54badefd8eb687` übernommen. Sein endgültiger
-Head `200d21f9ff` bestand alle fünf PR-Workflows und alle acht Hauptjobs;
-der tatsächliche Main-Dateibaum ist exakt gleich. Der separate frische
-[Main-Push-Lauf](https://github.com/enpasos/skillpilot/actions/runs/42558223543)
-ist gestartet und wird unabhängig begleitet. Das harte Standard-G17-Gate und
-die Abnahme aller zehn geschützten Fächer bleiben offen.
+**Aktuelle Lieferposition vom 9. November 2026:** Der erste begrenzte
+Deutsch-Schritt ist mit [PR #99](https://github.com/enpasos/skillpilot/pull/99)
+nach main bei `7a2c4de5888e98fe415a5e1373747ac3917a8f47` geliefert. Sein
+Head `1fa0ce0ed7` bestand alle fünf PR-Workflows und alle acht Hauptjobs;
+der tatsächliche Main-Dateibaum ist exakt gleich. Die getrennte frische
+[Main-CI](https://github.com/enpasos/skillpilot/actions/runs/42571444240)
+wird weiter begleitet. Das harte Standard-G17-Gate und die Abnahme aller zehn
+geschützten Fächer bleiben offen.
 
-Die ausdrücklich angeforderte Projektionsdokumentation ist mit PR #98 nach main
-bei `16e55248767ac0e6736c9cbbcee34882f7b62d8e` geliefert. Alle drei PR-Jobs
-bestanden; der Main-Dateibaum ist exakt gleich. Vollständige Voraussetzungsketten
-und kanonische Atomidentität sind verbindlich; die noch bestehende
-Cluster-Atomisierung bleibt als Implementierungslücke ausgewiesen. Die getrennte
-Main-Push-Prüfung wird weiter begleitet.
+Die Mathematiklieferung mit PR #97 bei
+`e94def51f625630da6c3f7fe8e54badefd8eb687` hat inzwischen auch ihre separate
+Main-Push-CI mit allen sechs Workflows und acht Hauptjobs bestanden. Die
+Projektionsdokumentation aus PR #98 ist bei
+`16e55248767ac0e6736c9cbbcee34882f7b62d8e` auf main; ihre drei PR-Jobs sowie
+frische Main-Dokumentationsprüfung und Dokumentationsveröffentlichung bestanden.
+Die weiterhin bestehende Cluster-Atomisierung bleibt eine ausgewiesene
+Implementierungslücke.
 
-Der sichtbare IDE-Branch ist wieder
-`fix/g17-german-first-cluster-prerequisite`. Er hat diesen Main-Stand konfliktfrei
-als `a053b48230` aufgenommen. Die elf ursprünglichen Deutsch-Dateien bleiben
-bytegleich zu `e7b317b222`; ebenso die 35 Loader-, acht Python-, 32 CQR-,
-43 Paket- und 130 Reader-Eingaben der bestehenden Nachweise. Der
-[begrenzte Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-main98-integration/receipt.json)
-bewahrt diese Quellbindungen; er behauptet keinen neuen Gesamttest. Der folgende
-Deutsch-Daten-PR erhält seine eigene frische Remote-CI. Die nachfolgenden
-Einzelberichte bewahren die Lieferhistorie und deren damalige Prüfstände.
+Der sichtbare IDE-Branch für den nächsten kleinen Schritt ist
+`fix/g17-german-projection-prerequisite-roles`. Die vollständige nächste deutsche
+R-Gegenprobe erreicht alle 18 betroffenen Quellen in 99 tatsächlichen
+Konfigurationen. Sie belegt notwendige explizite Voraussetzungrollen in der
+bestehenden HE-GK-View; die kanonische Zielmenge und die fachlichen Beziehungen
+bleiben fest. Die begrenzte View-Korrektur mit 26 expliziten `prerequisiteOnly`-Referenzen
+ist lokal gegen unveränderte Zielmengen und Laufzeitverhalten geprüft;
+die tatsächliche PR-/Main-Abnahme folgt getrennt vor dem Reduktionsbatch. Bereits vorher ungültige Projektionen bleiben
+als solche ausgewiesen und werden nicht als bestandene Positivkontrollen gezählt.
+
+Die ursprünglichen lokalen Nachweise aus dem ersten Deutsch-Schritt und ihre
+Quellbindungen bleiben erhalten. Der
+[Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-main98-integration/receipt.json)
+behauptet keinen neuen Gesamttest. Die folgenden Einzelberichte bewahren die
+Lieferhistorie und deren damalige Prüfstände.
 
 Die erste Lieferung ist mit [PR #86](https://github.com/enpasos/skillpilot/pull/86)
 nach main übernommen: Commit
