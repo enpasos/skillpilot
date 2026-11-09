@@ -62,7 +62,7 @@ prove the corrected model.
 | `GVR-012` | Hard scoped full-route coverage: every selected `curricularAtomic` goal must lie on a direct atomic `requires` path from its stage-specific `orientation` anchor to a stage-specific atomic `practiceAssessment` terminal. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-013` | Configured scoped atomic-route profile: every direct local `requires` edge from a selected atomic route node must target an atomic node, not a cluster. | Profile-defined rollout scopes | `error` |
 | `GVR-014` | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors and must not carry exam, memory, example, or assessment metadata. | All loaded landscapes | unconditional `error` |
-| `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry directly requires the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
+| `GVR-015` | Reviewed orientation outlooks have bounded bilingual paths with in-stage `curricularArea` roots plus atomic `curricularAtomic` entry goals and milestones. Every entry has a path of one or more directly authored atomic `requires` edges to the `orientation` anchor; `contains` proves path membership, while a direct, stage-scoped atomic `requires` route proves downstream sequencing. | Canonical DE Gymnasium mathematics, independently for Sek I and Sek II | unconditional `error` |
 | `GVR-016` | Table-like blocks in learner-facing exam Markdown must use a valid GFM delimiter row and a consistent column count. | All `examData.taskContent*` and `examData.solutionContent*` fields | unconditional `error` |
 
 ## Core validator checks (always active, fail CI)
@@ -324,8 +324,8 @@ four bounded bilingual paths. The anchor must be authoritatively classified as
 same canonical landscape and in the anchor's explicit stage scope. Subtree
 roots must be non-atomic `curricularArea` nodes; entries and milestones must be
 atomic `curricularAtomic` goals. Each bounded `entryGoalIds` allowlist must be
-contained in the respective path and each entry must directly require the
-orientation anchor. Runtime path activation uses only this build-validated
+contained in the respective path and each entry must reach the orientation
+anchor through one or more directly authored atomic `requires` edges. Runtime path activation uses only this build-validated
 allowlist; `milestoneGoalIds` remain learner-facing outlook content and never
 become transition authorization.
 

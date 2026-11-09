@@ -370,16 +370,6 @@ export const validateOrientationOutlooks = <TGoal extends OrientationOutlookGoal
             message: `Entry goal ${entryId} is not reachable from orientation goal ${orientationGoalId} through in-scope direct atomic requires edges.`,
           })
         }
-        const directlyRequiresOrientation = (entryGoal.requires ?? [])
-          .map((rawRequiredRef) => resolveLocalRef(rawRequiredRef, goalsById))
-          .includes(orientationGoalId)
-        if (!directlyRequiresOrientation) {
-          findings.push({
-            orientationGoalId,
-            pathId: findingPathId,
-            message: `Entry goal ${entryId} must directly require orientation goal ${orientationGoalId}.`,
-          })
-        }
       }
 
       for (const milestoneRef of milestoneRefs ?? []) {

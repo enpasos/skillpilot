@@ -219,59 +219,56 @@ Reviewrecords und alle 32 CQR-Eingaben bleiben unverändert. Die Korrektur erhä
 ihre eigene frische PR-CI; ein ZIP oder eine Publikationsfreigabe wird nicht
 behauptet.
 
-Diese frische CI wies im Graphvalidator vier GVR-015-Direktkantenforderungen
-zurück. Die zugehörigen Orientierungsverbindungen sind als atomare
-Voraussetzungspfade in den gebundenen Entfernungszeugen erhalten. Astra
-bestätigt den Widerspruch zwischen der zusätzlichen Direktkantenpflicht und
-der verbindlichen transitiven Minimalität: Der Validator prüft bereits streng
-die Erreichbarkeit über atomare Kanten innerhalb derselben Stufe. Die kleine
-Reparatur dieses Zusatzchecks mit echten positiven und negativen Pfadfällen
-ist die nächste notwendige Korrektur in #97. Die Remote-Abnahme von #97 steht
-bis zur erfolgreichen frischen CI am korrigierten Head aus.
+Der vollständige anschließende CI-Lauf belegte drei weitere Verbraucher, die
+noch eine Einzelkante statt der erhaltenen atomaren Voraussetzungspfade
+erwarteten. GVR-015 prüft bereits die streng stufenbezogene atomare
+Erreichbarkeit; seine zusätzliche Direktkantenforderung wird entfernt. Der
+nur im Orientierungs-Outlook verwendete Backendfilter erhält eine
+zyklensichere Suche nach einem nichtleeren Pfad aus direkt verfassten atomaren
+`requires`-Kanten. Die drei zuvor erwarteten Orientierungswege und die
+gesonderte Startfreigabe bleiben erhalten. Beim Q4-Buchtest werden die sechs
+expliziten Prüfungsziele und die fünf verbliebenen direkten Voraussetzungen
+getrennt festgeschrieben; der aktuelle Division→Multiplikation-Zeuge erhält
+den entfernten direkten Bedarf. Aufgaben, Prüfungsabdeckung und
+Curriculumdaten werden nicht geändert.
 
-Der vollständig beendete Lauf meldet zwei weitere deterministische
-Transitivitätskonsumenten: Ein Buchtest setzt die direkte Voraussetzungsliste
-einer Q4-Prüfung mit deren unveränderter expliziter Prüfungsabdeckung gleich.
-Der gebundene Zeuge erhält den entfallenen Bedarf über die Division zur
-Multiplikation; sechs Prüfungsziele und fünf verbleibende direkte
-Voraussetzungen müssen deshalb getrennt festgeschrieben werden. Im Backend
-verwirft ein nur dort verwendeter Direktkantenfilter den unveränderten
-Orientierungsweg für Raum und lineare Algebra. Sein atomarer Pfad ist erhalten.
-Die kleine Korrektur dieses Filters muss die drei bisherigen angebotenen Wege
-wiederherstellen; die separate Startfreigabe und die bisherigen
-Integrationserwartungen bleiben erhalten. Diese drei tatsächlich belegten
-Reparaturen gehören zu #97, ohne Daten, Aufgaben oder Abdeckungsbehauptungen
-zu ändern.
+Die [begrenzte Reparaturnotiz](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)
+bindet die tatsächlichen Gegenfälle und die einzelnen lokalen Ergebnisse.
+Graphvalidator, vollständige Hard-Route-Prüfung und vollständige Buchtestkette
+einschließlich beider angehängter Strukturtests bestehen. Auch alle 13 neuen
+Laufzeitfälle und die drei bisherigen Integrationsfälle bestanden ohne
+Fehler oder Skips. Die 133 gebundenen Laufzeiteingaben sowie alle 124
+geschützten Eingaben bleiben bytegleich. Eine erfolgreiche Remote-Abnahme
+von #97 wird erst nach der frischen CI des korrigierten Heads behauptet.
 
-Der unmittelbar folgende deutsche Einzelfall bleibt als ausdrücklich
-unfertiger WIP `534af7911f` auf `fix/g17-german-first-cluster-prerequisite`
-committet und gepusht erhalten. Sein Main-Weg ist der gekoppelte nächste
-G17-PR nach der Main-Lieferung von #97 und nach vollständiger eigener Abnahme;
-Nach der isolierten Elternkorrektur wurde er sichtbar bei `1e17120c9e`
-wieder aufgenommen. Der tatsächliche Python-Aufrufer, die vollständigen
-Transitivitäts- und Python-Suiten, Schemas sowie der reguläre Meilensteinlauf
-mit allen zehn geschützten Untergrenzen bestehen. Auch die native Gesamtklasse
-mit 1.240 Konfigurationen, alle 58 Projektionsfälle und der tatsächliche
-Paketkonformitätslauf bestanden. Dessen 43 Eingaben bleiben unverändert; beide
-Modellbuilds sind bytegleich und behalten den Mathematik-Digest `5d3cf9c7…`.
-Ein zusätzlicher Pin- oder Reviewanschluss ist nicht nötig. Die
-[begrenzte technische Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
-belegt die einzelnen Ergebnisse und den gesondert erklärten Drift genau eines
-CQR-Archivsymlinks außerhalb des bereits ausgeschlossenen nativen
-Loaderbereichs. Der ursprüngliche breite Manifestbefund bleibt erhalten;
-119.677 der 119.678 erfassten Pfade sind bytegleich.
-Der Fall ersetzt genau eine Clusterreferenz durch zehn bereits induzierte
-atomare Anforderungen; die übrigen 45 deutschen Atom→Cluster-Kanten bleiben
-getrennt offen. Der Folge-PR entsteht erst nach der Main-Lieferung von #97
-und vollständiger eigener Abnahme.
+Der unmittelbar folgende deutsche Einzelfall ist vollständig lokal geprüft als
+`e7b317b222` auf `fix/g17-german-first-cluster-prerequisite` committet und
+gepusht erhalten. [Notiz und gebundene Nachweise](https://github.com/enpasos/skillpilot/blob/e7b317b222a3b0b204a2f92dfc4ae25ddab28443/docs/dev/german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+bleiben am überprüften Commit zugänglich. Genau eine Clusterreferenz wird
+durch zehn bereits induzierte atomare Anforderungen ersetzt; die übrigen 45
+deutschen Atom→Cluster-Kanten gehören nicht zu diesem Stand. Sein Main-Weg ist
+der gekoppelte nächste G17-PR nach der Main-Lieferung von #97, Aufnahme der
+notwendigen Elternkorrektur und eigener frischer Remote-Abnahme. Bis dahin
+erfolgt keine weitere deutsche Datenbearbeitung. Das harte Standard-G17-Gate
+und der Gesamtauftrag bleiben offen.
+
+Der sichtbare Deutsch-Branch nimmt jetzt den geprüften Elternfix
+`bcc7803424` auf, während dessen frische PR-CI läuft. Die sieben Dateien des
+deutschen Prüfvertrags und der Datenänderung werden gegen `e7b317b222`
+byteweise abgeglichen. Die lokalen Gesamtbelege dieses Commits behalten ihre
+ursprünglichen Quellbindungen; sie werden nicht still auf die geänderte
+Backenddatei umgebunden. Die ergänzenden Kombinationsprüfungen werden getrennt
+ausgewiesen. [Die lokale deutsche Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+bleibt erhalten; es werden keine weiteren deutschen Kanten bearbeitet und
+kein Folge-PR vor der Main-Lieferung von #97 angelegt.
 
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren
 Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
 ESLint sowie Dokumentations- und Terminologieprüfungen bestanden lokal.
 
-Der sichtbare IDE-Checkout bleibt auf
-`fix/g17-math-transitive-reduction`. Die ursprüngliche Vorprobe des inzwischen
+Der sichtbare IDE-Checkout liegt auf
+`fix/g17-german-first-cluster-prerequisite`. Die ursprüngliche Vorprobe des inzwischen
 committeten atomaren Mathematikbatches
 findet 922 redundante Rohkanten aus 490 zusätzlichen Quellen: 2.484 atomare
 Anforderungen werden zu 1.562 reduziert; der bestehende Auditor findet danach
