@@ -1,6 +1,6 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 8. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 9. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
@@ -182,8 +182,9 @@ Review-/Source-Gegenprüfungen und zwei bytegleichen Modellbuilds. Die Reparatur
 ist als `b973e78728` in #96 committet und gepusht. Alle fünf frischen
 PR-Workflows und acht Hauptjobs bestanden. #96 ist bei `776be6e48a` nach main
 geliefert; sein tatsächlicher Main-Baum ist exakt der geprüfte Baum
-`7fc7fd65e9`. Die sechs frischen Push-Workflows auf main werden getrennt
-beobachtet; deren Abnahme steht noch aus.
+`7fc7fd65e9`. Auch alle sechs frischen Push-Workflows auf dem tatsächlichen
+Main-Commit und sämtliche acht Hauptjobs bestanden. Main-Referenz und
+Dateibaum wurden anschließend erneut gegen genau diesen Stand geprüft.
 
 Die vollständige atomare Mathematikreduktion ist inzwischen getrennt als
 `5a24a03f1e` auf `fix/g17-math-transitive-reduction` committet und gepusht.
@@ -218,11 +219,51 @@ Reviewrecords und alle 32 CQR-Eingaben bleiben unverändert. Die Korrektur erhä
 ihre eigene frische PR-CI; ein ZIP oder eine Publikationsfreigabe wird nicht
 behauptet.
 
+Diese frische CI wies im Graphvalidator vier GVR-015-Direktkantenforderungen
+zurück. Die zugehörigen Orientierungsverbindungen sind als atomare
+Voraussetzungspfade in den gebundenen Entfernungszeugen erhalten. Astra
+bestätigt den Widerspruch zwischen der zusätzlichen Direktkantenpflicht und
+der verbindlichen transitiven Minimalität: Der Validator prüft bereits streng
+die Erreichbarkeit über atomare Kanten innerhalb derselben Stufe. Die kleine
+Reparatur dieses Zusatzchecks mit echten positiven und negativen Pfadfällen
+ist die nächste notwendige Korrektur in #97. Die Remote-Abnahme von #97 steht
+bis zur erfolgreichen frischen CI am korrigierten Head aus.
+
+Der vollständig beendete Lauf meldet zwei weitere deterministische
+Transitivitätskonsumenten: Ein Buchtest setzt die direkte Voraussetzungsliste
+einer Q4-Prüfung mit deren unveränderter expliziter Prüfungsabdeckung gleich.
+Der gebundene Zeuge erhält den entfallenen Bedarf über die Division zur
+Multiplikation; sechs Prüfungsziele und fünf verbleibende direkte
+Voraussetzungen müssen deshalb getrennt festgeschrieben werden. Im Backend
+verwirft ein nur dort verwendeter Direktkantenfilter den unveränderten
+Orientierungsweg für Raum und lineare Algebra. Sein atomarer Pfad ist erhalten.
+Die kleine Korrektur dieses Filters muss die drei bisherigen angebotenen Wege
+wiederherstellen; die separate Startfreigabe und die bisherigen
+Integrationserwartungen bleiben erhalten. Diese drei tatsächlich belegten
+Reparaturen gehören zu #97, ohne Daten, Aufgaben oder Abdeckungsbehauptungen
+zu ändern.
+
 Der unmittelbar folgende deutsche Einzelfall bleibt als ausdrücklich
 unfertiger WIP `534af7911f` auf `fix/g17-german-first-cluster-prerequisite`
 committet und gepusht erhalten. Sein Main-Weg ist der gekoppelte nächste
 G17-PR nach der Main-Lieferung von #97 und nach vollständiger eigener Abnahme;
-für die konkrete Elternkorrektur ruht seine Umsetzung vorübergehend.
+Nach der isolierten Elternkorrektur wurde er sichtbar bei `1e17120c9e`
+wieder aufgenommen. Der tatsächliche Python-Aufrufer, die vollständigen
+Transitivitäts- und Python-Suiten, Schemas sowie der reguläre Meilensteinlauf
+mit allen zehn geschützten Untergrenzen bestehen. Auch die native Gesamtklasse
+mit 1.240 Konfigurationen, alle 58 Projektionsfälle und der tatsächliche
+Paketkonformitätslauf bestanden. Dessen 43 Eingaben bleiben unverändert; beide
+Modellbuilds sind bytegleich und behalten den Mathematik-Digest `5d3cf9c7…`.
+Ein zusätzlicher Pin- oder Reviewanschluss ist nicht nötig. Die
+[begrenzte technische Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+belegt die einzelnen Ergebnisse und den gesondert erklärten Drift genau eines
+CQR-Archivsymlinks außerhalb des bereits ausgeschlossenen nativen
+Loaderbereichs. Der ursprüngliche breite Manifestbefund bleibt erhalten;
+119.677 der 119.678 erfassten Pfade sind bytegleich.
+Der Fall ersetzt genau eine Clusterreferenz durch zehn bereits induzierte
+atomare Anforderungen; die übrigen 45 deutschen Atom→Cluster-Kanten bleiben
+getrennt offen. Der Folge-PR entsteht erst nach der Main-Lieferung von #97
+und vollständiger eigener Abnahme.
 
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren

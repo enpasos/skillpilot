@@ -1054,6 +1054,31 @@ try {
     '71683f37-24de-4e0f-badd-858b56fa4d64', '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'].map(id => `${math.document.landscapeId}:${id}`))
   allOriginals.push(...liveContinued.tailOriginalRequires)
   assert.equal(new Set(allOriginals.map(entry => entry.source)).size, 719)
+  const germanSource = '67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95'
+  const germanCluster = '67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1'
+  assert.equal(v4Checkpoint.currentDocumentDigests.length, 21)
+  assert.deepEqual(clusterTargetOriginalRequires, [{ source: germanSource,
+    requires: ['53462f11-c368-51df-bb68-c36a83d761b1', 'bb3dee7b-d6d3-513b-8824-bdf6414e02df'] }])
+  assert.ok(!allOriginals.some(entry => entry.source === germanSource), 'the new source is outside the 719-source prefix')
+  assert.equal(clusterTargetSuffix.length, 11)
+  assert.equal(clusterTargetSuffix.filter(step => step.operation === 'materialize-atomic').length, 10)
+  assert.deepEqual(clusterTargetSuffix.at(-1), { operation: 'remove-cluster-target', source: germanSource, prerequisite: germanCluster })
+  const germanAdds = clusterTargetSuffix.slice(0, -1) as AtomicPrerequisiteMaterialization[]
+  assert.equal(new Set(germanAdds.map(step => step.prerequisite)).size, 10)
+  for (const step of germanAdds) {
+    assert.equal(step.source, germanSource)
+    assert.equal(step.origin.source, germanSource)
+    assert.equal(step.origin.prerequisite, '53462f11-c368-51df-bb68-c36a83d761b1')
+    assert.deepEqual(step.origin.sourceContainsPath, [germanSource])
+    assert.equal(step.origin.prerequisiteContainsPath[0], germanCluster)
+    assert.equal(step.origin.prerequisiteContainsPath.at(-1), step.prerequisite)
+  }
+  assert.deepEqual(liveGoals.get(germanSource)!.requires,
+    ['bb3dee7b-d6d3-513b-8824-bdf6414e02df', ...germanAdds.map(step => step.prerequisite.split(':')[1])])
+  assert.ok([...liveGoals.values()].every(goal => !(goal.requires ?? []).some(raw => raw.split(':').at(-1) === germanSource.split(':')[1])),
+    'the single new source has no incoming requires anywhere in the actual catalog')
+  allOriginals.push(...clusterTargetOriginalRequires)
+  assert.equal(new Set(allOriginals.map(entry => entry.source)).size, 720)
   assert.deepEqual(verifiedPrerequisiteReductionSummary(liveContext)!.affectedGoalIds,
     allOriginals.map(({ source }) => source).sort())
   for (const original of allOriginals) {
@@ -1074,7 +1099,13 @@ try {
     assert.notEqual(fingerprintSemanticKindSourceGoal(raw), fingerprintSemanticKindSourceGoal(historical),
       `historical comparison requires the verified capability: ${original.source}`)
   }
-  console.log(`Prerequisite reduction proof: strict negatives, bound V3 parent, ${liveRegistry.removals.length} historical operations, ${liveOrdered.suffix.length} suffix steps, ${liveContinued.atomicRemovals.length} atomic cuts and ${allOriginals.length} snapshots passed.`)
+  for (const file of files(catalog)) {
+    const document = JSON.parse(readFileSync(file, 'utf8')) as Document
+    document.goals = document.goals.map(goal => structuredClone(reviewBindingGoal(liveContext, `${document.landscapeId}:${goal.id}`, goal)))
+    const binding = liveRegistry.catalogSources.find(entry => entry.path === relative(root, file))!
+    assert.equal(digest(document), binding.baselineDocumentDigest, `all original document fields restored exactly: ${file}`)
+  }
+  console.log(`Prerequisite reduction proof: strict negatives, bound V4 parent, ${liveRegistry.removals.length} historical operations, ${liveOrdered.suffix.length} V3 steps, ${liveContinued.atomicRemovals.length} atomic cuts, ${clusterTargetSuffix.length} cluster-target steps and ${allOriginals.length} snapshots passed.`)
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })
 }

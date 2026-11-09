@@ -9,6 +9,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Mathematik-Dauerlayout: Pflege der Inputbindung, 8. November 2026](canonical-math-duration-input-binding-review-2026-11-08.md)
 - [Mathematikpaket: Pflege der Weitergabebindung, 8. November 2026](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)
 - [Mathematikpaket: Pflege des Standalone-Planchecks, 9. November 2026](canonical-math-standalone-plan-pin-review-2026-11-09.md)
+- [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
   Pausierter Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)

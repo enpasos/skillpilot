@@ -1072,16 +1072,35 @@ class FirstMathPrerequisiteReductionTest {
             List<String> replay = new ArrayList<>(List.of(GERMAN_CLUSTER, GERMAN_OTHER));
             for (int index = 0; index < 11; index++) {
                 JsonNode step = registry.path("clusterTargetSuffix").get(index);
-                assertThat(step.size()).as("bounded V5 operation fields: %d", index).isEqualTo(3);
                 assertThat(step.path("source").asText()).isEqualTo(source);
                 if (index < 10) {
+                    assertThat(step.size()).as("bounded V5 materialization fields: %d", index).isEqualTo(4);
                     String leaf = GERMAN_LEAVES.get(index);
                     assertThat(step.path("operation").asText()).isEqualTo("materialize-atomic");
                     assertThat(step.path("prerequisite").asText()).isEqualTo(GERMAN + ":" + leaf);
+                    JsonNode origin = step.path("origin");
+                    assertThat(origin.isObject()).isTrue();
+                    assertThat(origin.size()).as("bounded V5 origin fields: %d", index).isEqualTo(4);
+                    assertThat(origin.path("source").asText()).isEqualTo(source);
+                    assertThat(origin.path("prerequisite").asText()).isEqualTo(GERMAN_CLUSTER);
+                    assertThat(rawRequires(origin.path("sourceContainsPath"), source)).containsExactly(source);
+                    List<String> prerequisitePath = rawRequires(origin.path("prerequisiteContainsPath"), source);
+                    assertThat(prerequisitePath).hasSize(3);
+                    assertThat(prerequisitePath.getFirst()).isEqualTo(GERMAN + ":" + GERMAN_CLUSTER);
+                    assertThat(prerequisitePath.getLast()).isEqualTo(GERMAN + ":" + leaf);
+                    for (int pathIndex = 0; pathIndex + 1 < prerequisitePath.size(); pathIndex++) {
+                        String parent = prerequisitePath.get(pathIndex), child = prerequisitePath.get(pathIndex + 1);
+                        assertThat(qualifiedIdentity(parent)[0]).isEqualTo(GERMAN);
+                        assertThat(qualifiedIdentity(child)[0]).isEqualTo(GERMAN);
+                        assertThat(rawRequires(registeredGoal(goalsByOwner, parent).path("contains"), parent))
+                                .as("literal V5 prerequisite contains edge %s -> %s", parent, child)
+                                .contains(qualifiedIdentity(child)[1]);
+                    }
                     assertAtomicWitness(registeredGoal(goalsByOwner, GERMAN + ":" + leaf), leaf);
                     assertThat(replay).doesNotContain(leaf);
                     replay.add(leaf);
                 } else {
+                    assertThat(step.size()).as("bounded V5 final removal fields").isEqualTo(3);
                     assertThat(replay).hasSize(12).contains(GERMAN_CLUSTER);
                     assertThat(step.path("operation").asText()).isEqualTo("remove-cluster-target");
                     assertThat(step.path("prerequisite").asText()).isEqualTo(GERMAN + ":" + GERMAN_CLUSTER);
