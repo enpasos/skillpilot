@@ -14,14 +14,22 @@ der tatsächliche Main-Dateibaum ist exakt gleich. Der separate frische
 ist gestartet und wird unabhängig begleitet. Das harte Standard-G17-Gate und
 die Abnahme aller zehn geschützten Fächer bleiben offen.
 
-Der sichtbare IDE-Branch `docs/projection-prerequisite-closure` liefert jetzt
-die ausdrücklich angeforderte konzeptionelle Projektionskorrektur als eigenen
-kleinen Dokumentations-PR. Er erhält vollständige Voraussetzungsketten und die
-kanonische Atomidentität; die noch bestehende Cluster-Atomisierung bleibt als
-Implementierungslücke ausgewiesen. Der Deutsch-Datenstand bleibt getrennt auf
-`fix/g17-german-first-cluster-prerequisite` bei `034629517b` gesichert und folgt
-nach dieser Dokumentationslieferung. Die nachfolgenden Einzelberichte bewahren
-die jeweilige Lieferhistorie und deren damalige Prüfstände.
+Die ausdrücklich angeforderte Projektionsdokumentation ist mit PR #98 nach main
+bei `16e55248767ac0e6736c9cbbcee34882f7b62d8e` geliefert. Alle drei PR-Jobs
+bestanden; der Main-Dateibaum ist exakt gleich. Vollständige Voraussetzungsketten
+und kanonische Atomidentität sind verbindlich; die noch bestehende
+Cluster-Atomisierung bleibt als Implementierungslücke ausgewiesen. Die getrennte
+Main-Push-Prüfung wird weiter begleitet.
+
+Der sichtbare IDE-Branch ist wieder
+`fix/g17-german-first-cluster-prerequisite`. Er hat diesen Main-Stand konfliktfrei
+als `a053b48230` aufgenommen. Die elf ursprünglichen Deutsch-Dateien bleiben
+bytegleich zu `e7b317b222`; ebenso die 35 Loader-, acht Python-, 32 CQR-,
+43 Paket- und 130 Reader-Eingaben der bestehenden Nachweise. Der
+[begrenzte Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-main98-integration/receipt.json)
+bewahrt diese Quellbindungen; er behauptet keinen neuen Gesamttest. Der folgende
+Deutsch-Daten-PR erhält seine eigene frische Remote-CI. Die nachfolgenden
+Einzelberichte bewahren die Lieferhistorie und deren damalige Prüfstände.
 
 Die erste Lieferung ist mit [PR #86](https://github.com/enpasos/skillpilot/pull/86)
 nach main übernommen: Commit
