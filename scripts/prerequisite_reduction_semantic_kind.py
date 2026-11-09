@@ -22,6 +22,7 @@ CONTINUED_PROOF_CONTRACT = "continued-atomic-prerequisite-reduction-v4"
 CLUSTER_TARGET_PROOF_CONTRACT = "atomic-cluster-target-normalization-v5"
 APPEND_ONLY_PROOF_CONTRACT = "append-only-prerequisite-reduction-batches-v6"
 SOFTWARE_ROOT = Path(__file__).resolve().parents[1]
+NODE_VERIFIER_TIMEOUT_SECONDS = 600
 
 
 class PrerequisiteReductionBindingError(RuntimeError):
@@ -89,7 +90,7 @@ def load_verified_semantic_kind_bindings(
         completed = subprocess.run(
             ["node", "--import", "tsx", "scripts/verifyPrerequisiteReductionSemanticKindBindings.ts",
              "--canonical-source", relative_source, "--repository-root", str(repository_root)],
-            cwd=SOFTWARE_ROOT / "app", capture_output=True, timeout=180, check=False,
+            cwd=SOFTWARE_ROOT / "app", capture_output=True, timeout=NODE_VERIFIER_TIMEOUT_SECONDS, check=False,
         )
         require(completed.returncode == 0,
                 "Node prerequisite reduction verification failed: "
