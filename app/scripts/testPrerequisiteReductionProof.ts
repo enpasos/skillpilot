@@ -128,7 +128,7 @@ function orderedFixture(
   }],
   changeFinal: (document: Document) => void = (document) => {
     document.goals.find(({ id }) => id === 'k')!.requires = []
-    for (const id of ['a', 'b']) { const source = document.goals.find((entry) => entry.id === id)!; source.requires = [...source.requires, 'r'] }
+    for (const id of ['a', 'b']) { const source = document.goals.find((entry) => entry.id === id)!; source.requires = [...(source.requires ?? []), 'r'] }
   },
 ) {
   const checkpoint = structuredClone(before)

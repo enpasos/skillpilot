@@ -27,7 +27,7 @@ Negativfälle, neun Raw-Frame-Helperfälle und sieben Python-Bridge-Fixturemetho
 Astra prüfte Proofkern und Live-Testadapter ohne konkreten Blocker. Die
 tatsächliche Produktintegration wird zusätzlich gegen den aktuellen Katalog
 und die vollständigen bestehenden Aufrufer geprüft; diese Prüfungen sind im
-[Support-Receipt](../../qa-artifacts/ci-contract-audit/2026-11-09/g17-batched-prerequisite-proof-support/receipt.json)
+[Support-Receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-batched-prerequisite-proof-support/receipt.json)
 noch ausdrücklich als offen geführt.
 
 Die Lieferung baut auf der getrennten HE-GK-View-Korrektur in
