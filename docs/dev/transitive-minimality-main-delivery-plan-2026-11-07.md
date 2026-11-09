@@ -6,14 +6,27 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-**Aktuelle Lieferposition vom 9. November 2026:** Die technische
-V6-Unterstützung ist mit [PR #101](https://github.com/enpasos/skillpilot/pull/101)
-nach main bei `62316d3c653c753abbb822e8e4a1f5ebd1d04fb6` geliefert. Alle vier
-PR-Workflows und alle acht Hauptjobs bestanden; der tatsächliche Main-Dateibaum
-ist exakt gleich. Die getrennte frische
-[Main-CI](https://github.com/enpasos/skillpilot/actions/runs/42603858450)
-läuft noch. Das harte Standard-G17-Gate und die Abnahme aller zehn geschützten
-Fächer bleiben offen.
+**Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
+**Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
+zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
+bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
+Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
+
+**Aktuelle Lieferposition vom 9. November 2026:** Die Physik-Lieferung ist in
+[PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
+der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
+Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
+Vollständige TS-Prüfung und nativer Projektionsvergleich sind bestanden;
+der abschließende Backendlauf, der frische reguläre Meilensteincheck und die
+Remote-CI laufen noch. Der PR ist konfliktfrei, aber noch nicht auf main.
+Der technische 600-Sekunden-Rahmen aus
+[PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
+`de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
+gleich dem vollständig geprüften Headtree. Der eigene frische Main-Lauf ist
+getrennte Evidenz. Das harte Standard-G17-Gate und die endgültige Abnahme aller
+zehn geschützten Fächer bleiben offen.
+
+Die folgenden Lieferpositionen bewahren die früheren Prüfstände als Historie.
 
 Die Mathematiklieferung mit PR #97 bei
 `e94def51f625630da6c3f7fe8e54badefd8eb687` hat inzwischen auch ihre separate

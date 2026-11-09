@@ -33,7 +33,7 @@ advance. Its hash moves from `5da87f60f3a8…` to `333c35b70529…`; the other
 **159 complete records** and all remaining metadata are exact. The 160-path
 inventory, hash mode, checker, runner, workflow and manifest remain unchanged.
 The complete prior baseline remains in reachable Git history. The
-[compact technical receipt](../../qa-artifacts/ci-contract-audit/2026-11-09/g17-chemistry-cache-watch-ack/receipt.json)
+[compact technical receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-chemistry-cache-watch-ack/receipt.json)
 binds that baseline, the actual cache/source evidence, V7 registry
 `8e56e88b70e0…` and the completed local results.
 
