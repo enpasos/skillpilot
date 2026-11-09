@@ -990,6 +990,34 @@ C_F = C \cap (G_F \times G_F),
 R_F = R \cap (G_F \times G_F).
 $$
 
+**Prerequisite-preserving projection (Product Owner decision, 9 November 2026).**
+Let $T\subseteq A$ be the canonical atomic targets selected for a resolved
+Level 2 scope. The underlying prerequisite graph MUST retain at least
+
+$$
+U(T)=T\cup\{p\in A\mid\exists t\in T:(t,p)\in R_{at}^+\},
+$$
+
+together with the canonical prerequisite relationships needed to preserve
+their full transitive demand. Applicability and the reviewed composition may
+determine $T$; they MUST NOT remove indispensable canonical intermediate goals
+before that demand is computed. In transitional data, normalization also needs
+the canonical structure that supplies inherited requirements and atomic
+expansion (§6.4). The visible tree need not display every retained node.
+
+For example, if $a$ requires $b$ and $b$ requires $c$, selecting $a$ and $c$
+must retain $b$ in the underlying graph and preserve the demand of $a$ for $c$.
+If a projection loses that path, the projection is invalid and must retain the
+missing nodes and relationships. It MUST NOT repair the loss by authoring new
+`requires` edges in the composition view or by weakening canonical prerequisites.
+
+Structural retention does not assign a learning role. The explicit Level 2
+role requirement in §8.5 still applies before prerequisite clusters are expanded;
+`contains` descendants alone gain no additional role obligation. A missing
+required role invalidates the projection even if the node is loaded or mastered.
+Closure computation MUST NOT silently promote supporting goals to `target`,
+widen Level 3 focus, or create, copy, transfer or reset mastery.
+
 For scoped learner evaluation, normalize atomic requirements globally and take their full transitive closure before restricting endpoints. Write $A_F=A\cap G_F$. The normative scoped relation is:
 
 $$
@@ -1035,6 +1063,15 @@ This single-occurrence tree property is a scoped-view projection validity condit
 
 One reviewed way to satisfy this stronger claim is to compile the default tree from a separate scope-specific composition view whose structure nodes reference canonical subtree roots of the authored skill graph.
 
+**Canonical identity survives projection.** A canonical cluster MUST NOT become
+an independently assessable or masterable atom merely because a view references
+it directly or hides its children. This holds regardless of whether a separate
+`semanticKind` review exists. A collapsed cluster represents its reviewed
+canonical atomic target basis; prerequisite evaluation, progress and completion
+retain that basis. Use `canonicalSubtree` or explicit references to the intended
+canonical atoms to establish it. An existing result stored under the cluster ID
+MUST NOT be transferred to its children by a projection change.
+
 Where an authoritative semantic-kind review is available, a composition view
 MUST NOT reference a `curricularArea` cluster through a direct `goalEntry`.
 That representation would discard its `contains` structure and turn a
@@ -1043,6 +1080,14 @@ navigation area into an opaque atomic-looking runtime target. Use a
 explicit learner-facing structure that references the intended atomic goals.
 This is a representation constraint; it does not infer a projection role from
 the cluster, its stage, or its position.
+
+**Implementation boundary (9 November 2026).** The existing canonical resolver
+already follows prerequisite chains recursively. However, the current
+`goalEntry` projection and resolver still support turning a canonical cluster
+into an opaque atomic runtime target. That legacy behavior does not satisfy the
+identity rule above; its correction and native projection verification remain
+pending. This specification neither claims implementation nor changes the
+normal/strict focus policy.
 
 Such composition-view artifacts remain outside the formal graph object defined in this specification.
 

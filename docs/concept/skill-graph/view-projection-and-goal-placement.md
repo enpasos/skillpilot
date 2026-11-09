@@ -202,6 +202,45 @@ Changing the resolved scope may legitimately yield a different visible path to t
 
 But within one resolved scope, the default tree must remain a single-occurrence tree projection rather than a raw graph rendering.
 
+### Prerequisite closure and canonical identity
+
+Under the Product Owner decision of **9 November 2026**, selecting a subset of
+canonical atomic goals must preserve their full transitive prerequisite demand
+in the underlying graph. Applicability and the reviewed Level 2 composition
+select the intended atomic targets; they must not first discard canonical
+intermediate prerequisites and then compute reachability on that incomplete
+graph. Retain every necessary prerequisite node and relationship, including
+the structure needed for inherited requirements in transitional data. The
+formal closure requirement is specified in [Graph Definition §11.2](graph-definition.md#112-filter-predicate-and-induced-subgraph).
+
+For `A requires B requires C`, a view selecting A and C must retain B in its
+underlying prerequisite graph. B need not appear in the visible tree. Its
+required Level 2 role must nevertheless be explicitly resolved under the
+existing role contract; loading a node does not assign a role. Missing roles
+invalidate the projection. The role check still precedes prerequisite-cluster
+expansion; `contains` descendants alone gain no additional role obligation.
+No support goal becomes a target automatically, and Level 3 focus remains a
+separate restriction applied after full prerequisite reachability.
+
+Canonical goal identity and atomicity also survive projection. A direct
+`goalEntry` can expose a canonical atom as an assessable leaf. Referencing a
+canonical cluster or collapsing its display must not create an independently
+masterable replacement atom, regardless of its `semanticKind` review status.
+Use `canonicalSubtree` or explicit canonical atomic references to establish the
+reviewed target basis. A collapsed display retains that basis for prerequisites,
+progress and completion; it creates no new result and transfers no existing
+cluster result to children. Normal and strict evaluation retain their existing
+focus semantics.
+
+**Implementation boundary (9 November 2026).** The existing resolver already
+loads prerequisite chains recursively, but the current `goalEntry` runtime path
+can still discard a canonical cluster's children and treat the cluster as an
+atom. This is legacy implementation awaiting correction and native verification,
+not an exception to the contract. The
+[DPK-006c-c implementation record](../../dev/dual-curriculum-package-implementation-status.md#abgeschlossener-teilschritt-dpk-006c-c)
+describes that historical behavior. Adding view-authored `requires` edges is
+not the remedy for a projection that loses canonical prerequisite paths.
+
 ## Scope-specific composition view contract
 
 The preferred way to define a learner-facing Bundesland or curriculum tree is an explicit composition view file.
@@ -256,8 +295,8 @@ The default learner-facing tree should be produced by an early deterministic com
 
 1. resolve the scope
 2. select the matching composition view, if one exists
-3. expand canonical subtree references
-4. validate single occurrence, non-overlap, and parent uniqueness
+3. expand canonical references, preserve their canonical atomic basis, and retain the full prerequisite closure
+4. validate required projection roles, single occurrence, non-overlap, and parent uniqueness
 5. emit a compiled tree artifact for the runtime
 
 This compile step must happen early enough that programmatic validation rules can run on the compiled tree before any UI rendering logic.
@@ -321,6 +360,7 @@ Compilation must not:
 
 - create duplicate goal identities
 - copy or reset mastery values
+- reinterpret a canonical cluster as an independent atom or transfer its result to children
 - rewrite canonical `requires` or `contains` edges
 - replace stable goal IDs
 

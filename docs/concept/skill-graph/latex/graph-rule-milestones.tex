@@ -233,9 +233,9 @@ Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
 \textbf{Ist und Lücke.} QUELLE/SICHT getrennt; akzeptiertes Overlay ersetzt keine CQR-003-Abdeckung.\par\smallskip
 \emph{Fundstelle:} „Filter als Prädikat und kompilierte Anwendbarkeit“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-C33}\textbf{GD-C33} &
-\textbf{Pflicht.} Globale Vererbung zuerst, Einschränkung danach; atomare Klassifikation bleibt aus dem kanonischen Graphen erhalten. Ausgeblendete Kinder machen Cluster nicht zu Atomen.\par\smallskip
+\textbf{Pflicht.} Der Auswertungsgraph ausgewählter kanonischer Atome enthält deren vollständige transitive atomare Voraussetzungshülle vor Fokus- oder Sichtbeschränkung; globale Vererbung und Expansion gehen voraus. Die kanonische Klassifikation bleibt erhalten: Ausgeblendete Kinder machen Cluster nicht zu Atomen.\par\smallskip
 \textbf{Soll.} SICHT/RT\par\smallskip
-\textbf{Ist und Lücke.} Separate Projektionsprüfungen; keine neue Blattklassifikation im Filter.\par\smallskip
+\textbf{Ist und Lücke.} Vollständige Hüllen- und Identitätserhaltung separat prüfen; die bestehende opake goalEntry-Atomisierung ist eine offene Implementierungslücke.\par\smallskip
 \emph{Fundstelle:} „Erst global vererben, dann einschränken“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-C34}\textbf{GD-C34} &
 \textbf{Pflicht.} Normalmodus beschränkt global berechnete transitive atomare Anforderungen auf Fokusendpunkte; leere relative Basis blockiert nicht. Strict prüft globale Voraussetzungen bei Kandidaten im Fokus. Strict-Frontier ist Teilmenge der Normalfrontier. Ausgeblendete Voraussetzungen werden nicht gemeistert.\par\smallskip
@@ -300,14 +300,14 @@ Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
 \textbf{Ist und Lücke.} Separate Strukturprüfungen; keine neue globale Ein-Eltern-Pflicht für kanonische Ziele.\par\smallskip
 \emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X08}\textbf{GD-X08} &
-\textbf{Pflicht.} Früh kompilieren: Kontext/Sicht auswählen, Referenzen expandieren, Rollen und sichtbare Eltern prüfen, Ergebnis vor UI-Rendering validieren.\par\smallskip
+\textbf{Pflicht.} Früh kompilieren: Kontext/Sicht auswählen, Referenzen und vollständige Voraussetzungshülle auflösen, explizite Rollen und sichtbare Eltern prüfen, Ergebnis vor UI-Rendering validieren.\par\smallskip
 \textbf{Soll.} M5-Soll / SICHT\par\smallskip
 \textbf{Ist und Lücke.} Architektur-/Bereitstellungsvertrag; CQR-401 zählt lediglich Dateien.\par\smallskip
 \emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X09}\textbf{GD-X09} &
-\textbf{Pflicht.} Autoritatives \code{curricularArea} darf per \code{goalEntry} nicht als undurchsichtiger scheinbarer Atomknoten auftreten. \code{canonicalSubtree} oder explizite Viewstruktur erhält beabsichtigte Nachkommen; Rollen ändern sich dadurch nicht.\par\smallskip
+\textbf{Pflicht.} Kein kanonischer Cluster darf durch goalEntry oder Anzeigeverdichtung zum eigenständig abschließbaren Ersatzatom werden; die Regel gilt unabhängig von einem Semantic-Kind-Review. Kanonische Atombasis und erforderliche Voraussetzungsketten bleiben erhalten. Keine neuen View-requires oder Masteryübertragung auf Kinder.\par\smallskip
 \textbf{Soll.} M5-Soll / SICHT\par\smallskip
-\textbf{Ist und Lücke.} Konkreter View-Strukturvertrag, kein pauschales M7-Feature.\par\smallskip
+\textbf{Ist und Lücke.} Verbindlicher Projektionsvertrag; die bestehende Cluster-Atomisierung ist noch nicht korrigiert. Kein pauschaler M7-Nachweis.\par\smallskip
 \emph{Fundstelle:} „Geprüfte Kompositionssichten“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X10}\textbf{GD-X10} &
 \textbf{Pflicht.} Katalognavigation liegt vor Personalisierung. Level 1 Basiscurriculum, Level 2 backendverantworteter dauerhafter Umfang, Level 3 temporärer Fokus mit einem aktiven Atom, Level 4 binäres Ergebnis an stabiler ID. Sicht-/Fokuswechsel erhält Ergebnisse, Clusterstand ist abgeleitet.\par\smallskip
@@ -330,7 +330,7 @@ Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
 \textbf{Ist und Lücke.} Kein einzelner CQR-Gate beweist sämtliche Überlappungsfälle.\par\smallskip
 \emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X14}\textbf{GD-X14} &
-\textbf{Pflicht.} Jede direkte/geerbte/transitive effektive Voraussetzung eines sichtbaren Ziels muss in Level 2 als target oder prerequisiteOnly auflösbar sein. Prüfung auf Zielknoten vor Clusterexpansion; bloße contains-Nachkommen erhalten keine zusätzliche Rollenpflicht. Fehlende Rolle sperrt trotz Mastery/außerhalb Fokus; Legacy-Ausnahme entfällt. Gültige Außenfokusziele bleiben normal-mode-nichtblockierend.\par\smallskip
+\textbf{Pflicht.} Jede direkte/geerbte/transitive effektive Voraussetzung eines sichtbaren Ziels muss in Level 2 ausdrücklich als target oder prerequisiteOnly auflösbar sein; strukturelles Mitladen weist keine Rolle zu. Prüfung vor Clusterexpansion; bloße contains-Nachkommen erhalten keine zusätzliche Rollenpflicht. Fehlende Rolle sperrt trotz Mastery/außerhalb Fokus; Legacy-Ausnahme entfällt. Gültige Außenfokusziele bleiben im Normalmodus nichtblockierend.\par\smallskip
 \textbf{Soll.} Stufenübergreifender Projektions-/RT-Vertrag\par\smallskip
 \textbf{Ist und Lücke.} Ownerregel 7.11.; kein automatischer M7-Nachweis. Vollständige heutige Durchsetzung separat prüfen.\par\smallskip
 \emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]

@@ -304,8 +304,32 @@ Das ergänzt die bestehenden lokalen Belege, ersetzt aber nicht die eigene
 frische Remote-Abnahme des folgenden Deutsch-PRs. Die
 [Integrationsnotiz](german-assessment-reader-integration-review-2026-11-09.md)
 bindet die tatsächlichen Aufrufer und Ergebnisdateien. Die Wirtschaftsentscheidung
-ist auf Ownerwunsch zurückgestellt; dafür erfolgt keine Vertrags- oder
-Datenänderung.
+zur zusätzlichen Scopebindung war auf Ownerwunsch zurückgestellt. Nach seiner
+anschließenden Projektionsklärung und der Astra-Ultra-Analyse vom 9. November
+wird dieser Vorschlag nicht weiterverfolgt. Die Kursansicht erhält keine eigene
+`requires`-Autorenschaft. Eine Projektion ausgewählter kanonischer Atome muss
+deren vollständige transitive Voraussetzungshülle erhalten und die erforderlichen
+Level-2-Rollen ausdrücklich auflösen; sichtbarer Baum und Fokus sind davon
+getrennt. Der reguläre Resolver verfolgt solche Ketten bereits rekursiv.
+
+Der konkrete Wirtschaftsfall beginnt davor: Direkte `goalEntry`-Referenzen machen
+die beiden kanonischen Prüfungscluster in der Projektion zu Atomen und schneiden
+ihre Kinder als Berechnungsbasis ab. Dies ist im bisherigen DPK-006c-c-Vertrag
+ausdrücklich beschrieben. Bloßes zusätzliches Laden von Zwischenknoten würde
+die dadurch isolierten Ersatzatome nicht verbinden. Der nächste begrenzte
+Nachweis vergleicht daher die bestehende opake Projektion mit einer Projektion
+der vorhandenen kanonischen Prüfungsatome und erst anschließend die Entfernung
+der beiden Clusteranforderungen. Zielmengen- und Fortschrittsunterschiede der
+Projektionskorrektur werden ausdrücklich ausgewiesen; gespeicherte Ergebnisse
+werden nicht auf Kinder übertragen. Diese Analyse implementiert noch keine
+Projektions-, Rollen-, Mastery- oder Curriculumänderung.
+
+Die angeforderte konzeptionelle Dokumentationskorrektur wird als eigener kleiner
+Dokumentations-PR unmittelbar nach der Main-Lieferung von #97 und vor dem
+Deutsch-Daten-PR übernommen. Graphdefinition, Projektionsvertrag, deutsche
+LaTeX-Kapitel, bestehende Regelzuordnung und neu gebauter PDF-Stand gehören
+zusammen; die Deutsch-Daten und deren technische Nachweise bleiben ein eigener
+Folgeschritt. Der sichtbare Branch bewahrt beide getrennt committierbaren Stände.
 
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren

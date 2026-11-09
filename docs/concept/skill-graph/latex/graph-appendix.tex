@@ -4,7 +4,8 @@
 \section{Statusabgleich und Grenzen der Aussagen}
 \label{sec:implementation}
 Diese Fassung ergänzt die Konzeptkorrektur vom 4. November um die
-atomare Zielpräzisierung und die Meilensteinzuordnung vom 8. November 2026.
+atomare Zielpräzisierung und die Meilensteinzuordnung vom 8. November sowie
+die Präzisierung des Projektionsvertrags vom 9. November 2026.
 Der folgende historische Implementierungsabgleich bezog sich auf
 \code{616324e857}; er ist kein neuer vollständiger Runtimeabnahmelauf.
 Die aktuelle Gatezuordnung im vorigen Anhang wurde gegen die Hauptlinie
@@ -12,6 +13,18 @@ Die aktuelle Gatezuordnung im vorigen Anhang wurde gegen die Hauptlinie
 und deren Buildstand verändert. Die neue globale Anwendungsanerkennung
 ist \textbf{noch nicht implementiert}. Ein lesbarer Beleg oder ein erfolgreicher
 Dokumentbuild beweist weder Laufzeitkonformität noch Deployment.
+
+\paragraph{Gesonderter Projektionsbefund vom 9. November 2026.}
+Am gelesenen Stand \code{68db5bf499} lädt
+\code{CompletionCanonicalGraphResolver} Voraussetzungsketten rekursiv.
+Die View-Projektion in \code{LearnerService} und der Resolver
+behandeln direkte \code{goalEntry}-Referenzen auf kanonische Cluster
+jedoch weiterhin als atomare Laufzeitziele ohne deren Kinder.
+Der historische DPK-006c-c-Nachweis beschreibt diese Altimplementierung;
+er belegt nicht die nun ausdrücklich geforderte Erhaltung der kanonischen
+atomaren Zielbasis. Die Korrektur und ihr nativer Nachweis stehen aus.
+Dieser gezielte Leseabgleich aktualisiert nicht die übrigen historischen
+Implementierungsbefunde der folgenden Tabelle.
 
 \begin{longtable}{@{}P{32mm}P{116mm}@{}}
 \toprule
