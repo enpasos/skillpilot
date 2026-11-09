@@ -58,6 +58,152 @@ class FirstMathPrerequisiteReductionTest {
     private static final String BIOLOGY = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String LATIN = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String GERMAN = "67bd301b-e11a-582d-94ba-4f4b1a4cefff";
+    private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final Map<String, Set<String>> PHYSICS_PROBES_BY_SOURCE = Map.ofEntries(
+            Map.entry("00e2ddfe-18c1-57a4-86ad-ee467a1a3d61", Set.of("00e2ddfe-18c1-57a4-86ad-ee467a1a3d61")),
+            Map.entry("0432a422-401b-5134-bf08-05cfd8c7a366", Set.of("0432a422-401b-5134-bf08-05cfd8c7a366")),
+            Map.entry("09029573-864f-40ca-bf8a-cee7bf6dcb73", Set.of("09029573-864f-40ca-bf8a-cee7bf6dcb73")),
+            Map.entry("09e058e9-f3ed-5046-b0e9-495b694bf2a1", Set.of("09e058e9-f3ed-5046-b0e9-495b694bf2a1")),
+            Map.entry("0b08aed8-3c0f-5b38-844c-1bb363abbf68", Set.of("0b08aed8-3c0f-5b38-844c-1bb363abbf68")),
+            Map.entry("0b090935-1e43-581b-84ec-078741f8969e", Set.of("0b090935-1e43-581b-84ec-078741f8969e")),
+            Map.entry("0ceb4400-3e8f-586c-a669-a8877906bd8d", Set.of("0ceb4400-3e8f-586c-a669-a8877906bd8d")),
+            Map.entry("0cf2a5b0-8660-578d-8316-2b8a50fbdff7", Set.of("0cf2a5b0-8660-578d-8316-2b8a50fbdff7")),
+            Map.entry("0dd1e39c-8557-5a4e-b467-caae964fff67", Set.of("0dd1e39c-8557-5a4e-b467-caae964fff67")),
+            Map.entry("0f5346d6-de1b-5e38-aaba-68db205e594b", Set.of("0f5346d6-de1b-5e38-aaba-68db205e594b")),
+            Map.entry("119cb138-b0c4-559d-8f1a-a4ae42db0656", Set.of("119cb138-b0c4-559d-8f1a-a4ae42db0656")),
+            Map.entry("14d99a65-8d58-5647-88ab-02137b96d55b", Set.of("14d99a65-8d58-5647-88ab-02137b96d55b")),
+            Map.entry("15cb40f1-e2d3-5754-9e7b-e8888fe78340", Set.of("15cb40f1-e2d3-5754-9e7b-e8888fe78340")),
+            Map.entry("161502b8-e52d-58d0-8f01-9f777b56d392", Set.of("161502b8-e52d-58d0-8f01-9f777b56d392")),
+            Map.entry("1659e056-c7ac-553d-b4d6-467cc5688dd1", Set.of("1659e056-c7ac-553d-b4d6-467cc5688dd1")),
+            Map.entry("16caf92e-2800-57d1-946c-5b92ce848a96", Set.of("16caf92e-2800-57d1-946c-5b92ce848a96")),
+            Map.entry("18058384-a1bc-5ba2-8f5d-1fe9498acbf0", Set.of("18058384-a1bc-5ba2-8f5d-1fe9498acbf0")),
+            Map.entry("1ab5f599-0927-579d-94cc-feecdf3b5603", Set.of("1ab5f599-0927-579d-94cc-feecdf3b5603")),
+            Map.entry("1b432223-3d59-5586-86a9-2214b4844101", Set.of("1b432223-3d59-5586-86a9-2214b4844101")),
+            Map.entry("22561c66-3957-5d55-b07a-25de1f359930", Set.of("22561c66-3957-5d55-b07a-25de1f359930")),
+            Map.entry("22bdd29e-00d3-5d43-97d6-8b442b8bfc8c", Set.of("22bdd29e-00d3-5d43-97d6-8b442b8bfc8c")),
+            Map.entry("23530be9-66b6-57d7-9ff8-0c55dd5b1295", Set.of("23530be9-66b6-57d7-9ff8-0c55dd5b1295")),
+            Map.entry("264dc31c-ec92-5e39-a8b8-16f1d74366d4", Set.of("264dc31c-ec92-5e39-a8b8-16f1d74366d4")),
+            Map.entry("26c1e946-e858-57ef-a19b-d6bb295c76f4", Set.of("26c1e946-e858-57ef-a19b-d6bb295c76f4")),
+            Map.entry("2825b528-00ee-52d0-870e-686890cb1195", Set.of("2825b528-00ee-52d0-870e-686890cb1195")),
+            Map.entry("2973da95-2cfc-5817-9c99-3c0c82777369", Set.of("2973da95-2cfc-5817-9c99-3c0c82777369")),
+            Map.entry("2b9e565f-d9b4-5e23-b5b7-b7977cecff06", Set.of("2b9e565f-d9b4-5e23-b5b7-b7977cecff06")),
+            Map.entry("2c195204-2e21-5369-8782-7bf4fc41bf9f", Set.of("2c195204-2e21-5369-8782-7bf4fc41bf9f")),
+            Map.entry("2c3f9ee1-fe78-5583-8eb1-fa6369b95905", Set.of("2c3f9ee1-fe78-5583-8eb1-fa6369b95905")),
+            Map.entry("320732e8-1c44-5fa4-9a47-972243cfc32a", Set.of("422dcfaa-b082-57f0-a987-eec83a63937e", "5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7", "99954602-819d-57f3-9c09-737e69f162df", "cf892388-6cb4-5981-adf2-7168aeb948b1")),
+            Map.entry("32b896b9-f2f1-4d4e-96ad-e869ac3d3759", Set.of("32b896b9-f2f1-4d4e-96ad-e869ac3d3759")),
+            Map.entry("330808f6-789a-583d-86df-e271a7683d8b", Set.of("330808f6-789a-583d-86df-e271a7683d8b")),
+            Map.entry("341ec911-6624-529c-8799-b5a5113ee907", Set.of("341ec911-6624-529c-8799-b5a5113ee907")),
+            Map.entry("3631c8f7-ff48-57ff-b7ee-8397ff1d166a", Set.of("3631c8f7-ff48-57ff-b7ee-8397ff1d166a")),
+            Map.entry("36d5b915-1cb8-5a05-b64a-5f9497a33d1f", Set.of("36d5b915-1cb8-5a05-b64a-5f9497a33d1f")),
+            Map.entry("38e0ff49-f132-44c8-b17a-73dada5344db", Set.of("38e0ff49-f132-44c8-b17a-73dada5344db")),
+            Map.entry("39ef1e8a-9203-5192-8c76-8e0c3322646f", Set.of("39ef1e8a-9203-5192-8c76-8e0c3322646f")),
+            Map.entry("3aaac6ad-948e-502a-9d49-ce40db0f2ca3", Set.of("3aaac6ad-948e-502a-9d49-ce40db0f2ca3")),
+            Map.entry("41872413-497e-5b88-ac65-365ed7d9851f", Set.of("41872413-497e-5b88-ac65-365ed7d9851f")),
+            Map.entry("422dcfaa-b082-57f0-a987-eec83a63937e", Set.of("422dcfaa-b082-57f0-a987-eec83a63937e")),
+            Map.entry("43adaa0b-1f37-5d55-a496-6900555274a1", Set.of("43adaa0b-1f37-5d55-a496-6900555274a1")),
+            Map.entry("47dc2c52-b776-5694-9715-ae98c7c23f85", Set.of("09e058e9-f3ed-5046-b0e9-495b694bf2a1", "0b08aed8-3c0f-5b38-844c-1bb363abbf68", "2825b528-00ee-52d0-870e-686890cb1195", "39ef1e8a-9203-5192-8c76-8e0c3322646f", "3aaac6ad-948e-502a-9d49-ce40db0f2ca3", "41872413-497e-5b88-ac65-365ed7d9851f", "6d882aac-9658-5f0d-bf3d-9338f0143bbc", "84ddb244-e560-592f-9d43-e84c801fe5b4", "8ac61062-f63e-5935-96ae-84014906c368", "8cdef591-6ddb-5151-8c74-a80be0271079", "8fbae050-c5c9-52b6-9983-2c366e9c8ade", "8fe0ebf1-8256-53d2-9b01-fdb945e57a59", "9678afc1-44ca-54fb-b280-29336d45a928", "bdaa56ad-6257-58a3-a633-8a6339f72f09", "c2e0fc31-27a2-5727-9025-a824db9150d2", "ce14a7e7-7e2a-517f-a465-78ba3fbe414d", "d1306bda-35ff-53e9-9458-3cbc128874d8", "db47ac91-7bb0-5ba3-b39d-e2d6fc98396e", "e19fccd7-6a35-5c9e-86e1-dcca76481e9c", "f06c581a-7157-584e-a692-99bcd613cff9")),
+            Map.entry("4a58df57-f791-502f-8b8d-9ba155e46035", Set.of("4a58df57-f791-502f-8b8d-9ba155e46035")),
+            Map.entry("4daef009-6425-526a-8574-4fa75f28f946", Set.of("4daef009-6425-526a-8574-4fa75f28f946")),
+            Map.entry("4e046c1c-bcc7-5e3c-9f71-f80d69027483", Set.of("4e046c1c-bcc7-5e3c-9f71-f80d69027483")),
+            Map.entry("50328a4f-91e8-5c8b-8d61-8f9c98a5cddf", Set.of("50328a4f-91e8-5c8b-8d61-8f9c98a5cddf")),
+            Map.entry("5733c2c5-be2d-5879-89db-4ed4e5f3eff3", Set.of("5733c2c5-be2d-5879-89db-4ed4e5f3eff3")),
+            Map.entry("5773ccbe-cd20-5ba0-99a5-7ccd5f42be51", Set.of("5773ccbe-cd20-5ba0-99a5-7ccd5f42be51")),
+            Map.entry("58c4b989-5cd0-5bf2-99d1-a0163fc837a1", Set.of("58c4b989-5cd0-5bf2-99d1-a0163fc837a1")),
+            Map.entry("5a5bc118-4420-5bb7-94c3-67837f2ce0dd", Set.of("5a5bc118-4420-5bb7-94c3-67837f2ce0dd")),
+            Map.entry("5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7", Set.of("5c6d2ec8-d692-5ad2-a72a-8a9e5544a6c7")),
+            Map.entry("5e64eacd-5204-5028-af23-02a43377c56e", Set.of("5e64eacd-5204-5028-af23-02a43377c56e")),
+            Map.entry("5f289cdc-fda1-4058-b44f-041ba1398e79", Set.of("5f289cdc-fda1-4058-b44f-041ba1398e79")),
+            Map.entry("5fda8623-69e0-5503-9c6d-86d054a8cf91", Set.of("5fda8623-69e0-5503-9c6d-86d054a8cf91")),
+            Map.entry("616ac6cf-901b-509a-8cbb-bd422ddecf05", Set.of("616ac6cf-901b-509a-8cbb-bd422ddecf05")),
+            Map.entry("66100588-17bb-58c6-91dd-2349c880dd87", Set.of("66100588-17bb-58c6-91dd-2349c880dd87")),
+            Map.entry("6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1", Set.of("6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1")),
+            Map.entry("6c9d0ef3-c82f-534f-8024-6b0efcb88276", Set.of("6c9d0ef3-c82f-534f-8024-6b0efcb88276")),
+            Map.entry("6d18104b-5704-5c45-b39a-2c84565b1796", Set.of("6d18104b-5704-5c45-b39a-2c84565b1796")),
+            Map.entry("6d25344c-35d7-5853-925d-2bccbaf50630", Set.of("6d25344c-35d7-5853-925d-2bccbaf50630")),
+            Map.entry("6d882aac-9658-5f0d-bf3d-9338f0143bbc", Set.of("6d882aac-9658-5f0d-bf3d-9338f0143bbc")),
+            Map.entry("6ea3fb3c-abdc-568f-ab13-97c36dc274e4", Set.of("6ea3fb3c-abdc-568f-ab13-97c36dc274e4")),
+            Map.entry("706703af-b936-5e64-8fe2-ab1128feaf49", Set.of("706703af-b936-5e64-8fe2-ab1128feaf49")),
+            Map.entry("71b51afd-c71b-506f-8128-d6de36b509d1", Set.of("71b51afd-c71b-506f-8128-d6de36b509d1")),
+            Map.entry("72649cf5-893c-5f03-88bd-a2497171d434", Set.of("72649cf5-893c-5f03-88bd-a2497171d434")),
+            Map.entry("72ee642f-7574-517e-abd6-17d699b05af6", Set.of("72ee642f-7574-517e-abd6-17d699b05af6")),
+            Map.entry("72effc66-87f4-5f5e-8d36-1547677365fb", Set.of("72effc66-87f4-5f5e-8d36-1547677365fb")),
+            Map.entry("741774ef-15fc-4bcf-a370-e2c5cf4257d0", Set.of("741774ef-15fc-4bcf-a370-e2c5cf4257d0")),
+            Map.entry("74a74132-fa39-541c-8d3c-696cf228452d", Set.of("74a74132-fa39-541c-8d3c-696cf228452d")),
+            Map.entry("77257ded-ccf0-521f-8a8c-38c8f85fd3ca", Set.of("77257ded-ccf0-521f-8a8c-38c8f85fd3ca")),
+            Map.entry("783c1ffe-d983-5c5a-8897-2c88fc64147c", Set.of("783c1ffe-d983-5c5a-8897-2c88fc64147c")),
+            Map.entry("78cf6eff-b3bc-5444-9ef8-5d39dae8d17d", Set.of("78cf6eff-b3bc-5444-9ef8-5d39dae8d17d")),
+            Map.entry("7982cd8e-2151-59e7-858d-c1361c5d249e", Set.of("7982cd8e-2151-59e7-858d-c1361c5d249e")),
+            Map.entry("7be8cb95-7174-5beb-94c5-c0e7bb9b1836", Set.of("7be8cb95-7174-5beb-94c5-c0e7bb9b1836")),
+            Map.entry("7c0b94b9-2af7-59d4-bfae-278a3418f6a8", Set.of("7c0b94b9-2af7-59d4-bfae-278a3418f6a8")),
+            Map.entry("7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d", Set.of("7cb0e5a0-c4ef-5e24-82b6-d8f85ffded8d")),
+            Map.entry("7e0308d8-a239-5c0f-b2c0-724f21e4da60", Set.of("7e0308d8-a239-5c0f-b2c0-724f21e4da60")),
+            Map.entry("7f83e25c-38f7-5ac2-8f9c-ec54eeef1026", Set.of("7f83e25c-38f7-5ac2-8f9c-ec54eeef1026")),
+            Map.entry("81c0d811-e6de-5489-8415-3b257c734a2e", Set.of("81c0d811-e6de-5489-8415-3b257c734a2e")),
+            Map.entry("82feb329-c3bc-58ba-a5b0-6ccdf226dbeb", Set.of("82feb329-c3bc-58ba-a5b0-6ccdf226dbeb")),
+            Map.entry("8320bb17-e6ab-50ea-a965-aa331bfd33e1", Set.of("8320bb17-e6ab-50ea-a965-aa331bfd33e1")),
+            Map.entry("841edfdb-5e12-5a37-ab12-552a1d8e92ca", Set.of("841edfdb-5e12-5a37-ab12-552a1d8e92ca")),
+            Map.entry("84ddb244-e560-592f-9d43-e84c801fe5b4", Set.of("84ddb244-e560-592f-9d43-e84c801fe5b4")),
+            Map.entry("86015397-23c4-5ed7-b893-bc619ec961a8", Set.of("86015397-23c4-5ed7-b893-bc619ec961a8")),
+            Map.entry("879491c0-7153-570b-91f4-c61d9fe8a143", Set.of("879491c0-7153-570b-91f4-c61d9fe8a143")),
+            Map.entry("88d07c80-5d7d-5c70-b385-b22769381e44", Set.of("88d07c80-5d7d-5c70-b385-b22769381e44")),
+            Map.entry("899481ae-2917-5fb0-805e-29e7c3c051be", Set.of("899481ae-2917-5fb0-805e-29e7c3c051be")),
+            Map.entry("89cadf81-143b-5f6b-82bd-29ba20d92a1b", Set.of("89cadf81-143b-5f6b-82bd-29ba20d92a1b")),
+            Map.entry("8a1d4093-9832-5010-b1ca-9d32d8c05afa", Set.of("8a1d4093-9832-5010-b1ca-9d32d8c05afa")),
+            Map.entry("8ac61062-f63e-5935-96ae-84014906c368", Set.of("8ac61062-f63e-5935-96ae-84014906c368")),
+            Map.entry("8cdef591-6ddb-5151-8c74-a80be0271079", Set.of("8cdef591-6ddb-5151-8c74-a80be0271079")),
+            Map.entry("8fbae050-c5c9-52b6-9983-2c366e9c8ade", Set.of("8fbae050-c5c9-52b6-9983-2c366e9c8ade")),
+            Map.entry("8fe0ebf1-8256-53d2-9b01-fdb945e57a59", Set.of("8fe0ebf1-8256-53d2-9b01-fdb945e57a59")),
+            Map.entry("8ff2a728-fba3-538e-83e9-69bdd8e1369e", Set.of("8ff2a728-fba3-538e-83e9-69bdd8e1369e")),
+            Map.entry("91b20476-12cf-50d6-880a-ea509ffe8a9a", Set.of("91b20476-12cf-50d6-880a-ea509ffe8a9a")),
+            Map.entry("92d8f398-0c9f-523c-88d7-44165b6b4768", Set.of("92d8f398-0c9f-523c-88d7-44165b6b4768")),
+            Map.entry("93cdaa49-88e8-5e26-8506-656366d9ce3c", Set.of("93cdaa49-88e8-5e26-8506-656366d9ce3c")),
+            Map.entry("9678afc1-44ca-54fb-b280-29336d45a928", Set.of("9678afc1-44ca-54fb-b280-29336d45a928")),
+            Map.entry("99954602-819d-57f3-9c09-737e69f162df", Set.of("99954602-819d-57f3-9c09-737e69f162df")),
+            Map.entry("a77e53d5-246d-52df-86a2-d14f7a08fb77", Set.of("a77e53d5-246d-52df-86a2-d14f7a08fb77")),
+            Map.entry("a844895e-2cdc-4665-aad2-a49c62f11759", Set.of("a844895e-2cdc-4665-aad2-a49c62f11759")),
+            Map.entry("a94f9b05-ecb1-5a13-8364-44c1c98be8e4", Set.of("a94f9b05-ecb1-5a13-8364-44c1c98be8e4")),
+            Map.entry("a9562b05-c54d-5635-9244-3f7dd24a8642", Set.of("a9562b05-c54d-5635-9244-3f7dd24a8642")),
+            Map.entry("ab2b9c0f-db98-5d20-adee-e46eafe037b4", Set.of("ab2b9c0f-db98-5d20-adee-e46eafe037b4")),
+            Map.entry("abe032d3-97dd-5eaf-964e-0439cea27ac2", Set.of("26c1e946-e858-57ef-a19b-d6bb295c76f4", "706703af-b936-5e64-8fe2-ab1128feaf49", "d82ac375-2aa8-578a-893a-025e0a27e60f", "d8a08f79-befc-5a29-9b74-6481d40c02c3")),
+            Map.entry("acf192a8-c398-51dc-a03b-672ab55df957", Set.of("acf192a8-c398-51dc-a03b-672ab55df957")),
+            Map.entry("ad62f563-4fee-5399-8d9c-03a214658aa9", Set.of("ad62f563-4fee-5399-8d9c-03a214658aa9")),
+            Map.entry("af1c3116-5b55-55f5-86da-8c2cfe2c550c", Set.of("af1c3116-5b55-55f5-86da-8c2cfe2c550c")),
+            Map.entry("b15f3e47-6051-5382-aa86-1e4f09e245d5", Set.of("b15f3e47-6051-5382-aa86-1e4f09e245d5")),
+            Map.entry("b378c8b3-5e83-5abf-8243-b0f345037bfc", Set.of("b378c8b3-5e83-5abf-8243-b0f345037bfc")),
+            Map.entry("b585ff81-6332-5d11-ae63-ee6a9928c00d", Set.of("b585ff81-6332-5d11-ae63-ee6a9928c00d")),
+            Map.entry("b9fcbad4-a855-54b7-8017-4caac1e2ffb7", Set.of("b9fcbad4-a855-54b7-8017-4caac1e2ffb7")),
+            Map.entry("bdaa56ad-6257-58a3-a633-8a6339f72f09", Set.of("bdaa56ad-6257-58a3-a633-8a6339f72f09")),
+            Map.entry("be6d4895-65ab-545b-8df9-84e5a308a5e3", Set.of("be6d4895-65ab-545b-8df9-84e5a308a5e3")),
+            Map.entry("c2e0fc31-27a2-5727-9025-a824db9150d2", Set.of("c2e0fc31-27a2-5727-9025-a824db9150d2")),
+            Map.entry("c3c24489-4907-585f-8b56-2cb069aa6bf2", Set.of("c3c24489-4907-585f-8b56-2cb069aa6bf2")),
+            Map.entry("ce14a7e7-7e2a-517f-a465-78ba3fbe414d", Set.of("ce14a7e7-7e2a-517f-a465-78ba3fbe414d")),
+            Map.entry("ce431132-dfc4-42c2-aff6-bd72035190f8", Set.of("ce431132-dfc4-42c2-aff6-bd72035190f8")),
+            Map.entry("cf892388-6cb4-5981-adf2-7168aeb948b1", Set.of("cf892388-6cb4-5981-adf2-7168aeb948b1")),
+            Map.entry("d0eb16e9-9a52-5237-baca-ad5a14a4c59b", Set.of("d0eb16e9-9a52-5237-baca-ad5a14a4c59b")),
+            Map.entry("d1306bda-35ff-53e9-9458-3cbc128874d8", Set.of("d1306bda-35ff-53e9-9458-3cbc128874d8")),
+            Map.entry("d304cfd0-f87c-51f7-8dee-f5f405da4b3d", Set.of("d304cfd0-f87c-51f7-8dee-f5f405da4b3d")),
+            Map.entry("d350cfa7-c606-501e-abf7-1c9e546b266b", Set.of("d350cfa7-c606-501e-abf7-1c9e546b266b")),
+            Map.entry("d441ee2f-9230-5751-832b-5b0b5cf14605", Set.of("d441ee2f-9230-5751-832b-5b0b5cf14605")),
+            Map.entry("d67502e3-5e0a-595b-a24b-65b1c40de36e", Set.of("d67502e3-5e0a-595b-a24b-65b1c40de36e")),
+            Map.entry("d6dc0e02-831d-4894-a61a-852bcc74f147", Set.of("d6dc0e02-831d-4894-a61a-852bcc74f147")),
+            Map.entry("d81576e9-0320-5a90-8a1d-cd824981f2f6", Set.of("d81576e9-0320-5a90-8a1d-cd824981f2f6")),
+            Map.entry("d82ac375-2aa8-578a-893a-025e0a27e60f", Set.of("d82ac375-2aa8-578a-893a-025e0a27e60f")),
+            Map.entry("d8442d03-8b7e-54b7-9d9a-dc31ce541daa", Set.of("d8442d03-8b7e-54b7-9d9a-dc31ce541daa")),
+            Map.entry("d8a08f79-befc-5a29-9b74-6481d40c02c3", Set.of("d8a08f79-befc-5a29-9b74-6481d40c02c3")),
+            Map.entry("da3169ae-c72a-5782-ad95-408167a5c6da", Set.of("da3169ae-c72a-5782-ad95-408167a5c6da")),
+            Map.entry("db47ac91-7bb0-5ba3-b39d-e2d6fc98396e", Set.of("db47ac91-7bb0-5ba3-b39d-e2d6fc98396e")),
+            Map.entry("dd99528a-bae5-5b78-89e6-c6092c927f8d", Set.of("dd99528a-bae5-5b78-89e6-c6092c927f8d")),
+            Map.entry("e11b2ee9-e528-4857-9ecd-59bd460fba81", Set.of("e11b2ee9-e528-4857-9ecd-59bd460fba81")),
+            Map.entry("e19fccd7-6a35-5c9e-86e1-dcca76481e9c", Set.of("e19fccd7-6a35-5c9e-86e1-dcca76481e9c")),
+            Map.entry("e359f8bb-6106-44aa-9edf-694528d2d2a9", Set.of("e359f8bb-6106-44aa-9edf-694528d2d2a9")),
+            Map.entry("e5c08365-a0d3-592c-ad8e-d2c2c6e2b717", Set.of("e5c08365-a0d3-592c-ad8e-d2c2c6e2b717")),
+            Map.entry("e73de7c5-5f09-5e84-8a95-8d764b422ec3", Set.of("e73de7c5-5f09-5e84-8a95-8d764b422ec3")),
+            Map.entry("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", Set.of("5733c2c5-be2d-5879-89db-4ed4e5f3eff3", "86015397-23c4-5ed7-b893-bc619ec961a8", "e73de7c5-5f09-5e84-8a95-8d764b422ec3", "fa333c2f-3150-5831-a649-28615164b2f2")),
+            Map.entry("ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a", Set.of("ef0f2391-fd8e-5ae3-ae86-7adcdd833c7a")),
+            Map.entry("f06c581a-7157-584e-a692-99bcd613cff9", Set.of("f06c581a-7157-584e-a692-99bcd613cff9")),
+            Map.entry("f4eac786-a8e1-5f23-aedf-17bc70fc347f", Set.of("58c4b989-5cd0-5bf2-99d1-a0163fc837a1", "66100588-17bb-58c6-91dd-2349c880dd87", "7be8cb95-7174-5beb-94c5-c0e7bb9b1836", "c3c24489-4907-585f-8b56-2cb069aa6bf2")),
+            Map.entry("f532c772-7b6e-59aa-ad65-e0eeafc3767f", Set.of("f532c772-7b6e-59aa-ad65-e0eeafc3767f")),
+            Map.entry("fa333c2f-3150-5831-a649-28615164b2f2", Set.of("fa333c2f-3150-5831-a649-28615164b2f2")));
     private static final String GERMAN_ATOM = "2fb368b0-7b9d-5df0-99b6-6d719fd47f95";
     private static final String GERMAN_CLUSTER = "53462f11-c368-51df-bb68-c36a83d761b1";
     private static final String GERMAN_OTHER = "bb3dee7b-d6d3-513b-8824-bdf6414e02df";
@@ -109,6 +255,8 @@ class FirstMathPrerequisiteReductionTest {
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json");
     private static final Path GERMAN_SOURCE = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json");
+    private static final Path PHYSICS_SOURCE = REPOSITORY.resolve(
+            "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json");
     private static final Path REDUCTION_REGISTRY = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -738,13 +886,13 @@ class FirstMathPrerequisiteReductionTest {
                 germanCompletionPairs, germanPolicyPairs, germanMasteredSourcePairs);
     }
 
-    /** Certified V6 end-frame evidence; active V7 restores its historical pre-cache frame explicitly. */
+    /** Historical German V6 end-frame evidence, before Physics and before the V7 cache refresh. */
     @Test
     void batchedGermanSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
         JsonNode declared = readNativeRegistryDeclaration();
         assertThat(declared.path("proofContract").asText()).as("this native regression requires the certified V6 end frame").isEqualTo(V6);
         BatchNativeFrames frames = readBatchedReductionRegistry(declared);
-        ReductionRegistry prefix = frames.legacy(), current = frames.current();
+        ReductionRegistry prefix = frames.legacy(), current = frames.afterGerman();
         assertThat(prefix.changedSources()).as("the independently checked V5 inventory remains separate").hasSize(720);
         Set<String> newSources = new TreeSet<>(current.batchSourceIds());
         newSources.removeAll(prefix.changedSources().keySet());
@@ -888,9 +1036,459 @@ class FirstMathPrerequisiteReductionTest {
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
         assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
-        System.out.printf("GERMAN_BATCH_FINAL_V6_NATIVE_COVERAGE baseline=exact-V5-prefix current=certified-V6-end-frame prefixSources=%d registeredSources=%d germanBatchSources=%d newGermanSources=17 discoveredConfigurations=99 completedScopes=%d incompleteScopes=%d incomplete409Responses=%d contextReached=%s runtimeReachedUnion=%s rolePairs=%d frontierPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+        System.out.printf("GERMAN_BATCH_FINAL_V6_NATIVE_COVERAGE baseline=exact-V5-prefix current=historical-German-V6-end-frame prefixSources=%d registeredSources=%d germanBatchSources=%d newGermanSources=17 discoveredConfigurations=99 completedScopes=%d incompleteScopes=%d incomplete409Responses=%d contextReached=%s runtimeReachedUnion=%s rolePairs=%d frontierPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
                 prefix.changedSources().size(), current.changedSources().size(), germanSources.size(), completedScopes, incompleteScopes,
                 incomplete409Responses, contextReached, runtimeReachedUnion, rolePairs, frontierPairs, positiveControls, negativeControls, invalidRolePairs);
+    }
+
+    /** Actual V7 Physics runtime comparison: identical current caches on both required-work frames. */
+    @Test
+    void batchedPhysicsSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        assertThat(active.path("proofContract").asText()).isEqualTo(V7);
+        assertThat(rawByteHash(Files.readAllBytes(REDUCTION_REGISTRY)))
+                .isEqualTo("sha256:2fc01e8c0bd0cf1bf7af05d094cac9373ca985d9c9fd5128b3bd15745e614000");
+        assertThat(active.path("parentRegistryRawDigest").asText())
+                .isEqualTo("sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93");
+        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active);
+        JsonNode declared = cacheFrame.registry();
+        assertThat(declared.path("proofContract").asText()).isEqualTo(V6);
+        assertThat(declared.path("batches")).as("the concrete German then Physics delivery").hasSize(2);
+        assertThat(declared.path("batches").get(0).path("id").asText())
+                .isEqualTo("de-complete-atomic-prerequisites-and-transitive-reduction");
+        BatchNativeFrames frames = readBatchedReductionRegistry(declared, cacheFrame.documents());
+        assertRawDocumentDigest(frames.afterGerman().currentDocuments().get(PHYSICS_SOURCE),
+                "sha256:d940e65e82bbe28b09395a61f7d6a117ca95589fb758e361cee0c0751a4939f1", "historical after-German Physics before cache refresh");
+        assertRawDocumentDigest(frames.current().currentDocuments().get(PHYSICS_SOURCE),
+                "sha256:b03e3da1ac957226765dbec846a600fde1183719927652ed6caf0b7ec02b67ba", "historical after-Physics document before cache refresh");
+        CurrentCacheComparisonFrames comparison = currentPhysicsCacheFrames(active, declared, cacheFrame, frames);
+        ReductionRegistry prior = comparison.before(), current = comparison.after();
+        assertThat(declared.path("batches").get(1).path("id").asText())
+                .isEqualTo("ph-complete-atomic-prerequisites-and-transitive-reduction");
+        assertThat(declared.path("batches").get(1).path("previousDigest").asText())
+                .isEqualTo("sha256:c21e1fcd260dc83fec0826388dabad3ae59432b1c94335a7d8257af7e3d6fe2e");
+        assertThat(rawHash(declared.path("batches").get(0))).as("unchanged complete German batch 1")
+                .isEqualTo("sha256:c21e1fcd260dc83fec0826388dabad3ae59432b1c94335a7d8257af7e3d6fe2e");
+        assertThat(prior.changedSources()).as("after-German snapshot union, never V5-only baseline").hasSize(737);
+        assertThat(current.changedSources()).hasSize(881);
+        assertThat(declared.path("batches").get(1).path("operations")).hasSize(2843);
+        assertThat(declared.path("batches").get(1).path("legacyContinuations")).hasSize(17);
+        assertRawDocumentDigest(prior.currentDocuments().get(PHYSICS_SOURCE),
+                "sha256:078683f2729c8d6ad893c61a9a702e0acafd95ff16bc001908aa3f3e6f6411f7", "derived after-German Physics with current V7 caches");
+        assertRawDocumentDigest(current.currentDocuments().get(PHYSICS_SOURCE),
+                "sha256:bf83d684f86aa9c2ae46f8f8a4db93b709be4550993b372dce069b32699d817c", "actual final V7 Physics document");
+        Set<String> physicsSources = new TreeSet<>();
+        for (JsonNode original : declared.path("batches").get(1).path("originalRequires")) {
+            String[] identity = qualifiedIdentity(original.path("source").asText());
+            assertThat(identity[0]).as("only Physics is changed in the second batch").isEqualTo(PHYSICS);
+            assertThat(physicsSources.add(identity[1])).isTrue();
+        }
+        assertThat(physicsSources).as("exact reviewed operation-source inventory, including net-unchanged sources")
+                .containsExactlyInAnyOrderElementsOf(PHYSICS_PROBES_BY_SOURCE.keySet());
+        assertThat(physicsSources).hasSize(144);
+        assertThat(physicsSources).doesNotContainAnyElementsOf(prior.changedSources().keySet());
+        assertThat(physicsSources.stream().filter(source -> current.changedSources().get(source).atomicSource()).count()).isEqualTo(139);
+        assertThat(physicsSources.stream().filter(source -> !current.changedSources().get(source).atomicSource()).count()).isEqualTo(5);
+        Map<String, JsonNode> priorPhysics = rawGoals(prior.currentDocuments().get(PHYSICS_SOURCE));
+        Map<String, JsonNode> currentPhysics = rawGoals(current.currentDocuments().get(PHYSICS_SOURCE));
+        assertThat(priorPhysics).hasSize(766);
+        assertThat(physicsSources.stream().filter(source ->
+                !java.util.Objects.equals(priorPhysics.get(source).get("requires"), currentPhysics.get(source).get("requires"))).count())
+                .as("all operation sources remain covered although four arrays return to their start state").isEqualTo(140);
+        Set<String> expectedUnion = new TreeSet<>(prior.changedSources().keySet());
+        expectedUnion.addAll(physicsSources);
+        assertThat(current.changedSources().keySet()).as("complete prior-plus-Physics deduplicated native inventory")
+                .containsExactlyInAnyOrderElementsOf(expectedUnion);
+        ObjectNode badPredecessor = declared.deepCopy();
+        ((ObjectNode) badPredecessor.path("batches").get(1)).put("previousDigest", "sha256:" + "0".repeat(64));
+        assertThatThrownBy(() -> readBatchedReductionRegistry(badPredecessor)).isInstanceOf(AssertionError.class);
+        Map<Path, byte[]> sourceBytes = new LinkedHashMap<>();
+        for (Path source : current.canonicalOwners().keySet()) sourceBytes.put(source, Files.readAllBytes(source));
+        byte[] registryBytes = Files.readAllBytes(REDUCTION_REGISTRY);
+        var before = new NativeFixture(prior, false);
+        var after = new NativeFixture(current, false);
+        assertThat(after.canonicalAtomicIds).isEqualTo(before.canonicalAtomicIds);
+        assertThat(nativePhysicsApplicability(after)).as("actual derived Physics applicability before any scope")
+                .isEqualTo(nativePhysicsApplicability(before));
+        Set<String> allProbes = new TreeSet<>();
+        for (String source : physicsSources) {
+            assertThat(current.changedSources().get(source).owner()).isEqualTo(PHYSICS);
+            Set<String> probes = canonicalAtomicDescendants(source, before.canonicalGoals);
+            assertThat(probes).as("all reviewed atomic descendants for Physics source %s", source)
+                    .containsExactlyInAnyOrderElementsOf(PHYSICS_PROBES_BY_SOURCE.get(source));
+            assertThat(canonicalAtomicDescendants(source, after.canonicalGoals)).isEqualTo(probes);
+            assertThat(after.atomicProbesBySource.get(source)).isEqualTo(probes);
+            allProbes.addAll(probes);
+        }
+        assertThat(allProbes).as("distinct reviewed affected atomic descendants").hasSize(139);
+        assertThat(PHYSICS_PROBES_BY_SOURCE.values().stream().mapToInt(Set::size).sum()).isEqualTo(175);
+        Set<String> affectedProbes = new TreeSet<>(allProbes);
+        Map<String, Set<String>> mathDemandByProbe = new TreeMap<>();
+        Set<String> mathAtoms = new TreeSet<>(), mathIds = rawGoals(prior.currentDocuments().get(MATH_SOURCE)).keySet();
+        int rawMathReferences = 0;
+        for (var rawSource : priorPhysics.entrySet()) for (JsonNode reference : rawSource.getValue().path("requires")) {
+            String prerequisite = reference.asText();
+            if (!mathIds.contains(prerequisite)) continue;
+            assertThat(prerequisite).as("the reviewed raw Physics-to-Math links remain unqualified").doesNotContain(":");
+            assertThat(before.canonicalAtomicIds).contains(prerequisite);
+            mathAtoms.add(prerequisite);
+            rawMathReferences++;
+            for (String atom : canonicalAtomicDescendants(rawSource.getKey(), before.canonicalGoals))
+                mathDemandByProbe.computeIfAbsent(atom, ignored -> new TreeSet<>()).add(prerequisite);
+        }
+        assertThat(rawMathReferences).as("actual after-German raw Physics-to-Math references").isEqualTo(162);
+        assertThat(mathAtoms).as("actual distinct foreign Math atomic prerequisites").hasSize(54);
+        allProbes.addAll(mathDemandByProbe.keySet());
+        Discovery leftDiscovery = discover(before, PHYSICS, readGuiOfferings().path(PHYSICS));
+        Discovery rightDiscovery = discover(after, PHYSICS, readGuiOfferings().path(PHYSICS));
+        assertThat(rightDiscovery).as("real Physics planner and GUI configurations").isEqualTo(leftDiscovery);
+        assertThat(leftDiscovery.configurations()).isNotEmpty();
+        Map<String, Set<String>> sourceRuntimeReachedUnion = new TreeMap<>(), runtimeReachedUnion = new TreeMap<>();
+        Map<String, Set<String>> positiveReached = new TreeMap<>(), negativeReached = new TreeMap<>();
+        Map<String, Set<String>> sourceProbeReached = new TreeMap<>();
+        PHYSICS_PROBES_BY_SOURCE.forEach((source, probes) -> probes.forEach(atom ->
+                sourceProbeReached.put(source + "->" + atom, new TreeSet<>())));
+        Map<String, Set<String>> mathContextReached = new TreeMap<>(), mathPositiveReached = new TreeMap<>(), mathNegativeReached = new TreeMap<>();
+        mathAtoms.forEach(atom -> {
+            mathContextReached.put(atom, new TreeSet<>());
+            mathPositiveReached.put(atom, new TreeSet<>());
+            mathNegativeReached.put(atom, new TreeSet<>());
+        });
+        physicsSources.forEach(source -> sourceRuntimeReachedUnion.put(source, new TreeSet<>()));
+        allProbes.forEach(atom -> {
+            runtimeReachedUnion.put(atom, new TreeSet<>());
+            positiveReached.put(atom, new TreeSet<>());
+            negativeReached.put(atom, new TreeSet<>());
+        });
+        LearnerService beforePublic = org.mockito.Mockito.spy(before.service), afterPublic = org.mockito.Mockito.spy(after.service);
+        String probeId = "unsaved-physics-batch-native-control";
+        long rolePairs = 0, frontierPairs = 0, completionPairs = 0, positiveControls = 0, negativeControls = 0, invalidRolePairs = 0;
+        int completedScopes = 0, incompleteScopes = 0, incomplete409Responses = 0;
+        for (var configuration : leftDiscovery.configurations().entrySet()) {
+            String scope = configuration.getKey();
+            List<PersonalizationPlan> plans = new ArrayList<>();
+            for (NativeFixture fixture : List.of(before, after)) plans.add(CurriculumPersonalizationPlanner.plan(
+                    ROOT, fixture.landscapes::getById,
+                    (subject, settings) -> ReflectionTestUtils.invokeMethod(fixture.service, "resolvePersonalizationOfferingScope", subject, settings),
+                    configuration.getValue()));
+            assertThat(plans.get(1)).as("real Physics personal-curriculum validity: %s", scope).isEqualTo(plans.get(0));
+            if (!plans.get(0).valid() || plans.get(0).required()) {
+                assertThat(leftDiscovery.plannerScopes()).doesNotContain(scope);
+                assertThat(rightDiscovery.plannerScopes()).doesNotContain(scope);
+                for (LearnerService service : List.of(beforePublic, afterPublic)) {
+                    var learner = new Learner();
+                    learner.setSelectedCurriculum(ROOT);
+                    learner.setPersonalCurriculum(MAPPER.writeValueAsString(configuration.getValue()));
+                    org.mockito.Mockito.doReturn(learner).when(service).getLearner(probeId);
+                    try {
+                        service.getPlanningScope(probeId, PHYSICS);
+                        throw new AssertionError("Incomplete Physics personal curriculum unexpectedly accepted: " + scope);
+                    } catch (org.springframework.web.server.ResponseStatusException expected) {
+                        assertThat(expected.getStatusCode().value()).isEqualTo(409);
+                        assertThat(expected.getReason()).isEqualTo("The learner's personal curriculum is incomplete.");
+                        incomplete409Responses++;
+                    }
+                }
+                incompleteScopes++;
+                continue;
+            }
+            completedScopes++;
+            NativeScope left = before.resolve(configuration.getValue()), right = after.resolve(rightDiscovery.configurations().get(scope));
+            assertThat(right.roles()).as("Physics roles: %s", scope).isEqualTo(left.roles());
+            assertThat(right.graph().keySet()).as("Physics native graph: %s", scope).isEqualTo(left.graph().keySet());
+            assertThat(right.context()).as("Physics compiler context: %s", scope).isEqualTo(left.context());
+            assertThat(projectedApplicability(right)).as("Physics projected applicability: %s", scope).isEqualTo(projectedApplicability(left));
+            Set<String> contextAtoms = new TreeSet<>(left.context());
+            contextAtoms.retainAll(before.canonicalAtomicIds);
+            contextAtoms.addAll(left.roles().atomicTargets());
+            Object leftMastered = fullMasteryPrerequisites(left.graph(), left.topology());
+            Object rightMastered = fullMasteryPrerequisites(right.graph(), right.topology());
+            for (String atom : contextAtoms) {
+                assertThat(right.topology().transitivePrerequisites(atom)).as("Physics full atomic demand %s: %s", atom, scope)
+                        .isEqualTo(left.topology().transitivePrerequisites(atom));
+                if (!left.roles().atomicTargets().contains(atom)) continue;
+                assertThat(roleProbeWithPrerequisites(after.service, right.graph(), right.projection(), atom, rightMastered))
+                        .as("Physics effective role validity %s: %s", atom, scope)
+                        .isEqualTo(roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered));
+                rolePairs++;
+            }
+            for (String math : mathAtoms) {
+                assertThat(right.context().contains(math)).as("actual foreign Math compiler-context reach %s: %s", math, scope)
+                        .isEqualTo(left.context().contains(math));
+                assertThat(right.roles().targets().contains(math)).isEqualTo(left.roles().targets().contains(math));
+                assertThat(right.roles().support().contains(math)).isEqualTo(left.roles().support().contains(math));
+                if (left.context().contains(math)) mathContextReached.get(math).add(scope);
+            }
+            Map<String, Double> all = new TreeMap<>();
+            left.graph().keySet().forEach(id -> all.put(id, 1.0));
+            Object previousBefore = ReflectionTestUtils.getField(before.service, "completionApplicationService");
+            Object previousAfter = ReflectionTestUtils.getField(after.service, "completionApplicationService");
+            var beforeApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(),
+                    prior.documentDigests().get(PHYSICS_SOURCE).current(), true));
+            var afterApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(),
+                    current.documentDigests().get(PHYSICS_SOURCE).current(), true));
+            ReflectionTestUtils.setField(before.service, "completionApplicationService", beforeApplication);
+            ReflectionTestUtils.setField(after.service, "completionApplicationService", afterApplication);
+            try {
+                CompiledCompletionProfile leftCompletion = ReflectionTestUtils.invokeMethod(before.service, "compileCompletionScope",
+                        left.learner(), "automatic:personal-curriculum", left.projection(), left.graph());
+                CompiledCompletionProfile rightCompletion = ReflectionTestUtils.invokeMethod(after.service, "compileCompletionScope",
+                        right.learner(), "automatic:personal-curriculum", right.projection(), right.graph());
+                for (Map<String, Double> masteryCase : List.of(Map.<String, Double>of(), all)) {
+                    CompletionEvaluation original = beforeApplication.evaluate(leftCompletion, masteryCase);
+                    assertThat(afterApplication.evaluate(rightCompletion, masteryCase)).as("Physics whole-scope completion: %s", scope)
+                            .isEqualTo(original);
+                    assertThat(original.complete()).as("Physics all-open/all-closed completion control: %s", scope)
+                            .isEqualTo(!masteryCase.isEmpty());
+                    completionPairs++;
+                }
+                for (String atom : allProbes) {
+                    boolean target = left.roles().atomicTargets().contains(atom);
+                    assertThat(right.roles().atomicTargets().contains(atom)).as("Physics actual target exposure %s: %s", atom, scope).isEqualTo(target);
+                    assertThat(right.context().contains(atom)).as("Physics source context reach %s: %s", atom, scope)
+                            .isEqualTo(left.context().contains(atom));
+                    if (!target) continue;
+                    runtimeReachedUnion.get(atom).add(scope);
+                    for (String source : physicsSources) if (PHYSICS_PROBES_BY_SOURCE.get(source).contains(atom)) {
+                        sourceRuntimeReachedUnion.get(source).add(scope);
+                        sourceProbeReached.get(source + "->" + atom).add(scope);
+                    }
+                    Set<String> demand = left.topology().transitivePrerequisites(atom);
+                    boolean roleValid = roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered);
+                    if (roleValid) assertThat(demand).as("meaningful Physics prerequisite control %s: %s", atom, scope).isNotEmpty();
+                    Map<String, Double> prepared = new TreeMap<>();
+                    demand.forEach(id -> prepared.put(id, 1.0));
+                    assertThat(prepared).doesNotContainKey(atom);
+                    Map<String, Double> missing = new TreeMap<>(prepared);
+                    if (!demand.isEmpty()) missing.remove(demand.stream().sorted().findFirst().orElseThrow());
+                    List<AtomicFrontierCase> cases = List.of(
+                            new AtomicFrontierCase("physics-normal-empty", Map.of(), null, false, null),
+                            new AtomicFrontierCase("physics-normal-prepared-source-open", prepared, null, false, roleValid),
+                            new AtomicFrontierCase("physics-strict-prepared-source-open", prepared, null, true, roleValid),
+                            new AtomicFrontierCase("physics-strict-missing-one", missing, null, true, null),
+                            new AtomicFrontierCase("physics-strict-empty", Map.of(), null, true, false),
+                            new AtomicFrontierCase("physics-normal-single-source-focus", Map.of(), Set.of(atom), false, roleValid),
+                            new AtomicFrontierCase("physics-strict-single-source-focus", Map.of(), Set.of(atom), true, false));
+                    for (AtomicFrontierCase probe : cases) {
+                        boolean original = atomicFrontierProbe(before.service, left, atom, probe);
+                        assertThat(atomicFrontierProbe(after.service, right, atom, probe))
+                                .as("Physics normal/strict/focus frontier %s/%s: %s", atom, probe.name(), scope).isEqualTo(original);
+                        if (!roleValid) {
+                            assertThat(original).as("invalid Physics roles fail closed %s/%s: %s", atom, probe.name(), scope).isFalse();
+                            invalidRolePairs++;
+                        }
+                        if (probe.expected() != null) assertThat(original).as("real Physics frontier control %s/%s: %s", atom, probe.name(), scope)
+                                .isEqualTo(probe.expected());
+                        if (roleValid && "physics-strict-prepared-source-open".equals(probe.name()) && original) {
+                            positiveControls++;
+                            positiveReached.get(atom).add(scope);
+                        }
+                        if (roleValid && "physics-strict-empty".equals(probe.name()) && !original) {
+                            negativeControls++;
+                            negativeReached.get(atom).add(scope);
+                        }
+                        frontierPairs++;
+                    }
+                    for (String math : mathDemandByProbe.getOrDefault(atom, Set.of())) {
+                        assertThat(demand).as("actual foreign atomic demand %s->%s: %s", atom, math, scope).contains(math);
+                        // Deliberately remove one actual foreign atomic role from an otherwise
+                        // unchanged real projection; mastery/focus cannot repair that invalid scope.
+                        assertThat(roleProbeWithPrerequisites(before.service, left.graph(),
+                                withoutRole(left.projection(), math), atom, leftMastered))
+                                .as("missing foreign Math role fails closed before %s->%s: %s", atom, math, scope).isFalse();
+                        assertThat(roleProbeWithPrerequisites(after.service, right.graph(),
+                                withoutRole(right.projection(), math), atom, rightMastered))
+                                .as("missing foreign Math role fails closed after %s->%s: %s", atom, math, scope).isFalse();
+                        invalidRolePairs++;
+                        Map<String, Double> missingMath = new TreeMap<>(prepared);
+                        missingMath.remove(math);
+                        for (AtomicFrontierCase probe : List.of(
+                                new AtomicFrontierCase("physics-math-strict-prepared", prepared, null, true, roleValid),
+                                new AtomicFrontierCase("physics-math-strict-one-open", missingMath, null, true, null),
+                                new AtomicFrontierCase("physics-math-normal-single-source-focus", missingMath, Set.of(atom), false, roleValid),
+                                new AtomicFrontierCase("physics-math-strict-single-source-focus", missingMath, Set.of(atom), true, null))) {
+                            boolean original = atomicFrontierProbe(before.service, left, atom, probe);
+                            assertThat(atomicFrontierProbe(after.service, right, atom, probe))
+                                    .as("actual foreign Math normal/strict/focus control %s->%s/%s: %s", atom, math, probe.name(), scope)
+                                    .isEqualTo(original);
+                            if (probe.expected() != null) assertThat(original).isEqualTo(probe.expected());
+                            if (roleValid && "physics-math-strict-prepared".equals(probe.name()) && original)
+                                mathPositiveReached.get(math).add(scope);
+                            if (roleValid && "physics-math-strict-one-open".equals(probe.name()) && !original)
+                                mathNegativeReached.get(math).add(scope);
+                            if (!roleValid) {
+                                assertThat(original).as("invalid foreign-demand role controls fail closed").isFalse();
+                                invalidRolePairs++;
+                            }
+                            frontierPairs++;
+                        }
+                        for (Map<String, Double> masteryCase : List.of(prepared, missingMath)) {
+                            assertThat(afterApplication.evaluate(rightCompletion, masteryCase))
+                                    .as("foreign Math prerequisite completion input %s->%s: %s", atom, math, scope)
+                                    .isEqualTo(beforeApplication.evaluate(leftCompletion, masteryCase));
+                            Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(before.service,
+                                    "computeEffectiveMastery", left.graph(), masteryCase);
+                            Map<String, Double> finalEffective = ReflectionTestUtils.invokeMethod(after.service,
+                                    "computeEffectiveMastery", right.graph(), masteryCase);
+                            assertThat(finalEffective).as("foreign Math effective mastery input %s->%s: %s", atom, math, scope)
+                                    .isEqualTo(originalEffective);
+                            completionPairs++;
+                        }
+                    }
+                    Map<String, Double> masteredSourceLeafOpen = new TreeMap<>(missing);
+                    masteredSourceLeafOpen.put(atom, 1.0);
+                    for (Map<String, Double> masteryCase : List.of(prepared, missing, masteredSourceLeafOpen)) {
+                        assertThat(afterApplication.evaluate(rightCompletion, masteryCase))
+                                .as("Physics complete evaluation for source/prerequisite state %s: %s", atom, scope)
+                                .isEqualTo(beforeApplication.evaluate(leftCompletion, masteryCase));
+                        Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(before.service, "computeEffectiveMastery", left.graph(), masteryCase);
+                        Map<String, Double> finalEffective = ReflectionTestUtils.invokeMethod(after.service, "computeEffectiveMastery", right.graph(), masteryCase);
+                        assertThat(finalEffective).as("Physics effective mastery %s: %s", atom, scope).isEqualTo(originalEffective);
+                        completionPairs++;
+                    }
+                }
+            } finally {
+                ReflectionTestUtils.setField(before.service, "completionApplicationService", previousBefore);
+                ReflectionTestUtils.setField(after.service, "completionApplicationService", previousAfter);
+            }
+        }
+        assertThat(completedScopes + incompleteScopes).isEqualTo(leftDiscovery.configurations().size());
+        assertThat(completedScopes).isPositive();
+        assertThat(incompleteScopes).as("actual incomplete-curriculum method controls must be reached").isPositive();
+        assertThat(incomplete409Responses).as("paired actual planning-method controls").isEqualTo(2 * incompleteScopes);
+        sourceRuntimeReachedUnion.forEach((source, scopes) -> assertThat(scopes)
+                .as("BLOCKER: no actual Physics source target exposure for %s", source).isNotEmpty());
+        runtimeReachedUnion.forEach((atom, scopes) -> assertThat(scopes)
+                .as("BLOCKER: affected Physics atomic descendant has no actual target scope: %s", atom).isNotEmpty());
+        positiveReached.forEach((atom, scopes) -> assertThat(scopes)
+                .as("BLOCKER: affected Physics atom has no valid actual positive control: %s", atom).isNotEmpty());
+        negativeReached.forEach((atom, scopes) -> assertThat(scopes)
+                .as("BLOCKER: affected Physics atom has no valid actual negative control: %s", atom).isNotEmpty());
+        sourceProbeReached.forEach((pair, scopes) -> assertThat(scopes)
+                .as("BLOCKER: an affected source/atomic-descendant pair has no actual target scope: %s", pair).isNotEmpty());
+        for (Map<String, Set<String>> coverage : List.of(mathContextReached, mathPositiveReached, mathNegativeReached))
+            coverage.forEach((math, scopes) -> assertThat(scopes)
+                    .as("BLOCKER: missing actual foreign Math context/positive/negative coverage for %s", math).isNotEmpty());
+        assertThat(rolePairs).isPositive();
+        assertThat(frontierPairs).isPositive();
+        assertThat(completionPairs).isPositive();
+        assertThat(invalidRolePairs).as("actual and deliberately missing foreign-role negative controls").isPositive();
+        assertThat(positiveControls).isPositive();
+        assertThat(negativeControls).isPositive();
+        before.verifyOnlyUnsavedFixtures();
+        after.verifyOnlyUnsavedFixtures();
+        for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
+        assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
+        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+                prior.changedSources().size(), current.changedSources().size(), physicsSources.size(), affectedProbes.size(), allProbes.size(),
+                leftDiscovery.configurations().size(), completedScopes, incompleteScopes, incomplete409Responses,
+                sourceRuntimeReachedUnion, sourceProbeReached, runtimeReachedUnion, mathContextReached, mathPositiveReached, mathNegativeReached,
+                rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs);
+    }
+
+    private record CurrentCacheComparisonFrames(ReductionRegistry before, ReductionRegistry after) { }
+
+    /** Only the 27 current cache fields are copied; every historical digest is checked before deriving new ones. */
+    private static CurrentCacheComparisonFrames currentPhysicsCacheFrames(JsonNode wrapper, JsonNode parent,
+            NativeV6Frame cacheFrame, BatchNativeFrames historical) throws IOException {
+        JsonNode snapshots = wrapper.path("originalApplicability");
+        Map<Path, JsonNode> after = mutableDocuments(historical.current().currentDocuments());
+        copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), after);
+        assertThat(after).as("the comparison end frame is the whole actual current V7 catalog")
+                .isEqualTo(cacheFrame.currentDocuments());
+        Map<Path, JsonNode> before = mutableDocuments(after);
+        Map<String, Map<String, JsonNode>> beforeGoals = frameGoals(before);
+        JsonNode physics = parent.path("batches").get(1);
+        assertThat(physics.path("originalRequires")).hasSize(144);
+        for (JsonNode original : physics.path("originalRequires")) {
+            ObjectNode goal = (ObjectNode) registeredGoal(beforeGoals, original.path("source").asText());
+            if (original.path("requires").isNull()) goal.remove("requires");
+            else goal.set("requires", original.path("requires").deepCopy());
+        }
+        Map<Path, JsonNode> expectedBefore = mutableDocuments(historical.afterGerman().currentDocuments());
+        copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), expectedBefore);
+        assertThat(before).as("only the second batch's exact 144 requires snapshots form the comparison start")
+                .isEqualTo(expectedBefore);
+        Map<String, Map<String, JsonNode>> afterGoals = frameGoals(after);
+        for (JsonNode original : snapshots) {
+            String source = original.path("source").asText();
+            JsonNode left = registeredGoal(beforeGoals, source), right = registeredGoal(afterGoals, source);
+            assertThat(left.has("applicability")).as("identical current cache presence: %s", source)
+                    .isEqualTo(right.has("applicability"));
+            assertThat(left.get("applicability")).as("identical current cache value: %s", source)
+                    .isEqualTo(right.get("applicability"));
+        }
+        Map<Path, JsonNode> restoredBefore = mutableDocuments(before), restoredAfter = mutableDocuments(after);
+        restoreOriginalApplicability(snapshots, restoredBefore);
+        restoreOriginalApplicability(snapshots, restoredAfter);
+        assertFrameDigests(parent.path("batches").get(0).path("currentDocumentDigests"), restoredBefore,
+                "old-cache restoration reaches the exact historical German V6 checkpoint");
+        for (JsonNode source : parent.path("catalogSources")) {
+            Path file = REPOSITORY.resolve(source.path("path").asText()).toAbsolutePath().normalize();
+            assertRawDocumentDigest(restoredAfter.get(file), source.path("currentDocumentDigest").asText(),
+                    "old-cache restoration reaches the exact historical final V6 document " + file);
+        }
+        ReductionRegistry currentBefore = currentCacheComparisonRegistry(historical.afterGerman(), before);
+        ReductionRegistry currentAfter = currentCacheComparisonRegistry(historical.current(), after);
+        Map<String, String> beforeDigests = new TreeMap<>(), afterDigests = new TreeMap<>();
+        for (Path file : before.keySet()) {
+            String relative = REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/');
+            beforeDigests.put(relative, currentBefore.documentDigests().get(file).current());
+            afterDigests.put(relative, currentAfter.documentDigests().get(file).current());
+        }
+        System.out.printf("PHYSICS_V7_DERIVED_CURRENT_FRAME_DIGESTS before=%s after=%s historicalPinsRewritten=false cacheSources=27%n",
+                MAPPER.writeValueAsString(beforeDigests), MAPPER.writeValueAsString(afterDigests));
+        return new CurrentCacheComparisonFrames(currentBefore, currentAfter);
+    }
+
+    private static void copyCurrentApplicability(JsonNode snapshots, Map<Path, JsonNode> current,
+            Map<Path, JsonNode> destination) {
+        Map<String, Map<String, JsonNode>> sourceGoals = frameGoals(current), targetGoals = frameGoals(destination);
+        for (JsonNode snapshot : snapshots) {
+            String source = snapshot.path("source").asText();
+            JsonNode actual = registeredGoal(sourceGoals, source);
+            ObjectNode target = (ObjectNode) registeredGoal(targetGoals, source);
+            if (actual.has("applicability")) target.set("applicability", actual.get("applicability").deepCopy());
+            else target.remove("applicability");
+        }
+    }
+
+    private static void restoreOriginalApplicability(JsonNode snapshots, Map<Path, JsonNode> documents) {
+        Map<String, Map<String, JsonNode>> goals = frameGoals(documents);
+        for (JsonNode snapshot : snapshots) {
+            ObjectNode goal = (ObjectNode) registeredGoal(goals, snapshot.path("source").asText());
+            if (snapshot.path("present").asBoolean()) goal.set("applicability", snapshot.path("value").deepCopy());
+            else goal.remove("applicability");
+        }
+    }
+
+    private static ReductionRegistry currentCacheComparisonRegistry(ReductionRegistry historical,
+            Map<Path, JsonNode> documents) {
+        Map<Path, DocumentDigests> digests = new LinkedHashMap<>();
+        for (var entry : historical.documentDigests().entrySet()) {
+            // original() remains the unchanged historical reference. These derived
+            // current frames are used only with originalBaseline=false, never as new sourceFP baselines.
+            digests.put(entry.getKey(), new DocumentDigests(entry.getValue().original(), rawHash(documents.get(entry.getKey()))));
+        }
+        ReductionRegistry result = new ReductionRegistry(historical.canonicalOwners(), historical.changesByFile(),
+                historical.changedSources(), historical.clusterWitnessCoverage(), Collections.unmodifiableMap(digests),
+                historical.historicalSourceIds(), historical.suffixSourceIds(), historical.tailSourceIds(),
+                historical.clusterTargetSourceIds(), historical.tailRemovedPrerequisites(), immutableDocuments(documents),
+                historical.batchSourceIds());
+        for (var entry : result.canonicalOwners().entrySet()) reconstructRawDocument(entry.getKey(), documents.get(entry.getKey()),
+                entry.getValue(), result.documentDigests().get(entry.getKey()), result.changesByFile().getOrDefault(entry.getKey(), List.of()),
+                false, result.batchSourceIds());
+        return result;
+    }
+
+    private static Map<String, JsonNode> nativePhysicsApplicability(NativeFixture fixture) {
+        Map<String, JsonNode> result = new TreeMap<>();
+        for (var landscape : fixture.landscapes.getClosure(ROOT)) {
+            if (!PHYSICS.equals(landscape.getLandscapeId())) continue;
+            for (var goal : landscape.getGoals()) result.put(goal.getId(), MAPPER.valueToTree(goal).path("applicability"));
+        }
+        assertThat(result).as("native Physics LandscapeService applicability").isNotEmpty();
+        return result;
     }
 
     private record Roles(Set<String> targets, Set<String> atomicTargets, Set<String> support, Set<String> viewIds) { }
@@ -1417,9 +2015,9 @@ class FirstMathPrerequisiteReductionTest {
     }
 
     /** Native reader boundary only: Node remains the sequential proof/auditor authority. */
-    private record BatchNativeFrames(ReductionRegistry legacy, ReductionRegistry current) { }
+    private record BatchNativeFrames(ReductionRegistry legacy, ReductionRegistry current, ReductionRegistry afterGerman) { }
 
-    private record NativeV6Frame(JsonNode registry, Map<Path, JsonNode> documents) { }
+    private record NativeV6Frame(JsonNode registry, Map<Path, JsonNode> documents, Map<Path, JsonNode> currentDocuments) { }
 
     private static JsonNode readNativeRegistryDeclaration() throws IOException {
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
@@ -1497,7 +2095,7 @@ class FirstMathPrerequisiteReductionTest {
         }
         assertThat(Files.readAllBytes(parentFile)).as("historical parent bytes remain unchanged").containsExactly(parentBytes);
         System.out.printf("REGISTERED_NATIVE_FRAME active=V7 tested=historical-V6-precache-frame finalV7Coverage=false cacheSources=%d derivedCacheVerification=node-only%n", sources.size());
-        return new NativeV6Frame(parent, immutableDocuments(restoredDocuments));
+        return new NativeV6Frame(parent, immutableDocuments(restoredDocuments), immutableDocuments(currentDocuments));
     }
 
     private static Path exactRegularRepositoryFile(String relative) throws IOException {
@@ -1547,10 +2145,12 @@ class FirstMathPrerequisiteReductionTest {
         }
         assertThat(finalDocuments).hasSize(21);
         Map<Path, JsonNode> checkpointDocuments = mutableDocuments(finalDocuments);
+        Map<Path, JsonNode> afterGermanDocuments = Map.of();
         // Every batch snapshot is its own start frame, including overlap with
         // an earlier batch or the V1-V5 prefix; null restores field absence.
         for (int index = registry.path("batches").size() - 1; index >= 0; index--) {
             JsonNode batch = registry.path("batches").get(index);
+            if (index == 0) afterGermanDocuments = immutableDocuments(checkpointDocuments);
             assertFields(batch, "V6 batch", "id", "previousDigest", "originalRequires", "operations",
                     "currentDocumentDigests", "legacyContinuations");
             assertFrameDigests(batch.path("currentDocumentDigests"), checkpointDocuments, "batch end " + index);
@@ -1577,7 +2177,7 @@ class FirstMathPrerequisiteReductionTest {
         // No legacy reader checks are skipped or taught the new aggregate count.
         ReductionRegistry legacy = readReductionRegistry(prefix, checkpointDocuments);
         assertThat(legacy.changedSources()).hasSize(720);
-        Set<String> touchedSources = new TreeSet<>(), uniqueIds = new TreeSet<>();
+        Set<String> touchedSources = new TreeSet<>(), firstBatchSources = new TreeSet<>(), uniqueIds = new TreeSet<>();
         String previousDigest = registry.path("v5Checkpoint").path("registryDigest").asText();
         for (int index = 0; index < registry.path("batches").size(); index++) {
             JsonNode batch = registry.path("batches").get(index);
@@ -1586,10 +2186,17 @@ class FirstMathPrerequisiteReductionTest {
             // Every complete start and end frame was checked in the reverse
             // pass above. Walking predecessor hashes here binds that ordered
             // boundary inventory; it does not replay or certify operations.
-            for (JsonNode original : batch.path("originalRequires")) touchedSources.add(original.path("source").asText());
+            for (JsonNode original : batch.path("originalRequires")) {
+                touchedSources.add(original.path("source").asText());
+                if (index == 0) firstBatchSources.add(original.path("source").asText());
+            }
             previousDigest = rawHash(batch);
         }
-        return new BatchNativeFrames(legacy, mergeBatchedNativeSources(legacy, finalDocuments, touchedSources));
+        ReductionRegistry current = mergeBatchedNativeSources(legacy, finalDocuments, touchedSources);
+        assertFrameDigests(registry.path("batches").get(0).path("currentDocumentDigests"), afterGermanDocuments, "after German batch");
+        ReductionRegistry afterGerman = registry.path("batches").size() == 1 ? current
+                : mergeBatchedNativeSources(legacy, afterGermanDocuments, firstBatchSources);
+        return new BatchNativeFrames(legacy, current, afterGerman);
     }
 
     private static ReductionRegistry mergeBatchedNativeSources(ReductionRegistry legacy, Map<Path, JsonNode> documents,

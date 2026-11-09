@@ -1009,8 +1009,14 @@ async function verifyActualLiveV6(
   const prefix = new Set([...checkpoint.parent.originalRequires, ...checkpoint.parent.suffixOriginalRequires,
     ...checkpoint.parent.tailOriginalRequires, ...checkpoint.parent.clusterTargetOriginalRequires].map(entry => entry.source))
   assert.equal(prefix.size, 720, 'the original V5 affected-source count remains exact')
-  assert.equal(registry.batches.length, 1, 'this activation contains exactly the measured first German batch')
-  const [batch] = registry.batches
+  assert.ok(registry.batches.length === 1 || registry.batches.length === 2, 'only the reviewed German or German-then-Physics delivery is accepted')
+  const [batch, physics] = registry.batches
+  assert.equal(digest(batch), 'sha256:c21e1fcd260dc83fec0826388dabad3ae59432b1c94335a7d8257af7e3d6fe2e',
+    'the entire first German batch, including all witnesses and bindings, remains exact')
+  assert.equal(summary.registryDigest, physics
+    ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
+    : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
+    'the complete V6 parent equals the approved German or Physics bytes')
   const sources = batchTestSources(batch)
   assert.equal(sources.length, 18)
   assert.deepEqual(sources.filter(source => prefix.has(source)),
@@ -1021,11 +1027,59 @@ async function verifyActualLiveV6(
   assert.equal(batch.operations.reduce((sum, operation) => sum + ('steps' in operation
     ? operation.steps.filter(step => step.operation === 'materialize-atomic').length
     : 'operation' in operation.step && operation.step.operation === 'materialize-atomic' ? 1 : 0), 0), 272)
+  const afterGermanSources = new Set([...prefix, ...sources])
+  assert.equal(afterGermanSources.size, 737, 'German batch 1 retains its exact 737-source union')
+  const physicsSources = physics ? batchTestSources(physics) : []
+  if (physics) {
+    assert.equal(physics.id, 'ph-complete-atomic-prerequisites-and-transitive-reduction')
+    assert.equal(physics.previousDigest, digest(batch), 'Physics is bound to the exact German end frame')
+    assert.equal(physicsSources.length, 144)
+    assert.ok(physicsSources.every(source => source.startsWith('7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:')))
+    assert.deepEqual(physicsSources.filter(source => afterGermanSources.has(source)), [],
+      'all 144 Physics operation sources are new snapshots, independently of older witness obligations')
+    assert.equal(physics.operations.length, 2843)
+    const physicsStepCounts = { 'materialize-atomic': 0, 'remove-cluster-target': 0, 'remove-cluster': 0, atomic: 0 }
+    for (const operation of physics.operations) for (const step of 'steps' in operation ? operation.steps : [operation.step]) {
+      if ('operation' in step) physicsStepCounts[step.operation]++
+      else physicsStepCounts.atomic++
+    }
+    assert.deepEqual(physicsStepCounts, { 'materialize-atomic': 1319, 'remove-cluster-target': 15, 'remove-cluster': 15, atomic: 1494 })
+    assert.equal(physics.legacyContinuations.length, 17)
+    assert.equal(physics.currentDocumentDigests.length, 21)
+  }
+  const expectedOriginals = new Set([...afterGermanSources, ...physicsSources])
   const originals = earliestBatchTestOriginals(registry)
-  assert.equal(originals.size, prefix.size + sources.filter(source => !prefix.has(source)).length)
-  assert.equal(originals.size, 737)
+  assert.equal(originals.size, physics ? 881 : 737)
+  assert.deepEqual([...originals.keys()].sort(), [...expectedOriginals].sort(), 'the full source union is exact')
+  if (physics) {
+    const negativeDirectory = resolve(repositoryRoot, 'app/node_modules/.tmp/physics-live-negative-parents')
+    mkdirSync(negativeDirectory, { recursive: true })
+    try {
+      const invalidPredecessor = structuredClone(registry)
+      invalidPredecessor.batches[1].previousDigest = 'sha256:' + '0'.repeat(64)
+      const invalidPredecessorPath = resolve(negativeDirectory, 'invalid-second-predecessor.json')
+      writeFileSync(invalidPredecessorPath, JSON.stringify(invalidPredecessor))
+      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: invalidPredecessorPath }),
+        /batch predecessor digest differs/u, 'the genuine loader rejects the actual second-batch predecessor mutation')
+      const missingContinuation = structuredClone(registry)
+      missingContinuation.batches[1].legacyContinuations.shift()
+      const missingContinuationPath = resolve(negativeDirectory, 'missing-prior-witness-continuation.json')
+      writeFileSync(missingContinuationPath, JSON.stringify(missingContinuation))
+      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingContinuationPath }),
+        /literal atomic witness edge missing/u, 'removing one necessary actual prior witness-position continuation fails closed')
+    } finally { rmSync(negativeDirectory, { recursive: true, force: true }) }
+  }
   assert.deepEqual(summary.affectedGoalIds, [...originals.keys()].sort(), 'actual verified affected IDs equal the deduplicated source union')
   const currentGoals = batchTestGoals(currentDocuments)
+  if (physics) {
+    assert.equal(physicsSources.filter(source => !(currentGoals.get(source)!.contains?.length)).length, 139)
+    assert.equal(physicsSources.filter(source => currentGoals.get(source)!.contains?.length).length, 5)
+    assert.equal(physics.originalRequires.filter(original => {
+      const raw = currentGoals.get(original.source)!
+      return Object.hasOwn(raw, 'requires') !== (original.requires !== null)
+        || JSON.stringify(raw.requires) !== JSON.stringify(original.requires === null ? undefined : original.requires)
+    }).length, 140, 'all 144 operation snapshots remain required although only 140 arrays differ net')
+  }
   for (const original of originals.values()) {
     const raw = currentGoals.get(original.source)!
     const restored = reviewBindingGoal(context, original.source, raw)
@@ -1044,8 +1098,11 @@ async function verifyActualLiveV6(
     assert.equal(digest(original), registry.catalogSources.find(entry => entry.path === path)!.baselineDocumentDigest,
       `all original document fields restored from actual V6: ${path}`)
   }
-  console.log(`Actual V6 registry: ${batch.operations.length} ordered operations, ${sources.length} batch sources, ${originals.size} deduplicated original snapshots and 21 complete documents passed.`)
+  const operationCount = registry.batches.reduce((sum, entry) => sum + entry.operations.length, 0)
+  const allBatchSources = new Set(registry.batches.flatMap(batchTestSources))
+  console.log(`Actual V6 registry: ${registry.batches.length} batches, ${operationCount} ordered operations, ${allBatchSources.size} batch sources, ${originals.size} deduplicated original snapshots and 21 complete documents passed.`)
 }
+
 
 function restoreBoundApplicabilityRefreshV6(
   registry: ApplicabilityRefreshPrerequisiteReductionRegistry, current: BatchTestDocument[],
@@ -1055,8 +1112,14 @@ function restoreBoundApplicabilityRefreshV6(
   assert.equal(relative(root, parentFile), registry.parentRegistryPath, 'canonical relative live parent path')
   const parentBytes = readFileSync(parentFile)
   assert.equal(`sha256:${createHash('sha256').update(parentBytes).digest('hex')}`, registry.parentRegistryRawDigest)
-  assert.equal(registry.parentRegistryRawDigest,
-    'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109', 'the full original German V6 parent remains byte-pinned')
+  const physicsParent = registry.parentRegistryRawDigest === 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
+  assert.equal(registry.parentRegistryRawDigest, physicsParent
+    ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
+    : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
+    'only the byte-pinned German V6 or its exact two-batch Physics continuation is accepted')
+  assert.equal(registry.parentRegistryPath, physicsParent
+    ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-physics-20261109.json'
+    : 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-german-20261109.json')
   const parent = JSON.parse(parentBytes.toString('utf8')) as BatchedPrerequisiteReductionRegistry
   assert.equal(parent.proofContract, BATCHED_PREREQUISITE_REDUCTION_CONTRACT)
   const baseBindings = (sources: typeof registry.catalogSources) => sources.map(({ path, landscapeId, baselineDocumentDigest }) =>
@@ -1088,7 +1151,13 @@ async function verifyActualLiveApplicabilityRefresh(
   assert.equal(current.length, 21)
   assert.equal(batchTestGoals(current).size, 6524)
   assert.deepEqual(summary.affectedGoalIds, [...earliestBatchTestOriginals(parent).keys()].sort())
-  assert.equal(summary.affectedGoalIds.length, 737, 'cache-only sources never enlarge the 737 prerequisite history sources')
+  const physicsParent = parent.batches.length === 2
+  assert.equal(summary.affectedGoalIds.length, physicsParent ? 881 : 737,
+    'cache-only sources never enlarge the exact approved prerequisite-source union')
+  assert.equal(summary.registryDigest, physicsParent
+    ? 'sha256:2fc01e8c0bd0cf1bf7af05d094cac9373ca985d9c9fd5128b3bd15745e614000'
+    : 'sha256:8e56e88b70e0b34c649596e1d58acbf3e099e767f7bed92838153983decb2c25',
+    'the actual complete V7 wrapper equals the reviewed German or Physics candidate')
   assert.equal(registry.originalApplicability.length, 27)
   assert.ok(registry.originalApplicability.every(original => original.present === true))
   assert.equal(digest(registry.originalApplicability),
@@ -1128,7 +1197,25 @@ async function verifyActualLiveApplicabilityRefresh(
     assert.equal(digest(original), parent.catalogSources.find(entry => entry.path === path)!.baselineDocumentDigest,
       `V7 capability restores the complete earliest baseline: ${path}`)
   }
-  console.log('Actual V7 cache refresh: unchanged 737 prerequisite sources, exact 27 cache snapshots and 21 complete current documents passed.')
+  if (physicsParent) {
+    const physics = current.find(({ document }) => document.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')!.document
+    assert.equal(physics.goals.length, 766)
+    const earliest = earliestBatchTestOriginals(parent)
+    const beforePhysics = earliestBatchTestOriginals({ ...parent, batches: parent.batches.slice(0, 1) })
+    assert.equal([...beforePhysics.keys()].filter(source => source.startsWith(`${physics.landscapeId}:`)).length, 4,
+      'the four earlier Physics originals retain their chronological priority')
+    for (const goal of physics.goals) {
+      const source = `${physics.landscapeId}:${goal.id}`, expected = structuredClone(goal)
+      const original = earliest.get(source)
+      if (original) {
+        if (original.requires === null) delete expected.requires
+        else expected.requires = structuredClone(original.requires)
+      }
+      assert.equal(fingerprintSemanticKindSourceGoal(reviewBindingGoal(context, source, goal)),
+        fingerprintSemanticKindSourceGoal(expected), `all 766 earliest Physics sourceFP baselines: ${source}`)
+    }
+  }
+  console.log(`Actual V7 cache refresh: unchanged ${summary.affectedGoalIds.length} prerequisite sources, exact 27 cache snapshots and 21 complete current documents passed.`)
 }
 
 try {
