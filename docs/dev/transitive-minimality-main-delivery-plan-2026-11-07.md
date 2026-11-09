@@ -6,14 +6,14 @@ Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-**Aktuelle Lieferposition vom 9. November 2026:** Der erste begrenzte
-Deutsch-Schritt ist mit [PR #99](https://github.com/enpasos/skillpilot/pull/99)
-nach main bei `7a2c4de5888e98fe415a5e1373747ac3917a8f47` geliefert. Sein
-Head `1fa0ce0ed7` bestand alle fünf PR-Workflows und alle acht Hauptjobs;
-der tatsächliche Main-Dateibaum ist exakt gleich. Die getrennte frische
-[Main-CI](https://github.com/enpasos/skillpilot/actions/runs/42571444240)
-wird weiter begleitet. Das harte Standard-G17-Gate und die Abnahme aller zehn
-geschützten Fächer bleiben offen.
+**Aktuelle Lieferposition vom 9. November 2026:** Die technische
+V6-Unterstützung ist mit [PR #101](https://github.com/enpasos/skillpilot/pull/101)
+nach main bei `62316d3c653c753abbb822e8e4a1f5ebd1d04fb6` geliefert. Alle vier
+PR-Workflows und alle acht Hauptjobs bestanden; der tatsächliche Main-Dateibaum
+ist exakt gleich. Die getrennte frische
+[Main-CI](https://github.com/enpasos/skillpilot/actions/runs/42603858450)
+läuft noch. Das harte Standard-G17-Gate und die Abnahme aller zehn geschützten
+Fächer bleiben offen.
 
 Die Mathematiklieferung mit PR #97 bei
 `e94def51f625630da6c3f7fe8e54badefd8eb687` hat inzwischen auch ihre separate
@@ -24,22 +24,51 @@ frische Main-Dokumentationsprüfung und Dokumentationsveröffentlichung bestande
 Die weiterhin bestehende Cluster-Atomisierung bleibt eine ausgewiesene
 Implementierungslücke.
 
-Die HE-GK-View-Korrektur liegt getrennt in [PR #100](https://github.com/enpasos/skillpilot/pull/100)
-auf Head `9c6192bf4e`. Ihre 26 expliziten `prerequisiteOnly`-Referenzen erhalten
+Die HE-GK-View-Korrektur ist mit [PR #100](https://github.com/enpasos/skillpilot/pull/100)
+nach main bei `88a01f716c62968ef3d445959146d062dd2437bf` geliefert. Ihre
+26 expliziten `prerequisiteOnly`-Referenzen erhalten
 die Zielmengen und die vollständigen Laufzeitergebnisse. 99 Scopebilanzen,
 356 strikte View-Fälle und 751 R-Gegenprobenfälle bestanden; die 45 bereits
 ungültigen Source-/Scope-Paare bleiben ausdrücklich Negativkontrollen. Auch
 der reguläre lokale CQR-Check, die zehn geschützten Floors und die
 Composition-Prüfungen bestanden bei 4.573 unveränderten Produktquellpfaden.
-Die tatsächliche Remote-/Main-Abnahme wird getrennt begleitet.
+Der erste begrenzte Deutsch-Schritt aus
+[PR #99](https://github.com/enpasos/skillpilot/pull/99) bei
+`7a2c4de5888e98fe415a5e1373747ac3917a8f47` bestand auch seine getrennte frische
+Main-CI mit allen sechs Workflows und acht Hauptjobs.
 
-Der sichtbare IDE-Folgebranch `feat/g17-batched-prerequisite-proofs` enthält
-zunächst ausschließlich die geprüfte technische Verifier-Fortsetzung und ihre
-Tests. Die aktive V5-Registry und die Graphdaten bleiben unverändert. Diese
-[Code-Lieferung](prerequisite-reduction-batches-v6-support-2026-11-09.md) erhält
-einen eigenen kleinen PR über #100 nach main; der vollständige mechanische
-Deutsch-Datenbatch folgt separat. Das harte Standard-G17-Gate wird hier noch
-nicht aktiviert.
+Der sichtbare IDE-Branch `fix/g17-german-atomic-prerequisites` baut auf dieser
+gelieferten [Code-Unterstützung](prerequisite-reduction-batches-v6-support-2026-11-09.md)
+auf. Der Datencheckpoint `15593c82e92b62cc76601e340932800fdce8063c` ändert
+18 bestehende deutsche `requires`-Arrays: 45 Anforderungen an Cluster werden
+durch 272 bereits wirksame atomare Anforderungen ersetzt; eine vorhandene
+atomare Anforderung bleibt erhalten. Danach werden 311 atomare Kanten geordnet
+entfernt, jeweils mit neu aufgelöster Vererbung und aktualisierten Zeugen.
+Die Zahl roher deutscher `requires`-Kanten sinkt von 606 auf 522, die
+Minimalitätsbefunde von 91 auf null. Andere Zielfelder, `contains`, IDs,
+Lerninhalte und Lernresultate ändern sich nicht.
+
+Die V6-Registry erhält den unveränderten V5-Präfix mit 720 Quellen und ergänzt
+17 neue eindeutige Quellen; insgesamt sind es 737. Die echte Python-/Node-
+Kandidatenprüfung bestand in 166,576 Sekunden unter dem unveränderten
+180-Sekunden-Limit. Vier frische native Backendtests mit Corretto 25 bestanden,
+darunter 99 Konfigurationen mit 44 vollständigen und 55 unvollständigen
+Scopefällen sowie 110 negativen Planungsmethoden-Aufrufen mit Status 409.
+Diese sind keine Netzwerk-HTTP-Tests. 122.945 gebundene Quellpfade blieben
+unverändert. Der reguläre CQR-Lauf und alle zehn unveränderten Fachfloors
+bestanden; die beiden erzeugten Statusberichte und ihr historischer
+Symlink-Alias sind als erwartete Schreibwirkungen einzeln ausgewiesen.
+
+Die vollständige TypeScript-Testkette gegen die jetzt aktive V6-Registry läuft
+noch. Die eigene Daten-PR- und Main-CI-Abnahme stehen aus. Der
+[Deutsch-Nachweis](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-atomic-prerequisites/README.md)
+grenzt diese lokalen Ergebnisse von der noch offenen Standard-G17-Integration
+ab. Im vollständigen Referenzkatalog haben Mathematik und Latein auf main
+keine Minimalitätsbefunde; Deutsch erreicht diesen Stand bisher nur lokal.
+Die übrigen sieben geschützten Fächer haben zusammen 1.214 Befunde. Ein
+Minimalitätsnullbefund allein belegt weder die vollständige atomare Normalform
+noch einen bestandenen Standard-G17-Meilensteinpass. Die vier ungültigen
+experimentellen Referenzgraphen bleiben als solche ausgewiesen.
 
 Die ursprünglichen lokalen Nachweise aus dem ersten Deutsch-Schritt und ihre
 Quellbindungen bleiben erhalten. Der

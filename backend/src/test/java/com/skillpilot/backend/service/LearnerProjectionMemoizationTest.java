@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,6 +52,14 @@ class LearnerProjectionMemoizationTest {
         properties.setDirectory(curricula.toString());
         landscapes = new LandscapeService(properties, mapper);
         mappings = new GoalMappingService(properties, mapper);
+    }
+
+    @AfterAll
+    static void releaseLandscapeServices() {
+        landscapes = null;
+        mappings = null;
+        mapper = null;
+        properties = null;
     }
 
     @BeforeEach

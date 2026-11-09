@@ -20,7 +20,9 @@ Am gelesenen Stand \code{68db5bf499} lädt
 Die View-Projektion in \code{LearnerService} und der Resolver
 behandeln direkte \code{goalEntry}-Referenzen auf kanonische Cluster
 jedoch weiterhin als atomare Laufzeitziele ohne deren Kinder.
-Der historische DPK-006c-c-Nachweis beschreibt diese Altimplementierung;
+Der historische Nachweis zum paketgebundenen Runtime-Katalog, zu Offerings
+und Kompositionssichten (Implementierungsarbeitspaket
+\srcref{docs/dev/dual-curriculum-package-implementation-status.md}{DPK-006c-c}) beschreibt diese Altimplementierung;
 er belegt nicht die nun ausdrücklich geforderte Erhaltung der kanonischen
 atomaren Zielbasis. Die Korrektur und ihr nativer Nachweis stehen aus.
 Dieser gezielte Leseabgleich aktualisiert nicht die übrigen historischen
@@ -50,8 +52,11 @@ Minimalität sind verbindliche Basis vor M1. Heutige lokale oder
 profilbegrenzte Checks ersetzen den vollständigen Zielnachweis nicht.
 Die Matrix weist die fehlenden Gates aus.\\
 Clustererfüllung & Der normative Kern verwendet alle atomaren Nachfahren.
-Die gelesenen Backendpfade bevorzugen in bestimmten Fällen rekursiv
-\code{isCoreForPrereqs}-Kinder. Das ist nicht dieselbe Aggregation.\\
+Die gelesenen Backendpfade wählen rekursiv mit der privaten Hilfsmethode
+\code{isCoreForPrereqs}: Ein vorhandenes Ziel ohne Tags oder mit dem Tag
+\code{GK} erfüllt ihr Kriterium. Gibt es solche Kinder, werden nur diese
+berücksichtigt, andernfalls alle vorhandenen Kinder. Die Methode liest
+kein boolesches \code{core}-Attribut. Das ist nicht dieselbe Aggregation.\\
 Memorierung & Der eigene erfolgreiche Abschlussabruf begründet den
 Zielabschluss. Kartenfälligkeit ist kein automatischer Masteryentzug;
 die ältere Fälligkeits-Sollformel ist überholt. Historische Ableitung aus
@@ -124,27 +129,36 @@ Zeichen / Begriff & Bedeutung\\
 \midrule\endhead
 $G,A,K$ (Kern) & Ziele, strukturelle Atome, Cluster.\\
 $C,R,\Reff$ (Kern) & Enthaltensein, direkte und geerbte Voraussetzungen.\\
-$R_{\mathrm{at}}$ & Vollständig atomar expandierte effektive Relation;
-im Abschlusskapitel kurz $R$.\\
+$R_{\mathrm{at}}$ & Vollständig atomar expandierte effektive Relation,
+auch in den Abschlussformeln.\\
 $X^+,X^{-1}$ & Nichtleere transitive Hülle und Umkehrrelation.\\
 $\Atoms(g)$ & Atomare Basis; bei einem Atom die einelementige Menge.\\
 $m,M$ & Ein gespeicherter binärer Zielzustand und die Menge seiner
 ausdrücklichen Erfolge. $m(a)=0$ schließt implizite Beherrschung nicht aus.\\
 $M_{\mathrm{eff}},M_A$ & Globale Vereinigung ausdrücklicher und gültig
-abgeleiteter impliziter Beherrschung; allgemeine Erfüllungsmenge im Kern.\\
+abgeleiteter impliziter Beherrschung; $M_A:=M_{\mathrm{eff}}\subseteq A$
+ist die Kurznotation der Frontierformeln und älteren Diagramme.\\
 $U,\Own(U),T(U)$ & Lerneinheit, eigene atomare Erwerbsziele und Gesamtumfang einschließlich der Kinder.\\
 $\Complete(U)$ & Rekursiv abgeleiteter Abschluss; keine zusätzlich gespeicherte Unit-Mastery.\\
-$Q_U,K_U,P_U$ & Eigene Prüfungs-, Memorier- und gemeinsame Schutzmenge.
-$K_U$ bezeichnet hier keine strukturellen Cluster.\\
+$Q_U,A_{\mathrm{mem},U},P_U$ & Eigene Prüfungs-, Memorier- und gemeinsame
+Schutzmenge; $A_{\mathrm{mem},U}=\Own(U)\cap A_{\mathrm{mem}}$ mit
+$A_{\mathrm{mem}}$ als Menge der atomaren Memorierziele.\\
+$\operatorname{Cards}(g)$ & Vollständig aufgelöste gültige Menge der
+erforderlichen Karten des Memorierziels $g$.\\
 $N_U$ & Vollständige transitive Nachfrage der offenen eigenen geschützten Ziele,
 ohne Stopp an gemeisterten Zwischenzielen.\\
 $I_U$ & Lokal abgeleitete Anwendung eigener gewöhnlicher Erwerbsziele.
 Keine zusätzliche gespeicherte Ergebnisart.\\
+$\mathcal U_{\mathrm{valid}}$ & Personen- und revisionsgebundene, dauerhaft
+anwendbare autoritative lokale Verträge; nicht nur aktuell sichtbare
+Einheiten oder deren neueste Fassungen.\\
 Personal Curriculum & Verbindliche persönliche Zielauswahl auf Level 2;
 kein Filter, der vorhandene globale Anerkennung zurücknimmt.\\
 Fokus & Temporärer Arbeitsbereich auf Personalisierungslevel 3.\\
 $T_\pi,B_\pi,\ell_\pi$ & Geplante Erwerbsziele, Eintrittsbasis und
 optionale kalenderbezogene Planungsstufen.\\
+$\Theta_\pi,\widehat t_h(\Theta_\pi)$ & Deklarierte Schätzannahmen des Plans
+und darunter geschätzte nichtnegative Dauer der Aktivität $h$.\\
 M7 & Maschineller Curriculum-QA-Reifegrad, kein menschlicher
 Wirksamkeitsnachweis.\\
 \bottomrule

@@ -95,29 +95,36 @@
 
 \begin{document}
 \begin{titlepage}
-\vspace*{9mm}
+\vspace*{6mm}
 {\sffamily\large\color{teal} SKILLPILOT · TECHNISCHE REFERENZ\par}
-\vspace{10mm}
+\vspace{7mm}
 {\sffamily\bfseries\fontsize{32}{37}\selectfont\color{ink}
 Die Graph-Definition\par von SkillPilot\par}
-\vspace{9mm}
+\vspace{7mm}
 {\Large Struktur, Mathematik, rekursive Lerneinheiten\par und implizite Beherrschung\par}
-\vspace{8mm}
-\begin{center}\includegraphics[width=\linewidth,height=.23\textheight,keepaspectratio]{assets/graph-definition/00-title-skill-graph.png}\end{center}
+\vspace{6mm}
+\begin{center}\includegraphics[width=\linewidth,height=.16\textheight,keepaspectratio]{assets/graph-definition/00-title-skill-graph.png}\end{center}
 \vfill
 \begin{principle}{Geltung dieser Fassung}
 Deutsche Gesamtdarstellung, Stand \textbf{9. November 2026}.
-Die atomare Zielnorm und die Bereinigungsreihenfolge sind verbindlich;
-Anhang~\ref{sec:rule-milestones} ordnet alle Regeln den Meilensteinen zu.
-Die Konzeptkorrektur unterscheidet gespeichertes Verstehen von durch gültige
-Prüfungen belegter selbstständiger Anwendung. Beide zählen global als
-effektiv beherrscht. Die neue globale Anwendungsanerkennung ist auf der
-geprüften Hauptlinie \textbf{noch nicht implementiert}; Anhang~\ref{sec:implementation}
-beschreibt den Unterschied zum bisherigen Modell.
-Die fachliche Struktur heißt \textbf{Lerneinheit}: Lernversprechen,
-eigene Ziele und Kindlerneinheiten führen zu einem abgeleiteten Abschluss.
-Kalenderjahre definieren sie nicht; ihr Abschluss erzeugt keine zusätzliche
-gespeicherte Masterystufe.
+SkillPilot beschreibt Lernziele und ihre Beziehungen: \code{contains}
+gliedert Ziele, \code{requires} benennt fachliche Voraussetzungen.
+Vom kanonischen Zielbestand über das persönliche Curriculum bis zum
+aktuellen Fokus und den gespeicherten Ergebnissen bleiben die Zielidentitäten
+erhalten. \textbf{Lerneinheiten} verbinden ein Lernversprechen mit eigenen
+Zielen und Kindlerneinheiten; Zeitpläne ordnen deren Erwerb verfügbarem
+Kalender und Budget zu. Ausdrücklich festgestelltes Verstehen und durch
+gültige lokale Prüfungen belegte selbstständige Anwendung zählen beide
+zur effektiv beherrschten Zielmenge.
+
+\smallskip\textbf{Geltung und Umsetzung.}
+Die atomare Zielnorm und die Bereinigungsreihenfolge sind verbindlich.
+Anhang~\ref{sec:rule-milestones} ordnet die Regeln ihren Prüfgebieten zu und
+grenzt vorhandene Gates ab. Die neue globale Anwendungsanerkennung ist auf
+der geprüften Hauptlinie \textbf{noch nicht implementiert};
+Anhang~\ref{sec:implementation} beschreibt den Unterschied zum bisherigen
+Modell. Der Abschluss einer Lerneinheit wird aus eigenen Pflichten und
+Kindern abgeleitet, ohne eine zusätzliche Masterystufe zu speichern.
 \end{principle}
 \vspace{6mm}
 {\small SkillPilot · enpasos -- Enterprise Patterns \& Solutions GmbH\par

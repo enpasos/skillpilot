@@ -95,8 +95,13 @@ sein. Explizite Metadaten zur Klassifikation müssen dazu passen.
 Strukturelle Atomarität bedeutet nicht automatisch \emph{semantische}
 Atomarität. Ein Blatt mit fünf unabhängigen Teilkompetenzen bleibt formal
 ein Blatt, kann jedoch die Qualitätsprüfung verfehlen. Orientierung,
-Gedächtnisziele und Prüfungen sind besondere pädagogische Arten; sie sind
-keine zusätzlichen Strukturtypen und keine Programmabschnitte.
+Memorierung und Prüfungen sind besondere pädagogische Arten:
+Ein gewöhnliches Kompetenzziel beschreibt fachliches Verstehen oder Können,
+ein Orientierungsziel den motivierenden Einstieg, ein Memorierziel den
+kontrollierten Abruf erforderlicher Karten und ein Prüfungsziel eine
+bewertete Aufgabe mit eigenem Bestehenskriterium. Ihre Ergebnisverträge
+erläutert Abschnitt~\ref{sec:goal-types}. Diese Arten sind keine zusätzlichen
+Strukturtypen und keine Programmabschnitte.
 
 \section{Containment, Voraussetzungen und Vererbung}
 \subsection{Hierarchie und atomare Basis}
@@ -171,8 +176,9 @@ Für die Laufzeit wird zuerst auf Atome normalisiert:
 \]
 Die transitive Hülle $R_{\mathrm{at}}^+$ enthält damit auch Pfade, die
 nach der Expansion einer Clusteranforderung weiterführen. Mastery eines
-Zwischenziels unterbricht diese Hülle nicht. Im Abschlusskapitel bezeichnet
-$R$ der Kürze halber diese vollständig normalisierte atomare Relation.
+Zwischenziels unterbricht diese Hülle nicht. Auch im Abschlusskapitel
+bleibt $R_{\mathrm{at}}$ die Bezeichnung dieser normalisierten Relation;
+$R$ bezeichnet weiterhin die verfassten Kanten.
 
 Im vollständig atomar verfassten Zielzustand gilt $\Reff=R=R_{\mathrm{at}}$:
 Containment-Vorfahren sind Cluster und tragen dann keine ausgehenden
@@ -202,6 +208,11 @@ keine zusätzlich verfassten Autorenkanten.}
 \section{Gültigkeit, Minimalität und Lernbarkeit}
 \label{sec:validity}
 \subsection{Verbindliche Bedingungen}
+Die interne Prüfbezeichnung \code{G17} steht hier für die vollständige
+atomare Normalform und die vollständige transitive Minimalitätsprüfung
+des deklarierten kanonischen Fachbestands. Sie umfasst den nötigen
+fachfremden Voraussetzungsbestand und vererbende Vorfahren; ein Teilscan
+oder ein einzelnes Routenprofil genügt dafür nicht.
 Ein vollständiger Graph erfüllt den kanonischen Zielzustand genau dann,
 wenn neben den Attribut- und Identitätsbedingungen auch
 \eqref{eq:atomic-target}, die Azyklizität und atomare transitive Minimalität
@@ -268,7 +279,8 @@ bei der Atomarisierung erhalten. Nach vollständiger atomarer Abdeckung wird
 $k\to p$ entfernt. Im Zielzustand gilt \eqref{eq:localmin} automatisch,
 weil Cluster keine ausgehenden Anforderungen mehr tragen.
 
-Der bisherige G17-Entfernungstest bildet für jede verfasste Kante
+Der bisher unter G17 verwendete Entfernungstest ist eine Diagnose des
+Übergangsbestands: Er bildet für jede verfasste Kante
 $e=(g,p)$ die Relation $R'=R\setminus\{e\}$ und berechnet
 $R_{\mathrm{eff}}'$ mit unverändertem $C$ neu. Er diagnostiziert
 Redundanz durch $(g,p)\in(R_{\mathrm{eff}}')^+$.
@@ -292,8 +304,13 @@ Der heutige Entfernungsauditor prüft noch das alte effektive Kriterium auf
 Zielknoten; sein Bestehen beweist die neue Migrationspriorität nicht.
 Erst im atomaren Zielzustand entspricht dieses Kriterium der
 Minimalität aus \eqref{eq:atomicmin}. Die Norm ist keine Behauptung bereits
-vollständiger Datenmigration oder CI-Durchsetzung. \code{CQR-102} und
-\code{GVR-012} bleiben direkt atomare Routennachweise ohne neue Ausnahme.
+vollständiger Datenmigration oder CI-Durchsetzung. Die Prüfung direkt
+atomarer Fachrouten heißt im Curriculum-Quality-Review \code{CQR-102};
+die harte vollständige Routenprüfung der Mathematikprofile Sek I und
+Sek II heißt als \emph{graph-validation rollout rule} \code{GVR-012}.
+Beide verlangen bereits in ihrem jeweiligen Scope direkt atomare Routen;
+geerbte Clusterpfade liefern dort keinen Ersatz. Die Codelegende steht in
+Anhang~\ref{sec:rule-milestones}.
 Ein durch atomare Expansion entstehender Selbstzyklus bleibt ein Modellfehler,
 auch wenn die unexpandierten Kanten azyklisch aussehen.
 
@@ -364,9 +381,14 @@ Konkrete Routenprofile schränken zusätzlich die Schulstufe, erlaubte
 semantische Zielarten und die Reihenfolge ein: Orientierung am Einstieg,
 fachliches Lernen, bei Bedarf Gedächtnisunterstützung und eine selbstständige
 Leistung am Ende. Gedächtnisziele werden dadurch nicht überall Pflicht.
-Die Profilregeln \code{CQR-101}, \code{CQR-102}, \code{CQR-103} und
-\code{GVR-012}/\code{GVR-013} haben jeweils einen benannten Prüfumfang.
-Sie sind nicht als pauschale Zusicherung für jeden Graphen zu lesen.
+Die Profilregeln prüfen unterschiedliche Aussagen: vollständige Routen
+über effektive Voraussetzungen (\code{CQR-101}), direkt atomare Routen
+(\code{CQR-102}) und das Fehlen von \code{requires} an den selektierten
+Clustern (\code{CQR-103}). In den benannten Mathematikprofilen erzwingt
+\code{GVR-012} die vollständige direkt atomare Route; \code{GVR-013}
+prüft für die ausgewählten lokalen atomaren Nicht-Memorierziele, dass ihre direkten
+lokalen Voraussetzungen atomare Ziele sind. Diese Profilprüfungen sind
+kein globaler Nachweis der atomaren Normalform für alle Fächer.
 
 Eine Übersicht zwischen Clustern kann aus atomaren Routen abgeleitet werden.
 Beispielsweise bedeutet eine existenzielle Zusammenfassung $k_2\to k_1$:
@@ -385,20 +407,33 @@ zielgerecht geprüftes Verstehen. Orientierung, Memorierung und Prüfungen
 verwenden ihren jeweils eigenen Abschlussvertrag. Keine Teilbewertung
 bildet einen dritten Mastery-Zustand.
 
-Zusätzlich wird die implizite Menge $I_L$ aus jedem für die Person
-gültigen dauerhaft anwendbaren lokalen Abschlussvertrag $L$ abgeleitet. Bei fachlichen Kompetenzzielen belegt sie selbstständige Anwendung,
-nicht bloß erlassene Vorbereitung. Ein abgeleiteter Orientierungsmarker
+Zusätzlich wird für jede Lerneinheit U mit einem für diese Person dauerhaft
+gültigen lokalen Vertrag die implizite Menge $I_U\subseteq A$ abgeleitet.
+Der Vertrag bindet die eigenen Erwerbsziele, ihre Revision und die fachlich
+geprüfte Bedeutung der zugehörigen Prüfungen
+(Abschnitte~\ref{sec:learning-units} und~\ref{sec:assessment}).
+Bei fachlichen Kompetenzzielen belegt $I_U$ selbstständige Anwendung.
+Anschaulich kann eine bestandene Prüfung zu linearen Funktionen die
+Anwendung der eigenen lokalen Teilkompetenzen von U belegen, obwohl diese
+nicht einzeln abgehakt wurden. Eine unabhängige Kartenpflicht oder ein
+anderes Kind kann noch offen sein; der Vollabschluss der Einheit ist keine
+Voraussetzung dieser Anerkennung. Ein abgeleiteter Orientierungsmarker
 behält ausschließlich die Bedeutung eines erledigten Einstiegs; er
 behauptet weder Fachkompetenz noch eine erfolgte Motivationsinteraktion. Die effektive globale Menge lautet
 \[
- M_{\mathrm{eff}}=M\cup\bigcup_{L\in\mathcal L_{\mathrm{valid}}}I_L.
+ M_{\mathrm{eff}}=M\cup\bigcup_{U\in\mathcal U_{\mathrm{valid}}}I_U.
 \]
+Dabei enthält $\mathcal U_{\mathrm{valid}}$ die personen- und
+revisionsgebundenen, dauerhaft anwendbaren autoritativen Einheitsverträge,
+nicht nur die gerade sichtbaren Einheiten oder die neuesten Inhaltsfassungen.
 Die beiden Begründungsarten sind in ihrem effektiven Ergebnis gleichwertig:
 Sie erfüllen künftige Voraussetzungen, zählen zum IST und bleiben bei
-Fokus- oder Planwechsel wirksam. $I_L$ erzeugt keinen synthetischen
+Fokus- oder Planwechsel wirksam. $I_U$ erzeugt keinen synthetischen
 Mastery-Datensatz. Abschnitt~\ref{sec:assessment} definiert die Ableitung
 und die fachlichen Voraussetzungen des Vertrags.
-Für die folgenden allgemeinen Formeln sei $M_A=M_{\mathrm{eff}}$.
+Für die folgenden allgemeinen Formeln und die Beschriftung der
+Abbildung~\ref{fig:frontier} schreiben wir kurz
+$M_A:=M_{\mathrm{eff}}\subseteq A$ für dieselbe wirksame atomare Masterymenge.
 \begin{equation}
  \Sat(g,M_A)\iff
  \Atoms(g)\ne\varnothing\ \land\ \Atoms(g)\subseteq M_A.
@@ -519,6 +554,12 @@ seiner Kinder nicht zu einem neuen atomaren Ziel.
 
 \paragraph{Vollständige Voraussetzungsketten in Projektionen.}
 \label{par:projection-closure}
+Level 2 bezeichnet den längerfristigen Umfang des persönlichen Curriculums,
+etwa für ein Bundesland und Kursprofil (Abschnitt~\ref{sec:personal-scope}).
+Eine geprüfte Kompositionssicht legt dafür die kanonischen Zielreferenzen
+fest (Abschnitt~\ref{sec:composition-views}). Die Rollenprüfung unterscheidet
+Lernziele \code{target} von reinen Voraussetzungshilfen
+\code{prerequisiteOnly} (Abschnitt~\ref{sec:projection-roles}).
 Nach der Ownerentscheidung vom 9. November 2026 muss die Projektion
 einer ausgewählten atomaren Zielmenge $T\subseteq A$ im zugrunde liegenden
 Voraussetzungsgraphen mindestens die Menge
@@ -562,7 +603,7 @@ Danach schränkt der Normalmodus die benötigten atomaren Endpunkte ein:
  \Frontier_{\mathrm{opt}}(M_A,F)=\{g\in A_F\setminus M_A\mid
  \forall p\in A_F:\ (g,p)\in R_{\mathrm{at}}^+\Rightarrow p\in M_A\}.
 \end{equation}
-Im strikten Modus bleiben die Kandidaten im Fokus, die Anforderungen
+Im strikten Modus (\emph{pessimistic / strict}) bleiben die Kandidaten im Fokus, die Anforderungen
 werden jedoch global geprüft:
 \begin{equation}
  \Frontier_{\mathrm{strict}}(M_A,F)=
@@ -584,7 +625,9 @@ verwandelt ausgeblendete Voraussetzungen nicht in Mastery.
 {Identischer Fokus, unterschiedlicher Prüfbereich. \emph{Vectors} liegt
 außerhalb; $M_A=\varnothing$. Normalmodus ignoriert die orange markierten
 Anforderungen und erlaubt \emph{Velocity}; strikter Modus lässt keines der
-beiden Atome zu. Die Bildverweise 11.3 und 11.4 nennen Abschnitte der
+beiden Atome zu. \emph{Filter scope F} bezeichnet den Fokus;
+\emph{optimistic} den Normalmodus und \emph{pessimistic / strict} den
+strikten Modus. Die Bildverweise 11.3 und 11.4 nennen Abschnitte der
 englischen Quellspezifikation.}
 {fig:filters}
 \FloatBarrier
