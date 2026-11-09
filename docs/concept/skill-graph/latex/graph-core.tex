@@ -517,6 +517,37 @@ Die atomare Klassifikation wird ebenfalls nicht aus dem gefilterten Baum
 neu erfunden: $A_F=A\cap G_F$. Ein Cluster wird durch das Ausblenden
 seiner Kinder nicht zu einem neuen atomaren Ziel.
 
+\paragraph{Vollständige Voraussetzungsketten in Projektionen.}
+\label{par:projection-closure}
+Nach der Ownerentscheidung vom 9. November 2026 muss die Projektion
+einer ausgewählten atomaren Zielmenge $T\subseteq A$ im zugrunde liegenden
+Voraussetzungsgraphen mindestens die Menge
+\[
+ U(T)=T\cup\{p\in A\mid\exists t\in T:(t,p)\in R_{\mathrm{at}}^+\}
+\]
+und die für ihre vollständige transitive Nachfrage nötigen kanonischen
+Voraussetzungsbeziehungen erhalten. Anwendbarkeit und geprüfte
+Level-2-Komposition bestimmen $T$. Sie dürfen unverzichtbare kanonische
+Zwischenziele nicht entfernen, bevor die Voraussetzungsketten berechnet
+werden. In Übergangsdaten muss auch die für Vererbung und atomare
+Expansion nötige kanonische Struktur verfügbar bleiben.
+
+Bei $a\mathrel{R}b\mathrel{R}c$ muss eine Auswahl von $a$ und $c$
+deshalb $b$ im zugrunde liegenden Graphen mitführen. Die Nachfrage von
+$a$ nach $c$ bleibt erhalten. Geht dieser Pfad verloren, ist die
+Projektion fehlerhaft; die fehlenden Knoten und Beziehungen müssen
+erhalten bleiben. Neue \code{requires}-Kanten in der Kompositionssicht
+oder abgeschwächte kanonische Voraussetzungen sind keine Korrektur.
+
+Diese strukturelle Vollständigkeit verlangt nicht, jeden Knoten im
+sichtbaren Baum anzuzeigen. Sie vergibt auch keine Rollen: Die ausdrückliche
+Level-2-Rollenprüfung erfolgt weiterhin vor der Expansion von
+Voraussetzungsclustern; reine \code{contains}-Nachkommen erhalten keine
+zusätzliche Rollenpflicht. Eine fehlende erforderliche Rolle bleibt ein
+Konfigurationsfehler, auch wenn der Knoten geladen oder gemeistert ist.
+Die Hüllenbildung schreibt kein zusätzliches Lernziel ein, erweitert
+keinen Fokus und erzeugt, kopiert, überträgt oder löscht keine Mastery.
+
 \subsection{Normalmodus und strikter Modus}
 Im Normalmodus (\emph{optimistic}) gilt die relative Basis
 \[
