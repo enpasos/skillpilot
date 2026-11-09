@@ -85,6 +85,7 @@ deklarierten Datenreihenfolge; eine topologische Sortierung nach
 Voraussetzungen ist eine gesondert benannte didaktische Ansicht.
 
 \subsection{Geprüfte Kompositionssichten}
+\label{sec:composition-views}
 
 Eine Kompositionssicht beschreibt den sichtbaren oberen Aufbau eines
 Curriculums durch Strukturknoten, Beschriftungen, Reihenfolge und
@@ -93,6 +94,16 @@ Atomziele und keine neuen \code{requires}-Kanten. Wo eine solche Sicht
 für den Kontext maßgeblich ist, darf ein Renderer sie nicht durch
 Vermutungen aus Titeln, \code{phase} oder alternativen Platzierungen
 überschreiben.
+
+Zum Beispiel kann ein Gliederungsknoten \glqq Mechanik\grqq{} eine
+\code{canonicalSubtree}-Referenz auf den kanonischen Kinematik-Cluster
+enthalten: Diese bindet dessen geprüfte \code{contains}-Unterstruktur ein.
+Eine \code{goalEntry}-Referenz kann daneben das einzelne kanonische Atom
+\glqq Kräfte vektoriell addieren\grqq{} einbinden. Das sind Referenzen
+auf bestehende Ziele, keine neu verfassten Ziele. Ein Gliederungsknoten ist
+damit nicht automatisch ein fachlicher Cluster vom Typ
+\code{curricularArea}; diese Klassifikation braucht ihre eigene autoritative
+Festlegung.
 
 Der aufgelöste Standardbaum muss jedes sichtbare Ziel höchstens einmal
 und unter höchstens einem sichtbaren Elternknoten zeigen. Ein globaler
@@ -158,7 +169,8 @@ Wurzelcurriculum stellt den Zielbestand bereit.
 \item \textbf{Personal Curriculum:} der längerfristig festgelegte,
 backendseitig verantwortete Bildungsumfang. Dazu gehören beim
 Schulcurriculum der Landes- beziehungsweise kanonische Kontext,
-gegebenenfalls G8/G9, eine ausdrücklich bestimmte Stufe, die Fächer
+gegebenenfalls das acht- oder neunjährige gymnasiale Dauermodell
+(\code{G8}/\code{G9}), eine ausdrücklich bestimmte Stufe, die Fächer
 und deren Kursprofile.
 \item \textbf{Lernfokus und aktives Ziel:} Ein oder mehrere Wurzeln
 begrenzen vorübergehend den Arbeitsbereich; genau ein atomarer
@@ -170,19 +182,25 @@ Die Ergebnisse bleiben bei Änderungen der Sicht oder des
 Fokus erhalten. Clusterfortschritt wird daraus abgeleitet.
 \end{enumerate}
 
-Ein Kursprofil wie LK ist ein Fachattribut und bestimmt nicht implizit
+\code{GK} und \code{LK} stehen für Grundkurs und Leistungskurs. In
+SkillPilot werden sie auch als technische Projektionslabels verwendet;
+wo die amtliche Kursstruktur abweicht, gilt die ausdrücklich deklarierte
+Zuordnung, ohne eine gleichnamige amtliche Kursart zu behaupten.
+Ein Kursprofil ist ein Fachattribut und bestimmt nicht implizit
 die Schulstufe. Fehlende Angaben zur Stufe bleiben ungeklärt. Eine
 Änderung des Personal Curriculum prüft Fokus und aktives Ziel erneut
 gegen die neue Zielmenge; sie darf globale Ergebnisse weder löschen
 noch neu vergeben. Die aktuelle Konfiguration des Personal Curriculum
 erfolgt über die dafür vorgesehenen SkillPilot-Oberflächen. Der
-OpenAI-V1-Coach ändert diese Konfiguration nicht selbständig.
+über den konkreten OpenAI-V1-Adapter angebundene Sprachmodell-Coach liest
+diesen Rahmen und ändert diese Konfiguration nicht selbständig.
 
 Alle \code{target}-Ziele im Personal Curriculum bleiben beabsichtigte
 Lernziele. Ein enger Fokus reduziert den vorübergehenden Arbeitsbereich,
 nicht den längerfristigen Gesamtumfang oder dessen Abschlussbedingungen.
 
 \subsection{Zielrolle und Voraussetzungshilfe}
+\label{sec:projection-roles}
 
 Eine Referenz in einer Kompositionssicht kann ausdrücklich eine von
 zwei Rollen tragen:
@@ -223,6 +241,17 @@ entfällt; bisher zulässige Konfigurationen können deshalb blockieren.
 Rollen werden weiterhin ausdrücklich festgelegt. Diese Gültigkeitsprüfung
 ist von der späteren Level-3-Fokuswahl getrennt: Eine gültig aufgelöste
 Voraussetzung außerhalb des Fokus blockiert den Normalmodus weiterhin nicht.
+
+\emph{Beispiel im Übergangsbestand:} Ein Physikziel g benötigt einen
+Mathematik-Cluster k. Eine geprüfte \code{canonicalSubtree}-Referenz auf k
+mit der Rolle \code{prerequisiteOnly} erhält dessen kanonische atomare
+Basis und löst die Rollen ihrer Nachkommen über die Teilbaumvererbung auf.
+Bloße \code{contains}-Nachkommen brauchen dadurch keine zusätzlichen
+individuellen Rolleneinträge. Hat k außerdem eine Voraussetzung p, muss
+auch p in der Komposition als \code{target} oder \code{prerequisiteOnly}
+auflösbar sein. Diese Prüfung der Voraussetzungsknoten erfolgt vor der
+Clusterexpansion; für die anschließende Berechnung bleibt die vollständige
+atomare Basis erhalten.
 
 \subsection{Anwendbarkeit ist keine Platzierung}
 
@@ -342,7 +371,8 @@ Einstiegsregel zurückgesetzt.
 \subsection{Memorierung: Übung und verifizierter Abruf}
 
 Ein Memorierziel bündelt die erforderlichen Karten eines Decks.
-Die SRS-Übung steuert die Wiederholungsintervalle der Karten. Der
+Ein Spaced-Repetition-System (SRS), also ein System für zeitlich verteilte
+Wiederholung, steuert die Übungsintervalle der Karten. Der
 kontrollierte Abruf hält fest, ob eine Karte ohne Kartenhilfe richtig
 beantwortet wurde. Umdrehen oder Selbsteinschätzung während der Übung
 sind kein solcher Nachweis. Den Nachweis der Beherrschung des Lernziels gibt
@@ -350,9 +380,12 @@ seine eigene bestandene Abschlussprüfung über die erforderlichen Karten.
 Kartenprozess und Zielabschluss sind zu unterscheiden; sie erzeugen
 keine zweite Masterystufe oder ein zusätzliches gespeichertes Zielergebnis.
 
-Sei $K_g$ die vollständig aufgelöste, gültige Menge erforderlicher Karten.
+Sei $\operatorname{Cards}(g)$ die vollständig aufgelöste, gültige Menge
+erforderlicher Karten des Memorierziels g.
 Mit $\operatorname{RecallPassed}(g)$ wird hier nur der ausdrücklich
-festgestellte erfolgreiche Abschlussabruf bezeichnet, kein neues
+festgestellte erfolgreiche Abschlussabruf über diese erforderliche
+Kartenmenge bezeichnet. Dieser eigene Zielabschluss ist kein bloßes
+Zusammenzählen aktueller Einzelkartenflags und kein neues
 Datenfeld oder zusätzliches Prüfungsziel. Dann gilt
 \[
   \Complete_{\mathrm{memory}}(g)
@@ -378,7 +411,8 @@ Die vorliegende Dokumentkorrektur ändert weder Runtime noch Lernerdaten.
 Die allgemeine Abschlussberechnung verwendet dasselbe binäre Zielergebnis
 und führt keine eigene Anerkennung von Memorier-Mastery ein.
 
-Der gegenwärtig dokumentierte SRS-Vertrag verwendet SM-2-Zustand mit
+Der gegenwärtig dokumentierte SRS-Vertrag verwendet Zustand nach dem
+Verfahren SM-2 (SuperMemo 2) mit
 Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem
 Wiederholungsdatum. Eine Karte ohne gespeicherten Zustand ist fällig.
 Erfolgreiche Übung verlängert nach den festgelegten Regeln das
@@ -527,8 +561,15 @@ widersprüchliche Zuordnungen bleiben sichtbare Befunde.
 Die menschenlesbare Begründung ist eine Darstellung vorhandener
 Evidenz, kein zweites führendes Register. Strukturierte Referenzen
 und Fingerprints ermöglichen, dieselbe Begründung in Dokumenten,
-Exporten und Laufzeitwerkzeugen konsistent auszugeben. Ein
-zusätzlicher MEM/FWU-Abgleich kann die klassische Quellenroute
+Exporten und Laufzeitwerkzeugen konsistent auszugeben. MEM
+(\emph{Metadata for Educational Media}) verknüpft digitale Bildungsmedien
+mit Lehrplaninhalten und Kompetenzzielen. FWU steht für das Institut für
+Film und Bild in Wissenschaft und Unterricht gGmbH; hier ist dessen
+Lehrplanontologie gemeint.\footnote{Siehe die
+\href{https://fwu.de/bildung-der-zukunft/}{FWU-Projektbeschreibung zu MEM},
+das \href{https://fwu.de/impressum-datenschutzerklaerung/}{FWU-Impressum}
+und den \srcref{docs/concept/skill-graph/mem-fwu-roundtrip-plan.md}{MEM/FWU-Roundtripplan}.}
+Ein zusätzlicher Abgleich mit diesen Lehrplandaten kann die klassische Quellenroute
 stützen oder infrage stellen; er ersetzt sie nur unter einem
 ausdrücklich geprüften Vertrag für den konkreten Umfang.
 
