@@ -258,6 +258,21 @@ Bewusste Grenze: Die aktive Package-Generation ist derzeit eine Prozessstart-Gre
 
 ## Abgeschlossener Teilschritt: DPK-006c-c
 
+**Konzeptionelle Präzisierung vom 9. November 2026:** Die nachfolgend belegte
+opake Materialisierung eines kanonischen Clusters als eigenständig abschließbarer
+`goalEntry`-Leaf beschreibt den bisherigen Implementierungsstand. Sie entspricht
+nicht mehr der vom Product Owner präzisierten
+[Projektionsanforderung](../concept/skill-graph/view-projection-and-goal-placement.md):
+Kanonische Atome und ihre vollständigen transitiven Voraussetzungsketten bleiben
+die Berechnungsbasis. Ein projizierter Cluster behält seine kanonische Identität;
+Anzeigeverdichtung erzeugt kein Ersatzatom. Erforderliche Voraussetzungsknoten
+müssen strukturell verfügbar und ihre Level-2-Rollen ausdrücklich aufgelöst sein.
+Die Korrektur der bestehenden Atomisierung ist noch offen. Die unten genannten
+Tests belegen das frühere Verhalten und sind keine Abnahme dieser Korrektur.
+Gespeicherte Ergebnisse werden durch diese Dokumentationsänderung nicht auf
+Clusterkinder übertragen. Die übrigen Paket-, Offering- und Generationsverträge
+dieses Teilschritts bleiben bestehen.
+
 DPK-006c-c macht Runtime-Katalog, Offerings und Composition Views zu paketautoritativen Laufzeitdaten. Ein generationsgebundener, tief unveränderlicher `PackageCompositionViewState` prüft beim Start die View-Payloads gegen den Snapshot, die deklarierten Scope-Dimensionen, eindeutige Strukturknoten und die einmalige Sichtbarkeit expandierter Ziele. Jede View muss mindestens über ein Offering erreichbar sein. Single-Offerings müssen exakt denselben Scope wie ihre View tragen; ein Merge ist ausschließlich über eine deklarierte Composite-Dimension, deren geordnete Mitglieder und die explizite View-Reihenfolge zulässig. Freie `merged:`-IDs, GK/LK-Heuristiken und Teilmengen-Fallbacks existieren im Package-Modus nicht.
 
 `CompositionViewService` wird nun je Quellmodus genau einmal konfiguriert. Der Repository-Modus behält seine bisherigen Authoring-Heuristiken; der Package-Modus kennt weder `LandscapeProperties` noch `Files.walk`, Classpath oder Repository-Dateien. `GET /api/ui/curriculum-catalog` liefert eine typisierte, geordnete und pfadfreie Projektion von Packages, Roots, Landscapes, Views und Offerings. `GET /api/ui/composition-views/offerings/{offeringId}` löst eine explizite Offering-ID auf; der bestehende `/match`-Übergangspfad trifft paketgebunden nur den exakten veröffentlichten Scope.

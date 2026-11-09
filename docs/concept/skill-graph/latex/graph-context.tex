@@ -103,10 +103,24 @@ Vertrag ungültig. Eine Rollenregel für überlappende Referenzen ist noch
 keine Erlaubnis, Ziele im sichtbaren Baum zu duplizieren.
 
 Die Kompilation soll früh erfolgen: Kontext auflösen, passende Sicht
-auswählen, kanonische Referenzen expandieren, Rollen und sichtbare Eltern
-prüfen, dann das Ergebnis für die Laufzeit bereitstellen. Damit wird
+auswählen, kanonische Referenzen und ihre atomare Zielbasis auflösen,
+vollständige Voraussetzungsketten erhalten, Rollen und sichtbare Eltern
+prüfen, dann das Ergebnis für die Laufzeit bereitstellen. Die
+Hüllenbedingung aus Abschnitt~\ref{par:projection-closure} gilt auch dann,
+wenn die Sicht nur einen Teil der kanonischen Atome auswählt. Damit wird
 Strukturvalidierung möglich, bevor eine Benutzeroberfläche daraus einen
 Baum zeichnet.
+
+\textbf{Kanonische Identität bleibt erhalten.} Ein kanonischer Cluster
+darf durch eine direkte Referenz oder ausgeblendete Kinder kein
+eigenständig prüfbares oder beherrschbares Atom werden. Diese Regel gilt
+unabhängig davon, ob ein gesondertes \code{semanticKind}-Review vorliegt.
+Eine zusammengeklappte Darstellung repräsentiert ihre geprüfte kanonische
+atomare Zielbasis; Voraussetzungsprüfung, Fortschritt und Abschluss
+behalten diese Basis. \code{canonicalSubtree} oder ausdrückliche
+Referenzen auf die beabsichtigten kanonischen Atome legen sie fest.
+Eine Projektionsänderung darf einen vorhandenen Ergebniswert unter der
+Cluster-ID nicht auf Kindziele übertragen.
 
 Ein autoritativ als \code{curricularArea} klassifizierter Cluster
 darf nicht über eine direkte \code{goalEntry}-Referenz als
@@ -114,6 +128,14 @@ undurchsichtiges, atomar wirkendes Laufzeitziel erscheinen. Eine
 \code{canonicalSubtree}-Referenz erhält seine geprüften Nachkommen;
 alternativ benennt eine explizite Sichtstruktur die beabsichtigten
 Atomziele. Diese Darstellungsregel verändert keine Projektionsrolle.
+
+\textbf{Umsetzungsgrenze vom 9. November 2026.} Der bestehende kanonische
+Resolver verfolgt Voraussetzungsketten bereits rekursiv. Der aktuelle
+\code{goalEntry}-Pfad kann jedoch weiterhin die Kinder eines kanonischen
+Clusters entfernen und ihn als atomaren Laufzeitknoten behandeln. Das ist
+eine noch zu korrigierende Altimplementierung, keine Ausnahme von der
+Identitätsregel. Die native Verifikation der Korrektur steht aus;
+Normalmodus und strikter Modus behalten ihre Fokusregeln.
 
 \paragraph{Quellen.}
 \srcref{docs/concept/skill-graph/general-goal-system-and-migration.md}{Allgemeines Zielsystem und Migration};
