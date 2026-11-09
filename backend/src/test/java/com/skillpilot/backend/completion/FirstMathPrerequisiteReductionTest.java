@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.domain.Learner;
+import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeProperties;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -1162,6 +1163,7 @@ class FirstMathPrerequisiteReductionTest {
         });
         LearnerService beforePublic = org.mockito.Mockito.spy(before.service), afterPublic = org.mockito.Mockito.spy(after.service);
         String probeId = "unsaved-physics-batch-native-control";
+        boolean completionWitnessNegativesChecked = false;
         long rolePairs = 0, frontierPairs = 0, completionPairs = 0, positiveControls = 0, negativeControls = 0, invalidRolePairs = 0;
         int completedScopes = 0, incompleteScopes = 0, incomplete409Responses = 0;
         for (var configuration : leftDiscovery.configurations().entrySet()) {
@@ -1234,10 +1236,20 @@ class FirstMathPrerequisiteReductionTest {
                         left.learner(), "automatic:personal-curriculum", left.projection(), left.graph());
                 CompiledCompletionProfile rightCompletion = ReflectionTestUtils.invokeMethod(after.service, "compileCompletionScope",
                         right.learner(), "automatic:personal-curriculum", right.projection(), right.graph());
+                Map<String, Set<String>> leftAssessmentDemand = new TreeMap<>(), rightAssessmentDemand = new TreeMap<>();
+                leftCompletion.assessmentGoalIds().forEach(id ->
+                        leftAssessmentDemand.put(id, left.topology().transitivePrerequisites(id)));
+                rightCompletion.assessmentGoalIds().forEach(id ->
+                        rightAssessmentDemand.put(id, right.topology().transitivePrerequisites(id)));
                 for (Map<String, Double> masteryCase : List.of(Map.<String, Double>of(), all)) {
                     CompletionEvaluation original = beforeApplication.evaluate(leftCompletion, masteryCase);
-                    assertThat(afterApplication.evaluate(rightCompletion, masteryCase)).as("Physics whole-scope completion: %s", scope)
-                            .isEqualTo(original);
+                    assertPhysicsCompletionPreserved(original, afterApplication.evaluate(rightCompletion, masteryCase),
+                            leftCompletion, rightCompletion, left, right, masteryCase, leftAssessmentDemand, rightAssessmentDemand,
+                            "Physics whole-scope completion: " + scope);
+                    if (!completionWitnessNegativesChecked && !original.blockedByGoalIds().isEmpty()) {
+                        assertPhysicsCompletionWitnessNegatives(leftCompletion, left, leftAssessmentDemand, masteryCase, original);
+                        completionWitnessNegativesChecked = true;
+                    }
                     assertThat(original.complete()).as("Physics all-open/all-closed completion control: %s", scope)
                             .isEqualTo(!masteryCase.isEmpty());
                     completionPairs++;
@@ -1323,9 +1335,10 @@ class FirstMathPrerequisiteReductionTest {
                             frontierPairs++;
                         }
                         for (Map<String, Double> masteryCase : List.of(prepared, missingMath)) {
-                            assertThat(afterApplication.evaluate(rightCompletion, masteryCase))
-                                    .as("foreign Math prerequisite completion input %s->%s: %s", atom, math, scope)
-                                    .isEqualTo(beforeApplication.evaluate(leftCompletion, masteryCase));
+                            assertPhysicsCompletionPreserved(beforeApplication.evaluate(leftCompletion, masteryCase),
+                                    afterApplication.evaluate(rightCompletion, masteryCase), leftCompletion, rightCompletion,
+                                    left, right, masteryCase, leftAssessmentDemand, rightAssessmentDemand,
+                                    "foreign Math prerequisite completion input " + atom + "->" + math + ": " + scope);
                             Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(before.service,
                                     "computeEffectiveMastery", left.graph(), masteryCase);
                             Map<String, Double> finalEffective = ReflectionTestUtils.invokeMethod(after.service,
@@ -1338,9 +1351,10 @@ class FirstMathPrerequisiteReductionTest {
                     Map<String, Double> masteredSourceLeafOpen = new TreeMap<>(missing);
                     masteredSourceLeafOpen.put(atom, 1.0);
                     for (Map<String, Double> masteryCase : List.of(prepared, missing, masteredSourceLeafOpen)) {
-                        assertThat(afterApplication.evaluate(rightCompletion, masteryCase))
-                                .as("Physics complete evaluation for source/prerequisite state %s: %s", atom, scope)
-                                .isEqualTo(beforeApplication.evaluate(leftCompletion, masteryCase));
+                        assertPhysicsCompletionPreserved(beforeApplication.evaluate(leftCompletion, masteryCase),
+                                afterApplication.evaluate(rightCompletion, masteryCase), leftCompletion, rightCompletion,
+                                left, right, masteryCase, leftAssessmentDemand, rightAssessmentDemand,
+                                "Physics complete evaluation for source/prerequisite state " + atom + ": " + scope);
                         Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(before.service, "computeEffectiveMastery", left.graph(), masteryCase);
                         Map<String, Double> finalEffective = ReflectionTestUtils.invokeMethod(after.service, "computeEffectiveMastery", right.graph(), masteryCase);
                         assertThat(finalEffective).as("Physics effective mastery %s: %s", atom, scope).isEqualTo(originalEffective);
@@ -1372,6 +1386,7 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(rolePairs).isPositive();
         assertThat(frontierPairs).isPositive();
         assertThat(completionPairs).isPositive();
+        assertThat(completionWitnessNegativesChecked).as("fake, mastered and unrelated blocking-consumer negatives reached").isTrue();
         assertThat(invalidRolePairs).as("actual and deliberately missing foreign-role negative controls").isPositive();
         assertThat(positiveControls).isPositive();
         assertThat(negativeControls).isPositive();
@@ -1379,11 +1394,76 @@ class FirstMathPrerequisiteReductionTest {
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
         assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
-        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d completionWitnessNegativeControls=3 publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
                 prior.changedSources().size(), current.changedSources().size(), physicsSources.size(), affectedProbes.size(), allProbes.size(),
                 leftDiscovery.configurations().size(), completedScopes, incompleteScopes, incomplete409Responses,
                 sourceRuntimeReachedUnion, sourceProbeReached, runtimeReachedUnion, mathContextReached, mathPositiveReached, mathNegativeReached,
                 rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs);
+    }
+
+    /** State is invariant; a blocker value is one valid open-assessment consumer, not a stable witness ID. */
+    private static void assertPhysicsCompletionPreserved(CompletionEvaluation before, CompletionEvaluation after,
+            CompiledCompletionProfile beforeProfile, CompiledCompletionProfile afterProfile,
+            NativeScope beforeScope, NativeScope afterScope, Map<String, Double> mastery,
+            Map<String, Set<String>> beforeAssessmentDemand, Map<String, Set<String>> afterAssessmentDemand, String label) {
+        assertThat(afterProfile.targetGoalIds()).as("%s compiled targets", label).isEqualTo(beforeProfile.targetGoalIds());
+        assertThat(afterProfile.assessmentGoalIds()).as("%s compiled assessments", label).isEqualTo(beforeProfile.assessmentGoalIds());
+        assertThat(after.masteredGoalIds()).as("%s masteredGoalIds", label).isEqualTo(before.masteredGoalIds());
+        assertThat(after.waivedGoalIds()).as("%s waivedGoalIds", label).isEqualTo(before.waivedGoalIds());
+        assertThat(after.pendingTargetGoalIds()).as("%s pendingTargetGoalIds", label).isEqualTo(before.pendingTargetGoalIds());
+        assertThat(after.masteredAssessmentGoalIds()).as("%s masteredAssessmentGoalIds", label).isEqualTo(before.masteredAssessmentGoalIds());
+        assertThat(after.waiverReasons()).as("%s waiverReasons", label).isEqualTo(before.waiverReasons());
+        assertThat(after.complete()).as("%s complete", label).isEqualTo(before.complete());
+        assertThat(after.targetCount()).as("%s targetCount", label).isEqualTo(before.targetCount());
+        assertThat(after.masteredTargetCount()).as("%s masteredTargetCount", label).isEqualTo(before.masteredTargetCount());
+        assertThat(after.waivedTargetCount()).as("%s waivedTargetCount", label).isEqualTo(before.waivedTargetCount());
+        assertThat(after.requiredAssessmentCount()).as("%s requiredAssessmentCount", label).isEqualTo(before.requiredAssessmentCount());
+        assertThat(after.blockedByGoalIds().keySet()).as("%s blocked prerequisite keys", label).isEqualTo(before.blockedByGoalIds().keySet());
+        before.blockedByGoalIds().forEach((prerequisite, consumer) -> assertPhysicsCompletionWitness(prerequisite, consumer,
+                beforeProfile, beforeScope, beforeAssessmentDemand, mastery, before.waivedGoalIds()));
+        after.blockedByGoalIds().forEach((prerequisite, consumer) -> assertPhysicsCompletionWitness(prerequisite, consumer,
+                afterProfile, afterScope, afterAssessmentDemand, mastery, after.waivedGoalIds()));
+    }
+
+    private static void assertPhysicsCompletionWitness(String prerequisite, String consumer,
+            CompiledCompletionProfile profile, NativeScope scope, Map<String, Set<String>> fullAssessmentDemand,
+            Map<String, Double> mastery, Set<String> waived) {
+        String witness = prerequisite + " -> " + consumer;
+        assertThat(profile.contextGoalIds()).as("blocking prerequisite in compiled profile: %s", witness).contains(prerequisite);
+        assertThat(scope.context()).as("blocking prerequisite in native context: %s", witness).contains(prerequisite);
+        assertThat(profile.assessmentGoalIds()).as("blocking prerequisite is ordinary: %s", witness).doesNotContain(prerequisite);
+        assertThat(Mastery.isMastered(mastery.get(prerequisite))).as("blocking prerequisite is unmastered: %s", witness).isFalse();
+        assertThat(waived).as("blocking prerequisite is not waived: %s", witness).doesNotContain(prerequisite);
+        assertThat(profile.assessmentGoalIds()).as("blocking consumer is a compiled assessment: %s", witness).contains(consumer);
+        assertThat(Mastery.isMastered(mastery.get(consumer))).as("blocking consumer is open: %s", witness).isFalse();
+        assertThat(fullAssessmentDemand).as("full native assessment topology: %s", witness).containsKey(consumer);
+        // These sets come directly from topology.transitivePrerequisites(assessment), without mastery cuts.
+        assertThat(fullAssessmentDemand.get(consumer)).as("prerequisite belongs to blocking consumer demand: %s", witness)
+                .contains(prerequisite);
+    }
+
+    private static void assertPhysicsCompletionWitnessNegatives(CompiledCompletionProfile profile, NativeScope scope,
+            Map<String, Set<String>> fullAssessmentDemand, Map<String, Double> mastery, CompletionEvaluation evaluation) {
+        for (var blocked : evaluation.blockedByGoalIds().entrySet()) {
+            String prerequisite = blocked.getKey(), consumer = blocked.getValue();
+            String unrelated = profile.assessmentGoalIds().stream()
+                    .filter(id -> !Mastery.isMastered(mastery.get(id)))
+                    .filter(id -> !fullAssessmentDemand.get(id).contains(prerequisite)).findFirst().orElse(null);
+            if (unrelated == null) continue;
+            assertThatThrownBy(() -> assertPhysicsCompletionWitness(prerequisite, consumer + "-not-an-assessment",
+                    profile, scope, fullAssessmentDemand, mastery, evaluation.waivedGoalIds()))
+                    .as("fake blocking consumer fails").isInstanceOf(AssertionError.class);
+            Map<String, Double> masteredConsumer = new TreeMap<>(mastery);
+            masteredConsumer.put(consumer, 1.0);
+            assertThatThrownBy(() -> assertPhysicsCompletionWitness(prerequisite, consumer,
+                    profile, scope, fullAssessmentDemand, masteredConsumer, evaluation.waivedGoalIds()))
+                    .as("mastered blocking consumer fails").isInstanceOf(AssertionError.class);
+            assertThatThrownBy(() -> assertPhysicsCompletionWitness(prerequisite, unrelated,
+                    profile, scope, fullAssessmentDemand, mastery, evaluation.waivedGoalIds()))
+                    .as("unrelated open assessment fails").isInstanceOf(AssertionError.class);
+            return;
+        }
+        throw new AssertionError("No actual blocking witness with an unrelated open assessment for negative controls");
     }
 
     private record CurrentCacheComparisonFrames(ReductionRegistry before, ReductionRegistry after) { }
