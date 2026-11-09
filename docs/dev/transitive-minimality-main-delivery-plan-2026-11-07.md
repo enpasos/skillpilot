@@ -257,8 +257,16 @@ Der sichtbare Deutsch-Branch nimmt jetzt den geprüften Elternfix
 deutschen Prüfvertrags und der Datenänderung werden gegen `e7b317b222`
 byteweise abgeglichen. Die lokalen Gesamtbelege dieses Commits behalten ihre
 ursprünglichen Quellbindungen; sie werden nicht still auf die geänderte
-Backenddatei umgebunden. Die ergänzenden Kombinationsprüfungen werden getrennt
-ausgewiesen. [Die lokale deutsche Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+Backenddatei umgebunden. Der kombinierte Stand `89696c10e5` bestand den
+Graphvalidator für 593 Landschaften, die vollständige Buchtestkette sowie alle
+16 gezielten Backendfälle ohne Fehler oder Skips. Beide 133-Datei-Prüfrahmen
+bleiben während der Läufe bytegleich. Der
+[gesonderte Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-parent-consumer-integration/receipt.json)
+weist genau neun bereits geprüfte Deutsch-Unterschiede zum Elternstand aus;
+die übrigen 124 Eingaben stimmen mit ihm überein. Die 35 Loader-, acht Python-,
+32 CQR- und 43 Paket-Eingaben des deutschen Einzelstands bleiben unverändert.
+Die vollständige Backendausführung am abschließenden Folge-PR bleibt Teil
+seiner frischen Remote-Abnahme. [Die lokale deutsche Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
 bleibt erhalten; es werden keine weiteren deutschen Kanten bearbeitet und
 kein Folge-PR vor der Main-Lieferung von #97 angelegt.
 

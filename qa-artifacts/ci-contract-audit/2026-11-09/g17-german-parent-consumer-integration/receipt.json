@@ -1,0 +1,330 @@
+{
+  "latestStatus": "passed",
+  "observedAt": "2026-11-09T01:04:57.712795+00:00",
+  "integrationHead": "89696c10e55024f4fd84314f74e684c7367c16f6",
+  "germanComponentCommit": "e7b317b222a3b0b204a2f92dfc4ae25ddab28443",
+  "parentConsumerRepairCommit": "bcc780342447d01f14982ecc0554d99fa2bb3708",
+  "scope": "Combined German V5 data/proof and parent transitive-prerequisite consumer repair; no new data or semantic design",
+  "freshBaseline": {
+    "inputFiles": 133,
+    "manifest": {
+      "path": "app/node_modules/.tmp/g17-german-parent-consumer-integration-20261109/integration-inputs-before.json",
+      "sha256": "a77bd15435d8a9cbfe6ab92ed47cbf1b97b932dd47093c45ef23491c4523f6bf"
+    },
+    "comparison": {
+      "path": "app/node_modules/.tmp/g17-german-parent-consumer-integration-20261109/integration-baseline-comparison.json",
+      "sha256": "c2bd2bd226bee07d5eaa4bb087c13f0d65deb10dfa9048090d202f320f2a6285"
+    },
+    "exactIntentionalDifferencesAgainstParent": [
+      {
+        "path": "app/scripts/prerequisiteReductionProof.ts",
+        "parentSha256": "cf5f36bc40d8d05f96bf929cf52e9ed5dc7dedfdbb190b891df20dbd18965195",
+        "integrationSha256": "4bc3427b600366806f6f21ffd70755aed894cd51facac8b1686ab39196b30444"
+      },
+      {
+        "path": "app/scripts/testPrerequisiteReductionProof.ts",
+        "parentSha256": "9a72c7de3f87e5fded1f42271791a149add0ddc83b4ae47dd4e46477dd6894cc",
+        "integrationSha256": "ef47924522888bda60685e4a179fb665048f1759983f6f2ef78cda1ccde20cd8"
+      },
+      {
+        "path": "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java",
+        "parentSha256": "903b9ceb92333baa4203f2d2c0073978979f96391645ba3cba643b19690dd522",
+        "integrationSha256": "f678d493ff1a04dd0a6a35a51620ee1fe17895fd722d0e428cccbd574a20e41d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "parentSha256": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+        "integrationSha256": "99088a0ffefbdbc9fdbd58d509b6e84cd41854d29a24ede0f6a0fba44442a1ab"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+        "parentSha256": "94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394",
+        "integrationSha256": "7a87f30c8bd54d43ce491ad05820990587d95e2db67023c48a39dab1c92e238d"
+      },
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.json",
+        "parentSha256": "dbe40c7a3a667038586c8332985a7f42bffce851d58a1cc05727cef67d4f9b19",
+        "integrationSha256": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1"
+      },
+      {
+        "path": "docs/qa-ci/status/curriculum-quality-status.md",
+        "parentSha256": "49484c1b3f58bbeab1d952ab214671ac466ef30f1b8b79a7899ea0201f78642d",
+        "integrationSha256": "3c82e9562343a26b00f0f067c01f36d6c4bce5ad9cdb2c8c13e9a821fcb1da75"
+      },
+      {
+        "path": "scripts/prerequisite_reduction_semantic_kind.py",
+        "parentSha256": "79c5541f5a8705a3b5991b312d8e2eac60211c9a1e6f9699e1d24a9fa5342e71",
+        "integrationSha256": "0366e6604399cba357e36d3465500d1173613843be5714304ccdaee39b695cad"
+      },
+      {
+        "path": "scripts/test_prerequisite_reduction_semantic_kind.py",
+        "parentSha256": "d034cc81c9fb8fcc170421baeb865f4584f2f6b6365e868b43361d2c4c9e0edb",
+        "integrationSha256": "e3b81c0df73d27e603936b73e546385d633c60df6f8005ac9ca32407b4407061"
+      }
+    ],
+    "unchangedParentPaths": 124,
+    "german11SourceAndEvidenceFilesMatchE7": {
+      "app/scripts/prerequisiteReductionProof.ts": true,
+      "app/scripts/testPrerequisiteReductionProof.ts": true,
+      "scripts/prerequisite_reduction_semantic_kind.py": true,
+      "scripts/test_prerequisite_reduction_semantic_kind.py": true,
+      "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": true,
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": true,
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": true,
+      "docs/qa-ci/status/curriculum-quality-status.json": true,
+      "docs/qa-ci/status/curriculum-quality-status.md": true,
+      "docs/dev/german-first-cluster-prerequisite-normalization-review-2026-11-09.md": true,
+      "qa-artifacts/ci-contract-audit/2026-11-09/g17-german-first-cluster-prerequisite/receipt.json": true
+    }
+  },
+  "freshChecks": {
+    "node": {
+      "status": "passed",
+      "head": "89696c10e55024f4fd84314f74e684c7367c16f6",
+      "startedAt": "2026-11-09T00:59:50.425530+00:00",
+      "finishedAt": "2026-11-09T01:03:08.233987+00:00",
+      "inputFiles": 133,
+      "unchangedInputs": true,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-parent-consumer-integration-20261109/node-result.json",
+        "sha256": "4822f2406cbf065f1891805285edc2c6bd2a2d4fec690d36d57a3d2fbf440cd8"
+      },
+      "commands": [
+        {
+          "name": "validate-graph",
+          "command": [
+            "npm",
+            "run",
+            "validate:graph"
+          ],
+          "startedAt": "2026-11-09T00:59:50.425634+00:00",
+          "finishedAt": "2026-11-09T00:59:53.944770+00:00",
+          "exitCode": 0,
+          "logSha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+        },
+        {
+          "name": "goal-book-model",
+          "command": [
+            "npm",
+            "run",
+            "test:goal-book-model"
+          ],
+          "startedAt": "2026-11-09T00:59:53.944940+00:00",
+          "finishedAt": "2026-11-09T01:03:08.233597+00:00",
+          "exitCode": 0,
+          "logSha256": "1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0"
+        }
+      ]
+    },
+    "junit": {
+      "status": "passed",
+      "head": "89696c10e55024f4fd84314f74e684c7367c16f6",
+      "startedAt": "2026-11-09T00:59:50.421523+00:00",
+      "finishedAt": "2026-11-09T01:03:34.905156+00:00",
+      "inputFiles": 133,
+      "unchangedInputs": true,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-parent-consumer-integration-20261109/junit-result.json",
+        "sha256": "95922b586c21e697b13270a725ec4fa855a4ca7408ed3fa7aeaa0c69a8683070"
+      },
+      "commands": [
+        {
+          "name": "targeted-junit",
+          "command": [
+            "./gradlew",
+            "test",
+            "--tests",
+            "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+            "--tests",
+            "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest.hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder",
+            "--tests",
+            "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest.appOnlyOAuthAndExplicitLearningSessionPersistLearnerStateWithoutExposingPermanentId",
+            "--no-daemon",
+            "--max-workers=1",
+            "--console=plain",
+            "--info",
+            "-Dorg.gradle.java.installations.paths=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+            "-Dorg.gradle.java.installations.auto-detect=false"
+          ],
+          "startedAt": "2026-11-09T00:59:50.421626+00:00",
+          "finishedAt": "2026-11-09T01:03:34.876148+00:00",
+          "exitCode": 0,
+          "logSha256": "285f33cc640dfbe6b90b798e4c1b3a576d48e4fe7466348ca513c3781b2646e8"
+        }
+      ],
+      "suites": [
+        {
+          "className": "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.service.LearnerServiceOrientationOutlookRouteTest",
+            "tests": "13",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T01:03:31.104Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "1.658"
+          },
+          "xmlSha256": "7d6ab64fa0af99db6ce87798dcbf8fdb131cecd2f06d706c4d8698bcdf93593e",
+          "testCases": [
+            {
+              "name": "requiresTheSourceToBeAStructuralLeaf()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "acceptsDirectAuthoredReferenceUsingTheExistingResolver()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "doesNotUseAContainsParentAsAnInheritedRequirementOrigin()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "acceptsAValidAlternativeBesideANonLeafBranch()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "rejectsAPathToADifferentExistingAnchor()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "requiresTheAnchorToBeAStructuralLeaf()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "rejectsAnUnknownBridge()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "rejectsACycleThatDoesNotReachTheAnchor()",
+              "time": "0.016",
+              "failures": []
+            },
+            {
+              "name": "rejectsAMissingInnerAuthoredRequirement()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "acceptsMultipleAuthoredEdgesWithoutRawSemanticKindMetadata()",
+              "time": "0.0",
+              "failures": []
+            },
+            {
+              "name": "requiresTheAnchorToExistInTheStructuralMap()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "rejectsANonLeafBridgeEvenWithAnAuthoredAnchorRequirement()",
+              "time": "0.001",
+              "failures": []
+            },
+            {
+              "name": "sourceEqualToAnchorWithoutAnAuthoredEdgeIsNotAPath()",
+              "time": "0.001",
+              "failures": []
+            }
+          ]
+        },
+        {
+          "className": "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.service.LearnerPersonalizationProgressionIntegrationTest",
+            "tests": "1",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T01:03:15.953Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "15.149"
+          },
+          "xmlSha256": "3b2b96db621aa45d082ca1c9532cd760f1a6f6b8747c448a6c76a3e35d2d9440",
+          "testCases": [
+            {
+              "name": "hessenMathLkSekTwoG9FlowResolvesReviewedViewInAuthoredLevelTwoOrder()",
+              "time": "2.484",
+              "failures": []
+            }
+          ]
+        },
+        {
+          "className": "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest",
+          "freshXml": true,
+          "suite": {
+            "name": "com.skillpilot.backend.openai.mcp.de.OpenAiDeCoachEndToEndIntegrationTest",
+            "tests": "2",
+            "skipped": "0",
+            "failures": "0",
+            "errors": "0",
+            "timestamp": "2026-11-09T01:02:15.110Z",
+            "hostname": "DESKTOP-T1D4NQE",
+            "time": "60.835"
+          },
+          "xmlSha256": "346507407001b47dc5b027798b45434f8cd03653dd44d6d68127479fc3e2db3f",
+          "testCases": [
+            {
+              "name": "[1] nativeClient = false",
+              "time": "10.518",
+              "failures": []
+            },
+            {
+              "name": "[2] nativeClient = true",
+              "time": "5.438",
+              "failures": []
+            }
+          ]
+        }
+      ],
+      "tests": 16
+    }
+  },
+  "reusedEvidence": {
+    "componentInputBindings": {
+      "path": "app/node_modules/.tmp/g17-german-parent-consumer-integration-20261109/component-bindings-before-integration-tests.json",
+      "sha256": "3cab6e84e568a287081276d5fff25440920ad1c0ec8e28883edcb5a6edd276ab"
+    },
+    "germanReceipt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-09/g17-german-first-cluster-prerequisite/receipt.json",
+      "sha256": "5fc18127974bd3c467475ff71fe9ea5ad8ba89e8f61c634075fb5dd67e075bfe"
+    },
+    "parentReceipt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-09/g17-math-transitive-prerequisite-consumers/receipt.json",
+      "sha256": "6e5a262dac1ab170f38c4e6374884da9557b76e7982096ce28b62423ad0c7391"
+    },
+    "unchangedE7ComponentInputs": {
+      "actualPythonCaller": 35,
+      "fullPythonModule": 8,
+      "standardCqrAndTenFloors": 32,
+      "actualPackageConformance": 43
+    },
+    "parentHardRouteFixturesAndScopedEslint": "Same applied sources and previous passing checks; not rerun",
+    "historicalNativeAndProjection": {
+      "status": "historical-source-bound; not relabeled as merge executions",
+      "changedSource": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "change": "Only getCoachOrientationOutlook single-purpose raw atomic R+ helper and its sole call site",
+      "impact": "Neither historical suite calls the changed entry; fresh16-case merged run covers the changed entry and route helper",
+      "notAReadTraceOrClosedNamespaceClaim": true
+    }
+  },
+  "claims": {
+    "newCurriculumOrRegistryChange": false,
+    "previousReceiptsRewritten": false,
+    "reviewOrFingerprintPinsChanged": false,
+    "newMasteryRoleFrontierOrActivationPolicy": false,
+    "historicalParent133ResultBlindlyReusedAsCurrent": false,
+    "nativeProjectionOrCqrOrPackageRerun": false,
+    "remoteCiAccepted": false,
+    "overallG17Complete": false,
+    "gitWritesOrRemoteActionsByImplementationAgent": false
+  }
+}
