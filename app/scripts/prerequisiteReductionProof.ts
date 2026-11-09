@@ -16,7 +16,7 @@ export const CONTINUED_PREREQUISITE_REDUCTION_CONTRACT = 'continued-atomic-prere
 export const CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-cluster-target-normalization-v5' as const
 type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
 type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
-  | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
+  | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT | typeof BATCHED_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -77,8 +77,38 @@ export interface ClusterTargetPrerequisiteReductionRegistry extends Omit<Continu
   clusterTargetOriginalRequires: OrderedPrerequisiteReductionRegistry['suffixOriginalRequires']
   clusterTargetSuffix: Array<AtomicPrerequisiteMaterialization | ClusterTargetPrerequisiteReduction>
 }
+export const BATCHED_PREREQUISITE_REDUCTION_CONTRACT = 'append-only-prerequisite-reduction-batches-v6' as const
+export type BatchWitnessReference =
+  | { kind: 'legacy-path'; path: string }
+  | { kind: 'legacy-cluster-target'; leaf: string }
+  | { kind: 'batch-path'; operationId: string }
+  | { kind: 'batch-coverage'; operationId: string; source: string; prerequisite: string }
+export type BatchWitnessContinuation = {
+  witness: BatchWitnessReference
+  edgeIndex: number
+  removalId: string
+}
+export type BatchedPrerequisiteReductionOperation =
+  | { id: string; step: AtomicPrerequisiteMaterialization; endWitness: string[] }
+  | { id: string; step: DirectPrerequisiteReduction; endWitness: string[] }
+  | { id: string; step: ClusterPrerequisiteReduction & { operation: 'remove-cluster' }; endAtomicWitnesses: string[][] }
+  | { id: string; steps: Array<AtomicPrerequisiteMaterialization | ClusterTargetPrerequisiteReduction>; endAtomicWitnesses: string[][] }
+export type PrerequisiteReductionBatch = {
+  id: string
+  previousDigest: string
+  originalRequires: Array<{ source: string; requires: string[] | null }>
+  operations: BatchedPrerequisiteReductionOperation[]
+  currentDocumentDigests: Array<{ path: string; currentDocumentDigest: string }>
+  legacyContinuations: BatchWitnessContinuation[]
+}
+export interface BatchedPrerequisiteReductionRegistry extends Omit<ClusterTargetPrerequisiteReductionRegistry, 'proofContract'> {
+  proofContract: typeof BATCHED_PREREQUISITE_REDUCTION_CONTRACT
+  v5Checkpoint: { registryDigest: string; currentDocumentDigests: Array<{ path: string; currentDocumentDigest: string }> }
+  batches: PrerequisiteReductionBatch[]
+}
+
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
-  | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry
+  | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry | BatchedPrerequisiteReductionRegistry
 type LoadedDocument = { file: string; path: string; document: Document }
 type VerifiedDocumentFrame = {
   currentDocuments: Document[]
@@ -125,6 +155,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return parseBatchedRegistry(value)
   if (object(value) && value.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return parseClusterTargetRegistry(value)
   if (object(value) && value.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return parseContinuedRegistry(value)
   if (object(value) && value.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT) return parseOrderedRegistry(value)
@@ -788,6 +819,7 @@ async function compileApplicability(documents: Document[], loaded: LoadedDocumen
 async function verifyDocumentFrame(
   registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[],
 ): Promise<VerifiedDocumentFrame> {
+  if (registry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return verifyBatchedFrame(registry, loaded)
   if (registry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return verifyClusterTargetFrame(registry, loaded)
   if (registry.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return verifyContinuedFrame(registry, loaded)
   const currentDocuments = requireCurrentCatalog(registry, loaded)
@@ -922,4 +954,463 @@ export function reviewBindingGoal(
   const baseline = snapshot.baseline.get(qualifiedId)
   ensure(baseline, `baseline goal missing from verified snapshot: ${qualifiedId}`)
   return baseline
+}
+
+
+function parseBatchedRegistry(value: Record<string, unknown>): BatchedPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals',
+    'v2Checkpoint', 'suffixOriginalRequires', 'suffix', 'v3Checkpoint', 'tailOriginalRequires', 'atomicRemovals',
+    'witnessContinuations', 'v4Checkpoint', 'clusterTargetOriginalRequires', 'clusterTargetSuffix',
+    'v5Checkpoint', 'batches'], 'batched registry')
+  const { v5Checkpoint, batches, ...prefix } = value
+  const parent = { ...prefix, proofContract: CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT }
+  parseClusterTargetRegistry(parent)
+  parseBatchCheckpoint(v5Checkpoint, 'V5 checkpoint')
+  ensure(Array.isArray(batches) && batches.length > 0, 'empty V6 batches')
+  const identifiers = new Set<string>()
+  const identify = (id: unknown) => {
+    ensure(typeof id === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]*$/u.test(id) && !identifiers.has(id),
+      'invalid or duplicate V6 identifier')
+    identifiers.add(id)
+  }
+  for (const batch of batches) {
+    fields(batch, ['id', 'previousDigest', 'originalRequires', 'operations', 'currentDocumentDigests', 'legacyContinuations'], 'batch')
+    identify(batch.id)
+    ensure(batchDigest(batch.previousDigest), 'invalid batch predecessor digest')
+    ensure(Array.isArray(batch.originalRequires) && batch.originalRequires.length > 0, 'empty batch original requires')
+    for (const original of batch.originalRequires) {
+      fields(original, ['source', 'requires'], 'batch original requires')
+      ensure(qualified(original.source) && (original.requires === null
+        || (Array.isArray(original.requires) && original.requires.every(nonempty))), 'invalid batch original requires')
+    }
+    parseBatchDocumentDigests(batch.currentDocumentDigests, 'batch end documents')
+    ensure(Array.isArray(batch.operations) && batch.operations.length > 0, 'empty batch operations')
+    for (const operation of batch.operations) {
+      ensure(object(operation), 'invalid batched operation')
+      identify(operation.id)
+      if (Object.hasOwn(operation, 'steps')) {
+        fields(operation, ['id', 'steps', 'endAtomicWitnesses'], 'batch cluster-target group')
+        ensure(Array.isArray(operation.steps) && operation.steps.length > 0, 'empty batch cluster-target group')
+        const cut = operation.steps.at(-1)
+        ensure(object(cut) && qualified(cut.source), 'invalid batch cluster-target cut')
+        parseClusterTargetRegistry({ ...parent,
+          clusterTargetOriginalRequires: [{ source: cut.source, requires: null }], clusterTargetSuffix: operation.steps })
+        parseBatchPaths(operation.endAtomicWitnesses, 'cluster-target end coverage')
+      } else {
+        ensure(object(operation.step), 'invalid batch step')
+        const step = operation.step
+        if (step.operation === 'remove-cluster') {
+          fields(operation, ['id', 'step', 'endAtomicWitnesses'], 'batch cluster-source removal')
+          parseBatchOrderedStep(step, parent)
+          parseBatchPaths(operation.endAtomicWitnesses, 'cluster-source end coverage')
+        } else if (step.operation === 'materialize-atomic') {
+          fields(operation, ['id', 'step', 'endWitness'], 'batch materialization')
+          parseBatchOrderedStep(step, parent)
+          parseBatchPath(operation.endWitness, 2, 'materialization end witness')
+        } else {
+          fields(operation, ['id', 'step', 'endWitness'], 'batch atomic removal')
+          parseRegistry({ schemaVersion: value.schemaVersion, proofContract: PREREQUISITE_REDUCTION_CONTRACT,
+            auditScope: value.auditScope, catalogSources: value.catalogSources,
+            originalRequires: value.originalRequires, removals: [step] })
+          parseBatchPath(operation.endWitness, 3, 'atomic removal end witness')
+        }
+      }
+    }
+    ensure(Array.isArray(batch.legacyContinuations), 'invalid batch continuations')
+    for (const continuation of batch.legacyContinuations) {
+      fields(continuation, ['witness', 'edgeIndex', 'removalId'], 'batch continuation')
+      ensure(Number.isSafeInteger(continuation.edgeIndex) && Number(continuation.edgeIndex) >= 0
+        && nonempty(continuation.removalId), 'invalid batch continuation position or removal')
+      const reference = continuation.witness
+      ensure(object(reference), 'invalid batch witness reference')
+      if (reference.kind === 'legacy-path') {
+        fields(reference, ['kind', 'path'], 'legacy path reference')
+        ensure(typeof reference.path === 'string'
+          && /^\/(?:removals\/(?:0|[1-9]\d*)\/(?:witness|atomicWitnesses\/(?:0|[1-9]\d*))|suffix\/(?:0|[1-9]\d*)\/atomicWitnesses\/(?:0|[1-9]\d*)|atomicRemovals\/(?:0|[1-9]\d*)\/witness)$/u.test(reference.path),
+        'unsupported legacy witness path')
+      } else if (reference.kind === 'legacy-cluster-target') {
+        fields(reference, ['kind', 'leaf'], 'legacy target coverage reference')
+        ensure(qualified(reference.leaf), 'invalid legacy target coverage leaf')
+      } else if (reference.kind === 'batch-path') {
+        fields(reference, ['kind', 'operationId'], 'batch path reference')
+        ensure(nonempty(reference.operationId), 'invalid batch path operation')
+      } else {
+        fields(reference, ['kind', 'operationId', 'source', 'prerequisite'], 'batch coverage reference')
+        ensure(reference.kind === 'batch-coverage' && nonempty(reference.operationId) && qualified(reference.source) && qualified(reference.prerequisite),
+          'invalid batch coverage reference')
+      }
+    }
+  }
+  return value as unknown as BatchedPrerequisiteReductionRegistry
+}
+function batchDigest(value: unknown): value is string {
+  return typeof value === 'string' && /^sha256:[0-9a-f]{64}$/u.test(value)
+}
+function parseBatchDocumentDigests(value: unknown, label: string) {
+  ensure(Array.isArray(value) && value.length > 0, `empty ${label}`)
+  for (const entry of value) {
+    fields(entry, ['path', 'currentDocumentDigest'], label)
+    ensure(nonempty(entry.path) && batchDigest(entry.currentDocumentDigest), `invalid ${label}`)
+  }
+}
+function parseBatchCheckpoint(value: unknown, label: string) {
+  fields(value, ['registryDigest', 'currentDocumentDigests'], label)
+  ensure(batchDigest(value.registryDigest), `invalid ${label} digest`)
+  parseBatchDocumentDigests(value.currentDocumentDigests, label)
+}
+function parseBatchPath(value: unknown, minimum: number, label: string) {
+  ensure(Array.isArray(value) && value.length >= minimum && value.every(qualified), `invalid ${label}`)
+}
+function parseBatchPaths(value: unknown, label: string) {
+  ensure(Array.isArray(value) && value.length > 0, `empty ${label}`)
+  value.forEach(path => parseBatchPath(path, 2, label))
+}
+function parseBatchOrderedStep(step: unknown, parent: Record<string, unknown>) {
+  parseOrderedRegistry({ schemaVersion: parent.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: parent.auditScope, catalogSources: parent.catalogSources, originalRequires: parent.originalRequires,
+    removals: parent.removals, v2Checkpoint: parent.v2Checkpoint, suffixOriginalRequires: [], suffix: [step] })
+}
+
+type BatchPathDefinition = {
+  reference: BatchWitnessReference
+  path: string[]
+  created: number
+}
+type BatchCoverageDefinition = {
+  kind: 'cluster-source' | 'cluster-target'
+  source: string
+  prerequisite: string
+  paths: BatchWitnessReference[]
+  legacy: boolean
+}
+type BatchWitnessState = {
+  paths: Map<string, BatchPathDefinition>
+  replacements: Map<string, BatchWitnessReference>
+  coverages: BatchCoverageDefinition[]
+}
+const batchReferenceKey = (reference: BatchWitnessReference) => stableJson(reference)
+const batchPositionKey = (reference: BatchWitnessReference, edge: number) => stableJson([reference, edge])
+function registerBatchPath(state: BatchWitnessState, reference: BatchWitnessReference, path: string[], created: number) {
+  const key = batchReferenceKey(reference)
+  ensure(!state.paths.has(key), `duplicate witness obligation ${key}`)
+  state.paths.set(key, { reference, path: structuredClone(path), created })
+}
+function requireLiteralCanonicalPath(path: string[], goals: ReadonlyMap<string, RawGoal>) {
+  ensure(path.length >= 2 && new Set(path).size === path.length, 'literal atomic path is empty, reflexive, or repeats a vertex')
+  path.forEach(key => requireCanonicalLeaf(key, goals))
+  for (let edge = 0; edge < path.length - 1; edge++) {
+    const source = path[edge], target = path[edge + 1]
+    ensure((goals.get(source)!.requires ?? []).some(raw => resolveReference(raw, source, goals) === target),
+      `literal atomic witness edge missing: ${source} -> ${target}`)
+  }
+}
+function canonicalRequirementLeaves(key: string, goals: ReadonlyMap<string, RawGoal>): Set<string> {
+  const goal = goals.get(key)
+  ensure(goal, `unknown canonical requirement ${key}`)
+  if (goal.contains?.length) return canonicalClusterLeaves(key, goals)
+  requireCanonicalLeaf(key, goals)
+  return new Set([key])
+}
+function requireBatchedClusterCoverage(
+  source: string, prerequisite: string, paths: string[][], goals: ReadonlyMap<string, RawGoal>, inspectIncoming: boolean,
+) {
+  const sources = canonicalClusterLeaves(source, goals), targets = canonicalRequirementLeaves(prerequisite, goals)
+  const covered = new Set<string>()
+  for (const path of paths) {
+    ensure(sources.has(path[0]) && targets.has(path.at(-1)!), 'batch cluster Cartesian witness endpoints differ')
+    const pair = stableJson([path[0], path.at(-1)])
+    ensure(!covered.has(pair), 'duplicate batch Cartesian witness pair')
+    covered.add(pair)
+    requireLiteralCanonicalPath(path, goals)
+  }
+  ensure(covered.size === sources.size * targets.size, 'batch cluster Cartesian coverage is incomplete')
+  if (inspectIncoming) {
+    // Same incoming-source guard as V2; classification alone uses canonical structure in V6.
+    const clusters = new Set<string>(), visit = (key: string) => {
+      const goal = goals.get(key)!
+      if (!goal.contains?.length || clusters.has(key)) return
+      clusters.add(key)
+      goal.contains.forEach(raw => visit(resolveReference(raw, key, goals)))
+    }
+    visit(source)
+    const ids = new Set([...clusters].map(key => key.split(':')[1]))
+    for (const [key, goal] of goals) {
+      ensure(goal.requires === undefined || Array.isArray(goal.requires), `cannot inspect incoming requires at ${key}`)
+      for (const raw of goal.requires ?? []) {
+        ensure(nonempty(raw), `cannot inspect incoming reference at ${key}`)
+        if (!raw.split(':').some(part => ids.has(part))) continue
+        ensure(!clusters.has(resolveReference(raw, key, goals)), `incoming requires to affected cluster: ${key} -> ${raw}`)
+      }
+    }
+  }
+}
+function registerBatchCoverage(
+  state: BatchWitnessState, kind: BatchCoverageDefinition['kind'], source: string, prerequisite: string,
+  paths: string[][], references: BatchWitnessReference[], created: number, goals: ReadonlyMap<string, RawGoal>,
+) {
+  const sources = kind === 'cluster-source' ? canonicalClusterLeaves(source, goals) : new Set([source])
+  const targets = kind === 'cluster-source' ? canonicalRequirementLeaves(prerequisite, goals) : canonicalClusterLeaves(prerequisite, goals)
+  ensure(paths.length === sources.size * targets.size && references.length === paths.length, 'batch end descendant coverage differs')
+  const seen = new Set<string>()
+  paths.forEach((path, index) => {
+    const pair = stableJson([path[0], path.at(-1)])
+    ensure(sources.has(path[0]) && targets.has(path.at(-1)!) && !seen.has(pair),
+      'batch end descendant coverage endpoints differ or duplicate')
+    seen.add(pair)
+    registerBatchPath(state, references[index], path, created)
+  })
+  state.coverages.push({ kind, source, prerequisite, paths: references, legacy: created === 0 })
+}
+function materializeBatchedAtomic(operation: AtomicPrerequisiteMaterialization, goals: ReadonlyMap<string, RawGoal>) {
+  const { source, prerequisite, origin } = operation
+  requireCanonicalLeaf(source, goals)
+  requireCanonicalLeaf(prerequisite, goals)
+  ensure(source !== prerequisite, `self batch materialization: ${source}`)
+  const goal = goals.get(source)!, originGoal = goals.get(origin.source)
+  ensure(goal.requires === undefined || Array.isArray(goal.requires), `invalid batch materialization requires: ${source}`)
+  ensure(!(goal.requires ?? []).some(raw => resolveReference(raw, source, goals) === prerequisite), 'batch atomic materialization is already direct')
+  ensure(originGoal && Array.isArray(originGoal.requires) && originGoal.requires.includes(origin.prerequisite), 'batch materialization origin is not literal raw requires')
+  const target = resolveReference(origin.prerequisite, origin.source, goals)
+  requireCanonicalContainsPath(origin.sourceContainsPath, origin.source, source, goals)
+  requireCanonicalContainsPath(origin.prerequisiteContainsPath, target, prerequisite, goals)
+  const [owner, id] = prerequisite.split(':')
+  goal.requires = [...(goal.requires ?? []), owner === source.split(':')[0] ? id : prerequisite]
+}
+function legacyBatchWitnessState(
+  parent: ClusterTargetPrerequisiteReductionRegistry, goals: ReadonlyMap<string, RawGoal>,
+): BatchWitnessState {
+  const state: BatchWitnessState = { paths: new Map(), replacements: new Map(), coverages: [] }
+  parent.removals.forEach((operation, index) => {
+    if ('witness' in operation) registerBatchPath(state,
+      { kind: 'legacy-path', path: `/removals/${index}/witness` }, operation.witness, 0)
+    else registerBatchCoverage(state, 'cluster-source', operation.source, operation.prerequisite,
+      operation.atomicWitnesses, operation.atomicWitnesses.map((_, witness) =>
+        ({ kind: 'legacy-path', path: `/removals/${index}/atomicWitnesses/${witness}` })), 0, goals)
+  })
+  parent.suffix.forEach((operation, index) => {
+    if (operation.operation === 'remove-cluster') registerBatchCoverage(state, 'cluster-source', operation.source,
+      operation.prerequisite, operation.atomicWitnesses, operation.atomicWitnesses.map((_, witness) =>
+        ({ kind: 'legacy-path', path: `/suffix/${index}/atomicWitnesses/${witness}` })), 0, goals)
+  })
+  parent.atomicRemovals.forEach((operation, index) => registerBatchPath(state,
+    { kind: 'legacy-path', path: `/atomicRemovals/${index}/witness` }, operation.witness, 0))
+  // The already verified V4 continuation is resolved before any V6 continuation.
+  for (const continuation of parent.witnessContinuations) state.replacements.set(batchPositionKey(
+    { kind: 'legacy-path', path: `/removals/${continuation.historicalRemovalIndex}/witness` }, continuation.edgeIndex),
+  { kind: 'legacy-path', path: `/atomicRemovals/${continuation.tailRemovalIndex}/witness` })
+  const cut = parent.clusterTargetSuffix.at(-1) as ClusterTargetPrerequisiteReduction
+  const leaves = [...canonicalClusterLeaves(cut.prerequisite, goals)].sort()
+  registerBatchCoverage(state, 'cluster-target', cut.source, cut.prerequisite,
+    leaves.map(leaf => [cut.source, leaf]), leaves.map(leaf => ({ kind: 'legacy-cluster-target', leaf })), 0, goals)
+  return state
+}
+function validateBatchWitnessState(state: BatchWitnessState, goals: ReadonlyMap<string, RawGoal>) {
+  const resolved = new Map<string, string[]>(), visiting = new Set<string>()
+  const expand = (reference: BatchWitnessReference): string[] => {
+    const key = batchReferenceKey(reference), cached = resolved.get(key)
+    if (cached) return cached
+    const definition = state.paths.get(key)
+    ensure(definition && !visiting.has(key), `unknown or cyclic witness obligation ${key}`)
+    visiting.add(key)
+    const path = [definition.path[0]]
+    for (let edge = 0; edge < definition.path.length - 1; edge++) {
+      const replacement = state.replacements.get(batchPositionKey(reference, edge))
+      if (replacement) {
+        const continued = expand(replacement)
+        ensure(continued[0] === definition.path[edge] && continued.at(-1) === definition.path[edge + 1],
+          'composed continuation endpoints differ')
+        path.push(...continued.slice(1))
+      } else path.push(definition.path[edge + 1])
+    }
+    requireLiteralCanonicalPath(path, goals)
+    visiting.delete(key)
+    resolved.set(key, path)
+    return path
+  }
+  for (const definition of state.paths.values()) expand(definition.reference)
+  for (const coverage of state.coverages) {
+    const paths = coverage.paths.map(expand)
+    if (coverage.kind === 'cluster-source' && coverage.legacy) requireClusterWitnesses({ source: coverage.source,
+      prerequisite: coverage.prerequisite, atomicWitnesses: paths }, goals)
+    else if (coverage.kind === 'cluster-source') requireBatchedClusterCoverage(coverage.source, coverage.prerequisite, paths, goals, true)
+    else {
+      const expected = canonicalClusterLeaves(coverage.prerequisite, goals), covered = new Set<string>()
+      for (const path of paths) {
+        ensure(path[0] === coverage.source && expected.has(path.at(-1)!) && !covered.has(path.at(-1)!),
+          'continued cluster-target leaf coverage differs')
+        covered.add(path.at(-1)!)
+      }
+      ensure(expected.size === covered.size, 'continued cluster-target leaf coverage missing')
+    }
+  }
+}
+function batchedOperationSources(operation: BatchedPrerequisiteReductionOperation): string[] {
+  return 'steps' in operation ? operation.steps.map(step => step.source) : [operation.step.source]
+}
+function requireBatchDocumentBindings(
+  documents: Document[], loaded: LoadedDocument[], entries: PrerequisiteReductionBatch['currentDocumentDigests'], label: string,
+) {
+  const bindings = new Map(entries.map(entry => [entry.path, entry.currentDocumentDigest]))
+  ensure(bindings.size === entries.length && bindings.size === loaded.length, `${label} paths missing, extra, or duplicated`)
+  loaded.forEach((entry, index) => ensure(bindings.get(entry.path) === fingerprintPrerequisiteReductionDocument(documents[index]),
+    `${label} document digest differs: ${entry.path}`))
+}
+function requireBatchOriginalSources(batch: PrerequisiteReductionBatch, goals: ReadonlyMap<string, RawGoal>) {
+  const sources = new Set(batch.operations.flatMap(batchedOperationSources)), snapshots = new Set<string>()
+  for (const snapshot of batch.originalRequires) {
+    ensure(sources.has(snapshot.source) && !snapshots.has(snapshot.source) && goals.has(snapshot.source),
+      `extra, duplicate, or unknown batch original source: ${snapshot.source}`)
+    snapshots.add(snapshot.source)
+  }
+  ensure(snapshots.size === sources.size, 'missing batch original requires')
+  return sources
+}
+function requireUniqueAuthoredBatchEdge(source: string, prerequisite: string, goals: ReadonlyMap<string, RawGoal>) {
+  const goal = goals.get(source)
+  ensure(goal && Array.isArray(goal.requires)
+    && goal.requires.filter(raw => resolveReference(raw, source, goals) === prerequisite).length === 1,
+  `batch operation requires one unique authored edge: ${source} -> ${prerequisite}`)
+}
+function removeBatchedAtomic(
+  operation: DirectPrerequisiteReduction, documents: Document[], goals: ReadonlyMap<string, RawGoal>,
+) {
+  const { source, prerequisite, witness } = operation
+  requireUniqueAuthoredBatchEdge(source, prerequisite, goals)
+  ensure(witness[0] === source && witness.at(-1) === prerequisite, 'batch atomic witness endpoints differ')
+  requireLiteralCanonicalPath(witness, goals)
+  const audit = auditTransitiveMinimality(documents as AuditLandscape[], [source.split(':')[0]])
+  const finding = audit.findings.find(item => item.source === source && item.prerequisite === prerequisite)
+  ensure(finding && stableJson(finding.witness) === stableJson(witness)
+    && finding.supportingOrigins.length === witness.length - 1
+    && finding.supportingOrigins.every((origin, edge) => origin.source === witness[edge] && origin.prerequisite === witness[edge + 1]),
+  'batch removal has no exact fresh directly-authored auditor witness')
+  const goal = goals.get(source)!, before = goal.requires!
+  goal.requires = before.filter(raw => resolveReference(raw, source, goals) !== prerequisite)
+  ensure(goal.requires.length === before.length - 1, 'batch atomic removal differs from one raw edge')
+  requireLiteralCanonicalPath(witness, goals)
+}
+function replayBatchOperation(
+  operation: BatchedPrerequisiteReductionOperation, documents: Document[], goals: ReadonlyMap<string, RawGoal>,
+  state: BatchWitnessState, created: number, removed: Map<string, { operation: DirectPrerequisiteReduction; reference: BatchWitnessReference }>,
+) {
+  if ('steps' in operation) {
+    const cut = operation.steps.at(-1) as ClusterTargetPrerequisiteReduction
+    const leaves = canonicalClusterLeaves(cut.prerequisite, goals), roots = [cut.source.split(':')[0]]
+    requireUniqueClusterTarget(cut.source, cut.prerequisite, goals)
+    auditTransitiveMinimality(documents as AuditLandscape[], roots)
+    for (const addition of operation.steps.slice(0, -1))
+      materializeClusterTargetLeaf(addition as AtomicPrerequisiteMaterialization, cut, leaves, goals)
+    requireUniqueClusterTarget(cut.source, cut.prerequisite, goals)
+    requireDirectClusterTargetLeaves(cut.source, leaves, goals)
+    const goal = goals.get(cut.source)!, before = goal.requires!
+    goal.requires = before.filter(raw => resolveReference(raw, cut.source, goals) !== cut.prerequisite)
+    ensure(goal.requires.length === before.length - 1, 'grouped target cut differs from one raw edge')
+    requireDirectClusterTargetLeaves(cut.source, leaves, goals)
+    auditTransitiveMinimality(documents as AuditLandscape[], roots)
+    registerBatchCoverage(state, 'cluster-target', cut.source, cut.prerequisite, operation.endAtomicWitnesses,
+      operation.endAtomicWitnesses.map(path => ({ kind: 'batch-coverage', operationId: operation.id, source: path[0], prerequisite: path.at(-1)! })), created, goals)
+  } else if ('endAtomicWitnesses' in operation) {
+    const step = operation.step
+    requireUniqueAuthoredBatchEdge(step.source, step.prerequisite, goals)
+    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    requireBatchedClusterCoverage(step.source, step.prerequisite, step.atomicWitnesses, goals, true)
+    const goal = goals.get(step.source)!, before = goal.requires!
+    goal.requires = before.filter(raw => resolveReference(raw, step.source, goals) !== step.prerequisite)
+    ensure(goal.requires.length === before.length - 1, 'batch cluster removal differs from one raw edge')
+    requireBatchedClusterCoverage(step.source, step.prerequisite, step.atomicWitnesses, goals, true)
+    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    registerBatchCoverage(state, 'cluster-source', step.source, step.prerequisite, operation.endAtomicWitnesses,
+      operation.endAtomicWitnesses.map(path => ({ kind: 'batch-coverage', operationId: operation.id, source: path[0], prerequisite: path.at(-1)! })), created, goals)
+  } else if ('operation' in operation.step) {
+    const step = operation.step
+    materializeBatchedAtomic(step, goals)
+    auditTransitiveMinimality(documents as AuditLandscape[], [step.source.split(':')[0]])
+    ensure(operation.endWitness[0] === step.source && operation.endWitness.at(-1) === step.prerequisite,
+      'materialization end witness endpoints differ')
+    registerBatchPath(state, { kind: 'batch-path', operationId: operation.id }, operation.endWitness, created)
+  } else {
+    const direct = operation.step
+    removeBatchedAtomic(direct, documents, goals)
+    ensure(operation.endWitness[0] === direct.source && operation.endWitness.at(-1) === direct.prerequisite,
+      'atomic end witness endpoints differ')
+    const reference: BatchWitnessReference = { kind: 'batch-path', operationId: operation.id }
+    registerBatchPath(state, reference, operation.endWitness, created)
+    removed.set(operation.id, { operation: direct, reference })
+  }
+}
+async function verifyBatchedFrame(
+  registry: BatchedPrerequisiteReductionRegistry, loaded: LoadedDocument[],
+): Promise<VerifiedDocumentFrame> {
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const { v5Checkpoint, batches, ...prefix } = registry
+  const parentDigests = new Map(v5Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
+  ensure(parentDigests.size === v5Checkpoint.currentDocumentDigests.length && parentDigests.size === loaded.length,
+    'V5 checkpoint paths missing, extra, or duplicated')
+  const parent: ClusterTargetPrerequisiteReductionRegistry = { ...prefix,
+    proofContract: CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT,
+    catalogSources: registry.catalogSources.map(entry => {
+      const currentDocumentDigest = parentDigests.get(entry.path)
+      ensure(currentDocumentDigest, `V5 checkpoint source missing: ${entry.path}`)
+      return { ...entry, currentDocumentDigest }
+    }) }
+  ensure(fingerprintPrerequisiteReductionDocument(parent) === v5Checkpoint.registryDigest, 'historical V5 registry digest differs')
+  let predecessor = v5Checkpoint.registryDigest
+  for (const batch of batches) {
+    ensure(batch.previousDigest === predecessor, `batch predecessor digest differs: ${batch.id}`)
+    predecessor = fingerprintPrerequisiteReductionDocument(batch)
+  }
+  const parentDocuments = structuredClone(currentDocuments), reverseGoals = goalIndex(parentDocuments)
+  requireBatchDocumentBindings(parentDocuments, loaded, batches.at(-1)!.currentDocumentDigests, 'final batch')
+  for (let index = batches.length - 1; index >= 0; index--) {
+    const batch = batches[index]
+    requireBatchOriginalSources(batch, reverseGoals)
+    for (const snapshot of batch.originalRequires) {
+      const goal = reverseGoals.get(snapshot.source)!
+      if (snapshot.requires === null) delete goal.requires
+      else goal.requires = structuredClone(snapshot.requires)
+    }
+    requireBatchDocumentBindings(parentDocuments, loaded,
+      index === 0 ? v5Checkpoint.currentDocumentDigests : batches[index - 1].currentDocumentDigests, `batch ${batch.id} start`)
+  }
+  // Full V5 verification precedes every new edge and continuation. No suffix can repair bad history.
+  const parentFrame = await verifyDocumentFrame(parent, loaded.map((entry, index) => ({ ...entry, document: parentDocuments[index] })))
+  deepFreeze(parentFrame.baselineDocuments)
+  const replayDocuments = structuredClone(parentDocuments), goals = goalIndex(replayDocuments)
+  const state = legacyBatchWitnessState(parent, goals), affectedSources = new Set(parentFrame.affectedSources)
+  validateBatchWitnessState(state, goals)
+  batches.forEach((batch, index) => {
+    const created = index + 1, sources = requireBatchOriginalSources(batch, goals)
+    for (const snapshot of batch.originalRequires) {
+      const goal = goals.get(snapshot.source)!
+      ensure((snapshot.requires === null ? !Object.hasOwn(goal, 'requires')
+        : Object.hasOwn(goal, 'requires') && stableJson(goal.requires) === stableJson(snapshot.requires)),
+      `batch original requires differ at forward start: ${snapshot.source}`)
+    }
+    const removed = new Map<string, { operation: DirectPrerequisiteReduction; reference: BatchWitnessReference }>()
+    for (const operation of batch.operations) replayBatchOperation(operation, replayDocuments, goals, state, created, removed)
+    // End witnesses are explicit literal paths, independently of the initial fresh auditor witness.
+    for (const definition of state.paths.values()) if (definition.created === created) requireLiteralCanonicalPath(definition.path, goals)
+    for (const continuation of batch.legacyContinuations) {
+      const definition = state.paths.get(batchReferenceKey(continuation.witness)), replacement = removed.get(continuation.removalId)
+      ensure(definition && definition.created < created && replacement, 'unknown, current-batch, or non-atomic continuation reference')
+      ensure(continuation.edgeIndex < definition.path.length - 1, 'continuation edge index is out of range')
+      const source = definition.path[continuation.edgeIndex], prerequisite = definition.path[continuation.edgeIndex + 1]
+      ensure(replacement.operation.source === source && replacement.operation.prerequisite === prerequisite,
+        'legacy continuation removed-edge endpoints differ')
+      const position = batchPositionKey(continuation.witness, continuation.edgeIndex)
+      ensure(!state.replacements.has(position), 'duplicate or already continued legacy witness position')
+      ensure(!(goals.get(source)!.requires ?? []).some(raw => resolveReference(raw, source, goals) === prerequisite),
+        'unused continuation for a surviving literal edge')
+      state.replacements.set(position, replacement.reference)
+    }
+    validateBatchWitnessState(state, goals)
+    requireBatchDocumentBindings(replayDocuments, loaded, batch.currentDocumentDigests, `batch ${batch.id} end`)
+    sources.forEach(source => affectedSources.add(source))
+  })
+  ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
+    'batch replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
+  ensure(parentFrame.baselineApplicability === await compileApplicability(currentDocuments, loaded),
+    'compiled applicability changed after batches')
+  return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
+    baselineApplicability: parentFrame.baselineApplicability, affectedSources }
 }
