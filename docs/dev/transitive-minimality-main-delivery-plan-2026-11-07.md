@@ -14,14 +14,22 @@ der tatsächliche Main-Dateibaum ist exakt gleich. Der separate frische
 ist gestartet und wird unabhängig begleitet. Das harte Standard-G17-Gate und
 die Abnahme aller zehn geschützten Fächer bleiben offen.
 
-Der sichtbare IDE-Branch `docs/projection-prerequisite-closure` liefert jetzt
-die ausdrücklich angeforderte konzeptionelle Projektionskorrektur als eigenen
-kleinen Dokumentations-PR. Er erhält vollständige Voraussetzungsketten und die
-kanonische Atomidentität; die noch bestehende Cluster-Atomisierung bleibt als
-Implementierungslücke ausgewiesen. Der Deutsch-Datenstand bleibt getrennt auf
-`fix/g17-german-first-cluster-prerequisite` bei `034629517b` gesichert und folgt
-nach dieser Dokumentationslieferung. Die nachfolgenden Einzelberichte bewahren
-die jeweilige Lieferhistorie und deren damalige Prüfstände.
+Die ausdrücklich angeforderte Projektionsdokumentation ist mit PR #98 nach main
+bei `16e55248767ac0e6736c9cbbcee34882f7b62d8e` geliefert. Alle drei PR-Jobs
+bestanden; der Main-Dateibaum ist exakt gleich. Vollständige Voraussetzungsketten
+und kanonische Atomidentität sind verbindlich; die noch bestehende
+Cluster-Atomisierung bleibt als Implementierungslücke ausgewiesen. Die getrennte
+Main-Push-Prüfung wird weiter begleitet.
+
+Der sichtbare IDE-Branch ist wieder
+`fix/g17-german-first-cluster-prerequisite`. Er hat diesen Main-Stand konfliktfrei
+als `a053b48230` aufgenommen. Die elf ursprünglichen Deutsch-Dateien bleiben
+bytegleich zu `e7b317b222`; ebenso die 35 Loader-, acht Python-, 32 CQR-,
+43 Paket- und 130 Reader-Eingaben der bestehenden Nachweise. Der
+[begrenzte Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-main98-integration/receipt.json)
+bewahrt diese Quellbindungen; er behauptet keinen neuen Gesamttest. Der folgende
+Deutsch-Daten-PR erhält seine eigene frische Remote-CI. Die nachfolgenden
+Einzelberichte bewahren die Lieferhistorie und deren damalige Prüfstände.
 
 Die erste Lieferung ist mit [PR #86](https://github.com/enpasos/skillpilot/pull/86)
 nach main übernommen: Commit
@@ -291,13 +299,70 @@ notwendigen Elternkorrektur und eigener frischer Remote-Abnahme. Bis dahin
 erfolgt keine weitere deutsche Datenbearbeitung. Das harte Standard-G17-Gate
 und der Gesamtauftrag bleiben offen.
 
+Der sichtbare Deutsch-Branch nimmt jetzt den geprüften Elternfix
+`bcc7803424` auf, während dessen frische PR-CI läuft. Die sieben Dateien des
+deutschen Prüfvertrags und der Datenänderung werden gegen `e7b317b222`
+byteweise abgeglichen. Die lokalen Gesamtbelege dieses Commits behalten ihre
+ursprünglichen Quellbindungen; sie werden nicht still auf die geänderte
+Backenddatei umgebunden. Der kombinierte Stand `89696c10e5` bestand den
+Graphvalidator für 593 Landschaften, die vollständige Buchtestkette sowie alle
+16 gezielten Backendfälle ohne Fehler oder Skips. Beide 133-Datei-Prüfrahmen
+bleiben während der Läufe bytegleich. Der
+[gesonderte Integrationsbeleg](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-09/g17-german-parent-consumer-integration/receipt.json)
+weist genau neun bereits geprüfte Deutsch-Unterschiede zum Elternstand aus;
+die übrigen 124 Eingaben stimmen mit ihm überein. Die 35 Loader-, acht Python-,
+32 CQR- und 43 Paket-Eingaben des deutschen Einzelstands bleiben unverändert.
+Die vollständige Backendausführung am abschließenden Folge-PR bleibt Teil
+seiner frischen Remote-Abnahme. [Die lokale deutsche Notiz](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
+bleibt erhalten; es werden keine weiteren deutschen Kanten bearbeitet und
+kein Folge-PR vor der Main-Lieferung von #97 angelegt.
+
+Der zusätzliche Readerfix aus `200d21f9ff` ist im sichtbaren Deutsch-Branch
+als `68db5bf499` zusammengeführt. Die vier tatsächlichen npm-Aufrufer für
+Q2.5, Q2-M7, Caterer und den vollständigen Composition-Rollen-Test bestehen
+auch in diesem V5-Stand. Beide Läufe binden dieselben 130 unveränderten
+Eingaben. Die fünf Readerdateien stimmen bytegleich mit dem Elternfix überein;
+von den 125 geschützten Elterneingaben unterscheiden sich nur die neun bereits
+geprüften Deutsch-/V5-Dateien, die übrigen 116 sind unverändert. Die ursprünglichen
+35 Loader-, acht Python-, 32 CQR- und 43 Paket-Eingaben bleiben ebenfalls gleich.
+Das ergänzt die bestehenden lokalen Belege, ersetzt aber nicht die eigene
+frische Remote-Abnahme des folgenden Deutsch-PRs. Die
+[Integrationsnotiz](german-assessment-reader-integration-review-2026-11-09.md)
+bindet die tatsächlichen Aufrufer und Ergebnisdateien. Die Wirtschaftsentscheidung
+zur zusätzlichen Scopebindung war auf Ownerwunsch zurückgestellt. Nach seiner
+anschließenden Projektionsklärung und der Astra-Ultra-Analyse vom 9. November
+wird dieser Vorschlag nicht weiterverfolgt. Die Kursansicht erhält keine eigene
+`requires`-Autorenschaft. Eine Projektion ausgewählter kanonischer Atome muss
+deren vollständige transitive Voraussetzungshülle erhalten und die erforderlichen
+Level-2-Rollen ausdrücklich auflösen; sichtbarer Baum und Fokus sind davon
+getrennt. Der reguläre Resolver verfolgt solche Ketten bereits rekursiv.
+
+Der konkrete Wirtschaftsfall beginnt davor: Direkte `goalEntry`-Referenzen machen
+die beiden kanonischen Prüfungscluster in der Projektion zu Atomen und schneiden
+ihre Kinder als Berechnungsbasis ab. Dies ist im bisherigen DPK-006c-c-Vertrag
+ausdrücklich beschrieben. Bloßes zusätzliches Laden von Zwischenknoten würde
+die dadurch isolierten Ersatzatome nicht verbinden. Der nächste begrenzte
+Nachweis vergleicht daher die bestehende opake Projektion mit einer Projektion
+der vorhandenen kanonischen Prüfungsatome und erst anschließend die Entfernung
+der beiden Clusteranforderungen. Zielmengen- und Fortschrittsunterschiede der
+Projektionskorrektur werden ausdrücklich ausgewiesen; gespeicherte Ergebnisse
+werden nicht auf Kinder übertragen. Diese Analyse implementiert noch keine
+Projektions-, Rollen-, Mastery- oder Curriculumänderung.
+
+Die angeforderte konzeptionelle Dokumentationskorrektur wird als eigener kleiner
+Dokumentations-PR unmittelbar nach der Main-Lieferung von #97 und vor dem
+Deutsch-Daten-PR übernommen. Graphdefinition, Projektionsvertrag, deutsche
+LaTeX-Kapitel, bestehende Regelzuordnung und neu gebauter PDF-Stand gehören
+zusammen; die Deutsch-Daten und deren technische Nachweise bleiben ein eigener
+Folgeschritt. Der sichtbare Branch bewahrt beide getrennt committierbaren Stände.
+
 Die ersten beiden CI-Reparaturen sind als `a2d7043e6c` in PR #96 committet und
 gepusht. Die gezielte Physikprüfung mit ihren
 Gegenfällen, Dauerlayout-/Coverage-/Gap-Checks, CQR-Frische und zehn Untergrenzen,
 ESLint sowie Dokumentations- und Terminologieprüfungen bestanden lokal.
 
-Der sichtbare IDE-Checkout bleibt auf
-`fix/g17-math-transitive-reduction`. Die ursprüngliche Vorprobe des inzwischen
+Der sichtbare IDE-Checkout liegt auf
+`fix/g17-german-first-cluster-prerequisite`. Die ursprüngliche Vorprobe des inzwischen
 committeten atomaren Mathematikbatches
 findet 922 redundante Rohkanten aus 490 zusätzlichen Quellen: 2.484 atomare
 Anforderungen werden zu 1.562 reduziert; der bestehende Auditor findet danach
@@ -693,14 +758,13 @@ unbefristeter Draft oder ein Archivbranch ersetzt den Lieferweg nicht.
 Umgekehrt wird erhaltenswerte Arbeit nicht ungeprüft gemerged, nur um sie
 formal auf main zu haben.
 
-Abgeschlossen und nach main geliefert sind G17-Prüfer, technische
-Transitivitätskorrektur, der begrenzte Frischeanschluss mit genau einer realen
-Kantenentfernung, die bestätigte einheitliche Rollenpflicht und der erste
-Biologie-Batch mit 186 Entfernungen aus PR #90. Zuerst folgt die eigenständige
-Dokumentationslieferung; der nächste Umsetzungsschritt ist der endliche
-Atomarisierungs-/Erhaltungsnachweis unter der verbindlichen atomaren Zielnorm.
-Weitere mechanische Reduktionen und die Standardintegration bleiben Teil
-desselben aktiven Goals. Die historische vollständige In-Memory-Vorschau
+Nach main geliefert sind die oben einzeln belegten Lieferungen bis PR #96:
+Auditor und Regressionen, notwendige technische Korrekturen, atomare Zielnorm,
+mechanische Reduktionen und der erste atomare Mathematiknachweis. Als Nächstes
+folgen die tatsächliche Main-Lieferung von Mathematik-PR #97 und danach der
+bereits lokal geprüfte erste deutsche Atom→Cluster-Fall. Weitere mechanische
+Reduktionen und die harte Standardintegration bleiben Teil desselben aktiven
+Goals. Die historische vollständige In-Memory-Vorschau
 hat 2.435 Ursprungskanten nacheinander mit jeweils frischem Auditor entfernt
 und im geschützten Scope null verbleibende G17-Befunde erreicht. Dabei wurden
 keine Curriculumdateien geändert. Die zusätzlichen nativen Messungen zeigen,

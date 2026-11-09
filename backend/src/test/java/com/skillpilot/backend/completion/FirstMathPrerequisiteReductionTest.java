@@ -54,6 +54,21 @@ class FirstMathPrerequisiteReductionTest {
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String BIOLOGY = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String LATIN = "668cf206-941e-51f8-8704-3e8938631235";
+    private static final String GERMAN = "67bd301b-e11a-582d-94ba-4f4b1a4cefff";
+    private static final String GERMAN_ATOM = "2fb368b0-7b9d-5df0-99b6-6d719fd47f95";
+    private static final String GERMAN_CLUSTER = "53462f11-c368-51df-bb68-c36a83d761b1";
+    private static final String GERMAN_OTHER = "bb3dee7b-d6d3-513b-8824-bdf6414e02df";
+    private static final String GERMAN_LEAF = "2122b969-61e9-412f-9e97-8777c606d27a";
+    private static final String GERMAN_LEAF_PREREQUISITE = "eff86a92-e048-5494-b561-6ecdda1fbf67";
+    private static final List<String> GERMAN_LEAVES = List.of(
+            "001b6ae3-207a-400d-852d-2c4068df8d2f", "17164008-3c30-4d22-8f2b-bf2e5a79f9de", GERMAN_LEAF,
+            "263b9af0-c584-4364-a35f-6dfccd7aaf21", "6904ca70-3f22-41eb-bc9c-9896bf7bb1e9",
+            "70f5f3c6-f0e9-4bd7-8095-a20be459975c", "d4642285-5b73-4541-a088-6c1e77b37637",
+            "ead22176-e8f4-45b6-8a3d-e04661f3c3e4", "f0c354f9-6f7a-494a-8f64-675bf1b42f5e",
+            "fb8f990d-224f-4277-92a1-13bee8f7f8a4");
+    private static final Set<String> GERMAN_TARGET_SCOPES = Set.of("DE-HE/CrossStage/G9/LK",
+            "DE-HE/SekII/G8/GK", "DE-HE/SekII/G8/GK+LK", "DE-HE/SekII/G8/LK",
+            "DE-HE/SekII/G9/GK", "DE-HE/SekII/G9/GK+LK", "DE-HE/SekII/G9/LK");
     private static final String BIOLOGY_ORIENTATION = "2d451684-6e53-565e-a987-f362da919d2c";
     private static final String LATIN_CLUSTER = "e82cc731-ebf4-588f-9fea-f0d31f7ad0e7";
     private static final String LATIN_ATOM = "bd6b8f87-f9b5-54ad-828e-e1c36c1d4d82";
@@ -67,6 +82,7 @@ class FirstMathPrerequisiteReductionTest {
     private static final String V2 = "atomic-descendant-covered-cluster-reduction-v2";
     private static final String V3 = "ordered-atomic-materialization-and-cluster-reduction-v3";
     private static final String V4 = "continued-atomic-prerequisite-reduction-v4";
+    private static final String V5 = "atomic-cluster-target-normalization-v5";
     private static final Set<String> MATH_EXAMS = Set.of("464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
             "9ad83149-3cb7-5b87-a617-3eae3715a50c");
     private static final Set<String> UNEXPOSED_CANONICAL_ATOMIC_BASES = Set.of(
@@ -86,6 +102,8 @@ class FirstMathPrerequisiteReductionTest {
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json");
     private static final Path LATIN_SOURCE = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json");
+    private static final Path GERMAN_SOURCE = REPOSITORY.resolve(
+            "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json");
     private static final Path REDUCTION_REGISTRY = REPOSITORY.resolve(
             "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -105,7 +123,7 @@ class FirstMathPrerequisiteReductionTest {
     @Test
     void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
         JsonNode declared = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        assertThat(declared.path("proofContract").asText()).as("actual live activation uses V4").isEqualTo(V4);
+        assertThat(declared.path("proofContract").asText()).as("actual live activation uses V5").isEqualTo(V5);
         ReductionRegistry registry = readReductionRegistry(declared);
         JsonNode current = MAPPER.readTree(MATH_SOURCE.toFile());
         List<ChangedSource> changes = registry.changesByFile().get(MATH_SOURCE);
@@ -161,6 +179,33 @@ class FirstMathPrerequisiteReductionTest {
         assertThatThrownBy(() -> reconstructRawDocument(MATH_SOURCE, missingCurrentTail, MATH,
                 registry.documentDigests().get(MATH_SOURCE), changes, false))
                 .isInstanceOf(AssertionError.class).hasMessageContaining("current raw document");
+        ObjectNode missingClusterTargetOverlay = declared.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ArrayNode) missingClusterTargetOverlay.path("clusterTargetOriginalRequires")).remove(0);
+        assertThatThrownBy(() -> readReductionRegistry(missingClusterTargetOverlay)).isInstanceOf(AssertionError.class);
+        ObjectNode nullClusterTargetOverlay = declared.deepCopy();
+        ((ObjectNode) nullClusterTargetOverlay.path("clusterTargetOriginalRequires").get(0)).putNull("requires");
+        assertThatThrownBy(() -> readReductionRegistry(nullClusterTargetOverlay)).isInstanceOf(AssertionError.class);
+        ObjectNode missingClusterTargetStep = declared.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ArrayNode) missingClusterTargetStep.path("clusterTargetSuffix")).remove(0);
+        assertThatThrownBy(() -> readReductionRegistry(missingClusterTargetStep)).isInstanceOf(AssertionError.class);
+        ObjectNode reorderedClusterTargetSteps = declared.deepCopy();
+        var clusterTargetSteps = (com.fasterxml.jackson.databind.node.ArrayNode) reorderedClusterTargetSteps.path("clusterTargetSuffix");
+        JsonNode firstStep = clusterTargetSteps.get(0).deepCopy();
+        clusterTargetSteps.set(0, clusterTargetSteps.get(10).deepCopy());
+        clusterTargetSteps.set(10, firstStep);
+        assertThatThrownBy(() -> readReductionRegistry(reorderedClusterTargetSteps)).isInstanceOf(AssertionError.class);
+        ObjectNode badV4Checkpoint = declared.deepCopy();
+        ((ObjectNode) badV4Checkpoint.path("v4Checkpoint")).put("registryDigest", "sha256:" + "0".repeat(64));
+        assertThatThrownBy(() -> readReductionRegistry(badV4Checkpoint)).isInstanceOf(AssertionError.class);
+        JsonNode germanCurrent = MAPPER.readTree(GERMAN_SOURCE.toFile());
+        List<ChangedSource> germanChanges = registry.changesByFile().get(GERMAN_SOURCE);
+        assertThat(germanChanges).hasSize(1);
+        assertThatThrownBy(() -> reconstructRawDocument(GERMAN_SOURCE, germanCurrent, GERMAN,
+                registry.documentDigests().get(GERMAN_SOURCE), List.of(), true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
+        assertThatThrownBy(() -> reconstructRawDocument(GERMAN_SOURCE, germanCurrent, GERMAN,
+                registry.documentDigests().get(GERMAN_SOURCE), List.of(germanChanges.getFirst().withOriginalPresence(false)), true))
+                .isInstanceOf(AssertionError.class).hasMessageContaining("baseline raw document");
         ObjectNode unknown = declared.deepCopy();
         unknown.put("proofContract", "unreviewed-reduction-contract");
         assertThatThrownBy(() -> readReductionRegistry(unknown)).isInstanceOf(AssertionError.class);
@@ -292,6 +337,11 @@ class FirstMathPrerequisiteReductionTest {
                 .isEqualTo(before.canonicalAtomicIds);
         assertThat(after.atomicProbesBySource).as("canonical descendant coverage before scope")
                 .isEqualTo(before.atomicProbesBySource);
+        assertThat(nativeGermanApplicability(after)).as("native derived German applicability before scope")
+                .isEqualTo(nativeGermanApplicability(before));
+        Set<String> germanReachedScopes = new TreeSet<>(), germanTargetScopes = new TreeSet<>();
+        int germanCompletionPairs = 0, germanPolicyPairs = 0, germanMasteredSourcePairs = 0;
+        boolean germanControlledRolesChecked = false;
         JsonNode offerings = readGuiOfferings();
         int sourceTargets = 0, sourceContextsOnly = 0, foreignContexts = 0;
         int validRoles = 0, invalidRoles = 0;
@@ -328,6 +378,26 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(right.graph().keySet()).as("complete resolved graph: %s", scope)
                         .isEqualTo(left.graph().keySet());
                 assertThat(right.context()).as("complete native compiler context: %s", scope).isEqualTo(left.context());
+                if (GERMAN.equals(subject)) {
+                    assertThat(projectedApplicability(right)).as("actual projected German applicability: %s", scope)
+                            .isEqualTo(projectedApplicability(left));
+                    if (left.graph().containsKey(GERMAN_ATOM)) {
+                        germanReachedScopes.add(entry.getKey());
+                        assertThat(left.roles().atomicTargets()).as("actual German assessment target: %s", scope).contains(GERMAN_ATOM);
+                        assertThat(right.roles().atomicTargets()).contains(GERMAN_ATOM);
+                        germanTargetScopes.add(entry.getKey());
+                        assertGermanRawGoalNormalization(left.topology(), right.topology(), scope);
+                        assertGermanActualCompletionAndPolicyPreserved(before.service, left, after.service, right,
+                                registry.documentDigests().get(GERMAN_SOURCE), scope);
+                        germanCompletionPairs += 5;
+                        germanPolicyPairs += 20;
+                        germanMasteredSourcePairs++;
+                        if ("DE-HE/SekII/G8/GK".equals(entry.getKey())) {
+                            assertGermanControlledRoleDifferences(before.service, left, after.service, right);
+                            germanControlledRolesChecked = true;
+                        }
+                    }
+                }
 
                 if (BIOLOGY.equals(subject) && "DE-MV/SekI/G8/".equals(entry.getKey())) {
                     assertDuplicateRemovalKeepsMissingRoleInvalid(before.service, left,
@@ -410,9 +480,10 @@ class FirstMathPrerequisiteReductionTest {
                     // unfiltered canonical definition remains a cluster.
                     assertThat(right.topology().transitivePrerequisites(id)).as("full atomic demand %s: %s", id, scope)
                             .isEqualTo(left.topology().transitivePrerequisites(id));
-                    assertThat(right.topology().transitiveGoalPrerequisites(id))
-                            .as("pre-expansion prerequisite roles %s: %s", id, scope)
-                            .isEqualTo(left.topology().transitiveGoalPrerequisites(id));
+                    if (GERMAN_ATOM.equals(id)) assertGermanRawGoalNormalization(left.topology(), right.topology(), scope);
+                    else assertThat(right.topology().transitiveGoalPrerequisites(id))
+                                .as("pre-expansion prerequisite roles %s: %s", id, scope)
+                                .isEqualTo(left.topology().transitiveGoalPrerequisites(id));
                     boolean originalRoleValid = roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), id, originalFullMastery);
                     assertThat(roleProbeWithPrerequisites(after.service, right.graph(), right.projection(), id, reducedFullMastery))
                             .as("complete native role check %s: %s", id, scope)
@@ -554,7 +625,7 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(coveredChangedSources.stream().filter(registry.historicalSourceIds()::contains).count())
                 .as("historical sources with real authored-scope descendant probes").isEqualTo(198);
         assertThat(liveCoveredSources).as("all sources with real authored-scope descendant probes")
-                .isEqualTo(198 + registry.suffixSourceIds().size() + coveredTailSources.size());
+                .isEqualTo(198 + registry.suffixSourceIds().size() + coveredTailSources.size() + registry.clusterTargetSourceIds().size());
         assertThat(coveredChangedSources).as("all V3 Math materialization sources have actual authored-scope coverage")
                 .containsAll(registry.suffixSourceIds());
         assertThat(coveredChangedSources.stream().filter(id -> registry.historicalSourceIds().contains(id)
@@ -576,6 +647,15 @@ class FirstMathPrerequisiteReductionTest {
         });
         assertThat(configurationCounts.values().stream().mapToInt(Integer::intValue).sum())
                 .as("all actual native planner and GUI configurations").isEqualTo(1240);
+        assertThat(configurationCounts.get(GERMAN)).as("all actual German configurations").isEqualTo(99);
+        assertThat(germanReachedScopes).as("exact actual source contexts, no incoming source dependencies")
+                .containsExactlyInAnyOrderElementsOf(GERMAN_TARGET_SCOPES);
+        assertThat(germanTargetScopes).as("seven actual positive prepared-source-open policy controls")
+                .containsExactlyInAnyOrderElementsOf(GERMAN_TARGET_SCOPES);
+        assertThat(germanCompletionPairs).isEqualTo(35);
+        assertThat(germanPolicyPairs).isEqualTo(140);
+        assertThat(germanMasteredSourcePairs).isEqualTo(7);
+        assertThat(germanControlledRolesChecked).as("separate artificial role-projection differences").isTrue();
         assertThat(sourceTargets).as("actual Math target coverage").isPositive();
         assertThat(sourceContextsOnly).as("Math source present only in supporting compiler context").isPositive();
         assertThat(foreignContexts).isPositive();
@@ -613,6 +693,9 @@ class FirstMathPrerequisiteReductionTest {
         System.out.printf("MATH_ATOMIC_TAIL_NATIVE_COVERAGE registeredSources=%d liveSources=%d unexposedSources=%d separateCanonicalSources=%d canonicalMissingRoleCases=%d unexposedSourceIds=%s%n",
                 registry.tailSourceIds().size(), coveredTailSources.size(), missingTailSources.size(),
                 tailCanonicalCoveredAtoms.size(), tailCanonicalRoleComparisons, missingTailSources);
+        System.out.printf("GERMAN_CLUSTER_TARGET_NATIVE_COVERAGE configurations=%d reachedScopes=%s targetScopes=%s atomicDemand=20 rawGoalDemand=2-to-12 completionPairs=%d commonPolicyPairs=%d masteredSourceCompletionAndEffectiveMasteryPairs=%d separateControlledRoleCases=2%n",
+                configurationCounts.get(GERMAN), germanReachedScopes, germanTargetScopes,
+                germanCompletionPairs, germanPolicyPairs, germanMasteredSourcePairs);
     }
 
     private record Roles(Set<String> targets, Set<String> atomicTargets, Set<String> support, Set<String> viewIds) { }
@@ -671,6 +754,14 @@ class FirstMathPrerequisiteReductionTest {
                 if (goal.getContains().isEmpty()) atomicIds.add(id);
             });
             canonicalAtomicIds = Collections.unmodifiableSet(atomicIds);
+            if (!registry.clusterTargetSourceIds().isEmpty()) {
+                assertThat(canonicalAtomicDescendants(GERMAN_CLUSTER, canonical)).as("complete canonical German cluster leaf set")
+                        .containsExactlyInAnyOrderElementsOf(GERMAN_LEAVES);
+                assertThat(canonical.get(GERMAN_ATOM).getType()).isEqualTo("atomic");
+                assertThat(canonical.get(GERMAN_ATOM).getContains()).isEmpty();
+                assertThat(canonical.get(GERMAN_CLUSTER).getType()).isEqualTo("cluster");
+                assertThat(canonical.get(GERMAN_CLUSTER).getContains()).isNotEmpty();
+            }
             Map<String, Set<String>> probes = new TreeMap<>();
             for (ChangedSource changed : registry.changedSources().values()) {
                 LearningGoal source = canonical.get(changed.goalId());
@@ -760,6 +851,7 @@ class FirstMathPrerequisiteReductionTest {
             Map<Path, List<ChangedSource>> changesByFile, Map<String, ChangedSource> changedSources,
             List<ClusterWitnessCoverage> clusterWitnessCoverage, Map<Path, DocumentDigests> documentDigests,
             Set<String> historicalSourceIds, Set<String> suffixSourceIds, Set<String> tailSourceIds,
+            Set<String> clusterTargetSourceIds,
             Map<String, Set<String>> tailRemovedPrerequisites) { }
 
     private static ReductionRegistry readReductionRegistry() throws IOException {
@@ -768,8 +860,9 @@ class FirstMathPrerequisiteReductionTest {
 
     private static ReductionRegistry readReductionRegistry(JsonNode registry) throws IOException {
         assertThat(registry.path("schemaVersion").asInt()).isEqualTo(1);
-        assertThat(registry.path("proofContract").asText()).isIn(V2, V3, V4);
-        boolean continued = V4.equals(registry.path("proofContract").asText());
+        assertThat(registry.path("proofContract").asText()).isIn(V2, V3, V4, V5);
+        boolean clusterTargetNormalization = V5.equals(registry.path("proofContract").asText());
+        boolean continued = clusterTargetNormalization || V4.equals(registry.path("proofContract").asText());
         boolean ordered = continued || V3.equals(registry.path("proofContract").asText());
         assertThat(registry.path("auditScope").asText()).isEqualTo("origin-source-landscape-closure");
         assertThat(registry.path("catalogSources").isArray()).isTrue();
@@ -798,8 +891,8 @@ class FirstMathPrerequisiteReductionTest {
             goalsByOwner.put(owner, rawGoals(canonical));
         }
         assertThat(canonicalOwners).hasSize(21);
-        assertHistoricalBindings(registry, ordered, continued);
-        assertThat(canonicalOwners).containsKeys(MATH_SOURCE, BIOLOGY_SOURCE, LATIN_SOURCE);
+        assertHistoricalBindings(registry, ordered, continued, clusterTargetNormalization);
+        assertThat(canonicalOwners).containsKeys(MATH_SOURCE, BIOLOGY_SOURCE, LATIN_SOURCE, GERMAN_SOURCE);
         assertThat(registry.path("removals").isArray()).isTrue();
         assertThat(registry.path("removals")).as("retained historical operation count").hasSize(204);
         assertThat(registry.path("originalRequires")).as("retained historical raw overlay count").hasSize(200);
@@ -849,6 +942,7 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(clusterSourceIds).as("Latin plus twelve follow-up cluster sources").hasSize(13);
 
         Set<String> historicalSourceIds = new TreeSet<>(), suffixSourceIds = new TreeSet<>(), tailSourceIds = new TreeSet<>();
+        Set<String> clusterTargetSourceIds = new TreeSet<>();
         Map<String, Set<String>> tailRemovedPrerequisites = new TreeMap<>();
         List<JsonNode> originals = new ArrayList<>();
         for (JsonNode original : registry.path("originalRequires")) {
@@ -958,6 +1052,78 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(rawRequires(replacement.path("witness"), RETAINED))
                     .containsExactly(MATH + ":" + RETAINED, MATH + ":" + CONTINUED_BRIDGE, MATH + ":" + REMOVED);
         }
+        if (clusterTargetNormalization) {
+            assertThat(registry.path("clusterTargetOriginalRequires").isArray()).isTrue();
+            assertThat(registry.path("clusterTargetOriginalRequires")).hasSize(1);
+            JsonNode original = registry.path("clusterTargetOriginalRequires").get(0);
+            String source = GERMAN + ":" + GERMAN_ATOM;
+            assertThat(original.size()).isEqualTo(2);
+            assertThat(original.path("source").asText()).isEqualTo(source);
+            assertThat(rawRequires(original.path("requires"), source)).containsExactly(GERMAN_CLUSTER, GERMAN_OTHER);
+            assertThat(historicalSourceIds).doesNotContain(GERMAN_ATOM);
+            assertThat(suffixSourceIds).doesNotContain(GERMAN_ATOM);
+            assertThat(tailSourceIds).doesNotContain(GERMAN_ATOM);
+            assertAtomicWitness(registeredGoal(goalsByOwner, source), source);
+            JsonNode cluster = registeredGoal(goalsByOwner, GERMAN + ":" + GERMAN_CLUSTER);
+            assertThat(cluster.path("type").asText()).isEqualTo("cluster");
+            assertThat(cluster.path("contains")).isNotEmpty();
+            assertThat(registry.path("clusterTargetSuffix").isArray()).isTrue();
+            assertThat(registry.path("clusterTargetSuffix")).hasSize(11);
+            List<String> replay = new ArrayList<>(List.of(GERMAN_CLUSTER, GERMAN_OTHER));
+            for (int index = 0; index < 11; index++) {
+                JsonNode step = registry.path("clusterTargetSuffix").get(index);
+                assertThat(step.path("source").asText()).isEqualTo(source);
+                if (index < 10) {
+                    assertThat(step.size()).as("bounded V5 materialization fields: %d", index).isEqualTo(4);
+                    String leaf = GERMAN_LEAVES.get(index);
+                    assertThat(step.path("operation").asText()).isEqualTo("materialize-atomic");
+                    assertThat(step.path("prerequisite").asText()).isEqualTo(GERMAN + ":" + leaf);
+                    JsonNode origin = step.path("origin");
+                    assertThat(origin.isObject()).isTrue();
+                    assertThat(origin.size()).as("bounded V5 origin fields: %d", index).isEqualTo(4);
+                    assertThat(origin.path("source").asText()).isEqualTo(source);
+                    assertThat(origin.path("prerequisite").asText()).isEqualTo(GERMAN_CLUSTER);
+                    assertThat(rawRequires(origin.path("sourceContainsPath"), source)).containsExactly(source);
+                    List<String> prerequisitePath = rawRequires(origin.path("prerequisiteContainsPath"), source);
+                    assertThat(prerequisitePath).hasSize(3);
+                    assertThat(prerequisitePath.getFirst()).isEqualTo(GERMAN + ":" + GERMAN_CLUSTER);
+                    assertThat(prerequisitePath.getLast()).isEqualTo(GERMAN + ":" + leaf);
+                    for (int pathIndex = 0; pathIndex + 1 < prerequisitePath.size(); pathIndex++) {
+                        String parent = prerequisitePath.get(pathIndex), child = prerequisitePath.get(pathIndex + 1);
+                        assertThat(qualifiedIdentity(parent)[0]).isEqualTo(GERMAN);
+                        assertThat(qualifiedIdentity(child)[0]).isEqualTo(GERMAN);
+                        assertThat(rawRequires(registeredGoal(goalsByOwner, parent).path("contains"), parent))
+                                .as("literal V5 prerequisite contains edge %s -> %s", parent, child)
+                                .contains(qualifiedIdentity(child)[1]);
+                    }
+                    assertAtomicWitness(registeredGoal(goalsByOwner, GERMAN + ":" + leaf), leaf);
+                    assertThat(replay).doesNotContain(leaf);
+                    replay.add(leaf);
+                } else {
+                    assertThat(step.size()).as("bounded V5 final removal fields").isEqualTo(3);
+                    assertThat(replay).hasSize(12).contains(GERMAN_CLUSTER);
+                    assertThat(step.path("operation").asText()).isEqualTo("remove-cluster-target");
+                    assertThat(step.path("prerequisite").asText()).isEqualTo(GERMAN + ":" + GERMAN_CLUSTER);
+                    assertThat(replay.remove(GERMAN_CLUSTER)).isTrue();
+                }
+            }
+            assertThat(rawRequires(registeredGoal(goalsByOwner, source).path("requires"), source))
+                    .as("exact ordered 2-to-11 German raw rewrite").containsExactlyElementsOf(replay);
+            assertThat(replay).hasSize(11).doesNotContain(GERMAN_CLUSTER);
+            // Inventory every canonical owner, including qualified references.
+            // With no incoming raw edge the source is the only possible changed
+            // pre-expansion closure; all other closure assertions stay strict.
+            List<String> incoming = new ArrayList<>();
+            goalsByOwner.forEach((owner, goals) -> goals.forEach((id, goal) -> {
+                if (!goal.has("requires")) return;
+                for (String prerequisite : rawRequires(goal.path("requires"), owner + ":" + id)) {
+                    if (GERMAN_ATOM.equals(prerequisite) || prerequisite.endsWith(":" + GERMAN_ATOM)) incoming.add(owner + ":" + id);
+                }
+            }));
+            assertThat(incoming).as("all 21 canonical owners: exact incoming raw prerequisite inventory of German source").isEmpty();
+            clusterTargetSourceIds.add(GERMAN_ATOM);
+            originals.add(original);
+        }
         Map<Path, List<ChangedSource>> changesByFile = new LinkedHashMap<>();
         Map<String, ChangedSource> changedSources = new LinkedHashMap<>();
         for (JsonNode original : originals) {
@@ -1016,12 +1182,12 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(changedSources.values().stream().filter(changed -> historicalSourceIds.contains(changed.goalId()))
                 .filter(changed -> !changed.atomicSource()).count())
                 .as("all thirteen registered covered-cluster sources").isEqualTo(13);
-        assertThat(changedSources.keySet().stream().filter(id -> !tailSourceIds.contains(id)).count())
+        assertThat(changedSources.keySet().stream().filter(id -> !tailSourceIds.contains(id) && !clusterTargetSourceIds.contains(id)).count())
                 .as("historical plus V3 prefix source count stays separate").isEqualTo(ordered ? 229 : 200);
-        assertThat(changedSources.values().stream().filter(changed -> !tailSourceIds.contains(changed.goalId()))
+        assertThat(changedSources.values().stream().filter(changed -> !tailSourceIds.contains(changed.goalId()) && !clusterTargetSourceIds.contains(changed.goalId()))
                 .filter(ChangedSource::atomicSource).count()).as("historical plus V3 prefix atomic count stays separate").isEqualTo(ordered ? 214 : 187);
-        assertThat(changedSources).hasSize(continued ? 719 : ordered ? 229 : 200);
-        assertThat(changedSources.values().stream().filter(ChangedSource::atomicSource).count()).isEqualTo(continued ? 704 : ordered ? 214 : 187);
+        assertThat(changedSources).hasSize(clusterTargetNormalization ? 720 : continued ? 719 : ordered ? 229 : 200);
+        assertThat(changedSources.values().stream().filter(ChangedSource::atomicSource).count()).isEqualTo(clusterTargetNormalization ? 705 : continued ? 704 : ordered ? 214 : 187);
         assertThat(changedSources.values().stream().filter(changed -> !changed.atomicSource()).count()).isEqualTo(ordered ? 15 : 13);
 
         Map<Path, List<ChangedSource>> immutableChanges = new LinkedHashMap<>();
@@ -1030,6 +1196,7 @@ class FirstMathPrerequisiteReductionTest {
                 Collections.unmodifiableMap(immutableChanges), Collections.unmodifiableMap(changedSources),
                 List.copyOf(clusterWitnessCoverage), Collections.unmodifiableMap(documentDigests),
                 Set.copyOf(historicalSourceIds), Set.copyOf(suffixSourceIds), Set.copyOf(tailSourceIds),
+                Set.copyOf(clusterTargetSourceIds),
                 Collections.unmodifiableMap(tailRemovedPrerequisites));
         for (var entry : canonicalOwners.entrySet()) {
             reconstructRawDocument(entry.getKey(), MAPPER.readTree(entry.getKey().toFile()), entry.getValue(),
@@ -1038,7 +1205,7 @@ class FirstMathPrerequisiteReductionTest {
         return result;
     }
 
-    private static void assertHistoricalBindings(JsonNode registry, boolean ordered, boolean continued) {
+    private static void assertHistoricalBindings(JsonNode registry, boolean ordered, boolean continued, boolean clusterTargetNormalization) {
         assertRawDocumentDigest(registry.path("originalRequires"),
                 "sha256:b731e23f6ef9e142d4efb7b95c844f8bed84f11e71c462fa21e40d9b2dc6583c", "historical 200 arrays");
         assertRawDocumentDigest(registry.path("removals"),
@@ -1051,8 +1218,19 @@ class FirstMathPrerequisiteReductionTest {
         assertRawDocumentDigest(baselines,
                 "sha256:356ffe9a535fb4b35734c7c1bee0c5e9258feab163ea6dec83c4260d793d1471", "historical 21 baseline bindings");
         ObjectNode historical = registry.deepCopy();
+        if (clusterTargetNormalization) {
+            JsonNode checkpoint = historical.path("v4Checkpoint");
+            assertThat(checkpoint.size()).isEqualTo(2);
+            assertThat(checkpoint.path("registryDigest").asText())
+                    .isEqualTo("sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803");
+            restoreCheckpointDocumentDigests(historical, checkpoint);
+            historical.remove(List.of("v4Checkpoint", "clusterTargetOriginalRequires", "clusterTargetSuffix"));
+            historical.put("proofContract", V4);
+            assertRawDocumentDigest(historical,
+                    "sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803", "complete historical V4 checkpoint");
+        }
         if (continued) {
-            JsonNode checkpoint = registry.path("v3Checkpoint");
+            JsonNode checkpoint = historical.path("v3Checkpoint");
             assertThat(checkpoint.path("registryDigest").asText())
                     .isEqualTo("sha256:55bbd974c3265cd3802b7bf5d8622beeb2d3d5ac4795d4e0dfdb27b63302f06b");
             restoreCheckpointDocumentDigests(historical, checkpoint);
@@ -1286,6 +1464,143 @@ class FirstMathPrerequisiteReductionTest {
 
     private record AtomicFrontierCase(String name, Map<String, Double> mastery, Set<String> focus,
             boolean strict, Boolean expected) { }
+
+    private static Map<String, JsonNode> nativeGermanApplicability(NativeFixture fixture) {
+        Map<String, JsonNode> result = new TreeMap<>();
+        for (var landscape : fixture.landscapes.getClosure(ROOT)) {
+            if (!GERMAN.equals(landscape.getLandscapeId())) continue;
+            for (var goal : landscape.getGoals()) result.put(goal.getId(), MAPPER.valueToTree(goal).path("applicability"));
+        }
+        assertThat(result).as("native German LandscapeService applicability").isNotEmpty();
+        return result;
+    }
+
+    private static Map<String, JsonNode> projectedApplicability(NativeScope scope) {
+        Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(scope.projection(), "visibleGoals");
+        Map<String, JsonNode> result = new TreeMap<>();
+        visible.forEach((id, goal) -> result.put(id, MAPPER.valueToTree(goal).path("applicability")));
+        return result;
+    }
+
+    private static void assertGermanRawGoalNormalization(CompletionProfileCompiler.PrerequisiteTopology before,
+            CompletionProfileCompiler.PrerequisiteTopology after, String scope) {
+        assertThat(before.transitiveGoalPrerequisites(GERMAN_ATOM))
+                .as("exact original German pre-expansion demand: %s", scope).containsExactlyInAnyOrder(GERMAN_CLUSTER, GERMAN_OTHER);
+        Set<String> normalizedRoles = new TreeSet<>(GERMAN_LEAVES);
+        normalizedRoles.add(GERMAN_OTHER);
+        normalizedRoles.add(GERMAN_LEAF_PREREQUISITE);
+        assertThat(after.transitiveGoalPrerequisites(GERMAN_ATOM))
+                .as("exact normalized German pre-expansion demand: %s", scope)
+                .hasSize(12).containsExactlyInAnyOrderElementsOf(normalizedRoles).doesNotContain(GERMAN_CLUSTER);
+        assertThat(before.transitivePrerequisites(GERMAN_ATOM)).as("original complete German atomic demand: %s", scope).hasSize(20);
+        assertThat(after.transitivePrerequisites(GERMAN_ATOM)).as("normalized complete German atomic demand: %s", scope)
+                .isEqualTo(before.transitivePrerequisites(GERMAN_ATOM));
+    }
+
+    private static void assertGermanActualCompletionAndPolicyPreserved(LearnerService beforeService, NativeScope before,
+            LearnerService afterService, NativeScope after, DocumentDigests digests, String scope) {
+        assertThat(before.graph().get(GERMAN_ATOM).getRequires()).containsExactly(GERMAN_CLUSTER, GERMAN_OTHER);
+        List<String> current = new ArrayList<>(List.of(GERMAN_OTHER));
+        current.addAll(GERMAN_LEAVES);
+        assertThat(after.graph().get(GERMAN_ATOM).getRequires()).containsExactlyElementsOf(current);
+        for (NativeScope actual : List.of(before, after)) {
+            assertThat(actual.graph().get(GERMAN_ATOM).getType()).isEqualTo("atomic");
+            assertThat(actual.graph().get(GERMAN_ATOM).getContains()).isEmpty();
+            assertThat(actual.roles().atomicTargets()).contains(GERMAN_ATOM, GERMAN_LEAF);
+            assertThat(actual.topology().transitivePrerequisites(GERMAN_ATOM)).contains(GERMAN_LEAF);
+        }
+        Map<String, Double> all = new TreeMap<>();
+        before.graph().keySet().forEach(id -> all.put(id, 1.0));
+        Map<String, Double> prepared = new TreeMap<>(all);
+        prepared.remove(GERMAN_ATOM);
+        Map<String, Double> leafOpen = new TreeMap<>(prepared);
+        leafOpen.remove(GERMAN_LEAF);
+        leafOpen.remove(GERMAN_CLUSTER);
+        Map<String, Double> clusterMastered = new TreeMap<>(leafOpen);
+        clusterMastered.put(GERMAN_CLUSTER, 1.0);
+        Map<String, Map<String, Double>> cases = new LinkedHashMap<>();
+        cases.put("all-open", Map.of());
+        cases.put("all-closed", all);
+        cases.put("prepared-source-open", prepared);
+        cases.put("one-leaf-open-source-open", leafOpen);
+        cases.put("cluster-mastered-leaf-open-source-open", clusterMastered);
+        Set<String> focus = new TreeSet<>(before.roles().targets());
+        assertThat(focus.remove(GERMAN_LEAF)).as("required actual target leaf is removed from focus: %s", scope).isTrue();
+        assertThat(focus).contains(GERMAN_ATOM).doesNotContain(GERMAN_LEAF);
+
+        // Independent native completion caches carry the pinned raw frame hashes.
+        // Restore the existing fixture applications after this bounded matrix.
+        Object previousBefore = ReflectionTestUtils.getField(beforeService, "completionApplicationService");
+        Object previousAfter = ReflectionTestUtils.getField(afterService, "completionApplicationService");
+        var beforeApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(), digests.original(), true));
+        var afterApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(), digests.current(), true));
+        ReflectionTestUtils.setField(beforeService, "completionApplicationService", beforeApplication);
+        ReflectionTestUtils.setField(afterService, "completionApplicationService", afterApplication);
+        try {
+            CompiledCompletionProfile original = ReflectionTestUtils.invokeMethod(beforeService, "compileCompletionScope",
+                    before.learner(), "automatic:personal-curriculum", before.projection(), before.graph());
+            CompiledCompletionProfile normalized = ReflectionTestUtils.invokeMethod(afterService, "compileCompletionScope",
+                    after.learner(), "automatic:personal-curriculum", after.projection(), after.graph());
+            for (var entry : cases.entrySet()) {
+                String name = entry.getKey();
+                CompletionEvaluation left = beforeApplication.evaluate(original, entry.getValue());
+                CompletionEvaluation right = afterApplication.evaluate(normalized, entry.getValue());
+                assertThat(right).as("complete actual German evaluation %s: %s", name, scope).isEqualTo(left);
+                assertThat(left.complete()).as("actual German completion control %s: %s", name, scope).isEqualTo("all-closed".equals(name));
+                if (!"all-closed".equals(name)) assertThat(entry.getValue().getOrDefault(GERMAN_ATOM, 0.0)).isZero();
+                for (boolean strict : List.of(false, true)) for (boolean focused : List.of(false, true)) {
+                    boolean expected = switch (name) {
+                        case "all-closed", "prepared-source-open" -> true;
+                        case "one-leaf-open-source-open", "cluster-mastered-leaf-open-source-open" -> focused && !strict;
+                        default -> false;
+                    };
+                    var probe = new AtomicFrontierCase(name, entry.getValue(), focused ? focus : null, strict, expected);
+                    boolean leftPolicy = atomicFrontierProbe(beforeService, before, GERMAN_ATOM, probe);
+                    boolean rightPolicy = atomicFrontierProbe(afterService, after, GERMAN_ATOM, probe);
+                    assertThat(leftPolicy).as("actual German common-policy control %s strict=%s leafOutsideFocus=%s: %s",
+                            name, strict, focused, scope).isEqualTo(expected);
+                    assertThat(rightPolicy).as("actual German common-policy preservation %s strict=%s leafOutsideFocus=%s: %s",
+                            name, strict, focused, scope).isEqualTo(leftPolicy);
+                }
+            }
+            Map<String, Double> sourceMasteredLeafOpen = new TreeMap<>(all);
+            sourceMasteredLeafOpen.put(GERMAN_ATOM, 1.0);
+            sourceMasteredLeafOpen.put(GERMAN_LEAF, 0.0);
+            assertThat(sourceMasteredLeafOpen.get(GERMAN_ATOM)).isEqualTo(1.0);
+            assertThat(sourceMasteredLeafOpen.get(GERMAN_LEAF)).isZero();
+            assertThat(afterApplication.evaluate(normalized, sourceMasteredLeafOpen))
+                    .as("full completion with explicit assessment mastery and an open prerequisite: %s", scope)
+                    .isEqualTo(beforeApplication.evaluate(original, sourceMasteredLeafOpen));
+            Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(beforeService, "computeEffectiveMastery", before.graph(), sourceMasteredLeafOpen);
+            Map<String, Double> normalizedEffective = ReflectionTestUtils.invokeMethod(afterService, "computeEffectiveMastery", after.graph(), sourceMasteredLeafOpen);
+            assertThat(normalizedEffective).as("native effective mastery with explicit assessment mastery and an open prerequisite: %s", scope)
+                    .isEqualTo(originalEffective);
+        } finally {
+            ReflectionTestUtils.setField(beforeService, "completionApplicationService", previousBefore);
+            ReflectionTestUtils.setField(afterService, "completionApplicationService", previousAfter);
+        }
+        System.out.printf("GERMAN_CLUSTER_TARGET_ACTUAL_SCOPE scope=%s preparedSourceOpenPositive=true requiredTargetLeafOutsideFocus=%s completionPairs=5 commonPolicyPairs=20 masteredSourceCompletionAndEffectiveMasteryPairs=1%n",
+                scope, GERMAN_LEAF);
+    }
+
+    private static void assertGermanControlledRoleDifferences(LearnerService beforeService, NativeScope before,
+            LearnerService afterService, NativeScope after) throws Exception {
+        for (NativeScope actual : List.of(before, after)) {
+            assertThat(Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(actual.projection(), "compositionViewApplied"))).isTrue();
+            assertThat(hasDeclaredRole(actual, GERMAN_CLUSTER)).isTrue();
+            for (String leaf : GERMAN_LEAVES) assertThat(hasDeclaredRole(actual, leaf)).isTrue();
+        }
+        // These deliberately altered role sets are separate from actual enrollment
+        // invariance. The pre-expansion role contract intentionally changes here.
+        assertThat(roleProbe(beforeService, before, withoutRole(before.projection(), GERMAN_LEAF), GERMAN_ATOM, before.topology()))
+                .as("artificial missing-leaf-role control before cluster expansion").isTrue();
+        assertThat(roleProbe(afterService, after, withoutRole(after.projection(), GERMAN_LEAF), GERMAN_ATOM, after.topology()))
+                .as("artificial missing-leaf-role control after atomic normalization").isFalse();
+        assertThat(roleProbe(beforeService, before, withoutRole(before.projection(), GERMAN_CLUSTER), GERMAN_ATOM, before.topology()))
+                .as("artificial missing-cluster-role control before normalization").isFalse();
+        assertThat(roleProbe(afterService, after, withoutRole(after.projection(), GERMAN_CLUSTER), GERMAN_ATOM, after.topology()))
+                .as("artificial missing-cluster-role control with every leaf role retained").isTrue();
+    }
 
     private static void assertContinuedMathFocusPreserved(LearnerService beforeService, NativeScope before,
             LearnerService afterService, NativeScope after, String scope) {

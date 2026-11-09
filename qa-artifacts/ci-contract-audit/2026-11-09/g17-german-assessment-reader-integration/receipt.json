@@ -1,0 +1,188 @@
+{
+  "latestStatus": "passed",
+  "observedAt": "2026-11-09T02:41:58.193033+00:00",
+  "integrationHead": "68db5bf499552bfc6c919d8f58439740e311e8a1",
+  "integrationTree": "e85c98e6643d0265e6c27c80c7be895bc574af39",
+  "parents": [
+    "620c34885ace7d6c32d69a6e959c62271c3a03cb",
+    "200d21f9ff73de211dae2ec1e306875ac7592028"
+  ],
+  "scope": "Actual four existing reader CLIs under unchanged German V5 data/proof and unchanged parent assessment-reader repair",
+  "freshInputFrame": {
+    "files": 130,
+    "unchangedBeforeAfterBothRunners": true,
+    "sourceFreeze": {
+      "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/source-freeze.json",
+      "sha256": "c5898de77ef6f9a921e36ccb55fd06f9f7e42df6cf363af14879078c7b85e076"
+    },
+    "parentProtected125": {
+      "exactIntentionalGermanV5Differences": [
+        {
+          "path": "app/scripts/prerequisiteReductionProof.ts",
+          "parent200dSha256": "cf5f36bc40d8d05f96bf929cf52e9ed5dc7dedfdbb190b891df20dbd18965195",
+          "germanMergeSha256": "4bc3427b600366806f6f21ffd70755aed894cd51facac8b1686ab39196b30444"
+        },
+        {
+          "path": "app/scripts/testPrerequisiteReductionProof.ts",
+          "parent200dSha256": "9a72c7de3f87e5fded1f42271791a149add0ddc83b4ae47dd4e46477dd6894cc",
+          "germanMergeSha256": "ef47924522888bda60685e4a179fb665048f1759983f6f2ef78cda1ccde20cd8"
+        },
+        {
+          "path": "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java",
+          "parent200dSha256": "903b9ceb92333baa4203f2d2c0073978979f96391645ba3cba643b19690dd522",
+          "germanMergeSha256": "f678d493ff1a04dd0a6a35a51620ee1fe17895fd722d0e428cccbd574a20e41d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+          "parent200dSha256": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+          "germanMergeSha256": "99088a0ffefbdbc9fdbd58d509b6e84cd41854d29a24ede0f6a0fba44442a1ab"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+          "parent200dSha256": "94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394",
+          "germanMergeSha256": "7a87f30c8bd54d43ce491ad05820990587d95e2db67023c48a39dab1c92e238d"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.json",
+          "parent200dSha256": "dbe40c7a3a667038586c8332985a7f42bffce851d58a1cc05727cef67d4f9b19",
+          "germanMergeSha256": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1"
+        },
+        {
+          "path": "docs/qa-ci/status/curriculum-quality-status.md",
+          "parent200dSha256": "49484c1b3f58bbeab1d952ab214671ac466ef30f1b8b79a7899ea0201f78642d",
+          "germanMergeSha256": "3c82e9562343a26b00f0f067c01f36d6c4bce5ad9cdb2c8c13e9a821fcb1da75"
+        },
+        {
+          "path": "scripts/prerequisite_reduction_semantic_kind.py",
+          "parent200dSha256": "79c5541f5a8705a3b5991b312d8e2eac60211c9a1e6f9699e1d24a9fa5342e71",
+          "germanMergeSha256": "0366e6604399cba357e36d3465500d1173613843be5714304ccdaee39b695cad"
+        },
+        {
+          "path": "scripts/test_prerequisite_reduction_semantic_kind.py",
+          "parent200dSha256": "d034cc81c9fb8fcc170421baeb865f4584f2f6b6365e868b43361d2c4c9e0edb",
+          "germanMergeSha256": "e3b81c0df73d27e603936b73e546385d633c60df6f8005ac9ca32407b4407061"
+        }
+      ],
+      "byteUnchangedParentPaths": 116,
+      "allDifferencesDeclared": true
+    },
+    "parent130": {
+      "intentionalDifferences": 9,
+      "byteUnchangedPaths": 121
+    },
+    "fiveReaderSourcesIdenticalTo200d": {
+      "app/scripts/testMathQ25CentralDilationScope.ts": "bff565460f6eb6637d2a1f7f82ac0da4178297b836f4041d1e846257f8654dcf",
+      "app/scripts/testMathQ2M7AssessmentProjection.ts": "0e7ebcfabdd3735215fc67b96255b7a33cab6075033c0e406776cd26d66c474d",
+      "app/scripts/testMathQ4CatererExamScope.ts": "2a3eb5cfe80d0eb96f42168468dd9b75eeb12341bea6a4089a692c7de65419cd",
+      "app/scripts/testHessenMathQ21Scope.ts": "f67dc60ed8b5128d5960426acf0e86c69cb0afb2964d9aa25a2b56fa9aa6ca6a",
+      "app/scripts/testCompositionProjectionRoles.ts": "a566cdf67ac42306d63b5dbb2929fb152d02aa6eca97941ce66ae324ab5ab234"
+    },
+    "german11SourceAndEvidenceFilesIdenticalToComponent": true
+  },
+  "freshCliChecks": {
+    "commands": [
+      {
+        "name": "q25",
+        "command": [
+          "npm",
+          "run",
+          "test:math-q25-central-dilation-scope"
+        ],
+        "startedAt": "2026-11-09T02:34:37.200167+00:00",
+        "finishedAt": "2026-11-09T02:36:34.057584+00:00",
+        "exitCode": 0,
+        "logSha256": "5523c4517c95d15c6123c60902ee3ded36cf28b0c5dd936f200f4482303e5518"
+      },
+      {
+        "name": "q2-m7",
+        "command": [
+          "npm",
+          "run",
+          "test:math-q2-m7-assessment-projection"
+        ],
+        "startedAt": "2026-11-09T02:36:34.057804+00:00",
+        "finishedAt": "2026-11-09T02:38:53.516848+00:00",
+        "exitCode": 0,
+        "logSha256": "f4ce7fbea8e5c31943cc1d03ce87d6c7aee52b0e178be35c9faa176ea59ba9ac"
+      },
+      {
+        "name": "caterer",
+        "command": [
+          "npm",
+          "run",
+          "test:math-q4-caterer-exam-scope"
+        ],
+        "startedAt": "2026-11-09T02:34:37.185538+00:00",
+        "finishedAt": "2026-11-09T02:36:18.962873+00:00",
+        "exitCode": 0,
+        "logSha256": "482ac3da201b09ed9326342856552df613b91d4b9e0c38d907c1d0aaf6861d66"
+      },
+      {
+        "name": "composition-roles",
+        "command": [
+          "npm",
+          "run",
+          "test:composition-projection-roles"
+        ],
+        "startedAt": "2026-11-09T02:36:18.964110+00:00",
+        "finishedAt": "2026-11-09T02:38:23.991238+00:00",
+        "exitCode": 0,
+        "logSha256": "1e4621a194f8fc6f8946c009e5e647280a09479c2e13379fc30aa4bbca226295"
+      }
+    ],
+    "results": {
+      "q25-q2": {
+        "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/q25-q2-result.json",
+        "sha256": "0f2d2fd9458d04e159cc9ef694711ff9ffe9199782c73f49bb73c4111e0d1868"
+      },
+      "caterer-q21": {
+        "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/caterer-q21-result.json",
+        "sha256": "988a9ca3a92f7d6479a11e8a986555a740a27afd17cc6df96a7d44c7028aab0e"
+      }
+    },
+    "allFourPassed": true
+  },
+  "retainedComponentEvidence": {
+    "bindingCheck": {
+      "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/component-bindings-before-tests.json",
+      "sha256": "430f802091cd9d67e89008feb95dbeb5e594cc71f74e475288cd749f05983241"
+    },
+    "mergeReceipt": {
+      "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/merge-commit-receipt.json",
+      "sha256": "f74bd653f55c98009e5f61c7725a99563c30fc6abbbbac9a1a7725e0abcae2dc"
+    },
+    "germanReceipt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-09/g17-german-first-cluster-prerequisite/receipt.json",
+      "sha256": "5fc18127974bd3c467475ff71fe9ea5ad8ba89e8f61c634075fb5dd67e075bfe"
+    },
+    "parentReaderReceipt": {
+      "path": "qa-artifacts/ci-contract-audit/2026-11-09/g17-math-assessment-reader-bindings/receipt.json",
+      "sha256": "0ad594d6de9f295e982eaf70af20dc6be14899455c0f27e1dc9007b38f00d57c"
+    },
+    "unchangedDeclaredOriginalMaps": {
+      "actualPythonCaller": 35,
+      "fullPythonModule": 8,
+      "standardCqrAndTenFloors": 32,
+      "packageConformance": 43
+    },
+    "oldNativeAndProjection": "Historical source-bound executions retained. Not rerun, relabeled as merge executions, or blindly rebound. Their only earlier runtime overlap was the separately tested Outlook helper; the reader repair changes test scripts only.",
+    "priorIntegrationChecks": "Existing bound component/integration records remain immutable; this receipt claims only the four new CLI executions."
+  },
+  "claims": {
+    "newSourceOrCurriculumChanges": false,
+    "oldNoteOrReceiptChanges": false,
+    "newReviewOrFingerprintPin": false,
+    "newSemanticsOrEconDecision": false,
+    "newNativeProjectionFullSuiteCqrOrPackageRun": false,
+    "allParent125HashesFalselyClaimedIdentical": false,
+    "remoteCiAcceptedForGermanMerge": false,
+    "overallG17Complete": false,
+    "gitWritesOrRemoteActionsByImplementationAgent": false
+  },
+  "independentResultVerification": {
+    "path": "app/node_modules/.tmp/g17-german-reader-integration-20261109/root-reader-result-verification.json",
+    "sha256": "45e46573d58e09bfd29798cb41e731ecbf3da19bacf6ded8ded7c8f69b0bb994",
+    "both130FramesAllCurrent": true,
+    "allFiveReadersEqualParent": true
+  }
+}

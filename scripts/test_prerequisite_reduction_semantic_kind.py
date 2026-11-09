@@ -18,6 +18,7 @@ import prerequisite_reduction_semantic_kind as bridge
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
+GERMAN_SOURCE = "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json"
 PROFILE = ROOT / "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json"
 Q = "bf17cada-3ccd-5d9a-b9e3-42065cfdbb01"
 CURRENT = "sha256:" + "a" * 64
@@ -26,7 +27,7 @@ BASELINE = "sha256:" + "b" * 64
 
 class SemanticKindReductionTest(unittest.TestCase):
     def setUp(self) -> None:
-        scratch = ROOT / "app/node_modules/.tmp/g17-math-transitive-reduction-20261108"
+        scratch = ROOT / "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/python"
         scratch.mkdir(parents=True, exist_ok=True)
         self.temporary = tempfile.TemporaryDirectory(prefix="semantic-kind-bridge-", dir=scratch)
         self.addCleanup(self.temporary.cleanup)
@@ -141,6 +142,89 @@ class SemanticKindReductionTest(unittest.TestCase):
         before, _, _, ordered = self.ordered_fixture(continued=True, non_atomic=non_atomic)
         checkpoint, registry = self.continue_registry(ordered)
         return before, checkpoint, ordered, registry
+
+    def cluster_target_fixture(self, *, existing_leaves=False, omit_types=False, changed_applicability=False):
+        self.source = self.root / SOURCE
+        _, _, ordered, parent = self.continued_fixture()
+        before = {"landscapeId": "german", "goals": [
+            {"id": "z", "type": "atomic", "contains": [], "requires": ["c", "keep"]},
+            {"id": "c", "type": "cluster", "contains": ["h", "v"], "requires": []},
+            {"id": "h", "type": "cluster", "contains": ["u"], "requires": []},
+            {"id": "u", "type": "atomic", "contains": [], "requires": []},
+            {"id": "v", "type": "atomic", "contains": [], "requires": []},
+            {"id": "keep", "type": "atomic", "contains": [], "requires": []},
+        ]}
+        if existing_leaves:
+            before["goals"][0]["requires"].extend(["u", "v"])
+        if omit_types:
+            for goal in before["goals"]:
+                del goal["type"]
+        if changed_applicability:
+            before["goals"][0].update(tags=["Assessment"], extendedData={"applicabilityFromRequires": True})
+            # Before the cut, c contributes the union {BY, HE}; afterwards
+            # all leaf requirements are intersected, so z loses HE.
+            for goal in before["goals"][1:]:
+                goal["extendedData"] = {"applicabilityOverrides": {
+                    "jurisdiction": ["DE-BY" if goal["id"] == "u" else "DE-HE"]}}
+
+        binding = {"path": GERMAN_SOURCE, "landscapeId": "german",
+                   "baselineDocumentDigest": bridge.digest(compiler.canonical_json_bytes(before)),
+                   "currentDocumentDigest": bridge.digest(compiler.canonical_json_bytes(before))}
+        # Keep the separate atomic Math scope and all of its certified operations.
+        # Bind the unchanged German document through every historical checkpoint.
+        history = {key: copy.deepcopy(ordered[key]) for key in (
+            "schemaVersion", "proofContract", "auditScope", "catalogSources", "originalRequires", "removals")}
+        history["proofContract"] = bridge.CLUSTER_PROOF_CONTRACT
+        history["catalogSources"][0]["currentDocumentDigest"] = (
+            ordered["v2Checkpoint"]["currentDocumentDigests"][0]["currentDocumentDigest"])
+        history["catalogSources"].append(copy.deepcopy(binding))
+        ordered["catalogSources"].append(copy.deepcopy(binding))
+        ordered["v2Checkpoint"] = {
+            "registryDigest": bridge.digest(compiler.canonical_json_bytes(history)),
+            "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+                                       for row in history["catalogSources"]],
+        }
+        parent["catalogSources"].append(copy.deepcopy(binding))
+        parent["v2Checkpoint"] = copy.deepcopy(ordered["v2Checkpoint"])
+        parent["v3Checkpoint"] = {
+            "registryDigest": bridge.digest(compiler.canonical_json_bytes(ordered)),
+            "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+                                       for row in ordered["catalogSources"]],
+        }
+        registry = {**copy.deepcopy(parent), "proofContract": bridge.CLUSTER_TARGET_PROOF_CONTRACT,
+            "v4Checkpoint": {
+                "registryDigest": bridge.digest(compiler.canonical_json_bytes(parent)),
+                "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+                                           for row in parent["catalogSources"]],
+            },
+            "clusterTargetOriginalRequires": [{"source": "german:z", "requires": copy.deepcopy(before["goals"][0]["requires"])}],
+            "clusterTargetSuffix": ([] if existing_leaves else [
+                {"operation": "materialize-atomic", "source": "german:z", "prerequisite": f"german:{leaf}",
+                 "origin": {"source": "german:z", "prerequisite": "c", "sourceContainsPath": ["german:z"],
+                            "prerequisiteContainsPath": path}}
+                for leaf, path in (("u", ["german:c", "german:h", "german:u"]),
+                                   ("v", ["german:c", "german:v"]))
+            ]) + [{"operation": "remove-cluster-target", "source": "german:z", "prerequisite": "german:c"}],
+        }
+        self.source = self.root / GERMAN_SOURCE
+        self.document = copy.deepcopy(before)
+        self.document["goals"][0]["requires"] = ["keep", "u", "v"]
+        self.save_cluster_target_fixture(registry)
+        return before, parent, registry
+
+    def save_cluster_target_fixture(self, registry):
+        binding = next(row for row in registry["catalogSources"] if row["path"] == GERMAN_SOURCE)
+        binding["currentDocumentDigest"] = bridge.digest(compiler.canonical_json_bytes(self.document))
+        self.source.write_text(json.dumps(self.document))
+        self.registry.write_text(json.dumps(registry))
+        self.fingerprints = self.fingerprint_document(self.document)
+
+    def rebind_cluster_target_parent(self, registry, parent):
+        registry["v4Checkpoint"] = {
+            "registryDigest": bridge.digest(compiler.canonical_json_bytes(parent)),
+            "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+                                       for row in parent["catalogSources"]],
+        }
 
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
@@ -425,6 +509,121 @@ class SemanticKindReductionTest(unittest.TestCase):
         with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "witness edge.*deleted"):
             self.load()
 
+    def test_cluster_target_contract_uses_real_node_and_exact_native_baseline_fingerprints(self):
+        for options in ({}, {"omit_types": True}, {"existing_leaves": True}):
+            with self.subTest(options=options):
+                before, parent, registry = self.cluster_target_fixture(**options)
+                baseline = self.fingerprint_document(before)
+                verified = self.load()
+                self.assertIsNotNone(verified)
+                self.assertEqual(verified.provenance["proofContract"], bridge.CLUSTER_TARGET_PROOF_CONTRACT)
+                self.assertEqual(verified.provenance["affectedGoalIds"], [
+                    "fixture:a", "fixture:b", "fixture:k", "fixture:p", "fixture:q", "german:z"])
+                self.assertEqual(verified.baseline_fingerprints, baseline)
+                self.assertEqual({key for key in baseline if baseline[key] != self.fingerprints[key]}, {"z"})
+                self.assertEqual(verified.provenance["canonicalSource"]["path"], GERMAN_SOURCE)
+                self.assertEqual(registry["clusterTargetOriginalRequires"], [
+                    {"source": "german:z", "requires": before["goals"][0]["requires"]}])
+                self.assertEqual(registry["v4Checkpoint"]["registryDigest"],
+                                 bridge.digest(compiler.canonical_json_bytes(parent)))
+                for field in ("originalRequires", "removals", "v2Checkpoint", "suffixOriginalRequires", "suffix",
+                              "v3Checkpoint", "tailOriginalRequires", "atomicRemovals", "witnessContinuations"):
+                    self.assertEqual(registry[field], parent[field], field)
+
+    def test_cluster_target_contract_rejects_bad_checkpoints_snapshots_paths_leaves_and_cuts(self):
+        cases = {
+            "unknown-contract": "invalid registry fields|unsupported registry contract",
+            "missing-checkpoint": "invalid cluster-target registry fields",
+            "bad-checkpoint": "historical V4 registry digest differs",
+            "bad-checkpoint-document": "current document digest differs",
+            "duplicate-checkpoint-path": "V4 checkpoint paths",
+            "missing-original": "exactly one original snapshot",
+            "extra-original": "exactly one original snapshot",
+            "reordered-original": "current document digest differs",
+            "null-original": "current document digest differs",
+            "bad-source-path": "materialization source or leaf differs",
+            "bad-target-path": "canonical contains path edge is not directly authored",
+            "changed-origin-literal": "original literal cluster origin",
+            "missing-leaf-add": "leaf coverage is incomplete or duplicated",
+            "duplicate-leaf-add": "leaf is already directly authored",
+            "fabricated-leaf-add": "materialization source or leaf differs",
+            "wrong-cut-target": "one unique authored cluster reference",
+            "missing-cut": "invalid cluster-target removal fields",
+            "early-cut": "invalid cluster-target removal fields",
+            "extra-cut": "materializations before its single final cut",
+            "undeclared-final-drift": "current document digest differs",
+            "reordered-final-requires": "cluster-target replay differs from the current catalog",
+        }
+        for name, message in cases.items():
+            with self.subTest(case=name):
+                _, parent, registry = self.cluster_target_fixture()
+                steps = registry["clusterTargetSuffix"]
+                if name == "unknown-contract":
+                    registry["proofContract"] = "atomic-cluster-target-normalization-v6"
+                elif name == "missing-checkpoint":
+                    del registry["v4Checkpoint"]
+                elif name == "bad-checkpoint":
+                    registry["v4Checkpoint"]["registryDigest"] = "sha256:" + "0" * 64
+                elif name == "bad-checkpoint-document":
+                    next(row for row in parent["catalogSources"] if row["path"] == GERMAN_SOURCE)[
+                        "currentDocumentDigest"] = "sha256:" + "0" * 64
+                    self.rebind_cluster_target_parent(registry, parent)
+                elif name == "duplicate-checkpoint-path":
+                    registry["v4Checkpoint"]["currentDocumentDigests"].append(
+                        copy.deepcopy(registry["v4Checkpoint"]["currentDocumentDigests"][0]))
+                elif name == "missing-original":
+                    registry["clusterTargetOriginalRequires"] = []
+                elif name == "extra-original":
+                    registry["clusterTargetOriginalRequires"].append({"source": "german:u", "requires": []})
+                elif name == "reordered-original":
+                    registry["clusterTargetOriginalRequires"][0]["requires"].reverse()
+                elif name == "null-original":
+                    registry["clusterTargetOriginalRequires"][0]["requires"] = None
+                elif name == "bad-source-path":
+                    steps[0]["origin"]["sourceContainsPath"] = ["german:c", "german:z"]
+                elif name == "bad-target-path":
+                    steps[0]["origin"]["prerequisiteContainsPath"] = ["german:c", "german:u"]
+                elif name == "changed-origin-literal":
+                    steps[0]["origin"]["prerequisite"] = "german:c"
+                elif name == "missing-leaf-add":
+                    del steps[1]
+                elif name == "duplicate-leaf-add":
+                    steps.insert(1, copy.deepcopy(steps[0]))
+                elif name == "fabricated-leaf-add":
+                    steps[0]["prerequisite"] = "german:keep"
+                    steps[0]["origin"]["prerequisiteContainsPath"] = ["german:c", "german:keep"]
+                elif name == "wrong-cut-target":
+                    steps[-1]["prerequisite"] = "german:h"
+                elif name == "missing-cut":
+                    steps.pop()
+                elif name == "early-cut":
+                    steps.insert(0, steps.pop())
+                elif name == "extra-cut":
+                    steps.append(copy.deepcopy(steps[-1]))
+                elif name == "reordered-final-requires":
+                    self.document["goals"][0]["requires"].reverse()
+                else:
+                    self.document["goals"][0]["examples"] = ["undeclared final field"]
+                self.save_cluster_target_fixture(registry)
+                with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, message):
+                    self.load()
+
+    def test_cluster_target_contract_verifies_invalid_v4_parent_before_suffix(self):
+        _, parent, registry = self.cluster_target_fixture()
+        parent["witnessContinuations"] = []
+        registry["witnessContinuations"] = []
+        self.rebind_cluster_target_parent(registry, parent)
+        # The invalid suffix must not mask or repair its invalid V4 parent.
+        registry["clusterTargetSuffix"][0]["origin"]["prerequisiteContainsPath"] = ["german:c", "german:u"]
+        self.save_cluster_target_fixture(registry)
+        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "missing witness continuation"):
+            self.load()
+
+    def test_cluster_target_contract_rejects_final_compiled_applicability_change(self):
+        self.cluster_target_fixture(changed_applicability=True)
+        with self.assertRaisesRegex(bridge.PrerequisiteReductionBindingError, "compiled applicability changed"):
+            self.load()
+
     def test_nonregular_registry_never_means_absent(self):
         self.registry.unlink()
         for kind in ("directory", "dangling-symlink", "file-symlink"):
@@ -463,6 +662,7 @@ class SemanticKindReductionTest(unittest.TestCase):
             "source-owner": at(["source", "landscapeId"], "other"),
             "registry-bytes": at(["proof", "registryDigest"], BASELINE),
             "unknown-proof-contract": at(["proof", "proofContract"], "effective-prerequisite-reduction-v2"),
+            "nearby-cluster-target-contract": at(["proof", "proofContract"], "atomic-cluster-target-normalization-v6"),
             "extra-proof-field": at(["proof", "atomicWitnesses"], []),
             "family": at(["comparisonFamily"], "other"),
             "current-fingerprint": at(["goals", 0, "currentFingerprint"], BASELINE),
@@ -489,6 +689,9 @@ class SemanticKindReductionTest(unittest.TestCase):
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
         self.receipt["proof"]["proofContract"] = bridge.CONTINUED_PROOF_CONTRACT
+        with patch.object(bridge.subprocess, "run", return_value=self.completed()):
+            self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
+        self.receipt["proof"]["proofContract"] = bridge.CLUSTER_TARGET_PROOF_CONTRACT
         with patch.object(bridge.subprocess, "run", return_value=self.completed()):
             self.assertEqual(self.load().baseline_fingerprints, {"q": BASELINE})
 

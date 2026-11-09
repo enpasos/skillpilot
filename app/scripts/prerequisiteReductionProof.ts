@@ -13,8 +13,10 @@ export const PREREQUISITE_REDUCTION_CONTRACT = 'direct-atomic-leaf-prerequisite-
 export const CLUSTER_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-descendant-covered-cluster-reduction-v2' as const
 export const ORDERED_PREREQUISITE_REDUCTION_CONTRACT = 'ordered-atomic-materialization-and-cluster-reduction-v3' as const
 export const CONTINUED_PREREQUISITE_REDUCTION_CONTRACT = 'continued-atomic-prerequisite-reduction-v4' as const
+export const CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-cluster-target-normalization-v5' as const
 type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
 type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
+  | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -64,8 +66,19 @@ export interface ContinuedPrerequisiteReductionRegistry extends Omit<OrderedPrer
   atomicRemovals: DirectPrerequisiteReduction[]
   witnessContinuations: Array<{ historicalRemovalIndex: number; edgeIndex: number; tailRemovalIndex: number }>
 }
+export type ClusterTargetPrerequisiteReduction = {
+  operation: 'remove-cluster-target'
+  source: string
+  prerequisite: string
+}
+export interface ClusterTargetPrerequisiteReductionRegistry extends Omit<ContinuedPrerequisiteReductionRegistry, 'proofContract'> {
+  proofContract: typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
+  v4Checkpoint: OrderedPrerequisiteReductionRegistry['v2Checkpoint']
+  clusterTargetOriginalRequires: OrderedPrerequisiteReductionRegistry['suffixOriginalRequires']
+  clusterTargetSuffix: Array<AtomicPrerequisiteMaterialization | ClusterTargetPrerequisiteReduction>
+}
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
-  | ContinuedPrerequisiteReductionRegistry
+  | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry
 type LoadedDocument = { file: string; path: string; document: Document }
 type VerifiedDocumentFrame = {
   currentDocuments: Document[]
@@ -112,6 +125,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return parseClusterTargetRegistry(value)
   if (object(value) && value.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return parseContinuedRegistry(value)
   if (object(value) && value.proofContract === ORDERED_PREREQUISITE_REDUCTION_CONTRACT) return parseOrderedRegistry(value)
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals'], 'registry')
@@ -221,6 +235,41 @@ function parseContinuedRegistry(value: Record<string, unknown>): ContinuedPrereq
       .every(index => Number.isSafeInteger(index) && Number(index) >= 0), 'invalid witness continuation indices')
   }
   return value as unknown as ContinuedPrerequisiteReductionRegistry
+}
+function parseClusterTargetRegistry(value: Record<string, unknown>): ClusterTargetPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'originalRequires', 'removals',
+    'v2Checkpoint', 'suffixOriginalRequires', 'suffix', 'v3Checkpoint', 'tailOriginalRequires', 'atomicRemovals',
+    'witnessContinuations', 'v4Checkpoint', 'clusterTargetOriginalRequires', 'clusterTargetSuffix'], 'cluster-target registry')
+  const { v4Checkpoint, clusterTargetOriginalRequires, clusterTargetSuffix, ...prefix } = value
+  parseContinuedRegistry({ ...prefix, proofContract: CONTINUED_PREREQUISITE_REDUCTION_CONTRACT })
+  fields(v4Checkpoint, ['registryDigest', 'currentDocumentDigests'], 'V4 checkpoint')
+  const digest = (item: unknown) => typeof item === 'string' && /^sha256:[0-9a-f]{64}$/u.test(item)
+  ensure(digest(v4Checkpoint.registryDigest) && Array.isArray(v4Checkpoint.currentDocumentDigests), 'invalid V4 checkpoint')
+  for (const entry of v4Checkpoint.currentDocumentDigests) {
+    fields(entry, ['path', 'currentDocumentDigest'], 'V4 checkpoint document')
+    ensure(nonempty(entry.path) && digest(entry.currentDocumentDigest), 'invalid V4 checkpoint document')
+  }
+  ensure(Array.isArray(clusterTargetOriginalRequires) && clusterTargetOriginalRequires.length === 1,
+    'cluster-target normalization requires exactly one original snapshot')
+  for (const entry of clusterTargetOriginalRequires) {
+    fields(entry, ['source', 'requires'], 'cluster-target original requires')
+    ensure(qualified(entry.source) && (entry.requires === null
+      || (Array.isArray(entry.requires) && entry.requires.every(nonempty))), 'invalid cluster-target original requires')
+  }
+  ensure(Array.isArray(clusterTargetSuffix) && clusterTargetSuffix.length > 0, 'empty cluster-target suffix')
+  const cut = clusterTargetSuffix.at(-1)
+  fields(cut, ['operation', 'source', 'prerequisite'], 'cluster-target removal')
+  ensure(cut.operation === 'remove-cluster-target' && qualified(cut.source) && qualified(cut.prerequisite),
+    'cluster-target suffix requires one final target cut')
+  const additions = clusterTargetSuffix.slice(0, -1)
+  ensure(additions.every(step => object(step) && step.operation === 'materialize-atomic'),
+    'cluster-target suffix permits materializations before its single final cut')
+  if (additions.length) parseOrderedRegistry({
+    schemaVersion: value.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: value.auditScope, catalogSources: value.catalogSources, originalRequires: value.originalRequires,
+    removals: value.removals, v2Checkpoint: value.v2Checkpoint, suffixOriginalRequires: [], suffix: additions,
+  })
+  return value as unknown as ClusterTargetPrerequisiteReductionRegistry
 }
 function catalogFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -361,6 +410,95 @@ function materializeAtomicPrerequisite(operation: AtomicPrerequisiteMaterializat
   requireContainsPath(origin.prerequisiteContainsPath, originPrerequisite, prerequisite, goals)
   const [landscapeId, goalId] = prerequisite.split(':')
   goal.requires = [...(goal.requires ?? []), landscapeId === source.split(':')[0] ? goalId : prerequisite]
+}
+// V5 uses structural canonical leaves. Historical V3/V4 type guards above
+// remain unchanged, including their interpretation of materialize-atomic.
+function requireCanonicalLeaf(key: string, goals: ReadonlyMap<string, RawGoal>) {
+  const goal = goals.get(key)
+  ensure(goal && (goal.contains === undefined || Array.isArray(goal.contains)) && !goal.contains?.length
+    && (goal.type === undefined || goal.type === 'atomic'), `expected a structural canonical leaf: ${key}`)
+}
+function canonicalClusterLeaves(root: string, goals: ReadonlyMap<string, RawGoal>): Set<string> {
+  const leaves = new Set<string>(), visited = new Set<string>(), visiting = new Set<string>()
+  const cluster = goals.get(root)
+  ensure(cluster && Array.isArray(cluster.contains) && cluster.contains.length > 0,
+    `cluster-target removal requires a nonempty canonical cluster: ${root}`)
+  const visit = (key: string) => {
+    ensure(!visiting.has(key), `contains cycle in cluster-target closure: ${key}`)
+    if (visited.has(key)) return
+    const goal = goals.get(key)
+    ensure(goal && (goal.contains === undefined || Array.isArray(goal.contains)), `invalid canonical contains: ${key}`)
+    if (!goal.contains?.length) {
+      requireCanonicalLeaf(key, goals)
+      leaves.add(key)
+    } else {
+      ensure(goal.type === undefined || goal.type === 'cluster', `inconsistent canonical cluster type: ${key}`)
+      visiting.add(key)
+      const children = new Set<string>()
+      for (const raw of goal.contains) {
+        ensure(nonempty(raw), `invalid canonical contains reference: ${key}`)
+        const child = resolveReference(raw, key, goals)
+        ensure(!children.has(child), `duplicate canonical contains reference: ${key} -> ${child}`)
+        children.add(child)
+        visit(child)
+      }
+      visiting.delete(key)
+    }
+    visited.add(key)
+  }
+  visit(root)
+  ensure(leaves.size > 0, `cluster-target closure has no canonical leaves: ${root}`)
+  return leaves
+}
+function requireCanonicalContainsPath(path: string[], source: string, target: string, goals: ReadonlyMap<string, RawGoal>) {
+  ensure(path[0] === source && path.at(-1) === target && new Set(path).size === path.length,
+    `canonical contains path endpoints differ or repeat: ${source} -> ${target}`)
+  for (let index = 0; index < path.length; index++) {
+    const key = path[index], goal = goals.get(key)
+    ensure(goal, `unknown canonical contains path reference: ${key}`)
+    if (index === path.length - 1) continue
+    ensure((goal.type === undefined || goal.type === 'cluster') && Array.isArray(goal.contains)
+      && goal.contains.some(raw => nonempty(raw) && resolveReference(raw, key, goals) === path[index + 1]),
+    `canonical contains path edge is not directly authored: ${key} -> ${path[index + 1]}`)
+  }
+}
+function requireUniqueClusterTarget(source: string, cluster: string, goals: ReadonlyMap<string, RawGoal>) {
+  const goal = goals.get(source)
+  requireCanonicalLeaf(source, goals)
+  ensure(goal && Array.isArray(goal.requires)
+    && goal.requires.filter(raw => resolveReference(raw, source, goals) === cluster).length === 1,
+  `cluster-target source requires one unique authored cluster reference: ${source} -> ${cluster}`)
+}
+function materializeClusterTargetLeaf(
+  operation: AtomicPrerequisiteMaterialization, cut: ClusterTargetPrerequisiteReduction,
+  leaves: ReadonlySet<string>, goals: ReadonlyMap<string, RawGoal>,
+) {
+  const { source, prerequisite, origin } = operation
+  ensure(source === cut.source && origin.source === source && leaves.has(prerequisite)
+    && stableJson(origin.sourceContainsPath) === stableJson([source]), 'cluster-target materialization source or leaf differs')
+  requireCanonicalLeaf(source, goals)
+  requireCanonicalLeaf(prerequisite, goals)
+  ensure(source !== prerequisite, `self cluster-target materialization: ${source}`)
+  requireUniqueClusterTarget(source, cut.prerequisite, goals)
+  const goal = goals.get(source)!
+  ensure(goal.requires!.includes(origin.prerequisite)
+    && resolveReference(origin.prerequisite, source, goals) === cut.prerequisite,
+  'cluster-target materialization requires the original literal cluster origin')
+  ensure(!goal.requires!.some(raw => resolveReference(raw, source, goals) === prerequisite),
+    `cluster-target leaf is already directly authored: ${prerequisite}`)
+  requireCanonicalContainsPath(origin.prerequisiteContainsPath, cut.prerequisite, prerequisite, goals)
+  const [owner, id] = prerequisite.split(':')
+  goal.requires = [...goal.requires!, owner === source.split(':')[0] ? id : prerequisite]
+}
+function requireDirectClusterTargetLeaves(source: string, leaves: ReadonlySet<string>, goals: ReadonlyMap<string, RawGoal>) {
+  requireCanonicalLeaf(source, goals)
+  const goal = goals.get(source)!
+  ensure(Array.isArray(goal.requires), `invalid cluster-target requires: ${source}`)
+  for (const leaf of leaves) {
+    requireCanonicalLeaf(leaf, goals)
+    ensure(goal.requires.filter(raw => resolveReference(raw, source, goals) === leaf).length === 1,
+      `cluster-target leaf coverage is incomplete or duplicated: ${source} -> ${leaf}`)
+  }
 }
 function requireEndWitnesses(
   operations: Array<DirectPrerequisiteReduction | ClusterPrerequisiteReduction>, goals: ReadonlyMap<string, RawGoal>,
@@ -579,6 +717,65 @@ async function verifyContinuedFrame(
     affectedSources: new Set([...parentFrame.affectedSources, ...tailSources]) }
 }
 
+async function verifyClusterTargetFrame(
+  registry: ClusterTargetPrerequisiteReductionRegistry, loaded: LoadedDocument[],
+): Promise<VerifiedDocumentFrame> {
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const { v4Checkpoint, clusterTargetOriginalRequires, clusterTargetSuffix, ...prefix } = registry
+  const checkpoints = new Map(v4Checkpoint.currentDocumentDigests.map(entry => [entry.path, entry.currentDocumentDigest]))
+  ensure(checkpoints.size === v4Checkpoint.currentDocumentDigests.length && checkpoints.size === registry.catalogSources.length,
+    'V4 checkpoint paths are missing, new, or duplicated')
+  const parent: ContinuedPrerequisiteReductionRegistry = {
+    ...prefix, proofContract: CONTINUED_PREREQUISITE_REDUCTION_CONTRACT,
+    catalogSources: registry.catalogSources.map(entry => {
+      const digest = checkpoints.get(entry.path)
+      ensure(digest, `V4 checkpoint source missing: ${entry.path}`)
+      return { ...entry, currentDocumentDigest: digest }
+    }),
+  }
+  ensure(fingerprintPrerequisiteReductionDocument(parent) === v4Checkpoint.registryDigest, 'historical V4 registry digest differs')
+  const cut = clusterTargetSuffix.at(-1) as ClusterTargetPrerequisiteReduction
+  const original = clusterTargetOriginalRequires[0]
+  ensure(original.source === cut.source, 'cluster-target original snapshot source differs')
+  const parentDocuments = structuredClone(currentDocuments), parentGoals = goalIndex(parentDocuments)
+  const source = parentGoals.get(original.source)
+  ensure(source, `unknown cluster-target original source: ${original.source}`)
+  if (original.requires === null) delete source.requires
+  else source.requires = structuredClone(original.requires)
+  // Verify every V4 operation, continuation, document and App binding before
+  // the new suffix can add an edge or remove its original cluster origin.
+  const parentFrame = await verifyDocumentFrame(parent, loaded.map((entry, index) => ({ ...entry, document: parentDocuments[index] })))
+  ensure(!parentFrame.affectedSources.has(cut.source), 'cluster-target source overlaps the certified prefix')
+  deepFreeze(parentFrame.baselineDocuments)
+  const replayDocuments = structuredClone(parentDocuments), replayGoals = goalIndex(replayDocuments)
+  const leaves = canonicalClusterLeaves(cut.prerequisite, replayGoals)
+  requireUniqueClusterTarget(cut.source, cut.prerequisite, replayGoals)
+  const roots = [cut.source.split(':')[0]]
+  auditTransitiveMinimality(replayDocuments as AuditLandscape[], roots)
+  for (const addition of clusterTargetSuffix.slice(0, -1)) {
+    materializeClusterTargetLeaf(addition as AtomicPrerequisiteMaterialization, cut, leaves, replayGoals)
+  }
+  requireUniqueClusterTarget(cut.source, cut.prerequisite, replayGoals)
+  requireDirectClusterTargetLeaves(cut.source, leaves, replayGoals)
+  const goal = replayGoals.get(cut.source)!, before = goal.requires!
+  goal.requires = before.filter(raw => resolveReference(raw, cut.source, replayGoals) !== cut.prerequisite)
+  ensure(goal.requires.length === before.length - 1, 'cluster-target cut did not remove exactly one authored reference')
+  requireDirectClusterTargetLeaves(cut.source, leaves, replayGoals)
+  auditTransitiveMinimality(replayDocuments as AuditLandscape[], roots)
+  // No historical witness receives a skip: all V4, V3 and continued V2
+  // positions remain literal under the already bound continuation.
+  parent.atomicRemovals.forEach(operation => requireDirectWitness(operation.witness, replayGoals))
+  requireContinuedHistory(parent, replayGoals)
+  requireEndWitnesses(parent.suffix.filter(step => step.operation === 'remove-cluster'), replayGoals)
+  ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
+    'cluster-target replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
+  ensure(parentFrame.baselineApplicability === await compileApplicability(currentDocuments, loaded),
+    'compiled applicability changed after cluster-target normalization')
+  return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
+    baselineApplicability: parentFrame.baselineApplicability,
+    affectedSources: new Set([...parentFrame.affectedSources, cut.source]) }
+}
+
 async function compileApplicability(documents: Document[], loaded: LoadedDocument[]): Promise<string> {
   const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
   return stableJson(buildApplicabilityCompilation(documents.map((document, index) => ({
@@ -591,6 +788,7 @@ async function compileApplicability(documents: Document[], loaded: LoadedDocumen
 async function verifyDocumentFrame(
   registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[],
 ): Promise<VerifiedDocumentFrame> {
+  if (registry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return verifyClusterTargetFrame(registry, loaded)
   if (registry.proofContract === CONTINUED_PREREQUISITE_REDUCTION_CONTRACT) return verifyContinuedFrame(registry, loaded)
   const currentDocuments = requireCurrentCatalog(registry, loaded)
   const declared = new Map(registry.catalogSources.map((entry) => [entry.path, entry]))

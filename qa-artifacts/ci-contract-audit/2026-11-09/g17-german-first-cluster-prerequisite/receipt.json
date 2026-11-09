@@ -1,0 +1,755 @@
+{
+  "proofContract": "atomic-cluster-target-normalization-v5",
+  "latestStatus": "passed",
+  "observedAt": "2026-11-09T00:29:11.240025+00:00",
+  "sourceFrozenHead": "1e17120c9e9720cac5fb2ca139fe4a5fa75f2bae",
+  "parentCommit": "4ffa18c26cb44bd7994c984e7cde758759f36881",
+  "scope": {
+    "source": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+    "cluster": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:53462f11-c368-51df-bb68-c36a83d761b1",
+    "beforeRequires": [
+      "53462f11-c368-51df-bb68-c36a83d761b1",
+      "bb3dee7b-d6d3-513b-8824-bdf6414e02df"
+    ],
+    "afterRequires": [
+      "bb3dee7b-d6d3-513b-8824-bdf6414e02df",
+      "001b6ae3-207a-400d-852d-2c4068df8d2f",
+      "17164008-3c30-4d22-8f2b-bf2e5a79f9de",
+      "2122b969-61e9-412f-9e97-8777c606d27a",
+      "263b9af0-c584-4364-a35f-6dfccd7aaf21",
+      "6904ca70-3f22-41eb-bc9c-9896bf7bb1e9",
+      "70f5f3c6-f0e9-4bd7-8095-a20be459975c",
+      "d4642285-5b73-4541-a088-6c1e77b37637",
+      "ead22176-e8f4-45b6-8a3d-e04661f3c3e4",
+      "f0c354f9-6f7a-494a-8f64-675bf1b42f5e",
+      "fb8f990d-224f-4277-92a1-13bee8f7f8a4"
+    ],
+    "materializations": 10,
+    "finalClusterTargetCuts": 1,
+    "canonicalClusterClosureNodes": 15,
+    "canonicalClusterLeaves": 10,
+    "globalIncomingRequiresToSource": 0,
+    "changedCanonicalDocuments": 1,
+    "affectedOriginalSnapshots": 720,
+    "newOriginalSnapshots": 1
+  },
+  "parentBinding": {
+    "canonicalRegistryDigest": "sha256:b43287aac991215610cf9a3fa01a766c17d9a3e4bc47eb4cc45d61573ddb9803",
+    "rawRegistrySha256": "94f65d3338c901f5160b2b9d123a692639b0a5f455eb33d23b7d1c3853ddf394",
+    "rawGermanSha256": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+    "baselineDocumentPins": 21,
+    "historicalRemovals": 204,
+    "historicalOriginalArrays": 200,
+    "v3Steps": 29,
+    "v3OriginalArrays": 29,
+    "v4AtomicCuts": 922,
+    "v4OriginalArrays": 490,
+    "v4WitnessContinuations": 1,
+    "allHistoricalFieldsPreserved": true
+  },
+  "finalSourceHashes": {
+    "app/scripts/prerequisiteReductionProof.ts": "4bc3427b600366806f6f21ffd70755aed894cd51facac8b1686ab39196b30444",
+    "app/scripts/testPrerequisiteReductionProof.ts": "ef47924522888bda60685e4a179fb665048f1759983f6f2ef78cda1ccde20cd8",
+    "scripts/prerequisite_reduction_semantic_kind.py": "0366e6604399cba357e36d3465500d1173613843be5714304ccdaee39b695cad",
+    "scripts/test_prerequisite_reduction_semantic_kind.py": "e3b81c0df73d27e603936b73e546385d633c60df6f8005ac9ca32407b4407061",
+    "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "f678d493ff1a04dd0a6a35a51620ee1fe17895fd722d0e428cccbd574a20e41d",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "99088a0ffefbdbc9fdbd58d509b6e84cd41854d29a24ede0f6a0fba44442a1ab",
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": "7a87f30c8bd54d43ce491ad05820990587d95e2db67023c48a39dab1c92e238d"
+  },
+  "protectedUnchangedInputs": {
+    "manifest": {
+      "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/activation-result.json",
+      "sha256": "6610229bb166add9878dce63c65e6d84c372b3858a896d13faa02de6ab0bdc01"
+    },
+    "files": 109,
+    "canonicalDocuments": 20,
+    "mathViews": 88,
+    "mathDurationPolicy": 1
+  },
+  "preflight": {
+    "native": {
+      "configurations": 99,
+      "actualSourceTargetScopes": 7,
+      "positivePreparedSourceOpenPolicyScopes": 7,
+      "completionPairs": 35,
+      "commonPrerequisitePolicyPairs": 140,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-cluster-target-preflight-20261108/native-probe.json",
+        "sha256": "e6b34eaea8a3d3df7c53f37549d835908d89e0846d56446be3a996931632847b"
+      },
+      "rawGoalClosureBeforeCount": 2,
+      "rawGoalClosureAfterCount": 12,
+      "controlledProjectionRoleChangesReportedSeparately": true,
+      "api": "Production CompletionEvaluation and shared private prerequisite-policy methods; not a complete public frontier-offer list"
+    },
+    "actualTypeScriptApplicability": {
+      "calls": 2,
+      "canonicalDocuments": 21,
+      "resultsPerFrame": 6524,
+      "equal": true,
+      "observedReadInputs": 8248,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-cluster-target-preflight-20261108/applicability/result.json",
+        "sha256": "21f816a863eee0f1a3236c6f1434851431ad921263c5a3b0202bdcfa5943a13a"
+      },
+      "readManifestIsObservedInputsNotAClosedNamespaceGuarantee": true
+    }
+  },
+  "checks": {
+    "actualPythonCaller": {
+      "status": "passed",
+      "seconds": 77.17757520900341,
+      "unchangedTimeoutSeconds": 180,
+      "sourceGoals": 354,
+      "originalFingerprints": 354,
+      "affectedSources": 720,
+      "inputFiles": 35,
+      "unchangedInputs": true,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/actual-caller-result.json",
+        "sha256": "ff6819fdd5a24321c3122ae9ceac9e913d9a62bb53d660b82fd5f0c6dcbe8db2"
+      },
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/actual-caller.log",
+        "sha256": "365b762138cea110545cbd02e712db17a7cad439d74b1649098d45a4fb1b0a83"
+      }
+    },
+    "fullTransitiveMinimality": {
+      "status": "passed",
+      "cliTests": 12,
+      "comparisons": 572,
+      "invalidGraphsRejected": 3593,
+      "snapshots": 720,
+      "logSha256": "c7b0c9a9363e544783c7b3604272653bb6ed3501e7a8e1f81f187e8551c65f48",
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/full-transitive-minimality.log",
+        "sha256": "c7b0c9a9363e544783c7b3604272653bb6ed3501e7a8e1f81f187e8551c65f48"
+      }
+    },
+    "fullPythonModule": {
+      "status": "passed",
+      "tests": 21,
+      "seconds": 500.347,
+      "wallSeconds": 500.65,
+      "inputFiles": 8,
+      "unchangedInputs": true,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/python/full-module.result.json",
+        "sha256": "6dafe731a6d5d10f96332df14edce105a2c7e8edd2676c878b9ac8c85c4de156"
+      },
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/python/full-module.log",
+        "sha256": "35e22c7172fb624e491bacc81a54995b3a9bb61944beef5f17b6c3e6cda99711"
+      }
+    },
+    "schema": {
+      "status": "passed",
+      "files": 119199,
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/schemas.log",
+        "sha256": "2915fbbbc79ee0fc4047d4a5856c890eac4a02f04579d632c017a773cbba2d4e"
+      }
+    },
+    "scopedEslint": {
+      "status": "passed",
+      "files": [
+        "app/scripts/prerequisiteReductionProof.ts",
+        "app/scripts/testPrerequisiteReductionProof.ts"
+      ],
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/eslint-final.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "rawRationaleCoverage": {
+      "status": "passed",
+      "regenerated": false,
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/rationale-coverage-check.log",
+        "sha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+      }
+    },
+    "standardCqrAndTenFloors": {
+      "status": "passed",
+      "startedAt": "2026-11-08T23:48:39.016040+00:00",
+      "finishedAt": "2026-11-09T00:01:23.400206+00:00",
+      "inputFiles": 32,
+      "unchangedInputs": true,
+      "outputHashes": {
+        "docs/qa-ci/status/curriculum-quality-status.json": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1",
+        "docs/qa-ci/status/curriculum-quality-status.md": "3c82e9562343a26b00f0f067c01f36d6c4bce5ad9cdb2c8c13e9a821fcb1da75"
+      },
+      "onlyChangedJsonPaths": [
+        "generatedAt",
+        "prerequisiteReductionProof.proofContract",
+        "prerequisiteReductionProof.registryDigest",
+        "prerequisiteReductionProof.affectedGoalIds"
+      ],
+      "all719PreviousAffectedIdsRetained": true,
+      "soleNewAffectedGoalId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff:2fb368b0-7b9d-5df0-99b6-6d719fd47f95",
+      "maturityCounts": {
+        "M7": 5,
+        "M6": 5,
+        "M0": 11
+      },
+      "rulesAndStatusesUnchanged": true,
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/cqr-result.json",
+        "sha256": "60a2b3c640d828c6a35fb8fc2e5d5080744ffda0099f075aec0052f400546a07"
+      },
+      "producerLog": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/cqr-producer.log",
+        "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861"
+      },
+      "floorsLog": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/protected-floors.log",
+        "sha256": "959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d"
+      }
+    },
+    "nativeFullHistoricalAndGermanCase": {
+      "status": "passed-with-disclosed-excluded-report-alias-drift",
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/native-v5-result.json",
+        "sha256": "09f9ba002458ecedafd3a6e9bcbc93133893ea7f6394b9c09322918e333d3d2e"
+      },
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/native-v5.log",
+        "sha256": "faf2d8fd89f4bca7da4971d0c2bf45800456035d5fd9a0fb7faf9f3d0547f02b"
+      },
+      "startedAt": "2026-11-08T23:49:03.992831+00:00",
+      "finishedAt": "2026-11-09T00:10:34.613368+00:00",
+      "exitCode": 0,
+      "inputFiles": 119678,
+      "unchangedInputs": false,
+      "suite": {
+        "name": "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-11-08T23:51:59.243Z",
+        "hostname": "DESKTOP-T1D4NQE",
+        "time": "1114.365"
+      },
+      "testCases": [
+        {
+          "name": "economicsAuthoredAtomicAbiturTargetsPreserveNativePrerequisitesAndFrontier()",
+          "time": "66.203",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges()",
+          "time": "5.944",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "firstMathEdgePreservesLiveOfferingsProjectionsAtomicDemandAndEffectiveRoleValidity()",
+          "time": "1041.817",
+          "failed": false,
+          "error": false
+        }
+      ],
+      "coverageMarkers": [
+        "FIRST_MATH_REDUCTION_NATIVE_COVERAGE configurations={08a43a1b-d97e-522c-9dfa-c950a493364e=101, 51b60137-46e8-5498-973e-ea38bb32f327=96, 605bdaf6-32d5-56fd-8d92-5a80c2fd2901=107, 668cf206-941e-51f8-8704-3e8938631235=95, 67bd301b-e11a-582d-94ba-4f4b1a4cefff=99, 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced=182, 7d51b38c-a149-5407-bddc-d2ce7878b020=102, 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a=178, 92406d94-e3c1-58ec-b7c6-12122278d25a=98, c436b994-8f44-5134-b9f8-0c9f5d6a5ba0=182} sourceTargets=128 sourceContextsOnly=22 foreignContexts=1058 validRoles=104 invalidRoles=46",
+        "REGISTERED_REDUCTION_NATIVE_COVERAGE baseline=original-registry currentPolicy=true configurations=1240 contextGoalComparisons=370306 registeredSources=720 liveReachedSources=718 contextPairs={08a43a1b-d97e-522c-9dfa-c950a493364e=4503, 668cf206-941e-51f8-8704-3e8938631235=23, 67bd301b-e11a-582d-94ba-4f4b1a4cefff=7, 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced=84311, 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a=1750, c436b994-8f44-5134-b9f8-0c9f5d6a5ba0=888} targetPairs={08a43a1b-d97e-522c-9dfa-c950a493364e=3971, 668cf206-941e-51f8-8704-3e8938631235=23, 67bd301b-e11a-582d-94ba-4f4b1a4cefff=7, 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced=51721, 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a=1750, c436b994-8f44-5134-b9f8-0c9f5d6a5ba0=847} validRoles={08a43a1b-d97e-522c-9dfa-c950a493364e=4195, 668cf206-941e-51f8-8704-3e8938631235=23, 67bd301b-e11a-582d-94ba-4f4b1a4cefff=7, 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced=49892, 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a=728, c436b994-8f44-5134-b9f8-0c9f5d6a5ba0=888} invalidRoles={08a43a1b-d97e-522c-9dfa-c950a493364e=308, 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced=34419, 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a=1022} atomicFrontierComparisons=161",
+        "GERMAN_CLUSTER_TARGET_NATIVE_COVERAGE configurations=99 reachedScopes=[DE-HE/CrossStage/G9/LK, DE-HE/SekII/G8/GK, DE-HE/SekII/G8/GK+LK, DE-HE/SekII/G8/LK, DE-HE/SekII/G9/GK, DE-HE/SekII/G9/GK+LK, DE-HE/SekII/G9/LK] targetScopes=[DE-HE/CrossStage/G9/LK, DE-HE/SekII/G8/GK, DE-HE/SekII/G8/GK+LK, DE-HE/SekII/G8/LK, DE-HE/SekII/G9/GK, DE-HE/SekII/G9/GK+LK, DE-HE/SekII/G9/LK] atomicDemand=20 rawGoalDemand=2-to-12 completionPairs=35 commonPolicyPairs=140 masteredSourceCompletionAndEffectiveMasteryPairs=7 separateControlledRoleCases=2"
+      ],
+      "freshXml": true,
+      "xmlSha256": "4e30e4962fc788b7fe53d78169d4c496ae821104dc5be3de9c7960d02ba10b9c",
+      "failures": [],
+      "rawInventoryUnchanged": false,
+      "bindingExplanation": {
+        "observedAt": "2026-11-09T00:18:13.205168+00:00",
+        "originalWrapperUnchangedInputs": false,
+        "originalReceiptPreserved": true,
+        "fullOriginalManifestFreshlyRehashed": true,
+        "manifestPaths": 119678,
+        "unchangedPaths": 119677,
+        "soleChangedPath": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-five-component-duration-policy-independent-b-v1/native-isolated-repo/docs/qa-ci/status/curriculum-quality-status.json",
+          "beforeSha256": "dbe40c7a3a667038586c8332985a7f42bffce851d58a1cc05727cef67d4f9b19",
+          "afterSha256": "d5d9fdbf4d3e3699e52b445a413c8458389145ef65824608bcd253f26f29d4f1",
+          "resolvedPath": "/home/enpasos/projects/skillpilot/docs/qa-ci/status/curriculum-quality-status.json",
+          "symbolicLink": true
+        },
+        "changeCause": "Regular authorized CQR producer completed during native run; same report through a historical file symlink",
+        "cqrDelta": "Only generatedAt and prerequisiteReductionProof proofContract/registryDigest/affectedGoalIds; all rules/status/maturity values unchanged",
+        "loaderBoundary": {
+          "file": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+          "sha256": "0d4561ad289c47565ab42ae80617d47765dc60377e9fd648bf280a79661fdece",
+          "namespaceConstant": "QUALITY_REVIEW_ARTIFACTS_PATH = DE/Gymnasium/quality",
+          "prunedBeforeParsing": true,
+          "sourceLines": [
+            35,
+            743,
+            745,
+            889,
+            891
+          ]
+        },
+        "runtimeLandscapeFieldsInReport": {
+          "landscapeId": false,
+          "id": false,
+          "goals": false
+        },
+        "acceptanceScope": "Native3/3 passed; all run-relevant sources captured by the original manifest are byte-identical. Exactly one CQR archive alias excluded by the existing loader differs. No new read trace or closed-namespace claim."
+      },
+      "bindingExplanationEvidence": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/native-input-binding-explanation.json",
+        "sha256": "910820782871ce027703bb4a1c3cf31e657fde1fbd0be5e8f322b0db5b81149e"
+      },
+      "completeInventoryComparison": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/native-input-full-comparison.json",
+        "sha256": "49576d816a4c2b27b671cc626c00764c5d3406e836979195610c234091ed38fb"
+      },
+      "nativeCoverage": {
+        "configurations": 1240,
+        "contextGoalComparisons": 370306,
+        "registeredSources": 720,
+        "liveSources": 718,
+        "separateCanonicalSources": 2,
+        "liveAtomicTargetComparisons": 292429,
+        "mathTailLiveSources": 490,
+        "germanConfigurations": 99,
+        "germanSourceTargetScopes": 7,
+        "germanPositivePreparedSourceOpenPolicyScopes": 7,
+        "germanCompletionPairs": 35,
+        "germanCommonPrerequisitePolicyPairs": 140,
+        "germanSourcePassedLeafOpenCompletionAndEffectiveMasteryPairs": 7,
+        "germanAtomicDemand": 20,
+        "germanRawGoalDemandBefore": 2,
+        "germanRawGoalDemandAfter": 12
+      }
+    },
+    "canonicalProjection58": {
+      "status": "passed",
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/projection-v5-result.json",
+        "sha256": "2bb719051ce7073fd6ef2f5a9b98ac95e315c9dd65953c64aaa5f62e4ae8b8a6"
+      },
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/projection-v5.log",
+        "sha256": "56a5e3671049456706f72d97d5a8cc4e7f3db4926c4e18796330fdaaa8593bae"
+      },
+      "startedAt": "2026-11-09T00:19:36.652980+00:00",
+      "finishedAt": "2026-11-09T00:21:27.948993+00:00",
+      "exitCode": 0,
+      "inputFiles": 119678,
+      "unchangedInputs": true,
+      "suite": {
+        "name": "com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest",
+        "tests": "58",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-11-09T00:21:07.452Z",
+        "hostname": "DESKTOP-T1D4NQE",
+        "time": "19.53"
+      },
+      "testCases": [
+        {
+          "name": "canonicalGymnasiumRootStateFilterFallsBackToCanonicalCoverageWhenRawApplicabilityIsNarrower()",
+          "time": "4.865",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt()",
+          "time": "1.049",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ClusterIdsForCanonicalView()",
+          "time": "0.032",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ChemistryReactionsClusterForCanonicalView()",
+          "time": "0.013",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactBavariaLinearAnalysisMasteryIntoCanonicalPilotGoals()",
+          "time": "0.019",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ChemistrySymbolLanguageClusterForCanonicalView()",
+          "time": "0.009",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistryBondModelEntrypointDependsOnProjectedSek1IonicBondingBridge()",
+          "time": "0.006",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistrySafetyAndSeparationIntoCanonicalChemistryGoals()",
+          "time": "0.02",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "narrowedCentralDilationDoesNotInheritPartialLegacyMasteryOrAliasItsWriteId()",
+          "time": "0.017",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySimpleRedoxSeriesFrontierRequiresElectronTransferTerms()",
+          "time": "0.229",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ChemistryClusterForCanonicalView()",
+          "time": "0.006",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryKeepsHigherStoredCanonicalMasteryThanLowerLegacyProjection()",
+          "time": "0.013",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalPilotLearnerStateProjectsLegacyActiveGoalToCanonicalGoal()",
+          "time": "0.595",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacyScopeIdsForCanonicalView()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySek1AtomicStructureFrontierUsesProjectedPeriodicAndIonMastery()",
+          "time": "0.201",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySek1ElectrolysisFrontierUsesProjectedIonAndRedoxMastery()",
+          "time": "0.5",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "setMasteryUsesCanonicalGoalKeyWhenLegacyActiveGoalIsMappedIntoCanonicalView()",
+          "time": "0.251",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistryAtomicStructureMasteryIntoCanonicalChemistryGoals()",
+          "time": "0.013",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "consolidatedCorrosionProtectionRequiresReassessmentWithoutAliasingLegacyWrites()",
+          "time": "0.037",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySek1FrontierUsesProjectedSafetyAndSubstanceMastery()",
+          "time": "0.497",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1BiologyClusterForCanonicalView()",
+          "time": "0.004",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalPilotFrontierUsesProjectedLegacyMastery()",
+          "time": "0.165",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactBavariaLegacyMasteryIntoCanonicalPilotGoals()",
+          "time": "0.012",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalPilotLearnerStateUsesProjectedMasteryWithoutLegacyLeakage()",
+          "time": "0.798",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactBavariaQuadraticVertexMasteryIntoCanonicalPilotGoals()",
+          "time": "0.009",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1BiologyPhotosynthesisMasteryIntoCanonicalBiologyGoals()",
+          "time": "0.004",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1BiologyPhotosynthesisClusterForCanonicalView()",
+          "time": "0.003",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistryIonAndElectrolysisMasteryIntoCanonicalChemistryGoals()",
+          "time": "0.009",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacyBavariaClusterIdsForCanonicalView()",
+          "time": "0.006",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalGymnasiumRootPropagatesBundeslandFilterIntoMathChildLandscape()",
+          "time": "0.032",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1LinearEquationsGoalForCanonicalView()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacyBavariaQuadraticFormsGoalForCanonicalView()",
+          "time": "0.006",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistryReactionMasteryIntoCanonicalChemistryGoals()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalGymnasiumRootBwLkIncludesReviewedBwMathCorridors()",
+          "time": "0.034",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1LegacyMasteryIntoCanonicalPilotGoals()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1BiologyMasteryIntoCanonicalBiologyGoals()",
+          "time": "0.005",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1NumberBasicsGoalForCanonicalView()",
+          "time": "0.006",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "bavariaCurriculumReadDoesNotProjectCanonicalGoalsIntoLegacyView()",
+          "time": "0.003",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySek1ReactionFrontierUsesProjectedIntroReactionMastery()",
+          "time": "0.186",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "legacyCurriculumReadDoesNotProjectCanonicalGoalsIntoLegacyView()",
+          "time": "0.004",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySek1SymbolLanguageFrontierUsesProjectedEquationAndReactionMastery()",
+          "time": "0.164",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryWithTimestampsUsesNewerLegacyTimestampForEqualExactProjection()",
+          "time": "0.011",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistryUpperElectrolysisDependsOnProjectedSek1ElectrolysisBridge()",
+          "time": "0.002",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactLegacyMasteryIntoCanonicalPilotGoals()",
+          "time": "0.012",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistryMasteryIntoCanonicalChemistryGoals()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ChemistryAtomicStructureClusterForCanonicalView()",
+          "time": "0.004",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "retiredSpecialPositionsKeepsHistoricalMasteryWithoutGrantingSuccessorMastery()",
+          "time": "0.008",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySimpleRedoxSeriesDependsOnReviewedElectronTransferTerms()",
+          "time": "0.002",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1ChemistryIonElectrolysisClusterForCanonicalView()",
+          "time": "0.005",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalBiologyFrontierUsesProjectedSek1BiologyMastery()",
+          "time": "0.144",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ProportionalMasteryIntoCanonicalPilotGoals()",
+          "time": "0.007",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistryFrontierUsesProjectedSek1ChemistryMastery()",
+          "time": "0.186",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsProjectsLegacySek1BinomialGoalForCanonicalView()",
+          "time": "0.008",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactBavariaIntegerArithmeticMasteryIntoCanonicalPilotGoals()",
+          "time": "0.008",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalChemistrySimpleRedoxSeriesFrontierDoesNotRequireHistoricalOxidationRoute()",
+          "time": "0.17",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getPlannedGoalsCollapsesMixedLegacyScopesIntoCanonicalSubtrees()",
+          "time": "0.008",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "getMasteryProjectsExactSek1ChemistrySymbolLanguageMasteryIntoCanonicalChemistryGoals()",
+          "time": "0.012",
+          "failed": false,
+          "error": false
+        },
+        {
+          "name": "canonicalBiologyQ3FrontierUsesProjectedSek1PhotosynthesisMastery()",
+          "time": "0.202",
+          "failed": false,
+          "error": false
+        }
+      ],
+      "coverageMarkers": [],
+      "freshXml": true,
+      "xmlSha256": "eea6b898b03d073d3ee3eaa82594e1933cf2c2ba7f26cbb411eb576d81252dee",
+      "failures": []
+    },
+    "actualCiPackageConformance": {
+      "status": "passed",
+      "result": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/conformance-result.json",
+        "sha256": "a3e45a73487f26dd3773d9e88b906686c707a679c71a876d22fa41000094d46f"
+      },
+      "log": {
+        "path": "app/node_modules/.tmp/g17-german-first-cluster-prerequisite-20261108/conformance.log",
+        "sha256": "a85a01d71a2131a35c80f7047a52046f106197cfae3762a42808ec405472c34d"
+      },
+      "startedAt": "2026-11-09T00:04:53.508897+00:00",
+      "finishedAt": "2026-11-09T00:27:55.257339+00:00",
+      "exitCode": 0,
+      "inputFiles": 43,
+      "unchangedInputs": true,
+      "environment": {
+        "SKILLPILOT_SOURCE_PDF_MODE": "committed-bindings",
+        "SKILLPILOT_FULL_PACKAGE_CONFORMANCE": "false",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "contentDigest": "sha256:5d3cf9c732f2417fd4fd3df95eef7496a80ab05555bc7f34c6f6481d3540213d",
+      "compiledArtifacts": {
+        "mathematik-a": {
+          "metadata/semantic-content-index.json": "13b4e68794ae2b730302e0aaf7a7911df627ba70274bd306ea3cbecb0f3f9fc1",
+          "metadata/release-model-conformance.json": "d26ff2c9a6cbd6b2c09820491d96468b3b34f036406aa7859b5f86571d898a22",
+          "metadata/build-inputs.json": "5a34d4a64421f1ff5a8b34211864afc70fd57c6190800a9a951b8b973cb2509a",
+          "data/resources/resource-index.json": "03b666b31d81e98831eb123eeee295901af3787b1821c336d3eb665dab4750dc"
+        },
+        "mathematik-b": {
+          "metadata/semantic-content-index.json": "13b4e68794ae2b730302e0aaf7a7911df627ba70274bd306ea3cbecb0f3f9fc1",
+          "metadata/release-model-conformance.json": "d26ff2c9a6cbd6b2c09820491d96468b3b34f036406aa7859b5f86571d898a22",
+          "metadata/build-inputs.json": "5a34d4a64421f1ff5a8b34211864afc70fd57c6190800a9a951b8b973cb2509a",
+          "data/resources/resource-index.json": "03b666b31d81e98831eb123eeee295901af3787b1821c336d3eb665dab4750dc"
+        }
+      }
+    }
+  },
+  "claims": {
+    "onlyThisGermanClusterReferenceNormalized": true,
+    "other45GermanAtomicToClusterEdgesUnchanged": true,
+    "all21OriginalDocumentsRestoredAndVerified": true,
+    "newRuntimeOrRoleOrMasterySemantics": false,
+    "newSubjectDependencies": false,
+    "newSourceOrRightsOrLayoutReview": false,
+    "fingerprintFamiliesChanged": false,
+    "standardG17GoalComplete": false,
+    "remoteCiAcceptance": false,
+    "gitOrRemoteActionsByImplementationAgent": false
+  }
+}
