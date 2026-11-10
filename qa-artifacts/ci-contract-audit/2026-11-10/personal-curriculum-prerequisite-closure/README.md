@@ -59,3 +59,12 @@ Die getrennte Biologie-Korrektur braucht weiterhin den frisch ausgewerteten
 Erhalt ihrer Ausgangsgeltung und eine erklärte Proof-Erweiterung. Das harte
 G17-Gate in der Standard-Meilensteinprüfung und die vollständige Main-Abnahme
 aller zehn Fächer sind weiterhin offen.
+
+Der native Testadapter verwendet jetzt die aktuelle Projektionsstruktur und die
+vollständig abgeleitete atomare Lernmenge. Die neue gezielte Gegenprobe besteht
+im normalen Corretto-25-/Gradle-Lauf: fehlende notwendige Erwerbsziele scheitern
+auch bei vollständiger Mastery; eine entfernte reine Clusterrolle bei weiterhin
+vollständiger atomarer Lernmenge bleibt zulässig. Der
+[native Helfernachweis](native-fixture-acceptance.json) bindet diesen einzelnen
+Fall. Alle fünf bisherigen nativen Methoden bleiben erhalten; deren vollständige
+aktuelle Matrix ist damit noch nicht abgenommen.
