@@ -12,6 +12,21 @@ zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
 bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
 Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
 
+**Aktueller CI-Reparaturstand vom 10. November 2026:** Die getrennte
+Codekorrektur PR #110 auf Main `39f4c21ea9` hat ihre frische Main-CI mit
+allen acht Hauptjobs und vier Begleitworkflows bestanden. Im Chemie-Datenlauf
+`42850827581` scheiterte der Kompositionsvalidator an 277 Strukturfehlern in
+den zwei neuen HE-GK+LK-Views. Die begrenzte Korrektur entfernt doppelte
+Referenzen und leere Wrapper mit der vorhandenen geprüften Mergeroption.
+Vier tatsächlich betroffene native Scopes bleiben vollständig gleich; der
+normale Validator besteht über 354 Views und 21 Kataloge mit null Fehlern.
+Der unveränderte Watch besteht nach der geprüften Bestätigung genau zweier
+Integritätsbelege. Eine frische vollständige Reparatur-CI bleibt offen.
+Der sichtbare IDE-Branch ist wieder
+`fix/g17-chemistry-atomic-prerequisites-v7-data`. Biologie bleibt im gepushten
+Checkpoint `60f58c1b00` gesichert; die Scopeentscheidung ist weiterhin offen.
+Die folgenden Lieferpositionen bewahren die früheren Prüfstände als Historie.
+
 **Aktuelle Lieferposition vom 10. November 2026, Chemie:** Physik ist mit
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) auf Main bei
 `c2f0722545f51e53526651e0d7ee26a9e0fb64ae`. Der Mergetree entspricht dem

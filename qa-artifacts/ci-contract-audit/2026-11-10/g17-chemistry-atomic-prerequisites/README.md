@@ -7,13 +7,27 @@ Die notwendige kleine ID-Lookupkorrektur ist getrennt mit
 Der sichtbare Datenbranch heißt
 `fix/g17-chemistry-atomic-prerequisites-v7-data`.
 Der Checkpoint `6bff7dcb34` ist in
-[Draft-PR #111](https://github.com/enpasos/skillpilot/pull/111) gesichert.
-Der PR richtet sich an Main. Der getrennte Lookupdiff ist dort bereits enthalten.
+[PR #111](https://github.com/enpasos/skillpilot/pull/111) gesichert.
+Der PR ist zur Prüfung freigegeben und richtet sich an Main. Der getrennte
+Lookupdiff ist dort bereits enthalten.
 
 PR #110 ist inzwischen nach vollständiger CI-Abnahme auf Main bei
 `39f4c21ea92956521337d70cdfd7f96b0d33620f`. Der getestete Tree entspricht dem
 Main-Mergetree. Main ist im sichtbaren Datenbranch übernommen und gepusht;
 dieser reine Git-Metadatamerge lässt dessen Produktbaum unverändert.
+
+Die [frische Main-CI-Abnahme](code-main39f4-ci-20261110.json) betrifft ausschließlich
+den Code aus PR #110:
+
+- Alle acht CI-Jobs und vier begleitenden Push-Workflows bestehen.
+- Der vollständige Backendlauf besteht mit 2.711 bestandenen Tests,
+  denselben 19 bisherigen Skips und null Fehlern.
+- `CompositionViewServiceTest` besteht 67/67,
+  `FirstMathPrerequisiteReductionTest` 5/5 und
+  `LearnerServiceCrossSubjectPilotTest` 95/95, jeweils ohne Skips oder Fehler.
+
+Die separate CI- und Main-Abnahme der Chemiedaten sowie Biologie und das
+abschließende G17-Gate bleiben offen.
 
 ## Mechanischer Graphnachweis
 
@@ -140,8 +154,8 @@ Der [neue normale CQR-Lauf](regular-cqr-and-floors.json) samt Memory-Vorlauf
 sämtliche zehn unveränderten Floors; Chemie erreicht wieder M7. Unter den
 9.905 Eingabebindungen ändern sich ausschließlich die beiden erzeugten
 CQR-Berichte und deren bestehender Alias. Die gesamte Chemie-View-Mitgliedschaft
-bleibt gleich. Der erste fehlgeschlagene Lauf bleibt erhalten. Sämtliche
-erforderlichen lokalen Chemieprüfungen sind damit abgeschlossen; frische
+bleibt gleich. Der erste fehlgeschlagene Lauf bleibt erhalten. Die oben
+beschriebenen lokalen Chemieprüfungen sind damit bestanden; frische
 PR-/Main-CI und Chemie-Main-Lieferung bleiben offen.
 
 Die [kompakte Belegübersicht](receipt.json) bindet den angewendeten Stand und
@@ -150,3 +164,28 @@ hat den vollständigen angewendeten Produktdiff statisch freigegeben.
 Das harte G17-Gate in der Standard-Meilensteinprüfung und die endgültige
 Abnahme aller zehn ursprünglichen Fachstände bleiben ausdrücklich offen.
 Nächstes Fach nach Chemie ist Biologie.
+
+## Strukturkorrektur nach tatsächlicher Remote-CI
+
+Der Curriculumjob `129970423139` in CI `42850827581` scheiterte am
+normalen Kompositionsvalidator mit 277 Fehlern ausschließlich in den beiden
+neuen HE-GK+LK-Views. Der bisherige native Vergleich hatte diese Prüfung
+des verfassten Baums nicht ersetzt; sie fehlte in der lokalen Abnahme.
+Die [begrenzte Reparatur](composition-ci-repair.json) nutzt die vorhandene
+graphgeprüfte Mergeroption und entfernt redundante Referenzen sowie sieben
+leere Wrapper. Validatoren und Runtimecode bleiben unverändert.
+
+Der frische native Vergleich wählt aus allen 182 Konfigurationen genau vier
+betroffene HE-Kombinationen. Er besteht nach 77,820 Sekunden mit identischen
+Zielen, Supportrollen, View-IDs, Wurzeln, sichtbaren Eltern, Reihenfolgen,
+Labels und vollständigem kontextuellem Bedarf. Der normale vollständige
+Validator besteht nach 335,764 Sekunden: 354 Views, 21 Kataloge, null Fehler;
+2.388 Warnungen werden weiterhin ausgewiesen.
+
+Der unveränderte Watch meldet zunächst genau zwei geänderte Viewbelege.
+Nach Astras unabhängiger Prüfung werden ausschließlich deren Hash und
+Zeitstempel sowie das Aktualisierungsdatum bestätigt; alle übrigen 160
+vollständigen Einträge und die Gesamtzahl 162 bleiben gleich. Der normale
+Watch ist anschließend grün. Dies ist eine dokumentierte technische
+Integritätsbestätigung, keine fachliche Freigabe oder Maturity-Ausnahme.
+Die frische vollständige Remote-CI des Reparaturheads bleibt gesondert offen.

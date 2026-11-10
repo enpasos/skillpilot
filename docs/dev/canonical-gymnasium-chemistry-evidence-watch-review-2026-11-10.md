@@ -38,3 +38,41 @@ The [compact technical receipt](https://github.com/enpasos/skillpilot/blob/main/
 binds the actual changes, scope evidence, baselines and logs. Full normal TS,
 CQR, native and fresh remote CI remain separate acceptance gates; this maintenance
 acknowledgement claims no Chemistry Main delivery or complete G17 acceptance.
+
+
+## Follow-up: duplicate combined-view authoring
+
+The first ordinary composition-view CI check of head `597c2f6b17` failed with
+277 errors confined to the two new explicit HE GK+LK views: overlapping canonical
+subtrees, repeated goals, multiple visible parents and seven empty wrappers.
+The prior native checks over 182 configurations did not validate this authored
+raw-tree uniqueness contract. Their successful runtime comparisons did not
+establish that these serialized views passed the ordinary composition validator.
+
+The correction uses the existing graph-guarded
+`CourseProfileCompositionViewMerger.mergeViews(..., true)` and removes literally
+empty wrappers. It deletes redundant authored references while preserving both
+view IDs, scope envelopes, retained node metadata and raw target/support sets.
+The invalid authored preview tree changes by losing duplicate placements; the
+actual backend's selected tree does not change. A fresh native selector examined
+all 182 configurations and identified exactly four affected HE combined scopes
+(CrossStage/SekII, each G8/G9). All four retain exact target and support sets,
+ordered roots, view IDs, visible goals, chosen parents, child order, labels and
+full-context atomic/goal demand. The focused native run passed in 77.820 seconds.
+
+The unchanged watch runner first reported exactly two changed records and no
+added or removed paths. Only those two authoring-file records advance in raw
+hash and modification time: `de-he-gk-lk.view.json` from `4394989ae077…` to
+`afec1b964d43…`, and `de-he-sekii-gk-lk.view.json` from `829613722120…` to
+`4de3850c1443…`. All other 160 complete records, the count 162 and the remaining
+baseline metadata stay exact apart from `updatedAt`. The baseline raw digest
+moves from `40623ca256e2…` to `0b8864cc4394…`. No whole-baseline capture is used.
+The same unchanged watch runner then passes with `changed=0 added=0 removed=0`
+and `CHEMISTRY_EVIDENCE_WATCH=OK`.
+
+This is an authoring-only technical acknowledgment. No canonical goal, card,
+source fingerprint, source decision, scientific review, quality approval,
+checker, manifest, floor or scope policy is changed. The exact failure,
+regeneration, independent reviews, normal-validator result and guard boundaries
+are recorded in the [compact repair receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/composition-ci-repair.json).
+Fresh full remote CI of the repaired head remains required.
