@@ -1140,16 +1140,27 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(rawMathReferences).as("actual after-German raw Physics-to-Math references").isEqualTo(162);
         assertThat(mathAtoms).as("actual distinct foreign Math atomic prerequisites").hasSize(54);
         allProbes.addAll(mathDemandByProbe.keySet());
+        Set<String> unavailableProbes = physicsUnavailableCompatibilityProbes(before, after, allProbes);
+        Set<String> canonicalProbeCoverage = assertPhysicsCanonicalProbeDemands(before, after, affectedProbes, unavailableProbes);
         Discovery leftDiscovery = discover(before, PHYSICS, readGuiOfferings().path(PHYSICS));
         Discovery rightDiscovery = discover(after, PHYSICS, readGuiOfferings().path(PHYSICS));
         assertThat(rightDiscovery).as("real Physics planner and GUI configurations").isEqualTo(leftDiscovery);
         assertThat(leftDiscovery.configurations()).isNotEmpty();
         Map<String, Set<String>> sourceRuntimeReachedUnion = new TreeMap<>(), runtimeReachedUnion = new TreeMap<>();
         Map<String, Set<String>> positiveReached = new TreeMap<>(), negativeReached = new TreeMap<>();
+        Map<String, Set<String>> validRoleReached = new TreeMap<>(), invalidRoleReached = new TreeMap<>();
+        Map<String, Set<String>> failClosedReached = new TreeMap<>();
         Map<String, Set<String>> sourceProbeReached = new TreeMap<>();
         PHYSICS_PROBES_BY_SOURCE.forEach((source, probes) -> probes.forEach(atom ->
                 sourceProbeReached.put(source + "->" + atom, new TreeSet<>())));
         Map<String, Set<String>> mathContextReached = new TreeMap<>(), mathPositiveReached = new TreeMap<>(), mathNegativeReached = new TreeMap<>();
+        Map<String, Set<String>> mathConsumerTargets = new TreeMap<>(), mathValidConsumers = new TreeMap<>(), mathInvalidConsumers = new TreeMap<>();
+        Map<String, Set<String>> mathPairPositive = new TreeMap<>(), mathPairNegative = new TreeMap<>(), mathPairFailClosed = new TreeMap<>();
+        mathDemandByProbe.forEach((atom, maths) -> maths.forEach(math -> {
+            String pair = atom + "->" + math;
+            for (Map<String, Set<String>> ledger : List.of(mathConsumerTargets, mathValidConsumers, mathInvalidConsumers,
+                    mathPairPositive, mathPairNegative, mathPairFailClosed)) ledger.put(pair, new TreeSet<>());
+        }));
         mathAtoms.forEach(atom -> {
             mathContextReached.put(atom, new TreeSet<>());
             mathPositiveReached.put(atom, new TreeSet<>());
@@ -1160,6 +1171,9 @@ class FirstMathPrerequisiteReductionTest {
             runtimeReachedUnion.put(atom, new TreeSet<>());
             positiveReached.put(atom, new TreeSet<>());
             negativeReached.put(atom, new TreeSet<>());
+            validRoleReached.put(atom, new TreeSet<>());
+            invalidRoleReached.put(atom, new TreeSet<>());
+            failClosedReached.put(atom, new TreeSet<>());
         });
         LearnerService beforePublic = org.mockito.Mockito.spy(before.service), afterPublic = org.mockito.Mockito.spy(after.service);
         String probeId = "unsaved-physics-batch-native-control";
@@ -1200,6 +1214,10 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(right.graph().keySet()).as("Physics native graph: %s", scope).isEqualTo(left.graph().keySet());
             assertThat(right.context()).as("Physics compiler context: %s", scope).isEqualTo(left.context());
             assertThat(projectedApplicability(right)).as("Physics projected applicability: %s", scope).isEqualTo(projectedApplicability(left));
+            for (String unavailable : unavailableProbes) {
+                assertPhysicsUnavailableInActualScope(left, unavailable, scope);
+                assertPhysicsUnavailableInActualScope(right, unavailable, scope);
+            }
             Set<String> contextAtoms = new TreeSet<>(left.context());
             contextAtoms.retainAll(before.canonicalAtomicIds);
             contextAtoms.addAll(left.roles().atomicTargets());
@@ -1268,6 +1286,7 @@ class FirstMathPrerequisiteReductionTest {
                     Set<String> demand = left.topology().transitivePrerequisites(atom);
                     boolean roleValid = roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered);
                     if (roleValid) assertThat(demand).as("meaningful Physics prerequisite control %s: %s", atom, scope).isNotEmpty();
+                    (roleValid ? validRoleReached : invalidRoleReached).get(atom).add(scope);
                     Map<String, Double> prepared = new TreeMap<>();
                     demand.forEach(id -> prepared.put(id, 1.0));
                     assertThat(prepared).doesNotContainKey(atom);
@@ -1301,8 +1320,13 @@ class FirstMathPrerequisiteReductionTest {
                         }
                         frontierPairs++;
                     }
+                    // Record invalid coverage only after every unchanged seven-case frontier control passed.
+                    if (!roleValid) failClosedReached.get(atom).add(scope);
                     for (String math : mathDemandByProbe.getOrDefault(atom, Set.of())) {
                         assertThat(demand).as("actual foreign atomic demand %s->%s: %s", atom, math, scope).contains(math);
+                        String consumerPair = atom + "->" + math;
+                        mathConsumerTargets.get(consumerPair).add(scope);
+                        (roleValid ? mathValidConsumers : mathInvalidConsumers).get(consumerPair).add(scope);
                         // Deliberately remove one actual foreign atomic role from an otherwise
                         // unchanged real projection; mastery/focus cannot repair that invalid scope.
                         assertThat(roleProbeWithPrerequisites(before.service, left.graph(),
@@ -1324,16 +1348,22 @@ class FirstMathPrerequisiteReductionTest {
                                     .as("actual foreign Math normal/strict/focus control %s->%s/%s: %s", atom, math, probe.name(), scope)
                                     .isEqualTo(original);
                             if (probe.expected() != null) assertThat(original).isEqualTo(probe.expected());
-                            if (roleValid && "physics-math-strict-prepared".equals(probe.name()) && original)
+                            if (roleValid && "physics-math-strict-prepared".equals(probe.name()) && original) {
                                 mathPositiveReached.get(math).add(scope);
-                            if (roleValid && "physics-math-strict-one-open".equals(probe.name()) && !original)
+                                mathPairPositive.get(consumerPair).add(scope);
+                            }
+                            if (roleValid && "physics-math-strict-one-open".equals(probe.name()) && !original) {
                                 mathNegativeReached.get(math).add(scope);
+                                mathPairNegative.get(consumerPair).add(scope);
+                            }
                             if (!roleValid) {
                                 assertThat(original).as("invalid foreign-demand role controls fail closed").isFalse();
                                 invalidRolePairs++;
                             }
                             frontierPairs++;
                         }
+                        // Eligibility belongs to this real consumer pair, not to the whole Math/scope union.
+                        if (!roleValid) mathPairFailClosed.get(consumerPair).add(scope);
                         for (Map<String, Double> masteryCase : List.of(prepared, missingMath)) {
                             assertPhysicsCompletionPreserved(beforeApplication.evaluate(leftCompletion, masteryCase),
                                     afterApplication.evaluate(rightCompletion, masteryCase), leftCompletion, rightCompletion,
@@ -1370,19 +1400,46 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(completedScopes).isPositive();
         assertThat(incompleteScopes).as("actual incomplete-curriculum method controls must be reached").isPositive();
         assertThat(incomplete409Responses).as("paired actual planning-method controls").isEqualTo(2 * incompleteScopes);
-        sourceRuntimeReachedUnion.forEach((source, scopes) -> assertThat(scopes)
-                .as("BLOCKER: no actual Physics source target exposure for %s", source).isNotEmpty());
-        runtimeReachedUnion.forEach((atom, scopes) -> assertThat(scopes)
-                .as("BLOCKER: affected Physics atomic descendant has no actual target scope: %s", atom).isNotEmpty());
-        positiveReached.forEach((atom, scopes) -> assertThat(scopes)
-                .as("BLOCKER: affected Physics atom has no valid actual positive control: %s", atom).isNotEmpty());
-        negativeReached.forEach((atom, scopes) -> assertThat(scopes)
-                .as("BLOCKER: affected Physics atom has no valid actual negative control: %s", atom).isNotEmpty());
-        sourceProbeReached.forEach((pair, scopes) -> assertThat(scopes)
-                .as("BLOCKER: an affected source/atomic-descendant pair has no actual target scope: %s", pair).isNotEmpty());
-        for (Map<String, Set<String>> coverage : List.of(mathContextReached, mathPositiveReached, mathNegativeReached))
-            coverage.forEach((math, scopes) -> assertThat(scopes)
-                    .as("BLOCKER: missing actual foreign Math context/positive/negative coverage for %s", math).isNotEmpty());
+        assertPhysicsProbeExposureDomain(allProbes, runtimeReachedUnion, unavailableProbes, canonicalProbeCoverage);
+        for (String atom : allProbes) {
+            assertPhysicsCoverageLedger("Physics " + atom, runtimeReachedUnion.get(atom), validRoleReached.get(atom),
+                    invalidRoleReached.get(atom), positiveReached.get(atom), negativeReached.get(atom), failClosedReached.get(atom));
+        }
+        // Preserve all 144 operation sources and all 175 source/atomic-probe provenance pairs.
+        // A cluster source is represented by its reviewed atomic descendants, never raw cluster reachability.
+        sourceRuntimeReachedUnion.forEach((source, scopes) -> {
+            Set<String> expected = new TreeSet<>();
+            PHYSICS_PROBES_BY_SOURCE.get(source).forEach(atom -> expected.addAll(runtimeReachedUnion.get(atom)));
+            assertThat(scopes).as("actual source/descendant target union %s", source).isEqualTo(expected);
+            if (scopes.isEmpty()) {
+                assertThat(unavailableProbes).containsAll(PHYSICS_PROBES_BY_SOURCE.get(source));
+                assertThat(canonicalProbeCoverage).containsAll(PHYSICS_PROBES_BY_SOURCE.get(source));
+            }
+        });
+        sourceProbeReached.forEach((pair, scopes) -> {
+            String atom = pair.substring(pair.indexOf("->") + 2);
+            assertThat(scopes).as("complete actual source/probe exposure %s", pair).isEqualTo(runtimeReachedUnion.get(atom));
+            if (scopes.isEmpty()) {
+                assertThat(unavailableProbes).contains(atom);
+                assertThat(canonicalProbeCoverage).contains(atom);
+            }
+        });
+        for (String math : mathAtoms) {
+            Set<String> actualConsumers = new TreeSet<>(), eligibleConsumers = new TreeSet<>();
+            mathDemandByProbe.forEach((atom, maths) -> {
+                if (!maths.contains(math)) return;
+                String pair = atom + "->" + math;
+                assertThat(mathConsumerTargets.get(pair)).as("all real consumer scopes %s", pair).isEqualTo(runtimeReachedUnion.get(atom));
+                assertPhysicsCoverageLedger("Math consumer " + pair, mathConsumerTargets.get(pair), mathValidConsumers.get(pair),
+                        mathInvalidConsumers.get(pair), mathPairPositive.get(pair), mathPairNegative.get(pair), mathPairFailClosed.get(pair));
+                actualConsumers.addAll(mathConsumerTargets.get(pair));
+                eligibleConsumers.addAll(mathValidConsumers.get(pair));
+            });
+            assertThat(actualConsumers).as("Math has an actual target consumer %s", math).isNotEmpty();
+            assertThat(mathContextReached.get(math)).as("actual Math context %s", math).isNotEmpty().containsAll(actualConsumers);
+            assertThat(mathPositiveReached.get(math)).as("Math positives are exactly role-valid consumer scopes %s", math).isEqualTo(eligibleConsumers);
+            assertThat(mathNegativeReached.get(math)).as("Math negatives are exactly role-valid consumer scopes %s", math).isEqualTo(eligibleConsumers);
+        }
         assertThat(rolePairs).isPositive();
         assertThat(frontierPairs).isPositive();
         assertThat(completionPairs).isPositive();
@@ -1394,11 +1451,103 @@ class FirstMathPrerequisiteReductionTest {
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
         assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
-        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d completionWitnessNegativeControls=3 publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d completionWitnessNegativeControls=3 canonicalAtomicProbeCoverage=%s unavailableCompatibilityProbes=%s validRoleReached=%s invalidRoleReached=%s failClosedReached=%s mathConsumerTargets=%s mathValidConsumers=%s mathInvalidConsumers=%s mathPairPositive=%s mathPairNegative=%s mathPairFailClosed=%s publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
                 prior.changedSources().size(), current.changedSources().size(), physicsSources.size(), affectedProbes.size(), allProbes.size(),
                 leftDiscovery.configurations().size(), completedScopes, incompleteScopes, incomplete409Responses,
                 sourceRuntimeReachedUnion, sourceProbeReached, runtimeReachedUnion, mathContextReached, mathPositiveReached, mathNegativeReached,
-                rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs);
+                rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs,
+                canonicalProbeCoverage, unavailableProbes, validRoleReached, invalidRoleReached, failClosedReached,
+                mathConsumerTargets, mathValidConsumers, mathInvalidConsumers, mathPairPositive, mathPairNegative, mathPairFailClosed);
+    }
+
+    private static boolean physicsUnavailableCompatibilityGoal(LearningGoal goal) {
+        return goal != null && goal.getExtendedData() != null
+                && Boolean.TRUE.equals(goal.getExtendedData().get("compatibilityOnly"))
+                && "excluded".equals(goal.getExtendedData().get("applicabilityProjection"));
+    }
+
+    private static Set<String> physicsUnavailableCompatibilityProbes(NativeFixture before, NativeFixture after, Set<String> probes) {
+        Set<String> unavailable = new TreeSet<>();
+        for (String atom : probes) {
+            LearningGoal left = before.canonicalGoals.get(atom), right = after.canonicalGoals.get(atom);
+            assertThat(left).as("canonical Physics probe before %s", atom).isNotNull();
+            assertThat(right).as("canonical Physics probe after %s", atom).isNotNull();
+            boolean excluded = physicsUnavailableCompatibilityGoal(left);
+            assertThat(physicsUnavailableCompatibilityGoal(right)).as("same explicit compatibility exclusion %s", atom).isEqualTo(excluded);
+            if (excluded) {
+                assertThat(right.getExtendedData()).as("unchanged excluded-source metadata %s", atom).isEqualTo(left.getExtendedData());
+                unavailable.add(atom);
+            }
+        }
+        return unavailable;
+    }
+
+    private static void assertPhysicsUnavailableInActualScope(NativeScope scope, String atom, String label) {
+        assertThat(scope.roles().targets()).as("excluded source is not an actual target %s: %s", atom, label).doesNotContain(atom);
+        assertThat(scope.roles().support()).as("excluded source is not actual support %s: %s", atom, label).doesNotContain(atom);
+        assertThat(scope.context()).as("excluded source is not in the actual compiler context %s: %s", atom, label).doesNotContain(atom);
+        Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(scope.projection(), "visibleGoals");
+        assertThat(visible).as("excluded source is not learner-visible %s: %s", atom, label).doesNotContainKey(atom);
+    }
+
+    /** Canonical demand coverage is separate from real enrollment; no target roles are manufactured. */
+    private static Set<String> assertPhysicsCanonicalProbeDemands(NativeFixture before, NativeFixture after,
+            Set<String> affectedProbes, Set<String> unavailable) {
+        Map<String, LearningGoal> left = new CompletionCanonicalGraphResolver(before.landscapes, before.mapper).load(ROOT);
+        Map<String, LearningGoal> right = new CompletionCanonicalGraphResolver(after.landscapes, after.mapper).load(ROOT);
+        var compiler = new CompletionProfileCompiler();
+        var leftTopology = compiler.normalizePrerequisites(left);
+        var rightTopology = compiler.normalizePrerequisites(right);
+        leftTopology.validateContext(affectedProbes);
+        rightTopology.validateContext(affectedProbes);
+        Set<String> context = new TreeSet<>(affectedProbes);
+        for (String atom : affectedProbes) {
+            assertThat(left.get(atom).getContains()).as("atomic canonical probe %s", atom).isEmpty();
+            assertThat(right.get(atom).getContains()).isEmpty();
+            Set<String> demand = leftTopology.transitivePrerequisites(atom);
+            assertThat(rightTopology.transitivePrerequisites(atom)).as("full canonical atomic demand %s", atom).isEqualTo(demand);
+            assertThat(demand).doesNotContain(atom);
+            context.addAll(demand);
+        }
+        for (String atom : context) assertThat(rightTopology.transitivePrerequisites(atom))
+                .as("whole canonical atomic demand context %s", atom).isEqualTo(leftTopology.transitivePrerequisites(atom));
+        for (String atom : unavailable) {
+            assertThat(affectedProbes).as("unavailable operation probe retains canonical coverage").contains(atom);
+            assertThat(physicsUnavailableCompatibilityGoal(left.get(atom))).isTrue();
+            assertThat(physicsUnavailableCompatibilityGoal(right.get(atom))).isTrue();
+            assertThat(right.get(atom).getExtendedData()).isEqualTo(left.get(atom).getExtendedData());
+            Set<String> demand = rightTopology.transitivePrerequisites(atom);
+            assertThat(demand).as("nonempty unavailable-source demand %s", atom).isNotEmpty().doesNotContain(atom);
+            assertThat(demand).as("all original direct demands remain transitively present %s", atom).containsAll(left.get(atom).getRequires());
+        }
+        String unknown = affectedProbes.iterator().next() + "-missing-reference-control";
+        for (var topology : List.of(leftTopology, rightTopology)) assertThatThrownBy(() -> topology.transitivePrerequisites(unknown))
+                .as("canonical unknown-reference control").isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
+        return Collections.unmodifiableSet(new TreeSet<>(affectedProbes));
+    }
+
+    private static void assertPhysicsProbeExposureDomain(Set<String> probes, Map<String, Set<String>> runtime,
+            Set<String> unavailable, Set<String> canonicalCoverage) {
+        assertThat(runtime.keySet()).as("complete Physics probe exposure ledger").isEqualTo(probes);
+        Set<String> unexposed = new TreeSet<>();
+        runtime.forEach((atom, scopes) -> { if (scopes.isEmpty()) unexposed.add(atom); });
+        assertThat(unexposed).as("only metadata-excluded compatibility probes lack real target exposure").isEqualTo(unavailable);
+        assertThat(canonicalCoverage).as("every excluded probe retains real canonical demand coverage").containsAll(unavailable);
+    }
+
+    /** Every actual target pair is either eligible or demonstrably fail-closed; neither set is inferred from outcomes. */
+    private static void assertPhysicsCoverageLedger(String label, Set<String> targets, Set<String> valid,
+            Set<String> invalid, Set<String> positive, Set<String> negative, Set<String> failClosed) {
+        Set<String> overlap = new TreeSet<>(valid);
+        overlap.retainAll(invalid);
+        assertThat(overlap).as("%s role-valid/invalid scopes are disjoint", label).isEmpty();
+        Set<String> partition = new TreeSet<>(valid);
+        partition.addAll(invalid);
+        assertThat(partition).as("%s native role ledger covers every target scope", label).isEqualTo(targets);
+        assertThat(positive).as("%s exact eligible positive coverage", label).isEqualTo(valid);
+        assertThat(negative).as("%s exact eligible negative coverage", label).isEqualTo(valid);
+        assertThat(failClosed).as("%s exact ineligible fail-closed coverage", label).isEqualTo(invalid);
     }
 
     /** State is invariant; a blocker value is one valid open-assessment consumer, not a stable witness ID. */

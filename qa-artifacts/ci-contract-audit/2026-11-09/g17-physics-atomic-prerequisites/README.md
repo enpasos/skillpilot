@@ -1,6 +1,11 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 # Physik: atomare Voraussetzungen und V7-Nachweis
 
+Der [Nachtrag vom 10. November](native-coverage-domain-followup.md) trennt den
+bestandenen regulären Meilensteinlauf von der noch offenen nativen Abnahme
+und dokumentiert die tatsächlich geprüften Projektionsdomänen. Die folgenden
+Übernahmebelege bleiben als frühere Erfassungsstände erhalten.
+
 Der lokale Stand baut auf `91119f7b36b47a44b377219e8a6dd2834216b955` auf.
 Er übernimmt genau die bereits geprüften Physikdaten samt V7-Wrapper und
 unverändertem historischem V6-Parent sowie die zwei statisch geprüften

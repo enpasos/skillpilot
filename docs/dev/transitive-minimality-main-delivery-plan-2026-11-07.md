@@ -24,15 +24,19 @@ CQR-Berichte und deren bestehender Alias änderten sich; 9896 Eingabebindungen
 zeigen keine unerwarteten Änderungen. Die korrigierte Routenprüfung bleibt
 mit echten Gegenfällen über 35 Views und 80 Scopes im bestehenden CI-Test.
 
-Die native Physik-Abnahme ist noch offen: Nach Durchlaufen der Vergleichsmatrix
-scheitert die abschließende Coverage-Assertion an fehlender Target-Exposition
+Die native Physik-Abnahme ist noch offen: Der ältere vollständige lokale Lauf
+scheiterte nach seiner Vergleichsmatrix an fehlender Target-Exposition
 von `3631c8f7-ff48-57ff-b7ee-8397ff1d166a`. Dieser Knoten war bereits vorher
 ausdrücklich `compatibilityOnly` und von der Projektion ausgeschlossen; in
 allen 140 vollständigen Konfigurationen fehlt er unverändert auch als Support
-und im Kontext. Die vollständige Schlussabdeckung wird anhand der tatsächlichen
-Projektionsdomänen geprüft. Alle 3882 gebundenen Native-Eingaben blieben
-unverändert. Frische Remote-CI und Main-Lieferung bleiben ausstehend; das harte
-Standard-G17-Gate ist noch nicht aktiviert.
+und im Kontext. Die korrigierte Schlussabdeckung unterscheidet tatsächliche
+rollenvalide und gesperrte Fälle sowie explizit ausgeschlossene Knoten; alle
+Scope-/Probe- und Frontierfälle bleiben erhalten. Die native Gegenprobe über
+372 tatsächlich gesperrte Paare besteht vor/nach; 139 kanonische Atomproben,
+34 echte Frontier-Aufrufe und zehn fehlerhafte Coverage-Datensätze bestehen
+in der gezielten Helfervalidierung. Der alte Gesamtlauf bleibt als fehlgeschlagen
+dokumentiert. Die neue vollständige Remote-Regression mit fünf Methoden sowie
+die Main-Lieferung stehen aus; das harte Standard-G17-Gate ist noch nicht aktiv.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
