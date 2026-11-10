@@ -9,9 +9,13 @@ neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 **Aktuelle Lieferung und Arbeitsfolge, 11. November 2026:** Chemie
 [PR #111](https://github.com/enpasos/skillpilot/pull/111) ist nach acht
 erfolgreichen Hauptjobs und fünf erfolgreichen Begleitworkflows auf Main
-`6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Die frische Main-Push-CI
-wird separat abgenommen. Im sichtbaren IDE-Branch
-`fix/g17-biology-assessment-basis` sind der vorbereitete Biologiestand und
+`6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Auch die separat geprüfte
+Compilergrundlage [PR #114](https://github.com/enpasos/skillpilot/pull/114)
+ist auf Main `1ee7b40e6e2121bd7f8181aae74af57d55895905` geliefert. Der neue
+Main-Lauf ersetzt den abgebrochenen Lauf zu `6c274d9e`; dessen Abbruch ist
+kein bestandener Main-Nachweis. Im
+[Biologie-PR #117](https://github.com/enpasos/skillpilot/pull/117), Branch
+`fix/g17-biology-assessment-basis`, sind der vorbereitete Biologiestand und
 der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
 Bestandsbeweis, 761 vollständige native Einzelfachkonfigurationen, die echten
 Ausgabe-Verlustgegenfälle sowie der reguläre Meilensteinlauf einschließlich
@@ -21,10 +25,17 @@ trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
 Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
 Statusvoraussetzung durch.
 
-Die nächsten Schritte schließen vorhandene Lieferungen ab. Zuerst laufen
-gezielte Prüfungen der tatsächlichen Biologie-Lernumfänge und der bekannten
-Verlustfälle; die vollständige erforderliche Scopeprüfung folgt am stabilen
-Integrationsstand. Bestandene unveränderte lokale Prüfungen werden nur bei
+Während der Biologie-Remote-CI folgt der getrennte Wirtschafts-Datenbatch im
+sichtbaren IDE-Branch `fix/g17-economics-atomic-prerequisites-v8-data`. Er baut
+auf dem gesicherten Biologiestand `1d63d2b18c` auf und wird nach Biologie
+separat geliefert. Der [Wirtschafts-Zwischenstand](../../qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
+ist installiert, aber noch nicht abgenommen; er benötigt keine neue
+Proofversion oder fachliche Entscheidung.
+
+Die nächsten Schritte schließen vorhandene Lieferungen ab. Pro Datenlieferung
+laufen zuerst gezielte Gegenproben, dann die vollständige erforderliche
+Scopeprüfung am stabilen Integrationsstand. Bestandene unveränderte lokale
+Prüfungen werden nur bei
 neuen Befunden oder relevanten Änderungen wiederholt. Neue Konzeptvarianten,
 Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen. Korrekturen
 werden nach der passenden gezielten Prüfung sofort gesichert und gepusht;
