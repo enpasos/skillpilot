@@ -153,6 +153,7 @@ public class LearnerService {
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
     private final TransactionTemplate transactionTemplate;
+    private final CompletionProfileCompiler frontierPrerequisiteCompiler = new CompletionProfileCompiler();
     private Clock verifiedRecallClock = Clock.systemUTC();
     private Clock learningPlanClock = Clock.system(LEARNING_PLAN_ZONE);
 
@@ -7237,7 +7238,7 @@ public class LearnerService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         try {
             Map<String, LearningGoal> lookup = prerequisiteGraph(learner, projection);
-            var topology = new CompletionProfileCompiler().normalizePrerequisites(lookup);
+            var topology = frontierPrerequisiteCompiler.normalizePrerequisites(lookup);
             topology.validateContext(automaticCompletionTargets(AUTOMATIC_COMPLETION_DEFAULT, projection));
             return new FrontierPrerequisites(lookup, topology, mastery, prerequisiteScope);
         } catch (CompletionCompilationException invalid) {
