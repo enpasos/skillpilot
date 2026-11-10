@@ -55,6 +55,7 @@
         "sourceOrReviewDecisionsChanged": false
       },
       "failure": "Chemistry M1 below protected M7; CQR003 has9unsupported assigned atomic goals across7jurisdictions; exact technical cause under review",
+      "failureRetainedAfterTechnicalFixApplied": true,
       "floorExitCode": 1,
       "fullFloorCommandPassed": false,
       "namedInputs": 9903,
@@ -65,6 +66,12 @@
       "receipt": "/mnt/e/skillpilot-g17-chemistry-cqr-20261110/attempt-1/run-receipt.json",
       "receiptSha256": "45af3d23257432bfd809bfe7c6b02f0feea1df3304b4cea3cc9228d56df7d029",
       "reportCatalogs": 21
+    },
+    "normalCqrProducerAndTenUnchangedFloorsAfterSourceFix": {
+      "attempt": 2,
+      "inputCount": 9905,
+      "originalFailureRemainsDocumented": true,
+      "status": "running"
     },
     "sourceEvidenceAndPythonBridgeRegression": {
       "boundInputs": 3785,
@@ -93,12 +100,40 @@
       "logSha256": "eedeef553fab92e4b3aa0968b48a676cca29a611cf5d5c2a7fdcc18643fca6e4",
       "seconds": 39.321
     },
+    "sourceSurrogateFixAppliedValidation": {
+      "actualAcceptedRelationshipsChecked": 308,
+      "details": "source-surrogate-path-fix.json",
+      "newRegressions": 15,
+      "oldCodeFailures": 4,
+      "passed": true,
+      "sourceDecisionsChanged": false
+    },
     "typecheck": {
       "exitCode": 0,
       "seconds": 16.412
     },
     "wholeNativeSixMethods": "running",
-    "wholeTransitiveMinimality": "running"
+    "wholeTransitiveMinimality": {
+      "changedInputs": [],
+      "inputCount": 3652,
+      "passed": true,
+      "performedBeforeSceFix": true,
+      "receipt": "/mnt/e/skillpilot-g17-chemistry-ts-20261110/attempt-1/run-receipt.json",
+      "seconds": 2699.401,
+      "sha256": "35b940d85e346e799f2ef044d7294c4788bf7e5c543008d3f31a3902093c5ddd",
+      "v6": {
+        "batchSources": 343,
+        "batches": 3,
+        "documents": 21,
+        "operations": 4507,
+        "originalSources": 1062
+      },
+      "v7": {
+        "cacheSnapshots": 27,
+        "currentDocuments": 21,
+        "originalSources": 1062
+      }
+    }
   },
   "productBindings": {
     "app/scripts/config/curriculum-maturity-floor-policy.json": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
@@ -194,6 +229,7 @@
   "remoteDataCiAccepted": false,
   "schemaVersion": 1,
   "scope": "Mechanical canonical requires reduction plus separately documented existing composition corrections; not full G17 milestone acceptance",
+  "sourceSurrogatePathFix": "source-surrogate-path-fix.json",
   "staticReview": "Astra Ultra GO for actual product bytes; normal full checks remain separate",
   "subject": "Chemie",
   "visibleBranch": "fix/g17-chemistry-atomic-prerequisites-v7-data",

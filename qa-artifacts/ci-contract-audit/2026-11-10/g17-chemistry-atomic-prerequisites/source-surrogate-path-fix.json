@@ -1,0 +1,140 @@
+{
+  "actualComparison": {
+    "actualNineOldFalseNewTrue": 9,
+    "checkedRelationships": 308,
+    "coverageGains": 23,
+    "coverageRegressions": 0,
+    "file": "source-surrogate-path-comparison.json",
+    "inputsStable": true,
+    "sha256": "7acf2d4ebf87d2e0d741d39212154e23d17e36df0c2a813e365ed22fe490a316",
+    "surrogateRegressions": 0
+  },
+  "appliedProductBindings": {
+    "app/scripts/generateCurriculumQualityStatus.ts": "931ff504473a14184a5eefc760efdd3c4f2df39db119ac8d9727e5dae63bd98d",
+    "app/scripts/generateCurriculumSourceCoverageAudit.ts": "2a53c853522c2e31ddef65edf28261d0de04ea6efaee299007d8496043628aa2",
+    "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts": "ff9ed4209cf197779ca182c64e9d3b833ae353004a65a7b1891369e6c1609541",
+    "app/scripts/sourceCoverageEvidence.ts": "fa9e8a6595140561ead15c1d46be20e6846e1b2b1c071f8407bee5eabaafb488"
+  },
+  "astraFinalReview": "GO: fixed reviewed endpoint/carrier/jurisdiction and carrier source qualification retained; internal atoms are structural requires-path witnesses only",
+  "freshRemoteCiAccepted": false,
+  "harnessNote": "Same candidate test source and assertions; local import targets and repoRoot rewritten to absolute paths solely to execute the temporary candidate without product writes. RED imports byte-exact original helper; GREEN imports candidate helper. All ten original regression cases remain intact.",
+  "newSourceOrReviewDecisions": false,
+  "normalAppliedValidation": {
+    "commands": [
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/npx",
+          "--no-install",
+          "tsc",
+          "-b",
+          "--pretty",
+          "false"
+        ],
+        "endedAt": "2026-11-10T13:46:55.406222+00:00",
+        "exitCode": 0,
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "name": "typecheck",
+        "pid": 503978,
+        "seconds": 24.939,
+        "startedAt": "2026-11-10T13:46:30.469596+00:00"
+      },
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/npm",
+          "run",
+          "quality:source-coverage-audit"
+        ],
+        "endedAt": "2026-11-10T13:47:17.621083+00:00",
+        "exitCode": 0,
+        "logSha256": "de62e59a2aa6c45f7f0fc8a1c796bb256f47014a403400993fcddaf2c123bd72",
+        "name": "source-audit-producer",
+        "pid": 504169,
+        "seconds": 22.202,
+        "startedAt": "2026-11-10T13:46:55.420655+00:00"
+      },
+      {
+        "command": [
+          "/home/enpasos/.nvm/versions/node/v20.20.2/bin/npm",
+          "run",
+          "quality:source-coverage-audit:check"
+        ],
+        "endedAt": "2026-11-10T13:48:07.016643+00:00",
+        "exitCode": 0,
+        "logSha256": "ec313039a0970ac865559f8aa5e3dcf0a4070ecfe0ca2c10a7d5849628b7887b",
+        "name": "source-audit-check-with-regressions",
+        "pid": 504271,
+        "seconds": 49.391,
+        "startedAt": "2026-11-10T13:47:17.629346+00:00"
+      }
+    ],
+    "namedInputCount": 3656,
+    "passed": true,
+    "receipt": "/mnt/e/skillpilot-g17-chemistry-applied-source-fix-20261110/attempt-1/run-receipt.json",
+    "sha256": "ff490881b20171fe65b2fe543f1b8f31bf20bcb0f68e74416471592ea555e8ad",
+    "sourceAuditContentsEqualPreviousReportExceptTimestamp": true,
+    "unexpectedInputDeltas": []
+  },
+  "normalCqrAndTenFloors": {
+    "allTenFloorsPassed": false,
+    "attempt": 2,
+    "handle": 12264,
+    "inputCount": 9905,
+    "normalMemoryPrehookRetained": true,
+    "originalFailureRetained": true,
+    "runRoot": "/mnt/e/skillpilot-g17-chemistry-cqr-20261110/attempt-2-after-source-path-fix",
+    "status": "running"
+  },
+  "patchSha256": "37f79de20f1cf9c1f882a52cab0e5f876c981a7479365cb2f8e4073b272cc08e",
+  "productionApplied": true,
+  "schemaVersion": 1,
+  "scratchBeforeApplicationFileBindings": [
+    {
+      "candidateSha256": "fa9e8a6595140561ead15c1d46be20e6846e1b2b1c071f8407bee5eabaafb488",
+      "candidateStillReviewed": true,
+      "originalSha256": "1caf8a1db812aef91360f6aaffc38aab6cdd39649502ee3e5690bd18f9f28f4d",
+      "path": "app/scripts/sourceCoverageEvidence.ts",
+      "productStillOriginal": true
+    },
+    {
+      "candidateSha256": "ff9ed4209cf197779ca182c64e9d3b833ae353004a65a7b1891369e6c1609541",
+      "candidateStillReviewed": true,
+      "originalSha256": "e6cfee1b559f6100719ba904f4ba2e9c941e3246eeb24ef9000e4afed3a6d655",
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "productStillOriginal": true
+    },
+    {
+      "candidateSha256": "931ff504473a14184a5eefc760efdd3c4f2df39db119ac8d9727e5dae63bd98d",
+      "candidateStillReviewed": true,
+      "originalSha256": "4f9a53d850843712adc72ff08ef5ad3b12aed38e0c2c32d4a83f93c0ff45e87d",
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "productStillOriginal": true
+    },
+    {
+      "candidateSha256": "2a53c853522c2e31ddef65edf28261d0de04ea6efaee299007d8496043628aa2",
+      "candidateStillReviewed": true,
+      "originalSha256": "c56e0522432213f666d785b16655057ff4d4cf3cc491346fd6bf2f39219f62c2",
+      "path": "app/scripts/generateCurriculumSourceCoverageAudit.ts",
+      "productStillOriginal": true
+    }
+  ],
+  "tests": {
+    "oldFullFinal": {
+      "duration_ms": "38996.684096",
+      "exitCode": 1,
+      "fail": "4",
+      "log": "red-final.log",
+      "pass": "11",
+      "skipped": "0",
+      "tests": "15"
+    },
+    "patchedFullFinal": {
+      "duration_ms": "39217.224906",
+      "exitCode": 0,
+      "fail": "0",
+      "log": "green-final.log",
+      "pass": "15",
+      "skipped": "0",
+      "tests": "15"
+    }
+  }
+}

@@ -4114,6 +4114,7 @@ function createCoverageEvidenceChecker(
     canonicalGoalById,
     surrogateEntriesByKey,
     isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+    getCanonicalRequires: (goal) => goal.requires,
   })
 }
 
