@@ -15,8 +15,11 @@ Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert
 **Aktuelle Lieferposition vom 10. November 2026, Chemie:** Physik ist mit
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) auf Main bei
 `c2f0722545f51e53526651e0d7ee26a9e0fb64ae`. Der Mergetree entspricht dem
-vollständig geprüften PR-Head. Die getrennte frische Main-Push-CI läuft noch;
-deren sechs Begleitworkflows und sechs von acht Hauptjobs sind bestanden.
+vollständig geprüften PR-Head. Die getrennte frische Main-Push-CI ist vollständig
+bestanden: alle acht Hauptjobs und sechs Begleitworkflows. Der ungefilterte
+Backendcheck besteht mit 2.710 Tests und 19 bestehenden Skips, darunter alle
+fünf nativen und 95 fachübergreifenden Methoden; normaler CQR-Producer,
+zehn unveränderte Floors und Report-Sauberkeit bestehen ebenfalls.
 
 Der sichtbare IDE-Branch ist
 `fix/g17-chemistry-atomic-prerequisites-v7-data`, aufgebaut auf diesem Main
@@ -65,8 +68,12 @@ Der kleine gemeinsame Quellenprüfer-Fix ist nach Astras Review angewendet:
 308 akzeptierten Beziehungen bleiben ohne Regression; die neun Chemiefälle
 werden über ihre erhaltenen tatsächlichen Atompfade anerkannt. Typecheck und
 normaler Quellenaudit bestehen auf dem angewendeten Stand. Quellenentscheidungen
-und Floors bleiben unverändert. Der neue reguläre CQR-/Floorlauf läuft mit
-9.905 Eingabebindungen; der Daten-PR bleibt bis zur Gesamtprüfung ein Draft.
+und Floors bleiben unverändert. Der neue reguläre Producer über alle 21 Kataloge
+besteht nach 946,318 Sekunden; danach bestehen alle zehn unveränderten Floors.
+Chemie erreicht lokal wieder M7. Unter 9.905 gebundenen Eingaben ändern sich nur
+die beiden CQR-Berichte und deren bestehender Alias. Native6, frische Remote-CI
+und Chemie-Main-Lieferung bleiben offen; der Daten-PR bleibt bis zur Gesamtprüfung
+ein Draft.
 Im ersten Lauf ändern sich unter den 9.903 benannten Eingaben ausschließlich deklarierte
 Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
 mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der

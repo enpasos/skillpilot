@@ -122,10 +122,14 @@ auf den angewendeten Produktdateien. Unter 3.656 benannten Eingaben ändern sich
 ausschließlich die zwei erzeugten Source-Audit-Berichte; ihr Inhalt entspricht
 dem bisherigen Bericht vollständig bis auf das Erzeugungsdatum.
 
-Der neue normale CQR-Lauf samt Memory-Vorlauf und anschließend zehn unveränderten
-Floors läuft auf dem korrigierten Stand mit 9.905 Eingabebindungen. Der erste
-fehlgeschlagene Lauf bleibt erhalten. Der Daten-PR bleibt bis zur vollständigen
-Abnahme ein Draft. Frische PR-/Main-CI und Chemie-Main-Lieferung sind offen.
+Der [neue normale CQR-Lauf](regular-cqr-and-floors.json) samt Memory-Vorlauf
+über alle 21 Kataloge besteht nach 946,318 Sekunden. Anschließend bestehen
+sämtliche zehn unveränderten Floors; Chemie erreicht wieder M7. Unter den
+9.905 Eingabebindungen ändern sich ausschließlich die beiden erzeugten
+CQR-Berichte und deren bestehender Alias. Die gesamte Chemie-View-Mitgliedschaft
+bleibt gleich. Der erste fehlgeschlagene Lauf bleibt erhalten. Der Daten-PR
+bleibt bis zur vollständigen Abnahme ein Draft. Native6, frische PR-/Main-CI
+und Chemie-Main-Lieferung sind offen.
 
 Die [kompakte Belegübersicht](receipt.json) bindet den angewendeten Stand und
 begrenzt jede Ergebnisbehauptung auf ihren tatsächlichen Prüfumfang. Astra Ultra
