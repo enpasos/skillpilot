@@ -5,6 +5,13 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+const auditorModulePath = fileURLToPath(import.meta.url)
+const auditorModuleBytes = readFileSync(auditorModulePath)
+export function assertTransitiveMinimalityImplementationCurrent(): void {
+  if (!readFileSync(auditorModulePath).equals(auditorModuleBytes))
+    throw new Error('Transitive minimality implementation changed since module load')
+}
+
 export type AuditGoal = { id: string; title?: string; contains?: string[]; requires?: string[] }
 export type AuditLandscape = { landscapeId: string; goals: AuditGoal[] }
 type Node = { key: string; landscapeId: string; goal: AuditGoal; contains: string[]; requires: string[] }

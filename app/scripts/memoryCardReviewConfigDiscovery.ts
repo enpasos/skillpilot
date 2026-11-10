@@ -1,6 +1,7 @@
-import { existsSync, readdirSync, readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { liveVerificationInputs, type VerificationInputReader } from './lib/verificationInputSnapshot'
 
 export type MemoryCardReviewConfigRef = {
   reviewId: string
@@ -10,6 +11,7 @@ export type MemoryCardReviewConfigRef = {
 
 export type DiscoverMemoryCardReviewConfigOptions = {
   allowEmpty?: boolean
+  inputs?: VerificationInputReader
 }
 
 // Current evidence may check additional authored views while predecessor
@@ -59,13 +61,14 @@ export function discoverMemoryCardReviewConfigs(
   configDir = defaultMemoryCardReviewConfigDir,
   options: DiscoverMemoryCardReviewConfigOptions = {},
 ): MemoryCardReviewConfigRef[] {
+  const inputs = options.inputs ?? liveVerificationInputs
   const absoluteDir = resolve(repoRoot, configDir)
-  if (!existsSync(absoluteDir)) {
+  if (!inputs.exists(absoluteDir)) {
     if (options.allowEmpty) return []
     throw new Error(`Memory-card review config directory does not exist: ${configDir}`)
   }
 
-  const configPaths = readdirSync(absoluteDir, { withFileTypes: true })
+  const configPaths = inputs.readDirectory(absoluteDir)
     .filter((entry) => entry.isFile() && entry.name.endsWith('.config.json'))
     .map((entry) => repoRelative(resolve(absoluteDir, entry.name)))
     .sort((left, right) => left.localeCompare(right, 'en'))
@@ -76,7 +79,7 @@ export function discoverMemoryCardReviewConfigs(
   }
 
   return configPaths.map((configPath) => {
-    const parsed = JSON.parse(readFileSync(resolve(repoRoot, configPath), 'utf8')) as {
+    const parsed = JSON.parse(inputs.readText(resolve(repoRoot, configPath))) as {
       reviewId?: unknown
       reportPath?: unknown
     }
@@ -139,14 +142,15 @@ export function discoverRetainedMemoryCardReviewConfigs(
 export function discoverActiveMemoryCardReviewConfigs(
   configDir = defaultMemoryCardReviewConfigDir,
   registryPath = activeReviewRegistryPath,
+  inputs: VerificationInputReader = liveVerificationInputs,
 ): MemoryCardReviewConfigRef[] {
-  const configs = discoverMemoryCardReviewConfigs(configDir)
-  const registry = JSON.parse(readFileSync(resolve(repoRoot, registryPath), 'utf8')) as {
+  const configs = discoverMemoryCardReviewConfigs(configDir, { inputs })
+  const registry = JSON.parse(inputs.readText(resolve(repoRoot, registryPath))) as {
     subjects: Array<{ landscapePath: string; memoryReviewConfigPath: string }>
   }
   const activeByLandscapeId = new Map<string, string>()
   for (const subject of registry.subjects) {
-    const landscape = JSON.parse(readFileSync(resolve(repoRoot, subject.landscapePath), 'utf8')) as {
+    const landscape = JSON.parse(inputs.readText(resolve(repoRoot, subject.landscapePath))) as {
       landscapeId: string
     }
     if (!landscape.landscapeId || !subject.memoryReviewConfigPath) {
@@ -159,11 +163,11 @@ export function discoverActiveMemoryCardReviewConfigs(
   }
 
   const selected = configs.map((configRef) => {
-    const previous = JSON.parse(readFileSync(resolve(repoRoot, configRef.configPath), 'utf8')) as Record<string, unknown>
+    const previous = JSON.parse(inputs.readText(resolve(repoRoot, configRef.configPath))) as Record<string, unknown>
     const activePath = activeByLandscapeId.get(previous.landscapeId as string)
     if (!activePath) return configRef
     activeByLandscapeId.delete(previous.landscapeId as string)
-    const active = JSON.parse(readFileSync(resolve(repoRoot, activePath), 'utf8')) as Record<string, unknown>
+    const active = JSON.parse(inputs.readText(resolve(repoRoot, activePath))) as Record<string, unknown>
     // Evidence routing preserves the checked subject, goal scope and card
     // requirements. Additional views expand the existing visibility checks.
     for (const field of ['reviewId', 'landscapeId', 'landscapePath', 'ruleVersion', 'scope']) {
