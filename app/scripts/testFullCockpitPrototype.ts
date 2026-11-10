@@ -370,6 +370,15 @@ try {
     await drill.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
     await openMap(drill, data.mathScopeId)
     assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.ordinaryId)
+    // Escape inside the map belongs to the dialog: it closes the map and changes nothing on it.
+    const selectedNode = drill.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main`)
+    assert.equal(await selectedNode.getAttribute('aria-pressed'), 'true')
+    await selectedNode.focus()
+    await drill.keyboard.press('Escape')
+    await mapDialog(drill).waitFor({ state: 'hidden' })
+    await drill.waitForFunction(() => document.activeElement?.getAttribute('data-testid') === 'learner-learning-map-open')
+    await openMap(drill, data.mathScopeId)
+    assert.equal(await selectedNode.getAttribute('aria-pressed'), 'true', 'Escape closes the map without clearing its selection')
     await drill.context().close()
   }
   assert.deepEqual(rejected, [], 'No API, external network, or write may leave the local adapter')
