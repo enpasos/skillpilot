@@ -398,6 +398,9 @@ async function runApplicabilityRefreshFixtureRegressions() {
     mutate(f); f.save()
     await assert.rejects(f.load, expected); checks++
   }
+  await reject(f => { f.get(targetKey('u')).extendedData = {
+    assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: ['v'] },
+  } }, /current document digest differs/u)
   await reject(f => { f.registry.originalApplicability.push(structuredClone(f.registry.originalApplicability[0])) }, /duplicate original applicability/u)
   await reject(f => { Object.assign(f.registry, { extra: true }) }, /invalid applicability refresh registry fields/u)
   await reject(f => { Object.assign(f.registry.originalApplicability[0], { extra: true }) }, /invalid original applicability fields/u)
@@ -621,7 +624,34 @@ async function runBatchRequiredNegativeRegressions() {
   app.add([{ id: 'app-cut', step: { source: targetKey('u'), prerequisite: targetKey('w'), witness: ['u', 'v', 'w'].map(targetKey) },
     endWitness: ['u', 'v', 'w'].map(targetKey) }], () => { app.get(targetKey('u')).requires = ['v'] })
   await assert.rejects(app.load, /compiled applicability changed after batches/u)
-  console.log('V6 required extra negative fixture checks passed: 2')
+  // A valid, coincidentally equal predicate still is an undeclared raw-field
+  // change under V6. Keep every historical original/checkpoint immutable.
+  const equalDocument = clusterTargetBaseline()
+  equalDocument.goals.push({ ...goal('u', ['v', 'w']), tags: ['Assessment'],
+    extendedData: { applicabilityFromRequires: true } },
+  { ...goal('v', ['w']), extendedData: { applicabilityOverrides: { jurisdiction: ['DE-HE'] } } },
+  { ...goal('w'), extendedData: { applicabilityOverrides: { jurisdiction: ['DE-HE'] } } })
+  const undeclaredBasis = batchFixture(equalDocument)
+  undeclaredBasis.add([{ id: 'equal-cut', step: { source: targetKey('u'), prerequisite: targetKey('w'),
+    witness: ['u', 'v', 'w'].map(targetKey) }, endWitness: ['u', 'v', 'w'].map(targetKey) }],
+  () => { undeclaredBasis.get(targetKey('u')).requires = ['v'] })
+  assert.ok(await undeclaredBasis.load())
+  const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
+  const compiled = () => buildApplicabilityCompilation(undeclaredBasis.documents.map(landscape => ({
+    file: resolve(undeclaredBasis.directory, `${landscape.landscapeId}.json`),
+    landscape: landscape as unknown as import('../src/landscapeTypes').SkillLandscape,
+  }))).reports.flatMap(report => report.goals.map(goal => ({
+    key: `${report.landscapeId}:${goal.goalId}`, value: goal.compiledApplicability,
+  })))
+  const beforeBasis = compiled()
+  undeclaredBasis.get(targetKey('u')).extendedData = {
+    applicabilityFromRequires: true,
+    assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: ['v', 'w'] },
+  }
+  assert.deepEqual(compiled(), beforeBasis, 'coincidentally equal applicability cannot authorize a new raw field')
+  undeclaredBasis.save()
+  await assert.rejects(undeclaredBasis.load, /final batch document digest differs/u)
+  console.log('V6 required extra negative fixture checks passed: 3')
 }
 
 type BatchTestDocument = { path: string; document: Document }

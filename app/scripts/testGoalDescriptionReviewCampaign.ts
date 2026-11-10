@@ -451,6 +451,14 @@ assert.deepEqual(builtInput.goals[0].canonicalContext, {
   examples: ['fixture-example-1'],
 })
 
+// Unknown new eligibility semantics must not disappear from review freshness.
+for (const assessmentApplicabilityBasis of [
+  { kind: 'allOfGoalApplicability', goalRefs: ['same-output-reference'] }, null, undefined, {},
+]) assert.throws(() => buildGoalDescriptionCanonicalContext({
+  id: 'unverified-assessment-basis', weight: 1, dimensionTags: {},
+  extendedData: { applicabilityFromRequires: true, assessmentApplicabilityBasis },
+}), /assessmentApplicabilityBasis requires a verified V8 baseline/u)
+
 const campaign = buildGoalDescriptionReviewCampaign({
   bundle,
   input,

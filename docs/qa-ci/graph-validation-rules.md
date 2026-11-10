@@ -171,6 +171,33 @@ Accepted-warning handling:
 - Retained compatibility clusters that are no longer learner-facing must be marked with `extendedData.applicabilityProjection = "excluded"`. Otherwise cluster child-union applicability can make them visible without a root path and trigger `APV-103`.
 - `validate:view-filters` prints compact summaries by default. Set `APPLICABILITY_VERBOSE_WARNINGS=1` to print every individual warning line for audit/debug work.
 
+### Explicit assessment applicability basis
+
+For atomic practice/assessment endpoints with `applicabilityFromRequires: true`,
+the compiler supports the optional
+`extendedData.assessmentApplicabilityBasis = { kind: "allOfGoalApplicability", goalRefs: [...] }`.
+Its all-of expression is evaluated from the current referenced goal definitions;
+cluster references retain the existing child-union and provenance behavior.
+It supplies seed-eligibility evidence only. The required learning relation still
+comes from canonical `requires` and the closed Personal Curriculum.
+
+Current compiler support rejects malformed or empty reference lists,
+duplicates, unresolved references, cycles, foreign dependencies and
+Memory-derived dependencies. Unsupported evaluation fails. A supported
+expression with an actually empty result retains the existing `{}`
+representation; the later migration proof must reject changing a previously
+nonempty result into it. Goals without this field retain their existing
+behavior. These limits describe the current compiler component; foreign
+necessary learning remains part of the full target contract.
+
+This is dormant technical support. No canonical goal or source assignment is
+changed. Ordinary description-review context construction rejects this field,
+and V1–V7 reduction proofs cannot admit its addition. A separately verified
+migration must bind the exact previous immediate applicability expression;
+the proof extension, actual emitted-target APV checks and native comparison
+remain required before any Biology data admission. Existing fingerprints,
+review inputs, historical schemas and protected maturity floors are preserved.
+
 ## Composition-view validator (`validate:composition-views`)
 
 This validator is separate from both `validate:graph` and `validate:view-filters`.
