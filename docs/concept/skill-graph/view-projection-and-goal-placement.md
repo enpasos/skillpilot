@@ -214,13 +214,57 @@ the structure needed for inherited requirements in transitional data. The
 formal closure requirement is specified in [Graph Definition §11.2](graph-definition.md#112-filter-predicate-and-induced-subgraph).
 
 For `A requires B requires C`, a view selecting A and C must retain B in its
-underlying prerequisite graph. B need not appear in the visible tree. Its
-required Level 2 role must nevertheless be explicitly resolved under the
-existing role contract; loading a node does not assign a role. Missing roles
-invalidate the projection. The role check still precedes prerequisite-cluster
-expansion; `contains` descendants alone gain no additional role obligation.
-No support goal becomes a target automatically, and Level 3 focus remains a
-separate restriction applied after full prerequisite reachability.
+underlying prerequisite graph. Structural lookup alone does not make B
+learnable; the personal learning-closure rule below additionally makes it a
+compiled target in the full plan. Authored seed references stay validated,
+while checked canonical paths/provenance justify derived targets without a
+manual reference per prerequisite. Unknown references, cycles or missing,
+unexposed or unaccounted required atoms remain hard errors. Unrelated
+`contains` descendants acquire no additional learning obligation.
+<a id="required-prerequisite-learning-scope"></a>
+
+**Personal learning-scope decision, 10 November 2026.** Necessary prerequisites
+belong to learning, progress and completion, not merely to hidden lookup support.
+Let $S$ be the union of atomic seed targets from the selected reviewed subject
+scopes. First select valid $S$ with their reviewed seed eligibility and
+course/jurisdiction filters. Then compile the fixed global basis
+$L=S\cup\{p\in A\mid\exists t\in S:(t,p)\in R_{at}^+\}$ on the
+unpruned canonical graph. Retain additional necessary atoms even when the seed
+filters would exclude them; do not select unrelated other-course or
+other-jurisdiction targets. $L$ depends on personal
+configuration and curriculum/projection revision, not on mastery. Mastered atoms
+stay included and satisfied without automatic repetition; an open prerequisite
+needs an actual navigable acquisition target in the full Personal Curriculum.
+Closure continues through mastered intermediates. An assumed entry basis is
+not evidence of mastery.
+
+This is the explicit exception to the former no-automatic-promotion and blanket
+manual-role rules at the Personal Curriculum compile boundary. A derived target
+role plus its checked canonical prerequisite path and recorded provenance
+satisfy the obligation; no manual view reference is needed for each derived atom. It uses only existing reviewed canonical
+requirements and deduplicates shared atoms; it does not enroll
+siblings, entire foreign units or whole subjects merely because one atom is
+required. Every individually necessary atom remains in $L$, including when all
+atoms of a subject are necessary. A necessary atom can remain
+`prerequisiteOnly` in one subject view when the same canonical atom is targeted
+elsewhere in the full plan. It cannot remain globally excluded merely because
+all contributing views call it support.
+
+Official source-curriculum assignment and required-learning inclusion remain
+separate. The added target must retain its canonical provenance and an
+explainable `required by` path; it gains no new source mapping or applicability
+claim. Reviewed seed eligibility, including predicates derived from prerequisites,
+must be preserved and verified separately when prerequisite representation
+changes. A changed raw direct list does not authorize changing those seed scopes.
+No new goal, edge, source decision or mastery write is authorized.
+
+Level 3 focus remains the selected roots' descendant union intersected with $L$.
+Its normal/strict rules and accepted widening flow remain unchanged; compilation
+does not widen focus automatically. Required learning outside that focus still
+counts toward full-plan progress and completion. Existing goal-type results,
+recognition and card/assessment obligations remain in force. Compiler,
+validation and runtime implementation of this new scope policy is still open;
+these documentation changes do not establish runtime or G17 acceptance.
 
 Canonical goal identity and atomicity also survive projection. A direct
 `goalEntry` can expose a canonical atom as an assessable leaf. Referencing a
@@ -296,17 +340,17 @@ The default learner-facing tree should be produced by an early deterministic com
 1. resolve the scope
 2. select the matching composition view, if one exists
 3. expand canonical references, preserve their canonical atomic basis, and retain the full prerequisite closure
-4. validate required projection roles, single occurrence, non-overlap, and parent uniqueness
+4. validate subject roles and close the full Personal Curriculum over necessary atomic prerequisites, then validate single occurrence, non-overlap, and parent uniqueness
 5. emit a compiled tree artifact for the runtime
 
 This compile step must happen early enough that programmatic validation rules can run on the compiled tree before any UI rendering logic.
 
 ### Learning roles in a compiled composition view
 
-A compiled composition view distinguishes two runtime roles without changing the canonical skill graph:
+Authored subject-view references distinguish two local roles without changing the canonical skill graph; the full Personal Curriculum additionally has the derived target basis $L$:
 
 - `target`: a selectable learning target in this learner-facing scope
-- `prerequisiteOnly`: a supporting goal whose global mastery is available for prerequisite evaluation, but which is not itself selectable in this scope
+- `prerequisiteOnly`: a subject-local support reference whose global mastery is available for prerequisite evaluation; this authored role alone grants no acquisition target, while a necessary compiled target in $L$ remains learnable in the full plan
 
 The role is authored explicitly on `canonicalSubtree` and `goalEntry` references with
 `projectionRole: "target" | "prerequisiteOnly"`. If the field is omitted, the
@@ -326,35 +370,37 @@ This precedence lets a broad reviewed subtree remain selectable while individual
 supporting goals inside it are explicitly demoted to `prerequisiteOnly`, without
 copying or enumerating the rest of the subtree.
 
-Role assignment is intentionally **not** derived transitively from `requires`, nor
-inferred from broad metadata such as `phase`, year, or stage. The canonical
-`requires` graph still determines whether an explicitly included supporting goal
-blocks or unlocks a target. This makes that support relationship reviewable and
-prevents unrelated inherited goals from silently becoming hidden blockers.
+Authored subject-view roles are not inferred from `phase`, year or stage. Their
+specificity rules remain unchanged. The separately authorized Personal Curriculum
+compile rule derives global $L$ from existing canonical prerequisites; it does
+not rewrite a subject's authored role or invent a dependency. Every required
+atom needs an acquisition target somewhere in that full plan, with shared
+canonical identity counted once.
 
 The runtime contract is:
 
 - only targets may appear in learner navigation or as frontier candidates
-- only targets contribute to scope progress and scope completion
-- a prerequisite-only goal never becomes a frontier candidate in that view
+- only targets contribute to the respective scope progress and completion; the full Personal Curriculum uses the closed target basis $L$
+- the subject-local support role alone grants no frontier candidate; a necessary compiled target in $L$ is selectable in the full Personal Curriculum, subject to focus and prerequisites
 - the corrected 4 November 2026 concept uses global effective mastery (explicit results plus valid application recognition) for prerequisite satisfaction; strict mode checks complete effective transitive paths through unchanged canonical `requires` edges
-- normal mode masks applicable checks to the selected Level 3 focus after effective transitive reachability is determined; it must not erase paths through outside intermediates. An outside prerequisite-only goal does not become selectable or acquire a stored mastery entry. A focus is not a recognition contract; valid effective mastery survives view and plan changes. Runtime adaptation to this corrected concept remains pending
-- targeted repetition of an earlier goal requires an explicit target reference or a separate reviewed repetition plan; it must not become selectable merely because it is an earlier-phase goal
+- normal mode masks applicable checks to the selected Level 3 focus after effective transitive reachability is determined; it must not erase paths through outside intermediates. An outside-focus required atom remains a target in $L$ but is not a candidate in the current focus; inclusion writes no mastery. A focus is not a recognition contract; valid effective mastery survives view and plan changes. Runtime adaptation to this corrected concept remains pending
+- targeted repetition of an earlier goal uses an authored or compiled target, or a separately reviewed repetition plan; an earlier phase alone does not make it selectable
 
-This distinction keeps bridge competencies available for sequencing while
-preventing unrelated or supporting goals from leaking into the Sek-II frontier.
+This distinction keeps unrelated support outside the learning target basis.
+Necessary compiled targets remain learnable in the full Personal Curriculum;
+existing normal focus rules govern their inclusion in the current frontier.
 
 For the reviewed Hessen Sek-II-LK mathematics projection:
 
 - the J9/J10 bridge goals are explicitly included as `prerequisiteOnly`
-- the five formula-sheet goals and the J7 chain are explicitly included as
-  `prerequisiteOnly`: they are not frontier targets, but their existing global
-  mastery still participates in global strict checks of genuine Sek-II targets
-  that canonically require them
+- the five formula-sheet goals and the J7 chain retain their authored
+  `prerequisiteOnly` role in that subject view; each genuinely required atom must
+  additionally be a target somewhere in the full closed Personal Curriculum,
+  with existing mastery counted as satisfied
 - genuine Sek-II goals are explicitly included as targets
-- if an earlier goal should become selectable for targeted repetition, the view
-  must promote it explicitly to `target` or use a separately reviewed repetition
-  plan
+- an open required earlier atom needs a global acquisition target; optional
+  repetition of an already satisfied atom remains voluntary and uses the
+  applicable authored or compiled target or reviewed repetition-plan contract
 
 Compilation must not:
 
@@ -401,11 +447,13 @@ For a resolved unit hierarchy:
    visible planning gaps; hiding them or assigning `prerequisiteOnly` does not
    satisfy this condition.
 
-Resolving prerequisites for validation does not promote them to learner-facing
-targets, widen the Personal Curriculum, or change a normal-mode frontier into a
-strict-mode frontier. Explicit learning provision for a missing foundation uses
-the applicable reviewed target or remediation-plan contract. The entry basis
-records an assumption, never a mastery write.
+The 10 November personal learning-closure rule ensures that necessary atoms
+have an acquisition target in the full Personal Curriculum, including when a
+subject uses a local support reference. That reference does not create a second
+unit owner or duplicate acquisition. Existing unit-ownership and local assessment
+contracts remain unchanged; their implementation stays separate. An assumed
+entry basis cannot remove an unproven prerequisite from $L$. Normal focus does
+not become strict mode, and no learner result is written by inclusion.
 
 A unit can be collapsed to its learning promise, prerequisites and completion,
 then expanded into its goals and subunits. Preserve the default tree's

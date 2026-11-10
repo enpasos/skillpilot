@@ -299,7 +299,7 @@ Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
 \textbf{Ist und Lücke.} QUELLE/SICHT getrennt; akzeptiertes Overlay ersetzt keine CQR-003-Abdeckung.\par\smallskip
 \emph{Fundstelle:} „Filter als Prädikat und kompilierte Anwendbarkeit“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-C33}\textbf{GD-C33} &
-\textbf{Pflicht.} Der Auswertungsgraph ausgewählter kanonischer Atome enthält deren vollständige transitive atomare Voraussetzungshülle vor Fokus- oder Sichtbeschränkung; globale Vererbung und Expansion gehen voraus. Die kanonische Klassifikation bleibt erhalten: Ausgeblendete Kinder machen Cluster nicht zu Atomen.\par\smallskip
+\textbf{Pflicht.} Vollständige transitive atomare Hülle vor Sicht-/Fokusbeschränkung erhalten; globale Vererbung und Expansion gehen voraus. Nach Ownerregel 10.11. bildet sie mit den gewählten Ausgangszielen den festen persönlichen Lernumfang L. Ausgeblendete Kinder machen Cluster nicht zu Atomen.\par\smallskip
 \textbf{Soll.} SICHT/RT\par\smallskip
 \textbf{Ist und Lücke.} Vollständige Hüllen- und Identitätserhaltung separat prüfen; die bestehende opake goalEntry-Atomisierung ist eine offene Implementierungslücke.\par\smallskip
 \emph{Fundstelle:} „Erst global vererben, dann einschränken“\\\addlinespace[5pt]
@@ -386,19 +386,19 @@ Regelgruppe & Vollständige Pflicht, Sollzuordnung und Ist-Grenze\\
 \textbf{Ist und Lücke.} Anbieter-/Autorisierungsvertrag ist kein M7-Gate.\par\smallskip
 \emph{Fundstelle:} „Vier Personalisierungsstufen“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X12}\textbf{GD-X12} &
-\textbf{Pflicht.} Alle Personal-Curriculum-Targets bleiben Gesamtpflicht; Fokus verengt nur Arbeit. \code{target} zählt zu Auswahl/Frontier/Fortschritt/Abschluss, \code{prerequisiteOnly} nur zu Voraussetzungsprüfungen mit globaler ID und Zustand, nicht zum Nenner.\par\smallskip
+\textbf{Pflicht.} L umfasst Ausgangsziele und alle notwendigen atomaren Voraussetzungen, unabhängig von Mastery; gemeisterte Ziele bleiben erfüllt im Nenner. Fokus verengt nur Arbeit, nicht Gesamtfortschritt oder Abschluss. Notwendige offene Atome brauchen ein Erwerbsziel im Gesamtplan; jede kanonische ID zählt einmal.\par\smallskip
 \textbf{Soll.} SICHT/RT; M2/M5 nur konkrete View-Anteile\par\smallskip
-\textbf{Ist und Lücke.} CQR-Reife ersetzt keine Laufzeitprüfung dieser Rollenwirkungen.\par\smallskip
+\textbf{Ist und Lücke.} Ownerregel 10.11.; Compiler-/Laufzeitanpassung offen. CQR-Reife ist dafür kein Nachweis.\par\smallskip
 \emph{Fundstelle:} „Vier Personalisierungsstufen“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X13}\textbf{GD-X13} &
-\textbf{Pflicht.} Fehlende Rolle bedeutet target. Teilbaumrolle vererbt; direct goalEntry gewinnt vor Teilbaum, nähere Teilbaumwurzel vor breiterer, bei gleicher Spezifität target. Rollen nicht aus Alter/Phase/Pfaden erraten; Mehrfachkontexte erzeugen keinen doppelten Erwerb.\par\smallskip
+\textbf{Pflicht.} Verfasste Fachrollen und ihre Spezifität bleiben: fehlende Rolle target, direct goalEntry vor Teilbaum, nähere Wurzel vor breiterer, bei Gleichstand target. Keine Ableitung aus Alter/Phase. Die ausdrückliche persönliche Hüllenregel ergänzt notwendige Ziele; fachlokales prerequisiteOnly ist bei Erwerbsziel anderswo in L zulässig.\par\smallskip
 \textbf{Soll.} SICHT/RT\par\smallskip
 \textbf{Ist und Lücke.} Kein einzelner CQR-Gate beweist sämtliche Überlappungsfälle.\par\smallskip
 \emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X14}\textbf{GD-X14} &
-\textbf{Pflicht.} Jede direkte/geerbte/transitive effektive Voraussetzung eines sichtbaren Ziels muss in Level 2 ausdrücklich als target oder prerequisiteOnly auflösbar sein; strukturelles Mitladen weist keine Rolle zu. Prüfung vor Clusterexpansion; bloße contains-Nachkommen erhalten keine zusätzliche Rollenpflicht. Fehlende Rolle sperrt trotz Mastery/außerhalb Fokus; Legacy-Ausnahme entfällt. Gültige Außenfokusziele bleiben im Normalmodus nichtblockierend.\par\smallskip
+\textbf{Pflicht.} Verfasste Ausgangsreferenzen bleiben hart geprüft. Die kompilierte Zielrolle eines notwendigen Atoms mit geprüftem kanonischem Pfad und Herkunft genügt ohne manuelle Referenz je Atom. Unbekannte Referenzen, Zyklen und fehlende oder nicht erreichbare notwendige Atome sind Fehler. Normalmodus ignoriert gültige Außenfokusanforderungen weiterhin.\par\smallskip
 \textbf{Soll.} Stufenübergreifender Projektions-/RT-Vertrag\par\smallskip
-\textbf{Ist und Lücke.} Ownerregel 7.11.; kein automatischer M7-Nachweis. Vollständige heutige Durchsetzung separat prüfen.\par\smallskip
+\textbf{Ist und Lücke.} Fachrollenregel 7.11. und persönliche Hülle 10.11.; neue Umsetzung und Abnahme offen, kein automatischer M7-Nachweis.\par\smallskip
 \emph{Fundstelle:} „Zielrolle und Voraussetzungshilfe“\\\addlinespace[5pt]
 \phantomsection\label{rule:GD-X15}\textbf{GD-X15} &
 \textbf{Pflicht.} Applicability beschreibt belegte Sichtbarkeit, Platzierung strukturellen Ort, weder bedeutet Mastery. Deklarierte Mappingvererbungsgrenzen schützen Ergänzungszweige vor falscher breiter Provenienz; direkte Quellen bleiben. Lokale Endpunktsichtbarkeit darf unter eigenem Vertrag aus prerequisites folgen, beweist aber keine Quellenabdeckung.\par\smallskip
