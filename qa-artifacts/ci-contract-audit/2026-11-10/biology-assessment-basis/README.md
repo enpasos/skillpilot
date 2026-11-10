@@ -73,6 +73,11 @@ Der abschließende Bio-BY-Test besteht nach Kennzeichnung des Gates: Beide
 beschädigten Ausgaben lösen direkt den `APV-102`-Assertionsfehler aus und
 scheitern zusätzlich in der Runtime-Frontierprüfung. Die große Scopeprüfung
 wurde für diese reine Kennzeichnung nicht wiederholt.
-Regulärer Meilensteinlauf, geschützte Floors, vollständige Remote-CI und
-Main-Lieferung bleiben abzunehmen. Das harte G17-Gate in der
-Standard-Meilensteinprüfung bleibt ebenfalls offen.
+Der reguläre Meilensteinlauf besteht nach der Compilerkorrektur einschließlich
+seiner tatsächlichen erneuten V8-Verifikation in 927,230 Sekunden. Alle zehn
+geschützten Floors bestehen: Biologie, Chemie, Mathematik, Physik und Wirtschaft
+M7; Deutsch, Geschichte, Informatik, Latein und Politik/Wirtschaft M6.
+Abgesehen vom Erzeugungszeitpunkt und der geprüften Belegbindung bleiben die
+gesamten Statusinhalte unverändert. Vollständige Remote-CI und Main-Lieferung
+stehen aus. Das harte G17-Gate in der Standard-Meilensteinprüfung bleibt offen;
+die übrigen nicht normalisierten Fächer sind damit nicht G17-abgenommen.

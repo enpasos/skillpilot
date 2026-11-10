@@ -12,7 +12,14 @@ erfolgreichen Hauptjobs und fünf erfolgreichen Begleitworkflows auf Main
 `6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Die frische Main-Push-CI
 wird separat abgenommen. Im sichtbaren IDE-Branch
 `fix/g17-biology-assessment-basis` sind der vorbereitete Biologiestand und
-der geprüfte native V8-Adapter integriert; die Biologie-Abnahme steht aus.
+der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
+Bestandsbeweis, 761 vollständige native Einzelfachkonfigurationen, die echten
+Ausgabe-Verlustgegenfälle sowie der reguläre Meilensteinlauf einschließlich
+aller zehn unveränderten Floors bestehen lokal. Die genaue
+[Biologie-Prüfgrenze](../../qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
+trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
+Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
+Statusvoraussetzung durch.
 
 Die nächsten Schritte schließen vorhandene Lieferungen ab. Zuerst laufen
 gezielte Prüfungen der tatsächlichen Biologie-Lernumfänge und der bekannten
