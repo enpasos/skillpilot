@@ -26,7 +26,7 @@ export const CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT = 'atomic-cluster-ta
 type LegacyProofContract = typeof PREREQUISITE_REDUCTION_CONTRACT | typeof CLUSTER_PREREQUISITE_REDUCTION_CONTRACT
 type ProofContract = LegacyProofContract | typeof ORDERED_PREREQUISITE_REDUCTION_CONTRACT | typeof CONTINUED_PREREQUISITE_REDUCTION_CONTRACT
   | typeof CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT | typeof BATCHED_PREREQUISITE_REDUCTION_CONTRACT
-  | typeof APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
+  | typeof APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT | typeof BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT
 export type DirectPrerequisiteReduction = { source: string; prerequisite: string; witness: string[] }
 export type ClusterPrerequisiteReduction = { source: string; prerequisite: string; atomicWitnesses: string[][] }
 export type AtomicPrerequisiteMaterialization = {
@@ -125,15 +125,32 @@ export interface ApplicabilityRefreshPrerequisiteReductionRegistry
   originalApplicability: Array<{ source: string; present: boolean; value: Record<string, unknown> | null }>
 }
 
+export const BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT = 'assessment-basis-bound-prerequisite-reduction-v8' as const
+export type AssessmentBasisBinding = { operation: 'bind-assessment-applicability-basis'; source: string }
+export type AssessmentBasisReductionEntry = { basisBindings: AssessmentBasisBinding[]; batch: PrerequisiteReductionBatch }
+export interface BasisBoundPrerequisiteReductionRegistry
+  extends Pick<LegacyPrerequisiteReductionRegistry, 'schemaVersion' | 'auditScope' | 'catalogSources'> {
+  proofContract: typeof BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT
+  parentRegistryPath: string
+  parentRegistryRawDigest: string
+  entries: AssessmentBasisReductionEntry[]
+}
+
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
   | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry | BatchedPrerequisiteReductionRegistry
-  | ApplicabilityRefreshPrerequisiteReductionRegistry
+  | ApplicabilityRefreshPrerequisiteReductionRegistry | BasisBoundPrerequisiteReductionRegistry
 type LoadedDocument = { file: string; path: string; document: Document; applicabilityInputs?: ApplicabilityInputSnapshot }
 type VerifiedDocumentFrame = {
   currentDocuments: Document[]
   baselineDocuments: Document[]
   baselineApplicability: string
   affectedSources: ReadonlySet<string>
+  batchHistory?: {
+    state: BatchWitnessState
+    nextOrdinal: number
+    parserParent: ClusterTargetPrerequisiteReductionRegistry
+    identifiers: Set<string>
+  }
 }
 
 declare const verifiedReduction: unique symbol
@@ -174,6 +191,7 @@ function fields(value: unknown, keys: string[], label: string): asserts value is
     && keys.every((key) => Object.hasOwn(value, key)), `invalid ${label} fields`)
 }
 function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
+  if (object(value) && value.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT) return parseBasisBoundRegistry(value)
   if (object(value) && value.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT) return parseApplicabilityRefreshRegistry(value)
   if (object(value) && value.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return parseBatchedRegistry(value)
   if (object(value) && value.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) return parseClusterTargetRegistry(value)
@@ -212,6 +230,33 @@ function parseRegistry(value: unknown): PrerequisiteReductionRegistry {
     }
   }
   return value as unknown as PrerequisiteReductionRegistry
+}
+function parseBasisBoundRegistry(value: Record<string, unknown>): BasisBoundPrerequisiteReductionRegistry {
+  fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'parentRegistryPath',
+    'parentRegistryRawDigest', 'entries'], 'basis-bound registry')
+  ensure(value.schemaVersion === 1 && value.auditScope === 'origin-source-landscape-closure'
+    && nonempty(value.parentRegistryPath) && batchDigest(value.parentRegistryRawDigest), 'invalid basis-bound parent or scope')
+  ensure(Array.isArray(value.catalogSources) && value.catalogSources.length > 0, 'empty basis-bound catalog sources')
+  for (const source of value.catalogSources) {
+    fields(source, ['path', 'landscapeId', 'baselineDocumentDigest', 'currentDocumentDigest'], 'basis-bound catalog source')
+    ensure(nonempty(source.path) && nonempty(source.landscapeId)
+      && batchDigest(source.baselineDocumentDigest) && batchDigest(source.currentDocumentDigest), 'invalid basis-bound catalog source')
+  }
+  ensure(Array.isArray(value.entries) && value.entries.length > 0, 'empty basis-bound suffix')
+  const declared = new Set<string>()
+  for (const entry of value.entries) {
+    fields(entry, ['basisBindings', 'batch'], 'basis-bound entry')
+    ensure(Array.isArray(entry.basisBindings), 'invalid basis bindings')
+    for (const binding of entry.basisBindings) {
+      fields(binding, ['operation', 'source'], 'assessment basis binding')
+      ensure(binding.operation === 'bind-assessment-applicability-basis' && qualified(binding.source)
+        && !declared.has(binding.source), 'invalid or duplicate assessment basis binding')
+      declared.add(binding.source)
+    }
+    fields(entry.batch, ['id', 'previousDigest', 'originalRequires', 'operations', 'currentDocumentDigests', 'legacyContinuations'], 'batch')
+    ensure(batchDigest(entry.batch.previousDigest), 'invalid basis-bound predecessor digest')
+  }
+  return value as unknown as BasisBoundPrerequisiteReductionRegistry
 }
 function parseApplicabilityRefreshRegistry(value: Record<string, unknown>): ApplicabilityRefreshPrerequisiteReductionRegistry {
   fields(value, ['schemaVersion', 'proofContract', 'auditScope', 'catalogSources', 'parentRegistryPath',
@@ -921,12 +966,125 @@ async function verifyApplicabilityRefreshFrame(
   ensure(stableJson(expectedDocuments) === stableJson(currentDocuments),
     'applicability refresh differs from the complete compiled cache-only frame')
   return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
-    baselineApplicability: parentFrame.baselineApplicability, affectedSources: parentFrame.affectedSources }
+    baselineApplicability: parentFrame.baselineApplicability, affectedSources: parentFrame.affectedSources,
+    batchHistory: parentFrame.batchHistory }
+}
+
+async function verifyBasisBoundFrame(
+  registry: BasisBoundPrerequisiteReductionRegistry, loaded: LoadedDocument[], repositoryRoot: string,
+): Promise<VerifiedDocumentFrame> {
+  const currentDocuments = requireCurrentCatalog(registry, loaded)
+  const parentFile = repositoryPath(repositoryRoot, registry.parentRegistryPath)
+  ensure(relative(repositoryRoot, parentFile).split(sep).join('/') === registry.parentRegistryPath,
+    'basis-bound parent path must be canonical and relative')
+  const readParent = () => {
+    ensure(lstatSync(parentFile).isFile(), 'basis-bound parent must be a regular file')
+    ensure(realpathSync(parentFile) === resolve(realpathSync(repositoryRoot), registry.parentRegistryPath),
+      'basis-bound parent path contains a symlink')
+    const bytes = readFileSync(parentFile)
+    ensure(`sha256:${createHash('sha256').update(bytes).digest('hex')}` === registry.parentRegistryRawDigest,
+      'basis-bound parent raw digest differs')
+    return bytes
+  }
+  const parentBytes = readParent(), parentValue: unknown = JSON.parse(parentBytes.toString('utf8'))
+  ensure(object(parentValue) && parentValue.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT,
+    'basis-bound proof requires a strict V7 parent')
+  const parent = parseApplicabilityRefreshRegistry(parentValue)
+  const bindings = (sources: LegacyPrerequisiteReductionRegistry['catalogSources']) => sources
+    .map(({ path, landscapeId, baselineDocumentDigest }) => ({ path, landscapeId, baselineDocumentDigest }))
+    .sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0)
+  ensure(stableJson(bindings(registry.catalogSources)) === stableJson(bindings(parent.catalogSources)),
+    'basis-bound parent catalog bindings differ')
+  let predecessor = registry.parentRegistryRawDigest
+  for (const entry of registry.entries) {
+    ensure(entry.batch.previousDigest === predecessor, 'basis-bound entry predecessor digest differs')
+    predecessor = fingerprintPrerequisiteReductionDocument(entry)
+  }
+  const parentDocuments = structuredClone(currentDocuments), reverseGoals = goalIndex(parentDocuments)
+  const ends: Document[][] = []
+  for (let index = registry.entries.length - 1; index >= 0; index--) {
+    const entry = registry.entries[index]
+    requireBatchDocumentBindings(parentDocuments, loaded, entry.batch.currentDocumentDigests, 'basis-bound entry end')
+    ends[index] = structuredClone(parentDocuments)
+    requireBatchOriginalSources(entry.batch, reverseGoals)
+    for (const original of entry.batch.originalRequires) {
+      const goal = reverseGoals.get(original.source)!
+      if (original.requires === null) delete goal.requires
+      else goal.requires = structuredClone(original.requires)
+    }
+    for (const binding of entry.basisBindings) {
+      const goal = reverseGoals.get(binding.source)
+      ensure(goal && object(goal.extendedData) && Object.hasOwn(goal.extendedData, 'assessmentApplicabilityBasis'),
+        `missing declared assessment basis: ${binding.source}`)
+      delete goal.extendedData.assessmentApplicabilityBasis
+    }
+    requireBatchDocumentBindings(parentDocuments, loaded, index === 0
+      ? parent.catalogSources.map(({ path, currentDocumentDigest }) => ({ path, currentDocumentDigest }))
+      : registry.entries[index - 1].batch.currentDocumentDigests, 'basis-bound entry start')
+  }
+  // A suffix cannot repair its prefix: full V7 verification precedes every basis or graph operation.
+  const parentFrame = await verifyDocumentFrame(parent, loaded.map((entry, index) => ({ ...entry, document: parentDocuments[index] })), repositoryRoot)
+  ensure(readParent().equals(parentBytes), 'basis-bound parent changed during verification')
+  for (const document of [...parentFrame.currentDocuments, ...parentFrame.baselineDocuments]) for (const goal of document.goals)
+    ensure(!object(goal.extendedData) || !Object.hasOwn(goal.extendedData, 'assessmentApplicabilityBasis'),
+      'strict V7 prefix must not contain an assessment basis')
+  const history = parentFrame.batchHistory
+  ensure(history, 'verified V7 prefix has no validated batch witness history')
+  const identifiers = new Set(history.identifiers)
+  parseBatchList(registry.entries.map(entry => entry.batch), history.parserParent, identifiers)
+  const state: BatchWitnessState = structuredClone(history.state)
+  const replayDocuments = structuredClone(parentFrame.currentDocuments), goals = goalIndex(replayDocuments)
+  const affectedSources = new Set(parentFrame.affectedSources)
+  const { assessmentApplicabilityBasisGoalRefs } = await import('./applicabilityCompiler')
+  let applicability = parentFrame.baselineApplicability
+  validateBatchWitnessState(state, goals)
+  for (const [index, entry] of registry.entries.entries()) {
+    const sources = requireBatchOriginalSources(entry.batch, goals), finalGoals = goalIndex(ends[index])
+    const expectedBindings = new Set([...sources].filter(source => {
+      const start = goals.get(source)!, end = finalGoals.get(source)!
+      const changed = Object.hasOwn(start, 'requires') !== Object.hasOwn(end, 'requires')
+        || stableJson(start.requires) !== stableJson(end.requires)
+      const tags = Array.isArray(start.tags) ? start.tags : []
+      return changed && !start.contains?.length && object(start.extendedData)
+        && start.extendedData.applicabilityFromRequires === true
+        && !Object.hasOwn(start.extendedData, 'assessmentApplicabilityBasis')
+        && (tags.includes('Practice') || tags.includes('Assessment') || start.examData !== undefined)
+    }))
+    ensure(stableJson([...expectedBindings].sort()) === stableJson(entry.basisBindings.map(binding => binding.source).sort()),
+      'basis declarations must cover exactly changed eligible unbound assessment endpoints')
+    for (const binding of entry.basisBindings) {
+      const goal = goals.get(binding.source)!
+      ensure(object(goal.extendedData) && !Object.hasOwn(goal.extendedData, 'assessmentApplicabilityBasis')
+        && Array.isArray(goal.requires) && goal.requires.length > 0,
+      `assessment basis requires an exact nonempty unbound start: ${binding.source}`)
+      goal.extendedData.assessmentApplicabilityBasis = {
+        kind: 'allOfGoalApplicability', goalRefs: structuredClone(goal.requires),
+      }
+      // Reuse the compiler's strict eligibility and expression parser, never a second evaluator.
+      assessmentApplicabilityBasisGoalRefs(goal as unknown as import('../src/landscapeTypes').LearningGoal)
+      affectedSources.add(binding.source)
+    }
+    ensure(await compileApplicability(replayDocuments, loaded) === applicability,
+      'compiled applicability changed while binding exact assessment bases')
+    replayVerifiedBatch(entry.batch, replayDocuments, loaded, goals, state, history.nextOrdinal + index, affectedSources)
+    const after = await compileApplicability(replayDocuments, loaded)
+    ensure(after === applicability, 'compiled applicability changed after basis-bound batch')
+    applicability = after
+  }
+  ensure(readParent().equals(parentBytes), 'basis-bound parent changed during compilation')
+  ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
+    'basis-bound replay differs from current catalog; undeclared fields, arrays, or basis references changed')
+  return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
+    baselineApplicability: parentFrame.baselineApplicability, affectedSources,
+    batchHistory: { state, nextOrdinal: history.nextOrdinal + registry.entries.length,
+      parserParent: history.parserParent, identifiers } }
 }
 
 async function verifyDocumentFrame(
   registry: PrerequisiteReductionRegistry, loaded: LoadedDocument[], repositoryRoot = REPOSITORY_ROOT,
 ): Promise<VerifiedDocumentFrame> {
+  if (registry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+    return verifyBasisBoundFrame(registry, loaded, repositoryRoot)
   if (registry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT)
     return verifyApplicabilityRefreshFrame(registry, loaded, repositoryRoot)
   if (registry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT) return verifyBatchedFrame(registry, loaded)
@@ -1082,8 +1240,13 @@ function parseBatchedRegistry(value: Record<string, unknown>): BatchedPrerequisi
   const parent = { ...prefix, proofContract: CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT }
   parseClusterTargetRegistry(parent)
   parseBatchCheckpoint(v5Checkpoint, 'V5 checkpoint')
+  parseBatchList(batches, parent as unknown as ClusterTargetPrerequisiteReductionRegistry)
+  return value as unknown as BatchedPrerequisiteReductionRegistry
+}
+function parseBatchList(
+  batches: unknown, parent: ClusterTargetPrerequisiteReductionRegistry, identifiers = new Set<string>(),
+): void {
   ensure(Array.isArray(batches) && batches.length > 0, 'empty V6 batches')
-  const identifiers = new Set<string>()
   const identify = (id: unknown) => {
     ensure(typeof id === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]*$/u.test(id) && !identifiers.has(id),
       'invalid or duplicate V6 identifier')
@@ -1125,9 +1288,9 @@ function parseBatchedRegistry(value: Record<string, unknown>): BatchedPrerequisi
           parseBatchPath(operation.endWitness, 2, 'materialization end witness')
         } else {
           fields(operation, ['id', 'step', 'endWitness'], 'batch atomic removal')
-          parseRegistry({ schemaVersion: value.schemaVersion, proofContract: PREREQUISITE_REDUCTION_CONTRACT,
-            auditScope: value.auditScope, catalogSources: value.catalogSources,
-            originalRequires: value.originalRequires, removals: [step] })
+          parseRegistry({ schemaVersion: parent.schemaVersion, proofContract: PREREQUISITE_REDUCTION_CONTRACT,
+            auditScope: parent.auditScope, catalogSources: parent.catalogSources,
+            originalRequires: parent.originalRequires, removals: [step] })
           parseBatchPath(operation.endWitness, 3, 'atomic removal end witness')
         }
       }
@@ -1157,7 +1320,6 @@ function parseBatchedRegistry(value: Record<string, unknown>): BatchedPrerequisi
       }
     }
   }
-  return value as unknown as BatchedPrerequisiteReductionRegistry
 }
 function batchDigest(value: unknown): value is string {
   return typeof value === 'string' && /^sha256:[0-9a-f]{64}$/u.test(value)
@@ -1181,7 +1343,7 @@ function parseBatchPaths(value: unknown, label: string) {
   ensure(Array.isArray(value) && value.length > 0, `empty ${label}`)
   value.forEach(path => parseBatchPath(path, 2, label))
 }
-function parseBatchOrderedStep(step: unknown, parent: Record<string, unknown>) {
+function parseBatchOrderedStep(step: unknown, parent: Record<string, unknown> | ClusterTargetPrerequisiteReductionRegistry) {
   parseOrderedRegistry({ schemaVersion: parent.schemaVersion, proofContract: ORDERED_PREREQUISITE_REDUCTION_CONTRACT,
     auditScope: parent.auditScope, catalogSources: parent.catalogSources, originalRequires: parent.originalRequires,
     removals: parent.removals, v2Checkpoint: parent.v2Checkpoint, suffixOriginalRequires: [], suffix: [step] })
@@ -1453,6 +1615,38 @@ function replayBatchOperation(
     removed.set(operation.id, { operation: direct, reference })
   }
 }
+function replayVerifiedBatch(
+  batch: PrerequisiteReductionBatch, replayDocuments: Document[], loaded: LoadedDocument[],
+  goals: ReadonlyMap<string, RawGoal>, state: BatchWitnessState, created: number, affectedSources: Set<string>,
+): void {
+    const sources = requireBatchOriginalSources(batch, goals)
+    for (const snapshot of batch.originalRequires) {
+      const goal = goals.get(snapshot.source)!
+      ensure((snapshot.requires === null ? !Object.hasOwn(goal, 'requires')
+        : Object.hasOwn(goal, 'requires') && stableJson(goal.requires) === stableJson(snapshot.requires)),
+      `batch original requires differ at forward start: ${snapshot.source}`)
+    }
+    const removed = new Map<string, { operation: DirectPrerequisiteReduction; reference: BatchWitnessReference }>()
+    for (const operation of batch.operations) replayBatchOperation(operation, replayDocuments, goals, state, created, removed)
+    // End witnesses are explicit literal paths, independently of the initial fresh auditor witness.
+    for (const definition of state.paths.values()) if (definition.created === created) requireLiteralCanonicalPath(definition.path, goals)
+    for (const continuation of batch.legacyContinuations) {
+      const definition = state.paths.get(batchReferenceKey(continuation.witness)), replacement = removed.get(continuation.removalId)
+      ensure(definition && definition.created < created && replacement, 'unknown, current-batch, or non-atomic continuation reference')
+      ensure(continuation.edgeIndex < definition.path.length - 1, 'continuation edge index is out of range')
+      const source = definition.path[continuation.edgeIndex], prerequisite = definition.path[continuation.edgeIndex + 1]
+      ensure(replacement.operation.source === source && replacement.operation.prerequisite === prerequisite,
+        'legacy continuation removed-edge endpoints differ')
+      const position = batchPositionKey(continuation.witness, continuation.edgeIndex)
+      ensure(!state.replacements.has(position), 'duplicate or already continued legacy witness position')
+      ensure(!(goals.get(source)!.requires ?? []).some(raw => resolveReference(raw, source, goals) === prerequisite),
+        'unused continuation for a surviving literal edge')
+      state.replacements.set(position, replacement.reference)
+    }
+    validateBatchWitnessState(state, goals)
+    requireBatchDocumentBindings(replayDocuments, loaded, batch.currentDocumentDigests, `batch ${batch.id} end`)
+    sources.forEach(source => affectedSources.add(source))
+}
 async function verifyBatchedFrame(
   registry: BatchedPrerequisiteReductionRegistry, loaded: LoadedDocument[],
 ): Promise<VerifiedDocumentFrame> {
@@ -1494,38 +1688,14 @@ async function verifyBatchedFrame(
   const state = legacyBatchWitnessState(parent, goals), affectedSources = new Set(parentFrame.affectedSources)
   validateBatchWitnessState(state, goals)
   batches.forEach((batch, index) => {
-    const created = index + 1, sources = requireBatchOriginalSources(batch, goals)
-    for (const snapshot of batch.originalRequires) {
-      const goal = goals.get(snapshot.source)!
-      ensure((snapshot.requires === null ? !Object.hasOwn(goal, 'requires')
-        : Object.hasOwn(goal, 'requires') && stableJson(goal.requires) === stableJson(snapshot.requires)),
-      `batch original requires differ at forward start: ${snapshot.source}`)
-    }
-    const removed = new Map<string, { operation: DirectPrerequisiteReduction; reference: BatchWitnessReference }>()
-    for (const operation of batch.operations) replayBatchOperation(operation, replayDocuments, goals, state, created, removed)
-    // End witnesses are explicit literal paths, independently of the initial fresh auditor witness.
-    for (const definition of state.paths.values()) if (definition.created === created) requireLiteralCanonicalPath(definition.path, goals)
-    for (const continuation of batch.legacyContinuations) {
-      const definition = state.paths.get(batchReferenceKey(continuation.witness)), replacement = removed.get(continuation.removalId)
-      ensure(definition && definition.created < created && replacement, 'unknown, current-batch, or non-atomic continuation reference')
-      ensure(continuation.edgeIndex < definition.path.length - 1, 'continuation edge index is out of range')
-      const source = definition.path[continuation.edgeIndex], prerequisite = definition.path[continuation.edgeIndex + 1]
-      ensure(replacement.operation.source === source && replacement.operation.prerequisite === prerequisite,
-        'legacy continuation removed-edge endpoints differ')
-      const position = batchPositionKey(continuation.witness, continuation.edgeIndex)
-      ensure(!state.replacements.has(position), 'duplicate or already continued legacy witness position')
-      ensure(!(goals.get(source)!.requires ?? []).some(raw => resolveReference(raw, source, goals) === prerequisite),
-        'unused continuation for a surviving literal edge')
-      state.replacements.set(position, replacement.reference)
-    }
-    validateBatchWitnessState(state, goals)
-    requireBatchDocumentBindings(replayDocuments, loaded, batch.currentDocumentDigests, `batch ${batch.id} end`)
-    sources.forEach(source => affectedSources.add(source))
+    replayVerifiedBatch(batch, replayDocuments, loaded, goals, state, index + 1, affectedSources)
   })
   ensure(stableJson(replayDocuments) === stableJson(currentDocuments),
     'batch replay differs from the current catalog; undeclared fields, arrays, or aliases changed')
   ensure(parentFrame.baselineApplicability === await compileApplicability(currentDocuments, loaded),
     'compiled applicability changed after batches')
   return { currentDocuments, baselineDocuments: parentFrame.baselineDocuments,
-    baselineApplicability: parentFrame.baselineApplicability, affectedSources }
+    baselineApplicability: parentFrame.baselineApplicability, affectedSources,
+    batchHistory: { state, nextOrdinal: batches.length + 1, parserParent: parent,
+      identifiers: new Set(batches.flatMap(batch => [batch.id, ...batch.operations.map(operation => operation.id)])) } }
 }
