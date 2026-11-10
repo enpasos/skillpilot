@@ -152,6 +152,17 @@ Current stable finding families:
 | `APV-202` | Applicability is backed only by `partial` mappings. | `diagnostic` |
 | `APV-203` | Compiled applicability differs from currently committed applicability metadata. | `warning` |
 
+**Required follow-up contract (Product Owner, 10 November 2026).** The existing
+APV-102 row describes the currently implemented filtered-visibility check.
+Its adaptation to the [closed personal learning basis](../concept/skill-graph/view-projection-and-goal-placement.md#required-prerequisite-learning-scope)
+is still open: every effective necessary atom must be an actual acquisition
+target in the full Personal Curriculum, independently of its official source
+jurisdiction. Subject-local support is sufficient only with that same target
+elsewhere in the joint plan. Preserve APV-102 as a hard error for missing
+required learning; required-learning inclusion grants no source coverage.
+This decision does not make the current compiler or validator pass or authorize
+changing reviewed seed eligibility after raw prerequisite normalization.
+
 Accepted-warning handling:
 
 - `APV-201` may remain in reviewed pilots when no cleaner exact source alignment exists yet.
@@ -293,7 +304,7 @@ Interpretation:
 - The proof graph is stage-local. Cross-stage prerequisites may remain explicit support requirements, but they cannot be used to manufacture the stage's motivation-to-terminal proof.
 - Memory nodes are optional support nodes, not mandatory route checkpoints. They remain governed by the separate memory-card review. Making every exam depend on a memory deck would incorrectly make memorization compulsory.
 - A reviewed memory node may occur inside a direct route and then counts as part of that route. Memory nodes that are not route prerequisites remain optional side support and are traced by `CQR-302`, rather than being forced into every assessment chain.
-- Canonical route coverage alone does not certify a narrower learner-facing composition view. Every direct prerequisite of a visible target must also be present in that projection as `target` or explicitly authored `prerequisiteOnly`; the runtime blocks a target when a direct canonical prerequisite is absent. The reviewed Hessen Sek-II mathematics LK view has a complete-closure regression for this contract.
+- Canonical route coverage alone does not certify a narrower learner-facing composition view. The existing legacy runtime/regression contract requires every direct prerequisite of a visible target as `target` or explicitly authored `prerequisiteOnly` and blocks absent prerequisites; the reviewed Hessen Sek-II mathematics LK view tests that boundary. Under the 10 November target contract, a derived target with checked canonical path/provenance satisfies the role obligation without a manual reference per atom. Implementation and acceptance of this corrected contract remain open; the existing regression is not proof of it.
 - For canonical Gymnasium mathematics Sek I, the terminal autonomy endpoints are the individual year-level exam tasks. Do not reintroduce a separate `Sek-I-Abschlussaufgaben Mathematik` capstone or expose an aggregate `Übungen Sekundarstufe I` learner-facing branch as the ordinary route endpoint.
 - Sek-I mathematics exam tasks should use coherent, age-appropriate contexts that carry the mathematics. Avoid copied umbrella scenarios and keep each task's `requires` / `examData.coveredGoalIds` aligned with the goals actually assessed.
 - Prefer a low-floor/high-ceiling task shape: accessible data or representations first, then an explanation, checking, model-limit, or short reasoning prompt appropriate to the year.

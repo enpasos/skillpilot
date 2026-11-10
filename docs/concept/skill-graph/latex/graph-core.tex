@@ -787,13 +787,40 @@ erhalten bleiben. Neue \code{requires}-Kanten in der Kompositionssicht
 oder abgeschwächte kanonische Voraussetzungen sind keine Korrektur.
 
 Diese strukturelle Vollständigkeit verlangt nicht, jeden Knoten im
-sichtbaren Baum anzuzeigen. Sie vergibt auch keine Rollen: Die ausdrückliche
-Level-2-Rollenprüfung erfolgt weiterhin vor der Expansion von
-Voraussetzungsclustern; reine \code{contains}-Nachfahren erhalten keine
-zusätzliche Rollenpflicht. Eine fehlende erforderliche Rolle bleibt ein
-Konfigurationsfehler, auch wenn der Knoten geladen oder gemeistert ist.
-Die Hüllenbildung schreibt kein zusätzliches Lernziel ein, erweitert
-keinen Fokus und erzeugt, kopiert, überträgt oder löscht keine Mastery.
+sichtbaren Baum anzuzeigen. Strukturelles Mitladen allein reicht aber
+nicht: Verfasste Ausgangsreferenzen bleiben hart geprüft. Für notwendige
+Atome erfüllen eine kompilierte Zielrolle mit geprüftem kanonischem
+Voraussetzungspfad und dokumentierter Herkunft die Rollenpflicht;
+eine manuelle Sichtreferenz je Atom ist nicht nötig. Unbekannte Referenzen,
+Zyklen sowie fehlende oder nicht erreichbare benötigte Atome bleiben Fehler,
+auch bei vorhandener Mastery. Unbeteiligte \code{contains}-Nachfahren
+werden dadurch nicht eingeschrieben.
+Nach der ausdrücklichen Ownerentscheidung vom 10. November 2026 bildet
+$L=\Closure(S)$ den persönlichen Lernumfang, wobei $S$ die Vereinigung
+atomarer Ausgangsziele der gewählten geprüften Fächersichten ist.
+Zuerst wählen deren geprüfte Kurs-/Landesfilter die gültigen Ausgangsziele
+$S$; danach entsteht die Hülle im unbeschnittenen kanonischen Graphen.
+Zusätzliche notwendige Atome bleiben trotz dieser Ausgangsfilter enthalten,
+unbeteiligte Ziele anderer Kurse oder Länder nicht. Alle notwendigen Atome
+gehören zu Lernen, Fortschritt und Abschluss. $L$ ist
+für persönliche Konfiguration und Curriculum-/Projektionsrevision fest,
+unabhängig von Mastery. Gemeisterte Atome bleiben im Nenner erfüllt;
+ihre Wiederholung wird nicht verlangt. Ein gemeistertes Zwischenziel
+unterbricht die transitive Hülle nicht. Eine unbewiesene Eintrittsannahme
+ist keine erfüllte Lernpflicht.
+
+Diese ausdrückliche persönliche Kompilationsregel ersetzt nur hier das
+frühere Verbot der Zielergänzung. Jedes offene notwendige Atom braucht
+ein tatsächlich erreichbares Erwerbsziel im Gesamtplan. Fachlokales
+\code{prerequisiteOnly} bleibt möglich, wenn dieselbe kanonische ID
+anderswo im Gesamtplan Ziel ist; sie zählt einmal. Die Regel nimmt keine
+Geschwister, ganzen Fremdeinheiten oder Fächer allein wegen eines
+benötigten Atoms hinzu. Alle einzeln notwendigen Atome bleiben in $L$,
+auch wenn das sämtliche Atome eines Faches sind. Die Regel ändert keine
+amtliche Zuordnung oder Quellenanwendbarkeit.
+Sie erweitert keinen Fokus und erzeugt, kopiert, überträgt oder löscht
+keine Mastery. Bestehende zieltypspezifische Abschlussregeln bleiben
+maßgeblich. Compiler- und Laufzeitanpassung sind noch offen.
 
 \subsection{Normalmodus und strikter Modus}
 \label{sec:filter-modes}

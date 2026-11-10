@@ -691,21 +691,19 @@ graded 0/50/100 mastery control. See the full
 Memory goals are optional support, not mandatory checkpoints. They are selected through the separate memory-review contract and may support a route where justified, but the hard route profile must not make every terminal performance depend on an SRS deck. In this rule, `curricularAtomic` denotes the ordinary reviewed subject goals: understanding, explaining, reasoning, applying, problem solving, and construction as appropriate. It does not claim that each route needs an additional node with a separately inferred "understanding" type. Such a type would require its own authored and reviewed semantic role rather than title-based inference. The runtime corollary is separate but consistent: at a genuine zero-progress entry into a projected scope, unresolved `orientation` goals are the only selectable frontier goals; existing learners with established subject progress are not reset to that entry gate.
 
 The canonical inventory rule and a learner-facing projection rule are both
-necessary. `GVR-012` proves that the authored canonical graph has complete
-routes; it cannot prove that a narrower composition view retained every effective
-prerequisite. Under the Product Owner decision of 7 November 2026, a reviewed
-view must include every prerequisite goal reachable from a visible target through
-one or more effective prerequisite steps, whether direct, inherited, or
-transitive, either as another `target` or explicitly as `prerequisiteOnly`.
-This relation is evaluated before prerequisite clusters are expanded into atomic
-descendants. A `contains` descendant alone does not acquire an additional role
-obligation. Projection roles remain authored decisions and are never inferred
-from stage or graph position. A missing prerequisite role blocks the target even
-when that prerequisite is mastered or outside the current focus. The former
-exception for inherited legacy-cluster prerequisites is retired; previously
-allowed configurations may therefore block. This Level 2 configuration check is
-distinct from Level 3 focus selection: a valid prerequisite outside the chosen
-focus is ignored in normal mode and checked globally only in strict mode.
+necessary. `GVR-012` proves complete canonical routes, not a complete personal
+learning scope. The **10 November 2026 Product Owner decision** requires the
+full atomic learning closure $L$ in §11.2. Validate authored seed references and
+subject-local role assignments. A necessary atom's derived target role, checked
+canonical prerequisite path and recorded provenance satisfy its role/exposure
+obligation without a separate manual `target`/`prerequisiteOnly` reference.
+This supersedes the 7 November blanket manual-role obligation at the personal
+compile boundary. Unknown references, cycles, missing canonical atoms and
+unexposed or unaccounted derived targets remain hard errors, even when mastered
+or outside the focus. A mere `contains` descendant is not added unless it belongs
+to the actual normalized prerequisite demand. Level 3 focus remains separate:
+valid outside-focus prerequisites are ignored normally and checked globally only
+in strict mode.
 The Hessen Sek-II mathematics LK regression additionally proves complete direct
 prerequisite closure for that reviewed view.
 
@@ -1011,12 +1009,44 @@ If a projection loses that path, the projection is invalid and must retain the
 missing nodes and relationships. It MUST NOT repair the loss by authoring new
 `requires` edges in the composition view or by weakening canonical prerequisites.
 
-Structural retention does not assign a learning role. The explicit Level 2
-role requirement in §8.5 still applies before prerequisite clusters are expanded;
-`contains` descendants alone gain no additional role obligation. A missing
-required role invalidates the projection even if the node is loaded or mastered.
-Closure computation MUST NOT silently promote supporting goals to `target`,
-widen Level 3 focus, or create, copy, transfer or reset mastery.
+Structural retention alone is insufficient. Authored seed/reference validation
+remains hard; necessary derived atoms also need the compiled target role and
+checked path/provenance required below. The compiler can provide that role
+without a separate manual view reference for each prerequisite. It must reject
+unknown references, cycles and missing or unexposed required atoms even when
+mastered; it must not include unrelated `contains` descendants.
+**Required prerequisites are personal learning targets (Product Owner,
+10 November 2026).** Let $S\subseteq A$ be the union of atomic seed targets
+from the selected reviewed subject scopes. First apply their reviewed seed
+eligibility and course/jurisdiction filters to select $S$. Then compute closure
+on the unpruned canonical graph. The full Personal Curriculum MUST use
+
+$$
+L=U(S)=S\cup\{p\in A\mid\exists t\in S:(t,p)\in R_{at}^+\}
+$$
+
+as its learning, progress and completion basis. Compute this closure on the
+full canonical graph; additional necessary atoms remain included even when
+the seed filters would exclude them. This does not include unrelated targets
+from other courses or jurisdictions. $L$ is fixed by personal configuration, canonical release and projection-contract
+revision; it MUST NOT depend on mastery. Existing effective mastery satisfies
+an included obligation without automatic repetition; it does not remove the
+atom from the denominator or truncate paths through mastered intermediates.
+An assumed entry basis without valid evidence neither satisfies nor removes it.
+
+Every open atom in $L$ needs an actual, navigable acquisition target in the full
+Personal Curriculum. A subject-local `prerequisiteOnly` reference may remain
+when the same canonical atom is targeted elsewhere in the plan; count it once.
+This explicitly authorized compile rule supersedes the former blanket ban on
+automatic target promotion only at the Personal Curriculum boundary. It does not enroll
+siblings or a whole parent unit or subject merely because one atom is required;
+every individually necessary atom remains in $L$, even if that includes all
+atoms of a subject.
+Required-learning inclusion does not assert official curricular assignment or
+change source applicability. It creates no goal, canonical edge or mastery result
+and preserves the existing goal-type completion/recognition contracts.
+The compiler and runtime adaptation is still open; this norm is not implemented
+or accepted merely by documenting it. Level 3 focus is not widened automatically.
 
 For scoped learner evaluation, normalize atomic requirements globally and take their full transitive closure before restricting endpoints. Write $A_F=A\cap G_F$. The normative scoped relation is:
 
@@ -1036,8 +1066,10 @@ A Level 3 focus may contain one or several selected roots. Its evaluation set
 is the union of those roots and their `contains` descendants, restricted to
 the committed Personal Curriculum's targets. The same restriction applies to
 ordinary topic focus and exam preparation. An explicitly authored
-`prerequisiteOnly` goal remains available for lookup and global strict checks;
-it is not added to the focus or counted as a learning target.
+`prerequisiteOnly` reference remains available for lookup and global strict
+checks in that subject view. A required atom still belongs to global $L$ and its
+progress/completion accounting; the reference alone does not add it to the
+current focus. Focus completion is not completion of the full Personal Curriculum.
 
 This avoids making scoped availability depend on whether a prerequisite was authored directly on a child or inherited from a filtered-out ancestor.
 
@@ -1141,7 +1173,7 @@ $$
 
 **How to read it:** Both panels use $M_{\mathrm{eff}}=\varnothing$. Kinematics, Velocity and Acceleration are in scope; Vectors is outside. Kinematics directly requires Vectors, and Acceleration directly requires Velocity. Through containment, Velocity and Acceleration inherit Kinematics’ requirement for Vectors. Every requires arrow points from a goal to what it requires. Solid arrows labelled requires are authored and dashed arrows labelled requires (inherited) are derived, regardless of colour. In the optimistic panel, the three orange arrows to Vectors are excluded from the scoped prerequisite check: Velocity is available, but Acceleration still requires Velocity. In the strict panel, these requirements are checked as well: neither atomic goal is available.
 
-**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). The same focus restriction applies to direct and inherited prerequisites, including reviewed composition views. The separate Level 2 validity check in §8.5 requires an explicit role for every transitively reachable effective prerequisite goal, before atomic expansion of prerequisite clusters. It does not make a valid outside-focus prerequisite block normal-mode entry.
+**Scope note:** Neither mode changes stored mastery. Effective requirements are derived on the full graph before restriction (§11.2). The same focus restriction applies to direct and inherited prerequisites, including reviewed composition views. The separate Level 2 validity check in §8.5 validates authored seed references and the checked derived target closure; it does not require a manual reference for every prerequisite atom. It does not make a valid outside-focus prerequisite block normal-mode entry.
 
 <!-- END SKILLPILOT-ILLUSTRATION: fig-07 -->
 
@@ -1256,9 +1288,10 @@ their acquisition again. Another curriculum may place the same canonical atom
 differently without changing its identity or valid mastery.
 
 Applicability, direct entries, subtree expansion and projection roles MUST be
-resolved first. Hidden prerequisite-only support remains in structural checks
-without becoming an acquisition target or progress denominator. Missing or
-ambiguous ownership is an error, not an empty completed unit. Every valid unit
+resolved first. Subject- or unit-local support remains in structural checks
+without duplicating Own(U), T(U) or acquisition. A necessary atom still needs
+an acquisition target and counts once in the full personal basis $L$ (§11.2).
+Missing or ambiguous ownership is an error, not an empty completed unit. Every valid unit
 has nonempty T(U); a pure aggregate contains actual required children.
 
 Required cards MUST follow their real acquisition duty. A broad memory goal
