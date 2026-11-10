@@ -1,10 +1,28 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 10. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 11. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
+
+**Aktuelle Lieferung und Arbeitsfolge, 11. November 2026:** Chemie
+[PR #111](https://github.com/enpasos/skillpilot/pull/111) ist nach acht
+erfolgreichen Hauptjobs und fünf erfolgreichen Begleitworkflows auf Main
+`6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Die frische Main-Push-CI
+wird separat abgenommen. Im sichtbaren IDE-Branch
+`fix/g17-biology-assessment-basis` sind der vorbereitete Biologiestand und
+der geprüfte native V8-Adapter integriert; die Biologie-Abnahme steht aus.
+
+Die nächsten Schritte schließen vorhandene Lieferungen ab. Zuerst laufen
+gezielte Prüfungen der tatsächlichen Biologie-Lernumfänge und der bekannten
+Verlustfälle; die vollständige erforderliche Scopeprüfung folgt am stabilen
+Integrationsstand. Bestandene unveränderte lokale Prüfungen werden nur bei
+neuen Befunden oder relevanten Änderungen wiederholt. Neue Konzeptvarianten,
+Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen. Korrekturen
+werden nach der passenden gezielten Prüfung sofort gesichert und gepusht;
+laufende CI ist kein Anlass, einen bekannten Fehler liegenzulassen. Sämtliche
+Pflichtgates und die vollständige G17-/Meilensteinabnahme bleiben erforderlich.
 
 **Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
 **Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
@@ -41,7 +59,7 @@ getrennten Anwendbarkeits-/Proofkorrekturen für den gesicherten Biologiestand;
 G17 in der Standard-Meilensteinprüfung bleibt das vollständige Ziel.
 
 
-**Aktueller CI-Reparaturstand vom 10. November 2026:** Die getrennte
+**Historischer CI-Reparaturstand vom 10. November 2026:** Die getrennte
 Codekorrektur PR #110 auf Main `39f4c21ea9` hat ihre frische Main-CI mit
 allen acht Hauptjobs und vier Begleitworkflows bestanden. Im Chemie-Datenlauf
 `42850827581` scheiterte der Kompositionsvalidator an 277 Strukturfehlern in

@@ -1,0 +1,320 @@
+{
+  "status": "NOT_ADMITTED",
+  "canonicalDataInstalledLocally": true,
+  "candidate": {
+    "parentRawDigest": "sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6",
+    "requiresArrayChanges": 89,
+    "basisBindings": [
+      "bbbc9609-ee7e-5849-956e-047b7a753ce9",
+      "1d0c84df-8040-5cab-8a7c-359366937e44",
+      "7c7f147c-2b64-5b0c-90c1-ea9a9bf4b03a",
+      "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+      "ddb1f0f9-e6f7-5895-8aca-4581bda06f61",
+      "487c79f5-7e4d-5da8-ad8f-f0f96c23a974",
+      "7327d0ca-e6b4-5b8f-99a0-dda0067183a5",
+      "5e8d3316-c22a-55bc-acca-9e1d15a4152c",
+      "691403ae-b19d-5d9b-bcff-94bb4324d096",
+      "f0564118-a46e-52a1-9f0a-2d7906f35691"
+    ],
+    "basisFreeControls": [
+      "21bca0dc-27b0-5fe7-8c33-0e1859174f90",
+      "e8caebd4-57bc-5c2f-881d-0b1693777c64"
+    ],
+    "operations": 1933,
+    "legacyContinuations": 79,
+    "originalRequiresSnapshots": 172,
+    "files": {
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": {
+        "rawDigest": "sha256:0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e",
+        "bytes": 1381021
+      },
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": {
+        "rawDigest": "sha256:09d624c3ed453ae6de87383819475ba01c5d508eba26378645123f8302465383",
+        "bytes": 3131055
+      },
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v7-chemistry-20261110.json": {
+        "rawDigest": "sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6",
+        "bytes": 19934
+      }
+    }
+  },
+  "nativeFocused": {
+    "startedAt": "2026-11-10T23:15:14.121204+00:00",
+    "finishedAt": "2026-11-10T23:19:39.318727+00:00",
+    "head": "e6f1752dd1872ec3fa77f4dd5130e8d64bb59d95",
+    "command": [
+      "./gradlew",
+      "test",
+      "--no-daemon",
+      "--max-workers=1",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges"
+    ],
+    "javaHome": "/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+    "exitCode": 0,
+    "wallSeconds": 265.2027487754822,
+    "inputPinCount": 809,
+    "sourceHashesUnchanged": true,
+    "changedInputs": [],
+    "inputScope": "All existing backend Java files + Gradle entry files + candidate 21 canonical data/catalog/proof parents; explicit fixed names only, no closed-read namespace claim",
+    "selectors": [
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges"
+    ],
+    "stdout": "stdout.log",
+    "fullScopeOrEntireClassRun": false,
+    "junit": {
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "101.383",
+      "cases": [
+        {
+          "name": "rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges()",
+          "time": "75.685",
+          "failure": false
+        },
+        {
+          "name": "currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions()",
+          "time": "25.381",
+          "failure": false
+        }
+      ]
+    }
+  },
+  "actualInputDigests": {
+    "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "84e6e3f037c2fb6e5a269af993e9ad32469739c499d2fdd8d100cf75391d3d48",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "a2e3045a943b183ed71e7542348c7be52e1d170b89f592cc8dd5747ce296c3cd"
+  },
+  "minimality": {
+    "selection": "complete-catalog",
+    "auditorSha256": "28223b1f39892cc0377fc793ee4fc51d28e948a7c3d4fc71cc90a466cf3f624a",
+    "referenceCatalogSources": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+        "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "sha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142",
+        "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+        "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+        "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "sha256": "70d07b2ffee3a0cbd54d0699b260706e979fca23362b4c05263514b6d3a946ba",
+        "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+        "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "17669f6151f6e9a597358026751792a6959451ea9f518d3656bf7b4a86e4e0d9",
+        "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+        "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "sha256": "f08aef0afc71e820708f44708f96cf248885c5ac2a13864fd2cb1b3135de6fb0",
+        "landscapeId": "668cf206-941e-51f8-8704-3e8938631235"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "664b6d151b7893256d0385e97678d5490e7470127c01eef0717c687d93932448",
+        "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+        "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+        "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "3a8bf173843719c7c0211f120d95541c2768478f2bb3a1310f79ecd35ba2cdd0",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "sha256": "aaf42079382877f434e30e0de6c984dec2195c9f8434812aaeb22b1d83ceaf1b",
+        "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+        "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+        "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+        "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+        "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+        "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901"
+      }
+    ],
+    "results": [
+      {
+        "rootLandscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+        "status": "fail",
+        "findings": 126
+      },
+      {
+        "rootLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+        "status": "fail",
+        "findings": 92
+      },
+      {
+        "rootLandscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+        "status": "invalid-input",
+        "findings": null,
+        "error": "Error: effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+      },
+      {
+        "rootLandscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "status": "fail",
+        "findings": 94
+      },
+      {
+        "rootLandscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+        "status": "invalid-input",
+        "findings": null,
+        "error": "Error: effective requires cycle: 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2 -> 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80:d7a23bd7-81ee-5c3e-8e92-f5915ab588f2"
+      },
+      {
+        "rootLandscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+        "status": "fail",
+        "findings": 32
+      },
+      {
+        "rootLandscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+        "status": "fail",
+        "findings": 13
+      },
+      {
+        "rootLandscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+        "status": "invalid-input",
+        "findings": null,
+        "error": "Error: effective requires cycle: 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52 -> 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977:81f0501c-890a-5ebd-be54-4ae7698d4d52"
+      },
+      {
+        "rootLandscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+        "status": "invalid-input",
+        "findings": null,
+        "error": "Error: effective requires cycle: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6 -> 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0:c8acea81-7cc7-5471-ba3d-cedde0e28bc6"
+      },
+      {
+        "rootLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+        "status": "fail",
+        "findings": 66
+      },
+      {
+        "rootLandscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+        "status": "pass",
+        "findings": 0
+      },
+      {
+        "rootLandscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+        "status": "fail",
+        "findings": 10
+      }
+    ]
+  },
+  "pending": [
+    "actual public V8 loader",
+    "complete current native scope coverage",
+    "APV-102 replacement and regular milestone/floors",
+    "remote CI and Main delivery"
+  ]
+}

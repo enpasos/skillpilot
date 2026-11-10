@@ -1,0 +1,694 @@
+{
+  "schemaVersion": 1,
+  "proofContract": "prerequisite-reduction-applicability-refresh-v7",
+  "auditScope": "origin-source-landscape-closure",
+  "catalogSources": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "baselineDocumentDigest": "sha256:6cd6295e5e45284ea73b4f836483b92a4d31f8a5453373fbc28adf097a198c96",
+      "currentDocumentDigest": "sha256:776ab3352af63f38a8341fd2031edbb609471840aecd80921702202040b2ed32"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "baselineDocumentDigest": "sha256:889cf46a94bb371e14a9da8e96db5d7674a5465439904af4b2b67d29fd5d8176",
+      "currentDocumentDigest": "sha256:5e820a6b655da53bc80830e0e4e028c387c76ed2f74093edd83e6261cbcded6f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+      "baselineDocumentDigest": "sha256:5ed19597130f96390c30b813c54e46abc2f6f363fdbe183d94e121f82aa62ad3",
+      "currentDocumentDigest": "sha256:5ed19597130f96390c30b813c54e46abc2f6f363fdbe183d94e121f82aa62ad3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "baselineDocumentDigest": "sha256:169c8789724cce32c70b2ea16bb23d9a7e1166bc5752996d919674b62ccea2ca",
+      "currentDocumentDigest": "sha256:89843c42ae8ce4aa68e75968cd2fc07903103f7f7373e920148cb464d8ae7f3b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+      "baselineDocumentDigest": "sha256:7db5f5ee116b4bb19dd41bbc3fb22eb18d26d1bc68231c71bbf04e33df7a1e2e",
+      "currentDocumentDigest": "sha256:7db5f5ee116b4bb19dd41bbc3fb22eb18d26d1bc68231c71bbf04e33df7a1e2e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+      "baselineDocumentDigest": "sha256:fa6d36055f0475ceaa0d50d26cf47b8aef38af5f4608064cbf40e4d22aa6da35",
+      "currentDocumentDigest": "sha256:fa6d36055f0475ceaa0d50d26cf47b8aef38af5f4608064cbf40e4d22aa6da35"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "baselineDocumentDigest": "sha256:a233f5f730696fc2f848d816d93ee207e3269a8697485e393ea85e0443b31674",
+      "currentDocumentDigest": "sha256:a233f5f730696fc2f848d816d93ee207e3269a8697485e393ea85e0443b31674"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+      "baselineDocumentDigest": "sha256:7803da8f41b618fa3fc26cc5efe36221cb7e85d88f5ba0a3a450841bf872b1c7",
+      "currentDocumentDigest": "sha256:7803da8f41b618fa3fc26cc5efe36221cb7e85d88f5ba0a3a450841bf872b1c7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "baselineDocumentDigest": "sha256:10129daadc524100ff68a309966bb773ee4b9ee9e17256528d7292215491698d",
+      "currentDocumentDigest": "sha256:af696008d1684f833590f9630d95e4efe7e7814d2e1f9f0aeb5cbb096ee5de35"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+      "baselineDocumentDigest": "sha256:98dc86467df3b731dfe47380a7248a1fa5749beaf1df022fe70c03a17a9e1fa8",
+      "currentDocumentDigest": "sha256:98dc86467df3b731dfe47380a7248a1fa5749beaf1df022fe70c03a17a9e1fa8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "baselineDocumentDigest": "sha256:8af0d2d7cc397f46fc7d53511baf7976fcf7186d123272312d490fc9f9fb51f3",
+      "currentDocumentDigest": "sha256:7169e196c5d8baa811f932640be4f5bc9bf1b7813e34bbf27d29e9927838648b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "baselineDocumentDigest": "sha256:d625c67f66b235c668f7afa9ed754958d955a4cb0c6e5def9dfefce3177a805c",
+      "currentDocumentDigest": "sha256:3e9cfc60d20e02d81ccaf5e9598951ed99c5949244bb2f1b2a6533b36fa52663"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+      "baselineDocumentDigest": "sha256:a6731d547d45289d46ad23a8f68e0c200b564fbd7383dc0d221d248f55d2b8e4",
+      "currentDocumentDigest": "sha256:a6731d547d45289d46ad23a8f68e0c200b564fbd7383dc0d221d248f55d2b8e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+      "baselineDocumentDigest": "sha256:ae36e6a078ad8b0c9ec9bbfcc4d10494c3170781fcb7f67a53b7af158247c4b9",
+      "currentDocumentDigest": "sha256:ae36e6a078ad8b0c9ec9bbfcc4d10494c3170781fcb7f67a53b7af158247c4b9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "baselineDocumentDigest": "sha256:d39c111287fce3d4a45001f85d42cda706d63208a99f2f6c5ee367c88dffab2c",
+      "currentDocumentDigest": "sha256:bf83d684f86aa9c2ae46f8f8a4db93b709be4550993b372dce069b32699d817c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "baselineDocumentDigest": "sha256:2d91eb66d2f14f260b9f8e102dbb31ab8ac94688c0ce18d6f577a86ebea4f314",
+      "currentDocumentDigest": "sha256:d064bbbf225860d8bd89b324ac066b7120aba33c47ea5aaea95b5286f84e217f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+      "baselineDocumentDigest": "sha256:d33dc0dca18bdc8fe349420724ca459a9e4144d95e42423dcb0a0f8cfc3e30db",
+      "currentDocumentDigest": "sha256:d33dc0dca18bdc8fe349420724ca459a9e4144d95e42423dcb0a0f8cfc3e30db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+      "baselineDocumentDigest": "sha256:97dd924162a2cd4d2e79935ca00a83e6b43350cd49581cafe3405608b8bdc9cc",
+      "currentDocumentDigest": "sha256:97dd924162a2cd4d2e79935ca00a83e6b43350cd49581cafe3405608b8bdc9cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+      "baselineDocumentDigest": "sha256:13fa4926b76a91987878590d3f3d508569279d308cac20b9dae78d75be5e613d",
+      "currentDocumentDigest": "sha256:13fa4926b76a91987878590d3f3d508569279d308cac20b9dae78d75be5e613d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+      "baselineDocumentDigest": "sha256:44df40cf7b9f9cfa7922ee5c20cae72b6331b55abbc17e9edabc8e22d46e1813",
+      "currentDocumentDigest": "sha256:44df40cf7b9f9cfa7922ee5c20cae72b6331b55abbc17e9edabc8e22d46e1813"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "baselineDocumentDigest": "sha256:a37b4bc86b276cd6029ea11278c98c43854230141f2cd02ccebf3f436fe7d650",
+      "currentDocumentDigest": "sha256:a37b4bc86b276cd6029ea11278c98c43854230141f2cd02ccebf3f436fe7d650"
+    }
+  ],
+  "parentRegistryPath": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json",
+  "parentRegistryRawDigest": "sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389",
+  "originalApplicability": [
+    {
+      "source": "7d51b38c-a149-5407-bddc-d2ce7878b020:de388e30-1623-5c21-9daf-1a985219da10",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-SL"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:00e2ddfe-18c1-57a4-86ad-ee467a1a3d61",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:1ab5f599-0927-579d-94cc-feecdf3b5603",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:35dd0a33-e5d5-53b9-8438-3d339173db1b",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:3f477f0d-4f79-5eed-8671-fb2667d60910",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:52bdabb2-d9a1-56e6-bccf-ff58f299c739",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:58db62d4-458f-5e2d-9ca0-968e09f4944b",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:5e64eacd-5204-5028-af23-02a43377c56e",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:6367d45e-919e-4c19-bcd9-7770a2d51139",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:783c1ffe-d983-5c5a-8897-2c88fc64147c",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:7fe6f8a1-5580-4e37-bf8e-9772964a6b0a",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:9743baad-9371-52b6-98ee-72bc6dc68701",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:a24c41ce-68c5-56a7-8235-ef9a7dba7042",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:ba29e928-a287-5de7-b3fe-5c8c3731363b",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:cf570e66-2ce2-5923-9033-c97d74119553",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d02438ba-0cc9-5993-831e-5e44d35e32c4",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d441ee2f-9230-5751-832b-5b0b5cf14605",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-SL",
+          "DE-SN",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:79db6d68-b402-5563-a348-f2784fed8867",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW",
+          "DE-SL",
+          "DE-SN",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:8576b82b-811a-5e13-b5dc-ec5d42030565",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HE",
+          "DE-NW"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:c441d9e8-d9d9-5e55-a189-a37345541321",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BY",
+          "DE-HE",
+          "DE-NI",
+          "DE-NW"
+        ]
+      }
+    },
+    {
+      "source": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "present": true,
+      "value": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    }
+  ]
+}
