@@ -26,9 +26,131 @@ nach eigener CI und geschützten Gates lieferbar. Biologie bleibt WIP ohne GO;
 die neue Umfangsregel braucht getrennte Compiler-, Proof- und native Nachweise.
 Sie behauptet weder implementiertes Verhalten noch eine G17-Abnahme.
 
-**Bisher dokumentierte Physik-Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
+
+**Aktueller CI-Reparaturstand vom 10. November 2026:** Die getrennte
+Codekorrektur PR #110 auf Main `39f4c21ea9` hat ihre frische Main-CI mit
+allen acht Hauptjobs und vier Begleitworkflows bestanden. Im Chemie-Datenlauf
+`42850827581` scheiterte der Kompositionsvalidator an 277 Strukturfehlern in
+den zwei neuen HE-GK+LK-Views. Die begrenzte Korrektur entfernt doppelte
+Referenzen und leere Wrapper mit der vorhandenen geprüften Mergeroption.
+Vier tatsächlich betroffene native Scopes bleiben vollständig gleich; der
+normale Validator besteht über 354 Views und 21 Kataloge mit null Fehlern.
+Der unveränderte Watch besteht nach der geprüften Bestätigung genau zweier
+Integritätsbelege. Eine frische vollständige Reparatur-CI bleibt offen.
+Der sichtbare IDE-Branch ist wieder
+`fix/g17-chemistry-atomic-prerequisites-v7-data`. Biologie bleibt im gepushten
+Checkpoint `60f58c1b00` gesichert; die Scopeentscheidung ist weiterhin offen.
+Die folgenden Lieferpositionen bewahren die früheren Prüfstände als Historie.
+
+**Aktuelle Lieferposition vom 10. November 2026, Chemie:** Physik ist mit
+[PR #105](https://github.com/enpasos/skillpilot/pull/105) auf Main bei
+`c2f0722545f51e53526651e0d7ee26a9e0fb64ae`. Der Mergetree entspricht dem
+vollständig geprüften PR-Head. Die getrennte frische Main-Push-CI ist vollständig
+bestanden: alle acht Hauptjobs und sechs Begleitworkflows. Der ungefilterte
+Backendcheck besteht mit 2.710 Tests und 19 bestehenden Skips, darunter alle
+fünf nativen und 95 fachübergreifenden Methoden; normaler CQR-Producer,
+zehn unveränderte Floors und Report-Sauberkeit bestehen ebenfalls.
+
+Der sichtbare IDE-Branch ist
+`fix/g17-chemistry-atomic-prerequisites-v7-data`, aufgebaut auf diesem Main
+und der getrennten Lookupkorrektur aus
+[PR #110](https://github.com/enpasos/skillpilot/pull/110). Diese behebt den
+belegten Widerspruch zwischen Scopeauswahl und ID-Lookup einer expliziten View
+mit bestehender `merged:`-Identität. Der neue Gegenfall scheitert am alten Code;
+die gesamte normale Testklasse besteht am korrigierten Code mit 67 Tests.
+PR #110 enthält ausschließlich Service und Regression. Nach acht bestandenen
+Hauptjobs und drei Begleitworkflows ist er auf Main bei
+`39f4c21ea92956521337d70cdfd7f96b0d33620f`. Der tatsächliche ungefilterte
+Backendcheck besteht mit 2.711 Tests und 19 unveränderten Skips, darunter
+alle 67 Lookup-, fünf nativen und 95 fachübergreifenden Methoden.
+Der getrennte [Daten-PR #111](https://github.com/enpasos/skillpilot/pull/111)
+ist mit Checkpoint `6bff7dcb34` gepusht. Er richtet sich bereits an Main,
+damit der nächste Push die regulären Pflichtworkflows auslöst. Die noch offene
+Lookupabhängigkeit ist mit PR #110 getrennt geliefert; Main ist in den
+sichtbaren Datenbranch übernommen. Sein Produktbaum bleibt dabei identisch.
+
+Die Chemie-Reduktion ist angewendet: 578 bereits wirksame atomare Anforderungen
+werden materialisiert, anschließend 57 gedeckte nichtatomare und 673 redundante
+atomare Kanten entfernt. Nach jeder Entfernung werden Vererbung und Zeugen neu
+berechnet. Alle 6.194 atomaren Erreichbarkeitspaare bleiben erhalten; der harte
+Chemie-Auditor einschließlich seines vererbenden Vorfahren findet null Befunde.
+Alle 742 Ziele behalten sämtliche Felder außer `requires`. Die echte öffentliche
+Python-/Node-Prüfung besteht in einem einzelnen Aufruf in 380,821 Sekunden;
+die historischen Applicability-Snapshots und die beiden früheren Batches bleiben
+erhalten.
+
+Acht Referenzkorrekturen beheben zuvor als Atome behandelte vorhandene
+Prüfungscluster. Die bereits verfassten acht Kinder werden dadurch in 22 Scopes
+sichtbar; dies ist eine ausdrücklich ausgewiesene Projektionskorrektur.
+Anschließende explizite Supportbindungen und zwei HE-GK+LK-Views erhalten
+gegen diesen korrigierten Ausgangsstand in allen 182 Konfigurationen Ziele,
+Atome, Bäume, Wurzeln und View-IDs. 29.865 tatsächliche Rollenpaare sowie der
+volle kontextuelle atomare Bedarf bleiben gleich; dieselben 43 Konfigurationen
+bleiben unvollständig. Es werden keine Rollen oder Mastery automatisch erfunden.
+Diese Vorabprüfung ersetzt keine Frontier- oder Completion-Abnahme.
+
+Die vollständige TS-Kette besteht auf den angewendeten Dateien mit allen
+3.652 Eingaben unverändert und den tatsächlichen aktuellen V6-/V7-Livemarkern.
+Auch der normale vollständige native Klassenlauf besteht: sechs Methoden ohne
+Fehler oder Skips, 6.487 Quellbindungen unverändert, tatsächliche Java-/Test-
+Kompilierung und Corretto-25.0.2-Worker mit unveränderter 3g/cache1/fork1-Policy.
+Der normale CQR-Producer besteht nach 1.100,558 Sekunden
+über alle 21 Kataloge. Der anschließende unveränderte Floorbefehl scheitert
+an Chemie M1 statt M7: CQR-003 zählt neun unbelegte atomare Zuordnungen in
+sieben Jurisdiktionen. Astra hat die technische Ursache belegt: Zwei reduzierte
+Direktkanten entfernen nur die alte unmittelbare `required by`-Evidenzspur,
+die beiden bereits reviewten Vorbereitungspfade bleiben vollständig erhalten.
+Der kleine gemeinsame Quellenprüfer-Fix ist nach Astras Review angewendet:
+15 Regressionen bestehen, der Altcode scheitert in vier echten Fällen. Alle
+308 akzeptierten Beziehungen bleiben ohne Regression; die neun Chemiefälle
+werden über ihre erhaltenen tatsächlichen Atompfade anerkannt. Typecheck und
+normaler Quellenaudit bestehen auf dem angewendeten Stand. Quellenentscheidungen
+und Floors bleiben unverändert. Der neue reguläre Producer über alle 21 Kataloge
+besteht nach 946,318 Sekunden; danach bestehen alle zehn unveränderten Floors.
+Chemie erreicht lokal wieder M7. Unter 9.905 gebundenen Eingaben ändern sich nur
+die beiden CQR-Berichte und deren bestehender Alias. Alle notwendigen lokalen
+Chemieprüfungen sind bestanden. Frische Remote-CI und Chemie-Main-Lieferung
+bleiben offen; der PR wird zur abschließenden Review gestellt.
+Im ersten Lauf ändern sich unter den 9.903 benannten Eingaben ausschließlich deklarierte
+Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
+mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der
+[Chemie-Liefernachweis](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/README.md)
+trennt diese Belege von den noch offenen lokalen und Remote-Abnahmen.
+Das harte Standard-G17-Gate und die endgültige Main-Abnahme aller zehn Fächer
+bleiben offen. Nach Chemie folgt Biologie.
+
+**Vorbereitung der Standardintegration am 10. November:** Die sieben
+Nettoänderungen sind gegen `af744ea278` neu vorbereitet und mit Astra geprüft;
+neun Adapterfixtures, die vollständigen aktuellen Core-Vergleiche und alle
+13 CLI-Tests bestehen. Der tatsächliche FULL-Auditorlauf über sämtliche
+21 unveränderten aktuellen Kanondokumente benötigt 1,474 Sekunden. Dies ist
+ein direkter Diagnoseaufruf, keine aktivierte Standard-Meilensteinprüfung.
+Mathematik, Physik, Deutsch und der lokale Chemiekandidat sind im vorgesehenen
+Graphvertrag befundfrei. Noch notwendige mechanische Reparaturen sind:
+
+| Geschütztes Fach | Redundante Ursprungskanten | Nichtatomare `requires` |
+| --- | ---: | ---: |
+| Biologie | 166 | 54 |
+| Geschichte | 13 | 45 |
+| Informatik | 94 | 74 |
+| Latein | 0 | 43 |
+| Politik und Wirtschaft | 126 | 18 |
+| Wirtschaftswissenschaften | 92 | 2 |
+
+Die Spalten beschreiben unterschiedliche Befunde und sind keine Schätzung der
+späteren Schnittzahl nach Normalisierung. Lateins früherer Minimalitätsnullbefund
+belegt somit noch keine atomare Normalform. Die vier ungültigen Rootscopes
+außerhalb des geschützten Fachbestands bleiben ungültig, einschließlich des Overview-Roots,
+der den griechischen Zyklus mit umfasst. Kein experimentelles Fach wird promoviert.
+Nach den erforderlichen Fachkorrekturen werden diese sieben Nettoänderungen auf
+den dann aktuellen Main-Stand portiert und als eigene Standardintegration
+geliefert: echter 21er-Producer, zehn unveränderte Floors und frische CI müssen
+am tatsächlichen Integrationsstand bestehen. Alte vollständige Kandidatendateien
+dürfen keine neueren V7-, Rollen-, Stage- oder Quellenprüfer-Korrekturen ersetzen.
+
+**Historischer Physik-Prüfstand vor der Main-Lieferung:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
-der damalige IDE-Branch hieß `fix/g17-physics-applicability-inheritance`.
+der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
 Vollständige TS-Prüfung, nativer Projektionsvergleich und der neue reguläre
 Meilensteinlauf sind bestanden. Der unveränderte Producer über 21 Kataloge
