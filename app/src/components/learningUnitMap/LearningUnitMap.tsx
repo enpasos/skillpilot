@@ -35,6 +35,8 @@ type MapProps = {
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
   onReturnToTree?: () => void
+  /** Hosts such as a full-window dialog own Escape once the map search is closed. */
+  onEscape?: () => void
   language?: 'de' | 'en'
 }
 
@@ -63,7 +65,7 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, showInspector = true, onEntrySelect,
-  onSelectionChange, renderSelectionActions, onReturnToTree, language = 'de' }: MapProps) {
+  onSelectionChange, renderSelectionActions, onReturnToTree, onEscape, language = 'de' }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const kindLabels = getKindLabels(language)
   const MapContainer = embedded ? 'section' : 'main'
@@ -301,14 +303,16 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         && mapSurface.current?.contains(event.target)) {
         event.preventDefault(); goUp()
       } else if (event.key === 'Escape') {
-        if (searchOpen) { setSearchOpen(false); mapSurface.current?.focus({ preventScroll: true }) }
+        // A consumed Escape must not also close an enclosing dialog.
+        if (searchOpen) { event.preventDefault(); setSearchOpen(false); mapSurface.current?.focus({ preventScroll: true }) }
+        else if (onEscape) { event.preventDefault(); onEscape() }
         else if (selectedId) setSelection(null)
         else goUp()
       }
     }
     window.addEventListener('keydown', keys)
     return () => window.removeEventListener('keydown', keys)
-  }, [active, goUp, searchOpen, selectedId])
+  }, [active, goUp, onEscape, searchOpen, selectedId])
 
   const setGestureTarget = (target: EventTarget | null) => {
     if (target instanceof Element && target.closest('.react-flow__minimap, .lum-map-controls')) {
