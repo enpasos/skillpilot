@@ -331,10 +331,26 @@ Interpretation rules:
 - current focus roots and the one active atomic goal are mutable Level 3 state;
   changing Level 2 revalidates them against the new learner-facing `target`
   projection without rewriting stable goal IDs or global Level 4 mastery
-- all `target` goals in the committed Personal Curriculum remain intended
-  learning goals; Level 3 focus is only a temporary narrowing of that target
-  universe, and a learner who wants a permanently narrower plan sets that focus
-  explicitly in the Cockpit
+- Under the **10 November 2026 Product Owner decision**, the Personal Curriculum
+  learning basis is $L=S\cup\{p\mid\exists t\in S:(t,p)\in R_{at}^+\}$,
+  where $S$ is the union of canonical atomic seed targets from the selected
+  reviewed subject scopes. First resolve valid seeds with their reviewed
+  course/jurisdiction filters; then close on the unpruned canonical graph.
+  Retain the additional necessary atoms even when those seed filters would
+  exclude them; unrelated course or jurisdiction content is not included. Every necessary atom belongs to learning, progress and
+  completion; an open prerequisite needs an actual acquisition target in the
+  full Personal Curriculum. Deduplicate stable canonical IDs across subjects.
+- $L$ is fixed by personal configuration and curriculum/projection revision,
+  independently of mastery. Already mastered prerequisites stay in the progress
+  denominator as satisfied and need no automatic repetition. Do not stop closure
+  at a mastered intermediate. An assumed entry basis is not mastery evidence.
+  Official curricular assignment and source applicability remain separate from
+  inclusion as necessary preparation; no goal, edge, source claim or learner
+  result is authored by this policy.
+- all targets in this closed Personal Curriculum remain intended learning goals;
+  Level 3 focus only narrows current work. Adding necessary targets does not
+  widen focus automatically or change normal/strict prerequisite checks. Overall
+  progress and completion still include necessary targets outside that focus.
 - A Level 3 focus is the union of its selected roots and their `contains`
   descendants, restricted to Personal Curriculum targets. Normal mode checks
   only the effective prerequisite relation inside this focus, including
@@ -360,18 +376,23 @@ Interpretation rules:
 - learner-facing default trees for resolved scopes should preferably be compiled from reviewed composition views early enough that validation can run before UI rendering
 - composition views should reference canonical subtree roots and should not inline authored atomic goals
 - composition-view references may explicitly use `projectionRole: "target"` or `projectionRole: "prerequisiteOnly"`; an omitted role means `target`
-- projection roles are authored scope semantics and must never be inferred automatically from phase, year, stage, or `requires`
-- Under the **7 November 2026 Product Owner decision**, a reviewed Level 2
-  composition must explicitly resolve every effective prerequisite goal reachable
-  from a target through one or more prerequisite steps as `target` or
-  `prerequisiteOnly`, including inherited and transitive prerequisites. Check
-  this goal relation before expanding prerequisite clusters into atomic
-  descendants; `contains` descendants alone gain no additional role obligation.
-  A missing role blocks the target regardless of mastery or Level 3 focus.
-  The former inherited legacy-cluster exception is retired; previously allowed
-  configurations may block. Valid outside-focus prerequisites retain the existing
-  normal-mode focus behavior, and no role or mastery is inferred.
-- only `target` goals participate in the learner-facing tree, frontier, progress, and completion scope; `prerequisiteOnly` goals retain their stable canonical IDs and global mastery values solely for prerequisite checks
+- authored subject-view roles are not inferred from phase, year or stage; the
+  explicit personal learning-closure rule above additionally derives the global
+  target basis from existing reviewed `requires`, without rewriting those roles
+- Authored seed references and subject-local role assignments remain validated.
+  At the Personal Curriculum compile boundary, each necessary atom receives a
+  derived target role with a checked canonical prerequisite path and recorded
+  provenance; this satisfies its role/exposure obligation without a manual view
+  reference for each atom. The 10 November decision supersedes the 7 November
+  blanket manual-role requirement at this boundary. Unknown references, cycles,
+  missing canonical atoms or unexposed/unaccounted derived targets remain hard
+  errors, regardless of mastery or focus. Compiler, validation and runtime
+  implementation of this corrected contract is still open.
+- `prerequisiteOnly` remains a subject-local support role. A required atom may
+  keep that role in one view when the same canonical atom is a target elsewhere
+  in the full Personal Curriculum; acquisition counts once. It must not remain
+  outside global $L$ merely because every subject view labels it support. Only
+  actual targets contribute to the respective learning/progress/completion set.
 - when overlapping composition references assign different projection roles, specificity decides: a direct `goalEntry` overrides a role inherited from a `canonicalSubtree`, and the nearest/deepest matching `canonicalSubtree` overrides a broader subtree; only at equal specificity does `target` win
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
 - Bundesland-specific canonical supplement branches under a broad shared root may use `extendedData.applicabilityMappingInheritance = "boundary"` on the supplement cluster. This prevents old broad ancestor-cluster source mappings from being treated as source evidence for the supplement's atomic descendants, while direct mappings/provenance inside the branch and child-union visibility upward still count.

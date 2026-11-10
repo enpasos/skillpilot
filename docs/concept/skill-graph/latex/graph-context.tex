@@ -210,9 +210,15 @@ erfolgt über die dafür vorgesehenen SkillPilot-Oberflächen. Der
 über den konkreten OpenAI-V1-Adapter angebundene Sprachmodell-Coach liest
 diesen Rahmen und ändert diese Konfiguration nicht selbständig.
 
-Alle \code{target}-Ziele im Personal Curriculum bleiben beabsichtigte
-Lernziele. Ein enger Fokus reduziert den vorübergehenden Arbeitsbereich,
-nicht den längerfristigen Gesamtumfang oder dessen Abschlussbedingungen.
+Der vollständige persönliche Lernumfang ist nach der Ownerentscheidung
+vom 10. November 2026 $L=\Closure(S)$ aus
+Abschnitt~\ref{par:projection-closure}: Ausgangsziele und sämtliche
+notwendigen atomaren Voraussetzungen. Er bleibt unabhängig von Mastery
+fest; vorhandene gültige Beherrschung zählt als erfüllt, nicht als Anlass
+zur Streichung oder Wiederholung. Ein enger Fokus reduziert nur den
+vorübergehenden Arbeitsbereich. Notwendige Ziele außerhalb des Fokus
+bleiben für Gesamtfortschritt und Abschluss maßgeblich; Fokusabschluss
+ist kein Abschluss des gesamten Personal Curriculum.
 
 \subsection{Zielrolle und Voraussetzungshilfe}
 \label{sec:projection-roles}
@@ -236,42 +242,43 @@ Teilbaumvererbung vor; eine nähere Teilbaumwurzel geht einer breiteren
 vor; erst bei gleicher Spezifität gewinnt \code{target}. Diese Regel
 löst die Rolle, nicht eine ansonsten unzulässige doppelte Darstellung.
 
-Rollen werden nicht aus Alter, Phase oder Voraussetzungspfaden erraten.
+Verfasste Fachrollen werden nicht aus Alter oder Phase erraten.
+Die ausdrücklich autorisierte persönliche Hüllenbildung ergänzt dagegen
+notwendige atomare Erwerbsziele im Gesamtplan. Sie ändert keine
+verfasste Fachrolle und erzeugt keine neuen Abhängigkeiten.
 Ein mathematisches Ziel kann in Mathematik ein Lernziel und in Physik
 eine unterstützende Voraussetzung sein. Eine gemeinsame Planung
 identifiziert es dennoch nur einmal. Seine Physikrolle löscht keine
 Mathematikergebnisse und erzeugt auch keinen zweiten Kompetenzerwerb.
+Ein notwendiges Atom darf jedoch nicht im gesamten Personal Curriculum
+bloße Voraussetzungshilfe ohne Erwerbsziel bleiben. Amtliche
+Lehrplanzuordnung und die Aufnahme als notwendige Vorbereitung sind
+getrennte Aussagen. Die Umsetzung dieser Lernumfangsregel steht aus.
 
-Nach der Ownerentscheidung vom 7. November 2026 gilt für die maßgebliche
-Kompositionssicht des Personal Curriculum, kurz Level-2-Komposition:
+Die Ownerentscheidung vom 10. November 2026 ersetzt am persönlichen
+Kompilationsrand die frühere pauschale Pflicht vom 7. November, jede
+erreichbare Voraussetzung manuell mit einer Rolle zu referenzieren:
 \begin{itemize}
-\item Jede über einen oder mehrere effektive Voraussetzungsschritte
- erreichbare Voraussetzung eines sichtbaren Ziels muss dort als
- \code{target} oder \code{prerequisiteOnly} auflösbar sein. Das gilt
- gleichermaßen für direkte, geerbte und transitive Voraussetzungen.
-\item Geprüft wird die Zielknotenrelation vor der atomaren Auflösung von
- Voraussetzungsclustern; reine \code{contains}-Nachfahren erhalten dadurch
- keine zusätzliche Rollenpflicht.
-\item Fehlt eine Rolle, bleibt das Ziel auch dann gesperrt, wenn die
- Voraussetzung gemeistert ist oder außerhalb des Fokus liegt.
-\item Die frühere Ausnahme für geerbte Legacy-Anforderungen entfällt;
- bisher zulässige Konfigurationen können deshalb blockieren.
-\item Rollen werden weiterhin ausdrücklich festgelegt.
+\item Verfasste Ausgangsreferenzen und lokale Rollen bleiben geprüft.
+\item Die abgeleitete globale Zielrolle eines notwendigen Atoms genügt
+ zusammen mit geprüftem kanonischem Voraussetzungspfad und dokumentierter
+ Herkunft; eine manuelle Ziel- oder Hilfsreferenz je Atom ist nicht nötig.
+\item Unbekannte Referenzen, Zyklen sowie fehlende oder im Gesamtplan
+ nicht erreichbare beziehungsweise nicht berücksichtigte notwendige Atome
+ bleiben harte Fehler, unabhängig von Mastery und Fokus.
 \end{itemize}
 Diese Gültigkeitsprüfung ist von der späteren Level-3-Fokuswahl getrennt:
 Eine gültig aufgelöste Voraussetzung außerhalb des Fokus blockiert den
 Normalmodus weiterhin nicht.
 
 \emph{Beispiel im Übergangsbestand:} Ein Physikziel $g$ benötigt einen
-Mathematik-Cluster $k$. Eine geprüfte \code{canonicalSubtree}-Referenz auf
-$k$ mit der Rolle \code{prerequisiteOnly} erhält dessen kanonische atomare
-Basis und löst die Rollen ihrer Nachfahren über die Teilbaumvererbung auf.
-Bloße \code{contains}-Nachfahren brauchen dadurch keine zusätzlichen
-individuellen Rolleneinträge. Hat $k$ außerdem eine Voraussetzung $p$, muss
-auch $p$ in der Komposition als \code{target} oder \code{prerequisiteOnly}
-auflösbar sein. Diese Prüfung der Voraussetzungsknoten erfolgt vor der
-Clusterexpansion; für die anschließende Berechnung bleibt die vollständige
-atomare Basis erhalten.
+Mathematik-Cluster $k$. Seine kanonische atomare Basis und deren transitive
+Anforderungen werden vor Anzeigefiltern aufgelöst. Eine fachlokale
+\code{prerequisiteOnly}-Referenz auf $k$ kann erhalten bleiben. Jedes
+wirklich notwendige Atom braucht dennoch ein Erwerbsziel im gesamten
+Personal Curriculum, etwa in Mathematik oder als abgeleitete Vorbereitung.
+Keine manuelle Referenz je Atom und kein ganzes zusätzliches Fach ist dafür
+nötig. Kanonische Identität, Quellenzuordnung und Mastery bleiben erhalten.
 
 \subsection{Anwendbarkeit ist keine Platzierung}
 

@@ -12,9 +12,23 @@ zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
 bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
 Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
 
-**Aktuelle Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
+**Lernumfangsentscheidung und Lieferweg (Product Owner, 10. November 2026):**
+Alle notwendigen atomaren Voraussetzungen gehören zum festen persönlichen
+Lernumfang einschließlich Fortschritt und Abschluss; gültig gemeisterte Ziele
+zählen erfüllt, ohne automatische Wiederholung. Die
+[präzisierte Projektionsnorm](../concept/skill-graph/view-projection-and-goal-placement.md#required-prerequisite-learning-scope)
+wird getrennt von Compiler-/Runtime-Implementierung und deren Abnahme geliefert.
+Main enthält den getrennten Codefix [PR #110](https://github.com/enpasos/skillpilot/pull/110)
+bei `39f4c21ea92956521337d70cdfd7f96b0d33620f` mit vollständiger frischer CI.
+Der bereits reviewte mechanische Chemiefix in
+[PR #111](https://github.com/enpasos/skillpilot/pull/111) bleibt unabhängig davon
+nach eigener CI und geschützten Gates lieferbar. Biologie bleibt WIP ohne GO;
+die neue Umfangsregel braucht getrennte Compiler-, Proof- und native Nachweise.
+Sie behauptet weder implementiertes Verhalten noch eine G17-Abnahme.
+
+**Bisher dokumentierte Physik-Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
-der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
+der damalige IDE-Branch hieß `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
 Vollständige TS-Prüfung, nativer Projektionsvergleich und der neue reguläre
 Meilensteinlauf sind bestanden. Der unveränderte Producer über 21 Kataloge
