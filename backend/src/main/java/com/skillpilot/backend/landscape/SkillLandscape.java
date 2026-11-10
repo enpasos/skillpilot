@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import java.util.List;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -33,6 +34,34 @@ public class SkillLandscape {
     private List<GoalPlacement> goalPlacements;
     private List<CompetencyCatalogEntry> competencyCatalog;
     private List<LearningGoal> goals;
+
+    // Only the learner response compiler may supply this runtime scope marker.
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private PersonalCurriculumProjection personalCurriculumProjection;
+
+    public record PersonalCurriculumProjection(
+            String revision,
+            String rootLandscapeId,
+            String scopeRevision,
+            List<String> seedAtomicGoalIds,
+            List<String> targetGoalIds,
+            Map<String, List<String>> requiredByPaths) {
+        public PersonalCurriculumProjection {
+            seedAtomicGoalIds = List.copyOf(seedAtomicGoalIds);
+            targetGoalIds = List.copyOf(targetGoalIds);
+            Map<String, List<String>> paths = new java.util.LinkedHashMap<>();
+            requiredByPaths.forEach((id, path) -> paths.put(id, List.copyOf(path)));
+            requiredByPaths = java.util.Collections.unmodifiableMap(paths);
+        }
+    }
+
+    public PersonalCurriculumProjection getPersonalCurriculumProjection() {
+        return personalCurriculumProjection;
+    }
+
+    public void setPersonalCurriculumProjection(PersonalCurriculumProjection projection) {
+        personalCurriculumProjection = projection;
+    }
 
     @JsonProperty("$schema")
     public String getSchema() {

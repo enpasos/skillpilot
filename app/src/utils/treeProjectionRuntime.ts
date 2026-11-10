@@ -74,11 +74,15 @@ export const buildVisibleChildrenMap = (
       const child = allGoals.get(childId)
       if (!child) return false
 
-      if (!goalMatchesGlobalStageScope(child, personalConfig ?? {}, { rootLandscapeId })) {
+      // Server-declared targets and their presentation ancestors belong to the
+      // fixed personal basis even when a foreign subject or earlier stage is
+      // not independently selected in the seed configuration.
+      const isPersonalTargetOrStructure = child.personalCurriculumProjection?.revision === 'atomic-prerequisite-learning-v1'
+      if (!isPersonalTargetOrStructure && !goalMatchesGlobalStageScope(child, personalConfig ?? {}, { rootLandscapeId })) {
         return false
       }
 
-      if (!goalMatchesFilter(child, activeFilter)) {
+      if (!isPersonalTargetOrStructure && !goalMatchesFilter(child, activeFilter)) {
         return false
       }
 
@@ -103,7 +107,7 @@ export const buildVisibleChildrenMap = (
         }
       }
 
-      if (hasConfig) {
+      if (hasConfig && !isPersonalTargetOrStructure) {
         const config = (child.landscapeId ? personalConfig?.[child.landscapeId] : undefined) ?? personalConfig?.[child.id]
         if (config) {
           if (config.selected !== true) return false

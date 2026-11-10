@@ -20,6 +20,7 @@ import { getGoalNavigationSearch, getStoredLandscapeIdForRole, normalizeLearnerL
 import {
   applyMatchedCompositionRouteGoalProjection,
   applyCompositionViewProjection,
+  applyPersonalCurriculumProjection,
   deriveRuntimeGoalPlacementFilters,
   deriveRuntimeCompositionScope,
   selectCompositionManagedLandscapeIds,
@@ -342,7 +343,6 @@ export function useAppCore({
   // not additionally download every unselected subject's complete graph.
   // Canonical editor choices remain owned by the personalization-plan API.
   const scopedCanonicalLearner = role === 'learner' && !!skillpilotId
-    && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
   const {
     landscapeEntries: publicLandscapeEntries,
     loadingLandscapes,
@@ -723,13 +723,18 @@ export function useAppCore({
     }
 
     const routeProjectedEntries = applyMatchedCompositionRouteGoalProjection(compositionProjectedEntries, goalId)
-    return routeProjectedEntries.map((entry) => normalizeLearnerProjectedEntries([entry])[0] ?? entry)
+    return applyPersonalCurriculumProjection(
+      normalizeLearnerProjectedEntries(routeProjectedEntries),
+      graphSourceLandscapeEntries,
+      language,
+    )
   }, [
     activeFilter,
     effectiveMatchedCompositionViewsByLandscapeId,
     graphSourceLandscapeEntries,
     goalId,
     learnerPersonalCurriculum,
+    language,
     role,
     runtimeCatalogState,
     runtimeCompositionRequests,
@@ -906,12 +911,14 @@ export function useAppCore({
       if (!goalId) return
       const currentRouteGoalId = matchPath('/:view/:goalId', location.pathname)?.params.goalId
       const newSearchParams = getGoalNavigationSearch(searchParams, currentRouteGoalId, goalId)
-      // A canonical multi-subject cockpit already owns its projected subject
-      // goals. Revealing one must not reload a subject closure and immediately
-      // bounce back to the learner's committed root curriculum.
+      // A loaded personal target belongs to the committed root even when its
+      // canonical owner is an independently unselected subject.
+      const loadedGoal = goalIndexAll.get(goalId)
+      const isPersonalTarget = loadedGoal?.personalCurriculumProjection?.revision === 'atomic-prerequisite-learning-v1'
+        && loadedGoal.personalCurriculumProjection.role === 'target'
       const isLoadedCanonicalTarget = role === 'learner'
-        && selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID
-        && goalIndexAll.get(goalId)?.landscapeId === targetLandscapeId
+        && (selectedLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID || isPersonalTarget)
+        && loadedGoal?.landscapeId === targetLandscapeId
       if (!isLoadedCanonicalTarget) newSearchParams.set('l', targetLandscapeId)
       const view = location.pathname.split('/')[1]
       navigate(`/${view}/${goalId}?${newSearchParams.toString()}`)

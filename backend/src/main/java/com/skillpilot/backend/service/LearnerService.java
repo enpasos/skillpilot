@@ -257,7 +257,7 @@ public class LearnerService {
 
     private static final String AUTOMATIC_COMPLETION_PREFIX = "automatic:";
     private static final String AUTOMATIC_COMPLETION_DEFAULT = AUTOMATIC_COMPLETION_PREFIX + "personal-curriculum";
-    private static final String AUTOMATIC_COMPLETION_REVISION = "full-transitive-demand-v2";
+    private static final String AUTOMATIC_COMPLETION_REVISION = "atomic-prerequisite-learning-v1";
 
     private Map<String, LearningGoal> completionGraph(Learner learner, GoalProjection projection) {
         if (!completionApplicationService.catalog().automatic())
@@ -266,6 +266,9 @@ public class LearnerService {
     }
 
     private Map<String, LearningGoal> prerequisiteGraph(Learner learner, GoalProjection projection) {
+        if (projection.learningScope() != null) {
+            return projection.canonicalPrerequisiteGoals();
+        }
         CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
                 ? completionCanonicalGraphResolver
                 : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
@@ -3455,9 +3458,8 @@ public class LearnerService {
                     org.springframework.http.HttpStatus.CONFLICT,
                     "The current personal curriculum has no learner-facing target projection.");
         }
-        // Direct composition goalEntries may retype canonical clusters for an
-        // opaque learner-facing presentation. Planning counts must retain the
-        // stable structural atom/cluster semantics instead of that display copy.
+        // Planning uses canonical atomic identity; display collapse cannot
+        // replace a cluster's actual learning obligations.
         List<String> scopeAtomicGoalIds = projection.targetGoalIds().stream()
                 .filter(goalId -> requestedLandscapeId.equals(
                         landscapeService.getLandscapeIdForGoal(goalId)))
@@ -5166,43 +5168,67 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public List<SkillLandscape> getLearnerLandscapeClosure(String skillpilotId, String landscapeId, String lang) {
         Learner learner = getLearner(skillpilotId);
+        if (!Objects.equals(landscapeId, learner.getSelectedCurriculum())) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Personal learning scope must use the learner's selected curriculum");
+        }
+        GoalProjection projection = getGoalProjection(landscapeId, learner.getPersonalCurriculum());
+        Map<String, LearningGoal> visibleGoals = projection.visibleGoals();
         List<SkillLandscape> localizedClosure = landscapeService.getClosure(landscapeId, lang);
-        Map<String, LearningGoal> visibleGoals = getFilteredGoals(landscapeId, learner.getPersonalCurriculum());
-        if (localizedClosure == null || localizedClosure.isEmpty()) {
-            return Collections.emptyList();
+        LinkedHashMap<String, SkillLandscape> sources = new LinkedHashMap<>();
+        if (localizedClosure != null) {
+            for (SkillLandscape landscape : localizedClosure) sources.put(landscape.getLandscapeId(), landscape);
+        }
+        Set<String> knownIds = sources.values().stream().filter(l -> l.getGoals() != null)
+                .flatMap(l -> l.getGoals().stream()).map(LearningGoal::getId).collect(Collectors.toSet());
+        // A prerequisite can belong to an unselected subject. Import its owner
+        // for localization, then export only the actually needed canonical rows.
+        for (String id : visibleGoals.keySet()) {
+            if (knownIds.contains(id)) continue;
+            String owner = landscapeService.getLandscapeIdForGoal(id);
+            SkillLandscape source = owner == null ? null : landscapeService.getById(owner);
+            if (source == null) {
+                throw new CompletionCompilationException("MISSING_REFERENCE", "No canonical owner for required goal " + id);
+            }
+            List<SkillLandscape> localizedOwner = landscapeService.getClosure(owner, lang);
+            if (localizedOwner != null) {
+                source = localizedOwner.stream().filter(l -> owner.equals(l.getLandscapeId())).findFirst().orElse(source);
+            }
+            sources.put(owner, source);
+            if (source.getGoals() != null) source.getGoals().forEach(g -> knownIds.add(g.getId()));
         }
 
         List<SkillLandscape> scopedClosure = new ArrayList<>();
-        for (SkillLandscape landscape : localizedClosure) {
-            List<LearningGoal> sourceGoals = landscape.getGoals();
-            if (sourceGoals == null || sourceGoals.isEmpty()) {
-                continue;
-            }
-
-            List<LearningGoal> filteredGoals = new ArrayList<>();
-            for (LearningGoal goal : sourceGoals) {
-                if (!visibleGoals.containsKey(goal.getId())) {
-                    continue;
-                }
-                filteredGoals.add(cloneScopedGoal(goal, visibleGoals));
-            }
-
-            if (filteredGoals.isEmpty()) {
-                continue;
-            }
-
+        Set<String> deliveredTargets = new LinkedHashSet<>();
+        for (SkillLandscape landscape : sources.values()) {
+            if (landscape.getGoals() == null) continue;
+            List<LearningGoal> filteredGoals = landscape.getGoals().stream()
+                    .filter(goal -> visibleGoals.containsKey(goal.getId()))
+                    .map(goal -> cloneScopedGoal(goal, visibleGoals)).toList();
+            if (filteredGoals.isEmpty()) continue;
             SkillLandscape scopedLandscape = objectMapper.convertValue(landscape, SkillLandscape.class);
             scopedLandscape.setGoals(filteredGoals);
             if (scopedLandscape.getGoalPlacements() != null) {
                 scopedLandscape.setGoalPlacements(scopedLandscape.getGoalPlacements().stream()
-                        .filter(placement -> placement != null
-                                && placement.getGoalId() != null
-                                && visibleGoals.containsKey(placement.getGoalId()))
-                        .collect(Collectors.toList()));
+                        .filter(placement -> placement != null && visibleGoals.containsKey(placement.getGoalId())).toList());
+            }
+            if (projection.learningScope() != null) {
+                PersonalCurriculumLearningScope learning = projection.learningScope();
+                Set<String> owned = filteredGoals.stream().map(LearningGoal::getId).collect(Collectors.toSet());
+                List<String> targets = learning.learningAtomicGoalIds().stream().filter(owned::contains).toList();
+                deliveredTargets.addAll(targets);
+                Map<String, List<String>> paths = new LinkedHashMap<>();
+                learning.requiredByPaths().forEach((id, path) -> { if (owned.contains(id)) paths.put(id, path); });
+                scopedLandscape.setPersonalCurriculumProjection(new SkillLandscape.PersonalCurriculumProjection(
+                        AUTOMATIC_COMPLETION_REVISION, landscapeId, completionScopeDigest(learner),
+                        learning.seedAtomicGoalIds().stream().filter(owned::contains).toList(), targets, paths));
             }
             scopedClosure.add(scopedLandscape);
         }
-
+        if (projection.learningScope() != null
+                && !deliveredTargets.equals(projection.learningScope().learningAtomicGoalIds())) {
+            throw new CompletionCompilationException("MISSING_REFERENCE", "Learner export lost required learning targets");
+        }
         return scopedClosure;
     }
 
@@ -7226,9 +7252,11 @@ public class LearnerService {
         // Visible navigation clusters can have no atomic descendants in this
         // scope and therefore no node in the validated prerequisite graph.
         if (prerequisites.topology() == null || !prerequisites.lookup().containsKey(goal.getId())) return false;
-        // Preserve the explicit Level-2 composition validity boundary. Canonical
-        // traversal supplies lookup, never an inferred target/support role.
-        if (projection.compositionViewApplied()) {
+        // A derived target and its canonical path satisfy the personal role contract.
+        if (projection.learningScope() != null) {
+            if (!projection.learningScope().learningAtomicGoalIds().containsAll(
+                    prerequisites.topology().transitivePrerequisites(goal.getId()))) return false;
+        } else if (projection.compositionViewApplied()) {
             for (String id : prerequisites.topology().transitiveGoalPrerequisites(goal.getId())) {
                 if (!projection.targetGoalIds().contains(id)
                         && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
@@ -10814,14 +10842,46 @@ public class LearnerService {
             }
         }
         if (!ignoreCourseFilters) {
-            return applyCompositionViewProjection(
+            GoalProjection seeds = applyCompositionViewProjection(
                     curriculumId,
                     allGoals,
                     structuralGoals,
                     config,
                     runtimeLandscapes);
+            return closePersonalCurriculumLearningScope(curriculumId, seeds);
         }
         return identityGoalProjection(allGoals, structuralGoals);
+    }
+
+    /** Select reviewed seeds first, then retain their full canonical atomic demand. */
+    private GoalProjection closePersonalCurriculumLearningScope(
+            String curriculumId, GoalProjection projection) {
+        LinkedHashSet<String> seeds = projection.targetGoalIds().stream()
+                .filter(id -> isAtomicGoal(projection.structuralGoals().get(id)))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        if (seeds.isEmpty()) return projection;
+
+        CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
+                ? completionCanonicalGraphResolver
+                : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
+        Map<String, LearningGoal> canonical = resolver.loadForAtomicSeeds(
+                curriculumId, seeds, projection.structuralGoals());
+        PersonalCurriculumLearningScope learningScope =
+                PersonalCurriculumLearningScope.compile(canonical, seeds);
+        Map<String, LearningGoal> structural = new LinkedHashMap<>(projection.structuralGoals());
+        canonical.forEach(structural::putIfAbsent);
+        Map<String, LearningGoal> visible = new LinkedHashMap<>(projection.visibleGoals());
+        // Retain the bounded canonical context too: required clusters and
+        // inheritance ancestors must not disappear from the exported graph.
+        canonical.forEach(visible::putIfAbsent);
+        LinkedHashSet<String> targets = new LinkedHashSet<>(projection.targetGoalIds());
+        targets.addAll(learningScope.learningAtomicGoalIds());
+        LinkedHashSet<String> support = new LinkedHashSet<>(projection.prerequisiteOnlyGoalIds());
+        support.removeAll(learningScope.learningAtomicGoalIds());
+        return new GoalProjection(immutableGoalMap(visible), Collections.unmodifiableSet(targets),
+                Collections.unmodifiableSet(support), immutableGoalMap(structural),
+                projection.compositionViewIds(), projection.presentationRootGoalIds(),
+                projection.compositionViewApplied(), learningScope, immutableGoalMap(canonical));
     }
 
     /**
@@ -11077,15 +11137,6 @@ public class LearnerService {
         for (Map.Entry<String, LearningGoal> entry : allGoals.entrySet()) {
             if (visibleGoalIds.contains(entry.getKey())) {
                 LearningGoal scopedGoal = entry.getValue();
-                CompositionProjectionAssignment assignment =
-                        projectionAssignments.get(entry.getKey());
-                if (assignment != null
-                        && assignment.role() == ProjectionRole.TARGET
-                        && assignment.direct()) {
-                    scopedGoal = objectMapper.convertValue(scopedGoal, LearningGoal.class);
-                    scopedGoal.setContains(Collections.emptyList());
-                    scopedGoal.setType("atomic");
-                }
                 scopedGoals.put(entry.getKey(), scopedGoal);
             }
         }
@@ -11106,7 +11157,7 @@ public class LearnerService {
                 immutableGoalMap(compositionStructuralGoals),
                 Collections.unmodifiableSet(compositionViewIds),
                 Collections.emptyList(),
-                true);
+                true, null, Collections.emptyMap());
         List<String> effectivePresentationRootGoalIds = orderVisibleFocusGoalIds(
                         presentationRootGoalIds,
                         provisionalProjection.visibleGoals()).stream()
@@ -11119,7 +11170,7 @@ public class LearnerService {
                 provisionalProjection.structuralGoals(),
                 provisionalProjection.compositionViewIds(),
                 effectivePresentationRootGoalIds,
-                true);
+                true, null, Collections.emptyMap());
     }
 
     private GoalProjection identityGoalProjection(
@@ -11138,7 +11189,7 @@ public class LearnerService {
                 immutableStructuralGoals,
                 Collections.emptySet(),
                 Collections.emptyList(),
-                false);
+                false, null, Collections.emptyMap());
     }
 
     private GoalProjection emptyGoalProjection(Map<String, LearningGoal> structuralGoals) {
@@ -11149,7 +11200,7 @@ public class LearnerService {
                 immutableGoalMap(structuralGoals),
                 Collections.emptySet(),
                 Collections.emptyList(),
-                true);
+                true, null, Collections.emptyMap());
     }
 
     private void addCompositionViewId(
@@ -11208,7 +11259,9 @@ public class LearnerService {
             Map<String, LearningGoal> structuralGoals,
             Set<String> compositionViewIds,
             List<String> presentationRootGoalIds,
-            boolean compositionViewApplied) {
+            boolean compositionViewApplied,
+            PersonalCurriculumLearningScope learningScope,
+            Map<String, LearningGoal> canonicalPrerequisiteGoals) {
     }
 
     private enum ProjectionRole {
@@ -11461,9 +11514,9 @@ public class LearnerService {
      * definition; a {@code canonicalSubtree} contributes its complete
      * {@code contains} subtree.</p>
      *
-     * <p>A reference with any target source is never hydrated here. Unknown
-     * support references and external cluster {@code goalEntry} nodes make the
-     * authored projection invalid instead of weakening prerequisite checks.</p>
+     * <p>A reference with any target source is not hydrated in this pass.
+     * Unknown support references fail. A canonical cluster entry retains its
+     * descendant basis rather than becoming a replacement atom.</p>
      */
     private Map<String, LearningGoal> hydrateExternalPrerequisiteOnlyStructuralGoals(
             Map<String, CompositionGoalReference> references,
@@ -11486,7 +11539,6 @@ public class LearnerService {
                 return;
             }
 
-            boolean alreadyStructural = resolveGoalRef(goalRef, hydrated) != null;
             LearningGoal referencedGoal = resolveCompositionStructuralGoal(goalRef, hydrated);
             if (referencedGoal == null) {
                 throw invalidCompositionPrerequisiteReference(
@@ -11494,20 +11546,8 @@ public class LearnerService {
                         "does not resolve to a known goal");
             }
 
-            boolean directReference = reference.sources().stream()
-                    .anyMatch(source -> !source.includeDescendants());
-            if (!alreadyStructural
-                    && directReference
-                    && ("cluster".equalsIgnoreCase(referencedGoal.getType())
-                            || (referencedGoal.getContains() != null
-                                    && !referencedGoal.getContains().isEmpty()))) {
-                throw invalidCompositionPrerequisiteReference(
-                        goalRef,
-                        "external goalEntry must reference an atomic goal");
-            }
-
             for (CompositionProjectionSource source : reference.sources()) {
-                if (source.includeDescendants()) {
+                if (source.includeDescendants() || !isAtomicGoal(referencedGoal)) {
                     hydrateExternalStructuralGoalAndDescendants(
                             goalRef,
                             hydrated,
@@ -11594,17 +11634,26 @@ public class LearnerService {
                 return;
             }
             String exactGoalId = resolveGoalRef(referencedGoalId, goals);
+            if (exactGoalId == null) {
+                LearningGoal external = resolveCompositionStructuralGoal(referencedGoalId, goals);
+                if (external != null) {
+                    goals.putIfAbsent(external.getId(), external);
+                    exactGoalId = external.getId();
+                }
+            }
             if (exactGoalId == null || !goals.containsKey(exactGoalId)) {
-                return;
+                throw new CompletionCompilationException("MISSING_REFERENCE",
+                        "Unknown composition seed reference " + referencedGoalId);
             }
             for (CompositionProjectionSource source : reference.sources()) {
-                if (source.includeDescendants()) {
+                if (source.includeDescendants() || !isAtomicGoal(goals.get(exactGoalId))) {
                     assignCompositionSubtreeProjection(
                             exactGoalId,
                             source.role(),
                             goals,
                             assignments);
-                } else {
+                }
+                if (!source.includeDescendants()) {
                     mergeCompositionProjectionAssignment(
                             exactGoalId,
                             new CompositionProjectionAssignment(
@@ -11630,6 +11679,7 @@ public class LearnerService {
         // each goal, not its root's global depth. A shared descendant in a DAG
         // must not change roles because an unrelated branch has more ancestors.
         Map<String, Integer> distances = new HashMap<>();
+        Map<String, Set<String>> children = new LinkedHashMap<>();
         Deque<String> pending = new ArrayDeque<>();
         distances.put(goalId, 0);
         pending.add(goalId);
@@ -11637,6 +11687,8 @@ public class LearnerService {
             String currentId = pending.removeFirst();
             LearningGoal goal = goals.get(currentId);
             if (goal == null) continue;
+            Set<String> resolvedChildren = new LinkedHashSet<>();
+            children.put(currentId, resolvedChildren);
             int distance = distances.get(currentId);
             mergeCompositionProjectionAssignment(
                     currentId,
@@ -11644,11 +11696,40 @@ public class LearnerService {
                     assignments);
             for (String childRef : goal.getContains() == null ? List.<String>of() : goal.getContains()) {
                 String childId = resolveGoalRef(childRef, goals);
-                if (childId != null && goals.containsKey(childId) && !distances.containsKey(childId)) {
+                if (childId == null) {
+                    LearningGoal external = resolveCompositionStructuralGoal(childRef, goals);
+                    if (external != null) {
+                        goals.putIfAbsent(external.getId(), external);
+                        childId = external.getId();
+                    }
+                }
+                if (childId == null || !goals.containsKey(childId)) {
+                    throw new CompletionCompilationException("MISSING_REFERENCE",
+                            "Unknown composition contains reference " + childRef + " below " + currentId);
+                }
+                resolvedChildren.add(childId);
+                if (!distances.containsKey(childId)) {
                     distances.put(childId, distance + 1);
                     pending.addLast(childId);
                 }
             }
+        }
+        // Validate authored structure even if a cycle leaves no atomic seeds.
+        Map<String, Integer> incoming = new LinkedHashMap<>();
+        children.keySet().forEach(id -> incoming.put(id, 0));
+        children.values().forEach(ids -> ids.forEach(id -> incoming.merge(id, 1, Integer::sum)));
+        Deque<String> ready = new ArrayDeque<>();
+        incoming.forEach((id, count) -> { if (count == 0) ready.addLast(id); });
+        int visited = 0;
+        while (!ready.isEmpty()) {
+            String id = ready.removeFirst();
+            visited++;
+            for (String child : children.get(id)) {
+                if (incoming.merge(child, -1, Integer::sum) == 0) ready.addLast(child);
+            }
+        }
+        if (visited != children.size()) {
+            throw new CompletionCompilationException("CONTAINS_CYCLE", "Cycle in composition subtree " + goalId);
         }
     }
 

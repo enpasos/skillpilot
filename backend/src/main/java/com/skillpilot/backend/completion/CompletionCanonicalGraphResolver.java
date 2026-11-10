@@ -66,6 +66,17 @@ public final class CompletionCanonicalGraphResolver {
     /** All authoritative Level-2 atomic targets, independently of current focus or mastery. */
     public Map<String, LearningGoal> loadForTargets(String curriculumId, Set<String> level2AtomicTargets,
             Map<String, LearningGoal> supportDefinitions) {
+        return loadForTargets(curriculumId, level2AtomicTargets, supportDefinitions, false);
+    }
+
+    /** Canonical acquisition seeds cannot use the legacy opaque-cluster override. */
+    public Map<String, LearningGoal> loadForAtomicSeeds(String curriculumId, Set<String> atomicSeeds,
+            Map<String, LearningGoal> supportDefinitions) {
+        return loadForTargets(curriculumId, atomicSeeds, supportDefinitions, true);
+    }
+
+    private Map<String, LearningGoal> loadForTargets(String curriculumId, Set<String> level2AtomicTargets,
+            Map<String, LearningGoal> supportDefinitions, boolean requireCanonicalAtoms) {
         if (level2AtomicTargets == null || level2AtomicTargets.isEmpty()) {
             throw new CompletionCompilationException("EMPTY_SCOPE", "Empty Personal Curriculum target set");
         }
@@ -99,6 +110,15 @@ public final class CompletionCanonicalGraphResolver {
         });
         Map<String, LearningGoal> catalog = new LinkedHashMap<>();
         definitions.forEach((id, variants) -> catalog.put(id, variants.getFirst()));
+        if (requireCanonicalAtoms) {
+            for (String id : level2AtomicTargets) {
+                LearningGoal goal = catalog.get(id);
+                if (goal == null) throw new CompletionCompilationException("MISSING_REFERENCE", "Unknown canonical seed: " + id);
+                if (goal.getContains() != null && !goal.getContains().isEmpty()) {
+                    throw new CompletionCompilationException("TARGET_NOT_ATOMIC", "Canonical seed is a cluster: " + id);
+                }
+            }
+        }
         Map<String, Set<String>> parents = new LinkedHashMap<>();
         definitions.forEach((id, variants) -> {
             // A direct authored goalEntry already makes this target atomic.

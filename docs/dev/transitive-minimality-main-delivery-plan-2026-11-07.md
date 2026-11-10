@@ -24,7 +24,18 @@ Der bereits reviewte mechanische Chemiefix in
 [PR #111](https://github.com/enpasos/skillpilot/pull/111) bleibt unabhängig davon
 nach eigener CI und geschützten Gates lieferbar. Biologie bleibt WIP ohne GO;
 die neue Umfangsregel braucht getrennte Compiler-, Proof- und native Nachweise.
-Sie behauptet weder implementiertes Verhalten noch eine G17-Abnahme.
+Die Norm ist mit [PR #112](https://github.com/enpasos/skillpilot/pull/112)
+auf Main `0bf53b1252` geliefert; alle drei PR- und frischen Main-Dokumentjobs
+sind bestanden. Die zugehörige Runtimekorrektur entsteht im sichtbaren Branch
+`fix/personal-curriculum-prerequisite-closure`: bestehende Normalisierung,
+vollständige atomare Lernmenge, echte Fremdfachauslieferung und WebGUI-
+Navigation verwenden dieselbe Basis. Der frische gezielte Java-Lauf besteht
+66/66 Tests ohne Skips bei 790 unveränderten benannten Eingaben; TypeScript,
+Lint und die tatsächliche Chromium-Gegenprobe bestehen ebenfalls. Dies ist
+lokale Teilabnahme. Ungefiltertes Backend, native Gesamtmatrix, Curriculum-/
+Remote-CI und Main-Lieferung der Runtime bleiben offen. Danach folgen die
+getrennten Anwendbarkeits-/Proofkorrekturen für den gesicherten Biologiestand;
+G17 in der Standard-Meilensteinprüfung bleibt das vollständige Ziel.
 
 **Bisher dokumentierte Physik-Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;

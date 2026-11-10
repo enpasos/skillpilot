@@ -257,7 +257,8 @@ const TreeNode: React.FC<TreeNodeProps> = ({
   const isInPlannedScope = plannedScopeGoalIds.has(goal.id)
   const isSelected = selectedId === goal.id
   const isSyntheticStructureNode = isSyntheticProgramUnit(goal)
-  const hidePlanControlForCluster = !allowClusterPlanning && hasChildren && !isPlanned
+  const isPresentationOnly = goal.personalCurriculumProjection?.presentationOnly === true
+  const hidePlanControlForCluster = isPresentationOnly || (!allowClusterPlanning && hasChildren && !isPlanned)
   // Frontier highlighting is intentionally disabled (we only mark active goal + mastery).
 
   // Propagate: exact planned nodes start a subtree; hidden canonical scope roots
@@ -329,7 +330,12 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         className={`flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer transition-colors border border-transparent ${isSelected ? 'bg-sky-100 dark:bg-sky-900/40 border-sky-300 dark:border-sky-500/50' : 'hover:bg-slate-200 dark:hover:bg-slate-800/50'
           }`}
         style={{ paddingLeft: `${depth * 16 + 8}px` }}
-        onClick={() => onSelect(goal.id)}
+        onClick={() => {
+          if (isPresentationOnly) {
+            if (isExpansionControlled) onToggleExpanded(goal.id)
+            else setLocalIsExpanded((expanded) => !expanded)
+          } else onSelect(goal.id)
+        }}
       >
         <button
           type="button"
