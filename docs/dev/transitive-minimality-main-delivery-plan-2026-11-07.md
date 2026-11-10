@@ -77,10 +77,39 @@ ein Draft.
 Im ersten Lauf ändern sich unter den 9.903 benannten Eingaben ausschließlich deklarierte
 Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
 mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der
-[Chemie-Liefernachweis](../../qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/README.md)
+[Chemie-Liefernachweis](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/README.md)
 trennt diese Belege von den noch offenen lokalen und Remote-Abnahmen.
 Das harte Standard-G17-Gate und die endgültige Main-Abnahme aller zehn Fächer
 bleiben offen. Nach Chemie folgt Biologie.
+
+**Vorbereitung der Standardintegration am 10. November:** Die sieben
+Nettoänderungen sind gegen `af744ea278` neu vorbereitet und mit Astra geprüft;
+neun Adapterfixtures, die vollständigen aktuellen Core-Vergleiche und alle
+13 CLI-Tests bestehen. Der tatsächliche FULL-Auditorlauf über sämtliche
+21 unveränderten aktuellen Kanondokumente benötigt 1,474 Sekunden. Dies ist
+ein direkter Diagnoseaufruf, keine aktivierte Standard-Meilensteinprüfung.
+Mathematik, Physik, Deutsch und der lokale Chemiekandidat sind im vorgesehenen
+Graphvertrag befundfrei. Noch notwendige mechanische Reparaturen sind:
+
+| Geschütztes Fach | Redundante Ursprungskanten | Nichtatomare `requires` |
+| --- | ---: | ---: |
+| Biologie | 166 | 54 |
+| Geschichte | 13 | 45 |
+| Informatik | 94 | 74 |
+| Latein | 0 | 43 |
+| Politik und Wirtschaft | 126 | 18 |
+| Wirtschaftswissenschaften | 92 | 2 |
+
+Die Spalten beschreiben unterschiedliche Befunde und sind keine Schätzung der
+späteren Schnittzahl nach Normalisierung. Lateins früherer Minimalitätsnullbefund
+belegt somit noch keine atomare Normalform. Die vier ungültigen Rootscopes
+außerhalb des geschützten Fachbestands bleiben ungültig, einschließlich des Overview-Roots,
+der den griechischen Zyklus mit umfasst. Kein experimentelles Fach wird promoviert.
+Nach den erforderlichen Fachkorrekturen werden diese sieben Nettoänderungen auf
+den dann aktuellen Main-Stand portiert und als eigene Standardintegration
+geliefert: echter 21er-Producer, zehn unveränderte Floors und frische CI müssen
+am tatsächlichen Integrationsstand bestehen. Alte vollständige Kandidatendateien
+dürfen keine neueren V7-, Rollen-, Stage- oder Quellenprüfer-Korrekturen ersetzen.
 
 **Historischer Physik-Prüfstand vor der Main-Lieferung:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;

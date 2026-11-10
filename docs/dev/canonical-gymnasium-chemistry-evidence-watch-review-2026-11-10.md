@@ -34,7 +34,7 @@ workflow, gate or policy change is included.
 The unchanged watch runner genuinely failed before acknowledgement (Exit 1),
 then passed its self-test and final check (Exit 0), with
 `changed=0 added=0 removed=0` and `CHEMISTRY_EVIDENCE_WATCH=OK`.
-The [compact technical receipt](../../qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-watch-ack/receipt.json)
+The [compact technical receipt](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-watch-ack/receipt.json)
 binds the actual changes, scope evidence, baselines and logs. Full normal TS,
 CQR, native and fresh remote CI remain separate acceptance gates; this maintenance
 acknowledgement claims no Chemistry Main delivery or complete G17 acceptance.
