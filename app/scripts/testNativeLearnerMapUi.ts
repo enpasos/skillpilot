@@ -209,15 +209,34 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
   }
 }
 
-async function navigation(page: Page, mode: 'tree' | 'map') {
-  await page.getByTestId(`learner-goal-navigation-${mode}`).click()
-  assert.equal(await page.getByTestId(`learner-goal-navigation-${mode}`).getAttribute('aria-pressed'), 'true')
+const mapDialog = (page: Page) => page.getByTestId('learner-learning-map-dialog')
+const mapOpener = (page: Page) => page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
+async function openMap(page: Page) {
+  await mapOpener(page).click()
+  await mapDialog(page).waitFor()
+  assert.equal(await mapOpener(page).getAttribute('aria-expanded'), 'true')
+}
+async function closeMap(page: Page) {
+  await mapDialog(page).getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
+  await mapDialog(page).waitFor({ state: 'hidden' })
+  assert.equal(await mapOpener(page).getAttribute('aria-expanded'), 'false')
 }
 async function scope(page: Page, goalId: string) {
   await page.locator(`.lum-canvas[data-scope-id="${goalId}"][aria-busy="false"]`).waitFor()
 }
+async function fillsWindow(page: Page, label: string) {
+  const viewport = page.viewportSize()
+  const box = await mapDialog(page).boundingBox()
+  assert.ok(viewport && box)
+  assert.deepEqual([box.x, box.y, box.width, box.height].map(Math.round), [0, 0, viewport.width, viewport.height], `${label}: the learning map uses the entire window`)
+  const board = await page.getByTestId('learning-map-board').boundingBox()
+  assert.ok(board && board.width >= viewport.width - 1 && board.height >= viewport.height * 0.75, `${label}: the map board fills the window below its header`)
+}
 const node = (page: Page, goalId: string) => page.locator(`[data-entry-id="${goalId}"] .lum-node-main`)
 const selectedTitle = (page: Page, title: string) => page.getByTestId('learner-current-goal').getByRole('heading', { name: title, exact: true }).waitFor()
+// While the full-window map is open, the Cockpit selection is visible on the map adapter.
+const mapSelection = (page: Page, goalId: string) => page.locator(`[data-testid="native-cockpit-map"][data-selected-goal-id="${goalId}"]`).waitFor({ state: 'attached' })
+const focusedTestId = (page: Page, testId: string) => page.waitForFunction(expected => document.activeElement?.getAttribute('data-testid') === expected, testId)
 const sidebarSettings = (page: Page) => page.locator('#learner-goal-sidebar').getByRole('button', { name: 'Einstellungen öffnen', exact: true })
 const afterEffects = (page: Page) => page.evaluate(() => new Promise<void>(resolve => {
   requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
@@ -229,7 +248,15 @@ try {
   const { page } = h
   const main = page.getByTestId('learner-main-content')
   const sidebar = page.locator('#learner-goal-sidebar')
-  assert.equal(await sidebar.getAttribute('data-goal-navigation-mode'), 'tree')
+  assert.equal(await sidebar.getByRole('button', { name: /Lernkarte/u }).count(), 0, 'the goal menu keeps only the tree')
+  assert.equal(await mapOpener(page).getAttribute('aria-expanded'), 'false')
+  assert.equal(await mapDialog(page).isVisible(), false)
+  const [openerBox, startBox, mainBox] = await Promise.all([mapOpener(page).boundingBox(),
+    main.getByTestId('learner-coach-start-link').boundingBox(), main.boundingBox()])
+  assert.ok(openerBox && startBox && mainBox)
+  assert.ok(Math.abs((openerBox.y + openerBox.height / 2) - (startBox.y + startBox.height / 2)) < 1, 'Lernkarte and Lernen starten share one row')
+  assert.ok(openerBox.x + openerBox.width <= startBox.x && startBox.x - (openerBox.x + openerBox.width) <= 12, 'Lernkarte sits directly beside Lernen starten')
+  assert.ok(mainBox.x + mainBox.width - (startBox.x + startBox.width) <= 48 && openerBox.y - mainBox.y <= 40, 'both actions sit at the top right of the main window')
   assert.equal(h.requests.some(path => /learningUnitMap|elkjs|elk-worker/u.test(path)), false, 'classic startup must not fetch a map module or layout worker')
   assert.equal(h.requests.some(path => /\/prototypes\//u.test(path)), false, 'real product entry must not use prototype data or adapters')
   assert.equal(h.requests.some(path => path.includes(`/api/ui/landscapes/${id.root}/closure`)), false, 'canonical learner startup must use the scoped closure')
@@ -242,9 +269,11 @@ try {
   assert.equal(await goalImage.count(), 1, 'the original goal card displays its one native learning image')
   await page.screenshot({ path: join(artifacts, '01-native-classic.png') })
 
-  stage = 'native map navigation and result/state isolation'
-  await navigation(page, 'map')
+  stage = 'full-window native map navigation and result/state isolation'
+  await openMap(page)
   await scope(page, id.section)
+  await fillsWindow(page, 'desktop')
+  await page.screenshot({ path: join(artifacts, '02-native-map-full-window.png') })
   await page.getByTestId('native-cockpit-map').evaluate(element => element.setAttribute('data-native-map-witness', 'original'))
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
   assert.equal(await page.locator('.lum-inspector').count(), 0)
@@ -256,31 +285,45 @@ try {
   assert.equal(await page.locator('.lum-node-open').count(), 0, 'leaf goals never get a scope arrow')
   await node(page, id.foundation).focus()
   await afterEffects(page)
-  await selectedTitle(page, 'Skalarprodukte anwenden')
+  await mapSelection(page, id.application)
   await page.keyboard.press('Enter')
-  await selectedTitle(page, 'Vektoren darstellen')
+  await mapSelection(page, id.foundation)
+  assert.equal(await mapDialog(page).isVisible(), true, 'choosing a goal keeps the full-window map open')
   assert.equal(await page.getByTestId('native-cockpit-map').getAttribute('data-native-map-witness'), 'original', 'product navigation map remains mounted when selecting a goal')
   assert.ok((await page.getByTestId('learner-active-goal-banner').innerText()).includes('Skalarprodukte anwenden'))
   assert.deepEqual(h.writes, [], 'map selection and keyboard focus never write active goal, mastery or learning focus')
   assert.deepEqual(h.mastery, { [id.foundation]: 1 })
 
+  stage = 'closing the map shows the goal chosen on the map'
+  await closeMap(page)
+  await selectedTitle(page, 'Vektoren darstellen')
+  await focusedTestId(page, 'learner-current-goal')
+  await sidebar.locator(`[data-goal-id="${id.foundation}"]`).waitFor()
+  assert.equal(await sidebar.evaluate(element => element.getBoundingClientRect().width), classicWidth, 'the goal menu keeps its tree width')
+  assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
+
   stage = 'same-ID reveal and double-click scope navigation'
   await page.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
   await selectedTitle(page, 'Skalarprodukte anwenden')
+  await openMap(page)
   await scope(page, id.section)
+  await mapSelection(page, id.application)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   await scope(page, id.mathRoot)
+  await closeMap(page)
+  await focusedTestId(page, 'learner-learning-map-open')
   // Selected goal still has the same ID while its containing scope is hidden.
   await page.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
+  await openMap(page)
   await scope(page, id.section)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   await scope(page, id.mathRoot)
   await node(page, id.section).dblclick({ delay: 100 })
   await scope(page, id.section)
-  await selectedTitle(page, 'Vektoren')
+  await mapSelection(page, id.section)
   const leaf = node(page, id.foundation)
   await leaf.dblclick({ delay: 100 })
-  await selectedTitle(page, 'Vektoren darstellen')
+  await mapSelection(page, id.foundation)
   await scope(page, id.section)
   await leaf.dblclick({ delay: 100, modifiers: ['Shift'] })
   await scope(page, id.mathRoot)
@@ -288,26 +331,28 @@ try {
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
   await page.screenshot({ path: join(artifacts, '02-native-map.png') })
 
-  stage = 'SRS answer survives tree/map changes in production App'
+  stage = 'SRS answer survives opening and closing the full-window map'
   await node(page, id.section).dblclick({ delay: 100 })
   await scope(page, id.section)
   await node(page, id.memory).click()
+  await mapSelection(page, id.memory)
+  await closeMap(page)
   await selectedTitle(page, 'Vektoren erinnern')
   await page.getByRole('button', { name: /^Karteikarten lernen/u }).click()
   await page.getByRole('button', { name: 'Antwort zeigen', exact: true }).click()
   const flip = page.getByRole('button', { name: 'Zum Umdrehen tippen', exact: true })
   await flip.evaluate(element => element.setAttribute('data-native-drill-witness', 'original'))
   const answer = await page.locator('.learner-cockpit-selection').innerText()
-  await navigation(page, 'tree')
+  await openMap(page)
+  assert.equal(await page.getByTestId('native-cockpit-map').getAttribute('data-native-map-witness'), 'original', 'the map keeps its state between openings')
+  await closeMap(page)
   assert.equal(await sidebar.evaluate(element => element.getBoundingClientRect().width), classicWidth)
-  await navigation(page, 'map')
   assert.equal(await flip.getAttribute('aria-pressed'), 'true')
   assert.equal(await flip.getAttribute('data-native-drill-witness'), 'original')
   assert.equal(await page.locator('.learner-cockpit-selection').innerText(), answer)
   assert.equal(await main.getAttribute('data-native-instance-witness'), 'original')
 
   stage = 'genuine tree focus, subject selection and changed Personal Curriculum'
-  await navigation(page, 'tree')
   const physicsRow = sidebar.locator(`[data-goal-id="${id.physicsRoot}"]`)
   await physicsRow.waitFor()
   await Promise.all([
@@ -317,19 +362,21 @@ try {
   assert.deepEqual(h.writes.map(write => write.body), [{ goals: [id.physicsRoot] }])
   await physicsRow.click()
   await selectedTitle(page, 'Physik')
-  await navigation(page, 'map')
+  await openMap(page)
   await node(page, id.physicsRoot).dblclick({ delay: 100 })
   await scope(page, id.physicsRoot)
   await node(page, id.physicsGoal).click()
+  await mapSelection(page, id.physicsGoal)
+  await closeMap(page)
   await selectedTitle(page, 'Kräfte beschreiben')
   assert.ok((await page.getByTestId('learner-active-goal-banner').innerText()).includes('Skalarprodukte anwenden'), 'browsing a different subject does not change active learning')
   await h.changePersonalCurriculum()
   await page.getByTestId('learner-active-goal-banner').filter({ hasText: 'Kräfte beschreiben' }).waitFor()
-  await navigation(page, 'map')
+  await openMap(page)
   await scope(page, id.physicsRoot)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   assert.equal(await page.locator(`[data-entry-id="${id.mathRoot}"]`).count(), 0, 'reloaded native Personal Curriculum removes unselected subject')
-  await navigation(page, 'tree')
+  await closeMap(page)
   assert.equal(await sidebar.locator(`[data-goal-id="${id.mathRoot}"]`).count(), 0)
   assert.deepEqual(h.writes.map(write => write.body), [
     { goals: [id.physicsRoot] }, { rewindId: 'native-subjects-change' }, { optionId: 'physics-only' },
@@ -340,25 +387,35 @@ try {
   await h.context.close()
 
   for (const width of [320, 390]) {
-    stage = `native mobile navigation at ${width}px`
+    stage = `native mobile full-window map at ${width}px`
     const m = await open(width)
-    const opener = m.page.getByRole('button', { name: 'Lernzielmenü öffnen', exact: true })
-    await opener.focus()
+    const [openerBox, startBox] = await Promise.all([mapOpener(m.page).boundingBox(),
+      m.page.getByTestId('learner-coach-start-link').boundingBox()])
+    assert.ok(openerBox && startBox && Math.abs(openerBox.y - startBox.y) < 1 && openerBox.x + openerBox.width <= startBox.x,
+      `Lernkarte and Lernen starten share one row at ${width}px`)
+    assert.equal(await m.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+    await mapOpener(m.page).focus()
     await m.page.keyboard.press('Enter')
-    await navigation(m.page, 'map')
+    await mapDialog(m.page).waitFor()
     await scope(m.page, id.section)
+    await fillsWindow(m.page, `${width}px`)
     await m.page.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
     await node(m.page, id.foundation).focus()
     await afterEffects(m.page)
-    await selectedTitle(m.page, 'Skalarprodukte anwenden')
+    await mapSelection(m.page, id.application)
     assert.equal(await m.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
     await m.page.screenshot({ path: join(artifacts, `03-native-map-${width}.png`) })
     await node(m.page, id.foundation).click()
+    await mapSelection(m.page, id.foundation)
+    assert.equal(await mapDialog(m.page).isVisible(), true, 'a tap chooses a goal without closing the map')
+    await closeMap(m.page)
     await selectedTitle(m.page, 'Vektoren darstellen')
-    await m.page.waitForFunction(() => (document.getElementById('learner-goal-sidebar')?.getBoundingClientRect().right ?? 1) <= 1)
+    await focusedTestId(m.page, 'learner-current-goal')
+    const opener = m.page.getByRole('button', { name: 'Lernzielmenü öffnen', exact: true })
     await opener.focus()
     await m.page.keyboard.press('Enter')
-    await navigation(m.page, 'tree')
+    await m.page.waitForFunction(() => (document.getElementById('learner-goal-sidebar')?.getBoundingClientRect().left ?? -1) >= -1)
+    await m.page.locator('#learner-goal-sidebar').locator(`[data-goal-id="${id.foundation}"]`).waitFor()
     await m.page.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
     assert.equal(await m.page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
     assert.deepEqual(m.writes, [])
@@ -368,13 +425,28 @@ try {
   }
   stage = 'native App double-click with normal motion'
   const animated = await open(1440, false, 'no-preference')
-  await navigation(animated.page, 'map')
+  await openMap(animated.page)
   await scope(animated.page, id.section)
   await animated.page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
   await scope(animated.page, id.mathRoot)
   await node(animated.page, id.section).dblclick({ delay: 100 })
   await scope(animated.page, id.section)
+  await mapSelection(animated.page, id.section)
+
+  stage = 'Escape closes the full-window map without leaving the map level'
+  await node(animated.page, id.foundation).focus()
+  await animated.page.keyboard.press('Escape')
+  await mapDialog(animated.page).waitFor({ state: 'hidden' })
   await selectedTitle(animated.page, 'Vektoren')
+  await focusedTestId(animated.page, 'learner-current-goal')
+  await openMap(animated.page)
+  await scope(animated.page, id.section)
+  await mapSelection(animated.page, id.section)
+  // Escape outside the map surface uses the dialog's own close request.
+  await mapDialog(animated.page).getByRole('button', { name: 'Lernkarte schließen', exact: true }).focus()
+  await animated.page.keyboard.press('Escape')
+  await mapDialog(animated.page).waitFor({ state: 'hidden' })
+  await focusedTestId(animated.page, 'learner-learning-map-open')
   assert.deepEqual(animated.writes, [])
   assert.deepEqual(animated.errors, [])
   assert.deepEqual(animated.unexpected, [])
@@ -382,11 +454,12 @@ try {
 
   stage = 'layout worker failure has a local return-to-tree action'
   const failed = await open(1440, true)
-  await navigation(failed.page, 'map')
+  await openMap(failed.page)
   await failed.page.getByText('Die Karte konnte nicht angeordnet werden.', { exact: true }).waitFor()
   await failed.page.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
+  await mapDialog(failed.page).waitFor({ state: 'hidden' })
   await selectedTitle(failed.page, 'Skalarprodukte anwenden')
-  assert.equal(await failed.page.locator('#learner-goal-sidebar').getAttribute('data-goal-navigation-mode'), 'tree')
+  await failed.page.waitForFunction(goalId => document.activeElement?.getAttribute('data-goal-id') === goalId, id.application)
   assert.deepEqual(failed.writes, [])
   assert.deepEqual(failed.errors, [])
   assert.deepEqual(failed.unexpected, [])
@@ -507,7 +580,7 @@ try {
   assert.deepEqual(commands.unexpected, [])
   assert.deepEqual(commands.writes, [])
   await commands.context.close()
-  console.log('Native product App learner map browser regression passed (desktop, 320px, 390px; isolated HTTP/SSE).')
+  console.log('Native product App full-window learner map browser regression passed (desktop, 320px, 390px; isolated HTTP/SSE).')
 } catch (error) {
   console.error(`Native learner map browser failure at: ${stage}`)
   if (lastPage && !lastPage.isClosed()) {

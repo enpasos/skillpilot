@@ -1,6 +1,6 @@
 # Vollständiges Cockpit mit zusätzlicher Lernkarte
 
-Aktuelle Richtung vom 4. November 2026: Das vorhandene Cockpit bleibt die Basis. Ausschließlich die Navigation erhält neben dem Baum eine zoombare Lernkarte. Die frühere Aufteilung in drei neue Gesamtansichten wird nicht übernommen.
+Aktuelle Richtung vom 4. November 2026: Das vorhandene Cockpit bleibt die Basis. Ausschließlich die Navigation erhält neben dem Baum eine zoombare Lernkarte. Die frühere Aufteilung in drei neue Gesamtansichten wird nicht übernommen. Owner-Vorgabe vom 9. November 2026: Die Lernkarte gehört nicht in das Lernzielmenü; sie öffnet sich über den Knopf **Lernkarte** neben **Lernen starten** im ganzen Fenster und lässt sich wieder schließen.
 
 Aus `app/` starten:
 
@@ -8,9 +8,9 @@ Aus `app/` starten:
 ./node_modules/.bin/vite --config prototypes/vite.config.ts
 ```
 
-Öffnen: <http://localhost:5173/prototypes/full-cockpit.html>. Links unter „Meine Lernziele“ zwischen **Baum** und **Lernkarte** wechseln. Alle bisherigen Inhalte bleiben rechts im Original-Cockpit. Die Karte nutzt am Desktop eine breitere Seitenleiste; beim Zurückwechseln kehrt die bisherige Baumbreite zurück. Doppelklick öffnet eine Gruppe, Shift + Doppelklick führt wieder heraus.
+Öffnen: <http://localhost:5173/prototypes/full-cockpit.html>. Der Baum bleibt links unter „Meine Lernziele“. Der Knopf **Lernkarte** oben rechts neben **Lernen starten** öffnet die Karte im ganzen Fenster; das Schließen-Kreuz oben rechts oder Escape führt zurück ins Cockpit. Alle bisherigen Inhalte bleiben im Original-Cockpit, die Baumbreite bleibt unverändert. Doppelklick öffnet eine Gruppe, Shift + Doppelklick führt wieder heraus.
 
-Ein Kartenklick verwendet dieselbe Zielauswahl wie der Baum. Er verändert weder das aktive Lernziel noch Mastery oder Lernfokus. Die gewohnte Zielkarte rechts enthält weiterhin Bild, Mathematik, Aufgabe und Details. Ein zusätzlicher Karten-Detailkasten würde dieselbe Information verdoppeln und bleibt deshalb ausgeblendet.
+Ein Kartenklick verwendet dieselbe Zielauswahl wie der Baum; die Karte bleibt dabei geöffnet. Er verändert weder das aktive Lernziel noch Mastery oder Lernfokus. Nach dem Schließen zeigt die gewohnte Zielkarte das gewählte Ziel mit Bild, Mathematik, Aufgabe und Details, und der Baum klappt bis zu diesem Ziel auf. Ein zusätzlicher Karten-Detailkasten würde dieselbe Information verdoppeln und bleibt deshalb ausgeblendet.
 
 ## Vorhandene Funktionen
 
@@ -19,7 +19,7 @@ Es gibt genau eine `LearnerView`. Hauptinhalt, Controller und Dialoge entspreche
 | Element | Zugang im vollständigen Cockpit |
 | --- | --- |
 | Umfang, aktives Ziel zeigen, Lernhistorie | Unveränderte Icons oben links. |
-| Navigation und Fokus setzen | Originalbaum; alternative Lernkarte zur Navigation. Fokusaktionen bleiben im Baum erreichbar. |
+| Navigation und Fokus setzen | Originalbaum im Lernzielmenü; Lernkarte im ganzen Fenster über den Knopf neben „Lernen starten“. Fokusaktionen bleiben im Baum erreichbar. |
 | Zielbeschreibung, Mathematik, Lernzielbild und Quelle | Original-Zielkarte rechts. |
 | Prüfung, Lösung nach Bestehen, Direktprüfung | Original-Zielkarte und Prüfungsübersicht; Testprofil „Prüfung“ bzw. „Abgeschlossen“. |
 | Laufender Prüfungsweg, Auswahl und Wechsel | Original-Prüfungsübersicht. |
@@ -52,4 +52,4 @@ Originalaufgabe, Bild und Kartentexte stammen unverändert aus dem gebundenen lo
 ./node_modules/.bin/tsc --project prototypes/tsconfig.json
 ```
 
-Die neue Browserprüfung kontrolliert insbesondere dieselbe Auswahl in Baum und Karte bei unverändert aktivem Ziel, den erhaltenen Originalhauptinhalt und SRS-Zustand, wiederhergestellte Baumbreite, Originaldialoge sowie abgeschottete lokale Requests und mobile Bedienung.
+Die neue Browserprüfung kontrolliert insbesondere dieselbe Auswahl in Baum und Karte bei unverändert aktivem Ziel, den erhaltenen Originalhauptinhalt und SRS-Zustand, die Vollfensterkarte neben „Lernen starten“, unveränderte Baumbreite, Originaldialoge sowie abgeschottete lokale Requests und mobile Bedienung.

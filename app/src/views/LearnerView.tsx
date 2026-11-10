@@ -12,7 +12,7 @@ import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
-import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
+import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
 import { LearnerDataManagementDialog } from '../components/LearnerDataManagementDialog'
@@ -116,8 +116,6 @@ import type { Learner, FrontierGoal } from '../learnerTypes'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
-export type LearnerGoalNavigationMode = 'tree' | 'map'
-
 const NativeGoalNavigationMap = lazy(async () => {
   let timeout: ReturnType<typeof setTimeout> | undefined
   try {
@@ -147,9 +145,14 @@ export interface LearnerGoalNavigationMapProps {
   onSelectGoal: (goalId: string) => void
   active: boolean
   onReturnToTree?: () => void
+  /** Escape outside the map search closes the full-window map instead of leaving a level. */
+  onEscape?: () => void
   language?: 'de' | 'en'
   useRawGoalTitles?: boolean
 }
+
+/** Where focus goes after the full-window learning map closes. */
+type LearningMapReturnTarget = 'opener' | 'tree' | 'none'
 
 export interface LearnerViewProps {
   rootGoals: UiGoal[]
@@ -173,8 +176,7 @@ export interface LearnerViewProps {
   onScopeDataRefresh?: () => void
   parentMap?: Map<string, string[]>
   onLandscapeChange?: (landscapeId: string) => void
-  goalNavigationMode?: LearnerGoalNavigationMode
-  onGoalNavigationModeChange?: (mode: LearnerGoalNavigationMode) => void
+  /** Optional host override for the learning map shown in the full-window dialog. */
   renderGoalNavigationMap?: (props: LearnerGoalNavigationMapProps) => React.ReactNode
 }
 
@@ -422,23 +424,26 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   onScopeDataRefresh,
   parentMap,
   onLandscapeChange,
-  goalNavigationMode,
-  onGoalNavigationModeChange,
   renderGoalNavigationMap,
 }) => {
-  const [localGoalNavigationMode, setLocalGoalNavigationMode] = useState<LearnerGoalNavigationMode>('tree')
-  const [hasVisitedNavigationMap, setHasVisitedNavigationMap] = useState(false)
+  // The goal tree always stays in the goal menu. The learning map is opened
+  // from the main area as a full-window dialog and stays mounted once visited,
+  // so its scope and camera survive closing and reopening.
+  const [isLearningMapOpen, setIsLearningMapOpen] = useState(false)
+  const [hasOpenedLearningMap, setHasOpenedLearningMap] = useState(false)
+  const learningMapDialogRef = useRef<HTMLDialogElement>(null)
+  const learningMapOpenButtonRef = useRef<HTMLButtonElement>(null)
+  const learningMapPanelRef = useRef<HTMLDivElement>(null)
+  const learningMapSessionRef = useRef<{
+    initialSelectionId: string
+    mapSelectionId: string | null
+    returnTo: LearningMapReturnTarget
+  } | null>(null)
   const [navigationRevealRequest, setNavigationRevealRequest] = useState<{ entryId: string; nonce: number } | null>(null)
   const navigationRevealSequence = useRef(0)
   const requestNavigationReveal = useCallback((entryId: string) => {
     setNavigationRevealRequest({ entryId, nonce: ++navigationRevealSequence.current })
   }, [])
-  const navigationMode = goalNavigationMode ?? localGoalNavigationMode
-  const selectNavigationMode = (mode: LearnerGoalNavigationMode) => {
-    if (mode === 'map') setHasVisitedNavigationMap(true)
-    setLocalGoalNavigationMode(mode)
-    onGoalNavigationModeChange?.(mode)
-  }
   const learnerStateScopeKey = `${skillpilotId}\u0000${rootLandscapeId ?? ''}`
   const [plannedGoals, setPlannedGoals] = useState<Set<string>>(new Set())
   const [expandedGoalIds, setExpandedGoalIds] = useState<Set<string>>(new Set())
@@ -1343,8 +1348,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     requestNavigationReveal,
   ])
 
-  const focusLearnerGoalContent = useCallback((goalId: string) => {
-    requestNavigationReveal(goalId)
+  const focusSelectedGoalCard = useCallback((goalId: string) => {
     pendingPlanGoalFocusRef.current = goalId
     if (currentGoal?.id !== goalId || currentRouteGoalId !== goalId) return
     window.requestAnimationFrame(() => {
@@ -1355,7 +1359,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       target.focus({ preventScroll: true })
       pendingPlanGoalFocusRef.current = null
     })
-  }, [currentGoal?.id, currentRouteGoalId, requestNavigationReveal])
+  }, [currentGoal?.id, currentRouteGoalId])
+
+  const focusLearnerGoalContent = useCallback((goalId: string) => {
+    requestNavigationReveal(goalId)
+    focusSelectedGoalCard(goalId)
+  }, [focusSelectedGoalCard, requestNavigationReveal])
 
   useEffect(() => {
     const pendingGoalId = pendingPlanGoalFocusRef.current
@@ -2675,33 +2684,34 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   // Sidebar state
   const [sidebarWidth, setSidebarWidth] = useState(320)
-  const [mapSidebarWidth, setMapSidebarWidth] = useState<number | null>(null)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
   const [completionTreeRevealId, setCompletionTreeRevealId] = useState<string | null>(null)
-  const showCompletionGoalInTree = useCallback((goalId: string) => {
-    if (!visibleGoals.has(goalId)) return
-    requestNavigationReveal(goalId)
+  const revealGoalRowInTree = useCallback((goalId: string) => {
+    if (!visibleGoals.has(goalId)) return false
     setExpandedGoalIds((current) => new Set([...current, ...buildCollapsedFocusPath(goalId)]))
-    onSelectGoal(goalId)
     setIsSidebarOpen(true)
     setIsDesktopSidebarOpen(true)
     setCompletionTreeRevealId(goalId)
-  }, [buildCollapsedFocusPath, onSelectGoal, requestNavigationReveal, visibleGoals])
+    return true
+  }, [buildCollapsedFocusPath, visibleGoals])
+  const showCompletionGoalInTree = useCallback((goalId: string) => {
+    if (!visibleGoals.has(goalId)) return
+    requestNavigationReveal(goalId)
+    onSelectGoal(goalId)
+    revealGoalRowInTree(goalId)
+  }, [onSelectGoal, requestNavigationReveal, revealGoalRowInTree, visibleGoals])
   useEffect(() => {
     if (!completionTreeRevealId) return
     const frame = window.requestAnimationFrame(() => {
       const sidebar = document.getElementById('learner-goal-sidebar')
-      const mapPanel = sidebar?.querySelector<HTMLElement>('[data-testid="learner-goal-navigation-map-panel"]')
-      const row = navigationMode === 'map'
-        ? mapPanel?.querySelector<HTMLElement>(`[data-id="${CSS.escape(completionTreeRevealId)}"]`) ?? mapPanel
-        : sidebar?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
+      const row = sidebar?.querySelector<HTMLElement>(`[data-goal-id="${CSS.escape(completionTreeRevealId)}"]`)
       row?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
       row?.focus({ preventScroll: true })
       setCompletionTreeRevealId(null)
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [completionTreeRevealId, navigationMode])
+  }, [completionTreeRevealId])
   useEffect(() => {
     if (!completionDiscoveryRequest) {
       completedDiscoveryRevealRef.current = null
@@ -2752,11 +2762,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }
 
   const resize = useCallback((e: MouseEvent) => {
-    if (isResizing.current) {
-      if (navigationMode === 'map') setMapSidebarWidth(Math.max(280, Math.min(900, e.clientX)))
-      else setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
-    }
-  }, [navigationMode])
+    if (isResizing.current) setSidebarWidth(Math.max(240, Math.min(800, e.clientX)))
+  }, [])
 
   const stopResizing = useCallback(() => {
     isResizing.current = false
@@ -3388,10 +3395,49 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       ?? learningPlanSubjectLabels.get(activeLearningPlanLandscapeId)
     : undefined
 
+  // The map and the tree use the same visible selection ID.
+  const navigationSelectedId = subjectRootIdByAlias.get(selectedId) ?? selectedId
   const selectMapGoal = (goalId: string) => {
     if (!visibleGoals.has(goalId)) return
+    if (learningMapSessionRef.current) learningMapSessionRef.current.mapSelectionId = goalId
     onSelectGoal(goalId)
-    if (isMobile) setIsSidebarOpen(false)
+  }
+  const openLearningMap = () => {
+    learningMapSessionRef.current = { initialSelectionId: navigationSelectedId, mapSelectionId: null, returnTo: 'opener' }
+    setHasOpenedLearningMap(true)
+    setIsLearningMapOpen(true)
+  }
+  const closeLearningMap = useCallback((returnTo: LearningMapReturnTarget = 'opener') => {
+    if (learningMapSessionRef.current) learningMapSessionRef.current.returnTo = returnTo
+    setIsLearningMapOpen(false)
+  }, [])
+  useEffect(() => {
+    const dialog = learningMapDialogRef.current
+    if (!dialog) return
+    if (isLearningMapOpen && !dialog.open) {
+      dialog.showModal()
+      learningMapPanelRef.current?.focus({ preventScroll: true })
+    } else if (!isLearningMapOpen && dialog.open) {
+      dialog.close()
+    }
+  }, [isLearningMapOpen])
+  // Runs after every close path: close button, Escape and the tree fallback.
+  const finishLearningMapSession = () => {
+    if (learningMapDialogRef.current?.open) return
+    setIsLearningMapOpen(false)
+    const session = learningMapSessionRef.current
+    learningMapSessionRef.current = null
+    if (!session || session.returnTo === 'none') return
+    if (session.returnTo === 'tree' && revealGoalRowInTree(navigationSelectedId)) return
+    if (session.mapSelectionId && session.mapSelectionId !== session.initialSelectionId) {
+      // A goal chosen on the map is shown in the tree and in the goal card;
+      // the map itself keeps the level the learner was looking at.
+      const goalId = session.mapSelectionId
+      setExpandedGoalIds((current) => new Set([...current, ...buildCollapsedFocusPath(goalId)]))
+      focusSelectedGoalCard(goalId)
+      return
+    }
+    learningMapOpenButtonRef.current?.focus({ preventScroll: true })
   }
 
   return (
@@ -3407,7 +3453,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
       <aside
         id="learner-goal-sidebar"
-        data-goal-navigation-mode={navigationMode}
         className={`flex flex-col bg-sidebar-bg border-r border-border-color shrink-0
           fixed inset-y-0 left-0 z-50 shadow-2xl transition-transform duration-300
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -3415,8 +3460,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           ${isDesktopSidebarOpen ? 'md:flex md:translate-x-0' : 'md:hidden'}
         `}
         style={{
-          width: isMobile ? '85%' : navigationMode === 'map' ? (mapSidebarWidth ?? 'min(55vw, 900px)') : sidebarWidth,
-          maxWidth: isMobile ? '320px' : navigationMode === 'map' ? '900px' : 'none'
+          width: isMobile ? '85%' : sidebarWidth,
+          maxWidth: isMobile ? '320px' : 'none'
         }}
       >
         <div className="p-4 border-b border-border-color flex items-center justify-between shrink-0">
@@ -3496,13 +3541,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             )}
           </div>
         </div>
-        <nav className="learner-goal-navigation-switch" aria-label={localizedLanguage === 'en' ? 'Goal navigation' : 'Lernzielnavigation'}>
-          {([
-            ['tree', localizedLanguage === 'en' ? 'Tree' : 'Baum'],
-            ['map', localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'],
-          ] as const).map(([mode, label]) => <button key={mode} type="button" data-testid={`learner-goal-navigation-${mode}`} aria-pressed={navigationMode === mode} onClick={() => selectNavigationMode(mode)}>{label}</button>)}
-        </nav>
-        <div className="learner-tree-navigation flex-1 overflow-y-auto p-2" hidden={navigationMode !== 'tree'} inert={navigationMode !== 'tree'}>
+        <div className="learner-tree-navigation flex-1 overflow-y-auto p-2">
           {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
             <div className="space-y-4 p-8" aria-hidden="true" data-testid="learner-tree-loading">
               <div className="h-4 w-3/4 rounded bg-border-color" />
@@ -3549,44 +3588,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             />
           )}
         </div>
-        <div className="learner-map-navigation" data-testid="learner-goal-navigation-map-panel" tabIndex={-1} hidden={navigationMode !== 'map'} inert={navigationMode !== 'map'}>
-          {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
-            <div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading curriculum…' : 'Lehrplan wird geladen…'}</div>
-          ) : isGuidedPersonalizationRequired ? (
-            <div className="m-2 rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
-              <h3 className="font-semibold text-text-primary">{personalizationGateCopy.title}</h3>
-              <p className="mt-1 text-text-secondary">{personalizationGateCopy.body}</p>
-              <button type="button" onClick={handlePersonalizationGateAction} className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white">{personalizationGateCopy.action}</button>
-            </div>
-          ) : (hasVisitedNavigationMap || navigationMode === 'map') && <LearnerMapBoundary key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} onReturnToTree={() => selectNavigationMode('tree')} language={localizedLanguage}>
-          <Suspense fallback={<div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading map…' : 'Lernkarte wird geladen…'}</div>}>
-          {(() => {
-            const mapProps: LearnerGoalNavigationMapProps = {
-            rootGoals: visibleRootGoals,
-            language: localizedLanguage,
-            useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
-            goalIndexAll,
-            canonicalGoalSources,
-            visibleGoalIds: visibleGoals,
-            visibleChildrenByParent: learnerVisibleChildrenByParent,
-            selectedGoalId: subjectRootIdByAlias.get(selectedId) ?? selectedId,
-            activeGoalId: effectiveActiveGoalId ?? null,
-            getMastery: getEffectiveMastery,
-            completionWaivers: completionTreeWaivers,
-            revealRequest: navigationRevealRequest ? {
-              ...navigationRevealRequest,
-              entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
-            } : undefined,
-            onSelectGoal: selectMapGoal,
-            onReturnToTree: () => selectNavigationMode('tree'),
-            active: navigationMode === 'map' && (isMobile ? isSidebarOpen : isDesktopSidebarOpen)
-              && !isSetupOpen && !isDataManagementOpen && !isModalOpen,
-            }
-            return renderGoalNavigationMap ? renderGoalNavigationMap(mapProps)
-              : <NativeGoalNavigationMap key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} {...mapProps} />
-          })()}
-          </Suspense></LearnerMapBoundary>}
-        </div>
         <div className="flex items-center justify-between gap-2 border-t border-border-color p-2">
           <button
             type="button"
@@ -3622,6 +3623,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
+        {/* The two main actions stay at the very top right, above the assessment shortcuts. */}
+        <div className="mb-4 flex w-full items-center justify-end gap-2">
+          <button
+            ref={learningMapOpenButtonRef}
+            type="button"
+            data-testid="learner-learning-map-open"
+            aria-haspopup="dialog"
+            aria-controls="learner-learning-map-dialog"
+            aria-expanded={isLearningMapOpen}
+            title={localizedLanguage === 'en' ? 'Open the learning map in a full window' : 'Lernkarte im ganzen Fenster öffnen'}
+            onClick={openLearningMap}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-sky-500 bg-white px-3 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 min-[360px]:px-4 dark:bg-transparent dark:text-sky-300 dark:hover:bg-sky-950/40"
+          >
+            <MapIcon size={16} aria-hidden="true" />
+            <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
+          </button>
+          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
+            title={t.startPage.login.coachProviderLabel}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
+          </Link>
+        </div>
         {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
@@ -3667,13 +3690,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </section>
           ) : null}
         </div> : null}
-        <div className="mb-4 flex w-full justify-end">
-          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
-            title={t.startPage.login.coachProviderLabel}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
-            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
-          </Link>
-        </div>
         {!isDesktopSidebarOpen && (
           <div className="mb-4 hidden w-full md:flex">
             <button
@@ -4079,6 +4095,83 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           </div>
         </div>
       </main>
+
+      <dialog
+        ref={learningMapDialogRef}
+        id="learner-learning-map-dialog"
+        data-testid="learner-learning-map-dialog"
+        className="learner-learning-map-dialog"
+        aria-labelledby="learner-learning-map-title"
+        onCancel={(event) => {
+          event.preventDefault()
+          closeLearningMap()
+        }}
+        onClose={finishLearningMapSession}
+      >
+        <header className="learner-learning-map-header">
+          <h2 id="learner-learning-map-title" className="learner-learning-map-title">
+            <MapIcon size={18} aria-hidden="true" />
+            {localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}
+          </h2>
+          <button
+            type="button"
+            data-testid="learner-learning-map-close"
+            className="learner-learning-map-close"
+            aria-label={localizedLanguage === 'en' ? 'Close learning map' : 'Lernkarte schließen'}
+            title={localizedLanguage === 'en' ? 'Close learning map (Esc)' : 'Lernkarte schließen (Esc)'}
+            onClick={() => closeLearningMap()}
+          >
+            <X size={22} aria-hidden="true" />
+          </button>
+        </header>
+        <div ref={learningMapPanelRef} className="learner-learning-map-panel" data-testid="learner-learning-map-panel" tabIndex={-1}>
+          {isPersonalConfigHydrating || guidedPersonalizationGateReason === 'scopeLoading' ? (
+            <div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading curriculum…' : 'Lehrplan wird geladen…'}</div>
+          ) : isGuidedPersonalizationRequired ? (
+            <div className="m-4 max-w-xl rounded-xl border border-sky-300 bg-sky-50 p-4 text-sm dark:border-sky-900/60 dark:bg-sky-950/20">
+              <h3 className="font-semibold text-text-primary">{personalizationGateCopy.title}</h3>
+              <p className="mt-1 text-text-secondary">{personalizationGateCopy.body}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  closeLearningMap('none')
+                  handlePersonalizationGateAction()
+                }}
+                className="mt-3 rounded-lg bg-sky-600 px-3 py-2 font-semibold text-white"
+              >
+                {personalizationGateCopy.action}
+              </button>
+            </div>
+          ) : hasOpenedLearningMap && <LearnerMapBoundary key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} onReturnToTree={() => closeLearningMap('tree')} language={localizedLanguage}>
+          <Suspense fallback={<div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading map…' : 'Lernkarte wird geladen…'}</div>}>
+          {(() => {
+            const mapProps: LearnerGoalNavigationMapProps = {
+            rootGoals: visibleRootGoals,
+            language: localizedLanguage,
+            useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
+            goalIndexAll,
+            canonicalGoalSources,
+            visibleGoalIds: visibleGoals,
+            visibleChildrenByParent: learnerVisibleChildrenByParent,
+            selectedGoalId: navigationSelectedId,
+            activeGoalId: effectiveActiveGoalId ?? null,
+            getMastery: getEffectiveMastery,
+            completionWaivers: completionTreeWaivers,
+            revealRequest: navigationRevealRequest ? {
+              ...navigationRevealRequest,
+              entryId: subjectRootIdByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
+            } : undefined,
+            onSelectGoal: selectMapGoal,
+            onReturnToTree: () => closeLearningMap('tree'),
+            onEscape: closeLearningMap,
+            active: isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen,
+            }
+            return renderGoalNavigationMap ? renderGoalNavigationMap(mapProps)
+              : <NativeGoalNavigationMap key={`${learnerStateScopeKey}\u0000${learnerTreeScopeKey}`} {...mapProps} />
+          })()}
+          </Suspense></LearnerMapBoundary>}
+        </div>
+      </dialog>
 
       <LearnerDataManagementDialog
         isOpen={isDataManagementOpen}

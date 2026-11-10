@@ -50,11 +50,29 @@ async function open(width: number, reducedMotion: 'reduce' | 'no-preference' = '
   return page
 }
 
-async function navigation(page: Page, mode: 'tree' | 'map', scopeId?: string) {
-  await page.getByTestId(`learner-goal-navigation-${mode}`).click()
-  assert.equal(await page.getByTestId(`learner-goal-navigation-${mode}`).getAttribute('aria-pressed'), 'true')
-  assert.equal(await page.locator('#learner-goal-sidebar').getAttribute('data-goal-navigation-mode'), mode)
-  if (mode === 'map' && scopeId) await page.locator(`.lum-canvas[data-scope-id="${scopeId}"][aria-busy="false"]`).waitFor()
+const mapDialog = (page: Page) => page.getByTestId('learner-learning-map-dialog')
+const mapOpener = (page: Page) => page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
+
+async function openMap(page: Page, scopeId?: string) {
+  await mapOpener(page).click()
+  await mapDialog(page).waitFor()
+  const viewport = page.viewportSize()
+  const box = await mapDialog(page).boundingBox()
+  assert.ok(viewport && box)
+  assert.deepEqual([box.x, box.y, box.width, box.height].map(Math.round), [0, 0, viewport.width, viewport.height], 'the learning map uses the entire window')
+  if (scopeId) await page.locator(`.lum-canvas[data-scope-id="${scopeId}"][aria-busy="false"]`).waitFor()
+}
+
+async function closeMap(page: Page) {
+  await mapDialog(page).getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
+  await mapDialog(page).waitFor({ state: 'hidden' })
+}
+
+async function actionsShareTopRow(page: Page, label: string) {
+  const [openerBox, startBox] = await Promise.all([mapOpener(page).boundingBox(),
+    page.getByTestId('learner-coach-start-link').boundingBox()])
+  assert.ok(openerBox && startBox && Math.abs(openerBox.y - startBox.y) < 1 && openerBox.x + openerBox.width <= startBox.x,
+    `${label}: Lernkarte sits beside Lernen starten`)
 }
 
 async function unchangedMain(page: Page) {
@@ -143,8 +161,9 @@ try {
   const main = page.getByTestId('learner-main-content')
   const sidebar = page.locator('#learner-goal-sidebar')
   const selected = page.locator('.learner-cockpit-selection')
-  assert.equal(await comparison.getAttribute('data-navigation-mode'), 'tree')
-  assert.equal(await sidebar.getAttribute('data-goal-navigation-mode'), 'tree')
+  assert.equal(await mapDialog(page).isVisible(), false)
+  assert.equal(await sidebar.getByRole('button', { name: /Lernkarte/u }).count(), 0, 'the goal menu keeps only the tree')
+  await actionsShareTopRow(page, 'desktop')
   const originalWidth = await sidebar.evaluate(element => element.getBoundingClientRect().width)
   await main.evaluate(element => element.setAttribute('data-instance-witness', 'original'))
   await selected.locator('img').waitFor()
@@ -155,20 +174,20 @@ try {
   stage = 'scenario refresh replaces an older in-flight fixture response without remounting'
   await scenarioRefreshRace(page)
 
-  stage = 'navigation-only map, original GoalCard, separate active goal and restored tree width'
-  await navigation(page, 'map', data.mathScopeId)
+  stage = 'full-window navigation map, original GoalCard, separate active goal and unchanged tree width'
+  await openMap(page, data.mathScopeId)
   await unchangedMain(page)
-  assert.ok(await sidebar.evaluate(element => element.getBoundingClientRect().width) > originalWidth)
-  assert.equal(await selected.locator('img').isVisible(), true)
+  assert.equal(await selected.locator('img').count(), 1, 'the original GoalCard stays mounted behind the map')
   await page.locator(`[data-entry-id="${data.assessmentId}"] .lum-node-main`).focus()
   assert.equal(await comparison.getAttribute('data-selected-goal-id'), data.ordinaryId, 'keyboard focus highlights without selecting another original goal')
   await page.locator(`[data-entry-id="${data.assessmentId}"] .lum-node-main`).click()
   await page.waitForFunction(id => document.querySelector('[data-testid="full-cockpit-comparison"]')?.getAttribute('data-selected-goal-id') === id, data.assessmentId)
   assert.equal(await comparison.getAttribute('data-active-goal-id'), data.ordinaryId)
-  await selected.getByText('Prüfungsaufgabe', { exact: true }).waitFor()
+  assert.equal(await mapDialog(page).isVisible(), true, 'choosing a goal keeps the map open')
   await unchangedMain(page)
   await page.screenshot({ path: `${artifacts}/14-full-map.png` })
-  await navigation(page, 'tree')
+  await closeMap(page)
+  await selected.getByText('Prüfungsaufgabe', { exact: true }).waitFor()
   assert.equal(await sidebar.evaluate(element => element.getBoundingClientRect().width), originalWidth)
   await unchangedMain(page)
   await page.getByTestId('full-cockpit-scenario').selectOption('ordinary')
@@ -194,7 +213,7 @@ try {
   await unchangedMain(page)
   await page.screenshot({ path: `${artifacts}/12-full-plan.png` })
 
-  stage = 'original SRS drill survives tree/map changes and original coach setup'
+  stage = 'original SRS drill survives opening/closing the map and original coach setup'
   await page.getByTestId('full-cockpit-scenario').selectOption('memory')
   await page.getByRole('button', { name: /^Karteikarten lernen/ }).click()
   await page.getByRole('button', { name: 'Antwort zeigen', exact: true }).click()
@@ -202,9 +221,9 @@ try {
   assert.equal(await flip.getAttribute('aria-pressed'), 'true')
   await flip.evaluate(element => element.setAttribute('data-drill-instance-witness', 'original'))
   const cardText = await selected.innerText()
-  await navigation(page, 'map', data.mathLandscapeId)
+  await openMap(page, data.mathLandscapeId)
   await unchangedMain(page)
-  await navigation(page, 'tree')
+  await closeMap(page)
   assert.equal(await selected.innerText(), cardText)
   assert.equal(await flip.getAttribute('aria-pressed'), 'true')
   assert.equal(await flip.getAttribute('data-drill-instance-witness'), 'original')
@@ -239,14 +258,14 @@ try {
   await treeOrdinary.getByTestId('completion-tree-waiver').waitFor()
   assert.equal(await treeOrdinary.locator('.lucide-shield-check').count(), 1)
   assert.equal(await sidebar.locator(`[data-goal-id="${data.assessmentId}"] .lucide-check`).count(), 1)
-  await navigation(page, 'map', data.mathScopeId)
+  await openMap(page, data.mathScopeId)
   const ordinaryNode = page.locator(`[data-entry-id="${data.ordinaryId}"]`)
   const examNode = page.locator(`[data-entry-id="${data.assessmentId}"]`)
   await ordinaryNode.locator('.lum-node-state.is-implicit .lucide-shield-check').waitFor()
   await examNode.locator('.lum-node-state.is-explicit .lucide-check').waitFor()
   await unchangedMain(page)
   await page.screenshot({ path: `${artifacts}/16-full-map-completed.png` })
-  await navigation(page, 'tree')
+  await closeMap(page)
 
   stage = 'original data management, export/import and deletion confirmation'
   await sidebar.getByRole('button', { name: 'Daten & SkillPilot-ID', exact: true }).click()
@@ -283,23 +302,23 @@ try {
   await ready(page)
   assert.equal(new URL(page.url()).origin, origin, 'the original import reload stays on this local prototype')
 
-  stage = '320/390px original mobile menu, map toggle, no overflow and original close'
+  stage = '320/390px full-window map, original mobile menu, no overflow and original close'
   for (const width of [320, 390]) {
     const mobile = await open(width)
-    const opener = mobile.getByRole('button', { name: 'Lernzielmenü öffnen', exact: true })
-    await opener.focus()
-    await mobile.keyboard.press('Enter')
-    await waitDrawer(mobile, true)
-    await navigation(mobile, 'map', data.mathScopeId)
-    await waitDrawer(mobile, true)
+    await actionsShareTopRow(mobile, `${width}px`)
+    assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `cockpit at ${width}`)
+    await openMap(mobile, data.mathScopeId)
     // The second sibling can be outside a narrow, culled viewport; the selected A is visible.
     await mobile.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main`).focus()
-    await waitDrawer(mobile, true)
     assert.equal(await mobile.getByTestId('full-cockpit-comparison').getAttribute('data-selected-goal-id'), data.ordinaryId)
     assert.equal(await mobile.locator('.lum-inspector').count(), 0)
     assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `map at ${width}`)
     await mobile.screenshot({ path: `${artifacts}/15-full-navigation-map-${width}.png` })
-    await navigation(mobile, 'tree')
+    await closeMap(mobile)
+    const opener = mobile.getByRole('button', { name: 'Lernzielmenü öffnen', exact: true })
+    await opener.focus()
+    await mobile.keyboard.press('Enter')
+    await waitDrawer(mobile, true)
     await mobile.getByRole('button', { name: 'Lernzielmenü schließen', exact: true }).click()
     await waitDrawer(mobile, false)
     assert.equal(await mobile.getByTestId('learner-learning-progress').isVisible(), true)
@@ -312,7 +331,7 @@ try {
   for (const motion of ['no-preference', 'reduce'] as const) {
     const drill = await open(1440, motion)
     const drillComparison = drill.getByTestId('full-cockpit-comparison')
-    await navigation(drill, 'map', data.mathScopeId)
+    await openMap(drill, data.mathScopeId)
     await drill.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
     await drill.locator(`.lum-canvas[data-scope-id="${data.mathLandscapeId}"][aria-busy="false"]`).waitFor()
     const unit = drill.locator(`[data-entry-id="${data.contextId}"] .lum-node-main`)
@@ -346,14 +365,26 @@ try {
     await drill.locator(`.lum-canvas[data-scope-id="${data.mathLandscapeId}"][aria-busy="false"]`).waitFor()
     await drill.locator(`[data-entry-id="${data.contextId}"] .lum-node-open`).click()
     await drill.locator(`.lum-canvas[data-scope-id="${data.contextId}"][aria-busy="false"]`).waitFor()
+    // The active-goal reveal is part of the Cockpit; the reopened map follows it.
+    await closeMap(drill)
     await drill.getByTestId('learner-active-goal-banner').getByRole('button', { name: 'Gehe zum aktiven Ziel', exact: true }).click()
-    await drill.locator(`.lum-canvas[data-scope-id="${data.mathScopeId}"][aria-busy="false"]`).waitFor()
+    await openMap(drill, data.mathScopeId)
     assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.ordinaryId)
+    // Escape inside the map belongs to the dialog: it closes the map and changes nothing on it.
+    const selectedNode = drill.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main`)
+    // The revealed selection reaches the reopened map shortly after its level is laid out.
+    await drill.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main[aria-pressed="true"]`).waitFor()
+    await selectedNode.focus()
+    await drill.keyboard.press('Escape')
+    await mapDialog(drill).waitFor({ state: 'hidden' })
+    await drill.waitForFunction(() => document.activeElement?.getAttribute('data-testid') === 'learner-learning-map-open')
+    await openMap(drill, data.mathScopeId)
+    assert.equal(await selectedNode.getAttribute('aria-pressed'), 'true', 'Escape closes the map without clearing its selection')
     await drill.context().close()
   }
   assert.deepEqual(rejected, [], 'No API, external network, or write may leave the local adapter')
   assert.deepEqual(errors, [], 'No browser errors or unknown API fallback')
-  console.log('Full original Cockpit navigation passed: tree/map, unchanged main/SRS, selection versus active goal, original settings/materials/plan/data/provider, explicit/implicit icons and 320/390px.')
+  console.log('Full original Cockpit navigation passed: tree plus full-window map, unchanged main/SRS, selection versus active goal, original settings/materials/plan/data/provider, explicit/implicit icons and 320/390px.')
 } catch (error) {
   console.error(`Full Cockpit navigation failed at: ${stage}`)
   await lastPage?.screenshot({ path: `${artifacts}/failure.png` }).catch(() => {})
