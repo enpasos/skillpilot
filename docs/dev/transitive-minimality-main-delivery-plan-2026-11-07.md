@@ -12,6 +12,20 @@ zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
 bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
 Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
 
+**Aktueller Zwischenstand vom 10. November 2026, Biologie-WIP:** Der sichtbare
+IDE-Branch `fix/g17-biology-atomic-prerequisites-v7-data` baut auf dem
+Chemie-Checkpoint `597c2f6b17` auf. Im frischen Chemie-Remote-Lauf
+[42850827581](https://github.com/enpasos/skillpilot/actions/runs/42850827581)
+ist der Buchjob bestanden; drei weitere Hauptjobs laufen noch. Dies ist noch
+kein vollständiger CI- oder Main-Pass. Der angewendete Biologiestand besitzt
+nur ein Graph-GO: 3.951 atomare Closurepaare bleiben erhalten. Öffentliche
+Proof-Zulassung und native Vorprüfung sind tatsächlich gescheitert; die
+Ownerentscheidung zum Scopevertrag steht aus. Der
+[Biologie-WIP-Nachweis](https://github.com/enpasos/skillpilot/blob/fix/g17-biology-atomic-prerequisites-v7-data/qa-artifacts/ci-contract-audit/2026-11-10/g17-biology-atomic-prerequisites/README.md)
+bindet den aktuellen Kandidaten und trennt bestandene Graph-/Typprüfungen von
+den offenen Verträgen. Die folgenden Lieferpositionen bleiben als Historie
+erhalten; sie behaupten keine inzwischen erlangte Biologie-Abnahme.
+
 **Aktuelle Lieferposition vom 10. November 2026, Chemie:** Physik ist mit
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) auf Main bei
 `c2f0722545f51e53526651e0d7ee26a9e0fb64ae`. Der Mergetree entspricht dem

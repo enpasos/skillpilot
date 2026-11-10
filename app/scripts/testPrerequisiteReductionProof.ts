@@ -1009,15 +1009,17 @@ async function verifyActualLiveV6(
   const prefix = new Set([...checkpoint.parent.originalRequires, ...checkpoint.parent.suffixOriginalRequires,
     ...checkpoint.parent.tailOriginalRequires, ...checkpoint.parent.clusterTargetOriginalRequires].map(entry => entry.source))
   assert.equal(prefix.size, 720, 'the original V5 affected-source count remains exact')
-  assert.ok([1, 2, 3].includes(registry.batches.length), 'only the reviewed German, Physics or Chemistry delivery is accepted')
-  const [batch, physics, chemistry] = registry.batches
+  assert.ok([1, 2, 3, 4].includes(registry.batches.length), 'only the reviewed German, Physics, Chemistry or Biology delivery is accepted')
+  const [batch, physics, chemistry, biology] = registry.batches
   assert.equal(digest(batch), 'sha256:c21e1fcd260dc83fec0826388dabad3ae59432b1c94335a7d8257af7e3d6fe2e',
     'the entire first German batch, including all witnesses and bindings, remains exact')
-  assert.equal(summary.registryDigest, chemistry
+  assert.equal(summary.registryDigest, biology
+    ? 'sha256:d5d08c1ee74e57e74da091bdb781b85f659f1f50abbb6aebdd44d707a2021d63'
+    : chemistry
     ? 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
     : physics ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
     : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
-    'the complete V6 parent equals the approved German, Physics or Chemistry bytes')
+    'the complete V6 parent equals the approved German, Physics, Chemistry or Biology bytes')
   const sources = batchTestSources(batch)
   assert.equal(sources.length, 18)
   assert.deepEqual(sources.filter(source => prefix.has(source)),
@@ -1072,9 +1074,43 @@ async function verifyActualLiveV6(
     ], 'both actual old witness positions are explicitly continued')
     assert.equal(chemistry.currentDocumentDigests.length, 21)
   }
-  const expectedOriginals = new Set([...afterPhysicsSources, ...chemistrySources])
+  const afterChemistrySources = new Set([...afterPhysicsSources, ...chemistrySources])
+  assert.equal(afterChemistrySources.size, chemistry ? 1062 : physics ? 881 : 737,
+    'the exact Chemistry prefix source union remains unchanged')
+  const biologySources = biology ? batchTestSources(biology) : []
+  if (biology) {
+    assert.ok(chemistry)
+    assert.equal(biology.id, 'bio-complete-atomic-prerequisites-and-transitive-reduction')
+    assert.equal(biology.previousDigest, digest(chemistry), 'Biology is bound to the entire exact Chemistry batch object')
+    assert.equal(digest(chemistry), 'sha256:866aa0455fd0b6b118f0c7f72d5dd78a09227dec07e230125801a2ad61e6ac05',
+      'the complete third Chemistry batch remains unchanged under Biology')
+    assert.equal(digest(biology), 'sha256:4270313c48892b55cb23b5808d161751b2e67b03a4b37a4a09b00d0b42d0ae82',
+      'the complete fourth Biology batch, including all witnesses and bindings, is exact')
+    assert.equal(biologySources.length, 172)
+    assert.ok(biologySources.every(source => source.startsWith('08a43a1b-d97e-522c-9dfa-c950a493364e:')))
+    assert.deepEqual(biologySources.filter(source => afterChemistrySources.has(source)), [
+      '08a43a1b-d97e-522c-9dfa-c950a493364e:1042bb24-96ba-553b-a956-abaf9c74dc43',
+      '08a43a1b-d97e-522c-9dfa-c950a493364e:1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a',
+      '08a43a1b-d97e-522c-9dfa-c950a493364e:2d061f9f-bc88-51e0-af33-f6e8e00b2dee',
+      '08a43a1b-d97e-522c-9dfa-c950a493364e:a515e493-6f90-5371-9470-28a0cf50f087',
+    ], 'all four earlier Biology snapshots retain chronological priority')
+    assert.equal(biologySources.filter(source => !afterChemistrySources.has(source)).length, 168)
+    assert.equal(biology.operations.length, 1933)
+    const biologyStepCounts = { 'materialize-atomic': 0, 'remove-cluster-target': 0, 'remove-cluster': 0, atomic: 0 }
+    for (const operation of biology.operations) for (const step of 'steps' in operation ? operation.steps : [operation.step]) {
+      if ('operation' in step) biologyStepCounts[step.operation]++
+      else biologyStepCounts.atomic++
+    }
+    assert.deepEqual(biologyStepCounts, { 'materialize-atomic': 1018, 'remove-cluster-target': 39, 'remove-cluster': 15, atomic: 861 })
+    assert.equal(biology.legacyContinuations.length, 79)
+    assert.equal(digest(biology.legacyContinuations),
+      'sha256:1dfa522718f722cb8cafb909c11e7f732be2f3df838beb2dc0561d75c1a58da3',
+      'all 79 exact historical Biology witness positions and their removal bindings are pinned')
+    assert.equal(biology.currentDocumentDigests.length, 21)
+  }
+  const expectedOriginals = new Set([...afterChemistrySources, ...biologySources])
   const originals = earliestBatchTestOriginals(registry)
-  assert.equal(originals.size, chemistry ? 1062 : physics ? 881 : 737)
+  assert.equal(originals.size, biology ? 1230 : chemistry ? 1062 : physics ? 881 : 737)
   assert.deepEqual([...originals.keys()].sort(), [...expectedOriginals].sort(), 'the full source union is exact')
   if (physics) {
     const negativeDirectory = resolve(repositoryRoot, 'app/node_modules/.tmp/physics-live-negative-parents')
@@ -1089,6 +1125,7 @@ async function verifyActualLiveV6(
       const missingContinuation = structuredClone(registry)
       missingContinuation.batches[1].legacyContinuations.shift()
       if (chemistry) missingContinuation.batches[2].previousDigest = digest(missingContinuation.batches[1])
+      if (biology) missingContinuation.batches[3].previousDigest = digest(missingContinuation.batches[2])
       const missingContinuationPath = resolve(negativeDirectory, 'missing-prior-witness-continuation.json')
       writeFileSync(missingContinuationPath, JSON.stringify(missingContinuation))
       await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingContinuationPath }),
@@ -1107,10 +1144,29 @@ async function verifyActualLiveV6(
         /batch predecessor digest differs/u, 'the actual third batch cannot detach from Physics')
       const missingContinuation = structuredClone(registry)
       missingContinuation.batches[2].legacyContinuations.shift()
+      if (biology) missingContinuation.batches[3].previousDigest = digest(missingContinuation.batches[2])
       const missingPath = resolve(negativeDirectory, 'missing-chemistry-prior-witness-continuation.json')
       writeFileSync(missingPath, JSON.stringify(missingContinuation))
       await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingPath }),
         /literal atomic witness edge missing/u, 'the actual Chemistry continuation cannot be omitted')
+    } finally { rmSync(negativeDirectory, { recursive: true, force: true }) }
+  }
+  if (biology) {
+    const negativeDirectory = resolve(repositoryRoot, 'app/node_modules/.tmp/biology-live-negative-parents')
+    mkdirSync(negativeDirectory, { recursive: true })
+    try {
+      const invalidPredecessor = structuredClone(registry)
+      invalidPredecessor.batches[3].previousDigest = 'sha256:' + '0'.repeat(64)
+      const invalidPath = resolve(negativeDirectory, 'invalid-fourth-predecessor.json')
+      writeFileSync(invalidPath, JSON.stringify(invalidPredecessor))
+      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: invalidPath }),
+        /batch predecessor digest differs/u, 'the actual fourth batch cannot detach from Chemistry')
+      const missingContinuation = structuredClone(registry)
+      missingContinuation.batches[3].legacyContinuations.shift()
+      const missingPath = resolve(negativeDirectory, 'missing-biology-prior-witness-continuation.json')
+      writeFileSync(missingPath, JSON.stringify(missingContinuation))
+      await assert.rejects(loadVerifiedPrerequisiteReductionContext({ repositoryRoot, registryPath: missingPath }),
+        /literal atomic witness edge missing/u, 'the actual Biology continuation cannot be omitted')
     } finally { rmSync(negativeDirectory, { recursive: true, force: true }) }
   }
   assert.deepEqual(summary.affectedGoalIds, [...originals.keys()].sort(), 'actual verified affected IDs equal the deduplicated source union')
@@ -1132,6 +1188,15 @@ async function verifyActualLiveV6(
       return Object.hasOwn(raw, 'requires') !== (original.requires !== null)
         || JSON.stringify(raw.requires) !== JSON.stringify(original.requires === null ? undefined : original.requires)
     }).length, 153, 'all 181 Chemistry snapshots remain required although 28 arrays are net unchanged')
+  }
+  if (biology) {
+    assert.equal(biologySources.filter(source => !(currentGoals.get(source)!.contains?.length)).length, 157)
+    assert.equal(biologySources.filter(source => currentGoals.get(source)!.contains?.length).length, 15)
+    assert.equal(biology.originalRequires.filter(original => {
+      const raw = currentGoals.get(original.source)!
+      return Object.hasOwn(raw, 'requires') !== (original.requires !== null)
+        || JSON.stringify(raw.requires) !== JSON.stringify(original.requires === null ? undefined : original.requires)
+    }).length, 89, 'all 172 Biology snapshots remain required although 83 arrays are net unchanged')
   }
   for (const original of originals.values()) {
     const raw = currentGoals.get(original.source)!
@@ -1167,12 +1232,17 @@ function restoreBoundApplicabilityRefreshV6(
   assert.equal(`sha256:${createHash('sha256').update(parentBytes).digest('hex')}`, registry.parentRegistryRawDigest)
   const chemistryParent = registry.parentRegistryRawDigest === 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
   const physicsParent = registry.parentRegistryRawDigest === 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
-  assert.equal(registry.parentRegistryRawDigest, chemistryParent
+  const biologyParent = registry.parentRegistryRawDigest === 'sha256:d5d08c1ee74e57e74da091bdb781b85f659f1f50abbb6aebdd44d707a2021d63'
+  assert.equal(registry.parentRegistryRawDigest, biologyParent
+    ? 'sha256:d5d08c1ee74e57e74da091bdb781b85f659f1f50abbb6aebdd44d707a2021d63'
+    : chemistryParent
     ? 'sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389'
     : physicsParent ? 'sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93'
     : 'sha256:ecaa33fc009f1b72f34edbfe8fbc67916e5e280026831333902038e1ecb0b109',
-    'only the byte-pinned German, Physics or third Chemistry V6 parent is accepted')
-  assert.equal(registry.parentRegistryPath, chemistryParent
+    'only the byte-pinned German, Physics, third Chemistry or fourth Biology V6 parent is accepted')
+  assert.equal(registry.parentRegistryPath, biologyParent
+    ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-biology-20261110.json'
+    : chemistryParent
     ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json'
     : physicsParent ? 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-physics-20261109.json'
     : 'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-german-20261109.json')
@@ -1207,15 +1277,18 @@ async function verifyActualLiveApplicabilityRefresh(
   assert.equal(current.length, 21)
   assert.equal(batchTestGoals(current).size, 6524)
   assert.deepEqual(summary.affectedGoalIds, [...earliestBatchTestOriginals(parent).keys()].sort())
-  const chemistryParent = parent.batches.length === 3
+  const biologyParent = parent.batches.length === 4
+  const chemistryParent = parent.batches.length >= 3
   const physicsParent = parent.batches.length >= 2
-  assert.equal(summary.affectedGoalIds.length, chemistryParent ? 1062 : physicsParent ? 881 : 737,
+  assert.equal(summary.affectedGoalIds.length, biologyParent ? 1230 : chemistryParent ? 1062 : physicsParent ? 881 : 737,
     'cache-only sources never enlarge the exact approved prerequisite-source union')
-  assert.equal(summary.registryDigest, chemistryParent
+  assert.equal(summary.registryDigest, biologyParent
+    ? 'sha256:934bc6039c8f7b24f3d945d95a5d3ec048e3f4b2ecd0dc994e0d4833cc16a17e'
+    : chemistryParent
     ? 'sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6'
     : physicsParent ? 'sha256:2fc01e8c0bd0cf1bf7af05d094cac9373ca985d9c9fd5128b3bd15745e614000'
     : 'sha256:8e56e88b70e0b34c649596e1d58acbf3e099e767f7bed92838153983decb2c25',
-    'the actual complete V7 wrapper equals the reviewed German, Physics or Chemistry candidate')
+    'the actual complete V7 wrapper equals the reviewed German, Physics, Chemistry or Biology candidate')
   assert.equal(registry.originalApplicability.length, 27)
   assert.ok(registry.originalApplicability.every(original => original.present === true))
   assert.equal(digest(registry.originalApplicability),
@@ -1294,6 +1367,29 @@ async function verifyActualLiveApplicabilityRefresh(
       }
       assert.equal(fingerprintSemanticKindSourceGoal(reviewBindingGoal(context, source, goal)),
         fingerprintSemanticKindSourceGoal(expected), `all 742 earliest Chemistry sourceFP baselines: ${source}`)
+    }
+  }
+  if (biologyParent) {
+    const biology = current.find(({ document }) => document.landscapeId === '08a43a1b-d97e-522c-9dfa-c950a493364e')!.document
+    assert.equal(biology.goals.length, 484)
+    const earliest = earliestBatchTestOriginals(parent)
+    const beforeBiology = earliestBatchTestOriginals({ ...parent, batches: parent.batches.slice(0, 3) })
+    const historicalBiologySources = [
+      '1042bb24-96ba-553b-a956-abaf9c74dc43', '1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a',
+      '2d061f9f-bc88-51e0-af33-f6e8e00b2dee', 'a515e493-6f90-5371-9470-28a0cf50f087',
+    ].map(id => `${biology.landscapeId}:${id}`).sort()
+    assert.deepEqual([...beforeBiology.keys()].filter(source => source.startsWith(`${biology.landscapeId}:`)).sort(), historicalBiologySources)
+    for (const source of historicalBiologySources) assert.deepEqual(earliest.get(source), beforeBiology.get(source),
+      `the earlier Biology original retains chronological priority: ${source}`)
+    for (const goal of biology.goals) {
+      const source = `${biology.landscapeId}:${goal.id}`, expected = structuredClone(goal)
+      const original = earliest.get(source)
+      if (original) {
+        if (original.requires === null) delete expected.requires
+        else expected.requires = structuredClone(original.requires)
+      }
+      assert.equal(fingerprintSemanticKindSourceGoal(reviewBindingGoal(context, source, goal)),
+        fingerprintSemanticKindSourceGoal(expected), `all 484 earliest Biology sourceFP baselines: ${source}`)
     }
   }
   console.log(`Actual V7 cache refresh: unchanged ${summary.affectedGoalIds.length} prerequisite sources, exact 27 cache snapshots and 21 complete current documents passed.`)

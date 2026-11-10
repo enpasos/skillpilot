@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "status": "WIP_NOT_ADMITTED",
+  "recordedUtc": "2026-11-10T16:53:22.981496+00:00",
+  "branch": "fix/g17-biology-atomic-prerequisites-v7-data",
+  "parentCommit": "597c2f6b17fbd0a738614590a0afeda0d45403dc",
+  "parentTree": "454a3a8460180850d48020fabef2660dbc39fb4e",
+  "dependency": "Chemistry PR111 remains a separate preceding delivery.",
+  "candidateProductFileCount": 9,
+  "candidateProductBindings": [
+    {
+      "path": "app/scripts/testPrerequisiteReductionProof.ts",
+      "sha256": "036940d462dd0ffd0fcd716a04a037d16eb1c77a563db571d144c5ea5bcd3de0",
+      "bytes": 146697
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "d5c280e97df062db27fb1f55a5143d0e3214d7e6b55bbc4f99b3bc2ede0f75e9",
+      "bytes": 1366649
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "sha256": "33f6da8b4e016c6d136192337f3746d2e783bca6b9bbfdbece52cdd89d5789bb",
+      "bytes": 6240
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json",
+      "sha256": "1d90b851931cd37019996ce9edda68d81e57b74ac327c60778265a0f55bb3b3b",
+      "bytes": 19532
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json",
+      "sha256": "87756350ac16a4aa4f3ff8389f6acfefdf892c3cb67149629efce1ce5cbd7f1e",
+      "bytes": 21235
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json",
+      "sha256": "8cfafc1a68f1c4a95a666fc89bf2d4a972207d398aad25bce0a4d76cfd4fb36e",
+      "bytes": 20854
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json",
+      "sha256": "b6d4901b0fa076034ae0ecace012539a0177e8d2a72fb6cd638fa9a24cfe0388",
+      "bytes": 21419
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+      "sha256": "934bc6039c8f7b24f3d945d95a5d3ec048e3f4b2ecd0dc994e0d4833cc16a17e",
+      "bytes": 19932
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-biology-20261110.json",
+      "sha256": "d5d08c1ee74e57e74da091bdb781b85f659f1f50abbb6aebdd44d707a2021d63",
+      "bytes": 10883616
+    }
+  ],
+  "graphOnly": {
+    "status": "PASS_GRAPH_ONLY",
+    "goals": 484,
+    "structuralAtoms": 427,
+    "scopeNodes": 485,
+    "inheritanceOnlyAncestor": "a0e13c56-c25f-4742-9272-3a1a603ee52e:5449a3c2-3b9f-475c-acea-ba5fed25ec52",
+    "rawRequiresBefore": 781,
+    "rawRequiresAfter": 884,
+    "materializations": 1018,
+    "clusterTargetCuts": 39,
+    "clusterSourceCuts": 15,
+    "atomicCuts": 861,
+    "orderedOperations": 1933,
+    "snapshotSources": 172,
+    "netChangedRequiresArrays": 89,
+    "deduplicatedHistoricalSourceUnion": 1230,
+    "legacyContinuations": 79,
+    "oldWitnessObligations": 7838,
+    "unchangedAtomicClosurePairs": 3951,
+    "closurePairsSha256": "2ce317e7c1358e02af3ba57ee70411894abf1f448b42ba977eb30688ad84e7c2",
+    "finalNonAtomicEdges": 0,
+    "finalRedundancyFindings": 0,
+    "previousThreeBatchesAndPrefixUnchanged": true,
+    "independentReview": "GO limited to graph invariants; no proof/runtime acceptance"
+  },
+  "originalInventoryRun": {
+    "exitCode": 1,
+    "status": "input-changed",
+    "cause": "Authorized branch-ref switch during the run; same commit/tree and unchanged entire bound source closure.",
+    "beforeRef": "refs/heads/fix/g17-chemistry-atomic-prerequisites-v7-data",
+    "afterRef": "refs/heads/fix/g17-biology-atomic-prerequisites-v7-data",
+    "changedInputs": [],
+    "statusRewritten": false
+  },
+  "boundedReconciliation": {
+    "exitCode": 0,
+    "status": "pass-authorized-branch-only-transition-reconciled",
+    "entireBoundSourceClosureAndArtifactHashesChecked": true,
+    "independentClosureAndFinalAuditorChecked": true,
+    "completedExactProductionReplayChecked": true,
+    "publicProofCapabilityAdmission": false
+  },
+  "appliedViewCorrection": {
+    "files": 5,
+    "abiturGoalEntryToCanonicalSubtree": 2,
+    "explicitPrerequisiteOnlyGoalEntries": 9,
+    "unfilteredAuthoredBroadGkTargetsBefore": 451,
+    "unfilteredAuthoredBroadGkTargetsCorrectedBaseline": 459,
+    "existingExamChildrenExposed": 8,
+    "sixExerciseReferencesStillUnchanged": true,
+    "additionalScopeRepairsApplied": false
+  },
+  "publicAdmission": {
+    "status": "failed-no-retry",
+    "passed": false,
+    "bridgeCallCount": 1,
+    "bridgeDurationSeconds": 421.365,
+    "publicTimeoutSeconds": 600,
+    "timedOut": false,
+    "logicalFailure": "Node prerequisite reduction verification failed: Error: Prerequisite reduction proof: compiled applicability changed after batches",
+    "sourceBindingCount": 8301,
+    "runtimeBindingCount": 4,
+    "candidateFileCount": 23,
+    "sourceAndRuntimeBindingsUnchanged": true,
+    "candidateBytesUnchanged": true,
+    "candidateMembershipUnchanged": true,
+    "actualSingleNode20Observed": true,
+    "compilerValidatorFingerprintAgreement": true,
+    "currentFingerprintCount": 484,
+    "earliestFingerprintCount": 484,
+    "verifiedNodeBindingsReturned": false,
+    "proofAccepted": false,
+    "retryCount": 0,
+    "fallback": false,
+    "mocks": false
+  },
+  "nativePreflight": {
+    "exitCode": 1,
+    "seconds": 93.737,
+    "boundInputs": 2008,
+    "changedInputs": [],
+    "discoveredConfigurations": 101,
+    "completeConfigurations": 43,
+    "incompleteConfigurations": 58,
+    "rolePairs": 5587,
+    "trueToFalseRolePairs": 15,
+    "falseToTrueRolePairs": 0,
+    "unexposedSourceProbePairs": 23,
+    "distinctUnexposedAtoms": 19,
+    "projectionMembershipDeltas": 0,
+    "atomicDemandDeltas": 0,
+    "fullClassExecuted": false,
+    "frontierCompletionAcceptance": false
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "seconds": 16.76,
+    "command": [
+      "/home/enpasos/.nvm/versions/node/v20.20.2/bin/npx",
+      "--no-install",
+      "tsc",
+      "-b",
+      "--pretty",
+      "false"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "endedUtc": "2026-11-10T16:21:30.297606+00:00",
+    "scope": "Ordinary project build typecheck; not an execution or standalone typecheck of proof test scripts.",
+    "proofScriptExecution": false,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "applicabilityBlocker": {
+    "countercaseArtifact": "applicability-countercase.json",
+    "compiledRowsChanged": 11,
+    "requiresDerivedAssessments": 7,
+    "aggregationParents": 4,
+    "rawEmptyObjectsAreNotExplicitEmptyAllowedSets": true,
+    "missingJurisdictionMeansUnrestricted": true,
+    "preservedOldScopesWouldConflictWithAPV102Triples": 593,
+    "standaloneAPVAcceptanceClaimed": false
+  },
+  "nativeJavaDraft": {
+    "productFileApplied": false,
+    "productJavaSha256": "083d7d2c3cf6fc85f09463e2fbe112ee84adec2af572f5d14b559b6fde696999",
+    "scratchProposedSha256": "ea1dc4991817f00969ce5505af1b3e19212a6448bb3895d0df3ee65cc5323152",
+    "scratchMethodCount": 7,
+    "compileExitCode": 0,
+    "staticReviewOnly": true,
+    "actualFourBatchRawFrameProbe": "PASS source counts720/737/881/1062/1230 and unchanged27cache overlays; before two subsequent review-only copy fixes.",
+    "seventhMethodExecuted": false,
+    "fullSevenMethodClassExecuted": false,
+    "runtimeAccepted": false
+  },
+  "preserved": {
+    "otherTwentyCanonicalDocuments": true,
+    "allOtherBiologyGoalFieldsAndContains": true,
+    "goalTextsTasksSourcesImagesAndReviewDecisions": true,
+    "earliestSourceFingerprintsNotRebound": true,
+    "publishedOrHistoricalArtifacts": true,
+    "learnerMasteryNotWritten": true,
+    "maturityFloorsNotChanged": true,
+    "productionCompilerAndProofContractsNotChanged": true
+  },
+  "acceptance": {
+    "publicProof": false,
+    "nativeRuntime": false,
+    "atlasRegeneration": false,
+    "regularCqrProducer": false,
+    "maturityFloorsRun": false,
+    "freshRemoteBiologyCi": false,
+    "biologyMainMerge": false,
+    "standardG17GateActivated": false
+  },
+  "ownerScopeContractDecision": "PENDING; no approval of a support-aware scope/proof contract is recorded.",
+  "remainingDeliveryOrder": [
+    "After owner approval: isolated explicit scope/proof contract delivery and its own acceptance.",
+    "Then this mechanical Biology data delivery with actual runtime, ordinary CQR, unchanged floors and fresh CI.",
+    "Then remaining protected subjects and separate complete standard-G17/Main acceptance."
+  ],
+  "normAndFailureAnchors": [
+    {
+      "path": "docs/concept/skill-graph/graph-definition.md",
+      "section": "5.2;6.4;7.3;11.1"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 274
+    },
+    {
+      "path": "app/scripts/prerequisiteReductionProof.ts",
+      "line": 1511,
+      "failure": "compiled applicability changed after batches"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "line": 1474,
+      "rule": "APV-102"
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "line": 187,
+      "contract": "applicabilityFromRequires all-of intersection"
+    }
+  ],
+  "localEvidenceBindings": [
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/inventory.json",
+      "sha256": "1c21b34db8f171a112cbc3d3220983045bb768bc6a8e333311240e9b40cb0892"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/authorized-branch-reconciliation.json",
+      "sha256": "0c66817737673f79596aef453cc9349496f4d79607d7c3622b1eeb806b2d4bc0"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/astra-graph-review.json",
+      "sha256": "678853c103a7e2b4ac9946ac4c381ea16c7c22ed89bec323e7e33f8e64bf0b34"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/public-admission/terminal-summary.json",
+      "sha256": "32915eb564a19dd19bec25672793a92940c32c38d6423865c50f7b8c2a8bbafe"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/native-preflight-corrected/process-receipt.json",
+      "sha256": "48e34348dde34d3d3a5a4860e26084926d5b73d524e6cf638270d3986c94f906"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/native-preflight-corrected/result.json",
+      "sha256": "b33500c4b3533d132af2d5bd0addad9571ca2d257e700683c5b9ee860d1418f3"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/applicability-delta/diagnosis.json",
+      "sha256": "fcc6e81ff1067b0301a6a07351c4368881d7395518bae3c0a70fc2c120a16693"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/astra-applicability-contract-countercase.json",
+      "sha256": "f3448f8358ebda56bab23ce4eb4622ee476340d7fab21e3cd809295338a691d3"
+    },
+    {
+      "path": "tmp/g17-biology-next-delivery-20261110/native-adapter/manifest-v2.json",
+      "sha256": "e3f9eec7041a0682a89b93a186f3ceeca1932f4ca80ba06291166e6e9e44b050"
+    }
+  ],
+  "typecheckReceiptLocalPath": "/mnt/e/skillpilot-g17-biology-cqr-20261110/typecheck/receipt.json",
+  "typecheckReceiptSha256": "3cc07e190348984debbd76099ea12fd8c07d29d0916356f99ce1bdac90ce7e19",
+  "compactCountercaseSha256": "c249e0c3834ab59204b27f363ede3ad02f59a5cd83cff57ee9c73ba967b82eda"
+}
