@@ -1,9 +1,10 @@
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { ApplicabilityMap, LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { normalizeJurisdictionCode, type KnownJurisdiction } from '../src/utils/jurisdictionMetadata'
 import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
+import { liveVerificationInputs, withVerificationInputSnapshot, type VerificationInputReader } from './lib/verificationInputSnapshot'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const repoRoot = resolve(scriptDir, '../..')
@@ -219,8 +220,9 @@ export function hasOnlyPartialMappingSourceEvidence(
     && sourceEvidence.every((entry) => entry.kind === 'mapping' && entry.mappingStrength === 'partial')
 }
 
+const supportedOverviewBytes = readFileSync(canonicalOverviewFile)
 function loadSupportedJurisdictions(): SupportedJurisdiction[] {
-  const json = JSON.parse(readFileSync(canonicalOverviewFile, 'utf8')) as unknown
+  const json = JSON.parse(supportedOverviewBytes.toString('utf8')) as unknown
   if (!isSkillLandscapeJson(json)) {
     throw new Error(`Cannot load canonical overview landscape from ${canonicalOverviewFile}.`)
   }
@@ -243,8 +245,8 @@ function loadSupportedJurisdictions(): SupportedJurisdiction[] {
 const SUPPORTED_JURISDICTIONS = loadSupportedJurisdictions()
 const SUPPORTED_JURISDICTION_SET = new Set<SupportedJurisdiction>(SUPPORTED_JURISDICTIONS)
 
-export function getAllJsonFiles(dir: string, files: string[] = []): string[] {
-  const entries = readdirSync(dir, { withFileTypes: true })
+export function getAllJsonFiles(dir: string, files: string[] = [], inputs = liveVerificationInputs): string[] {
+  const entries = [...inputs.readDirectory(dir)]
     .sort((a, b) => a.name.localeCompare(b.name))
 
   for (const entry of entries) {
@@ -253,7 +255,7 @@ export function getAllJsonFiles(dir: string, files: string[] = []): string[] {
       // Review inputs and historical snapshots are not live curriculum sources.
       // Their explicit QA bindings are checked by the dedicated review tools.
       if (entry.name === 'quality') continue
-      getAllJsonFiles(file, files)
+      getAllJsonFiles(file, files, inputs)
       continue
     }
     if (entry.name.endsWith('.json')) {
@@ -332,13 +334,13 @@ function jurisdictionFromPath(file: string): KnownJurisdiction | null {
   return null
 }
 
-function loadLandscapePathIndex() {
-  const files = getAllJsonFiles(curriculaDir)
+function loadLandscapePathIndex(inputs: VerificationInputReader = liveVerificationInputs) {
+  const files = getAllJsonFiles(curriculaDir, [], inputs)
   const pathByLandscapeId = new Map<string, string>()
 
   for (const file of files) {
     try {
-      const json = JSON.parse(readFileSync(file, 'utf8')) as unknown
+      const json = JSON.parse(inputs.readText(file)) as unknown
       if (!isSkillLandscapeJson(json)) continue
 
       const existing = pathByLandscapeId.get(json.landscapeId)
@@ -360,11 +362,11 @@ function loadLandscapePathIndex() {
   return pathByLandscapeId
 }
 
-function loadSourceLandscapeRegistry(): LoadedSourceLandscapeRegistry {
+function loadSourceLandscapeRegistry(inputs: VerificationInputReader = liveVerificationInputs): LoadedSourceLandscapeRegistry {
   const entriesByLandscapeId = new Map<string, LoadedSourceLandscapeRegistryEntry>()
 
   try {
-    const raw = JSON.parse(readFileSync(sourceLandscapeRegistryFile, 'utf8')) as SourceLandscapeRegistryFile
+    const raw = JSON.parse(inputs.readText(sourceLandscapeRegistryFile)) as SourceLandscapeRegistryFile
     if (raw.version !== 1) {
       throw new Error(`Unsupported source landscape registry version in ${repoRelative(sourceLandscapeRegistryFile)}.`)
     }
@@ -414,11 +416,11 @@ function formatRegistryEvidenceSource(
   return registryRef
 }
 
-function loadCanonicalGoalProvenanceRegistry(): LoadedCanonicalGoalProvenanceRegistry {
+function loadCanonicalGoalProvenanceRegistry(inputs: VerificationInputReader = liveVerificationInputs): LoadedCanonicalGoalProvenanceRegistry {
   const entriesByGoalId = new Map<string, Record<string, unknown>>()
 
   try {
-    const raw = JSON.parse(readFileSync(canonicalGoalProvenanceRegistryFile, 'utf8')) as CanonicalGoalProvenanceRegistryFile
+    const raw = JSON.parse(inputs.readText(canonicalGoalProvenanceRegistryFile)) as CanonicalGoalProvenanceRegistryFile
     if (raw.version !== 1) {
       throw new Error(`Unsupported canonical goal provenance registry version in ${repoRelative(canonicalGoalProvenanceRegistryFile)}.`)
     }
@@ -444,11 +446,11 @@ function loadCanonicalGoalProvenanceRegistry(): LoadedCanonicalGoalProvenanceReg
   }
 }
 
-function loadCanonicalGoalApplicabilityOverrideRegistry(): LoadedCanonicalGoalApplicabilityOverrideRegistry {
+function loadCanonicalGoalApplicabilityOverrideRegistry(inputs: VerificationInputReader = liveVerificationInputs): LoadedCanonicalGoalApplicabilityOverrideRegistry {
   const entriesByGoalId = new Map<string, Record<string, unknown>>()
 
   try {
-    const raw = JSON.parse(readFileSync(canonicalGoalApplicabilityOverrideRegistryFile, 'utf8')) as CanonicalGoalApplicabilityOverrideRegistryFile
+    const raw = JSON.parse(inputs.readText(canonicalGoalApplicabilityOverrideRegistryFile)) as CanonicalGoalApplicabilityOverrideRegistryFile
     if (raw.version !== 1) {
       throw new Error(`Unsupported canonical goal applicability override registry version in ${repoRelative(canonicalGoalApplicabilityOverrideRegistryFile)}.`)
     }
@@ -474,16 +476,16 @@ function loadCanonicalGoalApplicabilityOverrideRegistry(): LoadedCanonicalGoalAp
   }
 }
 
-function loadMemoryReviewOriginReferences(): Map<string, MemoryReviewOriginReference[]> {
+function loadMemoryReviewOriginReferences(inputs: VerificationInputReader = liveVerificationInputs): Map<string, MemoryReviewOriginReference[]> {
   const referencesByMemoryGoalKey = new Map<string, MemoryReviewOriginReference[]>()
   // The central registry owns current Memory evidence, including successors
   // outside the original authoring directory. Discovery validates that the
   // retained scope and visibility requirements are preserved.
-  const configFiles = discoverActiveMemoryCardReviewConfigs()
+  const configFiles = discoverActiveMemoryCardReviewConfigs(undefined, undefined, inputs)
     .map(({ configPath }) => resolve(repoRoot, configPath))
 
   for (const configFile of configFiles) {
-    const config = JSON.parse(readFileSync(configFile, 'utf8')) as {
+    const config = JSON.parse(inputs.readText(configFile)) as {
       reviewId?: unknown
       landscapeId?: unknown
       reviewPath?: unknown
@@ -497,7 +499,7 @@ function loadMemoryReviewOriginReferences(): Map<string, MemoryReviewOriginRefer
     }
 
     const reviewPath = resolve(repoRoot, config.reviewPath)
-    const lines = readFileSync(reviewPath, 'utf8')
+    const lines = inputs.readText(reviewPath)
       .split(/\r?\n/)
       .map((line) => line.trim())
       .filter(Boolean)
@@ -534,10 +536,10 @@ export interface ApplicabilityCanonicalInput {
   landscape: SkillLandscape
 }
 
-function loadCanonicalLandscapes(suppliedCatalog?: readonly ApplicabilityCanonicalInput[]): LoadedCanonicalLandscape[] {
-  const inputs = suppliedCatalog ?? getAllJsonFiles(canonicalDir)
+function loadCanonicalLandscapes(suppliedCatalog?: readonly ApplicabilityCanonicalInput[], inputReader = liveVerificationInputs): LoadedCanonicalLandscape[] {
+  const inputs = suppliedCatalog ?? getAllJsonFiles(canonicalDir, [], inputReader)
     .sort((a, b) => a.localeCompare(b))
-    .map((file) => ({ file, landscape: JSON.parse(readFileSync(file, 'utf8')) as SkillLandscape }))
+    .map((file) => ({ file, landscape: JSON.parse(inputReader.readText(file)) as SkillLandscape }))
   return inputs.map(({ file, landscape }) => {
     const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
     const rootGoal = landscape.goals.find((goal) => goal.tags?.includes('root')) ?? landscape.goals[0]
@@ -551,12 +553,12 @@ function loadCanonicalLandscapes(suppliedCatalog?: readonly ApplicabilityCanonic
   })
 }
 
-function loadMappingFiles(): LoadedMappingFile[] {
-  return getAllJsonFiles(join(curriculaDir, 'DE'))
+function loadMappingFiles(inputs: VerificationInputReader = liveVerificationInputs): LoadedMappingFile[] {
+  return getAllJsonFiles(join(curriculaDir, 'DE'), [], inputs)
     .filter((file) => file.replace(/\\/g, '/').includes('/mapping/'))
     .sort((a, b) => a.localeCompare(b))
     .map((file) => {
-      const raw = JSON.parse(readFileSync(file, 'utf8')) as GoalMappingFile
+      const raw = JSON.parse(inputs.readText(file)) as GoalMappingFile
       return {
         file,
         sourceLandscapeId: raw.sourceLandscapeId,
@@ -790,19 +792,68 @@ function currentApplicabilityForGoal(goal: LearningGoal): ApplicabilityMap {
   return normalizeCompiledApplicability(normalized)
 }
 
+declare const applicabilitySnapshot: unique symbol
+export type ApplicabilityInputSnapshot = Readonly<{ [applicabilitySnapshot]: true }>
+const loadedCompilerInputs = [
+  'app/scripts/applicabilityCompiler.ts', 'app/scripts/memoryCardReviewConfigDiscovery.ts',
+  'app/scripts/lib/verificationInputSnapshot.ts', 'app/src/utils/jurisdictionMetadata.ts',
+  'app/scripts/prerequisiteReductionProof.ts', 'app/scripts/auditTransitiveMinimality.ts', 'app/package-lock.json',
+].map(relativePath => {
+  const path = resolve(repoRoot, relativePath)
+  try { return { path, bytes: readFileSync(path) } }
+  catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
+    return { path, bytes: null }
+  }
+})
+function loadApplicabilityInputs(inputs: VerificationInputReader, bindGeneration = false) {
+  if (bindGeneration) for (const { path, bytes } of loadedCompilerInputs) {
+    if (bytes === null || !Buffer.from(inputs.readText(path), 'utf8').equals(bytes))
+      throw new Error(`Applicability compiler generation changed; start a fresh process: ${path}`)
+  }
+  if (bindGeneration && !Buffer.from(inputs.readText(canonicalOverviewFile), 'utf8').equals(supportedOverviewBytes))
+    throw new Error('Applicability overview changed; start a fresh process')
+  return {
+    mappingFiles: loadMappingFiles(inputs), landscapePathById: loadLandscapePathIndex(inputs),
+    sourceLandscapeRegistry: loadSourceLandscapeRegistry(inputs),
+    canonicalGoalProvenanceRegistry: loadCanonicalGoalProvenanceRegistry(inputs),
+    canonicalGoalApplicabilityOverrideRegistry: loadCanonicalGoalApplicabilityOverrideRegistry(inputs),
+    memoryReviewOriginReferencesByMemoryGoalKey: loadMemoryReviewOriginReferences(inputs),
+  }
+}
+const applicabilitySnapshots = new WeakMap<ApplicabilityInputSnapshot, {
+  inputs: VerificationInputReader; assertCurrent: () => void; loaded?: ReturnType<typeof loadApplicabilityInputs>
+}>()
+export function assertApplicabilityInputSnapshotCurrent(snapshot: ApplicabilityInputSnapshot): void {
+  const entry = applicabilitySnapshots.get(snapshot)
+  if (!entry) throw new Error('Unregistered or closed applicability input snapshot')
+  entry.assertCurrent()
+}
+/** Lazy input capture: malformed proof fixtures still fail before ambient evidence loading. */
+export async function withApplicabilityInputSnapshot<T>(
+  work: (snapshot: ApplicabilityInputSnapshot) => T | Promise<T>,
+): Promise<T> {
+  return withVerificationInputSnapshot(async (inputs, assertCurrent) => {
+    const snapshot = Object.freeze({}) as ApplicabilityInputSnapshot
+    applicabilitySnapshots.set(snapshot, { inputs, assertCurrent })
+    try { return await work(snapshot) }
+    finally { applicabilitySnapshots.delete(snapshot) }
+  })
+}
+
 export function buildApplicabilityCompilation(
-  suppliedCatalog?: readonly ApplicabilityCanonicalInput[],
+  suppliedCatalog?: readonly ApplicabilityCanonicalInput[], snapshot?: ApplicabilityInputSnapshot,
 ): ApplicabilityCompilationResult {
-  const canonicalLandscapes = loadCanonicalLandscapes(suppliedCatalog)
+  const captured = snapshot === undefined ? undefined : applicabilitySnapshots.get(snapshot)
+  if (snapshot !== undefined && !captured) throw new Error('Unregistered or closed applicability input snapshot')
+  const inputs = captured?.inputs ?? liveVerificationInputs
+  const canonicalLandscapes = loadCanonicalLandscapes(suppliedCatalog, inputs)
   const canonicalLandscapeById = new Map(
     canonicalLandscapes.map((entry) => [entry.landscape.landscapeId, entry]),
   )
-  const mappingFiles = loadMappingFiles()
-  const landscapePathById = loadLandscapePathIndex()
-  const sourceLandscapeRegistry = loadSourceLandscapeRegistry()
-  const canonicalGoalProvenanceRegistry = loadCanonicalGoalProvenanceRegistry()
-  const canonicalGoalApplicabilityOverrideRegistry = loadCanonicalGoalApplicabilityOverrideRegistry()
-  const memoryReviewOriginReferencesByMemoryGoalKey = loadMemoryReviewOriginReferences()
+  const { mappingFiles, landscapePathById, sourceLandscapeRegistry, canonicalGoalProvenanceRegistry,
+    canonicalGoalApplicabilityOverrideRegistry, memoryReviewOriginReferencesByMemoryGoalKey } = captured
+    ? captured.loaded ??= loadApplicabilityInputs(inputs, true) : loadApplicabilityInputs(inputs)
   const mappingEvidenceByTarget = new Map<string, Map<string, LoadedMappingFile[]>>()
   const canonicalGoalToLandscapeId = new Map<string, string>()
   const ambiguousCanonicalGoalIds = new Set<string>()

@@ -5,7 +5,16 @@ import { lstatSync, readFileSync, readdirSync, realpathSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
-import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, type AuditLandscape } from './auditTransitiveMinimality'
+import type { ApplicabilityInputSnapshot } from './applicabilityCompiler'
+import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, assertTransitiveMinimalityImplementationCurrent, type AuditLandscape } from './auditTransitiveMinimality'
+
+const proofModulePath = fileURLToPath(import.meta.url)
+const proofModuleBytes = readFileSync(proofModulePath)
+function assertProofImplementationCurrent(): void {
+  if (!readFileSync(proofModulePath).equals(proofModuleBytes))
+    throw new Error('Prerequisite reduction implementation changed since module load')
+  assertTransitiveMinimalityImplementationCurrent()
+}
 
 export const PREREQUISITE_REDUCTION_REGISTRY_PATH =
   'curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json'
@@ -119,7 +128,7 @@ export interface ApplicabilityRefreshPrerequisiteReductionRegistry
 export type PrerequisiteReductionRegistry = LegacyPrerequisiteReductionRegistry | OrderedPrerequisiteReductionRegistry
   | ContinuedPrerequisiteReductionRegistry | ClusterTargetPrerequisiteReductionRegistry | BatchedPrerequisiteReductionRegistry
   | ApplicabilityRefreshPrerequisiteReductionRegistry
-type LoadedDocument = { file: string; path: string; document: Document }
+type LoadedDocument = { file: string; path: string; document: Document; applicabilityInputs?: ApplicabilityInputSnapshot }
 type VerifiedDocumentFrame = {
   currentDocuments: Document[]
   baselineDocuments: Document[]
@@ -845,9 +854,11 @@ async function verifyClusterTargetFrame(
 
 async function compileApplicability(documents: Document[], loaded: LoadedDocument[]): Promise<string> {
   const { buildApplicabilityCompilation } = await import('./applicabilityCompiler')
+  const inputs = loaded[0]?.applicabilityInputs
+  ensure(inputs && loaded.every(entry => entry.applicabilityInputs === inputs), 'missing or mixed applicability input generation')
   return stableJson(buildApplicabilityCompilation(documents.map((document, index) => ({
     file: loaded[index].file, landscape: document as unknown as SkillLandscape,
-  }))).reports.flatMap((report) => report.goals.map((goal) => ({
+  })), inputs).reports.flatMap((report) => report.goals.map((goal) => ({
     key: `${report.landscapeId}:${goal.goalId}`, compiledApplicability: goal.compiledApplicability,
   }))).sort((a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0))
 }
@@ -999,6 +1010,7 @@ export async function loadVerifiedPrerequisiteReductionContext({
   catalogPath = CANONICAL_PATH,
 }: { repositoryRoot?: string; registryPath?: string; catalogPath?: string } = {}):
   Promise<VerifiedPrerequisiteReductionContext | undefined> {
+  assertProofImplementationCurrent()
   const registryFile = repositoryPath(repositoryRoot, registryPath)
   try {
     ensure(lstatSync(registryFile).isFile(), `registry must be a regular file: ${registryPath}`)
@@ -1013,20 +1025,25 @@ export async function loadVerifiedPrerequisiteReductionContext({
     file, path: relative(repositoryRoot, file).split(sep).join('/'),
     document: JSON.parse(readFileSync(file, 'utf8')) as Document,
   }))
-  const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded, repositoryRoot)
-  const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
-  deepFreeze(currentDocuments)
-  deepFreeze(baselineDocuments)
-  const summary = deepFreeze({
-    proofContract: registry.proofContract,
-    mode: 'current-or-certified-baseline-comparison' as const,
-    auditScope: registry.auditScope,
-    registryPath,
-    registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
-    affectedGoalIds: [...affectedSources].sort(),
+  const { withApplicabilityInputSnapshot, assertApplicabilityInputSnapshotCurrent } = await import('./applicabilityCompiler')
+  return withApplicabilityInputSnapshot(async inputs => {
+    const { currentDocuments, baselineDocuments, affectedSources } = await verifyDocumentFrame(registry, loaded.map(entry => ({ ...entry, applicabilityInputs: inputs })), repositoryRoot)
+    assertProofImplementationCurrent()
+    assertApplicabilityInputSnapshotCurrent(inputs)
+    const context = Object.freeze({}) as VerifiedPrerequisiteReductionContext
+    deepFreeze(currentDocuments)
+    deepFreeze(baselineDocuments)
+    const summary = deepFreeze({
+      proofContract: registry.proofContract,
+      mode: 'current-or-certified-baseline-comparison' as const,
+      auditScope: registry.auditScope,
+      registryPath,
+      registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
+      affectedGoalIds: [...affectedSources].sort(),
+    })
+    verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary })
+    return context
   })
-  verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary })
-  return context
 }
 
 export function verifiedPrerequisiteReductionSummary(
