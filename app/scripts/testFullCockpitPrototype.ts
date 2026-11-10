@@ -372,7 +372,8 @@ try {
     assert.equal(await drillComparison.getAttribute('data-selected-goal-id'), data.ordinaryId)
     // Escape inside the map belongs to the dialog: it closes the map and changes nothing on it.
     const selectedNode = drill.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main`)
-    assert.equal(await selectedNode.getAttribute('aria-pressed'), 'true')
+    // The revealed selection reaches the reopened map shortly after its level is laid out.
+    await drill.locator(`[data-entry-id="${data.ordinaryId}"] .lum-node-main[aria-pressed="true"]`).waitFor()
     await selectedNode.focus()
     await drill.keyboard.press('Escape')
     await mapDialog(drill).waitFor({ state: 'hidden' })

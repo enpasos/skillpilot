@@ -3623,6 +3623,28 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         onTouchEnd={finishMobileEdgeSwipe}
         onTouchCancel={() => { mobileEdgeTouchStart.current = null }}
       >
+        {/* The two main actions stay at the very top right, above the assessment shortcuts. */}
+        <div className="mb-4 flex w-full items-center justify-end gap-2">
+          <button
+            ref={learningMapOpenButtonRef}
+            type="button"
+            data-testid="learner-learning-map-open"
+            aria-haspopup="dialog"
+            aria-controls="learner-learning-map-dialog"
+            aria-expanded={isLearningMapOpen}
+            title={localizedLanguage === 'en' ? 'Open the learning map in a full window' : 'Lernkarte im ganzen Fenster öffnen'}
+            onClick={openLearningMap}
+            className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-sky-500 bg-white px-3 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 min-[360px]:px-4 dark:bg-transparent dark:text-sky-300 dark:hover:bg-sky-950/40"
+          >
+            <MapIcon size={16} aria-hidden="true" />
+            <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
+          </button>
+          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
+            title={t.startPage.login.coachProviderLabel}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
+          </Link>
+        </div>
         {levelCompletion || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
@@ -3668,27 +3690,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             </section>
           ) : null}
         </div> : null}
-        <div className="mb-4 flex w-full items-center justify-end gap-2">
-          <button
-            ref={learningMapOpenButtonRef}
-            type="button"
-            data-testid="learner-learning-map-open"
-            aria-haspopup="dialog"
-            aria-controls="learner-learning-map-dialog"
-            aria-expanded={isLearningMapOpen}
-            title={localizedLanguage === 'en' ? 'Open the learning map in a full window' : 'Lernkarte im ganzen Fenster öffnen'}
-            onClick={openLearningMap}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full border border-sky-500 bg-white px-3 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 min-[360px]:px-4 dark:bg-transparent dark:text-sky-300 dark:hover:bg-sky-950/40"
-          >
-            <MapIcon size={16} aria-hidden="true" />
-            <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
-          </button>
-          <Link to={buildCompletionRouteStartHref(hasActiveCompletionRoute(levelCompletion) ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
-            title={t.startPage.login.coachProviderLabel}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
-            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
-          </Link>
-        </div>
         {!isDesktopSidebarOpen && (
           <div className="mb-4 hidden w-full md:flex">
             <button

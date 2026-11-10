@@ -274,6 +274,9 @@ try {
     assert.equal(h.writes.length, 0, 'a provider-neutral handoff only opens and focuses discovery')
     await summary.click()
     const ordinaryStart = h.page.getByTestId('learner-coach-start-link')
+    const [startBox, shortcutsBox] = await Promise.all([ordinaryStart.boundingBox(), h.page.getByTestId('level-completion-card').boundingBox()])
+    assert.ok(startBox && shortcutsBox && startBox.y + startBox.height <= shortcutsBox.y,
+      'Lernkarte and Lernen starten stay at the very top, above the assessment shortcuts')
     await ordinaryStart.focus()
     h.update(unselected(111))
     const refreshed = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Preferences refresh complete') })

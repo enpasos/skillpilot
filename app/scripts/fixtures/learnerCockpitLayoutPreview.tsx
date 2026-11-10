@@ -136,7 +136,7 @@ function Preview() {
 
         <div className="learner-cockpit-grid learner-cockpit-grid-with-progress">
           <section className="learner-cockpit-selection" aria-labelledby="selected-heading" data-testid="selected-goal">
-            <h2 id="selected-heading" className="mb-3 text-sm font-semibold text-text-secondary">Im Menü ausgewählt</h2>
+            <h2 id="selected-heading" className="mb-3 text-sm font-semibold text-text-secondary">Ausgewählt</h2>
             {/* The existing GoalCard's visible image, description and action styling, with local example callbacks. */}
             <div className="relative rounded-3xl border border-border-color bg-sidebar-bg p-5 shadow-none">
               <div className="mb-2 flex items-start justify-between gap-2">
