@@ -20,6 +20,8 @@ import {
   type CompositionViewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { collectWholeMaterialPrerequisiteClosure } from './generateCurriculumQualityStatus'
+import type { SkillLandscape } from '../src/landscapeTypes'
 import { parseSubjectDurationModelPolicy } from './goalBookModel'
 import {
   loadVerifiedPrerequisiteReductionContext,
@@ -970,6 +972,35 @@ const collectAuthoredProjectionGoalIds = (
 }
 
 const rawLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(LANDSCAPE_PATH)
+const rawMathLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(MATH_LANDSCAPE_PATH)
+const mathLandscape = normalizeCanonicalLandscape(rawMathLandscape)
+const preparationLandscape = {
+  ...rawLandscape,
+  goals: [...rawLandscape.goals, ...rawMathLandscape.goals],
+} as unknown as SkillLandscape
+assert.equal(new Set(preparationLandscape.goals.map(({ id }) => id)).size, preparationLandscape.goals.length,
+  'the full Physics/Math preparation universe must have unique goal IDs')
+
+function assertReviewedPreparation(
+  assessmentId: string,
+  reviewedRequires: string[],
+  currentLandscape: SkillLandscape = preparationLandscape,
+): void {
+  assert(currentLandscape.goals.some(({ id }) => id === assessmentId), `missing assessment ${assessmentId}`)
+  const expectedLandscape = {
+    ...currentLandscape,
+    goals: currentLandscape.goals.map((goal) => goal.id === assessmentId
+      ? { ...goal, requires: reviewedRequires }
+      : goal),
+  }
+  const current = collectWholeMaterialPrerequisiteClosure(currentLandscape, assessmentId)
+  const reviewed = collectWholeMaterialPrerequisiteClosure(expectedLandscape, assessmentId)
+  assert.deepEqual([...current.unresolvedReferences], [], `${assessmentId}: unresolved current preparation`)
+  assert.deepEqual([...reviewed.unresolvedReferences], [], `${assessmentId}: unresolved reviewed preparation`)
+  assert.deepEqual([...current.atomicGoalIds].sort(compareCodePoints), [...reviewed.atomicGoalIds].sort(compareCodePoints),
+    `${assessmentId}: full atomic preparation must match its reviewed requirement seeds`)
+}
+
 const landscape = normalizeCanonicalLandscape(rawLandscape)
 assert.equal(landscape.landscapeId, LANDSCAPE_ID)
 assert.equal(rawLandscape.subject, 'Physik')
@@ -1061,11 +1092,13 @@ assert.deepEqual(
 assert(wellEnergyExam.taskContent.includes('Berechnen Sie die Energien $E_1$ und $E_2$'))
 const bavariaMotorTransformerAssessment = rawGoalById.get(BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID)
 assert(bavariaMotorTransformerAssessment, 'Bavaria motor/transformer assessment is missing')
-assert.deepEqual(
-  bavariaMotorTransformerAssessment.requires,
-  (bavariaMotorTransformerAssessment.examData as { coveredGoalIds?: unknown })?.coveredGoalIds,
-  'Bavaria motor/transformer assessment requires must exactly match coveredGoalIds',
-)
+const reviewedBavariaMotorAssessment = reviewBindingGoal(prerequisiteReductionContext,
+  `${LANDSCAPE_ID}:${BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID}`, bavariaMotorTransformerAssessment)
+const reviewedBavariaMotorRequires = reviewedBavariaMotorAssessment.requires as string[]
+assert.deepEqual((bavariaMotorTransformerAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  (reviewedBavariaMotorAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  'Bavaria motor/transformer coverage must retain its exact reviewed goals')
+assertReviewedPreparation(BAVARIA_MOTOR_TRANSFORMER_ASSESSMENT_ID, reviewedBavariaMotorRequires)
 
 CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
   const assessment = rawGoalById.get(assessmentId)
@@ -1074,11 +1107,9 @@ CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
     coveredGoalIds?: unknown
     taskContent?: unknown
   } | undefined
-  assert.deepEqual(
-    assessment.requires,
-    examData?.coveredGoalIds,
-    `CQR-104 route assessment ${assessmentId} requires must exactly match coveredGoalIds`,
-  )
+  // These reviewed tasks use the coverage IDs as preparation seeds, but a
+  // transitive reduction may remove their redundant direct prerequisite edges.
+  assertReviewedPreparation(assessmentId, [...evidenceByGoalId.keys()])
   const extendedData = assessment.extendedData as Record<string, unknown> | undefined
   assert.equal(
     extendedData?.applicabilityFromRequires,
@@ -1106,13 +1137,37 @@ CQR104_ROUTE_ASSESSMENT_EVIDENCE.forEach((evidenceByGoalId, assessmentId) => {
   })
 })
 
+// Actual transitive-reduction regression: the reviewed charge-conservation
+// competency remains preparation through the retained charge-separation goal.
+const reducedRouteAssessmentId = '119cb138-b0c4-559d-8f1a-a4ae42db0656'
+const retainedChargeGoalId = '80dd0a2b-1422-5b00-89ff-ec4d0faa047e'
+const indirectChargeGoalId = 'dc7dd287-6eac-574d-818d-65cfb23a2d94'
+const chargePreparationSeeds = [...CQR104_ROUTE_ASSESSMENT_EVIDENCE.get(reducedRouteAssessmentId)!.keys()]
+assert(!(rawGoalById.get(reducedRouteAssessmentId)!.requires as string[]).includes(indirectChargeGoalId))
+assert(collectWholeMaterialPrerequisiteClosure(preparationLandscape, reducedRouteAssessmentId)
+  .atomicGoalIds.has(indirectChargeGoalId), 'the removed direct prerequisite must still have an actual preparation path')
+const missingChargePath = structuredClone(preparationLandscape)
+const retainedChargeGoal = missingChargePath.goals.find(({ id }) => id === retainedChargeGoalId)!
+assert(retainedChargeGoal.requires.includes(indirectChargeGoalId))
+retainedChargeGoal.requires = retainedChargeGoal.requires.filter((id) => id !== indirectChargeGoalId)
+assert.deepEqual(missingChargePath.goals.find(({ id }) => id === reducedRouteAssessmentId)!.examData,
+  rawGoalById.get(reducedRouteAssessmentId)!.examData, 'missing-path control must preserve the actual assessment material and coverage')
+assert.throws(() => assertReviewedPreparation(reducedRouteAssessmentId, chargePreparationSeeds, missingChargePath),
+  /full atomic preparation/u, 'removing the real retained path must fail despite unchanged assessment coverage')
+const unresolvedChargeGoal = structuredClone(preparationLandscape)
+unresolvedChargeGoal.goals = unresolvedChargeGoal.goals.filter(({ id }) => id !== indirectChargeGoalId)
+assert.throws(() => assertReviewedPreparation(reducedRouteAssessmentId, chargePreparationSeeds, unresolvedChargeGoal),
+  /unresolved current preparation/u, 'an unresolved prerequisite must remain a hard error')
+
 const bwElectricalEnergyAssessment = rawGoalById.get('4996346f-ab5d-4d09-9b9e-b9e559af153d')
 assert(bwElectricalEnergyAssessment, 'BW electrical-energy assessment is missing')
-assert.deepEqual(
-  bwElectricalEnergyAssessment.requires,
-  (bwElectricalEnergyAssessment.examData as { coveredGoalIds?: unknown })?.coveredGoalIds,
-  'BW electrical-energy assessment requires must exactly match coveredGoalIds',
-)
+const reviewedBwElectricalEnergyAssessment = reviewBindingGoal(prerequisiteReductionContext,
+  `${LANDSCAPE_ID}:4996346f-ab5d-4d09-9b9e-b9e559af153d`, bwElectricalEnergyAssessment)
+const reviewedBwElectricalEnergyRequires = reviewedBwElectricalEnergyAssessment.requires as string[]
+assert.deepEqual((bwElectricalEnergyAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  (reviewedBwElectricalEnergyAssessment.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+  'BW electrical-energy coverage must retain its exact reviewed goals')
+assertReviewedPreparation('4996346f-ab5d-4d09-9b9e-b9e559af153d', reviewedBwElectricalEnergyRequires)
 assert.deepEqual(
   bwElectricalEnergyAssessment.applicability,
   { jurisdiction: ['DE-BW'] },
@@ -1255,8 +1310,6 @@ assert.equal(
   fingerprintContract.canonicalJsonProfileSha256,
   sha256(readFileSync(resolve(repoRoot, fingerprintContract.canonicalJsonProfilePath), 'utf8')),
 )
-const rawMathLandscape = readJson<Record<string, unknown> & { goals: Array<Record<string, unknown>> }>(MATH_LANDSCAPE_PATH)
-const mathLandscape = normalizeCanonicalLandscape(rawMathLandscape)
 const mathGoalIds = new Set(mathLandscape.goals.map(({ id }) => id))
 const foreignContainsEdges: Array<{ ownerId: string; goalId: string }> = []
 const foreignRequiresEdges: Array<{ ownerId: string; goalId: string }> = []
@@ -1275,7 +1328,19 @@ rawLandscape.goals.forEach((goal) => {
   }
 })
 assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must remain subject-internal')
-assert.equal(foreignRequiresEdges.length, 162, 'Physics must retain exactly 162 reviewed cross-subject prerequisites')
+const reviewedForeignRequiresEdges = rawLandscape.goals.flatMap((goal) => {
+  const reviewed = reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:${String(goal.id)}`, goal)
+  return ((reviewed.requires ?? []) as string[])
+    .filter((id) => !rawGoalById.has(id))
+    .map((goalId) => ({ ownerId: String(goal.id), goalId }))
+})
+assert.equal(reviewedForeignRequiresEdges.length, 162, 'the historical reviewed Physics raw-link inventory has 162 cross-subject prerequisites')
+reviewedForeignRequiresEdges.forEach(({ ownerId, goalId }) => {
+  assert(mathGoalIds.has(goalId), `reviewed foreign prerequisite ${goalId} is not canonical mathematics`)
+  const current = collectWholeMaterialPrerequisiteClosure(preparationLandscape, ownerId)
+  assert.deepEqual([...current.unresolvedReferences], [], `unresolved current foreign preparation for ${ownerId}`)
+  assert(current.atomicGoalIds.has(goalId), `current full preparation lost reviewed foreign demand ${ownerId}->${goalId}`)
+})
 assert.equal(
   new Set(foreignRequiresEdges.map(({ goalId }) => goalId)).size,
   54,
@@ -1414,6 +1479,7 @@ const rawPhysicsAndMathGoals = new Map([...rawMathLandscape.goals, ...rawLandsca
   .map((goal) => [String(goal.id), goal]))
 for (const reviewed of kinematicsReview.assessments) {
   const goal = rawGoalById.get(reviewed.goalId)!
+  const reviewedGoal = reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:${reviewed.goalId}`, goal)
   const exam = goal.examData as {
     reviewStatus: string; coveredGoalIds: string[]; taskContent: string; taskContentEn: string
     solutionContent: string; solutionContentEn: string
@@ -1421,13 +1487,14 @@ for (const reviewed of kinematicsReview.assessments) {
   }
   assert.equal(exam.reviewStatus, 'released')
   assert.equal(decisionByGoalId.get(reviewed.goalId)?.semanticKind, 'practiceAssessment')
-  assert.equal(reviewed.sourceFingerprint, sourceFingerprint(goal, fingerprintContract), 'independent task review must bind current semantics')
+  assert.equal(reviewed.sourceFingerprint, sourceFingerprint(reviewedGoal, fingerprintContract), 'independent task review must bind its verified historical goal')
   assert.equal((goal.extendedData as Record<string, unknown>).applicabilityFromRequires, true)
   for (const field of kinematicsBodyFields) {
     assert(exam[field].trim().length > 500, `${reviewed.goalId}: missing complete bilingual ${field}`)
     assert.equal(reviewed.bodyHashes[field], `sha256:${sha256(exam[field])}`, `${reviewed.goalId}: stale independent ${field} review`)
   }
-  assert.deepEqual(goal.requires, reviewed.requires)
+  assert.deepEqual(reviewedGoal.requires, reviewed.requires)
+  assertReviewedPreparation(reviewed.goalId, reviewed.requires)
   assert.deepEqual(exam.coveredGoalIds, reviewed.coveredGoalIds)
   assert.equal(exam.scoring.maxPoints, 36)
   assert.equal(exam.scoring.passingPoints, 22)
@@ -1456,7 +1523,8 @@ for (const reviewed of kinematicsReview.assessments) {
 }
 assert.deepEqual(rawGoalById.get('4ab1cf6d-b808-5b86-9291-85df0b9f2496')?.requires,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
-assert.deepEqual(rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.requires,
+assert.deepEqual(reviewBindingGoal(prerequisiteReductionContext, `${LANDSCAPE_ID}:6ea3fb3c-abdc-568f-ab13-97c36dc274e4`,
+  rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')!).requires,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'])
 assert.deepEqual((rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])

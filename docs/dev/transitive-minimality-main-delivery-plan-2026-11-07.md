@@ -37,6 +37,13 @@ Scope-/Probe- und Frontierfälle bleiben erhalten. Die native Gegenprobe über
 in der gezielten Helfervalidierung. Der alte Gesamtlauf bleibt als fehlgeschlagen
 dokumentiert. Die neue vollständige Remote-Regression mit fünf Methoden sowie
 die Main-Lieferung stehen aus; das harte Standard-G17-Gate ist noch nicht aktiv.
+
+Die Frontend-CI deckte außerdem veraltete Direktkanten-Assertions im
+Physik-Buchinput-Test auf. Die Korrektur prüft den vollständigen tatsächlichen
+Vorbereitungsbedarf und erhält die unabhängigen exakten Coverage-, Material-
+und Reviewbindungen. Kein Prüfungsziel oder Fingerprint wurde umgeschrieben.
+Der normale Test auf dem finalen Dateistand besteht in 405,578 Sekunden;
+entfernte Vorbereitungspfade und ungelöste Referenzen scheitern weiterhin.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
