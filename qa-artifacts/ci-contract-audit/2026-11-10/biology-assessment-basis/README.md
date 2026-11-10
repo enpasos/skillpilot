@@ -42,14 +42,37 @@ Die zwei [gezielten aktuellen V8-Tests](current-candidate-acceptance.json)
 bestehen ohne Fehler oder Skips: ungültige Rohbelege werden abgewiesen und
 der tatsächliche BY-Lernumfang samt beiden Ausgabe-Verlustkontrollen besteht.
 Alle 809 vorab festgehaltenen Eingaben blieben während dieses Laufs gleich.
-Öffentlicher Bestandslader und vollständige aktuelle Scopeprüfung laufen noch;
-die Biologie bleibt ausdrücklich nicht abgenommen.
+Der öffentliche Bestandslader besteht ebenfalls: 487,563 Sekunden, Exit 0,
+vollständige V7-/V8-Prüfung und 484 tatsächlich ausgegebene Biologie-Bindungen
+bei unveränderten Eingaben. Dieser Laderlauf liegt vor der folgenden
+APV-102-Compilerkorrektur; er wird nicht als Prüfung dieser späteren Änderung
+ausgegeben. Die Biologie bleibt ausdrücklich nicht abgenommen.
 
 Das unabhängige Emissionsgate steht zusätzlich in der bestehenden nativen
 Scopeprüfung: separat ermittelte Startziele und der unbeschnittene kanonische
 Graph bestimmen die erwartete Menge; tatsächliche Targets, Definitionen und
-Completion-Eingaben müssen dazu passen. Seine vollständige benötigte
-Scope-Abdeckung ist noch nachzuweisen. Die **593 APV-102-Befunde** der vorbereiteten
-Biologie-Daten werden weder unterdrückt noch als erledigt erklärt. Der alte
-Ländercheck bleibt bis zum belegten Ersatz bestehen. Das harte G17-Gate in der
-Standard-Meilensteinprüfung und die abschließende Main-Abnahme bleiben offen.
+Completion-Eingaben müssen dazu passen. Die vollständige aktuelle
+Einzelfachprüfung über 21 Kataloge, 20 Fächer und 17 Länderoptionen besteht:
+**761 vollständig konfigurierte Angebote** wurden positiv geprüft. Zusätzlich
+wurden 172 nicht angebotene, 467 unvollständige und zwölf ungültige
+Konfigurationen getrennt behandelt; sie sind keine positiven Scope-Pässe.
+Der Lauf dauerte 347,544 Sekunden und hatte keine Fehler oder Skips. Er ist
+keine Vollprüfung aller Kombinationen mehrerer Fächer.
+
+Die bisherigen **593 APV-102-Befunde** beruhten auf der Gleichsetzung von
+Quellenland und Lernumfang. Diese Prüfung wird durch das tatsächliche harte
+Emissionsgate ersetzt. Ein neuer Compiler-Gegenfall reproduziert zuerst zwei
+solche falschen Länderfehler; nach der begrenzten Korrektur bleiben die
+Länderwerte und Quellenbelege exakt gleich. Fehlende kanonische Referenzen
+bleiben Fehler; die reguläre Quellen-/Anwendbarkeitssuite besteht 23 Fälle.
+Der verpflichtende native Test prüft APV-102 gegen wirkliche
+Lernziele, sichtbare Definitionen und Abschlussmengen. Die genaue
+[Regel-zu-Gate-Zuordnung](../../../../docs/qa-ci/graph-validation-rules.md)
+trennt diesen Backendnachweis von `validate:view-filters` und CQR.
+Der abschließende Bio-BY-Test besteht nach Kennzeichnung des Gates: Beide
+beschädigten Ausgaben lösen direkt den `APV-102`-Assertionsfehler aus und
+scheitern zusätzlich in der Runtime-Frontierprüfung. Die große Scopeprüfung
+wurde für diese reine Kennzeichnung nicht wiederholt.
+Regulärer Meilensteinlauf, geschützte Floors, vollständige Remote-CI und
+Main-Lieferung bleiben abzunehmen. Das harte G17-Gate in der
+Standard-Meilensteinprüfung bleibt ebenfalls offen.

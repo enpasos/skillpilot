@@ -142,26 +142,49 @@ Current CI scope:
 - `Wirtschaft`
 - `Overview`
 
-Current stable finding families:
+Applicability and required-learning rule families:
 
 | Rule ID | Description | Default |
 | --- | --- | --- |
-| `APV-102` | A visible goal requires a prerequisite that is invisible in the projected filtered graph. | `error` |
+| `APV-102` | A necessary canonical atom is missing from the actual personal acquisition targets, emitted definitions or completion inputs. Enforced by the mandatory native learning-scope test below. | `error` |
 | `APV-103` | A visible goal is not reachable from the projected root. | `error` |
 | `APV-201` | An explicit applicability-override path is used, either embedded or via the canonical override registry. | `warning` |
 | `APV-202` | Applicability is backed only by `partial` mappings. | `diagnostic` |
 | `APV-203` | Compiled applicability differs from currently committed applicability metadata. | `warning` |
 
-**Required follow-up contract (Product Owner, 10 November 2026).** The existing
-APV-102 row describes the currently implemented filtered-visibility check.
-Its adaptation to the [closed personal learning basis](../concept/skill-graph/view-projection-and-goal-placement.md#required-prerequisite-learning-scope)
-is still open: every effective necessary atom must be an actual acquisition
+**Required-learning contract (Product Owner, 10 November 2026).** Under the
+[closed personal learning basis](../concept/skill-graph/view-projection-and-goal-placement.md#required-prerequisite-learning-scope),
+every effective necessary atom must be an actual acquisition
 target in the full Personal Curriculum, independently of its official source
 jurisdiction. Subject-local support is sufficient only with that same target
 elsewhere in the joint plan. Preserve APV-102 as a hard error for missing
 required learning; required-learning inclusion grants no source coverage.
-This decision does not make the current compiler or validator pass or authorize
-changing reviewed seed eligibility after raw prerequisite normalization.
+Reviewed seed eligibility must remain unchanged after prerequisite normalization.
+
+APV-102 is enforced against the actual backend projection by
+`FirstMathPrerequisiteReductionTest.currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget`
+and its `assertLearningEmission` assertions. Independently selected atomic
+seeds and the unpruned canonical prerequisite graph determine the expected
+learning set. Actual acquisition targets, emitted definitions and completion
+inputs must contain that set correctly. The test discovers actual native
+offerings for all 20 subjects and 17 jurisdiction choices and checks the ten
+protected subjects' GUI offerings. Unavailable, incomplete and invalid
+configurations are recorded separately and do not count as positive passes;
+this is not an exhaustive test of all multi-subject combinations.
+
+The ordinary mandatory chain is `.github/workflows/ci.yml` (`backend-ci`) →
+`scripts/run_backend_ci.py` → unfiltered `./gradlew check` → this JUnit test.
+The actual Biology regression additionally removes a required target or its
+emitted definition and requires both the native gate and runtime frontier to
+reject the damaged projection. Missing learning remains a hard test failure,
+including when the missing prerequisite is mastered or outside the focus.
+
+`validate:view-filters` and the CQR producer continue to check source/seed
+applicability and tree structure. They do not consume native test results and
+do not independently certify APV-102 or the personal learning set. Standard
+merge acceptance also requires the successful mandatory backend check. The
+former same-source-jurisdiction test is removed, without a warning downgrade,
+baseline exception or change to the protected milestone floors.
 
 Accepted-warning handling:
 
@@ -553,7 +576,8 @@ Planned validation focus:
 
 - malformed compiled applicability metadata
 - empty visible clusters in a projected filtered graph
-- visible goals with invisible prerequisites in a projected filtered graph
+- actual personal acquisition targets missing required canonical atoms (APV-102,
+  checked by the mandatory native backend gate above)
 - visible goals not reachable from the filtered root through visible `contains` edges
 
 This layer is intentionally documented here already so CI semantics stay aligned with the concept spec, even before the implementation lands.

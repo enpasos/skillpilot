@@ -651,7 +651,8 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(ReflectionTestUtils.<PersonalCurriculumLearningScope>invokeMethod(broken, "learningScope"))
                     .isSameAs(learning);
             assertThatThrownBy(() -> fixture.assertLearningEmission(
-                    scope.learner().getPersonalCurriculum(), broken)).isInstanceOf(AssertionError.class);
+                    scope.learner().getPersonalCurriculum(), broken)).isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("APV-102");
             assertThat(roleProbe(fixture.service, scope, broken, assessment, scope.topology())).isFalse();
             Object narrowed = ReflectionTestUtils.invokeMethod(fixture.service, "frontierPrerequisites",
                     scope.learner(), broken, fullMastery, Set.of(assessment));
@@ -2606,11 +2607,11 @@ class FirstMathPrerequisiteReductionTest {
             Set<String> expected = new TreeSet<>();
             for (String id : seedTargets) {
                 LearningGoal seed = seedDefinitions.get(id);
-                assertThat(seed).as("seed definition %s", id).isNotNull();
+                assertThat(seed).as("APV-102 seed definition %s", id).isNotNull();
                 if (seed.getContains() != null && !seed.getContains().isEmpty()) continue;
                 LearningGoal goal = canonicalGoals.get(id);
-                assertThat(goal).as("canonical atomic seed %s", id).isNotNull();
-                assertThat(goal.getContains()).as("canonical seed must be atomic: %s", id).isEmpty();
+                assertThat(goal).as("APV-102 canonical atomic seed %s", id).isNotNull();
+                assertThat(goal.getContains()).as("APV-102 canonical seed must be atomic: %s", id).isEmpty();
                 expected.add(id);
                 expected.addAll(canonicalTopology.transitivePrerequisites(id));
             }
@@ -2619,18 +2620,18 @@ class FirstMathPrerequisiteReductionTest {
             Set<String> actualAtoms = new TreeSet<>();
             for (String id : targetIds) {
                 LearningGoal goal = structural.get(id);
-                assertThat(goal).as("emitted target definition %s", id).isNotNull();
+                assertThat(goal).as("APV-102 emitted target definition %s", id).isNotNull();
                 if (goal.getContains() != null && !goal.getContains().isEmpty()) continue;
-                assertThat(canonicalAtomicIds).as("emitted target must be a known canonical atom: %s", id).contains(id);
+                assertThat(canonicalAtomicIds).as("APV-102 emitted target must be a known canonical atom: %s", id).contains(id);
                 actualAtoms.add(id);
             }
-            assertThat(actualAtoms).as("emitted targets equal independent canonical demand: %s", personalCurriculum)
+            assertThat(actualAtoms).as("APV-102 emitted targets equal independent canonical demand: %s", personalCurriculum)
                     .isEqualTo(expected);
             Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
-            assertThat(visible.keySet()).as("every required target has an emitted definition").containsAll(expected);
+            assertThat(visible.keySet()).as("APV-102 every required target has an emitted definition").containsAll(expected);
             Set<String> completion = ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets",
                     "automatic:personal-curriculum", projection);
-            assertThat(completion).as("completion receives the complete independent acquisition basis").isEqualTo(expected);
+            assertThat(completion).as("APV-102 completion receives the complete independent acquisition basis").isEqualTo(expected);
         }
 
         void verifyOnlyUnsavedFixtures() {

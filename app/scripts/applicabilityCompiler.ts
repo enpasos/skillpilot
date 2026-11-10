@@ -1562,6 +1562,8 @@ export function buildApplicabilityCompilation(
       }
     }
 
+    // APV-102 checks actual emitted prerequisite learning in the mandatory
+    // native scope/emission tests. Source-country membership cannot prove L completeness.
     for (const value of SUPPORTED_JURISDICTIONS) {
       const visibleGoalIds = new Set(
         canonical.landscape.goals
@@ -1590,25 +1592,6 @@ export function buildApplicabilityCompilation(
           }
         }
 
-        if (isAtomicGoal(goal) && !isMemoryGoal(goal)) {
-          for (const rawReq of goal.requires ?? []) {
-            const req = resolveCanonicalReference(rawReq)
-            const targetApplicability = compiledByGoalId.get(goalKey(req.landscapeId, req.goalId))
-            if (!targetApplicability) continue
-            if (!(targetApplicability[SUPPORTED_DIMENSION] ?? []).includes(value)) {
-              findings.push({
-                code: 'APV-102',
-                severity: 'error',
-                landscapeId: canonical.landscape.landscapeId,
-                goalId: goal.id,
-                title: goal.title,
-                dimension: SUPPORTED_DIMENSION,
-                value,
-                message: `Visible goal requires invisible prerequisite ${req.goalId} in projection ${SUPPORTED_DIMENSION}=${value}.`,
-              })
-            }
-          }
-        }
       }
 
       if (canonical.rootGoalId) {

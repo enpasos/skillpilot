@@ -251,6 +251,32 @@ test('live assessment basis preserves the literal cluster predicate while learni
     && e.source === 'assessment basis assessment-basis-test:C'))
 })
 
+test('assessment seed applicability preserves countries while learning prerequisites cross them', () => {
+  const landscape = basisFixture(), exam = landscape.goals.find(goal => goal.id === 'exam')!
+  exam.requires = ['a', 'b']
+  bindBasis(exam, ['C'])
+  const rawBefore = structuredClone(landscape)
+  const report = compileBasisFixture(landscape)
+  const rows = new Map(report.goals.map(goal => [goal.goalId, goal]))
+  assert.deepEqual(rows.get('exam')!.compiledApplicability, { jurisdiction: ['DE-BY', 'DE-HE'] })
+  for (const [id, country] of [['a', 'DE-BY'], ['b', 'DE-HE']]) {
+    assert.deepEqual(rows.get(id)!.compiledApplicability, { jurisdiction: [country] })
+    assert.deepEqual(rows.get(id)!.evidence, [{
+      dimension: 'jurisdiction', value: country, kind: 'override', source: 'extendedData.applicabilityOverrides',
+    }], 'Required learning grants neither another source country nor new source evidence')
+  }
+  assert.deepEqual(rows.get('exam')!.evidence, ['DE-BY', 'DE-HE'].map(value => ({
+    dimension: 'jurisdiction', value, kind: 'assessment-requires', source: 'assessment basis assessment-basis-test:C',
+  })))
+  assert.deepEqual(landscape, rawBefore, 'Source values, raw prerequisites and basis metadata remain unchanged')
+  assert.deepEqual(report.findings.filter(finding => finding.severity === 'error'), [],
+    'Source-country membership does not determine completeness of the actual emitted personal learning scope')
+  const missing = structuredClone(landscape)
+  missing.goals = missing.goals.filter(goal => goal.id !== 'a')
+  assert.throws(() => compileBasisFixture(missing), /unresolved local reference/u,
+    'A missing canonical dependency still fails hard')
+})
+
 test('assessment basis is strict, immutable and confined to flagged atomic assessment endpoints', () => {
   const exam = basisFixture().goals.find(goal => goal.id === 'exam')!
   bindBasis(exam, ['C'])

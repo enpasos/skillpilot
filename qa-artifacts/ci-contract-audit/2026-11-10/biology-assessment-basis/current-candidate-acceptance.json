@@ -312,9 +312,395 @@
     ]
   },
   "pending": [
-    "actual public V8 loader",
-    "complete current native scope coverage",
-    "APV-102 replacement and regular milestone/floors",
-    "remote CI and Main delivery"
-  ]
+    "regular milestone producer and protected floors",
+    "complete remote CI and Main delivery",
+    "hard G17 integration in standard milestone producer"
+  ],
+  "publicLoader": {
+    "command": [
+      "node",
+      "--import",
+      "tsx",
+      "scripts/verifyPrerequisiteReductionSemanticKindBindings.ts",
+      "--canonical-source",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "--repository-root",
+      ".."
+    ],
+    "startedAt": "2026-11-10T23:14:17.557721+00:00",
+    "sources": {
+      "app/scripts/applicabilityCompiler.ts": "e74db4a09952b0942b9f705204b7148600d0dee75109a8e9c71e34eb0f5baf87",
+      "app/scripts/lib/verificationInputSnapshot.ts": "08e1dcb0b0a19f7b92baa98f6edba67e99ed51e1535b250356372c4ec624b99b",
+      "app/scripts/prerequisiteReductionProof.ts": "7d7be4156a90a1fa1310fef35a739dddfc0086d3b1175a7fc12b565d966f5c6e",
+      "app/scripts/verifyPrerequisiteReductionSemanticKindBindings.ts": "67126515fd23aed17ca4c36891cd427bb78f21ec58deae869a6f6d208b371617",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": "0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json": "70d07b2ffee3a0cbd54d0699b260706e979fca23362b4c05263514b6d3a946ba",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": "17669f6151f6e9a597358026751792a6959451ea9f518d3656bf7b4a86e4e0d9",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json": "f08aef0afc71e820708f44708f96cf248885c5ac2a13864fd2cb1b3135de6fb0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json": "664b6d151b7893256d0385e97678d5490e7470127c01eef0717c687d93932448",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "3a8bf173843719c7c0211f120d95541c2768478f2bb3a1310f79ecd35ba2cdd0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json": "aaf42079382877f434e30e0de6c984dec2195c9f8434812aaeb22b1d83ceaf1b",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849",
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json": "e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389",
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v7-chemistry-20261110.json": "e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6",
+      "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": "09d624c3ed453ae6de87383819475ba01c5d508eba26378645123f8302465383"
+    },
+    "exitCode": 0,
+    "wallSeconds": 487.5629475619935,
+    "sourcesUnchanged": true,
+    "completedAt": "2026-11-10T23:22:25.355358+00:00",
+    "proofContract": "assessment-basis-bound-prerequisite-reduction-v8",
+    "registryDigest": "sha256:09d624c3ed453ae6de87383819475ba01c5d508eba26378645123f8302465383",
+    "verifiedAffectedSources": 1230,
+    "emittedBiologyBindings": 484,
+    "bindingsOutputSha256": "0d60fe675e37bdc1c180f1a93c043411598eabfe4ba7bbd433478435c98cb174",
+    "boundary": "Successful exact-data full V8 verification before subsequent APV-102 compiler correction; not certification of later compiler source."
+  },
+  "nativeCurrentCatalog": {
+    "startedAt": "2026-11-10T23:21:24.090704+00:00",
+    "finishedAt": "2026-11-10T23:27:11.632300+00:00",
+    "headAtStart": "e6f1752dd1872ec3fa77f4dd5130e8d64bb59d95",
+    "headAtFinish": "ad72d18c6ddb4e0f71de520230ff819a2935dd29",
+    "command": [
+      "./gradlew",
+      "test",
+      "--no-daemon",
+      "--max-workers=1",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget"
+    ],
+    "javaHome": "/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+    "exitCode": 0,
+    "wallSeconds": 347.5438070297241,
+    "inputPinCount": 809,
+    "sourceHashesUnchanged": true,
+    "changedInputs": [],
+    "inputScope": "Exact same 809 existing named Java/Gradle/catalog/proof inputs accepted by focused run; no closed-read namespace claim",
+    "selector": "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget",
+    "stdout": "stdout.log",
+    "historicalEntireClassRun": false,
+    "junit": {
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "305.052",
+      "cases": [
+        {
+          "name": "currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget()",
+          "time": "304.601",
+          "failure": false
+        }
+      ]
+    },
+    "actualCoverage": {
+      "subjects": [
+        {
+          "subject": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+          "checked": 43,
+          "notOffered": 0,
+          "incomplete": 54,
+          "invalid": 4,
+          "guiDeclared": true
+        },
+        {
+          "subject": "0900df4c-beeb-5542-86f9-bd479c94746a",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "51b60137-46e8-5498-973e-ea38bb32f327",
+          "checked": 34,
+          "notOffered": 2,
+          "incomplete": 58,
+          "invalid": 4,
+          "guiDeclared": true
+        },
+        {
+          "subject": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+          "checked": 80,
+          "notOffered": 0,
+          "incomplete": 23,
+          "invalid": 4,
+          "guiDeclared": true
+        },
+        {
+          "subject": "668cf206-941e-51f8-8704-3e8938631235",
+          "checked": 40,
+          "notOffered": 0,
+          "incomplete": 55,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+          "checked": 44,
+          "notOffered": 0,
+          "incomplete": 55,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "checked": 140,
+          "notOffered": 0,
+          "incomplete": 42,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+          "checked": 57,
+          "notOffered": 0,
+          "incomplete": 45,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "checked": 140,
+          "notOffered": 0,
+          "incomplete": 38,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+          "checked": 44,
+          "notOffered": 0,
+          "incomplete": 54,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+          "checked": 139,
+          "notOffered": 0,
+          "incomplete": 43,
+          "invalid": 0,
+          "guiDeclared": true
+        },
+        {
+          "subject": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "f145785b-0c44-5246-af66-8a153d202cb9",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        },
+        {
+          "subject": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+          "checked": 0,
+          "notOffered": 17,
+          "incomplete": 0,
+          "invalid": 0,
+          "guiDeclared": false
+        }
+      ],
+      "totals": {
+        "checked": 761,
+        "notOffered": 172,
+        "incomplete": 467,
+        "invalid": 12
+      },
+      "emittedSummary": [
+        "CURRENT_NATIVE_LEARNING_SCOPE_COVERAGE catalogs=21 subjects=20 guiSubjects=10 classifiedRows=1412 multiSubjectPowerSet=false"
+      ]
+    }
+  },
+  "apv102CompilerRegression": {
+    "scope": "Remove only source-country APV-102 finding; retain actual hard APV-102 emission/completion assertions and both real corruption negatives",
+    "sourceHashes": {
+      "app/scripts/applicabilityCompiler.ts": "5b35b87d30f0405d01d63f1728eb2aa443733d505c30e55839a89a9f2273b5be",
+      "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts": "b642a1f69083daba8a62294ceb1a712dcf445f92538c46b4381b46e4dc5f7f31",
+      "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "caf0d5c94210052f4d391c3aebe923f6aeb372512d9ebbc1a896f715beca3c6a"
+    },
+    "patchSha256": "0533939e2482858e2f161b9061913a7bb436346ad3593b33de7a66995cca4703",
+    "red": {
+      "command": "npx tsx --test --test-name-pattern '^assessment seed applicability preserves countries while learning prerequisites cross them$' scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "exitCode": 1,
+      "selectedFailed": 1,
+      "reportedErrors": [
+        "APV-102: prerequisite b is not BY",
+        "APV-102: prerequisite a is not HE"
+      ],
+      "wallMillisecondsReported": 3509.375614,
+      "log": "apv102-regression-red.log"
+    },
+    "green": {
+      "command": "npm run quality:source-coverage-evidence:test",
+      "exitCode": 0,
+      "tests": 23,
+      "passed": 23,
+      "skipped": 0,
+      "durationMillisecondsReported": 52211.965173,
+      "log": "apv102-regression-green.log"
+    },
+    "eslint": {
+      "command": "npx eslint scripts/applicabilityCompiler.ts scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "exitCode": 0,
+      "log": "apv102-eslint.log"
+    },
+    "nativeFullScopeBeforeAssertionLabelOnlyChange": "native-v8-current-catalog-attempt-1/receipt.json",
+    "nativeLabelAndLossGateRun": {
+      "receipt": "native-apv102-gate-attempt-1/receipt.json",
+      "exitCode": 0,
+      "wallSeconds": 123.29114603996277,
+      "junit": {
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "38.506",
+        "cases": [
+          {
+            "name": "currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions()",
+            "time": "38.159",
+            "failure": false
+          }
+        ]
+      },
+      "inputPinsUnchanged": true
+    },
+    "dataEdited": false,
+    "compilerChangedAfterPriorPublicLoaderReceipt": true,
+    "publicLoaderPriorEvidence": "public-loader-current-1/receipt.json; not rerun by this task",
+    "fullScopeNotRepeatedAfterAssertionLabelOnlyChange": true,
+    "finalOwnedSourcesMatchPassedChecks": true
+  },
+  "nativeApv102Gate": {
+    "startedAt": "2026-11-10T23:29:39.210090+00:00",
+    "finishedAt": "2026-11-10T23:31:42.497153+00:00",
+    "headAtStart": "ad72d18c6ddb4e0f71de520230ff819a2935dd29",
+    "headAtFinish": "ad72d18c6ddb4e0f71de520230ff819a2935dd29",
+    "command": [
+      "./gradlew",
+      "test",
+      "--no-daemon",
+      "--max-workers=1",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions"
+    ],
+    "javaHome": "/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+    "exitCode": 0,
+    "wallSeconds": 123.29114603996277,
+    "inputPinCount": 809,
+    "sourceHashesUnchanged": true,
+    "changedInputs": [],
+    "changeSinceAcceptedFullScope": "Only existing FirstMath test: APV-102 labels on unchanged emission assertions and both existing loss negatives require that label",
+    "inputScope": "Same 809 existing named Java/Gradle/catalog/proof inputs; no closed-read namespace claim",
+    "selector": "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+    "stdout": "stdout.log",
+    "fullScopeOrRawRegistryRepeated": false,
+    "junit": {
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "38.506",
+      "cases": [
+        {
+          "name": "currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions()",
+          "time": "38.159",
+          "failure": false
+        }
+      ]
+    }
+  },
+  "documentBuild": {
+    "command": [
+      "python3",
+      "docs/concept/skill-graph/latex/build-document.py",
+      "--texmf",
+      "/tmp/skillpilot-g17-document-texmf-lex9aorl/usr/share/texlive/texmf-dist"
+    ],
+    "exitCode": 0,
+    "pdfBytesChanged": false,
+    "boundConceptManifestUpdated": true
+  },
+  "viewFilters": {
+    "command": [
+      "npm",
+      "run",
+      "validate:view-filters"
+    ],
+    "exitCode": 0,
+    "errors": 0,
+    "activeWarnings": 0,
+    "diagnostics": 27650,
+    "existingAcceptedWarnings": 111,
+    "acceptedWarningRegistryModified": false
+  }
 }
