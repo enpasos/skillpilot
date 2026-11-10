@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-10T18:01:07.458791+00:00",
+  "status": "local-reviewed-authoring-repair-validated-new-remote-ci-required",
+  "failedHead": "597c2f6b17fbd0a738614590a0afeda0d45403dc",
+  "failedRemote": {
+    "runId": 42850827581,
+    "jobId": 129970423139,
+    "job": "Curriculum CI",
+    "step": "Validate Composition Views",
+    "command": [
+      "npm",
+      "run",
+      "validate:composition-views"
+    ],
+    "conclusion": "failure",
+    "actualErrors": 277,
+    "affectedFiles": 2,
+    "errorsByCode": {
+      "CPV-004": 80,
+      "CPV-005": 108,
+      "CPV-006": 82,
+      "CPV-007": 7
+    },
+    "firstFailureDecodedLine": 1929,
+    "firstFailure": "Overlapping canonical subtrees8519f683-7c31-50da-be59-649997a6fc47 and0aaf0cc6-b059-56ef-9284-4cb7a0c5bff5 at0.2.1.1 and0.2.1.6.0 in de-he-gk-lk.view.json",
+    "decodedLog": {
+      "localPath": "/mnt/e/skillpilot-g17-chemistry-pr111-acceptance-20261110/curriculum-job-129970423139.decoded.log",
+      "sha256": "13b2600b074e923d7f4033a22cb9fb11894484a902f44917d8b9c21f0e3ef317"
+    },
+    "extractedErrors": {
+      "localPath": "/mnt/e/skillpilot-g17-chemistry-pr111-acceptance-20261110/composition-failures.json",
+      "sha256": "d6dee92d573a702cdd57df1ac86abafd1aef6bcb0a8caf6a62dcebc60d783bc2"
+    }
+  },
+  "repair": {
+    "method": "Existing CourseProfileCompositionViewMerger.mergeViews(List.of(currentCombinedRoots), canonicalChildren, true), then remove literally empty structure nodes. No production-code or validator change.",
+    "emptyWrappersPruned": 7,
+    "onlyRetainedNodeDeletions": true,
+    "files": [
+      {
+        "file": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json",
+        "beforeSha256": "4394989ae077422b09d07af1e59a084bd9363aa4e860cdc2d8bc49298cc5e8f6",
+        "afterSha256": "afec1b964d43e53a72ae2fb8a8117a46da544b137e378995cf66177b48864e7c"
+      },
+      {
+        "file": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json",
+        "beforeSha256": "829613722120e409febe12a600f4f309d3d07e81d39d2fc43e9d233c11bf4413",
+        "afterSha256": "4de3850c144391bc863716ad1e977cfbc4c6340e22a3dafa92c7a541188f0bac"
+      }
+    ],
+    "generator": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/RepairCombinedChemistryViews.java",
+      "sha256": "48dc2201ed79a8d5722aa27508db259fbbf7ecc831a6b876612a1a3060c745e4"
+    },
+    "actualGenerationInvocation": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/generation-invocation.json",
+      "sha256": "555714254427704ffe47ebcc7237e450614356ceb7c6186a210dc8b210dcfc66"
+    },
+    "generationInputGuardCount": 25,
+    "generationChangedInputs": [],
+    "rawTargetSupportSetsAndViewEnvelopesPreserved": true,
+    "rawTargetSupportCounts": [
+      {
+        "file": "de-he-gk-lk.view.json",
+        "targets": 480,
+        "support": 6
+      },
+      {
+        "file": "de-he-sekii-gk-lk.view.json",
+        "targets": 375,
+        "support": 95
+      }
+    ],
+    "authoredPreviewBoundary": "Invalid authored duplicate placements were removed. Their old ordinary TS preview tree changed; actual backend-selected runtime tree and scope remain identical."
+  },
+  "freshFocusedNative": {
+    "exitCode": 0,
+    "seconds": 77.82,
+    "discoveredConfigurations": 182,
+    "affectedScopes": [
+      "DE-HE/CrossStage/G8/GK+LK",
+      "DE-HE/CrossStage/G9/GK+LK",
+      "DE-HE/SekII/G8/GK+LK",
+      "DE-HE/SekII/G9/GK+LK"
+    ],
+    "selectionMethod": "Actual production CompositionViewService.findMatchingView over every freshly discovered configuration, confirmed through NativeFixture.resolve viewIds",
+    "exactBeforeAfterEquality": true,
+    "equalFields": [
+      "targets",
+      "atomicTargets",
+      "support",
+      "viewIds",
+      "context",
+      "presentationRootGoalIds",
+      "visibleContains including chosen parents and child order",
+      "visibleLabels",
+      "visibleGoalIds",
+      "fullContextAtomicDemand",
+      "fullContextGoalDemand"
+    ],
+    "actualTargetSupportCounts": {
+      "CrossStage": {
+        "targets": 479,
+        "support": 6
+      },
+      "SekII": {
+        "targets": 374,
+        "support": 95
+      }
+    },
+    "listedInputGuardCount": 384,
+    "changedListedInputs": [],
+    "guardCoverage": "Named canonical documents, composition views, prerequisite registries, current test/merger/diagnostic Java sources and candidate files. Existing dependency classpath reused; no exhaustive compiled-class, third-party dependency or recursive read-namespace claim.",
+    "actualInvocation": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/native-invocation.json",
+      "sha256": "2ce53059ed5a2f5eabc20603bc7ba72b6f6ea74d833da14d6c6dd1a7d16875ac"
+    },
+    "before": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/native-before.json",
+      "sha256": "bb0b8f9ba9a194c58e7ed5e44d1b7f0c60b57df9a10d0a245566cf2b73cd7e25"
+    },
+    "after": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/native-after.json",
+      "sha256": "bb0b8f9ba9a194c58e7ed5e44d1b7f0c60b57df9a10d0a245566cf2b73cd7e25"
+    },
+    "comparison": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/native-comparison.json",
+      "sha256": "8e2c97d67d1dcfd5f5248372b4cd9a94361c5d033c0c563365795197c3b5cf30"
+    },
+    "fullSixMethodSuiteRepeated": false,
+    "newFrontierOrMasteryCaseLoopsClaimed": false
+  },
+  "normalFullCompositionValidator": {
+    "command": [
+      "/home/enpasos/.nvm/versions/node/v20.20.2/bin/npm",
+      "run",
+      "validate:composition-views"
+    ],
+    "exitCode": 0,
+    "seconds": 335.764,
+    "scope": "Actual ordinary full composition validator over current candidate product; no proof replay or test filters",
+    "cwd": "/home/enpasos/projects/skillpilot/app",
+    "views": 354,
+    "canonicalCatalogs": 21,
+    "errors": 0,
+    "warnings": 2388,
+    "log": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/full-composition-validator.log",
+      "sha256": "c25e41a0fa9c964b1d0e8130b17e77a2f9aada03e6dfaa108f7724c5ab92df37"
+    }
+  },
+  "watchAcknowledgment": {
+    "normalCommand": [
+      "bash",
+      "scripts/run_canonical_chemistry_evidence_watch.sh"
+    ],
+    "oldRedExitCode": 1,
+    "oldChanged": 2,
+    "oldAdded": 0,
+    "oldRemoved": 0,
+    "oldBaselineUnchangedDuringRed": true,
+    "oldRedLog": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/chemistry-watch.log",
+      "sha256": "112d6b990be8e02f7a17db61a372d945265b277502ed07e31af510230de9822f"
+    },
+    "newGreenExitCode": 0,
+    "newChanged": 0,
+    "newAdded": 0,
+    "newRemoved": 0,
+    "newGreenLog": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/chemistry-watch-green.log",
+      "sha256": "e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e"
+    },
+    "oldBaselineRawSha256": "40623ca256e285db894af4e0972ea98ad89117fb46e615593e46624f1a39c5e4",
+    "newBaselineRawSha256": "0b8864cc4394d9becd3cc3c63e691ce473a41d87ac0307b8ae54c2d0db7a1d1a",
+    "changedRecords": [
+      {
+        "before": {
+          "relativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json",
+          "exists": true,
+          "sha256": "4394989ae077422b09d07af1e59a084bd9363aa4e860cdc2d8bc49298cc5e8f6",
+          "lastModifiedUtc": "2026-11-10T12:38:38Z"
+        },
+        "after": {
+          "relativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json",
+          "exists": true,
+          "sha256": "afec1b964d43e53a72ae2fb8a8117a46da544b137e378995cf66177b48864e7c",
+          "lastModifiedUtc": "2026-11-10T17:53:45Z"
+        }
+      },
+      {
+        "before": {
+          "relativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json",
+          "exists": true,
+          "sha256": "829613722120e409febe12a600f4f309d3d07e81d39d2fc43e9d233c11bf4413",
+          "lastModifiedUtc": "2026-11-10T12:38:38Z"
+        },
+        "after": {
+          "relativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json",
+          "exists": true,
+          "sha256": "4de3850c144391bc863716ad1e977cfbc4c6340e22a3dafa92c7a541188f0bac",
+          "lastModifiedUtc": "2026-11-10T17:53:45Z"
+        }
+      }
+    ],
+    "otherWholeRecordsExactlyUnchanged": 160,
+    "watchedFileCountBeforeAndAfter": 162,
+    "onlyTopLevelMetadataChange": "updatedAt",
+    "existingGenerator": "scripts/canonical_chemistry_evidence_watch.py::current_record called for exactly two reviewed authoring files; no capture-baseline operation",
+    "actualAcknowledgmentScript": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/ack-watch-two-rows.py",
+      "sha256": "c01f9b5734b4c46ab9184c2c6c314317ba1d78f3c794fde54bc62b870f50fa13"
+    },
+    "actualAcknowledgmentReceipt": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/watch-acknowledgment-receipt.json",
+      "sha256": "068c301054edcd9052d85eba2745dcb404ac8046339f6e3f9be4dd86aa9bbd98"
+    },
+    "goalsCardsSourceFingerprintsSourceDecisionsOrQaApprovalsRebound": false
+  },
+  "independentReviews": {
+    "twoFileCandidate": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/astra-candidate-review.json",
+      "sha256": "2c4a30e7c77568c4e65e810e9819aab90970ad0a4066232b9340a436c5a0091b"
+    },
+    "watchProposalVerification": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/astra-watch-proposal-verification.json",
+      "sha256": "ac30e195c8be69fc53b901492b543e85c1da8a90792beeb90444ae36c102a7dd"
+    },
+    "watchReview": {
+      "localPath": "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-composition-ci-fix-20261110/astra-watch-review.json",
+      "sha256": "186b9fb4cd6b496d3b513fd387d135cf1978c05b1adc2bcb28827864c639d8a6"
+    },
+    "allAppliedViewHashesMatchReviewedCandidates": true,
+    "appliedBaselineEqualsReviewedProposal": true
+  },
+  "unchangedInputs": {
+    "canonicalDocumentCount": 21,
+    "canonicalGoalDataEqualFailedHead": true,
+    "sourceFingerprintInputsNotRecomputedOrRebound": true,
+    "canonicalDocumentBindings": [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "4909e91fdb36f8917cf3ab4e7d2059d303939bc5ae184ae6166d60c744da4278"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+        "sha256": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+        "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+        "sha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+        "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+        "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+        "sha256": "70d07b2ffee3a0cbd54d0699b260706e979fca23362b4c05263514b6d3a946ba"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+        "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+        "sha256": "17669f6151f6e9a597358026751792a6959451ea9f518d3656bf7b4a86e4e0d9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+        "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+        "sha256": "f08aef0afc71e820708f44708f96cf248885c5ac2a13864fd2cb1b3135de6fb0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+        "sha256": "664b6d151b7893256d0385e97678d5490e7470127c01eef0717c687d93932448"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+        "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+        "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "3a8bf173843719c7c0211f120d95541c2768478f2bb3a1310f79ecd35ba2cdd0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+        "sha256": "aaf42079382877f434e30e0de6c984dec2195c9f8434812aaeb22b1d83ceaf1b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+        "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+        "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+        "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+        "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "sha256": "350aac65027a8632564346e6829bacb25e177feb1d6f6988722f314b1685e849"
+      }
+    ],
+    "checkerManifestFloorAndFingerprintCodeBindings": [
+      {
+        "path": "app/scripts/validateCompositionViews.ts",
+        "sha256": "901530527fcbdd28658631c15e328a291dbc087d286e6dbf580471b4e9f69cf9"
+      },
+      {
+        "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+        "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/composition/CourseProfileCompositionViewMerger.java",
+        "sha256": "245218a667c732abe8cfac7642ba23c13626f04dcd3d067a4879d3e1a821a62b"
+      },
+      {
+        "path": "scripts/canonical_chemistry_evidence_watch.py",
+        "sha256": "f6c1129474eef828c5a3796632da52e903e25960c12f06e89dcd142c3b369c0f"
+      },
+      {
+        "path": "scripts/run_canonical_chemistry_evidence_watch.sh",
+        "sha256": "44b6b7cf3d65ab5003c360b9406c3b13e98b8b41fb1296bbe9015f3f1607dc7d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-manifest.json",
+        "sha256": "f3445bf3dc6de01799989fd2fe22d44376c69c0763d9837e7bd584ec04f81f8e"
+      },
+      {
+        "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+        "sha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7"
+      },
+      {
+        "path": "app/scripts/goalBookModel.ts",
+        "sha256": "6dd01cbeb06d280d96f707de395691ffd9667c611da95c4f0f950eda4f99d5f2"
+      },
+      {
+        "path": "scripts/prerequisite_reduction_semantic_kind.py",
+        "sha256": "4487e6fec34fbbefe20bbbda922dcbd899ddbe4b436acdf0e5a0ae292f5746ed"
+      }
+    ],
+    "noSourceMappingOrReviewLedgerChanges": true,
+    "noLearnerStateWrites": true
+  },
+  "acceptanceBoundary": {
+    "previousNative182DidNotValidateRawAuthoringUniqueness": true,
+    "newLocalFullSixNativeOrCqrRun": false,
+    "freshFullRemoteCiRequired": true,
+    "mainDeliveryClaimed": false,
+    "githubOrGitMutationByThisRepairRecipe": false,
+    "rawLogsAndRecipes": "The paths above are real local retained evidence, not remote artifact URLs."
+  }
+}

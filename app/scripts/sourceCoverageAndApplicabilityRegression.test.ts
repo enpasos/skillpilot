@@ -487,6 +487,163 @@ test('ordinary direct and recursive ordinary source coverage pass', () => {
   assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(start), true)
 })
 
+function currentGraphChecker(
+  requires: Record<string, string[]>,
+  goals = [ordinary('carrier'), ordinary('middle', requiredByEvidence('carrier')),
+    ordinary('target', requiredByEvidence('middle'))],
+  routes = [entry('target', 'carrier')],
+  kinds: Record<string, string> = {},
+) {
+  const surrogateEntriesByKey = new Map<string, ReturnType<typeof entry>[]>()
+  for (const route of routes) {
+    const key = sourceCoverageSurrogateKey(LANDSCAPE, 'target', JURISDICTION)
+    surrogateEntriesByKey.set(key, [...(surrogateEntriesByKey.get(key) ?? []), route])
+  }
+  return createReviewedRequiresClosureCoverageChecker({
+    landscapeId: LANDSCAPE, jurisdiction: JURISDICTION, goals,
+    canonicalGoalById: new Map(Object.entries(requires).map(([id, prerequisites]) =>
+      [id, { kind: kinds[id] ?? 'ordinary', requires: prerequisites }])),
+    surrogateEntriesByKey,
+    isEligibleCanonicalGoal: isEligible,
+    getCanonicalRequires: (goal) => goal.requires,
+  })
+}
+
+test('reviewed source coverage survives real atomic transitive reduction', () => {
+  const makeGoal = (id: string, requires: string[]): LearningGoal => ({
+    id, title: id, description: id, weight: 1, contains: [], requires,
+    dimensionTags: { framework: 'test', demandLevel: 'AB1', processCompetencies: [], guidingIdeas: [], phase: 'J8' },
+    ...(id === 'carrier'
+      ? { extendedData: { applicabilityOverrides: { jurisdiction: [JURISDICTION] } } } : {}),
+  })
+  const landscape: SkillLandscape = {
+    landscapeId: LANDSCAPE, locale: 'de-DE', title: 'Source path', description: 'Fixture',
+    goals: [makeGoal('carrier', ['middle', 'target']), makeGoal('middle', ['target']), makeGoal('target', [])],
+  }
+  for (const reduced of [false, true]) {
+    landscape.goals[0].requires = reduced ? ['middle'] : ['middle', 'target']
+    const report = buildApplicabilityCompilation([{ file: join(tmpdir(), 'source-path.json'), landscape }]).reports[0]
+    const target = report.goals.find(goal => goal.goalId === 'target')!
+    assert.equal(target.evidence.some(evidence => evidence.kind === 'requires-closure'
+      && evidence.source === 'required by carrier'), !reduced)
+    // Only the carrier's source evidence is supplied directly; applicability
+    // overrides are intentionally not accepted as source coverage.
+    const goals = report.goals.map(goal => goal.goalId === 'carrier'
+      ? { ...goal, evidence: [...goal.evidence, ...directEvidence] } : goal)
+    const coverage = currentGraphChecker(
+      Object.fromEntries(landscape.goals.map(goal => [goal.id, goal.requires])), goals,
+    )
+    assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(target), true,
+      `The same accepted carrier/target relationship must survive reduced=${reduced}`)
+  }
+})
+
+test('current source paths reject stale evidence, invalid references, and non-atomic hops', () => {
+  const target = ordinary('target', [...requiredByEvidence('middle'), ...requiredByEvidence('carrier')])
+  const goals = [ordinary('carrier'), ordinary('middle', requiredByEvidence('carrier')), target]
+  for (const reference of ['absent', 'foreign:middle', ':middle', `${LANDSCAPE}:middle:extra`, '', 'carrier']) {
+    const coverage = currentGraphChecker({ carrier: [reference], middle: ['target'], target: [] }, goals)
+    assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(target), false, reference)
+  }
+  for (const requires of [
+    { carrier: [], middle: ['target'], target: [] },
+    { carrier: ['middle'], middle: [], target: ['carrier'] },
+    { carrier: ['middle'], middle: ['carrier'], target: [] },
+    { carrier: ['middle'], middle: ['target'], target: ['carrier'] },
+  ]) {
+    assert.equal(currentGraphChecker(requires, goals).hasCoverageBackedJurisdictionEvidence(target), false)
+  }
+  const throughCluster = goals.map(goal => goal.goalId === 'middle' ? { ...goal, goalType: 'cluster' } : goal)
+  assert.equal(currentGraphChecker({ carrier: ['middle'], middle: ['target'], target: [] }, throughCluster)
+    .hasCoverageBackedJurisdictionEvidence(target), false)
+  const localQualified = currentGraphChecker({ carrier: [`${LANDSCAPE}:middle`], middle: ['target'], target: [] }, goals)
+  assert.equal(localQualified.hasCoverageBackedJurisdictionEvidence(target), true)
+})
+
+test('current source paths retain the exact reviewed relationship and jurisdiction', () => {
+  const requires = { carrier: ['middle'], middle: ['target'], target: [] }
+  const target = ordinary('target', requiredByEvidence('middle'))
+  assert.equal(currentGraphChecker(requires, undefined, []).hasCoverageBackedJurisdictionEvidence(target), false)
+  for (const route of [
+    { ...entry('target', 'carrier'), landscapeId: 'foreign' },
+    { ...entry('target', 'carrier'), goalId: 'other' },
+    { ...entry('target', 'carrier'), jurisdiction: 'DE-BY' },
+    entry('target', 'middle'),
+  ]) {
+    assert.equal(currentGraphChecker(requires, undefined, [route])
+      .hasCoverageBackedJurisdictionEvidence(target), false)
+  }
+  const wrongJurisdiction = [ordinary('carrier'), ordinary('middle', requiredByEvidence('carrier')),
+    ordinary('target', requiredByEvidence('middle').map(evidence => ({ ...evidence, value: 'DE-BY' })))]
+  assert.equal(currentGraphChecker(requires, wrongJurisdiction).hasCoverageBackedJurisdictionEvidence(target), false)
+})
+
+test('current source paths preserve carrier qualification and recursive source backing', () => {
+  const requires = { carrier: ['middle'], middle: ['target'], target: [] }
+  const target = ordinary('target', requiredByEvidence('middle'))
+  for (const kind of ['assessment', 'practice', 'examData']) {
+    assert.equal(currentGraphChecker(requires, undefined, undefined, { carrier: kind })
+      .hasCoverageBackedJurisdictionEvidence(target), false)
+    assert.equal(currentGraphChecker(requires, undefined, undefined, { middle: kind })
+      .hasCoverageBackedJurisdictionEvidence(target), true)
+  }
+  const unbacked = [ordinary('carrier', []), ordinary('middle', [...requiredByEvidence('carrier'), ...directEvidence]), target]
+  assert.equal(currentGraphChecker(requires, unbacked).hasCoverageBackedJurisdictionEvidence(target), false)
+  // Eligibility constrains the fixed reviewed carrier. Preserve the existing
+  // accepted endpoint behavior (including legacy motivation bridges).
+  assert.equal(currentGraphChecker(requires, undefined, undefined, { target: 'motivation' })
+    .hasCoverageBackedJurisdictionEvidence(target), true)
+  const direct = ordinary('direct')
+  const carrier = ordinary('carrier', requiredByEvidence('direct'))
+  const middle = ordinary('middle', requiredByEvidence('carrier'))
+  const coverage = createReviewedRequiresClosureCoverageChecker({
+    landscapeId: LANDSCAPE, jurisdiction: JURISDICTION, goals: [direct, carrier, middle, target],
+    canonicalGoalById: new Map(Object.entries({ direct: ['carrier'], ...requires })
+      .map(([id, prerequisites]) => [id, { kind: 'ordinary', requires: prerequisites }])),
+    surrogateEntriesByKey: new Map([
+      [sourceCoverageSurrogateKey(LANDSCAPE, 'target', JURISDICTION), [entry('target', 'carrier')]],
+      [sourceCoverageSurrogateKey(LANDSCAPE, 'carrier', JURISDICTION), [entry('carrier', 'direct')]],
+    ]),
+    isEligibleCanonicalGoal: isEligible,
+    getCanonicalRequires: (goal) => goal.requires,
+  })
+  assert.equal(coverage.hasCoverageBackedJurisdictionEvidence(target), true)
+})
+
+test('structural assessment and memory hops do not become source carriers', () => {
+  type CanonicalPathGoal = Pick<LearningGoal, 'requires' | 'tags' | 'nodeKind'>
+  const carrier = ordinary('carrier')
+  const middle = ordinary('middle', requiredByEvidence('carrier'))
+  const target = ordinary('target', requiredByEvidence('middle'))
+  const eligible = (goal: CanonicalPathGoal | undefined) => !!goal
+    && goal.nodeKind !== 'memory'
+    && !(goal.tags ?? []).some(tag => ['Assessment', 'Practice', 'memorization'].includes(tag)
+      || tag.startsWith('srs-deck:'))
+  for (const internalGoal of [
+    { requires: ['target'], tags: ['Assessment'] },
+    { requires: ['target'], tags: ['Practice'] },
+    { requires: ['target'], nodeKind: 'memory' as const, tags: ['memorization', 'srs-deck:fixture'] },
+  ]) {
+    assert.equal(eligible(internalGoal), false)
+    const canonicalGoalById = new Map<string, CanonicalPathGoal>([
+      ['carrier', { requires: ['middle'] }], ['middle', internalGoal], ['target', { requires: [] }],
+    ])
+    const makeCoverage = () => createReviewedRequiresClosureCoverageChecker({
+      landscapeId: LANDSCAPE, jurisdiction: JURISDICTION, goals: [carrier, middle, target],
+      canonicalGoalById,
+      surrogateEntriesByKey: new Map([
+        [sourceCoverageSurrogateKey(LANDSCAPE, 'target', JURISDICTION), [entry('target', 'carrier')]],
+      ]),
+      isEligibleCanonicalGoal: eligible,
+      getCanonicalRequires: (goal) => goal.requires,
+    })
+    assert.equal(makeCoverage().hasCoverageBackedJurisdictionEvidence(target), true)
+    assert.equal(makeCoverage().hasCoverageBackedJurisdictionEvidence(middle), false)
+    canonicalGoalById.set('carrier', { ...internalGoal, requires: ['middle'] })
+    assert.equal(makeCoverage().hasCoverageBackedJurisdictionEvidence(target), false)
+  }
+})
+
 test('missing, cyclic, and cluster requiredBy routes fail closed', () => {
   const missing = ordinary('missing', requiredByEvidence('absent'))
   const cycleA = ordinary('cycle-a', requiredByEvidence('cycle-b'))
