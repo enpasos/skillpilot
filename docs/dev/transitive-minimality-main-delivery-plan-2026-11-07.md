@@ -16,19 +16,23 @@ Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
 der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
-Vollständige TS-Prüfung und nativer Projektionsvergleich sind bestanden;
-der abschließende Backendlauf und die Remote-CI laufen noch. Die letzten
-regulären Meilensteinläufe stoppen Physik an CQR-104 bei M3 statt M7; die
-übrigen neun geschützten Fachstände erreichen ihre Untergrenzen. Die echten
-Gegenfälle betreffen die Rollenauflösung des Routenprüfers: Allgemeine
-Supportreferenzen müssen spezifischere Zielzuordnungen beachten, ausdrücklich
-innerhalb einer Stufe platzierte Voraussetzungen dagegen erhalten bleiben.
-Beide Fälle sind korrigiert. Die tatsächliche vollständige CQR-104-Regel über
-35 Views und 80 Scopes sowie die bestehende Physik-Projektionssuite bestehen
-einschließlich der Negativfälle. Der nächste reguläre Producer mit
-unveränderten Floors steht noch aus; ein erfolgreicher Gesamtbericht wird
-nicht aus der gezielten Regelprüfung abgeleitet. Der PR ist konfliktfrei,
-aber noch nicht auf main.
+Vollständige TS-Prüfung, nativer Projektionsvergleich und der neue reguläre
+Meilensteinlauf sind bestanden. Der unveränderte Producer über 21 Kataloge
+benötigte 1058,045 Sekunden; anschließend bestanden alle zehn geschützten
+Untergrenzen. Physik erreicht wieder M7. Ausschließlich die beiden erzeugten
+CQR-Berichte und deren bestehender Alias änderten sich; 9896 Eingabebindungen
+zeigen keine unerwarteten Änderungen. Die korrigierte Routenprüfung bleibt
+mit echten Gegenfällen über 35 Views und 80 Scopes im bestehenden CI-Test.
+
+Die native Physik-Abnahme ist noch offen: Nach Durchlaufen der Vergleichsmatrix
+scheitert die abschließende Coverage-Assertion an fehlender Target-Exposition
+von `3631c8f7-ff48-57ff-b7ee-8397ff1d166a`. Dieser Knoten war bereits vorher
+ausdrücklich `compatibilityOnly` und von der Projektion ausgeschlossen; in
+allen 140 vollständigen Konfigurationen fehlt er unverändert auch als Support
+und im Kontext. Die vollständige Schlussabdeckung wird anhand der tatsächlichen
+Projektionsdomänen geprüft. Alle 3882 gebundenen Native-Eingaben blieben
+unverändert. Frische Remote-CI und Main-Lieferung bleiben ausstehend; das harte
+Standard-G17-Gate ist noch nicht aktiviert.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
