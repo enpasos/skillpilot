@@ -12,7 +12,57 @@ zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
 bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
 Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
 
-**Aktuelle Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
+**Aktuelle Lieferposition vom 10. November 2026, Chemie:** Physik ist mit
+[PR #105](https://github.com/enpasos/skillpilot/pull/105) auf Main bei
+`c2f0722545f51e53526651e0d7ee26a9e0fb64ae`. Der Mergetree entspricht dem
+vollständig geprüften PR-Head. Die getrennte frische Main-Push-CI läuft noch;
+deren sechs Begleitworkflows und sechs von acht Hauptjobs sind bestanden.
+
+Der sichtbare IDE-Branch ist
+`fix/g17-chemistry-atomic-prerequisites-v7-data`, aufgebaut auf diesem Main
+und der getrennten Lookupkorrektur aus
+[PR #110](https://github.com/enpasos/skillpilot/pull/110). Diese behebt den
+belegten Widerspruch zwischen Scopeauswahl und ID-Lookup einer expliziten View
+mit bestehender `merged:`-Identität. Der neue Gegenfall scheitert am alten Code;
+die gesamte normale Testklasse besteht am korrigierten Code mit 67 Tests.
+PR #110 enthält ausschließlich Service und Regression. Seine Remote-CI läuft.
+Der Chemie-Daten-PR folgt getrennt, zunächst auf diesem kleinen Code-PR;
+nach dessen Merge wird der Daten-PR auf Main umgestellt.
+
+Die Chemie-Reduktion ist angewendet: 578 bereits wirksame atomare Anforderungen
+werden materialisiert, anschließend 57 gedeckte nichtatomare und 673 redundante
+atomare Kanten entfernt. Nach jeder Entfernung werden Vererbung und Zeugen neu
+berechnet. Alle 6.194 atomaren Erreichbarkeitspaare bleiben erhalten; der harte
+Chemie-Auditor einschließlich seines vererbenden Vorfahren findet null Befunde.
+Alle 742 Ziele behalten sämtliche Felder außer `requires`. Die echte öffentliche
+Python-/Node-Prüfung besteht in einem einzelnen Aufruf in 380,821 Sekunden;
+die historischen Applicability-Snapshots und die beiden früheren Batches bleiben
+erhalten.
+
+Acht Referenzkorrekturen beheben zuvor als Atome behandelte vorhandene
+Prüfungscluster. Die bereits verfassten acht Kinder werden dadurch in 22 Scopes
+sichtbar; dies ist eine ausdrücklich ausgewiesene Projektionskorrektur.
+Anschließende explizite Supportbindungen und zwei HE-GK+LK-Views erhalten
+gegen diesen korrigierten Ausgangsstand in allen 182 Konfigurationen Ziele,
+Atome, Bäume, Wurzeln und View-IDs. 29.865 tatsächliche Rollenpaare sowie der
+volle kontextuelle atomare Bedarf bleiben gleich; dieselben 43 Konfigurationen
+bleiben unvollständig. Es werden keine Rollen oder Mastery automatisch erfunden.
+Diese Vorabprüfung ersetzt keine Frontier- oder Completion-Abnahme.
+
+Die vollständige TS-Kette und die sechs nativen Methoden laufen auf den
+angewendeten Dateien. Der normale CQR-Producer besteht nach 1.100,558 Sekunden
+über alle 21 Kataloge. Der anschließende unveränderte Floorbefehl scheitert
+an Chemie M1 statt M7: CQR-003 zählt neun unbelegte atomare Zuordnungen in
+sieben Jurisdiktionen. Die technische Ursache wird untersucht; der Daten-PR
+bleibt bis zur Reparatur ein Draft. Unter den 9.903 benannten Eingaben ändern sich ausschließlich deklarierte
+Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
+mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der
+[Chemie-Liefernachweis](../../qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/README.md)
+trennt diese Belege von den noch offenen lokalen und Remote-Abnahmen.
+Das harte Standard-G17-Gate und die endgültige Main-Abnahme aller zehn Fächer
+bleiben offen. Nach Chemie folgt Biologie.
+
+**Historischer Physik-Prüfstand vor der Main-Lieferung:** Die Physik-Lieferung ist in
 [PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
 der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
 Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
