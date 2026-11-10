@@ -24,7 +24,9 @@ CQR-Berichte und deren bestehender Alias änderten sich; 9896 Eingabebindungen
 zeigen keine unerwarteten Änderungen. Die korrigierte Routenprüfung bleibt
 mit echten Gegenfällen über 35 Views und 80 Scopes im bestehenden CI-Test.
 
-Die native Physik-Abnahme ist noch offen: Der ältere vollständige lokale Lauf
+Die fünf nativen Methoden bestehen im tatsächlichen ungefilterten Backendlauf
+auf `3abc5c6552`; der korrigierte CrossSubject-Strahlungsfall besteht ebenfalls.
+Der ältere vollständige lokale Lauf
 scheiterte nach seiner Vergleichsmatrix an fehlender Target-Exposition
 von `3631c8f7-ff48-57ff-b7ee-8397ff1d166a`. Dieser Knoten war bereits vorher
 ausdrücklich `compatibilityOnly` und von der Projektion ausgeschlossen; in
@@ -35,8 +37,24 @@ Scope-/Probe- und Frontierfälle bleiben erhalten. Die native Gegenprobe über
 372 tatsächlich gesperrte Paare besteht vor/nach; 139 kanonische Atomproben,
 34 echte Frontier-Aufrufe und zehn fehlerhafte Coverage-Datensätze bestehen
 in der gezielten Helfervalidierung. Der alte Gesamtlauf bleibt als fehlgeschlagen
-dokumentiert. Die neue vollständige Remote-Regression mit fünf Methoden sowie
-die Main-Lieferung stehen aus; das harte Standard-G17-Gate ist noch nicht aktiv.
+dokumentiert. Der gesamte Backendjob dieses Heads scheiterte dennoch: Ein
+Controller-Test enthielt zwölf veraltete Scope-Summen; anschließend verursachten
+zwei Heapfehler 130 Spring-Kontextfehler einschließlich ihrer Folgefehler.
+Der tatsächliche native Vergleich aller zwölf betroffenen Konfigurationen
+belegt genau 13 bereits verfasste Targets der vorhandenen Cachekorrektur,
+gleiche Views und keine entfernten Targets. Sechs Erwartungszeilen sind
+korrigiert; dieselbe vollständige Testmatrix bindet die 13 Ziel-IDs nun für
+G8 und G9 ausdrücklich. Der Testworker endet nach jeder Klasse; Heaplimit
+3 GB, Spring-Cachelimit und sämtliche Testfälle bleiben erhalten. Ein frischer
+Gegencheck des zuerst betroffenen Kontexts bestand bereits unter der alten
+Speicherpolicy. Der normale gemeinsame Reparaturlauf besteht anschließend
+alle 131 betroffenen Fälle in drei tatsächlichen Workern ohne Fehler oder
+Skips; alle 4193 benannten Eingaben bleiben stabil. Eine konkrete
+Produktions-Leakkette wird daraus nicht behauptet.
+Die vollständige Curriculum-CI auf `3abc5c6552` einschließlich normalem Producer,
+zehn unveränderten Floors und Report-Sauberkeit ist ebenfalls bestanden.
+Frische vollständige CI auf dem Reparaturhead sowie die Main-Lieferung stehen
+aus; das harte Standard-G17-Gate ist noch nicht aktiv.
 
 Die Frontend-CI deckte außerdem veraltete Direktkanten-Assertions im
 Physik-Buchinput-Test auf. Die Korrektur prüft den vollständigen tatsächlichen

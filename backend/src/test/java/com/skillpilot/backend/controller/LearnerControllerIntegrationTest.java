@@ -1638,15 +1638,15 @@ public class LearnerControllerIntegrationTest {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "169", "169" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "166", "166" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "171", "171" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "93", "93" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "93", "93" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "84", "84" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "95", "95" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "95", "95" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "85", "85" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BY", "104", "104" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HB", "84", "84" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HB", "88", "88" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HE", "105", "105" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HH", "61", "61" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-MV", "63", "63" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NI", "86", "86" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NI", "90", "90" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NW", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-RP", "62", "62" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SH", "63", "63" },
@@ -1655,7 +1655,7 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "151", "151" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "111", "111" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "117", "117" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "142", "142" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "150", "150" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "142", "142" },
@@ -1665,6 +1665,24 @@ public class LearnerControllerIntegrationTest {
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "148", "148" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "146", "146" }
         };
+        // The verified applicability-cache refresh exposes these already-authored
+        // Sek-I targets. Bind their identities as well as both duration totals.
+        Map<String, Set<String>> refreshedApplicabilityTargets = Map.of(
+                CANONICAL_CHEMISTRY_ID + ":DE-BB", Set.of(
+                        "7964cb36-e9b1-5176-9426-a82041a5b72f", "79db6d68-b402-5563-a348-f2784fed8867"),
+                CANONICAL_CHEMISTRY_ID + ":DE-BE", Set.of(
+                        "7964cb36-e9b1-5176-9426-a82041a5b72f", "79db6d68-b402-5563-a348-f2784fed8867"),
+                CANONICAL_CHEMISTRY_ID + ":DE-BW", Set.of("c441d9e8-d9d9-5e55-a189-a37345541321"),
+                CANONICAL_CHEMISTRY_ID + ":DE-HB", Set.of(
+                        "17fe22c4-1248-5f37-9d0c-52ee4571d09f", "7964cb36-e9b1-5176-9426-a82041a5b72f",
+                        "965ca297-5dbf-5e58-b5f0-6559a4433646", "c441d9e8-d9d9-5e55-a189-a37345541321"),
+                CANONICAL_CHEMISTRY_ID + ":DE-NI", Set.of(
+                        "7964cb36-e9b1-5176-9426-a82041a5b72f", "8576b82b-811a-5e13-b5dc-ec5d42030565",
+                        "965ca297-5dbf-5e58-b5f0-6559a4433646", "fcaf8c9b-bd81-552e-9d91-43649895471e"),
+                CANONICAL_PHYSICS_ID + ":DE-BY", Set.of(
+                        "00e2ddfe-18c1-57a4-86ad-ee467a1a3d61", "1ab5f599-0927-579d-94cc-feecdf3b5603",
+                        "35dd0a33-e5d5-53b9-8438-3d339173db1b", "3f477f0d-4f79-5eed-8671-fb2667d60910",
+                        "6367d45e-919e-4c19-bcd9-7770a2d51139", "a24c41ce-68c5-56a7-8235-ef9a7dba7042"));
         SoftAssertions softly = new SoftAssertions();
 
         for (String[] scope : scopes) {
@@ -1705,6 +1723,19 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
+            Set<String> refreshedTargetIds = refreshedApplicabilityTargets.getOrDefault(
+                    subjectLandscapeId + ":" + jurisdiction, Set.of());
+            if (!refreshedTargetIds.isEmpty()) {
+                for (String durationModel : List.of("G8", "G9")) {
+                    softly.assertThat(learnerService.getFilteredAtomicGoalIds(
+                            CANONICAL_GYMNASIUM_ROOT_ID,
+                            canonicalGymnasiumSubjectPersonalCurriculum(
+                                    subjectLandscapeId, jurisdiction, durationModel, "GK", true, false),
+                            null, false))
+                            .as(subject + " " + jurisdiction + " " + durationModel + " refreshed applicability targets")
+                            .containsAll(refreshedTargetIds);
+                }
+            }
             softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
                     .isEqualTo(Integer.parseInt(scope[3]));
             softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
