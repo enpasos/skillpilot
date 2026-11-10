@@ -6,6 +6,10 @@ Die notwendige kleine ID-Lookupkorrektur wird getrennt in
 [PR #110](https://github.com/enpasos/skillpilot/pull/110) geliefert.
 Der sichtbare Datenbranch heißt
 `fix/g17-chemistry-atomic-prerequisites-v7-data`.
+Der Checkpoint `6bff7dcb34` ist in
+[Draft-PR #111](https://github.com/enpasos/skillpilot/pull/111) gesichert.
+Der PR richtet sich bereits an Main; nach der getrennten Lieferung von #110
+wird Main übernommen und der Lookupdiff entfällt aus dieser Lieferung.
 
 ## Mechanischer Graphnachweis
 
@@ -79,18 +83,23 @@ npm run quality:curriculum-status
 npm run check:curriculum-maturity-floors
 ```
 
-Typecheck, Source-Evidence-Regression und die beschriebenen Vorabprüfungen sind
-bestanden. Die vollständige TS-Kette, die sechs nativen Methoden und die
-ergänzende Python-Regression laufen noch.
+Typecheck, Source-Evidence-Regression (10 Tests), Python-Bridge-Regression
+(22 Tests, 809,522 Sekunden) und die beschriebenen Vorabprüfungen sind bestanden.
+Die beiden ergänzenden Läufe haben zusammen 3.785 unveränderte Eingabebindungen.
+Die vollständige TS-Kette und die sechs nativen Methoden laufen noch.
 
 Der normale CQR-Producer endet mit Exit 0 nach 1.100,558 Sekunden über alle
 21 Kataloge. Der anschließende unveränderte Floorbefehl scheitert ehrlich:
 Chemie erreicht M1 statt M7, weil CQR-003 neun als unbelegt gezählte atomare
 Zuordnungen in sieben Jurisdiktionen meldet. Die übrigen neun Fachstände
 entsprechen ihren Floors im erzeugten Bericht; das ist kein Pass des gesamten
-Floorbefehls. Unter den 9.903 benannten Eingaben ändern sich ausschließlich deklarierte Berichte. Die konkrete
-technische Ursache wird untersucht; keine Untergrenze oder Quellenanforderung
-wird dafür abgesenkt. Der Daten-PR bleibt bis zur Reparatur und vollständigen
+Floorbefehls. Unter den 9.903 benannten Eingaben ändern sich ausschließlich
+deklarierte Berichte. Der [konkrete technische Gegenbeleg](source-surrogate-path-diagnosis.json)
+weist neun unveränderte akzeptierte Surrogatbeziehungen zu zwei tatsächlichen
+Kantenreduktionen nach: Die betroffenen Ziele bleiben Targets, beide atomaren
+Pfade bestehen weiter, nur die direkte `required by`-Textspur entfällt.
+Ein gemeinsamer kleiner Quellenprüfer-Fix wird vorbereitet; keine Untergrenze,
+Quelle oder bestehende Reviewentscheidung wird dafür geändert. Der Daten-PR bleibt bis zur Reparatur und vollständigen
 Abnahme ein Draft. Frische PR-/Main-CI und Chemie-Main-Lieferung sind offen.
 
 Die [kompakte Belegübersicht](receipt.json) bindet den angewendeten Stand und

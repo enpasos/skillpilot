@@ -24,6 +24,13 @@
     "pullRequest": 110,
     "remoteAcceptancePending": true
   },
+  "dataPullRequest": {
+    "base": "main",
+    "checkpoint": "6bff7dcb340f49bf7f9107dbe317ce6db884c95e",
+    "dependencyPr": 110,
+    "draft": true,
+    "number": 111
+  },
   "executionArchiveNote": "Raw local execution records are hash-identified above; committed tests and registries reproduce the checks. No exhaustive filesystem read-namespace claim.",
   "fullTenSubjectGoalAccepted": false,
   "hardStandardG17Accepted": false,
@@ -32,6 +39,21 @@
   "normalChecks": {
     "normalCqrProducerAndTenUnchangedFloors": {
       "allNonReportNamedInputsUnchanged": true,
+      "diagnosis": {
+        "actualCuts": [
+          "ch-atomic-cut-645",
+          "ch-atomic-cut-393"
+        ],
+        "allAffectedGoalsRemainTarget": true,
+        "distinctGoals": 2,
+        "noRetrospectiveInProcessInputGuardClaim": true,
+        "originalRunWasTerminalStdout": true,
+        "path": "source-surrogate-path-diagnosis.json",
+        "prerequisiteOnlyLeak": false,
+        "reviewedSurrogateRows": 9,
+        "sha256": "05783de4a8d9be3bc59990ae5aefc34a5099ba0c81f50812d4a1945e803f8ba3",
+        "sourceOrReviewDecisionsChanged": false
+      },
       "failure": "Chemistry M1 below protected M7; CQR003 has9unsupported assigned atomic goals across7jurisdictions; exact technical cause under review",
       "floorExitCode": 1,
       "fullFloorCommandPassed": false,
@@ -44,7 +66,28 @@
       "receiptSha256": "45af3d23257432bfd809bfe7c6b02f0feea1df3304b4cea3cc9228d56df7d029",
       "reportCatalogs": 21
     },
-    "sourceEvidenceAndPythonBridgeRegression": "running",
+    "sourceEvidenceAndPythonBridgeRegression": {
+      "boundInputs": 3785,
+      "checks": [
+        {
+          "exitCode": 0,
+          "logSha256": "eedeef553fab92e4b3aa0968b48a676cca29a611cf5d5c2a7fdcc18643fca6e4",
+          "name": "source-evidence",
+          "seconds": 39.321
+        },
+        {
+          "exitCode": 0,
+          "logSha256": "96800992ff561835230c0a5c91a868304b6f315e8cf93b68674e6311f9895f41",
+          "name": "semantic-kind",
+          "seconds": 809.522
+        }
+      ],
+      "inputsUnchanged": true,
+      "passed": true,
+      "receipt": "/mnt/e/skillpilot-g17-chemistry-supplemental-checks-20261110/attempt-1/receipt.json",
+      "scope": "Before pending source-surrogate helper change; Python bridge and all actual registry bytes stable",
+      "sha256": "ce04c90ca7247f8fc44bafbbf48ac74be72465cf7e9d897a1f5f1d1baed66df9"
+    },
     "sourceEvidenceRegression": {
       "exitCode": 0,
       "logSha256": "eedeef553fab92e4b3aa0968b48a676cca29a611cf5d5c2a7fdcc18643fca6e4",

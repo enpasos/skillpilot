@@ -26,8 +26,11 @@ belegten Widerspruch zwischen Scopeauswahl und ID-Lookup einer expliziten View
 mit bestehender `merged:`-Identität. Der neue Gegenfall scheitert am alten Code;
 die gesamte normale Testklasse besteht am korrigierten Code mit 67 Tests.
 PR #110 enthält ausschließlich Service und Regression. Seine Remote-CI läuft.
-Der Chemie-Daten-PR folgt getrennt, zunächst auf diesem kleinen Code-PR;
-nach dessen Merge wird der Daten-PR auf Main umgestellt.
+Der getrennte [Daten-PR #111](https://github.com/enpasos/skillpilot/pull/111)
+ist mit Checkpoint `6bff7dcb34` gepusht. Er richtet sich bereits an Main,
+damit der nächste Push die regulären Pflichtworkflows auslöst. Die noch offene
+Lookupabhängigkeit bleibt in PR #110 getrennt prüfbar; nach dessen Merge wird
+Main in den Datenbranch übernommen.
 
 Die Chemie-Reduktion ist angewendet: 578 bereits wirksame atomare Anforderungen
 werden materialisiert, anschließend 57 gedeckte nichtatomare und 673 redundante
@@ -53,8 +56,12 @@ Die vollständige TS-Kette und die sechs nativen Methoden laufen auf den
 angewendeten Dateien. Der normale CQR-Producer besteht nach 1.100,558 Sekunden
 über alle 21 Kataloge. Der anschließende unveränderte Floorbefehl scheitert
 an Chemie M1 statt M7: CQR-003 zählt neun unbelegte atomare Zuordnungen in
-sieben Jurisdiktionen. Die technische Ursache wird untersucht; der Daten-PR
-bleibt bis zur Reparatur ein Draft. Unter den 9.903 benannten Eingaben ändern sich ausschließlich deklarierte
+sieben Jurisdiktionen. Astra hat die technische Ursache belegt: Zwei reduzierte
+Direktkanten entfernen nur die alte unmittelbare `required by`-Evidenzspur,
+die beiden bereits reviewten Vorbereitungspfade bleiben vollständig erhalten.
+Ein kleiner gemeinsamer Quellenprüfer-Fix wird mit echten Gegenfällen vorbereitet;
+Quellenentscheidungen und Floors bleiben unverändert. Der Daten-PR bleibt bis
+zur Reparatur ein Draft. Unter den 9.903 benannten Eingaben ändern sich ausschließlich deklarierte
 Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
 mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der
 [Chemie-Liefernachweis](../../qa-artifacts/ci-contract-audit/2026-11-10/g17-chemistry-atomic-prerequisites/README.md)
