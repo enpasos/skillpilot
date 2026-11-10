@@ -457,6 +457,81 @@ class FirstMathPrerequisiteReductionTest {
                         error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
     }
 
+    @Test
+    void currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions() throws Exception {
+        String assessment = "487c79f5-7e4d-5da8-ad8f-f0f96c23a974";
+        String hessenPreparation = "afde0001-d7d7-5ed3-8a60-383e8da5620e";
+        String bavarianPreparation = "11675f1a-5de2-5926-be78-1e8275f19f5b";
+        var fixture = new NativeFixture(readReductionRegistry(), false);
+        byte[] sourceBefore = Files.readAllBytes(BIOLOGY_SOURCE);
+        Map<String, Map<String, Object>> config = Map.of(
+                ROOT, Map.of("selected", true, "filterId", "DE-BY", "stage", "CrossStage", "durationModel", "G9"),
+                BIOLOGY, Map.of("selected", true, "filterId", "GK"));
+        // Finish only the actual planner's outstanding group confirmations.
+        // The selected country, stage, duration and subject remain fixed.
+        for (int step = 0; ; step++) {
+            assertThat(step).isLessThan(10);
+            PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(ROOT, fixture.landscapes::getById,
+                    (id, settings) -> ReflectionTestUtils.invokeMethod(
+                            fixture.service, "resolvePersonalizationOfferingScope", id, settings), config);
+            assertThat(plan.valid()).isTrue();
+            if (!plan.required()) break;
+            PersonalizationPlan.Option option = plan.options().stream()
+                    .filter(candidate -> candidate.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                    .findFirst().orElseThrow(() -> new AssertionError("Unexpected unresolved Biology selection: " + plan));
+            Map<String, Object> mutable = new LinkedHashMap<>();
+            config.forEach((id, settings) -> mutable.put(id, new LinkedHashMap<>(settings)));
+            ReflectionTestUtils.invokeMethod(CurriculumPersonalizationPlanner.class,
+                    "recordGroupCompletion", mutable, ROOT, option);
+            config = MAPPER.convertValue(mutable, new TypeReference<>() { });
+        }
+        NativeScope scope = fixture.resolve(config);
+        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(scope.projection(), "learningScope");
+        assertThat(learning.seedAtomicGoalIds()).contains(assessment).doesNotContain(hessenPreparation);
+        assertThat(scope.topology().transitivePrerequisites(assessment))
+                .contains(hessenPreparation, bavarianPreparation);
+        assertThat(scope.roles().atomicTargets()).contains(assessment, hessenPreparation, bavarianPreparation);
+        assertThat(fixture.canonicalGoals.get(hessenPreparation).getApplicability().get("jurisdiction"))
+                .containsExactly("DE-HE");
+
+        String learnerId = "unsaved-biology-required-learning-control";
+        scope.learner().setSkillpilotId(learnerId);
+        when(fixture.learners.findById(learnerId)).thenReturn(java.util.Optional.of(scope.learner()));
+        var exported = fixture.service.getLearnerLandscapeClosure(learnerId, ROOT, "de");
+        Set<String> exportedTargets = new TreeSet<>(), plannedTargets = new TreeSet<>();
+        for (var landscape : exported) {
+            var metadata = landscape.getPersonalCurriculumProjection();
+            if (metadata == null || metadata.targetGoalIds().isEmpty()) continue;
+            exportedTargets.addAll(metadata.targetGoalIds());
+            var plan = fixture.service.getPlanningScope(learnerId, landscape.getLandscapeId());
+            plannedTargets.addAll(plan.scopeAtomicGoalIds());
+        }
+        assertThat(exportedTargets).isEqualTo(scope.roles().atomicTargets());
+        assertThat(plannedTargets).isEqualTo(scope.roles().atomicTargets());
+        assertThat(plannedTargets).contains(hessenPreparation, bavarianPreparation);
+
+        // Keep the independently compiled L, seeds, canonical graph and full mastery intact.
+        // Dropping only an emitted target or only its visible definition must fail.
+        Map<String, Double> fullMastery = new TreeMap<>();
+        scope.graph().keySet().forEach(id -> fullMastery.put(id, 1.0));
+        for (boolean removeTarget : List.of(true, false)) {
+            Object broken = withoutEmittedAcquisitionAtom(scope.projection(), hessenPreparation, removeTarget);
+            assertThat(ReflectionTestUtils.<PersonalCurriculumLearningScope>invokeMethod(broken, "learningScope"))
+                    .isSameAs(learning);
+            assertThatThrownBy(() -> fixture.assertLearningEmission(
+                    scope.learner().getPersonalCurriculum(), broken)).isInstanceOf(AssertionError.class);
+            assertThat(roleProbe(fixture.service, scope, broken, assessment, scope.topology())).isFalse();
+            Object narrowed = ReflectionTestUtils.invokeMethod(fixture.service, "frontierPrerequisites",
+                    scope.learner(), broken, fullMastery, Set.of(assessment));
+            assertThat(ReflectionTestUtils.<Object>invokeMethod(narrowed, "topology")).isNotNull();
+            assertThat(ReflectionTestUtils.<Boolean>invokeMethod(fixture.service, "areFrontierPrerequisitesMastered",
+                    scope.graph().get(assessment), broken, narrowed)).isFalse();
+        }
+        verify(fixture.mastery, org.mockito.Mockito.never()).save(org.mockito.ArgumentMatchers.any(Mastery.class));
+        verify(fixture.mastery, org.mockito.Mockito.never()).saveAll(org.mockito.ArgumentMatchers.any());
+        assertThat(Files.readAllBytes(BIOLOGY_SOURCE)).isEqualTo(sourceBefore);
+    }
+
     /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
     @Test
     void economicsAuthoredAtomicAbiturTargetsPreserveNativePrerequisitesAndFrontier() throws Exception {
@@ -1796,6 +1871,7 @@ class FirstMathPrerequisiteReductionTest {
         final LandscapeService landscapes;
         final LearnerService service;
         final Map<String, LearningGoal> canonicalGoals;
+        final CompletionProfileCompiler.PrerequisiteTopology canonicalTopology;
         final Set<String> canonicalAtomicIds;
         final Map<String, Set<String>> atomicProbesBySource;
         final LearnerRepository learners = mock(LearnerRepository.class);
@@ -1813,6 +1889,7 @@ class FirstMathPrerequisiteReductionTest {
             landscapes.pinRuntimeGeneration();
             var canonical = new CompletionCanonicalGraphResolver(landscapes, mapper).load(ROOT);
             canonicalGoals = Collections.unmodifiableMap(canonical);
+            canonicalTopology = new CompletionProfileCompiler().normalizePrerequisites(canonicalGoals);
             assertThat(CompletionProfileCompiler.isOrientation(canonical.get(REMOVED))).isTrue();
             Set<String> atomicIds = new TreeSet<>();
             canonical.forEach((id, goal) -> {
@@ -1880,6 +1957,7 @@ class FirstMathPrerequisiteReductionTest {
             learner.setSelectedCurriculum(ROOT);
             learner.setPersonalCurriculum(personalCurriculum);
             Object projection = ReflectionTestUtils.invokeMethod(service, "getGoalProjection", ROOT, personalCurriculum, false);
+            assertLearningEmission(personalCurriculum, projection);
             Set<String> atomic = ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets", "automatic:personal-curriculum", projection);
             Set<String> targets = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
             Set<String> support = ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
@@ -1892,6 +1970,40 @@ class FirstMathPrerequisiteReductionTest {
             topology.validateContext(atomic);
             var compiled = compiler.compileAutomatic(graph, atomic, targets, "first-math-edge-regression");
             return new NativeScope(learner, projection, frontier, new Roles(targets, atomic, support, views), graph, compiled.contextGoalIds(), topology);
+        }
+
+        void assertLearningEmission(String personalCurriculum, Object projection) {
+            Object seeds = ReflectionTestUtils.invokeMethod(service, "computeSeedGoalProjection", ROOT, personalCurriculum, false);
+            Set<String> seedTargets = ReflectionTestUtils.invokeMethod(seeds, "targetGoalIds");
+            Map<String, LearningGoal> seedDefinitions = ReflectionTestUtils.invokeMethod(seeds, "structuralGoals");
+            Set<String> expected = new TreeSet<>();
+            for (String id : seedTargets) {
+                LearningGoal seed = seedDefinitions.get(id);
+                assertThat(seed).as("seed definition %s", id).isNotNull();
+                if (seed.getContains() != null && !seed.getContains().isEmpty()) continue;
+                LearningGoal goal = canonicalGoals.get(id);
+                assertThat(goal).as("canonical atomic seed %s", id).isNotNull();
+                assertThat(goal.getContains()).as("canonical seed must be atomic: %s", id).isEmpty();
+                expected.add(id);
+                expected.addAll(canonicalTopology.transitivePrerequisites(id));
+            }
+            Set<String> targetIds = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
+            Map<String, LearningGoal> structural = ReflectionTestUtils.invokeMethod(projection, "structuralGoals");
+            Set<String> actualAtoms = new TreeSet<>();
+            for (String id : targetIds) {
+                LearningGoal goal = structural.get(id);
+                assertThat(goal).as("emitted target definition %s", id).isNotNull();
+                if (goal.getContains() != null && !goal.getContains().isEmpty()) continue;
+                assertThat(canonicalAtomicIds).as("emitted target must be a known canonical atom: %s", id).contains(id);
+                actualAtoms.add(id);
+            }
+            assertThat(actualAtoms).as("emitted targets equal independent canonical demand: %s", personalCurriculum)
+                    .isEqualTo(expected);
+            Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+            assertThat(visible.keySet()).as("every required target has an emitted definition").containsAll(expected);
+            Set<String> completion = ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets",
+                    "automatic:personal-curriculum", projection);
+            assertThat(completion).as("completion receives the complete independent acquisition basis").isEqualTo(expected);
         }
 
         void verifyOnlyUnsavedFixtures() {
@@ -3190,6 +3302,27 @@ class FirstMathPrerequisiteReductionTest {
         Map<String, LearningGoal> visible = new TreeMap<>(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(projection, "visibleGoals"));
         visible.remove(id);
         return copyProjectionWithoutRole(projection, id, visible, broken);
+    }
+
+    /** Corrupt only one emitted representation; canonical definitions and the full L stay intact. */
+    private static Object withoutEmittedAcquisitionAtom(Object projection, String id, boolean removeTarget) throws Exception {
+        Set<String> targets = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "targetGoalIds"));
+        Map<String, LearningGoal> visible = new TreeMap<>(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(projection, "visibleGoals"));
+        assertThat(targets).contains(id);
+        assertThat(visible).containsKey(id);
+        if (removeTarget) targets.remove(id);
+        else visible.remove(id);
+        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
+                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class);
+        constructor.setAccessible(true);
+        return constructor.newInstance(visible, targets,
+                ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds"),
+                ReflectionTestUtils.invokeMethod(projection, "structuralGoals"),
+                ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
+                ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"),
+                ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"),
+                ReflectionTestUtils.invokeMethod(projection, "learningScope"),
+                ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals"));
     }
 
     /** A non-atomic authored support role alone is not an acquisition obligation. */

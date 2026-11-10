@@ -7256,17 +7256,20 @@ public class LearnerService {
         // Visible navigation clusters can have no atomic descendants in this
         // scope and therefore no node in the validated prerequisite graph.
         if (prerequisites.topology() == null || !prerequisites.lookup().containsKey(goal.getId())) return false;
-        // A derived target and its canonical path satisfy the personal role contract.
+        Set<String> requiredAtoms = prerequisites.topology().transitivePrerequisites(goal.getId());
+        // Derived requirements must also survive actual target/definition emission.
+        // Mastery and focus cannot excuse a broken personal learning projection.
         if (projection.learningScope() != null) {
-            if (!projection.learningScope().learningAtomicGoalIds().containsAll(
-                    prerequisites.topology().transitivePrerequisites(goal.getId()))) return false;
+            if (!projection.learningScope().learningAtomicGoalIds().containsAll(requiredAtoms)
+                    || !projection.targetGoalIds().containsAll(requiredAtoms)
+                    || !projection.visibleGoals().keySet().containsAll(requiredAtoms)) return false;
         } else if (projection.compositionViewApplied()) {
             for (String id : prerequisites.topology().transitiveGoalPrerequisites(goal.getId())) {
                 if (!projection.targetGoalIds().contains(id)
                         && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
             }
         }
-        for (String id : prerequisites.topology().transitivePrerequisites(goal.getId())) {
+        for (String id : requiredAtoms) {
             if (prerequisites.scope() != null && !prerequisites.scope().contains(id)) continue;
             if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) return false;
         }
