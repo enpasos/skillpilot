@@ -28,12 +28,16 @@ und der getrennten Lookupkorrektur aus
 belegten Widerspruch zwischen Scopeauswahl und ID-Lookup einer expliziten View
 mit bestehender `merged:`-Identität. Der neue Gegenfall scheitert am alten Code;
 die gesamte normale Testklasse besteht am korrigierten Code mit 67 Tests.
-PR #110 enthält ausschließlich Service und Regression. Seine Remote-CI läuft.
+PR #110 enthält ausschließlich Service und Regression. Nach acht bestandenen
+Hauptjobs und drei Begleitworkflows ist er auf Main bei
+`39f4c21ea92956521337d70cdfd7f96b0d33620f`. Der tatsächliche ungefilterte
+Backendcheck besteht mit 2.711 Tests und 19 unveränderten Skips, darunter
+alle 67 Lookup-, fünf nativen und 95 fachübergreifenden Methoden.
 Der getrennte [Daten-PR #111](https://github.com/enpasos/skillpilot/pull/111)
 ist mit Checkpoint `6bff7dcb34` gepusht. Er richtet sich bereits an Main,
 damit der nächste Push die regulären Pflichtworkflows auslöst. Die noch offene
-Lookupabhängigkeit bleibt in PR #110 getrennt prüfbar; nach dessen Merge wird
-Main in den Datenbranch übernommen.
+Lookupabhängigkeit ist mit PR #110 getrennt geliefert; Main ist in den
+sichtbaren Datenbranch übernommen. Sein Produktbaum bleibt dabei identisch.
 
 Die Chemie-Reduktion ist angewendet: 578 bereits wirksame atomare Anforderungen
 werden materialisiert, anschließend 57 gedeckte nichtatomare und 673 redundante
@@ -56,8 +60,11 @@ bleiben unvollständig. Es werden keine Rollen oder Mastery automatisch erfunden
 Diese Vorabprüfung ersetzt keine Frontier- oder Completion-Abnahme.
 
 Die vollständige TS-Kette besteht auf den angewendeten Dateien mit allen
-3.652 Eingaben unverändert und den tatsächlichen aktuellen V6-/V7-Livemarkern;
-die sechs nativen Methoden laufen noch. Der normale CQR-Producer besteht nach 1.100,558 Sekunden
+3.652 Eingaben unverändert und den tatsächlichen aktuellen V6-/V7-Livemarkern.
+Auch der normale vollständige native Klassenlauf besteht: sechs Methoden ohne
+Fehler oder Skips, 6.487 Quellbindungen unverändert, tatsächliche Java-/Test-
+Kompilierung und Corretto-25.0.2-Worker mit unveränderter 3g/cache1/fork1-Policy.
+Der normale CQR-Producer besteht nach 1.100,558 Sekunden
 über alle 21 Kataloge. Der anschließende unveränderte Floorbefehl scheitert
 an Chemie M1 statt M7: CQR-003 zählt neun unbelegte atomare Zuordnungen in
 sieben Jurisdiktionen. Astra hat die technische Ursache belegt: Zwei reduzierte
@@ -71,9 +78,9 @@ normaler Quellenaudit bestehen auf dem angewendeten Stand. Quellenentscheidungen
 und Floors bleiben unverändert. Der neue reguläre Producer über alle 21 Kataloge
 besteht nach 946,318 Sekunden; danach bestehen alle zehn unveränderten Floors.
 Chemie erreicht lokal wieder M7. Unter 9.905 gebundenen Eingaben ändern sich nur
-die beiden CQR-Berichte und deren bestehender Alias. Native6, frische Remote-CI
-und Chemie-Main-Lieferung bleiben offen; der Daten-PR bleibt bis zur Gesamtprüfung
-ein Draft.
+die beiden CQR-Berichte und deren bestehender Alias. Alle notwendigen lokalen
+Chemieprüfungen sind bestanden. Frische Remote-CI und Chemie-Main-Lieferung
+bleiben offen; der PR wird zur abschließenden Review gestellt.
 Im ersten Lauf ändern sich unter den 9.903 benannten Eingaben ausschließlich deklarierte
 Berichte. Die eng begrenzte Chemie-Watch-Aktualisierung besteht
 mit echtem Rot-/Grün-Gegenfall und unverändertem Prüfer. Der

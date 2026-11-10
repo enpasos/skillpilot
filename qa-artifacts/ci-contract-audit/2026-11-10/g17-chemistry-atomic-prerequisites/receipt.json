@@ -21,8 +21,11 @@
   },
   "codeDependency": {
     "commit": "3a958c648e505c1c6f636406a2e42c99615ff87c",
+    "freshMainCiAccepted": false,
+    "mainCommit": "39f4c21ea92956521337d70cdfd7f96b0d33620f",
+    "mainPrMerged": true,
     "pullRequest": 110,
-    "remoteAcceptancePending": true
+    "remoteAcceptancePending": false
   },
   "dataPullRequest": {
     "base": "main",
@@ -112,7 +115,18 @@
       "exitCode": 0,
       "seconds": 16.412
     },
-    "wholeNativeSixMethods": "running",
+    "wholeNativeSixMethods": {
+      "changedInputs": [],
+      "errors": 0,
+      "failures": 0,
+      "normalCompileJavaAndCompileTestJavaDidWork": true,
+      "normalPolicy": "Corretto25.0.2;heap3g;springCache1;maxParallelForks1;forkEvery1",
+      "passed": true,
+      "receipt": "native-six-acceptance.json",
+      "skips": 0,
+      "sourceBindingCount": 6487,
+      "tests": 6
+    },
     "wholeTransitiveMinimality": {
       "changedInputs": [],
       "inputCount": 3652,
@@ -197,7 +211,7 @@
     "configurations": 182,
     "existingAtomicChildrenExposed": 8,
     "explicitSupportReferencesInExistingViews": 164,
-    "frontierCompletionAccepted": false,
+    "frontierCompletionAccepted": true,
     "fullContextAtomicDemandEqual": true,
     "incompleteUnchanged": 43,
     "preservationBaseline": "After separately evidenced8 anchor reference corrections",
@@ -225,7 +239,7 @@
     "seconds": 380.821,
     "sha256": "fbc2b06b3685e13061f8a49a41940f46ed126845ed611cda9412253bf3f83412"
   },
-  "recordedAtUtc": "2026-11-10T14:06:09.188265+00:00",
+  "recordedAtUtc": "2026-11-10T15:13:24.327838+00:00",
   "remoteDataCiAccepted": false,
   "schemaVersion": 1,
   "scope": "Mechanical canonical requires reduction plus separately documented existing composition corrections; not full G17 milestone acceptance",

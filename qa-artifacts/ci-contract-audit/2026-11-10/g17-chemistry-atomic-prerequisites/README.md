@@ -2,14 +2,18 @@
 
 Stand: 10. November 2026. Ausgangspunkt ist Main
 `c2f0722545f51e53526651e0d7ee26a9e0fb64ae` nach Physik-PR #105.
-Die notwendige kleine ID-Lookupkorrektur wird getrennt in
+Die notwendige kleine ID-Lookupkorrektur ist getrennt mit
 [PR #110](https://github.com/enpasos/skillpilot/pull/110) geliefert.
 Der sichtbare Datenbranch heißt
 `fix/g17-chemistry-atomic-prerequisites-v7-data`.
 Der Checkpoint `6bff7dcb34` ist in
 [Draft-PR #111](https://github.com/enpasos/skillpilot/pull/111) gesichert.
-Der PR richtet sich bereits an Main; nach der getrennten Lieferung von #110
-wird Main übernommen und der Lookupdiff entfällt aus dieser Lieferung.
+Der PR richtet sich an Main. Der getrennte Lookupdiff ist dort bereits enthalten.
+
+PR #110 ist inzwischen nach vollständiger CI-Abnahme auf Main bei
+`39f4c21ea92956521337d70cdfd7f96b0d33620f`. Der getestete Tree entspricht dem
+Main-Mergetree. Main ist im sichtbaren Datenbranch übernommen und gepusht;
+dieser reine Git-Metadatamerge lässt dessen Produktbaum unverändert.
 
 ## Mechanischer Graphnachweis
 
@@ -90,7 +94,16 @@ Die vollständige normale TS-Kette besteht nach 2.699,401 Sekunden mit allen
 3.652 Eingaben unverändert: drei V6-Batches, 4.507 Operationen, 1.062 ursprüngliche
 Quellen und sämtliche 21 Dokumente; der finale aktuelle V7-Check bestätigt
 dieselben Quellen, alle 27 Cache-Snapshots und 21 aktuelle Dokumente.
-Die sechs nativen Methoden laufen noch. Diese TS-Abnahme liegt vor dem separaten
+Die sechs nativen Methoden bestehen im [normalen vollständigen Klassenlauf](native-six-acceptance.json):
+6 Tests, keine Fehler, Errors oder Skips; 6.487 Quellbindungen bleiben unverändert.
+Die echte Java- und Testkompilierung liefen mit Corretto 25.0.2; der tatsächliche
+Testworker verwendete 3 GB Heap, Spring-Cache 1, einen Fork und Klassenisolation.
+Alle alten fünf Methoden und der neue Chemievergleich bestehen. Chemie umfasst
+182 Konfigurationen, 29.865 Rollen-, 56.448 Frontier- und 24.499 Completionpaare
+sowie die getrennten Anker-/Mastery-Gegenfälle. Nur die beiden erlaubten
+CQR-Statusreports änderten sich parallel. Availability-Flags bleiben wie im
+Nachweis deklariert gemockt; dies ist keine Datenbank-, Netzwerk-HTTP- oder
+Remote-CI-Abnahme. Diese TS-Abnahme liegt vor dem separaten
 Quellenprüfer-Fix; die frische Remote-CI des endgültigen Heads bleibt gesondert
 nachzuweisen.
 
@@ -127,9 +140,9 @@ Der [neue normale CQR-Lauf](regular-cqr-and-floors.json) samt Memory-Vorlauf
 sämtliche zehn unveränderten Floors; Chemie erreicht wieder M7. Unter den
 9.905 Eingabebindungen ändern sich ausschließlich die beiden erzeugten
 CQR-Berichte und deren bestehender Alias. Die gesamte Chemie-View-Mitgliedschaft
-bleibt gleich. Der erste fehlgeschlagene Lauf bleibt erhalten. Der Daten-PR
-bleibt bis zur vollständigen Abnahme ein Draft. Native6, frische PR-/Main-CI
-und Chemie-Main-Lieferung sind offen.
+bleibt gleich. Der erste fehlgeschlagene Lauf bleibt erhalten. Sämtliche
+erforderlichen lokalen Chemieprüfungen sind damit abgeschlossen; frische
+PR-/Main-CI und Chemie-Main-Lieferung bleiben offen.
 
 Die [kompakte Belegübersicht](receipt.json) bindet den angewendeten Stand und
 begrenzt jede Ergebnisbehauptung auf ihren tatsächlichen Prüfumfang. Astra Ultra
