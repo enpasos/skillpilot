@@ -624,6 +624,10 @@ public class CompositionViewService {
         if (packageState != null) {
             return packageState.findViewDocumentById(normalizedViewId);
         }
+        Map<String, Object> authoredView = findSingleViewById(normalizedViewId);
+        if (authoredView != null) {
+            return authoredView;
+        }
         if (normalizedViewId.startsWith("merged:")) {
             List<Map<String, Object>> sourceViews = Arrays.stream(normalizedViewId.substring("merged:".length()).split("\\+"))
                     .map(String::trim)
@@ -642,7 +646,7 @@ public class CompositionViewService {
                     asStringMap(sourceViews.get(0).get("scope")),
                     sourceViews);
         }
-        return findSingleViewById(normalizedViewId);
+        return null;
     }
 
     public Map<String, Object> findOfferingById(String offeringId) {

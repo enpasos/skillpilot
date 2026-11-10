@@ -69,6 +69,74 @@ class CompositionViewServiceTest {
     }
 
     @Test
+    void findViewById_prefersAuthoredMergedIdentityAndKeepsVirtualFallback(
+            @TempDir Path tempDir) throws IOException {
+        Path viewDir = tempDir.resolve("DE/Gymnasium/composition-views/mathematik");
+        Files.createDirectories(viewDir);
+        for (String profile : List.of("GK", "LK")) {
+            Files.writeString(viewDir.resolve(profile + ".view.json"), """
+                    {
+                      "viewId": "course-%s",
+                      "landscapeId": "test-landscape",
+                      "scope": {"schoolForm": "Gymnasium", "stage": "SekII", "courseProfile": "%s"},
+                      "rootNodes": [{"kind": "structure", "id": "course-root", "label": "Course",
+                        "children": [{"kind": "goalEntry", "goalId": "%s-target"}]}]
+                    }
+                    """.formatted(profile, profile, profile));
+        }
+        LandscapeProperties properties = new LandscapeProperties();
+        properties.setDirectory(tempDir.toString());
+        Map<String, String> scope = Map.of(
+                "schoolForm", "Gymnasium", "stage", "SekII", "courseProfile", "GK+LK");
+        String mergedViewId = "merged:course-LK+course-GK";
+        CompositionViewService virtualService = new CompositionViewService(properties, new ObjectMapper());
+        Map<String, Object> virtualSelection = virtualService.findMatchingView("test-landscape", scope);
+        Map<String, Object> virtualLookup = virtualService.findViewById(mergedViewId);
+
+        assertThat(virtualSelection).isNotNull();
+        assertThat(virtualSelection.get("viewId")).isEqualTo(mergedViewId);
+        assertThat(virtualLookup).isNotNull();
+        assertThat(virtualLookup.get("viewId")).isEqualTo(mergedViewId);
+        assertThat(virtualLookup.get("rootNodes")).isEqualTo(virtualSelection.get("rootNodes"));
+        assertThat(virtualLookup.get("mergedFromViewIds")).isEqualTo(List.of("course-LK", "course-GK"));
+        assertThat(virtualService.findRootScopeOptions(mergedViewId)).singleElement().satisfies(option -> {
+            assertThat(option.viewId()).isEqualTo(mergedViewId);
+            assertThat(option.referencedGoalIds()).containsExactlyInAnyOrder("GK-target", "LK-target");
+            assertThat(virtualService.resolveStructureReference(option.syntheticGoalId())).isEqualTo(option);
+        });
+        assertThat(virtualService.findViewById("merged:missing")).isNull();
+        assertThat(virtualService.findViewById("merged:missing+course-GK").get("viewId"))
+                .isEqualTo("course-GK");
+
+        Files.writeString(viewDir.resolve("combined.view.json"), """
+                {
+                  "viewId": "merged:course-LK+course-GK",
+                  "landscapeId": "test-landscape",
+                  "scope": {"schoolForm": "Gymnasium", "stage": "SekII", "courseProfile": "GK+LK"},
+                  "rootNodes": [
+                    {"kind": "structure", "id": "course-root", "label": "Authored combined course",
+                      "children": [{"kind": "canonicalSubtree", "goalId": "reviewed-target"}]},
+                    {"kind": "canonicalSubtree", "goalId": "reviewed-support", "projectionRole": "prerequisiteOnly"}
+                  ]
+                }
+                """);
+        CompositionViewService authoredService = new CompositionViewService(properties, new ObjectMapper());
+        Map<String, Object> authoredSelection = authoredService.findMatchingView("test-landscape", scope);
+
+        assertThat(authoredSelection).isNotNull();
+        assertThat(authoredSelection.get("viewId")).isEqualTo(mergedViewId);
+        assertThat(authoredSelection.get("scope")).isEqualTo(scope);
+        assertThat(authoredService.findViewById("  " + mergedViewId + "  ")).isEqualTo(authoredSelection);
+        assertThat(authoredService.findRootScopeOptions(mergedViewId)).singleElement().satisfies(option -> {
+            assertThat(option.syntheticGoalId()).isEqualTo("composition:" + mergedViewId + ":structure:course-root");
+            assertThat(option.viewId()).isEqualTo(mergedViewId);
+            assertThat(option.label()).isEqualTo("Authored combined course");
+            assertThat(option.referencedGoalIds()).containsExactly("reviewed-target");
+            assertThat(authoredService.resolveStructureReference(option.syntheticGoalId())).isEqualTo(option);
+        });
+    }
+
+    @Test
     void findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView() {
         CompositionViewService service = createService();
 
