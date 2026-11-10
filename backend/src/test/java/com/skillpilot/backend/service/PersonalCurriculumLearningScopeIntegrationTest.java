@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.completion.CompletionCompilationException;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
@@ -30,6 +31,7 @@ import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -41,6 +43,8 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.web.server.ResponseStatusException;
 
 class PersonalCurriculumLearningScopeIntegrationTest {
@@ -243,6 +247,81 @@ class PersonalCurriculumLearningScopeIntegrationTest {
         verify(fixture.landscapes(), never()).getClosure("another-root", "de");
     }
 
+    @Test
+    void compatibilityMasteryReadsPreserveResultsWithoutCachingAnInvalidLearningProjection() {
+        // The raw requires graph is acyclic, but inheritance creates T -> P -> T.
+        LearningGoal topic = cluster("legacy-topic", T);
+        topic.setRequires(List.of(P));
+        LearningGoal excludedMemory = atom(Q);
+        excludedMemory.setTags(List.of("LK"));
+        excludedMemory.setExtendedData(Map.of("vocabularySource", "/data/excluded-lk-memory.json"));
+        var fixture = fixture(landscape(ROOT, List.of(topic, atom(T), atom(P, T), excludedMemory)),
+                "GK", subtree("legacy-topic"), entry(P), entry(Q));
+        when(fixture.landscapes().isCompatibilityOnlyLandscape(ROOT)).thenReturn(true);
+        Instant timestamp = Instant.parse("2026-11-10T08:00:00Z");
+        for (String id : List.of(T, P, Q)) {
+            Mastery stored = new Mastery(fixture.learner(), id, 0.75);
+            stored.setUpdatedAt(timestamp);
+            fixture.mastery().add(stored);
+        }
+        JsonNode learnerBefore = mapper.valueToTree(fixture.learner());
+        JsonNode sourceBefore = mapper.valueToTree(fixture.primary());
+
+        assertThat(TransactionSynchronizationManager.isSynchronizationActive()).isFalse();
+        assertThat(TransactionSynchronizationManager.isActualTransactionActive()).isFalse();
+        TransactionSynchronizationManager.initSynchronization();
+        TransactionSynchronizationManager.setActualTransactionActive(true);
+        try {
+            assertThatThrownBy(() -> targets(fixture)).isInstanceOfSatisfying(
+                    CompletionCompilationException.class,
+                    failure -> assertThat(failure.code()).isEqualTo("ATOMIC_CYCLE"));
+            List<TransactionSynchronization> synchronizations =
+                    TransactionSynchronizationManager.getSynchronizations();
+            assertThat(synchronizations).hasSize(1);
+            TransactionSynchronization cache = synchronizations.getFirst();
+            assertThat(cache.getClass().getSimpleName()).isEqualTo("ProjectionComputationCache");
+            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
+            assertThat(fixture.service().getMastery(LEARNER))
+                    .containsExactlyInAnyOrderEntriesOf(Map.of(T, 0.75, P, 0.75, Q, 0.75));
+            assertThat(fixture.service().getMasteryWithTimestamps(LEARNER))
+                    .containsExactlyInAnyOrderEntriesOf(Map.of(
+                            T, new MasteryEntryDTO(0.75, timestamp),
+                            P, new MasteryEntryDTO(0.75, timestamp),
+                            Q, new MasteryEntryDTO(0.75, timestamp)));
+            Map<String, LearningGoal> masteryGoals = ReflectionTestUtils.invokeMethod(
+                    fixture.service(), "masteryProjectionGoals", fixture.learner());
+            assertThat(masteryGoals).containsKeys(T, P).doesNotContainKey(Q);
+            verify(fixture.decks(), never()).resolveDeckResource(eq(Q), anyString());
+            assertThat(TransactionSynchronizationManager.getSynchronizations()).containsExactly(cache);
+            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
+            // A successful historical read must not populate the normal projection cache.
+            assertThatThrownBy(() -> targets(fixture)).isInstanceOfSatisfying(
+                    CompletionCompilationException.class,
+                    failure -> assertThat(failure.code()).isEqualTo("ATOMIC_CYCLE"));
+            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
+        } finally {
+            try {
+                for (TransactionSynchronization synchronization :
+                        TransactionSynchronizationManager.getSynchronizations()) {
+                    synchronization.afterCompletion(TransactionSynchronization.STATUS_ROLLED_BACK);
+                    assertThat((Map<?, ?>) ReflectionTestUtils.getField(synchronization, "projections")).isEmpty();
+                    assertThat((Map<?, ?>) ReflectionTestUtils.getField(synchronization, "personalizationPlans")).isEmpty();
+                    assertThat((Map<?, ?>) ReflectionTestUtils.getField(synchronization, "offeringScopes")).isEmpty();
+                }
+            } finally {
+                TransactionSynchronizationManager.clearSynchronization();
+                TransactionSynchronizationManager.setActualTransactionActive(false);
+            }
+        }
+        assertThat(TransactionSynchronizationManager.isSynchronizationActive()).isFalse();
+        assertThat(TransactionSynchronizationManager.isActualTransactionActive()).isFalse();
+        assertThat((JsonNode) mapper.valueToTree(fixture.learner())).isEqualTo(learnerBefore);
+        assertThat((JsonNode) mapper.valueToTree(fixture.primary())).isEqualTo(sourceBefore);
+        assertNoMasteryWrites(fixture);
+        verify(fixture.learners(), never()).save(any(Learner.class));
+        verify(fixture.learners(), never()).saveAll(any());
+    }
+
     private Fixture fixture(SkillLandscape primary, String course, Map<String, Object>... entries) {
         Set<String> navigationChildren = primary.getGoals().stream().map(LearningGoal::getId)
                 .collect(java.util.stream.Collectors.toCollection(LinkedHashSet::new));
@@ -301,10 +380,12 @@ class PersonalCurriculumLearningScopeIntegrationTest {
         });
         GoalMappingService mappings = mock(GoalMappingService.class);
         when(mappings.getAllMappings()).thenReturn(List.of());
+        DeckResourceService decks = mock(DeckResourceService.class);
         LearnerService service = new LearnerService(learners, mock(LearnerClientStateRepository.class),
-                masteryRepository, plans, landscapes, mappings, mock(DeckResourceService.class), views,
+                masteryRepository, plans, landscapes, mappings, decks, views,
                 mapper, mock(ApplicationEventPublisher.class), mock(PlatformTransactionManager.class));
-        return new Fixture(service, learner, primary, catalog, landscapes, masteryRepository, mastery, planned);
+        return new Fixture(service, learner, primary, catalog, landscapes, masteryRepository, mastery, planned,
+                learners, decks);
     }
 
     private Set<String> targets(Fixture fixture) {
@@ -372,7 +453,7 @@ class PersonalCurriculumLearningScopeIntegrationTest {
 
     private record Fixture(LearnerService service, Learner learner, SkillLandscape primary,
             List<SkillLandscape> catalog, LandscapeService landscapes, MasteryRepository masteryRepository,
-            List<Mastery> mastery, List<PlannedGoal> planned) {
+            List<Mastery> mastery, List<PlannedGoal> planned, LearnerRepository learners, DeckResourceService decks) {
         void mastered(String... ids) {
             mastery.clear();
             for (String id : ids) mastery.add(new Mastery(learner, id, 1.0));

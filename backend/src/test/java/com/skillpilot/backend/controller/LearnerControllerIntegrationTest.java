@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.ChampionRegistrationRequest;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.PersonalizationPlan;
+import com.skillpilot.backend.completion.CompletionCanonicalGraphResolver;
+import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
@@ -19,15 +21,20 @@ import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
 import com.skillpilot.backend.service.CurriculaService;
+import com.skillpilot.backend.service.CompositionViewService;
 import com.skillpilot.backend.service.CanonicalPrerequisiteTestContext;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
+import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.service.LearnerService;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -49,10 +56,10 @@ public class LearnerControllerIntegrationTest {
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_ID = "c01b1ce9-a667-4a46-b251-ec33ae602b15";
-    // Champion totals count current HE-GK targets with exact legacy equivalence.
+    // Preserve the reviewed HE-GK seed count with exact legacy equivalence.
     // The reviewed 809ef split and the HE-GK prerequisite-only Q2 Spatprodukt
     // leave 289 such atoms; new Q2 assessment endpoints have no legacy equivalent.
-    private static final long HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS = 289;
+    private static final long HESSEN_GK_MATH_CHAMPION_SEED_GOALS = 289;
     private static final String CANONICAL_PHYSICS_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String CANONICAL_PHYSICS_ROOT_ID = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
     private static final String CANONICAL_CHEMISTRY_ID = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
@@ -442,13 +449,225 @@ public class LearnerControllerIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private CompositionViewService compositionViewService;
+
     @LocalServerPort
     private int port;
 
     private String learnerId;
+    private Map<String, LearningGoal> canonicalContainsGraph;
+    private Map<String, SourceClaimSnapshot> rawCanonicalSourceBefore;
+    private Map<String, SourceClaimSnapshot> localizedSourceBefore;
+
+    private record SourceClaimSnapshot(JsonNode applicability, String sourceRef) {
+    }
+
+    private void prepareIndependentSourceBaselines() {
+        if (rawCanonicalSourceBefore != null) return;
+        rawCanonicalSourceBefore = new LinkedHashMap<>();
+        localizedSourceBefore = new LinkedHashMap<>();
+        for (SkillLandscape owner : landscapeService.getAll()) {
+            if (owner.getFrameworkId() == null || !owner.getFrameworkId().startsWith("canonical-gymnasium")) continue;
+            // Snapshot the raw source fields before the learner compiler runs,
+            // independently of whichever targets it emits.
+            owner.getGoals().forEach(goal -> rawCanonicalSourceBefore.put(goal.getId(), new SourceClaimSnapshot(
+                    objectMapper.valueToTree(goal.getApplicability()), goal.getSourceRef())));
+            // Existing localization enriches DTO applicability from reviewed
+            // mappings. It is a separate baseline from the raw canonical row.
+            for (SkillLandscape localized : landscapeService.getClosure(owner.getLandscapeId(), "de")) {
+                localized.getGoals().forEach(goal -> localizedSourceBefore.put(goal.getId(), new SourceClaimSnapshot(
+                        objectMapper.valueToTree(goal.getApplicability()), goal.getSourceRef())));
+            }
+        }
+    }
+
+    private record RequiredLearningProjection(
+            Set<String> seedAtomicGoalIds,
+            Set<String> targetGoalIds,
+            Set<String> expectedLearningGoalIds,
+            Map<String, List<String>> requiredByPaths,
+            Map<String, LearningGoal> canonicalGoals) {
+    }
+
+    /** Verify the exported scope against existing normalized canonical demand, not the scope compiler under test. */
+    private RequiredLearningProjection requiredLearningProjection(Learner learner) {
+        prepareIndependentSourceBaselines();
+        List<SkillLandscape> closure = learnerService.getLearnerLandscapeClosure(
+                learner.getSkillpilotId(), learner.getSelectedCurriculum(), "de");
+        Set<String> seeds = new LinkedHashSet<>();
+        Set<String> targets = new LinkedHashSet<>();
+        Map<String, LearningGoal> exposed = new LinkedHashMap<>();
+        Map<String, List<String>> paths = new LinkedHashMap<>();
+        Set<String> revisions = new LinkedHashSet<>();
+        for (SkillLandscape entry : closure) {
+            var metadata = entry.getPersonalCurriculumProjection();
+            assertThat(metadata).as("runtime target metadata for %s/%s", learner.getSkillpilotId(), entry.getLandscapeId()).isNotNull();
+            assertThat(metadata.revision()).isEqualTo("atomic-prerequisite-learning-v1");
+            assertThat(metadata.rootLandscapeId()).isEqualTo(learner.getSelectedCurriculum());
+            revisions.add(metadata.scopeRevision());
+            Set<String> owned = entry.getGoals().stream().map(LearningGoal::getId)
+                    .collect(java.util.stream.Collectors.toSet());
+            assertThat(owned).containsAll(metadata.seedAtomicGoalIds()).containsAll(metadata.targetGoalIds());
+            for (String id : metadata.targetGoalIds()) {
+                assertThat(targets.add(id)).as("one exported canonical acquisition target %s", id).isTrue();
+            }
+            seeds.addAll(metadata.seedAtomicGoalIds());
+            paths.putAll(metadata.requiredByPaths());
+            entry.getGoals().forEach(goal -> exposed.put(goal.getId(), goal));
+        }
+        assertThat(revisions).hasSize(1).allSatisfy(revision -> assertThat(revision).isNotBlank());
+        assertThat(seeds).isNotEmpty();
+        Map<String, LearningGoal> canonical = new CompletionCanonicalGraphResolver(landscapeService, objectMapper)
+                .loadForAtomicSeeds(learner.getSelectedCurriculum(), seeds, Map.of());
+        var topology = new CompletionProfileCompiler().normalizePrerequisites(canonical);
+        topology.validateContext(seeds);
+        Set<String> expected = new LinkedHashSet<>(seeds);
+        seeds.forEach(id -> expected.addAll(topology.transitivePrerequisites(id)));
+        Set<String> derived = new LinkedHashSet<>(expected);
+        derived.removeAll(seeds);
+        assertThat(targets).as("S plus normalized canonical prerequisite demand for %s", learner.getSkillpilotId())
+                .containsExactlyInAnyOrderElementsOf(expected);
+        assertThat(paths.keySet()).as("one required-by witness per additional target")
+                .containsExactlyInAnyOrderElementsOf(derived);
+        paths.forEach((goalId, path) -> {
+            assertThat(path).as("required-by path for %s", goalId).hasSizeGreaterThanOrEqualTo(2);
+            assertThat(seeds).contains(path.get(0));
+            assertThat(path.get(path.size() - 1)).isEqualTo(goalId);
+            for (int index = 1; index < path.size(); index++) {
+                assertThat(topology.directPrerequisites(path.get(index - 1)))
+                        .as("canonical prerequisite hop %s -> %s", path.get(index - 1), path.get(index))
+                        .contains(path.get(index));
+            }
+        });
+        for (String id : expected) {
+            LearningGoal actual = exposed.get(id);
+            SourceClaimSnapshot originalDto = localizedSourceBefore.get(id);
+            assertThat(actual).as("learnable canonical definition for %s", id).isNotNull();
+            assertThat(originalDto).as("independent existing owner DTO for %s", id).isNotNull();
+            assertThat(actual.getContains()).isNullOrEmpty();
+            JsonNode emittedApplicability = objectMapper.valueToTree(actual.getApplicability());
+            assertThat(emittedApplicability)
+                    .as("unchanged existing DTO applicability for %s", id).isEqualTo(originalDto.applicability());
+            assertThat(actual.getSourceRef()).as("unchanged source reference for %s", id).isEqualTo(originalDto.sourceRef());
+        }
+        for (String id : canonical.keySet()) {
+            assertThat(rawCanonicalSourceBefore).as("raw canonical baseline for %s", id).containsKey(id);
+            LearningGoal original = landscapeService.getGoalDefinition(id);
+            assertThat(original).as("raw canonical source for %s", id).isNotNull();
+            SourceClaimSnapshot rawAfter = new SourceClaimSnapshot(
+                    objectMapper.valueToTree(original.getApplicability()), original.getSourceRef());
+            assertThat(rawAfter)
+                    .as("raw canonical source unchanged after personal projection for %s", id)
+                    .isEqualTo(rawCanonicalSourceBefore.get(id));
+        }
+        assertThat(learnerService.getFilteredAtomicGoalIds(learner.getSelectedCurriculum(),
+                learner.getPersonalCurriculum(), null, false)).containsExactlyInAnyOrderElementsOf(expected);
+        try {
+            System.out.println("REQUIRED_LEARNING_SCOPE " + objectMapper.writeValueAsString(Map.of(
+                    "learner", learner.getSkillpilotId(), "configuration", learner.getPersonalCurriculum(),
+                    "seedAtomicGoalIds", seeds, "targetGoalIds", targets, "requiredByPaths", paths)));
+        } catch (com.fasterxml.jackson.core.JsonProcessingException error) {
+            throw new AssertionError("Could not record required-learning diagnostic", error);
+        }
+        return new RequiredLearningProjection(Set.copyOf(seeds), Set.copyOf(targets), Set.copyOf(expected),
+                Map.copyOf(paths), Map.copyOf(canonical));
+    }
+
+    private void assertOutsideSeedEntersOnlyAsRequiredPreparation(RequiredLearningProjection projection, String goalId) {
+        assertThat(projection.seedAtomicGoalIds()).doesNotContain(goalId);
+        if (projection.expectedLearningGoalIds().contains(goalId)) {
+            assertThat(projection.targetGoalIds()).contains(goalId);
+            assertThat(projection.requiredByPaths()).containsKey(goalId);
+        } else {
+            assertThat(projection.targetGoalIds()).doesNotContain(goalId);
+            assertThat(projection.requiredByPaths()).doesNotContainKey(goalId);
+        }
+    }
+
+    private Set<String> canonicalAtomicDescendants(String goalId) {
+        if (canonicalContainsGraph == null) {
+            canonicalContainsGraph = new CompletionCanonicalGraphResolver(landscapeService, objectMapper)
+                    .load(CANONICAL_GYMNASIUM_ROOT_ID);
+        }
+        Map<String, LearningGoal> graph = canonicalContainsGraph;
+        Set<String> atoms = new LinkedHashSet<>();
+        Set<String> visited = new LinkedHashSet<>();
+        ArrayDeque<String> pending = new ArrayDeque<>(List.of(goalId));
+        while (!pending.isEmpty()) {
+            String id = pending.removeFirst();
+            if (!visited.add(id)) continue;
+            LearningGoal goal = graph.get(id);
+            assertThat(goal).as("canonical topic definition for %s", id).isNotNull();
+            if (goal.getContains() == null || goal.getContains().isEmpty()) atoms.add(id);
+            else pending.addAll(goal.getContains());
+        }
+        return atoms;
+    }
+
+    private void collectReviewedReferenceAtoms(Object rawNodes, Set<String> result) {
+        if (!(rawNodes instanceof List<?> nodes)) return;
+        for (Object raw : nodes) {
+            if (!(raw instanceof Map<?, ?> node)) continue;
+            if ("structure".equals(node.get("kind"))) collectReviewedReferenceAtoms(node.get("children"), result);
+            else if (node.get("goalId") instanceof String goalId) result.addAll(canonicalAtomicDescendants(goalId));
+            else if (node.get("landscapeId") instanceof String landscapeId) {
+                landscapeService.getById(landscapeId).getGoals().stream().filter(goal -> goal.getTags() != null
+                        && goal.getTags().contains("root")).forEach(goal -> result.addAll(canonicalAtomicDescendants(goal.getId())));
+            }
+        }
+    }
+
+    private Set<String> hessenLegacyEquivalentTopicIds(Set<String> learningIds, String topicId) {
+        String subjectId = landscapeService.getLandscapeIdForGoal(topicId);
+        Map<String, Object> view = compositionViewService.findLearnerScopeView(subjectId, Map.of(
+                "schoolForm", "Gymnasium", "jurisdiction", "DE-HE", "durationModel", "G9",
+                "stage", "SekII", "courseProfile", "GK"));
+        assertThat(view).isNotNull();
+        Set<String> referenced = new LinkedHashSet<>();
+        collectReviewedReferenceAtoms(view.get("rootNodes"), referenced);
+        Set<String> topicAtoms = canonicalAtomicDescendants(topicId);
+        LearningGoal topic = landscapeService.getGoalDefinition(topicId);
+        String sourceLandscapeId = landscapeService.resolveGoalProvenanceValue(topic, "sourceLandscapeId");
+        String sourceGoalId = landscapeService.resolveGoalProvenanceValue(topic, "sourceGoalId");
+        assertThat(sourceLandscapeId).isNotBlank();
+        Set<String> legacyAtoms = new LinkedHashSet<>(
+                landscapeService.resolveSourceAtomicGoalIds(sourceLandscapeId, sourceGoalId));
+        if (legacyAtoms.isEmpty()) {
+            // HE Mathematics retains its historic source tree in the archive;
+            // the newer source-closure registry uses different extraction IDs.
+            assertThat(topicId).isEqualTo(CANONICAL_MATH_ROOT_ID);
+            assertThat(sourceLandscapeId).isEqualTo(HESSEN_GYMNASIUM_UPPER_MATH_ID);
+            assertThat(sourceGoalId).isEqualTo("ccf9569b-b0e4-4d76-98d5-65be461d4d76");
+            SkillLandscape source = landscapeService.getById(sourceLandscapeId);
+            assertThat(source).as("retained HE Mathematics source snapshot").isNotNull();
+            Map<String, LearningGoal> sourceGoals = source.getGoals().stream()
+                    .collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+            Set<String> visited = new LinkedHashSet<>();
+            ArrayDeque<String> pending = new ArrayDeque<>(List.of(sourceGoalId));
+            while (!pending.isEmpty()) {
+                String id = pending.removeFirst();
+                if (!visited.add(id)) continue;
+                LearningGoal sourceGoal = sourceGoals.get(id);
+                assertThat(sourceGoal).as("retained source descendant %s", id).isNotNull();
+                if (sourceGoal.getContains() == null || sourceGoal.getContains().isEmpty()) legacyAtoms.add(id);
+                else pending.addAll(sourceGoal.getContains());
+            }
+            assertThat(legacyAtoms).as("frozen HE Mathematics source-tree atomic basis").hasSize(361);
+        }
+        assertThat(legacyAtoms).isNotEmpty();
+        return learningIds.stream().filter(topicAtoms::contains).filter(referenced::contains).filter(id -> {
+            LearningGoal goal = landscapeService.getGoalDefinition(id);
+            return sourceLandscapeId.equals(landscapeService.resolveGoalProvenanceValue(goal, "sourceLandscapeId"))
+                    && legacyAtoms.contains(landscapeService.resolveGoalProvenanceValue(goal, "sourceGoalId"));
+        }).collect(java.util.stream.Collectors.toSet());
+    }
 
     @BeforeEach
     void setUp() {
+        canonicalContainsGraph = null;
+        rawCanonicalSourceBefore = null;
+        localizedSourceBefore = null;
         curriculumChampionRepository.deleteAll();
         learnerClientStateRepository.deleteAll();
         masteryRepository.deleteAll();
@@ -468,7 +687,12 @@ public class LearnerControllerIntegrationTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_MATH_ID);
-        assertHessenGkQ21Projection(learnerRepository.findById(learnerId).orElseThrow());
+        Learner configured = learnerRepository.findById(learnerId).orElseThrow();
+        assertHessenGkQ21Projection(configured);
+        RequiredLearningProjection projection = requiredLearningProjection(configured);
+        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_MATH_ROOT_ID))
+                .hasSize((int) HESSEN_GK_MATH_CHAMPION_SEED_GOALS);
+        long expectedTopicGoals = hessenLegacyEquivalentTopicIds(projection.expectedLearningGoalIds(), CANONICAL_MATH_ROOT_ID).size();
 
         masteryRepository.saveAll(List.of(
                 new Mastery(learner, LEGACY_MATH_ASSUMPTIONS_ID, 1.0),
@@ -484,7 +708,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().curriculumId()).isEqualTo(CANONICAL_GYMNASIUM_ROOT_ID);
         assertThat(response.champion().topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
         assertThat(response.champion().masteredCount()).isEqualTo(2);
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(expectedTopicGoals);
 
         var snapshot = curriculaService.getSnapshot();
         var curriculum = snapshot.curricula().stream()
@@ -495,7 +719,7 @@ public class LearnerControllerIntegrationTest {
                 .anySatisfy(champion -> {
                     assertThat(champion.topicId()).isEqualTo(CANONICAL_MATH_ROOT_ID);
                     assertThat(champion.masteredCount()).isEqualTo(2);
-                    assertThat(champion.totalTopicGoals()).isEqualTo(HESSEN_GK_MATH_CHAMPION_TOPIC_GOALS);
+                    assertThat(champion.totalTopicGoals()).isEqualTo(expectedTopicGoals);
                 });
     }
 
@@ -539,6 +763,19 @@ public class LearnerControllerIntegrationTest {
                 new Mastery(learner, LEGACY_MATH_SYMMETRY_ID, 1.0),
                 new Mastery(learner, LEGACY_MATH_LK_PROOF_STRATEGIES_ID, 1.0)));
 
+        RequiredLearningProjection projection = requiredLearningProjection(learner);
+        String proof = "01217f4a-5221-5df9-b379-7b241fccf809";
+        String gkAssessment = "e45a39e5-cc9b-577e-a28d-691319410b9a";
+        String justification = "4ae439c0-ce3c-5c96-9755-9899bc70e948";
+        assertThat(projection.seedAtomicGoalIds()).contains(gkAssessment).doesNotContain(proof);
+        assertThat(projection.targetGoalIds()).contains(proof);
+        assertOutsideSeedEntersOnlyAsRequiredPreparation(projection, proof);
+        var topology = new CompletionProfileCompiler().normalizePrerequisites(projection.canonicalGoals());
+        assertThat(topology.directPrerequisites(gkAssessment)).contains(justification);
+        assertThat(topology.directPrerequisites(justification)).contains(proof);
+        assertThat(landscapeService.resolveGoalProvenanceValue(landscapeService.getGoalDefinition(proof), "sourceGoalId"))
+                .isEqualTo(LEGACY_MATH_LK_PROOF_STRATEGIES_ID);
+
         var response = curriculaService.registerChampion(
                 new ChampionRegistrationRequest(
                         CANONICAL_GYMNASIUM_ROOT_ID,
@@ -546,7 +783,7 @@ public class LearnerControllerIntegrationTest {
                         "enpasos",
                         CANONICAL_MATH_ROOT_ID));
 
-        assertThat(response.champion().masteredCount()).isEqualTo(1);
+        assertThat(response.champion().masteredCount()).isEqualTo(2);
         assertThat(response.champion().totalTopicGoals()).isGreaterThan(1);
     }
 
@@ -585,6 +822,9 @@ public class LearnerControllerIntegrationTest {
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_PHYSICS_ID);
+        RequiredLearningProjection projection = requiredLearningProjection(learnerRepository.findById(learnerId).orElseThrow());
+        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_PHYSICS_ROOT_ID)).hasSize(226);
+        long expectedTopicGoals = hessenLegacyEquivalentTopicIds(projection.expectedLearningGoalIds(), CANONICAL_PHYSICS_ROOT_ID).size();
 
         masteryRepository.save(new Mastery(learner, LEGACY_PHYSICS_DIAGRAMS_ID, 1.0));
 
@@ -598,7 +838,7 @@ public class LearnerControllerIntegrationTest {
         assertThat(response.champion().masteredCount()).isEqualTo(1);
         // Restore 39 existing HE-equivalent tasks: E 11, Q1 4, Q2 5,
         // Q3 4, Q4 7 and Abitur 8. Their content and stable IDs are unchanged.
-        assertThat(response.champion().totalTopicGoals()).isEqualTo(226);
+        assertThat(response.champion().totalTopicGoals()).isEqualTo(expectedTopicGoals);
     }
 
     @Test
@@ -1459,10 +1699,10 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedMathSekIDurationProjectionForAtomicTotals() throws Exception {
-        // Current canonical leaves were enumerated from each matched Sek-I view,
+        // Reviewed canonical seeds were enumerated from each matched Sek-I view,
         // applying projection-role precedence and jurisdiction applicability.
-        // Totals include local assessments; excluded and prerequisite-only goals
-        // do not count. The view-specific HE/RP/SH G8/G9 split remains explicit.
+        // Preserve those seed counts, including local assessments. Full learning
+        // totals additionally include the independently checked prerequisite demand.
         String[][] scopes = {
                 { "DE-BB", "241", "241" },
                 { "DE-BE", "237", "237" },
@@ -1495,6 +1735,7 @@ public class LearnerControllerIntegrationTest {
             JsonNode g8State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g8Projection = requiredLearningProjection(learner);
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     CANONICAL_MATH_ID, jurisdiction, "G9", "GK", true, false));
@@ -1503,12 +1744,12 @@ public class LearnerControllerIntegrationTest {
             JsonNode g9State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g9Projection = requiredLearningProjection(learner);
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
             if (Set.of("DE-BW", "DE-HE", "DE-SL").contains(jurisdiction)) {
-                Set<String> g9Targets = learnerService.getFilteredAtomicGoalIds(
-                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+                Set<String> g9Targets = g9Projection.seedAtomicGoalIds();
                 if ("DE-BW".equals(jurisdiction)) {
                     assertThat(g9Targets).contains(
                             "ad66009f-55fb-563f-ace0-dbfeae7c76c3", // BW Sek-I derivative target
@@ -1520,20 +1761,24 @@ public class LearnerControllerIntegrationTest {
                             "ea664a30-98be-508e-90ac-5304679814ee");
                 } else {
                     assertThat(g9Targets).doesNotContain(
-                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // SL prerequisite-only atom
+                            "baea3966-5d10-53bf-8193-3fcda7b1e73f"); // not an official SL seed
+                    assertThat(g9Projection.targetGoalIds()).contains("baea3966-5d10-53bf-8193-3fcda7b1e73f");
+                    assertOutsideSeedEntersOnlyAsRequiredPreparation(g9Projection, "baea3966-5d10-53bf-8193-3fcda7b1e73f");
                 }
             }
-            softly.assertThat(g8Total).as(jurisdiction + " G8 total").isEqualTo(Integer.parseInt(scope[1]));
-            softly.assertThat(g9Total).as(jurisdiction + " G9 total").isEqualTo(Integer.parseInt(scope[2]));
+            softly.assertThat(g8Projection.seedAtomicGoalIds()).as(jurisdiction + " G8 reviewed seeds").hasSize(Integer.parseInt(scope[1]));
+            softly.assertThat(g9Projection.seedAtomicGoalIds()).as(jurisdiction + " G9 reviewed seeds").hasSize(Integer.parseInt(scope[2]));
+            softly.assertThat(g8Total).as(jurisdiction + " G8 closed learning total").isEqualTo(g8Projection.expectedLearningGoalIds().size());
+            softly.assertThat(g9Total).as(jurisdiction + " G9 closed learning total").isEqualTo(g9Projection.expectedLearningGoalIds().size());
         }
         softly.assertAll();
     }
 
     @Test
     void learnerStateUsesMathCrossStageDurationCompositionViewsForAtomicTotals() throws Exception {
-        // Current cross-stage target leaves were counted from each matched view
+        // Reviewed cross-stage seed leaves were counted from each matched view
         // with projection roles, jurisdiction, course tags and G8/G9 applicability.
-        // Keep exact counts and selected membership checks to catch scope drift.
+        // Pin S independently before checking the full canonical learning demand.
         String[][] scopes = {
                 { "DE-HE", "GK", "751", "761" },
                 { "DE-HE", "LK", "889", "899" },
@@ -1560,9 +1805,9 @@ public class LearnerControllerIntegrationTest {
             assertThat(g8Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g8Projection = requiredLearningProjection(learner);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
-                assertThat(learnerService.getFilteredAtomicGoalIds(
-                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                assertThat(g8Projection.seedAtomicGoalIds())
                         .contains(
                                 "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
                                 "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
@@ -1581,9 +1826,9 @@ public class LearnerControllerIntegrationTest {
             assertThat(g9Response.statusCode()).isEqualTo(HttpStatus.OK.value());
             JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g9Projection = requiredLearningProjection(learner);
             if ("DE-RP".equals(jurisdiction) && "LK".equals(courseProfile)) {
-                assertThat(learnerService.getFilteredAtomicGoalIds(
-                        CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false))
+                assertThat(g9Projection.seedAtomicGoalIds())
                         .contains(
                                 "1a63bf83-1dd5-4eb2-bd8e-f9cfa02f4c42",
                                 "53d52b0c-1fd7-4a36-bc14-ba41e7dc6d5d",
@@ -1595,10 +1840,14 @@ public class LearnerControllerIntegrationTest {
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", courseProfile);
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", courseProfile);
-            softly.assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 total")
-                    .isEqualTo(Integer.parseInt(scope[2]));
-            softly.assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 total")
-                    .isEqualTo(Integer.parseInt(scope[3]));
+            softly.assertThat(g8Projection.seedAtomicGoalIds()).as(jurisdiction + " " + courseProfile + " G8 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[2]));
+            softly.assertThat(g9Projection.seedAtomicGoalIds()).as(jurisdiction + " " + courseProfile + " G9 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[3]));
+            softly.assertThat(g8Total).as(jurisdiction + " " + courseProfile + " G8 closed learning total")
+                    .isEqualTo(g8Projection.expectedLearningGoalIds().size());
+            softly.assertThat(g9Total).as(jurisdiction + " " + courseProfile + " G9 closed learning total")
+                    .isEqualTo(g9Projection.expectedLearningGoalIds().size());
         }
         softly.assertAll();
     }
@@ -1700,11 +1949,12 @@ public class LearnerControllerIntegrationTest {
             JsonNode g8State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g8Projection = requiredLearningProjection(learner);
             if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
                 if (Set.of("DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-NI", "DE-RP", "DE-SL").contains(jurisdiction)) {
-                    assertReviewedBiologyFamilyPlanningSplit(learner, "G8");
+                    assertReviewedBiologyFamilyPlanningSplit(learner, "G8", g8Projection);
                 }
-                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G8");
+                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G8", g8Projection);
             }
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
@@ -1714,11 +1964,12 @@ public class LearnerControllerIntegrationTest {
             JsonNode g9State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g9Projection = requiredLearningProjection(learner);
             if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
                 if (Set.of("DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-NI", "DE-RP", "DE-SL").contains(jurisdiction)) {
-                    assertReviewedBiologyFamilyPlanningSplit(learner, "G9");
+                    assertReviewedBiologyFamilyPlanningSplit(learner, "G9", g9Projection);
                 }
-                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G9");
+                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G9", g9Projection);
             }
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
@@ -1726,27 +1977,25 @@ public class LearnerControllerIntegrationTest {
             Set<String> refreshedTargetIds = refreshedApplicabilityTargets.getOrDefault(
                     subjectLandscapeId + ":" + jurisdiction, Set.of());
             if (!refreshedTargetIds.isEmpty()) {
-                for (String durationModel : List.of("G8", "G9")) {
-                    softly.assertThat(learnerService.getFilteredAtomicGoalIds(
-                            CANONICAL_GYMNASIUM_ROOT_ID,
-                            canonicalGymnasiumSubjectPersonalCurriculum(
-                                    subjectLandscapeId, jurisdiction, durationModel, "GK", true, false),
-                            null, false))
-                            .as(subject + " " + jurisdiction + " " + durationModel + " refreshed applicability targets")
-                            .containsAll(refreshedTargetIds);
-                }
+                softly.assertThat(g8Projection.seedAtomicGoalIds())
+                        .as(subject + " " + jurisdiction + " G8 refreshed applicability seeds").containsAll(refreshedTargetIds);
+                softly.assertThat(g9Projection.seedAtomicGoalIds())
+                        .as(subject + " " + jurisdiction + " G9 refreshed applicability seeds").containsAll(refreshedTargetIds);
             }
-            softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
-                    .isEqualTo(Integer.parseInt(scope[3]));
-            softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
-                    .isEqualTo(Integer.parseInt(scope[4]));
+            softly.assertThat(g8Projection.seedAtomicGoalIds()).as(subject + " " + jurisdiction + " G8 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[3]));
+            softly.assertThat(g9Projection.seedAtomicGoalIds()).as(subject + " " + jurisdiction + " G9 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[4]));
+            softly.assertThat(g8Total).as(subject + " " + jurisdiction + " G8 closed learning total")
+                    .isEqualTo(g8Projection.expectedLearningGoalIds().size());
+            softly.assertThat(g9Total).as(subject + " " + jurisdiction + " G9 closed learning total")
+                    .isEqualTo(g9Projection.expectedLearningGoalIds().size());
         }
         softly.assertAll();
     }
 
-    private void assertReviewedBiologyFamilyPlanningSplit(Learner learner, String durationModel) {
-        assertThat(learnerService.getFilteredAtomicGoalIds(
-                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false))
+    private void assertReviewedBiologyFamilyPlanningSplit(Learner learner, String durationModel, RequiredLearningProjection projection) {
+        assertThat(projection.seedAtomicGoalIds())
                 .as("family planning split for %s %s", learner.getSkillpilotId(), durationModel)
                 .contains(
                         "9d3f71d7-5273-5e50-b1ba-4e291edbf114", // contraception methods
@@ -1754,9 +2003,8 @@ public class LearnerControllerIntegrationTest {
                 .doesNotContain("3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"); // now a cluster
     }
 
-    private void assertReviewedBiologySourceSupplement(Learner learner, String jurisdiction, String durationModel) {
-        Set<String> targets = learnerService.getFilteredAtomicGoalIds(
-                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false);
+    private void assertReviewedBiologySourceSupplement(Learner learner, String jurisdiction, String durationModel, RequiredLearningProjection projection) {
+        Set<String> targets = projection.seedAtomicGoalIds();
         String respirationGoal = "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38";
         String couplingGoal = "32483d30-2162-50a5-a6cc-05b7f2467ab1";
         String disgustReflectionGoal = "55036b74-af78-5217-9e43-c5bdc975c958";
@@ -1795,6 +2043,7 @@ public class LearnerControllerIntegrationTest {
         if (Set.of("DE-MV", "DE-SN", "DE-ST", "DE-TH").contains(jurisdiction)) {
             assertThat(targets).as("systematics comparison outside reviewed SekI scope for %s %s", jurisdiction, durationModel)
                     .doesNotContain("9dff0360-c2e9-5e43-af8b-87e264281cf7");
+            assertOutsideSeedEntersOnlyAsRequiredPreparation(projection, "9dff0360-c2e9-5e43-af8b-87e264281cf7");
         }
         if (Set.of("DE-SN", "DE-ST").contains(jurisdiction)) {
             assertThat(targets).as("morphological classification replaces investigation target for %s %s", jurisdiction, durationModel)
@@ -1896,6 +2145,7 @@ public class LearnerControllerIntegrationTest {
                     .isEqualTo(HttpStatus.OK.value());
             JsonNode g8State = objectMapper.readTree(g8Response.body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g8Projection = requiredLearningProjection(learner);
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
@@ -1907,13 +2157,18 @@ public class LearnerControllerIntegrationTest {
                     .isEqualTo(HttpStatus.OK.value());
             JsonNode g9State = objectMapper.readTree(g9Response.body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            RequiredLearningProjection g9Projection = requiredLearningProjection(learner);
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
-            assertThat(g8Total).as(subject + " " + jurisdiction + " G8 total")
-                    .isEqualTo(Integer.parseInt(scope[3]));
-            assertThat(g9Total).as(subject + " " + jurisdiction + " G9 total")
-                    .isEqualTo(Integer.parseInt(scope[4]));
+            assertThat(g8Projection.seedAtomicGoalIds()).as(subject + " " + jurisdiction + " G8 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[3]));
+            assertThat(g9Projection.seedAtomicGoalIds()).as(subject + " " + jurisdiction + " G9 reviewed seeds")
+                    .hasSize(Integer.parseInt(scope[4]));
+            assertThat(g8Total).as(subject + " " + jurisdiction + " G8 closed learning total")
+                    .isEqualTo(g8Projection.expectedLearningGoalIds().size());
+            assertThat(g9Total).as(subject + " " + jurisdiction + " G9 closed learning total")
+                    .isEqualTo(g9Projection.expectedLearningGoalIds().size());
         }
     }
 
@@ -2101,8 +2356,7 @@ public class LearnerControllerIntegrationTest {
     }
 
     private void assertHessenGkQ21Projection(Learner learner) {
-        Set<String> atomicGoalIds = learnerService.getFilteredAtomicGoalIds(
-                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), CANONICAL_MATH_ROOT_ID, false);
+        Set<String> atomicGoalIds = requiredLearningProjection(learner).seedAtomicGoalIds();
         assertThat(atomicGoalIds)
                 .as("HE-GK Q2.1 retains common functions and its three scoped assessments for %s",
                         learner.getSkillpilotId())

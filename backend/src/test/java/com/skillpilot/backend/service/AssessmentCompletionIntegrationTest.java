@@ -30,7 +30,7 @@ class AssessmentCompletionIntegrationTest {
     static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
     static final String EXAM = "e98672c6-871a-5d0b-889c-5afc51040f0d";
     static final String UNRELATED = "1b67aeb4-2a55-531f-94da-283b4e3df5f1";
-    static final String G9_MISSING_PREREQUISITE_ROLE = "f242a3e8-55a3-492e-8354-b81b24cdbb78";
+    static final String G9_DERIVED_PREREQUISITE = "f242a3e8-55a3-492e-8354-b81b24cdbb78";
     @Autowired LearnerService learners;
     @Autowired LearnerRepository learnerRepository;
     @Autowired MasteryRepository masteryRepository;
@@ -113,7 +113,7 @@ class AssessmentCompletionIntegrationTest {
                 projection, Map.of(), Set.of(PREPARATION));
         CompletionProfileCompiler.PrerequisiteTopology topology = ReflectionTestUtils.invokeMethod(prerequisites, "topology");
         assertThat(topology).isNotNull();
-        assertThat(topology.transitiveGoalPrerequisites(PREPARATION)).hasSize(8).contains(G9_MISSING_PREREQUISITE_ROLE);
+        assertThat(topology.transitiveGoalPrerequisites(PREPARATION)).hasSize(8).contains(G9_DERIVED_PREREQUISITE);
         assertThat(topology.transitiveGoalPrerequisites(EXAM)).hasSize(9).contains(PREPARATION);
         for (String target : List.of(PREPARATION, EXAM)) {
             assertThat(declared).as("authored G8 prerequisite roles for %s", target)
@@ -121,29 +121,50 @@ class AssessmentCompletionIntegrationTest {
         }
     }
 
-    @Test void missingG9RoleBlocksOrdinaryPreparationEvenWithMasteredPrerequisitesOutsideFocus() throws Exception {
+    @Test void g9DerivedPrerequisitePreservesSeedEligibilityFocusAndStrictReadiness() throws Exception {
         assertThat(mapper.readTree(learner.getPersonalCurriculum()).path(ROOT).path("durationModel").asText()).isEqualTo("G9");
         learner.setStrictMode(false);
         Object projection = ReflectionTestUtils.invokeMethod(learners, "getGoalProjection", ROOT, learner.getPersonalCurriculum(), false);
         assertThat(ReflectionTestUtils.<Boolean>invokeMethod(projection, "compositionViewApplied")).isTrue();
         Set<String> targets = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
         Set<String> support = ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
-        assertThat(targets).contains(PREPARATION, EXAM).doesNotContain(G9_MISSING_PREREQUISITE_ROLE);
-        assertThat(support).doesNotContain(G9_MISSING_PREREQUISITE_ROLE);
+        PersonalCurriculumLearningScope learningScope = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+        assertThat(learningScope).isNotNull();
+        assertThat(learningScope.seedAtomicGoalIds()).contains(PREPARATION, EXAM).doesNotContain(G9_DERIVED_PREREQUISITE);
+        assertThat(targets).contains(PREPARATION, EXAM, G9_DERIVED_PREREQUISITE);
+        assertThat(support).doesNotContain(G9_DERIVED_PREREQUISITE);
+        assertThat(learningScope.requiredByPaths()).containsKey(G9_DERIVED_PREREQUISITE);
         Object prerequisites = ReflectionTestUtils.invokeMethod(learners, "frontierPrerequisites", learner,
                 projection, Map.of(), Set.of(PREPARATION));
         CompletionProfileCompiler.PrerequisiteTopology topology = ReflectionTestUtils.invokeMethod(prerequisites, "topology");
         assertThat(topology).isNotNull();
         Set<String> required = topology.transitiveGoalPrerequisites(PREPARATION);
-        assertThat(required).hasSize(8).contains(G9_MISSING_PREREQUISITE_ROLE).doesNotContain(PREPARATION, EXAM);
+        assertThat(required).hasSize(8).contains(G9_DERIVED_PREREQUISITE).doesNotContain(PREPARATION, EXAM);
         Set<String> atomicDemand = topology.transitivePrerequisites(PREPARATION);
-        assertThat(atomicDemand).contains(G9_MISSING_PREREQUISITE_ROLE).doesNotContain(PREPARATION, EXAM);
-        for (String id : atomicDemand) masteryRepository.saveAndFlush(new Mastery(learner, id, 1.0));
+        assertThat(atomicDemand).contains(G9_DERIVED_PREREQUISITE).doesNotContain(PREPARATION, EXAM);
+        assertThat(targets).containsAll(atomicDemand);
+        List<String> witness = learningScope.requiredByPaths().get(G9_DERIVED_PREREQUISITE);
+        assertThat(witness).hasSizeGreaterThanOrEqualTo(2);
+        assertThat(learningScope.seedAtomicGoalIds()).contains(witness.getFirst());
+        assertThat(witness.getLast()).isEqualTo(G9_DERIVED_PREREQUISITE);
+        for (int index = 1; index < witness.size(); index++) {
+            assertThat(topology.directPrerequisites(witness.get(index - 1))).contains(witness.get(index));
+        }
+        // Required learning remains in Level 2, while normal mode keeps this atomic focus local.
+        assertThat(learners.getFrontier(learner.getSkillpilotId())).contains(PREPARATION)
+                .doesNotContain(G9_DERIVED_PREREQUISITE, EXAM);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        learner.setStrictMode(true);
         assertThat(learners.getFrontier(learner.getSkillpilotId())).doesNotContain(PREPARATION);
-        assertThat(learners.getRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).doesNotContain(PREPARATION);
-        assertThat(learners.getUncompactedRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).doesNotContain(PREPARATION);
+        for (String id : atomicDemand) masteryRepository.saveAndFlush(new Mastery(learner, id, 1.0));
+        // Explicit prerequisite results satisfy strict readiness; no assessment or target result is inferred.
+        assertThat(learners.getFrontier(learner.getSkillpilotId())).contains(PREPARATION)
+                .doesNotContain(G9_DERIVED_PREREQUISITE, EXAM);
+        assertThat(learners.getRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).contains(PREPARATION);
+        assertThat(learners.getUncompactedRichFrontier(learner.getSkillpilotId())).extracting(FrontierGoal::id).contains(PREPARATION);
         assertThat(learners.getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), List.of(PREPARATION)))
-                .extracting(FrontierGoal::id).doesNotContain(PREPARATION);
+                .extracting(FrontierGoal::id).contains(PREPARATION);
+        assertThat(learner.getCompletionWorkflow()).isNull();
         assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId())).extracting(PlannedGoal::getGoalId)
                 .containsExactly(PREPARATION);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).allSatisfy(value ->
@@ -991,7 +1012,9 @@ class AssessmentCompletionIntegrationTest {
                 new CompletionProfileCatalog(Map.of(), Map.of(), "empty-generation")));
         var originalResolver = (CompletionCanonicalGraphResolver) ReflectionTestUtils.getField(learners, "completionCanonicalGraphResolver");
         Set<String> levelTwoTargets = learners.getFilteredAtomicGoalIds(ROOT, learner.getPersonalCurriculum(), null, false);
-        var resolver = ordinaryPrerequisiteResolver(originalResolver, levelTwoTargets);
+        assertThat(levelTwoTargets).contains(PREPARATION, EXAM, UNRELATED).hasSizeGreaterThan(3);
+        // The transaction already contains the strict personal-scope projection; observe reviewed-profile loads only.
+        var resolver = org.mockito.Mockito.spy(originalResolver);
         ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", resolver);
         long before = learner.getCoachStateRevision();
         try {
@@ -1005,30 +1028,8 @@ class AssessmentCompletionIntegrationTest {
             assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
                     .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
             assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
-            org.mockito.Mockito.verify(resolver, org.mockito.Mockito.never()).load(org.mockito.ArgumentMatchers.anyString());
-            org.mockito.Mockito.verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq(ROOT),
-                    org.mockito.ArgumentMatchers.eq(levelTwoTargets), org.mockito.ArgumentMatchers.anyMap());
-            org.mockito.Mockito.verifyNoMoreInteractions(resolver);
+            org.mockito.Mockito.verifyNoInteractions(resolver);
         } finally { ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", originalResolver); }
-    }
-
-    private CompletionCanonicalGraphResolver ordinaryPrerequisiteResolver(
-            CompletionCanonicalGraphResolver original, Set<String> levelTwoTargets) {
-        assertThat(levelTwoTargets).contains(PREPARATION, EXAM, UNRELATED).hasSizeGreaterThan(3);
-        var resolver = org.mockito.Mockito.spy(original);
-        org.mockito.Mockito.doAnswer(call -> {
-            Set<String> targets = call.getArgument(1);
-            Map<String, com.skillpilot.backend.landscape.LearningGoal> support = call.getArgument(2);
-            assertThat(targets).containsExactlyInAnyOrderElementsOf(levelTwoTargets);
-            assertThat(support.keySet()).containsAll(levelTwoTargets);
-            @SuppressWarnings("unchecked")
-            Map<String, com.skillpilot.backend.landscape.LearningGoal> graph =
-                    (Map<String, com.skillpilot.backend.landscape.LearningGoal>) call.callRealMethod();
-            assertThat(graph.keySet()).containsAll(levelTwoTargets);
-            return graph;
-        }).when(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq(ROOT),
-                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
-        return resolver;
     }
 
     @Test void inapplicableUnselectedProfileDoesNotPublishAnEmptyPicker() {
@@ -1210,7 +1211,9 @@ class AssessmentCompletionIntegrationTest {
         ReflectionTestUtils.setField(learners, "completionApplicationService", new CompletionApplicationService(
                 new CompletionProfileCatalog(Map.of(PROFILE, synthetic), Map.of(scope.id(), scope), "q-only-generation")));
         Set<String> levelTwoTargets = learners.getFilteredAtomicGoalIds(ROOT, learner.getPersonalCurriculum(), null, false);
-        var resolver = ordinaryPrerequisiteResolver(originalResolver, levelTwoTargets);
+        assertThat(levelTwoTargets).contains(PREPARATION, EXAM, UNRELATED).hasSizeGreaterThan(3);
+        // The transaction already contains the strict personal-scope projection; observe reviewed-profile loads only.
+        var resolver = org.mockito.Mockito.spy(originalResolver);
         org.mockito.Mockito.doReturn(definitions).when(resolver).load(ROOT);
         ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", resolver);
         try {
@@ -1227,8 +1230,6 @@ class AssessmentCompletionIntegrationTest {
                     .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
             assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
             org.mockito.Mockito.verify(resolver).load(ROOT);
-            org.mockito.Mockito.verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq(ROOT),
-                    org.mockito.ArgumentMatchers.eq(levelTwoTargets), org.mockito.ArgumentMatchers.anyMap());
             org.mockito.Mockito.verifyNoMoreInteractions(resolver);
         } finally { ReflectionTestUtils.setField(learners, "completionCanonicalGraphResolver", originalResolver); }
     }

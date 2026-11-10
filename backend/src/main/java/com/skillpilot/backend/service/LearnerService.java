@@ -2697,11 +2697,7 @@ public class LearnerService {
         for (Mastery m : mastered) {
             result.put(m.getGoalKey(), m.getValue());
         }
-        String curriculumId = learner.getSelectedCurriculum();
-        Map<String, LearningGoal> goals = Collections.emptyMap();
-        if (curriculumId != null) {
-            goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-        }
+        Map<String, LearningGoal> goals = masteryProjectionGoals(learner);
         String projectionStateFilterId = resolveProjectionStateFilterId(learner);
         Map<String, Double> projected = applyCanonicalMasteryProjection(goals, result, projectionStateFilterId);
         return applySrsMasteryOverlay(skillpilotId, goals, projected);
@@ -2715,17 +2711,24 @@ public class LearnerService {
         for (Mastery m : mastered) {
             result.put(m.getGoalKey(), new MasteryEntryDTO(m.getValue(), m.getUpdatedAt()));
         }
-        String curriculumId = learner.getSelectedCurriculum();
-        Map<String, LearningGoal> goals = Collections.emptyMap();
-        if (curriculumId != null) {
-            goals = getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
-        }
+        Map<String, LearningGoal> goals = masteryProjectionGoals(learner);
         String projectionStateFilterId = resolveProjectionStateFilterId(learner);
         Map<String, MasteryEntryDTO> projected = applyCanonicalMasteryProjectionWithTimestamps(
                 goals,
                 result,
                 projectionStateFilterId);
         return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
+    }
+
+    /** Historical result reads retain their seed aliases/overlays without compiling a retired acquisition graph. */
+    private Map<String, LearningGoal> masteryProjectionGoals(Learner learner) {
+        String curriculumId = learner.getSelectedCurriculum();
+        if (curriculumId == null) return Collections.emptyMap();
+        if (isReadOnlyCompatibilitySession(learner)) {
+            // Keep this result out of the full learning-projection cache.
+            return computeSeedGoalProjection(curriculumId, learner.getPersonalCurriculum(), false).visibleGoals();
+        }
+        return getFilteredGoals(curriculumId, learner.getPersonalCurriculum());
     }
 
     @Transactional(readOnly = true)
@@ -10736,6 +10739,14 @@ public class LearnerService {
             String curriculumId,
             String personalCurriculumJson,
             boolean ignoreCourseFilters) {
+        GoalProjection seeds = computeSeedGoalProjection(curriculumId, personalCurriculumJson, ignoreCourseFilters);
+        return ignoreCourseFilters ? seeds : closePersonalCurriculumLearningScope(curriculumId, seeds);
+    }
+
+    private GoalProjection computeSeedGoalProjection(
+            String curriculumId,
+            String personalCurriculumJson,
+            boolean ignoreCourseFilters) {
         SkillLandscape root = landscapeService.getById(curriculumId);
         Map<String, Map<String, Object>> config = parsePersonalCurriculumConfig(personalCurriculumJson);
         List<SkillLandscape> runtimeLandscapes =
@@ -10842,13 +10853,12 @@ public class LearnerService {
             }
         }
         if (!ignoreCourseFilters) {
-            GoalProjection seeds = applyCompositionViewProjection(
+            return applyCompositionViewProjection(
                     curriculumId,
                     allGoals,
                     structuralGoals,
                     config,
                     runtimeLandscapes);
-            return closePersonalCurriculumLearningScope(curriculumId, seeds);
         }
         return identityGoalProjection(allGoals, structuralGoals);
     }

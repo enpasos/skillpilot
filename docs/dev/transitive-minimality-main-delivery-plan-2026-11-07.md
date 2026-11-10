@@ -29,10 +29,13 @@ auf Main `0bf53b1252` geliefert; alle drei PR- und frischen Main-Dokumentjobs
 sind bestanden. Die zugehörige Runtimekorrektur entsteht im sichtbaren Branch
 `fix/personal-curriculum-prerequisite-closure`: bestehende Normalisierung,
 vollständige atomare Lernmenge, echte Fremdfachauslieferung und WebGUI-
-Navigation verwenden dieselbe Basis. Der frische gezielte Java-Lauf besteht
-66/66 Tests ohne Skips bei 790 unveränderten benannten Eingaben; TypeScript,
-Lint und die tatsächliche Chromium-Gegenprobe bestehen ebenfalls. Dies ist
-lokale Teilabnahme. Ungefiltertes Backend, native Gesamtmatrix, Curriculum-/
+Navigation verwenden dieselbe Basis. Im [Draft-PR #113](https://github.com/enpasos/skillpilot/pull/113)
+sind die gezielten Backendfolgeprüfungen für historische Ergebniszugriffe,
+Lernumfang und Abschlüsse bestanden. Der [Folgenachweis](https://github.com/enpasos/skillpilot/blob/main/qa-artifacts/ci-contract-audit/2026-11-10/personal-curriculum-prerequisite-closure/README.md)
+trennt aktuelle Gegenproben, unverändert übernommene Ergebnisse und die
+vorherigen fehlgeschlagenen Läufe. TypeScript, Lint und die tatsächliche
+Chromium-Gegenprobe des Ausgangsstands bestehen ebenfalls. Dies ist lokale
+Teilabnahme. Ungefiltertes Backend, native Gesamtmatrix, Curriculum-/
 Remote-CI und Main-Lieferung der Runtime bleiben offen. Danach folgen die
 getrennten Anwendbarkeits-/Proofkorrekturen für den gesicherten Biologiestand;
 G17 in der Standard-Meilensteinprüfung bleibt das vollständige Ziel.

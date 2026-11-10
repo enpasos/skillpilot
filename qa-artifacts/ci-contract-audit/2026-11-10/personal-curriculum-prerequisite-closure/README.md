@@ -13,24 +13,44 @@ amtliche Quellenzuordnung bleibt erhalten. Die WebGUI übernimmt diese Basis,
 erhält die tatsächliche atomare Zielbasis von Clustern und zeigt sonst unplatzierte Atome unter einer reinen
 Navigationsgruppe. Diese Gruppe kann kein künstliches Fokusziel werden.
 
-Der tatsächliche frische Java-Lauf besteht 66/66 Tests ohne Fehler oder Skips:
-neun reine Hüllentests, acht Service-Integrationstests und sämtliche 49
-weitergeführten Rollenregressionen. Alle 790 benannten Eingaben bleiben während
-dieses Laufs unverändert. Geprüft sind unter anderem der reale Chemiefall
-Brønsted → Symbole/Formeln, tatsächliche Planungszähler und Abschlusszielinputs,
-kanonische Clusterkinder, fehlende Referenzen, Zyklen, Rollenpriorität, normaler
-und strikter Fokus sowie reine Fremdfachauslieferung ohne Mastery-Schreibzugriff.
-Abschlusszielinputs sind kein kompletter Abschlussworkflow.
+Der aktuelle Folgepatch erhält historische Mastery-Lesezugriffe einschließlich
+Werten, Zeitstempeln, Kursfiltern und SRS ohne Schreibzugriff. Die neue Gegenprobe
+aktiviert den tatsächlichen Transaktionscache; ungültige Lernprojektionen
+scheitern vor und nach solchen Lesezugriffen weiterhin hart.
+
+Gezielt bestanden sind die vollständigen Klassen für Lernumfang (9),
+automatische Frontiers (14) und geprüfte Abschlüsse (56 ausgeführte Fälle),
+sowie zuvor 117 unveränderte Fälle der reinen Normalisierung, Rollen und realen
+kanonischen Projektion. Im letzten vollständigen Controllerlauf bestanden
+36 von 37 Fällen. Der neue Mathematik-Testvergleich hatte den vorhandenen
+Fallback auf archivierte Quellbäume ausgelassen. Nach dessen Korrektur bestehen
+die beiden betroffenen Mathematik-/Physik-Championfälle frisch 2/2; die übrigen
+35 Controllerfälle wurden danach nicht erneut ausgeführt.
+
+Die Tests behalten alte Ausgangsmengen und Champion-Herkunftsbeschränkungen.
+Neue Lernziele und Zeugenpfade werden unabhängig gegen kanonischen Bedarf
+geprüft. Die API-Aufbereitung der Geltungsbereiche wird mit ihrer bisherigen
+DTO-Ausgabe verglichen; rohe Felder bleiben über den Closureexport unverändert.
+Dies ist kein Vorher-/Nachher-Nachweis ab dem ersten State-Aufruf; getrennte
+Servicefixtures prüfen Erwerbsprojektionen auf unveränderte Quelldaten.
+
+Der [Folgenachweis](followup-acceptance.json) bindet tatsächliche Ausführungen,
+unveränderte Quellen und deren Grenzen. Die früheren fehlgeschlagenen Läufe
+bleiben erhalten. Der geplante 112er-Lauf führte tatsächlich 116 Fälle aus,
+weil vier parametrisierte Assessmentfälle zunächst nicht mitgezählt waren;
+seine falsche Erwartungszahl wurde nicht nachträglich umgeschrieben. Die
+ursprünglichen [66/66-Quellbindungen](local-acceptance.json) gelten nur für den
+alten Commit. Ebenso bleibt der Remote-Assessment-Fehler mit 17 von 351 Fällen
+auf `c8d7e381ee` dokumentiert; die beiden betroffenen Klassen bestehen jetzt
+lokal. Frische vollständige Remote-Abnahme ist weiterhin offen.
 
 TypeScript, Lint, direkte Darstellungsregressionen und die echte Chromium-
 Gegenprobe bestehen. Letztere prüft auch die Navigation einer benötigten
 Fremdfachgrundlage innerhalb eines eigenständigen Chemie-Lehrplans. Die neuen
 Gegenfälle sind in die bestehenden npm-/CI-Prüfpfade eingebunden.
 
-Der [kompakte Nachweis](local-acceptance.json) bindet Quellen und tatsächliche
-JUnit-Ergebnisse. Frühere fehlgeschlagene und durch eine Quellenänderung
-beeinträchtigte Läufe bleiben als solche archiviert; ihre Belege wurden nicht
-umgebunden. Kanonische Fachdaten und die zehn Reifegraduntergrenzen ändern sich
+Frühere fehlgeschlagene und durch eine Quellenänderung beeinträchtigte Läufe
+bleiben als solche archiviert; ihre Belege wurden nicht umgebunden. Kanonische Fachdaten und die zehn Reifegraduntergrenzen ändern sich
 in dieser Korrektur nicht.
 
 Ungefiltertes Backend, native Gesamtmatrix, regulärer Curriculum-Producer,
