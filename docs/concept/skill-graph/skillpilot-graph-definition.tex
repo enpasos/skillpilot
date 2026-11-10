@@ -37,11 +37,21 @@
 \setlist{nosep,leftmargin=*,topsep=4pt}
 \setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}
 \captionsetup{font=small,labelfont=bf,skip=7pt}
+% Figures float within their section; generous fractions keep a large figure
+% on a page together with running text instead of on a page of its own.
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.1}
+\renewcommand{\floatpagefraction}{.8}
 \renewcommand{\arraystretch}{1.18}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \renewcommand{\tabularxcolumn}[1]{>{\raggedright\arraybackslash}p{#1}}
 \setlength{\emergencystretch}{2em}
 \newcommand{\code}[1]{\texttt{#1}}
+% Notation: italic capitals are sets and relations, italic lower-case letters
+% are arbitrary goals. \nd marks one concrete example node of a figure and
+% repeats the figure's own label, so that node A is never read as the set A.
+\newcommand{\nd}[1]{\ensuremath{\mathsf{#1}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Pow}{\mathcal{P}}
@@ -51,12 +61,10 @@
 \DeclareMathOperator{\Anc}{Anc}
 \DeclareMathOperator{\Desc}{Desc}
 \DeclareMathOperator{\ReqAtoms}{RequiredAtoms}
+\DeclareMathOperator{\Closure}{Closure}
 \DeclareMathOperator{\Pre}{Pre}
 \DeclareMathOperator{\Missing}{Missing}
 \DeclareMathOperator{\MissingAtoms}{MissingAtoms}
-\DeclareMathOperator{\Due}{Due}
-\DeclareMathOperator{\Verified}{Verified}
-\DeclareMathOperator{\Consumers}{Consumers}
 \DeclareMathOperator{\Complete}{Complete}
 \DeclareMathOperator{\Own}{Own}
 \DeclareMathOperator{\Children}{Children}
@@ -69,25 +77,26 @@
 \DeclareMathOperator{\Work}{Work}
 \DeclareMathOperator{\Reserve}{Reserve}
 \DeclareMathOperator{\Budget}{Budget}
-\newcommand{\Discharged}{\mathrm{Discharged}}
-\newcommand{\Active}{\mathrm{Active}}
 \newcommand{\Score}{\mathit{score}}
 \newcommand{\Passed}{\mathit{passed}}
 \newcommand{\MaxPoints}{\mathit{maxPoints}}
 \newcommand{\PassingPoints}{\mathit{passingPoints}}
 \newcommand{\Reff}{R_{\mathrm{eff}}}
+\newcommand{\Rat}{R_{\mathrm{at}}}
+\newcommand{\Meff}{M_{\mathrm{eff}}}
 \newcommand{\srcref}[2]{\href{https://github.com/enpasos/skillpilot/blob/main/#1}{#2}}
+\newcommand{\sources}[1]{\par\medskip{\small\noindent\textbf{Quellen.}~#1\par}}
 \newtcolorbox{principle}[1]{breakable,colback=lightteal,colframe=teal,
  boxrule=.5pt,arc=1mm,left=3mm,right=3mm,top=2mm,bottom=2mm,
  title={#1},fonttitle=\sffamily\bfseries}
 \newcommand{\sourcefig}[4][.48\textheight]{%
- \begin{figure}[H]\centering
+ \begin{figure}[htbp]\centering
  \includegraphics[width=\linewidth,height=#1,keepaspectratio]{assets/graph-definition/#2}
 \caption[\csname title#4\endcsname]{#3}\label{#4}\end{figure}}
 \expandafter\def\csname titlefig:overview\endcsname{Ziele und zwei Kantenarten}
 \expandafter\def\csname titlefig:contains\endcsname{Direkte und indirekte Zugehörigkeit}
 \expandafter\def\csname titlefig:requires\endcsname{Direkte Voraussetzungen}
-\expandafter\def\csname titlefig:inheritance\endcsname{Vom Cluster geerbte Voraussetzungen}
+\expandafter\def\csname titlefig:inheritance\endcsname{Vom Cluster geerbte Anforderungen}
 \expandafter\def\csname titlefig:cycles\endcsname{Effektive Zyklen durch Vererbung}
 \expandafter\def\csname titlefig:frontier\endcsname{Die nächsten verfügbaren Ziele}
 \expandafter\def\csname titlefig:filters\endcsname{Normalmodus und strikter Modus}
@@ -109,22 +118,23 @@ Die Graph-Definition\par von SkillPilot\par}
 Deutsche Gesamtdarstellung, Stand \textbf{9. November 2026}.
 SkillPilot beschreibt Lernziele und ihre Beziehungen: \code{contains}
 gliedert Ziele, \code{requires} benennt fachliche Voraussetzungen.
-Vom kanonischen Zielbestand über das persönliche Curriculum bis zum
+Vom kanonischen Zielbestand über das Personal Curriculum bis zum
 aktuellen Fokus und den gespeicherten Ergebnissen bleiben die Zielidentitäten
 erhalten. \textbf{Lerneinheiten} verbinden ein Lernversprechen mit eigenen
-Zielen und Kindlerneinheiten; Zeitpläne ordnen deren Erwerb verfügbarem
+Zielen und Kindeinheiten; Zeitpläne ordnen deren Erwerb verfügbarem
 Kalender und Budget zu. Ausdrücklich festgestelltes Verstehen und durch
 gültige lokale Prüfungen belegte selbstständige Anwendung zählen beide
 zur effektiv beherrschten Zielmenge.
 
 \smallskip\textbf{Geltung und Umsetzung.}
-Die atomare Zielnorm und die Bereinigungsreihenfolge sind verbindlich.
+Die atomare Normalform $R\subseteq A\times A$ und die Migrationsreihenfolge
+dorthin sind verbindlich.
 Anhang~\ref{sec:rule-milestones} ordnet die Regeln ihren Prüfgebieten zu und
 grenzt vorhandene Gates ab. Die neue globale Anwendungsanerkennung ist auf
 der geprüften Hauptlinie \textbf{noch nicht implementiert};
 Anhang~\ref{sec:implementation} beschreibt den Unterschied zum bisherigen
 Modell. Der Abschluss einer Lerneinheit wird aus eigenen Pflichten und
-Kindern abgeleitet, ohne eine zusätzliche Masterystufe zu speichern.
+Kindern abgeleitet, ohne eine zusätzliche Mastery-Stufe zu speichern.
 \end{principle}
 \vspace{6mm}
 {\small SkillPilot · enpasos -- Enterprise Patterns \& Solutions GmbH\par
@@ -136,15 +146,23 @@ Didaktische Abbildungen: projektbezogene Inhaltslizenz CC BY 4.0; siehe Anhang.}
 \markboth{Leserführung}{Leserführung}
 \addcontentsline{toc}{section}{Leserführung und Geltungsbereich}
 Ein SkillPilot-Graph beschreibt, \emph{was} gelernt werden kann und welche
-Voraussetzungen dabei gelten. Curriculare Sichten bestimmen, welche dieser
-stabilen Ziele für eine Person gelten. Der Lernzustand hält für jedes atomare
-Ziel fest, ob es geschafft ist. Planung verteilt Erwerb und Übung auf verfügbare Zeit.
-Lerneinheiten erklären den fachlichen Zusammenhang vom überschaubaren
-Thema bis zum größeren Fachgebiet. Ihr Abschluss wird rekursiv aus
-Kindern und eigenen Pflichten abgeleitet, nicht pauschal gespeichert.
+Voraussetzungen dabei gelten. Darauf bauen vier weitere Aussagen auf, die das
+Modell bewusst getrennt hält:
+\begin{itemize}
+\item \textbf{Curriculare Sichten} bestimmen, welche dieser stabilen Ziele
+ für eine Person gelten und wo sie in einem Bildungsgang stehen.
+\item Der \textbf{Lernzustand} hält für jedes atomare Ziel fest, ob es
+ geschafft ist.
+\item \textbf{Lerneinheiten} erklären den fachlichen Zusammenhang vom
+ überschaubaren Thema bis zum größeren Fachgebiet. Ihr Abschluss wird
+ rekursiv aus Kindern und eigenen Pflichten abgeleitet, nicht pauschal
+ gespeichert.
+\item Die \textbf{Planung} verteilt Erwerb und Übung auf verfügbare Zeit.
+\end{itemize}
 Die Ableitung impliziter Beherrschung verbindet ausdrückliche Ergebnisse,
-transitive Voraussetzungen und fachlich geprüfte lokale Abschlussverträge. Diese Aussagen dürfen sich aufeinander beziehen,
-aber nicht stillschweigend gegenseitig ersetzen.
+transitive Voraussetzungen und fachlich geprüfte lokale Verträge der
+Lerneinheiten. Alle diese Aussagen dürfen sich aufeinander beziehen, aber
+nicht stillschweigend gegenseitig ersetzen.
 
 Diese Referenz ist für die deutschsprachige gemeinsame Prüfung und
 Weiterentwicklung des Modells bestimmt. Sie behandelt die Graph-Definition
@@ -154,28 +172,183 @@ Qualitätssicherung. Fachliche Lehrplaninhalte und konkrete Aufgabenbestände
 werden nicht vollständig abgedruckt. Die Beispiele sind Veranschaulichungen,
 keine als Curriculum freigegebenen Teilgraphen.
 
-\begin{center}\begin{tabularx}{\linewidth}{@{}P{35mm}X@{}}
+\subsection*{Das Modell in sieben Schritten}
+Die Schritte nehmen den Gedankengang des Dokuments vorweg. Die englischen
+Zielnamen stammen aus dem Mechanik-Beispiel der englischen
+Originalabbildungen, erstmals in Abbildung~\ref{fig:overview}.
+\begin{enumerate}
+\item \textbf{Ziele und zwei Kantenarten.} Ein Lernziel hat eine stabile
+ Identität. \code{contains} gliedert: \emph{Kinematics} enthält
+ \emph{Velocity}. \code{requires} nennt fachliche Voraussetzungen:
+ \emph{Velocity} setzt \emph{Vectors} voraus. Gliederung allein begründet
+ keine Voraussetzung (Abschnitte~\ref{sec:core} und~\ref{sec:relations}).
+\item \textbf{Atome und Cluster.} Ziele ohne Kinder sind atomar; nur für sie
+ wird ein Ergebnis gespeichert. Cluster gliedern. Im Zielzustand verbindet
+ jede verfasste Anforderung ein Atom mit einem Atom, und keine ist
+ überflüssig. Ältere Anforderungen an oder von Clustern bleiben als
+ Übergangsbestand lesbar (Abschnitte~\ref{sec:relations}
+ und~\ref{sec:validity}).
+\item \textbf{Lernzustand und Frontier.} Je atomarem Ziel gibt es genau ein
+ gespeichertes binäres Ergebnis. Als Nächstes verfügbar -- in der
+ \emph{Frontier} -- ist ein offenes Atom erst, wenn alle Atome beherrscht
+ sind, die es direkt oder über Ketten voraussetzt (Abschnitt~\ref{sec:state}).
+\item \textbf{Ausschnitte.} Das Personal Curriculum legt den längerfristigen
+ persönlichen Umfang fest, der Fokus den vorübergehenden Arbeitsbereich.
+ Abgeleitet wird stets im ganzen Graphen und erst danach eingeschränkt. Der
+ Normalmodus prüft die Voraussetzungen innerhalb des Ausschnitts, der
+ strikte Modus alle (Abschnitte~\ref{sec:filters}
+ bis~\ref{sec:personal-scope}).
+\item \textbf{Zieltypen.} Der Zieltyp bestimmt, wann ein Ziel als geschafft
+ gilt: ein Inhaltsziel durch festgestelltes Verstehen, ein
+ Orientierungsziel durch den abgeschlossenen Einstieg, ein Memorierziel
+ durch verifizierten Abruf, ein Prüfungsziel durch die bestandene Prüfung
+ (Abschnitt~\ref{sec:goal-types}).
+\item \textbf{Lerneinheiten.} Eine Lerneinheit verbindet ein Lernversprechen
+ mit eigenen Zielen und Kindeinheiten. Ihr Abschluss wird aus diesen
+ Pflichten abgeleitet und nicht zusätzlich gespeichert
+ (Abschnitt~\ref{sec:learning-units}).
+\item \textbf{Implizite Beherrschung.} Sobald keine offene Prüfung und kein
+ offenes Memorierziel einer Lerneinheit ein eigenes Inhaltsziel mehr
+ benötigt, gilt dieses Ziel als selbstständig angewandt -- vorausgesetzt,
+ der lokale Vertrag der Einheit ist fachlich geprüft und gültig.
+ Ausdrücklich festgestelltes Verstehen und so belegte Anwendung bilden
+ zusammen die effektiv beherrschte Menge; beide erfüllen spätere
+ Voraussetzungen und zählen zum Fortschritt
+ (Abschnitt~\ref{sec:assessment}).
+\end{enumerate}
+
+\subsection*{Aufbau, Status und Regelkennungen}
+Jeder Teil beantwortet eine Leitfrage und hat einen eigenen Status. Die
+letzte Spalte nennt die Kennungen, unter denen
+Anhang~\ref{sec:rule-milestones} die Regeln des Teils führt, etwa
+\code{GD-C07} für eine Regel des formalen Kerns.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}P{33mm}XP{35mm}P{12mm}@{}}
+\toprule
+Abschnitte & Leitfrage & Status & Regeln \\
+\midrule
+\ref{sec:core}--\ref{sec:filters}: Formaler Kern & Was kann gelernt werden,
+was setzt es voraus, und was ist als Nächstes verfügbar -- im ganzen Graphen
+und in einem Ausschnitt? & Normativer Kern & \code{GD-C}\\
+\ref{sec:context-model}--\ref{sec:evidence-context}: Kontext, Sichten,
+Zieltypen, Qualität & Wo steht ein Ziel in einem Bildungsgang, was gehört zum
+persönlichen Umfang, wann gilt ein Ziel als geschafft, und woher stammt es? &
+Angrenzender Vertrag & \code{GD-X}\\
+\ref{sec:learning-units}: Lerneinheiten & Welche Ziele bilden ein fachliches
+Ganzes, und wann ist es abgeschlossen? & Fachliche Struktur & \code{GD-U}\\
+\ref{sec:levels}: Erwerbs- und Zeitplanung & Lässt sich der Erwerb in eine
+Reihenfolge und ein Zeitbudget einpassen? & Optionales Profil & \code{GD-P}\\
+\ref{sec:assessment}: Implizite Beherrschung & Wann belegt eine bestandene
+Prüfung auch die Ziele, auf denen sie aufbaut? & Verbindliches Konzept,
+noch nicht implementiert & \code{GD-A}\\
+Anhänge \ref{sec:rule-milestones}--\ref{sec:build} & Wie wird welche Regel
+geprüft, wo weicht die Implementierung ab, und was bedeuten Begriffe und
+Symbole? & Nachschlageteil & \code{GD-D}\\
+\bottomrule
+\end{tabularx}\end{center}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}P{35mm}X@{}}
 \toprule
 Status & Bedeutung in dieser Referenz \\
 \midrule
 Normativer Kern & Verbindliche mathematische Graphsemantik aus
 \code{graph-definition.md}; zusätzliche Profile können strengere Regeln setzen.\\
 Angrenzender Vertrag & Semantik von Projektion, Zieltypen, Quellen oder
-Lernablauf; Implementierungsstand ist jeweils gesondert zu prüfen.\\
+Lernablauf; der Implementierungsstand ist jeweils gesondert zu prüfen.\\
 Fachliche Struktur & Rekursive Lerneinheiten mit Lernversprechen,
-eigenen Zielen und abgeleitetem Abschluss; kein behauptetes Runtimefeature.\\
-Optionales Profil & Zeit-/Budgetplanung und bedingte Einheitszugänge;
-harte Sperren und direkter Prüfungszugriff sind dafür noch nicht entschieden.\\
-Umsetzungsgrenze & Neuer Abschlussvertrag noch nicht implementiert;
-der bestehende Code folgt einem abweichenden Bedarfsmodell.\\
+eigenen Zielen und abgeleitetem Abschluss; keine behauptete Laufzeitfunktion.\\
+Optionales Profil & Zeit- und Budgetplanung sowie bedingte Zugänge zu
+Lerneinheiten; harte Sperren und der direkte Prüfungszugang sind dafür noch
+nicht entschieden.\\
+Noch nicht implementiert & Die neue Anerkennung impliziter Beherrschung ist
+verbindlich beschrieben, aber nicht umgesetzt; der bestehende Code folgt
+einem abweichenden Bedarfsmodell (Anhang~\ref{sec:implementation}).\\
 \bottomrule
 \end{tabularx}\end{center}
 
+Wer Curricula verfasst, braucht vor allem die
+Abschnitte~\ref{sec:core} bis~\ref{sec:validity}, \ref{sec:goal-types}
+und~\ref{sec:evidence-context}. Für die Laufzeitlogik sind die
+Abschnitte~\ref{sec:state}, \ref{sec:filters}, \ref{sec:personal-scope}
+und~\ref{sec:assessment} maßgeblich, für Qualitätssicherung und Review
+zusätzlich die Anhänge~\ref{sec:rule-milestones}
+bis~\ref{sec:test-strategy}. Die Abschnitte~\ref{sec:learning-units}
+und~\ref{sec:levels} richten sich an alle, die Kurse gliedern und planen.
+
+\subsection*{Lesekonventionen}
+\textbf{Verbindlichkeit.} \glqq Muss\grqq, \glqq darf nicht\grqq{} und
+\glqq verbindlich\grqq{} kennzeichnen Regeln des Modells.
+\glqq Noch nicht implementiert\grqq{} heißt: verbindlich beschrieben, aber
+in der Laufzeit nicht umgesetzt. \glqq Optional\grqq{} kennzeichnet ein
+Zusatzprofil, \glqq offen\grqq{} oder \glqq noch nicht entschieden\grqq{}
+eine bewusst unentschiedene Frage.
+
+\textbf{Schreibweisen.} Kursive Großbuchstaben bezeichnen Mengen und
+Relationen ($G$, $A$, $R$, $M$), kursive Kleinbuchstaben beliebige Ziele
+($g$, $p$, $a$). Konkrete Beispielknoten einer Abbildung stehen aufrecht und
+serifenlos, genau wie im Bild beschriftet: In der Kette
+$\nd{Q}\to\nd{B}\to\nd{A}$ ist \nd{A} ein einzelnes Ziel, nicht die Menge
+$A$ der atomaren Ziele. Ausgeschriebene Beispielnamen wie \emph{Velocity}
+sind kursiv gesetzt. Pfeile zeigen stets in Richtung der Relation, also
+vom Cluster zum Kind und vom Ziel zu seiner Voraussetzung.
+Schreibmaschinenschrift kennzeichnet Feld- und Bezeichnernamen wie
+\code{requires}. Die sieben englisch beschrifteten Abbildungen sind
+unveränderte Originale der Quellspezifikation; die Bildunterschriften
+erläutern ihre Beschriftungen.
+
+\textbf{Begriffe.} Die folgenden Begriffe werden leicht verwechselt und
+deshalb durchgehend in genau dieser Bedeutung verwendet.
+Anhang~\ref{sec:glossary} enthält das vollständige Verzeichnis der Begriffe
+und Symbole.
+
+\begingroup\small
+\begin{longtable}{@{}P{38mm}P{110mm}@{}}
+\toprule
+Begriffe & Bedeutung in diesem Dokument \\
+\midrule\endhead
+Anforderung, Voraussetzung & Die Kante $(g,p)\in R$ ist eine
+\emph{Anforderung} von $g$; das Ziel $p$ ist eine \emph{Voraussetzung}
+von $g$.\\
+verfasst, abgeleitet & \emph{Verfasst} sind nur die gespeicherten
+\code{contains}- und \code{requires}-Kanten. Geerbte, effektive und atomar
+normalisierte Anforderungen sowie Hüllen werden daraus \emph{abgeleitet}.\\
+Zielzustand, Übergangsbestand & \emph{Zielzustand} heißt der angestrebte
+Zustand der kanonischen Daten: atomare Normalform und transitive
+Minimalität. \emph{Übergangsbestand} sind heutige Daten, die noch
+Clusteranforderungen enthalten. Der Lernstand eines einzelnen Ziels ist
+damit nie gemeint.\\
+Mastery, implizite Beherrschung, effektiv beherrscht & \emph{Mastery} ist
+das gespeicherte ausdrückliche Ergebnis (Menge $M$). \emph{Implizite
+Beherrschung} wird abgeleitet (Menge $I_U$). \emph{Effektiv beherrscht} ist
+die Vereinigung beider (Menge $\Meff$).\\
+Inhaltsziel, geschütztes Ziel & \emph{Inhaltsziel} heißt das gewöhnliche
+fachliche Lernziel; Abbildungen beschriften es mit \glqq gewöhnlich\grqq.
+\emph{Geschützt} sind Prüfungs- und Memorierziele: Sie werden nie implizit
+bestanden.\\
+Cluster, Lerneinheit, Programmeinheit & Ein \emph{Cluster} ist ein Ziel mit
+\code{contains}-Kindern. Eine \emph{Lerneinheit} ist eine eigens
+autorisierte fachliche Einheit mit Lernversprechen. Eine
+\emph{Programmeinheit} ist ein organisatorischer Abschnitt wie Jahrgang
+oder Semester.\\
+Stufe & Personalisierungsstufe (Level~1--4), Reifegrad der Curriculum-QA
+(M0--M7), Planungsstufe eines Zeitplans, Schulstufe und das
+Schwierigkeitsfeld \code{level} sind fünf verschiedene Dinge.\\
+\bottomrule
+\end{longtable}
+\addtocounter{table}{-1}% unnumbered table: keep "Tabelle 1" for the first caption
+\endgroup
+
+\subsection*{Quellen und Grenzen der Aussagen}
 Die fachlichen Verträge im Repository bleiben die maßgeblichen
-Einzelquellen. Der Anhang ordnet alle Kapitel diesen Quellen zu und nennt
-beim Erstellen überprüfte Implementierungsabweichungen. Mathematische
-Beispiele, Bildunterschriften und Plausibilitätsprüfungen ersetzen weder
-fachliche Aufgabenreviews noch Untersuchungen mit Lernenden.
+Einzelquellen. Anhang~\ref{sec:sources} ordnet alle Kapitel diesen Quellen
+zu. Anhang~\ref{sec:implementation} stellt die datierten Entscheidungen des
+Product Owners zusammen, auf die der Text verweist, und nennt die beim
+Erstellen überprüften Implementierungsabweichungen. Mathematische Beispiele,
+Bildunterschriften
+und Plausibilitätsprüfungen ersetzen weder fachliche Aufgabenreviews noch
+Untersuchungen mit Lernenden.
 
 \clearpage
 \ohead{Inhalt und Abbildungen}
@@ -183,19 +356,19 @@ fachliche Aufgabenreviews noch Untersuchungen mit Lernenden.
 \bigskip
 \listoffigures
 \clearpage
-\ohead{Formales Graphmodell}
+\ohead{Formaler Kern}
 \input{latex/graph-core.tex}
 \clearpage
-\ohead{Curriculare Sichten und Lernzustand}
+\ohead{Kontext, Sichten, Zieltypen und Qualität}
 \input{latex/graph-context.tex}
 \clearpage
 \ohead{Rekursive Lerneinheiten}
 \input{latex/graph-learning-units.tex}
 \clearpage
-\ohead{Optionale Zeit- und Budgetplanung}
+\ohead{Optionale Erwerbs- und Zeitplanung}
 \input{latex/graph-planning.tex}
 \clearpage
-\ohead{Implizite Beherrschung und Prüfungszugang}
+\ohead{Implizite Beherrschung}
 \input{latex/graph-assessment.tex}
 \clearpage
 \ohead{Anhänge}

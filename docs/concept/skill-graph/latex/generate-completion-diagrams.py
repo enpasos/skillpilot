@@ -156,7 +156,7 @@ def local_recognition():
     edges = {("q1", "b"), ("b", "a"), ("q2", "a")}
     assert demand(vertices, {"a", "b", "q1"}, {"q1", "q2"}, edges, {"q1"}) == (set(), {"a", "b"})
     fig, ax = canvas(4.6)
-    boundary(ax, .3, 1.25, 7.2, 6.0, "Eigener Erwerbsvertrag U1")
+    boundary(ax, .3, 1.25, 7.2, 6.0, "Lokaler Vertrag von U1")
     boundary(ax, 8, 1.25, 3.7, 6.0, "Spätere Einheit U2", color=BLUE, fill="#F5FAFD")
     box(ax, 2.25, 5.65, "q₁ · Prüfung", "ausdrücklich bestanden", "explicit", width=2.9)
     box(ax, 5.5, 4.05, "b · gewöhnlich", "implizit beherrscht", "implicit")
@@ -165,7 +165,7 @@ def local_recognition():
     arrow(ax, (3.8, 5.25), (4.8, 4.65))
     arrow(ax, (4.25, 3.7), (3.65, 3.15))
     arrow(ax, (8.3, 3.4), (3.8, 2.75))
-    ax.text(6, 2.0, "A erfüllt Q₂s Voraussetzung", ha="center", fontsize=8.8, color=BLUE)
+    ax.text(6, 2.0, "a ist für q₂ bereits erfüllt", ha="center", fontsize=8.8, color=BLUE)
     ax.text(6, .78, r"$M = \{q_1\}$;  $I_{U1} = \{a,b\}$;  $M_{eff} = \{q_1,a,b\}$", ha="center")
     ax.text(6, .26, "U2, Fokuswechsel oder Planwahl öffnen die belegte Anwendung nicht erneut.",
             ha="center", fontsize=9)
@@ -180,15 +180,15 @@ def protected_support():
     boundary(ax, .3, 2.0, 7.45, 5.1, "Eigene Erwerbsziele Own(U) = {q, a, k}")
     box(ax, 2.05, 5.6, "q · Prüfung", "Mastery = 1", "explicit")
     box(ax, 2.05, 3.35, "a · gewöhnlich", "implizit beherrscht", "implicit")
-    box(ax, 5.95, 3.35, "k · Gedächtnis", "ausdrücklich offen")
-    box(ax, 9.8, 5.6, "h · Gedächtnis", "Mastery = 0", width=2.9, dashed=True)
+    box(ax, 5.95, 3.35, "k · Memorierziel", "ausdrücklich offen", width=2.75)
+    box(ax, 9.8, 5.6, "h · Memorierziel", "Mastery = 0", width=2.9, dashed=True)
     arrow(ax, (2.05, 4.95), (2.05, 4.0))
     arrow(ax, (3.3, 5.6), (8.25, 5.6))
-    ax.text(9.8, 4.25, "Externe Unterstützung\nkein lokales Target\nkeine Anerkennung",
+    ax.text(9.8, 4.25, "Externe Unterstützung\nkein eigenes Ziel\nkeine Anerkennung",
             ha="center", va="center", fontsize=9, linespacing=1.55)
     ax.text(5.95, 4.65, "k bleibt eine eigene\nAbschlusspflicht", ha="center", fontsize=9)
     ax.text(6, 1.35, r"$P_U = \{q,k\}$;  $N_U = \{k\}$;  $I_U = \{a\}$", ha="center")
-    ax.text(6, .75, "Effektiv beherrscht: 2 von 3 Targets. Explizite Mastery: 1 von 3 Targets.", ha="center", fontsize=10)
+    ax.text(6, .75, "Effektiv beherrscht: 2 von 3 eigenen Zielen. Ausdrückliche Mastery: 1 von 3.", ha="center", fontsize=10)
     ax.text(6, .22, "h zählt nicht zum Nenner. k braucht seinen eigenen verifizierten Abruf.", ha="center", fontsize=9)
     return fig
 
@@ -367,7 +367,7 @@ def shared_local_assessments():
                 ha="center", fontsize=10.5)
         ax.text(3+offset, 1.98, r"$N_U=\varnothing;\ I_U=\{A\}$" if both else
                 r"$N_U=\{Q_2,A\};\ I_U=\varnothing$", ha="center", fontsize=10.5)
-    ax.text(6, 1.04, r"Derselbe eigene Erwerbsvertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$.",
+    ax.text(6, 1.04, r"Derselbe lokale Vertrag: $\operatorname{Own}(U)=\{Q_1,Q_2,A\}$, $P_U=\{Q_1,Q_2\}$.",
             ha="center", fontsize=10)
     ax.text(6, .49, "Beide Prüfungen benötigen A. Q₁ bleibt bestanden; erst die offene Nachfrage von Q₂ entfällt.",
             ha="center", fontsize=9.1)
