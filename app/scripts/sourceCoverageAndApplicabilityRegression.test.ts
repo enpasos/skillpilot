@@ -198,6 +198,62 @@ test('applicabilityFromRequires uses all-of intersection semantics', () => {
   assert.deepEqual(intersectApplicabilityJurisdictions([]), [])
 })
 
+test('inherited ordinary prerequisites preserve applicability after atomic materialization', () => {
+  const owner = 'applicability-inherited-requires-fixture'
+  const foreign = 'applicability-foreign-parent-fixture'
+  const makeGoal = (
+    id: string, contains: string[] = [], requires: string[] = [], jurisdiction?: string,
+  ): LearningGoal => ({
+    id, title: id, description: id, weight: 1, contains, requires,
+    dimensionTags: { framework: 'test', demandLevel: 'AB1', processCompetencies: [], guidingIdeas: [], phase: 'J8' },
+    ...(jurisdiction ? { extendedData: { applicabilityOverrides: { jurisdiction: [jurisdiction] } } } : {}),
+  })
+  for (const withForeignAncestors of [false, true]) {
+    const inherited: SkillLandscape[] = [{
+      landscapeId: owner, locale: 'de-DE', title: 'Inherited requires', description: 'Fixture',
+      goals: [
+        { ...makeGoal('root', ['C', 'P', 'unrelated']), tags: ['root'] },
+        makeGoal('C', ['a'], ['P']), makeGoal('a', [], [], 'DE-BY'),
+        makeGoal('P', ['b']), makeGoal('b', [], [], 'DE-HE'), makeGoal('unrelated', [], [], 'DE-HE'),
+      ],
+    }]
+    if (withForeignAncestors) {
+      inherited[0].goals[0].contains.push('b2', 'b3')
+      inherited[0].goals.push(makeGoal('b2', [], [], 'DE-HE'), makeGoal('b3', [], [], 'DE-HE'))
+      inherited.push({
+        landscapeId: foreign, locale: 'de-DE', title: 'Foreign ancestors', description: 'Fixture',
+        goals: [
+          { ...makeGoal('ancestor', ['parent'], ['ancestor-prerequisite']), tags: ['root'] },
+          makeGoal('parent', [`${owner}:a`], ['P']),
+          makeGoal('P', [`${owner}:b2`]), makeGoal('ancestor-prerequisite', [`${owner}:b3`]),
+        ],
+      })
+    }
+    const materialized = structuredClone(inherited)
+    materialized[0].goals.find(goal => goal.id === 'C')!.requires = []
+    materialized[0].goals.find(goal => goal.id === 'a')!.requires = withForeignAncestors ? ['b', 'b2', 'b3'] : ['b']
+    if (withForeignAncestors) {
+      materialized[1].goals.find(goal => goal.id === 'ancestor')!.requires = []
+      materialized[1].goals.find(goal => goal.id === 'parent')!.requires = []
+    }
+    const compile = (landscapes: SkillLandscape[]) => buildApplicabilityCompilation(landscapes.map(landscape => ({
+      file: join(tmpdir(), `${landscape.landscapeId}.json`), landscape,
+    }))).reports
+    const inheritedReports = compile(inherited), materializedReports = compile(materialized)
+    const values = (reports: typeof inheritedReports) => reports.flatMap(report => report.goals.map(goal => ({
+      key: `${report.landscapeId}:${goal.goalId}`, compiledApplicability: goal.compiledApplicability,
+    })))
+    assert.deepEqual(values(inheritedReports), values(materializedReports))
+    const goals = new Map(inheritedReports.find(report => report.landscapeId === owner)!.goals.map(goal => [goal.goalId, goal]))
+    for (const id of withForeignAncestors ? ['b', 'b2', 'b3'] : ['b']) {
+      assert.deepEqual(goals.get(id)!.compiledApplicability.jurisdiction, ['DE-BY', 'DE-HE'])
+      assert.ok(goals.get(id)!.evidence.some(e => e.value === 'DE-BY' && e.kind === 'requires-closure'))
+      assert.ok(!goals.get(id)!.evidence.some(e => e.value === 'DE-BY' && ['mapping', 'provenance', 'override'].includes(e.kind)))
+    }
+    assert.deepEqual(goals.get('unrelated')!.compiledApplicability.jurisdiction, ['DE-HE'])
+  }
+})
+
 test('source coverage visibility follows composition target roles, not requires-closure applicability', () => {
   const makeGoal = (
     id: string,

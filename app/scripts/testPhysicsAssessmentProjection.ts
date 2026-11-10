@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import './testCurriculumQualityStatus'
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 
@@ -14,10 +15,13 @@ import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildVisibleChildrenMap } from '../src/utils/treeProjectionRuntime'
+import { buildApplicabilityCompilation } from './applicabilityCompiler'
+import { evaluateRouteProfile, routeProfiles } from './generateCurriculumQualityStatus'
 
 const root = resolve(import.meta.dirname, '../..')
-const canonical = normalizeLandscape(JSON.parse(readFileSync(resolve(root,
-  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), 'utf8')) as SkillLandscape)
+const canonicalLandscape = JSON.parse(readFileSync(resolve(root,
+  'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'), 'utf8')) as SkillLandscape
+const canonical = normalizeLandscape(canonicalLandscape)
 assert(canonical, 'Canonical Physics must be loadable.')
 const canonicalById = new Map(canonical.goals.map((goal) => [goal.id, goal]))
 const viewDirectory = resolve(root, 'curricula/DE/Gymnasium/composition-views/physik')
@@ -237,4 +241,11 @@ assert.equal(abiturTaskPairs, 480, 'Every applicable view must expose both Abitu
 assert.equal(preservedSekITaskPairs, 40, 'Preserve the established Sek-I task placement in every affected CrossStage view.')
 assert.equal(preservedPrerequisiteOnlyPairs, 161, 'Preserve every existing Q4 prerequisite-only role affected by explicit task references.')
 assert.equal(filteredPrerequisiteOnlyPairs, 48, 'Course and jurisdiction filters must not silently reintroduce these support tasks as targets.')
+const routeProfile = routeProfiles.find((profile) => profile.profileId === 'canonical-physics-sek1')
+assert(routeProfile, 'The actual Physics Sek-I route profile must remain configured.')
+const routeStatus = evaluateRouteProfile(canonicalLandscape, routeProfile, buildApplicabilityCompilation())
+const compositionRule = routeStatus.rules.find((rule) => rule.id === 'CQR-104')
+assert(compositionRule, 'The actual endpoint-composition rule must run over the current Physics views.')
+assert.equal(compositionRule.status, 'pass', JSON.stringify(compositionRule, null, 2))
+console.log(`Physics CQR-104 passed: ${compositionRule.metrics?.relevantCompositionViews} views, ${compositionRule.metrics?.evaluatedProjectionScopes} actual route scopes.`)
 console.log(`Physics assessment projection passed: ${viewCount} views, ${practiceTaskPairs} practice-task pairs, ${abiturTaskPairs} Abitur-task pairs, ${preservedSekITaskPairs} preserved Sek-I placements; complete texts, solutions and unique course-specific navigation preserved.`)

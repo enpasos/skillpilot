@@ -13,6 +13,8 @@ import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.api.MasteryUpdateRequest;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
+import com.skillpilot.backend.completion.CompletionCanonicalGraphResolver;
+import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
@@ -30,10 +32,12 @@ import com.skillpilot.backend.repository.PlannedGoalRepository;
 import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -1284,18 +1288,48 @@ class LearnerServiceCrossSubjectPilotTest {
 
     @Test
     void canonicalPhysicsPilotUpperSecondaryRadiationGoalDependsOnReviewedSek1RadiationAtom() {
-        SkillLandscape landscape = landscapeService.getById(CANONICAL_PHYSICS_ID);
-        LearningGoal upperSecondaryRadiationGoal = landscape.getGoals().stream()
-                .filter(goal -> CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID.equals(goal.getId()))
-                .findFirst()
-                .orElseThrow();
+        Map<String, LearningGoal> graph = new CompletionCanonicalGraphResolver(landscapeService, objectMapper)
+                .load(CANONICAL_GYMNASIUM_ROOT_ID);
+        CompletionProfileCompiler compiler = new CompletionProfileCompiler();
+        var topology = compiler.normalizePrerequisites(graph);
+        topology.validateContext(Set.of(CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID));
 
-        assertThat(upperSecondaryRadiationGoal.getRequires())
+        // Transitive reduction changes direct adjacency, not the reviewed preparation demand.
+        assertThat(graph.get(CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID).getRequires())
                 .containsExactly(
-                        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
                         CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID,
                         CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID,
                         CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID);
+        Set<String> reviewedSeeds = Set.of(
+                CANONICAL_PHYSICS_WHY_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_DETECTION_ID,
+                CANONICAL_PHYSICS_SEK1_RADIATION_EFFECTS_ID);
+        Set<String> reviewedDemand = new TreeSet<>(reviewedSeeds);
+        for (String seed : reviewedSeeds) {
+            assertThat(graph.get(seed).getContains()).isEmpty();
+            reviewedDemand.addAll(topology.transitivePrerequisites(seed));
+        }
+        assertThat(topology.transitivePrerequisites(CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID))
+                .containsExactlyInAnyOrderElementsOf(reviewedDemand);
+
+        assertThat(graph.get(CANONICAL_PHYSICS_SEK1_RADIATION_TYPES_ID).getRequires())
+                .contains(CANONICAL_PHYSICS_SEK1_ATOM_ID);
+        LearningGoal atom = graph.get(CANONICAL_PHYSICS_SEK1_ATOM_ID);
+        assertThat(atom.getContains()).isEmpty();
+        assertThat(atom.getRequires()).contains(CANONICAL_PHYSICS_WHY_ID);
+
+        // Losing the surviving atomic path must fail the full-demand preservation check.
+        Map<String, LearningGoal> withoutPath = new HashMap<>(graph);
+        LearningGoal atomWithoutPath = objectMapper.convertValue(atom, LearningGoal.class);
+        atomWithoutPath.setRequires(atom.getRequires().stream()
+                .filter(id -> !CANONICAL_PHYSICS_WHY_ID.equals(id)).toList());
+        withoutPath.put(atomWithoutPath.getId(), atomWithoutPath);
+        var topologyWithoutPath = compiler.normalizePrerequisites(withoutPath);
+        topologyWithoutPath.validateContext(Set.of(CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID));
+        assertThat(topologyWithoutPath.transitivePrerequisites(CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID))
+                .doesNotContain(CANONICAL_PHYSICS_WHY_ID)
+                .isNotEqualTo(reviewedDemand);
     }
 
     @Test

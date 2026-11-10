@@ -83,6 +83,8 @@ tasks.test {
     // Each Spring test context retains the current curriculum and publication models.
     // Bound their retained count within the test JVM's existing heap budget.
     systemProperty("spring.test.context.cache.maxSize", "1")
+    // Release class-scoped fixture state before the next full-curriculum context starts.
+    forkEvery = 1
     // Show progress as well as failure details while long integration tests run.
     testLogging {
         events("started", "passed", "skipped", "failed")

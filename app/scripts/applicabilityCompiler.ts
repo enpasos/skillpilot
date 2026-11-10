@@ -892,6 +892,38 @@ export function buildApplicabilityCompilation(
         .filter((ref) => canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(ref.goalId) ?? false)
     }
 
+    const parentRefsByGoalKey = new Map<string, GoalRef[]>()
+    for (const sourceLandscape of canonicalLandscapes) {
+      const landscapeId = sourceLandscape.landscape.landscapeId
+      for (const goal of sourceLandscape.landscape.goals) {
+        for (const childRef of getGoalChildRefs(sourceLandscape, landscapeId, goal)) {
+          const key = goalKey(childRef.landscapeId, childRef.goalId)
+          const parents = parentRefsByGoalKey.get(key) ?? []
+          parents.push({ landscapeId, goalId: goal.id })
+          parentRefsByGoalKey.set(key, parents)
+        }
+      }
+    }
+
+    const getOrdinaryRequirementRefs = (goal: LearningGoal): GoalRef[] => {
+      const requirements = new Map<string, GoalRef>()
+      const pending = [{ landscapeId: canonical.landscape.landscapeId, goalId: goal.id }]
+      const visited = new Set<string>()
+      while (pending.length > 0) {
+        const source = pending.pop()!
+        const key = goalKey(source.landscapeId, source.goalId)
+        if (visited.has(key)) continue
+        visited.add(key)
+        const sourceGoal = canonicalLandscapeById.get(source.landscapeId)?.goalById.get(source.goalId)
+        for (const rawReq of sourceGoal?.requires ?? []) {
+          const ref = resolveCanonicalReference(rawReq, source.landscapeId)
+          requirements.set(goalKey(ref.landscapeId, ref.goalId), ref)
+        }
+        pending.push(...(parentRefsByGoalKey.get(key) ?? []))
+      }
+      return [...requirements.values()]
+    }
+
     const inheritedMappingAtomicDescendantKeysByTraversalKey = new Map<string, Set<string>>()
 
     const getInheritedMappingAtomicDescendantKeys = (
@@ -1374,9 +1406,9 @@ export function buildApplicabilityCompilation(
         const jurisdictions = currentApplicability?.[SUPPORTED_DIMENSION] ?? []
         if (jurisdictions.length === 0) continue
 
+        const requirementRefs = getOrdinaryRequirementRefs(goal)
         for (const value of jurisdictions) {
-          for (const rawReq of goal.requires ?? []) {
-            const req = resolveCanonicalReference(rawReq, canonical.landscape.landscapeId)
+          for (const req of requirementRefs) {
             applicabilityChanged = ensureRequiredGoalVisible(
               req.landscapeId,
               req.goalId,

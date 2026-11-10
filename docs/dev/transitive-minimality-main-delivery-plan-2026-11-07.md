@@ -1,19 +1,86 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 9. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 10. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 
-**Aktuelle Lieferposition vom 9. November 2026:** Die technische
-V6-Unterstützung ist mit [PR #101](https://github.com/enpasos/skillpilot/pull/101)
-nach main bei `62316d3c653c753abbb822e8e4a1f5ebd1d04fb6` geliefert. Alle vier
-PR-Workflows und alle acht Hauptjobs bestanden; der tatsächliche Main-Dateibaum
-ist exakt gleich. Die getrennte frische
-[Main-CI](https://github.com/enpasos/skillpilot/actions/runs/42603858450)
-läuft noch. Das harte Standard-G17-Gate und die Abnahme aller zehn geschützten
-Fächer bleiben offen.
+**Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
+**Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
+zuerst Chemie und danach Biologie nach demselben deterministischen G17-Vertrag
+bearbeitet. Für die übrigen Fächer legt diese Entscheidung noch keine interne
+Reihenfolge fest. Der vollständige Prüf- und Abnahmeumfang bleibt unverändert.
+
+**Aktuelle Lieferposition vom 10. November 2026:** Die Physik-Lieferung ist in
+[PR #105](https://github.com/enpasos/skillpilot/pull/105) zusammengeführt;
+der IDE-Branch heißt `fix/g17-physics-applicability-inheritance`.
+Der Graph hat im aktuellen harten Physik-Aufruf keine Minimalitätsbefunde.
+Vollständige TS-Prüfung, nativer Projektionsvergleich und der neue reguläre
+Meilensteinlauf sind bestanden. Der unveränderte Producer über 21 Kataloge
+benötigte 1058,045 Sekunden; anschließend bestanden alle zehn geschützten
+Untergrenzen. Physik erreicht wieder M7. Ausschließlich die beiden erzeugten
+CQR-Berichte und deren bestehender Alias änderten sich; 9896 Eingabebindungen
+zeigen keine unerwarteten Änderungen. Die korrigierte Routenprüfung bleibt
+mit echten Gegenfällen über 35 Views und 80 Scopes im bestehenden CI-Test.
+
+Die fünf nativen Methoden bestehen im tatsächlichen ungefilterten Backendlauf
+auf `3abc5c6552`; der korrigierte CrossSubject-Strahlungsfall besteht ebenfalls.
+Der ältere vollständige lokale Lauf
+scheiterte nach seiner Vergleichsmatrix an fehlender Target-Exposition
+von `3631c8f7-ff48-57ff-b7ee-8397ff1d166a`. Dieser Knoten war bereits vorher
+ausdrücklich `compatibilityOnly` und von der Projektion ausgeschlossen; in
+allen 140 vollständigen Konfigurationen fehlt er unverändert auch als Support
+und im Kontext. Die korrigierte Schlussabdeckung unterscheidet tatsächliche
+rollenvalide und gesperrte Fälle sowie explizit ausgeschlossene Knoten; alle
+Scope-/Probe- und Frontierfälle bleiben erhalten. Die native Gegenprobe über
+372 tatsächlich gesperrte Paare besteht vor/nach; 139 kanonische Atomproben,
+34 echte Frontier-Aufrufe und zehn fehlerhafte Coverage-Datensätze bestehen
+in der gezielten Helfervalidierung. Der alte Gesamtlauf bleibt als fehlgeschlagen
+dokumentiert. Der gesamte Backendjob dieses Heads scheiterte dennoch: Ein
+Controller-Test enthielt zwölf veraltete Scope-Summen; anschließend verursachten
+zwei Heapfehler 130 Spring-Kontextfehler einschließlich ihrer Folgefehler.
+Der tatsächliche native Vergleich aller zwölf betroffenen Konfigurationen
+belegt genau 13 bereits verfasste Targets der vorhandenen Cachekorrektur,
+gleiche Views und keine entfernten Targets. Sechs Erwartungszeilen sind
+korrigiert; dieselbe vollständige Testmatrix bindet die 13 Ziel-IDs nun für
+G8 und G9 ausdrücklich. Der Testworker endet nach jeder Klasse; Heaplimit
+3 GB, Spring-Cachelimit und sämtliche Testfälle bleiben erhalten. Ein frischer
+Gegencheck des zuerst betroffenen Kontexts bestand bereits unter der alten
+Speicherpolicy. Der normale gemeinsame Reparaturlauf besteht anschließend
+alle 131 betroffenen Fälle in drei tatsächlichen Workern ohne Fehler oder
+Skips; alle 4193 benannten Eingaben bleiben stabil. Eine konkrete
+Produktions-Leakkette wird daraus nicht behauptet.
+Die vollständige Curriculum-CI auf `3abc5c6552` einschließlich normalem Producer,
+zehn unveränderten Floors und Report-Sauberkeit ist ebenfalls bestanden.
+Frische vollständige CI auf dem Reparaturhead sowie die Main-Lieferung stehen
+aus; das harte Standard-G17-Gate ist noch nicht aktiv.
+
+Die Frontend-CI deckte außerdem veraltete Direktkanten-Assertions im
+Physik-Buchinput-Test auf. Die Korrektur prüft den vollständigen tatsächlichen
+Vorbereitungsbedarf und erhält die unabhängigen exakten Coverage-, Material-
+und Reviewbindungen. Kein Prüfungsziel oder Fingerprint wurde umgeschrieben.
+Der normale Test auf dem finalen Dateistand besteht in 405,578 Sekunden;
+entfernte Vorbereitungspfade und ungelöste Referenzen scheitern weiterhin.
+Ein gezielter Abgleich der weiteren Pflicht-CI-Verbraucher ergab genau einen
+weiteren veralteten Direktkanten-Pin im nativen CrossSubject-Test. Dessen
+Strahlungsziel behält alle vier ursprünglichen Anforderungen in seiner exakt
+geprüften vollständigen atomaren Vorbereitungshülle; die drei verbleibenden
+direkten Kanten werden getrennt geprüft. Eine isolierte Entfernung des echten
+Ersatzwegs muss den Bedarfsvergleich verwerfen. Der normale gezielte Gradle-Lauf
+mit tatsächlichen Curriculumdaten besteht in 260,972 Sekunden; alle 3883
+gebundenen Eingaben bleiben unverändert. Die anderen 94 Methoden dieser
+Testklasse sind bytegleich. Astra hat den kleinen Testpatch freigegeben;
+die vollständige neue Remote-CI wird dadurch nicht vorweggenommen.
+Der technische 600-Sekunden-Rahmen aus
+[PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
+`de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
+gleich dem vollständig geprüften Headtree. Der eigene frische
+[Main-Lauf](https://github.com/enpasos/skillpilot/actions/runs/42705727514)
+hat ebenfalls alle acht Hauptjobs bestanden. Das harte Standard-G17-Gate und
+die endgültige Abnahme aller zehn geschützten Fächer bleiben offen.
+
+Die folgenden Lieferpositionen bewahren die früheren Prüfstände als Historie.
 
 Die Mathematiklieferung mit PR #97 bei
 `e94def51f625630da6c3f7fe8e54badefd8eb687` hat inzwischen auch ihre separate

@@ -1143,7 +1143,7 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
 ]
 
-const routeProfiles: RouteProfile[] = [
+export const routeProfiles: RouteProfile[] = [
   {
     profileId: 'canonical-math-sek1',
     landscapeId: CANONICAL_GYM_MATH_LANDSCAPE_ID,
@@ -1941,7 +1941,7 @@ function terminalAutonomyGoalsForRouteScope(
  * prerequisites mean all of their atomic descendants; compatibility requires
  * inherited through actual contains ancestors remain hard gates as well.
  * Unresolved cross-landscape references are retained for fail-closed scope QA. */
-function collectWholeMaterialPrerequisiteClosure(
+export function collectWholeMaterialPrerequisiteClosure(
   landscape: SkillLandscape,
   terminalGoalId: string,
 ): { atomicGoalIds: Set<string>; unresolvedReferences: Set<string> } {
@@ -1982,6 +1982,18 @@ function collectWholeMaterialPrerequisiteClosure(
     pending.push(...inheritedReferences(goal.id))
   }
   return { atomicGoalIds, unresolvedReferences }
+}
+
+export function compositionStageAuthorityProjectionSetsAgree(
+  projections: ReadonlyArray<{ targetGoalIds: ReadonlySet<string>; visibleGoalIds: ReadonlySet<string> }>,
+): boolean {
+  const first = projections[0]
+  return !!first && projections.every(({ targetGoalIds, visibleGoalIds }) => (
+    targetGoalIds.size === first.targetGoalIds.size
+    && Array.from(targetGoalIds).every((goalId) => first.targetGoalIds.has(goalId))
+    && visibleGoalIds.size === first.visibleGoalIds.size
+    && Array.from(visibleGoalIds).every((goalId) => first.visibleGoalIds.has(goalId))
+  ))
 }
 
 function evaluateRouteEndpointCompositionVisibility(
@@ -2184,12 +2196,7 @@ function evaluateRouteEndpointCompositionVisibility(
           nationalProjectionScopesUsingJurisdictionStageAuthority += 1
           const jurisdictionStageTargetGoalIds = new Set(authorityProjectionSets[0].targetGoalIds)
           const jurisdictionStageVisibleGoalIds = new Set(authorityProjectionSets[0].visibleGoalIds)
-          const authoritySetsAgree = authorityProjectionSets.every(({ targetGoalIds, visibleGoalIds }) => (
-            targetGoalIds.size === jurisdictionStageTargetGoalIds.size
-            && Array.from(targetGoalIds).every((goalId) => jurisdictionStageTargetGoalIds.has(goalId))
-            && visibleGoalIds.size === jurisdictionStageVisibleGoalIds.size
-            && Array.from(visibleGoalIds).every((goalId) => jurisdictionStageVisibleGoalIds.has(goalId))
-          ))
+          const authoritySetsAgree = compositionStageAuthorityProjectionSetsAgree(authorityProjectionSets)
           if (!authoritySetsAgree) {
             ambiguousJurisdictionStageAuthorityScopes.push(
               `${scopeLabel}: ${authorityProjectionSets.map(({ file: authorityFile }) => toRepoPath(authorityFile)).join(', ')}`,
@@ -2701,7 +2708,7 @@ function examReleaseCoverageIssues(goal: LearningGoal): string[] {
   return issues
 }
 
-function evaluateRouteProfile(
+export function evaluateRouteProfile(
   landscape: SkillLandscape,
   profile: RouteProfile,
   applicabilityCompilation: ApplicabilityCompilationResult,
@@ -4168,7 +4175,7 @@ function collectCompositionStageStructures(
   return matches
 }
 
-function collectRenderedAtomicGoalIdsFromCompositionView(
+export function collectRenderedAtomicGoalIdsFromCompositionView(
   landscape: SkillLandscape,
   viewFile: string,
   scopeFilters: string[] = [],
@@ -4235,17 +4242,43 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
     .forEach(addRenderedAtomicGoal)
   if (includePrerequisiteOnly) {
     const sourceGoalById = new Map(entry.goals.map((goal) => [goal.id, goal]))
-    const addAtomicIfIncluded = (goalId: string) => {
+    const sourceRoot = entry.goals.find((goal) => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+    const sourceRootByLandscapeId = new Map(sourceRoot ? [[landscape.landscapeId, sourceRoot.id]] : [])
+    const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
+      normalizedView.rootNodes,
+      sourceGoalById,
+      sourceRootByLandscapeId,
+    )
+    const selectedStageRoleNodes: CompositionViewNode[] = []
+    const collectSelectedStageRoleNodes = (nodes: CompositionViewNode[], insideSelectedStage = false) => {
+      nodes.forEach((node) => {
+        if (node.kind === 'structure') {
+          const nodeStage = compositionStructureStage(node)
+          if (nodeStage && nodeStage !== compositionStage) return
+          collectSelectedStageRoleNodes(node.children, insideSelectedStage || nodeStage === compositionStage)
+        } else if (insideSelectedStage) {
+          selectedStageRoleNodes.push(node)
+        }
+      })
+    }
+    if (restrictToSingleStage) collectSelectedStageRoleNodes(normalizedView.rootNodes)
+    const selectedStagePrerequisiteOnlyGoalIds = collectCompositionProjectionRoleGoalIds(
+      selectedStageRoleNodes,
+      sourceGoalById,
+      sourceRootByLandscapeId,
+    ).prerequisiteOnlyGoalIds
+    const addAtomicIfIncluded = (goalId: string, resolvedSupportGoalIds: Set<string>) => {
       const goal = sourceGoalById.get(goalId)
       if (
         goal
         && (goal.contains?.length ?? 0) === 0
+        && resolvedSupportGoalIds.has(goalId)
         && (scopeFilters.length === 0 || goalMatchesFilters(goal, scopeFilters))
       ) {
         atomicGoalIds.add(goalId)
       }
     }
-    const addAtomicSubtree = (rootGoalId: string) => {
+    const addAtomicSubtree = (rootGoalId: string, resolvedSupportGoalIds: Set<string>) => {
       const stack = [rootGoalId]
       const seen = new Set<string>()
       while (stack.length > 0) {
@@ -4255,25 +4288,30 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
         const goal = sourceGoalById.get(goalId)
         if (!goal) continue
         if ((goal.contains?.length ?? 0) === 0) {
-          addAtomicIfIncluded(goalId)
+          addAtomicIfIncluded(goalId, resolvedSupportGoalIds)
         } else {
           stack.push(...(goal.contains ?? []))
         }
       }
     }
-    const collectPrerequisiteOnly = (nodes: CompositionViewNode[]) => {
+    const collectPrerequisiteOnly = (nodes: CompositionViewNode[], insideSelectedStage = false) => {
       nodes.forEach((node) => {
         if (node.kind === 'structure') {
           const nodeStage = compositionStructureStage(node)
           if (restrictToSingleStage && nodeStage && nodeStage !== compositionStage) return
-          collectPrerequisiteOnly(node.children)
+          collectPrerequisiteOnly(node.children, insideSelectedStage || (restrictToSingleStage && nodeStage === compositionStage))
           return
         }
         if (getCompositionProjectionRole(node) !== 'prerequisiteOnly') return
+        // Explicit stage-local support is independent of a target placement in another stage.
+        // Global support still obeys the roles resolved over the complete view.
+        const resolvedSupportGoalIds = insideSelectedStage
+          ? selectedStagePrerequisiteOnlyGoalIds
+          : prerequisiteOnlyGoalIds
         if (node.kind === 'canonicalSubtree') {
-          addAtomicSubtree(node.goalId)
+          addAtomicSubtree(node.goalId, resolvedSupportGoalIds)
         } else if (node.kind === 'goalEntry') {
-          addAtomicIfIncluded(node.goalId)
+          addAtomicIfIncluded(node.goalId, resolvedSupportGoalIds)
         }
       })
     }
