@@ -386,8 +386,9 @@ Interpretation rules:
   reference for each atom. The 10 November decision supersedes the 7 November
   blanket manual-role requirement at this boundary. Unknown references, cycles,
   missing canonical atoms or unexposed/unaccounted derived targets remain hard
-  errors, regardless of mastery or focus. Compiler, validation and runtime
-  implementation of this corrected contract is still open.
+  errors, regardless of mastery or focus. The learner runtime and first-party
+  WebGUI implement this closed basis. Applicability validation, migration-proof
+  admission and complete native/curriculum/remote acceptance remain separate.
 - `prerequisiteOnly` remains a subject-local support role. A required atom may
   keep that role in one view when the same canonical atom is a target elsewhere
   in the full Personal Curriculum; acquisition counts once. It must not remain

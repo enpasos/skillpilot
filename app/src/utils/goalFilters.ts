@@ -2,7 +2,7 @@ import type { UiGoal } from '../goalTypes'
 import { normalizeDurationModel } from './durationModel'
 import { normalizeJurisdictionCode } from './jurisdictionMetadata'
 
-type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability'>
+type FilterableGoal = Pick<UiGoal, 'tags' | 'applicability' | 'personalCurriculumProjection'>
 type FilterDimension = 'courseProfile' | 'durationModel' | 'jurisdiction' | 'generic'
 
 const COURSE_FILTER_VALUES = new Set(['GK', 'LK', 'GK+LK'])
@@ -120,6 +120,9 @@ const getGenericFilterValues = (goal: FilterableGoal) => {
 }
 
 export const goalMatchesFilter = (goal: FilterableGoal, filterId?: string): boolean => {
+  // The learner API has already selected seeds and retained necessary targets
+  // outside those seed filters. Their source applicability remains unchanged.
+  if (goal.personalCurriculumProjection?.revision === 'atomic-prerequisite-learning-v1') return true
   const effectiveFilters = splitFilterIds(filterId).filter((value) => !isWildcardFilter(value))
   if (effectiveFilters.length === 0) return true
   if (effectiveFilters.length > 1) return goalMatchesFilters(goal, effectiveFilters)

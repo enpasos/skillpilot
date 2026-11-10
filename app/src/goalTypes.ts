@@ -14,6 +14,13 @@ export type Leitidee = 'L1' | 'L2' | 'L3' | 'L4' | 'L5'
 
 export interface UiGoal {
   id: string
+  /** Display state derived exclusively from the learner API's closed target basis. */
+  personalCurriculumProjection?: {
+    revision: 'atomic-prerequisite-learning-v1'
+    role: 'target' | 'structure'
+    requiredByPath?: string[]
+    presentationOnly?: true
+  }
   landscapeId?: string
   title: string
   description: string

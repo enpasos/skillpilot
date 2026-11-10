@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.ai.CoachStateProjection;
+import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
@@ -2883,8 +2884,11 @@ public class LearnerServiceTest {
                 Map.class,
                 Set.class,
                 List.class,
-                boolean.class);
+                boolean.class,
+                PersonalCurriculumLearningScope.class,
+                Map.class);
         constructor.setAccessible(true);
+        // Seed-stage presentation fixture, before the acquisition closure is compiled.
         Object projection = constructor.newInstance(
                 visibleGoals,
                 Set.of(CANONICAL_SPANISH_ROOT_SCOPE_ID),
@@ -2892,7 +2896,9 @@ public class LearnerServiceTest {
                 visibleGoals,
                 Set.of(),
                 List.of(),
-                true);
+                true,
+                null,
+                Map.of());
 
         List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(
                 learnerService,

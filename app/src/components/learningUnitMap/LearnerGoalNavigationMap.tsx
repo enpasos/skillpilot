@@ -53,7 +53,9 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command} showInspector={false} onEntrySelect={props.onSelectGoal}
+      command={command} showInspector={false} onEntrySelect={(goalId) => {
+        if (!goalIndexAll.get(goalId)?.personalCurriculumProjection?.presentationOnly) props.onSelectGoal(goalId)
+      }}
       onReturnToTree={props.onReturnToTree} onEscape={props.onEscape} />
   </div>
 }

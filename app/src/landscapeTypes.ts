@@ -183,5 +183,14 @@ export interface SkillLandscape {
   programUnits?: ProgramUnit[]
   goalPlacements?: GoalPlacement[]
   competencyCatalog?: CompetencyCatalogEntry[]
+  /** Authoritative metadata emitted only by the learner-scoped runtime API. */
+  personalCurriculumProjection?: {
+    revision: 'atomic-prerequisite-learning-v1'
+    rootLandscapeId: string
+    scopeRevision: string
+    seedAtomicGoalIds: string[]
+    targetGoalIds: string[]
+    requiredByPaths: Record<string, string[]>
+  }
   goals: LearningGoal[]
 }

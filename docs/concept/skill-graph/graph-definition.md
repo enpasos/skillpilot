@@ -1045,8 +1045,10 @@ atoms of a subject.
 Required-learning inclusion does not assert official curricular assignment or
 change source applicability. It creates no goal, canonical edge or mastery result
 and preserves the existing goal-type completion/recognition contracts.
-The compiler and runtime adaptation is still open; this norm is not implemented
-or accepted merely by documenting it. Level 3 focus is not widened automatically.
+The learner runtime and WebGUI implement this closed basis. Applicability
+validation and migration-proof admission still require separate adaptation and
+evidence; local regressions do not establish full native, curriculum or remote
+acceptance. Stored Level 3 focus roots are not widened automatically.
 
 For scoped learner evaluation, normalize atomic requirements globally and take their full transitive closure before restricting endpoints. Write $A_F=A\cap G_F$. The normative scoped relation is:
 
@@ -1113,13 +1115,13 @@ explicit learner-facing structure that references the intended atomic goals.
 This is a representation constraint; it does not infer a projection role from
 the cluster, its stage, or its position.
 
-**Implementation boundary (9 November 2026).** The existing canonical resolver
-already follows prerequisite chains recursively. However, the current
-`goalEntry` projection and resolver still support turning a canonical cluster
-into an opaque atomic runtime target. That legacy behavior does not satisfy the
-identity rule above; its correction and native projection verification remain
-pending. This specification neither claims implementation nor changes the
-normal/strict focus policy.
+**Implementation boundary (10 November 2026).** The personal learner runtime
+resolves canonical atomic seeds and preserves a cluster's real target basis even
+when reading a legacy direct `goalEntry`; WebGUI presentation retains those
+canonical target descendants. The strict seed resolver rejects non-atomic
+seeds, unknown references and cycles. This compatibility does not authorize new
+opaque cluster authoring or certify other consumers. Full native and curriculum
+admission remain separate from the focused regression evidence.
 
 Such composition-view artifacts remain outside the formal graph object defined in this specification.
 

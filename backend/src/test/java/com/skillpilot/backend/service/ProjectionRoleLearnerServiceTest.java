@@ -15,6 +15,8 @@ import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.completion.CompletionProfileCompiler;
+import com.skillpilot.backend.completion.CompletionCompilationException;
+import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
@@ -86,20 +88,21 @@ class ProjectionRoleLearnerServiceTest {
             """;
 
     @Test
-    void missingRoleDefaultsToTargetAndPrerequisiteOnlyIsNotTargetOrTransitivelyInferred() {
+    void missingRoleDefaultsToSeedTargetAndRequiredSupportClosesTheLearningBasis() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
                 goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
 
         assertThat(fixture.service().getFilteredAtomicGoalIds(
                         LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
-                .containsExactly(TARGET_ID);
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
         ProjectionSets projection = projectionSets(fixture.service());
-        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
-        assertThat(projection.prerequisiteOnlyGoalIds()).containsExactly(PREREQUISITE_ID);
-        assertThat(projection.prerequisiteOnlyGoalIds())
-                .doesNotContain(TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.learningAtomicGoalIds())
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projection.targetGoalIds()).containsExactlyInAnyOrderElementsOf(projection.learningAtomicGoalIds());
+        assertThat(projection.prerequisiteOnlyGoalIds()).isEmpty();
     }
 
     @Test
@@ -130,16 +133,14 @@ class ProjectionRoleLearnerServiceTest {
 
         ProjectionSets projection = projectionSets(fixture.service());
 
-        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
-        assertThat(projection.prerequisiteOnlyGoalIds())
-                .containsExactly(EXTERNAL_PREREQUISITE_ID);
+        assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.targetGoalIds()).containsExactlyInAnyOrder(TARGET_ID, EXTERNAL_PREREQUISITE_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds()).isEmpty();
         assertThat(projection.structuralGoalIds())
                 .contains(EXTERNAL_PREREQUISITE_ID)
                 .doesNotContain(EXTERNAL_PREREQUISITE_CHILD_ID);
-        assertThat(projection.visibleGoalIds())
-                .doesNotContain(
-                        EXTERNAL_PREREQUISITE_ID,
-                        EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.visibleGoalIds()).contains(EXTERNAL_PREREQUISITE_ID)
+                .doesNotContain(EXTERNAL_PREREQUISITE_CHILD_ID);
         assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
@@ -171,7 +172,9 @@ class ProjectionRoleLearnerServiceTest {
 
         ProjectionSets projection = projectionSets(fixture.service());
 
-        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.targetGoalIds())
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
         assertThat(projection.prerequisiteOnlyGoalIds())
                 .containsExactlyInAnyOrder(
                         EXTERNAL_PREREQUISITE_ROOT_ID,
@@ -216,12 +219,14 @@ class ProjectionRoleLearnerServiceTest {
                     .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
             Mastery requiredMastery = new Mastery(fixture.learner(), EXTERNAL_PREREQUISITE_ID, 1.0);
             ProjectionSets projection = projectionSets(fixture.service());
-            assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.targetGoalIds()).containsExactlyInAnyOrder(
+                    TARGET_ID, EXTERNAL_PREREQUISITE_ID, EXTERNAL_PREREQUISITE_CHILD_ID);
             assertThat(projection.prerequisiteOnlyGoalIds()).containsExactlyInAnyOrder(
-                    EXTERNAL_PREREQUISITE_ROOT_ID, EXTERNAL_PREREQUISITE_ID,
-                    EXTERNAL_PREREQUISITE_CHILD_ID, unusedMathematicsId);
+                    EXTERNAL_PREREQUISITE_ROOT_ID, unusedMathematicsId);
             assertThat(fixture.service().getFilteredAtomicGoalIds(
-                    LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(TARGET_ID);
+                    LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactlyInAnyOrder(
+                            TARGET_ID, EXTERNAL_PREREQUISITE_ID, EXTERNAL_PREREQUISITE_CHILD_ID);
             // Strict mode still requires the immediate supporting goal; normal
             // mode ignores that valid requirement outside the selected focus.
             when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
@@ -270,7 +275,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void externalPrerequisiteOnlyClusterGoalEntryMakesProjectionInvalid() {
+    void externalPrerequisiteOnlyClusterGoalEntryRetainsItsKnownCanonicalBasis() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
                 goalEntry(EXTERNAL_PREREQUISITE_ROOT_ID, "prerequisiteOnly")));
@@ -278,16 +283,26 @@ class ProjectionRoleLearnerServiceTest {
                 .thenReturn(clusterGoal(
                         EXTERNAL_PREREQUISITE_ROOT_ID,
                         List.of(EXTERNAL_PREREQUISITE_CHILD_ID)));
-
         assertThatThrownBy(() -> projectionSets(fixture.service()))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("Invalid prerequisiteOnly composition reference")
-                .hasMessageContaining(EXTERNAL_PREREQUISITE_ROOT_ID)
-                .hasMessageContaining("goalEntry must reference an atomic goal");
+                .hasMessageContaining(EXTERNAL_PREREQUISITE_CHILD_ID)
+                .hasMessageContaining("unknown goal");
+        when(fixture.landscapeService().getGoalDefinition(EXTERNAL_PREREQUISITE_CHILD_ID))
+                .thenReturn(atomicGoal(EXTERNAL_PREREQUISITE_CHILD_ID, List.of()));
+
+        ProjectionSets projection = projectionSets(fixture.service());
+        assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.prerequisiteOnlyGoalIds())
+                .contains(EXTERNAL_PREREQUISITE_ROOT_ID, EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.structuralGoalIds())
+                .contains(EXTERNAL_PREREQUISITE_ROOT_ID, EXTERNAL_PREREQUISITE_CHILD_ID);
+        assertThat(projection.learningAtomicGoalIds())
+                .doesNotContain(EXTERNAL_PREREQUISITE_ROOT_ID, EXTERNAL_PREREQUISITE_CHILD_ID);
     }
 
     @Test
-    void externalTargetOrMixedRoleReferenceDoesNotHydrateStructuralGoals() {
+    void externalTargetOrMixedRoleReferenceValidatesIdentityWithoutSelectingExternalSeeds() {
         Fixture targetFixture = fixture(view(
                 goalEntry(TARGET_ID),
                 goalEntry(EXTERNAL_PREREQUISITE_ID)));
@@ -304,11 +319,13 @@ class ProjectionRoleLearnerServiceTest {
         for (ProjectionSets projection : List.of(
                 projectionSets(targetFixture.service()),
                 projectionSets(mixedRoleFixture.service()))) {
-            assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+            assertThat(projection.targetGoalIds())
+                    .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
             assertThat(projection.prerequisiteOnlyGoalIds())
                     .doesNotContain(EXTERNAL_PREREQUISITE_ID);
             assertThat(projection.structuralGoalIds())
-                    .doesNotContain(EXTERNAL_PREREQUISITE_ID);
+                    .contains(EXTERNAL_PREREQUISITE_ID);
             assertThat(projection.visibleGoalIds())
                     .doesNotContain(EXTERNAL_PREREQUISITE_ID);
         }
@@ -330,14 +347,15 @@ class ProjectionRoleLearnerServiceTest {
                 .thenReturn(List.of(prerequisiteMastery))
                 .thenReturn(List.of(prerequisiteMastery));
 
-        assertThat(fixture.service().getFrontier(LEARNER_ID)).isEmpty();
+        assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(PREREQUISITE_ID);
         assertThat(fixture.service().getFrontier(LEARNER_ID)).containsExactly(TARGET_ID);
 
         assertThat(fixture.service().getMastery(LEARNER_ID))
                 .containsEntry(PREREQUISITE_ID, 1.0);
         assertThat(fixture.service().getFilteredAtomicGoalIds(
                         LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
-                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID)
+                .doesNotContain(TRANSITIVE_PREREQUISITE_ID);
     }
 
     @Test
@@ -355,29 +373,27 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void omittedOrPrerequisiteOnlyPhysicsMethodsDoNotProvideALearnableAstronomyRoute() throws Exception {
+    void omittedOrPrerequisiteOnlyPhysicsMethodsBecomeRequiredLearnableAstronomyPreparation() throws Exception {
         for (String methodRole : List.of("omitted", "prerequisiteOnly")) {
             Fixture fixture = physicsSourceRouteFixture(methodRole);
 
+            ProjectionSets projection = projectionSets(fixture.service());
+            assertThat(projection.seedAtomicGoalIds()).containsExactlyInAnyOrder(
+                    SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
+            assertThat(projection.learningAtomicGoalIds()).containsAll(PHYSICS_METHOD_IDS);
+            assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContainAnyElementsOf(PHYSICS_METHOD_IDS);
             assertThat(fixture.service().getFilteredAtomicGoalIds(
                             LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
-                    .containsExactlyInAnyOrder(
-                            SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
-            assertPhysicsSourceRouteFrontier(fixture, Set.of());
-            assertPhysicsSourceRouteFrontier(fixture, Set.of(OBSERVATION_ID, MODELS_ID, SI_UNITS_ID));
-
-            if ("prerequisiteOnly".equals(methodRole)) {
-                assertPhysicsSourceRouteFrontier(
-                        fixture, Set.copyOf(PHYSICS_METHOD_IDS),
-                        SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
-            } else {
-                assertPhysicsSourceRouteFrontier(fixture, Set.copyOf(PHYSICS_METHOD_IDS));
-            }
+                    .containsExactlyInAnyOrderElementsOf(projection.learningAtomicGoalIds());
+            assertPhysicsSourceRouteFrontier(fixture, Set.of(), OBSERVATION_ID, SI_UNITS_ID);
+            assertPhysicsSourceRouteFrontier(fixture, Set.of(OBSERVATION_ID, MODELS_ID, SI_UNITS_ID), SOURCE_CRITIQUE_ID);
+            assertPhysicsSourceRouteFrontier(fixture, Set.copyOf(PHYSICS_METHOD_IDS),
+                    SOLAR_SYSTEM_CLASSIFICATION_ID, OPEN_COSMOLOGICAL_QUESTIONS_ID);
         }
     }
 
     @Test
-    void missingInheritedOrTransitiveRoleBlocksAllFrontiersRegardlessOfMasteryOrFocus() {
+    void missingInheritedOrTransitiveManualRoleDoesNotExcludeRequiredLearning() {
         for (boolean inherited : List.of(false, true)) {
             String target = inherited ? OUTSIDE_TARGET_ID : TARGET_ID;
             for (String omitted : List.of(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID)) {
@@ -393,7 +409,7 @@ class ProjectionRoleLearnerServiceTest {
                                     .findFirst().orElseThrow().setRequires(List.of(PREREQUISITE_ID));
                             fixture.landscape().getGoals().stream().filter(goal -> ROOT_CLUSTER_ID.equals(goal.getId()))
                                     .findFirst().orElseThrow().setContains(List.of(target));
-                            // A null raw list must not suppress inherited role validation.
+                            // A null direct list must not suppress canonical inherited demand.
                             fixture.landscape().getGoals().stream().filter(goal -> target.equals(goal.getId()))
                                     .findFirst().orElseThrow().setRequires(null);
                         }
@@ -404,8 +420,15 @@ class ProjectionRoleLearnerServiceTest {
                                 new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0),
                                 new Mastery(fixture.learner(), TRANSITIVE_PREREQUISITE_ID, 1.0)) : List.of();
                         when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(stored);
+                        ProjectionSets projection = projectionSets(fixture.service());
+                        assertThat(projection.seedAtomicGoalIds()).containsExactly(target);
+                        assertThat(projection.learningAtomicGoalIds())
+                                .containsExactlyInAnyOrder(target, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                        assertThat(projection.prerequisiteOnlyGoalIds())
+                                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                        boolean targetAvailable = !strict || mastered;
                         assertThat(frontierPaths(fixture, List.of(target)).values()).allSatisfy(ids ->
-                                assertThat(ids).doesNotContain(target));
+                                assertThat(ids.contains(target)).isEqualTo(targetAvailable));
                         assertThat(fixture.service().getMastery(LEARNER_ID)).hasSize(stored.size());
                         verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
                         verify(fixture.masteryRepository(), never()).saveAll(any());
@@ -468,7 +491,9 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(topology.transitiveGoalPrerequisites(OUTSIDE_TARGET_ID)).containsExactly(NESTED_CLUSTER_ID);
         assertThat(topology.transitivePrerequisites(OUTSIDE_TARGET_ID))
                 .containsExactlyInAnyOrder(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
-        assertThat(projectionSets(fixture.service()).targetGoalIds()).doesNotContain(TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projectionSets(fixture.service()).seedAtomicGoalIds()).containsExactly(OUTSIDE_TARGET_ID);
+        assertThat(projectionSets(fixture.service()).targetGoalIds())
+                .contains(OUTSIDE_TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
         assertThat(projectionSets(fixture.service()).prerequisiteOnlyGoalIds()).doesNotContain(TRANSITIVE_PREREQUISITE_ID);
         assertThat(frontierPaths(fixture, List.of(OUTSIDE_TARGET_ID)).values()).allSatisfy(ids ->
                 assertThat(ids).contains(OUTSIDE_TARGET_ID));
@@ -485,7 +510,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void unknownDirectPrerequisiteBlocksBothFrontiersInEitherMode() {
+    void unknownDirectPrerequisiteInvalidatesAllFrontierPathsInEitherMode() {
         for (boolean strictMode : List.of(false, true)) {
             Fixture fixture = fixture(view(goalEntry(TARGET_ID)));
             fixture.learner().setStrictMode(strictMode);
@@ -496,9 +521,7 @@ class ProjectionRoleLearnerServiceTest {
             when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                     .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
 
-            assertThat(fixture.service().getFrontier(LEARNER_ID)).doesNotContain(TARGET_ID);
-            assertThat(fixture.service().getRichFrontier(LEARNER_ID))
-                    .extracting(FrontierGoal::id).doesNotContain(TARGET_ID);
+            assertInvalidFrontierPaths(fixture, List.of(TARGET_ID));
         }
     }
 
@@ -615,7 +638,7 @@ class ProjectionRoleLearnerServiceTest {
                     .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
             fixture.landscape().getGoals().stream().filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
                     .findFirst().orElseThrow().setRequires(List.of(unknown));
-            assertThat(frontierPaths(fixture, focus).values()).allSatisfy(ids -> assertThat(ids).isEmpty());
+            assertInvalidFrontierPaths(fixture, focus);
             verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
             verify(fixture.masteryRepository(), never()).saveAll(any());
           }
@@ -630,6 +653,18 @@ class ProjectionRoleLearnerServiceTest {
                         .map(FrontierGoal::id).sorted().toList(),
                 "prospective-focus", fixture.service().getUncompactedRichFrontierForFocus(LEARNER_ID, focus).stream()
                         .map(FrontierGoal::id).sorted().toList());
+    }
+
+    private void assertInvalidFrontierPaths(Fixture fixture, List<String> focus) {
+        for (org.assertj.core.api.ThrowableAssert.ThrowingCallable invocation :
+                List.<org.assertj.core.api.ThrowableAssert.ThrowingCallable>of(
+                        () -> fixture.service().getFrontier(LEARNER_ID),
+                        () -> fixture.service().getRichFrontier(LEARNER_ID),
+                        () -> fixture.service().getUncompactedRichFrontier(LEARNER_ID),
+                        () -> fixture.service().getUncompactedRichFrontierForFocus(LEARNER_ID, focus))) {
+            assertThatThrownBy(invocation).isInstanceOfSatisfying(CompletionCompilationException.class,
+                    error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
+        }
     }
 
     @Test
@@ -650,7 +685,7 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void localAtomicGoalEntryDoesNotImportTheCanonicalClustersUnusedChildren() {
+    void directCanonicalClusterEntryValidatesAndExposesItsActualAtomicBasis() {
         Fixture fixture = fixture(view(goalEntry(NESTED_CLUSTER_ID)));
         fixture.landscape().setGoals(List.of(
                 clusterGoal(ROOT_CLUSTER_ID, List.of(NESTED_CLUSTER_ID)),
@@ -659,10 +694,18 @@ class ProjectionRoleLearnerServiceTest {
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), NESTED_CLUSTER_ID)));
 
+        assertInvalidFrontierPaths(fixture, List.of(NESTED_CLUSTER_ID));
+        assertThatThrownBy(() -> fixture.service().getFilteredAtomicGoalIds(
+                LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
+                .isInstanceOf(CompletionCompilationException.class)
+                .hasMessageContaining("unknown-unused-child-requirement");
+        fixture.landscape().getGoals().stream().filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
+                .findFirst().orElseThrow().setRequires(List.of());
         assertThat(fixture.service().getFilteredAtomicGoalIds(
-                LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(NESTED_CLUSTER_ID);
+                LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(PREREQUISITE_ID);
+        assertThat(projectionSets(fixture.service()).seedAtomicGoalIds()).containsExactly(PREREQUISITE_ID);
         assertThat(frontierPaths(fixture, List.of(NESTED_CLUSTER_ID)).values())
-                .allSatisfy(ids -> assertThat(ids).containsExactly(NESTED_CLUSTER_ID));
+                .allSatisfy(ids -> assertThat(ids).contains(PREREQUISITE_ID));
         assertThat(fixture.service().getMastery(LEARNER_ID)).isEmpty();
         verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
         verify(fixture.masteryRepository(), never()).saveAll(any());
@@ -683,7 +726,12 @@ class ProjectionRoleLearnerServiceTest {
                 atomicGoal(PREREQUISITE_ID, List.of()), atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of()),
                 atomicGoal(OUTSIDE_TARGET_ID, List.of(NESTED_CLUSTER_ID))));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(fixture.learner(), ROOT_CLUSTER_ID)));
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID),
+                        new PlannedGoal(fixture.learner(), PREREQUISITE_ID)));
+        // A broad root now includes both required cluster children in F. Use
+        // these separate roots to keep the deep child outside normal focus.
+        assertThat(projectionSets(fixture.service()).learningAtomicGoalIds())
+                .containsExactlyInAnyOrder(OUTSIDE_TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
         when(fixture.masteryRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new Mastery(fixture.learner(), PREREQUISITE_ID, 1.0)));
 
@@ -728,11 +776,13 @@ class ProjectionRoleLearnerServiceTest {
                 atomicGoal(PREREQUISITE_ID, List.of()), atomicGoal(TRANSITIVE_PREREQUISITE_ID, List.of()),
                 atomicGoal(OUTSIDE_TARGET_ID, List.of(ROOT_CLUSTER_ID))));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
-                .thenReturn(List.of(new PlannedGoal(fixture.learner(), ROOT_CLUSTER_ID),
+                .thenReturn(List.of(new PlannedGoal(fixture.learner(), PREREQUISITE_ID),
                         new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID)));
+        assertThat(projectionSets(fixture.service()).seedAtomicGoalIds())
+                .containsExactlyInAnyOrder(PREREQUISITE_ID, OUTSIDE_TARGET_ID);
         assertThat(projectionSets(fixture.service()).targetGoalIds())
-                .contains(ROOT_CLUSTER_ID, PREREQUISITE_ID, OUTSIDE_TARGET_ID)
-                .doesNotContain(NESTED_CLUSTER_ID, TRANSITIVE_PREREQUISITE_ID);
+                .contains(ROOT_CLUSTER_ID, PREREQUISITE_ID, OUTSIDE_TARGET_ID, TRANSITIVE_PREREQUISITE_ID)
+                .doesNotContain(NESTED_CLUSTER_ID);
         assertThat(fixture.service().getFrontier(LEARNER_ID)).doesNotContain(OUTSIDE_TARGET_ID);
         assertThat(fixture.service().getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id)
                 .doesNotContain(OUTSIDE_TARGET_ID);
@@ -833,9 +883,10 @@ class ProjectionRoleLearnerServiceTest {
                         .thenReturn(List.of(intermediateMastery));
                 ProjectionSets projection = projectionSets(
                         fixture.service(), fixture.learner().getPersonalCurriculum());
-                assertThat(mathematicsRole.equals("target")
-                        ? projection.targetGoalIds() : projection.prerequisiteOnlyGoalIds())
-                        .contains(EXTERNAL_PREREQUISITE_ID);
+                assertThat(projection.targetGoalIds()).contains(EXTERNAL_PREREQUISITE_ID);
+                assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ID);
+                assertThat(projection.seedAtomicGoalIds().contains(EXTERNAL_PREREQUISITE_ID))
+                        .isEqualTo(mathematicsRole.equals("target"));
 
                 List<String> intermediateFrontier = richFrontier
                         ? fixture.service().getRichFrontier(LEARNER_ID).stream().map(FrontierGoal::id).toList()
@@ -949,7 +1000,9 @@ class ProjectionRoleLearnerServiceTest {
 
         ProjectionSets projection = projectionSets(fixture.service(), personalCurriculum);
         assertThat(projection.targetGoalIds()).containsExactlyInAnyOrder(
-                TARGET_ID, EXTERNAL_PREREQUISITE_CHILD_ID, EXTERNAL_PREREQUISITE_ID);
+                TARGET_ID, EXTERNAL_PREREQUISITE_CHILD_ID, EXTERNAL_PREREQUISITE_ID,
+                PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+        assertThat(projection.seedAtomicGoalIds()).containsExactlyInAnyOrder(TARGET_ID, EXTERNAL_PREREQUISITE_ID);
         assertThat(projection.targetGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ROOT_ID);
         assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(EXTERNAL_PREREQUISITE_ROOT_ID);
         assertThat(projection.presentationRootGoalIds()).contains(EXTERNAL_PREREQUISITE_ROOT_ID);
@@ -1185,10 +1238,12 @@ class ProjectionRoleLearnerServiceTest {
 
         assertThat(fixture.service().getFilteredAtomicGoalIds(
                         LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
-                .containsExactly(TARGET_ID);
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
 
         ProjectionSets projection = projectionSets(fixture.service());
-        assertThat(projection.targetGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(projection.targetGoalIds())
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
         assertThat(projection.prerequisiteOnlyGoalIds()).doesNotContain(TARGET_ID);
         assertThat(projection.presentationRootGoalIds())
                 .containsExactly(ROOT_CLUSTER_ID);
@@ -1205,6 +1260,8 @@ class ProjectionRoleLearnerServiceTest {
         assertThat(directPrerequisiteProjection.targetGoalIds())
                 .contains(ROOT_CLUSTER_ID, NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
                 .doesNotContain(TARGET_ID);
+        assertThat(directPrerequisiteProjection.seedAtomicGoalIds())
+                .containsExactlyInAnyOrder(PREREQUISITE_ID, OUTSIDE_TARGET_ID);
         assertThat(directPrerequisiteProjection.prerequisiteOnlyGoalIds())
                 .contains(TARGET_ID);
 
@@ -1213,7 +1270,9 @@ class ProjectionRoleLearnerServiceTest {
                 goalEntry(TARGET_ID)));
 
         ProjectionSets directTargetProjection = projectionSets(directTarget.service());
-        assertThat(directTargetProjection.targetGoalIds()).containsExactly(TARGET_ID);
+        assertThat(directTargetProjection.seedAtomicGoalIds()).containsExactly(TARGET_ID);
+        assertThat(directTargetProjection.targetGoalIds())
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
         assertThat(directTargetProjection.prerequisiteOnlyGoalIds())
                 .contains(ROOT_CLUSTER_ID, NESTED_CLUSTER_ID, OUTSIDE_TARGET_ID)
                 .doesNotContain(TARGET_ID);
@@ -1229,6 +1288,7 @@ class ProjectionRoleLearnerServiceTest {
                 projectionSets(deeperPrerequisite.service());
         assertThat(deeperPrerequisiteProjection.targetGoalIds())
                 .containsExactlyInAnyOrder(ROOT_CLUSTER_ID, OUTSIDE_TARGET_ID);
+        assertThat(deeperPrerequisiteProjection.seedAtomicGoalIds()).containsExactly(OUTSIDE_TARGET_ID);
         assertThat(deeperPrerequisiteProjection.prerequisiteOnlyGoalIds())
                 .containsExactlyInAnyOrder(
                         NESTED_CLUSTER_ID,
@@ -1240,11 +1300,14 @@ class ProjectionRoleLearnerServiceTest {
                 canonicalSubtree(NESTED_CLUSTER_ID)));
 
         ProjectionSets deeperTargetProjection = projectionSets(deeperTarget.service());
+        assertThat(deeperTargetProjection.seedAtomicGoalIds())
+                .containsExactlyInAnyOrder(TARGET_ID, PREREQUISITE_ID);
         assertThat(deeperTargetProjection.targetGoalIds())
                 .containsExactlyInAnyOrder(
                         NESTED_CLUSTER_ID,
                         TARGET_ID,
-                        PREREQUISITE_ID);
+                        PREREQUISITE_ID,
+                        TRANSITIVE_PREREQUISITE_ID);
         assertThat(deeperTargetProjection.prerequisiteOnlyGoalIds())
                 .containsExactlyInAnyOrder(ROOT_CLUSTER_ID, OUTSIDE_TARGET_ID);
     }
@@ -1276,16 +1339,16 @@ class ProjectionRoleLearnerServiceTest {
     }
 
     @Test
-    void setPlannedGoalsRejectsPrerequisiteOnlyAndUnknownGoalsBeforePersistence() {
+    void setPlannedGoalsRejectsUnneededPrerequisiteOnlyAndUnknownGoalsBeforePersistence() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
-                goalEntry(PREREQUISITE_ID, "prerequisiteOnly")));
+                goalEntry(OUTSIDE_TARGET_ID, "prerequisiteOnly")));
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), TARGET_ID)));
 
         assertInvalidProjectedFocus(
-                () -> fixture.service().setPlannedGoals(LEARNER_ID, Set.of(PREREQUISITE_ID)),
-                PREREQUISITE_ID);
+                () -> fixture.service().setPlannedGoals(LEARNER_ID, Set.of(OUTSIDE_TARGET_ID)),
+                OUTSIDE_TARGET_ID);
         assertInvalidProjectedFocus(
                 () -> fixture.service().setPlannedGoals(LEARNER_ID, Set.of("unknown-goal")),
                 "unknown-goal");
@@ -1403,25 +1466,24 @@ class ProjectionRoleLearnerServiceTest {
     void storedPrerequisiteOnlyFocusIsFilteredFromLearnerFacingReadsAndCannotConstrainFrontier() {
         Fixture fixture = fixture(view(
                 canonicalSubtree(ROOT_CLUSTER_ID),
-                goalEntry(PREREQUISITE_ID, "prerequisiteOnly"),
-                goalEntry(TRANSITIVE_PREREQUISITE_ID, "prerequisiteOnly")));
+                goalEntry(OUTSIDE_TARGET_ID, "prerequisiteOnly")));
         PlannedGoal stalePrerequisiteOnlyFocus =
-                new PlannedGoal(fixture.learner(), PREREQUISITE_ID);
+                new PlannedGoal(fixture.learner(), OUTSIDE_TARGET_ID);
         when(fixture.plannedGoalRepository().findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(stalePrerequisiteOnlyFocus));
 
         assertThat(fixture.service().getPlannedGoals(LEARNER_ID))
                 .containsExactly(ROOT_CLUSTER_ID);
-        // The restored target root includes TARGET_ID, while its prerequisiteOnly
-        // requirement stays outside the normal focus and cannot block entry.
+        // The genuinely unneeded support focus is rejected. The restored root
+        // still includes its canonical required child P; deep preparation stays
+        // in global L outside this root's normal-mode focus.
         assertThat(fixture.service().getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .containsExactlyInAnyOrder(
                         ROOT_CLUSTER_ID,
                         NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID,
-                        TARGET_ID)
-                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                        PREREQUISITE_ID)
+                .doesNotContain(OUTSIDE_TARGET_ID, TARGET_ID, TRANSITIVE_PREREQUISITE_ID);
 
         var learnerState = fixture.service().getLearnerState(LEARNER_ID);
         assertThat(learnerState.goals().planned())
@@ -1432,9 +1494,8 @@ class ProjectionRoleLearnerServiceTest {
                 .containsExactlyInAnyOrder(
                         ROOT_CLUSTER_ID,
                         NESTED_CLUSTER_ID,
-                        OUTSIDE_TARGET_ID,
-                        TARGET_ID)
-                .doesNotContain(PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID);
+                        PREREQUISITE_ID)
+                .doesNotContain(OUTSIDE_TARGET_ID, TARGET_ID, TRANSITIVE_PREREQUISITE_ID);
 
         assertThat(fixture.service().getMastery(LEARNER_ID)).isEmpty();
         verify(fixture.masteryRepository(), never()).save(any(Mastery.class));
@@ -1472,7 +1533,8 @@ class ProjectionRoleLearnerServiceTest {
         ObjectMapper mapper = new ObjectMapper();
         // Keep the whole current canonical contracts. This fixture isolates the
         // Physics-method route, with its actual Mathematics preparation stored
-        // separately; explicit POnly support does not enroll Mathematics targets.
+        // separately. The required-learning closure retains that preparation
+        // without enrolling unrelated Mathematics goals.
         SkillLandscape canonicalPhysics = mapper.readValue(Path.of(
                 "../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json")
                 .toFile(), SkillLandscape.class);
@@ -1740,12 +1802,16 @@ class ProjectionRoleLearnerServiceTest {
                 ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
         Map<String, LearningGoal> structuralGoals =
                 ReflectionTestUtils.invokeMethod(projection, "structuralGoals");
+        PersonalCurriculumLearningScope learningScope =
+                ReflectionTestUtils.invokeMethod(projection, "learningScope");
         return new ProjectionSets(
                 targetGoalIds,
                 prerequisiteOnlyGoalIds,
                 presentationRootGoalIds,
                 visibleGoals.keySet(),
-                structuralGoals.keySet());
+                structuralGoals.keySet(),
+                learningScope == null ? Set.of() : learningScope.seedAtomicGoalIds(),
+                learningScope == null ? Set.of() : learningScope.learningAtomicGoalIds());
     }
 
     private record Fixture(
@@ -1766,6 +1832,8 @@ class ProjectionRoleLearnerServiceTest {
             Set<String> prerequisiteOnlyGoalIds,
             List<String> presentationRootGoalIds,
             Set<String> visibleGoalIds,
-            Set<String> structuralGoalIds) {
+            Set<String> structuralGoalIds,
+            Set<String> seedAtomicGoalIds,
+            Set<String> learningAtomicGoalIds) {
     }
 }

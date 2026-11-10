@@ -1,0 +1,118 @@
+{
+  "status": "LOCAL_SELECTED_ACCEPTANCE_REMOTE_PENDING",
+  "recordedUtc": "2026-11-10T19:44:17.349200+00:00",
+  "branch": "fix/personal-curriculum-prerequisite-closure",
+  "mainBase": "0bf53b12525335bb61ab8a51ad1d4543a3f4a6bd",
+  "contract": "atomic-prerequisite-learning-v1",
+  "canonicalCurriculaChanged": false,
+  "maturityFloorPolicySha256": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+  "maturityFloorPolicyChanged": false,
+  "hardStandardG17Activated": false,
+  "java": {
+    "command": [
+      "./gradlew",
+      "test",
+      "--tests",
+      "com.skillpilot.backend.completion.PersonalCurriculumLearningScopeTest",
+      "--tests",
+      "com.skillpilot.backend.service.PersonalCurriculumLearningScopeIntegrationTest",
+      "--tests",
+      "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest",
+      "--no-daemon",
+      "--max-workers=1"
+    ],
+    "javaVersion": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Corretto-25.0.2.10.1 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Corretto-25.0.2.10.1 (build 25.0.2+10-LTS, mixed mode, sharing)",
+    "normalGradlePolicyUnchanged": true,
+    "exitCode": 0,
+    "durationSeconds": 79.09691369700886,
+    "boundNamedInputs": 790,
+    "allNamedInputsUnchanged": true,
+    "classes": {
+      "com.skillpilot.backend.completion.PersonalCurriculumLearningScopeTest": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "startedEvents": 9,
+        "passedEvents": 9,
+        "junitSha256": "a3a8f1c855a38231a5d139622eeb0e1950ef681f9ba5119f2be7d3db91e99843"
+      },
+      "com.skillpilot.backend.service.PersonalCurriculumLearningScopeIntegrationTest": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "startedEvents": 8,
+        "passedEvents": 8,
+        "junitSha256": "bb27d7c9b2e4dbf8493dd78e859079660567aa58e29013da1b611e5153f7ed96"
+      },
+      "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest": {
+        "tests": 49,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "startedEvents": 49,
+        "passedEvents": 49,
+        "junitSha256": "f88fc9b6eb6ddae8d85373d29bd7182f4f084dda026741c0ff3b96cc4d6eae2b"
+      }
+    },
+    "rawReceiptPath": "/mnt/e/skillpilot-personal-curriculum-learning-scope-20261110/combined-attempt-3/receipt.json",
+    "rawReceiptSha256": "ab1c311fc3d9db2b8341115c6ca956befecbb2f0cdaad072c8dcdae7996d3596",
+    "rawLogSha256": "d7dc8e866f1c8057fc1e6d6ce9c796ede5245fba4af8cd8e74b56a2f66150664"
+  },
+  "frontend": {
+    "typeScriptBuild": "PASS",
+    "ordinaryLint": "PASS after byte-verified relocation of inactive ignored Oct11 capture folder; no checker/ignore changes",
+    "currentChangedFilesLint": "PASS",
+    "requiredTargetPresentationRegression": "PASS including competency/content modes",
+    "realChemistryChromium": "PASS including foreign filters and standalone cross-subject navigation",
+    "existingStartupCourseAndCompositionChecks": "PASS; new regression commands wired into existing npm/CI scripts",
+    "browserFixture": "Actual Chromium with fixture HTTP responses; Java service separately tested with mocked repositories"
+  },
+  "documentation": {
+    "threePassPdfBuild": "PASS no overflow/missing glyphs/unresolved references",
+    "recordedSourceOutputHashesValid": true,
+    "pdfSha256": "1f4e48330866ee0c64aaa2465b9832909c62c2de72a089afafd0fb456b62b125",
+    "documentationStatus": "runtime implementation described; applicability/proof/native/fullCI acceptance separate"
+  },
+  "review": {
+    "runtime": "Astra static GO; explicit missing child/cycle/root mismatch checks",
+    "testAlignment": "49 original cases retained; seed roles and L separate; hard error codes pinned"
+  },
+  "history": {
+    "attempt1": "66 executed; 26 failures retained (23 superseded old expectations, 3 new fixture assumptions)",
+    "attempt2": "diagnostic only: one test source changed during run, 65 pass and 1 aggregate assertion mismatch; original pins retained",
+    "attempt3": "fresh coherent 66/66 pass with unchanged inputs"
+  },
+  "boundaries": {
+    "fullBackendAccepted": false,
+    "fullNativeMatrixAccepted": false,
+    "curriculumProducerAndFloorsAcceptedForThisCode": false,
+    "remoteCiAccepted": false,
+    "mainDelivered": false,
+    "finalG17GoalAccepted": false,
+    "newOperatorApplicationDeploymentInvoked": false
+  },
+  "sourcePins": {
+    "app/package.json": "2c0623c30f3ca67d272e6002b3b09214526b9769d79b0f5f60b5ec93180077e7",
+    "app/scripts/fixtures/learnerCoreStartupUi.tsx": "e618030312c1dc0bf4eae7f8c05179930eab509126a8f1abf0a97c3eeaca1e13",
+    "app/scripts/testPersonalCurriculumProjectionUi.ts": "3ab99b244ec6b282d4cb792a979172d4b008c8dd5a7638d24b15d47b1114ee99",
+    "app/src/components/CompetenceTree.tsx": "99fa157fa01e03d1a1b959bd12289fb2692a30fbb00749a29439f12ae4e4ce0f",
+    "app/src/components/learningUnitMap/LearnerGoalNavigationMap.tsx": "b6edf4281b3b96ec093d7922ad986347b315f44caf6335402e905b26b682f652",
+    "app/src/goalTypes.ts": "48648db4a0971d16c8b4514762cf727ca82ab2bebcb4362f8414fe2df52b1624",
+    "app/src/hooks/useAppCore.ts": "fbf304af8e2ad8e3a9be7b70a491f16efe15e3400d04c1edd88d3ba0ca9d69d1",
+    "app/src/landscapeTypes.ts": "885b0c27432e5a00867ab712984c82db9e6c358250841cc48de7cb6f2087f268",
+    "app/src/utils/compositionViewRuntime.ts": "ae3cc6f67ae856962e5ccd3cd0fdd55f64752750fa2bc6673853b8a80da60baf",
+    "app/src/utils/goalFilters.ts": "cabea14d1c0cd7231be1579116618104570102243d14ced25b298d3e3a1815c9",
+    "app/src/utils/personalCurriculumProjection.test.tsx": "f134434bb68852be4d6ef0170db45ea610c8e63bbd15244f65d6a691cdd83be6",
+    "app/src/utils/treeProjectionRuntime.ts": "1b968d4d36a5ac8666e7507c7b40101bf8a096f727426999b42f63e6791436ae",
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionCanonicalGraphResolver.java": "d64ca8c6b7c0267f3dafe7885f0a9cdcb04d78a2a34915910e26b25b57456ddf",
+    "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java": "a0f6c2439d6f1ae66c17a71e334b04a556d491b806b4169e8f182f551ca055c2",
+    "backend/src/main/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScope.java": "c36699a9f6191956030c50568e32086295bd2240adfe94236a87a7e0385b0164",
+    "backend/src/main/java/com/skillpilot/backend/landscape/SkillLandscape.java": "f54ef6ddb9021717cdf459bf1218f820b494601fd979070c37198b916fd9bfec",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "59edf1461cd41e24cd21f2af832851513ffb94237a98ed0c48c37adad7121737",
+    "backend/src/test/java/com/skillpilot/backend/completion/PersonalCurriculumLearningScopeTest.java": "07372ecac95b663c0be856cd5dedd0d66b8d2707baad5c5fd65543e312b8b891",
+    "backend/src/test/java/com/skillpilot/backend/service/PersonalCurriculumLearningScopeIntegrationTest.java": "523582570b096a2354ac5d52e888eb880e228123c29ca69880d8d7bd34f0636b",
+    "backend/src/test/java/com/skillpilot/backend/service/ProjectionRoleLearnerServiceTest.java": "c79a8c3698a5824bac44f76a1bea625c2924cae0c51383c348392aa26cd92358"
+  }
+}
