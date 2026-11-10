@@ -1,14 +1,35 @@
 % SPDX-License-Identifier: Apache-2.0
 \section{Regeln und Meilensteine}
 \label{sec:rule-milestones}
-Dieser Anhang ist das Nachschlageregister der Graphregeln. Jede GD-Zeile verbindet eine Pflicht mit ihrem vorgesehenen Prüfgebiet (Soll), vorhandenen Prüfungen (Ist) und deren Aussagegrenzen. Die Meilensteine M0--M7 ordnen die maschinelle Curriculum-QA; Laufzeitverträge, Konzepte, optionale Profile sowie Artefakt- und Dokumentpflichten sind gesondert ausgewiesen. Die beiden vorhandenen Regelfamilien heißen \emph{Curriculum-Quality-Review} (CQR) und \emph{graph-validation rollout rule} (GVR): Sie bezeichnen curriculare Qualitätsprüfungen beziehungsweise Prüfregeln des Graphvalidators. Die folgende Legende erklärt die hier verwendeten Codes mit ihrem jeweiligen Umfang.
+Dieser Anhang ist das Nachschlageregister der Graphregeln. Er beantwortet
+für jede Regel dieses Dokuments drei Fragen: Was ist verlangt, in welches
+Prüfgebiet gehört die Pflicht, und was belegen die vorhandenen Prüfungen
+davon tatsächlich?
 
+\paragraph{So ist eine Zeile zu lesen.}
+Jede GD-Zeile verbindet eine Pflicht mit ihrem vorgesehenen Prüfgebiet (Soll), vorhandenen Prüfungen (Ist) und deren Aussagegrenzen:
+\begin{itemize}
+\item \textbf{Kennung.} \code{GD-}, der Buchstabe des Dokumentteils und eine laufende Nummer. C steht für den formalen Kern, X für den Kontext, U für die Lerneinheiten, P für die Planung, A für die Anerkennung impliziter Beherrschung und D für die Dokumentanhänge.
+\item \textbf{Pflicht.} Die Regel in Kurzform.
+\item \textbf{Soll.} Das Prüfgebiet, dem die Pflicht zugeordnet ist: ein Meilenstein M0--M7 oder eines der Kürzel aus Abschnitt~\ref{sec:rule-code-legend}.
+\item \textbf{Ist und Lücke.} Was vorhandene Prüfungen davon belegen und was offen bleibt.
+\item \textbf{Fundstelle.} Der benannte Unterabschnitt, in dem die Regel steht.
+\end{itemize}
+Die Zeilen sind im Telegrammstil gehalten und verwenden einige Kurzwörter: Unit für Lerneinheit, Exam oder Assessment für Prüfung oder Prüfungsziel, Memory für Memorierziel oder Memorierung, Normal und Strict für Normalmodus und strikten Modus, Closure für Hülle, Scope für Prüfumfang oder Geltungsbereich, Runtime für Laufzeit, Ganzheitssperre für Einheitssperre und Humantrial für menschliche Erprobung.
+
+\paragraph{Meilensteine und Regelfamilien.}
+Die Meilensteine M0--M7 ordnen die maschinelle Curriculum-QA; Laufzeitverträge, Konzepte, optionale Profile sowie Artefakt- und Dokumentpflichten sind gesondert ausgewiesen. Die beiden vorhandenen Regelfamilien heißen \emph{Curriculum-Quality-Review} (CQR) und \emph{graph-validation rollout rule} (GVR): Sie bezeichnen curriculare Qualitätsprüfungen beziehungsweise Prüfregeln des Graphvalidators. Die Legende in Abschnitt~\ref{sec:rule-code-legend} erklärt die hier verwendeten Codes mit ihrem jeweiligen Umfang.
+
+\paragraph{Eine Zuordnung ist kein Bestehen.}
 Die Zuordnung benennt das Prüfgebiet jeder Pflicht. Die daneben ausgewiesenen vorhandenen Gates belegen ausschließlich ihren tatsächlichen Umfang. Eine verbindliche, noch nicht vollständig gegatete Regel ist keine bereits bestandene Prüfung. M0 ist ein möglicher unvollständiger Ausgangsstand, kein Gütesiegel. Profilgebundene Routengates gelten in ihren benannten QA-Scopes. Die globale Basisprüfung auf vollständige atomare Normalform und transitive Minimalität (Prüfcode G17) muss dagegen den vollständigen deklarierten kanonischen Fachbestand einschließlich relevanter fachfremder Voraussetzungen und vererbender Vorfahren erfassen; eine QA-Profil-Auswahl oder ein Teilscan genügt dafür nicht.
 
+\paragraph{Basis vor jedem Meilenstein.}
 Die vollständige atomare Normalform und eine vollständige Minimalitätsprüfung sind Sollbasis vor jedem Aufstieg zu M1–M7. Ein G17-Verstoß oder eine unvollständige Prüfung sperrt im betroffenen Fach jeden Meilensteinpass M1–M7; einzelne Quellen- oder Reviewchecks können gleichwohl für sich bestehen. Der atomare Zielzustand \(R\subseteq A\times A\) ist verbindlich. Zuerst werden vollständige atomare Voraussetzungen hergestellt oder erhalten, danach dadurch redundante nichtatomare Anforderungen entfernt und erst dann die feste atomare Relation transitiv reduziert. Ein geerbter Alternativpfad allein erlaubt keine Löschung einer atomaren Route. CQR-102 und GVR-012 bleiben direkt atomar.
 
-Kartenwiederholungen gehören zum Lernprozess. Der Kartenzielabschluss benötigt seinen eigenen ausdrücklichen Prüfnachweis; spätere Fälligkeit allein nimmt ihn nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit oder daraus abgeleitete Mastery-Rücknahme. Eine neue Prüfungsentität oder ein neues Schema folgt daraus nicht.
+\paragraph{Memorierziele.}
+Kartenwiederholungen gehören zum Lernprozess. Der Abschluss eines Memorierziels benötigt seinen eigenen ausdrücklichen Prüfnachweis; spätere Fälligkeit allein nimmt ihn nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit oder daraus abgeleitete Mastery-Rücknahme. Eine neue Prüfungsentität oder ein neues Schema folgt daraus nicht.
 
+\paragraph{Umfang des Registers.}
 Die 143 stabilen GD-IDs erschließen alle sechs Kapiteldateien. Fundstellen verwenden benannte Unterabschnitte statt veränderlicher Zeilennummern. Laufzeitverträge, neue Anerkennungs- und Einheitensemantik, optionale Planung sowie Veröffentlichungs- und Dokumentpflichten erhalten keine erfundene Zuordnung zu M7. Fachliche Richtigkeit, menschliche Erprobung und Lernwirksamkeit bleiben eigenständige Nachweise.
 
 \subsection{Kurzübersicht der Prüfgebiete}
@@ -34,7 +55,7 @@ Artefakt / Dokument & Austausch, Veröffentlichung, Rechte, Datenschutz und Doku
 
 \subsection{Gatebezug und tatsächliche Reichweite}
 \label{sec:rule-code-legend}
-Die stabilen Codes benennen einzelne vorhandene Prüfungen. Die nachfolgenden Absätze ordnen deren tatsächliche Wirkung auf die Meilensteine ein. Die Legende umfasst genau die in diesem Register zitierten acht GVR- und achtzehn CQR-Codes; weitere Validatorregeln werden dadurch weder eingeführt noch als geprüft behauptet.
+Die stabilen Codes benennen einzelne vorhandene Prüfungen. Die Legende erklärt jeden Code; der anschließende Zuordnungsschlüssel ordnet deren tatsächliche Wirkung auf die Meilensteine ein. Die Legende umfasst genau die in diesem Register zitierten acht GVR- und achtzehn CQR-Codes; weitere Validatorregeln werden dadurch weder eingeführt noch als geprüft behauptet.
 
 \begingroup\small
 \begin{longtable}{@{}P{23mm}P{125mm}@{}}
@@ -72,6 +93,9 @@ CQR-501 & Aktive Applicability-Warnungen sind bereinigt und akzeptierte Warnungs
 \end{longtable}
 \endgroup
 
+\subsubsection*{Zuordnungsschlüssel}
+Die Registerzeilen nennen Prüfgebiete mit den folgenden elf Kürzeln. Jeder Absatz erklärt ein Kürzel mit seinen vorhandenen Prüfungen und deren Grenze.
+
 \paragraph{BASIS.} CQR-001 (IDs, Referenzen, direkte DAGs) und CQR-002 (explizite Strukturtypen) tragen Katalogziel M0. \code{validate:graph} hat weitere eigenständige GVR-/Integritätsprüfungen. Daraus folgt keine vollständige Prüfung sämtlicher mathematischer oder Laufzeitregeln.
 \paragraph{QUELLE.} CQR-000 \ensuremath{\to} M1; CQR-003/004/005 \ensuremath{\to} Katalogziel M2. Erfasst werden Quelleninventar, View-Abdeckung, Kursniveau-Mapping und Plausibilität; die konkrete Statuslogik ist nicht überall gleich streng. Fachliche Richtigkeit folgt nicht allein aus der technischen Evidenzprüfung.
 \paragraph{ROUTE.} CQR-101/102/103 \ensuremath{\to} M3, nur konfigurierte QA-Scopes. CQR-102 benutzt ausschließlich direkt verfasste atomare Kanten; CQR-103 verbietet \code{requires} auf den selektierten Clustern. GVR-012/013 sind zusätzliche begrenzte Profile, kein globaler Vollständigkeitsnachweis. CQR-104 hat Katalogziel M3, blockiert in der tatsächlichen Curriculum-Promotionskette erst M4.
@@ -84,6 +108,7 @@ CQR-501 & Aktive Applicability-Warnungen sind bereinigt und akzeptierte Warnungs
 \paragraph{ARTEFAKT.} Eigenständiger Veröffentlichungs-, Austausch-, Rechte- oder Datenschutzvertrag; keine automatische M0–M7-Zuordnung. Ein spezifischer Paket-/Releasecheck muss mit seinem eigenen Umfang belegt werden.
 \paragraph{DOKUMENT.} Dokumentbuild, Formelmodell oder Diagrammprüfung; kein Curriculum-M-Gate und kein Runtime-/Wirksamkeitsbeleg.
 
+\subsubsection*{Tatsächliche Aufstiegskette und weitere Gates}
 Die tatsächliche Aufstiegskette verlangt CQR-104/201/202 erst für Curriculum-M4 und CQR-203 mit den Kernreviews für M5. Die Katalogziele von 104 (M3) und 203 (M4) sind davon zu unterscheiden. Fehlende Routeprofile begrenzen einen sonst quellenreifen Stand auf M2. CQR-004 blockiert im Aggregator bei \emph{fail}, CQR-005 bei \emph{warn}; deren \code{not\_configured} blockiert dort nicht eigenständig. CQR-401 zählt View-Dateien. Quellenabdeckung bindet vorhandene parsebare registrierte Snapshots, nicht allein die vollständige Extraktion amtlicher PDF.
 
 Routen werden in zwölf expliziten Profilen für zehn Curricula geprüft: Mathematik und Physik jeweils Sek I/Sek II; Chemie und Biologie jeweils Sek II; Wirtschaftswissenschaften, Politik und Wirtschaft, Informatik, Geschichte, Deutsch und Latein jeweils stufenübergreifend. GVR-012/013 gelten nur in ihren Mathematikprofilen; GVR-013 umfasst direkte lokale atomare Quellen, nicht sämtliche Fächer, Clusterquellen oder fachübergreifenden Kanten. CQR-103 prüft die jeweils selektierten Cluster. Ein globaler Gate für den atomaren Zielzustand und die geordnete Migration ist nicht belegt.
