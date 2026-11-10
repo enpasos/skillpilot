@@ -44,6 +44,16 @@ Vorbereitungsbedarf und erhält die unabhängigen exakten Coverage-, Material-
 und Reviewbindungen. Kein Prüfungsziel oder Fingerprint wurde umgeschrieben.
 Der normale Test auf dem finalen Dateistand besteht in 405,578 Sekunden;
 entfernte Vorbereitungspfade und ungelöste Referenzen scheitern weiterhin.
+Ein gezielter Abgleich der weiteren Pflicht-CI-Verbraucher ergab genau einen
+weiteren veralteten Direktkanten-Pin im nativen CrossSubject-Test. Dessen
+Strahlungsziel behält alle vier ursprünglichen Anforderungen in seiner exakt
+geprüften vollständigen atomaren Vorbereitungshülle; die drei verbleibenden
+direkten Kanten werden getrennt geprüft. Eine isolierte Entfernung des echten
+Ersatzwegs muss den Bedarfsvergleich verwerfen. Der normale gezielte Gradle-Lauf
+mit tatsächlichen Curriculumdaten besteht in 260,972 Sekunden; alle 3883
+gebundenen Eingaben bleiben unverändert. Die anderen 94 Methoden dieser
+Testklasse sind bytegleich. Astra hat den kleinen Testpatch freigegeben;
+die vollständige neue Remote-CI wird dadurch nicht vorweggenommen.
 Der technische 600-Sekunden-Rahmen aus
 [PR #106](https://github.com/enpasos/skillpilot/pull/106) ist bei
 `de2d5c33cb33d71d0a671e1c03d44b139595a527` auf main; sein Mergetree ist exakt
