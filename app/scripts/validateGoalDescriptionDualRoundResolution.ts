@@ -8,6 +8,8 @@ import type { LearningGoal } from '../src/landscapeTypes'
 import {
   loadVerifiedPrerequisiteReductionContext,
   reviewBindingGoal,
+  verifiedPrerequisiteReductionSummary,
+  BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
   type VerifiedPrerequisiteReductionContext,
 } from './prerequisiteReductionProof'
 import { buildGoalDescriptionRolloutResolutionSynthesis } from './goalDescriptionRolloutResolutionSynthesis'
@@ -725,10 +727,20 @@ const validateCurrentGoalBindings = ({
     if (canonicalGoalId !== resolution.goal.goalId) {
       errors.push(`Canonical goal id ${canonicalGoalId || '(missing)'} does not match resolution goal ${resolution.goal.goalId}`)
     }
-    const historicalCanonicalContext = buildGoalDescriptionCanonicalContext(reviewBindingGoal(
+    const certifiedGoal = reviewBindingGoal(
       prerequisiteReductionContext, `${canonicalLandscapeId}:${canonicalGoalId}`, canonicalGoal,
-    ))
-    const expectedCanonicalContext = buildGoalDescriptionCanonicalContext(canonicalGoal)
+    )
+    const extended = canonicalGoal.extendedData
+    const certifiedBasis = extended !== null && typeof extended === 'object'
+      && Object.hasOwn(extended, 'assessmentApplicabilityBasis')
+      && prerequisiteReductionContext !== undefined
+      && verifiedPrerequisiteReductionSummary(prerequisiteReductionContext)?.proofContract
+        === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT
+    const historicalCanonicalContext = buildGoalDescriptionCanonicalContext(certifiedGoal)
+    // The opaque lookup above validates the exact current goal before a V8-only
+    // basis can use its certified baseline. Raw and older contracts stay strict.
+    const expectedCanonicalContext = certifiedBasis
+      ? historicalCanonicalContext : buildGoalDescriptionCanonicalContext(canonicalGoal)
     if (stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(expectedCanonicalContext)
       && stableGoalBookJson(currentGoal.canonicalContext) !== stableGoalBookJson(historicalCanonicalContext)) {
       errors.push(`Current V3 context for ${resolution.goal.goalId} disagrees with the canonical goal`)
