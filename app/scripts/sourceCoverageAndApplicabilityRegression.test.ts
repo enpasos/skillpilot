@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import { discoverActiveMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 import {
   buildApplicabilityCompilation,
+  assessmentApplicabilityBasisGoalRefs,
   getAllJsonFiles,
   hasOnlyPartialMappingSourceEvidence,
   intersectApplicabilityJurisdictions,
@@ -196,6 +197,160 @@ test('applicabilityFromRequires uses all-of intersection semantics', () => {
   assert.deepEqual(intersectApplicabilityJurisdictions([{ jurisdiction: ['DE-BY'] }]), ['DE-BY'])
   assert.deepEqual(intersectApplicabilityJurisdictions([{ jurisdiction: ['DE-BY'] }, {}]), [])
   assert.deepEqual(intersectApplicabilityJurisdictions([]), [])
+})
+
+const basisFixtureGoal = (id: string, contains: string[] = [], requires: string[] = []): LearningGoal => ({
+  id, title: id, description: id, weight: 1, contains, requires,
+  dimensionTags: { framework: 'test', demandLevel: 'AB1', processCompetencies: [], guidingIdeas: [], phase: 'J8' },
+})
+const basisFixture = (): SkillLandscape => ({
+  landscapeId: 'assessment-basis-test', locale: 'de-DE', title: 'Assessment basis', description: 'Fixture',
+  goals: [
+    { ...basisFixtureGoal('root', ['C', 'exam']), tags: ['root'] },
+    basisFixtureGoal('C', ['a', 'b']),
+    { ...basisFixtureGoal('a'), extendedData: { applicabilityOverrides: { jurisdiction: ['DE-BY'] } } },
+    { ...basisFixtureGoal('b'), extendedData: { applicabilityOverrides: { jurisdiction: ['DE-HE'] } } },
+    { ...basisFixtureGoal('exam', [], ['C']), tags: ['Assessment'],
+      extendedData: { applicabilityFromRequires: true } },
+  ],
+})
+const compileBasisFixture = (landscape: SkillLandscape) => buildApplicabilityCompilation([{
+  file: join(tmpdir(), `${landscape.landscapeId}.json`), landscape,
+}]).reports[0]
+const bindBasis = (goal: LearningGoal, refs: string[]) => {
+  goal.extendedData = { ...goal.extendedData,
+    assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: refs } }
+}
+
+test('live assessment basis preserves the literal cluster predicate while learning demand is normalized', () => {
+  const original = basisFixture(), normalized = structuredClone(original)
+  const exam = normalized.goals.find(goal => goal.id === 'exam')!
+  exam.requires = ['a', 'b']
+  const withoutBasis = compileBasisFixture(normalized)
+  assert.deepEqual(withoutBasis.goals.find(goal => goal.goalId === 'exam')!.compiledApplicability, {},
+    'legacy atomic all-of substitution is different from the original cluster child-union')
+  bindBasis(exam, ['C'])
+  const before = structuredClone(normalized)
+  const rows = (report: ReturnType<typeof compileBasisFixture>) => report.goals.map(goal => ({
+    id: goal.goalId, compiledApplicability: goal.compiledApplicability,
+  }))
+  assert.deepEqual(rows(compileBasisFixture(normalized)), rows(compileBasisFixture(original)))
+  const reversed = structuredClone(normalized)
+  reversed.goals.reverse()
+  assert.deepEqual(rows(compileBasisFixture(reversed)).sort((a, b) => a.id.localeCompare(b.id)),
+    rows(compileBasisFixture(normalized)).sort((a, b) => a.id.localeCompare(b.id)))
+  assert.deepEqual(normalized, before, 'compilation never changes raw goals, requires or basis references')
+  assert.deepEqual(exam.requires, ['a', 'b'])
+  normalized.goals.find(goal => goal.id === 'b')!.extendedData = {
+    applicabilityOverrides: { jurisdiction: ['DE-BW'] },
+  }
+  const refreshed = compileBasisFixture(normalized).goals.find(goal => goal.goalId === 'exam')!
+  assert.deepEqual(refreshed.compiledApplicability.jurisdiction, ['DE-BW', 'DE-BY'],
+    'the referenced cluster is freshly compiled, not a frozen jurisdiction list')
+  assert.ok(refreshed.evidence.every(e => e.kind === 'assessment-requires'
+    && e.source === 'assessment basis assessment-basis-test:C'))
+})
+
+test('assessment basis is strict, immutable and confined to flagged atomic assessment endpoints', () => {
+  const exam = basisFixture().goals.find(goal => goal.id === 'exam')!
+  bindBasis(exam, ['C'])
+  const refs = assessmentApplicabilityBasisGoalRefs(exam)!
+  assert.deepEqual(refs, ['C'])
+  assert.ok(Object.isFrozen(refs))
+  for (const basis of [null, undefined, [], {}, { kind: 'allOfGoalApplicability', goalRefs: [] },
+    { kind: 'jurisdictions', goalRefs: ['C'] }, { kind: 'allOfGoalApplicability', goalRefs: ['C'], unchecked: true },
+    { kind: 'allOfGoalApplicability', goalRefs: ['C', 'C'] },
+    { kind: 'allOfGoalApplicability', goalRefs: [' C'] },
+    { kind: 'allOfGoalApplicability', goalRefs: ['owner:C:extra'] },
+    { kind: 'allOfGoalApplicability', goalRefs: [1] }]) {
+    const invalid = structuredClone(exam)
+    invalid.extendedData = { ...invalid.extendedData, assessmentApplicabilityBasis: basis }
+    assert.throws(() => assessmentApplicabilityBasisGoalRefs(invalid), /Assessment applicability basis/u)
+  }
+  for (const changed of [
+    { ...exam, tags: [] }, { ...exam, contains: ['a'] }, { ...exam, type: 'cluster' as const },
+    { ...exam, extendedData: { ...exam.extendedData, applicabilityFromRequires: false } },
+  ]) assert.throws(() => assessmentApplicabilityBasisGoalRefs(changed), /atomic practice\/assessment/u)
+  assert.equal(assessmentApplicabilityBasisGoalRefs(basisFixtureGoal('ordinary')), undefined)
+})
+
+test('assessment basis rejects unresolved aliases and predicate or child-union cycles', () => {
+  for (const [refs, expected] of [
+    [['missing'], /unresolved local reference/u],
+    [['a', 'assessment-basis-test:a'], /duplicate resolved reference/u],
+    [['exam'], /basis cycle/u],
+  ] as const) {
+    const landscape = basisFixture()
+    bindBasis(landscape.goals.find(goal => goal.id === 'exam')!, [...refs])
+    assert.throws(() => compileBasisFixture(landscape), expected)
+  }
+  const clusterCycle = basisFixture()
+  bindBasis(clusterCycle.goals.find(goal => goal.id === 'exam')!, ['C'])
+  clusterCycle.goals.find(goal => goal.id === 'C')!.contains.push('exam')
+  assert.throws(() => compileBasisFixture(clusterCycle), /basis cycle/u)
+  const predicateCycle = basisFixture()
+  bindBasis(predicateCycle.goals.find(goal => goal.id === 'exam')!, ['other-exam'])
+  predicateCycle.goals.push({ ...basisFixtureGoal('other-exam', [], ['exam']), tags: ['Assessment'],
+    extendedData: { applicabilityFromRequires: true } })
+  assert.throws(() => compileBasisFixture(predicateCycle), /basis cycle/u)
+})
+
+test('assessment basis validates strict reference syntax on nested contains and legacy assessment edges', () => {
+  for (const malformed of ['assessment-basis-test:a:extra', ':a', ' a']) {
+    const cluster = basisFixture()
+    bindBasis(cluster.goals.find(goal => goal.id === 'exam')!, ['C'])
+    cluster.goals.find(goal => goal.id === 'C')!.contains = [malformed]
+    assert.throws(() => compileBasisFixture(cluster), /malformed expression reference/u)
+    const assessment = basisFixture()
+    bindBasis(assessment.goals.find(goal => goal.id === 'exam')!, ['other-exam'])
+    assessment.goals.push({ ...basisFixtureGoal('other-exam', [], [malformed]), tags: ['Assessment'],
+      extendedData: { applicabilityFromRequires: true } })
+    assert.throws(() => compileBasisFixture(assessment), /malformed expression reference/u)
+  }
+})
+
+test('first-unit assessment bases reject memory dependencies whose origin graph is outside this component', () => {
+  for (const memory of [{ nodeKind: 'memory' as const }, { tags: ['memorization'] }, { tags: ['srs-deck:fixture'] }]) {
+    for (const throughCluster of [false, true]) {
+      const landscape = basisFixture()
+      Object.assign(landscape.goals.find(goal => goal.id === 'a')!, memory)
+      bindBasis(landscape.goals.find(goal => goal.id === 'exam')!, [throughCluster ? 'C' : 'a'])
+      assert.throws(() => compileBasisFixture(landscape), /unsupported memory dependency/u)
+    }
+    const endpoint = basisFixture(), exam = endpoint.goals.find(goal => goal.id === 'exam')!
+    Object.assign(exam, memory)
+    if (memory.tags) exam.tags = ['Assessment', ...memory.tags]
+    bindBasis(exam, ['C'])
+    assert.throws(() => compileBasisFixture(endpoint), /memory endpoints/u)
+  }
+})
+
+test('first-unit local assessment bases reject foreign dependencies instead of silently compiling an empty result', () => {
+  const foreign: SkillLandscape = {
+    landscapeId: 'foreign-basis-test', locale: 'de-DE', title: 'Foreign', description: 'Fixture',
+    goals: [{ ...basisFixtureGoal('foreign-only'),
+      extendedData: { applicabilityOverrides: { jurisdiction: ['DE-HE'] } } }],
+  }
+  const compile = (local: SkillLandscape) => buildApplicabilityCompilation([local, foreign].map(landscape => ({
+    file: join(tmpdir(), `${landscape.landscapeId}.json`), landscape,
+  })))
+  for (const ref of ['foreign-basis-test:foreign-only', 'foreign-only']) {
+    const local = basisFixture()
+    bindBasis(local.goals.find(goal => goal.id === 'exam')!, [ref])
+    assert.throws(() => compile(local), /unsupported foreign reference|unresolved local reference/u)
+  }
+  const local = basisFixture()
+  bindBasis(local.goals.find(goal => goal.id === 'exam')!, ['C'])
+  local.goals.find(goal => goal.id === 'C')!.contains.push('foreign-basis-test:foreign-only')
+  assert.throws(() => compile(local), /unsupported foreign reference/u)
+})
+
+test('empty referenced applicability remains empty instead of using an authored cache fallback', () => {
+  const landscape = basisFixture(), exam = landscape.goals.find(goal => goal.id === 'exam')!
+  landscape.goals.push(basisFixtureGoal('empty'))
+  bindBasis(exam, ['empty'])
+  exam.applicability = { jurisdiction: ['DE-HE'] }
+  assert.deepEqual(compileBasisFixture(landscape).goals.find(goal => goal.goalId === 'exam')!.compiledApplicability, {})
 })
 
 test('inherited ordinary prerequisites preserve applicability after atomic materialization', () => {
