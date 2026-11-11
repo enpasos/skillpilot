@@ -2721,11 +2721,11 @@ public class LearnerService {
         return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
     }
 
-    /** Historical result reads retain their seed aliases/overlays without compiling a retired acquisition graph. */
+    /** Historical or unresolved result reads retain seed aliases/overlays without compiling a learning basis. */
     private Map<String, LearningGoal> masteryProjectionGoals(Learner learner) {
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null) return Collections.emptyMap();
-        if (isReadOnlyCompatibilitySession(learner)) {
+        if (isReadOnlyCompatibilitySession(learner) || !hasCompletedPersonalCurriculum(learner)) {
             // Keep this result out of the full learning-projection cache.
             return computeSeedGoalProjection(curriculumId, learner.getPersonalCurriculum(), false).visibleGoals();
         }

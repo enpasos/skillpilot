@@ -815,7 +815,26 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(right.graph().get(SOURCE).getRequires()).containsExactlyElementsOf(AFTER);
                 assertThat(hasDeclaredRole(left, REMOVED)).as("removed prerequisite retains a declared role: %s", scope).isTrue();
                 assertThat(hasDeclaredRole(right, REMOVED)).as("reduced prerequisite retains a declared role: %s", scope).isTrue();
+                for (NativeScope actual : List.of(left, right)) {
+                    PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(actual.projection(), "learningScope");
+                    assertThat(learning.learningAtomicGoalIds()).as("required Math acquisition basis: %s", scope)
+                            .contains(SOURCE, REMOVED);
+                    assertThat(actual.roles().atomicTargets()).as("emitted Math acquisition targets: %s", scope)
+                            .contains(SOURCE, REMOVED);
+                    if (!learning.seedAtomicGoalIds().contains(SOURCE)) {
+                        List<String> path = learning.requiredByPaths().get(SOURCE);
+                        assertThat(path).as("derived Math source has a canonical seed witness: %s", scope)
+                                .isNotNull().hasSizeGreaterThan(1).endsWith(SOURCE);
+                        assertThat(learning.seedAtomicGoalIds()).contains(path.getFirst());
+                        for (int index = 1; index < path.size(); index++) {
+                            assertThat(actual.topology().directPrerequisites(path.get(index - 1)))
+                                    .as("normalized Math acquisition witness edge %d: %s", index, scope)
+                                    .contains(path.get(index));
+                        }
+                    }
+                }
                 boolean originalHelper = originalRoleValidity.get(SOURCE);
+                assertThat(originalHelper).as("complete Math learning basis has valid acquisition roles: %s", scope).isTrue();
                 if (originalHelper) validRoles++; else invalidRoles++;
                 if (left.roles().targets().contains(SOURCE)) sourceTargets++; else sourceContextsOnly++;
 
@@ -930,11 +949,13 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(germanMasteredSourcePairs).isEqualTo(7);
         assertThat(germanControlledRolesChecked).as("separate artificial role-projection differences").isTrue();
         assertThat(sourceTargets).as("actual Math target coverage").isPositive();
-        assertThat(sourceContextsOnly).as("Math source present only in supporting compiler context").isPositive();
+        assertThat(sourceContextsOnly).as("required atomic Math sources cannot remain context-only outside L").isZero();
         assertThat(foreignContexts).isPositive();
         assertThat(validRoles).isPositive();
-        // Existing incomplete GK roles remain invalid under the unified policy.
-        assertThat(invalidRoles).isPositive();
+        // Resolved scopes contain complete L; deliberate emitted-target losses
+        // remain invalid in the unchanged negative controls above.
+        assertThat(invalidRoles).as("resolved Math source scopes have complete acquisition roles").isZero();
+        assertThat(sourceTargets).isEqualTo(validRoles);
         assertThat(negativeRoleCaseChecked).as("effective-role negative control executed").isTrue();
         assertThat(navigationClusterCaseChecked).as("actual Bio navigation-cluster counterexample executed").isTrue();
         assertThat(inheritedRoleCaseChecked).as("actual Bio inherited-role counterexample executed").isTrue();

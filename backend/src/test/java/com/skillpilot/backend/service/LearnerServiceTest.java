@@ -569,9 +569,14 @@ public class LearnerServiceTest {
         learnerRepository.saveAndFlush(sourceLearner);
         plannedGoalRepository.saveAndFlush(new PlannedGoal(sourceLearner, staleFocusId));
         masteryRepository.saveAndFlush(new Mastery(sourceLearner, masteryGoalId, 0.625));
+        Mastery storedMastery = masteryRepository.findByLearner_SkillpilotId(sourceLearnerId).stream()
+                .filter(mastery -> masteryGoalId.equals(mastery.getGoalKey())).findFirst().orElseThrow();
 
         assertThat(learnerService.getPlannedGoals(sourceLearnerId)).isEmpty();
+        assertThat(learnerService.getMastery(sourceLearnerId)).containsEntry(masteryGoalId, 0.625);
         var signedExport = learnerService.exportLearner(sourceLearnerId);
+        assertThat(signedExport.data().mastery()).containsEntry(
+                masteryGoalId, new MasteryEntryDTO(storedMastery.getValue(), storedMastery.getUpdatedAt()));
         assertThat(signedExport.data().plannedGoals()).containsExactly(staleFocusId);
         assertThat(signedExport.data().copySources()).isEmpty();
         assertThat(objectMapper.valueToTree(signedExport).toString())
@@ -3022,7 +3027,29 @@ public class LearnerServiceTest {
                         CANONICAL_MATH_ROOT_SCOPE_ID)
                 .doesNotContain(COMPOSITION_J9_SCOPE_ID);
         Set<String> currentAtoms = assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_J8_SCOPE_ID));
-        assertThat(currentAtoms).hasSize(55);
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream().collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> authoredJ8Atoms = new LinkedHashSet<>();
+        compositionViewService.resolveStructureReference(COMPOSITION_J8_SCOPE_ID).referencedGoalIds()
+                .forEach(id -> collectAtomicGoalIds(id, canonicalGoals, authoredJ8Atoms));
+        Set<String> supportOnlyAssessments = Set.of(
+                J8_EXAM_TASK_1_ID, J8_EXAM_TASK_4_ID, "a70d4194-1f95-5dc4-884d-8ca856663601");
+        JsonNode reviewedView = objectMapper.valueToTree(
+                compositionViewService.findViewById("de-he-gym-math-gk-g9"));
+        for (String id : supportOnlyAssessments) {
+            assertThat(reviewedView.findParents("goalId").stream()
+                    .filter(node -> id.equals(node.path("goalId").asText())).toList())
+                    .singleElement().satisfies(node -> assertThat(node.path("projectionRole").asText())
+                            .isEqualTo("prerequisiteOnly"));
+        }
+        PersonalCurriculumLearningScope learningScope = personalLearningScope(learner);
+        assertThat(learningScope.seedAtomicGoalIds()).doesNotContainAnyElementsOf(supportOnlyAssessments);
+        assertThat(learningScope.learningAtomicGoalIds()).doesNotContainAnyElementsOf(supportOnlyAssessments);
+        Set<String> excludedAuthoredAtoms = new LinkedHashSet<>(authoredJ8Atoms);
+        excludedAuthoredAtoms.removeAll(learningScope.learningAtomicGoalIds());
+        assertThat(excludedAuthoredAtoms).containsExactlyInAnyOrderElementsOf(supportOnlyAssessments);
+        authoredJ8Atoms.removeAll(supportOnlyAssessments);
+        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(53);
         Set<String> precedingAtoms = currentAtoms;
         for (FrontierGoal option : state.stateMachine().goalOptions()) {
             Set<String> optionAtoms = assertMathFocusAtomicTargets(learner, option.selectionGoalIds());

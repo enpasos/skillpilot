@@ -1046,6 +1046,53 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(afterOrientation.getActiveGoalId()).isNull();
         assertThat(afterOrientation.getCoachStateRevision()).isEqualTo(orientationStateVersion + 1L);
 
+        // Closing the Personal Curriculum also makes the canonical SekI
+        // orientation necessary. Complete that actual offered learning target
+        // through the same MCP workflow before expecting an ordinary frontier.
+        String foundationOrientationId = "65365dce-f33f-49d8-9516-42f75883aa86";
+        assertThat(learningScope.learningAtomicGoalIds()).contains(foundationOrientationId);
+        List<String> foundationRequirementPath = List.of(
+                statisticsTargetId, modalValueId,
+                "91571d3f-3651-4477-ba21-320fc4077453",
+                "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+                "a4c2b831-02f0-5d55-a300-7823a71352c4",
+                "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                foundationOrientationId);
+        for (int index = 1; index < foundationRequirementPath.size(); index++) {
+            assertThat(canonicalGoals.get(foundationRequirementPath.get(index - 1)).getRequires())
+                    .contains(foundationRequirementPath.get(index));
+        }
+        assertThat(successorFrontierIds).containsExactly(foundationOrientationId);
+        HttpResponse<String> activateFoundationOrientation = callTool(
+                accessToken, 151, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.writeValueAsString(Map.of("goalId", foundationOrientationId, "redirect", false)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(activateFoundationOrientation, applicationSubject);
+        JsonNode foundationOrientationContext = result(activateFoundationOrientation).path("structuredContent");
+        assertThat(foundationOrientationContext.path("interactionMode").asText()).isEqualTo("orientation");
+        assertThat(foundationOrientationContext.path("activeGoal").path("goalId").asText())
+                .isEqualTo(foundationOrientationId);
+        OrientationOutlook foundationOutlook = learnerService.getCoachOrientationOutlook(PERMANENT_SKILLPILOT_ID, "de");
+        assertThat(foundationOutlook).isNotNull();
+        OrientationOutlook.Path foundationPath = foundationOutlook.paths().stream()
+                .filter(path -> "data-and-chance".equals(path.pathId())).findFirst().orElseThrow();
+        assertThat(foundationPath.relatedGoalIds()).contains("91571d3f-3651-4477-ba21-320fc4077453");
+        HttpResponse<String> completeFoundationOrientation = callTool(
+                accessToken, 152, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.writeValueAsString(Map.of("goalId", foundationOrientationId,
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, foundationPath.pathId())),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completeFoundationOrientation, applicationSubject);
+        JsonNode foundationCompletion = result(completeFoundationOrientation).path("structuredContent");
+        assertThat(foundationCompletion.path("status").asText()).isEqualTo("updated");
+        assertThat(foundationCompletion.path("stateVersion").asLong())
+                .isEqualTo(foundationOrientationContext.path("stateVersion").asLong() + 1L);
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).containsEntry(foundationOrientationId, 1.0);
+        assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
+
         // A normal mastery write with sequential autopilot must return the successor
         // already selected by SkillPilot Core. The compact coach context must not
         // expose the remaining frontier as a competing learner choice.
