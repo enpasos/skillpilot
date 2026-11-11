@@ -11,9 +11,14 @@ neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
 erfolgreichen Hauptjobs und fünf erfolgreichen Begleitworkflows auf Main
 `6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Auch die separat geprüfte
 Compilergrundlage [PR #114](https://github.com/enpasos/skillpilot/pull/114)
-ist auf Main `1ee7b40e6e2121bd7f8181aae74af57d55895905` geliefert. Der neue
-Main-Lauf ersetzt den abgebrochenen Lauf zu `6c274d9e`; dessen Abbruch ist
-kein bestandener Main-Nachweis. Im
+ist auf Main `1ee7b40e6e2121bd7f8181aae74af57d55895905` geliefert. Mit
+[PR #115](https://github.com/enpasos/skillpilot/pull/115) ist auch die geprüfte
+Topologiewiederverwendung auf Main `8278f12f9f` angekommen. Dessen frische
+Main-CI ist noch offen; abgebrochene Vorgängerläufe sind keine Abnahme. Die
+Runtime-Reparatur [PR #113](https://github.com/enpasos/skillpilot/pull/113)
+liegt bei `bdae30d0f2`, der vorhandene Snapshot-Fix
+[PR #116](https://github.com/enpasos/skillpilot/pull/116) bei `5bd656c876`.
+Beide benötigen noch ihre vollständige frische Remote-CI. Im
 [Biologie-PR #117](https://github.com/enpasos/skillpilot/pull/117), Branch
 `fix/g17-biology-assessment-basis`, sind der vorbereitete Biologiestand und
 der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
@@ -23,14 +28,21 @@ aller zehn unveränderten Floors bestehen lokal. Die genaue
 [Biologie-Prüfgrenze](https://github.com/enpasos/skillpilot/blob/1d63d2b18cf081d85827c80a37257c989a71dd87/qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
 trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
 Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
-Statusvoraussetzung durch.
+Statusvoraussetzung durch. Der anschließende Merge `7d3fbc40ef` übernimmt
+die gemeinsame aktuelle Grundlage und die Runtime-Reparaturen; die
+Bio-spezifischen V8- und tatsächlichen Ausgabeprüfungen bleiben erhalten.
+Damit ist der Mergekonflikt behoben. Die neue CI muss diesen integrierten
+Stand prüfen; frühere lokale Ergebnisse werden nicht auf ihn umgebunden.
 
 Während der Biologie-Remote-CI folgt der getrennte Wirtschafts-Datenbatch im
 sichtbaren IDE-Branch `fix/g17-economics-atomic-prerequisites-v8-data`. Er baut
-auf dem gesicherten Biologiestand `1d63d2b18c` auf und wird nach Biologie
-separat geliefert. Der [Wirtschafts-Zwischenstand](https://github.com/enpasos/skillpilot/blob/656dfd3bf8/qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
-ist installiert, aber noch nicht abgenommen; er benötigt keine neue
-Proofversion oder fachliche Entscheidung.
+auf Biologie auf und wird als [PR #118](https://github.com/enpasos/skillpilot/pull/118)
+separat geliefert. Der [Wirtschafts-Nachweis](https://github.com/enpasos/skillpilot/blob/0fb213baa003e003035e017973157234401b0f51/qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
+belegt öffentliche Beweisprüfung, native Gegenproben und den regulären
+Meilensteinlauf einschließlich aller zehn Floors am dort gebundenen Stand.
+Merge `8550c497f5` übernimmt den konfliktfreien Biologiestand; App- und
+Curriculumdateien sind gegenüber `0fb213baa0` unverändert. Frische Remote-CI
+und Main-Lieferung bleiben offen.
 
 Die nächsten Schritte schließen vorhandene Lieferungen ab. Astra hat den
 beschleunigten Ablauf am 11. November nochmals geprüft:
@@ -50,10 +62,16 @@ beschleunigten Ablauf am 11. November nochmals geprüft:
 - Reviews betreffen die neue Änderung; unveränderte Proofstufen und geprüfte
   Adapter werden nicht erneut konzeptionell aufgerollt. Neue Konzeptvarianten,
   Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen.
+- Das vorbereitete Standard-G17-Gate wird bereits vor Abschluss der übrigen
+  Fachreparaturen gegen den echten 21er-Producer geprüft. Noch offene Fächer
+  müssen dabei scheitern; die unveränderten Floors dürfen diese Ergebnisse
+  nicht akzeptieren. So werden Integrationsfehler früh sichtbar. Die kleine
+  Gateänderung wird getrennt von den Fachbatches nach Main geliefert, sobald
+  alle geschützten Fächer bestehen.
 
 Die Lieferfolge ist Biologie, Wirtschaft, Latein, Geschichte, Informatik und
-Politik und Wirtschaft, jeweils als getrennte Fachlieferung. Danach wird das
-zentrale G17-Gate in der Standard-Meilensteinprüfung aktiviert. Die endgültige
+Politik und Wirtschaft, jeweils als getrennte Fachlieferung. Das früh geprüfte
+zentrale G17-Gate wird anschließend auf Main aktiviert. Die endgültige
 Abnahme umfasst alle 21 Kataloge, die zehn unveränderten Mindeststände und die
 erfolgreiche vollständige CI auf dem endgültigen Main-Stand. Das Überlappen
 von Vorbereitung und CI ersetzt keinen dieser Nachweise.
