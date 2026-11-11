@@ -248,7 +248,7 @@ class PersonalCurriculumLearningScopeIntegrationTest {
     }
 
     @Test
-    void compatibilityMasteryReadsPreserveResultsWithoutCachingAnInvalidLearningProjection() {
+    void compatibilityReadsStayAvailableWhenTheLearningContextIsNotStrictlyCompilable() {
         // The raw requires graph is acyclic, but inheritance creates T -> P -> T.
         LearningGoal topic = cluster("legacy-topic", T);
         topic.setRequires(List.of(P));
@@ -272,15 +272,6 @@ class PersonalCurriculumLearningScopeIntegrationTest {
         TransactionSynchronizationManager.initSynchronization();
         TransactionSynchronizationManager.setActualTransactionActive(true);
         try {
-            assertThatThrownBy(() -> targets(fixture)).isInstanceOfSatisfying(
-                    CompletionCompilationException.class,
-                    failure -> assertThat(failure.code()).isEqualTo("ATOMIC_CYCLE"));
-            List<TransactionSynchronization> synchronizations =
-                    TransactionSynchronizationManager.getSynchronizations();
-            assertThat(synchronizations).hasSize(1);
-            TransactionSynchronization cache = synchronizations.getFirst();
-            assertThat(cache.getClass().getSimpleName()).isEqualTo("ProjectionComputationCache");
-            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
             assertThat(fixture.service().getMastery(LEARNER))
                     .containsExactlyInAnyOrderEntriesOf(Map.of(T, 0.75, P, 0.75, Q, 0.75));
             assertThat(fixture.service().getMasteryWithTimestamps(LEARNER))
@@ -292,13 +283,20 @@ class PersonalCurriculumLearningScopeIntegrationTest {
                     fixture.service(), "masteryProjectionGoals", fixture.learner());
             assertThat(masteryGoals).containsKeys(T, P).doesNotContainKey(Q);
             verify(fixture.decks(), never()).resolveDeckResource(eq(Q), anyString());
-            assertThat(TransactionSynchronizationManager.getSynchronizations()).containsExactly(cache);
-            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
             // A successful historical read must not populate the normal projection cache.
-            assertThatThrownBy(() -> targets(fixture)).isInstanceOfSatisfying(
-                    CompletionCompilationException.class,
-                    failure -> assertThat(failure.code()).isEqualTo("ATOMIC_CYCLE"));
-            assertThat((Map<?, ?>) ReflectionTestUtils.getField(cache, "projections")).isEmpty();
+            assertThat(TransactionSynchronizationManager.getSynchronizations()).allSatisfy(synchronization ->
+                    assertThat((Map<?, ?>) ReflectionTestUtils.getField(synchronization, "projections")).isEmpty());
+            // The inherited cycle is not strictly compilable. The full projection keeps the
+            // reviewed seed scope and claims no derived learning basis instead of failing the read.
+            assertThat(targets(fixture)).containsExactlyInAnyOrder(T, P);
+            Object projection = ReflectionTestUtils.invokeMethod(fixture.service(), "getGoalProjection",
+                    ROOT, fixture.learner().getPersonalCurriculum());
+            assertThat((Object) ReflectionTestUtils.invokeMethod(projection, "learningScope")).isNull();
+            List<TransactionSynchronization> synchronizations =
+                    TransactionSynchronizationManager.getSynchronizations();
+            assertThat(synchronizations).hasSize(1);
+            assertThat(synchronizations.getFirst().getClass().getSimpleName())
+                    .isEqualTo("ProjectionComputationCache");
         } finally {
             try {
                 for (TransactionSynchronization synchronization :

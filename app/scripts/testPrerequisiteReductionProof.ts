@@ -10,6 +10,9 @@ import {
   fingerprintPrerequisiteReductionDocument as digest,
   BATCHED_PREREQUISITE_REDUCTION_CONTRACT,
   APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT,
+  BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  type BasisBoundPrerequisiteReductionRegistry,
+  type AssessmentBasisReductionEntry,
   type ApplicabilityRefreshPrerequisiteReductionRegistry,
   type BatchedPrerequisiteReductionRegistry,
   type BatchedPrerequisiteReductionOperation,
@@ -332,8 +335,9 @@ function atomicBatchFixture(document = clusterTargetBaseline()) {
   f.add([operation], () => { f.get(targetKey('u')).requires = ['v'] })
   return { ...f, operation }
 }
-function applicabilityRefreshFixture(present = true, empty = false) {
+function applicabilityRefreshFixture(present = true, empty = false, additionalGoals: Goal[] = []) {
   const document = clusterTargetBaseline()
+  document.goals.push(...structuredClone(additionalGoals))
   for (const id of ['cache', 'cache-other']) {
     const cached = { ...goal(id), ...(empty ? {} : {
       extendedData: { applicabilityOverrides: { jurisdiction: ['DE-BY'] } },
@@ -376,6 +380,151 @@ function applicabilityRefreshFixture(present = true, empty = false) {
   save()
   return { ...f, registry, parentRegistry, parentFile, parentBytes, save, rewriteParent }
 }
+const neuroId = '487c79f5-7e4d-5da8-ad8f-f0f96c23a974'
+const byNeuroId = '11675f1a-5de2-5926-be78-1e8275f19f5b'
+const heNeuroId = 'afde0001-d7d7-5ed3-8a60-383e8da5620e'
+const neuroOriginalClusters = ['02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8',
+  '7e6b9185-f261-5c76-961a-c61e1cc4ef8d', '485ef1c3-8997-52b7-91f5-b1ddf179013d']
+function basisBoundFixture() {
+  // Three real immutable endpoint records retain their actual immediate refs and
+  // source metadata. Minimal dependency clusters isolate the real neuro all-of
+  // counterexample; this fixture is not the complete live Biology certificate.
+  const biology = JSON.parse(readFileSync(resolve(root,
+    'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'), 'utf8')) as Document
+  const raw = (id: string) => structuredClone(biology.goals.find(goal => goal.id === id)!)
+  const neuro = raw(neuroId), by = raw(byNeuroId), he = raw(heNeuroId)
+  assert.ok(neuro && by && he)
+  neuro.requires = [...neuroOriginalClusters]
+  delete (neuro.extendedData as Record<string, unknown>).assessmentApplicabilityBasis
+  const extra = [neuro, by, he,
+    ...new Set([...by.requires, ...he.requires])].flatMap(entry => typeof entry === 'string' ? [goal(entry)] : [entry])
+  for (const id of neuroOriginalClusters) extra.push({ ...goal(id), type: 'cluster', contains: [byNeuroId, heNeuroId] })
+  for (const [id, prerequisite] of [['basis-control-by', byNeuroId], ['basis-control-he', heNeuroId]])
+    extra.push({ ...goal(id, [prerequisite]), tags: ['Assessment'], extendedData: { applicabilityFromRequires: true } })
+  extra.push({ ...goal('zz-basis-history-parent', ['basis-history-x']), type: 'cluster', contains: ['v'] },
+    goal('basis-history-x', ['w']), goal('basis-next-source', ['basis-next-mid', 'basis-next-end']),
+    goal('basis-next-mid', ['basis-next-end']), goal('basis-next-end'))
+  const f = applicabilityRefreshFixture(true, false, extra)
+  const parentRegistry = structuredClone(f.registry), parentPath = 'basis-parent-v7.json'
+  const parentFile = resolve(f.directory, parentPath)
+  const parentBytes = Buffer.from(JSON.stringify(parentRegistry, null, 2) + '\n')
+  writeFileSync(parentFile, parentBytes)
+  const source = targetKey(neuroId), originalRequires = [{ source, requires: [...neuro.requires] },
+    { source: targetKey('v'), requires: [...f.get(targetKey('v')).requires] }]
+  const operations: BatchedPrerequisiteReductionOperation[] = neuroOriginalClusters.map((cluster, index) => ({
+    id: `basis-neuro-cluster-${index}`,
+    steps: [...(index === 0 ? [byNeuroId, heNeuroId].map(prerequisite => ({
+      operation: 'materialize-atomic' as const, source, prerequisite: targetKey(prerequisite),
+      origin: { source, prerequisite: cluster, sourceContainsPath: [source],
+        prerequisiteContainsPath: [targetKey(cluster), targetKey(prerequisite)] },
+    })) : []), { operation: 'remove-cluster-target' as const, source, prerequisite: targetKey(cluster) }],
+    endAtomicWitnesses: [byNeuroId, heNeuroId].map(id => [source, targetKey(id)]),
+  }))
+  operations.push({ id: 'basis-v-x', step: { operation: 'materialize-atomic', source: targetKey('v'),
+    prerequisite: targetKey('basis-history-x'), origin: { source: targetKey('zz-basis-history-parent'),
+      prerequisite: 'basis-history-x', sourceContainsPath: ['zz-basis-history-parent', 'v'].map(targetKey),
+      prerequisiteContainsPath: [targetKey('basis-history-x')] } },
+    endWitness: ['v', 'basis-history-x'].map(targetKey) },
+  { id: 'basis-cut-v-w', step: { source: targetKey('v'), prerequisite: targetKey('w'),
+    witness: ['v', 'basis-history-x', 'w'].map(targetKey) },
+    endWitness: ['v', 'basis-history-x', 'w'].map(targetKey) })
+  f.get(source).requires = [byNeuroId, heNeuroId]
+  ;(f.get(source).extendedData as Record<string, unknown>).assessmentApplicabilityBasis = {
+    kind: 'allOfGoalApplicability', goalRefs: [...neuroOriginalClusters],
+  }
+  f.get(targetKey('v')).requires = ['basis-history-x']
+  const bindings = () => f.registry.catalogSources.map(({ path, landscapeId }) => ({ path,
+    currentDocumentDigest: digest(f.documents.find(document => document.landscapeId === landscapeId)!) }))
+  const batch: PrerequisiteReductionBatch = { id: 'basis-bio-batch',
+    previousDigest: `sha256:${createHash('sha256').update(parentBytes).digest('hex')}`,
+    originalRequires, operations, currentDocumentDigests: bindings(),
+    legacyContinuations: [{ witness: { kind: 'batch-path', operationId: 'cut-u-w' }, edgeIndex: 1, removalId: 'basis-cut-v-w' }] }
+  const entry: AssessmentBasisReductionEntry = { basisBindings: [{ operation: 'bind-assessment-applicability-basis', source }], batch }
+  const registry: BasisBoundPrerequisiteReductionRegistry = {
+    schemaVersion: 1, proofContract: BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+    auditScope: 'origin-source-landscape-closure', catalogSources: structuredClone(parentRegistry.catalogSources),
+    parentRegistryPath: parentPath, parentRegistryRawDigest: batch.previousDigest, entries: [entry],
+  }
+  const save = () => {
+    registry.entries.at(-1)!.batch.currentDocumentDigests = bindings()
+    for (const source of registry.catalogSources) {
+      const document = f.documents.find(document => document.landscapeId === source.landscapeId)!
+      source.currentDocumentDigest = digest(document)
+      writeFileSync(resolve(f.directory, source.path), JSON.stringify(document))
+    }
+    writeFileSync(resolve(f.directory, 'proof.json'), JSON.stringify(registry))
+  }
+  const rewriteParent = () => {
+    const bytes = Buffer.from(JSON.stringify(parentRegistry, null, 2) + '\n')
+    writeFileSync(parentFile, bytes)
+    registry.parentRegistryRawDigest = `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+    registry.entries[0].batch.previousDigest = registry.parentRegistryRawDigest
+  }
+  save()
+  return { ...f, registry, entry, source, parentFile, parentRegistry, parentBytes, save, rewriteParent }
+}
+async function runBasisBoundFixtureRegressions() {
+  const f = basisBoundFixture(), context = await f.load()
+  assert.ok(context)
+  assert.equal(verifiedPrerequisiteReductionSummary(context)!.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+  const historical = reviewBindingGoal(context, f.source, f.get(f.source))
+  assert.deepEqual(historical.requires, neuroOriginalClusters)
+  assert.equal(Object.hasOwn(historical.extendedData as object, 'assessmentApplicabilityBasis'), false)
+  assert.deepEqual(f.get(f.source).requires, [byNeuroId, heNeuroId])
+  for (const id of ['basis-control-by', 'basis-control-he'])
+    assert.equal(Object.hasOwn(f.get(targetKey(id)).extendedData as object, 'assessmentApplicabilityBasis'), false)
+  const { buildGoalDescriptionCanonicalContext } = await import('./validateGoalDescriptionReviewCampaign')
+  assert.throws(() => buildGoalDescriptionCanonicalContext(f.get(f.source)), /requires a verified V8 baseline/u)
+  assert.deepEqual(buildGoalDescriptionCanonicalContext(historical).requires, neuroOriginalClusters)
+  assert.throws(() => reviewBindingGoal({} as VerifiedPrerequisiteReductionContext, f.source, f.get(f.source)), /forged/u)
+  assert.throws(() => reviewBindingGoal(context, f.source, { ...f.get(f.source), title: 'unverified current drift' }), /current goal differs/u)
+  let checks = 1
+  const reject = async (mutate: (f: ReturnType<typeof basisBoundFixture>) => void, expected: RegExp) => {
+    const invalid = basisBoundFixture(); mutate(invalid); invalid.save()
+    await assert.rejects(invalid.load, expected); checks++
+  }
+  await reject(f => { writeFileSync(f.parentFile, Buffer.concat([f.parentBytes, Buffer.from(' ')])) }, /parent raw digest differs/u)
+  await reject(f => { f.registry.parentRegistryPath = './basis-parent-v7.json' }, /canonical and relative/u)
+  await reject(f => { f.registry.parentRegistryRawDigest = `sha256:${'0'.repeat(64)}` }, /parent raw digest differs/u)
+  await reject(f => { f.parentRegistry.parentRegistryRawDigest = `sha256:${'0'.repeat(64)}`; f.rewriteParent() }, /parent raw digest differs/u)
+  await reject(f => { f.registry.entries[0].batch.previousDigest = digest({ wrong: true }) }, /entry predecessor/u)
+  await reject(f => { f.entry.basisBindings = [] }, /entry start document digest/u)
+  await reject(f => { f.entry.basisBindings.push(structuredClone(f.entry.basisBindings[0])) }, /duplicate assessment basis binding/u)
+  await reject(f => { f.entry.basisBindings.push({ operation: 'bind-assessment-applicability-basis', source: targetKey('basis-control-by') });
+    (f.get(targetKey('basis-control-by')).extendedData as Record<string, unknown>).assessmentApplicabilityBasis = {
+      kind: 'allOfGoalApplicability', goalRefs: [byNeuroId],
+    } }, /cover exactly changed eligible/u)
+  for (const refs of [[...neuroOriginalClusters].reverse(), [byNeuroId, heNeuroId], ['unknown'], [neuroId]])
+    await reject(f => { (f.get(f.source).extendedData as Record<string, unknown>).assessmentApplicabilityBasis = {
+      kind: 'allOfGoalApplicability', goalRefs: refs,
+    } }, /document digest differs|basis references changed/u)
+  for (const field of ['title', 'contains', 'applicability', 'sourceRef', 'extendedData'])
+    await reject(f => { const current = f.get(f.source)
+      if (field === 'contains') current.contains = [byNeuroId]
+      else if (field === 'applicability') current.applicability = { jurisdiction: ['DE-BY'] }
+      else if (field === 'extendedData') (current.extendedData as Record<string, unknown>).unchecked = true
+      else current[field] = 'undeclared drift'
+    }, /entry start document digest/u)
+  await reject(f => { f.entry.batch.legacyContinuations = [] }, /literal atomic witness edge missing/u)
+  await reject(f => { const cut = f.entry.batch.operations.at(-1)!; assert.ok('step' in cut && 'witness' in cut.step)
+    cut.step.witness = ['v', 'u', 'w'].map(targetKey)
+  }, /literal atomic witness edge missing/u)
+  const appended = basisBoundFixture(), source = targetKey('basis-next-source')
+  const originalRequires = [...appended.get(source).requires]
+  appended.get(source).requires = ['basis-next-mid']
+  appended.registry.entries.push({ basisBindings: [], batch: {
+    id: 'basis-next-flat-batch', previousDigest: digest(appended.entry), originalRequires: [{ source, requires: originalRequires }],
+    operations: [{ id: 'basis-next-cut', step: { source, prerequisite: targetKey('basis-next-end'),
+      witness: ['basis-next-source', 'basis-next-mid', 'basis-next-end'].map(targetKey) },
+      endWitness: ['basis-next-source', 'basis-next-mid', 'basis-next-end'].map(targetKey) }],
+    currentDocumentDigests: [], legacyContinuations: [],
+  } })
+  appended.save()
+  assert.ok(await appended.load(), 'later subjects append a flat entry under the same fixed V7 contract')
+  checks++
+  console.log(`Basis-bound public loader fixtures passed: ${checks}; real neuro predicate shape, exact old refs, per-cut witnesses and prefix continuation retained`)
+}
+
 async function runApplicabilityRefreshFixtureRegressions() {
   let checks = 0
   for (const [present, empty] of [[false, false], [true, false], [true, true]]) {
@@ -1330,6 +1479,10 @@ async function verifyActualLiveApplicabilityRefresh(
 }
 
 try {
+  const basisOnly = process.argv.slice(2)
+  assert.ok(basisOnly.length === 0 || basisOnly.length === 1 && basisOnly[0] === '--basis-bound-fixtures-only', 'unknown proof test selector')
+  await runBasisBoundFixtureRegressions()
+  if (basisOnly.length === 0) {
   await runApplicabilityRefreshFixtureRegressions()
   await runBatchFixtureRegressions()
   await runBatchRequiredNegativeRegressions()
@@ -1984,8 +2137,32 @@ try {
   const activeRegistry = JSON.parse(readFileSync(resolve(root, PREREQUISITE_REDUCTION_REGISTRY_PATH), 'utf8')) as PrerequisiteReductionRegistry
   assert.ok(activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT
     || activeRegistry.proofContract === BATCHED_PREREQUISITE_REDUCTION_CONTRACT
-    || activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT, 'the active live proof uses V5, V6 or the V7 cache wrapper')
-  if (activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) {
+    || activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT
+    || activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT, 'the active live proof uses V5, V6, V7 or the bound-basis wrapper')
+  if (activeRegistry.proofContract === BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT) {
+    const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: root })
+    assert.ok(context)
+    assert.equal(verifiedPrerequisiteReductionSummary(context)!.proofContract, BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+    const current = activeRegistry.catalogSources.map(({ path }) => JSON.parse(readFileSync(resolve(root, path), 'utf8')) as Document)
+    assert.equal(current.length, 21)
+    assert.equal(current.reduce((count, document) => count + document.goals.length, 0), 6524)
+    const goals = new Map<string, Goal>(current.flatMap(document => document.goals.map(goal => [`${document.landscapeId}:${goal.id}`, goal] as const)))
+    for (const [source, goal] of goals) {
+      const baseline = reviewBindingGoal(context, source, goal)
+      assert.equal(Object.hasOwn((baseline.extendedData as Record<string, unknown> | undefined) ?? {}, 'assessmentApplicabilityBasis'), false,
+        `earliest reviewed baseline stays basis-free: ${source}`)
+    }
+    const declared = new Set<string>()
+    for (const entry of activeRegistry.entries) for (const binding of entry.basisBindings) {
+      assert.ok(!declared.has(binding.source)); declared.add(binding.source)
+      const old = entry.batch.originalRequires.find(original => original.source === binding.source)
+      assert.ok(old && old.requires)
+      assert.deepEqual((goals.get(binding.source)!.extendedData as Record<string, unknown>).assessmentApplicabilityBasis,
+        { kind: 'allOfGoalApplicability', goalRefs: old.requires }, `actual exact immediate-start predicate: ${binding.source}`)
+    }
+    assert.ok(declared.size > 0)
+    console.log(`Actual basis-bound public loader: ${activeRegistry.entries.length} flat entries, ${declared.size} exact assessment bases, 21 complete current documents and 6524 earliest comparison guards passed.`)
+  } else if (activeRegistry.proofContract === CLUSTER_TARGET_PREREQUISITE_REDUCTION_CONTRACT) {
     await verifyHistoricalLiveV5Checkpoint(root)
   } else {
     const currentDocuments = activeRegistry.catalogSources.map(({ path }) => ({ path,
@@ -2018,6 +2195,7 @@ try {
     await verifyActualLiveV6(v6Registry, v6Documents, checkpoint, v6Root)
     if (activeRegistry.proofContract === APPLICABILITY_REFRESH_PREREQUISITE_REDUCTION_CONTRACT)
       await verifyActualLiveApplicabilityRefresh(activeRegistry, currentDocuments, v6Registry)
+  }
   }
 } finally {
   rmSync(temporaryRoot, { recursive: true, force: true })

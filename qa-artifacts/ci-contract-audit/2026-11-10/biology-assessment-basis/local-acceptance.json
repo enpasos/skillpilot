@@ -1,0 +1,197 @@
+{
+  "status": "local-technical-preparation-not-biology-admission",
+  "date": "2026-11-10",
+  "canonicalDataChanged": false,
+  "predicate": {
+    "catalogDocuments": 21,
+    "goals": 6524,
+    "exactBasisBindings": 10,
+    "unchangedControls": [
+      "21bca0dc-27b0-5fe7-8c33-0e1859174f90",
+      "e8caebd4-57bc-5c2f-881d-0b1693777c64"
+    ],
+    "withBasisDifferenceCount": 0,
+    "withoutBasisDifferenceCount": 11,
+    "flattenedNeuroDifferenceCount": 1,
+    "remainingApv102": 593,
+    "execution": {
+      "startedAt": "2026-11-10T22:24:35.487497+00:00",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/tmp/g17-biology-assessment-basis-integration-20261110/compare-real-frames.mts"
+      ],
+      "sources": {
+        "app/scripts/applicabilityCompiler.ts": "e74db4a09952b0942b9f705204b7148600d0dee75109a8e9c71e34eb0f5baf87",
+        "app/scripts/prerequisiteReductionProof.ts": "fc613ec3ffccb4b1ba9a09399c9fcdb793a01d6fb1316d9629167ab1a1bfef2c",
+        "app/scripts/lib/verificationInputSnapshot.ts": "08e1dcb0b0a19f7b92baa98f6edba67e99ed51e1535b250356372c4ec624b99b",
+        "tmp/g17-biology-assessment-basis-integration-20261110/compare-real-frames.mts": "f8d32fcf4dc3af2b8c3f24323c2b182a595f2258ce7d9932265fd64dd008c5c8"
+      },
+      "head": "a319fa85d58f9fd9116a2c80d3cc26f7d70d818d",
+      "exitCode": 0,
+      "wallSeconds": 38.35738450998906,
+      "completedAt": "2026-11-10T22:25:13.847652+00:00",
+      "sourcesUnchanged": true
+    }
+  },
+  "proofLoader": {
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/testPrerequisiteReductionProof.ts",
+      "--basis-bound-fixtures-only"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 47.473484346002806,
+    "sourceHashes": {
+      "app/scripts/prerequisiteReductionProof.ts": "7d7be4156a90a1fa1310fef35a739dddfc0086d3b1175a7fc12b565d966f5c6e",
+      "app/scripts/testPrerequisiteReductionProof.ts": "cedf858f32159a2eaad2171477cbf0a57872ce1d39ea8fd7354163c9a5cefd44",
+      "app/scripts/applicabilityCompiler.ts": "e74db4a09952b0942b9f705204b7148600d0dee75109a8e9c71e34eb0f5baf87"
+    },
+    "sourcesUnchanged": true
+  },
+  "consumers": {
+    "observedAt": "2026-11-10T22:45:23.573559+00:00",
+    "head": "5b51a0a6b11722acf03b3534c908eaf9c48c01a2",
+    "scope": "four consumer files; no proof/compiler/native/data changes by this task",
+    "sources": {
+      "scripts/prerequisite_reduction_semantic_kind.py": "efdda5131e47393b77cf13d9c09810811a3675a2f73d0169281d12a9aaf3aae1",
+      "scripts/test_prerequisite_reduction_semantic_kind.py": "85b575998aed512e92ccf68c44b76246c7741bfce928473fac63249f71e3667c",
+      "app/scripts/validateGoalDescriptionDualRoundResolution.ts": "d2ebd88d37ef842e720726ab49f550811e299f5742049269bc1708044a229b31",
+      "app/scripts/testGoalDescriptionDualRoundResolution.ts": "115f95ce9d6d1ecf4fdeeb7788b1c0f6f1f8e4a04d1cd6a7ab581130b2758534"
+    },
+    "patchSha256": "536bcbd08d392fbf2ca7884dfc950103115dcf1bd63de5ffa67fa4475a4bb72f",
+    "checks": [
+      {
+        "command": "python -B scripts/test_prerequisite_reduction_semantic_kind.py SemanticKindReductionTest.test_basis_bound_contract_uses_real_node_and_exact_native_baseline_fingerprints SemanticKindReductionTest.test_process_receipt_is_bound_to_exact_inputs_and_native_values SemanticKindReductionTest.test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback",
+        "exitCode": 0,
+        "testMethods": 3,
+        "elapsedSecondsReported": 8.467,
+        "log": "../python-consumers.log"
+      },
+      {
+        "command": "npm run test:goal-description-dual-round-resolution",
+        "cwd": "app",
+        "exitCode": 0,
+        "log": "../dual-round-consumers-final.log"
+      },
+      {
+        "command": "git diff --check -- <four owned files>",
+        "exitCode": 0
+      },
+      {
+        "command": "npx eslint scripts/validateGoalDescriptionDualRoundResolution.ts scripts/testGoalDescriptionDualRoundResolution.ts",
+        "cwd": "app",
+        "exitCode": 0
+      }
+    ],
+    "boundary": "Focused consumer acceptance only; not full history/catalog/native/Biology admission. Source hashes observed after checks; no closed-read claim."
+  },
+  "native": {
+    "command": [
+      "./gradlew",
+      "test",
+      "--no-daemon",
+      "--max-workers=1",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+      "--tests",
+      "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.canonicalProbeUsesClosedLearningBasisAndMissingAcquisitionTargetsFailClosed",
+      "--tests",
+      "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest",
+      "--tests",
+      "com.skillpilot.backend.service.PersonalCurriculumLearningScopeIntegrationTest",
+      "--tests",
+      "com.skillpilot.backend.completion.PrerequisiteTopologyReuseTest",
+      "--tests",
+      "com.skillpilot.backend.service.AutomaticCompletionFrontierTest"
+    ],
+    "exitCode": 0,
+    "wallSeconds": 210.29136082998593,
+    "sourceHashes": {
+      "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "04e2601ee002f313646211c71d92a3a92f889fad19304e116be9ef66096b60b2",
+      "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "a2e3045a943b183ed71e7542348c7be52e1d170b89f592cc8dd5747ce296c3cd",
+      "backend/src/main/java/com/skillpilot/backend/completion/CompletionProfileCompiler.java": "90d9b05e01432784c54fd3bc10619adaf1e74c017f1d8d86c2841596edc3b9f8"
+    },
+    "sourcesUnchanged": true,
+    "suites": [
+      {
+        "class": "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "9b38327510e75c0b241506d9a8ca7f5cb70ab72f8a995ac2bc531f65be867ade"
+      },
+      {
+        "class": "com.skillpilot.backend.service.ProjectionRoleLearnerServiceTest",
+        "tests": 50,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "d3e8b05eb031be94e013486360fcb55e9ce439ca0f81aa9fb19f6add227d3735"
+      },
+      {
+        "class": "com.skillpilot.backend.service.PersonalCurriculumLearningScopeIntegrationTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "fff6d32b1b888fc1ca88cb45a8f624fbfd258fd97498a11b176fcd941556cd41"
+      },
+      {
+        "class": "com.skillpilot.backend.completion.PrerequisiteTopologyReuseTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "e142e2c8233f5657875793b85f110b7ef092dee630748421cc321bb1c63977a9"
+      },
+      {
+        "class": "com.skillpilot.backend.service.AutomaticCompletionFrontierTest",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xmlSha256": "a0697f4f07d523b25af5f2b5b46868e54ed28ffd8a36450a819fbeae54918c8b"
+      }
+    ],
+    "tests": 80
+  },
+  "negativeBeforeFix": {
+    "test": "currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+    "failure": "Missing emitted acquisition target was accepted despite complete L; actual BY export and planning positive checks had passed.",
+    "execution": {
+      "command": [
+        "./gradlew",
+        "test",
+        "--tests",
+        "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions",
+        "--no-daemon",
+        "--max-workers=1"
+      ],
+      "exitCode": 1,
+      "wallSeconds": 116.37201067298884,
+      "sourceHashes": {
+        "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "5852d73fd09f9e2d799cb2a391f65541b1c919ad88ecaf17286f7d8d6f1ab768",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "c8caf20ab8e44e2f6b028260661baf3a074f871c43f9a5d1186c63a6d68ba76e"
+      },
+      "sourcesUnchanged": true
+    }
+  },
+  "documentBuild": {
+    "exitCode": 0,
+    "wallSeconds": 34.17146144498838,
+    "command": [
+      "python3",
+      "docs/concept/skill-graph/latex/build-document.py",
+      "--texmf",
+      "/tmp/skillpilot-g17-document-texmf-lex9aorl/usr/share/texlive/texmf-dist"
+    ]
+  },
+  "limitations": [
+    "No canonical Biology data activation.",
+    "Native positive uses the actual current Bavaria CrossStage/G9/GK scope, not the complete catalog scope matrix.",
+    "Full proof/history/native acceptance, corrected APV obligation and required remote CI remain open.",
+    "Earlier native attempts failed in test setup (unconfirmed planner group) and test compilation (package-private method); neither is a runtime counterexample.",
+    "Mounted-volume TeX build was interrupted and replaced by the same support packages extracted locally; only the successful local build is claimed."
+  ]
+}

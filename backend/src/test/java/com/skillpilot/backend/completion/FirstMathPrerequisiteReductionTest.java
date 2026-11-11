@@ -248,6 +248,7 @@ class FirstMathPrerequisiteReductionTest {
     private static final String V5 = "atomic-cluster-target-normalization-v5";
     private static final String V6 = "append-only-prerequisite-reduction-batches-v6";
     private static final String V7 = "prerequisite-reduction-applicability-refresh-v7";
+    private static final String V8 = "assessment-basis-bound-prerequisite-reduction-v8";
     private static final Set<String> MATH_EXAMS = Set.of("464a6024-a2f8-53b4-84e0-d7b9df22a0b1",
             "9ad83149-3cb7-5b87-a617-3eae3715a50c");
     private static final Set<String> UNEXPOSED_CANONICAL_ATOMIC_BASES = Set.of(
@@ -292,14 +293,55 @@ class FirstMathPrerequisiteReductionTest {
     void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
         JsonNode declared = readNativeRegistryDeclaration();
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        if (V7.equals(active.path("proofContract").asText())) {
+        JsonNode cacheDeclaration = active;
+        if (V8.equals(active.path("proofContract").asText())) {
+            NativeBasisBoundFrame frame = readBasisBoundFrame(active, Map.of());
+            cacheDeclaration = frame.registry();
             ObjectNode badParentDigest = active.deepCopy();
             badParentDigest.put("parentRegistryRawDigest", "sha256:" + "0".repeat(64));
+            assertThatThrownBy(() -> readBasisBoundFrame(badParentDigest, Map.of())).isInstanceOf(AssertionError.class);
+            ObjectNode missingBasis = active.deepCopy();
+            ((com.fasterxml.jackson.databind.node.ArrayNode) missingBasis.path("entries").get(0).path("basisBindings")).remove(0);
+            assertThatThrownBy(() -> readBasisBoundFrame(missingBasis, Map.of())).isInstanceOf(AssertionError.class);
+            ObjectNode duplicateBasis = active.deepCopy();
+            var basisBindings = (com.fasterxml.jackson.databind.node.ArrayNode) duplicateBasis.path("entries").get(0).path("basisBindings");
+            basisBindings.add(basisBindings.get(0).deepCopy());
+            assertThatThrownBy(() -> readBasisBoundFrame(duplicateBasis, Map.of())).isInstanceOf(AssertionError.class);
+            ObjectNode wrongStart = active.deepCopy();
+            String source = active.path("entries").get(0).path("basisBindings").get(0).path("source").asText();
+            for (JsonNode snapshot : wrongStart.path("entries").get(0).path("batch").path("originalRequires"))
+                if (source.equals(snapshot.path("source").asText())) ((ObjectNode) snapshot).set("requires", MAPPER.createArrayNode());
+            assertThatThrownBy(() -> readBasisBoundFrame(wrongStart, Map.of())).isInstanceOf(AssertionError.class);
+            ObjectNode missingStart = active.deepCopy();
+            ((com.fasterxml.jackson.databind.node.ArrayNode) missingStart.path("entries").get(0).path("batch").path("originalRequires")).remove(0);
+            assertThatThrownBy(() -> readBasisBoundFrame(missingStart, Map.of())).isInstanceOf(AssertionError.class);
+            ObjectNode wrongPredecessor = active.deepCopy();
+            ((ObjectNode) wrongPredecessor.path("entries").get(0).path("batch")).put("previousDigest", "sha256:" + "0".repeat(64));
+            assertThatThrownBy(() -> readBasisBoundFrame(wrongPredecessor, Map.of())).isInstanceOf(AssertionError.class);
+            Map<Path, JsonNode> changedMetadata = mutableDocuments(frame.currentDocuments());
+            ((ObjectNode) registeredGoal(frameGoals(changedMetadata), source).path("extendedData")).put("unapprovedNativeFixtureField", true);
+            ObjectNode reboundEnd = active.deepCopy();
+            for (JsonNode binding : reboundEnd.path("catalogSources")) {
+                Path file = REPOSITORY.resolve(binding.path("path").asText());
+                ((ObjectNode) binding).put("currentDocumentDigest", rawHash(changedMetadata.get(file)));
+            }
+            for (JsonNode binding : reboundEnd.path("entries").get(reboundEnd.path("entries").size() - 1)
+                    .path("batch").path("currentDocumentDigests")) {
+                Path file = REPOSITORY.resolve(binding.path("path").asText());
+                ((ObjectNode) binding).put("currentDocumentDigest", rawHash(changedMetadata.get(file)));
+            }
+            assertThatThrownBy(() -> readBasisBoundFrame(reboundEnd, changedMetadata)).isInstanceOf(AssertionError.class);
+            assertThat(frame.currentDocuments()).as("negative overlays do not mutate the exact final V8 frame")
+                    .isEqualTo(readBasisBoundFrame(active, Map.of()).currentDocuments());
+        }
+        if (V7.equals(cacheDeclaration.path("proofContract").asText())) {
+            ObjectNode badParentDigest = cacheDeclaration.deepCopy();
+            badParentDigest.put("parentRegistryRawDigest", "sha256:" + "0".repeat(64));
             assertThatThrownBy(() -> readReductionRegistry(badParentDigest)).isInstanceOf(AssertionError.class);
-            ObjectNode missingCacheSnapshot = active.deepCopy();
+            ObjectNode missingCacheSnapshot = cacheDeclaration.deepCopy();
             ((com.fasterxml.jackson.databind.node.ArrayNode) missingCacheSnapshot.path("originalApplicability")).remove(0);
             assertThatThrownBy(() -> readReductionRegistry(missingCacheSnapshot)).isInstanceOf(AssertionError.class);
-            ObjectNode wrongCachePresence = active.deepCopy();
+            ObjectNode wrongCachePresence = cacheDeclaration.deepCopy();
             ((ObjectNode) wrongCachePresence.path("originalApplicability").get(0)).put("present", false).putNull("value");
             assertThatThrownBy(() -> readReductionRegistry(wrongCachePresence)).isInstanceOf(AssertionError.class);
         }
@@ -468,6 +510,159 @@ class FirstMathPrerequisiteReductionTest {
         assertThatThrownBy(() -> canonicalProbe(missingDefinition, Set.of("T")))
                 .isInstanceOfSatisfying(CompletionCompilationException.class,
                         error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
+    }
+
+    @Test
+    void currentCatalogLearningScopesRetainEveryCanonicalAcquisitionTarget() throws Exception {
+        ReductionRegistry registry = readActualCurrentRegistry();
+        var fixture = new NativeFixture(registry, false);
+        Set<String> subjects = new TreeSet<>(registry.canonicalOwners().values());
+        assertThat(subjects).hasSize(21).contains(ROOT);
+        subjects.remove(ROOT);
+        JsonNode guiOfferings = readGuiOfferings();
+        Set<String> guiSubjects = new TreeSet<>();
+        guiOfferings.fieldNames().forEachRemaining(guiSubjects::add);
+        assertThat(guiSubjects).containsExactlyInAnyOrderElementsOf(SUBJECTS);
+        assertThat(subjects).containsAll(guiSubjects);
+        Set<String> jurisdictions = new TreeSet<>();
+        fixture.landscapes.getById(ROOT).getFilters().forEach(filter -> jurisdictions.add(filter.getId()));
+        assertThat(jurisdictions).contains("ALL", "DE-BY", "DE-HE");
+        Map<String, String> coverage = new TreeMap<>();
+        Set<String> visitedSubjects = new TreeSet<>();
+        var publicService = org.mockito.Mockito.spy(fixture.service);
+        String learnerId = "unsaved-current-catalog-scope-control";
+        for (String subject : subjects) {
+            Discovery discovery = discover(fixture, subject, guiOfferings.path(subject), jurisdictions);
+            int checked = 0, unavailable = 0, incomplete = 0, invalid = 0;
+            for (var entry : discovery.configurations().entrySet()) {
+                String key = subject + "/" + entry.getKey();
+                Map<String, Map<String, Object>> config = entry.getValue();
+                PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(ROOT, fixture.landscapes::getById,
+                        (id, settings) -> ReflectionTestUtils.invokeMethod(
+                                fixture.service, "resolvePersonalizationOfferingScope", id, settings), config);
+                String category;
+                if (plan.valid() && !plan.required()) {
+                    // resolve checks actual emitted targets/definitions/completion against
+                    // separately selected seeds and the unpruned canonical prerequisite graph.
+                    NativeScope scope = fixture.resolve(config);
+                    assertThat(scope.roles().atomicTargets()).as("nonempty complete scope %s", key).isNotEmpty();
+                    category = "checked";
+                    checked++;
+                } else {
+                    assertThat(discovery.plannerScopes()).as("native completed scopes cannot become incomplete").doesNotContain(entry.getKey());
+                    var learner = new Learner();
+                    learner.setSelectedCurriculum(ROOT);
+                    learner.setPersonalCurriculum(MAPPER.writeValueAsString(config));
+                    org.mockito.Mockito.doReturn(learner).when(publicService).getLearner(learnerId);
+                    assertThatThrownBy(() -> publicService.getPlanningScope(learnerId, subject))
+                            .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, failure -> {
+                                assertThat(failure.getStatusCode().value()).isEqualTo(409);
+                                assertThat(failure.getReason()).isEqualTo("The learner's personal curriculum is incomplete.");
+                            });
+                    category = plan.valid() ? "incomplete" : "invalid:" + plan.problemCode();
+                    if (plan.valid()) incomplete++; else invalid++;
+                }
+                assertThat(coverage.putIfAbsent(key, category)).as("one coverage outcome per actual configuration").isNull();
+            }
+            for (String jurisdiction : jurisdictions) {
+                boolean hasConfiguration = discovery.configurations().values().stream().anyMatch(config ->
+                        jurisdiction.equals(config.get(ROOT).get("filterId")));
+                if (hasConfiguration) continue;
+                for (var entry : discovery.offeredPlans().entrySet()) {
+                    Map<String, Map<String, Object>> config = MAPPER.readValue(entry.getKey(), new TypeReference<>() { });
+                    if (!jurisdiction.equals(config.get(ROOT).get("filterId"))) continue;
+                    assertThat(entry.getValue().options()).as("an offered subject must have a discovered scope: %s/%s", subject, jurisdiction)
+                            .noneMatch(option -> subject.equals(option.landscapeId()));
+                }
+                assertThat(coverage.putIfAbsent(subject + "/" + jurisdiction + "/no-offer", "not-offered")).isNull();
+                unavailable++;
+            }
+            assertThat(checked + incomplete + invalid).isEqualTo(discovery.configurations().size());
+            if (guiSubjects.contains(subject)) assertThat(checked).as("required subject has real checked scopes: %s", subject).isPositive();
+            assertThat(visitedSubjects.add(subject)).isTrue();
+            System.out.printf("CURRENT_NATIVE_LEARNING_SCOPE subject=%s checked=%d notOffered=%d incomplete=%d invalid=%d guiDeclared=%s%n",
+                    subject, checked, unavailable, incomplete, invalid, guiSubjects.contains(subject));
+        }
+        assertThat(visitedSubjects).isEqualTo(subjects);
+        assertThat(coverage).isNotEmpty();
+        System.out.printf("CURRENT_NATIVE_LEARNING_SCOPE_COVERAGE catalogs=%d subjects=%d guiSubjects=%d classifiedRows=%d multiSubjectPowerSet=false%n",
+                registry.canonicalOwners().size(), visitedSubjects.size(), guiSubjects.size(), coverage.size());
+    }
+
+    @Test
+    void currentBiologyBavariaProjectionRetainsRequiredLearningAcrossJurisdictions() throws Exception {
+        String assessment = "487c79f5-7e4d-5da8-ad8f-f0f96c23a974";
+        String hessenPreparation = "afde0001-d7d7-5ed3-8a60-383e8da5620e";
+        String bavarianPreparation = "11675f1a-5de2-5926-be78-1e8275f19f5b";
+        var fixture = new NativeFixture(readActualCurrentRegistry(), false);
+        byte[] sourceBefore = Files.readAllBytes(BIOLOGY_SOURCE);
+        Map<String, Map<String, Object>> config = Map.of(
+                ROOT, Map.of("selected", true, "filterId", "DE-BY", "stage", "CrossStage", "durationModel", "G9"),
+                BIOLOGY, Map.of("selected", true, "filterId", "GK"));
+        // Finish only the actual planner's outstanding group confirmations.
+        // The selected country, stage, duration and subject remain fixed.
+        for (int step = 0; ; step++) {
+            assertThat(step).isLessThan(10);
+            PersonalizationPlan plan = CurriculumPersonalizationPlanner.plan(ROOT, fixture.landscapes::getById,
+                    (id, settings) -> ReflectionTestUtils.invokeMethod(
+                            fixture.service, "resolvePersonalizationOfferingScope", id, settings), config);
+            assertThat(plan.valid()).isTrue();
+            if (!plan.required()) break;
+            PersonalizationPlan.Option option = plan.options().stream()
+                    .filter(candidate -> candidate.kind() == PersonalizationPlan.OptionKind.COMPLETE_GROUP)
+                    .findFirst().orElseThrow(() -> new AssertionError("Unexpected unresolved Biology selection: " + plan));
+            Map<String, Object> mutable = new LinkedHashMap<>();
+            config.forEach((id, settings) -> mutable.put(id, new LinkedHashMap<>(settings)));
+            ReflectionTestUtils.invokeMethod(CurriculumPersonalizationPlanner.class,
+                    "recordGroupCompletion", mutable, ROOT, option);
+            config = MAPPER.convertValue(mutable, new TypeReference<>() { });
+        }
+        NativeScope scope = fixture.resolve(config);
+        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(scope.projection(), "learningScope");
+        assertThat(learning.seedAtomicGoalIds()).contains(assessment).doesNotContain(hessenPreparation);
+        assertThat(scope.topology().transitivePrerequisites(assessment))
+                .contains(hessenPreparation, bavarianPreparation);
+        assertThat(scope.roles().atomicTargets()).contains(assessment, hessenPreparation, bavarianPreparation);
+        assertThat(fixture.canonicalGoals.get(hessenPreparation).getApplicability().get("jurisdiction"))
+                .containsExactly("DE-HE");
+
+        String learnerId = "unsaved-biology-required-learning-control";
+        scope.learner().setSkillpilotId(learnerId);
+        when(fixture.learners.findById(learnerId)).thenReturn(java.util.Optional.of(scope.learner()));
+        var exported = fixture.service.getLearnerLandscapeClosure(learnerId, ROOT, "de");
+        Set<String> exportedTargets = new TreeSet<>(), plannedTargets = new TreeSet<>();
+        for (var landscape : exported) {
+            var metadata = landscape.getPersonalCurriculumProjection();
+            if (metadata == null || metadata.targetGoalIds().isEmpty()) continue;
+            exportedTargets.addAll(metadata.targetGoalIds());
+            var plan = fixture.service.getPlanningScope(learnerId, landscape.getLandscapeId());
+            plannedTargets.addAll(plan.scopeAtomicGoalIds());
+        }
+        assertThat(exportedTargets).isEqualTo(scope.roles().atomicTargets());
+        assertThat(plannedTargets).isEqualTo(scope.roles().atomicTargets());
+        assertThat(plannedTargets).contains(hessenPreparation, bavarianPreparation);
+
+        // Keep the independently compiled L, seeds, canonical graph and full mastery intact.
+        // Dropping only an emitted target or only its visible definition must fail.
+        Map<String, Double> fullMastery = new TreeMap<>();
+        scope.graph().keySet().forEach(id -> fullMastery.put(id, 1.0));
+        for (boolean removeTarget : List.of(true, false)) {
+            Object broken = withoutEmittedAcquisitionAtom(scope.projection(), hessenPreparation, removeTarget);
+            assertThat(ReflectionTestUtils.<PersonalCurriculumLearningScope>invokeMethod(broken, "learningScope"))
+                    .isSameAs(learning);
+            assertThatThrownBy(() -> fixture.assertLearningEmission(
+                    scope.learner().getPersonalCurriculum(), broken)).isInstanceOf(AssertionError.class)
+                    .hasMessageContaining("APV-102");
+            assertThat(roleProbe(fixture.service, scope, broken, assessment, scope.topology())).isFalse();
+            Object narrowed = ReflectionTestUtils.invokeMethod(fixture.service, "frontierPrerequisites",
+                    scope.learner(), broken, fullMastery, Set.of(assessment));
+            assertThat(ReflectionTestUtils.<Object>invokeMethod(narrowed, "topology")).isNotNull();
+            assertThat(ReflectionTestUtils.<Boolean>invokeMethod(fixture.service, "areFrontierPrerequisitesMastered",
+                    scope.graph().get(assessment), broken, narrowed)).isFalse();
+        }
+        verify(fixture.mastery, org.mockito.Mockito.never()).save(org.mockito.ArgumentMatchers.any(Mastery.class));
+        verify(fixture.mastery, org.mockito.Mockito.never()).saveAll(org.mockito.ArgumentMatchers.any());
+        assertThat(Files.readAllBytes(BIOLOGY_SOURCE)).isEqualTo(sourceBefore);
     }
 
     /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
@@ -1150,13 +1345,13 @@ class FirstMathPrerequisiteReductionTest {
     /** Actual V7 Physics runtime comparison: identical current caches on both required-work frames. */
     @Test
     void batchedPhysicsSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
-        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        NativeV7Boundary boundary = readNativeV7Boundary();
+        JsonNode active = boundary.registry();
         assertThat(active.path("proofContract").asText()).isEqualTo(V7);
-        assertThat(rawByteHash(Files.readAllBytes(REDUCTION_REGISTRY)))
-                .isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
+        assertThat(rawByteHash(boundary.bytes())).isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
         assertThat(active.path("parentRegistryRawDigest").asText())
                 .isEqualTo(CHEMISTRY_V6_PARENT_DIGEST);
-        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active);
+        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active, boundary.documents());
         JsonNode declared = cacheFrame.registry();
         assertThat(declared.path("proofContract").asText()).isEqualTo(V6);
         assertThat(declared.path("batches")).as("German then Physics then Chemistry delivery; compare only the Physics boundary").hasSize(3);
@@ -1568,10 +1763,11 @@ class FirstMathPrerequisiteReductionTest {
     @Test
     void batchedChemistrySourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
         // Raw bytes were checked against the separately frozen Chemistry candidate manifest.
-        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        assertThat(rawByteHash(Files.readAllBytes(REDUCTION_REGISTRY))).isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
+        NativeV7Boundary boundary = readNativeV7Boundary();
+        JsonNode active = boundary.registry();
+        assertThat(rawByteHash(boundary.bytes())).isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
         assertThat(active.path("parentRegistryRawDigest").asText()).isEqualTo(CHEMISTRY_V6_PARENT_DIGEST);
-        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active);
+        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active, boundary.documents());
         JsonNode declared = cacheFrame.registry();
         assertThat(declared.path("batches")).hasSize(3);
         JsonNode chemistryBatch = declared.path("batches").get(2);
@@ -2039,10 +2235,10 @@ class FirstMathPrerequisiteReductionTest {
             String atom, String label) throws Exception {
         String prerequisite = scope.topology().transitivePrerequisites(atom).stream()
                 .filter(scope.roles().atomicTargets()::contains).sorted().findFirst().orElseThrow();
-        Object projection = withoutAcquisitionTarget(scope.projection(), prerequisite);
+        Object projection = withoutEmittedAcquisitionAtom(scope.projection(), prerequisite, true);
         assertThat(roleProbeWithPrerequisites(service, scope.graph(), projection, atom,
                 fullMasteryPrerequisites(scope.graph(), scope.topology())))
-                .as("Chemistry missing effective goal role fails despite full mastery %s: %s", atom, label).isFalse();
+                .as("Chemistry missing acquisition target fails despite full mastery %s: %s", atom, label).isFalse();
         NativeScope invalid = new NativeScope(scope.learner(), projection, scope.frontier(), scope.roles(), scope.graph(), scope.context(), scope.topology());
         Map<String, Double> prepared = new TreeMap<>();
         scope.topology().transitivePrerequisites(atom).forEach(id -> prepared.put(id, 1.0));
@@ -2294,7 +2490,7 @@ class FirstMathPrerequisiteReductionTest {
                 historical.changedSources(), historical.clusterWitnessCoverage(), Collections.unmodifiableMap(digests),
                 historical.historicalSourceIds(), historical.suffixSourceIds(), historical.tailSourceIds(),
                 historical.clusterTargetSourceIds(), historical.tailRemovedPrerequisites(), immutableDocuments(documents),
-                historical.batchSourceIds());
+                historical.batchSourceIds(), historical.originalDocuments());
         for (var entry : result.canonicalOwners().entrySet()) reconstructRawDocument(entry.getKey(), documents.get(entry.getKey()),
                 entry.getValue(), result.documentDigests().get(entry.getKey()), result.changesByFile().getOrDefault(entry.getKey(), List.of()),
                 false, result.batchSourceIds());
@@ -2350,6 +2546,7 @@ class FirstMathPrerequisiteReductionTest {
         final LandscapeService landscapes;
         final LearnerService service;
         final Map<String, LearningGoal> canonicalGoals;
+        final CompletionProfileCompiler.PrerequisiteTopology canonicalTopology;
         final Set<String> canonicalAtomicIds;
         final Map<String, Set<String>> atomicProbesBySource;
         final LearnerRepository learners = mock(LearnerRepository.class);
@@ -2367,6 +2564,7 @@ class FirstMathPrerequisiteReductionTest {
             landscapes.pinRuntimeGeneration();
             var canonical = new CompletionCanonicalGraphResolver(landscapes, mapper).load(ROOT);
             canonicalGoals = Collections.unmodifiableMap(canonical);
+            canonicalTopology = new CompletionProfileCompiler().normalizePrerequisites(canonicalGoals);
             assertThat(CompletionProfileCompiler.isOrientation(canonical.get(REMOVED))).isTrue();
             Set<String> atomicIds = new TreeSet<>();
             canonical.forEach((id, goal) -> {
@@ -2403,8 +2601,16 @@ class FirstMathPrerequisiteReductionTest {
                     .filter(changed -> registry.historicalSourceIds().contains(changed.goalId()))
                     .filter(changed -> !changed.atomicSource() && !LATIN_CLUSTER.equals(changed.goalId()))
                     .forEach(changed -> followupAtoms.addAll(atomicProbesBySource.get(changed.goalId())));
-            assertThat(followupAtoms).as("canonical atomic descendants of all twelve follow-up cluster sources")
-                    .hasSize(70);
+            if (!registry.historicalSourceIds().isEmpty()) {
+                assertThat(followupAtoms).as("canonical atomic descendants of all twelve historical follow-up cluster sources")
+                        .hasSize(70);
+                assertThat(atomicProbesBySource.get(LATIN_CLUSTER)).containsExactly(LATIN_ATOM);
+            } else {
+                // A current V8 comparison has an explicit immediate-V7 original
+                // frame and only its suffix sources, not invented legacy cuts.
+                assertThat(registry.originalDocuments().keySet()).containsExactlyInAnyOrderElementsOf(registry.canonicalOwners().keySet());
+                assertThat(followupAtoms).isEmpty();
+            }
             if (!registry.suffixSourceIds().isEmpty()) {
                 Set<String> mathAtoms = new TreeSet<>();
                 for (String exam : MATH_EXAMS) mathAtoms.addAll(atomicProbesBySource.get(exam));
@@ -2414,7 +2620,7 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(mathAtoms).containsExactlyInAnyOrderElementsOf(registry.suffixSourceIds().stream()
                         .filter(id -> registry.changedSources().get(id).atomicSource()).toList());
             }
-            assertThat(atomicProbesBySource.get(LATIN_CLUSTER)).containsExactly(LATIN_ATOM);
+            assertThat(canonicalAtomicDescendants(LATIN_CLUSTER, canonical)).containsExactly(LATIN_ATOM);
             assertThat(canonical.get(LATIN_ATOM).getRequires()).contains(LATIN_BRIDGE);
             assertThat(canonical.get(LATIN_BRIDGE).getRequires()).contains(LATIN_ORIENTATION);
             Map<String, List<String>> contains = new TreeMap<>();
@@ -2434,6 +2640,7 @@ class FirstMathPrerequisiteReductionTest {
             learner.setSelectedCurriculum(ROOT);
             learner.setPersonalCurriculum(personalCurriculum);
             Object projection = ReflectionTestUtils.invokeMethod(service, "getGoalProjection", ROOT, personalCurriculum, false);
+            assertLearningEmission(personalCurriculum, projection);
             Set<String> atomic = ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets", "automatic:personal-curriculum", projection);
             Set<String> targets = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
             Set<String> support = ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds");
@@ -2446,6 +2653,40 @@ class FirstMathPrerequisiteReductionTest {
             topology.validateContext(atomic);
             var compiled = compiler.compileAutomatic(graph, atomic, targets, "first-math-edge-regression");
             return new NativeScope(learner, projection, frontier, new Roles(targets, atomic, support, views), graph, compiled.contextGoalIds(), topology);
+        }
+
+        void assertLearningEmission(String personalCurriculum, Object projection) {
+            Object seeds = ReflectionTestUtils.invokeMethod(service, "computeSeedGoalProjection", ROOT, personalCurriculum, false);
+            Set<String> seedTargets = ReflectionTestUtils.invokeMethod(seeds, "targetGoalIds");
+            Map<String, LearningGoal> seedDefinitions = ReflectionTestUtils.invokeMethod(seeds, "structuralGoals");
+            Set<String> expected = new TreeSet<>();
+            for (String id : seedTargets) {
+                LearningGoal seed = seedDefinitions.get(id);
+                assertThat(seed).as("APV-102 seed definition %s", id).isNotNull();
+                if (seed.getContains() != null && !seed.getContains().isEmpty()) continue;
+                LearningGoal goal = canonicalGoals.get(id);
+                assertThat(goal).as("APV-102 canonical atomic seed %s", id).isNotNull();
+                assertThat(goal.getContains()).as("APV-102 canonical seed must be atomic: %s", id).isEmpty();
+                expected.add(id);
+                expected.addAll(canonicalTopology.transitivePrerequisites(id));
+            }
+            Set<String> targetIds = ReflectionTestUtils.invokeMethod(projection, "targetGoalIds");
+            Map<String, LearningGoal> structural = ReflectionTestUtils.invokeMethod(projection, "structuralGoals");
+            Set<String> actualAtoms = new TreeSet<>();
+            for (String id : targetIds) {
+                LearningGoal goal = structural.get(id);
+                assertThat(goal).as("APV-102 emitted target definition %s", id).isNotNull();
+                if (goal.getContains() != null && !goal.getContains().isEmpty()) continue;
+                assertThat(canonicalAtomicIds).as("APV-102 emitted target must be a known canonical atom: %s", id).contains(id);
+                actualAtoms.add(id);
+            }
+            assertThat(actualAtoms).as("APV-102 emitted targets equal independent canonical demand: %s", personalCurriculum)
+                    .isEqualTo(expected);
+            Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+            assertThat(visible.keySet()).as("APV-102 every required target has an emitted definition").containsAll(expected);
+            Set<String> completion = ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets",
+                    "automatic:personal-curriculum", projection);
+            assertThat(completion).as("APV-102 completion receives the complete independent acquisition basis").isEqualTo(expected);
         }
 
         void verifyOnlyUnsavedFixtures() {
@@ -2472,22 +2713,25 @@ class FirstMathPrerequisiteReductionTest {
             Set<String> historicalSourceIds, Set<String> suffixSourceIds, Set<String> tailSourceIds,
             Set<String> clusterTargetSourceIds,
             Map<String, Set<String>> tailRemovedPrerequisites, Map<Path, JsonNode> currentDocuments,
-            Set<String> batchSourceIds) { }
+            Set<String> batchSourceIds, Map<Path, JsonNode> originalDocuments) { }
 
     private static ReductionRegistry readReductionRegistry() throws IOException {
         return readReductionRegistry(readNativeRegistryDeclaration());
     }
 
     private static ReductionRegistry readReductionRegistry(JsonNode registry) throws IOException {
+        if (V8.equals(registry.path("proofContract").asText())) {
+            NativeBasisBoundFrame frame = readBasisBoundFrame(registry, Map.of());
+            NativeV6Frame prefix = readApplicabilityRefreshFrame(frame.registry(), frame.documents());
+            return readBatchedReductionRegistry(prefix.registry(), prefix.documents()).legacy();
+        }
         if (V7.equals(registry.path("proofContract").asText())) {
             NativeV6Frame frame = readApplicabilityRefreshFrame(registry);
             return readBatchedReductionRegistry(frame.registry(), frame.documents()).legacy();
         }
         if (V6.equals(registry.path("proofContract").asText())) {
-            boolean activeRefresh = V7.equals(MAPPER.readTree(REDUCTION_REGISTRY.toFile()).path("proofContract").asText());
-            System.out.println(activeRefresh
-                    ? "REGISTERED_NATIVE_FRAME active=V7 tested=exact-reconstructed-V5-prefix via=historical-V6-precache-frame finalV7Coverage=false"
-                    : "REGISTERED_NATIVE_FRAME active=V6 tested=exact-reconstructed-V5-prefix finalV6Coverage=false");
+            String activeContract = MAPPER.readTree(REDUCTION_REGISTRY.toFile()).path("proofContract").asText();
+            System.out.printf("REGISTERED_NATIVE_FRAME active=%s tested=exact-reconstructed-V5-prefix finalCurrentCoverage=false%n", activeContract);
             return readBatchedReductionRegistry(registry).legacy();
         }
         return readReductionRegistry(registry, Map.of());
@@ -2832,7 +3076,7 @@ class FirstMathPrerequisiteReductionTest {
                 List.copyOf(clusterWitnessCoverage), Collections.unmodifiableMap(documentDigests),
                 Set.copyOf(historicalSourceIds), Set.copyOf(suffixSourceIds), Set.copyOf(tailSourceIds),
                 Set.copyOf(clusterTargetSourceIds),
-                Collections.unmodifiableMap(tailRemovedPrerequisites), immutableDocuments(documents), Set.of());
+                Collections.unmodifiableMap(tailRemovedPrerequisites), immutableDocuments(documents), Set.of(), Map.of());
         for (var entry : canonicalOwners.entrySet()) {
             reconstructRawDocument(entry.getKey(), readFrameDocument(entry.getKey(), documents), entry.getValue(),
                     documentDigests.get(entry.getKey()), immutableChanges.getOrDefault(entry.getKey(), List.of()), true);
@@ -2846,14 +3090,224 @@ class FirstMathPrerequisiteReductionTest {
 
     private record NativeV6Frame(JsonNode registry, Map<Path, JsonNode> documents, Map<Path, JsonNode> currentDocuments) { }
 
+    private record NativeV7Boundary(JsonNode registry, byte[] bytes, Map<Path, JsonNode> documents) { }
+
+    /** Raw frame transport only; the public Node verifier remains the per-cut proof authority. */
+    private record NativeBasisBoundFrame(JsonNode registry, byte[] parentBytes, Map<Path, JsonNode> documents,
+            Map<Path, JsonNode> currentDocuments, Set<String> touchedSources) { }
+
+    private static NativeV7Boundary readNativeV7Boundary() throws IOException {
+        byte[] bytes = Files.readAllBytes(REDUCTION_REGISTRY);
+        JsonNode active = MAPPER.readTree(bytes);
+        if (V8.equals(active.path("proofContract").asText())) {
+            NativeBasisBoundFrame frame = readBasisBoundFrame(active, Map.of());
+            return new NativeV7Boundary(frame.registry(), frame.parentBytes(), frame.documents());
+        }
+        assertThat(active.path("proofContract").asText()).isEqualTo(V7);
+        return new NativeV7Boundary(active, bytes, Map.of());
+    }
+
+    private static NativeBasisBoundFrame readBasisBoundFrame(JsonNode registry,
+            Map<Path, JsonNode> suppliedDocuments) throws IOException {
+        assertFields(registry, "V8 basis-bound registry", "schemaVersion", "proofContract", "auditScope", "catalogSources",
+                "parentRegistryPath", "parentRegistryRawDigest", "entries");
+        assertThat(registry.path("schemaVersion").isIntegralNumber()).isTrue();
+        assertThat(registry.path("schemaVersion").asInt()).isEqualTo(1);
+        assertThat(registry.path("proofContract").asText()).isEqualTo(V8);
+        assertThat(registry.path("auditScope").asText()).isEqualTo("origin-source-landscape-closure");
+        String parentPath = registry.path("parentRegistryPath").asText();
+        assertThat(parentPath).startsWith("curricula/DE/Gymnasium/provenance/");
+        Path parentFile = exactRegularRepositoryFile(parentPath);
+        byte[] parentBytes = Files.readAllBytes(parentFile);
+        assertThat(registry.path("parentRegistryRawDigest").asText()).matches("sha256:[0-9a-f]{64}");
+        assertThat(rawByteHash(parentBytes)).as("byte-identical fixed V7 parent")
+                .isEqualTo(registry.path("parentRegistryRawDigest").asText());
+        JsonNode parent = MAPPER.readTree(parentBytes);
+        assertFields(parent, "fixed V7 parent", "schemaVersion", "proofContract", "auditScope", "catalogSources",
+                "parentRegistryPath", "parentRegistryRawDigest", "originalApplicability");
+        assertThat(parent.path("schemaVersion").isIntegralNumber()).isTrue();
+        assertThat(parent.path("schemaVersion").asInt()).isEqualTo(1);
+        assertThat(parent.path("auditScope").asText()).isEqualTo("origin-source-landscape-closure");
+        assertThat(parent.path("proofContract").asText()).as("V8 accepts a fixed V7, never a recursive V8 parent").isEqualTo(V7);
+        assertThat(parent.path("catalogSources").isArray()).isTrue();
+        Map<String, JsonNode> parentBindings = new LinkedHashMap<>();
+        for (JsonNode source : parent.path("catalogSources")) {
+            assertFields(source, "V7 parent source", "path", "landscapeId", "baselineDocumentDigest", "currentDocumentDigest");
+            assertThat(parentBindings.putIfAbsent(source.path("path").asText(), source)).isNull();
+        }
+        assertThat(parentBindings).hasSize(21);
+        assertThat(registry.path("catalogSources").isArray()).isTrue();
+        Map<Path, JsonNode> currentDocuments = new LinkedHashMap<>();
+        for (JsonNode source : registry.path("catalogSources")) {
+            assertFields(source, "V8 source", "path", "landscapeId", "baselineDocumentDigest", "currentDocumentDigest");
+            String relative = source.path("path").asText();
+            assertThat(relative).startsWith("curricula/DE/Gymnasium/canonical/");
+            JsonNode binding = parentBindings.get(relative);
+            assertThat(binding).as("same full V7/V8 catalog path %s", relative).isNotNull();
+            assertThat(source.path("landscapeId")).isEqualTo(binding.path("landscapeId"));
+            assertThat(source.path("baselineDocumentDigest")).isEqualTo(binding.path("baselineDocumentDigest"));
+            Path file = exactRegularRepositoryFile(relative);
+            JsonNode document = readFrameDocument(file, suppliedDocuments);
+            assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
+            assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual final V8 document " + relative);
+            assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
+        }
+        assertThat(currentDocuments).hasSize(parentBindings.size());
+        Map<Path, JsonNode> restored = mutableDocuments(currentDocuments);
+        JsonNode entries = registry.path("entries");
+        assertThat(entries.isArray()).isTrue();
+        assertThat(entries).isNotEmpty();
+        Set<String> batchIds = new TreeSet<>(), basisSources = new TreeSet<>(), touchedSources = new TreeSet<>();
+        for (int index = entries.size() - 1; index >= 0; index--) {
+            JsonNode entry = entries.get(index), batch = entry.path("batch");
+            assertFields(entry, "V8 flat entry", "basisBindings", "batch");
+            assertFields(batch, "V8 batch", "id", "previousDigest", "originalRequires", "operations",
+                    "currentDocumentDigests", "legacyContinuations");
+            assertUniqueBatchId(batchIds, batch.path("id"));
+            assertThat(batch.path("previousDigest").asText()).as("flat entry predecessor %s", index)
+                    .isEqualTo(index == 0 ? registry.path("parentRegistryRawDigest").asText() : rawHash(entries.get(index - 1)));
+            assertFrameDigests(batch.path("currentDocumentDigests"), restored, "V8 entry end " + index);
+            Map<String, Map<String, JsonNode>> endGoals = frameGoals(immutableDocuments(restored)), goals = frameGoals(restored);
+            Map<String, JsonNode> snapshots = new LinkedHashMap<>();
+            assertThat(batch.path("originalRequires").isArray()).isTrue();
+            for (JsonNode original : batch.path("originalRequires")) {
+                assertFields(original, "V8 original requires", "source", "requires");
+                String source = original.path("source").asText();
+                assertThat(snapshots.putIfAbsent(source, original)).as("one V8 start snapshot %s", source).isNull();
+                ObjectNode goal = (ObjectNode) registeredGoal(goals, source);
+                if (original.path("requires").isNull()) goal.remove("requires");
+                else goal.set("requires", MAPPER.valueToTree(rawRequires(original.path("requires"), source)));
+                touchedSources.add(source);
+            }
+            assertThat(batch.path("operations").isArray()).isTrue();
+            assertThat(batch.path("operations")).isNotEmpty();
+            Set<String> operationSources = new TreeSet<>();
+            for (JsonNode operation : batch.path("operations")) {
+                if (operation.has("step")) operationSources.add(operation.path("step").path("source").asText());
+                else {
+                    assertThat(operation.path("steps").isArray()).isTrue();
+                    assertThat(operation.path("steps")).isNotEmpty();
+                    for (JsonNode step : operation.path("steps")) operationSources.add(step.path("source").asText());
+                }
+            }
+            assertThat(snapshots.keySet()).as("exact V8 operation-source snapshots").isEqualTo(operationSources);
+            Set<String> declared = new TreeSet<>();
+            assertThat(entry.path("basisBindings").isArray()).isTrue();
+            for (JsonNode binding : entry.path("basisBindings")) {
+                assertFields(binding, "assessment basis binding", "operation", "source");
+                assertThat(binding.path("operation").asText()).isEqualTo("bind-assessment-applicability-basis");
+                String source = binding.path("source").asText();
+                assertThat(declared.add(source) && basisSources.add(source)).as("one newly bound basis %s", source).isTrue();
+                assertThat(snapshots).containsKey(source);
+                JsonNode original = snapshots.get(source).path("requires");
+                assertThat(original.isArray()).isTrue();
+                assertThat(original).isNotEmpty();
+                ObjectNode goal = (ObjectNode) registeredGoal(goals, source);
+                JsonNode basis = goal.path("extendedData").path("assessmentApplicabilityBasis");
+                assertFields(basis, "literal assessment basis", "kind", "goalRefs");
+                assertThat(basis.path("kind").asText()).isEqualTo("allOfGoalApplicability");
+                assertThat(basis.path("goalRefs")).as("exact immediate-start reference order and spelling %s", source).isEqualTo(original);
+                ((ObjectNode) goal.path("extendedData")).remove("assessmentApplicabilityBasis");
+            }
+            Set<String> expected = new TreeSet<>();
+            for (String source : snapshots.keySet()) {
+                JsonNode start = registeredGoal(goals, source), end = registeredGoal(endGoals, source);
+                boolean changed = !java.util.Objects.equals(start.get("requires"), end.get("requires"));
+                boolean eligible = start.path("contains").isEmpty() && start.path("extendedData").isObject()
+                        && start.path("extendedData").path("applicabilityFromRequires").isBoolean()
+                        && start.path("extendedData").path("applicabilityFromRequires").asBoolean()
+                        && !start.path("extendedData").has("assessmentApplicabilityBasis")
+                        && !"cluster".equals(start.path("type").asText())
+                        && (hasRawTag(start, "Assessment") || hasRawTag(start, "Practice") || start.has("examData"));
+                if (changed && eligible) expected.add(source);
+            }
+            assertThat(declared).as("exact changed eligible unbound assessment endpoints").isEqualTo(expected);
+            if (index == 0) {
+                for (var binding : parentBindings.entrySet()) assertRawDocumentDigest(
+                        restored.get(REPOSITORY.resolve(binding.getKey())), binding.getValue().path("currentDocumentDigest").asText(),
+                        "restored full V7 parent " + binding.getKey());
+            } else assertFrameDigests(entries.get(index - 1).path("batch").path("currentDocumentDigests"), restored,
+                    "V8 entry start " + index);
+        }
+        for (JsonNode document : restored.values()) for (JsonNode goal : document.path("goals"))
+            assertThat(goal.path("extendedData").has("assessmentApplicabilityBasis"))
+                    .as("the fixed V7 prefix is basis-free: %s", goal.path("id").asText()).isFalse();
+        assertThat(Files.readAllBytes(parentFile)).containsExactly(parentBytes);
+        return new NativeBasisBoundFrame(parent, parentBytes, immutableDocuments(restored), immutableDocuments(currentDocuments),
+                Set.copyOf(touchedSources));
+    }
+
+    private static boolean hasRawTag(JsonNode goal, String expected) {
+        for (JsonNode tag : goal.path("tags")) if (tag.isTextual() && expected.equals(tag.asText())) return true;
+        return false;
+    }
+
+    private static ReductionRegistry readActualCurrentRegistry() throws IOException {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        if (!V8.equals(active.path("proofContract").asText())) {
+            NativeV7Boundary boundary = readNativeV7Boundary();
+            NativeV6Frame cache = readApplicabilityRefreshFrame(boundary.registry(), boundary.documents());
+            BatchNativeFrames historical = readBatchedReductionRegistry(cache.registry(), cache.documents());
+            return currentChemistryCacheFrames(boundary.registry(), cache, historical).after();
+        }
+        NativeBasisBoundFrame frame = readBasisBoundFrame(active, Map.of());
+        NativeV6Frame prefix = readApplicabilityRefreshFrame(frame.registry(), frame.documents());
+        readBatchedReductionRegistry(prefix.registry(), prefix.documents()); // retain every V1–V7 native boundary check
+        // This comparison is explicitly immediate-V7 -> final-V8, not the earliest
+        // comparison-only sourceFP baseline. Store both whole raw frames: a
+        // requires-only restoration cannot remove the declared new basis keys.
+        Map<Path, String> owners = new LinkedHashMap<>();
+        Map<Path, DocumentDigests> digests = new LinkedHashMap<>();
+        Map<Path, List<ChangedSource>> changes = new LinkedHashMap<>();
+        Map<String, ChangedSource> changedSources = new LinkedHashMap<>();
+        Map<String, Map<String, JsonNode>> before = frameGoals(frame.documents()), after = frameGoals(frame.currentDocuments());
+        for (var entry : frame.documents().entrySet()) {
+            Path file = entry.getKey();
+            String owner = entry.getValue().path("landscapeId").asText();
+            owners.put(file, owner);
+            digests.put(file, new DocumentDigests(rawHash(entry.getValue()), rawHash(frame.currentDocuments().get(file))));
+            List<ChangedSource> fileChanges = new ArrayList<>();
+            for (String source : frame.touchedSources()) {
+                String[] identity = qualifiedIdentity(source);
+                if (!owner.equals(identity[0])) continue;
+                JsonNode left = registeredGoal(before, source), right = registeredGoal(after, source);
+                List<String> contains = rawRequires(left.path("contains"), source);
+                assertThat(right.path("contains")).isEqualTo(left.path("contains"));
+                ChangedSource changed = new ChangedSource(owner, identity[1],
+                        left.has("requires") ? rawRequires(left.path("requires"), source) : List.of(),
+                        right.has("requires") ? rawRequires(right.path("requires"), source) : List.of(), contains, contains.isEmpty(),
+                        left.has("requires"), right.has("requires"));
+                assertThat(changedSources.putIfAbsent(identity[1], changed)).isNull();
+                fileChanges.add(changed);
+            }
+            changes.put(file, List.copyOf(fileChanges));
+        }
+        Set<String> batchIds = new TreeSet<>(changedSources.keySet());
+        return new ReductionRegistry(Collections.unmodifiableMap(owners), Collections.unmodifiableMap(changes),
+                Collections.unmodifiableMap(changedSources), List.of(), Collections.unmodifiableMap(digests),
+                Set.of(), Set.of(), Set.of(), Set.of(), Map.of(), frame.currentDocuments(), Set.copyOf(batchIds), frame.documents());
+    }
+
     private static JsonNode readNativeRegistryDeclaration() throws IOException {
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        if (V8.equals(active.path("proofContract").asText())) {
+            NativeBasisBoundFrame frame = readBasisBoundFrame(active, Map.of());
+            return readApplicabilityRefreshFrame(frame.registry(), frame.documents()).registry();
+        }
         return V7.equals(active.path("proofContract").asText())
                 ? readApplicabilityRefreshFrame(active).registry() : active;
     }
 
     /** Bind only the raw cache boundary; the actual TS compiler certifies the derived cache values. */
     private static NativeV6Frame readApplicabilityRefreshFrame(JsonNode registry) throws IOException {
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        Map<Path, JsonNode> documents = V8.equals(active.path("proofContract").asText())
+                ? readBasisBoundFrame(active, Map.of()).documents() : Map.of();
+        return readApplicabilityRefreshFrame(registry, documents);
+    }
+
+    private static NativeV6Frame readApplicabilityRefreshFrame(JsonNode registry,
+            Map<Path, JsonNode> documents) throws IOException {
         assertFields(registry, "V7 cache refresh", "schemaVersion", "proofContract", "auditScope", "catalogSources",
                 "parentRegistryPath", "parentRegistryRawDigest", "originalApplicability");
         assertThat(registry.path("schemaVersion").isIntegralNumber()).isTrue();
@@ -2888,7 +3342,7 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(source.path("landscapeId")).isEqualTo(binding.path("landscapeId"));
             assertThat(source.path("baselineDocumentDigest")).isEqualTo(binding.path("baselineDocumentDigest"));
             Path file = exactRegularRepositoryFile(relative);
-            JsonNode document = MAPPER.readTree(file.toFile());
+            JsonNode document = readFrameDocument(file, documents);
             assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
             assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual V7 full document " + relative);
             assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
@@ -2941,7 +3395,11 @@ class FirstMathPrerequisiteReductionTest {
 
     private static BatchNativeFrames readBatchedReductionRegistry(JsonNode registry) throws IOException {
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
-        Map<Path, JsonNode> documents = V7.equals(active.path("proofContract").asText())
+        Map<Path, JsonNode> documents;
+        if (V8.equals(active.path("proofContract").asText())) {
+            NativeBasisBoundFrame frame = readBasisBoundFrame(active, Map.of());
+            documents = readApplicabilityRefreshFrame(frame.registry(), frame.documents()).documents();
+        } else documents = V7.equals(active.path("proofContract").asText())
                 ? readApplicabilityRefreshFrame(active).documents() : Map.of();
         return readBatchedReductionRegistry(registry, documents);
     }
@@ -3073,7 +3531,7 @@ class FirstMathPrerequisiteReductionTest {
         ReductionRegistry result = new ReductionRegistry(legacy.canonicalOwners(), Collections.unmodifiableMap(immutableChanges),
                 Collections.unmodifiableMap(merged), legacy.clusterWitnessCoverage(), Collections.unmodifiableMap(digests),
                 legacy.historicalSourceIds(), legacy.suffixSourceIds(), legacy.tailSourceIds(), legacy.clusterTargetSourceIds(),
-                legacy.tailRemovedPrerequisites(), immutableDocuments(documents), Set.copyOf(batchIds));
+                legacy.tailRemovedPrerequisites(), immutableDocuments(documents), Set.copyOf(batchIds), Map.of());
         for (var entry : result.canonicalOwners().entrySet()) reconstructRawDocument(entry.getKey(), documents.get(entry.getKey()),
                 entry.getValue(), result.documentDigests().get(entry.getKey()), result.changesByFile().getOrDefault(entry.getKey(), List.of()),
                 true, result.batchSourceIds());
@@ -3318,7 +3776,13 @@ class FirstMathPrerequisiteReductionTest {
         @Override public JsonParser createParser(File file) throws IOException {
             Path source = file.toPath().toAbsolutePath().normalize();
             if (!registry.canonicalOwners().containsKey(source)) return super.createParser(file);
-            JsonNode tree = reconstructRawDocument(source, readFrameDocument(source, registry.currentDocuments()), registry.canonicalOwners().get(source),
+            JsonNode tree;
+            if (!registry.originalDocuments().isEmpty()) {
+                tree = readFrameDocument(source, originalBaseline ? registry.originalDocuments() : registry.currentDocuments());
+                DocumentDigests digests = registry.documentDigests().get(source);
+                assertRawDocumentDigest(tree, originalBaseline ? digests.original() : digests.current(),
+                        "explicit whole V8 " + (originalBaseline ? "baseline" : "current") + " frame " + source);
+            } else tree = reconstructRawDocument(source, readFrameDocument(source, registry.currentDocuments()), registry.canonicalOwners().get(source),
                     registry.documentDigests().get(source), registry.changesByFile().getOrDefault(source, List.of()),
                     originalBaseline, registry.batchSourceIds());
             return super.createParser(tree.toString());
@@ -3330,6 +3794,11 @@ class FirstMathPrerequisiteReductionTest {
         Set<String> jurisdictions = new TreeSet<>();
         declared.fieldNames().forEachRemaining(jurisdictions::add);
         jurisdictions.add("ALL");
+        return discover(fixture, subject, declared, jurisdictions);
+    }
+
+    private static Discovery discover(NativeFixture fixture, String subject, JsonNode declared,
+            Set<String> jurisdictions) throws Exception {
         Map<String, Map<String, Map<String, Object>>> configurations = new TreeMap<>();
         Map<String, PersonalizationPlan> offeredPlans = new TreeMap<>();
         for (String jurisdiction : jurisdictions) {
@@ -3755,6 +4224,27 @@ class FirstMathPrerequisiteReductionTest {
         Map<String, LearningGoal> visible = new TreeMap<>(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(projection, "visibleGoals"));
         visible.remove(id);
         return copyProjectionWithoutRole(projection, id, visible, broken);
+    }
+
+    /** Corrupt only one emitted representation; canonical definitions and the full L stay intact. */
+    private static Object withoutEmittedAcquisitionAtom(Object projection, String id, boolean removeTarget) throws Exception {
+        Set<String> targets = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "targetGoalIds"));
+        Map<String, LearningGoal> visible = new TreeMap<>(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(projection, "visibleGoals"));
+        assertThat(targets).contains(id);
+        assertThat(visible).containsKey(id);
+        if (removeTarget) targets.remove(id);
+        else visible.remove(id);
+        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
+                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class);
+        constructor.setAccessible(true);
+        return constructor.newInstance(visible, targets,
+                ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds"),
+                ReflectionTestUtils.invokeMethod(projection, "structuralGoals"),
+                ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
+                ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"),
+                ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"),
+                ReflectionTestUtils.invokeMethod(projection, "learningScope"),
+                ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals"));
     }
 
     /** A non-atomic authored support role alone is not an acquisition obligation. */

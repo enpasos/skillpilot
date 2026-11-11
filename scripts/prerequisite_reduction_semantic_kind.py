@@ -22,6 +22,7 @@ CONTINUED_PROOF_CONTRACT = "continued-atomic-prerequisite-reduction-v4"
 CLUSTER_TARGET_PROOF_CONTRACT = "atomic-cluster-target-normalization-v5"
 APPEND_ONLY_PROOF_CONTRACT = "append-only-prerequisite-reduction-batches-v6"
 APPLICABILITY_REFRESH_PROOF_CONTRACT = "prerequisite-reduction-applicability-refresh-v7"
+BASIS_BOUND_PROOF_CONTRACT = "assessment-basis-bound-prerequisite-reduction-v8"
 SOFTWARE_ROOT = Path(__file__).resolve().parents[1]
 NODE_VERIFIER_TIMEOUT_SECONDS = 600
 
@@ -109,7 +110,7 @@ def load_verified_semantic_kind_bindings(
         require(proof["proofContract"] in (PROOF_CONTRACT, CLUSTER_PROOF_CONTRACT,
                                           ORDERED_PROOF_CONTRACT, CONTINUED_PROOF_CONTRACT,
                                           CLUSTER_TARGET_PROOF_CONTRACT, APPEND_ONLY_PROOF_CONTRACT,
-                                          APPLICABILITY_REFRESH_PROOF_CONTRACT)
+                                          APPLICABILITY_REFRESH_PROOF_CONTRACT, BASIS_BOUND_PROOF_CONTRACT)
                 and proof["mode"] == "current-or-certified-baseline-comparison"
                 and proof["auditScope"] == "origin-source-landscape-closure"
                 and proof["registryPath"] == REGISTRY_PATH

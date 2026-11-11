@@ -143,7 +143,8 @@ class SemanticKindReductionTest(unittest.TestCase):
         checkpoint, registry = self.continue_registry(ordered)
         return before, checkpoint, ordered, registry
 
-    def cluster_target_fixture(self, *, existing_leaves=False, omit_types=False, changed_applicability=False):
+    def cluster_target_fixture(self, *, existing_leaves=False, omit_types=False, changed_applicability=False,
+                               assessment_goal=None):
         self.source = self.root / SOURCE
         _, _, ordered, parent = self.continued_fixture()
         before = {"landscapeId": "german", "goals": [
@@ -166,6 +167,19 @@ class SemanticKindReductionTest(unittest.TestCase):
             for goal in before["goals"][1:]:
                 goal["extendedData"] = {"applicabilityOverrides": {
                     "jurisdiction": ["DE-BY" if goal["id"] == "u" else "DE-HE"]}}
+        if assessment_goal is not None:
+            before["goals"].extend([
+                copy.deepcopy(assessment_goal),
+                {"id": "batch-source", "type": "atomic", "contains": [], "requires": ["batch-mid", "batch-end"]},
+                {"id": "batch-mid", "type": "atomic", "contains": [], "requires": ["batch-end"]},
+                {"id": "batch-end", "type": "atomic", "contains": [], "requires": []},
+                {"id": "cache", "type": "atomic", "contains": [], "requires": [],
+                 "extendedData": {"applicabilityOverrides": {"jurisdiction": ["DE-BY"]}},
+                 "applicability": {"jurisdiction": ["DE-HE"]}},
+            ])
+            for goal in before["goals"]:
+                if goal["id"] in ("u", "v"):
+                    goal["extendedData"] = {"applicabilityOverrides": {"jurisdiction": ["DE-HE"]}}
 
         binding = {"path": GERMAN_SOURCE, "landscapeId": "german",
                    "baselineDocumentDigest": bridge.digest(compiler.canonical_json_bytes(before)),
@@ -225,6 +239,86 @@ class SemanticKindReductionTest(unittest.TestCase):
             "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
                                        for row in parent["catalogSources"]],
         }
+
+    def basis_bound_fixture(self, assessment_goal=None):
+        """Tiny real V7 parent/V8 suffix, shared by the two process consumers."""
+        assessment = copy.deepcopy(assessment_goal or {
+            "id": "exam", "type": "atomic", "weight": 1, "tags": ["Assessment"],
+            "contains": [], "requires": ["c"], "extendedData": {"applicabilityFromRequires": True},
+        })
+        before, _, v5 = self.cluster_target_fixture(assessment_goal=assessment)
+        source = f"german:{assessment['id']}"
+        doc_digest = lambda: bridge.digest(compiler.canonical_json_bytes(self.document))
+        bindings = lambda: [{"path": row["path"], "currentDocumentDigest": (
+            doc_digest() if row["path"] == GERMAN_SOURCE else row["currentDocumentDigest"])}
+            for row in v5["catalogSources"]]
+        v6 = {**copy.deepcopy(v5), "proofContract": bridge.APPEND_ONLY_PROOF_CONTRACT,
+              "v5Checkpoint": {"registryDigest": bridge.digest(compiler.canonical_json_bytes(v5)),
+                  "currentDocumentDigests": [{"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+                                             for row in v5["catalogSources"]]}}
+        next(g for g in self.document["goals"] if g["id"] == "batch-source")["requires"] = ["batch-mid"]
+        path = ["german:batch-source", "german:batch-mid", "german:batch-end"]
+        v6["batches"] = [{"id": "consumer-parent-batch", "previousDigest": v6["v5Checkpoint"]["registryDigest"],
+            "originalRequires": [{"source": path[0], "requires": ["batch-mid", "batch-end"]}],
+            "operations": [{"id": "consumer-cut", "step": {"source": path[0], "prerequisite": path[-1],
+                            "witness": path}, "endWitness": path}],
+            "currentDocumentDigests": bindings(), "legacyContinuations": []}]
+        for row in v6["catalogSources"]:
+            if row["path"] == GERMAN_SOURCE:
+                row["currentDocumentDigest"] = doc_digest()
+        v6_path = "parent-v6.json"
+        v6_bytes = json.dumps(v6).encode()
+        (self.root / v6_path).write_bytes(v6_bytes)
+        next(g for g in self.document["goals"] if g["id"] == "cache")["applicability"] = {"jurisdiction": ["DE-BY"]}
+        v7 = {"schemaVersion": 1, "proofContract": bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
+              "auditScope": "origin-source-landscape-closure", "catalogSources": copy.deepcopy(v6["catalogSources"]),
+              "parentRegistryPath": v6_path, "parentRegistryRawDigest": bridge.digest(v6_bytes),
+              "originalApplicability": [{"source": "german:cache", "present": True,
+                                          "value": {"jurisdiction": ["DE-HE"]}}]}
+        for row in v7["catalogSources"]:
+            if row["path"] == GERMAN_SOURCE:
+                row["currentDocumentDigest"] = doc_digest()
+        v7_path = "parent-v7.json"
+        v7_bytes = json.dumps(v7).encode()
+        (self.root / v7_path).write_bytes(v7_bytes)
+        current = next(g for g in self.document["goals"] if g["id"] == assessment["id"])
+        current["requires"] = ["u", "v"]
+        current["extendedData"]["assessmentApplicabilityBasis"] = {
+            "kind": "allOfGoalApplicability", "goalRefs": ["c"]}
+        steps = [{"operation": "materialize-atomic", "source": source, "prerequisite": f"german:{leaf}",
+                  "origin": {"source": source, "prerequisite": "c", "sourceContainsPath": [source],
+                             "prerequisiteContainsPath": contained}}
+                 for leaf, contained in (("u", ["german:c", "german:h", "german:u"]),
+                                          ("v", ["german:c", "german:v"]))]
+        steps.append({"operation": "remove-cluster-target", "source": source, "prerequisite": "german:c"})
+        registry = {"schemaVersion": 1, "proofContract": bridge.BASIS_BOUND_PROOF_CONTRACT,
+            "auditScope": "origin-source-landscape-closure", "catalogSources": copy.deepcopy(v7["catalogSources"]),
+            "parentRegistryPath": v7_path, "parentRegistryRawDigest": bridge.digest(v7_bytes),
+            "entries": [{"basisBindings": [{"operation": "bind-assessment-applicability-basis", "source": source}],
+                         "batch": {"id": "consumer-basis-batch", "previousDigest": bridge.digest(v7_bytes),
+                             "originalRequires": [{"source": source, "requires": ["c"]}],
+                             "operations": [{"id": "consumer-normalize", "steps": steps,
+                                 "endAtomicWitnesses": [[source, f"german:{leaf}"] for leaf in ("u", "v")]}],
+                             "currentDocumentDigests": bindings(), "legacyContinuations": []}}]}
+        self.save_cluster_target_fixture(registry)
+        return before, registry
+
+    def test_basis_bound_contract_uses_real_node_and_exact_native_baseline_fingerprints(self):
+        before, registry = self.basis_bound_fixture()
+        verified = self.load()
+        self.assertEqual(verified.provenance["proofContract"], bridge.BASIS_BOUND_PROOF_CONTRACT)
+        self.assertEqual(verified.baseline_fingerprints, self.fingerprint_document(before))
+        # Same compiled HE scope is insufficient: the literal immediate-start
+        # basis must be c, not its atom expansion.
+        next(g for g in self.document["goals"] if g["id"] == "exam")["extendedData"][
+            "assessmentApplicabilityBasis"]["goalRefs"] = ["u", "v"]
+        self.save_cluster_target_fixture(registry)
+        registry["entries"][0]["batch"]["currentDocumentDigests"] = [
+            {"path": row["path"], "currentDocumentDigest": row["currentDocumentDigest"]}
+            for row in registry["catalogSources"]]
+        self.registry.write_text(json.dumps(registry))
+        with self.assertRaises(bridge.PrerequisiteReductionBindingError):
+            self.load()
 
     def test_absent_registry_uses_no_node(self):
         self.registry.unlink()
@@ -666,6 +760,7 @@ class SemanticKindReductionTest(unittest.TestCase):
             "nearby-cluster-target-contract": at(["proof", "proofContract"], "atomic-cluster-target-normalization-v6"),
             "unknown-future-batch-contract": at(["proof", "proofContract"], "append-only-prerequisite-reduction-batches-v7"),
             "nearby-refresh-contract": at(["proof", "proofContract"], "derived-applicability-cache-refresh-v7"),
+            "nearby-basis-contract": at(["proof", "proofContract"], "assessment-basis-bound-prerequisite-reduction-v9"),
             "proof-mode": at(["proof", "mode"], "current-only-comparison"),
             "proof-scope": at(["proof", "auditScope"], "source-only"),
             "registry-path": at(["proof", "registryPath"], "elsewhere.json"),
@@ -685,7 +780,7 @@ class SemanticKindReductionTest(unittest.TestCase):
             "extra-field": at(["unverified"], True),
         }
         for contract in (bridge.PROOF_CONTRACT, bridge.APPEND_ONLY_PROOF_CONTRACT,
-                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
+                         bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT, bridge.BASIS_BOUND_PROOF_CONTRACT):
             self.receipt["proof"]["proofContract"] = contract
             for name, mutate in cases.items():
                 with self.subTest(contract=contract, name=name):
@@ -696,7 +791,8 @@ class SemanticKindReductionTest(unittest.TestCase):
                             self.load()
         for contract in (bridge.PROOF_CONTRACT, bridge.CLUSTER_PROOF_CONTRACT, bridge.ORDERED_PROOF_CONTRACT,
                          bridge.CONTINUED_PROOF_CONTRACT, bridge.CLUSTER_TARGET_PROOF_CONTRACT,
-                         bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
+                         bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
+                         bridge.BASIS_BOUND_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()):
@@ -706,7 +802,8 @@ class SemanticKindReductionTest(unittest.TestCase):
 
     def test_append_only_contract_invokes_node_with_bounded_timeout_and_no_fallback(self):
         self.assertEqual(bridge.NODE_VERIFIER_TIMEOUT_SECONDS, 600)
-        for contract in (bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT):
+        for contract in (bridge.APPEND_ONLY_PROOF_CONTRACT, bridge.APPLICABILITY_REFRESH_PROOF_CONTRACT,
+                         bridge.BASIS_BOUND_PROOF_CONTRACT):
             with self.subTest(contract=contract):
                 self.receipt["proof"]["proofContract"] = contract
                 with patch.object(bridge.subprocess, "run", return_value=self.completed()) as run:

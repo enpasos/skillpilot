@@ -127,6 +127,8 @@ public class LearnerService {
     private static final double PLANNING_SCOPE_MASTERY_THRESHOLD = Mastery.LEGACY_MASTERED_THRESHOLD;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
+    /** Curriculum and failure code pairs already logged; keeps repeated reads quiet. */
+    private final Set<String> reportedSeedScopeFallbacks = java.util.concurrent.ConcurrentHashMap.newKeySet();
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
     private static final ZoneId LEARNING_PLAN_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
@@ -7263,17 +7265,20 @@ public class LearnerService {
         // Visible navigation clusters can have no atomic descendants in this
         // scope and therefore no node in the validated prerequisite graph.
         if (prerequisites.topology() == null || !prerequisites.lookup().containsKey(goal.getId())) return false;
-        // A derived target and its canonical path satisfy the personal role contract.
+        Set<String> requiredAtoms = prerequisites.topology().transitivePrerequisites(goal.getId());
+        // Derived requirements must also survive actual target/definition emission.
+        // Mastery and focus cannot excuse a broken personal learning projection.
         if (projection.learningScope() != null) {
-            if (!projection.learningScope().learningAtomicGoalIds().containsAll(
-                    prerequisites.topology().transitivePrerequisites(goal.getId()))) return false;
+            if (!projection.learningScope().learningAtomicGoalIds().containsAll(requiredAtoms)
+                    || !projection.targetGoalIds().containsAll(requiredAtoms)
+                    || !projection.visibleGoals().keySet().containsAll(requiredAtoms)) return false;
         } else if (projection.compositionViewApplied()) {
             for (String id : prerequisites.topology().transitiveGoalPrerequisites(goal.getId())) {
                 if (!projection.targetGoalIds().contains(id)
                         && !projection.prerequisiteOnlyGoalIds().contains(id)) return false;
             }
         }
-        for (String id : prerequisites.topology().transitivePrerequisites(goal.getId())) {
+        for (String id : requiredAtoms) {
             if (prerequisites.scope() != null && !prerequisites.scope().contains(id)) continue;
             if (prerequisites.mastery().getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD) return false;
         }
@@ -10882,10 +10887,21 @@ public class LearnerService {
         CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
                 ? completionCanonicalGraphResolver
                 : new CompletionCanonicalGraphResolver(landscapeService, objectMapper);
-        Map<String, LearningGoal> canonical = resolver.loadForAtomicSeeds(
-                curriculumId, seeds, projection.structuralGoals());
-        PersonalCurriculumLearningScope learningScope =
-                PersonalCurriculumLearningScope.compile(canonical, seeds);
+        Map<String, LearningGoal> canonical;
+        PersonalCurriculumLearningScope learningScope;
+        try {
+            canonical = resolver.loadForAtomicSeeds(curriculumId, seeds, projection.structuralGoals());
+            learningScope = PersonalCurriculumLearningScope.compile(canonical, seeds);
+        } catch (CompletionCompilationException notCompilable) {
+            // A graph that is not strictly compilable keeps its reviewed seed scope without
+            // the derived closure: state, results and exports stay readable. No learning
+            // basis is claimed, so the projection carries no learning scope.
+            if (reportedSeedScopeFallbacks.add(curriculumId + ":" + notCompilable.code())) {
+                LOGGER.warn("Personal learning scope of curriculum {} keeps its seed scope: {} ({})",
+                        curriculumId, notCompilable.code(), notCompilable.getMessage());
+            }
+            return projection;
+        }
         Map<String, LearningGoal> structural = new LinkedHashMap<>(projection.structuralGoals());
         canonical.forEach(structural::putIfAbsent);
         Map<String, LearningGoal> visible = new LinkedHashMap<>(projection.visibleGoals());

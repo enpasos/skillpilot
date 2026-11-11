@@ -1,10 +1,100 @@
 # Transitive Minimalität und Einlieferung nach main
 
-Stand: 10. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
+Stand: 11. November 2026. Grundlage ist die kritische Prüfung mit Astra Ultra
 und die anschließende ausdrückliche Scopeentscheidung des Product Owners.
 Dieser Plan ersetzt den Arbeitsauftrag des breiten CI-Audits im alten Goal.
 Das alte breite Goal ist gelöscht. Auf ausdrücklichen Ownerauftrag ist ein
 neues Goal mit der unten präzisierten Main-Abnahme eingerichtet.
+
+**Aktuelle Lieferung und Arbeitsfolge, 11. November 2026:** Chemie
+[PR #111](https://github.com/enpasos/skillpilot/pull/111) ist nach acht
+erfolgreichen Hauptjobs und fünf erfolgreichen Begleitworkflows auf Main
+`6c274d9e52fbabc84135196b6e13150406a8eccb` gemerged. Auch die separat geprüfte
+Compilergrundlage [PR #114](https://github.com/enpasos/skillpilot/pull/114)
+ist auf Main `1ee7b40e6e2121bd7f8181aae74af57d55895905` geliefert. Mit
+[PR #115](https://github.com/enpasos/skillpilot/pull/115) ist auch die geprüfte
+Topologiewiederverwendung auf Main `8278f12f9f` angekommen. Dessen frische
+Main-CI ist noch offen; abgebrochene Vorgängerläufe sind keine Abnahme. Die
+Runtime-Reparatur [PR #113](https://github.com/enpasos/skillpilot/pull/113)
+liegt bei `bdae30d0f2`, der vorhandene Snapshot-Fix
+[PR #116](https://github.com/enpasos/skillpilot/pull/116) bei `5bd656c876`.
+Beide benötigen noch ihre vollständige frische Remote-CI. Im
+[Biologie-PR #117](https://github.com/enpasos/skillpilot/pull/117), Branch
+`fix/g17-biology-assessment-basis`, sind der vorbereitete Biologiestand und
+der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
+Bestandsbeweis, 761 vollständige native Einzelfachkonfigurationen, die echten
+Ausgabe-Verlustgegenfälle sowie der reguläre Meilensteinlauf einschließlich
+aller zehn unveränderten Floors bestehen lokal. Die genaue
+[Biologie-Prüfgrenze](https://github.com/enpasos/skillpilot/blob/1d63d2b18cf081d85827c80a37257c989a71dd87/qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
+trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
+Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
+Statusvoraussetzung durch. Der anschließende Merge `7d3fbc40ef` übernimmt
+die gemeinsame aktuelle Grundlage und die Runtime-Reparaturen; die
+Bio-spezifischen V8- und tatsächlichen Ausgabeprüfungen bleiben erhalten.
+Damit ist der Mergekonflikt behoben. Die neue CI muss diesen integrierten
+Stand prüfen; frühere lokale Ergebnisse werden nicht auf ihn umgebunden.
+
+Während der Biologie-Remote-CI folgt der getrennte Wirtschafts-Datenbatch im
+sichtbaren IDE-Branch `fix/g17-economics-atomic-prerequisites-v8-data`. Er baut
+auf Biologie auf und wird als [PR #118](https://github.com/enpasos/skillpilot/pull/118)
+separat geliefert. Der [Wirtschafts-Nachweis](https://github.com/enpasos/skillpilot/blob/0fb213baa003e003035e017973157234401b0f51/qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
+belegt öffentliche Beweisprüfung, native Gegenproben und den regulären
+Meilensteinlauf einschließlich aller zehn Floors am dort gebundenen Stand.
+Merge `8550c497f5` übernimmt den konfliktfreien Biologiestand; App- und
+Curriculumdateien sind gegenüber `0fb213baa0` unverändert. Frische Remote-CI
+und Main-Lieferung bleiben offen.
+
+Die nächsten Schritte schließen vorhandene Lieferungen ab. Astra hat den
+beschleunigten Ablauf am 11. November nochmals geprüft:
+
+- Der reguläre CQR-Lauf enthält bereits die öffentliche Beweisprüfung. Bei
+  gleichen Eingaben entfällt der zusätzliche Standalone-Loader; er dient nur
+  noch der gezielten Fehlerdiagnose. Benötigte Statusberichte werden einmal
+  erzeugt, ohne anschließenden identischen Kontrolllauf.
+- Fachbezogene Gegenproben laufen zuerst. Erforderliche native Prüfungen und
+  CQR/Proof dürfen danach am selben unveränderten Datenstand parallel laufen.
+  Zusätzliche lokale Vollsuiten entfallen, wenn keine konkrete Änderung oder
+  kein neuer Fehler sie begründet. Alle obligatorischen CI-Prüfungen bleiben.
+- Während der Remote-CI wird die nächste Fachlieferung vorbereitet. Fertige
+  Reparaturen werden nach passender gezielter Prüfung sofort gepusht. Eine
+  laufende CI ist weder Voraussetzung für den nächsten Commit noch Anlass,
+  einen bekannten Fehler liegenzulassen.
+- Reviews betreffen die neue Änderung; unveränderte Proofstufen und geprüfte
+  Adapter werden nicht erneut konzeptionell aufgerollt. Neue Konzeptvarianten,
+  Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen.
+- Das Standard-G17-Gate in [PR #119](https://github.com/enpasos/skillpilot/pull/119)
+  wurde bereits gegen den echten 21er-Producer geprüft. Auf dem dort gebundenen
+  Wirtschaftsstand setzt es Geschichte, Informatik, Latein und Politik und
+  Wirtschaft wegen ihrer offenen Graphverstöße auf M0; die unveränderte
+  Floorprüfung scheitert genau an diesen vier geschützten Fächern. Die fünf
+  M7-Fächer und Deutsch M6 bleiben erhalten. Das belegt die Fehlerwirkung,
+  noch nicht die endgültige Abnahme. Die Gateänderung bleibt eine getrennte
+  Lieferung nach Main, sobald alle geschützten Fächer bestehen.
+
+**Gestraffter Abschlussablauf, 11. November 2026:** Nach der erneuten
+Astra-Prüfung bleiben die bereits laufenden Lieferungen Biologie, Wirtschaft
+und [Latein #120](https://github.com/enpasos/skillpilot/pull/120) getrennt.
+Die vorbereiteten Korrekturen für Geschichte, Informatik und Politik und
+Wirtschaft folgen in genau dieser Reihenfolge als drei nachvollziehbare
+Fachcommits in **einem begrenzten Daten-PR**. Das ersetzt die drei bisher
+geplanten weiteren Einzelfach-PRs. Jede Stufe behält ihre vorhandenen
+mechanischen Schnitt-, Closure- und Projektionsnachweise sowie die exakte
+Registergrenze. Der vorhandene V8-Prüfer prüft diese Grenzen am Endstand;
+ein neuer Beweisvertrag wird dafür nicht eingeführt.
+
+Auf dem gemeinsamen Endstand laufen die vollständige native Gegenprüfung und
+der reguläre CQR-Producer einschließlich öffentlichem Beweis genau einmal,
+sofern kein Fehler oder eine spätere relevante Änderung einen neuen Lauf
+erfordert. Alle verpflichtenden Remote-Prüfungen bleiben erhalten. Benötigt
+ein Fach unerwartet eine fachliche Entscheidung oder eine neue Runtime- oder
+Proofkorrektur, wird dieser konkrete Fall getrennt behandelt. Vorhandene
+Abhängigkeiten werden nach erfolgreicher Pflicht-CI zügig nach Main geliefert;
+ein neuer Main-SHA allein löst keine Aktualisierung aller Folgebranches aus.
+
+Das zentrale G17-Gate wird anschließend auf Main aktiviert. Die endgültige
+Abnahme umfasst alle 21 Kataloge, die zehn unveränderten Mindeststände und
+die erfolgreiche vollständige CI auf dem endgültigen Main-Stand. Das
+Überlappen von Vorbereitung und CI ersetzt keinen dieser Nachweise.
 
 **Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
 **Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
@@ -41,7 +131,7 @@ getrennten Anwendbarkeits-/Proofkorrekturen für den gesicherten Biologiestand;
 G17 in der Standard-Meilensteinprüfung bleibt das vollständige Ziel.
 
 
-**Aktueller CI-Reparaturstand vom 10. November 2026:** Die getrennte
+**Historischer CI-Reparaturstand vom 10. November 2026:** Die getrennte
 Codekorrektur PR #110 auf Main `39f4c21ea9` hat ihre frische Main-CI mit
 allen acht Hauptjobs und vier Begleitworkflows bestanden. Im Chemie-Datenlauf
 `42850827581` scheiterte der Kompositionsvalidator an 277 Strukturfehlern in

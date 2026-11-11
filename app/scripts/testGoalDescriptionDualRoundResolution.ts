@@ -1,11 +1,15 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
+import { spawnSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import {
   fingerprintPrerequisiteReductionDocument,
   loadVerifiedPrerequisiteReductionContext,
   PREREQUISITE_REDUCTION_CONTRACT,
+  BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT,
+  verifiedPrerequisiteReductionSummary,
+  type VerifiedPrerequisiteReductionContext,
 } from './prerequisiteReductionProof'
 import type { LearningGoal } from '../src/landscapeTypes'
 import {
@@ -405,6 +409,12 @@ try {
   assert.deepEqual(reduced.errors, [])
   assert.equal(reduced.strictDescriptionComplete, true)
   assert.ok(prerequisiteReductionContext)
+  await assert.rejects(() => validateGoalDescriptionDualRoundResolutionBindings({
+    ...current, prerequisiteReductionContext, canonicalLandscapeId: before.landscapeId,
+    canonicalGoal: { ...after.goals[0], extendedData: { applicabilityFromRequires: true,
+      assessmentApplicabilityBasis: { kind: 'allOfGoalApplicability', goalRefs: canonicalGoal.requires } } },
+  }), /current goal differs from verified snapshot/u,
+  'An older opaque context cannot authorize a newly injected basis field')
   for (const canonicalLandscapeId of [undefined, '', ' ', 'resolution-proof:foreign', null, 42]) {
     const invalidNamespace = await validateGoalDescriptionDualRoundResolutionBindings({
       ...current, prerequisiteReductionContext, canonicalLandscapeId: canonicalLandscapeId as string | undefined,
@@ -419,6 +429,92 @@ try {
   assert.equal(ignoredOptionalId.strictDescriptionComplete, true)
 } finally {
   rmSync(reductionRoot, { recursive: true, force: true })
+}
+
+// Reuse only raw fixture construction from the Python consumer test. Both
+// consumers independently invoke the real public loader; no receipt or opaque
+// context crosses the process boundary.
+const basisGoal = { ...structuredClone(canonicalGoal), requires: ['c'], examData: {},
+  extendedData: { applicabilityFromRequires: true } }
+const fixtureProcess = spawnSync('python3', ['-B', '-c', `
+import json, sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd() / "scripts"))
+from test_prerequisite_reduction_semantic_kind import SemanticKindReductionTest
+case = SemanticKindReductionTest()
+case.setUp()
+try:
+    before, _ = case.basis_bound_fixture(json.load(sys.stdin))
+    print(json.dumps({"before": before, "current": case.document,
+        "files": {str(p.relative_to(case.root)): p.read_text() for p in case.root.rglob("*.json")}}))
+finally:
+    case.doCleanups()
+`], { cwd: resolve(import.meta.dirname, '../..'), input: JSON.stringify(basisGoal), encoding: 'utf8' })
+assert.equal(fixtureProcess.status, 0, fixtureProcess.stderr)
+const basisFixture = JSON.parse(fixtureProcess.stdout) as {
+  before: { goals: Record<string, unknown>[] }
+  current: { goals: Record<string, unknown>[] }
+  files: Record<string, string>
+}
+const basisRoot = mkdtempSync(resolve(reductionParent, 'resolution-basis-'))
+try {
+  for (const [path, bytes] of Object.entries(basisFixture.files)) {
+    const destination = resolve(basisRoot, path)
+    mkdirSync(resolve(destination, '..'), { recursive: true })
+    writeFileSync(destination, bytes)
+  }
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: basisRoot })
+  assert.ok(prerequisiteReductionContext)
+  assert.equal(verifiedPrerequisiteReductionSummary(prerequisiteReductionContext)?.proofContract,
+    BASIS_BOUND_PREREQUISITE_REDUCTION_CONTRACT)
+  const baselineGoal = basisFixture.before.goals.find(goal => goal.id === canonicalGoal.id)!
+  const currentGoal = basisFixture.current.goals.find(goal => goal.id === canonicalGoal.id)!
+  const reviewedGoal = { ...inputGoal, canonicalContext: buildGoalDescriptionCanonicalContext(baselineGoal) }
+  const basisInputWithoutFingerprint = { ...inputWithoutFingerprint, goals: [reviewedGoal] }
+  const basisInput = { ...basisInputWithoutFingerprint,
+    reviewInputFingerprint: fingerprintGoalDescriptionReviewInput(basisInputWithoutFingerprint) }
+  const contextFingerprint = fingerprintGoalDescriptionReviewContext(reviewedGoal)
+  const first = { ...firstBinding, goalReviewContextFingerprint: contextFingerprint }
+  const second = { ...secondBinding, goalReviewContextFingerprint: contextFingerprint }
+  const basisResolution = buildGoalDescriptionDualRoundResolution({
+    resolutionId: resolution.resolutionId, goalId: canonicalGoal.id, effectiveSemanticKind,
+    decision: 'keep_current', synthesis: resolution.synthesis, dualSummaryBytes, currentInput: basisInput,
+    firstSource: { binding: first, decision: 'keep' }, secondSource: { binding: second, decision: 'keep' },
+  })
+  const basisArtifacts: GoalDescriptionDualRoundResolutionBindingArtifacts = {
+    ...baseArtifacts, resolution: basisResolution, currentInput: basisInput, canonicalGoal: currentGoal,
+    prerequisiteReductionContext, canonicalLandscapeId: 'german',
+    firstSource: { binding: first, decision: 'keep' }, secondSource: { binding: second, decision: 'keep' },
+  }
+  const accepted = await validateGoalDescriptionDualRoundResolutionBindings(basisArtifacts)
+  assert.deepEqual(accepted.errors, [])
+  assert.equal(accepted.strictDescriptionComplete, true)
+  await assert.rejects(() => validateGoalDescriptionDualRoundResolutionBindings({
+    ...basisArtifacts, prerequisiteReductionContext: undefined,
+  }), /assessmentApplicabilityBasis|verified/u)
+  await assert.rejects(() => validateGoalDescriptionDualRoundResolutionBindings({
+    ...basisArtifacts, prerequisiteReductionContext: {} as VerifiedPrerequisiteReductionContext,
+  }), /unregistered or forged context/u)
+  for (const change of [
+    (goal: Record<string, unknown>) => { goal.requires = ['u'] },
+    (goal: Record<string, unknown>) => { goal.title = 'Changed after verification' },
+    (goal: Record<string, unknown>) => { (goal.extendedData as Record<string, unknown>).assessmentApplicabilityBasis = {
+      kind: 'allOfGoalApplicability', goalRefs: ['u', 'v'],
+    } },
+  ]) {
+    const stale = structuredClone(currentGoal)
+    change(stale)
+    await assert.rejects(() => validateGoalDescriptionDualRoundResolutionBindings({
+      ...basisArtifacts, canonicalGoal: stale,
+    }), /current goal differs from verified snapshot/u)
+  }
+  const wrongNamespace = await validateGoalDescriptionDualRoundResolutionBindings({
+    ...basisArtifacts, canonicalLandscapeId: '',
+  })
+  assert.match(wrongNamespace.errors.join('\n'), /requires a non-empty, unqualified canonicalLandscapeId/u)
+  assert.equal(wrongNamespace.strictDescriptionComplete, false)
+} finally {
+  rmSync(basisRoot, { recursive: true, force: true })
 }
 
 const exactRecordLine = `  ${JSON.stringify({

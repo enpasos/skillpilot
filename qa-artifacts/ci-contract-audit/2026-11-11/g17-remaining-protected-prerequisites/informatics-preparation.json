@@ -1,0 +1,205 @@
+{
+  "status": "PREPARED_NOT_INSTALLED_NOT_ADMITTED",
+  "productWrites": false,
+  "gitExecuted": false,
+  "predecessor": {
+    "registryPath": "tmp/g17-history-next-delivery-20261111/proposed-registry.json",
+    "registryRawDigest": "sha256:b7274bff47ee72ce659a2de7ecc31dc901cfdc5bc3ca7dbc08ba9e75ff04bb9e",
+    "lastEntryDigest": "sha256:658b3b3df5638dd41182de52dfdfa380e54bc8dd0f218c40777ca532cd446247",
+    "latinCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+    "latinCandidatePath": "tmp/g17-latin-next-delivery-20261111/candidate-latin.json",
+    "latinCandidateRawDigest": "sha256:f9dc6081ede69dab7f856bed3d7b28c803a8d40376c069b30dd2bf3924a9b33c",
+    "historyCanonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+    "historyCandidatePath": "tmp/g17-history-next-delivery-20261111/candidate-history.json",
+    "historyCandidateRawDigest": "sha256:a2701a5dce37546c6b90b0306801767241de6269fd76f736d9db306225784fa7",
+    "installedBioEconomicsRegistryRawDigest": "sha256:c79dad302b8454bd28216c4836d578ed607ca4ad5c35135fe686199777ba8276",
+    "installationOrder": "Install and verify the prepared Latin and History deliveries first. Then this patch applies to its exact registry/canonical state; it is not directly applicable to the currently installed two-entry registry."
+  },
+  "proofContract": "assessment-basis-bound-prerequisite-reduction-v8",
+  "newProofVersion": false,
+  "fixedV7ParentPath": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v7-chemistry-20261110.json",
+  "fixedV7ParentRawDigest": "sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6",
+  "flatEntriesBefore": 4,
+  "flatEntriesAfter": 5,
+  "existingBioEconomicsLatinHistoryEntriesUnchanged": true,
+  "summary": {
+    "materializations": 484,
+    "clusterTargetCuts": 58,
+    "clusterSourceCuts": 16,
+    "atomicCuts": 260,
+    "operations": 818,
+    "touchedSources": 37,
+    "netChangedRequiresArrays": 37,
+    "basisBindings": 0,
+    "unchangedOtherCatalogs": 20,
+    "fullInformaticsRootedAtomicClosurePairs": 15212,
+    "initialClosureSha256": "c7a9906312b60cdf85c78bbb2de5a0aea62beed3ec9adb100a26384625814bf3",
+    "finalClosureSha256": "c7a9906312b60cdf85c78bbb2de5a0aea62beed3ec9adb100a26384625814bf3",
+    "finalAuditFindings": 0,
+    "finalAuthoredRequires": 654,
+    "legacyContinuations": 0,
+    "prefixWitnessPaths": 12691,
+    "ordinal": 8,
+    "compilerComparisonMilliseconds": 38947,
+    "compilerComparisonCatalogs": 21,
+    "compilerComparisonGoals": 6524
+  },
+  "initialAudit": {
+    "minimalityFindings": 94,
+    "nonAtomicRequires": 74,
+    "explicitTypeMismatches": 0,
+    "rawEndpointKinds": {
+      "AA": 430,
+      "AC": 58,
+      "CA": 2,
+      "CC": 14
+    }
+  },
+  "finalRawEndpointKinds": {
+    "AA": 654,
+    "AC": 0,
+    "CA": 0,
+    "CC": 0
+  },
+  "changedRequiresGoalIds": [
+    "8522727c-8793-57ed-b314-eeff6d17f652",
+    "bb0173dc-5cda-50f6-ac10-6c439bbb2578",
+    "4196aaa8-7e87-54f0-a624-d71ec3d823e1",
+    "4ff6b2b1-97cd-5ccb-b5a2-dde71116f757",
+    "1f20ccda-2a88-5684-a03a-fd1a989588e6",
+    "bb651ed7-2674-580c-8916-ac5aa88d93f8",
+    "0a16d19b-a826-5beb-b169-7a17fc7742f0",
+    "269a561b-f12e-57b2-9b05-e20f58c9dcf6",
+    "8877a2e6-ebf8-5b73-a88b-56d5145a20ba",
+    "157e99a4-8517-5e16-92f8-8241827b7682",
+    "755d3459-44ff-5608-8c62-3a69900b9940",
+    "ca2ff162-c71f-500f-8ce7-321ab2cf3f1f",
+    "0c346dc1-fdcc-5563-9154-28623d354574",
+    "91c5be09-cc6b-5f57-bfe1-9f0038faf26a",
+    "6982b63a-c6c8-5a6f-b5cb-51568301ac1c",
+    "010651ba-ddd0-510b-8ed1-e3610031f6e1",
+    "70ef7a45-540a-5d8c-b970-19b9f740c40a",
+    "4d22b75a-c395-5785-9131-68a8a5e203c1",
+    "63509366-f5b2-58e5-9976-47df6f8c37e1",
+    "b86e8ab3-2c12-5b6b-b515-1e7d457c99c2",
+    "a98dce49-cf4c-559b-a812-c10bff63d649",
+    "da96fcb4-f601-5f66-9fec-12b5adc7f7f0",
+    "d13e297f-505d-576a-9a86-11ab4d7896c9",
+    "893b6a69-1a1b-539b-981e-3982c52e590c",
+    "d9892508-97b5-529e-9b9e-c4889fba2166",
+    "4e0668e3-edca-57f4-b258-df87f23d2b4e",
+    "661ec7d3-7371-5e7c-9137-4f643e6f9bf2",
+    "c44643dc-39b1-5a21-8765-ab346751a184",
+    "bd075253-1e7e-57a2-9df4-2d0099dacba3",
+    "c764b417-2d6b-5f1f-ba1a-851bfb44fb24",
+    "91230113-91b0-5a8b-94e4-4419014cfb58",
+    "342511c3-45fb-5783-b601-906149e78c2d",
+    "49ba66cf-accd-5938-a63e-f031bc786767",
+    "65aa807f-f998-5648-a3a6-2e0e96dba714",
+    "0df1bedd-5fda-5b3b-a959-c9610237bb3e",
+    "1ce620dc-93cf-579c-a286-e74451d0a4d7",
+    "a5e33d4d-f312-51d2-816b-e0b10dd1e701"
+  ],
+  "allOtherInformaticsFieldsExceptDeclaredOldLiteralBasesUnchanged": true,
+  "unchangedOtherCatalogs": 20,
+  "basisBindings": 0,
+  "basisEligibility": {
+    "expectedBindingSources": [],
+    "declaredBindingSources": [],
+    "existingV8PredicatePreserved": true,
+    "emptyBindingSetForced": false,
+    "boundReferences": "Only exact old immediate literal requires are allowed when the existing V8 predicate requires a binding."
+  },
+  "actualMechanicalGuards": {
+    "currentProductionGuardReplay": true,
+    "freshProductionAuditAndExactRootedClosureAfterEveryCut": true,
+    "fullCatalogSeedApplicabilityComparison": {
+      "catalogs": 21,
+      "goals": 6524,
+      "equal": true
+    },
+    "currentV8SchemaParsed": true,
+    "fixedV7ParentAndAllPrefixEntriesPreserved": true
+  },
+  "fullCatalogAtomicPreservation": {
+    "status": "MECHANICAL_COMPARISON_NOT_ADMITTED",
+    "catalogs": 21,
+    "goals": 6524,
+    "atoms": 5495,
+    "normalizedAtomicPairs": 25019,
+    "finalNormalizedAtomicPairs": 24759,
+    "initialNormalizedAtomicPairsSha256": "7fe3a80a9de436252a2c0b6ca38e4459c61a3defdfe15261b2ac4025a039d249",
+    "finalNormalizedAtomicPairsSha256": "60b6bdfb5997f7fadce8cfdda02ffaccd77f2233c92afe0939b75ae6532be505",
+    "fullAtomicClosurePairs": 142559,
+    "initialFullAtomicClosureSha256": "acc0faf2c083f4e0ad59e49cbd6b69e72fa4d6b16b645ab2d162047ff9c0dae2",
+    "finalFullAtomicClosureSha256": "acc0faf2c083f4e0ad59e49cbd6b69e72fa4d6b16b645ab2d162047ff9c0dae2",
+    "unchangedPreexistingReflexiveReachabilityPairs": 3,
+    "fullCatalogAcyclicityClaim": false,
+    "allDeclaredInputPinsUnchanged": true,
+    "finalAudit": {
+      "nodeCount": 283,
+      "authoredRequiresCount": 654,
+      "containsCount": 282,
+      "effectiveRequiresCount": 654,
+      "inheritanceOnlyAncestors": [
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e:5449a3c2-3b9f-475c-acea-ba5fed25ec52"
+      ],
+      "crossLandscapeReferenceCount": 1,
+      "landscapes": [
+        "7d51b38c-a149-5407-bddc-d2ce7878b020",
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e"
+      ],
+      "findings": [],
+      "atomicNormalFormFindings": [],
+      "explicitTypeMismatchFindings": [],
+      "findingsByLandscape": {
+        "7d51b38c-a149-5407-bddc-d2ce7878b020": 0,
+        "a0e13c56-c25f-4742-9272-3a1a603ee52e": 0
+      }
+    },
+    "fullPublicProofExecuted": false,
+    "productWrites": false
+  },
+  "onlyProductPathsInPatch": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json"
+  ],
+  "files": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json": {
+      "baseRawDigest": "sha256:17669f6151f6e9a597358026751792a6959451ea9f518d3656bf7b4a86e4e0d9",
+      "candidateRawDigest": "sha256:ea83b25661d5fcdd5f6aacabbe2fb193b9074457cf7e8022dc6914a5ea0adfb4",
+      "bytes": 500486
+    },
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": {
+      "baseRawDigest": "sha256:b7274bff47ee72ce659a2de7ecc31dc901cfdc5bc3ca7dbc08ba9e75ff04bb9e",
+      "candidateRawDigest": "sha256:d93e0b09ca97ed2bae48830254bbfec0a8817d78e154da638cc1fafa08749a61",
+      "bytes": 5899769
+    }
+  },
+  "installPatchRawDigest": "sha256:9eae289a32d9dda413faaaef574bdc4b2df17691f1bf57162c55ed9501b7d94b",
+  "installPatchBytes": 1273231,
+  "installabilityDryRun": {
+    "tool": "patch --dry-run --batch -p1",
+    "root": "install-base/ exact Informatics + History predecessor registry snapshots",
+    "exitCode": 0,
+    "productWrites": false
+  },
+  "declaredInputPinsUnchanged": true,
+  "closedReadNamespaceClaim": false,
+  "fullPublicProofExecuted": false,
+  "nativeExecuted": false,
+  "cqrExecuted": false,
+  "fullSuitesExecuted": false,
+  "publicLoaderCommandAfterInstallation": "cd app && node --import tsx scripts/verifyPrerequisiteReductionSemanticKindBindings.ts --canonical-source curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json --repository-root ..",
+  "openChecks": [
+    "The Latin and History predecessors remain prepared candidates: their full ordinary proof/native/CQR admission and actual installation are prerequisites to this incremental patch.",
+    "After actual installation: ordinary public V8 loader/proof admission on the complete exact five-entry state, with before/after named input pins.",
+    "Ordinary native scope, target, applicability, frontier, completion and mastery checks on the installed Informatics candidate.",
+    "Ordinary CQR/source/milestone and terminal remote CI acceptance; this mechanical delivery grants none of them."
+  ],
+  "limits": [
+    "Exact current production guards and algebraic comparisons are preparation evidence; they do not mint a verified context.",
+    "The full-catalog reachability comparison preserves existing foreign reflexive reachability and makes no global DAG-admission claim.",
+    "Source texts, sources, tasks, review fingerprints, canonical contains, learner mastery and all fields except requires plus exactly declared old-literal assessment bases are unchanged."
+  ]
+}
