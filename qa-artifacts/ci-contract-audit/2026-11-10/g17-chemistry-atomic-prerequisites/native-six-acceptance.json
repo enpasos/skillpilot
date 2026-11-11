@@ -1,0 +1,155 @@
+{
+  "actualAllowedOutputDeltas": [
+    {
+      "after": {
+        "sha256": "8c7ece9b1f901bc717c7432384683c66d2c77e8d9f36980b01d75dfc6a94f849",
+        "state": "file",
+        "symlink": false
+      },
+      "before": {
+        "sha256": "4af1ecea0bb126405c57a6be75ee4fd051584550b698c591ea4319d891804046",
+        "state": "file",
+        "symlink": false
+      },
+      "path": "docs/qa-ci/status/curriculum-quality-status.json"
+    },
+    {
+      "after": {
+        "sha256": "8c1cf31efb864397579547f8f28dc34d7f66aaea9b0cc538147328baeb304555",
+        "state": "file",
+        "symlink": false
+      },
+      "before": {
+        "sha256": "0149c8eb2e7f34484fb382acabceff26f0eecfcfc979f9c442a9a884af93949a",
+        "state": "file",
+        "symlink": false
+      },
+      "path": "docs/qa-ci/status/curriculum-quality-status.md"
+    }
+  ],
+  "allowedConcurrentOutputCount": 12,
+  "changedInputs": [],
+  "closedReadNamespaceClaim": false,
+  "compilerProbes": [
+    "G17_CHEMISTRY_NATIVE_COMPILER path=:compileJava executable=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1/bin/javac",
+    "G17_CHEMISTRY_NATIVE_COMPILER path=:compileTestJava executable=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1/bin/javac"
+  ],
+  "effectivePolicy": [
+    "G17_CHEMISTRY_NATIVE_POLICY cache=1 heap=3g maxParallelForks=1 forkEvery=1 java=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1/bin/java"
+  ],
+  "exactHeadPassClaim": false,
+  "gradleDurationSeconds": 7636.663,
+  "gradleExitCode": 0,
+  "gradleLogSha256": "79017081476a91545dc036d5be8553513c499f6062c4ea25e5b3d0351948565d",
+  "hardStandardG17Activated": false,
+  "headObservations": {
+    "after": "1dbef4db21a99a8b8fbfd6481e18cf14bb17e0f2",
+    "before": "3a958c648e505c1c6f636406a2e42c99615ff87c",
+    "gitMetadataChangesAtUnchangedInputsAllowed": true
+  },
+  "inputSnapshots": {
+    "inputs-after.json.gz": "9f49bdd272429ce95e4a2fd30af1ce53ec00a2e6d7b1cc6da86408ce27114abb",
+    "inputs-before.json.gz": "49c13d9ed01af3c82ef85a62124c311c21075241fdb3efbb95e0cdc4d5ea8ee9"
+  },
+  "junit": {
+    "errors": "0",
+    "failures": "0",
+    "hostname": "DESKTOP-T1D4NQE",
+    "name": "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest",
+    "path": "/mnt/e/skillpilot-g17-chemistry-native-20261110/six-method-attempt-1/test-output/junit/TEST-com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest.xml",
+    "sha256": "8a7cf612629904ebdd58fa5b01f89035cea0b3e567efacf9f0d2290d793d7318",
+    "skipped": "0",
+    "tests": "6",
+    "time": "7461.732",
+    "timestamp": "2026-11-10T13:02:59.676Z"
+  },
+  "mainDataDelivered": false,
+  "mocksBoundary": {
+    "databaseOrNetworkHttpAcceptance": false,
+    "mocked": [
+      "repositories",
+      "events",
+      "deck resources",
+      "completion-catalog availability flags"
+    ],
+    "nodeProofCoverageByJava": false,
+    "publicPositiveFrontierListCoverage": false,
+    "real": [
+      "landscapes/archive loading",
+      "mappings/views",
+      "planner/compiler/resolver",
+      "roles/completion/mastery comparisons",
+      "frontier methods",
+      "planning-method409"
+    ]
+  },
+  "normalCommand": [
+    "./gradlew",
+    "test",
+    "--rerun",
+    "--tests",
+    "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest",
+    "--no-daemon",
+    "--max-workers=1",
+    "--no-build-cache",
+    "--no-configuration-cache",
+    "--console=plain",
+    "--info",
+    "--init-script",
+    "/home/enpasos/projects/skillpilot/tmp/g17-chemistry-native-acceptance-20261110/native.init.gradle",
+    "-Dorg.gradle.java.installations.paths=/tmp/skillpilot-backend-ci-corretto-25.0.2.10.1",
+    "-Dorg.gradle.java.installations.auto-detect=false",
+    "-Dorg.gradle.java.installations.auto-download=false"
+  ],
+  "rawResultPath": "/mnt/e/skillpilot-g17-chemistry-native-20261110/six-method-attempt-1/result.json",
+  "rawResultSha256": "238c3310c4ed022f123db203b1fe9cb387938f5021198901e09dca148a57d213",
+  "recordedAtUtc": "2026-11-10T15:09:33.784119+00:00",
+  "remoteCiAccepted": false,
+  "scope": "Actual six-method Java regression with real native topology/projection/roles/frontier/completion; repositories/resources availability flags are mocked as declared in raw result. This is not Node-proof, database, network HTTP, remote CI or Main-delivery acceptance.",
+  "sourceBindingCount": 6487,
+  "sourceBindingsUnchanged": true,
+  "status": "PASS-actual-normal-local-six-method-native",
+  "taskProbes": [
+    "G17_CHEMISTRY_NATIVE_TASK path=:compileJava didWork=true",
+    "G17_CHEMISTRY_NATIVE_TASK path=:compileTestJava didWork=true",
+    "G17_CHEMISTRY_NATIVE_TASK path=:test didWork=true"
+  ],
+  "testCases": [
+    {
+      "failed": false,
+      "name": "batchedGermanSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier",
+      "skipped": false,
+      "time": "88.574"
+    },
+    {
+      "failed": false,
+      "name": "economicsAuthoredAtomicAbiturTargetsPreserveNativePrerequisitesAndFrontier",
+      "skipped": false,
+      "time": "38.618"
+    },
+    {
+      "failed": false,
+      "name": "batchedPhysicsSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier",
+      "skipped": false,
+      "time": "5381.134"
+    },
+    {
+      "failed": false,
+      "name": "rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges",
+      "skipped": false,
+      "time": "49.035"
+    },
+    {
+      "failed": false,
+      "name": "batchedChemistrySourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier",
+      "skipped": false,
+      "time": "682.01"
+    },
+    {
+      "failed": false,
+      "name": "firstMathEdgePreservesLiveOfferingsProjectionsAtomicDemandAndEffectiveRoleValidity",
+      "skipped": false,
+      "time": "1222.011"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "baseMain": "c2f0722545f51e53526651e0d7ee26a9e0fb64ae",
+  "canonical": {
+    "allOtherDocumentFieldsEqual": true,
+    "atomicClosurePairsBeforeAndAfter": 6194,
+    "atomicClosureSha256": "2227bfb66136b96af97ef934c16d45f7702d0ba78c45d10eae8f16a067a8bb95",
+    "atomicCuts": 673,
+    "auditorNodesIncludingInheritanceAncestor": 743,
+    "clusterSourceCuts": 11,
+    "clusterTargetCuts": 46,
+    "deduplicatedOriginalSources": 1062,
+    "goals": 742,
+    "materializations": 578,
+    "netChangedRequiresArrays": 153,
+    "normalizedPairsAfter": 1283,
+    "normalizedPairsBefore": 1956,
+    "operations": 1308,
+    "registryBatches": 3,
+    "remainingFindings": 0,
+    "snapshottedSources": 181
+  },
+  "codeDependency": {
+    "commit": "3a958c648e505c1c6f636406a2e42c99615ff87c",
+    "freshMainCiAccepted": false,
+    "mainCommit": "39f4c21ea92956521337d70cdfd7f96b0d33620f",
+    "mainPrMerged": true,
+    "pullRequest": 110,
+    "remoteAcceptancePending": false
+  },
+  "dataPullRequest": {
+    "base": "main",
+    "checkpoint": "6bff7dcb340f49bf7f9107dbe317ce6db884c95e",
+    "dependencyPr": 110,
+    "draft": true,
+    "number": 111
+  },
+  "executionArchiveNote": "Raw local execution records are hash-identified above; committed tests and registries reproduce the checks. No exhaustive filesystem read-namespace claim.",
+  "fullTenSubjectGoalAccepted": false,
+  "hardStandardG17Accepted": false,
+  "mainDataDelivered": false,
+  "nextSubject": "Biologie",
+  "normalChecks": {
+    "normalCqrProducerAndTenUnchangedFloors": {
+      "allNonReportNamedInputsUnchanged": true,
+      "diagnosis": {
+        "actualCuts": [
+          "ch-atomic-cut-645",
+          "ch-atomic-cut-393"
+        ],
+        "allAffectedGoalsRemainTarget": true,
+        "distinctGoals": 2,
+        "noRetrospectiveInProcessInputGuardClaim": true,
+        "originalRunWasTerminalStdout": true,
+        "path": "source-surrogate-path-diagnosis.json",
+        "prerequisiteOnlyLeak": false,
+        "reviewedSurrogateRows": 9,
+        "sha256": "05783de4a8d9be3bc59990ae5aefc34a5099ba0c81f50812d4a1945e803f8ba3",
+        "sourceOrReviewDecisionsChanged": false
+      },
+      "failure": "Chemistry M1 below protected M7; CQR003 has9unsupported assigned atomic goals across7jurisdictions; exact technical cause under review",
+      "failureRetainedAfterTechnicalFixApplied": true,
+      "floorExitCode": 1,
+      "fullFloorCommandPassed": false,
+      "namedInputs": 9903,
+      "otherNineSubjectsRetainFloorsInGeneratedReport": true,
+      "passed": false,
+      "producerExitCode": 0,
+      "producerSeconds": 1100.5575251949922,
+      "receipt": "/mnt/e/skillpilot-g17-chemistry-cqr-20261110/attempt-1/run-receipt.json",
+      "receiptSha256": "45af3d23257432bfd809bfe7c6b02f0feea1df3304b4cea3cc9228d56df7d029",
+      "reportCatalogs": 21
+    },
+    "normalCqrProducerAndTenUnchangedFloorsAfterSourceFix": {
+      "originalFailureRemainsDocumented": true,
+      "passed": true,
+      "receipt": "regular-cqr-and-floors.json",
+      "status": "terminal PASS"
+    },
+    "sourceEvidenceAndPythonBridgeRegression": {
+      "boundInputs": 3785,
+      "checks": [
+        {
+          "exitCode": 0,
+          "logSha256": "eedeef553fab92e4b3aa0968b48a676cca29a611cf5d5c2a7fdcc18643fca6e4",
+          "name": "source-evidence",
+          "seconds": 39.321
+        },
+        {
+          "exitCode": 0,
+          "logSha256": "96800992ff561835230c0a5c91a868304b6f315e8cf93b68674e6311f9895f41",
+          "name": "semantic-kind",
+          "seconds": 809.522
+        }
+      ],
+      "inputsUnchanged": true,
+      "passed": true,
+      "receipt": "/mnt/e/skillpilot-g17-chemistry-supplemental-checks-20261110/attempt-1/receipt.json",
+      "scope": "Before pending source-surrogate helper change; Python bridge and all actual registry bytes stable",
+      "sha256": "ce04c90ca7247f8fc44bafbbf48ac74be72465cf7e9d897a1f5f1d1baed66df9"
+    },
+    "sourceEvidenceRegression": {
+      "exitCode": 0,
+      "logSha256": "eedeef553fab92e4b3aa0968b48a676cca29a611cf5d5c2a7fdcc18643fca6e4",
+      "seconds": 39.321
+    },
+    "sourceSurrogateFixAppliedValidation": {
+      "actualAcceptedRelationshipsChecked": 308,
+      "details": "source-surrogate-path-fix.json",
+      "newRegressions": 15,
+      "oldCodeFailures": 4,
+      "passed": true,
+      "sourceDecisionsChanged": false
+    },
+    "typecheck": {
+      "exitCode": 0,
+      "seconds": 16.412
+    },
+    "wholeNativeSixMethods": {
+      "changedInputs": [],
+      "errors": 0,
+      "failures": 0,
+      "normalCompileJavaAndCompileTestJavaDidWork": true,
+      "normalPolicy": "Corretto25.0.2;heap3g;springCache1;maxParallelForks1;forkEvery1",
+      "passed": true,
+      "receipt": "native-six-acceptance.json",
+      "skips": 0,
+      "sourceBindingCount": 6487,
+      "tests": 6
+    },
+    "wholeTransitiveMinimality": {
+      "changedInputs": [],
+      "inputCount": 3652,
+      "passed": true,
+      "performedBeforeSceFix": true,
+      "receipt": "/mnt/e/skillpilot-g17-chemistry-ts-20261110/attempt-1/run-receipt.json",
+      "seconds": 2699.401,
+      "sha256": "35b940d85e346e799f2ef044d7294c4788bf7e5c543008d3f31a3902093c5ddd",
+      "v6": {
+        "batchSources": 343,
+        "batches": 3,
+        "documents": 21,
+        "operations": 4507,
+        "originalSources": 1062
+      },
+      "v7": {
+        "cacheSnapshots": 27,
+        "currentDocuments": 21,
+        "originalSources": 1062
+      }
+    }
+  },
+  "productBindings": {
+    "app/scripts/config/curriculum-maturity-floor-policy.json": "35e711cea5d5709093bddd53fc1fca91e30bf3c7bec906ca178ed6d8ff364cd7",
+    "app/scripts/testPrerequisiteReductionProof.ts": "0b97f83850bde6df9617ec84c6fafeffd4ee4f93937e8ae5e030cd97b028718c",
+    "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java": "65a9c8d81b47be83b075e3be58cb89bebff7b1b8dcdc187dcc5f7c7b495a4d5d",
+    "backend/src/test/java/com/skillpilot/backend/completion/FirstMathPrerequisiteReductionTest.java": "083d7d2c3cf6fc85f09463e2fbe112ee84adec2af572f5d14b559b6fde696999",
+    "backend/src/test/java/com/skillpilot/backend/service/CompositionViewServiceTest.java": "8b1939c9fd0d4a85c68ce850eba3a3fcc0e7547ed556dc25982e8f9663b72045",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json": "5fc62a10baf69b9b17c772eae288bb1e396afe3e20a6488410d0f107035265a8",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json": "c92bda879ca892480bceda17a923180011cd98308b47061a960ffdb780b676b5",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json": "41d774ce0682d2a7acac04fcf92d125947359713d59d95e90a5f41577ce780ac",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json": "b3eacf65b8fc09532615f4d49e30c34002f23568f0ae2fc6708ecc732501da8a",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json": "b156015c665645c7c96409c118a0982b5d0839ffb9afc2298d8c1c1420daa328",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json": "e4eac85693e6ae21d89c8d2733703b80456ae6949e0f2abccc5760a8be128f18",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-by-lk.current-pilot.view.json": "3d5f35aac74c54aadcc4d3cedd3921b9396a96dd331aa8a8dc6bbd3be8e977ef",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-by-seki.view.json": "2cb37399486f0108ccc77712bae86ec2e6324631c70e2f528be9571d9b55d64f",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json": "9209e513bc761c2cfdcf3055cb4a01735296f470da13dc390ea3aeaa6b616fa7",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-lk.view.json": "ef2455e99fcd7d755c5cac9afd514a547f5102e5a9e22e2c39226db9023e82db",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-seki-chemistry.view.json": "a80d1669ee4923e370e5f036407edd0bb51a0d87b28c652b01d85bcbe1c084ab",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-gk.view.json": "dc39b8e427f74d48ec4544e03545a1d10eb78b4f2d79e6560954ff3d69575793",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-sekii-chemistry-lk.view.json": "5a0265fe1a070edc80faaaa5581525af7b792be31f1fd1b5815a2d3d06b2d065",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-gk.view.json": "e7893ee866f487d814a506528d0aa0edaaa614055e4849e4f389db00a5bc78c6",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-lk.view.json": "55deca6ec1c8abfac3629573df3d227301260b7822769c74ad00e0b4fdc8ffef",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-gk.view.json": "b049c645a494d4041217750976c52475d26f63e3fb83a326f7e9ecb58bec0805",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hb-sekii-lk.view.json": "8ebbe9f9ebe3b7a39cf53de9b9cea23d066e510ca0ea62603324d533963fd992",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk-lk.view.json": "4394989ae077422b09d07af1e59a084bd9363aa4e860cdc2d8bc49298cc5e8f6",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json": "9f6e1c43554936590cd5a29712fa7bbbd07ed622657246acccf7acc83c3a60cb",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json": "05d269d03c1a2d9dd7fda5af5d2b327231918734ce85e6d4caf01a296563188f",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk-lk.view.json": "829613722120e409febe12a600f4f309d3d07e81d39d2fc43e9d233c11bf4413",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-gk.view.json": "a7edb604cb67bb6ca8956f7d1301db4ebd905842df3d33d115e08ea717a8591a",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-he-sekii-lk.view.json": "a1201fcee7ebbc6b581af1fe1210b3d5ee33ab626ef8e63e0f2d11a07b260fbc",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hh-gk.view.json": "efa1392dd3d00f6402decd8f9c14051b29d88c0e854ad9fe585369e9fec9173b",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-hh-lk.view.json": "d82822725065d7065451b8cb89dba674aa51b3922d7eca731ca539330e398de3",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-mv-gk.view.json": "10a9f6df089c5f751d63209600000d41dd690bdc65cd488ce6a0e7de005309f9",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-mv-lk.view.json": "fdb3d43c4f99d68b73d6c48e31811f1b3167398d17af4f6ab94880321f9892e8",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-ni-gk.view.json": "53659a82b0a3e2eeddc56c81b583c955ed1647723a0b55cad4d42dd313597d13",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-ni-lk.view.json": "8ec94e549d7106bb001637f0c8f92a75ca13978ad71ad60da2b573b0178edede",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-nw-gk.view.json": "9d2594e392950c10b6088a365a4c6f6d0dfa8bb53adba2f7cbc015e63da3a9cb",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-nw-lk.view.json": "87e1e9b2916920211e168291cd9074805123b6bcf0c36d1a6dbabfad85ed77c9",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-rp-gk.view.json": "da1727f7f3f1d526d473e76f30718776860ef07e30e080bbb068ae88d6824c5a",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-rp-lk.view.json": "4d2f4301f16897f283e207290cb7bd0d660bba74febef8530ccde8794dfd67bf",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sh-gk.view.json": "8b6e461463024a32c047e5c85c4dbf5e0da9350be695cd438d930bf46a5087da",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sh-lk.view.json": "ad3a69b1b66db8ebe74a90b80dece322bd62fbec6ca176080f9a2a00c0cb7ddf",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sl-gk.view.json": "18c682bc20ef70ed4352dd6964134b6b0b52aa5c51e258ee95c525e3a3c0830a",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sl-lk.view.json": "d4e6f3df3eca988681d628db44be2dcb8e1375ea61fc2babc71539f7734f8db9",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sn-gk.view.json": "c0df3b98deae861e3472ff6b8b82ff7d80aea2f7d06320df01dadbc270553cea",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-sn-lk.view.json": "768c5c24a7d036f05fd7abe05382e681621db6d1641caca3a904047f3ec68614",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-st-gk.view.json": "25ac64f5d0829ae742b177390f8731cb469051febf7f54668d12019f4e155009",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-st-lk.view.json": "177754353ba8b63e780324538db7ae459ab232b873fd15fd9e89e9a470585ce4",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-th-gk.view.json": "c18b8420af2489ae44b23300d8bbd27b6cfba69142595f83af8994cd93916d8e",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-th-lk.view.json": "fbd036a5704e542d1bc179a2c7ea769b4ca43761ac4f5c136ee6f445417beafe",
+    "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json": "40623ca256e285db894af4e0972ea98ad89117fb46e615593e46624f1a39c5e4",
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json": "e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389",
+    "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json": "e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6"
+  },
+  "projection": {
+    "addedExplicitCombinedHEViews": 2,
+    "anchorReferenceKindCorrections": 8,
+    "changedExistingViews": 39,
+    "complete": 139,
+    "configurations": 182,
+    "existingAtomicChildrenExposed": 8,
+    "explicitSupportReferencesInExistingViews": 164,
+    "frontierCompletionAccepted": true,
+    "fullContextAtomicDemandEqual": true,
+    "incompleteUnchanged": 43,
+    "preservationBaseline": "After separately evidenced8 anchor reference corrections",
+    "roleAndDemandReceipt": {
+      "path": "/mnt/e/skillpilot-g17-chemistry-native-20261110/role-inventory-6/result.json",
+      "sha256": "293dc8b20f48f698ea056dddb384e0b86e06f55453d0264cd71892271ad1d58b"
+    },
+    "roleOutcomeDeltas": 0,
+    "rolePairs": 29865,
+    "scopesChangedByAnchorCorrection": 22,
+    "targetTreeSummary": {
+      "path": "/mnt/e/skillpilot-g17-chemistry-native-20261110/projection-after-explicit-combined/support-and-explicit-view-target-tree-summary.json",
+      "sha256": "024c10b15085935d757ea1916e666a4e586c01fd4cba80a1410ea94b389c4174"
+    }
+  },
+  "publicBridge": {
+    "actualSingleNode20Observed": true,
+    "beforeViewCorrections": true,
+    "bridgeCalls": 1,
+    "goalFingerprintsCompared": 742,
+    "historicalInputsStable": true,
+    "noPostViewCheckoutInputStabilityClaim": true,
+    "passed": true,
+    "path": "/mnt/e/skillpilot-g17-chemistry-public-bridge-20261110/attempt-1/result.json",
+    "seconds": 380.821,
+    "sha256": "fbc2b06b3685e13061f8a49a41940f46ed126845ed611cda9412253bf3f83412"
+  },
+  "recordedAtUtc": "2026-11-10T15:13:24.327838+00:00",
+  "remoteDataCiAccepted": false,
+  "schemaVersion": 1,
+  "scope": "Mechanical canonical requires reduction plus separately documented existing composition corrections; not full G17 milestone acceptance",
+  "sourceSurrogatePathFix": "source-surrogate-path-fix.json",
+  "staticReview": "Astra Ultra GO for actual product bytes; normal full checks remain separate",
+  "subject": "Chemie",
+  "visibleBranch": "fix/g17-chemistry-atomic-prerequisites-v7-data",
+  "watchReceipt": "../g17-chemistry-atomic-watch-ack/receipt.json"
+}

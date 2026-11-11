@@ -22,6 +22,9 @@ import java.util.TreeSet;
  * context, so an unrelated expansion defect does not change this scope.
  */
 public final class CompletionProfileCompiler {
+    // One immutable entry per compiler; never retains learner state or trusts map identity.
+    private volatile PrerequisiteTopology lastNormalizedTopology;
+
     /** Immutable, mastery-independent normalization shared with ordinary availability. */
     public static final class PrerequisiteTopology {
         private final Map<String, Node> nodes;
@@ -76,6 +79,9 @@ public final class CompletionProfileCompiler {
     public PrerequisiteTopology normalizePrerequisites(Map<String, LearningGoal> canonicalGoals) {
         if (canonicalGoals == null || canonicalGoals.isEmpty()) fail("MISSING_REFERENCE", "No canonical goals");
         Map<String, Node> nodes = snapshot(canonicalGoals);
+        // Snapshot validation precedes reuse: in-place edits and invalid references remain visible.
+        PrerequisiteTopology cached = lastNormalizedTopology;
+        if (cached != null && cached.nodes.equals(nodes)) return cached;
         Map<String, Set<String>> contains = new TreeMap<>();
         Map<String, Set<String>> requires = new TreeMap<>();
         for (Node node : nodes.values()) {
@@ -105,7 +111,9 @@ public final class CompletionProfileCompiler {
             for (String prerequisite : effective.get(id)) refs.addAll(atoms.get(prerequisite));
             expanded.put(id, refs);
         }
-        return new PrerequisiteTopology(nodes, expanded, effective);
+        PrerequisiteTopology normalized = new PrerequisiteTopology(nodes, expanded, effective);
+        lastNormalizedTopology = normalized;
+        return normalized;
     }
     /** Adds existing scope metadata without requiring authored review or waiver grants. */
     public CompiledCompletionProfile compileAutomaticProfile(

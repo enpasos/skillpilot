@@ -319,6 +319,28 @@ function isApplicabilityFromRequiresEnabled(goal: LearningGoal): boolean {
   return (goal.extendedData as Record<string, unknown>).applicabilityFromRequires === true
 }
 
+/** Local live seed-eligibility predicate; independent of learning demand and cached applicability. */
+export function assessmentApplicabilityBasisGoalRefs(goal: LearningGoal): readonly string[] | undefined {
+  const extended = goal.extendedData
+  if (!extended || typeof extended !== 'object' || !Object.hasOwn(extended, 'assessmentApplicabilityBasis')) return undefined
+  const fail = (message: string): never => {
+    throw new Error(`Assessment applicability basis at ${goal.id}: ${message}`)
+  }
+  if (!isAtomicGoal(goal) || goal.type === 'cluster' || !isApplicabilityFromRequiresEnabled(goal))
+    return fail('requires an atomic practice/assessment with applicabilityFromRequires=true')
+  if (isMemoryGoal(goal)) return fail('does not support memory endpoints')
+  const basis: unknown = (extended as Record<string, unknown>).assessmentApplicabilityBasis
+  if (!basis || typeof basis !== 'object' || Array.isArray(basis)
+    || Object.keys(basis).length !== 2 || !Object.hasOwn(basis, 'kind') || !Object.hasOwn(basis, 'goalRefs'))
+    return fail('expected exactly kind and goalRefs')
+  const value = basis as Record<string, unknown>
+  if (value.kind !== 'allOfGoalApplicability' || !Array.isArray(value.goalRefs) || value.goalRefs.length === 0
+    || !value.goalRefs.every((ref): ref is string => typeof ref === 'string' && /^[^:\s]+(?::[^:\s]+)?$/u.test(ref)))
+    return fail('expected nonempty allOfGoalApplicability goalRefs')
+  if (new Set(value.goalRefs).size !== value.goalRefs.length) return fail('duplicate goalRefs')
+  return Object.freeze([...value.goalRefs])
+}
+
 function isSupportedJurisdiction(value: KnownJurisdiction | null): value is SupportedJurisdiction {
   return value !== null && SUPPORTED_JURISDICTION_SET.has(value)
 }
@@ -851,9 +873,6 @@ export function buildApplicabilityCompilation(
   const canonicalLandscapeById = new Map(
     canonicalLandscapes.map((entry) => [entry.landscape.landscapeId, entry]),
   )
-  const { mappingFiles, landscapePathById, sourceLandscapeRegistry, canonicalGoalProvenanceRegistry,
-    canonicalGoalApplicabilityOverrideRegistry, memoryReviewOriginReferencesByMemoryGoalKey } = captured
-    ? captured.loaded ??= loadApplicabilityInputs(inputs, true) : loadApplicabilityInputs(inputs)
   const mappingEvidenceByTarget = new Map<string, Map<string, LoadedMappingFile[]>>()
   const canonicalGoalToLandscapeId = new Map<string, string>()
   const ambiguousCanonicalGoalIds = new Set<string>()
@@ -871,6 +890,51 @@ export function buildApplicabilityCompilation(
       }
     }
   }
+
+  const assessmentBasisByGoalKey = new Map<string, readonly string[]>()
+  for (const canonical of canonicalLandscapes) for (const goal of canonical.landscape.goals) {
+    const refs = assessmentApplicabilityBasisGoalRefs(goal)
+    if (refs) assessmentBasisByGoalKey.set(goalKey(canonical.landscape.landscapeId, goal.id), refs)
+  }
+  // New expressions must resolve completely and must not introduce a dependency
+  // cycle through another assessment predicate or a cluster's child-union.
+  const checked = new Set<string>(), visiting = new Set<string>()
+  const validateBasisReference = (ref: GoalRef): void => {
+    const key = goalKey(ref.landscapeId, ref.goalId)
+    if (checked.has(key)) return
+    if (visiting.has(key)) throw new Error(`Assessment applicability basis cycle: ${key}`)
+    const goal = canonicalLandscapeById.get(ref.landscapeId)?.goalById.get(ref.goalId)
+    if (!goal) throw new Error(`Assessment applicability basis unresolved reference: ${key}`)
+    if (isMemoryGoal(goal)) throw new Error(`Assessment applicability basis unsupported memory dependency: ${key}`)
+    visiting.add(key)
+    const refs = !isAtomicGoal(goal) ? goal.contains ?? []
+      : isApplicabilityFromRequiresEnabled(goal)
+        ? assessmentBasisByGoalKey.get(key) ?? goal.requires ?? [] : []
+    const resolved = refs.map(raw => {
+      if (typeof raw !== 'string' || !/^[^:\s]+(?::[^:\s]+)?$/u.test(raw))
+        throw new Error(`Assessment applicability basis malformed expression reference: ${String(raw)}`)
+      const child = parseReference(raw, ref.landscapeId)
+      if (child.landscapeId !== ref.landscapeId)
+        throw new Error(`Assessment applicability basis unsupported foreign reference: ${raw}`)
+      if (!canonicalLandscapeById.get(ref.landscapeId)?.goalById.has(child.goalId))
+        throw new Error(`Assessment applicability basis unresolved local reference: ${raw}`)
+      return child
+    })
+    if (assessmentBasisByGoalKey.has(key)
+      && new Set(resolved.map(child => goalKey(child.landscapeId, child.goalId))).size !== resolved.length)
+      throw new Error(`Assessment applicability basis duplicate resolved reference: ${key}`)
+    resolved.forEach(validateBasisReference)
+    visiting.delete(key)
+    checked.add(key)
+  }
+  for (const key of assessmentBasisByGoalKey.keys()) {
+    const [landscapeId, goalId] = key.split(':')
+    validateBasisReference({ landscapeId, goalId })
+  }
+
+  const { mappingFiles, landscapePathById, sourceLandscapeRegistry, canonicalGoalProvenanceRegistry,
+    canonicalGoalApplicabilityOverrideRegistry, memoryReviewOriginReferencesByMemoryGoalKey } = captured
+    ? captured.loaded ??= loadApplicabilityInputs(inputs, true) : loadApplicabilityInputs(inputs)
 
   for (const mappingFile of mappingFiles) {
     if (!mappingFile.targetLandscapeId) continue
@@ -1278,7 +1342,9 @@ export function buildApplicabilityCompilation(
 
       if (isApplicabilityFromRequiresEnabled(goal)) {
         // A local practice/assessment endpoint is visible only where every
-        // assessed prerequisite is independently applicable. Its own broad
+        // live eligibility reference is independently applicable. The explicit
+        // assessment basis, when present, replaces this seed predicate only;
+        // raw requires still defines the complete learning demand. Its own broad
         // placement/mapping must not reintroduce a jurisdiction that one of
         // the required competencies does not support.
         jurisdictions.clear()
@@ -1388,19 +1454,21 @@ export function buildApplicabilityCompilation(
       let changed = false
       for (const goal of canonical.landscape.goals) {
         if (!isAtomicGoal(goal) || !isApplicabilityFromRequiresEnabled(goal)) continue
-        const refs = (goal.requires ?? []).map((rawReq) =>
+        const key = goalKey(canonical.landscape.landscapeId, goal.id)
+        const refs = (assessmentBasisByGoalKey.get(key) ?? goal.requires ?? []).map((rawReq) =>
           resolveCanonicalReference(rawReq, canonical.landscape.landscapeId))
-        const requirementApplicabilities = refs.map((ref) =>
-          compiledByGoalId.get(goalKey(ref.landscapeId, ref.goalId)) ?? {})
+        const requirementApplicabilities = refs.map((ref) => assessmentBasisByGoalKey.has(key)
+          ? compileGoal(ref.landscapeId, ref.goalId)
+          : compiledByGoalId.get(goalKey(ref.landscapeId, ref.goalId)) ?? {})
         const jurisdictions = intersectApplicabilityJurisdictions(requirementApplicabilities)
         const compiled = normalizeCompiledApplicability(jurisdictions)
         const evidence = jurisdictions.flatMap((jurisdiction) => refs.map((ref) => ({
           dimension: SUPPORTED_DIMENSION,
           value: jurisdiction,
           kind: 'assessment-requires' as const,
-          source: `requires ${ref.goalId}`,
+          source: assessmentBasisByGoalKey.has(key)
+            ? `assessment basis ${ref.landscapeId}:${ref.goalId}` : `requires ${ref.goalId}`,
         })))
-        const key = goalKey(canonical.landscape.landscapeId, goal.id)
         const beforeCompiled = compiledByGoalId.get(key) ?? {}
         const beforeEvidence = evidenceByGoalId.get(key) ?? []
         const afterEvidence = sortEvidence(evidence)

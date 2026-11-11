@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS-code-PR110-only",
+  "observedUtc": "2026-11-10T17:41:36.100717+00:00",
+  "scope": "Fresh terminal CI for the already-merged PR110 code-only Main tree. Chemistry data PR111, Biology successor work and the final standard G17 acceptance are separate.",
+  "sourceReceipt": {
+    "archivePath": "/mnt/e/skillpilot-main39f4-remote-acceptance-20261110/main39f4-code-acceptance-receipt.json",
+    "sha256": "0d7cea66b6e8cd72dc45a76ad9a8c0a709b4a094e0014ec010cefb04c0b6b474"
+  },
+  "main": "39f4c21ea92956521337d70cdfd7f96b0d33620f",
+  "tree": "230cd49a01f048c3ec6db07b3983331705608361",
+  "acceptedCodePr110Head": "3a958c648e505c1c6f636406a2e42c99615ff87c",
+  "sameTreeAsAcceptedCodePr110": true,
+  "ci": {
+    "runId": 42840942821,
+    "attempt": 1,
+    "event": "push",
+    "head": "39f4c21ea92956521337d70cdfd7f96b0d33620f",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42840942821",
+    "jobs": [
+      {
+        "id": 129915664468,
+        "name": "Learning-goal book build",
+        "conclusion": "success"
+      },
+      {
+        "id": 129915664881,
+        "name": "action-regression-ci",
+        "conclusion": "success"
+      },
+      {
+        "id": 129915664918,
+        "name": "OpenAI MCP V1 public edge CI",
+        "conclusion": "success"
+      },
+      {
+        "id": 129915664929,
+        "name": "OpenAI MCP Apps CI",
+        "conclusion": "success"
+      },
+      {
+        "id": 129915665086,
+        "name": "Claude Connector V1 CI",
+        "conclusion": "success"
+      },
+      {
+        "id": 129935734005,
+        "name": "Curriculum CI",
+        "conclusion": "success"
+      },
+      {
+        "id": 129935734222,
+        "name": "backend-ci",
+        "conclusion": "success"
+      },
+      {
+        "id": 129935734285,
+        "name": "Application frontend CI",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "companionPushWorkflows": [
+    {
+      "id": 42840942762,
+      "name": "Deploy Docs",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42840942762"
+    },
+    {
+      "id": 42840942745,
+      "name": "Gemini integration local checks",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42840942745"
+    },
+    {
+      "id": 42840942810,
+      "name": "OAuth client authentication",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42840942810"
+    },
+    {
+      "id": 42840943088,
+      "name": "Assessment completion",
+      "conclusion": "success",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/42840943088"
+    }
+  ],
+  "backend": {
+    "jobId": 129935734222,
+    "url": "https://github.com/enpasos/skillpilot/actions/runs/42840942821/job/129935734222",
+    "normalFullSuiteCounts": {
+      "STARTED": 2730,
+      "PASSED": 2711,
+      "SKIPPED": 19,
+      "FAILED": 0
+    },
+    "sameExactNineteenExistingSkippedTestsAsAcceptedPr110": true,
+    "requiredClasses": {
+      "CompositionViewServiceTest": {
+        "passed": 67,
+        "skipped": 0,
+        "failed": 0
+      },
+      "FirstMathPrerequisiteReductionTest": {
+        "passed": 5,
+        "skipped": 0,
+        "failed": 0
+      },
+      "LearnerServiceCrossSubjectPilotTest": {
+        "passed": 95,
+        "skipped": 0,
+        "failed": 0
+      }
+    },
+    "syntheticDriverOutputBeforeRealInvocationExcluded": true,
+    "realFullCheckMarkerLine": 909,
+    "decodedLogSha256": "03e6fd680f45db4503ae7a6b5f9ac342ed72edc282fe42fd70b9cd13c41d6c02"
+  },
+  "curriculum": {
+    "jobId": 129935734005,
+    "catalogCurricula": 21,
+    "unchangedProtectedFloors": 10,
+    "normalGenerationFloorAndReportCleanStep": "success",
+    "normalMemoryReportPrehookRetained": true,
+    "decodedLogSha256": "0ef9161b9fe4d483663ed857dd5dc1ee6ffd74db55e21b8abe368162009a0b96",
+    "note": "Ordinary full-catalog generation, all ten unchanged floors, tracked report diff and untracked report check passed. Existing report findings are unchanged; this does not assert every CQR rule passes."
+  },
+  "boundaries": {
+    "chemistryDataPr111Accepted": false,
+    "biologySuccessorAccepted": false,
+    "standardG17Accepted": false,
+    "overallGoalComplete": false,
+    "newOperatorApplicationDeploymentInvoked": false,
+    "portalPublicationInvoked": false,
+    "automaticDocsWorkflowSucceeded": true
+  }
+}

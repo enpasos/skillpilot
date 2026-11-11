@@ -232,6 +232,11 @@ export const buildGoalDescriptionCanonicalContext = (
   const rawExtendedData = extendedData && typeof extendedData === 'object' && !Array.isArray(extendedData)
     ? extendedData as Record<string, unknown>
     : {}
+  // Existing review schemas deliberately cannot silently ignore new eligibility
+  // semantics. A future verified V8 comparison must supply its basis-free baseline.
+  if (Object.hasOwn(rawExtendedData, 'assessmentApplicabilityBasis')) {
+    throw new Error(`Canonical goal ${String(canonicalGoal.id ?? '(missing)')}: assessmentApplicabilityBasis requires a verified V8 baseline`)
+  }
   return {
     shortKey: optionalString(canonicalGoal.shortKey),
     phase: optionalString(canonicalGoal.phase),
