@@ -12,11 +12,13 @@ export function assertTransitiveMinimalityImplementationCurrent(): void {
     throw new Error('Transitive minimality implementation changed since module load')
 }
 
-export type AuditGoal = { id: string; title?: string; contains?: string[]; requires?: string[] }
+export type AuditGoal = { id: string; title?: string; contains?: string[]; requires?: string[]; type?: unknown }
 export type AuditLandscape = { landscapeId: string; goals: AuditGoal[] }
 type Node = { key: string; landscapeId: string; goal: AuditGoal; contains: string[]; requires: string[] }
 export type MinimalityOrigin = { source: string; prerequisite: string }
 export type MinimalityFinding = MinimalityOrigin & { witness: string[]; supportingOrigins: MinimalityOrigin[] }
+export type AtomicNormalFormFinding = MinimalityOrigin & { sourceAtomic: boolean; prerequisiteAtomic: boolean }
+export type ExplicitTypeMismatchFinding = { goal: string; declaredType: unknown; structuralType: 'atomic' | 'cluster' }
 // Unicode code-point order is independent of the process/host locale.
 const compareKeys = (left: string, right: string): number => {
   let a = 0, b = 0
@@ -231,6 +233,18 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
     const finding = findRedundantOrigin(prepared, origin)
     if (finding) findings.push(finding)
   }
+  // Use the already selected canonical nodes and authored origins. A foreign
+  // inheritance-only ancestor retains its full canonical contains structure.
+  const atomicNormalFormFindings: AtomicNormalFormFinding[] = origins.flatMap((origin) => {
+    const sourceAtomic = selected.get(origin.source)!.contains.length === 0
+    const prerequisiteAtomic = selected.get(origin.prerequisite)!.contains.length === 0
+    return sourceAtomic && prerequisiteAtomic ? [] : [{ ...origin, sourceAtomic, prerequisiteAtomic }]
+  })
+  const explicitTypeMismatchFindings: ExplicitTypeMismatchFinding[] = ordered.flatMap((node) => {
+    const structuralType = node.contains.length === 0 ? 'atomic' as const : 'cluster' as const
+    return !Object.hasOwn(node.goal, 'type') || node.goal.type === structuralType ? []
+      : [{ goal: node.key, declaredType: node.goal.type, structuralType }]
+  })
   return {
     nodeCount: selected.size, authoredRequiresCount: origins.length,
     containsCount: [...contains.values()].reduce((n, children) => n + children.length, 0),
@@ -238,7 +252,7 @@ export function auditTransitiveMinimality(catalog: AuditLandscape[], rootLandsca
     inheritanceOnlyAncestors: sorted([...selected.keys()].filter((key) => !childrenExpanded.has(key))),
     crossLandscapeReferenceCount: ordered.reduce((n, node) => n + [...contains.get(node.key)!, ...node.requires]
       .filter((key) => selected.get(key)!.landscapeId !== node.landscapeId).length, 0),
-    landscapes: sorted(ordered.map((n) => n.landscapeId)), findings,
+    landscapes: sorted(ordered.map((n) => n.landscapeId)), findings, atomicNormalFormFindings, explicitTypeMismatchFindings,
     findingsByLandscape: Object.fromEntries(sorted(ordered.map((n) => n.landscapeId)).map((id) =>
       [id, findings.filter((f) => selected.get(f.source)!.landscapeId === id).length])),
   }
@@ -280,7 +294,8 @@ function rootReport(catalog: AuditLandscape[], rootLandscapeId: string) {
     const goalKeys = sorted(findings.flatMap((f) => [...f.witness, ...f.supportingOrigins.map((o) => o.source)]))
     const indices = new Map(goalKeys.map((key, index) => [key, index]))
     return {
-      rootLandscapeId, status: findings.length ? 'fail' as const : 'pass' as const, ...summary,
+      rootLandscapeId, status: findings.length || summary.atomicNormalFormFindings.length || summary.explicitTypeMismatchFindings.length
+        ? 'fail' as const : 'pass' as const, ...summary,
       findingEncoding: ['sourceIndex', 'prerequisiteIndex', 'witnessGoalIndices', 'supportingOriginSourceIndices'],
       goalKeys, findings: findings.map((f) => [indices.get(f.source), indices.get(f.prerequisite),
         f.witness.map((key) => indices.get(key)), f.supportingOrigins.map((o) => indices.get(o.source))]),
@@ -328,7 +343,7 @@ function main() {
       rootResults,
     }
     for (const result of rootResults) console.log(`${report.mode}: ${result.rootLandscapeId}: ${result.status}; ${result.status === 'invalid-input'
-      ? result.error : `${result.nodeCount} goals; ${result.authoredRequiresCount} authored edges; ${result.findings.length} minimality findings`}`)
+      ? result.error : `${result.nodeCount} goals; ${result.authoredRequiresCount} authored edges; ${result.findings.length} minimality findings; ${result.atomicNormalFormFindings.length} non-atomic requires; ${result.explicitTypeMismatchFindings.length} explicit type mismatches`}`)
     exitCode = status === 'invalid-input' ? 2 : status === 'fail' && !options.reportOnly ? 1 : 0
   } catch (error) {
     report = { schemaVersion: 2, mode: options.reportOnly ? 'report-only' : 'validation',

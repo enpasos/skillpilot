@@ -1,0 +1,64 @@
+{
+  "startedAt": "2026-11-11T01:38:24.750793+00:00",
+  "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+  "sourcePins": "/home/enpasos/projects/skillpilot/tmp/g17-standard-gate-live-20261111/regressions/inputs-before.json",
+  "boundInputCount": 9,
+  "installedSevenGateFilesMatchManifest": true,
+  "closedReadNamespaceClaim": false,
+  "results": [
+    {
+      "command": [
+        "./node_modules/.bin/tsx",
+        "scripts/testTransitiveMinimality.ts"
+      ],
+      "log": "/home/enpasos/projects/skillpilot/tmp/g17-standard-gate-live-20261111/regressions/core.log",
+      "exitCode": 0,
+      "elapsedSeconds": 1.593,
+      "summary": [
+        "PASS: 572 literal removal/reinheritance comparisons; 3593 invalid effective graphs rejected; cross-subject, duplicate-origin, cluster-boundary and input counterexamples.",
+        "PASS: 8971 selected-origin/full-finding comparisons; 10839 exact validity/selected/full-error comparisons; fresh mutation, missing origin, foreign ancestor and Unicode counterexamples."
+      ]
+    },
+    {
+      "command": [
+        "./node_modules/.bin/tsx",
+        "--test",
+        "scripts/testTransitiveMinimalityCli.ts"
+      ],
+      "log": "/home/enpasos/projects/skillpilot/tmp/g17-standard-gate-live-20261111/regressions/cli.log",
+      "exitCode": 0,
+      "elapsedSeconds": 9.771,
+      "summary": [
+        "# tests 13",
+        "# pass 13",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0"
+      ]
+    },
+    {
+      "command": [
+        "./node_modules/.bin/tsx",
+        "--test",
+        "scripts/testCurriculumGraphIntegrity.ts"
+      ],
+      "log": "/home/enpasos/projects/skillpilot/tmp/g17-standard-gate-live-20261111/regressions/integrity.log",
+      "exitCode": 0,
+      "elapsedSeconds": 9.225,
+      "summary": [
+        "# tests 14",
+        "# pass 14",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# todo 0"
+      ]
+    }
+  ],
+  "status": "PASS",
+  "finishedAt": "2026-11-11T01:38:45.338505+00:00",
+  "elapsedSeconds": 20.589,
+  "sourcesUnchanged": true,
+  "changedBoundInputs": []
+}

@@ -19,7 +19,7 @@ const redundant: AuditLandscape = { landscapeId: 'B', goals: [
 ] }
 type RootReport = {
   rootLandscapeId: string; status: string; error?: string; nodeCount?: number
-  inheritanceOnlyAncestors?: string[]; goalKeys: string[]; findings: [number, number, number[], number[]][]
+  inheritanceOnlyAncestors?: string[]; atomicNormalFormFindings?: unknown[]; explicitTypeMismatchFindings?: unknown[]; goalKeys: string[]; findings: [number, number, number[], number[]][]
 }
 type Report = {
   status: string; mode: string; error?: string; selection?: string; roots?: string[]
@@ -172,4 +172,19 @@ test('identical catalogs and options generate byte-identical reports', () => {
   const paths = [resolve(temporary, 'first.json'), resolve(temporary, 'second.json')]
   for (const output of paths) invoke(['--catalog', directory, '--report-only', '--output', output], 0)
   assert.equal(readFileSync(paths[0], 'utf8'), readFileSync(paths[1], 'utf8'))
+})
+
+
+test('the real CLI rejects atomic normal-form and explicit-type defects without a redundant edge', () => {
+  for (const [goals, field] of [
+    [[{ id: 'cluster', contains: ['a'], requires: ['r'] }, { id: 'a' }, { id: 'r' }], 'atomicNormalFormFindings'],
+    [[{ id: 'q', requires: ['cluster'] }, { id: 'cluster', contains: ['a'] }, { id: 'a' }], 'atomicNormalFormFindings'],
+    [[{ id: 'q', type: 'cluster' }], 'explicitTypeMismatchFindings'],
+  ] as const) {
+    const directory = catalog({ 'A.json': { landscapeId: 'A', goals } })
+    const report = run(['--catalog', directory, '--check'], 1)
+    assert.equal(report.status, 'fail')
+    assert.equal(report.rootResults![0].findings.length, 0)
+    assert.equal(report.rootResults![0][field]!.length, 1)
+  }
 })
