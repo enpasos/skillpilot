@@ -86,6 +86,37 @@ class ProjectionRoleLearnerServiceTest {
             """;
 
     @Test
+    void reusedTopologyKeepsActualFrontierMasteryFocusAndStrictChecksFresh() {
+        Fixture fixture = fixture(view(goalEntry(TARGET_ID), goalEntry(PREREQUISITE_ID),
+                goalEntry(TRANSITIVE_PREREQUISITE_ID)));
+        Object projection = ReflectionTestUtils.invokeMethod(fixture.service(), "getGoalProjection",
+                LANDSCAPE_ID, PERSONAL_CURRICULUM);
+        Map<String, LearningGoal> goals = ReflectionTestUtils.invokeMethod(projection, "visibleGoals");
+        LearningGoal target = goals.get(TARGET_ID);
+        Object firstTopology = null;
+        for (boolean strict : List.of(false, true)) {
+            fixture.learner().setStrictMode(strict);
+            for (boolean mastered : List.of(false, true)) {
+                Map<String, Double> mastery = mastered
+                        ? Map.of(PREREQUISITE_ID, 1.0, TRANSITIVE_PREREQUISITE_ID, 1.0) : Map.of();
+                for (Set<String> focus : List.of(Set.of(TARGET_ID),
+                        Set.of(TARGET_ID, PREREQUISITE_ID, TRANSITIVE_PREREQUISITE_ID))) {
+                    Object prerequisites = ReflectionTestUtils.invokeMethod(fixture.service(), "frontierPrerequisites",
+                            fixture.learner(), projection, mastery, focus);
+                    Object topology = ReflectionTestUtils.invokeMethod(prerequisites, "topology");
+                    assertThat(topology).isNotNull();
+                    if (firstTopology == null) firstTopology = topology;
+                    else assertThat(topology).isSameAs(firstTopology);
+                    boolean allowed = ReflectionTestUtils.invokeMethod(fixture.service(),
+                            "areFrontierPrerequisitesMastered", target, projection, prerequisites);
+                    assertThat(allowed).as("strict=%s, mastered=%s, focus=%s", strict, mastered, focus)
+                            .isEqualTo(mastered || (!strict && focus.size() == 1));
+                }
+            }
+        }
+    }
+
+    @Test
     void missingRoleDefaultsToTargetAndPrerequisiteOnlyIsNotTargetOrTransitivelyInferred() {
         Fixture fixture = fixture(view(
                 goalEntry(TARGET_ID),
