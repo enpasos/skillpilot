@@ -87,4 +87,6 @@ keine Rohlogs oder großen Pinlisten. Dafür wurde kein Test erneut gestartet.
 Das harte Standard-G17-Gate aus PR #119 ist in diesem Datenstand noch nicht
 aktiviert. Der reguläre Bestandslauf belegt daher die erhaltenen bestehenden
 Meilensteine, keine abgeschlossene Standard-G17-Integration. Diese Integration,
-frische vollständige Remote-CI und Main-Lieferung bleiben offen.
+frische vollständige Remote-CI und Main-Lieferung bleiben an diesem Stand offen.
+Der spätere gemeinsame Lauf von Gate und Daten steht im
+[Integrationsbeleg](../g17-standard-gate-integration/README.md).
