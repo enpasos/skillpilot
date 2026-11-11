@@ -62,19 +62,39 @@ beschleunigten Ablauf am 11. November nochmals geprüft:
 - Reviews betreffen die neue Änderung; unveränderte Proofstufen und geprüfte
   Adapter werden nicht erneut konzeptionell aufgerollt. Neue Konzeptvarianten,
   Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen.
-- Das vorbereitete Standard-G17-Gate wird bereits vor Abschluss der übrigen
-  Fachreparaturen gegen den echten 21er-Producer geprüft. Noch offene Fächer
-  müssen dabei scheitern; die unveränderten Floors dürfen diese Ergebnisse
-  nicht akzeptieren. So werden Integrationsfehler früh sichtbar. Die kleine
-  Gateänderung wird getrennt von den Fachbatches nach Main geliefert, sobald
-  alle geschützten Fächer bestehen.
+- Das Standard-G17-Gate in [PR #119](https://github.com/enpasos/skillpilot/pull/119)
+  wurde bereits gegen den echten 21er-Producer geprüft. Auf dem dort gebundenen
+  Wirtschaftsstand setzt es Geschichte, Informatik, Latein und Politik und
+  Wirtschaft wegen ihrer offenen Graphverstöße auf M0; die unveränderte
+  Floorprüfung scheitert genau an diesen vier geschützten Fächern. Die fünf
+  M7-Fächer und Deutsch M6 bleiben erhalten. Das belegt die Fehlerwirkung,
+  noch nicht die endgültige Abnahme. Die Gateänderung bleibt eine getrennte
+  Lieferung nach Main, sobald alle geschützten Fächer bestehen.
 
-Die Lieferfolge ist Biologie, Wirtschaft, Latein, Geschichte, Informatik und
-Politik und Wirtschaft, jeweils als getrennte Fachlieferung. Das früh geprüfte
-zentrale G17-Gate wird anschließend auf Main aktiviert. Die endgültige
-Abnahme umfasst alle 21 Kataloge, die zehn unveränderten Mindeststände und die
-erfolgreiche vollständige CI auf dem endgültigen Main-Stand. Das Überlappen
-von Vorbereitung und CI ersetzt keinen dieser Nachweise.
+**Gestraffter Abschlussablauf, 11. November 2026:** Nach der erneuten
+Astra-Prüfung bleiben die bereits laufenden Lieferungen Biologie, Wirtschaft
+und [Latein #120](https://github.com/enpasos/skillpilot/pull/120) getrennt.
+Die vorbereiteten Korrekturen für Geschichte, Informatik und Politik und
+Wirtschaft folgen in genau dieser Reihenfolge als drei nachvollziehbare
+Fachcommits in **einem begrenzten Daten-PR**. Das ersetzt die drei bisher
+geplanten weiteren Einzelfach-PRs. Jede Stufe behält ihre vorhandenen
+mechanischen Schnitt-, Closure- und Projektionsnachweise sowie die exakte
+Registergrenze. Der vorhandene V8-Prüfer prüft diese Grenzen am Endstand;
+ein neuer Beweisvertrag wird dafür nicht eingeführt.
+
+Auf dem gemeinsamen Endstand laufen die vollständige native Gegenprüfung und
+der reguläre CQR-Producer einschließlich öffentlichem Beweis genau einmal,
+sofern kein Fehler oder eine spätere relevante Änderung einen neuen Lauf
+erfordert. Alle verpflichtenden Remote-Prüfungen bleiben erhalten. Benötigt
+ein Fach unerwartet eine fachliche Entscheidung oder eine neue Runtime- oder
+Proofkorrektur, wird dieser konkrete Fall getrennt behandelt. Vorhandene
+Abhängigkeiten werden nach erfolgreicher Pflicht-CI zügig nach Main geliefert;
+ein neuer Main-SHA allein löst keine Aktualisierung aller Folgebranches aus.
+
+Das zentrale G17-Gate wird anschließend auf Main aktiviert. Die endgültige
+Abnahme umfasst alle 21 Kataloge, die zehn unveränderten Mindeststände und
+die erfolgreiche vollständige CI auf dem endgültigen Main-Stand. Das
+Überlappen von Vorbereitung und CI ersetzt keinen dieser Nachweise.
 
 **Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
 **Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
