@@ -104,7 +104,8 @@ mastery decision is saved without an additional learner agreement.
 At a genuine zero-progress entry into a projected scope, unresolved orientation
 goals are the only selectable frontier goals. Existing learners with established
 subject progress are not reset to the orientation gate. See
-[Graph Definition, §8.5](graph-definition.md#85-didactic-route-coverage-motivation-to-autonomy).
+[Graph Definition, §8.2](context-and-views.en.md#sec-orientation) and the
+didactic routes in [§3.3](graph-definition.md#85-didactic-route-coverage-motivation-to-autonomy).
 
 ## Understanding
 
@@ -302,6 +303,14 @@ equivalent task variants. Broader later graph/unit definitions cannot expand
 what an old pass establishes. Legacy tasks need review against this stronger
 requirement; the illustrative points object above supplies no such recognition
 guarantee by itself.
+
+Under the unit validity rules of 11 November 2026, an assessment claims
+coverage (`coveredGoalIds`) only for goals it requires directly or transitively
+(R3), every own ordinary goal of a unit lies on a prerequisite path from an own
+assessment of that unit (R1), and at least one such assessment carries reviewed
+evidence that its tasks and normal grading really test the goal (R2). A missing
+path is a finding for subject review, not a reason to add a redundant edge. See
+[Graph Definition §13.3](assessment-gated-completion.md#sec-why-graph-not-enough).
 
 ### Scoring and mastery
 

@@ -624,12 +624,12 @@ def load_and_verify_bundle(repo_root: Path) -> tuple[SpecBundle, set[str]]:
     impl_data = read_json("implementation-status.json")
 
     rules = rules_data.get("rules", [])
-    if len(rules) != 143:
-        errors.append(f"rules-and-gates.json: expected 143 rules, got {len(rules)}")
+    if len(rules) != 145:
+        errors.append(f"rules-and-gates.json: expected 145 rules, got {len(rules)}")
     counts = {"hart": 0, "teil": 0, "offen": 0, "opt": 0}
     for r in rules:
         counts[r["ampel"]] = counts.get(r["ampel"], 0) + 1
-    if counts != {"hart": 3, "teil": 49, "offen": 63, "opt": 28}:
+    if counts != {"hart": 3, "teil": 54, "offen": 60, "opt": 28}:
         errors.append(f"rules-and-gates.json: unexpected Ampel distribution: {counts}")
 
     chapters: dict[str, dict[str, list[Any]]] = {}
@@ -1922,7 +1922,7 @@ def main() -> None:
     build_root.mkdir(parents=True, exist_ok=True)
 
     bundle, cited_repos = load_and_verify_bundle(repo_root)
-    print("Verified canonical single-source schemas, 143 rules, terminology, and DE/EN AST parity.")
+    print("Verified canonical single-source schemas, 145 rules, terminology, and DE/EN AST parity.")
 
     if args.check_untracked_outputs:
         check_untracked_outputs(bundle)

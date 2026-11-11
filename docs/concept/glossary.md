@@ -274,7 +274,7 @@ An explicit structural container (year, semester, module, phase, track, exam sec
 ### Learning unit
 
 *DE: Lerneinheit* — see [Learning Units](skill-graph/learning-units.md)
-and [Graph Definition §12](skill-graph/graph-definition.md#12-learning-units-and-optional-planning-profiles)
+and [Graph Definition §§11–12](skill-graph/graph-definition.md#12-learning-units-and-optional-planning-profiles)
 
 A recursively composed educational whole with a stated learning outcome,
 motivational introduction, constituent goals or subunits, and a reviewed
@@ -288,7 +288,9 @@ and the unit's own goal-type obligations without a stored unit-mastery result.
 Own integrative assessments are permitted, not required at every aggregation.
 An open parent exam does not reopen completed child competencies; a parent's
 pass never passes protected child exams or cards. Effective competence remains
-global. Individual recognition can precede complete unit completion.
+global. Individual recognition can precede complete unit completion. It is
+only sound inside units that satisfy the validity rules R1–R5 of
+11 November 2026 ([Graph Definition §13.3](skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)).
 
 An explicitly declared whole-unit prerequisite belongs to the course structure.
 It is not inferred from every atomic requirement. Its enforcement as a hard

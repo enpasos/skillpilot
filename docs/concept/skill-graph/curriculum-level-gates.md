@@ -12,5 +12,4 @@ not a universal prerequisite or activated course mode.
 
 This page preserves the old link. Use the active progression document for the
 conditional gated example and its decision boundary, and
-[Graph Definition §12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
-for the formal contract. No new schema or runtime gate is announced.
+[Graph Definition §11.5](learning-unit-progression.md) for the formal contract. No new schema or runtime gate is announced.

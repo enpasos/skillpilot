@@ -211,11 +211,14 @@ Frontier-, Abschluss- und Mastery-Vertraege muessen erhalten bleiben; rohe
 Erreichbarkeit zwischen nichtatomaren Zielknoten darf sich dabei aendern.
 Atomare Kanten zugunsten geerbter Clusterpfade zu loeschen widerspricht dieser
 Reihenfolge. Cluster-Kompatibilitaet ist kein erfuellter kanonischer Zielzustand.
-Dies ist weder eine Behauptung bereits vollstaendiger CI-Durchsetzung noch eine
-Gate-Ausnahme: `CQR-102` und `GVR-012` verlangen weiterhin direkt atomare Routen;
-die M3- bis M7-Anforderungen bleiben unveraendert. Einzelheiten und pruefbarer
-Erhaltungsnachweis stehen in [Graph Definition §§5.2 und
-7.3](../concept/skill-graph/graph-definition.md#73-atomic-transitive-minimality-and-ordered-migration-g17).
+Seit dem 11. November 2026 prueft `CQR-001` den erreichten Zustand (atomare
+Normalform und transitive Minimalitaet) fuer jede Wurzel des kanonischen
+Gymnasialkatalogs (siehe unten); die Migrationsreihenfolge selbst ist nur fuer
+Reduktionen belegt, die an das Reduktionsnachweisregister gebunden sind. Das ist
+keine Gate-Ausnahme: `CQR-102` und `GVR-012` verlangen weiterhin direkt atomare
+Routen; die M3- bis M7-Anforderungen bleiben unveraendert. Einzelheiten und
+pruefbarer Erhaltungsnachweis stehen in [Graph Definition
+§3.1](../concept/skill-graph/graph-definition.md#73-atomic-transitive-minimality-and-ordered-migration-g17).
 
 ### Terminale Autonomie
 
@@ -253,8 +256,12 @@ Die Reifegrade sind kumulativ und konservativ. Ein hoeherer Reifegrad setzt alle
 Die [vollstaendige Zuordnung der Graph-Definition](graph-definition-rule-milestone-matrix.md)
 trennt Sollpflicht und heutige Gatewirkung. Die globale atomare Normalform und
 vollstaendige G17-Pruefung sind nach der Ownerpraezisierung Basis vor jedem
-Fach-Meilensteinpass `M1` bis `M7`; die unten beschriebene aktuelle Aufstiegskette
-setzt diesen neuen Basisvertrag noch nicht vollstaendig durch. Insbesondere
+Fach-Meilensteinpass `M1` bis `M7`. Seit dem 11. November 2026 setzt die unten
+beschriebene Aufstiegskette diesen Basisvertrag ueber `CQR-001` fuer jede Wurzel
+des kanonischen Gymnasialkatalogs durch: Ein Verstoss setzt das Curriculum und
+alle seine Scopes auf `M0`. Hart scheitert die CI daran nur ueber die geschuetzten
+Floors; Wurzeln ausserhalb des kanonischen Gymnasialkatalogs prueft `CQR-001`
+nicht. Insbesondere
 sind Katalogziel und wirkliche Promotionsschwelle nicht gleich: `CQR-104` traegt
 Katalogziel `M3`, wird im Aggregator aber erst fuer Curriculum-`M4` erforderlich;
 `CQR-203` traegt Katalogziel `M4`, wird dort erst fuer Curriculum-`M5` erforderlich.
@@ -352,34 +359,42 @@ Reifeziel:
 
 - Erster fachlicher Meilenstein `M1`.
 
-### `CQR-001` - Basic graph integrity
+### `CQR-001` - Current graph integrity and atomic prerequisite normal form
 
 Ziel:
 
-> Die Landschaft ist als Graph technisch konsistent.
+> Jede deklarierte aktuelle kanonische Wurzel ist als Graph technisch konsistent,
+> in atomarer Normalform und transitiv minimal (`G17`).
 
-Geprueft wird:
+Geprueft wird seit dem 11. November 2026 (`curriculum-quality-v5`; der
+[Graphintegritaetsadapter](https://github.com/enpasos/skillpilot/blob/main/app/scripts/curriculumGraphIntegrity.ts)
+nutzt den [Minimalitaetsauditor](https://github.com/enpasos/skillpilot/blob/main/app/scripts/auditTransitiveMinimality.ts)),
+jeweils fuer die Wurzel samt benoetigter fachfremder Ziele und vererbender Vorfahren:
 
-- jede Ziel-ID ist eindeutig,
-- lokale `requires`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- lokale `contains`-Referenzen zeigen auf vorhandene Ziele oder bekannte globale Ziele,
-- ein Ziel referenziert sich nicht selbst,
-- direkte `requires` bilden keinen Zyklus,
-- direkte `contains` bilden keinen Zyklus.
+- Ziel-IDs und qualifizierte Referenzen sind gueltig und eindeutig aufloesbar,
+- `contains` und effektive `requires` einschliesslich Vererbung bilden keinen Zyklus,
+- jede verfasste `requires`-Kante verbindet zwei atomare Ziele (atomare Normalform),
+- keine verfasste `requires`-Kante ist ueber die uebrigen effektiven Anforderungen bereits erreichbar (transitive Minimalitaet),
+- explizite `type`-Angaben stimmen mit der Struktur ueberein.
+
+Vor den Statuszeilen verlangt der Generator den vollstaendigen aktuellen
+kanonischen Katalog und prueft ihn gegen das digestgebundene
+Reduktionsnachweisregister; jede Abweichung bricht den Lauf ab.
 
 Metriken:
 
-- `goals`: Anzahl der Ziele in der Landschaft.
-- `localReferenceIssues`: Anzahl gefundener Integritaetsprobleme.
+- `goals`, `authoredRequires`, `effectiveRequires`, `crossLandscapeReferences`,
+- `minimalityFindings`, `atomicNormalFormFindings`, `explicitTypeMismatches`,
+- `witnessEdges`, `invalidInputs`.
 
 Status:
 
-- `pass`, wenn `localReferenceIssues = 0`.
-- `fail`, wenn mindestens ein Integritaetsproblem existiert.
+- `pass`, wenn kein Befund existiert.
+- `fail` bei mindestens einem Befund oder bei ungueltiger Eingabe.
 
 Reifeziel:
 
-- Grundlage fuer `M0`.
+- Grundlage fuer `M0`; ein `fail` setzt das Curriculum und alle seine Scopes auf `M0`.
 
 ### `CQR-002` - Explicit type consistency
 
