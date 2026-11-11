@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Retry previously failing tests first, then run every backend gate."""
+"""Retry previously failing tests first, then run every backend gate.
+
+Hosted CI splits the suite into complementary partitions that run in parallel
+jobs. Together they execute every test exactly once; the default partition is
+the complete, unfiltered suite.
+"""
 
 # SPDX-License-Identifier: Apache-2.0
 import argparse
@@ -17,6 +22,23 @@ CLASS_NAME = re.compile(r"[A-Za-z_$][A-Za-z0-9_$]*(?:\.[A-Za-z_$][A-Za-z0-9_$]*)
 MAX_MANIFEST_BYTES = 256 * 1024
 MAX_FAILED_SELECTORS = 512
 METHOD_DISPLAY = re.compile(r"([A-Za-z_$][A-Za-z0-9_$]*)\(\)")
+
+# The prerequisite-reduction proofs take longer than all other test classes
+# together, and one of their methods longer than the rest of that class.
+REDUCTION_PROOF_CLASS = "com.skillpilot.backend.completion.FirstMathPrerequisiteReductionTest"
+PHYSICS_REDUCTION_PROOF = (
+    f"{REDUCTION_PROOF_CLASS}.batchedPhysicsSourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier"
+)
+# name -> (Gradle task, included selectors, excluded selectors). Every CI
+# partition excludes exactly what another one includes, so nothing is lost.
+PARTITIONS = {
+    "complete": ("check", (), ()),
+    "main": ("check", (), (REDUCTION_PROOF_CLASS,)),
+    "reduction-proofs": ("test", (REDUCTION_PROOF_CLASS,), (PHYSICS_REDUCTION_PROOF,)),
+    "physics-reduction-proof": ("test", (PHYSICS_REDUCTION_PROOF,), ()),
+}
+CI_PARTITIONS = ("main", "reduction-proofs", "physics-reduction-proof")
+MAX_FORKS = 8
 
 
 def valid_class_name(value):
@@ -166,7 +188,41 @@ def test_reports_directory(backend):
     return build / "test-results" / "test"
 
 
-def run_backend_ci(backend, manifest, reports=None, run=None):
+def gradle_options(partition, forks):
+    """Options shared by the priority run and the mandatory run of one partition."""
+    options = []
+    excluded = PARTITIONS[partition][2]
+    if excluded:
+        options.append(f"-PbackendTestExclude={','.join(excluded)}")
+    if forks != 1:
+        options.append(f"-PbackendTestForks={forks}")
+    return options
+
+
+def partition_command(partition, forks):
+    task, included, _ = PARTITIONS[partition]
+    command = ["./gradlew", task, *gradle_options(partition, forks)]
+    for name in included:
+        command.extend(["--tests", name])
+    return command
+
+
+def priority_command(selectors, partition, forks):
+    command = ["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true",
+               *gradle_options(partition, forks)]
+    for name in selectors:
+        command.extend(["--tests", name])
+    return command
+
+
+def compile_backend(backend, run=None):
+    """Quick tier: compile main and test sources without running any test."""
+    execute = run or subprocess.run
+    print("Compiling backend main and test sources; the test suite runs in the complete check.", flush=True)
+    return execute(["./gradlew", "testClasses"], cwd=backend, shell=False, check=False).returncode
+
+
+def run_backend_ci(backend, manifest, reports=None, run=None, partition="complete", forks=1):
     reports = reports or test_reports_directory(backend)
     execute = run or subprocess.run
     cached = read_failed_selectors(manifest)
@@ -181,9 +237,7 @@ def run_backend_ci(backend, manifest, reports=None, run=None):
             shutil.rmtree(reports)
         if previous:
             print(f"Running {len(previous)} previously failing backend test selectors first.", flush=True)
-            command = ["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true"]
-            for name in previous:
-                command.extend(["--tests", name])
+            command = priority_command(previous, partition, forks)
             priority_attempted = True
             result = execute(command, cwd=backend, shell=False, check=False)
             if result.returncode != 0:
@@ -194,8 +248,11 @@ def run_backend_ci(backend, manifest, reports=None, run=None):
             persist_advisory_selectors(manifest, [])
             if reports.exists():
                 shutil.rmtree(reports)
-        print("Running the complete backend check without test filters.", flush=True)
-        return execute(["./gradlew", "check"], cwd=backend, shell=False, check=False).returncode
+        if partition == "complete":
+            print("Running the complete backend check without test filters.", flush=True)
+        else:
+            print(f"Running every test of the backend partition {partition}.", flush=True)
+        return execute(partition_command(partition, forks), cwd=backend, shell=False, check=False).returncode
     finally:
         try:
             current, valid_reports = current_junit_failures(reports)
@@ -214,10 +271,18 @@ def run_backend_ci(backend, manifest, reports=None, run=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--backend-dir", type=Path, default=Path(__file__).resolve().parents[1] / "backend")
-    parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--manifest", type=Path)
+    parser.add_argument("--partition", choices=sorted(PARTITIONS), default="complete")
+    parser.add_argument("--forks", type=int, choices=range(1, MAX_FORKS + 1), default=1, metavar="1-8")
+    parser.add_argument("--compile-only", action="store_true")
     args = parser.parse_args()
+    if args.compile_only == (args.manifest is not None):
+        parser.error("pass either --manifest for a test run or --compile-only")
     try:
-        return run_backend_ci(args.backend_dir.resolve(), args.manifest.resolve())
+        if args.compile_only:
+            return compile_backend(args.backend_dir.resolve())
+        return run_backend_ci(args.backend_dir.resolve(), args.manifest.resolve(),
+                              partition=args.partition, forks=args.forks)
     except OSError as error:
         print(f"Backend CI runner failed: {error}", flush=True)
         return 1

@@ -1197,6 +1197,13 @@ When an LLM/agent works on this repo, it should:
   * Write temporary files, verification scripts, logs, or one-off migration scripts to the `tmp/` directory (or `docs/` if permanent).
   * Never write transient files directly to the project root.
 
+* **Use the two CI tiers** (Product Owner decision of 11 November 2026):
+  * Remote CI is the final quality control, not a step after every intermediate change.
+    A draft pull request receives only the quick tier. Marking it ready for review starts
+    the complete check, which also runs on every push to `main`.
+  * The complete check contains every check on its own and runs as parallel jobs.
+    Splitting a job must not drop or weaken a check. See `docs/qa-ci/ci.md`.
+
 If you extend the project in a conceptually new way (new types of nodes, new semantics),
 update this document so future agents don’t have to reverse-engineer intentions from code.
 

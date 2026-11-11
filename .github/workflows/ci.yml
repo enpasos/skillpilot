@@ -16,6 +16,9 @@ on:
       - '!tmp/**'
   pull_request:
     branches: [ main ]
+    # A draft receives the quick tier only. Marking it ready starts the complete
+    # check for that head, so a mergeable pull request always carries one.
+    types: [ opened, synchronize, reopened, ready_for_review ]
     paths:
       - '**'
       - '!README.md'
@@ -33,6 +36,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Two tiers (see docs/qa-ci/ci.md):
+# - Quick tier, on every run including draft pull requests: the four small
+#   contract jobs plus early repeats of lint, type-check, graph and schema
+#   validation and a backend compile. It never replaces a complete check.
+# - Complete check, on pushes to main, manual runs and pull requests that are
+#   not drafts: every other job. These jobs carry the same `if` condition and
+#   run in parallel; together they contain every check.
 jobs:
   action-regression-ci:
     runs-on: ubuntu-latest
@@ -283,8 +293,93 @@ jobs:
       - name: Validate OpenAI V1 mTLS edge verifier
         run: ./scripts/verify_openai_v1_mtls_edge.sh --static
 
+  quick-checks:
+    name: Quick checks
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - &use_application_node
+        name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - &install_application_dependencies
+        name: Install dependencies
+        run: npm ci
+      - name: Test CI tiers and parallel job partitions
+        run: node --test ../scripts/ci_tiers.test.mjs
+      # Early repeats of cheap checks; the complete check runs each of them again.
+      - name: Lint
+        run: npm run lint
+      - name: Type-check the application
+        run: npx --no-install tsc -b
+      - name: Validate Graph
+        run: npm run validate:graph
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Install Python dependencies
+        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Validate Schemas
+        run: cd .. && python scripts/validate_schemas.py
+
+  backend-quick-checks:
+    name: Backend quick checks
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - &use_backend_java
+        name: Use Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: corretto
+          java-version-file: .java-version
+          cache: gradle
+      - &use_backend_node
+        name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - &use_production_corretto
+        name: Use production Corretto build
+        run: |
+          set -euo pipefail
+          corretto_version="$(tr -d '[:space:]' < ../.corretto-version)"
+          install_dir="${RUNNER_TEMP}/amazon-corretto-${corretto_version}"
+          archive="${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz"
+          curl -fsSL "https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz" -o "${archive}"
+          mkdir -p "${install_dir}"
+          tar -xzf "${archive}" --strip-components=1 -C "${install_dir}"
+          echo "JAVA_HOME=${install_dir}" >> "${GITHUB_ENV}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+          "${install_dir}/bin/java" -version
+      - &ensure_gradle_wrapper
+        name: Ensure Gradle wrapper is executable
+        run: chmod +x ./gradlew
+      - name: Test backend CI partitions and failure prioritization
+        run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
+      # The backend test suite itself belongs to the complete check.
+      - name: Compile backend main and test sources
+        run: python3 -B ../scripts/run_backend_ci.py --compile-only
+
   goal-book-publication:
     name: Learning-goal book build
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -347,6 +442,7 @@ jobs:
   frontend-ci:
     name: Application frontend CI
     needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -364,15 +460,19 @@ jobs:
           cache-dependency-path: app/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Use Ubuntu package sources
+      - &use_ubuntu_package_sources
+        name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
-      - name: Install FFmpeg and PDF validation tools
+      - &install_frontend_media_and_pdf_tools
+        name: Install FFmpeg and PDF validation tools
         timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation
-      - name: Install pinned Playwright Chromium
+      - &install_playwright_chromium
+        name: Install pinned Playwright Chromium
         timeout-minutes: 10
         run: npx --no-install playwright install --with-deps chromium
-      - name: Restore same-run verified goal-book publications
+      - &restore_goal_book_publications
+        name: Restore same-run verified goal-book publications
         uses: actions/download-artifact@v7
         with:
           name: goal-book-publication-${{ github.sha }}
@@ -391,16 +491,6 @@ jobs:
         run: npm run test:claude-plugin-publication
       - name: Test service-worker navigation policy
         run: npm run test:service-worker-navigation-policy
-      # The dual-round resolution test builds its basis-bound fixture through the
-      # Python release-model consumer, which needs the pinned jsonschema package.
-      - name: Set up Python for the prerequisite-reduction fixture
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.10'
-      - name: Install Python dependencies for the prerequisite-reduction fixture
-        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
-      - name: Test learning-goal book contracts and publication
-        run: npm run test:goal-book-pipeline
       - name: Test curriculum offering sources
         run: npm run test:curriculum-offering-source
       - name: Test package goal source evidence consumer
@@ -498,9 +588,40 @@ jobs:
           DEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \
             npm run demo -- verify-recording --scenario scenarios/example.yaml
 
+  goal-book-contracts:
+    name: Learning-goal book contracts
+    needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - *use_application_node
+      - *install_application_dependencies
+      - *use_ubuntu_package_sources
+      - *install_frontend_media_and_pdf_tools
+      - *install_playwright_chromium
+      - *restore_goal_book_publications
+      # The dual-round resolution test builds its basis-bound fixture through the
+      # Python release-model consumer, which needs the pinned jsonschema package.
+      - name: Set up Python for the prerequisite-reduction fixture
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+      - name: Install Python dependencies for the prerequisite-reduction fixture
+        run: python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt
+      - name: Test learning-goal book contracts and publication
+        run: npm run test:goal-book-pipeline
+
   graph-validation:
     name: Curriculum CI
     needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -520,7 +641,8 @@ jobs:
         run: npm ci
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
-      - name: Install PDF validation tools
+      - &install_pdf_validation_tools
+        name: Install PDF validation tools
         timeout-minutes: 10
         run: sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation
       - name: Install pinned Playwright Chromium
@@ -533,26 +655,6 @@ jobs:
           path: app/public/lernzielbuch/
       - name: Validate Graph
         run: npm run validate:graph
-      - name: Test transitive-minimality auditor and CLI contracts
-        run: npm run test:transitive-minimality
-      - name: Test exam Markdown conventions
-        run: npm run test:exam-markdown
-      - name: Test reviewed Mathematics checkpoint assessments
-        run: npm run test:math-checkpoint-exams
-      - name: Test HE Q2.5 central-dilation assessment scope
-        run: npm run test:math-q25-central-dilation-scope
-      - name: Test Mathematics Q2 assessment projection and scoring
-        run: npm run test:math-q2-m7-assessment-projection
-      - name: Test Physics practice and Abitur assessment projection
-        run: npm run test:physics-assessment-projection
-      - name: Test hard Sek-I/Sek-II learning routes
-        run: npm run test:hard-learning-routes
-      - name: Test reviewed canonical Mathematics Sek-I exam routes
-        run: npm run test:canonical-math-sek1-reviewed-exam-routes
-      - name: Test Q4 Caterer exam coverage and scope
-        run: npm run test:math-q4-caterer-exam-scope
-      - name: Test learner-facing composition labels
-        run: npm run test:learner-facing-composition-labels
       - name: Validate Competency Wording
         run: |
           python -B ../scripts/validate_competency_wording.py
@@ -629,6 +731,66 @@ jobs:
           npm run check:curriculum-maturity-floors
           git diff --exit-code -- ../docs/qa-ci/status
           test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
+
+  curriculum-assessment-proofs:
+    name: Curriculum graph and assessment proofs
+    needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - *use_application_node
+      - *install_application_dependencies
+      - *use_ubuntu_package_sources
+      - *install_pdf_validation_tools
+      - *install_playwright_chromium
+      - *restore_goal_book_publications
+      - name: Test transitive-minimality auditor and CLI contracts
+        run: npm run test:transitive-minimality
+      - name: Test exam Markdown conventions
+        run: npm run test:exam-markdown
+      - name: Test reviewed Mathematics checkpoint assessments
+        run: npm run test:math-checkpoint-exams
+      - name: Test HE Q2.5 central-dilation assessment scope
+        run: npm run test:math-q25-central-dilation-scope
+      - name: Test Mathematics Q2 assessment projection and scoring
+        run: npm run test:math-q2-m7-assessment-projection
+      - name: Test Physics practice and Abitur assessment projection
+        run: npm run test:physics-assessment-projection
+      - name: Test hard Sek-I/Sek-II learning routes
+        run: npm run test:hard-learning-routes
+      - name: Test reviewed canonical Mathematics Sek-I exam routes
+        run: npm run test:canonical-math-sek1-reviewed-exam-routes
+      - name: Test Q4 Caterer exam coverage and scope
+        run: npm run test:math-q4-caterer-exam-scope
+      - name: Test learner-facing composition labels
+        run: npm run test:learner-facing-composition-labels
+
+  curriculum-integrated-build:
+    name: Curriculum integrated build
+    needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - *use_application_node
+      - *install_application_dependencies
+      - *use_ubuntu_package_sources
+      - *install_pdf_validation_tools
+      - *install_playwright_chromium
+      - *restore_goal_book_publications
       - name: Prepare generated curriculum runtime assets
         run: npm run prepare:runtime-assets
       - name: Check goal visualization runtime assets
@@ -651,6 +813,30 @@ jobs:
         run: npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend
       - name: Check Goal Source Rationale Build Artifact
         run: npm run check:goal-source-rationales:build-artifact
+
+  curriculum-package-contracts:
+    name: Curriculum package contracts
+    needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - *use_application_node
+      - *install_application_dependencies
+      - *use_ubuntu_package_sources
+      - *install_pdf_validation_tools
+      - *install_playwright_chromium
+      - *restore_goal_book_publications
+      # Same generated runtime assets as before the split; the application
+      # build itself stays in the integrated-build job.
+      - name: Prepare generated curriculum runtime assets
+        run: npm run prepare:runtime-assets
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -724,6 +910,7 @@ jobs:
 
   backend-ci:
     needs: goal-book-publication
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -773,23 +960,71 @@ jobs:
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            backend-failures-v1-${{ runner.os }}-${{ github.ref }}-
+            backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-
+      # Every test class except the prerequisite-reduction proofs, which run in
+      # their own jobs. Three test JVMs share the four-core hosted runner.
       - name: Run backend tests
         id: backend-tests
         env:
           BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-        run: python3 -B ../scripts/run_backend_ci.py --manifest "${BACKEND_FAILURE_MANIFEST}"
+        run: python3 -B ../scripts/run_backend_ci.py --partition main --forks 3 --manifest "${BACKEND_FAILURE_MANIFEST}"
       - name: Save current backend failure selectors
         if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
-          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: backend-failures-v2-main-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Verify Claude direct-install beta publication
         working-directory: .
         run: |
           node scripts/claude_direct_install_beta_release.mjs verify
           node scripts/claude_direct_install_beta_release.mjs verify --publication-root backend/build/resources/main/claude-plugin-publication
+
+  # The prerequisite-reduction proofs read only committed curricula, so they do
+  # not wait for the goal-book build. scripts/run_backend_ci.py owns the
+  # partitions; together with backend-ci they run every backend test once.
+  backend-reduction-proofs:
+    name: Backend ${{ matrix.partition }}
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        partition: [ reduction-proofs, physics-reduction-proof ]
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - *reserve_repository_disk
+      - name: Checkout
+        uses: actions/checkout@v6
+      - *verify_repository_disk
+      - *use_backend_java
+      - *use_backend_node
+      - *use_production_corretto
+      - *ensure_gradle_wrapper
+      - name: Restore previous backend failure selectors
+        id: backend-failures-cache
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-
+      - name: Run backend reduction proofs
+        id: backend-tests
+        env:
+          BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          BACKEND_PARTITION: ${{ matrix.partition }}
+        run: python3 -B ../scripts/run_backend_ci.py --partition "${BACKEND_PARTITION}" --manifest "${BACKEND_FAILURE_MANIFEST}"
+      - name: Save current backend failure selectors
+        if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v2-${{ matrix.partition }}-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}

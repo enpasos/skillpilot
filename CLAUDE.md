@@ -66,6 +66,10 @@ node scripts/check_openai_plugin_review_freeze.mjs
 node scripts/check_claude_plugin_v1_release.mjs
 ```
 
+Remote CI (`.github/workflows/ci.yml`) has two tiers: a draft PR gets only the
+quick tier; marking it ready for review, or pushing to `main`, runs the
+complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
+
 ## Non-negotiable invariants (details in AGENTS.md)
 
 - **Graph**: no cycles in `requires`/`contains`; stable goal IDs; atomic goals
