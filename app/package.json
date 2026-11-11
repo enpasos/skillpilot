@@ -100,7 +100,7 @@
     "validate:graph": "tsx scripts/validateGraph.ts",
     "audit:transitive-minimality": "tsx scripts/auditTransitiveMinimality.ts --report-only",
     "check:transitive-minimality": "tsx scripts/auditTransitiveMinimality.ts --check",
-    "test:transitive-minimality": "tsx scripts/testTransitiveMinimality.ts && tsx --test scripts/testTransitiveMinimalityCli.ts && tsx scripts/testPrerequisiteReductionProof.ts",
+    "test:transitive-minimality": "tsx --test scripts/testApplicabilityInputSnapshot.ts && tsx scripts/testTransitiveMinimality.ts && tsx --test scripts/testTransitiveMinimalityCli.ts && tsx scripts/testPrerequisiteReductionProof.ts",
     "test:exam-markdown": "tsx scripts/testExamMarkdownValidation.ts",
     "test:math-checkpoint-exams": "tsx scripts/testMathCheckpointExamRelease.ts",
     "test:hard-learning-routes": "tsx scripts/testHardLearningRouteValidation.ts",
