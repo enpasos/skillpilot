@@ -1,0 +1,63 @@
+{
+  "status": "NORMAL_GENERATION_AND_EXISTING_FRESHNESS_GUARD_PASS",
+  "startedAt": "2026-11-11T00:16:06.906Z",
+  "finishedAt": "2026-11-11T00:25:21.345Z",
+  "startHead": "7ccda70b2910c8f7b4b35406e62be39a9d48e5bd",
+  "endHead": "7ccda70b2910c8f7b4b35406e62be39a9d48e5bd",
+  "elapsedMilliseconds": 554460,
+  "contextMilliseconds": 553183,
+  "generateMilliseconds": 549,
+  "checkMilliseconds": 486,
+  "verifiedContextLoads": 1,
+  "ordinaryGenerator": "buildGoalBookSourceAtlasInputs + unchanged CLI write loop",
+  "unchangedFreshnessGuard": "checkGoalBookSourceAtlasInputs",
+  "inputPinCount": 131,
+  "inputsUnchanged": true,
+  "outputChanges": [
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "before": "sha256:4bd0a603e29662b16fbe7d458e5809c57f540421b8b42ff31f01ef4691929130",
+      "after": "sha256:1e454461c6f6f4754964e06d797e7f580c9fe93856e7954dada035ef68d733db"
+    }
+  ],
+  "bindingChanges": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "before": "sha256:4909e91fdb36f8917cf3ab4e7d2059d303939bc5ae184ae6166d60c744da4278",
+      "after": "sha256:0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e"
+    }
+  ],
+  "allOtherOutputBytesUnchanged": true,
+  "allOtherReceiptFieldsUnchanged": true,
+  "counts": {
+    "canonicalCurricularAtomicGoals": 397,
+    "publishedCurricularAtomicGoals": 397,
+    "sourceViews": 24,
+    "unresolvedSourceScopeDecisions": 0,
+    "omittedGoals": 0
+  },
+  "proofUsedForValidationOnly": {
+    "proofContract": "assessment-basis-bound-prerequisite-reduction-v8",
+    "mode": "current-or-certified-baseline-comparison",
+    "auditScope": "origin-source-landscape-closure",
+    "registryPath": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "registryDigest": "sha256:c79dad302b8454bd28216c4836d578ed607ca4ad5c35135fe686199777ba8276"
+  },
+  "receiptContainsNoEconomicsOrGlobalRegistryBinding": true,
+  "parentPRHeadObserved": "3eb07e5e23b92878110b32cfc4677b17541f2cd0",
+  "parentPRChange": "Remote commit changes only delivery-plan docs on parent1d63d2b18cf081d85827c80a37257c989a71dd87",
+  "fullBookBuildExecuted": false,
+  "manualPinning": false,
+  "branchChanged": false,
+  "boundary": "A normal generated Bio input repair; no semantic/source review or remote CI acceptance claim. Named inputs only, no global closed-read namespace claim.",
+  "rawReceiptSha256": "315b248833b13e0c067e637406c123a93e6e9cb5ed953dcc5b75f6922ddd23e8",
+  "pushed": {
+    "economicsHead": "e1e37248ed12419f1ee8c96ad947536d385c23fa",
+    "biologyParent": "3eb07e5e23b92878110b32cfc4677b17541f2cd0",
+    "biologyHead": "2e69dbebe14ef1d351a33ae3e9ff1832fea7272b",
+    "exactGeneratedBlob": "d121589f4f27ba27e21effe0490d6382718b6927",
+    "changedPaths": [
+      "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 # Wirtschaft: atomare Voraussetzungen und transitive Minimalität
 
-Stand: 11. November 2026. **Beweis und native Gegenproben bestanden;
-Meilenstein- und Remote-Abnahme noch offen.**
+Stand: 11. November 2026. **Lokale Prüfungen bestanden;
+Remote-CI und Main-Lieferung noch offen.**
 Der sichtbare Branch `fix/g17-economics-atomic-prerequisites-v8-data` baut auf
 Biologie-Commit `1d63d2b18c` in [PR #117](https://github.com/enpasos/skillpilot/pull/117)
 auf. Die Lieferung erfolgt nach Biologie separat.
@@ -44,5 +44,19 @@ für die Korrektur dieser Auswertung wurde kein Test wiederholt. Die vollständi
 temporären Pinlisten sind nicht Teil dieses kompakten Belegs; es wird kein
 vollständig erfasster Dateizugriffsraum behauptet.
 
-Regulärer Meilensteinlauf, Remote-CI und Main-Lieferung stehen aus. Das globale
-G17-Gate im Meilensteinproducer ist weiterhin offen.
+Der [reguläre Meilensteinlauf](regular-milestones-receipt.json) einschließlich
+erneuter tatsächlicher V8-Verifikation besteht mit Exit 0 in 1.003,818 Sekunden.
+Anschließend bestehen alle zehn unveränderten Maturity-Floors; die 34 benannten
+Quellbindungen bleiben gleich. Der [vollständige Statusvergleich](regular-milestones-comparison.json)
+weist ausschließlich die Erzeugungszeit und Proof-Metadaten als Änderungen aus.
+Wirtschaft bleibt M7, ebenso Biologie, Chemie, Mathematik und Physik; die fünf
+geschützten M6-Fächer behalten M6. Die übrigen Fächer bleiben M0.
+
+Der enthaltene [Biologie-Buchfix](biology-book-repair.json) regeneriert mit dem
+normalen Generator genau eine veraltete Eingangsbindung. Alle Buch-Views und
+übrigen Receiptfelder bleiben unverändert; der unveränderte Freshness-Check
+besteht. Derselbe erzeugte Blob wurde separat in Biologie-PR #117 geliefert.
+
+Remote-CI und Main-Lieferung stehen aus. Das globale G17-Gate im
+Meilensteinproducer ist weiterhin offen; die heutigen M6/M7-Ausgaben belegen
+noch keine G17-Abnahme der übrigen geschützten Fächer.
