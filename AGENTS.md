@@ -398,6 +398,20 @@ Interpretation rules:
 - within one resolved learner-facing scope, the default tree should show each goal at most once and under at most one visible parent
 - Bundesland-specific canonical supplement branches under a broad shared root may use `extendedData.applicabilityMappingInheritance = "boundary"` on the supplement cluster. This prevents old broad ancestor-cluster source mappings from being treated as source evidence for the supplement's atomic descendants, while direct mappings/provenance inside the branch and child-union visibility upward still count.
 - Practice or assessment terminal goals may use `extendedData.applicabilityFromRequires = true` when their visibility should be derived exactly from their prerequisite goals. This is for local autonomy/exam endpoints, not for ordinary content atoms, and the resulting `assessment-requires` evidence is applicability evidence only, not source-coverage evidence.
+- The applicability compiler additionally supports an explicit
+  `extendedData.assessmentApplicabilityBasis = { kind: "allOfGoalApplicability", goalRefs: [...] }`
+  for those atomic endpoints. It evaluates the referenced goals freshly through
+  the existing applicability rules, including cluster child unions. A later
+  verified deterministic migration can retain the exact former immediate
+  applicability expression while reducing authored `requires`; the basis does
+  not add prerequisite edges, learning targets, source coverage or mastery.
+  Current support requires a fully resolved local expression and rejects
+  malformed, duplicate, cyclic, foreign or Memory-derived dependencies. This is a temporary
+  compiler boundary, not a restriction on foreign prerequisites in the Personal
+  Curriculum. No authored catalog uses the field in this support delivery.
+  Ordinary description-review contexts reject its presence; the existing
+  V1–V7 migration proofs do not admit it. A separate verified proof extension
+  and actual projection/native checks are required before Biology admission.
 - local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem

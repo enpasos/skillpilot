@@ -327,6 +327,7 @@ function buildAudit(): SourceCoverageAudit {
         canonicalGoalById: goalById,
         surrogateEntriesByKey,
         isEligibleCanonicalGoal: isCurriculumSourceCoverageGoal,
+        getCanonicalRequires: (goal) => goal.requires,
       })
       const sourceBackedAtomicGoals = atomicGoals.filter((goal) =>
         coverageEvidence.hasCoverageBackedJurisdictionEvidence(goal))

@@ -1,0 +1,100 @@
+{
+  "status": "LOCAL_SELECTED_CHECKS_PASS_FULL_CI_PENDING",
+  "baseMain": "0bf53b12525335bb61ab8a51ad1d4543a3f4a6bd",
+  "reviewedPatchSha256": "4a5ea9bc7a3abf5f2c6fc77bdd03b45992b77cd30c3886e80b40d9e2674b1671",
+  "checks": {
+    "sourceCoverage": {
+      "chunk_id": "51249d",
+      "wall_time_seconds": 0.000010001,
+      "exit_code": 0,
+      "original_token_count": 970,
+      "output": "# Subtest: active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility\nok 1 - active Memory evidence resolves a successor outside the authoring directory and cannot weaken required visibility\n  ---\n  duration_ms: 9.075356\n  ...\n# Subtest: curriculum discovery excludes QA snapshots while keeping live source and mapping inputs\nok 2 - curriculum discovery excludes QA snapshots while keeping live source and mapping inputs\n  ---\n  duration_ms: 23.098314\n  ...\n# Subtest: active Memory support follows the final origin scope after prerequisite closure\nok 3 - active Memory support follows the final origin scope after prerequisite closure\n  ---\n  duration_ms: 14721.988288\n  ...\n# Subtest: applicabilityFromRequires uses all-of intersection semantics\nok 4 - applicabilityFromRequires uses all-of intersection semantics\n  ---\n  duration_ms: 0.241214\n  ...\n# Subtest: live assessment basis preserves the literal cluster predicate while learning demand is normalized\nok 5 - live assessment basis preserves the literal cluster predicate while learning demand is normalized\n  ---\n  duration_ms: 17101.037603\n  ...\n# Subtest: assessment basis is strict, immutable and confined to flagged atomic assessment endpoints\nok 6 - assessment basis is strict, immutable and confined to flagged atomic assessment endpoints\n  ---\n  duration_ms: 0.677144\n  ...\n# Subtest: assessment basis rejects unresolved aliases and predicate or child-union cycles\nok 7 - assessment basis rejects unresolved aliases and predicate or child-union cycles\n  ---\n  duration_ms: 0.752848\n  ...\n# Subtest: assessment basis validates strict reference syntax on nested contains and legacy assessment edges\nok 8 - assessment basis validates strict reference syntax on nested contains and legacy assessment edges\n  ---\n  duration_ms: 0.747748\n  ...\n# Subtest: first-unit assessment bases reject memory dependencies whose origin graph is outside this component\nok 9 - first-unit assessment bases reject memory dependencies whose origin graph is outside this component\n  ---\n  duration_ms: 0.890256\n  ...\n# Subtest: first-unit local assessment bases reject foreign dependencies instead of silently compiling an empty result\nok 10 - first-unit local assessment bases reject foreign dependencies instead of silently compiling an empty result\n  ---\n  duration_ms: 0.642541\n  ...\n# Subtest: empty referenced applicability remains empty instead of using an authored cache fallback\nok 11 - empty referenced applicability remains empty instead of using an authored cache fallback\n  ---\n  duration_ms: 2936.964142\n  ...\n# Subtest: inherited ordinary prerequisites preserve applicability after atomic materialization\nok 12 - inherited ordinary prerequisites preserve applicability after atomic materialization\n  ---\n  duration_ms: 11282.863556\n  ...\n# Subtest: source coverage visibility follows composition target roles, not requires-closure applicability\nok 13 - source coverage visibility follows composition target roles, not requires-closure applicability\n  ---\n  duration_ms: 2.355156\n  ...\n# Subtest: APV-202 is based only on source evidence\nok 14 - APV-202 is based only on source evidence\n  ---\n  duration_ms: 0.30392\n  ...\n# Subtest: ordinary direct and recursive ordinary source coverage pass\nok 15 - ordinary direct and recursive ordinary source coverage pass\n  ---\n  duration_ms: 0.839055\n  ...\n# Subtest: missing, cyclic, and cluster requiredBy routes fail closed\nok 16 - missing, cyclic, and cluster requiredBy routes fail closed\n  ---\n  duration_ms: 0.46283\n  ...\n# Subtest: assessment, practice, examData, and chains through them fail closed\nok 17 - assessment, practice, examData, and chains through them fail closed\n  ---\n  duration_ms: 0.398626\n  ...\n1..17\n# tests 17\n# suites 0\n# pass 17\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 46543.783067\n"
+    },
+    "description": {
+      "chunk_id": "14b9fd",
+      "wall_time_seconds": 0.000012501,
+      "exit_code": 0,
+      "original_token_count": 12,
+      "output": "Goal-description review campaign tests passed.\n"
+    },
+    "appTypeScript": {
+      "chunk_id": "7780d4",
+      "wall_time_seconds": 0.000007201,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "dual": {
+      "chunk_id": "6e0b0d",
+      "wall_time_seconds": 0.0000135,
+      "exit_code": 0,
+      "original_token_count": 14,
+      "output": "Goal-description dual-round resolution tests passed.\n"
+    },
+    "ordinaryLint": {
+      "chunk_id": "d36b7e",
+      "wall_time_seconds": 0.000008301,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    },
+    "pdf": {
+      "chunk_id": "632656",
+      "wall_time_seconds": 0.000012002,
+      "exit_code": 0,
+      "original_token_count": 44,
+      "output": "Built docs/concept/skill-graph/skillpilot-graph-definition.pdf\nThree LaTeX passes; no overflow, missing glyphs or unresolved references.\nBuild logs: tmp/skill-graph-document\n"
+    },
+    "documentation": {
+      "links": {
+        "chunk_id": "ef3da3",
+        "wall_time_seconds": 0.000014401,
+        "exit_code": 0,
+        "original_token_count": 31,
+        "output": "\n> skillpilot@0.0.0 check:docs-links\n> tsx scripts/checkMarkdownLinks.ts docs\n\nMarkdown link check passed for 392 files.\n"
+      },
+      "indexes": {
+        "chunk_id": "ed7877",
+        "wall_time_seconds": 0.000017302,
+        "exit_code": 0,
+        "original_token_count": 33,
+        "output": "\n> skillpilot@0.0.0 check:docs-indexes\n> tsx scripts/checkDocsIndexes.ts\n\nDocumentation index coverage check passed for 8 indexes.\n"
+      },
+      "notices": {
+        "chunk_id": "2058f8",
+        "wall_time_seconds": 0.0000087,
+        "exit_code": 0,
+        "original_token_count": 38,
+        "output": "\n> skillpilot@0.0.0 check:generated-doc-notices\n> tsx scripts/checkGeneratedMarkdownNotices.ts\n\nGenerated Markdown notice check passed for 33 files.\n"
+      },
+      "registry": {
+        "chunk_id": "7e592a",
+        "wall_time_seconds": 0.000014402,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "\n> skillpilot@0.0.0 check:generated-status-registry\n> tsx scripts/generateGeneratedStatusRegistry.ts --check\n\ndocs/qa-ci/status/README.md is up to date.\n"
+      },
+      "terminology": {
+        "chunk_id": "d617b1",
+        "wall_time_seconds": 0.000010001,
+        "exit_code": 0,
+        "original_token_count": 40,
+        "output": "\n> skillpilot@0.0.0 check:terminology\n> tsx scripts/checkTerminology.ts\n\nTerminology check passed for 177170 files with 57 exact reviewed legacy occurrence(s).\n"
+      }
+    }
+  },
+  "fullProof": {
+    "status": "INTENTIONALLY_INTERRUPTED_NOT_PASS",
+    "exitCode": 137,
+    "reason": "Reprioritized after user requested substantial acceleration; newly changed negatives and actual historical V5/V6 stages passed. Remaining duplicate local V7 certification is not claimed and remains mandatory in final-head CI.",
+    "actualOutput": "V7 applicability refresh fixture checks passed: 32\nV6 synthetic fixture checks passed: 31\nV6 required extra negative fixture checks passed: 3\nV6 live-frame helper checks passed: 9 (raw replay and binding only; no live catalog call)\nPrerequisite reduction proof: strict negatives, bound V4 parent, 204 historical operations, 29 V3 steps, 922 atomic cuts, 11 cluster-target steps and 720 snapshots passed.\nActual V6 registry: 2 batches, 3199 ordered operations, 162 batch sources, 881 deduplicated original snapshots and 21 complete documents passed.\n"
+  },
+  "boundaries": {
+    "noAuthoredBasisActivated": true,
+    "productionProofV1ToV7Unchanged": true,
+    "biologicalDataAdmitted": false,
+    "fullNativeAccepted": false,
+    "fullRemoteAccepted": false,
+    "hardStandardG17Activated": false
+  }
+}

@@ -59,6 +59,19 @@ class FirstMathPrerequisiteReductionTest {
     private static final String BIOLOGY = "08a43a1b-d97e-522c-9dfa-c950a493364e";
     private static final String LATIN = "668cf206-941e-51f8-8704-3e8938631235";
     private static final String GERMAN = "67bd301b-e11a-582d-94ba-4f4b1a4cefff";
+    private static final String CHEMISTRY = "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0";
+    // Exact separately frozen Chemistry candidate; historical sourceFP baselines remain unchanged.
+    private static final String CHEMISTRY_V7_WRAPPER_DIGEST = "sha256:e7d4415a37e5f4d9b351ff85538d519b79a0a2ff642293ee5e3118bb6ef6c4b6";
+    private static final String CHEMISTRY_V6_PARENT_DIGEST = "sha256:e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389";
+    private static final Path CHEMISTRY_SOURCE = findRepositoryRoot().resolve(
+            "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json");
+    private static final Map<String, List<String>> CHEMISTRY_ASSESSMENT_CLUSTER_BASIS = Map.of(
+            "8bf5a0ac-7ce1-53ea-b684-d9cc7b6072d5", List.of(
+                    "7982e338-79bd-554a-badf-21d9a72ed7f0", "37672991-f784-5223-a616-70e79b4cbcea",
+                    "0091a271-9103-549b-85e4-775412331a71", "a2ea5606-4ab6-5962-a510-32d205459dd5"),
+            "70742457-7aeb-5c55-a852-e73b8288a8d1", List.of(
+                    "0ff2e679-cfcd-5fbf-bc87-e74859cfdac1", "30dbd316-41c7-514b-85b4-7a77a4bc8b2c",
+                    "fc3d6ef9-7c0c-5b53-aade-23f20ac8a5cd", "ff33692b-c42a-5d27-b222-08a96b878954"));
     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final Map<String, Set<String>> PHYSICS_PROBES_BY_SOURCE = Map.ofEntries(
             Map.entry("00e2ddfe-18c1-57a4-86ad-ee467a1a3d61", Set.of("00e2ddfe-18c1-57a4-86ad-ee467a1a3d61")),
@@ -1085,19 +1098,19 @@ class FirstMathPrerequisiteReductionTest {
         JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
         assertThat(active.path("proofContract").asText()).isEqualTo(V7);
         assertThat(rawByteHash(Files.readAllBytes(REDUCTION_REGISTRY)))
-                .isEqualTo("sha256:2fc01e8c0bd0cf1bf7af05d094cac9373ca985d9c9fd5128b3bd15745e614000");
+                .isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
         assertThat(active.path("parentRegistryRawDigest").asText())
-                .isEqualTo("sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93");
+                .isEqualTo(CHEMISTRY_V6_PARENT_DIGEST);
         NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active);
         JsonNode declared = cacheFrame.registry();
         assertThat(declared.path("proofContract").asText()).isEqualTo(V6);
-        assertThat(declared.path("batches")).as("the concrete German then Physics delivery").hasSize(2);
+        assertThat(declared.path("batches")).as("German then Physics then Chemistry delivery; compare only the Physics boundary").hasSize(3);
         assertThat(declared.path("batches").get(0).path("id").asText())
                 .isEqualTo("de-complete-atomic-prerequisites-and-transitive-reduction");
         BatchNativeFrames frames = readBatchedReductionRegistry(declared, cacheFrame.documents());
         assertRawDocumentDigest(frames.afterGerman().currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:d940e65e82bbe28b09395a61f7d6a117ca95589fb758e361cee0c0751a4939f1", "historical after-German Physics before cache refresh");
-        assertRawDocumentDigest(frames.current().currentDocuments().get(PHYSICS_SOURCE),
+        assertRawDocumentDigest(frames.afterPhysics().currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:b03e3da1ac957226765dbec846a600fde1183719927652ed6caf0b7ec02b67ba", "historical after-Physics document before cache refresh");
         CurrentCacheComparisonFrames comparison = currentPhysicsCacheFrames(active, declared, cacheFrame, frames);
         ReductionRegistry prior = comparison.before(), current = comparison.after();
@@ -1488,13 +1501,500 @@ class FirstMathPrerequisiteReductionTest {
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
         assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
-        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=actual-final-V7 cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d completionWitnessNegativeControls=3 canonicalAtomicProbeCoverage=%s unavailableCompatibilityProbes=%s validRoleReached=%s invalidRoleReached=%s failClosedReached=%s mathConsumerTargets=%s mathValidConsumers=%s mathInvalidConsumers=%s mathPairPositive=%s mathPairNegative=%s mathPairFailClosed=%s publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+        System.out.printf("PHYSICS_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-German-with-current-V7-caches current=after-Physics-with-current-V7-caches finalCatalogBoundSeparately=true cacheSources=27 priorRegisteredSources=%d registeredSources=%d physicsBatchSources=%d affectedAtomicProbes=%d nativeAtomicProbes=%d sourceProbePairs=175 foreignMathRawReferences=162 foreignMathAtoms=54 discoveredConfigurations=%d completedScopes=%d incompleteScopes=%d incomplete409Responses=%d sourceRuntimeReachedUnion=%s sourceProbeReached=%s runtimeReachedUnion=%s mathContextReached=%s mathPositiveReached=%s mathNegativeReached=%s rolePairs=%d frontierPairs=%d completionPairs=%d positiveControls=%d negativeControls=%d invalidRolePairs=%d completionWitnessNegativeControls=3 canonicalAtomicProbeCoverage=%s unavailableCompatibilityProbes=%s validRoleReached=%s invalidRoleReached=%s failClosedReached=%s mathConsumerTargets=%s mathValidConsumers=%s mathInvalidConsumers=%s mathPairPositive=%s mathPairNegative=%s mathPairFailClosed=%s publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
                 prior.changedSources().size(), current.changedSources().size(), physicsSources.size(), affectedProbes.size(), allProbes.size(),
                 leftDiscovery.configurations().size(), completedScopes, incompleteScopes, incomplete409Responses,
                 sourceRuntimeReachedUnion, sourceProbeReached, runtimeReachedUnion, mathContextReached, mathPositiveReached, mathNegativeReached,
                 rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs,
                 canonicalProbeCoverage, unavailableProbes, validRoleReached, invalidRoleReached, failClosedReached,
                 mathConsumerTargets, mathValidConsumers, mathInvalidConsumers, mathPairPositive, mathPairNegative, mathPairFailClosed);
+    }
+
+    @Test
+    void batchedChemistrySourcesPreserveFinalCurrentNativeAtomicDemandRolesAndFrontier() throws Exception {
+        // Raw bytes were checked against the separately frozen Chemistry candidate manifest.
+        JsonNode active = MAPPER.readTree(REDUCTION_REGISTRY.toFile());
+        assertThat(rawByteHash(Files.readAllBytes(REDUCTION_REGISTRY))).isEqualTo(CHEMISTRY_V7_WRAPPER_DIGEST);
+        assertThat(active.path("parentRegistryRawDigest").asText()).isEqualTo(CHEMISTRY_V6_PARENT_DIGEST);
+        NativeV6Frame cacheFrame = readApplicabilityRefreshFrame(active);
+        JsonNode declared = cacheFrame.registry();
+        assertThat(declared.path("batches")).hasSize(3);
+        JsonNode chemistryBatch = declared.path("batches").get(2);
+        assertThat(chemistryBatch.path("id").asText()).isEqualTo("ch-complete-atomic-prerequisites-and-transitive-reduction");
+        assertThat(rawHash(chemistryBatch)).isEqualTo("sha256:866aa0455fd0b6b118f0c7f72d5dd78a09227dec07e230125801a2ad61e6ac05");
+        assertThat(rawByteHash(Files.readAllBytes(CHEMISTRY_SOURCE)))
+                .isEqualTo("sha256:e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d");
+        assertThat(chemistryBatch.path("previousDigest").asText())
+                .isEqualTo("sha256:905c70b6a80683d4d5a7c1024568ce672f60a0aecbb33f264a85c97448b3bc8f");
+        Path physicsParentPath = exactRegularRepositoryFile(
+                "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-physics-20261109.json");
+        assertThat(rawByteHash(Files.readAllBytes(physicsParentPath)))
+                .isEqualTo("sha256:dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93");
+        JsonNode physicsParent = MAPPER.readTree(physicsParentPath.toFile());
+        for (int index = 0; index < 2; index++) assertThat(declared.path("batches").get(index))
+                .as("immutable complete historical batch %s", index).isEqualTo(physicsParent.path("batches").get(index));
+        BatchNativeFrames frames = readBatchedReductionRegistry(declared, cacheFrame.documents());
+        CurrentCacheComparisonFrames comparison = currentChemistryCacheFrames(active, cacheFrame, frames);
+        ReductionRegistry prior = comparison.before(), current = comparison.after();
+        assertThat(prior.changedSources()).hasSize(881);
+        assertThat(current.changedSources()).hasSize(1062);
+        assertThat(chemistryBatch.path("operations")).hasSize(1308);
+        assertThat(chemistryBatch.path("legacyContinuations")).hasSize(2);
+        Set<String> chemistrySources = new TreeSet<>(), operationSources = new TreeSet<>();
+        for (JsonNode original : chemistryBatch.path("originalRequires")) {
+            String[] id = qualifiedIdentity(original.path("source").asText());
+            assertThat(id[0]).isEqualTo(CHEMISTRY);
+            assertThat(chemistrySources.add(id[1])).isTrue();
+        }
+        int materializations = 0, clusterTargets = 0, clusterSources = 0, atomicCuts = 0;
+        for (JsonNode operation : chemistryBatch.path("operations")) {
+            List<JsonNode> steps = new ArrayList<>();
+            if (operation.has("step")) steps.add(operation.path("step"));
+            else operation.path("steps").forEach(steps::add);
+            assertThat(steps).isNotEmpty();
+            for (JsonNode step : steps) {
+                String[] id = qualifiedIdentity(step.path("source").asText());
+                assertThat(id[0]).as("only authored Chemistry operation sources").isEqualTo(CHEMISTRY);
+                operationSources.add(id[1]);
+                switch (step.path("operation").asText()) {
+                    case "materialize-atomic" -> materializations++;
+                    case "remove-cluster-target" -> clusterTargets++;
+                    case "remove-cluster" -> clusterSources++;
+                    default -> { assertThat(step.has("witness")).isTrue(); atomicCuts++; }
+                }
+            }
+        }
+        assertThat(materializations).isEqualTo(578);
+        assertThat(clusterTargets).isEqualTo(46);
+        assertThat(clusterSources).isEqualTo(11);
+        assertThat(atomicCuts).isEqualTo(673);
+        assertThat(chemistrySources).hasSize(181).isEqualTo(operationSources);
+        assertThat(chemistrySources).doesNotContainAnyElementsOf(prior.changedSources().keySet());
+        assertThat(chemistrySources.stream().filter(id -> current.changedSources().get(id).atomicSource()).count()).isEqualTo(171);
+        assertThat(chemistrySources.stream().filter(id -> !current.changedSources().get(id).atomicSource()).count()).isEqualTo(10);
+        Set<String> expectedUnion = new TreeSet<>(prior.changedSources().keySet());
+        expectedUnion.addAll(chemistrySources);
+        assertThat(current.changedSources().keySet()).isEqualTo(expectedUnion);
+        for (String original : List.of("bb707fda-504c-4699-a78c-d0a6c320658f", "871eabde-6e19-59d3-bc7c-60977a9837db",
+                "08b44b8f-e407-5a1f-82dc-e70e598022cf", "10ce2814-8796-5633-9bed-f6990d039b91")) {
+            assertThat(current.changedSources().get(original).originalRequires())
+                    .as("unchanged earliest Chemistry baseline %s", original).isEqualTo(prior.changedSources().get(original).originalRequires());
+            assertThat(current.changedSources().get(original).originalRequiresPresent())
+                    .isEqualTo(prior.changedSources().get(original).originalRequiresPresent());
+        }
+        Map<String, JsonNode> priorChemistry = rawGoals(prior.currentDocuments().get(CHEMISTRY_SOURCE));
+        Map<String, JsonNode> currentChemistry = rawGoals(current.currentDocuments().get(CHEMISTRY_SOURCE));
+        assertThat(priorChemistry).hasSize(742);
+        assertThat(chemistrySources.stream().filter(id -> !java.util.Objects.equals(
+                priorChemistry.get(id).get("requires"), currentChemistry.get(id).get("requires"))).count()).isEqualTo(153);
+        ObjectNode badPredecessor = declared.deepCopy();
+        ((ObjectNode) badPredecessor.path("batches").get(2)).put("previousDigest", "sha256:" + "0".repeat(64));
+        assertThatThrownBy(() -> readBatchedReductionRegistry(badPredecessor)).isInstanceOf(AssertionError.class);
+        Map<Path, byte[]> sourceBytes = new LinkedHashMap<>();
+        for (Path source : current.canonicalOwners().keySet()) sourceBytes.put(source, Files.readAllBytes(source));
+        byte[] registryBytes = Files.readAllBytes(REDUCTION_REGISTRY);
+        var before = new NativeFixture(prior, false);
+        var after = new NativeFixture(current, false);
+        assertThat(after.canonicalAtomicIds).isEqualTo(before.canonicalAtomicIds);
+        assertThat(nativeChemistryApplicability(after)).isEqualTo(nativeChemistryApplicability(before));
+        Map<String, Set<String>> probesBySource = new TreeMap<>();
+        Set<String> allProbes = new TreeSet<>();
+        for (String source : chemistrySources) {
+            assertThat(current.changedSources().get(source).owner()).isEqualTo(CHEMISTRY);
+            Set<String> atoms = canonicalAtomicDescendants(source, before.canonicalGoals);
+            assertThat(canonicalAtomicDescendants(source, after.canonicalGoals)).isEqualTo(atoms);
+            assertThat(after.atomicProbesBySource.get(source)).isEqualTo(atoms);
+            probesBySource.put(source, new TreeSet<>(atoms));
+            allProbes.addAll(atoms);
+        }
+        assertThat(allProbes).hasSize(174);
+        assertThat(probesBySource.values().stream().mapToInt(Set::size).sum()).isEqualTo(241);
+        assertThat(rawHash(MAPPER.valueToTree(probesBySource))).isEqualTo("sha256:bf5118a166f46f2604567531d242195b90c0d10fcd48ce12e2cce8226ccf4714");
+        Set<String> unavailableProbes = physicsUnavailableCompatibilityProbes(before, after, allProbes);
+        Set<String> canonicalProbeCoverage = assertChemistryCanonicalDemands(before, after, priorChemistry, allProbes, unavailableProbes);
+        Discovery leftDiscovery = discover(before, CHEMISTRY, readGuiOfferings().path(CHEMISTRY));
+        Discovery rightDiscovery = discover(after, CHEMISTRY, readGuiOfferings().path(CHEMISTRY));
+        assertThat(rightDiscovery).as("actual Chemistry planner, GUI and independently resolved GK/LK configurations").isEqualTo(leftDiscovery);
+        assertThat(leftDiscovery.configurations()).isNotEmpty();
+        Map<String, Set<String>> sourceRuntimeReachedUnion = new TreeMap<>(), sourceProbeReached = new TreeMap<>();
+        Map<String, Set<String>> runtimeReachedUnion = new TreeMap<>(), positiveReached = new TreeMap<>(), negativeReached = new TreeMap<>();
+        Map<String, Set<String>> validRoleReached = new TreeMap<>(), invalidRoleReached = new TreeMap<>(), failClosedReached = new TreeMap<>();
+        probesBySource.forEach((source, atoms) -> {
+            sourceRuntimeReachedUnion.put(source, new TreeSet<>());
+            atoms.forEach(atom -> sourceProbeReached.put(source + "->" + atom, new TreeSet<>()));
+        });
+        allProbes.forEach(atom -> {
+            for (Map<String, Set<String>> ledger : List.of(runtimeReachedUnion, positiveReached, negativeReached,
+                    validRoleReached, invalidRoleReached, failClosedReached)) ledger.put(atom, new TreeSet<>());
+        });
+        Map<String, Set<String>> assessmentBasisReached = new TreeMap<>();
+        CHEMISTRY_ASSESSMENT_CLUSTER_BASIS.keySet().forEach(id -> assessmentBasisReached.put(id, new TreeSet<>()));
+        LearnerService beforePublic = org.mockito.Mockito.spy(before.service), afterPublic = org.mockito.Mockito.spy(after.service);
+        String probeId = "unsaved-chemistry-batch-native-control";
+        boolean completionWitnessNegativesChecked = false;
+        long rolePairs = 0, frontierPairs = 0, completionPairs = 0, positiveControls = 0, negativeControls = 0, invalidRolePairs = 0;
+        int completedScopes = 0, incompleteScopes = 0, incomplete409Responses = 0, combinedScopeComparisons = 0;
+        for (var configuration : leftDiscovery.configurations().entrySet()) {
+            String scope = configuration.getKey();
+            List<PersonalizationPlan> plans = new ArrayList<>();
+            for (NativeFixture fixture : List.of(before, after)) plans.add(CurriculumPersonalizationPlanner.plan(
+                    ROOT, fixture.landscapes::getById,
+                    (subject, settings) -> ReflectionTestUtils.invokeMethod(fixture.service, "resolvePersonalizationOfferingScope", subject, settings),
+                    configuration.getValue()));
+            assertThat(plans.get(1)).as("real Chemistry personal-curriculum validity: %s", scope).isEqualTo(plans.get(0));
+            if (!plans.get(0).valid() || plans.get(0).required()) {
+                assertThat(leftDiscovery.plannerScopes()).doesNotContain(scope);
+                assertThat(rightDiscovery.plannerScopes()).doesNotContain(scope);
+                for (LearnerService service : List.of(beforePublic, afterPublic)) {
+                    var learner = new Learner();
+                    learner.setSelectedCurriculum(ROOT);
+                    learner.setPersonalCurriculum(MAPPER.writeValueAsString(configuration.getValue()));
+                    org.mockito.Mockito.doReturn(learner).when(service).getLearner(probeId);
+                    try {
+                        service.getPlanningScope(probeId, CHEMISTRY);
+                        throw new AssertionError("Incomplete Chemistry personal curriculum unexpectedly accepted: " + scope);
+                    } catch (org.springframework.web.server.ResponseStatusException expected) {
+                        assertThat(expected.getStatusCode().value()).isEqualTo(409);
+                        assertThat(expected.getReason()).isEqualTo("The learner's personal curriculum is incomplete.");
+                        incomplete409Responses++;
+                    }
+                }
+                incompleteScopes++;
+                continue;
+            }
+            completedScopes++;
+            NativeScope left = before.resolve(configuration.getValue()), right = after.resolve(rightDiscovery.configurations().get(scope));
+            assertThat(right.roles()).as("Chemistry roles: %s", scope).isEqualTo(left.roles());
+            assertThat(right.graph().keySet()).as("Chemistry native graph: %s", scope).isEqualTo(left.graph().keySet());
+            assertThat(right.context()).as("Chemistry compiler context: %s", scope).isEqualTo(left.context());
+            assertThat(projectedApplicability(right)).as("Chemistry projected applicability: %s", scope).isEqualTo(projectedApplicability(left));
+            for (String unavailable : unavailableProbes) {
+                assertPhysicsUnavailableInActualScope(left, unavailable, scope);
+                assertPhysicsUnavailableInActualScope(right, unavailable, scope);
+            }
+            assertChemistryProjectionPreserved(left, right, scope);
+            for (var basis : CHEMISTRY_ASSESSMENT_CLUSTER_BASIS.entrySet()) {
+                if (!left.roles().targets().contains(basis.getKey())) continue;
+                assertChemistryAssessmentClusterBasis(left, basis.getKey(), basis.getValue(), scope);
+                assertChemistryAssessmentClusterBasis(right, basis.getKey(), basis.getValue(), scope);
+                assessmentBasisReached.get(basis.getKey()).add(scope);
+            }
+            if ("GK+LK".equals(configuration.getValue().get(CHEMISTRY).get("filterId"))) {
+                // Preserve the actual authoritative combined scope, including its established
+                // joint course filtering; do not substitute a newly invented single-scope union.
+                String combined = MAPPER.writeValueAsString(configuration.getValue());
+                assertThat(after.service.getFilteredAtomicGoalIds(ROOT, combined, null, false))
+                        .as("actual combined-scope public atomic target identity %s", scope)
+                        .isEqualTo(before.service.getFilteredAtomicGoalIds(ROOT, combined, null, false));
+                combinedScopeComparisons++;
+            }
+            Set<String> contextAtoms = new TreeSet<>(left.context());
+            contextAtoms.retainAll(before.canonicalAtomicIds);
+            contextAtoms.addAll(left.roles().atomicTargets());
+            Object leftMastered = fullMasteryPrerequisites(left.graph(), left.topology());
+            Object rightMastered = fullMasteryPrerequisites(right.graph(), right.topology());
+            for (String atom : contextAtoms) {
+                assertThat(right.topology().transitivePrerequisites(atom)).as("Chemistry full atomic demand %s: %s", atom, scope)
+                        .isEqualTo(left.topology().transitivePrerequisites(atom));
+                if (!left.roles().atomicTargets().contains(atom)) continue;
+                assertThat(roleProbeWithPrerequisites(after.service, right.graph(), right.projection(), atom, rightMastered))
+                        .as("Chemistry effective role validity %s: %s", atom, scope)
+                        .isEqualTo(roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered));
+                rolePairs++;
+            }
+
+            Map<String, Double> all = new TreeMap<>();
+            left.graph().keySet().forEach(id -> all.put(id, 1.0));
+            Object previousBefore = ReflectionTestUtils.getField(before.service, "completionApplicationService");
+            Object previousAfter = ReflectionTestUtils.getField(after.service, "completionApplicationService");
+            var beforeApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(),
+                    prior.documentDigests().get(CHEMISTRY_SOURCE).current(), true));
+            var afterApplication = new CompletionApplicationService(new CompletionProfileCatalog(Map.of(), Map.of(),
+                    current.documentDigests().get(CHEMISTRY_SOURCE).current(), true));
+            ReflectionTestUtils.setField(before.service, "completionApplicationService", beforeApplication);
+            ReflectionTestUtils.setField(after.service, "completionApplicationService", afterApplication);
+            try {
+                CompiledCompletionProfile leftCompletion = ReflectionTestUtils.invokeMethod(before.service, "compileCompletionScope",
+                        left.learner(), "automatic:personal-curriculum", left.projection(), left.graph());
+                CompiledCompletionProfile rightCompletion = ReflectionTestUtils.invokeMethod(after.service, "compileCompletionScope",
+                        right.learner(), "automatic:personal-curriculum", right.projection(), right.graph());
+                Map<String, Set<String>> leftAssessmentDemand = new TreeMap<>(), rightAssessmentDemand = new TreeMap<>();
+                leftCompletion.assessmentGoalIds().forEach(id ->
+                        leftAssessmentDemand.put(id, left.topology().transitivePrerequisites(id)));
+                rightCompletion.assessmentGoalIds().forEach(id ->
+                        rightAssessmentDemand.put(id, right.topology().transitivePrerequisites(id)));
+                for (var basis : CHEMISTRY_ASSESSMENT_CLUSTER_BASIS.entrySet()) {
+                    String anchor = basis.getKey();
+                    if (!left.roles().targets().contains(anchor)) continue;
+                    Map<String, Double> anchorOnlyMastery = Map.of(anchor, 1.0);
+                    CompletionEvaluation original = beforeApplication.evaluate(leftCompletion, anchorOnlyMastery);
+                    CompletionEvaluation reduced = afterApplication.evaluate(rightCompletion, anchorOnlyMastery);
+                    assertPhysicsCompletionPreserved(original, reduced, leftCompletion, rightCompletion, left, right,
+                            anchorOnlyMastery, leftAssessmentDemand, rightAssessmentDemand,
+                            "Chemistry cluster mastery does not replace child assessments " + anchor + ": " + scope);
+                    assertChemistryClusterMasteryDoesNotTransfer(before.service, left, anchorOnlyMastery, original, basis.getValue(), scope);
+                    assertChemistryClusterMasteryDoesNotTransfer(after.service, right, anchorOnlyMastery, reduced, basis.getValue(), scope);
+                    completionPairs++;
+                }
+                for (Map<String, Double> masteryCase : List.of(Map.<String, Double>of(), all)) {
+                    CompletionEvaluation original = beforeApplication.evaluate(leftCompletion, masteryCase);
+                    assertPhysicsCompletionPreserved(original, afterApplication.evaluate(rightCompletion, masteryCase),
+                            leftCompletion, rightCompletion, left, right, masteryCase, leftAssessmentDemand, rightAssessmentDemand,
+                            "Chemistry whole-scope completion: " + scope);
+                    if (!completionWitnessNegativesChecked && !original.blockedByGoalIds().isEmpty()) {
+                        assertPhysicsCompletionWitnessNegatives(leftCompletion, left, leftAssessmentDemand, masteryCase, original);
+                        completionWitnessNegativesChecked = true;
+                    }
+                    assertThat(original.complete()).as("Chemistry all-open/all-closed completion control: %s", scope)
+                            .isEqualTo(!masteryCase.isEmpty());
+                    completionPairs++;
+                }
+                for (String atom : allProbes) {
+                    boolean target = left.roles().atomicTargets().contains(atom);
+                    assertThat(right.roles().atomicTargets().contains(atom)).as("Chemistry actual target exposure %s: %s", atom, scope).isEqualTo(target);
+                    assertThat(right.context().contains(atom)).as("Chemistry source context reach %s: %s", atom, scope)
+                            .isEqualTo(left.context().contains(atom));
+                    if (!target) continue;
+                    runtimeReachedUnion.get(atom).add(scope);
+                    for (String source : chemistrySources) if (probesBySource.get(source).contains(atom)) {
+                        sourceRuntimeReachedUnion.get(source).add(scope);
+                        sourceProbeReached.get(source + "->" + atom).add(scope);
+                    }
+                    Set<String> demand = left.topology().transitivePrerequisites(atom);
+                    boolean roleValid = roleProbeWithPrerequisites(before.service, left.graph(), left.projection(), atom, leftMastered);
+                    if (roleValid) assertThat(demand).as("meaningful Chemistry prerequisite control %s: %s", atom, scope).isNotEmpty();
+                    if (roleValid) {
+                        assertChemistryMissingRoleControls(before.service, left, atom, scope);
+                        assertChemistryMissingRoleControls(after.service, right, atom, scope);
+                        invalidRolePairs += 6;
+                    }
+                    (roleValid ? validRoleReached : invalidRoleReached).get(atom).add(scope);
+                    Map<String, Double> prepared = new TreeMap<>();
+                    demand.forEach(id -> prepared.put(id, 1.0));
+                    assertThat(prepared).doesNotContainKey(atom);
+                    Map<String, Double> missing = new TreeMap<>(prepared);
+                    if (!demand.isEmpty()) missing.remove(demand.stream().sorted().findFirst().orElseThrow());
+                    List<AtomicFrontierCase> cases = List.of(
+                            new AtomicFrontierCase("chemistry-normal-empty", Map.of(), null, false, null),
+                            new AtomicFrontierCase("chemistry-normal-prepared-source-open", prepared, null, false, roleValid),
+                            new AtomicFrontierCase("chemistry-strict-prepared-source-open", prepared, null, true, roleValid),
+                            new AtomicFrontierCase("chemistry-strict-missing-one", missing, null, true, null),
+                            new AtomicFrontierCase("chemistry-strict-empty", Map.of(), null, true, false),
+                            new AtomicFrontierCase("chemistry-normal-single-source-focus", Map.of(), Set.of(atom), false, roleValid),
+                            new AtomicFrontierCase("chemistry-strict-single-source-focus", Map.of(), Set.of(atom), true, false));
+                    for (AtomicFrontierCase probe : cases) {
+                        boolean original = atomicFrontierProbe(before.service, left, atom, probe);
+                        assertThat(atomicFrontierProbe(after.service, right, atom, probe))
+                                .as("Chemistry normal/strict/focus frontier %s/%s: %s", atom, probe.name(), scope).isEqualTo(original);
+                        if (!roleValid) {
+                            assertThat(original).as("invalid Chemistry roles fail closed %s/%s: %s", atom, probe.name(), scope).isFalse();
+                            invalidRolePairs++;
+                        }
+                        if (probe.expected() != null) assertThat(original).as("real Chemistry frontier control %s/%s: %s", atom, probe.name(), scope)
+                                .isEqualTo(probe.expected());
+                        if (roleValid && "chemistry-strict-prepared-source-open".equals(probe.name()) && original) {
+                            positiveControls++;
+                            positiveReached.get(atom).add(scope);
+                        }
+                        if (roleValid && "chemistry-strict-empty".equals(probe.name()) && !original) {
+                            negativeControls++;
+                            negativeReached.get(atom).add(scope);
+                        }
+                        frontierPairs++;
+                    }
+                    // Record invalid coverage only after every unchanged seven-case frontier control passed.
+                    if (!roleValid) failClosedReached.get(atom).add(scope);
+
+                    Map<String, Double> masteredSourceLeafOpen = new TreeMap<>(missing);
+                    masteredSourceLeafOpen.put(atom, 1.0);
+                    for (Map<String, Double> masteryCase : List.of(prepared, missing, masteredSourceLeafOpen)) {
+                        assertPhysicsCompletionPreserved(beforeApplication.evaluate(leftCompletion, masteryCase),
+                                afterApplication.evaluate(rightCompletion, masteryCase), leftCompletion, rightCompletion,
+                                left, right, masteryCase, leftAssessmentDemand, rightAssessmentDemand,
+                                "Chemistry complete evaluation for source/prerequisite state " + atom + ": " + scope);
+                        Map<String, Double> originalEffective = ReflectionTestUtils.invokeMethod(before.service, "computeEffectiveMastery", left.graph(), masteryCase);
+                        Map<String, Double> finalEffective = ReflectionTestUtils.invokeMethod(after.service, "computeEffectiveMastery", right.graph(), masteryCase);
+                        assertThat(finalEffective).as("Chemistry effective mastery %s: %s", atom, scope).isEqualTo(originalEffective);
+                        completionPairs++;
+                    }
+                }
+            } finally {
+                ReflectionTestUtils.setField(before.service, "completionApplicationService", previousBefore);
+                ReflectionTestUtils.setField(after.service, "completionApplicationService", previousAfter);
+            }
+        }
+        assertThat(completedScopes + incompleteScopes).isEqualTo(leftDiscovery.configurations().size());
+        assertThat(completedScopes).isPositive();
+        assertThat(incompleteScopes).as("actual Chemistry incomplete-configuration controls").isPositive();
+        assertThat(incomplete409Responses).isEqualTo(2 * incompleteScopes);
+        assertPhysicsProbeExposureDomain(allProbes, runtimeReachedUnion, unavailableProbes, canonicalProbeCoverage);
+        for (String atom : allProbes) assertPhysicsCoverageLedger("Chemistry " + atom, runtimeReachedUnion.get(atom),
+                validRoleReached.get(atom), invalidRoleReached.get(atom), positiveReached.get(atom), negativeReached.get(atom), failClosedReached.get(atom));
+        sourceRuntimeReachedUnion.forEach((source, scopes) -> {
+            Set<String> expected = new TreeSet<>();
+            probesBySource.get(source).forEach(atom -> expected.addAll(runtimeReachedUnion.get(atom)));
+            assertThat(scopes).isEqualTo(expected);
+            if (scopes.isEmpty()) {
+                assertThat(unavailableProbes).containsAll(probesBySource.get(source));
+                assertThat(canonicalProbeCoverage).containsAll(probesBySource.get(source));
+            }
+        });
+        sourceProbeReached.forEach((pair, scopes) -> {
+            String atom = pair.substring(pair.indexOf("->") + 2);
+            assertThat(scopes).isEqualTo(runtimeReachedUnion.get(atom));
+            if (scopes.isEmpty()) { assertThat(unavailableProbes).contains(atom); assertThat(canonicalProbeCoverage).contains(atom); }
+        });
+        assessmentBasisReached.forEach((anchor, scopes) ->
+                assertThat(scopes).as("actual reviewed assessment-cluster basis reached %s", anchor).isNotEmpty());
+        assertThat(combinedScopeComparisons).as("actual discovered combined-scope identity comparisons").isPositive();
+        assertThat(rolePairs).isPositive();
+        assertThat(frontierPairs).isPositive();
+        assertThat(completionPairs).isPositive();
+        assertThat(completionWitnessNegativesChecked).isTrue();
+        assertThat(invalidRolePairs).isPositive();
+        assertThat(positiveControls).isPositive();
+        assertThat(negativeControls).isPositive();
+        before.verifyOnlyUnsavedFixtures(); after.verifyOnlyUnsavedFixtures();
+        for (var source : sourceBytes.entrySet()) assertThat(Files.readAllBytes(source.getKey())).isEqualTo(source.getValue());
+        assertThat(Files.readAllBytes(REDUCTION_REGISTRY)).isEqualTo(registryBytes);
+        System.out.printf("CHEMISTRY_BATCH_FINAL_V7_NATIVE_COVERAGE baseline=after-Physics-with-current-27-caches current=Chemistry-final operations=1308 sources=%d atomicProbes=%d sourceProbePairs=241 discovered=%d complete=%d incomplete=%d incomplete409=%d rolePairs=%d frontierPairs=%d completionPairs=%d positive=%d negative=%d invalidRolePairs=%d runtime=%s valid=%s invalid=%s failClosed=%s sourceRuntime=%s sourceProbeRuntime=%s canonicalCoverage=%s metadataExcluded=%s publicPositiveFrontierListCoverage=false nodeProofCoverage=false%n",
+                chemistrySources.size(), allProbes.size(), leftDiscovery.configurations().size(), completedScopes, incompleteScopes,
+                incomplete409Responses, rolePairs, frontierPairs, completionPairs, positiveControls, negativeControls, invalidRolePairs,
+                runtimeReachedUnion, validRoleReached, invalidRoleReached, failClosedReached, sourceRuntimeReachedUnion, sourceProbeReached,
+                canonicalProbeCoverage, unavailableProbes);
+    }
+
+    private static CurrentCacheComparisonFrames currentChemistryCacheFrames(JsonNode wrapper, NativeV6Frame cacheFrame,
+            BatchNativeFrames frames) throws IOException {
+        JsonNode snapshots = wrapper.path("originalApplicability");
+        assertThat(snapshots).hasSize(27);
+        Map<Path, JsonNode> before = mutableDocuments(frames.afterPhysics().currentDocuments());
+        Map<Path, JsonNode> after = mutableDocuments(frames.current().currentDocuments());
+        copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), before);
+        copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), after);
+        assertThat(after).as("whole actual final Chemistry V7 catalog").isEqualTo(cacheFrame.currentDocuments());
+        for (Path path : before.keySet()) {
+            if (!path.equals(CHEMISTRY_SOURCE)) assertThat(after.get(path)).as("other twenty canonical documents: %s", path).isEqualTo(before.get(path));
+            else {
+                ObjectNode left = before.get(path).deepCopy(), right = after.get(path).deepCopy();
+                for (JsonNode goal : left.path("goals")) ((ObjectNode) goal).remove("requires");
+                for (JsonNode goal : right.path("goals")) ((ObjectNode) goal).remove("requires");
+                assertThat(right).as("all Chemistry non-requires fields, goal order and contains").isEqualTo(left);
+            }
+        }
+        Map<Path, JsonNode> oldBefore = mutableDocuments(before), oldAfter = mutableDocuments(after);
+        restoreOriginalApplicability(snapshots, oldBefore); restoreOriginalApplicability(snapshots, oldAfter);
+        assertThat(oldBefore).isEqualTo(frames.afterPhysics().currentDocuments());
+        assertThat(oldAfter).isEqualTo(frames.current().currentDocuments());
+        return new CurrentCacheComparisonFrames(currentCacheComparisonRegistry(frames.afterPhysics(), before),
+                currentCacheComparisonRegistry(frames.current(), after));
+    }
+
+    private static Map<String, JsonNode> nativeChemistryApplicability(NativeFixture fixture) {
+        Map<String, JsonNode> result = new TreeMap<>();
+        for (var landscape : fixture.landscapes.getClosure(ROOT)) if (CHEMISTRY.equals(landscape.getLandscapeId()))
+            for (var goal : landscape.getGoals()) result.put(goal.getId(), MAPPER.valueToTree(goal).path("applicability"));
+        assertThat(result).hasSize(742); return result;
+    }
+
+    private static void assertChemistryProjectionPreserved(NativeScope before, NativeScope after, String label) {
+        assertThat(ReflectionTestUtils.<Object>invokeMethod(after.projection(), "presentationRootGoalIds"))
+                .as("Chemistry presentation roots %s", label)
+                .isEqualTo(ReflectionTestUtils.<Object>invokeMethod(before.projection(), "presentationRootGoalIds"));
+        Map<String, LearningGoal> left = ReflectionTestUtils.invokeMethod(before.projection(), "visibleGoals");
+        Map<String, LearningGoal> right = ReflectionTestUtils.invokeMethod(after.projection(), "visibleGoals");
+        assertThat(right.keySet()).as("Chemistry visible goal IDs %s", label).isEqualTo(left.keySet());
+        left.forEach((id, goal) -> {
+            ObjectNode a = MAPPER.valueToTree(goal), b = MAPPER.valueToTree(right.get(id));
+            a.remove("requires"); b.remove("requires");
+            assertThat(b).as("Chemistry ordered tree, text, applicability and presentation %s: %s", id, label).isEqualTo(a);
+        });
+    }
+
+    private static Set<String> assertChemistryCanonicalDemands(NativeFixture before, NativeFixture after,
+            Map<String, JsonNode> rawChemistry, Set<String> probes, Set<String> unavailable) throws IOException {
+        var compiler = new CompletionProfileCompiler();
+        var left = compiler.normalizePrerequisites(before.canonicalGoals);
+        var right = compiler.normalizePrerequisites(after.canonicalGoals);
+        Set<String> atoms = new TreeSet<>();
+        rawChemistry.forEach((id, goal) -> { if (goal.path("contains").isEmpty()) atoms.add(id); });
+        assertThat(atoms).hasSize(641).containsAll(probes);
+        left.validateContext(atoms); right.validateContext(atoms);
+        long pairs = 0;
+        List<String> closurePairs = new ArrayList<>();
+        for (String atom : atoms) {
+            Set<String> demand = left.transitivePrerequisites(atom);
+            assertThat(right.transitivePrerequisites(atom)).as("whole canonical Chemistry atomic demand %s", atom).isEqualTo(demand);
+            assertThat(demand).doesNotContain(atom);
+            // No outgoing foreign requires: every normalized prerequisite remains a Chemistry atom.
+            assertThat(atoms).containsAll(demand);
+            pairs += demand.size();
+            for (String prerequisite : demand) closurePairs.add(CHEMISTRY + ":" + atom + "->" + CHEMISTRY + ":" + prerequisite);
+        }
+        assertThat(pairs).isEqualTo(6194);
+        Collections.sort(closurePairs);
+        assertThat(rawByteHash(MAPPER.writeValueAsBytes(closurePairs)))
+                .as("actual native Chemistry R_at+ matches independently generated qualified-pair inventory")
+                .isEqualTo("sha256:2227bfb66136b96af97ef934c16d45f7702d0ba78c45d10eae8f16a067a8bb95");
+        for (String atom : unavailable) {
+            assertThat(physicsUnavailableCompatibilityGoal(before.canonicalGoals.get(atom))).isTrue();
+            assertThat(physicsUnavailableCompatibilityGoal(after.canonicalGoals.get(atom))).isTrue();
+            assertThat(right.transitivePrerequisites(atom)).isEqualTo(left.transitivePrerequisites(atom));
+        }
+        String unknown = probes.iterator().next() + "-missing-chemistry-reference-control";
+        for (var topology : List.of(left, right)) assertThatThrownBy(() -> topology.transitivePrerequisites(unknown))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
+        return Collections.unmodifiableSet(new TreeSet<>(probes));
+    }
+
+    private static void assertChemistryAssessmentClusterBasis(NativeScope scope, String anchor,
+            List<String> children, String label) {
+        LearningGoal cluster = scope.graph().get(anchor);
+        assertThat(cluster).as("actual canonical assessment cluster %s: %s", anchor, label).isNotNull();
+        assertThat(cluster.getType()).isEqualTo("cluster");
+        assertThat(cluster.getContains()).as("reviewed canonical four-child basis %s: %s", anchor, label).containsExactlyElementsOf(children);
+        assertThat(scope.roles().atomicTargets()).as("a canonical cluster is not a masterable atom %s: %s", anchor, label)
+                .doesNotContain(anchor).containsAll(children);
+        Map<String, LearningGoal> visible = ReflectionTestUtils.invokeMethod(scope.projection(), "visibleGoals");
+        assertThat(visible).containsKey(anchor);
+        assertThat(visible.get(anchor).getContains()).as("visible reviewed assessment basis %s: %s", anchor, label)
+                .containsExactlyElementsOf(children);
+        for (String child : children) {
+            assertThat(scope.graph()).containsKey(child);
+            assertThat(scope.graph().get(child).getType()).isEqualTo("atomic");
+            assertThat(scope.graph().get(child).getContains()).isEmpty();
+            assertThat(visible).containsKey(child);
+        }
+    }
+
+    private static void assertChemistryClusterMasteryDoesNotTransfer(LearnerService service, NativeScope scope,
+            Map<String, Double> anchorOnlyMastery, CompletionEvaluation evaluation, List<String> children, String label) {
+        Map<String, Double> effective = ReflectionTestUtils.invokeMethod(service, "computeEffectiveMastery", scope.graph(), anchorOnlyMastery);
+        for (String child : children) assertThat(Mastery.isMastered(effective.get(child)))
+                .as("cluster mastery does not become effective child mastery %s: %s", child, label).isFalse();
+        assertThat(evaluation.masteredGoalIds()).as("no child mastery transfer %s", label).doesNotContainAnyElementsOf(children);
+        assertThat(evaluation.masteredAssessmentGoalIds()).as("each child assessment needs its own explicit result %s", label)
+                .doesNotContainAnyElementsOf(children);
+        assertThat(evaluation.waivedGoalIds()).as("cluster mastery does not waive child assessments %s", label)
+                .doesNotContainAnyElementsOf(children);
+    }
+
+    private static void assertChemistryMissingRoleControls(LearnerService service, NativeScope scope,
+            String atom, String label) throws Exception {
+        String prerequisite = scope.topology().transitiveGoalPrerequisites(atom).stream()
+                .filter(id -> hasDeclaredRole(scope, id)).sorted().findFirst().orElseThrow();
+        Object projection = withoutRole(scope.projection(), prerequisite);
+        assertThat(roleProbeWithPrerequisites(service, scope.graph(), projection, atom,
+                fullMasteryPrerequisites(scope.graph(), scope.topology())))
+                .as("Chemistry missing effective goal role fails despite full mastery %s: %s", atom, label).isFalse();
+        NativeScope invalid = new NativeScope(scope.learner(), projection, scope.frontier(), scope.roles(), scope.graph(), scope.context(), scope.topology());
+        Map<String, Double> prepared = new TreeMap<>();
+        scope.topology().transitivePrerequisites(atom).forEach(id -> prepared.put(id, 1.0));
+        for (AtomicFrontierCase probe : List.of(
+                new AtomicFrontierCase("chemistry-missing-role-strict", prepared, null, true, false),
+                new AtomicFrontierCase("chemistry-missing-role-normal-focus", prepared, Set.of(atom), false, false)))
+            assertThat(atomicFrontierProbe(service, invalid, atom, probe)).as("Chemistry missing-role frontier %s: %s", probe.name(), label).isFalse();
     }
 
     private static boolean physicsUnavailableCompatibilityGoal(LearningGoal goal) {
@@ -1658,9 +2158,11 @@ class FirstMathPrerequisiteReductionTest {
     private static CurrentCacheComparisonFrames currentPhysicsCacheFrames(JsonNode wrapper, JsonNode parent,
             NativeV6Frame cacheFrame, BatchNativeFrames historical) throws IOException {
         JsonNode snapshots = wrapper.path("originalApplicability");
-        Map<Path, JsonNode> after = mutableDocuments(historical.current().currentDocuments());
+        Map<Path, JsonNode> after = mutableDocuments(historical.afterPhysics().currentDocuments());
         copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), after);
-        assertThat(after).as("the comparison end frame is the whole actual current V7 catalog")
+        Map<Path, JsonNode> expectedCurrent = mutableDocuments(historical.current().currentDocuments());
+        copyCurrentApplicability(snapshots, cacheFrame.currentDocuments(), expectedCurrent);
+        assertThat(expectedCurrent).as("the complete final V7 catalog remains bound independently of the Physics boundary")
                 .isEqualTo(cacheFrame.currentDocuments());
         Map<Path, JsonNode> before = mutableDocuments(after);
         Map<String, Map<String, JsonNode>> beforeGoals = frameGoals(before);
@@ -1689,13 +2191,10 @@ class FirstMathPrerequisiteReductionTest {
         restoreOriginalApplicability(snapshots, restoredAfter);
         assertFrameDigests(parent.path("batches").get(0).path("currentDocumentDigests"), restoredBefore,
                 "old-cache restoration reaches the exact historical German V6 checkpoint");
-        for (JsonNode source : parent.path("catalogSources")) {
-            Path file = REPOSITORY.resolve(source.path("path").asText()).toAbsolutePath().normalize();
-            assertRawDocumentDigest(restoredAfter.get(file), source.path("currentDocumentDigest").asText(),
-                    "old-cache restoration reaches the exact historical final V6 document " + file);
-        }
+        assertFrameDigests(parent.path("batches").get(1).path("currentDocumentDigests"), restoredAfter,
+                "old-cache restoration reaches the exact historical Physics V6 checkpoint");
         ReductionRegistry currentBefore = currentCacheComparisonRegistry(historical.afterGerman(), before);
-        ReductionRegistry currentAfter = currentCacheComparisonRegistry(historical.current(), after);
+        ReductionRegistry currentAfter = currentCacheComparisonRegistry(historical.afterPhysics(), after);
         Map<String, String> beforeDigests = new TreeMap<>(), afterDigests = new TreeMap<>();
         for (Path file : before.keySet()) {
             String relative = REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/');
@@ -2287,7 +2786,8 @@ class FirstMathPrerequisiteReductionTest {
     }
 
     /** Native reader boundary only: Node remains the sequential proof/auditor authority. */
-    private record BatchNativeFrames(ReductionRegistry legacy, ReductionRegistry current, ReductionRegistry afterGerman) { }
+    private record BatchNativeFrames(ReductionRegistry legacy, ReductionRegistry current, ReductionRegistry afterGerman,
+            ReductionRegistry afterPhysics) { }
 
     private record NativeV6Frame(JsonNode registry, Map<Path, JsonNode> documents, Map<Path, JsonNode> currentDocuments) { }
 
@@ -2417,12 +2917,13 @@ class FirstMathPrerequisiteReductionTest {
         }
         assertThat(finalDocuments).hasSize(21);
         Map<Path, JsonNode> checkpointDocuments = mutableDocuments(finalDocuments);
-        Map<Path, JsonNode> afterGermanDocuments = Map.of();
+        Map<Path, JsonNode> afterGermanDocuments = Map.of(), afterPhysicsDocuments = Map.of();
         // Every batch snapshot is its own start frame, including overlap with
         // an earlier batch or the V1-V5 prefix; null restores field absence.
         for (int index = registry.path("batches").size() - 1; index >= 0; index--) {
             JsonNode batch = registry.path("batches").get(index);
             if (index == 0) afterGermanDocuments = immutableDocuments(checkpointDocuments);
+            if (index == 1) afterPhysicsDocuments = immutableDocuments(checkpointDocuments);
             assertFields(batch, "V6 batch", "id", "previousDigest", "originalRequires", "operations",
                     "currentDocumentDigests", "legacyContinuations");
             assertFrameDigests(batch.path("currentDocumentDigests"), checkpointDocuments, "batch end " + index);
@@ -2449,7 +2950,8 @@ class FirstMathPrerequisiteReductionTest {
         // No legacy reader checks are skipped or taught the new aggregate count.
         ReductionRegistry legacy = readReductionRegistry(prefix, checkpointDocuments);
         assertThat(legacy.changedSources()).hasSize(720);
-        Set<String> touchedSources = new TreeSet<>(), firstBatchSources = new TreeSet<>(), uniqueIds = new TreeSet<>();
+        Set<String> touchedSources = new TreeSet<>(), firstBatchSources = new TreeSet<>(),
+                throughPhysicsSources = new TreeSet<>(), uniqueIds = new TreeSet<>();
         String previousDigest = registry.path("v5Checkpoint").path("registryDigest").asText();
         for (int index = 0; index < registry.path("batches").size(); index++) {
             JsonNode batch = registry.path("batches").get(index);
@@ -2461,6 +2963,7 @@ class FirstMathPrerequisiteReductionTest {
             for (JsonNode original : batch.path("originalRequires")) {
                 touchedSources.add(original.path("source").asText());
                 if (index == 0) firstBatchSources.add(original.path("source").asText());
+                if (index <= 1) throughPhysicsSources.add(original.path("source").asText());
             }
             previousDigest = rawHash(batch);
         }
@@ -2468,7 +2971,14 @@ class FirstMathPrerequisiteReductionTest {
         assertFrameDigests(registry.path("batches").get(0).path("currentDocumentDigests"), afterGermanDocuments, "after German batch");
         ReductionRegistry afterGerman = registry.path("batches").size() == 1 ? current
                 : mergeBatchedNativeSources(legacy, afterGermanDocuments, firstBatchSources);
-        return new BatchNativeFrames(legacy, current, afterGerman);
+        ReductionRegistry afterPhysics = null;
+        if (registry.path("batches").size() >= 2) {
+            assertFrameDigests(registry.path("batches").get(1).path("currentDocumentDigests"), afterPhysicsDocuments,
+                    "after Physics batch, independent of later batches");
+            afterPhysics = registry.path("batches").size() == 2 ? current
+                    : mergeBatchedNativeSources(legacy, afterPhysicsDocuments, throughPhysicsSources);
+        }
+        return new BatchNativeFrames(legacy, current, afterGerman, afterPhysics);
     }
 
     private static ReductionRegistry mergeBatchedNativeSources(ReductionRegistry legacy, Map<Path, JsonNode> documents,

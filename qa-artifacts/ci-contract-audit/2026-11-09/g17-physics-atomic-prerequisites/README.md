@@ -1,6 +1,17 @@
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 # Physik: atomare Voraussetzungen und V7-Nachweis
 
+**Main-Abnahme vom 10. November 2026:** PR #105 ist auf Main bei
+`c2f0722545f51e53526651e0d7ee26a9e0fb64ae` geliefert. Seine getrennte frische
+Main-Push-CI besteht mit allen acht Hauptjobs und sechs Begleitworkflows.
+Im tatsächlichen ungefilterten Backendcheck bestehen 2.710 Tests bei
+19 bereits vorhandenen Skips, einschließlich aller fünf nativen und
+95 fachübergreifenden Methoden. Normaler CQR-Producer, zehn unveränderte Floors
+und Report-Sauberkeit bestehen. Der [Main-CI-Beleg](main-ci-c2f-20261110.json)
+bindet tatsächliche Checkout-SHA, terminale Jobs und Rohlogdigests.
+Dies schließt die folgenden historischen Physik-Abnahmen ab; die harte
+Standard-G17-Integration und das gesamte Zehn-Fächer-Goal bleiben offen.
+
 Der [Nachtrag vom 10. November](native-coverage-domain-followup.md) trennt den
 bestandenen regulären Meilensteinlauf von der noch offenen nativen Abnahme
 und dokumentiert die tatsächlich geprüften Projektionsdomänen. Die folgenden
