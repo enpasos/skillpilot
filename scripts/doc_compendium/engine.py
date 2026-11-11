@@ -360,9 +360,11 @@ def compile_pdfs_for_bundle(
             var_dir.mkdir(parents=True, exist_ok=True)
             lang_env["TEXMFVAR"] = str(var_dir)
         if "TEXMFCACHE" not in os.environ:
-            cache_dir = bundle.repo_root / "tmp/compendia" / f"texmf-cache-{lang}"
-            cache_dir.mkdir(parents=True, exist_ok=True)
-            lang_env["TEXMFCACHE"] = str(cache_dir)
+            # Since TeX Live 2024, LuaTeX writes absolute paths only below the output
+            # directory, TEXMFOUTPUT, TEXMFVAR or TEXMFSYSVAR. A font cache beside
+            # TEXMFVAR counts as not writable there and luaotfload aborts, so the
+            # cache lives inside this build's TEXMFVAR.
+            lang_env["TEXMFCACHE"] = lang_env["TEXMFVAR"]
         tex_path = tex_files[lang]
         cmd = [
             lualatex,
