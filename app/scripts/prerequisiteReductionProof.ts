@@ -163,10 +163,12 @@ export interface PrerequisiteReductionProofSummary {
   registryDigest: string
   affectedGoalIds: readonly string[]
 }
+export type PrerequisiteReductionCatalogSource = Readonly<{ path: string; landscapeId: string; currentDocumentDigest: string }>
 type Snapshot = {
   current: ReadonlyMap<string, RawGoal>
   baseline: ReadonlyMap<string, RawGoal>
   summary: Readonly<PrerequisiteReductionProofSummary>
+  catalogSources: readonly PrerequisiteReductionCatalogSource[]
 }
 const verifiedContexts = new WeakMap<VerifiedPrerequisiteReductionContext, Snapshot>()
 function ensure(ok: unknown, message: string): asserts ok {
@@ -1199,7 +1201,11 @@ export async function loadVerifiedPrerequisiteReductionContext({
       registryDigest: `sha256:${createHash('sha256').update(registryBytes).digest('hex')}`,
       affectedGoalIds: [...affectedSources].sort(),
     })
-    verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary })
+    const catalogSources = deepFreeze(loaded.map(({ path }, index) => ({ path,
+      landscapeId: currentDocuments[index].landscapeId,
+      currentDocumentDigest: fingerprintPrerequisiteReductionDocument(currentDocuments[index]),
+    })))
+    verifiedContexts.set(context, { current: goalIndex(currentDocuments), baseline: goalIndex(baselineDocuments), summary, catalogSources })
     return context
   })
 }
@@ -1211,6 +1217,16 @@ export function verifiedPrerequisiteReductionSummary(
   const snapshot = verifiedContexts.get(context)
   ensure(snapshot, 'unregistered or forged context')
   return snapshot.summary
+}
+
+/** Full current-document bindings, separate from the six-field proof summary. */
+export function verifiedPrerequisiteReductionCatalogSources(
+  context: VerifiedPrerequisiteReductionContext | undefined,
+): readonly PrerequisiteReductionCatalogSource[] | undefined {
+  if (context === undefined) return undefined
+  const snapshot = verifiedContexts.get(context)
+  ensure(snapshot, 'unregistered or forged context')
+  return snapshot.catalogSources
 }
 
 /** Historical raw value solely for the four approved review-binding comparisons. */

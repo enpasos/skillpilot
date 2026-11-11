@@ -22,7 +22,8 @@ import {
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
-import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
+import { loadVerifiedPrerequisiteReductionContext, verifiedPrerequisiteReductionCatalogSources } from './prerequisiteReductionProof'
+import { evaluateGraphIntegrity, requireCompleteCurrentCatalog } from './curriculumGraphIntegrity'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
 import { createRepositorySourceAvailability } from './repositorySourceAvailability'
@@ -1024,10 +1025,10 @@ const ruleCatalog: QualityRuleDefinition[] = [
   },
   {
     id: 'CQR-001',
-    label: 'Basic graph integrity',
+    label: 'Current graph integrity and atomic prerequisite normal form',
     category: 'graph',
     maturityTarget: 'M0',
-    description: 'Goal IDs, local references, self-reference guards, and direct DAG checks are clean.',
+    description: 'Every declared current canonical root passes the shared qualified-reference and effective-DAG auditor, structural atomic requires normal form, explicit type consistency and deterministic transitive minimality, including relevant foreign inheritance.',
   },
   {
     id: 'CQR-002',
@@ -1784,37 +1785,6 @@ function createVisibleAtomicPathChecker(
   )
 }
 
-function findCycle(edgeMap: Map<string, string[]>): string[] | null {
-  const visiting = new Set<string>()
-  const visited = new Set<string>()
-  const stack: string[] = []
-
-  const visit = (goalId: string): string[] | null => {
-    if (visiting.has(goalId)) {
-      const cycleStart = stack.indexOf(goalId)
-      return stack.slice(Math.max(0, cycleStart)).concat(goalId)
-    }
-    if (visited.has(goalId)) return null
-
-    visiting.add(goalId)
-    stack.push(goalId)
-    for (const nextId of edgeMap.get(goalId) ?? []) {
-      const cycle = visit(nextId)
-      if (cycle) return cycle
-    }
-    stack.pop()
-    visiting.delete(goalId)
-    visited.add(goalId)
-    return null
-  }
-
-  for (const goalId of edgeMap.keys()) {
-    const cycle = visit(goalId)
-    if (cycle) return cycle
-  }
-  return null
-}
-
 function formatGoal(goal: LearningGoal | undefined, goalId: string): string {
   return goal ? `${goal.title} [${goalId}]` : goalId
 }
@@ -1833,69 +1803,6 @@ function makeRule(
     ...(metrics ? { metrics } : {}),
     ...(details && details.length > 0 ? { details: details.slice(0, 20) } : {}),
   }
-}
-
-function evaluateGraphIntegrity(landscape: SkillLandscape, globalGoalIds: Set<string>): RuleResult {
-  const errors: string[] = []
-  const goalById = new Map<string, LearningGoal>()
-
-  landscape.goals.forEach((goal) => {
-    if (goalById.has(goal.id)) {
-      errors.push(`Duplicate goal id ${goal.id}`)
-    } else {
-      goalById.set(goal.id, goal)
-    }
-  })
-
-  const requireEdges = new Map<string, string[]>()
-  const containsEdges = new Map<string, string[]>()
-
-  landscape.goals.forEach((goal) => {
-    const localRequires: string[] = []
-    const localContains: string[] = []
-
-    goal.requires?.forEach((rawRef) => {
-      const ref = parseReference(rawRef, landscape.landscapeId)
-      if (ref.goalId === goal.id && ref.landscapeId === landscape.landscapeId) {
-        errors.push(`${formatGoal(goal, goal.id)} requires itself`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && !goalById.has(ref.goalId) && !globalGoalIds.has(ref.goalId)) {
-        errors.push(`${formatGoal(goal, goal.id)} requires missing local goal ${ref.goalId}`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && goalById.has(ref.goalId)) localRequires.push(ref.goalId)
-    })
-
-    goal.contains?.forEach((rawRef) => {
-      const ref = parseReference(rawRef, landscape.landscapeId)
-      if (ref.goalId === goal.id && ref.landscapeId === landscape.landscapeId) {
-        errors.push(`${formatGoal(goal, goal.id)} contains itself`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && !goalById.has(ref.goalId) && !globalGoalIds.has(ref.goalId)) {
-        errors.push(`${formatGoal(goal, goal.id)} contains missing local goal ${ref.goalId}`)
-      }
-      if (ref.landscapeId === landscape.landscapeId && goalById.has(ref.goalId)) localContains.push(ref.goalId)
-    })
-
-    requireEdges.set(goal.id, localRequires)
-    containsEdges.set(goal.id, localContains)
-  })
-
-  const requiresCycle = findCycle(requireEdges)
-  if (requiresCycle) errors.push(`Direct requires cycle: ${requiresCycle.join(' -> ')}`)
-
-  const containsCycle = findCycle(containsEdges)
-  if (containsCycle) errors.push(`Contains cycle: ${containsCycle.join(' -> ')}`)
-
-  return makeRule(
-    'CQR-001',
-    errors.length === 0 ? 'pass' : 'fail',
-    errors.length === 0 ? 'Basic graph integrity checks pass.' : `${errors.length} graph integrity issue(s).`,
-    {
-      goals: landscape.goals.length,
-      localReferenceIssues: errors.length,
-    },
-    errors,
-  )
 }
 
 function evaluateTypeConsistency(landscape: SkillLandscape): RuleResult {
@@ -6038,6 +5945,12 @@ function deriveScopeMaturity(rules: RuleResult[]): MaturityLevel {
   return 'M4'
 }
 
+export function applyGraphMaturityCeiling(curriculumRules: RuleResult[], scopes: ScopeStatus[]): ScopeStatus[] {
+  const graphReady = curriculumRules.find((rule) => rule.id === 'CQR-001')?.status === 'pass'
+    && curriculumRules.find((rule) => rule.id === 'CQR-002')?.status === 'pass'
+  return graphReady ? scopes : scopes.map((scope) => ({ ...scope, maturity: 'M0' }))
+}
+
 export function deriveCurriculumMaturity(curriculumRules: RuleResult[], scopes: ScopeStatus[]): MaturityLevel {
   const graphReady = curriculumRules.find((rule) => rule.id === 'CQR-001')?.status === 'pass'
     && curriculumRules.find((rule) => rule.id === 'CQR-002')?.status === 'pass'
@@ -6168,23 +6081,22 @@ function renderMarkdown(status: StatusDocument): string {
 
 async function main() {
   const shouldCheck = process.argv.includes('--check')
+  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
+  const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
+  const loadedLandscapes = canonicalFiles.map((file) => ({ file, landscape: loadJson<SkillLandscape>(file) }))
+  const currentCatalog = requireCompleteCurrentCatalog(loadedLandscapes.map(({ file, landscape }) => ({
+    path: toRepoPath(file), landscape,
+  })), verifiedPrerequisiteReductionCatalogSources(prerequisiteReductionContext))
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
   const goalVisualizationQaLedgers = readGoalVisualizationQaLedgers()
-  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
   const deepUnderstandingReport = await generateDeepUnderstandingRollout(undefined, prerequisiteReductionContext)
   const compositionViewCountsByLandscapeId = readCompositionViewCountsByLandscapeId()
   const applicabilityWarningMetricsByLandscapeId = readApplicabilityWarningMetricsByLandscapeId(applicabilityCompilation)
   const jurisdictionCoverageByLandscapeId = readJurisdictionCoverageByLandscapeId(applicabilityCompilation)
   const mappingPipelineByLandscapeId = readMappingPipelineByLandscapeId()
 
-  const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
-  const loadedLandscapes = canonicalFiles.map((file) => ({
-    file,
-    landscape: loadJson<SkillLandscape>(file),
-  }))
-  const globalGoalIds = new Set(loadedLandscapes.flatMap(({ landscape }) => landscape.goals.map((goal) => goal.id)))
 
   const curricula = loadedLandscapes
     .map(({ file, landscape }) => {
@@ -6193,7 +6105,7 @@ async function main() {
       const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
       const memoryCardReviewConfigs = memoryCardReviewConfigsByLandscapeId.get(landscape.landscapeId) ?? []
       const curriculumRules: RuleResult[] = [
-        evaluateGraphIntegrity(landscape, globalGoalIds),
+        evaluateGraphIntegrity(currentCatalog, landscape.landscapeId),
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
@@ -6208,11 +6120,11 @@ async function main() {
         evaluateApplicabilityWarnings(applicabilityWarningMetricsByLandscapeId.get(landscape.landscapeId)),
       )
       const scopedProfiles = routeProfiles.filter((profile) => profile.landscapeId === landscape.landscapeId)
-      const scopes = scopedProfiles.map((profile) => evaluateRouteProfile(
+      const scopes = applyGraphMaturityCeiling(curriculumRules, scopedProfiles.map((profile) => evaluateRouteProfile(
         landscape,
         profile,
         applicabilityCompilation,
-      ))
+      )))
       if (scopes.length === 0) {
         curriculumRules.push(makeRule(
           'CQR-101',
