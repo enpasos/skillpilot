@@ -192,10 +192,29 @@ class LearnerPlanningScopeServiceTest {
         String bavariaNormalDistribution = "b431148b-526c-4bde-b04b-48d23101d0d3";
         String bavariaExponentialGrowth = "49f9059a-876c-5051-8146-d008b5cc691c";
         String bavariaVertiefungMandelbrot = "9b339361-7719-573d-a913-432246c502ee";
+        String sharedMatrixAssessment = "81823f27-0c92-5444-ac4e-32b83169f318";
 
         selectMathScope("DE-HE", "GK");
+        var hessenGkProjection = learnerService.getLearnerLandscapeClosure(LEARNER_ID, CURRICULUM_ID, "de")
+                .stream().filter(landscape -> MATH_LANDSCAPE_ID.equals(landscape.getLandscapeId()))
+                .findFirst().orElseThrow().getPersonalCurriculumProjection();
+        assertThat(landscapeService.getGoalDefinition(sharedMatrixAssessment).getTags())
+                .contains("GK", "LK", "Practice", "Assessment");
+        assertThat(landscapeService.getGoalDefinition(sharedMatrixAssessment).getRequires())
+                .contains(advancedParallelProjection, hessenFixedPoints);
+        assertThat(hessenGkProjection.seedAtomicGoalIds()).contains(sharedMatrixAssessment)
+                .doesNotContain(advancedParallelProjection, hessenFixedPoints);
+        assertThat(hessenGkProjection.targetGoalIds()).contains(advancedParallelProjection, hessenFixedPoints);
+        assertThat(hessenGkProjection.requiredByPaths())
+                .containsEntry(advancedParallelProjection, List.of(sharedMatrixAssessment, advancedParallelProjection))
+                .containsEntry(hessenFixedPoints, List.of(sharedMatrixAssessment, hessenFixedPoints));
+        for (String necessary : List.of(advancedParallelProjection, hessenFixedPoints)) {
+            assertThat(landscapeService.getGoalDefinition(necessary).getTags()).contains("LK").doesNotContain("GK");
+        }
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .doesNotContain(hessenFixedPoints, advancedParallelProjection, advancedIntegralContext);
+                .contains(sharedMatrixAssessment, hessenFixedPoints, advancedParallelProjection)
+                .doesNotContain(advancedIntegralContext);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
         selectMathScope("DE-HE", "LK");
         assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
                 .contains(hessenFixedPoints, advancedParallelProjection)
@@ -219,13 +238,26 @@ class LearnerPlanningScopeServiceTest {
                 .containsAll(bavariaGk)
                 .contains(bavariaModelValidation, bavariaVertiefungMandelbrot);
 
-        selectMathScope("DE-NI", "GK");
-        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .doesNotContain(advancedParallelProjection, advancedIntegralContext, advancedSequenceAnalysis);
-        selectMathScope("DE-NI", "LK");
-        assertThat(learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds())
-                .contains(advancedSequenceAnalysis)
-                .doesNotContain(advancedParallelProjection, advancedIntegralContext);
+        for (String courseProfile : List.of("GK", "LK")) {
+            selectMathScope("DE-NI", courseProfile);
+            var lowerSaxonyProjection = learnerService.getLearnerLandscapeClosure(LEARNER_ID, CURRICULUM_ID, "de")
+                    .stream().filter(landscape -> MATH_LANDSCAPE_ID.equals(landscape.getLandscapeId()))
+                    .findFirst().orElseThrow().getPersonalCurriculumProjection();
+            assertThat(lowerSaxonyProjection.seedAtomicGoalIds()).contains(sharedMatrixAssessment)
+                    .doesNotContain(advancedParallelProjection, hessenFixedPoints);
+            assertThat(lowerSaxonyProjection.targetGoalIds()).contains(advancedParallelProjection, hessenFixedPoints);
+            assertThat(lowerSaxonyProjection.requiredByPaths())
+                    .containsEntry(advancedParallelProjection, List.of(sharedMatrixAssessment, advancedParallelProjection))
+                    .containsEntry(hessenFixedPoints, List.of(sharedMatrixAssessment, hessenFixedPoints));
+            var lowerSaxonyTargets = learnerService.getPlanningScope(LEARNER_ID, MATH_LANDSCAPE_ID).scopeAtomicGoalIds();
+            assertThat(lowerSaxonyTargets).contains(sharedMatrixAssessment, advancedParallelProjection, hessenFixedPoints)
+                    .doesNotContain(advancedIntegralContext);
+            if ("GK".equals(courseProfile)) {
+                assertThat(lowerSaxonyTargets).doesNotContain(advancedSequenceAnalysis);
+            } else {
+                assertThat(lowerSaxonyTargets).contains(advancedSequenceAnalysis);
+            }
+        }
     }
 
     @Test

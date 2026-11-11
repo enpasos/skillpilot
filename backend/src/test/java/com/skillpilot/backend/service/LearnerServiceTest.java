@@ -527,6 +527,36 @@ public class LearnerServiceTest {
     }
 
     @Test
+    void incompletePersonalCurriculumReadsFocusWithoutMutationAndCanClearStoredFocusAndActiveGoal() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("{}");
+        learner.setActiveGoalId("stale-active-goal");
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        plannedGoalRepository.saveAndFlush(new PlannedGoal(learner, "stale-focus"));
+        long revision = learner.getCoachStateRevision();
+
+        assertThat(learnerService.getPlannedGoals(learnerId)).isEmpty();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId))
+                .extracting(PlannedGoal::getGoalId).containsExactly("stale-focus");
+        Learner afterRead = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(afterRead.getCoachStateRevision()).isEqualTo(revision);
+        assertThat(afterRead.getActiveGoalId()).isEqualTo("stale-active-goal");
+        assertThatThrownBy(() -> learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_MATH_ROOT_SCOPE_ID)))
+                .isInstanceOf(ResponseStatusException.class)
+                .satisfies(error -> assertThat(((ResponseStatusException) error).getStatusCode())
+                        .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
+
+        assertThat(learnerService.setPlannedGoals(learnerId, Set.of())).isEmpty();
+        assertThat(plannedGoalRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        Learner afterClear = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(afterClear.getCoachStateRevision()).isEqualTo(revision + 1L);
+        assertThat(afterClear.getActiveGoalId()).isNull();
+        assertThat(afterClear.getLearningState()).isEqualTo(LearningState.FRONTIER);
+    }
+
+    @Test
     void importLearnerPreservesCurriculumAndMasteryWhileDiscardingFocusFromIncompletePersonalization() {
         String sourceLearnerId = "legacy-export-source";
         String staleFocusId = "legacy-stale-focus";
@@ -539,9 +569,14 @@ public class LearnerServiceTest {
         learnerRepository.saveAndFlush(sourceLearner);
         plannedGoalRepository.saveAndFlush(new PlannedGoal(sourceLearner, staleFocusId));
         masteryRepository.saveAndFlush(new Mastery(sourceLearner, masteryGoalId, 0.625));
+        Mastery storedMastery = masteryRepository.findByLearner_SkillpilotId(sourceLearnerId).stream()
+                .filter(mastery -> masteryGoalId.equals(mastery.getGoalKey())).findFirst().orElseThrow();
 
         assertThat(learnerService.getPlannedGoals(sourceLearnerId)).isEmpty();
+        assertThat(learnerService.getMastery(sourceLearnerId)).containsEntry(masteryGoalId, 0.625);
         var signedExport = learnerService.exportLearner(sourceLearnerId);
+        assertThat(signedExport.data().mastery()).containsEntry(
+                masteryGoalId, new MasteryEntryDTO(storedMastery.getValue(), storedMastery.getUpdatedAt()));
         assertThat(signedExport.data().plannedGoals()).containsExactly(staleFocusId);
         assertThat(signedExport.data().copySources()).isEmpty();
         assertThat(objectMapper.valueToTree(signedExport).toString())
@@ -2459,15 +2494,21 @@ public class LearnerServiceTest {
                 .toList());
 
         // Task 5 -> cylinder mantle -> circle circumference is a real Main
-        // requirement chain. The earlier circumference skill is stored and
-        // explicitly supported by the view, without becoming a target here.
+        // requirement chain. Circumference belongs to the complete learning
+        // set L, while the selected J8 contains-focus still has exactly 55 atoms.
         String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
         String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
         assertThat(canonicalGoals.get(J8_EXAM_TASK_5_ID).getRequires()).contains(cylinderMantleId);
         assertThat(canonicalGoals.get(cylinderMantleId).getRequires()).contains(circleCircumferenceId);
         assertThat(learnerService.getMastery(learnerId)).containsEntry(circleCircumferenceId, 1.0);
-        assertThat(learnerService.getFilteredAtomicGoalIds(
-                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false))
+        PersonalCurriculumLearningScope learningScope = personalLearningScope(learner);
+        assertThat(learningScope.seedAtomicGoalIds()).contains(cylinderMantleId)
+                .doesNotContain(circleCircumferenceId);
+        assertThat(learningScope.learningAtomicGoalIds()).contains(circleCircumferenceId);
+        assertCanonicalRequirementPath(learningScope.requiredByPaths().get(circleCircumferenceId), canonicalGoals);
+        assertThat(assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_MERGED_DE_J8_SCOPE_ID)))
+                .containsExactlyInAnyOrderElementsOf(j8AtomicGoalIds)
+                .hasSize(55)
                 .doesNotContain(circleCircumferenceId);
 
         var coachState = learnerService.getCoachLearnerState(learnerId);
@@ -2562,7 +2603,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void equivalentCrossStageScopeAliasIsNotRepublishedButRemainsAcceptedByScopeWrite() {
+    void crossStageStructureRemainsSelectableWhenLearningClosureMakesItNarrowerThanCanonicalRoot() {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
         learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
         learner.setPersonalCurriculum(completedPersonalizationConfig("""
@@ -2595,7 +2636,9 @@ public class LearnerServiceTest {
                 .extracting(FrontierGoal::semanticKind)
                 .containsOnly("orientation");
         assertThat(learnerService.getScopeNavigationOptions(learnerId))
-                .isEmpty();
+                .extracting(FrontierGoal::id)
+                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID);
+        assertCanonicalMathRootIncludesCircumferenceOutsideStructure(learner);
 
         assertThatCode(() -> learnerService.setScope(
                         learnerId,
@@ -2727,7 +2770,8 @@ public class LearnerServiceTest {
                 .containsExactly(CANONICAL_MATH_ROOT_SCOPE_ID);
         assertThat(learnerService.getScopeNavigationOptions(learnerId))
                 .extracting(FrontierGoal::id)
-                .containsExactly(COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+                .containsExactly(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID, COMPOSITION_DE_PHYSICS_LK_ROOT_SCOPE_ID);
+        assertCanonicalMathRootIncludesCircumferenceOutsideStructure(learner);
 
         learnerService.setScope(
                 learnerId,
@@ -2918,26 +2962,40 @@ public class LearnerServiceTest {
     @Transactional
     @SuppressWarnings("unchecked")
     void getFilteredGoals_appliesCanonicalDeCrossStageCompositionView() {
+        String personalCurriculum = """
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
+                    "selected": true,
+                    "filterId": "ALL",
+                    "stage": "CrossStage"
+                  },
+                  "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
+                }
+                """;
         Map<String, LearningGoal> filteredGoals = (Map<String, LearningGoal>) ReflectionTestUtils.invokeMethod(
                 learnerService,
                 "getFilteredGoals",
                 CANONICAL_GYMNASIUM_ROOT_ID,
-                """
-                        {
-                          "a0e13c56-c25f-4742-9272-3a1a603ee52e": {
-                            "selected": true,
-                            "filterId": "ALL",
-                            "stage": "CrossStage"
-                          },
-                          "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced": {"selected": true, "filterId": "GK"},
-                          "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a": {"selected": true, "filterId": "ALL"}
-                        }
-                        """);
+                personalCurriculum);
 
         assertThat(filteredGoals).isNotNull();
         assertThat(filteredGoals).containsKeys(VISIBLE_POLYNOMIAL_FUNCTIONS_ID, SEK1_EXERCISES_SCOPE_ID);
-        assertThat(filteredGoals)
-                .doesNotContainKeys(HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID, HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
+        // Lookup retains canonical prerequisite context; its presence is not an
+        // acquisition-role assertion. A structural corridor is never an atom.
+        assertThat(filteredGoals).containsKey(HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID)
+                .doesNotContainKey(HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
+        Object projection = ReflectionTestUtils.invokeMethod(
+                learnerService, "getGoalProjection", CANONICAL_GYMNASIUM_ROOT_ID, personalCurriculum);
+        PersonalCurriculumLearningScope learningScope = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+        assertThat(filteredGoals.get(HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID).getContains()).isNotEmpty();
+        assertThat(learningScope.learningAtomicGoalIds()).doesNotContain(
+                HIDDEN_TRIGONOMETRIC_EXPONENTIAL_CORRIDOR_ID, HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
+        assertThat(learningScope.seedAtomicGoalIds()).doesNotContain(HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream().collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        assertThat(canonicalGoals.get("2f626446-4b32-5674-a687-9cd754bdfede").getRequires())
+                .contains(HIDDEN_POLYNOMIAL_END_BEHAVIOR_ID);
     }
 
     @Test
@@ -2963,11 +3021,45 @@ public class LearnerServiceTest {
         assertThat(state.stateMachine().requiredAction()).isEqualTo("setScope");
         assertThat(state.stateMachine().goalOptions())
                 .extracting(goal -> goal.id())
-                .startsWith(
+                .containsExactly(
                         COMPOSITION_SEK_ONE_G9_SCOPE_ID,
+                        COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID,
                         CANONICAL_MATH_ROOT_SCOPE_ID)
-                .doesNotContain(COMPOSITION_HE_G9_MATH_ROOT_SCOPE_ID)
                 .doesNotContain(COMPOSITION_J9_SCOPE_ID);
+        Set<String> currentAtoms = assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_J8_SCOPE_ID));
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream().collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> authoredJ8Atoms = new LinkedHashSet<>();
+        compositionViewService.resolveStructureReference(COMPOSITION_J8_SCOPE_ID).referencedGoalIds()
+                .forEach(id -> collectAtomicGoalIds(id, canonicalGoals, authoredJ8Atoms));
+        Set<String> supportOnlyAssessments = Set.of(
+                J8_EXAM_TASK_1_ID, J8_EXAM_TASK_4_ID, "a70d4194-1f95-5dc4-884d-8ca856663601");
+        JsonNode reviewedView = objectMapper.valueToTree(
+                compositionViewService.findViewById("de-he-gym-math-gk-g9"));
+        for (String id : supportOnlyAssessments) {
+            assertThat(reviewedView.findParents("goalId").stream()
+                    .filter(node -> id.equals(node.path("goalId").asText())).toList())
+                    .singleElement().satisfies(node -> assertThat(node.path("projectionRole").asText())
+                            .isEqualTo("prerequisiteOnly"));
+        }
+        PersonalCurriculumLearningScope learningScope = personalLearningScope(learner);
+        assertThat(learningScope.seedAtomicGoalIds()).doesNotContainAnyElementsOf(supportOnlyAssessments);
+        assertThat(learningScope.learningAtomicGoalIds()).doesNotContainAnyElementsOf(supportOnlyAssessments);
+        Set<String> excludedAuthoredAtoms = new LinkedHashSet<>(authoredJ8Atoms);
+        excludedAuthoredAtoms.removeAll(learningScope.learningAtomicGoalIds());
+        assertThat(excludedAuthoredAtoms).containsExactlyInAnyOrderElementsOf(supportOnlyAssessments);
+        authoredJ8Atoms.removeAll(supportOnlyAssessments);
+        assertThat(currentAtoms).containsExactlyInAnyOrderElementsOf(authoredJ8Atoms).hasSize(53);
+        Set<String> precedingAtoms = currentAtoms;
+        for (FrontierGoal option : state.stateMachine().goalOptions()) {
+            Set<String> optionAtoms = assertMathFocusAtomicTargets(learner, option.selectionGoalIds());
+            assertThat(optionAtoms).containsAll(precedingAtoms).hasSizeGreaterThan(precedingAtoms.size());
+            Set<String> addedAtoms = new LinkedHashSet<>(optionAtoms);
+            addedAtoms.removeAll(currentAtoms);
+            Map<String, Double> mastery = learnerService.getMastery(learnerId);
+            assertThat(addedAtoms).anyMatch(id -> mastery.getOrDefault(id, 0.0) < Mastery.LEGACY_MASTERED_THRESHOLD);
+            precedingAtoms = optionAtoms;
+        }
         assertThat(state.stateMachine().goalOptions())
                 .filteredOn(goal -> COMPOSITION_SEK_ONE_G9_SCOPE_ID.equals(goal.id()))
                 .singleElement()
@@ -4596,14 +4688,63 @@ public class LearnerServiceTest {
                 .toList());
     }
 
+    private PersonalCurriculumLearningScope personalLearningScope(Learner learner) {
+        Object projection = ReflectionTestUtils.invokeMethod(
+                learnerService, "getGoalProjection", learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        return ReflectionTestUtils.invokeMethod(projection, "learningScope");
+    }
+
+    /** Assert F = canonical contains descendants of roots intersected with L. */
+    private Set<String> assertMathFocusAtomicTargets(Learner learner, List<String> focusIds) {
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream().collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        Set<String> expected = new LinkedHashSet<>();
+        for (String focusId : focusIds) {
+            if (focusId.startsWith("composition:")) {
+                compositionViewService.resolveStructureReference(focusId).referencedGoalIds()
+                        .forEach(id -> collectAtomicGoalIds(id, canonicalGoals, expected));
+            } else {
+                collectAtomicGoalIds(focusId, canonicalGoals, expected);
+            }
+        }
+        expected.retainAll(personalLearningScope(learner).learningAtomicGoalIds());
+        Object projection = ReflectionTestUtils.invokeMethod(
+                learnerService, "getGoalProjection", learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Set<String> actual = ReflectionTestUtils.invokeMethod(
+                learnerService, "projectedAtomicTargetIds", focusIds, projection);
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+        return actual;
+    }
+
+    private void assertCanonicalMathRootIncludesCircumferenceOutsideStructure(Learner learner) {
+        String cylinderMantleId = "f65ab452-1884-57b0-9be3-c7d9e4944891";
+        String circleCircumferenceId = "4dbb8e8e-c0b5-5d51-8897-0024d77e8602";
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(CANONICAL_MATH_LANDSCAPE_ID)
+                .getGoals().stream().collect(java.util.stream.Collectors.toMap(LearningGoal::getId, goal -> goal));
+        assertThat(canonicalGoals.get(cylinderMantleId).getRequires()).contains(circleCircumferenceId);
+        PersonalCurriculumLearningScope learningScope = personalLearningScope(learner);
+        assertThat(learningScope.seedAtomicGoalIds()).contains(cylinderMantleId).doesNotContain(circleCircumferenceId);
+        assertCanonicalRequirementPath(learningScope.requiredByPaths().get(circleCircumferenceId), canonicalGoals);
+        Set<String> structureAtoms = assertMathFocusAtomicTargets(learner, List.of(COMPOSITION_DE_MATH_LK_ROOT_SCOPE_ID));
+        Set<String> canonicalAtoms = assertMathFocusAtomicTargets(learner, List.of(CANONICAL_MATH_ROOT_SCOPE_ID));
+        assertThat(structureAtoms).contains(cylinderMantleId).doesNotContain(circleCircumferenceId);
+        assertThat(canonicalAtoms).containsAll(structureAtoms).contains(circleCircumferenceId)
+                .hasSizeGreaterThan(structureAtoms.size());
+    }
+
+    private void assertCanonicalRequirementPath(List<String> path, Map<String, LearningGoal> canonicalGoals) {
+        assertThat(path).isNotNull().hasSizeGreaterThan(1);
+        for (int index = 1; index < path.size(); index++) {
+            assertThat(canonicalGoals.get(path.get(index - 1)).getRequires()).contains(path.get(index));
+        }
+    }
+
     private void collectAtomicGoalIds(
             String goalId,
             Map<String, LearningGoal> canonicalGoals,
             Set<String> atomicGoalIds) {
         LearningGoal goal = canonicalGoals.get(goalId);
-        if (goal == null) {
-            return;
-        }
+        assertThat(goal).as("Canonical definition for focus reference %s", goalId).isNotNull();
         if (goal.getContains() == null || goal.getContains().isEmpty()) {
             atomicGoalIds.add(goalId);
             return;

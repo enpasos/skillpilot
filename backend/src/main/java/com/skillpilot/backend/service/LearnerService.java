@@ -2721,11 +2721,11 @@ public class LearnerService {
         return applySrsMasteryOverlayWithTimestamps(skillpilotId, goals, projected);
     }
 
-    /** Historical result reads retain their seed aliases/overlays without compiling a retired acquisition graph. */
+    /** Historical or unresolved result reads retain seed aliases/overlays without compiling a learning basis. */
     private Map<String, LearningGoal> masteryProjectionGoals(Learner learner) {
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null) return Collections.emptyMap();
-        if (isReadOnlyCompatibilitySession(learner)) {
+        if (isReadOnlyCompatibilitySession(learner) || !hasCompletedPersonalCurriculum(learner)) {
             // Keep this result out of the full learning-projection cache.
             return computeSeedGoalProjection(curriculumId, learner.getPersonalCurriculum(), false).visibleGoals();
         }
@@ -3413,6 +3413,9 @@ public class LearnerService {
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
             return getStoredPlannedGoals(skillpilotId);
+        }
+        if (!hasCompletedPersonalCurriculum(learner)) {
+            return Collections.emptyList();
         }
         GoalProjection projection = getGoalProjection(
                 curriculumId,
@@ -4928,11 +4931,12 @@ public class LearnerService {
         if (!saneTargetIds.isEmpty()) {
             assertPersonalizationCompleteForLearning(learner);
         }
+        boolean hasLearningProjection = hasCompletedPersonalCurriculum(learner);
 
         List<PlannedGoal> existing = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
         Set<String> existingIds = existing.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet());
 
-        if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
+        if (hasLearningProjection) {
             Map<String, LearningGoal> structuralGoals = getStructuralGoals(learner.getSelectedCurriculum());
             LinkedHashSet<String> mappedTargetIds = new LinkedHashSet<>(
                     mapGoalIdsForVisibleGoals(new ArrayList<>(saneTargetIds), structuralGoals, true));
@@ -4974,7 +4978,7 @@ public class LearnerService {
         plannedGoalRepository.saveAll(toAdd);
 
         String curriculumId = learner.getSelectedCurriculum();
-        if (curriculumId != null && !curriculumId.isBlank()) {
+        if (hasLearningProjection) {
             GoalProjection projection = getGoalProjection(
                     curriculumId,
                     learner.getPersonalCurriculum());
@@ -4988,6 +4992,9 @@ public class LearnerService {
             if (invalidationReason != null) {
                 clearPersistedActiveGoal(learner, skillpilotId, invalidationReason);
             }
+        } else if (curriculumId != null && !curriculumId.isBlank()
+                && learner.getActiveGoalId() != null && !learner.getActiveGoalId().isBlank()) {
+            clearPersistedActiveGoal(learner, skillpilotId, "ACTIVE_GOAL_CLEARED_INVALID_VIEW");
         }
 
         advanceCoachStateRevision(learner);
