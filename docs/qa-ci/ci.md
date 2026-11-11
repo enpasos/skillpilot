@@ -148,6 +148,18 @@ Purpose: validate backend (`backend/`) via Gradle checks.
 1. `backend-ci`: `./gradlew check` without the prerequisite-reduction proof class, with three parallel test JVMs
 2. `backend-reduction-proofs`: the proof class without its Physics method, and the Physics method on its own
 
+## Ubuntu package sources and failover
+
+Every job that installs OS packages first runs `.github/actions/ubuntu-apt`. It keeps APT on Ubuntu sources only: the runner's Chrome and Microsoft repositories are excluded.
+
+Each Ubuntu stanza reads a mirror list in `/etc/apt/skillpilot-ubuntu-mirrors/`. `archive.txt` prefers `https://archive.ubuntu.com/ubuntu/` and `security.txt` prefers `https://security.ubuntu.com/ubuntu/`; the runner image's Azure mirror (`http://azure.archive.ubuntu.com/ubuntu/`) is second in both. APT's mirror transport moves every file that fails, or does not connect or send data within 30 s, to the other source. Same-source retries are off (`Acquire::Retries "0"`): they would multiply the wait for a stalled source, and APT 2.8 can hang when they meet mirror redirects.
+
+Before every `apt-get update`, including Playwright's nested call, the hook `/usr/local/sbin/skillpilot-order-ubuntu-mirrors` probes each source's `InRelease` (at most 20 s) and gives priority 1 to the first source in list order that answers. It logs `SkillPilot Ubuntu mirror order: …`. Without the probe, a source that accepts connections and then stalls would cost the timeout for every file.
+
+Suites, components and `Signed-By` are unchanged, so every mirror is verified against the Ubuntu archive keyring and the signed index hashes. When every source fails, `apt-get update` only warns and the following `apt-get install` fails the step.
+
+`scripts/ci_ubuntu_apt.test.mjs` pins this policy and proves the failover offline against a signed local fixture repository.
+
 ## Status checks
 
 All jobs of the tiers that apply to a run must pass for a successful workflow run. On a draft pull request the jobs of the complete check are shown as skipped.

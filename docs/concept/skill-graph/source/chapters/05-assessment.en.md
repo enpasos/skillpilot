@@ -6,6 +6,8 @@ An explicit pass on a content goal establishes understanding. Passing a valid lo
 
 Consider a learning unit containing the chain $\nd{Q} \to \nd{B} \to \nd{A}$: assessment goal $\nd{Q}$ requires content goal $\nd{B}$, and $\nd{B}$ requires $\nd{A}$. As long as $\nd{Q}$ remains open, the assessment still demands its prerequisites $\nd{B}$ and $\nd{A}$. Once the learner passes $\nd{Q}$ under a valid local contract of that unit, both $\nd{B}$ and $\nd{A}$ count as independently applied -- and hence implicitly mastered -- even without separate explicit results of their own. The subsections below formalize that set equation and state the domain conditions required before evaluating it.
 
+The Product Owner confirmed this recognition rule on 11 November 2026: an own ordinary goal is recognized once no open own assessment or memory goal of its unit still requires it. If assessments $\nd{Q_1}$ and $\nd{Q_2}$ belong to the same unit and both require $\nd{A}$, then $\nd{A}$ stays open after $\nd{Q_1}$ is passed until $\nd{Q_2}$ is passed as well (Figure~@ref{fig:shared-assessments}); explicit mastery of $\nd{A}$ remains possible at any time. The rule is sound only inside units that satisfy the validity conditions of Section~@ref{sec:why-graph-not-enough}.
+
 The stored binary value $m$ remains the sole persisted outcome per goal. This specification derives additional satisfaction without writing mastery backward, adding extra qualification records, introducing manual waiver masks, or requiring second partial exams. On `main`, this concept is **not yet implemented**; the [current concept specification](repo:docs/concept/skill-graph/assessment-gated-completion.md) is authoritative.
 
 ### Local Contract, Target Scope, and Protected Goal Types {#sec:local-contract}
@@ -64,19 +66,35 @@ Let $V_U^{\mathrm{reach}} = \operatorname{Reach}_{\Rat}^{*}(P_U \setminus M)$ de
 
 ### Why the Skill Graph Alone Does Not Prove Application {#sec:why-graph-not-enough}
 
-The set equations above may be evaluated only for a valid domain contract, which requires both a structural condition and a content condition.
+The set equations above may be evaluated only for a valid domain contract. The Product Owner decision of 11 November 2026 states its conditions as five rules and fixes where each is enforced (Table~@ref{tab:unit-validity}): the recognition rule is sound only if units satisfy them as hard rules.
 
-#### Structural condition.
+:::table {#tab:unit-validity caption="Validity conditions of a learning unit and where they are enforced (Product Owner decision of 11 November 2026). No validator enforces any of them on `main` yet." cols="12mm,X,52mm"}
+| Rule | Requirement | Placement |
+| --- | --- | --- |
+| R1 | Every own ordinary content goal lies on a prerequisite path from at least one own assessment of the unit, directly or transitively; a path that leads only to a memory goal does not count. | Validity condition of the unit definition, in the same class as acyclicity: hard from the first authored unit; a violating unit cannot be merged. |
+| R2 | For every own ordinary goal, at least one own assessment that requires it has reviewed evidence that its tasks and normal grading really test the goal. | Milestone `M5` (assessment approval and coverage metadata), with the current per-goal binding at `M7`; without it the curriculum does not reach the milestone. |
+| R3 | An assessment claims coverage only for goals it requires directly or transitively: $\operatorname{Cov}(q)\subseteq\{b\in A\mid(q,b)\in\Rat^+\}$. | As R1. |
+| R4 | Every acquisition target has exactly one directly owning unit. | As R1. |
+| R5 | A later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned. | Runtime contract; precondition before implicit recognition is enabled in production. |
+:::
 
-Every content goal in $\Own(U)$ must lie on a local prerequisite path from at least one local assessment in $Q_U$: an own assessment of the unit must require it directly or transitively. A path leading only to a memory goal never suffices, because verified card recall does not prove independent application. An isolated terminal content goal without a local assessment consumer is a contract defect rather than zero-work mastery; lacking a downstream consumer never proves competence. No ad-hoc mask of “recognition-eligible” subgoals exists -- the formula governs the entire valid local contract.
+#### Structural conditions (R1, R3, R4).
 
-#### Content condition.
+Every content goal in $\Own(U)$ must lie on a local prerequisite path from at least one local assessment in $Q_U$: an own assessment of the unit must require it directly or transitively (R1). A path leading only to a memory goal never suffices, because verified card recall does not prove independent application. An isolated terminal content goal without a local assessment consumer is a contract defect rather than zero-work mastery; lacking a downstream consumer never proves competence. No ad-hoc mask of “recognition-eligible” subgoals exists -- the formula governs the entire valid local contract.
 
-For content goals, the authored tasks and normal grading rubrics must genuinely require independent application of every claimed competence, without reinterpreting an orientation marker as an assessable domain competence. Essential competencies must not be wholly omitted while still allowing unrelated points elsewhere to cross the passing threshold. Neither a local `requires` path nor a title, `coveredGoalIds` array, passing threshold, or formal DAG check proves that property: independent domain review inspects tasks, model solutions, rubrics, and claimed application coverage jointly across every passing assessment combination that releases a target under the set formula -- checking only the union of all assessments never suffices.
+Let $\operatorname{Cov}(q)$ denote the goals whose independent application an assessment $q$ claims to test according to its reviewed coverage claim. R3 requires $q$ to require each of them directly or transitively. This guarantees that the assessment which actually tests a goal is among the open protected goals the recognition rule waits for: while an own assessment $q$ is open, every own goal in $\operatorname{Cov}(q)$ stays in $N_U$. A missing path is a finding for subject review, not a reason to add a redundant direct edge. R4 makes the contract well defined: a goal with no or with several directly owning units belongs to no valid local contract.
+
+#### Content condition (R2).
+
+For every own ordinary goal, at least one own assessment that requires it must carry reviewed evidence that its authored tasks and normal grading rubric genuinely require independent application of that competence (R2), without reinterpreting an orientation marker as an assessable domain competence. Essential competencies must not be wholly omitted while still allowing unrelated points elsewhere to cross the passing threshold. Neither a local `requires` path nor a title, `coveredGoalIds` array, passing threshold, or formal DAG check proves that property: independent domain review inspects tasks, model solutions, rubrics, and claimed application coverage jointly across every passing assessment combination that releases a target under the set formula -- checking only the union of all assessments never suffices.
 
 #### No second status.
 
 Passing an assessment remains the single ordinary binary pass of that assessment goal. Stronger application meaning resides in the pre-reviewed local contract rather than in an extra per-learner qualification field or a second follow-up exam, and a legacy assessment lacking that review never acquires expanded meaning retroactively from a new diagram or software update.
+
+#### Consequence.
+
+Implicit recognition exists only inside units whose contract satisfies R1--R4 with reviewed coverage. Otherwise the unit's own ordinary goals stay open -- they can still be mastered explicitly -- and the violation keeps the curriculum from reaching the respective milestone (Table~@ref{tab:unit-validity}). A goal that no assessment covers therefore stays open *and* is a rule violation; it is never recognized for free. Section~@ref{sec:global-effect} treats R5.
 
 ### Global Effectiveness and Durable Contract Binding {#sec:global-effect}
 
@@ -93,6 +111,8 @@ A later learning unit $\nd{U2}$ carrying another assessment $\nd{q_2}$ must neve
 ::figure{id="fig:local-recognition"}
 
 A stable assessment goal ID binds a stable recognition meaning, and equivalent task variants must uphold that same qualified contract. Expanded recognition claims must never silently upgrade legacy exam passes: they require either a new assessment identity or an explicitly reviewed meaning-preserving migration, without adding per-learner qualification records. Whenever historical evidential meaning is unresolved, the explicit pass stands without fabricating broader application recognition, and genuine score or content corrections remain distinct from ordinary downstream consumer or plan switches.
+
+Under rule R5, a later re-cut of units or later edges never grant additional recognition to existing results; the contract is versioned. This runtime contract is a precondition before implicit recognition is enabled in production.
 
 ### Protected Goals and Full Unit Completion {#sec:protected-completion}
 

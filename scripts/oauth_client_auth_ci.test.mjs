@@ -112,6 +112,7 @@ test('Claude revocation checkout contains its safety dependencies without curric
     '.github/actions/ubuntu-apt/action.yml',
     '.github/actions/ubuntu-apt/apt.conf',
     '.github/actions/ubuntu-apt/render-ubuntu-sources.sh',
+    '.github/actions/ubuntu-apt/order-ubuntu-mirrors.sh',
     'deploy/nginx/skillpilot-claude-connector-v1-contained.conf',
   ]) {
     assert.ok(directories.some(directory => file.startsWith(`${directory}/`)), `Checkout excludes ${file}`)

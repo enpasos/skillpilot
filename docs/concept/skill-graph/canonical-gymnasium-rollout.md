@@ -119,9 +119,7 @@ Examples:
 
 These cross-subject edges should be added sparingly and only where they improve learner navigation in a concrete way.
 
-Until a reviewed cross-landscape reference contract exists, authored `requires` edges in base subject landscapes MUST remain intra-landscape.
-
-Cross-subject prerequisites MAY be introduced only in compiled multi-subject views or via a separate bundle-level reference format.
+Canonical subject landscapes may author such edges directly; the canonical Physik landscape, for example, requires Mathematik goals by their stable IDs. The graph validators resolve these references across the loaded landscapes, and the graph-integrity check `CQR-001` includes the required foreign goals and their inheriting ancestors in its atomic-normal-form and transitive-minimality audit. Each cross-subject edge must still connect atomic goals and be justified like any other prerequisite.
 
 ### 7. Prefer one DE-level school root in learner-facing configuration
 

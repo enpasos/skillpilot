@@ -6,9 +6,15 @@ Der Skill-Graph sagt, welche Ziele es gibt und was sie voraussetzen. Er sagt nic
 Eine **Lerneinheit** (englisch *learning unit*, künftiger technischer Begriff `LearningUnit`) verbindet ein verständliches Lernversprechen mit eigenen Lernzielen und gegebenenfalls kleineren Lerneinheiten, ihren *Kindeinheiten*. Die Struktur ist rekursiv: Mechanik kann Kinematik und Dynamik enthalten; Kinematik kann ihrerseits weitere Einheiten enthalten. Schuljahr, Semester und Lernwoche sind mögliche Planungsbezüge, keine Synonyme für eine Lerneinheit. Personalisierungsstufen 1--4, QA-Reifegrade und das Schwierigkeitsfeld `level` behalten ihre bisherige Bedeutung.
 :::
 
+:::principle {title="Zweck: tragfähige Grundlage, bevor darauf aufgebaut wird"}
+Eine Lerneinheit sichert die selbstständige Anwendung ihres Lernversprechens, bevor der geplante Lernweg darauf aufbaut. Ihre Prüfungen sind so angelegt, dass wesentliche Fehlvorstellungen sichtbar werden: Eine erkannte Lücke führt zu gezieltem Weiterlernen und einer frischen, gleichwertigen Prüfung; ein scheinbarer Abschluss würde Lernende dagegen auf unsicherer Grundlage weiterschicken. Es gilt unverändert der reguläre Bewertungsvertrag -- ohne verdeckte Bestehensregel und ohne zweites gespeichertes Ergebnis; eine einzelne Ungenauigkeit bei tragfähiger Begründung wird anders beurteilt als fehlendes zentrales Verständnis. Das ist eine didaktische Anforderung an die Einheitendefinition, keine technische Zugangssperre (Abschnitt~@ref{sec:unit-progression}).
+:::
+
 ### Motivation und eigener fachlicher Anspruch {#sec:unit-claims}
 
 Die Einheit beantwortet zuerst: *Was kann ich danach, und wozu ist das nützlich?* Ein Motivationsauftakt macht dieses Versprechen verständlich, bevor einzelne Aufgaben oder Ziele angeboten werden. Der Auftakt ist eine didaktische Funktion. Wenn er als echtes Orientierungsziel modelliert ist, gilt dessen eigener Abschlussvertrag (Abschnitt~@ref{sec:orientation}); eine synthetische Überschrift ist dadurch kein zusätzliches Lernziel. Aus einem abgeleiteten Abschluss folgt keine Behauptung, dass ein Motivationsgespräch tatsächlich stattgefunden hat.
+
+Eine Einheitsgrenze folgt einem fachlich bedeutsamen Erkenntnisübergang: Welches zusammenhängende Verständnis und welche Anwendung müssen sicher sein, bevor Neues darauf aufbaut? Eine vorhandene Prüfung, eine Zielquote, eine ordentliche Überschrift oder die Dichte der Voraussetzungskanten ist höchstens ein Hinweis, nie die Definition. Auch sparsame, transitiv minimale Ketten können starke Einheiten bilden, und gemeinsame elementare Grundlagen zwingen nicht jede spätere Anwendung in eine einzige riesige Einheit. Kanten werden weder ergänzt noch entfernt, damit ein gewünschter Zuschnitt passt; eine fragwürdige Kante ist ein eigener fachlicher Befund. Eine abschließende Einheit oder Synthese braucht keinen späteren Verbraucher als Rechtfertigung. Die [Gestaltungskriterien und Beispiele (englisch)](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) wenden diese Kriterien auf zwei Kandidaten an.
 
 Eine größere Einheit kann gegenüber ihren Kindeinheiten drei verschiedene Ansprüche erheben:
 
@@ -33,10 +39,10 @@ In Abbildung~@ref{fig:recursive-unit} hat Kinematik die eigenen Ziele $\{\nd{a},
 Für Umfang und Zuordnung gelten diese Regeln:
 
 - Der aufgelöste Gesamtumfang ist nicht leer. Ein leerer Navigationsmarker ist keine abgeschlossene Lerneinheit. Ein Aggregat darf dagegen leere eigene Ziele haben, wenn seine Pflichtkinder den Gesamtumfang tragen.
-- Jeder Ersterwerb ist auf der kleinsten fachlich zuständigen autoritativen Einheit verortet. Eine Elternansicht darf dieselben stabilen Ziele zeigen, ohne sie erneut als eigene Erwerbsziele zu beanspruchen.
+- Jedes Erwerbsziel hat genau eine direkt zuständige Einheit: die kleinste fachlich zuständige autoritative Einheit (Regel R4 in Abschnitt~@ref{sec:why-graph-not-enough}). Eine Elternansicht darf dieselben stabilen Ziele zeigen, ohne sie erneut als eigene Erwerbsziele zu beanspruchen.
 - Überlappende Referenzen werden als Mengen vereint; sie erzeugen weder zusätzliche Ziele noch doppelte Fortschrittspunkte.
 - Die Zuordnung der eigenen Ziele und die fachlich geprüfte Bedeutung der eigenen Prüfungen bilden den *lokalen Vertrag* der Einheit (Abschnitt~@ref{sec:assessment}). Ein bloßer Fokuswechsel verändert diese Zuordnung und den lokalen Vertrag nicht.
-- Jedes Inhaltsziel in $\Own(U)$ braucht einen eigenen lokalen Prüfungsverbraucher, also eine eigene Prüfung der Einheit, die es voraussetzt, und unabhängig geprüfte Anwendungsdeckung in Aufgabe und regulärem Bewertungsraster. Ohne diese Deckung ist der lokale Vertrag ungültig; eine zusätzliche frei gewählte Anerkennungsmaske ist kein Ersatz.
+- Jedes Inhaltsziel in $\Own(U)$ braucht einen eigenen lokalen Prüfungsverbraucher, also eine eigene Prüfung der Einheit, die es direkt oder transitiv voraussetzt (R1), und mindestens eine solche Prüfung braucht einen geprüften Nachweis, dass ihre Aufgaben und ihr reguläres Bewertungsraster das Ziel wirklich prüfen (R2). Abschnitt~@ref{sec:why-graph-not-enough} nennt alle Gültigkeitsbedingungen R1--R5 und wo jede durchgesetzt wird. Ohne sie ist der lokale Vertrag ungültig; eine zusätzliche frei gewählte Anerkennungsmaske ist kein Ersatz.
 
 Die Einbettung benutzt die vorhandene Programm- und Platzierungsstruktur beziehungsweise die geprüfte Kompositionssicht (Abschnitt~@ref{sec:context-model}). Eine fachliche Einheit ist nicht allein deshalb definiert, weil ein Cluster gerade aufgeklappt ist. Ebenso wenig wird jeder beliebige `contains`-Cluster automatisch zur Lerneinheit. Insbesondere bleibt die allgemeine Clustererfüllung aus Abschnitt~@ref{sec:state} von der hier erklärten, ausdrücklich autorisierten Einheitsstruktur unterschieden.
 
@@ -56,7 +62,7 @@ Für die Formen aus Abschnitt~@ref{sec:unit-claims} bedeutet das Folgendes. Ein 
 
 ### Anerkennung vor dem Gesamtabschluss {#sec:unit-early-recognition}
 
-Eine passende bestandene Prüfung kann im verbindlichen Zielkonzept -- das auf der Hauptlinie **noch nicht implementiert** ist -- die eigenen Inhaltsziele einer Einheit anerkennen, bevor eine davon unabhängige Karte oder eine andere Kindeinheit abgeschlossen ist. Diese Anerkennung ist global wirksam. Eine noch offene Syntheseprüfung der Elterneinheit nimmt sie nicht zurück.
+Eine passende bestandene Prüfung kann im verbindlichen Zielkonzept -- das auf der Hauptlinie **noch nicht implementiert** ist -- die eigenen Inhaltsziele einer Einheit anerkennen, bevor eine davon unabhängige Karte oder eine andere Kindeinheit abgeschlossen ist, sofern keine andere offene eigene Prüfung und kein offenes eigenes Memorierziel der Einheit sie noch benötigt (Abschnitt~@ref{sec:transitive-demand}). Diese Anerkennung ist global wirksam. Eine noch offene Syntheseprüfung der Elterneinheit nimmt sie nicht zurück.
 
 Für jede Einheit wird deshalb nur die Anerkennung ihrer *eigenen* Ziele berechnet, soweit sie keine Prüfungs- oder Memorierziele sind. Die Elterneinheit bildet aus allen Nachfahren keinen neuen vergrößerten Anerkennungsumfang. Sonst könnte ihre Prüfung untergeordnete Prüfungs- oder Kartenpflichten unzulässig umgehen. Eine Elternprüfung kann zusätzliche Integration belegen, ohne die ursprüngliche Nachweisbedeutung der Kindverträge rückwirkend zu erweitern. Die genaue Formel und ihre Inhaltsbedingungen stehen in Abschnitt~@ref{sec:assessment}.
 

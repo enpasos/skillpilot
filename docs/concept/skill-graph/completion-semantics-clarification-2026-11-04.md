@@ -134,3 +134,24 @@ oder Datumsangaben. Siehe [Lernplanstatus](../didactic/unified-learning-plan-sta
 
 Dieser Stand ändert keine Produktionsdaten und behauptet weder einen passenden
 produktiven Runtime noch eine bereits erfolgte Neuprüfung der Curricula.
+
+## Bestätigung vom 11. November 2026
+
+Der Product Owner hat die hier beschriebene Anerkennungsregel am
+11. November 2026 bestätigt: Ein eigenes gewöhnliches Ziel gilt als anerkannt,
+sobald keine offene eigene Prüfung und kein offenes eigenes Memorierziel seiner
+direkt zuständigen Einheit es noch benötigt. Gehören Q1 und Q2 zur selben
+Einheit und setzen beide A voraus, bleibt A nach bestandener Q1 offen, bis auch
+Q2 bestanden ist.
+
+Die auf dem archivierten Branch von Pull Request #83 als „Zielentscheidung vom
+6. November 2026“ geführte Alternative wurde geprüft und **nicht übernommen**:
+sofortige Anerkennung aus der qualifizierten Deckungsliste einer einzelnen
+bestandenen Prüfung, auch als Nachweis durch eine Eltern- oder Fremdeinheit.
+
+Tragfähig ist die Regel nur in Einheiten, die die Gültigkeitsregeln R1–R5
+erfüllen: Prüfungspfad für jedes eigene gewöhnliche Ziel, geprüfter
+Deckungsnachweis, Deckung nur innerhalb der Voraussetzungen der Prüfung, genau
+eine direkt zuständige Einheit und versionierter Vertrag. Wortlaut und
+Verortung der Regeln stehen in
+[Graph-Definition §13.3](assessment-gated-completion.de.md#sec-why-graph-not-enough).

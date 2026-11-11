@@ -484,11 +484,50 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   estimates, reserve and overall/subject budgets. Count shared acquisition once;
   `weight` and raw goal counts are not time estimates. An assumed entry competency
   is not a learner mastery write.
+- **Purpose (Product Owner, 11 November 2026).** A unit establishes solid,
+  independent application of its promise before planned learning builds on it.
+  Its assessments expose essential misconceptions; a gap leads to focused
+  learning and a fresh equivalent assessment instead of a false completion. Unit
+  boundaries follow meaningful conceptual transitions, not existing exams,
+  target quotas, tidy headings or edge density; never add or remove edges to
+  fit a cut. The ordinary grading contract applies: no hidden pass rule and no
+  second stored outcome. This is a didactic requirement, not an access lock.
+- **Unit validity rules (Product Owner, 11 November 2026).** Recognition (§4)
+  is only sound if units hard-satisfy five rules, each with a fixed placement:
+  - R1: every own ordinary content goal of a unit lies on a prerequisite path
+    from at least one own assessment of that unit, directly or transitively; a
+    path that leads only to a memory goal does not count. Validity condition of
+    the unit definition, same class as acyclicity: hard from the first authored
+    unit; a unit that violates it cannot be merged.
+  - R2: for every own ordinary goal, at least one own assessment that requires
+    it has reviewed evidence that its tasks and normal grading really test the
+    goal. Milestone M5 (assessment approval and coverage metadata), with the
+    current per-goal binding at M7; without it the curriculum does not reach
+    the milestone.
+  - R3: an assessment claims coverage only for goals it requires directly or
+    transitively (coverage ⊆ Reach⁺ over the atomic prerequisite relation), so
+    the assessment that actually tests a goal is among those the recognition
+    rule waits for. Same placement as R1.
+  - R4: every acquisition target has exactly one directly owning unit. Same
+    placement as R1.
+  - R5: a later re-cut of units or later edges never grant additional
+    recognition to existing results; the contract is versioned. Runtime
+    contract and precondition before implicit recognition is enabled in
+    production.
+  Implicit recognition exists only inside units whose contract satisfies R1–R4
+  with reviewed coverage. Otherwise the unit's goals stay open, and the
+  violation keeps the curriculum from reaching the milestone. A goal that no
+  assessment covers therefore stays open *and* is a rule violation; it is never
+  recognized for free. No validator enforces R1–R5 yet (Graph Definition §13.3;
+  `GD-U05`, `GD-U06`, `GD-U15`, `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`,
+  `GD-A18`).
 
 This is revised concept documentation, not a new implemented schema, validator,
 or access policy. See `docs/concept/skill-graph/learning-units.md`,
-`docs/concept/skill-graph/learning-unit-progression.md` and Graph Definition
-§11 (learning units) and §12 (optional acquisition and time planning);
+`docs/concept/skill-graph/learning-unit-progression.md`,
+`docs/concept/skill-graph/learning-unit-design-and-examples.md` (design criteria
+and worked candidates) and Graph Definition §11 (learning units), §12 (optional
+acquisition and time planning) and §13.3 (unit validity rules);
 capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
 
 ---
@@ -583,6 +622,20 @@ focus is not a learning unit. Uncovered ordinary endpoints are authoring
 faults, never zero-work recognition; a failed structural calculation gives no
 new implicit credit. Required card targets remain explicit independently.
 
+**Confirmation of 11 November 2026 (Product Owner).** This recognition rule
+stays: implicit mastery is derived per valid local contract of the owning
+learning unit, and an own ordinary goal is recognized once it is no longer
+required by any open own assessment or memory goal of that unit (`N_U`, `I_U`
+in Graph Definition §13). Example: assessments Q1 and Q2 belong to the same
+unit and both require A; when Q1 is passed, A stays open until Q2 is passed as
+well. The alternative recorded on the archived branch of PR #83 as a
+"6 November 2026 target decision" (immediate recognition from the qualified
+coverage list `C(q)` of a single passed assessment, including proof by a parent
+or foreign unit) was reviewed and is **not adopted**. Do not port its formulas,
+its rewrite of `docs/concept/skill-graph/latex/check-assessment-model.py` or its
+diagrams. The rule is only sound inside units that satisfy the validity rules
+R1–R5 of §2.4.
+
 The normal tasks and rubrics MUST require independent application of every
 competence recognized by the relevant assessment set. A missing essential
 competence must not be compensated by unrelated points while it is recognized.
@@ -595,7 +648,9 @@ not automatically satisfy this stronger authoring contract.
 Keep recognition semantics stable for each assessment identity and retain the
 authoritative authorship context needed to reconstruct it outside today's
 selected plan. New graph edges or a broader new unit must not grant additional
-competencies to old exam results. Equivalent task forms preserve that contract;
+competencies to old exam results (rule R5: the contract is versioned, and this
+runtime contract is a precondition before implicit recognition is enabled in
+production). Equivalent task forms preserve that contract;
 a different recognition claim requires a distinct assessment identity or an
 explicitly reviewed migration. Do not invent a learner qualification registry.
 

@@ -10,7 +10,7 @@ learning units. This section explains both the graph and the contracts around it
   [The SkillPilot Graph Definition (English PDF)](skillpilot-graph-definition.en.pdf) ·
   [Die Graph-Definition von SkillPilot (Deutsches PDF)](skillpilot-graph-definition.pdf) —
   generated from the canonical single source with full mathematics, bilingual illustrations,
-  143-rule enforcement traffic light (`Ampelschaltung`), and implementation boundaries.
+  145-rule enforcement traffic light (`Ampelschaltung`), and implementation boundaries.
 - [Graph Definition — Core (§§1–5, EN)](graph-definition.md) · [Deutsch (DE)](graph-definition.de.md):
   formal goals, relations, prerequisites, frontier, and graph-validity conditions.
 - [Context, Views, Scope & Goal Types (§§6–10, EN)](context-and-views.en.md) · [Deutsch (DE)](context-and-views.de.md):
@@ -21,8 +21,11 @@ learning units. This section explains both the graph and the contracts around it
   and completion derived from child units and own obligations.
 - [Learning-Unit Progression (§11.5, EN)](learning-unit-progression.md) · [Deutsch (DE)](learning-unit-progression.de.md):
   explicit course dependencies, whole-unit ordering, and the separate choice of access policy.
+- [Learning-Unit Design Criteria and Examples](learning-unit-design-and-examples.md):
+  the purpose of a unit, criteria for meaningful boundaries and assessments, two worked
+  candidates, and the unit validity rules R1–R5 of 11 November 2026 applied to unit design.
 - [Optional Acquisition & Time Planning (§12, EN)](planning-and-budget.en.md) · [Deutsch (DE)](planning-and-budget.de.md):
-  multi-stage level plans, structural prerequisite witnesses, and workload budgets.
+  multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
 - [Assessment-Gated Completion & Implicit Mastery (§13, EN)](assessment-gated-completion.md) · [Deutsch (DE)](assessment-gated-completion.de.md):
   direct assessment access, transitive minimality, and globally effective recognition
   through independent application in valid local learning units (implementation pending).
@@ -58,7 +61,7 @@ runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
 
 ## Build Web & PDF Compendia from the Canonical Single Source
 
-All bilingual Web chapters, the 143-rule traffic-light matrix, the bilingual diagrams
+All bilingual Web chapters, the 145-rule traffic-light matrix, the bilingual diagrams
 (`00`, `08`–`16`), and both LuaLaTeX PDFs are compiled from the canonical single source
 under `docs/concept/skill-graph/source/` (only sources and static original illustrations
 `01`–`07` are tracked in Git; generated outputs are built locally and in CI):

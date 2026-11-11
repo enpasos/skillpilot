@@ -6,6 +6,8 @@ Ein ausdrücklicher Erfolg an einem Inhaltsziel belegt Verstehen. Eine gültige 
 
 Die Grundidee zeigt eine Lerneinheit mit der Kette $\nd{Q} \to \nd{B} \to \nd{A}$: Das Prüfungsziel $\nd{Q}$ setzt das Inhaltsziel $\nd{B}$ voraus, und $\nd{B}$ setzt $\nd{A}$ voraus. Solange $\nd{Q}$ offen ist, fragt die Prüfung ihre Voraussetzungen $\nd{B}$ und $\nd{A}$ noch nach. Hat die Person $\nd{Q}$ bestanden und ist der lokale Vertrag der Einheit gültig, dann gelten $\nd{B}$ und $\nd{A}$ als selbstständig angewandt und damit als implizit beherrscht, auch ohne eigenes ausdrückliches Ergebnis. Die folgenden Unterabschnitte machen daraus eine Mengenformel und nennen die fachlichen Bedingungen, unter denen sie ausgewertet werden darf.
 
+Der Product Owner hat diese Anerkennungsregel am 11. November 2026 bestätigt: Ein eigenes gewöhnliches Ziel gilt als anerkannt, sobald keine offene eigene Prüfung und kein offenes eigenes Memorierziel seiner Einheit es noch benötigt. Gehören die Prüfungen $\nd{Q_1}$ und $\nd{Q_2}$ zur selben Einheit und setzen beide $\nd{A}$ voraus, bleibt $\nd{A}$ nach bestandener $\nd{Q_1}$ offen, bis auch $\nd{Q_2}$ bestanden ist (Abbildung~@ref{fig:shared-assessments}); ausdrückliche Mastery von $\nd{A}$ bleibt jederzeit möglich. Tragfähig ist die Regel nur in Einheiten, die die Gültigkeitsbedingungen aus Abschnitt~@ref{sec:why-graph-not-enough} erfüllen.
+
 Der gespeicherte binäre Zustand $m$ bleibt unverändert das einzige Zielergebnis. Die neue Semantik leitet zusätzliche Erfüllung ab, ohne Rückwärtsschreiben von Mastery, zusätzliche Qualifikationsdatensätze, manuelle Freistellungsprofile oder zweite Teilprüfungen einzuführen. Auf der geprüften Hauptlinie ist dieses Konzept **noch nicht implementiert**. Maßgeblich ist die [aktuelle Konzeptspezifikation](repo:docs/concept/skill-graph/assessment-gated-completion.md).
 
 ### Vertrag, Zielumfang und geschützte Zieltypen {#sec:local-contract}
@@ -64,19 +66,35 @@ Seien $V_U^{\mathrm{reach}} = \operatorname{Reach}_{\Rat}^{*}(P_U \setminus M)$ 
 
 ### Warum der Skill-Graph allein noch keinen Anwendungsnachweis liefert {#sec:why-graph-not-enough}
 
-Die Mengenformel darf nur für einen gültigen fachlichen Vertrag ausgewertet werden. Gültig ist er nur, wenn eine Strukturbedingung und eine Inhaltsbedingung erfüllt sind.
+Die Mengenformel darf nur für einen gültigen fachlichen Vertrag ausgewertet werden. Die Ownerentscheidung vom 11. November 2026 fasst dessen Bedingungen in fünf Regeln und legt fest, wo jede durchgesetzt wird (Tabelle~@ref{tab:unit-validity}): Die Anerkennungsregel ist nur tragfähig, wenn Einheiten diese Regeln hart erfüllen.
 
-#### Strukturbedingung.
+:::table {#tab:unit-validity caption="Gültigkeitsbedingungen einer Lerneinheit und ihre Durchsetzung (Ownerentscheidung vom 11. November 2026). Auf der Hauptlinie setzt noch kein Validator eine davon durch." cols="12mm,X,52mm"}
+| Regel | Anforderung | Verortung |
+| --- | --- | --- |
+| R1 | Jedes eigene gewöhnliche Inhaltsziel liegt auf einem Voraussetzungspfad von mindestens einer eigenen Prüfung der Einheit, direkt oder transitiv; ein Pfad, der nur zu einem Memorierziel führt, zählt nicht. | Gültigkeitsbedingung der Einheitendefinition, in derselben Klasse wie Azyklizität: hart ab der ersten verfassten Einheit; eine verletzende Einheit wird nicht in die Hauptlinie übernommen. |
+| R2 | Für jedes eigene gewöhnliche Ziel hat mindestens eine eigene Prüfung, die es voraussetzt, einen geprüften Nachweis, dass ihre Aufgaben und ihre reguläre Bewertung das Ziel wirklich prüfen. | Meilenstein `M5` (Prüfungsfreigabe und Deckungsmetadaten), aktuelle zielgenaue Bindung bei `M7`; ohne diesen Nachweis erreicht das Curriculum den Meilenstein nicht. |
+| R3 | Eine Prüfung beansprucht Deckung nur für Ziele, die sie direkt oder transitiv voraussetzt: $\operatorname{Cov}(q)\subseteq\{b\in A\mid(q,b)\in\Rat^+\}$. | Wie R1. |
+| R4 | Jedes Erwerbsziel hat genau eine direkt zuständige Einheit. | Wie R1. |
+| R5 | Ein späterer Neuzuschnitt von Einheiten oder spätere Kanten verleihen vorhandenen Ergebnissen nie zusätzliche Anerkennung; der Vertrag ist versioniert. | Laufzeitvertrag; Vorbedingung, bevor implizite Anerkennung produktiv eingeschaltet wird. |
+:::
 
-Jedes Inhaltsziel in $\Own(U)$ braucht einen lokalen Pfad zu mindestens einer lokalen Abschlussprüfung aus $Q_U$: Eine eigene Prüfung der Einheit muss es direkt oder transitiv voraussetzen. Ein Pfad allein zu einem Memorierziel genügt nicht: Verifizierter Abruf beweist noch keine selbstständige Anwendung. Ein bloß isoliertes Endziel ohne lokalen Prüfungspfad ist ein Vertragsfehler, kein automatisch beherrschtes Ziel. Das Fehlen eines späteren Verbrauchers ist allein kein Nachweis einer Kompetenz. Eine zusätzliche, frei wählbare Maske für „anerkennungsfähige“ Teilziele existiert nicht: Die Formel gilt für den vollständigen gültigen eigenen Vertrag.
+#### Strukturbedingungen (R1, R3, R4).
 
-#### Inhaltsbedingung.
+Jedes Inhaltsziel in $\Own(U)$ braucht einen lokalen Pfad zu mindestens einer lokalen Abschlussprüfung aus $Q_U$: Eine eigene Prüfung der Einheit muss es direkt oder transitiv voraussetzen (R1). Ein Pfad allein zu einem Memorierziel genügt nicht: Verifizierter Abruf beweist noch keine selbstständige Anwendung. Ein bloß isoliertes Endziel ohne lokalen Prüfungspfad ist ein Vertragsfehler, kein automatisch beherrschtes Ziel. Das Fehlen eines späteren Verbrauchers ist allein kein Nachweis einer Kompetenz. Eine zusätzliche, frei wählbare Maske für „anerkennungsfähige“ Teilziele existiert nicht: Die Formel gilt für den vollständigen gültigen eigenen Vertrag.
 
-Für Inhaltsziele müssen die realen Aufgaben und Bewertungsraster jede beanspruchte höhere Anwendung tatsächlich tragen. Diese Anforderung macht einen Orientierungsmarker nicht nachträglich zu einer prüfbaren Fachkompetenz. Wesentliche Kompetenzen dürfen nicht vollständig fehlen und durch Punkte aus anderen Aufgabenteilen kompensiert werden. Der lokale `requires`-Pfad, Titel, `coveredGoalIds`, eine Bestehenspunktzahl oder die formale DAG-Gültigkeit beweisen das nicht. Ein unabhängiges fachliches Review prüft Aufgaben, Lösungen, Bewertungsraster und die behauptete Anwendungsabdeckung zusammen. Zu prüfen ist jede Bestehenskombination, die ein Ziel nach der Mengenformel freigibt; die vereinigten Inhalte aller Prüfungen allein genügen dafür nicht.
+Sei $\operatorname{Cov}(q)$ die Menge der Ziele, deren selbstständige Anwendung eine Prüfung $q$ laut ihrem geprüften Deckungsanspruch prüft. R3 verlangt, dass $q$ jedes dieser Ziele direkt oder transitiv voraussetzt. Damit gehört die Prüfung, die ein Ziel tatsächlich prüft, zu den offenen geschützten Zielen, auf welche die Anerkennungsregel wartet: Solange eine eigene Prüfung $q$ offen ist, bleibt jedes eigene Ziel aus $\operatorname{Cov}(q)$ in $N_U$. Ein fehlender Pfad ist ein Befund für das fachliche Review, kein Anlass für eine redundante direkte Kante. R4 macht den Vertrag eindeutig: Ein Ziel ohne oder mit mehreren direkt zuständigen Einheiten gehört zu keinem gültigen lokalen Vertrag.
+
+#### Inhaltsbedingung (R2).
+
+Für jedes eigene gewöhnliche Ziel muss mindestens eine eigene Prüfung, die es voraussetzt, einen geprüften Nachweis tragen, dass ihre realen Aufgaben und ihr reguläres Bewertungsraster die selbstständige Anwendung dieser Kompetenz tatsächlich verlangen (R2). Diese Anforderung macht einen Orientierungsmarker nicht nachträglich zu einer prüfbaren Fachkompetenz. Wesentliche Kompetenzen dürfen nicht vollständig fehlen und durch Punkte aus anderen Aufgabenteilen kompensiert werden. Der lokale `requires`-Pfad, Titel, `coveredGoalIds`, eine Bestehenspunktzahl oder die formale DAG-Gültigkeit beweisen das nicht. Ein unabhängiges fachliches Review prüft Aufgaben, Lösungen, Bewertungsraster und die behauptete Anwendungsabdeckung zusammen. Zu prüfen ist jede Bestehenskombination, die ein Ziel nach der Mengenformel freigibt; die vereinigten Inhalte aller Prüfungen allein genügen dafür nicht.
 
 #### Kein zweiter Status.
 
 Der reguläre Prüfungserfolg bleibt derselbe binäre Erfolg der gesamten Prüfung. Die strengere Anwendungsbedeutung liegt im vorab geprüften Inhalt des lokalen Vertrags, nicht in einem zusätzlichen pro Person zu speichernden Qualifikationsstatus oder einer zweiten Folgeprüfung. Eine historische Prüfung ohne dieses Review erhält die stärkere Bedeutung nicht nachträglich allein durch ein neues Diagramm oder eine Softwareänderung.
+
+#### Folge.
+
+Implizite Anerkennung gibt es nur in Einheiten, deren Vertrag R1--R4 mit geprüfter Deckung erfüllt. Andernfalls bleiben die eigenen gewöhnlichen Ziele der Einheit offen -- ausdrücklich gemeistert werden können sie weiterhin --, und der Verstoß hält das Curriculum vom jeweiligen Meilenstein fern (Tabelle~@ref{tab:unit-validity}). Ein Ziel, das keine Prüfung abdeckt, bleibt deshalb offen *und* ist ein Regelverstoß; es wird nie ohne Nachweis anerkannt. Abschnitt~@ref{sec:global-effect} behandelt R5.
 
 ### Globale Wirkung und dauerhafte Vertragsbindung {#sec:global-effect}
 
@@ -93,6 +111,8 @@ Eine spätere Lerneinheit $\nd{U2}$ mit einer weiteren Prüfung $\nd{q_2}$ darf 
 ::figure{id="fig:local-recognition"}
 
 Eine stabile Prüfungsziel-ID braucht eine stabile Anerkennungsbedeutung. Wechselnde Aufgabenvarianten müssen denselben qualifizierten Vertrag erfüllen. Neue fachliche Anerkennungsansprüche dürfen alte Prüfungs-Mastery nicht stillschweigend aufwerten. Sie brauchen eine neue Prüfungsidentität oder eine ausdrücklich geprüfte Migration der vorhandenen Bedeutung. Dafür wird kein zusätzlicher Qualifikationsdatensatz pro Lernendem eingeführt. Ist die historische Nachweisbedeutung ungeklärt, bleibt der ausdrückliche Erfolg erhalten; die zusätzliche höhere Anwendung wird nicht erfunden. Berechtigte Ergebnis- oder Inhaltskorrekturen sind von einem bloßen späteren Verbraucher- oder Planwechsel zu unterscheiden.
+
+Nach Regel R5 verleihen ein späterer Neuzuschnitt von Einheiten oder spätere Kanten vorhandenen Ergebnissen nie zusätzliche Anerkennung; der Vertrag ist versioniert. Dieser Laufzeitvertrag ist Vorbedingung, bevor implizite Anerkennung produktiv eingeschaltet wird.
 
 ### Geschützte Ziele und vollständiger Abschluss {#sec:protected-completion}
 

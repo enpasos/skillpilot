@@ -1,18 +1,23 @@
 name: Use Ubuntu package sources
-description: Keep CI package installation independent of unused third-party repositories and the Azure Ubuntu mirror
+description: Fail over between the direct Ubuntu endpoints and the Azure Ubuntu mirror, and keep unused third-party repositories out of CI package installation
 runs:
   using: composite
   steps:
-    - name: Restrict APT to direct Ubuntu sources
+    - name: Route APT through direct-first Ubuntu mirror lists
       shell: bash
       env:
         SKILLPILOT_APT_POLICY: ${{ github.action_path }}/apt.conf
         SKILLPILOT_APT_RENDER: ${{ github.action_path }}/render-ubuntu-sources.sh
+        SKILLPILOT_APT_ORDER: ${{ github.action_path }}/order-ubuntu-mirrors.sh
       run: |
         set -euo pipefail
         # GitHub's Ubuntu runners also enable third-party Chrome/Microsoft
-        # repositories and route Ubuntu through the Azure mirror list. Our OS
-        # packages (including Playwright dependencies) need only Ubuntu.
+        # repositories and route Ubuntu through an Azure-first mirror list. Our OS
+        # packages (including Playwright dependencies) need only Ubuntu. Each Ubuntu
+        # stanza reads a mirror list with the direct endpoint first and the Azure
+        # mirror second; APT moves a failed or stalled file to the other source, and
+        # a pre-update probe lets a source that answers go first.
         # Preserve all original source files and signature/hash checks.
-        sudo bash "$SKILLPILOT_APT_RENDER" /etc/apt/sources.list.d/ubuntu.sources /etc/apt/skillpilot-ubuntu.sources
+        sudo bash "$SKILLPILOT_APT_RENDER" /etc/apt/sources.list.d/ubuntu.sources /etc/apt/skillpilot-ubuntu.sources /etc/apt/skillpilot-ubuntu-mirrors
+        sudo install -m 755 "$SKILLPILOT_APT_ORDER" /usr/local/sbin/skillpilot-order-ubuntu-mirrors
         sudo install -m 644 "$SKILLPILOT_APT_POLICY" /etc/apt/apt.conf.d/99skillpilot-ubuntu-sources

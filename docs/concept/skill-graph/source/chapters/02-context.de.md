@@ -102,6 +102,8 @@ Die Ownerentscheidung vom 10. November 2026 ersetzt am persönlichen Kompilation
 
 Diese Gültigkeitsprüfung ist von der späteren Level-3-Fokuswahl getrennt: Eine gültig aufgelöste Voraussetzung außerhalb des Fokus blockiert den Normalmodus weiterhin nicht.
 
+Nach der Ownerentscheidung vom 11. November 2026 gehören diese harten Fehler in Validierung, Curriculum-QA und native Abnahme, nicht in Lesezugriffe von Lernenden. Ist der kanonische Graph eines Lernkontexts nicht strikt kompilierbar, behält die Laufzeit den geprüften Ausgangsumfang ohne abgeleitete Hülle, beansprucht keine Lernbasis, bietet kein Ziel mit gebrochenem Voraussetzungsbedarf an und protokolliert den Fehler einmal je Curriculum und Fehlercode; Lernstand, Ergebnisse und Export bleiben lesbar. Fehler in der Ausgangsauswahl selbst bleiben harte Fehler. Die Regel erfasst die vielen nichtkanonischen Curricula, deren Wurzelcluster sein eigenes Orientierungsziel enthält und voraussetzt, und ändert deren Daten nicht.
+
 *Beispiel im Übergangsbestand:* Ein Physikziel $g$ benötigt einen Mathematik-Cluster $k$. Seine kanonische atomare Basis und deren transitive Anforderungen werden vor Anzeigefiltern aufgelöst. Eine fachlokale `prerequisiteOnly`-Referenz auf $k$ kann erhalten bleiben. Jedes wirklich notwendige Atom braucht dennoch ein Erwerbsziel im gesamten Personal Curriculum, etwa in Mathematik oder als abgeleitete Vorbereitung. Keine manuelle Referenz je Atom und kein ganzes zusätzliches Fach ist dafür nötig. Kanonische Identität, Quellenzuordnung und Mastery bleiben erhalten.
 
 ### Anwendbarkeit ist keine Platzierung {#sec:applicability-vs-placement}
