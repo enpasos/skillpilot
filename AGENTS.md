@@ -389,6 +389,14 @@ Interpretation rules:
   errors, regardless of mastery or focus. The learner runtime and first-party
   WebGUI implement this closed basis. Applicability validation, migration-proof
   admission and complete native/curriculum/remote acceptance remain separate.
+- Product Owner decision of 11 November 2026: these hard errors belong to
+  validation, CQR and native acceptance, not to learner reads. When the
+  canonical graph of a learning context is not strictly compilable, the runtime
+  keeps the reviewed seed scope without the derived closure, claims no learning
+  basis, offers no goal whose demand is broken, and logs the failure once per
+  curriculum and error code. State, results and export stay readable.
+  This covers the many non-canonical curricula whose root cluster contains and
+  requires its own orientation goal; their data is not changed by this rule.
 - `prerequisiteOnly` remains a subject-local support role. A required atom may
   keep that role in one view when the same canonical atom is a target elsewhere
   in the full Personal Curriculum; acquisition counts once. It must not remain

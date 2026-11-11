@@ -15,7 +15,6 @@ import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.skillpilot.backend.completion.CompletionProfileCompiler;
-import com.skillpilot.backend.completion.CompletionCompilationException;
 import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
@@ -686,16 +685,16 @@ class ProjectionRoleLearnerServiceTest {
                         .map(FrontierGoal::id).sorted().toList());
     }
 
+    /**
+     * A graph that is not strictly compilable stays readable with its seed scope, but a
+     * broken demand never becomes a successful one: no frontier path offers a goal.
+     */
     private void assertInvalidFrontierPaths(Fixture fixture, List<String> focus) {
-        for (org.assertj.core.api.ThrowableAssert.ThrowingCallable invocation :
-                List.<org.assertj.core.api.ThrowableAssert.ThrowingCallable>of(
-                        () -> fixture.service().getFrontier(LEARNER_ID),
-                        () -> fixture.service().getRichFrontier(LEARNER_ID),
-                        () -> fixture.service().getUncompactedRichFrontier(LEARNER_ID),
-                        () -> fixture.service().getUncompactedRichFrontierForFocus(LEARNER_ID, focus))) {
-            assertThatThrownBy(invocation).isInstanceOfSatisfying(CompletionCompilationException.class,
-                    error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
-        }
+        assertThat(frontierPaths(fixture, focus).values()).allSatisfy(ids -> assertThat(ids).isEmpty());
+        Object projection = ReflectionTestUtils.invokeMethod(
+                fixture.service(), "getGoalProjection", LANDSCAPE_ID, PERSONAL_CURRICULUM);
+        assertThat((Object) ReflectionTestUtils.invokeMethod(projection, "learningScope"))
+                .as("no derived learning basis is claimed").isNull();
     }
 
     @Test
@@ -726,10 +725,9 @@ class ProjectionRoleLearnerServiceTest {
                 .thenReturn(List.of(new PlannedGoal(fixture.learner(), NESTED_CLUSTER_ID)));
 
         assertInvalidFrontierPaths(fixture, List.of(NESTED_CLUSTER_ID));
-        assertThatThrownBy(() -> fixture.service().getFilteredAtomicGoalIds(
-                LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false))
-                .isInstanceOf(CompletionCompilationException.class)
-                .hasMessageContaining("unknown-unused-child-requirement");
+        // The unresolved requirement keeps the reviewed seed scope readable instead of failing the read.
+        assertThat(fixture.service().getFilteredAtomicGoalIds(
+                LANDSCAPE_ID, PERSONAL_CURRICULUM, null, false)).containsExactly(PREREQUISITE_ID);
         fixture.landscape().getGoals().stream().filter(goal -> PREREQUISITE_ID.equals(goal.getId()))
                 .findFirst().orElseThrow().setRequires(List.of());
         assertThat(fixture.service().getFilteredAtomicGoalIds(
