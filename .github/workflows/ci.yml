@@ -987,7 +987,7 @@ jobs:
   # not wait for the goal-book build. scripts/run_backend_ci.py owns the
   # partitions; together with backend-ci they run every backend test once.
   backend-reduction-proofs:
-    name: Backend ${{ matrix.partition }}
+    name: Backend reduction proofs (${{ matrix.partition }})
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     strategy:
