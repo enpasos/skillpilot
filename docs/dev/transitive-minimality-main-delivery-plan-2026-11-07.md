@@ -16,7 +16,7 @@ der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
 Bestandsbeweis, 761 vollständige native Einzelfachkonfigurationen, die echten
 Ausgabe-Verlustgegenfälle sowie der reguläre Meilensteinlauf einschließlich
 aller zehn unveränderten Floors bestehen lokal. Die genaue
-[Biologie-Prüfgrenze](../../qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
+[Biologie-Prüfgrenze](https://github.com/enpasos/skillpilot/blob/1d63d2b18cf081d85827c80a37257c989a71dd87/qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
 trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
 Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
 Statusvoraussetzung durch.
