@@ -287,7 +287,7 @@ class FirstMathPrerequisiteReductionTest {
         throw new IllegalStateException("Cannot locate SkillPilot repository root from " + start);
     }
 
-    /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
+    /** Bounded projection-model regression without enumerating the live curriculum scopes. */
     @Test
     void rawRegistryFramesRejectMissingOverlaysBadDigestsAndRequiresPresenceChanges() throws Exception {
         JsonNode declared = readNativeRegistryDeclaration();
@@ -435,6 +435,43 @@ class FirstMathPrerequisiteReductionTest {
 
     /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
     @Test
+    void canonicalProbeUsesClosedLearningBasisAndMissingAcquisitionTargetsFailClosed() throws Exception {
+        Map<String, LearningGoal> graph = new TreeMap<>();
+        for (String id : List.of("T", "K", "P", "Q")) {
+            LearningGoal goal = new LearningGoal();
+            goal.setId(id); goal.setType("K".equals(id) ? "cluster" : "atomic");
+            goal.setContains("K".equals(id) ? List.of("P") : List.of());
+            goal.setRequires("T".equals(id) ? List.of("K") : "P".equals(id) ? List.of("Q") : List.of());
+            graph.put(id, goal);
+        }
+        var service = new LearnerService(mock(LearnerRepository.class), mock(LearnerClientStateRepository.class),
+                mock(MasteryRepository.class), mock(PlannedGoalRepository.class), mock(LandscapeService.class),
+                mock(GoalMappingService.class), mock(DeckResourceService.class), MAPPER, mock(ApplicationEventPublisher.class));
+        JsonNode canonicalBefore = MAPPER.valueToTree(graph);
+        CanonicalProbe probe = canonicalProbe(graph, Set.of("T"));
+        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(probe.projection(), "learningScope");
+        assertThat(learning.seedAtomicGoalIds()).containsExactly("T");
+        assertThat(learning.learningAtomicGoalIds()).containsExactlyInAnyOrder("T", "P", "Q");
+        assertThat(roleProbe(service, probe.graph(), probe.projection(), "T", probe.topology())).isTrue();
+        Object missingTarget = withoutAcquisitionTarget(probe.projection(), "Q");
+        PersonalCurriculumLearningScope broken = ReflectionTestUtils.invokeMethod(missingTarget, "learningScope");
+        assertThat(broken.seedAtomicGoalIds()).isEqualTo(learning.seedAtomicGoalIds());
+        assertThat(broken.learningAtomicGoalIds()).doesNotContain("Q");
+        assertThat(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(missingTarget, "visibleGoals")).doesNotContainKey("Q");
+        assertThat(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(missingTarget, "canonicalPrerequisiteGoals")).isSameAs(graph);
+        assertThat(roleProbe(service, probe.graph(), missingTarget, "T", probe.topology())).isFalse();
+        assertThat(roleProbe(service, probe.graph(), withoutNonAtomicRole(probe.projection(), "K"), "T", probe.topology())).isTrue();
+        assertThat((JsonNode) MAPPER.valueToTree(graph)).isEqualTo(canonicalBefore);
+        assertThat(learning.learningAtomicGoalIds()).contains("Q");
+        Map<String, LearningGoal> missingDefinition = new TreeMap<>(graph);
+        missingDefinition.remove("Q");
+        assertThatThrownBy(() -> canonicalProbe(missingDefinition, Set.of("T")))
+                .isInstanceOfSatisfying(CompletionCompilationException.class,
+                        error -> assertThat(error.code()).isEqualTo("MISSING_REFERENCE"));
+    }
+
+    /** Legacy V5 regression; active V6 is read through its exact reconstructed V5-current frame. */
+    @Test
     void economicsAuthoredAtomicAbiturTargetsPreserveNativePrerequisitesAndFrontier() throws Exception {
         String economics = "605bdaf6-32d5-56fd-8d92-5a80c2fd2901";
         String orientation = "6bf2d1cc-e745-50dd-a617-71c06a6c6945";
@@ -453,6 +490,14 @@ class FirstMathPrerequisiteReductionTest {
         cases.put("DE-HE/CrossStage//LK", "a068e975-4dae-56ba-b510-f26532d6de0b");
         assertThat(registry.changedSources()).as("both Economics Abitur sources stay outside the reduction registry")
                 .doesNotContainKeys(cases.values().toArray(String[]::new));
+        Map<String, List<String>> assessmentAtomsByCluster = Map.of(
+                "d7f40fca-bdde-5a07-9c37-c892c2588177", List.of(
+                        "916f7816-f7c9-541a-810f-000241b323ff", "1758e57b-779f-5e16-8f35-47ada351ee2b",
+                        "6c58eddd-1315-524d-b87b-9102cce6a3b0"),
+                "a068e975-4dae-56ba-b510-f26532d6de0b", List.of(
+                        "e474c510-81b1-5c1b-af9c-2e41c02a026a", "ff93ca09-0619-569f-8120-39d22585232a",
+                        "0c401ff4-6624-5662-8f92-a9893b3011d9"));
+        Set<String> checkedAssessmentAtoms = new TreeSet<>();
         List<String> differences = new ArrayList<>();
         for (var entry : cases.entrySet()) {
             String configId = entry.getKey(), sourceId = entry.getValue();
@@ -462,58 +507,78 @@ class FirstMathPrerequisiteReductionTest {
             NativeScope right = after.resolve(reduced.configurations().get(configId));
             assertThat(right.roles()).as("unchanged authored roles: %s", configId).isEqualTo(left.roles());
             assertThat(right.graph().keySet()).as("unchanged actual lookup context: %s", configId).isEqualTo(left.graph().keySet());
+            List<String> assessmentAtoms = assessmentAtomsByCluster.get(sourceId);
             for (NativeScope actual : List.of(left, right)) {
                 assertThat(actual.roles().targets()).contains(sourceId);
-                assertThat(actual.roles().atomicTargets()).contains(sourceId);
-                assertThat(actual.context()).as("actual compiled atomic context: %s", configId).contains(sourceId);
-                assertThat(actual.graph()).containsKey(sourceId);
-                assertThat(actual.graph().get(sourceId).getType()).isEqualTo("atomic");
-                assertThat(actual.graph().get(sourceId).getContains()).isEmpty();
+                assertThat(actual.roles().atomicTargets()).containsAll(assessmentAtoms).doesNotContain(sourceId);
+                assertThat(actual.graph().get(sourceId).getType()).isEqualTo("cluster");
+                assertThat(actual.graph().get(sourceId).getContains()).containsExactlyElementsOf(assessmentAtoms);
+                PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(actual.projection(), "learningScope");
+                assertThat(learning.seedAtomicGoalIds()).containsAll(assessmentAtoms).doesNotContain(sourceId);
+                assertThat(learning.learningAtomicGoalIds()).doesNotContain(sourceId);
+                assertThat(actual.context()).as("actual compiled assessment atoms: %s", configId).containsAll(assessmentAtoms);
                 Map<String, LearningGoal> lookup = ReflectionTestUtils.invokeMethod(actual.frontier(), "lookup");
-                assertThat(lookup).as("actual production frontier lookup: %s", configId).containsKey(sourceId);
+                assertThat(lookup).as("actual production frontier lookup: %s", configId)
+                        .containsKeys(assessmentAtoms.toArray(String[]::new));
+                for (String atomId : assessmentAtoms) {
+                    assertThat(actual.graph().get(atomId).getType()).isEqualTo("atomic");
+                    assertThat(actual.graph().get(atomId).getContains()).isEmpty();
+                    assertThat(actual.graph().get(atomId).getTags()).contains("Assessment", "Abitur");
+                }
             }
-            Set<String> originalAtomic = left.topology().transitivePrerequisites(sourceId);
-            Set<String> reducedAtomic = right.topology().transitivePrerequisites(sourceId);
-            Set<String> originalGoals = left.topology().transitiveGoalPrerequisites(sourceId);
-            Set<String> reducedGoals = right.topology().transitiveGoalPrerequisites(sourceId);
-            assertThat(originalAtomic).as("original Economics entry demand: %s", configId).contains(orientation);
-            assertThat(originalGoals).as("original Economics entry role: %s", configId).contains(orientation);
-            Map<String, Double> originalMastery = new TreeMap<>(), reducedMastery = new TreeMap<>();
-            left.graph().keySet().forEach(id -> originalMastery.put(id, 1.0));
-            right.graph().keySet().forEach(id -> reducedMastery.put(id, 1.0));
-            boolean originalFull = atomicFrontierProbe(before.service, left, sourceId,
-                    new AtomicFrontierCase("econ-strict-full-mastered", originalMastery, null, true, null));
-            boolean reducedFull = atomicFrontierProbe(after.service, right, sourceId,
-                    new AtomicFrontierCase("econ-strict-full-mastered", reducedMastery, null, true, null));
-            originalMastery.remove(orientation);
-            reducedMastery.remove(orientation);
-            boolean originalMissing = atomicFrontierProbe(before.service, left, sourceId,
-                    new AtomicFrontierCase("econ-strict-missing-orientation", originalMastery, null, true, null));
-            boolean reducedMissing = atomicFrontierProbe(after.service, right, sourceId,
-                    new AtomicFrontierCase("econ-strict-missing-orientation", reducedMastery, null, true, null));
-            Map<String, Object> diagnostic = new LinkedHashMap<>();
-            diagnostic.put("configurationId", configId);
-            diagnostic.put("configuration", config);
-            diagnostic.put("source", sourceId);
-            diagnostic.put("actualAtomicTargetAndLookupBothFrames", true);
-            diagnostic.put("orientationRole", Map.of("before", hasDeclaredRole(left, orientation), "after", hasDeclaredRole(right, orientation)));
+            assertThat(before.canonicalGoals.get(sourceId).getContains()).containsExactlyElementsOf(assessmentAtoms);
+            assertThat(after.canonicalGoals.get(sourceId).getContains()).containsExactlyElementsOf(assessmentAtoms);
             List<String> originalRaw = before.canonicalGoals.get(sourceId).getRequires();
             List<String> reducedRaw = after.canonicalGoals.get(sourceId).getRequires();
             assertThat(originalRaw).containsExactly(orientation);
             assertThat(reducedRaw).containsExactlyElementsOf(originalRaw);
-            diagnostic.put("rawCanonicalRequires", Map.of("before", originalRaw, "after", reducedRaw));
-            diagnostic.put("projectedRequires", Map.of("before", left.graph().get(sourceId).getRequires(), "after", right.graph().get(sourceId).getRequires()));
-            diagnostic.put("atomicDemand", Map.of("before", originalAtomic, "after", reducedAtomic));
-            diagnostic.put("preExpansionDemand", Map.of("before", originalGoals, "after", reducedGoals));
-            diagnostic.put("strictFullMastery", Map.of("before", originalFull, "after", reducedFull));
-            diagnostic.put("strictMissingOrientation", Map.of("before", originalMissing, "after", reducedMissing));
-            System.out.printf("ECON_SCOPE_PROJECTION_INVARIANCE %s%n", MAPPER.writeValueAsString(diagnostic));
-            String label = configId + " source=" + sourceId;
-            if (!originalAtomic.equals(reducedAtomic)) differences.add(label + " atomic demand changed: " + originalAtomic + " -> " + reducedAtomic);
-            if (!originalGoals.equals(reducedGoals)) differences.add(label + " pre-expansion demand changed: " + originalGoals + " -> " + reducedGoals);
-            if (!originalFull || !reducedFull) differences.add(label + " full-mastery positive control: " + originalFull + " -> " + reducedFull);
-            if (originalMissing || reducedMissing) differences.add(label + " strict missing-orientation availability: " + originalMissing + " -> " + reducedMissing);
+            for (String atomId : assessmentAtoms) {
+                checkedAssessmentAtoms.add(atomId);
+                Set<String> originalAtomic = left.topology().transitivePrerequisites(atomId);
+                Set<String> reducedAtomic = right.topology().transitivePrerequisites(atomId);
+                Set<String> originalGoals = left.topology().transitiveGoalPrerequisites(atomId);
+                Set<String> reducedGoals = right.topology().transitiveGoalPrerequisites(atomId);
+                assertThat(originalAtomic).as("full canonical assessment demand: %s/%s", configId, atomId)
+                        .contains(orientation)
+                        .containsAll(before.canonicalGoals.get(atomId).getRequires());
+                assertThat(originalGoals).as("inherited Economics orientation: %s/%s", configId, atomId).contains(orientation);
+                Map<String, Double> originalMastery = new TreeMap<>(), reducedMastery = new TreeMap<>();
+                left.graph().forEach((id, goal) -> { if (goal.getContains().isEmpty()) originalMastery.put(id, 1.0); });
+                right.graph().forEach((id, goal) -> { if (goal.getContains().isEmpty()) reducedMastery.put(id, 1.0); });
+                assertThat(originalMastery).doesNotContainKey(sourceId);
+                assertThat(reducedMastery).doesNotContainKey(sourceId);
+                boolean originalFull = atomicFrontierProbe(before.service, left, atomId,
+                        new AtomicFrontierCase("econ-strict-full-mastered", originalMastery, null, true, null));
+                boolean reducedFull = atomicFrontierProbe(after.service, right, atomId,
+                        new AtomicFrontierCase("econ-strict-full-mastered", reducedMastery, null, true, null));
+                originalMastery.remove(orientation);
+                reducedMastery.remove(orientation);
+                boolean originalMissing = atomicFrontierProbe(before.service, left, atomId,
+                        new AtomicFrontierCase("econ-strict-missing-orientation", originalMastery, null, true, null));
+                boolean reducedMissing = atomicFrontierProbe(after.service, right, atomId,
+                        new AtomicFrontierCase("econ-strict-missing-orientation", reducedMastery, null, true, null));
+                Map<String, Object> diagnostic = new LinkedHashMap<>();
+                diagnostic.put("configurationId", configId);
+                diagnostic.put("configuration", config);
+                diagnostic.put("structuralCluster", sourceId);
+                diagnostic.put("assessmentAtom", atomId);
+                diagnostic.put("actualAtomicTargetAndLookupBothFrames", true);
+                diagnostic.put("orientationRole", Map.of("before", hasDeclaredRole(left, orientation), "after", hasDeclaredRole(right, orientation)));
+                diagnostic.put("rawClusterRequires", Map.of("before", originalRaw, "after", reducedRaw));
+                diagnostic.put("atomicDemand", Map.of("before", originalAtomic, "after", reducedAtomic));
+                diagnostic.put("preExpansionDemand", Map.of("before", originalGoals, "after", reducedGoals));
+                diagnostic.put("strictFullMastery", Map.of("before", originalFull, "after", reducedFull));
+                diagnostic.put("strictMissingOrientation", Map.of("before", originalMissing, "after", reducedMissing));
+                System.out.printf("ECON_SCOPE_PROJECTION_INVARIANCE %s%n", MAPPER.writeValueAsString(diagnostic));
+                String label = configId + " assessment=" + atomId;
+                if (!originalAtomic.equals(reducedAtomic)) differences.add(label + " atomic demand changed: " + originalAtomic + " -> " + reducedAtomic);
+                if (!originalGoals.equals(reducedGoals)) differences.add(label + " pre-expansion demand changed: " + originalGoals + " -> " + reducedGoals);
+                if (!originalFull || !reducedFull) differences.add(label + " full-mastery positive control: " + originalFull + " -> " + reducedFull);
+                if (originalMissing || reducedMissing) differences.add(label + " strict missing-orientation availability: " + originalMissing + " -> " + reducedMissing);
+            }
         }
+        assertThat(checkedAssessmentAtoms).containsExactlyInAnyOrderElementsOf(
+                assessmentAtomsByCluster.values().stream().flatMap(List::stream).toList());
         before.verifyOnlyUnsavedFixtures();
         after.verifyOnlyUnsavedFixtures();
         for (var source : sourceBytes.entrySet()) {
@@ -602,9 +667,9 @@ class FirstMathPrerequisiteReductionTest {
                 }
 
                 if (BIOLOGY.equals(subject) && "DE-MV/SekI/G8/".equals(entry.getKey())) {
-                    assertDuplicateRemovalKeepsMissingRoleInvalid(before.service, left,
+                    assertDuplicateRemovalPreservesAcquisitionTargets(before.service, left,
                             "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30", "b530a382-2786-5794-8821-3e01a62d88fd");
-                    assertDuplicateRemovalKeepsMissingRoleInvalid(after.service, right,
+                    assertDuplicateRemovalPreservesAcquisitionTargets(after.service, right,
                             "1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30", "b530a382-2786-5794-8821-3e01a62d88fd");
                     for (NativeScope actual : List.of(left, right)) {
                         assertThat(actual.graph().get("b530a382-2786-5794-8821-3e01a62d88fd").getType()).isEqualTo("cluster");
@@ -614,9 +679,9 @@ class FirstMathPrerequisiteReductionTest {
                 if (MATH.equals(subject) && "ALL/CrossStage//GK".equals(entry.getKey())) {
                     String source = "1878f680-095c-511d-aaed-e98393f7fde9";
                     String missingRole = "9460c3ff-e72d-4107-bc73-087d217200aa";
-                    assertDuplicateRemovalKeepsMissingRoleInvalid(before.service, left,
+                    assertDuplicateRemovalPreservesAcquisitionTargets(before.service, left,
                             source, missingRole);
-                    assertMissingRoleInvalid(after.service, right, source, missingRole);
+                    assertRequiredAcquisitionTargets(after.service, right, source, missingRole);
                     assertThat(right.graph().get(source).getRequires()).as("certified tail 912 already removed the duplicate")
                             .doesNotContain(missingRole);
                     assertThat(right.topology().transitivePrerequisites(source)).as("full atomic demand after the actual tail")
@@ -639,7 +704,13 @@ class FirstMathPrerequisiteReductionTest {
                     for (NativeScope actual : List.of(left, right)) {
                         assertThat(actual.roles().targets()).contains(EXCLUDED_NAVIGATION_CLUSTER);
                         assertThat(actual.roles().atomicTargets()).doesNotContain(EXCLUDED_NAVIGATION_CLUSTER);
-                        assertThat(actual.graph()).doesNotContainKey(EXCLUDED_NAVIGATION_CLUSTER);
+                        assertThat(actual.graph()).containsKey(EXCLUDED_NAVIGATION_CLUSTER);
+                        assertThat(actual.graph().get(EXCLUDED_NAVIGATION_CLUSTER).getType()).isEqualTo("cluster");
+                        assertThat(actual.graph().get(EXCLUDED_NAVIGATION_CLUSTER).getContains())
+                                .containsExactlyElementsOf(before.canonicalGoals.get(EXCLUDED_NAVIGATION_CLUSTER).getContains());
+                        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(actual.projection(), "learningScope");
+                        assertThat(learning.seedAtomicGoalIds()).doesNotContain(EXCLUDED_NAVIGATION_CLUSTER);
+                        assertThat(learning.learningAtomicGoalIds()).doesNotContain(EXCLUDED_NAVIGATION_CLUSTER);
                     }
                     assertBiologyOrientationAvailable(before.service, left);
                     assertBiologyOrientationAvailable(after.service, right);
@@ -729,9 +800,9 @@ class FirstMathPrerequisiteReductionTest {
                                     before.service, left, after.service, right, id, originalHelper, scope);
                             if (!latinMissingRoleCaseChecked && originalHelper
                                     && Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(left.projection(), "compositionViewApplied"))) {
-                                assertThat(roleProbe(before.service, left, withoutRole(left.projection(), LATIN_ORIENTATION),
+                                assertThat(roleProbe(before.service, left, withoutAcquisitionTarget(left.projection(), LATIN_ORIENTATION),
                                         id, left.topology())).isFalse();
-                                assertThat(roleProbe(after.service, right, withoutRole(right.projection(), LATIN_ORIENTATION),
+                                assertThat(roleProbe(after.service, right, withoutAcquisitionTarget(right.projection(), LATIN_ORIENTATION),
                                         id, right.topology())).isFalse();
                                 latinMissingRoleCaseChecked = true;
                             }
@@ -744,15 +815,34 @@ class FirstMathPrerequisiteReductionTest {
                 assertThat(right.graph().get(SOURCE).getRequires()).containsExactlyElementsOf(AFTER);
                 assertThat(hasDeclaredRole(left, REMOVED)).as("removed prerequisite retains a declared role: %s", scope).isTrue();
                 assertThat(hasDeclaredRole(right, REMOVED)).as("reduced prerequisite retains a declared role: %s", scope).isTrue();
+                for (NativeScope actual : List.of(left, right)) {
+                    PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(actual.projection(), "learningScope");
+                    assertThat(learning.learningAtomicGoalIds()).as("required Math acquisition basis: %s", scope)
+                            .contains(SOURCE, REMOVED);
+                    assertThat(actual.roles().atomicTargets()).as("emitted Math acquisition targets: %s", scope)
+                            .contains(SOURCE, REMOVED);
+                    if (!learning.seedAtomicGoalIds().contains(SOURCE)) {
+                        List<String> path = learning.requiredByPaths().get(SOURCE);
+                        assertThat(path).as("derived Math source has a canonical seed witness: %s", scope)
+                                .isNotNull().hasSizeGreaterThan(1).endsWith(SOURCE);
+                        assertThat(learning.seedAtomicGoalIds()).contains(path.getFirst());
+                        for (int index = 1; index < path.size(); index++) {
+                            assertThat(actual.topology().directPrerequisites(path.get(index - 1)))
+                                    .as("normalized Math acquisition witness edge %d: %s", index, scope)
+                                    .contains(path.get(index));
+                        }
+                    }
+                }
                 boolean originalHelper = originalRoleValidity.get(SOURCE);
+                assertThat(originalHelper).as("complete Math learning basis has valid acquisition roles: %s", scope).isTrue();
                 if (originalHelper) validRoles++; else invalidRoles++;
                 if (left.roles().targets().contains(SOURCE)) sourceTargets++; else sourceContextsOnly++;
 
                 if (!negativeRoleCaseChecked && originalHelper
                         && Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(left.projection(), "compositionViewApplied"))) {
                     // The endpoint remains required transitively under the same E+ role policy.
-                    assertThat(roleProbe(before.service, left, withoutRole(left.projection(), REMOVED))).isFalse();
-                    assertThat(roleProbe(after.service, right, withoutRole(right.projection(), REMOVED))).isFalse();
+                    assertThat(roleProbe(before.service, left, withoutAcquisitionTarget(left.projection(), REMOVED))).isFalse();
+                    assertThat(roleProbe(after.service, right, withoutAcquisitionTarget(right.projection(), REMOVED))).isFalse();
                     negativeRoleCaseChecked = true;
                 }
             }
@@ -791,8 +881,8 @@ class FirstMathPrerequisiteReductionTest {
                     assertThat(right.topology().transitivePrerequisites(atom)).contains(prerequisite);
                     assertThat(left.topology().transitiveGoalPrerequisites(atom)).contains(prerequisite);
                     assertThat(right.topology().transitiveGoalPrerequisites(atom)).contains(prerequisite);
-                    assertThat(roleProbe(before.service, left.graph(), withoutRole(left.projection(), prerequisite), atom, left.topology())).isFalse();
-                    assertThat(roleProbe(after.service, right.graph(), withoutRole(right.projection(), prerequisite), atom, right.topology())).isFalse();
+                    assertThat(roleProbe(before.service, left.graph(), withoutAcquisitionTarget(left.projection(), prerequisite), atom, left.topology())).isFalse();
+                    assertThat(roleProbe(after.service, right.graph(), withoutAcquisitionTarget(right.projection(), prerequisite), atom, right.topology())).isFalse();
                     canonicalRoleComparisons++;
                 }
             }
@@ -818,8 +908,8 @@ class FirstMathPrerequisiteReductionTest {
             for (String prerequisite : registry.tailRemovedPrerequisites().get(source)) {
                 assertThat(left.topology().transitivePrerequisites(source)).contains(prerequisite);
                 assertThat(right.topology().transitivePrerequisites(source)).contains(prerequisite);
-                assertThat(roleProbe(before.service, left.graph(), withoutRole(left.projection(), prerequisite), source, left.topology())).isFalse();
-                assertThat(roleProbe(after.service, right.graph(), withoutRole(right.projection(), prerequisite), source, right.topology())).isFalse();
+                assertThat(roleProbe(before.service, left.graph(), withoutAcquisitionTarget(left.projection(), prerequisite), source, left.topology())).isFalse();
+                assertThat(roleProbe(after.service, right.graph(), withoutAcquisitionTarget(right.projection(), prerequisite), source, right.topology())).isFalse();
                 tailCanonicalRoleComparisons++;
             }
             tailCanonicalCoveredAtoms.put(source, atoms);
@@ -859,11 +949,13 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(germanMasteredSourcePairs).isEqualTo(7);
         assertThat(germanControlledRolesChecked).as("separate artificial role-projection differences").isTrue();
         assertThat(sourceTargets).as("actual Math target coverage").isPositive();
-        assertThat(sourceContextsOnly).as("Math source present only in supporting compiler context").isPositive();
+        assertThat(sourceContextsOnly).as("required atomic Math sources cannot remain context-only outside L").isZero();
         assertThat(foreignContexts).isPositive();
         assertThat(validRoles).isPositive();
-        // Existing incomplete GK roles remain invalid under the unified policy.
-        assertThat(invalidRoles).isPositive();
+        // Resolved scopes contain complete L; deliberate emitted-target losses
+        // remain invalid in the unchanged negative controls above.
+        assertThat(invalidRoles).as("resolved Math source scopes have complete acquisition roles").isZero();
+        assertThat(sourceTargets).isEqualTo(validRoles);
         assertThat(negativeRoleCaseChecked).as("effective-role negative control executed").isTrue();
         assertThat(navigationClusterCaseChecked).as("actual Bio navigation-cluster counterexample executed").isTrue();
         assertThat(inheritedRoleCaseChecked).as("actual Bio inherited-role counterexample executed").isTrue();
@@ -1340,14 +1432,14 @@ class FirstMathPrerequisiteReductionTest {
                         String consumerPair = atom + "->" + math;
                         mathConsumerTargets.get(consumerPair).add(scope);
                         (roleValid ? mathValidConsumers : mathInvalidConsumers).get(consumerPair).add(scope);
-                        // Deliberately remove one actual foreign atomic role from an otherwise
-                        // unchanged real projection; mastery/focus cannot repair that invalid scope.
+                        // Deliberately remove one actual foreign acquisition target from an otherwise
+                        // unchanged real projection; mastery/focus cannot repair that missing learning target.
                         assertThat(roleProbeWithPrerequisites(before.service, left.graph(),
-                                withoutRole(left.projection(), math), atom, leftMastered))
-                                .as("missing foreign Math role fails closed before %s->%s: %s", atom, math, scope).isFalse();
+                                withoutAcquisitionTarget(left.projection(), math), atom, leftMastered))
+                                .as("missing foreign Math acquisition target fails closed before %s->%s: %s", atom, math, scope).isFalse();
                         assertThat(roleProbeWithPrerequisites(after.service, right.graph(),
-                                withoutRole(right.projection(), math), atom, rightMastered))
-                                .as("missing foreign Math role fails closed after %s->%s: %s", atom, math, scope).isFalse();
+                                withoutAcquisitionTarget(right.projection(), math), atom, rightMastered))
+                                .as("missing foreign Math acquisition target fails closed after %s->%s: %s", atom, math, scope).isFalse();
                         invalidRolePairs++;
                         Map<String, Double> missingMath = new TreeMap<>(prepared);
                         missingMath.remove(math);
@@ -1945,9 +2037,9 @@ class FirstMathPrerequisiteReductionTest {
 
     private static void assertChemistryMissingRoleControls(LearnerService service, NativeScope scope,
             String atom, String label) throws Exception {
-        String prerequisite = scope.topology().transitiveGoalPrerequisites(atom).stream()
-                .filter(id -> hasDeclaredRole(scope, id)).sorted().findFirst().orElseThrow();
-        Object projection = withoutRole(scope.projection(), prerequisite);
+        String prerequisite = scope.topology().transitivePrerequisites(atom).stream()
+                .filter(scope.roles().atomicTargets()::contains).sorted().findFirst().orElseThrow();
+        Object projection = withoutAcquisitionTarget(scope.projection(), prerequisite);
         assertThat(roleProbeWithPrerequisites(service, scope.graph(), projection, atom,
                 fullMasteryPrerequisites(scope.graph(), scope.topology())))
                 .as("Chemistry missing effective goal role fails despite full mastery %s: %s", atom, label).isFalse();
@@ -2228,20 +2320,26 @@ class FirstMathPrerequisiteReductionTest {
     /** Explicit test-role fixture, independent of GUI enrollment and its authored atomic macros. */
     private static CanonicalProbe canonicalProbe(NativeFixture fixture, Set<String> atoms) throws Exception {
         var graph = new CompletionCanonicalGraphResolver(fixture.landscapes, fixture.mapper)
-                .loadForTargets(ROOT, atoms, Map.of());
+                .loadForAtomicSeeds(ROOT, atoms, Map.of());
+        return canonicalProbe(graph, atoms);
+    }
+
+    private static CanonicalProbe canonicalProbe(Map<String, LearningGoal> graph, Set<String> atoms) throws Exception {
+        var learningScope = PersonalCurriculumLearningScope.compile(graph, atoms);
+        Set<String> targets = learningScope.learningAtomicGoalIds();
         var compiler = new CompletionProfileCompiler();
         var topology = compiler.normalizePrerequisites(graph);
-        topology.validateContext(atoms);
-        var compiled = compiler.compileAutomatic(graph, atoms, atoms, "registered-canonical-atomic-probe");
+        topology.validateContext(targets);
+        var compiled = compiler.compileAutomatic(graph, targets, targets, "registered-canonical-atomic-probe");
         Set<String> support = new TreeSet<>();
         atoms.forEach(atom -> support.addAll(topology.transitiveGoalPrerequisites(atom)));
-        support.removeAll(atoms);
-        Map<String, LearningGoal> visible = new TreeMap<>();
-        atoms.forEach(atom -> visible.put(atom, graph.get(atom)));
+        support.removeAll(targets);
         var type = Class.forName("com.skillpilot.backend.service.LearnerService$GoalProjection");
-        var constructor = type.getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class, List.class, boolean.class);
+        var constructor = type.getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class,
+                List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class);
         constructor.setAccessible(true);
-        Object projection = constructor.newInstance(visible, atoms, support, graph, Set.of(), List.copyOf(atoms), true);
+        Object projection = constructor.newInstance(graph, targets, support, graph, Set.of(),
+                atoms.stream().sorted().toList(), true, learningScope, graph);
         return new CanonicalProbe(graph, compiled.contextGoalIds(), topology, projection);
     }
     private record Discovery(Map<String, Map<String, Map<String, Object>>> configurations,
@@ -3437,16 +3535,16 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(hasDeclaredRole(actual, GERMAN_CLUSTER)).isTrue();
             for (String leaf : GERMAN_LEAVES) assertThat(hasDeclaredRole(actual, leaf)).isTrue();
         }
-        // These deliberately altered role sets are separate from actual enrollment
-        // invariance. The pre-expansion role contract intentionally changes here.
-        assertThat(roleProbe(beforeService, before, withoutRole(before.projection(), GERMAN_LEAF), GERMAN_ATOM, before.topology()))
-                .as("artificial missing-leaf-role control before cluster expansion").isTrue();
-        assertThat(roleProbe(afterService, after, withoutRole(after.projection(), GERMAN_LEAF), GERMAN_ATOM, after.topology()))
-                .as("artificial missing-leaf-role control after atomic normalization").isFalse();
-        assertThat(roleProbe(beforeService, before, withoutRole(before.projection(), GERMAN_CLUSTER), GERMAN_ATOM, before.topology()))
-                .as("artificial missing-cluster-role control before normalization").isFalse();
-        assertThat(roleProbe(afterService, after, withoutRole(after.projection(), GERMAN_CLUSTER), GERMAN_ATOM, after.topology()))
-                .as("artificial missing-cluster-role control with every leaf role retained").isTrue();
+        // Missing acquisition atoms fail in both equivalent normalized frames.
+        assertThat(roleProbe(beforeService, before, withoutAcquisitionTarget(before.projection(), GERMAN_LEAF), GERMAN_ATOM, before.topology()))
+                .as("missing required acquisition leaf before normalization").isFalse();
+        assertThat(roleProbe(afterService, after, withoutAcquisitionTarget(after.projection(), GERMAN_LEAF), GERMAN_ATOM, after.topology()))
+                .as("missing required acquisition leaf after normalization").isFalse();
+        // Removing only a non-atomic authored support role leaves complete L intact.
+        assertThat(roleProbe(beforeService, before, withoutNonAtomicRole(before.projection(), GERMAN_CLUSTER), GERMAN_ATOM, before.topology()))
+                .as("complete learning basis without a redundant cluster role before normalization").isTrue();
+        assertThat(roleProbe(afterService, after, withoutNonAtomicRole(after.projection(), GERMAN_CLUSTER), GERMAN_ATOM, after.topology()))
+                .as("complete learning basis without a redundant cluster role after normalization").isTrue();
     }
 
     private static void assertContinuedMathFocusPreserved(LearnerService beforeService, NativeScope before,
@@ -3607,19 +3705,26 @@ class FirstMathPrerequisiteReductionTest {
         return ReflectionTestUtils.invokeMethod(service, "areFrontierPrerequisitesMastered", graph.get(sourceId), projection, prerequisites);
     }
 
-    private static void assertMissingRoleInvalid(LearnerService service, NativeScope scope,
+    private static void assertRequiredAcquisitionTargets(LearnerService service, NativeScope scope,
             String sourceId, String prerequisiteId) throws Exception {
         assertThat(scope.roles().targets()).contains(sourceId);
         assertThat(scope.context()).contains(sourceId);
         assertThat(scope.graph()).containsKey(sourceId);
-        assertThat(hasDeclaredRole(scope, prerequisiteId)).isFalse();
         assertThat(scope.topology().transitiveGoalPrerequisites(sourceId)).contains(prerequisiteId);
-        assertThat(roleProbe(service, scope, scope.projection(), sourceId, scope.topology())).isFalse();
+        Map<String, LearningGoal> canonical = ReflectionTestUtils.invokeMethod(scope.projection(), "canonicalPrerequisiteGoals");
+        Set<String> requiredAtoms = canonicalAtomicDescendants(prerequisiteId, canonical);
+        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(scope.projection(), "learningScope");
+        assertThat(learning).isNotNull();
+        assertThat(learning.learningAtomicGoalIds()).containsAll(requiredAtoms);
+        assertThat(scope.roles().atomicTargets()).containsAll(requiredAtoms);
+        assertThat(roleProbe(service, scope, scope.projection(), sourceId, scope.topology())).isTrue();
+        for (String atom : requiredAtoms) assertThat(roleProbe(service, scope,
+                withoutAcquisitionTarget(scope.projection(), atom), sourceId, scope.topology())).isFalse();
     }
 
-    private static void assertDuplicateRemovalKeepsMissingRoleInvalid(LearnerService service, NativeScope scope,
+    private static void assertDuplicateRemovalPreservesAcquisitionTargets(LearnerService service, NativeScope scope,
             String sourceId, String prerequisiteId) throws Exception {
-        assertMissingRoleInvalid(service, scope, sourceId, prerequisiteId);
+        assertRequiredAcquisitionTargets(service, scope, sourceId, prerequisiteId);
         LearningGoal source = scope.graph().get(sourceId);
         List<String> original = source.getRequires();
         assertThat(original).contains(prerequisiteId);
@@ -3632,20 +3737,50 @@ class FirstMathPrerequisiteReductionTest {
                     .isEqualTo(scope.topology().transitiveGoalPrerequisites(sourceId));
             assertThat(reduced.transitivePrerequisites(sourceId))
                     .isEqualTo(scope.topology().transitivePrerequisites(sourceId));
-            assertThat(roleProbe(service, scope, scope.projection(), sourceId, reduced)).isFalse();
+            assertThat(roleProbe(service, scope, scope.projection(), sourceId, reduced)).isTrue();
         } finally {
             source.setRequires(original);
         }
     }
 
-    private static Object withoutRole(Object projection, String id) throws Exception {
+    /** Deliberately broken emitted acquisition basis; canonical definitions remain resolvable. */
+    private static Object withoutAcquisitionTarget(Object projection, String id) throws Exception {
+        PersonalCurriculumLearningScope original = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+        assertThat(original).isNotNull();
+        assertThat(original.learningAtomicGoalIds()).as("missing-target fixture removes an actual acquisition atom").contains(id);
+        Set<String> learning = new TreeSet<>(original.learningAtomicGoalIds());
+        Map<String, List<String>> paths = new TreeMap<>(original.requiredByPaths());
+        learning.remove(id); paths.remove(id);
+        var broken = new PersonalCurriculumLearningScope(original.seedAtomicGoalIds(), learning, paths);
+        Map<String, LearningGoal> visible = new TreeMap<>(ReflectionTestUtils.<Map<String, LearningGoal>>invokeMethod(projection, "visibleGoals"));
+        visible.remove(id);
+        return copyProjectionWithoutRole(projection, id, visible, broken);
+    }
+
+    /** A non-atomic authored support role alone is not an acquisition obligation. */
+    private static Object withoutNonAtomicRole(Object projection, String id) throws Exception {
+        PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+        assertThat(learning).isNotNull();
+        assertThat(learning.learningAtomicGoalIds()).doesNotContain(id);
+        Map<String, LearningGoal> structural = ReflectionTestUtils.invokeMethod(projection, "structuralGoals");
+        assertThat(structural.get(id)).as("non-atomic role fixture keeps its canonical definition").isNotNull();
+        assertThat(structural.get(id).getContains()).isNotEmpty();
+        return copyProjectionWithoutRole(projection, id,
+                ReflectionTestUtils.invokeMethod(projection, "visibleGoals"), learning);
+    }
+
+    private static Object copyProjectionWithoutRole(Object projection, String id,
+            Map<String, LearningGoal> visible, PersonalCurriculumLearningScope learning) throws Exception {
         Set<String> targets = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "targetGoalIds"));
         Set<String> support = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "prerequisiteOnlyGoalIds"));
         targets.remove(id); support.remove(id);
-        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class, List.class, boolean.class);
+        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
+                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class);
         constructor.setAccessible(true);
-        return constructor.newInstance(ReflectionTestUtils.invokeMethod(projection, "visibleGoals"), targets, support,
+        return constructor.newInstance(visible, targets, support,
                 ReflectionTestUtils.invokeMethod(projection, "structuralGoals"), ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
-                ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"), true);
+                ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"),
+                ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"), learning,
+                ReflectionTestUtils.invokeMethod(projection, "canonicalPrerequisiteGoals"));
     }
 }

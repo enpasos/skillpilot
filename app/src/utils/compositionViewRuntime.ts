@@ -804,6 +804,9 @@ export const applyMatchedCompositionRouteGoalProjection = (
   if (!routeGoalId) return entries
 
   return entries.map((entry) => {
+    // The authoritative closed projection supplies its own placement for every
+    // target. Route selection must not graft one into a guessed topic focus.
+    if (entry.meta.personalCurriculumProjection) return entry
     const goalById = new Map(entry.goals.map((goal) => [goal.id, goal] as const))
     const routeGoal = goalById.get(routeGoalId)
     if (!routeGoal) {
@@ -1004,4 +1007,162 @@ export const applyCompositionViewProjection = (
       goals: [...syntheticGoals, ...strippedGoals],
     }
   })
+}
+
+/**
+ * Expose the learner API's fixed target basis after authored presentation has
+ * been applied. This adapter never derives prerequisites or source membership.
+ */
+export const applyPersonalCurriculumProjection = (
+  entries: LandscapeEntry[],
+  learnerSourceEntries: LandscapeEntry[],
+  language = 'de',
+): LandscapeEntry[] => {
+  const sourceEntries = learnerSourceEntries.filter((entry) => entry.meta.personalCurriculumProjection)
+  if (sourceEntries.length === 0) return entries
+
+  const revision = 'atomic-prerequisite-learning-v1' as const
+  const scope = sourceEntries[0].meta.personalCurriculumProjection!
+  const targetIds = new Set<string>()
+  const sourceGoalById = new Map<string, UiGoal>()
+  const canonicalGoalById = new Map(learnerSourceEntries.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+  const requiredByPaths = new Map<string, string[]>()
+  sourceEntries.forEach((entry) => {
+    const projection = entry.meta.personalCurriculumProjection!
+    if (projection.revision !== revision || projection.rootLandscapeId !== scope.rootLandscapeId
+      || projection.scopeRevision !== scope.scopeRevision) {
+      throw new Error('Inconsistent Personal Curriculum projection metadata')
+    }
+    const ownedGoals = new Map(entry.goals.map((goal) => [goal.id, goal]))
+    projection.targetGoalIds.forEach((goalId) => {
+      const goal = ownedGoals.get(goalId)
+      if (!goal || goal.type === 'cluster' || goal.contains.length > 0) {
+        throw new Error(`Missing canonical atomic Personal Curriculum target: ${goalId}`)
+      }
+      targetIds.add(goalId)
+      sourceGoalById.set(goalId, goal)
+      const path = projection.requiredByPaths[goalId]
+      if (path) requiredByPaths.set(goalId, [...path])
+    })
+  })
+
+  const preparationId = `personal-curriculum:${scope.rootLandscapeId}:preparation`
+  const result: LandscapeEntry[] = entries.map((entry) => ({
+    ...entry,
+    goals: entry.goals.filter((goal) => goal.id !== preparationId).map((goal) => ({
+      ...goal,
+      contains: goal.contains.filter((childId) => childId !== preparationId),
+      tags: [...(goal.tags ?? [])],
+    })),
+  }))
+  const goalById = new Map(result.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+
+  // Composition lookup may omit a foreign owner entirely. Hydrate only its
+  // declared targets, keeping stable IDs and untouched source fields.
+  sourceEntries.forEach((sourceEntry) => {
+    const missing = sourceEntry.meta.personalCurriculumProjection!.targetGoalIds
+      .filter((goalId) => !goalById.has(goalId))
+      .map((goalId) => ({ ...sourceGoalById.get(goalId)!, contains: [] }))
+    if (missing.length === 0) return
+    let entry = result.find((candidate) => candidate.meta.landscapeId === sourceEntry.meta.landscapeId)
+    if (!entry) {
+      entry = { ...sourceEntry, goals: [] }
+      result.push(entry)
+    }
+    entry.goals.push(...missing)
+    missing.forEach((goal) => goalById.set(goal.id, goal))
+  })
+
+  // A direct canonical cluster entry still represents its canonical atomic
+  // basis. Restore only target-bearing canonical contains paths, so its focus
+  // alias retains those atoms without acquiring outside prerequisites.
+  const restoreCanonicalTargets = (goalId: string, visiting = new Set<string>()): boolean => {
+    if (targetIds.has(goalId)) return true
+    if (visiting.has(goalId)) return false
+    const canonical = canonicalGoalById.get(goalId)
+    const presented = goalById.get(goalId)
+    if (!canonical || !presented) return false
+    const path = new Set(visiting).add(goalId)
+    const children = canonical.contains.filter((childId) => restoreCanonicalTargets(childId, path))
+    if (children.length === 0) return false
+    presented.contains = [...new Set([...presented.contains, ...children])]
+    presented.type = 'cluster'
+    return true
+  }
+  goalById.forEach((goal) => {
+    if (goal.extendedData?.compositionEntryKind === 'goalEntry'
+      && (canonicalGoalById.get(goal.id)?.contains.length ?? 0) > 0) {
+      restoreCanonicalTargets(goal.id)
+    }
+  })
+
+  // A collapsed canonical cluster remains structural. It cannot substitute
+  // for its atoms or add a false leaf to progress totals.
+  const keepCache = new Map<string, boolean>()
+  const keep = (goalId: string, path = new Set<string>()): boolean => {
+    if (targetIds.has(goalId)) return true
+    if (path.has(goalId)) return false
+    const cached = keepCache.get(goalId)
+    if (cached !== undefined) return cached
+    const goal = goalById.get(goalId)
+    const nextPath = new Set(path).add(goalId)
+    const retained = !!goal?.contains.some((childId) => keep(childId, nextPath))
+    keepCache.set(goalId, retained)
+    return retained
+  }
+  goalById.forEach((goal) => {
+    goal.contains = goal.contains.filter((childId) => keep(childId))
+    if (targetIds.has(goal.id)) {
+      goal.personalCurriculumProjection = {
+        revision,
+        role: 'target',
+        ...(requiredByPaths.has(goal.id) ? { requiredByPath: requiredByPaths.get(goal.id) } : {}),
+      }
+    } else if (keep(goal.id)) {
+      goal.personalCurriculumProjection = { revision, role: 'structure' }
+    }
+  })
+
+  const roots = result.flatMap((entry) => entry.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)))
+  const fullPlanEntry = result.find((entry) => entry.meta.landscapeId === scope.rootLandscapeId)
+  const localRoots = fullPlanEntry?.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)) ?? []
+  const displayedRoots = localRoots.length > 0 ? localRoots : roots
+  const fullPlanRoot = displayedRoots[0]
+  const seen = new Set<string>()
+  const visit = (goal: UiGoal) => {
+    if (seen.has(goal.id)) return
+    seen.add(goal.id)
+    goal.contains = goal.contains.filter((childId) => {
+      const child = goalById.get(childId)
+      if (!child || seen.has(childId)) return false
+      visit(child)
+      return true
+    })
+  }
+  displayedRoots.forEach(visit)
+  const unplacedTargetIds = [...targetIds].filter((goalId) => !seen.has(goalId)).sort()
+  if (unplacedTargetIds.length === 0) return result
+
+  const unplacedIds = new Set(unplacedTargetIds)
+  goalById.forEach((goal) => {
+    goal.contains = goal.contains.filter((childId) => !unplacedIds.has(childId))
+  })
+
+  const preparationTitle = language === 'en' ? 'Required foundations' : 'Notwendige Grundlagen'
+  const preparation: UiGoal = {
+    id: preparationId,
+    landscapeId: fullPlanEntry?.meta.landscapeId ?? fullPlanRoot?.landscapeId ?? scope.rootLandscapeId,
+    title: preparationTitle,
+    description: preparationTitle,
+    phase: 'GLOBAL', themenfeld: '', area: '', level: 0, core: true, weight: 1,
+    tags: [SYNTHETIC_PROGRAM_UNIT_TAG, ...(fullPlanRoot ? [] : [ROOT_TAG])],
+    leitideen: [], kompetenzen: [], sourceRef: '', requires: [],
+    contains: unplacedTargetIds, examples: [],
+    type: 'cluster', nodeKind: 'tutor',
+    personalCurriculumProjection: { revision, role: 'structure', presentationOnly: true },
+  }
+  if (fullPlanRoot) fullPlanRoot.contains.push(preparation.id)
+  const owner = fullPlanEntry ?? result.find((entry) => entry.goals.includes(fullPlanRoot!)) ?? result[0]
+  owner.goals.push(preparation)
+  return result
 }

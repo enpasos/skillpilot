@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -41,6 +42,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 /** Real automatic compilation through public frontier and explicit-learning APIs. */
 class AutomaticCompletionFrontierTest {
@@ -111,14 +114,13 @@ class AutomaticCompletionFrontierTest {
         completion = new CompletionApplicationService(
                 new CompletionProfileCatalog(Map.of(), Map.of(), "frontier-generation", true));
         ReflectionTestUtils.setField(service, "completionApplicationService", completion);
-        resolver = mock(CompletionCanonicalGraphResolver.class);
-        when(resolver.load("base")).thenReturn(graph);
-        when(resolver.loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
-                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap())).thenReturn(graph);
+        // Exercise the real bounded canonical resolver for both the new
+        // acquisition-seed entry point and existing completion graph reads.
+        resolver = spy(new CompletionCanonicalGraphResolver(landscapes, new ObjectMapper()));
         ReflectionTestUtils.setField(service, "completionCanonicalGraphResolver", resolver);
     }
 
-    @Test void graphBasisIsScopedToLevel2AndSharedAcrossFocusAndMasteryChanges() {
+    @Test void graphBasisIsScopedToLevel2AndSharedAcrossFocusAndMasteryChangesWithinTransaction() {
         graph.get("O").setTags(List.of("LK"));
         LandscapeFilter gk = new LandscapeFilter();
         gk.setId("GK");
@@ -126,31 +128,47 @@ class AutomaticCompletionFrontierTest {
         lk.setId("LK");
         landscape.setFilters(List.of(gk, lk));
         learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"GK\"}}");
-        assertThat(service.getFrontier(LEARNER)).contains("A");
-        focus.clear();
-        focus.addAll(List.of("Q", "A"));
-        mastery.put("B", 1.0);
-        assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
-        assertThat(ids(service.getUncompactedRichFrontierForFocus(LEARNER, List.of("A"))))
-                .containsExactly("A");
-        verify(resolver, times(1)).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
-                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
+        // Projection memoization is transaction-scoped. Use the same boundary
+        // as LearnerProjectionMemoizationTest instead of asserting an obsolete
+        // persistent automatic-graph loader call across separate requests.
+        TransactionSynchronizationManager.initSynchronization();
+        TransactionSynchronizationManager.setActualTransactionActive(true);
+        try {
+            assertThat(service.getFrontier(LEARNER)).contains("A");
+            assertThat(service.getFilteredAtomicGoalIds("base", learner.getPersonalCurriculum(), null, false))
+                    .doesNotContain("O");
+            focus.clear();
+            focus.addAll(List.of("Q", "A"));
+            mastery.put("B", 1.0);
+            assertThat(ids(service.getRichFrontier(LEARNER))).containsExactly("A");
+            assertThat(ids(service.getUncompactedRichFrontierForFocus(LEARNER, List.of("A"))))
+                    .containsExactly("A");
+            verify(resolver, times(1)).loadForAtomicSeeds(org.mockito.ArgumentMatchers.eq("base"),
+                    org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
 
-        learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"LK\"}}");
-        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
-        verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
-                org.mockito.ArgumentMatchers.argThat(targets -> !targets.contains("O")),
-                org.mockito.ArgumentMatchers.anyMap());
-        verify(resolver).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
-                org.mockito.ArgumentMatchers.argThat(targets -> targets.contains("O")),
-                org.mockito.ArgumentMatchers.anyMap());
-        learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"GK\"}}");
-        mastery.clear();
-        assertThat(service.getFrontier(LEARNER)).containsExactly("A");
-        verify(resolver, times(2)).loadForTargets(org.mockito.ArgumentMatchers.eq("base"),
-                org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
-        verify(masteryRepository, never()).save(any());
-        verify(masteryRepository, never()).saveAll(any());
+            learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"LK\"}}");
+            assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+            assertThat(service.getFilteredAtomicGoalIds("base", learner.getPersonalCurriculum(), null, false))
+                    .contains("O");
+            verify(resolver).loadForAtomicSeeds(org.mockito.ArgumentMatchers.eq("base"),
+                    org.mockito.ArgumentMatchers.argThat(targets -> !targets.contains("O")),
+                    org.mockito.ArgumentMatchers.anyMap());
+            verify(resolver).loadForAtomicSeeds(org.mockito.ArgumentMatchers.eq("base"),
+                    org.mockito.ArgumentMatchers.argThat(targets -> targets.contains("O")),
+                    org.mockito.ArgumentMatchers.anyMap());
+            learner.setPersonalCurriculum("{\"base\":{\"selected\":true,\"filterId\":\"GK\"}}");
+            mastery.clear();
+            assertThat(service.getFrontier(LEARNER)).containsExactly("A");
+            verify(resolver, times(2)).loadForAtomicSeeds(org.mockito.ArgumentMatchers.eq("base"),
+                    org.mockito.ArgumentMatchers.anySet(), org.mockito.ArgumentMatchers.anyMap());
+            verify(masteryRepository, never()).save(any());
+            verify(masteryRepository, never()).saveAll(any());
+        } finally {
+            TransactionSynchronizationManager.getSynchronizations().forEach(sync ->
+                    sync.afterCompletion(TransactionSynchronization.STATUS_ROLLED_BACK));
+            TransactionSynchronizationManager.clearSynchronization();
+            TransactionSynchronizationManager.setActualTransactionActive(false);
+        }
     }
 
     @Test void unusedGoalsAndOrientationDoNotBlockTheRequiredPreparation() {

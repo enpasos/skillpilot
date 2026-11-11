@@ -44,7 +44,11 @@ public final class CompletionProfileCompiler {
             return java.util.Collections.unmodifiableMap(result);
         }
 
-        private Set<String> directPrerequisites(String id) {
+        /**
+         * Immutable, sorted atomic prerequisites after inheritance and cluster expansion.
+         * Validate the selected context before traversing these edges.
+         */
+        public Set<String> directPrerequisites(String id) {
             if (!nodes.containsKey(id)) fail("MISSING_REFERENCE", "Unknown goal " + id);
             return prerequisites.get(id);
         }

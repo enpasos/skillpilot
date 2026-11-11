@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -1214,6 +1215,24 @@ class LearnerServiceCanonicalProjectionTest {
 
         assertThat(mastery).containsEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 1.0);
         assertThat(mastery).doesNotContainKey(CANONICAL_FUNCTION_CONCEPT_ID);
+    }
+
+    @Test
+    void bavariaCurriculumTimestampReadKeepsStoredLegacyResultWithoutWrites() {
+        learner.setSelectedCurriculum(BAYERN_MATH_LANDSCAPE_ID);
+        Instant timestamp = Instant.parse("2026-11-10T08:00:00Z");
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(masteryEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, 0.75, timestamp)));
+
+        Map<String, MasteryEntryDTO> mastery = learnerService.getMasteryWithTimestamps(LEARNER_ID);
+
+        assertThat(mastery).containsOnlyKeys(LEGACY_BAYERN_FUNCTION_CONCEPT_ID)
+                .containsEntry(LEGACY_BAYERN_FUNCTION_CONCEPT_ID, new MasteryEntryDTO(0.75, timestamp));
+        assertThat(mastery).doesNotContainKey(CANONICAL_FUNCTION_CONCEPT_ID);
+        verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+        verify(learnerRepository, never()).save(any(Learner.class));
+        verify(learnerRepository, never()).saveAll(any());
     }
 
     private static Path resolveCurriculaDir() {

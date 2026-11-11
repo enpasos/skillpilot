@@ -334,16 +334,17 @@ class PackageCompositionViewConsumerTest {
                 "getStructuralGoals",
                 LANDSCAPE_ID);
 
-        assertThat(learnerFacing).containsOnlyKeys(GOAL_ID);
-        assertThat(learnerFacing.get(GOAL_ID).getContains()).isEmpty();
-        assertThat(learnerFacing.get(GOAL_ID).getType()).isEqualTo("atomic");
+        assertThat(learnerFacing).containsOnlyKeys(GOAL_ID, CHILD_ID);
+        assertThat(learnerFacing.get(GOAL_ID).getContains()).containsExactly(CHILD_ID);
+        assertThat(learnerFacing.get(CHILD_ID).getContains()).isEmpty();
+        assertThat(compositionSeedAtoms(service, landscape, allGoals, Map.of())).containsExactly(CHILD_ID);
         assertThat(structural).containsOnlyKeys(GOAL_ID, CHILD_ID);
         assertThat(structural.get(GOAL_ID).getContains()).containsExactly(CHILD_ID);
     }
 
     @Test
     @SuppressWarnings("unchecked")
-    void goalEntryDoesNotExpandDescendants() {
+    void goalEntryClusterPreservesCanonicalDescendantsAsAtomicSeeds() {
         SkillLandscape landscape = clusteredLandscape();
         CompositionViewService compositionViews = mock(CompositionViewService.class);
         when(compositionViews.isAuthoritativeForLandscape(LANDSCAPE_ID)).thenReturn(true);
@@ -362,13 +363,17 @@ class PackageCompositionViewConsumerTest {
                 Map.of(LANDSCAPE_ID, Map.of("selected", true, "filterId", "GK")),
                 List.of(landscape));
 
-        assertThat(scoped).containsOnlyKeys(GOAL_ID);
-        assertThat(scoped.get(GOAL_ID).getContains()).isEmpty();
-        assertThat(scoped.get(GOAL_ID).getType()).isEqualTo("atomic");
+        assertThat(scoped).containsOnlyKeys(GOAL_ID, CHILD_ID);
+        assertThat(scoped.get(GOAL_ID).getContains()).containsExactly(CHILD_ID);
+        assertThat(scoped.get(CHILD_ID).getContains()).isEmpty();
+        assertThat(compositionSeedAtoms(service, landscape, allGoals,
+                Map.of(LANDSCAPE_ID, Map.of("selected", true, "filterId", "GK"))))
+                .containsExactly(CHILD_ID);
+        assertThat(landscape.getGoals().get(0).getContains()).containsExactly(CHILD_ID);
     }
 
     @Test
-    void topicAtomicIdsKeepOpaqueEntryAndSeparatelyPlacedDescendant() {
+    void topicAtomicIdsDeduplicateSeparatelyPlacedCanonicalDescendant() {
         SkillLandscape landscape = clusteredLandscape();
         LandscapeService landscapes = mock(LandscapeService.class);
         when(landscapes.getClosure(LANDSCAPE_ID)).thenReturn(List.of(landscape));
@@ -389,7 +394,12 @@ class PackageCompositionViewConsumerTest {
                 GOAL_ID,
                 false);
 
-        assertThat(atomicIds).containsExactlyInAnyOrder(GOAL_ID, CHILD_ID);
+        assertThat(atomicIds).containsExactly(CHILD_ID);
+        assertThat(compositionSeedAtoms(service, landscape, Map.of(
+                GOAL_ID, landscape.getGoals().get(0), CHILD_ID, landscape.getGoals().get(1)),
+                Map.of(LANDSCAPE_ID, Map.of("selected", true, "filterId", "GK"))))
+                .containsExactly(CHILD_ID);
+        assertThat(landscape.getGoals().get(0).getContains()).containsExactly(CHILD_ID);
     }
 
     @Test
@@ -500,6 +510,14 @@ class PackageCompositionViewConsumerTest {
                 mock(CompositionViewService.class),
                 new ObjectMapper(),
                 new PackageCurriculumQualitySnapshotProvider());
+    }
+
+    private static Set<String> compositionSeedAtoms(LearnerService service, SkillLandscape landscape,
+            Map<String, LearningGoal> allGoals, Map<String, Map<String, Object>> config) {
+        Object projection = ReflectionTestUtils.invokeMethod(service, "applyCompositionViewProjection",
+                LANDSCAPE_ID, allGoals, allGoals, config, List.of(landscape));
+        return ReflectionTestUtils.invokeMethod(service, "automaticCompletionTargets",
+                "automatic:personal-curriculum", projection);
     }
 
     private static SkillLandscape landscape() {

@@ -262,9 +262,10 @@ Level 3 focus remains the selected roots' descendant union intersected with $L$.
 Its normal/strict rules and accepted widening flow remain unchanged; compilation
 does not widen focus automatically. Required learning outside that focus still
 counts toward full-plan progress and completion. Existing goal-type results,
-recognition and card/assessment obligations remain in force. Compiler,
-validation and runtime implementation of this new scope policy is still open;
-these documentation changes do not establish runtime or G17 acceptance.
+recognition and card/assessment obligations remain in force. The learner runtime
+and WebGUI implement this closed target basis; applicability validation and
+migration-proof admission remain separate work. Focused regressions are not
+full native, curriculum, remote CI or G17 acceptance.
 
 Canonical goal identity and atomicity also survive projection. A direct
 `goalEntry` can expose a canonical atom as an assessable leaf. Referencing a
@@ -276,11 +277,11 @@ progress and completion; it creates no new result and transfers no existing
 cluster result to children. Normal and strict evaluation retain their existing
 focus semantics.
 
-**Implementation boundary (9 November 2026).** The existing resolver already
-loads prerequisite chains recursively, but the current `goalEntry` runtime path
-can still discard a canonical cluster's children and treat the cluster as an
-atom. This is legacy implementation awaiting correction and native verification,
-not an exception to the contract. The
+**Implementation boundary (10 November 2026).** The personal learner runtime
+resolves canonical atomic seeds and preserves the real target descendants of
+legacy direct cluster entries. The WebGUI retains their canonical target-bearing
+paths. Other consumers and full native/curriculum admission need their own
+evidence; compatibility is not permission to author opaque substitute atoms. The
 [DPK-006c-c implementation record](../../dev/dual-curriculum-package-implementation-status.md#abgeschlossener-teilschritt-dpk-006c-c)
 describes that historical behavior. Adding view-authored `requires` edges is
 not the remedy for a projection that loses canonical prerequisite paths.

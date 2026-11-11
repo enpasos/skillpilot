@@ -12,6 +12,7 @@ import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.MasteryId;
+import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
@@ -43,6 +44,9 @@ class LearnerPersonalizationProgressionIntegrationTest {
 
     @Autowired
     private CompositionViewService compositionViewService;
+
+    @Autowired
+    private LandscapeService landscapeService;
 
     @Autowired
     private LearnerRepository learnerRepository;
@@ -210,9 +214,26 @@ class LearnerPersonalizationProgressionIntegrationTest {
         assertThat(afterCourseProfile.activeFilters()).contains("DE-HE", "LK", "G9");
         assertThat(afterCourseProfile.stateMachine().requiredAction())
                 .isEqualTo("orientActiveGoal");
+        String sekOneOrientation = "65365dce-f33f-49d8-9516-42f75883aa86";
+        List<String> requiredOrientationPath = List.of(
+                "075f1ef2-6860-4b20-9df2-878157eb395e",
+                "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+                "25593605-5e13-55cc-9a05-8f3d737e15e9",
+                sekOneOrientation);
+        var learningProjection = learnerService.getLearnerLandscapeClosure(learner.getSkillpilotId(), ROOT_ID, "de")
+                .stream().filter(landscape -> MATH_ID.equals(landscape.getLandscapeId()))
+                .findFirst().orElseThrow().getPersonalCurriculumProjection();
+        assertThat(learningProjection.seedAtomicGoalIds()).contains(requiredOrientationPath.getFirst())
+                .doesNotContain(sekOneOrientation);
+        assertThat(learningProjection.targetGoalIds()).containsAll(requiredOrientationPath);
+        for (int index = 0; index + 1 < requiredOrientationPath.size(); index++) {
+            assertThat(landscapeService.getGoalDefinition(requiredOrientationPath.get(index)).getRequires())
+                    .contains(requiredOrientationPath.get(index + 1));
+        }
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
         assertThat(afterCourseProfile.frontier())
                 .extracting(goal -> goal.id())
-                .containsExactly(MATH_SEK_TWO_ORIENTATION_ID);
+                .containsExactly(MATH_SEK_TWO_ORIENTATION_ID, sekOneOrientation);
 
         learnerService.setPlannedGoals(
                 learner.getSkillpilotId(),
