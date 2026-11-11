@@ -733,7 +733,7 @@ jobs:
           test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
 
   curriculum-assessment-proofs:
-    name: Curriculum graph and assessment proofs
+    name: Skill-graph and assessment proofs
     needs: goal-book-publication
     if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     runs-on: ubuntu-24.04
