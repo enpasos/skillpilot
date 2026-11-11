@@ -7,8 +7,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.api.OrientationOutlook;
+import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
+import com.skillpilot.backend.landscape.LandscapeService;
+import com.skillpilot.backend.landscape.LearningGoal;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeOAuthConfiguration;
 import com.skillpilot.backend.openai.de.oauth.OpenAiDeSecureOAuthTestServer;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
@@ -23,6 +26,7 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionStateException;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.CompositionViewService;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -38,6 +42,7 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.HexFormat;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -60,6 +65,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.util.ReflectionTestUtils;
 
 /**
  * Vertical release gate for the OpenAI Coach V1.
@@ -143,6 +149,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
     @Autowired
     private LearnerService learnerService;
+
+    @Autowired
+    private LandscapeService landscapeService;
+
+    @Autowired
+    private CompositionViewService compositionViewService;
 
     @Autowired
     @Qualifier("openAiDeAuthorizationService")
@@ -890,9 +902,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(objectMapper.readTree(webPersonalizationRead.body()).path("stage").asText())
                 .isEqualTo("COMPLETE");
 
-        // With no explicit Level-3 narrowing, the resolved learner-facing root is
-        // already the effective focus and must not be republished as a no-op
-        // scope change.
+        // The canonical root includes required learning outside the authored
+        // SekII structure. Selecting that structure is a real focus narrowing.
         HttpResponse<String> scopeNavigation = callTool(
                 accessToken,
                 10,
@@ -906,8 +917,26 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(scopeNavigationContext.path("options").valueStream()
                         .map(this::optionGoalIds)
                         .toList())
-                .doesNotContain(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
+                .containsExactly(List.of(HESSEN_SEKII_MATH_LK_SCOPE_ID));
         assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
+        Learner scopeLearner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+        Object projection = ReflectionTestUtils.invokeMethod(learnerService, "getGoalProjection",
+                CURRICULUM_ID, scopeLearner.getPersonalCurriculum());
+        PersonalCurriculumLearningScope learningScope = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+        String statisticsTargetId = "616c72a4-972d-5cc0-b903-e2a24bcb150c";
+        String modalValueId = "03703b29-efd8-57e0-acf5-4381b1dc67ec";
+        Map<String, LearningGoal> canonicalGoals = landscapeService.getById(MATHEMATICS_CURRICULUM_ID)
+                .getGoals().stream().collect(Collectors.toMap(LearningGoal::getId, goal -> goal));
+        assertThat(canonicalGoals.get(statisticsTargetId).getRequires()).contains(modalValueId);
+        assertThat(learningScope.seedAtomicGoalIds()).contains(statisticsTargetId).doesNotContain(modalValueId);
+        assertThat(learningScope.learningAtomicGoalIds()).contains(modalValueId);
+        Set<String> canonicalFocusAtoms = assertMathematicsFocusTargets(
+                CANONICAL_MATHEMATICS_ROOT_FOCUS_ID, projection, learningScope, canonicalGoals);
+        Set<String> sekTwoFocusAtoms = assertMathematicsFocusTargets(
+                HESSEN_SEKII_MATH_LK_SCOPE_ID, projection, learningScope, canonicalGoals);
+        assertThat(canonicalFocusAtoms).containsAll(sekTwoFocusAtoms).contains(modalValueId)
+                .hasSizeGreaterThan(sekTwoFocusAtoms.size());
+        assertThat(sekTwoFocusAtoms).contains(statisticsTargetId).doesNotContain(modalValueId);
         assertThat(objectMapper.readTree(
                         learnerRepository.findById(PERMANENT_SKILLPILOT_ID)
                                 .orElseThrow()
@@ -1016,6 +1045,53 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         Learner afterOrientation = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
         assertThat(afterOrientation.getActiveGoalId()).isNull();
         assertThat(afterOrientation.getCoachStateRevision()).isEqualTo(orientationStateVersion + 1L);
+
+        // Closing the Personal Curriculum also makes the canonical SekI
+        // orientation necessary. Complete that actual offered learning target
+        // through the same MCP workflow before expecting an ordinary frontier.
+        String foundationOrientationId = "65365dce-f33f-49d8-9516-42f75883aa86";
+        assertThat(learningScope.learningAtomicGoalIds()).contains(foundationOrientationId);
+        List<String> foundationRequirementPath = List.of(
+                statisticsTargetId, modalValueId,
+                "91571d3f-3651-4477-ba21-320fc4077453",
+                "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+                "a4c2b831-02f0-5d55-a300-7823a71352c4",
+                "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+                "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+                "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+                "624764d6-becd-5f9b-ada3-0d4f9d143073",
+                foundationOrientationId);
+        for (int index = 1; index < foundationRequirementPath.size(); index++) {
+            assertThat(canonicalGoals.get(foundationRequirementPath.get(index - 1)).getRequires())
+                    .contains(foundationRequirementPath.get(index));
+        }
+        assertThat(successorFrontierIds).containsExactly(foundationOrientationId);
+        HttpResponse<String> activateFoundationOrientation = callTool(
+                accessToken, 151, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
+                objectMapper.writeValueAsString(Map.of("goalId", foundationOrientationId, "redirect", false)),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(activateFoundationOrientation, applicationSubject);
+        JsonNode foundationOrientationContext = result(activateFoundationOrientation).path("structuredContent");
+        assertThat(foundationOrientationContext.path("interactionMode").asText()).isEqualTo("orientation");
+        assertThat(foundationOrientationContext.path("activeGoal").path("goalId").asText())
+                .isEqualTo(foundationOrientationId);
+        OrientationOutlook foundationOutlook = learnerService.getCoachOrientationOutlook(PERMANENT_SKILLPILOT_ID, "de");
+        assertThat(foundationOutlook).isNotNull();
+        OrientationOutlook.Path foundationPath = foundationOutlook.paths().stream()
+                .filter(path -> "data-and-chance".equals(path.pathId())).findFirst().orElseThrow();
+        assertThat(foundationPath.relatedGoalIds()).contains("91571d3f-3651-4477-ba21-320fc4077453");
+        HttpResponse<String> completeFoundationOrientation = callTool(
+                accessToken, 152, OpenAiDeV1McpContractAdapter.SET_MASTERY,
+                objectMapper.writeValueAsString(Map.of("goalId", foundationOrientationId,
+                        OpenAiDeV1McpContractAdapter.ORIENTATION_PATH_ID, foundationPath.pathId())),
+                resumedLearningSessionId);
+        assertMcpPayloadDoesNotExposeIdentity(completeFoundationOrientation, applicationSubject);
+        JsonNode foundationCompletion = result(completeFoundationOrientation).path("structuredContent");
+        assertThat(foundationCompletion.path("status").asText()).isEqualTo("updated");
+        assertThat(foundationCompletion.path("stateVersion").asLong())
+                .isEqualTo(foundationOrientationContext.path("stateVersion").asLong() + 1L);
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).containsEntry(foundationOrientationId, 1.0);
+        assertThat(persistedScopeGoalIds()).containsExactly(CANONICAL_MATHEMATICS_ROOT_FOCUS_ID);
 
         // A normal mastery write with sequential autopilot must return the successor
         // already selected by SkillPilot Core. The compact coach context must not
@@ -1640,6 +1716,34 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 .isNotBlank()
                 .isNotEqualTo(label);
         return optionId;
+    }
+
+    private Set<String> assertMathematicsFocusTargets(
+            String focusId,
+            Object projection,
+            PersonalCurriculumLearningScope learningScope,
+            Map<String, LearningGoal> canonicalGoals) {
+        Set<String> expected = new LinkedHashSet<>();
+        List<String> roots = focusId.startsWith("composition:")
+                ? compositionViewService.resolveStructureReference(focusId).referencedGoalIds()
+                : List.of(focusId);
+        roots.forEach(id -> collectMathematicsAtoms(id, canonicalGoals, expected));
+        expected.retainAll(learningScope.learningAtomicGoalIds());
+        Set<String> actual = ReflectionTestUtils.invokeMethod(
+                learnerService, "projectedAtomicTargetIds", List.of(focusId), projection);
+        assertThat(actual).containsExactlyInAnyOrderElementsOf(expected);
+        return actual;
+    }
+
+    private void collectMathematicsAtoms(
+            String goalId, Map<String, LearningGoal> canonicalGoals, Set<String> atoms) {
+        LearningGoal goal = canonicalGoals.get(goalId);
+        assertThat(goal).isNotNull();
+        if (goal.getContains() == null || goal.getContains().isEmpty()) {
+            atoms.add(goalId);
+        } else {
+            goal.getContains().forEach(id -> collectMathematicsAtoms(id, canonicalGoals, atoms));
+        }
     }
 
     private List<String> optionGoalIds(JsonNode option) {

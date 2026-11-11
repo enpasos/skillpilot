@@ -10,6 +10,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.landscape.GoalMappingService;
@@ -29,6 +30,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.test.util.ReflectionTestUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import java.util.HashMap;
@@ -226,12 +228,11 @@ public class LearnerServiceReproTest {
     }
 
     @Test
-    void testFilteredPrereqDoesNotBlockAtomicFrontier() throws Exception {
+    void testClosedPrerequisiteBlocksBroadFocusButNotNormalAtomicFocus() throws Exception {
         try {
             // Setup:
-            // - Visible atomic requires a hidden (filtered-out) prerequisite.
-            // - Filter is "LK", hidden prereq is "GK".
-            // Expected: Visible atomic remains in frontier (optimistic filtering).
+            // LK selects Visible as the seed. Its GK prerequisite still belongs
+            // to the full learning basis; focus only limits the current work.
 
             Map<String, Object> personalConfig = new HashMap<>();
             personalConfig.put("test-landscape", Map.of("selected", true, "filterId", "LK"));
@@ -277,15 +278,32 @@ public class LearnerServiceReproTest {
             // Mastery: None
             when(masteryRepository.findByLearner_SkillpilotId("test-learner")).thenReturn(Collections.emptyList());
 
-            // Run getRichFrontier
+            Object projection = ReflectionTestUtils.invokeMethod(
+                    learnerService, "getGoalProjection", "test-landscape", configJson, false);
+            PersonalCurriculumLearningScope learning = ReflectionTestUtils.invokeMethod(projection, "learningScope");
+            assertThat(learning.seedAtomicGoalIds()).containsExactly("Visible");
+            assertThat(learning.learningAtomicGoalIds()).containsExactlyInAnyOrder("Visible", "Hidden");
+            assertThat(learning.requiredByPaths()).containsEntry("Hidden", List.of("Visible", "Hidden"));
+
+            // Both atoms are inside Cluster focus, so the prerequisite is first.
             List<FrontierGoal> frontier = learnerService.getRichFrontier("test-learner");
+            assertThat(frontier).anyMatch(g -> g.id().equals("Hidden") && "atomic".equals(g.type()));
+            assertThat(frontier).noneMatch(g -> g.id().equals("Visible"));
 
-            System.out.println("DEBUG: testFilteredPrereqDoesNotBlockAtomicFrontier Frontier: " + frontier);
-
-            // Assertions
-            assertThat(frontier).isNotEmpty();
-            assertThat(frontier).anyMatch(g -> g.id().equals("Visible"));
+            // An explicit atomic focus excludes Hidden from normal gating;
+            // strict mode still checks it globally without granting mastery.
+            when(plannedGoalRepository.findByLearner_SkillpilotId("test-learner"))
+                    .thenReturn(List.of(new com.skillpilot.backend.domain.PlannedGoal(learner, "Visible")));
+            learner.setStrictMode(false);
+            frontier = learnerService.getRichFrontier("test-learner");
             assertThat(frontier).anyMatch(g -> g.id().equals("Visible") && "atomic".equals(g.type()));
+            assertThat(frontier).noneMatch(g -> g.id().equals("Hidden"));
+            learner.setStrictMode(true);
+            assertThat(learnerService.getRichFrontier("test-learner")).noneMatch(g -> g.id().equals("Visible"));
+            assertThat(learnerService.getFilteredAtomicGoalIds("test-landscape", configJson, null, false))
+                    .containsExactlyInAnyOrder("Visible", "Hidden");
+            verify(masteryRepository, never()).save(any());
+            verify(masteryRepository, never()).saveAll(any());
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
