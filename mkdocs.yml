@@ -34,6 +34,9 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+exclude_docs: |
+  concept/skill-graph/source/**
+
 # Navigation policy: this tree lists the section index pages plus the durable
 # entry documents per section. Generated status artifacts and dated audit or
 # rollout dossiers are intentionally not listed here; they stay reachable
@@ -57,11 +60,24 @@ nav:
       - "Architekturkonzept: Austauschbarer MCP Host": concept/portable-agent-runtime-architecture.md
       - Skill Graph:
           - concept/skill-graph/index.md
-          - Graph Definition: concept/skill-graph/graph-definition.md
-          - "Die Graph-Definition von SkillPilot (PDF)": concept/skill-graph/skillpilot-graph-definition.pdf
-          - Assessment-Gated Completion: concept/skill-graph/assessment-gated-completion.md
-          - Learning Units (Lerneinheiten): concept/skill-graph/learning-units.md
-          - Learning Unit Progression: concept/skill-graph/learning-unit-progression.md
+          - Compendium (EN):
+              - Core Graph (§§1–5): concept/skill-graph/graph-definition.md
+              - Context & Views (§§6–10): concept/skill-graph/context-and-views.en.md
+              - Learning Units (§§11.1–11.4): concept/skill-graph/learning-units.md
+              - Unit Progression (§11.5): concept/skill-graph/learning-unit-progression.md
+              - Planning & Budget (§12): concept/skill-graph/planning-and-budget.en.md
+              - Implicit Mastery (§13): concept/skill-graph/assessment-gated-completion.md
+              - Appendices (B–F): concept/skill-graph/compendium-appendix.en.md
+              - "The SkillPilot Graph Definition (PDF)": concept/skill-graph/skillpilot-graph-definition.en.pdf
+          - Kompendium (DE):
+              - Graph-Kern (§§1–5): concept/skill-graph/graph-definition.de.md
+              - Kontext & Views (§§6–10): concept/skill-graph/context-and-views.de.md
+              - Lerneinheiten (§§11.1–11.4): concept/skill-graph/learning-units.de.md
+              - Einheitsfolge (§11.5): concept/skill-graph/learning-unit-progression.de.md
+              - Planung & Budget (§12): concept/skill-graph/planning-and-budget.de.md
+              - Implizite Beherrschung (§13): concept/skill-graph/assessment-gated-completion.de.md
+              - Anhänge (B–F): concept/skill-graph/compendium-appendix.de.md
+              - "Die Graph-Definition von SkillPilot (PDF)": concept/skill-graph/skillpilot-graph-definition.pdf
           - General Goal System And Migration: concept/skill-graph/general-goal-system-and-migration.md
           - Node Types: concept/skill-graph/node-types.md
           - View Projection And Goal Placement: concept/skill-graph/view-projection-and-goal-placement.md
@@ -99,6 +115,8 @@ nav:
   - QA & CI:
       - qa-ci/index.md
       - CI: qa-ci/ci.md
+      - "Graph-Definition: Regeln & Meilensteine (DE)": qa-ci/graph-definition-rule-milestone-matrix.md
+      - "Graph Definition: Rules & Milestones (EN)": qa-ci/graph-definition-rule-milestone-matrix.en.md
       - Curriculum Quality:
           - Reifegrade, QA-Scopes und CQR-Regeln: qa-ci/curriculum-quality-maturity-and-routes.md
           - Dashboard Status Layer: qa-ci/curriculum-quality-dashboard.md

@@ -31,7 +31,7 @@ Grundlage sind [Lerneinheiten](../concept/skill-graph/learning-units.md),
 [Anerkennung](../concept/skill-graph/assessment-gated-completion.md),
 [Fortschreiten und Zugang](../concept/skill-graph/learning-unit-progression.md),
 [Graph Definition](../concept/skill-graph/graph-definition.md) und die
-[illustrierte Gesamtdarstellung](../concept/skill-graph/skillpilot-graph-definition.tex).
+[illustrierte Gesamtdarstellung (PDF)](../concept/skill-graph/skillpilot-graph-definition.pdf).
 Dieser Plan konkretisiert die Umsetzung; er eröffnet diese beschlossenen Begriffe nicht neu.
 
 ## 2. Ausgangspunkt und ehrlicher Lieferstand

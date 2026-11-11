@@ -4,27 +4,34 @@ SkillPilot represents learning goals and their prerequisites as a shared graph.
 Educational programmes organise those stable goals into contextual views and
 learning units. This section explains both the graph and the contracts around it.
 
-## Foundations
+## Foundations (Single-Source Compendium, EN & DE)
 
-- [Die Graph-Definition von SkillPilot (PDF)](skillpilot-graph-definition.pdf):
-  German technical compendium with the mathematics, diagrams, contextual
-  contracts, optional planning profiles and the corrected application-based recognition concept (implementation pending).
-  [LaTeX source](skillpilot-graph-definition.tex) and
-  [build manifest](skillpilot-graph-definition.build.json) accompany it.
-- [Graph Definition](graph-definition.md): formal goals, relations, prerequisites,
-  frontier, and graph-validity conditions.
-- [Assessment-Gated Completion and Global Mastery](assessment-gated-completion.md):
-  direct assessment access, transitive minimality and globally effective
-  recognition through independent application in valid local learning units.
+- **Complete PDF Compendia:**
+  [The SkillPilot Graph Definition (English PDF)](skillpilot-graph-definition.en.pdf) ·
+  [Die Graph-Definition von SkillPilot (Deutsches PDF)](skillpilot-graph-definition.pdf) —
+  generated from the canonical single source with full mathematics, bilingual illustrations,
+  143-rule enforcement traffic light (`Ampelschaltung`), and implementation boundaries.
+- [Graph Definition — Core (§§1–5, EN)](graph-definition.md) · [Deutsch (DE)](graph-definition.de.md):
+  formal goals, relations, prerequisites, frontier, and graph-validity conditions.
+- [Context, Views, Scope & Goal Types (§§6–10, EN)](context-and-views.en.md) · [Deutsch (DE)](context-and-views.de.md):
+  canonical layer vs. educational views, personal curriculum scope $L=\mathrm{Closure}(S)$,
+  understanding/memorisation/assessment goals, time context, and evidence boundaries.
+- [Learning Units (§§11.1–11.4, EN)](learning-units.md) · [Deutsch (DE)](learning-units.de.md):
+  recursively composed educational units, motivational introduction, required outcomes,
+  and completion derived from child units and own obligations.
+- [Learning-Unit Progression (§11.5, EN)](learning-unit-progression.md) · [Deutsch (DE)](learning-unit-progression.de.md):
+  explicit course dependencies, whole-unit ordering, and the separate choice of access policy.
+- [Optional Acquisition & Time Planning (§12, EN)](planning-and-budget.en.md) · [Deutsch (DE)](planning-and-budget.de.md):
+  multi-stage level plans, structural prerequisite witnesses, and workload budgets.
+- [Assessment-Gated Completion & Implicit Mastery (§13, EN)](assessment-gated-completion.md) · [Deutsch (DE)](assessment-gated-completion.de.md):
+  direct assessment access, transitive minimality, and globally effective recognition
+  through independent application in valid local learning units (implementation pending).
   [Decision of 4 November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md):
-  staged integration in the complete Cockpit, recursive unit implementation,
-  selective reuse of the former PR and separate subject milestones.
-- [Learning Units (Lerneinheiten)](learning-units.md): recursively composed
-  educational units, a motivational introduction, required outcomes and
-  completion derived from child units and own obligations.
-- [Learning Unit Progression](learning-unit-progression.md): explicit course
-  dependencies, whole-unit ordering and the separate choice of access policy.
+  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md).
+- [Compendium Appendices (B–F, EN)](compendium-appendix.en.md) · [Deutsch (DE)](compendium-appendix.de.md):
+  current implementation status, verification strategy, glossary/symbols, sources, and build reference;
+  for Appendix A see [Rule & Milestone Matrix (DE)](../../qa-ci/graph-definition-rule-milestone-matrix.md) ·
+  [English (EN)](../../qa-ci/graph-definition-rule-milestone-matrix.en.md).
 - [General Goal System and Migration](general-goal-system-and-migration.md):
   the separation of goals, programmes, placements, competency axes, and views.
 - [Node Types](node-types.md): understanding, memorisation, and assessment goals.
@@ -49,22 +56,24 @@ learning units. This section explains both the graph and the contracts around it
 See the [Concept Documentation Index](../index.md) for didactic concepts and
 runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
 
-## Build the German reference
+## Build Web & PDF Compendia from the Canonical Single Source
 
-From the repository root, with LuaLaTeX, German language support and the
-standard packages named in the document preamble installed:
+All bilingual Web chapters, the 143-rule traffic-light matrix, the bilingual diagrams
+(`00`, `08`–`16`), and both LuaLaTeX PDFs are compiled from the canonical single source
+under `docs/concept/skill-graph/source/` (only sources and static original illustrations
+`01`–`07` are tracked in Git; generated outputs are built locally and in CI):
 
 ```bash
-python3 docs/concept/skill-graph/latex/build-document.py
+python3 docs/concept/skill-graph/build_spec.py --web-and-tex
+python3 docs/concept/skill-graph/build_spec.py --all
 python3 docs/concept/skill-graph/latex/check-assessment-model.py
 ```
 
-The [build script](latex/build-document.py) keeps intermediate files under
-`tmp/skill-graph-document/` and writes the PDF and its input-hash manifest
-beside the main source. Its optional `--texmf` argument accepts a locally
-unpacked TeX package tree without changing system packages. Chapter sources
-are in `latex/`; the existing graph illustrations remain under
-`assets/graph-definition/`.
+The [single-source compiler](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/build_spec.py)
+(and compatibility wrapper [latex/build-document.py](latex/build-document.py)) keeps intermediate
+LaTeX files under `tmp/skill-graph-document/` and writes the generated Markdown pages,
+bilingual diagram PNGs, and DE/EN PDFs into `docs/`. Its optional `--texmf` argument
+accepts a locally unpacked TeX package tree without changing system packages.
 
 The [mathematical reference check](latex/check-assessment-model.py) exercises
 full transitive prerequisite demand, local recognition and their boundary cases. It does not implement the

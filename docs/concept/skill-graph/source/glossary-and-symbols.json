@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "frontmatterDistinctions": [
+    {
+      "term": { "de": "Anforderung, Voraussetzung", "en": "Requirement, prerequisite" },
+      "meaning": {
+        "de": "Die Kante $(g,p)\\in R$ ist eine *Anforderung* von $g$; das Ziel $p$ ist eine *Voraussetzung* von $g$.",
+        "en": "The edge $(g,p)\\in R$ is a *requirement* of $g$; goal $p$ is a *prerequisite* of $g$."
+      }
+    },
+    {
+      "term": { "de": "verfasst, abgeleitet", "en": "authored, derived" },
+      "meaning": {
+        "de": "*Verfasst* sind nur die gespeicherten `contains`- und `requires`-Kanten. Geerbte, effektive und atomar normalisierte Anforderungen sowie Hüllen werden daraus *abgeleitet*.",
+        "en": "Only the stored `contains` and `requires` edges are *authored*. Inherited, effective, and atomically normalized requirements as well as closures are *derived* from them."
+      }
+    },
+    {
+      "term": { "de": "Zielzustand, Übergangsbestand", "en": "target state, transitional data" },
+      "meaning": {
+        "de": "*Zielzustand* heißt der angestrebte Zustand der kanonischen Daten: atomare Normalform und transitive Minimalität. *Übergangsbestand* sind heutige Daten, die noch Clusteranforderungen enthalten. Der Lernstand eines einzelnen Ziels ist damit nie gemeint.",
+        "en": "*Target state* denotes the intended state of canonical data: atomic normal form and transitive minimality. *Transitional data* denotes current data that still contains cluster requirements. Neither term ever refers to the mastery state of an individual goal."
+      }
+    },
+    {
+      "term": { "de": "Mastery, implizite Beherrschung, effektiv beherrscht", "en": "explicit mastery, implicit mastery, effectively mastered" },
+      "meaning": {
+        "de": "*Mastery* ist das gespeicherte ausdrückliche Ergebnis (Menge $M$). *Implizite Beherrschung* wird abgeleitet (Menge $I_U$). *Effektiv beherrscht* ist die Vereinigung beider (Menge $\\Meff$).",
+        "en": "*Explicit mastery* (*Mastery*) is the stored binary outcome (set $M$). *Implicit mastery* is derived (set $I_U$). *Effectively mastered* is the union of both (set $\\Meff$)."
+      }
+    },
+    {
+      "term": { "de": "Inhaltsziel, geschütztes Ziel", "en": "content goal, protected goal" },
+      "meaning": {
+        "de": "*Inhaltsziel* heißt das gewöhnliche fachliche Lernziel; Abbildungen beschriften es mit „gewöhnlich“. *Geschützt* sind Prüfungs- und Memorierziele: Sie werden nie implizit bestanden.",
+        "en": "*Content goal* denotes an ordinary subject-matter learning goal; figures label it “ordinary”. *Protected* goals are assessment and memory goals: they are never implicitly passed."
+      }
+    },
+    {
+      "term": { "de": "Cluster, Lerneinheit, Programmeinheit", "en": "cluster, learning unit, program unit" },
+      "meaning": {
+        "de": "Ein *Cluster* ist ein Ziel mit `contains`-Kindern. Eine *Lerneinheit* ist eine eigens autorisierte fachliche Einheit mit Lernversprechen. Eine *Programmeinheit* ist ein organisatorischer Abschnitt wie Jahrgang oder Semester.",
+        "en": "A *cluster* is a goal with `contains` children. A *learning unit* (*Lerneinheit*) is an explicitly authorized educational unit with a stated learning outcome. A *program unit* is an organizational section such as a school year or semester."
+      }
+    },
+    {
+      "term": { "de": "Stufe", "en": "level, stage" },
+      "meaning": {
+        "de": "Personalisierungsstufe (Level 1--4), Reifegrad der Curriculum-QA (M0--M7), Planungsstufe eines Zeitplans, Schulstufe und das Schwierigkeitsfeld `level` sind fünf verschiedene Dinge.",
+        "en": "Level of personalization (Level 1--4), curriculum QA maturity level (M0--M7), planning period of a schedule, school stage, and the difficulty field `level` are five distinct concepts."
+      }
+    }
+  ],
+  "glossaryIntro": {
+    "de": "Die erste Tabelle erklärt die Begriffe in der Reihenfolge, in der das Dokument sie einführt, und nennt die englischen Fachbezeichnungen. Die zweite Tabelle listet die Formelzeichen. Keine dieser Definitionen begründet eine zusätzliche Ergebnisart: Gespeichert wird je atomarem Ziel allein das binäre Ergebnis $m$.",
+    "en": "The first table defines the terms in the order in which this specification introduces them and gives the corresponding German terms. The second table lists the mathematical symbols. None of these definitions introduces an additional stored outcome kind: only the binary outcome $m$ is persisted per atomic goal."
+  },
+  "glossary": [
+    {
+      "term": { "de": "Lernziel, Ziel (*goal*)", "en": "goal (*Lernziel*, *Ziel*)" },
+      "meaning": {
+        "de": "Knoten des Skill-Graphen mit stabiler UUID-Identität.",
+        "en": "Node of the skill graph with a stable UUID identity."
+      }
+    },
+    {
+      "term": { "de": "atomares Ziel, Atom (*atomic goal*)", "en": "atomic goal, atom (*atomares Ziel*, *Atom*)" },
+      "meaning": {
+        "de": "Ziel ohne `contains`-Kinder. Nur Atome tragen ein gespeichertes Ergebnis.",
+        "en": "Goal without `contains` children. Only atoms carry a stored learner outcome."
+      }
+    },
+    {
+      "term": { "de": "Cluster (*cluster goal*)", "en": "cluster goal, cluster (*Cluster*)" },
+      "meaning": {
+        "de": "Ziel mit `contains`-Kindern; gliedert, wird aber nicht selbst gemeistert.",
+        "en": "Goal with `contains` children; structures and aggregates content rather than being mastered directly."
+      }
+    },
+    {
+      "term": { "de": "Containment", "en": "containment (*Containment*)" },
+      "meaning": {
+        "de": "Die Hierarchie der verfassten `contains`-Kanten.",
+        "en": "The hierarchy formed by authored `contains` edges."
+      }
+    },
+    {
+      "term": { "de": "Anforderung, Voraussetzung (*requires*, *prerequisite*)", "en": "requirement, prerequisite (*Anforderung*, *Voraussetzung*)" },
+      "meaning": {
+        "de": "Die Kante $(g,p)\\in R$ ist eine Anforderung von $g$; das Ziel $p$ ist eine Voraussetzung von $g$.",
+        "en": "The edge $(g,p)\\in R$ is a requirement of $g$; goal $p$ is a prerequisite of $g$."
+      }
+    },
+    {
+      "term": { "de": "verfasst, abgeleitet (*authored*, *derived*)", "en": "authored, derived (*verfasst*, *abgeleitet*)" },
+      "meaning": {
+        "de": "Verfasst sind nur die gespeicherten Kanten in $C$ und $R$. Alles andere wird daraus berechnet.",
+        "en": "Only the stored edges in $C$ and $R$ are authored. Everything else is computed from them."
+      }
+    },
+    {
+      "term": { "de": "geerbte, effektive Anforderung (*inherited*, *effective*)", "en": "inherited, effective requirement (*geerbte*, *effektive Anforderung*)" },
+      "meaning": {
+        "de": "Geerbt ist eine Anforderung, die ein Ziel von einem `contains`-Vorfahren übernimmt. Effektiv sind eigene und geerbte Anforderungen zusammen.",
+        "en": "An inherited requirement is one that a goal acquires from a `contains` ancestor. Effective requirements combine a goal's own and inherited requirements."
+      }
+    },
+    {
+      "term": { "de": "atomare Basis (*atomic basis*)", "en": "atomic basis (*atomare Basis*)" },
+      "meaning": {
+        "de": "Bei einem Atom das Ziel selbst, bei einem Cluster seine atomaren Nachfahren.",
+        "en": "For an atom, the goal itself; for a cluster, its atomic descendants."
+      }
+    },
+    {
+      "term": { "de": "atomarer Bedarf (*atomic demand*)", "en": "atomic demand (*atomarer Bedarf*)" },
+      "meaning": {
+        "de": "Alle Atome, die ein Ziel direkt oder transitiv voraussetzt; unabhängig vom Lernzustand.",
+        "en": "All atoms that a goal directly or transitively requires, independent of learner state."
+      }
+    },
+    {
+      "term": { "de": "atomare Normalform (*atomic normal form*)", "en": "atomic normal form (*atomare Normalform*)" },
+      "meaning": {
+        "de": "Die Eigenschaft $R\\subseteq A\\times A$: Alle verfassten Anforderungen verbinden Atome.",
+        "en": "The property $R\\subseteq A\\times A$: all authored requirements connect atomic goals."
+      }
+    },
+    {
+      "term": { "de": "Zielzustand, Übergangsbestand (*target state*, *transitional data*)", "en": "target state, transitional data (*Zielzustand*, *Übergangsbestand*)" },
+      "meaning": {
+        "de": "Zielzustand ist der angestrebte Zustand der kanonischen Daten: atomare Normalform und transitive Minimalität. Übergangsbestand sind Daten mit Clusteranforderungen.",
+        "en": "Target state is the intended state of canonical data: atomic normal form and transitive minimality. Transitional data denotes inventories that still carry cluster requirements."
+      }
+    },
+    {
+      "term": { "de": "transitive Minimalität (*transitive minimality*)", "en": "transitive minimality (*transitive Minimalität*)" },
+      "meaning": {
+        "de": "Keine verfasste Anforderung ist über die übrigen bereits erreichbar.",
+        "en": "No authored requirement is already reachable through the remaining requirements."
+      }
+    },
+    {
+      "term": { "de": "Orientierungsanker, terminales Autonomieziel (*motivation anchor*, *terminal autonomy goal*)", "en": "motivation anchor, terminal autonomy goal (*Orientierungsanker*, *terminales Autonomieziel*)" },
+      "meaning": {
+        "de": "Anfangs- und Endpunkte einer didaktischen Route.",
+        "en": "Starting and ending endpoints of a didactic route."
+      }
+    },
+    {
+      "term": { "de": "Mastery (*explicit mastery*)", "en": "explicit mastery, Mastery (*Mastery*)" },
+      "meaning": {
+        "de": "Das gespeicherte ausdrückliche Ergebnis eines Atoms: geschafft oder noch nicht geschafft.",
+        "en": "The stored explicit outcome of an atomic goal: mastered or not yet mastered."
+      }
+    },
+    {
+      "term": { "de": "implizite Beherrschung (*implicit mastery*)", "en": "implicit mastery (*implizite Beherrschung*)" },
+      "meaning": {
+        "de": "Aus bestandenen Prüfungen eines gültigen lokalen Vertrags abgeleitete Beherrschung; bei Inhaltszielen belegt sie selbstständige Anwendung.",
+        "en": "Mastery derived from passed assessments of a valid local recognition contract; for content goals it demonstrates independent application."
+      }
+    },
+    {
+      "term": { "de": "effektiv beherrscht (*effective mastery*)", "en": "effective mastery, effectively mastered (*effektiv beherrscht*)" },
+      "meaning": {
+        "de": "Ausdrücklich gemeistert oder implizit beherrscht. Beide wirken gleich.",
+        "en": "Explicitly mastered or implicitly mastered. Both carry equivalent global effect."
+      }
+    },
+    {
+      "term": { "de": "Erfüllung (*satisfaction*)", "en": "satisfaction (*Erfüllung*)" },
+      "meaning": {
+        "de": "Ein Ziel oder Cluster ist erfüllt, wenn seine atomare Basis effektiv beherrscht ist.",
+        "en": "A goal or cluster is satisfied when its atomic basis is non-empty and effectively mastered."
+      }
+    },
+    {
+      "term": { "de": "Frontier", "en": "frontier (*Frontier*)" },
+      "meaning": {
+        "de": "Die nächsten verfügbaren Atome: selbst offen, Bedarf erfüllt.",
+        "en": "The next available atomic goals: themselves not yet mastered, with all required atoms satisfied."
+      }
+    },
+    {
+      "term": { "de": "Filter, Fokus (*filter*, *focus*)", "en": "filter, focus (*Filter*, *Fokus*)" },
+      "meaning": {
+        "de": "Ein Filter wählt einen Ausschnitt des Skill-Graphen. Der Fokus ist der vorübergehende Arbeitsbereich einer Person (Level 3).",
+        "en": "A filter selects a subset of the skill graph. Focus is a learner's temporary working scope (Level 3)."
+      }
+    },
+    {
+      "term": { "de": "Normalmodus, strikter Modus (*optimistic*, *strict* oder *pessimistic mode*)", "en": "normal (*optimistic*) mode, strict (*pessimistic*) mode (*Normalmodus*, *strikter Modus*)" },
+      "meaning": {
+        "de": "Der Normalmodus prüft Voraussetzungen innerhalb des Ausschnitts, der strikte Modus alle.",
+        "en": "Normal (*optimistic*) mode checks prerequisites inside the selected scope; strict mode checks all prerequisites globally."
+      }
+    },
+    {
+      "term": { "de": "Personalisierungsstufe, Level (*level of personalization*)", "en": "level of personalization (*Personalisierungsstufe*, *Level*)" },
+      "meaning": {
+        "de": "Vier Stufen: Basiscurriculum, Personal Curriculum, Fokus mit aktivem Ziel, Mastery.",
+        "en": "Four narrowing levels: base curriculum, Personal Curriculum, focus with one active goal, and global mastery."
+      }
+    },
+    {
+      "term": { "de": "Personal Curriculum (*personal curriculum*)", "en": "Personal Curriculum (*persönlicher Lehrplan*)" },
+      "meaning": {
+        "de": "Verbindliche persönliche Zielauswahl einschließlich ihrer notwendigen atomaren Voraussetzungen auf Level 2; bei fester Konfiguration unabhängig von Mastery. Vorhandene Anerkennung zählt als erfüllt.",
+        "en": "Committed personal goal selection including its necessary atomic prerequisites at Level 2; fixed independently of mastery under a given configuration. Existing valid recognition counts as satisfied."
+      }
+    },
+    {
+      "term": { "de": "Projektion, Kompositionssicht (*projection*, *composition view*)", "en": "projection, composition view (*Projektion*, *Kompositionssicht*)" },
+      "meaning": {
+        "de": "Eine Projektion leitet für einen aufgelösten Kontext den sichtbaren Baum ab. Die Kompositionssicht legt dessen oberen Aufbau geprüft fest.",
+        "en": "A projection derives the visible tree for a resolved scope. A composition view explicitly defines that scope's reviewed upper tree structure."
+      }
+    },
+    {
+      "term": { "de": "Projektionsrolle (*projection role*)", "en": "projection role (*Projektionsrolle*)" },
+      "meaning": {
+        "de": "`target`: Lernziel der Sicht. `prerequisiteOnly`: fachlokale Voraussetzungshilfe; notwendige Atome haben dennoch ein Erwerbsziel im vollständigen Personal Curriculum.",
+        "en": "`target`: selectable learning target of the view. `prerequisiteOnly`: subject-local prerequisite support; necessary atoms still receive an acquisition target in the full Personal Curriculum."
+      }
+    },
+    {
+      "term": { "de": "Anwendbarkeit (`applicability`)", "en": "applicability (`applicability`, *Anwendbarkeit*)" },
+      "meaning": {
+        "de": "Kompilierte Angabe, in welchem Kontext ein Ziel sichtbar ist.",
+        "en": "Compiled dimensional metadata specifying in which scopes a goal is visible."
+      }
+    },
+    {
+      "term": { "de": "Programmeinheit, Platzierung (`programUnits`, `goalPlacements`)", "en": "program unit, goal placement (`programUnits`, `goalPlacements`)" },
+      "meaning": {
+        "de": "Organisatorischer Abschnitt wie Jahrgang oder Semester; Zuordnung eines Ziels zu einem solchen Abschnitt.",
+        "en": "Organizational container such as a school year or semester; entry attaching an unchanged goal to such a unit."
+      }
+    },
+    {
+      "term": { "de": "Zieltyp (*node type*)", "en": "goal type, node type (*Zieltyp*)" },
+      "meaning": {
+        "de": "Pädagogische Art eines Atoms: Inhaltsziel, Orientierungsziel, Memorierziel oder Prüfungsziel.",
+        "en": "Pedagogical kind of an atomic goal: content goal, orientation goal, memory goal, or assessment goal."
+      }
+    },
+    {
+      "term": { "de": "Inhaltsziel (*ordinary subject goal*)", "en": "content goal, ordinary subject goal (*Inhaltsziel*)" },
+      "meaning": {
+        "de": "Das gewöhnliche fachliche Lernziel; in Abbildungen „gewöhnlich“.",
+        "en": "An ordinary subject-matter learning goal; labelled “ordinary” in figures."
+      }
+    },
+    {
+      "term": { "de": "verifizierter Abruf, Abschlussabruf (*verified recall*)", "en": "verified recall, completion recall (*verifizierter Abruf*, *Abschlussabruf*)" },
+      "meaning": {
+        "de": "Kontrollierter Abruf einer Karte ohne Kartenhilfe; im Projektglossar auch „geprüfter Abruf“. Der Abschlussabruf über alle erforderlichen Karten schließt ein Memorierziel ab.",
+        "en": "Controlled unaided recall of a card without prompt hints. Verified completion recall across all required cards completes a memory goal."
+      }
+    },
+    {
+      "term": { "de": "direkter Prüfungszugang (*direct assessment access*)", "en": "direct assessment access (*direkter Prüfungszugang*)" },
+      "meaning": {
+        "de": "Ein bewusst gewählter Prüfungsversuch wird durch fehlende Vorbereitung nicht gesperrt.",
+        "en": "A deliberately chosen assessment attempt is not blocked by unmastered preparation."
+      }
+    },
+    {
+      "term": { "de": "Lerneinheit, Kindeinheit, Pflichtkind (*learning unit*, *child unit*, *required child*)", "en": "learning unit, child unit, required child (*Lerneinheit*, *Kindeinheit*, *Pflichtkind*)" },
+      "meaning": {
+        "de": "Autorisierte fachliche Einheit mit Lernversprechen; ihre Untereinheiten; die verpflichtenden unter ihnen.",
+        "en": "Authorized educational unit with a stated learning outcome; its subunits; the mandatory subunits among them."
+      }
+    },
+    {
+      "term": { "de": "Aggregat, Synthese (*aggregate*, *synthesis*)", "en": "aggregate, synthesis (*Aggregat*, *Synthese*)" },
+      "meaning": {
+        "de": "Ein Aggregat fasst Kindeinheiten nur zusammen. Eine Syntheseeinheit prüft zusätzlich deren Integration.",
+        "en": "An aggregate bundles child units without adding its own assessment. A synthesis unit additionally assesses their integration."
+      }
+    },
+    {
+      "term": { "de": "lokaler Vertrag (*local recognition contract*)", "en": "local recognition contract (*lokaler Vertrag*)" },
+      "meaning": {
+        "de": "Bindet die eigenen Ziele einer Lerneinheit, ihre Revision und die fachlich geprüfte Bedeutung ihrer Prüfungen; in anderen Quellen auch Anerkennungs- oder Erwerbsvertrag.",
+        "en": "Binds a learning unit's own goals, its curriculum revision, and the subject-reviewed application meaning of its assessments; also called an acquisition contract."
+      }
+    },
+    {
+      "term": { "de": "geschütztes Ziel (*protected goal*)", "en": "protected goal (*geschütztes Ziel*)" },
+      "meaning": {
+        "de": "Prüfungs- oder Memorierziel; wird nie implizit bestanden.",
+        "en": "Assessment or memory goal; never implicitly passed."
+      }
+    },
+    {
+      "term": { "de": "offene Nachfrage (*open demand*)", "en": "open demand (*offene Nachfrage*)" },
+      "meaning": {
+        "de": "Die noch offenen geschützten Ziele einer Lerneinheit samt ihrem atomaren Bedarf.",
+        "en": "A learning unit's still-open protected goals together with their full transitive atomic demand."
+      }
+    },
+    {
+      "term": { "de": "Verbraucher (*consumer*)", "en": "consumer (*Verbraucher*)" },
+      "meaning": {
+        "de": "Ein Ziel, das ein anderes voraussetzt, aus Sicht dieser Voraussetzung.",
+        "en": "A goal that requires another goal, viewed from that prerequisite."
+      }
+    },
+    {
+      "term": { "de": "Einheitsvoraussetzung, Einheitssperre (*whole-unit prerequisite*, *entry lock*)", "en": "whole-unit prerequisite, entry lock (*Einheitsvoraussetzung*, *Einheitssperre*)" },
+      "meaning": {
+        "de": "Ausdrücklich autorisierte Voraussetzung zwischen ganzen Lerneinheiten; eine daraus abgeleitete harte Zugangssperre. Ob es solche Sperren gibt, ist nicht entschieden.",
+        "en": "Explicitly authorized prerequisite between whole learning units; a hard technical access lock derived from it. Whether such locks exist remains undecided."
+      }
+    },
+    {
+      "term": { "de": "Planungsstufe, Eintrittsbasis, Abschlusszeuge (*period*, *entry basis*, *witness*)", "en": "planning period, entry basis, completion witness (*Planungsstufe*, *Eintrittsbasis*, *Abschlusszeuge*)" },
+      "meaning": {
+        "de": "Zeitraum eines optionalen Zeitplans; als vorhanden angenommene Kompetenzen; Reihenfolge, die den Erwerb einer Planungsstufe als möglich belegt.",
+        "en": "Calendar interval of an optional schedule; competencies assumed present at entry; ordering that proves a period's targets can be acquired step by step."
+      }
+    },
+    {
+      "term": { "de": "Plan-Soll, IST, Gesamt-IST", "en": "planned target, actual count, cumulative progress (*Plan-Soll*, *IST*, *Gesamt-IST*)" },
+      "meaning": {
+        "de": "Das Soll ist der geplante Stand eines benannten Umfangs, der IST der erreichte. Der Gesamt-IST zählt die effektiv beherrschten Ziele eines Plans.",
+        "en": "Planned target is the scheduled progress of a named scope; actual count is achieved progress. Cumulative actual progress (*Gesamt-IST*) counts a plan's effectively mastered goals."
+      }
+    },
+    {
+      "term": { "de": "Profil (*profile*)", "en": "profile (*Profil*)" },
+      "meaning": {
+        "de": "Benannter Satz zusätzlicher Regeln, der nur dort gilt, wo er ausdrücklich gewählt ist; etwa ein Routen-, Validator- oder Planungsprofil.",
+        "en": "Named set of additional constraints that applies only where explicitly selected, such as a route, validator, or planning profile."
+      }
+    },
+    {
+      "term": { "de": "Scope, QA-Scope (*scope*, *QA scope*)", "en": "scope, QA scope (*Scope*, *QA-Scope*)" },
+      "meaning": {
+        "de": "Der benannte Prüfumfang einer Regel oder eines Profils.",
+        "en": "The named validation scope of a rule or route profile."
+      }
+    },
+    {
+      "term": { "de": "Gate (*gate*)", "en": "gate (*Gate*)" },
+      "meaning": {
+        "de": "Automatische Prüfung, deren Scheitern einen Meilenstein oder einen Build blockiert.",
+        "en": "Automated check whose failure blocks a milestone or build."
+      }
+    },
+    {
+      "term": { "de": "Reifegrad, Meilenstein (*maturity level*, *milestone*)", "en": "maturity level, milestone (*Reifegrad*, *Meilenstein*)" },
+      "meaning": {
+        "de": "Stufe M0 bis M7 der maschinellen Curriculum-QA; Anhang~@ref{sec:rule-milestones} nennt sie Meilensteine. M7 ist kein menschlicher Wirksamkeitsnachweis.",
+        "en": "Level M0 to M7 of automated curriculum QA; Appendix~@ref{sec:rule-milestones} refers to them as milestones. M7 is not human effectiveness proof."
+      }
+    }
+  ],
+  "symbolsIntro": {
+    "de": "Die folgende Tabelle fasst alle Formelzeichen zusammen (Graph in Abschnitten~@ref{sec:core} bis~@ref{sec:validity}, Lernzustand und Filter in Abschnitten~@ref{sec:state} und~@ref{sec:filters}, Personal Curriculum in Abschnitt~@ref{sec:personal-scope}, Zieltypen in Abschnitt~@ref{sec:goal-types}, Lerneinheiten und implizite Beherrschung in Abschnitten~@ref{sec:learning-units} und~@ref{sec:assessment}, Planung in Abschnitt~@ref{sec:levels}).",
+    "en": "The following table summarizes all mathematical symbols across the specification (graph core in Sections~@ref{sec:core} to~@ref{sec:validity}, learner state and filters in Sections~@ref{sec:state} and~@ref{sec:filters}, Personal Curriculum in Section~@ref{sec:personal-scope}, goal types in Section~@ref{sec:goal-types}, learning units and implicit mastery in Sections~@ref{sec:learning-units} and~@ref{sec:assessment}, planning in Section~@ref{sec:levels})."
+  },
+  "symbols": [
+    {
+      "symbol": "$G$, $A$, $K$",
+      "meaning": {
+        "de": "Ziele, strukturelle Atome, Cluster; $K=G\\setminus A$.",
+        "en": "Goals, structural atoms, clusters; $K=G\\setminus A$."
+      }
+    },
+    {
+      "symbol": "$C$, $R$",
+      "meaning": {
+        "de": "Verfasste Kanten: Enthaltensein (`contains`) und direkte Anforderungen (`requires`).",
+        "en": "Authored edges: containment (`contains`) and direct requirements (`requires`)."
+      }
+    },
+    {
+      "symbol": "$X^+$, $X^{-1}$",
+      "meaning": {
+        "de": "Nichtleere transitive Hülle und Umkehrrelation einer Relation $X$.",
+        "en": "Non-empty transitive closure and inverse relation of a relation $X$."
+      }
+    },
+    {
+      "symbol": "$\\Anc(g)$, $\\Desc(g)$",
+      "meaning": {
+        "de": "Vorfahren und Nachfahren entlang `contains`.",
+        "en": "Ancestors and descendants along `contains`."
+      }
+    },
+    {
+      "symbol": "$\\Atoms(g)$",
+      "meaning": {
+        "de": "Atomare Basis; bei einem Atom die einelementige Menge.",
+        "en": "Atomic basis; the singleton $\\{g\\}$ if $g$ is atomic, otherwise its atomic descendants."
+      }
+    },
+    {
+      "symbol": "$\\Reff$, $R_{\\mathrm{inherited}}$",
+      "meaning": {
+        "de": "Effektive Anforderungen und ihr geerbter Anteil; $\\Pre_{\\mathrm{eff}}(g)$ sind die effektiven Voraussetzungen von $g$.",
+        "en": "Effective requirements and their inherited subset; $\\Pre_{\\mathrm{eff}}(g)$ denotes the effective prerequisites of $g$."
+      }
+    },
+    {
+      "symbol": "$\\Rat$",
+      "meaning": {
+        "de": "Vollständig atomar expandierte effektive Relation, auch in den Abschlussformeln.",
+        "en": "Fully atomically expanded effective requirement relation, also used in the completion formulas."
+      }
+    },
+    {
+      "symbol": "$R_A$",
+      "meaning": {
+        "de": "Direkt atomar verfasste Anforderungen $R\\cap(A\\times A)$.",
+        "en": "Directly authored atomic requirements $R\\cap(A\\times A)$."
+      }
+    },
+    {
+      "symbol": "$B(g)$, $\\ReqAtoms(g)$",
+      "meaning": {
+        "de": "Atomare Basis der effektiven Voraussetzungen von $g$ und atomarer Bedarf (in früheren englischen Einzelentwürfen $D(g)$).",
+        "en": "Atomic basis of the effective prerequisites of $g$ and full atomic demand (written $D(g)$ in earlier standalone English drafts)."
+      }
+    },
+    {
+      "symbol": "$O$, $Z$, $E_{\\mathrm{route}}$ ($O_k$, $Z_k$)",
+      "meaning": {
+        "de": "Orientierungsanker, terminale Autonomieziele und ausgenommene Unterstützungsziele (bzw. je Routenprofil $k$; in früheren englischen Einzelentwürfen $M$ und $T$ bzw. $M_k$ und $T_k$).",
+        "en": "Orientation (motivation) anchors, terminal autonomy goals, and exempt support goals (or per route profile $k$; written $M$ and $T$ or $M_k$ and $T_k$ in earlier standalone drafts)."
+      }
+    },
+    {
+      "symbol": "$m$, $M$",
+      "meaning": {
+        "de": "Gespeicherter binärer Zustand je Atom und Menge seiner ausdrücklichen Erfolge. $m(a)=0$ schließt implizite Beherrschung nicht aus. In früheren Einzelentwürfen sowie in den statischen Abbildungen~@ref{fig:frontier} und~@ref{fig:filters} steht $M_A$.",
+        "en": "Stored binary state per atomic goal and the set of its explicit successes. $m(a)=0$ does not rule out implicit mastery. Earlier standalone drafts and static Figures~@ref{fig:frontier} and~@ref{fig:filters} write $M_A$."
+      }
+    },
+    {
+      "symbol": "$\\Meff$",
+      "meaning": {
+        "de": "Globale Vereinigung ausdrücklicher und gültig abgeleiteter impliziter Beherrschung.",
+        "en": "Global union of explicit mastery and validly derived implicit mastery."
+      }
+    },
+    {
+      "symbol": "$\\Sat(g,\\Meff)$",
+      "meaning": {
+        "de": "Erfüllung eines Ziels oder Clusters.",
+        "en": "Satisfaction of an atomic goal or cluster."
+      }
+    },
+    {
+      "symbol": "$\\Frontier$, $\\Frontier_K$",
+      "meaning": {
+        "de": "Nächste verfügbare Atome; abgeleitete Clusterverfügbarkeit.",
+        "en": "Next available atomic goals; derived cluster availability."
+      }
+    },
+    {
+      "symbol": "$P(S)$, $w(a)$",
+      "meaning": {
+        "de": "Gewichteter Fortschritt über eine Zielmenge $S$; Fortschrittsgewicht eines Atoms $a$.",
+        "en": "Weighted progress across a goal set $S$; progress weight of an atomic goal $a$."
+      }
+    },
+    {
+      "symbol": "$F$, $G_F$, $A_F$",
+      "meaning": {
+        "de": "Filterprädikat, ausgewählte Ziele, ausgewählte Atome.",
+        "en": "Filter predicate, selected goals, selected atomic goals."
+      }
+    },
+    {
+      "symbol": "$\\Applicability$, $D$, $V_d$",
+      "meaning": {
+        "de": "Anwendbarkeit, Dimensionsmenge und Vokabular einer Dimension. In Abschnitt~@ref{sec:filters} ist $Q$ die aktive Filterauswahl.",
+        "en": "Applicability mapping, set of filter dimensions, and value vocabulary of dimension $d$. In Section~@ref{sec:filters}, $Q$ denotes the active query selection."
+      }
+    },
+    {
+      "symbol": "$\\Closure(T)$",
+      "meaning": {
+        "de": "Ausgewählte Atome $T$ samt ihrem atomaren Bedarf (in früheren englischen Einzelentwürfen $U(T)$).",
+        "en": "Selected atomic goals $T$ together with their full atomic prerequisite demand (written $U(T)$ in earlier standalone drafts)."
+      }
+    },
+    {
+      "symbol": "$S$, $L$",
+      "meaning": {
+        "de": "Vereinigung der gültigen atomaren Ausgangsziele der gewählten geprüften Fächersichten und daraus geschlossener persönlicher Lernumfang $L=\\Closure(S)$ auf Level 2.",
+        "en": "Union of valid atomic seed targets across the selected reviewed subject scopes and the resulting closed Personal Curriculum learning scope $L=\\Closure(S)$ at Level 2."
+      }
+    },
+    {
+      "symbol": "$\\Frontier_{\\mathrm{opt}}$, $\\Frontier_{\\mathrm{strict}}$",
+      "meaning": {
+        "de": "Frontier im Normalmodus und im strikten Modus.",
+        "en": "Frontier in normal (*optimistic*) mode and in strict mode."
+      }
+    },
+    {
+      "symbol": "$\\Missing$, $\\MissingAtoms$",
+      "meaning": {
+        "de": "Unerfüllte effektive Voraussetzungsknoten; fehlende Atome des Bedarfs.",
+        "en": "Unsatisfied effective prerequisite nodes; missing atomic goals of the demand."
+      }
+    },
+    {
+      "symbol": "$\\operatorname{Cards}(g)$",
+      "meaning": {
+        "de": "Vollständig aufgelöste gültige Menge der erforderlichen Karten des Memorierziels $g$.",
+        "en": "Fully resolved valid set of required cards of memory goal $g$."
+      }
+    },
+    {
+      "symbol": "$\\operatorname{RecallPassed}(g)$",
+      "meaning": {
+        "de": "Ausdrücklich festgestellter erfolgreicher Abschlussabruf über $\\operatorname{Cards}(g)$.",
+        "en": "Explicitly verified successful completion recall across $\\operatorname{Cards}(g)$."
+      }
+    },
+    {
+      "symbol": "$\\Score$, $\\Passed$",
+      "meaning": {
+        "de": "Punktzahl und Bestehen eines Prüfungsziels; $\\MaxPoints$ und $\\PassingPoints$ stammen aus dem Bewertungsraster.",
+        "en": "Score and pass result of an assessment goal; $\\MaxPoints$ and $\\PassingPoints$ come from the scoring rubric."
+      }
+    },
+    {
+      "symbol": "$U$, $\\Own(U)$, $T(U)$",
+      "meaning": {
+        "de": "Lerneinheit, eigene atomare Erwerbsziele und Gesamtumfang einschließlich der Kinder; $\\Children(U)$ sind die Pflichtkinder.",
+        "en": "Learning unit, directly owned atomic acquisition targets, and total recursive scope including child units; $\\Children(U)$ denotes its required child units."
+      }
+    },
+    {
+      "symbol": "$\\Complete(U)$",
+      "meaning": {
+        "de": "Rekursiv abgeleiteter Abschluss; keine zusätzlich gespeicherte Unit-Mastery.",
+        "en": "Recursively derived unit completion; never an additionally persisted unit-mastery state."
+      }
+    },
+    {
+      "symbol": "$Q$, $A_{\\mathrm{mem}}$",
+      "meaning": {
+        "de": "In Abschnitt~@ref{sec:assessment} die Mengen der atomaren Prüfungsziele und der atomaren Memorierziele (in früheren Einzelentwürfen stand $K$ für Memorierziele).",
+        "en": "In Section~@ref{sec:assessment}, the sets of atomic assessment goals and atomic memory goals (written $K$ for memory goals in earlier standalone drafts)."
+      }
+    },
+    {
+      "symbol": "$Q_U$, $A_{\\mathrm{mem},U}$, $P_U$",
+      "meaning": {
+        "de": "Eigene Prüfungs-, Memorier- und gemeinsame Schutzmenge; $A_{\\mathrm{mem},U}=\\Own(U)\\cap A_{\\mathrm{mem}}$.",
+        "en": "Directly owned assessment, memory, and combined protected goal sets; $A_{\\mathrm{mem},U}=\\Own(U)\\cap A_{\\mathrm{mem}}$."
+      }
+    },
+    {
+      "symbol": "$\\operatorname{Reach}_{\\Rat}^{*}(X)$",
+      "meaning": {
+        "de": "Die Menge $X$ samt allem, was ihre Elemente direkt oder transitiv voraussetzen.",
+        "en": "The set $X$ together with all atomic goals its elements directly or transitively require."
+      }
+    },
+    {
+      "symbol": "$N_U$",
+      "meaning": {
+        "de": "Offene Nachfrage: vollständige transitive Nachfrage der offenen eigenen geschützten Ziele, ohne Stopp an gemeisterten Zwischenzielen.",
+        "en": "Open demand: full transitive demand of the unit's still-open own protected goals, without stopping at mastered intermediate goals."
+      }
+    },
+    {
+      "symbol": "$I_U$",
+      "meaning": {
+        "de": "Implizite Menge: eigene nicht geschützte Ziele außerhalb von $M$ und $N_U$. Bei Inhaltszielen belegt sie lokal abgeleitete Anwendung. Keine zusätzliche gespeicherte Ergebnisart.",
+        "en": "Implicit set: directly owned unprotected goals outside $M$ and $N_U$. For content goals, it witnesses locally derived independent application. Not an additional stored outcome kind."
+      }
+    },
+    {
+      "symbol": "$\\mathcal U_{\\mathrm{valid}}$",
+      "meaning": {
+        "de": "Personen- und revisionsgebundene, dauerhaft anwendbare autoritative lokale Verträge; nicht nur aktuell sichtbare Einheiten oder deren neueste Fassungen.",
+        "en": "Person- and revision-bound, durably applicable authoritative local recognition contracts; not merely currently visible units or their latest revisions."
+      }
+    },
+    {
+      "symbol": "$T_{\\mathrm{Plan}}$, $H_{\\mathrm{gesamt}}$",
+      "meaning": {
+        "de": "Plan-Zielmenge und Zahl ihrer effektiv beherrschten Ziele.",
+        "en": "Planned target goal set and count of its effectively mastered goals."
+      }
+    },
+    {
+      "symbol": "$T_\\pi$, $B_\\pi$, $\\ell_\\pi$",
+      "meaning": {
+        "de": "Geplante Erwerbsziele, Eintrittsbasis und optionale kalenderbezogene Planungsstufen; $n_\\pi$ ist ihre Anzahl, $S_i$ die Zielmenge der Stufe $i$.",
+        "en": "Planned acquisition targets, entry basis, and optional calendar-bound planning periods; $n_\\pi$ is the number of periods and $S_i$ is the target set of period $i$."
+      }
+    },
+    {
+      "symbol": "$\\Rat^{\\pi}$, $\\Frontier_\\pi$, $\\ReqAtoms_\\pi$",
+      "meaning": {
+        "de": "Planrelation ohne die Anforderungen der Eintrittsbasis; zugehörige Frontier und zugehöriger Bedarf.",
+        "en": "Plan requirement relation excluding outgoing requirements of the entry basis; corresponding frontier and atomic demand."
+      }
+    },
+    {
+      "symbol": "$W^{(r)}$",
+      "meaning": {
+        "de": "Hypothetischer Stand des Prüfalgorithmus nach $r$ Schritten.",
+        "en": "Hypothetical mastery state of the witness verification algorithm after $r$ steps."
+      }
+    },
+    {
+      "symbol": "$\\Theta_\\pi$, $\\widehat t_h(\\Theta_\\pi)$",
+      "meaning": {
+        "de": "Deklarierte Schätzannahmen des Plans und darunter geschätzte nichtnegative Dauer der Aktivität $h$; $\\mathcal H_i$ sind die Aktivitäten der Stufe $i$.",
+        "en": "Declared estimation assumptions of the plan and the non-negative duration of activity $h$ estimated under them; $\\mathcal H_i$ denotes the activities of period $i$."
+      }
+    },
+    {
+      "symbol": "$\\Work$, $\\Reserve$, $\\Budget$",
+      "meaning": {
+        "de": "Arbeitsaufwand, geschützte Reserve und verfügbare Zeit einer Planungsstufe.",
+        "en": "Scheduled workload, protected reserve, and available time budget of a planning period."
+      }
+    }
+  ],
+  "notationCleanupNote": {
+    "de": "**Hinweis zur vereinheitlichten Notation.** Frühere englische Einzel-Markdown-Entwürfe schrieben $D(g)$ für den atomaren Bedarf, $U(T)$ für die Voraussetzungshülle einer Teilmenge, $M_A$ für die ausdrückliche Mastery-Menge, $M_k$ und $T_k$ (bzw. $M$ und $T$) für Orientierungsanker und terminale Autonomieziele eines Routenprofils sowie $K$ für Memorierziele. Die gemeinsame Single-Source-Spezifikation vereinheitlicht diese Zeichen in Web und PDF durchgängig auf $\\ReqAtoms(g)$, $\\Closure(T)$, $M$, $O_k$ und $Z_k$ (bzw. $O$ und $Z$) sowie $A_{\\mathrm{mem}}$, damit $K=G\\setminus A$ eindeutig die Menge der strukturellen Cluster und $M$ eindeutig die ausdrückliche Mastery bezeichnet. Die unveränderte statische Originalabbildung `06-available-next-goals.png` (Abbildung~@ref{fig:frontier}) zeigt weiterhin die historische Beschriftung $M_A$, worauf ihre Bildunterschrift ausdrücklich hinweist.",
+    "en": "**Note on unified notation.** Earlier standalone English Markdown drafts used $D(g)$ for atomic demand, $U(T)$ for the prerequisite closure of a subset, $M_A$ for the explicit mastery set, $M_k$ and $T_k$ (or $M$ and $T$) for orientation anchors and terminal autonomy goals of a route profile, and $K$ for memory goals. The unified Single-Source specification standardizes these symbols across both Web and PDF to $\\ReqAtoms(g)$, $\\Closure(T)$, $M$, $O_k$ and $Z_k$ (or $O$ and $Z$), and $A_{\\mathrm{mem}}$, keeping $K=G\\setminus A$ unambiguous for structural clusters and $M$ unambiguous for explicit mastery. The unchanged static original illustration `06-available-next-goals.png` (Figure~@ref{fig:frontier}) still shows the historical label $M_A$, as noted in its caption."
+  }
+}
