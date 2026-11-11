@@ -24,15 +24,17 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Frühere lokale Bedienung und Nachweise; für den Neustart nur bausteinweise und mit neuen Sollwerten verwendbar.
 - [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
   Current checkpoint, quality evidence, and remaining roadmap for paired JSON-runtime and FWU-ontology releases.
-- [Documentation Guidelines](documentation-guidelines.md)
-  Document roles, placement rules, generated artifact handling, and local checks.
+- [Developer, Schema & Editor Guide (PDF, EN)](skillpilot-developer-and-editor-guide.en.pdf) · [Entwickler-, Schema- & Editor-Handbuch (PDF, DE)](skillpilot-developer-and-editor-guide.de.pdf)
+  Unified bilingual single-source compendium for durable developer, schema, editor, and platform references.
+- [Documentation Guidelines (§1, EN)](documentation-guidelines.md) · [Deutsch (DE)](documentation-guidelines.de.md)
+  Document roles, placement rules, single-source compendia, generated artifact handling, and local checks.
 - [Canonical Gymnasium Implementation Plan](canonical-gymnasium-implementation-plan.md)
   Overall implementation direction for canonical German Gymnasium landscapes.
 - [Canonical Gymnasium Migration Status](canonical-gymnasium-migration-status.md)
   Long-running migration ledger and handoff context.
-- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md)
+- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot (§3, EN)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md) · [Deutsch (DE)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.de.md)
   Developer-facing schema/runtime migration note.
-- [Landscape JSON Field Reference](landscape-json-field-reference.md)
+- [Landscape JSON Field Reference (§2, EN)](landscape-json-field-reference.md) · [Deutsch (DE)](landscape-json-field-reference.de.md)
   Field-level reference for landscape JSON authoring and review.
 
 ## Canonical Gymnasium Core
@@ -108,11 +110,11 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Authoring And UI Tools
 
-- [Curriculum Authoring Editors](curriculum-authoring-editors.md)
-- [Graph Editor](graph-editor.md)
-- [Flashcard Editor](flashcard-editor.md)
+- [Curriculum Authoring Editors (§4, EN)](curriculum-authoring-editors.md) · [Deutsch (DE)](curriculum-authoring-editors.de.md)
+- [Graph Editor (§5, EN)](graph-editor.md) · [Deutsch (DE)](graph-editor.de.md)
+- [Flashcard Editor (§6, EN)](flashcard-editor.md) · [Deutsch (DE)](flashcard-editor.de.md)
 - [Semantic Atomicity Review Workbench Plan](semantic-atomicity-review-workbench-plan.md)
-- [Meine Lernziele Node Ordering](my-goals-node-ordering.md)
+- [Meine Lernziele Node Ordering (§7, DE)](my-goals-node-ordering.md) · [English (EN)](my-goals-node-ordering.en.md)
 - [Teacher View Stability Analysis Request](teacher-view-stability-analysis-request.md)
 - [Lernzielbuch und Zeitplanung: zweite Ausbaustufe](teacher-goal-book-phase-two.md)
   Wiederaufnahmenotiz für lokale Unterrichtsbündel und druckbare Arbeitsunterlagen; Umsetzung zurückgestellt.
@@ -125,9 +127,9 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
   Normale Cockpit-Materialauswahl mit bestehendem Profilzugang, Betriebsschalter und lokale sowie echte Host-Abnahme.
 - [Content-Pakete: Ausbau und Abnahme zu Issue #54](content-packages-issue-54.md)
   Direkte Materialien für Mathematik und Physik, LEIFIphysik-Browserprüfung sowie getrennte lokale, CI- und Produktionsnachweise.
-- [Auto-Update Mechanism Architecture](auto-update.md)
+- [Auto-Update Mechanism Architecture (§9, EN)](auto-update.md) · [Deutsch (DE)](auto-update.de.md)
 - [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
-- [Working with Liquibase in SkillPilot](liquibase.md)
+- [Working with Liquibase in SkillPilot (§8, EN)](liquibase.md) · [Deutsch (DE)](liquibase.de.md)
 
 ## Historical Work Notes
 

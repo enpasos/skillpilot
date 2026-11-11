@@ -1,5 +1,4 @@
 # SkillPilot Whitepaper (DE)
-
 **Version:** 1.0.27 · **Projekt:** SkillPilot · *Ein Teil der Illustrationen ist KI-generiert.*
 
 ---
@@ -218,7 +217,7 @@ Eine reine Statusfrage startet keine neue Aufgabe; eine gewünschte Pause bleibt
 Ein **illustratives Tagesbeispiel**, keine Live-Daten: In Mathematik sind bis heute 13 Planziele vorgesehen und 9 fortschrittswirksame Planziele erreicht, in Physik 10 vorgesehen und 11 erreicht. Für den **Plansaldo** zählen auch später vorgesehene Planziele, aber keine Ziele, die schon bei Planerstellung beherrscht wurden. Die Zahl „Gesamt: x von y“ im Cockpit verwendet dagegen alle aktuellen atomaren Ziele des persönlichen Curriculums und schließt frühere Abschlüsse ein.
 
 | Fach | Tagespensum | Zusätzlicher Planstand |
-|---|---|---|
+| --- | --- | --- |
 | Mathematik | 1 von 3 | 2 Lernziele im Rückstand |
 | Physik | 2 von 2 | 1 Lernziel vorgearbeitet |
 
@@ -254,8 +253,7 @@ Der Lerncoach-Dialog bleibt beim jeweiligen KI-Anbieter. Antworten, Lösungswege
 
 Umgekehrt erhält der Anbieter den benötigten Lernkontext, etwa das aktuelle Ziel, relevante Lernstände und Toolergebnisse. **Die Trennung der ID bedeutet nicht, dass keine Lerndaten zum KI-Anbieter gelangen.** Chat und Kontextverarbeitung unterliegen seinen Bedingungen. Ausdrücklich eingereichtes Lernziel-Feedback ist ein eigener Vorgang und kein automatischer Chat-Import.
 
-**Empfehlung für Bildungsinstitutionen:**
-Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
+**Empfehlung für Bildungsinstitutionen:** Klare Guidelines, welche Daten im Lerncoach-Chat nicht hineingehören (sensibles Privates) und wie Lernende sicher unterstützt werden.
 
 #### Zuordnung in der Institution (lokal)
 
@@ -386,13 +384,9 @@ Der Claude-Einstieg erfolgt über den SkillPilot-Marketplace; die Einrichtung ze
 
 **SkillPilot ist nicht auf eine bestimmte KI festgelegt.** Plugins und eigene Provideradapter verbinden den unabhängigen fachlichen Kern mit dem jeweiligen KI-Chat. Zusätzlich zur Claude-Beta ist **ChatGPT Desktop (Beta)** über den [SkillPilot-Git-Marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace) verfügbar. Installation und Lernstart sind unter Windows bestätigt. Wählen Sie in SkillPilot **ChatGPT Desktop**, bereiten Sie seine Startnachricht vor und senden Sie sie in einem neuen Desktop-Chat. Die [Plugin-Anleitung](https://skillpilot.com/plugins#chatgpt-desktop) erklärt Einrichtung und Updates. Browser und mobile ChatGPT-App sind für diesen Weg noch nicht bestätigt. Weitere Anbindungen setzen geeignete Schnittstellen und zuverlässig unterstützte Funktionen beim jeweiligen Anbieter voraus.
 
-**Initiator:**
-Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
+**Initiator:** Träger ist die **enpasos GmbH**. Wir laden Partner ein, SkillPilot gemeinsam weiterzuentwickeln – fachlich, didaktisch und technisch.
 
-**Mehr Transparenz:**
-[GitHub](https://github.com/enpasos/skillpilot)
-[Dokumentation](https://enpasos.github.io/skillpilot/)
-[Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
+**Mehr Transparenz:** [GitHub](https://github.com/enpasos/skillpilot) · [Dokumentation](https://enpasos.github.io/skillpilot/) · [Graph-Definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 ---
 

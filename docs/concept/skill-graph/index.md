@@ -35,26 +35,26 @@ learning units. This section explains both the graph and the contracts around it
   current implementation status, verification strategy, glossary/symbols, sources, and build reference;
   for Appendix A see [Rule & Milestone Matrix (DE)](../../qa-ci/graph-definition-rule-milestone-matrix.md) ·
   [English (EN)](../../qa-ci/graph-definition-rule-milestone-matrix.en.md).
-- [General Goal System and Migration](general-goal-system-and-migration.md):
+## Architecture, Media, Goal Book & Interchange (Single-Source Compendium, EN & DE)
+
+- **Complete PDF Compendia:**
+  [Skill Graph Architecture, Media, Goal Book & Package Interchange (English PDF)](skillpilot-skill-graph-architecture.en.pdf) ·
+  [Skill-Graph-Architektur, Medien, Lernzielbuch und Paketaustausch (Deutsches PDF)](skillpilot-skill-graph-architecture.de.pdf)
+- [General Goal System and Migration (§1, EN)](general-goal-system-and-migration.md) · [Deutsch (DE)](general-goal-system-and-migration.de.md):
   the separation of goals, programmes, placements, competency axes, and views.
-- [Node Types](node-types.md): understanding, memorisation, and assessment goals.
-- [View Projection and Goal Placement](view-projection-and-goal-placement.md):
-  explicit curriculum structure and scope-specific learner views.
-
-## Sources, materials, and explanation
-
-- [Source And Resource Links](source-and-resource-links.md)
-- [Contentanbindung: Architekturrahmen](content-integration.md)
-- [Human-Readable Source Rationales](human-readable-source-rationales.md)
-- [Atomic Goal Visualizations](atomic-goal-visualizations.md)
-- [Learning-Goal Book and Evidence-Review Pipeline](learning-goal-book-and-evidence-review-pipeline.md)
-- [Lernzielbuch und lokale Zeitplanung für Lehrkräfte](teacher-goal-book-time-planning.md)
-
-## Canonical curricula and interchange
-
-- [Canonical Gymnasium Rollout Policy](canonical-gymnasium-rollout.md)
-- [Dual Curriculum Package Releases](dual-curriculum-package-releases.md)
-- [MEM/FWU Roundtrip Plan](mem-fwu-roundtrip-plan.md)
+- [Node Types (§2, EN)](node-types.md) · [Deutsch (DE)](node-types.de.md):
+  orientation, understanding, memorisation, and assessment goals.
+- [View Projection and Goal Placement (§3, EN)](view-projection-and-goal-placement.md) · [Deutsch (DE)](view-projection-and-goal-placement.de.md):
+  explicit curriculum structure, personal learning scope $L$, and scope-specific learner views.
+- [Source And Resource Links (§4, EN)](source-and-resource-links.md) · [Deutsch (DE)](source-and-resource-links.de.md)
+- [Contentanbindung: Architekturrahmen (§5, DE)](content-integration.md) · [English (EN)](content-integration.en.md)
+- [Human-Readable Source Rationales (§6, EN)](human-readable-source-rationales.md) · [Deutsch (DE)](human-readable-source-rationales.de.md)
+- [Atomic Goal Visualizations (§7, EN)](atomic-goal-visualizations.md) · [Deutsch (DE)](atomic-goal-visualizations.de.md)
+- [Learning-Goal Book and Evidence-Review Pipeline (§8, EN)](learning-goal-book-and-evidence-review-pipeline.md) · [Deutsch (DE)](learning-goal-book-and-evidence-review-pipeline.de.md)
+- [Lernzielbuch und lokale Zeitplanung für Lehrkräfte (DE)](teacher-goal-book-time-planning.md) · [English (EN)](teacher-goal-book-time-planning.en.md)
+- [Canonical Gymnasium Rollout Policy (§9, EN)](canonical-gymnasium-rollout.md) · [Deutsch (DE)](canonical-gymnasium-rollout.de.md)
+- [MEM/FWU Roundtrip Plan (§10, EN)](mem-fwu-roundtrip-plan.md) · [Deutsch (DE)](mem-fwu-roundtrip-plan.de.md)
+- [Duale Curriculum-Pakete (§11, DE)](dual-curriculum-package-releases.md) · [English (EN)](dual-curriculum-package-releases.en.md)
 
 See the [Concept Documentation Index](../index.md) for didactic concepts and
 runtime workflows, and the [Glossary](../glossary.md) for shared terminology.

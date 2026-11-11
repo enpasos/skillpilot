@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-coach-and-runtime-architecture",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-levels-of-personalization",
+    "02-learning-workflow",
+    "03-client-state-sync",
+    "04-import-export-workflow",
+    "05-portable-agent-runtime",
+    "06-provider-neutral-coach-boundary",
+    "07-skillpilot-owned-coach-architecture",
+    "08-openai-mcp-oauth-session",
+    "09-openai-coach-behavioral-integration",
+    "10-openai-plugin-versioning-lifecycle"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/concept/runtime-workflows/skillpilot-coach-and-runtime-architecture.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Konzeptkompendium · Band III",
+      "title": "Personalisierung, Lernlaufzeit und Coach-Architektur",
+      "subtitle": "Vier-Ebenen-Personalisierung, Lern- und Synchronisationsabläufe, portabler\nMCP-Host-Rahmen, ChatClient/Backend-Vertrag und Plugin-Lebenszyklus",
+      "pdfTitle": "SkillPilot — Personalisierung, Lernlaufzeit und Coach-Architektur (DE)",
+      "pdfSubject": "Lernlaufzeit, Personalisierung, MCP-Coach-Kommunikationsvertrag, OAuth/Session-Trennung und Plugin-Lebenszyklus",
+      "pdfKeywords": "SkillPilot, Personalisierung, Lernlaufzeit, MCP, Coach, OAuth, Lernsession, Verified Recall, Plugin-Lifecycle",
+      "runningHeadLeft": "SkillPilot · Laufzeit & Coach-Architektur",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Kompendiums",
+        "body": "Dieser Band vereinigt die zehn normativen Laufzeit- und Coach-Spezifikationen von SkillPilot: die vier Ebenen der Personalisierung, den operativen Lernablauf samt binärem Mastery-Vertrag, Browser-SRS-Synchronisation und signierten Import/Export, die langfristige Architektur für austauschbare MCP-Hosts, den providerneutralen Kommunikationsvertrag zwischen ChatClient und Backend, die Produkt- und Adaptertopologie, die strikte Trennung von OAuth-Appbindung und 24-Stunden-Lernsession, die Golden Journeys der Verhaltensintegration sowie den Versionierungs- und Lebenszyklusplan inklusive der Entscheidung vom 19. Oktober 2026 für das dauerhafte Plugin `skillpilot-coach`."
+      },
+      "partHeaders": {
+        "01-levels-of-personalization": "Ebenen der Personalisierung",
+        "02-learning-workflow": "Operativer Lernablauf",
+        "03-client-state-sync": "Client-State-Synchronisation",
+        "04-import-export-workflow": "Import- & Export-Workflow",
+        "05-portable-agent-runtime": "Austauschbarer MCP-Host",
+        "06-provider-neutral-coach-boundary": "ChatClient/Backend-Vertrag",
+        "07-skillpilot-owned-coach-architecture": "Coach-Produktarchitektur",
+        "08-openai-mcp-oauth-session": "OAuth- & 24h-Session-Bindung",
+        "09-openai-coach-behavioral-integration": "Coach-Verhaltensintegration",
+        "10-openai-plugin-versioning-lifecycle": "Plugin-Versionierung & Lifecycle"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Architekturspezifikation; siehe LICENSING.md).",
+        "Lokale Kandidaten und Dokumentationsstände ersetzen keine reale Host-Abnahme oder Portal-Veröffentlichung."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/concept/runtime-workflows/skillpilot-coach-and-runtime-architecture.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Concept Compendium · Volume III",
+      "title": "Personalization, Learner Runtime, and Coach Architecture",
+      "subtitle": "Four-Level Personalization, Learning and Sync Workflows, Portable MCP-Host\nStrategy, ChatClient/Backend Contract, and Plugin Lifecycle",
+      "pdfTitle": "SkillPilot — Personalization, Learner Runtime, and Coach Architecture (EN)",
+      "pdfSubject": "Personalization levels, learner runtime, MCP coach communication contract, OAuth/session isolation, and plugin lifecycle",
+      "pdfKeywords": "SkillPilot, personalization, learner runtime, MCP, coach, OAuth, learning session, Verified Recall, plugin lifecycle",
+      "runningHeadLeft": "SkillPilot · Runtime & Coach Architecture",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this compendium",
+        "body": "This volume unifies SkillPilot's ten normative runtime and coach specifications: the four levels of personalization, the end-to-end learning workflow and binary mastery contract, browser SRS synchronization and signed import/export, the long-term portable MCP-host strategy, the provider-neutral communication contract between ChatClient and backend, the coach product and adapter topology, strict separation between OAuth app authentication and 24-hour learning sessions, the behavioral integration Golden Journeys, and the OpenAI plugin versioning and lifecycle architecture including the 19 October 2026 decision establishing the permanent `skillpilot-coach` identity."
+      },
+      "partHeaders": {
+        "01-levels-of-personalization": "Levels of Personalization",
+        "02-learning-workflow": "Learning Workflow",
+        "03-client-state-sync": "Client-State Sync",
+        "04-import-export-workflow": "Import/Export Workflow",
+        "05-portable-agent-runtime": "Portable MCP-Host Strategy",
+        "06-provider-neutral-coach-boundary": "ChatClient/Backend Contract",
+        "07-skillpilot-owned-coach-architecture": "Coach Product Topology",
+        "08-openai-mcp-oauth-session": "OAuth & 24h Session Binding",
+        "09-openai-coach-behavioral-integration": "Coach Behavioral Integration",
+        "10-openai-plugin-versioning-lifecycle": "Plugin Versioning & Lifecycle"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical architecture specification; see LICENSING.md).",
+        "Local candidates and specifications never substitute for real-host acceptance or portal publication."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "levels-of-personalization",
+    "learning-workflow",
+    "client-state-sync",
+    "import-export-workflow",
+    "portable-agent-runtime",
+    "provider-neutral-coach-boundary",
+    "skillpilot-owned-coach-architecture",
+    "openai-mcp-oauth-session",
+    "openai-coach-behavioral-integration",
+    "openai-plugin-versioning-lifecycle"
+  ],
+  "webPages": [
+    {
+      "id": "levels-of-personalization",
+      "sources": ["01-levels-of-personalization"],
+      "paths": {
+        "en": "docs/concept/levels-of-personalization.md",
+        "de": "docs/concept/levels-of-personalization.de.md"
+      },
+      "titles": {
+        "en": "Levels of Personalization",
+        "de": "Ebenen der Personalisierung"
+      },
+      "navLabels": {
+        "en": "§1 Personalization",
+        "de": "§1 Personalisierung"
+      }
+    },
+    {
+      "id": "learning-workflow",
+      "sources": ["02-learning-workflow"],
+      "paths": {
+        "en": "docs/concept/runtime-workflows/learning-workflow.md",
+        "de": "docs/concept/runtime-workflows/learning-workflow.de.md"
+      },
+      "titles": {
+        "en": "Learning Workflow",
+        "de": "Operativer Lernablauf"
+      },
+      "navLabels": {
+        "en": "§2 Learning Workflow",
+        "de": "§2 Lernablauf"
+      }
+    },
+    {
+      "id": "client-state-sync",
+      "sources": ["03-client-state-sync"],
+      "paths": {
+        "en": "docs/concept/runtime-workflows/client-state-sync.md",
+        "de": "docs/concept/runtime-workflows/client-state-sync.de.md"
+      },
+      "titles": {
+        "en": "Client-State Sync for Browser SRS Progress",
+        "de": "Client-State-Synchronisation für Browser-SRS-Fortschritt"
+      },
+      "navLabels": {
+        "en": "§3 SRS Sync",
+        "de": "§3 SRS-Sync"
+      }
+    },
+    {
+      "id": "import-export-workflow",
+      "sources": ["04-import-export-workflow"],
+      "paths": {
+        "en": "docs/concept/runtime-workflows/import-export-workflow.md",
+        "de": "docs/concept/runtime-workflows/import-export-workflow.de.md"
+      },
+      "titles": {
+        "en": "Import/Export Workflow",
+        "de": "Import- und Export-Workflow"
+      },
+      "navLabels": {
+        "en": "§4 Import/Export",
+        "de": "§4 Import/Export"
+      }
+    },
+    {
+      "id": "portable-agent-runtime",
+      "sources": ["05-portable-agent-runtime"],
+      "paths": {
+        "de": "docs/concept/portable-agent-runtime-architecture.md",
+        "en": "docs/concept/portable-agent-runtime-architecture.en.md"
+      },
+      "titles": {
+        "de": "Architekturkonzept: SkillPilot mit austauschbarem MCP Host",
+        "en": "Portable Agent Runtime Architecture: Interchangeable MCP Hosts"
+      },
+      "navLabels": {
+        "en": "§5 Portable Host",
+        "de": "§5 Portabler Host"
+      }
+    },
+    {
+      "id": "provider-neutral-coach-boundary",
+      "sources": ["06-provider-neutral-coach-boundary"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/provider-neutral-coach-boundary.md",
+        "en": "docs/concept/runtime-workflows/provider-neutral-coach-boundary.en.md"
+      },
+      "titles": {
+        "de": "Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend",
+        "en": "Communication Contract Between ChatClient and SkillPilot Backend"
+      },
+      "navLabels": {
+        "en": "§6 Coach Contract",
+        "de": "§6 Kommunikationsvertrag"
+      }
+    },
+    {
+      "id": "skillpilot-owned-coach-architecture",
+      "sources": ["07-skillpilot-owned-coach-architecture"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.md",
+        "en": "docs/concept/runtime-workflows/skillpilot-owned-coach-architecture.en.md"
+      },
+      "titles": {
+        "de": "SkillPilot-Lerncoach: Produkt- und Providerarchitektur",
+        "en": "SkillPilot Learning Coach: Product and Provider Architecture"
+      },
+      "navLabels": {
+        "en": "§7 Coach Topology",
+        "de": "§7 Coach-Topologie"
+      }
+    },
+    {
+      "id": "openai-mcp-oauth-session",
+      "sources": ["08-openai-mcp-oauth-session"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md",
+        "en": "docs/concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.en.md"
+      },
+      "titles": {
+        "de": "OpenAI-MCP-App: OAuth- und 24h-Lernsession-Bindung",
+        "en": "OpenAI MCP App: OAuth and 24-Hour Learning-Session Binding"
+      },
+      "navLabels": {
+        "en": "§8 OAuth & Session",
+        "de": "§8 OAuth & Session"
+      }
+    },
+    {
+      "id": "openai-coach-behavioral-integration",
+      "sources": ["09-openai-coach-behavioral-integration"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md",
+        "en": "docs/concept/runtime-workflows/openai-mcp-coach-behavioral-integration.en.md"
+      },
+      "titles": {
+        "de": "Verhaltensintegration des MCP-Lerncoaches",
+        "en": "Behavioral Integration of the MCP Learning Coach"
+      },
+      "navLabels": {
+        "en": "§9 Coach Behavior",
+        "de": "§9 Verhaltensintegration"
+      }
+    },
+    {
+      "id": "openai-plugin-versioning-lifecycle",
+      "sources": ["10-openai-plugin-versioning-lifecycle"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md",
+        "en": "docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.en.md"
+      },
+      "titles": {
+        "de": "SkillPilot: Versionierungs- und Lebenszyklusplan für das OpenAI-Plugin",
+        "en": "SkillPilot: Versioning and Lifecycle Architecture for the OpenAI Plugin"
+      },
+      "navLabels": {
+        "en": "§10 Plugin Lifecycle",
+        "de": "§10 Plugin-Lifecycle"
+      }
+    }
+  ]
+}

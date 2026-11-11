@@ -1,0 +1,56 @@
+## MEM/FWU Core Roundtrip Pipeline {#sec:pp-mem-fwu-roundtrip}
+
+This pipeline proves that a SkillPilot publication package can be transformed into a Core-first RDF/OWL bundle grounded in the FWU Lehrplan-Ontologie (`tmp/lehrplan-ontologie`, `src/ontology/components/lehrplan-core.owl`, IRI `https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl`) and reconstructed losslessly **without reading the original JSON or repository checkout** ([Dual Release Contracts](repo:docs/qa-ci/dual-curriculum-release-contracts.md), [Human Review Gates](repo:docs/qa-ci/curriculum-package-human-review-gates.md)).
+
+### Two Coexisting Lanes (`DPK-007a`/`008c`/`008d` vs. Slim Pilot) {#sec:pp-roundtrip-lanes}
+
+1. **Production `fwu-owl-v1` release conformance (`DPK-008a`–`008d`):** Consumes the frozen `DPK-007a` JSON artifact (`skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`, `1,738,161,217` bytes, SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`), builds the byte-identical 2.36-GB FWU-OWL carrier (`DPK-008c`: `2,362,455,128` bytes, SHA-256 `abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94`, manifest `29f308424d1aeba9095f0e800253acadcdfaca0562dfa1fc37741c77c76023b3`, `819` entries, `757` image sidecars, `824,452` triples across 8 RDF segments, 18/18 gates passed, placement key `goalId@unitId@index`), and reverse-compiles it in `DPK-008d` under isolated `bubblewrap --clearenv` (`python -I -S`, unshared network, host Rawtrace ELF audit) into two byte-identical JSON ZIPs (`1,737,571,471` bytes, SHA-256 `7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195`, manifest `8d7970435431ff78743d0bf413a54bbebee009bbaafe35f1283ebcb89b4f2ff0`, 111/111 normal-form oracles; the public equivalence verdict follows in `DPK-009`).
+2. **Legacy slim pilot (`tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip`):** Fast regression lane under `tmp/roundtrip/mem-fwu/.../slim/` (`declarations.nt` with exactly `526` declaration triples, `landscape.nt`, `assets.nt`, `sources.nt`, `mappings.nt`, `views.nt`, `cards.nt`, derived `bundle.nt`, `catalog-v001.xml`, `skillpilot-mem-fwu-profile.ttl`, `manifest.json`). Because the legacy comparator drops `null` fields and compares several arrays as sets, its reports remain regression evidence (`not-ready-legacy`) and never serve as the public equivalence verdict.
+
+### Core-First Mapping Rules and Image Sidecars {#sec:pp-roundtrip-mapping}
+
+:::table{cols="4.2cm,4.4cm,X",longtable=true}
+| SkillPilot concept | Primary FWU Core representation | Application extension / reconstruction anchor |
+| --- | --- | --- |
+| Curricular atomic goal (`curricularAtomic`) | `LP_0000336` (*Fachbezogene Kompetenzspezifikation*; parentless atoms attach to one deterministic fallback `LP_0000349` area) | `sp:LearningGoal` + `sp:AtomicGoal` (fallback area ignored during reconstruction) |
+| Curricular cluster (`curricularArea`) | `LP_0000349` (*CE-Bereich*) | `sp:LearningGoal` + `sp:ClusterGoal` |
+| Process axes `K1`–`K6` / guiding ideas `L1`–`L5` | `27` `LP_0030265` and `5` `LP_0000268` resources; linked via `LP_0030065` (`LP_0030071`/`LP_0030072`) | `sp:referenceRole` separates authored `competencyRefs` from derived `dimensionTags`; `sp:dimensionTagsJson` ensures lossless recovery |
+| Program year / stage | `LP_0000026` (`LP_2000005`–`LP_2000010`), `LP_0000047` (Sek I/II) | `sp:ProgramUnit` & placement metadata (`goalId@unitId@index`) |
+| Curricular `contains` | `BFO_0000051` (*hat Teil*, transitive) | Direct `sp:containsGoal` prevents BFO transitivity from creating false direct children |
+| Curricular vs. runtime `requires` | Reified `LP_0000554` (*Didaktische Voraussetzung*, from `FWU-DE/lehrplan-ontologie#9`) | `sp:didacticRequires` for practice, assessment, memory, and orientation nodes |
+| Title / description / short key | `LP_0030056` / `LP_0030051` / `LP_0030057` $\to$ `LP_0000344` | `rdfs:label`, `dcterms:description`, `sp:shortKey` |
+| Curricular vs. runtime goal image | `LP_0030065` to `schema:ImageObject` ordered by `LP_0000460` | `sp:GoalVisualizationReference` for runtime goals; hashed binary sidecars (never Base64 in `.nt`; caps: `64 MiB`/image, `8 GiB` total) |
+| Sources & mappings | `LP_0000438` (*Lehrplan*), `LP_0000261` (*Curriculares Element*), `LP_0030065` | `sp:OfficialSourceDocument` for supplemental docs; `exact`/`partial` predicate; quality evidence stays strictly in `sp:*` |
+:::
+
+Compact JSON metadata uses `xsd:string` (avoiding custom datatypes that break OWL 2 DL; `sp:fieldState` preserves empty collections). Whereas legacy bundles quarantined OCR control characters in `sp:quarantinedRecordJson`, the `DPK-004` release compiler rejects C0 controls and unpaired UTF-16 surrogates outright. The pinned Core file (OWL Functional Syntax, `text/owl-functional`) plus application ontology, SHACL shapes (free of SPARQL/JS), and XML catalog under `contracts/curriculum-package/v1/ontology/` act as external trust roots.
+
+### Production and Pilot Commands {#sec:pp-roundtrip-commands}
+
+Pinned offline toolchain (`jsonschema 4.26.0`, `pySHACL 0.30.1`, `RDFLib 7.6.0`, `owlrl 7.6.2`, `ROBOT 1.9.10`, `HermiT 1.4.5.456`, Amazon Corretto), self-tests, and heavyweight 2.36-GB production wrappers from the repository root:
+
+```bash
+python3 -m pip install -r scripts/curriculum_fwu_owl_validation_requirements.txt
+bash scripts/provision_pinned_robot.sh
+python3 -B scripts/check_curriculum_fwu_owl_validation_tools.py \
+  --report tmp/curriculum-release-model/fwu-owl-validation/tools-report.json
+python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py \
+  --self-test
+bash scripts/run_curriculum_fwu_owl_package_conformance.sh
+bash scripts/run_curriculum_fwu_owl_reverse_conformance.sh
+```
+
+Running the fast legacy slim pilot from `app/` (semantic roundtrip, OWL 2 DL/HermiT reasoning, and optional technical line-carrier roundtrip):
+
+```bash
+cd app
+npm run export:subject-package -- --subject Mathematik --version 0.1.0
+npm run export:subject-packages:validate -- \
+  --zip ../tmp/exports/skillpilot-de-gymnasium-mathematik-v0.1.0.zip
+npm run roundtrip:mem-fwu:semantic
+ROBOT_JAR=/abs/path/to/robot.jar npm run roundtrip:mem-fwu:owl:reason
+npm run roundtrip:mem-fwu
+```

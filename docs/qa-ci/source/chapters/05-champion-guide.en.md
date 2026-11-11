@@ -1,0 +1,25 @@
+## SkillPilot Curriculum Champions {#sec:qa-champion-guide}
+
+:::note{title="Role and companion concept"}
+Operational guide for **SkillPilot Curriculum Champions** taking ownership of a curriculum's practical viability and didactic quality (an unlimited number of Champions may share a curriculum across content, didactics, community, and tooling). Normative maturity and trial derivation rules live in @ref{sec:qa-quality-human-trial}.
+:::
+
+### Responsibilities, Registration, and Practical Trial ("Your human QA") {#sec:qa-champion-trial}
+
+**Champion responsibilities:** (1) make the curriculum practically effective in real teaching/learning settings, (2) step into the learner role and work through required learning and assessment stations, (3) drive improvements via GitHub issues and pull requests (`https://github.com/enpasos/skillpilot`), (4) recruit learners and teachers to benefit from it, and (5) engage institutional curriculum owners such as ministries or universities.
+
+- **Registration on the "Curricula" page:** Requires a **SkillPilot ID** (shown publicly only in masked form: first 5 characters + `...`) and **GitHub OAuth** ownership verification (GitHub ID shown publicly).
+- **"Your human QA" entry point:** Accessible anytime via **Connect with GitHub** (even when new registration is closed; expired logins require signing in again rather than re-registering, and load errors surface an explicit retry action rather than hiding controls).
+- **Start signal & scope binding:** Once core QA reaches **`M5`**, existing learning progress (>= 1 completed goal inside the active role's personal curriculum/topic scope) automatically counts as **Human QA in progress** regardless of registration date; with zero progress, **Begin trial** remains available. An explicit trial action binds that scope so later personal selection edits do not silently rewrite it; paused or ended roles never self-reactivate from existing progress.
+- **Practical evidence vs. raw mastery:** Imported or manually raised mastery never qualifies for **Human-tested**; pre-existing completions count only when provenance and current content bindings match. **Human-tested** requires **one** Champion's complete practical evidence across the advertised scope, zero known unresolved blocking findings (including non-ledger defects known to the Champion), and explicit final confirmation (`M7` is neither a prerequisite for starting human trials nor proof that one occurred).
+
+### Resignation Flow and Structure of the "Curricula" Page {#sec:qa-champion-page}
+
+**Stop Championship (resignation) process:** (1) click *Stop Championship*, (2) re-verify ownership via **GitHub OAuth**, (3) select one or more active Champion assignments, and (4) confirm deregistration — unfinished trials cease to be active while completed practical evidence and its history remain intact.
+
+The **"Curricula" page** comprises four sections:
+
+1. **Visual introduction:** Four-panel *Nano Banana Pro* cartoon explaining the Curriculum Champion concept.
+2. **Registration action:** **"Connect with GitHub"** button initiating OAuth verification and role signup.
+3. **Curriculum directory:** Full catalog of available curricula with total atomic goals, aggregated mastered achievements, QA milestone (`M0`–`M7`), and human-trial badge.
+4. **Champion leaderboard:** Per-curriculum roster displaying public GitHub ID, masked SkillPilot ID, and GitHub Issue / Pull Request contribution counts.

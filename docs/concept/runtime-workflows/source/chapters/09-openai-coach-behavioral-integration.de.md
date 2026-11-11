@@ -1,0 +1,115 @@
+## Verhaltensintegration des MCP-Lerncoaches {#sec:openai-coach-behavior}
+
+:::note{title="Auftrag und Abgrenzung"}
+Lebendes, normatives Leitdokument für das **zusammenhängende sichtbare Verhalten** und die End-to-End-Abnahme des mehrsprachigen MCP-Lerncoaches: Aus Backend, Skill-Graph, Lernzustand, MCP-Vertrag und Provider-Modell wieder einen verlässlichen, für Lernende natürlichen Coach zu bilden. OAuth, MCP-Schema und vorhandene Tools allein beweisen kein Endnutzerverhalten — maßgeblich sind vollständige Nutzerreise, tatsächlicher Tooltrace, kanonischer Backendzustand und sichtbare Antwort zusammen. Einzelfehler führen zu allgemeinen Verbesserungen statt curricularen Sonderregeln. Ergänzende Verträge: @ref{sec:provider-neutral-coach-boundary}, @ref{sec:openai-mcp-oauth-session}, @ref{sec:skillpilot-owned-coach}, [OpenAI-MCP-Clientbindung](repo:docs/security/openai-mcp-client-binding.md) und [Deployment-Runbook](repo:docs/deploy/openai-mcp-coach-v1.md).
+:::
+
+### Erfolgsbild und nicht verhandelbare Invarianten {#sec:coach-behavior-invariants}
+
+Aus Sicht der lernenden Person soll der Einstieg ohne Kenntnis von OAuth, MCP, Toolargumenten oder Sessiontokens funktionieren: (1) im First-Party-WebGUI auf **Lernen starten** klicken, (2) in einem neuen Chat mit eingetragener Startnachricht landen, (3) den Lernwunsch natürlich formulieren, (4) direkt im im WebGUI konfigurierten Level-2-Kontext weiterlernen (der Chat fragt oder ändert Level-2-Werte wie Curriculum, Bundesland, Dauer-/Jahrgangsmodell, Stufe, Fächer oder Kursprofile nie), (5) nur bei echter fachlicher oder Level-3-Mehrdeutigkeit gefragt werden, (6) am richtigen Atomziel im richtigen Modus lernen und (7) nach Unterbrechungen verlässlich fortsetzen.
+
+Unveränderliche Invarianten über alle Provider- und Modellwechsel hinweg:
+
+- **Backend und Skill-Graph:** Der jüngste erfolgreich geladene Backendzustand ist einzige Autorität; keine erfundenen Curricula, Ziele, Optionen, Fortschrittswerte oder Mutationen. Mastery hängt an der global eindeutigen Ziel-UUID über alle Ansichten hinweg. `requires` (gerichtet; Mastery eines abhängigen Ziels impliziert niemals rückwirkend Mastery offener Voraussetzungen) regelt Voraussetzungen, `contains` die Komposition; Motivationsziele sind nur Voraussetzung, wenn der Skill-Graph dies explizit modelliert. Frontier und Empfehlungen werden erst nach bestätigtem Lernumfang und Fokus bestimmt.
+- **Appbindung und Lernsession:** OAuth authentisiert die App; jedes bestätigte **Lernen starten** erzeugt unabhängig davon eine frische, absolut 24 Stunden gültige `learningSessionId` (ohne Widerruf älterer Sessions; keine Ableitung aus OAuth oder Altchats). Jede Operation und jeder exakte idempotente Write-Replay benötigt mindestens `PT1H` Restlaufzeit (exakt `PT1H` ist zulässig), verfügbare gepinnte Workflow-/Curriculumversionen und beim Replay unveränderte kanonische Learner-Revision.
+- **Nutzerkommunikation:** Keine Tool-, API-, JSON- oder Feldnamen in normalen Antworten; keine permanenten SkillPilot-IDs, OAuth-Tokens oder Secrets im Chat; keine Erfolgsaussage vor bestätigtem Backend-Receipt; im Prüfungsmodus keinerlei Hinweise oder Rückfragen.
+
+### Allgemeiner 10-stufiger Entscheidungszyklus, Scope vs. Fokus und Fehlerbehandlung {#sec:coach-behavior-cycle}
+
+Bei Einstieg, Wiederaufnahme, Unsicherheit oder möglicher Kompaktierung folgt der Coach einem zustandsgebundenen **10-Schritte-Zyklus**:
+
+1. **Lernsession übernehmen:** ausschließlich aus der aktuellen SkillPilot-Startnachricht.
+2. **Frischen Zustand laden:** zu Beginn jedes Learner-Turns im aktuellen Assistant-Turn Kontext laden (nie aus Gesprächserinnerung rekonstruieren; nach erfolgreicher Mutation ist deren vollständiger Nachfolgerzustand für den Rest desselben Turns autoritativ ohne redundanten Zusatzread).
+3. **Bestätigten Kontext bilden:** strikte Trennung zwischen bestätigtem Zustand, frischen Backendoptionen und bloßer Nutzerabsicht.
+4. **Zulässige Nutzerabsicht auswerten:** nur fachliche Arbeit und explizite Level-3-Änderungen (Fokus/aktives Ziel), niemals Level 2.
+5. **Eindeutige nächste Option semantisch zuordnen:** nur gegen Optionen des jüngsten Zustands nach Bedeutung, nicht nach Wortgleichheit oder Listenposition.
+6. **Genau eine erlaubte Mutation ausführen:** keine Vorwegnahme späterer Schritte, keine konstruierten IDs.
+7. **Frischen Nachfolgerzustand übernehmen:** direkt aus dem Mutationsresultat desselben Assistant-Turns.
+8. **Absicht erneut auf den neuen Zustand anwenden:** solange genau ein Level-3-/Fachschritt eindeutig ist, ohne unnötige Zwischenfrage fortfahren.
+9. **Nur echte Restmehrdeutigkeit erfragen:** zusammengehörige offene Angaben gebündelt mit knapp genanntem bestätigtem Kontext erfragen.
+10. **Erst danach fachlich arbeiten:** Frontier, Zielwahl, Coaching, Recall oder Prüfung erst bei bestätigtem Lernumfang und Fokus.
+
+**Scope vs. Fokus:** Der Coach unterscheidet Einstiegskontext (Curriculum/Paket), Personalisierung (Bundesland/Gültigkeit), Lernumfang (relevante Zielteilmenge), Fokus (aktueller Lernkorridor für Frontier/Optionen) und aktives Atomziel. Eine Angabe wie „Mathematik LK“ setzt im WebGUI nur Fach und fachbezogenes Kursprofil (z. B. Mathematik LK neben Physik GK), bestimmt aber weder Stufe (Sek I vs. Sek II) noch G8/G9 oder Phase; der Coach darf keinen Fokus auf der Gesamtwurzel belassen und daraus unbestätigte Stufen anbieten. Bei einer Fokusweitung veröffentlicht das Backend nur den learner-facing Vorfahrenpfad mit noch offenen `target`-Zielen (nächstgelegener Vorfahr zuerst); eine automatische Weitungsempfehlung erfolgt nur nach tatsächlichem Abschluss des aktuellen Fokus (leere Frontier allein genügt nicht) und wird erst nach Lernendenzustimmung gesetzt.
+
+**Begrenzte Fehlerbehandlung:** Bei Konflikt genau einmal frisch laden und Absicht neu prüfen; bei `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED` oder `SESSION_VERSION_UNAVAILABLE` ausschließlich unveränderte `instruction` (bzw. lokalisierten Eintrag aus `instructions`) und `startUrl` (falls noch nicht enthalten) ohne Fachantwort und ohne OAuth-Neuverbindung ausgeben; bei Auth-, Schema-, Speicher- oder wiederholtem Konfliktfehler transparent stoppen ohne erfundenen Ersatzpfad.
+
+### Wirksame Laufzeitorte und verbindliche Verhaltensregeln {#sec:coach-behavior-policies}
+
+Jede Regel besitzt genau einen primären Ort; technische Zähl-, Reihenfolge-, Vollständigkeits- und Idempotenzregeln werden durch atomare Backendoperationen statt mehr Prompttext gesichert (eingefrorene Custom-GPT- und Visible-Session-Pakete bleiben reine historische Rollback-Baselines):
+
+:::table{cols="5.0cm,X"}
+| Regelart | Primärer Ort |
+| --- | --- |
+| Sprache vs. technische Orchestrierung | Kommunikationsvertrag (@ref{sec:provider-neutral-coach-boundary}) |
+| Sichtbares didaktisches Coach-Verhalten | Dieses Kapitel (@ref{sec:openai-coach-behavior}) |
+| Wiederholbares Modellverhalten | Ausgelieferte `SKILL.md` und `references/coaching-policy.md` (`ai/openai plugin/skillpilot-coach/`) |
+| Werkzeugübergreifende Invariante | Kurze `SERVER_INSTRUCTIONS` in `OpenAiDeV1McpContractAdapter` |
+| Auswahl und Bedingung eines Werkzeugs | Toolname, Beschreibung und Schema im V1-Adapter |
+| Zustandsabhängige Einzelentscheidung | Genau ein frisches Toolergebnis aus `OpenAiDeCoachContextProjector` bzw. Workflowadapter |
+| Fachliche & sicherheitsrelevante Garantie | Domainservice, Guard, Transaktion und automatisierter Test |
+| Reales Zusammenspiel | Golden Journey, Tooltrace, Backendzustand und sichtbare Antwort |
+:::
+
+:::table{cols="3.9cm,X" longtable=true}
+| Policy-ID | Verbindliche Regel |
+| --- | --- |
+| `COACH-STATE-001` | Der frisch geladene Backendzustand ist die einzige Zustandsautorität. |
+| `COACH-SESSION-001` | Die aktuelle Lernsession wird unverändert für jeden fachlichen Aufruf verwendet und nie aus OAuth oder älteren Chats abgeleitet. |
+| `COACH-SESSION-002` | Operationen und gespeicherte Write-Replays benötigen mindestens `PT1H` Restlaufzeit (exakt `PT1H` gültig), verfügbare gepinnte Workflow-/Curriculumversionen und beim Replay unveränderte kanonische Learner-Revision ohne erneute Mutation. |
+| `COACH-SESSION-003` | Sessionfehler ergeben ausschließlich die unveränderte Serverinstruktion und, falls noch nicht enthalten, die exakte `startUrl`; keine Fachantwort oder OAuth-Neuverbindung, Fortsetzung über WebGUI-Start und neuen Chat. |
+| `COACH-BOOTSTRAP-001` | Ohne aktuelle vorbereitete Session nennt der Coach nur `https://skillpilot.com/` und den WebGUI-Startweg und ruft kein SkillPilot-Tool auf. |
+| `COACH-INTENT-001` | Natürliche mehrteilige Absichten gelten unabhängig von Reihenfolge und Wortlaut fort. |
+| `COACH-CONTEXT-001` | Vor offenen Fragen wird der bereits bestätigte fachliche Kontext knapp genannt. |
+| `COACH-SCOPE-001` | Level-2-Lernumfang und Profile werden ausschließlich im WebGUI aufgelöst; der Coach verwendet sie nur frisch bestätigt. |
+| `COACH-FOCUS-001` | Zieloptionen stammen ausschließlich aus dem bestätigten aktuellen Fokus; frühere Stufen dürfen nicht hineinlecken. |
+| `COACH-MUTATION-001` | Pro frischem Zustand wird nur eine aktuell erlaubte Option mutiert; ihr vollständiger Nachfolgerzustand ist für den Rest desselben Assistant-Turns autoritativ. |
+| `COACH-QUESTION-001` | Der Coach fragt nur echte Restmehrdeutigkeiten und fasst zusammengehörige offene Angaben möglichst zusammen. |
+| `COACH-GOAL-001` | Unterricht findet an genau einem bestätigten atomischen Ziel statt. |
+| `COACH-MASTERY-001` | Mastery folgt der global eindeutigen Lernziel-ID und wird nur nach ausreichender Evidenz gespeichert. |
+| `COACH-RECALL-001` | Das Backend besitzt IDs, Kartenzahl, Reihenfolge, Vollständigkeit, Status, Idempotenz und Fortsetzung eines Recall-Batches; das Modell zeigt den gesamten Batch, wartet auf alle Antworten, lädt alle Sollantworten genau einmal, vergleicht fachlich-semantisch und speichert alle Bewertungen genau einmal atomar ohne Kartenschleifen. |
+| `COACH-EXAM-001` | Prüfung bedeutet wortgetreue Aufgabe, keine Hilfen oder Rückfragen und faire kriteriumsbezogene Bewertung gleichwertiger Wege. |
+| `COACH-RESOURCE-001` | Fachliche Ressourcen stammen nur aus dem frischen Zustand: frisch autorisierte Zielvisualisierung genau einmal unmittelbar über ihren gebundenen Renderer, normale Kartenpraxis über ihre gebundene Kartenkomponente, Cockpit-Fallback nur in den dokumentierten Fällen. |
+| `COACH-ERROR-001` | Fehlerbehandlung ist begrenzt, wahrheitsgemäß und erzeugt keinen erfundenen Ersatzablauf. |
+| `COACH-PRIVACY-001` | Technische Identitäten, Geheimnisse und interne IDs bleiben außerhalb sichtbarer Coachantworten. |
+:::
+
+**10 abstrakte Fehlerklassen** für ursachenbezogene Fixes statt Einzelfall-Patches: (1) Session/Handoff, (2) Zustandsprojektion, (3) Intentverständnis, (4) Scope-Auflösung, (5) Fokussetzung, (6) Toolverständlichkeit, (7) Orchestrierung, (8) Kontextverlust, (9) Didaktik/Modus und (10) Nutzerkommunikation.
+
+### Golden Journeys (`GJ-01` bis `GJ-11`) {#sec:coach-behavior-golden-journeys}
+
+- **`GJ-01` – Frischer Start:** Ein Klick auf **Lernen starten** im WebGUI erzeugt eine neue 24h-Lernsession, öffnet einen neuen Chat mit vorbereiteter Nachricht und lädt im ersten Assistant-Turn den Kontext vor jeder Fachantwort (kein Zweitklick, kein manuelles Kopieren, keine generische Lehrplanantwort).
+- **`GJ-02` – Level-2-Änderungswunsch im Chat:** Bei Eingaben wie „Hessen, Mathe LK“ erfolgt keine chatseitige Curriculum-/Personalisierungsmutation und keine Rückfrage zur Level-2-Einrichtung; knapper Verweis auf den serverseitig gelieferten WebGUI-Weg und frischer Start nach Konfiguration.
+- **`GJ-02a` – Mehrere fachbezogene Kursprofile:** Sind im WebGUI z. B. Mathematik LK und Physik GK gespeichert, liest der Coach beide fachbezogenen Profile unverändert aus dem frischen Kontext, ohne ein globales Profil anzunehmen oder die Stufe aus LK/GK abzuleiten.
+- **`GJ-03` – Orientierung und Fokus:** Bei neu bestätigtem aktivem Ziel beginnt die erste inhaltliche Antwort mit dem exakten lokalisierten `activeGoal.title` (nicht der Beschreibung); Zieloptionen stammen ausschließlich aus dem bestätigten Fokusunterbaum ohne Hineinlecken früherer Stufen oder der Gesamtwurzel.
+- **`GJ-03a` – Aktiver Motivationsdialog:** Erster Zug: exakter Zieltitel, 2–4 altersgerechte Möglichkeiten, positive Perspektiven und niedrigschwellige persönliche Interessenfrage ohne Richtig/Falsch. Zweiter Zug auf die gewählte Option (z. B. „Smartphone und KI“): konkrete Verknüpfung mit 1–2 Dingen zum Verstehen/Gestalten und persönliche Anschlussfrage bei weiterhin aktivem Orientierungsziel. Abschluss nach Antwort (oder ausdrücklichem Weiterlernwunsch): positive Zusammenfassung, Frage nach Rückfragen/Abschluss, Speicherung erst nach Zustimmung (technischer Abschlussmarker ohne Fachkompetenzbescheinigung; keine Wissensdiagnose oder Feynman-Prüfung).
+- **`GJ-04` – Normaler Coachingzyklus:** Ein aktives Atomziel, Vorwissensdiagnose, kleine Hinweise, eigenständige Arbeit, Transfer und faire Rekonstruktion alternativer Wege. Vor der Rückmeldung entscheidet der Coach anhand unabhängiger Evidenz zwischen Aufgaben- und Zielabschluss (eine gelöste Aufgabe allein beweist nicht das ganze Ziel; bei ausreichender Zielevidenz sofortige Mastery-Speicherung vor Erfolgsmeldung, auch vor einer Pause; Zustimmung zum Weitergehen ist keine Speicherbedingung, aber Voraussetzung für nächste Aufgabe samt Bild). Unterbrechungen setzen denselben bestätigten Schritt fort.
+- **`GJ-05` – Verified Recall:** Vorbereiteter Batch (geprüft mit 8, 5 und 10 Karten): genau ein Aufruf von `start_skillpilot_verified_recall` ohne modellseitige `goalId` oder `batchSize`; Anzeige exakt aller gelieferten Fragen in Originalreihenfolge; Abwarten aller Antworten; genau ein `get_skillpilot_verified_recall_answers`; semantische Bewertung äquivalenter Formulierungen, Gesamtrückmeldung und Abwarten der Zustimmung nach der Frage nach Rückfragen oder Abschluss; danach genau ein atomarer Write `record_skillpilot_verified_recall_results` mit je einer Bewertung pro Karte — ohne per-card Toolschleife, ohne manuelle Mastery und ohne weiteren Context-Abruf im selben Lernendenzug. Will die lernende Person weitergehen, setzt der Coach die eine bestätigte Backend-`continuation` unverändert um (bei Pause kein nächster Inhalt). Aktiviert der terminale Write ein Folgeziel mit freigegebenem Bild, lautet die Aktion `renderGoalVisualizationThenTeachActiveGoal`: Der Coach führt den vollständig servergefüllten `continuation.toolCall` für `render_skillpilot_goal_visualization` mit `goalId` und `expectedStateVersion` unverändert genau einmal nach Zustimmung zum Weitergehen aus, ergänzt nur die bereits aktuelle unveränderte `learningSessionId` gemäß Session-Gate und beginnt danach das aktive Ziel. Das Receipt spiegelt die Session-Capability nicht. Der Coach leitet die bildspezifischen Argumente nicht selbst aus dem Successor-Context ab, lädt keinen neuen Context und versucht es bei Renderer- oder Hostfehlern nicht erneut, sondern setzt den vollständigen Textunterricht fort. Verboten sind Teilmengen (wie 5 von 8 Fragen), eigene ID-/Reihenfolgewahl, einen parallelen `presentationAction` zu verwenden oder die Recall-Mutation selbst an die Bild-UI zu binden.
+- **`GJ-06` – Prüfung:** Wortgetreue Aufgabe ohne Hilfen/Nachfragen, Schwelle und Bewertungsraster erst nach vollständiger Abgabe, geforderte Zeichnungen als echte Zeichnungen, kriteriumsbezogene Bewertung inklusive gleichwertiger Wege. Bestandener Versuch speichert Mastery sofort mit freigegebener Evaluation-Capability und Punktzahl (auch bei Pausenwunsch) vor der Erfolgsmeldung; nicht bestandene Versuche schreiben nichts und bleiben wiederholbar. Danach Teilpunkte, Gesamtergebnis, Feedback und Frage nach Rückfragen/Weitergehen; fehlende Pflichtabbildung pausiert dieselbe Prüfung ohne erfundene Bilddaten.
+- **`GJ-07` – Langdialog und Rehydration:** Nach 10–20 Zügen, Nebenthemen, Reload oder Kontextdruck lädt die gültige Session denselben Backendzustand frisch, ohne alte Optionen zu mutieren.
+- **`GJ-08` – Aktionshorizont, Ablauf und Erneuerung:** Unterhalb `PT1H` (exakt `PT1H` bleibt zulässig), nach Ablauf/Widerruf oder bei fehlender gepinnter Revision erscheint ausschließlich die unveränderte Serverinstruktion (ggf. mit `startUrl`) ohne Fachantwort, ID-Abfrage oder OAuth-Neuverbindung; WebGUI-Start öffnet frische Session und neuen Chat.
+- **`GJ-09` – Parallele Lernende und Chats:** Verschiedene UI-Starts und SkillPilot-IDs bleiben strikt isoliert.
+- **`GJ-10` – Andere Curricula:** Derselbe Entscheidungszyklus trägt über Schulformen, Länder und Fächer ohne curricularen Sondercode.
+- **`GJ-11` – Gebundene UI-Aktionen und Cockpit-Grenze:** Jedes frisch autorisierte `(goalId, stateVersion)`-Paar triggert genau einmal unmittelbar den Zielbild-Renderer; normale Kartenpraxis startet die gebundene Kartenkomponente; Cockpit-Fallback erscheint nur bei echtem Komponentenfehler, fehlender Berechtigung, explizitem Nutzerwunsch oder Serveranweisung.
+
+### Testpyramide, Qualitätsziele, Testprotokoll und Definition of Done {#sec:coach-behavior-acceptance}
+
+Die **5-stufige Testpyramide** kombiniert (1) deterministische Vertragstests, (2) LLM-freie Zustands-/Workflowtests, (3) MCP-Protokolltests, (4) Model-in-the-Loop-Goldensuite mit mindestens 3 Paraphrasen je Kernabsicht und aufgezeichneter Toolspur sowie (5) Langdialog-, Reload- und Kompaktierungstests. Serververifizierbare Toolspuren und Vorher/Nachher-Zustände schlagen Modellselbstauskünfte.
+
+- **Harte Gates:** 100 % korrekter Backendendzustand sowie Scope/Fokus in allen freigegebenen Golden Journeys, null unerlaubte Mutationen, null Session-/Lernendenvermischung, null Geheimnis-/Identitätslecks, null Regression der globalen Ziel-/Mastery-Semantik.
+- **Qualitätsziele:** >= 3 semantisch verschiedene Formulierungen je Kernabsicht, >= 95 % erfolgreiche reale Dialogläufe je Szenario, <= 1 nachweislich unnötige Rückfrage, null wiederholte bereits beantwortete Fragen, null sichtbare API-Sprache, konstante Qualität über kurze und lange Dialoge.
+
+:::table{cols="4.8cm,X"}
+| Protokollfeld | Inhalt bei manueller Erprobung |
+| --- | --- |
+| Test-ID & Golden Journey | z. B. `GJ-02 / INTENT-003` |
+| Datum, Umgebung & Versionen | Umgebung (lokal/Staging/Prod) + Git-SHA, Server-Build, Paket- und Vertragsversion |
+| Lernfixture & Startart | Curriculum, pseudonymisierte SkillPilot-ID, Vorzustand, UI-Start / Reload / Ablauf |
+| Wortgetreue Nutzereingaben | Exakte Eingaben in Originalreihenfolge |
+| Erwartete vs. reale Spur | Erwartete Teilordnung + verbotene Calls vs. Telemetrie-/Serverlog-Spur |
+| Backendzustand & Sichtbarkeit | Vorher/Nachher-Zustand + fachlich-kommunikative Rubrikbewertung |
+| Fehlerklasse, Policy & Fix | Betroffene Klasse/Policy-IDs, allgemeiner Fix (kein Einzelfallpatch) und Retest-Status |
+:::
+
+**Ausdrückliche Nicht-Ziele:** keine Verbiegung der globalen Lernziel-/Mastery-Semantik für einzelne Dialoge, keine Hessen-/Mathe-/LK-Sonderlogik, keine 1:1-Kopie alter HTTP-Routen, keine Steuerung über die öffentliche Listing-Beschreibung, kein Vertrauen auf Modellmemory und keine Behauptung der Endnutzerreife allein aus grünen Schematests.
+
+**Definition of Done (10 Kriterien):** (1) harte Gates für alle Golden Journeys erfüllt, (2) geschlossene Traceability je Policy-ID, (3) mehrere Curricula und natürliche Mehrfachangaben ohne Sondercode grün, (4) Scope und Fokus vor jeder Zielausgabe korrekt, (5) Unterricht, Mastery, Recall und Prüfung fachlich abgenommen, (6) Langdialog/Reload/Kompaktierung/Parallelchats verlust- und vermischungsfrei, (7) Ein-Klick-Einstieg ohne manuelle Technikwerte, (8) sichtbare Kommunikation erfüllt Qualitätsziele, (9) CI, reale Providertests, Telemetrie und Rollback grün sowie (10) früherer Custom-GPT-Coach nur noch historische Referenz.

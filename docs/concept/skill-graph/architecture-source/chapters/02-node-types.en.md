@@ -1,0 +1,36 @@
+## Node Types {#sec:sga-node-types}
+
+SkillPilot classifies learning goals into four pedagogical goal kinds that are orthogonal to the structural atomic/cluster distinction ([Graph Definition](repo:docs/concept/skill-graph/graph-definition.md)) and to program-unit kinds (@ref{sec:sga-view-projection}).
+
+### Outcome Contract and Compiled Applicability {#sec:sga-nt-summary}
+
+| Node Type | Pedagogical Purpose | Typical Content & Completion Basis |
+| --- | --- | --- |
+| **Orientation** | Meaningful, low-pressure entry into a subject or phase | Concrete possibilities, personal interest follow-up, and explicit learner closure (`semanticKind: "orientation"`, rule `GVR-014`). |
+| **Understanding** | Conceptual or procedural subject mastery (default) | Assessable `"The learner can ..."` competencies governed by `requires`. |
+| **Memorize** | Durable recall of facts, vocabulary, and formulas | SM-2 spaced-repetition practice plus a mandatory coach-led **verified hard recall** check over all required cards. |
+| **Exam** | Realistic scored assessment simulation | Verbatim `examData` tasks graded strictly by `scoring.steps` under neutral AI Exam Mode supervision. |
+{cols="18%,34%,48%"}
+
+Every atomic goal shares one binary outcome contract: **mastered or not mastered** (persisted as `1` / `1.0` for runtime compatibility; see [Learning Workflow](repo:docs/concept/runtime-workflows/learning-workflow.md)). Cluster progress is derived strictly from unique atomic descendants. Optional compiled `applicability` metadata (for example `{"jurisdiction": ["DE-HE", "DE-BY"]}`, with authoring exceptions in `extendedData.applicabilityOverrides`) filters visibility in scoped views without defining a node type or replacing semantic `tags`.
+
+### Orientation, Understanding, and Memorize Semantics {#sec:sga-nt-orientation-memorize}
+
+**Orientation (`semanticKind: "orientation"`):** Checked by `GVR-014` ([Graph Validation Rules](repo:docs/qa-ci/graph-validation-rules.md)) to carry zero `requires` and no exam, memory, example, or assessment metadata. Orientation never tests prior knowledge or terminology. Completion follows a four-step dialogue: (1) present possibilities and invite an interest or question, (2) respond to a bare label with a tailored follow-up inviting a personal reaction, (3) summarize positively and offer closure, and (4) persist `1` **only after** the learner explicitly agrees to close (never exposing a graded `0/50/100` UI control). At genuine zero-progress entry into a scope, unresolved orientation goals form the sole selectable frontier; learners with existing progress are never reset to the orientation gate (see [Graph Definition §8.2](repo:docs/concept/skill-graph/context-and-views.en.md#sec-orientation) and didactic routes in [§3.3](repo:docs/concept/skill-graph/graph-definition.md)).
+
+**Understanding:** The default node kind when no specialized payload is present; availability follows `requires` and optional `applicability`.
+
+**Memorize (SM-2 + Verified Recall):** Each card maintains two process-data lanes that determine the single goal outcome:
+
+- **SRS practice lane:** `interval` (days), `repetition`, `ef` (easiness factor, clamped to $\ge 1.3$), and `nextReview` (ms). On review, `quality >= 3` increments `repetition`, sets `interval` to `1`, `6`, or `round(lastInterval * ef)`, updates `ef`, and schedules `now + interval * 24h`; `quality < 3` resets `repetition = 0` and `interval = 1` with unchanged `ef`. Due cards (`nextReview <= now` or unseen) are shuffled per session (up to 20 cards). Interactive MCP practice components translate **known** / **not known yet** into SM-2 updates; flipping cards never writes state, and completing an SRS practice queue **never** proves mastery.
+- **Verified recall lane (`verifiedRecall`):** Tracks `status` (`passed` | `failed`), `attempts`, `failures`, `lastTestedAt`, `passedAt`, and `lastFailedAt`. Learners may trigger **Verify** at any time: the coach fetches only the prompt first, waits for an unassisted answer, then fetches the expected answer and records `passed` (updating SRS as a strong retrieval) or `failed` (re-queuing as due). Controlled recall of **all required cards** in a fully resolved, valid deck establishes permanent goal completion; subsequent SRS due dates never withdraw established goal mastery (the 29 October 2026 code inspection of [`LearnerService.java`](repo:backend/src/main/java/com/skillpilot/backend/service/LearnerService.java) `isSrsMasteredByVerifiedRecall` and [`useSrsMastery.ts`](repo:app/src/hooks/useSrsMastery.ts) records current flag derivation without authorizing mastery withdrawal).
+
+### Exam Nodes, Recognition Review, and Scoring {#sec:sga-nt-scoring anchors="scoring-and-mastery"}
+
+Exam nodes embed `examData` (`taskContent`, optional `taskContentEn`, `solutionContent`, optional `solutionContentEn`, and `scoring: {maxPoints, passingPoints, steps: [{id, points, description}]}`). Learners may attempt exams directly without completing preparatory prerequisites first; failed attempts use `requires` for targeted remediation. Under the 4 November 2026 [Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md) concept (implementation adaptation pending), assessments that substantiate global competence recognition must undergo static authoring review proving that no candidate can pass via unrelated compensating points while omitting an essential recognized competence. Under the unit validity rules of 11 November 2026, an assessment claims coverage (`coveredGoalIds`) only for goals it requires directly or transitively (R3), every own ordinary goal of a unit lies on a prerequisite path from an own assessment of that unit (R1), and at least one such assessment carries reviewed evidence that its tasks and normal grading genuinely test the goal (R2); a missing path is a finding for subject review, never a reason to add a redundant edge ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)).
+
+Scoring, persistence, and **Exam Mode** supervision follow strict rules:
+
+- **Formulas:** $\text{total} = \min(\sum \text{stepPointsAwarded}, \text{scoring.maxPoints})$ and $\text{passed} = (\text{total} \ge \text{scoring.passingPoints})$ (logic errors yield `0` step points; arithmetic slips allow partial step points).
+- **Binary persistence:** On `passed == true`, set mastery to `1.0` immediately after grading (no extra learner confirmation required; never claim persistence if the write fails). On `passed == false`, leave mastery unchanged and persist **no** failed attempt or score (unlimited retries remain available; revealing the solution afterward is a documented evidential trade-off).
+- **AI Exam Supervisor workflow:** (1) Show a neutral 2–4 line exam header, deliver `examData.taskContent` **verbatim** without chunking or hints, and append one fixed submission line; (2) accept only readability clarifications until a single complete submission or explicit give-up arrives; (3) grade strictly against `scoring.steps`; (4) persist mastery on pass only; (5) report score, pass/fail, and step feedback, reveal `solutionContent`, switch back to learning-coach mode, and wait for an explicit learner choice before starting new content.

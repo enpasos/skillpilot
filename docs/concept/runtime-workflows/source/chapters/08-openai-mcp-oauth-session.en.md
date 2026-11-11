@@ -1,0 +1,120 @@
+## OpenAI MCP App: OAuth and 24-Hour Learning-Session Binding {#sec:openai-mcp-oauth-session}
+
+:::note{title="Scope and current baseline"}
+Authoritative identity and session-binding specification for the multilingual OpenAI MCP coach (**SkillPilot Coach** / `skillpilot-coach` on `https://mcp-openai.skillpilot.com/mcp` per the 19 October 2026 decision in @ref{sec:plugin-decision-2026-10-19}; historically `skillpilot-coach-v1` on `https://mcp-coach-v1.skillpilot.com/mcp` in the preserved `1.1.2` Git beta). For plugin identity, contract major, and lifecycle rules, see @ref{sec:openai-plugin-versioning}.
+:::
+
+### Architectural Decision: Two Independent Credentials {#sec:oauth-session-decision}
+
+SkillPilot separates integration authentication from learner addressing through two independent credentials:
+
+1. **OAuth authenticates and authorizes the MCP integration:** The hosted directory app uses a single pre-registered confidential OAuth client (`client_id` + high-entropy `client_secret` via `client_secret_basic` at the token endpoint, Authorization Code + PKCE `S256`). For the authorized native desktop route, a separate, strictly pinned public CIMD profile (`https://chatgpt.com/oauth/codex/7yTcOAOqrumX/client.json`, loopback callback `http://127.0.0.1/callback/7yTcOAOqrumX` on a dynamic port with PKCE `S256`) exists alongside it and never serves as a fallback from failed confidential authentication.
+2. **A temporary 24h learning session selects the learner and interaction locale:** Only an explicitly confirmed **Start learning** (**Lernen starten**) action in the first-party WebGUI mints a fresh opaque `learningSessionId` (`PT24H`) and opens a new chat. The mapping to the permanent SkillPilot ID and `communicationLocale` remains exclusively inside the backend.
+
+Every domain MCP tool call requires both credentials simultaneously:
+
+```text
+valid OAuth access token (exact resource + read/write scope)
+AND
+valid learningSessionId (active + remaining lifetime >= PT1H)
+```
+
+OAuth alone never creates a learning session or selects a learner; a `learningSessionId` alone never authorizes an MCP call.
+
+:::table{cols="4.0cm,4.5cm,X"}
+| Binding | Transport | Server-side meaning |
+| --- | --- | --- |
+| **ChatGPT/App -> SkillPilot** | OAuth code flow (`client_secret_basic` or pinned desktop CIMD + PKCE `S256`), then `Authorization: Bearer` | Only the approved client profile can obtain and present an access token audience-restricted to the active MCP resource. |
+| **Chat -> Session -> Learner** | `learningSessionId` as a required input on every domain MCP tool | This active first-party session addresses exactly one authoritative learner state and `communicationLocale`. |
+:::
+
+The permanent SkillPilot ID never leaves the backend in the MCP flow and never appears in chat messages, tool arguments, or tool responses.
+
+### Mandatory Launch Sequence, Renewal, and Diagnostic TTL {#sec:oauth-session-launch}
+
+Every click on **Start learning** in the first-party WebGUI is an atomic launch operation:
+
+1. The WebGUI holds the selected SkillPilot ID, chosen `communicationLocale`, and configured Level 2/Level 3 context.
+2. It sends a single launch request to the SkillPilot backend.
+3. The backend atomically applies the typed launch context to the authoritative learner state.
+4. At that exact moment, it generates a fresh cryptographically random `learningSessionId`.
+5. It stores only the HMAC hash together with internal `learner_id`, `communication_locale`, `started_at`, and absolute `expires_at`.
+6. It returns a prepared bootstrap prompt and launch URL; the WebGUI opens the new chat pre-populated with that message:
+
+```text
+Use SkillPilot Coach and continue.
+learningSessionId: sps_<random opaque value>
+```
+
+- **Every launch is independent:** Every launch request mints a distinct `learningSessionId` — even when the same learner restarts immediately, when an older session is still valid, when another learner shares the same ChatGPT account, or when OAuth is already connected. Concurrent sessions remain independently valid; usage never extends `expires_at`.
+- **Renewal exclusively via first-party WebGUI:** Without a current bootstrap message, the model calls zero SkillPilot tools and instead points succinctly in the user's language to `https://skillpilot.com/` and the WebGUI launch flow. When a tool returns `SESSION_REQUIRED`, `SESSION_RENEWAL_REQUIRED`, or `SESSION_VERSION_UNAVAILABLE`, the coach outputs `instruction` verbatim (or the exact localized entry from `instructions`), appending `startUrl` only if not already included — with no domain teaching, no reuse of the old session, and no OAuth reconnection.
+- **Gated first-party diagnostic TTL:** Exclusively `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` may accept optional `diagnosticSessionTtlSeconds` when `SKILLPILOT_OPENAI_COACH_V1_DIAGNOSTIC_SESSION_TTL_ENABLED=true` and the integer lies within `3601..86400` seconds (never exceeding `PT24H`). Shortened lifetimes (e.g., `3660` s to observe the `< PT1H` cutoff after ~1 minute, or `5400` s for a 90-minute soak) apply solely to that single session; omitting the field immediately restores `PT24H`.
+
+### MCP Validation Order, Action Horizon, and Forbidden Fallbacks {#sec:oauth-session-validation}
+
+The model copies `learningSessionId` unchanged into every domain tool call as a plain required string field (keeping regex and length rules server-side so the LLM never fabricates tokens), while the connector sends `Authorization: Bearer <token>` outside model context. On every call, the backend validates in this exact **8-step order**:
+
+1. valid OAuth access token;
+2. exact Resource/Audience (`https://mcp-openai.skillpilot.com/mcp`) and required read or write scope;
+3. present, syntactically valid `learningSessionId`;
+4. HMAC lookup in `openai_de_learning_session`;
+5. non-expired, non-revoked session status;
+6. authoritative learner resolution and availability of the pinned contract, workflow, and curriculum revisions;
+7. remaining lifetime `expiresAt >= now + PT1H` for every read, write, or replay response (exact `PT1H` is valid; below `PT1H` fails with `SESSION_RENEWAL_REQUIRED`);
+8. on writes, check for an exact committed idempotent replay (identical tool name, canonically normalized arguments, identical `clientRequestId`, available pinned versions, and `completedStateVersion == current learner revision`; if canonical learner state has since advanced, fail with `STATE_VERSION_CONFLICT`).
+
+**Explicitly forbidden fallbacks:** A missing or invalid `learningSessionId` must never fall back to an OAuth subject, the "most recent" or any other session of the learner, a pending launch, a SkillPilot ID typed in chat, or a session implicitly created during an OAuth callback. OAuth callbacks, token refreshes, and MCP reconnects never create, extend, replace, or reactivate a learning session. Shared household or classroom ChatGPT accounts therefore remain strictly isolated per launch.
+
+### Persistence Schema, OAuth/mTLS Hardening, and Error Behavior {#sec:oauth-session-storage-errors}
+
+Table `openai_de_learning_session` is the sole persistence boundary for short-lived session bindings (retiring earlier OAuth-subject primary keys):
+
+:::table{cols="4.2cm,X"}
+| Column | Meaning |
+| --- | --- |
+| `token_hash` | HMAC hash of the issued `learningSessionId` (plaintext is never stored) |
+| `learner_id` | Server-internal foreign key referencing the learner record |
+| `communication_locale` | Launch-pinned locale governing backend payloads and visible coach replies |
+| `started_at` | Timestamp of the confirmed **Start learning** action |
+| `expires_at` | Absolute expiration (`started_at + PT24H`, or `+ diagnosticSessionTtlSeconds` in gated tests) |
+:::
+
+OAuth client secrets reside strictly in protected provider and server configuration (never in repositories, browser bundles, prompts, tool arguments, responses, or logs). Open Dynamic Client Registration (DCR) and unpinned CIMD documents are disabled; exact callback allowlists, PKCE `S256`, Resource/Audience, and scopes are enforced. In addition, the dedicated MCP vHost validates the OpenAI-managed client certificate (`observe` mode during initial integration passes missing certificates to OAuth while rejecting invalid ones; `enforce` mode requires the verified OpenAI chain, `clientAuth` EKU, and exact connector SAN; see [OpenAI MCP Client Binding](repo:docs/security/openai-mcp-client-binding.md)). mTLS never replaces OAuth client authentication or `learningSessionId`.
+
+:::table{cols="5.2cm,X"}
+| Failure condition | Mandatory behavior |
+| --- | --- |
+| **OAuth missing / invalid** | Standard host OAuth re-authorization; creates zero learning sessions |
+| **`learningSessionId` missing / unknown / tampered / expired / revoked** | `SESSION_REQUIRED`; coach outputs verbatim `instruction` (plus `startUrl` if absent) with zero domain teaching; fresh WebGUI launch + new chat |
+| **Remaining lifetime `< PT1H`** | `SESSION_RENEWAL_REQUIRED` (exact `PT1H` remains valid); fresh WebGUI launch + new chat |
+| **Pinned workflow / curriculum revision unavailable** | `SESSION_VERSION_UNAVAILABLE`; fail-closed, fresh WebGUI launch + new chat |
+| **Write scope missing** | Reject before any partial domain mutation |
+| **Launch context cannot apply atomically / invalid diagnostic TTL** | Reject launch request; issue zero `learningSessionId` |
+:::
+
+### Security Invariants and Automated Acceptance Criteria {#sec:oauth-session-invariants}
+
+The architecture enforces **17 security invariants**: (1) server-only permanent SkillPilot ID, (2) random opaque session IDs stored solely as HMAC hashes, (3) absolute `PT24H` lifetime except gated `3601..86400` diagnostic launches, (4) zero sliding expiration on use, (5) `PT1H` action horizon for new operations, (6) identical `PT1H` and learner-revision guards for idempotent write replays, (7) fresh independent session per launch, (8) no learner selection via OAuth alone, (9) no MCP authorization via session alone, (10) mandatory `learningSessionId` on all domain tools, (11) zero OAuth-subject lookup or fallback, (12) unchanged skill-graph, frontier, and mastery semantics, (13) strict client-profile separation (`client_secret_basic` vs. pinned desktop CIMD with zero fallback), (14) secret-free code/UI/prompts/logs, (15) launch-fixed `communicationLocale`, (16) mandatory fresh `get_skillpilot_context` at the start of every learner turn with direct in-turn use of mutation successor states, and (17) first-party WebGUI ownership of permanent IDs, provider notices, and Level 2 configuration.
+
+Automated tests must verify **all 20 acceptance criteria**:
+
+1. One UI launch click triggers exactly one backend launch request and opens ChatGPT.
+2. Every launch mints a distinct `learningSessionId`, including repeated launches for the same learner.
+3. Concurrent launches for different learners operate without interference over one OAuth connection.
+4. The bootstrap message carries exactly one `learningSessionId` and zero SkillPilot IDs.
+5. Every domain MCP tool schema requires `learningSessionId`.
+6. A valid OAuth token without `learningSessionId` is rejected.
+7. A valid `learningSessionId` without a valid OAuth token is rejected.
+8. Unknown, tampered, revoked, or expired sessions fail closed with zero fallback.
+9. Successful tool calls resolve the learner solely from the explicit `learningSessionId`.
+10. Repeated tool usage leaves `expires_at` unchanged.
+11. Domain read and write scopes are enforced per tool.
+12. Existing goal, frontier, and mastery test suites remain green.
+13. German and English share the same V1 tool contract governed by `communicationLocale`.
+14. Token requests with missing/wrong secrets, foreign `client_id`, unapproved callbacks, or wrong resources are rejected.
+15. Authorization-server metadata advertises the active production profile without open DCR or unpinned public fallbacks.
+16. The diagnostic TTL field accepts `3601` and `86400` when gated on, and rejects `3600`, `86401`, values above `PT24H`, and any value when gated off.
+17. Diagnostic launches (`3660` / `5400`) affect only their own session; the next normal launch defaults back to `PT24H`.
+18. Every learner turn starts with a successful context read (session errors block all domain prose), and mutations return authoritative successor state used directly in the same turn without redundant reads.
+19. The public V1 tool catalog exposes zero sessionless bootstrap, capability, curriculum, or personalization tools.
+20. Write replays below `PT1H`, with unavailable pinned workflow/curriculum versions, or after canonical learner-revision advancement are rejected even when tool name, canonical arguments, and `clientRequestId` match.

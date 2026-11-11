@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-developer-and-editor-guide",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-documentation-guidelines",
+    "02-landscape-json-field-reference",
+    "03-minimal-schema-and-fallback",
+    "04-curriculum-authoring-editors",
+    "05-graph-editor",
+    "06-flashcard-editor",
+    "07-my-goals-node-ordering",
+    "08-liquibase",
+    "09-auto-update"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/dev/skillpilot-developer-and-editor-guide.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Entwicklerhandbuch · Band VII",
+      "title": "Entwickler-, Schema-\nund Editor-Handbuch",
+      "subtitle": "Dokumentationsrichtlinien, Landscape-JSON-Feldreferenz, Laufzeit-Fallbacks,\nAutoreneditoren, Geschwisterknoten-Sortierung, Liquibase und SSE-Auto-Update",
+      "pdfTitle": "SkillPilot — Entwickler-, Schema- und Editor-Handbuch (DE)",
+      "pdfSubject": "Dokumentationsrichtlinien, Landscape-JSON-Schema, Autoreneditoren, Knotensortierung, Liquibase und SSE",
+      "pdfKeywords": "SkillPilot, Entwicklerhandbuch, JSON-Schema, Graph-Editor, Flashcard-Editor, Liquibase, SSE, Dokumentation",
+      "runningHeadLeft": "SkillPilot · Entwickler- & Editor-Handbuch",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Handbuchs",
+        "body": "Dieser Band bündelt die dauerhaften Entwickler-, Schema-, Autorenwerkzeug- und Plattformreferenzen von SkillPilot: die Dokumentationsrichtlinien samt allen elf zweisprachigen Single-Source-Kompendien und dem `[ DE | EN ]`-Sprachumschalter, die Feldreferenz für `SkillLandscape`-JSONs, das minimale Projektionsschema mit Laufzeit-Fallbacks, die vier lokalen Vite-Autoreneditoren, die topologische Geschwisterknoten-Sortierung unter „Meine Lernziele“ sowie Datenbankmigrationen mit Liquibase und Echtzeit-Updates per Server-Sent Events (SSE)."
+      },
+      "partHeaders": {
+        "01-documentation-guidelines": "Dokumentation & JSON-Schema",
+        "04-curriculum-authoring-editors": "Autoreneditoren & UI-Sortierung",
+        "08-liquibase": "Datenbank & Echtzeit-Plattform"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (Software-, Schema- und Entwicklerdokumentation; siehe LICENSING.md).",
+        "Datierte Migrations-Workboards und Rollout-Dossiers unter docs/dev/ bleiben eigenständige Arbeitsdokumente."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/dev/skillpilot-developer-and-editor-guide.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Developer Handbook · Volume VII",
+      "title": "Developer, Schema,\nand Editor Guide",
+      "subtitle": "Documentation Guidelines, Landscape JSON Field Reference, Runtime Fallbacks,\nAuthoring Editors, Sibling Node Ordering, Liquibase, and SSE Auto-Update",
+      "pdfTitle": "SkillPilot — Developer, Schema, and Editor Guide (EN)",
+      "pdfSubject": "Documentation guidelines, landscape JSON schema, authoring editors, node ordering, Liquibase, and SSE",
+      "pdfKeywords": "SkillPilot, developer guide, JSON schema, graph editor, flashcard editor, Liquibase, SSE, documentation",
+      "runningHeadLeft": "SkillPilot · Developer & Editor Guide",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this guide",
+        "body": "This volume consolidates SkillPilot's durable developer, schema, authoring-tool, and platform references: documentation guidelines including all eleven bilingual single-source compendia and the MkDocs `[ DE | EN ]` switcher, the `SkillLandscape` JSON field reference, minimal projection schema and runtime fallbacks, the four local Vite curriculum editors, balanced topological sibling ordering in 'My Goals', database schema migrations via Liquibase, and real-time Server-Sent Events (SSE) auto-updates."
+      },
+      "partHeaders": {
+        "01-documentation-guidelines": "Documentation & JSON Schema",
+        "04-curriculum-authoring-editors": "Authoring Editors & UI Ordering",
+        "08-liquibase": "Database & Real-Time Platform"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (software, schema, and developer documentation; see LICENSING.md).",
+        "Dated migration workboards and rollout dossiers under docs/dev/ remain standalone working records."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "documentation-guidelines",
+    "landscape-json-field-reference",
+    "minimal-schema-and-fallback",
+    "curriculum-authoring-editors",
+    "graph-editor",
+    "flashcard-editor",
+    "my-goals-node-ordering",
+    "liquibase",
+    "auto-update"
+  ],
+  "webPages": [
+    {
+      "id": "documentation-guidelines",
+      "sources": ["01-documentation-guidelines"],
+      "paths": {
+        "en": "docs/dev/documentation-guidelines.md",
+        "de": "docs/dev/documentation-guidelines.de.md"
+      },
+      "titles": {
+        "en": "Documentation Guidelines",
+        "de": "Dokumentationsrichtlinien"
+      },
+      "navLabels": {
+        "en": "§1 Documentation Guidelines",
+        "de": "§1 Dokumentationsrichtlinien"
+      }
+    },
+    {
+      "id": "landscape-json-field-reference",
+      "sources": ["02-landscape-json-field-reference"],
+      "paths": {
+        "en": "docs/dev/landscape-json-field-reference.md",
+        "de": "docs/dev/landscape-json-field-reference.de.md"
+      },
+      "titles": {
+        "en": "Landscape JSON Field Reference",
+        "de": "Landscape-JSON-Feldreferenz"
+      },
+      "navLabels": {
+        "en": "§2 Landscape JSON Reference",
+        "de": "§2 Landscape-JSON-Referenz"
+      }
+    },
+    {
+      "id": "minimal-schema-and-fallback",
+      "sources": ["03-minimal-schema-and-fallback"],
+      "paths": {
+        "en": "docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md",
+        "de": "docs/dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot.de.md"
+      },
+      "titles": {
+        "en": "Minimal Projection Schema, Runtime Fallback, and Math Pilot",
+        "de": "Minimales Projektionsschema, Laufzeit-Fallback und Mathe-Pilot"
+      },
+      "navLabels": {
+        "en": "§3 Minimal Schema & Fallback",
+        "de": "§3 Minimales Schema & Fallback"
+      }
+    },
+    {
+      "id": "curriculum-authoring-editors",
+      "sources": ["04-curriculum-authoring-editors"],
+      "paths": {
+        "en": "docs/dev/curriculum-authoring-editors.md",
+        "de": "docs/dev/curriculum-authoring-editors.de.md"
+      },
+      "titles": {
+        "en": "Curriculum Authoring Editors",
+        "de": "Curriculum-Autoreneditoren"
+      },
+      "navLabels": {
+        "en": "§4 Authoring Editors",
+        "de": "§4 Autoreneditoren"
+      }
+    },
+    {
+      "id": "graph-editor",
+      "sources": ["05-graph-editor"],
+      "paths": {
+        "en": "docs/dev/graph-editor.md",
+        "de": "docs/dev/graph-editor.de.md"
+      },
+      "titles": {
+        "en": "Graph Editor",
+        "de": "Graph-Editor"
+      },
+      "navLabels": {
+        "en": "§5 Graph Editor",
+        "de": "§5 Graph-Editor"
+      }
+    },
+    {
+      "id": "flashcard-editor",
+      "sources": ["06-flashcard-editor"],
+      "paths": {
+        "en": "docs/dev/flashcard-editor.md",
+        "de": "docs/dev/flashcard-editor.de.md"
+      },
+      "titles": {
+        "en": "Flashcard Editor",
+        "de": "Flashcard-Editor"
+      },
+      "navLabels": {
+        "en": "§6 Flashcard Editor",
+        "de": "§6 Flashcard-Editor"
+      }
+    },
+    {
+      "id": "my-goals-node-ordering",
+      "sources": ["07-my-goals-node-ordering"],
+      "paths": {
+        "de": "docs/dev/my-goals-node-ordering.md",
+        "en": "docs/dev/my-goals-node-ordering.en.md"
+      },
+      "titles": {
+        "de": "Knotensortierung unter „Meine Lernziele“",
+        "en": "Sibling Node Ordering in 'My Goals'"
+      },
+      "navLabels": {
+        "en": "§7 Node Ordering",
+        "de": "§7 Knotensortierung"
+      }
+    },
+    {
+      "id": "liquibase",
+      "sources": ["08-liquibase"],
+      "paths": {
+        "en": "docs/dev/liquibase.md",
+        "de": "docs/dev/liquibase.de.md"
+      },
+      "titles": {
+        "en": "Database Migrations with Liquibase",
+        "de": "Datenbankmigrationen mit Liquibase"
+      },
+      "navLabels": {
+        "en": "§8 Liquibase",
+        "de": "§8 Liquibase"
+      }
+    },
+    {
+      "id": "auto-update",
+      "sources": ["09-auto-update"],
+      "paths": {
+        "en": "docs/dev/auto-update.md",
+        "de": "docs/dev/auto-update.de.md"
+      },
+      "titles": {
+        "en": "Real-Time Auto-Update Architecture (SSE)",
+        "de": "Echtzeit-Auto-Update-Architektur (SSE)"
+      },
+      "navLabels": {
+        "en": "§9 Auto-Update (SSE)",
+        "de": "§9 Auto-Update (SSE)"
+      }
+    }
+  ]
+}

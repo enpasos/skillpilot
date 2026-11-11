@@ -18,23 +18,24 @@ jobs:
         with:
           sparse-checkout: |
             docs
+            scripts
             .github/actions/ubuntu-apt
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
-      - name: Install LuaLaTeX packages for Skill Graph PDFs
+      - name: Install LuaLaTeX and SVG packages for compendium PDFs
         timeout-minutes: 15
         run: |
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends \
             texlive-luatex texlive-latex-recommended texlive-latex-extra \
             texlive-fonts-recommended texlive-lang-german texlive-lang-english \
-            texlive-science lmodern
+            texlive-science lmodern librsvg2-bin
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - run: pip install -r requirements-docs.txt
-      - name: Build bilingual Skill Graph Web pages, diagrams, and PDFs
-        run: python3 docs/concept/skill-graph/build_spec.py --all
+      - name: Build all bilingual single-source compendia (Web, diagrams, PDFs)
+        run: python3 scripts/build_compendia.py --all
       - name: Deploy MkDocs site
         run: |
           for attempt in 1 2 3; do

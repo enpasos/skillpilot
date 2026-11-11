@@ -1,0 +1,56 @@
+## Ebenen der Personalisierung {#sec:levels-of-personalization}
+
+Dieses Kapitel beschreibt, wie SkillPilot vom veröffentlichten Curriculum-Katalog bis zur individuellen atomaren Beherrschung eingrenzt. Die vorgeschaltete Katalognavigation liegt vor den vier Personalisierungsebenen und wird niemals als Lernendenzustand gespeichert.
+
+Diese vier Ebenen sind strikt von [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md) (`LearningUnit`) zu unterscheiden — rekursiv zusammengesetzten didaktischen Einheiten mit Lernversprechen und abgeleitetem Abschluss, deren Verortung zum aufgelösten Bildungskontext gehört und keine fünfte Personalisierungsebene bildet.
+
+### Vor Ebene 1: Katalognavigation {#sec:personalization-catalog}
+
+Lernende wählen zunächst einen Katalogbereich wie **Schule**, **Hochschule** oder **Sprachen und Weiterbildung**, um ein passendes Wurzel-Curriculum zu finden. Dieser Schritt dient ausschließlich der Orientierung im Katalog.
+
+### Ebene 1: Basis-Curriculum {#sec:personalization-level1}
+
+Gewählt wird genau ein veröffentlichtes Wurzel-Curriculum, das den vollständigen Zielraum bereitstellt, ohne kanonische Lernziele zu kopieren oder umzubenennen (z. B. `Gymnasium (DE)`, ein Studiengangskatalog oder eine CEFR-Sprach-Skill-Landschaft).
+
+Nur in `curricula/curriculum_manifest.json` deklarierte Wurzel-Curricula sind in der Oberfläche wählbar und für Champion-Registrierungen zulässig:
+
+```json
+{
+  "curricula": [
+    { "id": "a0e13c56-c25f-4742-9272-3a1a603ee52e", "title": "Gymnasium (DE)" }
+  ]
+}
+```
+
+Jede Manifest-ID muss unter `curricula/` existieren, darf keine Teil- oder Modullandschaft sein und wird in CI gegen die berechnete Wurzelmenge geprüft.
+
+### Ebene 2: Persönlicher Lehrplan (Personal Curriculum) {#sec:personalization-level2}
+
+Der Persönliche Lehrplan ist der verbindliche, längerfristige Lernumfang innerhalb des Basis-Curriculums — er bestimmt die geltende curriculare Sicht und nicht den kurzfristigen Arbeitsfokus. Für deutsche Schulcurricula gilt die semantische Reihenfolge:
+
+1. **Bundesland / Jurisdiktion** (einschließlich expliziter kanonischer Sicht, sofern verfügbar);
+2. **Dauermodell** (z. B. G8 oder G9, sofern landesspezifisch relevant);
+3. **Stufe** (Sekundarstufe I, Sekundarstufe II oder ausdrücklich beide);
+4. **Ausgewählte Fächer**;
+5. **Kursprofil je gewähltem Fach** (sofern einschlägig).
+
+Das Kursprofil hängt am einzelnen Fach: Mathematik `LK` und Physik `GK` können parallel gelten, `LK` impliziert niemals automatisch Sekundarstufe II, und eine fehlende Stufenangabe wird niemals stillschweigend stufenübergreifend gedeutet. Ebene 2 löst die geltende Kompositionsansicht auf und begrenzt Fokus, Frontier, Fortschritt und Abschluss; Änderungen revalidieren Fokus und `activeGoal`, ohne stabile Ziel-IDs oder globale Mastery zu löschen.
+
+**Einheitlicher First-Party-Editorvertrag:** Ebene 2 wird ausschließlich im First-Party-WebGUI von SkillPilot gepflegt (vor dem Lernstart auf dem Startbildschirm sowie später im Cockpit) über gemeinsame Backend-Optionen, Validierung und Speicherung. Der OpenAI-ChatClient fragt Ebene 2 weder ab noch verändert er sie; ist sie unvollständig, stoppt er das Fachcoaching und verweist auf das WebGUI.
+
+### Ebene 3: Lernfokus und aktives Lernziel {#sec:personalization-level3}
+
+Ebene 3 ist bewusst leichtgewichtig veränderbar und besteht aus zwei Teilen:
+
+- **Ebene 3a — Fokus:** eine oder mehrere Fokuswurzeln, die den aktuellen Lernkorridor wählen (z. B. Jahrgangsstufe 7, Q1 oder Analysis; Programmeinheiten sind selbst keine kanonischen Lernziele).
+- **Ebene 3b — Aktives atomares Ziel:** höchstens ein konkretes, überprüfbares atomares Lernziel als unmittelbares Arbeitsziel.
+
+Bei einer Fokusweitung veröffentlicht das Backend entlang des sichtbaren Vorfahrenpfads zur Wurzel nur gültige breitere Vorfahren, die noch offene `target`-Ziele ergänzen (nächstgelegener Vorfahr zuerst, unter Erhalt unabhängiger Mehrfachwurzeln in `goalIds`). Ein automatischer Vorschlag erfolgt nur nach tatsächlichem Abschluss des aktuellen Fokus (nicht bei bloß blockierter Frontier) und erfordert die Zustimmung der lernenden Person.
+
+Nach der Korrektur vom 4. November 2026 ([Abschlusskonzept](repo:docs/concept/skill-graph/assessment-gated-completion.md)) schreibt `requires` allein keine Voraussetzungs-Mastery; bestandene Anwendungsprüfungen begründen global wirksame Anerkennung gewöhnlicher Ziele, die beim Fokusweiten bestehen bleibt.
+
+### Ebene 4: Mastery und orthogonale Zeitachse {#sec:personalization-level4}
+
+Mastery ist das einzige dauerhafte Ergebnis je stabiler atomarer Ziel-UUID — **gemeistert oder nicht gemeistert** — und gilt global über Kompositionsansichten sowie Ebene-2/3-Wechsel hinweg ohne Teilbeherrschungsstufen. Effektive Beherrschung $M_{\mathrm{eff}} = M \cup W$ vereint gespeicherte explizite Mastery $M$ und prüfungsbasierte Anerkennung $W$ (Prüfungs- und Lernkartenziele bleiben explizit; Laufzeitmigration offen, siehe @ref{sec:workflow-step5}). Prozentwerte auf Clustern bezeichnen den gewichteten Anteil effektiv beherrschter Atomziele, niemals Teilmastery eines Einzelziels.
+
+**Orthogonale Zeitachse:** Ein datierter Kurs- oder Klausurplan ist kein fünftes Personalisierungslevel, sondern eine Ausführungsplanung für das **Wann** innerhalb von Ebene 2 (siehe [Einheitlicher Lernplanstatus](repo:docs/concept/didactic/unified-learning-plan-status.md) und [Zeitachsenkonzept](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md)).

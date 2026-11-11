@@ -1,0 +1,144 @@
+## Data Privacy and Storage Concept {#sec:sec-data-privacy}
+
+:::note{title="Technical data-flow and storage baseline"}
+Status: updated on 2026-09-13 (with October 2026 neutral OpenAI endpoint cutover alignment) for the active Claude-first beta, the subsequent ChatGPT integration candidate and Windows Desktop Git beta, the coach-tool free-text boundary, voluntary feedback, and the SkillPilot-ID deletion and retention boundary. Existing teacher-view and personal-subject-schedule details remain applicable.
+:::
+
+This is a technical data-flow and storage description. It does not replace the learner-facing [SkillPilot Privacy Policy](https://skillpilot.com/privacy), the provider's privacy terms, or a legal review before a public release. The public policy is authored in [`app/src/utils/privacyViewCopy.ts`](repo:app/src/utils/privacyViewCopy.ts). Repository defaults below are not evidence of the configuration or retention of every deployed service, log copy, or backup.
+
+The current work order is [Claude beta → stable candidate → focused ChatGPT integration acceptance → official submission](repo:docs/deploy/claude-beta-chatgpt-release-strategy.md). The [provider-neutral coach boundary](repo:docs/concept/runtime-workflows/provider-neutral-coach-boundary.md) and [Claude runbook](repo:docs/deploy/claude-coach-beta.md) govern the active provider lane. The separate [OpenAI MCP identity and 24-hour session contract](repo:docs/concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md) and @ref{sec:sec-openai-mcp-client-binding} describe the subsequent OpenAI integration candidate and explicitly authorized Desktop Git beta, not an accepted hosted directory release.
+
+### Core Philosophy: Privacy by Design {#sec:sec-privacy-philosophy}
+
+SkillPilot separates **pseudonymous learner identity**, **persistent learning state**, **temporary provider access**, and **provider-side conversation content**:
+
+- The SkillPilot backend stores learning progress under a random, pseudonymous SkillPilot ID. It does not require a learner name, email address, or password. This is pseudonymity, not anonymity: the ID links a learning history, and a person or institution with an ID-to-person mapping can identify its owner.
+- The browser is the learner's SkillPilot login surface. It may hold the permanent SkillPilot ID locally and can optionally save it encrypted with a user-chosen password.
+- The permanent SkillPilot ID stays in first-party SkillPilot surfaces and outside the AI chat, OAuth principal, MCP tools, and provider-hosted widgets. Every explicit WebGUI start creates a separate temporary learning-session reference that the backend resolves to that ID.
+- The AI provider processes the chat, uploads, projected learning context, and tool results under the provider account and its terms.
+- SkillPilot does not receive the complete provider chat transcript. It does receive every explicit API or MCP tool request sent to it, including the arguments needed to read or change learning state.
+
+**Architectural invariant for coach tools:** learner answers, explanations, chat summaries, and coach-authored feedback must stay in the provider chat. Neither `workFeedback`, `outcomeFeedback`, Recall `feedback`/`lastFeedback`, nor renamed equivalents belong in accepted coach inputs, persisted learning state, replay responses, or diagnostics. The coach makes the pedagogical assessment and composes its own success message; SkillPilot accepts only the authorized structured decision and returns confirmed state (see [provider-neutral coach boundary](repo:docs/concept/runtime-workflows/provider-neutral-coach-boundary.md)). The [12 September 2026 cleanup record](repo:docs/security/coach-feedback-cleanup-2026-09-12.md) records a historical production purge and the rollout obligations identified at that time; it is not evidence of the state of a later deployment.
+
+Provider status must stay explicit:
+
+1. **Claude V1 OAuth/MCP:** the active learning beta, distributed through the personal Claude marketplace. Installation and updates do not bypass OAuth, session isolation, or domain authorization.
+2. **Multilingual OpenAI V1 OAuth/MCP App:** the ChatGPT integration candidate (`skillpilot-coach` on the neutral target endpoint `https://mcp-openai.skillpilot.com/mcp`, alongside the explicitly authorized Windows Desktop Git beta). Full host acceptance across Desktop/Voice, Web, and mobile remains required before official directory publication; repository code, local tests, or a successful Claude test do not establish ChatGPT host acceptance.
+3. **Visible Session:** historical Custom-GPT rollback contract only, not an advertised beta or the current MCP contract. Its temporary `sps_...` bearer token is deliberately visible in the prepared message and state footer.
+
+The provider lanes share the SkillPilot core while retaining strictly separate OAuth and session boundaries. Locale support and the selected frontend integration are release-specific; their presence in source is not a public platform promise.
+
+### Data Partitioning {#sec:sec-data-partitioning}
+
+#### A. Local Client (Browser / Local Storage) {#sec:sec-partition-browser}
+
+**Trust boundary:** controlled by the learner and the browser environment. The browser may hold:
+
+- the active SkillPilot ID;
+- optional named local profiles in which the SkillPilot ID is encrypted with a user-chosen password (the password itself is not stored);
+- a browser-local OpenAI eligibility confirmation bound to the current pseudonymous SkillPilot profile for the lifetime of the browser tab;
+- the selected curriculum and other UI preferences;
+- local SRS scheduling state before or between synchronization;
+- the freshly prepared provider launch URL or start message, which contains a natural start message with a temporary learning-session reference, never a permanent SkillPilot ID, OAuth token, or client secret.
+
+Every V1 coach start calls a learner-specific SkillPilot UI endpoint with the locally active permanent SkillPilot ID, creating a fresh learning-session reference at that exact moment. The Claude start opens its prepared chat; the ChatGPT Desktop beta displays the provider-specific message for the learner to paste into a new desktop chat. Because a launch URL or message carrying the temporary reference is itself sensitive, it can appear in browser history or a copied link and must be treated accordingly.
+
+For teacher-led usage, the teacher's browser or institution-controlled storage may additionally hold local class names, learner names or aliases, permanent SkillPilot IDs, and cached Level-2 personalization. That local class mapping is not stored centrally by SkillPilot. The existing-learner teacher view reads normal learner profile and mastery endpoints directly with the permanent ID. When the teacher first schedules a learning scope, one additional no-store read derives every atomic target ID in the learner's complete Level-2 personalization for the selected subject and its not-yet-mastered subset (unrestricted by the mutable Level-3 focus), storing those goal IDs, aggregate counts, and capture time as an immutable local planning baseline without storing the SkillPilot ID or numeric per-goal mastery values inside that baseline. The ordinary teacher view does not change learner-side planned goals and creates no server-side teacher, class, authorization record, or membership relationship.
+
+The teacher view disables learner-state mutations in the frontend, while its separate browser-local teacher course plan remains editable working data. One explicit, confirmed action can copy the plan label, dated blocks, and client-materialized atomic goal IDs into a separate personal subject schedule under the known permanent SkillPilot ID. The server validates the IDs against the current personalized subject scope: newly added IDs are accepted only while open, whereas IDs already present in the personal schedule may remain in a confirmed replacement to preserve continuity. The write transfers no local class ID, alias, coverage journal, attestation, mastery value, learner-derived planning baseline, or teacher-plan history and creates no teacher-to-learner relation. Later local teacher-plan edits are not synchronized; teacher-entered labels and block titles are copied unchanged and may contain personal data.
+
+The confirmed first-party action **Make planning effective** validates the complete set of current subject plans before writing all independent subject copies or none, enables plan-guided learning under the known permanent SkillPilot ID, and immediately selects the first due goal whose prerequisites are satisfied (pausable by the learner at any time). The subordinate **Update this subject only** action replaces only that subject copy without enabling plan-guided learning or selecting a goal. An explicit subject switch parks an unfinished active goal without changing mastery and selects an eligible due goal in the chosen subject; after confirmed completion, a valid plan containing the completed goal has priority, and otherwise valid plans follow deterministic due-urgency and subject order. Stale or invalid plans are ignored, no replacement is invented when no due eligible goal exists, generic Autopilot stays suppressed while plan-guided learning is enabled, and calendar progress alone causes no learner-state write. Plan exports omit the learner-derived baseline, though teacher-entered free text is exported unchanged.
+
+The permanent SkillPilot ID remains the bearer secret and full-access key for the learner state (deleting a local class leaves the ID valid and unchanged). A downloaded local-class export is therefore always encrypted in the browser with a teacher-chosen password before leaving the application, using versioned PBKDF2-SHA-256 and authenticated AES-256-GCM; SkillPilot neither stores nor recovers the password. Legacy plaintext JSON class exports remain importable for migration (flagged as unprotected in the UI), while new exports are never written in plaintext. File encryption protects the downloaded file at rest; it does not encrypt browser local storage, secure an unlocked device, invalidate the ID, or make the ID read-only after decryption.
+
+#### B. Persistent Learning State in the SkillPilot Backend {#sec:sec-partition-backend}
+
+**Trust boundary:** pseudonymous, centralized SkillPilot storage. The backend stores:
+
+- `Learner`: the permanent pseudonymous learner key;
+- provider-specific active learning sessions, including their absolute expiry and direct internal link to the learner;
+- `Mastery`: learning-goal mastery keyed by learner and goal;
+- planned goals and learner configuration, including curriculum, personalization, scope, active goal, filters, and synchronized client state;
+- optional personal subject schedules, their revisions and materialized atomic goal IDs, plus the current preference for plan-guided learning (initially off until confirmed activation);
+- static curricula, competence definitions, SRS decks, resources, and review metadata.
+
+No model provider needs the permanent SkillPilot ID to use the active Claude integration or the OpenAI candidate; it remains the internal join key from a temporary session to the learning state. The operator confirmed that the SkillPilot Core is hosted in Germany. This is not a statement that the selected AI provider, support services, or every external processor operates only in Germany; provider-side processing follows that provider's disclosed terms.
+
+#### C. Historical Visible Session Data — Rollback Only {#sec:sec-partition-visible-session}
+
+This retained legacy fallback is neither the active Claude beta nor a current ChatGPT MCP contract. The backend stores a `ChatSession` containing the HMAC hash of the temporary token, its learner association, language, start/expiry/use timestamps, and optional revocation metadata; plaintext `sps_...` tokens are returned only at session creation and must never be logged. ChatGPT sees the temporary token in the prepared message and required state footer, projected coaching context, visible selection numbers/references, public canonical learning-goal IDs, and Recall card IDs/prompts. The token is a short-lived credential (expiring absolutely after at most 24 hours without extension on use), not an anonymization of the conversation.
+
+#### D. Multilingual OpenAI V1 OAuth/MCP App Candidate Data {#sec:sec-partition-openai}
+
+This section describes the implemented OpenAI V1 security and data boundary (`skillpilot-coach` prepared for the neutral protected endpoint `https://mcp-openai.skillpilot.com/mcp`, superseding the historical `https://mcp-coach-v1.skillpilot.com/mcp` origin; actual host acceptance, cutover rollout, and directory publication remain separate steps). The backend isolates this lane from Visible Session tables and Claude connection records.
+
+The dedicated protected `/mcp` endpoint uses server-authenticated HTTPS, OpenAI connector mTLS, and a valid OAuth access token, mapped by a dedicated nginx virtual host to the loopback-only Spring handler `/internal/openai/v1/mcp` (see @ref{sec:sec-openai-mcp-client-binding}). For the hosted ChatGPT directory profile, the authorization server accepts the single configured confidential OAuth client (`client_secret_basic` + PKCE `S256` + exact client ID, redirect URI, resource, audience, and scopes, with the client secret stored solely in ChatGPT App configuration and the SkillPilot secret store); for the explicitly authorized native Windows Desktop route, a separate, strictly pinned public CIMD profile with PKCE `S256` is used and never acts as a fallback from confidential authentication. Open DCR, unpinned CIMD, `none`, `private_key_jwt`, and implicit profile fallback are excluded. The mTLS edge validates OpenAI's published CA chain, `clientAuth` EKU, and exact connector SAN, recording only bounded classifications (`VERIFIED`, temporary `OBSERVE_NO_CERT`, or loopback-only `LOCAL_OPERATOR`), never raw certificates (`observe` serves initial integration proof; hosted publication requires `enforce`).
+
+The backend stores the OAuth authorization/consent/code/opaque-access/rotating-refresh records and a separate learning-session record per explicit **Lernen starten** containing only an HMAC/hash of the high-entropy reference, learner association, `started_at`, `expires_at`, and revocation metadata. OAuth authenticates the App, whereas the session addresses the learner: every domain MCP call requires both a valid resource/scope-bound OAuth token and a valid session reference. Supported launch intents are bounded (current unit, Verified Recall with goal and batch size, and reviewed Abi 2026 exam entry with goal and course level); free browser-supplied prompt instructions are not persisted.
+
+Creating or loading a permanent SkillPilot ID, confirming provider notices, and configuring Level-2 personalization occur exclusively in the first-party SkillPilot WebGUI. ChatGPT holds OAuth access/refresh tokens strictly as transport credentials in the HTTP `Authorization` header (unseen by the user and outside model prompts/arguments), while the temporary `learningSessionId` is inserted into the launch message for domain tool calls without exposing the permanent SkillPilot ID. Through `CoachStateProjection`, MCP projects bounded workflow context (curriculum/scope summaries, active goal, progress, permitted actions, public goal/card IDs, task content, selected resources); exam solutions/scoring require the authorized evaluation path, and Recall answers unlock only after the learner-answer step.
+
+#### E. Active Claude V1 OAuth/MCP Data {#sec:sec-partition-claude}
+
+Claude is the active learning-beta provider: the personal marketplace supplies the plugin package and coach instructions, while learning operations call the isolated Claude V1 MCP boundary over HTTPS and OAuth. The Claude authorization principal is a generated, learner-independent technical connection reference rather than the permanent SkillPilot ID. Each explicit first-party start creates a fresh high-entropy 24-hour learning-session reference (stored as hash, learner association, creation/expiry timestamps, locale, and state version; never extended by chat activity or OAuth refresh). Both valid OAuth authorization and the temporary learning session are required for learner-specific calls.
+
+Claude's client-authentication profiles are separate from OpenAI's (supporting the constrained Claude public CIMD profile and an explicitly configured confidential profile with PKCE and provider-specific validation; OpenAI connector mTLS does not apply to Claude, and a public client identifier is not a secret). Projected coaching context omits the permanent learner key while remaining pseudonymous learning data. Incoming operations accept only structured goal/card references, language, concurrency/idempotency identifiers, authorized capability references, and bounded decisions (optional numeric exam score; boolean pass/fail per Recall card); unsupported result fields are rejected before core mutation or replay persistence, while answers, photos, voice inputs, and coach explanations stay in the Claude chat (`ClaudeV1AppAuthenticationFilter`, `ClaudeV1LearningSessionService`, `ClaudeV1McpContractAdapter`, `ClaudeV1CoachContextProjector`).
+
+#### F. Deliberately Submitted Learning-Goal Feedback {#sec:sec-partition-goal-feedback}
+
+The cockpit and learning-goal book open the same voluntary public feedback form (`credentials: 'omit'`, supplying public goal/book context without a learner ID and never auto-exporting provider chats). Under its dedicated notice and explicit confirmations, the form accepts a category, observation, and optional explanation/evidence, suggestion, source, and perspective without name, email, or attachment fields (users are instructed not to paste chats, credentials, or personal details, as length/field checks cannot detect arbitrary personal prose).
+
+`goal_feedback_submission` stores submitted text with random feedback/submission IDs, receipt time, public goal/book/page bindings and fingerprints, notice version/language, confirmations, and technical digests, with **no learner foreign key** (rate limiting hashes the client IP in memory for short-lived counters without proving absence of network metadata in infrastructure logs). Pending submissions become due for deletion after 30 days (daily cleanup plus cleanup on intake/export, hence the form states at most 31 days online). Operators export batches to access-restricted local files under `tmp/goal-feedback/inbox/<export-id>` and acknowledge the batch digest after verified local storage, deleting online content and leaving a content-free batch receipt. Exported text may undergo disclosed technically assisted review; local raw files and Codex session/tool records form separate retention boundaries requiring manual post-review removal per the [feedback intake runbook](repo:docs/qa-ci/goal-feedback-codex-intake.md) (`GoalFeedbackSubmissionService`, `GoalFeedbackRetentionService`, `GoalFeedbackExportService`, `GoalBookFeedbackPilotView.tsx`). Withdrawal or deletion requests use `support@skillpilot.com` (preferably citing the feedback ID).
+
+### Data Flow Scenarios {#sec:sec-data-flow-scenarios}
+
+- **Individual Learner Login:** The learner opens `https://skillpilot.com`; the browser creates a SkillPilot ID, loads an encrypted local profile, or accepts an existing ID, stores curriculum/configuration under that pseudonymous ID in the backend, and enters the cockpit or starts an available coach integration.
+- **Claude Beta Connection and Learning Start:** The learner installs the Claude plugin and completes OAuth (separate from the learner profile), configures context in the SkillPilot WebGUI, and triggers **Lernen starten** / **Start learning** to mint a 24-hour Claude learning session; Claude calls MCP tools with OAuth + temporary session reference, evaluates work inside the Claude conversation, and sends only structured decisions back to SkillPilot.
+- **Historical ChatGPT Visible Session (Rollback Only):** `POST /api/ui/learners/{skillpilotId}/visible-chat-start` creates a 24-hour `sps_...` token (HMAC-hashed on the server) and opens the legacy Custom GPT against `/api/ai/{lang}/sessions/.../visible`.
+- **Candidate Acceptance — OpenAI V1 App Connection:** After browser-local country age/guardian confirmation (collecting no birth date and inferring no age from grade level), ChatGPT runs OAuth Authorization Code + PKCE `S256` against the pinned client profile (`client_secret_basic` for hosted confidential App or separate pinned desktop CIMD profile), issuing resource/scope-bound tokens that authorize the App without selecting a learner or session.
+- **Open MCP Coach Without a Prepared Session:** Finding no `learningSessionId`, the coach calls no tool, asks for neither permanent nor temporary IDs, and instructs the learner to open `https://skillpilot.com/` and click **Lernen starten** / **Start learning**.
+- **Candidate Acceptance — OpenAI Session With Backend-Pinned Locale:** Clicking **Lernen starten** mints a fresh 24-hour session (storing HMAC hash, learner link, `communicationLocale`, `started_at`, `expires_at`, revocation metadata; repeated starts create distinct sessions without extending older ones) and injects the temporary reference into the launch prompt; backend MCP handlers require both valid OAuth and valid session without fallback.
+- **App Authorization Revocation & Browser Cockpit Review:** Server-side OAuth revocation invalidates the selected authorization and its access/refresh tokens while leaving separate session rows unusable without OAuth and preserving durable learning progress. Direct cockpit inspection (`GET /api/ui/learners/{skillpilotId}/state`) stays strictly between browser and SkillPilot backend.
+
+### Retention and Deletion {#sec:sec-retention-deletion}
+
+Repository-default credential validity periods for Claude V1 and the OpenAI V1 candidate are:
+
+- **OAuth access token:** 1 hour;
+- **Rotating refresh token:** 30 days;
+- **Claude V1 learning session:** a fixed 24 hours from its first-party start;
+- **OpenAI V1 learning session:** exactly 24 hours from the corresponding confirmed first-party **Lernen starten** action.
+
+The learning-session deadline is never extended by MCP requests, access-token refresh, browser reload, a new provider chat, or context compaction. Refresh-token rotation can establish a later credential expiry and must not be described as automatic deletion of all connection data after 30 days; session cleanup jobs default to hourly removal of expired rows. OAuth validity is not a general database-retention deadline for all expired authorization, consent, or diagnostic records, and deleting a learner does not automatically delete every learner-independent technical provider authorization. Historical Visible Session tokens expire after at most 24 hours, and learning progress is never deleted merely because an AI connection expires or is revoked.
+
+The active learning state stored under a SkillPilot ID in the SkillPilot database, including its associated SkillPilot learning sessions and SkillPilot connections, has one common deletion boundary:
+
+- the learner can delete it manually with the designated WebGUI function; and
+- after 365 consecutive days without a successful activity, it becomes due for automatic deletion and is removed during the next automatic deletion run.
+
+Activity is recorded only for these successfully completed boundaries:
+
+- successful creation of a SkillPilot ID;
+- foreground loading or resuming of the learning state through the SkillPilot WebGUI;
+- a server-completed import or export of signed learner data;
+- a learner-state change successfully stored on the server; or
+- a successfully completed SkillPilot session or AI-provider connection action;
+- a valid Coach/MCP invocation that completes with a successful domain result.
+
+Background GET requests, SSE traffic, OAuth token refreshes, merely selecting, opening, or reading a local file, and server operations that do not complete or are domain-rejected do not count and do not restart the 365-day period.
+
+After deletion, the permanent SkillPilot ID can no longer access that learning state and its associated SkillPilot learning sessions and learner-bound connections cannot be used; a separately retained technical OAuth authorization cannot restore or select the deleted learner. Because SkillPilot has no required real-world identity link, profile-related requests require proportionate proof of access through an agreed secure path (support must never solicit permanent IDs or temporary credentials in ordinary email; feedback requests use their feedback ID). This boundary does not delete local files or provider-side chats. Existing backup copies are not part of the active learning state. Neither manual deletion nor the 365-day expiry immediately deletes each backup copy individually.
+
+Plaintext learning-session references, OAuth credentials/secrets, request bodies, learner answers, and launch secrets must not enter application, reverse-proxy, trace, or support logs. The general `RequestLoggingFilter` skips protected MCP, OAuth, feedback, and coach-result routes entirely, while bounded OAuth/MCP telemetry records operation, outcome, latency, correlation IDs, and HMAC-derived temporary-session fingerprints rather than arbitrary tool arguments. Other API routes can log field-redacted, size-limited bodies at `DEBUG`; optional AI tracing (`tmp/ai-trace.jsonl`, disabled by default) uses known-field/token-pattern redaction rather than general personal-data detection and has no automatic TTL or learner-deletion coupling. Likewise, legacy `ChatStartRequest.promptContext` (truncated to 2,000 characters and unpersisted in the session row) is not redacted as a whole by debug logging and must not be advertised or traced without reviewing text exposure.
+
+### Backup, Recovery, and Residual Operating Rules {#sec:sec-backup-residual-risks}
+
+Learners and institutions remain responsible for preserving access keys and external identity mappings: signed learner exports/imports move state across browsers, password-protected ID files store the SkillPilot ID encrypted, local-class exports encrypt teacher mappings (leaving password hygiene and obsolete-file deletion with the institution), logging out clears only the active browser login, and server-side learner deletion leaves local exports/ID files untouched until removed on the device.
+
+[`scripts/backup_db.sh`](repo:scripts/backup_db.sh) sets restrictive file permissions, defaults to `BACKUP_RETENTION_DAYS=30`, writes SQL dumps excluding feedback-content tables, and prunes aged files only during successful backup runs (without dump-level encryption by the script itself or an exact to-the-hour 30-day guarantee). `application.yml` defaults to `INFO` logging in `logs/skillpilot.log` with 10 MB rotation and `max-history: 7`; actual deployed log, proxy, trace, snapshot, WAL, and off-site limits remain operational facts to confirm separately and must never be conflated with active learner or online feedback deletion.
+
+Key operating rules and residual risks:
+
+- **Credentials in transit and support:** Live learning-session references (`Claude`, `OpenAI`, or legacy `sps_...`) and OAuth access/refresh tokens are bearer credentials — never share unredacted chats, screenshots, browser history, HAR files, or logs containing them, whereas canonical goal and card IDs are public technical identifiers.
+- **Scope of file encryption and provider chats:** Class-export encryption protects the downloaded file at rest and detects tampering, without encrypting live `skillpilot_classes` browser storage or securing an unlocked device. Learners must be guided not to type or upload personal data into the AI chat, which the provider processes under its own terms and which SkillPilot deletion cannot erase.
+- **Truthful release gating:** Visible Session remains rollback-only, and OpenAI candidate code or Claude beta availability never establishes host acceptance on another client. Before any provider release or cutover, verify privacy notices, provider disclosures/eligibility, deployed retention/logging/OAuth profiles, real revocation behavior, and remaining processor/backup confirmations without weakening authentication or retaining unnecessary text.

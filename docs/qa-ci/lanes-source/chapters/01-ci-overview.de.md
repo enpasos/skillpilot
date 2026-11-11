@@ -1,0 +1,101 @@
+## Continuous Integration (CI) {#sec:qal-ci-overview}
+
+Dieses Kapitel dokumentiert den zweistufigen CI-Workflow in `.github/workflows/ci.yml`, den optionalen Paket- und Ontologie-Workflow in `.github/workflows/owl-ci.yml` sowie die lokale Suite `./run_ci.sh`.
+
+### Auslöser und zweistufige Ausführung {#sec:qal-ci-tiers}
+
+Der Workflow `.github/workflows/ci.yml` startet bei:
+
+- Push auf `main`,
+- Pull Requests gegen `main` (beim Öffnen, Aktualisieren, Wiederöffnen oder Wechsel auf `ready for review`),
+- manuellem Start (`workflow_dispatch`).
+
+Reine Dokumentations- und temporäre Änderungen (`README.md`, `AGENTS.md`, `docs/**`, `sandbox/**`, `tmp/**`) lösen `ci.yml` nicht aus; für die Dokumentation greift der eigene Workflow `.github/workflows/docs_checks.yml`.
+
+Die Ausführung ist in zwei Stufen gegliedert, deren Struktur durch `scripts/ci_tiers.test.mjs` in `quick-checks` erzwungen wird:
+
+- **Quick Tier:** Läuft bei jedem Trigger einschließlich Draft-Pull-Requests. Die Jobs warten auf keinen anderen Job und liefern daher sofortiges Frühfeedback.
+- **Complete Check:** Läuft bei Pushes auf `main`, manuellen Starts und nicht als Draft markierten Pull Requests parallel über alle vollständigen Prüfjobs.
+
+Verbindliche Stufenregeln:
+
+- Der Complete Check enthält jede erforderliche Prüfung eigenständig; der Quick Tier wiederholt schnelle Prüfungen nur vorab und ersetzt keinen Vollcheck.
+- Ein Draft-PR erhält nur den Quick Tier (Complete-Check-Jobs erscheinen als `skipped`). Beim Markieren als `ready for review` startet der Complete Check für denselben Stand; da GitHub keine Drafts mergt, besitzt jeder mergebare PR einen vollständigen Lauf auf seinem aktuellen Head.
+- Weder Quick Tier noch Complete Check filtern einzelne Jobs anhand geänderter Dateipfade.
+- Abgespaltene Teiljobs behalten Runner-Image, Werkzeuge und wiederhergestellte Zielbuch-Artefakte ihres Ursprungsjobs bei.
+
+### Jobs im Quick Tier und Complete Check {#sec:qal-ci-jobs}
+
+:::table{cols="4.6cm,X"}
+| Quick-Tier-Job | Geprüfter Umfang |
+| --- | --- |
+| `action-regression-ci` | Spring-gehosteter Custom-GPT-Action-Regressionsclient und Deployment-Entrypoint-Guards |
+| `openai-mcp-app-ci` | OpenAI-MCP-App-Verträge, Plugin-Release- und Submission-Prüfungen |
+| `claude-connector-v1-ci` | Claude-MCP-Apps, Plugin-Paket und Direct-Install-Publikation |
+| `openai-v1-public-edge-ci` | OpenAI-V1-Public-Edge- und mTLS-Verifikationsskripte |
+| `quick-checks` | CI-Strukturtests sowie frühe Läufe von ESLint, TypeScript-Typprüfung, `validate:graph` und `validate_schemas.py` |
+| `backend-quick-checks` | CI-Runner-Tests und Kompilierung der Backend-Haupt- und Testquellen (ohne Testausführung) |
+:::
+
+Im Complete Check baut und verifiziert `goal-book-publication` einmalig alle registrierten Lernzielbücher; alle mit `ja` markierten Folgejobs stellen dieses Artefakt desselben Laufs wieder her:
+
+:::table{cols="4.6cm,1.6cm,X",longtable=true}
+| Complete-Check-Job | Zielbuch | Geprüfter Umfang |
+| --- | --- | --- |
+| `goal-book-publication` | – | Bau und Verifikation aller registrierten Lernzielbuch-Publikationen |
+| `frontend-ci` | ja | Anwendungslogik auf Fixtures, Paket-/Laufzeitadapter, Lernzielauswahl, GPT-Instruktionslimits, deterministisches ZIP-Primitiv, ESLint, `npm run build:application` (nur App gegen eingecheckte Assets, im Unterschied zum integrierten `npm run build`) und Prüfungen auf dem Build |
+| `goal-book-contracts` | ja | `test:goal-book-pipeline` |
+| `graph-validation` | ja | Skill-Graph-, View-, Quellen-, Review- und Status-Gates |
+| `curriculum-assessment-proofs` | ja | Beweise transitiver Minimalität sowie Assessment-, Prüfungs- und Routentests |
+| `curriculum-integrated-build` | ja | Laufzeitassets, Visualisierungsprüfungen, integrierter App-Build und reines Paket-Frontend |
+| `curriculum-package-contracts` | ja | Paketverträge und Selbsttests, Schemata, Ziel-IDs, Archiv- und Legacy-Referenzvalidatoren |
+| `backend-ci` | ja | Alle Backend-Testklassen außer den Voraussetzungs-Reduktionsbeweisen in drei disjunkten parallelen Test-JVMs (`scripts/run_backend_ci.py`; fehlgeschlagene Vorläufertests werden zuerst wiederholt) |
+| `backend-reduction-proofs` | nein | Voraussetzungs-Reduktionsbeweise in zwei parallelen Partitionen (alle Fächer ohne Physik sowie die Physik-Methode isoliert); `./gradlew check` ohne Optionen führt weiterhin die Gesamtsuite seriell aus |
+:::
+
+### Curriculum-, View- und Archivgrenzen sowie optionale Paket-CI {#sec:qal-ci-scopes}
+
+Die vier Curriculum-Jobs validieren gemeinsam Code, Verträge, Modelle, Reviews, Schemata und eingecheckte Statusdateien, materialisieren im regulären Commit-Lauf jedoch **kein** reales 1,7-GB-Curriculum-ZIP:
+
+- **Graph- und Projektionsregeln:** `validate:graph` läuft standardmäßig strikt (`GVR-*` blockierend; Warnmodus lokal über `VALIDATE_GRAPH_STRICT_RULES=0 npm run validate:graph`). `validate:view-filters` prüft in der CI die 17 kanonischen DE-Gymnasium-Landschaften (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`; lokal erweiterbar per `APPLICABILITY_VALIDATION_SCOPE=all`). Akzeptierte `APV-201`-Restwarnungen stehen in `docs/qa-ci/applicability-accepted-warnings.json`; `APV-202` ist rein diagnostisch.
+- **Dauer-, Quellen-, Dokumentations- und Merkkarten-Gates:** Geprüft werden die hessische Mathematik-Sek-I-Dauerprojektion G8/G9 (`check:he-math-duration-projection`), die sichtbare Quellenabdeckung für Mathematik und Physik (`quality:source-coverage-audit:check`), explizite Kompositionsansichten (`validate:composition-views`), Dokumentationshinweise, Statusregister, Links und Indizes (`check:generated-doc-notices`, `check:generated-status-registry`, `check:docs-links`, `check:docs-indexes`) sowie alle konfigurierten Merkkarten-Ledger (`quality:memory-card-review:check:all`, wobei fehlende `CQR-302`-Konfiguration `M6`, nicht aber `M5` blockiert).
+- **Archiv- und Legacy-Referenzgrenzen:** Die Validatoren sichern die hessischen Bestandsgrenzen unter `curricula/DE/Gymnasium/input/HE/abi` (`curricula/DE/Gymnasium/input/HE/retained-asset-registry.json` und `curricula/DE/Gymnasium/provenance/hessen-upper-secondary-retirement-registry.json`), die Sek-I-Grenzen unter `curricula/DE/Gymnasium/input/HE/lower-secondary` (`curricula/DE/Gymnasium/provenance/hessen-lower-secondary-retirement-registry.json`) sowie die Artefakte der hessischen Chemie-Abiturpipeline 2026 (`slot_matrix.json`, `coverage_requirements.json`, `task_bank.json`).
+- **Optionale Paket- und FWU-OWL-CI (`.github/workflows/owl-ci.yml`):** Läuft wöchentlich oder manuell auf frischen Runnern für das reale 1,7-GB-Standalone-JSON-Paket samt hermetischem Consumer, alle Fachexport-ZIPs und die Core-first-FWU-OWL-/Roundtrip-Lane. Die Produktivlaufzeit nutzt ausschließlich JSON-Pakete und benötigt kein OWL; der verpflichtende JSON-Release-Modell-Check verifiziert lediglich den im Build-Profil gepinnten FWU-Core-Commit und Datei-Hash ohne RDF-/ROBOT-/HermiT-Lauf. Die realen 2,36-GB-FWU-OWL-Wrapper bleiben explizite Release-Operationen.
+
+### Ubuntu-Paketquellen und Mirror-Failover {#sec:qal-ci-ubuntu-apt}
+
+Jeder Job mit Betriebssystem-Paketinstallation führt vorab `.github/actions/ubuntu-apt` aus und beschränkt APT strikt auf offizielle Ubuntu-Quellen (ohne Chrome- und Microsoft-Repositories des Runner-Images):
+
+- **Mirror-Listen-Failover:** Jede Ubuntu-Stanza liest `/etc/apt/skillpilot-ubuntu-mirrors/` (`archive.txt` bevorzugt `https://archive.ubuntu.com/ubuntu/`, `security.txt` bevorzugt `https://security.ubuntu.com/ubuntu/`, jeweils mit dem Azure-Mirror `http://azure.archive.ubuntu.com/ubuntu/` an zweiter Stelle). Der APT-Mirror-Transport schwenkt fehlgeschlagene oder länger als 30 s blockierte Dateien auf die Alternativquelle um; Wiederholungen auf derselben Quelle sind deaktiviert (`Acquire::Retries "0"`).
+- **Vorab-Probe auf `InRelease` & Signaturprüfung:** Vor jedem `apt-get update` (auch bei verschachtelten Playwright-Aufrufen) prüft `/usr/local/sbin/skillpilot-order-ubuntu-mirrors` `InRelease` jeder Quelle (maximal 20 s), vergibt Priorität `1` an die erste antwortende Quelle und protokolliert `SkillPilot Ubuntu mirror order: …`. Suites, Komponenten und `Signed-By` bleiben unverändert, sodass jeder Mirror gegen den Ubuntu-Keyring und signierte Index-Hashes verifiziert wird; [ci_ubuntu_apt.test.mjs](repo:scripts/ci_ubuntu_apt.test.mjs) sichert diese Richtlinie offline gegen ein lokal signiertes Fixture-Repository ab.
+
+### Lokale Ausführung und Status-Snapshots {#sec:qal-ci-local}
+
+Vom Repository-Root steuert `./run_ci.sh` die lokalen Prüfbereiche (unbekannte oder mehrere Argumente enden mit Exit-Code `2`):
+
+```bash
+./run_ci.sh
+./run_ci.sh all
+./run_ci.sh application
+./run_ci.sh curriculum
+./run_ci.sh package
+./run_ci.sh owl
+./run_ci.sh full
+```
+
+- `application`: Custom-GPT-Action-Regression, Fixture-basierte Frontend-Logik, GPT-Instruktionslimits, Lint, `build:application` und isolierte Gradle-Backend-Checks.
+- `curriculum`: Graph-/Daten-/Review-/Asset-Gates, Schemata und deterministische JSON-Release-Modell-Konformität (ohne reales 1,7-GB-ZIP).
+- `package`: Optionales reales Standalone-JSON-ZIP, unabhängige Paketvalidierung, sichere Provisionierung/Aktivierung, Readiness-Evaluation und hashgebundener hermetischer Consumer.
+- `owl`: Optionale FWU-OWL-Builder/Verträge, Reverse-Compiler-Tests, semantischer MEM/FWU-Roundtrip und OWL-2-DL-/HermiT-Validierung.
+- `all` (Standard ohne Argument): Alle verpflichtenden Application- und Curriculum-Prüfungen genau einmal (immer abschließend bei bereichsübergreifenden Laufzeitänderungen ausführen).
+- `full`: `all` zuzüglich der optionalen Lanes `package` und `owl`.
+
+Optionale lokale Status- und MEM-Snapshots:
+
+```bash
+cd app
+npm run quality:curriculum-status
+npm run quality:mem-sparql-consistency
+```
+
+Der erste Befehl aktualisiert [curriculum-quality-status.json](repo:docs/qa-ci/status/curriculum-quality-status.json) und `.md` für `/quality-dashboard`; der zweite schreibt die nicht-blockierenden MEM/FWU-Audit- und Review-Queue-Artefakte unter `docs/qa-ci/status/` (siehe @ref{sec:qal-mem-sparql-runbook}).

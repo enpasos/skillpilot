@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-skill-graph-architecture",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-general-goal-system",
+    "02-node-types",
+    "03-view-projection",
+    "04-source-and-resource-links",
+    "05-content-integration",
+    "06-source-rationales",
+    "07-atomic-goal-visualizations",
+    "08-learning-goal-book",
+    "09-canonical-gymnasium-rollout",
+    "10-mem-fwu-roundtrip-plan",
+    "11-dual-curriculum-package-releases"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/concept/skill-graph/skillpilot-skill-graph-architecture.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Architekturhandbuch · Band Ia",
+      "title": "Skill-Graph-Architektur,\nMedien, Lernzielbuch\nund Paketaustausch",
+      "subtitle": "Schichtenmodell, Zieltypen, Sichtenprojektion, Quellen- und Contentanbindung,\nVisualisierungen, Lernzielbuch-Pipeline, Gymnasium-Rollout und Dual-Release-Pakete",
+      "pdfTitle": "SkillPilot — Skill-Graph-Architektur, Medien, Lernzielbuch und Paketaustausch (DE)",
+      "pdfSubject": "Schichtenmodell, Zieltypen, Sichtenprojektion, Contentanbindung, Visualisierungen, Lernzielbuch und Dual-Release-Pakete",
+      "pdfKeywords": "SkillPilot, Skill-Graph, Zieltypen, Composition View, Contentanbindung, Lernzielbuch, MEM, FWU, Dual-Release",
+      "runningHeadLeft": "SkillPilot · Skill-Graph-Architektur & Austausch",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Bandes",
+        "body": "Ergänzend zur formalen Graph-Definition (Band I) bündelt Band Ia die weiterführenden Architektur-, Medien-, Publikations- und Austauschverträge rund um den Skill-Graphen: das allgemeine Zielsystem und seine schrittweise Migration, die pädagogischen Knotentypen, die deterministische Sichtenprojektion und Goal-Placement-Semantik, Quellen- und Contentlink-Trennung (Issue #50), nachvollziehbare Quellenbegründungen, atomare Zielvisualisierungen, die Lernzielbuch- und Evidenz-Review-Pipeline, die kanonische Gymnasium-Rollout-Politik sowie den MEM/FWU-Ontologie-Roundtrip und duale Curriculum-Paket-Releases."
+      },
+      "partHeaders": {
+        "01-general-goal-system": "Zielsystem, Knotentypen & Projektion",
+        "04-source-and-resource-links": "Quellen, Content, Bilder & Lernzielbuch",
+        "09-canonical-gymnasium-rollout": "Kanonischer Rollout & Dual-Release-Pakete"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Architektur- und Spezifikationsdokumentation; siehe LICENSING.md).",
+        "Eigene Skill-Landschaften und didaktische Medien stehen separat unter CC-BY-4.0; externe Inhalte behalten ihre Originallizenzen."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/concept/skill-graph/skillpilot-skill-graph-architecture.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Architecture Handbook · Volume Ia",
+      "title": "Skill Graph Architecture,\nMedia, Goal Book,\nand Package Interchange",
+      "subtitle": "Layered Goal System, Node Types, View Projection, Source and Content Integration,\nVisualizations, Learning-Goal Book Pipeline, Gymnasium Rollout, and Dual Package Releases",
+      "pdfTitle": "SkillPilot — Skill Graph Architecture, Media, Goal Book, and Package Interchange (EN)",
+      "pdfSubject": "Layered goal system, node types, view projection, content integration, visualizations, learning-goal book, and dual package releases",
+      "pdfKeywords": "SkillPilot, skill graph, node types, composition view, content integration, learning-goal book, MEM, FWU, dual release",
+      "runningHeadLeft": "SkillPilot · Skill Graph Architecture & Interchange",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this volume",
+        "body": "Complementing the formal Graph Definition (Volume I), Volume Ia consolidates the architectural, media, publication, and interchange contracts surrounding the skill graph: the layered general goal system and incremental migration, pedagogical node types, deterministic view projection and goal-placement semantics, source vs. external content-package separation (Issue #50), human-readable source rationales, atomic goal visualizations, the learning-goal book and multi-AI evidence-review pipeline, the canonical German Gymnasium rollout policy, and MEM/FWU ontology roundtrips plus dual curriculum package releases."
+      },
+      "partHeaders": {
+        "01-general-goal-system": "Goal System, Node Types & Projection",
+        "04-source-and-resource-links": "Sources, Content, Media & Goal Book",
+        "09-canonical-gymnasium-rollout": "Canonical Rollout & Dual Package Releases"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical architecture and specification documentation; see LICENSING.md).",
+        "First-party skill landscapes and didactic media are licensed separately under CC-BY-4.0; external resources retain their upstream licenses."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "general-goal-system",
+    "node-types",
+    "view-projection",
+    "source-and-resource-links",
+    "content-integration",
+    "source-rationales",
+    "atomic-goal-visualizations",
+    "learning-goal-book",
+    "canonical-gymnasium-rollout",
+    "mem-fwu-roundtrip-plan",
+    "dual-curriculum-package-releases"
+  ],
+  "webPages": [
+    {
+      "id": "general-goal-system",
+      "sources": ["01-general-goal-system"],
+      "paths": {
+        "en": "docs/concept/skill-graph/general-goal-system-and-migration.md",
+        "de": "docs/concept/skill-graph/general-goal-system-and-migration.de.md"
+      },
+      "titles": {
+        "en": "General Goal System and Incremental Migration",
+        "de": "Allgemeines Zielsystem und schrittweise Migration"
+      },
+      "navLabels": {
+        "en": "§1 General Goal System",
+        "de": "§1 Allgemeines Zielsystem"
+      }
+    },
+    {
+      "id": "node-types",
+      "sources": ["02-node-types"],
+      "paths": {
+        "en": "docs/concept/skill-graph/node-types.md",
+        "de": "docs/concept/skill-graph/node-types.de.md"
+      },
+      "titles": {
+        "en": "Node Types",
+        "de": "Knotentypen"
+      },
+      "navLabels": {
+        "en": "§2 Node Types",
+        "de": "§2 Knotentypen"
+      }
+    },
+    {
+      "id": "view-projection",
+      "sources": ["03-view-projection"],
+      "paths": {
+        "en": "docs/concept/skill-graph/view-projection-and-goal-placement.md",
+        "de": "docs/concept/skill-graph/view-projection-and-goal-placement.de.md"
+      },
+      "titles": {
+        "en": "View Projection and Goal Placement",
+        "de": "Sichtenprojektion und Goal-Placement"
+      },
+      "navLabels": {
+        "en": "§3 View Projection",
+        "de": "§3 Sichtenprojektion"
+      }
+    },
+    {
+      "id": "source-and-resource-links",
+      "sources": ["04-source-and-resource-links"],
+      "paths": {
+        "en": "docs/concept/skill-graph/source-and-resource-links.md",
+        "de": "docs/concept/skill-graph/source-and-resource-links.de.md"
+      },
+      "titles": {
+        "en": "Source and Resource Links",
+        "de": "Quellen- und Ressourcenlinks"
+      },
+      "navLabels": {
+        "en": "§4 Source & Resource Links",
+        "de": "§4 Quellen- & Ressourcenlinks"
+      }
+    },
+    {
+      "id": "content-integration",
+      "sources": ["05-content-integration"],
+      "paths": {
+        "de": "docs/concept/skill-graph/content-integration.md",
+        "en": "docs/concept/skill-graph/content-integration.en.md"
+      },
+      "titles": {
+        "de": "Contentanbindung: Architekturrahmen",
+        "en": "Content Integration: Architectural Framework"
+      },
+      "navLabels": {
+        "en": "§5 Content Integration",
+        "de": "§5 Contentanbindung"
+      }
+    },
+    {
+      "id": "source-rationales",
+      "sources": ["06-source-rationales"],
+      "paths": {
+        "en": "docs/concept/skill-graph/human-readable-source-rationales.md",
+        "de": "docs/concept/skill-graph/human-readable-source-rationales.de.md"
+      },
+      "titles": {
+        "en": "Human-Readable Source Rationales",
+        "de": "Nachvollziehbare Quellenbegründungen"
+      },
+      "navLabels": {
+        "en": "§6 Source Rationales",
+        "de": "§6 Quellenbegründungen"
+      }
+    },
+    {
+      "id": "atomic-goal-visualizations",
+      "sources": ["07-atomic-goal-visualizations"],
+      "paths": {
+        "en": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+        "de": "docs/concept/skill-graph/atomic-goal-visualizations.de.md"
+      },
+      "titles": {
+        "en": "Atomic Goal Visualizations",
+        "de": "Visualisierungen für atomare Lernziele"
+      },
+      "navLabels": {
+        "en": "§7 Goal Visualizations",
+        "de": "§7 Zielvisualisierungen"
+      }
+    },
+    {
+      "id": "learning-goal-book",
+      "sources": ["08-learning-goal-book"],
+      "paths": {
+        "en": "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md",
+        "de": "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.de.md"
+      },
+      "titles": {
+        "en": "Learning-Goal Book and Evidence-Review Pipeline",
+        "de": "Lernzielbuch und Evidenz-Review-Pipeline"
+      },
+      "navLabels": {
+        "en": "§8 Learning-Goal Book",
+        "de": "§8 Lernzielbuch"
+      }
+    },
+    {
+      "id": "canonical-gymnasium-rollout",
+      "sources": ["09-canonical-gymnasium-rollout"],
+      "paths": {
+        "en": "docs/concept/skill-graph/canonical-gymnasium-rollout.md",
+        "de": "docs/concept/skill-graph/canonical-gymnasium-rollout.de.md"
+      },
+      "titles": {
+        "en": "Canonical Gymnasium Rollout Policy",
+        "de": "Rollout-Politik für das kanonische Gymnasium"
+      },
+      "navLabels": {
+        "en": "§9 Gymnasium Rollout",
+        "de": "§9 Gymnasium-Rollout"
+      }
+    },
+    {
+      "id": "mem-fwu-roundtrip-plan",
+      "sources": ["10-mem-fwu-roundtrip-plan"],
+      "paths": {
+        "en": "docs/concept/skill-graph/mem-fwu-roundtrip-plan.md",
+        "de": "docs/concept/skill-graph/mem-fwu-roundtrip-plan.de.md"
+      },
+      "titles": {
+        "en": "MEM/FWU Roundtrip Plan",
+        "de": "MEM/FWU-Roundtrip-Plan"
+      },
+      "navLabels": {
+        "en": "§10 MEM/FWU Plan",
+        "de": "§10 MEM/FWU-Plan"
+      }
+    },
+    {
+      "id": "dual-curriculum-package-releases",
+      "sources": ["11-dual-curriculum-package-releases"],
+      "paths": {
+        "de": "docs/concept/skill-graph/dual-curriculum-package-releases.md",
+        "en": "docs/concept/skill-graph/dual-curriculum-package-releases.en.md"
+      },
+      "titles": {
+        "de": "Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie",
+        "en": "Dual Curriculum Packages: JSON Runtime and Curriculum Ontology"
+      },
+      "navLabels": {
+        "en": "§11 Dual Package Releases",
+        "de": "§11 Duale Paket-Releases"
+      }
+    }
+  ]
+}

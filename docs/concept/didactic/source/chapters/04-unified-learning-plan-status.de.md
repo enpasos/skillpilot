@@ -1,0 +1,240 @@
+## Einheitlicher, backendgesteuerter Lernplanstatus {#sec:unified-plan-status}
+
+### Ziel und Leitprinzipien {#sec:plan-status-goals}
+
+SkillPilot verwendet für Cockpit, Chat und lernendenbezogene Planung einen gemeinsamen Lernplanstatus, der drei Fragen beantwortet:
+
+**Welches Pensum ist für die laufende Periode vorgesehen? Wie steht der Lernfortschritt gegenüber dem Plan? Woran wird als Nächstes weitergelernt?**
+
+Die Berechnung und die sprachliche Formulierung liegen vollständig im Backend. Cockpit, Chat und Planung übernehmen die bereitgestellten Aussagen unverändert — sie rechnen den Status nicht selbst nach und erzeugen keine abweichenden Bewertungen.
+
+:::principle{title="Zentraler Grundsatz"}
+Eine fachliche Berechnung, eine verbindliche Formulierung, mehrere Ausgabekanäle.
+:::
+
+Eine typische Statusausgabe lautet:
+
+> Mathematik: Tagesziel erreicht · 3 Lernziele im Rückstand
+> Physik: Heute kein Tagesziel · 2 Lernziele im Rückstand
+
+Beim anschließenden Einstieg in die Lernaufgabe folgt separat:
+
+> **Dein aktives Lernziel: Potenzfunktionen mit ganzzahligen Exponenten beschreiben**
+
+#### Einfachheit als Entwurfsziel
+
+Die Umsetzung bevorzugt eine einfache, verlässliche Lösung für die üblichen Anwendungssituationen gegenüber einer komplizierten Behandlung sämtlicher Sonderfälle. **Die bewusste Begrenzung betrifft den Funktionsumfang, nicht die Richtigkeit der unterstützten Fälle:** Nicht zuverlässig auswertbare Situationen werden verständlich benannt, statt durch Schätzwerte oder Sonderfallheuristiken verdeckt zu werden. Vorhandene Planstrukturen, Lernzustände und Aktualisierungsmechanismen werden weiterverwendet; das Vorhaben schafft kein neues allgemeines Planungssystem, sondern ersetzt verteilte Berechnungen durch einen gemeinsamen Backend-Baustein.
+
+:::warning{title="Verbindliche Produktkorrektur vom 4. November 2026"}
+Das Gesamt-IST zählt standardmäßig explizite und implizite Beherrschung. Implizit bedeutet den Nachweis selbstständiger Anwendung durch fachlich geeignete Abschlussprüfungen; es bedeutet nicht bloß entfallene Vorbereitung. Ein gültiger Abschluss gilt auch für spätere Voraussetzungen und wird durch neue Verbraucher oder einen Planwechsel nicht aufgehoben. Die Anerkennung entsteht in der verbindlichen Lerneinheit und wirkt global. Tages- und Wochenkontingente zählen weiterhin nur tatsächliche explizite Abschlussereignisse.
+
+Die Option „Nur explizit erreichte Lernziele zählen“ betrifft allein das Gesamt-IST des Plans. Der unten beschriebene korrigierte Vertrag ist noch nicht als vollständig implementiert oder deployed bestätigt; die alte Bedarfsstopp-Implementierung und ihre Prüfergebnisse sind kein Nachweis dafür. Siehe [Abschlusskonzept](repo:docs/concept/skill-graph/assessment-gated-completion.md).
+:::
+
+### Fachliche Bedeutung des Status {#sec:plan-status-meaning}
+
+#### Periodenpensum, Planstand und aktives Lernziel
+
+Der Status unterscheidet drei voneinander unabhängige Aussagen: das Pensum der laufenden Periode, den mengenmäßigen Planstand und das aktive Lernziel.
+
+:::table{cols="6.4cm,X"}
+| Aussage | Daraus darf nicht abgeleitet werden |
+| --- | --- |
+| Tages- oder Wochenziel erreicht | Es ist nichts mehr offen. |
+| Kein Pensum für die laufende Periode | Es besteht kein Rückstand. |
+| Mengenmäßig im Plan | Alle früher eingeplanten Inhalte werden beherrscht. |
+| Aktives Lernziel vorhanden | Das Periodenziel ist noch nicht erreicht. |
+| Weiterlernen möglich | Zusätzliches Lernen wurde bereits vereinbart. |
+:::
+
+Ein erfülltes Tagesziel kann mit einem verbleibenden Rückstand zusammenfallen; ein aktives Lernziel kann dem Aufholen, dem Vorarbeiten oder der Fortsetzung einer begonnenen Lerneinheit dienen. Die Statuskommunikation stellt dies nicht als Widerspruch dar.
+
+#### Mengenbilanz je Fach
+
+Jedes fortschrittswirksame Planziel zählt als eine Einheit; weder tatsächliche Lernzeit noch Schwierigkeitsgewichte gehen ein. Bereits beherrschte, später eingeplante Ziele werden als Vorarbeit berücksichtigt und können einen mengenmäßigen Rückstand innerhalb desselben Fachs ausgleichen.
+
+Beispiel: Drei früher eingeplante Ziele sind noch offen, fünf später eingeplante Ziele bereits beherrscht. Mengenmäßig besteht ein Vorsprung von zwei Zielen; die drei früher eingeplanten Ziele bleiben dennoch inhaltlich offen und werden bei der weiteren Zielauswahl berücksichtigt.
+
+> **„Im Plan“ beschreibt den Umfang des Lernfortschritts. Es bestätigt nicht die Beherrschung sämtlicher bis dahin vorgesehener Inhalte.**
+
+Der angezeigte Rückstand ist eine Größe dieser Mengenbilanz und nicht identisch mit der Anzahl aller früher vorgesehenen, noch offenen Ziel-IDs. Eine detaillierte Zielübersicht darf inhaltliche Lücken zusätzlich sichtbar machen.
+
+#### Keine Verrechnung zwischen Fächern
+
+Jedes Fach wird unabhängig ausgewertet: Vorarbeit in Mathematik gleicht keinen Rückstand in Physik aus. Es gibt keinen fachübergreifenden Gesamtsaldo, keine Gesamtquote und keine Gesamtampel. Fachübergreifende Voraussetzungsbeziehungen im Skill-Graphen bleiben davon unberührt: Eine anerkannte Kompetenz erfüllt auch Voraussetzungen anderer Fächer, aber jeder Fachplan zählt ausschließlich seine eigenen Ziel-IDs (je ID höchstens einmal).
+
+### Verbindliche Datengrundlage {#sec:plan-status-data}
+
+#### Gemeinsame Ergebnisquelle
+
+Gespeicherte Lernzielergebnisse bleiben die einzige individuelle Ergebnisquelle. Die Planerfüllung wird aus expliziter Mastery und global wirksamer, prüfungsbasierter Anerkennung abgeleitet, ohne zusätzliche Mastery-Zeilen oder einen zweiten Zielergebniszustand zu schreiben. Cockpit, Lernzielbaum und Lehrkraftplanung führen keinen abweichenden manuellen Unterrichtsstand; die frühere manuelle Unterrichtsabdeckung samt Attestierungsablauf ist als Fortschrittsmodell abgelöst (Altdaten bleiben erhalten, erzeugen aber keine Zielerreichung). Planung legt Umfang und Termine fest; sie bestätigt oder verändert keine Ergebnisse.
+
+Die vollständige persönliche Zielmenge und die Planmenge $G$ sind nicht zwangsläufig identisch: Ein vor Planbeginn abgeschlossenes Ziel zählt zur persönlichen Zielerreichung, ohne in $G$ zu liegen. $G$ ist eine zeitliche Auswahl, kein eigener Anerkennungsvertrag — die globale Anerkennung wird unabhängig von $G$ bestimmt und erst danach mit $G$ geschnitten. Plan- und Fokuswechsel verändern nicht, was bereits gilt. Abgeschlossene Orientierungsziele werden im jeweiligen Umfang konsistent mitgezählt, ohne fachliche Beherrschung zu behaupten. Nicht verfügbare oder veraltete Ergebnisdaten werden als solche ausgewiesen, niemals als null erreichte Ziele; Statusabrufe bleiben rein lesend.
+
+#### Bereinigte Planmenge
+
+Die bei Planerstellung erfasste Ausgangsbasis hält fest, welche vorgesehenen Ziele noch keine explizite Mastery hatten; diese Ziele bilden die fortschrittswirksame Planmenge $G$. Ein aktuell implizit anerkanntes Ziel wird bei Planerstellung nicht zusätzlich aus $G$ gestrichen, damit die Option „Nur explizit erreichte Lernziele zählen“ seinen noch fehlenden expliziten Abschluss weiterhin berücksichtigen kann.
+
+**Alle Größen der Statusrechnung beziehen sich ausschließlich auf dieselbe bereinigte Planmenge $G$.** Vor Planerstellung explizit beherrschte Ziele tragen weder zum Soll noch zum IST noch zu den Periodenabschlüssen dieses Plans bei; später beherrschte Ziele aus $G$ bleiben in $G$ und zählen zum IST (Beispiel: 50 Clusterziele, davon 20 vorab beherrscht $\Rightarrow |G| = 30$; 5 Ziele in Woche 1 ergeben ein Wochenpensum von 5). Ein zusätzlicher Abschluss-Stichtag zur Vorwissensabgrenzung ist nicht nötig.
+
+#### Eindeutige Zuordnung, Planänderungen und Bestandsdaten
+
+- **Stabile Kennungen:** Ausgewertet wird über stabile Fach- und Ziel-IDs, nicht über Anzeigenamen oder Übersetzungen.
+- **Deduplizierung:** Mehrere aktive Pläne desselben Fachs werden zusammengeführt; jede Ziel-ID zählt im Fach höchstens einmal mit ihrem frühesten gültigen, fortschrittswirksamen Solltermin. Wiederholungs-/Prüfungsblöcke erzeugen keinen zweiten Sollbeitrag, und Cluster zählen nicht zusätzlich zu ihren atomaren Zielen.
+- **Explizite Planänderungen:** Änderungen von Umfang, Terminen oder Ausgangsbasis erfolgen nur durch ausdrückliche Planänderung. Ein überschrittenes Planende entfernt offene Ziele nicht automatisch aus einem aktiven Plan. Unklare Altbestände werden nicht heuristisch aus dem heutigen Lernstand rekonstruiert, sondern als nicht verlässlich auswertbar gekennzeichnet.
+
+### Implizite Erledigung und optionale Explizit-Zählung {#sec:implicit-completion anchors="34-implizite-erledigung-und-optionale-explizit-zahlung"}
+
+Seien $M$ die explizit gemeisterten Ziele und $W$ die nach dem [Abschlusskonzept](repo:docs/concept/skill-graph/assessment-gated-completion.md) global anerkannten, noch nicht explizit gemeisterten Ziele. Dann gilt im Standardmodus:
+
+$$
+M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
+$$
+
+Ist die Einstellung **„Nur explizit erreichte Lernziele zählen“** aktiviert, gilt stattdessen $I = |G \cap M|$.
+
+$W$ wird aus den festen fachlichen Abschlussverträgen der gültigen Lerneinheiten und den vorhandenen expliziten Prüfungs-/Recall-Ergebnissen bestimmt — nicht nur aus aktuell angezeigten oder im Persönlichen Lehrplan gewählten Ausschnitten. Maßgeblich bleiben die zum Ergebnis gehörigen Autorenverträge; ein später geänderter Graph darf alten Prüfungsergebnissen keine zusätzlichen Kompetenzen zuschreiben.
+
+Die Prüfungen einer Lerneinheit müssen die selbstständige Anwendung der anerkannten Kompetenzen absichern (bloßes `requires` oder fehlende Verbraucher genügen nicht). Innerhalb der direkt zugeordneten Lerneinheit wird transitiv gerechnet, auch über bereits gemeisterte Zwischenziele hinweg; offene spätere Prüfungen anderer oder übergeordneter Lerneinheiten verhindern weder diese Anerkennung noch ihren globalen Nutzen.
+
+- **Beispiel:** Berechtigt $Q$ als einzige relevante Abschlussprüfung zur Anerkennung von $A$ und $B$ und liegen alle drei in $G$, so gilt nach bestandener $Q$ im Standardmodus $I = 3$, mit Explizit-Option $I = 1$. Nur $Q$ erhält einen expliziten Mastery-Eintrag. Eine spätere Prüfung $Q_2$, die $A$ voraussetzt, trifft auf eine bereits erfüllte Voraussetzung und setzt $I$ nicht zurück; eine gewöhnliche $B$-Mastery allein erkennt $A$ dagegen nicht an, solange $Q$ in derselben Lerneinheit offen ist.
+- **Modellierungsgrenzen:** Ein gewöhnliches Ziel ohne gültige Prüfungsanbindung ist ein Modellierungsfehler, kein automatischer Fortschritt. Prüfungs- und Lernkartenziele bleiben selbst explizite Pflichten. Fehlende oder nicht auflösbare Anerkennungsdaten werden als Einschränkung ausgewiesen; es gibt keinen Rückfall auf die frühere Bedarfsstopp-Rechnung.
+- **Einfachzählung und Periodenkontingent:** Jede ID zählt in $G$ höchstens einmal; ein späterer expliziter Abschluss eines bereits anerkannten Ziels erhöht $I$ nicht erneut, darf aber am Abschlusstag regulär zum Periodenkontingent $H$ beitragen. Die Ableitung von $W$, ein Planwechsel, ein Import oder ein erneutes Anzeigen erzeugen **kein** künstliches Abschlussereignis in $H$.
+- **Lerneinstellung und Plandetails:** Unter *Konfiguration → Lerneinstellungen* ist „Nur explizit erreichte Lernziele zählen“ pro SkillPilot-ID dauerhaft gespeichert (Standard: aus). Hilfetext: *„Für deinen Gesamtplan zählen auch Kompetenzen, deren selbständige Anwendung in Prüfungen nachgewiesen wurde. Mit dieser Einstellung zählen nur direkt abgeschlossene Lernziele. Dein Tages- oder Wochenpensum zählt immer nur direkte Abschlüsse.“* Unter *Plandetails* kann optional `planCreditText` stehen (z. B. *„Im Plan angerechnet: 3 Ziele, davon 2 durch selbständige Anwendung in Prüfungen.“*). Diese Konzeptkorrektur ist keine Freigabe des alten Umsetzungsplans und kein Nachweis einer bereits korrigierten Laufzeitimplementierung.
+
+### Tages- und Wochenbasis {#sec:plan-status-period}
+
+In der Lernkonfiguration wird pro SkillPilot-ID dauerhaft zwischen **1 Tag** und **1 Woche** gewählt (Standard ohne Auswahl: **1 Woche**; eine zuvor gewählte Tagesbasis bleibt erhalten). Maßgebliche Zeitzone ist **Europe/Berlin** ohne separate Wochenstart- oder Zeitzonenoption.
+
+:::table{cols="4.2cm,X"}
+| Einstellung | Laufende Periode |
+| --- | --- |
+| **1 Tag** | Aktueller Kalendertag (`Europe/Berlin`) |
+| **1 Woche** | Aktuelle Kalenderwoche von Montag bis Sonntag (`Europe/Berlin`) |
+:::
+
+Die Periodenbasis gilt einheitlich für Statusberechnung, Cockpit, Chat, Planung und planbezogene Zielauswahl. Im Wochenmodus bildet die laufende Woche eine Einheit: **Vergangene Tage innerhalb der laufenden Woche erzeugen keinen zusätzlichen Vergangenheitsrückstand**; erst beim Wochenwechsel geht ein verbleibendes Defizit in die neue Bewertung über. Angefangene Wochen berücksichtigen nur die tatsächlich eingeplanten Ziele (kein pauschales Siebenfaches). Ein Wechsel zwischen Tages- und Wochenbasis ändert weder Lernfortschritt noch Plantermine, sondern nur den zeitlichen Auswertungsbezug.
+
+### Verbindliche Rechenregel pro Fach {#sec:plan-status-formula}
+
+#### Eingangsgrößen und Abschlussereignisse
+
+Alle Größen beziehen sich auf die gültige, bereinigte und deduplizierte Planmenge $G$ des Fachs und sind ganzzahlig mit $0 \le P \le S \le |G|$ sowie $0 \le H \le I \le |G|$ (ungültige Eingaben werden nicht stillschweigend korrigiert):
+
+:::table{cols="2.2cm,X"}
+| Größe | Bedeutung |
+| --- | --- |
+| $S$ | Anzahl der Ziele aus $G$, die bis einschließlich zum **Ende der laufenden Periode** vorgesehen sind (im Wochenmodus bis Sonntagabend). |
+| $P$ | Anzahl der Ziele aus $G$, die innerhalb der laufenden Periode neu fällig werden (geplantes Tages- oder Wochenpensum). |
+| $I$ | Anzahl der aktuell für den Plan erfüllten Ziele aus $G$ gemäß @ref{sec:implicit-completion}. |
+| $H$ | Anzahl unterschiedlicher Ziele aus $G$ mit verlässlich belegtem **explizitem** Abschluss in der laufenden Periode, die aktuell weiterhin gemeistert sind. |
+:::
+
+Für $H$ zählen nur tatsächliche explizite Abschlussereignisse (keine Importe, Änderungszeitstempel, erneuten Übermittlungen oder Einstellungswechsel; höchstens einmal pro Ziel und Periode). Ein bekannter Beherrschungszustand ohne verlässlichen Zeitstempel trägt zu $I$, aber nicht zu $H$ bei; ein Lesefehler der Ereignisse führt zur Auswertungseinschränkung statt zu $H = 0$.
+
+#### Berechnung und Statusrichtung
+
+```text
+Rohsaldo                  = I - S
+Noch zu deckendes Soll    = max(0, -Rohsaldo)
+Offenes Periodenpensum    = min(Noch zu deckendes Soll, max(0, P - H))
+Rückstand                 = Noch zu deckendes Soll - Offenes Periodenpensum
+Vorsprung                 = max(0, Rohsaldo)
+Erfülltes Periodenziel    = P - Offenes Periodenpensum
+```
+
+> **Abschlüsse der laufenden Periode erfüllen zunächst deren Pensum. Darüber hinausgehende Leistung reduziert den Rückstand oder erzeugt Vorarbeit.**
+
+Vorhandene Vorarbeit kann das Periodenziel ebenfalls ganz oder teilweise abdecken; $P$ wird nicht gekappt, sondern bei Abdeckung als erreicht dargestellt. Für die Statusrichtung gilt `behind` bei $\text{Rückstand} > 0$, `ahead` bei $\text{Vorsprung} > 0$ und `on_track` sonst (ein negativer Rohsaldo kann vollständig im noch offenen Periodenpensum liegen).
+
+#### Referenzfälle (Tagesmodus; Wochenmodus analog)
+
+:::table{cols="5.2cm,2.7cm,X"}
+| Situation | $S / P / I / H$ | Ausgabe |
+| --- | --- | --- |
+| Tagesbeginn ohne Rückstand | `13 / 3 / 10 / 0` | Tagesziel 0 von 3 · im Plan |
+| Rückstand, ein Ziel heute erledigt | `13 / 3 / 9 / 1` | Tagesziel 1 von 3 · 2 Lernziele im Rückstand |
+| Tagesziel erfüllt, Rückstand bleibt | `13 / 3 / 12 / 4` | Tagesziel erreicht · 1 Lernziel im Rückstand |
+| Über das Soll hinaus gelernt | `13 / 3 / 15 / 6` | Tagesziel erreicht · 2 Lernziele vorgearbeitet |
+| Tagespensum durch Vorarbeit gedeckt | `13 / 3 / 13 / 0` | Tagesziel erreicht · im Plan |
+| Kein Tagespensum, Rückstand | `10 / 0 / 8 / 0` | Heute kein Tagesziel · 2 Lernziele im Rückstand |
+| Prüfung heute + 1 Ziel anerkannt | `3 / 3 / 2 / 1` | Tagesziel 2 von 3 · im Plan |
+| Dieselben 2 Beiträge bei Rückstand | `8 / 3 / 2 / 1` | Tagesziel 1 von 3 · 4 Lernziele im Rückstand |
+:::
+
+### Verbindlicher Ausgabestandard {#sec:plan-status-output}
+
+Je Fach mit aktivem Lernplan erzeugt das Backend in stabiler, kanalübergreifend identischer Reihenfolge genau eine Zeile `<Fach>: <Periodenteil> · <Planstand>` und setzt daraus **`status.text`** zusammen (ohne KI-Kurzfassung oder Fachfilterung).
+
+:::table{cols="4.2cm,5.4cm,X"}
+| Bedeutung | Deutsch | Englisch |
+| --- | --- | --- |
+| Tagesfortschritt ($P > 0$) | `Tagesziel N von P` | `Daily target N of P` |
+| Tagesziel erfüllt | `Tagesziel erreicht` | `Daily target reached` |
+| Kein Tagespensum ($P = 0$) | `Heute kein Tagesziel` | `No daily target today` |
+| Wochenfortschritt ($P > 0$) | `Wochenziel N von P` | `Weekly target N of P` |
+| Wochenziel erfüllt | `Wochenziel erreicht` | `Weekly target reached` |
+| Kein Wochenpensum ($P = 0$) | `Diese Woche kein Wochenziel` | `No weekly target this week` |
+| Rückstand | `N Lernziele im Rückstand` | `N learning goals behind` |
+| Vorsprung | `N Lernziele vorgearbeitet` | `N learning goals ahead` |
+| Im Plan | `im Plan` | `on track` |
+:::
+
+Singular/Plural wird im Backend gebildet; Rohsaldo oder „Zusätzlich +N“ entfallen. Aus „Tagesziel erreicht“ darf nicht „Heute $P$ Ziele abgeschlossen“ gemacht werden. Die Ausgabesprache wird explizit übergeben (Fallback: hinterlegte Lernsprache, sonst Deutsch); der KI-Coach übersetzt oder paraphrasiert den Status nicht selbst.
+
+**Aktives Lernziel separat:** `status.text` enthält keine Zielankündigung. Das Backend liefert separat **„Dein aktives Lernziel: …“** bzw. **„Your active learning goal: …“** einmalig zu Beginn des Unterrichtsabschnitts; bei reinen Statusfragen unterbleibt jede Aufgaben- oder Zielankündigung.
+
+### Backend-Architektur und Datenvertrag {#sec:plan-status-backend}
+
+Ein klar abgegrenzter, rein lesender Baustein im bestehenden Backend trennt Berechnung und Textgenerierung ohne eigenen Dienst oder Regel-Engine. Das gemeinsame Ergebnis umfasst Zeitbezug, Gesamtstatus (`status.text`), Fachzeilen samt Statusrichtung und Cockpit-Scheibenprojektion, Lernsteuerung, separate aktive Zielankündigung sowie optional `planCreditText` für die Plandetails.
+
+#### Cockpit-Projektion (`periodGauge` und `balanceGauge`)
+
+- **Erste Scheibe (`periodGauge`, Titel „Heute“ bzw. „Diese Woche“):** liefert `completed` (erfülltes Periodenziel in Zielen aus $G$), `target` ($P$) und `needlePosition = completed / target` für $P > 0$ bzw. `completed = 0`, `target = 0`, `needlePosition = null` für $P = 0$ (nicht auswertbar: `periodGauge = null`).
+- **Zweite Scheibe (`balanceGauge`, Titel „Gesamt“):** verwendet `net = Vorsprung - Rückstand` (**nicht** $I - S$, sodass ein bloß offenes laufendes Pensum keinen Rückstand anzeigt). Die typische Menge $M = \text{typicalAmount}$ ist der Median aller **positiven** deduplizierten Periodenpensen des Fachs (bei gerader Anzahl aufgerundetes Mittel der beiden mittleren Werte; freie Perioden mit $0$ zählen nicht zur Stichprobe; fehlt jedes positive Pensum, ist `balanceGauge = null`). Mit $\text{scaleLimit} = 2M$ gilt `needlePosition = min(1, net / scaleLimit)` für $\text{net} \ge 0$ und `needlePosition = max(-1, net / (scaleLimit + 1))` für $\text{net} < 0$; `severeBehind` gilt genau bei $\text{net} < -2M$, `strongAhead` bei $\text{net} \ge 2M$.
+
+#### Reduzierte Chat-Projektion und Aktualität
+
+Der Chat erhält nur den fertigen Status und die Steuerungsinformationen — weder alte Zählfelder (`dueToday`, `completedToday`, `openToday`, `openOverdue`, `extraCompletedToday`) noch `periodGauge`/`balanceGauge`. Jede Auswertung liest Plan, Beherrschung, Abschlussereignisse, Konfiguration und den aufgelösten Persönlichen Lehrplan samt Voraussetzungshülle konsistent unter Berücksichtigung von Bezugsdatum und Periodengrenzen.
+
+### Verhalten von Chat, Cockpit und Planung {#sec:plan-status-channels}
+
+- **Chat:** Gibt den Backendstatus beim Start/Fortsetzen, auf Statusfragen und nach statusrelevanten Änderungen höchstens einmal pro Antwort wörtlich aus, ohne eigene Mengenbilanz. Nach einem Zielabschluss gilt die Reihenfolge: Rückmeldung zum Ziel $\rightarrow$ ggf. aktualisierter Planstatus $\rightarrow$ Ankündigung und Einstieg in das nächste Ziel. Bei externen KI-Hosts bleibt die wortgetreue Wiedergabe eine zu prüfende Integrationsanforderung.
+- **Cockpit:** Zeigt im Plan-Modus je Fach zwei gleich hohe Nadelscheiben (`periodGauge` blau/grau „x von y Zielen“; `balanceGauge` rot/grau/grün mit dem Backend-Planstatustext direkt unter der Nadel, auch auf kleinen Bildschirmen klar lesbar, ohne doppelten Einstellungs- oder „Weiterlernen“-Knopf im Heute-Panel). Fehlendes Periodenpensum, fehlendes `typicalAmount` und Nicht-Auswertbarkeit werden klar unterschieden.
+- **Planung und Details:** Zeigt unter *Plandetails* den Planzeitraum, tatsächlich vorhandene Abschnitte/Termine/Puffer (inkl. geplanter Puffer mit 0 verbleibenden Werktagen) sowie `planCreditText`. Ältere Parallelbilanzen („Bis heute insgesamt …“, „Tempo der letzten 7 Tage“) entfallen; Unterrichtsabdeckung und Prüfungsvoraussetzungen bleiben fachlich getrennt.
+
+### Zielauswahl und Fokussteuerung {#sec:plan-status-selection}
+
+Im Wochenmodus stehen geeignete Ziele der gesamten laufenden Woche bereits ab Wochenbeginn bereit. Das Backend bevorzugt fachlich zugängliche, früher eingeplante offene Ziele vor Zielen der laufenden Periode; Vorarbeiten bleibt möglich, und die konkreten Voraussetzungen sowie das Personal Curriculum bleiben maßgeblich. Ein begonnenes zulässiges Ziel wird durch einen Periodenwechsel nicht verdrängt.
+
+Eine autorisierte Planfortsetzung darf den temporären Fokus auf den erforderlichen Planabschnitt setzen, ohne das Personal Curriculum zu ändern. Reine Statusabfragen, Pausen, aktiver Prüfungsmodus oder ungeklärte Fachwechsel lösen keinen Fokuswechsel aus; ein erreichtes Periodenziel sperrt freiwilliges Weiterlernen nicht, startet aber keine ungefragte Zusatzarbeit wegen alten Rückstands.
+
+### Nicht auswertbare Situationen {#sec:plan-status-unavailable}
+
+:::table{cols="6.4cm,X"}
+| Situation | Verhalten |
+| --- | --- |
+| Kein Lernplan eingerichtet | Eindeutige Meldung ohne erfundene Nullbilanz |
+| Fach vollständig auswertbar | Reguläre Fach-Statuszeile |
+| Fach durch ungültigen Teilplan eingeschränkt | Hinweis (z. B. *„1 Fachplan nicht auswertbar (Physik).“*), keine scheinbare Vollbilanz |
+| Andere Fächer weiterhin auswertbar | Deren gültige Statuszeilen bleiben sichtbar |
+| Nur älterer Status verfügbar | Datenstand ausdrücklich kennzeichnen |
+:::
+
+Fehlende oder fehlerhafte Daten werden niemals als `0 von 0`, erreichtes Periodenziel oder „im Plan“ ausgegeben; die Verfügbarkeit einer Lernhandlung bleibt von der Planbilanz getrennt.
+
+### Umsetzungsumfang, Tests und Abnahme {#sec:plan-status-acceptance}
+
+Die Einführung ersetzt verteilte Statusregeln, alte Zählfelder und widersprüchliche Coach-Hinweise abgestimmt über Schema, Antworten, Server-Instructions und Tests, statt eine weitere Parallelschicht hinzuzufügen.
+
+:::table{cols="4.4cm,X"}
+| Prüfbereich | Wesentliche Anforderungen |
+| --- | --- |
+| **Ausgangsbasis** | Vorab beherrschte Ziele bleiben aus $S, P, I, H$ ausgeschlossen; später beherrschte Planziele bleiben in $G$. |
+| **Rechnung & Fortschritt** | Alle Referenzfälle stimmen; $0 \le \text{Zielstand} \le P$; Rückstand und Vorsprung nie negativ oder zugleich positiv; ein gültiger Abschluss verschlechtert keinen Wert. |
+| **Zählung & Zeitbezug** | Keine Doppelzählung; korrekte Behandlung von Importen, fehlenden Zeitstempeln, Rücknahmen, Lesefehlern, Tages-/Wochenwechseln und Basiswechseln. |
+| **Fächer & Verträge** | Deduplizierung je Fach, keine Fachverrechnung, feste DE/EN-Vorlagen, separate Zielankündigung, reduzierte Chat-Projektion. |
+| **Steuerung & Kanäle** | Wochenziele ab Wochenbeginn erreichbar; Status-/Pausenfragen zustandsneutral; identischer Datenstand liefert in Cockpit, Chat und Planung dieselbe Aussage. |
+:::
+
+**Abnahmekriterium:** Das Backend rechnet und formuliert; das Cockpit zeigt an; der Coach übernimmt den Status und unterrichtet.
