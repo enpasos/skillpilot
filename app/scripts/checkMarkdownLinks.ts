@@ -103,11 +103,27 @@ function discoverMarkdownFiles(args: string[]): string[] {
   return Array.from(files).sort((left, right) => repoRelative(left).localeCompare(repoRelative(right), 'en'))
 }
 
+const excludedSourceDirs = new Set([
+  'docs/concept/skill-graph/source',
+])
+
+function loadDeclaredBinaryTargets(): Set<string> {
+  if (process.env.SKILLPILOT_REQUIRE_DOC_BINARIES === '1') return new Set()
+  const manifestPath = resolve(repoRoot, 'tmp/skill-graph-document/declared-binaries.json')
+  if (!existsSync(manifestPath)) return new Set()
+  const parsed = JSON.parse(readFileSync(manifestPath, 'utf8')) as { binaries?: unknown }
+  if (!Array.isArray(parsed.binaries)) return new Set()
+  return new Set(parsed.binaries.filter((entry): entry is string => typeof entry === 'string'))
+}
+
 function collectMarkdownFiles(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true })
     .flatMap((entry) => {
       const absolute = resolve(dir, entry.name)
-      if (entry.isDirectory()) return collectMarkdownFiles(absolute)
+      if (entry.isDirectory()) {
+        if (excludedSourceDirs.has(repoRelative(absolute))) return []
+        return collectMarkdownFiles(absolute)
+      }
       if (entry.isFile() && extname(absolute).toLowerCase() === '.md') return [absolute]
       return []
     })
@@ -123,6 +139,7 @@ function extractMarkdownLinkTargets(markdown: string): string[] {
   return targets
 }
 
+const declaredBinaryTargets = loadDeclaredBinaryTargets()
 const markdownFiles = discoverMarkdownFiles(process.argv.slice(2))
 const failures: string[] = []
 
@@ -132,7 +149,8 @@ markdownFiles.forEach((file) => {
   extractMarkdownLinkTargets(text).forEach((target) => {
     const resolved = resolveTarget(file, target)
     if (resolved === null) return
-    if (!existsSync(resolved)) {
+    const resolvedRel = repoRelative(resolved)
+    if (!existsSync(resolved) && !declaredBinaryTargets.has(resolvedRel)) {
       failures.push(`${repoRelative(file)}: missing ${target}`)
       return
     }

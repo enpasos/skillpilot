@@ -94,13 +94,20 @@ function resolveLocalMarkdownTargets(indexAbsolutePath: string): Set<string> {
   )
 }
 
+const excludedIndexDirectories = new Set([
+  'docs/concept/skill-graph/source',
+])
+
 function collectMarkdownFiles(dir: string): string[] {
   const absoluteDir = resolve(repoRoot, dir)
   return readdirSync(absoluteDir, { withFileTypes: true })
     .flatMap((entry) => {
       const absolutePath = resolve(absoluteDir, entry.name)
       const relativePath = repoRelative(absolutePath)
-      if (entry.isDirectory()) return collectMarkdownFiles(relativePath)
+      if (entry.isDirectory()) {
+        if (excludedIndexDirectories.has(relativePath)) return []
+        return collectMarkdownFiles(relativePath)
+      }
       if (entry.isFile() && entry.name.endsWith('.md')) return [relativePath]
       return []
     })

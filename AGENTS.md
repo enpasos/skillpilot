@@ -68,6 +68,13 @@ supersedes earlier plans for a parallel external ChatGPT beta.
   not silence on a general support question, can block the next step.
 - This work order does not itself submit, publish or change production settings.
 
+Claude lane status in the repository on **11 November 2026** (recorded state,
+not a new decision): plugin **1.1.13** is published in the repository-backed
+personal marketplace with independently verified source, package and
+repository. Full real-client acceptance remains pending, and this is not an
+Anthropic-curated or Anthropic-verified listing. See
+`docs/deploy/claude-personal-marketplace-release.md`.
+
 On **24 September 2026**, the Product Owner explicitly authorized trying the
 documented ChatGPT archive upload and adapting the server to native desktop
 CIMD with S256 PKCE. Use the existing V1 MCP endpoint and OAuth issuer; do not
@@ -203,6 +210,17 @@ one stable plugin does not make arbitrary incompatible schema changes safe or
 require every old tool forever. See the binding current decision in
 `docs/concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md`.
 
+Repository state on **11 November 2026** (recorded state, not a new decision):
+current source implements the preparation for this cutover.
+`ai/openai plugin/skillpilot-coach/` is the canonical package and
+`ai/openai plugin/skillpilot-coach-v1/` is inactive historical source. Backend
+defaults and protected-resource metadata bind
+`https://mcp-openai.skillpilot.com/mcp`. The neutral **1.1.3** candidate remains
+local and unpublished. Endpoint rollout, marketplace publication, directory
+submission and host acceptance are still separate operations that each need
+their own explicit instruction; see `ai/openai plugin/README.md` and
+`docs/deploy/openai-stable-origin.md`.
+
 This document is the **long-term memory** for SkillPilot, including the skill-graph explorer.  
 It captures the *concepts and design decisions* that are **not obvious from the code alone**, so humans and LLMs can extend the project consistently across different learning domains.
 
@@ -235,10 +253,12 @@ Every landscape should:
 3. Provide a **transparent mastery/progress view** that can later drive grading or certification models.
 4. Be usable both by **human teachers/learners** and **LLM-based agents** (task generation, coaching, analytics).
 
-This repository ships multiple Hessian KC 2024 landscapes (Mathematik, Physik, Chemie, Biologie, Informatik, Wirtschaftswissenschaften, Politik und Wirtschaft, Deutsch, Englisch, Französisch, Latein, Geschichte). In addition, we now have:
+The project started from the Hessian KC 2024 upper-secondary landscapes; that source tree is retired (§10.5). The repository now ships the roots listed in `curricula/curriculum_manifest.json`:
 
-- **Hessen Sek I (G9)**: Mathe, Physik, Chemie, Biologie as competence DAGs per Jahrgang 5–10 plus Mittelstufe-Overview.
-- **Sprachen CEFR (für Deutschsprachige)**: Englisch und Französisch als A1–C2 CEFR-Landschaften (IDs `GER_ENGLISH_FROM_GERMAN`, `GER_FRENCH_FROM_GERMAN`).
+- **Gymnasium (DE)**: one canonical landscape per subject under `curricula/DE/Gymnasium/canonical/` (20 subjects plus the overview root), viewed through Bundesland- and duration-specific composition views. Retained state sources live under `curricula/DE/Gymnasium/input/<STATE>/` for all sixteen Länder plus `KMK`. Maturity differs widely per subject; the generated `docs/qa-ci/status/curriculum-quality-status.json` is authoritative.
+- **Hessian roots**: the manifest still lists `Gymnasiale Mittelstufe` and `Gymnasiale Oberstufe` (DE, HE, G9). Retired Hessen upper-secondary compatibility views are described only by frozen metadata under `curricula/DE/Gymnasium/archive/`.
+- **Other school forms and programmes**: Bavarian school forms, university programmes (TU München, TU Darmstadt, Uni Mannheim, Uni Heidelberg) and MIT OpenCourseWare foundations.
+- **Sprachen CEFR (für Deutschsprachige)**: Englisch und Französisch als A1–C2 CEFR-Landschaften under `curricula/EU/CEFR/`.
 
 All conventions described below are general enough to support other curricula, subjects, or languages; the mathematics graph remains the reference implementation.
 
@@ -271,7 +291,7 @@ We use exactly **two connection types**:
    - Current compatibility model: existing prerequisites on clusters are still read through `contains` inheritance and atomic expansion for runtime/frontier purposes. This is transition semantics, not the canonical target state.
    - Binding target state (Product Owner, 8 November 2026): **all** authored `requires` have atomic source and prerequisite goals, $R\subseteq A\times A$. There is no permanent exception for universal cluster claims.
    - Migration order: first materialize or retain the complete reviewed atomic prerequisite relationships; then remove `requires` with a non-atomic source or target only after proving that the atomic relationships cover their full prerequisite demand; finally transitively reduce the atomic relation. Never remove an atomic relationship in order to retain its inherited cluster equivalent.
-   - At unchanged `contains`, preserve the full normalized atomic prerequisite closure ($R_{at}^+$ in Graph Definition §6.4) and the relevant scope, applicability, target, frontier, completion and mastery contracts. Raw prerequisite reachability between non-atomic goal nodes may change when cluster edges are removed. This migration neither invents subject dependencies automatically nor writes learner results; transition compatibility alone does not fulfill the target norm or prove current CI enforcement.
+   - At unchanged `contains`, preserve the full normalized atomic prerequisite closure ($R_{at}^+$ in Graph Definition §2.3) and the relevant scope, applicability, target, frontier, completion and mastery contracts. Raw prerequisite reachability between non-atomic goal nodes may change when cluster edges are removed. This migration neither invents subject dependencies automatically nor writes learner results; transition compatibility alone does not fulfill the target norm or prove current CI enforcement.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -467,7 +487,8 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
 
 This is revised concept documentation, not a new implemented schema, validator,
 or access policy. See `docs/concept/skill-graph/learning-units.md`,
-`docs/concept/skill-graph/learning-unit-progression.md` and Graph Definition §12;
+`docs/concept/skill-graph/learning-unit-progression.md` and Graph Definition
+§11 (learning units) and §12 (optional acquisition and time planning);
 capacity details remain in `docs/concept/didactic/curriculum-time-axis-and-pacing.md`.
 
 ---
@@ -692,7 +713,8 @@ For atomic prerequisites, satisfaction means mastery. For prerequisite clusters,
 it means mastery of all atomic descendants relevant to the selected mode. Normal
 mode restricts requirements and cluster satisfaction to the focus; strict mode
 checks them globally. See the complete definitions in
-`docs/concept/skill-graph/graph-definition.md`, §§9 and 11.
+`docs/concept/skill-graph/graph-definition.md`, §4.2 (global frontier) and
+§5.3 (normal and strict mode).
 
 Agents that recommend tasks should:
 
@@ -704,7 +726,8 @@ Agents that recommend tasks should:
   * level,
   * or teacher preference.
 
-A future UI component can show this explicitly as a list or map.
+The frontier is backend-owned (§12.1). The Cockpit and the coach adapters
+consume the backend result instead of recomputing it.
 
 ---
 
@@ -873,7 +896,7 @@ Rule:
 * Every existing `nodeKind: "memory"` / `memorization` / `srs-deck:*` goal in the configured scope must be traced back through kept cards and at least one `memory_required` decision.
 * Review records include a fingerprint of semantic goal fields, so goal text changes make the decision stale.
 * Human-readable audit reports under `docs/qa-ci/status/memory-card-review-*.md` are generated from the ledgers; they must not be edited as a second source of truth.
-* `CQR-302` is the M6 dashboard rule for memory-card decision tracing. `M5` stays the core curriculum QA level and does not depend on memory-card review configuration. Missing or open memory-card review configuration counts as open for `M6`; it is currently completed for `Mathematik (Gymnasium, DE)`, `Physik (Gymnasium, DE)`, and `Chemie (Gymnasium, DE)`.
+* `CQR-302` is the M6 dashboard rule for memory-card decision tracing. `M5` stays the core curriculum QA level and does not depend on memory-card review configuration. Missing or open memory-card review configuration counts as open for `M6`. In the status generated on 10 November 2026 it passes for Biologie, Chemie, Deutsch, Geschichte, Informatik, Latein, Mathematik, Physik, Politik und Wirtschaft and Wirtschaftswissenschaften (all `Gymnasium, DE`); Biologie, Chemie, Mathematik, Physik and Wirtschaftswissenschaften additionally pass `CQR-303` (M7). This list is a snapshot: the generated `docs/qa-ci/status/curriculum-quality-status.json` and the protected floors in `app/scripts/config/curriculum-maturity-floor-policy.json` are authoritative.
 
 Naming and ownership:
 
@@ -1078,7 +1101,8 @@ Rules:
 * Commit the curriculum, publication configuration, reviewed source bindings,
   visualization sources and renderer, not the generated publications under
   `app/public/lernzielbuch/`. `npm --prefix app run build:goal-books` generates
-  the four registered PDFs, BookModels, source indexes, render manifests and
+  the registered PDFs (five subjects in
+  `app/src/utils/goalBookPublicationRegistry.ts`), BookModels, source indexes, render manifests and
   publication index before application packaging. CI shares one verified
   publication artifact across jobs; neither missing output nor a stale cache
   may bypass the existing publication checks. See
@@ -1142,7 +1166,11 @@ explicit final confirmation required by **Human-tested**. See the binding
 
 ## 8. Ideas for future work (for agents and humans)
 
-These are directions that are **intended**, even if not implemented yet:
+These are directions that were **intended** early on. Status in November 2026:
+the frontier (1) and per-learner persistence (4) are implemented and
+backend-owned (§5, §10.2, §11). Source references (part of 3) are carried by
+provenance, mapping and source-rationale artifacts (§10.5) rather than by a
+`sourceRef` goal field. Grade mapping (2) is still not implemented.
 
 1. **Frontier view**
 
@@ -1197,6 +1225,12 @@ When an LLM/agent works on this repo, it should:
   * Write temporary files, verification scripts, logs, or one-off migration scripts to the `tmp/` directory (or `docs/` if permanent).
   * Never write transient files directly to the project root.
 
+* **Never edit generated artifacts by hand**:
+  * Generated Markdown starts with a "Generated artifact" notice naming its script; change the source and regenerate (`docs/dev/documentation-guidelines.md`).
+  * The bilingual Graph Definition compendium is single-sourced in `docs/concept/skill-graph/source/` and compiled by `docs/concept/skill-graph/build_spec.py`. Its Markdown pages, PDFs and generated diagrams are build outputs.
+
+* **Keep `CLAUDE.md` consistent**: it is the short practical orientation derived from this file. This file wins on any conflict; update both.
+
 * **Use the two CI tiers** (Product Owner decision of 11 November 2026):
   * Remote CI is the final quality control, not a step after every intermediate change.
     A draft pull request receives only the quick tier. Marking it ready for review starts
@@ -1239,8 +1273,9 @@ Layer A contains the **static, curriculum-level description** of a domain:
 - Conceptually, Layer A is **pure data**, ideally representable as JSON (or a similarly simple format) so that:
   - it can be reused by different frontends and tools,
   - other curricula or Themenwelten (z. B. Physik, Informatik, Brückenkurse) can be added as additional landscapes.
-- In this repo, the JSON files under `curricula/**/json/` are the **concrete encodings** of each landscape:
-  - e.g. das hessische *Kerncurriculum Mathematik gymnasiale Oberstufe* (KC 2024) sowie Physik (KC 2024) als DAG-Dateien.
+- In this repo, the JSON files under `curricula/` are the **concrete encodings** of each landscape:
+  - canonical German Gymnasium subjects under `curricula/DE/Gymnasium/canonical/`,
+  - other curricula under their own `curricula/**/json/` directories.
 
 Agents working on Layer A should think in terms of:
 
@@ -1445,8 +1480,9 @@ Key principles for Layer C:
   provider-specific because authentication, context recovery, tool schemas,
   widgets, and retry semantics differ. Do not force them into one universal
   `submit_turn` or one-size-fits-all schema.
-- The strategic public OpenAI coach channel is a provider-hosted plugin per
-  contract major. It combines one language-neutral English control-plane skill
+- The strategic public OpenAI coach channel is one durable provider-hosted
+  plugin (`skillpilot-coach`; 19 October 2026 decision in §0), not one plugin
+  per language or package major. It combines one language-neutral English control-plane skill
   with the corresponding language-neutral MCP server submitted directly for
   review. A local or
   workspace pilot may map an already registered MCP connection through
@@ -1528,7 +1564,7 @@ and Layer C provides a **unified, sprachbasiertes Interface** auf diese Struktur
 To keep the architecture transparent and repo-friendly, we use simple JSON files during the PoC:
 
 - **Layer A (landscapes)**
-  - Stored under `curricula/` (e.g. `curricula/<...>/json/<file>.json`).
+  - Stored under `curricula/` (e.g. `curricula/<...>/json/<file>.json`; canonical German Gymnasium subjects under `curricula/DE/Gymnasium/canonical/`).
   - Root curricula are explicitly listed in `curricula/curriculum_manifest.json` and validated in CI.
   - In the current repo they are maintained directly as committed JSON files; there is no `export:landscape` pipeline at the moment.
   - Fields follow `SkillLandscape` / `LearningGoal` in `app/src/landscapeTypes.ts`; the backend mirrors these structures in its landscape loader types.
@@ -1645,7 +1681,7 @@ Guiding principle:
 **Server-side (SkillPilot backend)**
 
 - Stores:
-  - landscapes (`curricula/**/json/*.json`) – public curriculum-level descriptions,
+  - landscapes (JSON files under `curricula/`) – public curriculum-level descriptions,
   - learner state per `skillpilotId` – pseudonymous mastery and history.
 - Does **not** store:
   - names, nicknames, e‑mails, or other PII.
@@ -1663,11 +1699,19 @@ Guiding principle:
   the learner only through the independent learning-session mapping, never
   through an OAuth subject alone. The coach must not ask the learner to copy,
   re-enter, or repeat the session value.
-- The paused Claude/MCP adapter resolves an authenticated opaque OAuth subject
-  internally and has neither `skillpilotId` nor OAuth credentials as model tool
-  parameters.
+- The Claude Connector v1 follows the same separation with its own
+  provider-isolated sessions: connector OAuth is transport-only, and the
+  learner is resolved solely through the current first-party `spc_` learning
+  session passed unchanged as `learningSessionId`. The Gemini controlled
+  integration likewise addresses the learner only through its own `spg_`
+  learning sessions (§12.2). A session of one provider lane is never accepted
+  by another.
+- The dormant legacy Claude beta adapter (`/api/claude/mcp`, disabled by
+  default) resolved an authenticated opaque OAuth subject internally and had
+  neither `skillpilotId` nor OAuth credentials as model tool parameters. It is
+  not the active Claude lane.
 - German, English and later supported interaction languages use the same App
-  registration for a given contract major. Widget-only selection references may be returned
+  registration; there is no per-language registration. Widget-only selection references may be returned
   in tool-result `_meta`, but must never appear in user-visible content or
   model-visible `structuredContent`.
 - Provider-neutral backend services may use the SkillPilot ID internally after
@@ -1720,8 +1764,21 @@ Provider-facing contracts must use derived temporary context instead:
   release gate. The separate `visible-chat-start` route remains an explicitly
   chosen emergency relay in which the footer, current selection, full canonical
   goal ID, and Recall card IDs are visible.
-- Paused Claude/MCP: the transport authenticates an OAuth connection subject and
-  resolves it inside the backend. The model never supplies a learner ID.
+- Dormant legacy Claude beta adapter (`/api/claude/mcp`;
+  `skillpilot.claude.enabled=false` is its master state): the transport
+  authenticated an OAuth connection subject and resolved it inside the backend.
+  It is neither the active Claude lane nor a release path; leave the dormant
+  code untouched unless its cleanup is explicitly decided.
+- Claude Connector v1 (`https://mcp-claude-v1.skillpilot.com/mcp`): connector
+  OAuth, including optional `offline_access`, is transport-only. The shared
+  first-party start creates a fresh opaque `spc_` learning session valid for
+  exactly 24 hours only after the learner explicitly chooses Claude; every
+  tool, including the app-only card-review tool, requires that unchanged
+  `learningSessionId`. OAuth refresh never mints, renews or extends it, and the
+  model never supplies a learner ID.
+- Gemini controlled integration: the separate `gemini-v1` adapter uses its own
+  `spg_` learning sessions with an absolute 24-hour lifetime and a one-hour
+  action guard; see §12.2 for its limited acceptance status.
 - Current multilingual OpenAI MCP App line `SkillPilot Coach v1`: OAuth authorizes the fixed registered App
   connection but does not select or identify the learner. `Lernen starten`
   atomically creates a new independent learning session with an
@@ -1774,17 +1831,24 @@ Provider-facing contracts must use derived temporary context instead:
   one-minute transition across the `PT1H` action guard or `5400` seconds for a
   90-minute soak. Never lower the global learning-session TTL for this test, and
   disable the diagnostic gate again after the live check.
-- The V1 public MCP endpoint and its exact OAuth Resource/Audience are both
-  `https://mcp-coach-v1.skillpilot.com/mcp`. Protected-resource metadata
-  is published at the RFC 9728 path-insertion URL
-  `https://mcp-coach-v1.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
-  and the OpenAI domain challenge is scoped to the same dedicated host. No
-  public compatibility alias exists. The future major hosts
-  `mcp-coach-v2.skillpilot.com` through `mcp-coach-v9.skillpilot.com` are
-  reserved and fail closed with `404`; only V1 is active. Earlier
+- Under the 19 October 2026 decision (§0), the durable public OpenAI MCP
+  endpoint and its exact OAuth Resource/Audience are both
+  `https://mcp-openai.skillpilot.com/mcp`; current source binds this origin.
+  Protected-resource metadata is published at the RFC 9728 path-insertion URL
+  `https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp`,
+  and the OpenAI domain challenge is scoped to the same dedicated host. The
+  OAuth issuer `https://skillpilot.com/api/openai/v1` and the internal V1
+  adapter are unchanged. Exactly one Resource/Audience is active; no public
+  compatibility alias, redirect or dual audience exists. After the coordinated
+  cutover the former host `mcp-coach-v1.skillpilot.com` fails closed with `404`
+  like `mcp-coach-v2.skillpilot.com` through `mcp-coach-v9.skillpilot.com`,
+  including discovery and domain challenge. Published Git beta packages that
+  name the former host stay immutable history. Whether production has performed
+  the cutover is an operational fact that source does not prove; see
+  `docs/deploy/openai-stable-origin.md`. Earlier
   `mcp-coach-de-v*` and
   `mcp-coach-en-v*` names were unpublished local infrastructure and are not
-  compatibility routes. The current unpublished `1.1.0` draft binds exactly two
+  compatibility routes. The current V1 tool contract binds exactly two
   active, hash-bound MCP Apps resources: the image-only goal renderer and the
   interactive memory-practice launcher. Previously advertised image hash URIs
   remain byte-identically readable as passive resources. The unpublished
@@ -1843,7 +1907,8 @@ Provider-facing contracts must use derived temporary context instead:
   does not supply the hosted OpenAI certificate. No certificate result replaces
   OAuth or a learning session.
 - OpenAI MCP uses one App, public tool catalog, endpoint and
-  registration per contract major, not per language. Plugin metadata, skill
+  registration for all languages; since the 19 October 2026 decision that
+  identity also stays stable across package majors (§0). Plugin metadata, skill
   instructions, tool names, descriptions, schemas and stable machine values use
   neutral English. The backend pins the interaction language in the learning
   session and returns learner-facing payloads in that language; the model must
@@ -1857,11 +1922,17 @@ Provider-facing contracts must use derived temporary context instead:
   authentication/context boundary. Do not expose the permanent SkillPilot ID just
   because an internal facade accepts it.
 - The SkillPilot Claude Connector v1 is a provider-isolated remote-MCP lane at
-  `https://mcp-claude-v1.skillpilot.com/mcp`. Its OAuth connection is the
-  identity boundary; it never accepts or exposes an OpenAI
-  `learningSessionId`. Its reviewed candidate surface contains exactly twelve
-  tools and two content-addressed MCP Apps resources: the approved active-goal
-  visualization and private normal memory practice. Normal-practice card
+  `https://mcp-claude-v1.skillpilot.com/mcp`. Its OAuth connection, including
+  optional `offline_access`, is transport-only and never selects a learner:
+  every tool requires the lane's own current `spc_` learning session as
+  `learningSessionId`, and it never accepts or exposes an OpenAI
+  `learningSessionId`. Its base surface contains exactly fourteen tools
+  (`ClaudeV1Contract.ALL_TOOL_NAMES`) and two content-addressed MCP Apps
+  resources: the approved active-goal visualization and private normal memory
+  practice. `choose_skillpilot_completion_route` and
+  `confirm_skillpilot_completion_contract` are published additionally only
+  while the backend completion workflow is available; the connector runbooks
+  describe the fourteen-tool base surface. Normal-practice card
   fronts, backs and review capabilities stay in component-only metadata; the
   review tool is app-only, updates only the exact displayed card's repetition
   schedule and never changes mastery. Normal practice remains separate from
@@ -1887,7 +1958,9 @@ LLM/learning-coach prompts should reinforce that:
 ## 12. AI Agent Integration (OpenAI MCP Apps, ChatGPT fallback, Claude & Gemini)
 
 SkillPilot keeps its learning-state decisions provider-neutral in the backend and
-uses separate provider-specific adapters. The current multilingual OpenAI
+uses separate provider-specific adapters. The ordinary learning start offers
+three lanes with isolated provider sessions over the same saved learning
+record: Claude (Connector v1), ChatGPT Desktop (Beta) and Gemini (Beta). The current multilingual OpenAI
 channel is the provider-hosted MCP App with a chat-first tool contract,
 one bounded read-only image-only MCP Apps UI result, and one independently
 bound memory-practice UI result; its target packaging
@@ -1960,8 +2033,9 @@ provider policy and product review explicitly permit it.
   reject singular per-card Recall tools, model-facing Recall goal/count inputs,
   model-supplied state or retry fields on the capability-bound write, and a
   server Recall instruction longer than the concise cross-tool invariant.
-- **Target OpenAI plugins:** maintain one public submission per contract major,
-  not per language. V1 combines one neutral English coach-control skill with one
+- **Target OpenAI plugin:** maintain one durable public plugin
+  (`skillpilot-coach`), not one per language or package major (§0). It
+  combines one neutral English coach-control skill with one
   directly submitted MCP server, versioned tool contract, stable endpoint,
   and generated submission test suite. The backend-owned
   learning session pins the interaction language; all learner-facing payloads
@@ -2070,10 +2144,12 @@ provider policy and product review explicitly permit it.
 - **Provider-specific contracts:** German and English Custom GPTs have independent
   Instructions, seven Knowledge files each, and independent locale-fixed OpenAPI
   schemas. A one-size-fits-all schema is not allowed.
-- **Paused Claude adapter:** the OAuth/MCP implementation remains disabled and is
-  not production-ready. Personalization, shared safe state projection, and the
-  protected exam-evaluation use case are implemented; release still requires a
-  complete real adult-only end-to-end acceptance run.
+- **Claude lanes:** the active Claude channel is the provider-isolated
+  Connector v1 with its optional plugin (§11.3, §12.2). The earlier OAuth/MCP
+  beta adapter under `/api/claude/mcp` stays dormant and disabled by default
+  (`skillpilot.claude.enabled=false`); it is not production-ready and not a
+  release path. Do not extend, re-enable or clean it up without an explicit
+  decision.
 - **Shared coach boundary:** `CoachToolFacade` owns provider-neutral workflow
   guards and `CoachStateProjection` owns the normal model-facing allowlist.
   Provider adapters resolve their own temporary session or OAuth identity and
@@ -2086,8 +2162,11 @@ provider policy and product review explicitly permit it.
   `ai/openai custom gpt/en/gpt_setup_guide.md`. These guides create two
   independent new GPTs named `SkillPilot GPT Coach (de)` and
   `SkillPilot GPT Coach (en)` from empty Builder configurations.
-- **OpenAI MCP Apps:** See `ai/openai app/README.md`. The versioned multilingual source
-  plugin lives under `ai/openai plugin/skillpilot-coach-v1` and directly declares
+- **OpenAI MCP Apps:** See `ai/openai app/README.md` and
+  `ai/openai plugin/README.md`. The current canonical multilingual source
+  plugin lives under `ai/openai plugin/skillpilot-coach`
+  (`ai/openai plugin/skillpilot-coach-v1` is inactive historical source whose
+  drafts, review records and published Git release bytes stay intact) and directly declares
   the production MCP server plus its language-neutral English control-plane
   skill. The current public submission package is MCP-only: it must not carry
   an old pilot `.app.json` mapping or a manifest `apps` reference. The rejected
@@ -2103,6 +2182,13 @@ provider policy and product review explicitly permit it.
   `contracts/drafts/` without a SemVer increment. Only a confirmed publication
   may create `contracts/published/` and advance `release-index.json`; published
   snapshots are immutable.
+- **Claude Connector v1:** See `ai/claude/connector-v1/README.md`. The remote
+  connector owns OAuth, MCP, all tools and both MCP Apps UIs; the optional
+  plugin under `ai/claude/plugin/skillpilot-coach-v1/` adds only the coaching
+  Skill and the declaration of that same connector. Release and publication
+  follow `docs/deploy/claude-connector-v1-release.md` and
+  `docs/deploy/claude-personal-marketplace-release.md`; published packages and
+  their evidence are immutable.
 - **Gemini controlled integration candidate:** `ai/gemini/coach/SKILL.md` and
   `ai/gemini/gateway` use the separate `gemini-v1` Spring adapter and `spg_`
   learning sessions. The ordinary **Lernen starten → Gemini (Beta)** entry
@@ -2134,9 +2220,9 @@ provider policy and product review explicitly permit it.
   `skillpilot-api-4ai.*` file directly below `ai/` as a shared schema.
 
 ## 13. Curriculum Assets & Flashcard Decks
-- **Source of Truth:** Flashcard decks (`*_deck.json`) and other curriculum-related assets must be stored in the same directory as the curriculum JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).
-- **Deployment:** These files are copied to `app/public/data/` during the build/deployment process to be accessible by the frontend.
-- **Development:** When creating a new deck, save it in the curriculum directory and manually copy it to `app/public/data/` if testing locally.
+- **Source of Truth:** Canonical German Gymnasium decks live under `curricula/DE/Gymnasium/memory-decks/` (see §7.2), not beside the canonical landscape JSON. Decks of other curricula (`*_deck.json`) and their curriculum-related assets stay in the same directory as that curriculum's JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).
+- **Deployment:** `npm --prefix app run deploy:assets` (part of `prepare:runtime-assets` and therefore of `npm --prefix app run build`) copies the registered canonical decks to `app/public/data/` and `backend/src/main/resources/static/data/`. A new canonical deck must be registered in `scripts/deploy_curriculum_decks.ts`; that script covers only the canonical Gymnasium deck directory.
+- **Development:** Edit the source deck and rerun the deployment step; never edit the deployed copies.
 
 ---
 

@@ -396,6 +396,45 @@ function loadMemoryCardReviewNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
   })
 }
 
+const skillGraphChapterNoticePaths = [
+  'docs/concept/skill-graph/graph-definition.md',
+  'docs/concept/skill-graph/graph-definition.de.md',
+  'docs/concept/skill-graph/context-and-views.en.md',
+  'docs/concept/skill-graph/context-and-views.de.md',
+  'docs/concept/skill-graph/learning-units.md',
+  'docs/concept/skill-graph/learning-units.de.md',
+  'docs/concept/skill-graph/learning-unit-progression.md',
+  'docs/concept/skill-graph/learning-unit-progression.de.md',
+  'docs/concept/skill-graph/planning-and-budget.en.md',
+  'docs/concept/skill-graph/planning-and-budget.de.md',
+  'docs/concept/skill-graph/assessment-gated-completion.md',
+  'docs/concept/skill-graph/assessment-gated-completion.de.md',
+  'docs/concept/skill-graph/compendium-appendix.en.md',
+  'docs/concept/skill-graph/compendium-appendix.de.md',
+]
+
+const skillGraphMatrixNoticePaths = [
+  'docs/qa-ci/graph-definition-rule-milestone-matrix.md',
+  'docs/qa-ci/graph-definition-rule-milestone-matrix.en.md',
+]
+
+function loadSkillGraphMarkdownNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
+  return [
+    ...skillGraphChapterNoticePaths.map((path) => ({
+      path,
+      generatedBy: 'docs/concept/skill-graph/build_spec.py',
+      regenerateWith: 'cd app && npm run docs:skill-graph:web',
+      sourceOfTruth: ['docs/concept/skill-graph/source/'],
+    })),
+    ...skillGraphMatrixNoticePaths.map((path) => ({
+      path,
+      generatedBy: 'docs/concept/skill-graph/build_spec.py',
+      regenerateWith: 'cd app && npm run docs:skill-graph:web',
+      sourceOfTruth: ['docs/concept/skill-graph/source/rules-and-gates.json'],
+    })),
+  ]
+}
+
 export function loadGeneratedStatusRegistryRows(): GeneratedStatusRegistryRow[] {
   return [
     ...staticGeneratedStatusRows.slice(0, 4),
@@ -409,5 +448,6 @@ export function loadGeneratedMarkdownNoticeConfigs(): GeneratedMarkdownNoticeCon
     generatedStatusRegistryReadmeNoticeConfig,
     ...staticGeneratedStatusRows.flatMap(markdownNoticeFromRegistryRow),
     ...loadMemoryCardReviewNoticeConfigs(),
+    ...loadSkillGraphMarkdownNoticeConfigs(),
   ]
 }

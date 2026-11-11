@@ -7,8 +7,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Start Here
 
-- [Graph-Definition: alle Regeln und ihre Meilensteine](graph-definition-rule-milestone-matrix.md)
-  143 Regelgruppen mit Soll-Zuordnung, tatsächlichen Gates, Scopegrenzen und offenen Lücken.
+- [Graph-Definition: alle Regeln und ihre Meilensteine (DE)](graph-definition-rule-milestone-matrix.md) · [English (EN)](graph-definition-rule-milestone-matrix.en.md)
+  143 Regelgruppen mit 4-Stufen-Ampel (`HART`/`TEIL`/`OFFEN`/`OPT/DOK`), Soll-Zuordnung, tatsächlichen Gates, Scopegrenzen und offenen Lücken.
 - [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
   Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
 - [CI Overview](ci.md)
