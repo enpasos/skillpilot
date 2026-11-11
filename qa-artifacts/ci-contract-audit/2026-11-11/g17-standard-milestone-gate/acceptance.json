@@ -1,0 +1,678 @@
+{
+  "status": "STANDARD_GATE_EXERCISED_PROTECTED_FLOORS_FAIL",
+  "codeCommit": "15f74ef5641cb665e1e9a8f447a9176ed546e070",
+  "runHeadAtStart": "50a5edb2f494aa91b61f03912ee85fe70d23ceba",
+  "allNamedCqrInputsMatchCodeCommit": true,
+  "closedReadNamespaceClaim": false,
+  "checks": [
+    {
+      "name": "producer",
+      "command": [
+        "npm",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 1047.6774083799974
+    },
+    {
+      "name": "floors",
+      "command": [
+        "npm",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "exitCode": 1,
+      "wallSeconds": 0.6674321769969538
+    }
+  ],
+  "allNamedCqrInputsUnchanged": true,
+  "producerSummary": {
+    "curricula": 21,
+    "maturity": {
+      "M0": 15,
+      "M1": 0,
+      "M2": 0,
+      "M3": 0,
+      "M4": 0,
+      "M5": 0,
+      "M6": 1,
+      "M7": 5
+    },
+    "ruleStatus": {
+      "pass": 224,
+      "warn": 18,
+      "fail": 15,
+      "not_configured": 65
+    }
+  },
+  "catalogsEvaluated": 21,
+  "protectedSubjects": [
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 1253,
+        "authoredRequires": 1562,
+        "effectiveRequires": 1562,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 2,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M7"
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 1041,
+        "authoredRequires": 1722,
+        "effectiveRequires": 1722,
+        "crossLandscapeReferences": 158,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 2,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M7"
+    },
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 485,
+        "authoredRequires": 884,
+        "effectiveRequires": 884,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M7"
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 743,
+        "authoredRequires": 1283,
+        "effectiveRequires": 1283,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M7"
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "subject": "Deutsch",
+      "maturity": "M6",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 355,
+        "authoredRequires": 522,
+        "effectiveRequires": 522,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M6"
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "subject": "Geschichte",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 218,
+        "authoredRequires": 376,
+        "effectiveRequires": 386,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 13,
+        "atomicNormalFormFindings": 45,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 13,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ],
+      "minimumMaturity": "M6"
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "subject": "Informatik",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 283,
+        "authoredRequires": 504,
+        "effectiveRequires": 529,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 94,
+        "atomicNormalFormFindings": 74,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 186,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ],
+      "minimumMaturity": "M6"
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "subject": "Latein",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 177,
+        "authoredRequires": 353,
+        "effectiveRequires": 378,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 43,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ],
+      "minimumMaturity": "M6"
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "subject": "Politik und Wirtschaft",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 513,
+        "authoredRequires": 984,
+        "effectiveRequires": 1027,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 126,
+        "atomicNormalFormFindings": 18,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 252,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ],
+      "minimumMaturity": "M6"
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 703,
+        "authoredRequires": 852,
+        "effectiveRequires": 852,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ],
+      "minimumMaturity": "M7"
+    }
+  ],
+  "allCatalogs": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 485,
+        "authoredRequires": 884,
+        "effectiveRequires": 884,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ]
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 743,
+        "authoredRequires": 1283,
+        "effectiveRequires": 1283,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ]
+    },
+    {
+      "landscapeId": "8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80",
+      "subject": "Chinesisch",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "invalidInputs": 1
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "subject": "Deutsch",
+      "maturity": "M6",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 355,
+        "authoredRequires": 522,
+        "effectiveRequires": 522,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ]
+    },
+    {
+      "landscapeId": "c8c84073-46ae-57ec-898a-882d08d7a72f",
+      "subject": "Englisch",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 131,
+        "authoredRequires": 124,
+        "effectiveRequires": 192,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 66,
+        "atomicNormalFormFindings": 45,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 66,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977",
+      "subject": "Französisch",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "invalidInputs": 1
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "subject": "Geschichte",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 218,
+        "authoredRequires": 376,
+        "effectiveRequires": 386,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 13,
+        "atomicNormalFormFindings": 45,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 13,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ]
+    },
+    {
+      "landscapeId": "70a2cb55-127b-5c6e-b518-4a1c9f4f77a0",
+      "subject": "Griechisch",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "invalidInputs": 1
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+      "subject": "Gymnasium (Deutschland)",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "invalidInputs": 1
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "subject": "Informatik",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 283,
+        "authoredRequires": 504,
+        "effectiveRequires": 529,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 94,
+        "atomicNormalFormFindings": 74,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 186,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ]
+    },
+    {
+      "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+      "subject": "Italienisch",
+      "maturity": "M0",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 9,
+        "authoredRequires": 6,
+        "effectiveRequires": 6,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "subject": "Latein",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 177,
+        "authoredRequires": 353,
+        "effectiveRequires": 378,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 43,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ]
+    },
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 1253,
+        "authoredRequires": 1562,
+        "effectiveRequires": 1562,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 2,
+      "scopeMaturities": [
+        "M4"
+      ]
+    },
+    {
+      "landscapeId": "f620c251-c1e1-41c1-b4e1-b10950b43608",
+      "subject": "Musik",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 77,
+        "authoredRequires": 82,
+        "effectiveRequires": 189,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 10,
+        "atomicNormalFormFindings": 43,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 18,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 1041,
+        "authoredRequires": 1722,
+        "effectiveRequires": 1722,
+        "crossLandscapeReferences": 158,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 2,
+      "scopeMaturities": [
+        "M4"
+      ]
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "subject": "Politik und Wirtschaft",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 513,
+        "authoredRequires": 984,
+        "effectiveRequires": 1027,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 126,
+        "atomicNormalFormFindings": 18,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 252,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M0"
+      ]
+    },
+    {
+      "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+      "subject": "Polnisch",
+      "maturity": "M0",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 6,
+        "authoredRequires": 3,
+        "effectiveRequires": 3,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+      "subject": "Russisch",
+      "maturity": "M0",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 9,
+        "authoredRequires": 6,
+        "effectiveRequires": 6,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "90eedebf-9ea8-5247-85dd-31c147f907c3",
+      "subject": "Spanisch",
+      "maturity": "M0",
+      "graphStatus": "fail",
+      "graphMetrics": {
+        "goals": 84,
+        "authoredRequires": 106,
+        "effectiveRequires": 227,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 32,
+        "atomicNormalFormFindings": 61,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 40,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+      "subject": "Tschechisch",
+      "maturity": "M0",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 6,
+        "authoredRequires": 3,
+        "effectiveRequires": 3,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 0,
+      "scopeMaturities": []
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "subject": "Wirtschaftswissenschaften",
+      "maturity": "M7",
+      "graphStatus": "pass",
+      "graphMetrics": {
+        "goals": 703,
+        "authoredRequires": 852,
+        "effectiveRequires": 852,
+        "crossLandscapeReferences": 1,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      },
+      "scopeCount": 1,
+      "scopeMaturities": [
+        "M4"
+      ]
+    }
+  ],
+  "protectedFloorFailures": [
+    "Geschichte",
+    "Informatik",
+    "Latein",
+    "Politik und Wirtschaft"
+  ],
+  "floorPolicyChanged": false,
+  "floorExceptions": [],
+  "graphFailuresCapEveryProducedScopeAtM0": true,
+  "freshMainTargetedRemoteCiPassed": false,
+  "mainDelivered": false,
+  "goalComplete": false,
+  "reportSha256": "80c0b852c18db786a0b6d93c060f49b28adb62bb3b359a82faa0e1aa1248e44e",
+  "rawLogs": {
+    "producer.log": "6cfa6a6670faef00b668fd3e0f9d7459af320db915d4239173439b5d2674101c",
+    "floors.log": "88d3759c760930b3d78abcf9f35aad617d75a0d079fe24cfba06f2b5163da392"
+  }
+}
