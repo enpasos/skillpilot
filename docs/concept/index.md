@@ -39,8 +39,11 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
   The former [unit-concept address](skill-graph/curriculum-levels.md) and
   [progression-concept address](skill-graph/curriculum-level-gates.md) remain
   short compatibility pointers for existing links.
+- [Learning-Unit Design Criteria and Examples](skill-graph/learning-unit-design-and-examples.md)
+  Purpose of a unit, criteria for meaningful boundaries and assessments, two
+  worked candidates, and the unit validity rules R1–R5 of 11 November 2026.
 - [Optional Acquisition and Time Planning (§12, EN)](skill-graph/planning-and-budget.en.md) · [Deutsch (DE)](skill-graph/planning-and-budget.de.md)
-  Multi-stage level plans, structural prerequisite witnesses, and workload budgets.
+  Multi-period acquisition plans, structural prerequisite witnesses, and workload budgets.
 - [Graph Definition Compendium Appendices (B–F, EN)](skill-graph/compendium-appendix.en.md) · [Deutsch (DE)](skill-graph/compendium-appendix.de.md)
   Current implementation status, verification strategy, glossary/symbols, sources, and single-source build reference.
 - [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)

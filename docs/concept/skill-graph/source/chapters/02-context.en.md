@@ -102,6 +102,8 @@ At the personal compilation boundary, the Product Owner decision of 10 November 
 
 This compile-time validity check is distinct from later Level~3 focus selection: a validly resolved prerequisite outside the active focus still does not block normal mode.
 
+Under the Product Owner decision of 11 November 2026, these hard errors belong to validation, curriculum QA, and native acceptance rather than to learner reads. When the canonical graph of a learning context is not strictly compilable, the runtime keeps the reviewed seed scope without the derived closure, claims no learning basis, offers no goal whose prerequisite demand is broken, and logs the failure once per curriculum and error code; learner state, results, and export stay readable. Errors in the seed selection itself remain hard errors. The rule covers the many non-canonical curricula whose root cluster contains and requires its own orientation goal and changes none of their data.
+
 *Transition-data example:* Suppose a Physics goal $g$ requires a Mathematics cluster $k$. Its canonical atomic basis and transitive prerequisites are resolved prior to display filters. A subject-local `prerequisiteOnly` reference to $k$ may remain in Physics, yet every genuinely required atom still receives an acquisition target in the full Personal Curriculum -- whether in Mathematics or as derived preparation -- without manual per-atom references or enrolling an entire extra subject. Canonical identity, provenance, and mastery remain intact.
 
 ### Applicability Is Not Placement {#sec:applicability-vs-placement}

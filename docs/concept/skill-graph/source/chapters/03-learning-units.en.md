@@ -6,9 +6,15 @@ The skill graph specifies which goals exist and what they require, yet it does n
 A **learning unit** (German *Lerneinheit*, future technical name `LearningUnit`) binds an understandable learning promise to its own learning goals and, where appropriate, smaller learning units -- its *child units*. The structure is recursive: Mechanics may contain Kinematics and Dynamics, and Kinematics may in turn contain smaller units. School years, semesters, and study weeks are possible scheduling anchors rather than synonyms for a learning unit. Personalization Levels 1--4, QA maturity tiers, and the difficulty field `level` keep their existing meanings.
 :::
 
+:::principle {title="Purpose: A Secure Foundation Before Building On"}
+A learning unit establishes solid, independent application of its promise before the planned course builds on it. Its assessments are designed to expose essential misconceptions: an exposed gap leads to focused further learning and a fresh, equivalent assessment, whereas a false completion would send learners onward on an unstable foundation. The ordinary grading contract applies unchanged -- there is no hidden pass rule and no second stored outcome; an isolated slip with sound reasoning is judged differently from a missing central understanding. This is a didactic requirement of the unit definition, not a technical access lock (Section~@ref{sec:unit-progression}).
+:::
+
 ### Motivation and Distinct Domain Claims {#sec:unit-claims}
 
 A learning unit answers first: *What will I be able to do afterwards, and why does it matter?* A motivational opening makes that promise tangible before individual tasks or goals are presented. That opening is a didactic role: when modeled as a genuine orientation goal, it follows the orientation completion contract (Section~@ref{sec:orientation}), whereas a synthetic heading never mints an extra learning goal. Derived unit completion never asserts that a motivational conversation actually took place.
+
+A unit boundary follows a meaningful conceptual transition: which coherent understanding and application must be secure before something new depends on it? An existing assessment, a target quota, a tidy heading, or the density of prerequisite edges is at most an indicator, never the definition. Sparse, transitively minimal chains can form strong units, and shared elementary foundations do not force every later application into one giant unit. Edges are neither added nor removed to make a desired cut fit; a questionable edge is a separate subject-matter finding. A terminal or synthesis unit needs no later consumer to justify it. The [design criteria and worked examples](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) apply these criteria to two candidates.
 
 Relative to its child units, a parent unit may make one of three distinct claims:
 
@@ -33,10 +39,10 @@ In Figure~@ref{fig:recursive-unit}, Kinematics owns $\{\nd{a}, \nd{b}, \nd{q_K},
 Scope and ownership obey five rules:
 
 - Resolved total scope is non-empty. An empty navigation marker is never a completed learning unit, whereas a pure aggregate may have empty $\Own(U)$ provided its required children carry a non-empty total scope.
-- Every initial acquisition lives on the smallest domain-responsible authoritative unit. An ancestor view may display the same stable goals without claiming them again in $\Own(U)$.
+- Every acquisition target has exactly one directly owning unit: the smallest domain-responsible authoritative unit (rule R4 in Section~@ref{sec:why-graph-not-enough}). An ancestor view may display the same stable goals without claiming them again in $\Own(U)$.
 - Overlapping references unite as sets, minting neither duplicate goals nor double-counted progress points.
 - Direct ownership of $\Own(U)$ together with the domain-reviewed meaning of the unit's own assessments forms the unit's *local contract* (Section~@ref{sec:assessment}); switching focus never alters that ownership or contract.
-- Every ordinary content goal in $\Own(U)$ requires an own local assessment consumer -- an assessment owned by $U$ that requires it -- together with independently reviewed application coverage in its tasks and normal grading rubric. Without that coverage the local contract is invalid; an ad-hoc waiver mask never substitutes for it.
+- Every ordinary content goal in $\Own(U)$ requires an own local assessment consumer -- an assessment owned by $U$ that requires it directly or transitively (R1) -- and at least one such assessment needs reviewed evidence that its tasks and normal grading rubric really test the goal (R2). Section~@ref{sec:why-graph-not-enough} lists all validity conditions R1--R5 and where each is enforced. Without them the local contract is invalid; an ad-hoc waiver mask never substitutes for it.
 
 Embedding reuses the existing program and placement layers or reviewed composition views (Section~@ref{sec:context-model}). Expanding a UI cluster does not create a learning unit, nor does every `contains` cluster automatically become one; in particular, general cluster satisfaction from Section~@ref{sec:state} remains distinct from the explicitly authorized unit hierarchy defined here.
 
@@ -56,7 +62,7 @@ For the three unit forms from Section~@ref{sec:unit-claims}, this means the foll
 
 ### Recognition Before Full Unit Completion {#sec:unit-early-recognition}
 
-Under the binding target concept -- which is **not yet implemented** on `main` -- passing an appropriate local assessment can recognize a unit's own content goals before an independent flashcard deck or sibling child unit is finished. That recognition is globally effective, and a still-open parent synthesis assessment does not withdraw it.
+Under the binding target concept -- which is **not yet implemented** on `main` -- passing an appropriate local assessment can recognize a unit's own content goals before an independent flashcard deck or sibling child unit is finished, provided that no other open own assessment or memory goal of the unit still requires them (Section~@ref{sec:transitive-demand}). That recognition is globally effective, and a still-open parent synthesis assessment does not withdraw it.
 
 Recognition is therefore computed solely over each unit's *own* goals excluding assessment and memory goals. A parent unit never forms an enlarged recognition scope over all of its descendants; otherwise passing a parent assessment could bypass subordinate child assessments or card-recall duties. A parent assessment may attest additional integration without retroactively expanding what child contracts certify. Section~@ref{sec:assessment} states the exact formula and its task-authoring conditions.
 

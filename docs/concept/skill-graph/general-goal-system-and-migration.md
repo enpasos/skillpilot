@@ -273,6 +273,8 @@ no redundant extra exam. Valid recognition in a completed child remains global
 while the parent assessment is open. A parent's pass never passes protected
 child exams or cards. Local recognition applies only to directly owned ordinary
 targets under that unit's reviewed contract, not to its entire descendant union.
+That recognition is only sound inside units that satisfy the validity rules
+R1–R5 of 11 November 2026 ([Graph Definition §13.3](assessment-gated-completion.md#sec-why-graph-not-enough)).
 
 An explicitly declared whole-unit prerequisite means the predecessor's complete
 outcome is required by the course. An individual atomic prerequisite does not
@@ -281,8 +283,9 @@ inherited canonical `requires`. Whether the course relation guides a recommended
 route or technically blocks starts, including direct exam attempts, remains a
 separate product decision in [Learning Unit Progression](learning-unit-progression.md).
 
-[Graph Definition §12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
-specifies the recursive contract and optional structural/workload checks.
+Graph Definition §11 ([learning units](learning-units.md)) specifies the
+recursive contract, and §12 ([optional planning](planning-and-budget.en.md))
+the optional structural/workload checks.
 Budget feasibility still requires supported effort estimates and an explicit
 entry basis; neither calendar placement nor a declared entry assumption writes
 mastery. The existing difficulty field `level` and personalization levels keep

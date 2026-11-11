@@ -4,9 +4,13 @@ This is the single source of truth for algorithmic graph validation in CI.
 mandatory [graph requirement](../concept/skill-graph/graph-definition.md#73-transitive-minimality).
 The corrected [recognition model](../concept/skill-graph/assessment-gated-completion.md)
 also requires complete local assessment routes, protected explicit exam/card
-targets and stable level contracts. These are requirements for the forthcoming
+targets and versioned learning-unit contracts (unit validity rules R1–R5 of
+11 November 2026). These are requirements for the forthcoming
 validator adaptation; the existing emitted-rule table below does not establish
-that they are already fully checked. No existing CI result proves that a task
+that they are already fully checked. Atomic normal form and transitive
+minimality (`G17`) are not checked by `validate:graph`; since 11 November 2026
+the curriculum-quality rule `CQR-001` checks them for the canonical Gymnasium
+catalog ([maturity and route documentation](curriculum-quality-maturity-and-routes.md)). No existing CI result proves that a task
 requires every competence's independent application; that remains a distinct
 content/rubric review obligation. The old preparation-discharge tests do not
 prove the corrected model.

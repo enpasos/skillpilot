@@ -15,7 +15,9 @@ Continue with:
   own assessment/recall obligations and derived completion;
 - [Learning-Unit Progression and Access Policy](learning-unit-progression.md)
   for whole-unit prerequisites and the still undecided technical access policy;
-- [Graph Definition §12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
-  for formal unit semantics and optional calendar/workload profiles;
+- [Graph Definition §§11–12](graph-definition.md#12-learning-units-and-optional-planning-profiles)
+  for formal unit semantics (§11) and optional calendar/workload profiles (§12);
+- [Learning-Unit Design Criteria and Examples](learning-unit-design-and-examples.md)
+  for the purpose of a unit, boundary criteria and the unit validity rules;
 - [Assessment-Gated Completion](assessment-gated-completion.md) for durable
   global recognition under immutable own contracts.

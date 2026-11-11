@@ -211,7 +211,7 @@ select the intended atomic targets; they must not first discard canonical
 intermediate prerequisites and then compute reachability on that incomplete
 graph. Retain every necessary prerequisite node and relationship, including
 the structure needed for inherited requirements in transitional data. The
-formal closure requirement is specified in [Graph Definition §11.2](graph-definition.md#112-filter-predicate-and-induced-subgraph).
+formal closure requirement is specified in [Graph Definition §§5.1–5.2](graph-definition.md#112-filter-predicate-and-induced-subgraph).
 
 For `A requires B requires C`, a view selecting A and C must retain B in its
 underlying prerequisite graph. Structural lookup alone does not make B
@@ -219,7 +219,13 @@ learnable; the personal learning-closure rule below additionally makes it a
 compiled target in the full plan. Authored seed references stay validated,
 while checked canonical paths/provenance justify derived targets without a
 manual reference per prerequisite. Unknown references, cycles or missing,
-unexposed or unaccounted required atoms remain hard errors. Unrelated
+unexposed or unaccounted required atoms remain hard errors. Under the Product
+Owner decision of **11 November 2026**, these errors belong to validation,
+curriculum QA and native acceptance, not to learner reads: when the canonical
+graph of a learning context is not strictly compilable, the runtime keeps the
+reviewed seed scope without the derived closure, claims no learning basis,
+offers no goal whose demand is broken and logs the failure once per curriculum
+and error code. Errors in the seed selection itself stay hard errors. Unrelated
 `contains` descendants acquire no additional learning obligation.
 <a id="required-prerequisite-learning-scope"></a>
 

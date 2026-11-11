@@ -1,6 +1,6 @@
 # Skill Graph Compendium — Single Source of Truth
 
-This directory is the **sole authored source** for the bilingual SkillPilot Graph Definition compendium across both **MkDocs web documentation** (`EN` and `DE`) and **LuaLaTeX / PDF technical compendia** (`EN` and `DE`), including the 143-rule traffic-light (`Ampel`) milestone matrix.
+This directory is the **sole authored source** for the bilingual SkillPilot Graph Definition compendium across both **MkDocs web documentation** (`EN` and `DE`) and **LuaLaTeX / PDF technical compendia** (`EN` and `DE`), including the 145-rule traffic-light (`Ampel`) milestone matrix.
 
 ## Policy: Source-Only Tracking
 
@@ -12,7 +12,7 @@ All generated Markdown pages (`graph-definition*.md`, `context-and-views.*.md`, 
 
 - `spec-manifest.json` — Document metadata, language headers, web page routing, and shared MathJax / LaTeX macro definitions.
 - `figures.json` — Metadata, asset bindings, alt texts, and `DE`/`EN` captions for all 17 illustrations (`fig:title`, `fig:overview`..`fig:period`).
-- `rules-and-gates.json` — All 143 `GD-*` rules, their 4-state enforcement traffic light (`hart`, `teil`, `offen`, `opt`), 11 validation areas, and 26 repository gates in `DE` and `EN`.
+- `rules-and-gates.json` — All 145 `GD-*` rules, their 4-state enforcement traffic light (`hart`, `teil`, `offen`, `opt`), 11 validation areas, and 26 repository gates in `DE` and `EN`.
 - `glossary-and-symbols.json` — Key frontmatter distinctions, glossary (`Appendix D.1`), and unified mathematical symbol reference (`Appendix D.2`) in `DE` and `EN`.
 - `implementation-status.json` — Dated Product Owner decisions, audited commits, specification-vs-implementation comparison (`Appendix B`), and normative source attribution (`Appendix E`) in `DE` and `EN`.
 - `chapters/00-frontmatter.{de,en}.md` through `06-appendices.{de,en}.md` — Canonical bilingual prose chapters with 1:1 structural AST parity verified on every build.
