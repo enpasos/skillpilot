@@ -1,0 +1,240 @@
+## Unified Backend-Driven Learning-Plan Status {#sec:unified-plan-status}
+
+### Purpose and guiding principles {#sec:plan-status-goals}
+
+SkillPilot uses a single shared learning-plan status across Cockpit, chat, and learner-facing planning to answer three questions:
+
+**What workload is scheduled for the current period? How does cumulative progress compare against the plan? What will the learner work on next?**
+
+Both the calculation and the wording live entirely in the backend. Cockpit, chat, and planning surfaces render the supplied statements verbatim — they neither recalculate the status locally nor invent competing assessments.
+
+:::principle{title="Core Principle"}
+One domain calculation, one authoritative wording, multiple output channels.
+:::
+
+A typical status output reads:
+
+> Mathematics: Daily target reached · 3 learning goals behind
+> Physics: No daily target today · 2 learning goals behind
+
+When transitioning into instruction, the active goal is announced separately:
+
+> **Your active learning goal: Describe power functions with integer exponents**
+
+#### Simplicity as a design goal
+
+The design favors a clean, dependable contract for standard use cases over intricate special-case machinery. **That deliberate scope limit applies to feature breadth, never to the correctness of supported cases:** situations that cannot be evaluated reliably are named explicitly rather than masked behind estimates or heuristics. Existing plan structures, learner state, and sync boundaries are reused; this specification unifies distributed status logic into one shared backend component rather than introducing a new scheduling engine.
+
+:::warning{title="Binding Product Clarification of 4 November 2026"}
+Total plan achievement (`I`) counts both explicit and implicit mastery by default. Implicit mastery means demonstrated independent application in suitable closing assessments — not merely skipped preparation. Valid recognition also satisfies later prerequisites and is revoked neither by new downstream consumers nor by switching plans; recognition arises within a valid learning unit and takes effect globally. Daily and weekly period completions (`H`) continue to count only actual explicit completion events.
+
+The learner preference "Count only explicitly achieved learning goals" affects only cumulative plan achievement (`I`). The corrected contract below is not yet confirmed as fully implemented or deployed; the earlier demand-stop implementation and its checks do not prove it. See [Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md).
+:::
+
+### Domain meaning of the status {#sec:plan-status-meaning}
+
+#### Period target, cumulative balance, and active goal
+
+The status separates three independent statements: the current period's target, the quantitative plan balance, and the active learning goal.
+
+:::table{cols="6.4cm,X"}
+| Statement | Must not be inferred from it |
+| --- | --- |
+| Daily or weekly target reached | Nothing remains open overall. |
+| No target for the current period | There is no cumulative backlog. |
+| Quantitatively on track | Every goal scheduled for earlier periods is mastered. |
+| Active learning goal present | The current period target is still unfinished. |
+| Further learning available | Extra study beyond the target was already agreed. |
+:::
+
+A completed daily target can coincide with a remaining backlog, and an active learning goal can serve catching up, working ahead, or finishing an in-progress unit. Status wording never frames these combinations as contradictory.
+
+#### Quantitative balance per subject
+
+Every progress-relevant planned goal counts as one unit; neither elapsed study time nor difficulty weights enter the balance. Later-scheduled goals that are already mastered count as work ahead and can offset quantitative backlog within the same subject.
+
+Example: three earlier-scheduled goals are still open while five later-scheduled goals are already mastered. Quantitatively the learner is two goals ahead, while the three earlier goals remain substantively open and prioritized during goal selection.
+
+> **"On track" describes quantitative progress volume. It does not certify mastery of every specific topic scheduled up to that date.**
+
+Displayed backlog is a quantity of this net balance, not a raw count of all earlier-scheduled open goal IDs. Detailed plan views may additionally list specific open goals.
+
+#### No cross-subject offsetting
+
+Every subject is evaluated independently: working ahead in Mathematics never offsets a backlog in Physics. There is no cross-subject net score, overall percentage, or combined traffic light. Cross-subject `requires` edges in the skill graph remain unaffected: globally recognized competence satisfies prerequisites in other subjects too, while each subject plan counts solely its own deduplicated goal IDs.
+
+### Authoritative data foundation {#sec:plan-status-data}
+
+#### Single source of learner outcomes
+
+Persisted learner goal outcomes remain the sole individual outcome source. Plan fulfillment is derived from explicit mastery together with globally effective assessment-gated recognition, without writing extra mastery rows or maintaining a second outcome store. Cockpit, goal tree, and teacher planning maintain no separate manual teaching-progress state; former manual teaching coverage and completeness attestations are retired as a progress model (legacy local records remain preserved without producing mastery). Planning sets scope and dates; it neither certifies nor mutates outcomes.
+
+The learner's full personal target set and the plan set $G$ need not coincide: a goal mastered before plan creation belongs to personal achievement without entering $G$. $G$ is a temporal selection rather than an independent recognition contract — global recognition is computed first and intersected with $G$ afterward. Changing plans or focus never revokes existing recognition. Completed orientation goals count consistently within their scope without claiming subject mastery. Missing or stale outcome reads are surfaced as unavailable, never as zero achieved goals, and status evaluation is strictly read-only.
+
+#### Baseline-cleaned plan set
+
+At plan creation, the baseline records which scheduled goals did not yet have explicit mastery; those goals form the progress-relevant plan set $G$. Currently recognized implicit goals are not stripped from $G$ at creation time so that enabling "Count only explicitly achieved learning goals" later can still account for missing explicit completions.
+
+**Every quantity in the status calculation refers exclusively to this same baseline-cleaned plan set $G$.** Goals explicitly mastered prior to plan creation contribute neither to due targets, nor to cumulative achievement, nor to period completions; goals in $G$ mastered later stay in $G$ and count toward `I` (example: 50 cluster goals with 20 already mastered $\Rightarrow |G| = 30$; scheduling 5 in week 1 yields a weekly target of 5). No separate cutoff timestamp is required.
+
+#### Stable identity, plan changes, and legacy plans
+
+- **Stable IDs:** Evaluation uses stable subject and goal UUIDs rather than display titles or translations.
+- **Deduplication:** Multiple active plans for the same subject merge into one set where each goal ID counts at most once at its earliest valid due date; review/exam blocks add no duplicate due count, and clusters never count on top of their atomic goals.
+- **Explicit mutations only:** Scope, dates, or baselines change only through explicit plan edits. Passing a plan's end date does not silently drop open goals from an active plan. Ambiguous legacy baselines are flagged as non-evaluable rather than guessed from current mastery.
+
+### Implicit completion and optional explicit-only counting {#sec:implicit-completion anchors="34-implizite-erledigung-und-optionale-explizit-zahlung"}
+
+Let $M$ denote explicitly mastered goals and $W$ the non-explicit goals globally recognized under [Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md). By default:
+
+$$
+M_{\mathrm{eff}} = M \cup W, \qquad I = |G \cap M_{\mathrm{eff}}|.
+$$
+
+When **"Count only explicitly achieved learning goals"** is enabled, $I = |G \cap M|$ is used instead.
+
+$W$ is reconstructed from fixed authored learning-unit contracts and stored explicit assessment/recall outcomes — not merely from currently displayed or selected curriculum slices. Authored contracts governing existing results remain authoritative so later graph edits never retroactively grant extra competences to past exam results.
+
+Closing assessments of a learning unit must verify independent application of the recognized competences (a bare `requires` edge or lack of further consumers is insufficient). Within the directly governing unit, recognition propagates transitively across mastered intermediate goals; open assessments in later or outer units block neither local recognition nor its global effect.
+
+- **Example:** Suppose $Q$ is the sole closing assessment recognizing $A$ and $B$, with all three in $G$. Passing $Q$ yields $I = 3$ by default and $I = 1$ under explicit-only counting; only $Q$ receives an explicit mastery record. A later exam $Q_2$ requiring $A$ sees $A$ as satisfied without resetting $I$, whereas ordinary mastery of $B$ alone does not recognize $A$ while $Q$ remains open.
+- **Modeling boundaries:** An ordinary goal lacking valid assessment attachment is a modeling defect, not automatic progress. Assessment and memorization goals remain explicit obligations. Missing or unresolvable recognition contracts surface as an evaluation limitation without falling back to legacy demand-stop waivers.
+- **Single counting and explicit `H`:** Every goal ID in $G$ counts at most once; explicitly completing an already recognized goal does not increment $I$ a second time, though its genuine explicit completion today may count toward $H$. Deriving $W$, switching plans, importing state, or re-rendering never fabricates period events in $H$.
+- **Preference and plan details:** Under *Configuration → Learning Settings*, "Count only explicitly achieved learning goals" persists per SkillPilot ID (default: off). Help copy: *"Your overall plan also counts competences whose independent application was demonstrated in assessments. With this setting, only directly completed learning goals count. Your daily or weekly target always counts direct completions only."* Under *Plan Details*, optional `planCreditText` explains implicit credit (e.g. *"Credited in plan: 3 goals, including 2 via independent application in assessments."*). This specification clarification neither approves the older implementation plan nor claims runtime deployment.
+
+### Daily and weekly period basis {#sec:plan-status-period}
+
+Learner configuration persists a per-SkillPilot-ID choice between **1 Day** and **1 Week** (default when unset: **1 Week**; an explicit daily setting is preserved). The reference time zone is **Europe/Berlin** with no custom week-start or timezone selector.
+
+:::table{cols="4.2cm,X"}
+| Setting | Current period |
+| --- | --- |
+| **1 Day** | Current calendar day (`Europe/Berlin`) |
+| **1 Week** | Current Monday-through-Sunday calendar week (`Europe/Berlin`) |
+:::
+
+The chosen basis governs status math, Cockpit gauges, chat status, learner planning, and plan-driven goal selection alike. In weekly mode the running week forms a single unit: **elapsed days inside the current week create no intra-week overdue backlog**; any remaining deficit rolls into backlog only at the period boundary. Partial boundary weeks count only actually scheduled goals (never $7\times$ a daily quota). Toggling between daily and weekly mode changes neither mastery nor plan dates, only the evaluation window.
+
+### Authoritative per-subject calculation {#sec:plan-status-formula}
+
+#### Inputs and completion events
+
+All inputs are integers over the subject's valid, baseline-cleaned, deduplicated plan set $G$ satisfying $0 \le P \le S \le |G|$ and $0 \le H \le I \le |G|$ (invalid inputs are never silently clamped):
+
+:::table{cols="2.2cm,X"}
+| Symbol | Meaning |
+| --- | --- |
+| $S$ | Goals in $G$ scheduled up to and including the **end of the current period** (Sunday night in weekly mode). |
+| $P$ | Goals in $G$ newly due within the current period (scheduled daily or weekly target). |
+| $I$ | Goals in $G$ currently satisfied for the plan under @ref{sec:implicit-completion}. |
+| $H$ | Distinct goals in $G$ with a verified **explicit** completion event inside the current period that remain mastered. |
+:::
+
+Only genuine explicit completion events count toward $H$ (excluding imports, generic timestamps, duplicate submissions, or preference toggles; at most once per goal per period). Mastered state without a reliable event timestamp contributes to $I$ but not $H$; event-ledger read errors mark evaluation degraded rather than assuming $H = 0$.
+
+#### Calculation and direction
+
+```text
+RawBalance                = I - S
+RemainingDue              = max(0, -RawBalance)
+OpenPeriodTarget          = min(RemainingDue, max(0, P - H))
+Backlog                   = RemainingDue - OpenPeriodTarget
+Ahead                     = max(0, RawBalance)
+CompletedPeriodTarget     = P - OpenPeriodTarget
+```
+
+> **Completions in the current period satisfy the current period's target first; any surplus reduces backlog or builds work ahead.**
+
+Prior work ahead can likewise satisfy all or part of $P$; $P$ is never capped downward when covered ahead of time, but reported as reached. Status direction is `behind` when $\text{Backlog} > 0$, `ahead` when $\text{Ahead} > 0$, and `on_track` otherwise (a negative raw balance can reside entirely inside the still-open current period target).
+
+#### Reference cases (daily mode; weekly mode analogous)
+
+:::table{cols="5.2cm,2.7cm,X"}
+| Scenario | $S / P / I / H$ | Output |
+| --- | --- | --- |
+| Start of day, no backlog | `13 / 3 / 10 / 0` | Daily target 0 of 3 · on track |
+| Backlog, one goal done today | `13 / 3 / 9 / 1` | Daily target 1 of 3 · 2 learning goals behind |
+| Daily target met, backlog left | `13 / 3 / 12 / 4` | Daily target reached · 1 learning goal behind |
+| Worked ahead of cumulative due | `13 / 3 / 15 / 6` | Daily target reached · 2 learning goals ahead |
+| Daily target covered by prior work | `13 / 3 / 13 / 0` | Daily target reached · on track |
+| No daily target, backlog present | `10 / 0 / 8 / 0` | No daily target today · 2 learning goals behind |
+| Exam passed today + 1 recognized | `3 / 3 / 2 / 1` | Daily target 2 of 3 · on track |
+| Same 2 credits under larger backlog | `8 / 3 / 2 / 1` | Daily target 1 of 3 · 4 learning goals behind |
+:::
+
+### Authoritative output format {#sec:plan-status-output}
+
+For every subject with an active plan, the backend emits one line `<Subject>: <PeriodPart> · <BalancePart>` in a deterministic cross-channel order to assemble **`status.text`** (with no LLM summarization or subject omission).
+
+:::table{cols="4.2cm,5.4cm,X"}
+| Meaning | German | English |
+| --- | --- | --- |
+| Daily progress ($P > 0$) | `Tagesziel N von P` | `Daily target N of P` |
+| Daily target met | `Tagesziel erreicht` | `Daily target reached` |
+| No daily target ($P = 0$) | `Heute kein Tagesziel` | `No daily target today` |
+| Weekly progress ($P > 0$) | `Wochenziel N von P` | `Weekly target N of P` |
+| Weekly target met | `Wochenziel erreicht` | `Weekly target reached` |
+| No weekly target ($P = 0$) | `Diese Woche kein Wochenziel` | `No weekly target this week` |
+| Backlog | `N Lernziele im Rückstand` | `N learning goals behind` |
+| Ahead | `N Lernziele vorgearbeitet` | `N learning goals ahead` |
+| On track | `im Plan` | `on track` |
+:::
+
+Singular/plural inflection is handled by the backend; raw balances and "+N extra" suffixes are omitted. "Daily target reached" must never be paraphrased as "Completed $P$ goals today". Output language is passed explicitly (fallback: stored learner language, then German); the AI coach never translates or rewrites `status.text`.
+
+**Separate active-goal announcement:** `status.text` never embeds the active goal. The backend supplies **"Dein aktives Lernziel: …"** / **"Your active learning goal: …"** separately once at the start of instruction; pure status queries trigger neither task generation nor goal announcements.
+
+### Backend architecture and data contract {#sec:plan-status-backend}
+
+A dedicated read-only backend component separates calculation from template rendering without introducing a microservice or generic rules engine. The shared result carries period metadata, overall evaluability and `status.text`, per-subject status lines/directions and Cockpit gauge projections, continuation controls, the separate localized active-goal announcement, and optional `planCreditText`.
+
+#### Cockpit gauge projections (`periodGauge` and `balanceGauge`)
+
+- **First dial (`periodGauge`, titled "Today" or "This Week"):** supplies `completed` (satisfied period quota in goals from $G$), `target` ($P$), and `needlePosition = completed / target` when $P > 0$, or `completed = 0`, `target = 0`, `needlePosition = null` when $P = 0$ (`null` if non-evaluable).
+- **Second dial (`balanceGauge`, titled "Overall"):** uses `net = Ahead - Backlog` (**not** $I - S$, so open current-period work alone never displays as behind). Typical workload $M = \text{typicalAmount}$ is the median of all **positive** deduplicated period targets across the subject's schedule (even sample sizes round the midpoint average up to the next integer; zero-target periods are excluded; if no positive period exists, `balanceGauge = null`). With $\text{scaleLimit} = 2M$, `needlePosition = min(1, net / scaleLimit)` for $\text{net} \ge 0$ and `needlePosition = max(-1, net / (scaleLimit + 1))` for $\text{net} < 0$; `severeBehind` holds iff $\text{net} < -2M$, and `strongAhead` iff $\text{net} \ge 2M$.
+
+#### Reduced chat projection and consistency
+
+Chat receives only the rendered status and continuation controls — neither legacy counters (`dueToday`, `completedToday`, `openToday`, `openOverdue`, `extraCompletedToday`) nor `periodGauge`/`balanceGauge`. Every evaluation reads plan, mastery, completion ledger, preferences, and the resolved Personal Curriculum closure from one consistent snapshot respecting period boundaries.
+
+### Channel behavior across chat, Cockpit, and planning {#sec:plan-status-channels}
+
+- **Chat:** Emits `status.text` verbatim at session start/resume, on status questions, and after status-relevant updates at most once per reply, without adding competing summaries. Upon mastering a goal, the didactic order stays: feedback on completed goal $\rightarrow$ updated plan status (when applicable) $\rightarrow$ announcement and teaching of next goal. On external AI hosts, verbatim rendering remains an integration check item.
+- **Cockpit:** Renders two equal-height needle dials per subject in plan mode (`periodGauge` blue/gray "x of y goals"; `balanceGauge` red/gray/green with the backend balance text directly beneath the needle, legible on narrow viewports, with no duplicate Settings or Continue button inside the Today panel). Missing period targets, missing `typicalAmount`, and degraded data are distinguished cleanly.
+- **Planning and details:** Displays plan dates, actual sections/deadlines/buffers (including scheduled buffers with 0 remaining weekdays), and `planCreditText` inside *Plan Details*. Legacy parallel counters ("Total to date…", "7-day pace") are retired; teaching coverage and exam prerequisites remain separate concepts.
+
+### Goal selection and focus control {#sec:plan-status-selection}
+
+In weekly mode, eligible goals from the entire current week are selectable right from Monday. The backend prioritizes reachable open goals from earlier periods ahead of current-period goals while still allowing work ahead; graph prerequisites and Personal Curriculum scope remain authoritative, and an in-progress valid goal is not displaced merely because the calendar period rolled over.
+
+Authorized continuation of an accepted plan may set temporary focus to the required plan section without mutating the Personal Curriculum. Pure status queries, pauses, active exam sessions, or unresolved subject switches trigger no focus change; reaching a period target never locks out voluntary study, nor does backlog auto-start unrequested extra work.
+
+### Non-evaluable situations {#sec:plan-status-unavailable}
+
+:::table{cols="6.4cm,X"}
+| Situation | Behavior |
+| --- | --- |
+| No learning plan configured | Explicit notice without inventing a zero balance |
+| Subject fully evaluable | Normal subject status line |
+| Subject degraded by an invalid partial plan | Explicit warning (e.g. *"1 subject plan not evaluable (Physics)."*), never a fake full balance |
+| Other subjects remain evaluable | Their valid status lines stay visible |
+| Only an older snapshot available | Timestamp/staleness stated explicitly |
+:::
+
+Missing or corrupt inputs are never rendered as `0 of 0`, "target reached", or "on track"; ability to continue learning remains decoupled from schedule evaluability.
+
+### Scope, verification, and acceptance {#sec:plan-status-acceptance}
+
+Rollout replaces distributed frontend calculations, legacy counter fields, and conflicting coach instructions across schemas, payloads, server instructions, and tests together rather than layering another parallel calculation on top.
+
+:::table{cols="4.4cm,X"}
+| Verification area | Core requirements |
+| --- | --- |
+| **Baseline** | Pre-mastered goals stay excluded from $S, P, I, H$; plan goals mastered later remain in $G$. |
+| **Math & monotonicity** | All reference cases match; $0 \le \text{completed} \le P$; backlog and ahead never negative or simultaneously positive; valid completions never worsen status. |
+| **Events & calendar** | No double counting; proper handling of imports, missing timestamps, mastery revocations, read errors, day/week rollovers, and basis switches. |
+| **Subjects & contracts** | Per-subject deduplication, zero cross-subject offsetting, fixed DE/EN templates, separate active-goal line, reduced chat projection. |
+| **Control & parity** | Weekly goals reachable Monday morning; status/pause queries read-only; identical state produces identical statements in Cockpit, chat, and planning. |
+:::
+
+**Acceptance criterion:** The backend calculates and phrases; the Cockpit displays; the coach relays the status and teaches.

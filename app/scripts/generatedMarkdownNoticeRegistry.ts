@@ -396,43 +396,58 @@ function loadMemoryCardReviewNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
   })
 }
 
-const skillGraphChapterNoticePaths = [
-  'docs/concept/skill-graph/graph-definition.md',
-  'docs/concept/skill-graph/graph-definition.de.md',
-  'docs/concept/skill-graph/context-and-views.en.md',
-  'docs/concept/skill-graph/context-and-views.de.md',
-  'docs/concept/skill-graph/learning-units.md',
-  'docs/concept/skill-graph/learning-units.de.md',
-  'docs/concept/skill-graph/learning-unit-progression.md',
-  'docs/concept/skill-graph/learning-unit-progression.de.md',
-  'docs/concept/skill-graph/planning-and-budget.en.md',
-  'docs/concept/skill-graph/planning-and-budget.de.md',
-  'docs/concept/skill-graph/assessment-gated-completion.md',
-  'docs/concept/skill-graph/assessment-gated-completion.de.md',
-  'docs/concept/skill-graph/compendium-appendix.en.md',
-  'docs/concept/skill-graph/compendium-appendix.de.md',
-]
+interface CompendiumRegistryEntryForNotice {
+  id: string
+  sourceDir: string
+  manifestPath: string
+  generatedBy: string
+  regenerateWebCommand: string
+}
 
-const skillGraphMatrixNoticePaths = [
-  'docs/qa-ci/graph-definition-rule-milestone-matrix.md',
-  'docs/qa-ci/graph-definition-rule-milestone-matrix.en.md',
-]
+interface CompendiumManifestForNotice {
+  webHeaderStyle?: string
+  webPages?: Array<{
+    sources?: string[]
+    sourceOfTruth?: string[]
+    paths?: Record<string, string>
+  }>
+}
 
-function loadSkillGraphMarkdownNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
-  return [
-    ...skillGraphChapterNoticePaths.map((path) => ({
-      path,
-      generatedBy: 'docs/concept/skill-graph/build_spec.py',
-      regenerateWith: 'cd app && npm run docs:skill-graph:web',
-      sourceOfTruth: ['docs/concept/skill-graph/source/'],
-    })),
-    ...skillGraphMatrixNoticePaths.map((path) => ({
-      path,
-      generatedBy: 'docs/concept/skill-graph/build_spec.py',
-      regenerateWith: 'cd app && npm run docs:skill-graph:web',
-      sourceOfTruth: ['docs/concept/skill-graph/source/rules-and-gates.json'],
-    })),
-  ]
+function loadCompendiaMarkdownNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
+  const registryPath = resolve(repoRoot, 'docs/compendia.json')
+  const registry = JSON.parse(readFileSync(registryPath, 'utf8')) as {
+    compendia?: CompendiumRegistryEntryForNotice[]
+  }
+  const configs: GeneratedMarkdownNoticeConfig[] = []
+  for (const entry of registry.compendia ?? []) {
+    const manifestAbs = resolve(repoRoot, entry.manifestPath)
+    const manifest = JSON.parse(readFileSync(manifestAbs, 'utf8')) as CompendiumManifestForNotice
+    if (manifest.webHeaderStyle === 'public-document') continue
+    const defaultSource = `${entry.sourceDir.replace(/\/+$/, '')}/`
+    for (const wp of manifest.webPages ?? []) {
+      const sourceOfTruth = wp.sourceOfTruth ?? (
+        entry.id === 'skill-graph'
+        && Array.isArray(wp.sources)
+        && wp.sources.length === 1
+        && wp.sources[0] === 'rules-and-gates'
+          ? ['docs/concept/skill-graph/source/rules-and-gates.json']
+          : [defaultSource]
+      )
+      const paths = wp.paths ?? {}
+      for (const lang of ['en', 'de']) {
+        const docPath = paths[lang]
+        if (typeof docPath === 'string' && docPath.length > 0) {
+          configs.push({
+            path: docPath,
+            generatedBy: entry.generatedBy,
+            regenerateWith: entry.regenerateWebCommand,
+            sourceOfTruth,
+          })
+        }
+      }
+    }
+  }
+  return configs
 }
 
 export function loadGeneratedStatusRegistryRows(): GeneratedStatusRegistryRow[] {
@@ -448,6 +463,6 @@ export function loadGeneratedMarkdownNoticeConfigs(): GeneratedMarkdownNoticeCon
     generatedStatusRegistryReadmeNoticeConfig,
     ...staticGeneratedStatusRows.flatMap(markdownNoticeFromRegistryRow),
     ...loadMemoryCardReviewNoticeConfigs(),
-    ...loadSkillGraphMarkdownNoticeConfigs(),
+    ...loadCompendiaMarkdownNoticeConfigs(),
   ]
 }

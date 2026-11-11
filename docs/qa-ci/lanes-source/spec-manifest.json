@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-qa-lanes-and-release-contracts",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-ci-overview",
+    "02-quality-dashboard",
+    "03-mapping-workbench",
+    "04-package-readiness",
+    "05-release-model-conformance",
+    "06-dual-release-contracts",
+    "07-relation-checks",
+    "08-atomic-review-process",
+    "09-requires-review-process",
+    "10-package-human-review-gates",
+    "11-mem-sparql-consistency",
+    "12-mem-sparql-runbook",
+    "13-source-rationales-runbook",
+    "14-abi26-mathe-deeplink"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/qa-ci/skillpilot-qa-lanes-and-release-contracts.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Qualitätshandbuch · Band IVb",
+      "title": "CI-Architektur,\nRelease-Verträge\nund Review-Lanes",
+      "subtitle": "Gestufte CI-Pipelines, Qualitätsdashboard, Mapping-Workbench, Standalone-Paket-\nund Dual-Release-Verträge, Review-Prozesse (HR-001–HR-006, MEM/SPARQL) und Runbooks",
+      "pdfTitle": "SkillPilot — CI-Architektur, Release-Verträge und Review-Lanes (DE)",
+      "pdfSubject": "CI-Pipelines, Qualitätsdashboard, Mapping-Workbench, Curriculum-Paketverträge und Review-Lanes",
+      "pdfKeywords": "SkillPilot, CI, Qualitätsdashboard, Mapping-Workbench, Release-Modell, Dual-Release, HR-001, MEM, SPARQL",
+      "runningHeadLeft": "SkillPilot · CI, Release-Verträge & Review-Lanes",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Bandes",
+        "body": "Ergänzend zu Band IV (Reifegrade `M0`–`M7`, `CQR-*`, `GVR`/`APV`/`CPV`, semantische Atomizität und Champion-Modell) dokumentiert Band IVb die operative Prüf- und Release-Infrastruktur: die zweistufige GitHub-Actions- und `./run_ci.sh`-Architektur, das Qualitätsdashboard und die Mapping-Workbench, die Fail-Closed-Paketbereitschaft (`full-standalone-v1`), Release-Modell-Konformität und Dual-Release-Verträge sowie die manuellen und teilautomatisierten Review-Lanes (`HR-001`–`HR-006`, Atomic/Requires-Review, MEM-SPARQL-Audit, Quellenbegründungen und Abi-2026-DeepLink-QA)."
+      },
+      "partHeaders": {
+        "01-ci-overview": "CI & Lokale Prüfwerkzeuge",
+        "04-package-readiness": "Paket- & Release-Verträge",
+        "07-relation-checks": "Review-Lanes & Runbooks"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische CI-, Paket- und Review-Dokumentation; siehe LICENSING.md).",
+        "Maschinelle Konformität ersetzt keine menschlichen Freigabegates (HR-001 bis HR-006) und keine praktische Erprobung."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/qa-ci/skillpilot-qa-lanes-and-release-contracts.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Quality Handbook · Volume IVb",
+      "title": "CI Architecture,\nRelease Contracts,\nand Review Lanes",
+      "subtitle": "Tiered CI Pipelines, Quality Dashboard, Mapping Workbench, Standalone Package\nand Dual-Release Contracts, Review Processes (HR-001–HR-006, MEM/SPARQL), and Runbooks",
+      "pdfTitle": "SkillPilot — CI Architecture, Release Contracts, and Review Lanes (EN)",
+      "pdfSubject": "CI pipelines, quality dashboard, mapping workbench, curriculum package contracts, and review lanes",
+      "pdfKeywords": "SkillPilot, CI, quality dashboard, mapping workbench, release model, dual release, HR-001, MEM, SPARQL",
+      "runningHeadLeft": "SkillPilot · CI, Release Contracts & Review Lanes",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this volume",
+        "body": "Complementing Volume IV (`M0`–`M7` maturity, `CQR-*`, `GVR`/`APV`/`CPV`, semantic atomicity, and Champion trials), Volume IVb specifies SkillPilot's operational verification and release infrastructure: the two-tier GitHub Actions and `./run_ci.sh` suite, the Quality Dashboard and Mapping Workbench, fail-closed `full-standalone-v1` package readiness, release-model conformance, and dual JSON/OWL release contracts, plus the manual and semi-automated review lanes (`HR-001`–`HR-006`, atomic/requires review, MEM SPARQL consistency, source rationales, and Abi 2026 deep-link QA)."
+      },
+      "partHeaders": {
+        "01-ci-overview": "CI & Local Inspection Surfaces",
+        "04-package-readiness": "Package & Release Contracts",
+        "07-relation-checks": "Review Lanes & Runbooks"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical CI, package, and review documentation; see LICENSING.md).",
+        "Machine conformance never substitutes for human review gates (HR-001 through HR-006) or practical classroom trials."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "ci-overview",
+    "quality-dashboard",
+    "mapping-workbench",
+    "package-readiness",
+    "release-model-conformance",
+    "dual-release-contracts",
+    "relation-checks",
+    "atomic-review-process",
+    "requires-review-process",
+    "package-human-review-gates",
+    "mem-sparql-consistency",
+    "mem-sparql-runbook",
+    "source-rationales-runbook",
+    "abi26-mathe-deeplink"
+  ],
+  "webPages": [
+    {
+      "id": "ci-overview",
+      "sources": ["01-ci-overview"],
+      "paths": {
+        "en": "docs/qa-ci/ci.md",
+        "de": "docs/qa-ci/ci.de.md"
+      },
+      "titles": {
+        "en": "Continuous Integration (CI)",
+        "de": "Continuous Integration (CI)"
+      },
+      "navLabels": {
+        "en": "§1 CI Architecture",
+        "de": "§1 CI-Architektur"
+      }
+    },
+    {
+      "id": "quality-dashboard",
+      "sources": ["02-quality-dashboard"],
+      "paths": {
+        "en": "docs/qa-ci/curriculum-quality-dashboard.md",
+        "de": "docs/qa-ci/curriculum-quality-dashboard.de.md"
+      },
+      "titles": {
+        "en": "Curriculum Quality Dashboard",
+        "de": "Curriculum-Qualitätsdashboard"
+      },
+      "navLabels": {
+        "en": "§2 Quality Dashboard",
+        "de": "§2 Qualitätsdashboard"
+      }
+    },
+    {
+      "id": "mapping-workbench",
+      "sources": ["03-mapping-workbench"],
+      "paths": {
+        "en": "docs/qa-ci/curriculum-mapping-workbench.md",
+        "de": "docs/qa-ci/curriculum-mapping-workbench.de.md"
+      },
+      "titles": {
+        "en": "Curriculum Mapping Workbench",
+        "de": "Curriculum-Mapping-Workbench"
+      },
+      "navLabels": {
+        "en": "§3 Mapping Workbench",
+        "de": "§3 Mapping-Workbench"
+      }
+    },
+    {
+      "id": "package-readiness",
+      "sources": ["04-package-readiness"],
+      "paths": {
+        "en": "docs/qa-ci/curriculum-package-readiness.md",
+        "de": "docs/qa-ci/curriculum-package-readiness.de.md"
+      },
+      "titles": {
+        "en": "Curriculum Package Readiness",
+        "de": "Curriculum-Paketbereitschaft"
+      },
+      "navLabels": {
+        "en": "§4 Package Readiness",
+        "de": "§4 Paketbereitschaft"
+      }
+    },
+    {
+      "id": "release-model-conformance",
+      "sources": ["05-release-model-conformance"],
+      "paths": {
+        "en": "docs/qa-ci/curriculum-release-model-conformance.md",
+        "de": "docs/qa-ci/curriculum-release-model-conformance.de.md"
+      },
+      "titles": {
+        "en": "Curriculum Release Model Conformance",
+        "de": "Curriculum-Release-Modell-Konformität"
+      },
+      "navLabels": {
+        "en": "§5 Release-Model Conformance",
+        "de": "§5 Release-Modell-Konformität"
+      }
+    },
+    {
+      "id": "dual-release-contracts",
+      "sources": ["06-dual-release-contracts"],
+      "paths": {
+        "en": "docs/qa-ci/dual-curriculum-release-contracts.md",
+        "de": "docs/qa-ci/dual-curriculum-release-contracts.de.md"
+      },
+      "titles": {
+        "en": "Dual Curriculum Release Contracts",
+        "de": "Duale Curriculum-Release-Verträge"
+      },
+      "navLabels": {
+        "en": "§6 Dual Release Contracts",
+        "de": "§6 Duale Release-Verträge"
+      }
+    },
+    {
+      "id": "relation-checks",
+      "sources": ["07-relation-checks"],
+      "paths": {
+        "en": "docs/qa-ci/relation-checks.md",
+        "de": "docs/qa-ci/relation-checks.de.md"
+      },
+      "titles": {
+        "en": "Requires Relation Checks",
+        "de": "Prüfung der Requires-Relationen"
+      },
+      "navLabels": {
+        "en": "§7 Relation Checks",
+        "de": "§7 Relationsprüfungen"
+      }
+    },
+    {
+      "id": "atomic-review-process",
+      "sources": ["08-atomic-review-process"],
+      "paths": {
+        "en": "docs/qa-ci/atomic-review-process.md",
+        "de": "docs/qa-ci/atomic-review-process.de.md"
+      },
+      "titles": {
+        "en": "Atomic Review Process",
+        "de": "Atomizitäts-Reviewprozess"
+      },
+      "navLabels": {
+        "en": "§8 Atomic Review",
+        "de": "§8 Atomizitäts-Review"
+      }
+    },
+    {
+      "id": "requires-review-process",
+      "sources": ["09-requires-review-process"],
+      "paths": {
+        "en": "docs/qa-ci/requires-review-process.md",
+        "de": "docs/qa-ci/requires-review-process.de.md"
+      },
+      "titles": {
+        "en": "Requires Review Process",
+        "de": "Voraussetzungs-Reviewprozess (Requires)"
+      },
+      "navLabels": {
+        "en": "§9 Requires Review",
+        "de": "§9 Voraussetzungs-Review"
+      }
+    },
+    {
+      "id": "package-human-review-gates",
+      "sources": ["10-package-human-review-gates"],
+      "paths": {
+        "de": "docs/qa-ci/curriculum-package-human-review-gates.md",
+        "en": "docs/qa-ci/curriculum-package-human-review-gates.en.md"
+      },
+      "titles": {
+        "de": "Menschliche Review-Gates für Curriculum-Releases",
+        "en": "Human Review Gates for Curriculum Releases"
+      },
+      "navLabels": {
+        "en": "§10 Human Review Gates",
+        "de": "§10 Menschliche Review-Gates"
+      }
+    },
+    {
+      "id": "mem-sparql-consistency",
+      "sources": ["11-mem-sparql-consistency"],
+      "paths": {
+        "en": "docs/qa-ci/mem-sparql-consistency.md",
+        "de": "docs/qa-ci/mem-sparql-consistency.de.md"
+      },
+      "titles": {
+        "en": "MEM SPARQL Consistency Audit",
+        "de": "MEM-SPARQL-Konsistenzaudit"
+      },
+      "navLabels": {
+        "en": "§11 MEM SPARQL Audit",
+        "de": "§11 MEM-SPARQL-Audit"
+      }
+    },
+    {
+      "id": "mem-sparql-runbook",
+      "sources": ["12-mem-sparql-runbook"],
+      "paths": {
+        "en": "docs/qa-ci/mem-sparql-consistency-runbook.md",
+        "de": "docs/qa-ci/mem-sparql-consistency-runbook.de.md"
+      },
+      "titles": {
+        "en": "MEM SPARQL Consistency Runbook",
+        "de": "MEM-SPARQL-Konsistenz-Runbook"
+      },
+      "navLabels": {
+        "en": "§12 MEM SPARQL Runbook",
+        "de": "§12 MEM-SPARQL-Runbook"
+      }
+    },
+    {
+      "id": "source-rationales-runbook",
+      "sources": ["13-source-rationales-runbook"],
+      "paths": {
+        "en": "docs/qa-ci/goal-source-rationales-runbook.md",
+        "de": "docs/qa-ci/goal-source-rationales-runbook.de.md"
+      },
+      "titles": {
+        "en": "Goal Source Rationales Runbook",
+        "de": "Runbook für Lernziel-Quellenbegründungen"
+      },
+      "navLabels": {
+        "en": "§13 Source Rationales Runbook",
+        "de": "§13 Quellenbegründungen-Runbook"
+      }
+    },
+    {
+      "id": "abi26-mathe-deeplink",
+      "sources": ["14-abi26-mathe-deeplink"],
+      "paths": {
+        "de": "docs/qa-ci/abi26-mathe-deeplink-mvp.md",
+        "en": "docs/qa-ci/abi26-mathe-deeplink-mvp.en.md"
+      },
+      "titles": {
+        "de": "Abi-2026 Mathe DeepLink MVP (BlueSky)",
+        "en": "Abi 2026 Mathematics DeepLink MVP (BlueSky)"
+      },
+      "navLabels": {
+        "en": "§14 Abi 2026 DeepLink QA",
+        "de": "§14 Abi-2026-DeepLink-QA"
+      }
+    }
+  ]
+}

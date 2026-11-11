@@ -94,9 +94,20 @@ function resolveLocalMarkdownTargets(indexAbsolutePath: string): Set<string> {
   )
 }
 
-const excludedIndexDirectories = new Set([
-  'docs/concept/skill-graph/source',
-])
+function loadCompendiaSourceDirs(): Set<string> {
+  const regPath = resolve(repoRoot, 'docs/compendia.json')
+  if (!existsSync(regPath)) return new Set(['docs/concept/skill-graph/source'])
+  const parsed = JSON.parse(readFileSync(regPath, 'utf8')) as {
+    compendia?: Array<{ sourceDir?: unknown }>
+  }
+  return new Set(
+    (parsed.compendia ?? [])
+      .map((entry) => entry.sourceDir)
+      .filter((dir): dir is string => typeof dir === 'string' && dir.length > 0),
+  )
+}
+
+const excludedIndexDirectories = loadCompendiaSourceDirs()
 
 function collectMarkdownFiles(dir: string): string[] {
   const absoluteDir = resolve(repoRoot, dir)

@@ -1,0 +1,100 @@
+## Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend {#sec:provider-neutral-coach-boundary}
+
+:::note{title="Status und Geltungsbereich"}
+Kanonische, providerneutrale Kommunikationsnorm für alle SkillPilot-Lerncoaches (OpenAI MCP App, Claude Connector V1, Gemini Connector V1, künftige Provideradapter und neue Coach-Werkzeuge). Sicherheits-, Session-, Didaktik- und Deploymentdokumente konkretisieren diese Grenze, dürfen sie aber nicht abweichend neu definieren. Eine erfolgreich getestete Provider-Lane (wie Geminis kontrollierter Web-Test im [Gemini-Integrationsrunbook](repo:docs/deploy/gemini-integration.md)) belegt keine Abnahme anderer Hosts, Konten oder Oberflächen.
+:::
+
+### Kernsatz, Verantwortungsmatrix und minimaler Turn-Vertrag {#sec:coach-boundary-matrix}
+
+:::principle{title="Ein Satz legt die Grenze fest"}
+Der ChatClient versteht und formuliert; das Backend weiß, entscheidet, validiert, speichert und liefert den nächsten technischen Schritt.
+:::
+
+Ein Sprachmodell ist stark beim Verstehen freier Sprache, beim Erkennen fachlicher Muster, beim dialogischen Erklären und beim semantischen Vergleich gleichwertiger Lösungswege; das Backend ist stark bei Identität, aktuellem Zustand, exakten Mengen und Reihenfolgen, Berechtigungen, Transaktionen, Nebenläufigkeit, Persistenz und reproduzierbaren Entscheidungen.
+
+:::table{cols="3.2cm,6.0cm,X"}
+| Beteiligter | Besitzt | Besitzt ausdrücklich nicht |
+| --- | --- | --- |
+| **Lernende Person** | Lernabsicht, Antworten, freie Formulierungen, ausdrückliche Zustimmung | technische IDs, Zustandsversionen, Retry-Schlüssel, Toolreihenfolgen |
+| **ChatClient / Modell** | Sprachverstehen, eindeutige Intent-Zuordnung zu frischen Optionen, didaktischen Dialog, fachlich-semantischen Vergleich, Formulierung | autoritativen Lernzustand, Auswahlmengen, Workflowfortschritt, Persistenzerfolg, Berechtigung |
+| **Provideradapter** | kleine use-case-orientierte Werkzeugoberfläche, sichere Projektion, lokalisierte Darstellung, Transportbindung | eigene Fachdatenbank, rohe Domain-DTOs, promptbasierte Sicherheitsgarantien |
+| **SkillPilot-Backend** | Identität, Session, Curriculum, Personalisierung, Fokus, aktives Ziel, Frontier, Mastery, Recall, Prüfungsfreigabe, IDs/Capabilities, Mengen, Reihenfolge, State, Concurrency, Idempotenz, Persistenz, Fortsetzung | freie Sprachinterpretation oder semantische Beurteilung sichtbarer Lernendenarbeit |
+| **App-Widget** | direkte deterministische Interaktion innerhalb seines engen UI-Workflows | Ersatz für Backendzustand oder allgemeine Chat-Orchestrierung |
+:::
+
+Die Interaktionssprache (`communicationLocale` des jüngsten autoritativen Vollergebnisses) ist ebenfalls Backendzustand und wird nie aus Toolnamen, Hostlocale oder Curriculumsprache erraten.
+
+#### Der minimale Turn-Vertrag
+
+```text
+neue Lernendennachricht -> genau ein frischer Vollzustand -> Entscheidung:
+  +-- sprechen / fragen / gebundene UI-Aktion --> sichtbare Antwort
+  +-- hoechstens eine eindeutige Mutation --> autoritativer Nachfolgerzustand
+        +-- fortbestehende eindeutige Absicht erneut anwenden
+        +-- sprechen / gebundene UI-Aktion --> sichtbare Antwort
+```
+
+1. Genau **ein** frischer Kontextabruf nach einer neuen Lernendennachricht; Polling im selben Assistant-Turn ist verboten.
+2. Der jüngste erfolgreiche Vollzustand ist die alleinige Autorität für Sprache, Zustand, Optionen und erlaubte Aktionen.
+3. Jede erfolgreiche Mutation liefert ihren vollständigen Nachfolgerzustand, der den vorherigen Kontext für den Rest des Turns ersetzt (kein redundanter Context-Reload).
+4. Schmale Renderer- oder Widget-Receipts sind kein Vollkontext.
+5. Bei State-Konflikt wird genau einmal frisch geladen und neu bewertet; wiederholte Konflikte oder harte Fehler stoppen den Ablauf transparent.
+
+### Werkzeuge und Eingaben: semantisch klein, frei von Chat-Freitexten {#sec:coach-boundary-inputs}
+
+Werkzeuge bilden zusammenhängende Nutzerhandlungen ab (keine 1:1-Service-APIs): ableitbare technische Parameter fehlen im Modellinput, Item-Schleifen werden gebatcht, unterschiedliche Risiken/Bestätigungen bleiben getrennte Tools, und Reads vs. Writes sind klar annotiert.
+
+#### Unverrückbare Grenze: keine Chat-Freitexte zum Core
+
+Der Coach beurteilt sichtbare Arbeit und formuliert Rückmeldungen selbstständig im Provider-Chat — weder wörtliche Antworten noch Paraphrasen oder Bewertungsbegründungen gehen an das Backend. Insbesondere sind Freitextfelder für Arbeits-, Ergebnis- oder Recall-Feedback in aktiven Coach-Mutationen verboten (unbekannte Zusatzfelder werden vor Domain-Aufruf, Replay-Hashbildung und Persistenz abgelehnt):
+
+- **Normales Lernziel:** Strukturierte Abschlussentscheidung $\rightarrow$ Backend prüft aktives Ziel, Berechtigung und Regeln und bestätigt mit Ziel, Mastery-Wert und Folgezustand.
+- **Verified Recall:** Ausschließlich die zum freigegebenen Batch gehörenden strukturierten `passed`-Booleans; Antworten und Begründungen bleiben im Chat.
+- **Prüfung:** Autorisierte numerische Bewertung; Erläuterungen zu Lösungsweg, Punkten und Bestehen bleiben im Chat.
+
+Didaktische Taktung: Abgeschlossene Aufgaben werden zuerst fachlich besprochen mit Angebot für Rückfragen oder Weitergehen; bei ausreichender Evidenz für ein gewöhnliches Lernziel oder eine bestandene Prüfung übermittelt der Coach die strukturierte Abschlussentscheidung sofort **vor** jeder Speicherbehauptung (Orientierung und Verified Recall behalten ihre gesonderte Zustimmung vor dem Speichern). Erst nach erkennbarer Zustimmung zur Fortsetzung beginnen Erklärung, Aufgabe und Lernbild des Backend-Nachfolgers. Lösungen offener Lernfragen werden nie als vorgefertigte Antwortvorschläge vorweggenommen, und Transportabbrüche/Timeouts werden sauber technisch aufgelöst statt als „Server nicht erreichbar“ erfunden.
+
+Modellinputs enthalten ausschließlich semantisch zugeordnete Strukturwerte, fachlich-semantische Modellentscheidungen (`passed`) oder unverändert kopierte frische Optionspayloads/opake Capabilities (plus bei allgemeinen V1-Writes `expectedStateVersion` und frische `clientRequestId`).
+
+### Ergebnisse, opake Capabilities und Referenz Verified Recall {#sec:coach-boundary-recall}
+
+- **Ergebnisstruktur:** `structuredContent` enthält nur modellrelevante Fakten; `content` höchstens eine knappe Zusammenfassung; `_meta` ausschließlich widget-private Daten (kein Cross-Turn-Gedächtnis).
+- **Ein einziger imperativer Kanal:** Normaler Vollkontext nutzt `(requiredAction, instruction)`; ein Spezialworkflow nutzt genau eine `continuation` (optional mit servergefülltem `toolCall`). Ein paralleles `presentationAction` oder eine implizite UI-Bindung an ein fachliches Write-Werkzeug ist nicht zulässig.
+- **Opake Capabilities:** Kapseln Session-, Workflow- und Zustandsautorität (bei Vertraulichkeitsbedarf authentifiziert verschlüsselt), werden vom Modell unverändert durchgereicht und serverseitig auf Vollständigkeit, Stale State und Wiederverwendung geprüft.
+
+#### Referenzablauf Verified Recall und terminaler Bild-Handoff
+
+```text
+start_skillpilot_verified_recall(learningSessionId)
+  -> kompletter serverseitiger Batch + batchCapability
+get_skillpilot_verified_recall_answers(learningSessionId, batchCapability)
+  -> komplette geordnete Sollantworten + gradingCapability
+record_skillpilot_verified_recall_results(learningSessionId, gradingCapability, assessments[{passed}])
+  -> ein atomarer Receipt + genau eine continuation
+```
+
+Aktiviert ein terminaler Recall-Write ein gewöhnliches atomares Folgeziel mit autorisiertem Bild, lautet die einzige Fortsetzung:
+
+```json
+{
+  "continuation": {
+    "action": "renderGoalVisualizationThenTeachActiveGoal",
+    "consentRequired": false,
+    "toolCall": {
+      "name": "render_skillpilot_goal_visualization",
+      "arguments": {
+        "goalId": "<server-filled successor goal>",
+        "expectedStateVersion": 11
+      }
+    }
+  }
+}
+```
+
+Der ChatClient kopiert Name, `goalId` und `expectedStateVersion` unverändert und ergänzt ausschließlich die bereits aktuelle unveränderte `learningSessionId` gemäß dem globalen Session-Gate. Das Receipt spiegelt diese Session-Capability aus Datenschutzgründen nicht. Der Client ruft den servergefüllten `continuation.toolCall` für `render_skillpilot_goal_visualization` genau einmal unmittelbar auf und beginnt danach im selben Antwortturn das bereits aktive Folgeziel. Er rekonstruiert die bildspezifischen Argumente nicht aus `goalVisualization`, `nextAllowedTools` oder Top-Level-Metadaten und lädt keinen neuen Context. Scheitert das Rendering oder lässt der Host die Komponente weg, gibt es keinen Retry; der vollständige Textunterricht beginnt trotzdem. Der dedizierte Renderer bleibt das einzige an die Bild-UI gebundene Werkzeug; das Recall-Write selbst erhält keine UI-Bindung.
+
+### Auswahl, Fehler, Datenschutz, Anti-Patterns und 11-Punkte-Abnahme {#sec:coach-boundary-acceptance}
+
+- **Freie Auswahl & Fehler:** Mehrere sinnvolle Wege werden als kleine frische Optionsmenge veröffentlicht (nur bei Eindeutigkeit unverändert kopiert, bei echter Mehrdeutigkeit nachgefragt). Fehler liefern stabile Codes ohne Teilmutation und lokalisierte Recovery-Hinweise; Sessionfehler enden ausschließlich mit der WebGUI-Startanweisung, während UI-Renderingfehler den Textpfad niemals blockieren.
+- **Datenschutz & Anti-Patterns:** Permanente SkillPilot-ID, OAuth-Tokens, Secrets, interne DTOs/Pfade und ungeprüfte Lösungen erscheinen nie in Modellergebnissen. Verboten sind Item-Schleifen, optionale Modellparameter für Backendwissen, konkurrierende Imperativkanäle, redundante Context-Reads nach Mutationen, reine Prompt-Sicherheitsregeln, modellkonstruierte IDs/URLs, unbelegte Save-Behauptungen, Wortlaut-NLP im Backend sowie jeglicher Chat-Freitext in Toolinputs oder Persistenz.
+- **Verbindliche Regelorte & 11-Punkte-Gate:** Jede Regel hat genau einen primären Ort (dieser Vertrag, @ref{sec:openai-coach-behavior}, @ref{sec:skillpilot-owned-coach}, @ref{sec:openai-mcp-oauth-session}, [Einheitlicher Lernplanstatus](repo:docs/concept/didactic/unified-learning-plan-status.md), `SKILL.md`, Toolschema, Backendguard und `docs/deploy/`). Jede Schnittstellenänderung muss alle **11 Abnahmefragen** erfüllen: (1) eine Nutzerhandlung je Tool, (2) keine ableitbaren Parameter, (3) keine Modellschleifen, (4) genau eine Fortsetzung, (5) Backend-Ablehnung ungültiger/staler Aufrufe, (6) saubere Retry-Unterscheidung, (7) Receipt-belegte Aussagen, (8) Sprach-/Semantikarbeit beim ChatClient, (9) Contracttests inkl. Adversarial-Inputs, (10) realer Provider-Trace ohne Polls, (11) vollständiger Ausschluss von Chat-Freitexten aus Inputs, Echos und Persistenz.

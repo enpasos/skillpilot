@@ -1,0 +1,84 @@
+## Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung {#sec:qa-quality-human-trial}
+
+:::note{title="Status und Zusammenspiel"}
+Verbindliches Gesamtkonzept für Issue #49. Die technische Ableitung im Qualitätsdashboard steht in @ref{sec:qa-maturity-scopes-cqr}, der praktische Ablauf für Curriculum-Champions in @ref{sec:qa-champion-guide}. Die Umsetzung nutzt vorhandene Qualitätsberichte, Prüfregister, Champion-Zuordnungen und Abschlussnachweise ohne zweite QS-Pipeline oder allgemeines Zertifizierungssystem.
+:::
+
+### Ziel, Leitprinzipien und QS-Reifegrade `M0`–`M7` {#sec:qa-human-trial-levels}
+
+SkillPilot weist die Qualität einer Skill-Landschaft über zwei **getrennte** Dimensionen aus:
+
+1. **QS-Reifegrad `M0`–`M7`:** Welche verbindlichen Qualitätsprüfungen sind für den aktuellen Inhaltsstand vollständig erfüllt?
+2. **Menschliche Erprobung:** Zeigt der Lernfortschritt eines zugeordneten Champions eine begonnene Erprobung, wurde der Beginn ausdrücklich bestätigt oder der gesamte ausgewiesene Lernumfang erfolgreich durchlaufen und bestätigt?
+
+> **Der Reifegrad beschreibt den erreichten Prüfstand. Der Champion-Status beschreibt die praktische Erprobung.** (Beispiel: *Physik · M7 · Menschlich erprobt* — kein Garantie-Siegel für absolute Fehlerfreiheit.)
+
+Die Reifegrade bilden eine kumulative Leiter, die ausschließlich aus den aktuellen zentralen Prüfnachweisen (nie aus historischen Meilensteinen oder manuellen Flags) abgeleitet wird; menschliche Erprobung erzeugt keinen Meilenstein `M8`:
+
+:::table{cols="1.8cm,X"}
+| Stufe | Fachliche Aussage |
+| --- | --- |
+| **`M0`** | Noch kein belastbarer QS-Grundstand. |
+| **`M1`** | Quellen und extrahierte Lehrplanziele sind erfasst und auf amtliche Quellenlinks rückverfolgbar. |
+| **`M2`** | Quellenabdeckung, Bundesland-Sichten und relevante Kurszuordnungen sind konsistent. |
+| **`M3`** | Die erforderlichen Lernwege sind geschlossen und auf atomarer Ebene sauber modelliert. |
+| **`M4`** | Die erforderlichen Lernwege einschließlich ihrer terminalen Übungs- und Prüfungsziele sind geprüft. |
+| **`M5`** | Schulgeeigneter Kern-QS-Stand: Alle verbindlichen Kernprüfungen sind bestanden. |
+| **`M6`** | `M5` einschließlich geprüfter Memory-Entscheidungen, Deck-Zuordnungen und Sichtbarkeit. |
+| **`M7`** | `M6` einschließlich vollständig abgeschlossener vertiefter Curriculum-QS für sämtliche aktuellen `curricularAtomic`-Lernziele des betrachteten Fachs. |
+:::
+
+### Verbindliche Definition von `M7` und Umgang mit Bildern {#sec:qa-human-trial-m7}
+
+`M7` verlangt, dass **jedes** aktuelle `curricularAtomic`-Lernziel des Fachs gleichzeitig die **Schnittmenge aller fünf Gates** erfüllt (keine Addition oder Mittelung einzelner Gate-Zähler, keine gerundeten Prozentwerte; Teilstände erscheinen z. B. als *M6 · Vertiefte QS: 472 von 478 Lernzielen abgeschlossen*):
+
+:::table{cols="3.8cm,X"}
+| Gate | Erforderlicher Nachweis |
+| --- | --- |
+| **D – Beschreibungen** | Zwei unabhängige Beschreibungsreviews mit geklärter Synthese, gebunden an gültigen Inhalt und Kontext. |
+| **P – Verständnisnachweise** | Aktuelles, vollständig geprüftes `positive-understanding-evidence-v2`-Profil mit wahrheitsgemäßem Freigabestatus. |
+| **A – Atomizität** | Aktuelle fachliche Entscheidung zur Abgrenzung und semantisch atomaren Struktur (@ref{sec:qa-semantic-atomicity}). |
+| **M – Memory** | Aktuelle begründete Entscheidung zur Memory-Notwendigkeit samt zugehörigen Karten-/Sichtbarkeitsbindungen. |
+| **V – Visualisierungen** | Aktuelle fachliche KI-Bildprüfung am exakten aktiven Asset-Hash mit gültigen Inhaltsbindungen (keine Anerkennung technischer Rückstellungen als Ausnahme). |
+:::
+
+```text
+M7 erreicht =
+    M6 weiterhin erfuellt
+    UND aktuelle Zielmenge eindeutig bestimmt und nicht leer
+    UND jedes aktuelle curricularAtomic-Ziel erfuellt alle 5 Gates (D/P/A/M/V)
+    UND erforderliche Abschlusspruefungen bestanden
+    UND keine offenen M7-relevanten Blocker
+```
+
+- **Abgrenzung zu menschlichen Freigaben:** `M7` ist ein maschinelles Abschlussgate und erzeugt keine menschlichen Freigaben (`needs_human_review` wird nicht umgeschrieben; weder `humanApproved` noch `humanIssueIdentified` erfüllt oder blockiert Gate V/M7, während menschliche Befunde separat erhalten bleiben).
+- **Bildgrundsätze & separates Release-Gate:** (1) `KEEP` als Standard für gute Bestandsbilder unabhängig von Generator/Alter, (2) fachliches Urteil vor Herkunft, (3) Erzeugung ist keine Freigabe, (4) echte Inhaltsprüfung statt bloßer Hash-Kosmetik, (5) menschliche Befunde bleiben separat wirksam. Der separate CI-Check `checkGoalVisualizationQaApprovalCoverage.ts` fungiert als Bild-Release-Gate (akzeptiert bestehende menschliche oder aktuelle KI-Freigabe, lehnt offene menschliche Fehlerbefunde auch bei erreichtem `M7` ab).
+
+### Menschliche Erprobung durch Curriculum-Champions {#sec:qa-human-trial-champions}
+
+Die praktische Erprobung setzt mindestens den Kern-QS-Stand **`M5`** voraus (kann parallel zum Weg nach `M7` laufen) und kennt drei Zustände:
+
+:::table{cols="3.6cm,5.4cm,X"}
+| Zustand | Voraussetzung | Sichtbares Label |
+| --- | --- | --- |
+| **Nicht begonnen** | Weder Lernfortschritt eines aktiven Champions im Umfang noch bestätigter Start | Basisstatus aus dem QS-Reifegrad |
+| **In Erprobung** | Aktive, nicht pausierte Champion-Rolle mit Fortschritt im Umfang oder bestätigtem Beginn | **Menschliche QS läuft** |
+| **Abgeschlossen** | Vollständiger praktischer Durchlauf eines Champions im ausgewiesenen Umfang + Bestätigung | **Menschlich erprobt** |
+:::
+
+- **Beginnsignal (PO-Entscheidung vom 20. September 2026):** Vorhandener Lernfortschritt (>= 1 abgeschlossenes Ziel im aktuell zugeordneten Prüfumfang einer aktiven Champion-Rolle ab `M5`) zählt automatisch als **Menschliche QS läuft** — unabhängig von Registrierungsdatum oder Alter des Fortschritts. Ohne Fortschritt steht **„Erprobung beginnen“** bereit; bloße Registrierung, fachfremder Fortschritt, pausierte oder beendete Rollen lösen das Signal nicht aus. Vorhandene Beherrschung ist ein Beginnsignal, kein Abschlussnachweis (auch 100 % importierte/manuelle Mastery allein ergibt niemals „Menschlich erprobt“).
+- **Vier Abschlussbedingungen für „Menschlich erprobt“:** (1) vollständiger Durchlauf des ausgewiesenen Prüfumfangs durch **mindestens eine** Person (Teilabschlüsse mehrerer Champions werden nicht addiert), (2) tatsächliche inhaltsgebundene Erprobungsnachweise aus praktischer Bearbeitung, (3) keine bekannten offenen blockierenden Befunde (ein Zielabschluss schließt gemeldete Defekte nicht automatisch) und (4) einmalige ausdrückliche Abschlussbestätigung des Champions (*„Alle Ziele durchlaufen. Erprobung abschließen?“*).
+- **Umfang, Änderungen & Pause/Rücktritt:** Ein expliziter Erprobungsvorgang bindet seinen Umfang (z. B. *Physik, Hessen, Sek II* zertifiziert nicht alle Länder/Stufen). Bei inhaltlichen Curriculum-Änderungen fällt `M7` bei offenen Zielen auf den belegten Meilenstein zurück, und für die menschliche Erprobung müssen nur neue/wesentlich geänderte Stationen nacherprobt werden. Pausierte/unvollendete Erprobungen blenden „Menschliche QS läuft“ aus; ein bereits gültig bestätigter Abschluss bleibt auch nach Rücktritt des Champions erhalten.
+
+### Darstellung, Grau-Grün-Skala, Datenschutz und Abnahme {#sec:qa-human-trial-ui-acceptance}
+
+Alle Oberflächen verwenden dieselbe zentrale Ableitung, dieselben Texte und eine geordnete **Grau-Grün-Skala** für `M0` (neutrales Hellgrau) über `M1`–`M4` (stufenweise zunehmendes Graugrün/Grün) und `M5` (mittleres Grün) bis `M6` (kräftiges Grün) und `M7` (sattes Dunkelgrün) — stets barrierefrei zusammen mit Stufennummer und Text im Light- und Dark-Mode. Daneben zeigt das Erprobungsbadge getrennt **Experimentell** (`< M5`, Warnhinweis), **Maschinelle QS** (`>= M5` ohne aktive/abgeschlossene Erprobung, Orange — kombinierbar mit grünem `M7`-Badge), **Menschliche QS läuft** (zurückhaltendes Grün) oder **Menschlich erprobt** (kräftiges Grün mit Abschlusssymbol). Übergeordnete Sammlungen wie *Gymnasium (DE)* werten enthaltene Fächer nicht pauschal auf, sondern fassen sachlich zusammen (z. B. *Menschliche QS in 2 Fächern*). Öffentliche QS-Anzeigen enthalten keinerlei private Lernenden-, Session- oder Chatdaten.
+
+:::table{cols="4.3cm,X"}
+| Abnahmebereich | Verbindliche Prüferwartung |
+| --- | --- |
+| **`M7`-Vergabe & Zähler** | Nur bei gültigem `M6` und strikter 5-Gate-Schnittmenge aller aktuellen Ziele; keine Mittelwerte, Rundungen oder aufgeschobenen Arbeiten als Abschluss. |
+| **Freigabestatus** | KI-Nachweise werden nie als menschliche Freigaben ausgegeben; offene menschliche Fehlerbefunde bleiben wirksam. |
+| **Erprobungsbeginn & -ende** | Fortschritt im Umfang (unabhängig vom Registrierungsdatum) oder Startklick löst Beginn aus; Abschluss verlangt vollständigen Einzeldurchlauf, null Blocker und Bestätigung. |
+| **Umfang, Sichten & Sammlungen** | Teilnachweise bleiben begrenzt, Änderungen entwerten nur betroffene Ziele, gleiche Grau-Grün-Skala überall, keine pauschale Sammelaufwertung. |
+:::

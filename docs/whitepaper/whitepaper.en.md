@@ -1,5 +1,4 @@
 # SkillPilot Whitepaper (EN)
-
 **Version:** 1.0.27 · **Project:** SkillPilot · *Some illustrations are AI-generated.*
 
 ---
@@ -218,7 +217,7 @@ A status-only question does not start a new task; a requested pause remains a pa
 An **illustrative daily example**, not live data: in mathematics, 13 plan goals are scheduled through today and 9 progress-effective plan goals have been achieved; in physics, 10 are scheduled and 11 have been achieved. The **plan balance** also counts plan goals scheduled for later, but excludes goals already mastered when the plan was created. By contrast, “Overall: x of y” in the Cockpit covers all current atomic goals in the Personal Curriculum, including earlier achievements.
 
 | Subject | Daily workload | Additional plan status |
-|---|---|---|
+| --- | --- | --- |
 | Mathematics | 1 of 3 | 2 learning goals behind |
 | Physics | 2 of 2 | 1 learning goal ahead |
 
@@ -254,8 +253,7 @@ The learning-coach dialogue stays with the respective AI provider. Answers, solu
 
 Conversely, the provider receives the learning context it needs, such as the current goal, relevant progress, and tool results. **Separating the ID does not mean that no learning data reaches the AI provider.** Its terms govern chat and context processing. Explicitly submitted learning-goal feedback is a separate process, not an automatic import of chat content.
 
-**Recommendation for educational institutions:**
-Set clear guidelines on which data should not be shared in learning-coach chats (sensitive personal information) and how to support learners safely.
+**Recommendation for educational institutions:** Set clear guidelines on which data should not be shared in learning-coach chats (sensitive personal information) and how to support learners safely.
 
 #### Mapping Inside the Institution (Local)
 
@@ -276,8 +274,6 @@ On import, existing source profiles and import timestamps can be retained as **p
 **An unchanged export does not prove that every recorded assessment is correct in its subject.** It supports backup, transfer, and traceability; institutional recognition requires its own rules and, where appropriate, additional evidence.
 
 ---
-
-<div style="page-break-after: always;"></div>
 
 ## 5. The Foundation: Reviewed Learning Goals and Suitable Materials
 
@@ -388,13 +384,9 @@ Claude access is through the SkillPilot marketplace; the [5-minute Quickstart](h
 
 **SkillPilot is not tied to one particular AI.** Plugins and dedicated provider adapters connect the independent subject-matter core to each AI chat. Alongside the Claude beta, **ChatGPT Desktop (Beta)** is available through the [SkillPilot Git marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace). Installation and learning start have been confirmed on Windows. Choose **ChatGPT Desktop** in SkillPilot, prepare its start message and send it in a new desktop chat. The [plugin guide](https://skillpilot.com/plugins#chatgpt-desktop) explains setup and updates. Browser and mobile ChatGPT access have not been confirmed for this route. Further integrations depend on suitable interfaces and reliably supported capabilities at the provider.
 
-**Initiator:**
-The organization behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together — in subject content, teaching, and technology.
+**Initiator:** The organization behind SkillPilot is **enpasos GmbH**. We invite partners to develop SkillPilot further together — in subject content, teaching, and technology.
 
-**More transparency:**
-[GitHub](https://github.com/enpasos/skillpilot)
-[Documentation](https://enpasos.github.io/skillpilot/)
-[Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
+**More transparency:** [GitHub](https://github.com/enpasos/skillpilot) · [Documentation](https://enpasos.github.io/skillpilot/) · [Graph definition](https://enpasos.github.io/skillpilot/concept/skill-graph/graph-definition/)
 
 ---
 

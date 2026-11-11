@@ -7,23 +7,27 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Start Here
 
+- [Quality Handbook PDF (EN)](skillpilot-curriculum-quality-handbook.en.pdf) · [Qualitätshandbuch-PDF (DE)](skillpilot-curriculum-quality-handbook.de.pdf)
+  Unified single-source compendium covering `M0`–`M7` maturity & human trials, QA scopes & `CQR-*` rules, `GVR-*`/`APV-*`/`CPV-*` validators, semantic atomicity review, and the Curriculum Champion program.
+- [CI, Release Contracts & Review Lanes PDF (EN)](skillpilot-qa-lanes-and-release-contracts.en.pdf) · [CI, Release-Verträge & Review-Lanes PDF (DE)](skillpilot-qa-lanes-and-release-contracts.de.pdf)
+  Companion Volume IVb covering two-tier CI, the Quality Dashboard and Mapping Workbench, `full-standalone-v1` package readiness, release-model conformance, dual JSON/OWL release contracts, `HR-001`–`HR-006`, and review runbooks.
 - [Graph-Definition: alle Regeln und ihre Meilensteine (DE)](graph-definition-rule-milestone-matrix.md) · [English (EN)](graph-definition-rule-milestone-matrix.en.md)
   145 Regelgruppen mit 4-Stufen-Ampel (`HART`/`TEIL`/`OFFEN`/`OPT/DOK`), Soll-Zuordnung, tatsächlichen Gates, Scopegrenzen und offenen Lücken.
-- [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
+- [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln (DE)](curriculum-quality-maturity-and-routes.md) · [English (EN)](curriculum-quality-maturity-and-routes.en.md)
   Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
-- [CI Overview](ci.md)
+- [CI Overview (EN)](ci.md) · [Deutsch (DE)](ci.de.md)
   Local and GitHub Actions validation entry points.
 - [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
   Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
-- [Graph Validation Rules](graph-validation-rules.md)
+- [Graph Validation Rules (EN)](graph-validation-rules.md) · [Deutsch (DE)](graph-validation-rules.de.md)
   Single source of truth for algorithmic graph validation in CI.
-- [Curriculum Package Readiness](curriculum-package-readiness.md)
+- [Curriculum Package Readiness (EN)](curriculum-package-readiness.md) · [Deutsch (DE)](curriculum-package-readiness.de.md)
   Fail-closed distinction between legacy export validation and the standalone JSON runtime profile.
-- [Curriculum Release Model Conformance](curriculum-release-model-conformance.md)
+- [Curriculum Release Model Conformance (EN)](curriculum-release-model-conformance.md) · [Deutsch (DE)](curriculum-release-model-conformance.de.md)
   Real Mathematik compilation into the strict unpacked runtime model, including closure, migration, semantic kinds, digests, resources, QA, and remaining package gates.
-- [Dual Curriculum Release Contracts](dual-curriculum-release-contracts.md)
+- [Dual Curriculum Release Contracts (EN)](dual-curriculum-release-contracts.md) · [Deutsch (DE)](dual-curriculum-release-contracts.de.md)
   Field/RDF semantics, canonical content digest, equivalence evidence, and paired release-index gates.
-- [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
+- [Curriculum Quality Dashboard (EN)](curriculum-quality-dashboard.md) · [Deutsch (DE)](curriculum-quality-dashboard.de.md)
   Persisted status layer used by the local Workbench dashboard.
 - [Mathematik M7: Fortsetzungs- und Zwischenstand vom 20. September](math-m7-resumed-2026-09-20.md)
   Integrierte Teilpakete, offene Nachweise und lokale Übergabeprüfungen.
@@ -39,7 +43,7 @@ Use this page by role: start with the overview documents, then jump to a review 
   Aktueller strenger Stand, Quellen- und Prüfungsrouten sowie lokale Checkpoint-Prüfungen.
 - [Mathematik: 100 % im maschinellen Fünf-Gate-Bericht](math-m7-machine-closeout-2026-09-29.md)
   Aktuelle D/P/A/M/V-Bindungen, begrenzte Quellen- und Q2-Routenprüfung sowie getrennte Reifegrad- und Release-Gates.
-- [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
+- [Curriculum Mapping Workbench (EN)](curriculum-mapping-workbench.md) · [Deutsch (DE)](curriculum-mapping-workbench.de.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
   Rules for document roles, generated artifacts, runbooks, and dated pilot records.
@@ -161,21 +165,21 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 These pages describe durable manual or semi-automated review processes. Their ledgers or configs are the source of truth; generated status pages are not.
 
-- [Curriculum Package Human Review Gates](curriculum-package-human-review-gates.md)
+- [Curriculum Package Human Review Gates (DE)](curriculum-package-human-review-gates.md) · [English (EN)](curriculum-package-human-review-gates.en.md)
   Central release checklist for visualization quality, redistribution rights, source-text verification, ontology semantics, and stable promotion.
-- [Semantic Atomicity Review](semantic-atomicity-review.md)
+- [Semantic Atomicity Review (EN)](semantic-atomicity-review.md) · [Deutsch (DE)](semantic-atomicity-review.de.md)
   Review process for deciding whether technical content leaves are semantically atomic.
-- [Requires Review Process](requires-review-process.md)
+- [Requires Review Process (EN)](requires-review-process.md) · [Deutsch (DE)](requires-review-process.de.md)
   Manual QA workflow for prerequisite quality on atomic goals.
-- [Atomic Review Process](atomic-review-process.md)
+- [Atomic Review Process (EN)](atomic-review-process.md) · [Deutsch (DE)](atomic-review-process.de.md)
   Older atomic-goal review workflow reference.
-- [Relation Checks](relation-checks.md)
+- [Relation Checks (EN)](relation-checks.md) · [Deutsch (DE)](relation-checks.de.md)
   Relation-check scope and CI enforcement profile.
-- [MEM SPARQL Consistency Audit](mem-sparql-consistency.md)
+- [MEM SPARQL Consistency Audit (EN)](mem-sparql-consistency.md) · [Deutsch (DE)](mem-sparql-consistency.de.md)
   Durable process reference for the non-blocking live MEM/FWU endpoint comparison.
-- [MEM SPARQL Consistency Runbook](mem-sparql-consistency-runbook.md)
+- [MEM SPARQL Consistency Runbook (EN)](mem-sparql-consistency-runbook.md) · [Deutsch (DE)](mem-sparql-consistency-runbook.de.md)
   Operational checklist for running the audit, reading the queue, and writing ledger decisions.
-- [Goal Source Rationales Runbook](goal-source-rationales-runbook.md)
+- [Goal Source Rationales Runbook (EN)](goal-source-rationales-runbook.md) · [Deutsch (DE)](goal-source-rationales-runbook.de.md)
   Operational checklist for generating and reviewing human-readable source rationales.
 - [Goal Feedback: Production-to-Codex Intake](goal-feedback-codex-intake.md)
   Default-off production inbox, digest-bound local custody transfer, online deletion, and candidate-only critical triage.
@@ -297,6 +301,6 @@ These documents capture one-off investigations, remediation slices, or dated PoC
 
 ## Curriculum Champion Process
 
-- [Champion Guide](champion-guide.md)
-- [Four-level Champion Model](four-level-champion-model.md)
-- [Abi 2026 Mathe Deeplink MVP](abi26-mathe-deeplink-mvp.md)
+- [Champion Guide (EN)](champion-guide.md) · [Champion-Leitfaden (DE)](champion-guide.de.md)
+- [Four-level Champion Model (EN)](four-level-champion-model.md) · [Vier-Stufen-Modell (DE)](four-level-champion-model.de.md)
+- [Abi 2026 Mathe Deeplink MVP (DE)](abi26-mathe-deeplink-mvp.md) · [English (EN)](abi26-mathe-deeplink-mvp.en.md)

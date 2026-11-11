@@ -3,7 +3,7 @@
 - [Nutzungsbedingungen / Terms of Use](https://skillpilot.com/legal)
 - [Datenschutzerklärung / Privacy Policy](https://skillpilot.com/privacy)
 - [Abgleich der Rechtstexte vom 13. September 2026 und offene Betreiberangaben](legal-privacy-review-2026-09-13.md)
-- [KI-Verordnung: Compliance-Stand vom 29. Juli 2026](ki-verordnung-compliance-stand-2026-07-29.md)
+- [KI-Verordnung: Compliance-Stand vom 29. Juli 2026 (DE)](ki-verordnung-compliance-stand-2026-07-29.md) · [EU AI Act: Compliance Baseline of 29 July 2026 (EN)](ki-verordnung-compliance-stand-2026-07-29.en.md)
 - [Maschinenlesbares KI-Transparenzinventar](ai-transparency-inventory.json)
 
 The live application presents short, contextual notices at the relevant

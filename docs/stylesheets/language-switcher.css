@@ -1,0 +1,80 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+/* Segmented DE / EN pill switcher and single-language sidebar filtering for MkDocs Material */
+
+.sp-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  margin: 0 0.45rem;
+  border-radius: 10px;
+  background-color: #e4e7ee;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  align-self: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+[data-md-color-scheme="slate"] .sp-lang-switch {
+  background-color: #1e293b;
+  border-color: rgba(248, 250, 252, 0.14);
+}
+
+.sp-lang-switch__btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0 0.68rem;
+  height: 1.7rem;
+  min-width: 2.35rem;
+  border-radius: 7px;
+  background: transparent;
+  color: #64748b;
+  font-family: var(--md-text-font-family, inherit);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease;
+}
+
+.sp-lang-switch__btn:hover {
+  color: #1e293b;
+}
+
+[data-md-color-scheme="slate"] .sp-lang-switch__btn {
+  color: #94a3b8;
+}
+
+[data-md-color-scheme="slate"] .sp-lang-switch__btn:hover {
+  color: #f1f5f9;
+}
+
+.sp-lang-switch__btn[aria-pressed="true"] {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+[data-md-color-scheme="slate"] .sp-lang-switch__btn[aria-pressed="true"] {
+  background-color: #334155;
+  color: #f8fafc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.sp-lang-switch__btn:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 1px;
+}
+
+/* Hide duplicate navigation items belonging exclusively to the inactive language */
+html[data-sp-lang="de"] .md-nav__item[data-sp-only-lang="en"],
+html[data-sp-lang="en"] .md-nav__item[data-sp-only-lang="de"] {
+  display: none !important;
+}

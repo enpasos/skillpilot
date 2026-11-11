@@ -1,0 +1,32 @@
+## Learning-Goal Book and Evidence-Review Pipeline {#sec:sga-goal-book}
+
+The learning-goal book (`Lernzielbuch`) and positive understanding-evidence pipeline make every curricular-atomic goal inspectable by humans and multi-AI reviewers without bloating learner-facing goal descriptions (teacher timeline planning on top of the GoalBook is specified in [Goal-Book Time Planning](repo:docs/concept/skill-graph/teacher-goal-book-time-planning.en.md)).
+
+### Shared BookModel, One-Goal-Per-Page Atlas, and Evidence Profiles V2 {#sec:sga-gb-bookmodel}
+
+One deterministic `BookModel` (`contracts/goal-book/v1/goal-book-model-1.1.schema.json`) drives both the read-only `/lernzielbuch` WebGUI and the A4 portrait PDF:
+
+- **Current nationwide review editions (30 Aug 2026):** **792** unique curricular-atomic pages for Gymnasium Mathematics and **461** pages for Physics across all 16 German states (`publicationMode: review`, carrying QA-ledger candidate images without claiming human image approval; coach runtime and Mastery writes remain unchanged).
+- **Fourteen binding invariants:** Concise canonical `title`/`description`; separate fingerprint-bound V2 evidence profiles (`contracts/goal-evidence/v2/goal-evidence-profile.schema.json` capturing `expectations`, `coverageExpectations`, `variationAxes`, and `applicationCaseBriefs`; V1 retained as archived audit history); **one physical page per ordinary curricular-atomic target goal** displaying full **Lernziel-ID**, chapter path (`canonical-composition-view-v1` + **Bundeslandspezifische Ergänzungen** with gap-free `treeOrder`), stable Kahn topological order from `requires`, clickable named PDF destinations (`goal-<uuid>`), fail-closed overflow/legibility checks, incremental Skia PDF 1.4 bookmark outlines, state-primary applicability tuples (`Bundesland -> [{stage, durationModel, courseProfile}]` — never Cartesian `G8`/`G9` cross-products), and on-demand `/lernzielbuch/<bookId>.original-sources.json` supplements.
+- **Application-based recognition review (4 Nov 2026):** Assessments supporting global competence recognition ([Assessment-Gated Completion](repo:docs/concept/skill-graph/assessment-gated-completion.md)) require static review against compensating-point bypasses before release.
+
+### Multi-AI Review Loop, Evidence Gates, and Moderated Feedback Custody {#sec:sga-gb-review-feedback}
+
+Quality iteration combines a fast blind multi-AI loop with strict generalization gates and a slow, privacy-minimized public feedback channel:
+
+| Scale | Levels & Meaning |
+| --- | --- |
+| **Evidence (`E0`–`E5` + `NORMATIVE`)** | `E0` unanchored opinion $\to$ `E1` anchored observation $\to$ `E2` reproducible minimal counterexample $\to$ `E3` independent multi-model/prompt triangulation $\to$ `E4` controlled field evidence $\to$ `E5` replicated cohort evidence. |
+| **Claim scope (`G0`–`G4`)** | `G0` single case $\to$ `G1` one goal $\to$ `G2` goal archetype (requires $\ge$ `E3` across $\ge$ 2 chapters) $\to$ `G3` subject/stage (stratified sample + replication) $\to$ `G4` global Coach/Mastery rule (Math + Physics + field canary). |
+{cols="30%,70%"}
+
+- **Two-round V2 campaign:** Calibrated on 16 Mathematics goals (`5`–`10`, `E`–`Q4`, pilot goal `8dd9f210-2683-5902-acab-e3be22725232`) before the 792-goal batch: (1) freeze Atlas V1, (2) blind Codex V1 review (`keep` | `revise` | `split_review` | `block`), (3) deterministic check + goal-by-goal human adjudication, (4) controlled bilingual V2 authoring + downstream lane re-runs, (5) blind external-provider V2 review, (6) dissent-preserving synthesis. Neither AI agreement nor silence ever auto-approves canonical changes.
+- **Two-phase `/lernziel-feedback` custody transfer:** Default-off in production behind `SKILLPILOT_GOAL_FEEDBACK_OPERATOR_TOKEN`; accepts privacy-minimized V2 envelopes without learner/SkillPilot IDs, contact fields, or attachments. `POST /api/operations/goal-feedback/v1/export-batches` exports deterministic batches + server-derived publication snapshots into owner-only `tmp/goal-feedback/inbox/` (`trusted-context.jsonl` separated from `untrusted-feedback.jsonl`); only after local byte/digest verification does idempotent `DELETE .../{exportId}` with `If-Match` clear live rows while retaining a content-free batch receipt.
+
+```bash
+npm --prefix app run quality:goal-evidence:check
+npm --prefix app run build:goal-book-model -- \
+  scripts/config/goal-books/de-gym-math-national-atlas.json
+npm --prefix app run build:goal-book-original-sources
+npm --prefix app run check:goal-book-original-sources
+```

@@ -103,17 +103,37 @@ function discoverMarkdownFiles(args: string[]): string[] {
   return Array.from(files).sort((left, right) => repoRelative(left).localeCompare(repoRelative(right), 'en'))
 }
 
-const excludedSourceDirs = new Set([
-  'docs/concept/skill-graph/source',
-])
+function loadCompendiaSourceDirs(): Set<string> {
+  const regPath = resolve(repoRoot, 'docs/compendia.json')
+  if (!existsSync(regPath)) return new Set(['docs/concept/skill-graph/source'])
+  const parsed = JSON.parse(readFileSync(regPath, 'utf8')) as {
+    compendia?: Array<{ sourceDir?: unknown }>
+  }
+  return new Set(
+    (parsed.compendia ?? [])
+      .map((entry) => entry.sourceDir)
+      .filter((dir): dir is string => typeof dir === 'string' && dir.length > 0),
+  )
+}
+
+const excludedSourceDirs = loadCompendiaSourceDirs()
 
 function loadDeclaredBinaryTargets(): Set<string> {
   if (process.env.SKILLPILOT_REQUIRE_DOC_BINARIES === '1') return new Set()
-  const manifestPath = resolve(repoRoot, 'tmp/skill-graph-document/declared-binaries.json')
-  if (!existsSync(manifestPath)) return new Set()
-  const parsed = JSON.parse(readFileSync(manifestPath, 'utf8')) as { binaries?: unknown }
-  if (!Array.isArray(parsed.binaries)) return new Set()
-  return new Set(parsed.binaries.filter((entry): entry is string => typeof entry === 'string'))
+  const manifestCandidates = [
+    resolve(repoRoot, 'tmp/compendia/declared-binaries.json'),
+    resolve(repoRoot, 'tmp/skill-graph-document/declared-binaries.json'),
+  ]
+  const binaries = new Set<string>()
+  for (const manifestPath of manifestCandidates) {
+    if (!existsSync(manifestPath)) continue
+    const parsed = JSON.parse(readFileSync(manifestPath, 'utf8')) as { binaries?: unknown }
+    if (!Array.isArray(parsed.binaries)) continue
+    for (const entry of parsed.binaries) {
+      if (typeof entry === 'string') binaries.add(entry)
+    }
+  }
+  return binaries
 }
 
 function collectMarkdownFiles(dir: string): string[] {

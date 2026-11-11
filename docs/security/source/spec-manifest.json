@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-security-and-privacy",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-data-privacy",
+    "02-openai-mcp-client-binding",
+    "03-ai-act-compliance"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/security/skillpilot-security-and-privacy.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Sicherheits- & Rechtsdossier · Band V",
+      "title": "Sicherheit, Datenschutz und KI-Transparenz",
+      "subtitle": "Pseudonyme Datenhaltung und Löschgrenzen, OpenAI-MCP-Clientbindung\n(mTLS, OAuth, 24h-Lernsession) und EU-KI-Verordnung-Compliance",
+      "pdfTitle": "SkillPilot — Sicherheit, Datenschutz und KI-Transparenz (DE)",
+      "pdfSubject": "Datenschutz- und Speicherkonzept, OpenAI-MCP-Clientbindung und EU-KI-Verordnung-Compliance",
+      "pdfKeywords": "SkillPilot, Datenschutz, Sicherheit, Pseudonymität, OAuth, mTLS, MCP, KI-Verordnung, EU AI Act",
+      "runningHeadLeft": "SkillPilot · Sicherheit, Datenschutz & KI-Transparenz",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Dossiers",
+        "body": "Dieser Band vereint die technischen Sicherheits-, Datenschutz- und KI-Transparenznachweise von SkillPilot: das Datenfluss- und Speicherkonzept über Browser, pseudonymes Backend, aktiven Claude-Beta-Pfad und OpenAI-Kandidaten einschließlich 365-Tage-Inaktivitätslöschung, die vierstufige OpenAI-MCP-Clientbindung (HTTPS, Connector-mTLS, OAuth mit PKCE `S256` und 24-Stunden-Lernsession) sowie die strukturierte Compliance-Dokumentation zur europäischen KI-Verordnung (Art. 50 und Anhang III)."
+      },
+      "partHeaders": {
+        "01-data-privacy": "Datenschutz- & Speicherkonzept",
+        "02-openai-mcp-client-binding": "OpenAI-MCP-Clientbindung",
+        "03-ai-act-compliance": "EU-KI-Verordnung & Transparenz"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Sicherheits- und Compliance-Dokumentation; siehe LICENSING.md).",
+        "Technische Architektur- und Bestandsdokumentation — ersetzt keine Rechtsberatung und keine verbindlichen Rechtstexte unter skillpilot.com/privacy bzw. skillpilot.com/legal."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/security/skillpilot-security-and-privacy.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Security & Compliance Dossier · Volume V",
+      "title": "Security, Data Privacy, and AI Transparency",
+      "subtitle": "Pseudonymous Storage and Deletion Boundaries, OpenAI MCP Client Binding\n(mTLS, OAuth, 24h Learning Session), and EU AI Act Compliance",
+      "pdfTitle": "SkillPilot — Security, Data Privacy, and AI Transparency (EN)",
+      "pdfSubject": "Data privacy and storage concept, OpenAI MCP client binding, and EU AI Act compliance",
+      "pdfKeywords": "SkillPilot, data privacy, security, pseudonymity, OAuth, mTLS, MCP, EU AI Act, AI transparency",
+      "runningHeadLeft": "SkillPilot · Security, Privacy & AI Transparency",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this dossier",
+        "body": "This volume consolidates SkillPilot's technical security, data-privacy, and AI-transparency specifications: the data-flow and storage architecture across browser, pseudonymous backend, active Claude beta lane, and OpenAI integration candidate including the 365-day inactivity deletion boundary; the four-proof OpenAI MCP client-binding architecture (HTTPS, connector mTLS, OAuth with PKCE `S256`, and 24-hour learning sessions); and the EU AI Act compliance assessment (Article 50 transparency and Annex III boundaries)."
+      },
+      "partHeaders": {
+        "01-data-privacy": "Data Privacy & Storage Concept",
+        "02-openai-mcp-client-binding": "OpenAI MCP Client Binding",
+        "03-ai-act-compliance": "EU AI Act & Transparency"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical security and compliance documentation; see LICENSING.md).",
+        "Technical architecture and inventory documentation — does not replace legal advice or the binding public policies at skillpilot.com/privacy and skillpilot.com/legal."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "data-privacy",
+    "openai-mcp-client-binding",
+    "ai-act-compliance"
+  ],
+  "webPages": [
+    {
+      "id": "data-privacy",
+      "sources": ["01-data-privacy"],
+      "paths": {
+        "en": "docs/security/data-privacy.md",
+        "de": "docs/security/data-privacy.de.md"
+      },
+      "titles": {
+        "en": "Data Privacy and Storage Concept",
+        "de": "Datenschutz- und Speicherkonzept"
+      },
+      "navLabels": {
+        "en": "§1 Data Privacy & Storage",
+        "de": "§1 Datenschutz & Speicherung"
+      }
+    },
+    {
+      "id": "openai-mcp-client-binding",
+      "sources": ["02-openai-mcp-client-binding"],
+      "paths": {
+        "de": "docs/security/openai-mcp-client-binding.md",
+        "en": "docs/security/openai-mcp-client-binding.en.md"
+      },
+      "titles": {
+        "de": "OpenAI-MCP: Bindung an den zugelassenen Client",
+        "en": "OpenAI MCP: Authorized Client Binding"
+      },
+      "navLabels": {
+        "en": "§2 OpenAI MCP Client Binding",
+        "de": "§2 OpenAI-MCP-Clientbindung"
+      }
+    },
+    {
+      "id": "ai-act-compliance",
+      "sources": ["03-ai-act-compliance"],
+      "paths": {
+        "de": "docs/legal/ki-verordnung-compliance-stand-2026-07-29.md",
+        "en": "docs/legal/ki-verordnung-compliance-stand-2026-07-29.en.md"
+      },
+      "titles": {
+        "de": "KI-Verordnung: Compliance-Stand für SkillPilot",
+        "en": "EU AI Act: Compliance Baseline for SkillPilot"
+      },
+      "navLabels": {
+        "en": "§3 EU AI Act Compliance",
+        "de": "§3 KI-Verordnung Compliance"
+      }
+    }
+  ]
+}

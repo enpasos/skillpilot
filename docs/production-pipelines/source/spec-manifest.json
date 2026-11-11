@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-production-pipelines",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-skill-graph-pipeline",
+    "02-package-provisioning",
+    "03-subject-export-package",
+    "04-mem-fwu-roundtrip",
+    "05-exam-example-pipeline",
+    "06-seki-math-exam"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/production-pipelines/skillpilot-production-pipelines.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Produktionshandbuch · Band V",
+      "title": "Produktionspipelines\nfür Skill-Graphen,\nPakete und Prüfungen",
+      "subtitle": "Wiederholbare Blaupausen für Skill-Graph-Erzeugung, sichere Paketprovisionierung,\nFachexport-ZIPs, MEM/FWU-Core-Roundtrips und qualitätsgesicherte Prüfungsaufgaben",
+      "pdfTitle": "SkillPilot — Produktionspipelines für Skill-Graphen, Pakete und Prüfungen (DE)",
+      "pdfSubject": "Skill-Graph-Erzeugung, Paketprovisionierung, Fachexport, MEM/FWU-Roundtrip und Prüfungspipelines",
+      "pdfKeywords": "SkillPilot, Produktionspipeline, Skill-Graph, Provisionierung, Fachexport, MEM, FWU, OWL, Klausurbeispiel",
+      "runningHeadLeft": "SkillPilot · Produktionspipelines",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Handbuchs",
+        "body": "Dieser Band bündelt alle wiederholbaren Produktions- und Exportpipelines von SkillPilot: die achtstufige Erzeugung neuer `SkillLandscape`-JSON-Graphen, die sichere Quarantäne-, CAS-Aktivierungs- und Rollback-Provisionierung von `full-standalone-v1`-Paketen, das reproduzierbare Fachexport-Paket, den Core-first-MEM/FWU-Ontologie-Roundtrip (`DPK-008c`/`008d`) sowie die allgemeinen und Sek-I-spezifischen Produktionsworkflows für Prüfungsaufgaben (`examData`)."
+      },
+      "partHeaders": {
+        "01-skill-graph-pipeline": "Graph-Erzeugung & Paketbetrieb",
+        "03-subject-export-package": "Export & Ontologie-Roundtrip",
+        "05-exam-example-pipeline": "Prüfungs-Produktionspipelines"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Produktions- und Exportdokumentation; siehe LICENSING.md).",
+        "Temporäre Arbeitsartefakte unter tmp/ und Referenzpools für Prüfungsaufgaben werden niemals in Git eingecheckt."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/production-pipelines/skillpilot-production-pipelines.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Production Handbook · Volume V",
+      "title": "Production Pipelines\nfor Skill Graphs,\nPackages, and Exams",
+      "subtitle": "Repeatable Blueprints for Skill Graph Authoring, Secure Package Provisioning,\nSubject-Export ZIPs, MEM/FWU Core Roundtrips, and Reviewed Exam Production",
+      "pdfTitle": "SkillPilot — Production Pipelines for Skill Graphs, Packages, and Exams (EN)",
+      "pdfSubject": "Skill graph authoring, package provisioning, subject export, MEM/FWU roundtrip, and exam production pipelines",
+      "pdfKeywords": "SkillPilot, production pipeline, skill graph, provisioning, subject export, MEM, FWU, OWL, exam authoring",
+      "runningHeadLeft": "SkillPilot · Production Pipelines",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this handbook",
+        "body": "This volume consolidates SkillPilot's repeatable production and export pipelines: the eight-step blueprint for authoring `SkillLandscape` JSON graphs, secure quarantine, content-addressed installation, and CAS activation/rollback for `full-standalone-v1` packages, the reproducible legacy subject-export ZIP, the Core-first MEM/FWU ontology roundtrip (`DPK-008c`/`008d`), and both general and Sek-I-specific exam production workflows (`examData`)."
+      },
+      "partHeaders": {
+        "01-skill-graph-pipeline": "Graph Authoring & Package Operations",
+        "03-subject-export-package": "Subject Export & Ontology Roundtrip",
+        "05-exam-example-pipeline": "Exam Production Pipelines"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical production and export documentation; see LICENSING.md).",
+        "Ephemeral build outputs under tmp/ and exam calibration reference pools are never committed to Git."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "skill-graph-pipeline",
+    "package-provisioning",
+    "subject-export-package",
+    "mem-fwu-roundtrip",
+    "exam-example-pipeline",
+    "seki-math-exam"
+  ],
+  "webPages": [
+    {
+      "id": "skill-graph-pipeline",
+      "sources": ["01-skill-graph-pipeline"],
+      "paths": {
+        "en": "docs/production-pipelines/skill-graph.md",
+        "de": "docs/production-pipelines/skill-graph.de.md"
+      },
+      "titles": {
+        "en": "Skill Graph Production Pipeline",
+        "de": "Skill-Graph-Produktionspipeline"
+      },
+      "navLabels": {
+        "en": "§1 Skill Graph",
+        "de": "§1 Skill-Graph"
+      }
+    },
+    {
+      "id": "package-provisioning",
+      "sources": ["02-package-provisioning"],
+      "paths": {
+        "de": "docs/production-pipelines/curriculum-package-provisioning.md",
+        "en": "docs/production-pipelines/curriculum-package-provisioning.en.md"
+      },
+      "titles": {
+        "de": "Curriculum-Pakete sicher provisionieren",
+        "en": "Secure Curriculum Package Provisioning"
+      },
+      "navLabels": {
+        "en": "§2 Package Provisioning",
+        "de": "§2 Paketprovisionierung"
+      }
+    },
+    {
+      "id": "subject-export-package",
+      "sources": ["03-subject-export-package"],
+      "paths": {
+        "en": "docs/production-pipelines/skillpilot-subject-export-package.md",
+        "de": "docs/production-pipelines/skillpilot-subject-export-package.de.md"
+      },
+      "titles": {
+        "en": "SkillPilot Subject Export Package",
+        "de": "SkillPilot-Fachexport-Paket"
+      },
+      "navLabels": {
+        "en": "§3 Subject Export Package",
+        "de": "§3 Fachexport-Paket"
+      }
+    },
+    {
+      "id": "mem-fwu-roundtrip",
+      "sources": ["04-mem-fwu-roundtrip"],
+      "paths": {
+        "en": "docs/production-pipelines/mem-fwu-roundtrip.md",
+        "de": "docs/production-pipelines/mem-fwu-roundtrip.de.md"
+      },
+      "titles": {
+        "en": "MEM/FWU Core Roundtrip Pipeline",
+        "de": "MEM/FWU-Core-Roundtrip-Pipeline"
+      },
+      "navLabels": {
+        "en": "§4 MEM/FWU Roundtrip",
+        "de": "§4 MEM/FWU-Roundtrip"
+      }
+    },
+    {
+      "id": "exam-example-pipeline",
+      "sources": ["05-exam-example-pipeline"],
+      "paths": {
+        "en": "docs/production-pipelines/exam-example.md",
+        "de": "docs/production-pipelines/exam-example.de.md"
+      },
+      "titles": {
+        "en": "Exam Example Production Pipeline",
+        "de": "Klausurbeispiel-Produktionspipeline"
+      },
+      "navLabels": {
+        "en": "§5 Exam Example",
+        "de": "§5 Klausurbeispiel"
+      }
+    },
+    {
+      "id": "seki-math-exam",
+      "sources": ["06-seki-math-exam"],
+      "paths": {
+        "en": "docs/production-pipelines/seki-math-exam.md",
+        "de": "docs/production-pipelines/seki-math-exam.de.md"
+      },
+      "titles": {
+        "en": "Sek-I Mathematics Exam Production Pipeline",
+        "de": "Produktionspipeline für Sek-I-Mathematikprüfungen"
+      },
+      "navLabels": {
+        "en": "§6 Sek-I Math Exam",
+        "de": "§6 Sek-I-Matheprüfung"
+      }
+    }
+  ]
+}

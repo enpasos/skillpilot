@@ -33,20 +33,18 @@ Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web.
 
 ### AI learning coaches (Claude, ChatGPT & Gemini / MCP)
 
-Diese Architekturtexte sind derzeit auf Deutsch verfasst. Der beschriebene
-OpenAI-V1-Vertrag ist dennoch sprachneutral und bedient alle vom Backend
-freigegebenen Interaktionssprachen.
+Durable coach architecture and security specifications are available in both German and English (use the **DE / EN** toggle in the header on the documentation site):
 
--   [SkillPilot-Lerncoach: OpenAI-Plugin-, Skill- und MCP-App-Architektur](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
--   [Kommunikationsvertrag zwischen ChatClient und SkillPilot-Backend](concept/runtime-workflows/provider-neutral-coach-boundary.md)
--   [SkillPilot in Gemini: Integrationskandidat, Einrichtung und Betriebsgrenzen](deploy/gemini-integration.md)
--   [OpenAI-Plugin: Versionierung und Lebenszyklus](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
--   [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
--   [OpenAI-MCP-Clientbindung](security/openai-mcp-client-binding.md)
--   [Release, Rollback und Stilllegung von SkillPilot Coach v1](deploy/openai-plugin-v1-release.md)
--   [OpenAI-Review: Ablehnung, aufgehobene Sperre und historische Nachweise](deploy/openai-plugin-v1-review-freeze.md)
--   [OpenAI-Submission-Dossier für SkillPilot Coach v1](deploy/openai-plugin-v1-submission.md)
--   [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
+-   [Coach product topology (EN)](concept/runtime-workflows/skillpilot-owned-coach-architecture.en.md) · [DE](concept/runtime-workflows/skillpilot-owned-coach-architecture.md)
+-   [Provider-neutral coach communication contract (EN)](concept/runtime-workflows/provider-neutral-coach-boundary.en.md) · [DE](concept/runtime-workflows/provider-neutral-coach-boundary.md)
+-   [SkillPilot in Gemini: integration runbook (DE)](deploy/gemini-integration.md)
+-   [OpenAI plugin versioning and lifecycle (EN)](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.en.md) · [DE](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
+-   [OpenAI MCP OAuth app binding and 24h learning sessions (EN)](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.en.md) · [DE](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
+-   [OpenAI MCP authorized client binding (EN)](security/openai-mcp-client-binding.en.md) · [DE](security/openai-mcp-client-binding.md)
+-   [Release, rollback, and retirement of SkillPilot Coach v1 (DE)](deploy/openai-plugin-v1-release.md)
+-   [OpenAI review: rejection, lifted freeze, and historical evidence (DE)](deploy/openai-plugin-v1-review-freeze.md)
+-   [OpenAI submission dossier for SkillPilot Coach v1 (DE)](deploy/openai-plugin-v1-submission.md)
+-   [Rollback: ChatGPT Visible Session (EN)](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 
 ### Programme status
 -   [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)

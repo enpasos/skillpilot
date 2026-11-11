@@ -1,0 +1,25 @@
+## SkillPilot Curriculum-Champions {#sec:qa-champion-guide}
+
+:::note{title="Rolle und Verknüpfung"}
+Operativer Leitfaden für **SkillPilot Curriculum-Champions**, die praktische Nutzbarkeit und Qualität eines Curriculums verantworten (beliebig viele Champions können sich ein Fach mit unterschiedlichen Schwerpunkten in Inhalt, Didaktik, Community und Tooling teilen). Die verbindlichen Reifegrad- und Erprobungsregeln stehen in @ref{sec:qa-quality-human-trial}.
+:::
+
+### Aufgaben, Registrierung und praktische Erprobung („Deine menschliche QS“) {#sec:qa-champion-trial}
+
+**Aufgaben eines Champions:** (1) das Curriculum im eigenen Einsatzkontext praktisch tragfähig machen, (2) selbst in die Lernendenrolle schlüpfen und den Umfang inklusive verbindlicher Lern- und Prüfungsstationen durcharbeiten, (3) Verbesserungen über GitHub Issues und Pull Requests (`https://github.com/enpasos/skillpilot`) einbringen, (4) Lernende und Lehrkräfte gewinnen sowie (5) Kontakt zu Lehrplan-Herausgebern (Ministerien, Hochschulen) aufbauen.
+
+- **Registrierung auf der Seite „Curricula“:** Erfordert eine **SkillPilot-ID** (öffentlich nur maskiert: erste 5 Zeichen + `...`) sowie die Eigentumsbestätigung per **GitHub-OAuth** (GitHub-ID öffentlich sichtbar).
+- **Einstieg „Deine menschliche QS“ (`Your human QA`):** Über **Connect with GitHub** jederzeit erreichbar (auch bei geschlossenem Anmeldeformular; abgelaufene Logins verlangen nur erneutes Anmelden, fehlgeschlagene Ladevorgänge bieten einen Retry-Button statt ausgeblendeter Steuerelemente).
+- **Beginnsignal & Umfangsbindung:** Ab erreichtem Kern-QS-Stand **`M5`** zählt vorhandener Lernfortschritt (>= 1 abgeschlossenes Ziel im aktuellen persönlichen Curriculum-/Themenumfang einer aktiven Rolle) automatisch als **Menschliche QS läuft** — unabhängig vom Registrierungsdatum; ohne Fortschritt steht **Erprobung beginnen** bereit. Eine explizite Erprobungsaktion bindet den Umfang dauerhaft; pausierte oder beendete Rollen werden durch bestehenden Fortschritt nie reaktiviert.
+- **Praktische Nachweise vs. bloße Mastery:** Importierte oder manuell hochgesetzte Mastery erzeugt niemals **Menschlich erprobt**; frühere echte Lernabschlüsse zählen nur mit erhaltener Provenienz und aktueller Inhaltsbindung. **Menschlich erprobt** erfordert den vollständigen Nachweis **eines** Champions über den ausgewiesenen Umfang, null offene blockierende Befunde (auch solche außerhalb maschinenlesbarer Ledger) und die ausdrückliche Abschlussbestätigung (`M7` ist weder Startvoraussetzung noch Ersatz für menschliche Erprobung).
+
+### Beendigung der Rolle und Aufbau der „Curricula“-Seite {#sec:qa-champion-page}
+
+**Rücktrittsablauf (`Stop Championship`):** (1) Klick auf *Stop Championship*, (2) Identitätsnachweis per **GitHub-OAuth**, (3) Auswahl einer oder mehrerer aktiver Champion-Zuordnungen und (4) Bestätigung — unvollendete Erprobungen enden als aktiv, während bereits gültig abgeschlossene Erprobungsnachweise und ihre Historie erhalten bleiben.
+
+Die zentrale **„Curricula“-Seite** gliedert sich in vier Bereiche:
+
+1. **Visuelle Einführung:** Vier-Panel-Cartoon (*Nano Banana Pro*) zur Idee der Curriculum-Champions.
+2. **Registrierungsaktion:** Button **„Connect with GitHub“** zur OAuth-Verifikation und Rollenanmeldung.
+3. **Curriculum-Verzeichnis:** Übersicht aller verfügbaren Curricula samt Zahl atomarer Ziele, aggregierter gemeisterter Achievements, QS-Meilenstein (`M0`–`M7`) und Erprobungsstatus.
+4. **Champion-Leaderboard:** Pro Curriculum Liste der registrierten Champions mit öffentlicher GitHub-ID, maskierter SkillPilot-ID sowie Anzahl ihrer GitHub-Issues und Pull Requests.

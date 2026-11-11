@@ -33,6 +33,8 @@ on:
       - 'scripts/test_claude_v1_revoke.py'
       - '.github/actions/ubuntu-apt/**'
       - 'scripts/ci_ubuntu_apt.test.mjs'
+      - 'scripts/build_compendia.py'
+      - 'scripts/doc_compendium/**'
       - '.github/workflows/docs_checks.yml'
       - '.github/actions/postgres-service/**'
   pull_request:
@@ -63,6 +65,8 @@ on:
       - 'scripts/test_claude_v1_revoke.py'
       - '.github/actions/ubuntu-apt/**'
       - 'scripts/ci_ubuntu_apt.test.mjs'
+      - 'scripts/build_compendia.py'
+      - 'scripts/doc_compendium/**'
       - '.github/workflows/docs_checks.yml'
       - '.github/actions/postgres-service/**'
 
@@ -104,9 +108,12 @@ jobs:
       - name: Test Claude v1 revocation guard units
         working-directory: .
         run: PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v scripts.test_claude_v1_revoke.ClaudeV1RevokeUnitTest
-      - name: Reject tracked generated Skill Graph artifacts
+      - name: Reject tracked generated compendium artifacts
         working-directory: .
-        run: python3 docs/concept/skill-graph/build_spec.py --check-untracked-outputs
+        run: python3 scripts/build_compendia.py --check-untracked-outputs
+      - name: Verify committed single-source Web pages match canonical sources
+        working-directory: .
+        run: python3 scripts/build_compendia.py --check-committed-web
       - name: Check Generated Documentation Notices
         run: npm run check:generated-doc-notices
       - name: Check Generated Status Registry
@@ -171,25 +178,26 @@ jobs:
         with:
           sparse-checkout: |
             docs
+            scripts
             .github/actions/ubuntu-apt
       - name: Use Ubuntu package sources
         uses: ./.github/actions/ubuntu-apt
-      - name: Install LuaLaTeX packages for Skill Graph PDFs
+      - name: Install LuaLaTeX and SVG packages for compendium PDFs
         timeout-minutes: 15
         run: |
           sudo apt-get update
           sudo apt-get install --yes --no-install-recommends \
             texlive-luatex texlive-latex-recommended texlive-latex-extra \
             texlive-fonts-recommended texlive-lang-german texlive-lang-english \
-            texlive-science lmodern
+            texlive-science lmodern librsvg2-bin
       - name: Use Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - name: Install docs dependencies
         run: pip install -r requirements-docs.txt
-      - name: Build bilingual Skill Graph Web pages, diagrams, and PDFs
-        run: python3 docs/concept/skill-graph/build_spec.py --all
+      - name: Build all bilingual single-source compendia (Web, diagrams, PDFs)
+        run: python3 scripts/build_compendia.py --all
       # Not --strict: many docs link to repo files outside docs/ (contracts/,
       # app/, scripts/, curricula/). Those links resolve on GitHub but not in the
       # built site, and strict mode would reject them. `npm run check:docs-links`

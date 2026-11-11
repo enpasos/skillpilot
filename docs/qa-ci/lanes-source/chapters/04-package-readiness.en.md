@@ -1,0 +1,69 @@
+## Curriculum Package Readiness (`full-standalone-v1`) {#sec:qal-package-readiness}
+
+This gate answers a narrower, stronger question than legacy subject-export validation: can an artifact honestly claim the self-contained `full-standalone-v1` runtime profile? Reproducible subject ZIPs remain valuable handoff and roundtrip artifacts, yet do not prove standalone execution from the ZIP alone and therefore receive `not-ready-legacy` (`standaloneProfileReady: false`).
+
+### Status Vocabulary and Exit Codes {#sec:qal-readiness-vocabulary}
+
+Policy rules live in `contracts/curriculum-package/v1/profiles/full-standalone-v1.readiness-policy.json` and reports conform to `contracts/curriculum-package/v1/package-readiness-report.schema.json` (evaluator `1.3.0` validates its own output against that schema):
+
+:::table{cols="3.6cm,1.4cm,X"}
+| Status / condition | Exit | Semantics |
+| --- | --- | --- |
+| `ready` (or exact `--expect-status` / self-test) | `0` | Every blocking check in the versioned policy passed (open publication/human gates still prevent `ready` for the current Mathematics candidate). |
+| CLI usage error | `2` | Invalid arguments or missing required flags. |
+| `invalid` | `10` | Input safety, target identity, or contract binding failed (partial target claims never downgrade to legacy). |
+| `not-ready-incomplete` / `not-ready-legacy` | `20` | Target contract consistently declared while completeness, publication/redistribution, or consumer gates remain open (`not-ready-incomplete`), or legacy subject-export artifact (`not-ready-legacy`) without matching `--expect-status`. |
+| `unsupported` | `30` | Internally consistent target claim for a contract/compatibility version unsupported by this evaluator. |
+| `--expect-status` mismatch | `40` | Evaluated status differs from the explicitly expected status. |
+| Internal / contract failure | `70` | Internal evaluator error or corrupted trusted contracts. |
+:::
+
+### Conformance Suites, Build, and Hermetic Package Consumer {#sec:qal-readiness-commands}
+
+Running the self-tests and contract suites from the repository root:
+
+```bash
+python3 -B scripts/validate_curriculum_package_contracts.py
+python3 -B scripts/validate_curriculum_runtime_catalog_contract.py
+python3 -B scripts/validate_curriculum_schema_catalog_contract.py
+python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
+python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
+python3 -B scripts/run_package_consumer_smoke.py --self-test
+python3 -B scripts/validate_fwu_owl_curriculum_package.py --self-test
+python3 -B scripts/reconstruct_json_curriculum_package_from_fwu_owl.py --self-test
+python3 -B scripts/run_fwu_owl_reverse_compiler_hermetic.py --self-test
+python3 -B scripts/validate_curriculum_fwu_owl_reverse_compilation_contract.py \
+  --self-test
+python3 -B scripts/generate_curriculum_package_redistribution_review.py --check
+python3 -B scripts/generate_curriculum_source_verification_review.py --check
+```
+
+Building (`app/scripts/buildFullStandaloneCurriculumPackage.ts`), independently validating (`scripts/validate_full_standalone_curriculum_package.py`), and evaluating a provisioned staging candidate (or running the full sequence via `scripts/run_curriculum_full_package_conformance.sh`):
+
+```bash
+npm --prefix app run export:full-standalone-package -- \
+  --release-root tmp/curriculum-release-model/mathematik-a \
+  --output-dir tmp/curriculum-release-model/full-standalone-package \
+  --zip --expect-entry-count 897 --expect-manifest-file-count 895 \
+  --expect-binary-asset-count 715 \
+  --expect-content-digest \
+  sha256:9d3c0e03f95c06161abd0944335807704ffef1fcf20433f52d83167015637c64
+
+PKG_DIR=tmp/curriculum-release-model/full-standalone-package
+ZIP_NAME=skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip
+python3 -B scripts/evaluate_curriculum_package_readiness.py \
+  --zip "$PKG_DIR/$ZIP_NAME" \
+  --consumer-smoke-store tmp/curriculum-release-model/provisioned-store \
+  --consumer-smoke-work-dir tmp/curriculum-release-model/package-consumer-smoke \
+  --consumer-smoke-report "$PKG_DIR/package-consumer-smoke-report.json" \
+  --report "$PKG_DIR/readiness-report.json" \
+  --expect-status not-ready-incomplete
+```
+
+The evaluator invokes both the independent full-package validator v2 and the policy-pinned consumer runner (`contracts/curriculum-package/v1/package-consumer-smoke-report.schema.json`) directly; without `--consumer-smoke-store`, any pre-existing report is treated strictly as `external-unattested`. The consumer builds a runtime-catalog-only frontend (`publicDir: false`) and slim backend free of embedded curriculum UUIDs or static domain payloads, executing inside `bubblewrap --clearenv` with a hidden checkout, loopback-only networking, read-only store, `O_NOFOLLOW`-rebound JDK/Python/Node/`strace`, and real Playwright 1.59.1/Chromium probes (including 5 poison sentinels, 15 ordered functional checks, and a fail-closed UI marker on Catalog-404 with zero fallback requests).
+
+### Offline Trust Model, Review Separation, and Implementation Boundary (`DPK-004a`–`DPK-008d`) {#sec:qal-readiness-boundary}
+
+- **Offline resolution and explicit JSON caps:** The package-local schema catalog is strictly a hash-bound lookup table beneath the consumer's supported contract version (remote retrieval forbidden; max `64 MiB` per JSON entry, nesting depth `128`, max `5,000,000` parsed nodes). Likewise, the runtime catalog resolves roots, scopes, and views explicitly without filename heuristics.
+- **Structural validity vs. redistribution clearance:** Files with `redistributionStatus: review-required` must carry `licenseExpression: null`, causing `publication.redistribution-cleared` to fail (`not-ready-incomplete`). `allowed` requires a concrete license expression resolved to an inventoried license file (see @ref{sec:qal-human-review-gates} for the 715 Mathematics images, 3 open non-binary classes, and 479 open source-text decisions).
+- **Completed technical milestones:** `DPK-004a`/`004b` and `DPK-005a`/`005b` establish the release model, 22 pinned payload schemas, and deterministic streaming ZIP32; `DPK-006a`–`006c` enforce the content-addressed store and CAS lock without fallback; `DPK-007` proves the real 1.7-GB consumer path (15 checks, 213 frontier goals). The historical `DPK-007a` freeze (`skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.json.zip`, `914` entries, `757` images, `1,738,161,217` bytes, SHA-256 `403cc0bc6004da549c8b9ed9fafad222fe0ddda1107806fe087cfa871a6dbcf9`, `contentDigest` `sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101`), the independent 2.36-GB FWU-OWL carrier `DPK-008c` (`819` entries, `824,452` triples, SHA-256 `abab1d8aac3e9394af26c614bbf231954ba45ab11f725dd0f93f088820dc3f94`, placement key `goalId@unitId@index`), and the isolated reverse compilation `DPK-008d` (`1,737,571,471` bytes, SHA-256 `7dcd233dd495900f6d6bd971ff6e86bdcdcfe5701f3522ed480be8336de23195`, 111/111 normal-form oracles, 20-file Rawtrace evidence inventory) remain immutable historical receipts without preempting any human review gate.

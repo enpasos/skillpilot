@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "documentId": "skillpilot-didactics-and-planning",
+  "documentDate": "2026-11-11",
+  "sourceDateEpoch": "1794355200",
+  "languages": ["de", "en"],
+  "useMarkdownH4": true,
+  "appendixChapters": [],
+  "chapters": [
+    "01-feynman",
+    "02-frontier-autopilot",
+    "03-learning-velocity",
+    "04-unified-learning-plan-status",
+    "05-teacher-goal-book-planning",
+    "06-exam-preparation-planning",
+    "07-course-plan-update-continuity",
+    "08-existing-learner-teacher-view"
+  ],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/concept/didactic/skillpilot-didactics-and-planning.de.pdf"
+      ],
+      "babel": "english,ngerman",
+      "kicker": "SkillPilot Konzeptkompendium · Band II",
+      "title": "Didaktik, Lernplanstatus und Kursplanung",
+      "subtitle": "Verstehendes Lernen, Frontier-Auswahl, Lerngeschwindigkeit, einheitlicher\nBackend-Lernplanstatus und lokale Kursplanung für Lehrkräfte",
+      "pdfTitle": "SkillPilot — Didaktik, Lernplanstatus und Kursplanung (DE)",
+      "pdfSubject": "Didaktische Prinzipien, Lernplanstatusvertrag und Kursplanungs-Workflows in SkillPilot",
+      "pdfKeywords": "SkillPilot, Didaktik, Feynman, Autopilot, Learning Velocity, Lernplanstatus, Kursplanung, Klausurvorbereitung",
+      "runningHeadLeft": "SkillPilot · Didaktik & Kursplanung",
+      "tocHeader": "Inhaltsverzeichnis",
+      "abstractBox": {
+        "title": "Geltungsbereich dieses Kompendiums",
+        "body": "Dieser Band bündelt die aktiven Konzepte zur Lernbegleitung und Zeitplanung auf dem Skill-Graphen: verstehendes Lernen nach Feynman, Auswahlstrategien auf der Frontier und Autopilot, die Aktivitätsmetrik Lerngeschwindigkeit, den einheitlichen backendgesteuerten Lernplanstatus für Cockpit, Chat und Planung sowie die lokalen Lehrkraft-Workflows für Lernzielbuch-Zeitplanung, Klausurvorbereitung, Update-Kontinuität und die Einsicht bestehender SkillPilot-IDs. Das formale Graph- und Abschlussmodell ist im [Skill-Graph-Kompendium](repo:docs/concept/skill-graph/graph-definition.de.md) spezifiziert; das ältere [Zeitachsenkonzept](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md) bleibt als ergänzende Entwurfsreferenz erhalten."
+      },
+      "partHeaders": {
+        "01-feynman": "Didaktische Grundlagen",
+        "02-frontier-autopilot": "Frontier-Auswahl & Autopilot",
+        "03-learning-velocity": "Lerngeschwindigkeit",
+        "04-unified-learning-plan-status": "Einheitlicher Lernplanstatus",
+        "05-teacher-goal-book-planning": "Lernzielbuch & Zeitplanung",
+        "06-exam-preparation-planning": "Klausurvorbereitung",
+        "07-course-plan-update-continuity": "Kursplan-Kontinuität",
+        "08-existing-learner-teacher-view": "Lehrkraftansicht per SkillPilot-ID"
+      },
+      "copyrightFooter": [
+        "Stand: 11. November 2026 · Lizenz: Apache-2.0 (technische Konzeptspezifikation; siehe LICENSING.md).",
+        "Verbindliche Produktkorrekturen (u. a. vom 4. November 2026) und genannte Implementierungsgrenzen gelten unverändert."
+      ]
+    },
+    "en": {
+      "outputPaths": [
+        "docs/concept/didactic/skillpilot-didactics-and-planning.en.pdf"
+      ],
+      "babel": "ngerman,english",
+      "kicker": "SkillPilot Concept Compendium · Volume II",
+      "title": "Didactics, Learning-Plan Status, and Course Planning",
+      "subtitle": "Understanding-First Learning, Frontier Selection, Learning Velocity, Unified\nBackend Plan Status, and Local Course Planning for Teachers",
+      "pdfTitle": "SkillPilot — Didactics, Learning-Plan Status, and Course Planning (EN)",
+      "pdfSubject": "Didactic principles, unified learning-plan status contract, and teacher course-planning workflows in SkillPilot",
+      "pdfKeywords": "SkillPilot, didactics, Feynman, Autopilot, learning velocity, learning-plan status, course planning, exam preparation",
+      "runningHeadLeft": "SkillPilot · Didactics & Course Planning",
+      "tocHeader": "Contents",
+      "abstractBox": {
+        "title": "Scope of this compendium",
+        "body": "This volume brings together the active concepts governing learning guidance and scheduling on the skill graph: understanding-first learning via the Feynman Technique, frontier selection strategies and Autopilot, the learning-velocity momentum metric, the unified backend-driven learning-plan status shared across Cockpit, chat, and planning, and the browser-local teacher workflows for goal-book scheduling, exam preparation, curriculum-update continuity, and viewing existing learners by SkillPilot ID. The formal graph and completion model is specified in the [Skill-Graph Compendium](repo:docs/concept/skill-graph/graph-definition.md); the earlier [Curriculum Time-Axis Exploration](repo:docs/concept/didactic/curriculum-time-axis-and-pacing.md) remains preserved as background design context."
+      },
+      "partHeaders": {
+        "01-feynman": "Didactic Foundations",
+        "02-frontier-autopilot": "Frontier Selection & Autopilot",
+        "03-learning-velocity": "Learning Velocity",
+        "04-unified-learning-plan-status": "Unified Learning-Plan Status",
+        "05-teacher-goal-book-planning": "Goal-Book Time Planning",
+        "06-exam-preparation-planning": "Exam Preparation",
+        "07-course-plan-update-continuity": "Course-Plan Continuity",
+        "08-existing-learner-teacher-view": "Teacher View by SkillPilot ID"
+      },
+      "copyrightFooter": [
+        "As of 11 November 2026 · License: Apache-2.0 (technical concept specification; see LICENSING.md).",
+        "Binding product clarifications (including 4 November 2026) and stated implementation boundaries apply unchanged."
+      ]
+    }
+  },
+  "webNavOrder": [
+    "feynman-rules",
+    "frontier-autopilot",
+    "learning-velocity",
+    "unified-learning-plan-status",
+    "teacher-goal-book-time-planning",
+    "exam-preparation-planning",
+    "course-plan-update-continuity",
+    "existing-learner-teacher-view"
+  ],
+  "webPages": [
+    {
+      "id": "feynman-rules",
+      "sources": ["01-feynman"],
+      "paths": {
+        "en": "docs/concept/didactic/feynman-rules.md",
+        "de": "docs/concept/didactic/feynman-rules.de.md"
+      },
+      "titles": {
+        "en": "Feynman Technique for Learning",
+        "de": "Feynman-Methode für verstehendes Lernen"
+      },
+      "navLabels": {
+        "en": "§1 Feynman",
+        "de": "§1 Feynman"
+      }
+    },
+    {
+      "id": "frontier-autopilot",
+      "sources": ["02-frontier-autopilot"],
+      "paths": {
+        "en": "docs/concept/didactic/frontier-goal-selection-strategies-autopilot.md",
+        "de": "docs/concept/didactic/frontier-goal-selection-strategies-autopilot.de.md"
+      },
+      "titles": {
+        "en": "Frontier Goal Selection Strategies & Autopilot",
+        "de": "Frontier-Auswahlstrategien und Autopilot"
+      },
+      "navLabels": {
+        "en": "§2 Autopilot",
+        "de": "§2 Autopilot"
+      }
+    },
+    {
+      "id": "learning-velocity",
+      "sources": ["03-learning-velocity"],
+      "paths": {
+        "en": "docs/concept/didactic/learning-velocity.md",
+        "de": "docs/concept/didactic/learning-velocity.de.md"
+      },
+      "titles": {
+        "en": "Learning Velocity (Concept)",
+        "de": "Lerngeschwindigkeit (Learning Velocity)"
+      },
+      "navLabels": {
+        "en": "§3 Velocity",
+        "de": "§3 Lerngeschwindigkeit"
+      }
+    },
+    {
+      "id": "unified-learning-plan-status",
+      "sources": ["04-unified-learning-plan-status"],
+      "paths": {
+        "de": "docs/concept/didactic/unified-learning-plan-status.md",
+        "en": "docs/concept/didactic/unified-learning-plan-status.en.md"
+      },
+      "titles": {
+        "de": "Einheitlicher, backendgesteuerter Lernplanstatus",
+        "en": "Unified Backend-Driven Learning-Plan Status"
+      },
+      "navLabels": {
+        "en": "§4 Plan Status",
+        "de": "§4 Lernplanstatus"
+      }
+    },
+    {
+      "id": "teacher-goal-book-time-planning",
+      "sources": ["05-teacher-goal-book-planning"],
+      "paths": {
+        "de": "docs/concept/skill-graph/teacher-goal-book-time-planning.md",
+        "en": "docs/concept/skill-graph/teacher-goal-book-time-planning.en.md"
+      },
+      "titles": {
+        "de": "Lernzielbuch und lokale Zeitplanung für Lehrkräfte",
+        "en": "Learning-Goal Book and Local Time Planning for Teachers"
+      },
+      "navLabels": {
+        "en": "§5 Goal-Book Planning",
+        "de": "§5 Lernzielbuch-Planung"
+      }
+    },
+    {
+      "id": "exam-preparation-planning",
+      "sources": ["06-exam-preparation-planning"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/exam-preparation-planning.md",
+        "en": "docs/concept/runtime-workflows/exam-preparation-planning.en.md"
+      },
+      "titles": {
+        "de": "Klausurstoff, Aufgabenabdeckung und Vorbereitung",
+        "en": "Exam Material, Task Coverage, and Preparation"
+      },
+      "navLabels": {
+        "en": "§6 Exam Prep",
+        "de": "§6 Klausurvorbereitung"
+      }
+    },
+    {
+      "id": "course-plan-update-continuity",
+      "sources": ["07-course-plan-update-continuity"],
+      "paths": {
+        "de": "docs/concept/runtime-workflows/course-plan-update-continuity.md",
+        "en": "docs/concept/runtime-workflows/course-plan-update-continuity.en.md"
+      },
+      "titles": {
+        "de": "Verlässliche Kurspläne bei Curriculum-Updates",
+        "en": "Reliable Course Plans Across Curriculum Updates"
+      },
+      "navLabels": {
+        "en": "§7 Update Continuity",
+        "de": "§7 Update-Kontinuität"
+      }
+    },
+    {
+      "id": "existing-learner-teacher-view",
+      "sources": ["08-existing-learner-teacher-view"],
+      "paths": {
+        "en": "docs/concept/runtime-workflows/existing-learner-teacher-view.md",
+        "de": "docs/concept/runtime-workflows/existing-learner-teacher-view.de.md"
+      },
+      "titles": {
+        "en": "Existing-Learner Teacher View by SkillPilot ID",
+        "de": "Lehrkraftansicht für bestehende Lernende per SkillPilot-ID"
+      },
+      "navLabels": {
+        "en": "§8 Teacher View",
+        "de": "§8 Lehrkraftansicht"
+      }
+    }
+  ]
+}
