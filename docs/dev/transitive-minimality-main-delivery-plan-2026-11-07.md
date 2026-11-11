@@ -20,7 +20,7 @@ der geprüfte native V8-Adapter integriert. Der tatsächliche öffentliche
 Bestandsbeweis, 761 vollständige native Einzelfachkonfigurationen, die echten
 Ausgabe-Verlustgegenfälle sowie der reguläre Meilensteinlauf einschließlich
 aller zehn unveränderten Floors bestehen lokal. Die genaue
-[Biologie-Prüfgrenze](../../qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
+[Biologie-Prüfgrenze](https://github.com/enpasos/skillpilot/blob/1d63d2b18cf081d85827c80a37257c989a71dd87/qa-artifacts/ci-contract-audit/2026-11-10/biology-assessment-basis/README.md)
 trennt diese Ergebnisse von der ausstehenden vollständigen Remote-CI und
 Main-Abnahme. Der reguläre Meilensteinlauf setzt G17 noch nicht als neue
 Statusvoraussetzung durch.
@@ -28,19 +28,35 @@ Statusvoraussetzung durch.
 Während der Biologie-Remote-CI folgt der getrennte Wirtschafts-Datenbatch im
 sichtbaren IDE-Branch `fix/g17-economics-atomic-prerequisites-v8-data`. Er baut
 auf dem gesicherten Biologiestand `1d63d2b18c` auf und wird nach Biologie
-separat geliefert. Der [Wirtschafts-Zwischenstand](../../qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
+separat geliefert. Der [Wirtschafts-Zwischenstand](https://github.com/enpasos/skillpilot/blob/656dfd3bf8/qa-artifacts/ci-contract-audit/2026-11-11/g17-economics-atomic-prerequisites/README.md)
 ist installiert, aber noch nicht abgenommen; er benötigt keine neue
 Proofversion oder fachliche Entscheidung.
 
-Die nächsten Schritte schließen vorhandene Lieferungen ab. Pro Datenlieferung
-laufen zuerst gezielte Gegenproben, dann die vollständige erforderliche
-Scopeprüfung am stabilen Integrationsstand. Bestandene unveränderte lokale
-Prüfungen werden nur bei
-neuen Befunden oder relevanten Änderungen wiederholt. Neue Konzeptvarianten,
-Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen. Korrekturen
-werden nach der passenden gezielten Prüfung sofort gesichert und gepusht;
-laufende CI ist kein Anlass, einen bekannten Fehler liegenzulassen. Sämtliche
-Pflichtgates und die vollständige G17-/Meilensteinabnahme bleiben erforderlich.
+Die nächsten Schritte schließen vorhandene Lieferungen ab. Astra hat den
+beschleunigten Ablauf am 11. November nochmals geprüft:
+
+- Der reguläre CQR-Lauf enthält bereits die öffentliche Beweisprüfung. Bei
+  gleichen Eingaben entfällt der zusätzliche Standalone-Loader; er dient nur
+  noch der gezielten Fehlerdiagnose. Benötigte Statusberichte werden einmal
+  erzeugt, ohne anschließenden identischen Kontrolllauf.
+- Fachbezogene Gegenproben laufen zuerst. Erforderliche native Prüfungen und
+  CQR/Proof dürfen danach am selben unveränderten Datenstand parallel laufen.
+  Zusätzliche lokale Vollsuiten entfallen, wenn keine konkrete Änderung oder
+  kein neuer Fehler sie begründet. Alle obligatorischen CI-Prüfungen bleiben.
+- Während der Remote-CI wird die nächste Fachlieferung vorbereitet. Fertige
+  Reparaturen werden nach passender gezielter Prüfung sofort gepusht. Eine
+  laufende CI ist weder Voraussetzung für den nächsten Commit noch Anlass,
+  einen bekannten Fehler liegenzulassen.
+- Reviews betreffen die neue Änderung; unveränderte Proofstufen und geprüfte
+  Adapter werden nicht erneut konzeptionell aufgerollt. Neue Konzeptvarianten,
+  Performanceprojekte und Vorbereitungs-PRs werden nicht begonnen.
+
+Die Lieferfolge ist Biologie, Wirtschaft, Latein, Geschichte, Informatik und
+Politik und Wirtschaft, jeweils als getrennte Fachlieferung. Danach wird das
+zentrale G17-Gate in der Standard-Meilensteinprüfung aktiviert. Die endgültige
+Abnahme umfasst alle 21 Kataloge, die zehn unveränderten Mindeststände und die
+erfolgreiche vollständige CI auf dem endgültigen Main-Stand. Das Überlappen
+von Vorbereitung und CI ersetzt keinen dieser Nachweise.
 
 **Verbindliche Fachreihenfolge (Product Owner, 9. November 2026):**
 **Physik → Chemie → Biologie → übrige geschützte Fächer.** Nach Physik wird
