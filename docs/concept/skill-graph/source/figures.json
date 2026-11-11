@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "figures": [
+    {
+      "id": "fig:title",
+      "texHeight": ".16\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "00-title-skill-graph.de.png",
+        "en": "00-title-skill-graph.en.png"
+      },
+      "shortTitle": {
+        "de": "Titelgrafik: Gruppierung und Voraussetzung",
+        "en": "Title diagram: containment and prerequisite"
+      },
+      "alt": {
+        "de": "Fachlicher Cluster enthält Grundlage a und Anwendung b; Anwendung b setzt Grundlage a über requires voraus.",
+        "en": "Subject cluster contains foundation a and application b; application b requires foundation a."
+      },
+      "caption": {
+        "de": "Gruppierung (`contains`), Lernvoraussetzung (`requires`) und Abschlussnachweis sind unterschiedliche Aussagen.",
+        "en": "Grouping (`contains`), prerequisite (`requires`), and completion evidence are distinct claims."
+      }
+    },
+    {
+      "id": "fig:overview",
+      "texHeight": ".42\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "01-skill-graph-overview.png",
+        "en": "01-skill-graph-overview.png"
+      },
+      "shortTitle": {
+        "de": "Ziele und zwei Kantenarten",
+        "en": "Goals and two relation kinds"
+      },
+      "alt": {
+        "de": "Mechanics enthält Kinematics und Dynamics; graue Pfeile zeigen contains-Kinder, blaue Pfeile zeigen direkte requires-Voraussetzungen.",
+        "en": "Mechanics contains Kinematics and Dynamics; grey arrows point to contained children and blue arrows point to direct prerequisites."
+      },
+      "caption": {
+        "de": "Zwei Beziehungen in einem Graphen. Graue Pfeile gliedern (`contains`), blaue zeigen auf Voraussetzungen (`requires`). *Velocity* benötigt *Vectors*; *Newton's Second Law* benötigt sowohl *Forces* als auch *Acceleration*. Die Farben der Knoten sind hier keine Lernzustände. Dieses Mechanik-Beispiel kehrt in den englischen Originalabbildungen bis Abbildung~@ref{fig:filters} wieder.",
+        "en": "Two relations in one skill graph. Grey arrows group children (`contains`); blue arrows point to prerequisites (`requires`). *Velocity* requires *Vectors*; *Newton's Second Law* requires both *Forces* and *Acceleration*. Node colours here do not represent learner states. This Mechanics example recurs across the original illustrations up to Figure~@ref{fig:filters}."
+      }
+    },
+    {
+      "id": "fig:contains",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "02-contains-relation.png",
+        "en": "02-contains-relation.png"
+      },
+      "shortTitle": {
+        "de": "Direkte und indirekte Zugehörigkeit",
+        "en": "Direct and indirect containment"
+      },
+      "alt": {
+        "de": "Sieben contains-Pfeile von Eltern zu Kindern; der Pfad Mechanics nach Kinematics nach Velocity ist türkis hervorgehoben.",
+        "en": "Seven contains arrows from parents to children; the two-edge path Mechanics to Kinematics to Velocity is highlighted in teal."
+      },
+      "caption": {
+        "de": "Direkte und indirekte Zugehörigkeit. Der türkis hervorgehobene Pfad besteht aus zwei vorhandenen `contains`-Kanten; er ist keine dritte Kantenart. *Mechanics* ist deshalb auch Vorfahr von *Velocity*.",
+        "en": "Direct and indirect containment. The teal-highlighted path consists of two existing `contains` edges rather than a third relation kind. *Mechanics* is therefore an ancestor of *Velocity*."
+      }
+    },
+    {
+      "id": "fig:requires",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "03-direct-requires.png",
+        "en": "03-direct-requires.png"
+      },
+      "shortTitle": {
+        "de": "Direkte Voraussetzungen",
+        "en": "Direct prerequisites"
+      },
+      "alt": {
+        "de": "Vier durchgezogene blaue requires-Pfeile zwischen Velocity, Vectors, Acceleration, Forces und Newton's Second Law.",
+        "en": "Four solid blue requires arrows pointing from Velocity to Vectors, Acceleration to Velocity, and Newton's Second Law to Acceleration and Forces."
+      },
+      "caption": {
+        "de": "Direkte Voraussetzungen. Auch der gebogene Pfeil ist eine direkte Kante. Die Kette von *Acceleration* über *Velocity* zu *Vectors* ergibt transitive Erreichbarkeit, keine Containment-Vererbung.",
+        "en": "Direct prerequisites. The curved arrow is a direct edge just like the straight arrows. The chain from *Acceleration* via *Velocity* to *Vectors* yields transitive reachability, not containment inheritance."
+      }
+    },
+    {
+      "id": "fig:inheritance",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "04-effective-requires.png",
+        "en": "04-effective-requires.png"
+      },
+      "shortTitle": {
+        "de": "Vom Cluster geerbte Anforderungen",
+        "en": "Prerequisites inherited from a cluster"
+      },
+      "alt": {
+        "de": "Kinematics enthält Velocity und Acceleration und benötigt Vectors direkt; beide Kinder erben gestrichelt die Anforderung an Vectors.",
+        "en": "Kinematics contains Velocity and Acceleration and directly requires Vectors; two dashed inherited arrows run from Velocity and Acceleration to Vectors."
+      },
+      "caption": {
+        "de": "Beispiel aus dem Übergangsbestand: eine vererbte Clusteranforderung. *Vectors* liegt in diesem Beispiel außerhalb von *Kinematics*. Wäre es auch darin enthalten, erbte es die Anforderung an sich selbst. Durchgezogen heißt direkt verfasst, gestrichelt heißt geerbt.",
+        "en": "Transition-data example: a prerequisite inherited from a cluster. *Vectors* lies outside *Kinematics* in this example; if it were contained inside, it would inherit a self-requirement. Solid arrows are directly authored; dashed arrows are inherited."
+      }
+    },
+    {
+      "id": "fig:cycles",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "05-validity-and-cycles.png",
+        "en": "05-validity-and-cycles.png"
+      },
+      "shortTitle": {
+        "de": "Effektive Zyklen durch Vererbung",
+        "en": "Effective cycles created by inheritance"
+      },
+      "alt": {
+        "de": "Zwei Teilbilder mit Cluster A, Kind B und Knoten X; rechts erzeugt X nach B zusammen mit der geerbten Kante B nach X einen Zyklus.",
+        "en": "Two panels with cluster A containing B and requiring X; in the right panel, X directly requires B, forming the effective cycle B to X to B."
+      },
+      "caption": {
+        "de": "Direkte Azyklizität genügt nicht. Der Cluster $\\nd{A}$ enthält $\\nd{B}$ und benötigt $\\nd{X}$; daraus folgt die geerbte Kante $\\nd{B}\\to\\nd{X}$. Kommt $\\nd{X}\\to\\nd{B}$ hinzu, entsteht der effektive Zyklus $\\nd{B}\\to\\nd{X}\\to\\nd{B}$. Der Beispielknoten $\\nd{A}$ ist hier ein Cluster, nicht die Menge $A$ der atomaren Ziele.",
+        "en": "Direct acyclicity is not enough. Cluster $\\nd{A}$ contains $\\nd{B}$ and requires $\\nd{X}$, inducing the inherited edge $\\nd{B}\\to\\nd{X}$. Adding $\\nd{X}\\to\\nd{B}$ creates the effective cycle $\\nd{B}\\to\\nd{X}\\to\\nd{B}$. Example node $\\nd{A}$ here denotes a cluster, not the set $A$ of atomic goals."
+      }
+    },
+    {
+      "id": "fig:frontier",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "06-available-next-goals.png",
+        "en": "06-available-next-goals.png"
+      },
+      "shortTitle": {
+        "de": "Die nächsten verfügbaren Ziele",
+        "en": "Available next goals (frontier)"
+      },
+      "alt": {
+        "de": "Mechanik-Hierarchie mit beherrschten Knoten Vectors und Forces; Velocity ist als einziges atomares Ziel verfügbar.",
+        "en": "Mechanics hierarchy with Vectors and Forces mastered; Velocity is available next while Acceleration and Newton's Second Law remain blocked."
+      },
+      "caption": {
+        "de": "Mit $\\Meff=\\{\\text{Vectors},\\text{Forces}\\}$ ist nur *Velocity* als nächstes verfügbar. *Acceleration* wartet auf *Velocity*; *Newton's Second Law* zusätzlich auf *Acceleration*. Die Cluster sind keine direkt auszuwählenden atomaren Lernschritte. Die Bildbeschriftung $M_A$ bezeichnet die ausdrückliche Menge $M$, die hier mit $\\Meff$ übereinstimmt.",
+        "en": "With $\\Meff=\\{\\text{Vectors},\\text{Forces}\\}$, only *Velocity* is available next. *Acceleration* waits for *Velocity*; *Newton's Second Law* additionally waits for *Acceleration*. Clusters are not directly selectable atomic learning steps. The figure label $M_A$ denotes the explicit set $M$, which coincides here with $\\Meff$."
+      }
+    },
+    {
+      "id": "fig:filters",
+      "texHeight": ".48\\textheight",
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "07-filter-modes.png",
+        "en": "07-filter-modes.png"
+      },
+      "shortTitle": {
+        "de": "Normalmodus und strikter Modus",
+        "en": "Optimistic (normal) mode and strict mode"
+      },
+      "alt": {
+        "de": "Zwei Teilbilder mit identischem Fokus Kinematics, Velocity, Acceleration und außerhalb liegendem Vectors bei leerem Lernstand.",
+        "en": "Two panels with identical focus scope Kinematics, Velocity, Acceleration and outside-scope Vectors at empty mastery."
+      },
+      "caption": {
+        "de": "Identischer Fokus, unterschiedlicher Prüfbereich. *Vectors* liegt außerhalb; $\\Meff=\\varnothing$. Der Normalmodus ignoriert die orange markierten Anforderungen und erlaubt *Velocity*; der strikte Modus lässt keines der beiden Atome zu. *Filter scope F* bezeichnet den Fokus, *optimistic* den Normalmodus und *pessimistic / strict* den strikten Modus. Die Bildverweise 11.3 und 11.4 nennen Abschnitte der englischen Ursprungsspezifikation.",
+        "en": "Identical focus, different prerequisite check domain. *Vectors* lies outside the scope; $\\Meff=\\varnothing$. Normal (*optimistic*) mode ignores the orange outside-scope requirements and unlocks *Velocity*; *pessimistic / strict* mode admits neither atomic goal. *Filter scope F* denotes the focus scope. Labels 11.3 and 11.4 inside the illustration refer to historical section numbers of the original draft."
+      }
+    },
+    {
+      "id": "fig:atomic-expansion",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "13-atomic-expansion.de.png",
+        "en": "13-atomic-expansion.en.png"
+      },
+      "shortTitle": {
+        "de": "Atomare Expansion vor der Hüllenbildung",
+        "en": "Atomic expansion before transitive closure"
+      },
+      "alt": {
+        "de": "Links verfasster Graph mit g nach Cluster K (Kinder a, b) und a nach c; rechts die abgeleitete atomare Relation g nach a, g nach b und a nach c.",
+        "en": "Left: authored graph with g requiring cluster K (children a, b) and a requiring c; right: derived atomic relation g to a, g to b, and a to c."
+      },
+      "caption": {
+        "de": "Aus $\\nd{g}\\to\\nd{K}$ und $\\Atoms(\\nd{K})=\\{\\nd{a},\\nd{b}\\}$ entstehen die atomaren Paare $(\\nd{g},\\nd{a})$ und $(\\nd{g},\\nd{b})$. Weil außerdem $\\nd{a}\\to\\nd{c}$ gilt, enthält die erst danach gebildete Hülle auch $(\\nd{g},\\nd{c})$. Der Beispielknoten $\\nd{K}$ ist ein einzelner Cluster, nicht die Menge $K$ aller Cluster. Die rechte Darstellung zeigt die abgeleitete atomare Relation, keine zusätzlich verfassten Autorenkanten.",
+        "en": "From $\\nd{g}\\to\\nd{K}$ and $\\Atoms(\\nd{K})=\\{\\nd{a},\\nd{b}\\}$, atomic expansion yields $(\\nd{g},\\nd{a})$ and $(\\nd{g},\\nd{b})$. Because $\\nd{a}\\to\\nd{c}$ also holds, forming the transitive closure afterwards includes $(\\nd{g},\\nd{c})$. Example node $\\nd{K}$ denotes one cluster, not the set $K$ of all clusters. The right panel shows the derived atomic relation rather than newly authored edges."
+      }
+    },
+    {
+      "id": "fig:inherited-redundancy",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "14-inherited-redundancy.de.png",
+        "en": "14-inherited-redundancy.en.png"
+      },
+      "shortTitle": {
+        "de": "Übergangsdiagnose: geerbte Redundanz",
+        "en": "Transition diagnostic: inherited redundancy"
+      },
+      "alt": {
+        "de": "Links Übergangsgraph mit Cluster k (Kind b), k nach a, g nach b und oranger Kante e = g nach a; rechts Testgraph ohne e mit verbleibendem geerbtem Pfad g nach b nach a.",
+        "en": "Left: transition graph with cluster k (child b), k to a, g to b, and orange edge e = g to a; right: test graph without e where inherited path g to b to a remains."
+      },
+      "caption": {
+        "de": "Der Cluster $\\nd{k}$ enthält $\\nd{b}$ und benötigt $\\nd{a}$; deshalb erbt $\\nd{b}$ die Anforderung $\\nd{b}\\to\\nd{a}$. Entfernt man die verfasste Kante $\\nd{e}=(\\nd{g},\\nd{a})$, bleibt nach erneuter Vererbung der effektive Pfad $\\nd{g}\\to\\nd{b}\\to\\nd{a}$. Das ist eine Redundanzdiagnose des Übergangsgraphen, kein Auftrag, $\\nd{e}$ zugunsten von $\\nd{k}\\to\\nd{a}$ zu löschen. Zuerst ist die vollständige atomare Abdeckung von $\\nd{k}\\to\\nd{a}$ zu materialisieren, dann die Clusterkante zu entfernen; erst danach entscheidet ein vollständig atomarer Ersatzpfad über die Reduktion von $\\nd{e}$. Nur die geerbte Kante ist gestrichelt.",
+        "en": "Cluster $\\nd{k}$ contains $\\nd{b}$ and requires $\\nd{a}$, so $\\nd{b}$ inherits $\\nd{b}\\to\\nd{a}$. Removing the authored edge $\\nd{e}=(\\nd{g},\\nd{a})$ and recomputing inheritance leaves the effective path $\\nd{g}\\to\\nd{b}\\to\\nd{a}$. This is a redundancy diagnostic on transition data, never an instruction to delete $\\nd{e}$ in favour of $\\nd{k}\\to\\nd{a}$. First materialize the full atomic prerequisite coverage of $\\nd{k}\\to\\nd{a}$, then remove the cluster edge; only afterwards does a purely atomic replacement path decide whether $\\nd{e}$ reduces. Only the inherited edge is dashed."
+      }
+    },
+    {
+      "id": "fig:recursive-unit",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "16-recursive-learning-unit.de.png",
+        "en": "16-recursive-learning-unit.en.png"
+      },
+      "shortTitle": {
+        "de": "Mechanik als rekursive Lerneinheit",
+        "en": "Mechanics as a recursive learning unit"
+      },
+      "alt": {
+        "de": "Zwei Teilbilder für die Elterneinheit Mechanik mit Kindeinheiten Kinematik und Dynamik: links Kinder fertig und Synthese offen; rechts nur Synthese bestanden.",
+        "en": "Two panels for parent unit Mechanics with child units Kinematics and Dynamics: left with completed children and open synthesis; right with only synthesis passed."
+      },
+      "caption": {
+        "de": "Illustrative Hierarchie mit eigenständigen Kindverträgen. Fall~A (links): Beide Kinder sind vollständig abgeschlossen, ihre Kompetenzen global anerkannt; die offene Syntheseprüfung $\\nd{q_S}$ hält allein den Elternabschluss offen. Fall~B (rechts): Nur die Elternprüfung ist bestanden. Sie erzeugt keine Kindprüfungen, keinen Kartenabruf und keine Anerkennung der Kindkompetenzen. Graue Pfeile zeigen ausschließlich die Einheitshierarchie; die fachlichen Kanten stehen getrennt darunter. Im Bild sind $\\nd{q_K}$, $\\nd{q_D}$ und $\\nd{q_S}$ Prüfungsziele, $\\nd{k_K}$ ist ein Memorierziel, und $\\nd{a}$, $\\nd{b}$, $\\nd{d}$ sind Inhaltsziele. „Kind-I“ und „Eltern-I“ meinen die implizite Menge $I_U$ der jeweiligen Einheit.",
+        "en": "Illustrative hierarchy with independent child contracts. Case~A (left): both child units are complete and their skills are globally recognized; only the open synthesis assessment $\\nd{q_S}$ keeps parent completion open. Case~B (right): only the parent assessment is passed; it satisfies neither child assessments nor memory recall nor child-unit recognition. Grey arrows denote the unit hierarchy alone; subject `requires` edges are listed separately underneath. Here $\\nd{q_K}$, $\\nd{q_D}$, and $\\nd{q_S}$ are assessment goals, $\\nd{k_K}$ is a memory goal, and $\\nd{a}$, $\\nd{b}$, $\\nd{d}$ are content goals. “Child $I$” and “Parent $I$” denote each unit's implicit set $I_U$."
+      }
+    },
+    {
+      "id": "fig:levels",
+      "texHeight": null,
+      "texWidth": ".85\\linewidth",
+      "asset": {
+        "de": "12-calendar-planning.de.png",
+        "en": "12-calendar-planning.en.png"
+      },
+      "shortTitle": {
+        "de": "Optionale kalenderbezogene Planungsstufen",
+        "en": "Optional calendar-based planning periods"
+      },
+      "alt": {
+        "de": "Eintrittsbasis gefolgt von Zeitraum 1, Zeitraum 2 und Zeitraum 3 als optionale zeitliche Planung.",
+        "en": "Entry baseline followed by Period 1, Period 2, and Period 3 as an optional calendar schedule."
+      },
+      "caption": {
+        "de": "Die zeitliche Reihenfolge ist keine rekursive Einheitshierarchie. Pfeile sind keine `requires`-Kanten und führen keine Zugangssperren ein.",
+        "en": "Calendar ordering is not a recursive learning-unit hierarchy. Arrows are neither `requires` edges nor technical entry locks."
+      }
+    },
+    {
+      "id": "fig:waivers",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "08-transitive-demand.de.png",
+        "en": "08-transitive-demand.en.png"
+      },
+      "shortTitle": {
+        "de": "Transitive Nachfrage trotz ausdrücklich bestandenem Zwischenziel",
+        "en": "Transitive demand across an explicitly mastered intermediate goal"
+      },
+      "alt": {
+        "de": "Zwei unabhängige Ausgangslagen für Q nach B nach A: oben nur B bestanden, unten Q bestanden und A sowie B implizit anerkannt.",
+        "en": "Two independent starting states for Q requiring B requiring A: top with only B mastered, bottom with Q passed and A, B implicitly recognized."
+      },
+      "caption": {
+        "de": "Zwei unabhängige Ausgangslagen für $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$: Mit $M=\\{\\nd{B}\\}$ bleibt $\\nd{A}$ offen; mit $M=\\{\\nd{Q}\\}$ trägt $\\nd{Q}$ die implizite Anwendung von $\\nd{A}$ und $\\nd{B}$. Dies ist keine zeitliche Folge: Ein schon ausdrücklich bestandenes $\\nd{B}$ bliebe beim späteren Bestehen von $\\nd{Q}$ in $M$. Die direkte Kante $\\nd{Q}\\to\\nd{A}$ wäre redundant.",
+        "en": "Two independent starting states for $\\nd{Q}\\to\\nd{B}\\to\\nd{A}$: with $M=\\{\\nd{B}\\}$, $\\nd{A}$ remains open; with $M=\\{\\nd{Q}\\}$, $\\nd{Q}$ carries implicit application of $\\nd{A}$ and $\\nd{B}$. This is not a temporal sequence: an already explicitly mastered $\\nd{B}$ would stay in $M$ when $\\nd{Q}$ is passed later. A direct edge $\\nd{Q}\\to\\nd{A}$ would be redundant."
+      }
+    },
+    {
+      "id": "fig:local-recognition",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "09-local-recognition.de.png",
+        "en": "09-local-recognition.en.png"
+      },
+      "shortTitle": {
+        "de": "Lokale Anerkennung bleibt für spätere Lerneinheiten wirksam",
+        "en": "Local recognition remains globally effective for later learning units"
+      },
+      "alt": {
+        "de": "Lokaler Vertrag von U1 mit bestandener Prüfung q1 und anerkannten Zielen a, b; rechts spätere Einheit U2 mit offener Prüfung q2.",
+        "en": "Local contract of U1 with passed assessment q1 and recognized goals a, b; right panel shows later unit U2 with open assessment q2."
+      },
+      "caption": {
+        "de": "$\\nd{U1}$ erkennt $\\nd{a}$ und $\\nd{b}$ nach seinem eigenen gültigen Vertrag an. Die offene spätere Prüfung $\\nd{q_2}$ verhindert diese Anerkennung nicht. Eine neue Anzeige oder Planwahl löscht den weiter auswertbaren Vertrag von $\\nd{U1}$ nicht.",
+        "en": "$\\nd{U1}$ recognizes $\\nd{a}$ and $\\nd{b}$ under its own valid contract. The open later assessment $\\nd{q_2}$ does not block that recognition. Switching focus or plans does not erase the still-evaluable contract of $\\nd{U1}$."
+      }
+    },
+    {
+      "id": "fig:protected",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "10-protected-support.de.png",
+        "en": "10-protected-support.en.png"
+      },
+      "shortTitle": {
+        "de": "Geschützte Memorierziele und externe Unterstützung",
+        "en": "Protected memory goals and external support"
+      },
+      "alt": {
+        "de": "Eigene Ziele Own(U) = {q, a, k} mit bestandener Prüfung q, anerkanntem a, offenem Memorierziel k sowie externem Memorierziel h außerhalb von Own(U).",
+        "en": "Own goals Own(U) = {q, a, k} with passed assessment q, recognized a, open memory goal k, plus external support memory goal h outside Own(U)."
+      },
+      "caption": {
+        "de": "Die Prüfung $\\nd{q}$ ist ausdrücklich bestanden und trägt die Anwendung von $\\nd{a}$. Das unabhängige Memorierziel $\\nd{k}$ bleibt offen und blockiert den ganzen Einheitsabschluss. Die Unterstützung $\\nd{h}$ außerhalb des Zielumfangs wird nicht anerkannt.",
+        "en": "Assessment $\\nd{q}$ is explicitly passed and carries application of $\\nd{a}$. The independent memory goal $\\nd{k}$ remains open and blocks full unit completion. External support $\\nd{h}$ outside $\\Own(U)$ receives no recognition."
+      }
+    },
+    {
+      "id": "fig:shared-assessments",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "15-shared-local-assessments.de.png",
+        "en": "15-shared-local-assessments.en.png"
+      },
+      "shortTitle": {
+        "de": "Zwei lokale Prüfungen mit gemeinsamer Grundlage",
+        "en": "Two local assessments sharing a common foundation"
+      },
+      "alt": {
+        "de": "Links nur Q1 bestanden (A wegen Q2 weiter offen); rechts Q1 und Q2 bestanden (A implizit global beherrscht).",
+        "en": "Left: only Q1 passed (A remains open because Q2 is open); right: both Q1 and Q2 passed (A becomes implicitly mastered globally)."
+      },
+      "caption": {
+        "de": "$\\nd{Q_1}$ und $\\nd{Q_2}$ benötigen im selben gültigen lokalen Vertrag $\\nd{A}$. Nach $\\nd{Q_1}$ bleibt $\\nd{A}$ wegen der offenen $\\nd{Q_2}$ in der offenen Nachfrage. Erst nach beiden Prüfungen wird $\\nd{A}$ implizit global beherrscht. Der ausdrückliche Erfolg von $\\nd{Q_1}$ bleibt dabei erhalten; es gibt hier keine weiteren geschützten Ziele.",
+        "en": "$\\nd{Q_1}$ and $\\nd{Q_2}$ both require $\\nd{A}$ in the same valid local contract. After $\\nd{Q_1}$ alone, $\\nd{A}$ stays in open demand because $\\nd{Q_2}$ is still open. Only after both assessments are passed does $\\nd{A}$ become implicitly mastered globally. The explicit pass of $\\nd{Q_1}$ is preserved; there are no further protected goals here."
+      }
+    },
+    {
+      "id": "fig:period",
+      "texHeight": null,
+      "texWidth": "\\linewidth",
+      "asset": {
+        "de": "11-plan-period.de.png",
+        "en": "11-plan-period.en.png"
+      },
+      "shortTitle": {
+        "de": "Gesamtstand und datierte Periodenleistung",
+        "en": "Total plan progress and dated period completions"
+      },
+      "alt": {
+        "de": "Gesamtplan mit 10 Ziel-IDs (4 explizit, 3 implizit, 3 offen) und laufende Periode mit Pensum 3 und 2 datierten expliziten Abschlüssen.",
+        "en": "Total plan of 10 goal IDs (4 explicit, 3 implicit, 3 open) and current period with quota 3 and 2 dated explicit completions."
+      },
+      "caption": {
+        "de": "Gesamtstand und Periodenleistung haben verschiedene Zähler. Im Beispiel sind 7 von 10 Planzielen effektiv beherrscht, 4 davon ausdrücklich und 3 implizit. Die laufende Periode zählt nur die 2 datierten ausdrücklichen Abschlüsse gegen ihr Pensum von 3 Zielen. Die drei impliziten Beiträge erhöhen den Gesamt-IST, erzeugen aber keine datierten expliziten Abschlussereignisse in der laufenden Periode.",
+        "en": "Total plan progress and period completions use distinct counters. In the example, 7 of 10 planned goals are effectively mastered (4 explicit and 3 implicit). The current period counts only the 2 dated explicit completions against its quota of 3 goals. The three implicit contributions raise cumulative progress without fabricating dated explicit completion events inside the current period."
+      }
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "license": {
+    "technicalProseAndCode": "Apache-2.0",
+    "didacticFigures": "CC-BY-4.0"
+  },
+  "documentDate": "2026-11-10",
+  "sourceDateEpoch": "1794268800",
+  "languages": ["de", "en"],
+  "pdf": {
+    "de": {
+      "outputPaths": [
+        "docs/concept/skill-graph/skillpilot-graph-definition.pdf",
+        "docs/concept/skill-graph/skillpilot-graph-definition.de.pdf"
+      ],
+      "babel": "ngerman",
+      "kicker": "SKILLPILOT · TECHNISCHE REFERENZ",
+      "title": "Die Graph-Definition\nvon SkillPilot",
+      "pdfTitle": "Die Graph-Definition von SkillPilot",
+      "subtitle": "Struktur, Mathematik, rekursive Lerneinheiten\nund implizite Beherrschung",
+      "pdfSubject": "Graphsemantik, rekursive Lerneinheiten, Lernzustand und implizite Beherrschung",
+      "pdfKeywords": "SkillPilot, Skill-Graph, Lerneinheit, learning unit, Frontier, Assessment, Curriculum",
+      "runningHeadLeft": "SkillPilot · Graph-Definition",
+      "tocHeader": "Inhalt und Abbildungen",
+      "sourcesLabel": "Quellen.",
+      "copyrightFooter": [
+        "SkillPilot · enpasos -- Enterprise Patterns & Solutions GmbH",
+        "Technischer Text und Build-Werkzeuge: Apache-2.0.",
+        "Didaktische Abbildungen: projektbezogene Inhaltslizenz CC BY 4.0; siehe Anhang."
+      ],
+      "ampelBadges": {
+        "hart": "HART",
+        "teil": "TEIL",
+        "offen": "OFFEN",
+        "opt": "OPT/DOK"
+      },
+      "partHeaders": {
+        "01-core": "Formaler Kern",
+        "02-context": "Kontext, Sichten, Zieltypen und Qualität",
+        "03-learning-units": "Rekursive Lerneinheiten",
+        "04-planning": "Optionale Erwerbs- und Zeitplanung",
+        "05-assessment": "Implizite Beherrschung",
+        "06-appendices": "Anhänge"
+      }
+    },
+    "en": {
+      "outputPaths": [
+        "docs/concept/skill-graph/skillpilot-graph-definition.en.pdf"
+      ],
+      "babel": "english",
+      "kicker": "SKILLPILOT · TECHNICAL REFERENCE",
+      "title": "The SkillPilot\nGraph Definition",
+      "pdfTitle": "The SkillPilot Graph Definition",
+      "subtitle": "Structure, Mathematics, Recursive Learning Units,\nand Implicit Mastery",
+      "pdfSubject": "Graph semantics, recursive learning units, learner state, and implicit mastery",
+      "pdfKeywords": "SkillPilot, skill graph, learning unit, Lerneinheit, frontier, assessment, curriculum",
+      "runningHeadLeft": "SkillPilot · Graph Definition",
+      "tocHeader": "Contents and Figures",
+      "sourcesLabel": "Sources.",
+      "copyrightFooter": [
+        "SkillPilot · enpasos -- Enterprise Patterns & Solutions GmbH",
+        "Technical specification and build tooling: Apache-2.0.",
+        "Didactic illustrations: project content license CC BY 4.0; see Appendix."
+      ],
+      "ampelBadges": {
+        "hart": "HARD",
+        "teil": "PARTIAL",
+        "offen": "OPEN",
+        "opt": "OPT/DOC"
+      },
+      "partHeaders": {
+        "01-core": "Formal Core",
+        "02-context": "Context, Views, Goal Types, and Quality",
+        "03-learning-units": "Recursive Learning Units",
+        "04-planning": "Optional Acquisition and Time Planning",
+        "05-assessment": "Implicit Mastery",
+        "06-appendices": "Appendices"
+      }
+    }
+  },
+  "chapters": [
+    "00-frontmatter",
+    "01-core",
+    "02-context",
+    "03-learning-units",
+    "04-planning",
+    "05-assessment",
+    "06-appendices"
+  ],
+  "webPages": [
+    {
+      "id": "graph-definition",
+      "sources": ["00-frontmatter", "01-core"],
+      "includePlanningCrossRefStub": true,
+      "paths": {
+        "en": "docs/concept/skill-graph/graph-definition.md",
+        "de": "docs/concept/skill-graph/graph-definition.de.md"
+      },
+      "titles": {
+        "en": "SkillPilot Graph Definition — Formal Core (§§1–5)",
+        "de": "Die Graph-Definition von SkillPilot — Formaler Kern (§§1–5)"
+      }
+    },
+    {
+      "id": "context-and-views",
+      "sources": ["02-context"],
+      "paths": {
+        "en": "docs/concept/skill-graph/context-and-views.en.md",
+        "de": "docs/concept/skill-graph/context-and-views.de.md"
+      },
+      "titles": {
+        "en": "Context, Views, Goal Types, and Quality (§§6–10)",
+        "de": "Kontext, Sichten, Zieltypen und Qualität (§§6–10)"
+      }
+    },
+    {
+      "id": "learning-units",
+      "sources": ["03-learning-units"],
+      "subsectionSlice": [0, 4],
+      "paths": {
+        "en": "docs/concept/skill-graph/learning-units.md",
+        "de": "docs/concept/skill-graph/learning-units.de.md"
+      },
+      "titles": {
+        "en": "Learning Units (Lerneinheiten) (§§11.1–11.4)",
+        "de": "Rekursive Lerneinheiten (§§11.1–11.4)"
+      }
+    },
+    {
+      "id": "learning-unit-progression",
+      "sources": ["03-learning-units"],
+      "subsectionSlice": [4, 5],
+      "paths": {
+        "en": "docs/concept/skill-graph/learning-unit-progression.md",
+        "de": "docs/concept/skill-graph/learning-unit-progression.de.md"
+      },
+      "titles": {
+        "en": "Learning-Unit Progression and Access Policy (§11.5)",
+        "de": "Voraussetzungen und Grenze einer Einheitsfolge (§11.5)"
+      }
+    },
+    {
+      "id": "planning-and-budget",
+      "sources": ["04-planning"],
+      "paths": {
+        "en": "docs/concept/skill-graph/planning-and-budget.en.md",
+        "de": "docs/concept/skill-graph/planning-and-budget.de.md"
+      },
+      "titles": {
+        "en": "Optional Acquisition and Time Planning (§12)",
+        "de": "Optionale Erwerbs- und Zeitplanung (§12)"
+      }
+    },
+    {
+      "id": "assessment-gated-completion",
+      "sources": ["05-assessment"],
+      "paths": {
+        "en": "docs/concept/skill-graph/assessment-gated-completion.md",
+        "de": "docs/concept/skill-graph/assessment-gated-completion.de.md"
+      },
+      "titles": {
+        "en": "Assessment-Gated Completion and Implicit Mastery (§13)",
+        "de": "Implizite Beherrschung durch gültige lokale Prüfungen (§13)"
+      }
+    },
+    {
+      "id": "compendium-appendix",
+      "sources": ["06-appendices"],
+      "skipAppendixAInWebBody": true,
+      "paths": {
+        "en": "docs/concept/skill-graph/compendium-appendix.en.md",
+        "de": "docs/concept/skill-graph/compendium-appendix.de.md"
+      },
+      "titles": {
+        "en": "Graph Definition — Implementation Status, Test Strategy, Glossary, and Build (Appendices B–F)",
+        "de": "Graph-Definition — Statusabgleich, Prüfstrategie, Glossar und Build (Anhänge B–F)"
+      }
+    },
+    {
+      "id": "rule-milestone-matrix",
+      "sources": ["rules-and-gates"],
+      "paths": {
+        "de": "docs/qa-ci/graph-definition-rule-milestone-matrix.md",
+        "en": "docs/qa-ci/graph-definition-rule-milestone-matrix.en.md"
+      },
+      "titles": {
+        "de": "Graph-Definition: Regeln, Ampelstatus und Meilensteine (Anhang A)",
+        "en": "Graph Definition: Rules, Traffic-Light Status, and Milestones (Appendix A)"
+      }
+    }
+  ],
+  "mathMacros": {
+    "nd": ["\\mathsf{#1}", 1],
+    "R": "\\mathbb{R}",
+    "N": "\\mathbb{N}",
+    "Pow": "\\mathcal{P}",
+    "Atoms": "\\operatorname{Atoms}",
+    "Sat": "\\operatorname{Sat}",
+    "Frontier": "\\operatorname{Frontier}",
+    "Anc": "\\operatorname{Anc}",
+    "Desc": "\\operatorname{Desc}",
+    "ReqAtoms": "\\operatorname{RequiredAtoms}",
+    "Closure": "\\operatorname{Closure}",
+    "Pre": "\\operatorname{Pre}",
+    "Missing": "\\operatorname{Missing}",
+    "MissingAtoms": "\\operatorname{MissingAtoms}",
+    "Complete": "\\operatorname{Complete}",
+    "Own": "\\operatorname{Own}",
+    "Children": "\\operatorname{Children}",
+    "Id": "\\operatorname{Id}",
+    "Title": "\\operatorname{Title}",
+    "Weight": "\\operatorname{Weight}",
+    "ShortKey": "\\operatorname{ShortKey}",
+    "PhaseCompat": "\\operatorname{PhaseCompat}",
+    "Applicability": "\\operatorname{Applicability}",
+    "Work": "\\operatorname{Work}",
+    "Reserve": "\\operatorname{Reserve}",
+    "Budget": "\\operatorname{Budget}",
+    "Score": "\\mathit{score}",
+    "Passed": "\\mathit{passed}",
+    "MaxPoints": "\\mathit{maxPoints}",
+    "PassingPoints": "\\mathit{passingPoints}",
+    "Reff": "R_{\\mathrm{eff}}",
+    "Rat": "R_{\\mathrm{at}}",
+    "Meff": "M_{\\mathrm{eff}}"
+  }
+}

@@ -14,13 +14,27 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         timeout-minutes: 10
-        # MkDocs only needs docs/ and root files; avoid fetching curriculum assets.
+        # MkDocs only needs docs/, ubuntu-apt, and root files; avoid fetching curriculum assets.
         with:
-          sparse-checkout: docs
+          sparse-checkout: |
+            docs
+            .github/actions/ubuntu-apt
+      - name: Use Ubuntu package sources
+        uses: ./.github/actions/ubuntu-apt
+      - name: Install LuaLaTeX packages for Skill Graph PDFs
+        timeout-minutes: 15
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            texlive-luatex texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-lang-german texlive-lang-english \
+            texlive-science lmodern
       - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - run: pip install -r requirements-docs.txt
+      - name: Build bilingual Skill Graph Web pages, diagrams, and PDFs
+        run: python3 docs/concept/skill-graph/build_spec.py --all
       - name: Deploy MkDocs site
         run: |
           for attempt in 1 2 3; do

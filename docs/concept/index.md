@@ -22,21 +22,27 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 
 - [Skill Graph Overview](skill-graph/index.md)
   Entry point for graph semantics, curriculum structure, and supporting contracts.
-- [SkillPilot Skill Graph Specification](skill-graph/graph-definition.md)
+- [SkillPilot Skill Graph Specification (§§1–5, EN)](skill-graph/graph-definition.md) · [Deutsch (DE)](skill-graph/graph-definition.de.md)
   Core graph model and formal vocabulary.
-- [Assessment-Gated Completion and Global Mastery](skill-graph/assessment-gated-completion.md)
+- [Context, Views, Scope and Goal Types (§§6–10, EN)](skill-graph/context-and-views.en.md) · [Deutsch (DE)](skill-graph/context-and-views.de.md)
+  Canonical graph vs. educational views, personal curriculum closure $L=\mathrm{Closure}(S)$, understanding/memorisation/assessment goals, time and evidence boundaries.
+- [Assessment-Gated Completion and Global Mastery (§13, EN)](skill-graph/assessment-gated-completion.md) · [Deutsch (DE)](skill-graph/assessment-gated-completion.de.md)
   Direct assessment access and globally effective mastery through independent application in valid local learning-unit assessments.
 - [Produktentscheidung: Beherrschung durch Verständnis und selbständige Anwendung](skill-graph/completion-semantics-clarification-2026-11-04.md)
   Verbindliche Konzeptkorrektur vom 4. November 2026; Umsetzung und Prüfung bestehender Prüfungsverträge folgen.
-- [Learning Units (Lerneinheiten)](skill-graph/learning-units.md)
+- [Learning Units (§§11.1–11.4, EN)](skill-graph/learning-units.md) · [Deutsch (DE)](skill-graph/learning-units.de.md)
   Recursive units with a learning promise, subunits, application assessments
   and derived completion; acquired competence remains globally valid.
-- [Learning Unit Progression](skill-graph/learning-unit-progression.md)
+- [Learning Unit Progression (§11.5, EN)](skill-graph/learning-unit-progression.md) · [Deutsch (DE)](skill-graph/learning-unit-progression.de.md)
   Explicit dependencies between whole units, valid block ordering and the
   separate decision about recommended routes versus technical entry gates.
   The former [unit-concept address](skill-graph/curriculum-levels.md) and
   [progression-concept address](skill-graph/curriculum-level-gates.md) remain
   short compatibility pointers for existing links.
+- [Optional Acquisition and Time Planning (§12, EN)](skill-graph/planning-and-budget.en.md) · [Deutsch (DE)](skill-graph/planning-and-budget.de.md)
+  Multi-stage level plans, structural prerequisite witnesses, and workload budgets.
+- [Graph Definition Compendium Appendices (B–F, EN)](skill-graph/compendium-appendix.en.md) · [Deutsch (DE)](skill-graph/compendium-appendix.de.md)
+  Current implementation status, verification strategy, glossary/symbols, sources, and single-source build reference.
 - [General Goal System and Migration](skill-graph/general-goal-system-and-migration.md)
   Long-term goal-system split and migration direction.
 - [Node Types](skill-graph/node-types.md)
