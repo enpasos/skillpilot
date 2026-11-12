@@ -10,7 +10,7 @@ The general goal model distinguishes four semantic layers and one presentation l
 | Layer | Meaning | Example and boundary |
 | --- | --- | --- |
 | Goals | Concrete competencies and subject clusters; `requires` and `contains` live here. | Solving a linear equation; foundations of linear functions. |
-| Programs | Years, semesters, modules, phases, and other structural units. | Year 8 is an organizational container, not a competence. |
+| Programs | Years, semesters, modules, phases, other structural units, and learning units (kind `learningUnit`). | Year 8 is an organizational container, not a competence. |
 | Placements | Contextual link from a goal into a program unit. | The same goal is acquired in Year 8 in one program and in Year 9 in another. |
 | Competency axes | Domain taxonomies and cross-cutting categories. | K1 “Mathematical reasoning” is a category; “identifying gaps in an argument” can be a concrete goal. |
 | Composition view | Reviewed upper structure of the visible tree for a resolved educational scope. | A state-specific view references canonical subtrees without copying their goals. |
@@ -26,7 +26,7 @@ Legacy trees may still contain year and phase nodes as a compatibility scaffold.
 
 A *projection* derives a visible tree or another navigable view from the curriculum data. It is evaluated for a *resolved context* in which dimensions such as jurisdiction, school form, stage, duration model, and course profile are fixed.
 
-In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal.
+In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal. Relation `own` records without context that a learning unit directly owns an atomic goal (Section~@ref{sec:unit-representation}); it is not a program anchor.
 
 Within a resolved context, exactly one matching primary placement yields a unique anchor. When no primary placement matches, the view must not invent a parent node. Multiple matching primary placements require an explicitly reviewed resolution contract; otherwise the projection is ambiguous. Context fields never alter the goal ID.
 

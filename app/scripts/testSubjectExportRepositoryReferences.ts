@@ -17,6 +17,7 @@ import {
   sourceGoalReferenceIndex,
   sourceGoalReferenceIndexRecord,
 } from './buildSkillpilotExportPackage'
+import { hasLearningUnitLayer, projectOutLearningUnits } from './learningUnitLayerProjection'
 
 type JsonValue = Parameters<typeof rewriteJsonRepositoryReferences>[0]
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -112,6 +113,7 @@ let ledgerRecords = 0
 let sourceGoalCount = 0
 let normalizedPassageReferences = 0
 let candidateBindings = 0
+let landscapesWithLearningUnits = 0
 for (const [token, slug] of specifications) {
   const canonicalPath = resolve(repoRoot, `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_${token}.de.json`)
   const canonicalBytes = readFileSync(canonicalPath)
@@ -121,6 +123,14 @@ for (const [token, slug] of specifications) {
   assertPortable(JSON.stringify(portableLandscape), `${slug} canonical`)
   const portableGoals = array(portableLandscape.goals)
   assert.equal(portableGoals.length, originalGoals.length)
+  // Learning units travel only in curriculum-package contract 1.2. The subject export
+  // ships the landscape without that layer, and every goal exactly as before.
+  const exported = record(JSON.parse(packageContentForRepoSource(canonicalPath, 'canonical-landscape').toString('utf8')) as JsonValue)
+  assert(!hasLearningUnitLayer(exported), `${slug}: the exported landscape carries no learning-unit layer`)
+  assert.deepEqual(exported, sanitizeJsonForPackage(projectOutLearningUnits(landscape), 'canonical-landscape'),
+    `${slug}: the export equals the landscape without its learning-unit layer`)
+  assert.deepEqual(exported.goals, portableGoals, `${slug}: the projection leaves every goal unchanged`)
+  if (hasLearningUnitLayer(landscape)) landscapesWithLearningUnits += 1
   for (let index = 0; index < originalGoals.length; index += 1) {
     const original = record(originalGoals[index])
     const portable = record(portableGoals[index])
@@ -218,5 +228,6 @@ for (const [token, slug] of specifications) {
   assert.deepEqual(readFileSync(canonicalPath), canonicalBytes, 'export never changes canonical content')
 }
 assert(candidateBindings > 0, 'the regression includes current Chemistry candidate qualification fields')
+assert(landscapesWithLearningUnits > 0, 'the regression includes a canonical landscape with a learning unit')
 assert(normalizedPassageReferences > 0, 'the regression includes inherited passage sourceRef repository pointers')
 console.log(`Subject export references passed: ${specifications.length} subjects, ${deckCount} decks, ${ledgerRecords} review records, ${sourceGoalCount} exact source texts; candidate qualifications and source hashes preserved`)

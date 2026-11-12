@@ -844,5 +844,46 @@ class SemanticKindReductionTest(unittest.TestCase):
                         self.load()
 
 
+class LearningUnitLayerFingerprintTest(unittest.TestCase):
+    """Python side of the projection conformance shared with TypeScript and Java."""
+
+    CONFORMANCE = ROOT / "app/scripts/fixtures/learning-unit-layer-projection-conformance.json"
+
+    def test_python_fingerprints_equal_the_shared_references(self) -> None:
+        import hashlib
+
+        import curriculum_learning_units as learning_units
+
+        conformance = json.loads(self.CONFORMANCE.read_bytes())
+        cases_bytes = (ROOT / conformance["casesPath"]).read_bytes()
+        self.assertEqual(hashlib.sha256(cases_bytes).hexdigest(), conformance["casesSha256"],
+                         "cases changed; regenerate with npx tsx scripts/testLearningUnitLayerProjection.ts --write")
+        actual = []
+        for case in json.loads(cases_bytes)["cases"]:
+            for index, landscape in enumerate(case["landscapes"]):
+                row = {"case": case["id"], "index": index, "landscapeId": landscape.get("landscapeId")}
+                try:
+                    row["fingerprint"] = bridge.fingerprint_prerequisite_reduction_document(landscape)
+                except learning_units.LearningUnitError:
+                    row["error"] = True
+                actual.append(row)
+        self.assertEqual(actual, conformance["references"])
+
+    def test_mathematics_with_its_pilot_unit_keeps_the_registry_binding(self) -> None:
+        import curriculum_learning_units as learning_units
+
+        math = json.loads(self.CONFORMANCE.read_bytes())["canonicalMathematics"]
+        document = json.loads((ROOT / math["path"]).read_bytes())
+        if not learning_units.has_learning_unit_content(document):
+            document["programUnits"].append(copy.deepcopy(math["pilotUnit"]))
+            document["goalPlacements"].extend(copy.deepcopy(math["pilotPlacements"]))
+        registry = json.loads((ROOT / bridge.REGISTRY_PATH).read_bytes())
+        binding = next(row for row in registry["catalogSources"] if row["path"] == math["path"])
+        self.assertEqual(bridge.fingerprint_prerequisite_reduction_document(document), binding["currentDocumentDigest"])
+        changed = copy.deepcopy(document)
+        changed["goals"][0]["title"] += " (changed)"
+        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), binding["currentDocumentDigest"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

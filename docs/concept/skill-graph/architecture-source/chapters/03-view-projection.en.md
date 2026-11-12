@@ -7,7 +7,7 @@ A careful reader must be able to reconstruct every visible learner-facing tree d
 | View Family | Primary Question Answered | Exclusive Structural Source of Truth |
 | --- | --- | --- |
 | **Content tree** | What belongs under what in subject-matter terms? | `goals` + explicit `contains` edges (ordered by `contains` array). |
-| **Program tree** | Where in the curriculum is a goal introduced, revisited, or assessed? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` attaches; `secondary`/`assessed` render as badges/overlays, missing yields `unplacedInScope`). |
+| **Program tree** | Where in the curriculum is a goal introduced, revisited, or assessed? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` attaches; `secondary`/`assessed` render as badges/overlays, missing yields `unplacedInScope`; `own` records learning-unit ownership and attaches nothing). |
 | **Competency view** | Along which capability or process axis is a goal classified? | `competencyCatalog` + `competencyRefs` (orthogonal taxonomy projection). |
 | **Composition tree** | How does one resolved scope see the subject as one default tree? | Reviewed `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + canonical `contains` expansion. |
 {cols="20%,36%,44%"}
@@ -30,6 +30,8 @@ Under the Product Owner decisions of **9 November 2026**, **10 November 2026**, 
 - **Preserved canonical atomicity:** Collapsing or referencing a canonical cluster never creates an opaque substitute atom and never transfers cluster results to children (see also the historical `DPK-006c-c` boundary in [Dual Package Implementation Status](repo:docs/dev/dual-curriculum-package-implementation-status.md) and tooling split in [Curriculum Authoring Editors](repo:docs/dev/curriculum-authoring-editors.md)).
 
 ### Learning Units in Projected Views {#sec:sga-vp-units anchors="learning-units-in-projected-views,curriculum-levels-in-projected-views"}
+
+Learning units are declared in the placement layer of their skill landscape (Product Owner decision of 12 November 2026): a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([Graph Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [field reference](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` checks these declarations. The program-tree projection attaches goals only through `primary` placements, so an `own` placement changes no visible tree.
 
 Projected [Learning Units](repo:docs/concept/skill-graph/learning-units.md) (target concept; runtime compiler pending) bind to the reviewed composition view or program projection:
 

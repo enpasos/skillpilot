@@ -24,6 +24,7 @@ import {
   createDeterministicZip32,
   type DeterministicZip32Entry,
 } from './deterministicZip32'
+import { projectOutLearningUnits } from './learningUnitLayerProjection'
 import {
   legacySubjectExportGoalVisualizationPath,
   subjectExportGoalVisualizationPath,
@@ -1052,7 +1053,12 @@ export const packageContentForRepoSource = (
     return Buffer.from(stableJson(rewriteJsonRepositoryReferences(readJson(absolutePath))), 'utf8')
   }
   if (extname(absolutePath).toLowerCase() === '.json' && PACKAGE_JSON_CATEGORIES.has(category)) {
-    return Buffer.from(stableJson(sanitizeJsonForPackage(readJson(absolutePath), category, undefined, urlRewrites)), 'utf8')
+    // The subject export and its slim RDF roundtrip predate learning units, which only
+    // curriculum-package contract 1.2 carries. Like a 1.0 or 1.1 build, the export ships
+    // the landscape without its learning-unit layer, never half a unit.
+    const source = readJson(absolutePath)
+    const document = category === 'canonical-landscape' ? projectOutLearningUnits(source) : source
+    return Buffer.from(stableJson(sanitizeJsonForPackage(document, category, undefined, urlRewrites)), 'utf8')
   }
   return readFileSync(absolutePath)
 }

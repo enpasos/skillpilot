@@ -40,6 +40,9 @@ import validate_curriculum_runtime_catalog_contract as runtime_catalog_contracts
 import validate_curriculum_schema_catalog_contract as schema_catalog_contracts  # noqa: E402
 import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
 import curriculum_completion_artifacts as completion_artifacts  # noqa: E402
+import curriculum_package_contract_selection as contract_selection  # noqa: E402
+import curriculum_package_learning_unit_contracts as learning_unit_contracts  # noqa: E402
+import curriculum_learning_units as learning_units  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -661,9 +664,9 @@ def load_deterministic_render_authority() -> DeterministicRenderAuthority:
 def load_trusted_context(contract_dir: Path) -> TrustedContext:
     contract_dir = contract_dir.resolve()
     try:
-        extended = completion_contracts.extended_directory(contract_dir)
-        base_dir = completion_contracts.base_directory(contract_dir)
-        profile_path = completion_contracts.profile_path(contract_dir)
+        extended = contract_selection.extended_directory(contract_dir)
+        base_dir = contract_selection.base_directory(contract_dir)
+        profile_path = contract_selection.profile_path(contract_dir)
         manifest_schema_path = base_dir / package_contracts.SCHEMA_FILENAME
         profile_bytes = profile_path.read_bytes()
         manifest_schema_bytes = manifest_schema_path.read_bytes()
@@ -690,7 +693,7 @@ def load_trusted_context(contract_dir: Path) -> TrustedContext:
         schema_files = [(schema_id, base_dir / filename)
                         for schema_id, filename in package_contracts.NORMATIVE_SCHEMA_FILES]
         if extended:
-            schema_files.extend(completion_contracts.extra_schemas(contract_dir))
+            schema_files.extend(contract_selection.extra_schemas(contract_dir))
         for schema_id, path in schema_files:
             raw = path.read_bytes()
             document = object_value(parse_json_bytes(raw, str(path)), str(path))
@@ -3696,6 +3699,7 @@ def validate_hard_reference_closure(
             completion_artifacts.validate_package_documents(completion_documents, goals)
         except (KeyError, TypeError, ValueError) as error:
             collector.add("hardReferenceClosure", "COMPLETION_CONTRACT_INVALID", "/data/completion", str(error))
+    validate_learning_unit_contracts(manifest, documents, collector)
     del logical_documents  # derivation intentionally starts from manifest-bound package artifacts
     try:
         expected = derive_expected_closure(
@@ -3727,6 +3731,42 @@ def validate_hard_reference_closure(
             f"/{path}",
             str(error),
         )
+
+
+def validate_learning_unit_contracts(
+    manifest: Mapping[str, Any],
+    documents: PackageDocuments,
+    collector: DiagnosticCollector,
+) -> None:
+    """Fail-closed learning-unit rules of runtime 1.2; earlier runtimes carry none."""
+    landscapes: list[Mapping[str, Any]] = []
+    reviews: list[tuple[str, Any, str, Any]] = []
+    for record in manifest.get("files", []):
+        if not isinstance(record, dict):
+            continue
+        artifact_path = record.get("path")
+        artifact = documents.values.get(artifact_path) if isinstance(artifact_path, str) else None
+        if record.get("role") == "canonical-landscape" and isinstance(artifact, dict):
+            landscapes.append(artifact)
+        elif record.get("role") == learning_unit_contracts.REVIEW_ROLE:
+            binding = record.get("semanticBinding")
+            logical_id = binding.get("logicalId") if isinstance(binding, dict) else None
+            reviews.append((learning_unit_contracts.REVIEW_ROLE, logical_id, str(artifact_path), artifact))
+    if manifest.get("runtimeContractVersion") != learning_unit_contracts.RUNTIME_CONTRACT_VERSION:
+        if reviews or any(learning_units.has_learning_unit_content(landscape) for landscape in landscapes):
+            collector.add("hardReferenceClosure", "LEARNING_UNIT_RUNTIME_MISMATCH", "/data/canonical",
+                          "learning units and coverage reviews require runtime contract 1.2")
+        return
+    try:
+        findings = learning_units.validate_package_learning_units(landscapes, reviews)
+    except (learning_units.LearningUnitError, KeyError, TypeError) as error:
+        collector.add("hardReferenceClosure", "LEARNING_UNIT_REVIEW_ARTIFACT_INVALID", "/data/learning-units", str(error))
+        return
+    for finding in findings:
+        code = "LEARNING_UNIT_" + finding.code.removeprefix("LU-").replace("-", "_")
+        location = "/" + "/".join(part for part in (
+            "learning-units", finding.landscape_id, finding.unit_id or "-", finding.goal_id or "-") if part)
+        collector.add("hardReferenceClosure", code, location, finding.message)
 
 
 def build_report(
@@ -4887,7 +4927,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         trusted = load_trusted_context(args.contracts_dir)
         if args.self_test:
-            baseline = load_trusted_context(completion_contracts.base_directory(args.contracts_dir)) if completion_contracts.extended_directory(args.contracts_dir) else trusted
+            baseline = load_trusted_context(contract_selection.base_directory(args.contracts_dir)) if contract_selection.extended_directory(args.contracts_dir) else trusted
             report = run_self_test(baseline, args.fixtures.resolve(), args.verbose)
             exit_code = 0 if report["status"] == "passed" else 1
         else:

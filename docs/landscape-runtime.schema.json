@@ -91,6 +91,14 @@
         "$ref": "#/$defs/goalPlacement"
       }
     },
+    "learningUnitCoverage": {
+      "type": "string",
+      "enum": [
+        "partial",
+        "complete"
+      ],
+      "description": "Claim about the learning units of this landscape: complete asserts that every atomic goal has exactly one owning learning unit. Absent means no claim and is treated as partial."
+    },
     "competencyCatalog": {
       "type": "array",
       "description": "Optional catalog of orthogonal competency-axis entries such as process competencies.",
@@ -872,7 +880,7 @@
         },
         "kind": {
           "type": "string",
-          "description": "Structural unit kind such as program, stage, year, phase, semester, module, track, or exam."
+          "description": "Structural unit kind such as program, stage, year, phase, semester, module, track, or exam; learningUnit marks a learning unit that owns atomic goals through placements of relation own."
         },
         "label": {
           "type": "string"
@@ -884,9 +892,144 @@
           "type": "number"
         },
         "parentUnitId": {
-          "type": "string"
+          "type": "string",
+          "description": "Parent unit. For a learning unit: the learning unit that requires it as a child."
+        },
+        "labelEn": {
+          "type": "string",
+          "description": "English title. Learning units only."
+        },
+        "promise": {
+          "type": "string",
+          "description": "Learning promise in the authoring locale: what learners can do independently afterwards and why it matters. Learning units only."
+        },
+        "promiseEn": {
+          "type": "string",
+          "description": "English learning promise. Learning units only."
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}-v[1-9][0-9]*$",
+          "description": "Dated revision of the unit definition (YYYY-MM-DD-vN). Learning units only."
+        },
+        "coverageReviews": {
+          "type": "array",
+          "description": "Reviewed coverage of the unit's own assessments. Learning units only.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Reviewed evidence that the tasks and normal grading of one own assessment of the unit really test the listed own ordinary goals (unit validity rule R2).",
+            "required": [
+              "assessmentGoalId",
+              "goalIds",
+              "reference",
+              "taskRevision",
+              "rubricRevision"
+            ],
+            "properties": {
+              "assessmentGoalId": {
+                "type": "string",
+                "description": "An own assessment of the unit; at most one review per assessment."
+              },
+              "goalIds": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reference": {
+                "type": "string",
+                "description": "Repository-relative path of the review record."
+              },
+              "taskRevision": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "description": "Canonical hash of {taskContent, solutionContent} at review time."
+              },
+              "rubricRevision": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "description": "Canonical hash of the scoring object at review time."
+              }
+            }
+          }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "learningUnit"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "labelEn",
+              "promise",
+              "promiseEn",
+              "revision"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              }
+            },
+            "propertyNames": {
+              "enum": [
+                "id",
+                "kind",
+                "label",
+                "labelEn",
+                "promise",
+                "promiseEn",
+                "revision",
+                "parentUnitId",
+                "order",
+                "coverageReviews"
+              ]
+            }
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "promise"
+                  ]
+                },
+                {
+                  "required": [
+                    "promiseEn"
+                  ]
+                },
+                {
+                  "required": [
+                    "revision"
+                  ]
+                },
+                {
+                  "required": [
+                    "labelEn"
+                  ]
+                },
+                {
+                  "required": [
+                    "coverageReviews"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
     },
     "goalPlacement": {
       "type": "object",
@@ -905,7 +1048,7 @@
         },
         "relation": {
           "type": "string",
-          "description": "Placement relation such as primary, secondary, or assessed."
+          "description": "Placement relation such as primary, secondary, or assessed; own states that a learning unit directly owns an atomic goal; such a placement carries exactly goalId, unitId and relation."
         },
         "context": {
           "type": "object",
@@ -914,7 +1057,30 @@
             "type": "string"
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "relation": {
+                "const": "own"
+              }
+            },
+            "required": [
+              "relation"
+            ]
+          },
+          "then": {
+            "propertyNames": {
+              "enum": [
+                "goalId",
+                "unitId",
+                "relation"
+              ]
+            }
+          }
+        }
+      ]
     },
     "competencyCatalogEntry": {
       "type": "object",

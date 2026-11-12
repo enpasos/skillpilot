@@ -756,6 +756,10 @@ jobs:
       - *restore_goal_book_publications
       - name: Test transitive-minimality auditor and CLI contracts
         run: npm run test:transitive-minimality
+      - name: Test learning-unit contract validator
+        run: npm run test:learning-unit-contracts
+      - name: Validate authored learning-unit contracts
+        run: npm run validate:learning-units
       - name: Test exam Markdown conventions
         run: npm run test:exam-markdown
       - name: Test reviewed Mathematics checkpoint assessments
@@ -885,6 +889,10 @@ jobs:
           python -B scripts/validate_curriculum_schema_catalog_contract.py
           python -B scripts/evaluate_curriculum_package_readiness.py --self-test
           python -B scripts/validate_full_standalone_curriculum_package.py --self-test
+          python -B scripts/generate_curriculum_package_learning_unit_contracts.py --check
+          python -B scripts/validate_curriculum_package_contracts.py --contracts-dir contracts/curriculum-package/v1.2
+          python -B scripts/validate_full_standalone_curriculum_package.py --self-test --contracts-dir contracts/curriculum-package/v1.2
+          (cd scripts && python -B test_learning_unit_package.py)
           python -B scripts/provision_curriculum_package.py self-test
           python -B scripts/run_package_consumer_smoke.py --self-test
           SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \

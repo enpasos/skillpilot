@@ -280,6 +280,7 @@ def schema_location(schema_id: str) -> tuple[Path, str]:
     prefixes = (
         ("https://skillpilot.com/schemas/curriculum-package/v1/", CONTRACT_ROOT, "schemas/"),
         ("https://skillpilot.com/schemas/curriculum-package/v1.1/", CONTRACT_ROOT.parent / "v1.1", "schemas/v1.1/"),
+        ("https://skillpilot.com/schemas/curriculum-package/v1.2/", CONTRACT_ROOT.parent / "v1.2", "schemas/v1.2/"),
         ("https://skillpilot.com/schemas/assessment-completion/v1/", REPO_ROOT / "contracts/assessment-completion/v1", "schemas/assessment-completion/"),
     )
     for prefix, root, package_prefix in prefixes:
@@ -289,24 +290,28 @@ def schema_location(schema_id: str) -> tuple[Path, str]:
                 return root / name, package_prefix + name
     raise ValueError(f"Unsupported schema trust root: {schema_id}")
 
+# Runtime 1.1 (completion) and runtime 1.2 (learning units) are sibling FWU carriers.
+EXTENSION_PROFILE_ROOTS = {"fwu-owl-completion-v1": "v1.1", "fwu-owl-learning-units-v1": "v1.2"}
+
+
 def select_profile(profile_id: str) -> None:
     global ACTIVE_PROFILE_ID, PROFILE_PATH, SCHEMAS, APPLICATION_ONTOLOGY_PATH
     global FIELD_SEMANTICS_REGISTRY_PATH, TRUSTED_JSON_RELEASE_PROFILE_PATH
     global APPLICATION_PROFILE_POLICY, TRUSTED_JSON_RELEASE_PROFILE, ROLE_POLICY
     global BOOTSTRAP_SCHEMA_SPECS, GLOBAL_CONTRACT_SPECS, EXPECTED_STATIC_BINDING_IDS
     global JSON_CONTRACT_SCHEMA_TARGETS, SINGLETON_RELEASE_SUPPORT
-    if profile_id not in {"fwu-owl-v1", "fwu-owl-completion-v1"}:
+    if profile_id not in EXTENSION_PROFILE_ROOTS and profile_id != "fwu-owl-v1":
         raise ValueError("Unsupported FWU trust-root selection")
     if profile_id == ACTIVE_PROFILE_ID:
         return
     globals().update(_BASE_TRUST_ROOTS)
     if profile_id == "fwu-owl-v1":
         return
-    root = CONTRACT_ROOT.parent / "v1.1"
-    PROFILE_PATH = root / "profiles/fwu-owl-completion-v1.profile.json"
+    root = CONTRACT_ROOT.parent / EXTENSION_PROFILE_ROOTS[profile_id]
+    PROFILE_PATH = root / f"profiles/{profile_id}.profile.json"
     trusted = load_json(PROFILE_PATH)
     if trusted.get("profileId") != profile_id:
-        raise ValueError("Repository completion FWU profile identity differs")
+        raise ValueError("Repository extension FWU profile identity differs")
     SCHEMAS = {key: root / path.name for key, path in SCHEMAS.items()}
     APPLICATION_PROFILE_POLICY = trusted["applicationProfilePolicy"]
     APPLICATION_ONTOLOGY_PATH = REPO_ROOT / APPLICATION_PROFILE_POLICY["sourcePath"]
@@ -1222,7 +1227,7 @@ def validate_manifest(
         ):
             diagnostics.append(Diagnostic("MANIFEST_RELEASE_SUPPORT", f"/releaseSupport/{index}", "Release-support record is not backed by one exact file record"))
         target = str(support.get("targetPath", ""))
-        if target.startswith(("data/canonical/", "data/views/", "data/cards/", "data/runtime/", "data/resources/", "data/mappings/", "data/sources/", "metadata/quality/", "data/completion/")) or target == "metadata/semantic-content-index.json":
+        if target.startswith(("data/canonical/", "data/views/", "data/cards/", "data/runtime/", "data/resources/", "data/mappings/", "data/sources/", "metadata/quality/", "data/completion/", "data/learning-units/")) or target == "metadata/semantic-content-index.json":
             diagnostics.append(Diagnostic("MANIFEST_HIDDEN_LOGICAL_JSON", f"/releaseSupport/{index}/targetPath", "Release support must not carry hidden logical JSON content"))
     support_types = Counter(item.get("supportType") for item in release_support)
     schema_targets = {item.get("targetPath") for item in release_support if item.get("supportType") == "json-contract-schema"}

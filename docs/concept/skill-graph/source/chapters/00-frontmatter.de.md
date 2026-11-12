@@ -49,7 +49,7 @@ Jeder Teil beantwortet eine Leitfrage und hat einen eigenen Status. Die letzte S
 | --- | --- |
 | Normativer Kern | Verbindliche mathematische Graphsemantik aus `graph-definition.md`; zusätzliche Profile können strengere Regeln setzen. |
 | Angrenzender Vertrag | Semantik von Projektion, Zieltypen, Quellen oder Lernablauf; der Implementierungsstand ist jeweils gesondert zu prüfen. |
-| Fachliche Struktur | Rekursive Lerneinheiten mit Lernversprechen, eigenen Zielen und abgeleitetem Abschluss; keine behauptete Laufzeitfunktion. |
+| Fachliche Struktur | Rekursive Lerneinheiten mit Lernversprechen, eigenen Zielen und abgeleitetem Abschluss; in der Platzierungsschicht der Skill-Landschaft dargestellt und validiert (Abschnitt~@ref{sec:unit-representation}), aber keine behauptete Laufzeitfunktion. |
 | Optionales Profil | Zeit- und Budgetplanung sowie bedingte Zugänge zu Lerneinheiten; harte Sperren und der direkte Prüfungszugang sind dafür noch nicht entschieden. |
 | Noch nicht implementiert | Die neue Anerkennung impliziter Beherrschung ist verbindlich beschrieben, aber nicht umgesetzt; der bestehende Code folgt einem abweichenden Bedarfsmodell (Anhang~@ref{sec:implementation}). |
 :::

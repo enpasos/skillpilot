@@ -298,6 +298,22 @@ def check_untracked_outputs_for_bundle(bundle: CompendiumBundle) -> None:
         )
 
 
+def github_error_annotation(title: str, message: str) -> None:
+    """Surface a build failure as a GitHub Actions annotation.
+
+    Job logs need a GitHub login; annotations are shown on the pull request and are
+    readable through the public API. Outside GitHub Actions this prints nothing.
+    """
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        return
+
+    def escape(value: str, *, is_property: bool = False) -> str:
+        value = value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        return value.replace(":", "%3A").replace(",", "%2C") if is_property else value
+
+    print(f"::error title={escape(title, is_property=True)}::{escape(message)}", flush=True)
+
+
 def compile_pdfs_for_bundle(
     bundle: CompendiumBundle,
     cited_repos: set[str],
@@ -408,6 +424,11 @@ def compile_pdfs_for_bundle(
             except Exception as exc:  # noqa: BLE001
                 lang_errors.append(str(exc))
     if lang_errors:
+        for error in lang_errors:
+            title, _, detail = error.partition("\n")
+            # A failed pass ends with the LaTeX error; a log check lists its findings from the top.
+            excerpt = detail[-3500:] if " pass " in title else detail[:3500]
+            github_error_annotation(title.rstrip(":"), excerpt)
         raise SystemExit("\n\n".join(lang_errors))
 
     if bundle.config.get("buildJsonPath"):

@@ -763,6 +763,7 @@ const testSemanticCompiler = () => {
       'composition-view',
       'composition-view-index',
       'dependency-closure',
+      'learning-unit-coverage-review',
       'migration-aliases',
       'official-source-index',
       'release-quality-evidence',
@@ -1096,6 +1097,95 @@ const testCompletionSemantics = () => {
   expectThrows(() => compileFwuOwlSemantics({ source: sourceFixture(bad), registryValue: value, curriculumProfile, packageProfile: profile }), /Unresolved completion goal reference/u, 'Compiler accepted a dangling completion goal')
 }
 
+const testLearningUnitSemantics = () => {
+  const root = 'contracts/curriculum-package/v1.2'
+  const value = readJsonObject(resolve(repositoryRoot, `${root}/profiles/skillpilot-fwu-field-semantics-learning-units-v1.registry.json`))
+  const registry = new FwuOwlFieldRegistry(value)
+  assertEqual((value.entries as JsonValue[]).slice(0, 456), registryValue.entries, 'The original 456 V1 registry entries changed')
+  const profile = readJsonObject(resolve(repositoryRoot, `${root}/profiles/fwu-owl-learning-units-v1.profile.json`))
+  const reviewId = 'data/learning-units/reviews/0123456789abcdef.json'
+  const reviewText = 'Synthetic coverage review; no learner data.\n'
+  const exam: JsonObject = {
+    id: 'assessment', title: 'Testklausur', description: 'Die lernende Person bearbeitet die Testklausur.',
+    type: 'atomic', semanticKind: 'practiceAssessment', nodeKind: 'exam', weight: 1, contains: [],
+    requires: ['atom-unscoped'], dimensionTags: {},
+    examData: {
+      coveredGoalIds: ['atom-unscoped', 'atom-parented'], taskContent: 'Aufgabe', solutionContent: 'Lösung',
+      scoring: { maxPoints: 2, passingPoints: 2, steps: [] },
+    },
+  }
+  const unit = (id: string, extra: JsonObject = {}): JsonObject => ({ id, kind: 'learningUnit', label: `Einheit ${id}`,
+    labelEn: `Unit ${id}`, promise: 'Ich kann die Testziele anwenden.', promiseEn: 'I can apply the test goals.',
+    revision: '2026-11-12-v1', ...extra })
+  const landscape: JsonObject = {
+    ...landscapeDocument,
+    goals: [...(landscapeDocument.goals as JsonValue[]), exam],
+    programUnits: [...(landscapeDocument.programUnits as JsonValue[]), unit('fixture-parent'),
+      unit('fixture-unit', { parentUnitId: 'fixture-parent', order: 1, coverageReviews: [{
+        assessmentGoalId: 'assessment', goalIds: ['atom-unscoped'], reference: reviewId,
+        taskRevision: `sha256:${'1'.repeat(64)}`, rubricRevision: `sha256:${'2'.repeat(64)}` }] })],
+    goalPlacements: [...(landscapeDocument.goalPlacements as JsonValue[]),
+      ...['assessment', 'atom-unscoped', 'atom-parented'].map(goalId => ({ goalId, unitId: 'fixture-unit', relation: 'own' }))],
+    learningUnitCoverage: 'partial',
+  }
+  const documents: { role: string; logicalId: string; document: JsonObject }[] = [
+    ...semanticDocuments.map(entry => entry.role === 'canonical-landscape' ? { ...entry, document: landscape } : entry),
+    { role: 'learning-unit-coverage-review', logicalId: reviewId, document: {
+      artifactFormatVersion: 1, artifactKind: 'coverage-review', id: reviewId,
+      definition: { mediaType: 'text/markdown', content: reviewText, sha256: sha256(reviewText) },
+    } },
+  ]
+  const artifacts = documents.map(({ role, logicalId, document }) =>
+    logicalArtifact(registry, role, role === 'canonical-landscape' ? String(document.landscapeId) : logicalId, document))
+  const source = sourceFixture(artifacts)
+  source.manifest.runtimeContractVersion = '1.2'
+  source.manifest.releaseProfile = 'full-standalone-learning-units-v1'
+  const compiled = compileFwuOwlSemantics({ source, registryValue: value, curriculumProfile, packageProfile: profile })
+  assertEqual(compiled.fieldRegistryEntryCount, 475, 'Learning-unit registry is not fully covered')
+  const landscapeRdf = compiled.segments.landscape.content.toString('utf8')
+  for (const term of ['LearningUnit>', 'ownsGoal>', 'hasParentLearningUnit>', 'hasCoverageReview>', 'coverageReviewedAssessment>',
+    'coverageReviewedGoal>', 'hasCoverageReviewRecord>', 'coverageReviewTaskRevision>', 'coverageReviewRubricRevision>',
+    'hasLearningUnitCoverageReviews>', 'hasCoverageReviewGoals>', 'learningUnitPromise>', 'learningUnitRevision>',
+    'learningUnitCoverage>']) {
+    assert(landscapeRdf.includes(`#${term}`), `Learning-unit relation missing: ${term}`)
+  }
+  assert(landscapeRdf.includes('#LearningUnitCoverageReviewRecord>'), 'Review record class missing')
+  assert(compiled.segments.runtime.content.toString('utf8').includes('#learningUnitCoverageReviewDefinition>'), 'Review record anchor missing')
+  const directory = mkdtempSync(resolve(repositoryRoot, 'tmp/fwu-learning-unit-test-'))
+  try {
+    const fixture = { releaseId: source.manifest.releaseId,
+      artifacts: artifacts.map(a => ({ role: a.normalizationRole, logicalId: a.logicalId,
+        normalizedBytes: a.normalizedBytes, normalizedSha256: a.normalizedSha256,
+        document: registry.normalizeAndCover(a.normalizationRole, a.document as JsonValue, { retainDetails: false }).normalized })),
+      segments: Object.fromEntries(FWU_OWL_SEGMENT_ORDER.map(id => [id, compiled.segments[id].content.toString('utf8')])),
+    }
+    const fixturePath = resolve(directory, 'fixture.json')
+    writeFileSync(fixturePath, JSON.stringify(fixture))
+    process.stdout.write(execFileSync('python3', [resolve(repositoryRoot, 'scripts/test_learning_unit_fwu.py'), fixturePath], { cwd: repositoryRoot, encoding: 'utf8' }))
+  } finally { rmSync(directory, { recursive: true, force: true }) }
+  const recompile = (change: (landscape: JsonObject) => void) => {
+    const changed = structuredClone(artifacts)
+    const target = changed.find(a => a.normalizationRole === 'canonical-landscape')!
+    change(target.document as JsonObject)
+    const normalized = compactCanonicalJsonBytes(registry.normalizeAndCover('canonical-landscape', target.document as JsonValue, { retainDetails: false }).normalized)
+    target.normalizedBytes = normalized.length
+    target.normalizedSha256 = sha256(normalized)
+    const changedSource = sourceFixture(changed)
+    changedSource.manifest.runtimeContractVersion = '1.2'
+    changedSource.manifest.releaseProfile = 'full-standalone-learning-units-v1'
+    return () => compileFwuOwlSemantics({ source: changedSource, registryValue: value, curriculumProfile, packageProfile: profile })
+  }
+  expectThrows(recompile(l => { (l.goalPlacements as JsonObject[]).at(-1)!.goalId = 'missing-goal' }),
+    /Unresolved learning-unit goal reference/u, 'Compiler accepted a dangling own goal')
+  expectThrows(recompile(l => { (l.goalPlacements as JsonObject[]).at(-1)!.unitId = 'fixture-unit-a' }),
+    /Own placement targets no learning unit/u, 'Compiler accepted ownership by a calendar unit')
+  const reviewOf = (l: JsonObject) => ((l.programUnits as JsonObject[]).at(-1)!.coverageReviews as JsonObject[])[0]
+  expectThrows(recompile(l => { reviewOf(l).reference = 'data/learning-units/reviews/fedcba9876543210.json' }),
+    /Unresolved coverage review record/u, 'Compiler accepted a dangling review record')
+  expectThrows(recompile(l => { reviewOf(l).assessmentGoalId = 'missing-goal' }),
+    /Unresolved learning-unit goal reference/u, 'Compiler accepted a dangling reviewed assessment')
+}
+
 const testScratchRoot = () => {
   assertEqual(packageScratchRoot(repositoryRoot), resolve(repositoryRoot, 'tmp'), 'Default scratch root changed')
   const root = mkdtempSync(resolve(repositoryRoot, 'tmp/fwu-private-scratch-'))
@@ -1146,6 +1236,7 @@ const tests: readonly [name: string, run: () => void][] = [
   ['scoped completion content licenses', testCompletionContentLicenses],
   ['semantic compiler', testSemanticCompiler],
   ['completion JSON and structural RDF roundtrip', testCompletionSemantics],
+  ['learning-unit JSON and structural RDF roundtrip', testLearningUnitSemantics],
 ]
 
 for (const [name, run] of tests) {

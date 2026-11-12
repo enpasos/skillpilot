@@ -49,7 +49,7 @@ Each part answers a guiding question and carries its own status. The final colum
 | --- | --- |
 | Normative core | Binding mathematical graph semantics from `graph-definition.md`; additional validator profiles may impose stricter constraints. |
 | Adjacent contract | Semantics of projection, goal types, provenance, or learning workflows; actual implementation coverage must be verified per rule. |
-| Domain structure | Recursive learning units with a learning promise, directly owned goals, and derived completion; not a claimed runtime feature today. |
+| Domain structure | Recursive learning units with a learning promise, directly owned goals, and derived completion; represented in the placement layer of the skill landscape and validated (Section~@ref{sec:unit-representation}), but not a claimed runtime feature today. |
 | Optional profile | Calendar and workload budgeting plus conditional entry to learning units; hard technical locks and direct assessment entry remain undecided there. |
 | Not yet implemented | The new implicit-mastery recognition contract is bindingly specified, but not yet deployed; current runtime code follows an earlier demand model (Appendix~@ref{sec:implementation}). |
 :::

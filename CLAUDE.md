@@ -70,6 +70,7 @@ npm --prefix app run test:<name>      # many focused suites, no aggregate `test`
 npm --prefix app run validate:graph
 npm --prefix app run validate:composition-views
 npm --prefix app run check:transitive-minimality
+npm --prefix app run validate:learning-units            # learning units in the canonical landscapes (R1, R3, R4)
 npm --prefix app run quality:curriculum-status          # regenerate status
 npm --prefix app run quality:curriculum-status:check    # + maturity-floor gate
 python3 scripts/validate_schemas.py
@@ -179,6 +180,7 @@ Full rules: `docs/dev/documentation-guidelines.md`.
 - `docs/concept/curriculum-quality-and-human-trial.md` — maturity levels M0–M7, human trial
 - `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages
 - `docs/concept/didactic/unified-learning-plan-status.md` — learning-plan contract
+- `docs/dev/mathematics-physics-learning-units-plan.md` — working plan for learning units (Mathematics, then Physics); units live in `programUnits`/`goalPlacements`, package contract `contracts/curriculum-package/v1.2/`
 - `docs/dev/landscape-json-field-reference.md` — landscape JSON fields
 - `docs/qa-ci/index.md` — QA lanes and CI rules for curriculum changes
 - `docs/deploy/` — release runbooks (Claude connector, OpenAI plugin and Git beta, Gemini, OAuth); `claude-beta-chatgpt-release-strategy.md` for the work order

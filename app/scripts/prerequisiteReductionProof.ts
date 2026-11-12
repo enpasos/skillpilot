@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import type { ApplicabilityInputSnapshot } from './applicabilityCompiler'
 import { auditTransitiveMinimality, auditTransitiveMinimalityOrigin, validateTransitiveMinimalityScope, assertTransitiveMinimalityImplementationCurrent, type AuditLandscape } from './auditTransitiveMinimality'
+import { assertLearningUnitProjectionImplementationCurrent, projectOutLearningUnits } from './learningUnitLayerProjection'
 
 const proofModulePath = fileURLToPath(import.meta.url)
 const proofModuleBytes = readFileSync(proofModulePath)
@@ -14,6 +15,7 @@ function assertProofImplementationCurrent(): void {
   if (!readFileSync(proofModulePath).equals(proofModuleBytes))
     throw new Error('Prerequisite reduction implementation changed since module load')
   assertTransitiveMinimalityImplementationCurrent()
+  assertLearningUnitProjectionImplementationCurrent()
 }
 
 export const PREREQUISITE_REDUCTION_REGISTRY_PATH =
@@ -181,8 +183,17 @@ function stableJson(value: unknown): string {
     .map(([key, child]) => `${JSON.stringify(key)}:${stableJson(child)}`).join(',')}}`
   return JSON.stringify(value)
 }
+/** Digest of a registry record (registry, checkpoint, entry or batch): the complete value. */
+export const fingerprintPrerequisiteReductionRecord = (record: unknown): string =>
+  `sha256:${createHash('sha256').update(stableJson(record)).digest('hex')}`
+/**
+ * Digest of a catalog document: the landscape without its learning-unit layer. The proof is
+ * about goals, edges and assessments; a learning unit is an orthogonal placement layer, so
+ * adding, changing or removing one never stales a proof, while any other change still does.
+ * For a document without learning units the projection is the identity.
+ */
 export const fingerprintPrerequisiteReductionDocument = (document: unknown): string =>
-  `sha256:${createHash('sha256').update(stableJson(document)).digest('hex')}`
+  fingerprintPrerequisiteReductionRecord(projectOutLearningUnits(document))
 const object = (value: unknown): value is Record<string, unknown> =>
   value !== null && typeof value === 'object' && !Array.isArray(value)
 const nonempty = (value: unknown): value is string => typeof value === 'string' && value.length > 0
@@ -671,7 +682,7 @@ function historicalRegistry(registry: OrderedPrerequisiteReductionRegistry): Leg
     originalRequires: registry.originalRequires,
     removals: registry.removals,
   }
-  ensure(fingerprintPrerequisiteReductionDocument(historical) === registry.v2Checkpoint.registryDigest,
+  ensure(fingerprintPrerequisiteReductionRecord(historical) === registry.v2Checkpoint.registryDigest,
     'historical V2 registry digest differs')
   return historical
 }
@@ -790,7 +801,7 @@ async function verifyContinuedFrame(
     originalRequires: registry.originalRequires, removals: registry.removals,
     v2Checkpoint: registry.v2Checkpoint, suffixOriginalRequires: registry.suffixOriginalRequires, suffix: registry.suffix,
   }
-  ensure(fingerprintPrerequisiteReductionDocument(parent) === v3Checkpoint.registryDigest, 'historical V3 registry digest differs')
+  ensure(fingerprintPrerequisiteReductionRecord(parent) === v3Checkpoint.registryDigest, 'historical V3 registry digest differs')
   const parentDocuments = structuredClone(currentDocuments), parentGoals = goalIndex(parentDocuments)
   const prefixSources = new Set([...parent.originalRequires.map(entry => entry.source), ...parent.suffix.map(step => step.source)])
   const tailSources = new Set(atomicRemovals.map(step => step.source))
@@ -856,7 +867,7 @@ async function verifyClusterTargetFrame(
       return { ...entry, currentDocumentDigest: digest }
     }),
   }
-  ensure(fingerprintPrerequisiteReductionDocument(parent) === v4Checkpoint.registryDigest, 'historical V4 registry digest differs')
+  ensure(fingerprintPrerequisiteReductionRecord(parent) === v4Checkpoint.registryDigest, 'historical V4 registry digest differs')
   const cut = clusterTargetSuffix.at(-1) as ClusterTargetPrerequisiteReduction
   const original = clusterTargetOriginalRequires[0]
   ensure(original.source === cut.source, 'cluster-target original snapshot source differs')
@@ -1000,7 +1011,7 @@ async function verifyBasisBoundFrame(
   let predecessor = registry.parentRegistryRawDigest
   for (const entry of registry.entries) {
     ensure(entry.batch.previousDigest === predecessor, 'basis-bound entry predecessor digest differs')
-    predecessor = fingerprintPrerequisiteReductionDocument(entry)
+    predecessor = fingerprintPrerequisiteReductionRecord(entry)
   }
   const parentDocuments = structuredClone(currentDocuments), reverseGoals = goalIndex(parentDocuments)
   const ends: Document[][] = []
@@ -1678,11 +1689,11 @@ async function verifyBatchedFrame(
       ensure(currentDocumentDigest, `V5 checkpoint source missing: ${entry.path}`)
       return { ...entry, currentDocumentDigest }
     }) }
-  ensure(fingerprintPrerequisiteReductionDocument(parent) === v5Checkpoint.registryDigest, 'historical V5 registry digest differs')
+  ensure(fingerprintPrerequisiteReductionRecord(parent) === v5Checkpoint.registryDigest, 'historical V5 registry digest differs')
   let predecessor = v5Checkpoint.registryDigest
   for (const batch of batches) {
     ensure(batch.previousDigest === predecessor, `batch predecessor digest differs: ${batch.id}`)
-    predecessor = fingerprintPrerequisiteReductionDocument(batch)
+    predecessor = fingerprintPrerequisiteReductionRecord(batch)
   }
   const parentDocuments = structuredClone(currentDocuments), reverseGoals = goalIndex(parentDocuments)
   requireBatchDocumentBindings(parentDocuments, loaded, batches.at(-1)!.currentDocumentDigests, 'final batch')

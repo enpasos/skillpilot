@@ -10,7 +10,7 @@ Das allgemeine Zielmodell unterscheidet vier semantische Ebenen und eine Darstel
 | Ebene | Bedeutung | Beispiel und Grenze |
 | --- | --- | --- |
 | Ziele | Konkrete Kompetenzen und fachliche Bündel; hier liegen `requires` und `contains`. | Eine lineare Gleichung lösen; Grundlagen linearer Funktionen. |
-| Programme | Jahre, Semester, Module, Phasen und andere strukturelle Einheiten. | Jahrgang 8 ist ein organisatorischer Abschnitt, keine Kompetenz. |
+| Programme | Jahre, Semester, Module, Phasen, andere strukturelle Einheiten sowie Lerneinheiten (Art `learningUnit`). | Jahrgang 8 ist ein organisatorischer Abschnitt, keine Kompetenz. |
 | Platzierungen | Kontextuelle Zuordnung eines Ziels zu einer Programmeinheit. | Dasselbe Ziel wird in einem Bildungsgang in Jahrgang 8, in einem anderen in Jahrgang 9 erworben. |
 | Kompetenzachsen | Fachliche Taxonomien und querschnittliche Kategorien. | K1 „Mathematisch argumentieren“ ist eine Kategorie; „Argumentationslücken erkennen“ kann ein konkretes Ziel sein. |
 | Kompositionssicht | Geprüfter Aufbau des sichtbaren Baums für einen aufgelösten Bildungsumfang. | Eine Landesansicht verweist auf kanonische Teilbäume, ohne deren Ziele zu kopieren. |
@@ -26,7 +26,7 @@ Historische Bäume können Jahrgangs- und Phasenknoten als Kompatibilitätsgerü
 
 Eine *Projektion* leitet aus den Curriculumdaten einen sichtbaren Baum oder eine andere navigierbare Sicht ab. Sie gilt für einen *aufgelösten Kontext*, in dem Merkmale wie Bundesland, Schulform, Stufe, Dauer und Kursprofil festgelegt sind.
 
-`programUnits` beschreiben im Zielmodell einen expliziten Baum oder Wald von Programmeinheiten. `goalPlacements` verbinden Ziele mit diesen Einheiten. Eine `primary`-Platzierung liefert den normalen Programmanker; `secondary` zeigt zusätzliche Relevanz, `assessed` einen Prüfungsbezug. Sekundäre und prüfungsbezogene Zuordnungen erzeugen keine weiteren sichtbaren Kopien desselben Ziels.
+`programUnits` beschreiben im Zielmodell einen expliziten Baum oder Wald von Programmeinheiten. `goalPlacements` verbinden Ziele mit diesen Einheiten. Eine `primary`-Platzierung liefert den normalen Programmanker; `secondary` zeigt zusätzliche Relevanz, `assessed` einen Prüfungsbezug. Sekundäre und prüfungsbezogene Zuordnungen erzeugen keine weiteren sichtbaren Kopien desselben Ziels. Die Relation `own` hält kontextfrei fest, dass eine Lerneinheit ein atomares Ziel direkt besitzt (Abschnitt~@ref{sec:unit-representation}); sie ist kein Programmanker.
 
 Für einen aufgelösten Kontext gilt: Genau eine passende primäre Platzierung ergibt einen eindeutigen Anker. Ohne passende Platzierung darf die Darstellung keinen Elternknoten erfinden. Mehrere passende primäre Platzierungen benötigen eine ausdrücklich geprüfte Auflösung; sonst ist die Projektion uneindeutig. Die Kontextmerkmale ändern dabei nicht die Ziel-ID.
 

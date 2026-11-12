@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import { addCompletionRdfAssertions } from './fwuOwlCompletionSemantics'
+import { addLearningUnitRdfAssertions, learningUnitIri } from './fwuOwlLearningUnitSemantics'
 import type { SourceLogicalArtifact, ValidatedSourceJsonPackage } from './fwuOwlPackageSource'
 import {
   FwuOwlFieldRegistry,
@@ -51,6 +52,7 @@ export const FWU_OWL_SEGMENT_ROUTING: Readonly<Record<string, FwuOwlSegmentId>> 
   'completion-profile': 'runtime',
   'completion-scope': 'runtime',
   'completion-rule-review': 'runtime',
+  'learning-unit-coverage-review': 'runtime',
 })
 
 export type CompiledFwuOwlSegment = NTriplesSerialization & {
@@ -396,6 +398,11 @@ class SemanticContext {
       if (segments[0] === 'competencyCatalog' && data) {
         const id = stringValue(data.id, 'competency id')
         return this.competencyIris.get(id) ?? fail(`Unknown competency ${id}.`)
+      }
+      if (segments[0] === 'programUnits' && segments[2] === 'coverageReviews' && segments.length === 4 && data) {
+        // Runtime 1.2: a learning unit's coverage reviews are positioned records of that unit.
+        const unit = objectValue((root.programUnits as JsonValue[])[Number(segments[1])], 'learning unit')
+        return `${learningUnitIri(state.rootIri, stringValue(unit.id, 'learning-unit id'))}/coverage-review/${segments[3]}`
       }
       if (segments[0] === 'programUnits' && data) {
         return `${state.rootIri}/program-unit/${idSegment(stringValue(data.id, 'program-unit id'))}`
@@ -1192,8 +1199,10 @@ export const compileFwuOwlSemantics = (options: {
 }): FwuOwlCompilationResult => {
   const registry = new FwuOwlFieldRegistry(options.registryValue)
   const completionRegistry = registry.registryId === 'skillpilot-fwu-field-semantics-completion-v1'
-  if ((!completionRegistry && (registry.registryId !== 'skillpilot-fwu-field-semantics-v1' || registry.entries.length !== 456))
-      || (completionRegistry && registry.entries.length !== 473)) {
+  const learningUnitRegistry = registry.registryId === 'skillpilot-fwu-field-semantics-learning-units-v1'
+  const expectedEntries = completionRegistry ? 473 : learningUnitRegistry ? 475 : 456
+  if ((!completionRegistry && !learningUnitRegistry && registry.registryId !== 'skillpilot-fwu-field-semantics-v1')
+      || registry.entries.length !== expectedEntries) {
     fail(`Unsupported field registry ${registry.registryId} with ${registry.entries.length} entries.`)
   }
   const vocabulary = derivePackageVocabularyDeclarations(
@@ -1258,6 +1267,12 @@ export const compileFwuOwlSemantics = (options: {
       })
     } else {
       if (segmentId === 'runtime' && completionRegistry) addCompletionRdfAssertions(
+        orderedArtifacts.map(state => ({ role: state.artifact.normalizationRole,
+          rootIri: state.rootIri, document: state.document })),
+        context.goalIris, segmentTriples,
+      )
+      // Runtime 1.2: ownership, the unit hierarchy and coverage reviews as real relationships.
+      if (segmentId === 'landscape' && learningUnitRegistry) addLearningUnitRdfAssertions(
         orderedArtifacts.map(state => ({ role: state.artifact.normalizationRole,
           rootIri: state.rootIri, document: state.document })),
         context.goalIris, segmentTriples,

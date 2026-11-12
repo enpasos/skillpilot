@@ -9,8 +9,8 @@ Statt Fachkompetenzen, Jahrgangscontainer und Prozesstaxonomien in einer undiffe
 | Schicht | JSON- / Artefaktträger | Rolle und Invarianten |
 | --- | --- | --- |
 | **Zielschicht (Goal Layer)** | `goals[]`, `contains`, `requires` | Stabile prüfbare atomare Lernziele und fachliche Cluster; trägt Mastery, Frontier-Berechtigung und kanonische IDs. |
-| **Programmschicht (Program Layer)** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Kontextuelle Struktureinheiten wie Jahrgang, Halbjahr, Modul, Phase, Zweig oder Prüfung; nie direkt beherrschbar. |
-| **Verortungsschicht (Placement Layer)** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Hängt unveränderte kanonische Ziele (`primary`, `secondary`, `assessed`) unter expliziten Scope-Kontexten in Programmeinheiten ein. |
+| **Programmschicht (Program Layer)** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Kontextuelle Struktureinheiten wie Jahrgang, Halbjahr, Modul, Phase, Zweig oder Prüfung sowie Lerneinheiten (`kind: "learningUnit"`, Felder in [Graph-Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation)); nie direkt beherrschbar. |
+| **Verortungsschicht (Placement Layer)** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Hängt unveränderte kanonische Ziele (`primary`, `secondary`, `assessed`) unter expliziten Scope-Kontexten in Programmeinheiten ein; `own` ordnet ein atomares Ziel ohne Kontext der Lerneinheit zu, die es direkt besitzt. |
 | **Kompetenzachsenschicht** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonale Kompetenztaxonomien (z. B. Prozesskompetenzen `K1`–`K6`); keine primären Inhaltseltern, sofern nicht eigenständig prüfbar. |
 | **Composition-View-Schicht** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-spezifische obere Lernbäume, die geprüfte kanonische Teilbäume ohne Duplizierung von Zielinhalten referenzieren. |
 {cols="22%,32%,46%"}

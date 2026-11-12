@@ -255,8 +255,8 @@ SkillPilot trennt fünf Ebenen, die in älteren Bestandsgraphen teilweise noch v
 | Schicht | Inhalt | Beispiel |
 | --- | --- | --- |
 | Zielschicht (*Goal layer*) | überprüfbare Kompetenzen und fachliche Cluster | „lineare Funktionen verknüpfen“ |
-| Programmschicht (*Program layer*) | strukturelle Einheiten | `Jahrgang 8`, `E-Phase`, Modul, Kursprofil, Prüfung |
-| Platzierungsschicht (*Placement layer*) | Zuordnungen von Zielen zu Programmeinheiten | „dieses Ziel gehört in Q1“ |
+| Programmschicht (*Program layer*) | strukturelle Einheiten und Lerneinheiten | `Jahrgang 8`, `E-Phase`, Modul, Kursprofil, Prüfung, Lerneinheit |
+| Platzierungsschicht (*Placement layer*) | Zuordnungen von Zielen zu Programmeinheiten, auch das Eigentum von Lerneinheiten | „dieses Ziel gehört in Q1“ |
 | Kompetenzachsen (*Competency-axis layer*) | Taxonomieeinträge | `K1 Mathematisch argumentieren` |
 | Kompositionssicht (*Composition-view layer*) | kontextspezifische Lernbäume | `DE-BY / Gymnasium / SekII / Mathematik / LK` |
 
@@ -264,13 +264,13 @@ SkillPilot trennt fünf Ebenen, die in älteren Bestandsgraphen teilweise noch v
 
 *EN: Program unit* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Ein expliziter Strukturcontainer (Jahrgang, Halbjahr, Modul, Phase, Kursprofil, Prüfungsabschnitt), der über `parentUnitId` und `order` einen geordneten Baum bildet. Ein fachliches Lernziel darf nicht als Ersatz für eine Programmeinheit zweckentfremdet werden.
+Ein expliziter Strukturcontainer (Jahrgang, Halbjahr, Modul, Phase, Kursprofil, Prüfungsabschnitt), der über `parentUnitId` und `order` einen geordneten Baum bildet. Ein fachliches Lernziel darf nicht als Ersatz für eine Programmeinheit zweckentfremdet werden. Ein `programUnits`-Eintrag der Art `learningUnit` deklariert statt eines Strukturcontainers eine Lerneinheit (siehe unten).
 
 ### Lerneinheit (`LearningUnit`)
 
 *EN: Learning unit* — siehe [Lerneinheiten](skill-graph/learning-units.de.md) und [Optionale Planung (§12)](skill-graph/planning-and-budget.de.md)
 
-Ein rekursiv aufgebautes pädagogisches Ganzes mit explizitem Lernversprechen, motivierendem Einstieg, zugehörigen Zielen oder Untereinheiten und geprüfter Abschlussregel. Ein Jahrgang, Halbjahr oder bloßer Navigationscluster wird nicht allein durch Gruppierung zur Lerneinheit.
+Ein rekursiv aufgebautes pädagogisches Ganzes mit explizitem Lernversprechen, motivierendem Einstieg, zugehörigen Zielen oder Untereinheiten und geprüfter Abschlussregel. Ein Jahrgang, Halbjahr oder bloßer Navigationscluster wird nicht allein durch Gruppierung zur Lerneinheit. Seit der Entscheidung des Product Owners vom 12. November 2026 wird eine Lerneinheit in der Platzierungsschicht als `programUnits`-Eintrag der Art `learningUnit` mit Lernversprechen und Revision deklariert; sie besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die sie als Kind verlangt ([Feldreferenz](../dev/landscape-json-field-reference.de.md)).
 
 Jedes Ziel besitzt in der aufgelösten Einheitenhierarchie genau einen direkten Erwerbseigentümer; übergeordnete Einheiten aggregieren ihre Nachfahren. Der Abschluss folgt aus Pflichtkindern und eigenen Zielpflichten ohne gesondert gespeichertes Einheits-Mastery-Ergebnis. Eine offene Elternprüfung öffnet bereits erreichte Kindkompetenzen nicht wieder, und ein bestandener Elterntest ersetzt niemals geschützte Kindprüfungen oder Memorierkarten. Wirksame Kompetenz bleibt global, und einzelne Anerkennungen können dem vollständigen Einheitsabschluss vorausgehen; tragfähig ist eine solche Anerkennung nur in Einheiten, die die Gültigkeitsregeln R1–R5 vom 11. November 2026 erfüllen ([Graph-Definition §13.3](skill-graph/assessment-gated-completion.de.md#sec-why-graph-not-enough)). Dieses weiterentwickelte Konzept befindet sich noch in der Umsetzung; siehe auch [Einheitsfolge](skill-graph/learning-unit-progression.de.md).
 
@@ -278,7 +278,7 @@ Jedes Ziel besitzt in der aufgelösten Einheitenhierarchie genau einen direkten 
 
 *EN: Goal placement* — siehe [View Projection and Goal Placement](skill-graph/view-projection-and-goal-placement.de.md)
 
-Ein Eintrag, der ein unverändertes Lernziel unter einem geprüften Kontext an eine Programmeinheit anbindet (`primary`, `secondary`, `assessed`). Eine Platzierung hängt den fachlichen `contains`-Baum niemals um und erzeugt kein doppeltes Vorkommen im Standardbaum.
+Ein Eintrag, der ein unverändertes Lernziel unter einem geprüften Kontext an eine Programmeinheit anbindet (`primary`, `secondary`, `assessed`). Eine Platzierung hängt den fachlichen `contains`-Baum niemals um und erzeugt kein doppeltes Vorkommen im Standardbaum. Die Relation `own` hält ohne Kontext fest, dass eine Lerneinheit ein atomares Ziel direkt besitzt; sie hängt nichts in den Programmbaum ein.
 
 ### Kompetenzachse
 

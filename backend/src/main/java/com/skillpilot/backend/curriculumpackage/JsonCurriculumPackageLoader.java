@@ -36,6 +36,15 @@ public final class JsonCurriculumPackageLoader {
             "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json";
     private static final String COMPLETION_RELEASE_PROFILE = "full-standalone-completion-v1";
     private static final String COMPLETION_CAPABILITY = "assessmentCompletionV1";
+    // Runtime 1.2 extends runtime 1.0 with learning units; it is not a superset of 1.1.
+    private static final String LEARNING_UNIT_RUNTIME_VERSION = "1.2";
+    private static final String LEARNING_UNIT_CATALOG_SCHEMA_ID =
+            "https://skillpilot.com/schemas/curriculum-package/v1.2/runtime-catalog.schema.json";
+    private static final String LEARNING_UNIT_REVIEW_SCHEMA_ID =
+            "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-coverage-review.schema.json";
+    private static final String LEARNING_UNIT_RELEASE_PROFILE = "full-standalone-learning-units-v1";
+    private static final String LEARNING_UNIT_CAPABILITY = "learningUnitsV1";
+    private static final String LEARNING_UNIT_REVIEW_ROLE = "learning-unit-coverage-review";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
     private static final String RUNTIME_CONTRACT_VERSION = "1.0";
@@ -47,7 +56,7 @@ public final class JsonCurriculumPackageLoader {
             "memoryCards",
             "goalVisualizations",
             "embeddedDependencies",
-            "examNodes", COMPLETION_CAPABILITY);
+            "examNodes", COMPLETION_CAPABILITY, LEARNING_UNIT_CAPABILITY);
 
     private final CurriculumPackageProperties properties;
     private final CurriculumPackageRepository repository;
@@ -163,11 +172,14 @@ public final class JsonCurriculumPackageLoader {
         requireExactText(manifest, "packageFormatVersion", PACKAGE_FORMAT_VERSION, "package manifest");
         String runtimeVersion = requiredText(manifest, "runtimeContractVersion", "package manifest");
         boolean completion = runtimeVersion.equals("1.1");
-        if (!completion && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
+        boolean learningUnits = runtimeVersion.equals(LEARNING_UNIT_RUNTIME_VERSION);
+        if (!completion && !learningUnits && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
             throw failure("Unsupported runtime contract version: " + runtimeVersion);
         }
         requireExactText(manifest, "releaseProfile",
-                completion ? COMPLETION_RELEASE_PROFILE : RELEASE_PROFILE, "package manifest");
+                completion ? COMPLETION_RELEASE_PROFILE
+                        : learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : RELEASE_PROFILE,
+                "package manifest");
         requireExactText(manifest, "variant", "json", "package manifest");
         requireExactText(manifest, "packageId", lock.packageId(), "package manifest");
         requireExactText(manifest, "packageVersion", lock.packageVersion(), "package manifest");
@@ -186,8 +198,10 @@ public final class JsonCurriculumPackageLoader {
         ManifestFile catalogFile = exactlyOneRole(files, "runtime-catalog");
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema",
-                completion ? COMPLETION_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID, "runtime catalog");
-        requireExactText(catalog, "catalogVersion", completion ? "1.1" : "1.0", "runtime catalog");
+                completion ? COMPLETION_CATALOG_SCHEMA_ID
+                        : learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID,
+                "runtime catalog");
+        requireExactText(catalog, "catalogVersion", runtimeVersion, "runtime catalog");
         requireExactText(catalog, "runtimeContractVersion", runtimeVersion, "runtime catalog");
         JsonNode releaseBinding = requiredObject(catalog, "releaseBinding", "runtime catalog");
         requireExactText(releaseBinding, "releaseId", lock.releaseId(), "runtime catalog releaseBinding");
@@ -204,6 +218,9 @@ public final class JsonCurriculumPackageLoader {
         }
         if (completion != capabilities.contains(COMPLETION_CAPABILITY)) {
             throw failure("Assessment completion capability requires the exact runtime 1.1 release profile");
+        }
+        if (learningUnits != capabilities.contains(LEARNING_UNIT_CAPABILITY)) {
+            throw failure("Learning-unit capability requires the exact runtime 1.2 release profile");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -253,6 +270,7 @@ public final class JsonCurriculumPackageLoader {
                 installedPackage, catalog, resourceIndex, files);
         validateLocalCatalogBindings(landscapes, views, offerings, decks, resources);
         validateCompletionArtifacts(installedPackage, catalog, files, artifacts, verifiedPaths, landscapes, completion);
+        validateLearningUnitReviews(installedPackage, catalog, files, artifacts, verifiedPaths, learningUnits);
 
         for (ManifestFile file : files.values()) {
             if (!verifiedPaths.contains(file.path())) {
@@ -379,6 +397,67 @@ public final class JsonCurriculumPackageLoader {
                 verifyCompletionGoalRefs(rule, "assessmentGoalIds", goalIds);
                 verifyCompletionGoalRefs(rule, "waivableGoalIds", goalIds);
             }
+        }
+    }
+
+    /**
+     * Runtime 1.2 discovers every package-local coverage-review record exactly once. The records are
+     * static evidence; learning units themselves stay in the landscape payload and are not evaluated
+     * here. Earlier runtimes cannot carry such records.
+     */
+    private void validateLearningUnitReviews(
+            InstalledCurriculumPackage installed, JsonNode catalog, Map<String, ManifestFile> files,
+            Map<CurriculumRuntimeSnapshot.ArtifactKey, CurriculumRuntimeSnapshot.Artifact> artifacts,
+            Set<String> verified, boolean learningUnits) {
+        Set<String> inventory = new HashSet<>();
+        files.values().stream().filter(file -> LEARNING_UNIT_REVIEW_ROLE.equals(file.role()))
+                .forEach(file -> inventory.add(file.path()));
+        if (!learningUnits) {
+            if (!inventory.isEmpty() || catalog.has("learningUnitReviews")) {
+                throw failure("Only runtime 1.2 can carry learning-unit coverage reviews");
+            }
+            return;
+        }
+        JsonNode entries = requiredArray(catalog, "learningUnitReviews", "runtime 1.2 catalog");
+        if (entries.size() > 100_000) throw failure("Learning-unit review discovery is too large");
+        Set<String> indexed = new HashSet<>();
+        for (JsonNode entry : entries) {
+            requireFieldSet(entry, Set.of("id", "artifactPath"), "learning-unit review discovery");
+            String path = requiredRelativePath(entry, "artifactPath", "learning-unit review discovery");
+            requireExactText(entry, "id", path, "learning-unit review discovery");
+            if (!indexed.add(path)) throw failure("Duplicate learning-unit review path: " + path);
+            ManifestFile file = requiredRole(files, path, LEARNING_UNIT_REVIEW_ROLE);
+            if (!"application/json".equals(file.mediaType()) || !file.runtimeRequired()
+                    || !"logical-artifact".equals(file.semanticBindingKind()) || !path.equals(file.logicalId())
+                    || !LEARNING_UNIT_REVIEW_ROLE.equals(file.normalizationRole())
+                    || !LEARNING_UNIT_REVIEW_SCHEMA_ID.equals(file.validationSchemaId())) {
+                throw failure("Learning-unit review has incompatible manifest or semantic bindings: " + path);
+            }
+            byte[] bytes = readArtifactBytes(installed, file, verified);
+            JsonNode wrapper = parseJson(bytes, "learning-unit review " + path);
+            requireFieldSet(wrapper, Set.of("artifactFormatVersion", "artifactKind", "id", "definition"), "learning-unit review");
+            if (requiredNonNegativeLong(wrapper, "artifactFormatVersion", "learning-unit review") != 1) {
+                throw failure("Unsupported learning-unit review version");
+            }
+            requireExactText(wrapper, "artifactKind", "coverage-review", "learning-unit review");
+            requireExactText(wrapper, "id", path, "learning-unit review");
+            JsonNode definition = requiredObject(wrapper, "definition", "learning-unit review");
+            requireFieldSet(definition, Set.of("mediaType", "content", "sha256"), "learning-unit review definition");
+            String mediaType = requiredText(definition, "mediaType", "learning-unit review");
+            if (!Set.of("text/markdown", "application/json").contains(mediaType)) {
+                throw failure("Unsupported learning-unit review media type");
+            }
+            String content = requiredText(definition, "content", "learning-unit review");
+            requireExactText(definition, "sha256",
+                    CurriculumPackageFileReader.sha256(content.getBytes(StandardCharsets.UTF_8)), "learning-unit review");
+            if (mediaType.equals("application/json")) {
+                parseJson(content.getBytes(StandardCharsets.UTF_8), "learning-unit review content");
+            }
+            artifacts.get(new CurriculumRuntimeSnapshot.ArtifactKey(installed.lockEntry().packageId(), path))
+                    .retainVerifiedContent(bytes);
+        }
+        if (!indexed.equals(inventory)) {
+            throw failure("Learning-unit review discovery must exactly cover the manifest review records");
         }
     }
 

@@ -1,5 +1,11 @@
 # Umsetzungsplan: Lerneinheiten und integrierte Lernkarte
 
+> **Abgelöst am 12. November 2026** durch den
+> [Umsetzungsplan: Lerneinheiten für Mathematik und Physik](mathematics-physics-learning-units-plan.md).
+> S0 und die Karte im Cockpit (S1) dieses Plans sind geliefert. Die Stufen S2–S5
+> werden nach dem neuen Plan fortgeführt; dieser Text bleibt als Historie und
+> für die Nachnutzungsbefunde in Abschnitt 6 erhalten.
+
 **Stand: 5. November 2026. Arbeitsgrundlage für die Umsetzung.** Dieser Plan ersetzt den
 [vorherigen Neustartplan](curriculum-recognition-restart-plan.md) als Arbeitsgrundlage.
 Der alte Plan und [PR #79](https://github.com/enpasos/skillpilot/pull/79) bleiben als

@@ -32,6 +32,8 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 from jsonschema import Draft202012Validator, FormatChecker
 import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
+import curriculum_learning_units as learning_units
+import curriculum_package_learning_unit_contracts as learning_unit_contracts
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
     load_verified_semantic_kind_bindings,
@@ -1682,19 +1684,24 @@ def validate_schema_registry_coverage(
     if registry.value.get("registryId") == "skillpilot-fwu-field-semantics-completion-v1":
         role_schemas.update({role: "completion-artifact" for role in completion_contracts.ROLES.values()})
         runtime_roles.update(completion_contracts.ROLES.values())
+    if registry.value.get("registryId") == learning_unit_contracts.REGISTRY_ID:
+        role_schemas.update({role: "learning-unit-review" for role in learning_unit_contracts.ROLES.values()})
+        runtime_roles.update(learning_unit_contracts.ROLES.values())
     for role, schema_name in role_schemas.items():
         if role not in runtime_roles:
             continue
-        if role in completion_contracts.ROLES.values():
+        if role in completion_contracts.ROLES.values() or role in learning_unit_contracts.ROLES.values():
             # definition is one registered canonical-JSON literal, not an unregistered subtree.
             paths = {(field,) for field in schemas[schema_name]["properties"]}
         else:
             schema = schemas[schema_name]
-            if schema.get("$id") == completion_contracts.CATALOG_SCHEMA_ID:
+            if schema.get("$id") in (completion_contracts.CATALOG_SCHEMA_ID, learning_unit_contracts.CATALOG_SCHEMA_ID):
                 schema = completion_artifacts.schema_for_coverage(REPO_ROOT, schema)
             paths = schema_field_paths(schema)
             if schema.get("$id") == completion_contracts.CATALOG_SCHEMA_ID:
                 paths.add(("completionArtifacts", "*"))
+            if schema.get("$id") == learning_unit_contracts.CATALOG_SCHEMA_ID:
+                paths.add(("learningUnitReviews", "*"))
         require(paths, f"No reachable fields found in {schema_name}")
         paths_by_role[role] = paths
         for segments in sorted(paths):
@@ -1769,11 +1776,18 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
     profile = load_json(profile_path)
     require(isinstance(profile, dict), "Build profile must be an object")
     completion = "completion" in profile
+    learning = "learningUnits" in profile
     schema_files = dict(SCHEMA_FILES)
     if completion:
         schema_files["build-profile"] = CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json"
         schema_files["runtime-catalog"] = CONTRACT_ROOT.parent / "v1.1/runtime-catalog.schema.json"
         schema_files["completion-artifact"] = CONTRACT_ROOT.parent / "v1.1/completion-artifact.schema.json"
+    if learning:
+        learning_dir = CONTRACT_ROOT.parent / learning_unit_contracts.CONTRACT_DIRECTORY_NAME
+        schema_files["build-profile"] = learning_dir / "release-model-build-profile.schema.json"
+        schema_files["runtime-catalog"] = learning_dir / "runtime-catalog.schema.json"
+        schema_files["compiled-landscape"] = learning_dir / "compiled-landscape.schema.json"
+        schema_files["learning-unit-review"] = learning_dir / "learning-unit-coverage-review.schema.json"
     schemas: dict[str, dict[str, Any]] = {}
     validators: dict[str, Draft202012Validator] = {}
     for name, path in schema_files.items():
@@ -1790,6 +1804,10 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
     for name, schema_id in SCHEMA_IDS.items():
         if completion and name == "runtime-catalog":
             schema_id = completion_contracts.CATALOG_SCHEMA_ID
+        if learning and name == "runtime-catalog":
+            schema_id = learning_unit_contracts.CATALOG_SCHEMA_ID
+        if learning and name == "compiled-landscape":
+            schema_id = learning_unit_contracts.LANDSCAPE_SCHEMA_ID
         require(
             schemas[name].get("$id") == schema_id,
             f"Unexpected $id in trusted {name} schema",
@@ -1799,6 +1817,11 @@ def load_trusted_context(profile_path: Path) -> TrustedContext:
         offline = completion_artifacts.validators(REPO_ROOT)
         validators["runtime-catalog"] = offline[completion_contracts.CATALOG_SCHEMA_ID]
         validators["completion-artifact"] = offline[completion_contracts.ARTIFACT_SCHEMA_ID]
+    if learning:
+        offline = learning_units.schema_validators(REPO_ROOT)
+        validators["runtime-catalog"] = offline[learning_unit_contracts.CATALOG_SCHEMA_ID]
+        validators["compiled-landscape"] = offline[learning_unit_contracts.LANDSCAPE_SCHEMA_ID]
+        validators["learning-unit-review"] = offline[learning_unit_contracts.REVIEW_SCHEMA_ID]
     validate_schema(profile, validators["build-profile"], str(profile_path))
 
     contracts = profile["contracts"]
@@ -3415,9 +3438,21 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         "Semantic-kind ledger must cover exactly every canonical goal",
     )
 
-    compiled_landscape = copy.deepcopy(source_landscape)
-    compiled_landscape["$schema"] = SCHEMA_IDS["compiled-landscape"]
-    compiled_landscape["landscapeFormatVersion"] = "1.0"
+    learning_unit_profile = "learningUnits" in profile
+    try:
+        contract_source_landscape = (
+            source_landscape if learning_unit_profile
+            else learning_units.project_out_learning_units(source_landscape)
+        )
+    except learning_units.LearningUnitError as error:
+        raise ValidationError(str(error)) from error
+    compiled_landscape = copy.deepcopy(contract_source_landscape)
+    if learning_unit_profile:
+        compiled_landscape["$schema"] = learning_unit_contracts.LANDSCAPE_SCHEMA_ID
+        compiled_landscape["landscapeFormatVersion"] = learning_unit_contracts.LANDSCAPE_FORMAT_VERSION
+    else:
+        compiled_landscape["$schema"] = SCHEMA_IDS["compiled-landscape"]
+        compiled_landscape["landscapeFormatVersion"] = "1.0"
     goals = compiled_landscape["goals"]
     relocation = profile["pathRelocations"]
     relocation_records: list[dict[str, Any]] = []
@@ -3535,9 +3570,22 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
     )
     if "completion" in profile:
         compiled_landscape = completion_artifacts.canonicalize_exported_target_sets(
-            REPO_ROOT, profile["completion"], source_landscape, compiled_landscape,
+            REPO_ROOT, profile["completion"], contract_source_landscape, compiled_landscape,
             Normalizer(context.registry), canonical_json_bytes)
         goals = compiled_landscape["goals"]
+    learning_unit_documents: list[tuple[str, str, str, Any]] = []
+    learning_unit_inputs: list[dict[str, Any]] = []
+    if learning_unit_profile:
+        try:
+            compiled_landscape, learning_unit_documents, learning_unit_inputs = (
+                learning_units.compile_coverage_reviews(REPO_ROOT, compiled_landscape))
+        except (learning_units.LearningUnitError, learning_units.UnitGraphError) as error:
+            raise ValidationError(str(error)) from error
+        goals = compiled_landscape["goals"]
+        assert_json_equal(learning_units.learning_unit_counts(compiled_landscape),
+                          profile["learningUnits"]["expectedCounts"], "learning-unit counts")
+        for _role, _identity, _path, wrapper in learning_unit_documents:
+            validate_schema(wrapper, context.validators["learning-unit-review"], "coverage review")
     assert_acyclic(goals, "contains")
     assert_acyclic(goals, "requires")
     assert_program_unit_hierarchy_acyclic(compiled_landscape.get("programUnits", []))
@@ -3813,7 +3861,9 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
     )
 
     return {
-        "sourceLandscape": source_landscape,
+        "sourceLandscape": contract_source_landscape,
+        "learningUnitDocuments": learning_unit_documents,
+        "learningUnitInputs": learning_unit_inputs,
         "prerequisiteReductionProof": dict(reduction_bindings.provenance) if reduction_bindings else None,
         "sourceGoalById": source_goal_by_id,
         "landscape": compiled_landscape,
@@ -3905,6 +3955,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     if "completion" in profile:
         completion_documents, completion_inputs = completion_artifacts.compile_documents(
             REPO_ROOT, profile["completion"], model["sourceLandscape"], landscape)
+    learning_unit_profile = "learningUnits" in profile
+    learning_unit_documents: list[tuple[str, str, str, Any]] = model["learningUnitDocuments"]
     semantic_normalizer = Normalizer(context.registry)
     definitions: list[dict[str, Any]] = []
 
@@ -4511,6 +4563,15 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
             for _role, logical_id, path, document in completion_documents
         ]
+    if learning_unit_profile:
+        runtime_catalog["$schema"] = learning_unit_contracts.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = learning_unit_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = learning_unit_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["capabilities"].append(learning_unit_contracts.CAPABILITY)
+        runtime_catalog["learningUnitReviews"] = [
+            {"id": logical_id, "artifactPath": path}
+            for _role, logical_id, path, _document in learning_unit_documents
+        ]
 
     logical_documents: list[tuple[str, str, str, Any]] = [
         ("canonical-landscape", landscape_id, model["landscapePath"], landscape),
@@ -4556,6 +4617,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     )
     logical_documents.extend(model["publication"]["logicalDocuments"])
     logical_documents.extend(completion_documents)
+    logical_documents.extend(learning_unit_documents)
 
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
@@ -4640,7 +4702,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     require(
         len(model["publication"]["logicalDocuments"])
         == publication_content_counts["addedLogicalArtifacts"]
-        and len(logical_records) == publication_content_counts["totalLogicalArtifacts"] + len(completion_documents)
+        and len(logical_records) == publication_content_counts["totalLogicalArtifacts"]
+        + len(completion_documents) + len(learning_unit_documents)
         and len(binary_records) == publication_content_counts["binaryResources"],
         "Publication-evidence content-index counts changed",
     )
@@ -4684,11 +4747,12 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     ):
         validate_schema(value, context.validators[schema_name], label)
 
+    base_landscape = learning_units.project_out_learning_units(landscape)
     counts = {
         "landscapes": 1,
         "goals": len(goals),
-        "programUnits": len(landscape.get("programUnits", [])),
-        "goalPlacements": len(landscape.get("goalPlacements", [])),
+        "programUnits": len(base_landscape.get("programUnits", [])),
+        "goalPlacements": len(base_landscape.get("goalPlacements", [])),
         "competencyEntries": len(landscape.get("competencyCatalog", [])),
         "views": len(model["views"]),
         "decks": len(model["decks"]),
@@ -4711,7 +4775,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
 
     coverage_entries: list[dict[str, Any]] = []
     for entry in sorted(context.registry.entries, key=lambda item: item.entry_id):
-        if entry.role not in RUNTIME_REGISTRY_ROLES | set(completion_contracts.ROLES.values()):
+        if entry.role not in (RUNTIME_REGISTRY_ROLES | set(completion_contracts.ROLES.values())
+                              | set(learning_unit_contracts.ROLES.values())):
             continue
         coverage_entries.append(
             {
@@ -4777,6 +4842,8 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
     }
     if completion_documents:
         build_inputs["completionArtifacts"] = completion_inputs
+    if learning_unit_profile:
+        build_inputs["learningUnitReviews"] = model["learningUnitInputs"]
     conformance = {
         "reportFormatVersion": "1.0",
         "releaseId": release_id,
@@ -4789,6 +4856,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
         "closureDigest": closure["closureDigest"],
         "migrationDigest": migration["migrationDigest"],
         "counts": counts,
+        **({"learningUnitCounts": learning_units.learning_unit_counts(landscape)} if learning_unit_profile else {}),
         "publicationEvidenceCounts": model["publication"]["counts"],
         "publicationStatus": model["publication"]["publicationStatus"],
         "semanticKindCounts": dict(sorted(model["semanticCounts"].items())),
@@ -4816,6 +4884,7 @@ def complete_expected_model(context: TrustedContext, model: dict[str, Any]) -> N
             "runtimeCatalogPath": runtime_catalog_path,
             "logicalDocuments": logical_documents,
             "completionDocuments": completion_documents,
+            "learningUnitDocuments": learning_unit_documents,
             "contentIndex": content_index,
             "contentIndexPath": content_index_path,
             "contentDigest": content_digest,
@@ -4858,6 +4927,9 @@ def expected_json_documents(model: Mapping[str, Any]) -> dict[str, tuple[str | N
     for _role, _logical_id, output_path, value in model.get("completionDocuments", []):
         require(output_path not in documents, f"Duplicate output path: {output_path}")
         documents[output_path] = ("completion-artifact", value)
+    for _role, _logical_id, output_path, value in model.get("learningUnitDocuments", []):
+        require(output_path not in documents, f"Duplicate output path: {output_path}")
+        documents[output_path] = ("learning-unit-review", value)
     return documents
 
 
@@ -5692,6 +5764,23 @@ def validate_cross_document_integrity(
         landscape = documents_by_path[model["landscapePath"]]
         completion_artifacts.validate_package_documents(
             completion_documents, {goal["id"]: goal for goal in landscape["goals"]})
+    if catalog.get("runtimeContractVersion") == learning_unit_contracts.RUNTIME_CONTRACT_VERSION:
+        review_documents = [
+            (learning_unit_contracts.REVIEW_ROLE, entry["id"], entry["artifactPath"], documents_by_path[entry["artifactPath"]])
+            for entry in catalog.get("learningUnitReviews", [])
+        ]
+        try:
+            findings = learning_units.validate_package_learning_units(
+                [documents_by_path[model["landscapePath"]]], review_documents)
+        except (learning_units.LearningUnitError, KeyError) as error:
+            raise ValidationError(f"Packaged learning-unit reviews are invalid: {error}") from error
+        try:
+            learning_units.require_valid(findings, "Packaged learning units")
+        except learning_units.LearningUnitError as error:
+            raise ValidationError(str(error)) from error
+    else:
+        require(not learning_units.has_learning_unit_content(documents_by_path[model["landscapePath"]]),
+                "A runtime 1.0/1.1 landscape carries learning-unit fields")
     validate_closure_integrity(closure, context, model, documents_by_path)
     validate_migration_integrity(
         migration, closure, model, context, documents_by_path

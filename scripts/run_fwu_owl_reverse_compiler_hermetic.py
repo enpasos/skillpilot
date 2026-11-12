@@ -2189,6 +2189,8 @@ def validate_reconstructed_package(
         manifest = load_json_bytes(archive.read(manifests[0]), "reconstructed package manifest")
     if isinstance(manifest, dict) and manifest.get("runtimeContractVersion") == "1.1" and manifest.get("releaseProfile") == "full-standalone-completion-v1":
         command.extend(["--contracts-dir", str(REPO_ROOT / "contracts/curriculum-package/v1.1")])
+    if isinstance(manifest, dict) and manifest.get("runtimeContractVersion") == "1.2" and manifest.get("releaseProfile") == "full-standalone-learning-units-v1":
+        command.extend(["--contracts-dir", str(REPO_ROOT / "contracts/curriculum-package/v1.2")])
     try:
         result = subprocess.run(
             command,

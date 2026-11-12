@@ -522,12 +522,78 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   with reviewed coverage. Otherwise the unit's goals stay open, and the
   violation keeps the curriculum from reaching the milestone. A goal that no
   assessment covers therefore stays open *and* is a rule violation; it is never
-  recognized for free. No validator enforces R1–R5 yet (Graph Definition §13.3;
-  `GD-U05`, `GD-U06`, `GD-U15`, `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`,
-  `GD-A18`).
+  recognized for free (Graph Definition §13.3; `GD-U05`, `GD-U06`, `GD-U15`,
+  `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`, `GD-A18`).
+- **Resumption (Product Owner, 12 November 2026).** The learning-unit work is
+  resumed; the working plan is
+  `docs/dev/mathematics-physics-learning-units-plan.md` (Mathematics first, then
+  Physics). The catalog of units is derived in-house, block by block, from the
+  canonical graph and the design sheet; an external proposal is at most a
+  recorded origin, never a contract. Whole-unit access locks stay undecided.
+- **Unit contract (Product Owner, 12 November 2026).** Learning units are part
+  of the landscape and live in the existing placement layer; the Product Owner
+  rejected a separate catalog file beside the landscape as a bolt-on and asked
+  for a stable long-term contract, with a new schema version wherever one is
+  needed. A unit is a `programUnits` entry of kind `learningUnit` (`id`,
+  `label`, `labelEn`, `promise`, `promiseEn`, `revision`, optional
+  `parentUnitId` naming the unit that requires it as a child). It owns atomic
+  goals of the same landscape through `goalPlacements` of relation `own`,
+  which carry exactly `goalId`, `unitId` and `relation` (no `context`). Reviewed coverage (R2) is the unit's
+  `coverageReviews`, one entry per own assessment, hash-bound to that
+  assessment's task, solution and rubric; goal objects carry nothing of the
+  unit contract, so a review never changes a goal's bytes. The
+  optional landscape field `learningUnitCoverage` is `partial` or `complete`.
+  The declaration is closed: whole-unit prerequisites, access locks and waiver
+  lists cannot be expressed. Curriculum-package contract 1.2
+  (`contracts/curriculum-package/v1.2`) carries the units; builds under 1.0 or
+  1.1 project them out completely, and published files of earlier versions
+  stay unchanged. The completion profiles and scopes of contract 1.1 implement
+  the superseded waiver semantics and remain in operation only until the
+  runtime switches.
+- **Unit validator (12 November 2026).** `npm --prefix app run
+  validate:learning-units` enforces R1, R3 and R4 plus the declaration rules
+  fail-closed for every learning unit in the canonical landscapes and runs in
+  the required curriculum CI; only `learningUnitCoverage: "complete"` requires
+  an owner for every atomic goal. Missing R2 evidence is reported, not
+  rejected; it is not yet a milestone gate. R5 and implicit recognition are
+  not implemented: a learning unit has no runtime effect, and every goal is
+  still completed by its own explicit result. Never add an edge, weaken a goal
+  description or cut a unit to turn the validator green; a finding is a
+  subject-review task.
+- **Bindings ignore the learning-unit layer (12 November 2026).** Evidence
+  about goals, edges and assessments binds the landscape with its
+  learning-unit layer projected out: without `programUnits` of kind
+  `learningUnit`, without `goalPlacements` of relation `own` or towards a
+  learning unit, and without `learningUnitCoverage`. It is the projection the
+  package build applies for contracts 1.0 and 1.1; for a landscape without
+  units it is the identity. The prerequisite-reduction proof (TypeScript
+  verifier, Java test, Python bridge) and the input pin of the Mathematics
+  duration layout fingerprint that projection; the V6 to V8 registries are
+  unedited and still verify, and a registry record keeps its full digest. A
+  unit edit therefore never stales these proofs, and any other change still
+  does. Carriers that predate learning units follow the same rule: a 1.0 or
+  1.1 build and the legacy subject export (with its MEM/FWU roundtrip) ship
+  the landscape without the layer; only contract 1.2 carries units. This was
+  the recommendation presented to the Product Owner on 12 November 2026 after
+  the first placement attempt broke the proof chain; the Product Owner asked
+  to proceed. Never rebind a proof by hand and never touch a floor to place a
+  unit. Record: `docs/dev/canonical-math-learning-unit-pilot-binding-review-2026-11-12.md`.
+- **Redistribution ledger (Product Owner, 12 November 2026).** The committed,
+  CI-checked package-redistribution ledger is always the one of the contract
+  under which packages are released: today 1.0. The 1.2 ledger binds the 1.2
+  model, because a redistribution review must see everything that ships; it
+  is generated per build and is committed, taking over the CI check, when the
+  runtime switches to contract 1.2. Do not commit a ledger that no CI step
+  checks.
+- **First placed unit (12 November 2026).** Canonical Mathematics contains the
+  pilot unit `math-dot-product-projection` (one ordinary goal, one
+  assessment). It is structurally valid and carries no coverage review,
+  because its independent review found R2 not satisfied
+  (`curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-12.md`).
+  A stronger assessment needs a new assessment ID.
 
-This is revised concept documentation, not a new implemented schema, validator,
-or access policy. See `docs/concept/skill-graph/learning-units.md`,
+This is concept documentation plus a static authoring contract and validator,
+not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
 `docs/concept/skill-graph/learning-unit-progression.md`,
 `docs/concept/skill-graph/learning-unit-design-and-examples.md` (design criteria
 and worked candidates) and Graph Definition §11 (learning units), §12 (optional
@@ -661,8 +727,10 @@ explicitly reviewed migration. Do not invent a learner qualification registry.
 See `docs/concept/skill-graph/assessment-gated-completion.md` and the decision
 record `docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md`.
 This is the corrected concept, not a claim that current main implements it.
-Replan implementation only after concept reconciliation; review old PR work
-for reuse afterwards. Do not continue the old PR's runtime/curriculum rollout.
+Implementation was replanned on 12 November 2026 after the concept
+reconciliation (`docs/dev/mathematics-physics-learning-units-plan.md`, §2.4);
+old PR work is reused selectively. Do not continue the old PR's
+runtime/curriculum rollout.
 
 Cluster progress aggregates effective mastery of unique atomic descendants;
 no cluster or unit completion writes mastery to its children.

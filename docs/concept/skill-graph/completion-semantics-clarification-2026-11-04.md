@@ -155,3 +155,14 @@ Deckungsnachweis, Deckung nur innerhalb der Voraussetzungen der Prüfung, genau
 eine direkt zuständige Einheit und versionierter Vertrag. Wortlaut und
 Verortung der Regeln stehen in
 [Graph-Definition §13.3](assessment-gated-completion.de.md#sec-why-graph-not-enough).
+
+## Hinweis vom 12. November 2026
+
+Dieser Beschluss bleibt unverändert. Die technische Darstellung ist inzwischen
+festgelegt: Lerneinheiten liegen in der Platzierungsschicht ihrer
+Skill-Landschaft ([Graph-Definition §11.2](learning-units.de.md#sec-unit-representation)),
+der Curriculum-Paketvertrag 1.2 trägt sie, und der Arbeitsplan ist
+[Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md).
+Die Completion-Profile und -Scopes des Paketvertrags 1.1 setzen noch die hier
+abgelöste Freistellungsdeutung um und bleiben nur bis zur Umstellung der
+Runtime in Betrieb.

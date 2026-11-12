@@ -323,12 +323,12 @@ class FirstMathPrerequisiteReductionTest {
             ObjectNode reboundEnd = active.deepCopy();
             for (JsonNode binding : reboundEnd.path("catalogSources")) {
                 Path file = REPOSITORY.resolve(binding.path("path").asText());
-                ((ObjectNode) binding).put("currentDocumentDigest", rawHash(changedMetadata.get(file)));
+                ((ObjectNode) binding).put("currentDocumentDigest", documentHash(changedMetadata.get(file)));
             }
             for (JsonNode binding : reboundEnd.path("entries").get(reboundEnd.path("entries").size() - 1)
                     .path("batch").path("currentDocumentDigests")) {
                 Path file = REPOSITORY.resolve(binding.path("path").asText());
-                ((ObjectNode) binding).put("currentDocumentDigest", rawHash(changedMetadata.get(file)));
+                ((ObjectNode) binding).put("currentDocumentDigest", documentHash(changedMetadata.get(file)));
             }
             assertThatThrownBy(() -> readBasisBoundFrame(reboundEnd, changedMetadata)).isInstanceOf(AssertionError.class);
             assertThat(frame.currentDocuments()).as("negative overlays do not mutate the exact final V8 frame")
@@ -1358,9 +1358,9 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(declared.path("batches").get(0).path("id").asText())
                 .isEqualTo("de-complete-atomic-prerequisites-and-transitive-reduction");
         BatchNativeFrames frames = readBatchedReductionRegistry(declared, cacheFrame.documents());
-        assertRawDocumentDigest(frames.afterGerman().currentDocuments().get(PHYSICS_SOURCE),
+        assertDocumentDigest(frames.afterGerman().currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:d940e65e82bbe28b09395a61f7d6a117ca95589fb758e361cee0c0751a4939f1", "historical after-German Physics before cache refresh");
-        assertRawDocumentDigest(frames.afterPhysics().currentDocuments().get(PHYSICS_SOURCE),
+        assertDocumentDigest(frames.afterPhysics().currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:b03e3da1ac957226765dbec846a600fde1183719927652ed6caf0b7ec02b67ba", "historical after-Physics document before cache refresh");
         CurrentCacheComparisonFrames comparison = currentPhysicsCacheFrames(active, declared, cacheFrame, frames);
         ReductionRegistry prior = comparison.before(), current = comparison.after();
@@ -1374,9 +1374,9 @@ class FirstMathPrerequisiteReductionTest {
         assertThat(current.changedSources()).hasSize(881);
         assertThat(declared.path("batches").get(1).path("operations")).hasSize(2843);
         assertThat(declared.path("batches").get(1).path("legacyContinuations")).hasSize(17);
-        assertRawDocumentDigest(prior.currentDocuments().get(PHYSICS_SOURCE),
+        assertDocumentDigest(prior.currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:078683f2729c8d6ad893c61a9a702e0acafd95ff16bc001908aa3f3e6f6411f7", "derived after-German Physics with current V7 caches");
-        assertRawDocumentDigest(current.currentDocuments().get(PHYSICS_SOURCE),
+        assertDocumentDigest(current.currentDocuments().get(PHYSICS_SOURCE),
                 "sha256:bf83d684f86aa9c2ae46f8f8a4db93b709be4550993b372dce069b32699d817c", "actual final V7 Physics document");
         Set<String> physicsSources = new TreeSet<>();
         for (JsonNode original : declared.path("batches").get(1).path("originalRequires")) {
@@ -2484,7 +2484,7 @@ class FirstMathPrerequisiteReductionTest {
         for (var entry : historical.documentDigests().entrySet()) {
             // original() remains the unchanged historical reference. These derived
             // current frames are used only with originalBaseline=false, never as new sourceFP baselines.
-            digests.put(entry.getKey(), new DocumentDigests(entry.getValue().original(), rawHash(documents.get(entry.getKey()))));
+            digests.put(entry.getKey(), new DocumentDigests(entry.getValue().original(), documentHash(documents.get(entry.getKey()))));
         }
         ReductionRegistry result = new ReductionRegistry(historical.canonicalOwners(), historical.changesByFile(),
                 historical.changedSources(), historical.clusterWitnessCoverage(), Collections.unmodifiableMap(digests),
@@ -2765,7 +2765,7 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(canonical.path("landscapeId").asText()).isEqualTo(owner);
             DocumentDigests digests = new DocumentDigests(source.path("baselineDocumentDigest").asText(),
                     source.path("currentDocumentDigest").asText());
-            assertRawDocumentDigest(canonical, digests.current(), "current raw document " + relative);
+            assertDocumentDigest(canonical, digests.current(), "current raw document " + relative);
             documentDigests.put(file, digests);
             goalsByOwner.put(owner, rawGoals(canonical));
         }
@@ -3149,7 +3149,7 @@ class FirstMathPrerequisiteReductionTest {
             Path file = exactRegularRepositoryFile(relative);
             JsonNode document = readFrameDocument(file, suppliedDocuments);
             assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
-            assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual final V8 document " + relative);
+            assertDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual final V8 document " + relative);
             assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
         }
         assertThat(currentDocuments).hasSize(parentBindings.size());
@@ -3223,7 +3223,7 @@ class FirstMathPrerequisiteReductionTest {
             }
             assertThat(declared).as("exact changed eligible unbound assessment endpoints").isEqualTo(expected);
             if (index == 0) {
-                for (var binding : parentBindings.entrySet()) assertRawDocumentDigest(
+                for (var binding : parentBindings.entrySet()) assertDocumentDigest(
                         restored.get(REPOSITORY.resolve(binding.getKey())), binding.getValue().path("currentDocumentDigest").asText(),
                         "restored full V7 parent " + binding.getKey());
             } else assertFrameDigests(entries.get(index - 1).path("batch").path("currentDocumentDigests"), restored,
@@ -3265,7 +3265,7 @@ class FirstMathPrerequisiteReductionTest {
             Path file = entry.getKey();
             String owner = entry.getValue().path("landscapeId").asText();
             owners.put(file, owner);
-            digests.put(file, new DocumentDigests(rawHash(entry.getValue()), rawHash(frame.currentDocuments().get(file))));
+            digests.put(file, new DocumentDigests(documentHash(entry.getValue()), documentHash(frame.currentDocuments().get(file))));
             List<ChangedSource> fileChanges = new ArrayList<>();
             for (String source : frame.touchedSources()) {
                 String[] identity = qualifiedIdentity(source);
@@ -3344,7 +3344,7 @@ class FirstMathPrerequisiteReductionTest {
             Path file = exactRegularRepositoryFile(relative);
             JsonNode document = readFrameDocument(file, documents);
             assertThat(document.path("landscapeId")).isEqualTo(source.path("landscapeId"));
-            assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual V7 full document " + relative);
+            assertDocumentDigest(document, source.path("currentDocumentDigest").asText(), "actual V7 full document " + relative);
             assertThat(currentDocuments.putIfAbsent(file, document)).isNull();
         }
         assertThat(currentDocuments).hasSize(parentBindings.size());
@@ -3371,7 +3371,7 @@ class FirstMathPrerequisiteReductionTest {
         }
         for (var entry : restoredDocuments.entrySet()) {
             String relative = REPOSITORY.relativize(entry.getKey()).toString().replace(File.separatorChar, '/');
-            assertRawDocumentDigest(entry.getValue(), parentBindings.get(relative).path("currentDocumentDigest").asText(),
+            assertDocumentDigest(entry.getValue(), parentBindings.get(relative).path("currentDocumentDigest").asText(),
                     "historical V6 pre-cache full document " + relative);
         }
         assertThat(Files.readAllBytes(parentFile)).as("historical parent bytes remain unchanged").containsExactly(parentBytes);
@@ -3425,7 +3425,7 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/')).isEqualTo(relative);
             JsonNode document = readFrameDocument(file, documents);
             assertThat(document.path("landscapeId").asText()).isEqualTo(source.path("landscapeId").asText());
-            assertRawDocumentDigest(document, source.path("currentDocumentDigest").asText(), "V6 final document " + relative);
+            assertDocumentDigest(document, source.path("currentDocumentDigest").asText(), "V6 final document " + relative);
             assertThat(finalDocuments.putIfAbsent(file, document)).isNull();
         }
         assertThat(finalDocuments).hasSize(21);
@@ -3508,7 +3508,7 @@ class FirstMathPrerequisiteReductionTest {
         Map<Path, List<ChangedSource>> changes = new LinkedHashMap<>();
         Map<Path, DocumentDigests> digests = new LinkedHashMap<>();
         for (var entry : legacy.canonicalOwners().entrySet()) digests.put(entry.getKey(),
-                new DocumentDigests(legacy.documentDigests().get(entry.getKey()).original(), rawHash(documents.get(entry.getKey()))));
+                new DocumentDigests(legacy.documentDigests().get(entry.getKey()).original(), documentHash(documents.get(entry.getKey()))));
         for (String source : sources) {
             String[] identity = qualifiedIdentity(source);
             JsonNode before = registeredGoal(originalGoals, source), after = registeredGoal(currentGoals, source);
@@ -3583,7 +3583,7 @@ class FirstMathPrerequisiteReductionTest {
             assertThat(REPOSITORY.relativize(file).toString().replace(File.separatorChar, '/')).isEqualTo(relative);
             assertThat(paths.add(file)).as("unique %s path %s", label, file).isTrue();
             assertThat(documents).containsKey(file);
-            assertRawDocumentDigest(documents.get(file), binding.path("currentDocumentDigest").asText(), label + ": " + file);
+            assertDocumentDigest(documents.get(file), binding.path("currentDocumentDigest").asText(), label + ": " + file);
         }
         assertThat(paths).as("complete %s catalog paths", label).containsExactlyInAnyOrderElementsOf(documents.keySet());
     }
@@ -3591,6 +3591,15 @@ class FirstMathPrerequisiteReductionTest {
     private static String rawHash(JsonNode value) {
         try { return CompletionReviewBindings.canonicalHash(value, MAPPER); }
         catch (Exception error) { throw new IllegalStateException("Cannot hash raw native frame", error); }
+    }
+
+    /** Catalog document digest: the landscape without its learning-unit layer (registry records stay raw). */
+    private static String documentHash(JsonNode document) {
+        return LearningUnitLayerProjection.documentHash(document, MAPPER);
+    }
+
+    private static void assertDocumentDigest(JsonNode document, String expected, String label) {
+        assertThat(documentHash(document)).as(label).isEqualTo(expected);
     }
 
     private static void assertHistoricalBindings(JsonNode registry, boolean ordered, boolean continued, boolean clusterTargetNormalization) {
@@ -3668,7 +3677,7 @@ class FirstMathPrerequisiteReductionTest {
     private static JsonNode reconstructRawDocument(Path source, JsonNode current, String owner,
             DocumentDigests digests, List<ChangedSource> changes, boolean originalBaseline, Set<String> structuralSourceIds) {
         assertThat(current.path("landscapeId").asText()).isEqualTo(owner);
-        assertRawDocumentDigest(current, digests.current(), "current raw document " + source);
+        assertDocumentDigest(current, digests.current(), "current raw document " + source);
         JsonNode result = current.deepCopy();
         Map<String, JsonNode> goals = rawGoals(result);
         for (ChangedSource changed : changes) {
@@ -3687,7 +3696,7 @@ class FirstMathPrerequisiteReductionTest {
                 else ((ObjectNode) goal).remove("requires");
             }
         }
-        assertRawDocumentDigest(result, originalBaseline ? digests.original() : digests.current(),
+        assertDocumentDigest(result, originalBaseline ? digests.original() : digests.current(),
                 (originalBaseline ? "baseline" : "current") + " raw document " + source);
         return result;
     }
@@ -3780,7 +3789,7 @@ class FirstMathPrerequisiteReductionTest {
             if (!registry.originalDocuments().isEmpty()) {
                 tree = readFrameDocument(source, originalBaseline ? registry.originalDocuments() : registry.currentDocuments());
                 DocumentDigests digests = registry.documentDigests().get(source);
-                assertRawDocumentDigest(tree, originalBaseline ? digests.original() : digests.current(),
+                assertDocumentDigest(tree, originalBaseline ? digests.original() : digests.current(),
                         "explicit whole V8 " + (originalBaseline ? "baseline" : "current") + " frame " + source);
             } else tree = reconstructRawDocument(source, readFrameDocument(source, registry.currentDocuments()), registry.canonicalOwners().get(source),
                     registry.documentDigests().get(source), registry.changesByFile().getOrDefault(source, List.of()),

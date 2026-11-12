@@ -58,8 +58,8 @@ SkillPilot separates five layers that older legacy graphs sometimes mixed:
 | Layer | Holds | Example |
 | --- | --- | --- |
 | Goal layer | assessable competences and content clusters | "lineare Funktionen verknüpfen" |
-| Program layer | structural units | `Jahrgang 8`, `E-Phase`, module, track, exam |
-| Placement layer | links from goals into program units | "this goal belongs to Q1" |
+| Program layer | structural units and learning units | `Jahrgang 8`, `E-Phase`, module, track, exam, learning unit |
+| Placement layer | links from goals into program units, including learning-unit ownership | "this goal belongs to Q1" |
 | Competency-axis layer | taxonomy entries | `K1 Mathematisch argumentieren` |
 | Composition-view layer | scope-specific learner-facing trees | `DE-BY / Gymnasium / SekII / Mathematik / LK` |
 :::
@@ -68,13 +68,13 @@ SkillPilot separates five layers that older legacy graphs sometimes mixed:
 
 *DE: Programmeinheit* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-An explicit structural container (year, semester, module, phase, track, exam section) forming an ordered tree via `parentUnitId` and `order`. A content goal must never be reused as a stand-in for a program unit.
+An explicit structural container (year, semester, module, phase, track, exam section) forming an ordered tree via `parentUnitId` and `order`. A content goal must never be reused as a stand-in for a program unit. A `programUnits` entry of kind `learningUnit` declares a learning unit instead of a structural container (see below).
 
 ### Learning unit {unnumbered=true}
 
 *DE: Lerneinheit* — see [Learning Units](repo:docs/concept/skill-graph/learning-units.md) and [Optional Planning (§12)](repo:docs/concept/skill-graph/planning-and-budget.en.md)
 
-A recursively composed educational whole with a stated learning outcome, motivational introduction, constituent goals or subunits, and a reviewed completion rule (`LearningUnit`). A year, semester, or arbitrary navigation cluster does not become a learning unit solely by grouping goals.
+A recursively composed educational whole with a stated learning outcome, motivational introduction, constituent goals or subunits, and a reviewed completion rule (`LearningUnit`). A year, semester, or arbitrary navigation cluster does not become a learning unit solely by grouping goals. Since the Product Owner decision of 12 November 2026, a learning unit is declared in the placement layer as a `programUnits` entry of kind `learningUnit` with learning promise and revision; it owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([field reference](repo:docs/dev/landscape-json-field-reference.md)).
 
 Each target has one direct acquisition owner in the resolved unit hierarchy; parent units aggregate descendants. Completion follows from required children and the unit's own goal-type obligations without a stored unit-mastery result. An open parent exam does not reopen completed child competencies, and passing a parent exam never passes protected child exams or cards. Effective competence remains global, and individual recognition can precede complete unit completion; it is only sound inside units that satisfy the validity rules R1–R5 of 11 November 2026 ([Graph Definition §13.3](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)). This revised concept is not yet implemented in the runtime; see also [Learning Unit Progression](repo:docs/concept/skill-graph/learning-unit-progression.md).
 
@@ -82,7 +82,7 @@ Each target has one direct acquisition owner in the resolved unit hierarchy; par
 
 *DE: Zielplatzierung* — see [View Projection and Goal Placement](repo:docs/concept/skill-graph/view-projection-and-goal-placement.md)
 
-An entry attaching an unchanged goal to a program unit under a reviewed context (`primary`, `secondary`, `assessed`). A placement never re-parents the content `contains` tree and never creates a duplicate occurrence in the default tree.
+An entry attaching an unchanged goal to a program unit under a reviewed context (`primary`, `secondary`, `assessed`). A placement never re-parents the content `contains` tree and never creates a duplicate occurrence in the default tree. Relation `own` records, without context, that a learning unit directly owns an atomic goal; it attaches nothing to the program tree.
 
 ### Competency axis {unnumbered=true}
 

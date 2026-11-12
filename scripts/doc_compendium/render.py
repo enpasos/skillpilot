@@ -87,6 +87,8 @@ def tex_escape_code(text: str) -> str:
         ",": r",\allowbreak{}",
         "=": r"=\allowbreak{}",
         "?": r"?\allowbreak{}",
+        # A raw double quote is a babel shorthand in German ("o becomes an umlaut).
+        '"': r"\textquotedbl{}",
     }
     out: list[str] = []
     for idx, ch in enumerate(text):
@@ -879,6 +881,9 @@ def emit_tex_document(
         r"\cfoot{\pagemark}",
         r"\setlength{\headheight}{17pt}",
         r"\setcounter{tocdepth}{2}",
+        # A bold three-digit page number is wider than the default 1.55em box of a
+        # contents entry; 2em still lies inside the right margin (\@tocrmarg, 2.55em).
+        r"\makeatletter\renewcommand*{\@pnumwidth}{2em}\makeatother",
         r"\setcounter{secnumdepth}{2}",
         r"\setlist{nosep,leftmargin=*,topsep=4pt}",
         r"\setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}",

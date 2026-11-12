@@ -33,6 +33,8 @@ from typing import Any, Callable, Iterable, Iterator, Mapping, Sequence
 from jsonschema import Draft202012Validator, FormatChecker
 import curriculum_completion_artifacts as completion_artifacts
 import curriculum_package_completion_contracts as completion_contracts
+import curriculum_learning_units as learning_units
+import curriculum_package_learning_unit_contracts as learning_unit_contracts
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
     load_verified_semantic_kind_bindings,
@@ -1066,7 +1068,11 @@ def schema_validator(path: Path) -> Draft202012Validator:
 
 
 def validate_schema(value: Any, schema_name: str, context: str) -> None:
-    if schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
+    if isinstance(value, dict) and value.get("$schema") in learning_units.LEARNING_UNIT_SCHEMA_IDS:
+        validator = learning_units.schema_validators(REPO_ROOT)[value["$schema"]]
+    elif schema_name == "learning-unit-review":
+        validator = learning_units.schema_validators(REPO_ROOT)[learning_unit_contracts.REVIEW_SCHEMA_ID]
+    elif schema_name == "runtime-catalog" and isinstance(value, dict) and value.get("$schema") == completion_contracts.CATALOG_SCHEMA_ID:
         validator = completion_artifacts.validators(REPO_ROOT)[completion_contracts.CATALOG_SCHEMA_ID]
     elif schema_name == "build-profile" and isinstance(value, dict) and "completion" in value:
         validator = schema_validator(CONTRACT_ROOT.parent / "v1.1/release-model-build-profile.schema.json")
@@ -2969,9 +2975,24 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             raise CompilationError(f"Duplicate semantic-kind decision: {goal_id}")
         decisions_by_goal[goal_id] = decision
 
-    compiled_landscape = copy.deepcopy(source_landscape)
-    compiled_landscape["$schema"] = SCHEMA_IDS["compiled-landscape"]
-    compiled_landscape["landscapeFormatVersion"] = "1.0"
+    # Runtime 1.2 carries learning units; the 1.0 and 1.1 contracts receive the
+    # exact projection without any learning-unit field, so an older consumer
+    # never sees half a contract.
+    learning_unit_profile = "learningUnits" in profile
+    try:
+        contract_source_landscape = (
+            source_landscape if learning_unit_profile
+            else learning_units.project_out_learning_units(source_landscape)
+        )
+    except learning_units.LearningUnitError as error:
+        raise CompilationError(str(error)) from error
+    compiled_landscape = copy.deepcopy(contract_source_landscape)
+    if learning_unit_profile:
+        compiled_landscape["$schema"] = learning_unit_contracts.LANDSCAPE_SCHEMA_ID
+        compiled_landscape["landscapeFormatVersion"] = learning_unit_contracts.LANDSCAPE_FORMAT_VERSION
+    else:
+        compiled_landscape["$schema"] = SCHEMA_IDS["compiled-landscape"]
+        compiled_landscape["landscapeFormatVersion"] = "1.0"
     goals = compiled_landscape.get("goals")
     if not isinstance(goals, list):
         raise CompilationError("Canonical landscape goals are missing")
@@ -3082,8 +3103,24 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     if "completion" in profile:
         compiled_landscape = completion_artifacts.canonicalize_exported_target_sets(
-            REPO_ROOT, profile["completion"], source_landscape, compiled_landscape, normalizer, canonical_json_bytes)
+            REPO_ROOT, profile["completion"], contract_source_landscape, compiled_landscape, normalizer, canonical_json_bytes)
         goals = compiled_landscape["goals"]
+    learning_unit_documents: list[tuple[str, str, str, Any]] = []
+    learning_unit_inputs: list[dict[str, Any]] = []
+    if learning_unit_profile:
+        # Verify every unit and coverage-review binding against the exported
+        # task, solution and rubric before anything is written.
+        try:
+            compiled_landscape, learning_unit_documents, learning_unit_inputs = (
+                learning_units.compile_coverage_reviews(REPO_ROOT, compiled_landscape))
+        except (learning_units.LearningUnitError, learning_units.UnitGraphError) as error:
+            raise CompilationError(str(error)) from error
+        goals = compiled_landscape["goals"]
+        actual_unit_counts = learning_units.learning_unit_counts(compiled_landscape)
+        if actual_unit_counts != profile["learningUnits"]["expectedCounts"]:
+            raise CompilationError(f"Learning-unit conformance counts changed: {actual_unit_counts}")
+        for _role, _identity, _path, wrapper in learning_unit_documents:
+            validate_schema(wrapper, "learning-unit-review", "coverage review")
     validate_schema(compiled_landscape, "compiled-landscape", "compiled Mathematik landscape")
     assert_program_unit_hierarchy_acyclic(compiled_landscape.get("programUnits", []))
 
@@ -3318,9 +3355,11 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     completion_inputs: list[dict[str, Any]] = []
     if "completion" in profile:
         completion_documents, completion_inputs = completion_artifacts.compile_documents(
-            REPO_ROOT, profile["completion"], source_landscape, compiled_landscape)
+            REPO_ROOT, profile["completion"], contract_source_landscape, compiled_landscape)
         for _role, _identity, relative_path, document in completion_documents:
             write_json(output_root, relative_path, document)
+    for _role, _identity, relative_path, document in learning_unit_documents:
+        write_json(output_root, relative_path, document)
 
     copied_assessment_sources: list[dict[str, Any]] = []
     for source, target in sorted(assessment_sources.items()):
@@ -3851,6 +3890,15 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             {"id": logical_id, "kind": document["artifactKind"], "artifactPath": path}
             for _role, logical_id, path, document in completion_documents
         ]
+    if learning_unit_profile:
+        runtime_catalog["$schema"] = learning_unit_contracts.CATALOG_SCHEMA_ID
+        runtime_catalog["catalogVersion"] = learning_unit_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["runtimeContractVersion"] = learning_unit_contracts.RUNTIME_CONTRACT_VERSION
+        runtime_catalog["capabilities"].append(learning_unit_contracts.CAPABILITY)
+        runtime_catalog["learningUnitReviews"] = [
+            {"id": logical_id, "artifactPath": path}
+            for _role, logical_id, path, _document in learning_unit_documents
+        ]
     validate_schema(runtime_catalog, "runtime-catalog", "runtime catalog")
     write_json(output_root, runtime_catalog_path, runtime_catalog)
 
@@ -3872,6 +3920,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     )
     logical_documents.extend(publication_logical_documents)
     logical_documents.extend(completion_documents)
+    logical_documents.extend(learning_unit_documents)
     logical_records: list[dict[str, Any]] = []
     normalized_payloads: dict[tuple[str, str], bytes] = {}
     for role, logical_id, _path, value in logical_documents:
@@ -3909,7 +3958,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     if (
         len(publication_logical_documents)
         != expected_content_counts["addedLogicalArtifacts"]
-        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"] + len(completion_documents)
+        or len(logical_records) != expected_content_counts["totalLogicalArtifacts"]
+        + len(completion_documents) + len(learning_unit_documents)
         or len(binary_records) != expected_content_counts["binaryResources"]
     ):
         raise CompilationError(
@@ -3969,11 +4019,14 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         coverage_normalizer.normalize(normalization_role, value)
 
     expected = profile["expectedCounts"]
+    # Base counts always describe the 1.0 placement layer; learning units are
+    # counted separately in the 1.2 build profile.
+    base_landscape = learning_units.project_out_learning_units(compiled_landscape)
     actual_counts = {
         "landscapes": 1,
         "goals": len(goals),
-        "programUnits": len(compiled_landscape.get("programUnits", [])),
-        "goalPlacements": len(compiled_landscape.get("goalPlacements", [])),
+        "programUnits": len(base_landscape.get("programUnits", [])),
+        "goalPlacements": len(base_landscape.get("goalPlacements", [])),
         "competencyEntries": len(compiled_landscape.get("competencyCatalog", [])),
         "views": len(compiled_views),
         "decks": len(compiled_decks),
@@ -4011,6 +4064,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
             "source-goal-reference-index",
             "release-quality-evidence",
             *completion_contracts.ROLES.values(),
+            *learning_unit_contracts.ROLES.values(),
         }:
             continue
         coverage_entries.append(
@@ -4060,6 +4114,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
     }
     if completion_documents:
         build_inputs["completionArtifacts"] = completion_inputs
+    if learning_unit_profile:
+        build_inputs["learningUnitReviews"] = learning_unit_inputs
     write_json(output_root, "metadata/build-inputs.json", build_inputs)
 
     summary = {
@@ -4074,6 +4130,7 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
         "closureDigest": closure["closureDigest"],
         "migrationDigest": migration["migrationDigest"],
         "counts": actual_counts,
+        **({"learningUnitCounts": learning_units.learning_unit_counts(compiled_landscape)} if learning_unit_profile else {}),
         "publicationEvidenceCounts": publication_counts,
         "publicationStatus": next(
             value["publicationStatus"]
