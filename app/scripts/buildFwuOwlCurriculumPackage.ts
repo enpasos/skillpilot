@@ -301,6 +301,7 @@ export type BuildFwuOwlPackagePairOptions = Omit<CreateFwuOwlPackagePlanOptions,
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const DEFAULT_PACKAGE_PROFILE = 'contracts/curriculum-package/v1/profiles/fwu-owl-v1.profile.json'
 const COMPLETION_PACKAGE_PROFILE = 'contracts/curriculum-package/v1.1/profiles/fwu-owl-completion-v1.profile.json'
+const LEARNING_UNIT_PACKAGE_PROFILE = 'contracts/curriculum-package/v1.2/profiles/fwu-owl-learning-units-v1.profile.json'
 const DEFAULT_CORE_CHECKOUT = 'tmp/lehrplan-ontologie'
 const DEFAULT_WORK_DIRECTORY = 'tmp/fwu-owl-package-builder-work'
 const DEFAULT_OUTPUT_DIRECTORY = 'tmp/curriculum-release-model/fwu-owl-package'
@@ -495,7 +496,7 @@ const sourceRecordByPath = (source: ValidatedSourceJsonPackage, path: string) =>
 const validatePackageProfile = (profile: FwuOwlPackageProfile) => {
   if (
     profile.profileFormatVersion !== 1
-    || !['fwu-owl-v1', 'fwu-owl-completion-v1'].includes(profile.profileId)
+    || !['fwu-owl-v1', 'fwu-owl-completion-v1', 'fwu-owl-learning-units-v1'].includes(profile.profileId)
     || profile.compatibility.packageFormatVersion !== '1.0'
     || profile.compatibility.variant !== 'fwu-owl'
     || profile.rdfPolicy.segmentOrder.join('\n') !== FWU_OWL_SEGMENT_ORDER.join('\n')
@@ -724,7 +725,9 @@ export const createFwuOwlCurriculumPackagePlan = (
   assertSourceZipIntegrity(options.source, 'before FWU-OWL plan construction')
   const repositoryRoot = resolve(options.repositoryRoot ?? defaultRepositoryRoot)
   const completion = options.source.manifest.releaseProfile === 'full-standalone-completion-v1'
-  const canonicalProfile = completion ? COMPLETION_PACKAGE_PROFILE : DEFAULT_PACKAGE_PROFILE
+  const learningUnits = options.source.manifest.releaseProfile === 'full-standalone-learning-units-v1'
+  const canonicalProfile = completion ? COMPLETION_PACKAGE_PROFILE
+    : learningUnits ? LEARNING_UNIT_PACKAGE_PROFILE : DEFAULT_PACKAGE_PROFILE
   const packageProfileRepositoryPath = options.packageProfilePath ?? canonicalProfile
   const packageProfilePath = absoluteRepositoryPath(repositoryRoot, packageProfileRepositoryPath, 'FWU-OWL package profile')
   const packageProfileIntegrity = fileIntegrity(packageProfilePath)
@@ -740,7 +743,7 @@ export const createFwuOwlCurriculumPackagePlan = (
   ) fail('FWU-OWL package profile differs from the repository trust root.')
   const packageProfileSchemaPath = absoluteRepositoryPath(
     repositoryRoot,
-    `contracts/curriculum-package/${completion ? 'v1.1' : 'v1'}/fwu-owl-package-profile.schema.json`,
+    `contracts/curriculum-package/${completion ? 'v1.1' : learningUnits ? 'v1.2' : 'v1'}/fwu-owl-package-profile.schema.json`,
     'FWU-OWL package-profile schema',
   )
   const profileDocument = readJson<JsonObject>(packageProfilePath, 'FWU-OWL package profile')
@@ -1448,7 +1451,7 @@ const usage = `Usage:
 Options:
   --source-root <dir>                    Already validated/extracted archive root.
   --scratch-root <dir>                   Private physical 0700 directory on another local filesystem.
-  --source-contracts-dir <dir>           JSON trust root (v1.1 for completion packages).
+  --source-contracts-dir <dir>           JSON trust root (v1.1 completion, v1.2 learning-unit packages).
   --work-directory <dir>                 Temporary source-validation directory.
   --output-directory <dir>               Primary and reproducibility-peer output.
   --core-checkout <dir>                  Pinned lehrplan-ontologie checkout.

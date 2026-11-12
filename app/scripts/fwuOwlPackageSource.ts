@@ -342,10 +342,11 @@ const supportIdForSchema = (targetPath: string) => targetPath.replace(/^schemas\
 
 const assertSourceManifest = (manifest: SourceManifest) => {
   const completion = manifest.releaseProfile === 'full-standalone-completion-v1'
+  const learningUnits = manifest.releaseProfile === 'full-standalone-learning-units-v1'
   if (
     manifest.packageFormatVersion !== '1.0'
-    || manifest.runtimeContractVersion !== (completion ? '1.1' : '1.0')
-    || !['full-standalone-v1', 'full-standalone-completion-v1'].includes(manifest.releaseProfile)
+    || manifest.runtimeContractVersion !== (completion ? '1.1' : learningUnits ? '1.2' : '1.0')
+    || !['full-standalone-v1', 'full-standalone-completion-v1', 'full-standalone-learning-units-v1'].includes(manifest.releaseProfile)
     || manifest.variant !== 'json'
     || manifest.releaseId !== `${manifest.packageId}@${manifest.packageVersion}`
     || !CONTENT_DIGEST_PATTERN.test(manifest.contentDigest)
@@ -405,7 +406,9 @@ const loadSourceFromRoot = (
   if (
     semanticContentIndex.contentDigest !== manifest.contentDigest
     || semanticContentIndex.fieldSemanticsRegistry.id !== (manifest.releaseProfile === 'full-standalone-completion-v1'
-      ? 'skillpilot-fwu-field-semantics-completion-v1' : 'skillpilot-fwu-field-semantics-v1')
+      ? 'skillpilot-fwu-field-semantics-completion-v1'
+      : manifest.releaseProfile === 'full-standalone-learning-units-v1'
+        ? 'skillpilot-fwu-field-semantics-learning-units-v1' : 'skillpilot-fwu-field-semantics-v1')
     || semanticContentIndex.fieldSemanticsRegistry.id !== manifest.contractBindings.fieldSemanticsRegistry?.id
     || semanticContentIndex.fieldSemanticsRegistry.sha256 !== manifest.contractBindings.fieldSemanticsRegistry?.sha256
   ) fail('Source semantic-content-index identity differs from the manifest.')
@@ -530,7 +533,8 @@ const loadSourceFromRoot = (
       redistributionStatus: record.redistributionStatus === 'allowed' ? 'allowed' : 'review-required',
     }
   })
-  const expectedSchemaCount = manifest.releaseProfile === 'full-standalone-completion-v1' ? 26 : 22
+  const expectedSchemaCount = manifest.releaseProfile === 'full-standalone-completion-v1' ? 26
+    : manifest.releaseProfile === 'full-standalone-learning-units-v1' ? 25 : 22
   if (releaseSupport.length !== expectedSchemaCount) fail(`Source JSON release profile must bind exactly ${expectedSchemaCount} schemas, got ${releaseSupport.length}.`)
   releaseSupport.push({
     supportType: 'json-release-profile',

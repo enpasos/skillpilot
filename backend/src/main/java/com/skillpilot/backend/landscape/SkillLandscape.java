@@ -33,6 +33,8 @@ public class SkillLandscape {
     private List<ProgramUnit> programUnits;
     private List<GoalPlacement> goalPlacements;
     private List<CompetencyCatalogEntry> competencyCatalog;
+    /** Runtime contract 1.2: absent means no claim (partial); "complete" means every atomic goal is owned. */
+    private String learningUnitCoverage;
     private List<LearningGoal> goals;
 
     // Only the learner response compiler may supply this runtime scope marker.
@@ -224,6 +226,14 @@ public class SkillLandscape {
 
     public void setCompetencyCatalog(List<CompetencyCatalogEntry> competencyCatalog) {
         this.competencyCatalog = competencyCatalog;
+    }
+
+    public String getLearningUnitCoverage() {
+        return learningUnitCoverage;
+    }
+
+    public void setLearningUnitCoverage(String learningUnitCoverage) {
+        this.learningUnitCoverage = learningUnitCoverage;
     }
 
     public List<LearningGoal> getGoals() {

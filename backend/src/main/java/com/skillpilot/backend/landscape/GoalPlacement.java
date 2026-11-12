@@ -1,10 +1,17 @@
 package com.skillpilot.backend.landscape;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 
+/**
+ * One placement of a goal in a program unit. Relation {@code own} (runtime contract 1.2) is the
+ * direct ownership of an atomic goal by a learning unit and carries no context.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GoalPlacement {
+    public static final String OWN_RELATION = "own";
+
     private String goalId;
     private String unitId;
     private String relation;
@@ -40,5 +47,10 @@ public class GoalPlacement {
 
     public void setContext(Map<String, String> context) {
         this.context = context;
+    }
+
+    @JsonIgnore
+    public boolean isOwnership() {
+        return OWN_RELATION.equals(relation);
     }
 }

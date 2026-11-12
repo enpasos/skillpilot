@@ -363,6 +363,11 @@ run_curriculum_schema_ci() {
   python3 -B scripts/validate_curriculum_schema_catalog_contract.py
   python3 -B scripts/evaluate_curriculum_package_readiness.py --self-test
   python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test
+  echo "--> Validating Curriculum Package Contract 1.2 (learning units)"
+  python3 -B scripts/generate_curriculum_package_learning_unit_contracts.py --check
+  python3 -B scripts/validate_curriculum_package_contracts.py --contracts-dir contracts/curriculum-package/v1.2
+  python3 -B scripts/validate_full_standalone_curriculum_package.py --self-test --contracts-dir contracts/curriculum-package/v1.2
+  (cd scripts && python3 -B test_learning_unit_package.py)
   python3 -B scripts/provision_curriculum_package.py self-test
   python3 -B scripts/run_package_consumer_smoke.py --self-test
   SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
@@ -399,6 +404,8 @@ run_package_ci() {
     scripts/run_curriculum_release_model_conformance.sh \
     scripts/run_curriculum_full_package_conformance.sh
   bash scripts/run_curriculum_full_package_conformance.sh
+  echo "--> Proving the runtime 1.2 learning-unit lane on the real Mathematics release model"
+  python3 -B scripts/test_learning_unit_release_model.py
   export SKILLPILOT_CONFORMANCE_PACKAGE_STORE="${PROJECT_ROOT}/tmp/curriculum-release-model/provisioned-store"
   (
     cd backend

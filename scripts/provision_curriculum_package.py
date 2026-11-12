@@ -30,6 +30,7 @@ sys.dont_write_bytecode = True
 
 from jsonschema import Draft202012Validator  # noqa: E402
 import curriculum_package_completion_contracts as completion_contracts  # noqa: E402
+import curriculum_package_contract_selection as contract_selection  # noqa: E402
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -356,11 +357,11 @@ def trusted_json(path: Path, description: str) -> dict[str, Any]:
 
 def load_profile(contract_dir: Path = CONTRACT_DIR) -> dict[str, Any]:
     contract_dir = contract_dir.resolve()
-    if contract_dir not in {CONTRACT_DIR.resolve(), (CONTRACT_DIR.parent / "v1.1").resolve()}:
+    if contract_dir not in {CONTRACT_DIR.resolve(), *((CONTRACT_DIR.parent / name).resolve() for name in ("v1.1", "v1.2"))}:
         raise TrustFailure("Package contracts must select a software-pinned repository version")
-    profile_path = completion_contracts.profile_path(contract_dir)
+    profile_path = contract_selection.profile_path(contract_dir)
     profile = trusted_json(profile_path, "trusted package profile")
-    expected = completion_contracts.PROFILE_ID if completion_contracts.extended_directory(contract_dir) else "full-standalone-v1"
+    expected = contract_selection.profile_id(contract_dir)
     if profile.get("profileFormatVersion") != 1 or profile.get("profileId") != expected:
         raise TrustFailure("Unexpected trusted full-standalone package profile")
     limits = profile.get("archiveLimits")
@@ -1574,8 +1575,10 @@ def install_package(
             layout,
             timeout_seconds=timeout_seconds,
             validator_path=validator_path,
-            contracts_dir=(CONTRACT_DIR.parent / "v1.1")
-                if profile.get("profileId") == completion_contracts.PROFILE_ID else None,
+            contracts_dir={
+                completion_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.1",
+                contract_selection.learning_unit_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.2",
+            }.get(profile.get("profileId")),
         )
         assert_quarantine_unchanged(candidate, rehash=True)
         package_binding = validate_report_binding(
@@ -2150,7 +2153,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     install_parser.add_argument("--zip", type=Path, required=True)
     install_parser.add_argument(
         "--contracts-dir", type=Path, default=CONTRACT_DIR,
-        help="software-pinned curriculum contract directory (v1 or optional completion v1.1)",
+        help="software-pinned curriculum contract directory (v1, completion v1.1 or learning-unit v1.2)",
     )
     install_parser.add_argument(
         "--validator-timeout-seconds",

@@ -2095,6 +2095,21 @@ def select_completion_candidate() -> None:
                         for spec in CLASS_SPECS)
 
 
+def select_learning_unit_candidate() -> None:
+    """Runtime 1.2: bind the learning-unit release profile; old reviews stay untouched, nothing is approved."""
+    global PROFILE_ID, TARGET_PROFILE_ID, TARGET_PROFILE_PATH, SCHEMA_ID, REVIEW_ID, CLASS_SPECS
+    if TARGET_PROFILE_ID == "full-standalone-learning-units-v1":
+        return
+    PROFILE_ID = "de-gymnasium-mathematik-learning-units-release-model-v1"
+    TARGET_PROFILE_ID = "full-standalone-learning-units-v1"
+    TARGET_PROFILE_PATH = "contracts/curriculum-package/v1.2/profiles/full-standalone-learning-units-v1.profile.json"
+    SCHEMA_ID = SCHEMA_ID.replace("/v1/", "/v1.2/")
+    REVIEW_ID = "de-gymnasium-mathematik-learning-units-v1"
+    CLASS_SPECS = tuple({**spec, "artifactRoles": spec["artifactRoles"] +
+                        (["learning-unit-coverage-review"] if spec["classId"] == "skillpilot-data" else [])}
+                        for spec in CLASS_SPECS)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group(required=True)
@@ -2114,10 +2129,22 @@ def main() -> int:
         "--schema", type=Path, default=DEFAULT_SCHEMA, help="Trusted review schema"
     )
     parser.add_argument("--completion-candidate", action="store_true", help="bind the reviewed completion-capable runtime profile; no publication approval")
+    parser.add_argument("--learning-unit-candidate", action="store_true",
+                        help="bind the runtime-1.2 learning-unit profile; no publication approval")
     args = parser.parse_args()
+    if args.completion_candidate and args.learning_unit_candidate:
+        parser.error("Runtime 1.1 and 1.2 candidates are separate contracts")
     if args.ledger is None:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
-                       if args.completion_candidate else DEFAULT_LEDGER)
+                       if args.completion_candidate
+                       else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json")
+                       if args.learning_unit_candidate else DEFAULT_LEDGER)
+    if args.learning_unit_candidate:
+        if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
+            parser.error("Learning-unit candidates must use a separate ledger; the existing V1 review is preserved")
+        select_learning_unit_candidate()
+        if args.schema == DEFAULT_SCHEMA:
+            args.schema = CONTRACT_ROOT.parent / "v1.2/package-redistribution-review.schema.json"
     if args.completion_candidate:
         if args.ledger.resolve() == DEFAULT_LEDGER.resolve():
             parser.error("Completion candidates must use a separate ledger; the existing V1 review is preserved")

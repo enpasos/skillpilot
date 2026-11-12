@@ -359,7 +359,15 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
     if completions:
         add_duplicates(diagnostics, "DUPLICATE_COMPLETION_ID", "/completionArtifacts", [
             (entry.get("kind"), entry.get("id")) for entry in completions])
-    for collection in (landscapes, views, decks, resources, completions):
+    reviews = items(catalog.get("learningUnitReviews"))
+    if reviews:
+        add_duplicates(diagnostics, "DUPLICATE_LEARNING_UNIT_REVIEW_ID", "/learningUnitReviews",
+                       [entry.get("id") for entry in reviews])
+        for index, entry in enumerate(reviews):
+            if entry.get("id") != entry.get("artifactPath"):
+                diagnostics.append(Diagnostic("LEARNING_UNIT_REVIEW_ID_PATH_MISMATCH", f"/learningUnitReviews/{index}",
+                                              "A coverage-review identity is its package-local artifact path"))
+    for collection in (landscapes, views, decks, resources, completions, reviews):
         artifact_paths.extend(
             entry["artifactPath"]
             for entry in collection
@@ -390,6 +398,11 @@ def validate_catalog(catalog: Any, validator: Draft202012Validator) -> list[Diag
     }
     if "completionArtifacts" in catalog or "assessmentCompletionV1" in capabilities:
         expected_capabilities["assessmentCompletionV1"] = bool(completions)
+    # learningUnitsV1 is the contract capability of runtime 1.2: it states that
+    # learning units in the landscapes are authoritative, even when there are none.
+    if "learningUnitReviews" in catalog or "learningUnitsV1" in capabilities or catalog.get("runtimeContractVersion") == "1.2":
+        expected_capabilities["learningUnitsV1"] = (
+            catalog.get("runtimeContractVersion") == "1.2" and isinstance(catalog.get("learningUnitReviews"), list))
     for capability, expected in expected_capabilities.items():
         if (capability in capabilities) != expected:
             diagnostics.append(Diagnostic("CAPABILITY_MISMATCH", "/capabilities", f"Capability {capability!r} must be {expected}"))
@@ -452,6 +465,11 @@ def validate_catalog_against_manifest(
         if role is not None and isinstance(entry.get("artifactPath"), str):
             expected[role].add(entry["artifactPath"])
     roles_to_check = CATALOG_MANIFEST_ROLES | (set(completion_roles.values()) if completion_entries else set())
+    if "learningUnitReviews" in catalog:
+        roles_to_check = roles_to_check | {"learning-unit-coverage-review"}
+        for entry in items(catalog.get("learningUnitReviews")):
+            if isinstance(entry.get("artifactPath"), str):
+                expected["learning-unit-coverage-review"].add(entry["artifactPath"])
     for role in sorted(roles_to_check):
         paths = expected.get(role, set())
         actual = {record.get("path") for record in by_role.get(role, []) if isinstance(record.get("path"), str)}

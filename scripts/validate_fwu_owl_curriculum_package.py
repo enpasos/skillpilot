@@ -1265,8 +1265,9 @@ class Validation:
             before = pinned.sha256
             source_size = pinned.size
             command = [sys.executable, str(FULL_STANDALONE_VALIDATOR), "--zip", str(source), "--json"]
-            if self.trusted["profile"]["profileId"] == "fwu-owl-completion-v1":
-                command.extend(["--contracts-dir", str(CONTRACT_ROOT.parent / "v1.1")])
+            extension_root = contract_audit.EXTENSION_PROFILE_ROOTS.get(self.trusted["profile"]["profileId"])
+            if extension_root is not None:
+                command.extend(["--contracts-dir", str(CONTRACT_ROOT.parent / extension_root)])
             try:
                 result = subprocess.run(command, cwd=REPO_ROOT, stdin=subprocess.DEVNULL, capture_output=True, text=True, timeout=3600, check=False)
             except (OSError, subprocess.TimeoutExpired) as error:
@@ -1524,6 +1525,23 @@ class Validation:
                     goals = {goal["id"]: goal for a in reconstruction.artifacts if a.role == "canonical-landscape"
                              for goal in documents[a.key]["goals"]}
                     completion.validate_package_documents(completion_documents, goals)
+            except (reverse.ReverseCompilerError, ValueError) as error:
+                raise InvalidPackage(str(error)) from error
+        # Runtime 1.2: reverse compilation verifies the learning-unit graph
+        # assertions; the reconstructed landscapes must also satisfy every unit rule.
+        if self.trusted["profile"]["profileId"] == "fwu-owl-learning-units-v1":
+            reverse = importlib.import_module("scripts.reconstruct_json_curriculum_package_from_fwu_owl")
+            carrier = SimpleNamespace(manifest=self.manifest, read=self.archive.read, open=self.archive.open)
+            try:
+                with tempfile.TemporaryDirectory(prefix="learning-unit-rdf-proof-", dir=self.args.work_dir) as temporary:
+                    reconstruction = reverse.reconstruct(carrier, Path(temporary))
+                    learning_units = importlib.import_module("scripts.curriculum_learning_units")
+                    documents = reconstruction.documents
+                    landscapes = [documents[a.key] for a in reconstruction.artifacts if a.role == "canonical-landscape"]
+                    reviews = [(a.index_role, a.logical_id, reconstruction.artifact_paths[a.key], documents[a.key])
+                               for a in reconstruction.artifacts if a.role == reverse.LEARNING_UNIT_REVIEW_ROLE]
+                    learning_units.require_valid(
+                        learning_units.validate_package_learning_units(landscapes, reviews), "Reconstructed learning units")
             except (reverse.ReverseCompilerError, ValueError) as error:
                 raise InvalidPackage(str(error)) from error
         self._segment_paths = [item["path"] for item in segments]
@@ -2287,7 +2305,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--zip", type=Path, help="finished *.fwu-owl.zip")
     mode.add_argument("--self-test", action="store_true", help="run bounded adversarial tests")
-    parser.add_argument("--profile", choices=("fwu-owl-v1", "fwu-owl-completion-v1"), default="fwu-owl-v1", help="repository FWU trust root")
+    parser.add_argument("--profile", choices=("fwu-owl-v1", "fwu-owl-completion-v1", "fwu-owl-learning-units-v1"), default="fwu-owl-v1", help="repository FWU trust root")
     parser.add_argument("--source-json", type=Path, help="independent full-standalone JSON source ZIP")
     parser.add_argument("--reproducibility-peer", type=Path, help="byte-identical independent second FWU build")
     parser.add_argument("--robot-jar", type=Path, help="pinned ROBOT JAR")

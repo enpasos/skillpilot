@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1.2/learning-unit-coverage-review.schema.json",
+  "title": "Learning-unit coverage review record",
+  "description": "Package-local copy of one repository review record referenced by a learning unit's coverageReviews[].reference. The content is the unchanged review text; its UTF-8 bytes are bound by sha256. No learner result is representable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifactFormatVersion",
+    "artifactKind",
+    "id",
+    "definition"
+  ],
+  "properties": {
+    "artifactFormatVersion": {
+      "const": 1
+    },
+    "artifactKind": {
+      "const": "coverage-review"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^data/learning-units/reviews/[a-f0-9]{16}\\.json$"
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mediaType",
+        "content",
+        "sha256"
+      ],
+      "properties": {
+        "mediaType": {
+          "enum": [
+            "text/markdown",
+            "application/json"
+          ]
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 250000
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

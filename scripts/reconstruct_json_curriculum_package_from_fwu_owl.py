@@ -162,6 +162,120 @@ def validate_completion_assertions(store: Any, artifacts: Iterable[tuple[str, st
 
 
 
+# Runtime 1.2 learning units. Like the completion assertions these stay inside
+# this stdlib-only entrypoint, the only file mounted by the hermetic runner.
+LEARNING_UNIT_REVIEW_ROLE = "learning-unit-coverage-review"
+LEARNING_UNIT_CLASSES = ("LearningUnit", "LearningUnitCoverageReview", "LearningUnitCoverageReviewRecord")
+LEARNING_UNIT_OBJECT_PROPERTIES = ("coverageReviewedAssessment", "coverageReviewedGoal", "hasCoverageReview",
+                                   "hasCoverageReviewRecord", "hasParentLearningUnit", "ownsGoal")
+# Task and rubric revisions are registered typed literals of each review record.
+LEARNING_UNIT_DATA_PROPERTIES = ("coverageReviewContentSha256",)
+
+
+def learning_unit_assertions(artifacts: Iterable[tuple[str, str, dict[str, Any]]], base_iri: str) -> set[tuple[str, str, int, str, str, str]]:
+    """Expected explicit learning-unit graph for the reconstructed documents (mirrors fwuOwlLearningUnitSemantics.ts)."""
+    records = list(artifacts)
+    goal_ids: set[str] = set()
+    reviews: dict[str, str] = {}
+    for role, root, doc in records:
+        if role == "canonical-landscape":
+            goal_ids.update(identifier(goal.get("id"), "canonical goal") for goal in doc.get("goals", []))
+        elif role == LEARNING_UNIT_REVIEW_ROLE:
+            review_id = identifier(doc.get("id"), "coverage review record id")
+            if review_id in reviews:
+                raise ValueError("Duplicate coverage review record")
+            reviews[review_id] = root
+    result: set[tuple[str, str, int, str, str, str]] = set()
+
+    def iri(subject: str, predicate: str, target: str) -> None:
+        result.add((subject, SP + predicate, 1, target, "", ""))
+
+    def literal(subject: str, predicate: str, value: Any) -> None:
+        result.add((subject, SP + predicate, 0, identifier(value, predicate), "", XSD_STRING))
+
+    def rdf_type(subject: str, name: str) -> None:
+        result.add((subject, RDF_TYPE, 1, SP + name, "", ""))
+
+    def goal(value: Any) -> str:
+        goal_id = identifier(value, "learning-unit goal")
+        if goal_id not in goal_ids:
+            raise ValueError(f"Unresolved learning-unit goal {goal_id}")
+        return base_iri + "/goal/" + js_uri_component(goal_id)
+
+    for role, root, doc in records:
+        if role == LEARNING_UNIT_REVIEW_ROLE:
+            definition = doc.get("definition")
+            if not isinstance(definition, dict):
+                raise ValueError("Coverage review definition must be an object")
+            rdf_type(root, "LearningUnitCoverageReviewRecord")
+            literal(root, "coverageReviewContentSha256", definition.get("sha256"))
+            continue
+        if role != "canonical-landscape":
+            continue
+        units: dict[str, str] = {}
+        for unit in doc.get("programUnits", []):
+            if isinstance(unit, dict) and unit.get("kind") == "learningUnit":
+                unit_id = identifier(unit.get("id"), "learning-unit id")
+                if unit_id in units:
+                    raise ValueError("Duplicate learning unit")
+                units[unit_id] = root + "/program-unit/" + js_uri_component(unit_id)
+                rdf_type(units[unit_id], "LearningUnit")
+        for unit in doc.get("programUnits", []):
+            if isinstance(unit, dict) and unit.get("kind") == "learningUnit" and "parentUnitId" in unit:
+                parent = units.get(identifier(unit.get("parentUnitId"), "learning-unit parent"))
+                if parent is None:
+                    raise ValueError("Learning-unit parent is not a learning unit")
+                iri(units[unit["id"]], "hasParentLearningUnit", parent)
+        for placement in doc.get("goalPlacements", []):
+            if isinstance(placement, dict) and placement.get("relation") == "own":
+                unit = units.get(identifier(placement.get("unitId"), "own placement unit"))
+                if unit is None:
+                    raise ValueError("Own placement targets no learning unit")
+                iri(unit, "ownsGoal", goal(placement.get("goalId")))
+        for unit in doc.get("programUnits", []):
+            if not (isinstance(unit, dict) and unit.get("kind") == "learningUnit"):
+                continue
+            reviews_of_unit = unit.get("coverageReviews", [])
+            if not isinstance(reviews_of_unit, list):
+                raise ValueError("Coverage reviews must be a list")
+            for index, review in enumerate(reviews_of_unit):
+                if not isinstance(review, dict):
+                    raise ValueError("Coverage review must be an object")
+                node = units[unit["id"]] + "/coverage-review/" + str(index)
+                rdf_type(node, "LearningUnitCoverageReview")
+                iri(units[unit["id"]], "hasCoverageReview", node)
+                iri(node, "coverageReviewedAssessment", goal(review.get("assessmentGoalId")))
+                for target in identifiers(review.get("goalIds"), "coverage review goals"):
+                    iri(node, "coverageReviewedGoal", goal(target))
+                record = reviews.get(identifier(review.get("reference"), "coverage review reference"))
+                if record is None:
+                    raise ValueError("Unresolved coverage review record")
+                iri(node, "hasCoverageReviewRecord", record)
+    return result
+
+
+def validate_learning_unit_assertions(store: Any, artifacts: Iterable[tuple[str, str, dict[str, Any]]], base_iri: str) -> None:
+    """The asserted graph must equal the graph implied by the reconstructed JSON: nothing missing, nothing extra."""
+    expected = learning_unit_assertions(artifacts, base_iri)
+    predicates = [SP + value for value in (*LEARNING_UNIT_OBJECT_PROPERTIES, *LEARNING_UNIT_DATA_PROPERTIES)]
+    classes = [SP + value for value in LEARNING_UNIT_CLASSES]
+    actual = store.connection.execute(
+        "SELECT s,p,k,o,lang,dt FROM triples WHERE p IN (" + ",".join("?" for _ in predicates) + ")"
+        + " OR (p=? AND k=1 AND o IN (" + ",".join("?" for _ in classes) + "))",
+        (*predicates, RDF_TYPE, *classes),
+    )
+    remaining = expected.copy()
+    unexpected = 0
+    for row in actual:
+        if row in expected:
+            remaining.discard(row)
+        else:
+            unexpected += 1
+    if remaining or unexpected:
+        raise ValueError(f"Learning-unit RDF assertions differ from the reconstructed landscape "
+                         f"({len(remaining)} missing, {unexpected} unexpected)")
+
+
 REVERSE_COMPILER_ID = "skillpilot-fwu-owl-reverse-compiler-v1"
 REVERSE_COMPILER_VERSION = "1.0.0"
 SUPPORTED_REGISTRY_ID = "skillpilot-fwu-field-semantics-v1"
@@ -173,6 +287,8 @@ SUPPORTED_REGISTRIES = {
     SUPPORTED_REGISTRY_SHA256: (SUPPORTED_REGISTRY_ID, SUPPORTED_REGISTRY_VERSION, 456),
     "d19497f0b18b0c7733dcaf6f5dc63590352814c2d764c858b333751b5af25e9d": (SUPPORTED_REGISTRY_ID, SUPPORTED_REGISTRY_VERSION, 456),
     "41841c69b6dc4fc973d9814ae529de5dace1ad3c00bd2aa73ae09d2dd8654754": ("skillpilot-fwu-field-semantics-completion-v1", "1.1.0", 473),
+    # Generated by scripts/generate_curriculum_package_learning_unit_contracts.py (runtime 1.2).
+    "746ff0a757f28d7a734714846ca8104909646ac5e2d570772d9cfb052218bc25": ("skillpilot-fwu-field-semantics-learning-units-v1", "1.2.0", 475),
 }
 COMPLETION_GENERATED_FIELDS = frozenset({
     "runtime.completion.completionartifacts", "runtime.completion.completionartifacts-item",
@@ -180,6 +296,11 @@ COMPLETION_GENERATED_FIELDS = frozenset({
     "runtime.completion.completionartifacts-item.artifactpath",
 })
 COMPLETION_ROLES = {"completion-profile": "profile", "completion-scope": "scope", "completion-rule-review": "review"}
+LEARNING_UNIT_GENERATED_FIELDS = frozenset({
+    "runtime.learning-units.learningunitreviews", "runtime.learning-units.learningunitreviews-item",
+    "runtime.learning-units.learningunitreviews-item.id", "runtime.learning-units.learningunitreviews-item.artifactpath",
+})
+LEARNING_UNIT_SCHEMA_PREFIX = "https://skillpilot.com/schemas/curriculum-package/v1.2/"
 
 RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 XSD = "http://www.w3.org/2001/XMLSchema#"
@@ -1288,7 +1409,7 @@ class FwuPackage:
             raise ReverseCompilerError("FWU-OWL manifest is not strict JSON") from error
         if (
             self.manifest.get("variant") != "fwu-owl"
-            or (self.manifest.get("releaseProfile"), self.manifest.get("runtimeContractVersion")) not in {("fwu-owl-v1", "1.0"), ("fwu-owl-completion-v1", "1.1")}
+            or (self.manifest.get("releaseProfile"), self.manifest.get("runtimeContractVersion")) not in {("fwu-owl-v1", "1.0"), ("fwu-owl-completion-v1", "1.1"), ("fwu-owl-learning-units-v1", "1.2")}
             or self.manifest.get("archiveRoot") != self.root
             or self.manifest.get("releaseId")
             != f"{self.manifest.get('packageId')}@{self.manifest.get('packageVersion')}"
@@ -1452,6 +1573,7 @@ def reconstruct_normalized(
             result[artifact.key] = compiler.reconstruct(artifact)
         try:
             validate_completion_assertions(store, ((a.role, a.root_iri, result[a.key]) for a in artifacts), base)
+            validate_learning_unit_assertions(store, ((a.role, a.root_iri, result[a.key]) for a in artifacts), base)
         except ValueError as error:
             raise ReverseCompilerError(str(error)) from error
         return result
@@ -1479,6 +1601,7 @@ def derive_artifact_paths(
     artifact_ids = {item.key for item in artifacts}
     expected_closure_ids = {
         item.key for item in artifacts if item.role not in SINGLETON_PATHS and item.role not in COMPLETION_ROLES
+        and item.role != LEARNING_UNIT_REVIEW_ROLE
     }
     if not expected_closure_ids.issubset(paths):
         fail("dependency closure does not recover every non-singleton logical artifact path")
@@ -1498,6 +1621,11 @@ def derive_artifact_paths(
             kind = COMPLETION_ROLES[artifact.role]
             singleton = identity if kind == "review" else f"data/completion/{kind}s/{identity}.json"
             safe_package_path(singleton)
+        if artifact.role == LEARNING_UNIT_REVIEW_ROLE:
+            # A coverage-review identity is its package-local artifact path.
+            singleton = safe_package_path(require_string(normalized[artifact.key].get("id"), "coverage review ID"))
+            if not singleton.startswith("data/learning-units/reviews/"):
+                fail("coverage review artifact path is outside data/learning-units/reviews/")
         if singleton is None:
             fail(f"no released artifact path for {artifact.logical_id}")
         paths[artifact.key] = singleton
@@ -1561,7 +1689,9 @@ def populate_generated_fields(
     definition_profile: Mapping[str, Any],
 ) -> dict[str, dict[str, Any]]:
     completion = package.manifest.get("runtimeContractVersion") == "1.1"
-    expected_generated = frozenset(GENERATED_FIELD_RECIPES) | (COMPLETION_GENERATED_FIELDS if completion else frozenset())
+    learning_units = package.manifest.get("runtimeContractVersion") == "1.2"
+    expected_generated = (frozenset(GENERATED_FIELD_RECIPES) | (COMPLETION_GENERATED_FIELDS if completion else frozenset())
+                          | (LEARNING_UNIT_GENERATED_FIELDS if learning_units else frozenset()))
     if registry.generated_ids != expected_generated:
         fail("generated-field compatibility table does not exactly cover the pinned registry")
     documents = {logical_id: copy.deepcopy(value) for logical_id, value in normalized.items()}
@@ -1610,6 +1740,9 @@ def populate_generated_fields(
             schema_field, schema_id, version_field = schemas_and_versions[artifact.role]
             documents[artifact.key][schema_field] = schema_id
             documents[artifact.key][version_field] = "1.0"
+            if learning_units and artifact.role == "canonical-landscape":
+                documents[artifact.key][schema_field] = LEARNING_UNIT_SCHEMA_PREFIX + "compiled-landscape.schema.json"
+                documents[artifact.key][version_field] = "1.2"
 
     migration_artifact = artifact_by_role(artifacts, "migration-aliases")
     migration = documents[migration_artifact.key]
@@ -1663,6 +1796,12 @@ def populate_generated_fields(
         view["artifactPath"] = view_path[require_string(view.get("viewId"), "viewId")]
 
     runtime = documents[artifact_by_role(artifacts, "runtime-catalog").key]
+    if learning_units:
+        runtime["$schema"] = LEARNING_UNIT_SCHEMA_PREFIX + "runtime-catalog.schema.json"
+        runtime["catalogVersion"] = "1.2"
+        runtime["learningUnitReviews"] = sorted(
+            ({"id": paths[a.key], "artifactPath": paths[a.key]} for a in artifacts if a.role == LEARNING_UNIT_REVIEW_ROLE),
+            key=lambda value: value["id"])
     if completion:
         runtime["$schema"] = "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json"
         runtime["catalogVersion"] = "1.1"
@@ -1819,6 +1958,7 @@ LOGICAL_SCHEMA_BY_ROLE = {
     "resource-index": SCHEMA_IDS["resource-index"],
     "runtime-catalog": SCHEMA_IDS["runtime-catalog"],
     **{role: "https://skillpilot.com/schemas/curriculum-package/v1.1/completion-artifact.schema.json" for role in COMPLETION_ROLES},
+    LEARNING_UNIT_REVIEW_ROLE: LEARNING_UNIT_SCHEMA_PREFIX + "learning-unit-coverage-review.schema.json",
     "source-goal-reference-index": SCHEMA_IDS["source-goal-reference-index"],
     "source-index": SCHEMA_IDS["official-source-index"],
 }
@@ -1835,6 +1975,7 @@ LOGICAL_PROVENANCE_BY_ROLE = {
     "resource-index": "generated-metadata",
     "runtime-catalog": "generated-metadata",
     **{role: "skillpilot-authored" for role in COMPLETION_ROLES},
+    LEARNING_UNIT_REVIEW_ROLE: "skillpilot-authored",
     "source-goal-reference-index": "official-source-metadata",
     "source-index": "official-source-metadata",
 }
@@ -1849,6 +1990,7 @@ RUNTIME_LOGICAL_ROLES = {
     "resource-index",
     "runtime-catalog",
     *COMPLETION_ROLES,
+    LEARNING_UNIT_REVIEW_ROLE,
 }
 SEMANTIC_CONTRACT_SCHEMA_IDS = {
     "semanticNormalForm": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
@@ -2078,9 +2220,17 @@ def recover_license_documents(package: FwuPackage, payloads: dict[str, bytes], r
     return license_documents
 
 
+def logical_schema_id(role: str, runtime_contract_version: str) -> str:
+    if role == "runtime-catalog" and runtime_contract_version == "1.1":
+        return "https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json"
+    if role in {"runtime-catalog", "canonical-landscape"} and runtime_contract_version == "1.2":
+        return LEARNING_UNIT_SCHEMA_PREFIX + ("runtime-catalog" if role == "runtime-catalog" else "compiled-landscape") + ".schema.json"
+    return LOGICAL_SCHEMA_BY_ROLE[role]
+
+
 def completion_content_license(role: str, review: Mapping[str, Any], path: str = "") -> tuple[str | None, str]:
     """Retain prior decisions; apply the existing owner grant only to own policy."""
-    if role not in COMPLETION_ROLES:
+    if role not in COMPLETION_ROLES and role != LEARNING_UNIT_REVIEW_ROLE:
         # Retain existing grants; do not manufacture clearance for another role.
         classes = [require_object(item, "redistribution class") for item in require_list(review.get("classDecisions", []), "redistribution classes")]
         owners = [item for item in classes if role in require_list(item.get("artifactRoles"), "class artifact roles")]
@@ -2151,7 +2301,7 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
             "mediaType": "application/json",
             **integrity(raw),
             "runtimeRequired": artifact.index_role in RUNTIME_LOGICAL_ROLES,
-            "validationSchemaId": ("https://skillpilot.com/schemas/curriculum-package/v1.1/runtime-catalog.schema.json" if artifact.index_role == "runtime-catalog" and package.manifest["runtimeContractVersion"] == "1.1" else LOGICAL_SCHEMA_BY_ROLE[artifact.index_role]),
+            "validationSchemaId": logical_schema_id(artifact.index_role, package.manifest["runtimeContractVersion"]),
             "licenseExpression": content_license,
             "provenanceClass": LOGICAL_PROVENANCE_BY_ROLE[artifact.index_role],
             "redistributionStatus": content_redistribution,
@@ -2261,7 +2411,8 @@ def build_package_plan(reconstruction: Reconstruction) -> PackagePlan:
     contract_bindings: dict[str, dict[str, str]] = {}
     schema_bindings = {
         "manifestSchema": "schemas/package-manifest.schema.json",
-        "runtimeCatalogSchema": ("schemas/v1.1/runtime-catalog.schema.json" if package.manifest["runtimeContractVersion"] == "1.1" else "schemas/runtime-catalog.schema.json"),
+        "runtimeCatalogSchema": {"1.1": "schemas/v1.1/runtime-catalog.schema.json", "1.2": "schemas/v1.2/runtime-catalog.schema.json"}.get(
+            package.manifest["runtimeContractVersion"], "schemas/runtime-catalog.schema.json"),
         "schemaCatalogSchema": "schemas/schema-catalog.schema.json",
     }
     for name, path in schema_bindings.items():
