@@ -524,3 +524,12 @@ plan.
   still running, as is the complete historical backend regression. The ready
   PR runs the full remote tier in parallel. These ongoing runs are not yet
   successful acceptance evidence; terminal results belong in the PR record.
+- 2026-11-13: the first full PR CI exposed an independent MCP npm-audit
+  failure (`GHSA-qv5m-9pm6-hqp3`, `GHSA-jpvv-r467-5p4w`). Fresh local audits
+  confirmed the affected dependency in both provider apps. Updated only
+  `@hono/node-server` to 2.1.6: the existing OpenAI override and lock entry,
+  and the Claude transitive lock entry. Both installs and audits pass with
+  zero reported vulnerabilities; OpenAI 67/67 and Claude 30/30 tests pass.
+  Active and historical widget bytes are unchanged. A fresh full PR run is
+  required for the resulting head; earlier successful jobs do not substitute
+  for that result.
