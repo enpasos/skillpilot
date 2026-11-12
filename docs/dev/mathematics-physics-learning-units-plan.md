@@ -254,9 +254,8 @@ Daraus folgt für Stufe 2:
    Änderungen des Reviews. Bestandene Versuche der alten ID werden nicht
    aufgewertet. Das ist eine Änderung der kanonischen Mathematik mit eigener
    Quellen-, Review- und Hashbindung und ein eigener PR. Voraussetzung ist der
-   eingefrorene Reduktionsnachweis (Abschnitt 1) samt dem Folgeschritt, der
-   die Wiederholungen der echten Nachweishistorie aus der laufenden CI nimmt;
-   vorher darf kein kanonisches Ziel geändert werden.
+   eingefrorene Reduktionsnachweis (Abschnitt 1); die Wiederholungen der echten
+   Nachweishistorie sind aus der laufenden CI genommen.
 2. **Grenze des Pilots prüfen:** Ob das Ziel eine eigene Einheit bildet oder zu
    einer Einheit über den ganzen Cluster „Skalarprodukt, Orthogonalität und
    metrische Grundlagen im Raum“ gehört, entscheidet der Entwurf dieses Blocks.
@@ -359,8 +358,6 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 
-Zuerst den eingefrorenen Reduktionsnachweis abschließen: nach dem Einfrieren die
-Wiederholungen der echten Nachweishistorie aus der laufenden CI nehmen. Danach
 Stufe 2 fortsetzen: die stärkere Prüfung für den Pilot entwerfen und unabhängig
 gegenlesen lassen, parallel die Kandidaten M01 und P13 nach dem Entwurfsbogen
 ausarbeiten. Stufe 3 beginnt, sobald eine Einheit einen vollständigen

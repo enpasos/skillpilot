@@ -140,6 +140,7 @@ Eine Übertragung kann mehrere Felder nennen.
 | Java, `FirstMathPrerequisiteReductionTest` gegen das Elternregister | bestanden, alle 9 Tests; mit den 3 Tests von `LearningUnitLayerProjectionConformanceTest` 55 Minuten |
 | Python-Brücke, `test_prerequisite_reduction_semantic_kind.py` | bestanden, 26 Tests in rund 85 s, darunter der Lauf über den echten Node-Prüfer mit dem V9-Register |
 | `quality:curriculum-status` | neu erzeugt in 192 s statt zuvor rund 640 s. Es ändern sich Vertragsname, Registerdigest und die Liste der gestützten Ziele (1.465 Quellen werden zu 1.361 Übertragungen); kein Reifegrad ändert sich. |
+| `check:prerequisite-reduction-freeze` | bestanden, 422 s: Das eingecheckte Register ist byteweise die Ableitung aus dem vollständig geprüften Elternregister. |
 | Paketmodell Mathematik, `run_curriculum_release_model_conformance.sh` | bestanden in 382 s. Der Inhaltsdigest des Modells bleibt `5d3cf9c7…`, der Weitergabeledger ist aktuell, zwei Bauten sind bytegleich; die Modellmetadaten nennen den Vertrag V9. |
 | Verbrauchertests, die den Nachweiskontext laden | bestanden: Q4-Caterer-Umfang, Q2.5-Streckung, Q2-M7-Projektion, Deep-Understanding-Rollout, Auflösung der Beschreibungsreviews, Lernzielbuchmodell und Physik-Lernzielbuch-Eingaben |
 
@@ -154,12 +155,24 @@ Eine Übertragung kann mehrere Felder nennen.
   Fachdatei ohne Einheitenschicht und veraltet bei jeder Zieländerung in
   Mathematik.
 
-## Folgeschritt
+## Wiederholungen der Historie beendet
 
-Drei Prüfungen rechnen die echte Historie noch gegen den aktuellen Katalog
-nach: der Live-Abschnitt von `testPrerequisiteReductionProof.ts`, die Java-Klasse
-`FirstMathPrerequisiteReductionTest` und die Bindung der Einheitenprojektion an
-den Dokumentdigest der Mathematik. Sie können nur am Einfrierstand bestehen. An
-diesem Stand laufen sie in der CI noch einmal vollständig; das ist der Beleg
-des Einfrierens. Ein Folge-PR nimmt sie aus der laufenden CI. Bis dahin darf
-kein kanonisches Ziel geändert werden.
+Drei Prüfungen rechneten die echte Historie gegen den aktuellen Katalog nach
+und konnten deshalb nur am Einfrierstand bestehen. Dort liefen sie ein letztes
+Mal vollständig (Tabelle oben). Eine eigene Folgeänderung hat sie aus der
+laufenden CI genommen; erst danach dürfen kanonische Ziele geändert werden.
+
+| Bisher | Jetzt |
+| --- | --- |
+| Live-Abschnitt von `testPrerequisiteReductionProof.ts`: vollständige Prüfung des V8-Nachweises | Prüft nur das eingefrorene Register: seine Bytes, sein Elternregister und für jedes Ziel des Katalogs, ob eine Übertragung gilt und welchen Stand sie liefert. Die Zahl der Dokumente, Ziele und aktiven Übertragungen ist nicht festgeschrieben. Laufzeit der Testkette 241 s statt 650 s. |
+| Java `FirstMathPrerequisiteReductionTest`: sechs Wiederholungen und drei Prüfungen des aktuellen Katalogs, 51 Minuten | Die sechs Wiederholungen entfallen. Die drei Prüfungen des aktuellen Katalogs, darunter `APV-102`, stehen in `CanonicalRequiredLearningGateTest` (140 s) und lesen kein Register mehr. Eine Verhaltensprüfung des `LearnerService`, die nur in einer Wiederholung lief, ist als synthetischer Test in `ProjectionRoleLearnerServiceTest` erhalten. |
+| CI-Job `backend-reduction-proofs` in zwei Partitionen | Entfällt; `backend-ci` führt die ganze Backend-Suite aus. |
+| Einheitenprojektion: TypeScript, Python und ein Java-Spiegel prüfen den Dokumentdigest der Mathematik gegen das Register | TypeScript und Python prüfen, dass der Fingerabdruck der Mathematik mit und ohne Einheitenschicht gleich ist. Der Java-Spiegel diente nur den Wiederholungen und entfällt. |
+
+Die Fixture-Regressionen aller Verträge V1 bis V9 bleiben. Die drei
+Biologie-Ziele, auf denen ein Teil davon aufbaut, liegen als Schnappschuss vom
+Einfrierstand in `app/scripts/fixtures/prerequisite-reduction-basis-bound-goals.json`.
+
+`npm --prefix app run check:prerequisite-reduction-freeze` bleibt als Werkzeug
+erhalten. Es kann den vollständigen Nachweis nur auf einem Arbeitsbaum
+nachrechnen, dessen Katalog der Einfrierstand ist.

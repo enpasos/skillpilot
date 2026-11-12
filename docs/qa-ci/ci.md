@@ -62,8 +62,7 @@ In the complete check, `goal-book-publication` builds and verifies all registere
 | `curriculum-assessment-proofs` | yes | Transitive-minimality proofs plus assessment, exam, and route tests |
 | `curriculum-integrated-build` | yes | Runtime assets, visualization checks, integrated application build, and package-only frontend |
 | `curriculum-package-contracts` | yes | Package contracts and self-tests, schemas, goal IDs, archive, and legacy-reference validators |
-| `backend-ci` | yes | Every backend test class except prerequisite-reduction proofs across three disjoint parallel test JVMs (`scripts/run_backend_ci.py`; previously failed tests retry first) |
-| `backend-reduction-proofs` | no | Prerequisite-reduction proofs across two parallel partitions (all non-Physics subjects plus the Physics method isolated); plain `./gradlew check` still runs the entire suite serially |
+| `backend-ci` | yes | Every backend test class across three disjoint parallel test JVMs (`scripts/run_backend_ci.py`; previously failed tests retry first); plain `./gradlew check` runs the same suite serially |
 
 <a id="sec-qal-ci-scopes"></a>
 ### 1.3. Curriculum, View, and Archive Boundaries and Optional Package CI

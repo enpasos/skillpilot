@@ -436,17 +436,19 @@ Interpretation rules:
   Current support requires a fully resolved local expression and rejects
   malformed, duplicate, cyclic, foreign or Memory-derived dependencies. This is a temporary
   compiler boundary, not a restriction on foreign prerequisites in the Personal
-  Curriculum. Existing Biology and Economics basis bindings use the V8 proof
-  contract for their historical review comparisons. Ordinary current
+  Curriculum. The V8 proof contract introduced the existing Biology and
+  Economics basis bindings; the frozen V9 registry carries their reviewed
+  values per goal. Ordinary current
   description-review contexts still reject an unqualified basis; the
   current-state decision does not extend the review schema. Those evidence
   bindings remain intact; new graph acceptance follows the current-state
   decision above and does not require another prerequisite-migration
   preservation proof. The milestone producer uses the frozen proof only for
   review reuse (registry contract V9, §2.2). The complete-proof verifier stays
-  as a tool with its fixture regressions; replays of the real history can pass
-  only while the catalog still is the frozen end state and are retired before
-  the first goal change.
+  as a tool with its fixture regressions. The replays of the real history ran
+  for the last time at the freeze and are retired; the native gates on the
+  current catalog, among them `APV-102`, live in
+  `CanonicalRequiredLearningGateTest`.
 - local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem
