@@ -7,7 +7,7 @@ This page groups security and privacy documentation.
 ## Privacy and Storage
 
 - [Data Privacy and Storage Concept](data-privacy.md)
-- [Coach Feedback: Production Cleanup, 12 September 2026 (DE)](coach-feedback-cleanup-2026-09-12.md)
+- [Coach Feedback: Production Cleanup, 12 September 2026](coach-feedback-cleanup-2026-09-12.en.md)
 
 ## OpenAI MCP
 

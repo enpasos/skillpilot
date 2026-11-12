@@ -74,7 +74,7 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Didactic & Planning Compendium (PDF)](didactic/skillpilot-didactics-and-planning.en.pdf)
 - [Feynman Technique for Learning](didactic/feynman-rules.md)
 - [Frontier Goal Selection Strategies & Autopilot](didactic/frontier-goal-selection-strategies-autopilot.md)
-- [Curriculum Time Axis, Buffer Planning, and Target-vs-Actual Pacing (DE)](didactic/curriculum-time-axis-and-pacing.md)
+- [Curriculum Time Axis, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 - [Unified Learning Plan Status](didactic/unified-learning-plan-status.en.md)
 - [Learning Velocity](didactic/learning-velocity.md)
 - [Course Plan Update Continuity](runtime-workflows/course-plan-update-continuity.en.md)
@@ -85,7 +85,7 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [Coach & Runtime Architecture Compendium (PDF)](runtime-workflows/skillpilot-coach-and-runtime-architecture.en.pdf)
   Unified single-source compendium covering personalization, learning/sync/import-export workflows, portable MCP-host strategy, ChatClient/backend contract, coach topology, OAuth/session binding, behavioral Golden Journeys, and plugin lifecycle.
 - [Learning Workflow](runtime-workflows/learning-workflow.md)
-- [Daily Learning Progress: Former Calculation (Superseded, DE)](runtime-workflows/daily-learning-progress.md)
+- [Daily Learning Progress: Former Calculation (Superseded)](runtime-workflows/daily-learning-progress.en.md)
 - [Existing-Learner Teacher View by SkillPilot ID](runtime-workflows/existing-learner-teacher-view.md)
 - [Import/Export Workflow](runtime-workflows/import-export-workflow.md)
 - [Client-State Sync](runtime-workflows/client-state-sync.md)
@@ -95,9 +95,9 @@ This page is the entry point for durable SkillPilot concepts. Keep implementatio
 - [OpenAI Plugin: Versioning and Lifecycle](runtime-workflows/openai-plugin-versioning-and-lifecycle.en.md)
 - [OpenAI MCP App: OAuth App Binding and 24h Learning Session](runtime-workflows/openai-mcp-oauth-learner-session-architecture.en.md)
 - [OpenAI MCP: Authorized Client Binding](../security/openai-mcp-client-binding.en.md)
-- [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.md)
+- [ChatGPT Visible Session Flow](runtime-workflows/chatgpt-visible-session-flow.en.md)
   Retained Custom-GPT rollback runtime with visible cross-turn relay; not the current production reference architecture.
-- [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.md)
+- [Legacy ChatGPT Startcode / Session Flow](runtime-workflows/chatgpt-startcode-session-flow.en.md)
   Historical retained rollback architecture; not the current ChatGPT path.
 
 ## Maintenance
@@ -205,9 +205,9 @@ Diese Seite ist der Einstiegspunkt für dauerhafte SkillPilot-Konzepte. Umsetzun
 - [OpenAI-Plugin: Versionierung und Lebenszyklus](runtime-workflows/openai-plugin-versioning-and-lifecycle.md)
 - [OpenAI-MCP-App: OAuth-Appbindung und 24h-Lernsession](runtime-workflows/openai-mcp-oauth-learner-session-architecture.md)
 - [OpenAI-MCP: Bindung an den zugelassenen Client](../security/openai-mcp-client-binding.md)
-- [ChatGPT Visible Session Flow (EN)](runtime-workflows/chatgpt-visible-session-flow.md)
+- [Custom GPT: sichtbarer Notfallfallback (Rollback)](runtime-workflows/chatgpt-visible-session-flow.md)
   Erhaltene Custom-GPT-Rollback-Laufzeit; nicht die aktuelle Referenzarchitektur.
-- [Legacy ChatGPT Startcode / Session Flow (EN)](runtime-workflows/chatgpt-startcode-session-flow.md)
+- [Custom GPT: privater Startcode- und Session-Flow (Historisch)](runtime-workflows/chatgpt-startcode-session-flow.md)
   Historische Rollback-Architektur; nicht der aktuelle ChatGPT-Pfad.
 
 ## Pflegehinweise

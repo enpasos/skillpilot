@@ -4,7 +4,7 @@
 
 - [Terms of Use](https://skillpilot.com/legal)
 - [Privacy Policy](https://skillpilot.com/privacy)
-- [Review of Legal Texts of 13 September 2026 and Open Operator Details (DE)](legal-privacy-review-2026-09-13.md)
+- [Review of Legal Texts of 13 September 2026 and Open Operator Details](legal-privacy-review-2026-09-13.en.md)
 - [EU AI Act: Compliance Baseline of 29 July 2026](ki-verordnung-compliance-stand-2026-07-29.en.md)
 - [Machine-readable AI Transparency Inventory](ai-transparency-inventory.json)
 

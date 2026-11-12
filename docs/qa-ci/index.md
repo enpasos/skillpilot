@@ -140,6 +140,9 @@ Diese Seiten beschreiben dauerhafte manuelle oder teilautomatisierte Prüfprozes
 
 These files are generated snapshots or queues. Do not edit them as source of truth; regenerate them with the command documented in the matching process, runbook, or registry.
 
+- [Generated QA Status Artifact Registry](status/README.md)
+- [Current Curriculum Quality Status](status/curriculum-quality-status.md)
+
 </div>
 
 <div data-sp-content-lang="de" markdown>
@@ -148,10 +151,11 @@ These files are generated snapshots or queues. Do not edit them as source of tru
 
 Diese Dateien sind generierte Snapshots oder Arbeitswarteschlangen. Sie werden nicht manuell editiert, sondern über das im jeweiligen Prozess, Runbook oder Register dokumentierte Kommando neu erzeugt.
 
+- [Verzeichnis generierter QS-Statusberichte](status/README.de.md)
+- [Aktueller Curriculum-Qualitätsstatus](status/curriculum-quality-status.de.md)
+
 </div>
 
-- [Generated QA Status Artifact Registry](status/README.md)
-- [Current Curriculum Quality Status](status/curriculum-quality-status.md)
 - [Curriculum Source Coverage Audit](status/curriculum-source-coverage-audit.md)
 - [Mathematik Source Verification](status/source-verification-de-gymnasium-mathematik-v1.md)
 - [MEM SPARQL Consistency Audit Status](status/mem-sparql-consistency-audit.md)

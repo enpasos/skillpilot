@@ -15,7 +15,7 @@
 ## 5. Learning-Goal Book and Local Time Planning for Teachers
 
 !!! info "Status and Scope Boundary"
-    Approved by the Product Owner on 5 September 2026 for planning and implementation; Stage 1 is implemented locally under **Teachers → Class → Planning → Edit Plan**. This workflow neither triggers a curriculum QA rerun nor constitutes a production deployment. Core domain terms and the strict separation between scheduling and stored learner outcomes follow [Curriculum Time Axis and Pacing](../didactic/curriculum-time-axis-and-pacing.md), while keeping class records strictly browser-local rather than introducing server-side class management.
+    Approved by the Product Owner on 5 September 2026 for planning and implementation; Stage 1 is implemented locally under **Teachers → Class → Planning → Edit Plan**. This workflow neither triggers a curriculum QA rerun nor constitutes a production deployment. Core domain terms and the strict separation between scheduling and stored learner outcomes follow [Curriculum Time Axis and Pacing](../didactic/curriculum-time-axis-and-pacing.en.md), while keeping class records strictly browser-local rather than introducing server-side class management.
 
 <a id="sec-goal-book-planning-goal"></a>
 ### 5.1. Product goal

@@ -143,9 +143,12 @@ nav:
               - Verhaltensintegration (§9): concept/runtime-workflows/openai-mcp-coach-behavioral-integration.md
               - Plugin-Versionierung & Lifecycle (§10): concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.md
               - "Laufzeit- & Coach-Architektur (PDF)": concept/runtime-workflows/skillpilot-coach-and-runtime-architecture.de.pdf
-          - Tagesfortschritt (Superseded): concept/runtime-workflows/daily-learning-progress.md
-          - ChatGPT Visible Session Flow (Rollback): concept/runtime-workflows/chatgpt-visible-session-flow.md
-          - ChatGPT Startcode Session Flow (Legacy): concept/runtime-workflows/chatgpt-startcode-session-flow.md
+          - Daily Progress (Superseded, EN): concept/runtime-workflows/daily-learning-progress.en.md
+          - Tagesfortschritt (Abgelöst, DE): concept/runtime-workflows/daily-learning-progress.md
+          - ChatGPT Visible Session Flow (Rollback, EN): concept/runtime-workflows/chatgpt-visible-session-flow.en.md
+          - ChatGPT-Session-Flow (Sichtbarer Rollback, DE): concept/runtime-workflows/chatgpt-visible-session-flow.md
+          - ChatGPT Startcode Session Flow (Legacy, EN): concept/runtime-workflows/chatgpt-startcode-session-flow.en.md
+          - ChatGPT-Startcode-Flow (Historisch, DE): concept/runtime-workflows/chatgpt-startcode-session-flow.md
       - Didactic & Planning:
           - Compendium (EN):
               - Feynman Technique (§1): concept/didactic/feynman-rules.md
@@ -167,7 +170,8 @@ nav:
               - Kursplan-Kontinuität (§7): concept/runtime-workflows/course-plan-update-continuity.md
               - Lehrkraftansicht per SkillPilot-ID (§8): concept/runtime-workflows/existing-learner-teacher-view.de.md
               - "Didaktik & Kursplanung (PDF)": concept/didactic/skillpilot-didactics-and-planning.de.pdf
-          - Curriculum Time Axis & Pacing (Reference): concept/didactic/curriculum-time-axis-and-pacing.md
+          - Curriculum Time Axis & Pacing (Reference, EN): concept/didactic/curriculum-time-axis-and-pacing.en.md
+          - Curriculum-Zeitachse & Lerntempo (Referenz, DE): concept/didactic/curriculum-time-axis-and-pacing.md
   - Production Pipelines:
       - production-pipelines/index.md
       - Compendium (EN):
@@ -238,21 +242,34 @@ nav:
           - Quellenbegründungen-Runbook (§13): qa-ci/goal-source-rationales-runbook.de.md
           - Abi-2026-DeepLink-QA (§14): qa-ci/abi26-mathe-deeplink-mvp.md
           - "CI, Release & Review-Lanes (PDF)": qa-ci/skillpilot-qa-lanes-and-release-contracts.de.pdf
-      - Current Status Snapshot: qa-ci/status/curriculum-quality-status.md
-      - Generated Status Artifacts: qa-ci/status/README.md
+      - Current Status Snapshot (EN): qa-ci/status/curriculum-quality-status.md
+      - Aktueller Qualitätsstatus (DE): qa-ci/status/curriculum-quality-status.de.md
+      - Generated Status Artifacts (EN): qa-ci/status/README.md
+      - Generierte Statusberichte (DE): qa-ci/status/README.de.md
   - Deploy:
       - deploy/index.md
-      - Deployment: deploy/deployment.md
-      - ChatGPT-App „SkillPilot Coach v1“: deploy/openai-mcp-coach-v1.md
-      - "Coach DE v1: Release, Rollback, Stilllegung": deploy/openai-plugin-v1-release.md
-      - SkillPilot ChatGPT Experimental Marketplace: deploy/openai-personal-marketplace-release.md
-      - Gemini Integration (Controlled Beta): deploy/gemini-integration.md
-      - Claude Coach (Paused Beta): deploy/claude-coach-beta.md
-      - SkillPilot Claude Connector: deploy/claude-connector-v1-user-guide.md
+      - Deployment (EN): deploy/deployment.md
+      - Deployment & Serverbetrieb (DE): deploy/deployment.de.md
+      - "ChatGPT App “SkillPilot Coach v1” (EN)": deploy/openai-mcp-coach-v1.en.md
+      - "ChatGPT-App „SkillPilot Coach v1“ (DE)": deploy/openai-mcp-coach-v1.md
+      - "Coach v1: Release, Rollback, Retirement (EN)": deploy/openai-plugin-v1-release.en.md
+      - "Coach DE v1: Release, Rollback, Stilllegung (DE)": deploy/openai-plugin-v1-release.md
+      - "Coach v1: OpenAI Submission Dossier (EN)": deploy/openai-plugin-v1-submission.en.md
+      - "Coach v1: OpenAI-Submission-Dossier (DE)": deploy/openai-plugin-v1-submission.md
+      - SkillPilot ChatGPT Experimental Marketplace (EN): deploy/openai-personal-marketplace-release.md
+      - SkillPilot ChatGPT-Git-Marktplatz (DE): deploy/openai-personal-marketplace-release.de.md
+      - Gemini Integration (Controlled Beta, EN): deploy/gemini-integration.en.md
+      - Gemini-Integration (Kontrollierte Beta, DE): deploy/gemini-integration.md
+      - Claude Coach (Paused Beta, EN): deploy/claude-coach-beta.md
+      - Claude-Coach (Pausierte Beta, DE): deploy/claude-coach-beta.de.md
+      - SkillPilot Claude Connector (EN): deploy/claude-connector-v1-user-guide.md
       - SkillPilot Claude Connector (DE): deploy/claude-connector-v1-user-guide.de.md
-      - SkillPilot Claude Connector v1 Release: deploy/claude-connector-v1-release.md
-      - SkillPilot Claude Personal Marketplace: deploy/claude-personal-marketplace-release.md
-      - Claude Marketplace Support Readiness: deploy/claude-support-readiness-runbook.md
+      - SkillPilot Claude Connector v1 Release (EN): deploy/claude-connector-v1-release.md
+      - SkillPilot Claude Connector v1 Release & Rollback (DE): deploy/claude-connector-v1-release.de.md
+      - SkillPilot Claude Personal Marketplace (EN): deploy/claude-personal-marketplace-release.md
+      - SkillPilot Claude-Git-Marktplatz (DE): deploy/claude-personal-marketplace-release.de.md
+      - Claude Marketplace Support Readiness (EN): deploy/claude-support-readiness-runbook.md
+      - Claude-Marktplatz Support-Bereitschaft (DE): deploy/claude-support-readiness-runbook.de.md
   - Security:
       - security/index.md
       - Compendium (EN):
@@ -263,12 +280,14 @@ nav:
           - Datenschutz & Speicherung (§1): security/data-privacy.de.md
           - OpenAI-MCP-Clientbindung (§2): security/openai-mcp-client-binding.md
           - "Sicherheit, Datenschutz & KI-Transparenz (PDF)": security/skillpilot-security-and-privacy.de.pdf
-      - Coach Feedback Cleanup (2026-09-12): security/coach-feedback-cleanup-2026-09-12.md
+      - Coach Feedback Cleanup (2026-09-12, EN): security/coach-feedback-cleanup-2026-09-12.en.md
+      - Coach-Feedback-Bereinigung (2026-09-12, DE): security/coach-feedback-cleanup-2026-09-12.md
   - Legal:
       - legal/index.md
       - EU AI Act Compliance (§3, EN): legal/ki-verordnung-compliance-stand-2026-07-29.en.md
       - KI-Verordnung Compliance (§3, DE): legal/ki-verordnung-compliance-stand-2026-07-29.md
-      - Legal & Privacy Review (2026-09-13): legal/legal-privacy-review-2026-09-13.md
+      - Legal & Privacy Review (2026-09-13, EN): legal/legal-privacy-review-2026-09-13.en.md
+      - Rechtstexte-Abgleich (2026-09-13, DE): legal/legal-privacy-review-2026-09-13.md
   - Dev:
       - dev/index.md
       - Compendium (EN):
@@ -294,8 +313,13 @@ nav:
           - Auto-Update SSE (§9): dev/auto-update.de.md
           - "Entwickler-, Schema- & Editor-Handbuch (PDF)": dev/skillpilot-developer-and-editor-guide.de.pdf
       - Canonical Gymnasium:
-          - Implementation Plan: dev/canonical-gymnasium-implementation-plan.md
-          - Math Bundeslaender Status: dev/canonical-gymnasium-math-bundeslaender-status.md
-          - Physics Bundeslaender Status: dev/canonical-gymnasium-physics-bundeslaender-status.md
-          - Chemistry Bundeslaender Status: dev/canonical-gymnasium-chemistry-bundeslaender-status.md
-          - Dual Curriculum Package Implementation Status: dev/dual-curriculum-package-implementation-status.md
+          - Implementation Plan (EN): dev/canonical-gymnasium-implementation-plan.md
+          - Umsetzungsplan (DE): dev/canonical-gymnasium-implementation-plan.de.md
+          - Math Bundeslaender Status (EN): dev/canonical-gymnasium-math-bundeslaender-status.md
+          - Mathematik Bundesländer-Status (DE): dev/canonical-gymnasium-math-bundeslaender-status.de.md
+          - Physics Bundeslaender Status (EN): dev/canonical-gymnasium-physics-bundeslaender-status.md
+          - Physik Bundesländer-Status (DE): dev/canonical-gymnasium-physics-bundeslaender-status.de.md
+          - Chemistry Bundeslaender Status (EN): dev/canonical-gymnasium-chemistry-bundeslaender-status.md
+          - Chemie Bundesländer-Status (DE): dev/canonical-gymnasium-chemistry-bundeslaender-status.de.md
+          - Dual Curriculum Package Implementation Status (EN): dev/dual-curriculum-package-implementation-status.md
+          - Duale Curriculum-Pakete Umsetzungsstand (DE): dev/dual-curriculum-package-implementation-status.de.md

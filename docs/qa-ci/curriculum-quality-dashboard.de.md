@@ -21,7 +21,7 @@ Dieses Kapitel spezifiziert die persistierte Qualitätsstatus-Schicht für die l
 
 Das Dashboard implementiert keine eigene Validierungslogik in React, sondern liest ausschließlich generierte Status-Snapshots über `/__quality-dashboard/status` und `/__quality-dashboard/file?path=docs/qa-ci/status/<file>.md`:
 
-- **Hauptstatus:** `app/scripts/generateCurriculumQualityStatus.ts` schreibt [curriculum-quality-status.json](status/curriculum-quality-status.json) und [curriculum-quality-status.md](status/curriculum-quality-status.md).
+- **Hauptstatus:** `app/scripts/generateCurriculumQualityStatus.ts` schreibt [curriculum-quality-status.json](status/curriculum-quality-status.json) und [curriculum-quality-status.md](status/curriculum-quality-status.de.md).
 - **Merkkarten-Review (`CQR-302`):** `app/scripts/memoryCardReview.ts`, `runMemoryCardReviewConfigs.ts` und `reportMemoryCardReviewRollout.ts` prüfen `curricula/DE/Gymnasium/quality/memory-card-review/*.review.jsonl` sowie `*.cards.review.jsonl` und schreiben die Berichte `docs/qa-ci/status/memory-card-review-*.md` (aktuell in CI abgeschlossen und erzwungen für Mathematik, Physik, Chemie, Biologie, Deutsch, Geschichte, Informatik, Latein, Politik und Wirtschaft sowie Wirtschaftswissenschaften).
 - **Sanierungs-, Quellen- und MEM-Berichte:** `reportM0RemediationPlan.ts` (`m0-remediation-plan.md`), `reportEnglishRemediationPilot.ts` (`english-remediation-pilot.md`), `generateCurriculumSourceCoverageAudit.ts` (`curriculum-source-coverage-audit.{json,md}`) und der bewusst nicht-blockierende `generateMemSparqlConsistencyAudit.ts` (`mem-sparql-consistency-audit.{json,md}`).
 

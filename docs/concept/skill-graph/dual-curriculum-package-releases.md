@@ -14,7 +14,7 @@
 <a id="sec-sga-dual-packages"></a>
 ## 11. Duale Curriculum-Pakete: JSON-Runtime und Lehrplan-Ontologie
 
-Jeder versionierte Curriculum-Release veröffentlicht **genau einen fachlichen Stand** in zwei semantisch gleichwertigen Darstellungen – ohne doppelte Fachpflege und ohne Zugriff einer SkillPilot-Installation auf den `curricula/`-Quellbaum (aktueller Checkpoint: [Umsetzungsstand Duale Pakete](../../dev/dual-curriculum-package-implementation-status.md); operative Verträge: [Paketbereitschaft](../../qa-ci/curriculum-package-readiness.de.md), [Release-Modell-Konformität](../../qa-ci/curriculum-release-model-conformance.de.md), [Duale Release-Verträge](../../qa-ci/dual-curriculum-release-contracts.de.md) und [Paketprovisionierung](../../production-pipelines/curriculum-package-provisioning.md)).
+Jeder versionierte Curriculum-Release veröffentlicht **genau einen fachlichen Stand** in zwei semantisch gleichwertigen Darstellungen – ohne doppelte Fachpflege und ohne Zugriff einer SkillPilot-Installation auf den `curricula/`-Quellbaum (aktueller Checkpoint: [Umsetzungsstand Duale Pakete](../../dev/dual-curriculum-package-implementation-status.de.md); operative Verträge: [Paketbereitschaft](../../qa-ci/curriculum-package-readiness.de.md), [Release-Modell-Konformität](../../qa-ci/curriculum-release-model-conformance.de.md), [Duale Release-Verträge](../../qa-ci/dual-curriculum-release-contracts.de.md) und [Paketprovisionierung](../../production-pipelines/curriculum-package-provisioning.md)).
 
 <a id="sec-sga-dp-architecture"></a>
 ### 11.1. Sieben verbindliche Architekturentscheidungen und Release-Artefakte

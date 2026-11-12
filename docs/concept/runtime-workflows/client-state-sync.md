@@ -25,7 +25,7 @@ PUT /api/ui/learners/{skillpilotId}/client-state/{nodeId}
 ```
 
 - **First-party browser lane:** Calls the UI endpoints above using the pseudonymous `skillpilotId` to persist per-node SRS scheduling periodically, on demand, and across export/import recovery while keeping payloads strictly PII-free.
-- **MCP coach lane:** Authenticates the integration via OAuth and resolves the learner exclusively through the active 24-hour `learningSessionId` ([8](openai-mcp-oauth-learner-session-architecture.en.md#sec-openai-mcp-oauth-session)); `skillpilotId` is never an MCP tool argument or output. Legacy per-card Visible-Session routes belong solely to the isolated [Visible Session Rollback Flow](chatgpt-visible-session-flow.md).
+- **MCP coach lane:** Authenticates the integration via OAuth and resolves the learner exclusively through the active 24-hour `learningSessionId` ([8](openai-mcp-oauth-learner-session-architecture.en.md#sec-openai-mcp-oauth-session)); `skillpilotId` is never an MCP tool argument or output. Legacy per-card Visible-Session routes belong solely to the isolated [Visible Session Rollback Flow](chatgpt-visible-session-flow.en.md).
 
 <a id="sec-srs-sync-payloads"></a>
 ### 3.2. Request and response payloads

@@ -368,6 +368,98 @@ window.SKILLPILOT_DOCS_I18N = {
     {
       "de": "deploy/claude-connector-v1-user-guide.de.md",
       "en": "deploy/claude-connector-v1-user-guide.md"
+    },
+    {
+      "de": "deploy/deployment.de.md",
+      "en": "deploy/deployment.md"
+    },
+    {
+      "de": "deploy/openai-mcp-coach-v1.md",
+      "en": "deploy/openai-mcp-coach-v1.en.md"
+    },
+    {
+      "de": "deploy/openai-plugin-v1-release.md",
+      "en": "deploy/openai-plugin-v1-release.en.md"
+    },
+    {
+      "de": "deploy/openai-plugin-v1-submission.md",
+      "en": "deploy/openai-plugin-v1-submission.en.md"
+    },
+    {
+      "de": "deploy/openai-personal-marketplace-release.de.md",
+      "en": "deploy/openai-personal-marketplace-release.md"
+    },
+    {
+      "de": "deploy/gemini-integration.md",
+      "en": "deploy/gemini-integration.en.md"
+    },
+    {
+      "de": "deploy/claude-coach-beta.de.md",
+      "en": "deploy/claude-coach-beta.md"
+    },
+    {
+      "de": "deploy/claude-connector-v1-release.de.md",
+      "en": "deploy/claude-connector-v1-release.md"
+    },
+    {
+      "de": "deploy/claude-personal-marketplace-release.de.md",
+      "en": "deploy/claude-personal-marketplace-release.md"
+    },
+    {
+      "de": "deploy/claude-support-readiness-runbook.de.md",
+      "en": "deploy/claude-support-readiness-runbook.md"
+    },
+    {
+      "de": "concept/runtime-workflows/daily-learning-progress.md",
+      "en": "concept/runtime-workflows/daily-learning-progress.en.md"
+    },
+    {
+      "de": "concept/runtime-workflows/chatgpt-visible-session-flow.md",
+      "en": "concept/runtime-workflows/chatgpt-visible-session-flow.en.md"
+    },
+    {
+      "de": "concept/runtime-workflows/chatgpt-startcode-session-flow.md",
+      "en": "concept/runtime-workflows/chatgpt-startcode-session-flow.en.md"
+    },
+    {
+      "de": "concept/didactic/curriculum-time-axis-and-pacing.md",
+      "en": "concept/didactic/curriculum-time-axis-and-pacing.en.md"
+    },
+    {
+      "de": "qa-ci/status/curriculum-quality-status.de.md",
+      "en": "qa-ci/status/curriculum-quality-status.md"
+    },
+    {
+      "de": "qa-ci/status/README.de.md",
+      "en": "qa-ci/status/README.md"
+    },
+    {
+      "de": "security/coach-feedback-cleanup-2026-09-12.md",
+      "en": "security/coach-feedback-cleanup-2026-09-12.en.md"
+    },
+    {
+      "de": "legal/legal-privacy-review-2026-09-13.md",
+      "en": "legal/legal-privacy-review-2026-09-13.en.md"
+    },
+    {
+      "de": "dev/canonical-gymnasium-implementation-plan.de.md",
+      "en": "dev/canonical-gymnasium-implementation-plan.md"
+    },
+    {
+      "de": "dev/canonical-gymnasium-math-bundeslaender-status.de.md",
+      "en": "dev/canonical-gymnasium-math-bundeslaender-status.md"
+    },
+    {
+      "de": "dev/canonical-gymnasium-physics-bundeslaender-status.de.md",
+      "en": "dev/canonical-gymnasium-physics-bundeslaender-status.md"
+    },
+    {
+      "de": "dev/canonical-gymnasium-chemistry-bundeslaender-status.de.md",
+      "en": "dev/canonical-gymnasium-chemistry-bundeslaender-status.md"
+    },
+    {
+      "de": "dev/dual-curriculum-package-implementation-status.de.md",
+      "en": "dev/dual-curriculum-package-implementation-status.md"
     }
   ],
   "navLabels": {
@@ -402,6 +494,10 @@ window.SKILLPILOT_DOCS_I18N = {
     "Production Pipelines": {
       "de": "Produktions-Pipelines",
       "en": "Production Pipelines"
+    },
+    "QA & CI": {
+      "de": "Qualität & CI",
+      "en": "QA & CI"
     },
     "QA/CI": {
       "de": "Qualität & CI",

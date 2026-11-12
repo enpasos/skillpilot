@@ -17,7 +17,7 @@ This project is an invitation to the community to jointly build and bring to lif
 - [Live app](https://skillpilot.com)
 - [Coach setup: Claude, ChatGPT Desktop (Beta) and Gemini (Beta)](https://skillpilot.com/plugins)
 
-Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web. The controlled test with one privately configured operator account confirmed saved learning progress and continuation in a new chat. Public onboarding, additional accounts, mobile and voice still require acceptance; learning-goal images currently have a tested direct-link route. See the [Gemini setup guide](https://skillpilot.com/plugins#gemini) and [integration runbook](deploy/gemini-integration.md). Deployment and activation are separate steps.
+Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web. The controlled test with one privately configured operator account confirmed saved learning progress and continuation in a new chat. Public onboarding, additional accounts, mobile and voice still require acceptance; learning-goal images currently have a tested direct-link route. See the [Gemini setup guide](https://skillpilot.com/plugins#gemini) and [integration runbook](deploy/gemini-integration.en.md). Deployment and activation are separate steps.
 
 ### Curriculum champions
 - [Curricula & Champions](https://skillpilot.com/curricula)
@@ -26,6 +26,7 @@ Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web.
 - [QA/CI documentation](qa-ci/index.md)
 - [Canonical Gymnasium Math rollout status](dev/canonical-gymnasium-math-bundeslaender-status.md)
 - [Canonical Gymnasium Physics rollout status](dev/canonical-gymnasium-physics-bundeslaender-status.md)
+- [Canonical Gymnasium Chemistry rollout status](dev/canonical-gymnasium-chemistry-bundeslaender-status.md)
 
 ### High-level overview
 - [Whitepaper](whitepaper/whitepaper.en.md)
@@ -34,14 +35,14 @@ Gemini uses an imported coaching Skill and a connected Custom App in Gemini Web.
 ### AI learning coaches (Claude, ChatGPT & Gemini / MCP)
 - [Coach product topology](concept/runtime-workflows/skillpilot-owned-coach-architecture.en.md)
 - [Provider-neutral coach communication contract](concept/runtime-workflows/provider-neutral-coach-boundary.en.md)
-- [SkillPilot in Gemini: integration runbook (DE)](deploy/gemini-integration.md)
+- [SkillPilot in Gemini: integration runbook](deploy/gemini-integration.en.md)
 - [OpenAI plugin versioning and lifecycle](concept/runtime-workflows/openai-plugin-versioning-and-lifecycle.en.md)
 - [OpenAI MCP OAuth app binding and 24h learning sessions](concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture.en.md)
 - [OpenAI MCP authorized client binding](security/openai-mcp-client-binding.en.md)
-- [Release, rollback, and retirement of SkillPilot Coach v1 (DE)](deploy/openai-plugin-v1-release.md)
-- [OpenAI review: rejection, lifted freeze, and historical evidence (DE)](deploy/openai-plugin-v1-review-freeze.md)
-- [OpenAI submission dossier for SkillPilot Coach v1 (DE)](deploy/openai-plugin-v1-submission.md)
-- [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.md)
+- [Release, rollback, and retirement of SkillPilot Coach v1](deploy/openai-plugin-v1-release.en.md)
+- [OpenAI review: rejection, lifted freeze, and historical evidence (DE audit record)](deploy/openai-plugin-v1-review-freeze.md)
+- [OpenAI submission dossier for SkillPilot Coach v1](deploy/openai-plugin-v1-submission.en.md)
+- [Rollback: ChatGPT Visible Session](concept/runtime-workflows/chatgpt-visible-session-flow.en.md)
 
 ### Programme status
 - [Canonical Gymnasium implementation plan](dev/canonical-gymnasium-implementation-plan.md)
@@ -97,8 +98,9 @@ Gemini nutzt einen importierten Coaching-Skill und eine verbundene Custom App in
 - [Champion-Leitfaden](qa-ci/champion-guide.de.md)
 - [Vier-Stufen-QS-Modell](qa-ci/four-level-champion-model.de.md)
 - [Qualitäts- und CI-Dokumentation](qa-ci/index.md)
-- [Kanonisches Gymnasium Mathematik: Bundesländer-Status (EN)](dev/canonical-gymnasium-math-bundeslaender-status.md)
-- [Kanonisches Gymnasium Physik: Bundesländer-Status (EN)](dev/canonical-gymnasium-physics-bundeslaender-status.md)
+- [Kanonisches Gymnasium Mathematik: Bundesländer-Status](dev/canonical-gymnasium-math-bundeslaender-status.de.md)
+- [Kanonisches Gymnasium Physik: Bundesländer-Status](dev/canonical-gymnasium-physics-bundeslaender-status.de.md)
+- [Kanonisches Gymnasium Chemie: Bundesländer-Status](dev/canonical-gymnasium-chemistry-bundeslaender-status.de.md)
 
 ### Gesamtüberblick
 - [Whitepaper](whitepaper/whitepaper.de.md)
@@ -114,12 +116,12 @@ Gemini nutzt einen importierten Coaching-Skill und eine verbundene Custom App in
 - [SkillPilot Coach v1: Release, Rollback und Stilllegung](deploy/openai-plugin-v1-release.md)
 - [OpenAI-Review: Ablehnung, aufgehobener Freeze und historische Nachweise](deploy/openai-plugin-v1-review-freeze.md)
 - [SkillPilot Coach v1: OpenAI-Submission-Dossier](deploy/openai-plugin-v1-submission.md)
-- [Rollback: ChatGPT Visible Session (EN)](concept/runtime-workflows/chatgpt-visible-session-flow.md)
+- [Rollback: ChatGPT-Session-Flow (sichtbarer Notfallfallback)](concept/runtime-workflows/chatgpt-visible-session-flow.md)
 
 ### Programmstatus
-- [Kanonisches Gymnasium: Umsetzungsplan (EN)](dev/canonical-gymnasium-implementation-plan.md)
-- [Duale Curriculum-Pakete: Umsetzungsstand (EN)](dev/dual-curriculum-package-implementation-status.md)
-- [Aktueller Curriculum-Qualitätsstatus](qa-ci/status/curriculum-quality-status.md)
+- [Kanonisches Gymnasium: Umsetzungsplan](dev/canonical-gymnasium-implementation-plan.de.md)
+- [Duale Curriculum-Pakete: Umsetzungsstand](dev/dual-curriculum-package-implementation-status.de.md)
+- [Aktueller Curriculum-Qualitätsstatus](qa-ci/status/curriculum-quality-status.de.md)
 
 ## Aufbau dieser Dokumentation
 

@@ -443,25 +443,25 @@ The binding 4 November 2026 concept adds **effective mastery** $M_{\mathrm{eff}}
 
 ### Curriculum timeline and pacing plan
 
-*DE: Curriculum-Zeitachse, Curriculum-Zeitplan, Stoffverteilungsplan* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.md)
+*DE: Curriculum-Zeitachse, Curriculum-Zeitplan, Stoffverteilungsplan* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 
 A versioned execution-plan overlay assigning resolved curriculum clusters to concrete local date ranges and teaching capacity for a class or learner. It owns calendar, buffer, plan blocks, and revisions without ever writing dates into canonical goals, program units, placements, or composition views.
 
 ### Planning unit
 
-*DE: Planungseinheit* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.md)
+*DE: Planungseinheit* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 
 A plan-local unit used to distribute expected curriculum progress across available time capacity (transparent baseline: one unit per schedulable atomic target). It is neither a grade nor canonical `weight`; baseline mastery before plan start does not count as newly learned planning units.
 
 ### Plan milestone
 
-*DE: Planmeilenstein, konkretes Ziel bis Datum* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.md)
+*DE: Planmeilenstein, konkretes Ziel bis Datum* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 
 A dated commitment such as "complete the selected Mathematics Abitur tasks by 15 March". It separates subject-matter kind from deadline rigidity and scheduled workload from mastery-derived completion, driving dated goal lists, forecasts, and replanning without creating mastery on its own.
 
 ### Course plan status snapshot
 
-*DE: Kurs-Planlage, Plan-und-Planlage-Seite* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.md)
+*DE: Kurs-Planlage, Plan-und-Planlage-Seite* — see [Curriculum Timeline, Buffer Planning, and Target-vs-Actual Pacing](didactic/curriculum-time-axis-and-pacing.en.md)
 
 A digest-bound as-of read model of one plan revision showing textual course plan, planned block progress, confirmed teaching coverage, and separately labeled mastery distribution with input-data quality. It introduces no new source of truth alongside plan and mastery data.
 

@@ -14,7 +14,7 @@
 <a id="sec-qal-source-rationales"></a>
 ## 13. Runbook für Lernziel-Quellenbegründungen
 
-Dieses Runbook beschreibt Erzeugung, Laufzeitbereitstellung und Prüfung menschenlesbarer Quellenbegründungen (`generateGoalSourceRationales.ts`) entlang der geprüften klassischen Kette `canonical goal -> mapping review -> source extraction -> official source document` (Fachkonzept siehe `docs/concept/skill-graph/human-readable-source-rationales.md`, Statusverzeichnis [status/README.md](status/README.md)).
+Dieses Runbook beschreibt Erzeugung, Laufzeitbereitstellung und Prüfung menschenlesbarer Quellenbegründungen (`generateGoalSourceRationales.ts`) entlang der geprüften klassischen Kette `canonical goal -> mapping review -> source extraction -> official source document` (Fachkonzept siehe `docs/concept/skill-graph/human-readable-source-rationales.md`, Statusverzeichnis [status/README.md](status/README.de.md)).
 
 <a id="sec-qal-rationales-commands"></a>
 ### 13.1. PoC-, Zielmengen- und MEM/FWU-Showcase-Kommandos
