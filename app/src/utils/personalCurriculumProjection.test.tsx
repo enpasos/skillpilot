@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
+import { buildGoalIndex } from '../hooks/useGoalIndex'
 import { normalizeLandscape, type LandscapeEntry } from '../hooks/useLandscapes'
 import type { SkillLandscape } from '../landscapeTypes'
 import {
@@ -43,6 +44,7 @@ const original = JSON.stringify(source)
 const authored = normalizeLearnerProjectedEntries(applyCompositionViewProjection([source], view))
 const projected = applyPersonalCurriculumProjection(authored, [source])
 const goals = new Map(projected.flatMap((entry) => entry.goals.map((goal) => [goal.id, goal] as const)))
+const projectedParentIds = buildGoalIndex(projected.flatMap((entry) => entry.goals)).parentMapAll
 const root = projected[0].goals.find((goal) => goal.tags?.includes('root'))!
 const preparation = projected[0].goals.find((goal) => goal.personalCurriculumProjection?.presentationOnly)!
 assert(preparation, 'The formerly hidden prerequisite becomes navigable in the full plan.')
@@ -113,6 +115,29 @@ assert(foreignVisible.get(foreignPreparation.id)?.includes(foreign.id),
   'Unselected foreign subjects, earlier stages and course/jurisdiction filters cannot hide server targets.')
 assert.equal(buildTreeCompletionProgressMap(foreignGoals, foreignVisible, () => 0).get(globalRoot.id)?.totalCount, 4)
 assert.deepEqual(foreignGoals.get(foreign.id)?.applicability, foreign.applicability)
+
+// The authored overview of the canonical plan leaves its own root without
+// children; the cockpit then displays the subject roots. Their authored
+// placements stay intact and only the really unplaced targets are collected.
+const emptyOverview: LandscapeEntry = { ...overview, goals: [{ ...globalRoot, contains: [] }] }
+const subjectRootProjection = applyPersonalCurriculumProjection([emptyOverview, ...authored],
+  [overview, selectedChemistry, foreignEntry])
+const subjectRootIndex = buildGoalIndex(subjectRootProjection.flatMap((entry) => entry.goals))
+assert.deepEqual(subjectRootIndex.globalRootGoals.map((goal) => goal.id), [root.id],
+  'The cockpit keeps showing the subject root instead of an overview holding only the preparation branch.')
+const subjectRootPreparation = subjectRootProjection.flatMap((entry) => entry.goals)
+  .find((goal) => goal.personalCurriculumProjection?.presentationOnly)!
+assert.deepEqual(subjectRootPreparation.contains, [prerequisite, foreign.id].sort(),
+  'Targets placed beneath a displayed subject root never move into the preparation branch.')
+assert.deepEqual(subjectRootIndex.parentMapAll.get(subjectRootPreparation.id), [root.id])
+assert.equal(subjectRootPreparation.landscapeId, chemistry.meta.landscapeId)
+assert(subjectRootProjection.find((entry) => entry.meta.landscapeId === chemistry.meta.landscapeId)
+  ?.goals.includes(subjectRootPreparation), 'The preparation branch is stored beside the root that displays it.')
+assert.deepEqual(subjectRootIndex.goalIndexAll.get(globalRoot.id)?.contains, [])
+;[target, orientation].forEach((goalId) => {
+  assert.deepEqual(subjectRootIndex.parentMapAll.get(goalId), projectedParentIds.get(goalId),
+    'An authored target keeps the parent its composition view gives it.')
+})
 
 // An atom already targeted in a second reviewed branch keeps that occurrence;
 // support roles elsewhere neither hide it nor add another preparation copy.

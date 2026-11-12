@@ -51,7 +51,7 @@
     "test:learner-map-prototype": "tsx scripts/testFullCockpitPrototype.ts && tsx scripts/testLearningUnitMapPrototype.ts",
     "test:learner-map-build": "tsx scripts/testLearnerMapBuild.ts",
     "test:learner-map": "npm run test:learner-map-projection && npm run test:learner-map-native-ui && npm run test:learner-map-prototype",
-    "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts && tsx src/utils/personalCurriculumProjection.test.tsx",
+    "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts && tsx src/utils/personalCurriculumProjection.test.tsx && tsx src/utils/goalSorter.test.ts",
     "test:course-level-mapping-consistency": "tsx scripts/testCourseLevelMappingConsistency.ts",
     "test:physics-source-method-routes": "tsx --test ../scripts/check_physics_source_method_routes.test.ts",
     "test:goal-book-model": "tsx scripts/testGoalBookModel.ts && npm run test:math-distance-reflection-structure && npm run test:math-pythagoras-structure",
