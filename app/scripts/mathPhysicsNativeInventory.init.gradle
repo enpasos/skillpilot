@@ -1,0 +1,14 @@
+// Task-local launcher for the read-only inventory adapter; no application or Gradle configuration change.
+gradle.projectsEvaluated {
+    rootProject.tasks.register('inventoryMathPhysicsNativeProjection', Exec) {
+        dependsOn rootProject.tasks.named('compileJava')
+        def javaHome = System.getenv('JAVA_HOME')
+        if (!javaHome) throw new GradleException('JAVA_HOME must point to the pinned Java 25 Corretto JDK')
+        def sourceSets = rootProject.extensions.getByName('sourceSets')
+        commandLine new File(javaHome, 'bin/java').absolutePath,
+            '-Xmx768m', '--class-path', sourceSets.main.runtimeClasspath.asPath,
+            new File(rootProject.projectDir, '../app/scripts/MathPhysicsNativeProjectionInventory.java').absolutePath,
+            rootProject.projectDir.parentFile.absolutePath,
+            rootProject.property('inventoryRequests'), rootProject.property('inventoryResults')
+    }
+}

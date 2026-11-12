@@ -753,6 +753,10 @@ jobs:
       - *restore_goal_book_publications
       - name: Test transitive-minimality auditor and CLI contracts
         run: npm run test:transitive-minimality
+      - name: Test learning-unit contract validator
+        run: npm run test:learning-unit-contracts
+      - name: Validate authored learning-unit contracts
+        run: npm run validate:learning-units
       - name: Test exam Markdown conventions
         run: npm run test:exam-markdown
       - name: Test reviewed Mathematics checkpoint assessments

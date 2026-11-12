@@ -227,6 +227,10 @@ run_curriculum_frontend_ci() {
   echo "--> Running Graph Validation"
   npm run validate:graph
 
+  echo "--> Testing and Validating Learning-Unit Contracts"
+  npm run test:learning-unit-contracts
+  npm run validate:learning-units
+
   echo "--> Testing Exam Markdown Conventions"
   npm run test:exam-markdown
 

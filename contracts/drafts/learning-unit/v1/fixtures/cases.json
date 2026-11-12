@@ -1,0 +1,502 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Synthetic validator conformance only. No fixture represents a reviewed production learning unit.",
+  "cases": [
+    {
+      "id": "valid-chain",
+      "description": "Q requires B, B requires A; one unit owns all three. Valid; no reviewed coverage yet.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["B"], "examData": { "coveredGoalIds": ["A", "B"] } },
+          { "id": "B", "requires": ["A"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "B", "A"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [],
+        "units": { "u": { "valid": true, "totalScope": 3, "goalsWithoutReviewedCoverage": ["A", "B"] } }
+      }
+    },
+    {
+      "id": "r1-uncovered-endpoint",
+      "description": "C is an own ordinary goal that no own assessment requires. It stays open and is a rule violation, never free recognition.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["B"] },
+          { "id": "B" },
+          { "id": "C" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "B", "C"] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-R1", "unitId": "u", "goalId": "C" }], "units": { "u": { "valid": false } } }
+    },
+    {
+      "id": "r1-memory-only-path",
+      "description": "A is required only by the own memory goal K. Verified card recall does not prove independent application.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["B"] },
+          { "id": "K", "nodeKind": "memory", "requires": ["A"] },
+          { "id": "B" },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "K", "B", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-R1", "unitId": "u", "goalId": "A" }] }
+    },
+    {
+      "id": "r1-assessment-owned-elsewhere",
+      "description": "The only assessment that requires A belongs to another unit. A needs an own assessment of its owning unit; an assessment-only unit is a valid synthesis.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u1", "ownGoalIds": ["A"] },
+          { "id": "u2", "ownGoalIds": ["Q"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [{ "code": "LU-R1", "unitId": "u1", "goalId": "A" }],
+        "units": { "u1": { "valid": false }, "u2": { "valid": true } }
+      }
+    },
+    {
+      "id": "path-through-foreign-goals",
+      "description": "The path from Q to A runs through X of another unit and through M of another landscape. Traversal never stops at the boundary of the unit's own goals.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["X"] },
+          { "id": "X", "requires": ["M"] },
+          { "id": "A" },
+          { "id": "QX", "nodeKind": "exam", "requires": ["X"] }
+        ] },
+        { "landscapeId": "MATH", "goals": [
+          { "id": "M", "requires": ["L:A"] }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] },
+          { "id": "ux", "ownGoalIds": ["QX", "X"] }
+        ] }
+      ],
+      "expect": { "findings": [] }
+    },
+    {
+      "id": "inherited-cluster-requirement",
+      "description": "Q inherits the requirement of its cluster KQ on cluster KP; expansion to atoms makes Q require A and B.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "KQ", "contains": ["Q"], "requires": ["KP"] },
+          { "id": "KP", "contains": ["A", "B"] },
+          { "id": "Q", "nodeKind": "exam", "examData": { "coveredGoalIds": ["A"] } },
+          { "id": "A" },
+          { "id": "B" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A", "B"] }
+        ] }
+      ],
+      "expect": { "findings": [] }
+    },
+    {
+      "id": "r3-coverage-without-path",
+      "description": "Q claims coverage of C but requires only B. The missing path is a subject-review finding, not a reason for a redundant edge.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["B"], "examData": { "coveredGoalIds": ["B", "C"] } },
+          { "id": "B" },
+          { "id": "C" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "B"] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-R3", "unitId": "u", "goalId": "Q" }] }
+    },
+    {
+      "id": "r3-cluster-and-unknown-coverage",
+      "description": "Coverage names a cluster and an unknown goal. A coverage claim names atomic goals; a cluster reference would grow with later contains changes.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"], "examData": { "coveredGoalIds": ["K", "A", "missing"] } },
+          { "id": "K", "contains": ["A"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [
+        { "code": "LU-R3", "unitId": "u", "goalId": "Q" },
+        { "code": "LU-R3", "unitId": "u", "goalId": "Q" }
+      ] }
+    },
+    {
+      "id": "r4-two-owners",
+      "description": "A is owned by two units. Both contracts are invalid.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q1", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "Q2", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u1", "ownGoalIds": ["Q1", "A"] },
+          { "id": "u2", "ownGoalIds": ["Q2", "A"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [
+          { "code": "LU-R4-MULTIPLE", "unitId": "u1", "goalId": "A" },
+          { "code": "LU-R4-MULTIPLE", "unitId": "u2", "goalId": "A" }
+        ],
+        "units": { "u1": { "valid": false }, "u2": { "valid": false } }
+      }
+    },
+    {
+      "id": "r4-complete-catalog-leaves-goal-unowned",
+      "description": "A catalog declared complete must own every atomic goal of its landscape; clusters are never owned.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "K", "contains": ["Q", "A", "D"] },
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" },
+          { "id": "D" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [{ "code": "LU-R4-UNOWNED", "goalId": "D" }],
+        "units": { "u": { "valid": true } },
+        "ledgers": { "c": { "atomicGoals": 3, "ownedGoals": 2 } }
+      }
+    },
+    {
+      "id": "partial-catalog-reports-unowned-goals",
+      "description": "The same data in a partial catalog: the open goal is counted, not rejected.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" },
+          { "id": "D" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [], "ledgers": { "c": { "atomicGoals": 3, "ownedGoals": 2 } } }
+    },
+    {
+      "id": "empty-unit",
+      "description": "A unit without own goals and without children is an empty navigation marker, never a completed unit.",
+      "landscapes": [{ "landscapeId": "L", "goals": [{ "id": "A" }] }],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": [] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-EMPTY-SCOPE", "unitId": "u" }] }
+    },
+    {
+      "id": "pure-aggregate",
+      "description": "A parent with no own goals aggregates two children; its total scope is their deduplicated union. A parent with an own synthesis assessment is valid as well.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q1", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" },
+          { "id": "Q2", "nodeKind": "exam", "requires": ["B"] },
+          { "id": "B" },
+          { "id": "QS", "nodeKind": "exam", "requires": ["A", "B"] }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "top", "ownGoalIds": ["QS"], "childUnitIds": ["mid"] },
+          { "id": "mid", "ownGoalIds": [], "childUnitIds": ["k1", "k2"] },
+          { "id": "k1", "ownGoalIds": ["Q1", "A"] },
+          { "id": "k2", "ownGoalIds": ["Q2", "B"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [],
+        "units": { "top": { "valid": true, "totalScope": 5 }, "mid": { "valid": true, "totalScope": 4 }, "k1": { "totalScope": 2 } }
+      }
+    },
+    {
+      "id": "hierarchy-cycle",
+      "description": "Two units name each other as child; a parent above the cycle has no defined total scope either.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q1", "nodeKind": "exam" },
+          { "id": "Q2", "nodeKind": "exam" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "top", "ownGoalIds": [], "childUnitIds": ["u1"] },
+          { "id": "u1", "ownGoalIds": ["Q1"], "childUnitIds": ["u2"] },
+          { "id": "u2", "ownGoalIds": ["Q2"], "childUnitIds": ["u1"] }
+        ] }
+      ],
+      "expect": {
+        "findings": [
+          { "code": "LU-HIERARCHY", "unitId": "top" },
+          { "code": "LU-HIERARCHY", "unitId": "u1" },
+          { "code": "LU-HIERARCHY", "unitId": "u2" }
+        ],
+        "units": { "top": { "valid": false }, "u1": { "valid": false }, "u2": { "valid": false } }
+      }
+    },
+    {
+      "id": "unknown-and-self-child",
+      "description": "A child reference must name another unit of the same catalog.",
+      "landscapes": [{ "landscapeId": "L", "goals": [{ "id": "Q", "nodeKind": "exam" }] }],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q"], "childUnitIds": ["missing", "u"] }
+        ] }
+      ],
+      "expect": { "findings": [
+        { "code": "LU-CHILD", "unitId": "u" },
+        { "code": "LU-HIERARCHY", "unitId": "u" }
+      ] }
+    },
+    {
+      "id": "own-goal-must-be-an-atomic-goal-of-the-landscape",
+      "description": "A cluster, an unknown goal and a goal of another landscape cannot be owned.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "K", "contains": ["A"] },
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" }
+        ] },
+        { "landscapeId": "MATH", "goals": [{ "id": "M" }] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A", "K", "missing", "M"] }
+        ] }
+      ],
+      "expect": { "findings": [
+        { "code": "LU-ATOMIC", "unitId": "u", "goalId": "K" },
+        { "code": "LU-REF", "unitId": "u", "goalId": "missing" },
+        { "code": "LU-REF", "unitId": "u", "goalId": "M" }
+      ] }
+    },
+    {
+      "id": "ambiguous-goal-kind",
+      "description": "An owned goal that is both an assessment and a memory goal has no single protected role.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "QK", "nodeKind": "memory", "examData": {} }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["QK"] }
+        ] }
+      ],
+      "expect": { "findings": [
+        { "code": "LU-KIND", "unitId": "u", "goalId": "QK" },
+        { "code": "LU-EMPTY-SCOPE", "unitId": "u" }
+      ] }
+    },
+    {
+      "id": "orientation-needs-no-assessment",
+      "description": "A genuine orientation goal may be owned; rule R1 applies to ordinary content goals only. Legacy tag encoding counts.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "O1", "semanticKind": "orientation" },
+          { "id": "O2", "tags": ["Motivation"] },
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A", "requires": ["O1"] }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["O1", "O2", "Q", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [], "units": { "u": { "valid": true, "goalsWithoutReviewedCoverage": ["A"] } } }
+    },
+    {
+      "id": "requires-cycle",
+      "description": "The normalized relation must be acyclic; a cycle through an own goal invalidates the contract.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A", "requires": ["B"] },
+          { "id": "B", "requires": ["A"] }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-GRAPH", "unitId": "u", "goalId": "A" }] }
+    },
+    {
+      "id": "unresolved-prerequisite",
+      "description": "A dangling requires reference on the path makes the contract unevaluable.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A", "missing"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "A"] }
+        ] }
+      ],
+      "expect": { "findings": [{ "code": "LU-GRAPH", "unitId": "u" }] }
+    },
+    {
+      "id": "duplicate-identities",
+      "description": "Unit IDs are unique across catalogs and a landscape has one catalog.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q1", "nodeKind": "exam" },
+          { "id": "Q2", "nodeKind": "exam" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c1", "landscapeId": "L", "completeness": "partial", "units": [{ "id": "u", "ownGoalIds": ["Q1"] }] },
+        { "catalogId": "c2", "landscapeId": "L", "completeness": "partial", "units": [{ "id": "u", "ownGoalIds": ["Q2"] }] },
+        { "catalogId": "c3", "landscapeId": "NONE", "completeness": "partial", "units": [] }
+      ],
+      "expect": { "findings": [
+        { "code": "LU-CATALOG" },
+        { "code": "LU-UNIT-ID", "unitId": "u" },
+        { "code": "LU-CATALOG" }
+      ] }
+    },
+    {
+      "id": "reviewed-coverage",
+      "description": "Reviewed evidence bound to the current task and rubric covers A; B has none yet. The unit is valid, its reviewed coverage incomplete.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["B"], "examData": {
+            "coveredGoalIds": ["A", "B"], "taskContent": "Task", "solutionContent": "Solution",
+            "scoring": { "maxPoints": 10, "passingPoints": 6 } } },
+          { "id": "B", "requires": ["A"] },
+          { "id": "A" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "B", "A"], "coverageReviews": [
+            { "assessmentGoalId": "Q", "goalIds": ["A"], "reference": "review.md",
+              "taskRevision": "@current", "rubricRevision": "@current" }
+          ] }
+        ] }
+      ],
+      "expect": { "findings": [], "units": { "u": { "valid": true, "goalsWithoutReviewedCoverage": ["B"] } } }
+    },
+    {
+      "id": "stale-or-unfounded-review",
+      "description": "Evidence for a changed task is stale; evidence for a goal the assessment neither requires nor claims, or for a foreign assessment, is unfounded.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"], "examData": {
+            "coveredGoalIds": ["A"], "taskContent": "Task", "solutionContent": "Solution",
+            "scoring": { "maxPoints": 10, "passingPoints": 6 } } },
+          { "id": "Q2", "nodeKind": "exam", "requires": ["A", "B"], "examData": {
+            "coveredGoalIds": ["A"], "taskContent": "Task 2", "solutionContent": "Solution 2",
+            "scoring": { "maxPoints": 4, "passingPoints": 2 } } },
+          { "id": "QF", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "A" },
+          { "id": "B" },
+          { "id": "C" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "partial", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "Q2", "A", "B"], "coverageReviews": [
+            { "assessmentGoalId": "Q", "goalIds": ["A"], "reference": "review.md",
+              "taskRevision": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+              "rubricRevision": "@current" },
+            { "assessmentGoalId": "Q2", "goalIds": ["B", "C"], "reference": "review.md",
+              "taskRevision": "@current", "rubricRevision": "@current" },
+            { "assessmentGoalId": "QF", "goalIds": ["A"], "reference": "review.md",
+              "taskRevision": "@current", "rubricRevision": "@current" }
+          ] }
+        ] }
+      ],
+      "expect": {
+        "findings": [
+          { "code": "LU-R2-EVIDENCE", "unitId": "u", "goalId": "Q" },
+          { "code": "LU-R2-EVIDENCE", "unitId": "u", "goalId": "Q2" },
+          { "code": "LU-R2-EVIDENCE", "unitId": "u", "goalId": "Q2" },
+          { "code": "LU-R2-EVIDENCE", "unitId": "u", "goalId": "QF" }
+        ],
+        "units": { "u": { "valid": false, "goalsWithoutReviewedCoverage": ["A", "B"] } }
+      }
+    },
+    {
+      "id": "offered-curriculum-without-the-own-assessment",
+      "description": "The contract is valid on the canonical pool. Where the offered view itself targets A or B, an own assessment that requires it must be in the learning scope. A goal that is in scope only as a closure-added prerequisite demands none.",
+      "landscapes": [
+        { "landscapeId": "L", "goals": [
+          { "id": "Q", "nodeKind": "exam", "requires": ["A"] },
+          { "id": "QL", "nodeKind": "exam", "requires": ["A", "B"] },
+          { "id": "A" },
+          { "id": "B" }
+        ] }
+      ],
+      "catalogs": [
+        { "catalogId": "c", "landscapeId": "L", "completeness": "complete", "units": [
+          { "id": "u", "ownGoalIds": ["Q", "QL", "A", "B"] }
+        ] }
+      ],
+      "offered": [
+        { "id": "all", "landscapeId": "L", "seedTargetGoalIds": ["Q", "QL", "A", "B"], "targetGoalIds": ["Q", "QL", "A", "B"], "members": ["L|all"] },
+        { "id": "basic", "landscapeId": "L", "seedTargetGoalIds": ["Q"], "targetGoalIds": ["Q", "A"], "members": ["L|basic-1", "L|basic-2"] },
+        { "id": "view-without-assessment", "landscapeId": "L", "seedTargetGoalIds": ["A", "B"], "targetGoalIds": ["A", "B"], "members": ["L|bare"] },
+        { "id": "prerequisite-only", "landscapeId": "L", "seedTargetGoalIds": [], "targetGoalIds": ["A", "B"], "members": ["L|later-stage"] },
+        { "id": "absent", "landscapeId": "L", "seedTargetGoalIds": [], "targetGoalIds": [], "members": ["L|none"] },
+        { "id": "other-subject", "landscapeId": "OTHER", "seedTargetGoalIds": ["A"], "targetGoalIds": ["A"], "members": ["OTHER|x"] }
+      ],
+      "expect": {
+        "findings": [],
+        "offeredFindings": [
+          { "code": "LU-R1-OFFERED", "unitId": "u", "goalId": "A" },
+          { "code": "LU-R1-OFFERED", "unitId": "u", "goalId": "B" }
+        ]
+      }
+    }
+  ]
+}

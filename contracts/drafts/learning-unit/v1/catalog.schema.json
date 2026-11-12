@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/contracts/drafts/learning-unit/v1/catalog.schema.json",
+  "title": "SkillPilot learning-unit catalog (draft v1)",
+  "description": "Authored learning-unit contracts of one subject landscape. A unit names its own acquisition targets by stable canonical goal ID and its required child units; it never copies goal data. Goal kinds, prerequisites and assessment coverage are read from the canonical landscape.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "catalogId", "landscapeId", "revision", "completeness", "units"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "catalogId": { "$ref": "#/$defs/slug" },
+    "landscapeId": {
+      "description": "Canonical landscape whose atomic goals the units of this catalog own.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "maxLength": 160
+    },
+    "revision": { "$ref": "#/$defs/revision" },
+    "completeness": {
+      "description": "partial: goals without an owning unit are reported. complete: every atomic goal of the landscape must have exactly one owning unit.",
+      "enum": ["partial", "complete"]
+    },
+    "units": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/unit" }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 120
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}-v[1-9][0-9]*$"
+    },
+    "goalId": {
+      "description": "Stable canonical goal ID. The validator resolves it against the catalog landscape; the ID format itself is governed by the canonical landscape rules.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "maxLength": 120
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$",
+      "maxLength": 400
+    },
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["de", "en"],
+      "properties": {
+        "de": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" },
+        "en": { "type": "string", "minLength": 1, "maxLength": 2000, "pattern": "\\S" }
+      }
+    },
+    "coverageReview": {
+      "description": "Reviewed evidence (rule R2) that the tasks and normal grading of one own assessment really test the listed own ordinary goals. The revisions bind the evidence to the reviewed task, solution and rubric.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessmentGoalId", "goalIds", "reference", "taskRevision", "rubricRevision"],
+      "properties": {
+        "assessmentGoalId": { "$ref": "#/$defs/goalId" },
+        "goalIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/goalId" }
+        },
+        "reference": { "$ref": "#/$defs/repoPath" },
+        "taskRevision": { "$ref": "#/$defs/sha256" },
+        "rubricRevision": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "revision", "title", "promise", "ownGoalIds"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "revision": { "$ref": "#/$defs/revision" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "promise": {
+          "description": "What learners can do independently afterwards and why it matters.",
+          "$ref": "#/$defs/localizedText"
+        },
+        "ownGoalIds": {
+          "description": "Directly owned atomic acquisition targets: ordinary, orientation, assessment and memory goals. May be empty for a pure aggregate.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/goalId" }
+        },
+        "childUnitIds": {
+          "description": "Required child units of the same catalog.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/slug" }
+        },
+        "coverageReviews": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/coverageReview" }
+        }
+      }
+    }
+  }
+}
