@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 // Conformance of the learning-unit layer projection that prerequisite-reduction proofs
-// fingerprint: TypeScript (app/scripts/learningUnitLayerProjection.ts), Python
-// (scripts/curriculum_learning_units.py via scripts/prerequisite_reduction_semantic_kind.py)
-// and Java (backend LearningUnitLayerProjection, checked against the same fixture).
+// fingerprint. Each implementation is checked against the same committed references:
+// TypeScript here (app/scripts/learningUnitLayerProjection.ts), Python in
+// scripts/test_prerequisite_reduction_semantic_kind.py (scripts/curriculum_learning_units.py
+// via scripts/prerequisite_reduction_semantic_kind.py) and Java in the backend
+// (LearningUnitLayerProjectionConformanceTest).
 //
 // Usage: tsx scripts/testLearningUnitLayerProjection.ts [--write]
 // --write regenerates the committed reference fingerprints after TypeScript and Python agree.
+// Only --write starts Python; it needs scripts/curriculum_package_validation_requirements.txt,
+// which the job that runs this test as part of test:transitive-minimality does not install.
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { spawnSync } from 'node:child_process'
@@ -131,9 +135,13 @@ function main() {
   const inputs = cases.flatMap(entry => entry.landscapes.map((landscape, index) => ({ case: entry.id, index, landscape })))
   const typescript = inputs.map(({ landscape }) => typescriptOutcome(landscape))
   const { document: math, injected } = canonicalMathematicsWithPilot()
-  const python = pythonOutcomes([...inputs.map(({ landscape }) => landscape), math])
-  const pythonMath = python.pop()
-  assert.deepEqual(typescript, python, 'TypeScript and Python project and fingerprint every fixture landscape identically')
+  // New references are written only after the package build's Python agrees. The check
+  // compares TypeScript with the committed references; Python checks the same references
+  // in its own test, so this test needs no Python packages.
+  const python = write ? pythonOutcomes([...inputs.map(({ landscape }) => landscape), math]) : undefined
+  const pythonMath = python?.pop()
+  if (python)
+    assert.deepEqual(typescript, python, 'TypeScript and Python project and fingerprint every fixture landscape identically')
   const references: Reference[] = inputs.map(({ case: id, index, landscape }, position) => ({
     case: id, index, landscapeId: (landscape as Json)?.landscapeId ?? null, ...typescript[position],
   }))
@@ -155,11 +163,12 @@ function main() {
   assert.ok(hasLearningUnitLayer(math))
   const mathFingerprint = fingerprintPrerequisiteReductionDocument(math)
   assert.equal(mathFingerprint, binding.currentDocumentDigest, 'Mathematics with its learning unit keeps the registry binding')
-  assert.deepEqual(pythonMath, { fingerprint: mathFingerprint }, 'Python agrees on Mathematics with its learning unit')
+  if (python)
+    assert.deepEqual(pythonMath, { fingerprint: mathFingerprint }, 'Python agrees on Mathematics with its learning unit')
   rawPinBehaviour(math, injected)
   const errors = references.filter(reference => 'error' in reference).length
   console.log(`Learning-unit layer projection conformance passed: ${references.length} fixture landscapes (${errors} unprojectable), `
-    + `TypeScript = Python = reference; Mathematics with ${injected ? 'an injected' : 'its'} pilot unit = registry ${mathFingerprint}.`)
+    + `TypeScript = ${python ? 'Python = ' : ''}reference; Mathematics with ${injected ? 'an injected' : 'its'} pilot unit = registry ${mathFingerprint}.`)
 }
 
 main()

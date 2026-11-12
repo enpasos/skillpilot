@@ -56,10 +56,15 @@ TypeScript-Prüfer (439 s) und der native Java-V8-Rahmen einschließlich der
 Ablehnung handgebundener Enddigests auf dem unveränderten Repository. Die
 Registerdateien bleiben unverändert.
 
-Neue Tests: `testLearningUnitLayerProjection.ts` vergleicht TypeScript und
-Python für alle 30 Landschaften der gemeinsamen Einheitenfälle (eine davon ist
-nicht projizierbar) und Mathematik mit Pilot; Python und Java prüfen dieselben
-Referenzwerte. Die Regressionen in `testPrerequisiteReductionProof.ts` belegen,
+Neue Tests: Für alle 30 Landschaften der gemeinsamen Einheitenfälle (eine davon
+ist nicht projizierbar) und für Mathematik mit Pilot prüft jede der drei
+Sprachen dieselben eingecheckten Referenzwerte: TypeScript in
+`testLearningUnitLayerProjection.ts`, Python in
+`test_prerequisite_reduction_semantic_kind.py`, Java in
+`LearningUnitLayerProjectionConformanceTest`. Nur `--write`, das die
+Referenzwerte neu erzeugt, vergleicht TypeScript und Python direkt; die Prüfung
+selbst startet kein Python, weil der CI-Job `curriculum-assessment-proofs` die
+Python-Abhängigkeiten des Paketcompilers nicht installiert. Die Regressionen in `testPrerequisiteReductionProof.ts` belegen,
 dass Einheitenänderungen den Nachweis gültig lassen, während Änderungen an
 Zielen, `requires`, `contains`, Kalendereinheiten, `primary`-, `secondary`- und
 `assessed`-Platzierungen oder anderen Dokumentfeldern weiterhin scheitern, auch
