@@ -24,9 +24,12 @@
   function docPathToUrlKey(docRel) {
     if (!docRel) return "";
     var clean = String(docRel).replace(/^\/+/, "");
-    if (clean === "index.md") return "";
+    if (clean === "index.md" || clean === "README.md") return "";
     if (clean.endsWith("/index.md")) {
       return clean.slice(0, -"/index.md".length) + "/";
+    }
+    if (clean.endsWith("/README.md")) {
+      return clean.slice(0, -"/README.md".length) + "/";
     }
     if (clean.endsWith(".md")) {
       return clean.slice(0, -3) + "/";

@@ -48,6 +48,7 @@ export const SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS = discoverActiveMemoryCar
 const QUALITY_STATUS_PATHS = [
   'docs/qa-ci/status/curriculum-quality-status.json',
   'docs/qa-ci/status/curriculum-quality-status.md',
+  'docs/qa-ci/status/curriculum-quality-status.de.md',
   ...SUBJECT_EXPORT_MEMORY_CARD_REVIEW_CONFIGS.map((config) => config.reportPath),
 ]
 

@@ -15,7 +15,7 @@
 ## 6. Communication Contract Between ChatClient and SkillPilot Backend
 
 !!! info "Status and Scope"
-    Canonical, provider-neutral communication norm governing every SkillPilot learning coach (OpenAI MCP App, Claude Connector V1, Gemini Connector V1, future provider adapters, and all new coach tools). Security, session, didactic, and deployment specs refine this boundary without ever redefining it inconsistently. Passing tests on one provider lane (such as Gemini's controlled web check in the [Gemini Integration Runbook](../../deploy/gemini-integration.md)) never implies acceptance of other hosts, accounts, or surfaces.
+    Canonical, provider-neutral communication norm governing every SkillPilot learning coach (OpenAI MCP App, Claude Connector V1, Gemini Connector V1, future provider adapters, and all new coach tools). Security, session, didactic, and deployment specs refine this boundary without ever redefining it inconsistently. Passing tests on one provider lane (such as Gemini's controlled web check in the [Gemini Integration Runbook](../../deploy/gemini-integration.en.md)) never implies acceptance of other hosts, accounts, or surfaces.
 
 <a id="sec-coach-boundary-matrix"></a>
 ### 6.1. Core boundary, responsibility matrix, and minimal turn contract

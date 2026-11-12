@@ -14,8 +14,10 @@ export interface GeneratedStatusRegistryRow {
   artifactPaths: string[]
   generatedBy: string
   role: string
+  roleDe?: string
   sourceOfTruth: string[]
   regenerateWith: string
+  regenerateWithDe?: string
 }
 
 interface MemoryCardReviewConfigForNotice {
@@ -36,14 +38,26 @@ export const generatedStatusRegistryReadmeNoticeConfig: GeneratedMarkdownNoticeC
   ],
 }
 
+export const generatedStatusRegistryReadmeDeNoticeConfig: GeneratedMarkdownNoticeConfig = {
+  path: 'docs/qa-ci/status/README.de.md',
+  generatedBy: 'app/scripts/generateGeneratedStatusRegistry.ts',
+  regenerateWith: 'cd app && npm run docs:generated-status-registry',
+  sourceOfTruth: [
+    'app/scripts/generatedMarkdownNoticeRegistry.ts',
+    'app/scripts/generateGeneratedStatusRegistry.ts',
+  ],
+}
+
 const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
   {
     artifactPaths: [
       'docs/qa-ci/status/curriculum-quality-status.md',
+      'docs/qa-ci/status/curriculum-quality-status.de.md',
       'docs/qa-ci/status/curriculum-quality-status.json',
     ],
     generatedBy: 'app/scripts/generateCurriculumQualityStatus.ts',
     role: 'Curriculum maturity dashboard snapshot consumed by the Workbench and follow-up reports.',
+    roleDe: 'Dashboard-Momentaufnahme zum Curriculum-Reifegrad für die Workbench und nachgelagerte Berichte.',
     sourceOfTruth: [
       'app/scripts/generateCurriculumQualityStatus.ts',
       'curricula/',
@@ -57,6 +71,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateCurriculumSourceCoverageAudit.ts',
     role: 'Source-coverage evidence audit for configured curriculum inputs.',
+    roleDe: 'Quellenabdeckungs-Audit für konfigurierte Curriculum-Eingaben.',
     sourceOfTruth: [
       'app/scripts/generateCurriculumSourceCoverageAudit.ts',
       'curricula/DE/Gymnasium/canonical/',
@@ -70,6 +85,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'scripts/generate_curriculum_source_verification_review.py',
     role: 'Hash-bound Mathematik source-text verification status and human review queue summary.',
+    roleDe: 'Hash-gebundener Quelltext-Verifikationsstatus für Mathematik samt Übersicht über offene menschliche Prüfungen.',
     sourceOfTruth: [
       'curricula/DE/Gymnasium/quality/source-verification/de-gymnasium-mathematik-v1.review.json',
       'contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json',
@@ -84,6 +100,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateMemSparqlConsistencyAudit.ts',
     role: 'Non-blocking live MEM/FWU SPARQL comparison for the Mathematik PoC scope.',
+    roleDe: 'Nicht-blockierender Live-MEM/FWU-SPARQL-Abgleich für den Mathematik-PoC-Umfang.',
     sourceOfTruth: [
       'curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json',
     ],
@@ -96,6 +113,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateMemSparqlConsistencyAudit.ts',
     role: 'Human review queue derived from MEM consistency findings and ledger state.',
+    roleDe: 'Menschliche Prüfliste aus MEM-Konsistenzbefunden und dem aktuellen Ledger-Stand.',
     sourceOfTruth: [
       'curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.config.json',
       'curricula/DE/Gymnasium/quality/mem-sparql-consistency/canonical-math-poc.review.jsonl',
@@ -109,6 +127,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
     role: 'PoC source-rationale report for selected canonical Mathematik goals.',
+    roleDe: 'PoC-Quellenbegründungsbericht für ausgewählte kanonische Mathematik-Lernziele.',
     sourceOfTruth: [
       'app/scripts/generateGoalSourceRationales.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -124,6 +143,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
     role: 'MEM/FWU SPARQL showcase for selected canonical Mathematik source rationales.',
+    roleDe: 'MEM/FWU-SPARQL-Anschauungsbeispiele für ausgewählte kanonische Mathematik-Quellenbegründungen.',
     sourceOfTruth: [
       'app/scripts/generateGoalSourceRationales.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -140,6 +160,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
     role: 'Plain-language MEM/FWU SPARQL source-rationale view for selected canonical Mathematik goals.',
+    roleDe: 'Allgemeinverständliche MEM/FWU-SPARQL-Quellenbegründungsansicht für ausgewählte kanonische Mathematik-Lernziele.',
     sourceOfTruth: [
       'app/scripts/generateGoalSourceRationales.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -156,6 +177,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
     role: 'Public runtime source-rationale indexes that let the cockpit trace canonical Mathematik and Physik goals back to reviewed source bullets.',
+    roleDe: 'Öffentliche Laufzeit-Indizes für Quellenbegründungen, über die das Cockpit kanonische Mathematik- und Physik-Lernziele auf geprüfte Quelltextstellen zurückführt.',
     sourceOfTruth: [
       'app/scripts/generateGoalSourceRationales.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -173,6 +195,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalSourceRationaleCoverage.ts',
     role: 'Coverage report and work queue for scaling Mathematik source rationales from the public runtime index to all relevant goals and relation texts.',
+    roleDe: 'Abdeckungsbericht und Arbeitsliste für den Ausbau der Mathematik-Quellenbegründungen vom öffentlichen Laufzeit-Index auf alle relevanten Ziele und Relationstexte.',
     sourceOfTruth: [
       'app/scripts/reportGoalSourceRationaleCoverage.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -186,6 +209,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/generateGoalSourceRationales.ts',
     role: 'Machine-readable all-relevant Mathematik source-rationale report with explicit classic-source gaps for uncovered leaf goals.',
+    roleDe: 'Maschinenlesbarer Gesamtbericht der Mathematik-Quellenbegründungen mit expliziten Quellenlücken für noch nicht abgedeckte Blattziele.',
     sourceOfTruth: [
       'app/scripts/generateGoalSourceRationales.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -202,6 +226,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalSourceRationaleGapIssues.ts',
     role: 'Human-review issue queue for classic-source gaps in the all-relevant Mathematik source-rationale report.',
+    roleDe: 'Menschliche Prüfliste für klassische Quellenlücken im Gesamtbericht der Mathematik-Quellenbegründungen.',
     sourceOfTruth: [
       'app/scripts/reportGoalSourceRationaleGapIssues.ts',
       'docs/qa-ci/status/goal-source-rationales-math-all-relevant.json',
@@ -216,6 +241,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalSourceRationaleMappingBatch.ts',
     role: 'First review batch of sibling-supported Mathematik source-rationale mapping candidates.',
+    roleDe: 'Erster Prüfbatch nachbargole-gestützter Zuordnungskandidaten für Mathematik-Quellenbegründungen.',
     sourceOfTruth: [
       'app/scripts/reportGoalSourceRationaleMappingBatch.ts',
       'docs/qa-ci/status/goal-source-rationale-gap-issues.json',
@@ -229,6 +255,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalVisualizationRolloutStatus.ts',
     role: 'Rollout status, quality queues, and current provider-blocker state for canonical Mathematik atomic goal visualizations.',
+    roleDe: 'Rollout-Stand, Qualitätswarteschlangen und aktueller Provider-Blocker-Status für atomare Lernziel-Visualisierungen in Mathematik.',
     sourceOfTruth: [
       'app/scripts/reportGoalVisualizationRolloutStatus.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json',
@@ -243,6 +270,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalVisualizationRolloutStatus.ts',
     role: 'Rollout status, quality queues, and current provider-blocker state for canonical Physik atomic goal visualizations.',
+    roleDe: 'Rollout-Stand, Qualitätswarteschlangen und aktueller Provider-Blocker-Status für atomare Lernziel-Visualisierungen in Physik.',
     sourceOfTruth: [
       'app/scripts/reportGoalVisualizationRolloutStatus.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json',
@@ -257,6 +285,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGoalVisualizationRolloutStatus.ts',
     role: 'Rollout status, quality queues, and current provider-blocker state for canonical Chemie atomic goal visualizations.',
+    roleDe: 'Rollout-Stand, Qualitätswarteschlangen und aktueller Provider-Blocker-Status für atomare Lernziel-Visualisierungen in Chemie.',
     sourceOfTruth: [
       'app/scripts/reportGoalVisualizationRolloutStatus.ts',
       'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json',
@@ -270,6 +299,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportMemoryCardReviewRollout.ts',
     role: 'Rollout triage for subjects still moving toward `CQR-302`.',
+    roleDe: 'Rollout-Triage für Fächer auf dem Weg zu `CQR-302`.',
     sourceOfTruth: [
       'app/scripts/reportMemoryCardReviewRollout.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
@@ -283,6 +313,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportM0RemediationPlan.ts',
     role: 'Work queue for curricula that still need source coverage, QA scopes, or reviews before leaving `M0`.',
+    roleDe: 'Arbeitsliste für Curricula, die vor dem Verlassen von `M0` noch Quellenabdeckung, QS-Scopes oder Reviews benötigen.',
     sourceOfTruth: [
       'app/scripts/reportM0RemediationPlan.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
@@ -295,6 +326,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportEnglishRemediationPilot.ts',
     role: 'Reproducible source-expansion slice for the Englisch remediation pilot.',
+    roleDe: 'Reproduzierbarer Quellausbau-Ausschnitt für den Englisch-Remediationspiloten.',
     sourceOfTruth: [
       'app/scripts/reportEnglishRemediationPilot.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
@@ -307,6 +339,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportGymnasiumDurationModelReadiness.ts',
     role: 'Readiness audit for duration-model policy and composition-view coverage.',
+    roleDe: 'Bereitschafts-Audit für Dauermodell-Richtlinien (`G8`/`G9`) und Composition-View-Abdeckung.',
     sourceOfTruth: [
       'app/scripts/reportGymnasiumDurationModelReadiness.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
@@ -322,6 +355,7 @@ const staticGeneratedStatusRows: GeneratedStatusRegistryRow[] = [
     ],
     generatedBy: 'app/scripts/reportMemoryCardPilotDossier.ts',
     role: 'Semantic preparation dossier for the Biologie memory-card pilot.',
+    roleDe: 'Semantisches Vorbereitungsdossier für den Biologie-Lernkartenpiloten.',
     sourceOfTruth: [
       'app/scripts/reportMemoryCardPilotDossier.ts',
       'docs/qa-ci/status/curriculum-quality-status.json',
@@ -352,6 +386,7 @@ function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
       artifactPaths: configs.map((configRef) => configRef.reportPath),
       generatedBy: 'app/scripts/memoryCardReview.ts',
       role: 'Subject-level `CQR-302` memory-card review reports.',
+      roleDe: 'Fachbezogene `CQR-302`-Lernkarten-Prüfberichte.',
       sourceOfTruth: [
         'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json',
         'curricula/DE/Gymnasium/quality/memory-card-review/**/*.config.json',
@@ -364,8 +399,10 @@ function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
       artifactPaths: [configRef.reportPath],
       generatedBy: 'app/scripts/memoryCardReview.ts',
       role: 'Retained predecessor snapshot; the active subject report above supplies current evidence.',
+      roleDe: 'Aufbewahrter Vorgänger-Snapshot; der aktive Fachbericht oben liefert den aktuellen Nachweis.',
       sourceOfTruth: [configRef.configPath],
       regenerateWith: 'Preserve this snapshot; generate the active subject report above.',
+      regenerateWithDe: 'Snapshot unverändert bewahren; aktiven Fachbericht oben neu erzeugen.',
     })),
   ]
 }
@@ -461,6 +498,7 @@ export function loadGeneratedStatusRegistryRows(): GeneratedStatusRegistryRow[] 
 export function loadGeneratedMarkdownNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
   return [
     generatedStatusRegistryReadmeNoticeConfig,
+    generatedStatusRegistryReadmeDeNoticeConfig,
     ...staticGeneratedStatusRows.flatMap(markdownNoticeFromRegistryRow),
     ...loadMemoryCardReviewNoticeConfigs(),
     ...loadCompendiaMarkdownNoticeConfigs(),

@@ -14,7 +14,7 @@
 <a id="sec-sga-gymnasium-rollout"></a>
 ## 9. Rollout-Politik für das kanonische Gymnasium
 
-Dieses Kapitel legt die dauerhafte Zielarchitektur und Rollout-Politik fest, nach der die deutschen Gymnasiallehrpläne aller 16 Bundesländer ohne bundeslandspezifische Zielduplizierung in je einen kanonischen Skill-Graphen pro Fach zusammengeführt werden (Umsetzungspläne und Migrationsstände liegen unter [Implementierungsplan Kanonisches Gymnasium](../../dev/canonical-gymnasium-implementation-plan.md) und [Migrationsstatus](../../dev/canonical-gymnasium-migration-status.md)).
+Dieses Kapitel legt die dauerhafte Zielarchitektur und Rollout-Politik fest, nach der die deutschen Gymnasiallehrpläne aller 16 Bundesländer ohne bundeslandspezifische Zielduplizierung in je einen kanonischen Skill-Graphen pro Fach zusammengeführt werden (Umsetzungspläne und Migrationsstände liegen unter [Implementierungsplan Kanonisches Gymnasium](../../dev/canonical-gymnasium-implementation-plan.de.md) und [Migrationsstatus](../../dev/canonical-gymnasium-migration-status.md)).
 
 <a id="sec-sga-gr-decisions"></a>
 ### 9.1. Neun Kernentscheidungen und Scope-Vokabular

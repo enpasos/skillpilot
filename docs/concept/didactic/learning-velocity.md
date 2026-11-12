@@ -15,7 +15,7 @@
 ## 3. Learning Velocity
 
 !!! info "Boundary to Cockpit History and Schedule Status"
-    The current Cockpit chart counts **recorded completion events**, not mutable mastery update timestamps. An event can represent a renewed completion on a later calendar day rather than necessarily a lifetime first transition to mastered, and the event ledger includes completion markers such as orientation without certifying subject-matter mastery. Raw weekly velocity alone must **not** be presented as schedule adherence; authoritative schedule evaluation is governed by [4](unified-learning-plan-status.en.md#sec-unified-plan-status), and broader calendar-pacing exploration is documented in [Curriculum Time Axis and Pacing](curriculum-time-axis-and-pacing.md).
+    The current Cockpit chart counts **recorded completion events**, not mutable mastery update timestamps. An event can represent a renewed completion on a later calendar day rather than necessarily a lifetime first transition to mastered, and the event ledger includes completion markers such as orientation without certifying subject-matter mastery. Raw weekly velocity alone must **not** be presented as schedule adherence; authoritative schedule evaluation is governed by [4](unified-learning-plan-status.en.md#sec-unified-plan-status), and broader calendar-pacing exploration is documented in [Curriculum Time Axis and Pacing](curriculum-time-axis-and-pacing.en.md).
 
 <a id="sec-velocity-definition"></a>
 ### 3.1. Purpose and conceptual definition
@@ -30,7 +30,7 @@ $$
 
 - **Atomic goals only:** Only leaf goals count (never cluster containers), preventing structural double-counting.
 - **Binary goal outcome:** A goal is either mastered or not mastered; there is no partial goal credit. The current storage compatibility threshold `mastery >= 0.9` interprets persisted values and is not a grading scale or permission for partial mastery.
-- **Calendar basis:** The present Cockpit implementation ("recorded completions", see [Daily Learning Progress](../runtime-workflows/daily-learning-progress.md)) groups events by `Europe/Berlin` calendar weeks, counts the same goal at most once per day, and keeps legacy undated history visible without backfilling it into the chart.
+- **Calendar basis:** The present Cockpit implementation ("recorded completions", see [Daily Learning Progress](../runtime-workflows/daily-learning-progress.en.md)) groups events by `Europe/Berlin` calendar weeks, counts the same goal at most once per day, and keeps legacy undated history visible without backfilling it into the chart.
 
 <a id="sec-velocity-caveats"></a>
 ### 3.2. Interpretation, design principles, and caveats

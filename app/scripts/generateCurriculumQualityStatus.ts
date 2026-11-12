@@ -907,6 +907,7 @@ const surrogateEvidencePath = resolve(
 const statusDir = resolve(repoRoot, 'docs/qa-ci/status')
 const statusJsonPath = join(statusDir, 'curriculum-quality-status.json')
 const statusMarkdownPath = join(statusDir, 'curriculum-quality-status.md')
+const statusMarkdownDePath = join(statusDir, 'curriculum-quality-status.de.md')
 
 const CANONICAL_GYM_MATH_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const CANONICAL_GYM_MATH_SEK1_MOTIVATION_GOAL_ID = '65365dce-f33f-49d8-9516-42f75883aa86'
@@ -6083,6 +6084,131 @@ function renderMarkdown(status: StatusDocument): string {
   return `${lines.join('\n')}\n`
 }
 
+const ruleCategoryLabelsDe: Record<QualityRuleDefinition['category'], string> = {
+  graph: 'Graph',
+  applicability: 'Geltungsbereich',
+  route: 'Lernroute',
+  assessment: 'Prüfung',
+  review: 'Review',
+  view: 'Sicht',
+}
+
+const ruleDescriptionsDe: Record<string, string> = {
+  'CQR-000': 'Originale Quelleninventare sind lesbar, mit offiziellen HTTP(S)-Quell-URLs verknüpft und ihre extrahierten Ziele sind im Quellmitgliedschafts- und Abschluss-Ledger registriert.',
+  'CQR-001': 'Jede deklarierte aktuelle kanonische Wurzel besteht die gemeinsame Prüfung qualifizierter Referenzen und effektiver DAG-Zyklenfreiheit, die strukturelle atomare `requires`-Normalform, explizite Typkonsistenz sowie deterministische transitive Minimalität einschließlich relevanter Fremdvererbung.',
+  'CQR-002': 'Gespeicherte Typ-Metadaten stimmen mit der strukturellen Klassifikation in atomare Ziele und Cluster überein.',
+  'CQR-003': 'Quellenabdeckungs-Atome der Bundesländer-Composition-Views sind quellgestützt und registrierte Quelloriginale werden vollständig durch Sichtatome abgedeckt.',
+  'CQR-004': 'GK/LK-Stufen von Sek-II-Quellzielen sind nur kanonischen Zielen mit kompatiblen GK/LK-Tags zugeordnet; nicht näher spezifizierte Sek-II-Quellziele gelten standardmäßig als GK/LK, sofern keine reine LK-Entscheidung explizit geprüft wurde.',
+  'CQR-005': 'Die Anzahl extrahierter Quellziele ist gegenüber der geprüften HE/BW-Vergleichsbasis plausibel oder bei starker Abweichung explizit geprüft.',
+  'CQR-101': 'Konfigurierte Routen-Scopes verbinden Motivationsanker über effektive `requires`-Kanten mit den Abschluss-Autonomiezielen.',
+  'CQR-102': 'Konfigurierte Routen-Scopes verbinden Motivationsanker über direkte atomare `requires`-Kanten mit den Abschluss-Autonomiezielen.',
+  'CQR-103': 'Konfigurierte Routen-Scopes stützen die reguläre didaktische Sequenzierung nicht mehr auf Cluster-`requires`.',
+  'CQR-104': 'Konfigurierte Routen-Scopes machen Motivationsanker und Abschluss-Autonomieziele in den relevanten lernendenseitigen Composition-Views sichtbar.',
+  'CQR-201': 'Abschluss-Autonomieziele in konfigurierten Scopes verfügen über `examData`.',
+  'CQR-202': '`examData` an Abschluss-Autonomiezielen ist für den Prüfungsmodus hinreichend konkret ausgearbeitet und kein Platzhaltertext.',
+  'CQR-203': '`examData` an Abschluss-Autonomiezielen enthält Freigabestatus, abgedeckte Ziele, abgedeckte Stränge und Anforderungsniveau-Metadaten.',
+  'CQR-301': 'Konfigurierte Ledger zur semantischen Atomizität sind vollständig, aktuell und frei von offenen Prüfeinträgen.',
+  'CQR-302': 'Konfigurierte Lernkarten-Ledger entscheiden für reguläre atomare Ziele explizit, ob Auswendiglernen fachlich begründet ist; jede beibehaltene Primärkarte und jedes bestehende Memory-Deck ist rückverfolgbar belegt, und konfigurierte Composition-Views zeigen referenzierte Memory-Knoten dort an, wo zugehörige Ziele sichtbar sind.',
+  'CQR-303': 'Der zentrale Fünf-Gate-Bericht belegt einen nichtleeren aktuellen `curricularAtomic`-Umfang, den vollständigen D/P/A/M/V-Durchschnitt, bestandene Pflichtprüfungen und keine blockierenden Befunde. Technische Visualisierungs-Rückstellungen gelten weiterhin als unvollständig; KI-Evidenz ersetzt niemals menschliche Freigabe.',
+  'CQR-401': 'Für das Curriculum liegt mindestens eine geprüfte lernendenseitige Composition-View vor.',
+  'CQR-501': 'Aktive Geltungsbereichs-Warnungen sind behoben und akzeptierte Warneinträge passen weiterhin zum aktuellen Befundstand.',
+}
+
+function renderMarkdownDe(status: StatusDocument): string {
+  const lines: string[] = []
+  const sourceEvidenceLabelDe = (source: MappingPipelineSourceStatus): string => {
+    if (source.sourceKind === 'source-extraction') {
+      const documents = source.sourceDocuments ?? []
+      const available = documents.filter((document) => document.available).length
+      const linked = documents.filter((document) => document.hasUsableUrl).length
+      return documents.length > 0
+        ? `${linked}/${documents.length} URL; lokaler Cache ${available}/${documents.length}`
+        : '0 Originalquelle(n)'
+    }
+    if (source.sourceKind === 'legacy-snapshot') return 'Snapshot-Diagnose'
+    return 'Keine Extraktion'
+  }
+  const sourceExtractionProgress = (pipeline?: MappingPipelineStatus): string => {
+    if (!pipeline) return '-'
+    const sourceExtractionSources = pipeline.sources.filter((source) => source.sourceKind === 'source-extraction')
+    const ready = sourceExtractionSources.filter((source) =>
+      source.steps.some((step) => step.id === 'MAPPING-1' && step.status === 'complete')).length
+    return `${ready}/${pipeline.totalSources}`
+  }
+
+  lines.push('# Curriculum-Qualitätsstatus')
+  lines.push('')
+  pushGeneratedMarkdownNotice(lines)
+  lines.push(`Erstellt: ${status.generatedAt}`)
+  lines.push(`Regelwerk-Version: ${status.rulesVersion}`)
+  const proof = status.prerequisiteReductionProof
+  if (proof) lines.push(`Review-Bindung: ${proof.proofContract}; ${proof.mode}; ${proof.auditScope}; registry=${proof.registryDigest}; goals=${proof.affectedGoalIds.join(',')}`)
+  if (status.historicalReviewReuseIssue) lines.push(`Historische Review-Wiederverwendung nicht verfügbar; Reviews werden ausschließlich gegen den aktuellen Inhalt geprüft: ${status.historicalReviewReuseIssue}`)
+  lines.push('')
+  lines.push('## Zusammenfassung')
+  lines.push('')
+  lines.push('| Kennzahl | Wert |')
+  lines.push('| --- | ---: |')
+  lines.push(`| Curricula | ${status.summary.curricula} |`)
+  Object.entries(status.summary.maturity).forEach(([level, count]) => {
+    lines.push(`| ${level} | ${count} |`)
+  })
+  lines.push('')
+  lines.push('## Curricula')
+  lines.push('')
+  lines.push('| Curriculum | Reifegrad | Ziele | Atomar | Passagenextraktion | Bundesländer | QS-Scopes | Warnungen | Fehler |')
+  lines.push('| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |')
+  status.curricula.forEach((curriculum) => {
+    const allRules = [...curriculum.rules, ...curriculum.scopes.flatMap((scope) => scope.rules)]
+    const warnCount = allRules.filter((rule) => rule.status === 'warn').length
+    const failCount = allRules.filter((rule) => rule.status === 'fail').length
+    const jurisdictionCoverage = curriculum.jurisdictionCoverage
+      ? `${curriculum.jurisdictionCoverage.sourceCompleteJurisdictions}/${curriculum.jurisdictionCoverage.totalJurisdictions}`
+      : '-'
+    const pipeline = sourceExtractionProgress(curriculum.mappingPipeline)
+    lines.push(`| ${curriculum.title} | ${curriculum.maturity} | ${curriculum.goals} | ${curriculum.atomicGoals} | ${pipeline} | ${jurisdictionCoverage} | ${curriculum.scopes.length} | ${warnCount} | ${failCount} |`)
+  })
+  lines.push('')
+  lines.push('## Mapping-Pipeline')
+  lines.push('')
+  lines.push('| Curriculum | Quelle | Bundesland | Originalquellen | Abgeschlossen | Aktueller Schritt | Passagen | Quellziele | Exakt | Teilweise | Exakt-Anteil | Dauerprojektion | Evidenzhinweis |')
+  lines.push('| --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |')
+  status.curricula.forEach((curriculum) => {
+    curriculum.mappingPipeline?.sources.forEach((source) => {
+      const evidenceNote = source.sourceKind === 'legacy-snapshot' ? 'nicht pipelinefähig: keine Passagenextraktion' : ''
+      const durationProjection = source.durationProjectionAudit
+        ? `${source.durationProjectionAudit.coveredEvidenceLinks}/${source.durationProjectionAudit.evidenceLinks}; Diff ${source.durationProjectionAudit.canonicalGoalsWithDifferentG8G9Evidence ?? 0}; offen ${source.durationProjectionAudit.uncoveredEvidenceLinks}`
+        : '-'
+      const mappedSourceGoals = source.mappedSourceGoals ?? Math.max(0, source.sourceGoals - (source.unmappedSourceGoals ?? 0))
+      const exactShare = mappedSourceGoals > 0
+        ? Math.round(((source.exactMappings ?? 0) / mappedSourceGoals) * 100)
+        : 0
+      lines.push(`| ${curriculum.title} | ${source.title} | ${source.jurisdiction || '-'} | ${sourceEvidenceLabelDe(source)} | ${source.completedSteps}/${source.totalSteps} | ${source.currentStep || '-'} | ${source.passages} | ${source.sourceGoals} | ${source.exactMappings ?? 0} | ${source.partialMappings ?? 0} | ${exactShare}% | ${durationProjection} | ${evidenceNote} |`)
+    })
+  })
+  lines.push('')
+  lines.push('## Bundesländer-Abdeckung')
+  lines.push('')
+  lines.push('| Curriculum | Vollständig | DE-Quellsicht-Atome | Rohatome | Quellgestützte Länder | Extrahierte Quellziele | Registrierte Quelloriginale | Voll abgedeckte Originale | Unregistrierte Quellziele | Extrahierte Quellatome | Unregistrierte Quellatome | Nicht gestützte Zuordnungen | Nicht zugeordnete Quellatome | Teilweise | Fehler | Max. quellgestützte Sichtabdeckung |')
+  lines.push('| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |')
+  status.curricula.forEach((curriculum) => {
+    const coverage = curriculum.jurisdictionCoverage
+    if (!coverage) return
+    lines.push(`| ${curriculum.title} | ${coverage.sourceCompleteJurisdictions}/${coverage.totalJurisdictions} | ${coverage.totalAtomicGoals} | ${coverage.rawAtomicGoals} | ${coverage.sourceBackedJurisdictions} | ${coverage.sourceExtractedGoals} | ${coverage.sourceOriginalGoals} | ${coverage.sourceFullyCoveredOriginalGoals} | ${coverage.sourceUnregisteredGoals} | ${coverage.sourceExtractedAtomicGoals} | ${coverage.sourceUnregisteredAtomicGoals} | ${coverage.unsupportedAssignedAtomicGoals} | ${coverage.unmappedSourceAtomicGoals} | ${coverage.partialJurisdictions} | ${coverage.errorJurisdictions} | ${coverage.maxSourceBackedAtomicGoals} (${coverage.maxSourceBackedCoveragePercent}%) |`)
+  })
+  lines.push('')
+  lines.push('## Regelkatalog')
+  lines.push('')
+  lines.push('| Regel | Zielstufe | Kategorie | Beschreibung |')
+  lines.push('| --- | --- | --- | --- |')
+  status.ruleCatalog.forEach((rule) => {
+    const categoryLabel = ruleCategoryLabelsDe[rule.category] ?? rule.category
+    const descriptionDe = ruleDescriptionsDe[rule.id] ?? rule.description
+    lines.push(`| ${rule.id} | ${rule.maturityTarget} | ${categoryLabel} | ${descriptionDe} |`)
+  })
+  return `${lines.join('\n')}\n`
+}
+
 async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
   const { entries, sources } = loadCurrentCurriculumCatalog(inputs)
@@ -6213,6 +6339,7 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
 
   const jsonOutput = `${JSON.stringify(status, null, 2)}\n`
   const markdownOutput = renderMarkdown(status)
+  const markdownDeOutput = renderMarkdownDe(status)
   // Long review checks must not let a changed or truncated current catalog
   // publish results computed from an earlier input generation.
   assertCurrent()
@@ -6220,6 +6347,7 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
     const stale = [
       [statusJsonPath, jsonOutput],
       [statusMarkdownPath, markdownOutput],
+      [statusMarkdownDePath, markdownDeOutput],
     ].filter(([file, expected]) => !existsSync(file) || readFileSync(file, 'utf8') !== expected)
     if (stale.length > 0) {
       stale.forEach(([file]) => console.error(`${toRepoPath(file)} is stale. Run: npm run quality:curriculum-status`))
@@ -6233,11 +6361,30 @@ async function generateStatus(inputs: VerificationInputReader, assertCurrent: ()
   mkdirSync(statusDir, { recursive: true })
   writeFileSync(statusJsonPath, jsonOutput, 'utf8')
   writeFileSync(statusMarkdownPath, markdownOutput, 'utf8')
+  writeFileSync(statusMarkdownDePath, markdownDeOutput, 'utf8')
   console.log(`Wrote ${toRepoPath(statusJsonPath)}`)
   console.log(`Wrote ${toRepoPath(statusMarkdownPath)}`)
+  console.log(`Wrote ${toRepoPath(statusMarkdownDePath)}`)
 }
 
-const main = () => withVerificationInputSnapshot(generateStatus)
+function renderStatusMarkdownFromExistingJson(): void {
+  const status = JSON.parse(readFileSync(statusJsonPath, 'utf8')) as StatusDocument
+  const markdownOutput = renderMarkdown(status)
+  const markdownDeOutput = renderMarkdownDe(status)
+  mkdirSync(statusDir, { recursive: true })
+  writeFileSync(statusMarkdownPath, markdownOutput, 'utf8')
+  writeFileSync(statusMarkdownDePath, markdownDeOutput, 'utf8')
+  console.log(`Wrote ${toRepoPath(statusMarkdownPath)}`)
+  console.log(`Wrote ${toRepoPath(statusMarkdownDePath)}`)
+}
+
+const main = async () => {
+  if (process.argv.includes('--markdown-from-json')) {
+    renderStatusMarkdownFromExistingJson()
+    return
+  }
+  await withVerificationInputSnapshot(generateStatus)
+}
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((error) => {

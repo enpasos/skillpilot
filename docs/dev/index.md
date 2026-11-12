@@ -23,6 +23,12 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 
 ## Active Implementation Plans & Migration Ledgers
 
+- [Canonical Gymnasium Implementation Plan](canonical-gymnasium-implementation-plan.md)
+- [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
+- [Mathematics Bundeslaender Status](canonical-gymnasium-math-bundeslaender-status.md)
+- [Physics Bundeslaender Status](canonical-gymnasium-physics-bundeslaender-status.md)
+- [Chemistry Bundeslaender Status](canonical-gymnasium-chemistry-bundeslaender-status.md)
+
 </div>
 
 <div data-sp-content-lang="de" markdown>
@@ -49,6 +55,12 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Auto-Update-Architektur (§9)](auto-update.de.md)
 
 ## Aktive Umsetzungspläne & Migrationsstände
+
+- [Kanonisches Gymnasium: Umsetzungsplan](canonical-gymnasium-implementation-plan.de.md)
+- [Duale Curriculum-Pakete: Umsetzungsstand](dual-curriculum-package-implementation-status.de.md)
+- [Mathematik: Bundesländer-Status](canonical-gymnasium-math-bundeslaender-status.de.md)
+- [Physik: Bundesländer-Status](canonical-gymnasium-physics-bundeslaender-status.de.md)
+- [Chemie: Bundesländer-Status](canonical-gymnasium-chemistry-bundeslaender-status.de.md)
 
 </div>
 

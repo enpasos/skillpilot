@@ -41,7 +41,7 @@ Diese Seite ist der Einstiegspunkt für wiederholbare Produktions- und Export-Pi
 
 ## Programmstatus
 
-- [Duale Curriculum-Pakete: Umsetzungsstand (EN)](../dev/dual-curriculum-package-implementation-status.md)
+- [Duale Curriculum-Pakete: Umsetzungsstand](../dev/dual-curriculum-package-implementation-status.de.md)
   Aktueller Umsetzungsstand für das gekoppelte Release-Programm aus JSON-Runtime- und FWU-Ontologie-Paketen.
 
 ## Pipelines
