@@ -298,6 +298,8 @@ const unitKey = (landscapeId: string, unitId: string): string => `${landscapeId}
 
 export const LEARNING_UNIT_KIND = 'learningUnit'
 export const OWN_RELATION = 'own'
+/** An own placement is closed like the unit declaration: nothing can ride along on it. */
+const ownPlacementFields = new Set(['goalId', 'unitId', 'relation'])
 const unitFields = new Set(['id', 'kind', 'label', 'labelEn', 'promise', 'promiseEn', 'revision', 'parentUnitId', 'order', 'coverageReviews'])
 const unitOnlyFields = ['labelEn', 'promise', 'promiseEn', 'revision', 'coverageReviews']
 const reviewFields = new Set(['assessmentGoalId', 'goalIds', 'reference', 'taskRevision', 'rubricRevision'])
@@ -399,6 +401,10 @@ export function deriveLearningUnits(landscapes: UnitGraphLandscape[]): DerivedLe
       }
       if (placement.context !== undefined && placement.context !== null) {
         report('LU-PLACEMENT', `Ownership of ${goalId} by ${unitId} carries a context; ownership is not scope-specific in this contract version`, { unitId, goalId })
+      }
+      const undeclared = Object.keys(placement).filter(key => !ownPlacementFields.has(key) && key !== 'context').sort()
+      if (undeclared.length > 0) {
+        report('LU-PLACEMENT', `Ownership of ${goalId} by ${unitId} carries undeclared field(s) ${undeclared.join(', ')}; an own placement has exactly goalId, unitId and relation`, { unitId, goalId })
       }
       if (seen.has(`${goalId} ${unitId}`)) {
         report('LU-PLACEMENT', `Ownership of ${goalId} by ${unitId} is declared more than once`, { unitId, goalId })

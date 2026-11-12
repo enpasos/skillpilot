@@ -1807,7 +1807,7 @@
     },
     {
       "id": "ownership-placement",
-      "description": "Ownership points at a learning unit, carries no context, is declared once, and a learning unit takes no other relation.",
+      "description": "Ownership points at a learning unit, carries exactly goalId, unitId and relation (no context, no other field), is declared once, and a learning unit takes no other relation.",
       "landscapes": [
         {
           "landscapeId": "L",
@@ -1826,6 +1826,10 @@
             },
             {
               "id": "Q4",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q5",
               "nodeKind": "exam"
             },
             {
@@ -1878,6 +1882,14 @@
               }
             },
             {
+              "goalId": "Q5",
+              "unitId": "u",
+              "relation": "own",
+              "waivedGoalIds": [
+                "Q1"
+              ]
+            },
+            {
               "goalId": "Q1",
               "unitId": "u",
               "relation": "own"
@@ -1909,6 +1921,11 @@
           {
             "code": "LU-PLACEMENT",
             "unitId": "u",
+            "goalId": "Q5"
+          },
+          {
+            "code": "LU-PLACEMENT",
+            "unitId": "u",
             "goalId": "Q1"
           },
           {
@@ -1920,7 +1937,7 @@
         "units": {
           "u": {
             "valid": false,
-            "totalScope": 2
+            "totalScope": 3
           }
         }
       }

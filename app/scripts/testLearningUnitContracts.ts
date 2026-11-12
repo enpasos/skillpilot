@@ -113,6 +113,8 @@ for (const [label, unit] of Object.entries({
 assert(goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own' }))
 assert(goalPlacementSchema({ goalId: 'A', unitId: 'y5', relation: 'primary', context: { jurisdiction: 'DE-HE' } }))
 assert(!goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own', context: { jurisdiction: 'DE-HE' } }), 'Ownership carries no context')
+assert(!goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own', waivedGoalIds: ['B'] }), 'Ownership carries no undeclared field')
+assert(goalPlacementSchema({ goalId: 'A', unitId: 'y5', relation: 'primary', note: 'calendar placements stay open' }))
 const coverageReview = { assessmentGoalId: 'Q', goalIds: ['A'], reference: 'review.md',
   taskRevision: `sha256:${'0'.repeat(64)}`, rubricRevision: `sha256:${'0'.repeat(64)}` }
 const reviewedUnit = (review: unknown) => JSON.parse(JSON.stringify({ ...learningUnit, coverageReviews: [review] }))

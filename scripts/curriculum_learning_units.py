@@ -362,6 +362,7 @@ def learning_unit_counts(landscape: Mapping[str, Any]) -> dict[str, int]:
 UNIT_FIELDS = frozenset({"id", "kind", "label", "labelEn", "promise", "promiseEn", "revision", "parentUnitId", "order",
                          "coverageReviews"})
 REVIEW_FIELDS = frozenset({"assessmentGoalId", "goalIds", "reference", "taskRevision", "rubricRevision"})
+OWN_PLACEMENT_FIELDS = frozenset({"goalId", "unitId", "relation"})
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 REVISION = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}-v[1-9][0-9]*$")
 SHA256_REVISION = re.compile(r"^sha256:[0-9a-f]{64}$")
@@ -505,6 +506,10 @@ def _derive(landscapes: Sequence[Mapping[str, Any]], findings: list[Finding]) ->
             if placement.get("context") is not None:
                 report("LU-PLACEMENT", f"Ownership of {goal_id} by {unit_id} carries a context; ownership is not scope-specific "
                        "in this contract version", unit_id, goal_id)
+            undeclared = sorted(set(placement) - OWN_PLACEMENT_FIELDS - {"context"})
+            if undeclared:
+                report("LU-PLACEMENT", f"Ownership of {goal_id} by {unit_id} carries undeclared field(s) {', '.join(undeclared)}; "
+                       "an own placement has exactly goalId, unitId and relation", unit_id, goal_id)
             if (goal_id, unit_id) in seen:
                 report("LU-PLACEMENT", f"Ownership of {goal_id} by {unit_id} is declared more than once", unit_id, goal_id)
                 continue

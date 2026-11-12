@@ -1048,7 +1048,7 @@
         },
         "relation": {
           "type": "string",
-          "description": "Placement relation such as primary, secondary, or assessed; own states that a learning unit directly owns an atomic goal and carries no context."
+          "description": "Placement relation such as primary, secondary, or assessed; own states that a learning unit directly owns an atomic goal; such a placement carries exactly goalId, unitId and relation."
         },
         "context": {
           "type": "object",
@@ -1071,9 +1071,11 @@
             ]
           },
           "then": {
-            "not": {
-              "required": [
-                "context"
+            "propertyNames": {
+              "enum": [
+                "goalId",
+                "unitId",
+                "relation"
               ]
             }
           }
