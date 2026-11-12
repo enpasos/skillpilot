@@ -578,6 +578,13 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   the first placement attempt broke the proof chain; the Product Owner asked
   to proceed. Never rebind a proof by hand and never touch a floor to place a
   unit. Record: `docs/dev/canonical-math-learning-unit-pilot-binding-review-2026-11-12.md`.
+- **Redistribution ledger (Product Owner, 12 November 2026).** The committed,
+  CI-checked package-redistribution ledger is always the one of the contract
+  under which packages are released: today 1.0. The 1.2 ledger binds the 1.2
+  model, because a redistribution review must see everything that ships; it
+  is generated per build and is committed, taking over the CI check, when the
+  runtime switches to contract 1.2. Do not commit a ledger that no CI step
+  checks.
 - **First placed unit (12 November 2026).** Canonical Mathematics contains the
   pilot unit `math-dot-product-projection` (one ordinary goal, one
   assessment). It is structurally valid and carries no coverage review,

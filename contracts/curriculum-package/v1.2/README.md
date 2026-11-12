@@ -133,12 +133,27 @@ the reference is rewritten to that package path, and
 artifacts are not part of the dependency closure, like the 1.1 completion
 artifacts.
 
-A 1.2 ZIP needs its own redistribution ledger, because the ledger binds the
-digest of the compiled 1.2 model:
-`python3 -B scripts/generate_curriculum_package_redistribution_review.py --generate --learning-unit-candidate`
-writes it for the compiled model. It is generated for a build and not
-committed while no 1.2 package is released, since no CI step would keep a
-committed copy current.
+A 1.2 ZIP needs its own redistribution ledger. A redistribution review has to
+see everything that ships, including unit texts and review records, so it
+binds the digest of the compiled 1.2 model and cannot share the 1.0 ledger.
+
+The committed, CI-checked ledger is always the one of the contract under which
+packages are released (Product Owner decision of 12 November 2026). Today that
+is 1.0: `scripts/run_curriculum_release_model_conformance.sh` checks
+`de-gymnasium-mathematik-v1.review.json` against the freshly compiled model.
+The 1.2 ledger is committed, and takes over that check, when the runtime
+switches to contract 1.2. Until then a 1.2 build generates it for its compiled
+model:
+
+```bash
+python3 -B scripts/generate_curriculum_package_redistribution_review.py --generate --learning-unit-candidate
+```
+
+A committed copy that no CI step checks would go stale with the next change
+to canonical Mathematics, and checking two ledgers would double that upkeep
+for a package nobody consumes yet. Until the switch, remote CI does not
+compile a real 1.2 model; `scripts/test_learning_unit_release_model.py` covers
+it locally in `./run_ci.sh package`.
 
 ## Validity rules
 

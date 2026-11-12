@@ -33,6 +33,12 @@ Der Product Owner hat am 12. November 2026 entschieden:
   `goalPlacement.relation` hat, ist kein Hindernis; der Paketvertrag bekommt
   dafür die neue Minor-Version 1.2. Veröffentlichte Dateien älterer Versionen
   bleiben unverändert.
+- **Weitergabeledger:** Eingecheckt und von der CI geprüft ist immer der
+  Weitergabeledger des Vertrags, nach dem ausgeliefert wird. Heute ist das 1.0.
+  Der Ledger für Vertrag 1.2 wird mit der Umstellung der Laufzeit (Stufe 3)
+  eingecheckt und übernimmt dann diese CI-Prüfung; bis dahin erzeugt ihn, wer
+  ein 1.2-Paket baut. Eine Weitergabeprüfung muss alles sehen, was ausgeliefert
+  wird, deshalb teilen sich die beiden Verträge keinen Ledger.
 
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
@@ -331,6 +337,12 @@ Oberfläche lesen dieselben Fälle:
    Tages- oder Wochenereignis und keine Mastery-Zeile.
 10. Rücknahme der einzigen Grundlage einer Anerkennung: Die Ableitung wird neu
     berechnet, ohne veralteten Cache und ohne Übertrag zwischen Lernenden.
+
+Zur Umstellung der Laufzeit auf Vertrag 1.2 gehört außerdem, den
+Weitergabeledger 1.2 einzuchecken und die CI-Prüfung, die heute den 1.0-Ledger
+gegen das frisch kompilierte Modell prüft, auf ihn umzustellen. Bis dahin baut
+die GitHub-CI kein echtes 1.2-Modell; `scripts/test_learning_unit_release_model.py`
+belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 

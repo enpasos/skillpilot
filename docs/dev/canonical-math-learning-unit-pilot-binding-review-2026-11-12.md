@@ -84,7 +84,7 @@ Fächer.
 | Reduktionsregister V6 bis V8 | Unverändert. Der Mathematikdigest `3e9cfc60…` gilt für die Datei mit Einheit. |
 | `app/scripts/config/math-duration-split-spanning-tree-policy.json` | Unverändert `664b6d15…`. Das Werkzeug hasht die Datei jetzt ohne Einheitenschicht und erzeugt die Ansichten aus der projizierten Landschaft; alle Ansichten bleiben bytegleich. |
 | `contracts/curriculum-package/v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json` | Vom Generator neu erzeugt; die Einheitenzahlen (0/0/0 → 1/2/0) leitet er jetzt aus der Fachdatei ab. |
-| Weitergabeledger für Vertrag 1.2 | Für den Probebau vom regulären Generator mit `--generate --learning-unit-candidate` erzeugt (Modelldigest `sha256:25cbd4a8…`; 836 Assetrecords und 839 menschliche Prüfungen offen, Weitergabe gesperrt). Er ist nicht eingecheckt: Er bindet den Modelldigest des 1.2-Baus, und kein CI-Lauf hielte eine eingecheckte Fassung aktuell. |
+| Weitergabeledger für Vertrag 1.2 | Für den Probebau vom regulären Generator mit `--generate --learning-unit-candidate` erzeugt (Modelldigest `sha256:25cbd4a8…`; 836 Assetrecords und 839 menschliche Prüfungen offen, Weitergabe gesperrt). Er ist nicht eingecheckt: Eingecheckt und von der CI geprüft ist der Ledger des Vertrags, nach dem ausgeliefert wird (heute 1.0); der Ledger 1.2 folgt mit der Umstellung der Laufzeit. |
 | Weitergabe- und Plan-Pins des Vertrags 1.0 | Unverändert: Der 1.0-Bau projiziert die Einheit heraus, der Ledger `de-gymnasium-mathematik-v1` bleibt aktuell. |
 | Qualitätsstatus | Neu erzeugt und bytegleich; alle zehn geschützten Fächer halten ihren Reifegrad. |
 
