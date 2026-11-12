@@ -658,6 +658,10 @@ jobs:
           path: app/public/lernzielbuch/
       - name: Validate Graph
         run: npm run validate:graph
+      - name: Check complete canonical G17 domain
+        run: npm run check:transitive-minimality
+      - name: Test direct curriculum and scope obligations
+        run: npm run test:curriculum-maturity-floors
       - name: Validate Competency Wording
         run: |
           python -B ../scripts/validate_competency_wording.py
@@ -729,9 +733,12 @@ jobs:
       - name: Test source extraction inventory
         run: npm run test:source-extraction-inventory
       - name: Verify committed curriculum quality status
+        env:
+          MATURITY_POLICY_BASE: ${{ github.event.pull_request.base.sha || github.event.before || 'origin/main' }}
         run: |
+          git fetch --no-tags --depth=1 origin "${MATURITY_POLICY_BASE#origin/}"
           npm run quality:curriculum-status
-          npm run check:curriculum-maturity-floors
+          npm run check:curriculum-maturity-floors -- --base-ref "${MATURITY_POLICY_BASE}"
           git diff --exit-code -- ../docs/qa-ci/status
           test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
 
@@ -756,6 +763,8 @@ jobs:
       - *restore_goal_book_publications
       - name: Test transitive-minimality auditor and CLI contracts
         run: npm run test:transitive-minimality
+      - name: Test graph gate coverage, retirement and normalization
+        run: npm run test:graph-gate-contracts
       - name: Test learning-unit contract validator
         run: npm run test:learning-unit-contracts
       - name: Validate authored learning-unit contracts

@@ -227,6 +227,14 @@ run_curriculum_frontend_ci() {
   echo "--> Running Graph Validation"
   npm run validate:graph
 
+  echo "--> Checking the Complete Canonical G17 Domain"
+  npm run test:transitive-minimality
+  npm run check:transitive-minimality
+
+  echo "--> Testing Direct Curriculum and Scope Obligations"
+  npm run test:curriculum-maturity-floors
+  npm run test:graph-gate-contracts
+
   echo "--> Testing and Validating Learning-Unit Contracts"
   npm run test:learning-unit-contracts
   npm run validate:learning-units
@@ -312,6 +320,7 @@ run_curriculum_frontend_ci() {
   echo "--> Verifying Committed Curriculum Quality Status"
   npm run quality:memory-card-review:report:all
   npm run quality:curriculum-status
+  npm run check:curriculum-maturity-floors -- --base-ref origin/main
   git diff --exit-code -- ../docs/qa-ci/status
   test -z "$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)"
 

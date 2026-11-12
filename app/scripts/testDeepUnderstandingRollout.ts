@@ -156,7 +156,7 @@ assert.equal(evaluateDeepUnderstandingQa(fixtureLandscape, 'fixture.json', {
   ...noScopeReport, subjects: [{ ...completeReport, denominator: null, strictCompletionReady: false }],
 }).metrics?.expectedGoals, undefined, 'Unknown target scope must not be shown as zero goals.')
 
-const coreRules = ['CQR-000', 'CQR-001', 'CQR-002', 'CQR-003', 'CQR-301', 'CQR-401', 'CQR-501']
+const coreRules = ['CQR-000', 'CQR-001', 'CQR-002', 'CQR-003', 'CQR-004', 'CQR-005', 'CQR-301', 'CQR-401', 'CQR-501']
   .map((id) => ({ id, status: 'pass' as const, summary: 'Fixture prerequisite passed' }))
 const routeScopes = [{
   scopeId: 'fixture', label: 'Fixture', maturity: 'M4' as const, selectedAtomicGoals: 2,

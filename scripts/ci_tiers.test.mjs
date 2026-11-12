@@ -125,3 +125,19 @@ test('split jobs keep the environment of the job they were split from', () => {
   assert.equal(jobs['goal-book-contracts']['runs-on'], jobs['frontend-ci']['runs-on'])
   assert.deepEqual(jobs['goal-book-contracts'].defaults, jobs['frontend-ci'].defaults)
 })
+
+test('complete curriculum CI enforces the catalog and policy against the trusted base', () => {
+  const graph = commands('graph-validation')
+  const local = read('run_ci.sh')
+  for (const command of ['npm run check:transitive-minimality', 'npm run test:curriculum-maturity-floors']) {
+    assert.ok(graph.includes(command), `Remote curriculum gate missing: ${command}`)
+    assert.ok(local.includes(command), `Local curriculum gate missing: ${command}`)
+  }
+  assert.match(local, /npm run check:curriculum-maturity-floors -- --base-ref origin\/main/u)
+  const step = jobs['graph-validation'].steps.find(step => step.name === 'Verify committed curriculum quality status')
+  assert.equal(step.env.MATURITY_POLICY_BASE, "${{ github.event.pull_request.base.sha || github.event.before || 'origin/main' }}")
+  assert.match(step.run, /git fetch --no-tags --depth=1 origin/u)
+  assert.match(step.run, /npm run check:curriculum-maturity-floors -- --base-ref "\$\{MATURITY_POLICY_BASE\}"/u)
+  assert.equal(step['continue-on-error'], undefined)
+  assert.ok(commands('curriculum-assessment-proofs').includes('npm run test:graph-gate-contracts'))
+})
