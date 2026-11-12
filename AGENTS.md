@@ -522,12 +522,35 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   with reviewed coverage. Otherwise the unit's goals stay open, and the
   violation keeps the curriculum from reaching the milestone. A goal that no
   assessment covers therefore stays open *and* is a rule violation; it is never
-  recognized for free. No validator enforces R1–R5 yet (Graph Definition §13.3;
-  `GD-U05`, `GD-U06`, `GD-U15`, `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`,
-  `GD-A18`).
+  recognized for free (Graph Definition §13.3; `GD-U05`, `GD-U06`, `GD-U15`,
+  `GD-A07`, `GD-A08`, `GD-A10`, `GD-A12`, `GD-A18`).
+- **Resumption (Product Owner, 12 November 2026).** The learning-unit work is
+  resumed; the working plan is
+  `docs/dev/mathematics-physics-learning-units-plan.md` (Mathematics first, then
+  Physics). The catalog of units is derived in-house, block by block, from the
+  canonical graph and the design sheet; an external proposal is at most a
+  recorded origin, never a contract. Whole-unit access locks stay undecided.
+- **Unit contracts and validator (12 November 2026).** Units are authored as one
+  versioned catalog per canonical landscape under
+  `curricula/DE/Gymnasium/learning-units/` (contract draft
+  `contracts/drafts/learning-unit/v1`): a unit names its own atomic goals and
+  required child units by stable ID and copies no goal data. The Product Owner
+  had approved extending `programUnits`/`goalPlacements` subject to a check of
+  the package schemas. That check failed: their kinds and relations are closed
+  enums of the published curriculum-package contract, so the separate catalog
+  was implemented instead; this storage choice awaits Product Owner
+  confirmation. `npm --prefix app run validate:learning-units` enforces R1, R3
+  and R4 fail-closed for every authored unit and runs in the required
+  curriculum CI; a catalog declares `partial` or `complete`, and only
+  `complete` requires an owner for every atomic goal. R2 is recorded per unit
+  as hash-bound `coverageReviews` and reported while missing; it is not yet a
+  milestone gate. R5 and implicit recognition are not implemented: a unit
+  catalog has no runtime effect, and every goal is still completed by its own
+  explicit result. Never add an edge, weaken a goal description or cut a unit
+  to turn the validator green; a finding is a subject-review task.
 
-This is revised concept documentation, not a new implemented schema, validator,
-or access policy. See `docs/concept/skill-graph/learning-units.md`,
+This is concept documentation plus a static authoring contract and validator,
+not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
 `docs/concept/skill-graph/learning-unit-progression.md`,
 `docs/concept/skill-graph/learning-unit-design-and-examples.md` (design criteria
 and worked candidates) and Graph Definition §11 (learning units), §12 (optional
@@ -661,8 +684,10 @@ explicitly reviewed migration. Do not invent a learner qualification registry.
 See `docs/concept/skill-graph/assessment-gated-completion.md` and the decision
 record `docs/concept/skill-graph/completion-semantics-clarification-2026-11-04.md`.
 This is the corrected concept, not a claim that current main implements it.
-Replan implementation only after concept reconciliation; review old PR work
-for reuse afterwards. Do not continue the old PR's runtime/curriculum rollout.
+Implementation was replanned on 12 November 2026 after the concept
+reconciliation (`docs/dev/mathematics-physics-learning-units-plan.md`, §2.4);
+old PR work is reused selectively. Do not continue the old PR's
+runtime/curriculum rollout.
 
 Cluster progress aggregates effective mastery of unique atomic descendants;
 no cluster or unit completion writes mastery to its children.

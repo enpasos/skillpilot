@@ -68,7 +68,7 @@ Seien $V_U^{\mathrm{reach}} = \operatorname{Reach}_{\Rat}^{*}(P_U \setminus M)$ 
 
 Die Mengenformel darf nur für einen gültigen fachlichen Vertrag ausgewertet werden. Die Ownerentscheidung vom 11. November 2026 fasst dessen Bedingungen in fünf Regeln und legt fest, wo jede durchgesetzt wird (Tabelle~@ref{tab:unit-validity}): Die Anerkennungsregel ist nur tragfähig, wenn Einheiten diese Regeln hart erfüllen.
 
-:::table {#tab:unit-validity caption="Gültigkeitsbedingungen einer Lerneinheit und ihre Durchsetzung (Ownerentscheidung vom 11. November 2026). Auf der Hauptlinie setzt noch kein Validator eine davon durch." cols="12mm,X,52mm"}
+:::table {#tab:unit-validity caption="Gültigkeitsbedingungen einer Lerneinheit und ihre Durchsetzung (Ownerentscheidung vom 11. November 2026). Für verfasste Lerneinheitenkataloge prüft ein Validator R1, R3 und den Eindeutigkeitsanteil von R4; R2 und R5 werden noch nicht durchgesetzt." cols="12mm,X,52mm"}
 | Regel | Anforderung | Verortung |
 | --- | --- | --- |
 | R1 | Jedes eigene gewöhnliche Inhaltsziel liegt auf einem Voraussetzungspfad von mindestens einer eigenen Prüfung der Einheit, direkt oder transitiv; ein Pfad, der nur zu einem Memorierziel führt, zählt nicht. | Gültigkeitsbedingung der Einheitendefinition, in derselben Klasse wie Azyklizität: hart ab der ersten verfassten Einheit; eine verletzende Einheit wird nicht in die Hauptlinie übernommen. |
@@ -95,6 +95,10 @@ Der reguläre Prüfungserfolg bleibt derselbe binäre Erfolg der gesamten Prüfu
 #### Folge.
 
 Implizite Anerkennung gibt es nur in Einheiten, deren Vertrag R1--R4 mit geprüfter Deckung erfüllt. Andernfalls bleiben die eigenen gewöhnlichen Ziele der Einheit offen -- ausdrücklich gemeistert werden können sie weiterhin --, und der Verstoß hält das Curriculum vom jeweiligen Meilenstein fern (Tabelle~@ref{tab:unit-validity}). Ein Ziel, das keine Prüfung abdeckt, bleibt deshalb offen *und* ist ein Regelverstoß; es wird nie ohne Nachweis anerkannt. Abschnitt~@ref{sec:global-effect} behandelt R5.
+
+#### Aktueller Stand der Durchsetzung.
+
+Für die verfassten Lerneinheitenkataloge der kanonischen Gymnasialfächer läuft `validate:learning-units` ([validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts), [Vertragsentwurf](repo:contracts/drafts/learning-unit/v1/README.md)) in der Pflicht-Curriculum-CI. Der Validator liest Zieltypen, Voraussetzungen und `coveredGoalIds` aus der kanonischen Skill-Landschaft und lehnt eine Einheit fail-closed ab, wenn sie R1 oder R3 verletzt, wenn zwei Einheiten dasselbe Ziel besitzen (Eindeutigkeitsanteil von R4) oder wenn ihre eigenen Ziele, ihr Gesamtumfang oder ihre Einheitshierarchie fehlerhaft sind. Der Vollständigkeitsanteil von R4 -- jedes Erwerbsziel hat eine zuständige Einheit -- gilt nur für einen als vollständig erklärten Katalog; noch kein Fachkatalog ist vollständig. R2 ist keine Bedingung der Strukturgültigkeit: Der Validator prüft beanspruchte Deckungsreviews gegen die aktuellen Aufgaben und Bewertungsraster und meldet die Ziele, denen noch eines fehlt; kein `M5`- oder `M7`-Gate nutzt das. R5 und die implizite Anerkennung selbst sind auf der Hauptlinie noch nicht implementiert.
 
 ### Globale Wirkung und dauerhafte Vertragsbindung {#sec:global-effect}
 

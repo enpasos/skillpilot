@@ -51,7 +51,7 @@ against the canonical graph and fails on any finding:
 | `LU-REF`, `LU-ATOMIC`, `LU-KIND` | An own goal is an atomic goal of the catalog landscape with exactly one goal kind. |
 | `LU-EMPTY-SCOPE` | The total scope of a unit, its own goals plus those of its required children, is not empty. |
 | `LU-CHILD`, `LU-HIERARCHY` | Child references resolve within the catalog and the unit hierarchy is acyclic. |
-| `LU-GRAPH` | The prerequisite relation reachable from the own goals resolves and is acyclic. |
+| `LU-GRAPH` | Every reference on the prerequisite paths from the own goals resolves, and no own goal requires itself transitively. Acyclicity of the whole graph remains the job of `validate:graph`. |
 | `LU-CATALOG`, `LU-UNIT-ID` | Catalog and unit identities are unique; a landscape has one catalog. |
 
 Prerequisite paths use the normative relation of the Graph Definition:

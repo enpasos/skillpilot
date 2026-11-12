@@ -68,7 +68,7 @@ Let $V_U^{\mathrm{reach}} = \operatorname{Reach}_{\Rat}^{*}(P_U \setminus M)$ de
 
 The set equations above may be evaluated only for a valid domain contract. The Product Owner decision of 11 November 2026 states its conditions as five rules and fixes where each is enforced (Table~@ref{tab:unit-validity}): the recognition rule is sound only if units satisfy them as hard rules.
 
-:::table {#tab:unit-validity caption="Validity conditions of a learning unit and where they are enforced (Product Owner decision of 11 November 2026). No validator enforces any of them on `main` yet." cols="12mm,X,52mm"}
+:::table {#tab:unit-validity caption="Validity conditions of a learning unit and where they are enforced (Product Owner decision of 11 November 2026). For authored learning-unit catalogs, a validator checks R1, R3, and the uniqueness part of R4; R2 and R5 are not yet enforced." cols="12mm,X,52mm"}
 | Rule | Requirement | Placement |
 | --- | --- | --- |
 | R1 | Every own ordinary content goal lies on a prerequisite path from at least one own assessment of the unit, directly or transitively; a path that leads only to a memory goal does not count. | Validity condition of the unit definition, in the same class as acyclicity: hard from the first authored unit; a violating unit cannot be merged. |
@@ -95,6 +95,10 @@ Passing an assessment remains the single ordinary binary pass of that assessment
 #### Consequence.
 
 Implicit recognition exists only inside units whose contract satisfies R1--R4 with reviewed coverage. Otherwise the unit's own ordinary goals stay open -- they can still be mastered explicitly -- and the violation keeps the curriculum from reaching the respective milestone (Table~@ref{tab:unit-validity}). A goal that no assessment covers therefore stays open *and* is a rule violation; it is never recognized for free. Section~@ref{sec:global-effect} treats R5.
+
+#### Current enforcement.
+
+For the authored learning-unit catalogs of the canonical Gymnasium subjects, `validate:learning-units` ([validateLearningUnits.ts](repo:app/scripts/validateLearningUnits.ts), [draft contract](repo:contracts/drafts/learning-unit/v1/README.md)) runs in the required curriculum CI. It reads goal kinds, prerequisites, and `coveredGoalIds` from the canonical skill landscape and rejects a unit fail-closed when it violates R1 or R3, when two units own the same goal (uniqueness part of R4), or when its own goals, total scope, or unit hierarchy are malformed. The completeness part of R4 -- every acquisition target has an owning unit -- applies only to a catalog declared complete; no subject catalog is complete yet. R2 is not a condition of structural validity: the validator checks claimed coverage reviews against the current tasks and rubrics and reports the goals that still lack one, but no `M5` or `M7` gate consumes this. R5 and implicit recognition itself are not yet implemented on `main`.
 
 ### Global Effectiveness and Durable Contract Binding {#sec:global-effect}
 
