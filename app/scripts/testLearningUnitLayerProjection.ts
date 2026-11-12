@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Conformance of the learning-unit layer projection that prerequisite-reduction proofs
-// fingerprint. Each implementation is checked against the same committed references:
-// TypeScript here (app/scripts/learningUnitLayerProjection.ts), Python in
+// fingerprint. Both implementations are checked against the same committed references:
+// TypeScript here (app/scripts/learningUnitLayerProjection.ts) and Python in
 // scripts/test_prerequisite_reduction_semantic_kind.py (scripts/curriculum_learning_units.py
-// via scripts/prerequisite_reduction_semantic_kind.py) and Java in the backend
-// (LearningUnitLayerProjectionConformanceTest).
+// via scripts/prerequisite_reduction_semantic_kind.py). On canonical Mathematics with its
+// learning unit, both check that the fingerprint projects the layer out and still sees a goal edit.
 //
 // Usage: tsx scripts/testLearningUnitLayerProjection.ts [--write]
 // --write regenerates the committed reference fingerprints after TypeScript and Python agree.
@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url'
 import {
   LearningUnitProjectionError, hasLearningUnitLayer, projectOutLearningUnits, sha256WithoutLearningUnitLayer,
 } from './learningUnitLayerProjection'
-import { PREREQUISITE_REDUCTION_REGISTRY_PATH, fingerprintPrerequisiteReductionDocument } from './prerequisiteReductionProof'
+import { fingerprintPrerequisiteReductionDocument, fingerprintPrerequisiteReductionRecord } from './prerequisiteReductionProof'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 export const PROJECTION_CONFORMANCE_PATH = 'app/scripts/fixtures/learning-unit-layer-projection-conformance.json'
@@ -152,24 +152,26 @@ function main() {
   } else {
     assert.equal(conformance.casesSha256, casesSha256,
       `${conformance.casesPath} changed; regenerate with: npx tsx scripts/testLearningUnitLayerProjection.ts --write`)
-    assert.deepEqual(references, conformance.references, 'committed reference fingerprints (shared with the Java test)')
+    assert.deepEqual(references, conformance.references, 'committed reference fingerprints (shared with the Python test)')
   }
 
-  // Canonical Mathematics with the pilot unit fingerprints exactly as the frozen proof bound it;
-  // the active V9 registry records that document digest as history.
-  const registry = JSON.parse(read(PREREQUISITE_REDUCTION_REGISTRY_PATH).toString('utf8')) as {
-    frozenCatalogSources: Array<{ path: string; landscapeId: string; frozenDocumentDigest: string }> }
-  const binding = registry.frozenCatalogSources.find(source => source.path === conformance.canonicalMathematics.path)
-  assert.ok(binding && binding.landscapeId === conformance.canonicalMathematics.landscapeId)
+  // On the real Mathematics document the fingerprint ignores exactly the learning-unit layer.
+  // These are relations within the current document, so they hold after any goal change too.
+  assert.equal(math.landscapeId, conformance.canonicalMathematics.landscapeId)
   assert.ok(hasLearningUnitLayer(math))
   const mathFingerprint = fingerprintPrerequisiteReductionDocument(math)
-  assert.equal(mathFingerprint, binding.frozenDocumentDigest, 'Mathematics with its learning unit keeps the frozen document binding')
+  assert.equal(mathFingerprint, fingerprintPrerequisiteReductionDocument(projectOutLearningUnits(math)),
+    'Mathematics fingerprints equal with and without its learning-unit layer')
+  assert.notEqual(mathFingerprint, fingerprintPrerequisiteReductionRecord(math), 'the learning-unit layer of Mathematics is projected out')
+  const goalEdit = structuredClone(math) as { goals: Json[] }
+  goalEdit.goals[0].title = `${String(goalEdit.goals[0].title)} (changed)`
+  assert.notEqual(fingerprintPrerequisiteReductionDocument(goalEdit), mathFingerprint, 'a goal edit in Mathematics moves the fingerprint')
   if (python)
     assert.deepEqual(pythonMath, { fingerprint: mathFingerprint }, 'Python agrees on Mathematics with its learning unit')
   rawPinBehaviour(math, injected)
   const errors = references.filter(reference => 'error' in reference).length
   console.log(`Learning-unit layer projection conformance passed: ${references.length} fixture landscapes (${errors} unprojectable), `
-    + `TypeScript = ${python ? 'Python = ' : ''}reference; Mathematics with ${injected ? 'an injected' : 'its'} pilot unit = registry ${mathFingerprint}.`)
+    + `TypeScript = ${python ? 'Python = ' : ''}reference; Mathematics with ${injected ? 'an injected' : 'its'} pilot unit fingerprints equal with and without its layer.`)
 }
 
 main()

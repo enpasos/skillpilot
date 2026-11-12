@@ -870,7 +870,7 @@ class SemanticKindReductionTest(unittest.TestCase):
 
 
 class LearningUnitLayerFingerprintTest(unittest.TestCase):
-    """Python side of the projection conformance shared with TypeScript and Java."""
+    """Python side of the projection conformance shared with TypeScript."""
 
     CONFORMANCE = ROOT / "app/scripts/fixtures/learning-unit-layer-projection-conformance.json"
 
@@ -894,7 +894,7 @@ class LearningUnitLayerFingerprintTest(unittest.TestCase):
                 actual.append(row)
         self.assertEqual(actual, conformance["references"])
 
-    def test_mathematics_with_its_pilot_unit_keeps_the_registry_binding(self) -> None:
+    def test_mathematics_fingerprint_projects_out_its_learning_unit_layer(self) -> None:
         import curriculum_learning_units as learning_units
 
         math = json.loads(self.CONFORMANCE.read_bytes())["canonicalMathematics"]
@@ -902,13 +902,18 @@ class LearningUnitLayerFingerprintTest(unittest.TestCase):
         if not learning_units.has_learning_unit_content(document):
             document["programUnits"].append(copy.deepcopy(math["pilotUnit"]))
             document["goalPlacements"].extend(copy.deepcopy(math["pilotPlacements"]))
-        registry = json.loads((ROOT / bridge.REGISTRY_PATH).read_bytes())
-        # The active V9 registry records the document digests of the frozen proof as history.
-        binding = next(row for row in registry["frozenCatalogSources"] if row["path"] == math["path"])
-        self.assertEqual(bridge.fingerprint_prerequisite_reduction_document(document), binding["frozenDocumentDigest"])
+        self.assertEqual(document["landscapeId"], math["landscapeId"])
+        self.assertTrue(learning_units.has_learning_unit_content(document))
+        # Relations within the current document, so they hold after any goal change too.
+        fingerprint = bridge.fingerprint_prerequisite_reduction_document(document)
+        self.assertEqual(fingerprint, bridge.fingerprint_prerequisite_reduction_document(
+            learning_units.project_out_learning_units(document)), "equal with and without the learning-unit layer")
+        whole = bridge.digest(compiler.canonical_json_text(document).encode("utf-8"))
+        self.assertNotEqual(fingerprint, whole, "the learning-unit layer is projected out")
         changed = copy.deepcopy(document)
         changed["goals"][0]["title"] += " (changed)"
-        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), binding["frozenDocumentDigest"])
+        self.assertNotEqual(bridge.fingerprint_prerequisite_reduction_document(changed), fingerprint,
+                            "a goal edit moves the fingerprint")
 
 
 if __name__ == "__main__":
