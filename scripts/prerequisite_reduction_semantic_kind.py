@@ -24,7 +24,10 @@ APPEND_ONLY_PROOF_CONTRACT = "append-only-prerequisite-reduction-batches-v6"
 APPLICABILITY_REFRESH_PROOF_CONTRACT = "prerequisite-reduction-applicability-refresh-v7"
 BASIS_BOUND_PROOF_CONTRACT = "assessment-basis-bound-prerequisite-reduction-v8"
 SOFTWARE_ROOT = Path(__file__).resolve().parents[1]
-NODE_VERIFIER_TIMEOUT_SECONDS = 600
+# Still one bounded attempt without fallback. The complete proof verification took
+# 273 s before and 526 s after the remaining protected subjects were added, and a
+# slower hosted runner exceeded the former 600-second bound on unchanged data.
+NODE_VERIFIER_TIMEOUT_SECONDS = 1800
 
 
 class PrerequisiteReductionBindingError(RuntimeError):

@@ -85,6 +85,18 @@ tasks.test {
     systemProperty("spring.test.context.cache.maxSize", "1")
     // Release class-scoped fixture state before the next full-curriculum context starts.
     forkEvery = 1
+    // Hosted CI runs independent test classes in several JVMs at once. Local runs stay
+    // serial unless a caller opts in, because every fork may hold a complete curriculum model.
+    val testForks = (providers.gradleProperty("backendTestForks").orNull ?: "1").toIntOrNull()
+    require(testForks != null && testForks in 1..8) {
+        "backendTestForks must be an integer from 1 to 8"
+    }
+    maxParallelForks = testForks
+    // Hosted CI splits the suite into complementary partitions; scripts/run_backend_ci.py
+    // owns their definition. Without the property every test runs, as before.
+    providers.gradleProperty("backendTestExclude").orNull
+        ?.split(',')?.map(String::trim)?.filter(String::isNotEmpty)
+        ?.forEach { filter.excludeTestsMatching(it) }
     // Show progress as well as failure details while long integration tests run.
     testLogging {
         events("started", "passed", "skipped", "failed")

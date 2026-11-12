@@ -97,6 +97,10 @@ node scripts/check_claude_plugin_v1_release.mjs
 Commits follow Conventional Commits where a scope is meaningful
 (`fix(openai): …`); branch off `main` and open pull requests against `main`.
 
+Remote CI (`.github/workflows/ci.yml`) has two tiers: a draft PR gets only the
+quick tier; marking it ready for review, or pushing to `main`, runs the
+complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
+
 ## Non-negotiable invariants (details in AGENTS.md)
 
 - **Graph**: no cycles in `requires`/`contains`; stable goal IDs; atomic goals
