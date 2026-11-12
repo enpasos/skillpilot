@@ -7,7 +7,7 @@ Eine sorgfältig lesende Person muss jeden sichtbaren Lernbaum allein aus dokume
 | Sichtenfamilie | Beantwortete Leitfrage | Ausschließliche strukturelle Wahrheitsquelle |
 | --- | --- | --- |
 | **Inhaltsbaum (Content Tree)** | Was gehört fachlich worunter? | `goals` + explizite `contains`-Kanten (geordnet nach `contains`-Array). |
-| **Programmbaum (Program Tree)** | Wo im Bildungsgang wird ein Ziel eingeführt, vertieft oder geprüft? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` hängt ein; `secondary`/`assessed` als Badges/Overlays, fehlend liefert `unplacedInScope`). |
+| **Programmbaum (Program Tree)** | Wo im Bildungsgang wird ein Ziel eingeführt, vertieft oder geprüft? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` hängt ein; `secondary`/`assessed` als Badges/Overlays, fehlend liefert `unplacedInScope`; `own` hält das Eigentum einer Lerneinheit fest und hängt nichts ein). |
 | **Kompetenzsicht** | Entlang welcher Prozess- oder Kompetenzachse ist ein Ziel eingeordnet? | `competencyCatalog` + `competencyRefs` (orthogonale Taxonomieprojektion). |
 | **Composition-Baum** | Wie sieht ein aufgelöster Scope das Fach als einen Default-Baum? | Geprüfte `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + kanonische `contains`-Expansion. |
 {cols="20%,36%,44%"}
@@ -30,6 +30,8 @@ Gemäß den Product-Owner-Entscheidungen vom **9. November 2026**, **10. Novembe
 - **Erhaltene kanonische Atomizität:** Das Einklappen oder Referenzieren eines kanonischen Clusters erzeugt niemals ein opakes Ersatzatom und überträgt keine Cluster-Ergebnisse auf Kinder (siehe auch die historische `DPK-006c-c`-Grenze in [Umsetzungsstand Duale Pakete](repo:docs/dev/dual-curriculum-package-implementation-status.md) sowie den Werkzeugschnitt in [Curriculum-Autoreneditoren](repo:docs/dev/curriculum-authoring-editors.md)).
 
 ### Lerneinheiten in projizierten Sichten {#sec:sga-vp-units anchors="learning-units-in-projected-views,curriculum-levels-in-projected-views"}
+
+Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert (Entscheidung des Product Owners vom 12. November 2026): Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die ihn als Kind verlangt ([Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` prüft diese Deklarationen. Die Programmbaumprojektion hängt Ziele nur über `primary`-Platzierungen ein, eine `own`-Platzierung ändert also keinen sichtbaren Baum.
 
 Projizierte [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md) (Zielkonzept; Laufzeitcompiler offen) binden an die geprüfte Composition View oder Programmprojektion:
 

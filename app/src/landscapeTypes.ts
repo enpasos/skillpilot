@@ -18,6 +18,8 @@ export type ProgramUnitKind =
   | 'module'
   | 'track'
   | 'exam'
+  /** A learning unit: owns atomic goals through placements of relation `own`. */
+  | 'learningUnit'
 
 export interface ProgramUnit {
   id: string
@@ -25,7 +27,15 @@ export interface ProgramUnit {
   label: string
   shortLabel?: string
   order?: number
+  /** For a learning unit: the learning unit that requires it as a child. */
   parentUnitId?: string
+  /** Learning units only: English title. */
+  labelEn?: string
+  /** Learning units only: what learners can do independently afterwards and why it matters. */
+  promise?: string
+  promiseEn?: string
+  /** Learning units only: dated revision of the unit definition, `YYYY-MM-DD-vN`. */
+  revision?: string
 }
 
 export interface GoalPlacementContext {
@@ -40,7 +50,8 @@ export interface GoalPlacementContext {
 export interface GoalPlacement {
   goalId: string
   unitId: string
-  relation: 'primary' | 'secondary' | 'assessed'
+  /** `own`: a learning unit directly owns an atomic goal; such a placement carries no context. */
+  relation: 'primary' | 'secondary' | 'assessed' | 'own'
   context?: GoalPlacementContext
 }
 
@@ -66,6 +77,17 @@ export interface LandscapeFilter {
   label: string
 }
 
+/** Reviewed evidence that an assessment really tests goals of its owning learning unit (rule R2). */
+export interface ExamCoverageReview {
+  goalIds: string[]
+  /** Repository-relative path of the review record. */
+  reference: string
+  /** Canonical `sha256:` hash of `{taskContent, solutionContent}` at review time. */
+  taskRevision: string
+  /** Canonical `sha256:` hash of the `scoring` object at review time. */
+  rubricRevision: string
+}
+
 export interface ExamData {
   /**
    * Optional release gate for learner-facing hard exam mode.
@@ -76,6 +98,8 @@ export interface ExamData {
   reviewNote?: string
   /** Canonical goal IDs covered by this assessment package. */
   coveredGoalIds?: string[]
+  /** Only on an assessment that a learning unit owns. */
+  coverageReview?: ExamCoverageReview
   /** Human-readable or canonical strand labels covered by this assessment package. */
   coveredStrands?: string[]
   /** Demand levels covered by the assessment package, e.g. AB1/AB2/AB3. */
@@ -182,6 +206,8 @@ export interface SkillLandscape {
   filters?: LandscapeFilter[]
   programUnits?: ProgramUnit[]
   goalPlacements?: GoalPlacement[]
+  /** `complete` asserts that every atomic goal has exactly one owning learning unit; absent means partial. */
+  learningUnitCoverage?: 'partial' | 'complete'
   competencyCatalog?: CompetencyCatalogEntry[]
   /** Authoritative metadata emitted only by the learner-scoped runtime API. */
   personalCurriculumProjection?: {

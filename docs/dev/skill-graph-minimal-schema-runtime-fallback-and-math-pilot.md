@@ -38,7 +38,7 @@ To evolve existing landscapes into the layered architecture ([General Goal Syste
 }
 ```
 
-Goals additionally carry optional `competencyRefs: ["K1", ...]`. Runtime precedence follows strict non-destructive rules:
+Goals additionally carry optional `competencyRefs: ["K1", ...]`. The same arrays also declare learning units: a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own`, and the optional top-level `learningUnitCoverage` states whether every atomic goal has an owner ([2.3](landscape-json-field-reference.md#sec-dev-lj-units)). These entries attach no goal to the program tree, so the precedence below is unchanged. Runtime precedence follows strict non-destructive rules:
 
 1. **Composition view first:** If a reviewed `.view.json` matches the resolved learner scope, compile the default tree from that composition view plus canonical `contains`.
 2. **Explicit placement projection second:** Otherwise, when `programUnits` and matching `primary` `goalPlacements` exist, project the program tree directly from those arrays.

@@ -23,7 +23,7 @@ Um bestehende Landschaften ohne Bruch nicht migrierter Curricula in das Schichte
 }
 ```
 
-Ziele tragen ergänzend optional `competencyRefs: ["K1", ...]`. Die Laufzeitauswertung folgt festen, rückwärtskompatiblen Regeln:
+Ziele tragen ergänzend optional `competencyRefs: ["K1", ...]`. Dieselben Arrays deklarieren auch Lerneinheiten: Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own`, und das optionale Top-Level-Feld `learningUnitCoverage` gibt an, ob jedes atomare Ziel eine Einheit hat (@ref{sec:dev-lj-units}). Diese Einträge hängen kein Ziel in den Programmbaum ein, die folgende Reihenfolge bleibt also unverändert. Die Laufzeitauswertung folgt festen, rückwärtskompatiblen Regeln:
 
 1. **Composition View zuerst:** Passt eine geprüfte `.view.json` auf den aufgelösten Scope, wird der Default-Baum aus Composition View plus kanonischem `contains` kompiliert.
 2. **Explizite Placement-Projektion als Zweites:** Liegen `programUnits` und passende `primary`-`goalPlacements` vor, wird der Programmbaum direkt daraus projiziert.

@@ -1,0 +1,2568 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Synthetic conformance cases for the learning-unit validity rules of curriculum-package contract 1.2. No case represents a reviewed production learning unit.",
+  "reading": "Each case lists complete landscapes in the placement-layer format. expect.findings names every finding by code; unitId and goalId are given where the finding belongs to one. expect.valid is true when findings is empty. offered and expect.offeredFindings concern the optional check against offered curricula.",
+  "cases": [
+    {
+      "id": "valid-chain",
+      "description": "Q requires B, B requires A; one unit owns all three. Valid; no reviewed coverage yet.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A",
+                  "B"
+                ]
+              }
+            },
+            {
+              "id": "B",
+              "requires": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "totalScope": 3,
+            "goalsWithoutReviewedCoverage": [
+              "A",
+              "B"
+            ]
+          }
+        },
+        "ledgers": {
+          "L": {
+            "atomicGoals": 3,
+            "ownedGoals": 3
+          }
+        }
+      }
+    },
+    {
+      "id": "calendar-units-are-untouched",
+      "description": "Year units and their primary placements are not learning units and are not validated here.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "K",
+              "contains": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "y5",
+              "kind": "year",
+              "label": "Jahrgangsstufe 5",
+              "shortLabel": "J5",
+              "order": 5
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "K",
+              "unitId": "y5",
+              "relation": "primary",
+              "context": {
+                "jurisdiction": "DE-HE"
+              }
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {},
+        "ledgers": {}
+      }
+    },
+    {
+      "id": "r1-uncovered-endpoint",
+      "description": "C is an own ordinary goal that no own assessment requires. It stays open and is a rule violation, never free recognition.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "C",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R1",
+            "unitId": "u",
+            "goalId": "C"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": false
+          }
+        }
+      }
+    },
+    {
+      "id": "r1-memory-only-path",
+      "description": "A is required only by the own memory goal K. Verified card recall does not prove independent application.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "K",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "memory"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "K",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R1",
+            "unitId": "u",
+            "goalId": "A"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r1-assessment-owned-elsewhere",
+      "description": "The only assessment that requires A belongs to another unit. A needs an own assessment of its owning unit; an assessment-only unit is a valid synthesis.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u1",
+              "kind": "learningUnit",
+              "label": "Einheit u1",
+              "labelEn": "Unit u1",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "u2",
+              "kind": "learningUnit",
+              "label": "Einheit u2",
+              "labelEn": "Unit u2",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "A",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q",
+              "unitId": "u2",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R1",
+            "unitId": "u1",
+            "goalId": "A"
+          }
+        ],
+        "units": {
+          "u1": {
+            "valid": false
+          },
+          "u2": {
+            "valid": true
+          }
+        }
+      }
+    },
+    {
+      "id": "path-through-foreign-goals",
+      "description": "The path from Q to A runs through X of another unit and through M of another landscape. Traversal never stops at the boundary of the unit's own goals.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "X"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "X",
+              "requires": [
+                "M"
+              ]
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "QX",
+              "requires": [
+                "X"
+              ],
+              "nodeKind": "exam"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "ux",
+              "kind": "learningUnit",
+              "label": "Einheit ux",
+              "labelEn": "Unit ux",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "QX",
+              "unitId": "ux",
+              "relation": "own"
+            },
+            {
+              "goalId": "X",
+              "unitId": "ux",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        },
+        {
+          "landscapeId": "MATH",
+          "goals": [
+            {
+              "id": "M",
+              "requires": [
+                "L:A"
+              ]
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": []
+      }
+    },
+    {
+      "id": "inherited-cluster-requirement",
+      "description": "Q inherits the requirement of its cluster KQ on cluster KP; expansion to atoms makes Q require A and B.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "KQ",
+              "requires": [
+                "KP"
+              ],
+              "contains": [
+                "Q"
+              ]
+            },
+            {
+              "id": "KP",
+              "contains": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "id": "Q",
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ]
+              }
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": []
+      }
+    },
+    {
+      "id": "r3-coverage-without-path",
+      "description": "Q claims coverage of C but requires only B. The missing path is a subject-review finding, not a reason for a redundant edge.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "B",
+                  "C"
+                ]
+              }
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R3",
+            "unitId": "u",
+            "goalId": "Q"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r3-cluster-and-unknown-coverage",
+      "description": "Coverage names a cluster and an unknown goal. A coverage claim names atomic goals; a cluster reference would grow with later contains changes.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "K",
+                  "A",
+                  "missing"
+                ]
+              }
+            },
+            {
+              "id": "K",
+              "contains": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R3",
+            "unitId": "u",
+            "goalId": "Q"
+          },
+          {
+            "code": "LU-R3",
+            "unitId": "u",
+            "goalId": "Q"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r4-two-owners",
+      "description": "A is owned by two units. Both contracts are invalid.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u1",
+              "kind": "learningUnit",
+              "label": "Einheit u1",
+              "labelEn": "Unit u1",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "u2",
+              "kind": "learningUnit",
+              "label": "Einheit u2",
+              "labelEn": "Unit u2",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u2",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u2",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R4-MULTIPLE",
+            "unitId": "u1",
+            "goalId": "A"
+          },
+          {
+            "code": "LU-R4-MULTIPLE",
+            "unitId": "u2",
+            "goalId": "A"
+          }
+        ],
+        "units": {
+          "u1": {
+            "valid": false
+          },
+          "u2": {
+            "valid": false
+          }
+        }
+      }
+    },
+    {
+      "id": "r4-complete-landscape-leaves-goal-unowned",
+      "description": "A landscape that declares complete coverage must own every atomic goal; clusters are never owned.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "K",
+              "contains": [
+                "Q",
+                "A",
+                "D"
+              ]
+            },
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "D"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R4-UNOWNED",
+            "goalId": "D"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": true
+          }
+        },
+        "ledgers": {
+          "L": {
+            "atomicGoals": 3,
+            "ownedGoals": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "partial-landscape-reports-unowned-goals",
+      "description": "The same data with partial coverage: the open goal is counted, not rejected. An absent declaration means partial too.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "D"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "partial"
+        },
+        {
+          "landscapeId": "L2",
+          "goals": [
+            {
+              "id": "P",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "E"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "v",
+              "kind": "learningUnit",
+              "label": "Einheit v",
+              "labelEn": "Unit v",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "P",
+              "unitId": "v",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "v",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "ledgers": {
+          "L": {
+            "atomicGoals": 3,
+            "ownedGoals": 2
+          },
+          "L2": {
+            "atomicGoals": 3,
+            "ownedGoals": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "empty-unit",
+      "description": "A unit without own goals and without child units is an empty navigation marker, never a completed unit.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": []
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-EMPTY-SCOPE",
+            "unitId": "u"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pure-aggregate",
+      "description": "A parent with no own goals aggregates two children; its total scope is their deduplicated union. A parent with an own synthesis assessment is valid as well.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "QS",
+              "requires": [
+                "A",
+                "B"
+              ],
+              "nodeKind": "exam"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "top",
+              "kind": "learningUnit",
+              "label": "Einheit top",
+              "labelEn": "Unit top",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "mid",
+              "kind": "learningUnit",
+              "label": "Einheit mid",
+              "labelEn": "Unit mid",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "top"
+            },
+            {
+              "id": "k1",
+              "kind": "learningUnit",
+              "label": "Einheit k1",
+              "labelEn": "Unit k1",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "mid"
+            },
+            {
+              "id": "k2",
+              "kind": "learningUnit",
+              "label": "Einheit k2",
+              "labelEn": "Unit k2",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "mid"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "QS",
+              "unitId": "top",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q1",
+              "unitId": "k1",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "k1",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "k2",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "k2",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "top": {
+            "valid": true,
+            "totalScope": 5
+          },
+          "mid": {
+            "valid": true,
+            "totalScope": 4
+          },
+          "k1": {
+            "totalScope": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "hierarchy-cycle",
+      "description": "Two units name each other as parent, and a unit names itself. A further child below the cycle keeps a defined scope of its own.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q2",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q3",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q4",
+              "nodeKind": "exam"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u1",
+              "kind": "learningUnit",
+              "label": "Einheit u1",
+              "labelEn": "Unit u1",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "u2"
+            },
+            {
+              "id": "u2",
+              "kind": "learningUnit",
+              "label": "Einheit u2",
+              "labelEn": "Unit u2",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "u1"
+            },
+            {
+              "id": "u3",
+              "kind": "learningUnit",
+              "label": "Einheit u3",
+              "labelEn": "Unit u3",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "u1"
+            },
+            {
+              "id": "w",
+              "kind": "learningUnit",
+              "label": "Einheit w",
+              "labelEn": "Unit w",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "w"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u1",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u2",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q3",
+              "unitId": "u3",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q4",
+              "unitId": "w",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-HIERARCHY",
+            "unitId": "u1"
+          },
+          {
+            "code": "LU-HIERARCHY",
+            "unitId": "u2"
+          },
+          {
+            "code": "LU-HIERARCHY",
+            "unitId": "w"
+          }
+        ],
+        "units": {
+          "u1": {
+            "valid": false
+          },
+          "u2": {
+            "valid": false
+          },
+          "u3": {
+            "valid": true,
+            "totalScope": 1
+          },
+          "w": {
+            "valid": false
+          }
+        }
+      }
+    },
+    {
+      "id": "parent-must-be-a-learning-unit",
+      "description": "A parent reference names a learning unit of the same landscape, and only a learning unit may be the child of one.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q2",
+              "nodeKind": "exam"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "y5",
+              "kind": "year",
+              "label": "Jahrgangsstufe 5",
+              "shortLabel": "J5",
+              "order": 5
+            },
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "missing"
+            },
+            {
+              "id": "v",
+              "kind": "learningUnit",
+              "label": "Einheit v",
+              "labelEn": "Unit v",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "parentUnitId": "y5"
+            },
+            {
+              "id": "y6",
+              "kind": "year",
+              "label": "Jahrgangsstufe 6",
+              "parentUnitId": "v"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "v",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-CHILD",
+            "unitId": "u"
+          },
+          {
+            "code": "LU-CHILD",
+            "unitId": "v"
+          },
+          {
+            "code": "LU-CHILD",
+            "unitId": "v"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": false
+          },
+          "v": {
+            "valid": false
+          }
+        }
+      }
+    },
+    {
+      "id": "own-goal-must-be-an-atomic-goal-of-the-landscape",
+      "description": "A cluster, an unknown goal and a goal of another landscape cannot be owned.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "K",
+              "contains": [
+                "A"
+              ]
+            },
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "K",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "missing",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "M",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        },
+        {
+          "landscapeId": "MATH",
+          "goals": [
+            {
+              "id": "M"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-ATOMIC",
+            "unitId": "u",
+            "goalId": "K"
+          },
+          {
+            "code": "LU-REF",
+            "unitId": "u",
+            "goalId": "missing"
+          },
+          {
+            "code": "LU-REF",
+            "unitId": "u",
+            "goalId": "M"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ambiguous-goal-kind",
+      "description": "An owned goal that is both an assessment and a memory goal has no single protected role.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "QK",
+              "nodeKind": "memory",
+              "examData": {}
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "QK",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-KIND",
+            "unitId": "u",
+            "goalId": "QK"
+          },
+          {
+            "code": "LU-EMPTY-SCOPE",
+            "unitId": "u"
+          }
+        ]
+      }
+    },
+    {
+      "id": "orientation-needs-no-assessment",
+      "description": "A genuine orientation goal may be owned; rule R1 applies to ordinary content goals only. Legacy tag encoding counts.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "O1",
+              "semanticKind": "orientation"
+            },
+            {
+              "id": "O2",
+              "tags": [
+                "Motivation"
+              ]
+            },
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A",
+              "requires": [
+                "O1"
+              ]
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "O1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "O2",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": [
+              "A"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "requires-cycle",
+      "description": "The normalized relation must be acyclic; a cycle through an own goal invalidates the contract.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A",
+              "requires": [
+                "B"
+              ]
+            },
+            {
+              "id": "B",
+              "requires": [
+                "A"
+              ]
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-GRAPH",
+            "unitId": "u",
+            "goalId": "A"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unresolved-prerequisite",
+      "description": "A dangling requires reference on the path makes the contract unevaluable.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A",
+                "missing"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-GRAPH",
+            "unitId": "u"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unit-declaration",
+      "description": "The unit declaration is closed: required wording, a dated revision, a slug ID and no field outside the contract. Learning-unit fields on another kind and a duplicated ID are rejected as well.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q2",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q3",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q4",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q5",
+              "nodeKind": "exam"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "no-promise",
+              "kind": "learningUnit",
+              "label": "Einheit no-promise",
+              "labelEn": "Unit no-promise",
+              "promise": "Ich kann das Fixture anwenden.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "waiver",
+              "kind": "learningUnit",
+              "label": "Einheit waiver",
+              "labelEn": "Unit waiver",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1",
+              "waivableGoalIds": [
+                "Q2"
+              ]
+            },
+            {
+              "id": "undated",
+              "kind": "learningUnit",
+              "label": "Einheit undated",
+              "labelEn": "Unit undated",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "latest"
+            },
+            {
+              "id": "Unit_A",
+              "kind": "learningUnit",
+              "label": "Einheit Unit_A",
+              "labelEn": "Unit Unit_A",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "dup",
+              "kind": "learningUnit",
+              "label": "Einheit dup",
+              "labelEn": "Unit dup",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "dup",
+              "kind": "learningUnit",
+              "label": "Einheit dup",
+              "labelEn": "Unit dup",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            },
+            {
+              "id": "y5",
+              "kind": "year",
+              "label": "Jahrgangsstufe 5",
+              "shortLabel": "J5",
+              "order": 5,
+              "promise": "Kein Lernversprechen."
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "no-promise",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "waiver",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q3",
+              "unitId": "undated",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q4",
+              "unitId": "Unit_A",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q5",
+              "unitId": "dup",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "draft"
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-UNIT",
+            "unitId": "no-promise"
+          },
+          {
+            "code": "LU-UNIT",
+            "unitId": "waiver"
+          },
+          {
+            "code": "LU-UNIT",
+            "unitId": "undated"
+          },
+          {
+            "code": "LU-UNIT",
+            "unitId": "Unit_A"
+          },
+          {
+            "code": "LU-UNIT-ID",
+            "unitId": "dup"
+          },
+          {
+            "code": "LU-UNIT"
+          },
+          {
+            "code": "LU-UNIT"
+          }
+        ],
+        "units": {
+          "no-promise": {
+            "valid": false
+          },
+          "waiver": {
+            "valid": false
+          },
+          "undated": {
+            "valid": false
+          },
+          "Unit_A": {
+            "valid": false
+          },
+          "dup": {
+            "valid": false
+          }
+        }
+      }
+    },
+    {
+      "id": "ownership-placement",
+      "description": "Ownership points at a learning unit, carries no context, is declared once, and a learning unit takes no other relation.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q2",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q3",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "Q4",
+              "nodeKind": "exam"
+            },
+            {
+              "id": "K",
+              "contains": [
+                "Q4"
+              ]
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "y5",
+              "kind": "year",
+              "label": "Jahrgangsstufe 5",
+              "shortLabel": "J5",
+              "order": 5
+            },
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "missing",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "y5",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q3",
+              "unitId": "u",
+              "relation": "own",
+              "context": {
+                "jurisdiction": "DE-HE"
+              }
+            },
+            {
+              "goalId": "Q1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "K",
+              "unitId": "u",
+              "relation": "primary"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-PLACEMENT",
+            "goalId": "Q2"
+          },
+          {
+            "code": "LU-PLACEMENT",
+            "goalId": "Q2"
+          },
+          {
+            "code": "LU-PLACEMENT",
+            "unitId": "u",
+            "goalId": "Q3"
+          },
+          {
+            "code": "LU-PLACEMENT",
+            "unitId": "u",
+            "goalId": "Q1"
+          },
+          {
+            "code": "LU-PLACEMENT",
+            "unitId": "u",
+            "goalId": "K"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": false,
+            "totalScope": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "reviewed-coverage",
+      "description": "Reviewed evidence bound to the current task and rubric covers A; B has none yet. The unit is valid, its reviewed coverage incomplete.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A",
+                  "B"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:189e02623f0824ba0e5b35254e76ca03dc7dde3e4e757db038ca62024fa0f902",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              }
+            },
+            {
+              "id": "B",
+              "requires": [
+                "A"
+              ]
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "units": {
+          "u": {
+            "valid": true,
+            "goalsWithoutReviewedCoverage": [
+              "B"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "stale-or-unfounded-review",
+      "description": "Evidence for a changed task is stale; evidence for a goal the assessment does not claim, or for a goal of no unit, is unfounded; so is evidence on an assessment that no unit owns.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              }
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "A",
+                "B"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task 2",
+                "solutionContent": "Solution 2",
+                "scoring": {
+                  "maxPoints": 4,
+                  "passingPoints": 2
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "B",
+                    "C"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:8e6cfa3c358e293ce9f67e6672b22e53fd37a1c36266c86998d914d19f6c7c5e",
+                  "rubricRevision": "sha256:949bd776eeea2f6d8db298889b2afa3fa7f24ac31c815b6c5534317d197f147f"
+                }
+              }
+            },
+            {
+              "id": "QF",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:189e02623f0824ba0e5b35254e76ca03dc7dde3e4e757db038ca62024fa0f902",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              }
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            },
+            {
+              "id": "C"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q2"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q2"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "goalId": "QF"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": false,
+            "goalsWithoutReviewedCoverage": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "malformed-coverage-review",
+      "description": "A coverage review has exactly its four fields, a repository-relative record and sha256 bindings, and its assessment has a task, solution and rubric to bind.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q1",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:189e02623f0824ba0e5b35254e76ca03dc7dde3e4e757db038ca62024fa0f902",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34",
+                  "approvedBy": "someone"
+                }
+              }
+            },
+            {
+              "id": "Q2",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "../review.md",
+                  "taskRevision": "sha256:189e02623f0824ba0e5b35254e76ca03dc7dde3e4e757db038ca62024fa0f902",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              }
+            },
+            {
+              "id": "Q3",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:189e02623f0824ba0e5b35254e76ca03dc7dde3e4e757db038ca62024fa0f902",
+                  "rubricRevision": "sha256:d550ba44898f816ee4f2e99f821e7a7239253de4056550cb6b2a199232839f34"
+                }
+              }
+            },
+            {
+              "id": "Q4",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "solutionContent": "Solution",
+                "scoring": {
+                  "maxPoints": 10,
+                  "passingPoints": 6
+                },
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+                }
+              }
+            },
+            {
+              "id": "Q5",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam",
+              "examData": {
+                "coveredGoalIds": [
+                  "A"
+                ],
+                "taskContent": "Task",
+                "coverageReview": {
+                  "goalIds": [
+                    "A"
+                  ],
+                  "reference": "review.md",
+                  "taskRevision": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+                  "rubricRevision": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+                }
+              }
+            },
+            {
+              "id": "A"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q1",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q2",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q3",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q4",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "Q5",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ]
+        }
+      ],
+      "expect": {
+        "valid": false,
+        "findings": [
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q1"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q2"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q3"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q4"
+          },
+          {
+            "code": "LU-R2-EVIDENCE",
+            "unitId": "u",
+            "goalId": "Q5"
+          }
+        ],
+        "units": {
+          "u": {
+            "valid": false,
+            "goalsWithoutReviewedCoverage": [
+              "A"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "offered-curriculum-without-the-own-assessment",
+      "description": "The unit is valid on the canonical pool. Where the offered view itself targets A or B, an own assessment that requires it must be in the learning scope. A goal that is in scope only as a closure-added prerequisite demands none.",
+      "landscapes": [
+        {
+          "landscapeId": "L",
+          "goals": [
+            {
+              "id": "Q",
+              "requires": [
+                "A"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "QL",
+              "requires": [
+                "A",
+                "B"
+              ],
+              "nodeKind": "exam"
+            },
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "programUnits": [
+            {
+              "id": "u",
+              "kind": "learningUnit",
+              "label": "Einheit u",
+              "labelEn": "Unit u",
+              "promise": "Ich kann das Fixture anwenden.",
+              "promiseEn": "I can apply the fixture.",
+              "revision": "2026-11-12-v1"
+            }
+          ],
+          "goalPlacements": [
+            {
+              "goalId": "Q",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "QL",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "A",
+              "unitId": "u",
+              "relation": "own"
+            },
+            {
+              "goalId": "B",
+              "unitId": "u",
+              "relation": "own"
+            }
+          ],
+          "learningUnitCoverage": "complete"
+        }
+      ],
+      "offered": [
+        {
+          "id": "all",
+          "landscapeId": "L",
+          "seedTargetGoalIds": [
+            "Q",
+            "QL",
+            "A",
+            "B"
+          ],
+          "targetGoalIds": [
+            "Q",
+            "QL",
+            "A",
+            "B"
+          ],
+          "members": [
+            "L|all"
+          ]
+        },
+        {
+          "id": "basic",
+          "landscapeId": "L",
+          "seedTargetGoalIds": [
+            "Q"
+          ],
+          "targetGoalIds": [
+            "Q",
+            "A"
+          ],
+          "members": [
+            "L|basic-1",
+            "L|basic-2"
+          ]
+        },
+        {
+          "id": "view-without-assessment",
+          "landscapeId": "L",
+          "seedTargetGoalIds": [
+            "A",
+            "B"
+          ],
+          "targetGoalIds": [
+            "A",
+            "B"
+          ],
+          "members": [
+            "L|bare"
+          ]
+        },
+        {
+          "id": "prerequisite-only",
+          "landscapeId": "L",
+          "seedTargetGoalIds": [],
+          "targetGoalIds": [
+            "A",
+            "B"
+          ],
+          "members": [
+            "L|later-stage"
+          ]
+        },
+        {
+          "id": "absent",
+          "landscapeId": "L",
+          "seedTargetGoalIds": [],
+          "targetGoalIds": [],
+          "members": [
+            "L|none"
+          ]
+        },
+        {
+          "id": "other-subject",
+          "landscapeId": "OTHER",
+          "seedTargetGoalIds": [
+            "A"
+          ],
+          "targetGoalIds": [
+            "A"
+          ],
+          "members": [
+            "OTHER|x"
+          ]
+        }
+      ],
+      "expect": {
+        "valid": true,
+        "findings": [],
+        "offeredFindings": [
+          {
+            "code": "LU-R1-OFFERED",
+            "unitId": "u",
+            "goalId": "A"
+          },
+          {
+            "code": "LU-R1-OFFERED",
+            "unitId": "u",
+            "goalId": "B"
+          }
+        ]
+      }
+    }
+  ]
+}

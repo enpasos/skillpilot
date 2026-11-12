@@ -34,7 +34,7 @@ Three layers, kept strictly separate:
 |---|---|
 | `app/` | React + TypeScript + Vite frontend (Cockpit, Workbench, trainer views) plus ~all curriculum/QA/docs tooling as `tsx` scripts in `app/scripts/` (500+ files, wired up as ~270 npm scripts in `app/package.json`) |
 | `backend/` | Spring Boot 4.1 / Java 25 (Corretto, pinned via `.java-version`/`.corretto-version`), Gradle. Package `com.skillpilot.backend` (`openai/`, `claude/`, `connectors/{claude,gemini}/`, `oauth/`, `mcp/`, `service/`, `landscape/`, `composition/`, `completion/`, …). Serves the built frontend from `src/main/resources/static` |
-| `curricula/` | Layer-A data. `curriculum_manifest.json` lists roots. Canonical German Gymnasium subjects: `curricula/DE/Gymnasium/canonical/`; retained state sources: `curricula/DE/Gymnasium/input/<STATE>/`; QA ledgers: `curricula/DE/Gymnasium/quality/`; memory decks: `curricula/DE/Gymnasium/memory-decks/`; images: `curricula/DE/Gymnasium/visualizations/`; learning-unit catalogs: `curricula/DE/Gymnasium/learning-units/` |
+| `curricula/` | Layer-A data. `curriculum_manifest.json` lists roots. Canonical German Gymnasium subjects: `curricula/DE/Gymnasium/canonical/`; retained state sources: `curricula/DE/Gymnasium/input/<STATE>/`; QA ledgers: `curricula/DE/Gymnasium/quality/`; memory decks: `curricula/DE/Gymnasium/memory-decks/`; images: `curricula/DE/Gymnasium/visualizations/` |
 | `ai/claude/` | Claude connector v1 (`mcp-claude-v1.skillpilot.com`), MCP Apps resources, plugin, marketplace, MCP regression |
 | `ai/openai plugin/`, `ai/openai candidates/`, `ai/openai-marketplace/`, `ai/openai app/` | OpenAI lane: plugin sources (`skillpilot-coach-v1` and its permanent successor identity `skillpilot-coach`), local release candidates, Git-marketplace beta mirror, MCP Apps prototype |
 | `ai/gemini/` | Gemini lane: coach Skill, operator gateway, PoC (backend adapter `gemini-v1`) |
@@ -70,7 +70,7 @@ npm --prefix app run test:<name>      # many focused suites, no aggregate `test`
 npm --prefix app run validate:graph
 npm --prefix app run validate:composition-views
 npm --prefix app run check:transitive-minimality
-npm --prefix app run validate:learning-units            # authored learning-unit catalogs (R1, R3, R4)
+npm --prefix app run validate:learning-units            # learning units in the canonical landscapes (R1, R3, R4)
 npm --prefix app run quality:curriculum-status          # regenerate status
 npm --prefix app run quality:curriculum-status:check    # + maturity-floor gate
 python3 scripts/validate_schemas.py
@@ -180,7 +180,7 @@ Full rules: `docs/dev/documentation-guidelines.md`.
 - `docs/concept/curriculum-quality-and-human-trial.md` — maturity levels M0–M7, human trial
 - `docs/concept/skill-graph/` — goal system, composition views, learning units, assessment-gated completion, visualizations, goal books, packages
 - `docs/concept/didactic/unified-learning-plan-status.md` — learning-plan contract
-- `docs/dev/mathematics-physics-learning-units-plan.md` — working plan for learning units (Mathematics, then Physics); contract in `contracts/drafts/learning-unit/v1/`
+- `docs/dev/mathematics-physics-learning-units-plan.md` — working plan for learning units (Mathematics, then Physics); units live in `programUnits`/`goalPlacements`, package contract `contracts/curriculum-package/v1.2/`
 - `docs/dev/landscape-json-field-reference.md` — landscape JSON fields
 - `docs/qa-ci/index.md` — QA lanes and CI rules for curriculum changes
 - `docs/deploy/` — release runbooks (Claude connector, OpenAI plugin and Git beta, Gemini, OAuth); `claude-beta-chatgpt-release-strategy.md` for the work order

@@ -25,16 +25,14 @@ Der Product Owner hat am 12. November 2026 entschieden:
 - Technische Sperren ganzer Einheiten bleiben unentschieden. Keine Stufe dieses
   Plans braucht sie.
 
-Offen zur Bestätigung ist der **Ablageort**. Freigegeben war, die Einheiten in
-`programUnits`/`goalPlacements` abzulegen, vorbehaltlich einer Prüfung der
-Paketschemata. Die Prüfung ist negativ ausgefallen: Im veröffentlichten
-Paketvertrag `contracts/curriculum-package/v1/compiled-landscape.schema.json`
-sind `programUnit.kind` und `goalPlacement.relation` geschlossene Enums ohne
-Zusatzfelder. Eine neue Einheitenart hätte einen neuen Paketvertrag und
-Änderungen an Compiler, FWU-Roundtrip, Backend- und Frontendtypen verlangt und
-bei jeder Einheitenänderung die an die kanonischen Dateien gebundenen Hashes
-berührt. Umgesetzt ist deshalb eine eigene, versionierte Katalogdatei je Fach,
-die nur stabile IDs nennt und keine Zieldaten kopiert (Abschnitt 4).
+- **Ablageort:** Die Einheiten sind Teil der Skill-Landschaft und liegen in der
+  vorhandenen Platzierungsschicht (`programUnits`/`goalPlacements`). Eine eigene
+  Katalogdatei neben der Landschaft war kurz umgesetzt und ist verworfen: Der
+  Vertrag soll langfristig stabil sein und kein Anbau. Dass der veröffentlichte
+  Paketvertrag 1.0 geschlossene Enums für `programUnit.kind` und
+  `goalPlacement.relation` hat, ist kein Hindernis; der Paketvertrag bekommt
+  dafür die neue Minor-Version 1.2. Veröffentlichte Dateien älterer Versionen
+  bleiben unverändert.
 
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
@@ -125,17 +123,35 @@ eingecheckt.
 
 ## 4. Vertrag und Validator
 
-Ein Katalog je kanonischer Fachlandschaft liegt unter
-`curricula/DE/Gymnasium/learning-units/`. Format und Regeln stehen im
-[Vertragsentwurf](https://github.com/enpasos/skillpilot/blob/main/contracts/drafts/learning-unit/v1/README.md).
-Der Vertrag liegt unter `contracts/drafts/`, bis die Runtime ihn verwendet.
+Das Format gehört zur Skill-Landschaft und ist im Laufzeitschema
+`docs/landscape-runtime.schema.json` sowie im
+[Paketvertrag 1.2](https://github.com/enpasos/skillpilot/blob/main/contracts/curriculum-package/v1.2/README.md)
+festgelegt:
 
-Eine Einheit nennt Titel und Lernversprechen in Deutsch und Englisch, ihre
-eigenen atomaren Ziele (gewöhnliche, Orientierungs-, Prüfungs- und
-Lernkartenziele) und ihre Pflichtkinder. Zielarten, Voraussetzungen und die
-Abdeckungsangabe einer Prüfung liest der Validator aus der kanonischen
-Landschaft. Ganz-Einheits-Voraussetzungen, Sperren und Erlasslisten lassen sich
-im Vertrag nicht ausdrücken.
+| Bestandteil | Ablage |
+| --- | --- |
+| Einheit | `programUnits`-Eintrag mit `kind: "learningUnit"`: `id`, `label`, `labelEn`, `promise`, `promiseEn`, `revision`; keine weiteren Felder. |
+| Hierarchie | `parentUnitId` nennt die Einheit, die diese als Pflichtkind verlangt. Beide Enden sind Einheiten; eine Einheit hat höchstens ein Elternteil. |
+| Eigenes Ziel | `goalPlacements`-Eintrag mit `relation: "own"` auf ein atomares Ziel derselben Landschaft, ohne `context`. |
+| R2-Nachweis | `examData.coverageReview` an der eigenen Prüfung: geprüfte Ziele, Reviewprotokoll, Aufgaben- und Rubrikhash. |
+| Vollständigkeit | Landschaftsfeld `learningUnitCoverage`: `partial` oder `complete`; fehlt es, gilt `partial`. |
+
+Zielarten, Voraussetzungen und die Abdeckungsangabe einer Prüfung stehen wie
+bisher an den Zielen. Jahrgangs- und Phaseneinheiten und ihre Platzierungen
+behalten ihre Bedeutung. Ganz-Einheits-Voraussetzungen, Sperren und
+Erlasslisten lassen sich im Vertrag nicht ausdrücken: Die Einheitendeklaration
+ist geschlossen, ein unbekanntes Feld ist ein Befund.
+
+Jede Änderung an einer Einheit ändert damit die kanonische Fachdatei. Die daran
+gebundenen Hashes werden wie bei jeder Curriculumänderung nachgezogen; der
+Einheitenzuschnitt ist Curriculuminhalt.
+
+Ein Paket nach Vertrag 1.2 trägt die Einheiten samt Reviewprotokollen und
+prüft dieselben Regeln beim Bau. Ein Bau nach Vertrag 1.0 oder 1.1 lässt sie
+vollständig weg, sodass ein älterer Verbraucher nie einen halben Vertrag sieht.
+Die Completion-Profile und -Scopes aus Vertrag 1.1 beantworten dieselbe Frage
+mit der am 4. November abgelösten Erlass-Semantik; sie bleiben bis zur
+Umstellung der Runtime in Stufe 3 unverändert in Betrieb und entfallen dann.
 
 `npm --prefix app run validate:learning-units` läuft in der Pflicht-CI
 (`run_ci.sh curriculum`, Job `curriculum-assessment-proofs`) und scheitert bei
@@ -145,9 +161,9 @@ jedem Befund:
 | --- | --- |
 | R1 | Jedes eigene gewöhnliche Ziel liegt auf einem Voraussetzungspfad unter einer eigenen Prüfung; ein Pfad nur unter einem Lernkartenziel zählt nicht. |
 | R3 | Jeder Abdeckungseintrag einer eigenen Prüfung ist ein atomares Ziel, das die Prüfung direkt oder transitiv benötigt. |
-| R4 | Kein Ziel hat zwei Einheiten. In einem als `complete` erklärten Katalog hat jedes atomare Ziel der Landschaft eine Einheit; ein `partial` erklärter Katalog weist die offenen Ziele als Zahl aus. |
-| Struktur | Eigene Ziele sind atomare Ziele der Fachlandschaft mit genau einer Zielart; der Gesamtumfang ist nicht leer; die Einheitenhierarchie ist azyklisch; jeder Verweis auf den Voraussetzungspfaden der eigenen Ziele ist auflösbar, und kein eigenes Ziel setzt sich selbst transitiv voraus. |
-| R2 | Kein Pflichtbestandteil der Strukturgültigkeit. Ein eingetragener Nachweis (`coverageReviews`) muss stimmen: eigene Prüfung, eigenes gewöhnliches Ziel, von der Prüfung benötigt und in ihrer Abdeckung genannt, Reviewprotokoll vorhanden, Aufgaben- und Rubrikhash aktuell. Der Validator meldet je Einheit, welchen Zielen der Nachweis fehlt. |
+| R4 | Kein Ziel hat zwei Einheiten. Erklärt die Landschaft `complete`, hat jedes ihrer atomaren Ziele eine Einheit; sonst weist der Validator die offenen Ziele als Zahl aus. |
+| Struktur | Die Deklaration von Einheit und Platzierung ist wohlgeformt; eigene Ziele sind atomare Ziele der Fachlandschaft mit genau einer Zielart; der Gesamtumfang ist nicht leer; die Einheitenhierarchie ist azyklisch; jeder Verweis auf den Voraussetzungspfaden der eigenen Ziele ist auflösbar, und kein eigenes Ziel setzt sich selbst transitiv voraus. |
+| R2 | Kein Pflichtbestandteil der Strukturgültigkeit. Ein eingetragener Nachweis (`coverageReview`) muss stimmen: eigene Prüfung, eigenes gewöhnliches Ziel, von der Prüfung benötigt und in ihrer Abdeckung genannt, Reviewprotokoll vorhanden, Aufgaben- und Rubrikhash aktuell. Der Validator meldet je Einheit, welchen Zielen der Nachweis fehlt. |
 | R5 | Nicht umgesetzt; Laufzeitvertrag der Stufe 3. |
 
 Voraussetzungspfade folgen der normativen Relation der Graph Definition:
@@ -162,8 +178,9 @@ erworben und verlangt keine Prüfung seiner Einheit. Diese Prüfung braucht eine
 Backendlauf und gehört noch nicht zur Pflicht-CI.
 
 Die gemeinsamen Testfälle liegen in
-`contracts/drafts/learning-unit/v1/fixtures/cases.json`
-(`npm --prefix app run test:learning-unit-contracts`). Die Hashbindung der
+`contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json`. Der
+Validator (`npm --prefix app run test:learning-unit-contracts`) und der
+Paketvalidator lesen dieselben Fälle. Die Hashbindung der
 Nachweise rechnet in TypeScript bitgleich zur Backendregel des bestehenden
 Completion-Profils.
 
@@ -176,10 +193,10 @@ Ergebnis abgeschlossen.
 | Stufe | Lieferstück | Abnahme | Stand |
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
-| **1 – Vertrag und Validator** | Vertragsentwurf, Validator für R1, R3, R4 und Struktur, Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
+| **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
 | **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Pilot strukturell gültig, R2 nicht erfüllt (siehe unten). |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
-| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; Katalog `complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 806 gewöhnliche Ziele ohne Einheit. |
+| **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 806 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen. |
 
 ### Stand der Stufe 2
@@ -224,7 +241,8 @@ Daraus folgt für Stufe 2:
    Eingangskompetenzen, eigene Ziele, Kinder, zentraler Schritt, was darauf
    aufbaut. Die Grenze folgt dem fachlichen Übergang, nicht einer vorhandenen
    Prüfung, einer Zielzahl oder einer Überschrift.
-2. **Strukturell prüfen:** Katalog eintragen, Validator laufen lassen. Ein
+2. **Strukturell prüfen:** Einheit in der kanonischen Fachdatei eintragen,
+   Validator laufen lassen. Ein
    Befund ist ein Auftrag für die Fachprüfung. Keine Kante wird ergänzt oder
    entfernt, kein Zieltext verkürzt und keine Einheit zerschnitten, damit der
    Validator grün wird.

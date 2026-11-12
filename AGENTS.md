@@ -530,24 +530,35 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   Physics). The catalog of units is derived in-house, block by block, from the
   canonical graph and the design sheet; an external proposal is at most a
   recorded origin, never a contract. Whole-unit access locks stay undecided.
-- **Unit contracts and validator (12 November 2026).** Units are authored as one
-  versioned catalog per canonical landscape under
-  `curricula/DE/Gymnasium/learning-units/` (contract draft
-  `contracts/drafts/learning-unit/v1`): a unit names its own atomic goals and
-  required child units by stable ID and copies no goal data. The Product Owner
-  had approved extending `programUnits`/`goalPlacements` subject to a check of
-  the package schemas. That check failed: their kinds and relations are closed
-  enums of the published curriculum-package contract, so the separate catalog
-  was implemented instead; this storage choice awaits Product Owner
-  confirmation. `npm --prefix app run validate:learning-units` enforces R1, R3
-  and R4 fail-closed for every authored unit and runs in the required
-  curriculum CI; a catalog declares `partial` or `complete`, and only
-  `complete` requires an owner for every atomic goal. R2 is recorded per unit
-  as hash-bound `coverageReviews` and reported while missing; it is not yet a
-  milestone gate. R5 and implicit recognition are not implemented: a unit
-  catalog has no runtime effect, and every goal is still completed by its own
-  explicit result. Never add an edge, weaken a goal description or cut a unit
-  to turn the validator green; a finding is a subject-review task.
+- **Unit contract (Product Owner, 12 November 2026).** Learning units are part
+  of the landscape and live in the existing placement layer; the Product Owner
+  rejected a separate catalog file beside the landscape as a bolt-on and asked
+  for a stable long-term contract, with a new schema version wherever one is
+  needed. A unit is a `programUnits` entry of kind `learningUnit` (`id`,
+  `label`, `labelEn`, `promise`, `promiseEn`, `revision`, optional
+  `parentUnitId` naming the unit that requires it as a child). It owns atomic
+  goals of the same landscape through `goalPlacements` of relation `own`,
+  which carry no `context`. Reviewed coverage (R2) is `examData.coverageReview`
+  on the owned assessment, hash-bound to its task, solution and rubric. The
+  optional landscape field `learningUnitCoverage` is `partial` or `complete`.
+  The declaration is closed: whole-unit prerequisites, access locks and waiver
+  lists cannot be expressed. Curriculum-package contract 1.2
+  (`contracts/curriculum-package/v1.2`) carries the units; builds under 1.0 or
+  1.1 project them out completely, and published files of earlier versions
+  stay unchanged. The completion profiles and scopes of contract 1.1 implement
+  the superseded waiver semantics and remain in operation only until the
+  runtime switches.
+- **Unit validator (12 November 2026).** `npm --prefix app run
+  validate:learning-units` enforces R1, R3 and R4 plus the declaration rules
+  fail-closed for every learning unit in the canonical landscapes and runs in
+  the required curriculum CI; only `learningUnitCoverage: "complete"` requires
+  an owner for every atomic goal. Missing R2 evidence is reported, not
+  rejected; it is not yet a milestone gate. R5 and implicit recognition are
+  not implemented: a learning unit has no runtime effect, and every goal is
+  still completed by its own explicit result. Every unit change is a change of
+  the canonical subject file with the usual binding refresh. Never add an
+  edge, weaken a goal description or cut a unit to turn the validator green; a
+  finding is a subject-review task.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,

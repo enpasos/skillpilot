@@ -39,8 +39,8 @@
     {
       "term": { "de": "Cluster, Lerneinheit, Programmeinheit", "en": "cluster, learning unit, program unit" },
       "meaning": {
-        "de": "Ein *Cluster* ist ein Ziel mit `contains`-Kindern. Eine *Lerneinheit* ist eine eigens autorisierte fachliche Einheit mit Lernversprechen. Eine *Programmeinheit* ist ein organisatorischer Abschnitt wie Jahrgang oder Semester.",
-        "en": "A *cluster* is a goal with `contains` children. A *learning unit* (*Lerneinheit*) is an explicitly authorized educational unit with a stated learning outcome. A *program unit* is an organizational section such as a school year or semester."
+        "de": "Ein *Cluster* ist ein Ziel mit `contains`-Kindern. Eine *Lerneinheit* ist eine eigens autorisierte fachliche Einheit mit Lernversprechen. Eine *Programmeinheit* ist ein organisatorischer Abschnitt wie Jahrgang oder Semester; eine Lerneinheit wird im selben Feld `programUnits` mit der Art `learningUnit` deklariert.",
+        "en": "A *cluster* is a goal with `contains` children. A *learning unit* (*Lerneinheit*) is an explicitly authorized educational unit with a stated learning outcome. A *program unit* is an organizational section such as a school year or semester; a learning unit is declared in the same `programUnits` array with kind `learningUnit`."
       }
     },
     {
@@ -234,8 +234,8 @@
     {
       "term": { "de": "Programmeinheit, Platzierung (`programUnits`, `goalPlacements`)", "en": "program unit, goal placement (`programUnits`, `goalPlacements`)" },
       "meaning": {
-        "de": "Organisatorischer Abschnitt wie Jahrgang oder Semester; Zuordnung eines Ziels zu einem solchen Abschnitt.",
-        "en": "Organizational container such as a school year or semester; entry attaching an unchanged goal to such a unit."
+        "de": "Organisatorischer Abschnitt wie Jahrgang oder Semester; Zuordnung eines Ziels zu einem solchen Abschnitt. Die Art `learningUnit` deklariert eine Lerneinheit, die Relation `own` ordnet ihr ein eigenes atomares Ziel zu.",
+        "en": "Organizational container such as a school year or semester; entry attaching an unchanged goal to such a unit. Kind `learningUnit` declares a learning unit, and relation `own` assigns it an atomic goal it owns."
       }
     },
     {

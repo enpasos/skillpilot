@@ -8,8 +8,9 @@ learner trial or evidence of learning effectiveness.
 
 ## Subject of the review
 
-Learning unit `math-dot-product-projection`, revision `2026-11-12-v1`, in
-`curricula/DE/Gymnasium/learning-units/mathematik.json`:
+Learning unit `math-dot-product-projection`, revision `2026-11-12-v1`, declared
+in the placement layer of the canonical Mathematics landscape
+(`curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`):
 
 - Own ordinary goal `3016ec37-1c2e-47db-83f5-e767923bc97e`, "Definition des
   Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen".
@@ -22,7 +23,7 @@ later justify implicit recognition of that goal?
 
 ## Decision
 
-**R2 is not satisfied. The unit carries no `coverageReviews` entry.** The unit
+**R2 is not satisfied. The assessment carries no `coverageReview`.** The unit
 is structurally valid (R1, R3, R4), and the validator reports its reviewed
 coverage as missing. The goal therefore stays open until it is mastered
 explicitly, which is also today's behaviour: implicit recognition is not

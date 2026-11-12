@@ -1,29 +1,28 @@
 // SPDX-License-Identifier: Apache-2.0
-// Conformance of the learning-unit validator: shared fixtures, schema, review binding and CLI contract.
+// Conformance of the learning-unit validator: shared fixtures, runtime schema, goal kinds, review binding and CLI contract.
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import Ajv2020 from 'ajv/dist/2020.js'
 import {
-  UnitGraph, assessmentReviewRevisions, validateLearningUnitCatalogs, validateOfferedScopes,
-  type LearningUnitCatalog, type UnitFinding, type UnitGraphGoal, type UnitGraphLandscape,
+  UnitGraph, assessmentReviewRevisions, validateLearningUnits, validateOfferedScopes,
+  type UnitFinding, type UnitGraphGoal, type UnitGraphLandscape,
 } from './lib/learningUnitContracts'
-import { learningUnitCatalogSchemaErrors } from './validateLearningUnits'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const json = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+export const learningUnitFixturePath = 'contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json'
 
-interface FixtureUnit { id: string; ownGoalIds: string[]; childUnitIds?: string[]; coverageReviews?: LearningUnitCatalog['units'][number]['coverageReviews'] }
-interface FixtureCatalog { catalogId: string; landscapeId: string; completeness: 'partial' | 'complete'; units: FixtureUnit[] }
 interface ExpectedFinding { code: string; unitId?: string; goalId?: string }
 interface FixtureCase {
   id: string
   landscapes: UnitGraphLandscape[]
-  catalogs: FixtureCatalog[]
   offered?: { id: string; landscapeId: string; seedTargetGoalIds: string[]; targetGoalIds: string[]; members: string[] }[]
   expect: {
+    valid: boolean
     findings: ExpectedFinding[]
     offeredFindings?: ExpectedFinding[]
     units?: Record<string, { valid?: boolean; totalScope?: number; goalsWithoutReviewedCoverage?: string[] }>
@@ -31,32 +30,10 @@ interface FixtureCase {
   }
 }
 
-// Fixtures state only what a case is about; identity and wording fields are completed here.
-function completeCatalog(fixture: FixtureCatalog, graph: UnitGraph): LearningUnitCatalog {
-  return {
-    schemaVersion: 1, catalogId: fixture.catalogId, landscapeId: fixture.landscapeId, revision: '2026-11-12-v1',
-    completeness: fixture.completeness,
-    units: fixture.units.map((unit) => ({
-      id: unit.id, revision: '2026-11-12-v1',
-      title: { de: `Einheit ${unit.id}`, en: `Unit ${unit.id}` },
-      promise: { de: 'Ich kann das Fixture anwenden.', en: 'I can apply the fixture.' },
-      ownGoalIds: unit.ownGoalIds,
-      ...(unit.childUnitIds ? { childUnitIds: unit.childUnitIds } : {}),
-      ...(unit.coverageReviews ? { coverageReviews: unit.coverageReviews.map((review) => {
-        const key = `${fixture.landscapeId}:${review.assessmentGoalId}`
-        const current = graph.has(key) && graph.goal(key).examData?.scoring ? assessmentReviewRevisions(graph.goal(key)) : undefined
-        const bind = (value: string, revision?: string) => value === '@current'
-          ? revision ?? `sha256:${'f'.repeat(64)}` : value
-        return { ...review, taskRevision: bind(review.taskRevision, current?.taskRevision),
-          rubricRevision: bind(review.rubricRevision, current?.rubricRevision) }
-      }) } : {}),
-    })),
-  }
-}
 const signature = (finding: ExpectedFinding | UnitFinding): string =>
   [finding.code, finding.unitId ?? '-', finding.goalId ?? '-'].join(' ')
 const expectFindings = (caseId: string, actual: UnitFinding[], expected: ExpectedFinding[], label: string) => {
-  // Expected entries pin only the fields they name.
+  // An expected entry pins only the fields it names.
   const project = (finding: UnitFinding, pattern: ExpectedFinding): string => signature({
     code: finding.code, unitId: 'unitId' in pattern ? finding.unitId : undefined,
     goalId: 'goalId' in pattern ? finding.goalId : undefined,
@@ -70,35 +47,43 @@ const expectFindings = (caseId: string, actual: UnitFinding[], expected: Expecte
   assert.deepEqual(remaining.map(signature), [], `${caseId}: unexpected ${label}`)
 }
 
-const fixtures = json('contracts/drafts/learning-unit/v1/fixtures/cases.json') as { cases: FixtureCase[] }
+const fixtures = json(learningUnitFixturePath) as { cases: FixtureCase[] }
 assert.equal(new Set(fixtures.cases.map(({ id }) => id)).size, fixtures.cases.length, 'Fixture case IDs must be unique')
 const coveredCodes = new Set<string>()
 for (const fixture of fixtures.cases) {
   const graph = new UnitGraph(fixture.landscapes)
-  const catalogs = fixture.catalogs.map((catalog) => completeCatalog(catalog, graph))
-  for (const catalog of catalogs) {
-    assert.deepEqual(learningUnitCatalogSchemaErrors(catalog), [], `${fixture.id}: fixture catalog must satisfy the schema`)
-  }
-  const result = validateLearningUnitCatalogs(catalogs, graph)
+  const result = validateLearningUnits(fixture.landscapes, graph)
   expectFindings(fixture.id, result.findings, fixture.expect.findings, 'finding')
-  for (const [unitId, expected] of Object.entries(fixture.expect.units ?? {})) {
-    const unit = result.units.find((summary) => summary.unitId === unitId)
-    assert(unit, `${fixture.id}: missing unit summary ${unitId}`)
-    if (expected.valid !== undefined) assert.equal(unit.structurallyValid, expected.valid, `${fixture.id}/${unitId}: validity`)
-    if (expected.totalScope !== undefined) assert.equal(unit.totalScope, expected.totalScope, `${fixture.id}/${unitId}: total scope`)
-    if (expected.goalsWithoutReviewedCoverage) {
-      assert.deepEqual(unit.goalsWithoutReviewedCoverage, expected.goalsWithoutReviewedCoverage, `${fixture.id}/${unitId}: reviewed coverage`)
+  assert.equal(fixture.expect.valid, fixture.expect.findings.length === 0, `${fixture.id}: expect.valid must mirror expect.findings`)
+  if (fixture.expect.units) {
+    if (Object.keys(fixture.expect.units).length === 0) assert.deepEqual(result.units, [], `${fixture.id}: no unit expected`)
+    for (const [unitId, expected] of Object.entries(fixture.expect.units)) {
+      const unit = result.units.find((summary) => summary.unitId === unitId)
+      assert(unit, `${fixture.id}: missing unit summary ${unitId}`)
+      if (expected.valid !== undefined) assert.equal(unit.structurallyValid, expected.valid, `${fixture.id}/${unitId}: validity`)
+      if (expected.totalScope !== undefined) assert.equal(unit.totalScope, expected.totalScope, `${fixture.id}/${unitId}: total scope`)
+      if (expected.goalsWithoutReviewedCoverage) {
+        assert.deepEqual(unit.goalsWithoutReviewedCoverage, expected.goalsWithoutReviewedCoverage, `${fixture.id}/${unitId}: reviewed coverage`)
+      }
     }
   }
-  for (const [catalogId, expected] of Object.entries(fixture.expect.ledgers ?? {})) {
-    const ledger = result.ledgers.find((entry) => entry.catalogId === catalogId)
-    assert(ledger, `${fixture.id}: missing ledger ${catalogId}`)
-    assert.equal(ledger.atomicGoals, expected.atomicGoals, `${fixture.id}/${catalogId}: atomic goals`)
-    assert.equal(ledger.ownedGoals, expected.ownedGoals, `${fixture.id}/${catalogId}: owned goals`)
-    const unowned = Object.values(ledger.unownedGoals).reduce((sum, count) => sum + count, 0)
-    assert.equal(unowned, expected.atomicGoals - expected.ownedGoals, `${fixture.id}/${catalogId}: unowned goals`)
+  // A unit is valid exactly when no finding names it.
+  for (const unit of result.units) {
+    const named = result.findings.some((finding) => finding.landscapeId === unit.landscapeId && finding.unitId === unit.unitId)
+    assert.equal(unit.structurallyValid, !named, `${fixture.id}/${unit.unitId}: validity must follow the findings`)
   }
-  const offeredFindings = fixture.offered ? validateOfferedScopes(catalogs, graph, fixture.offered.map((membership) => ({
+  if (fixture.expect.ledgers) {
+    assert.deepEqual(result.ledgers.map((ledger) => ledger.landscapeId).sort(), Object.keys(fixture.expect.ledgers).sort(),
+      `${fixture.id}: landscapes with learning units`)
+    for (const [landscapeId, expected] of Object.entries(fixture.expect.ledgers)) {
+      const ledger = result.ledgers.find((entry) => entry.landscapeId === landscapeId)!
+      assert.equal(ledger.atomicGoals, expected.atomicGoals, `${fixture.id}/${landscapeId}: atomic goals`)
+      assert.equal(ledger.ownedGoals, expected.ownedGoals, `${fixture.id}/${landscapeId}: owned goals`)
+      const unowned = Object.values(ledger.unownedGoals).reduce((sum, count) => sum + count, 0)
+      assert.equal(unowned, expected.atomicGoals - expected.ownedGoals, `${fixture.id}/${landscapeId}: unowned goals`)
+    }
+  }
+  const offeredFindings = fixture.offered ? validateOfferedScopes(result.catalogs, graph, fixture.offered.map((membership) => ({
     ...membership, seedTargetGoalIds: new Set(membership.seedTargetGoalIds), targetGoalIds: new Set(membership.targetGoalIds),
   }))) : []
   expectFindings(fixture.id, offeredFindings, fixture.expect.offeredFindings ?? [], 'offered finding')
@@ -109,36 +94,34 @@ const source = readFileSync(resolve(root, 'app/scripts/lib/learningUnitContracts
 const declaredCodes = [...source.matchAll(/'(LU-[A-Z0-9-]+)'/gu)].map((match) => match[1])
 assert.deepEqual([...new Set(declaredCodes)].sort(), [...coveredCodes].sort(), 'Each finding code needs a fixture')
 
-// Schema: closed contract. Access policy and manual waiver lists cannot be smuggled into a unit.
-const validCatalog = (): LearningUnitCatalog => ({
-  schemaVersion: 1, catalogId: 'c', landscapeId: 'L', revision: '2026-11-12-v1', completeness: 'partial',
-  units: [{ id: 'u', revision: '2026-11-12-v1', title: { de: 'Titel', en: 'Title' },
-    promise: { de: 'Versprechen', en: 'Promise' }, ownGoalIds: ['A'] }],
+// The runtime landscape schema states the same closed declaration for program units and placements.
+const runtimeSchema = json('docs/landscape-runtime.schema.json') as { $defs: Record<string, unknown> }
+const fragment = (name: string) => new Ajv2020({ allErrors: true, strict: false })
+  .compile({ $schema: 'https://json-schema.org/draft/2020-12/schema', $ref: `#/$defs/${name}`, $defs: runtimeSchema.$defs })
+const programUnitSchema = fragment('programUnit'), goalPlacementSchema = fragment('goalPlacement'), goalSchema = fragment('goal')
+const learningUnit = { id: 'u', kind: 'learningUnit', label: 'Einheit', labelEn: 'Unit', promise: 'Ich kann es.', promiseEn: 'I can do it.', revision: '2026-11-12-v1' }
+const yearUnit = { id: 'y5', kind: 'year', label: 'Jahrgangsstufe 5', shortLabel: 'J5', order: 5 }
+assert(programUnitSchema(learningUnit) && programUnitSchema({ ...learningUnit, parentUnitId: 'top', order: 1 }) && programUnitSchema(yearUnit))
+for (const [label, unit] of Object.entries({
+  'a learning unit without an English promise': { ...learningUnit, promiseEn: undefined },
+  'a learning unit with a field outside the contract': { ...learningUnit, waivableGoalIds: ['A'] },
+  'a learning unit with a short label': { ...learningUnit, shortLabel: 'U' },
+  'a learning unit with a free-form revision': { ...learningUnit, revision: 'latest' },
+  'a learning unit whose ID is no slug': { ...learningUnit, id: 'Unit_A' },
+  'a learning promise on a year unit': { ...yearUnit, promise: 'Kein Lernversprechen.' },
+})) assert(!programUnitSchema(JSON.parse(JSON.stringify(unit))), `Runtime schema must reject ${label}`)
+assert(goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own' }))
+assert(goalPlacementSchema({ goalId: 'A', unitId: 'y5', relation: 'primary', context: { jurisdiction: 'DE-HE' } }))
+assert(!goalPlacementSchema({ goalId: 'A', unitId: 'u', relation: 'own', context: { jurisdiction: 'DE-HE' } }), 'Ownership carries no context')
+const reviewedGoal = (coverageReview: unknown) => ({
+  id: 'Q', title: 'Q', description: 'Q', weight: 1, contains: [], requires: [], dimensionTags: { phase: 'Q2' },
+  examData: { taskContent: 'Task', solutionContent: 'Solution', scoring: { maxPoints: 2, passingPoints: 1, steps: [] }, coverageReview },
 })
-assert.deepEqual(learningUnitCatalogSchemaErrors(validCatalog()), [])
-const loose = (value: unknown) => value as Record<string, unknown>
-const rejected = (label: string, mutate: (catalog: LearningUnitCatalog) => void) => {
-  const catalog = validCatalog()
-  mutate(catalog)
-  assert.notDeepEqual(learningUnitCatalogSchemaErrors(catalog), [], `Schema must reject ${label}`)
-}
-rejected('an unknown unit field', (catalog) => { loose(catalog.units[0]).wholeUnitPrerequisites = ['other'] })
-rejected('a waiver list', (catalog) => { loose(catalog.units[0]).waivableGoalIds = ['A'] })
-rejected('a unit without a promise', (catalog) => { delete loose(catalog.units[0]).promise })
-rejected('a promise in one language only', (catalog) => { delete loose(catalog.units[0].promise).en })
-rejected('a blank promise', (catalog) => { catalog.units[0].promise.de = '   ' })
-rejected('a duplicated own goal', (catalog) => { catalog.units[0].ownGoalIds = ['A', 'A'] })
-rejected('an unknown completeness', (catalog) => { loose(catalog).completeness = 'draft' })
-rejected('a free-form revision', (catalog) => { catalog.revision = 'latest' })
-rejected('another schema version', (catalog) => { loose(catalog).schemaVersion = 2 })
-rejected('a review without task binding', (catalog) => {
-  loose(catalog.units[0]).coverageReviews = [{ assessmentGoalId: 'Q', goalIds: ['A'], reference: 'r.md',
-    rubricRevision: `sha256:${'0'.repeat(64)}` }]
-})
-rejected('a review record outside the repository', (catalog) => {
-  catalog.units[0].coverageReviews = [{ assessmentGoalId: 'Q', goalIds: ['A'], reference: '../r.md',
-    taskRevision: `sha256:${'0'.repeat(64)}`, rubricRevision: `sha256:${'0'.repeat(64)}` }]
-})
+const coverageReview = { goalIds: ['A'], reference: 'review.md', taskRevision: `sha256:${'0'.repeat(64)}`, rubricRevision: `sha256:${'0'.repeat(64)}` }
+assert(goalSchema(reviewedGoal(coverageReview)), JSON.stringify(goalSchema.errors))
+assert(!goalSchema(reviewedGoal({ ...coverageReview, approvedBy: 'someone' })), 'A coverage review has exactly its four fields')
+assert(!goalSchema(reviewedGoal({ ...coverageReview, goalIds: [] })), 'A coverage review names at least one goal')
+assert(!goalSchema(reviewedGoal({ ...coverageReview, taskRevision: 'latest' })), 'A coverage review binds a sha256 task revision')
 
 // Goal kinds mirror the backend completion semantics, including legacy encodings.
 const kindOf = (goal: Omit<UnitGraphGoal, 'id'>) => new UnitGraph([{ landscapeId: 'L', goals: [{ id: 'g', ...goal }] }]).kinds('L:g')
@@ -181,55 +164,52 @@ assert.deepEqual(assessmentReviewRevisions(pilotGoal),
 // CLI contract: 0 valid, 1 findings, 2 malformed input.
 const work = mkdtempSync(join(tmpdir(), 'learning-unit-cli-'))
 try {
-  const canonical = join(work, 'canonical'), units = join(work, 'units')
-  mkdirSync(canonical); mkdirSync(units)
-  writeFileSync(join(canonical, 'L.json'), JSON.stringify({ landscapeId: 'L', goals: [
-    { id: 'Q', nodeKind: 'exam', requires: ['A'] }, { id: 'A' }, { id: 'C' },
-  ] }))
+  const canonical = join(work, 'canonical')
+  mkdirSync(canonical)
   const run = (...args: string[]) => spawnSync(process.execPath,
     [resolve(root, 'app/node_modules/tsx/dist/cli.mjs'), resolve(root, 'app/scripts/validateLearningUnits.ts'), ...args],
     { cwd: resolve(root, 'app'), encoding: 'utf8' })
-  const write = (mutate: (catalog: LearningUnitCatalog) => void) => {
-    const catalog = validCatalog()
-    catalog.units[0].ownGoalIds = ['Q', 'A']
-    mutate(catalog)
-    writeFileSync(join(units, 'c.json'), JSON.stringify(catalog))
-  }
-  const local = ['--canonical', canonical, '--units', units]
+  const unit = { id: 'u', kind: 'learningUnit', label: 'Einheit', labelEn: 'Unit', promise: 'Ich kann es.', promiseEn: 'I can do it.', revision: '2026-11-12-v1' }
+  const write = (landscape: Record<string, unknown>) => writeFileSync(join(canonical, 'L.json'), JSON.stringify({
+    landscapeId: 'L', goals: [{ id: 'Q', nodeKind: 'exam', requires: ['A'] }, { id: 'A' }, { id: 'C' }], ...landscape,
+  }))
+  const own = (...goalIds: string[]) => goalIds.map((goalId) => ({ goalId, unitId: 'u', relation: 'own' }))
+  const local = ['--canonical', canonical]
 
+  write({})
   let outcome = run(...local)
   assert.equal(outcome.status, 0, outcome.stderr)
-  assert.match(outcome.stdout, /passed: 0 catalog\(s\), 0 unit\(s\)/u, 'No authored unit is a valid state')
+  assert.match(outcome.stdout, /passed: 1 landscape\(s\), 0 unit\(s\), 0 finding\(s\)/u, 'No authored unit is a valid state')
 
-  write(() => {})
+  write({ programUnits: [unit], goalPlacements: own('Q', 'A') })
   outcome = run(...local)
   assert.equal(outcome.status, 0, outcome.stderr)
-  assert.match(outcome.stdout, /c \(L, partial\): 2\/3 atomic goals owned; without unit: 1 ordinary/u)
+  assert.match(outcome.stdout, /L \(partial\): 2\/3 atomic goals owned; without unit: 1 ordinary/u)
   assert.match(outcome.stdout, /u: valid; own 1 ordinary, 1 assessment, 0 memory, 0 orientation; total scope 2; reviewed coverage missing for 1 goal/u)
 
-  write((catalog) => { catalog.units[0].ownGoalIds.push('C') })
+  write({ programUnits: [unit], goalPlacements: own('Q', 'A', 'C') })
   outcome = run(...local)
   assert.equal(outcome.status, 1)
-  assert.match(outcome.stderr, /LU-R1 c\/u: Goal C lies on no prerequisite path/u)
+  assert.match(outcome.stderr, /LU-R1 L\/u: Goal C lies on no prerequisite path/u)
   assert.match(outcome.stdout, /u: INVALID/u)
 
-  write((catalog) => { catalog.completeness = 'complete' })
+  write({ programUnits: [unit], goalPlacements: own('Q', 'A'), learningUnitCoverage: 'complete' })
   outcome = run(...local)
   assert.equal(outcome.status, 1)
-  assert.match(outcome.stderr, /LU-R4-UNOWNED c: Goal C has no owning unit/u)
+  assert.match(outcome.stderr, /LU-R4-UNOWNED L: Goal C has no owning unit/u)
 
-  write((catalog) => { loose(catalog.units[0]).waivableGoalIds = ['A'] })
+  write({ programUnits: [{ ...unit, waivableGoalIds: ['A'] }], goalPlacements: own('Q', 'A') })
   outcome = run(...local)
-  assert.equal(outcome.status, 2)
-  assert.match(outcome.stderr, /invalid-input: .*violates contracts\/drafts\/learning-unit\/v1\/catalog\.schema\.json/u)
+  assert.equal(outcome.status, 1)
+  assert.match(outcome.stderr, /LU-UNIT L\/u: Learning unit u: field waivableGoalIds is not part of the contract/u)
 
-  writeFileSync(join(units, 'c.json'), '{ not json')
+  writeFileSync(join(canonical, 'L.json'), '{ not json')
   assert.equal(run(...local).status, 2)
   assert.equal(run('--unknown').status, 2)
-  assert.equal(run('--units').status, 2)
-  assert.equal(run('--canonical', join(work, 'missing'), '--units', units).status, 2)
+  assert.equal(run('--canonical').status, 2)
+  assert.equal(run('--canonical', join(work, 'missing')).status, 2)
 
-  // The repository's own catalogs are valid at this commit.
+  // The repository's own landscapes are valid at this commit.
   outcome = run()
   assert.equal(outcome.status, 0, `${outcome.stdout}\n${outcome.stderr}`)
 } finally {
