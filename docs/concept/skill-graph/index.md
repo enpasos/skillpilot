@@ -13,7 +13,7 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
 - [Context, Views, Scope & Goal Types (§§6–10)](context-and-views.en.md):
   canonical layer vs. educational views, personal curriculum scope $L=\mathrm{Closure}(S)$, understanding/memorisation/assessment goals, time context, and evidence boundaries.
 - [Learning Units (§§11.1–11.4)](learning-units.md):
-  recursively composed educational units, motivational introduction, required outcomes, and completion derived from child units and own obligations.
+  recursively composed educational units, motivational introduction, required outcomes, and completion derived from child units and own obligations; how a unit is represented in the skill landscape (placement layer, curriculum-package contract 1.2) is in [§11.2](learning-units.md#sec-unit-representation).
 - [Learning-Unit Progression (§11.5)](learning-unit-progression.md):
   explicit course dependencies, whole-unit ordering, and the separate choice of access policy.
 - [Optional Acquisition & Time Planning (§12)](planning-and-budget.en.md):
@@ -21,7 +21,7 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
 - [Assessment-Gated Completion & Implicit Mastery (§13)](assessment-gated-completion.md):
   direct assessment access, transitive minimality, and globally effective recognition through independent application in valid local learning units (implementation pending).
   [Decision of 4 November 2026 (DE)](completion-semantics-clarification-2026-11-04.md).
-  [Implementation Plan: Learning Units and Integrated Map (DE)](../../dev/learning-units-implementation-plan.md).
+  Working plan: [Learning Units for Mathematics and Physics (DE)](../../dev/mathematics-physics-learning-units-plan.md); historical: [plan of 5 November 2026 (DE)](../../dev/learning-units-implementation-plan.md).
 - [Compendium Appendices (B–F)](compendium-appendix.en.md):
   current implementation status, verification strategy, glossary/symbols, sources, and build reference; for Appendix A see [Rule & Milestone Matrix](../../qa-ci/graph-definition-rule-milestone-matrix.en.md).
 
@@ -43,9 +43,10 @@ SkillPilot represents learning goals and their prerequisites as a shared skill g
 - [Teacher Goal Book and Local Time Planning (§9)](teacher-goal-book-time-planning.en.md)
 - [Canonical Gymnasium Rollout Policy (§10)](canonical-gymnasium-rollout.md)
 - [MEM/FWU Roundtrip Plan (§11)](mem-fwu-roundtrip-plan.md)
-- [Dual Curriculum Package Releases (§12)](dual-curriculum-package-releases.en.md)
+- [Dual Curriculum Package Releases (§12)](dual-curriculum-package-releases.en.md):
+  JSON runtime and ontology packages, and the runtime contract versions 1.0, 1.1 (`assessmentCompletionV1`), and 1.2 (`learningUnitsV1`, learning units).
 - [Learning-Unit Design Criteria and Examples (§13)](learning-unit-design-and-examples.md):
-  the purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026 applied to unit design.
+  the purpose of a unit, criteria for meaningful boundaries and assessments, two worked candidates, and the unit validity rules R1–R5 of 11 November 2026 applied to unit design; the representation of a unit is in [Graph Definition §11.2](learning-units.md#sec-unit-representation).
 
 See the [Concept Documentation Index](../index.md) for didactic concepts and runtime workflows, and the [Glossary](../glossary.md) for shared terminology.
 
@@ -80,7 +81,7 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
 - [Kontext, Sichten, Scope & Zielarten (§§6–10)](context-and-views.de.md):
   kanonische Schicht vs. Bildungssichten, persönlicher Curriculum-Scope $L=\mathrm{Closure}(S)$, Verständnis-/Memorier-/Prüfungsziele, Zeitkontext und Nachweisgrenzen.
 - [Lerneinheiten (§§11.1–11.4)](learning-units.de.md):
-  rekursiv aufgebaute Lerneinheiten, motivierende Hinführung, geforderte Lernergebnisse und aus Untereinheiten sowie eigenen Nachweisen abgeleiteter Abschluss.
+  rekursiv aufgebaute Lerneinheiten, motivierende Hinführung, geforderte Lernergebnisse und aus Untereinheiten sowie eigenen Nachweisen abgeleiteter Abschluss; wie eine Einheit in der Skill-Landschaft dargestellt wird (Platzierungsschicht, Curriculum-Paketvertrag 1.2), steht in [§11.2](learning-units.de.md#sec-unit-representation).
 - [Einheitsfolge & Zugang (§11.5)](learning-unit-progression.de.md):
   explizite Kursabhängigkeiten, Blockreihenfolge ganzer Einheiten und die getrennte Richtlinienfrage zur Zugangssteuerung.
 - [Optionale Erwerbs- & Zeitplanung (§12)](planning-and-budget.de.md):
@@ -88,7 +89,7 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
 - [Prüfungsgebundener Abschluss & implizite Mastery (§13)](assessment-gated-completion.de.md):
   direkter Prüfungszugang, transitive Minimalität und global wirksame Anerkennung durch selbstständige Anwendung in gültigen lokalen Lerneinheiten (Umsetzung offen).
   [Entscheidung vom 4. November 2026](completion-semantics-clarification-2026-11-04.md).
-  [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](../../dev/learning-units-implementation-plan.md).
+  Arbeitsplan: [Lerneinheiten für Mathematik und Physik](../../dev/mathematics-physics-learning-units-plan.md); historisch: [Plan vom 5. November 2026](../../dev/learning-units-implementation-plan.md).
 - [Kompendiums-Anhänge (B–F)](compendium-appendix.de.md):
   aktueller Umsetzungsstand, Prüfstrategie, Glossar/Symbole, Quellen und Build-Referenz; zu Anhang A siehe die [Regel- & Meilenstein-Matrix](../../qa-ci/graph-definition-rule-milestone-matrix.md).
 
@@ -110,9 +111,10 @@ SkillPilot stellt Lernziele und ihre Voraussetzungen als gemeinsamen Skill-Graph
 - [Lernzielbuch und lokale Zeitplanung für Lehrkräfte (§9)](teacher-goal-book-time-planning.md)
 - [Kanonische Gymnasium-Rollout-Richtlinie (§10)](canonical-gymnasium-rollout.de.md)
 - [MEM/FWU-Roundtrip-Plan (§11)](mem-fwu-roundtrip-plan.de.md)
-- [Duale Curriculum-Pakete (§12)](dual-curriculum-package-releases.md)
+- [Duale Curriculum-Pakete (§12)](dual-curriculum-package-releases.md):
+  JSON-Runtime- und Ontologiepakete sowie die Laufzeitvertragsversionen 1.0, 1.1 (`assessmentCompletionV1`) und 1.2 (`learningUnitsV1`, Lerneinheiten).
 - [Entwurfskriterien und Beispiele für Lerneinheiten (§13)](learning-unit-design-and-examples.de.md):
-  didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026.
+  didaktischer Zweck einer Lerneinheit, Kriterien für sinnvolle Grenzen und Prüfungen, zwei durchgearbeitete Kandidaten sowie die Gültigkeitsregeln R1–R5 vom 11. November 2026; die Darstellung einer Einheit steht in [Graph-Definition §11.2](learning-units.de.md#sec-unit-representation).
 
 Siehe die [Konzept-Übersicht](../index.md) für didaktische Konzepte und Laufzeit-Workflows sowie das [Glossar](../glossary.de.md) für die gemeinsame Terminologie.
 

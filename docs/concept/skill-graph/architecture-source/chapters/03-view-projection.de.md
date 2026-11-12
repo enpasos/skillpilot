@@ -31,7 +31,7 @@ Gemäß den Product-Owner-Entscheidungen vom **9. November 2026**, **10. Novembe
 
 ### Lerneinheiten in projizierten Sichten {#sec:sga-vp-units anchors="learning-units-in-projected-views,curriculum-levels-in-projected-views"}
 
-Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert (Entscheidung des Product Owners vom 12. November 2026): Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die ihn als Kind verlangt ([Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` prüft diese Deklarationen. Die Programmbaumprojektion hängt Ziele nur über `primary`-Platzierungen ein, eine `own`-Platzierung ändert also keinen sichtbaren Baum.
+Lerneinheiten werden in der Platzierungsschicht ihrer Skill-Landschaft deklariert (Entscheidung des Product Owners vom 12. November 2026): Ein `programUnits`-Eintrag der Art `learningUnit` besitzt atomare Ziele über `goalPlacements` der Relation `own` und nennt über `parentUnitId` die Einheit, die ihn als Kind verlangt ([Graph-Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation); [Feldreferenz](repo:docs/dev/landscape-json-field-reference.md)); `validate:learning-units` prüft diese Deklarationen. Die Programmbaumprojektion hängt Ziele nur über `primary`-Platzierungen ein, eine `own`-Platzierung ändert also keinen sichtbaren Baum.
 
 Projizierte [Lerneinheiten](repo:docs/concept/skill-graph/learning-units.md) (Zielkonzept; Laufzeitcompiler offen) binden an die geprüfte Composition View oder Programmprojektion:
 

@@ -50,7 +50,7 @@ Under the Product Owner decisions of **9 November 2026**, **10 November 2026**, 
 <a id="sec-sga-vp-units"></a>
 ### 3.3. Learning Units in Projected Views
 
-Learning units are declared in the placement layer of their skill landscape (Product Owner decision of 12 November 2026): a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([field reference](../../dev/landscape-json-field-reference.md)); `validate:learning-units` checks these declarations. The program-tree projection attaches goals only through `primary` placements, so an `own` placement changes no visible tree.
+Learning units are declared in the placement layer of their skill landscape (Product Owner decision of 12 November 2026): a `programUnits` entry of kind `learningUnit` owns atomic goals through `goalPlacements` of relation `own` and names the unit that requires it as a child through `parentUnitId` ([Graph Definition §11.2](learning-units.md#sec-unit-representation); [field reference](../../dev/landscape-json-field-reference.md)); `validate:learning-units` checks these declarations. The program-tree projection attaches goals only through `primary` placements, so an `own` placement changes no visible tree.
 
 Projected [Learning Units](learning-units.md) (target concept; runtime compiler pending) bind to the reviewed composition view or program projection:
 

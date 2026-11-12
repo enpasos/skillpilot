@@ -9,7 +9,7 @@ Rather than mixing subject competencies, school-year containers, and process tax
 | Layer | JSON / Artifact Carrier | Role and Invariants |
 | --- | --- | --- |
 | **Goal layer** | `goals[]`, `contains`, `requires` | Durable assessable atomic goals and subject-matter clusters; owns mastery, frontier eligibility, and canonical IDs. |
-| **Program layer** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Contextual structural units such as year, semester, module, phase, track, or exam, and learning units (`kind: "learningUnit"`); never mastered directly. |
+| **Program layer** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Contextual structural units such as year, semester, module, phase, track, or exam, and learning units (`kind: "learningUnit"`, fields in [Graph Definition §11.2](repo:docs/concept/skill-graph/learning-units.md#sec-unit-representation)); never mastered directly. |
 | **Placement layer** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Attaches unchanged canonical goals (`primary`, `secondary`, `assessed`) to program units under explicit scope contexts; `own` assigns an atomic goal, without context, to the learning unit that owns it directly. |
 | **Competency-axis layer** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonal capability taxonomies (for example `K1`–`K6` process competencies); never main content parents unless assessable. |
 | **Composition-view layer** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-specific learner-facing upper trees referencing reviewed canonical subtrees without duplicating goal payloads. |

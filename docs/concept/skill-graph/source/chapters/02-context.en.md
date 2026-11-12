@@ -26,7 +26,7 @@ Legacy trees may still contain year and phase nodes as a compatibility scaffold.
 
 A *projection* derives a visible tree or another navigable view from the curriculum data. It is evaluated for a *resolved context* in which dimensions such as jurisdiction, school form, stage, duration model, and course profile are fixed.
 
-In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal. Relation `own` records without context that a learning unit directly owns an atomic goal (Section~@ref{sec:unit-own-children}); it is not a program anchor.
+In the target model, `programUnits` form an explicit tree or forest of program units, and `goalPlacements` attach goals to those units. A `primary` placement supplies the default program anchor; `secondary` indicates additional structural relevance, and `assessed` marks an assessment reference. Secondary and assessment placements never create extra visible copies of the same goal. Relation `own` records without context that a learning unit directly owns an atomic goal (Section~@ref{sec:unit-representation}); it is not a program anchor.
 
 Within a resolved context, exactly one matching primary placement yields a unique anchor. When no primary placement matches, the view must not invent a parent node. Multiple matching primary placements require an explicitly reviewed resolution contract; otherwise the projection is ambiguous. Context fields never alter the goal ID.
 
