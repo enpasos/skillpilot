@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import shutil
 import stat
 import subprocess
 import tempfile
@@ -16,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LIBRARY = ROOT / "scripts" / "lib" / "deploy_database_backup.sh"
 BACKUP_SCRIPT = ROOT / "scripts" / "backup_db.sh"
 SECRET = "s3cret-test-value"
+BASH = shutil.which("bash") or "/bin/bash"
 
 FAKE_PG_DUMP = r"""#!/bin/bash
 printf '%s\n' "$*" >> "${FAKE_PG_DUMP_LOG}"
@@ -56,6 +58,10 @@ class DeployDatabaseBackupTest(unittest.TestCase):
         fake = self.bin / "pg_dump"
         fake.write_text(FAKE_PG_DUMP, encoding="utf-8")
         fake.chmod(0o755)
+        # A machine may have a real pg_dump on its PATH; the "missing" cases
+        # therefore run with a directory that contains no command at all.
+        self.no_commands = self.home / "no-commands"
+        self.no_commands.mkdir()
         self.log = self.home / "pg_dump.log"
         self.environment_file = self.home / "db-backup.env"
         self.backup_directory = self.home / "db-backups"
@@ -72,13 +78,13 @@ class DeployDatabaseBackupTest(unittest.TestCase):
                   path_with_pg_dump: bool = True, cwd: Path | None = None) -> subprocess.CompletedProcess[str]:
         environment = {
             "HOME": str(self.home),
-            "PATH": (f"{self.bin}:" if path_with_pg_dump else "") + "/usr/bin:/bin",
+            "PATH": f"{self.bin}:/usr/bin:/bin" if path_with_pg_dump else str(self.no_commands),
             "FAKE_PG_DUMP_LOG": str(self.log),
             "FAKE_PG_DUMP_MODE": mode,
             "LANG": "C.UTF-8",
         }
         return subprocess.run(
-            ["bash", "-c", f'set -e; source "{LIBRARY}"; {command}', "deploy-test", *arguments],
+            [BASH, "-c", f'set -e; source "{LIBRARY}"; {command}', "deploy-test", *arguments],
             capture_output=True, text=True, env=environment, cwd=cwd or self.home)
 
     def prerequisites(self, skip: str = "0", **options) -> subprocess.CompletedProcess[str]:
@@ -223,7 +229,7 @@ class DeployDatabaseBackupTest(unittest.TestCase):
         foreign.write_text("keep", encoding="utf-8")
         os.utime(foreign, (long_ago, long_ago))
         result = subprocess.run(
-            ["bash", str(BACKUP_SCRIPT)], capture_output=True, text=True, cwd=work,
+            [BASH, str(BACKUP_SCRIPT)], capture_output=True, text=True, cwd=work,
             env={"PATH": f"{self.bin}:/usr/bin:/bin", "POSTGRES_PASSWORD": SECRET,
                  "FAKE_PG_DUMP_LOG": str(self.log), "FAKE_PG_DUMP_MODE": "ok", "LANG": "C.UTF-8"})
         self.assertEqual(result.returncode, 0, result.stderr)
