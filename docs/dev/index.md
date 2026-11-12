@@ -59,6 +59,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 - [Mathematik: Verbraucher transitiv reduzierter Voraussetzungen, 9. November 2026](canonical-math-transitive-prerequisite-consumer-repair-2026-11-09.md)
 - [Mathematik: Assessment-Reader und bestehende Reviewbindungen, 9. November 2026](canonical-math-assessment-reader-bindings-review-2026-11-09.md)
 - [Mathematikpaket: Pflege des Standalone-Planchecks, 9. November 2026](canonical-math-standalone-plan-pin-review-2026-11-09.md)
+- [Reduktionsnachweis eingefroren: Wiederverwendung der Reviews je Ziel, 12. November 2026](prerequisite-reduction-proof-freeze-2026-11-12.md)
 - [Mathematik: erste Lerneinheit und Bindungspflege, 12. November 2026](canonical-math-learning-unit-pilot-binding-review-2026-11-12.md)
 - [Voraussetzungennachweise: wiederverwendbare Batch-Fortsetzung, 9. November 2026](prerequisite-reduction-batches-v6-support-2026-11-09.md)
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)

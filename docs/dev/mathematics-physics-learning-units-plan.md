@@ -40,6 +40,16 @@ Der Product Owner hat am 12. November 2026 entschieden:
   ein 1.2-Paket baut. Eine Weitergabeprüfung muss alles sehen, was ausgeliefert
   wird, deshalb teilen sich die beiden Verträge keinen Ledger.
 
+- **Reduktionsnachweis eingefroren:** Eine neue Prüfung ist eine Zieländerung
+  in einem kanonischen Fach. Bis zum 12. November band der Nachweis der
+  Voraussetzungsreduktion jedes Fachdokument als Ganzes, sodass jede
+  Zieländerung die Wiederverwendung der Reviews in allen Fächern aufhob und
+  geschützte Fächer von M7 auf M6 fielen. Der Nachweis ist deshalb eingefroren
+  (Registervertrag V9): Er hält je Ziel den geprüften Stand fest; ein
+  unverändertes Ziel behält seine Reviews, ein geändertes Ziel braucht ein
+  neues Review, alle anderen Inhaltsänderungen sind frei. Einzelheiten:
+  [Einfrieren des Reduktionsnachweises](prerequisite-reduction-proof-freeze-2026-11-12.md).
+
 Unverändert gilt die Anerkennungsregel, die der Product Owner am 11. November
 bestätigt hat: Ein eigenes gewöhnliches Ziel einer Einheit ist anerkannt, sobald
 keine offene eigene Prüfung und kein offenes eigenes Lernkartenziel dieser
@@ -243,7 +253,10 @@ Daraus folgt für Stufe 2:
 1. **Stärkere Prüfung für den Pilot** mit neuer Prüfungs-ID nach den drei
    Änderungen des Reviews. Bestandene Versuche der alten ID werden nicht
    aufgewertet. Das ist eine Änderung der kanonischen Mathematik mit eigener
-   Quellen-, Review- und Hashbindung und ein eigener PR.
+   Quellen-, Review- und Hashbindung und ein eigener PR. Voraussetzung ist der
+   eingefrorene Reduktionsnachweis (Abschnitt 1) samt dem Folgeschritt, der
+   die Wiederholungen der echten Nachweishistorie aus der laufenden CI nimmt;
+   vorher darf kein kanonisches Ziel geändert werden.
 2. **Grenze des Pilots prüfen:** Ob das Ziel eine eigene Einheit bildet oder zu
    einer Einheit über den ganzen Cluster „Skalarprodukt, Orthogonalität und
    metrische Grundlagen im Raum“ gehört, entscheidet der Entwurf dieses Blocks.
@@ -346,6 +359,8 @@ belegt den Bau nur lokal in `./run_ci.sh package`.
 
 ## 9. Nächster Schritt
 
+Zuerst den eingefrorenen Reduktionsnachweis abschließen: nach dem Einfrieren die
+Wiederholungen der echten Nachweishistorie aus der laufenden CI nehmen. Danach
 Stufe 2 fortsetzen: die stärkere Prüfung für den Pilot entwerfen und unabhängig
 gegenlesen lassen, parallel die Kandidaten M01 und P13 nach dem Entwurfsbogen
 ausarbeiten. Stufe 3 beginnt, sobald eine Einheit einen vollständigen

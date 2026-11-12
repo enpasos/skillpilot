@@ -122,7 +122,11 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   traceable to the official source; never invent goals, edges or source claims.
 - **Maturity floors**: after curriculum/description/route/view changes,
   regenerate curriculum-quality status and ensure no protected maturity (e.g.
-  M6/M7) drops. Never turn a review queue green by bulk decisions.
+  M6/M7) drops. Never turn a review queue green by bulk decisions. The frozen
+  prerequisite-reduction registry (contract V9, `AGENTS.md` §2.2) keeps the
+  reviews of 1,361 goals valid while each goal is unchanged; changing one of
+  them needs a new review of that goal, other changes do not touch it. The
+  registry and its parent are immutable evidence.
 - **Privacy**: the permanent `skillpilotId` never reaches an AI provider. In
   every provider lane OAuth only authorizes the connection; the learner is
   resolved through that lane's own `learningSessionId` (created by "Lernen
