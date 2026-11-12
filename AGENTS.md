@@ -293,6 +293,13 @@ We use exactly **two connection types**:
    - Product Owner decision of **12 November 2026** supersedes the earlier prerequisite-migration order and preservation obligation: acceptance depends on comprehensive deterministic validation of the current target state within the milestone examination. No comparison with a historical prerequisite closure, scope or frontier is required for `G17` or `GD-C17`.
    - Before any `M1`–`M7` pass, check the complete declared canonical subject inventory, including necessary foreign prerequisites and inheriting ancestors, for resolved identities/references, acyclicity, atomic `requires` endpoints, consistent explicit types and transitive minimality. A violation or incomplete check caps the subject and its scopes at `M0`; an incomplete catalog aborts the status run. Current `CQR-001` coverage is the canonical Gymnasium catalog, not every curriculum in the repository.
    - Historical reduction proofs remain evidence for the review bindings that actually reuse them; they neither define the current validation inventory nor replace current-state checks. A missing or invalid proof disables that reuse and leaves strict current-input QA checks in force; it never grants stale reviews. Existing source fidelity, review freshness and learner-result contracts remain in force. Graph edits never automatically write learner results.
+   - A separately bound historical frame may reconstruct the exact certified
+     catalog for the unchanged proof verifier. Historical comparisons then apply
+     only to unchanged subjects with checked dependency closure and unchanged
+     compiled applicability under the same captured external inputs. Changed or
+     dependent subjects use current inputs only. The bounded capability and its
+     receipt must identify this limit; reconstruction never validates the changed
+     graph, changes old proof bytes or supplies new review decisions.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -1039,6 +1046,18 @@ Interpretation:
 * A deck should stay narrow and should not become a second curriculum hidden inside flashcards.
 * Passing `CQR-302` means the configured scope has current semantic goal-level decisions, current card-level origin traces, configured learner-facing visibility for required memory nodes, and no unresolved/removal debt in active decks. It upgrades a curriculum from core-ready `M5` to memory-layer-ready `M6`.
 * Canonical description, assessment, route, mapping, or composition-view work is not complete until the curriculum-quality status has been regenerated and the protected maturity floors have been checked. A previously reached maturity such as `M6` must not silently fall to a lower level; the floor gate reports the concrete non-passing CQR rules and fails closed. Lowering a protected floor requires an explicit product-owner decision with the fachliche reason recorded in the floor policy.
+* The CQR gate pins every canonical Gymnasium catalog entry and every registered
+  QA scope. It checks the catalog independently, requires each applicable rule
+  result exactly once with `pass`, and rejects unpinned maturity gains as well
+  as losses. The Git base policy protects pins and existing endpoint-visibility
+  coverage against removal or reduction. `CQR-001`, `CQR-002` and `CQR-501`
+  apply even at `M0`; the complete-catalog G17 checker also fails CI directly.
+  Endpoint visibility (`CQR-104`) is explicitly pinned for eight of twelve
+  scopes. The four upper-secondary Mathematics, Physics, Chemistry and Biology
+  gaps remain open; an unconfigured scope is not a visibility pass. Direct
+  route coverage (`CQR-102`) applies to all twelve scopes, while the stronger
+  semantic route rule (`GVR-012`) remains Mathematics-only. These limits must
+  remain visible in the rule register; no review or learner result is inferred.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible

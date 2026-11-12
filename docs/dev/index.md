@@ -65,6 +65,7 @@ Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von S
 </div>
 
 - [Transitive Minimalität: Lieferplan nach main](transitive-minimality-main-delivery-plan-2026-11-07.md)
+- [CQR and GVR gates: work plan to HARD](cqr-gvr-hard-gate-plan-2026-11-12.md)
   Aktueller Auftrag: G17 in der Standard-Meilensteinprüfung und Wiederherstellung der ursprünglichen zehn M6-/M7-Fachstände in kleinen lieferbaren PRs.
 - [Mathematik-Dauerlayout: Pflege der Inputbindung, 8. November 2026](canonical-math-duration-input-binding-review-2026-11-08.md)
 - [Mathematikpaket: Pflege der Weitergabebindung, 8. November 2026](canonical-math-package-redistribution-input-binding-review-2026-11-08.md)

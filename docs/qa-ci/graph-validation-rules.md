@@ -15,36 +15,37 @@
 ## 3. Graph, Applicability, and Composition-View Validation Rules
 
 !!! info "Authoritative CI source and November 2026 validation boundaries"
-    Single source of truth for algorithmic graph and view validation in `.github/workflows/ci.yml` (`graph-validation` & `backend-ci`). Transitive minimality ([Graph Definition §3.1](../concept/skill-graph/graph-definition.md)) together with complete local assessment routes, protected explicit exam/card targets, and versioned learning-unit contracts (unit validity rules R1–R5 of 11 November 2026; [Assessment-Gated Completion](../concept/skill-graph/assessment-gated-completion.md)) are binding target requirements for forthcoming validator adaptations. Atomic normal form and transitive minimality (`G17`) are not checked by `validate:graph`; since 11 November 2026, `CQR-001` checks them for the canonical Gymnasium catalog ([2](curriculum-quality-maturity-and-routes.en.md#sec-qa-maturity-scopes-cqr)). Existing CI passes never substitute for content/rubric review verifying independent application of recognized competences.
+    Single source of truth for algorithmic graph and view validation in `.github/workflows/ci.yml` (`graph-validation` & `backend-ci`). Transitive minimality ([Graph Definition §3.1](../concept/skill-graph/graph-definition.md)) together with complete local assessment routes, protected explicit exam/card targets, and versioned learning-unit contracts (unit validity rules R1–R5 of 11 November 2026; [Assessment-Gated Completion](../concept/skill-graph/assessment-gated-completion.md)) are binding target requirements for forthcoming validator adaptations. Atomic normal form and transitive minimality (`G17`) have a direct CI gate, `npm run check:transitive-minimality`, across all 21 canonical Gymnasium catalog roots. It checks the current graph, including necessary foreign prerequisites and inheriting ancestors, without historical closure-preservation evidence. `CQR-001` independently applies this current-state contract before any M1–M7 pass ([2](curriculum-quality-maturity-and-routes.en.md#sec-qa-maturity-scopes-cqr)). Existing CI passes never substitute for content/rubric review verifying independent application of recognized competences.
 
 <a id="sec-qa-gvr-entrypoints"></a>
 ### 3.1. CI Entrypoints, Enforcement Profiles, and Core DAG Checks
 
-- **Raw graph validator:** `app/scripts/validateGraph.ts` (`npm run validate:graph`) — profiles: `default` (structural and `GVR-*` rules fail CI as `error`) vs. temporary migration mode `VALIDATE_GRAPH_STRICT_RULES=0` (`legacy-warn`, under which **`GVR-012`, `GVR-014`, `GVR-015`, and `GVR-016` remain unconditional `error`s**).
-- **Filter-projection validator:** `app/scripts/validateViewFilters.ts` (`npm run validate:view-filters`) covering the 17 reviewed canonical Gymnasium landscapes (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Wirtschaft`, `Overview`).
+- **Raw graph validator:** `app/scripts/validateGraph.ts` (`npm run validate:graph`) — all structural and active `GVR-*` violations fail with `error`; there is no warning-mode environment override.
+- **Pinned maturity obligations:** `npm run check:curriculum-maturity-floors` checks subject and scope obligations directly against `--base-ref` (PR base SHA, push-before SHA, local `origin/main`), independently of status-file staleness. It and `check:transitive-minimality` run in the complete `graph-validation` job and local curriculum suite.
+- **Filter-projection validator:** `app/scripts/validateViewFilters.ts` (`npm run validate:view-filters`) covering the 21 reviewed canonical Gymnasium landscapes (`Mathematik`, `Physik`, `Chemie`, `Biologie`, `Informatik`, `Deutsch`, `Englisch`, `Französisch`, `Griechisch`, `Chinesisch`, `Geschichte`, `Politik und Wirtschaft`, `Musik`, `Latein`, `Spanisch`, `Italienisch`, `Russisch`, `Polnisch`, `Tschechisch`, `Wirtschaft`, `Overview`).
 - **Duration-model & composition-view validators:** `app/scripts/reportHeMathDurationProjection.ts --check` (`npm run check:he-math-duration-projection` for Hesse Mathematics Sek-I `G8`/`G9`) and `app/scripts/validateCompositionViews.ts` (`npm run validate:composition-views` across all `.view.json` files under `curricula/DE/Gymnasium/composition-views/`).
 - **Archive & legacy-handoff gates:** `scripts/validate_hessen_upper_secondary_{archive_paths,legacy_refs}.py`, `scripts/validate_hessen_lower_secondary_{archive_paths,legacy_refs}.py`, and `scripts/validate_bavaria_gymnasium_{archive_paths,legacy_refs}.py` enforcing the explicit `*-retirement-registry.json` allowlists under `curricula/DE/Gymnasium/provenance/` and `retained-asset-registry.json`.
 
 **Always-active core checks (`error`):** JSON parsing, goal-ID and logical `shortKey` uniqueness, referential integrity and self-reference guards on `requires`/`contains`, allowed `phase`/Leitideen/competency tag domains, acyclicity of direct `requires`, `contains`, and effective `requires`, `curricula/curriculum_manifest.json` sync, and project invariants (such as cross-subject Physics-to-Mathematics resolution).
 
+The validator also enforces the shared `CQR-102` direct atomic route obligation across every declared route profile. This reachability check does not claim the stronger Mathematics-specific semantic guarantees of `GVR-012`.
+
 <a id="sec-qa-gvr-catalog"></a>
 ### 3.2. Emitted Graph Validation Rules (`GVR-001` through `GVR-016`)
+
+The retired identifiers `GVR-004`, `GVR-005`, `GVR-006`, and `GVR-013` remain reserved for historical evidence; the validator no longer emits them. Current profile-based orientation rules remain active. General atomic endpoint validity is checked by the complete-catalog G17 gate.
 
 | Rule | Default / Scope | Verified structural invariant |
 | --- | --- | --- |
 | **`GVR-001`** | `error` · local | A goal must not directly require any of its `contains` ancestors. |
 | **`GVR-002`** | `error` · local | Phase compatibility lint: effective prerequisites do not point to later phases (`E`, `Q1..Q4`, `Abitur`, `S*`, `J*`). |
 | **`GVR-003`** | `error` · local | A goal must not directly require its immediate `contains` parent (primary deadlock guard). |
-| **`GVR-004`** | `error` · `DE_HES_S_GYM_2_*` | First atomic node is a motivation anchor (`Warum`/`Why`; excluding `OVERVIEW`). |
-| **`GVR-005`** | `error` · `DE_HES_S_GYM_2_*` | Every atomic node reaches the motivation anchor transitively via effective `requires` ($R_{\mathrm{effective}}^+$). |
-| **`GVR-006`** | `error` · `DE_HES_S_GYM_2_*` | A goal must not directly require any of its direct `contains` children (including `OVERVIEW`). |
 | **`GVR-007`** | `error` · `mit-ocw-*` | MIT OCW module atoms (`module:*`) include `concept` + `practice` + `assessment` links in `resourceLinks` targeting `https://ocw.mit.edu/courses/...`. |
 | **`GVR-008`** | `error` · local | Canonical top-level `resourceLinks` is the sole permitted goal-level helper-link field. |
 | **`GVR-009`** | `error` · local | Optional `type` metadata matches structural leaf/non-leaf classification (`atomic` iff `contains` is empty). |
 | **`GVR-010`** | `error` · `landscapeId` | `shortKey` is unique within the logical `landscapeId` (locale file pairs allowed only on identical goal UUIDs). |
 | **`GVR-011`** | `error` · profile scopes | Selected `curricularAtomic` goals reach their stage-specific motivation anchor via $R_{\mathrm{effective}}^+$. |
 | **`GVR-012`** | **unconditional `error`** · Math DE Sek I & II | **Hard full-route invariant:** Every `curricularAtomic` goal lies stage-locally on a direct atomic `requires` path from its `orientation` anchor to an atomic `practiceAssessment` terminal (Sek I: individual tasks under `Prüfungen Jahrgangsstufe 5..10`; Sek II: atomic tasks under `Übungen E-Phase`, `Q1..Q4`, `Prozesskompetenzen`; complete `semanticKind` ledger, zero cluster/structure shortcuts). |
-| **`GVR-013`** | `error` · Math DE | Zero selected non-memory atomic goals carry direct local `requires` edges targeting cluster nodes. |
 | **`GVR-014`** | **unconditional `error`** · all | Motivation/orientation nodes are pure, prerequisite-free atomic entry anchors with zero `examData`, `examples`, memory/SRS, or assessment tags. |
 | **`GVR-015`** | **unconditional `error`** · Math DE Sek I & II | Reviewed bilingual orientation outlooks (2–4 paths with `curricularArea` roots plus atomic `curricularAtomic` `entryGoalIds` and `milestoneGoalIds`, direct atomic link to the anchor, zero internal authoring terms like `Source-Extraction`, and fail-closed runtime intersection with `targetGoalIds`). |
 | **`GVR-016`** | **unconditional `error`** · `examData` | GFM table integrity across `taskContent*` and `solutionContent*` (valid delimiter row and uniform column count on consecutive pipe rows). |
