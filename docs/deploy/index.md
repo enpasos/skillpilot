@@ -1,8 +1,34 @@
+<div data-sp-content-lang="en" markdown>
+
 # Deployment Documentation Index
 
-This page groups deployment-facing operational documentation.
+This page groups deployment-facing operational runbooks, provider rollout records, and release dossiers.
 
-## Deployment
+## User Setup Guide
+
+- [SkillPilot Claude Connector: User Setup and Usage Guide](claude-connector-v1-user-guide.md)
+
+## Operational Runbooks & Release Dossiers
+
+*(Operational runbooks and incident/release records below are maintained in their original authoring language — English or German — as timestamped engineering records.)*
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+# Betrieb & Rollout
+
+Diese Seite bündelt betriebsnahe Deployment-Runbooks, Provider-Rollout-Nachweise und Release-Dossiers.
+
+## Einrichtungsanleitung für Nutzende
+
+- [SkillPilot Claude Connector: Einrichtung und Nutzung](claude-connector-v1-user-guide.de.md)
+
+## Operative Runbooks & Release-Dossiers
+
+*(Die folgenden operativen Runbooks und Release-Nachweise werden als datierte Betriebsdokumente in ihrer jeweiligen Originalsprache gepflegt.)*
+
+</div>
 
 - [SkillPilot Deployment Process](deployment.md)
 - [Direkter Admin-Zugriff auf die Serverkonfiguration](admin-file-access.md)
@@ -24,8 +50,6 @@ This page groups deployment-facing operational documentation.
 - [Claude coach (paused beta): architecture, testing, and reactivation](claude-coach-beta.md)
 - [SkillPilot Claude Connector v1: one-JVM architecture and service concept](claude-connector-v1-concept.md)
 - [SkillPilot Claude Connector v1: developer implementation plan](claude-connector-v1-implementation-plan.md)
-- [SkillPilot Claude Connector: user setup and usage guide](claude-connector-v1-user-guide.md)
-- [SkillPilot Claude Connector: Einrichtung und Nutzung (DE)](claude-connector-v1-user-guide.de.md)
 - [SkillPilot Claude Connector v1: release and rollback runbook](claude-connector-v1-release.md)
 - [SkillPilot Claude personal Git marketplace: release runbook](claude-personal-marketplace-release.md)
 - [Persönliche Claude-Konten: Installation und Updates vereinfachen](claude-personal-plugin-update-options.md)
@@ -33,7 +57,20 @@ This page groups deployment-facing operational documentation.
 - [Gemini Custom apps: isolierter technischer PoC](gemini-custom-apps-poc.md)
 - [SkillPilot in Gemini: lokaler Integrationskandidat](gemini-integration.md)
 
+<div data-sp-content-lang="en" markdown>
+
 ## Maintenance
 
 - Add deployment runbooks or release-process notes here.
 - `cd app && npm run check:docs-indexes` fails if a direct Markdown child of `docs/deploy/` is missing from this index.
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Pflegehinweise
+
+- Neue Deployment-Runbooks oder Release-Nachweise hier ergänzen.
+- `cd app && npm run check:docs-indexes` schlägt fehl, wenn eine direkte Markdown-Datei unter `docs/deploy/` in diesem Index fehlt.
+
+</div>

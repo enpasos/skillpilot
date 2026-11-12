@@ -19,14 +19,33 @@ Jede Dokumentationsdatei unter `docs/` besitzt genau eine primäre Rolle, damit 
 <a id="sec-dev-dg-roles"></a>
 ### 1.1. Dokumentrollen und Ablageregeln
 
-| Rolle | Zweck | Typischer Ablageort | Source of Truth? | | –- | –- | –- | –- | | **Konzept** | Dauerhaftes Domänenmodell, Semantik und Architektur | `docs/concept/` | Ja | | **Runbook** | Wiederholbare operative Befehlsschritte | Nahe beim Prozessdokument | Ja | | **Prozess** | Review-Regeln, Statusbedeutungen und Entscheidungsgates | `docs/qa-ci/` oder `docs/dev/` | Ja | | **Generierter Status** | Berechneter Bericht, Queue oder Dashboard-Snapshot | `docs/qa-ci/status/` | Nein | | **Pilot oder Dossier** | Datierte Untersuchung, PoC oder einmaliges Audit | `docs/qa-ci/archive/` oder `docs/dev/` | Nein (außer benannt) | | **Implementierungsnotiz** | Entwicklerseitiges Schema-, Tool- oder Migrationsdetail | `docs/dev/` (`tmp/` für Experimente) | Teilweise | {cols="20%,34%,28%,18%"}
+| Rolle | Zweck | Typischer Ablageort | Source of Truth? |
+| --- | --- | --- | --- |
+| **Konzept** | Dauerhaftes Domänenmodell, Semantik und Architektur | `docs/concept/` | Ja |
+| **Runbook** | Wiederholbare operative Befehlsschritte | Nahe beim Prozessdokument | Ja |
+| **Prozess** | Review-Regeln, Statusbedeutungen und Entscheidungsgates | `docs/qa-ci/` oder `docs/dev/` | Ja |
+| **Generierter Status** | Berechneter Bericht, Queue oder Dashboard-Snapshot | `docs/qa-ci/status/` | Nein |
+| **Pilot oder Dossier** | Datierte Untersuchung, PoC oder einmaliges Audit | `docs/qa-ci/archive/` oder `docs/dev/` | Nein (außer benannt) |
+| **Implementierungsnotiz** | Entwicklerseitiges Schema-, Tool- oder Migrationsdetail | `docs/dev/` (`tmp/` für Experimente) | Teilweise |
 
 <a id="sec-dev-dg-compendia"></a>
 ### 1.2. Zweisprachige Single-Source-Kompendien (`docs/compendia.json`)
 
 Dauerhafte Referenzhandbücher werden als zweisprachige (`de`/`en`) Single-Source-Kompendien gepflegt und durch [`scripts/doc_compendium/`](https://github.com/enpasos/skillpilot/tree/main/scripts/doc_compendium) sowie [`build_compendia.py`](https://github.com/enpasos/skillpilot/blob/main/scripts/build_compendia.py) in MkDocs-Webseiten und gesetzte LuaLaTeX-PDFs übersetzt. Sprachen werden niemals innerhalb einer Datei gemischt und generierte Webseiten nie manuell editiert; gepflegt werden ausschließlich `source/chapters/*.{de,en}.md` mit 1:1-AST-Blockparität, identischen `{#sec:...}`- / `anchors="..."`-Markern, `@ref{sec:...}`, kanonischen `repo:...`-Links und reinen ASCII-Codeblöcken (`<= 72` Zeichen/Zeile). Vertragsgepinnte Deploy-/Freeze-Dokumente, datierte Workboards und generierte Statusreports bleiben eigenständige Markdown-Dateien.
 
-| Kompendium-ID | Kanonisches `source/` | Tracking-Politik | Generierte PDFs (`DE` / `EN`) | | –- | –- | –- | –- | | `skill-graph` | `docs/concept/skill-graph/source/` | `untracked` | `skillpilot-graph-definition.{pdf,en.pdf}` | | `skill-graph-architecture` | `docs/concept/skill-graph/architecture-source/` | `committed-web` | `skillpilot-skill-graph-architecture.{de,en}.pdf` | | `whitepaper` | `docs/whitepaper/source/` | `committed-web` (+ DE-PDF) | `whitepaper.{de,en}.pdf` | | `glossary` | `docs/concept/glossary/source/` | `committed-web` | `skillpilot-glossary.{de,en}.pdf` | | `didactic` | `docs/concept/didactic/source/` | `committed-web` | `skillpilot-didactics-and-planning.{de,en}.pdf` | | `runtime-workflows` | `docs/concept/runtime-workflows/source/` | `committed-web` | `skillpilot-coach-and-runtime-architecture.{de,en}.pdf` | | `production-pipelines` | `docs/production-pipelines/source/` | `committed-web` | `skillpilot-production-pipelines.{de,en}.pdf` | | `qa-ci` | `docs/qa-ci/source/` | `committed-web` | `skillpilot-curriculum-quality-handbook.{de,en}.pdf` | | `qa-ci-lanes` | `docs/qa-ci/lanes-source/` | `committed-web` | `skillpilot-qa-lanes-and-release-contracts.{de,en}.pdf` | | `security` | `docs/security/source/` | `committed-web` | `skillpilot-security-and-privacy.{de,en}.pdf` | | `dev-handbook` | `docs/dev/source/` | `committed-web` | `skillpilot-developer-and-editor-guide.{de,en}.pdf` | {cols="22%,32%,18%,28%" longtable=true}
+| Kompendium-ID | Kanonisches `source/` | Tracking-Politik | Generierte PDFs (`DE` / `EN`) |
+| --- | --- | --- | --- |
+| `skill-graph` | `docs/concept/skill-graph/source/` | `untracked` | `skillpilot-graph-definition.{pdf,en.pdf}` |
+| `skill-graph-architecture` | `docs/concept/skill-graph/architecture-source/` | `committed-web` | `skillpilot-skill-graph-architecture.{de,en}.pdf` |
+| `whitepaper` | `docs/whitepaper/source/` | `committed-web` (+ DE-PDF) | `whitepaper.{de,en}.pdf` |
+| `glossary` | `docs/concept/glossary/source/` | `committed-web` | `skillpilot-glossary.{de,en}.pdf` |
+| `didactic` | `docs/concept/didactic/source/` | `committed-web` | `skillpilot-didactics-and-planning.{de,en}.pdf` |
+| `runtime-workflows` | `docs/concept/runtime-workflows/source/` | `committed-web` | `skillpilot-coach-and-runtime-architecture.{de,en}.pdf` |
+| `production-pipelines` | `docs/production-pipelines/source/` | `committed-web` | `skillpilot-production-pipelines.{de,en}.pdf` |
+| `qa-ci` | `docs/qa-ci/source/` | `committed-web` | `skillpilot-curriculum-quality-handbook.{de,en}.pdf` |
+| `qa-ci-lanes` | `docs/qa-ci/lanes-source/` | `committed-web` | `skillpilot-qa-lanes-and-release-contracts.{de,en}.pdf` |
+| `security` | `docs/security/source/` | `committed-web` | `skillpilot-security-and-privacy.{de,en}.pdf` |
+| `dev-handbook` | `docs/dev/source/` | `committed-web` | `skillpilot-developer-and-editor-guide.{de,en}.pdf` |
 
 ```bash
 python3 scripts/build_compendia.py --web-and-tex

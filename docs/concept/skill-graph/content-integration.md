@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](content-integration.en.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · **§5 Contentanbindung** · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · **§5 Contentanbindung** · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-content-integration"></a>
@@ -40,4 +40,9 @@ Verbindliche Architekturprinzipien:
 
 Der erste Referenzpilot bindet offen lizenzierte Physikbuch-Abschnitte (`https://physikbuch.schule/`) nach der Physik-`M7`-Stabilisierung an und wird in Issue `#54` auf Mathematik und LEIFIphysik erweitert. Jede Contentanbindung wird an vier verbindlichen Kriterien gemessen:
 
-| Kriterium | Geforderter Nachweis | | –- | –- | | **1. Unveränderter Kern** | Das Abschalten oder Entfernen aller `content/`-Pakete lässt kanonische Graphen, Views, Frontier-Logik und Mastery zu 100 % unberührt. | | **2. Persönliche Auswahl** | Lernende steuern die Sichtbarkeit über ihr normales SkillPilot-Profil ohne Sonder-Keys oder Zusatzkonten. | | **3. Konkrete Funktion** | Aktive Links führen zielgenau auf passende Kapitel/Aufgaben und erscheinen sauber in Cockpit und Coach ohne erfundene Seiteninhalte. | | **4. Allgemeine Tragfähigkeit** | Ein zweiter Anbieter oder ein weiteres Fach benötigt nur ein deklaratives `content/`-Paket samt Validierung, keine Kernschema-Änderung. | {cols="26%,74%"}
+| Kriterium | Geforderter Nachweis |
+| --- | --- |
+| **1. Unveränderter Kern** | Das Abschalten oder Entfernen aller `content/`-Pakete lässt kanonische Graphen, Views, Frontier-Logik und Mastery zu 100 % unberührt. |
+| **2. Persönliche Auswahl** | Lernende steuern die Sichtbarkeit über ihr normales SkillPilot-Profil ohne Sonder-Keys oder Zusatzkonten. |
+| **3. Konkrete Funktion** | Aktive Links führen zielgenau auf passende Kapitel/Aufgaben und erscheinen sauber in Cockpit und Coach ohne erfundene Seiteninhalte. |
+| **4. Allgemeine Tragfähigkeit** | Ein zweiter Anbieter oder ein weiteres Fach benötigt nur ein deklaratives `content/`-Paket samt Validierung, keine Kernschema-Änderung. |

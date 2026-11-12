@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url'
 import { evaluateGraphIntegrity, requireCompleteCurrentCatalog, type CurrentCatalogEntry } from './curriculumGraphIntegrity'
 import { auditTransitiveMinimality, type AuditLandscape } from './auditTransitiveMinimality'
 import { applyGraphMaturityCeiling, deriveCurriculumMaturity } from './generateCurriculumQualityStatus'
+import { CURRENT_CANONICAL_CATALOG_PATH, loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
+import { liveVerificationInputs } from './lib/verificationInputSnapshot'
 import {
   fingerprintPrerequisiteReductionDocument as digest, loadVerifiedPrerequisiteReductionContext,
   PREREQUISITE_REDUCTION_CONTRACT, verifiedPrerequisiteReductionCatalogSources, verifiedPrerequisiteReductionSummary,
@@ -29,12 +31,28 @@ function producerGraphRows(loaded: CurrentCatalogEntry[], expected: Parameters<t
   })
 }
 
-const fixtureBindings = (loaded: CurrentCatalogEntry[]) => loaded.map(({ path, landscape }) => ({
-  path, landscapeId: landscape.landscapeId, currentDocumentDigest: digest(landscape),
-}))
-const fixtureEntries = (current: AuditLandscape[]): CurrentCatalogEntry[] => current.map(landscape => ({
-  path: `canonical/${landscape.landscapeId}.json`, landscape,
-}))
+function withFixtureCatalog<T>(current: AuditLandscape[], work: (
+  loaded: CurrentCatalogEntry[], sources: ReturnType<typeof loadCurrentCurriculumCatalog>['sources'],
+) => T): T {
+  const scratch = resolve(dirname(fileURLToPath(import.meta.url)), '../../tmp')
+  mkdirSync(scratch, { recursive: true })
+  const directory = mkdtempSync(resolve(scratch, 'current-graph-integrity-'))
+  try {
+    const canonical = resolve(directory, CURRENT_CANONICAL_CATALOG_PATH)
+    mkdirSync(canonical, { recursive: true })
+    writeFileSync(resolve(directory, 'curricula/curriculum_manifest.json'), JSON.stringify({ curricula: [{ id: 'ROOT' }] }))
+    writeFileSync(resolve(canonical, 'DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json'), JSON.stringify({
+      landscapeId: 'ROOT', goals: [{ id: 'overview' }], personalizationFlow: { stages: [{ id: 'subject', groups: [{
+        id: 'subject', source: { kind: 'offeredLandscapes', landscapeIds: current.map(landscape => landscape.landscapeId) },
+      }] }] },
+    }))
+    for (const landscape of current) writeFileSync(resolve(canonical, `${landscape.landscapeId}.json`), JSON.stringify(landscape))
+    const { entries, sources } = loadCurrentCurriculumCatalog(liveVerificationInputs, directory)
+    const order = [...current.map(landscape => landscape.landscapeId), 'ROOT']
+    entries.sort((a, b) => order.indexOf(a.landscape.landscapeId) - order.indexOf(b.landscape.landscapeId))
+    return work(entries, sources)
+  } finally { rmSync(directory, { recursive: true, force: true }) }
+}
 const assertGraphFailureCapsEveryScope = (row: ReturnType<typeof producerGraphRows>[number]) => {
   assert.equal(row.graph.status, 'fail')
   assert.equal(row.maturity, 'M0')
@@ -42,10 +60,11 @@ const assertGraphFailureCapsEveryScope = (row: ReturnType<typeof producerGraphRo
 }
 
 test('producer graph path: redundant atomic requires fail and cap every scope at M0', () => {
-  const loaded = fixtureEntries(catalog([{ id: 'q', requires: ['p', 'r'] }, { id: 'p', requires: ['r'] }, { id: 'r' }]))
-  const [row] = producerGraphRows(loaded, fixtureBindings(loaded))
-  assertGraphFailureCapsEveryScope(row)
-  assert.equal(row.graph.metrics.minimalityFindings, 1)
+  withFixtureCatalog(catalog([{ id: 'q', requires: ['p', 'r'] }, { id: 'p', requires: ['r'] }, { id: 'r' }]), (loaded, sources) => {
+    const [row] = producerGraphRows(loaded, sources)
+    assertGraphFailureCapsEveryScope(row)
+    assert.equal(row.graph.metrics.minimalityFindings, 1)
+  })
 })
 
 test('producer graph path: minimal cluster source or target requires fail and cap every scope at M0', () => {
@@ -53,10 +72,12 @@ test('producer graph path: minimal cluster source or target requires fail and ca
     [{ id: 'c', contains: ['a'], requires: ['r'] }, { id: 'a' }, { id: 'r' }],
     [{ id: 'q', requires: ['c'] }, { id: 'c', contains: ['a'] }, { id: 'a' }],
   ]) {
-    const loaded = fixtureEntries(catalog(goals)), [row] = producerGraphRows(loaded, fixtureBindings(loaded))
-    assertGraphFailureCapsEveryScope(row)
-    assert.equal(row.graph.metrics.minimalityFindings, 0)
-    assert.equal(row.graph.metrics.atomicNormalFormFindings, 1)
+    withFixtureCatalog(catalog(goals), (loaded, sources) => {
+      const [row] = producerGraphRows(loaded, sources)
+      assertGraphFailureCapsEveryScope(row)
+      assert.equal(row.graph.metrics.minimalityFindings, 0)
+      assert.equal(row.graph.metrics.atomicNormalFormFindings, 1)
+    })
   }
 })
 
@@ -66,21 +87,23 @@ test('producer graph path: missing reference or effective foreign ancestor cycle
     [{ landscapeId: 'L', goals: [{ id: 'q', requires: ['F:b'] }] },
       { landscapeId: 'F', goals: [{ id: 'parent', contains: ['b'], requires: ['L:q'] }, { id: 'b' }] }],
   ]) {
-    const loaded = fixtureEntries(current), [row] = producerGraphRows(loaded, fixtureBindings(loaded))
-    assertGraphFailureCapsEveryScope(row)
-    assert.equal(row.graph.metrics.invalidInputs, 1)
-    assert.match(row.graph.details![0], /Unknown reference Missing:x|effective requires cycle/)
+    withFixtureCatalog(current, (loaded, sources) => {
+      const [row] = producerGraphRows(loaded, sources)
+      assertGraphFailureCapsEveryScope(row)
+      assert.equal(row.graph.metrics.invalidInputs, 1)
+      assert.match(row.graph.details![0], /Unknown reference Missing:x|effective requires cycle/)
+    })
   }
 })
 
 test('producer graph path: missing or duplicate catalog aborts before status rows', () => {
-  const loaded = fixtureEntries([{ landscapeId: 'A', goals: [{ id: 'a' }] }, { landscapeId: 'B', goals: [{ id: 'b' }] }])
-  const expected = fixtureBindings(loaded)
-  for (const broken of [loaded.slice(0, 1), [loaded[0], loaded[0]]]) {
-    let rows: ReturnType<typeof producerGraphRows> = []
-    assert.throws(() => { rows = producerGraphRows(broken, expected) }, /Current curriculum catalog:/)
-    assert.deepEqual(rows, [])
-  }
+  withFixtureCatalog([{ landscapeId: 'A', goals: [{ id: 'a' }] }, { landscapeId: 'B', goals: [{ id: 'b' }] }], (loaded, expected) => {
+    for (const broken of [loaded.slice(0, 1), [loaded[0], loaded[0]]]) {
+      let rows: ReturnType<typeof producerGraphRows> = []
+      assert.throws(() => { rows = producerGraphRows(broken, expected) }, /Current curriculum catalog:/)
+      assert.deepEqual(rows, [])
+    }
+  })
 })
 
 test('producer scope ceiling preserves passing scopes and caps non-pass or absent graph rules', () => {
@@ -167,21 +190,19 @@ test('each declared root receives its current result and cycles fail CQR-001', (
 })
 
 test('the exact producer coverage seam aborts missing, duplicate, empty and additional roots', () => {
-  const loaded: CurrentCatalogEntry[] = ['A', 'B'].map(landscapeId => ({
-    path: `canonical/${landscapeId}.json`, landscape: { landscapeId, goals: [{ id: 'a' }] },
-  }))
-  const expected = loaded.map(({ path, landscape }) => ({ path, landscapeId: landscape.landscapeId, currentDocumentDigest: digest(landscape) }))
-  assert.deepEqual(requireCompleteCurrentCatalog(loaded, expected).map(({ landscapeId }) => landscapeId), ['A', 'B'])
-  assert.throws(() => requireCompleteCurrentCatalog(loaded, undefined), /verified catalog inventory is required/)
-  const cases: CurrentCatalogEntry[][] = [
-    loaded.slice(0, 1), [loaded[0], loaded[0]],
-    [loaded[0], { ...loaded[1], landscape: { landscapeId: 'B', goals: [] } }],
-    [...loaded, { path: 'canonical/C.json', landscape: { landscapeId: 'C', goals: [{ id: 'a' }] } }],
-    [loaded[0], { path: 'canonical/C.json', landscape: { landscapeId: 'C', goals: [{ id: 'a' }] } }],
-    [loaded[0], { ...loaded[1], landscape: { landscapeId: 'A', goals: [{ id: 'b' }] } }],
-  ]
-  for (const changed of cases) assert.throws(() => requireCompleteCurrentCatalog(changed, expected), /Current curriculum catalog:/)
-  assert.throws(() => requireCompleteCurrentCatalog(loaded, [expected[0], expected[0]]), /duplicate verified path\/owner/)
+  withFixtureCatalog(['A', 'B'].map(landscapeId => ({ landscapeId, goals: [{ id: 'a' }] })), (loaded, expected) => {
+    assert.deepEqual(requireCompleteCurrentCatalog(loaded, expected).map(({ landscapeId }) => landscapeId), ['A', 'B', 'ROOT'])
+    assert.throws(() => requireCompleteCurrentCatalog(loaded, undefined), /registered current catalog inventory is required/)
+    const cases: CurrentCatalogEntry[][] = [
+      loaded.slice(0, 1), [loaded[0], loaded[0], loaded[2]],
+      [loaded[0], { ...loaded[1], landscape: { landscapeId: 'B', goals: [] } }, loaded[2]],
+      [...loaded, { path: 'canonical/C.json', landscape: { landscapeId: 'C', goals: [{ id: 'a' }] } }],
+      [loaded[0], { path: 'canonical/C.json', landscape: { landscapeId: 'C', goals: [{ id: 'a' }] } }, loaded[2]],
+      [loaded[0], { ...loaded[1], landscape: { landscapeId: 'A', goals: [{ id: 'b' }] } }, loaded[2]],
+    ]
+    for (const changed of cases) assert.throws(() => requireCompleteCurrentCatalog(changed, expected), /Current curriculum catalog:/)
+    assert.throws(() => requireCompleteCurrentCatalog(loaded, [expected[0], expected[0]]), /registered current catalog inventory/)
+  })
 })
 
 test('a genuine historical context exposes immutable inventory but cannot mask a current CQR finding', async () => {
@@ -213,10 +234,14 @@ test('a genuine historical context exposes immutable inventory but cannot mask a
     assert.equal(Reflect.set(sources[0], 'currentDocumentDigest', digest(before)), false)
     assert.equal(verifiedPrerequisiteReductionCatalogSources(undefined), undefined)
     assert.throws(() => verifiedPrerequisiteReductionCatalogSources({} as VerifiedPrerequisiteReductionContext), /forged context/)
-    const catalog = requireCompleteCurrentCatalog([{ path: 'canonical/L.json', landscape: current }], sources)
-    const rule = evaluateGraphIntegrity(catalog, 'L')
-    assert.equal(rule.status, 'fail'); assert.equal(rule.metrics.minimalityFindings, 1)
-    assert.ok(rule.details?.some((detail) => detail.includes('L:q -> L:p -> L:s -> L:r')))
+    assert.throws(() => requireCompleteCurrentCatalog([{ path: 'canonical/L.json', landscape: current }], sources),
+      /registered current catalog inventory/u, 'Historical proof inventory cannot authorize the current milestone scope.')
+    withFixtureCatalog([current], (loaded, currentSources) => {
+      const catalog = requireCompleteCurrentCatalog(loaded, currentSources)
+      const rule = evaluateGraphIntegrity(catalog, 'L')
+      assert.equal(rule.status, 'fail'); assert.equal(rule.metrics.minimalityFindings, 1)
+      assert.ok(rule.details?.some((detail) => detail.includes('L:q -> L:p -> L:s -> L:r')))
+    })
   } finally { rmSync(directory, { recursive: true, force: true }) }
 })
 
@@ -242,33 +267,37 @@ test('a genuine full-document binding rejects a same-path same-owner partial doc
     writeFileSync(resolve(directory, 'proof.json'), JSON.stringify(registry))
     const context = await loadVerifiedPrerequisiteReductionContext({ repositoryRoot: directory, catalogPath: 'canonical', registryPath: 'proof.json' })
     assert.ok(context)
-    const sources = verifiedPrerequisiteReductionCatalogSources(context)!
+    const historicalSources = verifiedPrerequisiteReductionCatalogSources(context)!
     const full = JSON.parse(readFileSync(file, 'utf8')) as typeof current
-    assert.equal(sources[0].currentDocumentDigest, digest(full))
-    assert.notEqual(sources[0].currentDocumentDigest, digest(before), 'metadata must bind CURRENT, not historical baseline')
-    let statusRows = 0
-    const producerRows = (loaded: CurrentCatalogEntry[]) => {
-      const currentCatalog = requireCompleteCurrentCatalog(loaded, sources)
-      return currentCatalog.map(({ landscapeId }) => {
-        statusRows++
-        return evaluateGraphIntegrity(currentCatalog, landscapeId)
-      })
-    }
-    const fullRows = producerRows([{ path: 'canonical/L.json', landscape: full }])
-    assert.equal(statusRows, 1)
-    assert.equal(fullRows[0].status, 'fail'); assert.equal(fullRows[0].metrics.minimalityFindings, 1)
-    assert.ok(fullRows[0].details?.some(detail => detail.includes('L:a -> L:c') && detail.includes('L:a -> L:b -> L:c')))
-    const partial = structuredClone(full); partial.goals = partial.goals.filter(goal => ['q', 'p', 'r'].includes(goal.id))
-    assert.equal(evaluateGraphIntegrity([partial], 'L').status, 'pass', 'the truncated graph reproduces the former false-green condition')
-    assert.notEqual(digest(partial), sources[0].currentDocumentDigest)
-    statusRows = 0
-    assert.throws(() => producerRows([{ path: 'canonical/L.json', landscape: partial }]),
-      /Current curriculum catalog: current document digest differs: canonical\/L\.json/)
-    assert.equal(statusRows, 0, 'a mismatched full document must abort before producing any status row')
-    assert.equal(readFileSync(file, 'utf8'), currentBytes, 'the genuinely verified full fixture remains unchanged')
-    t.diagnostic(JSON.stringify({ genuineContextVerified: true, fullControlStatus: fullRows[0].status,
-      fullGoalCount: full.goals.length, partialGoalCount: partial.goals.length,
-      fullCurrentDigest: sources[0].currentDocumentDigest, partialDigest: digest(partial),
-      partialRejectedBeforeRows: true, emittedPartialRows: statusRows }))
+    assert.equal(historicalSources[0].currentDocumentDigest, digest(full))
+    assert.notEqual(historicalSources[0].currentDocumentDigest, digest(before), 'metadata must bind CURRENT, not historical baseline')
+    withFixtureCatalog([full], (entries, sources) => {
+      const currentSource = sources.find(source => source.landscapeId === 'L')!
+      assert.equal(currentSource.currentDocumentDigest, digest(full))
+      let statusRows = 0
+      const producerRows = (loaded: CurrentCatalogEntry[]) => {
+        const currentCatalog = requireCompleteCurrentCatalog(loaded, sources)
+        return currentCatalog.map(({ landscapeId }) => {
+          statusRows++
+          return evaluateGraphIntegrity(currentCatalog, landscapeId)
+        })
+      }
+      const fullRows = producerRows(entries)
+      assert.equal(statusRows, 2)
+      assert.equal(fullRows[0].status, 'fail'); assert.equal(fullRows[0].metrics.minimalityFindings, 1)
+      assert.ok(fullRows[0].details?.some(detail => detail.includes('L:a -> L:c') && detail.includes('L:a -> L:b -> L:c')))
+      const partial = structuredClone(full); partial.goals = partial.goals.filter(goal => ['q', 'p', 'r'].includes(goal.id))
+      assert.equal(evaluateGraphIntegrity([partial], 'L').status, 'pass', 'the truncated graph reproduces the former false-green condition')
+      assert.notEqual(digest(partial), currentSource.currentDocumentDigest)
+      statusRows = 0
+      assert.throws(() => producerRows([{ ...entries[0], landscape: partial }, entries[1]]),
+        /Current curriculum catalog: current document digest differs: .*\/L\.json/u)
+      assert.equal(statusRows, 0, 'a mismatched full document must abort before producing any status row')
+      assert.equal(readFileSync(file, 'utf8'), currentBytes, 'the genuinely verified full fixture remains unchanged')
+      t.diagnostic(JSON.stringify({ genuineContextVerified: true, fullControlStatus: fullRows[0].status,
+        fullGoalCount: full.goals.length, partialGoalCount: partial.goals.length,
+        fullCurrentDigest: currentSource.currentDocumentDigest, partialDigest: digest(partial),
+        partialRejectedBeforeRows: true, emittedPartialRows: statusRows }))
+    })
   } finally { rmSync(directory, { recursive: true, force: true }) }
 })

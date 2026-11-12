@@ -83,7 +83,7 @@ Primary files to inspect:
 
 Secondary context:
 
-- [general-goal-system-and-migration.md](/home/enpasos/projects/skillpilot/docs/concept/skill-graph/general-goal-system-and-migration.md)
+- [general-goal-system-and-migration.md](../concept/skill-graph/general-goal-system-and-migration.md)
 - [landscapeTypes.ts](https://github.com/enpasos/skillpilot/blob/main/app/src/landscapeTypes.ts)
 
 ## Recent Changes That May Be Relevant

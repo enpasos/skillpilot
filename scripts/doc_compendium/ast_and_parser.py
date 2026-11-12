@@ -283,6 +283,8 @@ HEADING_RE = re.compile(r"^(#{2,4})\s+(.+?)(?:\s*\{([^}]+)\})?\s*$")
 DIRECTIVE_SINGLE_RE = re.compile(r"^::(figure|include)\{([^}]+)\}\s*$")
 FENCE_OPEN_RE = re.compile(r"^:::(titlebox|principle|note|warning|equation|table|description|sources)(?:\s*\{([^}]+)\})?\s*$")
 CODE_FENCE_RE = re.compile(r"^(?P<fence>`{3,}|~{3,})(?P<lang>[A-Za-z0-9_+-]*)\s*$")
+PIPE_SEP_RE = re.compile(r"^\|(?:\s*:?-{3,}:?\s*\|)+(?:\s*:?-{3,}:?\s*)?$|^(?:\s*:?-{3,}:?\s*\|)+\s*:?-{3,}:?\s*$")
+BLOCK_ATTR_LINE_RE = re.compile(r"^\{([^}]+)\}\s*$")
 
 
 def parse_blocks(lines: list[str], source_label: str) -> list[Any]:
@@ -413,6 +415,34 @@ def parse_blocks(lines: list[str], source_label: str) -> list[Any]:
             )
             i += 1
             continue
+        if stripped.startswith("|") and i + 1 < n and PIPE_SEP_RE.match(lines[i + 1].strip()):
+            tbl_lines = [stripped, lines[i + 1].strip()]
+            i += 2
+            while i < n and lines[i].strip().startswith("|"):
+                tbl_lines.append(lines[i].strip())
+                i += 1
+            attrs = {}
+            if i < n:
+                m_tbl_attr = BLOCK_ATTR_LINE_RE.match(lines[i].strip())
+                if m_tbl_attr:
+                    attrs = parse_attrs(m_tbl_attr.group(1))
+                    i += 1
+            headers = split_pipe_row(tbl_lines[0])
+            rows = [split_pipe_row(r) for r in tbl_lines[2:]]
+            for r in rows:
+                if len(r) != len(headers):
+                    raise ValueError(f"{source_label}: table row column mismatch ({len(r)} != {len(headers)}): {r}")
+            nodes.append(
+                TableNode(
+                    headers=headers,
+                    rows=rows,
+                    node_id=attrs.get("id"),
+                    caption=attrs.get("caption"),
+                    cols=attrs.get("cols"),
+                    longtable=bool(attrs.get("longtable", False)),
+                )
+            )
+            continue
         if re.match(r"^-\s+", raw):
             flat_items, rich_items, i = parse_list_items_rich(lines, i, ordered=False)
             nodes.append(ListNode(ordered=False, items=flat_items, rich_items=rich_items))
@@ -434,12 +464,17 @@ def parse_blocks(lines: list[str], source_label: str) -> list[Any]:
                 or CODE_FENCE_RE.match(nxt_s)
                 or nxt.startswith(">")
                 or HEADING_RE.match(nxt)
+                or (nxt_s.startswith("|") and i + 1 < n and PIPE_SEP_RE.match(lines[i + 1].strip()))
                 or re.match(r"^(?:-\s+|\d+\.\s+)", nxt)
             ):
                 break
             para_lines.append(nxt_s)
             i += 1
-        nodes.append(ParagraphNode(text=" ".join(para_lines)))
+        para_text = " ".join(para_lines)
+        para_unquoted = re.sub(r"`[^`]*`", "", para_text)
+        if re.search(r"\|\s*:?-{3,}:?\s*\|", para_unquoted) or re.search(r"\{cols=", para_unquoted):
+            raise ValueError(f"{source_label}: unparsed pipe table or table attributes in paragraph: {para_text[:120]}")
+        nodes.append(ParagraphNode(text=para_text))
     return nodes
 
 

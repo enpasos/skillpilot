@@ -143,9 +143,9 @@ Current watch files:
 Machine-readable watch manifest:
 
 1. [physics-evidence-watch-manifest.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-manifest.json)
-2. [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) rendered by [render_canonical_physics_evidence_watch_status.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py)
+2. [canonical-gymnasium-physics-evidence-watch-status.md](canonical-gymnasium-physics-evidence-watch-status.md) rendered by [render_canonical_physics_evidence_watch_status.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py)
 3. [physics-evidence-watch-baseline.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json) captured by [capture_canonical_physics_evidence_watch_baseline.py](https://github.com/enpasos/skillpilot/blob/main/scripts/capture_canonical_physics_evidence_watch_baseline.py)
-4. [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md) rendered by [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py)
+4. [canonical-gymnasium-physics-evidence-watch-delta.md](canonical-gymnasium-physics-evidence-watch-delta.md) rendered by [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py)
 5. exit-code maintenance check via [check_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/check_canonical_physics_evidence_watch_delta.py)
 6. fixed run path via [run_canonical_physics_evidence_watch.sh](https://github.com/enpasos/skillpilot/blob/main/scripts/run_canonical_physics_evidence_watch.sh) or `cd app && npm run check:canonical-physics-evidence-watch`
 7. scheduled GitHub Actions hook via [canonical_physics_evidence_watch.yml](https://github.com/enpasos/skillpilot/blob/main/.github/workflows/canonical_physics_evidence_watch.yml)

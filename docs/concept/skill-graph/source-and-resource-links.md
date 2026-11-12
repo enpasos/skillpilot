@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](source-and-resource-links.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · **§4 Source & Resource Links** · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · **§4 Source & Resource Links** · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-source-resource-links"></a>
@@ -19,7 +19,11 @@ SkillPilot enforces a strict inversion principle for external learning media: **
 <a id="sec-sga-srl-split"></a>
 ### 4.1. Three-Way Purpose Split and Hard Canonical Prohibition
 
-| Mechanism | Carrier | Permitted Purpose & Constraints | | –- | –- | –- | | **Official curriculum provenance** | `sourceRef` and curriculum-typed `resourceLinks` (`type: "curriculum"`) | Trace canonical goals to official state/institutional syllabi, statutes, and page locators ([6](human-readable-source-rationales.md#sec-sga-source-rationales)). | | **First-party goal visualizations** | `resourceLinks` with `type: "goal-visualization"` | Optional curated 16:9 concept illustrations owned and reviewed inside SkillPilot ([7](atomic-goal-visualizations.md#sec-sga-goal-visualizations)). | | **External learning materials** | Optional packages under `content/` ([5](content-integration.en.md#sec-sga-content-integration)) | Provider-specific textbooks, simulations, videos, and exercise collections referencing stable canonical `goalId`s from outside the core graph. | {cols="24%,30%,46%"}
+| Mechanism | Carrier | Permitted Purpose & Constraints |
+| --- | --- | --- |
+| **Official curriculum provenance** | `sourceRef` and curriculum-typed `resourceLinks` (`type: "curriculum"`) | Trace canonical goals to official state/institutional syllabi, statutes, and page locators ([6](human-readable-source-rationales.md#sec-sga-source-rationales)). |
+| **First-party goal visualizations** | `resourceLinks` with `type: "goal-visualization"` | Optional curated 16:9 concept illustrations owned and reviewed inside SkillPilot ([7](atomic-goal-visualizations.md#sec-sga-goal-visualizations)). |
+| **External learning materials** | Optional packages under `content/` ([5](content-integration.en.md#sec-sga-content-integration)) | Provider-specific textbooks, simulations, videos, and exercise collections referencing stable canonical `goalId`s from outside the core graph. |
 
 Normative rules:
 

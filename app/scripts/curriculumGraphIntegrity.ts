@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Current graph validation only. Historical review-binding values are not inputs.
 import { auditTransitiveMinimality, type AuditLandscape } from './auditTransitiveMinimality'
-import { fingerprintPrerequisiteReductionDocument, type PrerequisiteReductionCatalogSource } from './prerequisiteReductionProof'
+import { fingerprintCurrentCurriculumDocument, requireCurrentCatalogInventory, type CurrentCatalogEntry, type CurrentCatalogSource } from './currentCurriculumCatalog'
 
-export type CurrentCatalogEntry = { path: string; landscape: AuditLandscape }
+export type { CurrentCatalogEntry } from './currentCurriculumCatalog'
 export type GraphIntegrityRule = {
   id: 'CQR-001'
   status: 'pass' | 'fail'
@@ -18,13 +18,13 @@ function ensure(condition: unknown, message: string): asserts condition {
 /** Shared producer seam: absence or incomplete coverage aborts before status rows. */
 export function requireCompleteCurrentCatalog(
   loaded: CurrentCatalogEntry[],
-  expected: readonly PrerequisiteReductionCatalogSource[] | undefined,
+  expected: readonly CurrentCatalogSource[] | undefined,
 ): AuditLandscape[] {
-  ensure(expected && expected.length > 0, 'verified catalog inventory is required')
-  const declared = new Map<string, PrerequisiteReductionCatalogSource>(), owners = new Set<string>()
+  requireCurrentCatalogInventory(expected)
+  const declared = new Map<string, CurrentCatalogSource>(), owners = new Set<string>()
   for (const source of expected) {
     ensure(source.path.length > 0 && source.landscapeId.length > 0, 'invalid verified path/owner')
-    ensure(!declared.has(source.path) && !owners.has(source.landscapeId), 'duplicate verified path/owner')
+    ensure(!declared.has(source.path) && !owners.has(source.landscapeId), 'duplicate current path/owner')
     declared.set(source.path, source); owners.add(source.landscapeId)
   }
   ensure(Array.isArray(loaded) && loaded.length === declared.size, 'missing or additional canonical source')
@@ -39,7 +39,7 @@ export function requireCompleteCurrentCatalog(
     roots.add(landscape.landscapeId)
     ensure(Array.isArray(landscape.goals) && landscape.goals.length > 0, `empty or invalid canonical root ${landscape.landscapeId}`)
     // Hash the unchanged full raw producer object, never a goals-only projection.
-    ensure(fingerprintPrerequisiteReductionDocument(landscape) === source.currentDocumentDigest,
+    ensure(fingerprintCurrentCurriculumDocument(landscape) === source.currentDocumentDigest,
       `current document digest differs: ${path}`)
   }
   ensure(paths.size === declared.size && roots.size === owners.size, 'incomplete canonical path/owner coverage')

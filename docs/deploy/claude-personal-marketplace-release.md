@@ -999,7 +999,7 @@ with the exact 1.1.2 artifact. No application deployment is part of this
 Marketplace publication.
 
 The exact authorization boundary is recorded in
-[freeze appendix 6.70](openai-plugin-v1-review-freeze.md#670-claude-112-im-bestehenden-marketplace-veroffentlichen).
+[freeze appendix 6.70](openai-plugin-v1-review-freeze.md#670-claude-112-im-bestehenden-marketplace-veröffentlichen).
 
 ## Historical 1.1.2 local preparation, 8 September 2026
 

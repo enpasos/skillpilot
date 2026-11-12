@@ -290,8 +290,9 @@ We use exactly **two connection types**:
    - `A.requires = [B, C]` means: A should only be approached if B und C sitzen.  
    - Current compatibility model: existing prerequisites on clusters are still read through `contains` inheritance and atomic expansion for runtime/frontier purposes. This is transition semantics, not the canonical target state.
    - Binding target state (Product Owner, 8 November 2026): **all** authored `requires` have atomic source and prerequisite goals, $R\subseteq A\times A$. There is no permanent exception for universal cluster claims.
-   - Migration order: first materialize or retain the complete reviewed atomic prerequisite relationships; then remove `requires` with a non-atomic source or target only after proving that the atomic relationships cover their full prerequisite demand; finally transitively reduce the atomic relation. Never remove an atomic relationship in order to retain its inherited cluster equivalent.
-   - At unchanged `contains`, preserve the full normalized atomic prerequisite closure ($R_{at}^+$ in Graph Definition §2.3) and the relevant scope, applicability, target, frontier, completion and mastery contracts. Raw prerequisite reachability between non-atomic goal nodes may change when cluster edges are removed. This migration neither invents subject dependencies automatically nor writes learner results; transition compatibility alone does not fulfill the target norm or prove current CI enforcement.
+   - Product Owner decision of **12 November 2026** supersedes the earlier prerequisite-migration order and preservation obligation: acceptance depends on comprehensive deterministic validation of the current target state within the milestone examination. No comparison with a historical prerequisite closure, scope or frontier is required for `G17` or `GD-C17`.
+   - Before any `M1`–`M7` pass, check the complete declared canonical subject inventory, including necessary foreign prerequisites and inheriting ancestors, for resolved identities/references, acyclicity, atomic `requires` endpoints, consistent explicit types and transitive minimality. A violation or incomplete check caps the subject and its scopes at `M0`; an incomplete catalog aborts the status run. Current `CQR-001` coverage is the canonical Gymnasium catalog, not every curriculum in the repository.
+   - Historical reduction proofs remain evidence for the review bindings that actually reuse them; they neither define the current validation inventory nor replace current-state checks. A missing or invalid proof disables that reuse and leaves strict current-input QA checks in force; it never grants stale reviews. Existing source fidelity, review freshness and learner-result contracts remain in force. Graph edits never automatically write learner results.
    - Intention: modelling **didactic dependencies** (prevents jumping into topics without foundation).
 
 2. `contains` – **is composed of / includes**  
@@ -407,8 +408,8 @@ Interpretation rules:
   blanket manual-role requirement at this boundary. Unknown references, cycles,
   missing canonical atoms or unexposed/unaccounted derived targets remain hard
   errors, regardless of mastery or focus. The learner runtime and first-party
-  WebGUI implement this closed basis. Applicability validation, migration-proof
-  admission and complete native/curriculum/remote acceptance remain separate.
+  WebGUI implement this closed basis. Applicability validation and complete
+  native/curriculum/remote acceptance remain separate current-state checks.
 - Product Owner decision of 11 November 2026: these hard errors belong to
   validation, CQR and native acceptance, not to learner reads. When the
   canonical graph of a learning context is not strictly compilable, the runtime
@@ -429,17 +430,20 @@ Interpretation rules:
 - The applicability compiler additionally supports an explicit
   `extendedData.assessmentApplicabilityBasis = { kind: "allOfGoalApplicability", goalRefs: [...] }`
   for those atomic endpoints. It evaluates the referenced goals freshly through
-  the existing applicability rules, including cluster child unions. A later
-  verified deterministic migration can retain the exact former immediate
-  applicability expression while reducing authored `requires`; the basis does
-  not add prerequisite edges, learning targets, source coverage or mastery.
+  the existing applicability rules, including cluster child unions. The basis
+  does not add prerequisite edges, learning targets, source coverage or mastery.
   Current support requires a fully resolved local expression and rejects
   malformed, duplicate, cyclic, foreign or Memory-derived dependencies. This is a temporary
   compiler boundary, not a restriction on foreign prerequisites in the Personal
-  Curriculum. No authored catalog uses the field in this support delivery.
-  Ordinary description-review contexts reject its presence; the existing
-  V1–V7 migration proofs do not admit it. A separate verified proof extension
-  and actual projection/native checks are required before Biology admission.
+  Curriculum. Existing Biology and Economics basis bindings use the V8 proof
+  contract for their historical review comparisons. Ordinary current
+  description-review contexts still reject an unqualified basis; the
+  current-state decision does not extend the review schema. Those evidence
+  bindings remain intact; new graph acceptance follows the current-state
+  decision above and does not require another prerequisite-migration
+  preservation proof. The milestone producer uses historical proofs only for
+  review reuse; standalone strict proof tools and native historical regression
+  suites remain intact.
 - local authoring tools should mirror this split: one tool for canonical cluster authoring, one tool for composition-view authoring
 - preferred design maxim: **as much semantics as necessary, as little ontology as possible**
 - add semantic distinctions only when they solve a concrete authoring, migration, validation, projection, or runtime problem

@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](mem-fwu-roundtrip-plan.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · **§10 MEM/FWU Plan** · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · **§10 MEM/FWU Plan** · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-mem-fwu-plan"></a>
@@ -36,6 +36,10 @@ Without embedding opaque JSON blobs or Base64 media literals, the semantic bundl
 <a id="sec-sga-mf-profile"></a>
 ### 10.2. Core-First FWU Alignment and Application Profile
 
-| Relation / Concept | Core-First RDF/OWL Representation & Constraints | | –- | –- | | **Didactic `requires`** | Specialized reified `LP_0000554` resource attached via `LP_0030071` (`hat Verweis`) and pointing to the prerequisite via `LP_0030072` (`verweist auf`, introduced in `FWU-DE/lehrplan-ontologie#9`). Generic `CE-Verweis` links must **never** be misread as prerequisites. | | **Curricular `contains`** | `BFO_0000051` (`hat Teil`) only for genuine curricular part-whole relations, paired with `skillpilot:containsGoal` on every authored direct edge so transitive BFO reasoner inferences never obscure direct edges (mixed practice/exam/memory/navigation edges use only `skillpilot:containsGoal`). | | **Minimal application terms** | `skillpilot:{LearningGoal,AtomicGoal,ClusterGoal,containsGoal,weight,core,shortKey,ProgramUnit,GoalPlacement,CompositionView,GoalVisualizationReference}` plus `schema:ImageObject` for binary sidecars. | {cols="28%,72%"}
+| Relation / Concept | Core-First RDF/OWL Representation & Constraints |
+| --- | --- |
+| **Didactic `requires`** | Specialized reified `LP_0000554` resource attached via `LP_0030071` (`hat Verweis`) and pointing to the prerequisite via `LP_0030072` (`verweist auf`, introduced in `FWU-DE/lehrplan-ontologie#9`). Generic `CE-Verweis` links must **never** be misread as prerequisites. |
+| **Curricular `contains`** | `BFO_0000051` (`hat Teil`) only for genuine curricular part-whole relations, paired with `skillpilot:containsGoal` on every authored direct edge so transitive BFO reasoner inferences never obscure direct edges (mixed practice/exam/memory/navigation edges use only `skillpilot:containsGoal`). |
+| **Minimal application terms** | `skillpilot:{LearningGoal,AtomicGoal,ClusterGoal,containsGoal,weight,core,shortKey,ProgramUnit,GoalPlacement,CompositionView,GoalVisualizationReference}` plus `schema:ImageObject` for binary sidecars. |
 
 Success requires full SkillPilot validator conformance (acyclic `requires`/`contains`, referential integrity, valid composition views), deterministic field equivalence, OWL 2 DL / structural core validation, and byte-identical image SHA-256 verification without hidden access to the original JSON input.

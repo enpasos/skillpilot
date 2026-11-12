@@ -22,7 +22,9 @@ import {
   discoverMemoryCardReviewConfigs,
 } from './memoryCardReviewConfigDiscovery'
 import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
-import { loadVerifiedPrerequisiteReductionContext, verifiedPrerequisiteReductionCatalogSources } from './prerequisiteReductionProof'
+import { loadCurrentCurriculumCatalog } from './currentCurriculumCatalog'
+import { loadOptionalHistoricalReviewContext } from './optionalHistoricalReviewContext'
+import { withVerificationInputSnapshot, type VerificationInputReader } from './lib/verificationInputSnapshot'
 import { evaluateGraphIntegrity, requireCompleteCurrentCatalog } from './curriculumGraphIntegrity'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
@@ -627,6 +629,7 @@ interface CurriculumStatus {
 
 interface StatusDocument {
   prerequisiteReductionProof?: DeepUnderstandingRolloutReport['prerequisiteReductionProof']
+  historicalReviewReuseIssue?: string
   schemaVersion: 1
   rulesVersion: 'curriculum-quality-v5'
   generatedAt: string
@@ -6015,6 +6018,7 @@ function renderMarkdown(status: StatusDocument): string {
   lines.push(`Rules version: ${status.rulesVersion}`)
   const proof = status.prerequisiteReductionProof
   if (proof) lines.push(`Review binding: ${proof.proofContract}; ${proof.mode}; ${proof.auditScope}; registry=${proof.registryDigest}; goals=${proof.affectedGoalIds.join(',')}`)
+  if (status.historicalReviewReuseIssue) lines.push(`Historical review reuse unavailable; reviews are checked against current content only: ${status.historicalReviewReuseIssue}`)
   lines.push('')
   lines.push('## Summary')
   lines.push('')
@@ -6079,14 +6083,20 @@ function renderMarkdown(status: StatusDocument): string {
   return `${lines.join('\n')}\n`
 }
 
-async function main() {
+async function generateStatus(inputs: VerificationInputReader, assertCurrent: () => void) {
   const shouldCheck = process.argv.includes('--check')
-  const prerequisiteReductionContext = await loadVerifiedPrerequisiteReductionContext()
-  const canonicalFiles = collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
-  const loadedLandscapes = canonicalFiles.map((file) => ({ file, landscape: loadJson<SkillLandscape>(file) }))
-  const currentCatalog = requireCompleteCurrentCatalog(loadedLandscapes.map(({ file, landscape }) => ({
-    path: toRepoPath(file), landscape,
-  })), verifiedPrerequisiteReductionCatalogSources(prerequisiteReductionContext))
+  const { entries, sources } = loadCurrentCurriculumCatalog(inputs)
+  const currentCatalog = requireCompleteCurrentCatalog(entries, sources)
+  // G17 always evaluates every complete current root, before optional reuse of
+  // historical review evidence. No migration proof can replace this result.
+  const graphRules = new Map(currentCatalog.map(landscape => [
+    landscape.landscapeId, evaluateGraphIntegrity(currentCatalog, landscape.landscapeId),
+  ]))
+  const loadedLandscapes = entries.map(({ path, landscape }) => ({
+    file: resolve(repoRoot, path), landscape: landscape as SkillLandscape,
+  }))
+  const { context: prerequisiteReductionContext, diagnostic: historicalReviewReuseIssue, detail: historicalReviewReuseDetail } = await loadOptionalHistoricalReviewContext()
+  if (historicalReviewReuseIssue) console.warn(historicalReviewReuseIssue, historicalReviewReuseDetail ?? '')
   const applicabilityCompilation = buildApplicabilityCompilation()
   const semanticConfigsByLandscapeId = readSemanticConfigs()
   const memoryCardReviewConfigsByLandscapeId = readMemoryCardReviewConfigs()
@@ -6105,7 +6115,7 @@ async function main() {
       const mappingPipeline = mappingPipelineByLandscapeId.get(landscape.landscapeId)
       const memoryCardReviewConfigs = memoryCardReviewConfigsByLandscapeId.get(landscape.landscapeId) ?? []
       const curriculumRules: RuleResult[] = [
-        evaluateGraphIntegrity(currentCatalog, landscape.landscapeId),
+        graphRules.get(landscape.landscapeId)!,
         evaluateTypeConsistency(landscape),
         evaluateSourceSnapshotIngestion(jurisdictionCoverage, mappingPipeline),
         evaluateJurisdictionCoverage(jurisdictionCoverage),
@@ -6169,6 +6179,7 @@ async function main() {
     ...(deepUnderstandingReport.prerequisiteReductionProof ? {
       prerequisiteReductionProof: deepUnderstandingReport.prerequisiteReductionProof,
     } : {}),
+    ...(historicalReviewReuseIssue ? { historicalReviewReuseIssue } : {}),
     schemaVersion: 1,
     rulesVersion: 'curriculum-quality-v5',
     generatedAt: new Date().toISOString(),
@@ -6202,6 +6213,9 @@ async function main() {
 
   const jsonOutput = `${JSON.stringify(status, null, 2)}\n`
   const markdownOutput = renderMarkdown(status)
+  // Long review checks must not let a changed or truncated current catalog
+  // publish results computed from an earlier input generation.
+  assertCurrent()
   if (shouldCheck) {
     const stale = [
       [statusJsonPath, jsonOutput],
@@ -6222,6 +6236,8 @@ async function main() {
   console.log(`Wrote ${toRepoPath(statusJsonPath)}`)
   console.log(`Wrote ${toRepoPath(statusMarkdownPath)}`)
 }
+
+const main = () => withVerificationInputSnapshot(generateStatus)
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   main().catch((error) => {

@@ -19,7 +19,12 @@ SkillPilot trennt lokale Autorenwerkzeuge im Vite-Entwicklungsserver strikt nach
 <a id="sec-dev-ae-overview"></a>
 ### 4.1. Vier lokale Vite-Editoren und Routenarchitektur
 
-| Editor | Frontend-Route & Dev-Middleware | Verantwortete Artefaktschicht | | –- | –- | –- | | **Flashcard-Editor** ([6](flashcard-editor.de.md#sec-dev-flashcard-editor)) | `/flashcard-editor` · `/__deck-editor/*` | `*_deck*.json`-Lernkartendecks (`curricula/...` + `app/public/data/`). | | **Graph-Editor** ([5](graph-editor.de.md#sec-dev-graph-editor)) | `/graph-editor` · `/__graph-editor/*` | Fokussiertes `requires`-Refactoring und Cluster-zu-Atomar-Auflösung in Landscape-JSONs. | | **Canonical-Cluster-Editor** | `/canonical-cluster-editor` · `/__canonical-cluster-editor/*` | Kanonische `contains`-Clusterhierarchie, Kindreihenfolge und Clustermetadaten unter `curricula/DE/Gymnasium/canonical/`. | | **Composition-View-Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-spezifische `*.view.json`-Oberbäume (`structure`-Knoten + reine Cluster-`canonicalSubtree`-Verweise). | {cols="26%,34%,40%"}
+| Editor | Frontend-Route & Dev-Middleware | Verantwortete Artefaktschicht |
+| --- | --- | --- |
+| **Flashcard-Editor** ([6](flashcard-editor.de.md#sec-dev-flashcard-editor)) | `/flashcard-editor` · `/__deck-editor/*` | `*_deck*.json`-Lernkartendecks (`curricula/...` + `app/public/data/`). |
+| **Graph-Editor** ([5](graph-editor.de.md#sec-dev-graph-editor)) | `/graph-editor` · `/__graph-editor/*` | Fokussiertes `requires`-Refactoring und Cluster-zu-Atomar-Auflösung in Landscape-JSONs. |
+| **Canonical-Cluster-Editor** | `/canonical-cluster-editor` · `/__canonical-cluster-editor/*` | Kanonische `contains`-Clusterhierarchie, Kindreihenfolge und Clustermetadaten unter `curricula/DE/Gymnasium/canonical/`. |
+| **Composition-View-Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-spezifische `*.view.json`-Oberbäume (`structure`-Knoten + reine Cluster-`canonicalSubtree`-Verweise). |
 
 Sämtliche `/__*`-Schreibendpunkte existieren **ausschließlich** in der lokalen Vite-Dev-Middleware (`vite.config.ts`) und sind niemals Teil produktiver Builds.
 

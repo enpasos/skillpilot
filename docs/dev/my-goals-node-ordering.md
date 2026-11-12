@@ -21,6 +21,13 @@ Im lernendenseitigen Kompetenzbaum ([`CompetenceTree.tsx`](https://github.com/en
 
 Für Geschwisterknoten eines Elternclusters (zyklenfrei bezüglich `requires`) führt `sortSiblingGoalsBalanced` eine Kahn-Topologiesortierung über **direkte `requires`-Kanten zwischen Geschwistern** aus und entscheidet Gleichstände in der Bereit-Menge streng sechsstufig:
 
-| Stufe | Kriterium | Exakte Entscheidungsregel | | –- | –- | –- | | **1. Manuelle Ordnung** | Explizite Autorenvorgabe | Numerisches `extendedData.{treeOrder,sortOrder,displayOrder,order,position}` oder Tag `order:<n>`. | | **2. Didaktischer Bucket** | Pädagogische Klammerung | `why` (Orientierung/Motivation) $<$ `tutorial` / Fachkompetenzen $<$ `flashcards` (Lernkarten) $<$ `exercises` / Prüfungen. | | **3. Phasenfolge** | Curriculare Progression | `SekI` / `5`–`10` $<$ `E` $<$ `Q1` $<$ `Q2` $<$ `Q3` $<$ `Q4` $<$ `Abitur` / `GLOBAL`. | | **4. Nachfahren-Support** | Weiche Teilbaum-`requires` | `softScore(v)` aus Nachfahren-Voraussetzungen, geschützt durch `minAbsoluteSupport = 2` und `minRelativeSupport = 0.25`, damit einzelne Randkanten große Themenblöcke nicht unerwartet umsortieren. | | **5. Lokalisierter Titel** | Lesbare Rückfallordnung | Sprachsensitives `localeCompare` (`de-DE`, `numeric: true`). | | **6. Kanonische ID** | Endgültige Deterministik | Lexikographischer Vergleich von `goal.id` für 100 % reproduzierbare Reihenfolge. | {cols="20%,24%,56%"}
+| Stufe | Kriterium | Exakte Entscheidungsregel |
+| --- | --- | --- |
+| **1. Manuelle Ordnung** | Explizite Autorenvorgabe | Numerisches `extendedData.{treeOrder,sortOrder,displayOrder,order,position}` oder Tag `order:<n>`. |
+| **2. Didaktischer Bucket** | Pädagogische Klammerung | `why` (Orientierung/Motivation) $<$ `tutorial` / Fachkompetenzen $<$ `flashcards` (Lernkarten) $<$ `exercises` / Prüfungen. |
+| **3. Phasenfolge** | Curriculare Progression | `SekI` / `5`–`10` $<$ `E` $<$ `Q1` $<$ `Q2` $<$ `Q3` $<$ `Q4` $<$ `Abitur` / `GLOBAL`. |
+| **4. Nachfahren-Support** | Weiche Teilbaum-`requires` | `softScore(v)` aus Nachfahren-Voraussetzungen, geschützt durch `minAbsoluteSupport = 2` und `minRelativeSupport = 0.25`, damit einzelne Randkanten große Themenblöcke nicht unerwartet umsortieren. |
+| **5. Lokalisierter Titel** | Lesbare Rückfallordnung | Sprachsensitives `localeCompare` (`de-DE`, `numeric: true`). |
+| **6. Kanonische ID** | Endgültige Deterministik | Lexikographischer Vergleich von `goal.id` für 100 % reproduzierbare Reihenfolge. |
 
 Während die reine Inhaltsbaum-Inspektion ([Sichtenprojektion](../concept/skill-graph/view-projection-and-goal-placement.de.md)) die explizite `contains`- bzw. `treeOrder`-Reihenfolge abbildet, steuert `sortSiblingGoalsBalanced` die didaktische Lernansicht überall dort, wo kein manuelles `treeOrder` gesetzt ist.

@@ -1,72 +1,235 @@
+<div data-sp-content-lang="en" markdown>
+
 # QA/CI Documentation
 
-This page is the public entry point for SkillPilot curriculum-quality and validation documentation.
-It is intended to be reachable on GitHub Pages at `/skillpilot/qa-ci/`.
+This page is the public entry point for SkillPilot curriculum-quality and validation documentation, reachable on GitHub Pages at `/skillpilot/qa-ci/`.
 
-Use this page by role: start with the overview documents, then jump to a review lane, generated status artifact, or pilot dossier as needed.
+Use this page by role: start with the bilingual handbooks and durable contracts below, then jump to generated status artifacts or dated M7 rollout checkpoints as needed.
 
-## Start Here
+## Start Here (Quality & CI Compendia)
 
-- [Quality Handbook PDF (EN)](skillpilot-curriculum-quality-handbook.en.pdf) · [Qualitätshandbuch-PDF (DE)](skillpilot-curriculum-quality-handbook.de.pdf)
+- [Quality Handbook (PDF)](skillpilot-curriculum-quality-handbook.en.pdf)
   Unified single-source compendium covering `M0`–`M7` maturity & human trials, QA scopes & `CQR-*` rules, `GVR-*`/`APV-*`/`CPV-*` validators, semantic atomicity review, and the Curriculum Champion program.
-- [CI, Release Contracts & Review Lanes PDF (EN)](skillpilot-qa-lanes-and-release-contracts.en.pdf) · [CI, Release-Verträge & Review-Lanes PDF (DE)](skillpilot-qa-lanes-and-release-contracts.de.pdf)
+- [CI, Release Contracts & Review Lanes (PDF)](skillpilot-qa-lanes-and-release-contracts.en.pdf)
   Companion Volume IVb covering two-tier CI, the Quality Dashboard and Mapping Workbench, `full-standalone-v1` package readiness, release-model conformance, dual JSON/OWL release contracts, `HR-001`–`HR-006`, and review runbooks.
-- [Graph-Definition: alle Regeln und ihre Meilensteine (DE)](graph-definition-rule-milestone-matrix.md) · [English (EN)](graph-definition-rule-milestone-matrix.en.md)
-  145 Regelgruppen mit 4-Stufen-Ampel (`HART`/`TEIL`/`OFFEN`/`OPT/DOK`), Soll-Zuordnung, tatsächlichen Gates, Scopegrenzen und offenen Lücken.
-- [Curriculum Quality: Reifegrade, QA-Scopes und CQR-Regeln (DE)](curriculum-quality-maturity-and-routes.md) · [English (EN)](curriculum-quality-maturity-and-routes.en.md)
+- [Graph Definition: All Rules and Milestones](graph-definition-rule-milestone-matrix.en.md)
+  145 rule groups with 4-level enforcement status, target assignment, actual CI gates, scope boundaries, and open gaps.
+- [Curriculum Quality: Maturity Levels, QA Scopes, and CQR Rules](curriculum-quality-maturity-and-routes.en.md)
   Detailed meaning of `M0` to `M7`, QA scopes, routes, terminal autonomy, and `CQR-*` rules.
-- [CI Overview (EN)](ci.md) · [Deutsch (DE)](ci.de.md)
+- [CI Overview](ci.md)
   Local and GitHub Actions validation entry points.
-- [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
-  Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
-- [Graph Validation Rules (EN)](graph-validation-rules.md) · [Deutsch (DE)](graph-validation-rules.de.md)
-  Single source of truth for algorithmic graph validation in CI.
-- [Curriculum Package Readiness (EN)](curriculum-package-readiness.md) · [Deutsch (DE)](curriculum-package-readiness.de.md)
+- [Automated OpenAI Dialog Regression (DE)](openai-dialog-regression.md)
+  Repeatable API dialogs, isolated fixtures, cost limits, and separate host acceptance.
+- [Graph Validation Rules](graph-validation-rules.md)
+  Single source of truth for algorithmic skill graph validation in CI.
+- [Curriculum Package Readiness](curriculum-package-readiness.md)
   Fail-closed distinction between legacy export validation and the standalone JSON runtime profile.
-- [Curriculum Release Model Conformance (EN)](curriculum-release-model-conformance.md) · [Deutsch (DE)](curriculum-release-model-conformance.de.md)
+- [Curriculum Release Model Conformance](curriculum-release-model-conformance.md)
   Real Mathematik compilation into the strict unpacked runtime model, including closure, migration, semantic kinds, digests, resources, QA, and remaining package gates.
-- [Dual Curriculum Release Contracts (EN)](dual-curriculum-release-contracts.md) · [Deutsch (DE)](dual-curriculum-release-contracts.de.md)
+- [Dual Curriculum Release Contracts](dual-curriculum-release-contracts.md)
   Field/RDF semantics, canonical content digest, equivalence evidence, and paired release-index gates.
-- [Curriculum Quality Dashboard (EN)](curriculum-quality-dashboard.md) · [Deutsch (DE)](curriculum-quality-dashboard.de.md)
+- [Curriculum Quality Dashboard](curriculum-quality-dashboard.md)
   Persisted status layer used by the local Workbench dashboard.
-- [Mathematik M7: Fortsetzungs- und Zwischenstand vom 20. September](math-m7-resumed-2026-09-20.md)
-  Integrierte Teilpakete, offene Nachweise und lokale Übergabeprüfungen.
-- [Mathematik M7: Fortsetzung und Pausen-Checkpoint vom 23. September](math-m7-resumed-2026-09-21.md)
-  Aktueller Fünf-Gate-Stand, fachliche Teilabschlüsse und dokumentierte offene Kandidaten.
-- [Mathematik M7: Abschlusskonzept und Übergabe vom 28. September](math-m7-concept-and-handoff-2026-09-28.md)
-  Fachliche Restentscheidungen, Prüfkriterien und Reihenfolge für den commitfähigen Zwischenstand.
-- [Mathematik M7: commitfähiger Pausen-Checkpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28.md)
-  Gesicherter M6-Stand, gezielte Prüfungsfreigaben und klar abgegrenzte Restarbeit.
-- [Mathematik M7: Integrationscheckpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28-v2.md)
-  Aktueller Fünf-Gate-Stand, Bild- und Quellenreparaturen sowie lokale Prüfungen.
-- [Mathematik M7: Integrationscheckpoint vom 29. September](math-m7-commit-checkpoint-2026-09-29.md)
-  Aktueller strenger Stand, Quellen- und Prüfungsrouten sowie lokale Checkpoint-Prüfungen.
-- [Mathematik: 100 % im maschinellen Fünf-Gate-Bericht](math-m7-machine-closeout-2026-09-29.md)
-  Aktuelle D/P/A/M/V-Bindungen, begrenzte Quellen- und Q2-Routenprüfung sowie getrennte Reifegrad- und Release-Gates.
-- [Curriculum Mapping Workbench (EN)](curriculum-mapping-workbench.md) · [Deutsch (DE)](curriculum-mapping-workbench.de.md)
+- [Curriculum Mapping Workbench](curriculum-mapping-workbench.md)
   Two-pane audit surface from source snapshots to learner-facing SkillPilot trees.
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
   Rules for document roles, generated artifacts, runbooks, and dated pilot records.
 
-## Wirtschaftswissenschaften M7: datierte Arbeitsstände
+## Review Lanes
 
-- [Maschineller M7-Abschluss: 346/346 und CQR-303 PASS vom 11. Oktober](wirtschaft-m7-machine-closeout-2026-10-11.md)
-- [Aktuelle qualifizierte Kontextintegration bei 291/346 vom 11. Oktober](wirtschaft-m7-current291-qualified-contexts-2026-10-11.md)
-- [M6 mit grüner GitHub-CI und aktuelle M7-Fortsetzung bei 225/346 vom 11. Oktober](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
-- [Aktueller M6-Zwischenstand und CI vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
-- [Fortsetzung und aktuelle Paketnachweise vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
-- [Integrations- und regulärer Lernzielbuchcheckpoint vom 8. Oktober](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
+These pages describe durable manual or semi-automated review processes. Their ledgers or configs are the source of truth; generated status pages are not.
 
-## Chemie/Biologie M7: datierte Arbeitsstände
+- [Curriculum Package Human Review Gates](curriculum-package-human-review-gates.en.md)
+  Central release checklist for visualization quality, redistribution rights, source-text verification, ontology semantics, and stable promotion.
+- [Semantic Atomicity Review](semantic-atomicity-review.md)
+  Review process for deciding whether technical content leaves are semantically atomic.
+- [Requires Review Process](requires-review-process.md)
+  Manual QA workflow for prerequisite quality on atomic goals.
+- [Atomic Review Process](atomic-review-process.md)
+  Older atomic-goal review workflow reference.
+- [Relation Checks](relation-checks.md)
+  Relation-check scope and CI enforcement profile.
+- [MEM SPARQL Consistency Audit](mem-sparql-consistency.md)
+  Durable process reference for the non-blocking live MEM/FWU endpoint comparison.
+- [MEM SPARQL Consistency Runbook](mem-sparql-consistency-runbook.md)
+  Operational checklist for running the audit, reading the queue, and writing ledger decisions.
+- [Goal Source Rationales Runbook](goal-source-rationales-runbook.md)
+  Operational checklist for generating and reviewing human-readable source rationales.
+- [Goal Feedback: Production-to-Codex Intake](goal-feedback-codex-intake.md)
+  Default-off production inbox, digest-bound local custody transfer, online deletion, and candidate-only critical triage.
 
+## Curriculum Champion Process
+
+- [Champion Guide](champion-guide.md)
+- [Four-level Champion Model](four-level-champion-model.md)
+- [Abi 2026 Math Deeplink MVP](abi26-mathe-deeplink-mvp.en.md)
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+# Qualität & CI
+
+Diese Seite ist der zentrale Einstiegspunkt für die Curriculum-Qualitäts- und Validierungsdokumentation von SkillPilot unter `/skillpilot/qa-ci/`.
+
+Nutze diese Übersicht nach Rolle: Starte mit den zweisprachigen Handbüchern und dauerhaften Verträgen unten und springe bei Bedarf zu generierten Statusberichten oder datierten M7-Checkpoints.
+
+## Einstieg (Qualitäts- & CI-Kompendien)
+
+- [Qualitätshandbuch (PDF)](skillpilot-curriculum-quality-handbook.de.pdf)
+  Einheitliches Single-Source-Kompendium zu `M0`–`M7`-Reifegraden & menschlicher Erprobung, QA-Scopes & `CQR-*`-Regeln, `GVR-*`/`APV-*`/`CPV-*`-Validatoren, semantischem Atomaritäts-Review und dem Curriculum-Champion-Programm.
+- [CI, Release-Verträge & Review-Lanes (PDF)](skillpilot-qa-lanes-and-release-contracts.de.pdf)
+  Begleitband IVb zu zweistufiger CI, Qualitäts-Dashboard und Mapping-Workbench, `full-standalone-v1`-Paketreife, Release-Modell-Konformität, dualen JSON/OWL-Release-Verträgen, `HR-001`–`HR-006` und Review-Runbooks.
+- [Graph-Definition: alle Regeln und ihre Meilensteine](graph-definition-rule-milestone-matrix.md)
+  145 Regelgruppen mit 4-Stufen-Ampel (`HART`/`TEIL`/`OFFEN`/`OPT/DOK`), Soll-Zuordnung, tatsächlichen Gates, Scopegrenzen und offenen Lücken.
+- [Curriculum-Qualität: Reifegrade, QA-Scopes und CQR-Regeln](curriculum-quality-maturity-and-routes.md)
+  Bedeutung von `M0` bis `M7`, QA-Scopes, Routen, Abschlussautonomie und `CQR-*`-Regeln im Detail.
+- [CI-Überblick](ci.de.md)
+  Lokale Validierungskommandos und GitHub-Actions-Einstiegspunkte.
+- [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
+  Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
+- [Graph-Validierungsregeln](graph-validation-rules.de.md)
+  Zentrale Spezifikation der algorithmischen Skill-Graph-Prüfung in CI.
+- [Curriculum-Paketreife](curriculum-package-readiness.de.md)
+  Fail-closed-Abgrenzung zwischen Legacy-Exportprüfung und dem eigenständigen JSON-Runtime-Profil.
+- [Release-Modell-Konformität](curriculum-release-model-conformance.de.md)
+  Reale Mathematik-Kompilierung in das strikte entpackte Laufzeitmodell einschließlich Abschluss, Migration, semantischer Knotenarten, Digests, Ressourcen, QS und Paket-Gates.
+- [Duale Curriculum-Release-Verträge](dual-curriculum-release-contracts.de.md)
+  Feld-/RDF-Semantik, kanonischer Inhalts-Digest, Äquivalenznachweis und gekoppelte Release-Index-Gates.
+- [Curriculum-Qualitäts-Dashboard](curriculum-quality-dashboard.de.md)
+  Persistierte Statusschicht für das lokale Workbench-Dashboard.
+- [Curriculum-Mapping-Workbench](curriculum-mapping-workbench.de.md)
+  Zweispaltige Prüf-Oberfläche von Quell-Snapshots zu lernendensichtbaren SkillPilot-Bäumen.
+- [Dokumentationsrichtlinien](../dev/documentation-guidelines.de.md)
+  Regeln für Dokumentrollen, generierte Artefakte, Runbooks und datierte Pilotberichte.
+
+## Review-Pfade
+
+Diese Seiten beschreiben dauerhafte manuelle oder teilautomatisierte Prüfprozesse. Maßgeblich sind jeweils ihre Ledger und Konfigurationsdateien – nicht generierte Statusseiten.
+
+- [Menschliche Review-Gates für Curriculum-Pakete](curriculum-package-human-review-gates.md)
+  Zentrale Release-Checkliste für Bildqualität, Weitergaberechte, Quelltextprüfung, Ontologiesemantik und Stable-Freigabe.
+- [Semantisches Atomaritäts-Review](semantic-atomicity-review.de.md)
+  Prüfprozess zur Entscheidung, ob technische Inhaltsblätter semantisch atomar sind.
+- [Requires-Review-Prozess](requires-review-process.de.md)
+  Manueller QS-Ablauf für Voraussetzungsqualität auf atomaren Lernzielen.
+- [Atomaritäts-Review-Prozess (ältere Referenz)](atomic-review-process.de.md)
+  Ältere Prozessreferenz für die Prüfung atomarer Lernziele.
+- [Relationsprüfungen](relation-checks.de.md)
+  Prüfumfang und CI-Durchsetzungsprofil für Relationen.
+- [MEM-SPARQL-Konsistenzaudit](mem-sparql-consistency.de.md)
+  Dauerhafte Prozessreferenz für den nicht-blockierenden Live-Abgleich mit dem MEM/FWU-Endpunkt.
+- [MEM-SPARQL-Konsistenz-Runbook](mem-sparql-consistency-runbook.de.md)
+  Operative Checkliste für Audit-Lauf, Queue-Auswertung und Ledger-Entscheidungen.
+- [Runbook für Quellenbegründungen](goal-source-rationales-runbook.de.md)
+  Operative Checkliste zum Erzeugen und Prüfen menschenlesbarer Quellenbegründungen.
+- [Lernziel-Feedback: Übergabe aus Produktion an Codex (EN)](goal-feedback-codex-intake.md)
+  Standardmäßig deaktivierte Produktions-Inbox, digestgebundene lokale Übernahme, Online-Löschung und Kandidaten-Triage.
+
+## Curriculum-Champion-Programm
+
+- [Champion-Leitfaden](champion-guide.de.md)
+- [Vier-Stufen-Champion-Modell](four-level-champion-model.de.md)
+- [Abi 2026 Mathe Deeplink MVP](abi26-mathe-deeplink-mvp.md)
+
+</div>
+
+<div data-sp-content-lang="en" markdown>
+
+## Generated Status
+
+These files are generated snapshots or queues. Do not edit them as source of truth; regenerate them with the command documented in the matching process, runbook, or registry.
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Generierte Statusberichte
+
+Diese Dateien sind generierte Snapshots oder Arbeitswarteschlangen. Sie werden nicht manuell editiert, sondern über das im jeweiligen Prozess, Runbook oder Register dokumentierte Kommando neu erzeugt.
+
+</div>
+
+- [Generated QA Status Artifact Registry](status/README.md)
+- [Current Curriculum Quality Status](status/curriculum-quality-status.md)
+- [Curriculum Source Coverage Audit](status/curriculum-source-coverage-audit.md)
+- [Mathematik Source Verification](status/source-verification-de-gymnasium-mathematik-v1.md)
+- [MEM SPARQL Consistency Audit Status](status/mem-sparql-consistency-audit.md)
+- [MEM SPARQL Consistency Review Issues](status/mem-sparql-consistency-review-issues.md)
+- [MEM SPARQL Consistency Review Issues JSON](status/mem-sparql-consistency-review-issues.json)
+- [Goal Source Rationales PoC](status/goal-source-rationales-poc.md)
+- [Goal Source Rationales MEM/FWU Examples](status/goal-source-rationales-mem-examples.md)
+- [Goal Source Rationales MEM/FWU Plain Examples](status/goal-source-rationales-mem-examples-plain.md)
+- [Goal Source Rationale Coverage](status/goal-source-rationale-coverage.md)
+- [Goal Source Rationales Mathematik All-Relevant JSON](status/goal-source-rationales-math-all-relevant.json)
+- [Goal Source Rationale Gap Issues](status/goal-source-rationale-gap-issues.md)
+- [Goal Source Rationale Mapping Batch 01](status/goal-source-rationale-mapping-batch-01.md)
+- [Memory-Card Review Rollout](status/memory-card-review-rollout.md)
+- [M0 Remediation Plan](status/m0-remediation-plan.md)
+- [Gymnasium Duration Model Readiness](status/gymnasium-duration-model-readiness.md)
+
+<div data-sp-content-lang="en" markdown>
+
+## Memory-Card Review Status
+
+Generated audit views for configured `CQR-302` reviews.
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Memory-Card-Review-Status
+
+Generierte Prüfübersichten für konfigurierte `CQR-302`-Reviews.
+
+</div>
+
+- [Biologie Memory-Card Review](status/memory-card-review-canonical-biology-full.md)
+- [Chemie Memory-Card Review](status/memory-card-review-canonical-chemistry-full.md)
+- [Deutsch Memory-Card Review](status/memory-card-review-canonical-german-full.md)
+- [Geschichte Memory-Card Review](status/memory-card-review-canonical-history-full.md)
+- [Informatik Memory-Card Review](status/memory-card-review-canonical-informatics-full.md)
+- [Latein Memory-Card Review](status/memory-card-review-canonical-latin-full.md)
+- [Mathematik Memory-Card Review](status/memory-card-review-canonical-math-full.md)
+- [Physik Memory-Card Review](status/memory-card-review-canonical-physics-full.md)
+- [Politik und Wirtschaft Memory-Card Review](status/memory-card-review-canonical-politics-economics-full.md)
+- [Wirtschaftswissenschaften Memory-Card Review](status/memory-card-review-canonical-economics-full.md)
+
+<div data-sp-content-lang="en" markdown>
+
+## Dated Subject M7 Checkpoints (Mathematik, Wirtschaft, Chemie, Biologie)
+
+Dated engineering checkpoints from subject-level `M6`/`M7` closeout runs (maintained in their original authoring language).
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Datierte Fach-M7-Arbeitsstände (Mathematik, Wirtschaft, Chemie, Biologie)
+
+Datierte Zwischenstände und Abschlussberichte aus der fachweisen `M6`/`M7`-Qualitätssicherung.
+
+</div>
+
+- [Mathematik M7: Fortsetzungs- und Zwischenstand vom 20. September](math-m7-resumed-2026-09-20.md)
+- [Mathematik M7: Fortsetzung und Pausen-Checkpoint vom 23. September](math-m7-resumed-2026-09-21.md)
+- [Mathematik M7: Abschlusskonzept und Übergabe vom 28. September](math-m7-concept-and-handoff-2026-09-28.md)
+- [Mathematik M7: commitfähiger Pausen-Checkpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28.md)
+- [Mathematik M7: Integrationscheckpoint vom 28. September](math-m7-commit-checkpoint-2026-09-28-v2.md)
+- [Mathematik M7: Integrationscheckpoint vom 29. September](math-m7-commit-checkpoint-2026-09-29.md)
+- [Mathematik: 100 % im maschinellen Fünf-Gate-Bericht](math-m7-machine-closeout-2026-09-29.md)
+- [Maschineller M7-Abschluss Wirtschaftswissenschaften: 346/346 und CQR-303 PASS vom 11. Oktober](wirtschaft-m7-machine-closeout-2026-10-11.md)
+- [Aktuelle qualifizierte Kontextintegration Wirtschaft bei 291/346 vom 11. Oktober](wirtschaft-m7-current291-qualified-contexts-2026-10-11.md)
+- [M6 mit grüner GitHub-CI und aktuelle M7-Fortsetzung Wirtschaft bei 225/346 vom 11. Oktober](wirtschaft-m7-current225-m6-ci-green-2026-10-11.md)
+- [Aktueller M6-Zwischenstand Wirtschaft und CI vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
+- [Fortsetzung und aktuelle Paketnachweise Wirtschaft vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
+- [Integrations- und regulärer Lernzielbuchcheckpoint Wirtschaft vom 8. Oktober](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
 - [Chemie: lokaler 455/455-Abschluss, maschinelles M7 und offene Quellenfragen (19.10.2026)](chemie-current455-integration-progress-2026-10-19.md)
 - [Chemie: aktueller 454er-Arbeitsstand, gezielte Prüfungen und offene Quellen-/Beschreibungsfälle (18.10.2026)](chemie-current454-integration-progress-2026-10-18.md)
 - [Chemie: Lernwegabschluss nach bestandenem CI-Zwischenstand vom 18. Oktober](chemie-current450-route-completion-resumption-2026-10-18.md)
-  Wiederhergestellter 450er-Arbeitsstand, konkrete Aufgabenmaterial-Korrekturen und gezielte unabhängige Prüfungen.
 - [Chemie: stabiler CI-Zwischenstand und inaktiv gesicherter 450er-Arbeitsstand (18.10.2026)](chemie-current450-inactive-ci-checkpoint-2026-10-18.md)
 - [Chemie: historischer 450er-Integrationsbericht vor der Inaktivierung (18.10.2026)](chemie-current450-final-integration-progress-2026-10-18.md)
 - [Chemie: historischer 447er-Integrationsbericht (18.10.2026)](chemie-current447-final-integration-progress-2026-10-18.md)
-
 - [Chemie: sichtbarer Quellen- und Vorbedingungscheckpoint mit 439 fachlichen Zielen (17.10.2026)](chemie-current439-source-requires-checkpoint-2026-10-17.md)
 - [Chemie: inaktiver Arbeitsstand mit 439 fachlichen Zielen und zwei neuen Beschreibungsabschlüssen (16.10.2026)](chemie-current439-reviewed-working-checkpoint-2026-10-16.md)
 - [Chemie: Themenumfang, sechs aktuelle Seitenbindungen und offene Geltungsintegration (16.10.2026)](chemie-current437-source-scope-integration-checkpoint-2026-10-16.md)
@@ -161,146 +324,46 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Biologie: 13 weitere fachliche Abschlüsse vom 11. Oktober, 366/395; Chemie 206/398 erhalten](chemie-biologie-m7-biologie366-health-integration-2026-10-11.md)
 - [Chemie/Biologie: inaktiver Nachweis-Checkpoint vom 11. Oktober; 206/398 und 366/395 erhalten](chemie-biologie-m7-inactive-evidence-github-checkpoint-2026-10-11.md)
 
-## Review Lanes
+<div data-sp-content-lang="en" markdown>
 
-These pages describe durable manual or semi-automated review processes. Their ledgers or configs are the source of truth; generated status pages are not.
-
-- [Curriculum Package Human Review Gates (DE)](curriculum-package-human-review-gates.md) · [English (EN)](curriculum-package-human-review-gates.en.md)
-  Central release checklist for visualization quality, redistribution rights, source-text verification, ontology semantics, and stable promotion.
-- [Semantic Atomicity Review (EN)](semantic-atomicity-review.md) · [Deutsch (DE)](semantic-atomicity-review.de.md)
-  Review process for deciding whether technical content leaves are semantically atomic.
-- [Requires Review Process (EN)](requires-review-process.md) · [Deutsch (DE)](requires-review-process.de.md)
-  Manual QA workflow for prerequisite quality on atomic goals.
-- [Atomic Review Process (EN)](atomic-review-process.md) · [Deutsch (DE)](atomic-review-process.de.md)
-  Older atomic-goal review workflow reference.
-- [Relation Checks (EN)](relation-checks.md) · [Deutsch (DE)](relation-checks.de.md)
-  Relation-check scope and CI enforcement profile.
-- [MEM SPARQL Consistency Audit (EN)](mem-sparql-consistency.md) · [Deutsch (DE)](mem-sparql-consistency.de.md)
-  Durable process reference for the non-blocking live MEM/FWU endpoint comparison.
-- [MEM SPARQL Consistency Runbook (EN)](mem-sparql-consistency-runbook.md) · [Deutsch (DE)](mem-sparql-consistency-runbook.de.md)
-  Operational checklist for running the audit, reading the queue, and writing ledger decisions.
-- [Goal Source Rationales Runbook (EN)](goal-source-rationales-runbook.md) · [Deutsch (DE)](goal-source-rationales-runbook.de.md)
-  Operational checklist for generating and reviewing human-readable source rationales.
-- [Goal Feedback: Production-to-Codex Intake](goal-feedback-codex-intake.md)
-  Default-off production inbox, digest-bound local custody transfer, online deletion, and candidate-only critical triage.
-
-## Generated Status
-
-These files are generated snapshots or queues. Do not edit them as source of truth; regenerate them with the command documented in the matching process, runbook, or registry.
-
-- [Generated QA Status Artifact Registry](status/README.md)
-  Full list of generated status artifacts with role, source of truth, and regeneration command.
-
-- [Current Curriculum Quality Status](status/curriculum-quality-status.md)
-  Generated snapshot consumed by the dashboard.
-- [Curriculum Source Coverage Audit](status/curriculum-source-coverage-audit.md)
-  Generated source-coverage status across configured curriculum evidence.
-- [Mathematik Source Verification](status/source-verification-de-gymnasium-mathematik-v1.md)
-  Generated report for 9,498 machine-verified source texts and the remaining 479 fingerprint-bound human reviews.
-- [MEM SPARQL Consistency Audit Status](status/mem-sparql-consistency-audit.md)
-  Generated live endpoint comparison report.
-- [MEM SPARQL Consistency Review Issues](status/mem-sparql-consistency-review-issues.md)
-  Generated human review queue from the MEM consistency audit.
-- [MEM SPARQL Consistency Review Issues JSON](status/mem-sparql-consistency-review-issues.json)
-  Machine-readable MEM review queue.
-- [Goal Source Rationales PoC](status/goal-source-rationales-poc.md)
-  Generated source-rationale proof of concept for selected canonical Mathematik goals.
-- [Goal Source Rationales MEM/FWU Examples](status/goal-source-rationales-mem-examples.md)
-  Generated source-rationale examples with live MEM/FWU-SPARQL matches for selected canonical Mathematik goals.
-- [Goal Source Rationales MEM/FWU Plain Examples](status/goal-source-rationales-mem-examples-plain.md)
-  Plain-language source-rationale view with SkillPilot paths and concrete SPARQL verification queries.
-- [Goal Source Rationale Coverage](status/goal-source-rationale-coverage.md)
-  Generated coverage report and work queue for scaling Mathematik source rationales from the public runtime index to all relevant goals and relation texts.
-- [Goal Source Rationales Mathematik All-Relevant JSON](status/goal-source-rationales-math-all-relevant.json)
-  Machine-readable full Mathematik leaf-goal report with explicit classic-source gaps for uncovered goals.
-- [Goal Source Rationale Gap Issues](status/goal-source-rationale-gap-issues.md)
-  Generated human-review issue queue for classic-source gaps in the all-relevant Mathematik source-rationale report.
-- [Goal Source Rationale Mapping Batch 01](status/goal-source-rationale-mapping-batch-01.md)
-  First review batch of sibling-supported Mathematik source-rationale mapping candidates.
-- [Memory-Card Review Rollout](status/memory-card-review-rollout.md)
-  Generated triage view for the remaining `CQR-302` rollout.
-- [M0 Remediation Plan](status/m0-remediation-plan.md)
-  Generated work queue for curricula that still need source coverage, QA scopes, and reviews before they can leave `M0`.
-- [Gymnasium Duration Model Readiness](status/gymnasium-duration-model-readiness.md)
-  Generated readiness view for duration-model policy.
-
-## Memory-Card Review Status
-
-These are generated audit views for configured `CQR-302` reviews. The registry lists their shared source and regeneration command.
-
-- [Biologie Memory-Card Review](status/memory-card-review-canonical-biology-full.md)
-- [Chemie Memory-Card Review](status/memory-card-review-canonical-chemistry-full.md)
-- [Deutsch Memory-Card Review](status/memory-card-review-canonical-german-full.md)
-- [Geschichte Memory-Card Review](status/memory-card-review-canonical-history-full.md)
-- [Informatik Memory-Card Review](status/memory-card-review-canonical-informatics-full.md)
-- [Latein Memory-Card Review](status/memory-card-review-canonical-latin-full.md)
-- [Mathematik Memory-Card Review](status/memory-card-review-canonical-math-full.md)
-- [Physik Memory-Card Review](status/memory-card-review-canonical-physics-full.md)
-- [Politik und Wirtschaft Memory-Card Review](status/memory-card-review-canonical-politics-economics-full.md)
-- [Wirtschaftswissenschaften Memory-Card Review](status/memory-card-review-canonical-economics-full.md)
-
-## Pilots And Dossiers
+## Pilots and Dossiers
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Piloten und Einzeldossiers
+
+Diese Dokumente halten einmalige Untersuchungen, gezielte Korrekturpakete oder datierte PoC-Nachweise fest; sie sind historischer Kontext und keine dauerhaften Prozessverträge.
+
+</div>
+
 - [Backend-CI: Laufzeit und Fehlerpriorisierung vom 8. Oktober](backend-ci-runtime-review-2026-10-08.md)
-  Gebundener Laufzeitvergleich, erhaltene QS und vollständige lokale Abschlussprüfungen.
 - [Mathematik: HE-Sek-I-Modellbeziehungen und Scope](math-he-seki-model-relations-scope-correction-2026-09-27.md)
-  Gezielte Quellen- und Sichtkorrektur ohne pauschale Landesgeltung.
 - [Mathematik: Stammfunktionsbild 31be](math-m7-31be-image-candidate-2026-09-27.md)
-  Bildkandidat, fachliche Prüfung und offene Nachweise.
 - [Mathematik: 7d in der vorläufigen HE-LK-Sicht](math-m7-7d-he-lk-scope-2026-09-28.md)
-  Dokumentiert den Arbeitsstand; die Niveaufrage ist im Abschlusskonzept erneut geöffnet.
-
 - [Mathematik HE K3: getrennte Prozessquelle als Kandidat](math-he-k3-process-source-candidate-2026-09-27.md)
-  Prüffähiger, noch nicht freigegebener Weg für die Modellierungsstandards K3.1–K3.8.
 - [Mathematik Q2.3: Korrektur der hessischen LK-Druckseiten](math-q23-source-reference-correction-2026-09-27.md)
-  Zehn gezielt nachgewiesene Quellenreferenzen und abhängige Rationale-Nachweise.
 - [Mathematik Q4.2: Korrektur der hessischen Druckseiten](math-q42-source-reference-correction-2026-09-27.md)
-  Trennung der Bullet-Referenzen zwischen Druckseiten 51 und 52.
 - [Mathematik Q4: Caterer-Prüfungsaufgabe, fokussierte QS](math-q4-caterer-exam-current-review-2026-09-23.md)
-  Geprüfte Aufgabenbindung, GK/LK-Projektion und Grenzen der maschinellen Freigabe.
 - [Mathematik E-Phase: Stammfunktionsgraphen, fokussierte Prüfungs-QS](math-antiderivative-exam-candidate-review-2026-09-28.md)
-  Zwei bildgestützte Aufgaben mit aktueller DE/EN-Quellenbindung und geprüfter Bewertung.
 - [Issue 48: Einheitlicher Lernplanstatus](issue-48-unified-learning-plan-status.md)
-  Manuell gepflegte Abnahmematrix für Tages-/Wochenstatus, Lernfortsetzung und den abgestimmten Claude-Rollout.
 - [Physik: M7-Abschluss im Mehrpass-Durchgang, 2026-09-20](physics-m7-resumed-2026-09-20.md)
-  478/478 streng abgeschlossene Ziele, erhaltene Nachweise und getrennte maschinelle QS ohne behauptete menschliche Erprobung.
 - [Physik: Wiederaufnahme und CI-Voraussetzung, 2026-09-14](physics-resumed-checkpoint-2026-09-14.md)
-  Physik-only-Auftrag nach dem committeten Meilenstein, verbleibende Claims und eng begrenzte Berichtsreparatur; Mathematik bleibt pausiert.
 - [Mathematik/Physik: Wiederaufnahme, 2026-09-13](math-physics-resumed-checkpoint-2026-09-13.md)
-  Grüne CI als Einstieg, aktuelle Teilmengenabschlüsse und gezielte Nachprüfung offener Bild- und Kontextbindungen.
 - [Physik: pausierter Zwischenstand, 2026-09-08](physics-paused-checkpoint-2026-09-08.md)
-  Konsolidiertes Physik-Paket, aktueller strenger Fortschritt und disjunkte Haltepakete ohne neue QS-Läufe.
 - [Physik: pausierter Zwischenstand, 2026-09-07](physics-paused-checkpoint-2026-09-07.md)
-  Begrenzte Korrekturen, erhaltenes M6-Niveau und archivierte Strukturentwürfe für die spätere Wiederaufnahme.
 - [Mathematik/Physik: Wiederaufnahme- und Effizienzreview, 2026-09-05](math-physics-deep-understanding-resumption-review-2026-09-05.md)
-  Geprüfte Wiederverwendung der begonnenen Batches, strenge Fortschrittszähler und dokumentierte Wiederaufnahme mit begrenztem Strukturentscheid.
 - [Mathematik/Physik Deep-Understanding Verfahrensreview und Zwischenstopp, 2026-09-02](math-physics-deep-understanding-procedure-review-2026-09-02.md)
-  Reviewed high-quality rollout procedure, strict progress boundary, protected B029/B031 in-flight state, and exact resumable handoff.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-29](math-physics-deep-understanding-rollout-checkpoint-2026-08-29.md)
-  Current commit/deploy checkpoint with strict progress, B019/B020 bindings, the corrected electromagnetic-wave image, exact GoalBook hashes, and a mandatory process review before continuation.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-28](math-physics-deep-understanding-rollout-checkpoint-2026-08-28.md)
-  Historical checkpoint before the final B019/B020 consolidation and electromagnetic-wave image correction.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-27](math-physics-deep-understanding-rollout-checkpoint-2026-08-27.md)
-  Earlier checkpoint with strict progress, Nano Banana Pro audit, exact book bindings, staging handoff, and resumable continuation boundary.
 - [Mathematik/Physik Deep-Understanding Checkpoint, 2026-08-26](math-physics-deep-understanding-rollout-checkpoint-2026-08-26.md)
-  Deployable, validated rollout checkpoint with strict subject progress and resumable continuation boundary.
 - [Mathematik/Physik Deep-Understanding Review-Pause, 2026-08-27](math-physics-deep-understanding-review-pause-2026-08-27.md)
-  Independent follow-up review evidence, isolated revision questions, and an explicit no-canonical-change handoff.
 - [MEM SPARQL Consistency PoC, 2026-06-01](archive/mem-sparql-consistency-poc-2026-06-01.md)
-  Archived first Mathematik/Gymnasium MEM PoC baseline and investigation notes.
 - [MEM SPARQL Consistency PoC Procedure](mem-sparql-consistency-poc-procedure.md)
-  Compatibility pointer for old MEM PoC links.
 - [Englisch M0 Remediation Pilot](status/english-remediation-pilot.md)
-  Reproducible first source-expansion slice for bringing Englisch out of `M0`.
 - [Biologie Memory-Card Pilot Dossier](status/memory-card-pilot-biologie.md)
-  Reproducible semantic preparation artifact for the Biologie `CQR-302` pilot.
 - [BW Mathematik Sek II: HE Coverage Audit](bw-math-sekii-he-coverage-audit.md)
-  Fachliche Kontrolle der BW-Kursstufen-Abdeckung gegen Hessen Sek II.
-
-## Curriculum Champion Process
-
-- [Champion Guide (EN)](champion-guide.md) · [Champion-Leitfaden (DE)](champion-guide.de.md)
-- [Four-level Champion Model (EN)](four-level-champion-model.md) · [Vier-Stufen-Modell (DE)](four-level-champion-model.de.md)
-- [Abi 2026 Mathe Deeplink MVP (DE)](abi26-mathe-deeplink-mvp.md) · [English (EN)](abi26-mathe-deeplink-mvp.en.md)

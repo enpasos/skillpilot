@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](view-projection-and-goal-placement.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · **§3 Sichtenprojektion** · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · **§3 Sichtenprojektion** · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-view-projection"></a>
@@ -19,7 +19,12 @@ Eine sorgfältig lesende Person muss jeden sichtbaren Lernbaum allein aus dokume
 <a id="sec-sga-vp-families"></a>
 ### 3.1. Vier Sichtenfamilien und fünf unverhandelbare Projektionsregeln
 
-| Sichtenfamilie | Beantwortete Leitfrage | Ausschließliche strukturelle Wahrheitsquelle | | –- | –- | –- | | **Inhaltsbaum (Content Tree)** | Was gehört fachlich worunter? | `goals` + explizite `contains`-Kanten (geordnet nach `contains`-Array). | | **Programmbaum (Program Tree)** | Wo im Bildungsgang wird ein Ziel eingeführt, vertieft oder geprüft? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` hängt ein; `secondary`/`assessed` als Badges/Overlays, fehlend liefert `unplacedInScope`). | | **Kompetenzsicht** | Entlang welcher Prozess- oder Kompetenzachse ist ein Ziel eingeordnet? | `competencyCatalog` + `competencyRefs` (orthogonale Taxonomieprojektion). | | **Composition-Baum** | Wie sieht ein aufgelöster Scope das Fach als einen Default-Baum? | Geprüfte `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + kanonische `contains`-Expansion. | {cols="20%,36%,44%"}
+| Sichtenfamilie | Beantwortete Leitfrage | Ausschließliche strukturelle Wahrheitsquelle |
+| --- | --- | --- |
+| **Inhaltsbaum (Content Tree)** | Was gehört fachlich worunter? | `goals` + explizite `contains`-Kanten (geordnet nach `contains`-Array). |
+| **Programmbaum (Program Tree)** | Wo im Bildungsgang wird ein Ziel eingeführt, vertieft oder geprüft? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` hängt ein; `secondary`/`assessed` als Badges/Overlays, fehlend liefert `unplacedInScope`). |
+| **Kompetenzsicht** | Entlang welcher Prozess- oder Kompetenzachse ist ein Ziel eingeordnet? | `competencyCatalog` + `competencyRefs` (orthogonale Taxonomieprojektion). |
+| **Composition-Baum** | Wie sieht ein aufgelöster Scope das Fach als einen Default-Baum? | Geprüfte `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + kanonische `contains`-Expansion. |
 
 Fünf verbindliche Regeln gelten für alle Projektionen:
 

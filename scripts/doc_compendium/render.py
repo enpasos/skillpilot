@@ -198,6 +198,11 @@ def relative_web_link(from_doc: str, to_doc: str, anchor: str = "") -> str:
     return f"{rel}#{anchor}" if anchor else rel
 
 
+def is_excluded_docs_source_path(rel_path: str) -> bool:
+    parts = Path(rel_path).parts
+    return any(seg == "source" or seg.endswith("-source") for seg in parts)
+
+
 def render_inline(
     text: str,
     lang: str,
@@ -253,7 +258,7 @@ def render_inline(
                     parts.append(rf"\srcref{{{tex_rpath}{frag_suffix}}}{{{llabel}}}")
             else:
                 mapped = bilingual_doc_map.get(clean_rpath, {}).get(lang, clean_rpath)
-                if mapped.startswith("docs/") and not is_dir:
+                if mapped.startswith("docs/") and not is_dir and not is_excluded_docs_source_path(mapped):
                     href = relative_web_link(current_web_doc, mapped, rfrag)
                     parts.append(f"[{llabel}]({href})")
                 else:
@@ -441,7 +446,17 @@ def parse_tex_colspec(cols: str | None, ncols: int, longtable: bool = False) -> 
     if not cols:
         parts = ["X"] * ncols
     else:
-        parts = [p.strip() for p in cols.split(",") if p.strip()]
+        raw_parts = [p.strip() for p in cols.split(",") if p.strip()]
+        usable_mm = max(60.0, 154.0 - 4.3 * max(0, len(raw_parts) - 1))
+        if raw_parts and all(p.endswith("%") for p in raw_parts):
+            pcts = [float(p[:-1].strip()) for p in raw_parts]
+            total_pct = sum(pcts) or 100.0
+            parts = [f"{usable_mm * (pct / total_pct):.1f}mm" for pct in pcts[:-1]] + ["X"]
+        else:
+            parts = [
+                f"{usable_mm * (float(p[:-1].strip()) / 100.0):.1f}mm" if p.endswith("%") else p
+                for p in raw_parts
+            ]
     if not longtable or "X" not in parts:
         mapped = ["X" if p == "X" else f"P{{{p}}}" for p in parts]
         return "@{}" + "".join(mapped) + "@{}"

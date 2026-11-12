@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](node-types.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · **§2 Node Types** · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · **§2 Node Types** · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-node-types"></a>
@@ -19,7 +19,12 @@ SkillPilot classifies learning goals into four pedagogical goal kinds that are o
 <a id="sec-sga-nt-summary"></a>
 ### 2.1. Outcome Contract and Compiled Applicability
 
-| Node Type | Pedagogical Purpose | Typical Content & Completion Basis | | –- | –- | –- | | **Orientation** | Meaningful, low-pressure entry into a subject or phase | Concrete possibilities, personal interest follow-up, and explicit learner closure (`semanticKind: "orientation"`, rule `GVR-014`). | | **Understanding** | Conceptual or procedural subject mastery (default) | Assessable `"The learner can ..."` competencies governed by `requires`. | | **Memorize** | Durable recall of facts, vocabulary, and formulas | SM-2 spaced-repetition practice plus a mandatory coach-led **verified hard recall** check over all required cards. | | **Exam** | Realistic scored assessment simulation | Verbatim `examData` tasks graded strictly by `scoring.steps` under neutral AI Exam Mode supervision. | {cols="18%,34%,48%"}
+| Node Type | Pedagogical Purpose | Typical Content & Completion Basis |
+| --- | --- | --- |
+| **Orientation** | Meaningful, low-pressure entry into a subject or phase | Concrete possibilities, personal interest follow-up, and explicit learner closure (`semanticKind: "orientation"`, rule `GVR-014`). |
+| **Understanding** | Conceptual or procedural subject mastery (default) | Assessable `"The learner can ..."` competencies governed by `requires`. |
+| **Memorize** | Durable recall of facts, vocabulary, and formulas | SM-2 spaced-repetition practice plus a mandatory coach-led **verified hard recall** check over all required cards. |
+| **Exam** | Realistic scored assessment simulation | Verbatim `examData` tasks graded strictly by `scoring.steps` under neutral AI Exam Mode supervision. |
 
 Every atomic goal shares one binary outcome contract: **mastered or not mastered** (persisted as `1` / `1.0` for runtime compatibility; see [Learning Workflow](../runtime-workflows/learning-workflow.md)). Cluster progress is derived strictly from unique atomic descendants. Optional compiled `applicability` metadata (for example `{"jurisdiction": ["DE-HE", "DE-BY"]}`, with authoring exceptions in `extendedData.applicabilityOverrides`) filters visibility in scoped views without defining a node type or replacing semantic `tags`.
 

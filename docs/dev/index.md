@@ -1,8 +1,56 @@
+<div data-sp-content-lang="en" markdown>
+
 # Developer Documentation Index
 
 This page is the entry point for developer-facing SkillPilot documentation. Keep durable curriculum semantics in `docs/concept/`, QA process contracts in `docs/qa-ci/`, and implementation or migration working material here.
 
-## Start Here
+## Developer, Schema & Editor Compendium (Single-Source)
+
+- [Developer, Schema & Editor Guide (PDF)](skillpilot-developer-and-editor-guide.en.pdf)
+  Unified single-source compendium for durable developer, schema, editor, and platform references.
+- [Documentation Guidelines (§1)](documentation-guidelines.md)
+  Document roles, placement rules, single-source compendia, generated artifact handling, and local checks.
+- [Landscape JSON Field Reference (§2)](landscape-json-field-reference.md)
+  Field-level reference for skill landscape JSON authoring and review.
+- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot (§3)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md)
+  Developer-facing schema/runtime migration reference.
+- [Curriculum Authoring Editors (§4)](curriculum-authoring-editors.md)
+- [Graph Editor (§5)](graph-editor.md)
+- [Flashcard Editor (§6)](flashcard-editor.md)
+- [My Goals Node Ordering (§7)](my-goals-node-ordering.en.md)
+- [Working with Liquibase in SkillPilot (§8)](liquibase.md)
+- [Auto-Update Mechanism Architecture (§9)](auto-update.md)
+
+## Active Implementation Plans & Migration Ledgers
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+# Entwicklungs-Dokumentation
+
+Diese Seite ist der Einstiegspunkt für die entwicklungsnahe Dokumentation von SkillPilot. Dauerhafte Fach- und Produktkonzepte liegen unter `docs/concept/`, QS- und CI-Verträge unter `docs/qa-ci/` und Implementierungs- sowie Migrationsunterlagen hier.
+
+## Entwickler-, Schema- & Editor-Kompendium (Single-Source)
+
+- [Entwickler-, Schema- & Editor-Handbuch (PDF)](skillpilot-developer-and-editor-guide.de.pdf)
+  Einheitliches Single-Source-Kompendium für dauerhafte Entwickler-, Schema-, Editor- und Plattformreferenzen.
+- [Dokumentationsrichtlinien (§1)](documentation-guidelines.de.md)
+  Dokumentrollen, Ablageregeln, Single-Source-Kompendien, Umgang mit generierten Artefakten und lokale Prüfungen.
+- [JSON-Feldreferenz für Skill-Landschaften (§2)](landscape-json-field-reference.de.md)
+  Feldgenaue Referenz für das Erstellen und Prüfen von Skill-Landschafts-JSONs.
+- [Allgemeines Zielsystem: Minimalschema, Laufzeit-Fallback und Mathematik-Pilot (§3)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.de.md)
+  Entwicklernahe Schema- und Laufzeit-Migrationsreferenz.
+- [Autoren-Editoren im Überblick (§4)](curriculum-authoring-editors.de.md)
+- [Graph-Editor (§5)](graph-editor.de.md)
+- [Lernkarten-Editor (§6)](flashcard-editor.de.md)
+- [Sortierreihenfolge unter „Meine Lernziele“ (§7)](my-goals-node-ordering.md)
+- [Arbeiten mit Liquibase in SkillPilot (§8)](liquibase.de.md)
+- [Auto-Update-Architektur (§9)](auto-update.de.md)
+
+## Aktive Umsetzungspläne & Migrationsstände
+
+</div>
 
 - [Transitive Minimalität: Lieferplan nach main](transitive-minimality-main-delivery-plan-2026-11-07.md)
   Aktueller Auftrag: G17 in der Standard-Meilensteinprüfung und Wiederherstellung der ursprünglichen zehn M6-/M7-Fachstände in kleinen lieferbaren PRs.
@@ -15,36 +63,28 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Deutsch: erster atomarer Bedarf an einem Cluster, 9. November 2026](german-first-cluster-prerequisite-normalization-review-2026-11-09.md)
 - [Deutsch: Integration der Mathematik-Assessment-Reader, 9. November 2026](german-assessment-reader-integration-review-2026-11-09.md)
 - [Umsetzungsplan: Lerneinheiten und integrierte Lernkarte](learning-units-implementation-plan.md)
-  Pausierter Planungsauftrag: Karte im vollständigen Cockpit, erste echte rekursive Lerneinheit, vollständiger Mathematik-Meilenstein; danach separat Physik, Chemie und Biologie.
 - [Historischer Neustartplan: curriculare Anerkennung und Fachabschluss](curriculum-recognition-restart-plan.md)
-  Frühere Neuplanung mit konkreten Bestands- und ID-Befunden; durch den Lerneinheitenplan abgelöst, für gezielte Nachnutzung erhalten.
 - [Historischer Umsetzungsplan: Assessment-gated Completion](assessment-gated-completion-implementation-plan.md)
-  Überholter Implementierungs- und Prüfstand vom 31. Oktober; keine Freigabe zur Fortsetzung des alten Modells.
 - [Historische Implementierungs- und Prüfhinweise](assessment-gated-completion-pilot.md)
-  Frühere lokale Bedienung und Nachweise; für den Neustart nur bausteinweise und mit neuen Sollwerten verwendbar.
 - [Dual Curriculum Package Implementation Status](dual-curriculum-package-implementation-status.md)
-  Current checkpoint, quality evidence, and remaining roadmap for paired JSON-runtime and FWU-ontology releases.
-- [Developer, Schema & Editor Guide (PDF, EN)](skillpilot-developer-and-editor-guide.en.pdf) · [Entwickler-, Schema- & Editor-Handbuch (PDF, DE)](skillpilot-developer-and-editor-guide.de.pdf)
-  Unified bilingual single-source compendium for durable developer, schema, editor, and platform references.
-- [Documentation Guidelines (§1, EN)](documentation-guidelines.md) · [Deutsch (DE)](documentation-guidelines.de.md)
-  Document roles, placement rules, single-source compendia, generated artifact handling, and local checks.
 - [Canonical Gymnasium Implementation Plan](canonical-gymnasium-implementation-plan.md)
-  Overall implementation direction for canonical German Gymnasium landscapes.
 - [Canonical Gymnasium Migration Status](canonical-gymnasium-migration-status.md)
-  Long-running migration ledger and handoff context.
-- [General Goal System: Minimal Schema, Runtime Fallback, and Math Pilot (§3, EN)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.md) · [Deutsch (DE)](skill-graph-minimal-schema-runtime-fallback-and-math-pilot.de.md)
-  Developer-facing schema/runtime migration note.
-- [Landscape JSON Field Reference (§2, EN)](landscape-json-field-reference.md) · [Deutsch (DE)](landscape-json-field-reference.de.md)
-  Field-level reference for landscape JSON authoring and review.
 
-## Canonical Gymnasium Core
+<div data-sp-content-lang="en" markdown>
+
+## Canonical Gymnasium Rollout & State Audits
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Kanonisches Gymnasium: Rollout & Länder-Audits
+
+</div>
 
 - [Canonical Gymnasium Applicability Design](canonical-gymnasium-applicability-design.md)
 - [Bavaria Mathematics Sek I Probe](canonical-gymnasium-by-math-sek1-probe.md)
 - [Bavaria Sek I Year-Level Normalization](canonical-gymnasium-by-sek1-normalization.md)
-
-## Mathematics Rollout
-
 - [Mathematics Bundeslaender Status](canonical-gymnasium-math-bundeslaender-status.md)
 - [Mathematics DE Expansion Plan](canonical-gymnasium-math-de-expansion-plan.md)
 - [Mathematics Source-Closure Plan](canonical-gymnasium-math-source-closure-plan.md)
@@ -58,18 +98,12 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Sek II Analytic Geometry / Vectors Audit](canonical-gymnasium-math-sek2-analytic-geometry-audit.md)
 - [Sek II Linear Algebra / Matrices Audit](canonical-gymnasium-math-sek2-linear-algebra-audit.md)
 - [Sek II Stochastics Audit](canonical-gymnasium-math-sek2-stochastics-audit.md)
-
-## Physics Rollout
-
 - [Physics Bundeslaender Status](canonical-gymnasium-physics-bundeslaender-status.md)
 - [Physics Parity Plan](canonical-gymnasium-physics-parity-plan.md)
 - [Physics Topic Workboard](canonical-gymnasium-physics-topic-workboard.md)
 - [Physics M2 Lane Shortlist](canonical-gymnasium-physics-m2-lane-shortlist.md)
 - [Physics Evidence Watch Status](canonical-gymnasium-physics-evidence-watch-status.md)
 - [Physics Evidence Watch Delta](canonical-gymnasium-physics-evidence-watch-delta.md)
-
-## Chemistry Rollout
-
 - [Chemistry Bundeslaender Status](canonical-gymnasium-chemistry-bundeslaender-status.md)
 - [Chemistry All-State Cutover Completion Audit](canonical-gymnasium-chemistry-all-states-cutover-completion-audit.md)
 - [Chemistry Topic-Gap Audit](canonical-gymnasium-chemistry-topic-gap-audit.md)
@@ -84,56 +118,59 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Chemistry Evidence Watch Maintenance Review, 8 November 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-08.md)
 - [Chemistry Evidence Watch Maintenance Review, 9 November 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-09.md)
 - [Chemistry Evidence Watch Maintenance Review, 10 November 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-11-10.md)
+- [Chemistry Cutover Audit: Baden-Wuerttemberg](canonical-gymnasium-chemistry-baden-wuerttemberg-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Berlin-Brandenburg](canonical-gymnasium-chemistry-berlin-brandenburg-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Bremen](canonical-gymnasium-chemistry-bremen-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Hamburg](canonical-gymnasium-chemistry-hamburg-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Mecklenburg-Vorpommern](canonical-gymnasium-chemistry-mecklenburg-vorpommern-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Niedersachsen](canonical-gymnasium-chemistry-niedersachsen-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Nordrhein-Westfalen](canonical-gymnasium-chemistry-nordrhein-westfalen-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Rheinland-Pfalz](canonical-gymnasium-chemistry-rheinland-pfalz-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Saarland](canonical-gymnasium-chemistry-saarland-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Sachsen](canonical-gymnasium-chemistry-sachsen-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Sachsen-Anhalt](canonical-gymnasium-chemistry-sachsen-anhalt-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Schleswig-Holstein](canonical-gymnasium-chemistry-schleswig-holstein-cutover-readiness-audit.md)
+- [Chemistry Cutover Audit: Thueringen](canonical-gymnasium-chemistry-thueringen-cutover-readiness-audit.md)
+- [Chemistry Topic Audit: Dye Chemistry](canonical-gymnasium-chemistry-dye-chemistry-audit.md)
+- [Chemistry Topic Audit: Energy and Sustainability](canonical-gymnasium-chemistry-energy-sustainability-audit.md)
+- [Chemistry Topic Audit: E-Phase Reaction Foundations](canonical-gymnasium-chemistry-ephase-reaction-foundations-audit.md)
+- [Chemistry Topic Audit: Natural Products and Pharmacy](canonical-gymnasium-chemistry-natural-products-pharmacy-audit.md)
 
-## Chemistry State Cutover Audits
+<div data-sp-content-lang="en" markdown>
 
-- [Baden-Wuerttemberg](canonical-gymnasium-chemistry-baden-wuerttemberg-cutover-readiness-audit.md)
-- [Berlin-Brandenburg](canonical-gymnasium-chemistry-berlin-brandenburg-cutover-readiness-audit.md)
-- [Bremen](canonical-gymnasium-chemistry-bremen-cutover-readiness-audit.md)
-- [Hamburg](canonical-gymnasium-chemistry-hamburg-cutover-readiness-audit.md)
-- [Mecklenburg-Vorpommern](canonical-gymnasium-chemistry-mecklenburg-vorpommern-cutover-readiness-audit.md)
-- [Niedersachsen](canonical-gymnasium-chemistry-niedersachsen-cutover-readiness-audit.md)
-- [Nordrhein-Westfalen](canonical-gymnasium-chemistry-nordrhein-westfalen-cutover-readiness-audit.md)
-- [Rheinland-Pfalz](canonical-gymnasium-chemistry-rheinland-pfalz-cutover-readiness-audit.md)
-- [Saarland](canonical-gymnasium-chemistry-saarland-cutover-readiness-audit.md)
-- [Sachsen](canonical-gymnasium-chemistry-sachsen-cutover-readiness-audit.md)
-- [Sachsen-Anhalt](canonical-gymnasium-chemistry-sachsen-anhalt-cutover-readiness-audit.md)
-- [Schleswig-Holstein](canonical-gymnasium-chemistry-schleswig-holstein-cutover-readiness-audit.md)
-- [Thueringen](canonical-gymnasium-chemistry-thueringen-cutover-readiness-audit.md)
+## UI & Content Integration Working Notes
 
-## Chemistry Topic Audits
+</div>
 
-- [Dye Chemistry](canonical-gymnasium-chemistry-dye-chemistry-audit.md)
-- [Energy and Sustainability](canonical-gymnasium-chemistry-energy-sustainability-audit.md)
-- [E-Phase Reaction Foundations](canonical-gymnasium-chemistry-ephase-reaction-foundations-audit.md)
-- [Natural Products and Pharmacy](canonical-gymnasium-chemistry-natural-products-pharmacy-audit.md)
+<div data-sp-content-lang="de" markdown>
 
-## Authoring And UI Tools
+## Arbeitsnotizen zu UI & Contentanbindung
 
-- [Curriculum Authoring Editors (§4, EN)](curriculum-authoring-editors.md) · [Deutsch (DE)](curriculum-authoring-editors.de.md)
-- [Graph Editor (§5, EN)](graph-editor.md) · [Deutsch (DE)](graph-editor.de.md)
-- [Flashcard Editor (§6, EN)](flashcard-editor.md) · [Deutsch (DE)](flashcard-editor.de.md)
+</div>
+
 - [Semantic Atomicity Review Workbench Plan](semantic-atomicity-review-workbench-plan.md)
-- [Meine Lernziele Node Ordering (§7, DE)](my-goals-node-ordering.md) · [English (EN)](my-goals-node-ordering.en.md)
 - [Teacher View Stability Analysis Request](teacher-view-stability-analysis-request.md)
 - [Lernzielbuch und Zeitplanung: zweite Ausbaustufe](teacher-goal-book-phase-two.md)
-  Wiederaufnahmenotiz für lokale Unterrichtsbündel und druckbare Arbeitsunterlagen; Umsetzung zurückgestellt.
-
-## Platform Notes
-
 - [Contentanbindung: Physik-Libre-PoC und Migrationsinventar](content-integration-physik-libre-pilot.md)
-  Begrenzter Pilot, Quellenprüfung, bestehende Linkbindungen und Abnahmegrenzen zu Issue #50.
 - [Contentanbindung: Betrieb und Abnahme des PoC](content-integration-poc.md)
-  Normale Cockpit-Materialauswahl mit bestehendem Profilzugang, Betriebsschalter und lokale sowie echte Host-Abnahme.
 - [Content-Pakete: Ausbau und Abnahme zu Issue #54](content-packages-issue-54.md)
-  Direkte Materialien für Mathematik und Physik, LEIFIphysik-Browserprüfung sowie getrennte lokale, CI- und Produktionsnachweise.
-- [Auto-Update Mechanism Architecture (§9, EN)](auto-update.md) · [Deutsch (DE)](auto-update.de.md)
 - [AIS.chat x SkillPilot Integration Plan](ais-chat-skillpilot-integration-plan.md)
-- [Working with Liquibase in SkillPilot (§8, EN)](liquibase.md) · [Deutsch (DE)](liquibase.de.md)
+
+<div data-sp-content-lang="en" markdown>
 
 ## Historical Work Notes
 
-Dated authoring records under [`work-notes/`](work-notes/). They document how a piece of work was done at the time and are neither current process nor a source of truth. Some of them describe curriculum trees that have since been retired.
+Dated authoring records under [`work-notes/`](https://github.com/enpasos/skillpilot/tree/main/docs/dev/work-notes). They document how a piece of work was done at the time and are neither current process nor a source of truth. Some describe curriculum trees that have since been retired.
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Historische Arbeitsnotizen
+
+Datierte Aufzeichnungen unter [`work-notes/`](https://github.com/enpasos/skillpilot/tree/main/docs/dev/work-notes). Sie dokumentieren damalige Arbeitsschritte, sind weder aktueller Prozess noch maßgebliche Quelle und beziehen sich teilweise auf inzwischen abgelöste Curriculum-Bäume.
+
+</div>
 
 - [Exam / Prüfungsaufgaben Flow (2026-07-28)](work-notes/exam-flow-2026-07-28.md)
 - [Flashcard Editor GUI (2026-03-06)](work-notes/flashcard-editor-2026-03-06.md)
@@ -144,9 +181,24 @@ Dated authoring records under [`work-notes/`](work-notes/). They document how a 
 - [Memory Deck Plan (2026-02-02)](work-notes/memory-deck-plan-2026-02-02.md)
 - [TUM Curriculum Automation (2026-01-29)](work-notes/tum-curriculum-automation-2026-01-29.md)
 
+<div data-sp-content-lang="en" markdown>
+
 ## Maintenance
 
 - Add new developer-facing implementation notes to the closest section above.
 - Move durable concepts to `docs/concept/` and durable QA process docs to `docs/qa-ci/` instead of growing this directory indefinitely.
 - Dated authoring records belong in `work-notes/` with the date in the filename, not in the repository root.
 - `cd app && npm run check:docs-indexes` fails if a direct Markdown child of `docs/dev/` is missing from this index.
+
+</div>
+
+<div data-sp-content-lang="de" markdown>
+
+## Pflegehinweise
+
+- Neue entwicklungsnahe Implementierungsnotizen im jeweils passenden Abschnitt oben einordnen.
+- Dauerhafte Konzepte nach `docs/concept/` und dauerhafte QS-Prozesse nach `docs/qa-ci/` verschieben.
+- Datierte Arbeitsnotizen mit Datum im Dateinamen unter `work-notes/` ablegen.
+- `cd app && npm run check:docs-indexes` schlägt fehl, wenn eine direkte Markdown-Datei unter `docs/dev/` in diesem Index fehlt.
+
+</div>

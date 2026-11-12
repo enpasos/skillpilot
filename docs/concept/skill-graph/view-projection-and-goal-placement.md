@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](view-projection-and-goal-placement.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · **§3 View Projection** · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · **§3 View Projection** · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-view-projection"></a>
@@ -19,7 +19,12 @@ A careful reader must be able to reconstruct every visible learner-facing tree d
 <a id="sec-sga-vp-families"></a>
 ### 3.1. Four View Families and Five Non-Negotiable Projection Rules
 
-| View Family | Primary Question Answered | Exclusive Structural Source of Truth | | –- | –- | –- | | **Content tree** | What belongs under what in subject-matter terms? | `goals` + explicit `contains` edges (ordered by `contains` array). | | **Program tree** | Where in the curriculum is a goal introduced, revisited, or assessed? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` attaches; `secondary`/`assessed` render as badges/overlays, missing yields `unplacedInScope`). | | **Competency view** | Along which capability or process axis is a goal classified? | `competencyCatalog` + `competencyRefs` (orthogonal taxonomy projection). | | **Composition tree** | How does one resolved scope see the subject as one default tree? | Reviewed `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + canonical `contains` expansion. | {cols="20%,36%,44%"}
+| View Family | Primary Question Answered | Exclusive Structural Source of Truth |
+| --- | --- | --- |
+| **Content tree** | What belongs under what in subject-matter terms? | `goals` + explicit `contains` edges (ordered by `contains` array). |
+| **Program tree** | Where in the curriculum is a goal introduced, revisited, or assessed? | `programUnits` (`parentUnitId`, `order`) + `goalPlacements` (`primary` attaches; `secondary`/`assessed` render as badges/overlays, missing yields `unplacedInScope`). |
+| **Competency view** | Along which capability or process axis is a goal classified? | `competencyCatalog` + `competencyRefs` (orthogonal taxonomy projection). |
+| **Composition tree** | How does one resolved scope see the subject as one default tree? | Reviewed `*.view.json` (`structure` + `canonicalSubtree` / `goalEntry`) + canonical `contains` expansion. |
 
 Five binding rules govern all projections:
 

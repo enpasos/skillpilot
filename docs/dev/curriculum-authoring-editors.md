@@ -19,7 +19,12 @@ SkillPilot separates local Vite development-server authoring tools by semantic l
 <a id="sec-dev-ae-overview"></a>
 ### 4.1. Four Local Vite Editors and Route Architecture
 
-| Editor | Frontend Route & Dev Middleware | Owned Artifact Layer | | –- | –- | –- | | **Flashcard Editor** ([6](flashcard-editor.md#sec-dev-flashcard-editor)) | `/flashcard-editor` · `/__deck-editor/*` | `*_deck*.json` flashcard decks (`curricula/...` + `app/public/data/`). | | **Graph Editor** ([5](graph-editor.md#sec-dev-graph-editor)) | `/graph-editor` · `/__graph-editor/*` | Narrow `requires` refactoring and cluster-to-atomic prerequisite normalization on landscape JSONs. | | **Canonical Cluster Editor** | `/canonical-cluster-editor` · `/__canonical-cluster-editor/*` | Canonical `contains` cluster hierarchy, sibling order, and cluster metadata in `curricula/DE/Gymnasium/canonical/`. | | **Composition View Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-specific `*.view.json` upper trees (`structure` nodes + cluster-only `canonicalSubtree` attachments). | {cols="26%,34%,40%"}
+| Editor | Frontend Route & Dev Middleware | Owned Artifact Layer |
+| --- | --- | --- |
+| **Flashcard Editor** ([6](flashcard-editor.md#sec-dev-flashcard-editor)) | `/flashcard-editor` · `/__deck-editor/*` | `*_deck*.json` flashcard decks (`curricula/...` + `app/public/data/`). |
+| **Graph Editor** ([5](graph-editor.md#sec-dev-graph-editor)) | `/graph-editor` · `/__graph-editor/*` | Narrow `requires` refactoring and cluster-to-atomic prerequisite normalization on landscape JSONs. |
+| **Canonical Cluster Editor** | `/canonical-cluster-editor` · `/__canonical-cluster-editor/*` | Canonical `contains` cluster hierarchy, sibling order, and cluster metadata in `curricula/DE/Gymnasium/canonical/`. |
+| **Composition View Editor** | `/composition-view-editor` · `/__composition-view-editor/*` | Scope-specific `*.view.json` upper trees (`structure` nodes + cluster-only `canonicalSubtree` attachments). |
 
 All `/__*` file-mutation endpoints exist **exclusively** inside local Vite dev-server middleware (`vite.config.ts`) and are never exposed in production builds.
 

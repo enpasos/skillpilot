@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](mem-fwu-roundtrip-plan.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · **§10 MEM/FWU-Plan** · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · **§10 MEM/FWU-Plan** · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-mem-fwu-plan"></a>
@@ -36,6 +36,10 @@ Ohne opake JSON-Blobs oder Base64-Medienliterale bewahrt das semantische Bundle:
 <a id="sec-sga-mf-profile"></a>
 ### 10.2. Core-First-FWU-Abbildung und Anwendungsprofil
 
-| Relation / Konzept | Core-First-RDF/OWL-Darstellung & Modellgrenzen | | –- | –- | | **Didaktisches `requires`** | Spezialisierte reifizierte `LP_0000554`-Ressource über `LP_0030071` (`hat Verweis`) und `LP_0030072` (`verweist auf`, eingeführt in `FWU-DE/lehrplan-ontologie#9`). Ein generischer `CE-Verweis` darf **niemals** pauschal als Voraussetzung gedeutet werden. | | **Curriculares `contains`** | `BFO_0000051` (`hat Teil`) nur bei echter fachlicher Teil-Ganzes-Beziehung, zusätzlich flankiert durch `skillpilot:containsGoal` auf jeder direkten Autorenkante, damit transitive BFO-Inferenzen die Direktkanten nicht verwischen (Übungs-/Prüfungs-/Karten-/Navigationskanten nutzen nur `skillpilot:containsGoal`). | | **Minimale Anwendungsterme** | `skillpilot:{LearningGoal,AtomicGoal,ClusterGoal,containsGoal,weight,core,shortKey,ProgramUnit,GoalPlacement,CompositionView,GoalVisualizationReference}` sowie `schema:ImageObject` für Binär-Sidecars. | {cols="28%,72%"}
+| Relation / Konzept | Core-First-RDF/OWL-Darstellung & Modellgrenzen |
+| --- | --- |
+| **Didaktisches `requires`** | Spezialisierte reifizierte `LP_0000554`-Ressource über `LP_0030071` (`hat Verweis`) und `LP_0030072` (`verweist auf`, eingeführt in `FWU-DE/lehrplan-ontologie#9`). Ein generischer `CE-Verweis` darf **niemals** pauschal als Voraussetzung gedeutet werden. |
+| **Curriculares `contains`** | `BFO_0000051` (`hat Teil`) nur bei echter fachlicher Teil-Ganzes-Beziehung, zusätzlich flankiert durch `skillpilot:containsGoal` auf jeder direkten Autorenkante, damit transitive BFO-Inferenzen die Direktkanten nicht verwischen (Übungs-/Prüfungs-/Karten-/Navigationskanten nutzen nur `skillpilot:containsGoal`). |
+| **Minimale Anwendungsterme** | `skillpilot:{LearningGoal,AtomicGoal,ClusterGoal,containsGoal,weight,core,shortKey,ProgramUnit,GoalPlacement,CompositionView,GoalVisualizationReference}` sowie `schema:ImageObject` für Binär-Sidecars. |
 
 Erfolgskriterien sind vollständige SkillPilot-Validierung (zyklenfreie `requires`/`contains`, referenzielle Integrität, gültige Composition Views), deterministische Feldäquivalenz, OWL-2-DL-/Core-Strukturprüfung und byteidentische Bild-SHA-256-Prüfung ohne versteckten Rückgriff auf das Ursprungs-JSON.

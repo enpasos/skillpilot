@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](source-and-resource-links.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · **§4 Quellen- & Ressourcenlinks** · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · **§4 Quellen- & Ressourcenlinks** · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-source-resource-links"></a>
@@ -19,7 +19,11 @@ SkillPilot setzt für externe Lernmaterialien ein striktes Umkehrprinzip durch: 
 <a id="sec-sga-srl-split"></a>
 ### 4.1. Dreiteilung der Linkzwecke und hartes Kernverbot
 
-| Mechanismus | Träger | Zulässiger Zweck & Grenzen | | –- | –- | –- | | **Amtliche Curriculum-Provenienz** | `sourceRef` sowie `resourceLinks` vom Typ `curriculum` | Rückverfolgung kanonischer Ziele auf amtliche Lehrpläne, Verordnungen und Fundstellen ([6](human-readable-source-rationales.de.md#sec-sga-source-rationales)). | | **Eigene Zielvisualisierungen** | `resourceLinks` mit `type: "goal-visualization"` | Optionale kuratierte 16:9-Begriffsillustrationen in eigener SkillPilot-Verantwortung ([7](atomic-goal-visualizations.de.md#sec-sga-goal-visualizations)). | | **Externe Lernmaterialien** | Optionale Pakete unter `content/` ([5](content-integration.md#sec-sga-content-integration)) | Anbieterspezifische Lehrwerke, Simulationen, Videos und Aufgabensammlungen, die stabile kanonische `goalId`s von außen referenzieren. | {cols="24%,30%,46%"}
+| Mechanismus | Träger | Zulässiger Zweck & Grenzen |
+| --- | --- | --- |
+| **Amtliche Curriculum-Provenienz** | `sourceRef` sowie `resourceLinks` vom Typ `curriculum` | Rückverfolgung kanonischer Ziele auf amtliche Lehrpläne, Verordnungen und Fundstellen ([6](human-readable-source-rationales.de.md#sec-sga-source-rationales)). |
+| **Eigene Zielvisualisierungen** | `resourceLinks` mit `type: "goal-visualization"` | Optionale kuratierte 16:9-Begriffsillustrationen in eigener SkillPilot-Verantwortung ([7](atomic-goal-visualizations.de.md#sec-sga-goal-visualizations)). |
+| **Externe Lernmaterialien** | Optionale Pakete unter `content/` ([5](content-integration.md#sec-sga-content-integration)) | Anbieterspezifische Lehrwerke, Simulationen, Videos und Aufgabensammlungen, die stabile kanonische `goalId`s von außen referenzieren. |
 
 Verbindliche Regeln:
 

@@ -107,9 +107,12 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   are one assessable competence; descriptions "Die lernende Person kann …";
   no "Formelsammlung" wording; never blanket-convert `ae/oe/ue` to umlauts.
   Target state: every authored `requires` connects two atomic goals, and the
-  relation is transitively minimal — never drop an atomic edge to keep an
-  inherited cluster edge, and preserve the atomic prerequisite closure when
-  removing cluster-level edges.
+  relation is transitively minimal. The 12 November 2026 decision requires a
+  complete deterministic current-state check within milestone validation,
+  including necessary foreign prerequisites; failed or incomplete checks cap
+  the subject and all its scopes at M0. No historical migration-preservation
+  proof is required for this target gate. Current CQR coverage is the canonical
+  Gymnasium catalog; inherited QA review bindings remain separately checked.
 - **Mastery**: one binary result (`0`/`1`) per atomic goal. Cluster and
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their

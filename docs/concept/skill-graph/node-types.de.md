@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](node-types.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · **§2 Knotentypen** · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · **§2 Knotentypen** · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-node-types"></a>
@@ -19,7 +19,12 @@ SkillPilot gliedert Lernziele in vier pädagogische Zielarten, die orthogonal zu
 <a id="sec-sga-nt-summary"></a>
 ### 2.1. Ergebnisvertrag und kompilierte Applicability
 
-| Knotentyp | Pädagogischer Zweck | Typischer Inhalt & Abschlusskriterium | | –- | –- | –- | | **Orientation** | Sinnstiftender, druckfreier Einstieg in Fach oder Phase | Konkrete Möglichkeiten, interessengeleitete Nachfrage und expliziter Abschlusswunsch (`semanticKind: "orientation"`, Regel `GVR-014`). | | **Understanding** | Konzeptuelles oder prozedurales Fachverständnis (Standard) | Prüfbare „Die lernende Person kann …“-Kompetenzen, gesteuert über `requires`. | | **Memorize** | Dauerhaftes Abrufwissen (Fakten, Vokabeln, Formeln) | SM-2-Spaced-Repetition-Training plus verpflichtender Coach-geführter **harter Abruftest** über alle Pflichtkarten. | | **Exam** | Realistische Prüfungsaufgabe mit Bepunktung | Unveränderte `examData`-Aufgaben, streng nach `scoring.steps` im neutralen KI-Prüfungsmodus bewertet. | {cols="18%,34%,48%"}
+| Knotentyp | Pädagogischer Zweck | Typischer Inhalt & Abschlusskriterium |
+| --- | --- | --- |
+| **Orientation** | Sinnstiftender, druckfreier Einstieg in Fach oder Phase | Konkrete Möglichkeiten, interessengeleitete Nachfrage und expliziter Abschlusswunsch (`semanticKind: "orientation"`, Regel `GVR-014`). |
+| **Understanding** | Konzeptuelles oder prozedurales Fachverständnis (Standard) | Prüfbare „Die lernende Person kann …“-Kompetenzen, gesteuert über `requires`. |
+| **Memorize** | Dauerhaftes Abrufwissen (Fakten, Vokabeln, Formeln) | SM-2-Spaced-Repetition-Training plus verpflichtender Coach-geführter **harter Abruftest** über alle Pflichtkarten. |
+| **Exam** | Realistische Prüfungsaufgabe mit Bepunktung | Unveränderte `examData`-Aufgaben, streng nach `scoring.steps` im neutralen KI-Prüfungsmodus bewertet. |
 
 Jedes atomare Ziel besitzt denselben binären Ergebnisvertrag: **beherrscht oder nicht beherrscht** (zur Laufzeitkompatibilität als `1` / `1.0` gespeichert; siehe [Operativer Lernablauf](../runtime-workflows/learning-workflow.de.md)). Cluster-Fortschritt leitet sich ausschließlich aus eindeutigen atomaren Nachfahren ab. Optionale kompilierte `applicability`-Metadaten (z. B. `{"jurisdiction": ["DE-HE", "DE-BY"]}`, mit redaktionellen Ausnahmen unter `extendedData.applicabilityOverrides`) steuern die Sichtbarkeit in gefilterten Sichten, ohne einen Knotentyp zu bilden oder fachliche `tags` zu ersetzen.
 

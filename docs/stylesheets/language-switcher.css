@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: Apache-2.0 */
-/* Segmented DE / EN pill switcher and single-language sidebar filtering for MkDocs Material */
+/* Segmented DE / EN pill switcher and single-language UI filtering for MkDocs Material */
 
 .sp-lang-switch {
   display: inline-flex;
@@ -73,8 +73,17 @@
   outline-offset: 1px;
 }
 
-/* Hide duplicate navigation items belonging exclusively to the inactive language */
+/* Fallback before JS sets html[data-sp-lang] so bilingual overview blocks never stack */
+html:not([data-sp-lang]) [data-sp-content-lang="de"] {
+  display: none !important;
+}
+
+/* Hide duplicate navigation items, overview blocks, and search hits for the inactive language */
 html[data-sp-lang="de"] .md-nav__item[data-sp-only-lang="en"],
-html[data-sp-lang="en"] .md-nav__item[data-sp-only-lang="de"] {
+html[data-sp-lang="en"] .md-nav__item[data-sp-only-lang="de"],
+html[data-sp-lang="de"] [data-sp-content-lang="en"],
+html[data-sp-lang="en"] [data-sp-content-lang="de"],
+html[data-sp-lang="de"] .md-search-result__item[data-sp-only-lang="en"],
+html[data-sp-lang="en"] .md-search-result__item[data-sp-only-lang="de"] {
   display: none !important;
 }

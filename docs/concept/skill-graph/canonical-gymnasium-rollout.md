@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](canonical-gymnasium-rollout.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · **§9 Gymnasium Rollout** · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · **§9 Gymnasium Rollout** · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-gymnasium-rollout"></a>
@@ -34,6 +34,11 @@ This chapter specifies the durable target architecture and rollout rules for con
 
 The unit of convergence is a **didactically closed subtree** (never a forced big-bang rewrite), progressing monotonically through four states:
 
-| State | Meaning & Learner-State Contract | | –- | –- | | `1. legacy_frozen` | Existing state curriculum JSON is read-only source input; runtime/mapping fixes allowed without rewriting legacy trees. | | `2. subtree_adopted` | Closed `contains` subtree reconstructed in `canonical/` with explicit `exact`/`partial` mappings and bound prerequisites. | | `3. cutover_ready` | Learner-state continuity, frontier coherence, and mapping coverage verified so canonical navigation can become default. | | `4. legacy_view_retained` | Canonical subtree is the primary learner-facing route; compatibility views remain temporarily until formal retirement. | {cols="26%,74%"}
+| State | Meaning & Learner-State Contract |
+| --- | --- |
+| `1. legacy_frozen` | Existing state curriculum JSON is read-only source input; runtime/mapping fixes allowed without rewriting legacy trees. |
+| `2. subtree_adopted` | Closed `contains` subtree reconstructed in `canonical/` with explicit `exact`/`partial` mappings and bound prerequisites. |
+| `3. cutover_ready` | Learner-state continuity, frontier coherence, and mapping coverage verified so canonical navigation can become default. |
+| `4. legacy_view_retained` | Canonical subtree is the primary learner-facing route; compatibility views remain temporarily until formal retirement. |
 
 Strategic adoption sequence: preserve Hessen learner continuity $\to$ establish Mathematics across Sek I and Sek II as the primary prerequisite spine $\to$ fold Bavaria and remaining states into canonical Mathematics via mappings and `.view.json` projections $\to$ widen multi-subject canonical navigation and cross-subject prerequisites.

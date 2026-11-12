@@ -22,6 +22,10 @@ theme:
         name: Switch to dark mode
 
 markdown_extensions:
+  - toc:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - attr_list
   - md_in_html
   - admonition
@@ -86,7 +90,6 @@ nav:
               - Implizite Beherrschung (§13): concept/skill-graph/assessment-gated-completion.de.md
               - Anhänge (B–F): concept/skill-graph/compendium-appendix.de.md
               - "Die Graph-Definition von SkillPilot (PDF)": concept/skill-graph/skillpilot-graph-definition.pdf
-          - Learning-Unit Design Criteria and Examples: concept/skill-graph/learning-unit-design-and-examples.md
           - Architecture & Interchange (EN):
               - General Goal System (§1): concept/skill-graph/general-goal-system-and-migration.md
               - Node Types (§2): concept/skill-graph/node-types.md
@@ -99,6 +102,7 @@ nav:
               - Gymnasium Rollout (§9): concept/skill-graph/canonical-gymnasium-rollout.md
               - MEM/FWU Plan (§10): concept/skill-graph/mem-fwu-roundtrip-plan.md
               - Dual Package Releases (§11): concept/skill-graph/dual-curriculum-package-releases.en.md
+              - Unit Design & Examples (§12): concept/skill-graph/learning-unit-design-and-examples.md
               - "Skill Graph Architecture & Interchange (PDF)": concept/skill-graph/skillpilot-skill-graph-architecture.en.pdf
           - Architektur & Austausch (DE):
               - Allgemeines Zielsystem (§1): concept/skill-graph/general-goal-system-and-migration.de.md
@@ -112,6 +116,7 @@ nav:
               - Gymnasium-Rollout (§9): concept/skill-graph/canonical-gymnasium-rollout.de.md
               - MEM/FWU-Plan (§10): concept/skill-graph/mem-fwu-roundtrip-plan.de.md
               - Duale Paket-Releases (§11): concept/skill-graph/dual-curriculum-package-releases.md
+              - Einheitsentwurf & Beispiele (§12): concept/skill-graph/learning-unit-design-and-examples.de.md
               - "Skill-Graph-Architektur & Austausch (PDF)": concept/skill-graph/skillpilot-skill-graph-architecture.de.pdf
       - Runtime & Coach:
           - Compendium (EN):

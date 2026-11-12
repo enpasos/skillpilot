@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](content-integration.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · **§5 Content Integration** · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · **§5 Content Integration** · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-content-integration"></a>
@@ -40,4 +40,9 @@ Core architectural invariants:
 
 The initial reference pilot binds open-licensed physics textbook sections (`https://physikbuch.schule/`) after Physics `M7` stabilization and expands to Mathematics and LEIFIphysik under Issue `#54`. Every content-package integration is judged against four binding acceptance criteria:
 
-| Criterion | Required Proof | | –- | –- | | **1. Unchanged core** | Disabling or removing all `content/` packages leaves canonical graphs, views, frontier logic, and mastery 100% intact. | | **2. Personal selection** | Learners control package visibility through their ordinary SkillPilot profile without special keys or accounts. | | **3. Concrete utility** | Active links resolve to goal-specific reading or practice sections and appear cleanly in Cockpit and Coach contexts without fabricated page summaries. | | **4. General viability** | Adding a second provider or subject requires only a declarative `content/` package and validation pass, zero core schema changes. | {cols="26%,74%"}
+| Criterion | Required Proof |
+| --- | --- |
+| **1. Unchanged core** | Disabling or removing all `content/` packages leaves canonical graphs, views, frontier logic, and mastery 100% intact. |
+| **2. Personal selection** | Learners control package visibility through their ordinary SkillPilot profile without special keys or accounts. |
+| **3. Concrete utility** | Active links resolve to goal-specific reading or practice sections and appear cleanly in Cockpit and Coach contexts without fabricated page summaries. |
+| **4. General viability** | Adding a second provider or subject requires only a declarative `content/` package and validation pass, zero core schema changes. |

@@ -339,6 +339,6 @@ Fachliche Referenzfälle, Service-/HTTP-/Preferences-Tests, reale Browserprüfun
 und PostgreSQL-Integration werden getrennt ausgewiesen. Die vorhandenen Tests
 des historischen Profilpfads bleiben als Kompatibilitätsprüfungen bestehen.
 Aktuelle lokale Prüfbefehle stehen im
-[Implementierungsdokument](assessment-gated-completion-pilot.md#reproduzierbare-prufung).
+[Implementierungsdokument](assessment-gated-completion-pilot.md#reproduzierbare-prüfung).
 Ein grüner lokaler Lauf ist weder entfernter CI-Erfolg noch Deployment,
 Claude-Host-Abnahme, menschlicher Verständlichkeitstest oder Wirksamkeitsnachweis.

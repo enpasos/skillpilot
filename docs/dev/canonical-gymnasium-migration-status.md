@@ -9187,7 +9187,7 @@ Validation:
 What changed:
 
 - a new capture script [capture_canonical_physics_evidence_watch_baseline.py](https://github.com/enpasos/skillpilot/blob/main/scripts/capture_canonical_physics_evidence_watch_baseline.py) now freezes the current `F6` watch surface into [physics-evidence-watch-baseline.json](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/provenance/physics-evidence-watch-baseline.json)
-- a new delta renderer [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py) now compares the current watched files against that baseline and writes [canonical-gymnasium-physics-evidence-watch-delta.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-delta.md)
+- a new delta renderer [render_canonical_physics_evidence_watch_delta.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_delta.py) now compares the current watched files against that baseline and writes [canonical-gymnasium-physics-evidence-watch-delta.md](canonical-gymnasium-physics-evidence-watch-delta.md)
 - the active `F6` tracker text and the topic workboard now treat the baseline-driven delta view as part of the operational watch surface
 
 Interpretation:
@@ -9207,7 +9207,7 @@ Validation:
 What changed:
 
 - a new script [render_canonical_physics_evidence_watch_status.py](https://github.com/enpasos/skillpilot/blob/main/scripts/render_canonical_physics_evidence_watch_status.py) now renders the machine-readable watch manifest into a human-readable status sheet
-- the generated status sheet [canonical-gymnasium-physics-evidence-watch-status.md](/home/enpasos/projects/skillpilot/docs/dev/canonical-gymnasium-physics-evidence-watch-status.md) now shows the current watch target register plus existence, content hash, and last-modified timestamp per watched file
+- the generated status sheet [canonical-gymnasium-physics-evidence-watch-status.md](canonical-gymnasium-physics-evidence-watch-status.md) now shows the current watch target register plus existence, content hash, and last-modified timestamp per watched file
 - the active `F6` tracker text and the topic workboard now point to this rendered status view in addition to the raw manifest
 
 Interpretation:

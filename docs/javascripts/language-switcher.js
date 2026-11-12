@@ -1,9 +1,25 @@
 /* SPDX-License-Identifier: Apache-2.0 */
-/* MkDocs Material DE / EN segmented pill language switcher & sidebar deduplicator */
+/* MkDocs Material DE / EN segmented pill language switcher, overview block sync & search deduplicator */
 (function () {
   "use strict";
 
   var STORAGE_KEY = "skillpilot-docs-lang";
+
+  /* Set initial language attribute immediately to prevent flash of inactive overview blocks */
+  (function applyEarlyLangAttr() {
+    var early = null;
+    try {
+      var saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved === "de" || saved === "en") early = saved;
+    } catch (_err) {
+      /* ignore */
+    }
+    if (!early) {
+      var navLang = (navigator.language || "").toLowerCase();
+      early = navLang.indexOf("de") === 0 ? "de" : "en";
+    }
+    document.documentElement.setAttribute("data-sp-lang", early);
+  })();
 
   function docPathToUrlKey(docRel) {
     if (!docRel) return "";
@@ -106,8 +122,47 @@
       .replace(/^Deutsch$/i, "Dokument");
   }
 
+  function syncBilingualContentBlocks(activeLang) {
+    var blocks = document.querySelectorAll(".md-content [data-sp-content-lang]");
+    if (!blocks || blocks.length === 0) return false;
+
+    /* Update document title to match the active language's H1 */
+    var activeHeading = document.querySelector(
+      '.md-content [data-sp-content-lang="' + activeLang + '"] h1'
+    );
+    if (activeHeading && activeHeading.textContent) {
+      var cleanTitle = activeHeading.textContent.replace(/¶/g, "").trim();
+      if (cleanTitle) {
+        document.title = cleanTitle === "SkillPilot" ? "SkillPilot" : cleanTitle + " - SkillPilot";
+      }
+    }
+
+    /* Filter secondary right-hand Table of Contents items by their target heading's language block */
+    var tocLinks = document.querySelectorAll('.md-nav--secondary a.md-nav__link[href^="#"]');
+    Array.prototype.forEach.call(tocLinks, function (link) {
+      var navItem = link.closest(".md-nav__item");
+      if (!navItem) return;
+      var rawHash = link.getAttribute("href") || "";
+      var id = decodeURIComponent(rawHash.slice(1));
+      if (!id) return;
+      var targetEl = document.getElementById(id);
+      if (!targetEl) return;
+      var langContainer = targetEl.closest("[data-sp-content-lang]");
+      if (langContainer) {
+        var blockLang = langContainer.getAttribute("data-sp-content-lang");
+        if (blockLang === "de" || blockLang === "en") {
+          navItem.setAttribute("data-sp-only-lang", blockLang);
+        }
+      }
+    });
+
+    return true;
+  }
+
   function annotateNavTree(siteRootUrl, tables, activeLang) {
-    var items = Array.prototype.slice.call(document.querySelectorAll(".md-nav__item"));
+    var items = Array.prototype.slice.call(
+      document.querySelectorAll(".md-nav--primary .md-nav__item, .md-sidebar--primary .md-nav__item")
+    );
 
     items.forEach(function (item) {
       item.removeAttribute("data-sp-only-lang");
@@ -146,7 +201,6 @@
         var langs = Object.create(null);
         var allTagged = true;
         children.forEach(function (ch) {
-          /* Ignore index links when checking group exclusivity only if non-index children exist */
           var tag = ch.getAttribute("data-sp-only-lang");
           if (!tag) {
             allTagged = false;
@@ -173,9 +227,12 @@
       });
     }
 
-    /* Translate shared section headings configured in navLabels */
-    var navTexts = document.querySelectorAll(".md-nav__link .md-ellipsis, .md-tabs__link");
+    /* Translate shared section headings and TOC titles configured in navLabels */
+    var navTexts = document.querySelectorAll(
+      ".md-nav__link .md-ellipsis, .md-tabs__link, .md-nav--secondary > .md-nav__title"
+    );
     Array.prototype.forEach.call(navTexts, function (el) {
+      if (el.children && el.children.length > 0) return;
       if (!el.hasAttribute("data-sp-section-key")) {
         var rawTxt = (el.textContent || "").trim();
         if (tables.navLabels[rawTxt]) {
@@ -187,6 +244,52 @@
         el.textContent = tables.navLabels[secKey][activeLang];
       }
     });
+
+    /* Also check bare leaf a.md-nav__link nodes without inner .md-ellipsis */
+    var bareLinks = document.querySelectorAll("a.md-nav__link");
+    Array.prototype.forEach.call(bareLinks, function (el) {
+      if (el.children && el.children.length > 0) return;
+      if (!el.hasAttribute("data-sp-section-key")) {
+        var rawTxt = (el.textContent || "").trim();
+        if (tables.navLabels[rawTxt]) {
+          el.setAttribute("data-sp-section-key", rawTxt);
+        }
+      }
+      var secKey = el.getAttribute("data-sp-section-key");
+      if (secKey && tables.navLabels[secKey] && tables.navLabels[secKey][activeLang]) {
+        el.textContent = tables.navLabels[secKey][activeLang];
+      }
+    });
+  }
+
+  function annotateSearchResults(siteRootUrl, tables) {
+    var listEl = document.querySelector(".md-search-result__list");
+    if (!listEl) return;
+
+    var applyTags = function () {
+      var resultItems = listEl.querySelectorAll(".md-search-result__item");
+      Array.prototype.forEach.call(resultItems, function (item) {
+        var link = item.querySelector("a.md-search-result__link[href]");
+        if (!link) return;
+        var key = urlToKey(link.getAttribute("href"), siteRootUrl);
+        var lang = key !== null ? tables.keyLang[key] : undefined;
+        if (lang === "de" || lang === "en") {
+          item.setAttribute("data-sp-only-lang", lang);
+        } else {
+          item.removeAttribute("data-sp-only-lang");
+        }
+      });
+    };
+
+    applyTags();
+
+    if (!listEl.__spSearchObserved && typeof MutationObserver !== "undefined") {
+      listEl.__spSearchObserved = true;
+      var obs = new MutationObserver(function () {
+        applyTags();
+      });
+      obs.observe(listEl, { childList: true, subtree: false });
+    }
   }
 
   function fixFooterCrossLanguageLinks(siteRootUrl, tables, activeLang) {
@@ -209,7 +312,7 @@
     });
   }
 
-  function updatePillState(container, activeLang, hasCounterpart) {
+  function updatePillState(container, activeLang, isBilingualPage) {
     if (!container) return;
     var buttons = container.querySelectorAll(".sp-lang-switch__btn");
     Array.prototype.forEach.call(buttons, function (btn) {
@@ -217,7 +320,7 @@
       var isActive = code === activeLang;
       btn.setAttribute("aria-pressed", isActive ? "true" : "false");
     });
-    container.title = hasCounterpart
+    container.title = isBilingualPage
       ? (activeLang === "de" ? "Sprache wechseln (DE / EN)" : "Switch language (DE / EN)")
       : (activeLang === "de"
           ? "Navigation auf Deutsch · Diese Einzelseite ist einsprachig"
@@ -232,7 +335,9 @@
     var hasCounterpart = currentKey !== null && typeof tables.counterpart[currentKey] === "string";
 
     document.documentElement.setAttribute("data-sp-lang", activeLang);
+    var hasInlineBilingual = syncBilingualContentBlocks(activeLang);
     annotateNavTree(siteRootUrl, tables, activeLang);
+    annotateSearchResults(siteRootUrl, tables);
     fixFooterCrossLanguageLinks(siteRootUrl, tables, activeLang);
 
     var headerInner = document.querySelector(".md-header__inner");
@@ -268,8 +373,14 @@
             return;
           }
           document.documentElement.setAttribute("data-sp-lang", code);
+          var inlineBilingual = syncBilingualContentBlocks(code);
           annotateNavTree(nowSiteRoot, tables, code);
-          updatePillState(existing, code, nowKey !== null && typeof tables.counterpart[nowKey] === "string");
+          annotateSearchResults(nowSiteRoot, tables);
+          updatePillState(
+            existing,
+            code,
+            inlineBilingual || (nowKey !== null && typeof tables.counterpart[nowKey] === "string")
+          );
         });
         existing.appendChild(btn);
       });
@@ -285,7 +396,7 @@
       }
     }
 
-    updatePillState(existing, activeLang, hasCounterpart);
+    updatePillState(existing, activeLang, hasCounterpart || hasInlineBilingual);
   }
 
   if (typeof window.document$ !== "undefined" && window.document$ && typeof window.document$.subscribe === "function") {

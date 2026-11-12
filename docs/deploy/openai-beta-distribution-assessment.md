@@ -69,7 +69,7 @@ submission; that focused acceptance is not another full beta.
 The [submission dossier](openai-plugin-v1-submission.md), current-candidate
 [demo](openai-plugin-v1-demo-video.md), security checks and truthful host evidence
 remain required. The historical
-[marketplace acceptance matrix](openai-personal-marketplace-release.md#acceptance-and-updates)
+[marketplace acceptance matrix](openai-personal-marketplace-release.md#historical-september-acceptance-matrix)
 is unresolved but is **not a prerequisite for that submission**. Neither support
 silence nor this assessment establishes that a distribution route is globally
 impossible. The former parallel support/forum and post-publication Git-beta

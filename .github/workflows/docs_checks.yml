@@ -198,9 +198,7 @@ jobs:
         run: pip install -r requirements-docs.txt
       - name: Build all bilingual single-source compendia (Web, diagrams, PDFs)
         run: python3 scripts/build_compendia.py --all
-      # Not --strict: many docs link to repo files outside docs/ (contracts/,
-      # app/, scripts/, curricula/). Those links resolve on GitHub but not in the
-      # built site, and strict mode would reject them. `npm run check:docs-links`
-      # is what validates link targets against the filesystem.
+      # Build with --strict so broken internal links, excluded source links,
+      # missing generated assets/PDFs, or invalid nav targets fail CI immediately.
       - name: Build site
-        run: mkdocs build
+        run: mkdocs build --strict

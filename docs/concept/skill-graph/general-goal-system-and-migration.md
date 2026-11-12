@@ -8,7 +8,7 @@
 
 **Language / Sprache:** **English (EN)** · [Deutsch (DE)](general-goal-system-and-migration.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
 
-**Compendium:** **§1 General Goal System** · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md)
+**Compendium:** **§1 General Goal System** · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · [§12 Unit Design & Examples](learning-unit-design-and-examples.md)
 
 ---
 <a id="sec-sga-goal-system"></a>
@@ -21,7 +21,13 @@ SkillPilot's long-term goal model follows two governing principles: **"As much s
 
 Rather than mixing subject competencies, school-year containers, and process taxonomies into one undifferentiated hierarchy, the target architecture separates four semantic layers plus one learner-facing projection layer:
 
-| Layer | JSON / Artifact Carrier | Role and Invariants | | –- | –- | –- | | **Goal layer** | `goals[]`, `contains`, `requires` | Durable assessable atomic goals and subject-matter clusters; owns mastery, frontier eligibility, and canonical IDs. | | **Program layer** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Contextual structural units such as year, semester, module, phase, track, or exam; never mastered directly. | | **Placement layer** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Attaches unchanged canonical goals (`primary`, `secondary`, `assessed`) to program units under explicit scope contexts. | | **Competency-axis layer** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonal capability taxonomies (for example `K1`–`K6` process competencies); never main content parents unless assessable. | | **Composition-view layer** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-specific learner-facing upper trees referencing reviewed canonical subtrees without duplicating goal payloads. | {cols="22%,32%,46%"}
+| Layer | JSON / Artifact Carrier | Role and Invariants |
+| --- | --- | --- |
+| **Goal layer** | `goals[]`, `contains`, `requires` | Durable assessable atomic goals and subject-matter clusters; owns mastery, frontier eligibility, and canonical IDs. |
+| **Program layer** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Contextual structural units such as year, semester, module, phase, track, or exam; never mastered directly. |
+| **Placement layer** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Attaches unchanged canonical goals (`primary`, `secondary`, `assessed`) to program units under explicit scope contexts. |
+| **Competency-axis layer** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonal capability taxonomies (for example `K1`–`K6` process competencies); never main content parents unless assessable. |
+| **Composition-view layer** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-specific learner-facing upper trees referencing reviewed canonical subtrees without duplicating goal payloads. |
 
 Interpretation invariants:
 

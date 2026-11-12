@@ -82,6 +82,10 @@ window.SKILLPILOT_DOCS_I18N = {
       "en": "concept/skill-graph/dual-curriculum-package-releases.en.md"
     },
     {
+      "de": "concept/skill-graph/learning-unit-design-and-examples.de.md",
+      "en": "concept/skill-graph/learning-unit-design-and-examples.md"
+    },
+    {
       "de": "concept/skill-graph/skillpilot-skill-graph-architecture.de.pdf",
       "en": "concept/skill-graph/skillpilot-skill-graph-architecture.en.pdf"
     },
@@ -387,17 +391,9 @@ window.SKILLPILOT_DOCS_I18N = {
       "de": "Skill-Graph",
       "en": "Skill Graph"
     },
-    "Runtime Workflows": {
-      "de": "Laufzeit & Coach",
-      "en": "Runtime & Coach"
-    },
     "Runtime & Coach": {
       "de": "Laufzeit & Coach",
       "en": "Runtime & Coach"
-    },
-    "Didactic": {
-      "de": "Didaktik & Planung",
-      "en": "Didactics & Planning"
     },
     "Didactic & Planning": {
       "de": "Didaktik & Planung",
@@ -407,21 +403,17 @@ window.SKILLPILOT_DOCS_I18N = {
       "de": "Produktions-Pipelines",
       "en": "Production Pipelines"
     },
-    "QA & CI": {
-      "de": "QS & CI",
-      "en": "QA & CI"
+    "QA/CI": {
+      "de": "Qualität & CI",
+      "en": "QA/CI"
     },
-    "Curriculum Quality": {
-      "de": "Curriculum-Qualität",
-      "en": "Curriculum Quality"
+    "Current Status Snapshot": {
+      "de": "Aktueller Qualitätsstatus",
+      "en": "Current Status Snapshot"
     },
-    "Review Lanes": {
-      "de": "Review-Pfade",
-      "en": "Review Lanes"
-    },
-    "Champions": {
-      "de": "Champions",
-      "en": "Champions"
+    "Generated Status Artifacts": {
+      "de": "Generierte Statusberichte",
+      "en": "Generated Status Artifacts"
     },
     "Deploy": {
       "de": "Betrieb & Rollout",
@@ -438,6 +430,34 @@ window.SKILLPILOT_DOCS_I18N = {
     "Dev": {
       "de": "Entwicklung",
       "en": "Dev"
+    },
+    "Canonical Gymnasium": {
+      "de": "Kanonisches Gymnasium",
+      "en": "Canonical Gymnasium"
+    },
+    "Implementation Plan": {
+      "de": "Umsetzungsplan",
+      "en": "Implementation Plan"
+    },
+    "Math Bundeslaender Status": {
+      "de": "Mathematik Bundesländer-Status",
+      "en": "Math Bundeslaender Status"
+    },
+    "Physics Bundeslaender Status": {
+      "de": "Physik Bundesländer-Status",
+      "en": "Physics Bundeslaender Status"
+    },
+    "Chemistry Bundeslaender Status": {
+      "de": "Chemie Bundesländer-Status",
+      "en": "Chemistry Bundeslaender Status"
+    },
+    "Dual Curriculum Package Implementation Status": {
+      "de": "Umsetzungsstand Duale Pakete",
+      "en": "Dual Curriculum Package Implementation Status"
+    },
+    "Table of contents": {
+      "de": "Inhaltsverzeichnis",
+      "en": "Table of contents"
     }
   }
 };

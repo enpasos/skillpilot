@@ -176,10 +176,41 @@ markdownFiles.forEach((file) => {
     }
 
     const cleaned = stripFragmentAndQuery(stripMarkdownLinkTarget(target))
+    if (repoAbsolutePrefixes.some((prefix) => cleaned.startsWith(prefix))) {
+      failures.push(
+        `${repoRelative(file)}: ${target} uses an absolute local filesystem path; use a relative docs link or ${repoUrlFor(resolved)}`,
+      )
+      return
+    }
     const escapesDocsTree = sourceIsPublished && !isExternalLink(cleaned) && !isInsideDocs(resolved)
     if (escapesDocsTree) {
       failures.push(
         `${repoRelative(file)}: ${target} leaves the docs/ tree and would 404 on the published site; ` +
+          `link it as ${repoUrlFor(resolved)}`,
+      )
+      return
+    }
+    const hitsExcludedSource =
+      sourceIsPublished &&
+      !isExternalLink(cleaned) &&
+      Array.from(excludedSourceDirs).some((dir) => resolvedRel === dir || resolvedRel.startsWith(`${dir}/`))
+    if (hitsExcludedSource) {
+      failures.push(
+        `${repoRelative(file)}: ${target} targets an excluded compendium source directory and would 404 on the published site; ` +
+          `link it as ${repoUrlFor(resolved)}`,
+      )
+      return
+    }
+    if (
+      sourceIsPublished &&
+      !isExternalLink(cleaned) &&
+      existsSync(resolved) &&
+      statSync(resolved).isDirectory() &&
+      !existsSync(resolve(resolved, 'index.md')) &&
+      !existsSync(resolve(resolved, 'README.md'))
+    ) {
+      failures.push(
+        `${repoRelative(file)}: ${target} targets a directory without index.md and would 404 on the published site; ` +
           `link it as ${repoUrlFor(resolved)}`,
       )
     }

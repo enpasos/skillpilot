@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](canonical-gymnasium-rollout.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · **§9 Gymnasium-Rollout** · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** [§1 Allgemeines Zielsystem](general-goal-system-and-migration.de.md) · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · **§9 Gymnasium-Rollout** · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-gymnasium-rollout"></a>
@@ -34,6 +34,11 @@ Dieses Kapitel legt die dauerhafte Zielarchitektur und Rollout-Politik fest, nac
 
 Migrationseinheit ist stets ein **didaktisch abgeschlossener Teilbaum** (kein Big-Bang-Umbau) entlang vier geordneter Zustände:
 
-| Zustand | Bedeutung & Lernstandsvertrag | | –- | –- | | `1. legacy_frozen` | Bestehende Landes-JSONs dienen schreibgeschützt als Quelle; Laufzeit-/Mappingkorrekturen ohne Umbau des Altbaums erlaubt. | | `2. subtree_adopted` | Abgeschlossener `contains`-Teilbaum unter `canonical/` mit expliziten `exact`/`partial`-Mappings und gebundenen Voraussetzungen angelegt. | | `3. cutover_ready` | Lernstandskontinuität, Frontier-Stimmigkeit und Mappingabdeckung belegt, sodass der kanonische Pfad Standard werden kann. | | `4. legacy_view_retained` | Kanonischer Teilbaum ist primärer Lernpfad; Kompatibilitätssichten bleiben vorübergehend bis zur regulären Stilllegung verfügbar. | {cols="26%,74%"}
+| Zustand | Bedeutung & Lernstandsvertrag |
+| --- | --- |
+| `1. legacy_frozen` | Bestehende Landes-JSONs dienen schreibgeschützt als Quelle; Laufzeit-/Mappingkorrekturen ohne Umbau des Altbaums erlaubt. |
+| `2. subtree_adopted` | Abgeschlossener `contains`-Teilbaum unter `canonical/` mit expliziten `exact`/`partial`-Mappings und gebundenen Voraussetzungen angelegt. |
+| `3. cutover_ready` | Lernstandskontinuität, Frontier-Stimmigkeit und Mappingabdeckung belegt, sodass der kanonische Pfad Standard werden kann. |
+| `4. legacy_view_retained` | Kanonischer Teilbaum ist primärer Lernpfad; Kompatibilitätssichten bleiben vorübergehend bis zur regulären Stilllegung verfügbar. |
 
 Strategische Reihenfolge: hessische Lernstandskontinuität sichern $\to$ Mathematik über Sek I und Sek II als zentrales Voraussetzungsrückgrat aufbauen $\to$ Bayern und weitere Länder per Mapping und `.view.json`-Projektionen einbinden $\to$ mehrfächige kanonische Navigation und gezielte Fach-zu-Fach-Voraussetzungen ausbauen.

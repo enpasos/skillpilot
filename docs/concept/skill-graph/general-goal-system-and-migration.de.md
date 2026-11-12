@@ -8,7 +8,7 @@
 
 **Sprache / Language:** **Deutsch (DE)** · [English (EN)](general-goal-system-and-migration.md) | **PDF:** [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf) · [English PDF](skillpilot-skill-graph-architecture.en.pdf)
 
-**Kompendium:** **§1 Allgemeines Zielsystem** · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md)
+**Kompendium:** **§1 Allgemeines Zielsystem** · [§2 Knotentypen](node-types.de.md) · [§3 Sichtenprojektion](view-projection-and-goal-placement.de.md) · [§4 Quellen- & Ressourcenlinks](source-and-resource-links.de.md) · [§5 Contentanbindung](content-integration.md) · [§6 Quellenbegründungen](human-readable-source-rationales.de.md) · [§7 Zielvisualisierungen](atomic-goal-visualizations.de.md) · [§8 Lernzielbuch](learning-goal-book-and-evidence-review-pipeline.de.md) · [§9 Gymnasium-Rollout](canonical-gymnasium-rollout.de.md) · [§10 MEM/FWU-Plan](mem-fwu-roundtrip-plan.de.md) · [§11 Duale Paket-Releases](dual-curriculum-package-releases.md) · [§12 Einheitsentwurf & Beispiele](learning-unit-design-and-examples.de.md)
 
 ---
 <a id="sec-sga-goal-system"></a>
@@ -21,7 +21,13 @@ Das langfristige Zielmodell von SkillPilot folgt zwei Leitprinzipien: **„So vi
 
 Statt Fachkompetenzen, Jahrgangscontainer und Prozesstaxonomien in einer undifferenzierten Hierarchie zu vermischen, trennt die Zielarchitektur vier semantische Schichten sowie eine lernendenseitige Projektionsschicht:
 
-| Schicht | JSON- / Artefaktträger | Rolle und Invarianten | | –- | –- | –- | | **Zielschicht (Goal Layer)** | `goals[]`, `contains`, `requires` | Stabile prüfbare atomare Lernziele und fachliche Cluster; trägt Mastery, Frontier-Berechtigung und kanonische IDs. | | **Programmschicht (Program Layer)** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Kontextuelle Struktureinheiten wie Jahrgang, Halbjahr, Modul, Phase, Zweig oder Prüfung; nie direkt beherrschbar. | | **Verortungsschicht (Placement Layer)** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Hängt unveränderte kanonische Ziele (`primary`, `secondary`, `assessed`) unter expliziten Scope-Kontexten in Programmeinheiten ein. | | **Kompetenzachsenschicht** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonale Kompetenztaxonomien (z. B. Prozesskompetenzen `K1`–`K6`); keine primären Inhaltseltern, sofern nicht eigenständig prüfbar. | | **Composition-View-Schicht** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-spezifische obere Lernbäume, die geprüfte kanonische Teilbäume ohne Duplizierung von Zielinhalten referenzieren. | {cols="22%,32%,46%"}
+| Schicht | JSON- / Artefaktträger | Rolle und Invarianten |
+| --- | --- | --- |
+| **Zielschicht (Goal Layer)** | `goals[]`, `contains`, `requires` | Stabile prüfbare atomare Lernziele und fachliche Cluster; trägt Mastery, Frontier-Berechtigung und kanonische IDs. |
+| **Programmschicht (Program Layer)** | `programUnits[]` (`id`, `kind`, `label`, `order`, `parentUnitId`) | Kontextuelle Struktureinheiten wie Jahrgang, Halbjahr, Modul, Phase, Zweig oder Prüfung; nie direkt beherrschbar. |
+| **Verortungsschicht (Placement Layer)** | `goalPlacements[]` (`goalId`, `unitId`, `relation`, `context`) | Hängt unveränderte kanonische Ziele (`primary`, `secondary`, `assessed`) unter expliziten Scope-Kontexten in Programmeinheiten ein. |
+| **Kompetenzachsenschicht** | `competencyCatalog[]` (`id`, `label`, `dimension`), `competencyRefs[]` | Orthogonale Kompetenztaxonomien (z. B. Prozesskompetenzen `K1`–`K6`); keine primären Inhaltseltern, sofern nicht eigenständig prüfbar. |
+| **Composition-View-Schicht** | `*.view.json` (`structure`, `canonicalSubtree`, `goalEntry`) | Scope-spezifische obere Lernbäume, die geprüfte kanonische Teilbäume ohne Duplizierung von Zielinhalten referenzieren. |
 
 Interpretationsinvarianten:
 
