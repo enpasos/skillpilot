@@ -96,8 +96,9 @@ authenticity.
 The deployment process currently does all of the following:
 1.  Require an explicit, valid frontend coach variant for this artifact.
 2.  Check that the target `systemd` service is reachable, that the exact
-    restart command has a passwordless `sudo` grant, and that the required PDF
-    validation tools are available.
+    restart command has a passwordless `sudo` grant, that the required PDF
+    validation tools are available, and that the database backup can be taken
+    (`pg_dump`, a protected credential file, a readable database).
 3.  Stash local working-tree changes unless `SKILLPILOT_SKIP_GIT_UPDATE=1`
     pins the deployment to an already verified commit and working tree.
 4.  Pull the latest code from Git and, if `HEAD` changed, restart the freshly
@@ -118,11 +119,13 @@ The deployment process currently does all of the following:
     commit and a complete frontend shell before restarting the service.
 14. For the `openai-mcp` variant, run the focused backend security and contract
     tests.
-15. Restart the `skillpilot` system service.
-16. Wait until the public readiness endpoint returns HTTP 200 (shared process and database readiness, not provider acceptance).
-17. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
+15. Dump the PostgreSQL database with `scripts/backup_db.sh`. A failed or
+    incomplete dump ends the deployment; the previous backend keeps serving.
+16. Restart the `skillpilot` system service.
+17. Wait until the public readiness endpoint returns HTTP 200 (shared process and database readiness, not provider acceptance).
+18. Verify the deployed CSS/JavaScript shell assets, coach variant, and AI-transparency copy against the public host.
     Verify the Gemini skill download again; an HTML SPA response fails deployment.
-18. For the `openai-mcp` variant, require the public path-based OpenAI V1 smoke;
+19. For the `openai-mcp` variant, require the public path-based OpenAI V1 smoke;
     then run the source-rationale deployment smoke against the public host.
 
 ## The Deployment Engine (`scripts/deploy.sh`)
@@ -150,6 +153,10 @@ echo "Pruefe Restart-Voraussetzungen..."
 
 echo "Pruefe Lernzielbuch-PDF-Werkzeuge..."
 # pdfinfo and pdftohtml are required before the checkout can be updated.
+
+echo "Pruefe Voraussetzungen fuer das Datenbank-Backup..."
+# pg_dump, the protected credential file and a readable database are required
+# before the checkout can be updated (scripts/lib/deploy_database_backup.sh).
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Ueberspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
@@ -226,6 +233,10 @@ node ../scripts/verify_frontend_shell_assets.mjs \
   "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
 cd ..
 
+echo "Sichere die Datenbank vor dem Neustart..."
+# Runs scripts/backup_db.sh with the credentials from the protected file and
+# aborts before the restart when the dump fails or is incomplete.
+
 echo "Starte Service neu..."
 sudo -n -- "$(command -v systemctl)" restart "${SERVICE_NAME}"
 
@@ -292,15 +303,22 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     artifact identity.
 10. **Focused OpenAI security and contract tests** run before restart for the
     `openai-mcp` artifact.
-11. **`systemctl restart`** activates the freshly built frontend/backend bundle.
-12. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
+11. **Database backup immediately before the restart**: the restart applies
+    pending Liquibase changes and runs new code against the learner state, and
+    the server has no other backup of that database. The dump is therefore
+    taken after every build and pre-restart check has passed and directly
+    before `systemctl restart`. A failed dump, or one without the `pg_dump`
+    completion trailer, ends the deployment while the previous backend is
+    still serving. See [Database backup](#database-backup).
+12. **`systemctl restart`** activates the freshly built frontend/backend bundle.
+13. **Public readiness wait** absorbs the normal Spring Boot and reverse-proxy
     startup window after `systemctl restart`. A temporary `502` therefore does
     not produce a false failed deployment. This group checks only shared process
     and database readiness. OpenAI has a separate `openaiReadiness` health group;
     the [profile-specific host/release acceptance](oauth-client-authentication.md)
     remains required before activating a profile. A shared readiness success or
     the public-contract smoke below does not replace that acceptance.
-13. **Public shell verification after readiness** fetches `index.html` and the
+14. **Public shell verification after readiness** fetches `index.html` and the
     exact referenced CSS/module assets with cache bypass headers. It requires
     successful, nonempty same-origin responses with the expected content types,
     so missing hashed assets or an HTML error page served as CSS stop deployment.
@@ -308,7 +326,7 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     and the same pinned archive digest. See the separate
     [Gemini gateway deployment](https://github.com/enpasos/skillpilot/blob/main/deploy/gemini-v1/README.md) for its HTTPS,
     private configuration and activation steps.
-14. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
+15. **Mandatory OpenAI V1 public-contract smoke** runs after readiness for
     every `openai-mcp` deployment. It verifies the dedicated
     `mcp-openai.skillpilot.com` TLS certificate, direct responses without
     redirects, HTTP `200` plus the exact resource in path-specific
@@ -318,12 +336,67 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
     routes and the internal transport route must return HTTP `404`; the retired
     `mcp-coach-v1` through `mcp-coach-v9` hosts must return HTTP `404`.
     The first activation requires the [coordinated backend/edge cutover](openai-stable-origin.md).
-15. **Further deployment smoke tests** check that the public host serves the intended
+16. **Further deployment smoke tests** check that the public host serves the intended
     coach variant in both version metadata and HTML and contains the reviewed
     DE/EN audio, coach, and legal transparency copy. The source-rationale smoke
     then detects the active curriculum mode: repository deployments must serve
     the two exact compatibility indexes, while package deployments must expose
     Catalog API 1.2 and working generation-bound source-evidence routes.
+
+## Database backup
+
+Learner state (mastery, plans, focus, sessions) exists only in the production
+PostgreSQL database; apart from the learners' own exports there is no other
+copy. Every deployment therefore writes a complete SQL dump before it restarts
+the backend.
+
+**One-time setup on the server**, as the deploying user:
+
+```bash
+install -d -m 700 ~/.config/skillpilot
+install -m 600 /dev/null ~/.config/skillpilot/db-backup.env
+# then add one line: POSTGRES_PASSWORD=<database password>
+```
+
+The file is a plain `KEY=value` list. It is parsed, never executed, and only
+`POSTGRES_HOST`, `POSTGRES_PORT`, `POSTGRES_DB`, `POSTGRES_USER`,
+`POSTGRES_PASSWORD` and `SKILLPILOT_BACKUP_RETENTION_DAYS` are read; missing
+values use the `application.yml` defaults. It must belong to the deploying
+user with mode `600`, or to `root` without any access for others, so a
+readable service `EnvironmentFile` can be named instead through
+`SKILLPILOT_DB_BACKUP_ENV_FILE`. `pg_dump` must be installed in a version that
+can read the server.
+
+**What a deployment does:**
+
+- The preflight checks `pg_dump`, the credential file and its protection, and
+  reads the schema of the `learner` table once. A missing prerequisite ends the
+  deployment within seconds, before the Git update and every build step. The
+  first deployment that contains this step stops here until the credential
+  file exists.
+- Directly before the restart, `scripts/backup_db.sh` writes
+  `skillpilot_<date>_<time>.sql` into `~/skillpilot-db-backups` (override with
+  `SKILLPILOT_DB_BACKUP_DIR`), directory mode `700`, file mode `600`. A dump is
+  published only when `pg_dump` succeeded and wrote its completion trailer.
+  Dumps older than 30 days are removed (`SKILLPILOT_BACKUP_RETENTION_DAYS`).
+  Goal-feedback inbox content is excluded as described in the
+  [privacy documentation](../security/data-privacy.md).
+- `SKILLPILOT_DEPLOY_SKIP_DB_BACKUP=1` deploys without a dump and prints a
+  warning. It exists for an emergency in which the database itself is
+  unreachable for `pg_dump`; the production entrypoint never sets it.
+
+**Restore** into an empty database of the same PostgreSQL major version, with
+the backend stopped:
+
+```bash
+psql -h localhost -U skillpilot -d skillpilot -v ON_ERROR_STOP=1 -f ~/skillpilot-db-backups/skillpilot_<date>_<time>.sql
+```
+
+The dumps are on the same host as the database. They protect against a faulty
+migration or release, not against the loss of the server; a regular copy to
+another system and a dump between deployments (for example a daily `cron` entry
+that calls `scripts/backup_db.sh` with the same credential file) remain
+separate operational decisions.
 
 ## Asset deployment details
 
@@ -461,3 +534,6 @@ npm run smoke:goal-source-rationales:deployment -- --base-url="${SMOKE_BASE_URL}
 - **Git**: Required for pulling updates.
 - **Sudo Access**: A command-specific `NOPASSWD` grant is required for
   restarting the `skillpilot` system service when deploying as a non-root user.
+- **PostgreSQL client**: `pg_dump` and the protected credential file described
+  under [Database backup](#database-backup) are required for the dump before
+  every restart.

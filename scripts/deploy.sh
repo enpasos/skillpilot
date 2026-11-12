@@ -8,11 +8,17 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${PROJECT_ROOT}"
 source "${SCRIPT_DIR}/lib/openai_v1_service_environment.sh"
+source "${SCRIPT_DIR}/lib/deploy_database_backup.sh"
 
 SERVICE_NAME="${SKILLPILOT_SERVICE_NAME:-skillpilot}"
 SERVICE_ENV_FILE="${SKILLPILOT_SERVICE_ENV_FILE:-/etc/skillpilot/skillpilot.env}"
 SMOKE_BASE_URL="${SKILLPILOT_BASE_URL:-https://skillpilot.com}"
 DEPLOY_BACKEND_BUILD_DIR="${PROJECT_ROOT}/tmp/deploy/backend-build"
+# The learner database has no other server-side backup. Every deployment dumps
+# it before the restart; the dumps live outside the checkout.
+DB_BACKUP_ENV_FILE="${SKILLPILOT_DB_BACKUP_ENV_FILE:-${HOME}/.config/skillpilot/db-backup.env}"
+DB_BACKUP_DIR="${SKILLPILOT_DB_BACKUP_DIR:-${HOME}/skillpilot-db-backups}"
+SKIP_DB_BACKUP="${SKILLPILOT_DEPLOY_SKIP_DB_BACKUP:-0}"
 SYSTEMCTL_BIN=""
 NGINX_BIN=""
 STABLE_ORIGIN_CUTOVER="${SKILLPILOT_OPENAI_STABLE_ORIGIN_CUTOVER:-0}"
@@ -308,6 +314,7 @@ require_public_readiness_configuration
 ensure_restart_possible
 require_production_java
 require_goal_book_pdf_tools
+require_database_backup_prerequisites "${SKIP_DB_BACKUP}" "${DB_BACKUP_ENV_FILE}" "${DB_BACKUP_DIR}"
 
 if [ "${SKILLPILOT_SKIP_GIT_UPDATE:-0}" = "1" ]; then
   echo "Überspringe Git-Update (SKILLPILOT_SKIP_GIT_UPDATE=1)."
@@ -444,6 +451,11 @@ node ../scripts/verify_frontend_shell_assets.mjs \
 node ../scripts/verify_gemini_skill_download.mjs \
   "${SKILLPILOT_BACKEND_BUILD_DIR}/resources/main/static"
 cd ..
+
+# Last step before the restart: the build and all pre-restart checks have
+# passed, and the previous backend is still serving if the dump fails.
+run_database_backup "${SKIP_DB_BACKUP}" "${DB_BACKUP_ENV_FILE}" "${DB_BACKUP_DIR}" \
+  "${PROJECT_ROOT}/scripts/backup_db.sh"
 
 echo "Starte Service neu..."
 if [ "$(id -u)" -eq 0 ]; then
