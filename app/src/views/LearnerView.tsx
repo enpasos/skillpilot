@@ -113,6 +113,12 @@ import {
 
 import type { UiGoal } from '../goalTypes'
 import type { Learner, FrontierGoal } from '../learnerTypes'
+import {
+  takeStartedLearnerState,
+  takeStartedLearningPlans,
+  type LearnerStateStartAnswer,
+} from '../utils/cockpitStartRequests'
+import { loadLearnerProfile, LearnerProfileRequestError } from '../utils/learnerProfileRequest'
 import type { LearnerLearningPlansResponse } from '../learnerLearningPlanTypes'
 import type { ResourceLink } from '../landscapeTypes'
 
@@ -540,6 +546,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const verifiedRecallStartInFlightRef = useRef(createSynchronousInFlightGuard())
   const learnerDeletionInFlightRef = useRef(createSynchronousInFlightGuard())
   const learnerResumeAttemptedIdRef = useRef('')
+  const initialProfileReadStartedRef = useRef(false)
   const currentSkillpilotIdRef = useRef(skillpilotId)
   const loadLearnerRetentionRef = useRef<() => Promise<void>>(async () => undefined)
   const fullRefreshInFlightRef = useRef(false)
@@ -1762,14 +1769,18 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         const url = apiBase
           ? `${apiBase}/api/ui/learners/${skillpilotId}/state${suffix}`
           : `/api/ui/learners/${skillpilotId}/state${suffix}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
-          if (!isCurrentRequest()) return null
-          if (!isLearnerStatePayload(data)) return null
-          return applyLearnerStatePayload(data, requestScopeKey)
-        }
+        // The first load takes the state request the app started before the
+        // skill graph and the Cockpit code had arrived. Refreshes always ask again.
+        const startedRequest = cacheBust ? null : takeStartedLearnerState(skillpilotId)
+        const startedAnswer = startedRequest ? await startedRequest.catch(() => null) : null
+        const answer: LearnerStateStartAnswer = startedAnswer?.ok
+          ? startedAnswer
+          : await fetch(url).then(async (res) => ({ ok: res.ok, payload: res.ok ? await res.json() : null }))
         if (!isCurrentRequest()) return null
+        // An answer without the state contract is a failed load, not an endless one.
+        if (answer.ok && isLearnerStatePayload(answer.payload)) {
+          return applyLearnerStatePayload(answer.payload, requestScopeKey)
+        }
         setLearnerStateLoadState({
           scopeKey: requestScopeKey,
           status: 'error',
@@ -1817,7 +1828,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     setLearningPlansLoadState({ scopeKey: requestScopeKey, status: 'loading' })
     try {
       // One backend snapshot supplies schedule and authoritative status together.
-      const response = await getLearnerLearningPlans(skillpilotId, undefined, { language: localizedLanguage })
+      const startedRequest = takeStartedLearningPlans(skillpilotId, localizedLanguage)
+      const response = (startedRequest ? await startedRequest.catch(() => null) : null)
+        ?? await getLearnerLearningPlans(skillpilotId, undefined, { language: localizedLanguage })
       if (!isCurrentRequest()) return null
       if (response.status.language !== localizedLanguage) {
         throw new Error('Learning-plan status language does not match the requested language')
@@ -2593,13 +2606,20 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       scopeKey: learnerStateScopeKey,
       status: 'loading',
     })
+    // Only the very first read may share the profile the app shell has just
+    // requested; a reload or a later run must see the saved state.
+    const reuseStartRequest = !initialProfileReadStartedRef.current && personalConfigReloadCounter === 0
+    initialProfileReadStartedRef.current = true
     const fetchConfig = async () => {
       try {
         const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-        const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
-        const res = await fetch(url)
-        if (res.ok) {
-          const data = await res.json()
+        const data = await loadLearnerProfile<Learner & { personalCurriculum?: unknown }>(
+          skillpilotId, { reuseStartRequest },
+        ).catch((error: unknown) => {
+          if (error instanceof LearnerProfileRequestError) return null
+          throw error
+        })
+        if (data) {
           if (isCurrentRefresh()) applyLoadedProfile(data, learnerStateScopeKey, preferenceSequenceAtStart)
           if (rootLandscapeId === CANONICAL_GYMNASIUM_ROOT_ID) {
             if (isCurrentRefresh()) {

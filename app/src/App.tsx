@@ -9,6 +9,7 @@ import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
+import { startCockpitRequests } from './utils/cockpitStartRequests'
 import { getSkillPilotOverviewCopy } from './utils/skillPilotOverviewCopy'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
 import {
@@ -231,6 +232,17 @@ const App: React.FC = () => {
   const isExplorerRoute =
     normalizedPath === '/explorer' ||
     normalizedPath.startsWith('/explorer/')
+
+  // The Cockpit needs the learner state, the plans and its own code. Asking
+  // for them now, beside the skill graph, instead of after it shortens the
+  // wait for the first view by the time the graph takes to arrive.
+  const startsLearnerCockpit = role === 'learner' && hasActiveSession
+    && (normalizedPath === '/learner' || normalizedPath.startsWith('/learner/'))
+  useEffect(() => {
+    if (!startsLearnerCockpit || !sanitizedSkillpilotId) return
+    startCockpitRequests(sanitizedSkillpilotId, language === 'en' ? 'en' : 'de')
+    void import('./views/LearnerView').catch(() => undefined)
+  }, [language, sanitizedSkillpilotId, startsLearnerCockpit])
 
   const core = useAppCore({
     role: role || 'explorer',
