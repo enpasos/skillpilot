@@ -59,6 +59,19 @@ A learning unit lives in the existing placement layer of a canonical landscape:
 - `learningUnitCoverage` (`partial` or `complete`) is optional; absent means no
   claim. `complete` asserts that every atomic goal of the landscape is owned.
 
+Three points an author must know:
+
+- **`revision` names one state of the unit's contract.** A change of the unit's
+  own goals, its parent, its promise or its coverage reviews is a new revision.
+  No validator enforces this yet; it becomes a hard rule together with the
+  runtime binding of results to a contract revision (rule R5).
+- **`reference` is a repository path in a source landscape and a package path
+  in a package.** The build rewrites it to the shipped review record (see "1.2
+  builds"); nothing else in the review changes.
+- **`coverageReviews` is an ordered list like `goalPlacements`.** In the FWU
+  carrier a review record is identified by its position in the list, so keep
+  the order stable; append new reviews at the end.
+
 Calendar-style units (`program`, `stage`, `year`, `phase`, `semester`,
 `module`, `track`, `exam`) and relations (`primary`, `secondary`, `assessed`)
 keep their meaning.
