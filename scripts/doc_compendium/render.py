@@ -87,6 +87,8 @@ def tex_escape_code(text: str) -> str:
         ",": r",\allowbreak{}",
         "=": r"=\allowbreak{}",
         "?": r"?\allowbreak{}",
+        # A raw double quote is a babel shorthand in German ("o becomes an umlaut).
+        '"': r"\textquotedbl{}",
     }
     out: list[str] = []
     for idx, ch in enumerate(text):
