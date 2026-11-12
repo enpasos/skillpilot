@@ -165,6 +165,54 @@ class LearnerProjectionMemoizationTest {
         assertThat(projection(ROOT, config, false)).isNotSameAs(outer).isNotSameAs(nested);
     }
 
+    @Test
+    void legacySourceLookupAnswersFromOneIndexPerTransactionExactlyLikeTheScanOfAllGoals() {
+        LearningGoal first = goalWithLegacySource("canonical-first", "legacy-shared");
+        LearningGoal second = goalWithLegacySource("canonical-second", "legacy-shared");
+        LearningGoal other = goalWithLegacySource("canonical-other", "legacy-other");
+        LearningGoal plain = goalWithLegacySource("canonical-plain", null);
+        Map<String, LearningGoal> authored = new LinkedHashMap<>();
+        for (LearningGoal goal : List.of(first, second, other, plain)) authored.put(goal.getId(), goal);
+        Map<String, LearningGoal> goals = ReflectionTestUtils.invokeMethod(service, "immutableGoalMap", authored);
+        List<String> questions = List.of("legacy-shared", "legacy-other", "legacy-unknown", "canonical-first", " ");
+
+        // Without a transaction every question scans all goals.
+        Map<String, String> scanned = new LinkedHashMap<>();
+        for (String question : questions) scanned.put(question, legacySourceLookup(question, goals));
+        assertThat(scanned).containsEntry("legacy-shared", "canonical-first")
+                .containsEntry("legacy-other", "canonical-other");
+        assertThat(scanned.get("legacy-unknown")).isNull();
+        assertThat(scanned.get("canonical-first")).isNull();
+
+        beginTransaction();
+        for (String question : questions) {
+            assertThat(legacySourceLookup(question, goals)).isEqualTo(scanned.get(question));
+        }
+        // A map somebody can still change is never indexed: each question sees its current content.
+        assertThat(legacySourceLookup("legacy-late", authored)).isNull();
+        authored.put("canonical-late", goalWithLegacySource("canonical-late", "legacy-late"));
+        assertThat(legacySourceLookup("legacy-late", authored)).isEqualTo("canonical-late");
+        assertThat(legacySourceLookup("legacy-late", goals)).isNull();
+        clearTransaction();
+        // The index ends with its transaction.
+        beginTransaction();
+        assertThat(legacySourceLookup("legacy-shared", goals)).isEqualTo("canonical-first");
+    }
+
+    private static LearningGoal goalWithLegacySource(String id, String sourceGoalId) {
+        LearningGoal goal = new LearningGoal();
+        goal.setId(id);
+        goal.setTitle(id);
+        if (sourceGoalId != null) {
+            goal.setExtendedData(new LinkedHashMap<>(Map.of("provenance", Map.of("sourceGoalId", sourceGoalId))));
+        }
+        return goal;
+    }
+
+    private String legacySourceLookup(String legacyGoalId, Map<String, LearningGoal> goals) {
+        return ReflectionTestUtils.invokeMethod(service, "findCanonicalGoalIdByLegacySourceId", legacyGoalId, goals);
+    }
+
     private static void beginTransaction() {
         TransactionSynchronizationManager.initSynchronization();
         TransactionSynchronizationManager.setActualTransactionActive(true);

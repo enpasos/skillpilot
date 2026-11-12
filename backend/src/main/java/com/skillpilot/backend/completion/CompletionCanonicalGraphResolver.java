@@ -53,11 +53,12 @@ public final class CompletionCanonicalGraphResolver {
                 }
             }
         }
+        Map<String, List<String>> qualifiedIds = qualifiedIdsBySuffix(graph);
         Map<String, LearningGoal> normalized = new LinkedHashMap<>();
         for (LearningGoal goal : graph.values()) {
             LearningGoal copy = mapper.convertValue(goal, LearningGoal.class);
-            copy.setContains(normalize(goal.getContains(), graph));
-            copy.setRequires(normalize(goal.getRequires(), graph));
+            copy.setContains(normalize(goal.getContains(), graph, qualifiedIds));
+            copy.setRequires(normalize(goal.getRequires(), graph, qualifiedIds));
             normalized.put(copy.getId(), copy);
         }
         return normalized;
@@ -110,6 +111,10 @@ public final class CompletionCanonicalGraphResolver {
         });
         Map<String, LearningGoal> catalog = new LinkedHashMap<>();
         definitions.forEach((id, variants) -> catalog.put(id, variants.getFirst()));
+        // The catalog is complete from here on. Unqualified references are
+        // resolved through this index instead of one scan of the whole
+        // catalog per reference.
+        Map<String, List<String>> qualifiedIds = qualifiedIdsBySuffix(catalog);
         if (requireCanonicalAtoms) {
             for (String id : level2AtomicTargets) {
                 LearningGoal goal = catalog.get(id);
@@ -128,7 +133,7 @@ public final class CompletionCanonicalGraphResolver {
                 if (goal.getContains() != null) for (String child : goal.getContains()) {
                     // Keep claims from every variant so a reached conflicting
                     // ancestor cannot disappear behind the first definition.
-                    for (String candidate : containedGoalCandidates(child, catalog)) {
+                    for (String candidate : containedGoalCandidates(child, catalog, qualifiedIds)) {
                         parents.computeIfAbsent(candidate, ignored -> new LinkedHashSet<>()).add(id);
                     }
                 }
@@ -154,11 +159,11 @@ public final class CompletionCanonicalGraphResolver {
                 }
             }
             if (goal.getRequires() != null) for (String ref : goal.getRequires()) {
-                enqueue(resolveOwned(ref, catalog, owners), true, full, pending);
+                enqueue(resolveOwned(ref, catalog, owners, qualifiedIds), true, full, pending);
             }
             if (includeChildren && !level2AtomicTargets.contains(id) && goal.getContains() != null) {
                 for (String ref : goal.getContains()) {
-                    enqueue(resolveOwned(ref, catalog, owners), true, full, pending);
+                    enqueue(resolveOwned(ref, catalog, owners, qualifiedIds), true, full, pending);
                 }
             }
             for (String parent : parents.getOrDefault(id, Set.of())) enqueue(parent, false, full, pending);
@@ -175,9 +180,9 @@ public final class CompletionCanonicalGraphResolver {
                 copy.setType("atomic");
             }
             if (!full.get(id)) children = children.stream().filter(child ->
-                    containedGoalCandidates(child, catalog).stream().anyMatch(full::containsKey)).toList();
-            copy.setContains(normalizeOwned(children, catalog, owners));
-            copy.setRequires(normalizeOwned(goal.getRequires(), catalog, owners));
+                    containedGoalCandidates(child, catalog, qualifiedIds).stream().anyMatch(full::containsKey)).toList();
+            copy.setContains(normalizeOwned(children, catalog, owners, qualifiedIds));
+            copy.setRequires(normalizeOwned(goal.getRequires(), catalog, owners, qualifiedIds));
             normalized.put(copy.getId(), copy);
         }
         return normalized;
@@ -202,7 +207,32 @@ public final class CompletionCanonicalGraphResolver {
         }
     }
 
-    private static Set<String> containedGoalCandidates(String reference, Map<String, LearningGoal> graph) {
+    /**
+     * The ids of a graph by the part after their last colon, in graph order.
+     * An id ends with ":" + reference exactly when it is listed under the part
+     * of the reference after its last colon and ends with that qualified text;
+     * for a reference without a colon the listing alone decides.
+     */
+    private static Map<String, List<String>> qualifiedIdsBySuffix(Map<String, LearningGoal> graph) {
+        Map<String, List<String>> index = new java.util.HashMap<>();
+        for (String id : graph.keySet()) {
+            if (id == null) continue;
+            int separator = id.lastIndexOf(':');
+            if (separator >= 0) index.computeIfAbsent(id.substring(separator + 1), ignored -> new ArrayList<>()).add(id);
+        }
+        return index;
+    }
+
+    /** All graph ids that end with ":" + reference, in graph order. */
+    private static List<String> qualifiedMatches(String reference, Map<String, List<String>> qualifiedIds) {
+        List<String> listed = qualifiedIds.getOrDefault(reference.substring(reference.lastIndexOf(':') + 1), List.of());
+        if (listed.isEmpty() || reference.indexOf(':') < 0) return listed;
+        String qualified = ":" + reference;
+        return listed.stream().filter(id -> id.endsWith(qualified)).toList();
+    }
+
+    private static Set<String> containedGoalCandidates(String reference, Map<String, LearningGoal> graph,
+            Map<String, List<String>> qualifiedIds) {
         if (reference == null || reference.isBlank()) return Set.of();
         if (graph.containsKey(reference)) return Set.of(reference);
         int separator = reference.lastIndexOf(':');
@@ -210,19 +240,17 @@ public final class CompletionCanonicalGraphResolver {
             String candidate = reference.substring(separator + 1);
             return graph.containsKey(candidate) ? Set.of(candidate) : Set.of();
         }
-        Set<String> candidates = new LinkedHashSet<>();
-        for (String id : graph.keySet()) {
-            if (id != null && id.endsWith(":" + reference)) candidates.add(id);
-        }
-        return candidates;
+        return new LinkedHashSet<>(qualifiedMatches(reference, qualifiedIds));
     }
 
     private List<String> normalizeOwned(List<String> references, Map<String, LearningGoal> graph,
-            Map<String, Set<String>> owners) {
-        return references == null ? List.of() : references.stream().map(ref -> resolveOwned(ref, graph, owners)).toList();
+            Map<String, Set<String>> owners, Map<String, List<String>> qualifiedIds) {
+        return references == null ? List.of()
+                : references.stream().map(ref -> resolveOwned(ref, graph, owners, qualifiedIds)).toList();
     }
 
-    private String resolveOwned(String reference, Map<String, LearningGoal> graph, Map<String, Set<String>> owners) {
+    private String resolveOwned(String reference, Map<String, LearningGoal> graph, Map<String, Set<String>> owners,
+            Map<String, List<String>> qualifiedIds) {
         if (reference == null || graph.containsKey(reference)) return reference;
         int separator = reference.indexOf(':');
         if (separator >= 0) {
@@ -232,31 +260,28 @@ public final class CompletionCanonicalGraphResolver {
             String goal = reference.substring(separator + 1);
             return graph.containsKey(goal) && owners.getOrDefault(goal, Set.of()).contains(owner) ? goal : reference;
         }
-        String resolved = null;
-        for (String candidate : graph.keySet()) {
-            if (!candidate.endsWith(":" + reference)) continue;
-            if (resolved != null) throw new CompletionCompilationException("AMBIGUOUS_REFERENCE", "Ambiguous canonical reference: " + reference);
-            resolved = candidate;
-        }
-        return resolved == null ? reference : resolved; // Compiler reports unresolved authored references.
+        return uniqueQualifiedMatch(reference, qualifiedIds);
     }
 
-    private List<String> normalize(List<String> references, Map<String, LearningGoal> graph) {
-        return references == null ? List.of() : references.stream().map(ref -> resolve(ref, graph)).toList();
+    private List<String> normalize(List<String> references, Map<String, LearningGoal> graph,
+            Map<String, List<String>> qualifiedIds) {
+        return references == null ? List.of() : references.stream().map(ref -> resolve(ref, graph, qualifiedIds)).toList();
     }
 
-    private String resolve(String reference, Map<String, LearningGoal> graph) {
+    private String resolve(String reference, Map<String, LearningGoal> graph, Map<String, List<String>> qualifiedIds) {
         if (reference == null || graph.containsKey(reference)) return reference;
         int separator = reference.indexOf(':');
         if (separator >= 0 && graph.containsKey(reference.substring(separator + 1))) {
             return reference.substring(separator + 1);
         }
-        String resolved = null;
-        for (String candidate : graph.keySet()) {
-            if (!candidate.endsWith(":" + reference)) continue;
-            if (resolved != null) throw new CompletionCompilationException("AMBIGUOUS_REFERENCE", "Ambiguous canonical reference: " + reference);
-            resolved = candidate;
+        return uniqueQualifiedMatch(reference, qualifiedIds);
+    }
+
+    private static String uniqueQualifiedMatch(String reference, Map<String, List<String>> qualifiedIds) {
+        List<String> matches = qualifiedMatches(reference, qualifiedIds);
+        if (matches.size() > 1) {
+            throw new CompletionCompilationException("AMBIGUOUS_REFERENCE", "Ambiguous canonical reference: " + reference);
         }
-        return resolved == null ? reference : resolved; // Compiler reports unresolved authored references.
+        return matches.isEmpty() ? reference : matches.getFirst(); // Compiler reports unresolved authored references.
     }
 }

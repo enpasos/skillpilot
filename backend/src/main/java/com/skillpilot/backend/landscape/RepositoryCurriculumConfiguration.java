@@ -36,12 +36,26 @@ public class RepositoryCurriculumConfiguration {
             LandscapeProperties properties,
             ObjectMapper objectMapper,
             LandscapeService landscapeService) {
-        return new CompositionViewService(properties, objectMapper, () -> {
-            java.util.Map<String, java.util.List<String>> contains = new java.util.LinkedHashMap<>();
-            landscapeService.getAll().forEach(landscape -> landscape.getGoals().forEach(goal ->
-                    contains.put(goal.getId(), goal.getContains() == null
-                            ? java.util.List.of() : java.util.List.copyOf(goal.getContains()))));
-            return contains;
+        return new CompositionViewService(properties, objectMapper, new java.util.function.Supplier<>() {
+            private java.util.List<com.skillpilot.backend.landscape.SkillLandscape> source;
+            private com.skillpilot.backend.service.CanonicalContainsGraph graph;
+
+            // The landscape service replaces its landscape list on every load and
+            // never changes a loaded goal. The graph is therefore rebuilt exactly
+            // when that list is another instance, not for every view lookup.
+            @Override
+            public synchronized java.util.Map<String, java.util.List<String>> get() {
+                java.util.List<com.skillpilot.backend.landscape.SkillLandscape> current = landscapeService.getAll();
+                if (graph == null || current != source) {
+                    java.util.Map<String, java.util.List<String>> contains = new java.util.LinkedHashMap<>();
+                    current.forEach(landscape -> landscape.getGoals().forEach(goal ->
+                            contains.put(goal.getId(), goal.getContains() == null
+                                    ? java.util.List.of() : goal.getContains())));
+                    graph = com.skillpilot.backend.service.CanonicalContainsGraph.copyOf(contains);
+                    source = current;
+                }
+                return graph;
+            }
         });
     }
 
