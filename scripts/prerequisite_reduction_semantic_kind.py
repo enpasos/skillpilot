@@ -61,6 +61,21 @@ def exact_fields(value: Any, keys: set[str], label: str) -> None:
     require(isinstance(value, dict) and set(value) == keys, f"Invalid {label} fields")
 
 
+def fingerprint_prerequisite_reduction_document(document: Mapping[str, Any]) -> str:
+    """Python mirror of ``fingerprintPrerequisiteReductionDocument`` (app/scripts/prerequisiteReductionProof.ts).
+
+    A proof binds each catalog document without its learning-unit layer, using the package
+    build's own projection (``curriculum_learning_units.project_out_learning_units``) and the
+    ECMAScript-compatible canonical JSON of the release compiler. This bridge does not
+    recompute the proof: it delegates verification to the Node verifier and compares the
+    caller snapshot with the complete source bytes.
+    """
+    import compile_curriculum_release_model as compiler  # Lazy: the compiler imports this bridge.
+    import curriculum_learning_units as learning_units
+
+    return digest(compiler.canonical_json_text(learning_units.project_out_learning_units(document)).encode("utf-8"))
+
+
 @dataclass(frozen=True)
 class SemanticKindReductionBindings:
     baseline_fingerprints: Mapping[str, str]

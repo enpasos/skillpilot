@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reference fingerprints of the prerequisite-reduction document fingerprint (canonical JSON SHA-256 of the landscape without its learning-unit layer) for every landscape of the shared learning-unit cases, plus the pilot unit for canonical Mathematics. TypeScript and Python are compared directly; Java is compared with these references. Regenerate with: npx tsx scripts/testLearningUnitLayerProjection.ts --write",
+  "casesPath": "contracts/curriculum-package/v1.2/fixtures/learning-units/cases.json",
+  "casesSha256": "6be0f5dd26b0cc5054f5ee43741b182270b9932b33c297b8bc5625c4ec5f4dd0",
+  "references": [
+    {
+      "case": "valid-chain",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:a2435632b30ca806d71669d792f49e076cd143aecd95660c59539dfbed635174"
+    },
+    {
+      "case": "calendar-units-are-untouched",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:a981e277bad30c6e9971b1d52069c99d4d8c07fd31de4e8298a9d924d51d8e69"
+    },
+    {
+      "case": "r1-uncovered-endpoint",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:12289f3a885c4ff7b0434d70e30a30b95f5461e5b16c2a65dde34da48f5b1a21"
+    },
+    {
+      "case": "r1-memory-only-path",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:665678054233ac1340b04444b074b0feec9fcd296e7ed20ba2929e7723357175"
+    },
+    {
+      "case": "r1-assessment-owned-elsewhere",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:13c4eb59752a28ad926393b6829ef44a1f00008f8203bd74b8631f5cd3d988c9"
+    },
+    {
+      "case": "path-through-foreign-goals",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:17f1d6de084efa2e289c73d29713b00ed78f3f2f4ef4724b0e12028c9640ea29"
+    },
+    {
+      "case": "path-through-foreign-goals",
+      "index": 1,
+      "landscapeId": "MATH",
+      "fingerprint": "sha256:e5268b555587cd4452322417656cdf8a01298d0cd6b5d650b73b94a1849bc6b1"
+    },
+    {
+      "case": "inherited-cluster-requirement",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:8eda98c4aae8440d05b272abf0d221f0334180a92e16d3a49eb79d5d80bccc29"
+    },
+    {
+      "case": "r3-coverage-without-path",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:73d5500112f13ca90389bb6e8f6f0124ba1420831534afbc30505d6b9d07c323"
+    },
+    {
+      "case": "r3-cluster-and-unknown-coverage",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:766e38152cce73ec10a953b82349837efdf9e74e513b1a21d115a0af8a977350"
+    },
+    {
+      "case": "r4-two-owners",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:fbbf2b0379789602a340d09eee01f99534e1fe766f5fae5f03f757423c93f1d7"
+    },
+    {
+      "case": "r4-complete-landscape-leaves-goal-unowned",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:8a9a8f6d45f5690b0d2a232f0fd317521a58389288585f0c7e114b459e7facb1"
+    },
+    {
+      "case": "partial-landscape-reports-unowned-goals",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:2c83fe2cc898215c38a21cc15f1d14ecd25cc3c8c1a462f19ff28dee8719f610"
+    },
+    {
+      "case": "partial-landscape-reports-unowned-goals",
+      "index": 1,
+      "landscapeId": "L2",
+      "fingerprint": "sha256:81b7499fd9ec5879679a67a6e0d5ebe2a9212c4781871b6342f737078c9959d4"
+    },
+    {
+      "case": "empty-unit",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:d7fc1a2c2d2771561b2dbab0cbf6e67d045370074d122782f0d282ababf07393"
+    },
+    {
+      "case": "pure-aggregate",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:18f09fadd270407f9daf6c93071c34d6a69c2925d764c71f2e4946db2c8e21d0"
+    },
+    {
+      "case": "hierarchy-cycle",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:88ad6353334161611c3d99e050ef99f3472c531615cceb411c06a11a44787563"
+    },
+    {
+      "case": "parent-must-be-a-learning-unit",
+      "index": 0,
+      "landscapeId": "L",
+      "error": true
+    },
+    {
+      "case": "own-goal-must-be-an-atomic-goal-of-the-landscape",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:1d03e08497fdcc4babb4e489011b5e798071bd37ae3702b63fd4b09ebf96b224"
+    },
+    {
+      "case": "own-goal-must-be-an-atomic-goal-of-the-landscape",
+      "index": 1,
+      "landscapeId": "MATH",
+      "fingerprint": "sha256:a6a22058cf972545da80e8a5ed7facb8a881cbe62c8c908858877adc3ce793c2"
+    },
+    {
+      "case": "ambiguous-goal-kind",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:d6ab0c96cf0c3e43b3116b292b747399021d96e9ebb0a61a48b1b91c6ba89116"
+    },
+    {
+      "case": "orientation-needs-no-assessment",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:2f8c2d2eb4e4ec0f6c36ecad88fad2cc350454965b054b30a3ac144e82b1144c"
+    },
+    {
+      "case": "requires-cycle",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:a6dc2e2900a1c4922c7c6a045a037b77e282cd197227ad3457c4859c5c30e325"
+    },
+    {
+      "case": "unresolved-prerequisite",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:9fbf3303fb2e538fbfab32017804ab3524d0464ee6ba806a0f7c8e329ca9d6fe"
+    },
+    {
+      "case": "unit-declaration",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:c12a66f79da86ba5b8299f0789418459915f9704486a643cfe2544133ac3cb87"
+    },
+    {
+      "case": "ownership-placement",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:e84b4a90d000ff1b3300c3edb18755267212f4af70a8bf70e462e48f20686b4f"
+    },
+    {
+      "case": "reviewed-coverage",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:be4d1bc0691dbd5baf16b186094d6f0c968dfeadc7b0da076f7071fde727bd78"
+    },
+    {
+      "case": "stale-or-unfounded-review",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:1ca58786cb634752aed60e5def61df05c9cdc3b251ee2e925dc39dc1a45c486b"
+    },
+    {
+      "case": "malformed-coverage-review",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:0b63298dfbbab7247e07488c7fd29c21fb9779bf2cf75107246ba69996bc7979"
+    },
+    {
+      "case": "offered-curriculum-without-the-own-assessment",
+      "index": 0,
+      "landscapeId": "L",
+      "fingerprint": "sha256:da3d9f1820e7a084e89b23678fcedb2ddec15792daf6b5cb392d5e862befc7c2"
+    }
+  ],
+  "canonicalMathematics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "pilotUnit": {
+      "id": "math-dot-product-projection",
+      "kind": "learningUnit",
+      "label": "Skalarprodukt über orthogonale Projektion deuten",
+      "labelEn": "Interpreting the dot product through orthogonal projection",
+      "promise": "Ich kann einen Vektor orthogonal auf die Richtung eines anderen Vektors projizieren und damit die Definition des Skalarprodukts geometrisch veranschaulichen und fachsprachlich erläutern. So wird aus einer Rechenvorschrift eine anschauliche Größe, auf die Projektionen als lineare Abbildungen aufbauen.",
+      "promiseEn": "I can project a vector orthogonally onto the direction of another vector and use this to illustrate the definition of the dot product geometrically and explain it in mathematical language. This turns a calculation rule into a quantity with a geometric meaning, on which projections as linear maps build.",
+      "revision": "2026-11-12-v1"
+    },
+    "pilotPlacements": [
+      {
+        "goalId": "3016ec37-1c2e-47db-83f5-e767923bc97e",
+        "unitId": "math-dot-product-projection",
+        "relation": "own"
+      },
+      {
+        "goalId": "e98672c6-871a-5d0b-889c-5afc51040f0d",
+        "unitId": "math-dot-product-projection",
+        "relation": "own"
+      }
+    ]
+  }
+}

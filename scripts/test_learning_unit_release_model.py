@@ -2,11 +2,12 @@
 """End-to-end proof of the runtime-1.2 learning-unit lane on the real Mathematics release model.
 
 The test never writes into ``curricula/``. It reads the canonical Mathematics
-landscape once, injects one learning unit in memory and serves that copy to
-the release compiler and the independent release-model validator in place of
-the canonical file. The prerequisite-reduction proof is still verified by the
-real Node verifier against the unchanged canonical file, after checking that
-the injected copy differs from it only in learning-unit fields.
+landscape once, projects out the learning units it already carries, injects one
+test unit in memory and serves that copy to the release compiler and the
+independent release-model validator in place of the canonical file. The
+prerequisite-reduction proof is still verified by the real Node verifier against
+the unchanged canonical file, after checking that the injected copy differs from
+it only in learning-unit fields (the proof fingerprints documents without that layer).
 
 Proofs:
 * 1.0 and 1.1 builds of the injected input are byte-identical to the builds of
@@ -95,7 +96,8 @@ def inject(document: dict[str, Any]) -> dict[str, Any]:
 class Inputs:
     """In-memory source substitution for one compile/validate run; no repository file is written."""
 
-    def __init__(self, canonical: dict[str, Any]) -> None:
+    def __init__(self, source: dict[str, Any], canonical: dict[str, Any]) -> None:
+        self.source = source
         self.canonical = canonical
         self.landscape = canonical
         self.profile_overrides: dict[Path, dict[str, Any]] = {}
@@ -119,7 +121,7 @@ class Inputs:
             raise AssertionError("The injected landscape differs from the canonical file outside learning-unit fields")
         if self._receipt is None:
             started = time.monotonic()
-            self._receipt = self._real_binding(repository_root, CANONICAL, self.canonical, fingerprints)
+            self._receipt = self._real_binding(repository_root, CANONICAL, self.source, fingerprints)
             print(f"  prerequisite-reduction proof verified once against the unchanged canonical file "
                   f"({time.monotonic() - started:.0f} s)", flush=True)
         return self._receipt
@@ -177,12 +179,14 @@ def assert_identical(left: Path, right: Path, label: str) -> None:
 
 
 def run(work: Path) -> None:
-    canonical_bytes = CANONICAL.read_bytes()
-    canonical = json.loads(canonical_bytes)
-    if lu.has_learning_unit_content(canonical):
-        raise AssertionError("This test injects the first learning unit; the canonical file already has learning units")
+    source = json.loads(CANONICAL.read_bytes())
+    # The baseline is the canonical landscape without its own learning units, so the
+    # test unit is the only one and the proof keeps the file's real binding.
+    canonical = lu.project_out_learning_units(source)
+    if canonical["goals"] != source["goals"]:
+        raise AssertionError("The learning-unit projection changed a goal object")
     injected = inject(canonical)
-    inputs = Inputs(canonical)
+    inputs = Inputs(source, canonical)
     profile_12 = json.loads(PROFILES["1.2"].read_bytes())
     profile_12["learningUnits"]["expectedCounts"] = {"learningUnits": 1, "ownPlacements": 2, "coverageReviews": 0}
     inputs.profile_overrides[PROFILES["1.2"].resolve()] = profile_12

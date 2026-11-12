@@ -9,6 +9,7 @@ import {
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
+import { projectOutLearningUnits, sha256WithoutLearningUnitLayer } from './learningUnitLayerProjection'
 
 type DurationModel = 'G8' | 'G9'
 
@@ -352,7 +353,9 @@ const relabelStructureById = (
   }
 })
 
-const canonicalMath = readJson<{
+// The layout is about goals and calendar placements; learning units are an orthogonal
+// placement layer and are projected out before generation and before the input pin.
+const canonicalMath = projectOutLearningUnits(readJson<{
   goals?: LearningGoal[]
   goalPlacements?: Array<{
     goalId: string
@@ -360,7 +363,7 @@ const canonicalMath = readJson<{
     relation: string
     context?: Record<string, string>
   }>
-}>(canonicalMathPath)
+}>(canonicalMathPath))
 const sourceExtraction = readJson<{ sourceGoals?: SourceGoal[] }>(sourceExtractionPath)
 const mappingReview = readJson<{ mappings?: MappingEntry[] }>(mappingPath)
 const baseGkView = readJson<CompositionView>(resolve(compositionViewDir, 'de-he-gk.view.json'))
@@ -377,9 +380,9 @@ const splitLayoutPlan = readJson<SplitLayoutPlan>(splitLayoutPlanPath)
 const semanticKindLedger = readJson<{ decisions?: SemanticKindDecision[] }>(semanticKindLedgerPath)
 const canonicalMathRelativePath =
   'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
-const canonicalMathSha256 = createHash('sha256')
-  .update(readFileSync(canonicalMathPath))
-  .digest('hex')
+// SHA-256 of the canonical file without its learning-unit layer; equals the raw file hash
+// for a file without learning units, so a unit edit does not stale the reviewed layout.
+const canonicalMathSha256 = sha256WithoutLearningUnitLayer(readFileSync(canonicalMathPath))
 
 if (
   splitLayoutPlan.schemaVersion !== 1

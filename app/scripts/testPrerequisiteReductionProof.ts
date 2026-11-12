@@ -1478,10 +1478,105 @@ async function verifyActualLiveApplicabilityRefresh(
   console.log(`Actual V7 cache refresh: unchanged ${summary.affectedGoalIds.length} prerequisite sources, exact 27 cache snapshots and 21 complete current documents passed.`)
 }
 
+// A learning unit is an orthogonal placement layer: the proof fingerprints each catalog
+// document without it, so the layer never stales a proof, and everything else still does.
+type Layered = Document & Record<string, unknown> & { programUnits: Record<string, unknown>[]; goalPlacements: Record<string, unknown>[] }
+const layeredBaseline = (): Document => ({ ...baseline(), description: 'Placement fixture',
+  programUnits: [{ id: 'program', kind: 'program', label: 'Program' },
+    { id: 'stage', kind: 'stage', label: 'Stage', parentUnitId: 'program' }],
+  goalPlacements: [{ goalId: 'q', unitId: 'stage', relation: 'primary', context: { stage: 'SekI' } },
+    { goalId: 'p', unitId: 'stage', relation: 'secondary' }, { goalId: 'r', unitId: 'program', relation: 'assessed' }],
+} as Document)
+const learningUnit = (id: string, extra: Record<string, unknown> = {}) => ({ id, kind: 'learningUnit', label: `Unit ${id}`,
+  labelEn: `Unit ${id}`, promise: 'Ich kann es.', promiseEn: 'I can do it.', revision: '2026-11-12-v1', ...extra })
+function addLearningUnitLayer(document: Document, unit = learningUnit('unit'), own: Record<string, unknown> = {}) {
+  const layered = document as Layered
+  layered.programUnits.push(unit)
+  layered.goalPlacements.push({ goalId: 'q', unitId: unit.id, relation: 'own', ...own }, { goalId: 'p', unitId: unit.id, relation: 'own' })
+  layered.learningUnitCoverage = 'partial'
+}
+async function runLearningUnitLayerRegressions() {
+  const layeredFixture = () => { const f = fixture(layeredBaseline()); addLearningUnitLayer(f.current); f.save(); return f }
+  assert.ok(await layeredFixture().load(), 'a learning-unit layer on a proven document keeps the proof valid')
+  const accept = async (mutate: (document: Layered) => void, label: string) => {
+    const f = layeredFixture(); mutate(f.current as Layered); f.save()
+    assert.ok(await f.load(), label)
+  }
+  await accept(document => { document.programUnits.at(-1)!.promise = 'Ich kann mehr.' }, 'a unit edit keeps the proof')
+  await accept(document => { document.programUnits.at(-1)!.revision = '2026-11-13-v2' }, 'a unit revision keeps the proof')
+  await accept(document => { document.goalPlacements = document.goalPlacements.filter(item => item.goalId !== 'p' || item.relation !== 'own') },
+    'an ownership change keeps the proof')
+  await accept(document => { document.programUnits.push(learningUnit('second')); document.learningUnitCoverage = 'complete' },
+    'another unit and a coverage claim keep the proof')
+  const reject = async (mutate: (document: Layered) => void, label: string) => {
+    const f = layeredFixture(); mutate(f.current as Layered); f.save()
+    await assert.rejects(f.load, /current document digest differs/u, label)
+  }
+  await reject(document => { document.goals[2].title = 'Changed goal' }, 'a goal object change stays visible')
+  await reject(document => { document.goals[1].requires = [] }, 'a requires change stays visible')
+  await reject(document => { document.goals[2].contains = ['x'] }, 'a contains change stays visible')
+  await reject(document => { document.programUnits[1].label = 'Renamed stage' }, 'a calendar unit change stays visible')
+  await reject(document => { document.programUnits.splice(1, 1) }, 'a removed calendar unit stays visible')
+  await reject(document => { (document.goalPlacements[0].context as Record<string, string>).stage = 'SekII' },
+    'a primary placement change stays visible')
+  await reject(document => { document.goalPlacements.splice(1, 1) }, 'a removed secondary placement stays visible')
+  await reject(document => { document.goalPlacements[2].unitId = 'stage' }, 'an assessed placement change stays visible')
+  await reject(document => { document.title = 'Renamed landscape' }, 'another top-level field change stays visible')
+  await reject(document => { document.extra = true }, 'a new top-level field stays visible')
+  // Content placed inside the layer cannot hide a goal change: the projection drops a
+  // learning-unit entry or an own placement as a whole and never touches a goal.
+  const hidden = { goals: [{ ...goal('r'), title: 'Changed goal' }], requires: ['proof-test:q'] }
+  await reject(document => { document.programUnits.push(learningUnit('hiding', hidden)); document.goals[2].title = 'Changed goal' },
+    'an undefined field on a learning unit does not hide a goal change')
+  await reject(document => { document.goalPlacements.push({ goalId: 'r', unitId: 'unit', relation: 'own', ...hidden })
+    document.goals[2].title = 'Changed goal' }, 'an undefined field on an own placement does not hide a goal change')
+  // The undefined field itself is invisible to the proof; the unit validator rejects it.
+  const strayField = layeredFixture(); (strayField.current as Layered).programUnits.push(learningUnit('hiding', hidden)); strayField.save()
+  assert.ok(await strayField.load(), 'the proof ignores the learning-unit layer, including its undefined fields')
+  const { deriveLearningUnits } = await import('./lib/learningUnitContracts')
+  const findings = deriveLearningUnits([strayField.current as never]).findings.map(finding => `${finding.code} ${finding.message}`)
+  assert.ok(findings.some(finding => /^LU-UNIT .*field goals is not part of the contract/u.test(finding)), findings.join('\n'))
+  await assert.rejects(async () => {
+    const f = layeredFixture(); (f.current as Layered).programUnits.push({ id: 'year', kind: 'year', label: 'Year', parentUnitId: 'unit' }); f.save()
+    await f.load()
+  }, /learning-unit parent/u, 'an unprojectable layer fails closed')
+
+  // The same through the complete V8 chain (V8 -> V7 -> V6 -> V5 checkpoint).
+  const basis = basisBoundFixture()
+  const layerAll = (f: ReturnType<typeof basisBoundFixture>) => {
+    for (const source of f.registry.catalogSources) {
+      const document = f.documents.find(entry => entry.landscapeId === source.landscapeId)! as Document & Record<string, unknown>
+      assert.ok(!Object.hasOwn(document, 'programUnits') && !Object.hasOwn(document, 'goalPlacements'))
+      document.programUnits = [learningUnit('unit')]
+      document.goalPlacements = [{ goalId: document.goals[0].id, unitId: 'unit', relation: 'own' }]
+      document.learningUnitCoverage = 'partial'
+      writeFileSync(resolve(f.directory, source.path), JSON.stringify(document))
+    }
+  }
+  const unlayered = await basis.load()
+  assert.ok(unlayered)
+  layerAll(basis)
+  const layered = await basis.load()
+  assert.ok(layered, 'a learning-unit layer keeps the complete V8 chain valid without any registry change')
+  assert.deepEqual(verifiedPrerequisiteReductionSummary(layered), verifiedPrerequisiteReductionSummary(unlayered))
+  const drift = basisBoundFixture(); layerAll(drift)
+  drift.documents[0].goals[0].title = 'undeclared drift'
+  const driftSource = drift.registry.catalogSources.find(source => source.landscapeId === drift.documents[0].landscapeId)!
+  writeFileSync(resolve(drift.directory, driftSource.path), JSON.stringify(drift.documents[0]))
+  await assert.rejects(drift.load, /current document digest differs/u, 'a goal change beside the layer stays visible in V8')
+  // Rebinding every current and final-entry digest by hand is still rejected with the layer present.
+  const rebound = basisBoundFixture(); layerAll(rebound)
+  rebound.documents[0].goals[0].title = 'undeclared drift'
+  rebound.save()
+  await assert.rejects(rebound.load, /differ/u, 'a rebound V8 end digest cannot certify an undeclared goal change')
+  console.log('Learning-unit layer regressions passed: 4 layer edits accepted, 13 non-layer changes rejected, V8 chain valid with layers, rebinding rejected.')
+}
+
 try {
   const basisOnly = process.argv.slice(2)
   assert.ok(basisOnly.length === 0 || basisOnly.length === 1 && basisOnly[0] === '--basis-bound-fixtures-only', 'unknown proof test selector')
   await runBasisBoundFixtureRegressions()
+  await runLearningUnitLayerRegressions()
   if (basisOnly.length === 0) {
   await runApplicabilityRefreshFixtureRegressions()
   await runBatchFixtureRegressions()

@@ -102,11 +102,11 @@ test('proof and auditor detect edits after their own import, before lazy compile
   const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
   const root = mkdtempSync(join(repoRoot, 'tmp', 'proof-code-generation-'))
   try {
-    for (const module of ['prerequisiteReductionProof', 'auditTransitiveMinimality']) {
+    for (const module of ['prerequisiteReductionProof', 'auditTransitiveMinimality', 'learningUnitLayerProjection']) {
       const scripts = join(root, module, 'app', 'scripts')
       mkdirSync(scripts, { recursive: true })
       writeFileSync(join(root, module, 'package.json'), JSON.stringify({ type: 'module' }))
-      for (const name of ['prerequisiteReductionProof', 'auditTransitiveMinimality'])
+      for (const name of ['prerequisiteReductionProof', 'auditTransitiveMinimality', 'learningUnitLayerProjection'])
         copyFileSync(join(repoRoot, 'app', 'scripts', `${name}.ts`), join(scripts, `${name}.ts`))
       const proofPath = join(scripts, 'prerequisiteReductionProof.ts')
       const changedPath = join(scripts, `${module}.ts`)

@@ -20,6 +20,7 @@ from typing import Any
 sys.dont_write_bytecode = True
 
 import curriculum_package_learning_unit_contracts as contracts  # noqa: E402
+import curriculum_learning_units as learning_units  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[1]
 V1 = REPO / "contracts/curriculum-package/v1"
@@ -303,9 +304,12 @@ def math_build_profile() -> dict[str, Any]:
     package["packageVersion"] = MATH_PACKAGE_VERSION
     package["releaseId"] = f"{package['packageId']}@{MATH_PACKAGE_VERSION}"
     profile["contracts"]["fieldSemanticsRegistryPath"] = f"{V1_2_CONTRACTS}/profiles/{contracts.REGISTRY_ID}.registry.json"
+    # The learning-unit counts are derived from the canonical landscape the profile builds,
+    # so a unit edit regenerates this profile instead of hand-editing a pin.
+    canonical = load(REPO / profile["canonicalLandscape"]["sourcePath"])
     profile["learningUnits"] = {
         "reviewOutputDirectory": contracts.REVIEW_OUTPUT_DIRECTORY,
-        "expectedCounts": {"learningUnits": 0, "ownPlacements": 0, "coverageReviews": 0},
+        "expectedCounts": learning_units.learning_unit_counts(canonical),
     }
     return profile
 
