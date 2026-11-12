@@ -67,6 +67,24 @@ try {
   assert.equal(await tree.locator(`[data-goal-id="${foreignGoalId}"]`).count(), 1)
   const preparationRow = tree.locator(`[data-goal-id="personal-curriculum:${rootId}:preparation"]`)
   assert.equal(await preparationRow.locator('button[aria-pressed]').count(), 0)
+  // The full-plan overview lists its subjects without containing them, so the
+  // Cockpit shows the subject root. Targets the authored view places stay in
+  // their branch; only the unplaced ones are collected beside it.
+  const preparationBranch = preparationRow.locator('xpath=..')
+  const branchGoalIds = async (branch: typeof preparationBranch) =>
+    branch.locator('[data-goal-id]').evaluateAll((rows) => rows.map((row) => row.getAttribute('data-goal-id')))
+  assert.deepEqual((await branchGoalIds(preparationBranch)).slice(1).sort(), [foreignGoalId, prerequisite].sort(),
+    'The preparation branch holds exactly the targets without an authored place.')
+  const subjectBranch = tree.locator(`[data-goal-id="${chemistryRoot.id}"]`).locator('xpath=..')
+  const subjectGoalIds = await branchGoalIds(subjectBranch)
+  for (const placedId of [target, orientation]) {
+    assert.equal(subjectGoalIds.filter((goalId) => goalId === placedId).length, 1,
+      'An authored target is shown once, in the branch of its subject.')
+  }
+  assert(subjectGoalIds.includes(`personal-curriculum:${rootId}:preparation`),
+    'The preparation branch is shown beneath the subject root the Cockpit displays.')
+  assert.equal(await tree.locator('[data-goal-id="full-plan-root"]').count(), 0,
+    'An overview root without goals is not a row of the learner tree.')
   await prerequisiteRow.locator('button[aria-pressed]').click()
   assert.equal(await page.getByTestId('focused-goal').innerText(), prerequisite)
   await prerequisiteRow.click()
