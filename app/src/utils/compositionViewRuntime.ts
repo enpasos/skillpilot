@@ -1126,7 +1126,13 @@ export const applyPersonalCurriculumProjection = (
   const roots = result.flatMap((entry) => entry.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)))
   const fullPlanEntry = result.find((entry) => entry.meta.landscapeId === scope.rootLandscapeId)
   const localRoots = fullPlanEntry?.goals.filter((goal) => goal.tags?.includes(ROOT_TAG)) ?? []
-  const displayedRoots = localRoots.length > 0 ? localRoots : roots
+  // The authored overview of a multi-subject plan leaves its own root without
+  // children: the cockpit then displays the subject roots of the other entries.
+  // Placement must follow those roots, or every authored target counts as
+  // unplaced and collapses into one flat preparation branch.
+  const presentsGoals = (goal: UiGoal) => goal.contains.length > 0
+  const displayedRoots = [localRoots.filter(presentsGoals), roots.filter(presentsGoals), localRoots, roots]
+    .find((candidates) => candidates.length > 0) ?? []
   const fullPlanRoot = displayedRoots[0]
   const seen = new Set<string>()
   const visit = (goal: UiGoal) => {
@@ -1149,9 +1155,12 @@ export const applyPersonalCurriculumProjection = (
   })
 
   const preparationTitle = language === 'en' ? 'Required foundations' : 'Notwendige Grundlagen'
+  // The preparation branch lives beside the root that displays it.
+  const fullPlanRootEntry = fullPlanRoot ? result.find((entry) => entry.goals.includes(fullPlanRoot)) : undefined
   const preparation: UiGoal = {
     id: preparationId,
-    landscapeId: fullPlanEntry?.meta.landscapeId ?? fullPlanRoot?.landscapeId ?? scope.rootLandscapeId,
+    landscapeId: fullPlanRootEntry?.meta.landscapeId ?? fullPlanEntry?.meta.landscapeId
+      ?? fullPlanRoot?.landscapeId ?? scope.rootLandscapeId,
     title: preparationTitle,
     description: preparationTitle,
     phase: 'GLOBAL', themenfeld: '', area: '', level: 0, core: true, weight: 1,
@@ -1162,7 +1171,7 @@ export const applyPersonalCurriculumProjection = (
     personalCurriculumProjection: { revision, role: 'structure', presentationOnly: true },
   }
   if (fullPlanRoot) fullPlanRoot.contains.push(preparation.id)
-  const owner = fullPlanEntry ?? result.find((entry) => entry.goals.includes(fullPlanRoot!)) ?? result[0]
+  const owner = fullPlanRootEntry ?? fullPlanEntry ?? result[0]
   owner.goals.push(preparation)
   return result
 }

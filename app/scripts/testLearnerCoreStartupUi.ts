@@ -108,6 +108,7 @@ try {
   assert.equal(count(`/api/ui/learners/learner-a/landscapes/${rootId}/closure`), 1)
   assert.equal(count('/api/ui/learners/learner-a'), 1)
   assert.equal(count('/api/ui/composition-views/match'), 3)
+  assert.equal(count('/api/ui/learners/learner-a/mastery'), 1, 'mastery answers for the whole learner and is not requested again when the landscapes arrive')
   await page.getByRole('button', { name: 'Nur Navigation' }).click()
   await page.getByTestId('ready').waitFor()
   assert.equal(await page.locator('html').getAttribute('data-mounts'), '1')

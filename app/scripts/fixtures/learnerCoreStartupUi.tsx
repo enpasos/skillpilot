@@ -23,6 +23,11 @@ const Fixture = () => {
   const location = useLocation()
   const core = useAppCore({ role: 'learner', skillpilotId: learner, setLearnerMeta: ignoreMeta })
   const hasProjection = core.landscapeEntries.some((entry) => entry.meta.personalCurriculumProjection)
+  // The roots the Cockpit shows (LearnerView): roots of the selected landscape
+  // that present goals, otherwise all presenting roots. A full-plan overview
+  // lists its subjects without containing them, so their roots are shown.
+  const selectedRootGoals = core.breadcrumbRootGoals.filter((goal) => goal.landscapeId === core.selectedLandscapeId)
+  const cockpitRootGoals = selectedRootGoals.length > 0 ? selectedRootGoals : core.breadcrumbRootGoals
   const config = {
     [CANONICAL_GYMNASIUM_ROOT_ID]: { selected: true, filterId: 'DE-HE', stage: 'SekII' },
     'c436b994-8f44-5134-b9f8-0c9f5d6a5ba0': { selected: true, filterId: 'GK', stage: 'SekII' },
@@ -47,8 +52,7 @@ const Fixture = () => {
     {hasProjection && !core.loadingLandscapes && <div data-testid="projection-tree">
       <output data-testid="focused-goal">{focusedId}</output>
       <output data-testid="selected-goal">{selectedId}</output>
-      <CompetenceTree rootGoals={[...core.goalIndexAll.values()].filter((goal) => goal.tags?.includes('root')
-        && goal.landscapeId === core.selectedLandscapeId)} allGoals={core.goalIndexAll} getMastery={() => 0}
+      <CompetenceTree rootGoals={cockpitRootGoals} allGoals={core.goalIndexAll} getMastery={() => 0}
         plannedGoals={new Set()} onTogglePlan={setFocusedId} onSelect={setSelectedId} selectedId={selectedId}
         audience="learner" allowClusterPlanning expandedGoalIds={new Set(core.goalIndexAll.keys())}
         onToggleExpanded={() => undefined} visibleChildrenByParentOverride={buildVisibleChildrenMap(

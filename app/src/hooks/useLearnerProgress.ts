@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { LandscapeEntry } from './useLandscapes'
 import type { MasteryMap } from '../learnerTypes';
 
@@ -8,9 +8,19 @@ interface Options {
   initialCourseFilter?: string
 }
 
+const EMPTY_MASTERY: MasteryMap = {}
+
 export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skillpilotId, initialCourseFilter = 'all' }: Options & { skillpilotId: string }) {
   // selectedLandscapeId is now managed by the parent (useAppCore)
-  const [masteryByLandscape, setMasteryByLandscape] = useState<Record<string, MasteryMap>>({})
+  // The mastery API answers for the whole learner, not for one landscape. One
+  // map per learner therefore serves every landscape: it is requested once
+  // instead of again whenever the landscapes arrive or the selection changes,
+  // and a landscape switch no longer shows empty progress until a reload ends.
+  const [masteryState, setMasteryState] = useState<{ skillpilotId: string; mastery: MasteryMap }>({
+    skillpilotId: '',
+    mastery: EMPTY_MASTERY,
+  })
+  const masteryRequestSequenceRef = useRef(0)
   const [activeFilter, setActiveFilter] = useState<string>(initialCourseFilter ?? 'all')
 
   const currentLandscapeEntry =
@@ -18,55 +28,44 @@ export function useLearnerProgress({ landscapeEntries, selectedLandscapeId, skil
 
   const activeLandscapeId = currentLandscapeEntry?.meta.landscapeId ?? ''
 
-
-
   const refreshMastery = useCallback(async () => {
     if (!skillpilotId) return
+    const requestSequence = ++masteryRequestSequenceRef.current
 
     try {
       const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-
-      // We fetch GLOBAL mastery for the learner, not just per landscape (API is global)
       const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}/mastery?_t=${Date.now()}` : `/api/ui/learners/${skillpilotId}/mastery?_t=${Date.now()}`
       const res = await fetch(url)
       if (res.ok) {
-        const data = await res.json()
         // API returns { mastery: { goalId: 1.0 } }
-        // We need to store it. Since the API is global, we might store it for "current landscape" or globally?
-        // For now, let's assume the map applies to all goals. 
-        // But this hook structures it by landscapeId.
-        // Let's store it under activeLandscapeId (or 'global'?)
-        // The current implementation expects `masteryByLandscape[activeLandscapeId]`
-
+        const data = await res.json()
+        // An older answer must not replace the result of a later request.
+        if (requestSequence !== masteryRequestSequenceRef.current) return
         if (data.mastery) {
-          setMasteryByLandscape(prev => ({
-            ...prev,
-            [activeLandscapeId]: data.mastery
-          }))
+          setMasteryState({ skillpilotId, mastery: data.mastery })
         }
       }
     } catch (e) {
       console.warn('Failed to fetch mastery', e)
     }
-  }, [skillpilotId, activeLandscapeId])
+  }, [skillpilotId])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void refreshMastery()
   }, [refreshMastery])
 
-  const mastery = masteryByLandscape[activeLandscapeId] ?? {}
+  const mastery = masteryState.skillpilotId === skillpilotId ? masteryState.mastery : EMPTY_MASTERY
 
   const updateMasteryForCurrent = useCallback((updater: (prev: MasteryMap) => MasteryMap) => {
     if (!activeLandscapeId) return
-    setMasteryByLandscape((prev) => {
-      const prevMap = prev[activeLandscapeId] ?? {}
-      const nextMap = updater(prevMap)
-      return { ...prev, [activeLandscapeId]: nextMap }
-    })
-  }, [activeLandscapeId])
+    setMasteryState((prev) => ({
+      skillpilotId,
+      mastery: updater(prev.skillpilotId === skillpilotId ? prev.mastery : EMPTY_MASTERY),
+    }))
+  }, [activeLandscapeId, skillpilotId])
 
-  const getMasteryMap = useCallback((landscapeId: string) => masteryByLandscape[landscapeId] ?? {}, [masteryByLandscape])
+  const getMasteryMap = useCallback(() => mastery, [mastery])
 
   return {
     activeLandscapeId,
