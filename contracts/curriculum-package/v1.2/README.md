@@ -45,8 +45,8 @@ A learning unit lives in the existing placement layer of a canonical landscape:
   learning-unit fields on another kind are rejected.
 - `goalPlacements[]` with `relation: "own"` assigns one atomic goal of the same
   landscape to one learning unit. `own` is only valid towards a learning unit,
-  a learning unit takes no other relation, and an `own` placement carries no
-  `context`.
+  a learning unit takes no other relation, and an `own` placement carries
+  exactly `goalId`, `unitId` and `relation` (no `context`, no other field).
 - `coverageReviews[]` on the learning unit holds the reviewed coverage of its
   own assessments (rule R2), at most one entry per assessment, each with exactly
   `assessmentGoalId`, `goalIds`, `reference` (repository-relative review
@@ -94,7 +94,7 @@ additions by `scripts/generate_curriculum_package_learning_unit_contracts.py`;
 | `package-redistribution-review.schema.json` | The 1.0 ledger schema with the 1.2 profile identities. |
 | `profiles/full-standalone-learning-units-v1.profile.json` | JSON release profile: the 22 V1 schemas plus the three 1.2 schemas (25), catalog and landscape roles bound to the 1.2 schemas, and the optional, runtime-required role `learning-unit-coverage-review`. |
 | `profiles/skillpilot-fwu-field-semantics-learning-units-v1.registry.json` | The 456 unchanged V1 entries plus 19 entries (475). Each coverage review is a positioned record of its unit with registered fields, like `goalPlacements`. |
-| `profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json` | Mathematics build profile for runtime 1.2 (currently no learning unit). |
+| `profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json` | Mathematics build profile for runtime 1.2. Its unit counts are derived from the canonical file (currently the pilot unit with two own placements). |
 | `profiles/fwu-owl-learning-units-v1.profile.json`, `fwu-owl-package-*.schema.json`, `ontology/skillpilot-fwu-profile-learning-units-1.2.0.ttl` | FWU-OWL carrier, derived from the 1.0 carrier as 1.1 did. |
 | `fixtures/learning-units/cases.json` | Shared conformance cases (owned by the learning-unit validator; not generated). |
 
@@ -109,6 +109,17 @@ that existed only for learning units. Goal objects are never touched. An older c
 learning units. A calendar unit below a learning unit cannot be projected and
 fails the build. The 1.1 completion review is checked against that projection.
 
+Two more consumers use the same projection (TypeScript mirror:
+`app/scripts/learningUnitLayerProjection.ts`, held equal to the Python
+projection by shared reference fingerprints):
+
+- The legacy subject export (`export:subject-package`) and its MEM/FWU
+  roundtrip predate learning units and ship the landscape without the layer.
+- Evidence about goals, edges and assessments, such as the
+  prerequisite-reduction proofs and the input pin of the Mathematics duration
+  layout, fingerprints the landscape without the layer. Adding or changing a
+  unit never stales it; any other change still does.
+
 ## 1.2 builds
 
 The release compiler and the independent release-model validator validate
@@ -122,6 +133,13 @@ the reference is rewritten to that package path, and
 artifacts are not part of the dependency closure, like the 1.1 completion
 artifacts.
 
+A 1.2 ZIP needs its own redistribution ledger, because the ledger binds the
+digest of the compiled 1.2 model:
+`python3 -B scripts/generate_curriculum_package_redistribution_review.py --generate --learning-unit-candidate`
+writes it for the compiled model. It is generated for a build and not
+committed while no 1.2 package is released, since no CI step would keep a
+committed copy current.
+
 ## Validity rules
 
 `scripts/curriculum_learning_units.py` implements the rules once for the
@@ -130,7 +148,8 @@ package validator reports them in its `hardReferenceClosure` gate as
 `LEARNING_UNIT_<rule>` and fails closed:
 
 - declaration closed (`UNIT`), unique program-unit IDs (`UNIT_ID`), ownership
-  only towards learning units, without context and declared once (`PLACEMENT`);
+  only towards learning units, with exactly `goalId`, `unitId` and `relation`
+  and declared once (`PLACEMENT`);
 - parents are learning units of the same landscape (`CHILD`), the hierarchy is
   acyclic (`HIERARCHY`), the total scope is non-empty (`EMPTY_SCOPE`);
 - own goals are atomic goals of the landscape (`REF`, `ATOMIC`) with one goal

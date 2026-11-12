@@ -143,8 +143,12 @@ Erlasslisten lassen sich im Vertrag nicht ausdrücken: Die Einheitendeklaration
 ist geschlossen, ein unbekanntes Feld ist ein Befund.
 
 Jede Änderung an einer Einheit ändert damit die kanonische Fachdatei, obwohl
-kein Zielobjekt sich ändert. Was das für die an die Datei gebundenen Nachweise
-heißt, ist die offene Entscheidung in Abschnitt 5.
+kein Zielobjekt sich ändert. Nachweise über Ziele binden deshalb die Landschaft
+ohne ihre Einheitenschicht, mit der Projektion des Paketbaus für die Verträge
+1.0 und 1.1 (umgesetzt am 12. November, siehe
+[Bindungspflege](canonical-math-learning-unit-pilot-binding-review-2026-11-12.md)).
+Eine Einheitenänderung lässt sie gültig; jede andere Änderung macht sie
+weiterhin ungültig.
 
 Ein Paket nach Vertrag 1.2 trägt die Einheiten samt Reviewprotokollen und
 prüft dieselben Regeln beim Bau. Ein Bau nach Vertrag 1.0 oder 1.1 lässt sie
@@ -194,7 +198,7 @@ Ergebnis abgeschlossen.
 | --- | --- | --- | --- |
 | **0 – Wiederaufnahme** | Dieser Plan; Inventarwerkzeug portiert und neu erzeugt. | Dokumentationsprüfungen grün; #83 bleibt Archiv. | Geliefert. |
 | **1 – Vertrag und Validator** | Einheiten in der Platzierungsschicht der Skill-Landschaft, Paketvertrag 1.2, Validator für R1, R3, R4 und Struktur, gemeinsame Testfälle, CI-Einbindung. | Testfälle decken jeden Befundcode; keine Runtimeänderung. | Geliefert. Die Angebotsprüfung ist vorhanden, aber nicht in der Pflicht-CI. |
-| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Pilot geprüft, aber noch nicht eingetragen; R2 nicht erfüllt (siehe unten). |
+| **2 – Erste echte Einheiten** | Pilot „Skalarprodukt über orthogonale Projektion“, danach M01 und P13, jeweils mit unabhängigem R2-Review. | Validator grün, geschützte Reifegrade gehalten, Quellenbindung für neue Prüfungen. | Begonnen: Pilot eingetragen und strukturell gültig; R2 nicht erfüllt (siehe unten). |
 | **3 – Runtime** | Backend leitet aus gültigen Verträgen die wirksame Beherrschung ab, versioniert gebunden (R5); Cockpit, Coach, Frontier und Plan nutzen denselben Stand. | Gesamtfortschritt zählt Anerkennung mit, Perioden zählen nur explizite Abschlüsse, keine neuen Mastery-Zeilen; Deployment und Hostabnahme getrennt durch den Product Owner. | Offen. |
 | **4 – Mathematik vollständig** | Blockweise Einheiten, Prüfungen und Reviews; die Landschaft erklärt `learningUnitCoverage: complete`. | Kein Fachziel ohne Einheit, Angebotsprüfung in allen Mathematikklassen grün, Gesamt-CI grün. | Offen: 806 gewöhnliche Ziele ohne Einheit. |
 | **5 – Physik vollständig** | Wie Stufe 4, zusätzlich Experimente und mathematische Voraussetzungen. | Eigene Fachabnahme; Mathematik bleibt stabil. | Offen. |
@@ -203,31 +207,21 @@ Ergebnis abgeschlossen.
 
 Die Einheit `math-dot-product-projection` besitzt das Ziel
 `3016ec37-1c2e-47db-83f5-e767923bc97e` und die Prüfung
-`e98672c6-871a-5d0b-889c-5afc51040f0d`. Probeweise in die kanonische
-Mathematikdatei eingetragen, erfüllt sie R1, R3 und R4, auch in allen 190
+`e98672c6-871a-5d0b-889c-5afc51040f0d`. Sie ist in der kanonischen
+Mathematikdatei eingetragen und erfüllt R1, R3 und R4, auch in allen 190
 Mitgliedschaftsklassen; alle 1.252 Zielobjekte bleiben dabei bytegleich.
 
-**Eingetragen ist sie noch nicht.** Die Nachweiskette der
-Voraussetzungsreduktion (Register V6 bis V8) bindet den Fingerabdruck der
-ganzen Fachdatei und weist ein Umbinden bewusst ab. Mit der Einheit in der
-Datei gilt der Nachweis nicht mehr, die Wiederverwendung der Reviews wird
-abgeschaltet, Biologie, Chemie, Mathematik, Physik und
-Wirtschaftswissenschaften fallen von M7 auf M6, und der Bau der Lernzielbücher
-und des Release-Modells scheitert. Mit den ursprünglichen Bytes ist alles
-wieder grün.
-
-**Offene Entscheidung des Product Owners.** Empfohlen ist, dass Nachweise über
-Ziele die Landschaft *ohne* ihre Einheitenschicht binden, also genau die
-Projektion, die der Paketbau für die Verträge 1.0 und 1.1 schon verwendet. Die
-projizierte neue Datei ist bytegleich zur alten; die vorhandene Nachweiskette
-bliebe ohne jede Registeränderung gültig, auch bei jeder späteren
-Einheitenänderung. Betroffen sind der Prüfer der Reduktionsnachweise
-(TypeScript, Java-Test, Python-Brücke) und die Eingabebindung des
-Mathematik-Dauerlayouts. Die Alternative, für jede Einheitenänderung einen
-neuen Nachweisvertrag mit eigenem Register anzulegen, ist deutlich teurer.
-Danach leitet der Generator des Vertrags 1.2 die Einheitenzahlen aus der
-Fachdatei ab, und der Release-Modell-Test projiziert vorhandene Einheiten
-heraus, bevor er seine Testeinheit einfügt.
+Empfohlen und am 12. November umgesetzt ist, dass Nachweise über Ziele die
+Landschaft ohne ihre Einheitenschicht binden; der Product Owner hat nach
+Vorlage der Empfehlung um Fortsetzung gebeten. Der Prüfer der
+Reduktionsnachweise (TypeScript, Java-Test, Python-Brücke) und die
+Eingabebindung des Mathematik-Dauerlayouts verwenden seitdem dieselbe
+Projektion wie der Paketbau; die Register V6 bis V8 gelten unverändert, alle
+geschützten Fächer behalten ihren Reifegrad. Der Generator des Vertrags 1.2
+leitet die Einheitenzahlen aus der Fachdatei ab, und der Release-Modell-Test
+projiziert vorhandene Einheiten heraus, bevor er seine Testeinheit einfügt.
+Einzelheiten und Prüfläufe:
+[Bindungspflege vom 12. November](canonical-math-learning-unit-pilot-binding-review-2026-11-12.md).
 
 Das unabhängige
 [Review vom 12. November](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-12.md)
@@ -340,8 +334,6 @@ Oberfläche lesen dieselben Fälle:
 
 ## 9. Nächster Schritt
 
-Zuerst die offene Entscheidung aus Abschnitt 5 treffen und umsetzen, damit
-Einheiten in die kanonischen Dateien eingetragen werden können. Danach
 Stufe 2 fortsetzen: die stärkere Prüfung für den Pilot entwerfen und unabhängig
 gegenlesen lassen, parallel die Kandidaten M01 und P13 nach dem Entwurfsbogen
 ausarbeiten. Stufe 3 beginnt, sobald eine Einheit einen vollständigen

@@ -8,10 +8,11 @@ learner trial or evidence of learning effectiveness.
 
 ## Subject of the review
 
-Candidate learning unit `math-dot-product-projection`, revision
-`2026-11-12-v1`, for the placement layer of the canonical Mathematics landscape
+Learning unit `math-dot-product-projection`, revision `2026-11-12-v1`, in the
+placement layer of the canonical Mathematics landscape
 (`curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json`).
-It is not placed in that file yet; see "Placement" below.
+It was a candidate when it was reviewed and has been placed since; see
+"Placement" below.
 
 - Own ordinary goal `3016ec37-1c2e-47db-83f5-e767923bc97e`, "Definition des
   Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen".
@@ -91,16 +92,20 @@ differently from a missing central understanding.
 
 ## Placement
 
-The unit was inserted into the canonical file on a trial basis and removed
-again. With the unit in place both validators pass (`validate:learning-units`:
+The unit is placed in the canonical file: one `programUnits` entry and two `own`
+placements, appended at the end of their lists, without `coverageReviews` and
+without `learningUnitCoverage`. Both validators pass (`validate:learning-units`:
 the unit valid, reviewed coverage missing for one goal;
-`validate:learning-units:offered`: 190 offered membership classes, no finding),
-all 1,252 goal objects stay byte-identical, and the file with its learning-unit
-layer projected out equals the unchanged file. The insertion nevertheless
-changes the whole-document fingerprint to which the prerequisite-reduction
-proofs are bound; those proofs then no longer verify, and five subjects fall
-below their protected maturity level. The unit is placed once it is decided how
-these proofs bind a landscape that contains learning units.
+`validate:learning-units:offered`: 190 offered membership classes, no finding).
+All 1,252 goal objects stay byte-identical, and the file with its learning-unit
+layer projected out equals the file before the placement.
+
+A first attempt on the same day was reverted, because the prerequisite-reduction
+proofs were bound to the fingerprint of the whole file and five subjects fell
+below their protected maturity level. Evidence about goals now binds the
+landscape without its learning-unit layer, so the existing proofs verify
+unchanged and every protected subject keeps its level. The technical record is
+[docs/dev/canonical-math-learning-unit-pilot-binding-review-2026-11-12.md](../../../../../docs/dev/canonical-math-learning-unit-pilot-binding-review-2026-11-12.md).
 
 ## What would satisfy R2
 

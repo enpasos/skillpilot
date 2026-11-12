@@ -538,7 +538,7 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   `label`, `labelEn`, `promise`, `promiseEn`, `revision`, optional
   `parentUnitId` naming the unit that requires it as a child). It owns atomic
   goals of the same landscape through `goalPlacements` of relation `own`,
-  which carry no `context`. Reviewed coverage (R2) is the unit's
+  which carry exactly `goalId`, `unitId` and `relation` (no `context`). Reviewed coverage (R2) is the unit's
   `coverageReviews`, one entry per own assessment, hash-bound to that
   assessment's task, solution and rubric; goal objects carry nothing of the
   unit contract, so a review never changes a goal's bytes. The
@@ -560,18 +560,30 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   still completed by its own explicit result. Never add an edge, weaken a goal
   description or cut a unit to turn the validator green; a finding is a
   subject-review task.
-- **Open: bindings on the canonical file (12 November 2026).** No canonical
-  landscape contains a learning unit yet. Placing one changes the bytes of the
-  subject file although every goal object stays identical. The
-  prerequisite-reduction proof chain (V6 to V8 registries) fingerprints the
-  whole document and rejects rebinding by design; with a unit in canonical
-  Mathematics the proof no longer verifies, review reuse is switched off, five
-  subjects fall from M7 to M6 and the goal-book and release-model builds fail.
-  Do not rebind those proofs by hand and do not touch the floors. The
-  recommended resolution, awaiting the Product Owner, is that bindings about
-  goals fingerprint the landscape with its learning-unit layer projected out
-  (the projection the package build already uses for contracts 1.0 and 1.1), so
-  that existing proofs stay valid and a unit edit never stales them.
+- **Bindings ignore the learning-unit layer (12 November 2026).** Evidence
+  about goals, edges and assessments binds the landscape with its
+  learning-unit layer projected out: without `programUnits` of kind
+  `learningUnit`, without `goalPlacements` of relation `own` or towards a
+  learning unit, and without `learningUnitCoverage`. It is the projection the
+  package build applies for contracts 1.0 and 1.1; for a landscape without
+  units it is the identity. The prerequisite-reduction proof (TypeScript
+  verifier, Java test, Python bridge) and the input pin of the Mathematics
+  duration layout fingerprint that projection; the V6 to V8 registries are
+  unedited and still verify, and a registry record keeps its full digest. A
+  unit edit therefore never stales these proofs, and any other change still
+  does. Carriers that predate learning units follow the same rule: a 1.0 or
+  1.1 build and the legacy subject export (with its MEM/FWU roundtrip) ship
+  the landscape without the layer; only contract 1.2 carries units. This was
+  the recommendation presented to the Product Owner on 12 November 2026 after
+  the first placement attempt broke the proof chain; the Product Owner asked
+  to proceed. Never rebind a proof by hand and never touch a floor to place a
+  unit. Record: `docs/dev/canonical-math-learning-unit-pilot-binding-review-2026-11-12.md`.
+- **First placed unit (12 November 2026).** Canonical Mathematics contains the
+  pilot unit `math-dot-product-projection` (one ordinary goal, one
+  assessment). It is structurally valid and carries no coverage review,
+  because its independent review found R2 not satisfied
+  (`curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-12.md`).
+  A stronger assessment needs a new assessment ID.
 
 This is concept documentation plus a static authoring contract and validator,
 not an implemented runtime or access policy. See `docs/concept/skill-graph/learning-units.md`,
