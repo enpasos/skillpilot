@@ -26,6 +26,7 @@ import {
   selectCompositionManagedLandscapeIds,
   shouldApplyLearnerPlacementFallback,
 } from '../utils/compositionViewRuntime'
+import { loadLearnerProfile } from '../utils/learnerProfileRequest'
 import { normalizeCompositionView } from '../utils/authoring/compositionViewAuthoring'
 import { normalizeJurisdictionCode } from '../utils/jurisdictionMetadata'
 import { useRuntimeCurriculumCatalog } from './useRuntimeCurriculumCatalog'
@@ -483,15 +484,10 @@ export function useAppCore({
 
     const controller = new AbortController()
     const signal = controller.signal
-    const apiBase = (import.meta.env.VITE_API_BASE ?? '').replace(/\/+$/, '')
-    const url = apiBase ? `${apiBase}/api/ui/learners/${skillpilotId}` : `/api/ui/learners/${skillpilotId}`
 
-    fetch(url, { signal })
-      .then(async (res) => {
-        if (!res.ok) {
-          throw new Error(`Failed to load learner profile (${res.status})`)
-        }
-        const data = await res.json()
+    // The Cockpit reuses this request for its own first profile read.
+    loadLearnerProfile(skillpilotId)
+      .then((data) => {
         if (!signal.aborted) {
           setLearnerProfile({
             key: learnerProfileKey,
@@ -583,9 +579,19 @@ export function useAppCore({
   }, [activeFilter, selectedOfferingId, graphSourceLandscapeEntries, learnerPersonalCurriculum, runtimeCatalogState, selectedLandscapeId, role, loadingLearnerProfile, currentLearnerProfile?.error])
 
   const compositionRequestKey = JSON.stringify([learnerProfileKey, [...runtimeCompositionRequests]])
+  // The request set is rebuilt whenever one of its inputs gets a new identity.
+  // Equal requests keep one identity here, so they neither reload their views
+  // nor recompute the projected skill graph.
+  const stableCompositionRequests = useMemo(
+    () => new Map(JSON.parse(compositionRequestKey)[1] as [string, {
+      scope: ReturnType<typeof deriveRuntimeCompositionScope>
+      offeringId?: string
+    }][]),
+    [compositionRequestKey],
+  )
 
   useEffect(() => {
-    if (role !== 'learner' || runtimeCompositionRequests.size === 0) {
+    if (role !== 'learner' || stableCompositionRequests.size === 0) {
       setMatchedCompositionViewsByLandscapeId((current) =>
         Object.keys(current).length === 0 ? current : {},
       )
@@ -600,7 +606,7 @@ export function useAppCore({
     setLoadingMatchedCompositionViews(true)
     setCompositionViewError(null)
     void Promise.all(
-      Array.from(runtimeCompositionRequests.entries()).map(async ([landscapeId, request]) => {
+      Array.from(stableCompositionRequests.entries()).map(async ([landscapeId, request]) => {
         if (runtimeCatalogState.mode === 'package') {
           if (!request.offeringId) {
             throw new Error(`No catalog offering matches the selected scope for ${landscapeId}`)
@@ -660,7 +666,7 @@ export function useAppCore({
       })
 
     return () => controller.abort()
-  }, [role, runtimeCatalogState, runtimeCompositionRequests, compositionRequestKey])
+  }, [role, runtimeCatalogState, stableCompositionRequests, compositionRequestKey])
 
   const effectiveMatchedCompositionViewsByLandscapeId = useMemo(
     () => matchedCompositionViewsByLandscapeId,
@@ -670,7 +676,7 @@ export function useAppCore({
   const projectedLandscapeEntries = useMemo(() => {
     const compositionManagedLandscapeIds = selectCompositionManagedLandscapeIds(
       role,
-      runtimeCompositionRequests.keys(),
+      stableCompositionRequests.keys(),
     )
     const rawEntriesWithMatchedCompositionView = graphSourceLandscapeEntries.filter((entry) =>
       !!effectiveMatchedCompositionViewsByLandscapeId[entry.meta.landscapeId],
@@ -737,7 +743,7 @@ export function useAppCore({
     language,
     role,
     runtimeCatalogState,
-    runtimeCompositionRequests,
+    stableCompositionRequests,
   ])
 
   const projectedCurrentLandscapeEntry = useMemo(() => {
