@@ -3250,6 +3250,16 @@ public class LearnerService {
         if (legacyGoalId == null || legacyGoalId.isBlank() || visibleGoals == null || visibleGoals.isEmpty()) {
             return null;
         }
+        // Progress checks ask this for every stored result. For the immutable goal
+        // map of a projection the answers are read from one index per transaction
+        // instead of one scan of all goals per question.
+        ProjectionComputationCache cache = IMMUTABLE_GOAL_MAP_TYPE.isInstance(visibleGoals)
+                ? transactionProjectionCache() : null;
+        if (cache != null) {
+            return cache.legacySourceGoalIds
+                    .computeIfAbsent(visibleGoals, this::indexGoalIdsByLegacySourceId)
+                    .get(legacyGoalId);
+        }
         for (LearningGoal goal : visibleGoals.values()) {
             String sourceGoalId = landscapeService.resolveGoalProvenanceValue(goal, "sourceGoalId");
             if (legacyGoalId.equals(sourceGoalId)) {
@@ -10687,6 +10697,8 @@ public class LearnerService {
     private static final class ProjectionComputationCache implements TransactionSynchronization {
         private final LearnerService owner;
         private final Map<ProjectionKey, GoalProjection> projections = new HashMap<>();
+        private final Map<Map<String, LearningGoal>, Map<String, String>> legacySourceGoalIds =
+                new java.util.IdentityHashMap<>();
         private final Map<CurriculumConfigurationKey, PersonalizationPlan> personalizationPlans = new HashMap<>();
         private final Map<OfferingScopeKey, Optional<Map<String, String>>> offeringScopes = new HashMap<>();
 
@@ -10697,6 +10709,7 @@ public class LearnerService {
         @Override
         public void afterCompletion(int status) {
             projections.clear();
+            legacySourceGoalIds.clear();
             personalizationPlans.clear();
             offeringScopes.clear();
         }
@@ -11277,6 +11290,20 @@ public class LearnerService {
                 .map(LearningGoal::getId)
                 .findFirst()
                 .ifPresent(presentationRootGoalIds::add);
+    }
+
+    /** The type {@link #immutableGoalMap} returns: a private copy nobody can change. */
+    private static final Class<?> IMMUTABLE_GOAL_MAP_TYPE =
+            Collections.unmodifiableMap(new LinkedHashMap<String, LearningGoal>()).getClass();
+
+    /** The first goal per legacy source id, in the order a scan of the map finds it. */
+    private Map<String, String> indexGoalIdsByLegacySourceId(Map<String, LearningGoal> goals) {
+        Map<String, String> index = new HashMap<>();
+        for (LearningGoal goal : goals.values()) {
+            String sourceGoalId = landscapeService.resolveGoalProvenanceValue(goal, "sourceGoalId");
+            if (sourceGoalId != null) index.putIfAbsent(sourceGoalId, goal.getId());
+        }
+        return index;
     }
 
     private Map<String, LearningGoal> immutableGoalMap(Map<String, LearningGoal> goals) {

@@ -69,6 +69,59 @@ class CompositionViewServiceCacheTest {
     }
 
     @Test
+    void anImmutableGraphCopyKeepsItsTreesUntilTheSupplierHandsOutChangedContent() throws IOException {
+        writeRoleViews();
+        var source = roleGraph();
+        var current = new java.util.concurrent.atomic.AtomicReference<Map<String, List<String>>>(
+                CanonicalContainsGraph.copyOf(source));
+        var service = service(current::get);
+        var initial = roots(service.findViewById(COMBINED));
+        assertThat(initial).containsExactly(reference("root", "target"));
+        assertThat(roots(service.findViewById(COMBINED))).isSameAs(initial);
+
+        // The copy is detached: changing its source afterwards is no new graph.
+        source.put("root", List.of());
+        assertThat(roots(service.findViewById(COMBINED))).isSameAs(initial);
+
+        // Equal content in another copy keeps the trees and is recognised afterwards.
+        current.set(CanonicalContainsGraph.copyOf(roleGraph()));
+        assertThat(roots(service.findViewById(COMBINED))).isSameAs(initial);
+        assertThat(roots(service.findViewById(COMBINED))).isSameAs(initial);
+
+        // Changed content in a new copy must pass the strict merger again.
+        current.set(CanonicalContainsGraph.copyOf(source));
+        var changed = roots(service.findViewById(COMBINED));
+        assertThat(changed).isNotSameAs(initial).containsExactly(reference("root", "target"), leafExclusion());
+        assertThat(roots(service.findViewById(COMBINED))).isSameAs(changed);
+
+        // A mutable graph after an immutable one is compared in full again.
+        var mutable = roleGraph();
+        current.set(mutable);
+        var restored = roots(service.findViewById(COMBINED));
+        assertThat(restored).isNotSameAs(changed).isEqualTo(initial);
+        mutable.put("root", List.of());
+        assertThat(roots(service.findViewById(COMBINED))).isNotSameAs(restored).isEqualTo(changed);
+    }
+
+    @Test
+    void anImmutableGraphCopyEqualsItsSourceAndCannotBeChanged() {
+        var source = new LinkedHashMap<String, List<String>>();
+        source.put("root", new ArrayList<>(List.of("leaf")));
+        source.put("leaf", null);
+        var copy = CanonicalContainsGraph.copyOf(source);
+        assertThat(copy).containsExactly(Map.entry("root", List.of("leaf")), Map.entry("leaf", List.of()));
+        assertThat(copy.get("root")).isEqualTo(List.of("leaf"));
+        assertThat(copy.containsKey("leaf")).isTrue();
+        assertThat(copy).hasSize(2);
+        source.get("root").add("extra");
+        assertThat(copy.get("root")).containsExactly("leaf");
+        assertThatThrownBy(() -> copy.put("extra", List.of())).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> copy.get("root").add("extra")).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> copy.entrySet().clear()).isInstanceOf(UnsupportedOperationException.class);
+        assertThat(copy).isEqualTo(Map.of("root", List.of("leaf"), "leaf", List.of()));
+    }
+
+    @Test
     void aCachedMergeNeverBypassesValidationOfChangedOrUnavailableCanonicalInputs() throws IOException {
         var graph = roleGraph();
         writeRoleViews();

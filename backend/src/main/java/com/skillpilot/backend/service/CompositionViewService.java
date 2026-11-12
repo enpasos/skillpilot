@@ -990,8 +990,10 @@ public class CompositionViewService {
      * index; full documents prevent equal view IDs from aliasing different sources.
      * Compare the complete current canonical contains graph before any hit,
      * including when a supplier reuses a mutable map/list. A changed graph clears
-     * all trees and must pass the ordinary strict merger again. No learner data,
-     * authorization or scope resolution is cached here.
+     * all trees and must pass the ordinary strict merger again. Only an immutable
+     * {@link CanonicalContainsGraph} that is still the compared instance is known
+     * to be unchanged without that comparison. No learner data, authorization or
+     * scope resolution is cached here.
      */
     private List<Map<String, Object>> mergedRoots(List<Map<String, Object>> views) {
         List<Map<String, Object>> key = List.copyOf(views);
@@ -999,11 +1001,22 @@ public class CompositionViewService {
             if (canonicalGraphSupplier != null) {
                 Map<String, List<String>> current = canonicalGraphSupplier.get();
                 if (current == null) throw new IllegalArgumentException("Canonical contains graph is required");
-                if (!current.equals(mergedViewGraph)) {
-                    Map<String, List<String>> snapshot = new LinkedHashMap<>();
-                    current.forEach((id, children) -> snapshot.put(id, List.copyOf(children)));
-                    mergedViewGraph = Collections.unmodifiableMap(snapshot);
+                boolean immutableCopy = current instanceof CanonicalContainsGraph;
+                if (immutableCopy && current == mergedViewGraph) {
+                    // The compared instance itself: its content cannot have changed.
+                } else if (!current.equals(mergedViewGraph)) {
+                    if (immutableCopy) {
+                        mergedViewGraph = current;
+                    } else {
+                        Map<String, List<String>> snapshot = new LinkedHashMap<>();
+                        current.forEach((id, children) -> snapshot.put(id, List.copyOf(children)));
+                        mergedViewGraph = Collections.unmodifiableMap(snapshot);
+                    }
                     mergedViewRoots.clear();
+                } else if (immutableCopy) {
+                    // Equal content in a new immutable copy: keep the trees and
+                    // recognise this instance from now on.
+                    mergedViewGraph = current;
                 }
             }
             List<Map<String, Object>> cached = mergedViewRoots.get(key);
